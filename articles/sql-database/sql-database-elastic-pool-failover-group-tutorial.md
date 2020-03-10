@@ -12,11 +12,11 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552568"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380014"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 
@@ -28,7 +28,7 @@ Azure SQL veritabanı elastik havuzu için bir yük devretme grubu yapılandır�
 > - İki mantıksal SQL Server arasında iki elastik havuz için bir [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturun.
 > - Yük devretme testi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
 
@@ -43,7 +43,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 Bu adımda, bir elastik havuz oluşturacak ve tek veritabanınızı bu veritabanına eklersiniz. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak elastik havuzunuzu oluşturun. 
 
@@ -71,7 +71,7 @@ Azure portal kullanarak elastik havuzunuzu oluşturun.
 1. Elastik havuz ayarlarınızı gözden geçirmek için **gözden geçir + oluştur** seçeneğini belirleyin ve ardından esnek havuzunuzu oluşturmak için **Oluştur** ' u seçin 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell kullanarak elastik havuzlarınızı ve ikincil sunucunuzu oluşturun. 
 
    ```powershell-interactive
@@ -129,7 +129,7 @@ PowerShell kullanarak elastik havuzlarınızı ve ikincil sunucunuzu oluşturun.
 Bu adımda, mevcut bir Azure SQL sunucusu ile başka bir bölgedeki yeni bir Azure SQL sunucusu arasında bir [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturacaksınız. Ardından, elastik havuzu yük devretme grubuna ekleyin. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak yük devretme grubunuz oluşturun. 
 
@@ -163,7 +163,7 @@ Azure portal kullanarak yük devretme grubunuz oluşturun.
 1. Elastik havuz ayarlarınızı yük devretme grubuna uygulamak için **Seç** ' i seçin ve ardından yük devretme grubunuzu oluşturmak için **Oluştur** ' u seçin. Elastik havuzun yük devretme grubuna eklenmesi, coğrafi çoğaltma işlemini otomatik olarak başlatır.
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak yük devretme grubunuz oluşturun. 
 
@@ -252,7 +252,7 @@ PowerShell kullanarak yük devretme grubunuz oluşturun.
 Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure portal kullanarak yeniden başarısız olursunuz. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
@@ -276,7 +276,7 @@ Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin.
 1. Yük devretme grubundan özgün ayarlara geri dönmek için **Yük devretmeyi** yeniden seçin. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
@@ -357,7 +357,7 @@ Yük devretme grubunuzu ikincil sunucuya devreder ve sonra PowerShell kullanarak
 Kaynak grubunu silerek kaynakları temizleyin. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin.
@@ -365,7 +365,7 @@ Kaynak grubunu silerek kaynakları temizleyin.
 1. Kaynak grubunun adını `myResourceGroup`, metin kutusuna yazın ve ardından **Sil** ' i seçerek kaynak grubunu silin. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak kaynaklarınızı temizleyin. 
 
@@ -392,7 +392,7 @@ PowerShell kullanarak kaynaklarınızı temizleyin.
 
 ## <a name="full-script"></a>Tam betik
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
@@ -414,7 +414,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu kaldırır | 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal için kullanılabilir komut yok.
 
 ---

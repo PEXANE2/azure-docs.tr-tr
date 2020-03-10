@@ -8,11 +8,11 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789910"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395883"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Eşleme veri akışında sütun düzenlerini kullanma
 
@@ -35,7 +35,7 @@ Eşleştirme koşulunun altındaki iki ifade kutusu, etkilenen sütunların yeni
 
 ![sütun desenleri](media/data-flow/columnpattern2.png "Sütun Desenleri")
 
-Yukarıdaki sütun deseninin Double türü her sütunla eşleşiyor ve eşleşme başına bir toplama sütunu oluşturuyor. Yeni sütunun adı, eşleşen sütun adının ' _Total ' ile bitiştirildiği addır. Yeni sütunun değeri, var olan çift değerin yuvarlanmış, toplanmış toplamıdır.
+Yukarıdaki sütun deseninin Double türü her sütunla eşleşiyor ve eşleşme başına bir toplama sütunu oluşturuyor. Yeni sütunun adı, eşleşen sütun adının ' _total ' ile bitiştirildiği addır. Yeni sütunun değeri, var olan çift değerin yuvarlanmış, toplanmış toplamıdır.
 
 Eşleştirme koşullarınızın doğru olduğunu doğrulamak için **İnceleme** sekmesinde tanımlı sütunların çıktı şemasını doğrulayabilir veya **veri önizleme** sekmesindeki verilerin bir anlık görüntüsünü alabilirsiniz. 
 
@@ -64,8 +64,8 @@ Kuralınız birden çok özdeş eşleştirmelerle sonuçlanırsa, **yinelenen gi
 ## <a name="pattern-matching-expression-values"></a>Model eşleştirme ifadesi değerleri.
 
 * `$$` çalışma zamanında her eşleşmenin adına veya değerine çevirir
-* `name`, her gelen sütunun adını temsil eder
-* `type` her gelen sütunun veri türünü temsil eder
+* `name` gelen her sütunun adını temsil eder
+* `type` gelen her sütunun veri türünü temsil eder
 * `stream` her bir akışla veya akışdaki dönüşümle ilişkilendirilen adı temsil eder
 * `position`, veri akışındaki sütunların sıralı konumudur
 

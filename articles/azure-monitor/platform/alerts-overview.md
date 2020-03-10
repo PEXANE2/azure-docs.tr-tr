@@ -5,11 +5,11 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665673"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395762"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılara genel bakış 
 
@@ -68,8 +68,8 @@ Daha önce Azure Izleyici ölçümleri, Application Insights, Log Analytics ve h
 
 | **Kaynağı izle** | **Sinyal türü**  | **Açıklama** |
 |-------------|----------------|-------------|
-| Hizmet durumu | Etkinlik günlüğü  | Desteklenmez. Bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Web kullanılabilirlik testleri | Desteklenmez. Bkz. [Web test uyarıları](../../azure-monitor/app/monitor-web-app-availability.md). Application Insights veri gönderecek şekilde işaretlenmiş Web siteleri için kullanılabilir. Bir Web sitesinin kullanılabilirliği veya yanıt verme işlemi beklentileri altında olduğunda bir bildirim alın. |
+| Hizmet durumu | Etkinlik günlüğü  | Desteklenmiyor. Bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Web kullanılabilirlik testleri | Desteklenmiyor. Bkz. [Web test uyarıları](../../azure-monitor/app/monitor-web-app-availability.md). Application Insights veri gönderecek şekilde işaretlenmiş Web siteleri için kullanılabilir. Bir Web sitesinin kullanılabilirliği veya yanıt verme işlemi beklentileri altında olduğunda bir bildirim alın. |
 
 ## <a name="manage-alerts"></a>Uyarıları yönetme
 Bir uyarının durumunu, çözüm sürecinde nerede olduğunu belirtmek için ayarlayabilirsiniz. Uyarı kuralında belirtilen ölçütler karşılandığında, bir uyarı oluşturulur veya tetiklenir ve *Yeni*durumuna sahiptir. Bir uyarıyı onayladığınızda ve kapattığınızda durumu değiştirebilirsiniz. Tüm durum değişiklikleri uyarının geçmişine depolanır.

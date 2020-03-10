@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 15e1c3de5392238e9e1dbfd324fe40087950a766
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0afb0ddb65a4f27463e2bb5c1b9441d248c34415
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164336"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945637"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı başlangıç: Azure Data Factory Kullanıcı arabirimini kullanarak veri fabrikası oluşturma
 
@@ -38,7 +38,7 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. [Azure Portal](https://portal.azure.com) gidin. 
+1. [Azure portalına](https://portal.azure.com) gidin. 
 1. Azure portal menüsünde **kaynak oluştur**' u seçin.
    
    ![Azure portal menüsünden kaynak oluştur ' u seçin](./media/doc-common-process/create-a-resource.png)
@@ -67,6 +67,10 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 1. Azure Data Factory kullanıcı arabirimi (UI) uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
    
    ![Veri fabrikasının “Yazar ve İzleyici” kutucuğuna sahip ana sayfası](./media/doc-common-process/data-factory-home-page.png)
+   
+   > [!NOTE]
+   > Web tarayıcısının "yetkilendirme" sırasında takılı olduğunu görürseniz, **üçüncü taraf tanımlama bilgilerini ve site verilerini engelle** onay kutusunu temizleyin. Veya seçili durumda tutun, **login.microsoftonline.com**için bir özel durum oluşturun ve uygulamayı yeniden açmayı deneyin.
+   
 1. **Başlayalım** sayfasında, sol bölmede bulunan **Yazar** sekmesine geçin. 
 
     ![“Başlayalım” sayfası](./media/doc-common-process/get-started-page-author-button.png)

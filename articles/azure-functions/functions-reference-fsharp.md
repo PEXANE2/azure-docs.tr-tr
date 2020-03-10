@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975015"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355792"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Işlevleri F# geliştirici başvurusu
 
@@ -98,7 +98,7 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     output <- input
 ```
 
-## <a name="async"></a>Zaman Uyumsuz
+## <a name="async"></a>Eş
 `async` iş akışı kullanılabilir, ancak sonucun bir `Task`döndürmesi gerekir. Bu, `Async.StartAsTask`ile yapılabilir, örneğin:
 
 ```fsharp
@@ -287,7 +287,7 @@ Yollar `#load` yönergesine `.fsx` dosyanızın konumuyla görelidir.
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [F# Kılavuzu](/dotnet/articles/fsharp/index)
+* [F#Rehberi](/dotnet/articles/fsharp/index)
 * [Azure İşlevleri için En İyi Uygulamalar](functions-best-practices.md)
 * [Azure İşlevleri geliştirici başvurusu](functions-reference.md)
 * [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)

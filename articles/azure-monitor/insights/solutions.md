@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663004"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360908"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 İzleme çözümleri, belirli bir uygulama veya hizmetin işlemine ek Öngörüler sağlamak için Azure 'daki hizmetlerden yararlanır. Bu makalede, Azure 'daki çözümleri izleme hakkında kısa bir genel bakış ve bunları kullanma ve yükleme hakkındaki ayrıntılar sunulmaktadır.
@@ -28,7 +28,7 @@ Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme ç
 ## <a name="use-monitoring-solutions"></a>İzleme çözümlerini kullanma
 Çalışma alanında yüklü her bir çözümün kutucuğunu görüntülemek için Azure Izleyici 'de **genel bakış** sayfasını açın. 
 
-1. [Azure Portal](https://ms.portal.azure.com) gidin. **İzleme**araması yapın ve seçin.
+1. [Azure portalına](https://ms.portal.azure.com) gidin. **İzleme**araması yapın ve seçin.
 1. **Öngörüler** menüsünde, **daha fazla**' yı seçin.
 1. Açılır liste kutusu ekranın en üstünde çalışma alanı ya da kutucuklar için kullanılan zaman aralığını değiştirmek için kullanın.
 1. Bir çözümün kutucuğuna tıklayarak toplanan verilerin daha ayrıntılı analizini içeren görünümünü açın.
@@ -40,7 +40,7 @@ Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme ç
 ## <a name="list-installed-monitoring-solutions"></a>Yüklü izleme çözümlerini Listele 
 Aboneliğinizde yüklü izleme çözümlerini listelemek için aşağıdaki yordamı kullanın.
 
-1. [Azure Portal](https://ms.portal.azure.com) gidin. **Çözümler**arayın ve seçin.
+1. [Azure portalına](https://ms.portal.azure.com) gidin. **Çözümler**arayın ve seçin.
 1. Tüm çalışma alanlarında yüklü çözümleri listelenmiştir. Çözümün adının ardından yüklendiği çalışma alanının adı gelir.
 1. Açılır liste kutusu ekranın en üstünde, abonelik veya kaynak grubuna göre filtrele için kullanın.
 

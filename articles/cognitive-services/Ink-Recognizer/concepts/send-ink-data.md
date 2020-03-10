@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274483"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393095"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Mürekkep Tanıma API’sine mürekkep verisi gönderme 
 
 Dijital mürekkep oluşturma, el yazısı ve çizim gibi girdilerin dijital sunumunun yapılmasını sağlayan teknolojilere başvurur. Bu, genellikle ekran kalemi gibi giriş cihazlarının hareketlerini yakalayan bir çizim tablası kullanılarak elde edilir. Cihazlar zengin dijital mürekkep oluşturma deneyimleri sunmaya devam ederken yapay zeka ve makine öğrenimi, yazılı metin ve şekillerin tüm bağlamlarda tanınmasını sağlar. Mürekkep tanıyıcı API 'SI mürekkep vuruşları göndermenizi ve bunlarla ilgili ayrıntılı bilgi almanızı sağlar. 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Mürekkep tanıyıcı API 'SI ile OCR Hizmetleri
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Ink tanıyıcı API ve OCR Hizmetleri karşılaştırması
 
 Mürekkep tanıyıcı API 'SI, optik karakter tanıma (OCR) kullanmaz. OCR Hizmetleri, el yazısı ve metin tanıma sağlamak için görüntülerden piksel verilerini işler. Bu bazen çevrimdışı tanıma olarak adlandırılır. Bunun yerine, mürekkep tanıyıcı API 'SI, giriş cihazı kullanıldığı için yakalanan dijital mürekkep konturu verileri gerektirir. Dijital mürekkep verilerini bu şekilde işlemek, OCR Hizmetleri ile karşılaştırıldığında daha doğru tanıma sonuçları üretebilir. 
 

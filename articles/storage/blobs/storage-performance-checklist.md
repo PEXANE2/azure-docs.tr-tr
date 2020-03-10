@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749224"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393218"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -25,19 +25,19 @@ Azure depolama kapasitesi, işlem hızı ve bant genişliği için ölçeklenebi
 
 Bu makale, blob Storage uygulamanızı geliştirirken izleyebileceğiniz bir denetim listesi halinde performans için kanıtlanmış uygulamaları düzenler.
 
-| Bitti | Kategori | Tasarımı ile ilgili dikkat edilmesi gerekenler |
+| Yapıldığını | Kategori | Tasarımı ile ilgili dikkat edilmesi gerekenler |
 | --- | --- | --- |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Uygulamanızı en fazla depolama hesabı sayısından daha fazla kullanmak üzere tasarlayabilmeniz gerekebilir mi?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Kapasite ve işlem sınırlarına yaklaşmaktan kaçınıyorsunuz musunuz?](#capacity-and-transaction-targets) |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Aynı anda tek bir bloba erişen çok sayıda istemci var mı?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Uygulamanız tek bir blob için ölçeklenebilirlik hedefleri içinde kalıyor mu?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Bölümleme |[Adlandırma kuralınızın daha iyi yük dengelemesini sağlamak üzere tasarlandı mı?](#partitioning) |
-| &nbsp; |Networking (Ağ İletişimi) |[İstemci tarafı cihazlarda gereken performansa ulaşmak için yeterli yüksek bant genişliği ve düşük gecikme süresi var mı?](#throughput) |
-| &nbsp; |Networking (Ağ İletişimi) |[İstemci tarafı cihazların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
-| &nbsp; |Networking (Ağ İletişimi) |[İstemci uygulaması, depolama hesabıyla aynı bölgede mi?](#location) |
+| &nbsp; |Ağ |[İstemci tarafı cihazlarda gereken performansa ulaşmak için yeterli yüksek bant genişliği ve düşük gecikme süresi var mı?](#throughput) |
+| &nbsp; |Ağ |[İstemci tarafı cihazların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
+| &nbsp; |Ağ |[İstemci uygulaması, depolama hesabıyla aynı bölgede mi?](#location) |
 | &nbsp; |Doğrudan istemci erişimi |[Azure Storage 'a doğrudan erişim sağlamak için paylaşılan erişim imzaları (SAS) ve çıkış noktaları arası kaynak paylaşımı (CORS) kullanıyor musunuz?](#sas-and-cors) |
-| &nbsp; |Önbelleğe Alma |[Uygulamanızın önbelleğe alınması sık erişilen ve nadiren değiştirilen verilerinize mı sahip?](#reading-data) |
-| &nbsp; |Önbelleğe Alma |[Uygulamanız, güncelleştirmeleri istemcide önbelleğe alarak ve daha sonra bunları daha büyük kümelere karşıya yükleyerek toplu olarak güncelleştirir mı?](#uploading-data-in-batches) |
+| &nbsp; |Önbelleğe alma |[Uygulamanızın önbelleğe alınması sık erişilen ve nadiren değiştirilen verilerinize mı sahip?](#reading-data) |
+| &nbsp; |Önbelleğe alma |[Uygulamanız, güncelleştirmeleri istemcide önbelleğe alarak ve daha sonra bunları daha büyük kümelere karşıya yükleyerek toplu olarak güncelleştirir mı?](#uploading-data-in-batches) |
 | &nbsp; |.NET yapılandırması |[En iyi performans için .NET Core 2,1 veya üstünü mi kullanıyorsunuz?](#use-net-core) |
 | &nbsp; |.NET yapılandırması |[İstemcinizi yeterli sayıda eşzamanlı bağlantı kullanacak şekilde yapılandırdınız mı?](#increase-default-connection-limit) |
 | &nbsp; |.NET yapılandırması |[.NET uygulamaları için, .NET 'i yeterli sayıda iş parçacığı kullanacak şekilde yapılandırdınız mı?](#increase-minimum-number-of-threads) |
@@ -115,7 +115,7 @@ Bu tür işlemlerin sıklığını azaltmak için bazı en iyi yöntemleri izley
   
 - Azure depolama 'da kullanılan bölümleme şeması hakkında daha fazla bilgi için bkz. [Azure Storage: güçlü tutarlılığı olan yüksek oranda kullanılabilir bir bulut depolama hizmeti](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
 
-## <a name="networking"></a>Networking (Ağ İletişimi)
+## <a name="networking"></a>Ağ
 
 Uygulamanın fiziksel ağ kısıtlamalarının performans üzerinde önemli bir etkisi olabilir. Aşağıdaki bölümlerde, kullanıcıların karşılaşabileceği bazı sınırlamalar açıklanır.  
 
@@ -123,7 +123,7 @@ Uygulamanın fiziksel ağ kısıtlamalarının performans üzerinde önemli bir 
 
 Bant genişliği ve ağ bağlantısının kalitesi, aşağıdaki bölümlerde açıklandığı gibi uygulama performansı açısından önemli rolleri oynar.
 
-#### <a name="throughput"></a>İşleme
+#### <a name="throughput"></a>Aktarım hızı
 
 Bant genişliği için genellikle bu sorun istemcinin yeteneklerine yöneliktir. Daha büyük Azure örneklerinin NIC 'Leri daha fazla kapasiteye sahip olduğundan, tek bir makineden daha yüksek ağ sınırlarına ihtiyaç duyuyorsanız daha büyük bir örnek veya daha fazla VM kullanmayı düşünmelisiniz. Azure depolama 'yı şirket içi bir uygulamadan erişiyorsanız, aynı kural geçerlidir: istemci cihazının ağ yeteneklerini ve Azure depolama konumuna ağ bağlantısını anlayın ve bunları gerektiği gibi geliştirebilirsiniz veya uygulamanın özellikleri içinde çalışması.
 
@@ -151,7 +151,7 @@ Genellikle, bir Web tarayıcısı, başka bir etki alanına yazma işlemleri gib
   
 Hem SAS hem de CORS, Web uygulamanızda gereksiz yükün oluşmasını önlemenize yardımcı olabilir.  
 
-## <a name="caching"></a>Önbelleğe Alma
+## <a name="caching"></a>Önbelleğe alma
 
 Önbelleğe alma, performans açısından önemli bir rol oynar. Aşağıdaki bölümlerde, önbelleğe alma en iyi yöntemleri ele alınmaktadır.
 

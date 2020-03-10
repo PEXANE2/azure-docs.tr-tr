@@ -1,5 +1,5 @@
 ---
-title: Bilişsel hizmetler kapsayıcı görüntüsü etiketleri
+title: Bilişsel Hizmetler kapsayıcı görüntüsü etiketleri
 titleSuffix: Azure Cognitive Services
 description: Tüm bilişsel hizmet kapsayıcısı resim etiketlerinin kapsamlı bir listesi.
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.topic: reference
 ms.date: 11/18/2019
 ms.author: dapine
 ms.openlocfilehash: 0d8c7a36582c30975f3a408a2ea6e95d39e560ef
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173747"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390825"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri
 
@@ -449,7 +449,7 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | `1.1.007360001-amd64-preview` | |
 | `1.1.006770001-amd64-preview` | |
 
-## <a name="sentiment-analysis"></a>Duygu Analizi
+## <a name="sentiment-analysis"></a>Yaklaşım Analizi
 
 [Yaklaşım Analizi][ta-se] kapsayıcı görüntüsü `mcr.microsoft.com` kapsayıcı kayıt defteri genel konumunda bulunabilir. `azure-cognitive-services` deposu içinde bulunur ve `sentiment`olarak adlandırılır. Tam kapsayıcı görüntü adı, `mcr.microsoft.com/azure-cognitive-services/sentiment`.
 

@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi için işleri görüntüleme ve yönetme | Microsoft Docs
-description: StorSimple cihaz Yöneticisi hizmeti işler dikey penceresinde ve bunu son, geçerli ve zamanlanmış yedekleme işleri izlemek için nasıl kullanılacağını açıklar.
+description: StorSimple Aygıt Yöneticisi hizmet Işleri dikey penceresini ve en son, geçerli ve zamanlanmış yedekleme işlerini izlemek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,77 +15,77 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 462f8dafdffa7ee01e6ccf7945a1abfdff90db42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720698"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395860"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>(Güncelleştirme 3 ve üzeri) işleri görüntüleme ve yönetme için StorSimple cihaz Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>İşleri görüntülemek ve yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 ve üstü)
 
 ## <a name="overview"></a>Genel Bakış
-**İşleri** dikey penceresini görüntülemek için tek bir Yönetim Portalı sağlar ve StorSimple cihaz Yöneticisi hizmetinize bağlı cihazlarda başlatılan işleri yönetme. Birden çok cihaza yönelik zamanlanmış, çalışan, tamamlandı, iptal edilen ve başarısız işleri görüntüleyebilirsiniz. Sonuçları bir tablo biçiminde gösterilir.
+**İşler** dikey penceresi, storsimple Aygıt Yöneticisi hizmetinize bağlı cihazlarda başlatılan işleri görüntülemek ve yönetmek için tek bir merkezi Portal sağlar. Birden çok cihaz için zamanlanmış, çalışan, tamamlanmış, iptal edilmiş ve başarısız işleri görüntüleyebilirsiniz. Sonuçlar tablolu biçimde görüntülenir.
 
-![İşleri dikey penceresi](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+![İşler dikey penceresi](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
-Alanlarını filtreleyerek, ilgilenen işleri hızlıca bulabilirsiniz:
+İlgilendiğiniz işleri, şu gibi alanlarda filtreleyerek hızlı bir şekilde bulabilirsiniz:
 
-* **Durum** – işleri başarılı oldu, devam ediyor, iptal edildi, başarısız, iptal etme veya başarılı olan hataları olabilir.
-* **Zaman aralığı** – işleri filtrelenebilir göre tarih ve saat aralığı. Son 1 saat, son son 30 gün, geçtiğimiz yıl veya özel tarih son 7 gün 24 saat aralıktır.
-* **Tür** – iş türü olabilir zamanlanmış yedekleme, el ile yedekleme, geri yükleme yedeği toplu kopyalama, birim kapsayıcılarını Devret, yerel olarak sabitlenmiş birim oluşturma, birimi değiştirme, güncelleştirmeleri yüklemek, destek günlükleri toplayın ve bulut Gereci oluşturma.
-* **Cihazları** – işleri başlatılan hizmetinize bağlanan bir cihazdaki belirli.
+* **Durum** – işler devam ediyor, başarılı, iptal edilebilir, başarısız, iptal edilebilir veya hatalarla başarılı olabilir.
+* **Zaman aralığı** : işler tarih ve saat aralığına göre filtrelenebilir. Aralıklar 1 saat, son 24 saat, son 7 gün, son 30 gün, geçmiş yıl veya özel tarih.
+* **Tür** – iş türü zamanlanmış yedekleme, el ile yedekleme, yedekleme, yedekleme, birim kopyalama, birim kapsayıcılarının yükünü devretme, yerel olarak sabitlenmiş birim oluşturma, birim değiştirme, güncelleştirme yükleme, destek günlükleri toplama ve bulut gereci oluşturma olabilir.
+* **Cihazlar** – işler hizmetinize bağlı belirli bir cihazda başlatılır.
   
-Filtrelenen işler, ardından aşağıdaki öznitelikleri temel alarak tabloda verilmiştir:
+Filtrelenmiş işler daha sonra aşağıdaki özniteliklere göre tablo halinde ayarlanır:
   
-* **Adı** – zamanlanmış yedekleme, yedekleme, yedekleme geri yükleme, kopyalama toplu başarısız birim kapsayıcılarının yükü el ile yerel olarak sabitlenmiş birim oluştur, birimi değiştirme, güncelleştirmeleri yükleyin, destek günlüklerini Topla veya Bulut Gereci oluşturma.
-* **Durum** – çalışan, tamamlandı, iptal edildi, başarısız, iptal etme veya hatalarla tamamlandı.
-* **Varlık** – işleri bir birim, bir yedekleme İlkesi veya bir cihaz ile ilişkili olabilir. Örneğin, zamanlanmış bir yedekleme işi bir yedekleme ilkesiyle ilişkili iken bir kopyalama işi bir birim ile ilişkilidir. Bir cihaz iş olağanüstü durum kurtarma (DR) veya geri yükleme işleminin sonucu olarak oluşturulur.
-* **Cihaz** – iş başlatıldı cihazın adı.
-* **Başlangıç zamanı** – işin başlama zamanı.
-* **Süre** – işi tamamlamak için gereken süre.
+* **Ad** – zamanlanmış yedekleme, el ile yedekleme, geri yükleme yedekleme, birim kopyalama, birim kapsayıcılarının yükünü devretme, yerel olarak sabitlenmiş birim oluşturma, birim değiştirme, güncelleştirme yükleme, destek günlükleri toplama veya bulut gereci oluşturma.
+* **Durum** – çalışıyor, tamamlandı, iptal edildi, başarısız, iptal edildi veya hatalarla tamamlandı.
+* **Varlık** – işler bir birimle, bir yedekleme ilkesiyle veya bir cihazla ilişkilendirilebilir. Örneğin, bir kopyalama işi bir birimle ilişkilendirilir, ancak zamanlanan bir yedekleme işi bir yedekleme ilkesiyle ilişkilendirilir. Bir cihaz işi, olağanüstü durum kurtarma (DR) veya geri yükleme işlemi sonucu olarak oluşturulur.
+* **Device** : işin başlatıldığı cihazın adı.
+* **Başlangıç tarihi** – işin başlatıldığı zaman.
+* **Süre** : işi tamamlaması için gereken süre.
 
-İşlerin listesini her 30 saniyede bir yenilenir.
+İşlerin listesi, her 30 saniyede bir yenilenir.
 
-Bu sayfada, iş ile ilgili aşağıdaki eylemleri gerçekleştirebilirsiniz:
+Bu sayfada işle ilgili aşağıdaki işlemleri gerçekleştirebilirsiniz:
 
 * İş ayrıntılarını görüntüleme
-* Bir işi iptal et
+* İşi iptal et
 
 ## <a name="view-job-details"></a>İş ayrıntılarını görüntüleme
 Herhangi bir işin ayrıntılarını görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-view-job-details"></a>İş ayrıntılarını görüntülemek için
-1. StorSimple cihaz Yöneticisi hizmetinize gidin ve ardından **işleri**.
+1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve ardından **işler**' e tıklayın.
 
-2. İçinde **işleri** dikey penceresinde, ilgilendiğiniz bir sorgu uygun filtreleri ile çalıştırarak işi görüntüle. Çalışan veya işleri iptal tamamlandı için arama yapabilirsiniz.
+2. **İşler** dikey penceresinde ilgilendiğiniz iş (ler) i uygun filtrelerle bir sorgu çalıştırarak görüntüleyin. Tamamlanmış, çalışan veya iptal edilmiş işleri arayabilirsiniz.
 
     ![İş dikey penceresi](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
-2. Seçin ve bir işi tıklayın.
+2. Bir işi seçin ve tıklayın.
 
     ![İş dikey penceresi](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
-3. İş ayrıntıları dikey penceresinde, durum, Ayrıntılar, süresi istatistikleri ve veri istatistiklerini görüntüleyebilirsiniz.
+3. İş ayrıntıları dikey penceresinde durumu, ayrıntıları, zaman istatistiklerini ve veri istatistiklerini görüntüleyebilirsiniz.
    
     ![İş ayrıntıları](./media/storsimple-8000-manage-jobs-u2/jobs4.png)
 
-## <a name="cancel-a-job"></a>Bir işi iptal et
-Bir çalışan işi iptal etmek için aşağıdaki adımları gerçekleştirin.
+## <a name="cancel-a-job"></a>İşi iptal et
+Çalışan bir işi iptal etmek için aşağıdaki adımları gerçekleştirin.
 
 > [!NOTE]
-> Birim türünü değiştirmek için bir birim değiştirme ya da bir birim, genişletme gibi bazı işleri iptal edilemez.
+> Birim türünü değiştirmek veya bir birimi genişletmek için bir birimi değiştirme gibi bazı işler iptal edilemez.
 
 
-### <a name="to-cancel-a-job"></a>Bir işi iptal etmek
-1. Üzerinde **işleri** sayfasında, uygun filtreleri ile çalışan bir sorgu iptal etmek istediğiniz çalışan işler görüntüleyebilirsiniz. İşi seçin.
+### <a name="to-cancel-a-job"></a>Bir işi iptal etmek için
+1. **İşler** sayfasında, uygun filtrelerle bir sorgu çalıştırarak iptal etmek istediğiniz çalışan işleri görüntüleyin. İşi seçin.
 
-2. Sağ tıklayın ve bağlam menüsünü açmak için seçilen projede **iptal**.
+2. Seçili işe sağ tıklayıp bağlam menüsünü çağırın ve **iptal**' e tıklayın.
 
     ![İş ayrıntıları](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
-3. Onayınız istendiğinde **Evet**’e tıklayın. Bu işi iptal edildi.
+3. Onayınız istendiğinde **Evet**’e tıklayın. Bu iş iptal edildi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bilgi edinmek için nasıl [, StorSimple yedekleme ilkelerini yönetme](storsimple-8000-manage-backup-policies-u2.md).
-* Bilgi edinmek için nasıl [StorSimple Cihazınızı yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md).
+* [StorSimple yedekleme ilkelerinizi yönetmeyi](storsimple-8000-manage-backup-policies-u2.md)öğrenin.
+* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
 

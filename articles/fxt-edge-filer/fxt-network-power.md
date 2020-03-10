@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550953"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395423"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Öğretici: Azure FXT Edge Filer düğümüne ağ bağlantıları oluşturma ve güç sağlama
 
@@ -25,7 +25,7 @@ Bu öğreticide şunları öğreneceksiniz:
 > * Kabloları kablo yönetimi ARM (CMA) aracılığıyla yönlendirme
 > * Gücü çıkarılan cihaza bağlama ve şirket içinde açma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Azure FXT Edge Filer 'ın standart bir ekipman rafıyla yüklenmesi gerekir. CMA 'nın, dosyalayıcı düğümüne yüklenmesi gerekir. 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17bfbc29f38230dc2533c9ccc63cdee4fc776717
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3407214d332cbd333fe019948d254e01d71197fb
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512117"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672241"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Öğretici: Yönetilen etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
@@ -32,7 +32,7 @@ Bu öğreticide, yönetilen bir ortamdaki Active Directory etki alanına katılm
 
 Yönetilen bir ortam, [sorunsuz çoklu oturum açma](../hybrid/how-to-connect-sso.md)ile [Parola karması eşitlemesi (PHS)](../hybrid/whatis-phs.md) ya da [geçişli kimlik doğrulaması (PTA)](../hybrid/how-to-connect-pta.md) aracılığıyla dağıtılabilir. Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırmanızı gerektirmez.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Hibrit Azure AD'ye katılımı yapılandırma
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Katılmış cihazları doğrulama
 > * Sorun giderme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, bu makalelerle ilgili bilgi sahibi olduğunuz varsayılır:
 
@@ -66,7 +66,7 @@ Karma Azure AD katılımı, cihazların kuruluşunuzun ağının içinden aşağ
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (veya sorunsuz SSO kullanmayı planlıyorsanız)
 
-Kuruluşunuz, bir giden proxy üzerinden internet erişimi gerektiriyorsa, Microsoft, Windows 10 bilgisayarlarını Azure AD 'ye cihaz kaydı için etkinleştirmek üzere [Web proxy otomatik bulma (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) uygulamasını önerir. WPAD yapılandırma ve yönetme sorunlarıyla karşılaşırsanız bkz. [otomatik algılama sorunlarını giderme](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
+Kuruluşunuz, bir giden proxy üzerinden internet erişimi gerektiriyorsa, Microsoft, Windows 10 bilgisayarlarını Azure AD 'ye cihaz kaydı için etkinleştirmek üzere [Web proxy otomatik bulma (WPAD)](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) uygulamasını önerir. WPAD yapılandırma ve yönetme sorunlarıyla karşılaşırsanız bkz. [otomatik algılama sorunlarını giderme](/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
 WPAD kullanmıyorsanız ve bilgisayarınızda proxy ayarlarını yapılandırmanız gerekiyorsa, bunu Windows 10 1709 ' den başlayarak yapabilirsiniz. Daha fazla bilgi için bkz. [Grup İlkesi nesnesi (GPO) kullanarak WinHTTP ayarlarını yapılandırma](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
@@ -154,7 +154,7 @@ Azure AD bulut kimlik doğrulama yönteminiz olarak [PHS](../hybrid/whatis-phs.m
 
 Windows alt düzey cihazlarını kaydettirmek için kuruluşların [Windows 10 olmayan bilgisayarlar Için Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554)yüklemesi gerekir. Windows 10 olmayan bilgisayarlar için Microsoft Workplace Join, Microsoft Indirme Merkezi ' nde bulunabilir.
 
-Paketi [Microsoft uç noktası Configuration Manager](https://docs.microsoft.com/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, `quiet` parametresiyle standart sessiz yükleme seçeneklerini destekler. Configuration Manager geçerli dalı, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
+Paketi [Microsoft uç noktası Configuration Manager](/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, `quiet` parametresiyle standart sessiz yükleme seçeneklerini destekler. Configuration Manager geçerli dalı, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
 
 Yükleyici, kullanıcı bağlamında çalışan sistemde zamanlanmış bir görev oluşturur. Görev, Kullanıcı Windows 'da oturum açtığında tetiklenir. Görev, Azure AD ile kimlik doğrulamasından geçtikten sonra Kullanıcı kimlik bilgilerini kullanarak cihazı Azure AD ile sessizce birleştirir.
 
@@ -170,7 +170,7 @@ Hizmet ayrıntılarını denetlemek için **Get-MSolDevice** cmdlet 'ini kulland
 
 **Hizmet ayrıntılarını denetlemek için**:
 
-1. Windows PowerShell'i yönetici olarak açın.
+1. Windows PowerShell 'i yönetici olarak açın.
 1. Azure kiracınıza bağlanmak için `Connect-MsolService` girin.  
 1. `get-msoldevice -deviceId <deviceId>` yazın.
 1. **Enabled** değerinin **True** olarak ayarlandığını doğrulayın.

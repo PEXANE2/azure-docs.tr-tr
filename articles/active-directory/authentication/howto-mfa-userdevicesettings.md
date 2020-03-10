@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07845bb5b742b1bcfbb22d260457e9a8e16edab6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425281"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378033"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Bulutta Azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme
 
@@ -32,8 +32,8 @@ Yönetici kimlik doğrulama Yöneticisi rolünü atadıkları için kullanıcıl
 
 ![Azure portal kimlik doğrulama yöntemlerini yönetin](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **Tüm kullanıcılar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol tarafta, **kullanıcılar** > **tüm kullanıcıları** **Azure Active Directory** > seçin.
 1. Üzerinde bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemleri**' ni seçin.
    - **Parola sıfırlama** , kullanıcının parolasını sıfırlayıp bir sonraki oturum açma sırasında değiştirilmesi gereken geçici bir parola atacaktır.
    - **MFA 'Yı yeniden kaydettirmek** için, Kullanıcı bir sonraki sefer oturum açtığında yenı bir MFA kimlik doğrulama yöntemi kurmak istemeleri gerekir.
@@ -45,8 +45,8 @@ Bu ayar, bir kullanıcının oluşturduğu tüm uygulama parolalarını siler. B
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Kullanıcı var olan uygulama parolalarını silme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **Tüm kullanıcılar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. Sol tarafta, **kullanıcılar** > **tüm kullanıcıları** **Azure Active Directory** > seçin.
 3. Sağ tarafta, araç çubuğunda **Multi-Factor Authentication** ' yi seçin. Multi-Factor Authentication sayfası açılır.
 4. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
 5. **Kullanıcı ayarlarını yönet**' i seçin.

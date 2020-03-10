@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598196"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362424"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure dosyaları hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -179,12 +179,12 @@ Azure **dosyaları Azure Active Directory Domain Services (azure AD DS) kimlik d
 * <a id="ad-support-rest-apis"></a>
  **, dizin/dosya NTFS ACL 'Lerini almayı/ayarlamayı/kopyalamayı desteklemeye YÖNELIK REST API 'ler var mı?**
 
-    Evet, [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (veya üzeri) REST API kullanılırken dizinler veya dosyalar Için NTFS ACL 'LERINI alan REST API 'leri destekliyoruz.
+    Evet, [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (veya üzeri) REST API kullanılırken dizinler veya dosyalar Için NTFS ACL 'LERINI alan REST API 'leri destekliyoruz.
 
 * <a id="ad-vm-subscription"></a>
 **farklı bir abonelik kapsamındaki BIR VM 'den Azure AD kimlik bilgileriyle Azure dosyalarına erişebilir miyim?**
 
-    Dosya paylaşımının dağıtıldığı abonelik, VM 'nin etki alanına katılmış olduğu Azure AD Domain Services dağıtımıyla aynı Azure AD kiracısıyla ilişkili ise, Azure dosyalarına aynı Azure AD kimlik bilgilerini kullanarak erişebilirsiniz. Kısıtlama, abonelikte değil, ilişkili Azure AD kiracısında yer alır.    
+    Dosya paylaşımının dağıtıldığı abonelik, VM 'nin etki alanına katılmış olduğu Azure AD Domain Services dağıtımıyla aynı Azure AD kiracısıyla ilişkili ise, Azure dosyalarına aynı Azure AD kimlik bilgilerini kullanarak erişebilirsiniz. Kısıtlama, abonelikte değil, ilişkili Azure AD kiracısında yer alır.
     
 * <a id="ad-support-subscription"></a>
 , Azure **dosyalarını azure AD DS veya ad kimlik doğrulamasını, dosya paylaşımının ilişkilendirildiği birincil kiracıdan farklı bir Azure AD kiracısı ile etkinleştirebilir miyim?**

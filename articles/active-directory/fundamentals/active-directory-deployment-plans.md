@@ -1,6 +1,6 @@
 ---
-title: Dağıtım planları-Azure Active Directory | Microsoft Docs
-description: Birçok Azure Active Directory özelliği dağıtma hakkında uçtan uca rehberlik.
+title: Dağıtım planı - Azure Active Directory | Microsoft Docs
+description: Birçok Azure Active Directory özellikleri dağıtmak nasıl uçtan uca yönergeler.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,11 +13,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17e6708225262349d56c6e261895882e9c31677f
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558521"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378232"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
@@ -71,7 +71,7 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 | Özellik | Açıklama|
 | -| - |
 | [Çoklu oturum açma](https://aka.ms/deploymentplans/sso)| Çoklu oturum açma, kullanıcılarınızın yalnızca bir kez oturum açarken iş yapması gereken uygulamalara ve kaynaklara erişmesine yardımcı olur. Oturum açtıktan sonra, kimlik bilgilerini ikinci bir kez girmek zorunda kalmadan iç uygulamalara Microsoft Office, SalesForce 'a kadar gidebilirler. |
-| [Erişim paneli](https://aka.ms/deploymentplans/accesspanel)| Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın. |
+| [Erişim paneli](https://aka.ms/deploymentplans/accesspanel)| Kullanıcılarınızın bulmak ve tüm uygulamalara erişmek için basit bir hub'ı sunar. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Karma senaryoları dağıtma

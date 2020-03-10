@@ -10,11 +10,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930407"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373545"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation 'da kimlik bilgisi varlıkları
 
@@ -36,11 +36,11 @@ Azure PowerShell az Module için aşağıdaki tablodaki cmdlet 'ler Windows Powe
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Otomasyon kimlik bilgisini kaldırır. |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Mevcut bir Otomasyon kimlik bilgisinin özelliklerini ayarlar. |
 
-## <a name="activities"></a>Olaylar
+## <a name="activities"></a>Etkinlikler
 
 Aşağıdaki tablodaki etkinlikler bir runbook ve DSC yapılandırmalarında kimlik bilgilerine erişmek için kullanılır.
 
-| Olaylar | Açıklama |
+| Etkinlikler | Açıklama |
 |:--- |:--- |
 | Get-AutomationPSCredential |Runbook veya DSC yapılandırmasında kullanılacak bir kimlik bilgisi alır. Bir [System. Management. Automation. PSCredential](/dotnet/api/system.management.automation.pscredential) nesnesi döndürür. |
 

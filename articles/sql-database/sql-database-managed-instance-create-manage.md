@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823413"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360392"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL veritabanı yönetilen örnekleri için yönetilen API başvurusu
 
@@ -72,7 +72,7 @@ Azure PowerShell ile yönetilen örnekler oluşturup yönetmek için aşağıdak
 Yönetilen örnek oluşturulduktan sonra örnek veritabanı oluşturmak ve yönetmek için aşağıdaki T-SQL komutlarını kullanın. Azure portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio) [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)kullanarak bu komutları verebilirsiniz. [Visual Studio Code](https://code.visualstudio.com/docs)veya BIR Azure SQL veritabanı sunucusuna bağlanabilecek ve Transact-SQL komutlarını geçirebilirler.
 
 > [!TIP]
-> Microsoft Windows üzerinde SQL Server Management Studio kullanarak yönetilen bir örneği yapılandırıp bu sunucuya bağlanmanız gerektiğini gösteren hızlı başlangıç için bkz. [hızlı başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak Için Azure VM 'Yi yapılandırma](sql-database-managed-instance-configure-vm.md) ve [hızlı başlangıç: Şirket içinden Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırın](sql-database-managed-instance-configure-p2s.md).
+> Microsoft Windows üzerinde SQL Server Management Studio kullanarak yönetilen bir örneğe yapılandırma ve bağlanma yapmanız gerektiğini gösteren hızlı başlangıç için bkz. [hızlı başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak Için Azure VM 'Yi yapılandırma](sql-database-managed-instance-configure-vm.md) ve [hızlı başlangıç: Şirket IÇINDEN bir Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma](sql-database-managed-instance-configure-p2s.md).
 > [!IMPORTANT]
 > Transact-SQL ' y i kullanarak yönetilen bir örnek oluşturamaz veya silemezsiniz.
 

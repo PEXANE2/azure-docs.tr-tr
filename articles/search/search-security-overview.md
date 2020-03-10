@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978600"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396343"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Bilişsel Arama güvenlik ve veri gizliliği
 
@@ -102,7 +102,7 @@ Aşağıdaki tabloda, Azure Bilişsel Arama 'de izin verilen işlemler özetlenm
 
 | İşlem | İzinler |
 |-----------|-------------------------|
-| Hizmet oluşturun | Azure abonelik sahibi|
+| Hizmet oluşturma | Azure abonelik sahibi|
 | Hizmeti ölçeklendirme | Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan  |
 | Hizmet silme | Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan |
 | Hizmette nesne oluşturun, değiştirin, silin: <br>Dizinler ve bileşen bölümleri (çözümleyici tanımları, Puanlama profilleri, CORS seçenekleri dahil), Dizin oluşturucular, veri kaynakları, eş anlamlılar, öneri araçları. | Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan  |

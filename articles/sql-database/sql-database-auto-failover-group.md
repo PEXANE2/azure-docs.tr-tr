@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
 ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116198"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357792"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -31,7 +31,7 @@ Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında d
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, SQL veritabanı sunucusundaki veya yönetilen örnekteki veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeyle sonuçlanır. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 
-- [Azure Portal](sql-database-implement-geo-distributed-database.md)
+- [Azure portalında](sql-database-implement-geo-distributed-database.md)
 - [Azure CLı: yük devretme grubu](scripts/sql-database-add-single-db-to-failover-group-cli.md)
 - [PowerShell: yük devretme grubu](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - [REST API: yük devretme grubu](/rest/api/sql/failovergroups).
@@ -390,7 +390,7 @@ Aşağıdaki sınırlamaları unutmayın:
 
 Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğrafi çoğaltma de Azure PowerShell ve REST API kullanılarak programlı bir şekilde yönetilebilir. Aşağıdaki tablolarda kullanılabilen komut kümesi açıklanır. Etkin coğrafi çoğaltma, [Azure SQL veritabanı REST API](https://docs.microsoft.com/rest/api/sql/) ve [Azure PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/overview)dahil olmak üzere yönetim için Azure Resource Manager API 'ler kümesi içerir. Bu API 'Ler, kaynak gruplarının kullanımını gerektirir ve rol tabanlı güvenliği (RBAC) destekler. Erişim rollerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. [Azure rol tabanlı Access Control](../role-based-access-control/overview.md).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Tek veritabanları ve elastik havuzlarla SQL veritabanı yük devretmesini yönetme
 
@@ -413,7 +413,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 | [Switch-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |İkincil örneğe yük devretme grubunun yük devretmesini tetikler|
 | [Remove-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Yük devretme grubunu kaldırır|
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Tek veritabanları ve elastik havuzlarla SQL veritabanı yük devretmesini yönetme
 

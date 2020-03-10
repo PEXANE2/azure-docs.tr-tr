@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564049"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358421"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory tümleştirme çalışma zamanını izleme  
 **Integration Runtime** , farklı ağ ortamlarında çeşitli veri tümleştirme özellikleri sağlamak için Azure Data Factory tarafından kullanılan işlem altyapısıdır. Data Factory tarafından sunulan üç tür tümleştirme çalışma zamanı vardır:
@@ -55,7 +55,7 @@ Aşağıdaki tabloda bir Azure tümleştirme çalışma zamanının olası durum
 | Durum | Açıklamalar/senaryolar | 
 | ------ | ------------------ |
 | Online | Azure tümleştirme çalışma zamanı çevrimiçi ve kullanılabilir hale gelmiştir. | 
-| Offline | Azure Integration Runtime bir iç hata nedeniyle çevrimdışı. |
+| Çevrimdışı | Azure Integration Runtime bir iç hata nedeniyle çevrimdışı. |
 
 ## <a name="self-hosted-integration-runtime"></a>Kendinden konak tümleştirme çalışma zamanı
 Bu bölüm Get-AzDataFactoryV2IntegrationRuntime cmdlet 'i tarafından döndürülen özelliklerle ilgili açıklamalar sağlar. 
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma z
 | Durum | Açıklama |
 | ------ | ------------------ | 
 | Online | Düğüm Data Factory hizmetine bağlandı. |
-| Offline | Düğüm çevrimdışı. |
+| Çevrimdışı | Düğüm çevrimdışı. |
 | Yükseltme | Düğüm otomatik olarak güncelleştiriliyor. |
 | Sınırlı | Bir bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya bir kimlik bilgisi eşitleme sorunuyla kaynaklanıyor olabilir. |
 | Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır. |
@@ -108,7 +108,7 @@ Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma z
 | ------ | ----------- | 
 | Kayıt gerekiyor | Henüz şirket içinde barındırılan tümleştirme çalışma zamanına hiçbir düğüm kaydedilmemiş. |
 | Online | Tüm düğümler çevrimiçi. |
-| Offline | Çevrimiçi düğüm yok. |
+| Çevrimdışı | Çevrimiçi düğüm yok. |
 | Sınırlı | Bu şirket içinde barındırılan tümleştirme çalışma zamanındaki düğümlerin hepsi sağlıklı durumda değil. Bu durum, bazı düğümlerin kapatılmış olabileceğini belirten bir uyarıdır. Bu durum, dağıtıcı/çalışan düğümündeki bir kimlik bilgisi eşitleme sorunundan kaynaklanıyor olabilir. |
 
 Ayrıntılı şirket içinde barındırılan tümleştirme çalışma zamanı özelliklerini ve cmdlet 'inin yürütülmesi sırasında anlık görüntü değerlerini içeren JSON yükünü getirmek için **Get-AzDataFactoryV2IntegrationRuntimeMetric** cmdlet 'ini kullanın.

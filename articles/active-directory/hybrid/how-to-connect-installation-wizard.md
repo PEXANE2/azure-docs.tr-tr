@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290928"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376365"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect eşitleme: Yükleme sihirbazını ikinci kez çalıştırma
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Eşitleme Azure AD Connect: Yükleme Sihirbazı 'nı ikinci kez çalıştırma
 Azure AD Connect Yükleme Sihirbazı 'nı ilk kez çalıştırdığınızda yüklemenizi nasıl yapılandıracağınızı adım adım gösterir. Yükleme sihirbazını yeniden çalıştırırsanız, bakım seçenekleri sunulur.
 
 >[!IMPORTANT]
@@ -47,7 +47,7 @@ Görevlerden birini seçin ve devam etmek için **İleri** 'yi tıklatın.
 >
 >
 
-## <a name="view-current-configuration"></a>Geçerli yapılandırmayı görüntüleme
+## <a name="view-current-configuration"></a>Geçerli yapılandırmayı görüntüle
 Bu seçenek, şu anda yapılandırılmış seçeneklerinizin hızlı bir görünümünü sağlar.
 
 ![Tüm seçeneklerin listesini ve bunların durumunu içeren sayfa](./media/how-to-connect-installation-wizard/viewconfig.png)
@@ -68,14 +68,14 @@ Bu seçenek, eşitleme yapılandırmasında değişiklik yapmak için kullanıl�
 * Farklı ormandaki nesneler için katılım yöntemini değiştirin.
 * Grup tabanlı filtrelemeyi etkinleştirin.
 
-## <a name="refresh-directory-schema"></a>Dizin şemasını yenile
+## <a name="refresh-directory-schema"></a>Dizin şemasını Yenile
 Bu seçenek, şemayı şirket içi AD DS ormanlarınızın birinde değiştirdiyseniz kullanılır. Örneğin, Exchange 'i yüklemiş veya cihaz nesneleriyle bir Windows Server 2012 şemasına yükseltmişseniz olabilirsiniz. Bu durumda, şemayı AD DS ' dan yeniden okumak ve önbelleğini güncellemek için Azure AD Connect istemeniz gerekir. Bu eylem eşitleme kurallarını da yeniden oluşturur. Exchange şemasını eklerseniz, örnek olarak, Exchange için eşitleme kuralları yapılandırmaya eklenir.
 
 Bu seçeneği belirlediğinizde, yapılandırmanızda bulunan tüm dizinler listelenir. Varsayılan ayarı koruyabilir ve tüm ormanları yenileyebilir veya bazılarının seçimini kaldırabilirsiniz.
 
 ![Ortamdaki tüm dizinlerin listesini içeren sayfa](./media/how-to-connect-installation-wizard/refreshschema.png)
 
-## <a name="configure-staging-mode"></a>Hazırlama modunu yapılandırma
+## <a name="configure-staging-mode"></a>Hazırlama modunu Yapılandır
 Bu seçenek, sunucusunda hazırlama modunu etkinleştirmenizi ve devre dışı bırakmanızı sağlar. Hazırlama modu ve bunların nasıl kullanıldığı hakkında daha fazla bilgi, [işlemler](how-to-connect-sync-staging-server.md)içinde bulunabilir.
 
 Bu seçenek, hazırlama özelliğinin etkin mi yoksa devre dışı mı olduğunu gösterir:  
@@ -94,5 +94,5 @@ Bu seçenek hakkında daha fazla bilgi için bkz. [Kullanıcı oturumu açma](pl
 
 **Genel Bakış konuları**
 
-* [Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
+* [Azure AD Connect eşitleme: eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bc1f40760c1602d81da042bf6909e44a540d35de
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612164"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390670"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi geliştirme araçları
 
@@ -28,7 +28,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geli
 | Nedir?   | Genel amaçlı IDE      |
 | Desteklenen DSVM sürümleri      | Windows: Visual Studio 2017, Windows 2019 (Önizleme): Visual Studio 2019      |
 | Tipik kullanımları      | Yazılım geliştirme    |
-| DSVM 'de nasıl yapılandırılır ve yüklenir?      | Veri bilimi iş yükü (Python ve R araçları), Azure iş yükü (Hadoop, Data Lake), Node.js, SQL Server araçlarını, [Visual Studio Code için Azure Machine Learning](https://github.com/Microsoft/vs-tools-for-ai)    |
+| DSVM 'de nasıl yapılandırılır ve yüklenir?      | Veri bilimi Iş yükü (Python ve R araçları), Azure iş yükü (Hadoop, Data Lake), Node. js, SQL Server araçları, [Visual Studio Code için Azure Machine Learning](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Kullanma ve çalıştırma      | Masaüstü kısayolu (`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`). Grafiksel olarak, masaüstü simgesini veya **Başlat** menüsünü kullanarak Visual Studio 'yu açın. Programlar için arama yapın (Windows logo tuşu + S) ve ardından **Visual Studio**. Buradan, Python, R ve Node. js gibi C#dillerde projeler oluşturabilirsiniz.   |
 | DSVM 'deki ilgili araçlar      |     Visual Studio kodu, RStudio, Juno  |
 

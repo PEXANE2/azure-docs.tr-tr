@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975321"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389769"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Cihaz sağlama hizmeti cihaz kavramlarını IoT Hub
 
@@ -42,7 +42,7 @@ Donanım güvenlik modülü veya HSM, cihaz gizli dizileri için güvenli, donan
 
 Cihaz gizli dizileri de yazılımda (bellek) depolanabilir, ancak bir HSM 'den daha az güvenli bir depolama biçimidir.
 
-## <a name="registration-id"></a>Kayıt Kimliği
+## <a name="registration-id"></a>Kayıt KIMLIĞI
 
 Kayıt KIMLIĞI, cihaz sağlama hizmetinde bir cihazı benzersiz şekilde tanımlamak için kullanılır. Cihaz KIMLIĞI, sağlama hizmeti [kimlik kapsamında](#id-scope)benzersiz olmalıdır. Her cihazın bir kayıt KIMLIĞI olmalıdır. Kayıt KIMLIĞI alfasayısal, büyük/küçük harfe duyarsız ve iki nokta, nokta, alt çizgi ve kısa çizgi gibi özel karakterler içerebilir.
 

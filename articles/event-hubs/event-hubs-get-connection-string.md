@@ -10,16 +10,16 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 744151a1ce8cde630e26c17ccf06569ebd0efb61
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771011"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946086"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Bir Event hubs'ı bağlantı dizesini alma
 
-Event Hubs'ı kullanmak için bir Event Hubs ad alanı oluşturmanız gerekir. Ad alanı, birden fazla olay hub 'ı veya Kafka konu başlığı için kapsam kapsayıcısı olur. Bu ad benzersiz bir veren [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Bir ad alanı oluşturduktan sonra Event Hubs ile iletişim kurmak için gerekli bağlantı dizesini edinebilirsiniz.
+Event Hubs'ı kullanmak için bir Event Hubs ad alanı oluşturmanız gerekir. Ad alanı, birden fazla olay hub 'ı veya Kafka konu başlığı için kapsam kapsayıcısı olur. Bu ad alanı size benzersiz bir [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)sağlar. Bir ad alanı oluşturduktan sonra Event Hubs ile iletişim kurmak için gerekli bağlantı dizesini edinebilirsiniz.
 
 Azure Event Hubs için bağlantı dizesi içinde gömülü aşağıdaki bileşenlere sahiptir,
 
@@ -32,7 +32,7 @@ Bağlantı dizesi şablonu şu şekilde görünür
 Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 ```
 
-Örnek bir bağlantı dizesi aşağıdaki gibi görünmelidir `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
+Örnek bir bağlantı dizesi şöyle görünebilir `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
 
 Bu makalede, bağlantı dizesini edinme çeşitli şekillerde sizi yönlendirir.
 
@@ -55,7 +55,7 @@ Bu makalede, bağlantı dizesini edinme çeşitli şekillerde sizi yönlendirir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aşağıda gösterildiği gibi, belirli bir ilke/kural adı için bağlantı dizesini almak üzere [Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) kullanabilirsiniz:
+Aşağıda gösterildiği gibi, belirli bir ilke/kural adı için bağlantı dizesini almak üzere [Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey) komutunu kullanabilirsiniz:
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey

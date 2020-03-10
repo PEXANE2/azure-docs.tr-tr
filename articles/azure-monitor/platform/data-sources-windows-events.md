@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394414"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows olay günlüğü veri kaynakları
 Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından Windows aracılarını kullanarak veri toplamaya yönelik en yaygın [veri kaynaklarından](agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
@@ -46,7 +46,7 @@ Windows olay kayıtları bir tür **olaya** sahiptir ve aşağıdaki tabloda bul
 | EventCategory |Etkinliğin kategorisi. |
 | EventData |Ham biçimdeki tüm olay verileri. |
 | Even |Olay sayısı. |
-| eventLevel |Olayın önem derecesi, sayısal biçimde. |
+| EventLevel |Olayın önem derecesi, sayısal biçimde. |
 | EventLevelName |Metin biçimindeki olayın önem derecesi. |
 | EventLog |Olayın toplandığı olay günlüğünün adı. |
 | ParameterXml |XML biçimindeki olay parametresi değerleri. |

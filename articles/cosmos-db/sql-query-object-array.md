@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870930"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387004"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB diziler ve nesnelerle çalışma
 
@@ -26,7 +26,7 @@ Aşağıdaki örnekte gösterildiği gibi diziler oluşturabilirsiniz:
     FROM Families f
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [
@@ -52,7 +52,7 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
-## <a id="Iteration"></a>Yineleme
+## <a id="Iteration"></a>Mesinde
 
 SQL API 'si, FROM kaynağında [ın anahtar sözcüğüyle](sql-query-keywords.md#in) eklenen yeni bir yapı ile JSON dizileri üzerinde yineleme desteği sağlar. Aşağıdaki örnekte:
 
@@ -61,7 +61,7 @@ SQL API 'si, FROM kaynağında [ın anahtar sözcüğüyle](sql-query-keywords.m
     FROM Families.children
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [
@@ -97,7 +97,7 @@ Sonraki sorgu, `Families` kapsayıcısında `children` üzerinde yineleme gerçe
     FROM c IN Families.children
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [
@@ -130,7 +130,7 @@ Aşağıdaki örnekte gösterildiği gibi, her bir dizi girişi üzerinde daha f
     WHERE c.grade = 8
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [{
@@ -145,7 +145,7 @@ Ayrıca, bir dizi yinelemesinin sonucunu toplayabilirsiniz. Örneğin, aşağıd
     FROM child IN Families.children
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [

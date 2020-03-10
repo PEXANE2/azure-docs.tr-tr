@@ -11,11 +11,11 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602576"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355039"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -297,12 +297,12 @@ Web Hizmetleri ayrıca belirteç tabanlı kimlik doğrulamasını destekler, anc
 
 ### <a name="token-based-web-service-authentication"></a>Belirteç tabanlı Web hizmeti kimlik doğrulaması
 
-Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, kullanıcılar, Web hizmetine erişmek için bir Azure Machine Learning JSON Web Token sunmalıdır. Belirtecin, belirtilen bir zaman çerçevesinde sonra süresi dolar ve çağrı yapmaya devam etmek için yenilenmesi gerekir.
+Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, kullanıcılar, Web hizmetine erişmek için bir Azure Machine Learning JSON Web Token sunmalıdır. Belirtilen sürenin sonunda belirteç geçersiz olur ve çağrı yapmaya devam edilebilmesi için yenilenmesi gerekir.
 
 * Belirteç kimlik doğrulaması, Azure Kubernetes hizmetine dağıtırken **Varsayılan olarak devre dışıdır** .
 * Azure Container Instances ' a dağıtırken belirteç kimlik doğrulaması **desteklenmez** .
 
-Belirteç kimlik doğrulamasını denetlemek için, bir dağıtım oluştururken veya güncelleştirdiğinizde `token_auth_enabled` parametresini kullanın.
+Belirteç kimlik doğrulamasını denetlemek için dağıtım oluşturma veya güncelleştirme aşamasında `token_auth_enabled` parametresini kullanın.
 
 Belirteç kimlik doğrulaması etkinleştirilirse, bir JSON Web Token (JWT) almak için `get_token` yöntemini ve belirtecin sona erme süresini kullanabilirsiniz:
 
@@ -312,7 +312,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Belirtecin `refresh_by` zamanından sonra yeni bir belirteç istemeniz gerekir. Belirteçleri Python SDK 'sının dışında yenilemeniz gerekiyorsa, bir seçenek, daha önce anlatıldığı gibi, `service.get_token()` çağrısını düzenli olarak yapmak için hizmet sorumlusu kimlik doğrulamasıyla REST API kullanmaktır.
+> Belirtecin `refresh_by` süresi dolduktan sonra yeni bir belirteç istemeniz gerekir. Belirteçleri Python SDK 'sının dışında yenilemeniz gerekiyorsa, bir seçenek, daha önce anlatıldığı gibi, `service.get_token()` çağrısını düzenli olarak yapmak için hizmet sorumlusu kimlik doğrulamasıyla REST API kullanmaktır.
 >
 > Azure Machine Learning çalışma alanınızı Azure Kubernetes hizmet kümeniz ile aynı bölgede oluşturmanızı önemle öneririz. 
 >

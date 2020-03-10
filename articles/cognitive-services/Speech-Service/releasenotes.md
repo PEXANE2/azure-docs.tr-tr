@@ -3,22 +3,48 @@ title: Sürüm notları-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşma hizmeti Özellik sürümlerinin, geliştirmelerin, hata düzeltmelerinin ve bilinen sorunların çalışan bir günlüğü.
 services: cognitive-services
-author: oscholz
-manager: nitinme
+author: brianem
+manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: oliversc
+ms.date: 02/25/2020
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168155"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394793"
 ---
 # <a name="release-notes"></a>Sürüm notları
+## <a name="speech-sdk-1100-2020-february-release"></a>Konuşma SDK 1.10.0:2020-Şubat yayını
+
+**Yeni özellikler**
+ - Python 'un yeni 3,8 sürümünü desteklemek için Python paketleri eklendi.
+ - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 desteği (C++, C#, Java, Python).
+   > [!NOTE] 
+   > Müşterilerin OpenSSL 'yi [Bu yönergelere](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)göre yapılandırması gerekir.
+ - DeARM32 ve Ubuntu için Linux desteği.
+ - DialogServiceConnector artık BotFrameworkConfig üzerinde isteğe bağlı "bot ID" parametresini destekliyor. Bu parametre, tek bir Azure konuşma kaynağı ile birden çok doğrudan hat konuşma 'nın kullanımına izin verir. Belirtilen parametre olmadan, varsayılan bot (doğrudan hat konuşma kanalı yapılandırma sayfası tarafından belirlendiği şekilde) kullanılacaktır.
+ - DialogServiceConnector artık bir SpeechActivityTemplate özelliğine sahip. Bu JSON dizesinin içeriği, konuşma tanıma gibi olaylara yanıt olarak otomatik olarak oluşturulan etkinlikler dahil olmak üzere doğrudan hat konuşma bot 'a ulaşan tüm etkinliklerde desteklenen çok çeşitli alanları önceden doldurmak için kullanılır.
+ - Şimdi TTS, kimlik doğrulaması için abonelik anahtarını kullanır, birleştirici oluşturulduktan sonra ilk sende ilk bayt gecikme süresini azaltır.
+ - Ortalama% 18,6 bir sözcük hata oranı azalmasıyla ilgili 19 yerel ayar için konuşma tanıma modelleri güncelleştirildi (ES-ES, es-MX, fr-CA, fr-FR, It-IT, ja-JP, ko-KR, PT-BR, zh-CN, zh-HK,, NB-NO, Fi-FL, ru-RU, PL-PL, CA-ES, zh-TW, TH-, Yeni modeller, dikte etme, çağrı merkezi dökümü ve video dizin oluşturma senaryoları dahil olmak üzere birden çok etki alanı arasında önemli geliştirmeler getirir.
+
+**Hata düzeltmeleri**
+ - Sohbet 'in JAVA API 'Lerinde düzgün bir şekilde beklemediği düzeltilen hata düzeltildi 
+ - Xamarin [GitHub sorunu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363) için Android x86 öykünücü düzeltilmesi
+ - Eksik Ekle (Get | Özellik yöntemlerini AudioConfig olarak ayarla
+ - Bağlantı başarısız olduğunda audioDataStream 'in durdurulabileceği bir TTS hatasını çözme
+ - Bölge olmadan bir uç nokta kullanılması, konuşma çevirmeni için USP hatalarının oluşmasına neden olur
+ - Evrensel Windows uygulamalarında KIMLIK oluşturma artık uygun bir benzersiz GUID algoritması kullanıyor; daha önce ve yanlışlıkla büyük etkileşimler kümesi üzerinde çarpışmaları üreten bir saplaması uygulamasına varsayılan olarak ayarlanır.
+ 
+ **Örnekler**
+ - [Unity mikrofon ve gönderim modu akışı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone) ile konuşma SDK 'sını kullanmak için Unity örneği
+
+**Diğer değişiklikler**
+ - [Linux için OpenSSL yapılandırma belgeleri güncelleştirildi](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Konuşma SDK 1.9.0:2020-Ocak sürümü
 

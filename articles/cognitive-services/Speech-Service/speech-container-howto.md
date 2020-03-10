@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367766"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390828"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Konuşma hizmeti kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -73,25 +73,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 Aşağıdaki tabloda, her bir konuşma kapsayıcısı için kaynakların en düşük ve önerilen ayırması açıklanmaktadır.
 
-# <a name="speech-to-texttabstt"></a>[Konuşmayı metne dönüştürme](#tab/stt)
+# <a name="speech-to-text"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
 | Kapsayıcı | Minimum | Önerilen |
 |-----------|---------|-------------|
 | Konuşmayı metne dönüştürme | 2 çekirdek, 2 GB bellek | 4 çekirdek, 4 GB bellek |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
 | Kapsayıcı | Minimum | Önerilen |
 |-----------|---------|-------------|
 | Özel Konuşma Tanıma metin | 2 çekirdek, 2 GB bellek | 4 çekirdek, 4 GB bellek |
 
-# <a name="text-to-speechtabtts"></a>[Metin okuma](#tab/tts)
+# <a name="text-to-speech"></a>[Metin okuma](#tab/tts)
 
 | Kapsayıcı | Minimum | Önerilen |
 |-----------|---------|-------------|
 | Metin okuma | 1 çekirdek, 2 GB bellek | 2 çekirdek, 3 GB bellek |
 
-# <a name="custom-text-to-speechtabctts"></a>[Özel metin okuma](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Özel metin okuma](#tab/ctts)
 
 | Kapsayıcı | Minimum | Önerilen |
 |-----------|---------|-------------|
@@ -110,25 +110,25 @@ Aşağıdaki tabloda, her bir konuşma kapsayıcısı için kaynakların en dü�
 
 Konuşma için kapsayıcı görüntüleri aşağıdaki Container Registry kullanılabilir.
 
-# <a name="speech-to-texttabstt"></a>[Konuşmayı metne dönüştürme](#tab/stt)
+# <a name="speech-to-text"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
 | Kapsayıcı | Depo |
 |-----------|------------|
 | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
 | Kapsayıcı | Depo |
 |-----------|------------|
 | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
-# <a name="text-to-speechtabtts"></a>[Metin okuma](#tab/tts)
+# <a name="text-to-speech"></a>[Metin okuma](#tab/tts)
 
 | Kapsayıcı | Depo |
 |-----------|------------|
 | Metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[Özel metin okuma](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Özel metin okuma](#tab/ctts)
 
 | Kapsayıcı | Depo |
 |-----------|------------|
@@ -140,7 +140,7 @@ Konuşma için kapsayıcı görüntüleri aşağıdaki Container Registry kullan
 
 ### <a name="docker-pull-for-the-speech-containers"></a>Konuşma kapsayıcıları için Docker çekme
 
-# <a name="speech-to-texttabstt"></a>[Konuşmayı metne dönüştürme](#tab/stt)
+# <a name="speech-to-text"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Konuşmadan metne kapsayıcı için Docker çekme
 
@@ -169,7 +169,7 @@ Aşağıdaki etiket, biçiminin bir örneğidir:
 
 **Konuşmadan metne** kapsayıcının desteklenen tüm yerel ayarları Için lütfen [konuşmadan metne görüntü etiketleri](../containers/container-image-tags.md#speech-to-text)bölümüne bakın.
 
-# <a name="custom-speech-to-texttabcstt"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Özel Konuşma Tanıma metin kapsayıcısı için Docker Pull
 
@@ -182,7 +182,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 > [!NOTE]
 > Özel konuşma kapsayıcıları için `locale` ve `voice` kapsayıcı tarafından alınan özel model tarafından belirlenir.
 
-# <a name="text-to-speechtabtts"></a>[Metin okuma](#tab/tts)
+# <a name="text-to-speech"></a>[Metin okuma](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Metin okuma kapsayıcısı için Docker çekme
 
@@ -214,7 +214,7 @@ Desteklenen tüm yerel ayarlar ve **metin okuma** kapsayıcısının karşılık
 > [!IMPORTANT]
 > *Standart bir metinden konuşmaya* http gönderisi oluştururken, [konuşma birleştirme biçimlendirme dili (SSML)](speech-synthesis-markup.md) iletisi, `name` özniteliği olan bir `voice` öğesi gerektirir. Değer, ["kısa ad"](language-support.md#standard-voices)olarak da bilinen karşılık gelen kapsayıcı yerel ayarı ve sestir. Örneğin, `latest` etiketinde `en-US-JessaRUS`bir ses adı olacaktır.
 
-# <a name="custom-text-to-speechtabctts"></a>[Özel metin okuma](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Özel metin okuma](#tab/ctts)
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Özel metin okuma kapsayıcısı için Docker Pull
 
@@ -240,7 +240,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{Endpoint_URI}` ve `{API_Key}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın. `docker run` komutuna ek [örnekler](speech-container-configuration.md#example-docker-run-commands) de mevcuttur.
 
-# <a name="speech-to-texttabstt"></a>[Konuşmayı metne dönüştürme](#tab/stt)
+# <a name="speech-to-text"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
 *Konuşmaya metin* kapsayıcısını çalıştırmak için aşağıdaki `docker run` komutunu yürütün.
 
@@ -259,7 +259,7 @@ Bu komut:
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
-# <a name="custom-speech-to-texttabcstt"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
 *Özel konuşma tanıma metin* kapsayıcısı özel bir konuşma modeline bağlıdır. Özel bir model [özel konuşma portalı](https://speech.microsoft.com/customspeech)kullanılarak [eğitilmiş](how-to-custom-speech-train-model.md) olmalıdır.
 
@@ -311,7 +311,7 @@ Bu komut:
 * Özel model daha önce indirildiyse, `ModelId` yok sayılır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
-# <a name="text-to-speechtabtts"></a>[Metin okuma](#tab/tts)
+# <a name="text-to-speech"></a>[Metin okuma](#tab/tts)
 
 *Metin okuma* kapsayıcısını çalıştırmak için aşağıdaki `docker run` komutunu yürütün.
 
@@ -330,7 +330,7 @@ Bu komut:
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
-# <a name="custom-text-to-speechtabctts"></a>[Özel metin okuma](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Özel metin okuma](#tab/ctts)
 
 *Özel metin okuma* kapsayıcısı özel bir ses modeline dayanır. Özel bir modelin [özel ses portalı](https://aka.ms/custom-voice-portal)kullanılarak [eğitilli](how-to-custom-voice-create-voice.md) olması gerekir. Kapsayıcıyı çalıştırmak için özel ses **MODELI kimliği** gereklidir. Özel ses portalının **eğitim** sayfasında bulunabilir. Özel ses portalından **eğitim** sayfasına gidin ve modeli seçin.
 <br>

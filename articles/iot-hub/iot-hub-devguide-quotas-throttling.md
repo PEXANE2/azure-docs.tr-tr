@@ -8,11 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396511"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -26,7 +26,7 @@ Her IoT hub'ı belirli bir katmanda belirli bir birim sayısıyla sağlanır. Ka
 
 Katman Ayrıca IoT Hub tüm işlemlerde zorladığı azaltma sınırlarını belirler.
 
-### <a name="iot-plug-and-play"></a>IoT Tak ve Kullan
+### <a name="iot-plug-and-play"></a>IoT Tak Çalıştır
 
 Genel Önizleme sırasında IoT Tak ve Kullan cihazları Arabirim başına ayrı mesajlar gönderir ve bu da ileti kotasından doğru olarak sayılan ileti sayısını artırabilir.
 

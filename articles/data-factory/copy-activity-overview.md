@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754468"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357263"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -125,12 +125,12 @@ Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kaps
 
 | Özellik | Açıklama | Gerekli mi? |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği için `Copy` olarak ayarlayın | Evet |
-| inputs | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Evet |
-| outputs | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Evet |
-| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Evet |
-| source | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
-| sink | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
+| type | Kopyalama etkinliği için `Copy` olarak ayarlayın | Yes |
+| inputs | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Yes |
+| outputs | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Yes |
+| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Yes |
+| source | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
+| sink | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
 | translator | Kaynak havuzu için açıkça bir sütun eşlemelerini belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | Hayır |
 | dataIntegrationUnits | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance.md#data-integration-units). | Hayır |
 | parallelCopies | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance.md#parallel-copy). | Hayır |
@@ -179,7 +179,7 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri de ayn�
 | rowsCopied | Havuza kopyalanmış satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim) |
 | rowsSkipped | Atlanan uyumsuz satır sayısı. `enableSkipIncompatibleRow` true olarak ayarlayarak, uyumsuz satırların atlanmasını etkinleştirebilirsiniz. | Int64 değeri (birim) |
 | copyDuration | Kopya çalıştırmasının süresi. | Int32 değeri, saniye cinsinden |
-| Aktarım hızı | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
+| üretilen iş | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri (birim yok) |
 | sinkPeakConnections| Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı.| Int32 değeri (birim yok) |
 | sqlDwPolyBase | Veriler SQL veri ambarı 'na kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |

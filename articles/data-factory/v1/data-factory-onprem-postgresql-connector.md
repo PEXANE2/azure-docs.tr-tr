@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929061"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387575"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL 'ten veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -44,7 +44,7 @@ PostgreSQL veritabanı bir Azure IaaS VM 'sinde barındırıldığında bile ağ
 ## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
 PostgreSQL veritabanına bağlanmak üzere Veri Yönetimi ağ geçidinin, 2.0.12 ve 3.1.9 arasında sürümü ile [PostgreSQL Için Ngpsql veri sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=282716) 'Nı veri yönetimi ağ geçidi ile aynı sistemde yükleme yapın. PostgreSQL sürüm 7,4 ve üzeri desteklenir.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak şirket içi PostgreSQL veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
@@ -55,7 +55,7 @@ Farklı araçlar/API 'Ler kullanarak şirket içi PostgreSQL veri deposundan ver
   - .NET API’si
   - REST API
 
-    Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
+    Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -70,12 +70,12 @@ Aşağıdaki bölümler, bir PostgreSQL veri deposuna özgü Data Factory varlı
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda, PostgreSQL bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliği: **OnPremisesPostgreSql** olarak ayarlanmalıdır |Yes |
 | sunucu |PostgreSQL sunucusunun adı. |Yes |
-| veritabanı |PostgreSQL veritabanının adı. |Yes |
-| schema |Veritabanındaki şemanın adı. Şema adı büyük/küçük harfe duyarlıdır. |Hayır |
+| database |PostgreSQL veritabanının adı. |Yes |
+| şema |Veritabanındaki şemanın adı. Şema adı büyük/küçük harfe duyarlıdır. |Hayır |
 | authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
 | kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
@@ -86,7 +86,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 TypeProperties bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable** türündeki (PostgreSQL veri kümesini içeren) veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | tableName |Bağlı hizmetin başvurduğu PostgreSQL veritabanı örneğindeki tablonun adı. TableName, büyük/küçük harfe duyarlıdır. |Hayır ( **Relationalsource** **sorgusu** belirtilmişse) |
 
@@ -97,7 +97,7 @@ Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her e
 
 Kaynak, **Relationalsource** türünde olduğunda (PostgreSQL içeren), typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: `"query": "select * from \"MySchema\".\"MyTable\""`. |Hayır ( **veri kümesi** **TableName** belirtilmişse) |
 
@@ -304,7 +304,7 @@ Verileri PostgreSQL 'e taşırken, PostgreSQL türünden .NET türüne aşağıd
 
 | PostgreSQL veritabanı türü | PostgresSQL diğer adları | .NET Framework türü |
 | --- | --- | --- |
-| abstime | |Datetime |
+| abstime | |Tarih saat |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], dize |
@@ -316,23 +316,23 @@ Verileri PostgreSQL 'e taşırken, PostgreSQL türünden .NET türüne aşağıd
 | karakter farklı [(n)] |varchar [(n)] |Dize |
 | CID | |Dize |
 | CIDR | |Dize |
-| daire | |Byte [], dize |
-| date | |Datetime |
+| üstünde | |Byte [], dize |
+| date | |Tarih saat |
 | daterange | |Dize |
-| çift duyarlık |float8 |Double |
+| çift duyarlık |float8 |çift |
 | inet | |Byte [], dize |
 | ıntarry | |Dize |
 | int4range | |Dize |
 | int8range | |Dize |
 | integer |int, int4 |Int32 |
 | Aralık [Fields] [(p)] | |Timespan |
-| json | |Dize |
+| nesnesinde | |Dize |
 | jsonb | |Byte[] |
-| çizgi | |Byte [], dize |
+| satır | |Byte [], dize |
 | lseg | |Byte [], dize |
 | macaddr | |Byte [], dize |
-| money | |Decimal |
-| sayısal [(p, s)] |Decimal [(p, s)] |Decimal |
+| money | |Ondalık |
+| sayısal [(p, s)] |Decimal [(p, s)] |Ondalık |
 | numrange | |Dize |
 | oid | |Int32 |
 | yol | |Byte [], dize |

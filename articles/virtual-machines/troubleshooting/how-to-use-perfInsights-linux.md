@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394772"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights’ı kullanma
 
@@ -69,7 +69,7 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
   - Sürücü bilgileri
 
 - Donanım
-  - PCI aygıtları [`*`]
+  - PCI cihazları [`*`]
 
 - Süreçler ve bellek
   - İşlem listesi (görev adı, kullanılan bellek, açılan dosyalar)
@@ -103,7 +103,7 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
   - /var/log/Cloud-init-output.log
   - /var/logtecu-Manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[uzantı klasörü]/\*günlük\*
+  - /var/log/Azure/[uzantı klasörü]/\*log\*
   - /var/seçenek/Microsoft/omsconfig/omsconfig.log
   - /var/seçenek/Microsoft/omsagent/log/omsagent.log
   - /etc/waagentnconfig
@@ -125,12 +125,12 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
 
 - Aşağıdaki dağıtımlar Şu anda destekleniyor:
 
-    | Dağıtım               | Version                                         |
+    | Dağıtım               | Sürüm                                         |
     |----------------------------|-------------------------------------------------|
     | Oracle Linux sunucusu        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Market Image)|
     | CentOS                     | 6,5 [`*`], 7,6                                    |
     | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
-    | Ubuntu                     | 14.04, 16.04 18.04                               |
+    | Ubuntu                     | 14.04, 16.04, 18.04                               |
     | Debian                     | 8, 9, 10 [`*`]                                    |
     | SLES                       | 12 SP4 [`*`]                                      |
     |                            |                                                   |
@@ -173,7 +173,7 @@ Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Dosyasını içeren `perfinsights.py` klasöre gidin ve ardından kullanılabilir komut satırı parametrelerini görüntülemek `perfinsights.py` için çalıştırın.
+2. `perfinsights.py` dosyasını içeren klasöre gidin ve ardından kullanılabilir CommandLine parametrelerini görüntülemek için `perfinsights.py` çalıştırın.
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -205,11 +205,11 @@ Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
     >
     >Microsoft ile etkin bir destek biletine sahipseniz ve üzerinde çalıştığınız destek mühendisinin isteği başına Perfinsıghts çalıştırıyorsanız, **-s veya--support-Request** seçeneğini kullanarak destek bileti numarasını sağladığınızdan emin olun.
 
-Çalıştırma tamamlandığında, hiçbir çıkış klasörü belirtilmediği sürece yeni bir tar dosyası Perfinsıghts ile aynı klasörde görünür. Dosyanın adı **\_performancediagnostics yyyy-\_aa-gg hh-mm-ss-fff. tar. gz şeklindedir.** Bu dosyayı analiz için destek aracısına gönderebilir veya bulguları ve önerileri gözden geçirmek için raporu dosya içinde açabilirsiniz.
+Çalıştırma tamamlandığında, hiçbir çıkış klasörü belirtilmediği sürece yeni bir tar dosyası Perfinsıghts ile aynı klasörde görünür. Dosya adı **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz şeklindedir.** Bu dosyayı analiz için destek aracısına gönderebilir veya bulguları ve önerileri gözden geçirmek için raporu dosya içinde açabilirsiniz.
 
 ## <a name="review-the-diagnostics-report"></a>Tanılama raporunu gözden geçirin
 
-**\_Performancediagnostics yyyy-\_aa-gg hh-mm-ss-fff. tar. gz** dosyasında, perfinsıghts 'in bulgularını ayrıntılarıyla gösteren bir HTML raporu bulabilirsiniz. Raporu gözden geçirmek için **performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyasını genişletin ve ardından **perfinsıghts Report. html** dosyasını açın.
+**Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyası Içinde, Perfinsıghts 'in bulgularını ayrıntılarıyla gösteren bir HTML raporu bulabilirsiniz. Raporu gözden geçirmek için, **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyasını genişletin ve ardından **Perfinsıghts Report. html** dosyasını açın.
 
 ### <a name="overview-tab"></a>Genel Bakış sekmesi
 
@@ -254,4 +254,4 @@ Aşağıdaki ekran görüntüsünde, neler alabileceğinize benzer bir ileti gö
 
 Dosya aktarımı çalışma alanına erişmek için iletideki yönergeleri izleyin. Ek güvenlik için, ilk kullanımda parolanızı değiştirmeniz gerekir.
 
-Oturum açtıktan sonra, perfinsıghts tarafından toplanan **\_performancediagnostics yyyy-\_aa-gg hh-mm-ss-fff. tar. gz** dosyasını karşıya yüklemek için bir iletişim kutusu görürsünüz.
+Oturum açtıktan sonra, Perfinsıghts tarafından toplanan **Performancediagnostics\_yyyy-aa-gg\_hh-mm-ss-fff. tar. gz** dosyasını karşıya yüklemek için bir iletişim kutusu bulacaksınız.

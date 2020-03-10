@@ -1,6 +1,6 @@
 ---
-title: Azure IOT hub'ı X.509 CA güvenliğine genel bakış | Microsoft Docs
-description: Genel Bakış - X.509 sertifika yetkililerini kullanarak IOT hub'a cihazların kimliklerini doğrulamak nasıl.
+title: Azure IoT Hub X. 509.440 CA güvenliğine genel bakış | Microsoft Docs
+description: Genel Bakış-X. 509.440 sertifika yetkililerini kullanarak IoT Hub cihazları kimlik doğrulaması yapma.
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -9,79 +9,79 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257574"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382036"
 ---
-# <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA sertifikalarını kullanarak cihaz kimlik doğrulaması
+# <a name="device-authentication-using-x509-ca-certificates"></a>X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması
 
-Bu makalede, IOT hub'a bağlanan cihazların kimliklerini doğrulamak için X.509 sertifika yetkilisi (CA) sertifikaları kullanmayı açıklar.  Bu makalede şunları öğreneceksiniz:
+Bu makalede, IoT Hub bağlanan cihazların kimliğini doğrulamak için X. 509.440 sertifika yetkilisi (CA) sertifikalarının nasıl kullanılacağı açıklanır.  Bu makalede şunları öğreneceksiniz:
 
-* X.509 CA sertifikası alma
-* X.509 CA sertifikası IOT hub'ına kaydetme
-* X.509 CA sertifikalarını kullanarak cihazları oturum açma
-* X.509 CA imzalı cihazları nasıl doğrulanır
+* X. 509.440 CA sertifikası alma
+* IoT Hub için X. 509.952 CA sertifikasını kaydetme
+* X. 509.440 CA sertifikalarını kullanarak cihazları imzalama
+* X. 509.440 CA ile imzalanan cihazların kimliği nasıl doğrulanır
 
 ## <a name="overview"></a>Genel Bakış
 
-X.509 CA özelliği, bir sertifika yetkilisi (CA) kullanarak IOT hub'a cihaz kimlik doğrulaması sağlar. Büyük ölçüde ilk cihaz kayıt işlemi ve tedarik zinciri Lojistik cihaz üretim sırasında kolaylaştırır. [X.509 CA sertifikalarını kullanarak, bu makaledeki senaryoda değeri hakkında daha fazla bilgi edinin](iot-hub-x509ca-concept.md) cihaz kimlik doğrulaması için.  Aşağıdaki adımları neden mevcut açıklandığı gibi devam etmeden önce bu senaryo makaleyi okuyun etmenizi öneririz.
+X. 509.440 CA özelliği, bir sertifika yetkilisi (CA) kullanarak IoT Hub cihaz kimlik doğrulamasının yapılmasını sağlar. İlk cihaz kayıt sürecini büyük ölçüde basitleştirir ve cihaz üretimi sırasında lojistik zinciri sağlar. [Bu senaryo makalesinde, cihaz kimlik doğrulaması Için X. 509.440 CA sertifikalarının kullanılmasıyla ilgili değer hakkında daha fazla bilgi edinin](iot-hub-x509ca-concept.md) .  Bu senaryo, şu adımların neden olduğunu anlatan devam etmeden önce bu senaryo makalesini okumanızı öneririz.
 
 ## <a name="prerequisite"></a>Önkoşul
 
-X.509 CA özelliğini kullanarak bir IOT hub'ı hesabına sahip olmasını gerektirir.  [Bir IOT hub'ı örneği oluşturmayı](quickstart-send-telemetry-dotnet.md) zaten yoksa.
+X. 509.440 CA özelliğinin kullanılması için bir IoT Hub hesabınızın olması gerekir.  Henüz bir [IoT Hub örneği yoksa nasıl oluşturacağınızı öğrenin](quickstart-send-telemetry-dotnet.md) .
 
-## <a name="how-to-get-an-x509-ca-certificate"></a>X.509 CA sertifikası alma
+## <a name="how-to-get-an-x509-ca-certificate"></a>X. 509.440 CA sertifikası alma
 
-X.509 CA sertifika, cihazlarınızın her biri için sertifikaları zincirine üst kısmındaki içindir.  Satın alabilir veya nasıl kullanmak istediğinize bağlı olarak bir tane oluşturun.
+X. 509.440 CA sertifikası, cihazlarınızın her biri için Sertifika zincirinin en üstünde yer aldığı bir sertifikadır.  Bu uygulamayı nasıl kullanmak istediğinize bağlı olarak bir tane satın alabilir veya oluşturabilirsiniz.
 
-Üretim ortamı için ortak kök sertifika yetkilisinden bir X.509 CA sertifikası satın almanız önerilir. Kök CA'ın avantajı sahip bir CA sertifikası satın alma için cihazlarınızı yasallığı vouch için güvenilir bir üçüncü taraf olarak davranan. Üçüncü taraf ürünler veya hizmetler ile etkileşim kurmak için burada beklenen açık bir IOT ağının parçası olması için cihazlarınızı istiyorsanız bu seçeneği göz önünde bulundurun.
+Üretim ortamında, bir ortak kök sertifika yetkilisinden bir X. 509.440 CA sertifikası satın almanızı öneririz. CA sertifikasının satın alınması, cihazlarınızın yasallığı için güvenilir bir üçüncü taraf görevi gören kök CA 'nın avantajına sahiptir. Cihazlarınızı, üçüncü taraf ürün veya hizmetleriyle etkileşim kurması beklenen bir açık IoT ağının parçası olarak düşünüyorsanız bu seçeneği göz önünde bulundurun.
 
-Ayrıca, deneme veya kullanmak için otomatik olarak imzalanan X.509 CA kapalı IOT ağlar oluşturabilirsiniz.
+Ayrıca, deneme için otomatik olarak imzalanan bir X. 509.440 CA veya kapalı IoT ağlarında kullanım için de oluşturabilirsiniz.
 
-X.509 CA sertifikanızı almak, karşılık gelen özel anahtar sır tuttuğunuzdan emin olun ve korumalı bakılmaksızın her zaman.  Bu, güven X.509 CA kimlik doğrulama güven ilişkisi oluşturmak için gereklidir.
+X. 509.952 CA sertifikanızı nasıl edindiğinizden bağımsız olarak, karşılık gelen özel anahtar gizliliğini ve her zaman korunmasını sağlayın.  Bu, X. 509.440 CA kimlik doğrulamasında güven oluşturma güveninde gereklidir.
 
-Bilgi nasıl [otomatik olarak imzalanan bir sertifika oluşturmak](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), deneme boyunca bu özellik açıklaması için kullanabilirsiniz.
+Bu özellik açıklaması boyunca deneme için kullanabileceğiniz [kendinden imzalı BIR CA sertifikası oluşturmayı](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)öğrenin.
 
-## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Oturum cihazlara sertifika güven zinciri
+## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Cihazları sertifika güven zincirinde imzala
 
-X.509 CA sertifikası sahibi olan başka bir ara CA sırayla imzalayabilirsiniz ara CA şifreli olarak oturum açabilir ve bu şekilde kadar son ara CA bu işlem bir cihaz açarak sonlandırır. Art arda bir güven sertifikası zinciri bilinen bir sertifikalar zincirinden oluşur. Gerçek Hayatta bu cihazları imzalama doğru güven temsilci olarak yürütülür. Bu temsilci önemlidir, çünkü şifreli olarak değişken bir gözetim zinciri oluşturur ve imzalama anahtarları paylaşımı önler.
+X. 509.952 CA sertifikasının sahibi, başka bir ara CA 'yı açan bir ara CA 'yı şifreli olarak imzalayabilir ve bu nedenle son ara CA, bir cihazı imzalayarak bu işlemi sonlandırana kadar devam eder. Sonuç, bir sertifika güven zinciri olarak bilinen, basamaklı bir sertifika zinciridir. Gerçek hayatta bu, imzalama cihazları doğrultusunda güvenin temsili olarak oynatılır. Bu temsilciyi, bir gözetim şifreli olmayan değişken zinciri oluşturduğundan ve imzalama anahtarlarının paylaşılmasını önleyen için önemlidir.
 
-![img-Generic-CERT-chain-of-Trust](./media/generic-cert-chain-of-trust.png)
+![img-genel-CERT-güven zinciri](./media/generic-cert-chain-of-trust.png)
 
-(Bir yaprak sertifikası olarak da bilinir) cihaz sertifikası olmalıdır *konu adı* kümesine **cihaz kimliği** Azure IOT Hub'ında IOT cihaz kaydı sırasında kullanıldı. Bu ayar, kimlik doğrulaması için gereklidir.
+Cihaz Sertifikası (yaprak sertifikası da denir), IoT cihazını Azure IoT Hub kaydedilirken kullanılan **CIHAZ kimliğine** ayarlanmış *konu adına* sahip olmalıdır. Bu ayar kimlik doğrulaması için gereklidir.
 
-Buradan edinin nasıl [sertifikası zinciri oluşturmak](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) cihazları açarken bitti olarak.
+Cihazları imzalarken [bir sertifika zinciri oluşturma](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) hakkında bilgi edinin.
 
-## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>X.509 CA sertifikası IOT hub'ına kaydetme
+## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>IoT Hub için X. 509.952 CA sertifikasını kaydetme
 
-IOT hub'ına Burada, kayıt ve bağlantı sırasında aygıtlarınızın kimliğini doğrulamak için kullanılacak, X.509 CA sertifika kaydettirir.  X.509 CA sertifikası kaydetme sertifika dosyası karşıya yükleme ve kanıtını oluşturan iki adımlı bir işlemdir.
+Kayıt ve bağlantı sırasında cihazlarınızın kimliğini doğrulamak için kullanılacak olan IoT Hub X. 509.952 CA sertifikanızı kaydedin.  X. 509.440 CA sertifikasını kaydetmek, sertifika dosyası yükleme ve sahip olma kanıtını içeren iki adımlı bir işlemdir.
 
-Karşıya yükleme işlemi, sertifikanızı içeren bir dosyayı karşıya yüklemeyi kapsar.  Bu dosya, herhangi bir özel anahtara asla içermelidir.
+Karşıya yükleme işlemi, sertifikanızı içeren bir dosyayı karşıya yüklemeyi gerektirir.  Bu dosya asla hiçbir özel anahtar içermemelidir.
 
-Kavram kanıtı elinde adım şifreleme sınama ve IOT hub'ı arasındaki yanıt işlemi içerir.  Dijital sertifika içeriği genel ve bu nedenle, gizlice maruz kalabilir düşünüldüğünde, IOT hub'ı CA sertifikasını gerçekten sahip olmak ister misiniz?  Bu CA sertifikasının karşılık gelen özel anahtar ile oturum açmanız gerekir rastgele bir sınama oluşturarak bunu.  Özel anahtarı gizli ve korumalı yukarıda bıraktıysanız sonra yalnızca bu adımı tamamlamak için Bilgi Bankası sahip, önerilir. Özel anahtarların gizliliği, bu yöntem güvende kaynağıdır.  Sınama imzaladıktan sonra sonuçları içeren bir dosyayı karşıya yükleyerek bu adımı tamamlayın.
+Elinde bulunan adım kanıtı, siz ve IoT Hub arasında bir şifreleme sınaması ve yanıt işlemi içerir.  Bu, dijital sertifika içeriklerinin genel olduğu ve bu nedenle gizlice dinleyen saldırılarına açık olduğu için IoT Hub CA sertifikasına gerçekten sahip olduğunuz konusunda emin olmak istiyor.  CA sertifikasının karşılık gelen özel anahtarıyla imzalamanız gereken rastgele bir zorluk oluşturarak bunu yapması gerekir.  Özel anahtar gizli anahtarını koruduysanız ve daha önce önerdikleri gibi korunuyorsa, yalnızca siz bu adımı tamamlamaya yönelik bilgilere sahip olursunuz. Özel anahtarların gizliliği, bu yöntemdeki güvenin kaynağıdır.  Sınamayı imzaladıktan sonra, sonuçları içeren bir dosyayı karşıya yükleyerek bu adımı izleyin.
 
-Buradan edinin nasıl [CA sertifikanız kaydetme](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
+[CA sertifikanızı nasıl kaydedeceğinizi](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) öğrenin
 
-## <a name="how-to-create-a-device-on-iot-hub"></a>IOT Hub'ınızda bir cihaz oluşturma
+## <a name="how-to-create-a-device-on-iot-hub"></a>IoT Hub cihaz oluşturma
 
-Cihaz kimliğe bürünme kullanımını için bekleyebileceğiniz hangi cihazlar hakkında bilgi sağlamak, IOT hub'ı gerektirir.  Bu IOT Hub'ınızın cihaz kayıt defterinde bir cihaz girişi oluşturmanız gerekir.  Bu işlem, IOT hub'ı kullanırken otomatik [cihaz sağlama hizmeti](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/). 
+Cihaz kimliğe bürünmesi için IoT Hub, hangi cihazların beklendiğini bilmesini gerektirir.  Bunu, IoT Hub cihaz kayıt defterinde bir cihaz girişi oluşturarak yapabilirsiniz.  Bu işlem, IoT Hub [cihaz sağlama hizmeti](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/)kullanılırken otomatikleştirilir. 
 
-Buradan edinin nasıl [el ile bir cihaz IOT Hub oluşturma](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
+[IoT Hub içinde el ile cihaz oluşturma](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)hakkında bilgi edinin.
 
-IOT hub'ınız için bir X.509 cihazı oluşturma
+IoT Hub 'ınız için bir X. 509.952 cihazı oluşturma
 
-## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>X.509 CA sertifikalarını ile imzalanmış cihazların kimliğini doğrulama
+## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>X. 509.440 CA sertifikalarıyla imzalanan cihazların kimliğini doğrulama
 
-Cihaz, hatta ilk kez bağlandığında, kayıtlı X.509 CA sertifikası ve imzalanmış bir sertifika güven zinciri cihazlar ile nelerin cihaz kimlik doğrulaması şeklindedir.  X.509 CA imzalı cihaz bağlanır, kendi sertifika zinciri doğrulama için yükler. Tüm ara CA ve cihaz sertifika zinciri içerir.  Bu bilgileri kullanarak IOT Hub cihazı iki adımlı bir işlem kimliğini doğrular.  IOT hub'ı iç tutarlılık için sertifika zinciri şifreli olarak doğrular ve ardından cihaza elinde kavram zor sorunları.  IOT Hub cihaz gerçek bir CİHAZDAN başarılı bir elinde kavram yanıtını bildirir.  Bu bildirim yalnızca cihaz, bu sınaması başarılı bir şekilde yanıt verebilir ve cihazın özel anahtarı korunduğunu varsayar.  Özel anahtarlarınızı korumak için cihazları güvenli yongalarda gibi donanım güvenli modülleri (HSM) kullanılmasını öneririz.
+X. 509.952 CA sertifikası kayıtlı ve bir sertifika güven zincirinde oturum açan cihazlar ile, ilk kez bile cihaz bağlandığı zaman cihaz kimlik doğrulaması olur.  X. 509.952 CA imzalı bir cihaz bağlanırsa, doğrulama için sertifika zincirini karşıya yükler. Zincir tüm ara CA ve cihaz sertifikalarını içerir.  Bu bilgilerle, IoT Hub iki adımlı bir işlemde cihazın kimliğini doğrular.  IoT Hub şifreleme, iç tutarlılık için sertifika zincirini doğrular ve ardından cihaza bir çok itiraz zorluğu yayınlar.  IoT Hub, cihazı başarılı bir şekilde cihazdan güvenilir bir yanıt sağlaması üzerinde bildirir.  Bu bildirim, cihazın özel anahtarının korunduğunu ve yalnızca cihazın bu zorluk başarıyla yanıt verebildiğini varsayar.  Özel anahtarları korumak için cihazlarda donanım güvenli modüller (HSM) gibi güvenli yongalarının kullanılmasını öneririz.
 
-IOT Hub başarılı cihaz bağlantı kimlik doğrulama işlemi tamamlandıktan ve ayrıca bir doğru kurulumu gösterir.
+IoT Hub başarılı bir cihaz bağlantısı, kimlik doğrulama sürecini tamamlar ve ayrıca uygun bir kurulumu da kapsar.
 
-Buradan edinin nasıl [bu cihaz bağlantı adımın](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates).
+[Bu cihaz bağlantısı adımını nasıl tamamlayacağınızı](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Hakkında bilgi edinin [X.509 CA kimlik değerini](iot-hub-x509ca-concept.md) IOT.
+IoT 'de [X. 509.440 CA kimlik doğrulamasının değeri](iot-hub-x509ca-concept.md) hakkında bilgi edinin.
 
-IOT Hub ile çalışmaya başlama [cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/).
+IoT Hub [cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/)'ni kullanmaya başlayın.

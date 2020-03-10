@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543662"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388174"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma
 
@@ -23,7 +23,7 @@ DistCp, çeşitli komut satırı parametreleri sağlar ve kullanımınızı iyil
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Data Lake Storage 2. yetenekleri olmayan mevcut bir Azure depolama hesabı (hiyerarşik ad alanı) etkin**.
 * **Data Lake Storage 2. özelliği etkinleştirilmiş bir Azure depolama hesabı**. Bir oluşturma hakkında yönergeler için bkz. [Azure Data Lake Storage 2. Storage hesabı oluşturma](data-lake-storage-quickstart-create-account.md)
 * Hiyerarşik ad alanı etkinleştirilmiş depolama hesabında oluşturulmuş **bir dosya sistemi** .
@@ -71,9 +71,9 @@ DistCp 'nin en düşük ayrıntı düzeyi tek bir dosya olduğundan, en fazla e�
 
 Aşağıda kullanabileceğiniz bazı yönergeler verilmiştir.
 
-* **1. Adım: ' Varsayılan ' YARN uygulama kuyruğu** için kullanılabilen toplam belleği belirle-ilk adım, ' varsayılan ' YARN uygulama sırasının kullanabileceği belleği belirlemektir. Bu bilgiler, kümeyle ilişkili olan ambarı portalında kullanılabilir. YARN ' ye gidin ve ' varsayılan ' uygulama sırasının kullanabileceği YARN belleğini görmek için configs sekmesini görüntüleyin. Bu, DistCp işiniz için (aslında MapReduce işi olan) toplam kullanılabilir bellektir.
+* **1. Adım: ' varsayılan ' YARN uygulama kuyruğu için kullanılabilen toplam belleği belirleme** -ilk adım, ' varsayılan ' YARN uygulama kuyruğu için kullanılabilir belleği belirlemektir. Bu bilgiler, kümeyle ilişkili olan ambarı portalında kullanılabilir. YARN ' ye gidin ve ' varsayılan ' uygulama sırasının kullanabileceği YARN belleğini görmek için configs sekmesini görüntüleyin. Bu, DistCp işiniz için (aslında MapReduce işi olan) toplam kullanılabilir bellektir.
 
-* **2. Adım:**  Mapcontroller sayısını hesaplama-l değeri, Yarn kapsayıcı boyutuna bölünen toplam Yarn bellek bölümüne eşittir. YARN kapsayıcı boyut bilgileri ayrıca, ambarı portalında da mevcuttur. YARN 'ye gidin ve configs sekmesini görüntüleyin. YARN kapsayıcı boyutu bu pencerede görüntülenir. Mapcontroller (**e**) sayısına ulaşacak denklem
+* **2. Adım: mapcontroller sayısını hesaplama** -l DEĞERI, Yarn kapsayıcı boyutuna bölünen toplam Yarn bellek bölümüne eşittir. YARN kapsayıcı boyut bilgileri ayrıca, ambarı portalında da mevcuttur. YARN 'ye gidin ve configs sekmesini görüntüleyin. YARN kapsayıcı boyutu bu pencerede görüntülenir. Mapcontroller (**e**) sayısına ulaşacak denklem
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -81,11 +81,11 @@ Aşağıda kullanabileceğiniz bazı yönergeler verilmiştir.
 
 Bir 4X D14v2s kümeniz olduğunu ve 10 farklı klasörden 10 TB veri aktarmaya çalıştığınız varsayıyoruz. Klasörlerin her biri farklı miktarda veri içerir ve her klasör içindeki dosya boyutları farklıdır.
 
-* **Toplam YARN belleği**: Ambarı portalından, YARN belleğinin bir D14 düğümü için 96 GB olduğunu belirlersiniz. Bu nedenle, dört düğümlü küme için toplam YARN bellek: 
+* **Toplam YARN belleği**: ambarı portalından, Yarn belleğin bir D14 düğümü IÇIN 96 GB olduğunu belirlersiniz. Bu nedenle, dört düğümlü küme için toplam YARN bellek: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* **Mapto sayısı**: Ambarı portalından, YARN kapsayıcısı boyutunun bir D14 küme düğümü için 3.072 MB olduğunu belirlersiniz. Bu nedenle, Mapper sayısı şu şekilde olur:
+* Eşleme **sayısı**: ambarı portalından, D14 küme düğümü için Yarn kapsayıcı boyutunun 3.072 MB olduğunu belirlersiniz. Bu nedenle, Mapper sayısı şu şekilde olur:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

@@ -11,11 +11,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 4545a75cc2082c21dcb87986eba819ebe39adf7b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208769"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388351"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen işlem ortamları
 Bu makalede, verileri işlemek veya dönüştürmek için kullanabileceğiniz farklı işlem ortamları açıklanmaktadır. Ayrıca, bu işlem ortamlarını bir Azure Data Factory 'ye bağlayan bağlı hizmetleri yapılandırırken Data Factory tarafından desteklenen farklı yapılandırma (kendi isteğe bağlı ve kendi kendinize getir) hakkında ayrıntılar sağlar.
@@ -290,7 +290,7 @@ Kendi HDInsight kümenizi Data Factory kaydetmek için bir Azure HDInsight bağl
 | type              | Type özelliği **HDInsight**olarak ayarlanmalıdır.            | Yes      |
 | clusterUri        | HDInsight kümesinin URI 'SI.                            | Yes      |
 | kullanıcı adı          | Mevcut bir HDInsight kümesine bağlanmak için kullanılacak kullanıcının adını belirtin. | Yes      |
-| parola          | Kullanıcı hesabı için parola belirtin.                       | Yes      |
+| password          | Kullanıcı hesabı için parola belirtin.                       | Yes      |
 | linkedServiceName | HDInsight kümesi tarafından kullanılan Azure Blob depolama alanına başvuran Azure depolama bağlı hizmetinin adı. <p>Şu anda bu özellik için Azure Data Lake Store bağlı bir hizmet belirtemezsiniz. HDInsight kümesinin Data Lake Store erişimi varsa Hive/Pig betiklerinden Azure Data Lake Store verilere erişebilirsiniz. </p> | Yes      |
 | ıvspenabled      | HDInsight kümesi [Kurumsal güvenlik paketi](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) etkinse '*true ' değerini*belirtin. Varsayılan değer '*false*' şeklindedir. | Hayır       |
 | connectVia        | Bu bağlı hizmete etkinlikleri göndermek için kullanılacak Integration Runtime. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. <br />Kurumsal Güvenlik Paketi (ESP) etkin HDInsight kümesi için, kümeye bir görüş satırı içeren, şirket içinde barındırılan bir tümleştirme çalışma zamanı kullanın veya ESP HDInsight kümesiyle aynı sanal ağ içinde dağıtılması gerekir. | Hayır       |

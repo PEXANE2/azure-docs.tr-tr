@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433892"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365099"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric sistem durumu izlemeye giriş
 Azure Service Fabric, zengin, esnek ve Genişletilebilir sistem durumu değerlendirmesi ve raporlama sağlayan bir sistem durumu modeli sunar. Model, küme durumunun ve üzerinde çalışan hizmetlerin neredeyse gerçek zamanlı olarak izlenmesine olanak tanır. Kolayca sistem durumu bilgilerini alabilir ve olası sorunları basamaklandırmadan ve büyük kesintilere neden olacak şekilde düzeltebilirsiniz. Tipik modelde, hizmetler raporları yerel görünümlerine göre gönderir ve bu bilgiler genel bir küme düzeyi görünüm sağlamak için toplanır.
@@ -42,7 +42,7 @@ Durum varlıkları şunlardır:
 * **Küme**. Bir Service Fabric kümesinin sistem durumunu temsil eder. Küme durumu raporları tüm kümeyi etkileyen koşulları anlatmaktadır. Bu koşullar, kümedeki veya kümedeki birden çok varlığı etkiler. Koşula bağlı olarak, Raporlayıcı sorunu bir veya daha fazla sağlıksız alt öğeye karşı daraltamıyorum. Bu örnek, ağ bölümleme veya iletişim sorunları nedeniyle küme bölme işleminin beyde bulunur.
 * **Düğüm**. Bir Service Fabric düğümünün sistem durumunu temsil eder. Düğüm durumu raporları, düğüm işlevselliğini etkileyen koşulları anlatmaktadır. Genellikle üzerinde çalışan tüm dağıtılan varlıkları etkiler. Örnekler arasında düğüm kalmadı (veya bellek, bağlantılar gibi diğer makine genelindeki Özellikler) ve bir düğüm çalışmıyor. Düğüm varlığı, düğüm adı (dize) tarafından tanımlanır.
 * **Uygulama**. Kümede çalışan bir uygulama örneğinin sistem durumunu temsil eder. Uygulama durumu raporları, uygulamanın genel sistem durumunu etkileyen koşulları anlatmaktadır. Tek tek alt öğelere (hizmetler veya dağıtılan uygulamalar) göre daraltılamazlar. Örnek olarak, uygulamadaki farklı hizmetler arasında uçtan uca etkileşim vardır. Uygulama varlığı, uygulama adı (URI) tarafından tanımlanır.
-* **Hizmet**. Kümede çalışan bir hizmetin sistem durumunu temsil eder. Hizmet durumu raporları hizmetin genel durumunu etkileyen koşulları anlatmaktadır. Raporlayıcı sorunu sağlıksız bir bölüm veya çoğaltmada daraltamıyorum. Örnekler, tüm bölümler için sorunlara neden olan bir hizmet yapılandırması (örneğin, bağlantı noktası veya harici dosya paylaşma) içerir. Hizmet varlığı, hizmet adı (URI) tarafından tanımlanır.
+* **Hizmeti**. Kümede çalışan bir hizmetin sistem durumunu temsil eder. Hizmet durumu raporları hizmetin genel durumunu etkileyen koşulları anlatmaktadır. Raporlayıcı sorunu sağlıksız bir bölüm veya çoğaltmada daraltamıyorum. Örnekler, tüm bölümler için sorunlara neden olan bir hizmet yapılandırması (örneğin, bağlantı noktası veya harici dosya paylaşma) içerir. Hizmet varlığı, hizmet adı (URI) tarafından tanımlanır.
 * **Bölüm**. Bir hizmet bölümünün sistem durumunu temsil eder. Bölüm durumu raporları, tüm çoğaltma kümesini etkileyen koşulları anlatmaktadır. Örnek sayısı, hedef sayısı ' nın altında ve bir bölüm de çekirdek kaybolduğunda verilebilir. Bölüm varlığı, bölüm KIMLIĞI (GUID) tarafından tanımlanır.
 * **Çoğaltma**. Durum bilgisi olan bir hizmet çoğaltmasının veya durum bilgisi olmayan hizmet örneğinin sistem durumunu temsil eder. Çoğaltma, Watchdogs ve sistem bileşenlerinin bir uygulama için raporlayabilir en küçük birimdir. Durum bilgisi olan hizmetler için, örnekleri ikincil çoğaltma ve yavaş çoğaltma işlemlerine çoğaltamaz. Ayrıca, durum bilgisi olmayan bir örnek, kaynakların tükenme durumunda veya bağlantı sorunlarıyla karşılaşarak rapor verebilir. Çoğaltma varlığı, bölüm KIMLIĞI (GUID) ve çoğaltma ya da örnek KIMLIĞI (Long) tarafından tanımlanır.
 * **Dağıtıcı**. *Düğüm üzerinde çalışan bir uygulamanın*sistem durumunu temsil eder. Dağıtılan uygulama durumu raporları, düğümdeki uygulamaya özgü koşulları, aynı düğümde dağıtılan hizmet paketlerine karşı daha dar olmayan koşullara göre anlatmaktadır. Örnek olarak, uygulama paketinin bu düğümde indirileceği ve düğümde uygulama güvenliği sorumlularını ayarlamayla ilgili sorunlar yer alır. Dağıtılan uygulama, uygulama adı (URI) ve düğüm adı (dize) tarafından tanımlanır.
@@ -62,7 +62,7 @@ Service Fabric, bir varlığın sağlıklı olup olmadığını betimleyen üç 
 
 Olası [sistem durumları](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) şunlardır:
 
-* **Tamam**'a tıkladıktan sonra etiketin adını değiştirebilirsiniz. Varlık sağlıklı. Üzerinde veya alt öğelerinde (geçerli olduğunda) bildirilen bilinen bir sorun yoktur.
+* **Tamam**. Varlık sağlıklı. Üzerinde veya alt öğelerinde (geçerli olduğunda) bildirilen bilinen bir sorun yoktur.
 * **Uyarı**. Varlıkta bazı sorunlar vardır, ancak yine de düzgün bir şekilde çalışabilir. Örneğin, gecikme vardır ancak herhangi bir işlevsel soruna neden olmaz. Bazı durumlarda, uyarı koşulu dış müdahale olmadan kendi kendine düzelebilir. Bu durumlarda, sistem durumu raporları tanıma işlemi yaptığını ve neye devam ettiğinin görünürlüğünü sağlar. Diğer durumlarda, uyarı koşulu Kullanıcı müdahalesi olmadan ciddi bir sorunla azalabilir.
 * **Hata**. Varlık sağlıksız. Doğru şekilde işleyemediği için varlığın durumunu onarmak üzere eylem gerçekleştirilmelidir.
 * **Bilinmiyor**. Varlık sistem durumu deposunda yok. Bu sonuç, birden çok bileşenden sonuçları birleştirme dağıtılan sorgulardan elde edilebilir. Örneğin, düğüm listesini al sorgusu **failovermanager**, **Clustermanager**ve **healthmanager**' a gider; Uygulama listesi sorgusunun al, **clustermanager** ve **healthmanager**'a gider. Bu sorgular, birden çok sistem bileşeninden sonuçları birleştirir. Başka bir sistem bileşeni, sistem durumu deposunda mevcut olmayan bir varlık döndürürse, birleştirilmiş sonuç bilinmeyen sistem durumuna sahiptir. Sistem durumu raporları henüz işlenmediğinden veya silme işleminden sonra varlık temizlendiğinden varlık depoda değil.
@@ -187,7 +187,7 @@ Kümedeki varlıkların her biri için [sistem durumu raporları](https://docs.m
 * **SourceId**. Sistem durumu olayının Raporlayıcısı 'nı benzersiz bir şekilde tanımlayan bir dize.
 * **Varlık tanımlayıcısı**. Raporun uygulandığı varlığı tanımlar. [Varlık türüne](service-fabric-health-introduction.md#health-entities-and-hierarchy)göre farklılık gösterir:
   
-  * İçi. Hiçbiri.
+  * İçi. Yok.
   * Düğümüne. Düğüm adı (dize).
   * Uygulamanızı. Uygulama adı (URI). Kümede dağıtılan uygulama örneğinin adını temsil eder.
   * Hizmetle. Hizmet adı (URI). Kümede dağıtılan hizmet örneğinin adını temsil eder.

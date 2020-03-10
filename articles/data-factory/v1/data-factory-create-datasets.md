@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 18a5e11d2341fb020fc442d2f9ce7c1d44de9d0a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682743"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384790"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory veri kümeleri
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -79,12 +79,12 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| ad |Veri kümesinin adı. Bkz. adlandırma kuralları için [Azure Data Factory adlandırma kuralları](data-factory-naming-rules.md) . |Evet |NA |
-| type |Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türü](#Type). |Evet |NA |
-| yapısı |Veri kümesinin şeması.<br/><br/>Ayrıntılar için bkz. [DataSet yapısı](#Structure). |Hayır |NA |
-| typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#Type). |Evet |NA |
+| ad |Veri kümesinin adı. Bkz. adlandırma kuralları için [Azure Data Factory adlandırma kuralları](data-factory-naming-rules.md) . |Yes |NA |
+| type |Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türü](#Type). |Yes |NA |
+| yapı |Veri kümesinin şeması.<br/><br/>Ayrıntılar için bkz. [DataSet yapısı](#Structure). |Hayır |NA |
+| typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#Type). |Yes |NA |
 | external | Bir veri kümesinin bir Data Factory işlem hattı tarafından açıkça oluşturulup oluşturulmayacağını belirten Boole bayrağı. Bir etkinliğin giriş veri kümesi geçerli işlem hattı tarafından üretildiyse, bu bayrağı true olarak ayarlayın. İşlem hattının ilk etkinliğinin giriş veri kümesi için bu bayrağı true olarak ayarlayın.  |Hayır |false |
-| availability | İşlem penceresini (örneğin, saatlik veya günlük) veya veri kümesi üretiminin Dilimleme modelini tanımlar. Bir etkinlik çalıştırması tarafından tüketilen ve üretilen her veri birimi veri dilimi olarak adlandırılır. Bir çıktı veri kümesinin kullanılabilirliği günlük (sıklık-gün, Aralık-1) olarak ayarlandıysa, her gün bir dilim oluşturulur. <br/><br/>Ayrıntılar için bkz. veri kümesi kullanılabilirliği. <br/><br/>Veri kümesi Dilimleme modeliyle ilgili ayrıntılar için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md) makalesi. |Evet |NA |
+| availability | İşlem penceresini (örneğin, saatlik veya günlük) veya veri kümesi üretiminin Dilimleme modelini tanımlar. Bir etkinlik çalıştırması tarafından tüketilen ve üretilen her veri birimi veri dilimi olarak adlandırılır. Bir çıktı veri kümesinin kullanılabilirliği günlük (sıklık-gün, Aralık-1) olarak ayarlandıysa, her gün bir dilim oluşturulur. <br/><br/>Ayrıntılar için bkz. veri kümesi kullanılabilirliği. <br/><br/>Veri kümesi Dilimleme modeliyle ilgili ayrıntılar için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md) makalesi. |Yes |NA |
 | ilke |Veri kümesi dilimlerinin yerine getirilmesi gereken ölçütü veya koşulu tanımlar. <br/><br/>Ayrıntılar için bkz. [DataSet ilkesi](#Policy) bölümü. |Hayır |NA |
 
 ## <a name="dataset-example"></a>Veri kümesi örneği
@@ -191,10 +191,10 @@ Yapıdaki her sütun aşağıdaki özellikleri içerir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| ad |Sütunun adı. |Evet |
+| ad |Sütunun adı. |Yes |
 | type |Sütunun veri türü.  |Hayır |
-| ayarı |. Tür bir .NET türü olduğunda kullanılacak NET tabanlı kültür: `Datetime` veya `Datetimeoffset`. Varsayılan değer: `en-us`. |Hayır |
-| formatını |Tür bir .NET türü olduğunda kullanılacak biçim dizesi: `Datetime` veya `Datetimeoffset`. |Hayır |
+| culture |. Tür bir .NET türü olduğunda kullanılacak NET tabanlı kültür: `Datetime` veya `Datetimeoffset`. Varsayılan değer: `en-us`. |Hayır |
+| format |Tür bir .NET türü olduğunda kullanılacak biçim dizesi: `Datetime` veya `Datetimeoffset`. |Hayır |
 
 Aşağıdaki yönergeler, yapı bilgilerinin ne zaman ekleneceğini ve **Yapı** bölümüne nelerin ekleneceğini belirlemenize yardımcı olur.
 
@@ -233,11 +233,11 @@ Aşağıdaki tabloda kullanılabilirlik bölümünde kullanabileceğiniz özelli
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| frequency |Veri kümesi dilimi üretiminin zaman birimini belirtir.<br/><br/><b>Desteklenen sıklık</b>: dakika, saat, gün, hafta, ay |Evet |NA |
-| interval |Sıklık için bir çarpan belirtir.<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler. Örneğin, veri kümesinin saatlik olarak dilimlenebilir olması gerekiyorsa <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/>**Sıklık** değerini **dakika**olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız gerektiğini unutmayın. |Evet |NA |
-| Biçim |Dilimin aralığın başlangıcında veya sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul>**Sıklık** değeri **Month**olarak ayarlanmışsa ve **Style** , **endofınterval**olarak ayarlanırsa, dilim ayın son gününde oluşturulur. **Stil** **StartOfInterval**olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>**Sıklık** , **gün**olarak ayarlanmışsa ve **Stil** **endofınterval**olarak ayarlandıysa, dilim günün son saati içinde oluşturulur.<br/><br/>**Sıklık** değeri **Hour**olarak ayarlanmışsa ve **Style** , **endofınterval**olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM-2 dönemi için bir dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
+| frequency |Veri kümesi dilimi üretiminin zaman birimini belirtir.<br/><br/><b>Desteklenen sıklık</b>: dakika, saat, gün, hafta, ay |Yes |NA |
+| interval |Sıklık için bir çarpan belirtir.<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler. Örneğin, veri kümesinin saatlik olarak dilimlenebilir olması gerekiyorsa <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/>**Sıklık** değerini **dakika**olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız gerektiğini unutmayın. |Yes |NA |
+| style |Dilimin aralığın başlangıcında veya sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul>**Sıklık** değeri **Month**olarak ayarlanmışsa ve **Style** , **endofınterval**olarak ayarlanırsa, dilim ayın son gününde oluşturulur. **Stil** **StartOfInterval**olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>**Sıklık** , **gün**olarak ayarlanmışsa ve **Stil** **endofınterval**olarak ayarlandıysa, dilim günün son saati içinde oluşturulur.<br/><br/>**Sıklık** değeri **Hour**olarak ayarlanmışsa ve **Style** , **endofınterval**olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM-2 dönemi için bir dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
 | anchorDateTime |Zamanlayıcı tarafından veri kümesi dilim sınırlarını hesaplamak için kullanılan mutlak konumu tanımlar. <br/><br/>Bu özellikte belirtilen sıklığından daha ayrıntılı olan tarih bölümleri varsa, daha ayrıntılı parçalar yok sayılır. Örneğin, **Aralık** **saatlik** (sıklık: Hour ve Interval: 1) ve **anchordatetime** değeri **dakika ve saniye**içeriyorsa, **anchordatetime** değerinin dakika ve saniye kısımları göz ardı edilir. |Hayır |01/01/0001 |
-| konumu |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/>Hem **Anchordatetime** hem de **Kaydır** belirtilirse, sonucun Birleşik vardiya olduğunu unutmayın. |Hayır |NA |
+| offset |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/>Hem **Anchordatetime** hem de **Kaydır** belirtilirse, sonucun Birleşik vardiya olduğunu unutmayın. |Hayır |NA |
 
 ### <a name="offset-example"></a>fark örneği
 Varsayılan olarak, günlük (`"frequency": "Day", "interval": 1`) dilimleri 12: (gece yarısı) Eşgüdümlü Evrensel Saat (UTC) ile başlar. Başlangıç saatinin 6 ' dan UTC zamanı olmasını istiyorsanız, sapmayı aşağıdaki kod parçacığında gösterildiği gibi ayarlayın:
@@ -314,15 +314,15 @@ Dış veri kümeleri, veri fabrikasında çalışan bir işlem hattı tarafında
 
 Bir veri kümesi Data Factory tarafından üretilmediği sürece, **dış**olarak işaretlenmelidir. Bu ayar genellikle, etkinlik veya işlem hattı zinciri kullanılmadığı takdirde bir işlem hattının ilk etkinliğinin girişleri için geçerlidir.
 
-| Ad | Açıklama | Gerekli | Varsayılan değer |
+| Adı | Açıklama | Gerekli | Varsayılan değer |
 | --- | --- | --- | --- |
 | dataDelay |Belirli bir dilim için dış verilerin kullanılabilirliğine ilişkin denetim gecikme süresi. Örneğin, bu ayarı kullanarak saatlik bir denetimi erteleyebilirsiniz.<br/><br/>Bu ayar yalnızca geçerli süre için geçerlidir. Örneğin, şu anda 1:00 PM ise ve bu değer 10 dakikadır, doğrulama 1:10 PM 'de başlar.<br/><br/>Bu ayarın geçmişte dilimleri etkilemediğini unutmayın. **Dilim bitiş zamanı** olan dilimler + **datadelay** < **artık** herhangi bir gecikme olmadan işlenir.<br/><br/>`day.hours:minutes:seconds` biçimi kullanılarak 23:59 saatten büyük süreler belirtilmelidir. Örneğin, 24 saat belirtmek için 24:00:00 kullanmayın. Bunun yerine 1.00:00:00 kullanın. 24:00:00 kullanıyorsanız, 24 gün (24.00:00:00) olarak kabul edilir. 1 gün ve 4 saat için 1:04:00:00 belirtin. |Hayır |0 |
-| RetryInterval |Bir hata ve sonraki girişim arasındaki bekleme süresi. Bu ayar, geçerli süre için geçerlidir. Önceki deneme başarısız olursa, sonraki deneme, **RetryInterval** süresinden sonra olur. <br/><br/>Şu an 1:00 PM ise ilk denemeye başladık. İlk doğrulama denetiminin tamamlanma süresi 1 dakikadır ve işlem başarısız olduysa, sonraki yeniden deneme 1:00 + 1dk (süre) + 1dk (yeniden deneme aralığı) = 1:02 PM olur. <br/><br/>Geçmişte dilimlerde bir gecikme yoktur. Yeniden deneme anında gerçekleşir. |Hayır |00:01:00 (1 dakika) |
+| retryInterval |Bir hata ve sonraki girişim arasındaki bekleme süresi. Bu ayar, geçerli süre için geçerlidir. Önceki deneme başarısız olursa, sonraki deneme, **RetryInterval** süresinden sonra olur. <br/><br/>Şu an 1:00 PM ise ilk denemeye başladık. İlk doğrulama denetiminin tamamlanma süresi 1 dakikadır ve işlem başarısız olduysa, sonraki yeniden deneme 1:00 + 1dk (süre) + 1dk (yeniden deneme aralığı) = 1:02 PM olur. <br/><br/>Geçmişte dilimlerde bir gecikme yoktur. Yeniden deneme anında gerçekleşir. |Hayır |00:01:00 (1 dakika) |
 | retryTimeout |Her yeniden deneme girişimi için zaman aşımı.<br/><br/>Bu özellik 10 dakikaya ayarlanırsa, doğrulamanın 10 dakika içinde tamamlanması gerekir. Doğrulama işlemini gerçekleştirmek için 10 dakikadan uzun sürerse, yeniden deneme zaman aşımına uğrar.<br/><br/>Doğrulama denemeleri tüm denemeler zaman aşımına uğradı, dilim zaman **aşımı olarak işaretlenir**. |Hayır |00:10:00 (10 dakika) |
 | maximumRetry |Dış verilerin kullanılabilirliğine yönelik denetlenecek zaman sayısı. İzin verilen en büyük değer 10 ' dur. |Hayır |3 |
 
 
-## <a name="create-datasets"></a>Veri kümeleri oluşturun
+## <a name="create-datasets"></a>Veri kümeleri oluşturma
 Şu araçlardan veya SDK 'Lardan birini kullanarak veri kümeleri oluşturabilirsiniz:
 
 - Kopyalama Sihirbazı

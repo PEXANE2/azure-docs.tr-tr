@@ -9,11 +9,11 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075368"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372881"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web uygulaması güvenlik duvarı, kural grupları ve kuralları
 
@@ -94,7 +94,7 @@ Aşağıdaki tabloda gösterildiği gibi, bu 3,0, 12 kural grubunu içerir. Her 
 
 Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken aşağıdaki kural grupları ve kuralları kullanılabilir.
 
-# <a name="owasp-31tabowasp31"></a>[OWASP 3,1](#tab/owasp31)
+# <a name="owasp-31"></a>[OWASP 3,1](#tab/owasp31)
 
 ## <a name="owasp31"></a>Kural kümeleri
 
@@ -340,7 +340,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 |944130|Kuşkulu Java sınıfları|
 |944200|Java serisini kaldırma Apache Commons ile yararlanma|
 
-# <a name="owasp-30tabowasp30"></a>[OWASP 3,0](#tab/owasp30)
+# <a name="owasp-30"></a>[OWASP 3,0](#tab/owasp30)
 
 ## <a name="owasp30"></a>Kural kümeleri
 
@@ -540,7 +540,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 |943110|Olası oturum armatürü saldırısı = SessionID parametre adı ve etki alanı dışı başvuran|
 |943120|Olası oturum armatürü saldırısı = SessionID parametre adı, başvuran yok|
 
-# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+# <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
 ## <a name="owasp229"></a>Kural kümeleri
 

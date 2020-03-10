@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016723"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392985"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Gelişmiş Media Encoder Premium Workflow öğreticileri
 ## <a name="overview"></a>Genel Bakış
@@ -238,7 +238,7 @@ Medya dosyası girişinin sıkıştırılmamış video çıkış PIN 'ini yeni A
 
 Şimdi yeni AVC Kodlayıcımız için yapılandırmayı 2,5 Mbps hızında çıkış 960x540 olarak uyarlayın. (Bunun için "çıktı genişliği", "çıkış yüksekliği" ve "bit hızı (Kbps)" özelliklerini kullanın.)
 
-Sonuçta elde edilen varlığı Azure Media Services ' dinamik paketleme ile birlikte kullanmak istiyoruz, akış uç noktasının bu MP4 dosyalarından, her bir şekilde birbirlerine tam olarak hizalanmış ve parçalanmış MP4/DASH parçalarından oluşturulması gerekir. farklı bitoranlar arasında geçiş yapan istemciler, tek bir kesintisiz sürekli video ve ses deneyimi alır. Bunun gerçekleşmesini sağlamak için, her iki MP4 dosyası için hem AVC kodlayıcılara ait özelliklerin her ikisi de tarafından yapılabilen 2 saniyeye ayarlanmış olduğundan emin olunması gerekir:
+Elde edilen varlığı Azure Media Services ' dinamik paketleme ile birlikte kullanmak istiyoruz, ancak farklı bitki 'lar arasında geçiş yapan istemciler tek bir kesintisiz sürekli video ve ses deneyimi elde etmek için, akış uç noktasının bu MP4 dosyalarından veya parçalanmış MP4/TIRE parçalarından oluşturulması gerekir. Bunun gerçekleşmesini sağlamak için, her iki MP4 dosyası için hem AVC kodlayıcılara ait özelliklerin her ikisi de tarafından yapılabilen 2 saniyeye ayarlanmış olduğundan emin olunması gerekir:
 
 * GOP boyut modunu sabit GOP boyutuna ayarlama ve
 * Anahtar çerçeve aralığı iki saniyeye kadar.
@@ -294,7 +294,7 @@ Muxer 'den giden akışı çıkarmak için bir üçüncü dosya çıkış bileş
 *Ses muxer dosya çıkışı oluşturma*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Ekleniyor. ISM SMıL dosyası
-Dinamik paketleme 'nın Media Services varlıklarımızda hem MP4 dosyaları (hem de yalnızca ses MP4) ile birlikte çalışması için bir bildirim dosyası ("SMıL" dosyası da denir) gerekir: Eşitlenmiş multimedya tümleştirme dili). Bu dosya, dinamik paketleme için hangi MP4 dosyalarının kullanılabilir olduğunu ve bunların ses akışı için göz önünde bulundurduhangilerinin Azure Media Services belirtir. Tek bir ses akışına sahip bir MP4's kümesi için tipik bir bildirim dosyası şuna benzer:
+Dinamik paketleme 'nın Media Services varlıklarımızda hem MP4 dosyaları (hem de yalnızca ses MP4) ile birlikte çalışması için bir bildirim dosyası ("SMıL" dosyası da denir: eşitlenmiş multimedya tümleştirme dili) gerekir. Bu dosya, dinamik paketleme için hangi MP4 dosyalarının kullanılabilir olduğunu ve bunların ses akışı için göz önünde bulundurduhangilerinin Azure Media Services belirtir. Tek bir ses akışına sahip bir MP4's kümesi için tipik bir bildirim dosyası şuna benzer:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -422,7 +422,7 @@ Küçük resim oluşturma aracımız, jpg Kodlayıcısı bileşeni olan ve JPG d
 
 ![JPG Kodlayıcısı](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
 
-*JPG Encoder*
+*JPG Kodlayıcısı*
 
 Ancak, sıkıştırılmamış video akışımız medya dosyası girişinden JPG kodlayıcısıyla doğrudan bağlanamadık. Bunun yerine, tek tek çerçeveleri de almak bekler. Bu, video çerçeve kapısı bileşeni aracılığıyla yapabiliriz.
 
@@ -567,7 +567,7 @@ Komut dosyalı bileşenler, iş akışımızın yürütme aşamaları sırasınd
 
 * **commandScript**
 * **realizeScript**
-* **processInputScript**
+* **Processınputscript**
 * **lifeCycleScript**
 
 Komut dosyalı bileşenin belgeleri, yukarıdaki her biri için daha ayrıntılı olarak sonuçlanır. [Aşağıdaki bölümde](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim), **Realizescript** betik bileşeni, iş akışı başladığında anında bir cliplist XML oluşturmak için kullanılır. Bu betik, bir bileşen kurulumu sırasında çağrılır ve bu işlem yaşam döngüsünün yalnızca bir kez gerçekleşir.
@@ -694,7 +694,7 @@ Komut dosyalı bileşenin özelliklerini incelemenize sonra, her biri farklı bi
 İlk olarak, videoyu kırpmak istediğimiz noktayı anlamak için bir yol gerekir. Bunu iş akışının daha az teknik kullanıcısına uygun hale getirmek için grafiğin köküne iki özellik yayımlayın. Bunu yapmak için tasarımcı yüzeyine sağ tıklayın ve "Özellik Ekle" yi seçin:
 
 * İlk özellik: "Clıppingtimestart" türü: "TIMECODE"
-* İkinci özellik: Türün "ClippingTimeEnd": "TIMECODE"
+* İkinci özellik: "Clienppingtimeend" in Type: "TIMECODE"
 
 ![Kırpma başlangıç zamanı için Özellik Ekle iletişim kutusu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
@@ -761,7 +761,7 @@ Bu, normal dize işleme işlemleri aracılığıyla yapılır. Sonuç olarak de�
 
 *Elde edilen klip listesini günlüğe kaydetme*
 
-Video ve ses akışlarının nasıl kırpılacağını görmek için bir test çalıştırması yapın. Kırpma noktaları için farklı değerlerle birden fazla test çalıştırması yapacaksınız, ancak bunların hesaba alınmayacak olduğunu fark edeceksiniz. Bunun nedeni, tasarımcının Azure çalışma zamanının aksine, her çalıştırma için cliplist XML 'i geçersiz kılmaz. Diğer bir deyişle, yalnızca ilk kez ın ve çıkan noktaları ayarladığınızda, XML 'in diğer tüm zamanımızın (yani (`clipListXML.indexOf("<trim>") == -1`)) aynı anda bir tane varsa, iş akışının başka bir kırpma öğesi eklemesini önleyemeyeceği anlamına gelir.
+Video ve ses akışlarının nasıl kırpılacağını görmek için bir test çalıştırması yapın. Kırpma noktaları için farklı değerlerle birden fazla test çalıştırması yapacaksınız, ancak bunların hesaba alınmayacak olduğunu fark edeceksiniz. Bunun nedeni, tasarımcının Azure çalışma zamanının aksine, her çalıştırma için cliplist XML 'i geçersiz kılmaz. Bu, yalnızca ilk kez ın ve out noktalarını ayarladığınız anlamına gelir, XML 'in diğer tüm zamanımızın (Eğer (`clipListXML.indexOf("<trim>") == -1`)) iş akışının zaten bir tane varsa başka bir kırpma öğesi eklemesini önleyebilmesini sağlar.
 
 İş akışınızı yerel olarak test etmek için uygun hale getirmek üzere, bir kırpma öğesi zaten mevcut olup olmadığını inceleyerek en iyi şekilde bir düzenleyici kodu ekleyeceğiz. Varsa, XML 'yi yeni değerlerle değiştirerek devam etmeden önce bunu kaldırabiliriz. Düz dize işlemeleri kullanmak yerine, bunu gerçek XML nesne modeli ayrıştırması aracılığıyla yapmak daha güvenlidir.
 
@@ -952,7 +952,7 @@ Aşağıdaki basit Guard yan tümcesiyle, kırpmaya ihtiyaç olup olmadığını
 
 [Azure Media Services Gezgini aracı](https://aka.ms/amse)
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma

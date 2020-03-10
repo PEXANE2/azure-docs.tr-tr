@@ -4,11 +4,11 @@ description: Azure Ilkesi için yerleşik ilke girişimlerini listeleyin. Katego
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172985"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387307"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Ilkesi yerleşik girişim tanımları
 
@@ -20,6 +20,6 @@ Her yerleşik bir ad, [Azure Policy GitHub](https://github.com/Azure/azure-polic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Policy GitHub deposu](https://github.com/Azure/azure-policy)'ndaki yerleşik bileşenler.
+- Yerleşik ilkeleri görmek için [Azure İlkesi GitHub deposuna](https://github.com/Azure/azure-policy) gidin.
 - [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.

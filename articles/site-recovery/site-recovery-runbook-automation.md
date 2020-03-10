@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173489"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390491"
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Kurtarma planlarına Azure Otomasyonu runbook 'ları ekleme
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Kurtarma planlarına Azure Otomasyonu runbook’ları ekleme
 
 Bu makalede, Azure Otomasyonu runbook 'larının [Azure Site Recovery](site-recovery-overview.md) kurtarma planlarını uzatmak için nasıl tümleştirileceği açıklanır. Bunun için el ile müdahale etmesi gereken temel görevleri otomatikleştirmeyi ve çok adımlı bir kurtarmanın tek tıklamayla bir eyleme nasıl dönüştürüleceğini göstereceğiz.
 
@@ -51,7 +51,7 @@ Bir betik çalıştırıldığında, runbook 'a bir kurtarma planı bağlamını
 | ID |Plan çalışırken kurtarma planındaki grup numarasını tanımlar. |
 | VmMap |Gruptaki tüm VM 'lerin bir dizisi. |
 | VMMap anahtarı |Her VM için benzersiz bir anahtar (GUID). |
-| SubscriptionId |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
+| kaynak grubundaki |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
 | ResourceGroupName | VM 'nin bulunduğu kaynak grubunun adı.
 | CloudServiceName |VM 'nin altında oluşturulduğu Azure bulut hizmeti adı. |
 | RoleName |Azure VM 'nin adı. |
@@ -189,7 +189,7 @@ Bu senaryoya yönelik tam, uçtan uca bir betik için [bu betiği](https://galle
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Daha fazla bilgi depolamak için karmaşık bir değişken kullanın
 
-Bazı senaryolarda, her kurtarma planı için ayrı değişkenler oluşturabilemeyebilirsiniz. Tek bir betiğin belirli sanal makinelere genel IP adresi atamasını istediğiniz bir senaryo düşünün. Başka bir senaryoda farklı sanal makinelere (tüm VM 'lerde değil) farklı NSG 'ler uygulamak isteyebilirsiniz. Aşağıdakilere dikkat edin:
+Bazı senaryolarda, her kurtarma planı için ayrı değişkenler oluşturabilemeyebilirsiniz. Tek bir betiğin belirli sanal makinelere genel IP adresi atamasını istediğiniz bir senaryo düşünün. Başka bir senaryoda farklı sanal makinelere (tüm VM 'lerde değil) farklı NSG 'ler uygulamak isteyebilirsiniz. Şunlara dikkat edin:
 
 - Herhangi bir kurtarma planı için yeniden kullanılabilir olan bir betiği yapabilirsiniz.
 - Her kurtarma planının değişken sayıda VM olabilir.
@@ -247,7 +247,7 @@ Bunu, Azure PowerShell kullanarak birden çok değer belirterek yapacağız.
 
 Farklı kurtarma planları için aynı betiği kullanabilirsiniz. Farklı değişkenlerde bir kurtarma planına karşılık gelen değeri depolayarak farklı parametreler girin.
 
-## <a name="sample-scripts"></a>Örnek komut dosyaları
+## <a name="sample-scripts"></a>Örnek betikler
 
 Otomasyon hesabınıza örnek betikler dağıtmak için **Azure 'A dağıt** düğmesine tıklayın.
 

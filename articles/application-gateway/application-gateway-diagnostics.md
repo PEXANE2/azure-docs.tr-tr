@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966919"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384812"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
@@ -163,12 +163,12 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 |instanceId     | İsteği sunan Application Gateway örneği.        |
 |ClientIP     | İstek için kaynak IP 'si.        |
 |Istemci bağlantı noktası     | İstek için kaynak bağlantı noktası.       |
-|HttpMethod     | İstek tarafından kullanılan HTTP yöntemi.       |
-|RequestUri     | Alınan isteğin URI 'SI.        |
+|httpMethod     | İstek tarafından kullanılan HTTP yöntemi.       |
+|requestUri     | Alınan isteğin URI 'SI.        |
 |RequestQuery     | **Sunucu-yönlendirildi**: isteği gönderen arka uç havuzu örneği.</br>**X-AzureApplicationGateway-log-ID**: istek için kullanılan bağıntı kimliği. Arka uç sunucularındaki trafik sorunlarını gidermek için kullanılabilir. </br>**Sunucu-durumu**: arka uçtan alınan Application Gateway http yanıt kodu.       |
 |Kullanıcı     | HTTP istek üst bilgisinden Kullanıcı Aracısı.        |
 |Http durumu     | Application Gateway istemcisinden istemciye döndürülen HTTP durum kodu.       |
-|HttpVersion     | İsteğin HTTP sürümü.        |
+|httpVersion     | İsteğin HTTP sürümü.        |
 |Alınma baytları     | Bayt cinsinden alınan paket boyutu.        |
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
 |TimeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
@@ -207,11 +207,11 @@ Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir
 |instanceId     | İsteği sunan Application Gateway örneği.        |
 |ClientIP     | İstek için kaynak IP 'si.        |
 |Istemci bağlantı noktası     | İstek için kaynak bağlantı noktası.       |
-|HttpMethod     | İstek tarafından kullanılan HTTP yöntemi.       |
-|RequestUri     | Alınan isteğin URI 'SI.        |
+|httpMethod     | İstek tarafından kullanılan HTTP yöntemi.       |
+|requestUri     | Alınan isteğin URI 'SI.        |
 |Kullanıcı     | HTTP istek üst bilgisinden Kullanıcı Aracısı.        |
 |Http durumu     | Application Gateway istemcisinden istemciye döndürülen HTTP durum kodu.       |
-|HttpVersion     | İsteğin HTTP sürümü.        |
+|httpVersion     | İsteğin HTTP sürümü.        |
 |Alınma baytları     | Bayt cinsinden alınan paket boyutu.        |
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
 |TimeTaken| Bir isteğin işlenmesi için geçen sürenin süresi ( **saniye**cinsinden) ve Yanıt gönderilmesi. Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
@@ -261,10 +261,10 @@ Performans günlüğü, yalnızca, önceki adımlarda açıklandığı gibi her 
 |instanceId     |  Performans verilerinin oluşturulduğu örnek Application Gateway. Birden çok örnekli bir uygulama ağ geçidi için örnek başına bir satır vardır.        |
 |Healthyıhostcount     | Arka uç havuzundaki sağlıklı ana bilgisayar sayısı.        |
 |Unhealthyıhostcount     | Arka uç havuzundaki sağlıksız ana bilgisayar sayısı.        |
-|requestCount     | Hizmet verilen istek sayısı.        |
+|Istek sayısı     | Hizmet verilen istek sayısı.        |
 |dönemlerinde | Örneğinden istekleri sunan arka uca yapılan isteklerin ortalama gecikme süresi (milisaniye cinsinden). |
 |failedRequestCount| Başarısız istek sayısı.|
-|Aktarım hızı| Son günlüğün bu yana saniye başına bayt cinsinden ölçülen ortalama aktarım hızı.|
+|üretilen iş| Son günlüğün bu yana saniye başına bayt cinsinden ölçülen ortalama aktarım hızı.|
 
 ```json
 {
@@ -298,7 +298,7 @@ Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yal
 |instanceId     | Güvenlik Duvarı verilerinin oluşturulduğu örnek Application Gateway. Birden çok örnekli bir uygulama ağ geçidi için örnek başına bir satır vardır.         |
 |ClientIP     |   İstek için kaynak IP 'si.      |
 |Istemci bağlantı noktası     |  İstek için kaynak bağlantı noktası.       |
-|RequestUri     | Alınan isteğin URL 'SI.       |
+|requestUri     | Alınan isteğin URL 'SI.       |
 |ruleSetType     | Kural kümesi türü. Kullanılabilir değer OWASP ' dir.        |
 |ruleSetVersion     | Kural kümesi sürümü kullanıldı. Kullanılabilir değerler 2.2.9 ve 3,0 ' dir.     |
 |RuleId     | Tetikleme olayının kural KIMLIĞI.        |

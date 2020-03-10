@@ -1,6 +1,6 @@
 ---
-title: Öğretici yapılandırmak için bağlanmak için Azure portalında Azure veri kutusu Edge cihazı etkinleştirme | Microsoft Docs
-description: Veri kutusu Edge dağıtmak için öğretici bağlanmak, ayarlanmış yönlendiren ve fiziksel Cihazınızı etkinleştirin.
+title: Azure portal 'de Azure Data Box Edge cihaza bağlanmak, yapılandırmak, etkinleştirmek için öğretici | Microsoft Docs
+description: Dağıtım Data Box Edge, fiziksel cihazınızı bağlanmanızı, ayarlamanıza ve etkinleştirmenizi sağlar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,150 +10,150 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075079"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384678"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Öğretici: Bağlanma, ayarlamak ve Azure veri kutusu Edge etkinleştirme 
+# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Öğretici: bağlanma, kurulum ve etkinleştirme Azure Data Box Edge 
 
-Bu öğreticide, ayarlamak ve Azure veri kutusu Edge cihazınızın yerel web kullanıcı arabirimini kullanarak etkinleştirmek için nasıl bağlanabilirsiniz açıklanır.
+Bu öğreticide, yerel Web Kullanıcı arabirimini kullanarak Azure Data Box Edge cihazınızı nasıl bağlayabileceğinizi, ayarlayabileceğinizi ve etkinleştirebileceğiniz açıklanmaktadır.
 
-Kurulum ve etkinleştirme işlemini tamamlamak için yaklaşık 20 dakika sürebilir.
+Kurulum ve etkinleştirme işleminin tamamlanması 20 dakika sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Bir fiziksel cihaza bağlanma
-> * Ayarlama ve fiziksel cihaz etkinleştirme
+> * Fiziksel bir cihaza bağlanma
+> * Fiziksel cihazı ayarlama ve etkinleştirme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Yapılandırma ve veri kutusu Edge Cihazınızı ayarlamak için önce emin olun:
+Data Box Edge cihazınızı yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
-* Fiziksel cihaz içinde ayrıntılı olarak yüklediğiniz [veri kutusu Edge yükleme](data-box-edge-deploy-install.md).
-* Veri kutusu Edge cihazı yönetmek için oluşturduğunuz veri kutusu Edge hizmetinden etkinleştirme anahtarı var. Daha fazla bilgi için Git [Azure veri kutusu Edge dağıtmaya hazırlanma](data-box-edge-deploy-prep.md).
+* Fiziksel cihazı [yükleme Data Box Edge](data-box-edge-deploy-install.md)ayrıntılı olarak yüklediniz.
+* Data Box Edge cihazını yönetmek için oluşturduğunuz Data Box Edge hizmetinden etkinleştirme anahtarınız vardır. Daha fazla bilgi için, [Azure Data Box Edge dağıtmaya hazırlanma](data-box-edge-deploy-prep.md)bölümüne gidin.
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Yerel web kullanıcı Arabirimi kurulum için bağlantı 
+## <a name="connect-to-the-local-web-ui-setup"></a>Yerel Web Kullanıcı arabirimi kurulumuna bağlanma 
 
-1. Veri kutusu sınır cihazı bir statik IP adresi 192.168.100.5 ve 255.255.255.0 alt ağı ile bağlanmak için bilgisayarınızda Ethernet bağdaştırıcısını yapılandırın.
+1. Bilgisayarınızda Ethernet bağdaştırıcısını, 192.168.100.5 ve alt ağ 255.255.255.0 statik IP adresiyle Data Box Edge cihaza bağlanacak şekilde yapılandırın.
 
-2. Bilgisayar bağlantı noktası 1 Cihazınızda bağlanın. Aşağıdaki çizim, bağlantı noktası 1 Cihazınızda tanımlamak için kullanın.
+2. Bilgisayarınızı cihazınızda bağlantı noktası 1 ' e bağlayın. Cihazınızda bağlantı noktası 1 ' i tanımlamak için aşağıdaki çizimi kullanın.
 
     ![Kabloları takılmış bir cihazın arka yüzü](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
 
-3. Bir tarayıcı penceresi erişim yerel web kullanıcı Arabirimi adresinde açın ve `https://192.168.100.10`.  
-    Bu eylem, cihazda ayarladıktan sonra birkaç dakika sürebilir. 
+3. Bir tarayıcı penceresi açın ve `https://192.168.100.10`adresindeki cihazın yerel Web Kullanıcı arabirimine erişin.  
+    Bu eylem, cihazı etkinleştirdikten sonra birkaç dakika sürebilir. 
 
-    Bir hata veya Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir uyarı görürsünüz. 
+    Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz. 
    
     ![Web sitesi güvenlik sertifikası hata iletisi](./media/data-box-edge-deploy-connect-setup-activate/image2.png)
 
-4. Seçin **bu Web sayfasına devam**.  
-    Bu adımlar, kullandığınız tarayıcıya bağlı olarak değişebilir.
+4. **Bu Web sayfasına devam et**' i seçin.  
+    Bu adımlar, kullanmakta olduğunuz tarayıcıya bağlı olarak farklılık gösterebilir.
 
-5. Web kullanıcı Arabirimine cihazınızın oturum açın. Varsayılan parola *Password1*. 
+5. Cihazınızın Web Kullanıcı arabiriminde oturum açın. Varsayılan parola *Parola1*' dir. 
    
-    ![Veri kutusu Edge cihaz oturum açma sayfası](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
+    ![Data Box Edge cihaz oturum açma sayfası](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
 
-6. İstemde, cihaz Yöneticisi parolasını değiştirin.  
-    Yeni parola 8 ile 16 karakter içermesi gerekir. Şu karakterlerden üçünü içermelidir: büyük harf, küçük harfler, sayısal ve özel karakter.
+6. İstem sırasında cihaz yönetici parolasını değiştirin.  
+    Yeni parola 8 ile 16 arasında karakter içermelidir. Şu karakterlerden üçünü içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler.
 
-Artık cihazınızın Panosu'nda demektir.
+Artık cihazınızın panosundan hazırsınız.
 
-## <a name="set-up-and-activate-the-physical-device"></a>Ayarlama ve fiziksel cihaz etkinleştirme
+## <a name="set-up-and-activate-the-physical-device"></a>Fiziksel cihazı ayarlama ve etkinleştirme
  
-Panonuzu yapılandırmak ve fiziksel cihaz ile veri kutusu Edge hizmetine kaydetmek için gereken çeşitli ayarlarını görüntüler. **Cihaz adı**, **ağ ayarları**, **Web proxy ayarları**, ve **saat ayarlarını** isteğe bağlıdır. Yalnızca gerekli ayarları **Cloud ayarları**.
+Panonuz fiziksel cihazı Data Box Edge hizmetiyle yapılandırmak ve kaydetmek için gereken çeşitli ayarları görüntüler. **Cihaz adı**, **ağ ayarları**, **Web proxy ayarları**ve **zaman ayarları** isteğe bağlıdır. Yalnızca **bulut ayarları**gereklidir.
    
-![Yerel web kullanıcı Arabirimi "Pano" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
+![Yerel Web Kullanıcı arabirimi "Pano" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
-1. Sol bölmede seçin **cihaz adı**, cihazınız için kolay bir ad girin.  
-    Kolay adı 1 ila 15 karakter içeren ve harf, rakam ve kısa olması gerekir.
+1. Sol bölmede **Cihaz adı**' nı seçin ve ardından cihazınız için kolay bir ad girin.  
+    Kolay ad, 1 ile 15 arasında karakter içermeli ve harf, rakam ve kısa çizgi içermelidir.
 
-    ![Yerel web kullanıcı Arabirimi "Cihaz adı" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
+    ![Yerel Web Kullanıcı arabirimi "Cihaz adı" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
-2. (İsteğe bağlı) Sol bölmede seçin **ağ ayarları** ve ardından ayarlarını yapılandırın.  
-    Fiziksel cihazınızdan altı ağ arabirimi vardır. Bağlantı noktası 1 ve 2 bağlantı noktası 1 GB/sn ağ arabirimi var. Bağlantı noktası 3, 4 bağlantı noktası, bağlantı noktası 5 ve 6 bağlantı noktası olan 10 GB/sn ağ arabirimi olarak hizmet verebilen ayrıca tüm 25 GB/sn ağ arabirimleri. Bağlantı noktası 1 yalnızca yönetim bağlantı noktası olarak otomatik olarak yapılandırılır ve bağlantı noktası 2 bağlantı noktası 6 olan tüm veri bağlantı noktaları. **Ağ ayarları** sayfasıdır aşağıda gösterildiği gibi.
+2. Seçim Sol bölmede **ağ ayarları** ' nı seçin ve ardından ayarları yapılandırın.  
+    Fiziksel cihazınızda altı ağ arabirimi vardır. Bağlantı noktası 1 ve bağlantı noktası 2 1 GB/sn ağ arabirimlerdir. Bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 ve bağlantı noktası 6, 10 Gbps ağ arabirimi olarak da kullanılabilen tüm 25 Gbps ağ arabirimlerdir. BAĞLANTı noktası 1 otomatik olarak yalnızca yönetim bağlantı noktası olarak yapılandırılır ve bağlantı noktası 6 ' dan bağlantı noktası 6 ' dan tüm veri bağlantı noktaları bulunur. **Ağ ayarları** sayfası aşağıda gösterildiği gibidir.
     
-    ![Yerel web kullanıcı Arabirimi "Ağ ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
+    ![Yerel Web Kullanıcı arabirimi "ağ ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
-    Ağ ayarlarını yapılandırın, göz önünde bulundurun:
+    Ağ ayarlarını yapılandırırken şunları göz önünde bulundurun:
 
-   - Ortamınızda DHCP etkinse, ağ arabirimleri otomatik olarak yapılandırılır. Bir IP adresi, alt ağ, ağ geçidi ve DNS otomatik olarak atanır.
-   - DHCP etkin değilse, gerekirse statik IP atayabilirsiniz.
-   - Ağ Arabiriminizin IPv4 yapılandırabilirsiniz.
+   - Ortamınızda DHCP etkinse, ağ arabirimleri otomatik olarak yapılandırılır. IP adresi, alt ağ, ağ geçidi ve DNS otomatik olarak atanır.
+   - DHCP etkinleştirilmemişse, gerekirse statik IP 'Ler atayabilirsiniz.
+   - Ağ arabiriminizi IPv4 olarak yapılandırabilirsiniz.
 
      >[!NOTE] 
-     > Cihaza bağlanmak için başka bir IP adresi yoksa yerel DCHP, ağ arabirimine gelen statik IP adresi geçme öneririz. Birini kullanıyorsanız, ağ arabirimi ve geçiş için DHCP, DHCP adresini belirlemek mümkün olacaktır. Bir DHCP adresi için değiştirmek istiyorsanız, cihazın hizmete kaydolduktan sonra kadar bekleyin ve sonra değiştirebilirsiniz. Bulunan tüm bağdaştırıcıları IP'ler daha sonra görüntüleyebileceğiniz **cihaz özelliklerini** hizmetiniz için Azure portalında.
+     > Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini static 'ten DCHP 'e geçmenizi öneririz. Bir ağ arabirimi kullanılıyorsa ve DHCP 'ye geçerseniz, DHCP adresini belirlemenin bir yolu yoktur. Bir DHCP adresine geçiş yapmak istiyorsanız, cihaz hizmete kaydolduktan sonra bekleyin ve sonra değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
 
-3. (İsteğe bağlı) Sol bölmede seçin **Web proxy ayarları**ve ardından, web Ara sunucusunu yapılandırın. Web proxy yapılandırması bir web proxy kullanıyorsanız, isteğe bağlı olsa, yalnızca bu sayfada yapılandırabilirsiniz.
+3. Seçim Sol bölmede **Web proxy ayarları**' nı seçin ve ardından Web Proxy sunucunuzu yapılandırın. Web proxy yapılandırması isteğe bağlı olsa da, bir Web Proxy kullanıyorsanız, bunu yalnızca bu sayfada yapılandırabilirsiniz.
    
-   ![Yerel web kullanıcı Arabirimi "Web proxy ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
+   ![Yerel Web Kullanıcı arabirimi "Web proxy ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
    
-   Üzerinde **Web proxy ayarları** sayfasında, aşağıdakileri yapın:
+   **Web proxy ayarları** sayfasında, aşağıdakileri yapın:
    
-   a. İçinde **Web proxy URL'si** kutusunda, URL'yi şu biçimde girin: `http://host-IP address or FQDN:Port number`. HTTPS URL'leri desteklenmez.
+   a. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://host-IP address or FQDN:Port number`. HTTPS URL 'Leri desteklenmez.
 
-   b. Altında **kimlik doğrulaması**seçin **hiçbiri** veya **NTLM**.
+   b. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin.
 
-   c. Kimlik doğrulaması kullanıyorsanız, bir kullanıcı adı ve parola girin.
+   c. Kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı ve parola girin.
 
-   d. Doğrulama ve yapılandırılmış bir web proxy ayarlarını uygulamak için **ayarları uygulamak**.
+   d. Yapılandırılmış Web proxy ayarlarını doğrulamak ve uygulamak için **Ayarları Uygula**' yı seçin.
 
-4. (İsteğe bağlı) Sol bölmede seçin **saat ayarlarını**ve ardından saat dilimini ve cihazınız için birincil ve ikincil NTP sunucuları yapılandırın.  
-    Bu, bulut hizmeti sağlayıcılarıyla doğrulanabileceği şekilde Cihazınızı saati eşitlemesi gerekir çünkü NTP sunucuları gereklidir.
+4. Seçim Sol bölmede **zaman ayarları**' nı seçin ve ardından cihazınız için saat dilimini ve birincil ve ikincil NTP sunucularını yapılandırın.  
+    Cihazınızın bulut hizmeti sağlayıcılarınız ile kimlik doğrulaması yapabilmesi için zaman eşitlemesini gerektiğinden NTP sunucuları gereklidir.
        
-    Üzerinde **saat ayarlarını** sayfasında, aşağıdakileri yapın:
+    **Zaman ayarları** sayfasında, aşağıdakileri yapın:
     
-    1. İçinde **saat dilimi** aşağı açılan listesinde, hangi cihaz dağıtıldığı coğrafi konuma karşılık gelen saat dilimini seçin.
-        Cihazınız için varsayılan saat dilimini PST ' dir. Cihazınız zamanlanan tüm işlemler için bu saat dilimini kullanır.
+    1. **Saat dilimi** açılan listesinde, cihazın dağıtıldığı coğrafi konuma karşılık gelen saat dilimini seçin.
+        Cihazınızın varsayılan saat dilimi PST ' dir. Cihazınız zamanlanan tüm işlemler için bu saat dilimini kullanır.
 
-    2. İçinde **birincil NTP sunucusu** kutusunda cihazınız için birincil sunucunun girin veya time.windows.com varsayılan değerini kabul edin.  
-        Ağınızın, NTP trafiğini veri merkezinizden İnternete geçirilmesine izin vermesini sağlayın.
+    2. **BIRINCIL NTP sunucusu** kutusunda, cihazınızın birincil sunucusunu girin veya Time.Windows.com varsayılan değerini kabul edin.  
+        Ağınızda NTP trafiğinin veri merkezinizden internet 'e geçmesine izin verdiğinden emin olun.
 
-    3. İsteğe bağlı olarak **ikincil NTP sunucusu** kutusuna, cihazınız için ikincil sunucu girin.
+    3. İsteğe bağlı olarak, **IKINCIL NTP sunucusu** kutusuna cihazınız için bir ikincil sunucu girin.
 
-    4. Doğrulama ve yapılandırılmış zaman ayarları uygulamak için **ayarları uygulamak**.
+    4. Yapılandırılan saat ayarlarını doğrulamak ve uygulamak için **Ayarları Uygula**' yı seçin.
 
-        ![Yerel web kullanıcı Arabirimi "Saat ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
+        ![Yerel Web Kullanıcı arabirimi "zaman ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. (İsteğe bağlı) Sol bölmede seçin **depolama ayarlarını** Cihazınızda depolama dayanıklılığını yapılandırma. Bu özellik şu anda önizleme sürümündedir. Varsayılan olarak, cihazdaki depolama alanına dayanıklı değildir ve cihazda bir veri diski başarısız olursa veri kaybı olan. Dayanıklı seçeneğini etkinleştirdiğinizde, cihazdaki depolama alanına yapılandırılacak ve veri kaybı olmadan bir veri diski başarısız cihaza dayanabilir. Depolama olarak dayanıklı yapılandırma cihazınızın kullanılabilir kapasiteyi azaltır.
+5. Seçim Cihazınızda depolama dayanıklılığı yapılandırmak için sol bölmede **depolama ayarları** ' nı seçin. Bu özellik şu anda önizleme sürümündedir. Varsayılan olarak, cihazdaki depolama alanı dayanıklı değildir ve cihazda bir veri diski başarısız olursa veri kaybı olur. Dayanıklı seçeneğini etkinleştirdiğinizde, cihazdaki depolama alanı yeniden yapılandırılır ve cihaz veri kaybı olmadan bir veri diskinin hatasını değiştirebilir. Depolamayı dayanıklı olarak yapılandırmak, cihazınızın kullanılabilir kapasitesini azaltır.
 
     > [!IMPORTANT] 
-    > Dayanıklılık, yalnızca cihaz etkinleştirmeden önce yapılandırılabilir. 
+    > Dayanıklılık yalnızca cihazı etkinleştirmeden önce yapılandırılabilir. 
 
-    ![Yerel web kullanıcı Arabirimi "Depolama ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+    ![Yerel Web Kullanıcı arabirimi "depolama ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
 
-6. Sol bölmede seçin **Cloud ayarları**ve ardından Azure portalında veri kutusu Edge hizmetiyle Cihazınızı etkinleştirin.
+6. Sol bölmede **bulut ayarları**' nı seçin ve ardından Azure Portal Data Box Edge hizmetiyle cihazınızı etkinleştirin.
     
-    1. İçinde **etkinleştirme anahtarı** kutusuna, bölümünde edindiğiniz etkinleştirme anahtarı girin [etkinleştirme anahtarı alma](data-box-edge-deploy-prep.md#get-the-activation-key) veri kutusu Edge için.
+    1. **Etkinleştirme anahtarı** kutusunda, Data Box Edge için [etkinleştirme anahtarını al](data-box-edge-deploy-prep.md#get-the-activation-key) bölümünde aldığınız etkinleştirme anahtarını girin.
     2. **Uygula**’yı seçin.
        
-        ![Yerel web kullanıcı Arabirimi "Bulut ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
+        ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 
-    3. İlk cihaz etkinleştirilir. Cihaz ardından varsa kritik güncelleştirmelerini taranır ve varsa, güncelleştirmeleri otomatik olarak uygulanır. Belirten bir bildirim görürsünüz.
+    3. İlk olarak cihaz etkinleştirilir. Daha sonra bu cihaz kritik güncelleştirmeler için taranır ve varsa güncelleştirmeler otomatik olarak uygulanır. Bu etkiye yönelik bir bildirim görürsünüz.
 
-        İletişim kutusu, kopyalayın ve güvenli bir konuma kaydedin, bir kurtarma anahtarı da vardır. Bu anahtar, cihaz önyükleme yapılamıyor durumunda verilerinizi kurtarmak için kullanılır.
+        İletişim kutusunda Ayrıca, kopyalayıp güvenli bir konuma kaydetmeniz gereken bir kurtarma anahtarı bulunur. Bu anahtar, cihazın önyüklenebildiği olaydaki verilerinizi kurtarmak için kullanılır.
 
-        ![Yerel web kullanıcı Arabirimi "Bulut ayarları" sayfası güncelleştirildi](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
+        ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası güncelleştirildi](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
-    4. Güncelleştirme başarıyla tamamlandıktan sonra birkaç dakika beklemeniz gerekebilir. Cihaz başarıyla etkinleştirildiğini belirten sayfayı güncelleştirir.
+    4. Güncelleştirme başarıyla tamamlandıktan sonra birkaç dakika beklemeniz gerekebilir. Sayfa, cihazın başarıyla etkinleştirildiğini belirtecek şekilde güncelleştirilir.
 
-        ![Yerel web kullanıcı Arabirimi "Bulut ayarları" sayfası güncelleştirildi](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası güncelleştirildi](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
-Cihaz Kurulumu tamamlanır. Artık Cihazınızda paylaşımlarını ekleyebilirsiniz.
+Cihaz kurulumu tamamlanmıştır. Artık cihazınıza paylaşımlar ekleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Bir fiziksel cihaza bağlanma
-> * Ayarlama ve fiziksel cihaz etkinleştirme
+> * Fiziksel bir cihaza bağlanma
+> * Fiziksel cihazı ayarlama ve etkinleştirme
 
-Veri kutusu Edge cihazınıza ile veri aktarmayı öğrenmek için bkz:
+Data Box Edge cihazınızla verilerin nasıl aktarılacağı hakkında bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Veri kutusu Edge ile veri aktarımı](./data-box-edge-deploy-add-shares.md).
+> [Data Box Edge verileri aktarın](./data-box-edge-deploy-add-shares.md).

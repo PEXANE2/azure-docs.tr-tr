@@ -10,21 +10,21 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892491"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360925"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Kapsayıcılara ve blob’lara anonim okuma erişimini yönetme
 
-Azure Blob depolamada bir kapsayıcıya ve bloblarına anonim, genel okuma erişimini etkinleştirebilirsiniz. Bunu yaparak hesap anahtarınızı paylaşmadan ve paylaşılan erişim imzasına (SAS) gerek kalmadan bu kaynaklara salt okuma erişimi verebilirsiniz.
+Azure Blob depolama alanındaki bir kapsayıcıya ve bloblarına anonim, genel okuma erişimi sağlayabilirsiniz. Bunu yaptığınızda, hesap anahtarınızı paylaşmadan ve paylaşılan erişim imzası (SAS) gerekmeden bu kaynaklara salt okuma erişimi verebilirsiniz.
 
 Genel okuma erişimi, belirli Blobların anonim okuma erişimi için her zaman kullanılabilir olmasını istediğiniz senaryolar için idealdir. Daha ayrıntılı denetim için, paylaşılan erişim imzası oluşturabilirsiniz. Paylaşılan erişim imzaları, belirli bir süre boyunca farklı izinler kullanarak kısıtlı erişim sağlamanıza olanak tanır. Paylaşılan erişim imzaları oluşturma hakkında daha fazla bilgi için bkz. [Azure depolama 'da paylaşılan erişim imzaları (SAS) kullanma](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Kapsayıcılar ve bloblara anonim kullanıcılara izin verme
 
-Varsayılan olarak kapsayıcıya ve içindeki bloblara yalnızca uygun izinlerin verilmiş olduğu kullanıcılar erişebilir. Anonim kullanıcılara kapsayıcı ve blobları üzerinde okuma erişimi vermek için, kapsayıcıya genel erişim düzeyini ayarlayabilirsiniz. Bir kapsayıcıya genel erişim verdiğinizde, anonim kullanıcılar, isteği yetkilendirmeden genel olarak erişilebilen bir kapsayıcı içindeki Blobları okuyabilir.
+Varsayılan olarak, bir kapsayıcıya ve içindeki bloblara yalnızca uygun izinlere sahip olan bir kullanıcı tarafından erişilebilir. Anonim kullanıcılara bir kapsayıcıya ve bloblarına okuma erişimi sağlamak için kapsayıcı genel erişim düzeyini ayarlayabilirsiniz. Bir kapsayıcıya genel erişim verdiğinizde, anonim kullanıcılar, isteği yetkilendirmeden genel olarak erişilebilen bir kapsayıcı içindeki Blobları okuyabilir.
 
 Aşağıdaki izinlerle bir kapsayıcı yapılandırabilirsiniz:
 
@@ -139,4 +139,4 @@ public static void DownloadBlobAnonymously()
 
 - [Azure depolama 'ya erişimi yetkilendirme](../common/storage-auth.md)
 - [Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md)
-- [Blob Hizmeti REST API'si](/rest/api/storageservices/blob-service-rest-api)
+- [Blob hizmeti REST API](/rest/api/storageservices/blob-service-rest-api)

@@ -7,11 +7,11 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087166"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386885"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
@@ -63,7 +63,7 @@ Veri paylaşımının yönetilen kimliği için bir rol ataması oluşturmak iç
 1. **Rol ataması Ekle**' yi seçin.
 1. *Rol*altında, yukarıdaki rol atama tablosunda bulunan rolü seçin (örneğin, depolama hesabı Için, *Depolama Blobu veri okuyucusu*' nu seçin).
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
-1. *Save (Kaydet)* düğmesine tıklayın.
+1. *Kaydet* düğmesine tıklayın.
 
 SQL tabanlı kaynaklarda, yukarıdaki adımlara ek olarak SQL veritabanı 'nda Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıya *db_datareader* izni verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [verilerinizi paylaşma](share-your-data.md) öğreticisinde bulunabilir. 
 
@@ -81,7 +81,7 @@ Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluştur
 1. **Rol ataması Ekle**' yi seçin.
 1. *Rol*altında, yukarıdaki rol atama tablosunda bulunan rolü seçin (örneğin, depolama hesabı Için, *Depolama Blobu veri okuyucusu*' nu seçin).
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
-1. *Save (Kaydet)* düğmesine tıklayın.
+1. *Kaydet* düğmesine tıklayın.
 
 SQL tabanlı hedefte, yukarıdaki adımlara ek olarak SQL veritabanı 'nda Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izin verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşulların yanı sıra örnek bir betik de [kabul et ve Al](subscribe-to-data-share.md) öğreticisinde bulunabilir. 
 

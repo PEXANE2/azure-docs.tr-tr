@@ -4,11 +4,11 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çal�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.openlocfilehash: 2c088c27a678a4541cbba3c4c43c9cd830c60ff0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472348"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393921"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir Azure VM 'de SAP HANA veritabanlarını yönetme
 
@@ -23,7 +23,7 @@ Bu öğreticinin sonunda şunları yapabileceksiniz:
 > * Yedekleme ve geri yükleme işlerini izleme
 > * SAP HANA örneğine eklenen yeni veritabanlarını koruma
 > * İlkeyi değiştirme
-> * Korumayı durdurma
+> * Korumayı Durdur
 > * Korumayı sürdürür
 
 SAP HANA veritabanınızı yedeklemek için [CLI kullanarak Azure 'da bir SAP HANA veritabanı yedeklemeyi](tutorial-sap-hana-backup-cli.md) kullandıysanız aşağıdaki kaynakları kullanıyorsunuz:
@@ -69,7 +69,7 @@ az backup item set policy --resource-group saphanaResourceGroup \
     --name saphanadatabase;hxe;hxe \
 ```
 
-Çıkış aşağıdakine benzer olmalıdır:
+Çıktı şöyle görünmelidir:
 
 ```output
 Name                                  Resource Group
@@ -137,7 +137,7 @@ az backup protection disable --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Çıkış aşağıdakine benzer olmalıdır:
+Çıktı şöyle görünmelidir:
 
 ```output
 Name                                  ResourceGroup
@@ -161,7 +161,7 @@ az backup protection disable --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Çıkış aşağıdakine benzer olmalıdır:
+Çıktı şöyle görünmelidir:
 
 ```output
 Name                                  ResourceGroup
@@ -185,7 +185,7 @@ az backup protection resume --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Çıkış aşağıdakine benzer olmalıdır:
+Çıktı şöyle görünmelidir:
 
 ```output
 Name                                  ResourceGroup

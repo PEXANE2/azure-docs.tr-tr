@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082443"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356551"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL veritabanı uygulaması geliştirmeye genel bakış
 
@@ -52,7 +52,7 @@ Azure SQL veritabanı, temeldeki altyapıda veya bulut varlıkları arasındaki 
 
 Azure SQL veritabanınızda planlı bakım olaylarına hazırlanma hakkında daha fazla bilgi için bkz. Azure [SQL veritabanı 'Nda Azure bakım olaylarını planlama](sql-database-planned-maintenance.md).
 
-## <a name="network-considerations"></a>Ağ konuları
+## <a name="network-considerations"></a>Ağ ile ilgili önemli noktalar
 
 - İstemci programınızı barındıran bilgisayarda güvenlik duvarının 1433 numaralı bağlantı noktasından giden TCP iletişimine izin verdiğinden emin olun.  Daha fazla bilgi: [Azure SQL veritabanı güvenlik duvarını yapılandırma](sql-database-configure-firewall-settings.md).
 - İstemciniz bir Azure sanal makinesi (VM) üzerinde çalışırken istemci programınız SQL veritabanı 'na bağlanırsa, sanal makine üzerinde belirli bağlantı noktası aralıklarını açmanız gerekir. Daha fazla bilgi: [ADO.NET 4,5 ve SQL veritabanı için 1433 dışındaki bağlantı noktaları](sql-database-develop-direct-route-ports-adonet-v12.md).

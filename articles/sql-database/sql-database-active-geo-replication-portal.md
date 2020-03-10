@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348873"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396869"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure portal Azure SQL veritabanı için etkin Coğrafi çoğaltmayı yapılandırma ve yük devretmeyi başlatma
 
@@ -24,7 +24,7 @@ Bu makalede, Azure SQL veritabanı 'nda [Azure Portal](https://portal.azure.com)
 
 Tek ve havuza alınmış veritabanlarına sahip otomatik yük devretme grupları hakkında daha fazla bilgi için bkz. [tek ve havuza alınmış veritabanlarıyla yük devretme grupları kullanmanın en iyi yöntemleri](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Yönetilen örneklerle otomatik yük devretme grupları hakkında daha fazla bilgi için bkz. [yönetilen örneklerle yük devretme grupları kullanmanın en iyi yöntemleri](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure portal kullanarak etkin Coğrafi çoğaltmayı yapılandırmak için aşağıdaki kaynağa ihtiyacınız vardır:
 

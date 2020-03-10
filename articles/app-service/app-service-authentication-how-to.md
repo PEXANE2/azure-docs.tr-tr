@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672228"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356938"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -142,7 +142,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 App Service, özel üstbilgiler kullanarak Kullanıcı taleplerini uygulamanıza geçirir. Dış isteklerin bu üst bilgileri ayarlama izni yoktur, bu nedenle yalnızca App Service tarafından ayarlandıysa mevcut olmaları gerekir. Bazı örnek üstbilgileri şunlardır:
 
 * X-MS-CLIENT-PRINCIPAL-NAME
-* X-MS-CLIENT-PRINCIPAL-ıD
+* X-MS-CLIENT-PRINCIPAL-ID
 
 Herhangi bir dilde veya çerçevede yazılan kod, bu üst bilgilerden ihtiyaç duymakta olan bilgileri alabilir. ASP.NET 4,6 uygulamaları için, **ClaimsPrincipal** otomatik olarak uygun değerlerle ayarlanır. Ancak ASP.NET Core, App Service Kullanıcı taleplerini tümleştiren bir kimlik doğrulama ara yazılımı sağlamaz. Geçici bir çözüm için bkz. [Maximerouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
@@ -176,7 +176,7 @@ Sağlayıcınızın erişim belirtecinin ( [oturum belirteci](#extend-session-to
 - **Microsoft hesabı**: [Microsoft hesabı kimlik doğrulaması ayarlarını yapılandırırken](configure-authentication-provider-microsoft.md)`wl.offline_access` kapsamını seçin.
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com)aşağıdaki adımları uygulayın:
     1. Sayfanın üst kısmında **oku/yaz**' ı seçin.
-    2. Sol tarayıcıda > **abonelikler** ' e gidin **_\<abonelik\_adı_**  > **ResourceGroups** **_ > \<\__** **Configuration**\_**authsettings öğesine tıklayın** >  **_app_**  >  > siteleri ** > ** **\<\_** . 
+    2. Sol tarayıcıda > **abonelikler** ' e gidin **_\<abonelik\_adı_**  > **ResourceGroups** **_ > \<\__** **Configuration**\_**authsettings öğesine tıklayın**> >  **_app_**  >  > siteleri ** > ** **\<\_** . >  >  
     3. **Düzenle**’ye tıklayın.
     4. Aşağıdaki özelliği değiştirin. _\<app\_ıd >_ , erişmek istediğiniz hizmetin Azure ACTIVE DIRECTORY uygulama kimliğiyle değiştirin.
 
@@ -223,7 +223,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından oturum açmanızı sağlar. Örneğin, Microsoft hesabı _Outlook.com_, _Live.com_ve _hotmail.com_ hesaplarına izin verir. Azure AD, oturum açma hesapları için herhangi bir sayıda özel etki alanı sağlar. Ancak, kullanıcılarınızı kendi markalı Azure AD oturum açma sayfanız (örneğin, `contoso.com`) için doğrudan hızlandırmayı isteyebilirsiniz. Oturum açma hesaplarının etki alanı adını önermek için aşağıdaki adımları izleyin.
 
-[https://resources.azure.com](https://resources.azure.com)' de, **_\< abonelik\_ adı_**  > **ResourceGroups** > \< **_kaynak\__** ** > \_** > > **Configuration** > **authsettings öğesine tıklayın** >  >  **_App_** **\<\_** **siteleri** > 
+[https://resources.azure.com](https://resources.azure.com)' de, **_\<abonelik\_adı_**  > **ResourceGroups** > \< **_kaynak\__** ** > \_** > > **Configuration** > **authsettings öğesine tıklayın** >  >  **_App_** **\<\_** **siteleri** > >  >  
 
 **Düzenle**' ye tıklayın, aşağıdaki özelliği değiştirin ve ardından **Yerleştir**' e tıklayın. _\<etki alanı\_adı >_ istediğiniz etki alanıyla değiştirdiğinizden emin olun.
 

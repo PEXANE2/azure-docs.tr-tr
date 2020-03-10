@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123105"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393731"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding sık sorulan sorular (SSS)
 
@@ -31,11 +31,11 @@ Language Understanding (LUSıS) yenilikleri hakkında [daha fazla bilgi edinin](
 ## <a name="authoring"></a>Yazma
 
 ### <a name="what-are-the-luis-best-practices"></a>LUIS en iyi uygulamalar nelerdir?
-İle başlayan [geliştirme döngüsü](luis-concept-app-iteration.md), ardından okuma [en iyi uygulamalar](luis-concept-best-practices.md).
+[Yazma döngüsünü](luis-concept-app-iteration.md)başlatın ve [en iyi uygulamaları](luis-concept-best-practices.md)okuyun.
 
 ### <a name="what-is-the-best-way-to-start-building-my-app-in-luis"></a>LUIS uygulama oluşturmaya başlamak için en iyi yolu nedir?
 
-Uygulamanızı oluşturmak için en iyi yollarından biri sayesinde bir [artımlı işlem](luis-concept-app-iteration.md).
+Uygulamanızı oluşturmanın en iyi yolu, [artımlı bir işlemdir](luis-concept-app-iteration.md).
 
 ### <a name="what-is-a-good-practice-to-model-the-intents-of-my-app-should-i-create-more-specific-or-more-generic-intents"></a>Uygulamamın ıntents modellemek için iyi bir uygulama nedir? Daha özel ya da daha genel bir ıntents oluşturmalıyım?
 
@@ -43,23 +43,23 @@ Uygulamanızı oluşturmak için en iyi yollarından biri sayesinde bir [artıml
 
 ### <a name="is-it-important-to-train-the-none-intent"></a>Hiçbiri hedefi eğitmek önemlidir?
 
-Evet, eğitmek iyi olduğu, **hiçbiri** diğer amaçlar için daha fazla etiket ekledikçe daha fazla Konuşma ile hedefi. 1 veya 2 etiketleri eklenen iyi oranıdır **hiçbiri** bir amaç için eklenen her 10 etiketler. Bu oran LUIS discriminative gücünü artırıyor.
+Evet, diğer amaçlar için daha fazla etiket eklerken, **hiçbiri** amacınızı daha fazla şekilde eğitmeniz yararlı olur. Bir amaca eklenen her 10 **etiket için,** iyi bir oran 1 veya 2 etikettir. Bu oran LUIS discriminative gücünü artırıyor.
 
 ### <a name="how-can-i-correct-spelling-mistakes-in-utterances"></a>Konuşma, yazım hatalarını düzeltmek nasıl?
 
-Bkz: [Bing yazım denetimi API'si V7](luis-tutorial-bing-spellcheck.md) öğretici. LUIS, Bing yazım denetimi API'si V7 tarafından uygulanan sınırları zorlar.
+Bkz. [Bing yazım denetimi API'si v7](luis-tutorial-bing-spellcheck.md) öğreticisi. LUIS, Bing yazım denetimi API'si V7 tarafından uygulanan sınırları zorlar.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>LUIS uygulamamı program aracılığıyla nasıl düzenleyebilirim?
-Program aracılığıyla LUIS uygulamanızı düzenlemek için kullanın [yazma API](https://go.microsoft.com/fwlink/?linkid=2092087). Bkz: [API geliştirme LUIS çağrı](./get-started-get-model-rest-apis.md) ve [Node.js kullanarak program aracılığıyla LUIS uygulaması oluşturma](./luis-tutorial-node-import-utterances-csv.md) yazma API'nin nasıl çağrılacağını örnekleri için. Yazma API kullanmanızı gerektirir. bir [anahtar yazma](luis-concept-keys.md#azure-resources-for-luis) yerine bir uç noktası anahtarı. Programlı yazma, ayda en fazla 1.000.000 çağrısı ve beş saniyede sağlar. LUIS ile kullandığınız anahtarları hakkında daha fazla bilgi için bkz. [anahtarları Yönet](./luis-concept-keys.md).
+LUSıS uygulamanızı programlı bir şekilde düzenlemek için [yazma API](https://go.microsoft.com/fwlink/?linkid=2092087)'sini kullanın. Yazma API 'sini çağırma örnekleri için bkz. [lusıs yazma API 'Sini çağırma](./get-started-get-model-rest-apis.md) ve [Node. js kullanarak program aracılığıyla bir Lusıs uygulaması oluşturma](./luis-tutorial-node-import-utterances-csv.md) . Yazma API 'SI, bir uç nokta anahtarı yerine bir [yazma anahtarı](luis-concept-keys.md#azure-resources-for-luis) kullanmanızı gerektirir. Programlı yazma, ayda en fazla 1.000.000 çağrısı ve beş saniyede sağlar. LUO ile kullandığınız anahtarlar hakkında daha fazla bilgi için bkz. [anahtarları yönetme](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Burada sağlanan normal ifade deseni özelliği eşleşiyor mu?
-Önceki **deseni özelliği** şu anda kullanım dışı, değiştirilen  **[desenleri](luis-concept-patterns.md)** .
+Önceki **desen özelliği** Şu anda kullanım dışıdır ve **[desenlerle](luis-concept-patterns.md)** değiştirilmiştir.
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Bir varlık doğru veri çekmek için nasıl kullanırım?
-Bkz: [varlıkları](luis-concept-entity-types.md) ve [veri ayıklama](luis-concept-data-extraction.md).
+Bkz. [varlıklar](luis-concept-entity-types.md) ve [veri ayıklama](luis-concept-data-extraction.md).
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Bir örnek utterance çeşitleri noktalama dahil edilsin mi?
-Amaç için örnek konuşma olarak farklı çeşitlemeleri ekleyebilir veya ekleme ile örnek utterance desenini [yok saymak için söz dizimi](luis-concept-patterns.md#pattern-syntax) noktalama işareti.
+Hedefe örnek olarak farklı Çeşitlemeler ekleyin ya da noktalama işaretlerini [yoksaymak için söz dizimi](luis-concept-patterns.md#pattern-syntax) ile örnek desen ekleyin.
 
 ### <a name="does-luis-currently-support-cortana"></a>LUIS, şu anda cortana'yı destekliyor mu?
 
@@ -117,20 +117,20 @@ Bu durum kodu, işlemleriniz fiyatlandırma katmanınızı aştığında döndü
 
 Beklenmeyen sorgu tahmin sonuçlarını yayımlanan model durumuna dayanır. Modeli düzeltmek için modeli değiştirmeniz, eğitme ve yeniden yayımlamanız gerekebilir. 
 
-Model düzeltme ile başlayan [etkin olarak öğrenmeye](luis-how-to-review-endpoint-utterances.md).
+Modelin düzeltilmesi, [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)ile başlar.
 
-Güncelleştirerek belirleyici eğitim kaldırabilirsiniz [uygulama sürümü ayarları API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) tüm eğitim verilerini kullanmak için.
+Tüm eğitim verilerini kullanmak için [uygulama sürümü ayarları API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 'sini güncelleştirerek belirleyici olmayan eğitimi kaldırabilirsiniz.
 
-Gözden geçirme [en iyi uygulamalar](luis-concept-best-practices.md) diğer ipuçları için. 
+Diğer ipuçları için [en iyi uygulamaları](luis-concept-best-practices.md) gözden geçirin. 
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Neden LUIS geçici bir çözüm veya sözcük ortasında sorguya alanları ekliyor mu?
-LUIS [tokenizes](luis-glossary.md#token) utterance temel alarak [kültür](luis-language-support.md#tokenization). Parçalanmış değeri ve özgün değeri kullanılabilir [veri ayıklama](luis-concept-data-extraction.md#tokenized-entity-returned).
+LUSıS, [kültürü](luis-language-support.md#tokenization)temel alan bir şekilde [simgeleştirir](luis-glossary.md#token) . Hem özgün değer hem de simgeleştirilmiş değer [veri ayıklama](luis-concept-data-extraction.md#tokenized-entity-returned)için kullanılabilir.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Nasıl oluştururum ve uç noktası anahtarı bir LUIS atama?
-[Uç nokta oluşturma](luis-how-to-azure-subscription.md) için azure'da, [hizmet](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) düzeyi. [Anahtarı](luis-how-to-azure-subscription.md) **[Azure kaynakları](luis-how-to-azure-subscription.md)** sayfasına atayın. Bu eyleme karşılık gelen hiçbir API yoktur. HTTP isteği için uç nokta için değiştirmeniz gerekir sonra [yeni uç nokta anahtarını kullanmak](luis-concept-keys.md).
+Azure 'da [hizmet](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) düzeyiniz için [uç nokta anahtarı oluşturun](luis-how-to-azure-subscription.md) . [Anahtarı](luis-how-to-azure-subscription.md) **[Azure kaynakları](luis-how-to-azure-subscription.md)** sayfasına atayın. Bu eyleme karşılık gelen hiçbir API yoktur. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-concept-keys.md)için http isteğini uç noktaya değiştirmeniz gerekir.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUIS puanları nasıl yorumlanacağı?
-Sisteminizi, en yüksek Puanlama amaç değeri ne olursa olsun kullanmanız gerekir. Örneğin, 0,5 (daha az % 50'den) altında bir puan mutlaka LUIS düşük güven olduğunu gelmez. Daha fazla eğitim verileri yardımcı sağlama artırmak [puanı](luis-concept-prediction-score.md) olasılıkla hedefinin.
+Sisteminizi, en yüksek Puanlama amaç değeri ne olursa olsun kullanmanız gerekir. Örneğin, 0,5 (daha az % 50'den) altında bir puan mutlaka LUIS düşük güven olduğunu gelmez. Daha fazla eğitim verisi sağlamak, en olası amacın [Puanını](luis-concept-prediction-score.md) artırmaya yardımcı olabilir.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Benim uygulamamın Pano uç noktası isabet neden göremiyorum?
 Uygulamanızın panosunda toplam uç noktası İsabeti düzenli olarak güncelleştirilir ancak Azure portalında LUIS uç nokta anahtarıyla ilişkili ölçümleri daha sık güncelleştirilir.
@@ -151,26 +151,26 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 Bir LUSıS uç noktası anahtarı oluşturmak ve uygulamaya atamak için bu [yönergeleri](#how-do-i-create-and-assign-a-luis-endpoint-key) izleyin. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-concept-keys.md)için ISTEMCI uygulamasının http isteğini uç noktaya değiştirmeniz gerekir. Farklı bir bölgede yeni bir kaynak oluşturduysanız, HTTP istemci isteği bölgesini de değiştirin.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>LUIS Noktam güvenliğini nasıl sağlayabilirim?
-Bkz: [uç nokta güvenliği](luis-concept-keys.md#securing-the-endpoint).
+Bkz. [uç noktayı güvenli hale getirme](luis-concept-keys.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>LUIS sınırlar içinde çalışma
 
 ### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Hedefleri ve LUIS uygulaması destekleyebileceği varlıkların sayısı nedir?
-Bkz: [sınırları](luis-boundaries.md) başvuru.
+[Sınır](luis-boundaries.md) başvurusuna bakın.
 
 ### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Bir LUIS uygulaması amacı, en fazla sayısından daha oluşturmak istiyorsunuz. Ne yapmalıyım?
 
-Bkz: [hedefleri için en iyi yöntemler](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
+[Amaçlar Için en iyi uygulamalar](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents)bölümüne bakın.
 
 ### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>LUIS birden çok varlık sayısı ile bir uygulama oluşturmak istiyorsunuz. Ne yapmalıyım?
 
-Bkz: [varlıklar için en iyi yöntemler](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
+Bkz. [varlıklar Için en iyi uygulamalar](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
 
 ### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>Listeler sayısına ve tümcecik boyutunu sınırları nelerdir?
-Uzunluğunun üst sınırı için bir [tümcecik listesi](./luis-concept-feature.md), bkz: [sınırları](luis-boundaries.md) başvuru.
+[Tümcecik listesinin](./luis-concept-feature.md)uzunluk üst sınırı için bkz. [sınır](luis-boundaries.md) başvurusu.
 
 ### <a name="what-are-the-limits-on-example-utterances"></a>Örnek konuşma sınırları nelerdir?
-Bkz: [sınırları](luis-boundaries.md) başvuru.
+[Sınır](luis-boundaries.md) başvurusuna bakın.
 
 ## <a name="testing-and-training"></a>Test ve eğitim
 
@@ -180,20 +180,20 @@ Hataları, etiketlerinizi ve Modellerinizi ait tahminlerin arasında bazı bir t
 * LUIS amaçları arasında Ayrımcılığı geliştirmek amacıyla daha fazla etiket ekleyin.
 * Hızlı bilgi LUIS yardımcı olmak için etki alanına özel sözlük tanıtan ifade listesi özellikleri ekleyin.
 
-Bkz: [toplu test](luis-tutorial-batch-testing.md) öğretici.
+Bkz. [Batch test](luis-tutorial-batch-testing.md) öğreticisi.
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Bir uygulamayı dışarı sonra (yeni bir uygulama kimliği ile) yeni bir uygulamaya yeniden içe tıkladığınızda LUIS tahmin puanları farklıdır. Bu neden gerçekleşir?
 
-Bkz: [aynı uygulamanın bir kopyasını tahmin farklılıklardan](luis-concept-prediction-score.md#review-intents-with-similar-scores).
+[Aynı uygulamanın kopyaları arasındaki tahmin farklarını](luis-concept-prediction-score.md#review-intents-with-similar-scores)inceleyin.
 
 ### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Uygulamama yaptığım değişiklikleri sonra bazı konuşma yanlış ıntent'e gidin. Rastgele olarak kaybolması sorunu görünüyor. Bunu nasıl düzeltirim? 
 
-Bkz: [tüm verilerle Train](luis-how-to-train.md#train-with-all-data).
+Bkz. [tüm verilerle eğitme](luis-how-to-train.md#train-with-all-data).
 
 ## <a name="app-publishing"></a>Uygulama yayımlama
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Kiracı kimliği "Anahtarı uygulamanıza ekleme" penceresinde nedir?
-Azure'da, bir kiracı istemcisi veya bir hizmet ile ilişkili kuruluş temsil eder. Azure portalında Kiracı Kimliğinizi bulmak **dizin kimliği** kutusunu seçerek **Azure Active Directory** > **Yönet**  >  **Özellikleri**.
+Azure'da, bir kiracı istemcisi veya bir hizmet ile ilişkili kuruluş temsil eder.  > **özelliklerini** **Yönet** > **Azure ACTIVE DIRECTORY** ' i seçerek **dizin kimliği** kutusundaki Azure Portal kiracı kimliğinizi bulun.
 
 ![Azure portalında Kiracı kimliği](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -204,7 +204,7 @@ Azure'da, bir kiracı istemcisi veya bir hizmet ile ilişkili kuruluş temsil ed
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Neden atadığım daha uygulamama atanan daha fazla uç nokta anahtarları vardır?
 Her LUIS uygulaması yazma başlangıç anahtarı kolaylık uç nokta listesinde yok. LUIS deneyebilirsiniz. Bu nedenle bu anahtar yalnızca birkaç uç noktası İsabeti sağlar.  
 
-LUIS genel kullanıma (GA) şeklindeydi uygulamanız varsa, aboneliğinizdeki LUIS uç nokta anahtarları otomatik olarak atanır. Bu, GA geçiş kolaylaştırmak için yapıldı. Azure portalında yeni bir LUIS uç nokta anahtarlar _değil_ LUIS otomatik atanmış.
+LUIS genel kullanıma (GA) şeklindeydi uygulamanız varsa, aboneliğinizdeki LUIS uç nokta anahtarları otomatik olarak atanır. Bu, GA geçiş kolaylaştırmak için yapıldı. Azure portal tüm yeni Luo uç nokta anahtarları LUO _'ya otomatik olarak_ atanmaz.
 
 ## <a name="key-management"></a>Anahtar yönetimi
 
@@ -227,10 +227,10 @@ Yazma [anahtarı deneyimine](luis-migration-authoring.md)geçtikten sonra, yazma
 ## <a name="app-management"></a>Uygulama yönetimi
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Kullanıcı konuşma günlüğünü nasıl indiririm?
-Varsayılan olarak, kullanıcıların konuşma LUIS uygulamanızı günlüğe kaydeder. LUIS uygulamanızı kullanıcılara gönderme konuşma günlüğünü indirmek için Git **uygulamalarım**ve uygulamayı seçin. Bağlamsal araç çubuğunda, seçin **uç nokta günlükleri dışarı aktar**. Günlük bir virgülle ayrılmış değer (CSV) dosyası olarak biçimlendirilir.
+Varsayılan olarak, kullanıcıların konuşma LUIS uygulamanızı günlüğe kaydeder. Kullanıcıların LUSıS uygulamanıza gönderdikleri bir günlük günlüğünü indirmek için **uygulamalarım**' a gidin ve uygulamayı seçin. Bağlam araç çubuğunda, **uç nokta günlüklerini dışarı aktar**' ı seçin. Günlük bir virgülle ayrılmış değer (CSV) dosyası olarak biçimlendirilir.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Konuşma günlüğe kaydetmeyi nasıl devre dışı bırakabilirim?
-Kullanıcı konuşma oturumdan ayarlayarak etkinleştirebilirsiniz `log=false` içinde sorgu LUIS istemci uygulamanızın kullandığı uç nokta URL'si. Ancak, konuşma önerebilir veya temel alan performansı LUIS uygulamanızın olanağı oturumdan kapatma devre dışı bırakır [etkin olarak öğrenmeye](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Ayarlarsanız `log=false` veri gizliliği kaygıları nedeniyle, bu kullanıcı konuşma kaydını LUIS ' indirin veya uygulamanızı geliştirmek için bu konuşma kullanın.
+İstemci uygulamanızın LUL 'yi sorgulamak için kullandığı uç nokta URL 'sindeki `log=false` ayarlayarak Kullanıcı çeşidlerini günlüğe kaydetmeyi devre dışı bırakabilirsiniz. Ancak, günlüğü kapatmak, LUL uygulamanızın, [etkin öğrenmeyi](luis-concept-review-endpoint-utterances.md#what-is-active-learning)temel alan, bir yandan gelen performansı ve performansı iyileştirebilme yeteneğini devre dışı bırakır. Veri gizliliği sorunları nedeniyle `log=false` ayarlarsanız, bu kullanıcı aradıklarından bir kaydını LUSıS 'den indiremez veya uygulamanızı geliştirmek için bu söz konusu konuları kullanabilirsiniz.
 
 Günlüğe kaydetme, konuşma, yalnızca depolama alanıdır.
 
@@ -242,12 +242,12 @@ Tahmin analizi için günlüğünüzü kullanıyorsanız, test konuşma oturum y
 ### <a name="can-i-delete-data-from-luis"></a>LUIS verileri silebilir miyim?
 
 * LUIS eğitim için kullanılan örnek konuşma her zaman silebilirsiniz. LUIS uygulamanızdan bir örnek utterance silerseniz, LUIS web hizmetinden kaldırılır ve dışarı aktarma için kullanılamaz.
-* Konuşma içinde LUIS önerir kullanıcı konuşma listesinden silebilirsiniz **gözden geçirin, konuşma uç noktası** sayfası. Konuşma bu listeden silme önerilmesini engelliyor, ancak bunları günlüklerinden silmez.
+* Konuşma **uç noktası sıralayıcısı** SAYFASıNDA, luya 'nın önerdiği Kullanıcı arasları listesinden gelen noktaları silebilirsiniz. Konuşma bu listeden silme önerilmesini engelliyor, ancak bunları günlüklerinden silmez.
 * Bir hesabı silerseniz, tüm uygulamalar, kendi örnek konuşma ve günlükleri birlikte silinir. Veriler kalıcı olarak silinmeden önce 60 gün boyunca sunucularda tutulur.
 
 ### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Microsoft, LUIS için gönderebilirim verileri nasıl yönetir?
 
-[Güven Merkezi](https://www.microsoft.com/trustcenter) sunduğumuz ve veri yönetimi ve erişimi Azure Hizmetleri için seçenekleri açıklar.
+[Güven Merkezi](https://www.microsoft.com/trustcenter) taahhütlerini ve Azure hizmetlerinde veri yönetimi ve erişim seçeneklerinizi açıklar.
 
 ## <a name="language-and-translation-support"></a>Dil ve çeviri desteği
 
@@ -262,7 +262,7 @@ Tahmin analizi için günlüğünüzü kullanıyorsanız, test konuşma oturum y
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Neden neredeyse kotası aşıldı ben bildiren bir e-posta almak?
 Yazma başlangıç anahtarınızı yalnızca 1000 kullanılabilir uç nokta, bir ay sorgular. Bir LUIS uç noktası anahtarı (ücretsiz veya Ücretli) oluşturun ve uç nokta sorgu oluştururken bu anahtarı kullanın. Uç nokta sorguları bir bot veya başka bir istemci uygulaması oluşturuyorsanız, LUIS uç noktası anahtarı var. değiştirmeniz gerekir.
 
-## <a name="bots"></a>Botlar
+## <a name="bots"></a>Göz
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>LUMY bot çalışmıyor. Ne yapmalıyım?
 
@@ -294,12 +294,12 @@ Bir bot 'ın yerel hata ayıklaması hakkında daha fazla bilgi edinmek için bk
 ## <a name="integrating-luis"></a>LUIS tümleştirme
 
 ### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>LUIS uygulamamı Azure web app botu abonelik işlemi sırasında oluşturulduğu?
-Bir LUIS şablonu seçin ve seçin, **seçin** düğmesi Şablon bölmesinde, sol taraftaki bölmede şablon türü içerecek şekilde değiştirir ve LUIS şablonu oluşturmak için hangi bölgede sorar. Web app botu işlemi yine de bir LUIS abonelik oluşturmaz.
+Bir LUSıS şablonu seçer ve şablon bölmesinde **Seç** düğmesini seçerseniz, sol taraftaki bölme şablon türünü dahil etmek için değişir ve Lune 'nın bu şablonu oluşturmak için bölgeyi sorar. Web app botu işlemi yine de bir LUIS abonelik oluşturmaz.
 
 ![LUIS şablonu web app botu bölgesi](./media/luis-faq/web-app-bot-location.png)
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Hangi LUIS bölgeleri Bot Framework konuşma Hazırlama işlemi destekler?
-[Konuşma Hazırlama işlemi](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) yalnızca merkezi (ABD) örneğinde LUIS uygulamalar için desteklenir.
+[Konuşma primi](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) yalnızca orta (US) örneğindeki lusıs uygulamaları için desteklenir.
 
 ## <a name="api-programming-strategies"></a>API programlama stratejileri
 
@@ -311,7 +311,7 @@ Veya Node. js kullanarak C# bölgeyi programlı bir şekilde [bulmak](https://gi
 
 ### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Language Understanding (LUIS) şirket içi kullanılabilir mi ya da özel bulutta?
 
-Evet, LUIS kullanabileceğiniz [kapsayıcı](luis-container-howto.md) kullanımını ölçmek için gerekli bağlantı varsa, bu senaryolar için. 
+Evet, kullanım ölçümü için gerekli bağlantınız varsa, bu senaryolar için LUO [kapsayıcısını](luis-container-howto.md) kullanabilirsiniz. 
 
 ## <a name="migrating-to-the-next-version"></a>Sonraki sürüme geçme
 
@@ -336,5 +336,5 @@ Videolar:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 LUIS hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
-* [LUIS ile etiketlenmiş bir yığın taşması soru](https://stackoverflow.com/questions/tagged/luis)
-* [Hizmetleri MSDN dil akıllı anlama (LUIS) Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+* [LUSıS ile etiketlenmiş Stack Overflow soruları](https://stackoverflow.com/questions/tagged/luis)
+* [MSDN Language Understanding Intelligent Services (LUA) Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)

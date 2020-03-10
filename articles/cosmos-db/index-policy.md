@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
 ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597154"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386969"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 'de dizin oluşturma ilkeleri
 
 Azure Cosmos DB, her kapsayıcının kapsayıcının öğelerinin nasıl dizine alınacağını belirleyen bir dizin oluşturma ilkesi vardır. Yeni oluşturulan kapsayıcılar için varsayılan dizin oluşturma ilkesi her öğenin her bir özelliğini dizinleyen, herhangi bir dize veya sayı için Aralık dizini uygulayan ve tür noktası olan herhangi bir GeoJSON nesnesi için uzamsal dizinler. Bu, dizin oluşturma ve dizin yönetimi ile ilgili düşünmek zorunda kalmadan yüksek sorgu performansı almanızı sağlar.
 
-Bazı durumlarda, gereksinimlerinize daha iyi uyacak şekilde bu otomatik davranışı geçersiz kılmak isteyebilirsiniz. *Dizin oluşturma modunu*ayarlayarak bir kapsayıcının dizin oluşturma ilkesini özelleştirebilir ve *özellik yollarını*dahil edebilir veya dışlayabilirsiniz.
+Bazı durumlarda bu otomatik davranışı kendi gereksinimlerinize daha iyi uyacak şekilde geçersiz kılmak isteyebilirsiniz. *Dizin oluşturma modunu*ayarlayarak bir kapsayıcının dizin oluşturma ilkesini özelleştirebilir ve *özellik yollarını*dahil edebilir veya dışlayabilirsiniz.
 
 > [!NOTE]
 > Bu makalede açıklanan dizin oluşturma ilkelerini güncelleştirme yöntemi yalnızca Azure Cosmos DB SQL (Core) API 'SI için geçerlidir.
@@ -32,14 +32,14 @@ Azure Cosmos DB iki dizin oluşturma modunu destekler:
 > [!NOTE]
 > Cosmos DB, yavaş dizin oluşturma modunu da destekler. Yavaş dizin oluşturma, altyapı başka bir iş gerçekleştirmediğinden daha düşük bir öncelik düzeyinde dizinde güncelleştirmeler gerçekleştirir. Bu, **tutarsız veya tamamlanmamış** sorgu sonuçlarının oluşmasına neden olabilir. Ayrıca, toplu işlemler için ' none ' yerine yavaş dizin oluşturma özelliği, Dizin modunda yapılan herhangi bir değişiklik dizinin bırakılmasına ve yeniden oluşturulmasına neden olacağı için de hiçbir avantaj sağlamaz. Bu nedenlerden dolayı müşterileri kullanan müşterilere karşı öneririz. Toplu işlemlere yönelik performansı artırmak için, Dizin modunu None olarak ayarlayın ve ardından, tutarlı moda dönün ve işlem tamamlanana kadar kapsayıcıda `IndexTransformationProgress` özelliğini izleyin.
 
-Varsayılan olarak, dizin oluşturma ilkesi `automatic` olarak ayarlanır. Dizin oluşturma ilkesindeki `automatic` özelliği `true` olarak ayarlanarak elde edilir. Bu özelliğin `true` olarak ayarlanması, Azure CosmosDB 'nin belgeleri yazıldığı şekilde otomatik olarak dizin oluşturulmasına olanak sağlar.
+Varsayılan olarak, dizin oluşturma ilkesi `automatic`olarak ayarlanır. Dizin oluşturma ilkesindeki `automatic` özelliği `true`olarak ayarlanarak elde edilir. Bu özelliğin `true` olarak ayarlanması, Azure CosmosDB 'nin belgeleri yazıldığı şekilde otomatik olarak dizin oluşturulmasına olanak sağlar.
 
 ## <a name="including-and-excluding-property-paths"></a>Özellik yollarını dahil etme ve hariç tutma
 
 Özel bir dizin oluşturma ilkesi, dizin oluşturma işleminden açıkça dahil edilen veya dışlanan Özellik yollarını belirtebilir. Dizini oluşturulmuş yolların sayısını en iyi duruma getirerek, Kapsayıcınız tarafından kullanılan depolama miktarını düşürebilirsiniz ve yazma işlemlerinin gecikme süresini artırabilirsiniz. Bu yollar, [Dizin oluşturma genel bakış bölümünde açıklanan yöntemi](index-overview.md#from-trees-to-property-paths) aşağıdaki eklemelerle izleyerek tanımlanmıştır:
 
 - skaler bir değere (dize veya sayı) önde gelen yol `/?` ile biter
-- bir dizideki öğeler `/[]` gösterimi (`/0` yerine `/1` vb.) ile birlikte karşılanır.
+- bir dizideki öğeler `/[]` gösterimi (`/0`yerine `/1` vb.) ile birlikte karşılanır.
 - `/*` joker karakteri, düğümün altındaki herhangi bir öğeyi eşleştirmek için kullanılabilir
 
 Aynı örneği yeniden almak:
@@ -58,9 +58,9 @@ Aynı örneği yeniden almak:
     }
 ```
 
-- `headquarters` `employees` yolu `/headquarters/employees/?`
+- `headquarters``employees` yolu `/headquarters/employees/?`
 
-- `locations` ' `country` yolu `/locations/[]/country/?`
+- `locations`' `country` yolu `/locations/[]/country/?`
 
 - `headquarters` altında herhangi bir şeyin yolu `/headquarters/*`
 
@@ -73,17 +73,17 @@ Herhangi bir dizin oluşturma ilkesinin, kök yolu `/*` dahil edilen ya da hari�
 - Dizin oluşturma gerektirmeyen yolları seçmeli olarak hariç tutmak için kök yolu ekleyin. Bu, modelinize eklenebilen yeni bir özelliğin Azure Cosmos DB proaktif olarak dizinlemenizi sağlayan bu, önerilen yaklaşımdır.
 - Dizine eklenmesi gereken yolları seçmeli olarak dahil etmek için kök yolu hariç tutun.
 
-- : Alfasayısal karakterler ve _ (alt çizgi) içeren normal karakter içeren yollar için, yol dizesinin çift tırnak etrafında (örneğin, "/path/?") kaçış olması gerekmez. Diğer özel karakterlere sahip yollar için, yol dizesini çift tırnak etrafında (örneğin, "/\"path-ABC \"/?") atlamanız gerekir. Yolunuzda özel karakterler bekleliyorsanız, güvenlik için her yolu da kaçış yapabilirsiniz. İşlevsel olarak, tüm yolları yalnızca özel karakterlere sahip olanlara karşı atladıysanız herhangi bir farklılık yapmaz.
+- : Alfasayısal karakterler ve _ (alt çizgi) içeren normal karakter içeren yollar için, yol dizesinin çift tırnak etrafında (örneğin, "/path/?") kaçış olması gerekmez. Diğer özel karakterlere sahip yollar için, yol dizesini çift tırnak etrafında (örneğin, "/\"Path-ABC\"/?") kaçış yapmanız gerekir. Yolunuzda özel karakterler bekleliyorsanız, güvenlik için her yolu da kaçış yapabilirsiniz. İşlevsel olarak, tüm yolları yalnızca özel karakterlere sahip olanlara karşı atladıysanız herhangi bir farklılık yapmaz.
 
 - "ETag" sistem özelliği dizin oluşturma için eklenen yola eklenemediği takdirde varsayılan olarak dizin oluşturma işleminden çıkarılır.
 
 Yolları dahil etme ve hariç tutma sırasında aşağıdaki özniteliklerle karşılaşabilirsiniz:
 
-- `kind` `range` ya da `hash` olabilir. Aralık dizini işlevselliği bir karma dizinin tüm işlevlerini sağlar, bu nedenle bir Aralık dizini kullanmanızı öneririz.
+- `kind` `range` ya da `hash`olabilir. Aralık dizini işlevselliği bir karma dizinin tüm işlevlerini sağlar, bu nedenle bir Aralık dizini kullanmanızı öneririz.
 
-- `precision`, eklenen yollar için dizin düzeyinde tanımlanmış bir sayıdır. @No__t_0 değeri en yüksek duyarlık değerini gösterir. Bu değeri her zaman `-1` olarak ayarlamayı öneririz.
+- `precision`, eklenen yollar için dizin düzeyinde tanımlanmış bir sayıdır. `-1` değeri en yüksek duyarlık değerini gösterir. Bu değeri her zaman `-1`olarak ayarlamayı öneririz.
 
-- `dataType` `String` ya da `Number` olabilir. Bu, dizine eklenecek JSON özelliklerinin türlerini gösterir.
+- `dataType` `String` ya da `Number`olabilir. Bu, dizine eklenecek JSON özelliklerinin türlerini gösterir.
 
 Belirtilmediğinde, bu özellikler aşağıdaki varsayılan değerlere sahip olur:
 
@@ -132,7 +132,7 @@ Bileşik dizin tanımlarken şunu belirtirsiniz:
 
 - Bileşik dizin Ayrıca tüm yollarda ters sırada olan bir `ORDER BY` yan tümcesini destekler.
 
-Bir bileşik dizinin özellikler adı, yaşı ve _ts üzerinde tanımlandığı aşağıdaki örneği göz önünde bulundurun:
+Bir bileşik dizinin özellikler adı, yaşı ve _ts tanımlı olduğu aşağıdaki örneği göz önünde bulundurun:
 
 | **Bileşik Dizin**     | **Örnek `ORDER BY` sorgusu**      | **Bileşik dizin tarafından destekleniyor mu?** |
 | ----------------------- | -------------------------------- | -------------- |
@@ -157,7 +157,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 
 Bu sorgu daha verimli olacaktır, daha az zaman alır ve bir bileşik dizinden yararlanıyorsa daha az RU (ad ASC, Age ASC).
 
-Aralık filtreleri içeren sorgular da bileşik bir dizinle iyileştirilebilir. Ancak, sorgu yalnızca tek bir Aralık filtresine sahip olabilir. Aralık filtreleri `>`, `<`, `<=`, `>=` ve `!=` içerir. Aralık filtresi, en son bileşik dizinde tanımlanmalıdır.
+Aralık filtreleri içeren sorgular da bileşik bir dizinle iyileştirilebilir. Ancak, sorgu yalnızca tek bir Aralık filtresine sahip olabilir. Aralık filtreleri `>`, `<`, `<=`, `>=`ve `!=`içerir. Aralık filtresi, en son bileşik dizinde tanımlanmalıdır.
 
 Aşağıdaki sorguyu hem eşitlik hem de Aralık filtreleriyle göz önünde bulundurun:
 
@@ -171,7 +171,7 @@ Birden çok özelliklerde filtre içeren sorgular için Bileşik dizinler oluşt
 
 - Sorgunun filtresindeki özellikler, bileşik dizinindekilerle eşleşmelidir. Bir özellik bileşik dizindaysa, ancak sorguya filtre olarak eklenmemelidir, sorgu bileşik dizinden yararlanmaz.
 - Bir sorguda, bir bileşik dizinde tanımlanmayan ek özellikler varsa, sorguyu değerlendirmek için bileşik ve Aralık dizinlerinin bir birleşimi kullanılır. Bu, Aralık dizinleri kullanılarak özel olarak daha az RU gerektirir.
-- Bir özelliğin Aralık filtresi varsa (`>`, `<`, `<=`, `>=` veya `!=`), bu özellik bileşik dizinde en son tanımlanmalıdır. Bir sorguda birden fazla Aralık filtresi varsa, bileşik dizinden yararlanmaz.
+- Bir özelliğin Aralık filtresi varsa (`>`, `<`, `<=`, `>=`veya `!=`), bu özellik bileşik dizinde en son tanımlanmalıdır. Bir sorguda birden fazla Aralık filtresi varsa, bileşik dizinden yararlanmaz.
 - Birden çok filtre içeren sorguları iyileştirmek için bir bileşik dizin oluştururken, bileşik dizinin `ORDER` sonuçları üzerinde hiçbir etkisi olmaz. Bu özellik isteğe bağlıdır.
 - Birden çok özelliklerde filtre içeren bir sorgu için bileşik dizin tanımlamadıysanız sorgu yine de başarılı olur. Ancak, sorgunun RU maliyeti bir bileşik dizinle azaltılabilir.
 

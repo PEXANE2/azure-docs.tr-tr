@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773638"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390523"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>REST ile Media Services varlıklarını yönetme  
 
@@ -40,7 +40,7 @@ Bu konuda, Azure Media Services varlıkların REST ile nasıl yönetileceği gö
 
 Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Medya Hizmetleri'yle bağlantı kurma
+## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
 
 AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
@@ -169,9 +169,9 @@ Aşağıdaki örnek, blob depolamaya bir dosyayı karşıya yüklemek için kull
     Host: media.windows.net
     Content-Length: 0
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

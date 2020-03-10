@@ -1,13 +1,9 @@
 ---
-title: Azure DDoS koruması standardına genel bakış | Microsoft Docs
+title: Azure DDoS koruması standardına genel bakış
 description: Azure DDoS Koruması hizmeti hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 0b0052d58ab4f950467902c4b177e844c9bc498d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6392c1a128032670ae9d43a1f23c59194c2964bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389957"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS koruması standardına genel bakış
 
-Dağıtılmış hizmet engelleme (DDoS) saldırıları, uygulamalarını buluta taşıyan müşterilerin karşılaştığı en büyük kullanılabilirlik ve güvenlik sorunlarından biridir. DDoS saldırıları, bir uygulamanın kaynaklarını tüketerek uygulamanın geçerli kullanıcılar için kullanılamaz duruma gelmesini amaçlar. DDoS saldırıları internet üzerinden genel olarak erişilebilen herhangi bir uç noktasını hedefleyebilir.
+Dağıtılmış hizmet engelleme (DDoS) saldırıları, uygulamalarını buluta taşıyan müşterilerin karşılaştığı en büyük kullanılabilirlik ve güvenlik sorunlarından biridir. DDoS saldırısı, uygulamanın kaynaklarını tüketmeye çalışır ve uygulamayı meşru kullanıcılar için kullanılamaz hale getirir. DDoS saldırıları internet üzerinden genel olarak erişilebilen herhangi bir uç noktasını hedefleyebilir.
 
 Azure DDoS koruması, uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar. Azure DDoS koruması aşağıdaki hizmet katmanlarını sağlar:
 
@@ -33,11 +29,11 @@ Azure DDoS koruması, uygulama tasarımı en iyi uygulamaları ile birlikte, DDo
 
 |Özellik                                         |DDoS koruması temel                 |DDoS koruma standardı                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
-|Etkin trafik izleme & her zaman algılama |Evet                                   |Evet                                           |
-|Otomatik saldırı azaltmaları                    |Evet                                   |Evet                                           |
+|Etkin trafik izleme & her zaman algılama |Yes                                   |Yes                                           |
+|Otomatik saldırı azaltmaları                    |Yes                                   |Yes                                           |
 |Kullanılabilirlik garantisi                          |Azure Bölgesi                          |Uygulama                                   |
 |Risk azaltma ilkeleri                             |Azure trafik bölgesi birimi için ayarlandı |Uygulama trafiği birimi için ayarlanmış          |
-|Ölçümler ve uyarılar                                |Hayır                                    |Azure izleyici ile gerçek zamanlı saldırı ölçümleri & tanılama günlükleri                                 |
+|Ölçümler & uyarılar                                |Hayır                                    |Azure izleyici ile gerçek zamanlı saldırı ölçümleri & tanılama günlükleri                                 |
 |Risk azaltma raporları                              |Hayır                                    |Saldırı sonrası risk azaltma raporları                |
 |Risk azaltma akış günlükleri                            |Hayır                                    |SıEM tümleştirmesi için NRT günlük akışı           |
 |Geçiş ilkesi özelleştirmeleri                 |Hayır                                    |DDoS uzmanlarına katılın                           |

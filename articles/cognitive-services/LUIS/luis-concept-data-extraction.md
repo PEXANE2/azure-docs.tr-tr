@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716298"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361200"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Amaç ve varlıklar ile söylenişi metinlerinde veri ayıklama
 LUIS, bir kullanıcının doğal dil konuşma bilgi almak için sağlar. Bilgiler bir program, uygulama veya sohbet Robotu eyleme kullanılabilmesi için bir şekilde ayıklanır. Aşağıdaki bölümlerde, hangi verilerin hedefleri ve JSON örneklerini varlıklarla döndürülür öğrenin.
@@ -19,11 +19,11 @@ Bir tam metin eşleşmesi olmadığından Ayıklanacak en zor veriler makine tar
 ## <a name="data-location-and-key-usage"></a>Veri konum ve anahtar kullanımı
 LUO, yayımlanan [uç noktadan](luis-glossary.md#endpoint)verileri sağlar. **Https isteği** (Post veya Get), hazırlama veya üretim ortamları gibi bazı isteğe bağlı yapılandırmalara sahiptir.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 tahmin uç noktası isteği](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 tahmin uç noktası isteği](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 tahmin uç noktası isteği](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 tahmin uç noktası isteği](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -38,7 +38,7 @@ LUO, yayımlanan [uç noktadan](luis-glossary.md#endpoint)verileri sağlar. **Ht
 ## <a name="data-from-intents"></a>Intents verileri
 Birincil veri, en üst Puanlama **hedefi adıdır**. Uç nokta yanıt şöyledir:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
 {
@@ -51,7 +51,7 @@ Birincil veri, en üst Puanlama **hedefi adıdır**. Uç nokta yanıt şöyledir
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 ```JSON
 {
@@ -80,7 +80,7 @@ Birincil veri, en üst Puanlama **hedefi adıdır**. Uç nokta yanıt şöyledir
 Sohbet botu veya lu, çağırma uygulamanız birden fazla amaç puanı temelinde bir karar yapıyorsa, tüm amaç puanlarını döndürün.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 `verbose=true`QueryString parametresini ayarlayın. Uç nokta yanıt şöyledir:
 
@@ -105,7 +105,7 @@ Sohbet botu veya lu, çağırma uygulamanız birden fazla amaç puanı temelinde
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 `show-all-intents=true`QueryString parametresini ayarlayın. Uç nokta yanıt şöyledir:
 
@@ -142,7 +142,7 @@ Intents en yüksek öncelikten en düşük puan için sıralanır.
 
 Önceden oluşturulmuş etki alanları eklerseniz, amaç adı, `Utilties` veya `Communication` gibi etki alanını ve amacınızı belirtir:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
 {
@@ -168,7 +168,7 @@ Intents en yüksek öncelikten en düşük puan için sıralanır.
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 ```JSON
 {
@@ -210,7 +210,7 @@ Bir tek sözcük veya tümcecik bir utterance içinde birden fazla varlık eşle
 
 Tüm varlıklar uç noktadan yanıtın **varlıklar** dizisinde döndürülür:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
 "entities": [
@@ -233,7 +233,7 @@ Tüm varlıklar uç noktadan yanıtın **varlıklar** dizisinde döndürülür:
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 ```JSON
 "entities": {
@@ -266,7 +266,7 @@ LUSıS 'deki [belirteç desteğini](luis-language-support.md#tokenization) gözd
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
 "entities": [
@@ -347,7 +347,7 @@ LUSıS 'deki [belirteç desteğini](luis-language-support.md#tokenization) gözd
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 QueryString parametresi olmadan `verbose=true`:
 
@@ -556,7 +556,7 @@ Bazı uygulamalar, ürünleri veya şirketler gibi yeni ve geliştirilmekte olan
 Roller, varlık bağlamsal fark vardır.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 Varlık adı, iki rol `Origin` ve `Destination``Location`.
 
@@ -589,7 +589,7 @@ Varlık adı, iki rol `Origin` ve `Destination``Location`.
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 V3 'de **rol adı** nesnenin birincil adıdır.
 
@@ -709,7 +709,7 @@ Diğer tüm kültürler için yanıt şöyledir:
 Anahtar tümceciği ayıklama varlığı, [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)tarafından sunulan, utterance 'teki anahtar tümceleri döndürür.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
 {
@@ -744,7 +744,7 @@ Anahtar tümceciği ayıklama varlığı, [metin analizi](https://docs.microsoft
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
@@ -822,7 +822,7 @@ LUIS utterance içinde bulunan tüm varlıkları döndürür. Sonuç olarak, soh
 
 LUO uç noktası, farklı varlıklarda aynı verileri bulabilir.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
 {
@@ -948,7 +948,7 @@ LUO uç noktası, farklı varlıklarda aynı verileri bulabilir.
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 QueryString parametresi olarak `verbose=true` olmadan.
 
@@ -1135,7 +1135,7 @@ Bir sözcük veya tümcecik birden fazla liste varlığı eşleşirse, uç nokta
 
 Sorgu `when is the best time to go to red rock?`için ve uygulamanın Word `red` birden çok listede yer aldığı için, LUSıS tüm varlıkları tanır ve JSON uç noktası yanıtının bir parçası olarak bir varlık dizisi döndürür:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
 {
@@ -1173,7 +1173,7 @@ Sorgu `when is the best time to go to red rock?`için ve uygulamanın Word `red`
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 Sorgu dizesinde `verbose=true` olmadan:
 

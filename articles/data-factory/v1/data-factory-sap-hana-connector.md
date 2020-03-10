@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928252"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387658"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP HANA verileri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -36,13 +36,13 @@ Bu bağlayıcı SAP HANA veritabanının herhangi bir sürümünü destekler. SQ
 
 SAP HANA örneğine bağlantıyı etkinleştirmek için aşağıdaki bileşenleri yüklemelisiniz:
 - **Veri yönetimi Gateway**: Data Factory hizmeti, veri yönetimi Gateway adlı bir bileşeni kullanarak şirket içi veri depolarına (SAP HANA dahil) bağlanmayı destekler. Ağ geçidini ayarlamaya yönelik Veri Yönetimi ağ geçidi ve adım adım yönergeler hakkında bilgi edinmek için bkz. [Şirket içi veri deposu ile bulut veri deposu arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi. SAP HANA bir Azure IaaS sanal makinesinde (VM) barındırıldığından bile ağ geçidi gerekir. Ağ geçidini, veri deposuyla aynı VM 'ye veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
-- Ağ Geçidi makinesinde **ODBC sürücüsü SAP HANA** . SAP HANA ODBC sürücüsünü [SAP Software Download Center](https://support.sap.com/swdc) sayfasından indirebilirsiniz. **Windows için SAP HANA**anahtar sözcüğünü kullanarak arama yapın. 
+- Ağ Geçidi makinesinde **ODBC sürücüsü SAP HANA** . SAP HANA ODBC sürücüsünü [SAP Software Download Center](https://support.sap.com/swdc)'dan indirebilirsiniz. **Windows için SAP HANA**anahtar sözcüğünü kullanarak arama yapın. 
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak verileri şirket içi SAP HANA veri deposundan taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için. 
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -57,10 +57,10 @@ Aşağıdaki bölümler, bir SAP HANA veri deposuna özgü Data Factory varlıkl
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda SAP HANA bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-Özellik | Açıklama | İzin verilen değerler | Gereklidir
+Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
 sunucu | SAP HANA örneğinin bulunduğu sunucunun adı. Sunucunuz özelleştirilmiş bir bağlantı noktası kullanıyorsa, `server:port`belirtin. | string | Yes
-authenticationType | Kimlik doğrulama türü. | dizisinde. "Temel" veya "Windows" | Yes 
+authenticationType | Kimlik doğrulama türü. | Dizisinde. "Temel" veya "Windows" | Yes 
 kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Yes
 password | Kullanıcının parolası. | string | Yes
 gatewayName | Data Factory hizmetinin şirket içi SAP HANA örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Yes
@@ -79,7 +79,7 @@ Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler h
 
 Copy etkinliğinin kaynağı **Relationalsource** (SAP HANA içerir) türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sorgu | SAP HANA örneğinden verileri okumak için SQL sorgusunu belirtir. | SQL sorgusu. | Yes |
 
@@ -289,25 +289,25 @@ INT | Int32
 BIGıNT | Int64
 REAL | Tek
 DOUBLE | Tek
-DECIMAL | Decimal
+DECIMAL | Ondalık
 BOOLEAN | Bayt
 VARCHAR | Dize
 NVARCHAR | Dize
 CLOB | Byte[]
 ALPHANUM | Dize
 BLOB | Byte[]
-DATE | Tarih Saat
+DATE | DateTime
 TIME | TimeSpan
-TIMESTAMP | Tarih Saat
-SECONDDATE | Tarih Saat
+TIMESTAMP | DateTime
+SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
 SAP HANA verileri kopyalarken bazı bilinen sınırlamalar vardır:
 
-- NVARCHAR dizeleri 4000 Unicode karakter olan maksimum uzunluğa göre kısaltılır
-- SMALLDECIMAL desteklenmez
-- VARBINARY desteklenmez
-- Geçerli Tarihler 1899/12/30 ile 9999/12/31 arasıdır
+- NVARCHAR dizeleri 4000 Unicode karakterlik maksimum uzunluğa kesilir
+- SMALLDECIMAL desteklenmiyor
+- VARBINARY desteklenmiyor
+- Geçerli tarihler 1899/12/30 ile 9999/12/31 arasındadır
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
 Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).

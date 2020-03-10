@@ -5,15 +5,15 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450019"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396807"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager dağıtım modelini kullanarak dosyaları Windows 'a geri yükleme
 
-Bu makalede, verileri bir yedekleme kasasından geri yükleme açıklanmaktadır. Verileri geri yüklemek için, Microsoft Azure Kurtarma Hizmetleri (MARS) aracısında verileri kurtar Sihirbazı 'nı kullanın. Yapabilecekleriniz:
+Bu makalede, verileri bir yedekleme kasasından geri yükleme açıklanmaktadır. Verileri geri yüklemek için, Microsoft Azure Kurtarma Hizmetleri (MARS) aracısında verileri kurtar Sihirbazı 'nı kullanın. Şunları yapabilirsiniz:
 
 * Verileri yedeklerin alındığı makineye geri yükleyin.
 * Verileri alternatif bir makineye geri yükleme.

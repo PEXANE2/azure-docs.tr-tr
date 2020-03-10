@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440071"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386667"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak Azure veri fabrikası oluşturma
 
@@ -494,7 +494,7 @@ ConnectionString, storageAccountName ve storageAccountKey parametrelerini kullan
 
 #### <a name="binary-input-dataset"></a>İkili giriş veri kümesi
 
-Azure depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Ikili veri kümesi tanımında, blob kapsayıcısı, klasör ve girdi verilerini içeren dosyanın adını belirtirsiniz. Ikili veri kümesini tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi için bkz. [ikili veri kümesi özellikleri](format-binary.md#dataset-properties) .
+Azure Depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Ikili veri kümesi tanımında, blob kapsayıcısı, klasör ve girdi verilerini içeren dosyanın adını belirtirsiniz. Ikili veri kümesini tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi için bkz. [ikili veri kümesi özellikleri](format-binary.md#dataset-properties) .
 
 ```json
 {  

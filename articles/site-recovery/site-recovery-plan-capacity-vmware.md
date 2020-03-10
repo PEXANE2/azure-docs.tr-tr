@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961369"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363150"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için kapasiteyi ve ölçeklendirmeyi planlayın
 
@@ -163,7 +163,7 @@ Windows tabanlı bir sanal makine için ana hedef sunucu eklemek için:
     ![Yapılandırma sunucusu için IP adresinin ve parolanın nereye girdiğinin gösterildiği ekran görüntüsü](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. **Kaydol**’u seçin. Kayıt tamamlandığında **son**' u seçin.
 
-Kayıt başarıyla tamamlandığında, sunucu, **Kurtarma Hizmetleri kasasındaki** Azure portal, **Site Recovery altyapı** > **yapılandırma sunucuları** > , yapılandırma sunucusu.
+Kayıt başarıyla tamamlandığında, sunucu, yapılandırma sunucusunun ana hedef sunucularındaki **Site Recovery altyapı** > **yapılandırma sunucuları** > **Kurtarma Hizmetleri kasasındaki** Azure Portal listelenir.
 
  > [!NOTE]
  > [Windows için ana hedef sunucu Birleşik kurulum dosyasının](https://aka.ms/latestmobsvc)en son sürümünü indirin.

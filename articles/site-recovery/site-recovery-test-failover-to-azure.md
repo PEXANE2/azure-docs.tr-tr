@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091735"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363119"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Azure 'a yük devretme testi (olağanüstü durum kurtarma detayına) çalıştırma 
 
@@ -29,7 +29,7 @@ Bu yordam, bir kurtarma planı için yük devretme testi çalıştırma işlemin
 
 
 1. Azure portal Site Recovery > **Yük devretme testi** > *recoveryplan_name* **kurtarma planları** ' na tıklayın.
-2. Yük devredilecek bir **Kurtarma noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
+2. Yük devredilecek bir **Kurtarma noktası** seçin. Şu seçeneklerden birini kullanabilirsiniz:
     - **En son işlenen**: Bu seçenek, plandaki tüm vm 'leri Site Recovery tarafından işlenen en son kurtarma noktasına devreder. Belirli bir sanal makine için en son kurtarma noktasını görmek üzere VM ayarlarındaki **en son kurtarma noktalarını** kontrol edin. İşlenmemiş verileri işlemek için zaman harcanmadığından bu seçenekte düşük bir RTO (Kurtarma Süresi Hedefi) sağlanır.
     - **En son uygulamayla tutarlı**: Bu seçenek, plandaki tüm VM 'leri, Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına devreder. Belirli bir sanal makine için en son kurtarma noktasını görmek üzere VM ayarlarındaki **en son kurtarma noktalarını** kontrol edin.
     - **En son**: Bu seçenek ilk olarak Site Recovery hizmetine gönderilen tüm verileri işleyerek, yük devretmadan önce her VM için bir kurtarma noktası oluşturur. Yük devretmeden sonra oluşturulan VM 'nin, yük devretme tetiklendiğinde Site Recovery için tüm verileri çoğaltılacağı için, bu seçenek en düşük RPO (kurtarma noktası hedefi) sağlar.
@@ -45,7 +45,7 @@ Bu yordam, bir kurtarma planı için yük devretme testi çalıştırma işlemin
 5. **İşler** sekmesinde yük devretme ilerlemesini izleyin. Test çoğaltma makinesini Azure portal görebilmeniz gerekir.
 6. Azure VM 'ye bir RDP bağlantısı başlatmak için, yük devredilen VM 'nin ağ arabirimine [bir genel IP adresi eklemeniz](https://aka.ms/addpublicip) gerekir.
 7. Her şey beklendiği gibi çalıştığında, **Yük devretme testini temizle**' ye tıklayın. Bu, yük devretme testi sırasında oluşturulan VM 'Leri siler.
-8. Yük devretme testiyle ilişkili gözlemlerinizi **Notlar**’da kaydedin veya saklayın.
+8. **Notlar**’da, yük devretme testiyle ilişkili gözlemlerinizi kaydedin ve saklayın.
 
 
 ![Test Yük Devretmesi](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510269"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396750"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Dağıtma ve Azure portalını kullanarak ölçekte IOT Edge modülleri izleme
 
@@ -24,7 +24,7 @@ Daha fazla bilgi için bkz. [tek cihazlarda veya ölçekte IoT Edge otomatik da�
 
 ## <a name="identify-devices-using-tags"></a>Etiketleri kullanarak cihazları belirleyin
 
-Bir dağıtımı oluşturmadan önce değiştirmek istediğiniz hangi cihazların belirtebilmek sahip. Azure IOT Edge kullanarak cihazları tanımlar **etiketleri** cihaz ikizinde. Her cihazda, çözümünüz için anlamlı olacak şekilde tanımladığınız birden fazla etiket olabilir.
+Bir dağıtımı oluşturmadan önce değiştirmek istediğiniz hangi cihazların belirtebilmek sahip. Azure IoT Edge cihaz ikizi **etiketleri** kullanarak cihazları tanımlar. Her cihazda, çözümünüz için anlamlı olacak şekilde tanımladığınız birden fazla etiket olabilir.
 
 Örneğin, akıllı binaları bir kampüs yönetiyorsanız, bir cihaza konum, oda türü ve ortam etiketleri ekleyebilirsiniz:
 
@@ -39,7 +39,7 @@ Bir dağıtımı oluşturmadan önce değiştirmek istediğiniz hangi cihazları
 }
 ```
 
-Cihaz ikizleri ve etiketleri hakkında daha fazla bilgi için bkz: [IOT hub'daki cihaz ikizlerini kavrama ve kullanma](../iot-hub/iot-hub-devguide-device-twins.md).
+Cihaz ikgörüti ve etiketleri hakkında daha fazla bilgi için bkz. [IoT Hub 'da cihaz TWINS 'ı anlama ve kullanma](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Bir dağıtım oluşturun
 
@@ -55,7 +55,7 @@ Bir dağıtımı oluşturmak için beş adım vardır. Aşağıdaki bölümlerde
 
 ### <a name="step-1-name-and-label"></a>1\. Adım: adı ve etiketi
 
-1. Dağıtımınızı en çok 128 küçük harf olan benzersiz bir ad verin. Boşluk ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
+1. Dağıtımınızı en çok 128 küçük harf olan benzersiz bir ad verin. Boşluklardan ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
 1. Dağıtımlarınızın izlenmesine yardımcı olmak için anahtar-değer çiftleri olarak Etiketler ekleyebilirsiniz. Örneğin, **Hostplatform** ve **Linux**veya **Version** ve **3.0.1**.
 1. Sonraki adıma geçmek için **modüller** ' i seçin.
 
@@ -79,16 +79,16 @@ Bir modül olarak özel kod ekleyin veya bir Azure hizmeti modülü el ile eklem
 1. Sayfanın **IoT Edge modüller** bölümünde **Ekle**' ye tıklayın.
 1. Açılır menüden **IoT Edge modülünü** seçin.
 1. Modülünüzü bir **IoT Edge modül adı**verin.
-1. İçin **görüntü URI'si** modülünüzde için kapsayıcı görüntüsü girin.
-1. Seçmek için açılan menüyü kullanın. bir **yeniden ilke**. Aşağıdaki seçeneklerden birini seçin:
+1. **Görüntü URI 'si** alanı için modülünüzün kapsayıcı görüntüsünü girin.
+1. Bir **yeniden başlatma ilkesi**seçmek için açılan menüyü kullanın. Aşağıdaki seçeneklerden birini seçin:
    * **her zaman** -bu, herhangi bir nedenle kapanırsa modül her zaman yeniden başlatılır.
    * **hiçbir** sebeple, herhangi bir nedenle kapanmadıysa modül hiçbir şekilde yeniden başlatmaz.
    * **hata** durumunda-modül kilitlenirse yeniden başlatılır, ancak temiz bir şekilde kapanmaz.
    * **sağlıksız** -sistem durumu kilitlenirse veya sağlıksız bir durum döndürürse modül yeniden başlatılır. Bu sistem durumu işlevi uygulamak için her modül aittir.
-1. Seçmek için açılan menüyü kullanın **istenen durum** modülü için. Aşağıdaki seçeneklerden birini seçin:
+1. Modülün **Istenen durumunu** seçmek için açılan menüyü kullanın. Aşağıdaki seçeneklerden birini seçin:
    * **çalıştırma,** varsayılan seçenektir. Modül hemen dağıtıldıktan sonra çalışan başlar.
    * **durduruldu** -dağıtıldıktan sonra, siz veya başka bir modülle başlamak üzere çağrılana kadar modül boşta kalır.
-1. Belirtmek **kapsayıcı oluşturma seçenekleri** geçirilecek kapsayıcıya. Daha fazla bilgi için [docker oluşturma](https://docs.docker.com/engine/reference/commandline/create/).
+1. Kapsayıcıya geçirilmesi gereken herhangi bir **kapsayıcı oluşturma seçeneğini** belirtin. Daha fazla bilgi için bkz. [Docker Create](https://docs.docker.com/engine/reference/commandline/create/).
 1. İkizi modülüne etiket veya diğer özellikler eklemek istiyorsanız **module Ikizi Settings** ' i seçin.
 1. Bu modülün **ortam değişkenlerini** girin. Ortam değişkenleri bir modüle yapılandırma bilgileri sağlar.
 1. Modülünüzü dağıtıma eklemek için **Ekle** ' yi seçin.
@@ -109,7 +109,7 @@ Azure Stream Analytics'ten bir modül eklemek için aşağıdaki adımları izle
 1. Açılır menüden **Azure Stream Analytics modülünü** seçin.
 1. Sağ bölmede **aboneliğinizi**seçin.
 1. IoT **Edge işinizi**seçin.
-1. Seçin **Kaydet** modülünüzde dağıtıma eklenecek.
+1. Modülünüzü dağıtıma eklemek için **Kaydet** ' i seçin.
 
 #### <a name="configure-module-settings"></a>Modül ayarlarını yapılandırma
 
@@ -127,7 +127,7 @@ Yapılandırılmış bir dağıtım için tüm modülleriniz olduktan sonra Iler
 
 Modüller birbirleri ile dağıtımında iletişim kurma biçimini yolları tanımlayın. Varsayılan olarak, sihirbaz, **yukarı akış** adlı bir yol sağlar ve **/ileti/\* 'den $upstream**olarak tanımlanır. Bu, herhangi bir modülle çıkış yapan tüm iletilerin IoT Hub 'ınıza gönderilmesi anlamına gelir.  
 
-Ekleme veya yolları alınan bilgilerle güncelleştirme [bildirmek yollar](module-composition.md#declare-routes), ardından **sonraki** gözden geçirme bölüme geçmek için.
+Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgilerle ekleyin veya güncelleştirin, ardından inceleme bölümüne devam etmek için **İleri** ' yi seçin.
 
 **İleri ' yi seçin: ölçümler**.
 
@@ -139,7 +139,7 @@ Ekleme veya yolları alınan bilgilerle güncelleştirme [bildirmek yollar](modu
 
 1. **Ölçüm ölçütü**için bir sorgu girin. Sorgu IoT Edge hub modülünün ikizi [bildirilen özelliklerini](module-edgeagent-edgehub.md#edgehub-reported-properties)temel alır. Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-   Örneğin:
+   Örnek:
 
    ```sql
    SELECT deviceId FROM devices
@@ -158,8 +158,8 @@ Birden çok dağıtım aynı cihazı hedefliyorsanız, yalnızca yüksek önceli
 
 Bir cihazın hedeflediği katmanlı dağıtımlar, uygulanması için temel dağıtımdan daha yüksek önceliğe sahip olmalıdır.
 
-1. Dağıtım için pozitif bir tamsayı girin **öncelik**.
-1. Girin bir **hedef koşulu** hangi cihazların bu dağıtım ile hedeflenecek belirlemek için. Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir. Örneğin, `tags.environment='test'` veya `properties.reported.devicemodel='4000x'`.
+1. Dağıtım **önceliği**için pozitif bir tamsayı girin.
+1. Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir **hedef koşul** girin. Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir. Örneğin, `tags.environment='test'` veya `properties.reported.devicemodel='4000x'`.
 
 Ileri ' yi seçin: son adımla gezinmek için **+ Oluştur** ' u seçin.
 
@@ -172,17 +172,17 @@ Dağıtım bilgilerinizi gözden geçirin ve ardından **Oluştur**' u seçin.
 Bir dağıtımın ayrıntılarını görüntülemek ve onu çalıştıran cihazları izlemek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub gidin.
-1. Seçin **IOT Edge**.
+1. **IoT Edge**seçin.
 1. **IoT Edge dağıtımları** sekmesini seçin.
 
    ![IOT Edge dağıtımları görüntüle](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Dağıtım listesini inceleyin. Her dağıtım için aşağıdaki ayrıntıları görebilirsiniz:
-   * **Kimliği** -dağıtım adı.
+   * **ID** -dağıtımın adı.
    * **Tür** - **dağıtım ya da** **katmanlı dağıtım**türü.
    * **Hedef koşul** -hedeflenen cihazları tanımlamak için kullanılan etiket.
-   * **Öncelik** -bir dağıtıma atanan öncelik numarası.
-   * **Sistem ölçümlerini** - **hedeflenen** hedefleme koşula uyan IOT hub'da cihaz ikizlerini belirtir ve **uygulanan** sahip cihazların sayısını belirtir Dağıtım içeriğini kendi modül ikizlerini IOT hub'ında uygulanan.
+   * **Öncelik** -dağıtıma atanan öncelik numarası.
+   * **Hedeflenen** - **sistem ölçümleri** , hedefleme koşuluyla eşleşen IoT Hub cihaz tiklerinin sayısını belirtir ve **uygulandı** , dağıtım içeriğinin IoT Hub kendi modül TWINS 'lerine uygulanmış olan cihazların sayısını belirtir.
    * **Cihaz ölçümleri** -dağıtımdaki IoT Edge cihazların sayısı, IoT Edge istemci çalışma zamanının başarısını veya hatalarını bildiriyor.
    * **Özel ölçümler** -dağıtım için tanımladığınız tüm ölçümler için dağıtım raporlama verilerinde IoT Edge cihazların sayısı.
    * **Oluşturma zamanı** -dağıtımın oluşturulduğu zaman damgası. Bu zaman damgasından iki dağıtım aynı önceliğe sahip olduğunuzda TIES ayırmak için kullanılır.
@@ -202,7 +202,7 @@ Hedef koşul güncelleştirme aşağıdaki güncelleştirmeleri oluşur:
 Bir dağıtım değiştirmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub gidin.
-1. Seçin **IOT Edge**.
+1. **IoT Edge**seçin.
 1. **IoT Edge dağıtımları** sekmesini seçin.
 
    ![IOT Edge dağıtımları görüntüle](./media/how-to-deploy-monitor/iot-edge-deployments.png)
@@ -212,19 +212,19 @@ Bir dağıtım değiştirmek için aşağıdaki adımları kullanın:
    * **Hedef koşul**
    * **Ölçümler** -tanımladığınız ölçümleri değiştirebilir veya silebilir veya yenilerini ekleyebilirsiniz.
    * **Etiketler**
-   * **Modüller**
-   * **Rotalar**
+   * **Modüler**
+   * **Yolların**
    * **Dağıtım**
 
 1. **Kaydet**’i seçin.
-1. Bağlantısındaki [bir dağıtımını izleme](#monitor-a-deployment) dağıtmadan değişiklikleri izlemek için.
+1. Değişiklikleri izlemek için [bir dağıtımı izleme](#monitor-a-deployment) bölümündeki adımları izleyin.
 
-## <a name="delete-a-deployment"></a>Dağıtımı Sil
+## <a name="delete-a-deployment"></a>Bir dağıtımı silin
 
 Bir dağıtımı sildiğinizde, dağıtılan tüm cihazlar bir sonraki en yüksek öncelikli dağıtımı alır. Daha sonra başka bir dağıtım hedef koşulu cihazlarınızı karşılamıyorsa, dağıtım silindiğinde modülleri kaldırılmaz.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub gidin.
-1. Seçin **IOT Edge**.
+1. **IoT Edge**seçin.
 1. **IoT Edge dağıtımları** sekmesini seçin.
 
    ![IOT Edge dağıtımları görüntüle](./media/how-to-deploy-monitor/iot-edge-deployments.png)

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647144"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357712"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute bağlantı hatları ve eşleme
 
@@ -36,29 +36,29 @@ Her bağlantı hattı (50 MB/sn, 100 MB/sn, 200 MB/sn, 500 MB/sn, 1 GB/sn, 10 GB
 
 ### <a name="quotas"></a>Kotalar, sınırlar ve sınırlamalar
 
-Her ExpressRoute bağlantı hattı için varsayılan kotaları ve sınırları geçerlidir. Başvurmak [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) kotaları hakkında güncel bilgi sayfası.
+Her ExpressRoute bağlantı hattı için varsayılan kotaları ve sınırları geçerlidir. Kotalar hakkında güncel bilgiler için [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasına bakın.
 
-## <a name="routingdomains"></a>ExpressRoute eşdüzey hizmet sağlama
+## <a name="routingdomains"></a>ExpressRoute eşlemesi
 
-ExpressRoute bağlantı hattına sahip birden fazla Yönlendirme etki alanları/ilişkili eşlemeleri: Azure genel, Azure özel ve Microsoft. Her eşleme yönlendiricileri çifti üzerinde aynı şekilde yapılandırıldığından (etkin-etkin ya da yük paylaşma yapılandırma) yüksek kullanılabilirlik için. Azure Hizmetleri olarak kategorilere ayrılmış *Azure genel* ve *Azure özel* IP adresi düzenlerini göstermek için.
+ExpressRoute bağlantı hattına sahip birden fazla Yönlendirme etki alanları/ilişkili eşlemeleri: Azure genel, Azure özel ve Microsoft. Her eşleme yönlendiricileri çifti üzerinde aynı şekilde yapılandırıldığından (etkin-etkin ya da yük paylaşma yapılandırma) yüksek kullanılabilirlik için. Azure Hizmetleri, IP adresleme düzenlerini göstermek için Azure *genel* ve *Azure özel* olarak kategorize edilir.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="privatepeering"></a>Azure özel eşdüzey hizmet sağlama
+### <a name="privatepeering"></a>Azure özel eşleme
 
 Azure işlem Hizmetleri, yani sanal makineler (Iaas) ve bulut hizmetlerini (PaaS) ve bir sanal ağda dağıtılan üzerinden özel eşleme etki alanına bağlanabilir. Özel Eşleme etki alanı, çekirdek ağınızı Microsoft azure'da güvenilir bir uzantısı olarak kabul edilir. Çekirdek Ağ ve Azure sanal ağları (Vnet) arasında çift yönlü bağlantı ayarlayabilirsiniz. Bu eşleme, sanal makinelere bağlanmak ve bulut Hizmetleri doğrudan üzerinde özel IP adreslerini sağlar.  
 
-Birden fazla sanal ağ özel eşleme etki alanına bağlanabilir. Gözden geçirme [SSS sayfasını](expressroute-faqs.md) sınırlar ve sınırlamalar hakkında bilgi için. Ziyaret ettiğiniz [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırları hakkında güncel bilgi sayfası.  Başvurmak [yönlendirme](expressroute-routing.md) sayfasına yönlendirme yapılandırması hakkında ayrıntılı bilgi için.
+Birden fazla sanal ağ özel eşleme etki alanına bağlanabilir. Sınırlamalar ve sınırlamalar hakkında bilgi edinmek için [SSS sayfasını](expressroute-faqs.md) gözden geçirin. Limitlerde güncel bilgiler için [Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasını ziyaret edebilirsiniz.  Yönlendirme yapılandırması hakkında ayrıntılı bilgi için [yönlendirme](expressroute-routing.md) sayfasına bakın.
 
 ### <a name="microsoftpeering"></a>Microsoft eşlemesi
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Microsoft çevrimiçi hizmetler bağlantısı (Office 365 ve Azure PaaS hizmetleri) Microsoft eşlemesi üzerinden gerçekleşir. WAN ve Microsoft cloud services aracılığıyla Microsoft eşleme Yönlendirme etki alanı arasında çift yönlü bağlantı etkinleştiririz. Yalnızca, veya bağlantı sağlayıcınızdan ait genel IP adresleri üzerinden Microsoft bulut hizmetlerine bağlanmak ve tüm tanımlı kurallara uymalıdır. Daha fazla bilgi için [ExpressRoute önkoşulları](expressroute-prerequisites.md) sayfası.
+Microsoft çevrimiçi hizmetler bağlantısı (Office 365 ve Azure PaaS hizmetleri) Microsoft eşlemesi üzerinden gerçekleşir. WAN ve Microsoft cloud services aracılığıyla Microsoft eşleme Yönlendirme etki alanı arasında çift yönlü bağlantı etkinleştiririz. Yalnızca, veya bağlantı sağlayıcınızdan ait genel IP adresleri üzerinden Microsoft bulut hizmetlerine bağlanmak ve tüm tanımlı kurallara uymalıdır. Daha fazla bilgi için bkz. [ExpressRoute önkoşulları](expressroute-prerequisites.md) sayfası.
 
-Bkz: [SSS sayfasını](expressroute-faqs.md) daha fazla desteklenen hizmetlerle ilgili bilgiler, maliyetleri ve yapılandırma ayrıntıları. Bkz: [ExpressRoute konumları](expressroute-locations.md) Microsoft eşleme desteği sunan bağlantı sağlayıcılarının listesi hakkında bilgi için sayfa.
+Desteklenen hizmetler, maliyetler ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [SSS sayfasına](expressroute-faqs.md) bakın. Microsoft eşleme desteği sunan bağlantı sağlayıcılarının listesi hakkında bilgi için bkz. [ExpressRoute konumları](expressroute-locations.md) sayfası.
 
-## <a name="peeringcompare"></a>Eşleme karşılaştırma
+## <a name="peeringcompare"></a>Eşleme karşılaştırması
 
 Aşağıdaki tabloda, üç eşlemenin karşılaştırılır:
 
@@ -66,17 +66,17 @@ Aşağıdaki tabloda, üç eşlemenin karşılaştırılır:
 
 ExpressRoute bağlantı hattınızın parçası olarak, bir veya daha fazla Yönlendirme etki alanları sağlayabilir. Bunları tek bir yönlendirme etki alanına birleştirmek istiyorsanız aynı VPN'yi put tüm Yönlendirme etki alanlarını seçebilirsiniz. Sizin de bunları farklı yönlendirme etki alanları, diyagrama benzer yerleştirebilirsiniz. Önerilen yapılandırma özel eşdüzey hizmet sağlama doğrudan çekirdek ağa bağlı ve genel ve Microsoft eşleme bağlantıları için DMZ'NİZDE bağlı olduğu.
 
-Her eşleme ayrı BGP oturumları (her eşleme türü için bir çift) gerektirir. BGP oturumu çiftleri yüksek oranda kullanılabilir bir bağlantı sağlar. Katman 2 bağlantı sağlayıcıları bağlanılıyorsa, yapılandırma ve yönlendirme yönetmek için sorumlu olursunuz. İnceleyerek daha fazla bilgi [iş akışları](expressroute-workflows.md) ExpressRoute ' ayarlamak için.
+Her eşleme ayrı BGP oturumları (her eşleme türü için bir çift) gerektirir. BGP oturumu çiftleri yüksek oranda kullanılabilir bir bağlantı sağlar. Katman 2 bağlantı sağlayıcıları bağlanılıyorsa, yapılandırma ve yönlendirme yönetmek için sorumlu olursunuz. ExpressRoute ayarlamaya yönelik [iş akışlarını](expressroute-workflows.md) inceleyerek daha fazla bilgi edinebilirsiniz.
 
 ## <a name="health"></a>ExpressRoute durumu
 
-ExpressRoute bağlantı hatları izlenen kullanılabilirlik, sanal ağlar ve bant genişliği kullanımı kullanarak bağlantısını için [Ağ Performansı İzleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
+ExpressRoute devreleri, [ağ performansı İzleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) kullanarak, sanal ağlar ve bant genişliği kullanımı için kullanılabilir.
 
-NPM Azure özel eşleme ve Microsoft eşlemesi izler. Kullanıma sunduğumuz [sonrası](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) daha fazla bilgi için.
+NPM Azure özel eşleme ve Microsoft eşlemesi izler. Daha fazla bilgi için [gönderimize](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir hizmet sağlayıcı bulun. Bkz: [ExpressRoute hizmet sağlayıcıları ve konumları](expressroute-locations.md).
+* Bir hizmet sağlayıcı bulun. Bkz. [ExpressRoute hizmet sağlayıcıları ve konumları](expressroute-locations.md).
 * Tüm önkoşulların sağlandığından emin olun. Bkz. [ExpressRoute önkoşulları](expressroute-prerequisites.md).
 * ExpressRoute bağlantınızı yapılandırın.
   * [ExpressRoute devreleri oluşturup yönetme](expressroute-howto-circuit-portal-resource-manager.md)
