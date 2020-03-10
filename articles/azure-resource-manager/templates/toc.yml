@@ -145,10 +145,6 @@
             - name: Çıkışlar
               displayName: 'iteration,copy'
               href: copy-outputs.md
-        - name: Abonelik düzeyi kaynakları
-          href: deploy-to-subscription.md
-        - name: Yönetim grubu düzeyi kaynakları
-          href: deploy-to-management-group.md
     - name: Yazma araçlarını kullanma
       items:
         - name: VS Code
@@ -182,7 +178,15 @@
           href: rollback-on-error.md
         - name: SAS belirteciyle şablon güvenliğini sağlama
           href: secure-template-with-sas-token.md
-        - name: Birden çok kaynak grubuna veya aboneliğe dağıtma
+    - name: Kapsamlı dağıtımlar
+      items:
+        - name: Abonelik
+          href: deploy-to-subscription.md
+        - name: Yönetim grubu
+          href: deploy-to-management-group.md
+        - name: Kiracı
+          href: deploy-to-tenant.md
+        - name: Birden çok kaynak grubu veya abonelik
           href: cross-resource-group-deployment.md
     - name: Parametreleri sağlama
       items:

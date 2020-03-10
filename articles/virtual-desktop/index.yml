@@ -1,41 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Windows Sanal Masaüstü Belgeleri
+### YamlMime:Landing
+title: Windows Sanal Masaüstü belgeleri
+summary: Dilediğiniz cihaza sanal bir masaüstü deneyimi ve uzaktan uygulamalar sunun. Sıra dışı bir ölçek ve azaltılmış BT maliyetleri ile kullanıcılara çoklu oturum olanağını içeren tek Windows 10 deneyimini sunmak için Microsoft 365 ile Azure’ı bir araya getirin.
 metadata:
-  title: Windows Sanal Masaüstü Belgeleri | Microsoft Docs
+  title: Windows Sanal Masaüstü belgeleri
   description: Azure için Windows Sanal Masaüstü bulutta sanallaştırılmış çok kullanıcılı bir Windows 10 Enterprise deneyimidir.
-  author: Heidilohr
-  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
-  ms.date: 02/20/2019
+  manager: lizross
+  author: Heidilohr
   ms.author: helohr
-abstract:
-  description: Dilediğiniz cihaza sanal bir masaüstü deneyimi ve uzaktan uygulamalar sunun. Sıra dışı bir ölçek ve azaltılmış BT maliyetleri ile kullanıcılara çoklu oturum olanağını içeren tek Windows 10 deneyimini sunmak için Microsoft 365 ile Azure’ı bir araya getirin.
-sections:
-  - title: Genel Bakış
-    items:
-      - type: paragraph
-        text: 'Windows Sanal Masaüstü''nü ve nasıl kullanılacağını öğrenin. Öğreticiler, Nasıl yapılır makaleleri ve başvuru içeriği gibi daha birçok malzemeyle ana bilgisayar havuzlarıyla kiracıları nasıl ayarlayacağınız ve kullanıcılara Windows Sanal Masaüstü ortamınız için nasıl rol atayacağınız gösterilir.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-desktop/overview">Windows Sanal Masaüstü nedir?</a>
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: 'Windows Sanal Masaüstü''nü yüklemeyi, yapılandırmayı ve hazır olduğunda istemciye bağlanmayı öğrenin.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Windows Sanal Masaüstü'nde kiracı oluşturma</a>
-          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Azure Market ile ana bilgisayar havuzu oluşturma</a>
-          - html: <a href="/azure/virtual-desktop/manage-app-groups">Windows Sanal Masaüstü için uygulama gruplarını yönetme</a>
-          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">PowerShell ile hizmet sorumluları ve rol atamaları oluşturma</a>
-  - title: Başvuru
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+  ms.date: 03/06/2020
+  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
+  ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/07/2020
+  ms.locfileid: "78898665"
+landingContent:
+- title: Windows Sanal Masaüstü hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Windows Sanal Masaüstü nedir?
+      url: overview.md
+- title: başlarken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Windows Sanal Masaüstü'nde kiracı oluşturma
+      url: tenant-setup-azure-active-directory.md
+    - text: Azure Market ile ana bilgisayar havuzu oluşturma
+      url: create-host-pools-azure-marketplace.md
+    - text: Windows Sanal Masaüstü için uygulama gruplarını yönetme
+      url: manage-app-groups.md
+    - text: PowerShell ile hizmet sorumluları ve rol atamaları oluşturma
+      url: create-service-principal-role-powershell.md
+- title: Windows Sanal Masaüstü’ne bağlanma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows Masaüstü istemcisi
+      url: connect-windows-7-and-10.md
+    - text: Web istemcisi
+      url: connect-web.md
+    - text: Android istemcisi
+      url: connect-android.md
+    - text: macOS istemcisi
+      url: connect-macos.md
+    - text: iOS istemcisi
+      url: connect-ios.md

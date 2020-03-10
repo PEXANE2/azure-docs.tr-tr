@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'C# kullanma'
-          href: image-search-sdk-quickstart.md
-        - name: Node.js'yi kullanma
-          href: image-search-sdk-node-quickstart.md
-        - name: Python’u kullanma
-          href: image-sdk-python-quickstart.md
-        - name: Java'yı kullanma
-          href: image-sdk-java-quickstart.md
+        - name: Bing Resim Arama istemci kitaplıkları
+          href: ./quickstarts/client-libraries.md
 - name: Öğreticiler
   items:
     - name: Resim arama web uygulaması oluşturma

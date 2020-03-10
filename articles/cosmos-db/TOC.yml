@@ -89,7 +89,7 @@
       href: relational-nosql.md
     - name: Genel dağıtım
       items:
-        - name: Genel Bakış
+        - name: Genel dağıtıma genel bakış
           displayName: 'replication, replicate, geo distribution'
           href: distribute-data-globally.md
         - name: Tutarlılık düzeyleri
@@ -118,7 +118,7 @@
           href: globally-distributed-transactional-analytical-storage.md
     - name: Bölümleme
       items:
-        - name: Genel Bakış
+        - name: Bölümlemeye genel bakış
           href: partitioning-overview.md
         - name: Bölümleme ve yatay ölçeklendirme
           href: partition-data.md
@@ -461,7 +461,7 @@
           href: modeling-data.md
         - name: Dizinleme
           items:
-            - name: Genel Bakış
+            - name: Dizinlemeye genel bakış
               displayName: 'range, spatial'
               href: index-overview.md
             - name: Dizinleme ilkeleri
@@ -476,7 +476,7 @@
           href: database-transactions-optimistic-concurrency.md
     - name: Akışı değiştirme
       items:
-        - name: Genel Bakış
+        - name: Değişiklik akışına genel bakış
           href: change-feed.md
         - name: Değişiklik akışını okuma
           href: read-change-feed.md
@@ -530,7 +530,7 @@
           href: cosmos-db-reserved-capacity.md
     - name: Güvenlik
       items:
-        - name: Genel Bakış
+        - name: Güvenliğe genel bakış
           href: database-security.md
         - name: Veri şifrelemesi
           href: database-encryption-at-rest.md
@@ -564,12 +564,12 @@
   items:
     - name: Cassandra API’si
       items:
-        - name: Giriş
-          href: cassandra-introduction.md
-        - name: Kablo protokolü desteği
-          href: cassandra-support.md
-        - name: Esnek ölçek
-          href: manage-scale-cassandra.md
+        - name: Genel Bakış
+          items:
+            - name: Cosmos DB’deki Cassandra API nedir?
+              href: cassandra-introduction.md
+            - name: Kablo protokolü desteği
+              href: cassandra-support.md
         - name: Hızlı Başlangıçlar
           items:
             - name: .NET
@@ -591,6 +591,10 @@
             - name: 4 - Verileri geçirme
               displayName: import
               href: cassandra-import-data.md
+        - name: Kavramlar
+          items:
+            - name: Esnek ölçek
+              href: manage-scale-cassandra.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Akışı değiştirme
@@ -628,12 +632,14 @@
               href: cli-samples-cassandra.md
     - name: MongoDB API’si
       items:
-        - name: Giriş
-          href: mongodb-introduction.md
-        - name: Kablo protokolü desteği (3.2)
-          href: mongodb-feature-support.md
-        - name: Kablo protokolü desteği (3.6)
-          href: mongodb-feature-support-36.md
+        - name: Genel Bakış
+          items:
+            - name: Cosmos DB’deki MongoDB API nedir?
+              href: mongodb-introduction.md
+            - name: Kablo protokolü desteği (3.2)
+              href: mongodb-feature-support.md
+            - name: Kablo protokolü desteği (3.6)
+              href: mongodb-feature-support-36.md
         - name: Hızlı Başlangıçlar
           items:
             - name: .NET
@@ -719,10 +725,12 @@
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
-        - name: Giriş
-          href: graph-introduction.md
-        - name: Kablo protokolü desteği
-          href: gremlin-support.md
+        - name: Genel Bakış
+          items:
+            - name: Cosmos DB’deki Germlin API nedir?
+              href: graph-introduction.md
+            - name: Kablo protokolü desteği
+              href: gremlin-support.md
         - name: Hızlı Başlangıçlar
           items:
             - name: Gremlin konsolu
@@ -778,8 +786,10 @@
               href: cli-samples-gremlin.md
     - name: Tablo API’si
       items:
-        - name: Giriş
-          href: table-introduction.md
+        - name: Genel Bakış
+          items:
+            - name: Cosmos DB’deki Tablo API'si nedir?
+              href: table-introduction.md
         - name: Hızlı Başlangıçlar
           items:
             - name: .NET
@@ -849,10 +859,14 @@
               href: /rest/api/storageservices/table-service-rest-api
     - name: Etcd API'si
       items:
-        - name: Giriş
-          href: etcd-api-introduction.md
-        - name: Azure Cosmos DB ile Azure Kubernetes
-          href: bootstrap-kubernetes-cluster.md
+        - name: Genel Bakış
+          items:
+            - name: Cosmos DB’deki Etcd API nedir?
+              href: etcd-api-introduction.md
+        - name: Nasıl yapılır kılavuzları
+          items:
+            - name: Azure Cosmos DB ile Azure Kubernetes
+              href: bootstrap-kubernetes-cluster.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Cosmos hesabıyla çalışma

@@ -1,24 +1,28 @@
 ---
-title: Azure Scheduler Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs
-description: Scheduler hizmetini kullanarak yinelenen uygulama eylemleri ve düzenli bakım gibi işler zamanlama ve bunları çağırma hakkında bilgi edinin. Öğreticiler, API başvuruları ve daha fazlası.
+title: Azure Scheduler Belgeleri
+description: Yinelenen uygulama eylemleri ve düzenli bakım gibi işleri oluşturun, zamanlayın ve bulutta bunları çağırın
 services: scheduler
-author: carmonmills
-manager: carmonm
-layout: LandingPage
 ms.service: scheduler
+author: derek1ee
+ms.author: estfan
+layout: LandingPage
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carmonm
-ms.openlocfilehash: ddf335d0c2b165ae98feab0b42e60527f87de59c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 02/23/2020
+ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610344"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898615"
 ---
 # <a name="scheduler-documentation"></a>Scheduler Belgeleri
 
-Scheduler hizmetini kullanarak bulutta yinelenen işler zamanlama ve bunları otomatik olarak çağırma hakkında bilgi edinin. Öğreticiler, API başvuruları ve diğer belgeler, yinelenen uygulama eylemleri ve düzenli bakım gibi yinelenen işler zamanlama ve bunları izleme ile ilgili bilgiler içerir.
+> [!IMPORTANT]
+> [Kullanımdan kaldırılan](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Azure Scheduler uygulamasının yerini [Azure Logic Apps](../logic-apps/logic-apps-overview.md) alacaktır. Scheduler’da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa zamanda [Azure Logic Apps’e geçin](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler artık Azure portalında kullanılamaz. Ancak işlerinizi ve iş koleksiyonlarınızı yönetebilmek için, [REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlet’lerini](scheduler-powershell-reference.md) şimdilik kullanmaya devam edebilirsiniz.
+
+Bulutta otomatik yinelenen işleri oluşturma, zamanlama, çalıştırma, yönetme ve güncelleştirme hakkında bilgi edinin. Öğreticiler, API başvuruları ve diğer belgeler, yinelenen uygulama eylemleri ve düzenli bakım gibi yinelenen işler zamanlama ve bunları izleme ile ilgili bilgiler içerir.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -40,6 +44,24 @@ Scheduler hizmetini kullanarak bulutta yinelenen işler zamanlama ve bunları ot
         </a>
     </li>
     <li>
+        <a href="/azure/scheduler/migrate-from-scheduler-to-logic-apps">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Scheduler’dan Azure Logic Apps’e geçin</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=scheduler">
         <div class="cardSize">
             <div class="cardPadding">
@@ -51,24 +73,6 @@ Scheduler hizmetini kullanarak bulutta yinelenen işler zamanlama ve bunları ot
                     </div>
                     <div class="cardText">
                         <h3>Azure Scheduler Video Kitaplığı</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/scheduler/scheduler-get-started-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Scheduler’ı kullanmaya başlama</h3>
                     </div>
                 </div>
             </div>

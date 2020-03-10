@@ -57,6 +57,8 @@
       href: test-your-model.md
     - name: Sınıflandırıcınızı geliştirme
       href: getting-started-improving-your-classifier.md
+    - name: Etki alanı seçme
+      href: select-domain.md
     - name: Tahmin API’sini kullanma
       href: use-prediction-api.md
     - name: Akıllı Etiketçiyi kullanma
