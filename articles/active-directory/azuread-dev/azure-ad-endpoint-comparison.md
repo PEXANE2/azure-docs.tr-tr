@@ -12,14 +12,14 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 56a5221504a3905855fa5dc713707f34ae357aea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: MT
+ms.openlocfilehash: d910a76397a40a14d960b59f60561cbee470f5c4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165143"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358447"
 ---
-# <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft Identity platform (v 2.0) güncelleştirmesi?
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft kimlik platformuna (v2.0) güncelleştirmelisiniz?
 
 Yeni bir uygulama geliştirirken, Microsoft Identity platform (v 2.0) ve Azure Active Directory (v 1.0) uç noktaları arasındaki farkları bilmemiz önemlidir. Bu makalede, uç noktalar ile Microsoft Identity platformu için bazı mevcut sınırlamalar arasındaki temel farklılıklar ele alınmaktadır.
 
@@ -34,7 +34,7 @@ Yeni bir uygulama geliştirirken, Microsoft Identity platform (v 2.0) ve Azure A
 * Microsoft Identity platform uç noktası, Azure AD 'den ve hotmail.com, outlook.com ve msn.com gibi kişisel Microsoft hesaplarından (MSA) iş ve okul hesaplarının oturum açmasını sağlar.
 * Her iki uç nokta de *[tek kiracılı](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* olarak yapılandırılan uygulamalar için veya kiracıya özgü uç noktayı (`https://login.microsoftonline.com/{TenantId_or_Name}`) işaret edecek şekilde yapılandırılmış *çok kiracılı* uygulamalar için Azure AD dizininin *[Konuk kullanıcılarının](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* oturum açma işlemlerini kabul eder.
 
-Microsoft Identity platform uç noktası, kişisel Microsoft hesaplarından ve iş ve okul hesaplarından oturum açma işlemlerini kabul eden uygulamalar yazmanıza izin verir. Bu, uygulamanızı tamamen hesap belirsiz şekilde yazmanıza olanak sağlar. Örneğin, uygulamanız [Microsoft Graph](https://graph.microsoft.io)çağırırsa, bazı ek işlevler ve veriler, SharePoint siteleri veya dizin verileri gibi iş hesapları için kullanılabilir. Ancak, [bir kullanıcının postasını okumak](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages)gibi birçok eylem için aynı kod e-postaya hem kişisel hem de iş ve okul hesapları için erişebilir.
+Microsoft Identity platform uç noktası, kişisel Microsoft hesaplarından ve iş ve okul hesaplarından oturum açma işlemlerini kabul eden uygulamalar yazmanıza izin verir. Bu, uygulamanızı tamamen hesap belirsiz şekilde yazmanıza olanak sağlar. Örneğin, uygulamanız [Microsoft Graph](https://graph.microsoft.io)çağırırsa, bazı ek işlevler ve veriler, SharePoint siteleri veya dizin verileri gibi iş hesapları için kullanılabilir. Ancak, [bir kullanıcının postasını okumak](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)gibi birçok eylem için aynı kod e-postaya hem kişisel hem de iş ve okul hesapları için erişebilir.
 
 Microsoft Identity platform uç noktası için, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak tüketici, eğitim ve kurumsal işletim LDS 'ye erişim elde edebilirsiniz. Azure AD v 1.0 uç noktası yalnızca iş ve okul hesaplarından oturum açma işlemlerini kabul eder.
 
@@ -70,7 +70,7 @@ V 1.0 uç noktası için, Azure AD 'ye yönelik bir OAuth 2,0 yetkilendirme iste
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&resource=https://graph.windows.net/
+&resource=https://graph.microsoft.com/
 ...
 ```
 
@@ -81,7 +81,7 @@ Microsoft Identity platform uç noktasını kullanan uygulamalar için, aynı OA
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&scope=https://graph.windows.net/directory.read%20https://graph.windows.net/directory.write
+&scope=https://graph.microsoft.com/directory.read%20https://graph.microsoft.com/directory.write
 ...
 ```
 

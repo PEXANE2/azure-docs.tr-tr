@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174651"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376737"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin kaynak rollerini değiştirme
 
@@ -178,7 +178,7 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
 Yetkilendirme Yönetimi 'nde Azure AD, erişim paketinizdeki atama ve kaynaklara yönelik toplu değişiklikleri günde birkaç kez işleyecek. Bu nedenle, bir atama yaparsanız veya erişim paketinizin kaynak rollerini değiştirirseniz, bu değişikliğin Azure AD 'de yapılması ve bu değişiklikleri diğer Microsoft Online hizmetlerine veya bağlı SaaS uygulamasına yayılması için geçen süreyi 24 saate kadar sürebilir olmalıdır Yaptığınız değişiklik yalnızca birkaç nesneyi etkiliyorsa, değişikliğin Azure AD 'de uygulanması birkaç dakika sürer. Bu durumda, diğer Azure AD bileşenleri bu değişikliği algılayacak ve SaaS uygulamalarını güncelleştirmeyecektir. Değişiklik, binlerce nesneyi etkiliyorsa değişiklik daha uzun sürer. Örneğin, 2 uygulama ve 100 Kullanıcı Ataması olan bir erişim paketiniz varsa ve erişim paketine bir SharePoint site rolü eklemeye karar verirseniz, tüm kullanıcılar bu SharePoint sitesi rolünün parçası olana kadar bir gecikme olabilir. İlerlemeyi Azure AD denetim günlüğü, Azure AD sağlama günlüğü ve SharePoint site denetim günlükleri aracılığıyla izleyebilirsiniz.
 
-Ekibin bir üyesini kaldırdığınızda, bunlar Office 365 grubundan da kaldırılır. Ekibin sohbet işlevlerinden kaldırma gecikebilir. Daha fazla bilgi için bkz. [Grup üyeliği](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+Ekibin bir üyesini kaldırdığınızda bu üye Office 365 Grubundan da kaldırılır. Ekibin sohbet işlevinden kaldırma işlemi geciktirilebilir. Daha fazla bilgi için bkz. [Grup üyeliği](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

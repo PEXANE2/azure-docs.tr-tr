@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603383"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372963"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
@@ -105,12 +105,12 @@ Aracıların Güvenlik Merkezi’ne bağlanması ve kaydolması için, bağlant�
 
 Aşağıdaki tabloda iletişim için gereken kaynaklar gösterilmektedir.
 
-| Aracı Kaynağı | Bağlantı Noktaları | HTTPS denetlemesini atlama |
+| Aracı Kaynağı | Bağlantı noktaları | HTTPS denetlemesini atlama |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Yes |
-| *.oms.opinsights.azure.com | 443 | Yes |
-| *.blob.core.windows.net | 443 | Yes |
-| *.azure-automation.net | 443 | Yes |
+| *.ods.opinsights.azure.com | 443 | Evet |
+| *.oms.opinsights.azure.com | 443 | Evet |
+| *.blob.core.windows.net | 443 | Evet |
+| *.azure-automation.net | 443 | Evet |
 
 Aracıyla ekleme sorunları yaşarsanız, [Operations Management Suite ekleme sorunlarını giderme](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) makalesini okuduğunuzdan emin olun.
 

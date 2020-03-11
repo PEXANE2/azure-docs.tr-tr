@@ -10,11 +10,11 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769838"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373058"
 ---
 # <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Güncelleştirme Yönetimi için Linux karma Runbook Worker sistem durumunu anlama ve çözme
 
@@ -36,9 +36,9 @@ Azure makinelerinde, portalda **Güncelleştirme Aracısı hazırlığı** sütu
 ![VM Listesi Sayfası](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> Denetimler VM'nin çalışıyor olması gerekir. VM çalışmıyorsa, bir düğme ile sunulan **VM'yi başlatın**.
+> Denetimler VM'nin çalışıyor olması gerekir. VM çalışmıyorsa **VM 'Yi başlatmak**için bir düğme sunulur.
 
-Üzerinde **Güncelleştirme Aracısı sorunlarını giderme** sayfasında **çalıştırma denetler**giderici başlatmak için. Sorun giderici, bağımlılıkları doğrulamak üzere makinede bir betiği çalıştırmak için [Run komutunu](../../virtual-machines/linux/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimleri sonucunu döndürür.
+**Güncelleştirme Aracısı sorunlarını gider** sayfasında, sorun gidericiyi başlatmak Için **denetimleri Çalıştır**' a tıklayın. Sorun giderici, bağımlılıkları doğrulamak üzere makinede bir betiği çalıştırmak için [Run komutunu](../../virtual-machines/linux/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimleri sonucunu döndürür.
 
 ![Sayfa sorunlarını giderme](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -61,9 +61,9 @@ Tamamlandığında, sonuçları penceresinde döndürülür. Denetim bölümleri
 
 ## <a name="monitoring-agent-service-health-checks"></a>İzleme Aracısı hizmeti sistem durumu denetimleri
 
-### <a name="log-analytics-agent"></a>Log Analytics Aracısı
+### <a name="log-analytics-agent"></a>Log Analytics aracısı
 
-Bu denetim, Linux için Log Analytics aracısının yüklü olmasını sağlar. Nasıl yükleneceği hakkında yönergeler için bkz [Linux için aracıyı yükleme](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+Bu denetim, Linux için Log Analytics aracısının yüklü olmasını sağlar. Nasıl yükleneceğine ilişkin yönergeler için bkz. [Linux için aracıyı yüklemek](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
 ### <a name="log-analytics-agent-status"></a>Log Analytics Aracısı durumu
@@ -84,7 +84,7 @@ Bu denetim, Linux için Log Analytics aracısının karma Runbook Worker paketin
 
 ### <a name="hybrid-runbook-worker-status"></a>Karma Runbook çalışanı durumu
 
-Bu onay karma Runbook çalışanı makinede çalıştığından emin olur. Aşağıdaki işlemler, karma Runbook çalışanı düzgün çalışıyorsa mevcut olmalıdır. Daha fazla bilgi için bkz. [Linux için Log Analytics Aracısı sorunlarını giderme](hybrid-runbook-worker.md#oms-agent-not-running).
+Bu onay karma Runbook çalışanı makinede çalıştığından emin olur. Aşağıdaki işlemler, karma Runbook çalışanı düzgün çalışıyorsa mevcut olmalıdır. Daha fazla bilgi için bkz. [Linux için Log Analytics aracısında sorun giderme](hybrid-runbook-worker.md#oms-agent-not-running).
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -102,13 +102,13 @@ Bu onay, makinenin internet erişimi olduğundan emin olur.
 
 Bu denetim, karma runbook çalışanının Azure Otomasyonu Log Analytics çalışma alanıyla düzgün şekilde iletişim kurabildiğini belirler.
 
-Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı kayıt uç noktası ile iletişim kurmasına izin vermeniz gerekir. Adresleri ve bağlantı noktalarını açmak için bir listesi için bkz. [ağ karma çalışanları için planlama](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı kayıt uç noktası ile iletişim kurmasına izin vermeniz gerekir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning)
 
 ### <a name="operations-endpoint"></a>İşlemleri uç noktası
 
 Bu onay, aracıyı düzgün bir şekilde iş çalışma zamanı veri hizmeti ile iletişim kurup kuramadığını belirler.
 
-Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı işi çalışma zamanı veri hizmetiyle iletişim kurmasına izin vermeniz gerekir. Adresleri ve bağlantı noktalarını açmak için bir listesi için bkz. [ağ karma çalışanları için planlama](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı işi çalışma zamanı veri hizmetiyle iletişim kurmasına izin vermeniz gerekir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning)
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics uç noktası 1
 
@@ -124,7 +124,7 @@ Bu onay, makinenizin Log Analytics aracı tarafından gerekli uç noktalarına e
 
 ## <a name="troubleshoot-offline"></a>Çevrimdışı sorun giderme
 
-Yerel olarak bir betik çalıştırarak, bir karma Runbook çalışanı üzerinde çevrimdışı sorun gidericisini kullanabilirsiniz. Python betiğini [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) betik Merkezi'nde bulunabilir. Bu betiğin çıktının bir örneği aşağıdaki örnekte gösterilmiştir:
+Yerel olarak bir betik çalıştırarak, bir karma Runbook çalışanı üzerinde çevrimdışı sorun gidericisini kullanabilirsiniz. Python betiği, [update_mgmt_health_check. Kopyala](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) betik merkezi 'nde bulunabilir. Bu betiğin çıktının bir örneği aşağıdaki örnekte gösterilmiştir:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

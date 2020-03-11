@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71cf1a2c4a0a2ff07d2aa0b48a8ee3bb3da8a540
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919728"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372857"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -27,9 +27,9 @@ Aşağıdaki yöntemleri kullanarak sanal makineler (VM) için Güncelleştirme 
 > [!NOTE]
 > Güncelleştirme Yönetimi çözümü, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [Azure çalışma alanı eşlemeleri](./how-to/region-mappings.md). Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki VM 'Leri yönetme özelliğini etkilemez.
 
-Güncelleştirme Yönetimi çözümünü yeni veya mevcut bir Otomasyon hesabına dağıtmanıza ve aboneliğinizdeki Log Analytics çalışma alanına dağıtmanızı sağlayan bir Azure [Kaynak Yöneticisi şablonu](automation-update-management-deploy-template.md) kullanılabilir.
-
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Güncelleştirme Yönetimi çözümünü yeni veya mevcut bir Otomasyon hesabına dağıtmanıza ve aboneliğinizdeki Log Analytics çalışma alanına dağıtmanızı sağlayan bir Azure [Kaynak Yöneticisi şablonu](automation-update-management-deploy-template.md) kullanılabilir.
 
 ## <a name="solution-overview"></a>Çözüme genel bakış
 
@@ -97,8 +97,8 @@ Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
 |İşletim sistemi  |Notlar  |
 |---------|---------|
 |Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.        |
-|Windows Server 2016 Nano sunucu     | Desteklenmez.       |
-|Azure Kubernetes hizmet düğümleri | Desteklenmez. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../aks/node-updates-kured.md) bölümünde açıklanan düzeltme eki uygulama sürecini kullanın|
+|Windows Server 2016 Nano sunucu     | Desteklenmiyor.       |
+|Azure Kubernetes hizmet düğümleri | Desteklenmiyor. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../aks/node-updates-kured.md) bölümünde açıklanan düzeltme eki uygulama sürecini kullanın|
 
 ### <a name="client-requirements"></a>İstemci gereksinimleri
 
@@ -165,9 +165,9 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 | Bağlı kaynak | Destekleniyor | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Yes |Çözüm, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Yes |Çözüm, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Yes |Çözüm, bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Verileri yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Evet |Çözüm, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Evet |Çözüm, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Evet |Çözüm, bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Verileri yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -248,10 +248,15 @@ Güncelleştirme Yönetimi, desteklenen Windows sistemlerini güncelleştirmek i
 
 Sistemleri güncelleştirmeye başlamak için Güncelleştirme Yönetimi çözümünü etkinleştirmeniz gerekir. Çözümü eklemek için önerilen ve desteklenen yöntemler aşağıda verilmiştir:
 
-* [Bir sanal makineden](automation-onboard-solutions-from-vm.md)
-* [Birden çok makineye göz atmaya](automation-onboard-solutions-from-browse.md)
-* [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md)
-* [Bir Azure Otomasyonu runbook 'u ile](automation-onboard-solutions.md)
+- [Bir sanal makineden](automation-onboard-solutions-from-vm.md)
+
+- [Birden çok makineye göz atmaya](automation-onboard-solutions-from-browse.md)
+
+- [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md)
+
+- [Bir Azure Otomasyonu runbook 'u ile](automation-onboard-solutions.md)
+
+- [Azure Resource Manager şablonuyla](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

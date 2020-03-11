@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872171"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373852"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>MongoDB uygulamasını Azure Cosmos DB bağlama
-MongoDB uygulamanızı bir Azure Cosmos DB MongoDB bağlantı dizesi kullanarak nasıl bağlayacağınızı öğrenin. Daha sonra, MongoDB uygulamanız için veri deposu olarak bir Azure Cosmos veritabanını kullanabilirsiniz. 
+MongoDB bağlantı dizesi kullanarak MongoDB uygulamanızı Azure Cosmos DB'ye bağlamayı öğrenin. Ardından MongoDB uygulamanızın veri deposu olarak bir Azure Cosmos veritabanı kullanabilirsiniz. 
 
-Bu öğreticide bağlantı dizesi bilgilerinin alınması için iki yol sunulmaktadır:
+Bu öğreticide bağlantı dizesi bilgilerini almak için iki yol sağlanır:
 
 - .NET, Node. js, MongoDB kabuğu, Java ve Python sürücüleriyle kullanım için [hızlı başlangıç yöntemi](#QuickstartConnection)
 - Diğer sürücülerle kullanılmak üzere [özel bağlantı dizesi yöntemi](#GetCustomConnection)

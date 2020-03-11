@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614086"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382855"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
 
@@ -30,13 +30,13 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [.NET Service Fabric uygulaması oluşturma](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Uygulamayı uzak kümeye dağıtma](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Bir ASP.NET Core ön uç hizmetine HTTPS uç noktası ekleme
-> * [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Azure Pipelines ile CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-monitoring-aspnet.md)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -46,7 +46,7 @@ Bu öğreticiye başlamadan önce:
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Sertifika edinme veya otomatik olarak imzalanan geliştirme sertifikası oluşturma
 
-Üretim uygulamaları için [bir sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority) alınan bir sertifikayı kullanın. Geliştirme ve test için otomatik olarak imzalanan bir sertifika oluşturup bunu kullanabilirsiniz. Service Fabric SDK’sı, otomatik olarak imzalanan bir sertifika oluşturup `Cert:\LocalMachine\My` sertifika deposuna aktaran *CertSetup.ps1* betiğini sağlar. Yönetici olarak bir komut istemi açın ve "CN = mytestcert" konusuyla bir sertifika oluşturmak için aşağıdaki komutu çalıştırın:
+Üretim uygulamaları için [bir sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority) alınan bir sertifikayı kullanın. Geliştirme ve test için otomatik olarak imzalanan bir sertifika oluşturup bunu kullanabilirsiniz. Service Fabric SDK’sı, otomatik olarak imzalanan bir sertifika oluşturup *sertifika deposuna aktaran*CertSetup.ps1`Cert:\LocalMachine\My` betiğini sağlar. Yönetici olarak bir komut istemi açın ve "CN = mytestcert" konusuyla bir sertifika oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
@@ -347,7 +347,7 @@ Uygulamayı Azure 'a dağıtmadan önce, sertifikayı tüm uzak küme düğümle
 
 İlk olarak, sertifikayı bir PFX dosyasına aktarın. certlm.msc uygulamasını açın ve **Kişisel**>**Sertifikalar**’a gidin.  *Mytestcert* sertifikasına sağ tıklayın ve **dışarı aktar**>**Tüm görevler** ' i seçin.
 
-![Sertifikayı dışarı aktarma][image4]
+![Sertifikayı ver][image4]
 
 Dışarı aktarma sihirbazında **Evet, özel anahtarı dışarı aktar** seçeneğini belirleyin ve Kişisel Bilgi Değişimi (PFX) biçimini seçin.  Dosyayı *C:\Users\sfuser\votingappcert.pfx* konumuna aktarın.
 
@@ -403,7 +403,7 @@ Uygulama dağıtılırken bir web tarayıcısı açın ve [https://mycluster.reg
 
 Sonraki öğreticiye ilerleyin:
 > [!div class="nextstepaction"]
-> [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [Azure Pipelines ile CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 [image1]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/SetupBatProperties.png
 [image2]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/VotingAppLocal.png

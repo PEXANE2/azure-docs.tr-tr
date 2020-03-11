@@ -12,23 +12,23 @@ manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
 ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360303"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL veritabanı için gelişmiş veri güvenliği
 
-Gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Hassas verileri keşfedip sınıflandırma, veritabanındaki olası güvenlik açıklarını belirleme ve yol açabileceği sorunları azaltma ve veritabanınıza ilişkin bir tehdit belirtisi olabilecek anormal etkinlikleri algılamaya yönelik işlevsellik sağlar. Bu özellikler tek bir konumdan etkinleştirilebilir ve yönetilebilir.
+Gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Bu, hassas verileri bulma ve sınıflandırma, olası veritabanı güvenlik açıklarını ortaya koymasının yanı sıra veritabanınıza yönelik bir tehdit oluşturabilecek anormal etkinlikleri algılamayla ilgili işlevsellik içerir. Bu özellikler tek bir konumdan etkinleştirilebilir ve yönetilebilir.
 
 ## <a name="overview"></a>Genel Bakış
 
 Gelişmiş veri güvenliği (ADS), veri bulma & sınıflandırması, güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması gibi bir dizi gelişmiş SQL güvenlik özelliği sağlar.
 
 - [Veri bulma & sınıflandırması](sql-database-data-discovery-and-classification.md) , veritabanlarınızdaki hassas verileri korumak & bulmak IÇIN Azure SQL veritabanı 'nda yerleşik olarak sunulan yetenekler sağlar. Veri sınıflandırma durumunuz için görünürlük sağlamanın yanı sıra veritabanı içindeki ve dışındaki hassas verilere erişimin izlenmesi için kullanılabilir.
-- [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) olası veritabanı güvenlik açıklarını keşfetmenizi ve izlemenizi sağlamanın yanı sıra bunları gidermeye yardımcı olan yapılandırması kolay bir hizmettir. Güvenlik durumunuz hakkında görünürlük sağlamasının yanı sıra güvenlik sorunlarınızı çözmek ve veritabanı güçlendirmelerinizi geliştirmek için eyleme dönüştürülebilir adımlar sunar.
-- [Gelişmiş Tehdit Koruması](sql-database-threat-detection-overview.md), veritabanlarınıza erişme veya bunları kullanma konusunda olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri belirler. Veritabanınızı şüpheli etkinliklere karşı sürekli izler ve olası güvenlik açıkları, SQL ekleme saldırıları ve anormal veritabanı erişim modelleri hakkında anında güvenlik uyarıları sunar. Gelişmiş Tehdit Koruması uyarıları, şüpheli etkinliğin ayrıntılarının yanı sıra tehdidi araştırmak ve ortadan kaldırmak için önerilen eylemleri de içerir.
+- [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , olası veritabanı güvenlik açıklarını düzeltebileceğiniz, izleyebileceğiniz ve bu sorunları gidermenize yardımcı olabilecek bir hizmeti kolayca yapılandırabilir. Güvenlik durumunuz hakkında görünürlük sağlamasının yanı sıra güvenlik sorunlarınızı çözmek ve veritabanı güçlendirmelerinizi geliştirmek için eyleme dönüştürülebilir adımlar sunar.
+- [Gelişmiş tehdit koruması](sql-database-threat-detection-overview.md) , veritabanınıza erişmek veya veritabanına yararlanmak için olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar. Veritabanınızı şüpheli etkinliklere karşı sürekli izler ve olası güvenlik açıkları, SQL ekleme saldırıları ve anormal veritabanı erişim modelleri hakkında anında güvenlik uyarıları sunar. Gelişmiş tehdit koruması uyarıları şüpheli etkinliğin ayrıntılarını sağlar ve tehdidi araştırmak ve azaltmak için eyleme önerilir.
 
 Bu dahil edilen tüm özellikleri etkinleştirmek için SQL REKLAMLARıNı bir kez etkinleştirin. Tek tıklamayla SQL veritabanı sunucunuzdaki veya yönetilen örnekteki tüm veritabanları için REKLAMLARı etkinleştirebilirsiniz. ADS ayarlarının etkinleştirilmesi veya yönetilmesi [SQL Güvenlik Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolü, SQL veritabanı yönetici rolü veya SQL Server Yöneticisi rolüne ait olmalıdır. 
 

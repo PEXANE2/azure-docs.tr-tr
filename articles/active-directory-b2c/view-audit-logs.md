@@ -13,11 +13,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78185786"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378832"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
@@ -39,7 +39,7 @@ Denetim günlüklerinde **B2C** kategorisi aşağıdaki etkinlik türlerini içe
 |Uygulama | B2C uygulamalarında oluşturma, okuma, güncelleştirme ve silme (CRUD) işlemleri. |
 |Anahtar |B2C anahtar kapsayıcısında depolanan anahtarlarla CRUD işlemleri. |
 |Kaynak |B2C kaynaklarında CRUD işlemleri. Örneğin, ilkeler ve kimlik sağlayıcıları.
-|Kimlik Doğrulaması |Kullanıcı kimlik bilgilerinin ve belirteç verme 'nin doğrulanması.|
+|Kimlik Doğrulama |Kullanıcı kimlik bilgilerinin ve belirteç verme 'nin doğrulanması.|
 
 Kullanıcı nesnesi CRUD etkinlikleri için **çekirdek Dizin** kategorisine bakın.
 

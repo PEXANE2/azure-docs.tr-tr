@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
 ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382667"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure portal kullanarak işletim sistemi diskini bir kurtarma VM 'sine ekleyerek bir Windows sanal makinesi sorunlarını giderme
 Azure 'daki Windows sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini önleyen başarısız bir uygulama güncelleştirmesidir. Bu makalede, tüm hataları onarmak için sanal sabit diskinizi başka bir Windows sanal makineye bağlamak üzere Azure portal kullanma ve ardından özgün VM 'nizi yeniden oluşturma ayrıntıları yer aldığı açıklanır. 
@@ -134,7 +134,7 @@ Azure portal artık VM 'nin işletim sistemi diskini değiştirmeyi destekler. B
         Azure portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png) değiştirme işletim sistemi diski hakkında görüntü ![
 
 1. Onarılmakta olduğunuz yeni diski seçin ve ardından değişikliği onaylamak için VM 'nin adını yazın. Diski listede görmüyorsanız, diski sorun giderme VM 'sinden ayırdıktan sonra 10 ~ 15 dakika bekleyin. Ayrıca, diskin VM ile aynı konumda olduğundan emin olun.
-1. Tamam'ı seçin.
+1. Tamam ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sanal makinenize bağlanırken sorun yaşıyorsanız bkz. [Azure VM 'ye YÖNELIK RDP bağlantılarında sorun giderme](troubleshoot-rdp-connection.md). VM 'niz üzerinde çalışan uygulamalara erişme sorunları için bkz. [WINDOWS VM 'de uygulama bağlantı sorunlarını giderme](troubleshoot-app-connection.md).

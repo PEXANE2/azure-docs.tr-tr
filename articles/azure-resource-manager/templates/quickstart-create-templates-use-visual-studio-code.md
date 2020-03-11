@@ -6,11 +6,11 @@ ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
 ms.openlocfilehash: 9a829b0c84c397f297539cdb04b3ad027a18c834
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473622"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383599"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanılarak Azure Resource Manager şablonları oluşturma
 
@@ -20,9 +20,9 @@ Bu hızlı başlangıçta bir depolama hesabı dağıtırsınız:
 
 ![Resource Manager şablonu hızlı başlangıç Visual Studio kod diyagramı](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluştu
     ```
 
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için **Dosya**>**Farklı Kaydet**’i seçin.
+4. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için >Dosya**Farklı Kaydet**’i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -94,11 +94,11 @@ Visual Studio Code kullanarak bir şablonu düzenleme konusunda bilgi için, dep
 
 2. Sol üst köşedeki **PowerShell** veya **Bash**(CLI) öğesini seçerek tercih ettiğiniz ortamı seçin.  Geçiş yaptığınızda kabuğun yeniden başlatılması gerekir.
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure portal Cloud shell CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure portal Cloud Shell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
@@ -106,11 +106,11 @@ Visual Studio Code kullanarak bir şablonu düzenleme konusunda bilgi için, dep
 
 3. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin.
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure portal Cloud shell dosya karşıya yükleme](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure portal Cloud shell dosya karşıya yükleme](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
@@ -120,18 +120,18 @@ Visual Studio Code kullanarak bir şablonu düzenleme konusunda bilgi için, dep
 
     Dosyanın başarıyla karşıya yüklendiğini doğrulamak için, isteğe bağlı olarak **ls** komutunu ve **Cat** komutunu da kullanabilirsiniz.
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure portal Cloud Shell dosya listeleme](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure portal Cloud Shell dosya listeleme](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
     ---
 4. Cloud Shell’den aşağıdaki komutları çalıştırın. PowerShell kodunu veya CLI kodunu gösteren sekmeyi seçin.
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
@@ -141,7 +141,7 @@ Visual Studio Code kullanarak bir şablonu düzenleme konusunda bilgi için, dep
     az group deployment create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -157,11 +157,11 @@ Visual Studio Code kullanarak bir şablonu düzenleme konusunda bilgi için, dep
 
     Aşağıdaki ekran görüntüsünde bir örnek dağıtım gösterilmektedir:
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure portal Cloud Shell şablon dağıtımı](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure portal Cloud Shell şablon dağıtımı](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
@@ -171,7 +171,7 @@ Visual Studio Code kullanarak bir şablonu düzenleme konusunda bilgi için, dep
 
 5. Yeni oluşturulan depolama hesabını listelemek için aşağıdaki CLI komutunu çalıştırın:
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
@@ -180,7 +180,7 @@ Visual Studio Code kullanarak bir şablonu düzenleme konusunda bilgi için, dep
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

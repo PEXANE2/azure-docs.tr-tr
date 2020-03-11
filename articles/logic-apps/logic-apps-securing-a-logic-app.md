@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
 ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191311"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358949"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -655,7 +655,7 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Evet | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Güvenli Yuva Katmanı (SSL) istemci sertifikaları için kullanılacak kimlik doğrulaması türü. Otomatik olarak imzalanan sertifikalar desteklenirken, SSL için otomatik olarak imzalanan sertifikalar desteklenmez. |
+| **Kimlik doğrulaması** | `type` | Evet | **İstemci sertifikası** <br>or <br>`ClientCertificate` | Güvenli Yuva Katmanı (SSL) istemci sertifikaları için kullanılacak kimlik doğrulaması türü. Otomatik olarak imzalanan sertifikalar desteklenirken, SSL için otomatik olarak imzalanan sertifikalar desteklenmez. |
 | **Türk** | `pfx` | Evet | <*kodlu-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik <p><p>PFX dosyasını Base64 kodlamalı biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell kullanabilirsiniz: <p>1. sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. `ToBase64String()` işlevini kullanarak sertifika içeriğini dönüştürün ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Parola** | `password`| Hayır | *pfx dosyası için parola* <> | PFX dosyasına erişim parolası |
 |||||
@@ -694,12 +694,12 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Evet | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
+| **Kimlik doğrulaması** | `type` | Evet | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
 | **İniz** | `authority` | Hayır | <*URL-yetki-belirteç-veren*> | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net`. |
 | **Kiracı** | `tenant` | Evet | <*KIRACı kimliği*> | Azure AD kiracısı için kiracı KIMLIĞI |
 | **Grubu** | `audience` | Evet | *kaynaktan yetkilendir*> < | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/`) |
 | **İstemci KIMLIĞI** | `clientId` | Evet | <*ISTEMCI kimliği*> | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |
-| **Kimlik bilgisi türü** | `credentialType` | Evet | Sertifika <br>veya <br>Gizli dizi | İstemcinin yetkilendirme istemek için kullandığı kimlik bilgisi türü. Bu özellik ve değer mantıksal uygulamanızın temel tanımında görünmez, ancak seçilen kimlik bilgisi türü için görüntülenen özellikleri belirler. |
+| **Kimlik bilgisi türü** | `credentialType` | Evet | Sertifika <br>or <br>Gizli dizi | İstemcinin yetkilendirme istemek için kullandığı kimlik bilgisi türü. Bu özellik ve değer mantıksal uygulamanızın temel tanımında görünmez, ancak seçilen kimlik bilgisi türü için görüntülenen özellikleri belirler. |
 | **Gizli dizi** | `secret` | Evet, ancak yalnızca "gizli" kimlik bilgisi türü için | <*istemci gizli*> | Yetkilendirme isteğinde bulunan istemci parolası |
 | **Türk** | `pfx` | Evet, ancak yalnızca "sertifika" kimlik bilgisi türü için | <*kodlu-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik |
 | **Parola** | `password` | Evet, ancak yalnızca "sertifika" kimlik bilgisi türü için | *pfx dosyası için parola* <> | PFX dosyasına erişim parolası |
@@ -783,8 +783,8 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 
    | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Kimlik doğrulaması** | `type` | Evet | **Yönetilen kimlik** <br>veya <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
-   | **Yönetilen kimlik** | `identity` | Evet | * **sistem tarafından atanan yönetilen kimlik** <br>veya <br>`SystemAssigned` <p><p>* <*Kullanıcı tarafından atanan kimlik-adı*> | Kullanılacak yönetilen kimlik |
+   | **Kimlik doğrulaması** | `type` | Evet | **Yönetilen kimlik** <br>or <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
+   | **Yönetilen kimlik** | `identity` | Evet | * **sistem tarafından atanan yönetilen kimlik** <br>or <br>`SystemAssigned` <p><p>* <*Kullanıcı tarafından atanan kimlik-adı*> | Kullanılacak yönetilen kimlik |
    | **Grubu** | `audience` | Evet | <*target-kaynak kimliği*> | Erişmek istediğiniz hedef kaynağın kaynak KIMLIĞI. <p>Örneğin `https://storage.azure.com/`, tüm depolama hesapları için kimlik doğrulaması için erişim belirteçlerini geçerli hale getirir. Ancak, belirli bir depolama hesabı için `https://fabrikamstorageaccount.blob.core.windows.net` gibi bir kök hizmeti URL 'SI de belirtebilirsiniz. <p>**Note**: **hedef kitle** özelliği bazı tetikleyicilere veya eylemlere gizlenmiş olabilir. Bu özelliği görünür hale getirmek için tetikleyici veya eylemde, **yeni parametre Ekle** listesini açın ve **hedef kitle**' i seçin. <p><p>**Önemli**: Bu hedef kaynak kimliğinin, tüm gerekli eğik çizgiler de dahil olmak üzere Azure AD 'nin beklediği değerle *tam olarak eşleştiğinden* emin olun. Bu nedenle, tüm Azure Blob depolama hesapları için `https://storage.azure.com/` kaynak KIMLIĞI sonunda eğik çizgi gerekir. Ancak, belirli bir depolama hesabının kaynak KIMLIĞI, sonunda eğik çizgi gerektirmez. Bu kaynak kimliklerini bulmak için bkz. [Azure AD 'yi destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 
