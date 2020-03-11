@@ -223,6 +223,9 @@
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Stream Analytics Sorgu Dili
   items:
+    - name: Stream Analytics Sorgu Dili’ne genel bakış
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: Yerleşik İşlevler
       items:
         - name: Yerleşik İşlevlere Genel Bakış

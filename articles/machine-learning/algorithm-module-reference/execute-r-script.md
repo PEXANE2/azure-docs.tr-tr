@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/10/2020
+ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917416"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037112"
 ---
 # <a name="execute-r-script"></a>R Betiği yürütme
 
@@ -67,11 +67,43 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
   > Yüklemeyi tekrardan kaçınmak için, yüklemeden önce paketin zaten mevcut olup olmadığını denetleyin. Yukarıdaki örnek kodda `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` gibi. Yüklemeyi tekrarlamak, Web hizmeti istek zaman aşımına neden olabilir.     
 
+## <a name="upload-files"></a>Dosyaları karşıya yükleme
+**Execute r betiği** , Azure MACHINE LEARNING R SDK kullanarak dosya yüklemeyi destekler.
+
+Aşağıdaki örnek, bir görüntü dosyasının **Execute R betiğine**nasıl yükleneceğini göstermektedir:
+```R
+
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+
+  # Generate a jpeg graph
+  img_file_name <- "rect.jpg"
+  jpeg(file=img_file_name)
+  example(rect)
+  dev.off()
+
+  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
+
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+İşlem hattı başarıyla gönderildikten sonra, modülün sağ panelindeki resmin önizlemesini karşıya yükleyebilirsiniz ![resim](media/module/upload-image-in-r-script.png)
+
 ## <a name="how-to-configure-execute-r-script"></a>Execute R betiğini yapılandırma
 
 **R betiği Yürüt** modülü, başlangıç noktası olarak kullanabileceğiniz örnek kodu içerir. **R betiğini Yürüt** modülünü yapılandırmak için, yürütülecek bir giriş ve kod kümesi sağlayın.
 
-![R-modülü](media/module/execute-r-script.png)
+![R-modülü](media/module/upload-image-in-r-script.png)
 
 Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik olarak R veri çerçevesine dönüştürülür.
 
@@ -284,7 +316,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | Crayon       | 1.3.4      | 
 | Kıvr         | 3.3        | 
 | Data. Table   | 1.12.2     | 
-| veri kümeleri     | 3.5.1      | 
+| datasets     | 3.5.1      | 
 | DBı          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 

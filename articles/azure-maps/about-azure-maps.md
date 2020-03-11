@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443758"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079812"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
@@ -170,6 +170,8 @@ Ayrıca, Azure Maps basit bir programlama modeliyle kullanışlı bir [JavaScrip
 Azure haritalar hizmetlerine erişmek, [Azure Portal](https://portal.azure.com) ve Azure Maps hesabı oluşturmaya göre yapılır.
 
 Azure Haritalar anahtar tabanlı bir kimlik doğrulama düzeni kullanır. Hesabınız sizin için önceden oluşturulmuş iki anahtar ile birlikte gelir, her iki anahtar kullanın. Uygulamanızda bu konum yeteneklerini tümleştirmeye başlayın ve Azure Maps hizmetlerine istek yapın.
+
+Note-Azure haritaları, işlevselliği eşleştirmek amacıyla üçüncü taraf TomTom ile müşteri tarafından sunulan adres/konum sorgularını ("sorgular") paylaşır. Sorgular, TomTom ile paylaşıldığında hiçbir müşteriye veya son kullanıcıya bağlanmaz ve bireyler tanımlamak için kullanılamaz. Microsoft şu anda, çevrimiçi hizmetler alt yüklenici listesine TomTom ekleme sürecidir. Moovit ve Accuhava durumu ile tümleştirme dahil olmak üzere taşınabilirlik ve hava durumu hizmetlerinin Şu anda [Önizleme](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)aşamasında olduğunu unutmayın.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 

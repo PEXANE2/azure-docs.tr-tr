@@ -1,25 +1,17 @@
 ---
-title: Azure REST API Linux sanal makinesi oluşturma
+title: REST API bir Linux sanal makinesi oluşturma
 description: Azure REST API ile yönetilen diskler ve SSH kimlik doğrulaması kullanan Azure 'da Linux sanal makinesi oluşturmayı öğrenin.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036439"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970266"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>REST API ile SSH kimlik doğrulaması kullanan bir Linux sanal makinesi oluşturma
 
@@ -62,7 +54,7 @@ REST API isteklerle çalışma hakkında genel bilgi için, bkz. [bir REST API i
 
 Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
-| Ad                       | Gerekli | Tür                                                                                | Açıklama  |
+| Adı                       | Gerekli | Tür                                                                                | Açıklama  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | Kaynak konumu. |
 | ad                       |          | string                                                                              | Sanal makinenin adı. |
@@ -132,11 +124,11 @@ Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
 Bu HTTP isteğini göndermek için tercih ettiğiniz istemciyi kullanabilirsiniz. Ayrıca, **deneyin** düğmesine tıklayarak [tarayıcı içi bir araç](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) da kullanabilirsiniz.
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Yanıtlar
 
 Bir sanal makineyi oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
-| Ad        | Tür                                                                              | Açıklama |
+| Adı        | Tür                                                                              | Açıklama |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 TAMAM      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Tamam          |
 | 201 oluşturuldu | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Oluşturulan     |

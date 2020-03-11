@@ -1,6 +1,6 @@
 ---
 title: Veri Kopyalama aracını kullanarak Azure Blob depolama 'dan SQL 'e veri kopyalama
-description: Azure Blob depolamadaki verileri bir SQL veritabanına kopyalamak için bir Azure veri fabrikası oluşturun ve Veri Kopyalama aracını kullanın.
+description: Azure Blob depolamadan bir SQL veritabanına veri kopyalamak için bir Azure Veri Fabrikası oluşturun ve Veri Kopyalama aracını kullanın.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,15 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 09/11/2018
-ms.openlocfilehash: 6335fce717772e268f711c2e6e5050fa8c17d573
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/03/2020
+ms.openlocfilehash: 52ed43277eef84de826d2f4fa41ba860211a1531
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977328"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970007"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak Azure Blob depolama alanında SQL veritabanına veri kopyalama
+# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak Azure Blob depolamadan SQL veritabanına veri kopyalama
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmetinin sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -36,21 +36,22 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Veri Kopyalama aracını kullanarak bir işlem hattı oluşturun.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı**: Blob depolama alanını _kaynak_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) bölümündeki yönergelere bakın.
-* **Azure SQL Veritabanı**: Bir SQL veritabanını _havuz_ veri deposu olarak kullanın. SQL veritabanınız yoksa [SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md) konusundaki yönergelere bakın.
+* **Azure depolama hesabı**: BLOB depolama alanını _kaynak_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [depolama hesabı oluşturma](../storage/common/storage-account-create.md)bölümündeki yönergelere bakın.
+* **Azure SQL veritabanı**: _Havuz_ VERI deposu olarak bir SQL veritabanı kullanın. SQL veritabanınız yoksa, [SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md)bölümündeki yönergelere bakın.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
 
-Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı öğretici için hazırlayın.
+Bu adımları gerçekleştirerek BLOB depolama alanınızı ve SQL veritabanınızı öğreticiye hazırlayın.
 
 #### <a name="create-a-source-blob"></a>Kaynak blob oluşturma
 
 1. **Not Defteri**'ni başlatın. Aşağıdaki metni kopyalayıp diskinizde **inputEmp.txt** adlı bir dosyaya kaydedin:
 
     ```
+    FirstName|LastName
     John|Doe
     Jane|Doe
     ```
@@ -59,7 +60,7 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
 
 #### <a name="create-a-sink-sql-table"></a>Havuz SQL tablosu oluşturma
 
-1. Aşağıdaki SQL betiğini kullanarak SQL veritabanınızda **dbo.emp** adlı bir tablo oluşturun:
+1. SQL veritabanınızda **dbo.** on adlı bir tablo oluşturmak IÇIN aşağıdaki SQL betiğini kullanın:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -73,7 +74,7 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Azure hizmetlerinin SQL Server’a erişmesine izin verin. SQL Database’i çalıştıran sunucunuz için **Azure hizmetlerine erişime izin ver** ayarının etkin olduğunu doğrulayın. Bu ayar, Data Factory’nin veritabanı örneğinize veri yazmasına imkan tanır. Bu ayarı doğrulamak ve etkinleştirmek için Azure SQL Server > Genel Bakış > Sunucu güvenlik duvarını ayarla ' ya gidin > **Azure hizmetlerine erişime Izin ver** seçeneğini **Açık**olarak ayarlayın.
+2. Azure hizmetlerinin SQL Server’a erişmesine izin ver. **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** ayarının SQL veritabanı çalıştıran sunucunuz için etkinleştirildiğini doğrulayın. Bu ayar, Data Factory’nin veritabanı örneğinize veri yazmasına imkan tanır. Bu ayarı doğrulamak ve etkinleştirmek için Azure SQL Server > Güvenlik > Güvenlik duvarları ve sanal ağlar ' a gidin > **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** seçeneğini **Açık**olarak ayarlayın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
@@ -111,6 +112,7 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
 
     ![Veri Kopyalama aracının kutucuğu](./media/doc-common-process/get-started-page.png)
 1. **Özellikler** sayfasındaki **Görev adı** bölümüne **CopyFromBlobToSqlPipeline** adını girin. Sonra **İleri**’yi seçin. Data Factory kullanıcı arabirimi, belirtilen görev adına sahip bir işlem hattı oluşturur.
+    ![İşlem hattı oluşturma](./media/tutorial-copy-data-tool/create-pipeline.png)
 
 1. **Kaynak veri deposu** sayfasında aşağıdaki adımları tamamlayın:
 
@@ -118,7 +120,7 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
 
     b. Galeriden **Azure Blob depolama** ' yı seçin ve ardından **devam**' ı seçin.
 
-    c. **Yeni Bağlı Hizmet** sayfasında **Depolama hesabı adı** listesinden depolama hesabınızı ve ardından **Son**'u seçin.
+    c. **Yeni bağlı hizmet** sayfasında, Azure aboneliğinizi seçin ve **depolama hesabı adı** listesinden depolama hesabınızı seçin. Bağlantıyı test edin ve **Oluştur**' u seçin.
 
     d. Kaynak olarak yeni oluşturulan bağlantılı hizmeti seçin ve **İleri**'ye tıklayın.
 
@@ -130,7 +132,7 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
 
     b. Sonraki adıma geçmek için **İleri**'ye tıklayın.
 
-1. **Dosya biçimi ayarları** sayfasında aracın sütun ve satır sınırlayıcılarını otomatik olarak belirlediğine dikkat edin. **İleri**’yi seçin. Ayrıca, bu sayfada verilerin önizlemesini yapabilir ve giriş verilerinin şemasını görüntüleyebilirsiniz.
+1. **Dosya biçimi ayarları** sayfasında, ilk satır için onay kutusunu *üst bilgi olarak*etkinleştirin. Aracın sütun ve satır sınırlayıcılarını otomatik olarak algıladığına dikkat edin. **İleri**’yi seçin. Ayrıca, verilerin önizlemesini yapabilir ve bu sayfadaki giriş verilerinin şemasını görüntüleyebilirsiniz.
 
     ![Dosya biçimi ayarları](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. **Hedef veri deposu** sayfasında aşağıdaki adımları tamamlayın:
@@ -139,36 +141,41 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
 
     b. Galeriden **Azure SQL veritabanı** ' nı seçin ve ardından **devam**' ı seçin.
 
-    c. **Yeni Bağlı Hizmet** sayfasında açılır listeden sunucunuzun ve veritabanınızın adını seçip kullanıcı adı ve parolayı belirttikten sonra **Son**'u seçin.
+    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adınızı seçin, Kullanıcı adı ve parolayı belirtip **Oluştur**' u seçin.
 
     ![Azure SQL veritabanını yapılandırma](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
     d. Kaynak olarak yeni oluşturulan bağlantılı havuz hizmetini seçin ve **İleri**'ye tıklayın.
 
-    ![Havuza bağlı hizmeti seçin](./media/tutorial-copy-data-tool/select-sink-linked-service.png)
-
 1. **Tablo eşleme** sayfasında **[dbo].[emp]** tablosunu seçip **İleri**’yi seçin.
 
-1. **Şema eşleme** sayfasında, girdi dosyasındaki birinci ve ikinci sütunun **emp** tablosundaki **FirstName** ve **LastName** sütunuyla eşlendiğine dikkat edin. **İleri**’yi seçin.
+1. **Sütun eşleme** sayfasında, giriş dosyasındaki ikinci ve üçüncü **sütunların, urluya tablosunun** **FirstName** ve **LastName** sütunlarına eşlendiğine dikkat edin. Bir hata olmadığından emin olmak için eşlemeyi ayarlayın ve ardından **İleri**' yi seçin.
 
-    ![Şema eşleme sayfası](./media/tutorial-copy-data-tool/schema-mapping.png)
+    ![Sütun eşleme sayfası](./media/tutorial-copy-data-tool/column-mapping.png)
+
 1. **Ayarlar** sayfasında **İleri**’yi seçin.
 1. **Özet** sayfasında ayarları gözden geçirin ve **İleri**’yi seçin.
 1. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici**’yi seçin.
-1. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. **Eylemler** sütunu, etkinlik çalıştırması ayrıntılarını görüntüleme ve işlem hattını yeniden çalıştırma bağlantılarını içerir. Listeyi yenilemek için **Yenile**’yi seçin.
+ 
+    ![İşlem hattını izleme](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
-1. İşlem hattı çalıştırmalarıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Görüntüle** bağlantısını seçin. Kopyalama işlemiyle ilgili ayrıntılar için **Eylemler** sütunundaki **Ayrıntılar** bağlantısını (gözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki işlem **hattı çalıştırmaları** bağlantısını seçin. Görünümü yenilemek için **Yenile**’yi seçin.
+1. İşlem hattı çalıştırmaları sayfasında, Listeyi yenilemek için **Yenile** ' yi seçin. Etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** altındaki bağlantıya tıklayın. 
+    ![işlem hattı çalıştırma](./media/tutorial-copy-data-tool/pipeline-run.png)
+
+1. Etkinlik çalıştırmaları sayfasında, kopyalama işlemi hakkında daha fazla bilgi için **etkınlık adı** sütununun altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne geri dönmek için, içerik haritası menüsünde **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Görünümü yenilemek için **Yenile**’yi seçin.
 
     ![Etkinlik çalıştırmalarını izleme](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
 
-1. Verilerin SQL veritabanınızdaki **emp** tablosuna eklendiğini doğrulayın.
+1. Verilerin SQL veritabanınızdaki **dbo.** , tablosuna eklendiğini doğrulayın.
 
 
 1. Düzenleyici moduna geçmek için soldaki **Yazar** sekmesini seçin. Düzenleyici kullanılarak araç üzerinden oluşturulan bağlı hizmetleri, veri kümelerini ve işlem hatlarını güncelleştirebilirsiniz. Bu varlıkları Data Factory kullanıcı arabiriminde düzenlemeyle ilgili ayrıntılar için [bu öğreticinin Azure portalı sürümüne](tutorial-copy-data-portal.md) bakın.
 
+    ![Yazar sekmesini seçin](./media/tutorial-copy-data-tool/author-tab.png)
+
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu örnekteki işlem hattı, bir Blob depolama alanındaki verileri bir SQL veritabanına kopyalar. Şunları öğrendiniz:
+Bu örnekteki işlem hattı, verileri blob depolamadan bir SQL veritabanına kopyalar. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.

@@ -1,27 +1,27 @@
 ---
 title: Azure özel bağlantı hizmeti ile tümleştirme
 description: Azure Key Vault Azure özel bağlantı hizmeti ile tümleştirme hakkında bilgi edinin
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 01/28/2020
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e058e643f4c37336f09b43c41cd09aa361a23d15
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a5cc5bbdb56e308d79b8eb2c8db546184cedb39
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907078"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080352"
 ---
-# <a name="integrate-key-vault-with-azure-private-link-preview"></a>Key Vault Azure özel bağlantısıyla tümleştirin (Önizleme)
+# <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault Azure özel bağlantısıyla tümleştirin
 
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Key Vault, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar.
 
-Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Tüm hizmet trafiği özel uç nokta aracılığıyla yönlendirilebilir. Bu nedenle hiçbir ağ geçidi, NAT cihazı, ExpressRoute veya VPN bağlantısı ya da genel IP adresi gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
+Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure özel bağlantısı (Önizleme) nedir?](../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir anahtar kasasını Azure özel bağlantısı (Önizleme) ile bütünleştirmek için şunlar gerekir:
 
@@ -34,7 +34,7 @@ Bir anahtar kasasını Azure özel bağlantısı (Önizleme) ile bütünleştirm
 
 Özel uç noktanız sanal ağınızda özel bir IP adresi kullanıyor.
 
-## <a name="establish-a-private-link-connection-to-key-vault"></a>Anahtar Kasası ile özel bağlantı kurun
+## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Key Vault Azure portal kullanarak bir özel bağlantı bağlantısı kurun 
 
 İlk olarak, [Azure Portal kullanarak sanal ağ oluşturma](../virtual-network/quick-create-portal.md) bölümündeki adımları izleyerek bir sanal ağ oluşturun
 
@@ -49,7 +49,7 @@ Anahtar Kasası temel bilgilerini yapılandırdıktan sonra, ağ sekmesini seçi
 1. Ağ sekmesinde Özel uç nokta (Önizleme) radyo düğmesini seçin.
 1. Özel uç nokta eklemek için "+ Ekle" düğmesine tıklayın.
 
-    ![Resim](./media/private-link-service-1.png)
+    ![Görüntü](./media/private-link-service-1.png)
  
 1. Özel uç nokta oluştur dikey penceresinin "konum" alanında, sanal ağınızın bulunduğu bölgeyi seçin. 
 1. "Ad" alanında, bu özel uç noktayı tanımlamanızı sağlayacak açıklayıcı bir ad oluşturun. 
@@ -57,7 +57,7 @@ Anahtar Kasası temel bilgilerini yapılandırdıktan sonra, ağ sekmesini seçi
 1. "Özel bölge DNS ile tümleştirin" seçeneğini değiştirmeden bırakın.  
 1. "Tamam" ı seçin.
 
-    ![Resim](./media/private-link-service-2.png)
+    ![Görüntü](./media/private-link-service-2.png)
  
 Artık yapılandırılmış özel uç noktayı görebileceksiniz. Artık bu özel uç noktayı silme ve düzenleme seçeneğiniz vardır. "Gözden geçir + oluştur" düğmesini seçin ve Anahtar Kasası oluşturun. Dağıtımın tamamlanması 5-10 dakika sürer. 
 
@@ -79,6 +79,60 @@ Bu dikey pencereyi kullanarak, içindeki herhangi bir Azure kaynağı için öze
 ![resim](./media/private-link-service-3.png)
 ![görüntü](./media/private-link-service-4.png)
 
+## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>CLı kullanarak Key Vault özel bağlantı bağlantısı kurma
+
+### <a name="login-to-azure-cli"></a>Azure CLı 'da oturum açma
+```console
+az login 
+```
+### <a name="select-your-azure-subscription"></a>Azure aboneliğinizi seçin 
+```console
+az account set --subscription {AZURE SUBSCRIPTION ID}
+```
+### <a name="create-a-new-resource-group"></a>Yeni bir kaynak grubu oluşturun 
+```console
+az group create -n {RG} -l {AZURE REGION}
+```
+### <a name="register-microsoftkeyvault-as-a-provider"></a>Microsoft. Keykasasını sağlayıcı olarak kaydetme 
+```console
+az provider register -n Microsoft.KeyVault
+```
+### <a name="create-a-new-key-vault"></a>Yeni bir Key Vault oluştur
+```console
+az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION}
+```
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+```console
+az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
+```
+### <a name="add-a-subnet"></a>Alt ağ ekleme
+```console
+az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
+```
+### <a name="disable-virtual-network-policies"></a>Sanal ağ Ilkelerini devre dışı bırak 
+```console
+az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
+```
+### <a name="add-a-private-dns-zone"></a>Özel DNS bölgesi ekleme 
+```console
+az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.azure.net
+```
+### <a name="link-private-dns-zone-to-virtual-network"></a>Özel DNS bölgesini sanal ağa bağlama 
+```console
+az network private-dns link vnet create --resoruce-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+```
+### <a name="create-a-private-endpoint-automatically-approve"></a>Özel uç nokta oluştur (otomatik olarak Onayla) 
+```console
+az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
+```
+### <a name="create-a-private-endpoint-manually-request-approval"></a>Özel uç nokta oluşturma (El Ile onay ISTEME) 
+```console
+az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
+```
+### <a name="show-connection-status"></a>Bağlantı durumunu göster 
+```console
+az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
+```
 ## <a name="manage-private-link-connection"></a>Özel bağlantı bağlantısını Yönet
 
 Özel bir uç nokta oluşturduğunuzda bağlantının onaylanması gerekir. Özel bir uç noktası oluşturduğunuz kaynak dizininizdeki ise, yeterli izinlere sahip olduğunuz için bağlantı isteğini onaylayabileceksiniz; başka bir dizindeki bir Azure kaynağına bağlanıyorsanız, bu kaynağın sahibinin bağlantı isteğinizi onaylamasını beklemeniz gerekir.
@@ -87,12 +141,12 @@ Dört sağlama durumu vardır:
 
 | Hizmet eylemi sağla | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
-| Reddet | Reddedilecek | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
+| Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantısı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
  
-###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault"></a>Anahtar Kasası ile özel bir uç nokta bağlantısını yönetme
+###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Azure portal kullanarak Key Vault özel bir uç nokta bağlantısını yönetme 
 
 1. Azure portalında oturum açın.
 1. Arama çubuğuna "Anahtar Kasası" yazın
@@ -103,7 +157,24 @@ Dört sağlama durumu vardır:
 1. Onayla düğmesini seçin.
 1. Reddetmek istediğiniz özel uç nokta bağlantıları varsa, bekleyen bir istek ya da var olan bağlantı olup olmadığına bakılmaksızın bağlantıyı seçin ve "Reddet" düğmesine tıklayın.
 
-    ![Resim](./media/private-link-service-7.png)
+    ![Görüntü](./media/private-link-service-7.png)
+
+##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>Azure CLı kullanarak Key Vault özel bir uç nokta bağlantısını yönetme
+
+### <a name="approve-a-private-link-connection-request"></a>Özel bağlantı bağlantısı Isteğini onaylama
+```console
+az keyvault private-endpoint-connection approve --approval-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
+```
+
+### <a name="deny-a-private-link-connection-request"></a>Özel bağlantı bağlantısı Isteği reddetme
+```console
+az keyvault private-endpoint-connection reject --rejection-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
+```
+
+### <a name="delete-a-private-link-connection-request"></a>Özel bağlantı bağlantısı Isteğini silme
+```console
+az keyvault private-endpoint-connection delete --resource-group {RG} --vault-name {KEY VAULT NAME} --name {PRIVATE LINK CONNECTION NAME}
+```
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalışıp çalışmadığını doğrulama
 

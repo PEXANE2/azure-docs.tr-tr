@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09a720be10b09e11adc8acdc8ab26a06870311b0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
-ms.translationtype: HT
+ms.openlocfilehash: 0716c2d4475bb538c06b9a591521fbdcfc0c80e4
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893295"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968322"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -67,7 +67,7 @@ Kuruluşlar, koşullu erişim ilkesinin bir parçası olarak cihaz kimliğini ku
 
 Kuruluşlar, onaylanan bir istemci uygulamasından seçili bulut uygulamalarına yönelik bir erişim denemesinin yapılması gerektiğini gerektirebilir. Bu onaylanan istemci uygulamaları, mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak [Intune uygulama koruma ilkelerini](/intune/app-protection-policy) destekler.
 
-Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
+Bu ayar, aşağıdaki iOS ve Android uygulamaları için geçerlidir:
 
 - Microsoft Azure Information Protection
 - Microsoft kayıtları
@@ -80,6 +80,7 @@ Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 - Microsoft faturalama
 - Microsoft Kaizala
 - Microsoft Başlatıcısı
+- Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook

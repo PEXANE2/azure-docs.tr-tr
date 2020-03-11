@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312439"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037622"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı nedir? 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcı (Önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Azure Machine Learning tasarımcı, makine öğrenimi modelleri oluşturmak için etkileşimli bir tuvalde [veri kümelerini](#datasets) ve [modülleri](#module) görsel olarak bağlamanıza olanak tanır. Tasarımcı ile çalışmaya başlama hakkında bilgi edinmek için bkz [. Öğretici: tasarımcı ile otomobil fiyatını tahmin](tutorial-designer-automobile-price-train-score.md) etme
@@ -88,14 +88,14 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili baz
 
 İş hattınızı çalıştırmak ve dağıtılan modellerinizi gerçek zamanlı uç noktalar veya ardışık düzen uç noktaları olarak barındırmak (Batch çıkarımı için) için çalışma alanınızdan işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
 
-| İşlem hedefi | Eğitim | Kurulum |
+| İşlem hedefi | Eğitim | Dağıtım |
 | ---- |:----:|:----:|
 | Azure Machine Learning işlem | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 İşlem hedefleri [Azure Machine Learning çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio (klasik)](https://ml.azure.com)içinde çalışma alanınızda yönetirsiniz.
 
-## <a name="deploy"></a>Kurulum
+## <a name="deploy"></a>Dağıtma
 
 Gerçek zamanlı bir işlem hattı gerçekleştirmek için, bir işlem hattını **gerçek zamanlı uç nokta**olarak dağıtmanız gerekir. Gerçek zamanlı uç nokta, bir dış uygulama ve Puanlama modeliniz arasında bir arabirim oluşturur. Gerçek zamanlı bir uç noktaya yapılan çağrı, uygulamaya gerçek zamanlı olarak tahmin sonuçları döndürür. Gerçek zamanlı bir uç noktaya çağrı yapmak için, uç noktasını dağıtırken oluşturulan API anahtarını geçirirsiniz. Uç nokta, Web programlama projeleri için popüler bir mimari seçimi olan REST 'i temel alır.
 
@@ -103,7 +103,7 @@ Gerçek zamanlı uç noktaların bir Azure Kubernetes hizmet kümesine dağıtı
 
 Modelinizi dağıtmayı öğrenmek için bkz. [öğretici: tasarımcı ile makine öğrenimi modeli dağıtma](tutorial-designer-automobile-price-deploy.md).
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 Ardışık Düzen **uç noktasına**bir işlem hattı da yayımlayabilirsiniz. Gerçek zamanlı bir uç noktaya benzer şekilde, bir ardışık düzen uç noktası, REST çağrılarını kullanarak dış uygulamalardan yeni işlem hattı çalıştırmaları göndermenize olanak tanır. Ancak, bir ardışık düzen uç noktası kullanarak gerçek zamanlı olarak veri gönderemez veya alamazsınız.
 
@@ -116,7 +116,7 @@ Tasarımcı, SDK ile aynı [Publishedpipeline](https://docs.microsoft.com/python
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Görsel arabirimden tasarımcıya geçme
 
-Görsel Arabirim (Önizleme) güncelleştirildi ve artık tasarımcı Azure Machine Learning. Tasarımcı, Azure Machine Learning diğer özellikleriyle tamamen tümleştirilen bir ardışık düzen tabanlı arka uç kullanmak üzere tasarlanmıştır. 
+Görsel Arabirim (Önizleme) güncelleştirildi ve artık Azure Machine Learning tasarımcı (Önizleme). Tasarımcı, Azure Machine Learning diğer özellikleriyle tamamen tümleştirilen bir ardışık düzen tabanlı arka uç kullanmak üzere tasarlanmıştır. 
 
 Bu güncelleştirmelerin sonucunda, görsel arabirim için bazı kavramlar ve terimler değiştirilmiştir veya yeniden adlandırılacaktır. En önemli kavramsal değişiklikler için aşağıdaki tabloya bakın. 
 
@@ -135,13 +135,5 @@ Varolan Visual Interface denemeleri ve Web hizmetlerini, tasarımcıda işlem ha
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Öğretici ile tahmine dayalı analiz ve makine öğrenimi hakkında temel bilgileri öğrenin [: tasarımcı ile otomobil fiyatlarını tahmin](tutorial-designer-automobile-price-train-score.md) etme
-* Örneklerden birini kullanın ve gereksinimlerinize göre değiştirin:
-
-- [Örnek 1-gerileme: bir otomobil fiyatını tahmin edin](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Örnek 2-gerileme: otomobil fiyatlandırma için algoritmaları karşılaştırın](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Örnek 3-Özellik seçimi ile sınıflandırma: gelir tahmini](how-to-designer-sample-classification-predict-income.md)
-- [Örnek 4-sınıflandırma: kredi riskini tahmin etme (maliyet duyarlı)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Örnek 5-sınıflandırma: karmaşıklığı tahmin etme](how-to-designer-sample-classification-churn.md)
-- [Örnek 6-sınıflandırma: uçuş gecikmelerini tahmin etme](how-to-designer-sample-classification-flight-delay.md)
-- [Örnek 7-metin sınıflandırması: Vikipedi SP 500 veri kümesi](how-to-designer-sample-text-classification.md)
+* Mevcut [Tasarımcı örneklerini](samples-designer.md) gereksinimlerinize uyarlayacak şekilde nasıl değiştireceğinizi öğrenin.
 

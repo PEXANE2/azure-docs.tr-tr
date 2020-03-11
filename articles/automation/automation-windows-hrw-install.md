@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: fc6d3bbe1580c4e6f7064c957a9d420555296231
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372410"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082620"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -139,7 +139,13 @@ Heartbeat
 | where TimeGenerated > ago(30m)
 ```
 
-Arama sonuçlarında, bilgisayara bağlı olduğunu ve hizmete rapor olduğunu belirten, bilgisayar için sinyal kayıtları görmeniz gerekir. Varsayılan olarak, her aracı atanmış çalışma alanına bir sinyal kaydını iletir. Aracının, **C:\Program Files\Microsoft Monitoring ıtors t\agent**Içinde **Azureautomationfiles** adlı bir klasör olduğunda, otomasyon çözümünü doğru bir şekilde indirdiğini doğrulayabilirsiniz. Karma Runbook Worker sürümünü doğrulamak için, **C:\Program Files\Microsoft Monitoring Tors T\\cmreautoma'e** gidin ve **Sürüm** alt klasörünü aklınızda olun.
+Arama sonuçlarında, bilgisayara bağlı olduğunu ve hizmete rapor olduğunu belirten, bilgisayar için sinyal kayıtları görmeniz gerekir. Varsayılan olarak, her aracı atanmış çalışma alanına bir sinyal kaydını iletir. 
+
+Aracı yüklemesini ve kurulumunu gerçekleştirmek için aşağıdaki adımları kullanın.
+
+1. Aracı makinesini eklemek için çözümü etkinleştirin. Bkz. [çalışma alanındaki makineler](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
+2. Aracının otomasyon çözümünü doğru bir şekilde indirdiğini doğrulayın. Bu, **C:\Program Files\Microsoft Monitoring SAP aracısında** **Azureautomationfiles** adlı bir klasöre sahip olmalıdır. 
+3. Karma Runbook Worker sürümünü doğrulamak için, **C:\Program Files\Microsoft Monitoring Tors T\\cmreautoma'e** gidin ve **Sürüm** alt klasörünü aklınızda olun.
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>4\. adım-runbook ortamını yükleyip Azure Otomasyonu 'na bağlanma
 

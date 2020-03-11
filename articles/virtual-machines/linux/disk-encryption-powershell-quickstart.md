@@ -3,19 +3,20 @@ title: Azure PowerShell ile Linux VM oluşturma ve şifreleme
 description: Bu hızlı başlangıçta, bir Linux sanal makinesi oluşturmak ve şifrelemek için Azure PowerShell 'in nasıl kullanılacağını öğrenirsiniz.
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 14cdd1e15212141e8c631b589c9c470bbdfe38a9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a2cb8919ac0752c42f22e064d6201c7120fbc9b6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829910"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970543"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>Hızlı başlangıç: Azure 'da Azure PowerShell ile Linux VM oluşturma ve şifreleme
 
-Azure PowerShell modülü, PowerShell komut satırından veya betiklerden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure PowerShell modülünü kullanarak bir Linux sanal makinesi (VM) oluşturma, şifreleme anahtarlarının depolanması için bir Key Vault oluşturma ve VM 'yi şifreleme işlemlerinin nasıl yapılacağı gösterilir. Bu hızlı başlangıçta, kurallı ve VM Standard_D2S_V3 boyutundan Ubuntu 16,04 LTS Market görüntüsü kullanılmaktadır. 
+Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure PowerShell modülünü kullanarak bir Linux sanal makinesi (VM) oluşturma, şifreleme anahtarlarının depolanması için bir Key Vault oluşturma ve VM 'yi şifreleme işlemlerinin nasıl yapılacağı gösterilir. Bu hızlı başlangıçta, kurallı ve VM Standard_D2S_V3 boyutunda Ubuntu 16,04 LTS Market görüntüsü kullanılmaktadır. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -37,7 +38,7 @@ $cred = = Get-Credential
 New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image Canonical:UbuntuServer:16.04-LTS:latest -Size Standard_D2S_V3
 ```
 
-VM 'nizin dağıtılması birkaç dakika sürer. 
+VM'nizin dağıtılması birkaç dakika sürer. 
 
 ## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Şifreleme anahtarları için yapılandırılmış bir Key Vault oluşturma
 
@@ -85,7 +86,7 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : OS disk encryption started
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet 'ini kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz:
 

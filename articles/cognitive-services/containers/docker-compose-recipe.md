@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716904"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037530"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose kullanarak birden çok kapsayıcı dağıtma
 
@@ -23,7 +23,7 @@ Bu makalede, birden çok Azure bilişsel hizmet kapsayıcısının nasıl dağı
 
 > [Docker Compose](https://docs.docker.com/compose/) , çok Kapsayıcılı Docker uygulamalarını tanımlamaya ve çalıştırmaya yönelik bir araçtır. Oluşturma bölümünde, uygulamanızın hizmetlerini yapılandırmak için bir YAML dosyası kullanırsınız. Ardından, tek bir komut çalıştırarak, yapılandırmadan tüm hizmetleri oluşturup başlatabilirsiniz.
 
-Tek bir ana bilgisayarda birden çok kapsayıcı görüntüsünü düzenlemek yararlı olabilir. Bu makalede, Metin Tanıma ve form tanıyıcı kapsayıcılarını birlikte ekleyeceğiz.
+Tek bir ana bilgisayarda birden çok kapsayıcı görüntüsünü düzenlemek yararlı olabilir. Bu makalede okuma ve form tanıyıcı kapsayıcılarını birlikte ekleyeceğiz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -70,11 +70,11 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text"
+    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
     environment:
       eula: accept
-      apikey: # < Your recognize text API key >
-      billing: # < Your recognize text billing URL >
+      apikey: # < Your computer vision API key >
+      billing: # < Your computer vision billing URL >
     ports:
       - "5021:5000"
 ```
@@ -87,9 +87,9 @@ services:
 Bir Docker Compose dosyası, tanımlı hizmetin yaşam döngüsünün tüm aşamaları yönetimine izin verebilir: Hizmetleri başlatma, durdurma ve yeniden oluşturma. hizmet durumunu görüntüleme; ve günlük akışını günlüğe kaydedin. Proje dizininden (Docker-Compose. YAML dosyasının bulunduğu) bir komut satırı arabirimi açın.
 
 > [!NOTE]
-> Hataları önlemek için konak makinenin, diskleri Docker altyapısına doğru şekilde paylaştığından emin olun. Örneğin, E:\publicpreview Docker-Compose. YAML dosyasında bir dizin olarak kullanılıyorsa, E sürücüsünü Docker ile paylaşabilirsiniz.
+> Hataları önlemek için konak makinenin, diskleri Docker altyapısına doğru şekilde paylaştığından emin olun. Örneğin, *E:\publicpreview* *Docker-Compose. YAML* dosyasında bir dizin olarak kullanılıyorsa, **E** sürücüsünü Docker ile paylaşabilirsiniz.
 
-Komut satırı arabiriminden, Docker-Compose. YAML dosyasında tanımlanan tüm hizmetleri başlatmak (veya yeniden başlatmak) için aşağıdaki komutu yürütün:
+Komut satırı arabiriminden, *Docker-Compose. YAML* dosyasında tanımlanan tüm hizmetleri başlatmak (veya yeniden başlatmak) için aşağıdaki komutu yürütün:
 
 ```console
 docker-compose up
@@ -113,8 +113,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:)...
-latest: Pulling from microsoft/cognitive-services-recognize-text
+Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
+latest: Pulling from microsoft/cognitive-services-read
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -167,18 +167,12 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
 2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
+4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>Metin Tanıma kapsayıcısını test etme
+### <a name="test-containers"></a>Test kapsayıcıları
 
-Konak makinede bir tarayıcı açın ve http://localhost:5021/swagger/index.htmlgibi Docker-Compose. YAML dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Metin Tanıma uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
-
-![Metin Tanıma kapsayıcı](media/recognize-text-swagger-page.png)
-
-### <a name="test-the-form-recognizer-container"></a>Form tanıyıcı kapsayıcısını test etme
-
-Konak makinede bir tarayıcı açın ve http://localhost:5010/swagger/index.htmlgibi Docker-Compose. YAML dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Form tanıyıcı uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
+Konak makinede bir tarayıcı açın ve http://localhost:5021/swagger/index.htmlgibi *Docker-Compose. YAML* dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Örneğin, form tanıyıcı uç noktasını test etmek için API 'deki **TRY It** özelliğini kullanabilirsiniz. Her iki kapsayıcı de Swagger sayfası kullanılabilir ve test edilebilir olmalıdır.
 
 ![Form tanıyıcı kapsayıcısı](media/form-recognizer-swagger-page.png)
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902532"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079863"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
 
@@ -32,7 +32,7 @@ Bu makalede, sunucu meta verilerini virgülle ayrılmış değerler (CSV) biçim
 - CSV kullanarak sunucu bilgilerini sunucu değerlendirmesine birden çok kez yükleyebilirsiniz.
 - Uygulama bilgilerinin toplanması, şirket içi ortamınızı geçiş için değerlendirmek için yararlıdır. Ancak, sunucu değerlendirmesi Şu anda uygulama düzeyinde değerlendirme gerçekleştirmez veya bir değerlendirme oluştururken uygulamaları hesaba alabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * Bir Azure geçişi projesi ayarlayın.
 > * Sunucu bilgileriyle bir CSV dosyası girin.
@@ -105,11 +105,11 @@ Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir:
 
 **Alan adı** | **Girilmesi** | **Ayrıntılar**
 --- | --- | ---
-**Sunucu adı** | Evet | Tam etki alanı adını (FQDN) belirtmeyi öneririz.
+**Sunucu adı** | Yes | Tam etki alanı adını (FQDN) belirtmeyi öneririz.
 **IP adresi** | Hayır | Sunucu adresi.
-**Sayısı** | Evet | Sunucuya ayrılan işlemci çekirdekleri sayısı.
-**Bellek** | Evet | Sunucuya ayrılan toplam RAM (MB).
-**İşletim sistemi adı** | Evet | Sunucu işletim sistemi.
+**Sayısı** | Yes | Sunucuya ayrılan işlemci çekirdekleri sayısı.
+**Bellek** | Yes | Sunucuya ayrılan toplam RAM (MB).
+**İşletim sistemi adı** | Yes | Sunucu işletim sistemi. <br/> [Bu](#supported-operating-system-names) listedeki adları eşleşen veya içeren işletim sistemi adları değerlendirme tarafından tanınır.
 **İşletim sistemi sürümü** | Hayır | Sunucu işletim sistemi sürümü.
 **Disk sayısı** | Hayır | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
 **Disk 1 boyutu**  | Hayır | Maksimum disk boyutu (GB cinsinden).<br/>Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
@@ -179,7 +179,7 @@ Değerlendirme, belirli işletim sistemi adlarını tanır. Belirttiğiniz ad, [
 CSV şablonuna bilgi ekledikten sonra sunucuları sunucu değerlendirmesi içine aktarın.
 
 1. Azure geçişi 'nde, **bulma makineler**bölümünde, tamamlanan şablona gidin.
-2. **Al**'ı seçin.
+2. **Içeri aktar**' ı seçin.
 3. İçeri aktarma durumu gösterilir.
     - Durum durumunda uyarı görünürse, bunları çözebilir ya da bunları bilmeden devam edebilirsiniz.
     - Değerlendirme doğruluğunu artırmak için, Uyarılar bölümünde önerildiği gibi sunucu bilgilerini geliştirebilirsiniz.
@@ -216,7 +216,7 @@ Bir değerlendirme çalıştırmak için:
 1. Değerlendirme oluşturmak için [en iyi uygulamaları](best-practices-assessment.md) gözden geçirin.
 2. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **değerlendir**' i seçin.
 
-    ![Değerlendirin](./media/tutorial-assess-physical/assess.png)
+    ![Değerlendirme](./media/tutorial-assess-physical/assess.png)
 
 3. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
 4. **Bulma kaynağı**' nda **Azure geçişi ' ne içeri aktarma yoluyla eklenen makineler**' i seçin.
@@ -261,7 +261,7 @@ Bir değerlendirme şunları açıklar:
 
 ### <a name="review-cost-details"></a>Maliyet ayrıntılarını gözden geçirin
 
-Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyetini gösterir. Yapabilecekleriniz:
+Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyetini gösterir. Şunları yapabilirsiniz:
 
 - Aylık işlem ve depolama maliyetlerini gözden geçirin. Ücretler, değerlendirilen gruptaki tüm sunucular için toplanır.
 
@@ -411,7 +411,7 @@ Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyeti
       Windows 3<br/>
       Windows 7<br/>
       Windows 8<br/>
-      Windows 95<br/>
+      Windows 95<br/>
       Windows 98<br/>
       Windows NT<br/>
       Windows Server (R) 2008<br/>

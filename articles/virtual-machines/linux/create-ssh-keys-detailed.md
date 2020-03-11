@@ -1,25 +1,17 @@
 ---
-title: Ayrıntılı adımlar-Azure Linux VM 'Leri için SSH anahtar çifti
+title: SSH anahtar çifti oluşturmak için ayrıntılı adımlar
 description: Azure 'da Linux VM 'Ler için SSH ortak ve özel anahtar çifti oluşturma ve yönetme hakkında ayrıntılı adımlar hakkında bilgi edinin.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929707"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969549"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ayrıntılı adımlar: Azure 'da bir Linux VM 'sine kimlik doğrulaması için SSH anahtarları oluşturma ve yönetme 
 Güvenli Kabuk (SSH) anahtar çifti ile Azure 'da, kimlik doğrulaması için SSH anahtarlarını kullanan varsayılan bir Linux sanal makinesi oluşturabilir ve parolaların oturum açması gereksinimini ortadan kaldırabilirsiniz. Azure portal, Azure CLı, Kaynak Yöneticisi şablonları veya diğer araçlarla oluşturulan VM 'Ler, SSH bağlantıları için SSH anahtarı kimlik doğrulamasını ayarlayan dağıtımın bir parçası olarak SSH ortak anahtarınızı içerebilir. 
@@ -31,7 +23,7 @@ Windows bilgisayarda SSH anahtarları oluşturma ve kullanma hakkında ek yollar
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>Özel anahtar parolası
-SSH özel anahtarının korunması için çok güvenli bir parola olmalıdır. Bu parola yalnızca özel SSH anahtar dosyasına erişim için kullanılır ve Kullanıcı hesabı parolası *değildir* . SSH anahtarınıza parola eklediğinizde bu parola özel anahtarı 128 bit AES kullanarak şifreler; böylece özel anahtar, şifresini çözen parola olmadan kullanılamaz. Bir saldırgan özel anahtarınızı ve bu anahtarın bir parolası yoksa, bu özel anahtarı ilgili ortak anahtara sahip herhangi bir sunucuda oturum açmak için kullanabilir. Özel anahtar bir parola ile korunuyorsa, Azure 'daki altyapınız için ek bir güvenlik katmanı sağlayan bu saldırgan tarafından kullanılamaz.
+SSH özel anahtarının korunması için çok güvenli bir parola olmalıdır. Bu parola yalnızca özel SSH anahtar dosyasına erişim için kullanılır ve Kullanıcı hesabı parolası *değildir* . SSH anahtarınıza bir parola eklediğinizde, özel anahtarın şifresini çözmek için parola olmadan kullanılamaz olması için, özel anahtarı 128 bit AES kullanarak şifreler. Bir saldırgan özel anahtarınızı ve bu anahtarın bir parolası yoksa, bu özel anahtarı ilgili ortak anahtara sahip herhangi bir sunucuda oturum açmak için kullanabilir. Özel anahtar bir parola ile korunuyorsa, Azure 'daki altyapınız için ek bir güvenlik katmanı sağlayan bu saldırgan tarafından kullanılamaz.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -80,7 +72,7 @@ ssh-keygen \
 
 `-C "azureuser@myserver"` = kolayca tanımlamak için ortak anahtar dosyasının sonuna eklenen bir açıklama. Normalde açıklama olarak bir e-posta adresi kullanılır, ancak altyapınız için en iyi şeyi kullanın.
 
-`-f ~/.ssh/mykeys/myprivatekey` = varsayılan adı kullanmayı tercih ederseniz, özel anahtar dosyasının dosya adı. `.pub` eklenmiş karşılık gelen ortak anahtar dosyası aynı dizinde oluşturulur. Dizinin var olması gerekir.
+`-f ~/.ssh/mykeys/myprivatekey` = varsayılan adı kullanmayı tercih ederseniz, özel anahtar dosyasının dosya adı. `.pub` eklenmiş karşılık gelen ortak anahtar dosyası aynı dizinde oluşturulur. Dizin var olmalıdır.
 
 `-N mypassphrase` = özel anahtar dosyasına erişmek için kullanılan ek bir parola. 
 
@@ -184,7 +176,7 @@ Parolayı etkileşimli olarak kullanmanıza gerek kalmaması için, SSH sistemin
 eval "$(ssh-agent -s)"
 ```
 
-Şimdi `ssh-add` komutunu kullanarak özel anahtarı `ssh-agent` öğesine ekleyin.
+Şimdi `ssh-agent` komutunu kullanarak özel anahtarı `ssh-add` öğesine ekleyin.
 
 ```bash
 ssh-add ~/.ssh/id_rsa

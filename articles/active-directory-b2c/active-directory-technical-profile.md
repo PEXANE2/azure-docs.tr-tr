@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944220"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078862"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -64,13 +64,13 @@ Mevcut bir kullanıcı hesabını okumak, güncelleştirmek veya silmek için, g
 
 Yeni bir kullanıcı hesabı oluşturmak için, giriş talebi yerel veya Federasyon hesabını benzersiz bir şekilde tanımlayan bir anahtardır. Örneğin, yerel hesap: **Signınnames. Emapostaadı**veya **Signınnames. UserName**. Bir Federasyon hesabı için: **Alternativesecurityıd**.
 
-Inputclaimstransformations öğesi, giriş talebini değiştirmek veya yeni bir tane oluşturmak için kullanılan bir giriş talepleri dönüştürme öğeleri koleksiyonu içerebilir.
+[Inputclaimstransformations](technicalprofiles.md#inputclaimstransformations) öğesi, giriş talebini değiştirmek veya yeni bir tane oluşturmak için kullanılan bir giriş talepleri dönüştürme öğeleri koleksiyonu içerebilir.
 
 ## <a name="outputclaims"></a>Outputclaim
 
 **Outputclaim** öğesi, Azure AD teknik profili tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir. `DefaultValue` özniteliğini ayarladığınız sürece Azure Active Directory tarafından döndürülmeyen talepleri de ekleyebilirsiniz.
 
-**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
+[Outputclaimstransformations](technicalprofiles.md#outputclaimstransformations) öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
 Örneğin, **AAD-UserWriteUsingLogonEmail** teknik profili yerel bir hesap oluşturur ve aşağıdaki talepleri döndürür:
 
@@ -92,7 +92,7 @@ Inputclaimstransformations öğesi, giriş talebini değiştirmek veya yeni bir 
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims** öğesi, Ilke ve Azure AD öznitelik adındaki ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türü arasındaki olası eşleme bilgileri Ile Azure AD tarafından kalıcı olması gereken tüm değerleri içerir.
+**PersistedClaims** öğesi, Ilke ve Azure AD öznitelik adındaki [Claimsschema](claimsschema.md) bölümünde zaten tanımlanmış olan bir talep türü arasındaki olası eşleme bilgileri ile Azure AD tarafından kalıcı olması gereken tüm değerleri içerir.
 
 Yeni yerel hesap oluşturan **AAD-UserWriteUsingLogonEmail** teknik profili, sonrasında aşağıdaki talepler devam ediyor:
 
@@ -123,9 +123,7 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 
 ### <a name="read"></a>Okuma
 
-**Okuma** işlemi, tek bir kullanıcı hesabı hakkındaki verileri okur. Kullanıcı verilerini okumak için, **ObjectID**, **userPrincipalName**, **signınnames** (herhangi bir tür, Kullanıcı adı ve e-posta tabanlı hesap) ya da **alternativesecurityıd**gibi bir giriş talebi olarak bir anahtar sağlamanız gerekir.
-
-Aşağıdaki teknik profil, kullanıcının ObjectID 'sini kullanarak bir kullanıcı hesabı hakkındaki verileri okur:
+**Okuma** işlemi, tek bir kullanıcı hesabı hakkındaki verileri okur. Aşağıdaki teknik profil, kullanıcının ObjectID 'sini kullanarak bir kullanıcı hesabı hakkındaki verileri okur:
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -155,9 +153,7 @@ Aşağıdaki teknik profil, kullanıcının ObjectID 'sini kullanarak bir kullan
 
 ### <a name="write"></a>Yazma
 
-**Yazma** işlemi tek bir kullanıcı hesabı oluşturur veya güncelleştirir. Bir kullanıcı hesabı yazmak için **ObjectID**, **userPrincipalName**, **Signınnames. Emapostaadı**veya **alternativesecurityıd**gibi bir giriş talebi olarak bir anahtar sağlamanız gerekir.
-
-Aşağıdaki teknik profil yeni sosyal hesap oluşturur:
+**Yazma** işlemi tek bir kullanıcı hesabı oluşturur veya güncelleştirir. Aşağıdaki teknik profil yeni sosyal hesap oluşturur:
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -197,9 +193,7 @@ Aşağıdaki teknik profil yeni sosyal hesap oluşturur:
 
 ### <a name="deleteclaims"></a>Deleteclaim
 
-**Deleteclaim** işlemi, bilgileri, belirtilen talepler listesinden temizler. Taleplerden bilgileri silmek için, **ObjectID**, **userPrincipalName**, **Signınnames. Emadresi** veya **alternativesecurityıd**gibi bir giriş talebi olarak bir anahtar sağlamanız gerekir.
-
-Aşağıdaki teknik profilde talepler silinir:
+**Deleteclaim** işlemi, bilgileri, belirtilen talepler listesinden temizler. Aşağıdaki teknik profilde talepler silinir:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -220,9 +214,7 @@ Aşağıdaki teknik profilde talepler silinir:
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-**DeleteClaimsPrincipal** işlemi, dizinden tek bir kullanıcı hesabını siler. Bir kullanıcı hesabını silmek için, **ObjectID**, **userPrincipalName**, **Signınnames. Emadresi** veya **alternativesecurityıd**gibi bir giriş talebi olarak bir anahtar sağlamalısınız.
-
-Aşağıdaki teknik profil, Kullanıcı asıl adını kullanarak bir kullanıcı hesabını dizinden siler:
+**DeleteClaimsPrincipal** işlemi, dizinden tek bir kullanıcı hesabını siler. Aşağıdaki teknik profil, Kullanıcı asıl adını kullanarak bir kullanıcı hesabını dizinden siler:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -257,12 +249,26 @@ Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecur
 | --------- | -------- | ----------- |
 | İşlem | Yes | Gerçekleştirilecek işlem. Olası değerler: `Read`, `Write`, `DeleteClaims`veya `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Hayır | Kullanıcı nesnesi dizinde yoksa bir hata oluştur. Olası değerler: `true` veya `false`. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalDoesNotExist Attribute Description), Kullanıcı nesnesi yoksa kullanıcıya gösterilecek iletiyi belirtin. Değer [yerelleştirilmiş](localization.md)olabilir.|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Hayır | Kullanıcı nesnesi zaten mevcutsa bir hata oluştur. Olası değerler: `true` veya `false`.|
-| Usermessageifclaimsprincıpalalreadyexists | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalAlreadyExists Attribute Description), Kullanıcı nesnesi zaten varsa kullanıcıya gösterilecek iletiyi belirtin. Değer [yerelleştirilmiş](localization.md)olabilir.|
 | Applicationobjectıd | Hayır | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Değer: bir uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md). |
 | ClientId | Hayır | Kiracıya üçüncü taraf olarak erişmek için istemci tanımlayıcısı. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md) |
 | IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true`veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız bunu `true`olarak ayarlayın. |
+
+### <a name="error-messages"></a>Hata iletileri
+ 
+Hata durumunda görüntülenecek hata iletisini yapılandırmak için aşağıdaki ayarlar kullanılabilir. Meta veriler, [kendi kendine onaylanan](self-asserted-technical-profile.md) teknik profilde yapılandırılmalıdır. Hata iletileri [yerelleştirilebilecek](localization.md).
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| Usermessageifclaimsprincıpalalreadyexists | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalAlreadyExists Attribute Description), Kullanıcı nesnesi zaten varsa kullanıcıya gösterilecek iletiyi belirtin. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalDoesNotExist Attribute Description), Kullanıcı nesnesi yoksa kullanıcıya gösterilecek iletiyi belirtin. |
+
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure AD teknik profili kullanımı gibi aşağıdaki makaleye bakın:
+
+- [Azure Active Directory B2C özel ilkeler kullanarak talepler ekleyin ve Kullanıcı girişini özelleştirin](custom-policy-configure-user-input.md)
 
 
 

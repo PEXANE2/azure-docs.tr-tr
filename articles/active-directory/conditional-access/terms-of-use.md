@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d92c3e51aae70c66dcf9b7ca6dfd631650ace574
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 1dbd1d96cda88d500e16fff885dae03ebfa230f0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561757"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079900"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -129,7 +129,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
     Özel koşullu erişim ilkeleri, belirli bir bulut uygulamasına veya kullanıcı grubuna göre ayrıntılı kullanım koşullarını sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilmesi gereken kullanım koşulları](require-tou.md).
 
-1. **Oluştur**’ tıklayın.
+1. **Oluştur**'a tıklayın.
 
    Özel bir koşullu erişim şablonu seçtiyseniz, özel koşullu erişim ilkesi oluşturmanıza olanak sağlayan yeni bir ekran görüntülenir.
 
@@ -277,7 +277,11 @@ Bir Kullanıcı Windows 10 ve Microsoft Edge kullanıyorsa, [cihazına katılmas
 
 Chrome kullanılıyorsa, [Windows 10 hesapları uzantısını](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)yüklemeleri istenir.
 
-### <a name="join-an-android-device"></a>Android cihazına ekleme
+### <a name="register-an-ios-device"></a>İOS cihazı kaydetme
+
+Bir Kullanıcı bir iOS cihazı kullanıyorsa, bu kullanıcılara [Microsoft Authenticator uygulamasını](https://apps.apple.com/us/app/microsoft-authenticator/id983156458)yüklemeleri istenir.
+
+### <a name="register-an-android-device"></a>Android cihazı kaydetme
 
 Bir Kullanıcı bir Android cihaz kullanıyorsa, bu kullanıcıların [Microsoft Authenticator uygulamasını](https://play.google.com/store/apps/details?id=com.azure.authenticator)yüklemeleri istenir.
 

@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: Uçtan uca MLOps örnekleri
       href: 'https://github.com/microsoft/MLOps'
+    - name: Tasarımcı işlem hatları
+      href: samples-designer.md
 - name: Kavramlar
   items:
     - name: Çalışma alanı
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: Modelleri eğitme
       items:
-        - name: Tasarımcıyı kullanma
-          displayName: sample designer experiments
-          items:
-            - name: Fiyat tahmini
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: Fiyat tahmini (gelişmiş)
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: Gelir tahmini
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: Kredi riski tahmini (gelişmiş)
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: Değişim sıklığı tahmini
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: Uçuş rötarları tahmini
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: Metin sınıflandırması
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: ML için tahmin araçlarını kullanma
           items:
             - name: Eğitimde tahmin araçları oluşturma

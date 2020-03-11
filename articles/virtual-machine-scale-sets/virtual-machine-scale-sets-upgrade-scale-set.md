@@ -1,19 +1,19 @@
 ---
 title: Azure sanal makine ölçek kümesini değiştirme
 description: REST API 'Leri, Azure PowerShell ve Azure CLı ile Azure sanal makine ölçek kümesini değiştirme ve güncelleştirme hakkında bilgi edinin
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390431"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082312"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesini değiştirme
 
@@ -311,7 +311,7 @@ Mevcut VM 'Leri güncelleştirmek için, var olan her VM 'nin bir "el ile yükse
 >[!NOTE]
 > Service Fabric kümeler yalnızca *Otomatik* modu kullanabilir, ancak güncelleştirme farklı şekilde işlenir. Daha fazla bilgi için bkz. [uygulama yükseltmeleri Service Fabric](../service-fabric/service-fabric-application-upgrade.md).
 
-Küresel ölçek kümesi özelliklerinde, yükseltme ilkesini takip eden bir değişiklik türü vardır. Ölçek kümesi işletim sistemi profilinde (Yönetici Kullanıcı adı ve parola gibi) yapılan değişiklikler yalnızca API sürüm *2017-12-01* veya sonraki sürümlerde değiştirilebilir. Bu değişiklikler yalnızca ölçek kümesi modelindeki değişiklikten sonra oluşturulan VM 'Ler için geçerlidir. Mevcut VM 'Leri güncel hale getirmek için, var olan her VM 'nin "ReImage" öğesini yapmanız gerekir. Bu yeniden görüntüsünü kullanarak yapabilirsiniz:
+Küresel ölçek kümesi özelliklerinde, yükseltme ilkesini takip eden bir değişiklik türü vardır. Ölçek kümesi işletim sistemi ve veri diski profilindeki (Yönetici Kullanıcı adı ve parola gibi) değişiklikler yalnızca API sürüm *2017-12-01* veya üzeri sürümlerde değiştirilebilir. Bu değişiklikler yalnızca ölçek kümesi modelindeki değişiklikten sonra oluşturulan VM 'Ler için geçerlidir. Mevcut VM 'Leri güncel hale getirmek için, var olan her VM 'nin "ReImage" öğesini yapmanız gerekir. Bu yeniden görüntüsünü kullanarak yapabilirsiniz:
 
 - [İşlem/virtualmachinescalesets/yeniden görüntüyle](/rest/api/compute/virtualmachinescalesets/reimage) aşağıdaki şekilde REST API:
 

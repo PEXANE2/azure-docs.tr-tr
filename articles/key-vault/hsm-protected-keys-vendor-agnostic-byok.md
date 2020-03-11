@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 08a4330f4a786deca8ddb2f1c6803b29152e7f50
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207039"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080139"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM korumalı anahtarları Key Vault’a içeri aktarma (önizleme)
 
@@ -58,9 +58,11 @@ Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar li
 
 ## <a name="supported-hsms"></a>Desteklenen HSM 'ler
 
-|HSM satıcı adı|Desteklenen HSM modelleri|Daha fazla bilgi|
-|---|---|---|
-|Thales|Yazılım üretici sürümü 7,3 veya üzeri ile SafeNet Luna HSM 7 ailesi| [SafeNet Luna BYOK aracı ve belgeleri](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Satıcı adı|Satıcı türü|Desteklenen HSM modelleri|Daha fazla bilgi|
+|---|---|---|---|
+|Thales|Üretici|Yazılım üretici sürümü 7,3 veya üzeri ile SafeNet Luna HSM 7 ailesi| [SafeNet Luna BYOK aracı ve belgeleri](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Fortanx|Hizmet olarak HSM|Kendi kendine savunma anahtar yönetimi hizmeti (SDKMS)|[SDKMS anahtarlarını BYOK için bulut sağlayıcılarına dışarı aktarma-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+
 
 > [!NOTE]
 > HSM korumalı anahtarları MSMS 'nin nCipher nShield ailesinden içeri aktarmak için, [eskı BYOK yordamını](hsm-protected-keys-legacy.md)kullanın.

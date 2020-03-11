@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367022"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Öğretici: SharePoint şirket içi ile Azure Active Directory tümleştirme
 
@@ -271,7 +271,7 @@ Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcıs
 10. AzureCP 'yi SharePoint şirket içi grubunda veya alternatif bir özel talep sağlayıcı çözümünde yapılandırın.  Bu örnekte, AzureCP kullanıyoruz.
 
     > [!NOTE]
-    > AzureCP 'nin bir Microsoft ürünü değil veya Microsoft teknik desteği tarafından desteklendiğine lütfen emin olun. https://yvand.github.io/AzureCP/ başına şirket içi SharePoint grubuna AzureCP 'yi indirme, yükleme ve yapılandırma 
+    > AzureCP 'nin bir Microsoft ürünü değil veya Microsoft teknik desteği tarafından desteklendiğine lütfen emin olun. [https://yvand.github.io/AzureCP/](https://yvand.github.io/AzureCP/) başına şirket içi SharePoint grubuna AzureCP 'yi indirme, yükleme ve yapılandırma 
 
 11. Şirket **Içi SharePoint 'te Azure Active Directory güvenlik grubuna erişim Izni verin** :-gruplara SharePoint şirket içi içindeki uygulamaya erişim verilmelidir.  Web uygulamasına erişim izinlerini ayarlamak için aşağıdaki adımları kullanın.
 

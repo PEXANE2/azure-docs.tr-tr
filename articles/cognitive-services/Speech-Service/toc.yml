@@ -45,10 +45,6 @@
           href: how-to-automatic-language-detection.md
         - name: Sıkıştırılmış ses giriş biçimlerini kullanma
           href: how-to-use-codec-compressed-audio-input-streams.md
-        - name: Sıkıştırılmış ses giriş biçimlerini kullanma (iOS)
-          href: how-to-use-codec-compressed-audio-input-streams-ios.md
-        - name: Sıkıştırılmış ses giriş biçimlerini kullanma (Android)
-          href: how-to-use-codec-compressed-audio-input-streams-android.md
     - name: Özelleştirme
       items:
         - name: Verileri hazırlama
@@ -63,6 +59,10 @@
           href: how-to-custom-speech-deploy-model.md
         - name: İnsan etiketli transkripsiyonlar oluşturma
           href: how-to-custom-speech-human-labeled-transcriptions.md
+        - name: Özel anahtar sözcük adlandırma yönergeleri
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: Özel anahtar sözcük belirleme
+          href: speech-devices-sdk-create-kws.md
     - name: Başvuru
       items:
         - name: Konuşma SDK'sı API'leri
@@ -156,10 +156,6 @@
               href: how-to-custom-voice-create-voice.md
             - name: Ses örnekleri kaydetme
               href: record-custom-voice-samples.md
-            - name: Özel anahtar sözcük adlandırma yönergeleri
-              href: speech-devices-sdk-kws-guidelines.md
-            - name: Özel anahtar sözcük belirleme
-              href: speech-devices-sdk-create-kws.md
         - name: Ses İçeriği Oluşturma
           items:
             - name: Ses İçeriği Oluşturma
@@ -413,6 +409,12 @@
           items:
             - name: Ses yardımcıları hakkında SSS
               href: faq-voice-assistants.md
+    - name: Özel Anahtar Sözcük
+      items:
+        - name: Özel anahtar sözcük adlandırma yönergeleri
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: Özel anahtar sözcük belirleme
+          href: speech-devices-sdk-create-kws.md
 - name: Barındırma
   expanded: false
   items:
@@ -445,8 +447,6 @@
           href: ship-application.md
     - name: Hızlı Başlangıç
       items:
-        - name: Proje oluşturma
-          href: quickstarts/create-project.md
         - name: Konuşma SDK'sını Ayarlama
           href: quickstarts/setup-platform.md
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'

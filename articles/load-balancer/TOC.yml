@@ -12,7 +12,8 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Load Balancer oluşturma - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Load Balancer oluşturma - Şablon
+    - name: Load Balancer oluşturma - ARM şablonu
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
 - name: Öğreticiler

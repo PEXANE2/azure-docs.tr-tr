@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770892"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082889"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
 
@@ -31,9 +31,9 @@ Kümenizin düğümlerine ve bunların yüklenmesine ilişkin üst düzey bir g�
 | --- | --- |
 | Kırmızı | Konaktaki en az bir ana bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
 | Orange | Konaktaki en az bir ikincil bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
-| Sarı | Ambarı sunucusu ana bilgisayardan 3 dakikadan uzun bir sinyal almadı. |
-| Yeşil | Normal çalışma durumu. |
- 
+| Renkle | Ambarı sunucusu ana bilgisayardan 3 dakikadan uzun bir sinyal almadı. |
+| Renkli | Normal çalışma durumu. |
+
 Ayrıca, her konak için çekirdek sayısını ve RAM miktarını ve disk kullanımını ve yük ortalamasını gösteren sütunları görürsünüz.
 
 ![Apache ambarı ana bilgisayarları sekmesine genel bakış](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -52,7 +52,7 @@ YARN, JobTracker, kaynak yönetimi ve iş zamanlama/izlemenin iki sorumlulukın�
 
 Kaynak Yöneticisi, saf bir *Zamanlayıcı*olur ve yalnızca tüm rekabet eden uygulamalar arasında kullanılabilir kaynakları hızlar. Kaynak Yöneticisi, tüm kaynakların her zaman kullanıldığı, SLA 'Lar, kapasite garantisi vb. gibi çeşitli sabitler için optimize edilmesini sağlar. ApplicationMaster Kaynak Yöneticisi Kaynakları görüşür ve kapsayıcıları ve kaynak tüketimini yürütmek ve izlemek için NodeManager 'lar ile birlikte kullanılır.
 
-Birden çok kiracı büyük bir kümeyi paylaşıyorsa, kümenin kaynakları için yarışmaya yer vardır. CapacityScheduler, istekleri sıraya alarak kaynak paylaşımında yardımcı olan takılabilir bir Zamanlayıcı 'dır. CapacityScheduler ayrıca kaynakların bir kuruluşun alt kuyrukları arasında paylaşıldığından, diğer uygulamaların sıralarının ücretsiz kaynakları kullanmasına izin verilmediğinden emin olmak için *hiyerarşik sıraları* destekler.
+Birden çok kiracı büyük bir kümeyi paylaşıyorsa, kümenin kaynakları için yarışmaya yer vardır. CapacityScheduler, istekleri sıraya alarak kaynak paylaşımında yardımcı olan takılabilir bir Zamanlayıcı 'dır. CapacityScheduler ayrıca kaynakların bir kuruluşun alt sıraları arasında paylaşıldığından, diğer uygulamaların sıralarının ücretsiz kaynakları kullanmasına izin verilmediğinden emin olmak için *hiyerarşik sıraları* destekler.
 
 YARN bu sıralara kaynak ayırmamızı sağlar ve kullanılabilir kaynaklarınızın tümünün atanıp atanmadığını gösterir. Kuyruklarınız hakkındaki bilgileri görüntülemek için, ambarı Web Kullanıcı arabiriminde oturum açın ve sonra üstteki menüden **Yarn kuyruk yöneticisi** ' ni seçin.
 
@@ -81,6 +81,46 @@ Kümenizin yedekleme deposu Azure Data Lake Storage (ADLS) ise, azaltma bilgiler
 * [HDInsight ve Azure Data Lake Storage Apache Hive için performans ayarlama Kılavuzu](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [HDInsight ve Azure Data Lake Storage MapReduce için performans ayarlama Kılavuzu](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [HDInsight ve Azure Data Lake Storage Apache Storm için performans ayarlama Kılavuzu](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>Yavaş düğüm performansının sorunlarını giderme
+
+Bazı durumlarda, kümede yetersiz disk alanı nedeniyle ağır bir durum oluşabilir. Şu adımlarla araştırın:
+
+1. Düğümlerin her birine bağlanmak için [SSH komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın.
+
+1. Aşağıdaki komutlardan birini çalıştırarak disk kullanımını kontrol edin:
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. Çıktıyı gözden geçirin ve `mnt` klasöründe veya diğer klasörlerde herhangi bir büyük dosyanın varlığını denetleyin. Genellikle, `usercache`ve `appcache` (mnt/Resource/Hadoop/Yarn/Local/usercache/Hive/APPCACHE/) klasörleri büyük dosyalar içerir.
+
+1. Büyük dosyalar varsa, geçerli bir iş dosyanın büyümesi veya başarısız olan bir önceki iş bu soruna katkıda bulunabilir. Bu davranışın geçerli bir işin neden olup olmadığını denetlemek için aşağıdaki komutu çalıştırın:
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. Bu komut belirli bir işi gösteriyorsa, aşağıdaki gibi bir komut kullanarak işi sonlandırmayı tercih edebilirsiniz:
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    `application_id` uygulama KIMLIĞIYLE değiştirin. Belirli bir iş belirtilmemişse, sonraki adıma gidin.
+
+1. Yukarıdaki komut tamamlandıktan sonra veya belirli bir iş belirtilmemişse, aşağıdakine benzer bir komut çalıştırarak belirlediğiniz büyük dosyaları silin:
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+Disk alanı sorunlarıyla ilgili daha fazla bilgi için bkz. [disk yetersiz alanı](./hadoop/hdinsight-troubleshoot-out-disk-space.md).
+
+> [!NOTE]  
+> Korumak istediğiniz büyük dosyalarınız varsa ancak düşük disk alanı sorununa katkıda bulunursa, HDInsight kümenizi ölçeklendirmeniz ve hizmetlerinizi yeniden başlatmanız gerekir. Bu yordamı tamamladıktan ve birkaç dakika bekledikten sonra, depolamanın serbest olduğunu ve düğümün olağan performansının geri yüklendiğini fark edeceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

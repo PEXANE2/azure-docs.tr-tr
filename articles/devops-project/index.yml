@@ -3,18 +3,18 @@ title: Azure DevOps Projeleri belgeleri
 summary: Azure DevOps Projeleri, mevcut kodunuzu ve Git deponuzu getirdiğiniz ya da Azure’da bir sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı oluşturmak üzere örnek uygulamalardan birini seçtiğiniz basitleştirilmiş bir deneyim sunar.
 metadata:
   title: Azure DevOps Projeleri belgeleri
-  description: Azure DevOps Projeleri, mevcut kodunuzu ve Git deponuzu getirdiğiniz ya da Azure’da bir sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı oluşturmak üzere örnek uygulamalardan birini seçtiğiniz basitleştirilmiş bir deneyim sunar.
+  description: Azure’da bir sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı oluşturmak için mevcut kodunuzu ve Git deponuzu getirin veya örnek bir uygulama seçin.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
   ms.date: 03/05/2020
-  ms.openlocfilehash: 0c67ed2fdffd80c447608348429985477dd426df
-  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/06/2020
-  ms.locfileid: "78674188"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78942473"
 landingContent:
 - title: Azure DevOps Projeleri hakkında
   linkLists:

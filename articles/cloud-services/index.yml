@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Cloud Services belgeleri
+summary: Cloud Services’ı kullanarak yüksek oranda kullanılabilir ve ölçeklenebilir bulut uygulamaları ve API'ler barındırma ve çalıştırma hakkında bilgi edinin. Sanal makine konaklarının nasıl yönetileceğini ve yazılım yapılandırma, düzeltme eki uygulama ve yüklemeyi gösterir.
+metadata:
+  title: Azure Cloud Services belgeleri
+  description: Cloud Services’ı kullanarak yüksek oranda kullanılabilir ve ölçeklenebilir bulut uygulamaları ve API'ler barındırmayı ve çalıştırmayı açıklar.
+  ms.service: cloud-services
+  service: cloud-services
+  ms.topic: landing-page
+  author: tgore03
+  ms.author: tagore
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943191"
+landingContent:
+- title: Cloud Services hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Cloud Services nedir?
+      url: cloud-services-choose-me.md
+  - linkListType: video
+    links:
+    - text: Cloud Services video kitaplığı
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
+- title: başlarken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ASP.NET
+      url: cloud-services-dotnet-get-started.md
+    - text: Visual Studio için Python
+      url: cloud-services-python-ptvs.md
+- title: Geliştirme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PHP web ve çalışan rolleri oluşturma
+      url: ../cloud-services-php-create-web-role.md
+    - text: Node.js uygulaması derleme ve dağıtma
+      url: cloud-services-nodejs-develop-deploy-app.md
+    - text: Express kullanarak bir Node.js web uygulaması derleme ve dağıtma
+      url: cloud-services-nodejs-develop-deploy-express-app.md
+- title: Dağıtma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portalda bulut hizmeti oluşturma ve dağıtma
+      url: cloud-services-how-to-create-deploy-portal.md
+    - text: PowerShell’de boş bir bulut hizmeti kapsayıcısı oluşturma
+      url: cloud-services-powershell-create-cloud-container.md
+- title: Yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Genel yönetim görevleri
+      url: cloud-services-how-to-manage-portal.md
+    - text: Bulut Hizmetini Yapılandırma
+      url: cloud-services-how-to-configure-portal.md

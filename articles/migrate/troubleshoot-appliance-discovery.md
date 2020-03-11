@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3e25f55d82ba146f9076e38faf1e399c5228d947
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048696"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080403"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -150,6 +150,7 @@ Tipik uygulama bulma hataları tabloda özetlenir.
 10004: "< Windows/Linux > makineler için yüklü uygulamalar bulunamıyor." |  < Windows/Linux > makinelere erişim kimlik bilgileri, Gereç içinde sağlanmamış.| < Windows/Linux > makinelerine erişimi olan gereç için bir kimlik bilgisi ekleyin.
 10005: "Şirket içi sunucuya erişilemiyor". | Erişim kimlik bilgileri yanlış olabilir. | Gereç kimlik bilgilerini güncelleştirme ilgili makineye bunlarla erişebildiğinizden emin olun. 
 10006: "Şirket içi sunucuya erişilemiyor". | Makine işletim sistemi Windows veya Linux değilse bu durum oluşabilir.|  Yalnızca Windows/Linux için uygulama bulmayı kullanın.
+10007: "alınan meta veriler işlenemiyor" | JSON seri durumdan çıkarılmaya çalışılırken bu iç hata oluştu | Bir çözüm için Microsoft Desteği başvurun
 9000/9001/9002: "sunucuda yüklü olan uygulamalar bulunamıyor". | VMware araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarını ilgili makineye yükleyin/yeniden yükleyin ve çalıştığını denetleyin.
 9003: sunucuda yüklü olan uygulamalar bulunamıyor ". | Makine işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yalnızca Windows/Linux için uygulama bulmayı kullanın.
 9004: "sunucuda yüklü olan uygulamalar bulunamıyor". | VM kapatılmışsa bu durum oluşabilir. | Bulma için VM 'nin açık olduğundan emin olun.
@@ -158,9 +159,21 @@ Tipik uygulama bulma hataları tabloda özetlenir.
 9008: "sunucu yüklü uygulamalar alınamıyor". | Bir iç hata olabilir.  | TF sorun, 24 saat içinde kendiliğinden çözümlenmiyor, desteğe başvurun.
 9009: "sunucu yüklü uygulamalar alınamıyor". | Sunucu üzerindeki Windows Kullanıcı hesabı denetimi (UAC) ayarları kısıtlayıcıysa ve yüklü uygulamaların bulunmasını engelliyorsa, bu durum oluşabilir. | Sunucuda ' Kullanıcı hesabı denetimi ' ayarlarını arayın ve sunucudaki UAC ayarını alt iki düzeyden birine yapılandırın.
 9010: "sunucu yüklü uygulamalar alınamıyor". | Bir iç hata olabilir.  | TF sorun, 24 saat içinde kendiliğinden çözümlenmiyor, desteğe başvurun.
+9011: "konuğa indirilecek dosya Konuk sanal makinede bulunamadı" | Sorun, bir iç hata nedeniyle oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+9012: "sonuç dosyası içeriği boş." | Sorun, bir iç hata nedeniyle oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+9013: "VMware VM 'de her oturum açma işlemi için yeni bir geçici profil oluşturulur" | VM 'de her oturum açma için yeni bir geçici profil oluşturulur | Konuk VM kimlik bilgilerinde belirtilen kullanıcı adının UPN biçiminde olduğundan emin olun.
+9015: "vCenter üzerinde yetersiz ayrıcalıklar nedeniyle VMware VM 'lerine bağlanılamıyor" | VCenter Kullanıcı hesabında Konuk Işlemler rolü etkin değil | VCenter Kullanıcı hesabında Konuk Işlemleri rolünün etkinleştirildiğinden emin olun.
+9016: "Konuk işlem Aracısı veri dışında, VMware VM 'lerine bağlanılamıyor" | VMware araçları düzgün yüklenmemiş veya güncel değil. | VMware araçlarının düzgün bir şekilde yüklendiğinden ve güncel olduğundan emin olun.
+9017: "bulunan meta verileri içeren dosya VM 'de bulunamadı." | Sorun, bir iç hata nedeniyle oluşabilir. | Bir çözüm için Microsoft Desteği başvurun.
+9018: "PowerShell, Konuk VM 'lerde yüklü değil." | PowerShell, Konuk VM 'de kullanılamıyor. | PowerShell 'i Konuk VM 'ye yükler.
+9019: "Konuk VM işlem hatalarından dolayı bulunamıyor" | VMware Konuk işlemi VM 'de başarısız oldu. | VM kimlik bilgilerinin geçerli olduğundan ve konuk VM kimlik bilgilerinde belirtilen kullanıcı adının UPN biçiminde olduğundan emin olun.
+9020: "dosya oluşturma izni reddedildi." | Kullanıcı veya grup ilkesiyle ilişkili rol, kullanıcının klasörde dosyayı oluşturmasını kısıtlıyor | Belirtilen Konuk kullanıcının klasördeki dosya için oluşturma iznine sahip olup olmadığını denetleyin. Klasör adı için bkz. Sunucu değerlendirmesi içindeki **Bildirimler** .
+9021: "dosya oluşturma izni, klasör sistem geçici yolunda reddedildi." | VM 'deki VMware aracı sürümü desteklenmiyor | VMware aracı sürümünüzü 10.2.0 ' dan yükseltin.
+9022: "WMI nesnesi erişimini al reddedildi." | Kullanıcı veya grup ilkesiyle ilişkili rol, kullanıcının WMI nesnesine erişmesini kısıtlıyor. | Lütfen Microsoft Desteği başvurun.
+9023: "SystemRoot ortam değişkeni değeri boş." | Bilinmiyor | Lütfen Microsoft Desteği başvurun.
+9024: "TEMP ortam değişkeni değeri boş." | Bilinmiyor | Lütfen Microsoft Desteği başvurun.
+9025: "PowerShell, Konuk VM 'lerde bozuk." | Bilinmiyor | PowerShell 'i Konuk VM 'de yeniden yükleyin ve PowerShell 'in Konuk VM 'de çalıştırıp çalıştırabileceğinizden emin olun.
 8084: "VMware hatası nedeniyle uygulamalar bulunamıyor: <Exception from VMware>" | Azure geçişi gereci, uygulamaları bulmaya yönelik VMware API 'Lerini kullanır. Bu sorun, uygulamalar bulunmaya çalışılırken vCenter Server tarafından bir özel durum oluşturulursa meydana gelebilir. VMware 'den hata iletisi, portalda gösterilen hata iletisinde görüntülenir. | [VMware belgelerindeki](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)iletiyi arayın ve onarmak için adımları izleyin. Bu hatayı düzeltemedi, Microsoft destek 'e başvurun.
-9012: "sunucuda yüklü uygulamalar bulunamadı" | Sorun, bir iç hata nedeniyle oluşabilir.  | Sorun, 24 saat içinde kendiliğinden çözümlenmezse desteğe başvurun.
-9013: "sunucuda yüklü uygulamalar bulunamadı" | Sanal makinede her oturum açtığınızda yeni bir geçici profil oluşturulur.  | Belirtilen Konuk Kullanıcı için geçici bir profilin oluşturulmadığından emin olun.
 
 
 

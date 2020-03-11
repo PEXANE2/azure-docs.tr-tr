@@ -1,24 +1,17 @@
 ---
-title: Azure 'da Linux sanal makineleri için DNS ad çözümleme seçenekleri
+title: Linux VM 'Ler için DNS ad çözümleme seçenekleri
 description: Azure IaaS içindeki Linux sanal makineleri için, sunulan DNS hizmetleri, karma dış DNS ve kendi DNS sunucunuzu getir gibi ad çözümleme senaryoları.
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: gwallace
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084035"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969313"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için DNS ad çözümleme seçenekleri
 Azure, tek bir sanal ağdaki tüm sanal makineler için varsayılan olarak DNS ad çözümlemesi sağlar. Azure 'un barındırdığı sanal makinelerinizde kendi DNS hizmetlerinizi yapılandırarak kendi DNS ad çözümlemesi çözümünüzü uygulayabilirsiniz. Aşağıdaki senaryolar, durumunuza uygun olanı seçmenize yardımcı olmalıdır.
@@ -111,7 +104,7 @@ Resolv. conf dosyası otomatik olarak oluşturulur ve düzenlenmemelidir. ' Seç
 1. '/Etc/sysconfig/Network/config ' içindeki NETCONFIG_DNS_RESOLVER_OPTIONS = "" parametresine ' timeout: 1 deneme: 5 ' ekleyin.
 2. Güncelleştirmek için ' netconfig Update ' komutunu çalıştırın.
 
-**Standart dışı bir dalga yazılımıyla CentOS (eski adıyla OpenLogic)** (NetworkManager 'ı kullanır)
+**Standart dışı bir Wave Software (eski adıyla OpenLogic) CentOS** (NetworkManager kullanır)
 1. ' RES_OPTIONS = "timeout: 1 deneme: 5" ' öğesini '/Etc/sysconfig/Network ' öğesine ekleyin.
 2. Güncelleştirmek için ' hizmet ağı yeniden başlatma ' Çalıştır.
 
@@ -126,7 +119,7 @@ DNS iletimi, sanal ağlar arasında DNS çözümlemesini de sağlar ve şirket i
 
 Azure 'un sağladığı ad çözümlemesini kullandığınızda, iç DNS son eki, her bir sanal makineye DHCP kullanılarak sağlanır. Kendi ad çözümleme çözümünüzü kullandığınızda, bu sonek sanal makinelere sağlanmaz çünkü son ek diğer DNS mimarilerini kesintiye uğratır. Makinelere FQDN ile başvurmak veya sanal makinelerinizde son eki yapılandırmak için, soneki belirtmek üzere PowerShell 'i veya API 'yi kullanabilirsiniz:
 
-* Azure Resource Manager tarafından yönetilen sanal ağlar için, sonek [ağ arabirim kartı](https://msdn.microsoft.com/library/azure/mt163668.aspx) kaynağı aracılığıyla kullanılabilir. Ayrıca, NIC 'in FQDN `azure network public-ip show <resource group> <pip name>` 'sini içeren genel IP 'nizin ayrıntılarını göstermek için komutunu da çalıştırabilirsiniz.
+* Azure Resource Manager tarafından yönetilen sanal ağlar için, sonek [ağ arabirim kartı](https://msdn.microsoft.com/library/azure/mt163668.aspx) kaynağı aracılığıyla kullanılabilir. Ayrıca, NIC 'in FQDN 'sini içeren genel IP 'nizin ayrıntılarını göstermek için `azure network public-ip show <resource group> <pip name>` komutunu da çalıştırabilirsiniz.
 
 Sorguların Azure 'a iletilmesi gereksinimlerinize uygun değilse, kendi DNS çözümünüzü sağlamanız gerekir.  DNS çözümünüzün şunları yapması gerekir:
 

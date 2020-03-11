@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49c2b445af9acb0761d01b731250e068cb96a36
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9c598222978a1c831be6f5e9db9eb87b2d6b6b96
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562335"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968698"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Öğretici: 8x8 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile 8x8 ' i tümleştirme hak
 * Kullanıcılarınızın Azure AD hesaplarıyla 8x8 ' e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -86,20 +86,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
+    a. **Tanımlayıcı** metin kutusuna bir URL yazın: `https://sso.8x8.com/saml2`
 
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
-    b. **Yanıt URL 'si** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
-
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
+    b. **Yanıt URL** 'si metin kutusuna bir URL yazın: `https://sso.8x8.com/saml2`
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin. Sertifikayı daha sonra öğreticide **yapılandırma 8x8 SSO** bölümünde kullanacaksınız.
 
@@ -119,7 +108,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’ tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -151,9 +140,15 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
 1. Giriş sayfasından **kimlik yönetimi**' ne tıklayın.
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+
 1. **Çoklu oturum açmayı (SSO)** denetleyip **Microsoft Azure AD**seçin.
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+
 1. Azure AD 'de **SAML Ile çoklu oturum açma ayarla** sayfasından üç URL 'yi ve imzalama sertifikasını 8x8 CONFIGURATION Manager **Microsoft Azure AD SAML ayarları** bölümüne kopyalayın.
+
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 
     a. **IDP oturum açma URL**'Sine **oturum açma URL** 'sini kopyalayın.
 
@@ -163,7 +158,7 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
     d. **Sertifikayı indirin (base64)** ve **sertifikayı**karşıya yükleyin.
 
-    e. **Kaydet**’e tıklayın.
+    e. **Kaydet** düğmesine tıklayın.
 
 ### <a name="configure-8x8-account-manager"></a>8x8 hesap yöneticisini Yapılandır
 
@@ -171,15 +166,27 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
 1. Uygulama panelinde **sanal Office hesabı MGR** ' i seçin.
 
+    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+
 1. Yönetilecek **iş** hesabı ' nı seçin ve **oturum aç** düğmesine tıklayın.
+
+    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. Menü listesinde **hesaplar** sekmesi ' ne tıklayın.
 
+    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+
 1. Hesap listesinde **Çoklu oturum açma** ' ya tıklayın.
+
+    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. Kimlik doğrulama yöntemlerinde **Çoklu oturum açma** ' yı seçin ve **SAML**' ye tıklayın.
 
+    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+
 1. **SAML çoklu oturum açma** bölümünde aşağıdaki adımları uygulayın:
+
+    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
     a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -205,7 +212,7 @@ Erişim panelinde 8x8 kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

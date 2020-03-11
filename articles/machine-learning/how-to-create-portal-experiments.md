@@ -1,7 +1,7 @@
 ---
-title: Otomatikleştirilmiş ML modellerini derleme & dağıtma
+title: Dağıtım & modeller oluşturmak için oto ml kullanma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri oluşturun, yönetin ve dağıtın.
+description: Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,22 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 706b67216d1037440fd1641d9bc82deee2c43109
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355003"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078441"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
- Bu makalede, Azure Machine Learning Studio 'da tek bir kod satırı olmadan otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtmayı öğreneceksiniz. Otomatik makine öğrenimi, belirli verileriniz için kullanılacak en iyi algoritmayı seçme sürecini otomatikleştirir, böylece bir makine öğrenimi modelini hızlıca oluşturabilirsiniz. [Otomatik makine öğrenimi hakkında daha fazla bilgi edinin](concept-automated-ml.md).
+Bu makalede, Azure Machine Learning Studio arabiriminde tek bir kod satırı olmadan otomatik makine öğrenimi modelleri oluşturmayı, keşfetmeye ve dağıtmayı öğreneceksiniz. Otomatik makine öğrenimi, sizin için belirli verileriniz için kullanılacak en iyi makine öğrenimi algoritmasının sizin için seçildiği bir işlemdir. Bu işlem, makine öğrenimi modellerini hızlı bir şekilde oluşturmanıza olanak sağlar. [Otomatik makine öğrenimi hakkında daha fazla bilgi edinin](concept-automated-ml.md).
+ 
+Uçtan uca örnek için [Azure Machine Learning OTOMATIKLEŞTIRILMIŞ ml arabirimiyle bir sınıflandırma modeli oluşturma öğreticisini](tutorial-first-experiment-automated-ml.md)deneyin. 
 
- Daha fazla kod tabanlı bir deneyim tercih ediyorsanız, [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile Python 'da da yapılandırabilirsiniz.
+Python kod tabanlı bir deneyim için [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) Azure Machine Learning SDK ile yapılandırın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -33,7 +35,7 @@ ms.locfileid: "78355003"
 
 ## <a name="get-started"></a>başlarken
 
-1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın. 
+1. https://ml.azure.comAzure Machine Learning için oturum açın. 
 
 1. Aboneliğinizi ve çalışma alanınızı seçin. 
 
@@ -184,8 +186,8 @@ Guarddemiryolu|Durum|&nbsp;tetikleyicisi için koşul&nbsp;
 ---|---|---
 Eksik&nbsp;değerleri&nbsp;imputation |**Geçiril** <br> <br> **Düzenle**|    Giriş&nbsp;sütunlarında eksik değer yok <br> <br> Bazı sütunlarda eksik değerler var
 Çapraz doğrulama|**Yapıldığını**|Açık bir doğrulama kümesi sağlanmazsa
-Yüksek&nbsp;kardinalite&nbsp;Özellik&nbsp;algılama|  **Geçiril** <br> <br>**Yapıldığını**|   Yüksek kardinalite özellikleri algılanmadı <br><br> Yüksek kardinalite girdi sütunları algılandı
-Sınıf dengesi algılama |**Geçiril** <br><br><br>**Uyarı** |Sınıflar eğitim verilerinde dağıtılır; Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir <br> <br> Eğitim verilerinde sınıflar imlenebilir
+Yüksek&nbsp;kardinalite&nbsp;Özellik&nbsp;algılama|    **Geçiril** <br> <br>**Yapıldığını**|    Yüksek kardinalite özellikleri algılanmadı <br><br> Yüksek kardinalite girdi sütunları algılandı
+Sınıf dengesi algılama    |**Geçiril** <br><br><br>**Uyarı** |Sınıflar eğitim verilerinde dağıtılır; Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir <br> <br> Eğitim verilerinde sınıflar imlenebilir
 Zaman serisi veri tutarlılığı|**Geçiril** <br><br><br><br> **Düzenle** |<br> Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve olası bellek dışı sorunlar algılandı. <br> <br>Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Öteleme veya kayan pencere kapatılmış.
 
 ## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
@@ -240,7 +242,6 @@ Artık tahmin oluşturmak için işlemsel bir Web hizmetiniz vardır! [Power BI 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Machine Learning Studio ile ilk OTOMATIK ml denemenizi oluşturmaya yönelik uçtan uca öğreticiyi](tutorial-first-experiment-automated-ml.md)deneyin. 
-* [Otomatik makine öğrenimi ve Azure Machine Learning hakkında daha fazla bilgi edinin](concept-automated-ml.md) .
-* [Otomatik makine öğrenimi sonuçlarını anlayın](how-to-understand-automated-ml.md).
 * [Bir Web hizmetini kullanmayı öğrenin](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* [Otomatik makine öğrenimi sonuçlarını anlayın](how-to-understand-automated-ml.md).
+* [Otomatik makine öğrenimi ve Azure Machine Learning hakkında daha fazla bilgi edinin](concept-automated-ml.md) .

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a02fb7ab7e42f2a56041638a3d883287da3eb42
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: be403815838233350929c7d4ca0eed979d7dfa8c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674498"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080334"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -110,7 +110,8 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
-
+- 03/10/2020: ANF 'nin gerçek mevcut aktarım hızı sınırlarını netleştirmek için [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) değiştirin
+- 03/09/2020: SAP [NetWeaver for Azure VM 'lerinde SAP Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)değişikliği, SAP uygulamaları için SUSE Linux Enterprise Server, SAP [uygulamaları için Azure NetApp Files ile SuSE Linux Enterprise Server üzerinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)Azure VM 'lerde yüksek kullanılabilirlik, [SUSE Linux Enterprise Server üzerinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)Azure VM 'lerde yüksek kullanılabilirlik, Azure ['daki SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)Azure [VM](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)'lerinde yüksek kullanılabilirlik Kaynak Aracısı Azure-lb ile küme kaynaklarını güncelleştirmek için Azure sanal makinelerinde SUSE Linux Enterprise Server ve yüksek kullanılabilirliğe sahip Azure VM 'lerinde [SAP HANA yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) ve [RHEL çoklu SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) 
 - 03/05/2020: Azure sanal makinelerinde Azure bölgeleri ve Azure sanal makineleri için değişiklik ve içerik değişikliklerini, [SAP NetWeaver için planlama ve uygulamayı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) yapılandırma
 - 03/03/2020: SAP için [SLES 'Teki Azure VM 'LERINDE SAP NW 'yi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) daha verimli ANF birimi düzenine göre değiştirmek için yüksek kullanılabilirlik olarak değiştirin
 - 03/01/2020: [Azure sanal makinelerinde SAP HANA Için Yedekleme kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) Azure Backup hizmeti içerecek şekilde yeniden çalıştı. [SAP HANA Azure Backup dosya düzeyinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level) daha az ve dar içerik ve disk anlık görüntüsü aracılığıyla yedekleme ile ilgili üçüncü bir belgeyi sildi. İçerik, Azure sanal makinelerinde SAP HANA için yedekleme kılavuzunda ele alınır 

@@ -1,31 +1,23 @@
 ---
-title: OpenBSD VM görüntüsünü oluşturma ve Azure 'a yükleme
+title: OpenBSD görüntüsü oluşturma ve karşıya yükleme
 description: Azure CLı aracılığıyla bir Azure sanal makinesi oluşturmak için OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturmayı ve yüklemeyi öğrenin
-services: virtual-machines-linux
-documentationcenter: ''
 author: thomas1206
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1ef30f32-61c1-4ba8-9542-801d7b18e9bf
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 809216aadb77f014b7fb461ba8439070c5e23d43
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: d4ecc539d71933c4aecc9124b903c57cb72838de
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291898"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969491"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD disk görüntüsünü Azure 'a oluşturma ve yükleme
 Bu makalede, OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturma ve karşıya yükleme işleminin nasıl yapılacağı gösterilir. Karşıya yükledikten sonra, Azure CLı aracılığıyla Azure 'da bir sanal makine (VM) oluşturmak için kendi görüntünüz olarak kullanabilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, aşağıdaki öğeler olduğunu varsaymaktadır:
 
 * **Azure aboneliği** -hesabınız yoksa yalnızca birkaç dakika içinde bir tane oluşturabilirsiniz. Bir MSDN aboneliğiniz varsa bkz. [Visual Studio aboneleri Için aylık Azure kredisi](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Aksi takdirde, [ücretsiz bir deneme hesabı oluşturmayı](https://azure.microsoft.com/pricing/free-trial/)öğrenin.  
@@ -67,7 +59,7 @@ Hyper-V desteği eklenen OpenBSD işletim sistemi 6,1 ' i yüklediğiniz VM 'de 
     ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
-6. Azure aracısının en son sürümü her zaman [GitHub](https://github.com/Azure/WALinuxAgent/releases)'da bulunabilir. Aracıyı aşağıdaki gibi yükleyin:
+6. Azure aracısının en son sürümü her zaman [GitHub](https://github.com/Azure/WALinuxAgent/releases)'da bulunabilir. Aracıyı aşağıdaki gibi yüklemelisiniz:
 
     ```sh
     git clone https://github.com/Azure/WALinuxAgent 

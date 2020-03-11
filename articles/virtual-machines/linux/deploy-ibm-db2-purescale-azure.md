@@ -1,25 +1,17 @@
 ---
 title: Azure 'da IBM DB2 pureScale dağıtma
 description: Kısa bir süre önce, bir kuruluşu z/OS üzerinde çalışan IBM DB2 ortamından Azure 'da IBM DB2 pureScale 'e geçirmeye yönelik örnek bir mimari dağıtmayı öğrenin.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291558"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968889"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale dağıtma
 
@@ -27,7 +19,7 @@ Bu makalede, bir kurumsal müşterinin son zamanlarda z/OS üzerinde çalışan 
 
 Geçiş için kullanılan adımları izlemek için GitHub 'daki [DB2onAzure](https://aka.ms/db2onazure) deposundaki yükleme betiklerine bakın. Bu betikler tipik, orta ölçekli çevrimiçi işlem işleme (OLTP) iş yükünün mimarisini temel alır.
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 Bu mimariyi dağıtmak için GitHub 'daki [DB2onAzure](https://aka.ms/db2onazure) deposunda bulunan Deploy.sh betiğini indirip çalıştırın.
 
@@ -85,7 +77,7 @@ GitHub deposu, DB2 pureScale yüklemesi için otomatikleştirilmiş bir komut do
 | Ürün seçin          |                                              | DB2 sürüm 11.1.3.3. DB2 pureScale ile sunucu sürümleri                                              |
 | Yapılandırma             | Dizin                                    | /Data1/seçenek/ibm/DB2/v11.1                                                                              |
 |                           | Yükleme türünü seçin                 | Genelde                                                                                               |
-|                           | IBM şartlarını kabul ediyorum                     | Onay işaretli                                                                                               |
+|                           | IBM şartlarını kabul ediyorum                     | İşaretli                                                                                               |
 | Örnek sahibi            | Örnek Için mevcut Kullanıcı, Kullanıcı adı        | DB2sdin1                                                                                              |
 | Fbaşvurusu olan Kullanıcı               | Mevcut Kullanıcı, Kullanıcı adı                     | DB2sdfe1                                                                                              |
 | Küme dosya sistemi       | Paylaşılan disk bölümü cihaz yolu            | /dev/DM-2                                                                                             |

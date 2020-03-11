@@ -185,47 +185,29 @@
         - name: Oluşturma ve eğitme modelleri
           items:
             - name: Algoritma seçme
-              href: /azure/machine-learning/studio/algorithm-choice?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: Algoritma bilgi sayfası
-              href: /azure/machine-learning/studio/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: Üretimde modelleri dağıtma
       href: deploy-models-in-production.md
 - name: İlgili
   items:
     - name: Azure Machine Learning
       href: ../
-    - name: Azure Yapay Zeka Galerisi
-      href: 'https://gallery.azure.ai'
-    - name: Cortana Analytics
+    - name: Bilişsel Hizmetler
+      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+    - name: Anormallik algılama
+      href: apps-anomaly-detection-api.md
+    - name: Tahmine dayalı bakım
       items:
-        - name: Anormallik algılama
-          href: apps-anomaly-detection-api.md
-        - name: Bilişsel Hizmetler
-          href: 'https://docs.microsoft.com/azure/cognitive-services/'
-        - name: Tahmine dayalı bakım
-          items:
-            - name: Genel Bakış
-              href: cortana-analytics-playbook-predictive-maintenance.md
-            - name: Mimari
-              href: cortana-analytics-architecture-predictive-maintenance.md
-            - name: Teknik kılavuz
-              href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: Genel Bakış
+          href: predictive-maintenance-playbook.md
+        - name: Mimari
+          href: predictive-maintenance-architecture.md
+        - name: Teknik kılavuz
+          href: predictive-maintenance-technical-guide.md
 - name: Kaynaklar
   items:
-    - name: Bloglar
-      items:
-        - name: TDSP için Son Güncelleştirmeler
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
-        - name: Azure Machine Learning'de TDSP’yi Kullanma
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
-        - name: TDSP için Veri Bilimi Yardımcı Programları v.0.11
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
-        - name: TDSP için en son yardımcı programlar
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-        - name: Veri Bilimi Proje Planlama Şablonu
-          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
-        - name: Cortana Intelligence ve Machine Learning Blogu
-          href: 'https://blogs.technet.microsoft.com/machinelearning/'
     - name: TDSP kullanan kuruluşlar
       items:
         - name: New Signature

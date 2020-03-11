@@ -1,5 +1,5 @@
-- name: Cloud Services Belgeleri
-  href: index.md
+- name: Cloud Services belgeleri
+  href: index.yml
 - name: Genel Bakış
   items:
     - name: Cloud Services nedir?

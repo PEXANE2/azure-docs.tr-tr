@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisini k
 description: Azure Dev Spaces eklentisinin sürekli tümleştirme ardışık düzeninde nasıl kullanılacağını öğrenin.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 281565cec5ee947781ab8ee9f62a00e01f9ababb
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250898"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037032"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes hizmeti ile Jenkins için Azure Dev Spaces eklentisi kullanma 
 
@@ -265,7 +265,7 @@ Jenkins ardışık düzen yapılandırması ve Jenkinsfile, CI işlem hattının
 
 ![Jenkins ardışık düzen akışı](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
 
-1. https://github.com/azure-devops/mywebapi*mywebapi* projesinin değiştirilmiş bir sürümünü indirin. Bu proje, *Jenkinsfile*, *Dockerfiles*ve helk grafik gibi bir işlem hattı oluşturmak için gereken çeşitli dosyaları içerir.
+1. [https://github.com/azure-devops/mywebapi](https://github.com/azure-devops/mywebapi) *mywebapi* projesinin değiştirilmiş bir sürümünü indirin. Bu proje, *Jenkinsfile*, *Dockerfiles*ve helk grafik gibi bir işlem hattı oluşturmak için gereken çeşitli dosyaları içerir.
 
 2. Jenkins 'de oturum açın. Soldaki menüden **öğe Ekle**' yi seçin.
 

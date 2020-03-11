@@ -4,23 +4,22 @@ description: E-posta veya Web kancası ile bildirim almak üzere klasik bir öl�
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
+ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: c25886308b4f9560b336982b87bd4b38b306bcb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668052"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037233"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu ile klasik ölçüm uyarısı oluşturma
-Bu makalede, Azure ölçüm uyarılarını yapılandırmak için bir [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Bu, tüm kaynakların doğru şekilde izlendiğinden emin olmak için kaynaklardaki uyarıları otomatik olarak ayarlamanıza olanak sağlar.
-
-> [!NOTE]
+> [!WARNING]
 > 
-> Bu makalede Kaynak Yöneticisi şablonları kullanılarak **Klasik ölçüm uyarıları** oluşturulması açıklanmaktadır. Şablonları kullanarak [daha yeni ölçüm uyarıları](../../azure-monitor/platform/alerts-metric-near-real-time.md) oluşturmayı arıyorsanız, [Bu makalede](alerts-metric-create-templates.md) ayrıntılar sağlanmaktadır.
+> Bu makalede Kaynak Yöneticisi şablonları kullanılarak **Klasik ölçüm uyarıları** oluşturulması açıklanmaktadır. Klasik uyarılar Ağustos 2019 ' de kullanımdan kaldırılmıştır ve 2020 Haziran 'da tam kullanım dışı olarak ayarlanmıştır. Yeni klasik uyarılar Genel Azure oluşturamazsınız. Azure 'un bazı bölgesel sürümlerinde seçeneği hala olabilir, ancak bunun yerine şablonları kullanarak [daha yeni ölçüm uyarıları](../../azure-monitor/platform/alerts-metric-near-real-time.md) oluşturmanızı öneririz. [Bu makalede](alerts-metric-create-templates.md) ayrıntılar sağlanmaktadır.
 >
 
+Bu makalede, Azure klasik ölçüm uyarılarını yapılandırmak için bir [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Bu, tüm kaynakların doğru şekilde izlendiğinden emin olmak için kaynaklardaki uyarıları otomatik olarak ayarlamanıza olanak sağlar.
 
 Temel adımlar aşağıdaki gibidir:
 

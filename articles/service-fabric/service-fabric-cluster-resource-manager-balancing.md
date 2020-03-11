@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452097"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081701"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric kümenizi Dengeleme
 Service Fabric kümesi Kaynak Yöneticisi, dinamik yükleme değişikliklerini destekler, düğümlerin veya hizmetlerin eklemeleri veya çıkartılması için yeniden davranır. Ayrıca, kısıtlama ihlallerini otomatik olarak düzeltir ve kümeyi yeniden dengeler. Ancak bu eylemler ne sıklıkla alınır ve ne sıklıkta tetiklenir?
@@ -205,6 +205,7 @@ birlikte ![Dengeleme </center>
 * Ölçümler, Service Fabric küme kaynağı Yöneticisi 'nin kümedeki tüketimi ve kapasiteyi nasıl yönettiğini açıklamaktadır. Ölçümler ve bunların nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md) göz atın
 * Taşıma maliyeti, belirli hizmetlerin diğerlerine göre daha pahalı olduğunu Kaynak Yöneticisi küme sinyalinden bir yoldur. Taşıma maliyeti hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-movement-cost.md) bakın
 * Küme Kaynak Yöneticisi, kümedeki karmaşıklığı yavaşlatacak şekilde yapılandırabileceğiniz çeşitli kısıtları vardır. Bunlar normalde gerekli değildir, [ancak bunlarla ilgili](service-fabric-cluster-resource-manager-advanced-throttling.md) daha fazla bilgi edinebilirsiniz
+* Küme Kaynak Yöneticisi, alt kümelendirmeyi tanıyabilir ve işleyebilir (bazen yerleştirme kısıtlamalarını ve dengelemeyi kullandığınızda ortaya çıkabilir). Alt kümelemenin dengelemeyi nasıl etkileyebileceğini ve nasıl işleyebileceğini öğrenmek için [buraya](service-fabric-cluster-resource-manager-subclustering.md) bakın
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

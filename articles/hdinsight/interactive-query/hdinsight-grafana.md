@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 6027978b50ca72de5d18ff474b36814e22a94e85
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552228"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082872"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight 'ta erişim Grafana
 
 [Grafana](https://grafana.com/) , popüler, açık kaynaklı bir grafik ve Pano Oluşturucu. Grafana özelliği zengin; yalnızca kullanıcıların özelleştirilebilir ve paylaşılabilir panolar oluşturmasına izin vermez, ayrıca şablonlu/komut dosyalı panolar, LDAP tümleştirmesi, birden çok veri kaynağı ve daha fazlasını sunar.
 
-Şu anda Azure HDInsight 'ta Grafana, HBase, Kafka ve etkileşimli sorgu kümesi türleriyle desteklenir. Enterprise Security Pack etkin olan kümeler için desteklenmez.
+Şu anda Azure HDInsight 'ta Grafana, Spark, HBase, Kafka ve etkileşimli sorgu kümesi türleriyle desteklenir. Enterprise Security Pack etkin olan kümeler için desteklenmez.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop kümesi oluşturma
 
-Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md). **Küme türü**için **Kafka**, **HBase**veya **etkileşimli sorgu**seçeneğini belirleyin.
+Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md). **Küme türü**için **Spark**, **Kafka**, **HBase**veya **etkileşimli sorgu**' yı seçin.
 
 ## <a name="access-the-grafana-dashboard"></a>Grafana panosuna erişin
 
@@ -40,7 +40,7 @@ Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-h
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 

@@ -1,7 +1,7 @@
 ---
-title: İlk otomatik ML denemenize oluşturma
+title: Otomatik ML sınıflandırma modelleri oluşturma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Studio 'da otomatik makine öğrenimi ile bir sınıflandırma modelini eğitme ve dağıtmayı öğrenin.
+description: Sınıflandırma modellerini Azure Machine Learning otomatik makine öğrenimi (otomatik ML) arabirimiyle nasıl eğeceğinizi &.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 84d539f35919293522f05abdeabeca936138c140
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048295"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081633"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Bu öğreticide, tek bir kod satırı yazmadan Azure Machine Learning Studio aracılığıyla ilk otomatik makine öğrenimi denemenizi oluşturmayı öğreneceksiniz. Bu örnek, bir istemcinin bir mali kurum ile sabit bir depozito 'e abone olup olmadığını tahmin etmek için bir sınıflandırma modeli oluşturur.
+Bu öğreticide, Azure Machine Learning otomatik makine öğrenimi arabirimini kullanarak tek bir kod satırı yazmadan temel bir sınıflandırma modeli oluşturmayı öğreneceksiniz. Bu sınıflandırma modeli, bir istemci bir mali kurum ile sabit bir havale 'e abone olurken tahmin edilir.
 
 Otomatik makine öğrenimi sayesinde yoğun zamanda yoğun görevleri otomatik hale getirebilirsiniz. Otomatikleştirilmiş makine öğrenimi, seçtiğiniz başarı ölçümünü temel alarak en iyi modeli bulmanıza yardımcı olmak üzere birçok algoritma ve hiper parametre kombinasyonu üzerinde hızlı bir şekilde yinelenir.
 
@@ -34,7 +34,7 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 
 * [**Bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) veri dosyasını indirin. **Y** sütunu, bir müşterinin, daha sonra bu öğreticide tahmine yönelik hedef sütun olarak tanımlanan sabit bir dönem yatırma abone olup olmadığını gösterir. 
 
@@ -42,7 +42,7 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 
 Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz, hizmette kolayca tüketilen bir nesne ile aynı olur. 
 
-Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure Machine Learning Studio aracılığıyla bir çalışma alanı oluşturursunuz.
+Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,9 +51,9 @@ Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure Machi
 
 ## <a name="create-and-run-the-experiment"></a>Deneme oluşturma ve çalıştırma
 
-Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere Machine Learning araçları 'nı içeren birleştirilmiş bir arabirim olan Azure Machine Learning Studio 'da aşağıdaki deneme sürümü kurulumunu tamamlayıp adımları gerçekleştirin. Studio, Internet Explorer tarayıcılarında desteklenmez.
+Aşağıdaki deneme kurulumunu tamamlayıp, tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için Machine Learning araçları 'nı içeren birleştirilmiş bir Web arabirimi olan https://ml.azure.comAzure Machine Learning aracılığıyla adımları gerçekleştirin. Bu arabirim Internet Explorer tarayıcılarında desteklenmez.
 
-1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
+1. https://ml.azure.comAzure Machine Learning için oturum açın.
 
 1. Aboneliğinizi ve oluşturduğunuz çalışma alanını seçin.
 
@@ -63,13 +63,13 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 
    Bu ilk otomatik ML denemenize ait olduğundan, boş bir liste ve belge bağlantıları görürsünüz.
 
-   ![Azure Machine Learning Studio](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![Başlarken sayfası](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. **Yeni OTOMATIK ml çalıştırması**' nı seçin. 
 
 1. **+ Veri kümesi oluştur** açılır listesinden **yerel dosyalardan** seçim yaparak yeni bir veri kümesi oluşturun. 
 
-    1. **Temel bilgi** formunda, veri kümenize bir ad verin ve isteğe bağlı bir açıklama sağlayın. Azure Machine Learning Studio 'daki otomatik ML Şu anda yalnızca tablo veri kümelerini destekliyor, bu nedenle veri kümesi türü varsayılan olarak tablosal olmalıdır.
+    1. **Temel bilgi** formunda, veri kümenize bir ad verin ve isteğe bağlı bir açıklama sağlayın. Otomatik ML arabirimi şu anda yalnızca Tabulardataset 'leri desteklediğinden veri kümesi türü *tablosal*olmalıdır.
 
     1. Sol alt kısımdaki **İleri ' yi** seçin
 
@@ -163,9 +163,9 @@ Aşağıdaki model ayrıntıları, ölçümleri ve performans grafiklerini gör�
 
 ![Yineleme ayrıntısı Çalıştır](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>Modeli dağıtma
+## <a name="deploy-the-best-model"></a>En iyi modeli dağıtma
 
-Azure Machine Learning Studio 'da otomatik makine öğrenimi, birkaç adımda Web hizmeti olarak en iyi modeli dağıtmanıza olanak tanır. Dağıtım, yeni verileri tahmin etmek ve potansiyel fırsat bölgelerini belirlemek için modelin Tümleştirmesidir. 
+Otomatik makine öğrenimi arabirimi, birkaç adımda Web hizmeti olarak en iyi modeli dağıtmanıza olanak tanır. Dağıtım, yeni verileri tahmin etmek ve potansiyel fırsat bölgelerini belirlemek için modelin Tümleştirmesidir. 
 
 Bu deneme için, bir Web hizmetine dağıtım, artık, potansiyel sabit depozito müşterilerinin tanımlanmasından sonra, mali kurumda yinelenen ve ölçeklenebilir bir Web çözümüne sahip olduğu anlamına gelir. 
 
@@ -201,9 +201,9 @@ Dağıtım dosyaları veri ve deneme dosyalarından daha büyüktür, bu nedenle
 
 ### <a name="delete-the-deployment-instance"></a>Dağıtım örneğini silme
 
-Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alanını tutmak istiyorsanız, yalnızca Azure Machine Learning Studio 'dan dağıtım örneğini silin. 
+Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alanını tutmak istiyorsanız, yalnızca https://ml.azure.com/ konumundaki Azure Machine Learning dağıtım örneğini silin. 
 
-1. [Azure Machine Learning Studio](https://ml.azure.com/)'ya gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar**' ı seçin. 
+1. https://ml.azure.com/Azure Machine Learning gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar**' ı seçin. 
 
 1. Silmek istediğiniz dağıtımı seçin ve **Sil**' i seçin. 
 
@@ -215,15 +215,15 @@ Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alan�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluşturmak ve dağıtmak için Azure Machine Learning Studio 'yu kullandınız. Daha fazla bilgi ve sonraki adımlar için aşağıdaki makalelere bakın:
+Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluşturmak ve dağıtmak için Azure Machine Learning otomatik ML arabirimini kullandınız. Daha fazla bilgi ve sonraki adımlar için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
 > [Web hizmeti kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ [Korleştirme](how-to-create-portal-experiments.md#featurization)hakkında daha fazla bilgi edinin.
-+ [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin.
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
-+ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi.
++ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi. + [korleştirme](how-to-create-portal-experiments.md#featurization)hakkında daha fazla bilgi edinin.
++ [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin.
+
 
 >[!NOTE]
 > Bu banka pazarlama veri kümesi, [Creative Commons (CCO: genel etki alanı) lisansı](https://creativecommons.org/publicdomain/zero/1.0/)altında kullanılabilir hale getirilir. Veritabanının bireysel içeriklerinde her türlü hak, [veritabanı Içeriği lisansı](https://creativecommons.org/publicdomain/zero/1.0/) kapsamında lisanslanır ve [kada](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)mevcuttur. Bu veri kümesi, ilk olarak [UCI Machine Learning veritabanı](https://archive.ics.uci.edu/ml/datasets/bank+marketing)dahilinde kullanılabilir.<br><br>

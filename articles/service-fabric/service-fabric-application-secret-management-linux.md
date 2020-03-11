@@ -5,12 +5,12 @@ author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614715"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969025"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Bir şifreleme sertifikası ayarlama ve Linux kümelerinde gizli dizileri şifreleme
 Bu makalede, bir şifreleme sertifikasının nasıl ayarlanacağı ve Linux kümelerinde gizli dizileri şifrelemek için nasıl kullanılacağı gösterilmektedir. Windows kümeleri için bkz. [şifreleme sertifikası ayarlama ve Windows kümelerinde gizli dizileri şifreleme][secret-management-windows-specific-link].
@@ -31,12 +31,12 @@ Bir veri şifreleme sertifikası, bir hizmetin ServiceManifest. xml dosyasındak
 ## <a name="install-the-certificate-in-your-cluster"></a>Sertifikayı kümenize yükler
 Sertifikanın, `/var/lib/sfcerts`altındaki kümedeki her bir düğüme yüklenmesi gerekir. Hizmetin çalıştığı kullanıcı hesabı (varsayılan olarak, sfuser) yüklü sertifikaya (yani, geçerli örnek için `/var/lib/sfcerts/TestCert.pem`) **okuma erişimine sahip olmalıdır** .
 
-## <a name="encrypt-secrets"></a>Gizli dizileri şifreleme
+## <a name="encrypt-secrets"></a>Gizli dizileri şifreleyin
 Aşağıdaki kod parçacığı bir gizli dizi şifrelemek için kullanılabilir. Bu kod parçacığı yalnızca değeri şifreler; şifre metnini **imzalamaz** . Gizli değerler için şifreli değerleri oluşturmak üzere kümenize yüklenmiş aynı şifreleme sertifikasını **kullanmanız gerekir** .
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 Şifrelenmiş. txt için elde edilen temel 64 kodlu dize çıktısı hem gizli bir şifreli metin hem de bunu şifrelemek için kullanılan sertifikayla ilgili bilgiler içerir. OpenSSL ile şifresini çözerek geçerliliğini doğrulayabilirsiniz.

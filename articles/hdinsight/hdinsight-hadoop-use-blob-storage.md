@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192634"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037236"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Depolama'yı kullanma
 
@@ -25,11 +25,11 @@ Bu makalede Azure Depolama'nın HDInsight kümeleri ile nasıl çalıştığı h
 > [!IMPORTANT]  
 > Depolama hesabı türü **blobstorage** yalnızca HDInsight kümeleri için ikincil depolama alanı olarak kullanılabilir.
 
-| Depolama hesabı türü | Desteklenen hizmetler | Desteklenen performans katmanları | Desteklenen erişim katmanları |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (genel amaçlı v2)  | Blob     | Standart                    | Sık erişimli, seyrek erişimli ve arşiv\*   |
-| Depolama (genel amaçlı v1)   | Blob     | Standart                    | Yok                    |
-| BlobStorage                    | Blob     | Standart                    | Sık erişimli, seyrek erişimli ve arşiv\*   |
+| Depolama hesabı türü | Desteklenen hizmetler | Desteklenen performans katmanları |Desteklenmeyen performans katmanları| Desteklenen erişim katmanları |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2 (genel amaçlı v2)  | Blob     | Standart                    |Premium| Sık erişimli, seyrek erişimli ve arşiv\*   |
+| Depolama (genel amaçlı v1)   | Blob     | Standart                    |Premium| Yok                    |
+| BlobStorage                    | Blob     | Standart                    |Premium| Sık erişimli, seyrek erişimli ve arşiv\*   |
 
 İş verilerini depolamak için varsayılan blob kapsayıcısını kullanmanızı önermiyoruz. Depolama maliyetini azaltmak için blob kapsayıcısının her kullanımdan sonra silinmesi iyi bir uygulamadır. Varsayılan kapsayıcı, uygulama ve sistem günlükleri içerir. Kapsayıcıyı silmeden önce günlükleri aldığınızdan emin olun.
 
@@ -128,7 +128,7 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki araçları sağlar:
 
 | Araç | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure portalındaki](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure portalında](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |

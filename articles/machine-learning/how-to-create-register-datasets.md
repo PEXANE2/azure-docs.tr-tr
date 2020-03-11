@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: bb3a18af89b0baa532309ac76905aa5550af98e5
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 817ff90c10a29d7db7037d89f3c3d51e7f997175
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78398201"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037184"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -33,8 +33,7 @@ Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 * Veri paylaşma ve diğer kullanıcılarla işbirliği yapma.
 
 ## <a name="prerequisites"></a>Önkoşullar
-
-Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
+' Veri kümelerini oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
 * Azure aboneliği. Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -44,6 +43,16 @@ Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
 > [!NOTE]
 > Bazı veri kümesi sınıflarının [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlarda desteklenir: Red Hat Enterprise Linux, Ubuntu, Fedora ve CentOS.
+
+## <a name="compute-size-guidance"></a>İşlem boyutu kılavuzu
+
+Bir veri kümesi oluştururken, işlem işleme gücünü ve verilerinizin bellekteki boyutunu gözden geçirin. Depolama alanındaki verilerinizin boyutu bir veri çerçevesindeki verilerin boyutuyla aynı değildir. Örneğin, CSV dosyalarındaki veriler bir veri çerçevesinde en fazla 10 x genişleyebilir, bu nedenle 1 GB CSV dosyası bir veri çerçevesinde 10 GB olabilir. 
+
+Ana faktör, veri kümesinin bellek içi, yani bir veri çerçevesi olarak ne kadar büyük olduğunu gösteren bir etkendir. İşlem boyutunuzu ve işlem gücünü kullanmanızı öneririz, RAM 'in boyutu 2x olmalıdır. Bu nedenle, veri çerçeverizin 10 GB ise, veri çerçevesinin belleğe uygun ve işlenebilir olmasını sağlamak için 20 + GB RAM 'e sahip bir işlem hedefi istersiniz. Verileriniz sıkıştırılmışsa, daha fazla genişleyebilir; sıkıştırılmış Parquet biçiminde depolanan 20 GB görece seyrek veri, bellekte ~ 800 GB 'a genişleyebilir. Parquet dosyaları bir sütunlu biçimde veri depolarsanız, yalnızca sütunların yarısını içeriyorsa yalnızca ~ 400 GB 'yi belleğe yüklemeniz gerekir.
+ 
+Pandas kullanıyorsanız, hepsi kullanacağı için 1 ' den fazla vCPU olması gerekmez. Tek bir Azure Machine Learning işlem örneğinde/düğümünde Modın ve DASK/Ray aracılığıyla kolayca paralel hale getirmek ve gerekirse büyük bir kümeye ölçeklendirebilirsiniz, ancak yalnızca `import pandas as pd` `import modin.pandas as pd`olarak değiştirmeniz gerekir. 
+ 
+Veriler için yeterince büyük bir sanal alan elde ediyorsanız iki seçeneğiniz vardır: ' bellek yetersiz ' verileri üzerinde işlem gerçekleştirmek için Spark veya Dadsk gibi bir çerçeve kullanın, yani veri çerçevesi, toplanmakta olan son sonuçla birlikte bölüm ve işleme göre RAM bölümüne yüklenir sonunda kullanıma açıldı. Bu çok yavaşsa, Spark veya Davsk etkileşimli olarak hala kullanılabilecek bir kümeye ölçeklendirmenize imkan tanır. 
 
 ## <a name="dataset-types"></a>Veri kümesi türleri
 
@@ -59,7 +68,7 @@ Yaklaşan API değişiklikleri hakkında daha fazla bilgi edinmek için bkz. [Da
 
 Bir veri kümesi oluşturarak, veri kaynağı konumuna, meta verilerinin bir kopyasıyla birlikte bir başvuru oluşturursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz gerekmez. Python SDK veya https://ml.azure.comkullanarak hem `TabularDataset` hem de `FileDataset` veri kümeleri oluşturabilirsiniz.
 
-Azure Machine Learning tarafından erişilebilmesi için, veri kümelerinin [Azure veri depoları](how-to-access-data.md) veya genel Web URL 'lerinde yollardan oluşturulması gerekir.
+Azure Machine Learning tarafından erişilebilmesi için, veri kümelerinin [Azure veri depoları](how-to-access-data.md) veya genel Web URL 'lerinde yollardan oluşturulması gerekir. 
 
 ### <a name="use-the-sdk"></a>SDK 'Yı kullanma
 
@@ -70,7 +79,6 @@ Python SDK kullanarak bir [Azure veri deposundan](how-to-access-data.md) veri k�
 2. Veri deposundaki yollara başvurarak veri kümesini oluşturun.
 > [!Note]
 > Birden çok veri mağazasında birden çok yoldan bir veri kümesi oluşturabilirsiniz. İçinden veri kümesi oluşturabileceğiniz dosya sayısı veya veri boyutu için sabit sınır yoktur. Bununla birlikte, her bir veri yolu için depolama hizmetine bir dosya veya klasöre işaret edilip edilmeyeceğini denetlemek için birkaç istek gönderilir. Bu ek yük, performansın düşmesine veya başarısız olmasına neden olabilir. İçindeki 1000 dosya içeren bir klasöre başvuran bir veri kümesi, bir veri yoluna başvurulur. En iyi performansı elde etmek için veri depolarında 100 ' den az yola başvuran veri kümesi oluşturmayı öneririz.
-
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset oluşturma
 

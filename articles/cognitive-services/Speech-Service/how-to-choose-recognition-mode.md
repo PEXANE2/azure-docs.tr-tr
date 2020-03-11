@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 51bf005bdad4197120fed96894ac1cdd150738ee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75935232"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079823"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Konuşma tanıma modunu seçin
 
@@ -33,7 +33,7 @@ Tanınan bir zaman sonunda hizmet, bu istekten ses işlemeyi durduruyor. Maksimu
 `RecognizeOnceAsync` işlevini kullanma hakkında daha fazla bilgi için bkz. [.net konuşma SDK belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync).
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+var result = await recognizer.RecognizeOnceAsync();
 ```
 
 ::: zone-end
@@ -72,7 +72,7 @@ Ek diller için bkz. [konuşma SDK 'sı başvuru belgeleri](speech-to-text.md#sp
 
 ## <a name="continuous"></a>Sürekli
 
-Uzun süre çalışan tanıma gerekirse, sürekli tanıma için başlangıç ve karşılık gelen durdurma işlevlerini kullanın. Başlat işlevi başlar ve durdurma işlevini çağırana veya sessizlik içinde çok fazla zamana kadar tüm eşyaları işlemeye devam eder. Sürekli modu kullanırken, oluşumdan sonra tetiklendirilecektir çeşitli olaylara kaydolduğunuzdan emin olun. Örneğin, "tanınan" olay konuşma tanıma oluştuğunda ateşlenir. Tanımayı işlemek için bir olay işleyiciniz olması gerekir. Konuşma hizmeti tarafından oturum başına toplam konuşma tanıma süresinin 10 dakikalık sınırı.
+Uzun süre çalışan tanıma gerekirse, sürekli tanıma için başlangıç ve karşılık gelen durdurma işlevlerini kullanın. Başlat işlevi başlar ve durdurma işlevini çağırana veya sessizlik içinde çok fazla zamana kadar tüm eşyaları işlemeye devam eder. Sürekli modu kullanırken, oluşumdan sonra tetiklendirilecektir çeşitli olaylara kaydolduğunuzdan emin olun. Örneğin, "tanınan" olay konuşma tanıma oluştuğunda ateşlenir. Tanımayı işlemek için bir olay işleyiciniz olması gerekir.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -88,10 +88,10 @@ recognizer.Recognized += (s, e) =>
 };
 
 // Start continuous speech recognition
-await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StartContinuousRecognitionAsync();
 
 // Stop continuous speech recognition
-await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ::: zone-end
@@ -158,7 +158,7 @@ Ek diller için bkz. [konuşma SDK 'sı başvuru belgeleri](speech-to-text.md#sp
 
 ::: zone-end
 
-## <a name="dictation"></a>Dikte Etme
+## <a name="dictation"></a>Etme
 
 Sürekli tanıma kullanırken, ilgili "dikte etmeyi etkinleştir" işlevini kullanarak dikte işlemini etkinleştirebilirsiniz. Bu mod, konuşma yapılandırma örneğinin noktalama gibi tümce yapılarının sözcük açıklamalarını yorumlamasını sağlar. Örneğin, "kasadaki gerçek zamanlı olarak", "kasadaki canlı mısınız?" metni olarak yorumlanabilir.
 

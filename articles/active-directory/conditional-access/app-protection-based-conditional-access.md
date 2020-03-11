@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d8cdb32e04f9ba1274291430ac230107f3150c6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298386"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080074"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için uygulama koruma ilkesi ve onaylanan istemci uygulaması gerektirme
 
@@ -30,6 +30,9 @@ Bu makalede, Office 365, Exchange Online ve SharePoint Online gibi kaynaklar iç
 Koşullu erişim 'de, bu istemci uygulamalarının bir uygulama koruma ilkesiyle korunması bilinmektedir. Uygulama koruma ilkeleri hakkında daha fazla bilgi için, [Uygulama koruma ilkelerine genel bakış](/intune/apps/app-protection-policy)
 
 Uygun istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md).
+
+> [!NOTE]
+>    OR yan tümcesi, kullanıcıların **Uygulama koruma Ilkesini iste** veya **onaylanmış istemci uygulama** izni denetimleri gerektiren uygulamaları kullanmalarını sağlamak için ilke içinde kullanılır. **Uygulama koruma Ilkesi gerektir** denetimini destekleyen uygulamalar hakkında daha fazla bilgi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md).
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Senaryo 1: Office 365 uygulamaları, uygulama koruma ilkeleriyle onaylanan uygulamalar gerektirir
 
@@ -56,7 +59,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. **Erişim denetimleri** > **izin**' nın altında, aşağıdaki seçenekleri belirleyin:
    - **Onaylanan istemci uygulaması gerektir**
    - **Uygulama koruma ilkesi gerektir (Önizleme)**
-   - **Seçili tüm denetimleri gerektir**
+   - **Seçili denetimlerden birini gerektir**
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
@@ -75,7 +78,7 @@ Bu adımdaki koşullu erişim ilkesi için aşağıdaki bileşenleri yapılandı
    1. **İstemci uygulamaları (Önizleme)** :
       1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
       1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **ver**' ın altında, **erişim ver**' i seçin, **onaylı Istemci uygulaması gerektir**' i seçin ve **Seç**
+1. **Erişim denetimleri** > **izin**ver ' ın altında, **erişim ver**' i seçin, **Uygulama koruma ilkesi gerektir**' **i seçin ve**
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
@@ -108,7 +111,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
 1. **Erişim denetimleri** > **izin**' nın altında, aşağıdaki seçenekleri belirleyin:
    - **Onaylanan istemci uygulaması gerektir**
    - **Uygulama koruma ilkesi gerektir (Önizleme)**
-   - **Seçili tüm denetimleri gerektir**
+   - **Seçili denetimlerden birini gerektir**
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
@@ -125,7 +128,7 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
    1. **İstemci uygulamaları (Önizleme)** :
       1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
       1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **ver**' ın altında, **erişim ver**' i seçin, **onaylı Istemci uygulaması gerektir**' i seçin ve **Seç**
+1. **Erişim denetimleri** > **izin**ver ' ın altında, **erişim ver**' i seçin, **Uygulama koruma ilkesi gerektir**' **i seçin ve**
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 

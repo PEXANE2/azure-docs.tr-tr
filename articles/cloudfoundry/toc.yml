@@ -1,5 +1,5 @@
-- name: Cloud Foundry Belgeleri
-  href: index.md
+- name: Cloud Foundry belgeleri
+  href: index.yml
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

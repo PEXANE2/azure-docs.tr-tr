@@ -11,13 +11,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 197e93946a52303f312912e4ebd2487f8c1360b2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/10/2020
+ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536739"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078458"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Bir [işlem hedefi](how-to-set-up-training-targets.md)üzerinde eğitim çalış
 
 Bir işlem hedefi veya yerel makinenizde bir deneme başlamadan önce, kodunuzun çalışması gereken bağımlılık dosyaları ve veri dosyaları gibi gerekli dosyaların bu işlem hedefi için kullanılabilir olduğundan emin olmanız gerekir.
 
-Azure Machine Learning, tüm betik klasörünü hedef işlem bağlamına kopyalayarak ve ardından bir anlık görüntü alan eğitim betikleri çalıştırır. Deneme anlık görüntülerinin depolama sınırı 300 MB ve/veya 2000 dosyadır.
+Azure Machine Learning, tüm betik klasörünü hedef işlem bağlamına kopyalayarak ve ardından bir anlık görüntü alan eğitim betikleri çalıştırır. Deneme anlık görüntüleri için depolama sınırı 300 MB ve/veya 2000 dosyalarıdır.
 
 Bu nedenle şunları öneririz:
 

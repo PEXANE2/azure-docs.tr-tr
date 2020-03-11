@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903497"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970109"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme
 
@@ -23,7 +23,7 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak blob depolamada
 
 ## <a name="set-retention-policies-and-legal-holds"></a>Bekletme ilkelerini ve yasal tutmaları ayarlama
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Sabit durumda tutulması gereken blobların depolanması için yeni bir kapsayıcı oluşturun veya mevcut bir kapsayıcıyı seçin. Kapsayıcı, genel amaçlı bir v2 veya blob depolama hesabında olmalıdır.
 
@@ -59,11 +59,11 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak blob depolamada
 
 9. Yasal bir tutmayı temizlemek için uygulanan geçerli saklama tanımlayıcı etiketini kaldırın.
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve `az storage container legal-hold`. Komutları görmek için `-h` çalıştırın.
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -116,10 +116,10 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-İmlebilirlik kuralları oluşturma veya güncelleştirme:
+Zamana dayalı ve kullanılabilirlik ilkeleri oluşturun veya güncelleştirin:
 
 ```powershell
-# Create an immutablity policy
+# Create a time-based immutablity policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -168,17 +168,23 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ## <a name="enabling-allow-protected-append-blobs-writes"></a>Korumalı ekleme bloblarına izin vermeyi etkinleştirme
 
-Şu anda, bu belirli [Portal bağlantısı](https://aka.ms/immutableappendblobs)aracılığıyla yalnızca zamana dayalı bekletme ilkelerine yönelik `allowProtectedAppendWrites` ayara erişebilirsiniz. 
-
-> [!IMPORTANT] 
->  Zamana bağlı saklama için korumalı ekleme bloblarını yazma ayarı şu anda kullanılabilir ve yalnızca aşağıdaki bölgelerde görülebilir:
-> - Doğu ABD
-> - Orta Güney ABD
-> - Batı ABD 2
->
-> Daha fazla bilgi için bkz. [korumalı ekleme Blobları yazmaları Için Izin verme](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 ![Ek ekleme yazmaları sağlar](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve `az storage container legal-hold`. Komutları görmek için `-h` çalıştırın.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+# Create an immutablity policy with appends allowed
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
+```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

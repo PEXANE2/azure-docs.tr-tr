@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f6451507eb5a25f432c73468d0da0db1838c8c9a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378473"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082332"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makalede, şirket içi Active Directory örneğinden bulut tabanlı bir Azure Active Directory (Azure AD) örneği, kullanıcı parolalarını eşitlemek için gereken bilgileri sağlar.
@@ -124,6 +124,7 @@ Desteklenmediği uyarısıyla: Azure AD 'de süresi dolmayan parolalara sahip ol
 
 > [!NOTE]
 > Bu özellik şu anda genel önizlemede.
+> Set-MsolPasswordPolicy PowerShell komutu, Federasyon etki alanlarında çalışmayacaktır. 
 
 #### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Geçici parolaların eşitlenmesinin genel önizlemesi ve "bir sonraki oturumda parola değişikliğini zorla"
 

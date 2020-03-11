@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d8ee2327f65332d32038806f2d2416cac190875b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661985"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969399"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric düğüm türünü kaldırma
 Bu makalede, var olan bir düğüm türünü kümeden kaldırarak bir Azure Service Fabric kümesinin nasıl ölçeklendiriyapılacağı açıklanır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir. Bir Service Fabric kümesi oluşturduktan sonra, düğüm türünü (sanal makine ölçek kümesi) ve tüm düğümlerini kaldırarak bir kümeyi yatay olarak ölçeklendirebilirsiniz.  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -31,7 +31,7 @@ Verilerin kaybolmaması için temel değişiklikleri ve güncelleştirmeleri "d�
 
 Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğümler hemen aşağı gider. Service Fabric, hiçbir bronz düğüm ölçek kümesi güncelleştirmesini yakalamaz, bu nedenle tüm VM 'Ler hemen aşağı gider. Bu düğümlerde durum bilgisi olan herhangi bir şey varsa, veriler kaybolur. Artık durum bilgisiz olsa bile Service Fabric tüm düğümler halkaya katılır, bu nedenle tüm bir komşu kaybolabilir ve bu da kümenin kendisinin kararlılığını bozabilir.
 
-## <a name="remove-a-non-primary-node-type"></a>Birincil olmayan düğüm türünü kaldırma
+## <a name="remove-a-node-type"></a>Düğüm türünü kaldırma
 
 1. İşleme başlamadan önce lütfen bu önkoşulların önüne danışın.
 
@@ -122,7 +122,7 @@ Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğ
     - Dağıtım için kullanılan Azure Resource Manager şablonunu bulun.
     - Service Fabric bölümündeki düğüm türüyle ilgili bölümü bulun.
     - Düğüm türüne karşılık gelen bölümü kaldırın.
-    - Gümüş ve daha yüksek dayanıklılık kümelerinde, şablondaki küme kaynağını güncelleştirin ve aşağıda verilen şekilde `applicationDeltaHealthPolicies` ekleyerek doku:/sistem uygulaması sistem durumunu yok saymak için sistem durumu ilkelerini yapılandırın. Aşağıdaki ilke var olan hataları yoksayacak, ancak yeni sistem durumu hatalarına izin vermez. 
+    - Yalnızca gümüş ve daha yüksek dayanıklılık kümelerinde, şablondaki küme kaynağını güncelleştirin ve aşağıda verilen `properties` küme kaynağı altına `applicationDeltaHealthPolicies` ekleyerek doku:/sistem uygulama durumunu yok saymak için sistem durumu ilkelerini yapılandırın. Aşağıdaki ilke var olan hataları yoksayacak, ancak yeni sistem durumu hatalarına izin vermez. 
  
  
      ```json
@@ -158,7 +158,7 @@ Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğ
     },
     ```
 
-    Değiştirilen Azure Resource Manager şablonunu dağıtın. \* * Bu adım genellikle iki saate kadar sürer. Bu yükseltme ayarları InfrastructureService olarak değiştirecek, bu nedenle bir düğümün yeniden başlatılması gerekiyor. Bu durumda `forceRestart` yok sayılır. 
+    - Değiştirilen Azure Resource Manager şablonunu dağıtın. \* * Bu adım genellikle iki saate kadar sürer. Bu yükseltme ayarları InfrastructureService olarak değiştirecek, bu nedenle bir düğümün yeniden başlatılması gerekiyor. Bu durumda `forceRestart` yok sayılır. 
     `upgradeReplicaSetCheckTimeout` parametresi, Service Fabric bir bölümün bir güvenli durumda olması için bekleyeceği en uzun süreyi belirtir, daha önceden güvenli bir durumda değildir. Güvenlik denetimleri bir düğümdeki tüm bölümler için başarılı olduktan sonra, bu düğümdeki yükseltmeye devam eder Service Fabric.
     `upgradeTimeout` parametresinin değeri 6 saate indirgenecek, ancak maxhayvan güvenliği 12 saat kullanılmalıdır.
 

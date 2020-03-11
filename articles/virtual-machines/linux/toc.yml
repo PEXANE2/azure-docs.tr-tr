@@ -251,8 +251,8 @@
       items:
         - name: CLI kullanma
           href: create-cli-complete.md
-        - name: Şablon kullanma
-          displayName: 'Azure Resource Manager, ARM'
+        - name: ARM şablonu kullanma
+          displayName: Azure Resource Manager
           href: create-ssh-secured-vm-from-template.md
         - name: REST API’yi kullanma
           href: create-vm-rest-api.md
@@ -270,8 +270,9 @@
               href: spot-cli.md
             - name: Portal
               href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
-            - name: Şablon
+            - name: ARM şablonu
               href: spot-template.md
+              displayName: Azure Resource Manager
             - name: Hata kodları
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: Klasik’ten Azure Resource Manager’a geçiş
@@ -462,8 +463,9 @@
               href: image-builder-overview.md
             - name: Azure CLI kullanma
               href: image-builder.md
-            - name: Şablon başvurusu
+            - name: ARM şablonu başvurusu
               href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
             - name: Görüntü galerileri için derleme
               href: image-builder-gallery.md
             - name: Mevcut görüntüyü güncelleştirme
@@ -631,7 +633,7 @@
               href: attach-disk-portal.md
         - name: Disk ayırma
           href: detach-disk.md
-        - name: Şablon ile diskleri dağıtma
+        - name: ARM şablonu ile diskleri dağıtma
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
         - name: Paylaşılan diskleri etkinleştirme
@@ -757,9 +759,10 @@
       href: /rest/api/compute
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.compute/allversions
+      displayName: ARM
 - name: Kaynaklar
   items:
-    - name: Yazar şablonları
+    - name: ARM şablonlarını yazma
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
     - name: Microsoft Learn ile becerilerinizi geliştirin

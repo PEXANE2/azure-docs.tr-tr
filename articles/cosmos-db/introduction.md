@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 7fee3a1e2c26bc9fa89a4766c771a3715398b1a2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673346"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082478"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 
 Bugünün uygulamalarının yüksek oranda yanıt vermesi ve her zaman çevrimiçi olması gerekir. Düşük gecikme süresi ve yüksek kullanılabilirlik elde etmek için, bu uygulamaların örneklerinin kullanıcılarına yakın olan veri merkezlerinde dağıtılması gerekir. Uygulamalar, yoğun saatlerde kullanımda olan büyük değişikliklere gerçek zamanlı olarak yanıt vermelidir, verileri daha fazla artırarak depolar ve bu verileri milisaniye cinsinden kullanıcılara açık hale getirir.
 
-Azure Cosmos DB, Microsoft 'un genel olarak dağıtılmış, çok modelli veritabanı hizmetidir. Bir düğmeye tıklayarak Cosmos DB, dünyanın dört bir yanındaki çok sayıda Azure bölgesinde işleme ve depolamayı esnek ve bağımsız olarak ölçeklendirmenizi sağlar. SQL, MongoDB, Cassandra, tablolar veya Gremlin dahil en sevdiğiniz API 'nizi kullanarak, işleme ve depolamayı esnek ölçeklendirebilir ve hızlı, tek basamaklı milisaniyelik veri erişiminden yararlanabilirsiniz. Cosmos DB, üretilen iş, gecikme süresi, kullanılabilirlik ve tutarlılık garantisi için, başka bir veritabanı hizmeti teklifi olmayan kapsamlı [hizmet düzeyi sözleşmeleri](https://aka.ms/acdbsla) (SLA) sağlar.
+Azure Cosmos DB, Microsoft 'un genel olarak dağıtılmış, çok modelli veritabanı hizmetidir. Bir düğmeye tıklayarak Cosmos DB, dünyanın dört bir yanındaki çok sayıda Azure bölgesinde işleme ve depolamayı esnek ve bağımsız olarak ölçeklendirmenizi sağlar. SQL, MongoDB, Cassandra, tablolar veya Gremlin dahil olmak üzere en sevdiğiniz API 'nizi kullanarak, işleme ve depolamayı esnek ölçeklendirebilir ve hızlı, tek basamaklı milisaniyelik veri erişiminden yararlanabilirsiniz. Cosmos DB, üretilen iş, gecikme süresi, kullanılabilirlik ve tutarlılık garantisi için, başka bir veritabanı hizmeti teklifi olmayan kapsamlı [hizmet düzeyi sözleşmeleri](https://aka.ms/acdbsla) (SLA) sağlar.
 
 Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyebilir](https://azure.microsoft.com/try/cosmosdb/) , ücretsiz ve taahhütlere sahip olabilirsiniz veya Ilk 400 ru/sn ve 5 GB depolama alanı ücretsiz bir hesap almak için [Azure Cosmos DB ücretsiz katmanını](optimize-dev-test.md#azure-cosmos-db-free-tier) kullanabilirsiniz.
 

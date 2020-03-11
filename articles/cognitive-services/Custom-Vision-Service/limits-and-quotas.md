@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718354"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081786"
 ---
 # <a name="limits-and-quotas"></a>Limitler ve kotalar
 
@@ -25,7 +25,7 @@ Her proje için bir proje ve etiket için eğitim görüntülerinin sayısının
 
 ||**F0**|**S0**|
 |-----|-----|-----|
-|projeyle|2|100|
+|Projeler|2|100|
 |Proje başına eğitim görüntüleri |5\.000|100.000|
 |Tahmin/ay|10,000 |Sınırsız|
 |Etiketler/proje|50|500|
@@ -42,8 +42,8 @@ Her proje için bir proje ve etiket için eğitim görüntülerinin sayısının
 |Piksel cinsinden en fazla görüntü yüksekliği/genişliği|sınırsız|sınırsız|
 |En fazla görüntü boyutu (eğitim resmi yüklemesi) |6 MB|6 MB|
 |En fazla görüntü boyutu (tahmin)|4 MB|4 MB|
-|Nesne algılama eğitim görüntüsü başına en fazla bölge|200|200|
-|Sınıflandırma görüntüsü başına en fazla etiket|30|30|
+|Nesne algılama eğitim görüntüsü başına en fazla bölge|300|300|
+|Sınıflandırma görüntüsü başına en fazla etiket|100|100|
 
 > [!NOTE]
 > 256 pikselden küçük resimler kabul edilir ancak ölçeklendirilir.

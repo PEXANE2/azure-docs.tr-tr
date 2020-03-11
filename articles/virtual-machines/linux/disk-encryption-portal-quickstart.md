@@ -3,15 +3,16 @@ title: Azure portal bir Linux VM oluşturma ve şifreleme
 description: Bu hızlı başlangıçta, bir Linux sanal makinesi oluşturmak ve şifrelemek için Azure portal kullanmayı öğrenirsiniz.
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 20802cf9f9934a85e00bce41b6bbe21a6ff95579
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9f09f28dc63e7f061946a66beb59bd4c62be70aa
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772304"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970568"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir sanal makine oluşturma ve şifreleme
 
@@ -19,11 +20,11 @@ Azure sanal makineleri (VM’ler), Azure portalı üzerinden oluşturulabilir. A
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 1. Yeni sayfada, popüler altında **Ubuntu Server 18,04 LTS**' yi seçin.
@@ -63,7 +64,7 @@ VM'nizin dağıtılması birkaç dakika sürer. Dağıtım tamamlandıktan sonra
 1. **İncele ve oluştur**’u seçin.  
 1. Anahtar Kasası doğrulamadan geçtikten sonra **Oluştur**' u seçin. Bu, sizi **Azure Key Vault ekranından seçim tuşuna** geri döndürür.
 1. **Anahtar** alanını boş bırakın ve **Seç**' i seçin.
-1. Şifreleme ekranının üst kısmında **Kaydet**' e tıklayın. Bir açılan pencere, sanal makinenin yeniden başlatılacağını uyarır. **Evet**’e tıklayın.
+1. Şifreleme ekranının üst kısmında **Kaydet**' e tıklayın. Bir açılan pencere, sanal makinenin yeniden başlatılacağını uyarır. **Evet**'e tıklayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378489"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081902"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -136,7 +136,7 @@ Azure AD DS başarıyla dağıtıldı, artık sanal ağı diğer bağlı VM 'Ler
 
 1. Yönetilen etki alanınız için **genel bakış** sekmesi bazı **gerekli yapılandırma adımlarını**gösterir. İlk yapılandırma adımı, sanal ağınızın DNS sunucusu ayarlarını güncelleştiryöneliktir. DNS ayarları doğru yapılandırıldıktan sonra bu adım artık gösterilmemektedir.
 
-    Listelenen adresler, sanal ağda kullanılacak etki alanı denetleyicileridir. Bu örnekte, bu adresler *10.1.0.4* ve *10.1.0.5*. Daha sonra bu IP adreslerini **Özellikler** sekmesinde bulabilirsiniz.
+    Listelenen adresler, sanal ağda kullanılacak etki alanı denetleyicileridir. Bu örnekte, bu adresler *10.0.1.4* ve *10.0.1.5*. Daha sonra bu IP adreslerini **Özellikler** sekmesinde bulabilirsiniz.
 
     ![Sanal ağınız için DNS ayarlarını Azure AD Domain Services IP adresleriyle yapılandırın](./media/tutorial-create-instance/configure-dns.png)
 

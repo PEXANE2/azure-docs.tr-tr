@@ -8,12 +8,12 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: f19e4e34b2ec8cebc9e1841f277f26fba941bb89
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673897"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037143"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
 
@@ -73,6 +73,9 @@ Varsayılan ayarları koruyun.
 ## <a name="create-your-web-app-and-private-endpoint"></a>Web uygulamanızı ve özel uç noktayı oluşturma
 
 Bu bölümde özel bir uç nokta kullanarak özel bir Web uygulaması oluşturacaksınız.
+
+> [!Note]
+>Özel uç nokta özelliği yalnızca Premium v2 için kullanılabilir ve dış Ao SKU ile yalıtılmış
 
 ### <a name="web-app"></a>Web App
 

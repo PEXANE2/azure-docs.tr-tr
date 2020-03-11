@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365440"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968308"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
@@ -68,7 +68,7 @@ Kilitlemeli bir süre tabanlı bekletme ilkesi yalnızca özellik testi için ö
 Aşağıdaki sınırlar bekletme ilkeleri için geçerlidir:
 
 - Depolama hesabı için, kilitli zamana dayalı sabit ilkelerle maksimum kapsayıcı sayısı 10.000 ' dir.
-- En düşük saklama aralığı bir gündür. En fazla 146.000 gün (400 yıl).
+- En düşük saklama aralığı 1 gündür. En fazla 146.000 gün (400 yıl).
 - Bir kapsayıcı için, kilitli zaman tabanlı sabit ilkeler için bir bekletme aralığını uzatmak üzere en fazla düzenleme sayısı 5 ' tir.
 - Bir kapsayıcı için, kilitli bir ilke için en fazla yedi zaman tabanlı bekletme ilkesi denetim günlüğü tutulur.
 
@@ -84,15 +84,7 @@ Bu ayar, zaman tabanlı bekletme ilkesinin bir parçası olduğundan, ekleme Blo
 
 Korumalı zaman tabanlı bekletme ilkeleri, `allowProtectedAppendWrites` ayarının herhangi bir zamanda etkinleştirilmesini ve devre dışı bırakılacağını sağlar. Zaman tabanlı bekletme ilkesi kilitlendiğinde `allowProtectedAppendWrites` ayar değiştirilemez.
 
-Yasal saklama ilkeleri `allowProtectedAppendWrites` etkinleştiremez ve yeni blokların ekleme bloblarına eklenmesine izin vermez. `allowProtectedAppendWrites` etkinleştirilmiş bir zaman tabanlı bekletme ilkesine yasal bir saklama uygulanmışsa, yasal saklama yükseltilmemiş olana kadar *Appendblock* API 'si başarısız olur.
-
-> [!IMPORTANT] 
-> Zamana dayalı saklama altında korumalı ekleme bloblarına izin ver ayarı şu anda şu bölgelerde kullanılabilir:
-> - Doğu ABD
-> - Orta Güney ABD
-> - Batı ABD 2
->
-> Şu anda, belirtilen diğer bölgelerde `allowProtectedAppendWrites` etkinleştirmemenizi kesinlikle tavsiye ederiz, çünkü aralıklı hatalara neden olabilir ve ekleme Blobları için uyumluluğu etkiler. Zamana dayalı saklama ilkelerini ayarlama ve kilitleme hakkında daha fazla bilgi için bkz. [korumalı ekleme bloblarına izin vermeyi etkinleştirme](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
+Yasal saklama ilkeleri `allowProtectedAppendWrites` etkinleştiremeyecek ve tüm yasal tutmalar ' allowProtectedAppendWrites ' özelliğini null olarak tutamıyor. `allowProtectedAppendWrites` etkinleştirilmiş bir zaman tabanlı bekletme ilkesine yasal bir saklama uygulanmışsa, yasal saklama yükseltilmemiş olana kadar *Appendblock* API 'si başarısız olur.
 
 ## <a name="legal-holds"></a>Yasal tutma
 
@@ -140,7 +132,7 @@ Hayır, mevcut veya yeni oluşturulan genel amaçlı v1, genel amaçlı v2, Blob
 
 **Yalnızca yasal bir saklama ve zaman tabanlı bekletme ilkesi uygulayabilir miyim?**
 
-Evet, bir kapsayıcıda aynı anda hem yasal bir saklama hem de zaman tabanlı bir bekletme ilkesi bulunabilir. Geçerli saklama süresi sona erse bile, bu kapsayıcıdaki tüm Bloblar, tüm yasal tutmalar temizlenene kadar sabit durumda kalır. Buna karşılık, bir blob, yasal saklama süresi sona erene kadar sabit bir durumda kalır, ancak tüm yasal tutmalar temizlenmiş olsa da geçerlidir.
+Evet, bir kapsayıcı aynı anda hem yasal ayrı tutmaya hem de zaman tabanlı bir bekletme ilkesine sahip olabilir; Ancak, geçerli saklama temizlenene kadar ' allowProtectedAppendWrites ' ayarı geçerli olmayacaktır. Geçerli saklama süresi sona erse bile, bu kapsayıcıdaki tüm Bloblar, tüm yasal tutmalar temizlenene kadar sabit durumda kalır. Buna karşılık, bir blob, yasal saklama süresi sona erene kadar sabit bir durumda kalır, ancak tüm yasal tutmalar temizlenmiş olsa da geçerlidir. 
 
 **Yasal saklama ilkeleri yalnızca yasal bir şekilde geçerlidir veya başka kullanım senaryolarında bulunabilir mi?**
 
@@ -164,7 +156,7 @@ Evet, verileri uyumlu sabit durumda tutarken blob katmanlarında verileri taşı
 
 **Ödemeyi yapamadıysam ve saklama süresi dolmadıysa ne olur?**
 
-Ödeme dışı durumda, normal veri saklama ilkeleri Microsoft ile sözleşmenizin hüküm ve koşullarından dolayı geçerli olur.
+Ödeme dışı durumda, normal veri saklama ilkeleri Microsoft ile sözleşmenizin hüküm ve koşullarından dolayı geçerli olur. Genel bilgi için bkz. [Microsoft 'Ta veri yönetimi](https://www.microsoft.com/en-us/trust-center/privacy/data-management). 
 
 **Özelliği deneyebilmek için deneme veya yetkisiz kullanım süresi sunuyor musunuz?**
 

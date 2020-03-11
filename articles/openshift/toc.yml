@@ -33,6 +33,12 @@
           href: howto-create-tenant.md
         - name: Azure AD uygulama nesnesi veya kullanıcısı oluşturma
           href: howto-aad-app-configuration.md
+    - name: Azure Red Hat OpenShift 4.3 (önizleme)
+      items:
+        - name: Azure Red Hat OpenShift 4.3 kümesi oluşturma
+          href: howto-using-azure-redhat-openshift.md
+        - name: Azure Red Hat OpenShift 4.3 için Azure İzleyici ayarlama
+          href: howto-azure-monitor-v4.md
     - name: Azure Red Hat OpenShift kümesinde tek başına bir Prometheus dağıtma
       href: howto-deploy-prometheus.md
     - name: Özel bir Azure Red Hat OpenShift kümesi oluşturma

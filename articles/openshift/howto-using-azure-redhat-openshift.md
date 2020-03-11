@@ -7,17 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
-ms.openlocfilehash: 81f8edb42be1f73692062d36440890ef5a1e7c9a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899314"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082838"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4,3 kümesi oluşturma, erişme ve yönetme
 
 > [!IMPORTANT]
-> Azure Red Hat OpenShift (ARO) 4,3, önizleme aşamasında sunulmaktadır. Önizleme özellikleri Self-Service ' dir ve olduğu gibi sağlanır ve hizmet düzeyi sözleşmesi (SLA) ve sınırlı garantiden çıkarılır. Bu nedenle, Özellikler üretim kullanımı için tasarlanmamıştır.
+> Azure Red Hat Openshıft 4,3 'nin şu anda yalnızca Doğu ABD özel önizlemede kullanılabildiğini lütfen unutmayın. Özel Önizleme kabulü yalnızca davet tarafından yapılır. Lütfen bu özelliği etkinleştirmeyi denemeden önce aboneliğinizi kaydettiğinizden emin olun: [Azure Red Hat OpenShift özel önizleme kaydı](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> Önizleme özellikleri Self-Service ' dir ve olduğu gibi sağlanır ve hizmet düzeyi sözleşmesi (SLA) ve sınırlı garantiden çıkarılır. Bu nedenle, Özellikler üretim kullanımı için tasarlanmamıştır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

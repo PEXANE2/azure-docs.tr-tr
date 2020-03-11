@@ -118,6 +118,8 @@
                   href: traffic-analytics-faq.md
                 - name: Şema ve Veri Toplama
                   href: traffic-analytics-schema.md
+                - name: Şema güncelleştirme (Ağustos 2019)
+                  href: traffic-analytics-schema-update.md
             - name: Power BI kullanma
               href: network-watcher-visualize-nsg-flow-logs-power-bi.md
             - name: Elastik Yığın kullanma

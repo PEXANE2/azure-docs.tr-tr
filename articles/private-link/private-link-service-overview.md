@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587422"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082974"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
 
@@ -112,7 +112,7 @@ Bu bilgiler, özel bir tür uzunluğu-değer (TLV) vektörü kullanılarak aşa�
 |  |4        |Özel uç noktanın LINKıD 'sini temsil eden UINT32 (4 bayt). Little endian biçiminde kodlandı.|
 
  > [!NOTE]
- > Hizmet sağlayıcı, standart yük dengeleyicinin arkasındaki hizmetin, proxy protokol üst bilgisini özel bağlantı hizmetinde etkin olduğunda [belirtime](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) göre, proxy protokol üstbilgisini ayrıştırmak üzere yapılandırıldığından emin olmak için sorumludur. Özel bağlantı hizmetinde proxy protokolü ayarı etkinse ve hizmet üstbilgiyi ayrıştırmak üzere yapılandırılmamışsa istek başarısız olur. Benzer şekilde, bu ayar özel bağlantı hizmetinde etkinleştirilmediğinde, hizmet bir proxy protokol üstbilgisi bekliyorsanız istek başarısız olur. Proxy protokolü ayarı etkinleştirildikten sonra, üst bilgide istemci bilgisi olmasa bile, proxy protokol üstbilgisi konaktan arka uç sanal makinelere HTTP/TCP sistem durumu araştırmalarına dahil edilir. 
+ > Hizmet sağlayıcı, standart yük dengeleyicinin arkasındaki hizmetin, proxy protokol üst bilgisini özel bağlantı hizmetinde etkin olduğunda [belirtime](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) göre, proxy protokol üstbilgisini ayrıştırmak üzere yapılandırıldığından emin olmak için sorumludur. Özel bağlantı hizmetinde ara protokol ayarı etkinse istek başarısız olur, ancak hizmet sağlayıcının hizmeti üstbilgiyi ayrıştırmak üzere yapılandırılmamıştır. Benzer şekilde, bu ayar özel bağlantı hizmetinde etkinleştirilmediğinde hizmet sağlayıcının hizmeti bir proxy protokol üstbilgisi bekliyorsanız istek başarısız olur. Proxy protokolü ayarı etkinleştirildikten sonra, üst bilgide istemci bilgisi olmasa bile, proxy protokol üstbilgisi konaktan arka uç sanal makinelere HTTP/TCP sistem durumu araştırmalarına dahil edilir. 
 
 ## <a name="limitations"></a>Sınırlamalar
 

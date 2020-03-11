@@ -3,13 +3,13 @@ title: Azure Kubernetes hizmetinde (AKS) birden çok düğüm havuzu kullanma
 description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: cf127cc75377c3ca3a18cdeaedbc1d450d6c3826
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374504"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081980"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -33,8 +33,8 @@ Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken
 * AKS kümesi birden çok düğüm havuzu kullanmak için standart SKU yük dengeleyiciyi kullanmalıdır, özellik temel SKU yük dengeleyicilerle desteklenmez.
 * AKS kümesinin düğümlerin sanal makine ölçek kümelerini kullanması gerekir.
 * Düğüm havuzunun adı yalnızca küçük harfli alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
-* Tüm düğüm havuzlarının aynı VNET ve alt ağda yer alması gerekir.
-* Küme oluşturma zamanında birden çok düğüm havuzu oluştururken, düğüm havuzları tarafından kullanılan tüm Kubernetes sürümlerinin denetim düzlemi için ayarlanan sürüm kümesiyle eşleşmesi gerekir. Bu, küme, düğüm başına havuz işlemleri kullanılarak sağlandıktan sonra güncelleştirilebilen olabilir.
+* Tüm düğüm havuzları aynı sanal ağ ve alt ağ içinde bulunmalıdır.
+* Küme oluşturma zamanında birden çok düğüm havuzu oluştururken, düğüm havuzları tarafından kullanılan tüm Kubernetes sürümlerinin denetim düzlemi için ayarlanan sürüm kümesiyle eşleşmesi gerekir. Bu sürüm, küme, düğüm başına havuz işlemleri kullanılarak sağlandıktan sonra güncelleştirilir.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
@@ -195,11 +195,11 @@ AKS kümesi, Kubernetes sürümleriyle ilişkili iki küme kaynak nesnesine sahi
 
 Denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir. Bir yükseltme işleminin davranışı, hangi Azure CLı komutunun kullanıldığına bağlıdır.
 
-AKS denetim düzlemi 'nin yükseltilmesi için `az aks upgrade`kullanılması gerekir. Bu, denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir. 
+AKS denetim düzlemi 'nin yükseltilmesi için `az aks upgrade`kullanılması gerekir. Bu komut, denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir.
 
 `--control-plane-only` bayrağıyla `az aks upgrade` komutu verilmesi yalnızca küme denetim düzlemini yükseltir. Kümedeki ilişkili düğüm havuzlarının hiçbiri değiştirilmez.
 
-Tek tek düğüm havuzlarının yükseltilmesi için `az aks nodepool upgrade`kullanılması gerekir. Bu, yalnızca belirtilen Kubernetes sürümü ile hedef düğüm havuzunu yükseltir
+Tek tek düğüm havuzlarının yükseltilmesi için `az aks nodepool upgrade`kullanılması gerekir. Bu komut yalnızca hedef düğüm havuzunu belirtilen Kubernetes sürümüyle yükseltir
 
 ### <a name="validation-rules-for-upgrades"></a>Yükseltmeler için doğrulama kuralları
 
@@ -449,12 +449,50 @@ Events:
 
 Yalnızca bu taınt uygulanmış olan bir düğüm, *gpunodepool*içindeki düğümlerde zamanlanabilir. Diğer Pod 'lar *nodepool1* düğüm havuzunda zamanlanır. Ek düğüm havuzları oluşturursanız, bu düğüm kaynakları üzerinde hangi yığınların zamanlanabileceği ile ilgili ek litre ve toleransyonlar kullanabilirsiniz.
 
-## <a name="specify-a-tag-for-a-node-pool"></a>Düğüm havuzu için bir etiket belirtin
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Düğüm havuzu için bir taınt, etiket veya etiket belirtme
 
-AKS kümenizdeki düğüm havuzlarına bir Azure etiketi uygulayabilirsiniz. Düğüm havuzuna uygulanan etiketler, düğüm havuzu içindeki her bir düğüme uygulanır ve yükseltmeler aracılığıyla kalıcı hale getirilir. Etiketler, genişleme işlemleri sırasında düğüm havuzuna eklenen yeni düğümlere de uygulanır. Etiket eklemek, ilke izleme veya maliyet tahmini gibi görevlerle yardımcı olabilir.
+Düğüm havuzu oluştururken, bu düğüm havuzuna litre, Etiketler veya Etiketler ekleyebilirsiniz. Bir taınt, etiket veya etiket eklediğinizde, bu düğüm havuzundaki tüm düğümler o taınt, etiket veya etiketi de alır.
+
+Taint ile bir düğüm havuzu oluşturmak için [az aks nodepool Add][az-aks-nodepool-add]kullanın. *Container TNP* adını belirtin ve `--node-taints` parametresini kullanarak taınt için *SKU = GPU: NoSchedule* öğesini belirtin.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-count 1 \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
+```
+
+[Az aks nodepool List][az-aks-nodepool-list] komutundan alınan aşağıdaki örnek çıktı, *Container TNP* *'nin belirtilen hatalarla*düğüm *oluşturmasını* göstermektedir:
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "taintnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeTaints":  {
+      "sku": "gpu:NoSchedule"
+    },
+    ...
+  },
+ ...
+]
+```
+
+Taint bilgileri, düğümlerin zamanlama kurallarını işlemek için Kubernetes içinde görülebilir.
 
 > [!IMPORTANT]
-> Düğüm havuzu etiketlerini kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.29 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
+> Düğüm havuzu etiketlerini ve etiketlerini kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.35 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
 > 
 > ```azurecli-interactive
 > # Install the aks-preview extension
@@ -464,7 +502,51 @@ AKS kümenizdeki düğüm havuzlarına bir Azure etiketi uygulayabilirsiniz. Dü
 > az extension update --name aks-preview
 > ```
 
-[Az aks düğüm havuzu Add][az-aks-nodepool-add]' i kullanarak bir düğüm havuzu oluşturun. *Tagnodepool* adını belirtin ve *Bölüm = It* ve *costcenter = 9999* etiketlerini belirtmek için `--tag` parametresini kullanın.
+Düğüm havuzu oluşturma sırasında düğüm havuzuna de etiket ekleyebilirsiniz. Düğüm havuzunda ayarlanan Etiketler düğüm havuzundaki her bir düğüme eklenir. Bu Etiketler, düğümlerin zamanlama kurallarını işlemek için [Kubernetes içinde görülebilir][kubernetes-labels] .
+
+Etiketli bir düğüm havuzu oluşturmak için [az aks nodepool Add][az-aks-nodepool-add]kullanın. *Labelnp* adını belirtin ve *Bölüm = It* ve *costcenter = 9999* etiketlerini belirtmek için `--labels` parametresini kullanın.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> Etiket, düğüm havuzu oluşturma sırasında yalnızca düğüm havuzları için ayarlanabilir. Etiketler Ayrıca bir anahtar/değer çifti olmalıdır ve [geçerli bir sözdizimine][kubernetes-label-syntax]sahip olmalıdır.
+
+[Az aks nodepool List][az-aks-nodepool-list] komutundan alınan aşağıdaki örnek çıktı, *labelnp* 'in belirtilen *nodelabels*düğümleri *oluşturmasını* göstermektedir:
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "labelnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeLabels":  {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
+AKS kümenizdeki düğüm havuzlarına bir Azure etiketi uygulayabilirsiniz. Düğüm havuzuna uygulanan etiketler, düğüm havuzu içindeki her bir düğüme uygulanır ve yükseltmeler aracılığıyla kalıcı hale getirilir. Etiketler, genişleme işlemleri sırasında düğüm havuzuna eklenen yeni düğümlere de uygulanır. Etiket eklemek, ilke izleme veya maliyet tahmini gibi görevlerle yardımcı olabilir.
+
+[Az aks nodepool Add][az-aks-nodepool-add]' i kullanarak bir düğüm havuzu oluşturun. *Tagnodepool* adını belirtin ve *Bölüm = It* ve *costcenter = 9999* etiketlerini belirtmek için `--tag` parametresini kullanın.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -617,13 +699,13 @@ Kaynak Yöneticisi şablonunuzda tanımladığınız düğüm havuzu ayarlarına
 > [!WARNING]
 > Düğüm başına genel IP atama önizlemesi sırasında, sanal makine sağlama ile çakışan olası yük dengeleyici kuralları nedeniyle *AKS 'de standart Load Balancer SKU 'su* ile kullanılamaz. Bu sınırlamanın sonucu olarak, Windows Agent havuzları bu önizleme özelliği ile desteklenmez. Önizleme aşamasında, düğüm başına genel IP atamanız gerekiyorsa *temel Load Balancer SKU* 'sunu kullanmanız gerekir.
 
-AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak bazı senaryolar, düğüm havuzundaki düğümlerin kendi genel IP adreslerine sahip olmasını gerektirebilir. Örneğin, bir konsolun, atlamaları en aza indirmek için bir bulut sanal makinesine doğrudan bağlantı kurmak için gereken oyun. Bu, ayrı bir önizleme özelliği olan düğüm genel IP (Önizleme) için kaydolarak elde edilebilir.
+AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak bazı senaryolar, düğüm havuzundaki düğümlerin kendi genel IP adreslerine sahip olmasını gerektirebilir. Örneğin, bir konsolun, atlamaları en aza indirmek için bir bulut sanal makinesine doğrudan bağlantı kurmak için gereken oyun. Bu senaryoya ayrı bir önizleme özelliği (düğüm genel IP 'si (Önizleme) kaydedilerek ulaşılabilir.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Kayıt başarılı olduktan sonra, [Yukarıdaki](#manage-node-pools-using-a-resource-manager-template) şekilde aynı yönergelerden sonra bir Azure Resource Manager şablonu dağıtın ve `enableNodePublicIP`, agentPoolProfiles öğesine Boole değer özelliği ekleyin. Değeri varsayılan olarak `true` olarak ayarlayın, belirtilmemişse `false` olarak ayarlanır. Bu yalnızca bir oluşturma zamanı özelliğidir ve en düşük API sürümü olan 2019-06-01 gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
+Kayıt başarılı olduktan sonra, [Yukarıdaki](#manage-node-pools-using-a-resource-manager-template) şekilde aynı yönergelerden sonra bir Azure Resource Manager şablonu dağıtın ve `enableNodePublicIP`, agentPoolProfiles öğesine Boole değer özelliği ekleyin. Değeri varsayılan olarak `true` olarak ayarlayın, belirtilmemişse `false` olarak ayarlanır. Bu özellik yalnızca bir oluşturma zamanı özelliğidir ve en düşük API sürümü olan 2019-06-01 gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -652,6 +734,8 @@ Windows Server kapsayıcısı düğüm havuzlarını oluşturmak ve kullanmak i�
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubernetes-labels]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+[kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md

@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: d7b060a2b35ca41bf87b69be706284174d7b1012
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 8047ac5d3db2db230a00583e888a4afea3b282b9
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587167"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969367"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Stream Analytics kullanarak Event Hubs olaylar için Işlem Apache Kafka 
 Bu makalede, veri akışı Kafka özellikli Event Hubs'a ve Azure Stream Analytics ile işlemek gösterilmektedir. Aşağıdaki adımları gösterilmektedir: 
@@ -60,7 +60,7 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/com/example/app`gidin ve **Testdatareporter. Java** dosyasını seçtiğiniz bir düzenleyicide açın. 
+5. `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`gidin ve **Testdatareporter. Java** dosyasını seçtiğiniz bir düzenleyicide açın. 
 6. Aşağıdaki kod satırını açıklama satırı yapın:
 
     ```java

@@ -44,6 +44,8 @@
       href: functions-openapi-definition.md
     - name: Sanal Ağa bağlanma
       href: functions-create-vnet.md
+    - name: Özel site erişimini etkinleştirme
+      href: functions-create-private-site-access.md
     - name: Event Grid ile görüntüyü yeniden boyutlandırma
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Sunucusuz web uygulaması oluşturma
@@ -136,7 +138,7 @@
       displayName: best practice
     - name: Depolama hakkında dikkat edilmesi gerekenler
       href: storage-considerations.md
-      displayName: 'encryption, keys'
+      displayName: 'encryption, keys, mount, files'
     - name: İşlevler Proxy’leri
       href: functions-proxies.md
     - name: Ağ seçenekleri

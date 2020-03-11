@@ -1,6 +1,6 @@
 ---
-title: Özel olarak bir Web uygulamasına bağlanın ve Azure özel uç noktasını kullanarak güvenli veri güvenliğini sağlayın
-description: Özel olarak bir Web uygulamasına bağlanın ve Azure özel uç noktasını kullanarak güvenli veri güvenliğini sağlayın
+title: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
+description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
@@ -8,24 +8,23 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: aa1fd341e60a71ad1ffbb535120e63db5a8bfd0b
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 893a7a2c7483fccc3bbc7bd198929f65917457b3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851241"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036940"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
-Özel ağınızda bulunan istemcilerin özel bağlantı üzerinden uygulamaya güvenli bir şekilde erişmesini sağlamak için Azure Web uygulamanız için özel uç nokta kullanabilirsiniz. Özel uç nokta, Azure VNet adres alanınızda bir IP adresi kullanır. Özel ağınızdaki ve Web uygulamasındaki istemci arasındaki ağ trafiği, VNET üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel Internet 'ten etkilenme olasılığını ortadan kaldırır. Özel uç nokta ile, NSG ile alt ağdan giden ağ akışlarını devre dışı bırakabilir ve veri sızıntısı riskini ortadan kaldırabilirsiniz.
+Özel ağınızda bulunan istemcilerin özel bağlantı üzerinden uygulamaya güvenli bir şekilde erişmesini sağlamak için Azure Web uygulamanız için özel uç nokta kullanabilirsiniz. Özel uç nokta, Azure VNet adres alanınızda bir IP adresi kullanır. Özel ağınızdaki ve Web uygulamasındaki istemci arasındaki ağ trafiği, VNET üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel Internet 'ten etkilenme olasılığını ortadan kaldırır.
 
 Web uygulamanız için özel uç nokta kullanımı şunları yapmanızı sağlar:
 
 - Hizmet uç noktasını yapılandırarak Web uygulamanızın güvenliğini sağlayın, genel pozlamayı ortadan kaldırın
-- VNET 'ten veri alımını engellemenize olanak sağlayarak VNET için güvenliği artırın
 - VPN veya ExpressRoute özel eşlemesi kullanarak VNET 'e bağlanan şirket içi ağlardan Web uygulamasına güvenli bir şekilde bağlanın.
 
-VNET ve Web uygulamanız arasında güvenli bir bağlantı gerekiyorsa, hizmet uç noktası en basit çözümdür. Şirket içinden veri alımı veya erişim rotasına karşı korumanız gerekiyorsa, Özel uç nokta çözümdür.
+VNET ve Web uygulamanız arasında güvenli bir bağlantı gerekiyorsa, hizmet uç noktası en basit çözümdür. Ayrıca, bir Azure ağ geçidi aracılığıyla Şirket içinden Web uygulamasına erişmeniz gerekiyorsa, bölgesel olarak eşlenmiş VNET veya genel eşlenmiş VNet, Özel uç nokta çözümdür.  
 
 [Hizmet uç noktası][serviceendpoint] hakkında daha fazla bilgi için
 
@@ -36,20 +35,24 @@ Web uygulamanız için özel bir uç nokta oluşturduğunuzda, özel ağınızda
 Özel uç nokta ve Web uygulaması arasındaki bağlantı güvenli bir [özel bağlantı][privatelink]kullanır. Özel uç nokta yalnızca Web uygulamanıza gelen akışlar için kullanılır. Giden akışlar bu özel uç noktayı kullanmaz, ancak giden akışları ağınıza [VNET tümleştirme özelliği][vnetintegrationfeature]aracılığıyla farklı bir alt ağda ekleyebilirsiniz.
 
 Özel uç noktayı taktığınız alt ağ, içindeki diğer kaynaklara sahip olabilir, ayrılmış boş bir alt ağa gerek kalmaz.
+Özel uç noktayı Web uygulamasından farklı bir bölgede dağıtabilirsiniz. 
+
 > [!Note]
 >VNET tümleştirme özelliği özel uç noktadan aynı alt ağı kullanamaz, bu, VNET tümleştirme özelliğinin bir kısıtlamasıdır
 
 Güvenlik perspektifinden:
 
 - Web uygulamanıza hizmet uç noktası etkinleştirdiğinizde, tüm genel erişimi devre dışı bırakabilirsiniz
-- Diğer VNET ve alt ağlardaki birden çok özel bitiş noktasını etkinleştirebilirsiniz
+- Diğer bölgelerdeki VNET 'ler dahil, diğer ağlardaki ve alt ağlarda bulunan birden çok özel bitiş noktasını etkinleştirebilirsiniz
+- Özel uç nokta NIC 'in IP adresi dinamik olmalıdır, ancak özel uç noktası silinene kadar aynı kalır
 - Özel uç noktanın NIC 'inde ilişkili bir NSG olamaz
-- Özel uç noktayı barındıran alt ağın ilişkili bir NSG 'si olabilir, ancak özel uç nokta için ağ ilkeleri zorlamayı devre dışı bırakmanız gerekir [Bu makaleye] [disablesecuritype]bakın. Sonuç olarak, Özel uç noktanıza erişimi herhangi bir NSG 'ye göre filtreleyemezsiniz.
+- Özel uç noktayı barındıran alt ağın ilişkili bir NSG 'si olabilir, ancak özel uç nokta için ağ ilkeleri zorlamayı devre dışı bırakmanız gerekir [Bu makaleye][disablesecuritype]bakın. Sonuç olarak, Özel uç noktanıza erişimi herhangi bir NSG 'ye göre filtreleyemezsiniz
 - Web uygulamanıza özel uç noktayı etkinleştirdiğinizde, Web uygulamasının [erişim kısıtlamaları][accessrestrictions] yapılandırması değerlendirilmez.
+- Hedefin Internet veya Azure hizmetleri olduğu tüm NSG kurallarını kaldırarak VNET 'ten veri kaybı riskini azaltabilirsiniz. Ancak alt ağınızdaki bir Web App Service uç noktası eklemek, aynı damgada barındırılan ve Internet 'e açık olan herhangi bir Web uygulamasına ulaşmanıza imkan tanır.
 
-Web uygulaması için özel uç noktası, katman standardı, PremiumV2 ve bir dış Ao ile yalıtılmış için kullanılabilir.
+Web uygulaması için özel uç nokta katman PremiumV2 için kullanılabilir ve bir dış Ao ile yalıtılmıştır.
 
-Web uygulamanızın Web http günlüklerinde, istemci kaynak IP 'si olduğunu fark edersiniz. TCP proxy protokolünü uyguladık, Web uygulamasına istemci IP 'sini ilettik. Daha fazla bilgi için [bu makaleye][tcpproxy] bakın.
+Web uygulamanızın Web http günlüklerinde istemci kaynak IP 'sini bulacaksınız. TCP proxy protokolünü uyguladık, Web uygulamasına istemci IP özelliğini ilettik. Daha fazla bilgi için [bu makaleye][tcpproxy] bakın.
 
 ![Genel Bakış][1]
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 9faa47e615217d62eade50a0c181dfda9ec9cd0a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
-ms.translationtype: HT
+ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944789"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969051"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Hızlı adımlar: Azure 'da Linux VM 'Ler için SSH genel-özel anahtar çifti oluşturma ve kullanma
 
@@ -65,7 +65,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 Azure portal veya Kaynak Yöneticisi şablonunda kullanmak üzere ortak anahtar dosyasının içeriğini kopyalayıp yapıştırırsanız, sondaki boşluğu kopyalamadığınızdan emin olun. MacOS 'ta ortak anahtar kopyalamak için ortak anahtar dosyasını `pbcopy`olarak kanal oluşturarak aktarabilirsiniz. Linux 'ta benzer şekilde, ortak anahtar dosyasını `xclip`gibi programlara kanal oluşturarak aktarabilirsiniz.
 
-Azure 'daki Linux sanal makinenize yerleştirdiğiniz ortak anahtar, anahtar çiftini oluştururken farklı bir konum belirtmediğiniz müddetçe varsayılan olarak ~/. ssh/id_rsa. pub ' da depolanır. VM 'nizi mevcut bir ortak anahtarla oluşturmak için [Azure clı 2,0](/cli/azure) 'yi kullanmak için, `--ssh-key-value` seçeneği ile [az VM Create](/cli/azure/vm#az-vm-create) komutunu kullanarak bu ortak anahtarın değerini ve isteğe bağlı olarak konumunu belirtin. Aşağıdaki komutta, *VMName*, *RgName*ve *keyFile* değerlerini kendi değerlerinizle değiştirin:
+Azure 'daki Linux sanal makinenize yerleştirdiğiniz ortak anahtar, anahtar çiftini oluştururken farklı bir konum belirtmediğiniz müddetçe varsayılan olarak ~/. ssh/id_rsa. pub ' da depolanır. VM 'nizi mevcut bir ortak anahtarla oluşturmak için [Azure clı 2,0](/cli/azure) 'yi kullanmak için, `--ssh-key-values` seçeneği ile [az VM Create](/cli/azure/vm#az-vm-create) komutunu kullanarak bu ortak anahtarın değerini ve isteğe bağlı olarak konumunu belirtin. Aşağıdaki komutta, *VMName*, *RgName*ve *keyFile* değerlerini kendi değerlerinizle değiştirin:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub

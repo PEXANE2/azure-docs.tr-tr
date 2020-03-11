@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848757"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968783"
 ---
 # <a name="what-are-authentication-methods"></a>Kimlik doğrulaması yöntemleri nelerdir?
 
@@ -156,25 +156,25 @@ Kullanıcılar, her zaman kullanılmak üzere yapılandırılmış Microsoft Aut
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH Donanım belirteçleri (Genel Önizleme)
 
-OATH, bir kerelik parola (OTP) kodlarının nasıl oluşturulduğunu belirten bir açık standarttır. Azure AD, 30 saniyelik veya 60 saniyelik birçok farklı OATH-TOTP SHA-1 belirteçleri kullanımını destekleyecektir. Müşteriler bu belirteçleri tercih ettikleri satıcıdan temin edebilir. Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtarların Base32 içinde kodlanmış olması gerekir.
+OATH, bir kerelik parola (OTP) kodlarının nasıl oluşturulduğunu belirten bir açık standarttır. Azure AD, 30 saniyelik veya 60 saniyelik birçok farklı OATH-TOTP SHA-1 belirteçleri kullanımını destekleyecektir. Müşteriler bu belirteçleri tercih ettikleri satıcıdan temin edebilir. Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtar yalnızca *a-z* veya *a-z* karakterleri ve *1-7*rakamları içerebilir ve Base32 içinde kodlanmalıdır.
 
-![OATH belirteçleri MFA sunucusu OATH belirteçleri dikey penceresine yükleniyor](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![OATH belirteçlerini MFA OATH belirteçleri dikey penceresine yükleme](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenmektedir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-Belirteçler alındıktan sonra, aşağıdaki örnekte gösterildiği gibi, UPN, seri numarası, gizli anahtar, zaman aralığı, üretici ve model dahil olmak üzere bir virgülle ayrılmış değerler (CSV) dosya biçiminde karşıya yüklenmelidir.
+Belirteçler alındıktan sonra, aşağıdaki örnekte gösterildiği gibi, UPN, seri numarası, gizli anahtar, zaman aralığı, üretici ve model dahil olmak üzere bir virgülle ayrılmış değerler (CSV) dosya biçiminde karşıya yüklenmelidir:
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> Üst bilgi satırını, yukarıda gösterildiği gibi CSV dosyanıza eklediğinizden emin olun.
+> Üst bilgi satırını CSV dosyanıza eklediğinizden emin olun.
 
-Bir CSV dosyası olarak düzgün biçimlendirildikten sonra, bir yönetici Azure portal oturum açabilir ve **Azure Active Directory**, **MFA sunucusu**, **Oath belirteçleri**' ne gidebilir ve elde edilen CSV dosyasını karşıya yükleyebilir.
+Bir CSV dosyası olarak düzgün biçimlendirildikten sonra, bir yönetici Azure portal oturum açabilir, **Azure Active Directory** > **güvenlik** > **MFA** > **Oath BELIRTEÇLERI**' ne gidebilir ve elde edilen CSV dosyasını karşıya yükleyebilir.
 
-CSV dosyasının boyutuna bağlı olarak, işlem birkaç dakika sürebilir. Geçerli durumu almak için **Yenile** düğmesine tıklayın. Dosyada herhangi bir hata varsa, çözmeniz için herhangi bir hata listelemesi için bir CSV dosyası indirme seçeneğine sahip olursunuz.
+CSV dosyasının boyutuna bağlı olarak, işlem birkaç dakika sürebilir. Geçerli durumu almak için **Yenile** düğmesine tıklayın. Dosyada herhangi bir hata varsa, çözmeniz için herhangi bir hata listelemesi için bir CSV dosyası indirme seçeneğine sahip olursunuz. İndirilen CSV dosyasındaki alan adları karşıya yüklenen sürümden farklı.
 
 Herhangi bir hata çözüldükten sonra, yönetici, belirtecin etkinleştirilebilmesi için **Etkinleştir** ' e tıklayarak ve BELIRTEÇTE görünen OTP 'yi girerek her anahtarı etkinleştirebilir.
 
@@ -201,7 +201,7 @@ Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi t
 
 Bir SMS, bir doğrulama kodu içeren cep telefonu numarasına gönderilir. Devam etmek için oturum açma arabiriminde belirtilen doğrulama kodunu girin.
 
-#### <a name="phone-call"></a>Telefon görüşmesi
+#### <a name="phone-call"></a>Telefon araması
 
 Sağladığınız telefon numarasına otomatik bir sesli çağrı yapılır. Numarayı yanıtlayın ve telefon tuş takımında # tuşlarına basarak kimlik doğrulaması yapın
 

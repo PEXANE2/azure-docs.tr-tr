@@ -1,26 +1,18 @@
 ---
 title: Microsoft Azure Cloud Foundry kullanmaya başlama
 description: Microsoft Azure Cloud Foundry OSS veya özetleme 'yi çalıştırın
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 2a15ffbf-9f86-41e4-b75b-eb44c1a2a7ab
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 447550d2f6bca570869c9fa93724e4dbaba02132
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ba0b4a636d8f785f1c169e4066c9cf6d25ba81db
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036816"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970043"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure’da Cloud Foundry
 
@@ -36,7 +28,7 @@ Azure 'da çalıştırmak için kullanılabilecek iki Cloud Foundry biçimi vard
 
 Microsoft, aşağıdaki topluluk kanalları aracılığıyla OSS CF için en iyi desteği sağlar:
 
-- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>Bosh-Azure-MPE kanalı [Cloud Foundry bolluk](https://slack.cloudfoundry.org/)
+- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slack"></a>Bosh-Azure-MPE kanalı [Cloud Foundry bolluk](https://slack.cloudfoundry.org/)
 - [CF-Bosh posta listesi](https://lists.cloudfoundry.org/pipermail/cf-bosh)
 - [MPE](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) ve [Hizmet Aracısı](https://github.com/Azure/meta-azure-service-broker/issues) için GitHub sorunları
 

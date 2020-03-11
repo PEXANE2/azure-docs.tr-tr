@@ -1,6 +1,6 @@
 ---
 title: Kendi aboneliklerinizi getir Azure görüntülerini Red Hat Enterprise Linux | Microsoft Docs
-description: Azure 'da Red Hat Enterprise Linux için kendi abonelik görüntülerini getir hakkında bilgi edinin
+description: Azure 'da Red Hat Enterprise Linux için kendi abonelik görüntülerini getir hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,42 +14,37 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 712626345e10ab0e4290ac91b0f121ff6960303e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 825d26307f2b462d51b143b88127e229508f2f25
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396825"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970458"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
-Red Hat Enterprise Linux (RHEL) görüntüleri Azure 'da Kullandıkça Öde (PAYG) veya kendi aboneliğinizi getir (Red Hat Gold görüntü) modeli aracılığıyla kullanılabilir. Bu belgede, Azure 'daki Red Hat Gold görüntülerine genel bakış sunulmaktadır.
+Red Hat Enterprise Linux (RHEL) görüntüleri, Kullandıkça Öde veya kendi abonelik (KCG) (Red Hat Gold görüntü) modeli aracılığıyla Azure 'da bulabilirsiniz. Bu makalede, Azure 'daki Red Hat Gold görüntülerine genel bakış sunulmaktadır.
 
 >[!NOTE]
 > RHEL BYOS Gold görüntüleri Azure genel (ticari) ve Azure Kamu bulutlarında kullanılabilir. Azure Çin veya Azure Kara Orman bulutlarında mevcut değildir.
 
 ## <a name="important-points-to-consider"></a>Dikkate alınması gereken önemli nokta
 
-- Bu programda sunulan Red Hat Gold görüntüleri, Azure galerisindeki/Market 'teki RHEL PAYG görüntülerine benzer üretime yönelik olarak kullanılabilir RHEL görüntüleridir.
-
-- Görüntüler, [Azure 'da Red Hat Enterprise Linux görüntülerde](./redhat-images.md) açıklanan geçerli ilkelerinizi izler
-
-- Bu görüntülerden oluşturulan VM 'lere standart destek ilkeleri uygulanır
-
-- Red Hat Gold görüntülerinden sağlanan VM 'Ler RHEL PAYG görüntüleriyle ilişkili RHEL ücretlerini taşımaz
-
-- Görüntülerin yetkileri yoktur, bu nedenle, Red Hat 'ten güncelleştirmeleri doğrudan almak için VM 'Leri kaydetmek ve abone olmak için abonelik Yöneticisi 'ni kullanmanız gerekir
-
-- Linux görüntüleri için KCG ve PAYG faturalandırma modelleri arasında dinamik olarak geçiş yapmak mümkün değildir. Faturalandırma modelini değiştirmek için VM 'nin ilgili görüntüden yeniden dağıtılması gerekir
+- Bu programda sunulan Red Hat Gold görüntüleri, Azure Marketi 'ndeki RHEL Kullandıkça Öde görüntülerine benzer üretime yönelik RHEL görüntüleridir.
+- Görüntüler, [Azure 'da Red Hat Enterprise Linux görüntülerde](./redhat-images.md)açıklanan geçerli ilkeleri izler.
+- Bu görüntülerden oluşturulan VM 'lere standart destek ilkeleri uygulanır.
+- Red Hat Gold görüntülerinden sağlanan VM 'Ler, RHEL Kullandıkça Öde görüntüleriyle ilişkili RHEL ücretleri taşımaz.
+- Görüntülerin yetkileri yok. Red Hat abonelik-Manager ' i kullanarak, Red Hat 'ten güncelleştirmeleri doğrudan almak için VM 'Leri kaydedebilir ve abone olabilirsiniz.
+- Linux görüntüleri için KCG ve kullandıkça öde faturalandırma modelleri arasında dinamik olarak geçiş yapmak mümkün değildir. Faturalandırma modelini değiştirmek için, VM 'yi ilgili görüntüden yeniden dağıtmanız gerekir.
 
 >[!NOTE]
-> 2\. nesil RHEL BYOS görüntüleri Market teklifiyle Şu anda kullanılamıyor. Gen 2 RHEL BYOS görüntüsüne ihtiyacınız varsa, Red Hat abonelik yönetiminde coud erişim panosunu ziyaret edin. Daha fazla ayrıntı, [Red Hat belgelerinde](https://access.redhat.com/articles/4847681)bulunabilir.
+> 2\. nesil RHEL BYOS görüntüleri Market teklifiyle Şu anda kullanılamıyor. 2\. nesil RHEL BYOS görüntüsüne ihtiyacınız varsa, Red Hat abonelik yönetimi 'nde bulut erişim panosunu ziyaret edin. Daha fazla bilgi için bkz. [Red Hat belgeleri](https://access.redhat.com/articles/4847681).
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Red Hat Gold görüntülerine erişmek için gereksinimler ve koşullar
 
-1. Red hat [bulut erişim programı](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) hükümlerini öğrenin ve Red hat [Abonelik Yöneticisi](https://access.redhat.com/management/cloud)'Nde bulut erişimi için Red Hat aboneliklerinizi etkinleştirin. Bulut erişimi için kaydedilecek Azure aboneliklerinizi de uygulamanız gerekir.
+1. [Red Hat bulut erişimi program](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) koşulları hakkında bilgi edinin. Red hat [abonelik-Manager](https://access.redhat.com/management/cloud)' da Red Hat aboneliklerinizi bulut erişimi için etkinleştirin. Bulut erişimi için kaydedilecek Azure aboneliklerine sahip olmanız gerekir.
 
-1. Bulut erişimi için uygun uygunluk gereksinimlerini karşılayan Red Hat aboneliklerini etkinleştirdiyseniz, altın görüntü erişimi için Azure abonelikleriniz otomatik olarak etkinleştirilir.
+1. Bulut erişimi için etkinleştirdiğiniz Red Hat abonelikleri uygunluk gereksinimlerini karşılıyorsa, Azure abonelikleriniz Gold görüntü erişimi için otomatik olarak etkinleştirilir.
 
 ### <a name="expected-time-for-image-access"></a>Görüntü erişimi için beklenen süre
 
@@ -57,38 +52,42 @@ Bulut erişimi etkinleştirme adımlarını tamamladıktan sonra Red hat, Red Ha
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>Azure portal kırmızı hat altın görüntülerini kullanın
 
-1. Azure aboneliğiniz Red Hat Gold görüntülerine erişim aldıktan sonra, **kaynak oluştur ' a** giderek ve ardından **Tümünü göster**' i inceleyerek [Azure Portal](https://portal.azure.com) bulabilirsiniz.
+1. Azure aboneliğiniz Red Hat altın görüntülerine erişimi aldıktan sonra, bunları [Azure Portal](https://portal.azure.com)bulabilirsiniz. **Kaynak oluşturma** > **Tümünü gör**' e gidin.
 
 1. Sayfanın üst kısmında özel tekliflerle ilgili olduğunu görürsünüz.
 
     ![Market özel teklifleri](./media/rhel-byos-privateoffers.png)
 
-1. Özel tekliflerinizi görmek için mor bağlantıya tıklayabilir veya sayfanın en altına gidin.
+1. Özel tekliflerinizi görmek için mor bağlantısını seçin veya sayfanın en altına gidin.
 
-1. Kullanıcı arabirimindeki sağlamanın geri kalanı, var olan herhangi bir Red Hat görüntüsüne göre farklı olmayacaktır. RHEL sürümünüzü seçin ve VM 'nizi sağlamak için istemleri izleyin. Bu işlem, son adımda resmin şartlarını kabul etmenize de olanak tanır.
+1. Kullanıcı arabirimindeki sağlamanın geri kalanı var olan herhangi bir Red Hat görüntüsüne ait değildir. RHEL sürümünüzü seçin ve VM 'nizi sağlamak için istemleri izleyin. Bu işlem, son adımda resmin şartlarını kabul etmenizi sağlar.
 
 >[!NOTE]
->Bu adımlar, şu ana kadar Red Hat Gold görüntü görüntünüzü programsal dağıtım için etkinleştirmeyecektir: aşağıdaki "ek bilgiler" bölümünde açıklandığı gibi ek bir adım gerekecektir.
+>Bu adımlar, şu ana kadar Red Hat Gold görüntünüzü programsal dağıtım için etkinleştirmeyecek. "Ek bilgi" bölümünde açıklandığı gibi ek bir adım gereklidir.
 
 Bu belgenin geri kalanı, görüntü üzerinde hüküm sağlamak ve kabul etmek için CLı yöntemine odaklanır. Kullanıcı arabirimi ve CLı, son sonuç (sağlanan RHEL Gold Image VM) ile oldukça tamamen değiştirilebilir.
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>Azure CLı 'deki Red Hat Gold görüntülerini kullanma
-Aşağıdaki yönergeler kümesi, Azure CLı kullanarak bir RHEL VM için ilk dağıtım sürecinde size yol gösterecektir. Bu yönergelerde, [Azure CLI 'nin yüklü](https://docs.microsoft.com/cli/azure/install-azure-cli)olduğu varsayılır.
+
+Aşağıdaki yönergeler, Azure CLı kullanarak bir RHEL VM için ilk dağıtım sürecinde size yol gösterir. Bu yönergelerde, [Azure CLI 'nin yüklü](https://docs.microsoft.com/cli/azure/install-azure-cli)olduğu varsayılır.
 
 >[!IMPORTANT]
->Aşağıdaki komutlar için yayımcı, teklif, plan ve görüntü başvurularında tüm küçük harfleri kullandığınızdan emin olun
+>Aşağıdaki tüm komutlar için yayımcı, teklif, plan ve görüntü başvurularında tüm küçük harfleri kullandığınızdan emin olun.
 
-1. İstediğiniz abonelikte olup olmadığınızı kontrol edin:
+1. İstediğiniz abonelikte olduğunuzdan emin olun.
+
     ```azurecli
     az account show -o=json
     ```
 
-1. Red Hat Gold Image VM 'niz için bir kaynak grubu oluşturun:
+1. Red Hat Gold Image VM 'niz için bir kaynak grubu oluşturun.
+
     ```azurecli
     az group create --name <name> --location <location>
     ```
 
-1. Görüntü koşullarını kabul edin:
+1. Görüntü koşullarını kabul edin.
+
     ```azurecli
     az vm image terms accept --publisher redhat --offer rhel-byos --plan <SKU value here> -o=jsonc
 
@@ -99,10 +98,12 @@ Aşağıdaki yönergeler kümesi, Azure CLı kullanarak bir RHEL VM için ilk da
 
     az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm8:8.0.20190620
     ```
+
     >[!NOTE]
     >Bu koşulların *her bir Azure aboneliği için, görüntü SKU 'su başına bir kez*kabul edilmesi gerekir.
 
 1. Seçim Aşağıdaki komutla VM dağıtımınızı doğrulayın:
+
     ```azurecli
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
 
@@ -110,19 +111,20 @@ Aşağıdaki yönergeler kümesi, Azure CLı kullanarak bir RHEL VM için ilk da
     az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
     ```
 
-1. `--validate` bağımsız değişkeni olmadan yukarıdaki gibi aynı komutu çalıştırarak VM 'nizi sağlayın:
+1. Önceki örnekte gösterilen aynı komutu `--validate` bağımsız değişkeni olmadan çalıştırarak VM 'nizi sağlayın.
+
     ```azurecli
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
     ```
 
-1. Sanal makinenize SSH ekleyin ve ilgili olmayan bir görüntünüz olduğunu doğrulayın. Bunu yapmak için `sudo yum repolist` çalıştırın (RHEL 8 için `sudo dnf repolist`kullanın). Bu çıktı, VM 'yi Red Hat ile kaydetmek için abonelik Yöneticisi 'ni kullanmanızı ister.
+1. Sanal makinenize SSH ekleyin ve ilgili olmayan bir görüntünüz olduğunu doğrulayın. Bu adımı yapmak için `sudo yum repolist`çalıştırın. RHEL 8 için `sudo dnf repolist`kullanın. Çıktı, VM 'yi Red Hat ile kaydetmek için abonelik Yöneticisi 'ni kullanmanızı ister.
 
 >[!NOTE]
->RHEL 8 ' de `dnf` ve `yum`, bu, [RHEL 8 yönetici kılavuzunda](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings)bunun hakkında daha fazla değiştirilebilir.
-
+>RHEL 8 ' de `dnf` ve `yum` değiştirilebilir. Daha fazla bilgi için bkz. [RHEL 8 Yönetici Kılavuzu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings).
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>PowerShell 'den Red Hat Gold görüntülerini kullanma
-Aşağıda örnek bir komut dosyası verilmiştir. Kaynak grubu, konum, VM adı, oturum açma bilgileri ve diğer değişkenleri tercih ettiğiniz yapılandırmayla değiştirmelisiniz. Yayımcı ve plan bilgileri küçük harfle yazılmalıdır.
+
+Aşağıdaki betik bir örnektir. Kaynak grubu, konum, VM adı, oturum açma bilgileri ve diğer değişkenleri tercih ettiğiniz yapılandırmayla değiştirin. Yayımcı ve plan bilgileri küçük harfle yazılmalıdır.
 
 ```powershell-interactive
     # Variables for common values
@@ -179,15 +181,15 @@ Aşağıda örnek bir komut dosyası verilmiştir. Kaynak grubu, konum, VM adı,
 
 ## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>Kendi aboneliğinizi getir altın görüntülerini şifreleyin Red Hat Enterprise Linux
 
-Red Hat Enterprise Linux kendi aboneliğinizi getir Gold görüntülerinin [Azure disk şifrelemesi](../../linux/disk-encryption-overview.md)kullanılarak güvenliği sağlanmış olabilir. Ancak, şifreleme etkinleştirilmeden önce aboneliğin kayıtlı olması **gerekir** .  Red Hat sitesinde bir RHEL BYOS Gold görüntüsünü kaydetme ayrıntılarına ulaşılabilir. [Red Hat abonelik-Manager kullanarak bir sistemi kaydetme ve Red Hat müşteri portalı 'na abone olma](https://access.redhat.com/solutions/253273)konusuna bakın. etkin bir Red Hat aboneliğiniz varsa, [Red Hat müşteri portalı etkinleştirme anahtarları oluşturmayı](https://access.redhat.com/articles/1378093)da okuyabilirsiniz.
+Red Hat Enterprise Linux KCG Gold görüntülerinin [Azure disk şifrelemesi](../../linux/disk-encryption-overview.md)kullanılarak güvenliği sağlanmış olabilir. Şifrelemeyi etkinleştirebilmeniz için aboneliğin kayıtlı olması *gerekir* . RHEL BYOS Gold görüntüsünü kaydetme hakkında daha fazla bilgi için bkz. Red hat [abonelik-Manager kullanarak bir sistemi kaydetme ve Red Hat müşteri portalına abone olma](https://access.redhat.com/solutions/253273). Etkin bir Red Hat aboneliğiniz varsa, [Red Hat müşteri portalı etkinleştirme anahtarları oluşturmayı](https://access.redhat.com/articles/1378093)da okuyabilirsiniz.
 
-Azure disk şifrelemesi, [Red hat özel görüntülerinde](../../linux/redhat-create-upload-vhd.md)desteklenmez. Ek ADE gereksinimleri ve önkoşulları, [Linux sanal makineleri Için Azure disk şifrelemesi](../../linux/disk-encryption-overview.md#additional-vm-requirements)bölümünde belgelenmiştir.
+Azure disk şifrelemesi, [Red hat özel görüntülerinde](../../linux/redhat-create-upload-vhd.md)desteklenmez. Ek Azure disk şifrelemesi gereksinimleri ve önkoşulları, [Linux sanal makineleri Için Azure disk şifrelemesi](../../linux/disk-encryption-overview.md#additional-vm-requirements)bölümünde belgelenmiştir.
 
-Azure disk şifrelemesi uygulama adımları, Linux VM 'lerinde ve ilgili makalelerde [Azure disk şifrelemesi senaryolarında](../../linux/disk-encryption-linux.md) bulunabilir.
+Azure disk şifrelemesi uygulama adımları için bkz. [Linux VM 'Lerinde Azure disk şifrelemesi senaryoları](../../linux/disk-encryption-linux.md) ve ilgili makaleler.
 
 ## <a name="additional-information"></a>Ek bilgiler
 
-- Bu teklif için etkinleştirilmemiş bir abonelikte VM sağlamaya çalışırsanız aşağıdaki hatayı alırsınız:
+- Bu teklif için etkinleştirilmemiş bir abonelikte VM sağlamaya çalışırsanız şu iletiyi alırsınız:
 
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
@@ -203,15 +205,17 @@ Azure disk şifrelemesi uygulama adımları, Linux VM 'lerinde ve ilgili makalel
     -g AnotherGroupName --location EastUS2 -n VMName \
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm75
     ```
-    Yukarıdaki son satırdaki plan parametrelerine göz önünde edin.
+
+    Son satırdaki plan parametrelerine göz önünde edin.
 
     [Azure disk şifrelemesi](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) özel görüntülerde desteklenmez.
 
-- RHEL BYOS görüntülerinden sanal makineler sağlamak için Otomasyon kullanıyorsanız, yukarıda gösterildiğine benzer plan parametreleri sağlamanız gerekir. Örneğin, Terrayform kullanıyorsanız, plan bilgilerini bir [plan bloğunda](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)sağlarsınız.
+- RHEL BYOS görüntülerinden sanal makineler sağlamak için Otomasyon kullanırsanız, örnek komutlarda gösterildiğine benzer plan parametreleri sağlamanız gerekir. Örneğin, Terrayform kullanıyorsanız plan bilgilerini bir [plan bloğunda](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)sağlarsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Bulut erişimi için adım adım kılavuzlar ve program ayrıntıları, [Red Hat bulut erişimi belgelerinde bulunabilir.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
-- [Azure Red Hat güncelleştirme altyapısı](./redhat-rhui.md)hakkında daha fazla bilgi edinin.
-- Azure 'daki tüm Red Hat görüntüleri hakkında daha fazla bilgi edinmek için [Belgeler sayfasına](./redhat-images.md)gidin.
-- Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
-- [Red Hat belgelerinde](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)RHEL Gold görüntülerine ek belgeler bulabilirsiniz.
+
+- Bulut erişimi için adım adım kılavuzlar ve program ayrıntıları için bkz. [Red Hat bulut erişimi belgeleri](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index).
+- Red Hat güncelleştirme altyapısı hakkında daha fazla bilgi edinmek için bkz. [Azure Red Hat güncelleştirme altyapısı](./redhat-rhui.md).
+- Azure 'daki tüm Red Hat görüntüleri hakkında daha fazla bilgi edinmek için [Belgeler sayfasına](./redhat-images.md)bakın.
+- Tüm RHEL sürümleri için Red Hat destek ilkeleri hakkında daha fazla bilgi için [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasına bakın.
+- RHEL Gold görüntüleri hakkında ek belgeler için [Red Hat belgelerine](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)bakın.

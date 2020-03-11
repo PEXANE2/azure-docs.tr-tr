@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2703994d3fe8765662e6a0205d63cef9327e17a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840511"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080200"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Görüntü analizi Bilişsel Beceri
 
@@ -35,7 +35,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
 | defaultLanguageCode   |  Döndürülecek dili gösteren bir dize. Hizmet, belirtilen bir dilde tanıma sonuçları döndürür. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/><br/>Desteklenen diller şunlardır: <br/>*en* -İngilizce (varsayılan) <br/> *es* -İspanyolca <br/> *ja* -Japonca <br/> *PT* -Portekizce <br/> *zh* -Basitleştirilmiş Çince|
-| visualFeatures |  Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li>*yetişkin* -görüntünün pornografik (çıplaklık veya bir sex Yasası gösterir) ya da Gori (Extreme şiddet veya kan) olup olmadığını algılar. Cinsel, kışkırtıcı içerik (diğer adıyla) de algılanır.</li><li>*markalar* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli markalarını algılar. *Markalar* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Kategoriler* -bilişsel Hizmetler [görüntü işleme belgelerinde](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır. </li><li> *Color* -vurgu rengini, baskın rengi ve görüntünün siyah & beyaz olduğunu belirler.</li><li>*Açıklama* -desteklenen dillerde tam bir cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li>  *ImageType* -resmin küçük resim veya çizgi çizimi olduğunu algılar.</li><li>  *nesneler* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli nesneleri algılar. *Nesneler* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır.|
+| visualFeatures |  Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li>*yetişkin* -görüntünün pornografik (çıplaklık veya bir sex Yasası gösterir) ya da Gori (Extreme şiddet veya kan) olup olmadığını algılar. Cinsel, kışkırtıcı içerik (diğer adıyla) de algılanır.</li><li>*markalar* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli markalarını algılar. *Markalar* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Kategoriler* -bilişsel Hizmetler [görüntü işleme belgelerinde](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır. </li><li>*Açıklama* -desteklenen dillerde tam bir cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li> *nesneler* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli nesneleri algılar. *Nesneler* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır. *Color* ve *ImageType* görsel özelliklerinin kullanım dışı olduğuna, ancak bu işlevselliğe [özel bir yetenek](https://go.microsoft.com/fwlink/?linkid=2121117)aracılığıyla erişilebildiğinden emin olun.|
 | details   | Hangi alana özgü ayrıntıların dönebileceğini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır: <ul><li>*ünlüler* -görüntüde algılanırsa ünlülikler tanımlar.</li><li>yer *işaretleri* -görüntüde algılanırsa yer işaretlerini tanımlar. </li></ul> |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
@@ -470,20 +470,6 @@ Yalnızca yer işaretleri veya ünlüler gibi alt düzey özelliklerle çıkış
             ]
           }
         ],
-        "color": {
-          "dominantColorForeground": "Brown",
-          "dominantColorBackground": "Brown",
-          "dominantColors": [
-            "Brown",
-            "Black"
-          ],
-          "accentColor": "873B59",
-          "isBwImg": false
-        },
-        "imageType": {
-          "clipArtType": 0,
-          "lineDrawingType": 0
-        },
         "objects": [
           {
             "rectangle": {

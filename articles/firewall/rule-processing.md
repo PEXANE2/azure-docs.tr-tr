@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396041"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082526"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Güvenlik Duvarı kural işleme mantığı
 Azure Güvenlik duvarında NAT kurallarını, ağ kurallarını ve uygulama kurallarını yapılandırabilirsiniz. Kurallar kural türüne göre işlenir. 
@@ -32,7 +32,7 @@ Ağ kurallarını ve uygulama kurallarını yapılandırırsanız, ağ kurallar�
 
 Gelen Internet bağlantısı [, öğretici: Azure Güvenlik Duvarı ile gelen trafiği Azure Portal kullanarak](tutorial-firewall-dnat.md)hedef ağ adresi çevirisi (DNAT) yapılandırılarak etkinleştirilebilir. NAT kuralları ağ kurallarından önce öncelik olarak uygulanır. Bir eşleşme bulunursa, çevrilmiş trafiğe izin veren örtülü olarak karşılık gelen bir ağ kuralı eklenir. Bu davranışı, çevrilen trafikle eşleşen reddetme kuralları olan bir ağ kural koleksiyonunu açıkça ekleyerek geçersiz kılabilirsiniz.
 
-Uygulama kuralları gelen bağlantılar için uygulanmaz. Bu nedenle, gelen HTTP/S trafiğini filtrelemek istiyorsanız, Web uygulaması güvenlik duvarını (WAF) kullanmanız gerekir. Daha fazla bilgi için bkz. [Azure Web uygulaması güvenlik duvarı nedir?](../web-application-firewall/overview.md)
+Uygulama kuralları gelen bağlantılar için uygulanmıyor. Bu nedenle, gelen HTTP/S trafiğini filtrelemek istiyorsanız, Web uygulaması güvenlik duvarını (WAF) kullanmanız gerekir. Daha fazla bilgi için bkz. [Azure Web uygulaması güvenlik duvarı nedir?](../web-application-firewall/overview.md)
 
 ## <a name="examples"></a>Örnekler
 
@@ -90,6 +90,10 @@ Daha *yüksek öncelikli bir* ağ kuralı koleksiyonu ENGELLEDIĞI için SSH tra
 **Kaynaklanan**
 
 Daha yüksek öncelikli bir ağ kuralı koleksiyonu tarafından engellediği için SSH bağlantıları reddedilir. Kural işleme bu noktada durdu.
+
+## <a name="rule-changes"></a>Kural değişiklikleri
+
+Önceden izin verilen trafiğe izin vermek için bir kural değiştirirseniz, varsa ilgili mevcut oturumlar bırakılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
-- name: Docker Belgeleri
-  href: index.md
+- name: Docker belgeleri
+  href: index.yml
 - name: Hızlı Başlangıç
   expanded: true
   items:

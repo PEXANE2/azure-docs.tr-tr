@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564e8dd8e6d7c4c0e3747469875e030be30b1a9b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046708"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967717"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -155,46 +155,46 @@ Bu bölümde, Salesforce 'a erişim vererek Azure çoklu oturum açma özelliği
 
 1. Sayfanın sağ üst köşesindeki **Ayarlar simgesi** altında **Kurulum** ' a tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/configure1.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/configure1.png)
 
 1. Gezinti bölmesinde **Ayarlar** ' a gidin, ilgili bölümü genişletmek için **kimlik** ' e tıklayın. Ardından **Çoklu oturum açma ayarları**' na tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/sf-admin-sso.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-admin-sso.png)
 
 1. **Çoklu oturum açma ayarları** sayfasında **Düzenle** düğmesine tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/sf-admin-sso-edit.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-admin-sso-edit.png)
 
     > [!NOTE]
     > Salesforce hesabınız için çoklu oturum açma ayarlarını etkinleştiremeyebilirsiniz [Salesforce istemci desteği ekibine](https://help.salesforce.com/support)başvurmanız gerekebilir.
 
 1. **SAML etkin**' i seçin ve ardından **Kaydet**' e tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/sf-enable-saml.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-enable-saml.png)
 
 1. SAML çoklu oturum açma ayarlarınızı yapılandırmak için **meta veri dosyasından yeni**' ye tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/sf-admin-sso-new.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
 1. Azure portal indirdiğiniz meta veri XML dosyasını karşıya yüklemek için **Dosya Seç** ' e tıklayın ve **Oluştur**' a tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/xmlchoose.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/xmlchoose.png)
 
-1. **SAML çoklu oturum açma ayarları** sayfasında, alanlar otomatik olarak doldurulur ve Kaydet ' e tıklayın.
+1. **SAML çoklu oturum açma ayarları** sayfasında, alanlar otomatik olarak doldurulur, **Kullanıcı sağlama etkin** ' i seçin ve ardından **Kaydet**' e tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/salesforcexml.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/salesforcexml.png)
 
 1. Salesforce ' daki sol gezinti bölmesinde **Şirket ayarları** ' na tıklayarak ilgili bölümü genişletin ve **etki alanım**' a tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/sf-my-domain.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-my-domain.png)
 
 1. **Kimlik doğrulama yapılandırması** bölümüne gidin ve **Düzenle** düğmesine tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/sf-edit-auth-config.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
 1. **Kimlik doğrulama yapılandırması** bölümünde, SAML SSO yapılandırmanızın **kimlik doğrulama hizmeti** olarak **Azuresso** ' ı denetleyip **Kaydet**' e tıklayın.
 
-    ![Çoklu Oturum Açma'yı Yapılandır](./media/salesforce-tutorial/sf-auth-config.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
     > Birden fazla kimlik doğrulama hizmeti seçilirse, kullanıcılardan Salesforce ortamınızda çoklu oturum açmayı başlatırken, hangi kimlik doğrulama hizmetini kullanarak oturum açmasını istediğinizi seçmeleri istenir. Bunun gerçekleşmesini istemiyorsanız, **diğer tüm kimlik doğrulama hizmetlerini işaretlenmemiş olarak bırakmalısınız**.

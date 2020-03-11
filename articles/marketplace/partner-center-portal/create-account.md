@@ -1,19 +1,19 @@
 ---
 title: Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 description: Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturmayı öğrenin.
-author: ChJenk
+author: qianw211
 manager: evansma
-ms.author: v-chjen
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 09/26/2019
-ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 03/10/2020
+ms.openlocfilehash: 59f37585dfea08e9343cf052f680fd6e9531852b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838752"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968820"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -50,7 +50,7 @@ Iş Ortağı Merkezi 'ne yeni başladıysanız ve Microsoft İş Ortağı Ağı 
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Iş ortağı merkezi kayıt sayfasında kaydolun
 
-[**Microsoft Iş ortağı merkezi kayıt sayfasına hoş geldiniz**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) sayfasındaki bilgileri gözden geçirin ve ardından bir hesap için kaydolun.
+[**Microsoft Iş ortağı merkezi kayıt sayfasına hoş geldiniz**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) sayfasındaki bilgileri gözden geçirin ve ardından bir hesap için kaydolun.
 
 ### <a name="sign-in-with-a-work-account"></a>İş hesabı ile oturum açın
 

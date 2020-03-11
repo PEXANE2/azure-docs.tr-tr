@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/28/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393475"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082644"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
 
@@ -31,7 +31,7 @@ Bu makalede, Azure Media Services v3 sürümünde tanıtılan değişiklikler a�
 Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview.md)geliştirilen bir video hizmetiniz varsa, v3 API 'lerine geçiş yapmadan önce aşağıdaki yönergeleri ve konuları gözden geçirmeniz gerekir. V3 API 'de Media Services Geliştirici deneyimini ve yeteneklerini geliştiren birçok avantaj ve yeni özellik vardır. Ancak, bu makalenin [bilinen sorunlar](#known-issues) bölümünde ÇAĞRıLDıKÇA, API sürümleri arasındaki değişikliklerden dolayı bazı sınırlamalar de vardır. Media Services ekibi, v3 API 'Lerinde devam eden geliştirmeler yaptığında ve sürümler arasındaki boşlukları adresleyen Bu sayfa korunacak. 
 
 > [!NOTE]
-> Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks) birini kullanın.
+> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek için [Azure Portal](https://portal.azure.com/) kullanabilir ve v3 [varlıklarını](assets-concept.md)görüntüleyebilir, API 'lere erişme hakkında bilgi edinebilirsiniz. Daha ayrıntılı bilgi için bkz. [SSS](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources). 
 
 ## <a name="benefits-of-media-services-v3"></a>Media Services v3 avantajları
   
@@ -83,7 +83,7 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
     string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
     ```
 
-    şununla değiştirin
+    örneklerini şununla değiştirin:
 
     ``` 
     public static byte[] HexStringToByteArray(string hex)
@@ -131,7 +131,13 @@ Aşağıdaki tabloda yaygın senaryolar için v2 ve v3 arasındaki kod farklıl�
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-* Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-sdk), CLI veya desteklenen SDK 'lardan birini kullanın.
+*  Şu anda [Azure Portal](https://portal.azure.com/) şunları yapmak için kullanabilirsiniz:
+
+    * Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetin, 
+    * v3 [varlıklarını](assets-concept.md)görüntüleme (yönetme), 
+    * [API 'lere erişme hakkında bilgi alın](access-api-portal.md). 
+
+Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 * Işlerinizin eşzamanlılık ve performansını denetlemek için, özellikle video veya ses analizine sahip olanlar için hesabınıza medya ayrılmış birimleri (MRU) sağlamanız gerekir. Daha fazla bilgi için bkz. [Medya İşlemeyi Ölçeklendirme](../previous/media-services-scale-media-processing-overview.md). [Media Services v3 Için clı 2,0](media-reserved-units-cli-how-to.md)kullanarak, [Azure Portal](../previous/media-services-portal-scale-media-processing.md)veya [v2 API 'lerini](../previous/media-services-dotnet-encoding-units.md)kullanarak MRUs 'yi yönetebilirsiniz. Media Services v2 veya v3 API 'Leri kullanıp kullanmayacağınızı MRU sağlamanız gerekir.
 * V3 API ile oluşturulan Media Services varlıkları v2 API 'SI tarafından yönetilemez.  
 * V2 API 'sindeki varlıkların hepsi, v3 API 'sinde otomatik olarak gösterilmez.  Aşağıda, uyumlu olmayan iki sürümde varlıkların örnekleri verilmiştir:  

@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 634e3532e13fcba5c9b802bd77c9530c0a831eb8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376573"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967988"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim isteklerini onaylama veya reddetme
 
@@ -43,7 +43,7 @@ Erişim isteklerini onaylamaya veya reddetmeye yönelik ilk adım, onay bekleyen
 
 E-postanız yoksa, bu adımları izleyerek Onayınızı bekleyen erişim isteklerini bulabilirsiniz.
 
-1. [https://myaccess.microsoft.com](https://myaccess.microsoft.com)adresindeki erişim portalı 'nda oturum açın.
+1. [https://myaccess.microsoft.com](https://myaccess.microsoft.com)adresindeki erişim portalı 'nda oturum açın.  (ABD kamu için, erişim portalı bağlantımda bulunan etki alanı `myaccess.microsoft.us`olacaktır.)
 
 1. Onay bekleyen erişim isteklerinin bir listesini görmek için sol taraftaki menüden **onaylar** ' a tıklayın.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672583"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080087"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -152,7 +152,8 @@ VM 'yi oluşturduğunuza göre, VM 'de kimlerin oturum Açabili belirleyebilmek 
 
 > [!NOTE]
 > Bir kullanıcının VM 'de RDP üzerinden oturum açmasına izin vermek için, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma rolünü atamanız gerekir. Bir VM için atanan sahip veya katkıda bulunan rollerinin bulunduğu bir Azure kullanıcısının, sanal makinede RDP üzerinden oturum açma ayrıcalıkları otomatik olarak yoktur. Bu, sanal makineleri denetleyen kişi kümesi arasında, sanal makinelere erişebilen kişiler kümesiyle denetlenen ayırma sağlamaktır.
-' VM için rol atamalarını yapılandırabileceğiniz birçok yol vardır:
+
+VM için rol atamalarını yapılandırabileceğiniz birçok yol vardır:
 
 - Azure AD Portal deneyimini kullanma
 - Azure Cloud Shell deneyimini kullanma
@@ -194,7 +195,7 @@ Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında
 - [RBAC ve Azure CLı kullanarak Azure kaynaklarına erişimi yönetme](/azure/role-based-access-control/role-assignments-cli)
 - [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](/azure/role-based-access-control/role-assignments-portal)
 - [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetin](/azure/role-based-access-control/role-assignments-powershell).
-'
+
 ## <a name="using-conditional-access"></a>Koşullu erişim kullanma
 
 Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Windows VM 'lerine erişimi yetkilendirmeden önce Multi-Factor Authentication veya Kullanıcı oturum açma riski denetimi gibi koşullu erişim ilkelerini uygulayabilirsiniz. Koşullu erişim ilkesini uygulamak için, bulut uygulamaları veya eylemler atama seçeneğinden "Azure Windows VM oturum açma" uygulamasını seçmeniz ve ardından bir koşul olarak oturum açma riskini ve/veya çok faktörlü kimlik doğrulamasının izin verme erişim denetimi olarak kullanılmasını sağlamanız gerekir. 
@@ -363,4 +364,5 @@ Iş için Windows Hello dağıtmadıysanız ve bu şimdilik bir seçenek değils
 Bu önizleme özelliğiyle ilgili geri bildirimlerinizi paylaşabilirsiniz veya [Azure AD geri bildirim forumundan](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)kullanarak sorunları bildirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir](/azure/active-directory/fundamentals/active-directory-whatis) '
+
+Azure Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir?](/azure/active-directory/fundamentals/active-directory-whatis)

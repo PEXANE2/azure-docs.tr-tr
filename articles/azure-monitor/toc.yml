@@ -213,6 +213,8 @@
               items:
                 - name: İstemci tarafı JavaScript
                   href: app/javascript.md
+                - name: JavaScript için kaynak haritası
+                  href: app/source-map-support.md
             - name: Application Insights API özeti
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: Yönetim olaylarını etkinlik günlüğü uyarılarına geçirme
               href: platform/migrate-management-alerts.md
+            - name: Web kancası şeması
+              href: platform/activity-log-alerts-webhook.md
         - name: Etkinlik günlüğündeki hizmet durumu uyarıları
           items:
             - name: Bildirimleri görüntüleme
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: Ortak uyarı şemasını Logic Apps ile tümleştirme
               href: platform/alerts-common-schema-integrations.md
-            - name: Web kancası şeması
-              href: platform/activity-log-alerts-webhook.md
             - name: SMS uyarısı davranışı
               href: platform/alerts-sms-behavior.md
             - name: Bildirim hızı sınırlandırma

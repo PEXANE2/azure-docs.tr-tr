@@ -1,25 +1,17 @@
 ---
 title: Azure 'dan bir Linux VHD indirin
 description: Azure CLı ve Azure portal kullanarak bir Linux VHD 'YI indirin.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036284"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968792"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure 'dan bir Linux VHD indirin
 
@@ -56,12 +48,12 @@ VHD 'YI başka VM 'Ler oluşturmak üzere bir görüntü olarak kullanmak için 
 
 VHD 'YI, var olan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere aşağıdaki adımları izleyin:
 
-1.  [Azure portalında](https://portal.azure.com/) oturum açın.
+1.  [Azure Portal](https://portal.azure.com/) oturum açın.
 2.  Sol taraftaki menüden **sanal makineler**' i seçin.
 3.  Listeden VM 'yi seçin.
 4.  VM 'nin sayfasında **Durdur**' u seçin.
 
-    ![VM 'yi durdur](./media/download-vhd/export-stop.png)
+    ![VM'yi Durdur](./media/download-vhd/export-stop.png)
 
 ## <a name="generate-sas-url"></a>SAS URL 'SI oluştur
 

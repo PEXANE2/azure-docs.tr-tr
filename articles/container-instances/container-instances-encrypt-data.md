@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544326"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080369"
 ---
 # <a name="encrypt-deployment-data"></a>Dağıtım verilerini şifreleme
 
@@ -41,6 +41,10 @@ Belgenin geri kalanı, acı dağıtım verilerinizi anahtarınızla (müşteri t
 
 İlk adım, [Azure kiracınızın](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) Azure Container Instances hizmetine izin vermek için atanmış bir hizmet sorumlusu olmasını sağlamaktır. 
 
+> [!IMPORTANT]
+> Aşağıdaki komutu çalıştırmak ve başarıyla hizmet sorumlusu oluşturmak için kiracınızda hizmet sorumluları oluşturma izninizin olduğunu doğrulayın.
+>
+
 Aşağıdaki CLı komutu, Azure ortamınızda ACI SP 'yi ayarlar:
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 Bu komutun çalıştırıldığı çıktıda "displayName": "Azure Container Instance Service" ile ayarlanmış bir hizmet sorumlusu gösterilmelidir.
+
+Hizmet sorumlusunu başarıyla oluşturabilmeniz durumunda:
+* kiracınızda bunu yapmak için izinleriniz olduğunu doğrulayın
+* kiracınızda ACI 'ye dağıtmaya yönelik bir hizmet sorumlusu olup olmadığını kontrol edin. Bunu, `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` çalıştırıp bunun yerine bu hizmet sorumlusunu kullanarak yapabilirsiniz
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault kaynağı oluşturma
 

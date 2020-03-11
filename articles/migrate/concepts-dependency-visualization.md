@@ -3,12 +3,12 @@ title: Azure Geçişi'nde bağımlılık görselleştirme
 description: Azure geçişi 'nde sunucu değerlendirmesi hizmeti 'nde değerlendirme hesaplamalarına genel bakış sağlar
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: f24656d02e19f422ff26e6b06d1631a9128dff43
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362210"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082518"
 ---
 # <a name="dependency-visualization"></a>Bağımlılık görselleştirme
 
@@ -55,7 +55,7 @@ Bağımlılık görselleştirmesini dağıtmaya yönelik iki seçenek vardır:
 **Desteklenen işletim sistemleri** | Aracısız görselleştirme için desteklenen [işletim sistemlerini](migrate-support-matrix-vmware.md#agentless-dependency-visualization) gözden geçirin.
 **VM’ler** | **VMware araçları**: çözümlemek istediğiniz VM 'Lerde VMware araçları yüklü ve çalışır olmalıdır.<br/><br/> **Hesap**: Azure geçişi gereci üzerinde, analiz Için VM 'lere erişmek üzere kullanılabilecek bir kullanıcı hesabı eklemeniz gerekir.<br/><br/> **Windows VM 'leri**: Kullanıcı hesabının makinede yerel veya etki alanı yöneticisi olması gerekir.<br/><br/> **Linux VM 'leri**: hesapta kök ayrıcalık gereklidir. Alternatif olarak, Kullanıcı hesabı/bin/netstat ve/bin/ls dosyalarında şu iki özelliği gerektirir: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE. | Azure geçişi gereci [hakkında bilgi edinin](migrate-appliance.md) .
 **VMware** | **vCenter**: gereç, salt okuma erişimi olan bir vCenter Server hesabına ve konuk Işlemleri > sanal makineler için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.<br/><br/> **ESXi Konakları**: çözümlemek Istediğiniz VM 'Leri çalıştıran ESXi konaklarında Azure geçişi gereci 443 numaralı TCP bağlantı noktasına bağlanabiliyor olmalıdır.
-**Toplanan veriler** |  Aracısız bağımlılık görselleştirmesi, etkin olduğu makinelerden gelen TCP bağlantısı verilerini yakalayarak işe yarar. Bağımlılık bulma başladıktan sonra, Gereç bu verileri her beş dakikada bir yoklayarak, makinelerden toplar:<br/> -TCP bağlantıları.<br/> -Etkin bağlantıları olan işlemlerin adları.<br/> -Etkin bağlantılarla işlemi çalıştıran yüklü uygulamaların adları.<br/> -Her yoklama aralığında algılanan bağlantı sayısı.
+**Toplanan veriler** |  Aracısız bağımlılık analizi, etkin olduğu makinelerden gelen TCP bağlantısı verilerini yakalayarak işe yarar. Bağımlılık bulma etkinleştirildikten sonra, Gereç Konuk VM 'lerden 5 dakikada bir TCP bağlantı verilerini toplar. Bu veriler, vSphere API 'Leri kullanılarak vCenter Server aracılığıyla konuk VM 'lerden toplanır. Toplanan veriler, bağımlılık bilgilerini bırakmak ve 6 saatte bir Azure 'a gönderilmek üzere gereç üzerinde işlenir. Her makineden aşağıdaki veriler toplanır: <br/> -Etkin bağlantıları olan işlemlerin adları.<br/> -İşlemi etkin bağlantılarla çalıştıran uygulamaların adları.<br/> -Etkin bağlantılardaki hedef bağlantı noktası.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

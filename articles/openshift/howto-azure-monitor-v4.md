@@ -6,17 +6,20 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.openlocfilehash: 1a372ef12ef7b0afb06ed3c540daaee5e38c3374
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a784fc070400995c56d16a3bc264d589bcb1f64e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899171"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082855"
 ---
 # <a name="azure-monitor-integration-for-azure-red-hat-openshift-43"></a>Azure Red Hat OpenShift 4,3 için Azure Izleyici tümleştirmesi
 
-> [!IMPORTANT]
-> Azure Red Hat OpenShift 4,3, önizlemede sunulmaktadır. Önizleme özellikleri Self-Service ' dir ve olduğu gibi sağlanır ve hizmet düzeyi sözleşmesi (SLA) ve sınırlı garantiden çıkarılır. Bu nedenle, Özellikler üretim kullanımı için tasarlanmamıştır. 
+> [!IMPORTANT] 
+> Azure Red Hat Openshıft 4,3 'nin şu anda yalnızca Doğu ABD özel önizlemede kullanılabildiğini lütfen unutmayın. Özel Önizleme kabulü yalnızca davet tarafından yapılır. Lütfen bu özelliği etkinleştirmeyi denemeden önce aboneliğinizi kaydettiğinizden emin olun: [Azure Red Hat OpenShift özel önizleme kaydı](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> Önizleme özellikleri Self-Service ' dir ve olduğu gibi sağlanır ve hizmet düzeyi sözleşmesi (SLA) ve sınırlı garantiden çıkarılır. Bu nedenle, Özellikler üretim kullanımı için tasarlanmamıştır.
 
 Bu makalede, şirket içi veya herhangi bir bulut ortamında barındırılan OpenShift 4,3 kümelerine yönelik kapsayıcılar için Azure Izleyici 'nin özel önizlemesine nasıl etkinleştirileceği açıklanır. Ayrıca, Azure Red Hat OpenShift (ARO) 4,3 kümelerine yönelik izlemeyi etkinleştirmek için de aynı yönergeler geçerlidir.  
 

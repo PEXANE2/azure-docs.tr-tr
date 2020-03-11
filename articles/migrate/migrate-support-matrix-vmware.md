@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi 'nde VMware değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b887508fb8e422bd83aa9d13e42085d7a6bd2283
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362183"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080402"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -43,6 +43,7 @@ Azure geçişi: Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra mak
 **vCenter kimlik bilgileri** | Salt okuma erişimi olan ve konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıkların vCenter Server bir hesabı.
 **VM kimlik bilgileri** | Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
 **VMware araçları** | Keşif yapmak istediğiniz VM 'lerde VMware araçları yüklü ve çalışır olmalıdır. <br/> VMware araçları sürümünüz 9,10-10.2.0 arasındaysa, lütfen 10.2.0 'in ötesine yükseltdiğinizden emin olun.
+**PowerShell** | VM 'Ler sürüm 2,0 veya üzeri PowerShell 'i içermelidir
 **Bağlantı noktası erişimi** | Bulmayı istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
 **Limitler** | Uygulama bulma için, her gereç için 10000 'e kadar keşfedebilirsiniz. 
 
@@ -100,6 +101,7 @@ Bu seçenek şu anda önizleme aşamasındadır. [Daha fazla bilgi edinin](how-t
 **Linux hesabı** | Görselleştirmenin kök ayrıcalığına sahip bir kullanıcı hesabı olması gerekir.<br/><br/> Alternatif olarak, Kullanıcı hesabının/bin/netstat ve/bin/ls dosyalarında bu izinlere ihtiyacı vardır: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
 **VM aracıları** | VM 'lerde gerekli bir aracı yok.
 **VMware araçları** | VMware araçlarının, çözümlemek istediğiniz VM 'lerde yüklü ve çalışıyor olması gerekir. <br/> VMware araçları sürümünüz 9,10-10.2.0 arasındaysa, lütfen 10.2.0 'in ötesine yükseltdiğinizden emin olun.
+**PowerShell** | VM 'Ler sürüm 2,0 veya üzeri PowerShell 'i içermelidir
 **vCenter kimlik bilgileri** | Salt okuma erişimi olan ve konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıkların vCenter Server bir hesabı.
 **Bağlantı noktası erişimi** | Çözümlemek istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
 

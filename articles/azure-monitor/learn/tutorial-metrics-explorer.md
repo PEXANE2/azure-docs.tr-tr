@@ -2,17 +2,16 @@
 title: Öğretici-Azure Izleyici 'de ölçüm grafiği oluşturma
 description: Azure Ölçüm Gezgini ile ilk ölçüm grafiğinizi oluşturmayı öğrenin.
 author: bwren
-services: azure-monitor
+ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
-ms.date: 12/16/2019
-ms.author: bwren
-ms.openlocfilehash: be4f026ba20ce1582f5626ec7483740831c25c1a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/09/2020
+ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661473"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082821"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Öğretici: Azure Izleyici 'de ölçüm grafiği oluşturma
 Ölçüm değerleri, ölçüm değerlerinden grafikler oluşturmanıza, eğilimleri görsel olarak ilişkilendirmenize ve ölçüm değerlerinde ani artışları ve DIP 'leri araştırmanıza olanak tanıyan Azure portal Azure Izleyici 'nin bir özelliğidir. Azure kaynaklarınızın sistem durumunu ve kullanımını araştırmak veya özel ölçülerden grafikler çizmek için ölçüm gezginini kullanın. 
@@ -23,6 +22,10 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Grafik çizmek istediğiniz bir ölçüm seçin
 > * Farklı ölçüm değerleri toplamaları gerçekleştirin
 > * Grafik için zaman aralığını ve ayrıntı düzeyini değiştirme
+
+Aşağıda, bu makalede özetlenen yordamdan daha kapsamlı bir senaryo gösteren bir video verilmiştir. Ölçümler hakkında yeni bir durumda olduğunuzda, önce bu makaleyi okuyup daha sonra daha fazla ayrıntı görmek için videoyu görüntülemenizi öneririz. 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
 ## <a name="prerequisites"></a>Önkoşullar
 

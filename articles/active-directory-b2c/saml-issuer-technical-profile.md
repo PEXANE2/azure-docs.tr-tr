@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f038868e80b600c805a1f33a54f9d0032e81dab8
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933199"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967263"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde SAML belirteci veren için teknik profil tanımlama
 
@@ -70,6 +70,12 @@ CryptographicKeys öğesi aşağıdaki öznitelikleri içerir:
 ## <a name="session-management"></a>Oturum yönetimi
 
 Bağlı olan taraf uygulaması arasında SAML oturumlarını Azure AD B2C yapılandırmak için, `UseTechnicalProfileForSessionManagement` öğesinin özniteliği, [Samlssosessionprovider](custom-policy-reference-sso.md#samlssosessionprovider) SSO oturumuna başvuru.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+SAML verenin teknik profilini kullanma örneği için aşağıdaki makaleye bakın:
+
+- [Azure AD B2C bir SAML uygulaması kaydetme](connect-with-saml-service-providers.md)
 
 
 

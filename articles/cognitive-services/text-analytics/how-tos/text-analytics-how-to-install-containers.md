@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 6e05dc2136211bcd15a9f0583358b05ccbf96f5a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 65033f9b6599d690b1097b4b78aa01148a40fc39
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383156"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037514"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
 
@@ -24,7 +24,10 @@ Kapsayıcılar, kendi ortamınızda metin analitik API 'Leri çalıştırmanız�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!IMPORTANT]
+> Ücretsiz hesap, ayda 5.000 işlem ile sınırlıdır ve kapsayıcılar için yalnızca **ücretsiz** ve **Standart** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">fiyatlandırma katmanları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> geçerlidir. İşlem isteği ücretleri hakkında daha fazla bilgi için bkz. [veri limitleri](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Metin Analizi kapsayıcılarından herhangi birini çalıştırmak için konak bilgisayar ve kapsayıcı ortamları olmalıdır.
 
@@ -48,15 +51,15 @@ Metin analizi kapsayıcıları kullanmadan önce aşağıdaki gereksinimleri kar
 
 Aşağıdaki tabloda açıklanmıştır en düşük ve önerilen CPU çekirdekleri, en az 2.6 gigahertz (GHz) veya daha hızlı ve her bir metin analizi kapsayıcısı için ayrılacak gigabayt (GB) bellek.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-# <a name="language-detectiontablanguage"></a>[Dil Algılama](#tab/language)
+# <a name="language-detection"></a>[Dil Algılama](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Yaklaşım Analizi](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
@@ -71,15 +74,15 @@ Aşağıdaki tabloda açıklanmıştır en düşük ve önerilen CPU çekirdekle
 
 Metin Analizi için kapsayıcı görüntüleri Microsoft Container Registry kullanılabilir.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-# <a name="language-detectiontablanguage"></a>[Dil Algılama](#tab/language)
+# <a name="language-detection"></a>[Dil Algılama](#tab/language)
 
 [!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Yaklaşım Analizi](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
@@ -89,15 +92,15 @@ Metin Analizi için kapsayıcı görüntüleri Microsoft Container Registry kull
 
 ### <a name="docker-pull-for-the-text-analytics-containers"></a>Metin Analizi kapsayıcıları için Docker Pull
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[Dil Algılama](#tab/language)
+# <a name="language-detection"></a>[Dil Algılama](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Yaklaşım Analizi](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -116,15 +119,15 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 `docker run` komut [örnekleri](../text-analytics-resource-container-config.md#example-docker-run-commands) mevcuttur.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Anahtar İfade Ayıklama](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[Dil Algılama](#tab/language)
+# <a name="language-detection"></a>[Dil Algılama](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Yaklaşım Analizi](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
