@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484732"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357864"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Işlevleri bağlama uzantılarını kaydetme
 
@@ -26,10 +26,10 @@ Aşağıdaki tablo, bağlamaları ne zaman ve nasıl kaydedeceğinizi gösterir.
 
 | Geliştirme ortamı |Kayıt<br/> 1\. x Işlevleri içinde  |Kayıt<br/> 2\. x Işlevleri  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure portalı|Automatic|Automatic|
-|Non-.NET dilleri veya yerel Azure Core araçları geliştirme|Automatic|[Azure Functions Core Tools ve uzantı paketleri kullanma](#extension-bundles)|
+|Azure portalı|Otomatik|Otomatik|
+|Non-.NET dilleri veya yerel Azure Core araçları geliştirme|Otomatik|[Azure Functions Core Tools ve uzantı paketleri kullanma](#extension-bundles)|
 |C#Visual Studio kullanarak sınıf kitaplığı|[NuGet araçlarını kullanma](#vs)|[NuGet araçlarını kullanma](#vs)|
-|C#Visual Studio Code kullanarak sınıf kitaplığı|Yok|[.NET Core CLI kullan](#vs-code)|
+|C#Visual Studio Code kullanarak sınıf kitaplığı|YOK|[.NET Core CLI kullan](#vs-code)|
 
 ## <a name="extension-bundles"></a>Yerel geliştirme için uzantı paketleri
 

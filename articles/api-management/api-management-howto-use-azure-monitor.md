@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028359"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359618"
 ---
 # <a name="monitor-published-apis"></a>Yayımlanan API’leri izleme
 
 Azure İzleyici ile Azure kaynaklarından gelen ölçüm ve günlükleri görselleştirebilir, sorgulayabilir, yönlendirebilir, arşivleyebilir ve bunlar üzerinde işlem uygulayabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Etkinlik günlüklerini görüntüleme
@@ -36,7 +36,7 @@ Aşağıdaki videoda, Azure İzleyici'yi kullanarak API Management’ı izleme i
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -189,11 +189,11 @@ API Management şu anda her bir girdi aşağıdaki şemayı içerecek şekilde t
 | durationMs | integer | Kısa süre sonra gönderilen istek sayısı dolduğunda, ağ geçidi tarafından alınan istek süresi (milisaniye). ClienTime, cacheTime ve backendTime bilgilerini içerir. |
 | callerIpAddress | string | İlk Ağ Geçidi çağıranın (bir aracı olabilir) IP adresi |
 | correlationId | string | API Management tarafından atanmış benzersiz http isteği tanımlayıcısı |
-| location | string | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
+| konum | string | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
 | httpStatusCodeCategory | string | Http yanıtı durum kodunun kategorisi: Başarılı (301 veya daha küçük ya da 304 ya da 307), Yetkisiz (401, 403, 429), Hatalı (400, 500 ve 600 arası), Diğer |
 | resourceId | string | /SUBSCRIPTIONS/\<aboneliğinin KIMLIĞI >/RESOURCEGROUPS/\<kaynak-grubu >/PROVIDERS/MICROSOFTAPI Management kaynağı. ICLAIMANA/HIZMET/\<adı > |
-| properties | object | Geçerli isteğin özellikleri |
-| method | string | Gelen isteğin HTTP yöntemi |
+| özellikler | object | Geçerli isteğin özellikleri |
+| yöntem | string | Gelen isteğin HTTP yöntemi |
 | url | string | Gelen isteğin URL’si |
 | clientProtocol | string | Gelen isteğin HTTP protokolü sürümü |
 | responseCode | integer | Bir istemciye gönderilen HTTP yanıtının durum kodu |
@@ -216,7 +216,7 @@ API Management şu anda her bir girdi aşağıdaki şemayı içerecek şekilde t
 | LastError | object | Son istek işleme hatası | 
 | elapsed | integer | Ağ geçidinin isteği aldığı ve hatanın gerçekleştiği sırada geçen milisaniye sayısı | 
 | source | string | İlke veya işleme iç işleyicisinin adı hataya neden oldu | 
-| scope | string | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
+| kapsam | string | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
 | section | string | Hataya neden olan ilkeyi içeren ilke belgesinin bölümü | 
 | reason | string | Hata nedeni | 
 | message | string | Hata iletisi | 

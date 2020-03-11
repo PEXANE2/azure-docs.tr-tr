@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226556"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358043"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Işlevleri Tetikleyicileri ve bağlamaları kavramları
 
@@ -29,7 +29,7 @@ Farklı işlevleri nasıl uygulayabileceğinizi gösteren aşağıdaki örnekler
 | Örnek senaryo | Tetikleyici | Giriş bağlama | Çıkış bağlama |
 |-------------|---------|---------------|----------------|
 | Başka bir kuyruğa yazmak için bir işlev çalıştıran yeni bir kuyruk iletisi ulaştı. | Sıra<sup>*</sup> | *Seçim* | Sıra<sup>*</sup> |
-|Zamanlanan bir iş BLOB depolama içeriğini okur ve yeni bir Cosmos DB belgesi oluşturur. | Zamanlayıcı | Blob Depolama | Cosmos DB |
+|Zamanlanan bir iş BLOB depolama içeriğini okur ve yeni bir Cosmos DB belgesi oluşturur. | Zamanlayıcı | Blob Storage | Cosmos DB |
 |Event Grid, blob depolamadan bir görüntüyü okumak için ve Cosmos DB bir e-posta göndermek için kullanılır. | Event Grid | BLOB depolama ve Cosmos DB | SendGrid |
 | Excel sayfasını güncelleştirmek için Microsoft Graph kullanan bir Web kancası. | HTTP | *Seçim* | Microsoft Graph |
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768166"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376305"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
 Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Office 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
@@ -123,7 +123,7 @@ Etki alanı filtresini ayarlamak için aşağıdaki adımları uygulayın:
 Etki alanı filtresini ayarlamak için aşağıdaki adımları uygulayın:
 
 1.  Azure AD Connect Sihirbazı 'nı başlatın
-2.  **Yapılandır**'a tıklayın.
+2.  **Yapılandır**'ı tıklayın.
 3.  **Eşitleme seçeneklerini Özelleştir** ' i seçin ve **İleri**' ye tıklayın.
 4.  Azure AD kimlik bilgilerinizi girin
 5.  **Bağlı dizinler** ekranında **İleri**' ye tıklayın.
@@ -140,7 +140,7 @@ Etki alanı filtrenizi güncelleştirdiyseniz, çalıştırma profillerini de g�
     * Tam eşitleme
     * Delta Içeri aktarma
     * Delta eşitleme
-    * Dışarı Aktar
+    * Dışarı Aktarma
 3. Her profil için **eklenen** ve **kaldırılan** etki alanlarını ayarlayın.
     1. Her beş profilin her biri için, **eklenen** her etki alanı için aşağıdaki adımları uygulayın:
         1. Çalıştır profilini seçin ve **yeni adım**' a tıklayın.
@@ -279,7 +279,7 @@ Bu örnekte, yalnızca hem e-posta hem de userPrincipalName 'i olan kullanıcıl
 5. Açılır pencerede, kuralın bir kopyasını oluşturmak için **Evet** yanıtını verin.
 6. **Açıklama** sayfasında, **önceliği** 50 gibi kullanılmayan bir değerle değiştirin.
 7. Sol taraftaki **gezinmede kapsam filtresi** ' ne tıklayın ve ardından **yan tümce Ekle**' ye tıklayın. **Öznitelikte**, **posta**' yı seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına **\@contoso.com**yazın ve ardından **yan tümce Ekle**' ye tıklayın. **Özniteliğinde** **userPrincipalName**' i seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına **\@contoso.com**yazın.
-8. **Save (Kaydet)** düğmesine tıklayın.
+8. **Kaydet** düğmesine tıklayın.
 9. Yapılandırmayı gerçekleştirmek için **tam eşitleme**çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
 
 ## <a name="apply-and-verify-changes"></a>Değişiklikleri Uygula ve Doğrula

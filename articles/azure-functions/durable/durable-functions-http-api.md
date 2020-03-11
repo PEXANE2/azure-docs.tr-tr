@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769634"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356007"
 ---
 # <a name="http-api-reference"></a>HTTP API başvurusu
 
@@ -32,7 +32,7 @@ Sonraki birkaç bölümde uzantı tarafından desteklenen belirli HTTP API 'Leri
 
 Belirtilen Orchestrator işlevinin yeni bir örneğini yürütmeye başlar.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -56,8 +56,8 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan              | Parametre türü  | Açıklama |
 |--------------------|-----------------|-------------|
-| **`functionName`** | URL             | Başlatılacak Orchestrator işlevinin adı. |
-| **`instanceId`**   | URL             | İsteğe bağlı parametre. Orchestration örneğinin KIMLIĞI. Belirtilmemişse, Orchestrator işlevi rastgele bir örnek KIMLIĞIYLE başlayacaktır. |
+| **`functionName`** | {1&gt;URL&lt;1}             | Başlatılacak Orchestrator işlevinin adı. |
+| **`instanceId`**   | {1&gt;URL&lt;1}             | İsteğe bağlı parametre. Orchestration örneğinin KIMLIĞI. Belirtilmemişse, Orchestrator işlevi rastgele bir örnek KIMLIĞIYLE başlayacaktır. |
 | **`{content}`**    | İçerik isteme | İsteğe bağlı. JSON biçimli Orchestrator işlev girişi. |
 
 ### <a name="response"></a>Yanıt
@@ -116,7 +116,7 @@ Zaman uyumsuz HTTP yoklama düzeniyle ilgili daha fazla bilgi için bkz. [http z
 
 Belirtilen bir düzenleme örneğinin durumunu alır.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -146,7 +146,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan                   | Parametre türü  | Açıklama |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | URL             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**        | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
 | **`showInput`**         | Sorgu dizesi    | İsteğe bağlı parametre. `false`olarak ayarlanırsa, işlev girişi yanıt yüküne dahil edilmez.|
 | **`showHistory`**       | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa Orchestration yürütme geçmişi yanıt yüküne dahil edilir.|
 | **`showHistoryOutput`** | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa, işlev çıkışları Orchestration yürütme geçmişine dahil edilir.|
@@ -240,7 +240,7 @@ Ayrıca, ' örnek durumunu Al ' isteğinden `instanceId` kaldırarak tüm örnek
 Anımsanması gereken tek şey `connection` ve `code` isteğe bağlıdır. İşlev üzerinde anonim kimlik doğrulaması varsa `code` gerekli değildir.
 AzureWebJobsStorage uygulama ayarında tanımlı dışında farklı bir depolama bağlantı dizesi kullanmak istemiyorsanız, bağlantı sorgusu dize parametresini güvenle yoksayabilirsiniz.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -274,7 +274,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan                   | Parametre türü  | Açıklama |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | URL             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**        | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
 | **`showInput`**         | Sorgu dizesi    | İsteğe bağlı parametre. `false`olarak ayarlanırsa, işlev girişi yanıt yüküne dahil edilmez.|
 | **`showHistory`**       | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa Orchestration yürütme geçmişi yanıt yüküne dahil edilir.|
 | **`showHistoryOutput`** | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa, işlev çıkışları Orchestration yürütme geçmişine dahil edilir.|
@@ -348,7 +348,7 @@ Sonraki istek üstbilgisinde devamlılık belirteci değerini ayarlarsanız, son
 
 Belirtilen bir düzenleme örneği için geçmişi ve ilgili yapıtları siler.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -372,7 +372,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**  | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
 
 ### <a name="response"></a>Yanıt
 
@@ -399,7 +399,7 @@ Aşağıdaki HTTP durum kodu değerleri döndürülebilir.
 
 Ayrıca, ' tek örnekli geçmiş ' isteğinden `{instanceId}` kaldırarak bir görev hub 'ında bulunan birden çok örnek için geçmişi ve ilgili yapıtları silebilirsiniz. Örnek geçmişini seçmeli olarak temizlemek için ' tüm örnekleri al ' isteğinde açıklanan filtreleri kullanın.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -461,7 +461,7 @@ Aşağıdaki HTTP durum kodu değerleri döndürülebilir.
 
 Çalışan bir düzenleme örneğine bir olay bildirim iletisi gönderir.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -485,8 +485,8 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL             | Orchestration örneğinin KIMLIĞI. |
-| **`eventName`**   | URL             | Hedef düzenleme örneğinin beklediği olayın adı. |
+| **`instanceId`**  | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
+| **`eventName`**   | {1&gt;URL&lt;1}             | Hedef düzenleme örneğinin beklediği olayın adı. |
 | **`{content}`**   | İçerik isteme | JSON biçimli olay yükü. |
 
 ### <a name="response"></a>Yanıt
@@ -514,7 +514,7 @@ Bu API 'nin yanıtları herhangi bir içerik içermiyor.
 
 Çalışan bir düzenleme örneğini sonlandırır.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -540,7 +540,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**  | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
 | **`reason`**      | Sorgu dizesi    | İsteğe bağlı. Orchestration örneğini sonlandırma nedeni. |
 
 ### <a name="response"></a>Yanıt
@@ -563,7 +563,7 @@ Bu API 'nin yanıtları herhangi bir içerik içermiyor.
 
 Hatalı düzenleme örneğini, en son başarısız işlemleri yeniden gerçekleştirerek çalışır duruma geri yükler.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -589,7 +589,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**  | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
 | **`reason`**      | Sorgu dizesi    | İsteğe bağlı. Orchestration örneğini yeniden sargı nedeni. |
 
 ### <a name="response"></a>Yanıt
@@ -615,7 +615,7 @@ Bu API 'nin yanıtları herhangi bir içerik içermiyor.
 > [!NOTE]
 > Dayanıklı varlıklar Dayanıklı İşlevler 2,0 ' den başlayarak kullanılabilir.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 HTTP isteği aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -631,8 +631,8 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`entityName`**  | URL             | Varlığın adı (türü). |
-| **`entityKey`**   | URL             | Varlığın anahtarı (benzersiz KIMLIĞI). |
+| **`entityName`**  | {1&gt;URL&lt;1}             | Varlığın adı (türü). |
+| **`entityKey`**   | {1&gt;URL&lt;1}             | Varlığın anahtarı (benzersiz KIMLIĞI). |
 | **`op`**          | Sorgu dizesi    | İsteğe bağlı. Çağrılacak Kullanıcı tanımlı işlemin adı. |
 | **`{content}`**   | İçerik isteme | JSON biçimli olay yükü. |
 
@@ -662,7 +662,7 @@ Başarılı bir HTTP isteği yanıtta içerik içermiyor. Başarısız bir HTTP 
 
 Belirtilen varlığın durumunu alır.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 HTTP isteği aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -701,7 +701,7 @@ GET /runtime/webhooks/durabletask/entities/Counter/steps
 
 Varlık adına veya son işlem tarihine göre birden çok varlık için sorgulama yapabilirsiniz.
 
-### <a name="request"></a>İste
+### <a name="request"></a>İstek
 
 HTTP isteği aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -720,7 +720,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan                       | Parametre türü  | Açıklama |
 |-----------------------------|-----------------|-------------|
-| **`entityName`**            | URL             | İsteğe bağlı. Belirtildiğinde, döndürülen varlıkların listesini varlık adlarıyla (büyük/küçük harfe duyarsız) filtreler. |
+| **`entityName`**            | {1&gt;URL&lt;1}             | İsteğe bağlı. Belirtildiğinde, döndürülen varlıkların listesini varlık adlarıyla (büyük/küçük harfe duyarsız) filtreler. |
 | **`fetchState`**            | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa, varlık durumu yanıt yüküne dahil edilir. |
 | **`lastOperationTimeFrom`** | Sorgu dizesi    | İsteğe bağlı parametre. Belirtildiğinde, belirtilen ıSO8601 zaman damgasından sonra işlemleri işleyen döndürülen varlıkların listesine filtre uygular. |
 | **`lastOperationTimeTo`**   | Sorgu dizesi    | İsteğe bağlı parametre. Belirtildiğinde, belirtilen ıSO8601 zaman damgasından önce işlemleri işleyen döndürülen varlıkların listesine filtre uygular. |

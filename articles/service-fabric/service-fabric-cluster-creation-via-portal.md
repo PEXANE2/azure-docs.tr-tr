@@ -4,16 +4,16 @@ description: Azure 'da Azure portal ve Azure Key Vault kullanarak güvenli Servi
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452311"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363390"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalında](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -68,7 +68,7 @@ Uygulama gereksinimlerinizi karşılamak için bir üretim kümesi oluşturmak b
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric kümesi kaynağını arayın
 
-[Azure Portal][azure-portal]’ında oturum açın.
+[Azure Portal][azure-portal] oturum açın.
 Yeni kaynak şablonu eklemek için **kaynak oluştur** ' a tıklayın. **Market** 'Teki Service Fabric kümesi şablonunu **her şey**için arayın.
 Listeden **Service Fabric kümesi** seçin.
 
@@ -221,7 +221,7 @@ Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanarak güven
 [CreateRG]: ./media/service-fabric-cluster-creation-via-portal/CreateRG.png
 [CreateNodeType]: ./media/service-fabric-cluster-creation-via-portal/NodeType.png
 [BasicSecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/BasicSecurityConfigs.PNG
-[CreateKeyVault]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault.PNG
+[Createkeykasası]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault.PNG
 [CreateKeyVault2]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault2.PNG
 [CreateKeyVault3]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault3.PNG
 [CreateKeyVault4]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault4.PNG

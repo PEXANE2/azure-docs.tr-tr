@@ -12,11 +12,11 @@ ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250962"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355096"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -672,8 +672,8 @@ Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 | Kta | Hizmet, dağıtım sürecinde. | Hayır |
 | Sağlıksız | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
 | Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
-| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
-| Sorunsuz | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
+| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Evet |
+| Sorunsuz | Hizmet sağlıklı ve uç nokta kullanılabilir. | Evet |
 
 ### <a id="notebookvm"></a>İşlem örneği Web hizmeti (geliştirme/test)
 
@@ -1034,7 +1034,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Bir paket oluşturduktan sonra, görüntüyü yerel Docker ortamınıza çekmek için `package.pull()` kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örnek: 
+Bir paket oluşturduktan sonra, görüntüyü yerel Docker ortamınıza çekmek için `package.pull()` kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örneğin: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

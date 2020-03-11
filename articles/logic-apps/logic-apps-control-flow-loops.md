@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791754"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358854"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemlerini veya işlem dizilerini yinelemek için döngüler oluşturma
 
@@ -191,7 +191,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
    | Özellik | Değer | Açıklama |
    | -------- | ----- | ----------- |
-   | **Adı** | Sınır | Değişkeninin adı | 
+   | **Ad** | Sınır | Değişkeninin adı | 
    | **Tür** | Tamsayı | Değişkeninizin veri türü | 
    | **Değer** | 0 | Değişkeninizin başlangıç değeri | 
    |||| 
@@ -232,7 +232,7 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
       | Özellik | Değer | Açıklama |
       | -------- | ----- | ----------- | 
-      | **Alıcı** | *\<e-posta adresi\@etki alanı >* | alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
+      | **Alıcı** | *\<e-posta adresi\@etki alanı >* | Alıcının e-posta adresi. Test etmek için kendi e-posta adresinizi kullanın. | 
       | **Konu** | "Limit" için geçerli değer **limit** | E-posta konusunu belirtin. Bu örnekte, **sınır** değişkenini eklediğinizden emin olun. | 
       | **Gövde** | <*e-posta-içerik*> | Göndermek istediğiniz e-posta iletisi içeriğini belirtin. Bu örnek için dilediğiniz metni girin. | 
       |||| 

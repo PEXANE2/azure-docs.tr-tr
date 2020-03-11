@@ -4,11 +4,11 @@ description: Aboneliğinizdeki kaynaklardan bir Azure Resource Manager şablonu 
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477479"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384996"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal bir şablona tek ve çoklu kaynak verme
 
@@ -115,7 +115,7 @@ Mevcut kaynakları dağıtmak için kullanılan şablonu dışarı aktarabilirsi
 
 1. **Şablon**seçin. Bu dağıtım için kullanılan şablon görüntülenir ve indirilmek üzere kullanılabilir.
 
-   ![Şablonu seçin](./media/export-template-portal/show-template-from-history.png)
+   ![Şablon seç](./media/export-template-portal/show-template-from-history.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

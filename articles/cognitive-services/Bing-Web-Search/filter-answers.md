@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111424"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381820"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Arama yanıtının içerdiği yanıtları filtreleme  
 
@@ -100,7 +100,7 @@ Bing, önceki yanıtta video ve haber sonuçları döndürmese de, video ve habe
 
 Tek bir API 'den sonuçları almak için `responseFilter` kullanmanız önerilmez. Tek bir Bing API 'den içerik istiyorsanız, bu API 'YI doğrudan çağırın. Örneğin, yalnızca görüntüleri almak için Resim Arama API uç noktasına, `https://api.cognitive.microsoft.com/bing/v7.0/images/search` veya diğer [görüntü](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) uç noktalarından birine bir istek gönderin. Tek bir API 'nin çağrılması yalnızca performans nedenleriyle değil önemlidir, ancak içeriğe özgü API 'Ler daha zengin sonuçlar sunar. Örneğin, sonuçları filtrelemek için Web Araması API 'SI tarafından kullanılamayan filtreler kullanabilirsiniz.  
 
-### <a name="site"></a>bölgesi
+### <a name="site"></a>Bölgesi
 
 Belirli bir etki alanından arama sonuçları almak için sorgu dizesine `site:` sorgu parametresini ekleyin.  
 
@@ -111,7 +111,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > Sorguya bağlı olarak, `site:` sorgu işlecini kullanırsanız, [Güvenli Arama](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) ayarından bağımsız olarak, yanıtın yetişkinlere yönelik içerik içerebileceği ihtimaline sahip olabilirsiniz. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.
 
-### <a name="freshness"></a>Yenilik
+### <a name="freshness"></a>İği
 
 Web yanıt sonuçlarını, Bing 'in belirli bir dönemde bulduğu web sayfalarıyla sınırlamak için, [yenilik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) sorgu parametresini şu büyük/küçük harf duyarsız değerlerden birine ayarlayın:
 

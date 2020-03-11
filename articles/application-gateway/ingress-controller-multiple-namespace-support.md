@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795552"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373482"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway Ingress denetleyicisi ile bir AKS kümesinde birden çok ad alanı desteğini etkinleştirme
 
@@ -23,7 +23,7 @@ Sürüm 0,7 itibariyle [Azure Application Gateway Kubernetes IngressController](
 
 AGIC 'nin 0,7 sürümü, Helm yapılandırmasındaki bir veya daha fazla farklı ad alanına açıkça değiştirilmediği sürece `default` ad alanını özel olarak gözlemlemeye devam eder (aşağıdaki bölümüne bakın).
 
-## <a name="enable-multiple-namespace-support"></a>Birden çok ad alanı desteğini etkinleştir
+## <a name="enable-multiple-namespace-support"></a>Birden çok ad alanı desteğini etkinleştirme
 Birden çok ad alanı desteğini etkinleştirmek için:
 1. [Helm-config. YAML](#sample-helm-config-file) dosyasını aşağıdaki yollarla değiştirin:
    - `watchNamespace` anahtarını tamamen [helk-config konumundan silin. YAML](#sample-helm-config-file) -agic tüm ad alanlarını gözlemleyecek
@@ -83,8 +83,8 @@ spec:
 
 İki giriş kaynağı, ilgili Kubernetes ad alanlarına yönlendirilmek için `www.contoso.com` trafiği talep ettiğinden, trafiğe yalnızca bir arka uç hizmet verebilir. AGIC, kaynaklardan biri için "ilk olarak ilk kez sunulan" temelinde bir yapılandırma oluşturur. Aynı anda iki giriş kaynağı oluşturulursa, alfabede daha önceki bir işlem öncelikli olur. Yukarıdaki örnekte yalnızca `production` giriş için ayarları oluşturabileceksiniz. Application Gateway, aşağıdaki kaynaklarla yapılandırılacak:
 
-  - Dinleyici: `fl-www.contoso.com-80`
-  - Yönlendirme kuralı: `rr-www.contoso.com-80`
+  - Dinleyici: `fl- www.contoso.com-80`
+  - Yönlendirme kuralı: `rr- www.contoso.com-80`
   - Arka uç havuzu: `pool-production-contoso-web-service-80-bp-80`
   - HTTP ayarları: `bp-production-contoso-web-service-80-80-websocket-ingress`
   - Durum araştırması: `pb-production-contoso-web-service-80-websocket-ingress`

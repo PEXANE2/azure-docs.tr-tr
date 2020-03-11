@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 365c228edd97ffcd02b86508deff4272365447f6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 99083cd08db98a6d6ac56d4cf55aaf9d0e64e2b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672149"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362330"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı, tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)tarafından izlenen sanal makineler arasında kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, toplanan verileri Azure Izleyici 'deki Log Analytics çalışma alanınıza, ayrıca bir izleme çözümünde tanımlanan tüm benzersiz günlüklere veya ölçümlere gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](/azure/security-center/)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler.
@@ -101,7 +101,7 @@ Bu bölümde, desteklenen Linux dağıtımları hakkında ayrıntılar sağlar.
 Ağustos 2018 tarihinden sonraki sürümleri ile başlayarak, aşağıdaki değişiklikleri destek modelimizi yapıyoruz:  
 
 * Yalnızca sunucu sürümleri desteklenir, istemci değil.  
-* Azure Linux tarafından onaylanan yeni [kaldırmalar](../../virtual-machines/linux/endorsed-distros.md) sürümleri her zaman desteklenmektedir.  
+* Azure Linux tarafından onaylanan bazı [destekler](../../virtual-machines/linux/endorsed-distros.md)için odak desteği. Azure Linux tarafından onaylama ve Log Analytics Linux Aracısı için desteklenmekte olan yeni bir delinler/sürüm arasında bazı gecikme olabileceğini unutmayın.
 * Listelenen her ana sürümünün tüm ikincil sürümleri desteklenir.
 * Üreticinin destek bitiş tarihi geçmiş sürümleri desteklenmez.  
 * AMI yeni sürümleri desteklenmez.  
@@ -151,11 +151,11 @@ Linux ve Windows için aracı, TCP bağlantı noktası 443 üzerinden Azure Izle
 ## <a name="network-firewall-requirements"></a>Ağ güvenlik duvarı gereksinimleri
 Aşağıdaki bilgiler, Linux ve Windows aracısının Azure Izleyici günlükleriyle iletişim kurması için gereken proxy ve güvenlik duvarı yapılandırma bilgilerini listeler.  
 
-|Aracı Kaynağı|Bağlantı Noktaları |Yön |HTTPS denetlemesini atlama|
+|Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Yes |  
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Evet |  
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
@@ -174,9 +174,9 @@ Linux Aracısı için ara sunucu, yükleme sırasında veya proxy. conf yapılan
 |--------|-------------|
 |Protokol | https |
 |kullanıcı | Ara sunucu kimlik doğrulaması için isteğe bağlı bir kullanıcı adı |
-|password | Proxy kimlik doğrulaması için isteğe bağlı parola |
+|parola | Proxy kimlik doğrulaması için isteğe bağlı parola |
 |proxyhost | Adresi veya FQDN proxy sunucusu/Log Analytics ağ geçidi |
-|port | Proxy sunucusu/Log Analytics ağ geçidi için isteğe bağlı bağlantı noktası numarası |
+|bağlantı noktası | Proxy sunucusu/Log Analytics ağ geçidi için isteğe bağlı bağlantı noktası numarası |
 
 Örneğin, `https://user01:password@proxy01.contoso.com:30443`
 

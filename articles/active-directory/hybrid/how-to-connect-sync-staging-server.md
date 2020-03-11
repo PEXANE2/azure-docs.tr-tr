@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect eşitleme: İşletimsel görevler ve önemli noktalar | Microsoft Docs'
+title: 'Azure AD Connect eşitleme: Işletimsel görevler ve önemli noktalar | Microsoft Docs'
 description: Bu konuda Azure AD Connect eşitleme ve bu bileşeni çalıştırmaya hazırlanma işlemleri açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900051"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376205"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Hazırlama sunucusu ve olağanüstü durum kurtarma
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: hazırlama sunucusu ve olağanüstü durum kurtarma
 Hazırlama modundaki bir sunucu ile, yapılandırma üzerinde değişiklik yapabilir ve sunucuyu etkin hale gelmeden önce değişiklikleri önizleyebilirsiniz. Ayrıca, bu değişiklikleri üretim ortamınızda yapmadan önce tüm değişikliklerin beklendiğini doğrulamak üzere tam içeri aktarma ve tam eşitleme çalıştırmanızı sağlar.
 
 ## <a name="staging-mode"></a>Hazırlama modu
@@ -71,10 +71,10 @@ Birincil sunucuda özel değişiklikler yaptıysanız ve yapılandırmayı hazı
 
 Artık Azure AD 'ye ve şirket içi AD 'ye dışarı aktarma değişiklikleri hazırladınız (Exchange karma dağıtımı kullanıyorsanız). Sonraki adımlar, dizinlere dışa aktarma işlemine başlamadan önce nelerin değişmekte olduğunu incelemenizi sağlar.
 
-#### <a name="verify"></a>Doğrula
-1. Bir komut istemi başlatın ve şuraya gidin`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Çalıştırın: `csexport "Name of Connector" %temp%\export.xml /f:x`Bağlayıcının adı, eşitleme hizmeti ' nde bulunabilir. Azure AD için "contoso.com – AAD" benzeri bir ada sahiptir.
-3. Çalıştırın: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`% TEMP% adlı, Export. csv adlı, Microsoft Excel 'de incelenebilir bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
+#### <a name="verify"></a>Doğrulama
+1. Bir komut istemi başlatın ve `%ProgramFiles%\Microsoft Azure AD Sync\bin` gidin
+2. Çalıştır: `csexport "Name of Connector" %temp%\export.xml /f:x` bağlayıcı adı eşitleme hizmetinde bulunabilir. Azure AD için "contoso.com – AAD" benzeri bir ada sahiptir.
+3. Çalıştır: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`% TEMP% adlı, Microsoft Excel 'de incelenebilir Export. csv adlı bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 4. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklenene kadar bu adımları yeniden çalıştırın (Içeri ve dışarı ve Doğrula).
 
 **Export. csv dosyasını anlama** Dosyanın çoğu kendi kendine açıklayıcıdır. İçeriği anlamak için bazı kısaltmalar:
@@ -82,9 +82,9 @@ Artık Azure AD 'ye ve şirket içi AD 'ye dışarı aktarma değişiklikleri ha
 * AMODT – öznitelik değiştirme türü. Öznitelik düzeyindeki işlemin bir Add, Update veya delete olup olmadığını gösterir.
 
 **Ortak tanımlayıcıları al** Export. csv dosyası dışarı aktarılmek üzere olan tüm değişiklikleri içerir. Her satır, bağlayıcı alanındaki bir nesnenin değişikliğine karşılık gelir ve nesne DN özniteliğiyle tanımlanır. DN özniteliği, bağlayıcı alanındaki bir nesneye atanan benzersiz bir tanıtıcıdır. Export. csv dosyasında analiz edilecek çok sayıda satır/değişiklik olduğunda, değişikliklerin yalnızca DN özniteliğine göre hangi nesneleri olduğunu anlamak zor olabilir. Değişiklikleri çözümleme işlemini basitleştirmek için csanalyzer. ps1 PowerShell betiğini kullanın. Betik, nesnelerin ortak tanımlayıcılarını (örneğin displayName, userPrincipalName) alır. Betiği kullanmak için:
-1. PowerShell betiğini [CSAnalyzer](#appendix-csanalyzer) bölümünden adlı `csanalyzer.ps1`bir dosyaya kopyalayın.
+1. PowerShell betiğini [CSAnalyzer](#appendix-csanalyzer) bölümünden `csanalyzer.ps1`adlı bir dosyaya kopyalayın.
 2. Bir PowerShell penceresi açın ve PowerShell betiğini oluşturduğunuz klasöre gidin.
-3. Şunu çalıştırın `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`:.
+3. Şunu çalıştırın: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
 4. Artık, Microsoft Excel 'de incelenebilir **processedusers1. csv** adlı bir dosyanız vardır. Dosyanın DN özniteliğinden ortak tanımlayıcılara (örneğin, displayName ve userPrincipalName) bir eşleme sağladığını unutmayın. Şu anda, verilmek üzere olan gerçek öznitelik değişikliklerini içermez.
 
 #### <a name="switch-active-server"></a>Etkin sunucuyu Değiştir
@@ -126,7 +126,7 @@ Azure AD Connect ile birlikte gelen SQL Server Express kullanmıyorsanız, SQL S
 Sürüm 1.1.524.0 ' deki Azure AD Connect SQL AOA desteği eklenmiştir. Azure AD Connect yüklemeden önce SQL AOA 'i etkinleştirmeniz gerekir. Yükleme sırasında, sağlanan SQL örneğinin SQL AOA için etkinleştirilip etkinleştirilmediğini algılar Azure AD Connect. SQL AOA etkinleştirilmişse, SQL AOA zaman uyumlu çoğaltma veya zaman uyumsuz çoğaltma kullanacak şekilde yapılandırıldıysa Azure AD Connect daha fazla şekil bulabilirsiniz. Kullanılabilirlik grubu dinleyicisini ayarlarken RegisterAllProvidersIP özelliğini 0 olarak ayarlamanız önerilir. Bunun nedeni, Azure AD Connect Şu anda SQL 'e bağlanmak için SQL Native Client kullandığından SQL Native Client MultiSubNetFailover özelliğinin kullanımını desteklemez.
 
 ## <a name="appendix-csanalyzer"></a>Ek CSAnalyzer
-Bu betiği nasıl [](#verify) kullanacağınızı öğrenmek için bölümüne bakın.
+Bu betiği nasıl kullanacağınızı öğrenmek [için bölümüne bakın](#verify) .
 
 ```
 Param(
@@ -270,5 +270,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>Sonraki adımlar
 **Genel Bakış konuları**  
 
-* [Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect eşitleme: eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)  
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)  

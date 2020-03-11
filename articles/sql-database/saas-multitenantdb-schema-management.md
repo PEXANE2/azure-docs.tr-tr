@@ -12,11 +12,11 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822113"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359120"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Parçalı çok kiracılı SQL veritabanlarını kullanan bir SaaS uygulamasında şemayı yönetme
 
@@ -32,7 +32,7 @@ Bu öğretici aşağıdaki iki senaryoyu araştırır:
 
 Azure SQL veritabanı 'nın [elastik işler](elastic-jobs-overview.md) özelliği, bu işlemleri kiracı veritabanları arasında yürütmek için kullanılır. İşler ' şablon ' Kiracı veritabanı üzerinde de çalışır. Bu şablon veritabanı, Wingtip biletleri örnek uygulamasında yeni bir kiracı veritabanı sağlamak için kopyalanır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Bir iş Aracısı oluşturun.
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Tüm kiracı veritabanlarındaki başvuru verilerini güncelleştirin.
 > * Tüm kiracı veritabanlarındaki bir tabloda bir dizin oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Wingtip biletleri çok kiracılı veritabanı uygulaması zaten dağıtılmalıdır:
     - Yönergeler için, Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını tanıtan ilk öğreticiye bakın:<br />[Azure SQL veritabanı 'nı kullanan, parçalı bir çok kiracılı uygulamayı dağıtın ve araştırın](saas-multitenantdb-get-started-deploy.md).
@@ -88,7 +88,7 @@ Her kiracının veritabanı, **Venuetype** tablosunda bir mekan türleri kümesi
 İlk olarak, her kiracı veritabanına dahil olan mekan türlerini gözden geçirin. SQL Server Management Studio (SSMS) içindeki kiracı veritabanlarından birine bağlanın ve Venuetype tablosunu inceleyin.  Bu tabloyu, veritabanı sayfasından erişilen Azure portal sorgu düzenleyicisinde da sorgulayabilirsiniz.
 
 1. SSMS 'yi açın ve kiracı sunucusuna bağlanın: *tenants1-DPT-&lt;user&gt;. Database.Windows.net*
-1. *Otocycle yarış* ve *yüzme kulübünün* **Şu anda dahil** edilmediğini onaylamak için *tenants1-DPT-&lt;User&gt;* Server 'daki *contosoconcerthall* veritabanına gidin ve *venuetype 'ı sorgulayın* tablo.
+1. *Otocycle yarış* ve *yüzme kulübünün* **Şu anda dahil** edilmediğini onaylamak için *tenants1-DPT-&lt;User&gt;* Server 'daki *contosoconcerthall* veritabanına gidin ve *venuetype* tablosunu sorgulayın.
 
 
 

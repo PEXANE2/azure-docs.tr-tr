@@ -12,11 +12,11 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818974"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382315"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Bulutta yeni DBA: Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanlarınızı yönetme
 
@@ -67,7 +67,7 @@ Azure SQL DB 'de yedeklemeler oluşturmayın ve bu, ' ın olması gerekmez. SQL 
 |Hizmet katmanı|Bekletme süresi (gün)|
 |---|:---:|
 |Temel|7|
-|Standart|35|
+|Standard|35|
 |Premium|35|
 |||
 
@@ -126,7 +126,7 @@ Elden çıkarmada, uygulamanız için en uygun bağlantı kuruluşunu sağlamak 
 - VNet hizmet uç noktaları
 - Ayrılmış IP’ler
 
-#### <a name="firewall"></a>Güvenlik duvarı
+#### <a name="firewall"></a>Güvenlik Duvarı
 
 Bir güvenlik duvarı SQL veritabanı sunucunuza yalnızca belirli varlıkların erişmesine izin vererek, dış bir varlıktan sunucunuza erişimi engeller. Varsayılan olarak, SQL veritabanı sunucusu içindeki tüm bağlantılara ve veritabanlarına, diğer Azure hizmetlerinden gelen bağlantılar dışında izin verilmez. Bir güvenlik duvarı kuralıyla, bu bilgisayarın IP adresine güvenlik duvarı üzerinden izin vererek, yalnızca onayladığınız varlıklara (örneğin, bir geliştirici makinesi) erişimi açabilirsiniz. Ayrıca, SQL veritabanı sunucusuna erişime izin vermek istediğiniz bir IP aralığı belirtmenize olanak tanır. Örneğin, kuruluşunuzdaki geliştirici makinesi IP adresleri, güvenlik duvarı ayarları sayfasında bir Aralık belirtilerek bir kerede eklenebilir.
 
@@ -138,7 +138,7 @@ Varsayılan olarak, SQL veritabanınız "Azure hizmetlerinin sunucuya erişmesin
 
 Hizmet uç noktaları (o), kritik Azure kaynaklarınızı yalnızca Azure 'daki özel sanal ağınıza sunmanıza olanak tanır. Bunu yaparak kaynaklarınıza genel erişimi ortadan kaldırabilirsiniz. Azure ile sanal ağınız arasındaki trafik Azure omurga ağında kalır. Zorunlu olmadan Zorlamalı tünel paket yönlendirmesi edinirsiniz. Sanal ağınız, internet trafiğini kuruluşunuza ve Azure hizmet trafiğine aynı rotaya göre devam etmeye zorlar. Hizmet uç noktaları ile, paketlerin sanal ağınızdan Azure omurga ağı üzerindeki hizmetine doğrudan akışı nedeniyle bunu iyileştirebilirsiniz.
 
-![VNet hizmet uç noktaları](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
+![Sanal ağ hizmet uç noktaları](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Ayrılmış IP’ler
 
@@ -173,7 +173,7 @@ Hassas verilerinizi uçuş sırasında ve bekleyen bir şekilde korumak için SQ
 |**Şifreleme kapsamı**|Uçtan uca|Rest verileri|
 |**Veritabanı sunucusu hassas verilere erişebilir**|Hayır|Evet, çünkü şifreleme bekleyen veriler için|
 |**İzin verilen T-SQL işlemleri**|Eşitlik karşılaştırması|Tüm T-SQL Surface alanı kullanılabilir|
-|**Özelliği kullanmak için gereken uygulama değişiklikleri**|En az|Çok küçük|
+|**Özelliği kullanmak için gereken uygulama değişiklikleri**|En Az|Çok küçük|
 |**Şifreleme ayrıntı düzeyi**|Sütun düzeyi|Veritabanı düzeyi|
 ||||
 
@@ -222,7 +222,7 @@ Express Route Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği
 
 - [Express Route 'a giriş](../expressroute/expressroute-introduction.md)
 - [Önkoşullar](../expressroute/expressroute-prerequisites.md)
-- [İş akışları](../expressroute/expressroute-workflows.md)
+- [İş Akışları](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL veritabanı, herhangi bir düzenleme gereksinimleriyle uyumludur ve kendi Kuruluşumun uyumluluğuyla nasıl yardımcı olur?
 
@@ -260,7 +260,7 @@ Bu Analizi "Advisor" bölümünde da görüntüleyebilirsiniz:
 
 SQL veritabanında, performansı izlemek ve uygun şekilde ayarlamak için platformun akıllı öngörülerini kullanabilirsiniz. Aşağıdaki yöntemleri kullanarak SQL veritabanı 'nda performans ve kaynak kullanımını izleyebilirsiniz:
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, veritabanını seçip Genel Bakış bölmesinde grafiğe tıklayarak bir veritabanının kullanımını gösterir. Grafiği CPU yüzdesi, DTU yüzdesi, veri GÇ yüzdesi, oturum yüzdesi ve veritabanı boyutu yüzdesi gibi birden çok ölçümü gösterecek şekilde değiştirebilirsiniz.
 
@@ -288,7 +288,7 @@ Son 14 günün geçmişini döndürmek için son saatten ve [sys. resource_stats
 
 Sorgu ve veritabanı performans sorunlarını tanılamak için kullanacağınız sorun giderme tekniklerinin büyük bir bölümü aynı kalır. Tüm aynı SQL Server altyapısı bulutu güçlendirir. Ancak platform-Azure SQL DB, ' Intelligence ' içinde yerleşik olarak bulunur. Performans sorunlarını daha kolay bir şekilde gidermenize ve tanılamanıza yardımcı olabilir. Ayrıca, bu düzeltme eylemlerinin bazılarını sizin adınıza gerçekleştirebilir ve bazı durumlarda onları otomatik olarak yeniden düzeltir.
 
-Performans sorunlarını gidermek için yaklaşım, [sorgu performansı içgörüleri (QPı)](sql-database-query-performance.md) ve [veritabanı Danışmanı](sql-database-advisor.md) gibi akıllı özellikleri kullanarak önemli ölçüde yararlanabilir ve bu nedenle metodolojide farklılık farklılık gösterir Bu durum – artık, bir yandan sorunu gidermenize yardımcı olabilecek önemli ayrıntıları ortaya çıkarmak için el ile yapılan taşlara gerek kalmaz. Platform, sizin için sabit bir iş yapar. Yani QPı olan bir örnek. QPı ile, sorgu düzeyine kadar tüm şekilde ayrıntıya gidebilir ve geçmiş eğilimlerini arayabilir ve tam olarak sorgu ne zaman gerilediğini belirleyebilirsiniz. Veritabanı Danışmanı, genel performansında eksik dizinler, dizin bırakma, sorgularınızın parametreleştirilmesi gibi genel performansı artırmanıza yardımcı olabilecek şeylere yönelik öneriler sağlar.
+Performans sorunlarını giderme yaklaşımınız, [sorgu performansı içgörüleri (QPı)](sql-database-query-performance.md) ve [veritabanı Danışmanı](sql-database-advisor.md) gibi akıllı özellikleri kullanarak önemli ölçüde faydalanabilir ve bu nedenle metodolojide farklılık fark etmenize yardımcı olabilecek önemli ayrıntıları el ile yapmak zorunda değilsiniz. Platform, sizin için sabit bir iş yapar. Yani QPı olan bir örnek. QPı ile, sorgu düzeyine kadar tüm şekilde ayrıntıya gidebilir ve geçmiş eğilimlerini arayabilir ve tam olarak sorgu ne zaman gerilediğini belirleyebilirsiniz. Veritabanı Danışmanı, genel performansında eksik dizinler, dizin bırakma, sorgularınızın parametreleştirilmesi gibi genel performansı artırmanıza yardımcı olabilecek şeylere yönelik öneriler sağlar.
 
 Performans sorunlarını giderme sayesinde, uygulamanın yalnızca uygulamanın mı yoksa veritabanı yedeklemesi mi olduğunu belirlemek önemlidir. Bu, uygulama performansınızı etkiliyor. Genellikle, performans sorunu uygulama katmanında yer alır. Bu, mimari veya veri erişim deseninin olabilir. Örneğin, ağ gecikme süresine duyarlı bir geveze uygulamanız olduğunu düşünün. Bu durumda uygulamanız, uygulama ile sunucu arasında ve çok yönlü bir ağ üzerinde ileri ve geri dönerek ("geveze") bir çok kısa istek olduğu için, bu gidiş dönüşlerin hızlı bir şekilde daha hızlı bir şekilde bir şekilde yapıldığından, uygulamanız vardır. Bu durumda performansı artırmak için [Batch sorgularını](sql-database-performance-guidance.md#batch-queries)kullanabilirsiniz. Artık istekleriniz bir toplu işte işlendiğinden, toplu işlem gecenin size yardımcı olur; Bu nedenle, gidiş dönüş gecikmesini kesip uygulama performansınızı iyileştirmenize yardımcı olur.
 

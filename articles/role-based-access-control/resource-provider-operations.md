@@ -14,11 +14,11 @@ ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9b3a1175b5e22b787c62365d3b113e02ec1d1326
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207005"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361913"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
@@ -7527,7 +7527,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Eylem | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/yazma | Kaydedilmiş bir arama sorgusu oluşturur |
 > | Eylem | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/silme | Kaydedilmiş bir arama sorgusunu siler |
 > |  | **çalışma alanları/savedaramalar/sonuçlar** |  |
-> | Eylem | Microsoft. operationalınsights/çalışma alanları/savedaramalar/sonuçlar/okuma | Kaydedilmiş aramaları al sonuçları. Kullanım Dışı |
+> | Eylem | Microsoft. operationalınsights/çalışma alanları/savedaramalar/sonuçlar/okuma | Kaydedilmiş aramaları al sonuçları. Kaldırıldı |
 > |  | **çalışma alanları/savedaramalar/zamanlamalar** |  |
 > | Eylem | Microsoft. operationalınsights/çalışma alanları/savedaramalar/zamanlamalar/okuma | Zamanlanmış aramalar alın. |
 > | Eylem | Microsoft. operationalınsights/çalışma alanları/savedaramalar/zamanlamalar/silme | Zamanlanan aramaları silin. |
@@ -7844,7 +7844,7 @@ Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/kaldırma/eylem | Korumalı öğeyi kaldır |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlı Yük devretme |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
-> | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
+> | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Yük Devretme Sınaması |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/işlem | Yük devretme yürütmesi |
 > | Eylem | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorudıtems/reProtect/ACTION | Korumalı öğeyi yeniden koru |

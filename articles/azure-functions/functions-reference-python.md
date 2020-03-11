@@ -3,12 +3,12 @@ title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
-ms.translationtype: MT
+ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206342"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356114"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -65,16 +65,16 @@ Python Işlevleri projesi için önerilen klasör yapısı aşağıdaki örneğe
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -89,19 +89,47 @@ Ana proje klasörü (\_\_App\_\_) aşağıdaki dosyaları içerebilir:
 
 Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (Function. JSON) vardır. 
 
-Paylaşılan kod, \_\_App\_\_ayrı bir klasörde tutulmalıdır. SharedCode klasöründeki modüllere başvurmak için aşağıdaki sözdizimini kullanabilirsiniz:
-
-```python
-from __app__.SharedCode import myFirstHelperFunction
-```
-
-Yerel modüllerle bir işleve başvurmak için göreli içeri aktarma sözdizimini aşağıdaki şekilde kullanabilirsiniz:
-
-```python
-from . import example
-```
-
 Projenizi Azure 'daki bir işlev uygulamasına dağıttığınızda, ana proje ( *\_\_app\_\_* ) klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil. Testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz, bu örnekte `tests`. Bu, uygulamanıza test kodu dağıtmanızı önler. Daha fazla bilgi için bkz. [birim testi](#unit-testing).
+
+## <a name="import-behavior"></a>İçeri aktarma davranışı
+
+İşlev kodunuzda modülleri, hem açık göreli hem de mutlak başvurular kullanarak içeri aktarabilirsiniz. Yukarıda gösterilen klasör yapısına bağlı olarak, aşağıdaki içeri aktarmalar\_işlev dosyası içinden çalışır *\_uygulama\_\_\\_ilk\_işlevi\\_\_init\_\_. Kopyala*:
+
+```python
+from . import example #(explicit relative)
+```
+
+```python
+from ..shared_code import my_first_helper_function #(explicit relative)
+```
+
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+Aşağıdaki içeri aktarmalar aynı dosya içinde *çalışmaz* :
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+Paylaşılan kod, *\_\_app\_\_* ayrı bir klasörde tutulmalıdır. *Paylaşılan\_kodu* klasöründeki modüllere başvurmak için aşağıdaki sözdizimini kullanabilirsiniz:
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>Tetikleyiciler ve girişler
 
@@ -158,7 +186,7 @@ def main(req: func.HttpRequest,
 İşlev çağrıldığında, HTTP isteği işleve `req`olarak geçirilir. Yol URL 'sindeki _kimliğe_ göre Azure Blob depolama alanından bir giriş alınır ve işlev gövdesinde `obj` olarak kullanılabilir hale getirilir.  Burada, belirtilen depolama hesabı, işlev uygulaması tarafından kullanılan depolama hesabı olan AzureWebJobsStorage App ayarında bulunan bağlantı dizesidir.
 
 
-## <a name="outputs"></a>Çıkışlar
+## <a name="outputs"></a>Çıktılar
 
 Çıkış hem dönüş değeri hem de çıkış parametrelerinde ifade edilebilir. Yalnızca bir çıkış varsa, dönüş değerini kullanmanızı öneririz. Birden çok çıkış için çıkış parametrelerini kullanmanız gerekir.
 
@@ -306,7 +334,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin. 
 
-Örnek:
+Örneğin:
 
 ```python
 import azure.functions
