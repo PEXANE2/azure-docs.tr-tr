@@ -9,12 +9,12 @@ ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 9f1f60fd16aa830372bd0f5b19e22e7003de496b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770313"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082923"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure sanal makineleri için genişletilmiş ölçüm ekleme
 
@@ -34,7 +34,7 @@ Cloudyn, Azure VM'lerin kaynakları hakkında ayrıntılı bilgiler sunmak için
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Genişletilmiş ölçümlerin etkin olup olmadığını belirleme
 
-1. https://portal.azure.com adresinden Azure portalında oturum açın.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. **Sanal makineler**'in altında bir VM seçtikten sonra **İzleme** bölümünde **Ölçümler**'i seçin. Kullanılabilir ölçümlerin listesi gösterilir.
 3. Ölçümlerden birkaç tanesini seçtiğinizde veriler grafik biçiminde görüntülenir.  
     ![Örnek ölçüm - ana bilgisayar CPU yüzdesi](./media/azure-vm-extended-metrics/metric01.png)
