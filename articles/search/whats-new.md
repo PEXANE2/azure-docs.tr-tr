@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/03/2020
-ms.openlocfilehash: 27dae07328af125c25512ab9f1eb81d0f4eda99b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 3150eed063413d0665adfc104a603f9f2b5755c3
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396345"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129289"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -26,6 +26,10 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin genişletilmiş (henüz isteğe bağlı) kullanımını yansıtmak için artık **Azure bilişsel arama** olarak yeniden adlandırıldı. API sürümleri, NuGet paketleri, ad alanları ve uç noktalar değiştirilmez. Yeni ve mevcut arama çözümleri, hizmet adı değişikliğinden etkilenmez.
 
 ## <a name="feature-announcements"></a>Özellik Duyuruları
+
+### <a name="march-2020"></a>Mart 2020
+
++ Yeni kararlı [yönetim REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) artık kullanıma sunuldu. 
 
 ### <a name="february-2020"></a>Şubat 2020
 

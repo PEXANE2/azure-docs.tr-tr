@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384132"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129378"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Tanılama uzantısı şeması
 Azure Tanılama uzantısı, Azure Izleyici 'de Konuk işletim sisteminden ve Azure işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows sanal makinelerinde ve diğer işlem kaynaklarında tanılama uzantısının yapılandırılması için kullanılan şemanın ayrıntıları yer alır.
@@ -506,7 +506,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 ```
 
 > [!NOTE]
-> Ortak Yapılandırma Azure Izleyici havuzu tanımında iki özellik, *PrincipalId* ve *gizli*dizi vardır. Bunlar yalnızca klasik VM 'Ler ve klasik bulut hizmetleri için gereklidir. Bu özellikler diğer kaynaklar için kullanılmamalıdır.
+> Özel Yapılandırma Azure Izleyici havuzu tanımında iki özellik, *PrincipalId* ve *sır*vardır. Bunlar yalnızca klasik VM 'Ler ve klasik bulut hizmetleri için gereklidir. Bu özellikler diğer kaynaklar için kullanılmamalıdır.
 
 
 ```json

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1d8a42a4ec106418b481ac705d3ce1b33f58a312
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380722"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086499"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -25,7 +25,10 @@ Bu makalede, Azure Güvenlik Merkezi 'nde görebileceğiniz öneriler listelenir
 
 Bu önerilere yanıt verme hakkında bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'nde önerileri düzeltme](security-center-remediate-recommendations.md).
 
-Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır. İlk çözümleme önerilerini önceliklendirmek için, her birinin önem derecesini göz önünde bulundurun.
+Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısını temel alır. İlk olarak hangi önerilerin çözümlenmeyeceğine karar vermek için, her birinin önem derecesine ve güvenli puanınızın olası etkilerine göz atın.
+
+>[!TIP]
+> Bir önerinin açıklaması "ilişkili ilke yok" ifadesini içeriyorsa, bu, genellikle Bu önerilerin farklı bir öneriye *ve ilkesine bağlı* olması nedeniyle oluşur. Örneğin, "Endpoint Protection sistem durumu arızaları düzeltildi..." önerisi, bir uç nokta koruma çözümünün da *yüklü* olup olmadığını denetleyen öneriye dayanır ("Endpoint Protection çözümü yüklenmelidir..."). Temel *alınan önerinin* bir ilkesi vardır. İlkeleri yalnızca temel öneriyle sınırlamak, ilke yönetimini basitleştirir.
 
 ## <a name="recs-network"></a>Ağ önerileri
 
@@ -106,7 +109,7 @@ Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır
 |**Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir**|Kendisi için bir güvenlik açığı değerlendirme 3 taraf çözümü dağıtılan sanal makinelerin sürekli olarak uygulama ve işletim sistemi güvenlik açıklarını karşı incelenen. Tür güvenlik açıklarına bulunduğunda, bunlar öneri bir parçası olarak daha fazla bilgi için kullanılabilir.<br>(İlgili ilke: güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir)|Yüksek|N|Makine|
 |**Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir**|Güvenlik Yapılandırması saldırılarına karşı korunacak makinelerinizde güvenlik açıklarını düzeltin.<br>(İlgili ilke: makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir)|Düşük|N|Makine|
 |**Kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir**|Docker yüklü makineleri korumak için bunların güvenlik yapılandırmasındaki güvenlik açıklarını düzeltin.<br>(İlgili ilke: kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir)|Yüksek|N|Makine|
-|**Endpoint Protection sistem durumu sorunları makinelerinizde çözümlenmelidir**|Tüm Güvenlik Merkezi koruma için sorun giderme Kılavuzu'ndaki yönergeleri takip ederek makinelerinizi izleme aracı sorunları çözün.<br>("Makinelerinizde Endpoint Protection çözümünü yükler" üzerine bağlı ilke ile ilgili yok|Orta|N|Makine|
+|**Endpoint Protection sistem durumu sorunları makinelerinizde çözümlenmelidir**|Tüm Güvenlik Merkezi koruma için sorun giderme Kılavuzu'ndaki yönergeleri takip ederek makinelerinizi izleme aracı sorunları çözün.<br>(Bu öneri, "makinelerinizde Endpoint Protection çözümünü yükler" önerisine ve ilkesini bağımlıdır.|Orta|N|Makine|
 ||||||
 
 

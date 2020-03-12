@@ -1,6 +1,6 @@
 ---
-title: Veri ambarı oluşturma ve sorgulama (Azure portal)
-description: Azure portal kullanarak bir Azure SYNAPSE Analytics SQL havuzu oluşturma ve sorgulama
+title: SYNAPSE SQL havuzu oluşturma ve sorgulama (Azure portal)
+description: Azure portal kullanarak bir Synapse SQL havuzu oluşturma ve sorgulama
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a3dbe5d74dc1e88d0615937b8c6e6d2a77b64a7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6966932e95ff538de4b2f9be1ac06516311a0919
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381099"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129565"
 ---
-# <a name="quickstart-create-and-query-an-azure-synapse-analytics-sql-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure SYNAPSE Analytics SQL havuzu oluşturma ve sorgulama
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL havuzu oluşturma ve sorgulama
 
-Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) SQL havuzu sağlayarak hızlı bir şekilde veri ambarı oluşturun ve sorgulayın.
+Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) bir Synapse SQL havuzunu (veri ambarı) hızlıca oluşturun ve sorgulayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,7 +39,7 @@ Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) SQL ha
 
 Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturulur. Bir SQL havuzu tanımlanmış bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/management/overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-servers.md) içinde oluşturulur.
 
-**AdventureWorksDW** örnek verilerini içeren bir veri ambarı oluşturmak için bu adımları izleyin.
+**AdventureWorksDW** örnek verilerini IÇEREN bir SQL havuzu oluşturmak için bu adımları izleyin.
 
 1. Azure portal sol üst köşesinde **kaynak oluştur** ' u seçin.
 
@@ -55,7 +55,7 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
    | :------ | :-------------- | :---------- |
    | **Abonelik** | Aboneliğiniz | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
    | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
-   | **Veri ambarı adı** | Herhangi bir genel benzersiz ad (örneğin, *Mysampledatawarehouse*) | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). Veri ambarının bir veritabanı türü olduğuna dikkat edin. |
+   | **SQL havuzu adı** | Herhangi bir genel benzersiz ad (örneğin, *Mysampledatawarehouse*) | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). SQL havuzu tek bir veritabanı türüdür. |
    | **Sunucu** | Genel olarak benzersiz bir ad | Var olan sunucuyu seçin veya yeni bir sunucu adı oluşturun, **Yeni oluştur**' u seçin. Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
 
    ![veri ambarı temel ayrıntıları oluşturma](media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -66,7 +66,7 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
 
    Performans düzeyleri hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı 'nda Işlem yönetme](sql-data-warehouse-manage-compute-overview.md).
 
-5. Azure SYNAPSE Analytics formunun temel bilgiler sekmesini tamamladığınıza göre, SQL havuzunda veri ambarını oluşturmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Sağlama birkaç dakika sürer.
+5. Azure SYNAPSE Analytics formunun temel bilgiler sekmesini tamamladığınıza göre, SQL havuzunu oluşturmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Sağlama birkaç dakika sürer.
 
    ![Gözden geçir + oluştur ' u seçin](media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -105,7 +105,7 @@ Azure SYNAPSE hizmeti, sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu g�
 
 8. **Tamam** ' ı seçin ve ardından **güvenlik duvarı ayarları** sayfasını kapatın.
 
-Şimdi bu IP adresini kullanarak SQL sunucusuna ve veri ambarlarına bağlanabilirsiniz. Bağlantı SQL Server Management Studio’dan veya seçtiğiniz diğer bir araçtan çalışır. Bağlandığınızda, daha önce oluşturduğunuz ServerAdmin hesabını kullanın.
+Artık SQL Server 'a ve SQL havuzlarına bu IP adresini kullanarak bağlanabilirsiniz. Bağlantı SQL Server Management Studio’dan veya seçtiğiniz diğer bir araçtan çalışır. Bağlandığınızda, daha önce oluşturduğunuz ServerAdmin hesabını kullanın.
 
 > [!IMPORTANT]
 > Varsayılan olarak, SQL Veritabanı güvenlik duvarı üzerinden erişim tüm Azure hizmetleri için etkindir. Bu sayfada **kapalı** ' yı seçin ve ardından **Kaydet** ' i seçerek tüm Azure hizmetleri için güvenlik duvarını devre dışı bırakın.
@@ -116,7 +116,7 @@ SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra 
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. Sol taraftaki menüden **Azure SYNAPSE Analytics** ' i seçin ve **Azure SYNAPSE Analytics** sayfasında veri Ambarınızı seçin.
+2. Sol taraftaki menüden **Azure SYNAPSE Analytics** ' i seçin ve **Azure SYNAPSE Analytics** sayfasında hesabınızı seçin.
 
 3. Veritabanınızın Azure portal sayfasındaki **Temel Bilgiler** bölmesinde, **Sunucu adını** bulup kopyalayın. Bu örnekte, tam adı sqlpoolservername.database.windows.net ' dir.
 
@@ -174,21 +174,21 @@ SQL Veri Ambarı sorgu dili olarak T-SQL kullanır. Bir sorgu penceresi açıp T
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Veri ambarı birimleri ve veri ambarınızdan depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
+Veri ambarı birimleri ve SQL havuzunuzu depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
-- Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya her seferinde işlem yapabilirsiniz.
+- Verileri depolama alanında tutmak istiyorsanız, SQL havuzunu kullanmadığınız sırada işlem duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya her seferinde işlem yapabilirsiniz.
 
-- Gelecekteki ücretlendirmeleri kaldırmak istiyorsanız, veri ambarını silebilirsiniz.
+- Gelecekteki ücretleri kaldırmak istiyorsanız, SQL havuzunu silebilirsiniz.
 
 Artık ihtiyacınız olmayan kaynakları temizlemek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, veri Ambarınızda öğesini seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, SQL havuzunuzu seçin.
 
    ![Kaynakları temizleme](media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında **, bir geri** düğmesi görürsünüz. İşlemi sürdürmesini sağlamak için, yeniden gerçekleştir ' **i seçin.**
+2. İşlem duraklatmak için **Duraklat** düğmesini seçin. SQL havuzu duraklatıldığında **, bir geri** düğmesi görürsünüz. İşlemi sürdürmesini sağlamak için, yeniden gerçekleştir ' **i seçin.**
 
-3. İşlem veya depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**' i seçin.
+3. İşlem veya depolama için ücretlendirilmemek üzere SQL havuzunu kaldırmak için **Sil**' i seçin.
 
 4. Oluşturduğunuz SQL Server 'ı kaldırmak için önceki görüntüde **sqlpoolservername.Database.Windows.net** ' ı seçin ve **Sil**' i seçin. Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
 
@@ -196,7 +196,4 @@ Artık ihtiyacınız olmayan kaynakları temizlemek için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir veri ambarı oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz, veri ambarınıza bağlanmış ve birkaç sorgu çalıştırdınız. Azure SQL Veri Ambarı hakkında daha fazla bilgi edinmek için, veri yükleme öğreticisiyle devam edin.
-
-> [!div class="nextstepaction"]
-> [Verileri bir SQL veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+SQL havuzunuza veri yükleme hakkında daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine ilerleyin. 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899366"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127623"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy
 Azure 'da yerleşik olarak bulunan ters proxy Service Fabric, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olur.

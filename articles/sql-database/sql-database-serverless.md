@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 3/11/2020
+ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359785"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129050"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 
@@ -148,6 +148,10 @@ Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi verita
 ### <a name="latency"></a>Gecikme süresi
 
 Bir sunucusuz veritabanını oto Resume ve oto duraklatma gecikmesi genellikle 1 dakikalık ve oto duraklamaya 1-10 dakika sıradır.
+
+### <a name="customer-managed-transparent-data-encryption-byok"></a>Müşteri tarafından yönetilen saydam veri şifrelemesi (BYOK)
+
+[Müşteri tarafından yönetilen saydam veri şifrelemesi](transparent-data-encryption-byok-azure-sql.md) (bYok) kullanılıyorsa ve anahtar silme veya iptal gerçekleştiğinde sunucusuz veritabanı otomatik olarak duraklatılmışsa, veritabanı otomatik duraklatılmış durumda kalır.  Bu durumda, devam eden bir sonraki denendiğinde veritabanı, süresi yaklaşık 10 dakika veya daha kısa bir süre sonra erişilemez duruma gelinceye kadar duraklatılmış olarak kalır.  Veritabanı erişilemez duruma geldikten sonra kurtarma işlemi, sağlanan işlem veritabanları ile aynı olur.  Anahtar silme veya iptal gerçekleştiğinde sunucusuz veritabanı çevrimiçi ise, veritabanı, sağlanan işlem veritabanları ile yaklaşık 10 dakika veya daha kısa bir süre sonra erişilemez hale gelir.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Sunucusuz işlem katmanına ekleme
 

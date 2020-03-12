@@ -6,19 +6,22 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 02/24/2020
-ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: 1a6b50456a5dc3ff89fe7b513f406dc68bd2401e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381932"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129234"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
 Azure Data Factory veri akışlarını eşleme, veri dönüştürmelerinin ölçeklendirilmesi, dağıtılması ve organize olması için kod içermeyen bir arabirim sağlar. Veri akışlarını eşleme konusunda bilgi sahibi değilseniz, [eşleme veri akışına genel bakış](concepts-data-flow-overview.md)bölümüne bakın.
 
 ADF UX 'den veri akışları tasarlarken ve test ederken, bir kümenin ısınma süresini beklemeden veri akışlarınızı gerçek zamanlı olarak yürütmek için hata ayıklama modunda geçiş yaptığınızdan emin olun. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
+
+Bu videoda veri akışları ile verileri dönüştüren bazı örnek zamanlamalar gösterilmektedir:
+> [!VIDEO https://www.youtube.com/watch?v=6CSbWm4lRhw]
 
 ## <a name="monitoring-data-flow-performance"></a>Veri akışı performansını izleme
 

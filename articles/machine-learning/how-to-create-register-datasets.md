@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 817ff90c10a29d7db7037d89f3c3d51e7f997175
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 778f6b8d133ddb21f918d65a9d8aecd8b2205b08
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037184"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127180"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -209,7 +209,7 @@ Studio 'da bir veri kümesi oluşturmak için:
 1. Veri kümesi türü için **tablo** veya **Dosya** seçin.
 1. **Veri deposu ve dosya seçim** formunu açmak için **İleri ' yi** seçin. Bu formda, oluşturulduktan sonra veri kümenizin saklanacağı yeri ve veri kümeniz için kullanılacak veri dosyalarını seçin. 
 1. **Ayarları ve önizleme** ve **şema** formlarını doldurmak için **İleri ' yi** seçin; Bunlar dosya türüne göre akıllıca doldurulmuştur ve veri kümenizi bu formlarda oluşturmadan önce daha sonra yapılandırabilirsiniz. 
-1. **Ayrıntıları Onayla** formunu gözden geçirmek için **İleri ' yi** seçin. Seçimlerinizi denetleyin ve veri kümeniz için isteğe bağlı bir veri profili oluşturun. [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin. 
+1. **Ayrıntıları Onayla** formunu gözden geçirmek için **İleri ' yi** seçin. Seçimlerinizi denetleyin ve veri kümeniz için isteğe bağlı bir veri profili oluşturun. [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin. 
 1. Veri kümesi oluşturmayı gerçekleştirmek için **Oluştur** ' u seçin.
 
 ## <a name="register-datasets"></a>Veri kümelerini Kaydet

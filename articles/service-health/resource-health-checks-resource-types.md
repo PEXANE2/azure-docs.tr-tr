@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925889"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128671"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -188,6 +188,11 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |Yürütülen denetimler|
 |---|
 |<ul><li>Müşteriler Kullanıcı tarafından oluşturulan Service Bus hatalarıyla karşılaşıyor mu?</li><li>Kullanıcılar Service Bus ad alanı yükseltmesi nedeniyle geçici hatalarda artış yaşlıyor mu?</li></ul>|
+
+## <a name="microsoftservicefabricclusters"></a>Microsoft. ServiceFabric/kümeler
+|Yürütülen denetimler|
+|---|
+|<ul><li>Service Fabric kümesi çalışır duruma mi çalışıyor?</li><li>Service Fabric kümesi Azure Resource Manager aracılığıyla yönetiliyor mu?</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/ManagedInstances/veritabanları
 |Yürütülen denetimler|

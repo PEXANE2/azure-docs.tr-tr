@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 51a456a05e1d41057e80b92e44f997e1b52cb132
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377412"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128780"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -28,6 +28,9 @@ Bu kılavuzda bir JavaScript tek sayfalı uygulamanın (SPA) nasıl kullanılabi
 - Kişisel hesapların yanı sıra iş ve okul hesaplarında oturum açın 
 - Erişim belirteci alma
 - *Microsoft Identity platform uç noktasından* erişim belirteçleri GEREKTIREN Microsoft Graph API 'sini veya diğer API 'leri çağırma
+
+>[!NOTE]
+> Microsoft Identity platform 'u kullanmaya yeni başladıysanız, [oturum açma kullanıcıları ile başlamanıza ve bir JAVASCRIPT Spa hızlı Başlangıçda erişim belirteci almanıza](quickstart-v2-javascript.md)önerilir.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Bu kılavuz tarafından oluşturulan örnek uygulamanın nasıl çalıştığı
 

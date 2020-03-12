@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363288"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129469"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
@@ -267,7 +267,13 @@ Aşağıdaki ayarların uzaktan erişim için doğru yapılandırıldığından 
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. VM bir etki alanının parçasıysa, eski ayarların geri döndürülmemiş olduğundan emin olmak için aşağıdaki Azure AD ilkelerine bakın. 
+5. Azure platform ağı için bir kural oluşturun:
+
+   ```PowerShell
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Inbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow -EdgeTraversalPolicy Allow
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Outbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow
+   ``` 
+6. VM bir etki alanının parçasıysa, eski ayarların geri döndürülmemiş olduğundan emin olmak için aşağıdaki Azure AD ilkelerine bakın. 
 
     | Hedef                                 | İlke                                                                                                                                                  | Değer                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|

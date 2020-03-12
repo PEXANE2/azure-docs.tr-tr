@@ -15,23 +15,25 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: b432f381bae79d783663130d06dbf874f00a9994
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082644"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129401"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
 
 >Bu URL 'YI kopyalayıp yapıştırarak güncelleştirmeler için ne zaman geri alınacağı hakkında bildirim alın: RSS akışı okuyucunuzun `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us`.
 
-Bu makalede, Azure Media Services v3 sürümünde tanıtılan değişiklikler açıklanmakta, iki sürüm arasındaki farklılıklar gösterilmektedir ve geçiş kılavuzu sağlanmıştır.
+Bu makale, Media Services V2 'den v3 'e geçiş kılavuzu sağlar.
 
 Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview.md)geliştirilen bir video hizmetiniz varsa, v3 API 'lerine geçiş yapmadan önce aşağıdaki yönergeleri ve konuları gözden geçirmeniz gerekir. V3 API 'de Media Services Geliştirici deneyimini ve yeteneklerini geliştiren birçok avantaj ve yeni özellik vardır. Ancak, bu makalenin [bilinen sorunlar](#known-issues) bölümünde ÇAĞRıLDıKÇA, API sürümleri arasındaki değişikliklerden dolayı bazı sınırlamalar de vardır. Media Services ekibi, v3 API 'Lerinde devam eden geliştirmeler yaptığında ve sürümler arasındaki boşlukları adresleyen Bu sayfa korunacak. 
 
-> [!NOTE]
-> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek için [Azure Portal](https://portal.azure.com/) kullanabilir ve v3 [varlıklarını](assets-concept.md)görüntüleyebilir, API 'lere erişme hakkında bilgi edinebilirsiniz. Daha ayrıntılı bilgi için bkz. [SSS](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources). 
+## <a name="prerequisites"></a>Önkoşullar
+
+* [Media Services V2 ve v3 karşılaştırması](media-services-v2-vs-v3.md)
+* [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="benefits-of-media-services-v3"></a>Media Services v3 avantajları
   
@@ -57,78 +59,6 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
 * RTMPS güvenli alma.<br/>Canlı bir olay oluşturduğunuzda 4 alma URL 'Si alırsınız. 4 içe alınan URL 'Ler neredeyse aynıdır, aynı akış belirtecine (AppID) sahiptir, yalnızca bağlantı noktası numarası bölümü farklıdır. URL 'Lerden ikisi, RTMPS için birincil ve yedeğdir.   
 * Varlıklarınız üzerinde rol tabanlı erişim denetimi (RBAC) vardır. 
 
-## <a name="changes-from-v2"></a>V2 'deki değişiklikler
-
-* V3 ile oluşturulan varlıklar için Media Services yalnızca [Azure Storage sunucu tarafı depolama şifrelemesini](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)destekler.
-    * V3 API 'Leri, Media Services tarafından sağlanmış [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) (AES 256) olan v2 API 'Leriyle oluşturulmuş varlıklarla birlikte kullanabilirsiniz.
-    * V3 API 'Leri kullanarak eski AES 256 [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) Ile yeni varlıklar oluşturamazsınız.
-* [Varlıkların](assets-concept.md)v3 'deki özellikleri v2 'den farklıdır, bkz. [Özellikler nasıl eşlenir](assets-concept.md#map-v3-asset-properties-to-v2).
-* V3 SDK 'Ları artık, kullanmak istediğiniz depolama SDK 'Sı üzerinde daha fazla denetim sağlayan ve sürüm oluşturma sorunlarını önleyip depolama SDK 'sının içine ayrılır. 
-* V3 API 'Lerinde, tüm kodlama bit hızları saniyede bit/saniye cinsinden. Bu, v2 Media Encoder Standard önayarlarından farklıdır. Örneğin, v2 'deki bit hızı 128 (Kbps) olarak belirtilir, ancak v3 'de 128000 (bit/saniye) olur. 
-* AssetFiles, AccessPolicies ve IngestManifests varlıkları v3 'te bulunmamaktadır.
-* Ivarlık. ParentAssets özelliği v3 içinde yok.
-* ContentKeys artık bir varlık değil, artık akış bulucunun bir özelliğidir.
-* Event Grid desteği, NotificationEndpoints yerini alır.
-* Aşağıdaki varlıklar yeniden adlandırıldı
-    * İş çıkışı görevin yerini alır ve artık bir Işin parçasıdır.
-    * Akış Bulucu Konumlandırıcı 'nın yerini alır.
-    * Canlı olay kanal yerini alır.<br/>Canlı olaylar, canlı kanal ölçümlerine göre faturalandırılır. Daha fazla bilgi için bkz. [faturalandırma](live-event-states-billing.md) ve [fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/).
-    * Canlı çıkış programın yerini alır.
-* Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. Programlar v2 API 'Lerinde farklı çalıştık, oluşturulduktan sonra başlatılmaları gerekiyordu.
-* Bir iş hakkında bilgi almak için işin altında oluşturulduğu dönüştürme adını bilmeniz gerekir. 
-* V2 'de XML [giriş](../previous/media-services-input-metadata-schema.md) ve [Çıkış](../previous/media-services-output-metadata-schema.md) meta verileri dosyaları, bir kodlama işinin sonucu olarak üretilir. V3 'de meta veri biçimi XML olarak JSON olarak değiştirilmiştir. 
-* Media Services V2 'de, başlatma vektörü (IV) belirtilebilir. Media Services v3 'de, FairPlay IV belirtilemez. Hem paketleme hem de lisans teslimi için Media Services kullanan müşterileri etkilemediğinden, FairPlay lisanslarını (karma mod) sunmak için üçüncü taraf DRM sistemi kullanılırken bir sorun olabilir. Bu durumda, FairPlay IV 'nin cibh anahtar KIMLIĞINDEN türetildiğinden ve şu formül kullanılarak alınabileceğinizi bilmemiz önemlidir:
-
-    ```
-    string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
-    ```
-
-    örneklerini şununla değiştirin:
-
-    ``` 
-    public static byte[] HexStringToByteArray(string hex)
-    {
-        return Enumerable.Range(0, hex.Length)
-            .Where(x => x % 2 == 0)
-            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-            .ToArray();
-    }
-    ```
-
-    Daha fazla bilgi için, [hem canlı hem C# de VOD işlemleri için karma modda Media Services v3 için Azure işlevleri koduna](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3)bakın.
- 
-> [!NOTE]
-> [Media Services v3 kaynaklarına](media-services-apis-overview.md#naming-conventions)uygulanan adlandırma kurallarını gözden geçirin. Ayrıca [adlandırma bloblarını](assets-concept.md#naming)gözden geçirin.
-
-## <a name="feature-gaps-with-respect-to-v2-apis"></a>V2 API 'Lerine göre Özellik boşlukları
-
-V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Boşlukların kapatılması devam ediyor.
-
-* [Premium kodlayıcı](../previous/media-services-premium-workflow-encoder-formats.md) ve eski [Medya analizi Işlemcileri](../previous/media-services-analytics-overview.md) (Azure Media Services Dizin Oluşturucu 2 Preview, yüz Redactor vb.) v3 aracılığıyla erişilemez.<br/>Media Indexer 1 veya 2 Preview 'dan geçiş yapmak isteyen müşteriler, v3 API 'sindeki AudioAnalyzer ön ayarını hemen kullanabilir.  Bu yeni önayar, eski Media Indexer 1 veya 2 ' den daha fazla özellik içeriyor. 
-* V2 API 'lerinde [Media Encoder Standard gelişmiş özelliklerin](../previous/media-services-advanced-encoding-with-mes.md) birçoğu şu anda v3 'de bulunmamaktadır:
-  
-    * Kıymetlerin dikiş
-    * Yer paylaşımları
-    * Manın
-    * Küçük resim Sprites
-    * Girişte ses olmadığında sessiz ses izi ekleme
-    * Girişte video yoksa video izlemesi ekleme
-* Transkodlamaya sahip canlı olaylar şu anda kurşun ekleme orta akış ve ad işaretçisi ekleme işlemini API çağrısı aracılığıyla desteklemez. 
-
-> [!NOTE]
-> Lütfen bu makaleye yer işareti ekleyin ve güncelleştirmeleri kontrol edin.
- 
-## <a name="code-differences"></a>Kod farklılıkları
-
-Aşağıdaki tabloda yaygın senaryolar için v2 ve v3 arasındaki kod farklılıkları gösterilmektedir.
-
-|Senaryo|V2 APı 'SI|V3 APı 'SI|
-|---|---|---|
-|Bir varlık oluşturun ve bir dosyayı karşıya yükleyin |[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|İş gönder|[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>İlk olarak bir dönüştürme oluşturmayı ve sonra bir Işi göndermeyi gösterir.|
-|AES şifrelemesi ile varlık yayımlama |1. ContentKeyAuthorizationPolicyOption oluşturun<br/>2. ContentKeyAuthorizationPolicy oluşturma<br/>3. AssetDeliveryPolicy oluşturma<br/>4. varlık oluşturma ve içerik yükleme veya işi gönderme ve çıkış varlığını kullanma<br/>5. AssetDeliveryPolicy 'i varlıkla ilişkilendir<br/>6. ContentKey oluştur<br/>7. varlığa ContentKey iliştirme<br/>8. AccessPolicy oluşturma<br/>9. Bulucu oluştur<br/><br/>[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Içerik anahtar Ilkesi oluştur<br/>2. varlık oluştur<br/>3. içeriği karşıya yükleyin veya varlığı Joi put olarak kullanın<br/>4. akış Bulucu oluşturma<br/><br/>[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|İş ayrıntılarını alma ve işleri yönetme |[V2 ile işleri yönetme](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[V3 ile işleri yönetme](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
-
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 *  Şu anda [Azure Portal](https://portal.azure.com/) şunları yapmak için kullanabilirsiniz:
@@ -153,5 +83,4 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Video dosyalarını kodlamaya ve akışa almaya başlamanın ne kadar kolay olduğunu görmek için [Dosyaları akışa alma](stream-files-dotnet-quickstart.md) bölümüne göz atın. 
-
+[Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa sunun-.NET](stream-files-dotnet-quickstart.md)

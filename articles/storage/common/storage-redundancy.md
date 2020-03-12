@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674282"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130025"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -61,7 +61,7 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 
 |    Depolama hesabı türü    |    Desteklenen bölgeler    |    Desteklenen hizmetler    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Genel amaçlı v2<sup>1</sup>    | Güneydoğu Asya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2    |    Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
+|    Genel amaçlı v2<sup>1</sup>    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2    |    Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
 |    BlockBlobStorage<sup>1</sup>    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca blok Blobları    |
 |    Dosya depolama    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca Azure dosyaları    |
 
@@ -109,10 +109,12 @@ GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 - Güneydoğu Asya
 - Kuzey Avrupa
 - Batı Avrupa
+- Doğu Japonya
 - Güney Birleşik Krallık
 - ABD Doğu
 - ABD Doğu 2
 - ABD Orta
+- ABD Batı 2
 
 Microsoft, ek Azure bölgelerinde GZRS ve RA-GZRS etkinleştirmesine devam etmektedir. Desteklenen bölgeler hakkında bilgi için [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfasını düzenli olarak denetleyin.
 

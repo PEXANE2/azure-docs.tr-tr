@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121752"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117171"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
 
@@ -67,7 +67,7 @@ Bir Service Bus ad alanı oluşturduğunuzda, ad alanı için **RootManageShared
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-Bu şekilde, her ikisi de S1 ve konu başlığı için aşağıdaki sıraya yönelik *olarak,* *Listenruleq* ve *Sendruleq* *Only, S1*ve *sendrulet* yalnızca T1 konusunda geçerlidir.
+Bu şekilde, her ikisi de S1 ve konu başlığı için aşağıdaki sıraya yönelik *listenRuleNS* *olarak,* *Listenruleq* ve *Sendruleq* *Only, S1*ve *sendrulet* yalnızca T1 konusunda geçerlidir.
 
 ## <a name="generate-a-shared-access-signature-token"></a>Paylaşılan erişim Imza belirteci oluştur
 
@@ -263,18 +263,18 @@ Aşağıdaki tabloda Service Bus kaynakları üzerinde çeşitli işlemler için
 
 | İşlem | Talep gerekiyor | Talep kapsamı |
 | --- | --- | --- |
-| **Namespace** | | |
-| Ad alanında yetkilendirme kuralını yapılandırma |Yönetin |Herhangi bir ad alanı adresi |
+| **Uzayına** | | |
+| Ad alanında yetkilendirme kuralını yapılandırma |Yönetme |Herhangi bir ad alanı adresi |
 | **Hizmet kayıt defteri** | | |
-| Özel Ilkeleri listeleme |Yönetin |Herhangi bir ad alanı adresi |
+| Özel Ilkeleri listeleme |Yönetme |Herhangi bir ad alanı adresi |
 | Ad alanı dinlemeye başla |Dinle |Herhangi bir ad alanı adresi |
 | Ad alanındaki bir dinleyiciye ileti gönderme |Gönder |Herhangi bir ad alanı adresi |
-| **Kuyruk** | | |
-| Kuyruk oluşturma |Yönetin |Herhangi bir ad alanı adresi |
-| Bir kuyruk silme |Yönetin |Geçerli bir sıra adresi |
-| Kuyrukları listeleme |Yönetin |/$Resources/Queues |
-| Sıra açıklamasını alma |Yönetin |Geçerli bir sıra adresi |
-| Bir kuyruğun yetkilendirme kuralını yapılandırma |Yönetin |Geçerli bir sıra adresi |
+| **Sıradaki** | | |
+| Bir kuyruk oluşturma |Yönetme |Herhangi bir ad alanı adresi |
+| Bir kuyruk silme |Yönetme |Geçerli bir sıra adresi |
+| Kuyrukları listeleme |Yönetme |/$Resources/Queues |
+| Sıra açıklamasını alma |Yönetme |Geçerli bir sıra adresi |
+| Bir kuyruğun yetkilendirme kuralını yapılandırma |Yönetme |Geçerli bir sıra adresi |
 | Sıraya gönder |Gönder |Geçerli bir sıra adresi |
 | Kuyruktan ileti alma |Dinle |Geçerli bir sıra adresi |
 | İletiyi Peek-kilit modunda aldıktan sonra iletileri iptal edin veya doldurun |Dinle |Geçerli bir sıra adresi |
@@ -283,26 +283,26 @@ Aşağıdaki tabloda Service Bus kaynakları üzerinde çeşitli işlemler için
 | İleti kuyruğu oturumuyla ilişkili durumu alma |Dinle |Geçerli bir sıra adresi |
 | İleti kuyruğu oturumuyla ilişkili durumu ayarlama |Dinle |Geçerli bir sıra adresi |
 | Daha sonra teslim için bir ileti zamanlayın; Örneğin, [Schedulemessageasync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Dinle | Geçerli bir sıra adresi
-| **Konu** | | |
-| Konu başlığı oluşturma |Yönetin |Herhangi bir ad alanı adresi |
-| Konuyu silme |Yönetin |Herhangi bir geçerli konu adresi |
-| Konuları listeleme |Yönetin |/$Resources/konular |
-| Konu açıklamasını alın |Yönetin |Herhangi bir geçerli konu adresi |
-| Bir konu için yetkilendirme kuralını yapılandırma |Yönetin |Herhangi bir geçerli konu adresi |
+| **İlerde** | | |
+| Konu başlığı oluşturma |Yönetme |Herhangi bir ad alanı adresi |
+| Konuyu silme |Yönetme |Herhangi bir geçerli konu adresi |
+| Konuları listeleme |Yönetme |/$Resources/konular |
+| Konu açıklamasını alın |Yönetme |Herhangi bir geçerli konu adresi |
+| Bir konu için yetkilendirme kuralını yapılandırma |Yönetme |Herhangi bir geçerli konu adresi |
 | Konuya gönder |Gönder |Herhangi bir geçerli konu adresi |
 | **Abonelik** | | |
-| Abonelik oluşturma |Yönetin |Herhangi bir ad alanı adresi |
-| Aboneliği silme |Yönetin |../myTopic/Subscriptions/mySubscription |
-| Abonelikleri listeleme |Yönetin |../ myTopic/abonelikleri |
-| Abonelik açıklamasını al |Yönetin |../myTopic/Subscriptions/mySubscription |
+| Abonelik oluşturma |Yönetme |Herhangi bir ad alanı adresi |
+| Aboneliği silme |Yönetme |../myTopic/Subscriptions/mySubscription |
+| Abonelikleri listeleme |Yönetme |../ myTopic/abonelikleri |
+| Abonelik açıklamasını al |Yönetme |../myTopic/Subscriptions/mySubscription |
 | İletiyi Peek-kilit modunda aldıktan sonra iletileri iptal edin veya doldurun |Dinle |../myTopic/Subscriptions/mySubscription |
 | Daha sonra alımı için bir ileti erteleyin |Dinle |../myTopic/Subscriptions/mySubscription |
 | İletiyi yok harfe göre |Dinle |../myTopic/Subscriptions/mySubscription |
 | Konu bir oturumla ilişkili durumu Al |Dinle |../myTopic/Subscriptions/mySubscription |
 | Konu bir oturumla ilişkili durumu ayarlama |Dinle |../myTopic/Subscriptions/mySubscription |
-| **kuralları** | | |
-| Kural oluşturma |Yönetin |../myTopic/Subscriptions/mySubscription |
-| Kuralı silme |Yönetin |../myTopic/Subscriptions/mySubscription |
+| **Kuralın** | | |
+| Kural oluşturma |Yönetme |../myTopic/Subscriptions/mySubscription |
+| Kuralı silme |Yönetme |../myTopic/Subscriptions/mySubscription |
 | Kuralları listeleme |Yönetme veya dinleme |../myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>Sonraki adımlar

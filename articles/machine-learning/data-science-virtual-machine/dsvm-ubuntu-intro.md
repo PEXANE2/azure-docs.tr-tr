@@ -4,16 +4,16 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Analiz ve makine öğrenimi yapmak için bir Linux (Ubuntu) Veri Bilimi Sanal Makinesi yapılandırın ve oluşturun.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: quickstart
-ms.date: 12/31/2019
-ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360669"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128687"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Hızlı başlangıç: Linux için Veri Bilimi Sanal Makinesi ayarlama (Ubuntu)
 
@@ -29,7 +29,7 @@ Lütfen Azure Ücretsiz hesapları GPU etkin sanal makine SKU 'Larını destekle
 Aşağıda Ubuntu 18,04 Veri Bilimi Sanal Makinesi örneğini oluşturma adımları verilmiştir:
 
 1. Daha önce oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir [Azure Portal](https://portal.azure.com) gidin.
-1. "Veri bilimi sanal makinesi" ni yazarak ve "Veri Bilimi Sanal Makinesi-Ubuntu 18,04 Preview" öğesini seçerek sanal makine listesini bulun.
+1. "Veri bilimi sanal makinesi" ni yazarak ve "Veri Bilimi Sanal Makinesi-Ubuntu 18,04" öğesini seçerek sanal makine listesini bulun
 
 1. Sonraki pencerede **Oluştur**' u seçin.
 
@@ -118,13 +118,14 @@ Ubuntu DSVM, çok kullanıcılı bir Jupyıter sunucusu olan [Juponterhub](https
       Ubuntu makinesi IP adresini ![](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
    1. Yerel makinenizden bir Web tarayıcısı açın ve https:\//Your-VM-IP: 8000 ' e giderek, "sizin-VM-IP" yi daha önce aldığınız IP adresiyle değiştirin.
+   1. Tarayıcınız büyük olasılıkla, bir sertifika hatası olduğunu söyleyen sayfayı doğrudan açmanızı önler. DSVM, otomatik olarak imzalanan bir sertifika aracılığıyla güvenlik sağlar. Tarayıcıların çoğu, bu uyarıdan sonra tıklama yapmanıza izin verir. Birçok tarayıcı, Web oturumunuzun tamamında sertifika hakkında bir tür görsel uyarı sağlamaya devam edecektir.
    1. VM 'yi oluşturmak için kullandığınız kullanıcı adını ve parolayı girin ve oturum açın. 
 
       ![Jupyıter oturumu gir](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
    1. Kullanılabilen birçok örnek Not defterini inceleyin.
 
-JupyterLab, Jupyter Not defterlerinden ve JupyterHub, yeni nesil de kullanılabilir. Bu dosyaya erişmek için JupyterHub 'da oturum açın ve https:\//Your-VM-IP: 8000/User/-UserName/Lab URL 'sine gidin, VM 'yi yapılandırırken seçtiğiniz kullanıcı adıyla "adınızı-username" değerini değiştirin.
+JupyterLab, Jupyter Not defterlerinden ve JupyterHub, yeni nesil de kullanılabilir. Bu dosyaya erişmek için JupyterHub 'da oturum açın ve https:\//Your-VM-IP: 8000/User/-UserName/Lab URL 'sine gidin, VM 'yi yapılandırırken seçtiğiniz kullanıcı adıyla "adınızı-username" değerini değiştirin. Bundan sonra, bir sertifika hatası nedeniyle başlangıçta siteye erişiminizi engellemiş olabilirsiniz.
 
 Bu satırı `/etc/jupyterhub/jupyterhub_config.py`ekleyerek, JupyterLab 'ı varsayılan not defteri sunucusu olarak ayarlayabilirsiniz:
 

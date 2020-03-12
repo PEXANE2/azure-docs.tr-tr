@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 6273b4d5745b3c13b48622cde842c0222a47c5d4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 435668dedc7efa33fd5fbfeea8671f05d070a385
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382441"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128430"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -96,7 +96,23 @@ HTTP proxy kullanma | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime i
 
 * Dağıtım Azure Backup aracısının gerektirdiği gerekli paketleri kurar veya güncelleştirir.
 * Azure Backup sunucularıyla giden ağ bağlantı denetimlerini ve Azure Active Directory ve Azure depolama gibi bağımlı hizmetleri gerçekleştirir.
-* [Önkoşulların](#prerequisites)bir parçası olarak listelenen Kullanıcı anahtarını kullanarak Hana sisteminizde oturum açar. Bu anahtar, HANA sisteminde bir yedek Kullanıcı (AZUREWLBACKUPHANAUSER) oluşturmak için kullanılır ve ön kayıt betiği başarıyla çalıştıktan sonra silinebilir. Bu yedekleme kullanıcısı (AZUREWLBACKUPHANAUSER), Yedekleme aracısının HANA sisteminizdeki veritabanlarını bulmasına, yedeklemesiyle ve geri yüklemelerine izin verir.
+* [Önkoşulların](#prerequisites)bir parçası olarak listelenen Kullanıcı anahtarını kullanarak Hana sisteminizde oturum açar. Kullanıcı anahtarı, HANA sisteminde bir yedek Kullanıcı (AZUREWLBACKUPHANAUSER) oluşturmak için kullanılır ve ön kayıt betiği başarıyla çalıştıktan sonra Kullanıcı anahtarı silinebilir.
+* AZUREWLBACKUPHANAUSER bu gerekli roller ve izinler atanır:
+  * VERITABANı YÖNETICISI: geri yükleme sırasında yeni veritabanları oluşturmak için.
+  * Katalog okuma: yedekleme kataloğunu okumak için.
+  * SAP_INTERNAL_HANA_SUPPORT: birkaç özel tabloya erişmek için.
+* Betik, tüm işlemleri (veritabanı sorguları, geri yükleme işlemleri, yedekleme yapılandırması ve çalıştırma) işlemek üzere HANA eklentisi için AZUREWLBACKUPHANAUSER için **hdbuserstore** 'a bir anahtar ekler.
+
+Anahtar oluşturmayı onaylamak için, SIDADDM kimlik bilgileriyle HANA makinesinde HDBSQL komutunu çalıştırın:
+
+```hdbsql
+hdbuserstore list
+```
+
+Komut çıktısı {SID} {DBNAME} anahtarını, AZUREWLBACKUPHANAUSER olarak gösterilen kullanıcıyla görüntülemelidir.
+
+>[!NOTE]
+> `/usr/sap/{SID}/home/.hdb/`altında farklı bir SSFS dosyaları kümesine sahip olduğunuzdan emin olun. Bu yolda yalnızca bir klasör olmalıdır.
 
 ## <a name="create-a-recovery-service-vault"></a>Kurtarma hizmeti Kasası oluşturma
 

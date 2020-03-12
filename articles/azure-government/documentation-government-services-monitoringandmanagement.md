@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: azure-government
 ms.date: 12/11/2019
 ms.author: gsacavdm
-ms.openlocfilehash: b6f395964c286aca1bc8a1c190edeea00ba6e15c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 38eb44e6355ddcb5ac78f5d8bb2008ea5a0f0cdf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362266"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127963"
 ---
 # <a name="azure-government-monitoring--management"></a>Azure Kamu İzleme ve Yönetim
 Bu makalede, Azure Kamu ortamı için izleme ve Yönetim Hizmetleri çeşitlemeleri ve konuları özetlenmektedir.
@@ -179,6 +179,9 @@ PowerShell kullanma hakkında daha fazla bilgi için bkz. [ortak belgeler](https
 - Microsoft.Web/sites
 - Microsoft.Web/sites/slots
 
+> [!NOTE]
+> Sanal makinelerde çoklu kaynak ölçümü uyarı kuralları oluşturma işlemi **Şu anda desteklenmiyor**. Bu makale, bu işlev kullanılabilir hale geldiğinde güncelleştirilecektir.
+
 Henüz ikinci sayıda uyarının oluşturulmasında kullanılamayan kaynaklar için [Klasik uyarıları](../azure-monitor/platform/alerts-classic.overview.md) kullanmaya devam edebilirsiniz. 
 
 Ölçüm uyarıları oluşturmak için PowerShell/ARM/REST çağrılarını kullanırken, ölçüm uyarısının "konum" değerini "USGov Virginia" veya "USGov Iowa" olarak ayarlamanız gerekir. Ayarın bir örneği aşağıda verilmiştir:
@@ -190,6 +193,7 @@ Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "USGov Virginia" -ResourceGroup
 ```
 
 PowerShell kullanma hakkında daha fazla bilgi için bkz. [ortak belgeler](../azure-monitor/platform/powershell-quickstart-samples.md).
+
 
 ## <a name="application-insights"></a>Application Insights
 

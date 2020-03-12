@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b3cd858653d54ae622758d218bb887d94bceb697
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378135"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086393"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication tümleştirin
 
@@ -250,9 +250,9 @@ Kullanıcılarınız eklenirken bu anahtarı oluşturmayı ve yanlış olarak ay
 
 ### <a name="nps-extension-health-check-script"></a>NPS uzantısı durum denetimi betiği
 
-NPS uzantısında sorun giderirken temel sistem durumu denetimi adımlarını gerçekleştirmek üzere TechNet galerisinde aşağıdaki komut dosyası kullanılabilir.
+NPS uzantısı sorunlarını giderirken temel sistem durumu denetimi adımlarını gerçekleştirmek için aşağıdaki komut dosyası kullanılabilir.
 
-[MFA_NPS_Troubleshooter. ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -334,6 +334,8 @@ Kuruluşunuz tarafından gerektirmedikleri takdirde, daha eski ve daha zayıf ş
 Ek sorun giderme kılavuzu ve olası çözümler, [Azure MULTI-Factor AUTHENTICATION NPS uzantısından hata Iletilerini çözümleme](howto-mfa-nps-extension-errors.md)makalesinde bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+- [Windows Server 'da ağ Ilkesi sunucusu 'na genel bakış ve yapılandırma](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
 - Oturum açmak için alternatif kimlikleri yapılandırın veya [Multi-Factor Authentication IÇIN NPS uzantısının gelişmiş yapılandırma seçeneklerinde](howto-mfa-nps-extension-advanced.md) iki adımlı doğrulama gerçekleştirmemelidir.
 

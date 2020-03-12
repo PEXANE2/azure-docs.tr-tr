@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 501158ffa8d05bc34dd39c21680012b1f3308def
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396433"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127215"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -95,9 +95,9 @@ Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek i�
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Gelişmiş ön işleme: isteğe bağlı korleştirme
 
-Veri guardı, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korkleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#featurization). Bu ayarı şu şekilde etkinleştirin:
+Veri guardı, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korkleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-use-automated-ml-for-ml-models.md#featurization). Bu ayarı şu şekilde etkinleştirin:
 
-+ Azure Machine Learning Studio: [Bu adımlarla](how-to-create-portal-experiments.md#create-and-run-experiment) **ek yapılandırmayı görüntüle** bölümünde **Otomatik** özelliği etkinleştirin.
++ Azure Machine Learning Studio: [Bu adımlarla](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment) **ek yapılandırmayı görüntüle** bölümünde **Otomatik** özelliği etkinleştirin.
 
 + Python SDK: [`AutoMLConfig` sınıfı](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)Için `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` belirtme. 
 
@@ -153,7 +153,7 @@ Model **C** , aşırı sığdırma durumunu açık bir şekilde temsil eder; Eğ
 
 ## <a name="classification--regression"></a>& Gerileme sınıflandırması
 
-Sınıflandırma ve gerileme, makine öğrenimi görevlerinin en yaygın türleridir. Her ikisi de modellerin eğitim verilerini kullanarak öğreniminde denetimli öğrenme türleridir ve bu dersleri yeni verilere uygulanır. Azure Machine Learning, özellikle bu görevler için derin sinir ağ metni özellikleri sınıflandırıcılarıyla ilgili özellikler sunar. [Uygulanabilirlik seçenekleri](how-to-create-portal-experiments.md#featurization)hakkında daha fazla bilgi edinin. 
+Sınıflandırma ve gerileme, makine öğrenimi görevlerinin en yaygın türleridir. Her ikisi de modellerin eğitim verilerini kullanarak öğreniminde denetimli öğrenme türleridir ve bu dersleri yeni verilere uygulanır. Azure Machine Learning, özellikle bu görevler için derin sinir ağ metni özellikleri sınıflandırıcılarıyla ilgili özellikler sunar. [Uygulanabilirlik seçenekleri](how-to-use-automated-ml-for-ml-models.md#featurization)hakkında daha fazla bilgi edinin. 
 
 Sınıflandırma modellerinin ana amacı, yeni verilerin eğitim verilerinden dersleri göre hangi kategorilerin üzerine dönemeyeceğini tahmin etmeye yönelik olarak tasarlanmıştır. Ortak sınıflandırma örnekleri arasında sahtekarlık algılama, el yazısı tanıma ve nesne algılama sayılabilir.  Daha fazla bilgi edinin ve [otomatik makine öğrenimi ile sınıflandırma](tutorial-train-models-with-aml.md)örneği görüntüleyin.
 
@@ -286,7 +286,7 @@ Bkz. örnekler ve otomatik makine öğrenimi kullanarak modeller oluşturmayı �
 + [Öğreticiyi izleyin: Azure Machine Learning ile regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md)
 
 + Otomatik eğitim denemenize yönelik ayarları yapılandırın:
-  + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-create-portal-experiments.md).
+  + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-use-automated-ml-for-ml-models.md).
   + Python SDK ile [Bu adımları kullanın](how-to-configure-auto-train.md).
 
 + Zaman serisi verilerini kullanarak otomatik eğitme yapmayı öğrenin, [Bu adımları kullanın](how-to-auto-train-forecast.md).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384678"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129458"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Öğretici: bağlanma, kurulum ve etkinleştirme Azure Data Box Edge 
 
@@ -101,6 +101,11 @@ Panonuz fiziksel cihazı Data Box Edge hizmetiyle yapılandırmak ve kaydetmek i
    c. Kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı ve parola girin.
 
    d. Yapılandırılmış Web proxy ayarlarını doğrulamak ve uygulamak için **Ayarları Uygula**' yı seçin.
+   
+   > [!NOTE]
+   > Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar.
+   > Ara sunucunun sertifikası güvenilir olmadığından, tüm trafiği kesmeye ve okumaya (sonra her şeyi kendi sertifikalarıyla yeniden imzalamaya) yönelik proxy 'ler uyumlu değildir.
+   > Genellikle saydam proxy 'ler Azure Data Box Edge iyi çalışır.
 
 4. Seçim Sol bölmede **zaman ayarları**' nı seçin ve ardından cihazınız için saat dilimini ve birincil ve ikincil NTP sunucularını yapılandırın.  
     Cihazınızın bulut hizmeti sağlayıcılarınız ile kimlik doğrulaması yapabilmesi için zaman eşitlemesini gerektiğinden NTP sunucuları gereklidir.

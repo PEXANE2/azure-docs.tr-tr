@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375071"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126556"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management etki alanları arası ilkeler
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -127,7 +127,7 @@ Bu örnek, alma ve GÖNDERI dışında özel üst bilgileri veya yöntemleri ola
 |CORS|Kök öğe.|Yes|Yok|
 |izin verilen-kaynaklar|Etki alanları arası istekler için izin verilen kaynakları tanımlayan `origin` öğeleri içerir. `allowed-origins`, herhangi bir kaynağa izin vermek için `*` belirten tek bir `origin` öğesi içerebilir veya bir URI içeren bir veya daha fazla `origin` öğesi olabilir.|Yes|Yok|
 |kaynak|Değer tüm kaynakları veya tek bir kaynağı belirten bir URI 'yi sağlamak için `*` olabilir. URI bir düzen, konak ve bağlantı noktası içermelidir.|Yes|Bağlantı noktası bir URI 'de yoksayılırsa, HTTP için bağlantı noktası 80 ve HTTPS için bağlantı noktası 443 kullanılır.|
-|izin verilen-Yöntemler|GET veya POST dışındaki yöntemlere izin veriliyorsa bu öğe gereklidir. Desteklenen HTTP fiillerini belirten `method` öğeleri içerir.|Hayır|Bu bölüm yoksa GET ve POST desteklenir.|
+|izin verilen-Yöntemler|GET veya POST dışındaki yöntemlere izin veriliyorsa bu öğe gereklidir. Desteklenen HTTP fiillerini belirten `method` öğeleri içerir. Değer `*` tüm yöntemleri gösterir.|Hayır|Bu bölüm yoksa GET ve POST desteklenir.|
 |method|Bir HTTP fiilini belirtir.|`allowed-methods` bölümü varsa en az bir `method` öğesi gereklidir.|Yok|
 |izin verilen-üstbilgiler|Bu öğe, isteğe dahil edilebilir üst bilgilerin adlarını belirten `header` öğeleri içerir.|Hayır|Yok|
 |kullanıma yönelik üst bilgiler|Bu öğe, istemci tarafından erişilebilen üst bilgilerin adlarını belirten `header` öğeleri içerir.|Hayır|Yok|

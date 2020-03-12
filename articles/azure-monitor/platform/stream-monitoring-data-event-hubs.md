@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381190"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128547"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure izleme verilerini bir olay hub 'ına akış
 Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulamalar ve hizmetler için eksiksiz bir tam yığın izleme çözümü sağlar. Verileri analiz etmek ve farklı izleme senaryolarında kullanmak için Azure Izleyici kullanmanın yanı sıra, bu dosyayı ortamınızdaki diğer izleme araçlarına göndermeniz gerekebilir. Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem [Azure Event Hubs](/azure/event-hubs/)kullanmaktır. Bu makalede, farklı kaynaklardan bir olay hub 'ına izleme verileri akışını ve ayrıntılı kılavuza bağlantıları nasıl alabileceğiniz hakkında kısa bir açıklama sunulmaktadır.
@@ -35,7 +35,7 @@ Herhangi bir veri kaynağı için akışı yapılandırmadan önce, [bir Event H
 | Katman | Veriler | Yöntem |
 |:---|:---|:---|
 | [Azure kiracısı](data-sources.md#azure-tenant) | Denetim günlüklerini Azure Active Directory | AAD kiracınızda kiracı tanılama ayarını yapılandırın. Ayrıntılar için bkz. [öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) . |
-| [Azure aboneliği](data-sources.md#azure-subscription) | Azure Etkinlik Günlüğü | Etkinlik günlüğü olaylarını Event Hubs dışarı aktarmak için bir günlük profili oluşturun.  Ayrıntılar için bkz. [Azure etkinlik günlüğünü depolama alanına veya azure Event Hubs dışa aktarma](activity-log-export.md) . |
+| [Azure aboneliği](data-sources.md#azure-subscription) | Azure Etkinlik Günlüğü | Etkinlik günlüğü olaylarını Event Hubs dışarı aktarmak için bir günlük profili oluşturun.  Ayrıntılar için bkz. Azure [Platform günlüklerini Azure 'Da akışa almak Event Hubs](resource-logs-stream-event-hubs.md) . |
 | [Azure kaynakları](data-sources.md#azure-resources) | Platform ölçümleri<br> Kaynak günlükleri |Her iki tür veri, bir kaynak tanılama ayarı kullanılarak bir olay hub 'ına gönderilir. Ayrıntılar için bkz. [Azure Kaynak günlüklerini bir olay hub 'ına akış](resource-logs-stream-event-hubs.md) . |
 | [İşletim sistemi (konuk)](data-sources.md#operating-system-guest) | Azure sanal makineleri | Azure 'daki Windows ve Linux sanal makinelerine [Azure tanılama uzantısını](diagnostics-extension-overview.md) yükler. Windows VM 'Lerle ilgili ayrıntılar için [Event Hubs kullanarak bkz. Azure Tanılama verileri etkin yolda](diagnostics-extension-stream-event-hubs.md) ve Linux VM 'lerinde Ayrıntılar için [ölçümleri ve günlükleri Izlemek üzere Linux Tanılama uzantısı 'nı kullanın](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) . |
 | [Uygulama kodu](data-sources.md#application-code) | Application Insights | Application Insights, Olay Hub 'larına veri akışı için doğrudan bir yöntem sağlamaz. Application Insights verilerinin sürekli olarak bir depolama hesabına [dışarı aktarılmasını ayarlayabilir](../../azure-monitor/app/export-telemetry.md) ve ardından mantıksal uygulama [ile el ile akışta](#manual-streaming-with-logic-app)açıklanan şekilde verileri bir olay hub 'ına göndermek için bir mantıksal uygulama kullanabilirsiniz. |

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364539"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129570"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Kapsayıcı ve veritabanlarına aktarım hızı sağlama
 
@@ -87,11 +87,11 @@ Azure Cosmos DB hesabınız zaten > = 25 kapsayıcılarıyla paylaşılan bir ü
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>Bir veritabanında veya kapsayıcıda üretilen işi güncelleştirme
 
-Bir Azure Cosmos kapsayıcısı veya veritabanı oluşturduktan sonra, sağlanan aktarım hızını güncelleştirebilirsiniz. Veritabanı veya kapsayıcıda yapılandırabileceğiniz en fazla sağlanan aktarım hızı için bir sınır yoktur. Sağlanan en düşük verimlilik aşağıdaki etkenlere bağlıdır: 
+Bir Azure Cosmos kapsayıcısı veya veritabanı oluşturduktan sonra, sağlanan aktarım hızını güncelleştirebilirsiniz. Veritabanı veya kapsayıcıda yapılandırabileceğiniz en fazla sağlanan aktarım hızı için bir sınır yoktur. [Sağlanan en düşük verimlilik](concepts-limits.md#storage-and-throughput) aşağıdaki etkenlere bağlıdır: 
 
 * Kapsayıcıda depoladığınız en büyük veri boyutu
 * Kapsayıcıda sağladığınız en fazla aktarım hızı
-* Paylaşılan aktarım hızı ile bir veritabanında oluşturduğunuz en fazla Azure Cosmos kapsayıcısı sayısı. 
+* Paylaşılan verimlilik içeren bir veritabanında bulunan Azure Cosmos kapsayıcılarının geçerli sayısı. 
 
 SDK 'Ları kullanarak bir kapsayıcının veya veritabanının en düşük aktarım hızını alabilir veya Azure portal değeri görüntüleyebilirsiniz. .NET SDK kullanırken [Documentclient. Replaceoffsilinebilir Sync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) yöntemi sağlanan aktarım hızı değerini ölçeklendirmenize olanak tanır. Java SDK 'sını kullanırken, [Requestoptions. Setofferüretilen Iş verimlilik](sql-api-java-samples.md#offer-examples) yöntemi sağlanan aktarım hızı değerini ölçeklendirmenize olanak tanır. 
 

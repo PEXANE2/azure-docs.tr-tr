@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386969"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129395"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 'de dizin oluşturma ilkeleri
 
@@ -34,7 +34,7 @@ Azure Cosmos DB iki dizin oluşturma modunu destekler:
 
 Varsayılan olarak, dizin oluşturma ilkesi `automatic`olarak ayarlanır. Dizin oluşturma ilkesindeki `automatic` özelliği `true`olarak ayarlanarak elde edilir. Bu özelliğin `true` olarak ayarlanması, Azure CosmosDB 'nin belgeleri yazıldığı şekilde otomatik olarak dizin oluşturulmasına olanak sağlar.
 
-## <a name="including-and-excluding-property-paths"></a>Özellik yollarını dahil etme ve hariç tutma
+## <a id="include-exclude-paths"></a>Özellik yollarını dahil etme ve hariç tutma
 
 Özel bir dizin oluşturma ilkesi, dizin oluşturma işleminden açıkça dahil edilen veya dışlanan Özellik yollarını belirtebilir. Dizini oluşturulmuş yolların sayısını en iyi duruma getirerek, Kapsayıcınız tarafından kullanılan depolama miktarını düşürebilirsiniz ve yazma işlemlerinin gecikme süresini artırabilirsiniz. Bu yollar, [Dizin oluşturma genel bakış bölümünde açıklanan yöntemi](index-overview.md#from-trees-to-property-paths) aşağıdaki eklemelerle izleyerek tanımlanmıştır:
 
@@ -75,7 +75,7 @@ Herhangi bir dizin oluşturma ilkesinin, kök yolu `/*` dahil edilen ya da hari�
 
 - : Alfasayısal karakterler ve _ (alt çizgi) içeren normal karakter içeren yollar için, yol dizesinin çift tırnak etrafında (örneğin, "/path/?") kaçış olması gerekmez. Diğer özel karakterlere sahip yollar için, yol dizesini çift tırnak etrafında (örneğin, "/\"Path-ABC\"/?") kaçış yapmanız gerekir. Yolunuzda özel karakterler bekleliyorsanız, güvenlik için her yolu da kaçış yapabilirsiniz. İşlevsel olarak, tüm yolları yalnızca özel karakterlere sahip olanlara karşı atladıysanız herhangi bir farklılık yapmaz.
 
-- "ETag" sistem özelliği dizin oluşturma için eklenen yola eklenemediği takdirde varsayılan olarak dizin oluşturma işleminden çıkarılır.
+- ETag, dizin oluşturma için eklenen yola eklenmediği müddetçe, "_etag" sistem özelliği varsayılan olarak dizin oluşturma işleminden çıkarılır.
 
 Yolları dahil etme ve hariç tutma sırasında aşağıdaki özniteliklerle karşılaşabilirsiniz:
 

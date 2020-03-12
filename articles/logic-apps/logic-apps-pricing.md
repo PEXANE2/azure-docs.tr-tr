@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358928"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127008"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -64,7 +64,7 @@ Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-netwo
 
   Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Bu konunun ilerleyen kısımlarında [tümleştirme hesabı katmanları ve fiyatlandırma modelleri](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz.
 
-Premium ıSE SKU 'sunu seçerseniz, temel birim sabit kapasiteye sahiptir. Daha fazla işleme ihtiyacınız varsa, oluşturma sırasında veya [daha sonra daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). Geliştirici ıSE SKU 'SU daha fazla ölçek birimi ekleme yeteneğine sahip değildir. ISE 'de çalışan Logic Apps veri bekletme maliyetlerine tabi değildir.
+Premium ıSE SKU 'sunu seçerseniz, temel birim sabit kapasiteye sahiptir. Daha fazla işleme ihtiyacınız varsa, oluşturma sırasında veya [daha sonra daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). Geliştirici ıSE SKU 'SU daha fazla ölçek birimi ekleme yeteneğine sahip değildir. ISE 'de çalışan Logic Apps veri bekletme maliyetlerine tabi değildir.
 
 Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps).
 

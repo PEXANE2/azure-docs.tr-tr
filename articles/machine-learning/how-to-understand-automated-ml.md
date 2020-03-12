@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 69cf79f8258f85f2fb5e787f91aa843837d0a3a1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393350"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129659"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Otomatik makine öğrenimi sonuçlarını anlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 * SDK ile ya da Azure Machine Learning Studio 'da otomatik makine öğrenimi çalıştırmak için bir deneme oluşturun.
 
     * Bir [sınıflandırma modeli](how-to-auto-train-remote.md) veya [regresyon modeli](tutorial-auto-train-models.md) oluşturmak için SDK 'yı kullanma
-    * Uygun verileri karşıya yükleyerek bir sınıflandırma veya regresyon modeli oluşturmak için [Azure Machine Learning Studio 'yu](how-to-create-portal-experiments.md) kullanın.
+    * Uygun verileri karşıya yükleyerek bir sınıflandırma veya regresyon modeli oluşturmak için [Azure Machine Learning Studio 'yu](how-to-use-automated-ml-for-ml-models.md) kullanın.
 
 ## <a name="view-the-run"></a>Çalıştırmayı görüntüle
 
@@ -89,7 +89,7 @@ balanced_accuracy|Dengeli doğruluğu her sınıf için geri çağırma aritmeti
 f1_score_macro|F1 puanı harmonik duyarlık ve geri çağırma ' dir. Makro her sınıf için F1 puanının aritmetik ortalaması anlamına gelir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Ortalama "makrosu" =|
 f1_score_micro|F1 puanı harmonik duyarlık ve geri çağırma ' dir. Mikro, toplam doğru pozitif sonuç sayısı, yanlış negatifler ve hatalı pozitif sonuçlar sayımarak Global olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Ortalama "micro" =|
 f1_score_weighted|F1 puanı harmonik duyarlık ve geri çağırma ' dir. Her sınıf için F1 puanı sınıfı sıklığı Ağırlıklı ortalama|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Ortalama "ağırlıklı" =|
-log_loss|(ÇOKTERİMLİ) Lojistik regresyon ve bunu uzantıları sinir ağları, negatif log-olasılığını olasılıklara sınıflandırıcının Öngörüler verilen true etiketlerin tanımlandığı gibi kullanılan kaybı işlev budur. {0,1} ile gerçek etiket ve tahmini olasılık YP ile ilgili olan tek bir örnek için, günlük kaybı-log P (YT&#124;YP) =-(YT günlüğü (YP) + (1. YT) günlüğü (1-YP)).|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Yok|
+log_loss|Bu, bir dayalı sınıflandırıcının tahminlerini verilen doğru etiketlerin olumsuz günlük olma olasılığı olarak tanımlanan (ÇOKTERİMLİ) Lojistik gerileme ve sinir Networks gibi uzantılar içinde kullanılan kayıp işlevidir. {0,1} ile gerçek etiket ve tahmini olasılık YP ile ilgili olan tek bir örnek için, günlük kaybı-log P (YT&#124;YP) =-(YT günlüğü (YP) + (1. YT) günlüğü (1-YP)).|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Yok|
 norm_macro_recall|Normalleştirilmiş makrosu geri çağırma rastgele performans bir puan, 0 ve 1'in bir puan mükemmel performans sahip olacak şekilde normalleştirilmiş makrosu geri çağırma olur. Bu, norm_macro_recall: = (recall_score_macro-R)/(1-R) ile elde edilir; burada R, rastgele tahmine dayalı olarak beklenen recall_score_macro değeridir (örneğin, ikili sınıflandırma için R = 0,5 ve C sınıfı sınıflandırma sorunları için R = (1/C)).|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "makro" |
 precision_score_macro|Duyarlık, doğru şekilde etiketlenmiş pozitif tahmin edilen öğelerin yüzdesidir. Makro her sınıf için Duyarlığın aritmetik ortalaması anlamına gelir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Ortalama "makrosu" =|
 precision_score_micro|Duyarlık, doğru şekilde etiketlenmiş pozitif tahmin edilen öğelerin yüzdesidir. Mikro, toplam doğru pozitif sonuç sayısı ve hatalı pozitif sonuçlar eklenerek Global olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Ortalama "micro" =|
@@ -190,7 +190,7 @@ Kazançlar grafiği her veri bölümü tarafından bir sınıflandırma modeli p
 ### <a name="calibration-chart"></a>Ayar grafiği
 
 #### <a name="what-is-a-calibration-chart"></a>Ayar grafiği nedir?
-Bir ayar çizim, Tahmine dayalı bir modelin güvenle görüntülemek için kullanılır. Bunu "olasılık" temsil ettiği bazı etiket altında belirli bir örneğine ait olasılığını tahmin edilen olasılığını ve gerçek olasılığını arasındaki ilişkiyi gösteren göre yapar.
+Bir ayar çizim, Tahmine dayalı bir modelin güvenle görüntülemek için kullanılır. Bunu, tahmin edilen olasılık ve gerçek olasılık arasındaki ilişkiyi göstererek yapar; burada "olasılık" belirli bir örneğin bazı etiketlerinin altına ait olma olasılığını temsil eder.
 #### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Otomatik ML, ayarlama grafiği ile ne yapar?
 Tüm sınıflandırma sorunları ayarlama satır micro-ortalama, makro ortalama ve her sınıfta belirli bir Tahmine dayalı model için gözden geçirebilirsiniz.
 

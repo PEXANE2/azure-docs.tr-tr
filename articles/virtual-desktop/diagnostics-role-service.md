@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+manager: lizross
+ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383651"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127969"
 ---
 # <a name="identify-and-diagnose-issues"></a>Sorunları belirleme ve tanılama
 
@@ -34,23 +35,66 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 Windows sanal masaüstü tanılaması yalnızca bir PowerShell cmdlet 'i kullanır, ancak sorunları daraltmak ve yalıtmak için birçok isteğe bağlı parametre içerir. Aşağıdaki bölümlerde, sorunları tanılamak için çalıştırabileceğiniz cmdlet 'ler listelenmektedir. Çoğu filtre birlikte uygulanabilir. Parantez içinde listelenen değerler `<tenantName>`gibi, durumunuza uygulanan değerlerle değiştirilmelidir.
 
-### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Kiracınızdaki tanılama etkinliklerini alın
+>[!IMPORTANT]
+>Tanılama özelliği, tek kullanıcılı sorun giderme içindir. PowerShell kullanan tüm sorgular *-UserName* veya *-ActivityId* parametrelerini içermelidir. İzleme özellikleri için Log Analytics kullanın. Tanılama verilerini çalışma alanınıza gönderme hakkında daha fazla bilgi için bkz. [Tanılama özelliği için Log Analytics kullanma](diagnostics-log-analytics.md) . 
 
-**Get-RdsDiagnosticActivities** cmdlet 'ini girerek tanılama etkinliklerini alabilirsiniz. Aşağıdaki örnek cmdlet 'i, en az son kullanılan bir tanılama etkinlikleri listesi döndürür.
+### <a name="filter-diagnostic-activities-by-user"></a>Tanılama etkinliklerini kullanıcıya göre filtrele
 
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName>
-```
-
-Diğer Windows sanal masaüstü PowerShell cmdlet 'leri gibi, sorgunuz için kullanmak istediğiniz kiracının adını belirtmek üzere **-TenantName** parametresini kullanmanız gerekir. Kiracı adı, neredeyse tüm tanılama etkinlik sorguları için geçerlidir.
-
-### <a name="retrieve-detailed-diagnostic-activities"></a>Ayrıntılı tanılama etkinliklerini alın
-
-**-Detailed** parametresi döndürülen her bir tanılama etkinliği için ek ayrıntılar sağlar. Her etkinliğin biçimi, etkinlik türüne göre farklılık gösterir. **-Detailed** parametresi, aşağıdaki örnekte gösterildiği gibi herhangi bir **Get-RdsDiagnosticActivities** sorgusuna eklenebilir.
+**-UserName** parametresi, aşağıdaki örnek cmdlet 'inde gösterildiği gibi, belirtilen kullanıcı tarafından başlatılan tanılama etkinliklerinin listesini döndürür.
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
+
+**-UserName** parametresi, diğer isteğe bağlı filtreleme parametreleriyle de birleştirilebilir.
+
+### <a name="filter-diagnostic-activities-by-time"></a>Tanılama etkinliklerini zamana göre filtrele
+
+Döndürülen tanılama etkinlik listesini **-StartTime** ve **-bitişsaati** parametreleriyle filtreleyebilirsiniz. **-StartTime** parametresi, aşağıdaki örnekte gösterildiği gibi belirli bir tarihten başlayarak bir tanılama etkinlik listesi döndürür.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
+```
+
+**-Bitişsaati** parametresi, için sonuçları almak istediğiniz belirli bir süreyi belirtmek için **-StartTime** parametresi ile bir cmdlet 'ine eklenebilir. Aşağıdaki örnek cmdlet 'i 1 Ağustos ve 10 Ağustos arasında bir tanılama etkinlikleri listesi döndürür.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
+```
+
+**-StartTime** ve **-bitişsaati** parametreleri, diğer isteğe bağlı filtreleme parametreleriyle de birleştirilebilir.
+
+### <a name="filter-diagnostic-activities-by-activity-type"></a>Tanılama etkinliklerini etkinlik türüne göre filtrele
+
+Ayrıca, **-ActivityType** parametresiyle etkinlik türüne göre tanılama etkinliklerini filtreleyebilirsiniz. Aşağıdaki cmdlet Son Kullanıcı bağlantılarının bir listesini döndürür:
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
+```
+
+Aşağıdaki cmdlet yönetici yönetim görevlerinin bir listesini döndürür:
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
+```
+
+**Get-RdsDiagnosticActivities** cmdlet 'i Şu anda ActivityType öğesinin akışını belirtmeyi desteklemiyor.
+
+### <a name="filter-diagnostic-activities-by-outcome"></a>Tanılama etkinliklerini sonuca göre filtrele
+
+Döndürülen tanılama etkinlik listesini, **-Outcome** parametresiyle Outcome ile filtreleyebilirsiniz. Aşağıdaki örnek cmdlet, başarılı tanılama etkinliklerinin bir listesini döndürür.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
+```
+
+Aşağıdaki örnek cmdlet, başarısız tanılama etkinliklerinin bir listesini döndürür.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
+```
+
+**-Outcome** parametresi, diğer isteğe bağlı filtreleme parametreleriyle de birleştirilebilir.
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Etkinlik KIMLIĞINE göre belirli bir tanılama etkinliğini al
 
@@ -68,63 +112,13 @@ Başarısız bir etkinliğin hata iletilerini görüntülemek için cmdlet 'ini 
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="filter-diagnostic-activities-by-user"></a>Tanılama etkinliklerini kullanıcıya göre filtrele
+### <a name="retrieve-detailed-diagnostic-activities"></a>Ayrıntılı tanılama etkinliklerini alın
 
-**-UserName** parametresi, aşağıdaki örnek cmdlet 'inde gösterildiği gibi, belirtilen kullanıcı tarafından başlatılan tanılama etkinliklerinin listesini döndürür.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
-```
-
-**-UserName** parametresi, diğer isteğe bağlı filtreleme parametreleriyle de birleştirilebilir.
-
-### <a name="filter-diagnostic-activities-by-time"></a>Tanılama etkinliklerini zamana göre filtrele
-
-Döndürülen tanılama etkinlik listesini **-StartTime** ve **-bitişsaati** parametreleriyle filtreleyebilirsiniz. **-StartTime** parametresi, aşağıdaki örnekte gösterildiği gibi belirli bir tarihten başlayarak bir tanılama etkinlik listesi döndürür.
+**-Detailed** parametresi döndürülen her bir tanılama etkinliği için ek ayrıntılar sağlar. Her etkinliğin biçimi, etkinlik türüne göre farklılık gösterir. **-Detailed** parametresi, aşağıdaki örnekte gösterildiği gibi herhangi bir **Get-RdsDiagnosticActivities** sorgusuna eklenebilir.
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018"
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
 ```
-
-**-Bitişsaati** parametresi, için sonuçları almak istediğiniz belirli bir süreyi belirtmek için **-StartTime** parametresi ile bir cmdlet 'ine eklenebilir. Aşağıdaki örnek cmdlet 'i 1 Ağustos ve 10 Ağustos arasında bir tanılama etkinlikleri listesi döndürür.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
-```
-
-**-StartTime** ve **-bitişsaati** parametreleri, diğer isteğe bağlı filtreleme parametreleriyle de birleştirilebilir.
-
-### <a name="filter-diagnostic-activities-by-activity-type"></a>Tanılama etkinliklerini etkinlik türüne göre filtrele
-
-Ayrıca, **-ActivityType** parametresiyle etkinlik türüne göre tanılama etkinliklerini filtreleyebilirsiniz. Aşağıdaki cmdlet Son Kullanıcı bağlantılarının bir listesini döndürür:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Connection
-```
-
-Aşağıdaki cmdlet yönetici yönetim görevlerinin bir listesini döndürür:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
-```
-
-**Get-RdsDiagnosticActivities** cmdlet 'i Şu anda ActivityType öğesinin akışını belirtmeyi desteklemiyor.
-
-### <a name="filter-diagnostic-activities-by-outcome"></a>Tanılama etkinliklerini sonuca göre filtrele
-
-Döndürülen tanılama etkinlik listesini, **-Outcome** parametresiyle Outcome ile filtreleyebilirsiniz. Aşağıdaki örnek cmdlet, başarılı tanılama etkinliklerinin bir listesini döndürür.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Success
-```
-
-Aşağıdaki örnek cmdlet, başarısız tanılama etkinliklerinin bir listesini döndürür.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
-```
-
-**-Outcome** parametresi, diğer isteğe bağlı filtreleme parametreleriyle de birleştirilebilir.
 
 ## <a name="common-error-scenarios"></a>Yaygın hata senaryoları
 
