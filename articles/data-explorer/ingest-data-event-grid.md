@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424992"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096426"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid bildirimlerine abone olarak Azure Veri Gezgini blob alma
 
@@ -118,7 +118,7 @@ Bundan sonra blob kapsayıcısına akan verilerin test tablosuna akışı için 
      **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Tablo | *TestTable* | **TestDatabase** içinde oluşturduğunuz tablo. |
-    | Veri biçimi | *JSON* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOH, SCSV, TSV ve TXT. Desteklenen sıkıştırma seçenekleri: zip ve GZip |
+    | Veri biçimi | *JSON* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOH, SCSV, TSV, RAW ve TXT. Desteklenen sıkıştırma seçenekleri: zip ve GZip |
     | Sütun eşleme | *TestMapping* | **TestDatabase** içinde oluşturduğunuz ve gelen JSON verilerini **TestTable** tablosunun sütun adları ve veri türleriyle eşleyen eşleme.|
     | | |
     
@@ -150,13 +150,32 @@ Verileri bir dosyaya kaydedin ve bu komut dosyasıyla karşıya yükleyin:
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> En iyi giriş performansını elde etmek için, alma işlemi için gönderilen sıkıştırılmış Blobların *sıkıştırılmamış* boyutunun bildirilmesi gerekir. Event Grid bildirimleri yalnızca temel ayrıntıları içerdiğinden, boyut bilgilerinin açık olarak bildirilmesi gerekir. Sıkıştırılmamış boyut bilgileri, blob meta verilerindeki `rawSizeBytes` özelliği, *sıkıştırılmamış* veri boyutu bayt cinsinden ayarlanarak belirtilebilir.
+
+### <a name="ingestion-properties"></a>Alma özellikleri
+
+Blob meta verileri aracılığıyla blob alma alma [özelliklerini](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) belirtebilirsiniz.
+
+Bu özellikler ayarlanabilir:
+
+|**Özellik** | **Özellik açıklaması**|
+|---|---|
+| `rawSizeBytes` | Ham (sıkıştırılmamış) verilerin boyutu. Avro/ORC/Parquet için, formata özgü sıkıştırma uygulanmadan önceki boyut budur.|
+| `kustoTable` |  Mevcut hedef tablonun adı. `Data Connection` dikey penceresinde ayarlanan `Table` geçersiz kılar. |
+| `kustoDataFormat` |  Veri biçimi. `Data Connection` dikey penceresinde ayarlanan `Data format` geçersiz kılar. |
+| `kustoIngestionMappingReference` |  Kullanılacak varolan alma eşlemesinin adı. `Data Connection` dikey penceresinde ayarlanan `Column mapping` geçersiz kılar.|
+| `kustoIgnoreFirstRecord` | `true`olarak ayarlanırsa, kusto blob 'un ilk satırını yoksayar. Başlıkları yoksaymak için tablolu biçim verilerinde (CSV, TSV veya benzer) kullanın. |
+| `kustoExtentTags` | Elde edilen kapsamın içine eklenecek [etiketleri](/azure/kusto/management/extents-overview#extent-tagging) temsil eden dize. |
+| `kustoCreationTime` |  Bir ISO 8601 dizesi olarak biçimlendirilen blob için [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) geçersiz kılar. Geri doldurma için kullanın. |
 
 > [!NOTE]
 > Azure Veri Gezgini, Blobların gönderisini silmez.

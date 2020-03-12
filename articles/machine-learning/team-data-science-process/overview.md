@@ -7,16 +7,16 @@ manager: marktab
 editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
-ms.topic: article
+ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721396"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79088076"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process nedir?
 
@@ -99,7 +99,7 @@ Birden fazla proje üzerinde çalışma ve çeşitli bulut analiz altyapısı bi
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Araçlar ve yardımcı programlar için proje yürütme
 
-Çoğu kuruluş işlemde giriş zordur. Veri bilimi işlemi ve yaşam döngüsü Yardım düşük önündeki engelleri uygulamak ve kendi benimseme tutarlılığını artırmak için sağlanan araçları. TDSP araçları ve betikleri TDSP benimsenmesini ekip içinde hızlı giriş yapmak için başlangıç kümesi sağlar. Ayrıca, veri bilimi yaşam döngüsünü veri keşfi ve modelleme temel gibi ortak görevlerin bazıları otomatikleştirilmesine yardımcı olur. Kişiler, paylaşılan Araçlar ve yardımcı programlar, takımın paylaşılan kod depoda katkıda bulunmak için sağlanan iyi tanımlanmış bir yapı yoktur. Bu kaynaklar, sonra ekip veya kuruluş içindeki diğer projeleri tarafından yararlanılabilir. TDSP araçları ve yardımcı programlar için bütün topluluk Katkıları etkinleştirmek de planları. TDSP yardımcı programları [GitHub](https://github.com/Azure/Azure-TDSP-Utilities)'dan kopyalanabilir.
+Çoğu kuruluş işlemde giriş zordur. Veri bilimi işlemi ve yaşam döngüsü Yardım düşük önündeki engelleri uygulamak ve kendi benimseme tutarlılığını artırmak için sağlanan araçları. TDSP araçları ve betikleri TDSP benimsenmesini ekip içinde hızlı giriş yapmak için başlangıç kümesi sağlar. Ayrıca, veri bilimi yaşam döngüsünü veri keşfi ve modelleme temel gibi ortak görevlerin bazıları otomatikleştirilmesine yardımcı olur. Kişilerin, ekip paylaşılan kod deposunda paylaşılan araçlar ve yardımcı programlar katkıda bulunmak için iyi tanımlanmış bir yapı mevcuttur. Bu kaynaklar, sonra ekip veya kuruluş içindeki diğer projeleri tarafından yararlanılabilir. TDSP araçları ve yardımcı programlar için bütün topluluk Katkıları etkinleştirmek de planları. TDSP yardımcı programları [GitHub](https://github.com/Azure/Azure-TDSP-Utilities)'dan kopyalanabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -3,12 +3,12 @@ title: ACR Görevlerine genel bakış
 description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, yönetim ve düzeltme eki uygulama sağlayan bir Azure Container Registry özellik paketi olan ACR görevlerine giriş.
 ms.topic: article
 ms.date: 01/22/2020
-ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615947"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087273"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -124,15 +124,11 @@ Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi içi
 | Linux | 'tür<br/>uzaklığını<br/>arm64<br/>386 |
 | Windows | 'tür |
 
-## <a name="view-task-logs"></a>Görev günlüklerini görüntüle
+## <a name="view-task-output"></a>Görev çıktısını görüntüleme
 
-Her görev çalıştırması, görev adımlarının başarıyla çalışıp çalışmadığını belirleyebilmek için inceleyebileceğiniz günlük çıktısı üretir. Görevi tetiklemek için [az ACR Build](/cli/azure/acr#az-acr-build), [az ACR Run](/cli/azure/acr#az-acr-run)veya [az ACR Task Run](/cli/azure/acr/task#az-acr-task-run) komutunu kullanırsanız, görev çalıştırmasının günlük çıktısı konsola akışla kaydedilir ve ayrıca daha sonra almak üzere saklanır. Bir görev otomatik olarak tetiklendiğinde (örneğin, kaynak kodu kaydı veya temel görüntü güncelleştirmesi), görev günlükleri yalnızca depolanır. Azure portal çalışan bir görevin günlüklerini görüntüleyin veya [az ACR görev günlükleri](/cli/azure/acr/task#az-acr-task-logs) komutunu kullanın.
+Her görev çalıştırması, görev adımlarının başarıyla çalışıp çalışmadığını belirleyebilmek için inceleyebileceğiniz günlük çıktısı üretir. Bir görevi el ile tetiklemeniz durumunda, görev çalıştırmasının günlük çıktısı konsola akışla kaydedilir ve ayrıca daha sonra almak üzere saklanır. Bir görev otomatik olarak tetiklendiğinde (örneğin, kaynak kodu kaydı veya temel görüntü güncelleştirmesi), görev günlükleri yalnızca depolanır. Azure portal çalıştırma günlüklerini görüntüleyin veya [az ACR görev günlükleri](/cli/azure/acr/task#az-acr-task-logs) komutunu kullanın.
 
-Varsayılan olarak, bir kayıt defterindeki görev çalıştırmaları için veriler ve Günlükler 30 gün boyunca tutulur ve sonra otomatik olarak temizlenir. Bir görev çalıştırmasının verilerini arşivlemek istiyorsanız, [az ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) komutunu kullanarak arşivlemeyi etkinleştirin. Aşağıdaki örnek, kayıt defteri *myregistry*içinde *CF11* çalıştırması görevi için arşivlemeyi mümkün bir şekilde sunar.
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+[Görev günlüklerini görüntüleme ve yönetme](container-registry-tasks-logs.md)hakkında daha fazla bilgi için bkz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+manager: lizross
+ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201790"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127578"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -159,7 +160,7 @@ Sertifikalı tümleştirme ortağı olarak, Liquit, RIP ve değiştirme gecikmes
 
 Oturum açma sunucusu, Windows sanal masaüstü ortamlarında uygulama performansı testi için yazılım sunmaya yönelik bir Windows sanal masaüstü katma bir hizmet sağlayıcıdır ve Microsoft iş ortağıdır. Şirket içi iş hizmetlerini Windows sanal masaüstüne taşıyan müşteriler, Windows 10 Enterprise çoklu oturum, Windows 10 Enterprise ve için en iyi performansı, ölçeklenebilirliği ve kullanılabilirliği değerlendirmek ve bakımını yapmak üzere Login VSI Enterprise Edition 'ı kullanır. Windows 7, iş açısından kritik uygulamalarıyla etkinleştirildi.
 
-- [İş ortağı Web sitesine gidin](https://www.loginvsi.com).
+- [İş ortağı Web sitesine gidin](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -253,6 +254,16 @@ Karmaşık bir şekilde, Windows sanal masaüstü ve diğer masaüstü platforml
 Karmaşık bir şekilde, Windows sanal masaüstü ve ötesinde yazdırma sorunsuz bir şekilde gerçekleştirilir. Karmaşık yazılım yazılımları, yöneticilerin şirket içi yazıcılara kolayca buluta bağlanmasını sağlar ve bu sayede geleneksel ortamlardan yeni, modern çalışma alanlarına kurumsal yazdırma yönetimini genişleterek.
 
 - [İş ortağı Web sitesine gidin](https://www.tricerat.com/microsoft-printing).
+
+## <a name="vast-limits"></a>büyük sınırlar
+
+![büyük limit logosu](./media/partners/vast-limits.png)
+
+uberAgent şirketi de büyük sınırlara Windows sanal masaüstü dağıtımları için görünürlük sağlar. BT uzmanlarının BT uzmanlarının nasıl düşündüğünü ve hangi araçlara ihtiyacı olduğunu bildiğinden, kurumsal BT için yazılım oluşturur. Ürünlerinin işlerini yapmak için ihtiyaç duydukları şeyleri tam olarak sunarak BT uzmanlarının daha verimli olmasını sağlayın; daha fazla değil, daha az.
+
+uberAgent, yalnızca veri toplamadığı Son Kullanıcı bilgi işlem için tasarlanan bir izleme ve analiz ürünüdür; müşterilere önemli bilgiler verir. uberAgent 'ın kendi ölçümleri vardır ve kullanıcı deneyiminin, uygulama performansının ve uç nokta güvenliğinin önemli yönlerini kapsayan, sistem Kullanıcı yoğunluğunu etkilemeden Windows sanal masaüstü Sanal makinelerinizle ilgili bilmeniz gereken her şeyi size söylemiş olursunuz. uberAgent sorun gidermeyi basitleştirir, boyutlandırılmasına yardımcı olur ve bilgi güvenliği açısından çok daha fazla bilgi sağlar.
+
+- [İş ortağı Web sitesine gidin](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspot"></a>Çalışma noktası
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 9f3fd59fa040ab46a5fc4ef8272a17cba4c631b8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925780"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127341"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>IaaS kaynaklarınızı 1 Mart 2023 ' e kadar Azure Resource Manager geçirin 
 
@@ -23,7 +23,7 @@ ms.locfileid: "77925780"
 
 Bugün, IaaS VM 'lerinin %90 ' u Azure Resource Manager kullanıyor. IaaS kaynaklarını Azure Service Manager (ASM) aracılığıyla kullanıyorsanız, şimdi geçişinizi planlamaya başlayın ve [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/)yararlanmak Için 1 Mart 2023 ' den yararlanın.
 
-Klasik VM 'Ler kullanımdan kaldırılması için [modern yaşam döngüsü ilkesini](https://support.microsoft.com/help/30881/modern-lifecycle-policy) takip edecektir.
+Klasik VM 'Ler, kullanımdan kaldırma için [modern yaşam döngüsü ilkesini](https://support.microsoft.com/help/30881/modern-lifecycle-policy) takip edecektir.
 
 ## <a name="how-does-this-affect-me"></a>Bu değişiklik beni nasıl etkileyecek? 
 
@@ -31,7 +31,7 @@ Klasik VM 'Ler kullanımdan kaldırılması için [modern yaşam döngüsü ilke
 2) Müşteriler, 1 Mart 2023 ' de artık Azure Service Manager kullanarak IaaS VM 'Leri başlatamaz ve hala çalışıyor veya ayrılan ya da ayrılmakta ve serbest bırakılır. 
 2) 1 Mart 2023 ' de, Azure Resource Manager 'e geçirilmemiş abonelikler, kalan klasik VM 'Leri silme zaman çizelgeleriyle ilgili olarak bilgilendirilir.  
 
-Aşağıdaki Azure hizmetleri ve işlevleri, bu kullanımdan kaldırma tarafından **etkilenmeyecektir:** 
+Aşağıdaki Azure hizmetleri ve işlevleri, bu kullanımdan kaldırma sürecinden **etkilenmeyecektir**: 
 - Cloud Services 
 - Klasik VM 'Ler **tarafından kullanılmayan depolama hesapları** 
 - Sanal ağlar (VNet) klasik VM 'Ler **tarafından kullanılmıyor.** 

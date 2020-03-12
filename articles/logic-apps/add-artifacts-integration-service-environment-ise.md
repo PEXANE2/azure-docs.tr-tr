@@ -6,16 +6,19 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899197"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127260"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) kaynak ekleme
 
 Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturduktan sonra, Azure sanal ağınızdaki kaynaklara erişebilmeleri için Logic Apps, tümleştirme hesapları ve bağlayıcılar gibi kaynakları ekleyin. Örneğin, ıSE 'nizi oluşturduktan sonra kullanılabilir hale gelen yönetilen ıSE bağlayıcıları mantıksal uygulama tasarımcısında otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda gözükmeleri için [Bu bağlayıcıları el ile ekleyip dağıtmanız](#add-ise-connectors-environment) gerekir.
+
+> [!IMPORTANT]
+> Mantıksal uygulamalar ve tümleştirme hesaplarının bir ıSE 'de birlikte çalışması için, her ikisi de konumuyla *aynı Ise* 'yı kullanmalıdır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852191"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087007"
 ---
 # <a name="job-and-task-error-checking"></a>İş ve görev hatası denetimi
 
@@ -20,7 +20,7 @@ ms.locfileid: "74852191"
 
 Bu makalede, işler ve görevler gönderildikten sonra oluşabilecek hatalar ele alınmaktadır. Denetlenmesi ve işlenmesi gereken hataları listeler ve açıklar.
 
-## <a name="jobs"></a>İş
+## <a name="jobs"></a>İşler
 
 Bir iş, bir veya daha fazla görevin gruplandırılması, görevleri gerçekten çalıştırılacak komut satırlarını belirtmektir.
 
@@ -72,6 +72,17 @@ Her durumda, hatalar ve hatalar hakkında bilgi için aşağıdaki özellikler d
 Görev hatalarının iş ve görev bağımlılıklarındaki etkileri göz önünde bulundurulmalıdır.  Bir görevin bağımlılıklar ve iş için bir eylem yapılandırması için [Exitconditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions) özelliği belirtilebilir.
 - Bağımlılıklar için [DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction) , başarısız göreve bağımlı görevlerin engellenip engellenmeyeceğini veya çalıştırılmadığını denetler.
 - Bu iş için, [Jobaction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction) başarısız görevin devre dışı, sonlandırılmış veya sola değiştirilmemiş iş olup olmadığını denetler.
+
+### <a name="task-command-line-failures"></a>Görev komut satırı sorunları
+
+Görev komut satırı çalıştırıldığında, `stderr.txt` ve `stdout.txt`çıkış yazılır. Ayrıca, uygulama uygulamaya özgü günlük dosyalarına yazabilir.
+
+Bir görevin çalıştırıldığı havuz düğümü hala mevcutsa, günlük dosyaları elde edilebilir ve görüntülenebilir. Örneğin Azure portal, bir görev veya havuz düğümü için günlük dosyalarını listeler ve görüntüleyebilir. Aynı zamanda birden çok API, görev dosyalarının da listelenmesine ve almaya izin verir (örneğin, [görevden al](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask)).
+
+Havuzlar ve havuz düğümleri genellikle kısa ömürlü olduğundan, düğümler sürekli olarak eklenerek ve silinirken, günlük dosyalarının kalıcı olması önerilir. [Görev çıktı dosyaları](https://docs.microsoft.com/azure/batch/batch-task-output-files) , günlük dosyalarını Azure depolama 'ya kaydetmek için kullanışlı bir yoldur.
+
+### <a name="output-file-failures"></a>Çıkış dosyası sorunları
+Her dosya yükleme işleminde toplu Işlem, işlem düğümüne iki günlük dosyası yazar, `fileuploadout.txt` ve `fileuploaderr.txt`. Belirli bir hata hakkında daha fazla bilgi edinmek için bu günlük dosyalarını inceleyebilirsiniz. Dosya yüklemesinin hiçbir zaman denenmediği durumlarda (örneğin, görevin kendisi çalıştırılmadığından), bu günlük dosyaları mevcut olmayacaktır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

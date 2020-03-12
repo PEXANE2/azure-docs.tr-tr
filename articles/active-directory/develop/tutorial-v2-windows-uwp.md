@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a62026ecec2317173361f166adcc3a7981f6d1c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701187"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129887"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Evrensel Windows Platformu uygulamasından Microsoft Graph API çağrısı (XAML)
 
@@ -32,6 +32,9 @@ Bu kılavuzun sonunda, uygulamanız kişisel hesapları kullanarak korumalı bir
 
 >[!NOTE]
 > Bu kılavuzda Evrensel Windows Platformu geliştirme yüklü Visual Studio gerekir. Evrensel Windows Platformu uygulamalar geliştirmek için Visual Studio 'Yu indirme ve yapılandırma [yönergeleri bölümüne bakın](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) .
+
+>[!NOTE]
+> Microsoft Identity platform 'u yeni kullanmaya başladıysanız, [bir Evrensel Windows platformu (UWP) uygulama hızlı başlangıcı aracılığıyla MICROSOFT Graph API 'Sini çağırmayı](quickstart-v2-uwp.md)öneririz.
 
 ## <a name="how-this-guide-works"></a>Bu kılavuz nasıl çalışır?
 
@@ -59,7 +62,7 @@ Bu kılavuz, Graph API sorgulayan bir düğme ve oturumu kapatmak için bir dü�
 ### <a name="create-your-application"></a>Uygulamanızı oluşturma
 
 1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
-1. **Yeni proje oluştur**' da, Için C# boş uygulama (Evrensel Windows) öğesini seçin ve **İleri ' yi**seçin.
+1. **Yeni proje oluştur**' da, Için **Blank App (Universal Windows)** C# boş uygulama (Evrensel Windows) öğesini seçin ve **İleri ' yi**seçin.
 1. **Yeni projenizi yapılandırın**bölümünde uygulamayı adlandırın ve **Oluştur**' u seçin.
 1. İstenirse, **yeni Evrensel Windows platformu projesinde**, **hedef** ve **En düşük** sürümler Için herhangi bir sürüm seçin ve **Tamam**' ı seçin.
 
@@ -343,8 +346,8 @@ Aşağıdaki yeni yöntemi *MainPage.xaml.cs*öğesine ekleyin:
 
 Şimdi uygulamanızı kaydetmeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Seçin **Azure Active Directory** > **uygulama kayıtları**.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory** > **uygulama kayıtları**' yı seçin.
 1. **Yeni kayıt**seçeneğini belirleyin. Uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin *UWP-app-çağıran-MSGraph*.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox) hesaplar**' ı seçin ve ardından devam etmek için **Kaydet** ' i seçin.
 1. Genel Bakış sayfasında, **uygulama (istemci) kimlik** değerini bulun ve kopyalayın. Visual Studio 'ya geri dönün, *MainPage.xaml.cs*açın ve `ClientId` değerini bu değerle değiştirin.
@@ -377,7 +380,7 @@ Windows ile tümleşik kimlik doğrulamasını, Federe bir Azure AD etki alanı 
 > [!IMPORTANT]
 > [Tümleşik Windows kimlik doğrulaması](https://aka.ms/msal-net-iwa) Bu örnek için varsayılan olarak yapılandırılmamıştır. `Enterprise Authentication` veya `Shared User Certificates` özellikleri isteyen uygulamalar, Windows Mağazası tarafından daha yüksek bir doğrulama düzeyi gerektirir. Ayrıca, tüm geliştiriciler daha yüksek doğrulama düzeyini gerçekleştirmek istemekdedir. Bu ayarı yalnızca, Federe bir Azure AD etki alanı ile Windows tümleşik kimlik doğrulaması gerekiyorsa etkinleştirin.
 
-## <a name="test-your-code"></a>Kodunuza test etme
+## <a name="test-your-code"></a>Kodunuzu test etme
 
 Uygulamanızı test etmek için F5 ' i seçerek projenizi Visual Studio 'da çalıştırın. Ana pencereniz görüntülenir:
 

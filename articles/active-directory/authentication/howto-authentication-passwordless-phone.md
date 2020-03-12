@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227071"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126688"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla passwordless oturum açmayı etkinleştirme (Önizleme)
 
@@ -62,7 +62,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 1. **Microsoft Authenticator**, hesap açılan menüsünden **Telefon oturum açmayı etkinleştir** ' i seçin.
 1. Parolasız telefon oturumu açma için kayıt işleminin bitmesini yapmak üzere uygulamadaki yönergeleri izleyin. 
 
-Kuruluşlar, Microsoft Authenticator uygulamasında kurulum ve telefonla oturum açmayı etkinleştirme hakkında daha fazla yardım almak için [parolanğuna değil,](../user-help/microsoft-authenticator-app-phone-signin-faq.md) Kullanıcı kullanıcılarınızı telefonunuza işaret edebilir.
+Kuruluşlar, Microsoft Authenticator uygulamasında kurulum ve telefonla oturum açmayı etkinleştirme hakkında daha fazla yardım almak için [parolanğuna değil,](../user-help/microsoft-authenticator-app-phone-signin-faq.md) Kullanıcı kullanıcılarınızı telefonunuza işaret edebilir. Bu ayarları uygulamak için oturumunuzu kapatıp kiracıya yeniden oturum açmanız gerekebilir. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Passwordless kimlik bilgileriyle oturum açın
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5386cace7191be60534f0d2fbf4a85b592d1ecdd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 762f62fa0901672c447da42f416e5b003e7419b2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151630"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127303"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>P2S VPN istemci profilleri hakkında
 
@@ -60,7 +60,7 @@ Bir bağlantı eklediğinizde, profil ayrıntıları sayfası için önceki adı
 
 ## <a name="folder-contents"></a>Klasör içeriği
 
-* **OpenVPN klasörü** , anahtarı ve sertifikayı içerecek şekilde değiştirilmesi gereken *ovpn* profilini içerir. Daha fazla bilgi için bkz. [Azure Için OpenVPN Istemcilerini yapılandırma VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows).
+* **OpenVPN klasörü** , anahtarı ve sertifikayı içerecek şekilde değiştirilmesi gereken *ovpn* profilini içerir. Daha fazla bilgi için bkz. [Azure Için OpenVPN Istemcilerini yapılandırma VPN Gateway](vpn-gateway-howto-openvpn-clients.md#windows). VPN ağ geçidinde Azure AD kimlik doğrulaması seçilirse, bu klasör ZIP dosyasında mevcut olmayacaktır. Bunun yerine, azurevpnconfig. xml AzureVPN klasöründe olacaktır.
 
 * **Genel klasör** , ortak sunucu sertifikasını ve vpnsettings. xml dosyasını içerir. VpnSettings. xml dosyası, genel bir istemciyi yapılandırmak için gereken bilgileri içerir.
 

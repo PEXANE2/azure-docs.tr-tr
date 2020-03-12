@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606569"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117288"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk güvenlik ve veri koruması
 
@@ -34,7 +34,7 @@ Aşağıdaki diyagram, Azure Data Box Disk çözümü aracılığıyla şirket i
 
 ## <a name="security-features"></a>Güvenlik özellikleri
 
-Data Box Disk, verilerinizi yalnızca yetkili varlıkların görüntüleyebilmesini, değiştirebilmesini veya silebilmesini sağlayarak veri koruma için güvenli çözüm getirir. Bu çözümle ilgili güvenlik özellikleri hem diske hem de hizmete yöneliktir ve burada depolanan verilerin güvenliğini sağlar. 
+Data Box Disk, verilerinizi yalnızca yetkili varlıkların görüntüleyebilmesini, değiştirebilmesini veya silebilmesini sağlayarak veri koruma için güvenli çözüm getirir. Bu çözümle ilgili güvenlik özellikleri hem diske hem de hizmete yöneliktir ve burada depolanan verilerin güvenliğini sağlar.
 
 ### <a name="data-box-disk-protection"></a>Data Box Disk koruması
 
@@ -48,7 +48,7 @@ Data Box Disk aşağıdaki özelliklerle korunur:
 
 Data Box Disk içine ve dışına akıtılan veriler şu özelliklerle korunur:
 
-- Her zaman verilerin BitLocker şifrelemesi. 
+- Her zaman verilerin BitLocker şifrelemesi.
 - Verilerin Azure’a yüklenmesi tamamlandıktan sonra diskteki verilerin güvenli bir şekilde silinmesi. Verilerin silinmesi NIST 800-88r1 standartlarıyla uyumludur.
 
 ### <a name="data-box-service-protection"></a>Data Box hizmeti koruması
@@ -56,10 +56,9 @@ Data Box Disk içine ve dışına akıtılan veriler şu özelliklerle korunur:
 Data Box hizmeti aşağıdaki özelliklerle korunur.
 
 - Data Box Disk hizmetine erişim için kuruluşunuzun Data Box Disk içeren bir Azure aboneliği olmalıdır. Aboneliğiniz, Azure portalında erişebildiğiniz özellikleri yönetir.
-- Data Box hizmeti Azure’da barındırıldığından, Azure güvenlik özellikleriyle korunur. Microsoft Azure tarafından sağlanan güvenlik özellikleri hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi](https://www.microsoft.com/TrustCenter/Security/default.aspx)’ne gidin. 
+- Data Box hizmeti Azure’da barındırıldığından, Azure güvenlik özellikleriyle korunur. Microsoft Azure tarafından sağlanan güvenlik özellikleri hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi](https://www.microsoft.com/TrustCenter/Security/default.aspx)’ne gidin.
 - Data Box Disk’te, hizmetteki diskin kilidini açmak için kullanılan disk destek anahtarı depolanır. 
-- Data Box Disk hizmeti, hizmetteki sipariş ayrıntılarını ve durumunu depolar. Sipariş silindiğinde bu bilgiler de silinir. 
-
+- Data Box Disk hizmeti, hizmetteki sipariş ayrıntılarını ve durumunu depolar. Sipariş silindiğinde bu bilgiler de silinir.
 
 ## <a name="managing-personal-data"></a>Kişisel verileri yönetme
 
@@ -94,4 +93,4 @@ Daha fazla bilgi için, [Güven Merkezi](https://www.microsoft.com/trustcenter)�
 
 - [Data Box Disk gereksinimlerini](data-box-disk-system-requirements.md) gözden geçirin.
 - [Data Box Disk sınırlarını](data-box-disk-limits.md) anlayın.
-- [Azure Data Box Diskini](data-box-disk-quickstart-portal.md) Azure portal'da hızlıca dağıtın.
+- Azure portalında [Azure Data Box Disk](data-box-disk-quickstart-portal.md)’i hızlı dağıtın.

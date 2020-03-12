@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977735"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086785"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -28,9 +28,13 @@ Bu makale, Azure Media Services (AMS) v3 hakkında sık sorulan soruların yanı
 
 [Media Services hesapları Için rol tabanlı erişim denetimi (RBAC)](rbac-overview.md)konusuna bakın.
 
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>Apple iOS cihazlarına nasıl Akışlarım?
+
+Akış kaynak sunucusuna Apple iOS Native cihazlarda tüketim için içerik geri dönmesini söylemek için (URL 'nin "/manifest" kısmından sonra) "(format = M3U8-AAPL)" değerini, (Ayrıntılar için bkz. [içerik sunma](dynamic-packaging-overview.md)).
+
 ### <a name="how-do-i-configure-media-reserved-units"></a>Medya ayrılmış birimleri Nasıl yaparım? yapılandırmak mi?
 
-Media Services v3 veya Video Indexer ile tetiklenen Ses Analizi ve Video Analizi İşleri için hesabınıza 10 S3 MRU sağlamanız önerilir. 10'dan fazla S3 MRU gerekiyorsa, kullanarak bir destek bileti açın [Azure portalında](https://portal.azure.com/).
+Media Services v3 veya Video Indexer ile tetiklenen Ses Analizi ve Video Analizi İşleri için hesabınıza 10 S3 MRU sağlamanız önerilir. 10 ' dan fazla S3 MRU 'a ihtiyacınız varsa [Azure Portal](https://portal.azure.com/)kullanarak bir destek bileti açın.
 
 Ayrıntılar için bkz. [CLI ile medya Işlemeyi ölçeklendirme](media-reserved-units-cli-how-to.md).
 
@@ -38,13 +42,17 @@ Ayrıntılar için bkz. [CLI ile medya Işlemeyi ölçeklendirme](media-reserved
 
 Videoları kodlamaya veya çözümlemeye yönelik ortak görevleri yapılandırmak için [dönüşümler](https://docs.microsoft.com/rest/api/media/transforms) kullanın. Her **dönüşüm** , video veya ses dosyalarınızı işlemeye yönelik bir tarif veya bir görev iş akışını açıklar. Bir [iş](https://docs.microsoft.com/rest/api/media/jobs) , belirli bir giriş videosunun veya ses içeriğinin **dönüşümünü** uygulamak için Media Services yapılan gerçek istedir. Dönüşüm oluşturulduktan sonra, Media Services API 'Leri veya yayımlanmış SDK 'Lardan herhangi birini kullanarak işleri gönderebilirsiniz. Daha fazla bilgi için [Dönüşümler ve İşler](transforms-jobs-concept.md) konusuna bakın.
 
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Karşıya yükleme, kodlama ve bir video yayımladım. Akışa almaya çalıştığımda videonun oynatılmasının nedeni ne olur?
+
+En yaygın nedenlerden biri, çalışıyor durumunda kayıttan yürütmeye çalıştığınız akış uç noktasına sahip değilsiniz.
+
 ### <a name="how-does-pagination-work"></a>Sayfalandırma nasıl çalışır?
 
 Sayfalandırma kullanırken, belirli bir sayfa boyutuna bağlı olmaması için her zaman bir sonraki bağlantıyı kullanarak koleksiyonu numaralandırın. Ayrıntılar ve örnekler için bkz. [filtreleme, sıralama, sayfalama](entities-overview.md).
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure Media Services v3 'de henüz kullanılamayan özellikler nelerdir?
 
-Ayrıntılar için bkz. [v2 API 'lerine göre Özellik boşlukları](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+Ayrıntılar için bkz. [v2 API 'lerine göre Özellik boşlukları](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Media Services bir hesabı abonelikler arasında taşıma işlemi nedir?  
 
@@ -58,7 +66,7 @@ Media Services v3 Live Encoding, canlı akış sırasında video veya resim SLA 
 
 Kaynak videoyu değiştirmek için [canlı bir şirket içi kodlayıcı](recommended-on-premises-live-encoders.md) kullanabilirsiniz. Birçok uygulama, Telestream kablolu dönüştürme, değiştirici Studio (iOS 'ta), OBS Studio (ücretsiz uygulama) ve birçok daha fazlası dahil olmak üzere kaynakları değiştirme yeteneği sağlar.
 
-## <a name="content-protection"></a>Content Protection
+## <a name="content-protection"></a>İçerik koruma
 
 ### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>AES-128 şifresiz anahtar şifrelemesi mi yoksa bir DRM sistemi mi kullanmalıyım?
 
@@ -76,11 +84,11 @@ Daha fazla bilgi için bkz. [Media Services dinamik şifrelemeyi kullanarak Içe
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Nasıl ve nereye isteği lisans veya anahtar için kullanmadan önce JWT belirteci almak?
 
-1. Üretim için bir HTTPS isteği üzerinde JWT belirteci veren bir güvenli belirteç Hizmetleri (STS) (Web hizmeti) olmalıdır. Test için gösterilen kod kullanabileceğinizi **GetTokenAsync** içinde tanımlanan yöntem [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
-2. Oynatıcı bir kullanıcı sts'ye böyle bir belirteç için doğrulandıktan sonra istekte bulunmak ve belirteç değeri olarak atamanız gerekir. Kullanabileceğiniz [Azure Media Player API'sine](https://amp.azure.net/libs/amp/latest/docs/).
+1. Üretim için bir HTTPS isteği üzerinde JWT belirteci veren bir güvenli belirteç Hizmetleri (STS) (Web hizmeti) olmalıdır. Test için, [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)Içinde tanımlanan **gettokenasync** yönteminde gösterilen kodu kullanabilirsiniz.
+2. Oynatıcı bir kullanıcı sts'ye böyle bir belirteç için doğrulandıktan sonra istekte bulunmak ve belirteç değeri olarak atamanız gerekir. [Azure MEDIA Player API](https://amp.azure.net/libs/amp/latest/docs/)'sini kullanabilirsiniz.
 
-* STS, hem simetrik hem de asimetrik anahtar ile çalışan bir örnek için bkz. Lütfen [ https://aka.ms/jwt ](https://aka.ms/jwt). 
-* Böyle JWT belirteci kullanarak Azure Media Player temel bir yürütücü örneği için bkz [ https://aka.ms/amtest ](https://aka.ms/amtest) (belirteç giriş görmek için "player_settings" bağlantıyı genişletme).
+* STS çalıştırmaya ilişkin bir örnek için, simetrik ve asimetrik anahtarla, lütfen [https://aka.ms/jwt](https://aka.ms/jwt)bakın. 
+* Bu tür JWT belirtecini kullanan Azure Media Player bir oynatıcı örneği için, bkz. [https://aka.ms/amtest](https://aka.ms/amtest) (belirteç girişini görmek için "player_settings" bağlantısını genişletin).
 
 ### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Nasıl video akışı AES şifreleme ile istek yetki veriyor musunuz?
 
@@ -126,13 +134,19 @@ Genellikle, müşterilere bir lisans sunucusu grubundaki DRM hizmet sağlayıcı
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Azure portal v3 kaynaklarını yönetmek için kullanabilir miyim?
 
-Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks) birini kullanın.
+Şu anda [Azure Portal](https://portal.azure.com/) şunları yapmak için kullanabilirsiniz:
+
+* Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetin, 
+* v3 [varlıklarını](assets-concept.md)görüntüleme (yönetme), 
+* [API 'lere erişme hakkında bilgi alın](access-api-portal.md). 
+
+Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>V3 'de bir AssetFile kavramı var mı?
 
 Assetdosyaları, depolama SDK bağımlılığıyla Media Services ayırmak için AMS API 'sinden kaldırılmıştır. Artık Media Services değil, depolama alanında yer alan bilgileri korur. 
 
-Daha fazla bilgi için bkz. [Media Services v3 'ye geçirme](migrate-from-v2-to-v3.md).
+Daha fazla bilgi için bkz. [Media Services v3 'ye geçirme](media-services-v2-vs-v3.md).
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>İstemci tarafı depolama şifrelemesi nerede?
 

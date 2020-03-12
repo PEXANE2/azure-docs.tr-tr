@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8b63233aa2b20862e4654c89f1a6dd5d00c78940
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485191"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096077"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -125,10 +125,6 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
    Application Gateway tarafından sunulan başarılı istek sayısı. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
 
-- **Web uygulaması güvenlik duvarı ile eşleşen kurallar**
-
-- **Web uygulaması güvenlik duvarı tarafından tetiklenen kurallar**
-
 ### <a name="backend-metrics"></a>Arka uç ölçümleri
 
 Application Gateway için aşağıdaki ölçümler kullanılabilir:
@@ -180,9 +176,9 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
   Application Gateway tarafından sunulan başarılı istek sayısı. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
 
-- **Web uygulaması güvenlik duvarı ile eşleşen kurallar**
-
-- **Web uygulaması güvenlik duvarı tarafından tetiklenen kurallar**
+- **Web uygulaması güvenlik duvarı engellenen Istek sayısı**
+- **Web uygulaması güvenlik duvarı engellenen Istek dağıtımı**
+- **Web uygulaması güvenlik duvarı toplam kural dağıtımı**
 
 ### <a name="backend-metrics"></a>Arka uç ölçümleri
 

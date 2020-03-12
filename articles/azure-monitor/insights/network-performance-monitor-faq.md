@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654442"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096215"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -183,7 +183,7 @@ Bir atlama aşağıdaki senaryolardan birinde veya daha fazla bir izleme Oute 'e
 * Ağ cihazları ICMP_TTL_EXCEEDED trafiğe izin vermiyor.
 * Bir güvenlik duvarı, ağ cihazından gelen ICMP_TTL_EXCEEDED yanıtını engelliyor.
 
-Uç noktalardan biri Azure 'da olduğunda, izleme yolu, Azure ndrastructure, izleme yolu 'na yönelik kimlik açığa çıkarmadığından tanımlanamayan atlamaları gösterir. 
+Uç noktalardan biri Azure 'da olduğunda, izleme yolu, Azure altyapısı, izleme yolu 'na yönelik kimlik açığa çıkarmadığından tanımlanamayan atlamaları gösterir. 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Sağlıksız testler için uyarı alıyorum, ancak NPM 'nin kayıp ve gecikme grafiğinde yüksek değerleri görmüyorum. Sağlıksız olup olmadığını kontrol Nasıl yaparım? mı?
 Kaynak ve hedef arasındaki uçtan uca gecikme süresi, aralarında herhangi bir yol için eşikten kesişirse NPM bir uyarı oluşturur. Bazı ağların aynı kaynak ve hedefi bağlayan birden çok yolu vardır. NPM bir uyarı harekete geçirirse herhangi bir yol sağlıksız olur. Grafiklerde görülen kayıp ve gecikme, tüm yolların ortalama değeridir, bu nedenle tek bir yolun tam değerini gösteremeyebilir. Eşiğin ihlal edildiği yeri anlamak için, uyarıdaki "alt tür" sütununu arayın. Sorun bir yol nedeniyle gerçekleşirse, alt tür değeri NetworkPath olacaktır (performans Izleme testleri için), EndpointPath (hizmet bağlantısı Izleyicisi testleri için) ve ExpressRoutePath (ExpressRotue Izleyici testleri için). 

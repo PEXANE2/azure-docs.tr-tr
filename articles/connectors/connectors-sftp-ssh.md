@@ -8,12 +8,12 @@ ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851498"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128400"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -55,9 +55,6 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   | **Dosyayı yeniden adlandır** | Uygulanamaz | Uygulanamaz |
   | **Güncelleştirme dosyası** | Hayır | Uygulanamaz |
   ||||
-
-  > [!NOTE]
-  > Büyük dosyaları karşıya yüklemek için SFTP sunucunuzdaki kök klasör için hem okuma hem de yazma izinlerine sahip olmanız gerekir.
 
 * SFTP-SSH Tetikleyicileri ileti parçalama desteği vermez. Dosya içeriği istenirken Tetikleyiciler yalnızca 15 MB veya daha küçük olan dosyaları seçer. 15 MB 'tan büyük dosyaları almak için, bunun yerine şu modele uyun:
 

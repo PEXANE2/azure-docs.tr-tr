@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ddc2622a67979f989c030d615c402387e7762d5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983500"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129912"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Öğretici: GitHub ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, GitHub 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini GitHub ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -115,12 +115,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -163,6 +163,8 @@ Bu bölümde, GitHub 'a erişim vererek Azure çoklu oturum açma özelliğini k
     c. İndirilen sertifikayı not defteri 'nde Azure portal açın, içeriği **ortak sertifika** metin kutusuna yapıştırın.
 
     d. Şu şekilde gösterildiği gibi **RSA-SHA1** ve **SHA1** ile **RSA-SHA256** ve **SHA256** arasındaki **imza yöntemini** ve **Özet yöntemini** düzenlemek için **Düzenle** simgesine tıklayın.
+    
+    e. GitHub 'daki URL 'nin Azure uygulama kaydı 'ndaki URL ile eşleşmesi için, **onaylama tüketici hizmeti URL 'sini (yanıt URL 'si)** varsayılan URL 'den güncelleştirin.
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 
@@ -185,7 +187,7 @@ Bu bölümün amacı, GitHub 'da Britta Simon adlı bir Kullanıcı oluşturmakt
 
 2. **Kişiler**' e tıklayın.
 
-    ![Düzenliyor](./media/github-tutorial/tutorial_github_config_github_08.png "Kişiler")
+    ![Düzenliyor](./media/github-tutorial/tutorial_github_config_github_08.png "People")
 
 3. **Üyeyi davet et**' e tıklayın.
 

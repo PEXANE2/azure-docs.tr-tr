@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435407"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117244"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için ağ güvenlik grubu (NSG) hizmet etiketleri
 
@@ -40,7 +40,7 @@ HDInsight kümeniz ile hizmet etiketleri kullanmaya başlamanın en kolay yolu, 
 
 1. **Kaynak hizmet etiketi** açılan listesinden **HDInsight**' ı seçin.
 
-    ![Azure portal hizmet etiketi ekle](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure portal hizmet etiketi ekle](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 Bu etiket, HDInsight 'ın kullanılabildiği tüm bölgeler için sistem durumu ve yönetim hizmetlerinin IP adreslerini içerir ve kümenizin nerede oluşturulduğuna bakılmaksızın gerekli sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olur.
 
@@ -61,7 +61,7 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 | &nbsp; | Orta Avustralya | HDInsight. AustraliaCentral |
 | Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
-| Birleşik Devletler | Orta Kuzey ABD | HDInsight. Kuzeydoğu ABD |
+| Amerika Birleşik Devletleri | Orta Kuzey ABD | HDInsight. Kuzeydoğu ABD |
 | &nbsp; | Batı ABD 2 | HDInsight. WestUS2 |
 | &nbsp; | Orta Batı ABD | HDInsight. WestCentralUS |
 | Kanada | Doğu Kanada | HDInsight. Canadadoğu |
@@ -73,9 +73,10 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 | Japonya | Batı Japonya | HDInsight. JapanWest |
 | Fransa | Orta Fransa| HDInsight. Francecna al |
 | UK | Güney Birleşik Krallık | HDInsight. UKGüney |
-| Azure Devlet Kurumları | USDoD orta   | HDInsight. Usdodorta |
+| Azure Kamu | USDoD orta   | HDInsight. Usdodorta |
 | &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD Doğu | HDInsight. USDoDEast |
+| &nbsp; | USGov Arizona | HDInsight. USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Birden çok bölgesel hizmet etiketi kullanma
 
@@ -83,7 +84,7 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 
 Kalan bölgeler, kullandıkları bölgesel hizmet etiketlerine göre gruplara ayrılır.
 
-#### <a name="group-1"></a>Grup 1
+#### <a name="group-1"></a>1\. Grup
 
 Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, listelenen bölge hizmeti etiketinin yanı sıra hizmet etiketlerine `HDInsight.WestUS` ve `HDInsight.EastUS` izin verin. Bu bölümdeki bölgeler üç hizmet etiketi gerektirir.
 
@@ -95,7 +96,7 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, listelenen
 
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
-| Birleşik Devletler | Doğu ABD 2 | HDInsight. EastUS2 |
+| Amerika Birleşik Devletleri | Doğu ABD 2 | HDInsight. EastUS2 |
 | &nbsp; | Orta ABD | HDInsight. merkezde ABD |
 | &nbsp; | Kuzey Orta ABD | 'Tan. Kuzeydoğu ABD |
 | &nbsp; | Orta Güney ABD | HDInsight. Güneydoğu ABD |

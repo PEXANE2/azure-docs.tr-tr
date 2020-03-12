@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
-ms.openlocfilehash: 354ee312099902372863ce2ea636d2f9f9943d5c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+manager: lizross
+ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566432"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127905"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -76,13 +77,13 @@ Bir konak havuzunu genişletmek için Azure Resource Manager şablonunu yeniden 
 
 Bu bölümdeki tüm değerler, *varsayılan masaüstü kullanıcıları*dışında, ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda sağladıklarınızla eşleşmelidir:
 
-1.  *Abonelik*için, ilk olarak konak havuzunu oluşturduğunuz aboneliği seçin.
-2.  *Kaynak grubu*için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu kaynak grubunu seçin.
-3.  *Bölge*için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu bölgeyi seçin.
-4.  *Hostpool adı*için, mevcut konak havuzunun adını girin.
-5.  *Masaüstü türü*için, mevcut konak havuzuyla eşleşen masaüstü türünü seçin.
-6.  *Varsayılan masaüstü kullanıcıları*Için, Windows sanal masaüstü istemcilerinde oturum açmak istediğiniz ek kullanıcıların virgülle ayrılmış bir listesini girin ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişin. Örneğin, user3@contoso.com atamak ve user4@contoso.com erişim istiyorsanız user3@contoso.com,user4@contoso.comgirin.
-7.  **İleri ' yi seçin: sanal makineyi yapılandırın**.
+1.    *Abonelik*için, ilk olarak konak havuzunu oluşturduğunuz aboneliği seçin.
+2.    *Kaynak grubu*için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu kaynak grubunu seçin.
+3.    *Bölge*için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu bölgeyi seçin.
+4.    *Hostpool adı*için, mevcut konak havuzunun adını girin.
+5.    *Masaüstü türü*için, mevcut konak havuzuyla eşleşen masaüstü türünü seçin.
+6.    *Varsayılan masaüstü kullanıcıları*Için, Windows sanal masaüstü istemcilerinde oturum açmak istediğiniz ek kullanıcıların virgülle ayrılmış bir listesini girin ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişin. Örneğin, user3@contoso.com atamak ve user4@contoso.com erişim istiyorsanız user3@contoso.com,user4@contoso.comgirin.
+7.    **İleri ' yi seçin: sanal makineyi yapılandırın**.
 
 >[!NOTE]
 >*Varsayılan masaüstü kullanıcıları*hariç, tüm alanların mevcut konak havuzunda tam olarak yapılandırıldığı şekilde eşleşmesi gerekir. Bir uyumsuzluk varsa, bu, yeni bir konak havuzu ile sonuçlanır.

@@ -7,13 +7,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 01/27/2020
-ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/27/2020
+ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252238"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096689"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 
@@ -22,7 +22,7 @@ ms.locfileid: "77252238"
 >
 > Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak HA 'yi yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için, [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > - Yeni bir kaynak grubu, kullanılabilirlik kümesi ve Azure Linux Sanal Makineleri (VM) oluşturma
@@ -360,8 +360,8 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. [ **Uygulama kayıtları** tıklayın](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. **Yeni kayıt** öğesine tıklayın
  5. `<resourceGroupName>-app`gibi bir **ad** girin, **yalnızca bu kuruluş dizininde bulunan hesapları** seçin
- 6. Uygulama türü **Web**' i seçin, bir oturum açma URL 'si girin (örneğin http://localhost) ve Ekle ' ye tıklayın. Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir
- 7. **Sertifikalar ve gizlilikler**' ı seçin ve ardından **yeni istemci parolası** ' na tıklayın
+ 6. Uygulama türü **Web**' i seçin, bir oturum açma URL 'si girin (örneğin http://localhost) ve Ekle ' ye tıklayın. Oturum açma URL 'SI kullanılmaz ve geçerli bir URL olabilir. İşiniz bittiğinde **Kaydet** ' e tıklayın.
+ 7. Yeni uygulama kaydınız için **sertifikaları ve gizli** dizileri seçip **yeni istemci parolası** ' na tıklayın.
  8. Yeni anahtar için bir açıklama girin (istemci gizli anahtarı), **hiçbir zaman süre sonu** seçeneğini belirleyip **Ekle** ' ye tıklayın
  9. Gizli dizi değerini yazın. Hizmet sorumlusu için parola olarak kullanılır
 10. **Genel Bakış**’ı seçin. Uygulama Kimliği yazma Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda oturum açma KIMLIĞI) olarak kullanılır
@@ -569,12 +569,14 @@ sudo systemctl restart mssql-server
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
 GO
+
 BACKUP CERTIFICATE dbm_certificate
    TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
    WITH PRIVATE KEY (
            FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
            ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
        );
+GO
 ```
 
 `exit` komutunu çalıştırarak SQL CMD oturumundan çıkın ve SSH oturumunuza geri dönün.
@@ -623,6 +625,7 @@ BACKUP CERTIFICATE dbm_certificate
         FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
         DECRYPTION BY PASSWORD = '<Private_Key_Password>'
                 );
+    GO
     ```
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Tüm çoğaltmalarda veritabanı yansıtma uç noktalarını oluşturma
@@ -640,6 +643,7 @@ ENCRYPTION = REQUIRED ALGORITHM AES
 GO
 
 ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
+GO
 ```
 
 ### <a name="create-the-availability-group"></a>Kullanılabilirlik grubunu oluşturma
@@ -677,6 +681,7 @@ CREATE AVAILABILITY GROUP [ag1]
 GO
 
 ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+GO
 ```
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Pacemaker için SQL Server oturum açma oluşturma
@@ -688,9 +693,12 @@ Tüm SQL sunucularında, pacemaker için bir SQL oturum açma oluşturun. Aşağ
 ```sql
 USE [master]
 GO
+
 CREATE LOGIN [pacemakerLogin] with PASSWORD= N'<password>';
 GO
+
 ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
+GO
 ```
 
 Tüm SQL Server 'Lar üzerinde SQL Server oturum açma için kullanılan kimlik bilgilerini kaydedin. 
@@ -733,6 +741,7 @@ Tüm SQL Server 'Lar üzerinde SQL Server oturum açma için kullanılan kimlik 
     GO
 
     ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+    GO
     ```
 
 1. Aşağıdaki Transact-SQL betiğini birincil çoğaltmada ve tüm ikincil çoğaltmalarda çalıştırın:
@@ -742,6 +751,7 @@ Tüm SQL Server 'Lar üzerinde SQL Server oturum açma için kullanılan kimlik 
     GO
     
     GRANT VIEW SERVER STATE TO pacemakerLogin;
+    GO
     ```
 
 1. İkincil çoğaltmalar birleştirildikten sonra, **her zaman yüksek kullanılabilirlik** düğümünü genişleterek onları ssms Nesne Gezgini görebilirsiniz:
@@ -766,6 +776,7 @@ BACKUP DATABASE [db1] -- backs up the database to disk
 GO
 
 ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to the AG
+GO
 ```
 
 ### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Veritabanının ikincil sunucularda oluşturulduğunu doğrulama
@@ -805,7 +816,6 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
-    virtualip      (ocf::heartbeat:IPaddr2):       Started <VM1>
     ```
 
 ### <a name="create-a-virtual-ip-resource"></a>Sanal IP kaynağı oluşturma
@@ -946,7 +956,6 @@ Yapılandırmanın şimdiye kadar başarılı olduğundan emin olmak için bir y
          Masters: [ <VM2> ]
          Slaves: [ <VM1> <VM3> ]
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
-     
     ```
 
 ## <a name="test-fencing"></a>Test sınırlama
@@ -975,7 +984,7 @@ Bir çit cihazını test etme hakkında daha fazla bilgi için aşağıdaki [Red
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'da oluşturduğunuz SQL sunucularınız için bir kullanılabilirlik grubu dinleyicisinden yararlanmak üzere öncelikle bir yük dengeleyici oluşturmanız ve yapılandırmanız gerekir.
+SQL sunucularınız için bir kullanılabilirlik grubu dinleyicisinden yararlanmak üzere bir yük dengeleyici oluşturmanız ve yapılandırmanız gerekir.
 
 > [!div class="nextstepaction"]
-> [Azure portal yük dengeleyici oluşturma ve yapılandırma](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal)
+> [Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma](sql-server-linux-rhel-ha-listener-tutorial.md)

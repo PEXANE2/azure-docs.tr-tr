@@ -13,18 +13,21 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7704779ff605e28358f6f82c22ccda84d371dba9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: abf083aacbdc643d780a8061b405752f36e27e45
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084379"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129945"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Kullanıcıları oturum açın ve iOS veya macOS uygulamasından Microsoft Graph çağırın
 
 Bu öğreticide, bir iOS veya macOS uygulamasını Microsoft Identity platformu ile tümleştirmeyi öğreneceksiniz. Uygulama bir kullanıcıya oturum açacaktır, Microsoft Graph API 'sini çağırmak için bir erişim belirteci alır ve Microsoft Graph API 'sine bir istek yapar.  
 
 Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesapları için oturum açma işlemlerini kabul eder.
+
+>[!NOTE]
+> Microsoft Identity platform 'u yeni kullanmaya başladıysanız, [oturum açma kullanıcıları ile başlamanız ve iOS veya macOS uygulamasından MICROSOFT Graph API 'sini çağırmanız](quickstart-v2-ios.md)önerilir.
 
 ## <a name="how-this-tutorial-works"></a>Bu öğreticinin nasıl çalıştığı
 

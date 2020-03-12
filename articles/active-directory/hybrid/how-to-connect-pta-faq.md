@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484426"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096048"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory geçişli kimlik doğrulaması: sık sorulan sorular
 
@@ -44,7 +44,7 @@ Hayır. Doğrudan kimlik doğrulaması yalnızca dünya çapındaki Azure AD ör
 Evet. Azure Multi-Factor Authentication dahil tüm koşullu erişim özellikleri doğrudan kimlik doğrulamasıyla çalışır.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>"UserPrincipalName" yerine Kullanıcı adı olarak "alternatif KIMLIK" olarak geçiş kimlik doğrulamasını destekliyor mu?
-Sınırlı bir ölçüde, geçişli kimlik doğrulaması, Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak alternatif KIMLIĞI destekler. Önkoşul olarak Azure AD Connect, şirket içi Active Directory `UserPrincipalName` özniteliğini Azure AD 'ye eşitlemenizi gerektirir. Bu, şirket içi AD ve Azure AD 'deki `UserPrincipalName` özdeş hale gelmesine neden olur. Şirket içi AD 'den Azure AD 'ye UPN olarak eşitlemek için başka bir öznitelik kullanmak istiyorsanız, Parola karması eşitleme veya AD FS kullanmanız gerekir. Daha fazla bilgi için bkz. [özel Azure AD Connect yüklemesi](how-to-connect-install-custom.md). Tüm Office 365 uygulamaları `Alternate ID`desteklemez. Belirli uygulamanın belge desteği bildirimine bakın.
+Alternatif bir e-posta gibi UPN olmayan bir değer kullanarak oturum açma, şu anda hem geçişli kimlik doğrulaması (PTA) hem de Parola karması eşitleme (PHS) için özel önizlemede test ediliyor.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Parola karması eşitlemesi doğrudan kimlik doğrulamasına geri dönüş görevi görür mi?
 

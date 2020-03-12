@@ -3,12 +3,12 @@ title: Etiketleri ve bildirimleri temizleme
 description: Bir Azure Container Registry 'den yaş ve etiket filtresine göre birden çok etiketi ve bildirimi silmek için bir temizleme komutu kullanın ve isteğe bağlı olarak temizleme işlemlerini zamanlayın.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923102"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087335"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry 'den görüntüleri otomatik olarak Temizleme
 
@@ -47,7 +47,7 @@ Azure CLı komutlarını kullanarak tek resim etiketlerini veya bildirimleri sil
 
 Ek parametreler için `acr purge --help`çalıştırın. 
 
-`acr purge`, akan [çalıştırma](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlükleri](container-registry-tasks-overview.md#view-task-logs) de dahil olmak üzere ACR görevleri komutlarının diğer özelliklerini destekler ve daha sonra alımı için de kaydedilir.
+`acr purge`, akan [çalıştırma](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlükleri](container-registry-tasks-logs.md) de dahil olmak üzere ACR görevleri komutlarının diğer özelliklerini destekler ve daha sonra alımı için de kaydedilir.
 
 ### <a name="run-in-an-on-demand-task"></a>İsteğe bağlı bir görevde Çalıştır
 

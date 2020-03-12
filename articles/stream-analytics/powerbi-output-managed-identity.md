@@ -1,25 +1,25 @@
 ---
-title: Power BI çıkışı için Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın (Önizleme)
+title: Power BI çıkışı için Azure Stream Analytics işinizin kimliğini doğrulamak üzere yönetilen kimliği kullanın
 description: Bu makalede, Power BI çıkışı için Azure Stream Analytics işinizin kimliğini doğrulamak üzere yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/10/2020
+ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459681"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086334"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI (Önizleme)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI
 
-Power BI çıkışı için [yönetilen kimlik kimlik doğrulaması](../active-directory/managed-identities-azure-resources/overview.md) , önizleme olarak Azure Stream Analytics kullanılabilir. Bu, Stream Analytics işlerin Power BI hesabınızdaki bir çalışma alanına doğrudan erişmesini sağlar. Bu özellik, bir kullanıcının Azure portal aracılığıyla Power BI etkileşimli olarak oturum açması için artık gerekli olmadığından, Stream Analytics işlerin dağıtımlarının tamamen otomatikleştirilmesi için izin verir. Ayrıca, işi düzenli olarak yeniden sağlamak zorunda kalabileceğinizden, Power BI yazan uzun süren işler artık daha iyi destekleniyor.
+Power BI çıkışı için [yönetilen kimlik kimlik doğrulaması](../active-directory/managed-identities-azure-resources/overview.md) , Stream Analytics işlerinin Power BI hesabınızdaki bir çalışma alanına doğrudan erişmesini sağlar. Bu özellik, bir kullanıcının Azure portal aracılığıyla Power BI etkileşimli olarak oturum açması için artık gerekli olmadığından, Stream Analytics işlerin dağıtımlarının tamamen otomatikleştirilmesi için izin verir. Ayrıca, işi düzenli olarak yeniden sağlamak zorunda kalabileceğinizden, Power BI yazan uzun süren işler artık daha iyi destekleniyor.
 
 Bu makalede, Azure portal ve Azure Resource Manager dağıtımı aracılığıyla bir Stream Analytics işinin Power BI çıktıları için yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özelliği kullanmak için aşağıdakiler gereklidir:
 
@@ -224,4 +224,4 @@ Bu özelliğin sınırlamaları aşağıda verilmiştir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics ile pano tümleştirmesi Power BI](./stream-analytics-power-bi-dashboard.md)
-* [Azure Stream Analytics çıkışları anlama](./stream-analytics-define-outputs.md)
+* [Azure Stream Analytics çıkışlarını anlayın](./stream-analytics-define-outputs.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: duraklatma & devam eden işlem-Azure portal '
+title: Azure portal aracılığıyla SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
 description: Maliyetleri kaydetmek üzere SQL havuzu için işlem duraklatmak için Azure portal kullanın. Veri ambarını kullanmaya hazırsanız işlem işlemine da izin verilmez.
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,18 +11,16 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 49684e6844c2d9f58e9b750b12991428218e4426
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3a131c1ebbf2a69f1c738cbc3421635406500d3c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200663"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130369"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure SYNAPSE Analytics SQL havuzunda işlem duraklatma ve devam ettirme
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
 
-Maliyetleri kaydetmek üzere SQL havuzu için işlem duraklatmak için Azure portal kullanın. Veri ambarını kullanmaya hazırsanız [Işlem işlemine](sql-data-warehouse-manage-compute-overview.md) da izin verilmez.
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+SYNAPSE SQL Havuzu (veri ambarı) işlem kaynaklarını duraklatmak ve devam etmek için Azure portal kullanabilirsiniz. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -34,9 +32,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="pause-compute"></a>İşlem Duraklat
 
-Maliyetleri kaydetmek için, talep üzerine işlem kaynaklarını duraklatabilir ve sürdürebilirsiniz. Örneğin, gece ve hafta sonları sırasında veritabanını kullanmıyorsanız, bu zamanlarda duraklatıp gün içinde devam edebilirsiniz. Veritabanı duraklatıldığında işlem kaynakları için ücretlendirilmezsiniz. Ancak, depolama alanı için ücretlendirilmeye devam edersiniz. 
+Maliyetleri azaltmak için, talep üzerine işlem kaynaklarını duraklatabilir ve sürdürebilirsiniz. Örneğin, gece ve hafta sonları sırasında veritabanını kullanmıyorsanız, bu zamanlarda duraklatıp gün içinde devam edebilirsiniz. 
+>[!NOTE]
+>Veritabanı duraklatıldığında işlem kaynakları için ücretlendirilmezsiniz. Ancak, depolama alanı için ücretlendirilmeye devam edersiniz. 
 
-Bir SQL havuzunu duraklatmak için bu adımları izleyin.
+Bir SQL havuzunu duraklatmak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure portal sol gezinti sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
@@ -80,7 +80,7 @@ SQL havuzunu yeniden başlatmak için aşağıdaki adımları izleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır. 
+Veri ambarı birimleri ve SQL havuzunuzdaki depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır. 
 
 - Verileri depolama alanında tutmak istiyorsanız, işlem ' i duraklatın.
 - Gelecekteki ücretleri kaldırmak istiyorsanız, SQL havuzunu silebilirsiniz. 
@@ -95,14 +95,15 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 2. İşlem veya depolama için ücretlendirilmemek üzere SQL havuzunu kaldırmak için **Sil**' e tıklayın.
 
-3. Oluşturduğunuz SQL Server 'ı kaldırmak için **sqlpoolservername.Database.Windows.net**ve ardından **Sil**' e tıklayın.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
+3. Oluşturduğunuz SQL Server 'ı kaldırmak için **sqlpoolservername.Database.Windows.net**ve ardından **Sil**' e tıklayın.  
 
-4. Kaynak grubunu kaldırmak için, **myResourceGroup**’a tıklayıp daha sonra **Kaynak grubunu sil**’e tıklayın.
+   > [!CAUTION]
+   > Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
+
+5. Kaynak grubunu kaldırmak için, **myResourceGroup**’a tıklayıp daha sonra **Kaynak grubunu sil**’e tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık SQL havuzunuz için işlemi duraklattı ve sürdürdü. Sonraki adımlar için veri yükleme öğreticisine devam edin.
+Artık SQL havuzunuz için işlemi duraklattı ve sürdürdü. [SQL Pool 'a veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)hakkında daha fazla bilgi edinmek için sonraki makaleye geçin. İşlem yeteneklerini yönetme hakkında daha fazla bilgi için bkz. [işlem yönetimine genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesi. 
 
-> [!div class="nextstepaction"]
-> [Verileri SQL havuzuna yükleme](load-data-from-azure-blob-storage-using-polybase.md)

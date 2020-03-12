@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: duraklatma & devam eden işlem-PowerShell '
-description: Maliyetleri kaydetmek için Azure SYNAPSE Analytics SQL havuzunda işlem duraklatmak için PowerShell 'i kullanın. Veri ambarını kullanmaya hazırsanız işlem işlemine da izin verilmez.
+title: Azure PowerShell ile SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
+description: SYNAPSE SQL havuzunu (veri ambarı) duraklatmak ve devam etmek için Azure PowerShell kullanabilirsiniz. işlem kaynakları.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,16 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ce183edef9e5895d7b3f702f5466c505956a869a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4677668004831b93f45f4bfac240f16ba20a82ee
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200575"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130279"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Azure SYNAPSE Analytics SQL havuzunda işlem duraklatma ve devam ettirme
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
 
-Maliyetleri kaydetmek üzere SQL havuzu için işlem duraklatmak için Azure PowerShell kullanın. Veri ambarını kullanmaya hazırsanız [Işlem işlemine](sql-data-warehouse-manage-compute-overview.md) da izin verilmez.
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+SYNAPSE SQL Havuzu (veri ambarı) işlem kaynaklarını duraklatmak ve devam etmek için Azure PowerShell kullanabilirsiniz. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -50,26 +48,29 @@ Varsayılandan farklı bir abonelik kullanmanız gerekiyorsa, [set-AzContext](/p
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-data-warehouse-information"></a>Veri ambarı bilgilerini arama
+## <a name="look-up-sql-pool-information"></a>SQL havuzu bilgilerini ara
 
 Duraklamayı ve sürdürmeyi planladığınız SQL havuzunun veritabanı adını, sunucu adını ve kaynak grubunu bulun.
 
-SQL havuzunuzun konum bilgilerini bulmak için aşağıdaki adımları izleyin.
+SQL havuzunuzun konum bilgilerini bulmak için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Azure portal sol sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
-1. **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin. Veri ambarı açılır.
+1. **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin. SQL Havuzu açılır.
 
     ![Sunucu adı ve kaynak grubu](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-1. Veritabanı adı olan veri ambarı adı ' nı yazın. Ayrıca sunucu adını ve kaynak grubunu da not alın.
+1. Veritabanı adı olan SQL havuzu adı ' nı yazın. Ayrıca sunucu adını ve kaynak grubunu da not alın.
 1. PowerShell cmdlet 'lerinde sunucu adının yalnızca ilk kısmını kullanın. Yukarıdaki görüntüde, tam sunucu adı sqlpoolservername.database.windows.net ' dir. PowerShell cmdlet 'inde sunucu adı olarak **sqlpoolservername** kullanıyoruz.
 
 ## <a name="pause-compute"></a>İşlem Duraklat
 
-Maliyetleri kaydetmek için, talep üzerine işlem kaynaklarını duraklatabilir ve sürdürebilirsiniz. Örneğin, gece ve hafta sonları sırasında veritabanını kullanmıyorsanız, bu zamanlarda duraklatıp gün içinde devam edebilirsiniz. Veritabanı duraklatıldığında işlem kaynakları için ücret alınmaz. Ancak, depolama alanı için ücretlendirilmeye devam edersiniz.
+Maliyetleri kaydetmek için, talep üzerine işlem kaynaklarını duraklatabilir ve sürdürebilirsiniz. Örneğin, gece ve hafta sonları sırasında veritabanını kullanmıyorsanız, bu zamanlarda duraklatıp gün içinde devam edebilirsiniz. 
 
-Bir veritabanını duraklatmak için, [askıya al-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) cmdlet 'ini kullanın. Aşağıdaki örnekte, **sqlpoolservername**adlı bir sunucuda barındırılan **mysampledatawarehouse** adlı bir veri ambarı duraklatılır. Sunucu, **Myresourcegroup**adlı bir Azure Kaynak grubunda bulunur.
+>[!NOTE]
+>Veritabanı duraklatıldığında işlem kaynakları için ücret alınmaz. Ancak, depolama alanı için ücretlendirilmeye devam edersiniz.
+
+Bir veritabanını duraklatmak için, [askıya al-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) cmdlet 'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**adlı bir sunucuda barındırılan **MYSAMPLEDATAWAREHOUSE** adlı bir SQL havuzunu duraklatır. Sunucu, **Myresourcegroup**adlı bir Azure Kaynak grubunda bulunur.
 
 
 ```Powershell
@@ -77,7 +78,7 @@ Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-Bir çeşitleme, bu sonraki örnek veritabanını $database nesnesine alır. Sonra, nesneyi [askıya al-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase)' a yöneltin. Sonuçlar, nesne resultDatabase içinde depolanır. Son komut sonuçları gösterir.
+Aşağıdaki örnek veritabanını $database nesnesine alır. Sonra, nesneyi [askıya al-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase)' a yöneltin. Sonuçlar, nesne resultDatabase içinde depolanır. Son komut sonuçları gösterir.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -95,7 +96,7 @@ Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
 ```
 
-Bir çeşitleme, bu sonraki örnek veritabanını $database nesnesine alır. Ardından, nesneyi [sürdürülecek-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) ve sonuçları $resultDatabase depolar. Son komut sonuçları gösterir.
+Sonraki örnek veritabanını $database nesnesine alır. Ardından, nesneyi [sürdürülecek-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) ve sonuçları $resultDatabase depolar. Son komut sonuçları gösterir.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -104,9 +105,9 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="check-status-of-your-data-warehouse-operation"></a>Veri ambarı işleminin durumunu denetleyin
+## <a name="check-status-of-your-sql-pool-operation"></a>SQL havuzu operasyonunuzun durumunu denetleyin
 
-Veri ambarınızın durumunu denetlemek için [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) cmdlet 'ini kullanın.
+SQL havuzunuzun durumunu denetlemek için [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) cmdlet 'ini kullanın.
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -114,7 +115,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Veri ambarı birimleri ve veri ambarınızda depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
+Veri ambarı birimleri ve SQL havuzunuzu depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
 - Verileri depolama alanında tutmak istiyorsanız, işlem ' i duraklatın.
 - Gelecekteki ücretleri kaldırmak istiyorsanız, SQL havuzunu silebilirsiniz.
@@ -136,7 +137,4 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık SQL havuzunuz için işlemi duraklattı ve sürdürdü. SQL havuzu hakkında daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
-
-> [!div class="nextstepaction"]
-> [Verileri SQL havuzuna yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+SQL havuzu hakkında daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine ilerleyin. İşlem yeteneklerini yönetme hakkında daha fazla bilgi için bkz. [işlem yönetimine genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesi. 

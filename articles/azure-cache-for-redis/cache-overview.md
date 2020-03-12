@@ -1,38 +1,37 @@
 ---
 title: Redis için Azure Cache nedir?
-description: Önbellek, içerik önbelleğe alma, Kullanıcı oturumu önbelleğe alma, iş ve İleti Kuyruklama ve dağıtılmış işlemler dahil olmak üzere redne ve genel kullanım için Azure önbelleği olduğunu öğrenin.
+description: Önbellek, içerik önbelleğe alma, Kullanıcı oturumu önbelleğe alma, iş ve İleti Kuyruklama ve dağıtılmış işlemlerin etkinleştirilmesi için Redsıs için Azure önbelleği hakkında bilgi edinin.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.custom: mvc
-ms.date: 03/26/2018
-ms.openlocfilehash: 5224be999ff8ff52c2f52568a504095dc5962398
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/11/2020
+ms.openlocfilehash: 38936000e426d560237295105b5456429d9ae16d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433415"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126374"
 ---
 # <a name="azure-cache-for-redis-description"></a>Redis açıklaması için Azure önbelleği
 
-Redsıs için Azure önbelleği, popüler yazılım [redin](https://redis.io/)tabanlıdır. Genellikle, arka uç veri depolarını yoğun bir şekilde bağımlı olan sistemlerin performans ve ölçeklenebilirliğini artırmak için önbellek olarak kullanılır. Performans, sık erişilen veriler uygulamaya yakın bir konumdaki hızlı depolama alanına geçici olarak kopyalanarak iyileştirilir. [Redsıs Için Azure önbelleği](https://redis.io/)sayesinde, bu hızlı depolama, bir veritabanı tarafından diskten yüklenmesi yerine redin Için Azure önbelleği ile bellek içinde bulunur.
+Redsıs için Azure önbelleği, açık kaynaklı yazılım [redin](https://redis.io/)temel alınarak bellek içi veri deposu sağlar. Reddir, önbellek olarak kullanıldığında, yoğun arka uç veri depolarında yoğun olan sistemlerin performansını ve ölçeklenebilirliğini geliştirir. Sık erişilen veriler uygulamaya yakın olan hızlı depolamaya kopyalanarak performans artırıldı. Redin için Azure Cache ile, bu hızlı depolama, diskten bir veritabanı tarafından yüklenmesi yerine bellek içinde bulunur.
 
-Redde için Azure Cache, bellek içi veri yapısı deposu, dağıtılmış ilişkisel olmayan bir veritabanı ve bir ileti Aracısı olarak da kullanılabilir. Redis altyapısının düşük gecikmeli, yüksek aktarım hızına sahip performansından yararlanılarak uygulama performansı iyileştirilir.
+Redo için Azure Cache, bellek içi veri yapısı deposu, dağıtılmış ilişkisel olmayan bir veritabanı ve bir ileti Aracısı olarak kullanılabilir. Redis altyapısının düşük gecikmeli, yüksek aktarım hızına sahip performansından yararlanılarak uygulama performansı iyileştirilir.
 
-Redsıs için Azure önbelleği, güvenli ve adanmış bir Redsıs önbelleğine erişmenizi sağlar. Redsıs için Azure önbelleği, Azure 'da barındırılan ve Azure içindeki veya dışındaki tüm uygulamalar tarafından erişilebilen Microsoft tarafından yönetilir.
+Redsıs için Azure önbelleği, güvenli ve adanmış bir Redsıs önbelleğine erişim sağlar. Redsıs için Azure önbelleği, Azure 'da barındırılan ve Azure içindeki veya dışındaki tüm uygulamalar tarafından erişilebilen Microsoft tarafından yönetilir.
 
 ## <a name="using-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini kullanma
 
-Redis için Azure önbelleğinin uygulama mimarisini desteklemek veya uygulama performansını geliştirmek için kullanıldığı birçok yaygın desen vardır. En yaygın olanlarından bazıları şunlardır:
+Redis için Azure önbelleği, genel uygulama mimarisi desenlerini destekleyerek uygulama performansını geliştirir. En yaygın olanlarından bazıları şunlardır:
 
 | Desen      | Açıklama                                        |
 | ------------ | -------------------------------------------------- |
-| [Edilgen Önbellek](cache-web-app-cache-aside-leaderboard.md) | Bir veritabanı büyük olabileceği için, tüm veritabanının bir önbelleğe yüklenmesi önerilen bir yaklaşım değildir. Veri öğelerini önbelleğe yalnızca gerekli olduğunda yüklemek için [cache-aside](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) düzeninin kullanılması yaygındır. Sistem arka uç verilerinde değişiklikler yaptığında da önbelleği güncelleyebilir ve diğer istemcilerle dağıtabilir. Ek olarak, sistem veri öğeleri için bir süre sonu ayarlayabilir ya da veri güncelleştirmelerinin önbelleğe yeniden yüklenmesine neden olacak bir çıkarma ilkesi kullanabilir.|
-| [İçeriği Önbelleğe Alma](cache-aspnet-output-cache-provider.md) | Birçok Web sayfası, üst bilgiler, alt bilgiler, araç çubukları, menüler vb. şablonlardan oluşturulur. Bunlar aslında sık değişmez ve dinamik olarak oluşturulmamalıdır. Redde için Azure önbelleği gibi bellek içi önbellek kullanımı, web sunucularınız için arka uç veri depolarına kıyasla bu tür statik içerik için hızlı erişim sağlayacak. Bu düzen, içeriği dinamik olarak oluşturmak için gerekecek işleme süresini ve sunucu yükünü azaltır. Bunun yapılması, web sunucularının daha iyi yanıt vermesini sağlar ve yükleri işlemek için gereken sunucu sayısını azaltmanızı sağlayabilir. Redsıs için Azure Cache, ASP.NET ile bu kalıbı desteklemeye yardımcı olmak için Redsıs çıkış önbelleği sağlayıcısı sağlar.|
-| [Kullanıcı oturumunu önbelleğe alma](cache-aspnet-session-state-provider.md) | Bu düzen yaygın olarak alışveriş sepetleri ve bir web uygulamasının kullanıcı tanımlama bilgileriyle ilişkilendirmek isteyebileceği diğer kullanıcı geçmişi türündeki bilgilerle birlikte kullanılır. Bir tanımlama bilgisinde çok fazla bilgi depolamak, tanımlama bilgisi boyutu arttıkça ve tanımlama bilgisi her istek ile birlikte geçirilip doğrulandıkça performansı olumsuz yönde etkileyebilir. Tipik bir çözüm, bir arka uç veritabanında verileri sorgulamak üzere tanımlama bilgisinin anahtar olarak kullanılmasıdır. Redde için Azure önbelleği gibi bellek içi önbellek kullanmak, bilgilerin bir kullanıcıyla ilişkilendirilmesi, tam ilişkisel veritabanıyla etkileşime kıyasla çok daha hızlıdır. |
-| İş ve ileti sıraya alma | Uygulamalar istek aldığında genellikle istekle ilişkili işlemlerin yürütülmesi ek zaman alır. Daha uzun süre çalışan işlemleri bir sıraya ekleyerek ertelemek ve daha sonra, muhtemelen başka bir sunucu ile işleme almak yaygın bir düzendir. Bu iş erteleme yöntemine görevi sıraya alma adı verilir. Görev sıralarını desteklemek için tasarlanmış birçok yazılım bileşeni mevcuttur. Redde için Azure Cache Ayrıca bu amaca dağıtılmış bir sıra olarak hizmet verir.|
-| Dağıtılmış işlemler | Uygulamaların tek bir işlem (atomik) olarak bir arka uç veri deposuna karşı bir dizi komut yürütebilmesi genel bir gereksinimdir. Tüm komutlar başarılı olmalı veya tümü ilk durumuna geri döndürülmelidir. Redsıs için Azure cache [, işlem biçiminde](https://redis.io/topics/transactions)tek bir işlem olarak bir dizi komutun yürütülmesini destekler. |
+| [Edilgen Önbellek](cache-web-app-cache-aside-leaderboard.md) | Veritabanları genellikle bir önbelleğe doğrudan yüklenemeyecek kadar büyük olur. Yalnızca gerektiğinde önbelleğe veri yüklemek için [önbelleğe alma](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) deseninin kullanılması yaygındır. Sistem verilerde değişiklik yaptığında sistem, daha sonra diğer istemcilere dağıtılan önbelleği de güncelleştirebilir. Ayrıca, sistem veri üzerinde bir süre sonu ayarlayabilir veya veri güncelleştirmelerini önbelleğe tetikleyebilmesi için bir çıkarma ilkesi kullanabilir.|
+| [İçeriği Önbelleğe Alma](cache-aspnet-output-cache-provider.md) | Üst bilgiler, alt bilgiler ve başlık gibi statik içerik kullanan şablonlardan birçok Web sayfası oluşturulur. Bu statik öğeler sık değişmemelidir. Bellek içi önbellek kullanmak, arka uç veri depolarına kıyasla statik içeriğe hızlı erişim sağlar. Bu model, işlem süresini ve sunucu yükünü azaltarak Web sunucularının daha hızlı yanıt vermesine olanak tanır. Yükü işlemek için gereken sunucu sayısını azaltmanıza izin verebilir. Redsıs için Azure Cache, ASP.NET ile bu kalıbı desteklemek için Redsıs çıkış önbelleği sağlayıcısı sağlar.|
+| [Kullanıcı oturumunu önbelleğe alma](cache-aspnet-session-state-provider.md) | Bu model genellikle alışveriş sepetlerini ve bir Web uygulamasının Kullanıcı tanımlama bilgileriyle ilişkilendirmek isteyebileceğiniz diğer Kullanıcı Geçmişi verileri ile birlikte kullanılır. Bir tanımlama bilgisinde çok fazla bilgi depolamak, tanımlama bilgisi boyutu arttıkça ve tanımlama bilgisi her istek ile birlikte geçirilip doğrulandıkça performansı olumsuz yönde etkileyebilir. Tipik bir çözüm, bir veritabanındaki verileri sorgulamak için anahtar olarak tanımlama bilgisini kullanır. Redde için Azure önbelleği gibi bellek içi önbellek kullanmak, bilgilerin bir kullanıcıyla ilişkilendirilmesi, tam ilişkisel veritabanıyla etkileşime kıyasla çok daha hızlıdır. |
+| İş ve ileti sıraya alma | Uygulamalar genellikle istekle ilişkili işlemler yürütme süresi geldiğinde bir kuyruğa görev ekler. Daha uzun çalışan işlemler, genellikle başka bir sunucu tarafından sırada işlenmek üzere sıraya alınır.  Bu iş erteleme yöntemine görevi sıraya alma adı verilir. Redsıs için Azure önbelleği, uygulamanızda bu düzenin etkinleştirilmesi için dağıtılmış bir sıra sağlar.|
+| Dağıtılmış işlemler | Uygulamalar bazen bir arka uç veri deposunda tek bir atomik işlem olarak yürütülecek bir dizi komut gerektirir. Tüm komutlar başarılı olmalı veya tümü ilk durumuna geri döndürülmelidir. Redsıs için Azure Cache, tek bir [işlem](https://redis.io/topics/transactions)olarak toplu bir komut yürütmeyi destekler. |
 
 ## <a name="azure-cache-for-redis-offerings"></a>Redsıs teklifleri için Azure önbelleği
 
@@ -40,15 +39,15 @@ Redo için Azure Cache aşağıdaki katmanlarda kullanılabilir:
 
 | Katman | Açıklama |
 |---|---|
-Temel | Tek düğümlü bir önbellek. Bu katman birden fazla bellek boyutunu (250 MB - 53 GB) destekler. Geliştirme/test ve kritik olmayan iş yükleri için ideal bir katmandır. Temel katmanda hizmet düzeyi sözleşmesi (SLA) yoktur |
-| Standart | Microsoft tarafından yönetilen iki düğümlü bir birincil/ikincil yapılandırmada çoğaltılan ve yüksek kullanılabilirlik SLA’sı (%99,9) ile sunulan önbellek. |
+Temel | Tek düğümlü bir önbellek. Bu katman birden çok bellek boyutunu (250 MB-53 GB) destekler ve geliştirme/test ve kritik olmayan iş yükleri için idealdir. Temel katmanda hizmet düzeyi sözleşmesi (SLA) yoktur |
+| Standart | Azure tarafından yüksek kullanılabilirliğe sahip bir SLA ile yönetilen, birincil/ikincil ve yapılandırma için çoğaltılan bir önbellek (% 99,9) |
 | Premium | Premium katman, kurumsal olmaya yönelik katmandır. Premium katmanı Önbellekler daha fazla özelliği destekler ve düşük gecikmeyle daha yüksek aktarım hızına sahiptir. Premium katmanındaki önbellekler, Temel veya Standart Katmanına kıyasla daha iyi performans sağlayan daha güçlü donanımlara dağıtılır. Bu avantaj, aynı boyuttaki bir önbellek için üretilen iş hızının Standart katmana kıyasla Premium 'da daha yüksek olacağı anlamına gelir. |
 
 > [!TIP]
 > Premium önbellekler ile boyut, aktarım hızı ve bant genişliği hakkında daha fazla bilgi için bkz. [REDSıS hakkında Azure önbelleği](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 >
 
-Önbelleğiniz oluşturulduktan sonra ölçeğini daha yüksek bir katmana artırabilirsiniz. Ölçeğin daha düşük bir katmana indirilmesi desteklenmez. Adım adım ölçeklendirme yönergeleri için bkz. [Azure önbelleğini redsıs Için ölçeklendirme](cache-how-to-scale.md) ve [bir ölçeklendirme işlemini otomatikleştirme](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
+Oluşturulduktan sonra önbelleğinizi daha yüksek bir katmana ölçeklendirebilirsiniz. Ölçeğin daha düşük bir katmana indirilmesi desteklenmez. Adım adım ölçeklendirme yönergeleri için bkz. [Azure önbelleğini redsıs Için ölçeklendirme](cache-how-to-scale.md) ve [bir ölçeklendirme işlemini otomatikleştirme](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
 ### <a name="feature-comparison"></a>Özellik karşılaştırması
 

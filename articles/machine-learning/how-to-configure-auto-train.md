@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6f49529b0599f36ae4a26939bbbe171a45a1a53a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081837"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127192"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Otomatik machine learning'de kullanılabilen yapılandırma seçenekleri:
 * Model ölçümleri keşfedin
 * Kaydolun ve model dağıtma
 
-Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-create-portal-experiments.md).
+Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-use-automated-ml-for-ml-models.md).
 
 ## <a name="select-your-experiment-type"></a>Deneme türünüzü seçin
 
@@ -174,7 +174,7 @@ Bazı örnekler:
 
 Üç farklı `task` parametre değeri (üçüncü görev türü `forecasting`ve benzer bir algoritma havuzunu `regression` görevler), uygulanacak modellerin listesini belirleme. Dahil edilecek veya hariç tutulacak mevcut modellerle yinelemeleri daha fazla değiştirmek için `whitelist` veya `blacklist` parametrelerini kullanın. Desteklenen modellerin listesi, [Supportedmodeller sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) ([Sınıflandırma](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [tahmin](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)ve [gerileme](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)) bulunabilir.
 
-Otomatik ML 'nin doğrulama hizmeti, deneme zaman aşımı hatalarından kaçınmak için `experiment_timeout_minutes` minimum zaman aşımı süresi 15 dakika olarak ayarlanmalıdır.
+Otomatik ML 'nin doğrulama hizmeti, deneme zaman aşımı hatalarından kaçınmak için `experiment_timeout_minutes` en düşük zaman aşımı süresi 15 dakika olarak ayarlanmalıdır.
 
 ### <a name="primary-metric"></a>Birincil Metrik
 Birincil ölçüm, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz kullanılabilir ölçümler, seçtiğiniz görev türüne göre belirlenir ve aşağıdaki tabloda her bir görev türü için geçerli birincil ölçümler gösterilmektedir.
@@ -191,7 +191,7 @@ Birincil ölçüm, iyileştirme için model eğitimi sırasında kullanılacak �
 
 ### <a name="data-featurization"></a>Veri korturlama
 
-Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bulunan özelliklerle hassas olan *belirli* algoritmalara yardımcı olacak şekilde [otomatik olarak ölçeklendirilir ve normalleştirilir](concept-automated-ml.md#preprocess) .  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek özellikler de sağlayabilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#featurization).
+Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bulunan özelliklerle hassas olan *belirli* algoritmalara yardımcı olacak şekilde [otomatik olarak ölçeklendirilir ve normalleştirilir](concept-automated-ml.md#preprocess) .  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek özellikler de sağlayabilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-use-automated-ml-for-ml-models.md#featurization).
 
 Denemeleri 'nizi yapılandırırken `featurization`gelişmiş ayarı etkinleştirebilirsiniz. Aşağıdaki tabloda, [`AutoMLConfig` sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)korleştirme için kabul edilen ayarlar gösterilmektedir.
 
@@ -199,7 +199,7 @@ Denemeleri 'nizi yapılandırırken `featurization`gelişmiş ayarı etkinleşti
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Özelleştirilmiş basamak kullanılması gerektiğini gösterir. [Korleştirme özelleştirmeyi öğrenin](how-to-configure-auto-train.md#customize-feature-engineering).|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmayacağını gösterir.|
-|`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-create-portal-experiments.md#advanced-featurization-options) otomatik olarak gerçekleştirileceğini belirtir.|
+|`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) otomatik olarak gerçekleştirileceğini belirtir.|
 
 > [!NOTE]
 > Otomatik makine öğrenimi adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı özellik adımları, giriş verilerinize otomatik olarak uygulanır.

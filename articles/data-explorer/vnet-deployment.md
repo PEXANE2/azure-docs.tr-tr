@@ -1,5 +1,5 @@
 ---
-title: Sanal ağınıza Azure Veri Gezgini dağıtma (Önizleme)
+title: Sanal ağınıza Azure Veri Gezgini dağıtma
 description: Azure Veri Gezgini sanal ağınıza dağıtmayı öğrenin
 author: basaba
 ms.author: basaba
@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851460"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096755"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Sanal ağınıza Azure Veri Gezgini dağıtma (Önizleme)
+# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>Sanal ağınıza Azure Veri Gezgini dağıtma
 
 Bu makalede, bir Azure Veri Gezgini kümesini özel bir Azure sanal ağına dağıtırken mevcut olan kaynaklar açıklanmaktadır. Bu bilgiler, sanal ağınızdaki (VNet) bir alt ağa bir küme dağıtmanıza yardımcı olur. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağ nedir?](/azure/virtual-network/virtual-networks-overview)
 
@@ -25,9 +25,6 @@ Azure Veri Gezgini, bir kümenin sanal ağınızdaki (VNet) bir alt ağa dağıt
 * Azure Veri Gezgini kümesi trafiğinden [ağ güvenlik grubu](/azure/virtual-network/security-overview) (NSG) kurallarını zorunlu tutun.
 * Şirket içi ağınızı Azure Veri Gezgini kümesinin alt ağına bağlayın.
 * [Hizmet uç noktaları](/azure/virtual-network/virtual-network-service-endpoints-overview)ile veri bağlantısı kaynaklarınızı ([Olay Hub](/azure/event-hubs/event-hubs-about) 'ı ve [Event Grid](/azure/event-grid/overview)) güvenli hale getirin.
-
-> [!NOTE]
-> Sanal Ağ tümleştirmesi ve dağıtımı önizleme modundadır. Bu özelliği etkinleştirmek için bir [destek bileti](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)açın.
 
 ## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>VNet 'iniz içindeki Azure Veri Gezgini kümenize erişin
 

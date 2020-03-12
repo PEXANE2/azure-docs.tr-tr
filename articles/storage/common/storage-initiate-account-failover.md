@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157729"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128337"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Depolama hesabı yük devretmesini başlatma (Önizleme)
 
@@ -31,7 +31,6 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak depolama hesab�
 
 Depolama hesabınızda bir hesap yük devretmesi gerçekleştirebilmeniz için önce aşağıdaki adımları gerçekleştirdiğinizden emin olun:
 
-- Hesap yük devretmesi önizlemesine kaydolun. Nasıl kaydedileceği hakkında bilgi için [Önizleme hakkında](storage-disaster-recovery-guidance.md#about-the-preview)bölümüne bakın.
 - Depolama hesabınızın coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) kullanacak şekilde yapılandırıldığından emin olun. Coğrafi olarak yedekli depolama hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](storage-redundancy.md).
 
 ## <a name="important-implications-of-account-failover"></a>Hesap yük devretmesinin önemli etkileri
@@ -44,7 +43,7 @@ Yük devretmenin ardından, depolama hesabı türü otomatik olarak yeni birinci
 
 Depolama hesabınız için GRS 'yi yeniden etkinleştirdikten sonra Microsoft, hesabınızdaki verileri yeni ikincil bölgeye çoğaltmaya başlar. Çoğaltma süresi, çoğaltılan veri miktarına bağlıdır.  
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal hesap yük devretmesini başlatmak için aşağıdaki adımları izleyin:
 
@@ -60,7 +59,7 @@ Azure portal hesap yük devretmesini başlatmak için aşağıdaki adımları iz
 
     ![Hesap yük devretmesi için onay iletişim kutusunu gösteren ekran görüntüsü](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Bir hesap yük devretmesi başlatmak üzere PowerShell 'i kullanmak için, önce 6.0.1 Preview modülünü yüklemeniz gerekir. Modülünü yüklemek için şu adımları izleyin:
 
@@ -97,7 +96,7 @@ PowerShell 'den bir hesap yük devretmesi başlatmak için aşağıdaki komutu y
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Hesap yük devretmesi başlatmak için Azure CLı 'yı kullanmak üzere aşağıdaki komutları yürütün:
 

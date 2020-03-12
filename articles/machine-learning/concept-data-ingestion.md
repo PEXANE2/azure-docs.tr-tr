@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303129"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086891"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning veri alımı
 
@@ -26,7 +26,7 @@ Bu makalede, Azure Machine Learning ile kullanılabilen aşağıdaki veri alma s
 
 Veri alımı, yapılandırılmamış verilerin bir veya daha fazla kaynaktan ayıklanması ve ardından eğitim makine öğrenimi modelleri için hazırlandığı işlemdir. Ayrıca, özellikle el ile yapıldıysa ve birden çok kaynaktan büyük miktarda veriniz varsa, bu da yoğun zaman alabilir. Bu çabayı otomatik hale getirmek kaynakları boşaltır ve modellerinizin en son ve uygun verileri kullanmasını sağlar.
 
-Verileri ayıklamak, yüklemek ve dönüştürmek için özel olarak oluşturulduğu için başlangıçta Azure Data Factory (ADF) kullanarak değerlendirmeniz önerilir. ADF 'yi kullanarak gereksinimlerinizi karşılamadıysanız, özel bir kod çözümü geliştirmek için Python SDK 'sını kullanabilir veya gereksinimlerinize uyan genel veri alma iş akışını oluşturmak için ADF 'yi ve Python SDK 'sını kullanabilirsiniz.
+Azure Data Factory (ADF), verileri ayıklamak, yüklemek ve dönüştürmek için özellikle oluşturulmuştur, ancak Python SDK, temel veri alma görevleri için özel bir kod çözümü geliştirmenizi sağlar. İhtiyaç duyduğunuz kadar tam değilse, gereksinimlerinize uyan genel veri alma iş akışını oluşturmak için ADF 'yi ve Python SDK 'sını birlikte kullanabilirsiniz. 
 
 ## <a name="use-azure-data-factory"></a>Azure Data Factory'yi kullanma
 
@@ -52,6 +52,8 @@ Bu adımlar ve aşağıdaki diyagramda Azure Data Factory veri alımı iş akı�
 
 
     ![ADF veri alımı](media/concept-data-ingestion/data-ingest-option-one.svg)
+    
+[Azure Data Factory](how-to-data-ingest-adf.md)Machine Learning için bir veri alma işlem hattı oluşturmayı öğrenin.
 
 ## <a name="use-the-python-sdk"></a>Python SDK 'sını kullanma 
 

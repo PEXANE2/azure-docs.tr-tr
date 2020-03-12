@@ -3,12 +3,12 @@ title: Cloud Native Buildpack ile görüntü oluşturma
 description: Bir uygulamadan kapsayıcı görüntüsü oluşturmak için az ACR Pack Build komutunu kullanın ve Dockerfile kullanmadan Azure Container Registry gönderin.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456127"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087080"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpack kullanarak bir uygulamadan görüntü oluşturma ve gönderme
 
@@ -30,7 +30,7 @@ Cloud Native Buildpacks kullanarak bir kapsayıcı görüntüsü derlemek ve gö
 * Bir yerel dizin, GitHub deposu veya uzak bir tarbol gibi ACR görevleri için [desteklenen bağlam konumlarından](container-registry-tasks-overview.md#context-locations) biri
 * Uygulamanız için uygun bir Buildpack Oluşturucu görüntüsünün adı. Azure Container Registry daha hızlı derlemeler için `cloudfoundry/cnb:0.0.34-cflinuxfs3` gibi Oluşturucu görüntülerini önbelleğe alır.  
 
-`az acr pack build`, akan [çalıştırma](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlükleri](container-registry-tasks-overview.md#view-task-logs) de dahil olmak üzere ACR görevleri komutlarının diğer özelliklerini destekler ve daha sonra alımı için de kaydedilir.
+`az acr pack build`, akan [çalıştırma](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlükleri](container-registry-tasks-logs.md) de dahil olmak üzere ACR görevleri komutlarının diğer özelliklerini destekler ve daha sonra alımı için de kaydedilir.
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Örnek: Cloud Foundry Builder ile Node. js görüntüsü oluşturma
 

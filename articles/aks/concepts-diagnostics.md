@@ -6,16 +6,18 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596190"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126596"
 ---
-# <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes hizmeti (AKS) tanılamaları genel bakış
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes hizmet tanılama (Önizleme) genel bakış
 
 Azure Kubernetes Service (AKS) kümesi sorunlarını giderme, özellikle kümeniz iş açısından kritik iş yükleri çalıştırıyorsa kümenizin korunmasında önemli bir bölümüdür. AKS Tanılaması, kümenizdeki sorunları belirlemenize ve çözmenize yardımcı olan akıllı ve kendi kendine tanılama deneyimidir. AKS tanılaması bulutu yereldir ve bunu ek bir yapılandırma ya da faturalandırma maliyeti olmadan kullanabilirsiniz.
+
+Bu özellik artık genel önizlemeye sunuldu.
 
 ## <a name="open-aks-diagnostics"></a>AKS tanılamayı aç
 

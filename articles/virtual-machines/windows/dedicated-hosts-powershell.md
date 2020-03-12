@@ -1,23 +1,18 @@
 ---
 title: Azure adanmış Konakları Azure PowerShell kullanarak dağıtma
 description: Azure PowerShell kullanarak VM 'Leri adanmış ana bilgisayarlara dağıtın.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 30d15970b00a81ab85cdb85d2c0a27ee23ed1b92
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190512"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130315"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
 
@@ -28,7 +23,7 @@ Azure PowerShell sürüm 2.8.0 veya sonraki bir sürümü yüklediğinizden emin
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- Aşağıdaki VM Serisi destekleniyor: DSv3, ESv3 ve Fsv2. 
+- Adanmış konaklar için kullanılabilen Boyutlar ve donanım türleri bölgelere göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
 ## <a name="create-a-host-group"></a>Konak grubu oluştur
 
@@ -57,7 +52,6 @@ $hostGroup = New-AzHostGroup `
 ## <a name="create-a-host"></a>Konak Oluşturma
 
 Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.
-
 
 Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
 

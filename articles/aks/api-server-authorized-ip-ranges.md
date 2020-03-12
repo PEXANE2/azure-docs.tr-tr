@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de API sunucusuna erişim için bi
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 80a8504e42eda966554d0151f54668015cf7ee83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596718"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126625"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -59,6 +59,8 @@ az aks create \
 > - Güvenlik Duvarı genel IP adresi
 > - Kümeyi yönettiğiniz ağları temsil eden herhangi bir Aralık
 > - AKS kümenizde Azure Dev Spaces kullanıyorsanız, [bölgeniz temelinde ek aralıklara][dev-spaces-ranges]izin vermeniz gerekir.
+
+> Belirtebileceğiniz IP aralıklarının sayısı için üst sınır 3500 ' dir. 
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyici için giden IP 'Leri belirtin
 

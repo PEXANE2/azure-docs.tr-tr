@@ -7,19 +7,19 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 02/04/2020
+ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 82bf6f9a78a46659cc2e0955895c6e1a6e6eb3aa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195932"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096632"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak kullanımını ve sorgu etkinliğini izleme
-Azure SYNAPSE Analytics, veri ambarı iş yükünüze yönelik içgörüler için Azure portal içinde zengin bir izleme deneyimi sağlar. Azure portal, veri Ambarınızı izlerken, ölçüm ve Günlükler için yapılandırılabilir bekletme dönemleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığından önerilen araçtır. Portal ayrıca Operations Management Suite (OMS) ve Azure Izleyici (Günlükler) gibi diğer Azure izleme hizmetleri ile tümleştirmenize olanak tanıdığından, yalnızca veri Ambarınızla değil, tüm Azure analizlerinizi değil de bir bütünsel izleme deneyimi sağlar tümleşik izleme deneyimi için platform. Bu belgelerde, SQL Analytics ile analiz platformunuzu iyileştirmek ve yönetmek için kullanabileceğiniz izleme özellikleri açıklanmaktadır. 
+Azure SYNAPSE Analytics, veri ambarı iş yükünüz ile ilgili öngörülere yönelik Azure portal içinde zengin bir izleme deneyimi sağlar. Azure portal, veri Ambarınızı izlerken, ölçüm ve Günlükler için yapılandırılabilir bekletme dönemleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığından önerilen araçtır. Portal Ayrıca, Azure Izleyici (Günlükler) gibi diğer Azure izleme hizmetleriyle, Günlük Analizi ile tümleştirmenize olanak sağlar. Ayrıca, yalnızca veri Ambarınızla değil, tümleşik bir Azure Analytics platformunuz izleme deneyimi. Bu belgelerde, SQL Analytics ile analiz platformunuzu iyileştirmek ve yönetmek için kullanabileceğiniz izleme özellikleri açıklanmaktadır. 
 
 ## <a name="resource-utilization"></a>Kaynak kullanımı 
 SQL Analytics için Azure portal aşağıdaki ölçümler mevcuttur. Bu ölçümler [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics)aracılığıyla ortaya çıkmış.
@@ -41,9 +41,13 @@ SQL Analytics için Azure portal aşağıdaki ölçümler mevcuttur. Bu ölçüm
 | İsabetli önbellek okuması yüzdesi    | (önbellek isabet sayısı/önbellek isabetsizliği) * 100, önbellek isabetlerinin yerel SSD önbelleğindeki tüm columnstore segmentlerinin toplamı olduğu ve önbellek isabetsizlik, tüm düğümlerde toplanan yerel SSD önbelleğinde bulunan columnstore kesimlerinin isabetsizliği | Ortalama, en düşük, en fazla    |
 | Önbellek kullanılan yüzde   | (kullanılan önbellek/önbellek kapasitesi) * 100, kullanılan önbellek tüm düğümlerde yerel SSD önbelleğindeki tüm baytların toplamı ve önbellek kapasitesi tüm düğümlerde yerel SSD önbelleğinin depolama kapasitesinin toplamıdır | Ortalama, en düşük, en fazla    |
 | Yerel tempdb yüzdesi | Tüm işlem düğümlerinde yerel tempdb kullanımı-değerler her beş dakikada bir dağıtılır | Ortalama, en düşük, en fazla    |
+| Veri depolama boyutu | Veritabanına yüklenen toplam veri boyutu. Bu, CCı 'da bulunan ve CCI tablolarının boyutunun toplam veritabanı dosya boyutuna göre ölçülen verileri içerir | Toplam |
+| Olağanüstü durum kurtarma boyutu | Her 24 saatte bir alınan coğrafi yedeklemenin toplam boyutu | Toplam |
+| Anlık görüntü depolama boyutu | Veritabanı geri yükleme noktaları sağlamak için alınan anlık görüntülerin toplam boyutu. Buna otomatik ve Kullanıcı tanımlı anlık görüntüler dahildir. | Toplam |
 
 Ölçümleri görüntülerken ve uyarıları ayarlarken dikkate alınması gereken noktalar:
 
+- Kullanılan DWU, SQL havuzundaki **kullanım için yalnızca üst düzey bir temsili** temsil eder ve kapsamlı bir kullanım göstergesi olması anlamına gelir. Ölçeği artırma veya azaltma yapılıp yapılmayacağını anlamak için eşzamanlılık, bellek, tempdb ve Uyarlamalı önbellek kapasitesi gibi DWU tarafından etkilenen tüm faktörleri göz önünde bulundurun. İş hedeflerinizi karşılayacak en iyi şeyi belirlemek için iş [yükünüzü farklı DWU ayarlarında çalıştırmayı](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units) öneririz.
 - Başarısız ve başarılı bağlantılar, belirli bir veri ambarı için (mantıksal sunucu için değil) raporlanır
 - Veri ambarı boşta durumunda olsa bile bellek yüzdesi kullanımı yansıtır; etkin iş yükü bellek tüketimini yansıtmaz. Ek önbellek kapasitesi için ölçeklendirmenin, gereksinimlerinizi karşılamak üzere iş yükü performansını artırabilmesi için bu ölçümü diğer kullanıcılarla birlikte (tempdb, Gen2 Cache) kullanın ve izleyin.
 

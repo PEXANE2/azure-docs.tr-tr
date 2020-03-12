@@ -1,23 +1,18 @@
 ---
-title: Azure adanmış Konakları Azure portal kullanarak dağıtma
-description: Azure portal kullanarak VM 'Leri adanmış ana bilgisayarlara dağıtın.
-services: virtual-machines-windows
+title: Portalı kullanarak Azure adanmış Konakları dağıtma
+description: Portalı kullanarak adanmış konaklara VM 'Ler dağıtın.
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: aa19c343e003bf1cd55e3d12b18e595113a7189e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: b6f5e155b76535c4d9e0080983d5f54cec3adb01
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833941"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086938"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Portalı kullanarak VM 'Leri adanmış konaklara dağıtma
 
@@ -30,7 +25,7 @@ Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 1. **Yeni** sayfada, **popüler**bölümünde **Windows Server 2016 Datacenter**' ı seçin.
 1. **Temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun ve ardından **kaynak grubu**olarak, *myayrılmış hostsrg* ' yi seçin. 
-1. **Örnek ayrıntıları** altında, **Sanal makine adı** için *myVM* yazın ve **Konum** için *East US*'yi seçin.
+1. **Örnek ayrıntıları** altında, *Sanal makine adı* için **myVM** yazın ve *Konum* için **Doğu ABD**'yi seçin.
 1. **Kullanılabilirlik seçenekleri** ' nde **kullanılabilirlik alanı**' nı seçin, açılan listeden *1* ' i seçin.
 1. Boyut için **boyutu Değiştir**' i seçin. Kullanılabilir boyutlar listesinde, **Standart E2s v3**gibi Esv3 serilerinden birini seçin. Tüm kullanılabilir boyutları görmek için filtreyi temizlemeniz gerekebilir.
 1. **Yönetici hesabı** altında, *azureuser* gibi bir kullanıcı adı ve bir parola girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.
@@ -40,6 +35,25 @@ Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış
 1. Kalan varsayılan ayarları bırakın, ardından sayfanın alt kısmındaki **Gözden geçir + oluştur** düğmesini seçin.
 1. Doğrulamanın geçtiğini belirten iletiyi gördüğünüzde **Oluştur**' u seçin.
 
+## <a name="add-an-existing-vm"></a>Var olan bir VM 'yi ekleme 
+
+Bir çıkış VM 'sini ayrılmış bir konağa ekleyebilirsiniz, ancak önce VM 'nin Stop\satıcılarla locatedolması gerekir. Bir VM 'yi adanmış bir konağa taşımadan önce, VM yapılandırmasının desteklendiğinden emin olun:
+
+- VM boyutu, ayrılmış konakla aynı büyüklükte bir aile içinde olmalıdır. Örneğin, adanmış ana bilgisayarınız DSv3 ise sanal makine boyutu Standard_D4s_v3 olabilir, ancak bir Standard_A4_v2 olamaz. 
+- VM 'nin adanmış konakla aynı bölgede bulunması gerekir.
+- VM, bir yakınlık yerleşimi grubunun parçası olamaz. Ayrılmış bir konağa taşımadan önce VM 'yi yakınlık yerleşimi grubundan kaldırın. Daha fazla bilgi için bkz. [bir VM 'yi bir yakınlık yerleşimi grubundan taşıma](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM bir kullanılabilirlik kümesinde olamaz.
+- VM bir kullanılabilirlik bölgeindeyse, konak grubuyla aynı Kullanılabilirlik bölgesi olması gerekir. VM ve konak grubu için kullanılabilirlik bölgesi ayarlarının eşleşmesi gerekir.
+
+[Portalı](https://portal.azure.com)kullanarak VM 'yi adanmış bir konağa taşıyın.
+
+1. VM için sayfayı açın.
+1. VM 'yi serbest bırakmak için **Durdur** ' u seçin.
+1. Sol menüden **yapılandırma** ' yı seçin.
+1. Açılır menülerden bir konak grubu ve konak seçin.
+1. İşiniz bittiğinde sayfanın en üstündeki **Kaydet** ' i seçin.
+1. VM konağa eklendikten sonra, sol menüden **genel bakış** ' ı seçin.
+1. Sanal makineyi yeniden başlatmak için sayfanın üst kısmındaki **Başlat** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

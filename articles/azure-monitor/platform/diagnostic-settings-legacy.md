@@ -1,17 +1,17 @@
 ---
-title: Tanılama ayarları (Önizleme) ile Azure etkinlik günlüğü toplama-Azure Izleyici | Microsoft Docs
+title: Tanılama ayarlarıyla Azure etkinlik günlüğü toplama-Azure Izleyici | Microsoft Docs
 description: Azure etkinlik günlüklerini Azure Izleyici günlüklerine, Azure depolama 'ya veya Azure Event Hubs iletmek için tanılama ayarlarını kullanın.
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670347"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096899"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Azure etkinlik günlüğü koleksiyonuna ve dışarı aktarmaya Güncelleştir
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform günlüğliğidir](platform-logs-overview.md) . Etkinlik günlüğü girdilerini [bir olay hub 'ına veya depolama hesabına](activity-log-export.md) veya bir [Log Analytics çalışma alanına](activity-log-collect.md) gönderme yöntemi, [tanılama ayarlarını](diagnostic-settings.md)kullanacak şekilde değiştirilmiştir. Bu makalede, Yöntemler ve tanılama ayarlarına geçiş hazırlığı sırasında eski ayarların nasıl temizleneceğini gösteren farklar açıklanmaktadır.

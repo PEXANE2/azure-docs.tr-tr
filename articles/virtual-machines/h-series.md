@@ -5,14 +5,14 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/04/2020
+ms.date: 03/10/2020
 ms.author: lahugh
-ms.openlocfilehash: 6654506a1e53165ef0891ba0de32a7937c21c904
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: a71b7b7de6f6039106b43576847675f48de803c8
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164823"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79088060"
 ---
 # <a name="h-series"></a>H Serisi
 
@@ -40,6 +40,52 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 <sup>1</sup> MPI uygulamaları için, adanmış RDMA arka uç ağı, FDR InfiniBand ağı tarafından etkinleştirilir.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+
+## <a name="supported-os-images-linux"></a>Desteklenen işletim sistemi görüntüleri (Linux)
+ 
+Azure Marketi 'nde RDMA bağlantısını destekleyen birçok Linux dağıtımı vardır:
+  
+* **CentOS tabanlı HPC** -SR-IOV etkin olmayan VM 'Ler, CentOS tabanlı sürüm 6,5 HPC veya sonraki bir sürüm olan 7,5 ' e kadar uygundur. H serisi VM 'Ler için 7,1 sürümlerinin 7,5 olması önerilir. RDMA sürücüleri ve Intel MPı 5,1 VM 'ye yüklenir.
+  SR-ıOV VM 'lerinde, CentOS-HPC 7,6, RDMA sürücüleri ve çeşitli MPı paketleri yüklüyken en iyi duruma getirilmiş ve önceden yüklenmiş olarak sunulur.
+  Diğer RHEL/CentOS VM görüntüleri için, InfiniBand 'yi etkinleştirmek üzere ınfinıbandlinux uzantısını ekleyin. Bu Linux VM uzantısı, RDMA bağlantısı için (SR-ıOV VM 'lerde), Mellanox temelli sürücüleri (SR-ıOV) Aşağıdaki PowerShell cmdlet 'i, mevcut bir RDMA özellikli sanal makineye ınfinibanddriverlinux uzantısının en son sürümünü (sürüm 1,0) yüklüyor. RDMA özellikli VM, *Myvm* olarak adlandırılır ve *Batı ABD* bölgesindeki *myresourcegroup* adlı kaynak grubunda aşağıdaki gibi dağıtılır:
+
+  ```powershell
+  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  ```
+  Alternatif olarak, VM uzantıları aşağıdaki JSON öğesiyle kolay dağıtım için Azure Resource Manager şablonlarına dahil edilebilir:
+  ```json
+  "properties":{
+  "publisher": "Microsoft.HpcCompute",
+  "type": "InfiniBandDriverLinux",
+  "typeHandlerVersion": "1.0",
+  } 
+  ```
+  
+  Aşağıdaki komut, *Myresourcegroup*adlı kaynak grubunda dağıtılan *myvmss* adlı mevcut bir sanal makıne ölçek kümesindeki tüm RDMA özellikli vm 'Lere en son 1,0 ınfinibanddriverlinux uzantısını yükleme:
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+  
+  > [!NOTE]
+  > CentOS tabanlı HPC görüntülerinde, çekirdek güncelleştirmeleri, **yıum** yapılandırma dosyasında devre dışıdır. Bunun nedeni, Linux RDMA sürücülerinin bir RPM paketi olarak dağıtılmaktadır ve çekirdek güncelleştirilirse sürücü güncelleştirmeleri çalışmayabilir.
+  >
+  
+
+* **SUSE Linux Enterprise Server** , HPC için SLES 12 SP3, HPC için SLES 12 SP3 (Premium), HPC için SLES 12 SP1, HPC için SLES 12 SP1, HPC (Premium), SLES 12 SP4 ve SLES 15. RDMA sürücüleri yüklenir ve Intel MPı paketleri sanal makineye dağıtılır. Aşağıdaki komutu çalıştırarak MPı 'yi çalıştırın:
+
+  ```bash
+  sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+  ```
+  
+* **Ubuntu** -Ubuntu Server 16,04 LTS, 18,04 LTS. VM 'de RDMA sürücülerini yapılandırın ve Intel MPı 'yi indirmek için Intel ile kaydolun:
+
+  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
+
+  InfiniBand 'yi etkinleştirme hakkında daha fazla ayrıntı için MPı 'yi [ayarlama bölümüne bakın](/workloads/hpc/enable-infiniband.md).
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 

@@ -1,20 +1,15 @@
 ---
 title: Hızlı başlangıç-Docker kapsayıcısını kapsayıcı örneğine dağıtma-Portal
 description: Bu hızlı başlangıçta, yalıtılmış bir Azure Container örneğinde çalışan kapsayıcılı bir Web uygulamasını hızlıca dağıtmak için Azure portal kullanırsınız
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533522"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087971"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure 'da kapsayıcı örneği dağıtma
 
@@ -24,7 +19,7 @@ Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtma
 
 ![Azure Container Instances hizmetine dağıtılmış uygulamanın tarayıcıdaki görüntüsü][aci-portal-07]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -40,15 +35,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-free-acc
 
 * Kaynak grubu: **Yeni oluştur** > `myresourcegroup`
 * Kapsayıcı adı: `mycontainer`
-* Kapsayıcı görüntüsü: `mcr.microsoft.com/azuredocs/aci-helloworld`
+* Görüntü kaynağı: **hızlı başlangıç görüntüleri**
+* Kapsayıcı görüntüsü: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Azure portalında yeni bir kapsayıcı örneği için temel ayarları yapılandırma][aci-portal-03]
 
-Bu hızlı başlangıçta, genel Microsoft `aci-helloworld` görüntüsünü dağıtmak için **genel** varsayılan **görüntü türü** ayarını kullanın. Bu Linux görüntüsü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler.
+Bu hızlı başlangıçta, genel Microsoft `aci-helloworld` görüntüsünü dağıtmak için varsayılan ayarları kullanacaksınız. Bu örnek Linux görüntüsü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler. Ayrıca, Azure Container Registry, Docker Hub veya diğer kayıt defterlerinde depolanan kendi kapsayıcı görüntülerinizi de getirebilirsiniz.
 
 **Ağ** sayfasında, Kapsayıcınız Için bir **DNS ad etiketi** belirtin. Ad, kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır. Kapsayıcınız `<dns-name-label>.<region>.azurecontainer.io` konumunda genel kullanıma sunulacaktır. "DNS ad etiketi kullanılamıyor" hata iletisiyle karşılaşırsanız farklı bir DNS ad etiketi deneyin.
 
-![Azure portalında yeni bir kapsayıcı örneği yapılandırma][aci-portal-04]
+![Azure portal yeni bir kapsayıcı örneği için ağ ayarlarını yapılandırma][aci-portal-04]
 
 Diğer ayarları varsayılan olarak bırakın ve ardından **gözden geçir + oluştur**' u seçin.
 
@@ -56,13 +52,13 @@ Doğrulama tamamlandığında, kapsayıcı ayarlarının bir özeti gösterilir.
 
 ![Azure portalında yeni bir kapsayıcı örneği için ayarların özeti][aci-portal-05]
 
-Dağıtım başladığında devam ettiğini gösteren bir bildirim görüntülenir. Kapsayıcı grubu dağıtıldığında yeni bir bildirim daha görüntülenir.
+Dağıtım başladığında, dağıtımın devam ettiğini belirten bir bildirim görüntülenir. Kapsayıcı grubu dağıtıldığında yeni bir bildirim daha görüntülenir.
 
-Myresourcegroup > **myContainer** > **kaynak gruplarına** giderek kapsayıcı grubu için genel bakışı açın. Kapsayıcı örneğinin **Durum**’u ile birlikte **FQDN**’sini (tam etki alanı adı) not edin.
+Myresourcegroup > **myContainer** > **kaynak gruplarına** giderek kapsayıcı grubu için genel **myresourcegroup** bakışı açın. Kapsayıcı örneğinin **Durum**’u ile birlikte **FQDN**’sini (tam etki alanı adı) not edin.
 
 ![Azure portalında kapsayıcı grubuna genel bakış][aci-portal-06]
 
-*Çalışıyor* **Durumunda** iken tarayıcınızda kapsayıcının FQDN’sine gidin.
+**Çalışıyor***Durumunda* iken tarayıcınızda kapsayıcının FQDN’sine gidin.
 
 ![Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor][aci-portal-07]
 
@@ -78,7 +74,7 @@ Kapsayıcının günlüklerini görüntülemek için **Ayarlar** altında **Kaps
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kapsayıcıyla işiniz bittiğinde, *mycontainer* kapsayıcı örneğine ait **Genel bakış**’ı ve ardından **Sil**’i seçin.
+Kapsayıcıyla işiniz bittiğinde, **mycontainer** kapsayıcı örneğine ait *Genel bakış*’ı ve ardından **Sil**’i seçin.
 
 ![Azure portalında kapsayıcı örneğini silme][aci-portal-09]
 

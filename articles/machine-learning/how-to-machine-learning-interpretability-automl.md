@@ -10,18 +10,20 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 4ab3bc43cf8ef479cb91d187a4c177db03415b86
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b2c7825b10feab45df9cb89dbe2b82da1c143866
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525592"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129756"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>Otomatik makine öğreniminde model yorumlenebilirliği
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi (ML) için yorumlanabilirliğini özelliklerini nasıl etkinleştireceğinizi öğreneceksiniz. Otomatikleştirilen ML, hem ham hem de mühendislik uygulanmış özellik önemini anlamanıza yardımcı olur. Model yorumlenebilirliğini kullanmak için `AutoMLConfig` nesnesinde `model_explainability=True` ayarlayın.  
+Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi (ML) için yorumlanabilirliğini özelliklerini nasıl etkinleştireceğinizi öğreneceksiniz. Otomatikleştirilmiş ML, uygulanan özellik önemini anlamanıza yardımcı olur. 
+
+1\.0.85 kümesinden sonra tüm SDK sürümleri varsayılan olarak `model_explainability=True`. SDK sürüm 1.0.85 ve önceki sürümlerinde, kullanıcıların model yorumlenebilirliğini kullanabilmesi için `AutoMLConfig` nesnesinde `model_explainability=True` ayarlaması gerekir. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -36,14 +38,14 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>En iyi model için eğitim sırasında yorumlenebilirlik
 
-Mühendislik uygulanmış Özellikler ve ham özellikler için açıklamaları içeren `best_run`açıklamayı alın.
+Mühendislik uygulanmış özellikler için açıklamaları içeren `best_run`açıklamayı alın.
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Yapıt deposundan uygulanan özellik önem derecesini indirin
 
-`best_run`yapıt deposundan uygulanan özellik açıklamalarını indirmek için `ExplanationClient` kullanabilirsiniz. Ham özellikler kümesi `raw=True`için açıklama almak üzere.
+`best_run`yapıt deposundan uygulanan özellik açıklamalarını indirmek için `ExplanationClient` kullanabilirsiniz. 
 
 ```python
-from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+from azureml.explain.model._internal.explanation_client import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -52,26 +54,26 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>Herhangi bir model için eğitim sırasında yorumlenebilirlik 
 
-Model açıklamalarını hesaplarken ve bunları görselleştirebileceğiniz zaman, bir otomatik ML modeli için mevcut model açıklaması ile sınırlı değilsiniz. Ayrıca, farklı test verileriyle modelinize yönelik bir açıklama alabilirsiniz. Bu bölümdeki adımlarda, test verilerinize göre, uygulanan özellik önem ve ham Özellik önemini nasıl hesaplabileceğiniz ve görselleştirebileceğiniz gösterilmektedir.
+Model açıklamalarını hesaplarken ve bunları görselleştirebileceğiniz zaman, bir otomatik ML modeli için mevcut model açıklaması ile sınırlı değilsiniz. Ayrıca, farklı test verileriyle modelinize yönelik bir açıklama alabilirsiniz. Bu bölümdeki adımlarda, test verilerinize göre uygulanan özellik önemini nasıl hesaplabileceğiniz ve görselleştirebileceğiniz gösterilmektedir.
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>Eğitimin diğer tüm oto modellerini al
 
 ```python
-automl_run, fitted_model = local_run.get_output(metric='r2_score')
+automl_run, fitted_model = local_run.get_output(metric='accuracy')
 ```
 
 ### <a name="set-up-the-model-explanations"></a>Model açıklamalarını ayarlama
 
-Mühendislik uygulanan ve ham özellik açıklamalarını almak için `automl_setup_model_explanations` kullanın. `fitted_model` aşağıdaki öğeleri oluşturabilir:
+Uygulanan açıklamaları almak için `automl_setup_model_explanations` kullanın. `fitted_model` aşağıdaki öğeleri oluşturabilir:
 
 - Eğitilen veya test örneklerinden öne çıkan veriler
-- Mühendislik uygulanan ve ham Özellik adı listeleri
+- Uygulanan özellik adı listeleri
 - Sınıflandırma senaryolarında etiketli sütunlarınızda findable sınıfları
 
 `automl_explainer_setup_obj`, yukarıdaki listeden tüm yapıları içerir.
 
 ```python
-from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
+from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
 
 automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
                                                              X_test=X_test, y=y_train, 
@@ -86,16 +88,16 @@ Oto ml modelleriyle ilgili bir açıklama oluşturmak için `MimicWrapper` sın�
 - Çalışma alanınız
 - `fitted_model` otomatikleştirilmiş ML modelinin yedeği olarak davranan bir LightGBM modeli
 
-Mımısarmalayıcı Ayrıca ham ve mühendislik uygulanan açıklamalarının yükleneceği `automl_run` nesnesini alır.
+Mımısarmalayıcı Ayrıca, uygulanan açıklamalarının karşıya yükleneceği `automl_run` nesnesini alır.
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
 from azureml.explain.model.mimic_wrapper import MimicWrapper
 
 # Initialize the Mimic Explainer
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel,
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
-                         features=automl_explainer_setup_obj.engineered_feature_names,
+                         features=automl_explainer_setup_obj.engineered_feature_names, 
                          feature_maps=[automl_explainer_setup_obj.feature_map],
                          classes=automl_explainer_setup_obj.classes)
 ```
@@ -105,27 +107,8 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
 Oluşturulan mühendislik özelliklerine yönelik özellik önemini elde etmek için, dönüştürülmüş test örnekleriyle birlikte `explain()` yöntemi ' ni çağırabilirsiniz. Ayrıca, oluşturulan özelliklerin özellik önem değerlerinin Pano görselleştirmesini otomatik ML özellikleri tarafından görüntülemek için `ExplanationDashboard` kullanabilirsiniz.
 
 ```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-engineered_explanations = explainer.explain(['local', 'global'],              
-                                            eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
+engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
-ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, automl_explainer_setup_obj.X_test_transform)
-```
-
-### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>Ham Özellik önemini hesaplamak ve görselleştirmek için Benzeaçıklama kullanma
-
-`explain()` yöntemini, dönüştürülmüş test örnekleri ile birlikte bir kez daha çağırabilirsiniz ve ham özelliklerin özellik önemini almak için `get_raw=True` ayarlayabilirsiniz. Ham özelliklerin özellik önem değerlerinin Pano görselleştirmesini görüntülemek için `ExplanationDashboard` de kullanabilirsiniz.
-
-```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-
-raw_explanations = explainer.explain(['local', 'global'], get_raw=True, 
-                                     raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
-                                     eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
-print(raw_explanations.get_feature_importance_dict())
-ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, automl_explainer_setup_obj.X_test_raw)
 ```
 
 ### <a name="interpretability-during-inference"></a>Çıkarım sırasında yorumlenebilirlik
@@ -134,7 +117,7 @@ Bu bölümde, önceki bölümde yer alan açıklamaları hesaplamak için kullan
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Modeli ve Puanlama açıklama kaydetme
 
-Ham ve mühendislik uygulanmış özellik önem değerlerini, çıkarım sırasında hesaplayacağımız Puanlama açıklama oluşturmak için `TreeScoringExplainer` kullanın. Puanlama açıklama daha önce hesaplanan `feature_map` başlatırsınız. Puanlama açıklama ham Özellik önemini döndürmek için `feature_map` kullanır.
+' İ kullanarak, uygulanan özellik önem değerlerini, çıkarım sırasında hesaplayacağımız Puanlama açıklama oluşturmak için `TreeScoringExplainer` kullanın. Puanlama açıklama daha önce hesaplanan `feature_map` başlatırsınız. 
 
 Puanlama Açıklama ' nı kaydedin ve sonra modeli ve Puanlama Açıklama ' ı Model Yönetimi hizmetiyle kaydedin. Aşağıdaki kodu çalıştırın:
 
@@ -208,21 +191,19 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>Test verileriyle çıkarım
 
-Otomatikleştirilmiş ML modelinden tahmin edilen değeri görmek için bazı test verileriyle çıkarım. Tahmin edilen değer için öngörülen değer ve ham Özellik önemi için uygulanan özellik önem derecesini görüntüleyin.
+Otomatikleştirilmiş ML modelinden tahmin edilen değeri görmek için bazı test verileriyle çıkarım. Öngörülen değer için uygulanan özellik önem derecesini görüntüleyin.
 
 ```python
 if service.state == 'Healthy':
     # Serialize the first row of the test data into json
     X_test_json = X_test[:1].to_json(orient='records')
     print(X_test_json)
-    # Call the service to get the predictions and the engineered and raw explanations
+    # Call the service to get the predictions and the engineered explanations
     output = service.run(X_test_json)
     # Print the predicted value
     print(output['predictions'])
     # Print the engineered feature importances for the predicted value
     print(output['engineered_local_importance_values'])
-    # Print the raw feature importances for the predicted value
-    print(output['raw_local_importance_values'])
 ```
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Eğitim sırasında veri ve açıklamaları desenlerdeki desenleri keşfetmeyi görselleştirin

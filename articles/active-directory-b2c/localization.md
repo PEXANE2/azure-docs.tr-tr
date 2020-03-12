@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5dcbc2ee35620d0a29c495b24bd3756769095a17
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933008"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126764"
 ---
 # <a name="localization"></a>Yerelleştirme
 
@@ -207,160 +207,9 @@ Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı v
 </Localization>
 ```
 
-### <a name="provide-language-specific-strings-and-collections"></a>Dile özgü dizeler ve koleksiyonlar sağlama
+## <a name="next-steps"></a>Sonraki adımlar
 
-**Supportedlanguages** öğesinin kapandıktan sonra **Yerelleştirme** öğesinin içine **localizedresources** öğeleri ekleyin. Her sayfa (içerik tanımı) ve desteklemek istediğiniz herhangi bir dil için **Localizedresources** öğeleri eklersiniz. Birleşik kaydolma veya oturum açma sayfası, Ingilizce, Ispanyolca ve Fransa için kaydolma ve Multi-Factor Authentication (MFA) sayfalarını özelleştirmek için aşağıdaki **Localizedresources** öğelerini eklersiniz.
+Yerelleştirme örnekleri için aşağıdaki makalelere bakın:
 
-- Birleşik kaydolma veya oturum açma sayfası, Ingilizce `<LocalizedResources Id="api.signuporsignin.en">`
-- Birleşik kaydolma veya oturum açma sayfası, Ispanyolca `<LocalizedResources Id="api.signuporsignin.es">`
-- Birleşik kaydolma veya oturum açma sayfası, Fransa `<LocalizedResources Id="api.signuporsignin.fr">`
-- Kaydolma, Ingilizce `<LocalizedResources Id="api.localaccountsignup.en">`
-- Kaydolma, Ispanyolca `<LocalizedResources Id="api.localaccountsignup.es">`
-- Kaydolma, Fransa `<LocalizedResources Id="api.localaccountsignup.fr">`
-- MFA, Ingilizce `<LocalizedResources Id="api.phonefactor.en">`
-- MFA, Ispanyolca `<LocalizedResources Id="api.phonefactor.es">`
-- MFA, Fransa `<LocalizedResources Id="api.phonefactor.fr">`
-
-Her **Localizedresources** öğesi, birden çok **LocalizedString** öğesi ve **localizedcollections** öğesi olan, birden çok **Localizedcollection** öğesi olan tüm gerekli **localizedstrings** öğelerini içerir.  Aşağıdaki örnek, kayıt sayfası Ingilizce yerelleştirmesini ekler:
-
-Note: Bu örnek, `Gender` ve `City` talep türlerine bir başvuru yapar. Bu örneği kullanmak için, bu talepleri tanımladığınızdan emin olun. Daha fazla bilgi için bkz. [Claimsschema](claimsschema.md).
-
-```XML
-<LocalizedResources Id="api.localaccountsignup.en">
-
- <LocalizedCollections>
-   <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-      <Item Text="Female" Value="F" />
-      <Item Text="Male" Value="M" />
-    </LocalizedCollection>
-   <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-      <Item Text="New York" Value="NY" />
-      <Item Text="Paris" Value="Paris" />
-      <Item Text="London" Value="London" />
-    </LocalizedCollection>
-  </LocalizedCollections>
-
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
-
-Ispanyolca için kayıt sayfası yerelleştirilmesi.
-
-```XML
-<LocalizedResources Id="api.localaccountsignup.es">
-
- <LocalizedCollections>
-   <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-      <Item Text="Femenino" Value="F" />
-      <Item Text="Masculino" Value="M" />
-    </LocalizedCollection>
-   <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-      <Item Text="Nueva York" Value="NY" />
-      <Item Text="París" Value="Paris" />
-      <Item Text="Londres" Value="London" />
-    </LocalizedCollection>
-  </LocalizedCollections>
-
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Dirección de correo electrónico</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Dirección de correo electrónico que puede usarse para ponerse en contacto con usted.</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Introduzca una dirección de correo electrónico.</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Crear</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">Ya existe un usuario con el id. especificado. Elija otro diferente.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
-
-### <a name="edit-the-contentdefinition-for-the-page"></a>Sayfa için ContentDefinition 'ı düzenleme
-
-Yerelleştirilmesi istediğiniz her sayfa için, **ContentDefinition**'da aranacak dil kodlarını belirtin.
-
-Aşağıdaki örnekte, kayıt sayfasına Ingilizce (en) ve Ispanyolca (es) özel dizeler eklenir. Her bir **Localizedresourcesreference** Için **Localizedresourcesreferenceıd** , kendi yerel ayarlarıyla aynıdır, ancak tanımlayıcı olarak herhangi bir dize kullanabilirsiniz. Her dil ve sayfa birleşimi için, daha önce oluşturduğunuz ilgili **Localizedresources** üzerine gelin.
-
-```XML
-<ContentDefinition Id="api.localaccountsignup">
-...
-  <LocalizedResourcesReferences MergeBehavior="Prepend">
-    <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-    <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-  </LocalizedResourcesReferences>
-</ContentDefinition>
-```
-
-Aşağıdaki örnek, son XML 'i göstermektedir:
-
-```XML
-<BuildingBlocks>
-  <ContentDefinitions>
-    <ContentDefinition Id="api.localaccountsignup">
-      <!-- Other content definitions elements... -->
-      <LocalizedResourcesReferences MergeBehavior="Prepend">
-         <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-         <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-      </LocalizedResourcesReferences>
-    </ContentDefinition>
-    <!-- More content definitions... -->
-  </ContentDefinitions>
-
-  <Localization Enabled="true">
-
-    <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
-      <SupportedLanguage>en</SupportedLanguage>
-      <SupportedLanguage>es</SupportedLanguage>
-      <!-- More supported language... -->
-    </SupportedLanguages>
-
-    <LocalizedResources Id="api.localaccountsignup.en">
-      <LocalizedCollections>
-        <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-          <Item Text="Female" Value="F" />
-          <Item Text="Male" Value="M" />
-          <!-- More items... -->
-        </LocalizedCollection>
-        <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-          <Item Text="New York" Value="NY" />
-          <Item Text="Paris" Value="Paris" />
-          <Item Text="London" Value="London" />
-        </LocalizedCollection>
-        <!-- More localized collections... -->
-      </LocalizedCollections>
-      <LocalizedStrings>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-      <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-        <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-       <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-        <!-- More localized strings... -->
-      </LocalizedStrings>
-    </LocalizedResources>
-
-    <LocalizedResources Id="api.localaccountsignup.es">
-      <LocalizedCollections>
-       <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-          <Item Text="Femenino" Value="F" />
-          <Item Text="Masculino" Value="M" />
-        </LocalizedCollection>
-        <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-          <Item Text="Nueva York" Value="NY" />
-          <Item Text="París" Value="Paris" />
-          <Item Text="Londres" Value="London" />
-        </LocalizedCollection>
-      </LocalizedCollections>
-      <LocalizedStrings>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Dirección de correo electrónico</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Dirección de correo electrónico que puede usarse para ponerse en contacto con usted.</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Introduzca una dirección de correo electrónico.</LocalizedString>
-        <LocalizedString ElementType="UxElement" StringId="button_continue">Crear</LocalizedString>
-      <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">Ya existe un usuario con el id. especificado. Elija otro diferente.</LocalizedString>
-      </LocalizedStrings>
-    </LocalizedResources>
-    <!-- More localized resources... -->
-  </Localization>
-</BuildingBlocks>
-```
+- [Azure Active Directory B2C özel ilkeyle dil özelleştirmesi](custom-policy-localization.md)
+- [Azure Active Directory B2C Kullanıcı akışları ile dil özelleştirmesi](user-flow-language-customization.md)

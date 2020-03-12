@@ -4,19 +4,19 @@ description: Bu makalede Azure Application Gateway çoklu site desteğine genel 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 1/7/2020
+ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: ac9dd31e01b1915642951aeddb10d3eae118d943
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c43ac0923e0d3d76c25657f4870a0a0431bc8b6e
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523790"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096435"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway birden çok site barındırma
 
-Birden çok site barındırma, bir uygulama ağ geçidinin aynı bağlantı noktasında birden fazla Web uygulaması yapılandırmanızı sağlar. Bu özellik, bir Application Gateway 'e en çok 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Aşağıdaki örnekte, uygulama ağ geçidi ContosoServerPool ve FabrikamServerPool adlı iki arka uç sunucu havuzundan contoso.com ve fabrikam.com için trafik sunmaktadır.
+Birden çok site barındırma, bir uygulama ağ geçidinin aynı bağlantı noktasında birden fazla Web uygulaması yapılandırmanızı sağlar. Bu özellik, bir Application Gateway 'e en çok 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Aşağıdaki örnekte, Application Gateway, ContosoServerPool ve FabrikamServerPool adlı iki arka uç sunucu havuzunun `contoso.com` ve `fabrikam.com` trafiğini sunar.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
@@ -25,7 +25,7 @@ Birden çok site barındırma, bir uygulama ağ geçidinin aynı bağlantı nokt
 
 `http://contoso.com` için istekler ContosoServerPool’a ve `http://fabrikam.com` için istekler FabrikamServerPool’a yönlendirilir.
 
-Benzer şekilde aynı üst etki alanının iki alt etki alanı, aynı uygulama ağ geçidi dağıtımında barındırılabilir. Alt etki alanı kullanım örnekleri, tek bir uygulama ağ geçidi dağıtımında barındırılan `http://blog.contoso.com` ve `http://app.contoso.com` öğelerini içerebilir.
+Benzer şekilde, aynı uygulama ağ geçidi dağıtımında aynı üst etki alanının birden çok alt etki alanını barındırabilirsiniz. Örneğin, tek bir uygulama ağ geçidi dağıtımında `http://blog.contoso.com` ve `http://app.contoso.com` barındırabilirsiniz.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Barındırma üstbilgileri ve Sunucu Adı Belirtme (SNI)
 
@@ -35,11 +35,17 @@ Aynı altyapıda birden çok site barındırmayı etkinleştirmek için üç yay
 2. Birden çok web uygulamasını aynı IP adresinde barındırmak için ana bilgisayar adını kullanın.
 3. Birden çok web uygulamasını aynı IP adresinde barındırmak için farklı bağlantı noktalarını kullanın.
 
-Şu anda bir uygulama ağ geçidi, üzerinde trafiği dinlediği tek bir genel IP adresi almaktadır. Bu nedenle, her biri kendi IP adresine sahip olan birden çok uygulama şu anda desteklenmemektedir. Application Gateway, her biri farklı bağlantı noktasında dinleme yapan birden çok uygulamanın barındırılmasını destekler, ancak bu senaryo uygulamaların standart olmayan bağlantı noktalarında trafiği kabul etmesini gerekli kılar ve çoğu zaman istenen bir yapılandırma değildir. Application Gateway, aynı genel IP adresinde ve bağlantı noktasında birden çok web sitesini barındırmak için HTTP 1.1 barındırma bilgilerini kullanır. Uygulama ağ geçidinde barındırılan siteler, Sunucu Adı Belirtme (SNI) uzantısına sahip SSL yük boşaltmayı da destekleyebilir. Bu senaryo, istemci tarayıcısının ve arka uç web grubunun RFC 6066’da belirtildiği gibi HTTP/1.1 ve TLS uzantısını desteklemesi gerektiği anlamına gelir.
+Şu anda Application Gateway trafiği dinlediği tek bir genel IP adresini destekler. Bu nedenle, her biri kendi IP adresine sahip olan birden çok uygulama desteklenmemektedir. 
+
+Application Gateway, her biri farklı bağlantı noktalarında dinleyen birden çok uygulamayı destekler, ancak bu senaryo uygulamaların standart olmayan bağlantı noktalarında trafiği kabul etmesini gerektirir. Bu, genellikle istediğiniz bir yapılandırma değildir.
+
+Application Gateway, aynı genel IP adresinde ve bağlantı noktasında birden çok web sitesini barındırmak için HTTP 1.1 barındırma bilgilerini kullanır. Uygulama ağ geçidinde barındırılan siteler, Sunucu Adı Belirtme (SNI) uzantısına sahip SSL yük boşaltmayı da destekleyebilir. Bu senaryo, istemci tarayıcısının ve arka uç web grubunun RFC 6066’da belirtildiği gibi HTTP/1.1 ve TLS uzantısını desteklemesi gerektiği anlamına gelir.
 
 ## <a name="listener-configuration-element"></a>Dinleyici yapılandırma öğesi
 
-Mevcut HTTPListener yapılandırma öğesi, ana bilgisayar adını ve sunucu adı belirtme öğelerini destekleyecek şekilde geliştirilmiştir. Bu öğe, uygulama ağ geçidi tarafından trafiği uygun arka uç havuzuna yönlendirmek için kullanılır. Aşağıdaki kod örneği, şablon dosyasındaki HttpListeners öğesinin kod parçacığıdır.
+Mevcut HTTPListener yapılandırma öğeleri, ana bilgisayar adı ve sunucu adı belirtme öğelerini destekleyecek şekilde geliştirilmiştir. Trafiği uygun arka uç havuzuna yönlendirmek için Application Gateway tarafından kullanılır. 
+
+Aşağıdaki kod örneği, bir şablon dosyasındaki HttpListeners öğesinin kod parçacıbir örneğidir:
 
 ```json
 "httpListeners": [
@@ -81,7 +87,7 @@ Uçtan uca şablon tabanlı dağıtım için [birden çok site barındırma kull
 
 ## <a name="routing-rule"></a>Yönlendirme kuralı
 
-Yönlendirme kuralında yapılması gereken bir değişiklik yoktur. Uygun site dinleyicisini ilgili arka uç adres havuzuna bağlamak için 'Temel' yönlendirme kuralını kullanmaya devam etmeniz gerekir.
+Yönlendirme kuralında hiçbir değişiklik yapılması gerekmez. Uygun site dinleyicisini ilgili arka uç adres havuzuna bağlamak için 'Temel' yönlendirme kuralını kullanmaya devam etmeniz gerekir.
 
 ```json
 "requestRoutingRules": [

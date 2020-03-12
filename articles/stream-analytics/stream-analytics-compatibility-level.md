@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201807"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087864"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -25,11 +25,9 @@ Uyumluluk düzeyi, bir stream analytics işi çalışma zamanı davranışını 
 
 Azure Stream Analytics Şu anda üç uyumluluk düzeyini desteklemektedir:
 
-* 1,0-önceki davranış
-* 1,1-varsayılan davranış
+* 1,0-birkaç yıl önce Azure Stream Analytics genel kullanıma sunulmasıyla tanıtılan orijinal uyumluluk düzeyi.
+* 1,1-önceki davranış
 * 1,2-en son iyileştirmeler ile en yeni davranış
-
-Özgün 1,0 uyumluluk düzeyi, birkaç yıl önce Azure Stream Analytics genel kullanıma sunulmasıyla tanıtılmıştır.
 
 Yeni bir Stream Analytics iş oluşturduğunuzda, en son uyumluluk düzeyini kullanarak oluşturmak en iyi uygulamadır. Daha sonra eklenmiş değişiklik ve karmaşıklığın önüne geçmek için en son davranışlardan sonra iş tasarımınızı başlatın.
 
@@ -123,7 +121,7 @@ Uyumluluk düzeyi 1.1 aşağıdaki önemli değişiklikler yapılmıştır:
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML biçimi
 
-**1,0 düzeyi:** İleti içeriği XML etiketleri dahil olmak üzere Azure Stream Analytics DataContractSerializer kullanılır. Örneğin:
+**1,0 düzeyi:** İleti içeriği XML etiketleri dahil olmak üzere Azure Stream Analytics DataContractSerializer kullanılır. Örnek:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

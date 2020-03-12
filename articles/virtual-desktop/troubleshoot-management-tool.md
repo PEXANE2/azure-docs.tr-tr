@@ -7,14 +7,15 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: dd9fd135536fc2cb222b908f3d61c1d1430e65b0
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+manager: lizross
+ms.openlocfilehash: 9d07ba42e83d9eec071ab047e9e1e92bac1f1411
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905621"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127493"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Windows sanal masaüstü yönetim aracı sorunlarını giderme
+# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Windows Sanal Masaüstü yönetim aracı sorunlarını giderme
 
 Bu makalede, Windows sanal masaüstü yönetim aracı dağıtıldığında oluşabilecek sorunlar ve bunları nasıl gidereceğiniz anlatılmaktadır.
 

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: ec6664e7c55057c29c5b741203b326ce460c6e91
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701238"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129957"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Öğretici: Microsoft Identity platform uç noktasını kullanan çok kiracılı bir Daemon oluşturma
 
@@ -39,7 +39,8 @@ Uygulama, bir ASP.NET MVC uygulaması olarak oluşturulmuştur. Kullanıcıları
 
 Bu örnekteki "Daemon" bileşeni, `SyncController.cs`bir API denetleyicisidir. Denetleyici çağrıldığında, Microsoft Graph tarafından müşterinin Azure Active Directory (Azure AD) kiracısındaki kullanıcıların listesini alır. `SyncController.cs` Web uygulamasındaki bir AJAX çağrısı tarafından tetiklenir. Microsoft Graph için bir erişim belirteci almak üzere [.net Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md) kullanır.
 
-Daha basit bir konsol Daemon uygulaması için bkz. [.NET Core Daemon hızlı başlangıç](quickstart-v2-netcore-daemon.md).
+>[!NOTE]
+> Microsoft Identity platformu ' na yeni başladıysanız, [.NET Core Daemon hızlı](quickstart-v2-netcore-daemon.md)başlangıç ile başlamanız önerilir.
 
 ## <a name="scenario"></a>Senaryo
 
@@ -49,7 +50,7 @@ Uygulama, Microsoft iş müşterilerine yönelik çok kiracılı bir uygulama ol
 
 Bu örnekte kullanılan kavramlar hakkında daha fazla bilgi için [kimlik platformu uç noktası için istemci kimlik bilgileri Protokolü belgelerini](v2-oauth2-client-creds-grant-flow.md)okuyun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta örnek çalıştırmak için şunlar gerekir:
 
@@ -215,8 +216,8 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Bir Azure Web sitesinde DotNet-Web-Daemon-v2 oluşturma ve yayımlama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Sol üst köşeden **Kaynak oluştur**'u seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol üst köşedeki **kaynak oluştur**' u seçin.
 1. Web ** > ** **Web uygulaması**' nı seçin ve ardından Web sitenize bir ad verin. Örneğin, **DotNet-Web-Daemon-v2-contoso.azurewebsites.net**olarak adlandırın.
 1. **Abonelik**, **kaynak grubu**ve **App Service planı ve konum**bilgilerini seçin. **Işletim sistemi** **Windows**ve **Yayımlama** **kodudur**.
 1. **Oluştur** ' u seçin ve App Service 'in oluşturulmasını bekleyin.
@@ -227,7 +228,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
    1. **DotNet-Web-Daemon-v2** projesine gidin. 
    1. Çözüm Gezgini projeye sağ tıklayın ve ardından **Yayımla**' yı seçin.
    1. Alt çubukta **profili Içeri aktar** ' ı seçin ve daha önce indirdiğiniz yayımlama profilini içeri aktarın.
-1. **Yapılandır**’ı seçin.
+1. **Yapılandır**' ı seçin.
 1. **Bağlantı** sekmesinde, hedef URL 'yi "https" kullanacak şekilde güncelleştirin. Örneğin, [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)kullanın. **İleri**’yi seçin.
 1. **Ayarlar** sekmesinde, **Kurumsal kimlik doğrulamasını etkinleştir** ' in temizlenmiş olduğundan emin olun.  
 1. **Kaydet**’i seçin. Ana ekranda **Yayımla** ' yı seçin.
@@ -268,7 +269,7 @@ Daha fazla bilgi için aşağıdaki kavramsal belgelere bakın:
 - [Azure AD uygulaması onay deneyimlerini anlama](application-consent-experience.md)
 - [Çok kiracılı uygulama modelini kullanarak tüm Azure Active Directory kullanıcıları oturum açma](howto-convert-app-to-be-multi-tenant.md)
 - [Kullanıcı ve yönetici onayını anlama](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md)
+- [Azure Active Directory içindeki uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md)
 - [Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md)
 - [Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma](quickstart-configure-app-access-web-apis.md)
 - [İstemci kimlik bilgisi akışlarıyla bir uygulama için belirteç alma](msal-client-applications.md)

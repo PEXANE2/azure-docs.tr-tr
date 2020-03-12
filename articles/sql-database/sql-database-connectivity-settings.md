@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8d40dd09144bddc41347947c0123988530f93f90
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945419"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096654"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL bağlantı ayarları
 > [!NOTE]
@@ -77,49 +77,6 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 ```
 
-## <a name="minimal-tls-version"></a>En az TLS sürümü 
-Minimum TLS sürümü, müşterinin Azure SQL Server [Aktarım Katmanı Güvenliği](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) sürümünü denetlemesine olanak tanır.
-
-En az TLS sürümünü 1,2 olarak ayarlamayı öneririz. TLS 'nin eski sürümünü kullanan uygulamalar için, uygulamalarınızın gereksinimlerine göre en düşük TLS sürümünü ayarlamayı öneririz. Şifrelenmemiş bir bağlantı kullanarak bağlanmak için uygulamalara bağlı olan müşteriler için, en az TLS sürümü ayarlamamız önerilir. Daha fazla bilgi için [SQL veritabanı bağlantısı Için TLS konuları](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)bölümüne bakın.
-
-En düşük TLS sürümünü ayarladıktan sonra, sunucunun en düşük TLS sürümünü kullanan istemcilerden gelen oturum açma girişimleri aşağıdaki hatayla başarısız olur:
-
-```output
-Error 47072
-Login failed with invalid TLS version
-```
-
-## <a name="set-minimal-tls-version-via-powershell"></a>PowerShell ile en az TLS sürümü ayarla
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Aşağıdaki betik [Azure PowerShell modülünü](/powershell/azure/install-az-ps)gerektiriyor.
-
-Aşağıdaki PowerShell betiği, mantıksal sunucu düzeyinde **en az TLS sürümü** özelliğinin `Get` ve `Set` gösterir:
-
-```powershell
-#Get the Public Network Access property
-(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).PublicNetworkAccess
-
-# Update Public Network Access to Disabled
-$SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
-
-Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString  -MinimalTlsVersion "1.2"
-```
-
-## <a name="set-minimal-tls-version-via-azure-cli"></a>Azure CLı ile en az TLS sürümü ayarlama
-> [!IMPORTANT]
-> Bu bölümdeki tüm betikler [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gerektirir.
-
-### <a name="azure-cli-in-a-bash-shell"></a>Bash kabuğu 'nda Azure CLı
-Aşağıdaki CLı betiği, bir bash kabuğunda **En düşük TLS sürümü** ayarının nasıl değiştirileceğini göstermektedir:
-
-```azurecli-interactive
-# Get current setting for Minimal TLS Version
-az sql server show -n sql-server-name -g sql-server-group --query "minimalTlsVersion"
-
-# Update setting for Minimal TLS Version
-az sql server update -n sql-server-name -g sql-server-group --set minimalTlsVersion="1.2"
-```
 
 ## <a name="connection-policy"></a>Bağlantı ilkesi
 [Bağlantı ilkesi](sql-database-connectivity-architecture.md#connection-policy) , istemcilerin Azure SQL Server nasıl bağlanacağını belirler. 

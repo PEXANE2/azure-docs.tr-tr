@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: veri ambarı oluşturma (PowerShell)'
-description: Azure PowerShell kullanarak sunucu düzeyinde bir güvenlik duvarı kuralıyla hızlı bir şekilde Azure SYNAPSE Analytics veri ambarı mantıksal sunucusu oluşturun.
+title: Azure PowerShell ile SYNAPSE SQL havuzu oluşturma ve sorgulama
+description: Azure PowerShell kullanarak sunucu düzeyinde bir güvenlik duvarı kuralıyla hızlı bir şekilde SYNAPSE SQL havuzu mantıksal sunucusu oluşturun.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3cf55a400c1894794d555e1362f2197aad44a96b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200014"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130301"
 ---
-# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile veri ambarı oluşturma & sorgulama
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile SYNAPSE SQL havuzu oluşturma ve sorgulama
 
-Azure PowerShell kullanarak bir SQL havuzu sağlayarak Azure SYNAPSE Analytics veri ambarı oluşturun.
+Azure PowerShell kullanarak Azure SYNAPSE Analytics 'te bir Synapse SQL Havuzu (veri ambarı) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-> [!NOTE]
-> Bir ambarın oluşturulması, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> [!IMPORTANT]
+> SQL havuzu oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -94,7 +94,9 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Sunucu güvenlik duvarı kurallarını yapılandırma
 
-[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) komutunu kullanarak [Azure SQL Server düzeyinde bir güvenlik duvarı kuralı](../sql-database/sql-database-firewall-configure.md) oluşturun. Sunucu düzeyinde bir güvenlik duvarı kuralı, SQL veri ambarı hizmeti güvenlik duvarı aracılığıyla SQL Server Management Studio veya SQLCMD yardımcı programı gibi bir SQL veri ambarına bağlanmak için bir dış uygulamaya izin verir. Aşağıdaki örnekte, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. Dışarıdan bağlantı kurulabilmesi için IP adresini ortamınız için uygun bir adres olarak değiştirin. Tüm IP adreslerini açmak için başlangıç IP adresi olarak 0.0.0.0’ı, bitiş adresi olaraksa 255.255.255.255’i kullanın.
+[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) komutunu kullanarak [Azure SQL Server düzeyinde bir güvenlik duvarı kuralı](../sql-database/sql-database-firewall-configure.md) oluşturun. Sunucu düzeyinde bir güvenlik duvarı kuralı, SQL havuzu hizmeti güvenlik duvarı aracılığıyla SQL Server Management Studio veya SQLCMD yardımcı programı gibi bir SQL havuzuna bağlanmak için bir dış uygulamaya izin verir. 
+
+Aşağıdaki örnekte, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. Dışarıdan bağlantı kurulabilmesi için IP adresini ortamınız için uygun bir adres olarak değiştirin. Tüm IP adreslerini açmak için başlangıç IP adresi olarak 0.0.0.0’ı, bitiş adresi olaraksa 255.255.255.255’i kullanın.
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -107,8 +109,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse"></a>Veri ambarı oluşturma
-Bu örnek, daha önce tanımlanmış değişkenleri kullanarak bir veri ambarı oluşturur.  Hizmet hedefini, veri ambarınız için daha düşük maliyetli bir başlangıç noktası olan DW100c olarak belirtir. 
+## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
+Aşağıdaki örnek, daha önce tanımlanmış değişkenleri kullanarak bir SQL havuzu oluşturur.  Hizmet hedefini, SQL havuzunuz için daha düşük maliyetli bir başlangıç noktası olan DW100c olarak belirtir. 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,10 +126,10 @@ New-AzSqlDatabase `
 Gerekli Parametreler şunlardır:
 
 * **Requestedserviceobjectivename**: istediğiniz [veri ambarı birimlerinin](what-is-a-data-warehouse-unit-dwu-cdwu.md) miktarı. Bu miktarı artırmak, işlem maliyetini artırır. Desteklenen değerlerin bir listesi için bkz. [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md).
-* **DatabaseName**: oluşturmakta olduğunuz veri ambarının adı.
+* **DatabaseName**: oluşturmakta olduğunuz SQL havuzunun adı.
 * **ServerName**: oluşturma için kullanmakta olduğunuz sunucunun adı.
 * **Resourcegroupname**: kullandığınız kaynak grubu. Aboneliğinizdeki kullanılabilir kaynak gruplarını bulmak için Get-AzureResource komutunu kullanın.
-* **Sürüm**: bir veri ambarı oluşturmak Için "DataWarehouse" olmalıdır.
+* **Sürüm**: bir SQL havuzu oluşturmak Için "DataWarehouse" olmalıdır.
 
 İsteğe Bağlı Parametreler şunlardır:
 
@@ -151,6 +153,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir veri ambarı oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz, veri ambarınıza bağlanmış ve birkaç sorgu çalıştırdınız. Daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
-> [!div class="nextstepaction"]
->[Verileri bir veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+Artık bir SQL havuzu oluşturdunuz, SQL havuzunuza bağlanmış bir güvenlik duvarı kuralı oluşturdunuz ve birkaç sorgu çalıştırdınız. Daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine ilerleyin.

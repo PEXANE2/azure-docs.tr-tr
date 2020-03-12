@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f3edbc4fc48abd9c7df92aedcdea50dd77a0fd4b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672067"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086273"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -128,7 +128,7 @@ Batch hizmetindeki ölçümleri temel alan ayarlamalar yapmak için, bu hizmet t
 | $NetworkInBytes |Gelen bayt sayısı. |
 | $NetworkOutBytes |Giden bayt sayısı. |
 | $SampleNodeCount |İşlem düğümlerinin sayısı. |
-| $ActiveTasks |Yürütülmeye hazırlanma ancak henüz yürütülmemiş görevlerin sayısı. $ActiveTasks sayısı, etkin durumdaki ve bağımlılıkları karşılanan tüm görevleri içerir. Etkin durumdaki ancak bağımlılıkları karşılanmamış olan tüm görevler $ActiveTasks sayısından çıkarılır.|
+| $ActiveTasks |Yürütülmeye hazırlanma ancak henüz yürütülmemiş görevlerin sayısı. $ActiveTasks sayısı, etkin durumdaki ve bağımlılıkları karşılanan tüm görevleri içerir. Etkin durumdaki ancak bağımlılıkları karşılanmamış olan tüm görevler $ActiveTasks sayısından çıkarılır. Çok örnekli bir görev için $ActiveTasks, görevde ayarlanan örnek sayısını içerecektir.|
 | $RunningTasks |Çalışma durumundaki görevlerin sayısı. |
 | $PendingTasks |$ActiveTasks ve $RunningTasks toplamı. |
 | $SucceededTasks |Başarıyla tamamlanan görevlerin sayısı. |

@@ -5,17 +5,17 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 03/11/2020
+ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664316"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129981"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Azure Stream Analytics işinizin Azure Blob depolama çıkışına (Önizleme) kimliğini doğrulamak için yönetilen kimlik kullanma
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Azure Stream Analytics işinizin Azure Blob depolama çıkışına kimliğini doğrulamak için yönetilen kimlik kullanma
 
-Azure Blob depolama 'ya çıkış için [yönetilen kimlik kimlik doğrulaması](../active-directory/managed-identities-azure-resources/overview.md) , önizleme olarak Azure Stream Analytics kullanılabilir. Bu, Stream Analytics işlerin bir bağlantı dizesi kullanmak yerine bir depolama hesabına doğrudan erişmesini sağlar. Bu özellik, geliştirilmiş güvenliğe ek olarak Azure içindeki bir sanal ağdaki (VNET) bir depolama hesabına veri yazmanızı de sağlar.
+Azure Blob depolama 'ya çıkış için [yönetilen kimlik kimlik doğrulaması](../active-directory/managed-identities-azure-resources/overview.md) , Stream Analytics işlerinin bağlantı dizesi kullanmak yerine bir depolama hesabına doğrudan erişmesini sağlar. Bu özellik, geliştirilmiş güvenliğe ek olarak Azure içindeki bir sanal ağdaki (VNET) bir depolama hesabına veri yazmanızı de sağlar.
 
 Bu makalede, Azure portal ve Azure Resource Manager dağıtımı aracılığıyla bir Stream Analytics işinin blob çıkışları için yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir.
 

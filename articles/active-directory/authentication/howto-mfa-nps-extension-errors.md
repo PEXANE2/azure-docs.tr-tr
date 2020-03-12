@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4f086b7c2f24cfe5d3fe74c25f6f5690b090800
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425312"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086375"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için NPS uzantısından hata iletilerini çözümleyin
 
@@ -30,7 +30,7 @@ Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karş
 | **CLIENT_CERT_INSTALL_ERROR** | İstemci sertifikasının nasıl yüklendiği veya kiracınızla ilişkili olduğu bir sorun olabilir. İstemci sertifikası sorunlarını araştırmak için [MFA NPS uzantısının sorunlarını giderme](howto-mfa-nps-extension.md#troubleshooting) konusundaki yönergeleri izleyin. |
 | **ESTS_TOKEN_ERROR** | İstemci sertifikası ve ADAL belirteci sorunlarını araştırmak için [MFA NPS uzantısının sorunlarını giderme](howto-mfa-nps-extension.md#troubleshooting) konusundaki yönergeleri izleyin. |
 | **HTTPS_COMMUNICATION_ERROR** | NPS sunucusu, Azure MFA 'dan yanıt alamıyor. Güvenlik duvarlarınızın https://adnotifications.windowsazure.com gelen ve giden trafik için açık bir şekilde açık olduğunu doğrulayın |
-| **HTTP_CONNECT_ERROR** | NPS uzantısını çalıştıran sunucuda https://adnotifications.windowsazure.com ve https://login.microsoftonline.com/ ulaşabildiğinizi doğrulayın. Bu siteler yüklenmezseniz, bu sunucu üzerinde bağlantı sorunlarını giderin. |
+| **HTTP_CONNECT_ERROR** | NPS uzantısını çalıştıran sunucuda https://adnotifications.windowsazure.com ve https://login.microsoftonline.com/ulaşabildiğinizi doğrulayın. Bu siteler yüklenmezseniz, bu sunucu üzerinde bağlantı sorunlarını giderin. |
 | **Azure MFA için NPS uzantısı:** <br> Azure MFA için NPS uzantısı yalnızca AccessAccept durumundaki RADIUS istekleri için Ikincil kimlik doğrulaması gerçekleştirir. Yanıt durumu Accessred olan Kullanıcı Kullanıcı adı için istek alındı, istek yoksayılıyor. | Bu hata genellikle AD 'deki bir kimlik doğrulaması hatasını yansıtır veya NPS sunucusunun Azure AD 'den yanıt alamıyor olduğunu gösterir. Güvenlik duvarlarınızın https://adnotifications.windowsazure.com ve giden trafik için açık bir şekilde açık olduğunu ve 80 ve 443 bağlantı noktalarını kullanarak https://login.microsoftonline.com emin olun. Ağ erişim Izinlerinin arama sekmesinde, ayarın "NPS ağ Ilkesi aracılığıyla erişimi denetle" olarak ayarlandığını denetlemek de önemlidir. Bu hata, kullanıcıya bir lisans atanmamışsa da tetiklenebilir. |
 | **REGISTRY_CONFIG_ERROR** | Uygulama için kayıt defterinde bir anahtar eksik, bu durum [PowerShell betiğinin](howto-mfa-nps-extension.md#install-the-nps-extension) yükleme sonrasında çalıştırılmamasının nedeni olabilir. Hata iletisi eksik anahtarı içermelidir. HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. altındaki anahtara sahip olduğunuzdan emin olun |
 | **REQUEST_FORMAT_ERROR** <br> Radius Isteğinde zorunlu Radius Username\ıdentifier özniteliği eksik. NPS 'nin RADIUS isteklerini aldığını doğrulama | Bu hata genellikle bir yükleme sorununu yansıtır. NPS uzantısının, RADIUS isteklerini alabilen NPS sunucularına yüklenmesi gerekir. RDG ve RRAS gibi hizmetler için bağımlılıklar olarak yüklenen NPS sunucuları RADIUS istekleri almaz. NPS uzantısı, kimlik doğrulama isteğinden ayrıntıları okuyamadığından bu tür yüklemeler ve hatalar üzerine yüklendiğinde çalışmaz. |
@@ -98,7 +98,7 @@ Kullanıcılarınız [iki adımlı doğrulamayla ilgili sorun](../user-help/mult
 
 ### <a name="health-check-script"></a>Sistem durumu denetimi betiği
 
-[Azure MFA NPS uzantısı sistem durumu denetim betiği](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb) , NPS uzantısında sorun giderirken temel bir sistem durumu denetimi gerçekleştirmek Için TechNet galerisinde bulunabilir. Betiği çalıştırın ve seçenek 3 ' ü seçin.
+[Azure MFA NPS uzantısı sistem durumu denetim betiği](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) , NPS uzantısı sorunlarını giderirken temel bir sistem durumu denetimi gerçekleştirir. Betiği çalıştırın ve seçenek 3 ' ü seçin.
 
 ### <a name="contact-microsoft-support"></a>Microsoft Destek'e başvurun
 

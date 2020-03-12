@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b48ccede9ca3330d356fa75d4df34789e31eb916
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 292f3e8819f6f9f4b2989423814e02dfcfb4bfdb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350756"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127674"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines’de (Resource Manager) SQL Server için Otomatik Düzeltme Eki Uygulama
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.locfileid: "75350756"
 Otomatik düzeltme eki uygulama SQL Server çalıştıran bir Azure sanal makinesine yönelik bir bakım penceresi oluşturur. Otomatik Güncelleştirmeler yalnızca bu bakım penceresi sırasında yüklenebilir. SQL Server için bu kısıtlama, sistem güncelleştirmelerinin ve ilişkili tüm yeniden başlatmaların veritabanı için mümkün olan en uygun zamanda yapılmasını sağlar. 
 
 > [!IMPORTANT]
-> Yalnızca Windows ve SQL Server güncelleştirmeleri **önemli** olarak işaretlenmiş olarak yüklenir. Toplu Güncelleştirmeler gibi diğer SQL Server güncelleştirmelerinin el ile yüklenmesi gerekir. 
+> Yalnızca Windows ve SQL Server, **önemli** veya **kritik** olarak işaretlenen güncelleştirmeler yüklenir. **Önemli** veya **kritik** olarak işaretlenmemiş hizmet paketleri ve toplu güncelleştirmeler gibi diğer SQL Server güncelleştirmelerinin el ile yüklenmesi gerekir. 
 
 Otomatik Yama Uygulama [SQL Server IaaS Aracı Uzantısı](virtual-machines-windows-sql-server-agent-extension.md)'na bağımlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Otomatik düzeltme eki kullanmak için aşağıdaki önkoşulları göz önünde bulundurun:
 
 **Işletim sistemi**:

@@ -3,12 +3,12 @@ title: Azure Işlevlerinizi bir paketten çalıştırın
 description: Azure Işlevleri çalışma zamanının, işlev uygulaması proje dosyalarınızı içeren bir dağıtım paketi dosyası bağlayarak işlevlerinizi çalıştırmasını sağlayabilirsiniz.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921122"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087034"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Işlevlerinizi bir paket dosyasından çalıştırın
 
@@ -91,6 +91,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın.
 - Tar ve gzip biçimleri desteklenmez.
 - Bu özellik yerel önbellek ile oluşturmaz.
 - İyileştirilmiş soğuk başlangıç performansı için yerel posta seçeneğini kullanın (`WEBSITE_RUN_FROM_PACKAGE`= 1).
+- Paketten Çalıştır, dağıtım özelleştirme seçeneği (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`) ile uyumlu değil, dağıtım sırasında derleme adımı yok sayılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

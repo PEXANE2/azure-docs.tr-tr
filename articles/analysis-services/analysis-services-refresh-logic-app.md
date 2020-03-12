@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572333"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126927"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps ile yenileme
 
@@ -26,9 +26,9 @@ Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belir
 ## <a name="design-the-logic-app"></a>Mantıksal uygulamayı tasarlama
 
 > [!IMPORTANT]
-> Aşağıdaki örneklerde Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını kabul edilir.  Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi Azure Analysis Services güvenlik duvarında beyaz listeye alınmalıdır. Bölge başına mantıksal uygulama IP aralıkları hakkında daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgileri](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
+> Aşağıdaki örneklerde Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını kabul edilir. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi Azure Analysis Services güvenlik duvarında beyaz listeye alınmalıdır. Bölge başına Azure Logic Apps IP aralıkları hakkında daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgilerine](../logic-apps/logic-apps-limits-and-config.md#configuration)bakın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 #### <a name="create-a-service-principal-spn"></a>Hizmet sorumlusu oluşturma (SPN)
 
@@ -64,7 +64,7 @@ HTTP etkinliğini şu şekilde yapılandırın:
 
 |Özellik  |Değer  |
 |---------|---------|
-|**Yöntem**     |Yayınla         |
+|**Yöntem**     |POST         |
 |**KULLANıLMAMıŞSA**     | https://*sunucu bölgenizi*/Servers/*AAS sunucu adı*/models/*veritabanınızın adı*/yenilemeler <br /> <br /> Örneğin: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
 |**Üst Bilgiler**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Gövde**     |   İstek gövdesini oluşturan hakkında daha fazla bilgi edinmek için, [REST API-Post/Refresh Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md#post-refreshes)bölümüne bakın. |

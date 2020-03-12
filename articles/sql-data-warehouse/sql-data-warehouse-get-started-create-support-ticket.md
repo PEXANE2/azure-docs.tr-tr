@@ -1,59 +1,111 @@
 ---
-title: Destek bileti oluşturma
-description: Azure SYNAPSE Analytics 'te destek bileti oluşturma.
+title: İstek kotası artar ve destek alın
+description: Azure SYNAPSE Analytics için Azure portal bir destek isteği oluşturma. İstek kotası artar veya sorun çözümleme desteğini alır.
 services: sql-data-warehouse
-author: kevinvngo
-manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 03/10/2020
+author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9623a878ea009ec7363501c09c324baa6d0fa7ad
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 88cc737fddfdd896575227e036df087c13a4d0f6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195728"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130159"
 ---
-# <a name="how-to-create-a-support-ticket-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için destek bileti oluşturma
-Azure SYNAPSE Analytics ile ilgili herhangi bir sorun yaşıyorsanız, mühendislik desteği ekibinin size yardımcı olabilmesi için bir destek bileti oluşturun.
+# <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>İstek kotası artar ve Azure SYNAPSE Analytics desteği alınır
+
+Bu makalede, Azure SYNAPSE Analytics için Azure portal bir destek bileti gönderme açıklanır. Bu işlem, bir kota artışı talep etmenizi veya mühendislik desteği ekibine yönelik teknik destek talebi göndermenizi sağlar.
 
 ## <a name="create-a-support-ticket"></a>Destek bileti oluşturma
-1. [Azure portalını](https://portal.azure.com/) açın.
-1. Giriş ekranında **Yardım + destek** sekmesine tıklayın.
-   
-    ![Yardım + destek](./media/sql-data-warehouse-get-started-create-support-ticket/main-page.png)
+
+Azure SYNAPSE Analytics için Azure portal yeni bir destek isteği oluşturmak için aşağıdaki adımları kullanın.
+
+1. [Azure Portal](https://portal.azure.com) menüsünde **Yardım + Destek**' i seçin.
+
+   ![Yardım + destek bağlantısı](./media/sql-data-warehouse-get-started-create-support-ticket/help-plus-support.png)
+
+
+1. **Yardım + Destek**bölümünde **Yeni destek isteği**' ni seçin.
+
+    ![Yeni bir destek isteği oluşturun](./media/sql-data-warehouse-get-started-create-support-ticket/new-support-request.png)
 
 1. [Azure destek planınızı](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/)gözden geçirin.
-   
+
    * Tüm destek düzeylerinde **faturalama, kota ve abonelik yönetimi** desteği sunulmaktadır.
    * **Onarım** desteği [Geliştirici](https://azure.microsoft.com/support/plans/developer/), [Standart](https://azure.microsoft.com/support/plans/standard/), [profesyonel doğrudan](https://azure.microsoft.com/support/plans/prodirect/)veya [Premier](https://azure.microsoft.com/support/plans/premier/) destek aracılığıyla sağlanır. Onarım sorunları, müşterilerin Azure'ı kullandığı sırada karşılaştıkları ve ilgili sorunun Microsoft'tan kaynaklandığına ilişkin makul bir olasılığın bulunduğu sorunlardır.
-   * **Geliştirici rehberliği** ve **danışmanlık hizmetleri**, [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) ve [Premier](https://azure.microsoft.com/support/plans/premier/) destek düzeylerinde kullanılabilir. 
-     
-     Bir Premier destek planınız varsa SQL Data Warehouse ile ilgili sorunları [Microsoft Premier çevrimiçi portalı](https://premier.microsoft.com/) üzerinden de bildirebilirsiniz. Kapsam, yanıt süreleri, fiyatlandırma vb. dahil olmak üzere çeşitli destek planları hakkında daha fazla bilgi edinmek için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) .  Azure desteği hakkında sık sorulan sorular için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
-1. **Yardım + Destek** sayfasında **Yeni destek isteği**' ni seçin. Açılan menüden bir sorun türü seçin. Ardından **temel** bilgiler sekmesindeki bilgileri doldurmaya devam edin. sorununuzun bir **özetini** girin ve menüden bir **sorun türü** seçip Kaydet ' i seçin.
+   * **Geliştirici rehberliği** ve **danışmanlık hizmetleri**, [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) ve [Premier](https://azure.microsoft.com/support/plans/premier/) destek düzeylerinde kullanılabilir.
 
-    ![Yardım + destek](./media/sql-data-warehouse-get-started-create-support-ticket/issue-type.png)
+   Premier Destek planınız varsa, [Microsoft Premier çevrimiçi portalındaki](https://premier.microsoft.com/)Azure SYNAPSE Analytics sorunlarını da bildirebilirsiniz. Kapsam, yanıt süreleri, fiyatlandırma vb. dahil olmak üzere çeşitli destek planları hakkında daha fazla bilgi edinmek için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) .  Azure desteği hakkında sık sorulan sorular için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+
+1. **Sorun türü**için uygun sorun türünü seçin. Onarım sorunları için **Teknik**' i seçin. Kota artışı istekleri için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
+
+   ![Sorun türü seçin](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-issue-type.png)  
 
    > [!NOTE]
-   > Varsayılan olarak her SQL sunucusu (örn. myserver.database.windows.net) 45.000’lik **DTU Kotası**’na sahiptir. Bu kota yalnızca bir güvenlik sınırıdır. Bir destek bileti oluşturarak ve istek türü olarak *Kota*’yı seçerek kotanızı artırabilirsiniz. DTU gereksinimlerinizi hesaplamak için gereken toplam [DWU](sql-data-warehouse-overview-what-is.md) ile 7,5 çarpımını artırın. Örneğin, tek bir SQL sunucusu üzerinde iki DW6000 barındırmak istiyorsanız, 90.000’lik DTU kotası istemeniz gerekir.  Geçerli DTU tüketiminizi portaldaki SQL server dikey penceresinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. 
-   > 
+   > Bu makalenin geri kalanı, kota artışı istekleri üzerine odaklandırırsınız. Ancak sorun çözümü destek istekleri için burada **Teknik** ' i de seçebilirsiniz. **Teknik**' i seçerseniz, bir Özet girmeniz ve ardından **sorun türünü seç**' i seçerek bir sorun türü belirlemeniz istenir. Sorununuzu gidermeye yardımcı olabilecek çözümler görebilirsiniz. Sunulan çözümler sorununuzu gidermezse, **İleri** ' yi seçin ve destek bileti göndermek için formu doldurun.
 
-1. Sorununuzu gidermeye yardımcı olabilecek çözümler görebilirsiniz. Sunulan çözümler sorununuzu gidermezse, Ileri ' yi seçin **: Ayrıntılar**. Sorununuzla ilgili ayrıntıları ve iletişim bilgilerinizi gönderin. **İleri ' yi seçin: İnceleme + oluşturma**
-![ayrıntıları](./media/sql-data-warehouse-get-started-create-support-ticket/details.png)
+1. Kota artışı istekleri için **Kota türü**Için **Azure SYNAPSE Analytics** ' i seçin. Ardından Ileri ' yi seçin **: çözümler > >** .
 
-    
-1. Destek isteğini göndermek için bilgilerinizi gözden geçirin ve formun alt kısmındaki **Oluştur** ' u seçin.
+   ![Kota türü seçin](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
+
+1. **Ayrıntılar** penceresinde, ek bilgi girmek Için **Ayrıntılar sağla** ' yı seçin.
+
+   !["Ayrıntıları sağla" bağlantısı](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
+
+## <a name="quota-request-types"></a>Kota istek türleri
+
+**Ayrıntıları sağla** 'ya tıkladığınızda ek bilgi eklemenize olanak tanıyan **Kota ayrıntıları** penceresi görüntülenir. Aşağıdaki bölümlerde, Azure SYNAPSE Analytics için kullanılabilen farklı kota istekleri açıklanır.
+
+### <a name="data-warehouse-units-dwus-per-server"></a>Sunucu başına veri ambarı birimleri (DWU)
+
+Sunucu başına DWU 'da artış istemek için aşağıdaki adımları kullanın.
+
+1. Sunucu kota türü **başına veri ambarı birimlerini (DTU)** seçin.
+
+1. **Kaynak** listesinde, hedeflenecek kaynağı seçin.
+
+1. **İstek kotası** alanına istediğiniz yeni DWU limitini girin.
+
+   ![DWU kota ayrıntıları](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
+
+### <a name="servers-per-subscription"></a>Abonelik başına sunucu sayısı
+
+Abonelik başına sunucu sayısında artış istemek için aşağıdaki adımları kullanın.
+
+1. **Abonelik başına sunucu** kotası türünü seçin.
+
+1. **Konum** listesinde, kullanılacak Azure bölgesini seçin. Kota her bölgede abonelik başına olur.
+
+1. **Yeni kota** alanına, bu bölgedeki en fazla sunucu sayısı için isteğinizi girin.
+
+   ![Sunucu kotası ayrıntıları](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
+
+### <a name="enable-subscription-access-to-a-region"></a>Bir bölgeye abonelik erişimini etkinleştirme
+
+Bazı teklif türleri her bölgede kullanılamaz. Aşağıdakiler gibi bir hata görebilirsiniz:
+
+`This location is not available for subscription`
+
+Aboneliğiniz belirli bir bölgede erişime ihtiyacı varsa, lütfen erişim istemek için **diğer kota isteği** seçeneğini kullanın. İsteğiniz içinde, bölge için etkinleştirmek istediğiniz teklif ve SKU ayrıntılarını belirtin. Teklif ve SKU seçeneklerini araştırmak için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+
+![Diğer kota ayrıntıları](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
+
+## <a name="submit-your-request"></a>İsteğinizi gönderme
+
+Son adım, SQL veritabanı destek isteğinizin geri kalan ayrıntılarını doldurmasıdır. Ardından Ileri ' yi seçin **: gözden geçir + oluşturma > >** , istek ayrıntılarını inceledikten sonra, isteği göndermek için **Oluştur** ' a tıklayın.
 
 ## <a name="monitor-a-support-ticket"></a>Destek biletini izleme
+
 Destek isteğini gönderdikten sonra, Azure destek ekibi sizinle iletişim kuracaktır. İstek durumunuzu ve ayrıntılarını kontrol etmek için panoda bulunan **Tüm destek istekleri** kutucuğuna tıklayın.
 
 ![Durumu kontrol etme](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>Diğer kaynaklar
-Ayrıca, [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/) veya [Azure SQL veri ambarı MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/)üzerinden SQL veri ambarı topluluğuyla da bağlanabilirsiniz.
 
- 
+[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) veya [Azure SQL veri ambarı MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/)aracılığıyla Azure SYNAPSE Analytics Community ile de bağlanabilirsiniz.
+

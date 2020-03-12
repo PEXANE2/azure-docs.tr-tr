@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 84d539f35919293522f05abdeabeca936138c140
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081633"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129675"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -221,8 +221,8 @@ Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluş
 > [Web hizmeti kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
-+ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi. + [korleştirme](how-to-create-portal-experiments.md#featurization)hakkında daha fazla bilgi edinin.
-+ [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin.
++ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi. + [korleştirme](how-to-use-automated-ml-for-ml-models.md#featurization)hakkında daha fazla bilgi edinin.
++ [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin.
 
 
 >[!NOTE]

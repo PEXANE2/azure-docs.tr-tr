@@ -3,13 +3,12 @@ title: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 description: Komut satırından bir işlev oluşturmayı ve ardından yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma için yayımlamayı öğrenin.
 ms.date: 01/28/2020
 ms.topic: quickstart
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 2a02e1481d975f877508bde02948bc65561b9f13
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f2ec642a477348923e8f587879d4804c07fff5a0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272756"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096250"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -23,7 +22,12 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 + Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
 + [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.7.1846 veya sonraki bir 2. x sürümü.
+::: zone-end  
+::: zone pivot="programming-language-python"
++ Python 3,6 ve 3,7 için [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.7.1846 veya sonraki bir 2. x sürümü gerekir. Python 3,8, çekirdek araçların [3. x sürümünü](./functions-run-local.md#v2) gerektirir.
+::: zone-end
 
 + [Azure CLI](/cli/azure/install-azure-cli) sürüm 2.0.76 veya üzeri. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
@@ -31,7 +35,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-+ Azure Işlevleri tarafından desteklenen [python 3,7](https://www.python.org/downloads/release/python-375/) veya [Python 3,6](https://www.python.org/downloads/release/python-368/). Python 3,8 ve sonraki sürümler henüz desteklenmiyor. 
++ Azure Işlevleri tarafından desteklenen Python [3,8](https://www.python.org/downloads/release/python-382/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [Python 3,6](https://www.python.org/downloads/release/python-368/). 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -51,11 +55,11 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 + Node. js sürüm raporlarınızı 8. x veya 10. x olarak denetlemek için `node --version` çalıştırın.
 ::: zone-end
 ::: zone pivot="programming-language-python"
-+ Python sürüm raporlarınızı 3.7. x veya 3.6. x olarak denetlemek için `python --version` (Linux/MacOS) veya `py --version` (Windows) çalıştırın.
++ Python sürüm raporlarınızı 3.8. x, 3.7. x veya 3.6. x olarak denetlemek için `python --version` (Linux/MacOS) veya `py --version` (Windows) çalıştırın.
 
 ## <a name="create-venv"></a>Sanal ortam oluşturma ve etkinleştirme
 
-Uygun bir klasörde, `.venv`adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın. Azure Işlevleri tarafından desteklenen Python 3,7 veya 3,6 ' i kullandığınızdan emin olun.
+Uygun bir klasörde, `.venv`adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın. Azure Işlevleri tarafından desteklenen Python 3,8, 3,7 veya 3,6 kullandığınızdan emin olun.
 
 
 # <a name="bash"></a>[Bash](#tab/bash)
@@ -268,13 +272,15 @@ Bu öğeleri oluşturmak için aşağıdaki Azure CLı komutlarını kullanın. 
     
     Depolama hesabı bu hızlı başlangıç için yalnızca birkaç ilay (USD) doğurur.
     
-1. [Az functionapp Create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak işlevler uygulamasını oluşturun. Aşağıdaki örnekte, `<STORAGE_NAME>`, önceki adımda kullandığınız hesabın adıyla değiştirin ve `<APP_NAME>`, sizin için uygun olan bir genel benzersiz adla değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. 
+1. [Az functionapp Create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak işlev uygulamasını oluşturun. Aşağıdaki örnekte, `<STORAGE_NAME>`, önceki adımda kullandığınız hesabın adıyla değiştirin ve `<APP_NAME>`, sizin için uygun olan bir genel benzersiz adla değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. 
 
     ::: zone pivot="programming-language-python"  
-    Python 3,6 kullanıyorsanız, `--runtime-version` `3.6`olarak da değiştirin.
+    Python 3,8 kullanıyorsanız, `--runtime-version` `3.8` ve `3``--functions_version` değiştirin.
+    
+    Python 3,6 kullanıyorsanız, `--runtime-version` `3.6`olarak değiştirin.
 
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
@@ -283,19 +289,19 @@ Bu öğeleri oluşturmak için aşağıdaki Azure CLı komutlarını kullanın. 
 
     
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
     ::: zone pivot="programming-language-csharp"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
     
     ::: zone pivot="programming-language-powershell"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 

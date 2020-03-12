@@ -11,92 +11,55 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2019
+ms.date: 03/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6b262baddd10c9d0dff4b196b733972b97d99872
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 183b81134b2fe72a539cc6460a05d828342aafbb
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552993"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086501"
 ---
-# <a name="monitor-identity-and-access-preview"></a>Kimlik ve erişimi izleme (Önizleme)
+# <a name="monitor-identity-and-access"></a>Kimlik ve erişimi izleme
+
+> [!TIP]
+> Azure Güvenlik Merkezi 'nin kimlik ve erişim önerileri, Mart 2020 ' den ücretsiz fiyatlandırma katmanında tüm aboneliklerde yer alır. Ücretsiz katmanda abonelikleriniz varsa, kendi kimlik ve erişim güvenliği için önceden değerlendirilmedikleri için güvenli puanı bundan etkilenir. 
+
 Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
 
-Bu makalede, Azure Güvenlik Merkezi 'nin kaynak güvenliği bölümünün **kimlik ve erişim** sayfası açıklanmaktadır.
+Güvenlik çevresi, bir ağ çevre öğesinden bir kimlik çevre 'e geliştirilmiştir. Güvenlik, ağınızı erteleme ve verilerinizi erteleme ve uygulamalarınızın ve kullanıcılarınızın güvenliğini yönetme hakkında daha az hale gelir. Günümüzde buluta taşınan veri ve uygulama miktarı arttıkça kimlik yeni savunma hattı haline geliyor.
 
-Bu sayfada görebileceğiniz önerilerin tam listesi için bkz. [kimlik ve erişim önerileri](recommendations-reference.md#recs-identity).
+Kimlik etkinliklerini izleyerek bir olay gerçekleşmeden önce öngörülü eylemlerde veya bir saldırı girişimini durdurmak için reaktif eylemlerde bulunabilirsiniz. Azure Güvenlik Merkezi 'nin **kimlik ve erişim** kaynak güvenliği bölümünde görebileceğiniz önerilerin örnekleri şunlardır:
 
-> [!NOTE]
-> İzleme kimliği ve erişimi önizleme aşamasındadır ve yalnızca güvenlik merkezi 'nin standart katmanında kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md).
->
+- MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
+- Aboneliğiniz için en fazla 3 sahip belirtilmelidir
+- Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
+- Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 
-Kimlik, kuruluşunuz için denetim düzlemi olmalıdır ve kimlikleri korumak en iyi öncelikleriniz olmalıdır. Güvenlik çevresi, bir ağ çevre öğesinden bir kimlik çevre 'e geliştirilmiştir. Güvenlik, ağınızı erteleme ve verilerinizi erteleme ve uygulamalarınızın ve kullanıcılarınızın güvenliğini yönetme hakkında daha az hale gelir. Günümüzde buluta taşınan veri ve uygulama miktarı arttıkça kimlik yeni savunma hattı haline geliyor.
-
-Kimlik etkinliklerini izleyerek bir olay gerçekleşmeden önce öngörülü eylemlerde veya bir saldırı girişimini durdurmak için reaktif eylemlerde bulunabilirsiniz. Kimlik & erişim panosu, şunları gibi öneriler sağlar:
-
-- Aboneliğinizde ayrıcalıklı hesaplar için MFA'yı etkinleştirin
-- Yazma izinleri olan dış hesapları aboneliğinizden kaldırın
-- Ayrıcalıklı dış hesapları aboneliğinizden kaldırın
+Burada görebileceğiniz önerilerin tam listesi için bkz. [kimlik ve erişim önerileri](recommendations-reference.md#recs-identity).
 
 > [!NOTE]
 > Aboneliğinizin 600 'den fazla hesabı varsa, Güvenlik Merkezi, aboneliğinize karşı kimlik önerilerini çalıştıramadı. Çalıştırılmayan öneriler aşağıda "kullanılamayan değerlendirmeler" altında listelenmiştir.
 Güvenlik Merkezi, bulut çözümü sağlayıcısı (CSP) ortağının yönetim aracılarından dolayı kimlik önerilerini çalıştıramıyor.
 >
 
-## <a name="monitor-identity-and-access"></a>Kimlik ve erişimi izleme
 
-Güvenlik Merkezi kenar çubuğundan ( **kaynaklar**altında) veya genel bakış sayfasından **kimlik & erişim** ' i seçerek tanımlı kimlik ve erişim sorunları listesini açın. 
+Tüm kimlik ve erişim önerileri, **öneriler** sayfasında iki güvenlik denetimi içinde mevcuttur:
 
-**Kimlik & erişimi**altında iki sekme vardır:
+- Erişimi ve izinleri yönetme 
+- MFA’yı etkinleştirme
 
-- **Genel bakış**: Güvenlik Merkezi tarafından tanımlanan öneriler.
-- **Abonelikler**: aboneliklerinizin ve geçerli güvenlik durumunun listesi.
+![Kimlik ve erişim ile ilgili önerilere sahip iki güvenlik denetimi](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
-[![kimlik & erişimi](./media/security-center-identity-access/identity-dashboard.png)](./media/security-center-identity-access/identity-dashboard.png#lightbox)
 
-### <a name="overview-section"></a>Genel Bakış bölümü
-**Genel bakış**' ın altında, önerilerin bir listesi bulunur. İlk sütunda öneriler listelenmiştir. İkinci sütunda, bu öneriden etkilenen toplam abonelik sayısı gösterilmektedir. Üçüncü sütun, sorunun önem derecesini gösterir.
+## <a name="enable-multi-factor-authentication-mfa"></a>Multi-Factor Authentication 'ı (MFA) etkinleştir
 
-1. Bir öneri seçin. Öneriler penceresi açılır ve şunları görüntüler:
+MFA 'nın etkinleştirilmesi [Azure Active Directory (ad) kiracı izinleri](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)gerektirir. 
 
-   - Önerinin açıklaması
-   - Sağlıksız ve sağlıklı aboneliklerin listesi
-   - Başarısız bir değerlendirme nedeniyle taranmamış kaynakların listesi veya kaynak ücretsiz katmanda çalışan bir aboneliğin altında ve değerlendirilmedi
+- AD 'nin Premium bir sürümüne sahipseniz, [koşullu erişimi](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)kullanarak MFA 'yı etkinleştirin.
 
-    [![öneriler penceresi](./media/security-center-identity-access/select-subscription.png)](./media/security-center-identity-access/select-subscription.png#lightbox)
+- AD ücretsiz sürüm kullanıcıları, [ad belgelerinde](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) açıklandığı gibi Azure Active Directory **güvenlik varsayılanlarını** etkinleştirebilir, ancak MFA 'Yı etkinleştirmeye yönelik güvenlik merkezi önerisi görünmeye devam eder.
 
-1. Ek ayrıntı için listeden bir abonelik seçin.
-
-### <a name="subscriptions-section"></a>Abonelikler bölümü
-**Abonelikler**' in altında, aboneliklerin listesi bulunur. İlk sütunda abonelikler listelenir. İkinci sütun, her abonelik için toplam öneri sayısını gösterir. Üçüncü sütun sorunların önem derecelerine gösterir.
-
-[![abonelikler sekmesi](./media/security-center-identity-access/subscriptions.png)](./media/security-center-identity-access/subscriptions.png#lightbox)
-
-1. Bir abonelik seçin. Özet görünümü ile üç sekme açar:
-
-   - **Öneriler**: Değerlendirme başarısız oldu Güvenlik Merkezi tarafından gerçekleştirilen göre.
-   - **Değerlendirmeler geçirilen**: Güvenlik Merkezi tarafından geçirilen gerçekleştirdiği değerlendirmeler listesi.
-   - **Kullanılamayan değerlendirmeler**: bir hata nedeniyle veya abonelikte 600 'den fazla hesap bulunduğundan başarısız olan değerlendirmelerin listesi.
-
-   **Öneriler** altında, seçilen abonelik ve her bir önerinin önem derecesine ilişkin önerilerin bir listesidir.
-
-   [![abonelik seçme önerileri](./media/security-center-identity-access/recommendations.png)](./media/security-center-identity-access/recommendations.png#lightbox)
-
-1. Önerinin açıklaması, sağlıksız ve sağlıklı aboneliklerin listesi ve taranmamış kaynakların bir listesi için bir öneri seçin.
-
-   [![önerinin açıklaması](./media/security-center-identity-access/designate.png)](./media/security-center-identity-access/designate.png#lightbox)
-
-   Altında **değerlendirmeleri geçirilen** geçilen iç değerlendirmeler listesidir.  Bu değerlendirmeler önemini her zaman büyük/küçük harf yeşildir.
-
-   [![değerlendirmelere geçti](./media/security-center-identity-access/passed-assessments.png)](./media/security-center-identity-access/passed-assessments.png#lightbox)
-
-1. Değerlendirmenin açıklaması ve sağlıklı aboneliklerin listesi için listeden bir geçmiş değerlendirmesi seçin. Sağlıksız abonelikler için başarısız olan tüm abonelikleri listeleyen bir sekme bulunur.
-
-   [![değerlendirmelere geçti](./media/security-center-identity-access/remove.png)](./media/security-center-identity-access/remove.png#lightbox)
-
-> [!NOTE]
-> MFA 'yı gerektiren ancak dışlamaları olan bir koşullu erişim ilkesi oluşturduysanız, bazı kullanıcıların MFA olmadan Azure 'da oturum açmasını sağladığından Güvenlik Merkezi MFA önerisi değerlendirmesi ilkeyi uyumlu değil olarak değerlendirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer Azure kaynak türlerine uygulanan öneriler hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

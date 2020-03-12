@@ -12,18 +12,18 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3ccc2a5343cf02127990dca80a1300959fa06a3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827105"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087176"
 ---
-# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Hızlı başlangıç: Azure portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama
+# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Hızlı Başlangıç: bağlanmak ve veri sorgulamak için Azure portalında SQL sorgu Düzenleyicisi'ni kullanın.
 
-SQL sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SQL veri ambarı 'nda SQL sorguları yürütmek için kolay bir yol sağlayan bir Azure portal tarayıcı aracıdır. Bu hızlı başlangıçta, sorgu düzenleyicisini kullanarak bir SQL veritabanına bağlanın ve ardından Transact-SQL deyimlerini çalıştırarak verileri sorgulama, ekleme, güncelleştirme ve silme.
+SQL sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SQL veri ambarı üzerinde SQL sorguları yürütmek için kolay bir yol sağlayarak, Azure portal tarayıcı bir araçtır. Bu hızlı başlangıçta, sorgu düzenleyicisini kullanarak bir SQL veritabanına bağlanın ve ardından Transact-SQL deyimlerini çalıştırarak verileri sorgulama, ekleme, güncelleştirme ve silme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -40,11 +40,11 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 > [!NOTE]
 > Sorgu Düzenleyicisi, iletişim kurmak için 443 ve 1443 bağlantı noktalarını kullanır.  Lütfen bu bağlantı noktalarında giden HTTPS trafiğini etkinleştirmiş olduğunuzdan emin olun. Ayrıca, veritabanlarına ve veri ambarlarınıza erişmek için giden IP adresinizi sunucunun izin verilen güvenlik duvarı kurallarına eklemeniz gerekir.
 
-## <a name="sign-in-the-azure-portal"></a>Azure portal oturum açın
+## <a name="sign-in-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
-## <a name="connect-using-sql-authentication"></a>SQL kimlik doğrulaması kullanarak bağlanma
+## <a name="connect-using-sql-authentication"></a>SQL kimlik doğrulamasını kullanarak bağlanma
 
 1. Bir SQL veritabanına bağlanmak için Azure portal gidin. **SQL veritabanlarını**arayın ve seçin.
 
@@ -62,13 +62,13 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
     ![oturum aç](./media/sql-database-connect-query-portal/login-menu.png)
 
-## <a name="connect-using-azure-active-directory"></a>Azure Active Directory kullanarak bağlanma
+## <a name="connect-using-azure-active-directory"></a>Azure Active Directory kullanarak bağlan
 
 Azure Active Directory (Azure AD) Yöneticisi yapılandırmak, Azure portal ve SQL veritabanınızda oturum açmak için tek bir kimlik kullanmanıza olanak sağlar. SQL sunucunuz için bir Azure AD yöneticisi yapılandırmak üzere aşağıdaki adımları izleyin.
 
 > [!NOTE]
-> * E-posta hesapları (örneğin, outlook.com, gmail.com, yahoo.com, vb.) henüz Azure AD yöneticileri olarak desteklenmez. Azure AD 'de yerel olarak oluşturulmuş bir kullanıcı veya Azure AD 'de Federasyon seçeneklerinden birini seçtiğinizden emin olun.
-> * Azure AD yönetici oturum açma özelliği, 2 öğeli kimlik doğrulaması etkinleştirilmiş hesaplarla çalışmaz.
+> * E-posta hesapları (örneğin, outlook.com, gmail.com, yahoo.com, vb.) henüz Azure AD yöneticileri olarak desteklenmez. Bir kullanıcı ya da yerel olarak Azure AD'de oluşturulmuş veya Azure AD ile Federasyon seçtiğinizden emin olun.
+> * Azure AD Yöneticisi'ni açın 2 faktörlü kimlik doğrulaması etkin olan hesapları ile çalışmaz.
 
 1. Azure portal menüsünde veya **giriş** sayfasından **tüm kaynaklar**' ı seçin.
 
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) Yöneticisi yapılandırmak, Azure portal ve S
 
 ## <a name="view-data"></a>Verileri görüntüleme
 
-1. Kimlik doğrulamasından geçtikten sonra, kategoriye göre ilk 20 ürünü almak için aşağıdaki SQL 'i sorgu düzenleyicisine yapıştırın.
+1. Doğrulandıktan sonra ilk 20 ürünü kategoriye göre almak için sorgu Düzenleyicisi'nde aşağıdaki SQL yapıştırın.
 
    ```sql
     SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -107,7 +107,7 @@ Azure Active Directory (Azure AD) Yöneticisi yapılandırmak, Azure portal ve S
 
 `SalesLT.Product` tablosuna yeni bir ürün eklemek için aşağıdaki [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ifadesini çalıştırın.
 
-1. Önceki sorguyu bununla değiştirin.
+1. Önceki sorguyu Bununla değiştirin.
 
     ```sql
     INSERT INTO [SalesLT].[Product]
@@ -137,7 +137,7 @@ Azure Active Directory (Azure AD) Yöneticisi yapılandırmak, Azure portal ve S
 
 Yeni ürününüzü değiştirmek için aşağıdaki [Update](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ifadesini çalıştırın.
 
-1. Önceki sorguyu bununla değiştirin.
+1. Önceki sorguyu Bununla değiştirin.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -151,7 +151,7 @@ Yeni ürününüzü değiştirmek için aşağıdaki [Update](https://msdn.micro
 
 Yeni ürününüzü kaldırmak için aşağıdaki [Delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ifadesini çalıştırın.
 
-1. Önceki sorguyu bununla değiştirin:
+1. Önceki sorguyu Bununla değiştirin:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
@@ -163,19 +163,23 @@ Yeni ürününüzü kaldırmak için aşağıdaki [Delete](https://msdn.microsof
 
 ## <a name="query-editor-considerations"></a>Sorgu Düzenleyicisi konuları
 
-Sorgu Düzenleyicisi ile çalışırken bilmemiz gereken birkaç nokta vardır.
+Sorgu Düzenleyicisi ile çalışırken bilmeniz gereken birkaç nokta vardır.
 
 * Sorgu Düzenleyicisi, iletişim kurmak için 443 ve 1443 bağlantı noktalarını kullanır.  Lütfen bu bağlantı noktalarında giden HTTPS trafiğini etkinleştirmiş olduğunuzdan emin olun. Ayrıca, veritabanlarına ve veri ambarlarınıza erişmek için giden IP adresinizi sunucunun izin verilen güvenlik duvarı kurallarına eklemeniz gerekir.
 
-* F5 tuşuna basıldığında sorgu Düzenleyicisi sayfası yenilenir ve üzerinde çalışılan sorgular kaybolur.
+* Sorgu Düzenleyicisi, Istemci IP adresini SQL veritabanı güvenlik duvarı 'na eklemeye gerek kalmadan özel bağlantıyla birlikte çalışmaktadır
+
+* F5 tuşuna basarak sorgu Düzenleyicisi sayfası yenilenir ve üzerinde çalışılmakta olan herhangi bir sorgu kaybolur.
 
 * Sorgu Düzenleyicisi `master` veritabanına bağlanmayı desteklemiyor.
 
-* Sorgu yürütmesi için 5 dakikalık bir zaman aşımı vardır.
+* Sorgu yürütme için 5 dakikalık zaman aşımı yoktur.
 
-* Sorgu Düzenleyicisi, Coğrafya veri türleri için yalnızca silindir projeksiyonu destekler.
+* Sorgu Düzenleyicisi, yalnızca coğrafi veri türleri için Silindirik izdüşümü destekler.
 
-* Veritabanı tabloları ve görünümleri için IntelliSense desteği yoktur. Ancak, düzenleyici zaten girilmiş olan adlarla otomatik tamamlamayı destekler.
+* Veritabanı tabloları ve görünümleri için IntelliSense desteği yoktur. Ancak, düzenleyici zaten girilmiş adları otomatik tamamlama desteklemiyor.
+
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

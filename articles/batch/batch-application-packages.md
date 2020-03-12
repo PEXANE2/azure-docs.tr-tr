@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025937"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086228"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -90,13 +90,11 @@ Batch hizmeti, uygulama paketlerinizi depolamak için ilişkili depolama hesabı
 
 *Özel olarak* Batch hesabınızla birlikte kullanmak Için bir depolama hesabı oluşturmanızı ve burada seçmeniz önerilir. Bir depolama hesabı oluşturduktan sonra **depolama** hesabı penceresini kullanarak bunu Batch hesabınıza bağlayabilirsiniz.
 
-> [!NOTE] 
-> Şu anda uygulama paketlerini [güvenlik duvarı kurallarıyla](../storage/common/storage-network-security.md)yapılandırılmış bir Azure depolama hesabıyla kullanamazsınız.
-> 
+> [!IMPORTANT] 
+> - Şu anda uygulama paketlerini [güvenlik duvarı kurallarıyla](../storage/common/storage-network-security.md)yapılandırılmış bir Azure depolama hesabıyla kullanamazsınız.
+> - **Hiyerarşik ad alanı** **etkin** olarak ayarlanmış bir Azure depolama hesabı uygulama paketleri için kullanılamaz.
 
 Batch hizmeti, uygulama paketlerinizi blok blob 'ları olarak depolamak için Azure Storage 'ı kullanır. Blok Blobu verileri için [normal olarak ücretlendirilirsiniz][storage_pricing] ve her bir paketin boyutu, Blok Blobu boyutunun üst sınırını aşamaz. Daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md). Uygulama paketlerinizin boyutunu ve sayısını göz önünde bulundurmanız ve maliyetleri en aza indirmek için kullanım dışı bırakılan paketleri düzenli olarak kaldırmayı unutmayın.
-> 
-> 
 
 ### <a name="view-current-applications"></a>Geçerli uygulamaları görüntüle
 Batch hesabınızdaki uygulamaları görüntülemek için, **Batch hesabınızı**görüntülerken sol menüdeki **uygulamalar** menü öğesine tıklayın.
@@ -141,7 +139,7 @@ Yeni bir uygulama oluşturmak için bir uygulama paketi ekleyin ve yeni, benzers
 
 Yeni **uygulama** penceresi, yeni uygulamanızın ve uygulama paketinizin ayarlarını belirtmek için aşağıdaki alanları sağlar.
 
-**Uygulama Kimliği**
+**Uygulama KIMLIĞI**
 
 Bu alan, standart Azure Batch KIMLIĞI doğrulama kurallarına tabi olan yeni uygulamanızın KIMLIĞINI belirtir. Uygulama KIMLIĞI sağlama kuralları aşağıdaki gibidir:
 
@@ -260,7 +258,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
 
 ```
 Linux:

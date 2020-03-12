@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b90b6f8eabbda229fbed4dcef6a5d863ea721faf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659144"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096788"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Azure Izleyici platformu günlüklerine yapılan biçim değişikliğine hazırlanma bir depolama hesabına arşivlendi
 
 > [!WARNING]
-> [Günlük profillerini kullanarak bir depolama](activity-log-export.md)hesabına Tanılama ayarları veya etkinlik günlükleri [kullanarak bir depolama hesabına Azure Kaynak günlükleri veya ölçümleri](resource-logs-collect-storage.md) gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, kas 'de JSON satırları olarak değiştirilmiştir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır.
+> [Günlük profillerini kullanarak bir depolama](resource-logs-collect-storage.md)hesabına Tanılama ayarları veya etkinlik günlükleri [kullanarak bir depolama hesabına Azure Kaynak günlükleri veya ölçümleri](resource-logs-collect-storage.md) gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, kas 'de JSON satırları olarak değiştirilmiştir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır.
 >
 
 ## <a name="what-changed"></a>Değişen

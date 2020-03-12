@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: f712d1be76a9bb3dc4856b9f1fa7c7b805296dea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970765"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127688"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
  
@@ -24,7 +24,7 @@ Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve `az login`kullanar
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- İlk sürüm şu VM serisini destekler: DSv3, ESv3, FSv2, LSv2 ve MSv2. 
+- Adanmış konaklar için kullanılabilen Boyutlar ve donanım türleri bölgelere göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
  
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma 
@@ -77,7 +77,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Konak Oluşturma 
 
-Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  Aşağıdaki SKU değerleri desteklenir: DSv3_Type1 ve ESv3_Type1.
+Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  
 
 Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
 

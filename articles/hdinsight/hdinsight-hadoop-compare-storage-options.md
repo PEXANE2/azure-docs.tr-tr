@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 72534225acffa176d248901f363100955e36c6f6
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/10/2020
+ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898924"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79095537"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Depolama seçeneklerini Azure HDInsight kümeleriyle kullanım için karşılaştırın
 
@@ -46,7 +46,6 @@ Birincil ve isteğe bağlı ikincil depolama için farklı hizmet birleşimleri 
 |---|---|---|---|
 | 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
 | 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen2 | Hayır |
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen1 | Yes |
 | 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage Gen2 | Yes |
 | 3,6 & 4,0 | Data Lake Storage 2. * | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
 | 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Hayır |
@@ -54,6 +53,7 @@ Birincil ve isteğe bağlı ikincil depolama için farklı hizmet birleşimleri 
 | 3.6 | Data Lake Storage Gen1 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Hayır |
 | 4.0 | Data Lake Storage Gen1 | Herhangi biri | Hayır |
+| 4.0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen1 | Hayır |
 
 \* = Bu, bir veya birden çok Data Lake Storage 2. hesabı olabilir, çünkü tüm kurulum, küme erişimi için aynı yönetilen kimliği kullanır.
 

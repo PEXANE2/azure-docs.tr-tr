@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5a6a96f478c4402a830cc522657f56cfd11fa56f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4f30bf112175742566c2957d78154e5a7abd1733
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821819"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096871"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Veritabanı'nda iş sürekliliğine genel bakış
 
@@ -63,13 +63,13 @@ Zaman içinde nokta geri yükleme (ıNR) için desteklenen en fazla yedekleme sa
 
 |                                              | Coğrafi çoğaltma | Yük devretme grupları  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Otomatik yük devretme                           |     Hayır          |      Evet         |
-| Birden çok veritabanını aynı anda devret  |     Hayır          |      Evet         |
-| Yük devretmeden sonra bağlantı dizesini Güncelleştir      |     Evet         |      Hayır          |
-| Yönetilen örnek destekleniyor                   |     Hayır          |      Evet         |
-| Birincil ile aynı bölgede olabilir             |     Evet         |      Hayır          |
-| Birden çok çoğaltma                            |     Evet         |      Hayır          |
-| Okuma ölçeğini destekler                          |     Evet         |      Evet         |
+| Otomatik yük devretme                           |     Hayır          |      Yes         |
+| Birden çok veritabanını aynı anda devret  |     Hayır          |      Yes         |
+| Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmemelidir      |     Yes         |      Hayır          |
+| Yönetilen örnek destekleniyor                   |     Hayır          |      Yes         |
+| Birincil ile aynı bölgede olabilir             |     Yes         |      Hayır          |
+| Birden çok çoğaltma                            |     Yes         |      Hayır          |
+| Okuma ölçeğini destekler                          |     Yes         |      Yes         |
 | &nbsp; | &nbsp; | &nbsp; |
 
 

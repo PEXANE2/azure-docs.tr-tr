@@ -7,29 +7,29 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 7/25/2019
+ms.date: 3/11/2020
 ms.author: evansma
-ms.openlocfilehash: 40d466bd4e5959453f8c3042c4b14f6c3ef605bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 80911ce7858308302b1736328b6c7954c0e05a86
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933470"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79095534"
 ---
 # <a name="support-for-the-marketplace"></a>Market için destek  
 Market için destek seçeneklerinin bir listesi aşağıda verilmiştir.  
 
 Ayrıca, [C + AI topluluk Forumunun Market kanalında](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)cevaplanlarınızın birçoğuna ulaşabilirsiniz.  
 
-## <a name="onboarding"></a>Hazırlama
+## <a name="onboarding"></a>Ekleme
 
-Ekleme ve Başlarken ile ilgili sorunlar için Microsoft [Market Publisher desteğiyle](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) bir bilet açın veya Microsoft iş ortağı ağı sorularınız varsa Microsoft [iş ortağı desteğiyle](https://partner.microsoft.com/support) birlikte açın.
+Ekleme ve Başlarken sorunları için Microsoft [Marketplace Publisher desteğiyle](https://aka.ms/marketplacepublishersupport) bir bilet açın.
 
 ## <a name="partner-center-or-cloud-partner-portal"></a>İş ortağı merkezi veya Bulut İş Ortağı Portalı  
 
-| Destek kanalı | Açıklama | Erişilebilirlik |  
+| Destek kanalı | Açıklama | Kullanılabilirlik |  
 |:--- |:--- |:--- |  
-| Yardım için [Market 'te](https://go.microsoft.com/fwlink/?linkid=844975) bulunan bir olay oluştur sayfasını ziyaret edin</li> </ul> | Iş ortağı merkezi veya Bulut İş Ortağı Portalı için destek. | 6har-18:00 PST arasında destek sağlanır. |  
+| Yardım için [Market 'te](https://aka.ms/marketplacepublishersupport) bulunan bir olay oluştur sayfasını ziyaret edin</li> </ul> | Iş ortağı merkezi veya Bulut İş Ortağı Portalı için destek. | Destek, 24x5 ' i sağlamıştır. |  
 
 ## <a name="technical"></a>Teknik  
 
@@ -40,7 +40,7 @@ Ekleme ve Başlarken ile ilgili sorunlar için Microsoft [Market Publisher deste
 
 ## <a name="marketing-resources"></a>Pazarlama Kaynakları  
 
-| Destek kanalı | Açıklama | Erişilebilirlik |  
+| Destek kanalı | Açıklama | Kullanılabilirlik |  
 |:--- |:--- |:--- |  
 | E-posta: [cosell@microsoft.com](mailto:cosell@microsoft.com) | Ortak satış programıyla ilgili ekleme işlemlerine ve sorulara yönelik destek. | Pasifik saati dilimine göre. |  
 | E-posta: [gtm@microsoft.com](mailto:gtm@microsoft.com) | GTM avantajları ve program soruları için destek. | İş saatleri Pasifik saati dilimlidir. |  

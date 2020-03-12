@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670534"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096721"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Izleyici için izleme verileri kaynakları
 Azure Izleyici, [günlükleri](data-platform-logs.md) ve [ölçümleri](data-platform-metrics.md)içeren [ortak bir izleme verileri platformunu](data-platform.md) temel alır. Bu platforma verilerin toplanması, birden fazla kaynaktan gelen verilerin Azure Izleyici 'de ortak bir araç kümesi kullanılarak analiz edilmesini sağlar. İzleme verileri belirli senaryoları desteklemek için başka konumlara de gönderilebilir ve bazı kaynaklar günlüklere veya ölçümlere toplanmadan önce diğer konumlara yazılabilir.
@@ -72,8 +72,8 @@ Azure aboneliğinizin sistem durumu ve işlemiyle ilgili telemetri.
 |:---|:---|
 | Etkinlik günlüğü | Etkinlik günlüğü, Azure Izleyici menüsünden görüntüleyebileceğiniz veya etkinlik günlüğü uyarıları oluşturmak için kullanabileceğiniz kendi veri deposunda toplanır. | [Azure portal etkinlik günlüğünü sorgulama](activity-log-view.md#azure-portal) |
 | Azure İzleyici Günlükleri | Azure Izleyici günlüklerini, diğer izleme verileriyle çözümlemek için etkinlik günlüğünü toplayacak şekilde yapılandırın. | [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](activity-log-collect.md) |
-| Azure Storage | Arşivleme için etkinlik günlüğünü Azure Storage 'a aktarın. | [Etkinlik günlüğünü Arşivle](activity-log-export.md#archive-activity-log)  |
-| Event Hubs | Event Hubs kullanarak etkinlik günlüğünü diğer konumlara akış | [Etkinlik günlüğünü Olay Hub 'ına akış](activity-log-export.md#stream-activity-log-to-event-hub). |
+| Azure Storage | Arşivleme için etkinlik günlüğünü Azure Storage 'a aktarın. | [Etkinlik günlüğünü Arşivle](resource-logs-collect-storage.md)  |
+| Event Hubs | Event Hubs kullanarak etkinlik günlüğünü diğer konumlara akış | [Etkinlik günlüğünü Olay Hub 'ına akış](resource-logs-stream-event-hubs.md). |
 
 ### <a name="azure-service-health"></a>Azure Hizmet Durumu
 [Azure hizmet durumu](../../service-health/service-health-overview.md) , aboneliğinizde uygulamanızın ve kaynaklarınızın bağlı olduğu Azure hizmetlerinin sistem durumu hakkında bilgi sağlar.

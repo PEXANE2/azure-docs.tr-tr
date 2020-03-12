@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 381f1486f13907aa52558029789e49bc4e5c4961
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 65352b8f8f85f5e7a2e25ae99d5ca3368ad78711
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687609"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126521"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux’ta Azure App Service’e Giriş
 
@@ -32,7 +32,7 @@ Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşit
 
 ## <a name="devops"></a>DevOps
 
-* Hazırlama ortamları
+* Hazırlık ortamları
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) ve DockerHub CI/CD
 
 ## <a name="console-publishing-and-debugging"></a>Konsol, Yayımlama ve Hata Ayıklama
@@ -91,7 +91,7 @@ Linux üzerinde App Service hakkında daha fazla bilgi için bkz.:
 * [App Service’te hazırlık ortamları ayarlama](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Docker Hub sürekli dağıtımı](app-service-linux-ci-cd.md)
 
-Sorularınızı ve çekincelerinizi [forumumuzda](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview) paylaşabilirsiniz.
+Sorularınızı ve çekincelerinizi [forumumuzda](https://docs.microsoft.com/answers/topics/azure-webapps.html) paylaşabilirsiniz.
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

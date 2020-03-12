@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513074"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086741"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Öğretici: DRM dinamik şifrelemesini ve lisans teslim hizmetini kullanın
 
@@ -46,7 +46,9 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 > * Belirtilen akış ilkesiyle bir StreamingLocator oluşturun.
 > * Dosyanızı kayıttan yürütmek için kullanılan bir URL oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -186,7 +188,7 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu yenilikçi proje takımlarının
+Kullanıma al
 
 > [!div class="nextstepaction"]
 > [AES ile koruma-128](protect-with-aes128.md)

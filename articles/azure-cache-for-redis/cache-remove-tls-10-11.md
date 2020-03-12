@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6130c934f9a718baab840dae714222e4153bfcf6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260165"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126347"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
@@ -19,7 +19,7 @@ Aktarım Katmanı Güvenliği (TLS) sürüm 1,2 veya üzeri için özel kullanı
 
 Bu çaba kapsamında, Redsıs için Azure önbelleğinde aşağıdaki değişiklikleri yapacağız:
 
-* **1. Aşama:** Yeni oluşturulan önbellek örnekleri için varsayılan en düşük TLS sürümünü 1,2 olarak yapılandıracağız.  Mevcut önbellek örnekleri bu noktada güncelleştirilmeyecek.  Gerekirse, geriye doğru uyumluluk için [En düşük TLS sürümünü](cache-configure.md#access-ports) yeniden 1,0 veya 1,1 olarak değiştirebilirsiniz.  Bu değişiklik Azure portal veya diğer yönetim API 'Leri aracılığıyla yapılabilir.
+* **1. Aşama:** Yeni oluşturulan önbellek örnekleri için varsayılan en düşük TLS sürümünü 1,2 olarak yapılandıracağız. (Bu, TLS 1,0 olarak kullanılır.) Mevcut önbellek örnekleri bu noktada güncelleştirilmeyecek. Gerekirse, geriye doğru uyumluluk için [En düşük TLS sürümünü](cache-configure.md#access-ports) yeniden 1,0 veya 1,1 olarak değiştirebilirsiniz. Bu değişiklik Azure portal veya diğer yönetim API 'Leri aracılığıyla yapılabilir.
 * **2. Aşama:** 1,0 ve 1,1 TLS sürümlerini desteklemeye başlayacağız. Bu değişiklikten sonra, uygulamanız önbelleğiyle iletişim kurmak için TLS 1,2 veya sonraki bir sürümü kullanmanız gerekecektir.
 
 Ayrıca, bu değişikliğin bir parçası olarak, eski, güvenli olmayan şifresi üzerinde anlaşılamadı paketleri desteğini kaldıracağız.  Önbellek en düşük TLS sürümü 1,2 ile yapılandırıldığında desteklenen şifresi üzerinde anlaşılamadı paketlerimiz aşağıdakiler ile kısıtlanır.
@@ -34,7 +34,7 @@ Bu değişikliklerin etkili olması için tarihler şunlardır:
 | Bulut               | Aşama 1 başlangıç tarihi | 2\. aşama başlangıç tarihi |
 |---------------------|--------------------|--------------------|
 | Azure (genel)      |  13 Ocak 2020  | 31 Mart 2020     |
-| Azure Devlet Kurumları    |  13 Mart 2020    | 11 Mayıs 2020       |
+| Azure Kamu    |  13 Mart 2020    | 11 Mayıs 2020       |
 | Azure Almanya       |  13 Mart 2020    | 11 Mayıs 2020       |
 | Azure Çin         |  13 Mart 2020    | 11 Mayıs 2020       |
 
@@ -87,21 +87,27 @@ Redsıs ve ıoredin Node, varsayılan olarak TLS 1,2 kullanır.
 
 ### <a name="php"></a>PHP
 
-PHP 7 yalnızca TLS 1,0 ' i desteklediği için PHP 7 üzerinde ön dis çalışmaz. PHP 7.2.1 veya önceki sürümlerde, Predıs varsayılan olarak TLS 1,0 veya 1,1 kullanır. İstemci örneğini oluştururken TLS 1,2 ' i belirtebilirsiniz:
+#### <a name="predis"></a>Ön dış
+ 
+* PHP 7 ' den önceki sürümler: Predıs yalnızca TLS 1,0 ' i destekler. Bu sürümler TLS 1,2 ile çalışmaz; TLS 1,2 ' i kullanmak için ' i yükseltmeniz gerekir.
+ 
+* PHP 7,0 ile PHP 7.2.1: Predıs, varsayılan olarak yalnızca TLS 1,0 veya 1,1 kullanır. TLS 1,2 ' i kullanmak için aşağıdaki geçici çözümü kullanabilirsiniz. İstemci örneğini oluştururken TLS 1,2 belirtin:
 
-``` PHP
-$redis=newPredis\Client([
-    'scheme'=>'tls',
-    'host'=>'host',
-    'port'=>6380,
-    'password'=>'password',
-    'ssl'=>[
-        'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
-    ],
-]);
-```
+  ``` PHP
+  $redis=newPredis\Client([
+      'scheme'=>'tls',
+      'host'=>'host',
+      'port'=>6380,
+      'password'=>'password',
+      'ssl'=>[
+          'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+      ],
+  ]);
+  ```
 
-PHP 7,3 veya üzeri sürümlerde, Predıs en son TLS sürümünü kullanır.
+* PHP 7,3 ve üzeri sürümler: Predıs, en son TLS sürümünü kullanır.
+
+#### <a name="phpredis"></a>PhpRedis
 
 Phpredıs, herhangi bir PHP sürümünde TLS 'yi desteklemez.
 
@@ -113,6 +119,6 @@ Redin-Kopyala varsayılan olarak TLS 1,2 kullanır.
 
 Redigo varsayılan olarak TLS 1,2 kullanır.
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 - [Redsıs için Azure önbelleğini yapılandırma](cache-configure.md)

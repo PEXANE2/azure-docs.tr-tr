@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/1/2019
+ms.date: 03/05/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272888"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126669"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
@@ -55,25 +55,24 @@ Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece (örneğin `http
    
    ![Google için yeni bir proje sayfası gösteren ekran görüntüsü](media/google-federation/google-new-project.png)
 
-3. Proje menüsünde Yeni projenizin seçildiğinden emin olun. Ardından, sol üstteki menüyü açın ve **API 'ler & hizmetleri** > **kimlik bilgileri**' ni seçin.
+3. Proje menüsünde Yeni projenizin seçildiğinden emin olun. Ardından, **API 'ler & Hizmetleri**altında **OAuth onay ekranı**' nı seçin.
 
-   ![Google API kimlik bilgileri seçeneğini gösteren ekran görüntüsü](media/google-federation/google-api.png)
- 
-4. **OAuth onay ekranı** sekmesini seçin ve bir **uygulama adı**girin. (Diğer ayarları bırakın.)
+4. **Dış**' i seçin ve ardından **Oluştur**' u seçin. 
+5. **OAuth onay ekranında**bir **uygulama adı**girin. (Diğer ayarları bırakın.)
 
    ![Google OAuth onay ekranı seçeneğini gösteren ekran görüntüsü](media/google-federation/google-oauth-consent-screen.png)
 
-5. **Yetkili etki alanları** bölümüne gidin ve microsoftonline.com girin.
+6. **Yetkili etki alanları** bölümüne gidin ve microsoftonline.com girin.
 
    ![Yetkili etki alanları bölümünü gösteren ekran görüntüsü](media/google-federation/google-oauth-authorized-domains.png)
 
-6. **Kaydet**’i seçin.
+7. **Kaydet**’i seçin.
 
-7. **Kimlik bilgileri** sekmesini seçin. **Kimlik bilgileri oluştur** menüsünde **OAuth istemci kimliği**' ni seçin.
+8. **Kimlik bilgilerini**seçin. **Kimlik bilgileri oluştur** menüsünde **OAuth istemci kimliği**' ni seçin.
 
    ![Google API 'Leri kimlik bilgileri oluşturma seçeneğini gösteren ekran görüntüsü](media/google-federation/google-api-credentials.png)
 
-8. **Uygulama türü**' nün altında **Web uygulaması**' nı seçin ve ardından **yetkili yeniden yönlendirme URI 'leri**altında aşağıdaki URI 'leri girin:
+9. **Uygulama türü**' nün altında **Web uygulaması**' nı seçin ve ardından **yetkili yeniden yönlendirme URI 'leri**altında aşağıdaki URI 'leri girin:
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(`<directory id>` Dizin KIMLIĞINIZ)
    
@@ -82,7 +81,7 @@ Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece (örneğin `http
 
    ![Yetkili yeniden yönlendirme URI 'Leri bölümünü gösteren ekran görüntüsü](media/google-federation/google-create-oauth-client-id.png)
 
-9. **Oluştur**'u seçin. Kimlik sağlayıcısını Azure AD portalına eklerken kullanacağınız istemci KIMLIĞINI ve istemci parolasını kopyalayın.
+10. **Oluştur**’u seçin. Kimlik sağlayıcısını Azure AD portalına eklerken kullanacağınız istemci KIMLIĞINI ve istemci parolasını kopyalayın.
 
    ![OAuth İstemci KIMLIĞINI ve istemci gizli anahtarını gösteren ekran görüntüsü](media/google-federation/google-auth-client-id-secret.png)
 

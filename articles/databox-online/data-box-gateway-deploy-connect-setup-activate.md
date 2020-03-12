@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561842"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087942"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Öğretici: Bağlan, ayarla, etkinleştir Azure Data Box Gateway
 
@@ -92,6 +92,11 @@ Panonuz, sanal cihazı Data Box Gateway hizmeti ile yapılandırmak ve kaydetmek
    2. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin.
    3. Kimlik doğrulaması kullanıyorsanız, bir **Kullanıcı adı** ve **parola**girin.
    4. Yapılandırılmış Web proxy ayarlarını doğrulamak ve uygulamak için **Uygula**' yı seçin.
+
+   > [!NOTE]
+   > Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar.
+   > Ara sunucunun sertifikası güvenilir olmadığından, tüm trafiği kesmeye ve okumaya (sonra her şeyi kendi sertifikalarıyla yeniden imzalamaya) yönelik proxy 'ler uyumlu değildir.
+   > Genellikle saydam proxy 'ler Azure Data Box Gateway iyi çalışır.
 
 4. Seçim Sol bölmede **zaman ayarları**' nı seçin ve ardından cihazınız için saat dilimini ve birincil ve ikincil NTP sunucularını yapılandırın. 
 

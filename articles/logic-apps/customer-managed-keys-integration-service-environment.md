@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: 6f4e0744aad5f053cdda0a52b382ad3c86982c2f
-ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
+ms.date: 03/11/2020
+ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75904986"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127640"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
 
@@ -19,7 +19,7 @@ Azure Logic Apps, [bekleyen verileri](../storage/common/storage-service-encrypti
 
 Logic Apps 'i barındırmak için bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturduğunuzda ve Azure Storage tarafından kullanılan şifreleme anahtarları üzerinde daha fazla denetim istiyorsanız, [Azure Key Vault](../key-vault/key-vault-overview.md)kullanarak kendi anahtarınızı ayarlayabilir, kullanabilir ve yönetebilirsiniz. Bu özellik "Kendi Anahtarını Getir" (BYOK) olarak da bilinir ve anahtarınız "müşteri tarafından yönetilen anahtar" olarak adlandırılır.
 
-Bu konuda, ıSE 'nizi oluştururken kullanmak üzere kendi şifreleme anahtarınızı ayarlama ve belirtme işlemlerinin nasıl yapılacağı gösterilmektedir. 
+Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere kendi şifreleme anahtarınızı ayarlama ve belirtme işlemlerinin nasıl yapılacağı gösterilmektedir. Logic Apps REST API aracılığıyla bir ıSE oluşturmanın genel adımları için, bkz. [Logic Apps REST API kullanarak bir tümleştirme hizmeti ortamı (ISE) oluşturma](../logic-apps/create-integration-service-environment-rest-api.md).
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
@@ -33,9 +33,9 @@ Bu konuda, ıSE 'nizi oluştururken kullanmak üzere kendi şifreleme anahtarın
 
 * ISE 'yi oluşturan HTTPS PUT isteğini gönderdikten sonra *30 dakika* içinde, [Ise 'nin sistem tarafından atanan kimliğe Anahtar Kasası erişimi vermeniz](#identity-access-to-key-vault)gerekir. Aksi takdirde, ıSE oluşturma işlemi başarısız olur ve bir izin hatası oluşturur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Azure portal bir ıSE oluşturduğunuzda, [Ise için erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [Önkoşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
 
 * **Geçici silme** ve **Temizleme** özellikleri etkin olan bir Azure Anahtar Kasası
 
@@ -47,7 +47,7 @@ Bu konuda, ıSE 'nizi oluştururken kullanmak üzere kendi şifreleme anahtarın
   |----------|-------|
   | **Anahtar türü** | RSA |
   | **RSA anahtar boyutu** | 2048 |
-  | **Etkin** | Evet |
+  | **Etkin** | Yes |
   |||
 
   ![Müşteri tarafından yönetilen şifreleme anahtarınızı oluşturma](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -66,6 +66,15 @@ Logic Apps REST API çağırarak ıSE oluşturmak için, bu HTTPS PUT isteğini 
 
 > [!IMPORTANT]
 > Logic Apps REST API 2019-05-01 sürümü, ıSE bağlayıcıları için kendi HTTP PUT isteğinizi yapmanızı gerektirir.
+
+Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen dağıtım dört saate kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğinizdeki [Azure Portal](https://portal.azure.com)bildirimler bölmesini açan Bildirimler simgesini seçin.
+
+> [!NOTE]
+> Dağıtım başarısız olursa veya ıSE 'yi silerseniz, Azure, alt ağlarınızı serbest bırakmadan önce bir saat kadar sürebilir. Bu gecikme, başka bir ıSE içinde bu alt ağları yeniden kullanmadan önce beklemeniz gerekebilecek anlamına gelir.
+>
+> Sanal ağınızı silerseniz Azure, alt ağlarınızı serbest bırakmadan genellikle iki saate kadar sürer, ancak bu işlem daha uzun sürebilir. 
+> Sanal ağları silerken, hala bağlı hiçbir kaynak bulunmadığından emin olun. 
+> Bkz. [sanal ağı silme](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ### <a name="request-header"></a>İstek üst bilgisi
 

@@ -4,14 +4,15 @@ description: Azure portal kullanarak VM 'Leri adanmış ana bilgisayarlara dağ�
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 01/09/2020
+ms.workload: infrastructure
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 5af09cf7ef6c811a239a64c5c6349c3625316177
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
-ms.translationtype: HT
+ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970744"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086767"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Portalı kullanarak VM 'Leri adanmış konaklara dağıtma
 
@@ -38,6 +39,26 @@ Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış
 1. Doğrulamanın geçtiğini belirten iletiyi gördüğünüzde **Oluştur**' u seçin.
 
 VM'nizin dağıtılması birkaç dakika sürer.
+
+## <a name="add-an-existing-vm"></a>Var olan bir VM 'yi ekleme 
+
+Bir çıkış VM 'sini ayrılmış bir konağa ekleyebilirsiniz, ancak önce VM 'nin Stop\satıcılarla locatedolması gerekir. Bir VM 'yi adanmış bir konağa taşımadan önce, VM yapılandırmasının desteklendiğinden emin olun:
+
+- VM boyutu, ayrılmış konakla aynı büyüklükte bir aile içinde olmalıdır. Örneğin, adanmış ana bilgisayarınız DSv3 ise sanal makine boyutu Standard_D4s_v3 olabilir, ancak bir Standard_A4_v2 olamaz. 
+- VM 'nin adanmış konakla aynı bölgede bulunması gerekir.
+- VM, bir yakınlık yerleşimi grubunun parçası olamaz. Ayrılmış bir konağa taşımadan önce VM 'yi yakınlık yerleşimi grubundan kaldırın. Daha fazla bilgi için bkz. [bir VM 'yi bir yakınlık yerleşimi grubundan taşıma](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM bir kullanılabilirlik kümesinde olamaz.
+- VM bir kullanılabilirlik bölgeindeyse, konak grubuyla aynı Kullanılabilirlik bölgesi olması gerekir. VM ve konak grubu için kullanılabilirlik bölgesi ayarlarının eşleşmesi gerekir.
+
+[Portalı](https://portal.azure.com)kullanarak VM 'yi adanmış bir konağa taşıyın.
+
+1. VM için sayfayı açın.
+1. VM 'yi serbest bırakmak için **Durdur** ' u seçin.
+1. Sol menüden **yapılandırma** ' yı seçin.
+1. Açılır menülerden bir konak grubu ve konak seçin.
+1. İşiniz bittiğinde sayfanın en üstündeki **Kaydet** ' i seçin.
+1. VM konağa eklendikten sonra, sol menüden **genel bakış** ' ı seçin.
+1. Sanal makineyi yeniden başlatmak için sayfanın üst kısmındaki **Başlat** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

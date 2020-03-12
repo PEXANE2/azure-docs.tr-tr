@@ -5,20 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/09/2020
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e7a814c1607b15e3af0e76a5ae6dfad1594a3b3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 427117fe47294a1db1fa8d3fa1e46ee1efb91b4d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474238"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128572"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- İlk sürüm şu VM serisini destekler: DSv3, ESv3, FSv2, LSv2 ve MSv2. 
+- Adanmış konaklar için kullanılabilen Boyutlar ve donanım türleri bölgelere göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
 ## <a name="create-a-host-group"></a>Konak grubu oluştur
 
@@ -36,8 +36,6 @@ Bu örnekte, 1 kullanılabilirlik alanı ve 2 hata etki alanı kullanarak bir ko
 1. Azure [portalını](https://portal.azure.com)açın.
 1. Sol üst köşedeki **kaynak oluştur** ' u seçin.
 1. **Konak grubunu** arayın ve sonra sonuçlardan **konak grupları** ' nı seçin.
-
-    ![Konak grupları arama sonucu.](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
 1. **Konak grupları** sayfasında **Oluştur**' u seçin.
 1. Kullanmak istediğiniz aboneliği seçin ve yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin.
 1. **Ad** olarak *Myayrılmış hostsrg* yazın ve ardından **Tamam**' ı seçin.
@@ -46,8 +44,6 @@ Bu örnekte, 1 kullanılabilirlik alanı ve 2 hata etki alanı kullanarak bir ko
 1. **Kullanılabilirlik bölgesi**için **1**' i seçin.
 1. **Hata etki alanı sayısı**için **2**' yi seçin.
 1. **Gözden geçir + oluştur** ' u seçin ve doğrulama için bekleyin.
-
-    ![Konak grubu ayarları](./media/virtual-machines-common-dedicated-hosts-portal/host-group-settings.png)
 1. **Doğrulama başarılı** iletisini gördüğünüzde, konak grubunu oluşturmak için **Oluştur** ' u seçin.
 
 Konak grubunun oluşturulması yalnızca birkaç dakika sürer.
@@ -62,16 +58,12 @@ Konak grubunuz için bir hata etki alanı sayısı ayarlarsanız, ana bilgisayar
 
 1. Sol üst köşedeki **kaynak oluştur** ' u seçin.
 1. **Adanmış ana bilgisayar** için arama yapın ve sonra sonuçlardan **adanmış konaklar** ' ı seçin.
-
-    ![Konak grupları arama sonucu.](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
 1. **Adanmış konaklar** sayfasında **Oluştur**' u seçin.
 1. Kullanmak istediğiniz aboneliği seçin.
 1. **Kaynak grubu**olarak, *Myayrılmış hostsrg* öğesini seçin.
 1. **Örnek ayrıntıları**' nda **ad** için *myhost* yazın ve konum için *Doğu ABD* seçin.
 1. **Donanım profili**' nde, **Boyut ailesi**için *Standart Es3 Family-Type 1* ' i seçin, **konak grubu** için *myhostgroup* ' u seçin ve ardından **hata etki alanı**için *1* ' i seçin. Diğer alanları için varsayılan değerleri bırakın.
 1. İşiniz bittiğinde, **gözden geçir + oluştur** ' u seçin ve doğrulama için bekleyin.
-
-    ![Konak ayarları](./media/virtual-machines-common-dedicated-hosts-portal/host-settings.png)
 1. **Doğrulama başarılı** iletisini gördüğünüzde, konağı oluşturmak için **Oluştur** ' u seçin.
 
 

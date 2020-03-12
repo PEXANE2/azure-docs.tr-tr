@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132086"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096617"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Dizin düzeyinde eylemsizlik zaman aşımını ayarla
 
@@ -24,7 +24,7 @@ Eylemsizlik zaman aşımı ayarı, kullanıcılar iş istasyonlarını güvenli 
 
 Genel yöneticiyseniz ve Azure portal tüm kullanıcıları için boşta kalma zaman aşımı ayarını zorlamak istiyorsanız aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Genel sayfa üstbilgisindeki **ayarları** seçin.
 3. **Dizin düzeyindeki zaman aşımını yapılandır**bağlantı metnini seçin.
 
@@ -43,7 +43,7 @@ Etkin olmayan zaman aşımı ilkesinin doğru ayarlandığını onaylamak için 
 Bu ayar yeni oturumlar için geçerli olur. Zaten oturum açmış olan kullanıcılar için hemen uygulanmaz.
 
 > [!NOTE]
-> Yönetici dizin düzeyinde bir zaman aşımı ayarı yapılandırmışsa, kullanıcılar ilkeyi geçersiz kılabilir ve kendi etkin olmayan oturum açma süresini ayarlayabilir. Ancak Kullanıcı, dizin düzeyinde ayarlandıklardan daha az bir zaman aralığı seçmesi gerekir.
+> Genel yönetici dizin düzeyinde bir zaman aşımı ayarı yapılandırmışsa, kullanıcılar ilkeyi geçersiz kılabilir ve kendi etkin olmayan oturum açma süresini ayarlayabilir. Ancak Kullanıcı, genel yönetici tarafından dizin düzeyinde ayarlandıklardan daha az bir zaman aralığı seçmesi gerekir.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

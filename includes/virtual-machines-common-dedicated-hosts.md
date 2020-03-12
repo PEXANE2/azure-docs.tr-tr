@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246231"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128620"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- Aşağıdaki VM Serisi destekleniyor: DSv3, ESv3 ve Fsv2. 
 
 ## <a name="benefits"></a>Avantajlar 
 
@@ -101,17 +100,15 @@ Daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması]
 
 Ayrıca, [ayrılmış bir Azure ayrılmış ana bilgisayar örneğiyle](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)maliyetlerle tasarruf edebilirsiniz.
  
-## <a name="vm-families-and-hardware-generations"></a>VM aileleri ve donanım nesilleri
+## <a name="sizes-and-hardware-generations"></a>Boyutlar ve donanım oluşturmaları
 
-Bir konak için bir SKU tanımlanmıştır ve VM boyut serisini ve türünü temsil eder. Aynı boyut serisinde olduğu sürece, tek bir konak içinde farklı boyutlardaki birden fazla VM 'yi karıştırabilirsiniz. Bu tür, bölgede şu anda kullanılabilir donanım oluşturma türüdür.
+Bir konak için bir SKU tanımlanmıştır ve VM boyut serisini ve türünü temsil eder. Aynı boyut serisinde olduğu sürece, tek bir konak içinde farklı boyutlardaki birden fazla VM 'yi karıştırabilirsiniz. 
 
-Aynı VM serisine ait farklı `types` farklı CPU satıcılarından ve farklı CPU nesilleri ve çekirdek sayısına sahip olacaktır.
+*Tür* , donanım oluşturma ' dır. Aynı VM serisine ait farklı donanım türleri farklı CPU satıcılarından ve farklı CPU nesilleri ve çekirdek sayısına sahip olacaktır. 
 
-Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
+Boyutlar ve donanım türleri bölgeye göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
-Adanmış konaklar şu ana bilgisayar SKU\types 'ı destekler: DSv3_Type1 ve ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>Ana bilgisayar yaşam döngüsü
 
 

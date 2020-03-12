@@ -9,26 +9,30 @@ ms.topic: conceptual
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: 8a9dc92baf47242af502862edebffe686263dd5d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.date: 03/11/2020
+ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399670"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129702"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Olay odaklı makine öğrenimi iş akışları oluşturma (Önizleme)
 
-[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) Azure Machine Learning olaylarını destekler. Örneğin, çalışma alanı için kapsamlı çalıştırma, model kaydı, model dağıtımı ve veri DRI algılamada olayları kullanabilirsiniz.
+[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) Azure Machine Learning olaylarını destekler. Çalışma alanı içinde çalışma durumu değişikliği, tamamlanma işlemleri, model kaydı, model dağıtımı ve veri drması gibi olayları abone edebilir ve kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [Event Grid ile Azure Machine Learning tümleştirme](concept-event-grid-integration.md) ve [Azure Machine Learning Event Grid şeması](/azure/event-grid/event-schema-machine-learning).
+Olay türleri hakkında daha fazla bilgi için bkz. [Event Grid ile Azure Machine Learning tümleştirme](concept-event-grid-integration.md) ve [Azure Machine Learning Event Grid şeması](/azure/event-grid/event-schema-machine-learning).
 
 Gibi yaygın senaryoları etkinleştirmek için Event Grid kullanın:
 
-* Çalışma tamamlandığında e-posta gönder
+* Çalıştırma hatası ve çalıştırma tamamlandığında e-posta gönder
 * Model kaydedildikten sonra bir Azure işlevi kullanma
 * Azure Machine Learning ile çeşitli uç noktalara olay akışı
 * Değişikliklerini algılandığında ml işlem hattı tetikleyin
+
+> [!NOTE] 
+> Şu anda runStatusChanged olayları yalnızca çalıştırma durumu **başarısız** olduğunda tetiklenir
+>
 
 ## <a name="prerequisites"></a>Önkoşullar
 * İçin olaylar oluşturacağınız Azure Machine Learning çalışma alanına katkıda bulunan veya sahip erişimi.
@@ -43,13 +47,14 @@ Gibi yaygın senaryoları etkinleştirmek için Event Grid kullanın:
 
 1. Kullanmak istediğiniz olay türünü seçin. Örneğin, aşağıdaki ekran görüntüsünde __kayıtlı model__, __dağıtılan model__, __Tamamlanan çalıştırma__ve __veri kümesi DRI algılandı__:
 
-    ![Add-Event-Type](./media/how-to-use-event-grid/add-event-type.png)
+    ![Add-Event-Type](./media/how-to-use-event-grid/add-event-type-updated.png)
 
 1. Olayın yayımlanacağı uç noktayı seçin. Aşağıdaki ekran görüntüsünde, __Olay Hub__ 'ı seçili uç noktadır:
 
     ![Select-Event-Handler](./media/how-to-use-event-grid/select-event-handler.png)
 
 Seçiminizi onayladıktan sonra __Oluştur__' a tıklayın. Yapılandırma sonrasında bu olaylar uç noktanıza gönderilir.
+
 
 ### <a name="configure-eventgrid-using-the-cli"></a>CLı kullanarak EventGrid yapılandırma
 
@@ -76,13 +81,17 @@ az eventgrid event-subscription create \
   --subject-begins-with "models/mymodelname"
 ```
 
+## <a name="filter-events"></a>Olayları Filtrele
+
+Olaylarınızı ayarlarken yalnızca belirli olay verilerini tetiklemek için filtre uygulayabilirsiniz. Aşağıdaki örnekte, çalışma durumu değişti olayları için, çalıştırma türlerine göre filtreleyebilirsiniz. Olay yalnızca ölçüt karşılandığında tetiklenir. Filtreleyebileceğiniz olay verileri hakkında bilgi edinmek için [Azure Machine Learning Event Grid şemasına](/azure/event-grid/event-schema-machine-learning) bakın. 
+
+1. Azure portal gidin, yeni bir abonelik veya mevcut bir abonelik seçin. 
+
+1. Filtreler sekmesini seçin ve gelişmiş filtreler ' e kaydırın. **Anahtar** ve **değer** içinde, filtrelemek istediğiniz özellik türlerini sağlar. Burada, olayın yalnızca çalıştırma türü bir işlem hattı çalıştırması veya işlem hattı adımı çalıştırıldığında tetikleneceğini görebilirsiniz.  
+
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="Olayları Filtrele":::
+
 ## <a name="sample-scenarios"></a>Örnek senaryolar
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Azure Işlevleri 'ni kullanarak bir modeli etiketlere göre dağıtma
-
-Azure Machine Learning model nesnesi model adı, sürüm, etiket ve özellik gibi bir Özet dağıtımı yaptığınız parametreler içerir. Model kayıt olayı bir uç nokta tetikleyebilir ve bu parametrelerin değerine göre bir modeli dağıtmak için bir Azure Işlevi kullanabilirsiniz.
-
-Bir örnek için [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) deposuna bakın ve **Benioku** dosyasındaki adımları izleyin.
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>E-posta uyarıları göndermek için bir mantıksal uygulama kullanma
 
@@ -100,7 +109,7 @@ Tüm olaylarınızın e-postalarını yapılandırmak için [Azure Logic Apps](h
 
     ![Select-Event-runtamamlanmıştır](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. Yalnızca bir olay türleri alt kümesinde Logic App 'i tetiklemek için filtre de ekleyebilirsiniz. Aşağıdaki ekran görüntüsünde, __/Datadriftıd/Runs/__ adlı __önek filtresi__ kullanılır.
+1. Yukarıdaki bölümde filtreleme yöntemini kullanabilir veya yalnızca bir olay türleri alt kümesinde mantıksal uygulamayı tetiklemek için filtre ekleyebilirsiniz. Aşağıdaki ekran görüntüsünde, __/Datadriftıd/Runs/__ adlı __önek filtresi__ kullanılır.
 
     ![Filtre olayları](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -164,6 +173,11 @@ Artık, Veri Fabrikası işlem hattı, DRT gerçekleştiğinde tetiklenir. [Yeni
 
 ![çalışma alanını görüntüle](./media/how-to-use-event-grid/view-in-workspace.png)
 
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Azure Işlevleri 'ni kullanarak bir modeli etiketlere göre dağıtma
+
+Azure Machine Learning model nesnesi model adı, sürüm, etiket ve özellik gibi bir Özet dağıtımı yaptığınız parametreler içerir. Model kayıt olayı bir uç nokta tetikleyebilir ve bu parametrelerin değerine göre bir modeli dağıtmak için bir Azure Işlevi kullanabilirsiniz.
+
+Bir örnek için [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) deposuna bakın ve **Benioku** dosyasındaki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
