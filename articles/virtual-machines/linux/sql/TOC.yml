@@ -8,8 +8,10 @@
       href: provision-sql-server-linux-virtual-machine.md
 - name: Öğreticiler
   items:
-    - name: STONITH ile Azure RHEL VM Kullanılabilirlik Grubunu Ayarlama
+    - name: STONITH ile Azure RHEL VM kullanılabilirlik grubunu ayarlama
       href: sql-server-linux-rhel-ha-stonith-tutorial.md
+    - name: Azure’daki RHEL sanal makineleri üzerinde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma
+      href: sql-server-linux-rhel-ha-listener-tutorial.md
 - name: Başvuru
   items:
     - name: Azure CLI

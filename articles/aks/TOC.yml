@@ -216,7 +216,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: Azure İlkesi ile dağıtımları denetleme (önizleme)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
-        - name: Küme hizmet sorumlusu kimlik bilgilerini güncelleştirme
+        - name: Küme kimlik bilgilerini güncelleştirme
           href: update-credentials.md
         - name: Küme çıkış trafiğini kısıtlama ve denetleme
           href: limit-egress-traffic.md

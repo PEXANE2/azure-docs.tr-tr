@@ -199,18 +199,27 @@
         - name: Akış
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
-    - name: v2’den v3’e geçiş kılavuzu
-      href: migrate-from-v2-to-v3.md
-      displayName: naming
+    - name: v2’den v3’e geçiş
+      items:
+        - name: v2 ile v3 karşılaştırması
+          displayName: 'migrate, v2 to v3'
+          href: media-services-v2-vs-v3.md
+        - name: Geçiş kılavuzu
+          href: migrate-from-v2-to-v3.md
+          displayName: naming
 - name: Nasıl yapılır kılavuzları
   items:
     - name: başlarken
       items:
+        - name: Hesap oluşturma - portal
+          href: create-account-portal.md
         - name: Hesap oluşturma - CLI
           href: create-account-cli-how-to.md
           displayName: storage
         - name: Hesap kimlik bilgilerini sıfırlama - CLI
           href: cli-reset-account-credentials.md
+        - name: API’lere erişim - portal
+          href: access-api-portal.md
         - name: API'lere erişim - CLI
           href: access-api-cli-how-to.md
         - name: Medya Ayrılmış Birimlerini Ölçeklendirme - CLI
@@ -324,6 +333,18 @@
           href: download-results-howto.md
         - name: Sinyal açıklayıcı ses
           href: signal-descriptive-audio-howto.md
+    - name: Sorun giderme
+      items:
+        - name: Sık sorulan sorular
+          href: frequently-asked-questions.md
+        - name: Hata kodları
+          items:
+            - name: Akış Uç Noktası hata kodları
+              href: streaming-endpoint-error-codes.md
+            - name: Canlı Etkinlik hata kodları
+              href: live-event-error-codes.md
+            - name: İş hata kodları
+              href: job-error-codes.md
 - name: Başvuru
   items:
     - name: OpenAPI Belirtimi (Swagger)
@@ -347,14 +368,6 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions
-    - name: Hata kodları
-      items:
-        - name: Akış Uç Noktası hata kodları
-          href: streaming-endpoint-error-codes.md
-        - name: Canlı Etkinlik hata kodları
-          href: live-event-error-codes.md
-        - name: İş hata kodları
-          href: job-error-codes.md
 - name: Kaynaklar
   items:
     - name: Azure Media Services topluluğu
@@ -388,7 +401,5 @@
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: Kotalar ve sınırlamalar
       href: limits-quotas-constraints.md
-    - name: SSS
-      href: frequently-asked-questions.md
     - name: Azure bulutları ve bölgeleri
       href: azure-clouds-regions.md

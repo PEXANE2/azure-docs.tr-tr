@@ -181,6 +181,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Buildpacks ile görüntü oluşturma (önizleme)
           href: container-registry-tasks-pack-build.md
+        - name: Görev günlüklerini görüntüleme
+          href: container-registry-tasks-logs.md
 - name: Başvuru
   expanded: false
   items:

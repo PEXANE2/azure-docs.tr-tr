@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: Yönetilen kimlikle kimlik doğrulaması - Power BI
           href: powerbi-output-managed-identity.md
+        - name: Verilerinizi şifreleme
+          href: data-protection.md
     - name: Çözüm oluşturma
       items:
         - name: Twitter yaklaşım analizi
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: IoT Edge işleri için API kullanma
           href: stream-analytics-cicd-api.md
+        - name: Azure Resource Manager ile dışarı aktarma ve dağıtma
+          href: resource-manager-export.md
     - name: Visual Studio
       items:
         - name: Araçları yükleme

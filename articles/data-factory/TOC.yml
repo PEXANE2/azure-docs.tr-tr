@@ -479,6 +479,8 @@
           href: control-flow-webhook-activity.md
     - name: Veri akışı dönüşümleri
       items:
+        - name: Dönüştürmeye genel bakış
+          href: data-flow-transformation-overview.md
         - name: Toplama
           href: data-flow-aggregate.md
         - name: Satırı değiştirme

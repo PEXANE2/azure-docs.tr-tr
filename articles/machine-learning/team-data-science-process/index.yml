@@ -1,37 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Team Data Science Process Belgeleri
+summary: Tahmine dayalı analiz çözümleri ve akıllı uygulamalar için kullanılan çevik, yinelemeli bir veri bilimi metodolojisi olan Team Data Science Process’i kullanmayı öğrenin.
 metadata:
   title: Team Data Science Process Belgeleri
-  description: 'Tahmine dayalı analiz çözümlerinin ve akıllı uygulamaların etkili bir şekilde sunulması için kullanılan çevik, yinelemeli bir veri bilimi metodolojisi olan Team Data Science Process’i kullanmayı öğrenin. TDSP, takım işbirliğinin ve öğrenimin geliştirilmesine yardımcı olur. Veri bilimi girişimlerini başarıyla uygulamayı kolaylaştıran, Microsoft’un ve sektördeki diğer kuruluşların en iyi deneyimlerinin ve yapılarının bileşimini içerir. Hedef, şirketlerin kendi analiz programlarının avantajlarını tam olarak hayata geçirmesine yardımcı olmaktır.'
-  services: machine-learning
-  author: marktab
+  description: Tahmine dayalı analiz çözümleri ve akıllı uygulamalar için kullanılan çevik, yinelemeli bir veri bilimi metodolojisi olan Team Data Science Process’i kullanmayı öğrenin.
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/10/2020
+  author: marktab
   ms.author: marktab
-abstract:
-  description: 'Team Data Science Process, tahmine dayalı analiz çözümlerinin ve akıllı uygulamaların etkili bir şekilde sunulması için kullanılan çevik, yinelemeli bir veri bilimi metodolojisidir. TDSP, takım işbirliğinin ve öğrenimin geliştirilmesine yardımcı olur. Veri bilimi girişimlerini başarıyla uygulamayı kolaylaştıran, Microsoft’un ve sektördeki diğer kuruluşların en iyi deneyimlerinin ve yapılarının bileşimini içerir. Hedef, şirketlerin kendi analiz programlarının avantajlarını tam olarak hayata geçirmesine yardımcı olmaktır.'
-sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: 'Team Data Science Process hakkında bilgi edinin:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="overview">Genel Bakış</a>
-          - html: <a href="lifecycle">Yaşam döngüsü</a>
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: 'Team Data Science Process’i çeşitli senaryolarda nasıl kullanacağınızı öğrenin:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="walkthroughs-spark">PySpark ve Scala ile Spark</a>
-          - html: <a href="walkthroughs-hdinsight-hadoop">HDInsight Hadoop ile Hive</a>
-          - html: <a href="walkthroughs-azure-data-lake">Azure Data Lake ile U-SQL</a>
-          - html: '<a href="walkthroughs-sql-server">R, Python ve T-SQL ile SQL Server</a>'
-          - html: <a href="walkthroughs-sql-data-warehouse">T-SQL ve Python ile SQL DW</a>
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 5090cbcf6c177b99f4932eb77647520c3602a832
+  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/11/2020
+  ms.locfileid: "79087389"
+landingContent:
+- title: Süreç hakkında bilgi edinin
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Team Data Science Process nedir?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Süreç yaşam döngüsü
+      url: lifecycle.md
+    - text: Kurumsal yaklaşım
+      url: lifecycle-business-understanding.md
+    - text: Veri alma
+      url: lifecycle-data.md
+- title: Proje planlama ve geliştirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Proje planlama
+      url: team-data-science-process-project-templates.md
+    - text: Çevik geliştirme
+      url: agile-development.md

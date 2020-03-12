@@ -9,6 +9,8 @@
       href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Geçmiş telemetri verilerini alma
       href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: Sorgusu alınan telemetri verileri
+      href: query-telemetry-data-from-azure-farmbeats.md
 - name: Kavramlar
   items:
     - name: Tümleştirme desenleri
