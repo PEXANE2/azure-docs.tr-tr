@@ -182,9 +182,13 @@
             - name: Kullanıcı arabirimini özelleştirme
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
+            - name: Dil özelleştirme
+              href: custom-policy-localization.md
             - name: Özel e-posta
               href: custom-email.md
               displayName: verification
+            - name: E-posta doğrulamayı devre dışı bırakma
+              href: custom-policy-disable-email-verification.md
             - name: JavaScript'i etkinleştirme
               href: javascript-samples.md
             - name: Parola karmaşıklığı
