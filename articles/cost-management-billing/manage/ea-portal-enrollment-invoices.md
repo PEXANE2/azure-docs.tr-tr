@@ -7,12 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: df2d4eb1b28ac9f13511692ca7588414ea4fdff0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272389"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037263"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Kurumsal kayıt faturaları
 
@@ -30,8 +30,8 @@ Kuruluş yöneticisi fatura tarihinden önce bir satın alma siparişi (PO) numa
 1. Tarih aralıkları açılan menüsünden bir **Fatura Dönemi** seçin.
 
    Fatura bildirimi aldıktan sonraki yedi günlük süre içinde, faturayı ödemeden önce PO numarasını düzenleyebilirsiniz.
-1.  **PO Numarası** alanına yeni bir PO numarası girin.
-1. Yaptığınız değişikliği göndermek için **Kaydet**'i seçin.
+1. **PO Numarası** alanına yeni bir PO numarası girin.
+1. Yaptığınız değişikliği göndermek için **Kaydet**’i seçin.
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Azure Market satın alma siparişi numarasını güncelleştirmek için:
 
@@ -41,8 +41,8 @@ Kuruluş yöneticisi fatura tarihinden önce bir satın alma siparişi (PO) numa
 1. Tarih aralıkları açılan menüsünden bir **Fatura Dönemi** seçin.
 
    Fatura bildirimi aldıktan sonraki yedi günlük süre içinde, faturayı ödemeden önce PO numarasını düzenleyebilirsiniz.
-1.  **PO Numarası** alanına yeni bir PO numarası girin.
-1. Yaptığınız değişikliği göndermek için **Kaydet**'i seçin.
+1. **PO Numarası** alanına yeni bir PO numarası girin.
+1. Yaptığınız değişikliği göndermek için **Kaydet**’i seçin.
 
 ## <a name="cadence-of-azure-enterprise-billing"></a>Azure Kurumsal faturalama temposu
 

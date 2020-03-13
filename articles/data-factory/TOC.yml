@@ -392,14 +392,22 @@
       items:
         - name: Kopyalama Etkinliği’ni kullanarak veri kopyalama
           href: copy-activity-overview.md
+        - name: Kopyalama etkinliğini izleme
+          href: copy-activity-monitoring.md
         - name: Silme Etkinliği'ni kullanarak dosyaları silme
           href: delete-activity.md
         - name: Veri Kopyalama aracı
           href: copy-data-tool.md
         - name: Biçimlendirme ve sıkıştırma desteği
           href: supported-file-formats-and-compression-codecs.md
-        - name: Performans ve ayar
-          href: copy-activity-performance.md
+        - name: Kopyalama etkinliği performansı
+          items:
+            - name: Performans ve ölçeklenebilirlik kılavuzu
+              href: copy-activity-performance.md
+            - name: Performans sorunlarını giderme
+              href: copy-activity-performance-troubleshooting.md
+            - name: Performans özellikleri
+              href: copy-activity-performance-features.md
         - name: Meta verileri ve ACL'leri koruma
           href: copy-activity-preserve-metadata.md
         - name: Şema ve tür eşlemesi
@@ -689,6 +697,8 @@
       href: frequently-asked-questions.md
     - name: Hizmet güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: Blog
+      href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: 'Soru sorun: MSDN forumu'
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: 'Soru sorun: Stack Overflow'

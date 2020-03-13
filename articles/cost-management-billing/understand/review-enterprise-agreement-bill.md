@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 03/06/2020
 ms.author: banders
-ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5de6baf81f67ef6bee43b54e7aa0d62088c15be9
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270178"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898644"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Kurumsal Anlaşma faturanızı anlama
 
@@ -118,7 +118,7 @@ Aşağıdaki tabloda, Enterprise Portal’daki **Kullanım Özeti**’nde ve fat
 
 Bu bölüm yalnızca Avustralya, Japonya veya Singapur’daysanız geçerlidir.
 
-Enterprise Portal’daki **Raporlar** > **Kullanım Özeti** bölümündeki Azure Market toplamınızı market faturanızla karşılaştırın. Market faturasında yalnızca Azure Market satın alma işlemleri ve kullanımı bulunur. **Kullanım Özeti**’ndeki tutarlara vergiler dahil değildir.
+Enterprise Portal’daki **Raporlar** > **Kullanım Özeti** bölümündeki Azure Market toplamınızı market faturanızla karşılaştırın. Market faturasında yalnızca Azure Market satın alma işlemleri ve kullanımı bulunur. **Kullanım Özeti** miktarları, yayımcı tarafından belirlenen bir vergiyi içerir.
 
 [Enterprise Portal](https://ea.azure.com)'da oturum açın ve **Raporlar**'ı seçin. Sekmenin sağ üst köşesinde**M** görünümünü **C** olarak değiştirin ve fatura dönemine göre ayarlayın.  
 

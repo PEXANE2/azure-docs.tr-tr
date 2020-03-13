@@ -154,6 +154,8 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+        - name: Kibana (K2Bridge bağlayıcısı)
+          href: k2bridge.md
     - name: Güvenlik
       items:
         - name: Küme güvenliğini yönetme

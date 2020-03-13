@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200923"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942592"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Azure ödeme sorunlarını giderme
 
 Microsoft Azure portalında veya Azure hesap merkezinde ödeme bilgileri hesabını güncelleştirmeye çalıştığınızda bir sorun veya hatayla karşılaşabilirsiniz.
 
 Sorununuzu çözmek için aşağıda hatanıza en çok benzeyen konu başlığını seçin.
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>Azure’a kaydolmayı denediğimde kredi kartım reddedildi
+
+Reddedilen kartla ilgili sorunları gidermek için bkz. [Azure’a kaydolurken reddedilen kart ile ilgili sorunları giderme](troubleshoot-declined-card.md).
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ödeme yöntemini güncelleştirmek için hesabım altında abonelikler görüntülenemiyor
+
+Abonelikler için kullanılandan farklı bir e-posta kimliği kullanıyor olabilirsiniz.
+
+Bu sorunu gidermek için bkz. [Azure portalı veya Azure hesap merkezi için Abonelik bulunamadı oturum açma hatası](no-subscriptions-found.md).
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>Bir sanal veya ön ödemeli kredi ya da banka kartı ödeme yöntemi olarak kullanılamıyor.
+
+*   Azure abonelikleri için sanal veya ön ödemeli kredi kartı desteklenmez.
+*   Azure abonelikleri için ATM kartı desteklenmez.
+
+Daha fazla bilgi için bkz. [Azure kaydı sırasında reddedilen bir kartın sorunlarını giderme](troubleshoot-declined-card.md).
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kredi kartı, kaydedilen faturalama ödeme yönteminden kaldırılamıyor
 
@@ -33,19 +50,11 @@ Mevcut bir kartın silinmesi gerekiyorsa, eski ödeme aracının başarıyla sil
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Yeni bir ödeme yöntemi eklendikten sonra eski ödeme yöntemi silinemiyor
 
-Yeni ödeme aracı abonelikle ilişkili olmayabilir. Ödeme aracının abonelikle ilişkilendirilmesine yardımcı olmak için bkz. [Azure için kredi kartı veya ATM kartı ekleme, güncelleştirme ya da kaldırma](change-credit-card.md).
-
-Reddedilen kartla ilgili sorunları gidermek için bkz [Azure’a kaydolurken reddedilen kart ile ilgili sorunları giderme](troubleshoot-declined-card.md).
+Yeni ödeme aracı abonelikle ilişkili olmayabilir. Ödeme aracının abonelikle ilişkilendirilmesine yardımcı olmak için bkz. [Azure için kredi kartı ekleme, güncelleştirme ya da kaldırma](change-credit-card.md).
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>*Ödeme yöntemi silinemiyor* hatası nedeniyle ödeme yöntemi silinemiyor
 
 Bu, kalan bakiyeden kaynaklanır. Ödeme yöntemini silmeden önce kalan tüm bakiyeyi ödeyin.
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ödeme yöntemini güncelleştirmek için hesabım altında abonelikler görüntülenemiyor
-
-Abonelikler için kullanılandan farklı bir e-posta kimliği kullanıyor olabilirsiniz.
-
-Bu sorunu gidermek için bkz. [Azure portalı veya Azure hesap merkezi için Abonelik bulunamadı oturum açma hatası](no-subscriptions-found.md).
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Abonelik için ödeme yapılamıyor
 

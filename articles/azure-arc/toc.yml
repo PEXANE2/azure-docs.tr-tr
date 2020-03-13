@@ -12,6 +12,8 @@
       href: ./servers/onboard-portal.md
     - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
       href: ./servers/onboard-service-principal.md
+    - name: PowerShell DSC ile makineleri Azure Arc’a bağlama
+      href: ./servers/onboard-dsc.md
 - name: Başvuru
   items:
     - name: Azure Bağlı Makine Aracısı CLI arabirimi

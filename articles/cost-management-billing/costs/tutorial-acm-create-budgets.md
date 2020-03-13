@@ -4,17 +4,17 @@ description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251274"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128360"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -54,7 +54,7 @@ Maliyet Yönetimi verilerine izin atama hakkında daha fazla bilgi için bkz. [M
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-- https://portal.azure.com adresinden Azure portalında oturum açın.
+- [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Azure portalında bütçe oluşturma
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonuyla bütçe oluşturma
 
-Bir Azure Resource Manager şablonu kullanarak bütçe oluşturabilirsiniz. Şablon, bir kaynak grubunun altında bütçe oluşturmanıza yardımcı olur. Şablon için yalnızca kurumsal anlaşma müşterileri desteklenir.
+Bir Azure Resource Manager şablonu kullanarak bütçe oluşturabilirsiniz. Şablon, bir kaynak grubunun altında bütçe oluşturmanıza yardımcı olur. 
 
 Azure portalında oturum açıp şablonu açmak için aşağıdaki görüntüyü seçin:
 

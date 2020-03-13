@@ -4,16 +4,16 @@ description: Bu makalede Azure Maliyet Yönetimi Power BI uygulamasını yüklem
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 4a50ce5c386f1b928e9f767891840c84534938a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: bc676910a05dbec97ae05578399029f85f71e1ef
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169703"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399634"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Kurumsal Anlaşmalar (EA) için Azure Maliyet Yönetimi Power BI uygulamasıyla maliyet analizi
 
@@ -43,7 +43,7 @@ Uygulamayı yüklemek için:
   ![Yeni uygulamanızı kullanmaya başlayın - Bağlan](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
 9. Açılan iletişim kutusunda **BillingProfileIdOrEnrollmentNumber** yerine EA kayıt numaranızı girin. Kaç aylık verileri almak istediğinizi belirtin. **Kapsam** için varsayılan **Kayıt Numarası** değerini bırakın ve **İleri**'yi seçin.  
   ![EA kayıt bilgilerini girme](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. Bir sonraki iletişim kutusu Azure'a bağlanır ve ayrılmış örnek önerileri için gereken verileri alır. Varsayılan değerleri değiştirmeden **Oturum aç**'ı seçin.  
+10. Bir sonraki iletişim kutusu Azure'a bağlanır ve ayrılmış örnek önerileri için gereken verileri alır. *Varsayılan değerleri değiştirmeden bırakın* ve **Oturum aç**’ı seçin.  
   ![Azure'a bağlanma](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. Son yükleme adımında EA kaydınızla bağlantı kurulur ve bunun için bir [Kuruluş Yöneticisi](../manage/understand-ea-roles.md) hesabı gerekir. EA kaydı kimliğinizi doğrulamak için **Oturum aç**'ı seçin. Bu adım ayrıca Power BI'da veri yenileme eylemi de başlatır.  
   ![EA kaydına bağlanma](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -124,6 +124,50 @@ Raporun nasıl kullanılacağına ilişkin ayrıntılı bilgi için [VM RI Kapsa
 **RI satın alma işlemleri**: Bu rapor belirli bir dönem içindeki RI satın alma işlemlerini gösterir.
 
 **Fiyat listesi**: Bu rapor, bir Ödeme hesabına veya EA kaydına özgü fiyatların ayrıntılı listesini gösterir.
+
+## <a name="troubleshoot-problems"></a>Sorunları giderme
+
+Power BI uygulamayla ilgili sorun yaşıyorsanız aşağıdaki sorun giderme bilgileri faydalı olabilir.
+
+### <a name="budgetamount-error"></a>BudgetAmount hatası
+
+Şunu belirten bir hata alabilirsiniz:
+
+```
+Something went wrong
+There was an error when processing the data in the dataset.
+Please try again later or contact support. If you contact support, please provide these details.
+Data source error: The 'budgetAmount' column does not exist in the rowset. Table: Budgets.
+```
+
+#### <a name="cause"></a>Nedeni
+
+Bu hata, temel alınan meta verilerle ilgili bir hata nedeniyle oluşur. Bu sorun, Azure portalda **Maliyet Yönetimi > Bütçe** bölümünde kullanılabilir bütçe olmadığından meydana gelir. Hata düzeltmesi, Power BI Desktop ve Power BI hizmeti için dağıtım sürecindedir. 
+
+#### <a name="solution"></a>Çözüm
+
+- Hata düzeltilene kadar, Azure portalında faturalandırma hesabı/EA kaydı düzeyinde bir test bütçesi ekleyerek sorunu geçici olarak çözebilirsiniz. Test bütçesi, Power BI bağlantısının engelini kaldırır. Bütçe oluşturma hakkında daha fazla bilgi için bkz. [Öğretici: Azure bütçesi oluşturma ve yönetme](tutorial-acm-create-budgets.md).
+
+
+### <a name="invalid-credentials-for-azureblob-error"></a>AzureBlob için geçersiz kimlik bilgileri hatası
+
+Şunu belirten bir hata alabilirsiniz:
+
+```
+Failed to update data source credentials: The credentials provided for the AzureBlobs source are invalid.
+```
+
+#### <a name="cause"></a>Nedeni
+
+Bu hata, AutoFitComboMeter blob bağlantısı için kimlik doğrulama yöntemini değiştirirseniz oluşur.
+
+#### <a name="solution"></a>Çözüm
+
+1. Verilerinize bağlanın.
+1. EA kaydınızı ve ay sayısını girdikten sonra, Kimlik doğrulama yöntemi için **Anonim** varsayılan değerini değiştirmeden bıraktığınızdan ve Gizlilik düzeyi ayarı için **Yok** seçeneğini belirlediğinizden emin olun.  
+  ![Azure'a bağlanma](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+1. Bir sonraki sayfada, Kimlik doğrulama yöntemi için **OAuth2** seçeneğini ayarlayın ve Gizlilik düzeyi için **Yok** seçeneğini belirleyin. Ardından, kaydınızla kimliğinizi doğrulamak için oturum açın. Bu adım ayrıca Power BI’da veri yenilemeyi de başlatır.
+
 
 ## <a name="data-reference"></a>Veri başvurusu
 

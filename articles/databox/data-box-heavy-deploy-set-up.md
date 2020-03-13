@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514434"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117260"
 ---
 ::: zone target = "docs"
 
@@ -100,7 +100,7 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları uygulayın.
 
 Cihazın düğümlerinden birinde, ağ için kablo bağlantısını yapmak üzere aşağıdaki adımları uygulayın.
 
-1. Ana bilgisayarı 1 Gb/sn yönetim bağlantı noktasına bağlamak için CAT 6 RJ-45 ağ kablosunu (resimdeki mavi kablo) kullanın.
+1. Ana bilgisayarı 1 Gb/sn yönetim bağlantı noktasına bağlamak için CAT 6 RJ-45 ağ kablosunu (resimdeki MGMT olarak etiketlenmiş prize takılı sağ üst kablo) kullanın.
 2. Veriler için en az bir 40 Gb/sn (1 Gb/sn’ye tercih edilir) ağ arabirimi bağlamak üzere bir QSFP+ kablosu (fiber veya bakır) kullanın. 10 Gb/sn'lik bir anahtar kullanılıyorsa, veriler için 40 Gb/sn ağ arabirimini bağlamak üzere QSFP+’dan SFP+’ya bağdaştırıcı (QSA bağdaştırıcısı) ile bir SFP+ kablosu kullanın.
 
     ![Data Box Heavy bağlantı noktaları kablo bağlantısı](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

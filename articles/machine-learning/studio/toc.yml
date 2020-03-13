@@ -161,6 +161,9 @@
         - name: Galeri verileri
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+        - name: Not defterlerini indirme
+          displayName: export
+          href: download-notebooks-data.md
 - name: Başvuru
   items:
     - name: Algoritma ve modül başvurusu

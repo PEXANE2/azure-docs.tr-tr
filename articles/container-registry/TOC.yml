@@ -80,6 +80,8 @@
           items:
             - name: Sanal ağ ile erişimi sınırlandırma (önizleme)
               href: container-registry-vnet.md
+            - name: Azure Özel Bağlantı ile tümleştirme (önizleme)
+              href: container-registry-private-link.md
             - name: Güvenlik duvarının arkasından erişme
               href: container-registry-firewall-access-rules.md
             - name: Kimlik Doğrulaması
@@ -102,8 +104,10 @@
               href: container-registry-repository-scoped-permissions.md
             - name: İçerik güveni
               href: container-registry-content-trust.md
-            - name: Güvenlik Merkezi ile resim tarama (önizleme)
+            - name: Güvenlik Merkezi ile resim tarama
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: Kayıt defteri verilerini şifreleme (önizleme)
+              href: container-registry-customer-managed-keys.md
         - name: Kayıt defterleri ve diğer Azure hizmetleri
           expanded: false
           items:

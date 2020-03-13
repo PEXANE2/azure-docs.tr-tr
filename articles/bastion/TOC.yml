@@ -4,6 +4,10 @@
   items:
     - name: Azure Bastion hakkında
       href: bastion-overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: VM ayarlarından güçlendirilmiş erişim konağı oluşturma
+      href: quickstart-host-portal.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Bastion konağı oluşturma
