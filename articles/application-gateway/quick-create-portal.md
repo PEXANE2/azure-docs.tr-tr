@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3ce726b858dc31f42a07d56c11330544df3861f1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 17adc800bd5a2ae53e27350c7e0d588eaeee4a8f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669384"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241405"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure portalı
 
@@ -119,7 +119,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 4. **Arka uç hedefleri** sekmesinde, **arka uç hedefi**Için **mybackendpool** ' u seçin.
 
-5. **Http ayarı**Için yeni **Oluştur** ' u seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. Açılan **http ayarı Ekle** penceresinde **http ayar adı**için *myhttpsetting* girin. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün. 
+5. **Http ayarı**Için yeni **Oluştur** ' u seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. Açılan **http ayarı Ekle** penceresinde, **arka uç bağlantı noktası**için **http ayarı adı** ve *80* için *myhttpsetting* yazın. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün. 
 
      ![Yeni uygulama ağ geçidi oluştur: HTTP ayarı](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
@@ -146,13 +146,14 @@ Bunu yapmak için şunları yapmanız gerekir:
 ### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. **Yeni** pencere görüntülenir.
-2. **İşlem** ' i seçin ve ardından **popüler** listede **Windows Server 2016 Datacenter** ' ı seçin. **Sanal makine oluştur** sayfası görüntülenir.<br>Application Gateway, arka uç havuzunda kullanılan herhangi bir sanal makine türüne trafiği yönlendirebilir. Bu örnekte, bir Windows Server 2016 Datacenter kullanırsınız.
+2. **Popüler** listede **Windows Server 2016 Datacenter** ' ı seçin. **Sanal makine oluştur** sayfası görüntülenir.<br>Application Gateway, arka uç havuzunda kullanılan herhangi bir sanal makine türüne trafiği yönlendirebilir. Bu örnekte, bir Windows Server 2016 Datacenter kullanırsınız.
 3. Aşağıdaki sanal makine ayarları için **temel bilgiler** sekmesine bu değerleri girin:
 
     - **Kaynak grubu**: kaynak grubu adı için **myResourceGroupAG** öğesini seçin.
     - **Sanal makine adı**: sanal makinenin adı Için *myvm* girin.
+    - **Bölge**: Application Gateway 'i oluşturduğunuz bölgeyi seçin.
     - **Kullanıcı**adı: Yönetici Kullanıcı adı için *azureuser* yazın.
-    - **Parola**: parolayı yazın.
+    - **Parola**: bir parola yazın.
 4. Diğer varsayılanları kabul edin ve ardından **İleri: diskler**' i seçin.  
 5. **Diskler** sekmesi varsayılan değerlerini kabul edin ve ardından İleri ' yi seçin **: ağ**.
 6. **Ağ** sekmesinde, **sanal ağ** için **Myvnet** öğesinin seçildiğini ve **alt ağın** **mybackendsubnet**olarak ayarlandığını doğrulayın. Diğer varsayılanları kabul edin ve ardından **İleri: yönetim**' i seçin.<br>Application Gateway, içinde bulunduğu sanal ağ dışındaki örneklerle iletişim kurabilir, ancak IP bağlantısı olduğundan emin olmanız gerekir.
@@ -168,7 +169,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
     ![Özel uzantıyı yükleme](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. Sanal makineye IIS yüklemek için aşağıdaki komutu çalıştırın: 
+2. Sanal makineye IIS yüklemek için aşağıdaki komutu çalıştırın. Gerekirse *konum* parametresini değiştirin: 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -192,11 +193,13 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
 3. **Mybackendpool**öğesini seçin.
 
-4. **Hedefler**' in altında, açılan listeden **sanal makine** ' yi seçin.
+4. **Arka uç hedefleri**altında **hedef tür**' i aşağı açılan listeden **sanal makine** ' yi seçin.
 
-5. **Sanal makine** ve **ağ arabirimleri**altında, açılan listelerden **myvm** ve **myVM2** sanal makinelerini ve bunlarla ilişkili ağ arabirimlerini seçin.
+5. **Hedef**altında, açılan listelerden **Myvm** ve **myVM2** sanal makinelerini ve bunlarla ilişkili ağ arabirimlerini seçin.
 
-    ![Arka uç sunucuları ekleme](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
+
+   > [!div class="mx-imgBorder"]
+   > arka uç sunucuları eklemek ![](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
 6. **Kaydet**’i seçin.
 
@@ -204,13 +207,15 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidini oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturup oluşturmadığını doğrulamak için bu hızlı başlangıçta yüklediniz. Uygulama ağ geçidini test etmek için IIS kullanın:
+Uygulama ağ geçidini oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak için bu hızlı başlangıç hızlı yüklenir. Uygulama ağ geçidini test etmek için IIS kullanın:
 
 1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz.![uygulama ağ geçidi genel IP adresini](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) ya da **tüm kaynaklar**' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
-2. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
+2. Genel IP adresini kopyalayın ve ardından bu IP adresine gözatabilmek için tarayıcınızın adres çubuğuna yapıştırın.
 3. Yanıtı denetleyin. Geçerli bir yanıt, uygulama ağ geçidinin başarıyla oluşturulduğunu ve arka uca başarıyla bağlanıp bağlanabileceğini doğrular.
 
    ![Uygulama ağ geçidini test etme](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
+
+   Tarayıcıyı birden çok kez yenileyin ve hem myVM hem de myVM2 bağlantılarını görmeniz gerekir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

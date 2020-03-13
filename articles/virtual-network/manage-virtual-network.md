@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357540"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280241"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Sanal ağ oluşturma, değiştirme veya silme
 
@@ -35,7 +35,7 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
 - Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.31 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` çalıştırmanız da gerekir.
 - Oturum açtığınızda veya Azure 'a bağlanmak için kullandığınız hesap, [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya [izinlerde](#permissions)listelenen uygun eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır.
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluştur
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
 1. **Sanal ağ** > **ağ** > **kaynak oluştur** ' u seçin.
 2. Aşağıdaki ayarlara ait değerleri girin veya seçin ve ardından **Oluştur**' u seçin:

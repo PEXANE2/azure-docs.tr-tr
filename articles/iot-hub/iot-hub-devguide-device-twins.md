@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355740"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285246"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub cihaz ikizlerini anlama ve kullanma
 
@@ -119,7 +119,7 @@ Kök nesnede, cihaz kimliği özellikleri ve `tags` için kapsayıcı nesneler v
 
 ### <a name="desired-property-example"></a>İstenen özellik örneği
 
-Önceki örnekte, `telemetryConfig` cihaz ikizi istenen ve bildirilen özellikler, çözüm arka ucu ve cihaz uygulaması tarafından bu cihazın telemetri yapılandırmasını eşitleyecek şekilde kullanılır. Örneğin:
+Önceki örnekte, `telemetryConfig` cihaz ikizi istenen ve bildirilen özellikler, çözüm arka ucu ve cihaz uygulaması tarafından bu cihazın telemetri yapılandırmasını eşitleyecek şekilde kullanılır. Örnek:
 
 1. Çözüm arka ucu istenen özelliği istenen yapılandırma değeriyle ayarlar. Belge, istenen özellik kümesine sahip olan bölümüdür:
 
@@ -307,7 +307,7 @@ IoT Hub, sınırın üzerindeki `tags`, `properties/desired`veya `properties/rep
 
 IoT Hub, cihazdaki her bir JSON nesnesi için son güncelleştirme zaman damgasını korur, ikizi istenen ve raporlanan Özellikler. Zaman damgaları UTC biçimindedir ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) biçiminde kodlanır `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 
-Örneğin:
+Örnek:
 
 ```json
 {

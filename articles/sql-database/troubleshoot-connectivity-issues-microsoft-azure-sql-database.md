@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 578d076dfc2fc383051c0c3a8528cdbb0fbcdb15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591243"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208775"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Microsoft Azure SQL Veritabanı bağlantı sorunlarını ve diğer hataları giderme
 
-Azure SQL Veritabanına bağlantı başarısız olduğunda hata iletileri alırsınız. Bu bağlantı sorunlarının nedeni, Azure SQL veritabanı yeniden yapılandırması, güvenlik duvarı ayarları, bağlantı zaman aşımı, yanlış oturum açma bilgileri veya en iyi uygulamalar ve tasarım yönergeleri uygulamak için [uygulama tasarımı] ( sql-database-develop-overview.md) işlemi. Ayrıca, bazı Azure SQL veritabanı kaynaklarına yönelik maksimum sınıra ulaşıldığında Azure SQL veritabanı 'na bağlanamazsınız.
+Azure SQL Veritabanına bağlantı başarısız olduğunda hata iletileri alırsınız. Bu bağlantı sorunları, Azure SQL veritabanı yeniden yapılandırması, güvenlik duvarı ayarları, bir bağlantı zaman aşımı, yanlış oturum açma bilgileri veya [uygulama tasarım](sql-database-develop-overview.md) sürecinde en iyi uygulamalar ve tasarım yönergeleri uygulamak için hata oluşmasına neden olabilir. Ayrıca, bazı Azure SQL veritabanı kaynaklarına yönelik maksimum sınıra ulaşıldığında Azure SQL veritabanı 'na bağlanamazsınız.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Geçici hata hata iletileri (40197, 40613 ve diğerleri)
 

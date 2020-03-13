@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9742cfc6d2191f90f9e8ff5d94d52f2c53355377
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: e37779219cb3ab5279e023c506b05abcb427fe86
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207508"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-korn-ferry-360"></a>Öğretici: Korn Fraz 360 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Bu öğreticide, Korn Fraz 360 Azure Active Directory (Azure AD) ile nasıl tüm
 * Kullanıcılarınızın Azure AD hesaplarıyla Korn Fraz 360 ' de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -145,7 +145,7 @@ Erişim panelinde Korn Fraz 360 kutucuğuna tıkladığınızda, SSO 'yu ayarlad
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

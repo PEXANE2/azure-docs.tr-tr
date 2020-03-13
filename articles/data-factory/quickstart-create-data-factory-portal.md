@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
 ms.openlocfilehash: 0afb0ddb65a4f27463e2bb5c1b9441d248c34415
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240761"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı başlangıç: Azure Data Factory Kullanıcı arabirimini kullanarak veri fabrikası oluşturma
 

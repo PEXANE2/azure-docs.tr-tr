@@ -1,5 +1,5 @@
 ---
-title: Güvenlik Genel Bilgileri
+title: Güvenliğe genel bakış
 description: Bulut ve şirket içi SQL Server arasındaki farklılıklar dahil olmak üzere Azure SQL veritabanı ve SQL Server güvenliği hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 348b8fc44628437cbbcfbcd39a26d048284aa60e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978580"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208846"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL veritabanı güvenlik özelliklerine genel bakış
 
@@ -71,7 +71,7 @@ Yetkilendirme, bir Azure SQL veritabanı içindeki bir kullanıcıya atanan izin
 
 En iyi uygulama olarak, gerektiğinde özel roller oluşturun. Kullanıcıları, iş işlevlerini yapmak için gereken en düşük ayrıcalıklara sahip olan role ekleyin. İzinleri doğrudan kullanıcılara atamayın. Sunucu Yöneticisi hesabı, kapsamlı izinlere sahip ve yalnızca yönetim görevleri olan birkaç kullanıcıya verilmesi gereken yerleşik db_owner rolünün bir üyesidir. Azure SQL veritabanı uygulamaları için, çağrılan modülün Yürütme bağlamını belirtmek için [execute as](/sql/t-sql/statements/execute-as-clause-transact-sql) kullanın veya sınırlı Izinlerle [uygulama rollerini](/sql/relational-databases/security/authentication-access/application-roles) kullanın. Bu uygulama, veritabanına bağlanan uygulamanın uygulama için gereken en düşük ayrıcalıklara sahip olmasını sağlar. Bu en iyi uygulamaları takip etmek, görevlerin ayrılmasını de çok daha da fazla.
 
-### <a name="row-level-security"></a>Satır düzeyinde güvenlik
+### <a name="row-level-security"></a>Satır düzeyi güvenlik
 
 Satır düzeyi güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Satır düzeyi güvenlik, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
 
@@ -138,11 +138,11 @@ SQL veritabanı dinamik veri maskeleme, hassas veri pozlamasını ayrıcalıklı
 
 ### <a name="data-discovery--classification"></a>Veri bulma ve sınıflandırma
 
-Veri bulma & sınıflandırması (Şu anda önizlemede), veritabanınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için Azure SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş özellikleri sağlar. En önemli verilerinizi bulma ve sınıflandırma (iş/finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü oynayabilir. Şunlara altyapı sağlayabilir:
+Veri bulma & sınıflandırması (Şu anda önizlemede), veritabanınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için Azure SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş özellikleri sağlar. En önemli verilerinizi bulma ve sınıflandırma (iş/finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü oynayabilir. Bu, için altyapı işlevi görebilir:
 
 - Hassas verilere yönelik anormal erişimlerde izleme (denetim) ve uyarı verme gibi çeşitli güvenlik senaryoları.
 - Son derece hassas veriler içeren veritabanlarının güvenliğine erişimi ve güvenliğini sağlamlaştırma.
-- Veri gizliliği standartlarına uymaya ve mevzuat uyumluluğu gereksinimlerini karşılamaya yardımcı olma.
+- Veri gizliliği standartları ve mevzuat uyumluluk gereksinimlerini karşılamanıza yardımcı olma.
 
 Daha fazla bilgi için bkz. [veri bulma ile çalışmaya başlama & sınıflandırma](sql-database-data-discovery-and-classification.md).
 
@@ -152,6 +152,6 @@ Uygulamanızın çeşitli güvenlik gereksinimlerini karşılamasına yardımcı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SQL Veritabanındaki erişim denetimi özelliklerinin kullanımı hakkında ayrıntılı bilgi için bkz. [Erişim denetimi](sql-database-control-access.md).
+- SQL veritabanında oturum açma bilgileri, Kullanıcı hesapları, veritabanı rolleri ve izinlerin kullanımı hakkında bir tartışma için bkz. [oturum açma bilgilerini ve Kullanıcı hesaplarını yönetme](sql-database-manage-logins.md).
 - Veritabanı denetimi ile ilgili bir tartışma için bkz. [SQL veritabanı denetimi](sql-database-auditing.md).
 - Tehdit algılama hakkında bir tartışma için bkz. [SQL veritabanı tehdit algılama](sql-database-threat-detection.md).

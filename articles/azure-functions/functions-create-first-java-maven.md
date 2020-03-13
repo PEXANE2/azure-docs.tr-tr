@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272728"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136876"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Hızlı başlangıç: Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Maven/Gradle kullanma
 
@@ -136,14 +136,14 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-    HttpTrigger-Java: [GET,POST] http://localhost:7071/api/HttpTrigger-Java
+    HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
 ...
 ```
 
 Yeni bir Terminal penceresinde kıvrımlı kullanarak işlevi komut satırından tetikleyin:
 
 ```bash
-curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
+curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 ```
 
 ```output
@@ -215,7 +215,7 @@ Dağıtım tamamlandıktan sonra, işlev uygulaması uç noktalarınıza erişme
 `cURL`kullanarak Azure 'da çalışan işlev uygulamasını doğrulamak için, aşağıdaki örnekteki URL 'YI portaldan kopyaladığınız URL ile değiştirin.
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 Bu, istek gövdesinde `AzureFunctions` ile işlev uç noktasına bir POST isteği gönderir. Aşağıdaki yanıtı görürsünüz.

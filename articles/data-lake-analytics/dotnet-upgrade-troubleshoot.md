@@ -1,6 +1,6 @@
 ---
-title: .NET 4.7.2 Upgrade nedeniyle Azure Data Lake Analytics U-SQL iş hatalarıyla ilgili sorunları giderme
-description: .NET 4.7.2 yükseltmesi nedeniyle U-SQL iş hatalarıyla ilgili sorunları giderin.
+title: .NET Framework 4.7.2 yükseltmesi nedeniyle Azure Data Lake Analytics U-SQL iş hatalarıyla ilgili sorunları giderme
+description: .NET Framework 4.7.2 yükseltmesi nedeniyle U-SQL iş hatalarıyla ilgili sorunları giderin.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873242"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213579"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics .NET Framework v 4.7.2 sürümüne yükseltiyor
 
@@ -22,12 +22,12 @@ Azure Data Lake Analytics varsayılan çalışma zamanı .NET Framework v 4.5.2 
 
 Bu .NET Framework 4.5.2 sürümüne yükseltme, bir U-SQL çalışma zamanına (varsayılan çalışma zamanı) dağıtılan .NET Framework artık her zaman 4.7.2 olacağı anlamına gelir. .NET Framework sürümleri için yan yana bir seçenek yoktur.
 
-.NET 4.7.2 'e yükseltme işlemi tamamlandıktan sonra, sistemin yönetilen kodu sürüm 4.7.2 olarak çalıştırılır. U-SQL özel derlemeler gibi kullanıcı tarafından sunulan kitaplıklar, derlemenin oluşturulduğu sürüm için uygun olan geriye dönük uyumlu modda çalışacaktır bekleniyor.
+.NET Framework 4.7.2 ' ye yükseltme işlemi tamamlandıktan sonra, sistemin yönetilen kodu sürüm 4.7.2 olarak çalıştırılır; U-SQL özel derlemeler gibi kullanıcı tarafından sunulan kitaplıklar, derlemenin bulunduğu sürüme uygun olan geriye dönük uyumlu modda çalışacaktır için oluşturulur.
 
 - Derleme dll 'larınız 4.5.2 sürümü için oluşturulduysa, dağıtılan Framework bunları 4.5.2 kitaplıkları olarak değerlendirir, bu da (birkaç özel durum ile) 4.5.2 semantiğini sağlar.
 - Artık .NET Framework 4.7.2 ' i hedefliyorsanız, sürüm 4.7.2 özelliklerini kullanan U-SQL özel derlemelerini kullanabilirsiniz.
 
-Bu .NET 4.7.2 yükseltmesi nedeniyle, .NET özel derlemeleri kullanan U-SQL işleriniz üzerinde önemli değişiklikler yapmanızı sağlar. Aşağıdaki yordamı kullanarak geriye doğru uyumluluk sorunlarını kontrol etmeniz önerilir.
+Bu .NET Framework 4.7.2 sürümüne yükseltme nedeniyle, .NET özel derlemeleri kullanan U-SQL işleriniz üzerinde önemli değişiklikler yapmanızı sağlar. Aşağıdaki yordamı kullanarak geriye doğru uyumluluk sorunlarını kontrol etmeniz önerilir.
 
 ## <a name="how-to-check-for-backwards-compatibility-issues"></a>Geriye dönük uyumluluk sorunlarını denetleme
 
@@ -57,7 +57,7 @@ Yeni çalışma zamanının dağıtımını, [sorun giderme sorunlarını giderm
 
 ### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Karşılaşabileceğiniz en yaygın geriye doğru uyumluluk sorunları nelerdir?
 
-Denetleyicinin tanımlanmasının olası en yaygın geri uyumsuzluklarını şunlardır: (Bu listeyi kendi iç ADLA işlerinde denetleyiciyi çalıştırarak oluşturduk), hangi kitaplıkların etkilendiğini (yani, kitaplıkları yalnızca dolaylı olarak çağırabileceğinizi unutmayın, bu nedenle işlerin etkilenip etkilenmediğinizi denetlemek için gerekli eylemi #1 ve çözüm için olası işlemleri yapmak için önemli. Note: kendi işlerimizin neredeyse tüm durumlarında, en önemli değişikliklerden oluşan dar değişiklikler nedeniyle uyarılar hatalı pozitif olarak açılır.
+Denetleyicinin tanımlanmasının olası en yaygın geri uyumsuzluklarını (Bu listeyi kendi iç ADLA işleriniz üzerinde çalıştırarak oluşturuyoruz), hangi kitaplıkların etkilendiğini (unutmayın: kitaplıkları yalnızca dolaylı olarak çağırabileceğinizi, bu nedenle, işlerinizin etkilenip etkilenmediğini denetlemek için gerekli işlemleri yapmak #1) ve olası çözüm eylemleri. Note: kendi işlerimizin neredeyse tüm durumlarında, en önemli değişikliklerden oluşan dar değişiklikler nedeniyle uyarılar hatalı pozitif olarak açılır.
 
 - Sonuç görevinin tamamlanabilmesi için IAsyncResult. CompletedSynchronously özelliğinin doğru olması gerekir
   - TaskFactory. FromAsync çağrılırken, sonuçta elde edilen görevin tamamlanabilmesi için IAsyncResult. CompletedSynchronously özelliğinin uygulanması doğru olmalıdır. Diğer bir deyişle, özelliğinin true döndürmesi gerekir ve yalnızca uygulama eşzamanlı olarak tamamlanırsa. Daha önce özellik denetlenmedi.

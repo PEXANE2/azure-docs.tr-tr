@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile ölçümleri gerçek zamanlı ola
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanılmadan ölçümlerin gerçek zamanlı görünümü açıklanır.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404946"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216569"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Ölçümleri gerçek zamanlı görüntüleme
 
@@ -24,7 +24,7 @@ Bu makale ayrıntılı bir genel bakış sağlar ve bu özelliğin nasıl kullan
 
 Canlı veri (Önizleme) özelliğini ayarlama veya sorunlarını gidermeyle ilgili yardım için [Kurulum kılavuzumuzu](container-insights-livedata-setup.md)gözden geçirin.
 
-## <a name="how-it-works"></a>Nasıl Çalışır 
+## <a name="how-it-works"></a>Nasıl çalışır? 
 
 Canlı veriler (Önizleme) özelliği, Kubernetes API 'sine doğrudan erişir ve kimlik doğrulama modeliyle ilgili ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz. 
 
@@ -34,7 +34,7 @@ Bu özellik, varsayılan olarak her beş saniyede bir olan ölçüm uç noktalar
 
 Yoklama aralığı, 1, 5, 15 ve 30 saniyede bir yeni veri yoklamasını ayarlamanıza olanak sağlayan **set Interval** açılır listesinden yapılandırılır. 
 
-![Canlı açılan yoklama aralığına git](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![Canlı açılan yoklama aralığına git](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >Kısa bir süre boyunca sorun giderirken yoklama aralığını bir saniye olarak ayarlamayı öneririz. Bu istekler, kümenizde Kubernetes API 'sinin kullanılabilirliğini ve azaltmasını etkileyebilir. Daha sonra, daha uzun bir yoklama aralığına yeniden yapılandırın. 

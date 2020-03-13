@@ -3,12 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: a5fd09e0e487d103e8bd78964c11b572a62e28fa
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: deedd4d2553b3b06f76f698fdb2425a8d3878d23
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382446"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248066"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -88,6 +88,10 @@ IP aralıklarına izin ver | Ek maliyet yok | IP adresi aralıkları zaman için
 NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi <br/><br/> Ek maliyet yok <br/><br/> | Yalnızca NSG 'ler ile kullanılabilir <br/><br/> Hizmetin tamamına erişim sağlar
 Azure Güvenlik Duvarı FQDN etiketlerini kullanma | Gerekli FQDN 'Ler otomatik olarak yönetildiğinden yönetimi daha kolay | Yalnızca Azure Güvenlik Duvarı ile kullanılabilir
 HTTP proxy kullanma | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime izin verilir <br/><br/> VM 'lere tek bir internet erişimi noktası <br/><br/> Azure IP adresi değişikliklerine tabi değildir | Proxy yazılımıyla VM çalıştırmak için ek maliyetler
+
+#### <a name="private-endpoints"></a>Özel uç noktalar
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

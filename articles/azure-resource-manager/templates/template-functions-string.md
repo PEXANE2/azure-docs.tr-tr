@@ -4,11 +4,11 @@ description: Dizelerle çalışmak için bir Azure Resource Manager şablonunda 
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: f8d19179461693331a6091ec7a3562f536b959e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355067"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274209"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için dize işlevleri
 
@@ -1009,7 +1009,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 | lastString | Int | 0 |
 | Bulunamadı | Int | -1 |
 
-## <a name="length"></a>length
+## <a name="length"></a>{1&gt;length&lt;1}
 
 `length(string)`
 
@@ -1561,7 +1561,7 @@ Belirtilen karakter konumunda başlayan ve belirtilen sayıda karakteri içeren 
 |:--- |:--- |:--- |:--- |
 | stringToParse |Yes |string |Alt dizenin ayıklandığı özgün dize. |
 | startIndex |Hayır |int |Alt dize için sıfır tabanlı başlangıç karakter konumu. |
-| length |Hayır |int |Alt dize için karakter sayısı. Dize içindeki bir konuma başvurmalıdır. Sıfır veya daha büyük olmalıdır. |
+| {1&gt;length&lt;1} |Hayır |int |Alt dize için karakter sayısı. Dize içindeki bir konuma başvurmalıdır. Sıfır veya daha büyük olmalıdır. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1676,7 +1676,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dizi | ["bir", "iki"] |
-| stringOutput | Dize | açık |
+| stringOutput | Dize | üzerinde |
 
 ## <a name="tolower"></a>toLower
 

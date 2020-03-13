@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: diberry
 ms.openlocfilehash: 375d4b4e7c3fcafbdfde1ff447bedc3e16aff2f2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393768"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219945"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Etkin öğrenme konuşma uç noktası inceleyerek etkinleştirmek için kavramları
 Etkin öğrenme tahmin doğruluğunu ve kolay uygulama geliştirmek için üç strateji biridir. Etkin öğrenme, doğru amacı ve varlık için gözden geçirme uç nokta Konuşma ile. LUIS, uç nokta konuşma emin seçer.

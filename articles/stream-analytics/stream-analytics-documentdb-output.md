@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364590"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254449"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB için Azure Stream Analytics çıkışı  
 Azure Stream Analytics, veri arşivlemeyi ve yapılandırılmamış JSON verilerinde düşük gecikme süreli sorguları etkinleştirerek JSON çıkışı için [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) hedefleyebilir. Bu belge, bu yapılandırmayı uygulamak için bazı en iyi uygulamaları kapsar.

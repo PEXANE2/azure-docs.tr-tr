@@ -1,41 +1,56 @@
 ---
-title: Azure veri Gezgini'nde verileri silme
-description: Bu makalede Azure temizleme dahil olmak üzere verileri araştırmak, toplu silme senaryolar ve bağlı bekletme siler.
+title: Azure Veri Gezgini verileri silme
+description: Bu makalede Temizleme, kapsamları bırakma ve bekletme tabanlı silme dahil olmak üzere Azure Veri Gezgini 'da silme senaryoları açıklanmaktadır.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 9c1b21e119a38c6d306b9c564ab7958ba21a1c41
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 03/12/2020
+ms.openlocfilehash: 681cfd71d2666630b192935d66ba32eaf16c92de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445677"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204622"
 ---
-# <a name="delete-data-from-azure-data-explorer"></a>Azure veri Gezgini'nde verileri silme
+# <a name="delete-data-from-azure-data-explorer"></a>Azure Veri Gezgini verileri silme
 
-Azure Veri Gezgini, bu makalede ele birkaç toplu silme yaklaşımları destekler. Hızlı Okuma için iyileştirilmiş olduğundan bunu gerçek zamanlı olarak başına kayıt silme işlemi desteklemiyor.
+Azure Veri Gezgini, bu makalede açıklanan çeşitli silme senaryolarını destekler. 
 
-* Bir veya daha fazla tablo artık gerekli değilse, tablo bırakma kullanarak bunları silin veya tablolar komutunu bırakılamıyor.
+## <a name="delete-data-using-the-retention-policy"></a>Bekletme ilkesini kullanarak verileri silme
 
-    ```Kusto
-    .drop table <TableName>
+Azure Veri Gezgini, [bekletme ilkesine](/azure/kusto/management/retentionpolicy)göre verileri otomatik olarak siler. Bu yöntem, verileri silmenin en etkili ve sorunsuz yoludur. Veritabanı veya tablo düzeyinde bekletme ilkesini ayarlayın.
 
-    .drop tables (<TableName1>, <TableName2>,...)
+90 gün bekletme için ayarlanan bir veritabanını veya tabloyu düşünün. Yalnızca 60 gün veri gerekiyorsa, eski verileri aşağıdaki gibi silin:
+
+```kusto
+.alter-merge database <DatabaseName> policy retention softdelete = 60d
+
+.alter-merge table <TableName> policy retention softdelete = 60d
+```
+
+## <a name="delete-data-by-dropping-extents"></a>Kapsamları bırakarak verileri silme
+
+[Kapsam (veri parça)](/azure/kusto/management/extents-overview) , verilerin depolandığı iç yapıdır. Her uzantı milyonlarca kayıt tutabilir. Kapsamlar tek tek veya [bırakma uzantıları](/azure/kusto/management/extents-commands#drop-extents)kullanılarak grup olarak silinebilir. 
+
+### <a name="examples"></a>Örnekler
+
+Bir tablodaki tüm satırları veya yalnızca belirli bir kapsamı silebilirsiniz.
+
+* Bir tablodaki tüm satırları sil:
+
+    ```kusto
+    .drop extents from TestTable
     ```
 
-* Eski veriler artık gerekli değilse, saklama dönemi veritabanı veya tablo düzeyinde değiştirerek silin.
+* Belirli bir kapsamı Sil:
 
-    Bir veritabanı ya da 90 gün boyunca ayarlanır tablo göz önünde bulundurun. İş değiştiğinde, bunu şimdi yalnızca 60 günün verilerini gereklidir. Bu durumda, eski verileri aşağıdaki yollardan birini silin.
-
-    ```Kusto
-    .alter-merge database <DatabaseName> policy retention softdelete = 60d
-
-    .alter-merge table <TableName> policy retention softdelete = 60d
+    ```kusto
+    .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
     ```
 
-    Daha fazla bilgi için [Bekletme İlkesi](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy).
+## <a name="delete-individual-rows-using-purge"></a>Temizleme kullanarak ayrı satırları silme
 
-Veri silme sorunları ile ilgili yardıma ihtiyacınız varsa, Lütfen bir destek isteği açın [Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+[Veri temizleme](/azure/kusto/management/data-purge) , bireyler satırlarını silmek için kullanılabilir. Silme işlemi anında değildir ve önemli sistem kaynakları gerektirir. Bu nedenle, yalnızca Uyumluluk senaryoları önerilir.  
+

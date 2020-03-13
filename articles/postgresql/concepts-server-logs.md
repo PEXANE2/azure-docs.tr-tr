@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359651"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280501"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
 PostgreSQL için Azure veritabanı, Postgres 'nin standart günlüklerine yapılandırma ve erişme olanağı sağlar. Günlükler, yapılandırma hatalarını belirlemek, sorunlarını gidermek ve onarmak ve performans performansını düzeltmek için kullanılabilir. Yapılandırabileceğiniz ve erişebileceğiniz günlüğe kaydetme bilgileri hatalar, sorgu bilgileri, oto vakum kayıtları, bağlantılar ve kontrol noktaları içerir. (İşlem günlüklerine erişim kullanılamaz).
@@ -100,7 +100,7 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | Tür | Günlüğün türü. Her zaman `AzureDiagnostics` |
-| Abonelik Kimliği | Sunucunun ait olduğu abonelik için GUID |
+| kaynak grubundaki | Sunucunun ait olduğu abonelik için GUID |
 | adlı yönetilen örnek, | Sunucunun ait olduğu kaynak grubunun adı |
 | ResourceProvider | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
@@ -110,7 +110,7 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 | için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | `LogEvent` |
 | Düzeyi | Günlüğe kaydetme düzeyi, örnek: günlük, hata, BILDIRIM |
 | İleti | Birincil günlük iletisi | 
-| Etki Alanı | Sunucu sürümü, örnek: Postgres-10 |
+| Domain | Sunucu sürümü, örnek: Postgres-10 |
 | Ayrıntı | İkincil günlük iletisi (varsa) |
 | Tation | Sütunun adı (varsa) |
 | SchemaName | Şemanın adı (varsa) |

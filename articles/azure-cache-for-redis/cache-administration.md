@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356425"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278850"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yönetme
 Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeleri yeniden [başlatma](#reboot) ve [zamanlama](#schedule-updates) gibi yönetim görevlerinin nasıl gerçekleştirileceğini açıklamaktadır.

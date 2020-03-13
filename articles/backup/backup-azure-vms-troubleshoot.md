@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 8e29061becd9eb82dd04f3ed0db787542b29cbc7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: c087814d74032bfc39310690cb31e258fdb1e41e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363867"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247936"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -190,7 +190,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 | VM Aracısı sanal makinede yok: <br>Herhangi bir önkoşulu ve VM aracısını yükler. Sonra işlemi yeniden başlatın. |[VM Aracısı yüklemesi ve VM Aracısı yüklemesinin nasıl doğrulanacağı](#vm-agent)hakkında daha fazla bilgi edinin. |
 | **Hata kodu**: extensionsnapshotfailednosecurenetwork <br/> **Hata iletisi**: güvenli ağ iletişim kanalı oluşturma hatası nedeniyle anlık görüntü işlemi başarısız oldu. | <ol><li> **Regedit. exe** ' yi Yükseltilmiş modda çalıştırarak kayıt defteri düzenleyicisini açın. <li> Sisteminizde mevcut olan tüm .NET Framework sürümlerini belirler. Bunlar, kayıt defteri anahtarı **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**hiyerarşisinde mevcuttur. <li> Kayıt defteri anahtarında bulunan her bir .NET Framework için aşağıdaki anahtarı ekleyin: <br> **Schusestrongşifre "= DWORD: 00000001**. </ol>|
 | **Hata kodu**: ExtensionVCRedistInstallationFailure <br/> **Hata iletisi**: visual Studio 2012 için görsel C++ yeniden dağıtılabilir yüklemenin başarısız olması nedeniyle anlık görüntü işlemi başarısız oldu. | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion adresine gidin ve vcredist2013_x64.<br/>Hizmet yüklemeye izin veren kayıt defteri anahtarı değerinin doğru değere ayarlandığından emin olun. Diğer bir deyişle, **HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\Msiserver** içindeki **Başlangıç** değerini **4**değil **3** olarak ayarlayın. <br><br>Yükleme ile ilgili sorun yaşıyorsanız, **msiexec/Unregister** ' yi ve ardından yükseltilmiş bir komut isteminden **msiexec/Register** ' i çalıştırarak yükleme hizmetini yeniden başlatın.  |
-
+| **Hata kodu**: usererrorrequestdisallowedbypolicy <BR> **Hata iletisi**: VM 'de anlık görüntü işlemini önleyecek geçersiz bir ilke yapılandırıldı. | [Ortamınızdaki etiketleri yöneten](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)bir Azure ilkeniz varsa, Ilkeyi bir [reddetme etkisine](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) değiştirme [efektiyle](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)değiştirmeyi düşünün veya [Azure Backup için gereken adlandırma şemasına](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)göre kaynak grubunu el ile oluşturun.
 ## <a name="jobs"></a>İşler
 
 | Hata Ayrıntıları | Geçici çözüm |

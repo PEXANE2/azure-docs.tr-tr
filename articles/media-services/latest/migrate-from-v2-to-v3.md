@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: b432f381bae79d783663130d06dbf874f00a9994
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
-ms.translationtype: HT
+ms.openlocfilehash: 5083dc79b146598142ac27eb6ac7ef9ed436f37d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129401"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251563"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
 
@@ -67,7 +67,7 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
     * v3 [varlıklarını](assets-concept.md)görüntüleme (yönetme), 
     * [API 'lere erişme hakkında bilgi alın](access-api-portal.md). 
 
-Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+    Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 * Işlerinizin eşzamanlılık ve performansını denetlemek için, özellikle video veya ses analizine sahip olanlar için hesabınıza medya ayrılmış birimleri (MRU) sağlamanız gerekir. Daha fazla bilgi için bkz. [Medya İşlemeyi Ölçeklendirme](../previous/media-services-scale-media-processing-overview.md). [Media Services v3 Için clı 2,0](media-reserved-units-cli-how-to.md)kullanarak, [Azure Portal](../previous/media-services-portal-scale-media-processing.md)veya [v2 API 'lerini](../previous/media-services-dotnet-encoding-units.md)kullanarak MRUs 'yi yönetebilirsiniz. Media Services v2 veya v3 API 'Leri kullanıp kullanmayacağınızı MRU sağlamanız gerekir.
 * V3 API ile oluşturulan Media Services varlıkları v2 API 'SI tarafından yönetilemez.  
 * V2 API 'sindeki varlıkların hepsi, v3 API 'sinde otomatik olarak gösterilmez.  Aşağıda, uyumlu olmayan iki sürümde varlıkların örnekleri verilmiştir:  

@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085118"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262912"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 

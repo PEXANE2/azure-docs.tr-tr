@@ -4,11 +4,11 @@ description: Hizmet yapılandırması, hizmetin yeniden nasıl davrandığını,
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623720"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219362"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Kişiselleştirici öğrenme döngüsünü yapılandırma
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 7246a072c1bf2253b822fca53b0b69700c66221d
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565288"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208242"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Kimliğe erişim izinleri atama
 
@@ -26,7 +26,7 @@ Kullanıcılara paylaşma düzeyi izinleri vermek için üç Azure yerleşik rol
 - **Depolama dosyası VERI SMB paylaşımı yükseltilmiş katkıda bulunanlar** , SMB üzerinden Azure depolama dosya paylaşımlarında okuma, yazma, silme ve değiştirme izinleri sağlar.
 
 > [!IMPORTANT]
-> Bir kimliğe rol atama özelliği de dahil olmak üzere bir dosya paylaşımının tam yönetim denetimi, depolama hesabı anahtarının kullanılmasını gerektirir. Yönetim denetimi, Azure AD kimlik bilgileriyle desteklenmez.
+> Bir dosyanın sahipliğini alma özelliği de dahil olmak üzere bir dosya paylaşımının tam yönetim denetimi, depolama hesabı anahtarının kullanılmasını gerektirir. Yönetim denetimi, Azure AD kimlik bilgileriyle desteklenmez.
 
 Azure portal, PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kullanıcının Azure AD kimliğine, paylaşma düzeyi izinleri vermek için atayabilirsiniz.
 

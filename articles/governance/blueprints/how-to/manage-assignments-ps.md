@@ -4,11 +4,11 @@ description: Resmi Azure şemaları PowerShell modülü az. şema ile şema atam
 ms.date: 09/30/2019
 ms.topic: how-to
 ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364035"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280722"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell ile atamaları yönetme
 

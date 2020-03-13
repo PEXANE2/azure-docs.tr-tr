@@ -3,12 +3,12 @@ title: Azure Işlevleri için depolama konuları
 description: Azure Işlevlerinin depolama gereksinimlerini ve depolanan verileri şifreleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358174"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276588"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Işlevleri için depolama konuları
 
@@ -56,6 +56,25 @@ Birden çok işlevli uygulamanın herhangi bir sorun olmadan aynı depolama hesa
 Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md).
 
 Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, blob ve dosya verilerinin şifrelenmesi için kullanmak üzere müşteri tarafından yönetilen anahtarlar sağlayabilirsiniz. Bu anahtarların, depolama hesabına erişebilmeleri için Azure Key Vault ' de mevcut olması gerekir. Daha fazla bilgi için bkz. [Azure Portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](../storage/common/storage-encryption-keys-portal.md).  
+
+## <a name="mount-file-shares-linux"></a>Bağlama dosyası paylaşımları (Linux)
+
+Mevcut Azure dosya paylaşımlarını Linux işlev uygulamalarınıza bağlayabilirsiniz. Linux işlev uygulamanıza bir paylaşma bağlayarak, işlevlerinizde mevcut makine öğrenimi modellerini veya diğer verileri kullanabilirsiniz. Linux işlev uygulamanıza var olan bir paylaşımın bağlamak için [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) komutunu kullanabilirsiniz. 
+
+Bu komutta, `share-name` var olan Azure dosya paylaşımının adıdır ve `custom-id`, işlev uygulamasına bağlandığında, paylaşımın benzersiz bir şekilde tanımlayan herhangi bir dize olabilir. Ayrıca, `mount-path`, işlev uygulamanızda paylaşıma erişildiği yoldur. `mount-path` `/dir-name`biçiminde olmalıdır ve `/home`ile başlayamaz.
+
+Tüm bir örnek için bkz. [Python işlev uygulaması oluşturma ve Azure dosya paylaşma bağlama](scripts/functions-cli-mount-files-storage-linux.md)içindeki betikler. 
+
+Şu anda yalnızca bir `AzureFiles` `storage-type` desteklenir. Yalnızca belirli bir işlev uygulamasına beş paylaşım bağlayabilirsiniz. Bir dosya paylaşımının bağlanması, en az 200-300ms veya depolama hesabı farklı bir bölgedeyse daha da fazla olan soğuk başlangıç süresini artırabilir.
+
+Bağlı paylaşıma, belirtilen `mount-path` işlev kodunuz tarafından ulaşılabilir. Örneğin, `mount-path` `/path/to/mount`olduğunda, aşağıdaki Python örneğinde olduğu gibi, dosya sistemi API 'Leri ile hedef dizine erişebilirsiniz:
+
+```python
+import os
+...
+
+files_in_share = os.listdir("/path/to/mount")
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: def57dc125a148abd330643fc5848a35cd3b52bf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.openlocfilehash: f7cfcb8a9cb99a85fd59f9366ba2ec031da9699b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363611"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243607"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veritabanındaki verileri kopyalama ve dönüştürme
 
@@ -60,8 +60,8 @@ Bu özellikler, Azure SQL veritabanı bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **Azuressqldatabase**olarak ayarlanmalıdır. | Evet |
-| connectionString | **ConnectionString** özelliği IÇIN Azure SQL veritabanı örneğine bağlanmak için gereken bilgileri belirtin. <br/>Ayrıca, Azure Key Vault bir parola veya hizmet sorumlusu anahtarı da koyabilirsiniz. SQL kimlik doğrulaması ise, `password` yapılandırmasını bağlantı dizesinden dışarı çekin. Daha fazla bilgi için, Azure Key Vault tablo ve [Mağaza kimlik bilgilerini](store-credentials-in-key-vault.md)izleyen JSON örneğine bakın. | Evet |
+| type | **Type** özelliği **Azuressqldatabase**olarak ayarlanmalıdır. | Yes |
+| connectionString | **ConnectionString** özelliği IÇIN Azure SQL veritabanı örneğine bağlanmak için gereken bilgileri belirtin. <br/>Ayrıca, Azure Key Vault bir parola veya hizmet sorumlusu anahtarı da koyabilirsiniz. SQL kimlik doğrulaması ise, `password` yapılandırmasını bağlantı dizesinden dışarı çekin. Daha fazla bilgi için, Azure Key Vault tablo ve [Mağaza kimlik bilgilerini](store-credentials-in-key-vault.md)izleyen JSON örneğine bakın. | Yes |
 | servicePrincipalId | Uygulamanın istemci kimliği belirtin. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
 | servicePrincipalKey | Uygulama anahtarını belirtin. Azure Data Factory güvenli bir şekilde depolamak veya [Azure Key Vault depolanan bir gizli dizi başvurusunda bulunmak](store-credentials-in-key-vault.md)için bu alanı **SecureString** olarak işaretleyin. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
 | tenant | Uygulamanızın bulunduğu etki alanı adı veya kiracı KIMLIĞI gibi kiracı bilgilerini belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
@@ -221,7 +221,7 @@ Azure SQL veritabanı veri kümesi için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in **Type** özelliği **Azuressqltable**olarak ayarlanmalıdır. | Evet |
+| type | DataSet 'in **Type** özelliği **Azuressqltable**olarak ayarlanmalıdır. | Yes |
 | şema | Şemanın adı. |Kaynak, havuz için Evet Hayır  |
 | tablo | Tablo/görünüm adı. |Kaynak, havuz için Evet Hayır  |
 | tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve `table`kullanın. | Kaynak, havuz için Evet Hayır |
@@ -257,10 +257,11 @@ Azure SQL veritabanından veri kopyalamak için aşağıdaki özellikler, etkinl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının **Type** özelliği **Azuressqlsource**olarak ayarlanmalıdır. "SqlSource" türü, geriye dönük uyumluluk için hala desteklenmektedir. | Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **Azuressqlsource**olarak ayarlanmalıdır. "SqlSource" türü, geriye dönük uyumluluk için hala desteklenmektedir. | Yes |
 | sqlReaderQuery | Bu özellik, verileri okumak için özel SQL sorgusu kullanır. `select * from MyTable` bunun bir örneğidir. | Hayır |
 | sqlReaderStoredProcedureName | Kaynak tablo verilerini okuyan saklı yordamın adı. Son SQL deyim bir SELECT deyimi saklı yordam içinde olmalıdır. | Hayır |
 | storedProcedureParameters | Saklı yordamın parametreleri.<br/>İzin verilen değerler, ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle eşleşmelidir. | Hayır |
+| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted** (varsayılan), **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | Hayır |
 
 **Şunlara işaret eder:**
 
@@ -363,7 +364,7 @@ Azure SQL veritabanı 'na veri kopyalamak için aşağıdaki özellikler, etkinl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği havuzunun **Type** özelliği **Azuressqlsink**olarak ayarlanmalıdır. "SqlSink" türü, geriye dönük uyumluluk için hala destekleniyor. | Evet |
+| type | Kopyalama etkinliği havuzunun **Type** özelliği **Azuressqlsink**olarak ayarlanmalıdır. "SqlSink" türü, geriye dönük uyumluluk için hala destekleniyor. | Yes |
 | writeBatchSize | *Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/> İzin verilen değer **Integer** (satır sayısı). Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | Hayır |
 | writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/> İzin verilen değer **TimeSpan**değeridir. Örnek olarak "00:30:00" (30 dakika) bulunur. | Hayır |
 | preCopyScript | Azure SQL veritabanı 'na veri yazmadan önce çalıştırılacak kopyalama etkinliği için bir SQL sorgusu belirtin. Her kopya çalıştırması için yalnızca bir kez çağrılır. Önceden yüklenmiş ve verileri temizlemek için bu özelliği kullanın. | Hayır |
@@ -622,7 +623,7 @@ Veriler veya Azure SQL veritabanı 'na kopyalandığında, Azure SQL veritabanı
 | Ondalık |Ondalık |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |çift |
-| görüntü |Byte[] |
+| image |Byte[] |
 | int |Int32 |
 | money |Ondalık |
 | nchar |String, Char[] |
@@ -636,7 +637,7 @@ Veriler veya Azure SQL veritabanı 'na kopyalandığında, Azure SQL veritabanı
 | smallmoney |Ondalık |
 | sql_variant |Nesne |
 | metin |String, Char[] |
-| zaman |TimeSpan |
+| time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Bayt |
 | uniqueidentifier |Guid |

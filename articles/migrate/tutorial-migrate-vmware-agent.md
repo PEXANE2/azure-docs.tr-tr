@@ -2,14 +2,14 @@
 title: Aracı tabanlı Azure geçişi sunucu geçişine sahip VMware VM 'lerini geçirme
 description: Azure geçişi ile VMware VM 'lerinin aracı tabanlı geçişini çalıştırmayı öğrenin.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389002"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238443"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
 
@@ -156,7 +156,7 @@ Hesabı aşağıdaki gibi oluşturun:
 
 - Azure geçişi çoğaltma gereci, bir makine için çoğaltmayı etkinleştirdiğinizde bu hizmetin göndererek yüklemesini gerçekleştirebilir veya el ile veya yükleme araçlarını kullanarak yükleyebilirsiniz.
 - Bu öğreticide, Mobility hizmetini göndererek yükleme yoluyla yükleyeceğiz.
-- Anında yükleme için, Azure geçişi sunucu geçişinin sanal makineye erişmek için kullanabileceği bir hesap hazırlamanız gerekir.
+- Anında yükleme için, Azure geçişi sunucu geçişinin sanal makineye erişmek için kullanabileceği bir hesap hazırlamanız gerekir. Bu hesap, Mobility hizmetini el ile yüklememeniz durumunda yalnızca gönderme yüklemesi için kullanılır.
 
 Hesabı aşağıdaki gibi hazırlayın:
 
@@ -409,7 +409,10 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 
 ## <a name="complete-the-migration"></a>Geçişi tamamlamayı
 
-1. Geçiş yapıldıktan sonra, **geçişi durdurmak**> VM 'ye sağ tıklayın. Bu, şirket içi makine için çoğaltmayı durduruyor ve VM için çoğaltma durumu bilgilerini temizler.
+1. Geçiş yapıldıktan sonra, **geçişi durdurmak**> VM 'ye sağ tıklayın. Bu, şunları yapar:
+    - Şirket içi makine için çoğaltmayı sonlandırır.
+    - Makineyi Azure geçişi: sunucu geçişi içindeki **çoğaltma sunucusu** sayısından kaldırır.
+    - VM için çoğaltma durumu bilgilerini temizler.
 2. Geçirilen makinelere Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) Aracısı 'nı yükler.
 3. Veritabanı bağlantısı dizelerini ve web sunucusu yapılandırmalarını güncelleştirme gibi herhangi bir geçiş sonrası uygulama ayarı gerçekleştirin.
 4. Geçirilen uygulamada son uygulama ve geçiş kabul testi gerçekleştirme işlemi şimdi Azure’da çalıştırılmaktadır.

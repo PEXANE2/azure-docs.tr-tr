@@ -7,11 +7,11 @@ ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356699"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241349"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -505,7 +505,7 @@ Arka planda Dayanıklı İşlevler uzantısı, GitHub 'daki açık kaynaklı ve 
 
 Güvenilir ve uzun süreli yürütme garantisi sağlamak için, Orchestrator işlevlerinin izlenmesi gereken bir dizi kodlama kuralı vardır. Daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) makalesi.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Dayanıklı İşlevler Azure Işlevleri ile aynı faturalandırılır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/). Azure Işlevleri [Tüketim planında](../functions-scale.md#consumption-plan)Orchestrator işlevleri çalıştırıldığında, bazı fatura davranışları göz önünde bulundurulmalıdır. Bu davranışlar hakkında daha fazla bilgi için [dayanıklı işlevler faturalandırma](durable-functions-billing.md) makalesine bakın.
 

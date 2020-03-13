@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390340"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283166"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Bilişsel Arama çok yönlü gezintiyi uygulama
 
@@ -34,7 +34,7 @@ Uygulama geliştirmede, sorgu oluşturan kod yazmak çalışmanın toplu işini 
 ## <a name="sample-code-and-demo"></a>Örnek kod ve tanıtım
 Bu makale örnek olarak bir iş arama portalı kullanır. Örnek, bir ASP.NET MVC uygulaması olarak uygulanır.
 
-- [Azure bilişsel arama Iş portalı tanıtımında](http://azjobsdemo.azurewebsites.net/)çalışan tanıtımı çevrimiçi olarak görün ve test edin.
+- [Azure bilişsel arama Iş portalı tanıtımında](https://aka.ms/azjobsdemo)çalışan tanıtımı çevrimiçi olarak görün ve test edin.
 
 - [GitHub 'Daki Azure-Samples deposundan](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)kodu indirin.
 
@@ -78,7 +78,7 @@ Karmaşık arama ifadeleri sorgunun performansını düşürür. Mümkün olduğ
 Bir filtrenin daha fazla duyarlık eklemesi hakkında daha iyi anlamak için, bir karmaşık arama ifadesini filtre ifadesi içeren bir ile karşılaştırın:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 Her iki sorgu de geçerlidir, ancak Seattle 'da Park ile Motels olmayan bir for arıyorsanız ikincisi üstün bir düzeydir.
 -   İlk sorgu ad, açıklama ve aranabilir verileri içeren diğer alanlar gibi dize alanlarında bahsedilmekte olan veya söz konusu belirli kelimeleri kullanır.
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 Bir model sorgu parametresi bir alana ayarlanır ve veri türüne bağlı olarak, `count:<integer>`, `sort:<>`, `interval:<integer>`ve `values:<list>`içeren virgülle ayrılmış liste ile daha fazla parametreli olabilir. Aralıklar ayarlanırken sayısal veriler için bir değerler listesi desteklenir. Kullanım ayrıntıları için bkz. [arama belgeleri (Azure BILIŞSEL arama API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
 
-Modellerle birlikte, uygulamanız tarafından formül oluşturan istek, bir model değer seçimine dayalı olarak aday belgeler kümesini daraltmak için de filtreler derlemelidir. Bir Bisiklet Mağazası için, çok yönlü gezinme *hangi renkler, üreticiler ve bisiklet türlerinin kullanılabildiği*gibi sorulara ipuçları sağlar. Filtreleme, *Bu fiyat aralığında tam Bisikletler kırmızı, Sıradağlar bisikletleri*gibi sorulara yanıt veriyor mu? Yalnızca kırmızı ürünlerin gösterilmesi gerektiğini belirtmek için "kırmızı" tıkladığınızda, uygulamanın gönderdiği sonraki sorgu `$filter=Color eq ‘Red’`içerir.
+Modellerle birlikte, uygulamanız tarafından formül oluşturan istek, bir model değer seçimine dayalı olarak aday belgeler kümesini daraltmak için de filtreler derlemelidir. Bir Bisiklet Mağazası için, çok yönlü gezinme *hangi renkler, üreticiler ve bisiklet türlerinin kullanılabildiği*gibi sorulara ipuçları sağlar. Filtreleme, *Bu fiyat aralığında tam Bisikletler kırmızı, Sıradağlar bisikletleri*gibi sorulara yanıt veriyor mu? Yalnızca kırmızı ürünlerin gösterilmesi gerektiğini belirtmek için "kırmızı" tıkladığınızda, uygulamanın gönderdiği sonraki sorgu `$filter=Color eq 'Red'`içerir.
 
 `JobsSearch.cs` sayfasından aşağıdaki kod parçacığı, Iş başlığı modeli 'nden bir değer seçerseniz, seçili Iş başlığını filtreye ekler.
 
@@ -371,7 +371,7 @@ OData ifadesi sözdiziminde filtre örnekleri bulabilirsiniz [(Azure bilişsel a
 ## <a name="try-the-demo"></a>Tanıtımı deneyin
 Azure Bilişsel Arama Iş portalı tanıtımı, bu makalede başvurulan örnekleri içerir.
 
--   [Azure bilişsel arama Iş portalı tanıtımında](https://azjobsdemo.azurewebsites.net/)çalışan tanıtımı çevrimiçi olarak görün ve test edin.
+-   [Azure bilişsel arama Iş portalı tanıtımında](https://aka.ms/azjobsdemo)çalışan tanıtımı çevrimiçi olarak görün ve test edin.
 
 -   [GitHub 'Daki Azure-Samples deposundan](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)kodu indirin.
 

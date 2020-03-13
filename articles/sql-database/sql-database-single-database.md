@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7bca36bdb41c5800a8718f76d48afcfde6f9333e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820932"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208829"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek bir veritabanı nedir?
 
@@ -37,13 +37,13 @@ Tek bir veritabanı, kaynak paylaşımı için [elastik havuzun](sql-database-el
 
 ## <a name="monitoring-and-alerting"></a>İzleme ve uyarı
 
-Yerleşik [performans izleme](sql-database-performance.md) ve [Uyarı araçlarını](sql-database-insights-alerts-portal.md), performans derecelendirmeleri ile birlikte kullanırsınız. Bu araçları kullanarak geçerli veya projeye özgü performans ihtiyaçlarınıza göre ölçek büyütme veya küçültme işlemlerinin etkisini hızlı bir şekilde değerlendirebilirsiniz. SQL Veritabanı ayrıca izlemeyi kolaylaştırmak için [ölçümler ve tanılama günlükleri oluşturabilir](sql-database-metrics-diag-logging.md).
+Yerleşik [performans izleme](sql-database-performance.md) ve [Uyarı araçlarını](sql-database-insights-alerts-portal.md), performans derecelendirmeleri ile birlikte kullanırsınız. Bu araçları kullanarak geçerli veya projeye özgü performans ihtiyaçlarınıza göre ölçek büyütme veya küçültme işlemlerinin etkisini hızlı bir şekilde değerlendirebilirsiniz. Ayrıca, SQL veritabanı daha kolay izleme için [ölçümleri ve kaynak günlüklerini yayabilir](sql-database-metrics-diag-logging.md) .
 
 ## <a name="availability-capabilities"></a>Kullanılabilirlik özellikleri
 
 Tek veritabanları, elastik havuzlar ve yönetilen örnekler hepsi birçok kullanılabilirlik özelliği sağlar. Bilgi için bkz. [kullanılabilirlik özellikleri](sql-database-technical-overview.md#availability-capabilities).
 
-## <a name="transact-sql-differences"></a>Transact-SQL farklılıkları
+## <a name="transact-sql-differences"></a>Transact-SQL farkları
 
 Uygulamaların kullandığı çoğu Transact-SQL özelliği hem Microsoft SQL Server hem de Azure SQL veritabanı 'nda tam olarak desteklenmektedir. Örneğin, veri türleri, işleçler, dize, aritmetik, mantıksal ve imleç işlevleri gibi çekirdek SQL bileşenleri, SQL Server ve SQL veritabanı 'nda aynı şekilde çalışır. Bununla birlikte, DDL (veri tanımlama dili) ve DML (veri işleme dili) öğelerinde yalnızca kısmen desteklenen (Bu makalede daha sonra tartıştığımız) bir T-SQL farkı vardır.
 Bunlara ek olarak, Azure SQL veritabanı, ana veritabanı ve işletim sistemi bağımlılıklarındaki özellikleri yalıtmak üzere tasarlandığından, hiçbir şekilde desteklenmeyen bazı özellikler ve söz dizimi vardır. Bu nedenle, çoğu sunucu düzeyi etkinlik SQL veritabanı için uygun değildir. T-SQL deyimleri ve seçenekleri, sunucu düzeyindeki seçenekleri, işletim sistemi bileşenlerini yapılandırıp veya dosya sistemi yapılandırması belirttiğinizde kullanılamaz. Bu tür özellikler gerektiğinde, SQL veritabanından veya başka bir Azure özelliğinden ya da hizmetinden başka bir şekilde, uygun bir alternatif vardır.

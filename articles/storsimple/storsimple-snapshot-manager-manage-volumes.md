@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365933"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254657"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış

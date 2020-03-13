@@ -16,11 +16,11 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 2a3325217c1ec854e4f6cef3facce5580fb06a57
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383575"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240271"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Hızlı Başlangıç: Azure CDN profili ve uç noktası oluşturma
 Bu hızlı başlangıçta, yeni bir CDN profili ve CDN uç noktası oluşturarak Azure Content Delivery Network’ü (CDN) etkinleştireceksiniz. Bir profil ve uç nokta oluşturduktan sonra müşterilerinize içerik sunmaya başlayabilirsiniz.

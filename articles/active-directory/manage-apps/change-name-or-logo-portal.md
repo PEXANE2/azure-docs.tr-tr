@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dfe0f8788275dd4403b6c9cad99a8eb09e479b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274725"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138510"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Azure Active Directory bir kurumsal uygulamanın adını veya logosunu değiştirme
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) içinde özel bir kurumsal uygulama için adı
 7. Dosya seçicide yeni logo olarak istediğiniz dosyayı seçin. Dosyanın adı geçerli logo resminin altındaki kutuda görüntülenir.
 
    > [!NOTE]
-   > Azure, logo resminin bir PNG dosyası olmasını gerektirir ve genişlik, yükseklik ve dosya boyutu sınırlarını uygular.
+   > Azure, logo resminin bir PNG dosyası olmasını gerektirir ve genişlik, yükseklik ve dosya boyutu sınırlarını uygular. Özel logolar, boyut olarak tam 215 &times; 215 piksel boyutunda olmalıdır ve PNG biçiminde olmalıdır. Kullanıcılara en iyi şekilde görünebilmeniz için uygulama logonuzda saydamlık olmadan bir düz renk arka planı kullanmanızı öneririz.
 8. **Kaydet**’i seçin. Yeni bir logo seçerseniz, **logo** alanının görüntüsü yeni logo dosyasını yansıtacak şekilde değişir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

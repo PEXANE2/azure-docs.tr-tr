@@ -15,19 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 0f6a303bfa42538bf56efa7e9f669588c8bff66c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 051b1bd22b2e04f92c02b63a416160d824d1be10
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082736"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216998"
 ---
 # <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Hızlı başlangıç: NAT Gateway-Kaynak Yöneticisi şablonu oluşturma
 
 Azure Resource Manager şablonu kullanarak sanal ağ NAT ile çalışmaya başlayın.  Bu şablon bir sanal ağ, bir NAT ağ geçidi ve Ubuntu sanal makinesi dağıtır. Ubuntu sanal makinesi, NAT ağ geçidiyle ilişkili bir alt ağa dağıtılır.
-
->[!NOTE] 
->Azure sanal ağ NAT, şu anda genel önizleme olarak kullanılabilir ve sınırlı sayıda [bölgede](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981010"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283231"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure kaynakları için rol tanımlarını anlama
 
@@ -28,7 +28,7 @@ Bir rolün nasıl çalıştığını anlamaya çalışıyorsanız veya [Azure ka
 
 ## <a name="role-definition-structure"></a>Rol tanımı yapısı
 
-*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca *rol* olarak da adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca gerçekleştirilemeyen işlemleri veya temel verilerle ilgili işlemleri de listeleyebilir. Rol tanımı aşağıdaki yapıya sahiptir:
+*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca *rol* olarak da adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca, gerçekleştirilemediği işlemleri veya temel alınan verilerle ilişkili işlemleri de listeleyebilir. Rol tanımı aşağıdaki yapıya sahiptir:
 
 ```
 Name
@@ -56,7 +56,7 @@ Bir işlem dizesinin `{action}` bölümü, bir kaynak türü üzerinde gerçekle
 | `action` | Sanal makineleri yeniden Başlat (POST) gibi özel işlemleri sunar. |
 | `delete` | Silme işlemlerini (SILME) mümkün. |
 
-JSON biçiminde [katılımcı](built-in-roles.md#contributor) rolü tanımı aşağıda verilmiştir. `Actions` altındaki joker karakter (`*`) işlemi, bu role atanan sorumlunun tüm eylemleri gerçekleştirebileceğini gösterir veya başka bir deyişle her şeyi yönetebilir. Bu, Azure yeni kaynak türleri ekledikçe gelecekte tanımlanacak eylemleri de içerir. `NotActions` altındaki işlemler `Actions` işlemlerinden çıkarılır. [Katkıda Bulunan](built-in-roles.md#contributor) rolünde, `NotActions` bu rolün kaynakları erişimi yönetme becerisini kaldırır ve kaynaklara erişim atar.
+JSON biçiminde [katılımcı](built-in-roles.md#contributor) rolü tanımı aşağıda verilmiştir. `Actions` altındaki joker karakter (`*`) işlemi, bu role atanan sorumlunun tüm işlemleri gerçekleştirebileceğini veya diğer bir deyişle, her şeyi yönetebileceğini belirtir. Bu, Azure yeni kaynak türleri eklediği için gelecekte tanımlanan eylemleri içerir. `NotActions` altındaki işlemler `Actions`çıkarılır. [Katkıda](built-in-roles.md#contributor) bulunan rolü söz konusu olduğunda `NotActions`, bu rolün kaynaklara erişimi yönetme ve ayrıca kaynaklara erişim atama yeteneğini ortadan kaldırır.
 
 ```json
 {
@@ -92,11 +92,11 @@ Yönetim erişimi, kapsayıcı kimlik doğrulama yönteminin "Azure AD Kullanıc
 
 Daha önce, rol tabanlı erişim denetimi veri işlemleri için kullanılmadı. Kaynak sağlayıcıları arasında değişen veri işlemlerine yönelik yetkilendirme. Yönetim işlemleri için kullanılan rol tabanlı erişim denetimi yetkilendirme modeli, veri işlemlerine genişletildi.
 
-Veri işlemlerini desteklemek için, rol tanımı yapısına yeni veri özellikleri eklenmiştir. Veri işlemleri `DataActions` ve `NotDataActions` özelliklerinde belirtilir. Bu veri özellikleri eklenerek, yönetim ve veriler arasındaki ayrım korunur. Ayrıca joker karakter (`*`) içeren geçerli rol atamalarının aniden verilere erişim almasını da önler. Burada, `DataActions` ve `NotDataActions` özelliklerinde belirtilebilecek bazı veri işlemleri verilmiştir:
+Veri işlemlerini desteklemek için, rol tanımı yapısına yeni veri özellikleri eklenmiştir. Veri işlemleri `DataActions` ve `NotDataActions` özelliklerinde belirtilir. Bu veri özellikleri eklenerek, yönetim ve veriler arasındaki ayrım korunur. Bu, joker karakter (`*`) olan geçerli rol atamalarının aniden verilere erişmesine engel olur. `DataActions` ve `NotDataActions`içinde belirtime bazı veri işlemleri aşağıda verilmiştir:
 
-- Kapsayıcıdaki blobların listesini okuma
-- Kapsayıcıda depolama blobu yazma
-- Kuyruktaki iletiyi silme
+- Bir kapsayıcıdaki Blobların listesini okuma
+- Kapsayıcıda bir Depolama Blobu yazma
+- Kuyruktaki bir iletiyi silme
 
 Hem `Actions` hem de `DataActions` özelliklerinde işlemler içeren [Depolama Blobu veri okuyucusu](built-in-roles.md#storage-blob-data-reader) rol tanımı aşağıda verilmiştir. Bu rol, blob kapsayıcısını ve ayrıca temel alınan blob verilerini okumanızı sağlar.
 

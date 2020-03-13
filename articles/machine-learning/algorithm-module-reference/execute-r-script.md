@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 1cf8c208e83950706278e2cff5d13951393eec8f
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037112"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140782"
 ---
 # <a name="execute-r-script"></a>R Betiği yürütme
 
@@ -97,13 +97,16 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-İşlem hattı başarıyla gönderildikten sonra, modülün sağ panelindeki resmin önizlemesini karşıya yükleyebilirsiniz ![resim](media/module/upload-image-in-r-script.png)
+İşlem hattı başarıyla gönderildikten sonra, modülün sağ panelinde görüntünün önizlemesini yapabilirsiniz
+
+[!div class="mx-imgBorder"]
+Karşıya yüklenen ![-görüntü](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>Execute R betiğini yapılandırma
 
 **R betiği Yürüt** modülü, başlangıç noktası olarak kullanabileceğiniz örnek kodu içerir. **R betiğini Yürüt** modülünü yapılandırmak için, yürütülecek bir giriş ve kod kümesi sağlayın.
 
-![R-modülü](media/module/upload-image-in-r-script.png)
+![R-modülü](media/module/execute-r-script.png)
 
 Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik olarak R veri çerçevesine dönüştürülür.
 
@@ -123,25 +126,25 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
 
     Başlamanıza yardımcı olmak için **R betiği** metin kutusu, düzenlenebilir veya değiştirilebilir örnek kodla önceden doldurulur.
     
-```R
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main
-# which is the entry point for this module.
+    ```R
+    # R version: 3.5.1
+    # The script MUST contain a function named azureml_main
+    # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
+    # The entry point function can contain up to two input arguments:
+    #   Param<dataframe1>: a R DataFrame
+    #   Param<dataframe2>: a R DataFrame
+    azureml_main <- function(dataframe1, dataframe2){
+    print("R script run.")
 
-  # If a zip file is connected to the third input port, it is
-  # unzipped under "./Script Bundle". This directory is added
-  # to sys.path.
+    # If a zip file is connected to the third input port, it is
+    # unzipped under "./Script Bundle". This directory is added
+    # to sys.path.
 
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
+    # Return datasets as a Named List
+    return(list(dataset1=dataframe1, dataset2=dataframe2))
+    }
+    ```
 
  * Betik, Bu modülün giriş noktası olan `azureml_main`adlı bir işlev içermelidir.
 
@@ -174,9 +177,9 @@ Sonuçları R betiğine yazdırmanız gerekirse, yazdırılan sonuçları modül
 
 **Execute r betiği** modülü, giriş olarak rastgele R betik dosyalarını destekler. Bunu yapmak için, ZIP dosyasının bir parçası olarak çalışma alanınıza yüklenmesi gerekir.
 
-1. R kodu içeren bir ZIP dosyasını çalışma alanınıza yüklemek için **Yeni**' ye tıklayın, **veri kümesi**' ne tıklayın ve ardından **yerel dosya** ve **ZIP dosyası** seçeneğini belirleyin.  
+1. R kodu içeren bir ZIP dosyasını çalışma alanınıza yüklemek için **veri kümeleri** varlık sayfasına gidin, **veri kümesi oluştur**' a tıklayın ve ardından **yerel dosya** ve **Dosya** veri kümesi türü seçeneğini belirleyin.  
 
-1. Sıkıştırılmış dosyanın **kayıtlı veri kümeleri** listesinde kullanılabilir olduğunu doğrulayın.
+1. Sıkıştırılmış dosyanın, sol modül ağacındaki **veri** kümeleri kategorisi altında bulunan **veri kümelerim** listesinde kullanılabilir olduğunu doğrulayın.
 
 1.  Veri kümesini **betik paketi** giriş bağlantı noktasına bağlayın.
 
@@ -316,7 +319,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | Crayon       | 1.3.4      | 
 | Kıvr         | 3.3        | 
 | Data. Table   | 1.12.2     | 
-| datasets     | 3.5.1      | 
+| veri kümeleri     | 3.5.1      | 
 | DBı          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 

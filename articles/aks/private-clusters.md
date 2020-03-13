@@ -4,100 +4,23 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: b8b4f8062d9f60648e22ab4eb0be78eb47159834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944209"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205180"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma (Önizleme)
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
 Özel bir kümede, denetim düzlemi veya API sunucusu, [Özel Internetler belgesi Için RFC1918-Address ayırması](https://tools.ietf.org/html/rfc1918) içinde tanımlanan iç IP adreslerine sahiptir. Özel bir küme kullanarak, API sunucunuz ve düğüm havuzlarınız arasındaki ağ trafiğinin yalnızca özel ağ üzerinde kalmasını sağlayabilirsiniz.
 
 Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından yönetilen bir Azure aboneliğinde bulunur. Müşterinin kümesi veya düğüm havuzu müşterinin aboneliğine ait. Sunucu ve küme veya düğüm havuzu, API sunucusu sanal ağındaki [Azure özel bağlantı hizmeti][private-link-service] ve müşterinin aks kümesinin alt ağında kullanıma sunulan özel bir uç nokta aracılığıyla birbirleriyle iletişim kurabilir.
 
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis ' dir ve bir katılım temelinde sunulur. Önizlemeler *,* ve *kullanılabilir* olarak sağlanır ve hızmet düzeyi sözleşmesi (SLA) ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin *en iyi çaba* temelinde kısmen ele alınmıştır. Bu nedenle, Özellikler üretim kullanımı için tasarlanmamıştır. Daha fazla bilgi için aşağıdaki destek makalelerine bakın:
->
-> * [AKS destek Ilkeleri](support-policies.md)
-> * [Azure desteği SSS](faq.md)
-
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure CLı sürüm 2.0.77 veya üzeri ve Azure CLı AKS önizleme uzantısı sürüm 0.4.18
+* Azure CLı sürüm 2.2.0 veya üzeri
 
-## <a name="currently-supported-regions"></a>Şu anda desteklenen bölgeler
-
-* Doğu Avustralya
-* Güneydoğu Avustralya
-* Güney Brezilya
-* Orta Kanada
-* Doğu Kanada
-* Cenral US
-* Doğu Asya
-* Doğu ABD
-* Doğu ABD 2
-* EUAP Doğu ABD 2
-* Orta Fransa
-* Almanya Kuzey
-* Doğu Japonya
-* Batı Japonya
-* Güney Kore - Orta
-* Güney Kore - Güney
-* Orta Kuzey ABD
-* Kuzey Avrupa
-* Kuzey Avrupa
-* Orta Güney ABD
-* Güney Birleşik Krallık
-* Batı Avrupa
-* Batı ABD
-* Batı ABD 2
-* Doğu ABD 2
-
-## <a name="currently-supported-availability-zones"></a>Şu anda desteklenen Kullanılabilirlik Alanları
-
-* Orta ABD
-* Doğu ABD
-* Doğu ABD 2
-* Orta Fransa
-* Doğu Japonya
-* Kuzey Avrupa
-* Güneydoğu Asya
-* Güney Birleşik Krallık
-* Batı Avrupa
-* Batı ABD 2
-
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>En son Azure CLı AKS önizleme uzantısını yükler
-
-Özel kümeleri kullanmak için Azure CLı AKS önizleme uzantısı sürüm 0.4.18 veya sonraki bir sürümü gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak Azure CLI aks önizleme uzantısını yükledikten sonra aşağıdaki [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-> [!CAUTION]
-> Bir abonelik üzerinde bir özelliği kaydettiğinizde, o özelliği şu anda kaydedemezsiniz. Bazı Önizleme özelliklerini etkinleştirdikten sonra, abonelikte oluşturulan tüm AKS kümeleri için varsayılan ayarları kullanabilirsiniz. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
-
-```azurecli-interactive
-az feature register --name AKSPrivateLinkPreview --namespace Microsoft.ContainerService
-```
-
-Kayıt durumunun *kayıtlı*olarak gösterilmesi birkaç dakika sürebilir. Aşağıdaki [az Feature List][az-feature-list] komutunu kullanarak durumu kontrol edebilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSPrivateLinkPreview')].{Name:name,State:properties.state}"
-```
-
-Durum kaydedildiğinde, aşağıdaki [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-az provider register --namespace Microsoft.Network
-```
 ## <a name="create-a-private-aks-cluster"></a>Özel AKS kümesi oluşturma
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
@@ -159,6 +82,7 @@ Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet 
 9. VM 'nin bulunduğu sanal ağa gidin, **eşlemeler ' i seçin,** aks sanal ağını seçin ve ardından eşlemeyi oluşturun. AKS sanal ağındaki adres aralıkları ve VM 'nin sanal ağ çakışması, eşleme başarısız olur. Daha fazla bilgi için bkz. [sanal ağ eşlemesi][virtual-network-peering].
 
 ## <a name="dependencies"></a>Bağımlılıklar  
+
 * Özel bağlantı hizmeti yalnızca standart Azure Load Balancer desteklenir. Temel Azure Load Balancer desteklenmez.  
 * Özel bir DNS sunucusu kullanmak için, bu IP 168.63.129.16 iletmek üzere DNS ile bir AD sunucusu dağıtın
 
@@ -173,7 +97,6 @@ Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet 
 * Mevcut AKS kümelerini özel kümelere dönüştürme desteği yok
 * Müşteri alt ağındaki özel uç noktasını silmek veya değiştirmek kümenin çalışmayı durdurmasına neden olur. 
 * Kapsayıcılar için Azure Izleyici canlı veriler şu anda desteklenmiyor.
-* *Kendı DNS 'Nizi getir* Şu anda desteklenmiyor.
 
 
 <!-- LINKS - internal -->

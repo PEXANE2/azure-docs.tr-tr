@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: şablon kullanarak Apache Spark kümesi oluşturma-Azure HDInsight'
-description: Bu hızlı başlangıçta, Kaynak Yöneticisi şablonu kullanılarak nasıl Azure HDInsight’ta Apache Spark kümesi oluşturulacağı ve basit bir Spark SQL sorgusu çalıştırılacağı gösterilmektedir.
+description: Bu hızlı başlangıçta, Azure HDInsight 'ta bir Apache Spark kümesi oluşturmak ve bir Spark SQL sorgusu çalıştırmak için Kaynak Yöneticisi şablonunun nasıl kullanılacağı gösterilmektedir.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
 ms.custom: mvc
-ms.openlocfilehash: 2637603fa303d57340aa36786443508f1930a481
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 03/05/2020
+ms.openlocfilehash: a4c207cdbe4bbd0fdef5e1da8da0f4b582702308
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049925"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241209"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
 
@@ -21,9 +21,7 @@ Bu hızlı başlangıçta, Azure HDInsight 'ta bir Apache Spark kümesi oluştur
 
 [Genel bakış: Azure HDInsight 'ta Apache Spark](apache-spark-overview.md) | [Apache Spark](https://spark.apache.org/) | [Apache Hive](https://hive.apache.org/) | [Jupyter Notebook](https://jupyter.org/) | [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
-## <a name="prerequisites"></a>Önkoşullar
-
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark kümesi oluşturma
 
@@ -42,18 +40,18 @@ Küme, küme depolama alanı olarak Azure Depolama Bloblarını kullanır. Data 
 
     | Özellik | Değer |
     |---|---|
-    |**Abonelik**|Bu kümeyi oluşturmak için kullanılan Azure aboneliğinizi seçin. Bu hızlı başlangıç için kullanılan abonelik, **&lt;Azure abonelik adı>** şeklindedir. |
-    | **Kaynak grubu**|Kaynak grubu oluşturun veya var olan bir grubu seçin. Kaynak grubu, projelerinize ait Azure kaynaklarını yönetmek için kullanılır. Bu hızlı başlangıç için kullanılan yeni kaynak grubu adı, **myspark20180403rg** şeklindedir.|
-    | **Konum**|Kaynak grubu için bir konum seçin. Şablon hem kümeyi oluşturmak için hem de varsayılan küme depolaması için bu konumu kullanır. Bu hızlı başlangıç için kullanılan konum, **Doğu ABD 2**’dir.|
-    | **ClusterName**|Oluşturmak istediğiniz küme için bir ad girin. Bu hızlı başlangıç için kullanılan yeni küme adı, **myspark20180403** şeklindedir.|
-    | **Küme oturum açma adı ve parolası**|Varsayılan oturum açma adı admin ' dir. Küme oturumu açmak için bir parola seçin. Bu hızlı başlangıç için kullanılan oturum açma adı, admin’dir.|
-    | **SSH kullanıcı adı ve parolası**|SSH kullanıcısı için bir parola seçin. Bu hızlı başlangıç için kullanılan SSH kullanıcı adı, **sshuser** şeklindedir.|
+    |Abonelik|Bu kümeyi oluşturmak için kullanılan Azure aboneliğinizi seçin. |
+    | Kaynak grubu|Kaynak grubu oluşturun veya var olan bir grubu seçin. Kaynak grubu, projelerinize ait Azure kaynaklarını yönetmek için kullanılır. Bu hızlı başlangıç için kullanılan yeni kaynak grubu adı, **myspark20180403rg** şeklindedir.|
+    | Konum|Kaynak grubu için bir konum seçin. Şablon, kümeyi oluşturmak için bu konumu ve varsayılan küme depolamayı kullanır. Bu hızlı başlangıç için kullanılan konum, **Doğu ABD 2**’dir.|
+    | ClusterName|Oluşturmak istediğiniz küme için bir ad girin. Bu hızlı başlangıç için kullanılan yeni küme adı, **myspark20180403** şeklindedir.|
+    | Küme oturum açma adı ve parolası|Varsayılan oturum açma adı admin ' dir. Küme oturumu açmak için bir parola seçin. Bu hızlı başlangıç için kullanılan oturum açma adı, admin’dir.|
+    | SSH Kullanıcı adı ve parolası|SSH kullanıcısı için bir parola seçin. Bu hızlı başlangıç için kullanılan SSH kullanıcı adı, **sshuser** şeklindedir.|
 
     ![Azure Resource Manager şablonu kullanarak HDInsight 'ta Spark kümesi oluşturma](./media/apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Azure Resource Manager şablonu kullanarak HDInsight 'ta Spark kümesi oluşturma")
 
-3. **Yukarıdaki hüküm ve koşulları kabul ediyorum**’u ve ardından **Panoya sabitle**’yi seçip **Satın al**’a tıklayın. Artık **Şablon Dağıtımını dağıtma** başlıklı yeni bir kutucuk görebilirsiniz. Kümenin oluşturulması yaklaşık 20 dakika sürer. Sonraki oturumuna devam etmeden önce küme oluşturulması gerekir.
+3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u seçin ve ardından **satın al**' ı seçin. Artık **Şablon Dağıtımını dağıtma** başlıklı yeni bir kutucuk görebilirsiniz. Kümenin oluşturulması yaklaşık 20 dakika sürer. Sonraki oturumuna devam etmeden önce küme oluşturulması gerekir.
 
-HDInsight kümeleri oluşturma ile ilgili bir sorun yaşıyorsanız, bunu yapmak için doğru izinlere sahip değilsiniz. Daha fazla bilgi için bkz. [Erişim denetimi gereksinimleri](../hdinsight-hadoop-create-linux-clusters-portal.md).
+HDInsight kümeleri oluşturma ile ilgili bir sorun yaşıyorsanız, bunu yapmak için doğru izinlere sahip değilsiniz. Daha fazla bilgi için bkz. [Erişim denetimi gereksinimleri](../hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="install-intellijeclipse-for-spark-applications"></a>Spark uygulamaları için IntelliJ/tutulma 'yi yükler
 
@@ -92,6 +90,7 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve dönüştürme için en
     ![Çekirdek durumu](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Çekirdek durumu")
 
     Not defterini ilk kez başlattığınızda, çekirdek arka planda birkaç görev gerçekleştirir. Çekirdeğin hazır olmasını bekleyin.
+
 1. Aşağıdaki kodu boş bir hücreye yapıştırın ve kodu çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Komut, kümedeki Hive tablolarını listeler:
 
     ```sql
@@ -120,7 +119,7 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve dönüştürme için en
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-HDInsight, verilerinizi ve Jupyter not defterlerini Azure Depolama’da veya Azure Data Lake Store’da depolar; böylece kullanımda olmayan bir kümeyi güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Küme ücretleri depolama ücretlerinin birkaç katı olduğundan, kullanılmadığında kümelerin silinmesi mantıklı olandır. [Sonraki adımlar](#next-steps) içinde listelenen öğretici üzerinde hemen çalışmayı planlıyorsanız, kümeyi tutmak isteyebilirsiniz.
+HDInsight, verilerinizi ve jupi not defterlerinizi Azure Storage 'a veya Azure Data Lake Storage kaydeder, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanımda olmasa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Kümenin ücretleri depolama ücretinden çok daha fazla olduğundan, kullanımda olmadıkları zaman kümeleri silmek ekonomik bir anlam sağlar. [Sonraki adımlar](#next-steps) içinde listelenen öğretici üzerinde hemen çalışmayı planlıyorsanız, kümeyi tutmak isteyebilirsiniz.
 
 Azure portalına geri dönüp **Sil**’i seçin.
 
@@ -133,4 +132,4 @@ Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **K
 Bu hızlı başlangıçta, HDInsight 'ta Apache Spark kümesi oluşturmayı ve temel Spark SQL sorgusunu çalıştırmayı öğrendiniz. Örnek verilerde etkileşimli sorgular çalıştırmak için bir HDInsight kümesi kullanmayı öğrenmek üzere bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
->[Apache Spark etkileşimli sorgular çalıştırma](./apache-spark-load-data-run-query.md)
+> [Apache Spark etkileşimli sorgular çalıştırma](./apache-spark-load-data-run-query.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707953"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136492"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Dsregcmd komutunu kullanarak cihazların sorunlarını giderme
 
@@ -211,8 +211,16 @@ Bu bölüm, ekleme hatalarının tanılanmasına yardımcı olmak için çeşitl
 - **Ad yapılandırma testi:** -test, SCP nesnesinin ŞIRKET içi ad ormanında doğru yapılandırılıp yapılandırılmadığını doğrular ve doğrular. Bu testteki hatalar, bulma aşamasında 0x801c001d hata koduyla birlikte hatalara neden olabilir.
 - **DRS bulma testi:** -test, bulma meta verileri uç noktasından DRS uç noktalarını alır ve bir Kullanıcı bölgesi isteği gerçekleştirir. Bu testteki hatalar, bulma aşamasında hata oluşmasına neden olabilir.
 - **DRS bağlantı testi:** -test, DRS uç noktasına temel bağlantı testi gerçekleştirir.
-- **Belirteç alma testi:** -test, Kullanıcı kiracının federe olması halinde bır Azure AD kimlik doğrulama belirteci almaya çalışır. Bu testteki hatalar, kimlik doğrulama aşamasında hata oluşmasına neden olabilir. Kimlik doğrulama başarısız olursa, geri dönüş bir kayıt defteri anahtarı ile açıkça devre dışı bırakılmadığı sürece, geri dönüş olarak denenmeyecektir.
-- **Eşitlemeye geri dön:** -kayıt defteri anahtarı, kimlik doğrulama hatalarıyla eşitlemeye izin vermek Için "etkin" olarak ayarlanır. Bu seçenek Windows 10 1803 ve üzeri sürümlerde kullanılabilir.
+- **Belirteç alma testi:** -test, Kullanıcı kiracının federe olması halinde bır Azure AD kimlik doğrulama belirteci almaya çalışır. Bu testteki hatalar, kimlik doğrulama aşamasında hata oluşmasına neden olabilir. Kimlik doğrulama başarısız olursa, geri dönüş aşağıdaki kayıt defteri anahtarı ayarları ile açıkça devre dışı bırakılmadığı sürece, geri dönüş olarak denenmeyecektir.
+```
+    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+    Value: FallbackToSyncJoin
+    Type:  REG_DWORD
+    Value: 0x0 -> Disabled
+    Value: 0x1 -> Enabled
+    Default (No Key): Enabled
+ ```
+- **Eşitlemeye geri dön:** -Yukarıdaki kayıt defteri anahtarı, kimlik doğrulama hatalarıyla eşitlemeye geri dönüş işlemini engellemek Için "etkin" olarak ayarlanır. Bu seçenek Windows 10 1803 ve üzeri sürümlerde kullanılabilir.
 - **Önceki kayıt:** -önceki ekleme girişiminin gerçekleştiği zaman. Yalnızca başarısız olan ekleme denemeleri günlüğe kaydedilir.
 - **Hata aşaması:** -durdurulan birleştirmenin aşaması. Olası değerler, ön denetim, bulma, kimlik doğrulama, JOIN.
 - **Istemci ErrorCode:** -döndürülen istemci hata kodu (HRESULT).

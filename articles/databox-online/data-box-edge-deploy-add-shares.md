@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 3b1988656e2c15515e121df3ee71e31ce7edd750
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78946157"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79212955"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>Öğretici: Azure Data Box Edge veri aktarma
 
@@ -59,26 +59,28 @@ Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
     Tür **SMB** veya **NFS** olabilir; varsayılan tür SMB'dir. SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır.  
     SMB veya NFS paylaşımlarını seçmenize bağlı olarak, seçeneklerin geri kalanı biraz farklılık gösterir. 
 
-    c. Paylaşımın bulunacağı bir depolama hesabı sağlayın. 
+    c. Paylaşımın bulunacağı bir depolama hesabı sağlayın.
 
-    
+      > [!IMPORTANT]
+      > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+
     d. **Depolama hizmeti** açılan listesinde, **Blok Blobu**, **Sayfa Blobu**veya **dosyalar**' ı seçin.  
     Seçtiğiniz hizmetin türü, verilerin Azure 'da kullanmasını istediğiniz biçime bağlıdır. Bu örnekte, verileri Azure 'da blok Blobları olarak depolamak istiyoruz, **Blok Blobu**seçtik. **Sayfa Blobu**' nı seçerseniz, verilerinizin 512 bayt hizalı olduğundan emin olun. Örneğin VHDX her zaman 512 bayt hizalıdır.
 
     e. Yeni bir blob kapsayıcısı oluşturun veya açılan listeden mevcut bir tane kullanın. Blob kapsayıcısı oluşturuyorsanız bir kapsayıcı adı sağlayın. Zaten bir kapsayıcı yoksa, depolama hesabında yeni oluşturulan paylaşma adıyla oluşturulur.
-   
-    f. Bir SMB veya NFS paylaşımının oluşturulup oluşturulmayacağını bağlı olarak, aşağıdaki adımlardan birini yapın: 
-     
-    - **SMB paylaşma**: **tüm ayrıcalık yerel kullanıcısı**' nın altında, **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni bir yerel kullanıcı oluşturursanız, bir Kullanıcı adı ve parola girin ve parolayı onaylayın. Bu eylem, yerel kullanıcıya izinler atar. Paylaşma düzeyi izinlerinin değiştirilmesi Şu anda desteklenmiyor.
+
+    f. Bir SMB veya NFS paylaşımının oluşturulup oluşturulmayacağını bağlı olarak, aşağıdaki adımlardan birini yapın:
+
+    * **SMB paylaşma**: **tüm ayrıcalık yerel kullanıcısı**' nın altında, **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni bir yerel kullanıcı oluşturursanız, bir Kullanıcı adı ve parola girin ve parolayı onaylayın. Bu eylem, yerel kullanıcıya izinler atar. Paylaşma düzeyi izinlerinin değiştirilmesi Şu anda desteklenmiyor.
 
         Bu paylaşma verileri için **yalnızca okuma Işlemlerine Izin ver** onay kutusunu seçerseniz, salt okunurdur kullanıcıları belirtebilirsiniz.
 
         ![SMB paylaşımı ekleme](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
-   
-    - **NFS paylaşma**: paylaşıma erişebilen izin VERILEN istemcilerin IP adreslerini girin.
+
+    * **NFS paylaşma**: paylaşıma erişebilen izin VERILEN istemcilerin IP adreslerini girin.
 
         ![NFS paylaşımı ekleme](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
-   
+
 4. Paylaşma oluşturmak için **Oluştur** ' u seçin.
     
     Paylaşma oluşturma işleminin devam ettiğini size bildirilir. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** kutucuğunu yeni paylaşımı yansıtacak şekilde güncelleştirir.

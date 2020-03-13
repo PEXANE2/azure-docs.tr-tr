@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: f7d993799fed637fbec55afc8f06d90c8fc6910f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b0a4627d377f5fa9ca997d1cc96bc38b0a6c37f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217215"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Azure 'da PaaS veritabanlarını güvenli hale getirmek için en iyi yöntemler
 
@@ -48,7 +48,7 @@ Azure SQL veritabanları, iki kimlik doğrulama türünden birini kullanacak şe
 - , Veritabanı düzeyinde kimliklerin kimliğini doğrulamak için kapsanan veritabanı kullanıcılarını kullanır.
 - SQL veritabanı 'na bağlanan uygulamalar için belirteç tabanlı kimlik doğrulamasını destekler.
 - Etki alanı eşitlemesi olmadan yerel bir Azure AD için Active Directory Federasyon Hizmetleri (AD FS) (ADFS) veya yerel kullanıcı/parola kimlik doğrulaması ile etki alanı Federasyonu destekler.
-- , [Çok faktörlü kimlik doğrulaması (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Içeren Active Directory evrensel kimlik doğrulaması kullanan SQL Server Management Studio bağlantıları destekler. MFA telefon görüşmesi, SMS mesajı, pin ile akıllı kart veya mobil uygulama bildirimi gibi çok sayıda kolay doğrulama seçeneğine sahiptir. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması](../../sql-database/sql-database-ssms-mfa-authentication.md).
+- [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Içeren Active Directory evrensel kimlik doğrulaması kullanan SQL Server Management Studio bağlantılarını destekler. MFA telefon görüşmesi, SMS mesajı, pin ile akıllı kart veya mobil uygulama bildirimi gibi çok sayıda kolay doğrulama seçeneğine sahiptir. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması](../../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz.
 
@@ -68,7 +68,7 @@ SQL veritabanı varsayılan kaynak IP adresi kısıtlamaları, diğer abonelikle
 
 Azure SQL güvenlik duvarı ve IP kısıtlamaları hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Azure SQL veritabanı ve SQL veri ambarı erişim denetimi](../../sql-database/sql-database-control-access.md)
+- [Azure SQL veritabanı ve SQL veri ambarı erişim denetimi](../../sql-database/sql-database-manage-logins.md)
 - [Azure SQL veritabanı ve SQL veri ambarı güvenlik duvarı kuralları](../../sql-database/sql-database-firewall-configure.md)
 
 

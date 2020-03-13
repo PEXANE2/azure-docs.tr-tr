@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427478"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217866"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Öğretici 2: Kredi risk modellerini eğitme-Azure Machine Learning Studio (klasik)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde genişletilmiş bir görünüm elde edersiniz. Machine Learning Studio (klasik) içinde basit bir model geliştirirsiniz.  Daha sonra modeli bir Azure Machine Learning Web hizmeti olarak dağıtabilirsiniz.  Bu dağıtılan model yeni verileri kullanarak tahminleri yapabilir. Bu öğretici, **üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür**.
 
@@ -38,7 +40,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 
 [Öğreticinin üçüncü kısmında](tutorial-part3-credit-risk-deploy.md), modeli bir Web hizmeti olarak dağıtacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Öğreticiden birinin bir kısmını](tutorial-part1-credit-risk.md)doldurun.
 
@@ -88,7 +90,7 @@ Denemenin bu bölümü artık şuna benzer:
 
 1. **Tamam** onay işaretine tıklayın.
 
-### <a name="two-class-support-vector-machine"></a>Çift Sınıflı Destek Vektör Makinesi
+### <a name="two-class-support-vector-machine"></a>İki Sınıflı Destek Vektör Makinesi
 
 Ardından, SVM modelini ayarlarsınız.  
 

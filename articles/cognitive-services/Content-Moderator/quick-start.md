@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/13/2020
 ms.author: pafarley
-ms.openlocfilehash: a641893fece37c759480ab31f505b1673f50e2b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973620"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203599"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı başlangıç: Web üzerinde Content Moderator deneyin
 
@@ -32,9 +32,23 @@ Content Moderator Inceleme Aracı, insan gözden geçirenlerin kararlar verirken
 
 ## <a name="create-a-review-team"></a>Bir gözden geçirme ekibi oluşturun
 
-Sonra, bir gözden geçirme ekibi oluşturun. Çalışan bir senaryoda bu, hizmetin denetleme kararlarını el ile gözden geçirebilen kişi grubu olacaktır. Şimdilik yalnızca bir takım adı oluşturmanız gerekir. İş arkadaşlarınızı takıma davet etmek isterseniz, e-posta adreslerini buraya girerek yapabilirsiniz.
+Sonra, bir gözden geçirme ekibi oluşturun. Çalışan bir senaryoda bu, hizmetin denetleme kararlarını el ile gözden geçirebilen kişi grubu olacaktır. Bir ekip oluşturmak için bir **bölge**seçmeniz ve bir **Takım adı** ve **Takım Kimliği**sağlamanız gerekir. İş arkadaşlarınızı takıma davet etmek isterseniz, e-posta adreslerini buraya girerek yapabilirsiniz.
 
-![Takım üyesini davet et](images/QuickStart-2-small.png)
+> [!NOTE]
+> **Ekip adı** , gözden geçirme ekibiniz için kolay bir addır. Bu ad Azure portal görüntülenir. **EKIP kimliği** , gözden geçirme takımınızın program aracılığıyla tanımlamak için kullanılan şeydir.
+
+> [!div class="mx-imgBorder"]
+> ![Takım üyesini davet](images/create-team.png)
+
+Verileri müşteri tarafından yönetilen bir anahtarla (CMK) şifrelemeyi seçerseniz, E0 fiyatlandırma katmanında Content Moderator kaynağınız için **kaynak kimliği** istenir. Sağladığınız kaynak yeni olmalıdır. 
+
+> [!div class="mx-imgBorder"]
+> ![Takım üyesini CMK](images/create-team-cmk.png) davet etme
+
+Bir Content Moderator kaynağını yeniden kullanmaya çalışırsanız şu uyarıyı görürsünüz: 
+
+> [!div class="mx-imgBorder"]
+> ![CMK hatası](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>Örnek içeriği karşıya yükle
 

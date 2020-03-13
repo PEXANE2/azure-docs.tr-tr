@@ -4,11 +4,11 @@ description: Ölçüm Gezgini 'nde grafikleri yorumlama ve Ölçüm Gezgini dike
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368284"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275899"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights ölçümleri keşfetme
 [Application Insights][start] ölçümler, uygulamanızdan telemetri olarak gönderilen olayların ve sayımların ölçümleridir. Bunlar, performans sorunlarını tespit etmenize ve uygulamanızın nasıl kullanıldığı konusunda eğilimleri izlemenize yardımcı olur. Birçok standart ölçüm yelpazesi vardır ve ayrıca kendi özel ölçümlerinizi ve olaylarınızı da oluşturabilirsiniz.

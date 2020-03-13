@@ -7,17 +7,17 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433344"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277940"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Redsıs sunucu tarafı sorunları için Azure Cache sorunlarını giderme
 
 Bu bölümde, redya ya da barındıran sanal makineler için Azure önbelleğindeki bir koşul nedeniyle oluşan sorun giderme sorunları ele alınmaktadır.
 
-- [Redsıs sunucusu 'nda bellek baskısı](#memory-pressure-on-redis-server)
+- [Redis sunucusunda bellek baskısı](#memory-pressure-on-redis-server)
 - [Yüksek CPU kullanımı veya sunucu yükü](#high-cpu-usage-or-server-load)
 - [Uzun süre çalışan komutlar](#long-running-commands)
 - [Sunucu tarafı bant genişliği sınırlaması](#server-side-bandwidth-limitation)
@@ -73,7 +73,7 @@ Ağ bant genişliği kullanımının en yüksek kapasiteye yakın olduğu duruml
 - Olası etkilerden önce bildirilmesi için önbellek okuma veya önbellek yazma gibi ölçümler üzerinde [uyarılar oluşturun](cache-how-to-monitor.md#alerts) .
 - Daha fazla ağ bant genişliği kapasitesine sahip daha büyük bir önbellek boyutuna [ölçeklendirin](cache-how-to-scale.md) .
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 - [Redis için Azure Cache istemci tarafı sorunlarını giderme](cache-troubleshoot-client.md)
 - [Redne teklif teklifi ve boyutu için Azure önbelleği kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)

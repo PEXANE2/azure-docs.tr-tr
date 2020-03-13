@@ -4,11 +4,11 @@ description: Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayım
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389434"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220726"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Bilgi Bankası yanıtlarını yanıtlar için sorgulama
 

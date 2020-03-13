@@ -12,11 +12,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356308"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281619"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen dosya ve sıkıştırma biçimleri
 *Bu konu şu bağlayıcılar için geçerlidir: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [dosya sistemi](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md),, [](data-factory-hdfs-connector.md) [http](data-factory-http-connector.md)ve [SFTP](data-factory-sftp-connector.md).*

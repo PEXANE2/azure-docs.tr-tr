@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: e0fb78be363795bbb09fb0f14bd018fceea34a48
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 61cda5e61d14c4eeaf2d88483603707598b1c911
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78897893"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202251"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Öğretici: Azure PowerShell kullanarak NAT ağ geçidi oluşturma ve NAT hizmetini test etme
 
 Bu öğreticide, Azure 'da sanal makineler için giden bağlantı sağlamak üzere bir NAT ağ geçidi oluşturacaksınız. NAT ağ geçidini test etmek için bir kaynak ve hedef sanal makine dağıtırsınız. Genel bir IP adresine giden bağlantılar yaparak NAT ağ geçidini test edersiniz. Bu bağlantılar kaynaktan hedef sanal makineye gönderilir. Bu öğretici, basitlik için aynı kaynak grubundaki iki farklı sanal ağda kaynak ve hedef dağıtır.
-
->[!NOTE] 
->Azure sanal ağ NAT, şu anda genel önizleme olarak kullanılabilir ve sınırlı sayıda [bölgede](./nat-overview.md#region-availability)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -495,7 +492,6 @@ NAT hizmeti 'nin çalışıyor olduğunu görmek için Azure Izleyici 'de ölç�
 - [Azure CLI kullanarak NAT Gateway kaynağını](./quickstart-create-nat-gateway-cli.md)dağıtmaya yönelik hızlı başlangıç.
 - [Azure PowerShell kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-powershell.md)dağıtmaya yönelik hızlı başlangıç.
 - [Azure Portal kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-portal.md)dağıtmaya yönelik hızlı başlangıç.
-- [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).
 
 > [!div class="nextstepaction"]
 

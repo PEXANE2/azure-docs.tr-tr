@@ -13,11 +13,11 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945865"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256425"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL bağlantı mimarisi
 > [!NOTE]

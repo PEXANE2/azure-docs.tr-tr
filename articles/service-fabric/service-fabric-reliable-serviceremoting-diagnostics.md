@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389756"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282282"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Güvenilir hizmet uzaktan Iletişimi için tanılama ve performans izleme
 Güvenilir ServiceRemoting çalışma zamanı, [performans sayaçlarını](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)yayar. Bunlar ServiceRemoting 'in nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.

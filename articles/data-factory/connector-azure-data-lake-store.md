@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4dae0d10f103710a0e6039127c5c1cacb63c03c4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.openlocfilehash: 50e88d43d159ba5ac8f7b6c196c9843faad9eaf1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394262"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246233"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 1. veri kopyalama
 
@@ -261,6 +261,7 @@ Biçim tabanlı kopya havuzunda `storeSettings` ayarları altında Azure Data La
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` altındaki tür özelliği **AzureDataLakeStoreWriteSettings**olarak ayarlanmalıdır. | Yes      |
 | copyBehavior             | Kaynak dosyaları bir dosya tabanlı veri deposundan olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın göreli yoluyla hedef klasöre aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlarına sahip. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya adı belirtilirse, birleştirilmiş dosya adı belirtilen adıdır. Aksi takdirde, bir otomatik olarak oluşturulan dosya adı değil. | Hayır       |
+| Expirrivdatetime | Yazılan dosyaların süre sonu süresini belirtir. Saat, UTC zamanına "2020-03-01T08:00:00Z" biçiminde uygulanır. Varsayılan olarak NULL olur; bu, yazılan dosyaların hiçbir zaman dolmayacağı anlamına gelir. | Hayır |
 | maxConcurrentConnections | Aynı anda veri deposuna bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır       |
 
 **Örnek:**

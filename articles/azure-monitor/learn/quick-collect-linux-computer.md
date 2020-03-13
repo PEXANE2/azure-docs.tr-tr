@@ -14,11 +14,11 @@ ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: 0cf171da5f473a0d78fc5f37139c94b0e519bcfb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372633"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241265"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Karma ortamda bir Linux bilgisayarından veri toplama
 

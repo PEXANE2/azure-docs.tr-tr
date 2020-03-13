@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: d0e9fff56949125c5fa797e0e4ef7e1183448dd0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168580"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218018"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management kullanarak Azure Machine Learning Studio (klasik) Web hizmetlerini yönetme
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuzda, Azure Machine Learning Studio (klasik) Web hizmetlerinizi yönetmek için API Management kullanarak nasıl hızlı bir şekilde başlacağınız gösterilmektedir.
 
@@ -35,7 +38,7 @@ Bu kılavuzu tamamlamak için gerekir:
 
 API Management örneği ile Azure Machine Learning web hizmetini yönetebilir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **+ Kaynak oluştur**’u seçin.
 3. Arama kutusuna "API Yönetimi" yazın ve ardından "API Yönetimi" kaynağı seçin.
 4. **Oluştur**'a tıklayın.
@@ -66,7 +69,7 @@ API oluşturmak için:
 4. Girin bir ** Web API URL'si soneki ". Bu, müşterilerin hizmeti örneğine (Bu örnekte "azureml-demo" kullanır) isteklerini göndermek için kullanacağı URL'yi son parçası olur.
 5. **Web API URL şeması**için **https**' yi seçin.
 6. **Ürünler**için **Starter**' ı seçin.
-7. **Save (Kaydet)** düğmesine tıklayın.
+7. **Kaydet** düğmesine tıklayın.
 
 
 ## <a name="add-the-operations"></a>İşlem ekleme
@@ -103,7 +106,7 @@ API oluşturmak için:
 3. **URL şablonu**için "`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`" yazın.
 4. Bir **görünen ad** girin (Bu örnekte "bes gönder" kullanılır).
 5. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-6. **Save (Kaydet)** düğmesine tıklayın.
+6. **Kaydet** düğmesine tıklayın.
 
 ### <a name="start-a-batch-execution-job"></a>Toplu işlem yürütme işi başlatma
 
@@ -112,7 +115,7 @@ API oluşturmak için:
 3. **Http fiili**için "`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`" yazın.
 4. Bir **görünen ad** girin (Bu örnekte "bes Start" kullanılır).
 6. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-7. **Save (Kaydet)** düğmesine tıklayın.
+7. **Kaydet** düğmesine tıklayın.
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>Durum ya da bir toplu iş yürütmeye ilişkin iş sonucunu Al
 
@@ -121,7 +124,7 @@ API oluşturmak için:
 3. **URL şablonu**için "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`" yazın.
 4. Bir **görünen ad** girin (Bu örnekte "bes durumu" kullanılır).
 6. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-7. **Save (Kaydet)** düğmesine tıklayın.
+7. **Kaydet** düğmesine tıklayın.
 
 ### <a name="delete-a-batch-execution-job"></a>Bir toplu iş yürütme işini sil
 
@@ -130,7 +133,7 @@ API oluşturmak için:
 3. **URL şablonu**için "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`" yazın.
 4. Bir **görünen ad** girin (Bu örnekte "bes Delete" kullanılır).
 5. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-6. **Save (Kaydet)** düğmesine tıklayın.
+6. **Kaydet** düğmesine tıklayın.
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>Geliştirici portalından işlem çağırma
 
@@ -166,7 +169,7 @@ Bir işlem çağrıldıktan sonra, geliştirici portalı, **Istenen URL** 'yi ar
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Ek A - oluşturma ve sınama basit AzureML web hizmeti
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
-Aşağıda basit bir AzureML deneme oluşturma ve bir web hizmeti olarak dağıtma adımları verilmiştir. Rastgele metin sütunu giriş ve bir tamsayı olarak temsil edilen bir özellik kümesi döndürür web hizmeti alır. Örneğin:
+Aşağıda basit bir AzureML deneme oluşturma ve bir web hizmeti olarak dağıtma adımları verilmiştir. Rastgele metin sütunu giriş ve bir tamsayı olarak temsil edilen bir özellik kümesi döndürür web hizmeti alır. Örnek:
 
 | Metin | Karma metin |
 | --- | --- |
@@ -245,9 +248,9 @@ Bu kılavuz, çalışan bir Python örnek gösterir. Denemeniz için **çalışm
 
     import urllib2
     import json
-    workspace = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE WORKSPACE ID>"
-    service = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE SERVICE ID>"
-    api_key = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE API KEY>"
+    workspace = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE WORKSPACE ID>"
+    service = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE SERVICE ID>"
+    api_key = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE API KEY>"
     data = {
     "Inputs": {
         "input1": {

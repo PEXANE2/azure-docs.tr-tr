@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2521adfda731c06c879f5cfeb6283567228bf664
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7b89696e60189a8ab2585f8511be32ddaa89e826
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919371"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216768"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile bir Java Spring uygulaması oluşturma
 
@@ -185,7 +185,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu bir Java Spring uygulamasıyla kullandınız. Daha fazla bilgi için bkz. [Azure 'Da yay](https://docs.microsoft.com/java/azure/spring-framework/). Azure yönetilen kimliğin uygulama yapılandırmasına erişimi kolaylaştırmak için nasıl kullanılacağını öğrenmek için bir sonraki öğreticiye geçin.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu bir Java Spring uygulamasıyla kullandınız. Daha fazla bilgi için bkz. [Azure 'Da yay](https://docs.microsoft.com/java/azure/spring-framework/). Java Spring uygulamanızı yapılandırma ayarlarını dinamik olarak yenilemek üzere nasıl etkinleştireceğinizi öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)
+> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-java-spring-app.md)

@@ -8,13 +8,13 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687342"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243854"
 ---
-# <a name="network-architecture-overview-of-app-service-environments"></a>App Service Ortamlarının Ağ Mimarisine Genel Bakış
+# <a name="network-architecture-overview-of-app-service-environments"></a>App Service ortamlara ağ mimarisine genel bakış
 App Service ortamları her zaman bir [sanal ağ][virtualnetwork] alt ağı içinde oluşturulur; bir App Service ortamı çalıştıran uygulamalar aynı sanal ağ topolojisinde bulunan özel uç noktalarla iletişim kurabilir.  Müşteriler sanal ağ altyapısının parçalarını kilitleyebileceğinizden, bir App Service Ortamı oluşan ağ iletişim akışlarının türlerini anlamak önemlidir.
 
 ## <a name="general-network-flow"></a>Genel ağ akışı

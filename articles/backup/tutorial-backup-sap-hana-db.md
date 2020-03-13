@@ -4,11 +4,11 @@ description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.openlocfilehash: 435668dedc7efa33fd5fbfeea8671f05d070a385
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128430"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238779"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 

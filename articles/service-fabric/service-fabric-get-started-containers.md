@@ -4,11 +4,11 @@ description: Azure Service Fabric üzerinde ilk Windows kapsayıcı uygulamanız
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344548"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258479"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 

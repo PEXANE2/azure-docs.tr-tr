@@ -1,24 +1,24 @@
 ---
-title: Performans ayarlama kılavuzu
-description: Azure SQL veritabanı sorgu performansınızı el ile ayarlama önerilerini kullanma hakkında bilgi edinin.
+title: Uygulamalar ve veritabanları için performans ayarlama Kılavuzu
+description: Azure SQL veritabanı 'nda performans için veritabanı uygulamalarını ve veritabanlarını ayarlama hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: carlrab; jrasnick
+ms.date: 03/10/2020
+ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382338"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255957"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda el ile ayarlama sorgusu performansı
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda performans için uygulamaları ve veritabanlarını ayarlama
 
 SQL veritabanı ile ilgili bir performans sorunu tanımladıktan sonra, bu makale size yardımcı olmak için tasarlanmıştır:
 
@@ -232,6 +232,10 @@ Bir testin kaynağının başka bir testten daha fazla veya daha az kaynak kulla
 
 Bir iş yükünün yinelenen sorgular kümesi varsa, genellikle, veritabanını barındırmak için gereken en düşük kaynak boyutu birimini barındıracağından plan seçimlerinizin optimizasyonu ve doğrulanması mantıklı olur. Bunu doğruladıktan sonra, bunların düşürülmediğinden emin olmanıza yardımcı olacak planları bazen yeniden inceleyin. [Sorgu ipuçları (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)hakkında daha fazla bilgi edinebilirsiniz.
 
+### <a name="very-large-database-architectures"></a>Çok büyük veritabanı mimarileri
+
+Azure SQL veritabanı 'ndaki tek veritabanlarına ait [hiper ölçek](sql-database-service-tier-hyperscale.md) hizmeti katmanının yayımlanmasından önce, müşteriler ayrı veritabanları için kapasite sınırlarına isabet etmek üzere kullanılır. Bu kapasite limitleri, elastik havuzlardaki ve yönetilen örneklerdeki örnek veritabanında havuza alınmış veritabanları için hala mevcuttur. Aşağıdaki iki bölümde, hiper ölçek hizmet katmanını kullanıdığınızda Azure SQL veritabanı 'nda çok büyük veritabanlarıyla ilgili sorunları çözmek için iki seçenek ele alınmaktadır.
+
 ### <a name="cross-database-sharding"></a>Veritabanları arası parçalama
 
 Azure SQL veritabanı, emtia donanımında çalıştığından, tek bir veritabanı için kapasite sınırları geleneksel bir şirket içi SQL Server yüklemesi için daha düşüktür. Bazı müşteriler, Azure SQL veritabanı 'ndaki tek bir veritabanının sınırlarına uygun olmayan işlemler, veritabanı işlemlerini birden çok veritabanı üzerinden yaymak için parçalara ayırma tekniklerini kullanır. Azure SQL veritabanı 'nda parçalama tekniklerini kullanan çoğu müşteri, verilerini birden çok veritabanı arasında tek bir boyutta böler. Bu yaklaşım için, OLTP uygulamalarının genelde yalnızca bir satıra veya şemadaki küçük bir satır grubuna uygulanan işlemler yaptığını anlamanız gerekir.
@@ -243,7 +247,7 @@ Azure SQL veritabanı, emtia donanımında çalıştığından, tek bir veritaba
 
 Veritabanı parçaları bir çözüm için toplam kaynak kapasitesini azaltmasa da, birden fazla veritabanına yayılan çok büyük çözümlerin desteklenmesi oldukça etkilidir. Her veritabanı, yüksek kaynak gereksinimleriyle çok büyük, "etkili" veritabanlarını desteklemek için farklı bir işlem boyutuyla çalıştırılabilir.
 
-### <a name="functional-partitioning"></a>İşlevsel bölümleme
+#### <a name="functional-partitioning"></a>İşlevsel bölümleme
 
 SQL Server kullanıcılar genellikle tek bir veritabanında birçok işlevi birleştirir. Örneğin, bir uygulamanın bir mağaza için envanteri yönetme mantığı varsa, bu veritabanı envanterle ilişkili mantığa sahip olabilir, satın alma siparişleri, saklı yordamlar ve aylık son raporlamayı yöneten dizinli veya gerçekleştirilmiş görünümler olabilir. Bu teknik, yedekleme gibi işlemler için veritabanını yönetmeyi kolaylaştırır, ancak aynı zamanda bir uygulamanın tüm işlevlerinde en yüksek yükü işlemek için donanımı boyutlandırmanıza da gerek duyar.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b5bf5cc5c44226236f39a6e32c33ebe346e36eeb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357685"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269022"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -45,7 +45,7 @@ Bir Azure dosya paylaşımında erişim sağlamak için dosya paylaşımının k
 Azure dosya paylaşımlarınıza erişmek için depolama hesabı anahtarını kullanmayı düşünüyorsanız, hizmet uç noktalarının [ağ](#networking) bölümünde açıklandığı gibi kullanılması önerilir.
 
 ## <a name="networking"></a>Ağ
-Azure dosya paylaşımlarına, depolama hesabının genel uç noktası aracılığıyla her yerden erişilebilir. Bu, bir kullanıcının oturum açma kimliği tarafından yetkilendirilmiş istekler gibi kimliği doğrulanmış isteklerin Azure içinden veya dışından güvenli bir şekilde kaynaklanabilmesi anlamına gelir. Birçok müşteri ortamında, Azure VM 'lerinden gelen Mount başarılı olsa bile, şirket içi iş istasyonunuzda Azure dosya paylaşımının ilk bağlanması başarısız olur. Bunun nedeni, SMB 'nin iletişim kurmak için kullandığı bağlantı noktasını pek çok kuruluşun ve Internet hizmet sağlayıcısının (ISS) engellemesini, bağlantı noktası 445 ' dir. 
+Azure dosya paylaşımlarına, depolama hesabının genel uç noktası aracılığıyla her yerden erişilebilir. Bu, bir kullanıcının oturum açma kimliği tarafından yetkilendirilmiş istekler gibi kimliği doğrulanmış isteklerin Azure içinden veya dışından güvenli bir şekilde kaynaklanabilmesi anlamına gelir. Birçok müşteri ortamında, Azure VM 'lerinden gelen Mount başarılı olsa bile, şirket içi iş istasyonunuzda Azure dosya paylaşımının ilk bağlanması başarısız olur. Bunun nedeni, SMB 'nin iletişim kurmak için kullandığı bağlantı noktasını pek çok kuruluşun ve Internet hizmet sağlayıcısının (ISS) engellemesini, bağlantı noktası 445 ' dir. 445 numaralı bağlantı noktasından erişime izin veren veya erişimi engelleyen ISP'lerin özetini görmek için [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)'e gidin.
 
 Azure dosya paylaşımınıza erişimi engellemeyi kaldırmak için iki ana seçeneğiniz vardır:
 

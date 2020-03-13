@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9ae8f5072573dcc91dd3e8bdcd08968790f6444d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917042"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205205"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde sertifikaları döndürme
 
@@ -37,7 +37,7 @@ AKS aşağıdaki sertifikaları, sertifika yetkililerini ve hizmet hesaplarını
 * `kubectl` istemcisinde AKS kümesiyle iletişim kurmak için bir sertifika vardır.
 
 > [!NOTE]
-> Mart 2019 ' den önce oluşturulan AKS kümelerinde iki yıl sonra süre sonu olan sertifikalar vardır. Mart 2019 ' den sonra oluşturulan herhangi bir küme veya sertifikalarının döndürüldüğü herhangi bir küme 30 yıl sonra süresi dolacak olan sertifikalardır. Kümenizin oluşturulduğunu doğrulamak için, düğüm havuzlarınızın *yaşını* görmek üzere `kubectl get nodes` kullanın.
+> Mart 2019 ' den önce oluşturulan AKS kümelerinde iki yıl sonra süre sonu olan sertifikalar vardır. Mart 2019 ' den sonra oluşturulan herhangi bir küme veya sertifikaları döndürülen herhangi bir küme, 30 yıl sonra süresi dolan küme CA sertifikalardır. Diğer tüm sertifikaların süreleri iki yıl sonra doluyor. Kümenizin oluşturulduğunu doğrulamak için, düğüm havuzlarınızın *yaşını* görmek üzere `kubectl get nodes` kullanın.
 > 
 > Ayrıca, kümenizin sertifikasının sona erme tarihini kontrol edebilirsiniz. Örneğin, aşağıdaki komut, *Myakscluster* kümesi için sertifika ayrıntılarını görüntüler.
 > ```console

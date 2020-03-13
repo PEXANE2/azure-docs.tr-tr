@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c060462a84b197cdd0aec1beecc0b4d4807feb49
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 05f0a81a738688df15ea9060071d9e266b54b7d2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030104"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136664"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Yapılandırmaları bileşik kaynaklara dönüştürme
 
@@ -47,7 +47,7 @@ Kompozisyonun, yapılandırmadan yeni bir modül oluşturma sürecini otomatikle
 Sonra, bir MOF dosyası oluşturmak için yapılandırmayı çalıştırmak yerine, bir dönüştürmeyi otomatik hale getirmek için, Oluşturucu tarafından sunulan işlevini kullanın.
 Cmdlet 'i yapılandırmanızın içeriğini yükleyecek, parametrelerin listesini alacak ve ihtiyacınız olan her şeyi içeren yeni bir modül oluşturacak.
 
-Bir modül oluşturduktan sonra, her değişiklik yaptığınızda sürümü arttırın ve sürüm notları ekleyebilir ve bunu kendi [PowerShellGet deponuzda](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)yayımlayabilirsiniz.
+Bir modül oluşturduktan sonra, her değişiklik yaptığınızda sürümü arttırın ve sürüm notları ekleyebilir ve bunu kendi [PowerShellGet deponuzda](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)yayımlayabilirsiniz.
 
 Yapılandırmanızı (veya birden çok yapılandırmayı) içeren bir bileşik kaynak modülü oluşturduktan sonra bunları Azure 'da [birleştirilebilir yazma deneyiminde](/azure/automation/compose-configurationwithcompositeresources) KULLANABILIR veya MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu 'na yüklemek](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)için bunları [DSC yapılandırma betiklerine](/powershell/scripting/dsc/configurations/configurations) ekleyebilirsiniz.
 Daha sonra, yapılandırma çekmek için [Şirket](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) Içinden veya [Azure 'da](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) sunucularınızı kaydettirin.

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 3/5/2020
 ms.author: lcozzens
-ms.openlocfilehash: 6445b9707273d273c562b7d643da34f5ba26e1fc
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967497"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216751"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Öğretici: bir Java Spring uygulamasında dinamik yapılandırma kullanma
 
@@ -53,4 +53,7 @@ Dosyayı kaydedin, sonra uygulamanızı her zamanki gibi derleyin ve çalıştı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, uygulama yapılandırmasından yapılandırma ayarlarını dinamik olarak yenilemek için Spring Boot uygulamanızı etkinleştirdiniz. Daha fazla bilgi için bkz. [Azure 'Da yay](https://docs.microsoft.com/java/azure/spring-framework/).
+Bu öğreticide, uygulama yapılandırmasından yapılandırma ayarlarını dinamik olarak yenilemek için Spring Boot uygulamanızı etkinleştirdiniz. Azure yönetilen kimliğin uygulama yapılandırmasına erişimi kolaylaştırmak için nasıl kullanılacağını öğrenmek için bir sonraki öğreticiye geçin.
+
+> [!div class="nextstepaction"]
+> [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374447"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243945"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management şablonu veri modeli başvurusu
 Bu konu başlığı altında, Azure API Management geliştirici portalı şablonlarının veri modellerinde kullanılan ortak öğelerin varlık ve tür gösterimleri açıklanmaktadır.  
@@ -90,9 +90,9 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`Url`|URI|Uygulamanın URI 'SI.|  
 |`Version`|string|Uygulamanın sürüm bilgileri.|  
 |`Requirements`|string|Uygulama gereksinimlerinin açıklaması.|  
-|`State`|sayı|Uygulamanın geçerli durumu.<br /><br /> -0-kayıtlı<br /><br /> -1-gönderildi<br /><br /> -2-yayımlandı<br /><br /> -3-reddedildi<br /><br /> -4-yayımdan kaldırıldı|  
+|`State`|number|Uygulamanın geçerli durumu.<br /><br /> -0-kayıtlı<br /><br /> -1-gönderildi<br /><br /> -2-yayımlandı<br /><br /> -3-reddedildi<br /><br /> -4-yayımdan kaldırıldı|  
 |`RegistrationDate`|DateTime|Uygulamanın kaydedildiği tarih ve saat.|  
-|`CategoryId`|sayı|Uygulamanın kategorisi (Finans, eğlence, vb.)|  
+|`CategoryId`|number|Uygulamanın kategorisi (Finans, eğlence, vb.)|  
 |`DeveloperId`|string|Uygulamayı gönderen geliştiricinin benzersiz tanıtıcısı.|  
 |`Attachments`|[Ek](#Attachment) varlıkların koleksiyonu.|Uygulamanın ekran görüntüleri veya simgeleri gibi ekleri.|  
 |`Icon`|[Ekindeki](#Attachment)|Uygulamanın simgesi.|  
@@ -129,7 +129,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`Id`|sayı|Açıklamanın KIMLIĞI.|  
+|`Id`|number|Açıklamanın KIMLIĞI.|  
 |`CommentText`|string|Açıklamanın gövdesi. HTML içerebilir.|  
 |`DeveloperCompany`|string|Geliştiricinin şirket adı.|  
 |`PostedOn`|DateTime|Yorumun gönderildiği tarih ve saat.|  
@@ -229,11 +229,11 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`Page`|sayı|Geçerli sayfa numarası.|  
-|`PageSize`|sayı|Tek bir sayfada görüntülenecek en fazla sonuç.|  
-|`TotalItemCount`|sayı|Görüntülenecek öğe sayısı.|  
+|`Page`|number|Geçerli sayfa numarası.|  
+|`PageSize`|number|Tek bir sayfada görüntülenecek en fazla sonuç.|  
+|`TotalItemCount`|number|Görüntülenecek öğe sayısı.|  
 |`ShowAll`|boole|Tüm sonuçların tek bir sayfada gösterilip gösterilmeyeceğini belirtir.|  
-|`PageCount`|sayı|Sonuçların sayfa sayısı.|  
+|`PageCount`|number|Sonuçların sayfa sayısı.|  
   
 ##  <a name="Parameter"></a>Parametresinin  
  Bu bölümde `parameter` temsili açıklanmaktadır.  
@@ -245,7 +245,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`value`|string|Parametre değeri.|  
 |`options`|dize dizisi|Sorgu parametresi değerleri için tanımlanan değerler.|  
 |`required`|boole|Parametrenin gerekli olup olmadığını belirtir.|  
-|`kind`|sayı|Bu parametrenin bir yol parametresi (1) veya QueryString parametresi (2) olup olmadığı.|  
+|`kind`|number|Bu parametrenin bir yol parametresi (1) veya QueryString parametresi (2) olup olmadığı.|  
 |`typeName`|string|Parametre türü.|  
   
 ##  <a name="Product"></a>Ürünüyle  
@@ -257,9 +257,9 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`Title`|string|Ürünün adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`Description`|string|Ürünün açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
 |`Terms`|string|Ürün kullanım koşulları. Ürüne abone olmayı deneyen geliştiriciler, abonelik işlemini tamamlayabilmeleri için önce bu koşulları kabul etmek üzere sunulacaktır ve gerekli olacaktır.|  
-|`ProductState`|sayı|Ürünün yayınlanıp yayımlanmadığını belirtir. Yayımlanan ürünler geliştirici portalındaki geliştiriciler tarafından bulunabilir. Yayımlanmamış ürünler yalnızca yöneticiler tarafından görülebilir.<br /><br /> Ürün durumu için izin verilen değerler şunlardır:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
+|`ProductState`|number|Ürünün yayınlanıp yayımlanmadığını belirtir. Yayımlanan ürünler geliştirici portalındaki geliştiriciler tarafından bulunabilir. Yayımlanmamış ürünler yalnızca yöneticiler tarafından görülebilir.<br /><br /> Ürün durumu için izin verilen değerler şunlardır:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
 |`AllowMultipleSubscriptions`|boole|Bir kullanıcının aynı anda bu ürüne birden fazla aboneliğine sahip olup olmayacağını belirtir.|  
-|`MultipleSubscriptionsCount`|sayı|Bu ürüne bir kullanıcının aynı anda sahip olmasına izin verilen maksimum abonelik sayısı.|  
+|`MultipleSubscriptionsCount`|number|Bu ürüne bir kullanıcının aynı anda sahip olmasına izin verilen maksimum abonelik sayısı.|  
   
 ##  <a name="Provider"></a>Sağlayıcısını  
  `provider` varlığı aşağıdaki özelliklere sahiptir:  
@@ -350,9 +350,9 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boole|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`Password`|string|Kullanıcı hesabı parolası.|  
-|`PasswordVerdictLevel`|sayı|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
+|`PasswordVerdictLevel`|number|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`UserRegistrationTerms`|string|Kullanıcının oturum açmadan önce kabul etmesi gereken koşullar.|  
-|`UserRegistrationTermsOptions`|sayı|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
+|`UserRegistrationTermsOptions`|number|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`ConsentAccepted`|boole|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`Email`|string|E-posta adresi. Boş olmamalı ve hizmet örneği içinde benzersiz olmalıdır. Maksimum uzunluk 254 karakterdir.|  
 |`FirstName`|string|Ad. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  

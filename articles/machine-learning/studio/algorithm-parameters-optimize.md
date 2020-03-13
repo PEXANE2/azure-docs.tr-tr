@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 33705d0c9f2f405be733fd21c88cb83e96aec781
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168974"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218262"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio algoritmalarınızı iyileştirmek için parametreler seçin (klasik)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Bu konuda, Azure Machine Learning Studio (klasik) ' de bir algoritma için doğru hiper parametre kümesinin nasıl oluşturulacağı açıklanmaktadır. Çoğu makine öğrenimi algoritmaları ayarlanacak parametrelere sahip. Bir model eğitip yaparken bu parametrelerin değerlerini sağlamasını gerekir. Eğitilen modelin çalışıp çalışmadığını seçtiğiniz model parametreleri bağlıdır. En iyi parametre kümesini bulma işlemi *model seçimi*olarak bilinir.
 
@@ -41,7 +43,7 @@ Model başlatma adım kümesi parametresi tanımlayabilirsiniz. Tüm makine öğ
 
 ![İki sınıflı artırmalı karar ağacı, tek bir parametre](./media/algorithm-parameters-optimize/fig2.png)
 
- Alternatif olarak, kılavuzun maksimum ve en düşük noktalarını ve **kullanım aralığı Oluşturucu**ile oluşturulacak toplam punto sayısını tanımlayabilirsiniz. Varsayılan olarak, parametre değerlerini bir doğrusal ölçek üzerinde oluşturulur. Ancak, **günlük ölçeği** işaretlenirse, değerler günlük ölçeğinde oluşturulur (yani, bitişik noktaların oranı, aralarındaki fark yerine sabittir). Tamsayı parametre için bir kısa çizgi kullanarak bir aralığı tanımlayabilirsiniz. 1 ile 10 (her ikisi de dahil) arasında tüm tamsayıların parametre kümesi oluşturur Örneğin, "1-10" anlamına gelir. Karma mod da desteklenir. Örneğin, parametre "1-10, 20, 50" tamsayılar 1-10, 20, içerir ve 50.
+ Alternatif olarak, kılavuzun maksimum ve en düşük noktalarını ve **kullanım aralığı Oluşturucu**ile oluşturulacak toplam punto sayısını tanımlayabilirsiniz. Varsayılan olarak, parametre değerlerini bir doğrusal ölçek üzerinde oluşturulur. Ancak, **günlük ölçeği** işaretlenirse, değerler günlük ölçeğinde oluşturulur (yani, bitişik noktaların oranı, aralarındaki fark yerine sabittir). Tamsayı parametre için bir kısa çizgi kullanarak bir aralığı tanımlayabilirsiniz. Örneğin, "1-10", 1 ile 10 arasındaki (ikisi de dahil) tüm tamsayılar parametre kümesini oluşturur. Karma mod da desteklenir. Örneğin, "1-10, 20, 50" parametre kümesi, 1-10, 20 ve 50 tamsayıları içerir.
 
 ![İki sınıflı artırmalı karar ağacı, parametre aralık](./media/algorithm-parameters-optimize/fig3.png)
 

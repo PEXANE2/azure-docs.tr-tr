@@ -1,0 +1,96 @@
+---
+title: Windows PowerShell DSC kullanarak bağlı makine aracısını yükler
+description: Bu makalede, Windows PowerShell DSC 'yi kullanarak sunucular için Azure Arc (Önizleme) kullanarak makineleri Azure 'a bağlamayı öğreneceksiniz.
+services: azure-arc
+ms.service: azure-arc
+ms.subservice: azure-arc-servers
+author: mgoedtel
+ms.author: magoedte
+ms.date: 03/12/2020
+ms.topic: conceptual
+ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79164689"
+---
+# <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC kullanarak bağlı makine aracısını yüklemek
+
+[Windows PowerShell Istenen durum yapılandırması](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) 'nı (DSC) kullanarak bir Windows bilgisayarı için yazılım yükleme ve yapılandırmasını otomatik hale getirebilirsiniz. Bu makalede, karma Windows makinelerinde sunucular için bağlı makine Aracısı için Azure Arc 'ı yüklemek üzere DSC 'nin nasıl kullanılacağı açıklanır.
+
+## <a name="requirements"></a>Gereksinimler
+
+- Windows PowerShell sürüm 4,0 veya üzeri
+
+- [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC modülü
+
+- Bilgisayarları etkileşimli olmayan sunucular için Azure yaya bağlamak üzere bir hizmet sorumlusu. Zaten sunucular için bir hizmet sorumlusu oluşturmadıysanız, [ölçeğe ekleme Için hizmet sorumlusu oluşturma](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bölümünde bulunan adımları izleyin.
+
+## <a name="install-the-connectedmachine-dsc-module"></a>ConnectedMachine DSC modülünü yükler
+
+1. Modülü el ile yüklemek için, kaynak kodunu indirin ve proje dizininin içeriğini `$env:ProgramFiles\WindowsPowerShell\Modules folder`açın. Veya PowerShellGet kullanarak PowerShell galerisinden yüklemek için aşağıdaki komutu çalıştırın (PowerShell 5,0 ' de):
+
+    ```powershell
+    Find-Module -Name AzureConnectedMachineDsc -Repository PSGallery | Install-Module
+    ```
+
+2. Yüklemeyi onaylamak için aşağıdaki komutu çalıştırın ve Azure bağlı makinesi DSC kaynaklarını mevcut olarak görtığınızdan emin olun.
+
+    ```powershell
+    Get-DscResource -Module AzureConnectedMachineDsc
+    ```
+
+   Çıktıda aşağıdakine benzer bir şey görmeniz gerekir:
+
+   ![Bağlı makine DSC modülü yükleme örneği onayı](./media/onboard-dsc/confirm-module-installation.png)
+
+## <a name="install-the-agent-and-connect-to-azure"></a>Aracıyı yükleyip Azure 'a bağlanın
+
+Bu modüldeki kaynaklar, Azure bağlı makine Aracısı yapılandırmasını yönetmek için tasarlanmıştır. Ayrıca, `AzureConnectedMachineDsc\examples` klasöründe bulunan bir PowerShell betiği `AzureConnectedMachineAgent.ps1`. İndirme ve yüklemeyi otomatikleştirmek ve Azure Arc ile bağlantı kurmak için topluluk kaynaklarını kullanır. Bu betik, [Azure Portal makalesinden karma makineleri Azure 'A bağlama](onboard-portal.md) bölümünde açıklanan benzer adımları gerçekleştirir.
+
+Makinenin bir ara sunucu üzerinden hizmete iletişim kurması gerekiyorsa, aracıyı yükledikten sonra [burada](onboard-portal.md#configure-the-agent-proxy-setting)açıklanan bir komut çalıştırmanız gerekir. Bu, proxy sunucu sistemi ortam değişkenini `https_proxy`ayarlar. Komutu el ile çalıştırmak yerine, [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) modülünü kullanarak bu adımı DSC ile gerçekleştirebilirsiniz.
+
+>[!NOTE]
+>DSC 'nin çalışmasına izin vermek için, Windows 'un bir localhost yapılandırması çalıştırırken bile PowerShell uzak komutlarını alacak şekilde yapılandırılması gerekir. Ortamınızı doğru bir şekilde yapılandırmak için, `Set-WsManQuickConfig -Force` yükseltilmiş bir PowerShell terminalinde çalıştırmanız yeterlidir.
+>
+
+Yapılandırma belgeleri (MOF dosyaları) `Start-DscConfiguration` cmdlet 'i kullanılarak makineye uygulanabilir.
+
+Aşağıda, kullanılacak PowerShell betiğine geçirdiğiniz parametreler verilmiştir.
+
+- `TenantId`: adanmış Azure AD örneğinizi temsil eden benzersiz tanımlayıcı (GUID).
+
+- `SubscriptionId`: içinde makinelere istediğiniz Azure aboneliğinizin abonelik KIMLIĞI (GUID).
+
+- `ResourceGroup`: bağlı makinelerinizin ait olmasını istediğiniz kaynak grubu adı.
+
+- `Location`: [desteklenen Azure bölgelerine](overview.md#supported-regions)bakın. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
+
+- `Tags`: bağlı makine kaynağına uygulanması gereken etiketlerin dize dizisi.
+
+- `Credential`: bir [hizmet sorumlusu](onboard-service-principal.md)kullanarak makineleri ölçeklendirmek Için kullanılan **ApplicationId** ve **Password** içeren bir PowerShell kimlik bilgisi nesnesi. 
+
+1. Bir PowerShell konsolunda, `.ps1` dosyasını kaydettiğiniz klasöre gidin.
+
+2. MOF belgesini derlemek için aşağıdaki PowerShell komutlarını çalıştırın (DSC yapılandırmalarının derlenmesi hakkında daha fazla bilgi için bkz. [DSC yapılandırması](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
+
+    ```powershell
+    .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
+    ```
+
+3. Bu, `C:\dsc`adlı yeni klasörde bir `localhost.mof file` oluşturur.
+
+Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure Portal](https://aka.ms/hybridmachineportal)makinelerinizi görüntüleyin.
+
+## <a name="adding-to-existing-configurations"></a>Mevcut yapılandırmalara ekleme
+
+Bu kaynak, bir makine için uçtan uca yapılandırmayı temsil etmek üzere mevcut DSC yapılandırmalarına eklenebilir. Örneğin, bu kaynağı güvenli işletim sistemi ayarlarını ayarlayan bir yapılandırmaya eklemek isteyebilirsiniz.
+
+PowerShell Galerisi [Compsıteresource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modülü, yapılandırmaların birleştirilmesi için daha fazla basitleştirecek örnek yapılandırmanın [bileşik kaynağını](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) oluşturmak için kullanılabilir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
+
+- [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.

@@ -1,15 +1,15 @@
 ---
 title: Azure blok zinciri hizmeti üyesi oluşturma-Azure portal
 description: Azure portal kullanarak bir blok zinciri Konsorsiyumu için Azure blok zinciri hizmeti üyesi oluşturun.
-ms.date: 01/23/2020
+ms.date: 03/12/2020
 ms.topic: quickstart
-ms.reviewer: janders
-ms.openlocfilehash: 03cd4be1228fcf6a501203e6efb40a8b45c30d0c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.reviewer: ravastra
+ms.openlocfilehash: 3c468633a193d78fb1c017a756ee372c6feefb12
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760785"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203670"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi oluşturma
 
@@ -21,11 +21,11 @@ Bu hızlı başlangıçta, Azure blok zinciri hizmeti 'nde Azure portal kullanar
 
 Bir Azure blok zinciri hizmeti üyesi, özel bir konsorsiyum blok zinciri ağında bir blok zinciri düğümüdür. Bir üyeyi sağlarken bir konsorsiyum ağı oluşturabilir veya katabilirsiniz. Bir konsorsiyum ağı için en az bir üyeye ihtiyacınız vardır. Katılımcılar tarafından gereken blok zinciri üyelerinin sayısı senaryonuza bağlıdır. Konsorsiyum katılımcıları bir veya daha fazla blok zinciri üyesine sahip olabilir veya diğer katılımcılarla üyeleri paylaşabilir. Consorda hakkında daha fazla bilgi için bkz. [Azure blok zinciri hizmeti Consortium](consortium.md).
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 1. **Azure blok zinciri hizmeti (Önizleme)**  > **blok zinciri** seçin.
 
-    ![Hizmet oluştur](./media/create-member/create-member.png)
+    ![Hizmet Oluştur](./media/create-member/create-member.png)
 
     Ayar | Açıklama
     --------|------------
@@ -34,9 +34,9 @@ Bir Azure blok zinciri hizmeti üyesi, özel bir konsorsiyum blok zinciri ağın
     Bölge | Üyeyi oluşturmak için bir bölge seçin. Konsorsiyumun tüm üyeleri aynı konumda olmalıdır.
     Protokol | Şu anda Azure blok zinciri hizmeti önizlemesi çekirdek protokolünü destekliyor.
     Konsorsiyum | Yeni bir konsorsiyum için benzersiz bir ad girin. Bir toplantıya bir davet aracılığıyla katılırken katıldığınız Konsorsiyumu seçin. Consorda hakkında daha fazla bilgi için bkz. [Azure blok zinciri hizmeti Consortium](consortium.md).
-    Ad | Azure blok zinciri hizmeti üyesi için benzersiz bir ad seçin. Blok zinciri üye adı yalnızca küçük harf ve sayı içerebilir. İlk karakter bir harf olmalıdır. Değer 2 ila 20 karakter uzunluğunda olmalıdır.
+    Adı | Azure blok zinciri hizmeti üyesi için benzersiz bir ad seçin. Blok zinciri üye adı yalnızca küçük harf ve sayı içerebilir. İlk karakter bir harf olmalıdır. Değer 2 ila 20 karakter uzunluğunda olmalıdır.
     Üye hesabı parolası | Üye hesabı parolası, üyelik için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Konsorsiyum yönetimi için üye hesabı ve üye hesabı parolasını kullanırsınız.
-    Fiyatlandırma | Yeni hizmetinizin düğüm yapılandırması ve maliyeti. **Standart** ve **temel** katmanlar arasında seçim yapmak için **değişiklik** bağlantısını seçin.
+    Fiyatlandırma | Yeni hizmetinizin düğüm yapılandırması ve maliyeti. **Standart** ve **temel** katmanlar arasında seçim yapmak için **değişiklik** bağlantısını seçin. *Temel* katmanı kullanarak geliştirme, test etme ve kavram kanıtı vardır. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın.
     Düğüm parolası | Üyenin varsayılan işlem düğümü için parola. Blok zinciri üyesinin varsayılan işlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
 
 1. Ayarlarınızı doğrulamak için **gözden geçir + oluştur** ' u seçin. Hizmeti sağlamak için **Oluştur** ' u seçin. Sağlama yaklaşık 10 dakika sürer.

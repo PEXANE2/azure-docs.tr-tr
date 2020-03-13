@@ -4,11 +4,11 @@ description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bild
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382802"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282165"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
@@ -187,7 +187,7 @@ Parametreleri aşağıda ekleyin:
   </Parameters>
 ```
 
-Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örneğin:
+Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örnek:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -195,7 +195,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Note: ApplicationParameters için değerler boşsa, karşılık gelen EndPointName için ServiceManifest içinde belirtilen varsayılan değere geri döneceğiz.
 
-Örneğin:
+Örnek:
 
 Belirttiğiniz hizmet bildiriminde
 

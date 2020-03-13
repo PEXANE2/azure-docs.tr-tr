@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304400"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136168"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için öneriler ve en iyi uygulamalar
 
@@ -51,7 +51,7 @@ Uygulama aşamasında aşağıdaki önerileri göz önünde bulundurun.
 
 |  |  |
 |--|--|
-| Visual Studio Code için Azure AD B2C uzantısıyla özel ilkeleri Düzenle | Visual Studio Code ve topluluk tarafından oluşturulan bu [uzantıyı Visual Studio Code marketi 'nden]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c))indirin. Resmi bir Microsoft ürünü olmasa da, Visual Studio Code Azure AD B2C uzantısı özel ilkelerle çalışmayı kolaylaştırmak için çeşitli özellikler içerir. |
+| Visual Studio Code için Azure AD B2C uzantısıyla özel ilkeleri Düzenle | Visual Studio Code ve topluluk tarafından oluşturulan bu [uzantıyı Visual Studio Code marketi 'nden](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)indirin. Resmi bir Microsoft ürünü olmasa da, Visual Studio Code Azure AD B2C uzantısı özel ilkelerle çalışmayı kolaylaştırmak için çeşitli özellikler içerir. |
 | Sorun gidermeyi öğrenin Azure AD B2C | Geliştirme sırasında [özel ilkelerle ilgili sorunları nasıl giderebileceğinizi](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) öğrenin. Normal bir kimlik doğrulama akışının nasıl göründüğünü öğrenin ve bozukluklar ve hatalar bulmak için araçları kullanın. Örneğin, Kullanıcı günlüğünün çıktı günlüklerini gözden geçirmek için [Application Insights](troubleshoot-with-application-insights.md) kullanın. |
 | Kendini kanıtlamış özel ilke desenleri ile yararlanın | Çeşitli gelişmiş Azure AD B2C Müşteri Kimliği ve erişim yönetimi (CıHAR) Kullanıcı ile ilgili [örnekleri](https://github.com/azure-ad-b2c/samples) bulun. |
 

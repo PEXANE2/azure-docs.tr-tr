@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 65465c6897853617f7f33a989f97d01fb0518a5e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304426"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136509"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API 'SI
 
@@ -57,4 +57,4 @@ Hızlı başlangıcı tamamladığınızda, çalıştırmaya hazırlamış bir u
 
 Microsoft Graph Explorer, Microsoft Graph API 'Leri kullanarak istek derlemek ve test etmek için kullanabileceğiniz web tabanlı bir araçtır. Microsoft Graph Explorer 'a şu adreste erişebilirsiniz: `https://developer.microsoft.com/graph/graph-explorer`.
 
-Postman, Microsoft Graph API 'Lerini kullanarak istek derlemek ve test etmek için de kullanabileceğiniz bir araçtır. Postman 'ı şu adresten indirebilirsiniz: `https://www.getpostman.com/`. Postman 'da Microsoft Graph etkileşimde bulunmak için Postman 'da Microsoft Graph koleksiyonunu kullanırsınız. Daha fazla bilgi için bkz. [MICROSOFT Graph API Ile Postman kullanma](https://docs.microsoft.comgraph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+Postman, Microsoft Graph API 'Lerini kullanarak istek derlemek ve test etmek için de kullanabileceğiniz bir araçtır. Postman 'ı şu adresten indirebilirsiniz: `https://www.getpostman.com/`. Postman 'da Microsoft Graph etkileşimde bulunmak için Postman 'da Microsoft Graph koleksiyonunu kullanırsınız. Daha fazla bilgi için bkz. [MICROSOFT Graph API Ile Postman kullanma](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

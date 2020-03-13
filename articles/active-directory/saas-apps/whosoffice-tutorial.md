@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8818158e8eefe89a1cec98c7e4972ac4a6d931a6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: dc6eee984f6c6fbdf916d1287d98b921158271af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207578"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136406"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>Öğretici: WhosOffice ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Bu öğreticide, WhosOffice 'i Azure Active Directory (Azure AD) ile tümleştir
 * Kullanıcılarınızın Azure AD hesaplarıyla WhosOffice otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -179,7 +179,7 @@ Erişim panelinde WhosOffice kutucuğuna tıkladığınızda, SSO 'yu ayarladı�
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

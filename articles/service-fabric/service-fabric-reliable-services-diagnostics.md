@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388429"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282269"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Durum Bilgisi Olan Reliable Services için tanılama işlevi
 Azure Service Fabric durum bilgisi olan Reliable Services StatefulServiceBase sınıfı, hizmette hata ayıklamak, çalışma zamanının nasıl çalıştığı hakkında Öngörüler sağlamak ve sorun gidermeye yardımcı olmak için kullanılan [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını yayar.

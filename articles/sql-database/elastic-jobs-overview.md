@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133640"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214486"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Elastik işler oluşturma, yapılandırma ve yönetme
 
@@ -35,7 +35,7 @@ Elastik işler kullandıysanız, [Azure SQL veritabanı 'nda iş Otomasyonu kavr
 
 1. [PowerShell](elastic-jobs-powershell.md) veya [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution)kullanarak iş *veritabanında* iş yürütmeye yönelik bir kimlik bilgisi oluşturun.
 2. [PowerShell](elastic-jobs-powershell.md) veya [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers)kullanarak hedef grubu (işi çalıştırmak istediğiniz veritabanları) tanımlayın.
-3. İşin çalışacağı her veritabanında bir iş aracısı kimlik bilgisi oluşturun [(kullanıcıyı (veya rolü) gruptaki her bir veritabanına ekleyin)](sql-database-control-access.md). Örnek için bkz. [PowerShell öğreticisi](elastic-jobs-powershell.md).
+3. İşin çalışacağı her veritabanında bir iş aracısı kimlik bilgisi oluşturun [(kullanıcıyı (veya rolü) gruptaki her bir veritabanına ekleyin)](sql-database-manage-logins.md). Örnek için bkz. [PowerShell öğreticisi](elastic-jobs-powershell.md).
 4. [PowerShell](elastic-jobs-powershell.md) veya [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases)kullanarak bir iş oluşturun.
 5. [PowerShell](elastic-jobs-powershell.md) veya [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) kullanarak iş adımlarını ekleyin.
 6. [PowerShell](elastic-jobs-powershell.md#run-the-job) veya [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job)kullanarak bir işi çalıştırın.

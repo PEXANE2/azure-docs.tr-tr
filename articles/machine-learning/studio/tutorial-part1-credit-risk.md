@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432254"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204282"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Öğretici 1: kredi riskini tahmin etme-Azure Machine Learning Studio (klasik)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -38,7 +40,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 
 Daha sonra bu denemeyi, 2. [bölüm içindeki modelleri eğmek](tutorial-part2-credit-risk-train.md) ve sonra [3. bölüm içinde dağıtmak](tutorial-part3-credit-risk-deploy.md)için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, Machine Learning Studio (klasik) en az bir kez daha önce kullandığınızı ve makine öğrenimi kavramlarını kavradığınızı varsaymaktadır. Bununla birlikte, bir uzman olduğunuz da varsayılmaz.
 
@@ -63,7 +65,7 @@ Bir çalışma alanı oluşturmak için, bkz. [Azure Machine Learning Studio (kl
 > [!TIP]
 > Çalışma alanının sahibiyseniz, diğer kişileri çalışma alanına davet ederek üzerinde çalışmakta olduğunuz denemeleri paylaşabilirsiniz. Bunu, **Ayarlar** sayfasında Machine Learning Studio (klasik) olarak yapabilirsiniz. Microsoft hesabı veya kuruluş hesabı her bir kullanıcı için yeterlidir.
 > 
-> Üzerinde **ayarları** sayfasında **kullanıcılar**, ardından **daha fazla kullanıcı davet** pencerenin alt kısmındaki.
+> **Ayarlar** sayfasında, **Kullanıcılar**' a ve ardından pencerenin alt kısmındaki **daha fazla kullanıcı davet et** ' e tıklayın.
 > 
 
 ## <a name="upload"></a>Mevcut verileri karşıya yükle
@@ -139,7 +141,7 @@ Bu, verileri bir deneme içinde kullanabileceğiniz bir veri kümesi modülüne 
 
 Studio (klasik) penceresinin solundaki **veri kümeleri** sekmesine tıklayarak, Studio 'ya (klasik) yüklediğiniz veri kümelerini yönetebilirsiniz.
 
-![Veri kümelerini yönet](./media/tutorial-part1-credit-risk/dataset-list.png)
+![Veri Kümelerini Yönet](./media/tutorial-part1-credit-risk/dataset-list.png)
 
 Diğer veri türlerini bir denemeye aktarma hakkında daha fazla bilgi için bkz. [eğitim verilerinizi Azure Machine Learning Studio Içeri aktarma (klasik)](import-data.md).
 
@@ -191,7 +193,7 @@ Bir veri kümesiyle ilişkili meta verileri değiştirmek için [meta verileri D
 
     ![Düzenleme meta verileri ekleme](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
 
-    Kırmızı ünlem işareti, Bu modülün özelliklerini henüz belirlemediğiniz anlamına gelir. Bundan sonra o işlemi yapacaksınız.
+    Kırmızı ünlem işareti, Bu modülün özelliklerini henüz belirlemediğiniz anlamına gelir. Bunu bir sonraki adımda yapacaksınız.
 
     > [!TIP]
     > Modüle çift tıklayıp metin girerek bir modüle yorum ekleyebilirsiniz. Bu, modülün denemenizde ne işe yaradığını bir bakışta görmenize yardımcı olabilir. Bu durumda, [meta verileri Düzenle][edit-metadata] modülüne çift tıklayın ve "sütun başlıkları ekle" açıklamasını yazın. Metin kutusunu kapatmak için tuvalde başka bir yere tıklayın. Yorumu göstermek için modüldeki aşağı oka tıklayın.

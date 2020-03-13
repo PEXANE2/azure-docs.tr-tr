@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381820"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220275"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Arama yanıtının içerdiği yanıtları filtreleme  
 
@@ -53,7 +53,7 @@ Bing tarafından döndürülen yanıtları filtrelemek için API 'yi çağırır
 
 Bir yanıtın virgülle ayrılmış listesi olan [Responsefilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) sorgu parametresini kullanarak, Bing 'in yanıt (örneğin, görüntüler, videolar ve Haberler) içerdiği yanıt türlerini filtreleyebilirsiniz. Bir yanıt, Bing buna ait ilgili içeriği bulursa yanıta dahil edilir. 
 
-Görüntüler gibi yanıtlardan belirli yanıtları dışlamak için, yanıt türüne `-` bir karakter ekleyin. Örneğin:
+Görüntüler gibi yanıtlardan belirli yanıtları dışlamak için, yanıt türüne `-` bir karakter ekleyin. Örnek:
 
 ```
 &responseFilter=-images,-videos

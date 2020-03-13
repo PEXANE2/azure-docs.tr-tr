@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387315"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281606"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory kullanarak Data Lake Storage 1. veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -293,7 +293,7 @@ Etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etki
 ### <a name="recursive-and-copybehavior-examples"></a>özyinelemeli ve copyBehavior örnekleri
 Bu bölümde, elde edilen davranışını özyinelemeli ve copyBehavior değer farklı birleşimleri kopyalama işlemi açıklanmaktadır.
 
-| recursive | copyBehavior | Sonuç davranışı |
+| özyinelemeli | copyBehavior | Sonuç davranışı |
 | --- | --- | --- |
 | true |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef klasör Klasör1, kaynak ile aynı yapıyla oluşturulmuştur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
 | true |flattenHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Klasör1<br/>Fıle1 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>dosya2 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>file3 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>File4 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>File5 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp; |

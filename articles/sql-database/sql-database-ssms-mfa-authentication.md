@@ -14,11 +14,11 @@ ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synapse
 ms.openlocfilehash: e9a4aa5b54cf7ed48daf1899bb5801c609dfbf32
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357165"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255879"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics (MFA için SSMS desteği) ile Multi-Factor AAD kimlik doğrulamasını kullanma
 Azure SQL veritabanı ve Azure SYNAPSE, *Active Directory evrensel kimlik doğrulaması*kullanarak SQL Server Management Studio (SSMS) bağlantılarını destekler. Bu makalede çeşitli kimlik doğrulama seçenekleri arasındaki farklar ve ayrıca evrensel kimlik doğrulaması kullanımıyla ilişkili sınırlamalar ele alınmaktadır. 

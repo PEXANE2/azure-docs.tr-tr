@@ -10,11 +10,11 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: d41c4757f0b81312cefa580c3a3263f87bccffa9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381555"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241706"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Hızlı başlangıç: Azure IoT C SDK'sını kullanarak simülasyon TPM cihazı sağlama
 

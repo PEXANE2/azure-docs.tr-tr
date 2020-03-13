@@ -4,11 +4,11 @@ description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili b
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389162"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219692"
 ---
 # <a name="importing-from-data-sources"></a>Veri kaynaklarından içeri aktarma
 
@@ -31,7 +31,7 @@ Bilgi Bankası içeri aktarma, var olan bir Bilgi Bankası içeriğini değişti
 | Soru  | Yanıt  | Kaynak| Meta veriler (1 anahtar: 1 değer) |
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Question2 | Answer2 | Düzenleme|    `Key:Value`       |
+| Question2 | Answer2 | düzeltme sınıfı,|    `Key:Value`       |
 
 ## <a name="structured-multi-turn-format-through-import"></a>İçeri aktarma aracılığıyla yapılandırılmış çok yönlü biçim
 

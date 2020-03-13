@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 623ec5e082a8ed889329936d020bf28434a56fbf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 32466cc0a1ab9b86fc2fb8eb791c232ae13f1c01
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942541"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213566"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Öğretici: Azure Data Box Gateway veri aktarma
 
@@ -27,9 +27,9 @@ Bu yordamın tamamlanması 10 dakika kadar sürebilir.
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
+>
 > * Paylaşım ekleme
 > * Paylaşıma bağlanma
-
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -56,6 +56,8 @@ Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
     2. Paylaşım için **Tür** seçin. Tür SMB veya NFS olabilir; varsayılan tür SMB'dir. SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
 
     3. Paylaşımın bulunacağı bir depolama hesabı sağlayın. Zaten bir kapsayıcı yoksa, depolama hesabında yeni oluşturulan paylaşma adıyla oluşturulur. Kapsayıcı zaten varsa, o kapsayıcı kullanılır.
+       > [!IMPORTANT]
+       > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
     
     4. Blok blobundan, sayfa blobundan veya dosyadan **Depolama hizmeti**'ni seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, buradaki örnekte biz verilerin Azure'da blob blokları olarak tutulmasını istediğimiz için Blok Blobunu seçtik. Sayfa Blobunu seçerseniz, verilerinizi 512 bayt hizalı olduğundan emin olmalısınız. Örneğin VHDX her zaman 512 bayt hizalıdır.
    

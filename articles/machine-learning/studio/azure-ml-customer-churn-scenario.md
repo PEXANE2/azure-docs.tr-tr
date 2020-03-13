@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 79a7b157d5daf8940aba454808c65ed433cfe29c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 4cf918abae51ca330054ef86e57095d29a21a37a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169006"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204537"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio kullanarak müşteri karmaşıklığını çözümleme (klasik)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>Genel Bakış
 Bu makale, Azure Machine Learning Studio (klasik) kullanılarak oluşturulan bir müşteri karmaşıklığı analiz projesinin başvuru uygulamasını gösterir. Bu makalede, ilişkili genel modellerini bütünlüklü olarak endüstriyel müşteri karmaşıklığı sorununu çözmek için ele alır. Biz de Machine Learning kullanılarak oluşturulan model doğruluğunu ölçmek ve daha fazla geliştirme yönergeleri değerlendirin.  
 

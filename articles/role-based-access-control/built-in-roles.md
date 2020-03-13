@@ -1,6 +1,6 @@
 ---
 title: Azure RBAC için Azure yerleşik rolleri
-description: Azure rol tabanlı erişim denetimi (Azure RBAC) için Azure yerleşik rollerini açıklar. Eylemleri, NotActions, DataActions ve NotDataActions öğelerini listeler.
+description: Bu makalede, Azure rol tabanlı erişim denetimi (RBAC) için Azure yerleşik rolleri açıklanmaktadır. Eylemler, NotActions, DataActions ve NotDataActions öğelerini listeler.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b7b944880074b64f6a9e66e177082e52632e9c9d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 5b6da05f07636f6a6dde16cf6d8061629a72adfa
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205900"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281112"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , kullanıcılara, gruplara, hizmet sorumlularına ve yönetilen kimliklere atayabileceğiniz birkaç Azure yerleşik rolüne sahiptir. Rol atamaları, Azure kaynaklarına erişimi denetlemenize olanak sağlar. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [Azure özel rollerinizi](custom-roles.md)de oluşturabilirsiniz.
+[Azure rol tabanlı erişim denetimi (RBAC)](overview.md) , kullanıcılara, gruplara, hizmet sorumlularına ve yönetilen kimliklere atayabileceğiniz birkaç Azure yerleşik rolüne sahiptir. Rol atamaları, Azure kaynaklarına erişimi denetlemenize olanak sağlar. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [Azure özel rollerinizi](custom-roles.md)de oluşturabilirsiniz.
 
-Bu makalede, Azure kaynakları için her zaman gelişen yerleşik roller listelenmektedir. En son rolleri almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) veya [az role Definition List](/cli/azure/role/definition#az-role-definition-list)komutunu kullanın. Azure Active Directory için yönetici rolleri arıyorsanız, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
+Bu makalede, Azure kaynakları için her zaman gelişen yerleşik roller listelenmektedir. En son rolleri almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) veya [az role Definition List](/cli/azure/role/definition#az-role-definition-list)komutunu kullanın. Azure Active Directory (Azure AD) için yönetici rolleri arıyorsanız, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
 
 ## <a name="descriptions-and-ids"></a>Açıklamalar ve kimlikler
 
-Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz KIMLIĞI verilmiştir. Her rol için `Actions`, `NotActions`, `DataActions`ve `NotDataActions` listesini görmek için rol adına tıklayın. Bu eylemlerin ne anlama geldiğini ve bunların yönetim ve veri düzlemleri için nasıl uygulandığını öğrenmek için bkz. [Azure kaynakları için rol tanımlarını anlama](role-definitions.md).
+Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz KIMLIĞI verilmiştir. Her rol için `Actions`, `NotActions`, `DataActions`ve `NotDataActions` listesini görmek için rol adını seçin. Bu eylemlerin ne anlama geldiğini ve bunların yönetim ve veri düzlemleri için nasıl uygulandığını öğrenmek için bkz. [Azure kaynakları için rol tanımlarını anlama](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
@@ -1059,7 +1059,7 @@ Klasik sanal makineleri yönetmenizi sağlar ancak bunlara yönelik erişimi, ba
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they’re connected to.",
+  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they're connected to.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "name": "d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "permissions": [
@@ -2052,7 +2052,7 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage SQL Managed Instances and required network configuration, but can’t give access to others.",
+  "description": "Lets you manage SQL Managed Instances and required network configuration, but can't give access to others.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "name": "4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "permissions": [
@@ -3853,10 +3853,7 @@ Faturalandırma verilerine okuma erişimi sağlar
 
 ### <a name="blueprint-operator"></a>Blueprint Işleci
 
-Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. 
-
-> [!NOTE] 
-> Bu, yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında işe yarar.
+Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. Not: Bu yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında geçerlidir.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4316,6 +4313,8 @@ Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıc
 > | Microsoft. WorkloadMonitor/izleyicileri/* |  |
 > | Microsoft. WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft. AlertsManagement/smartDetectorAlertRules/* |  |
+> | Microsoft. AlertsManagement/actionRules/* |  |
+> | Microsoft. AlertsManagement/smartGroups/* |  |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -4359,7 +4358,9 @@ Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıc
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
         "Microsoft.WorkloadMonitor/notificationSettings/*",
-        "Microsoft.AlertsManagement/smartDetectorAlertRules/*"
+        "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
+        "Microsoft.AlertsManagement/actionRules/*",
+        "Microsoft.AlertsManagement/smartGroups/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4794,7 +4795,7 @@ Yük devretme ve yeniden çalışma ve diğer Site Recovery yönetim işlemlerin
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/\ çoğaltma/eylem | Çoğaltmayı Onar |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorudıtems/reProtect/ACTION | Korumalı öğeyi yeniden koru |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/switchprotection/eylem | Koruma kapsayıcısını Değiştir |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Yük Devretme Sınaması |
+> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |
@@ -5322,7 +5323,7 @@ CDN uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni ve
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "name": "426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "permissions": [
@@ -5376,7 +5377,7 @@ CDN uç noktalarını görüntüleyebilir, ancak değişiklik yapamaz.
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN endpoints, but can’t make changes.",
+  "description": "Can view CDN endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "name": "871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "permissions": [
@@ -5430,7 +5431,7 @@ CDN profillerini ve uç noktalarını yönetebilir, ancak diğer kullanıcılara
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN profiles and their endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN profiles and their endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "name": "ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "permissions": [
@@ -5484,7 +5485,7 @@ CDN profillerini ve uç noktalarını görüntüleyebilir, ancak değişiklik ya
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN profiles and their endpoints, but can’t make changes.",
+  "description": "Can view CDN profiles and their endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8f96442b-4075-438f-813d-ad51ab4019af",
   "name": "8f96442b-4075-438f-813d-ad51ab4019af",
   "permissions": [
@@ -5731,7 +5732,7 @@ Azure Sentinel Katılımcısı
 > | **Eylemler** |  |
 > | Microsoft. Securityınsights/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Yeni altyapıyı kullanarak arama yapın. |
-> | Microsoft. Operationalınsights/çalışma alanları/okuma | Mevcut bir çalışma alanını alır |
+> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
 > | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/* |  |
 > | Microsoft. OperationsManagement/Solutions/Read | OMS çözümünü çıkmadan al |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/okuma | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
@@ -5763,7 +5764,7 @@ Azure Sentinel Katılımcısı
       "actions": [
         "Microsoft.SecurityInsights/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5797,7 +5798,8 @@ Azure Sentinel okuyucusu
 > | **Eylemler** |  |
 > | Microsoft. Securityınsights/*/Read |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Yeni altyapıyı kullanarak arama yapın. |
-> | Microsoft. Operationalınsights/çalışma alanları/okuma | Mevcut bir çalışma alanını alır |
+> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
+> | Microsoft. Operationalınsights/çalışma alanları/LinkedServices/okuma | Belirtilen çalışma alanı altındaki bağlı hizmetleri alın. |
 > | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/okuma | Kayıtlı bir arama sorgusu alır |
 > | Microsoft. OperationsManagement/Solutions/Read | OMS çözümünü çıkmadan al |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/okuma | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
@@ -5829,7 +5831,8 @@ Azure Sentinel okuyucusu
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5863,8 +5866,9 @@ Azure Sentinel Yanıtlayıcısı
 > | **Eylemler** |  |
 > | Microsoft. Securityınsights/*/Read |  |
 > | Microsoft. Securityınsights/Cases/* |  |
+> | Microsoft. Securityınsights/olaylar/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Yeni altyapıyı kullanarak arama yapın. |
-> | Microsoft. Operationalınsights/çalışma alanları/okuma | Mevcut bir çalışma alanını alır |
+> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
 > | Microsoft. Operationalınsights/çalışma alanları/veri kaynakları/okuma | Bir çalışma alanı altındaki veri kaynaklarını alın. |
 > | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/okuma | Kayıtlı bir arama sorgusu alır |
 > | Microsoft. OperationsManagement/Solutions/Read | OMS çözümünü çıkmadan al |
@@ -5897,8 +5901,9 @@ Azure Sentinel Yanıtlayıcısı
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/cases/*",
+        "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
@@ -6655,6 +6660,7 @@ Yedekleme hizmetlerini görüntüleyebilir, ancak değişiklik yapamaz
 > | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
 > | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -6709,7 +6715,8 @@ Yedekleme hizmetlerini görüntüleyebilir, ancak değişiklik yapamaz
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.RecoveryServices/Vaults/usages/read"
+        "Microsoft.RecoveryServices/Vaults/usages/read",
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
       ],
       "notActions": [],
       "dataActions": [],

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355879"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278746"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.

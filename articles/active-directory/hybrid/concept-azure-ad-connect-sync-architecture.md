@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376299"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261625"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect eşitleme: mimariyi anlama
 Bu konuda Azure AD Connect eşitleme için temel mimari ele alınmaktadır. Birçok bakımdan, öncülleri MıSıS 2003, Ile 2007 ve FIM 2010 ' ye benzer. Azure AD Connect eşitleme, bu teknolojilerin gelişmidir. Bu önceki teknolojilerden herhangi birini biliyorsanız, bu konunun içeriği de size tanıdık gelecektir. Eşitleme için yeni bir konudur, bu konu sizin için önemlidir. Bu konu başlığı, özelleştirmeleri Azure AD Connect eşitleme yapma (Bu konudaki eşitleme altyapısı adı verilir) sırasında başarılı olmak için bu konunun ayrıntılarını sağlamak için gerekli değildir.

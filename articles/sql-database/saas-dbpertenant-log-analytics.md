@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: eca2dbe7589fdc7d59a84d21ecf59749d986ade9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7429a9d5e9a803f0e9a6f900c5d81e77e7477a48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826421"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214498"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Çok kiracılı bir SQL veritabanı SaaS uygulamasıyla Azure Izleyici günlüklerini ayarlama ve kullanma
 
@@ -24,7 +24,7 @@ Bu öğreticide, elastik havuzları ve veritabanlarını izlemek için [Azure iz
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure Izleyici günlüklerini yükleyip yapılandırın.
@@ -41,7 +41,7 @@ SaaS senaryoları ve desenlerinin tartışılması ve bir izleme çözümünde g
 
 Azure SQL veritabanı için, izleme ve uyarı, Azure portal veritabanları ve havuzlarda bulunur. Bu yerleşik izleme ve uyarı uygundur, ancak kaynağa özgüdür. Bu, büyük yüklemeleri izlemek veya kaynaklar ve abonelikler arasında Birleşik bir görünüm sağlamak için daha az uygun olduğunu gösterir.
 
-Yüksek hacimli senaryolar için Azure Izleyici günlüklerini izleme ve uyarı için kullanabilirsiniz. Azure Izleyici, büyük olasılıkla çok sayıda hizmetten bir çalışma alanında toplanan tanılama günlükleri ve telemetri üzerinde analizler sağlayan ayrı bir Azure hizmetidir. Azure Izleyici günlükleri, işletimsel veri analizlerinin kullanılmasına izin veren yerleşik bir sorgu dili ve veri görselleştirme araçları sağlar. SQL Analytics çözümü, önceden tanımlanmış birkaç elastik havuz ve veritabanı izleme ve uyarı görünümü ve sorgusu sağlar. Azure Izleyici günlükleri özel bir görünüm Tasarımcısı da sağlar.
+Yüksek hacimli senaryolar için Azure Izleyici günlüklerini izleme ve uyarı için kullanabilirsiniz. Azure Izleyici, çok sayıda hizmetten bir çalışma alanında toplanan Günlükler üzerinde analizler sağlayan ayrı bir Azure hizmetidir. Azure Izleyici günlükleri, işletimsel veri analizlerinin kullanılmasına izin veren yerleşik bir sorgu dili ve veri görselleştirme araçları sağlar. SQL Analytics çözümü, önceden tanımlanmış birkaç elastik havuz ve veritabanı izleme ve uyarı görünümü ve sorgusu sağlar. Azure Izleyici günlükleri özel bir görünüm Tasarımcısı da sağlar.
 
 OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır. Log Analytics çalışma alanları ve analiz çözümleri Azure portal açılır. Azure portal, daha yeni erişim noktasıdır, ancak bazı alanlardaki Operations Management Suite portalının arkasında yer alabilir.
 
@@ -93,7 +93,7 @@ Bu alıştırmada, veritabanları ve havuzlar için toplanan Telemetriyi görmek
 
 1. Açmak için **Azure SQL Analytics** kutucuğunu seçin.
 
-    ![Genel Bakış kutucuğu](media/saas-dbpertenant-log-analytics/overview.png)
+    ![Genel bakış kutucuğu](media/saas-dbpertenant-log-analytics/overview.png)
 
 1. Çözümdeki görünümler, alt kısımdaki kendi iç kaydırma çubuğu ile yana kaydırılır. Gerekirse sayfayı yenileyin.
 

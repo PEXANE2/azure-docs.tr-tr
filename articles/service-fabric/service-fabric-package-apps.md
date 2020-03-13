@@ -4,11 +4,11 @@ description: Azure Service Fabric uygulaması paketleme ve bir kümeye dağıtı
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361282"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258349"
 ---
 # <a name="package-an-application"></a>Uygulamaları paketleme
 

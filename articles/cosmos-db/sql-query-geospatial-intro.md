@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 655c3a96792fba83ac73365f02d48ce0347e9048
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566354"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137895"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal ve GeoJSON konum verileri
 
@@ -25,7 +25,10 @@ Bu makalede, Azure Cosmos DB Jeo-uzamsal işlevler için giriş niteliğindedir.
 
 Uzamsal veri şekli alan nesne ve konumunu açıklar. Çoğu uygulamada bunlar dünya ve Jeo-uzamsal veriler üzerinde nesnelere karşılık gelir. Uzamsal veriler, bir kişi, yer ilgi veya bir şehir veya bir gölü sınırını konumunu temsil etmek için kullanılabilir. Ortak kullanım durumları genellikle yakınlık sorguları, örneğin içeren, "tüm kahve dükkanları bulma geçerli konumunuzu."
 
-Azure Cosmos DB SQL API 'SI **Coğrafya** veri türünü destekler. **Coğrafya** türü, bir yuvarlak dünya koordinat sistemindeki verileri temsil eder.
+Azure Cosmos DB SQL API 'SI iki uzamsal veri türünü destekler: **geometri** veri türü ve **Coğrafya** veri türü.
+
+- **Geometri** türü, bir Euclidean (düz) koordinat sistemindeki verileri temsil eder
+- **Coğrafya** türü, bir yuvarlak dünya koordinat sistemindeki verileri temsil eder.
 
 ## <a name="supported-data-types"></a>Desteklenen veri türleri
 
@@ -70,7 +73,11 @@ Uzamsal veri türleri, konum verilerini içeren bir kullanıcı profili örneği
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>Coğrafya koordinat sistemindeki noktaları
+### <a name="points-in-a-geometry-coordinate-system"></a>Geometri koordinat sistemindeki noktaları
+
+**Geometri** veri türü Için, GeoJSON belirtimi ilk olarak yatay ekseni ve dikey eksen ikincisini belirtir.
+
+### <a name="points-in-a-geography-coordinate-system"></a>Coğrafya koordinat sistemindeki noktaları
 
 **Coğrafya** veri türü Için geojson belirtimi, önce boylam ve enlem Second 'u belirtir. Gibi diğer eşleme uygulamalardaki boylam ve enlem açıları olan ve derece cinsinden temsil. Boylam değerleri asal Meridyen ölçülür ve -180 derece ve 180.0 derece arasında ve enlem değerleri ekvatorun ölçülür ve 90.0 derece-90.0 derece arasında.
 

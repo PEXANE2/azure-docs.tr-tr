@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: eb91dfd5d774e591d3c3c3964668dcc626086181
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c49892f97d9c15efcaecccb6133c67133e81c87
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512580"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137569"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure ön kapısı için bir etki alanında coğrafi filtreleme nedir?
 
@@ -21,7 +21,7 @@ Azure Front Door Hizmeti, varsayılan olarak kullanıcı isteklerine, isteğin g
 
 WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşullarından, bir eylemden ve bir öncelikten oluşur. Eşleşme koşulunda bir eşleşme değişkeni, işleç ve eşleşme değeri tanımlarsınız.  Coğrafi filtreleme kuralı için eşleşme değişkeni REMOTE_ADDR, işleç GeoMatch, değer ise söz konusu ülkenin iki harfli kodudur. Yola göre bir coğrafi filtreleme kuralı oluşturmak için bir GeoMatch koşulunu ve bir REQUEST_URI dizesi eşleşme koşulunu birleştirebilirsiniz.
 
-[Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) kullanarak veya [hızlı başlangıç şablonumuzu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)kullanarak, ön kapıya yönelik bir coğrafi filtreleme ilkesi yapılandırabilirsiniz.
+Ön kapılarınız için Azure portal, [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) veya [hızlı başlangıç şablonumuzu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)kullanarak bir coğrafi filtreleme ilkesi yapılandırabilirsiniz.
 
 ## <a name="country-code-reference"></a>Ülke kodu başvurusu
 
@@ -61,7 +61,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | CD | Kongo Demokratik Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
 | CH | İsviçre|
-| CI | Fildişi Sahili (Côte d’Ivoire)|
+| CI | Fildişi Kıyısı|
 | CL | Şili|
 | CM | Kamerun|
 | CN | Çin|
@@ -93,7 +93,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong ÖİB|
+| HK | Hong Kong Çin ÖİB|
 | HN | Honduras|
 | HR | Hırvatistan|
 | HT | Haiti|

@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270595"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219725"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUSıS modelinizde kültür başına varlık
 

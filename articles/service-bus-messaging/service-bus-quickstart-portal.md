@@ -9,11 +9,11 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356210"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240649"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Service Bus kuyruğu oluşturmak için Azure portal kullanma
 Bu hızlı başlangıçta, bir ileti ad alanı ve bu ad alanı içinde bir sıra oluşturmak ve bu ad alanında yetkilendirme kimlik bilgilerini almak için [Azure Portal][Azure portal] kullanılarak Service Bus kuyruğuna ve bu bilgisayardan ileti gönderme ve alma işlemlerinin nasıl yapılacağı açıklanmaktadır. Daha sonra yordam, [.NET Standard kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) kullanılarak bu kuyruktan nasıl ileti gönderilip alınacağını gösterir.

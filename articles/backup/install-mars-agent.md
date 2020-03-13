@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükler
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: cf6b332c308bb0224dbfed546f8b3ba819abcb02
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673069"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247767"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS aracısını yükler
 
@@ -98,6 +98,10 @@ Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://d
 > Ortak eşleme, yeni devreler için kullanım dışıdır.
 
 Önceki URL 'Ler ve IP adresleri, 443 numaralı bağlantı noktasında HTTPS protokolünü kullanır.
+
+### <a name="private-endpoints"></a>Özel uç noktalar
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="download-the-mars-agent"></a>MARS aracısını indirin
 

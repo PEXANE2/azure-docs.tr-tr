@@ -10,18 +10,18 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0d911d67eeaeae4b48198e95dc3df01e4740dc00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372083"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137220"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Bu makalede, [.net Için Azure depolama istemci kitaplığı](/dotnet/api/overview/azure/storage/client)ile bir kapsayıcı veya blob IÇIN hizmet SAS oluşturmak üzere depolama hesabı anahtarının nasıl kullanılacağı gösterilmektedir.
+Bu makalede, [.net Için Azure depolama istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile bir kapsayıcı veya blob IÇIN hizmet SAS oluşturmak üzere depolama hesabı anahtarının nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>Blob kapsayıcısı için bir hizmet SAS oluşturma
 

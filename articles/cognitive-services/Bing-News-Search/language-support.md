@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385069"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220198"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing Haber Arama API'si için dil ve bölge desteği
 
@@ -64,7 +64,7 @@ Alternatif olarak, `mkt` sorgu parametresini ve **pazarlar** tablosundan bir kod
 |İsviçre|Fransızca|FR-CH|
 |Fransa|Fransızca|fr-FR|  
 |İtalya|İtalyanca|İt-IT|
-|Hong Kong SAR|Geleneksel Çince|zh-HK|  
+|Hong Kong Çin ÖİB|Geleneksel Çince|zh-HK|  
 |Tayvan|Geleneksel Çince|zh-TW|
 |Japonya|Japonca|ja-JP|  
 |Güney Kore|Korece|ko-KR|  
@@ -135,7 +135,7 @@ Aşağıda, `cc` sorgu parametresinde belirtebileceğiniz ülke/bölge kodları 
 |Finlandiya|FI|  
 |Fransa|GS|  
 |Almanya|DE|  
-|Hong Kong SAR|HK|  
+|Hong Kong Çin ÖİB|HK|  
 |Hindistan|IN|  
 |Endonezya|Kimlik|  
 |İtalya|BT|  

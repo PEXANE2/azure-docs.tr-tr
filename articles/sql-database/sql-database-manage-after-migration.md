@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382315"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256191"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Bulutta yeni DBA: Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanlarınızı yönetme
 
@@ -67,7 +67,7 @@ Azure SQL DB 'de yedeklemeler oluşturmayın ve bu, ' ın olması gerekmez. SQL 
 |Hizmet katmanı|Bekletme süresi (gün)|
 |---|:---:|
 |Temel|7|
-|Standard|35|
+|Standart|35|
 |Premium|35|
 |||
 
@@ -91,7 +91,7 @@ Olağanüstü durum kurtarma hakkında daha fazla bilgi için bkz. [Azure SQL DB
 
 SQL veritabanı, güvenlik ve gizliliği çok önemli bir şekilde alır. SQL veritabanı içindeki güvenlik veritabanı düzeyinde ve platform düzeyinde kullanılabilir ve birçok katmana kategorize edildiğinde en iyi şekilde anlaşılır. Her katmanda, uygulamanız için en iyi güvenliği denetlemenizi ve sağlamanızı sağlarsınız. Katmanlar şunlardır:
 
-- Kimlik & kimlik doğrulaması ([Windows/SQL kimlik doğrulaması ve Azure Active Directory [AAD] kimlik doğrulaması](sql-database-control-access.md)).
+- Kimlik & kimlik doğrulaması ([SQL kimlik doğrulaması ve Azure Active Directory [AAD] kimlik doğrulaması](sql-database-manage-logins.md)).
 - İzleme etkinliği ([Denetim](sql-database-auditing.md) ve [tehdit algılama](sql-database-threat-detection.md)).
 - Gerçek verileri koruma ([Saydam veri şifrelemesi [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) ve [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - Gizli ve ayrıcalıklı verilere erişimi denetleme ([satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security) ve [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)).
@@ -100,10 +100,10 @@ SQL veritabanı, güvenlik ve gizliliği çok önemli bir şekilde alır. SQL ve
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL veritabanı 'nda hangi kullanıcı kimlik doğrulama yöntemlerini sunuluyor
 
-SQL veritabanı 'nda sunulan [iki kimlik doğrulama yöntemi](sql-database-control-access.md#authentication) vardır:
+SQL veritabanı 'nda sunulan iki kimlik doğrulama yöntemi vardır:
 
 - [Azure Active Directory kimlik doğrulaması](sql-database-aad-authentication.md)
-- SQL kimlik doğrulaması
+- [SQL kimlik doğrulaması](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (AD) merkezi bir kimlik ve erişim yönetimi hizmetidir. Bu sayesinde, kuruluşunuzdaki tüm personele çok rahat bir oturum açma erişimi (SSO) sağlayabilirsiniz. Bu anlamı, kimlik bilgilerinin daha basit kimlik doğrulama için tüm Azure hizmetleri genelinde paylaşılmasıdır. AAD, [MFA 'yı (çok faktörlü kimlik doğrulaması)](sql-database-ssms-mfa-authentication.md) destekler ve [birkaç tıklamayla](../active-directory/hybrid/how-to-connect-install-express.md) aad, Windows Server Active Directory ile tümleştirilebilir. SQL kimlik doğrulaması, tam olarak onu zaten kullandığınız gibi çalışmaktadır. Bir Kullanıcı adı/parola sağlarsınız ve belirli bir SQL veritabanı sunucusundaki tüm veritabanları için kullanıcıların kimliğini doğrulayabilirsiniz. Bu Ayrıca, SQL veritabanı ve SQL veri ambarı 'nın bir Azure AD etki alanı içinde Multi-Factor Authentication ve Konuk Kullanıcı hesapları sunmasına olanak tanır. Şirket içi bir Active Directory zaten varsa, dizininizi Azure 'a genişletmek için dizini Azure Active Directory federasyona bağlayabilirsiniz.
 
@@ -126,7 +126,7 @@ Elden çıkarmada, uygulamanız için en uygun bağlantı kuruluşunu sağlamak 
 - VNet hizmet uç noktaları
 - Ayrılmış IP’ler
 
-#### <a name="firewall"></a>Güvenlik Duvarı
+#### <a name="firewall"></a>Güvenlik duvarı
 
 Bir güvenlik duvarı SQL veritabanı sunucunuza yalnızca belirli varlıkların erişmesine izin vererek, dış bir varlıktan sunucunuza erişimi engeller. Varsayılan olarak, SQL veritabanı sunucusu içindeki tüm bağlantılara ve veritabanlarına, diğer Azure hizmetlerinden gelen bağlantılar dışında izin verilmez. Bir güvenlik duvarı kuralıyla, bu bilgisayarın IP adresine güvenlik duvarı üzerinden izin vererek, yalnızca onayladığınız varlıklara (örneğin, bir geliştirici makinesi) erişimi açabilirsiniz. Ayrıca, SQL veritabanı sunucusuna erişime izin vermek istediğiniz bir IP aralığı belirtmenize olanak tanır. Örneğin, kuruluşunuzdaki geliştirici makinesi IP adresleri, güvenlik duvarı ayarları sayfasında bir Aralık belirtilerek bir kerede eklenebilir.
 
@@ -226,7 +226,7 @@ Express Route Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL veritabanı, herhangi bir düzenleme gereksinimleriyle uyumludur ve kendi Kuruluşumun uyumluluğuyla nasıl yardımcı olur?
 
-SQL veritabanı, bir dizi mevzuata göre uyumludur. SQL veritabanı tarafından karşılanan en son karmaşıkların kümesini görüntülemek için [Microsoft Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ' ni ziyaret edin ve kuruluşunuz için önemli olan karmaşıkların DETAYıNA giderek SQL veritabanının uyumlu Azure hizmetleri altına dahil edilip edilmediğini öğrenin. SQL veritabanı, uyumlu bir hizmet olarak sertifikalı olsa da, kuruluşunuzun hizmetinin uyumluluğuna yardımcı olur ancak otomatik olarak garanti etmez.
+SQL veritabanı, bir dizi mevzuata göre uyumlu değildir. SQL veritabanı tarafından karşılanan en son zorlukların kümesini görüntülemek için [Microsoft Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ' ni ziyaret edin ve kuruluşunuz için önemli olan karmaşıklıkları Inceleyerek, SQL veritabanının uyumlu Azure hizmetleri altına dahil edilip edilmediğini öğrenin. SQL veritabanı, uyumlu bir hizmet olarak sertifikalı olsa da, kuruluşunuzun hizmetinin uyumluluğuna yardımcı olur ancak otomatik olarak garanti etmez.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Geçişten sonra akıllı veritabanı izleme ve bakım
 

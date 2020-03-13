@@ -4,11 +4,11 @@ description: Mantıksal değerleri belirleyebilmek için bir Azure Resource Mana
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207222"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248690"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için mantıksal işlevler
 
@@ -66,7 +66,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | Andexamptaoutput | Bool | False |
 | Orexamptaoutput | Bool | True |
@@ -119,7 +119,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | Yanlışdize | Bool | False |
@@ -177,7 +177,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | yesOutput | Dize | evet |
 | noOutput | Dize | hayır |
@@ -275,7 +275,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | Andexamptaoutput | Bool | False |
 | Orexamptaoutput | Bool | True |
@@ -299,11 +299,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | Checttequals | Bool | True |
 
-## <a name="or"></a>veya
+## <a name="or"></a>or
 
 `or(arg1, arg2, ...)`
 
@@ -349,7 +349,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | Andexamptaoutput | Bool | False |
 | Orexamptaoutput | Bool | True |

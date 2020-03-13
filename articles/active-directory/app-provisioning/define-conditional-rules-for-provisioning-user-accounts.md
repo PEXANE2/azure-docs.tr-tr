@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544275"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138544"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
 Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
@@ -103,7 +103,8 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 
 
 >[!IMPORTANT] 
-> Imemberof filtresi şu anda desteklenmiyor.
+> - Imemberof filtresi şu anda desteklenmiyor.
+> - EŞITTIR ve eşit DEĞILDIR birden çok değerli öznitelikler için desteklenmez
 
 9. İsteğe bağlı olarak, daha fazla kapsam tümcesi eklemek için 7-8 arası adımları tekrarlayın.
 

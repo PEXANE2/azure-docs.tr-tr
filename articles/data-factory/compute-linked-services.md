@@ -11,11 +11,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 4545a75cc2082c21dcb87986eba819ebe39adf7b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388351"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246350"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen işlem ortamları
 Bu makalede, verileri işlemek veya dönüştürmek için kullanabileceğiniz farklı işlem ortamları açıklanmaktadır. Ayrıca, bu işlem ortamlarını bir Azure Data Factory 'ye bağlayan bağlı hizmetleri yapılandırırken Data Factory tarafından desteklenen farklı yapılandırma (kendi isteğe bağlı ve kendi kendinize getir) hakkında ayrıntılar sağlar.

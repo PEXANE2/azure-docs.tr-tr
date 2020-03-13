@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
 ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391859"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279331"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>Azure VPN Gateway ile BGP hakkında
 Bu makalede, Azure VPN Gateway 'da BGP (Sınır Ağ Geçidi Protokolü) desteğine genel bir bakış sunulmaktadır.

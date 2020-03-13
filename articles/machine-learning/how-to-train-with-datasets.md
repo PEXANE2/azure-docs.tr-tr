@@ -10,18 +10,18 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/25/2019
-ms.openlocfilehash: c00ed0b0ee24028e0a9e90f3fd3707e4a545ace6
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283504"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, bağlantı dizeleri veya veri yolları hakkında endişelenmeden uzak deneme eğitiminde [Azure Machine Learning veri kümelerini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) kullanmanın iki yolunu öğrenirsiniz.
+Bu makalede, bağlantı dizeleri veya veri yolları hakkında endişelenmeden, uzak bir deneme eğitiminde [Azure Machine Learning veri kümelerini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) kullanmanın iki yolunu öğrenirsiniz.
 
 - Seçenek 1: yapılandırılmış veriler varsa, bir TabularDataset oluşturun ve doğrudan eğitim betiğinizdeki kullanın.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc8a62bd75a01cb6b7184cb52585c4f8b08cadb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378239"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136543"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
 
@@ -130,7 +130,7 @@ Dağıtım planları sayfasında [bir pilot Için en iyi uygulamalar](https://ak
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamayla passwordless kimlik doğrulaması planlayın
 
-Microsoft Authenticator uygulaması, Google Play veya Apple App Store 'dan ücretsiz bir indirindir. [Microsoft Authenticator uygulamasını indirme hakkında daha fazla bilgi edinin](https://www.microsoft.com/account/authenticator?cmp=h66ftb_42hbak). Kullanıcıların Microsoft Authenticator uygulamasını indirmesini sağlayabilirsiniz. ve telefonla oturum açmayı etkinleştirmek için yönergeleri izleyin. 
+Microsoft Authenticator uygulaması, Google Play veya Apple App Store 'dan ücretsiz bir indirindir. [Microsoft Authenticator uygulamasını indirme hakkında daha fazla bilgi edinin](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Kullanıcıların Microsoft Authenticator uygulamasını indirmesini sağlayabilirsiniz. ve telefonla oturum açmayı etkinleştirmek için yönergeleri izleyin. 
 
 Her iOS veya Android telefonunu güçlü, passworddaha az bir kimlik bilgisine dönüştürür. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenmekte olan bir sayı ile eşleşen bir sayıyla, sonra da doğrulamak için Biyometri veya PIN kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. [Microsoft Authenticator uygulamasının nasıl çalıştığına ilişkin ayrıntılara bakın](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in). 
 

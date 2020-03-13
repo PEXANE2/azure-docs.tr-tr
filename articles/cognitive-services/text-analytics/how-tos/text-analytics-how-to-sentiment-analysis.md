@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: aahi
-ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197479"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203466"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
 
@@ -160,7 +160,7 @@ Metin Analizi API'si durum bilgisiz. Hesabınızda hiç veri depolanmaz ve sonu�
 
 Yaklaşım Çözümleyicisi, metni ağırlıklı pozitif veya negatif olarak sınıflandırır. 0 ile 1 arasında bir puan atar. 0,5’e yakın değerler nötr veya belirsizdir. 0,5 puanı, nötr olma durumunu belirtir. Bir dize yaklaşım için çözümlenememesi veya yaklaşım yoksa, puan her zaman 0,5 ' dir. Örneğin, İngilizce dil koduyla İspanyolca bir dize geçirirseniz puan 0,5 olur.
 
-Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın.
+Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [uzaklıkları işleme](../concepts/text-offsets.md) .
 
 #### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 

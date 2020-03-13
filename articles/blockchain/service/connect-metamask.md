@@ -4,12 +4,12 @@ description: MetaMask kullanarak bir Azure blok zinciri hizmeti ağına bağlan�
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 21e45b80a9a08dd6bdeefb0ab01fadabaa08cbce
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456030"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205104"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Hızlı başlangıç: akıllı bir sözleşmeyi bağlamak ve dağıtmak için MetaMask kullanma
 
@@ -25,15 +25,16 @@ Bu hızlı başlangıçta, bir Azure blok zinciri hizmeti ağına bağlanmak ve 
 
 ## <a name="get-endpoint-address"></a>Uç nokta adresini al
 
-Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası adresine ihtiyacınız vardır. Uç nokta adresini ve erişim anahtarlarını Azure portal bulabilirsiniz.
+Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası adresine ihtiyacınız vardır. Uç nokta adresi ve erişim anahtarları Azure portal.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Azure blok zinciri hizmeti üyesine gidin.
+1. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
 
     ![Varsayılan işlem düğümünü seçin](./media/connect-metamask/transaction-nodes.png)
 
 1. **Erişim anahtarlarına > bağlantı dizeleri**seçin.
-1. Endpoint adresini **https 'den (erişim anahtarı 1)** kopyalayın. Sonraki bölüm için adrese ihtiyacınız vardır.
+1. Endpoint adresini **https 'den (erişim anahtarı 1)** kopyalayın.
 
     ![Bağlantı dizesi](./media/connect-metamask/connection-string.png)
 
@@ -44,10 +45,10 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası ad
 
     ![Özel RPC](./media/connect-metamask/custom-rpc.png)
 
-1. Yeni **ağ > yenı RPC URL 'si**' nde, önceki bölümden kopyalanmış olan bitiş noktası adresinizi girin.
+1. Yeni **ağ > yenı RPC URL 'si**' nde, yukarıya kopyaladığınız uç nokta adresini yapıştırın.
 1. **Kaydet**’i seçin.
 
-    Bağlantı başarılı olduysa, ağ açılan menüsünde özel ağ görüntülenir.
+    Bağlantı başarılı olduysa, özel ağ, ağ açılır penceresinde görüntülenir.
 
     ![Yeni ağ](./media/connect-metamask/new-network.png)
 
@@ -86,7 +87,7 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
     ```
 
     **Basit sözleşme** , **Bakiye**adlı bir durum değişkeni bildirir. Tanımlanmış iki işlev vardır. **Add** işlevi **dengelemek**için bir sayı ekler. **Get** işlevi, **Bakiyenin**değerini döndürür.
-1. Sözleşmeyi derlemek için önce Solidity derleyici bölmesini seçin, sonra **Simple. Nuevo derlemesini**seçin. 
+1. Sözleşmeyi derlemek için önce Solidity derleyici bölmesini seçin, sonra **Simple. Nuevo derlemesini**seçin.
 
     ![Derleme](./media/connect-metamask/compile.png)
 
@@ -96,10 +97,10 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
 
 1. **Basit** sözleşmeyi seçin ve ardından **dağıtın**.
 
-    ![Dağıt](./media/connect-metamask/deploy.png)
+    ![Dağıtma](./media/connect-metamask/deploy.png)
 
 
-1. Bir MetaMask bildirimi, işlemi gerçekleştirmek için yeterli fon olduğunu uyarır.
+1. Bir MetaMask bildirimi, işlemi gerçekleştirmek için yeterli fon sayısını uyarır.
 
     Ortak bir blok zinciri ağı için, işlem maliyeti için ödeme yapmanız gerekir. Bu bir konsorsiyumde özel bir ağ olduğundan, gaz fiyatını sıfır olarak ayarlayabilirsiniz.
 
@@ -114,24 +115,24 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
 
     ![Dağıtılan sözleşme](./media/connect-metamask/deployed-contract.png)
 
-    İki eylem **ekleyin** **ve bu** , sözleşmede tanımlanan işlevlere eşleyin.
+    İki eylem **ekleyin** ve **Al**, sözleşmede tanımlanan işlevlere eşleyin.
 
-1. Blok zincirinde bir işlem **ekleme** işlemi gerçekleştirmek için, eklenecek bir sayı girin ve **Ekle**' yi seçin. Yeniden karışmaya yönelik bir gaz tahmin hatası iletisi alabilirsiniz. İşlemi, gaz gerektirmeyen özel bir blok zincirine gönderiyorsunuz. İşlemi zorlamak için **Işlem gönder** ' i seçin.
-1. Sözleşmeyi dağıttığınıza benzer şekilde, işlemi gerçekleştirmek için yeterli fon MetaMask bildirimi görüntülenir.
+1. Blok zincirinde bir işlem **ekleme** işlemi gerçekleştirmek için eklemek üzere bir sayı girin ve **Ekle**' yi seçin. Remix 'ten bir gaz tahmin hatası iletisi alabilirsiniz: "işlemi, gaz gerektirmeyen bir özel blok zincirine gönderiyorsunuz." İşlemi zorlamak için **Işlem gönder** ' i seçin.
+1. Sözleşmeyi dağıtırken olduğu gibi, bir MetaMask bildirimi, işlemi gerçekleştirmek için yeterli fon sayısını uyarır.
 
     Bu bir konsorsiyumun özel bir ağı olduğundan, gaz fiyatını sıfıra ayarlayabiliriz.
 
-1.  **Gaz ücretini seçin > gelişmiş > düzenleyin**, **gaz fiyatını** 0 olarak ayarlayın ve **Kaydet**' i seçin.
+1. **Gaz ücretini seçin > gelişmiş > düzenleyin**, **gaz fiyatını** 0 olarak ayarlayın ve **Kaydet**' i seçin.
 1. İşlemi blok zincirine göndermek için **Onayla** ' yı seçin.
 1. Eylem **Al** ' ı seçin. Bu, düğüm verilerini sorgulamak için bir çağrıdır. Bir işlem gerekli değildir.
-1. Yeniden karıştırma 'nın hata ayıklama bölmesinde, blok zincirindeki işlemler hakkındaki ayrıntıları görebilirsiniz.
 
-    ![Hata ayıklama geçmişi](./media/connect-metamask/debug.png)
+Remix 'in hata ayıklama bölmesi, blok zincirindeki işlemler hakkındaki ayrıntıları gösterir:
 
-    **Basit sözleşme oluşturma** , **basit. Ekle**için işlem ve **basit. Get**öğesine çağrı yapabilirsiniz.
+    ![Debug history](./media/connect-metamask/debug.png)
 
-1. Ayrıca, MetaMask içinde işlem geçmişini görebilirsiniz. MetaMask Browser uzantısını açın.
-1. **Geçmiş** bölümünde, dağıtılan sözleşmenin ve işlemlerin günlüğünü görebilirsiniz.
+    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+
+MetaMask içinde işlem geçmişini görmek için MetaMask Browser uzantısını açın ve dağıtılan sözleşmenin ve işlemlerin günlüğü için **Geçmiş** bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

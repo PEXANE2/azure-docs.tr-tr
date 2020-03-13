@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355712"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281489"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Özellikler ve Azure Event Hubs terminolojisinde
 
@@ -26,7 +26,7 @@ Azure Event Hubs, ölçeklenebilir bir olay işleme alır ve büyük hacimli ola
 
 Bu makale, [genel bakış makalesindeki](event-hubs-what-is-event-hubs.md)bilgileri oluşturur ve Event Hubs bileşenleri ve özellikleri hakkında teknik ve uygulama ayrıntıları sağlar.
 
-## <a name="namespace"></a>Ad Alanı
+## <a name="namespace"></a>Ad alanı
 Bir Event Hubs ad alanı, [tam etki alanı adı](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)tarafından başvurulan, bir veya daha fazla olay hub 'ı veya Kafka konu oluşturacağınız benzersiz bir kapsam kapsayıcısı sağlar. 
 
 ## <a name="event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs

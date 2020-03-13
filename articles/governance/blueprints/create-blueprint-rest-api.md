@@ -4,11 +4,11 @@ description: Bu hızlı başlangıçta, REST API kullanarak yapıtlar oluşturma
 ms.date: 02/26/2020
 ms.topic: quickstart
 ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356052"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241545"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Hızlı başlangıç: REST API Azure Blueprint tanımlama ve atama
 

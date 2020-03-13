@@ -15,20 +15,19 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129912"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138986"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Öğretici: GitHub ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, GitHub 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. GitHub 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de GitHub 'a erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla GitHub 'da otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Azure AD 'de GitHub Kurumsal bulut kuruluşunuza erişimi olan denetim.
+* GitHub Enterprise Cloud kuruluşunuza erişimi tek bir merkezi konumda yönetin-Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
@@ -45,7 +44,7 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * GitHub, **SP** tarafından başlatılan SSO 'yu destekler
 
-* GitHub [ **Otomatik** Kullanıcı sağlamayı destekler](github-provisioning-tutorial.md)
+* GitHub [ **Otomatik** Kullanıcı sağlamayı (kuruluş davetleri) destekler](github-provisioning-tutorial.md)
 * GitHub 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve ne zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>Galeriden GitHub ekleme

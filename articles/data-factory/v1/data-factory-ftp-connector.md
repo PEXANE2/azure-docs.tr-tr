@@ -13,11 +13,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387515"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281411"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir FTP sunucusundan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]

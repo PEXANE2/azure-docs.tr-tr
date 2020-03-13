@@ -4,11 +4,11 @@ description: Kapsayıcılar için Azure Izleyici ölçümleri ve günlük verile
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: dcd1656673e549b583de26bca897d0055f389d0a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362252"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275366"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici günlüklerini sorgulama
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359101"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217020"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama (Genel Önizleme)
 
@@ -31,10 +31,6 @@ NAT ağ geçidi kaynakları, [sanal ağ NAT](nat-overview.md) 'nin bir parçası
 </p>
 
 *Şekil: Internet 'e giden sanal ağ NAT*
-
-
->[!NOTE] 
->Sanal ağ NAT Şu anda genel önizleme olarak kullanılabilir. Şu anda yalnızca sınırlı sayıda [bölgede](nat-overview.md#region-availability)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>NAT dağıtma
 
@@ -147,7 +143,7 @@ NAT ile sanal ağların tasarlanmasıyla ilgili hususları öğrenmek için bu b
 
 ### <a name="cost-optimization"></a>Maliyet iyileştirmesi
 
-[Hizmet uç noktaları](virtual-network-service-endpoints-overview.md) ve [özel bağlantı](../private-link/private-link-overview.md) , NAT 'nin gerekli olmadığı maliyeti iyileştirmek için göz önünde bulundurmanız gereken iki seçenek vardır.  Hizmet uç noktalarına veya özel bağlantıya yöneltilen tüm trafik, sanal ağın NAT tarafından işlenmez.  
+[Hizmet uç noktaları](virtual-network-service-endpoints-overview.md) ve [özel bağlantı](../private-link/private-link-overview.md) , maliyeti iyileştirmek için göz önünde bulundurulması gereken seçeneklerdir. Bu hizmetler için NAT gerekli değildir. Hizmet uç noktalarına veya özel bağlantıya yöneltilen trafik sanal ağın NAT tarafından işlenmez.  
 
 Hizmet uç noktaları, Azure hizmet kaynaklarını sanal ağınıza bağlayabilir ve Azure hizmet kaynaklarınıza erişimi denetler. Örneğin, Azure depolama 'ya eriştiğinizde, veri işleme NAT ücretlerinden kaçınmak için depolama için bir hizmet uç noktası kullanın. Hizmet uç noktaları ücretsizdir.
 
@@ -339,33 +335,29 @@ Bir SNAT bağlantı noktası, 5 saniye sonra aynı hedef IP adresi ve hedef bağ
 - NSG akış günlüğü, NAT kullanılırken desteklenmez.
 - NAT birden çok sanal ağa yayılamaz.
 
-## <a name="preview-participation"></a>Önizleme katılımı
-
-[Aboneliğinizi etkinleştirmek için yönergeleri](nat-overview.md#public-preview-participation)izleyin.
 
 ## <a name="feedback"></a>Geri Bildirim
 
-Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [Görüşlerinizi genel önizlemede](https://aka.ms/natfeedback) bizimle paylaşabilirsiniz.  Ve [NAT Için UserVoice](https://aka.ms/natuservoice)'ta daha sonra derleme yapmanız gerekenleri de önerebilir.
+Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [NAT Için UserVoice](https://aka.ms/natuservoice)'ta daha sonra derleme yapmanız gerekenleri önerin ve oylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sanal ağ NAT](nat-overview.md)hakkında bilgi edinin.
 * [NAT ağ geçidi kaynakları için ölçümler ve uyarılar](nat-metrics.md)hakkında bilgi edinin.
 * [NAT ağ geçidi kaynakları sorunlarını giderme](troubleshoot-nat.md)hakkında bilgi edinin.
-* [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
-* [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).
 * NAT ağ geçidini doğrulama öğreticisi
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md),
-  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portal](tutorial-create-validate-nat-gateway-cli.md)
 * NAT ağ geçidi kaynağı dağıtmaya yönelik hızlı başlangıç
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md),
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md),
-  - [Portal](./quickstart-create-nat-gateway-portal.md).
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [Portal](./quickstart-create-nat-gateway-portal.md)
 * NAT ağ geçidi kaynak API 'SI hakkında bilgi edinin
-  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+
 * [Kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında bilgi edinin.
 * [Standart yük dengeleyici](../load-balancer/load-balancer-standard-overview.md)hakkında bilgi edinin.
 * [Kullanılabilirlik alanları ve standart yük dengeleyici](../load-balancer/load-balancer-standard-availability-zones.md)hakkında bilgi edinin.

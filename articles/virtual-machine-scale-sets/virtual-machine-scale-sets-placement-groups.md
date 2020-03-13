@@ -9,11 +9,11 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.openlocfilehash: 618b677ee836327e8ed4ab7798ab35d92b364c98
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393078"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254059"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Büyük sanal makine ölçek kümeleri ile çalışma
 Artık, 1000 adede kadar VM kapasiteli Azure [sanal makine ölçek kümeleri](/azure/virtual-machine-scale-sets/) oluşturabilirsiniz. Bu belgede _büyük bir sanal makine ölçek kümesi_, 100’den fazla VM'yi ölçeklendirme kapasitesine sahip bir ölçek kümesi olarak tanımlanır. Bu özellik bir ölçek kümesi özelliği ile ayarlanır (_singlePlacementGroup=False_). 

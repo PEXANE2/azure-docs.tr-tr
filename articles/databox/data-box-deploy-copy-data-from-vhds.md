@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380221"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239255"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Öğretici: Azure 'da verileri yönetilen diskler olarak içeri aktarmak için Data Box kullanma
 
@@ -76,7 +76,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
 
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam**'a tıklayın.
+2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam** düğmesine tıklayın.
     
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
@@ -115,7 +115,7 @@ Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştire
 
     ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'a tıklayın.
+2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam** düğmesine tıklayın.
 
     ![NFS istemci erişimini yapılandırma 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 

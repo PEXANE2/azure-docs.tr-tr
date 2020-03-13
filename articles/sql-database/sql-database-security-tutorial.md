@@ -10,16 +10,16 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818029"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238835"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Öğretici: tek veya havuza alınmış bir veritabanının güvenliğini sağlama
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > - Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları oluşturma
@@ -42,7 +42,7 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğine genel b
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, [Azure SQL veritabanınızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)hakkında bilgi edinmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -149,7 +149,7 @@ Azure AD 'yi yapılandırma hakkında daha fazla bilgi için bkz.
 
 ## <a name="manage-database-access"></a>Veritabanı erişimini yönetme
 
-Veritabanına Kullanıcı ekleyerek veya güvenli bağlantı dizeleriyle Kullanıcı erişimine izin vererek veritabanı erişimini yönetin. Bağlantı dizeleri, dış uygulamalar için faydalıdır. Daha fazla bilgi için bkz. [Azure SQL Access Control](sql-database-control-access.md) ve [AD Authentication](sql-database-aad-authentication.md).
+Veritabanına Kullanıcı ekleyerek veya güvenli bağlantı dizeleriyle Kullanıcı erişimine izin vererek veritabanı erişimini yönetin. Bağlantı dizeleri, dış uygulamalar için faydalıdır. Daha fazla bilgi için bkz. [oturum açma bilgilerini ve Kullanıcı hesaplarını](sql-database-manage-logins.md) ve [ad kimlik doğrulamasını](sql-database-aad-authentication.md)yönetme.
 
 Kullanıcıları eklemek için veritabanı kimlik doğrulaması türünü seçin:
 

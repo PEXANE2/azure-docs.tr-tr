@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587360"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209455"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Azure SQL veritabanı performans tanılama günlüğünü Akıllı İçgörüler kullanın
 
-Bu sayfada, [akıllı içgörüler](sql-database-intelligent-insights.md), biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler tarafından oluşturulan Azure SQL veritabanı performans tanılama günlüğünü kullanma hakkında bilgi verilmektedir. Bu tanılama günlüğünü, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)'ya veya üçüncü taraf bir çözüme gönderebilirsiniz.
+Bu sayfada, [akıllı içgörüler](sql-database-intelligent-insights.md), biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler tarafından oluşturulan Azure SQL veritabanı performans tanılama günlüğünü kullanma hakkında bilgi verilmektedir. Bu tanılama günlüğünü, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-into-azure-storage)'ya veya üçüncü taraf bir çözüme gönderebilirsiniz.
 
 ## <a name="log-header"></a>Günlük üst bilgisi
 
@@ -47,8 +47,8 @@ Elastik havuz (elasticPoolName_s) özelliği, hangi elastik havuzun bir sorun ol
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
 "intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported time stamp
-"elasticPoolName_s" : "", // resource elastic pool (if applicable) 
-"databaseName_s" : "db_name",  // database name
+"elasticPoolName_s" : "", // resource elastic pool (if applicable)
+"databaseName_s" : "db_name", // database name
 "issueId_d" : 1525, // unique ID of the issue detected
 "status_s" : "Active" // status of the issue – possible values: "Active", "Verifying", and "Complete"
 ```
@@ -64,7 +64,7 @@ Algılanan performans sorunları aşağıdaki algılama özelliği yapısıyla r
 "impact" : 1 to 3, // impact of the issue detected, possible values 1-3 (1 low, 2 moderate, 3 high impact)
 "category" : "Detectable performance pattern", // performance issue detected, see the table
 "details": <Details outputted> // details of an issue (see the table)
-}] 
+}]
 ```
 
 Algılanabilir performans desenleri ve tanılama günlüğüne Çıktılanan Ayrıntılar aşağıdaki tabloda verilmiştir.
@@ -105,7 +105,7 @@ Aşağıdaki günlük örneğinde, 0x9102EXZ4 karmasından oluşan sorgu, daha f
 
 ```json
 "impact" : [{
-"entity" : { 
+"entity" : {
 "Type" : "Query", // type of entity - query
 "Value" : "query hash value", // for example "0x9102EXZ4" query hash value },
 "Metric" : "DurationIncreaseSeconds", // measured metric and the measurement unit (in this case seconds)
@@ -137,10 +137,8 @@ Akıllı İçgörüler performans günlüğünün son kısmı, belirlenen perfor
 Özel DevOps uyarı ve raporlama özellikleri için [Azure izleyici günlükleri]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) veya bir üçüncü taraf çözümü ile akıllı içgörüler performans günlüğünü kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - [Akıllı içgörüler](sql-database-intelligent-insights.md) kavramları hakkında bilgi edinin.
 - [Akıllı içgörüler Ile Azure SQL veritabanı performans sorunlarını giderme](sql-database-intelligent-insights-troubleshoot-performance.md)hakkında bilgi edinin.
 - [Azure SQL Analytics kullanarak Azure SQL veritabanı 'nı izlemeyi](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)öğrenin.
 - [Azure kaynaklarınızdan günlük verilerini nasıl toplayacağınızı ve](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)kullanacağınızı öğrenin.
-
-
-

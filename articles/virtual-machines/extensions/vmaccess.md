@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073602"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250367"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Azure CLı ile VMAccess uzantısını kullanarak Linux VM 'lerinde yönetim kullanıcılarını, SSH 'yi yönetme ve diskleri denetleme veya onarma
 ## <a name="overview"></a>Genel Bakış
@@ -68,7 +68,7 @@ az vm user update \
 
 > **Note:** `az vm user update` komutu, sanal ağdaki yönetici kullanıcı için `~/.ssh/authorized_keys` dosyasına yeni ortak anahtar metnini ekler. Bu, var olan SSH anahtarlarını değiştirmez veya kaldırmaz. Bu, dağıtım sırasında ayarlanan önceki anahtarları veya VMAccess uzantısı aracılığıyla sonraki güncelleştirmeleri kaldırmaz.
 
-## <a name="reset-password"></a>Parola sıfırla
+## <a name="reset-password"></a>Parola sıfırlama
 Aşağıdaki örnek, `myVM`adlı sanal makinede Kullanıcı `azureuser` parolasını sıfırlar:
 
 ```azurecli-interactive
@@ -257,4 +257,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>Destek
 
-Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/forums/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayına dosya. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386388"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247481"
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services için Boyutlar
 Bu konuda, bulut hizmeti rol örnekleri (Web rolleri ve çalışan rolleri) için kullanılabilen Boyutlar ve seçenekler açıklanmaktadır. Ayrıca, bu kaynakları kullanmayı planlarken göz önünde bulundurmanız gereken dağıtım konuları da sunar. Her boyutun, [hizmet tanımı dosyanıza](cloud-services-model-and-package.md#csdef)YERLEŞTIRDIĞINIZ bir kimliği vardır. Her boyutun fiyatları [Cloud Services fiyatlandırma](https://azure.microsoft.com/pricing/details/cloud-services/) sayfasında kullanılabilir.

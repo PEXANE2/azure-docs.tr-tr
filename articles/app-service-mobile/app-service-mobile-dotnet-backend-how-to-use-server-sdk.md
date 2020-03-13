@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356156"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250146"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps .NET arka uç sunucu SDK 'Sı ile çalışma
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -62,7 +62,7 @@ Visual Studio 'da bir Azure Mobile Apps projesi oluşturmak için [.net Için Az
 3. **ASP.NET Web Uygulaması**'nı seçin.
 4. Proje adını girin. Daha sonra, **Tamam**'a tıklayın.
 5. *ASP.NET 4.5.2 şablonları*altında **Azure mobil uygulaması**' nı seçin. Bulutta bulunan **Konağı** denetleyerek bu projeyi yayımlayacağınız bulutta bir mobil arka uç oluşturun.
-6. **Tamam**'a tıklayın.
+6. **Tamam** düğmesine tıklayın.
 
 ## <a name="install-sdk"></a>Nasıl yapılır: SDK 'Yı Indirme ve başlatma
 SDK [NuGet.org]' de kullanılabilir. Bu paket, SDK 'Yı kullanmaya başlamak için gereken temel işlevselliği içerir. SDK 'yı başlatmak için **HttpConfiguration** nesnesi üzerinde eylemler gerçekleştirmeniz gerekir.
@@ -159,7 +159,7 @@ Mobil istemcilere bir SQL tablosu göstermek için bir tablo denetleyicisi tanı
 2. Mobil DbContext sınıfında bir tablo başvurusu yapılandırın.
 3. Tablo denetleyicisi oluşturun.
 
-Veri Aktarımı nesnesi (DTO), `EntityData`devralan düz C# bir nesnedir.  Örneğin:
+Veri Aktarımı nesnesi (DTO), `EntityData`devralan düz C# bir nesnedir.  Örnek:
 
     public class TodoItem : EntityData
     {

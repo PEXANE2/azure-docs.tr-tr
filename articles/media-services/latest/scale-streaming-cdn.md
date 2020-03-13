@@ -12,14 +12,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 90fa3b06e2696e9b45c333c75c8a8e117d5c0c96
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e918f7ee64d4bc49d5da80bf9a3e7595555296dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563121"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203704"
 ---
-# <a name="scaling-streaming-with-cdn"></a>CDN ile akış ölçeklendirme
+# <a name="scaling-streaming-with-cdn"></a>CDN ile akışı ölçeklendirme
 
 Azure Content Delivery Network (CDN), dünya genelindeki stratejik olarak yerleştirilen fiziksel düğümlerde içeriği önbelleğe alarak, yüksek bant genişliği içeriğinin hızlı bir şekilde kullanıcılara teslimi konusunda geliştiricilere genel bir çözüm sunar.  
 
@@ -147,4 +147,5 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bu depodaki](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) örnek, .NET ile varsayılan akış uç noktasının nasıl başlatılacağını gösterir.
+* [Akış uç noktası (Origin)](streaming-endpoint-concept.md) belgesini yeniden oluşturma ' yı unutmayın.
+* [Bu depodaki](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) örnek, .NET ile varsayılan akış uç noktasının nasıl başlatılacağını gösterir.

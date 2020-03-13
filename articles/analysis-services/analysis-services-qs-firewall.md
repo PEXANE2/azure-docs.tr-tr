@@ -7,22 +7,23 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572470"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205150"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Hızlı başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal
 
 Bu hızlı başlangıç Azure Analysis Services sunucunuz için güvenlik duvarını yapılandırmanıza yardımcı olur. Güvenlik duvarını etkinleştirmek ve yalnızca sunucunuza erişen bilgisayarlar için IP adresi aralıkları yapılandırmak, sunucunuzu ve verilerinizi güvenlik altına almanın önemli bir parçasıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Aboneliğinizde bir Analysis Services sunucusu. Daha fazla bilgi edinmek için bkz. [Hızlı başlangıç: Sunucu oluşturma - Portal](analysis-services-create-server.md) veya [Hızlı başlangıç: Sunucu oluşturma - PowerShell](analysis-services-create-powershell.md)
 - İstemci bilgisayarlar için bir veya birden çok IP adresi aralığı (gerekiyorsa).
-- Power BI Premium 'den Içeri aktarma senaryosunun Şu anda desteklenmediğini lütfen unutmayın.
+- Power BI Premium, veri içeri aktarma (yenileme) ve sayfalandırılmış raporlar dahil olmak üzere Azure Analysis Services bağlandığı bazı senaryolar, Power BI erişimine Izin ver özelliğinin etkin olduğu durumlarda bile şu anda desteklenmemektedir. Power BI Premium 'den canlı bağlantı kullanmanın daha yaygın senaryosu desteklenir. Tüm Power BI Pro senaryolar desteklenir.
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın 
 

@@ -4,12 +4,12 @@ description: Azure blok zinciri çalışma ekranı önizlemesine ve özellikleri
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387080"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203653"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench nedir?
 
@@ -29,7 +29,7 @@ Azure Blockchain Workbench, blok zinciri uygulamalarını ve kullanıcılarını
 
 Mevcut sistemlerle tümleştirmek için Blockchain Workbench REST API’lerini ve ileti tabanlı API’leri kullanabilirsiniz. API’ler, birden fazla dağıtılmış defter teknolojisinin, depolama ve veritabanı teklifinin değiştirilmesine veya kullanılmasına imkan tanıyacak bir arabirim sağlar.
 
-Blockchain Workbench, ileti tabanlı API’sine gönderilen iletileri, blok zincirinin yerel API’sinin beklediği bir biçimde derleme işlemlerine dönüştürebilir.  Workbench, işlemleri imzalayıp uygun blok zincirine yönlendirebilir. 
+Blok zinciri çalışma ekranı, bu blok zincirinin yerel API 'SI tarafından beklenen biçimde işlem oluşturmak için ileti tabanlı API 'sine gönderilen iletileri dönüştürebilir.  Workbench, işlemleri imzalayıp uygun blok zincirine yönlendirebilir. 
 
 Workbench, aşağı akış tüketicilerine ileti göndermek için Service Bus ve Event Grid’e otomatik olarak olaylar sunar. Geliştiriciler, işlemleri desteklemek ve sonuçlara bakmak için bu ileti sistemlerinin herhangi biriyle tümleştirme gerçekleştirebilir.
 

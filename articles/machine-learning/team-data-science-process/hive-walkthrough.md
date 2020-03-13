@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393371"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283426"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process'in çalışması: kullanımı Azure HDInsight Hadoop kümeleri
 Bu kılavuzda, [ekip veri bilimi işlemini (TDSP)](overview.md) uçtan uca bir senaryoda kullanırız. Genel kullanıma açık [NYC Taxi](https://www.andresmh.com/nyctaxitrips/) veri kümesinden verileri depolamak, araştırmak ve özellik mühendislerini ve verileri aşağı [örneklemek için bir Azure HDInsight Hadoop kümesi](https://azure.microsoft.com/services/hdinsight/) kullanırız. İkili ve çok sınıflı sınıflandırma ve regresyon Tahmine dayalı görevler işlemek üzere Azure Machine Learning ile veri modelleri ekleriz. 
@@ -418,7 +418,7 @@ Hive directory isteminden aşağıdaki komutu çalıştırın:
 
 Bir veri kümesini araştırırken, genellikle değer gruplarının dağıtımlarını incelemek istiyoruz. Bu bölüm, cab ve sürücüler için bu çözümlemenin nasıl yapılacağını gösteren bir örnek sağlar.
 
-**Örnek\_hive\_\_count\_\_,\_lisansında hack_license. HQL** dosyası, tarifeli havayolu veri kümesini **medalon** veüzerinde gruplandırır ve her bir birleşimin sayısını döndürür. İçeriği şunlardır:
+**Örnek\_hive\_\_count\_\_,\_lisansında hack_license. HQL** dosyası, tarifeli havayolu veri kümesini **medalon** ve **hack_license**üzerinde gruplandırır ve her bir birleşimin sayısını döndürür. İçeriği şunlardır:
 
     SELECT medallion, hack_license, COUNT(*) as trip_count
     FROM nyctaxidb.fare

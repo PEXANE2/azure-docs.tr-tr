@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3468dd72ff47c895ee4df6ed4308aabab92c33f1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250815"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216941"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Öğretici: Azure portal kullanarak NAT ağ geçidi oluşturma ve NAT hizmetini test etme
 
 Bu öğreticide, Azure 'da sanal makineler için giden bağlantı sağlamak üzere bir NAT ağ geçidi oluşturacaksınız. NAT ağ geçidini test etmek için bir kaynak ve hedef sanal makine dağıtırsınız. Kaynaktan hedef sanal makineye bir genel IP adresine giden bağlantı yaparak NAT ağ geçidini test edersiniz.  Bu öğretici, kaynak ve hedefi yalnızca kolaylık sağlaması için aynı kaynak grubundaki iki farklı sanal ağda dağıtır.
-
->[!NOTE] 
->Azure sanal ağ NAT, şu anda genel önizleme olarak kullanılabilir ve sınırlı sayıda [bölgede](./nat-overview.md#region-availability)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -315,7 +312,6 @@ NAT hizmeti 'nin çalışıyor olduğunu görmek için Azure Izleyici 'de ölç�
 - [Azure CLI kullanarak NAT Gateway kaynağını](./quickstart-create-nat-gateway-cli.md)dağıtmaya yönelik hızlı başlangıç.
 - [Azure PowerShell kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-powershell.md)dağıtmaya yönelik hızlı başlangıç.
 - [Azure Portal kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-portal.md)dağıtmaya yönelik hızlı başlangıç.
-- [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).
 
 > [!div class="nextstepaction"]
 

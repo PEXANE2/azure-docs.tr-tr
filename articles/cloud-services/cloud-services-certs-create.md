@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357514"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248144"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services sertifikalara genel bakış
 Sertifikalar, Azure 'da bulut Hizmetleri ([hizmet sertifikaları](#what-are-service-certificates)) ve yönetim API 'siyle ([yönetim sertifikaları](#what-are-management-certificates)) kimlik doğrulaması için kullanılır. Bu konu, her iki sertifika türü için genel bir bakış sağlar ve bunları Azure 'a [oluşturma](#create) ve dağıtma.

@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672064"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276133"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 

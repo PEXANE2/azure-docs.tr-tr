@@ -3,12 +3,12 @@ title: Özel bağlantıyı ayarla
 description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlama ve yerel bir sanal ağda özel bağlantıyı etkinleştirme
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: b7dcf2d1eb1a77ea8b9660318ed2a7d4ec183b42
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 57c2a59ad8b16c39c7c577173feae68dcb263277
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128389"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203364"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Container Registry için Azure özel bağlantısını yapılandırma 
 
@@ -28,7 +28,14 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için, Azure CLı sürüm 2.2.0 veya sonraki bir sürümü önerilir. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
-* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'ından `hello-world` gibi örnek bir görüntü gönderin. Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
+* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'ından `hello-world` gibi örnek bir görüntü gönderin. Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun.
+* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak istiyorsanız bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örnek:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of private link>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 Bu makaledeki Azure CLı örnekleri aşağıdaki ortam değişkenlerini kullanır. Ortamınız için uygun değerleri değiştirin. Bash kabuğu için tüm örnekler biçimlendirilir:
 

@@ -1,5 +1,5 @@
 ---
-title: Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir? | Microsoft Belgeleri
+title: Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir? | Microsoft Docs
 description: Azure kaynakları için rol tabanlı erişim denetimine (RBAC) genel bir bakış alın. Azure kaynaklarına erişimi denetlemek için rol atamalarını kullanın.
 services: active-directory
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357690"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240110"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir?
 
@@ -84,7 +84,7 @@ Azure'da [yönetim grubu](../governance/management-groups/overview.md), abonelik
 
 ![Rol ataması kapsamı](./media/overview/rbac-scope.png)
 
-Üst kapsamda verdiğiniz erişim izinleri alt kapsamlar tarafından devralınır. Örneğin:
+Üst kapsamda verdiğiniz erişim izinleri alt kapsamlar tarafından devralınır. Örnek:
 
 - [Sahip](built-in-roles.md#owner) rolünü yönetim grubu kapsamında bir kullanıcıya atarsanız bu kullanıcı yönetim grubundaki tüm aboneliklerde bulunan nesneleri yönetebilir.
 - [Okuyucu](built-in-roles.md#reader) rolünü bir gruba abonelik kapsamında atadığınızda grubun üyeleri aboneliğin içindeki tüm kaynak gruplarını ve kaynakları görüntüleyebilir.

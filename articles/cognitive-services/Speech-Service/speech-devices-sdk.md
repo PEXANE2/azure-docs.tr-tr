@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 43d08b466076672587e7f6545193e326283c0031
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 40179c7d421a26fd9a77b435668f75ec6fde8ab1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330796"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136982"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Konuşma Cihazları SDK’sı hakkında
 
@@ -49,7 +49,7 @@ Uygulama, konuşma SDK paketiyle oluşturulmuştur ve 64 bit Windows üzerinde J
 Linux için örnek uygulama, platformlar arası bir Java uygulaması olarak sağlanır. [JRE konuşma cihazları SDK 'sının](https://aka.ms/sdsdk-download-JRE)en son sürümünü indirin.
 Uygulama, konuşma SDK paketiyle oluşturulmuştur ve 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, detem 9, RHEL 8, CentOS 8) üzerinde Java IDE tutulma (v4). 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
 
-Gelecek cihazları, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)ve [URDAHA iyi DDK](https://aka.ms/sdsdk-download-urbetter)'yi desteklemek için ek ikili dosyalar verilmiştir.
+Gelecek cihazları, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [URDAHA Iyi DDK](https://aka.ms/sdsdk-download-urbetter)ve [GGEC hoparlörünü](https://aka.ms/sdsdk-download-speaker)desteklemek için ek ikili dosyalar verilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

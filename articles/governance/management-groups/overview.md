@@ -5,11 +5,11 @@ ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
 ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186980"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240943"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Kaynaklarınızı Azure yönetim gruplarıyla düzenleme
 
@@ -87,7 +87,7 @@ Bu izinler, hiyerarşide mevcut olan alt kaynaklara devredilir. Herhangi bir RBA
 
 Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eylemler gösterilmektedir.
 
-| RBAC Rol Adı             | Oluştur | Yeniden Adlandır | Taşı** | Sil | Erişim Ata | İlke Ata | Okuma  |
+| RBAC Rol Adı             | Oluşturma | Yeniden Adlandır | Taşı** | Sil | Erişim Ata | İlke Ata | Okuma  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Sahip                       | X      | X      | X      | X      | X             | X             | X     |
 |Katılımcı                 | X      | X      | X      | X      |               |               | X     |
@@ -102,7 +102,7 @@ Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eyle
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Özel RBAC rol tanımı ve ataması
 
-Yönetim grupları için özel RBAC rol desteği şu anda bazı [kısıtlamalarla önizlemededir](#limitations).  Yönetim grubu kapsamını rol tanımının atanabilir kapsamında tanımlayabilirsiniz.  Daha sonra bu özel RBAC rolü, bu yönetim grubu ve içindeki herhangi bir yönetim grubu, abonelik, kaynak grubu veya kaynak üzerinde atanmak üzere kullanılabilir olacaktır. Bu özel rol, hiyerarşide herhangi bir yerleşik rol gibi devralınır.    
+Yönetim grupları için özel RBAC rol desteği şu anda bazı [kısıtlamalarla önizlemededir](#limitations).  Rol Tanımının atanabilir kapsamında yönetim grubu kapsamını tanımlayabilirsiniz.  Ardından bu özel RBAC Rolü söz konusu yönetim grubunda ve onun altında yer alan tüm yönetim grupları, abonelikler, kaynak grupları veya kaynaklarda atama için kullanılabilir. Bu özel rol, herhangi bir yerleşik rol gibi hiyerarşide aşağıya doğru devralınır.    
 
 ### <a name="example-definition"></a>Örnek tanım
 [Özel bir rol tanımlama ve oluşturma](../../role-based-access-control/custom-roles.md) , yönetim gruplarının eklenmesine göre değişmez. Yönetim grubu **/providers/Microsoft.Management/managementgroups/{GroupID}** tanımlamak için tam yolu kullanın. 

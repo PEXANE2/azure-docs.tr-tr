@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42368bcbc9f15f9ff5ef957b4c88f15bf070f25b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402092"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218384"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -63,6 +63,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 - Müşteri kiracılarında müşteri verilerini yedekleme ve geri yükleme
 - Temsilci olan abonelikler için yedekleme öğelerinin (henüz yedekleme için yapılandırılmamış Azure kaynakları dahil) ve izleme bilgilerinin (işlerin ve uyarıların) işletimsel bilgilerini görüntülemeye yardımcı olması için [yedekleme Gezginini](../../backup/monitor-azure-backup-with-backup-explorer.md) kullanın. Yedekleme Gezgini Şu anda yalnızca Azure VM verileri için kullanılabilir.
+- Geçmiş eğilimleri izlemek, yedekleme depolama tüketimini analiz etmek ve yedeklemeleri denetlemek ve geri yüklemek için, temsilcili abonelikler arasında [yedekleme raporları](../../backup/configure-reports.md) kullanın.
 
 [Azure Kubernetes hizmeti (AKS)](../../aks/index.yml):
 

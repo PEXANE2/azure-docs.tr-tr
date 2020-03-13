@@ -1,6 +1,6 @@
 ---
 title: Azure sanal ağ NAT bağlantısı sorunlarını giderme
-titleSuffix: Azure Virtual Network NAT troubleshooting
+titleSuffix: Azure Virtual Network
 description: Sanal ağ NAT ile ilgili sorunları giderin.
 services: virtual-network
 documentationcenter: na
@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: c629b3425cd095a6ac9d305b5cd6de58ed9d572a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 43e6853fd5e7583883f79e70c8dbcd558f137834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674323"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202170"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Azure sanal ağ NAT bağlantısı sorunlarını giderme
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure sanal ağ NAT bağlantısı sorunlarını giderme
 
 Bu makale, yöneticilerin sanal ağ NAT kullanırken bağlantı sorunlarını tanılayıp çözümlemesine yardımcı olur.
-
->[!NOTE] 
->Sanal ağ NAT Şu anda genel önizleme olarak kullanılabilir. Şu anda yalnızca sınırlı sayıda [bölgede](nat-overview.md#region-availability)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="problems"></a>Sorunlar
 
@@ -54,7 +51,7 @@ SNAT tükenmesi 'nın temel nedenlerinden biri, giden bağlantının kurulma ve 
 
 #### <a name="design-patterns"></a>Tasarım desenleri
 
-Mümkün olduğunda her zaman bağlantı yeniden kullanımı ve bağlantı havuzlarından yararlanın.  Bu desenler, kaynak tükenmesi sorunlarını doğrudan önler ve öngörülebilir, güvenilir ve ölçeklenebilir davranışa neden olur. Bu desenlerin temelleri birçok geliştirme kitaplığı ve çerçeve içinde bulunabilir.
+Mümkün olduğunda her zaman bağlantı yeniden kullanımı ve bağlantı havuzlarından yararlanın.  Bu desenler, kaynak tükenmesi sorunlarından kaçınır ve öngörülebilir davranışa neden olur. Bu desenlerin temelleri birçok geliştirme kitaplığı ve çerçeve içinde bulunabilir.
 
 _**Çözüm:**_ Uygun desenleri kullan
 
@@ -90,7 +87,7 @@ Aşağıdaki tabloda, testleri başlatmak için kullanılacak araçlar için bir
 
 ### <a name="connectivity-failures"></a>Bağlantı sorunları
 
-[Sanal ağ NAT](nat-overview.md) ile ilgili bağlantı sorunları çeşitli farklı sorunlardan kaynaklanıyor olabilir:
+[Sanal ağ NAT](nat-overview.md) ile bağlantı sorunları çeşitli farklı sorunlardan kaynaklanıyor olabilir:
 
 * NAT ağ geçidinin geçici veya kalıcı [SNAT tükenmesi](#snat-exhaustion) ,
 * Azure altyapısında geçici başarısızlıklar, 
@@ -110,7 +107,7 @@ Bu makaledeki [SNAT tükenmesi](#snat-exhaustion) bölümüne bakın.
 
 #### <a name="azure-infrastructure"></a>Azure altyapısı
 
-Azure, altyapısını harika bir şekilde izleyip işletse bile, iletimlerin kayıpsız olduğunun garantisi olmadığı için geçici arızalar ortaya çıkabilir.  TCP uygulamaları için SYN yeniden iletimlerine izin veren tasarım düzenlerini kullanın. Bir kayıp SYN paketinin neden olduğu geçici etkileri azaltmak için TCP SYN yeniden aktarım için yeterince büyük olan bağlantı zaman aşımlarını kullanın.
+Azure, altyapısını büyük önem taşıyan şekilde izler ve çalışır. Geçici sorunlar ortaya çıkabilir, iletimlerin kayıpsız olduğunun garantisi yoktur.  TCP uygulamaları için SYN yeniden iletimlerine izin veren tasarım düzenlerini kullanın. Bir kayıp SYN paketinin neden olduğu geçici etkileri azaltmak için TCP SYN yeniden aktarım için yeterince büyük olan bağlantı zaman aşımlarını kullanın.
 
 _**Çözümden**_
 
@@ -122,20 +119,20 @@ TCP bağlantı zaman aşımını azaltma veya RTO parametresini ayarlama yapay �
 
 #### <a name="public-internet-transit"></a>genel Internet geçişi
 
-Geçici hataların olasılığı, hedef ve daha fazla ara sistem için daha uzun bir yol ile artar. Geçici hataların [Azure altyapısına](#azure-infrastructure)göre sıklığından artması beklenmektedir. 
+Geçici hataların olasılığı, hedef ve daha fazla ara sistemlere daha uzun bir yol ile artar. Geçici hataların, [Azure altyapısına](#azure-infrastructure)göre sıklığın artmasına yönelik olması beklenmektedir. 
 
 Yukarıdaki [Azure altyapısı](#azure-infrastructure) bölümüyle aynı yönergeleri izleyin.
 
 #### <a name="internet-endpoint"></a>Internet uç noktası
 
-Yukarıdaki bölümler, iletişimin kurulduğu Internet uç noktasıyla ilgili önemli noktalara ek olarak uygulanır. Bağlantı başarısını etkileyebilecek diğer faktörler şunlardır:
+Önceki bölümler, iletişimin kurulduğu Internet uç noktasıyla birlikte geçerlidir. Bağlantı başarısını etkileyebilecek diğer faktörler şunlardır:
 
 * hedef tarafta trafik yönetimi, örneğin
 - Hedef tarafı tarafından uygulanan API hız sınırlaması
 - Volumetric DDoS azaltmaları veya Aktarım katmanı trafiği şekillendirme
 * güvenlik duvarı veya hedefteki diğer bileşenler 
 
-Genellikle, kaynak üzerinde paket yakalar ve hedefin ne olduğunu belirlemek için hedef (varsa) gereklidir.
+Genellikle kaynak üzerinde paket yakalar ve hedefin ne olduğunu belirlemek için hedef (varsa) gereklidir.
 
 _**Çözümden**_
 
@@ -147,9 +144,11 @@ _**Çözümden**_
 
 #### <a name="tcp-resets-received"></a>TCP sıfırlama alındı
 
-Kaynak VM 'de alınan TCP sıfırlamaları (TCP RST paketleri) gözlemlerseniz, bunlar, devam ediyor olarak tanınmayan akışlar için özel tarafta NAT ağ geçidi tarafından oluşturulabilir.  Olası bir nedenden dolayı TCP bağlantısının boşta kalma süresi doldu.  Boşta kalma zaman aşımını 4 dakika ila 120 dakikaya kadar ayarlayabilirsiniz.
+NAT ağ geçidi, devam ediyor olarak tanınmayan trafik için kaynak VM 'de TCP sıfırlamaları üretir.
 
-TCP sıfırlamaları, NAT ağ geçidi kaynaklarının genel tarafında oluşturulmaz. Hedef tarafta TCP sıfırlamaları alırsanız, bunlar, NAT ağ geçidi kaynağı değil, kaynak VM 'nin yığını tarafından oluşturulur.
+Olası bir nedenden dolayı TCP bağlantısının boşta kalma süresi doldu.  Boşta kalma zaman aşımını 4 dakika ila 120 dakikaya kadar ayarlayabilirsiniz.
+
+TCP sıfırlama, NAT ağ geçidi kaynaklarının genel tarafında oluşturulmaz. Hedef taraftaki TCP sıfırlamaları, NAT ağ geçidi kaynağı değil kaynak VM tarafından oluşturulur.
 
 _**Çözümden**_
 

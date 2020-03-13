@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
 ms.openlocfilehash: f8ff3dc71727abf9e276cccc951c4d1143f4200d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583108"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239353"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Öğretici: Media Services v3 ile videoları karşıya yükleme, kodlama ve akışla
 
@@ -40,7 +40,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Visual Studio yüklü değilse, [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)' i edinebilirsiniz.
 - [Media Services hesabı oluşturun](create-account-cli-how-to.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.

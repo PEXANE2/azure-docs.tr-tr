@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218161"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için özel R modülleri tanımlama (klasik)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Bu konu başlığı altında, özel bir R Studio (klasik) yazmak ve dağıtmak açıklanmaktadır. Bu özel R modülleri nedir ve hangi dosyaların bunları tanımlamak için kullanılan açıklar. Bu, bir modül tanımlama dosyaları oluşturmak nasıl ve dağıtım için modül bir Machine Learning çalışma alanında kaydetmeyi nasıl göstermektedir. Ardından, özel modül tanımında kullanılan öznitelikler ve öğeler daha ayrıntılı olarak açıklanmıştır. Yardımcı işlevleri ve dosyaları ve birden çok çıktı nasıl kullanılacağı da ele alınmıştır. 
 
@@ -200,7 +202,7 @@ Bir denemenize giriş olarak geçirilmedi isteğe bağlı **DataTable** bağlant
     </Ports> 
 
 
-Ve doğru sırada 'CustomAddRows.R' listesinde nesneleri listesini döndürür:
+Ve bir listedeki nesne listesini ' CustomAddRows. R ' içinde doğru sırada döndürün:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -293,7 +295,7 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
     * Tümü
   * **varsayılan** -sütun seçici için geçerli varsayılan seçimler şunları içerir: 
     
-    * Hiçbiri
+    * Yok
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -333,11 +335,11 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
 Özel Modül ZIP dosyasına yerleştirilmiş herhangi bir dosyayı yürütme sırasında kullanılabilir olacak. Mevcut herhangi bir dizin yapılarını korunur. Bu, dosyanın kaynağı yerel olarak ve Azure Machine Learning Studio (klasik) yürütmesinde aynı şekilde çalıştığı anlamına gelir. 
 
 > [!NOTE]
-> Tüm yolları böylece tüm dosyalar 'src' dizinine çıkarılır fark ' src /' öneki.
+> Tüm yolların ' src/' öneki olması için tüm dosyaların ' src ' dizinine ayıklandığına dikkat edin.
 > 
 > 
 
-Örneğin, NAs ile herhangi bir satır veri kümesinden ve ayrıca herhangi bir yinelenen satır CustomAddRows çıktısı önce kaldırın. yapmak istediğiniz ve dosyasında RemoveDupNARows.R yapan bir R işlevi zaten yazdığınız varsayalım:
+Örneğin, veri kümesinden NAs içeren herhangi bir satırı kaldırmak ve ayrıca, CustomAddRows ' a yazmadan önce yinelenen satırları kaldırmak ve bir RemoveDupNARows. R dosyasında bunu yapan bir R işlevi zaten yazmış olmanız gerektiğini varsayalım:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ Yardımcı dosyada RemoveDupNARows.R CustomAddRows işlevi edinebilir:
         return (dataset)
     }
 
-Ardından, 'CustomAddRows.R', 'CustomAddRows.xml' ve 'RemoveDupNARows.R' özel bir R modülü olarak içeren bir ZIP dosyasını karşıya yükleyin.
+Ardından, özel bir R modülü olarak ' CustomAddRows. R ', ' CustomAddRows. xml ' ve ' RemoveDupNARows. R ' içeren bir ZIP dosyası yükleyin.
 
 ## <a name="execution-environment"></a>Yürütme Ortamı
 R betiğinin yürütme ortamı r **betiği yürüt komut dosyası** modülüyle aynı r sürümünü kullanır ve aynı varsayılan paketleri kullanabilir. Ek R paketleri özel modülünüzde Özel Modül ZIP paketteki dahil ederek de ekleyebilirsiniz. Yalnızca kendi R ortamında olduğu gibi bunları R betiğinizde yükleyin. 

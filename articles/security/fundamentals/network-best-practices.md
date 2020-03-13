@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392030"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245232"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için en iyi Azure uygulamaları
 Bu makalede, ağ güveninizi geliştirmeye yönelik bir Azure en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, Azure ağ deneyimimizden ve bizim gibi müşterilerin deneyimlerimizden türetilir.

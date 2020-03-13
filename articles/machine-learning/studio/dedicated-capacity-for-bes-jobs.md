@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 0bb4157ff77ef57f377ba0c6a08bfe8529f663f4
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 618bc5719e3629d37567d8ac77594e7734f82a09
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169267"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204435"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Machine Learning Studio (klasik) işler için Azure Batch hizmeti
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Machine Learning Batch havuzu işleme, Azure Machine Learning Batch yürütme hizmeti için müşteri tarafından yönetilen ölçek sağlar. Machine learning eşzamanlı iş sayısını sınırlayan bir çok kiracılı ortamında, gerçekleşir için Klasik toplu işleme gönderebilir ve ilk-giren ilk çıkar temelinde işi kuyruğa alındı. Bu bir belirsizlik, doğru bir şekilde iş ne zaman çalışacağını tahmin edemezsiniz, anlamına gelir.
 
@@ -111,4 +113,4 @@ Faturalandırma örnek:
 
 | **Şu durumlarda Batch havuzu Işlemeyi kullan**    | **Şu durumlarda klasik toplu işleme kullan**  |
 |---|---|
-|Çok sayıda işlerini çalıştırmanız gerekir<br>Veya<br/>İşleriniz hemen çalışacağını bilmeniz gerekir<br/>Veya<br/>Garantili aktarım hızı gerekir. Örneğin, belirli bir zaman dilimi içinde çalıştırılan bir iş sayısı ve ihtiyaçlarınızı karşılamak üzere işlem kaynaklarınızı ölçeklendirmek istediğinizden gerekir.    | Yalnızca birkaç iş çalışıyor<br/>And<br/> İşleri hemen çalıştırmanız gerekmez. |
+|Çok sayıda işlerini çalıştırmanız gerekir<br>Veya<br/>İşleriniz hemen çalışacağını bilmeniz gerekir<br/>Veya<br/>Garantili aktarım hızı gerekir. Örneğin, belirli bir zaman dilimi içinde çalıştırılan bir iş sayısı ve ihtiyaçlarınızı karşılamak üzere işlem kaynaklarınızı ölçeklendirmek istediğinizden gerekir.    | Yalnızca birkaç iş çalışıyor<br/>And<br/> İşlerin hemen çalıştırılmasına gerek yok |

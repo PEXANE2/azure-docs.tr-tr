@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168942"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218259"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için net # sinir ağ belirtim diline kılavuzluk (klasik)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 NET #, Microsoft tarafından geliştirilen ve derin sinir ağları ya da rastgele boyutlardaki evler gibi karmaşık sinir ağ mimarilerini tanımlamak için kullanılan bir dildir. Görüntü, video veya ses gibi verilerin öğrenmesini geliştirmek için karmaşık yapıları kullanabilirsiniz.
 
@@ -89,17 +91,17 @@ Sabit bir bildirim isteğe bağlıdır. Sinir ağ tanımında başka bir yerde k
 
 `Const X = 28;`
 
-İki veya daha fazla sabiti aynı anda tanımlamak için, tanımlayıcı adlarını ve değerlerini küme ayraçları içine alın ve noktalı virgül kullanarak ayırın. Örneğin:
+İki veya daha fazla sabiti aynı anda tanımlamak için, tanımlayıcı adlarını ve değerlerini küme ayraçları içine alın ve noktalı virgül kullanarak ayırın. Örnek:
 
 `Const { X = 28; Y = 4; }`
 
-Her atama ifadesinin sağ tarafı bir tamsayı, gerçek sayı, Boole değeri (true veya false) veya matematik ifadesi olabilir. Örneğin:
+Her atama ifadesinin sağ tarafı bir tamsayı, gerçek sayı, Boole değeri (true veya false) veya matematik ifadesi olabilir. Örnek:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Katman bildirimi
 
-Katman bildirimi gereklidir. Bu, bağlantı paketleri ve öznitelikleri dahil olmak üzere katmanın boyutunu ve kaynağını tanımlar. Bildirim bildirimi, katmanın (girdi, gizli veya çıktı) adı ve ardından katmanın boyutları (pozitif tamsayılar kümesi) ile başlar. Örneğin:
+Katman bildirimi gereklidir. Bu, bağlantı paketleri ve öznitelikleri dahil olmak üzere katmanın boyutunu ve kaynağını tanımlar. Bildirim bildirimi, katmanın (girdi, gizli veya çıktı) adı ve ardından katmanın boyutları (pozitif tamsayılar kümesi) ile başlar. Örnek:
 
 ```Net#
 input Data auto;

@@ -10,11 +10,11 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 74539a7ed74d0216f1a4bb2d719983895d8b320f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359610"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241279"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Hızlı başlangıç: Azure haritalar kullanarak etkileşimli arama haritası oluşturma
 

@@ -4,17 +4,17 @@ description: Azure Temsilcili kaynak yönetimini kullanırken, güvenlik ve eri�
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456874"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270712"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
 
 Azure Temsilcili kaynak yönetimini kullanırken, güvenlik ve erişim denetimi göz önünde bulundurmanız önemlidir. Kiracınızdaki kullanıcılar müşteri aboneliklerine ve kaynak gruplarına doğrudan erişebilir, bu nedenle kiracınızın güvenliğini sağlamak için adımları uygulamanız gerekir. Ayrıca, yalnızca müşterilerinizin kaynaklarını etkin bir şekilde yönetmek için gereken erişime izin verdiğinizden emin olmak isteyeceksiniz. Bu konu, bunu yapmanıza yardımcı olacak öneriler sağlar.
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication gerektir
+## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication’ı gerektirme
 
 [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (iki adımlı doğrulama olarak da bilinir), saldırganların birden çok kimlik doğrulama adımı gerektirerek bir hesaba erişim sağlamasını önlemeye yardımcı olur. Müşteri kaynaklarına erişimi olacak kullanıcılar da dahil olmak üzere, hizmet sağlayıcı kiracınızdaki tüm kullanıcılar için Multi-Factor Authentication gerekir.
 
@@ -30,7 +30,7 @@ Yönetimi kolaylaştırmak için, müşterilerinizin kaynaklarını yönetmek i�
 
 |Grup adı  |Tür  |PrincipalId  |Rol tanımı  |Rol tanımı KIMLIĞI  |
 |---------|---------|---------|---------|---------|
-|Mimarlar     |Kullanıcı grubu         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Ları     |Kullanıcı grubu         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Değerlendirme     |Kullanıcı grubu         |\<PrincipalId\>         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |VM uzmanları     |Kullanıcı grubu         |\<PrincipalId\>         |VM Katılımcısı         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
 |Otomasyon     |Hizmet asıl adı (SPN)         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |

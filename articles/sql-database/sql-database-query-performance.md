@@ -1,6 +1,6 @@
 ---
 title: Sorgu Performansı İçgörüleri
-description: Sorgu performansı izleme, bir Azure SQL veritabanı için en fazla CPU kullanan sorguları tanımlar.
+description: Sorgu performansı izleme, Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanları için en fazla CPU kullanan ve uzun süre çalışan sorguları belirler.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,35 +10,31 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/03/2019
-ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: f5998fde6659715de4fcb533cb0f41a8939b1c48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821246"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214055"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL veritabanı için Sorgu Performansı İçgörüleri
 
-İlişkisel veritabanlarının performansını yönetme ve ayarlama, uzmanlık ve zaman alır. Sorgu Performansı İçgörüleri, Azure SQL veritabanı Intelligent Performance ürün hattının bir parçasıdır. Aşağıdakileri sağlayarak veritabanı performansına sorun gidermeye daha az zaman harcamanıza yardımcı olur:
+Sorgu Performansı İçgörüleri, tek ve havuza alınmış veritabanları için akıllı sorgu analizi sağlar. İş yükünüzün en üstteki kaynak tüketme ve uzun süre çalışan sorguları belirlemesine yardımcı olur. Bu, genel iş yükü performansını iyileştirmek için optimize edilecek sorguları bulmanıza ve için ödemeniz gereken kaynağı verimli bir şekilde kullanmanıza yardımcı olur. Sorgu Performansı İçgörüleri, aşağıdakileri sağlayarak veritabanı performansını sorun gidermeye daha az zaman harcamanıza yardımcı olur:
 
-* Veritabanları kaynağı (DTU) tüketiminiz hakkında daha derin Öngörüler.
-* CPU, süre ve yürütme sayısına göre en iyi veritabanı sorgularının ayrıntıları (performans iyileştirmeleri için olası ayarlama adayları).
-* Kaynak kullanımının sorgu metnini ve geçmişini görüntülemek için bir sorgunun ayrıntılarına gitme özelliği.
-* [SQL veritabanı Danışmanı](sql-database-advisor.md)performans önerilerini gösteren ek açıklamalar.
+* Veritabanları kaynağınız (DTU) tüketiminize daha derin Öngörüler
+* CPU, süre ve yürütme sayısına göre en iyi veritabanı sorgularının ayrıntıları (performans iyileştirmeleri için olası ayarlama adayları)
+* Sorgu metnini ve kaynak kullanımının geçmişini görüntülemek için bir sorgunun ayrıntılarına gitme özelliği
+* [Veritabanı danışmanlarından](sql-database-advisor.md) performans önerilerini gösteren ek açıklamalar
 
 ![Sorgu Performansı İçgörüleri](./media/sql-database-query-performance/opening-title.png)
 
-> [!TIP]
-> Azure SQL veritabanı ile temel performans izleme için Sorgu Performansı İçgörüleri önerilir. Bu makalede yayımlanan ürün sınırlamalarını aklınızda edin. Veritabanı performansının ölçekteki gelişmiş izlenmesi için [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)önerilir. Otomatik performans sorunlarını gidermek için yerleşik zeka sahiptir. En yaygın veritabanı performans sorunlarından bazılarını otomatik olarak ayarlamak için [otomatik ayarlamayı](sql-database-automatic-tuning.md)öneririz.
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](https://msdn.microsoft.com/library/dn817826.aspx) etkin olmasını gerektirir. Varsayılan olarak tüm Azure SQL veritabanları için otomatik olarak etkinleştirilir. Sorgu deposu çalışmıyorsa, Azure portal etkinleştirmek isteyip istemeyecektir.
 
 > [!NOTE]
-> "Sorgu deposu bu veritabanında düzgün şekilde yapılandırılmamışsa" ileti portalda görüntülenirse, bkz. [sorgu deposu yapılandırmasını iyileştirme](#optimize-the-query-store-configuration-for-query-performance-insight).
->
+> "Sorgu deposu bu veritabanında düzgün şekilde yapılandırılmamışsa" ileti portalda görüntülenirse, bkz. [sorgu deposu yapılandırmasını iyileştirme](#optimize-the-query-store-configuration).
 
 ## <a name="permissions"></a>İzinler
 
@@ -65,6 +61,11 @@ Sorgu Performansı İçgörüleri kullanımı kolaydır:
 
 > [!NOTE]
 > SQL veritabanı 'nın Sorgu Performansı İçgörüleri bilgileri işlemesi için Query Store 'un birkaç saat veri yakalamasına ihtiyacı vardır. Veritabanında etkinlik yoksa veya sorgu deposu belirli bir süre içinde etkin değilse, Sorgu Performansı İçgörüleri bu zaman aralığını görüntülediğinde grafikler boş olur. Sorgu deposunu, çalışmıyorsa istediğiniz zaman etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [sorgu deposu Ile en iyi uygulamalar](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).
+>
+
+Veritabanı performans önerileri için Sorgu Performansı İçgörüleri gezinti dikey penceresinde [öneriler](sql-database-advisor.md) ' i seçin.
+
+![Öneriler sekmesi](./media/sql-database-query-performance/ia.png)
 
 ## <a name="review-top-cpu-consuming-queries"></a>En yüksek CPU kullanan sorguları gözden geçirme
 
@@ -72,9 +73,9 @@ Varsayılan olarak, Sorgu Performansı İçgörüleri ilk kez açtığınızda e
 
 1. Onay kutularını kullanarak bunları grafiğe dahil etmek veya kümeden dışlamak için tek tek sorguları seçin veya temizleyin.
 
-    En üstteki satır, veritabanının genel DTU yüzdesini gösterir. Çubuklar seçili Aralık boyunca seçilen sorguların tükettiği CPU yüzdesini gösterir. Örneğin, **geçmiş hafta** seçiliyse, her çubuk tek bir günü temsil eder.
+   En üstteki satır, veritabanının genel DTU yüzdesini gösterir. Çubuklar seçili Aralık boyunca seçilen sorguların tükettiği CPU yüzdesini gösterir. Örneğin, **geçmiş hafta** seçiliyse, her çubuk tek bir günü temsil eder.
 
-    ![Popüler sorgular](./media/sql-database-query-performance/top-queries.png)
+   ![Popüler sorgular](./media/sql-database-query-performance/top-queries.png)
 
    > [!IMPORTANT]
    > Gösterilen DTU hattı, bir saatlik dönemlerde maksimum tüketim değerine toplanır. Yalnızca sorgu yürütme istatistikleriyle yüksek düzey bir karşılaştırma için tasarlanmıştır. Bazı durumlarda, DTU kullanımı yürütülen sorgularla karşılaştırıldığında çok yüksek görünebilir, ancak böyle bir durum olmayabilir.
@@ -217,7 +218,7 @@ Bazı durumlarda, yakınlaştırma düzeyi nedeniyle, birbirini kapatan ek açı
 
 Sorguları ve performans ayarlama eylemlerinin ilişkilendirilmesi, iş yükünüzü daha iyi anlamanıza yardımcı olabilirler.
 
-## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>Sorgu Performansı İçgörüleri için sorgu deposu yapılandırmasını iyileştirin
+## <a name="optimize-the-query-store-configuration"></a>Sorgu deposu yapılandırmasını iyileştirme
 
 Sorgu Performansı İçgörüleri kullanırken aşağıdaki sorgu deposu hata iletilerini görebilirsiniz:
 
@@ -260,7 +261,7 @@ Yakalama ilkesini şu şekilde ayarlayabilirsiniz:
 
 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) veya Azure Portal aracılığıyla bir veritabanına bağlanarak sorgu deposunun boyutunu artırın ve aşağıdaki sorguyu çalıştırın. (`YourDB` veritabanı adıyla değiştirin.)
 
-```T-SQL
+```SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
@@ -274,16 +275,6 @@ Bu ayarların uygulanması, sorgu deposunun yeni sorgular için telemetri toplam
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>Özet
-
-Sorgu Performansı İçgörüleri sorgu iş yükünün etkisini ve veritabanı kaynaklarının tüketimiyle ilişkisini anlamanıza yardımcı olur. Bu özellikle, veritabanınızdaki en çok kullanılan sorgular hakkında bilgi edineceksiniz ve bir sorun haline gelmeden önce optimize edilecek sorgular bulacaksınız.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veritabanı performans önerileri için Sorgu Performansı İçgörüleri gezinti dikey penceresinde [öneriler](sql-database-advisor.md) ' i seçin.
-
-    ![Öneriler sekmesi](./media/sql-database-query-performance/ia.png)
-
-* Ortak veritabanı performans sorunları için [otomatik ayarlamayı](sql-database-automatic-tuning.md) etkinleştirmeyi düşünün.
-* [Akıllı içgörüler](sql-database-intelligent-insights.md) , veritabanı performans sorunlarını otomatik olarak gidermeye nasıl yardımcı olabileceğini öğrenin.
-* Yerleşik zeka ile SQL veritabanlarının büyük bir bölümünü, elastik havuzları ve yönetilen örnekleri gelişmiş performans izleme için [Azure SQL Analytics]( ../azure-monitor/insights/azure-sql.md) kullanmayı düşünün.
+Tek ve havuza alınmış veritabanlarının, elastik havuzların, yönetilen örneklerin ve örnek veritabanlarının gelişmiş performans izleme için [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) kullanmayı düşünün.

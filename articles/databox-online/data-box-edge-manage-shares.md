@@ -1,6 +1,6 @@
 ---
-title: Azure veri kutusu Edge paylaşımı Yönetim | Microsoft Docs
-description: Azure veri kutusu Ucunuzdaki paylaşımlarında yönetmek için Azure portalını kullanmayı açıklar.
+title: Azure Data Box Edge Share Management | Microsoft Docs
+description: Azure Data Box Edge paylaşımlarını yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,23 +8,23 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 73bff460db8428332a92d8deb68bf062ca4134ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759256"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79212933"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Azure veri kutusu Ucunuzdaki paylaşımlarında yönetmek için Azure portalını kullanma
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Azure Data Box Edge paylaşımlarını yönetmek için Azure portal kullanın
 
-Bu makalede, Azure veri kutusu Ucunuzdaki paylaşımlarında yönetmek açıklar. Azure veri kutusu Edge Azure portal aracılığıyla yönetmenize veya yerel web kullanıcı Arabirimi. Ekle, Sil, paylaşımlar veya eşitleme paylaşımıyla ilişkili depolama hesabı için depolama anahtarı yenileme için Azure portalını kullanın.
+Bu makalede Azure Data Box Edge paylaşımların nasıl yönetileceği açıklanır. Azure Data Box Edge Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Paylaşımlar ile ilişkili depolama hesabı için, paylaşımları eklemek, silmek, yenilemek veya eşitleme depolama anahtarını kullanmak için Azure portal kullanın.
 
 ## <a name="about-shares"></a>Paylaşımlar hakkında
 
-Verileri Azure'a aktarmak için Azure veri kutusu Ucunuzdaki paylaşımları oluşturmanız gerekir. Veri kutusu Edge cihazında eklediğiniz paylaşımları yerel paylaşımları veya Bulut veri gönderme paylaşımları olabilir.
+Azure 'a veri aktarmak için Azure Data Box Edge paylaşımlar oluşturmanız gerekir. Data Box Edge cihaza eklediğiniz paylaşımlar yerel paylaşımlar veya buluta veri ileten paylaşımlar olabilir.
 
- - **Yerel paylaşımları**: Cihazda yerel olarak işlenecek verileri istediğinizde bu paylaşımları kullanın.
- - **Paylaşımları**: Cihaz verileri bulut depolama hesabınıza otomatik olarak gönderilen istediğinizde bu paylaşımları kullanın. Tüm bulut işlevleri gibi **Yenile** ve **eşitleme depolama anahtarlarını** paylaşımlarına uygulanır.
+ - **Yerel paylaşımlar**: verilerin cihazda yerel olarak işlenmesini istiyorsanız bu paylaşımları kullanın.
+ - **Paylaşımlar**: cihaz verilerinin buluttaki depolama hesabınıza otomatik olarak iletilmesini istediğinizde bu paylaşımları kullanın. **Yenileme** ve **eşitleme depolama anahtarları** gibi tüm bulut işlevleri paylaşımlar için geçerlidir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -39,9 +39,9 @@ Bu makalede şunları öğreneceksiniz:
 
 Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **ağ geçidi > paylaşımları**. Seçin **+ Ekle paylaşımı** komut çubuğunda.
+1. Azure portal, Data Box Edge kaynağınız ' ne gidin ve **ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
 
-    ![Paylaşım Ekle'yi seçin](media/data-box-edge-manage-shares/add-share-1.png)
+    ![Paylaşma Ekle seçeneğini belirleyin](media/data-box-edge-manage-shares/add-share-1.png)
 
 2. **Paylaşım Ekle**'de, paylaşım ayarlarını belirtin. Paylaşımınız için benzersiz bir ad sağlayın.
     
@@ -51,7 +51,10 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
 4. Paylaşımın duracağı **Depolama hesabını** sağlamanız gerekir. Henüz kapsayıcı yoksa, depolama hesabında paylaşım adıyla bir kapsayıcı oluşturulur. Kapsayıcı zaten varsa, bu var olan kapsayıcı kullanılır.
 
-5. Açılan listeden seçin **depolama hizmeti** blok blobu, sayfa blobu ya da dosyaları. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, bu örnekte, blok blobları olarak Azure'da yer alan verileri istiyoruz, bu nedenle seçiyoruz **blok blobu**. Tercih **sayfa blobu**, verilerinizin 512 bayt hizalı olmasını sağlamalısınız. Kullanım **sayfa blobu** VHD veya VHDX 512 bayt hizalı her zaman olan.
+5. Açılan listeden, Blok Blobu, Sayfa Blobu veya dosyalardan **Depolama hizmetini** seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, bu örnekte, verilerin Azure 'da blok Blobları olarak bulunmasını istiyoruz, bu nedenle **Blok Blobu**seçiyoruz. **Sayfa Blobu**seçilirse, verilerinizin 512 bayt hizalı olduğundan emin olmanız gerekir. Her zaman 512 bayt hizalı VHD veya VHDX için **Sayfa Blobu** kullanın.
+
+   > [!IMPORTANT]
+   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. Bu adım SMB paylaşımı mı yoksa NFS paylaşımı mı oluşturduğunuza bağlıdır.
     - **SMB paylaşımı oluşturuyorsanız** - **Tüm ayrıcalıklara sahip yerel kullanıcı** alanında **Yeni oluştur**'u veya **Var olanı kullan**'ı seçin. Yeni bir yerel kullanıcı oluşturuluyorsa, **kullanıcı adı** ve **parola** sağlayın, sonra da parolayı onaylayın. Bu, yerel kullanıcıya izinleri atar. Burada izinleri atadıktan sonra, Dosya Gezgini'ni kullanarak bu izinlerde değişiklik yapabilirsiniz.
@@ -63,15 +66,15 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
         ![NFS paylaşımı ekleme](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Kolayca Edge işlem modüllerden paylaşımlara erişmek için yerel bağlama noktası kullanın. Seçin **paylaşımı ile Edge işlem kullanmasını** böylece paylaşım oluşturulduktan sonra otomatik olarak bağlanmıştır. Bu seçenek belirlendiğinde, Edge modülü ile yerel bağlama noktası işlem de kullanabilirsiniz.
+7. Sınır işlem modüllerindeki paylaşımlara kolayca erişmek için yerel bağlama noktasını kullanın. Paylaşımın oluşturulduktan sonra otomatik olarak bağlanması için **kenar COMPUTE ile paylaşma kullan** seçeneğini belirleyin. Bu seçenek belirlendiğinde, Edge modülü aynı zamanda yerel bağlama noktasıyla işlem kullanabilir.
 
 8. Paylaşımı oluşturmak için **Oluştur**'a tıklayın. Paylaşım oluşturma işleminin devam ettiği size bildirilir. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** dikey penceresi yeni paylaşımı yansıtacak şekilde güncelleştirilir.
 
-## <a name="add-a-local-share"></a>Yerel bir paylaşım ekleyin
+## <a name="add-a-local-share"></a>Yerel bir paylaşma ekleyin
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **ağ geçidi > paylaşımları**. Seçin **+ Ekle paylaşımı** komut çubuğunda.
+1. Azure portal, Data Box Edge kaynağınız ' ne gidin ve **ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
 
-    ![Paylaşım Ekle'yi seçin](media/data-box-edge-manage-shares/add-local-share-1.png)
+    ![Paylaşma Ekle seçeneğini belirleyin](media/data-box-edge-manage-shares/add-local-share-1.png)
 
 2. **Paylaşım Ekle**'de, paylaşım ayarlarını belirtin. Paylaşımınız için benzersiz bir ad sağlayın.
     
@@ -79,68 +82,68 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
 3. Paylaşım için **Tür** seçin. Tür **SMB** veya **NFS** olabilir; varsayılan tür SMB'dir. SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
 
-4. Kolayca Edge işlem modüllerden paylaşımlara erişmek için yerel bağlama noktası kullanın. Seçin **paylaşımı ile Edge işlem kullanmasını** böylece Edge modülü ile yerel bağlama noktası işlem kullanabilirsiniz.
+4. Sınır işlem modüllerindeki paylaşımlara kolayca erişmek için yerel bağlama noktasını kullanın. Sınır modülünün yerel bağlama noktasıyla işlem kullanabilmesi için **Edge COMPUTE ile paylaşma kullan** ' ı seçin.
 
-5. Seçin **Edge yerel paylaşımları olarak yapılandırma**. Yerel paylaşımlarında verileri yerel olarak cihazda kalır. Bu verileri yerel olarak işleyebilir.
+5. **Sınır yerel paylaşımları olarak Yapılandır**' ı seçin. Yerel paylaşımlardaki veriler cihazda yerel olarak kalır. Bu verileri yerel olarak işleyebilirsiniz.
 
-6. İçinde **tüm ayrıcalıklı yerel kullanıcı** alanında, aralarından seçim **Yeni Oluştur** veya **var olanı kullan**.
+6. **Tüm ayrıcalık Yerel Kullanıcı** alanında **Yeni oluştur** ' u seçin veya **var olanı kullanın**.
 
 7. **Oluştur**’u seçin. 
 
-    ![Yerel paylaşımı oluşturma](media/data-box-edge-manage-shares/add-local-share-2.png)
+    ![Yerel paylaşma oluştur](media/data-box-edge-manage-shares/add-local-share-2.png)
 
-    Paylaşımı oluşturma sürüyor bir bildirim görürsünüz. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** dikey penceresi yeni paylaşımı yansıtacak şekilde güncelleştirilir.
+    Paylaşma oluşturmanın devam ettiğini belirten bir bildirim görürsünüz. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** dikey penceresi yeni paylaşımı yansıtacak şekilde güncelleştirilir.
 
-    ![Paylaşımları dikey güncelleştirmeleri görüntüle](media/data-box-edge-manage-shares/add-local-share-3.png)
+    ![Güncelleştirme paylaşımları dikey penceresini görüntüle](media/data-box-edge-manage-shares/add-local-share-3.png)
     
-    Bu paylaşım için Edge işlem modüller için yerel mountpoint görüntülemek için paylaşım seçin.
+    Bu paylaşımın uç işlem modülleri için yerel bağlama noktasını görüntülemek üzere paylaşıma seçin.
 
-    ![Yerel paylaşım ayrıntılarını görüntüle](media/data-box-edge-manage-shares/add-local-share-4.png)
+    ![Yerel paylaşma ayrıntılarını görüntüle](media/data-box-edge-manage-shares/add-local-share-4.png)
 
-## <a name="mount-a-share"></a>Bir paylaşımını bağlama
+## <a name="mount-a-share"></a>Bir paylaşma bağlama
 
-Veri kutusu Edge Cihazınızda işlem yapılandırılmış önce bir paylaşımı oluşturduysanız ve paylaşımı bağlamak gerekir. Bir paylaşımı bağlamak için aşağıdaki adımları uygulayın.
+Data Box Edge cihazınızda işlem yapılandırmadan önce bir paylaşma oluşturduysanız, bu paylaşıma bağlamanız gerekir. Bir paylaşma bağlamak için aşağıdaki adımları uygulayın.
 
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **ağ geçidi > paylaşımları**. Bağlamak istediğiniz paylaşımı paylaşımları listesinden seçin. **İşlem için kullanılan** sütununu durumunu olarak göster **devre dışı bırakılmış** Seçilen paylaşımın.
+1. Azure portal, Data Box Edge kaynağınız ' ne gidin ve **ağ geçidi > paylaşımları**' na gidin. Paylaşımlar listesinden bağlamak istediğiniz paylaşımı seçin. **İşlem Için kullanılan** sütunu, seçili paylaşımın durumunu **devre dışı** olarak gösterir.
 
     ![Paylaşımı seçme](media/data-box-edge-manage-shares/select-share-mount.png)
 
-2. Seçin **bağlama**.
+2. **Bağla**' yı seçin.
 
     ![Bağlama seçin](media/data-box-edge-manage-shares/select-mount.png)
 
-3. Onayınız istendiğinde seçin **Evet**. Bu paylaşımı bağlar.
+3. Onay istendiğinde **Evet**' i seçin. Bu, paylaşımdan bağlantı oluşturacak.
 
-    ![Bağlama onaylayın](media/data-box-edge-manage-shares/confirm-mount.png)
+    ![Bağlama Onayla](media/data-box-edge-manage-shares/confirm-mount.png)
 
-4. Paylaşım takılı sonra paylaşımları listesine gidin. Göreceksiniz **işlem için kullanılan** sütun olarak paylaşım durumu gösterilir **etkin**.
+4. Paylaşım bağlandıktan sonra paylaşımlar listesine gidin. **İşlem Için kullanılan** sütununda, paylaşımın durumunu **etkin**olarak gösteren bir görürsünüz.
 
-    ![Bağlı paylaşım](media/data-box-edge-manage-shares/share-mounted.png)
+    ![Bağlı paylaşıma](media/data-box-edge-manage-shares/share-mounted.png)
 
-5. Paylaşım için yerel mountpoint yeniden görüntülemek için paylaşım seçin. Bu yerel mountpoint paylaşım için Edge işlem modülü kullanır.
+5. Paylaşıma ait yerel bağlama noktasını görüntülemek için yeniden paylaşma ' yı seçin. Edge işlem modülü, bu yerel bağlama noktasını paylaşıma kullanır.
 
-    ![Paylaşım için yerel mountpoint](media/data-box-edge-manage-shares/share-mountpoint.png)
+    ![Paylaşımın yerel bağlama noktası](media/data-box-edge-manage-shares/share-mountpoint.png)
 
-## <a name="unmount-a-share"></a>Bir paylaşımı çıkarın
+## <a name="unmount-a-share"></a>Bir paylaşımın bağlantısını kaldırma
 
-Azure portalında bir paylaşımını ayırmak için aşağıdaki adımları uygulayın.
+Bir paylaşımın bağlantısını kesmek için Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure portalında veri kutusu Edge kaynağınıza gidin ve ardından Git **ağ geçidi > paylaşımları**.
+1. Azure portal, Data Box Edge kaynağınız ' ne gidin ve **ağ geçidi > paylaşımları**' na gidin.
 
     ![Paylaşımı seçme](media/data-box-edge-manage-shares/select-share-unmount.png)
 
-2. Paylaşımları listesinden kaldırmak istediğiniz paylaşımı seçin. Çıkarma, paylaşımı modüllerin tarafından kullanılmadığından emin olmanız gerekir. Paylaşım modülü tarafından kullanılıyorsa, karşılık gelen modülü ile sorunları görürsünüz. Seçin **çıkarın**.
+2. Paylaşımlar listesinden, çıkarmak istediğiniz paylaşımı seçin. Çıkardık paylaşımın herhangi bir modül tarafından kullanılmadığından emin olmak istiyorsunuz. Paylaşma bir modül tarafından kullanılıyorsa, ilgili modülle ilgili sorunları görürsünüz. Çıkar ' **ı seçin.**
 
-    ![Select çıkarın](media/data-box-edge-manage-shares/select-unmount.png)
+    ![Çıkarma seçin](media/data-box-edge-manage-shares/select-unmount.png)
 
-3. Onayınız istendiğinde seçin **Evet**. Bu paylaşım çıkarmanız.
+3. Onay istendiğinde **Evet**' i seçin. Bu, paylaşımın bağlantısını çıkaracaktır.
 
-    ![Onayla çıkarın](media/data-box-edge-manage-shares/confirm-unmount.png)
+    ![Çıkarma bağlantısını onayla](media/data-box-edge-manage-shares/confirm-unmount.png)
 
-4. Kaldırılan paylaşımıdır sonra paylaşımları listesine gidin. Göreceksiniz **işlem için kullanılan** sütun olarak paylaşım durumu gösterilir **devre dışı bırakılmış**.
+4. Paylaşım kaldırıldıktan sonra paylaşımlar listesine gidin. **İşlem sütunu Için kullanılan** ' ın, paylaşma durumunu **devre dışı**olarak gösterdiğini görürsünüz.
 
-    ![Paylaşım çıkarılamadı](media/data-box-edge-manage-shares/share-unmounted.png)
+    ![Kaldırılan paylaşma](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Paylaşımı silme
 
@@ -150,7 +153,7 @@ Paylaşımı silmek için Azure portalda aşağıdaki adımları gerçekleştiri
 
     ![Paylaşımı seçme](media/data-box-edge-manage-shares/delete-share-1.png)
 
-2. Tıklayın **Sil**.
+2. **Sil**'e tıklayın.
 
     ![Sil'e tıklayın](media/data-box-edge-manage-shares/delete-share-2.png)
 
@@ -158,34 +161,34 @@ Paylaşımı silmek için Azure portalda aşağıdaki adımları gerçekleştiri
 
     ![Silmeyi onayla](media/data-box-edge-manage-shares/delete-share-3.png)
 
-Silinmesini yansıtacak şekilde paylaşımları güncelleştirmeleri listesi.
+Paylaşımların listesi, silme işlemini yansıtacak şekilde güncelleştirilir.
 
 
 ## <a name="refresh-shares"></a>Paylaşımları yenileme
 
-Yenileme özelliği, bir paylaşım içeriğini yenilemek sağlar. Bir paylaşımı yenilediğinizde bloblar ve dosyalar dahil olmak üzere son yenileme işleminden sonra buluta eklenmiş olan tüm Azure nesnelerini bulmak için bir arama başlatılır. Bu ek dosyalar, ardından cihaz paylaşımında içeriğini yenilemek için indirilir.
+Yenile özelliği, bir paylaşımın içeriğini yenilekullanmanıza olanak sağlar. Bir paylaşımı yenilediğinizde bloblar ve dosyalar dahil olmak üzere son yenileme işleminden sonra buluta eklenmiş olan tüm Azure nesnelerini bulmak için bir arama başlatılır. Bu ek dosyalar daha sonra cihazdaki paylaşımın içeriğini yenilemek için indirilir.
 
 > [!IMPORTANT]
-> - Yerel paylaşımlar yeniden yenilenemiyor.
-> - İzinler ve erişim denetim listeleri (ACL'ler), bir yenileme işlemi arasında korunmaz. 
+> - Yerel paylaşımları yenileyemezsiniz.
+> - İzinler ve erişim denetim listeleri (ACL 'Ler) bir yenileme işlemi boyunca korunmaz. 
 
 Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1.  Azure portalda **Paylaşımlar** sayfasına gidin. Yenilemek istediğiniz paylaşımı seçin ve üzerine tıklayın.
+1.   Azure portalda **Paylaşımlar** sayfasına gidin. Yenilemek istediğiniz paylaşımı seçin ve üzerine tıklayın.
 
     ![Paylaşımı seçme](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.  **Yenile**'ye tıklayın. 
+2.   **Yenile**'ye tıklayın. 
 
     ![Yenile'ye tıklayın](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.  Onayınız istendiğinde **Evet**’e tıklayın. Şirket içi paylaşımın içeriğinin yenilenmesi için bir iş başlatılır.
+3.   Onayınız istendiğinde **Evet**’e tıklayın. Şirket içi paylaşımın içeriğinin yenilenmesi için bir iş başlatılır.
 
     ![Yenilemeyi onaylama](media/data-box-edge-manage-shares/refresh-share-3.png)
  
-4.  Yenileme işlemi devam ederken bağlam menüsündeki Yenile seçeneği gri renkte gösterilir. Yenileme işinin durumunu görüntülemek için iş bildirimine tıklayın.
+4.   Yenileme işlemi devam ederken bağlam menüsündeki Yenile seçeneği gri renkte gösterilir. Yenileme işinin durumunu görüntülemek için iş bildirimine tıklayın.
 
-5.  Yenileme süresi Azure kapsayıcısındaki ve cihazdaki dosya sayısına göre değişir. Yenileme işlemi başarıyla tamamlandıktan sonra paylaşım zaman damgası güncelleştirilir. Yenilemede kısmi hatalar olsa da işlem başarılı kabul edilir ve zaman damgası güncelleştirilir. Yenileme hatası günlükleri de güncellenir.
+5.   Yenileme süresi Azure kapsayıcısındaki ve cihazdaki dosya sayısına göre değişir. Yenileme işlemi başarıyla tamamlandıktan sonra paylaşım zaman damgası güncelleştirilir. Yenilemede kısmi hatalar olsa da işlem başarılı kabul edilir ve zaman damgası güncelleştirilir. Yenileme hatası günlükleri de güncelleştirilir.
 
     ![Güncelleştirilmiş zaman damgası](media/data-box-edge-manage-shares/refresh-share-4.png)
  
@@ -200,7 +203,7 @@ Depolama erişim anahtarınızı eşitlemek için Azure portalda aşağıdaki ad
 
 1. Kaynağınızın **Genel bakış** sayfasına gidin. Paylaşım listesinden eşitlemek istediğiniz depolama hesabıyla ilişkilendirilmiş olan bir paylaşımı seçin ve üzerine tıklayın.
 
-    ![Paylaşım ile ilgili depolama hesabı seçin](media/data-box-edge-manage-shares/sync-storage-key-1.png)
+    ![İlgili depolama hesabı ile paylaşma seçin](media/data-box-edge-manage-shares/sync-storage-key-1.png)
 
 2. **Depolama anahtarını eşitle**'ye tıklayın. Onayınız istendiğinde **Evet**’e tıklayın.
 

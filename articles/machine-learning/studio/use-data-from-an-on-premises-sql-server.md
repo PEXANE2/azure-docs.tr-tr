@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9afac1adef801956f176dd339c795e2df533a2c7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169127"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204191"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Şirket içi SQL Server veritabanı kullanarak Azure Machine Learning Studio (klasik) analiz gerçekleştirme
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Genellikle şirket içi verilerle çalışacak kuruluşların avantajı ölçek ve makine öğrenimi iş yükleri için bulutun çevikliğinden yapmak istiyorsunuz. Ancak, geçerli iş süreçleri ve iş akışları, şirket içi verileri buluta taşıyarak kesintiye istemiyorsanız. Azure Machine Learning Studio (klasik) artık verilerinizi şirket içi SQL Server veritabanından okumayı ve ardından bu verilerle bir modeli eğitmek ve Puanlama destekler. Artık bu el ile kopyalayın ve Bulut ve şirket içi sunucunuz arasında veri eşitlemeyi gerekmez. Bunun yerine, Azure Machine Learning Studio (klasik) **veri alma** modülü artık eğitim ve Puanlama işleriniz için şirket içi SQL Server veritabanından doğrudan okuyabilir.
 
@@ -43,7 +45,7 @@ Data Factory şirket içinde barındırılan Integration Runtime, aşağıdaki �
 * Data Factory şirket içinde barındırılan Integration bir 64-bit işletim sistemi .NET Framework 4.6.1 veya üstü gerektirir.
 * Desteklenen Windows işletim sistemi sürümleri olan Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * IR makine için önerilen yapılandırma, en az 2 GHz, 4 çekirdekli CPU, 8 GB RAM ve 80 GB disk ' dir.
-* Konak makine hazırda bekleme, IR veri isteklerine yanıt vermiyor. Bu nedenle, IR yüklemeden önce uygun bir güç planı bilgisayarda yapılandırma Makine hazırda bekleme için yapılandırılmışsa, IR yükleme bir ileti görüntüler.
+* Ana makine hazırda beklemesi durumunda, IR veri isteklerine yanıt vermez. Bu nedenle, IR yüklemeden önce uygun bir güç planı bilgisayarda yapılandırma Makine hazırda bekleme için yapılandırılmışsa, IR yükleme bir ileti görüntüler.
 * Kopyalama etkinliği, belirli bir sıklıkta oluştuğundan, makine üzerinde kaynak kullanımı (CPU, bellek), ayrıca yoğun ve boş kalma sürelerinde ile aynı deseni izler. Kaynak Kullanımı Yoğun taşınan veri miktarı da bağlıdır. Birden çok kopyası işleri devam ederken, kaynak kullanımı yoğun zamanlarda Yukarı Git gözlemleyin. Yukarıda listelenen en düşük yapılandırmayı teknik olarak yeterli olsa da, en düşük yapılandırmayı veri taşıma için belirli yük bağlı olarak daha fazla kaynak ile bir yapılandırmaya sahip isteyebilirsiniz.
 
 Ayarlama ve Data Factory şirket içinde barındırılan Integration Runtime'ı kullanırken aşağıdakileri göz önünde bulundurun:
@@ -51,7 +53,7 @@ Ayarlama ve Data Factory şirket içinde barındırılan Integration Runtime'ı 
 * IR yalnızca bir örneği, tek bir bilgisayara yükleyebilirsiniz.
 * Birden çok şirket içi veri kaynakları için tek bir IR kullanabilirsiniz.
 * Farklı bilgisayarlara birden fazla IRS aynı şirket içi veri kaynağına bağlanabilirsiniz.
-* Bir IRS tek seferde yalnızca bir çalışma alanı için yapılandırırsınız. Şu anda IRS çalışma alanları arasında paylaşılamaz.
+* Bir IRS tek seferde yalnızca bir çalışma alanı için yapılandırırsınız. Şu anda, IRS çalışma alanları arasında paylaşılamaz.
 * Tek bir çalışma alanı için birden çok IRS yapılandırabilirsiniz. Örneğin, geliştirme sırasında test veri kaynaklarınıza bağlanmış bir IR ve kullanıma hazır olduğunuzda bir üretim IR kullanmak isteyebilirsiniz.
 * IR veri kaynağı ile aynı makinede olması gerekmez. Ancak, veri kaynağına daha yakından kaldığını ağ geçidinin veri kaynağına bağlanmak süreyi azaltır. Kaynaklar için ağ geçidi ve veri kaynağı yoksa rekabet. böylece şirket içi veri kaynağı barındıran olandan farklı bir makineye IR yüklemenizi öneririz.
 * Bilgisayarınızda Power BI veya Azure Data Factory senaryolarına hizmet eden bir IR zaten varsa, başka bir bilgisayara Azure Machine Learning Studio (klasik) için ayrı bir IR yüklersiniz.
@@ -118,7 +120,7 @@ Bu kılavuzda, bir Azure Machine Learning çalışma alanında Azure Data Factor
 Bu işlem, Azure Machine Learning Studio (klasik) ağ geçidi kurulum işlemini tamamlar.
 Artık, şirket içi verileri kullanmaya hazırsınız.
 
-Her çalışma alanı için Studio 'da (klasik) birden çok ağ geçidi oluşturabilir ve ayarlayabilirsiniz. Örneğin, geliştirme sırasında test veri kaynaklarınıza bağlanmak istediğiniz bir ağ geçidi farklı bir ağ geçidi olarak da, üretim veri kaynakları için sahip olabilir. Azure Machine Learning Studio (klasik), kurumsal ortamınıza bağlı olarak birden çok ağ geçidi ayarlama esnekliği sağlar. Şu anda çalışma alanları arasında bir ağ geçidi paylaşamaz ve yalnızca bir ağ geçidi tek bir bilgisayara yüklenebilir. Daha fazla bilgi için bkz. [veri yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma](../../data-factory/tutorial-hybrid-copy-portal.md).
+Her çalışma alanı için Studio 'da (klasik) birden çok ağ geçidi oluşturabilir ve ayarlayabilirsiniz. Örneğin, geliştirme sırasında test veri kaynaklarınıza bağlanmak istediğiniz bir ağ geçidi farklı bir ağ geçidi olarak da, üretim veri kaynakları için sahip olabilir. Azure Machine Learning Studio (klasik), kurumsal ortamınıza bağlı olarak birden çok ağ geçidi ayarlama esnekliği sağlar. Şu anda çalışma alanları arasında bir ağ geçidi paylaşamazsınız ve tek bir bilgisayara yalnızca bir ağ geçidi yüklenebilir. Daha fazla bilgi için bkz. [veri yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>2\. adım: ağ geçidini bir şirket içi veri kaynağından verileri okumak için kullanın.
 Ağ geçidini ayarladıktan sonra, verileri şirket içi SQL Server veritabanından veren bir denemeye **Içeri aktarma verileri** modülü ekleyebilirsiniz.

@@ -4,11 +4,11 @@ description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363214"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281853"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
 
@@ -26,7 +26,7 @@ Diskleri, tabloda özetlenen şekilde çoğaltmanın dışında bırakabilirsini
 
 **Azure'dan Azure'a** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** 
 --- | --- | ---
-Evet (PowerShell kullanarak) | Evet | Evet 
+Evet (PowerShell kullanarak) | Yes | Yes 
 
 ## <a name="exclude-limitations"></a>Dışlama sınırlamaları
 

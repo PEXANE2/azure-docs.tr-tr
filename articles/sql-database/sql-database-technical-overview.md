@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd9e41418eac670bd1cb52be40dbd25c17af6fac
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360079"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255697"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Veritabanı hizmeti nedir?
 
@@ -68,7 +68,7 @@ SQL veritabanı aşağıdaki satın alma modellerini sunmaktadır:
 Azure SQL veritabanı, farklı türlerde uygulamalar için tasarlanan üç hizmet katmanı sunar:
 - Ortak iş yükleri için tasarlanan [genel amaçlı/standart](sql-database-service-tier-general-purpose.md) hizmet katmanı. Bütçeye dayalı dengeli işlem ve depolama seçenekleri sunar.
 - Yüksek işlem oranı ve en düşük gecikmeli g/ç özellikli OLTP uygulamaları için tasarlanan [iş açısından kritik/Premium](sql-database-service-tier-business-critical.md) hizmet katmanı. Birkaç yalıtılmış çoğaltma kullanarak hatalara en yüksek esnekliği sağlar.
-- Çok büyük OLTP veritabanı için tasarlanan [hiper ölçekli](sql-database-service-tier-hyperscale.md) hizmet katmanı ve depolamayı otomatik olarak ölçeklendirme ve işlem akıcı bir şekilde ölçeklendirme özelliği. 
+- Çok büyük OLTP veritabanı için tasarlanan [hiper ölçekli](sql-database-service-tier-hyperscale.md) hizmet katmanı ve depolamayı otomatik olarak ölçeklendirme ve işlem akıcı bir şekilde ölçeklendirme özelliği.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Kaynak kullanımını en verimli hale getirmek için elastik havuzlar
 
@@ -76,7 +76,7 @@ Tek veritabanı oluşturabilmek ve veritabanı performansını isteğe göre yü
 
    ![Temel, standart ve Premium sürümlerde elastik havuzlar gösteren grafik](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-Elastik havuzlar sayesinde kaynak talebindeki dalgalanmalara ayak uydurmak için veritabanı performansında sürekli ayarlama yapmanız gerekmez. Havuza alınan veritabanları, gerektiğinde elastik havuzun performans kaynaklarını tüketir. Havuza alınan veritabanları havuzu kullanır ancak havuz sınırlarını aşmaz, böylece veritabanı kullanımınız tahmin edilebilir olmasa bile maliyetleriniz için durum tam tersidir.
+Elastik havuzlarla, kaynakların ölçeği dalgalanarak bir şekilde arama yapmak için veritabanı performansını artırma ve azaltma konusuna odaklanmanız gerekmez. Havuza alınan veritabanları, gerektiğinde elastik havuzun performans kaynaklarını tüketir. Havuza alınmış veritabanları, havuzun sınırlarını aşmaz, ancak tek veritabanı kullanımı olmasa bile maliyetleriniz tahmin edilebilir olmaya devam eder.
 
 [Havuza veritabanları ekleyip kaldırabilir](sql-database-elastic-pool-manage-portal.md), uygulamanızı, sizin denetlediğiniz bir bütçeyle binlerce veritabanına ölçeklendirebilirsiniz. Havuzdaki veritabanları için kullanılabilen minimum ve maksimum kaynakları denetleyebilir, havuzdaki hiçbir veritabanının havuz kaynaklarını kullandığından ve havuza alınan her veritabanının garantili minimum kaynak miktarına sahip olduğundan emin olmanız gerekir. Elastik havuzlar kullanan hizmet olarak yazılım (SaaS) uygulamaları için tasarım desenleri hakkında daha fazla bilgi edinmek için bkz. [SQL veritabanı ile çok kiracılı SaaS uygulamaları Için tasarım desenleri](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
@@ -95,7 +95,7 @@ Azure SQL veritabanı, iş yükü özelliklerine daha derin Öngörüler elde et
  - SQL Server veritabanı altyapısının en son sürümü tarafından sunulan yerleşik izleme özellikleri. Gerçek zamanlı performans öngörülerini bulmanıza olanak tanır. 
  - Azure tarafından sunulan PaaS izleme özellikleri, çok sayıda veritabanı örneğini izlemenize ve gidermenize olanak sağlar.
 
-[Sorgu deposu](sql-database-operate-query-store.md), yerleşik bir SQL Server izleme özelliği, Sorgularınızın performansını gerçek zamanlı olarak kaydeder ve olası performans sorunlarını ve en üst kaynak tüketicilerini tanımlamanızı sağlar. Otomatik ayarlama ve öneriler, gerileme performansına ve eksik veya yinelenen dizinlere sahip sorgularla ilgili öneriler sağlar. SQL veritabanı 'ndaki otomatik ayarlama, sorunları giderebilen betikleri el ile uygulamanızı veya SQL veritabanının bu sorunu çözmesine izin verir. SQL veritabanı Ayrıca, düzeltmesinin bazı avantajlardan yararlandığına da test edebilir ve sonuca bağlı olarak değişikliği korur veya döndürmenizi sağlar. Sorgu deposu ve otomatik ayarlama özelliklerine ek olarak, iş yükü performansını izlemek için standart [DMVs ve XEvent](sql-database-monitoring-with-dmvs.md) ' yi de kullanabilirsiniz.
+[Sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store), yerleşik bir SQL Server izleme özelliği, Sorgularınızın performansını gerçek zamanlı olarak kaydeder ve olası performans sorunlarını ve en üst kaynak tüketicilerini tanımlamanızı sağlar. Otomatik ayarlama ve öneriler, gerileme performansına ve eksik veya yinelenen dizinlere sahip sorgularla ilgili öneriler sağlar. SQL veritabanı 'ndaki otomatik ayarlama, sorunları giderebilen betikleri el ile uygulamanızı veya SQL veritabanının bu sorunu çözmesine izin verir. SQL veritabanı Ayrıca, düzeltmesinin bazı avantajlardan yararlandığına da test edebilir ve sonuca bağlı olarak değişikliği korur veya döndürmenizi sağlar. Sorgu deposu ve otomatik ayarlama özelliklerine ek olarak, iş yükü performansını izlemek için standart [DMVs ve XEvent](sql-database-monitoring-with-dmvs.md) ' yi de kullanabilirsiniz.
 
 Azure, binlerce veritabanının durumunu izlemenize olanak sağlayan, performans derecelendirmeleri ile birleştirilmiş [yerleşik performans izleme](sql-database-performance.md) ve [Uyarı](sql-database-insights-alerts-portal.md) araçları sağlar. Bu araçları kullanarak, geçerli veya tahmini performans ihtiyaçlarınıza göre ölçeği artırma veya azaltma etkilerini hızla değerlendirebilirsiniz. SQL Veritabanı ayrıca izlemeyi kolaylaştırmak için [ölçümler ve tanılama günlükleri oluşturabilir](sql-database-metrics-diag-logging.md). SQL Veritabanını kaynak kullanımını, çalışanları, oturumları ve bu Azure kaynaklarından birine yapılan bağlantıları kaydedecek şekilde yapılandırabilirsiniz:
 
@@ -157,7 +157,7 @@ SQL veritabanı üzerinde [SaaS çok kiracılı uygulamalar](sql-database-design
 
 ### <a name="adaptive-query-processing"></a>Uyarlamalı sorgu işleme
 
-Çok deyimli tablo değerli işlevler, toplu iş modu bellek verme geri bildirimi ve toplu iş modu Uyarlamalı birleşimler için araya eklemeli yürütme dahil olmak üzere [Uyarlamalı sorgu işleme](/sql/relational-databases/performance/intelligent-query-processing)kullanabilirsiniz. Bu uyarlamalı sorgu işleme özelliklerinin her biri benzer "öğren ve uyarla" tekniklerini uygulayarak geçmişe dönük zorlu sorgu iyileştirme sorunlarıyla ilgili performans sorunlarında yardımcı olmaktadır.
+Çok deyimli tablo değerli işlevler, toplu iş modu bellek verme geri bildirimi ve toplu iş modu Uyarlamalı birleşimler için araya eklemeli yürütme dahil olmak üzere [Uyarlamalı sorgu işleme](/sql/relational-databases/performance/intelligent-query-processing)kullanabilirsiniz. Bu Uyarlamalı sorgu işleme özelliklerinin her biri benzer "öğrenme ve uyarma" teknikleri uygulayarak, tarihsel olmayan bir sorgu iyileştirme sorunlarıyla ilgili performans sorunlarının daha da sağlanmasına yardımcı olur.
 
 ## <a name="advanced-security-and-compliance"></a>Gelişmiş koruma ve uyumluluk
 

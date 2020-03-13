@@ -1,35 +1,36 @@
 ---
 title: 'Öğretici: toplu Puanlama için ML işlem hatları'
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide, Azure Machine Learning ' de bir görüntü sınıflandırma modelinde Batch Puanlama çalıştırmak için bir makine öğrenimi işlem hattı oluşturacaksınız. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanma süreciyle iyileştirin. böylece, altyapı ve otomasyon yerine uzmanlık makinenizin öğrenimine odaklanırsınız.
+description: Bu öğreticide, bir görüntü sınıflandırma modelinde Batch Puanlama gerçekleştirmek için bir makine öğrenimi işlem hattı oluşturacaksınız. Azure Machine Learning altyapı ve otomasyon yerine makine öğrenimine odaklanabilmenizi sağlar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
-ms.reviewer: trbye
-ms.date: 02/10/2020
-ms.openlocfilehash: cb99861a53c6802598cf925121f1821f74e7d76f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.reviewer: laobri
+ms.date: 03/11/2020
+ms.openlocfilehash: bfa39d4a508412322f0caec36d557c3fc6775090
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355043"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238653"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Öğretici: toplu Puanlama için Azure Machine Learning işlem hattı oluşturma
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu öğreticide, Batch Puanlama işini çalıştırmak için Azure Machine Learning bir işlem hattı kullanırsınız. Örnek, etiketlenmemiş görüntüleri sınıflandırmak için preeğitilen [-v3](https://arxiv.org/abs/1512.00567) evsel sinir Network TensorFlow modelini kullanır. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız.
+Batch Puanlama işini çalıştırmak için Azure Machine Learning bir işlem hattı oluşturmayı öğrenin. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine makine öğrenimine odaklanmanıza olanak sağlayabilir. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız. 
 
-Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanma süreciyle iyileştirin. böylece, altyapı ve otomasyon yerine uzmanlık makinenizin öğrenimine odaklanırsınız. [Makine öğrenimi işlem hatları hakkında daha fazla bilgi edinin](concept-ml-pipelines.md).
+Örnek, etiketli görüntüleri sınıflandırmak için TensorFlow 'da uygulanan önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) sinir ağ modelini kullanır. [Makine öğrenimi işlem hatları hakkında daha fazla bilgi edinin](concept-ml-pipelines.md).
 
 Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 
 > [!div class="checklist"]
-> * Çalışma alanını yapılandırma ve örnek verileri indirme
-> * Verileri getirmek ve çıkarmak için veri nesneleri oluşturma
+> * Çalışma alanını yapılandırma 
+> * Örnek verileri indirme ve depolama
+> * Verileri getirmek ve çıkarmak için veri kümesi nesneleri oluşturma
 > * Çalışma alanınıza modeli indirme, hazırlama ve kaydetme
 > * İşlem hedeflerini sağlama ve bir Puanlama betiği oluşturma
 > * Zaman uyumsuz toplu Puanlama için `ParallelRunStep` sınıfını kullanın
@@ -57,7 +58,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>Örnek görüntüler için bir veri deposu oluşturma
+## <a name="create-a-datastore-for-sample-images"></a>Örnek görüntüler için bir veri deposu oluşturma
 
 `pipelinedata` hesapta, `sampledata` genel blob kapsayıcısından ımagenet değerlendirmesi ortak veri örneğini alın. Verilerin adı `images_datastore`altında çalışma alanı için kullanılabilir olması için `register_azure_blob_container()` çağırın. Daha sonra, çalışma alanı varsayılan veri deposunu çıkış veri deposu olarak ayarlayın. İşlem hattındaki çıktıyı öğrenmek için çıkış veri deposunu kullanın.
 
@@ -73,7 +74,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>Veri nesneleri oluşturma
+## <a name="create-dataset-objects"></a>Veri kümesi nesneleri oluşturma
 
 İşlem hatları oluştururken `Dataset` nesneleri, çalışma alanı veri depolarından verileri okumak için kullanılır ve `PipelineData` nesneleri, işlem hattı adımları arasında ara verileri aktarmak için kullanılır.
 
@@ -259,7 +260,7 @@ def run(mini_batch):
 > [!TIP]
 > Bu öğreticideki işlem hattının yalnızca bir adımı vardır ve çıktıyı bir dosyaya yazar. Çok adımlı işlem hatları için, sonraki adımlara giriş için çıkış verilerini yazmak üzere bir dizin tanımlamak üzere `ArgumentParser` de kullanabilirsiniz. `ArgumentParser` tasarım düzenini kullanarak birden çok işlem hattı adımı arasında veri geçirmenin bir örneği için, bkz. [Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
-## <a name="build-and-run-the-pipeline"></a>İşlem hattını oluşturma ve çalıştırma
+## <a name="build-the-pipeline"></a>İşlem hattını oluşturma
 
 İşlem hattını çalıştırmadan önce, Python ortamını tanımlayan bir nesne oluşturun ve `batch_scoring.py` betiğinizin gerektirdiği bağımlılıkları oluşturur. Gerekli ana bağımlılık, TensorFlow ' dır, ancak arka plan işlemlerine yönelik `azureml-defaults` de yüklersiniz. Bağımlılıkları kullanarak bir `RunConfiguration` nesnesi oluşturun. Ayrıca, Docker ve Docker-GPU desteği de belirtin.
 
@@ -324,7 +325,7 @@ batch_score_step = ParallelRunStep(
 
 Farklı adım türleri için kullanabileceğiniz tüm sınıfların bir listesi için, bkz. [adımlar paketi](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
 
-### <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
+## <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
 Şimdi işlem hattını çalıştırın. İlk olarak, çalışma alanı başvurusunu ve oluşturduğunuz işlem hattı adımını kullanarak bir `Pipeline` nesnesi oluşturun. `steps` parametresi bir adım dizisidir. Bu durumda, toplu Puanlama için yalnızca bir adım vardır. Birden çok adım içeren işlem hatları oluşturmak için, adımları Bu dizide sırayla yerleştirin.
 

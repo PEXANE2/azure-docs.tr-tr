@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3e5fd2315a5d352ed5abee9253b5c84eea3b73a9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462284"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219615"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta, Azure [komut satırı arabirimi 'ni (CLI)](https://do
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)’yi yükleyin. CLı 'nın yerel yüklemesinde oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) komutunu çalıştırın:
 
-```console
+```azurecli-interactive
 az login
 ```
 
@@ -156,7 +156,7 @@ az cognitiveservices account create \
 
 Komut satırı arabirimi (CLı) yerel yüklemenizde oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanın.
 
-```console
+```azurecli-interactive
 az login
 ```
 

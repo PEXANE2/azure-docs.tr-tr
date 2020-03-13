@@ -8,11 +8,11 @@ ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
 ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277160"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
 
@@ -34,7 +34,7 @@ Zamanlayıcı tetikleyicisi [Microsoft. Azure. WebJobs. Extensions](https://www.
 
 ## <a name="example"></a>Örnek
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, dakikada beş ile bölünebilen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir (örneğin, işlev 18:57:00 ' de başlıyorsa, sonraki performans 19:00:00 ' de olur). [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) nesnesi işlevine geçirilir.
 
@@ -50,7 +50,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Zamanlayıcı tetikleyicisi bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlev, bu işlev çağrısının kaçırılmış bir zamanlama oluşumu olup olmadığını gösteren bir günlük yazar. [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) nesnesi işlevine geçirilir.
 
@@ -78,7 +78,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Zamanlayıcı tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev, bu işlev çağrısının kaçırılmış bir zamanlama oluşumu olup olmadığını gösteren bir günlük yazar. İşleve bir [Zamanlayıcı nesnesi](#usage) geçirilir.
 
@@ -109,7 +109,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Aşağıdaki örnek, bir yapılandırma *function. JSON* dosyasında açıklanan bir Zamanlayıcı tetikleyicisi bağlamayı kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md)  *__init__. Kopyala* dosyasında açıklanmıştır. İşleve geçirilen nesne, [Azure. Functions. TimerRequest nesnesi](/python/api/azure-functions/azure.functions.timerrequest)türündedir. İşlev mantığı, geçerli çağrının kaçırılmış bir zamanlama oluşumunda olup olmadığını gösteren günlüklere yazar. 
 
@@ -143,7 +143,7 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Aşağıdaki örnek işlev her beş dakikada bir tetiklenir ve yürütülür. İşlevindeki `@TimerTrigger` ek açıklaması, [cron ifadeleriyle](https://en.wikipedia.org/wiki/Cron#CRON_expression)aynı dize biçimini kullanarak zamanlamayı tanımlar.
 
@@ -162,7 +162,7 @@ public void keepAlive(
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [timertriggerattribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)' u kullanın.
 
@@ -182,19 +182,19 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 Öznitelikler komut dosyası tarafından C# desteklenmiyor.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Öznitelikler Python tarafından desteklenmez.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 İşlevindeki `@TimerTrigger` ek açıklaması, [cron ifadeleriyle](https://en.wikipedia.org/wiki/Cron#CRON_expression)aynı dize biçimini kullanarak zamanlamayı tanımlar.
 

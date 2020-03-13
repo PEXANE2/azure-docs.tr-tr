@@ -4,11 +4,11 @@ description: Azure geçişi 'nde fiziksel sunucu geçişi desteği hakkında bil
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388933"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269555"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Fiziksel sunucu geçişi için destek matrisi
 

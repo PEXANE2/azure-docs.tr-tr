@@ -15,11 +15,11 @@ ms.custom: mvc
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380962"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239913"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Öğretici: Azure DevTest Labs kullanarak bir laboratuvar ayarlama
 Bu öğreticide, Azure portalı kullanarak bir laboratuvar oluşturursunuz. Laboratuvar yöneticisi bir kuruluşta laboratuvar ayarlar, laboratuvarda sanal makineler oluşturur ve ilkeler yapılandırır. Laboratuvar kullanıcıları (örneğin: geliştirici ve test ediciler), laboratuvarda sanal makineler talep eder, sanal makinelere bağlanır ve sanal makineleri kullanır. 

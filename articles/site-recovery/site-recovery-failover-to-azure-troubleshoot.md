@@ -10,11 +10,11 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754432"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257751"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM veya fiziksel makinenin Azure 'a yük devretmesinde oluşan hata sorunlarını giderme
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363143"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257153"
 ---
 # <a name="scale-with-additional-process-servers"></a>Ek işlem sunucularıyla ölçeklendirme
 
@@ -20,7 +20,7 @@ Varsayılan olarak, [Site Recovery](site-recovery-overview.md)kullanarak VMware 
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-### <a name="capacity-planning"></a>Kapasite planlama
+### <a name="capacity-planning"></a>Kapasite planlaması
 
 VMware çoğaltması için [Kapasite planlaması](site-recovery-plan-capacity-vmware.md) gerçekleştirdiğinizden emin olun. Bu, ek işlem sunucularını nasıl ve ne zaman dağıtacağınızı belirlemenize yardımcı olur.
 
@@ -81,7 +81,7 @@ Burada komut satırı parametreleri aşağıdaki gibidir:
 
 [!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
 
-Örneğin:
+Örnek:
 
 ```
 MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted

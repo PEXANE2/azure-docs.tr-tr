@@ -4,11 +4,11 @@ description: Azure’daki kaynakların dağıtımı, yönetimi ve erişim deneti
 ms.topic: overview
 ms.date: 08/29/2019
 ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473790"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240327"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager genel bakış
 
@@ -31,7 +31,7 @@ Portalda kullanılabilen tüm yetenekler, PowerShell, Azure CLı, REST API 'Ler 
 Azure Resource Manager’ı kullanmaya yeni başladıysanız bilmiyor olabileceğiniz bazı terimler vardır.
 
 * **kaynak** - Azure ile kullanılabilen yönetilebilir bir öğe. Sanal makineler, depolama hesapları, Web uygulamaları, veritabanları ve sanal ağlar, kaynak örnekleridir.
-* **kaynak grubu** - Bir Azure çözümü için ilgili kaynakları bir arada tutan bir kapsayıcıdır. Kaynak grubu, grup olarak yönetmek istediğiniz kaynakları içerir. Kuruluşunuz için en mantıklı duruma göre kaynak grubunda hangi kaynakların ait olduğuna karar verirsiniz. Bkz. [Kaynak grupları](#resource-groups).
+* **kaynak grubu** - Bir Azure çözümü için ilgili kaynakları bir arada tutan bir kapsayıcıdır. Kaynak grubu, Grup olarak yönetmek istediğiniz kaynakları içerir. Kuruluşunuz için en mantıklı duruma göre kaynak grubunda hangi kaynakların ait olduğuna karar verirsiniz. Bkz. [Kaynak grupları](#resource-groups).
 * **kaynak sağlayıcısı** -Azure kaynakları sağlayan bir hizmet. Örneğin, ortak bir kaynak sağlayıcısı, sanal makine kaynağını sağlayan Microsoft. COMPUTE ' dir. Microsoft. Storage, başka bir ortak kaynak sağlayıcıdır. Bkz. [kaynak sağlayıcıları ve türleri](resource-providers-and-types.md).
 * **Kaynak Yöneticisi Template** -bir kaynak grubuna veya aboneliğe dağıtılacak bir veya daha fazla kaynağı tanımlayan bir JAVASCRIPT nesne GÖSTERIMI (JSON) dosyası. Şablon, kaynakları tutarlı ve sürekli olarak dağıtmak için kullanılabilir. [Şablon dağıtımı genel bakış](../templates/overview.md)bölümüne bakın.
 * **bildirim temelli söz dizimi** - Oluşturmaya yönelik programlama komutları dizisini yazmak zorunda kalmadan "Oluşturmak istediğiniz şeyi" belirtmenize imkan tanıyan söz dizimi. Resource Manager şablonu, bildirim temelli söz diziminin bir örneğidir. Dosya içinde Azure’a dağıtılacak altyapının özelliklerini tanımlarsınız.  [Şablon dağıtımı genel bakış](../templates/overview.md)bölümüne bakın.

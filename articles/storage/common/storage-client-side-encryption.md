@@ -9,18 +9,18 @@ ms.date: 10/20/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 921ea148c12a23ece47688a26743e1195caf52f4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6cf19292c3675382789ca25af7f9b7f69e9066fe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391747"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255424"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için istemci tarafı şifreleme ve Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Genel Bakış
-[.Net Için Azure Storage Istemci kitaplığı](/dotnet/api/overview/azure/storage/client) , Azure depolama 'ya yüklemeden önce istemci uygulamalardaki verileri şifrelemeyi ve istemciye indirme sırasında verilerin şifresini çözmesini destekler. Kitaplık Ayrıca depolama hesabı anahtar yönetimi için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tümleştirmeyi destekler.
+[.Net Için Azure Storage Istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet) , Azure depolama 'ya yüklemeden önce istemci uygulamalardaki verileri şifrelemeyi ve istemciye indirme sırasında verilerin şifresini çözmesini destekler. Kitaplık Ayrıca depolama hesabı anahtar yönetimi için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tümleştirmeyi destekler.
 
 İstemci tarafı şifreleme ve Azure Key Vault kullanarak blob 'ları şifreleme sürecinde size yol gösteren adım adım bir öğretici için, bkz. [Azure Key Vault kullanarak Microsoft Azure depolama bloblarını şifreleme ve şifre çözme](../blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 

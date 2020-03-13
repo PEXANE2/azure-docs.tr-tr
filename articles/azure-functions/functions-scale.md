@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9970894436107ab51c2ad2d31aa1e14a3e6b5778
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276614"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
@@ -153,12 +153,10 @@ Azure Işlevleri için ölçek birimi, işlev uygulamasıdır. İşlev uygulamas
 Ölçeklendirme, bir dizi etkene göre farklılık gösterebilir ve seçilen tetikleyici ve dile göre farklı şekilde ölçeklendirebilir. ' Nin farkında olması için ölçeklendirmenin bazı çok karmaşık özellikleri vardır:
 
 * Tek bir işlev uygulaması yalnızca en fazla 200 örneğe ölçeklendirir. Tek bir örnek aynı anda birden fazla ileti veya isteği işleyebilir, bu nedenle eşzamanlı yürütmeler sayısında bir küme sınırı yoktur.
-* HTTP Tetikleyicileri için, yeni örnekler yalnızca her 1 saniyede bir en çok olacak şekilde ayrılacaktır.
-* HTTP olmayan Tetikleyiciler için, yeni örnekler her 30 saniyede bir en fazla olacak şekilde ayrılacaktır.
-
-Farklı tetikleyiciler Ayrıca aşağıda belgelenen farklı ölçekleme sınırlarına de sahip olabilir:
-
-* [Olay Hub’ı](functions-bindings-event-hubs-trigger.md#scaling)
+* HTTP Tetikleyicileri için, saniyede en çok bir kez yeni örnekler ayrılır.
+* HTTP olmayan Tetikleyiciler için, en çok, her 30 saniyede bir yeni örnek ayrılır. Bir [Premium planda](#premium-plan)çalışırken ölçekleme daha hızlıdır.
+* Service Bus Tetikleyiciler için, en verimli ölçekleme için kaynaklardaki hakları _Yönet_ ' i kullanın. _Dinleme_ haklarıyla, ölçek kararlarını bilgilendirmek için sıra uzunluğu kullanılamadığından ölçekleme doğru değildir. Service Bus erişim ilkelerinde hakları ayarlama hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim yetkilendirme ilkesi](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
+* Olay Hub 'ı Tetikleyicileri için başvuru makalesindeki [ölçeklendirme Kılavuzu](functions-bindings-event-hubs-trigger.md#scaling) ' na bakın. 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ölçeklenebilir uygulamalar için en iyi uygulamalar ve desenler
 

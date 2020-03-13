@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365886"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254761"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>StorSimple 8600 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
 
@@ -213,7 +213,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
 | --- | --- |
 | A |Internet erişimi olan LAN |
 | B |Denetleyici 0 |
-| Mş |PCM 0 |
+| C |PCM 0 |
 | D |Denetleyici 1 |
 | E |PCM 1 |
 | F |EBOD denetleyicisi 0 |

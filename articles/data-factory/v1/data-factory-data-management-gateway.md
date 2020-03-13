@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357333"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281879"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
 > [!NOTE]
@@ -381,7 +381,7 @@ Aşağıdaki tabloda **ağ geçidi düğümünün**olası durumları verilmişti
 Durum  | Açıklamalar/senaryolar
 :------- | :------------------
 Online | Data Factory hizmetine bağlı düğüm.
-Offline | Düğüm çevrimdışı.
+Çevrimdışı | Düğüm çevrimdışı.
 Yükseltme | Düğüm otomatik olarak güncelleştiriliyor.
 Sınırlı | Bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya kimlik bilgisi eşitleme sorunu olabilir.
 Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
@@ -392,7 +392,7 @@ Durum | Yorumlar
 :----- | :-------
 Kayıt gerekiyor | Henüz bu mantıksal ağ geçidine kayıtlı düğüm yok
 Online | Ağ Geçidi düğümleri çevrimiçi
-Offline | Çevrimiçi durumda düğüm yok.
+Çevrimdışı | Çevrimiçi durumda düğüm yok.
 Sınırlı | Bu ağ geçidinde düğümlerin hepsi sağlıklı durumda değil. Bu durum, bir düğümün kapatılmış olabileceğini belirten bir uyarıdır! <br/><br/>Dağıtıcı/çalışan düğümündeki kimlik bilgisi eşitleme sorunundan kaynaklanıyor olabilir.
 
 ## <a name="scale-up-gateway"></a>Ağ geçidini büyütme

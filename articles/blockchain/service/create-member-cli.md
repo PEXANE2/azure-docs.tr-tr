@@ -1,15 +1,15 @@
 ---
 title: Azure blok zinciri hizmeti üyesi oluşturma-Azure CLı
 description: Azure CLı kullanarak bir blok zinciri Konsorsiyumu için Azure blok zinciri hizmeti üyesi oluşturun.
-ms.date: 01/23/2020
+ms.date: 03/12/2020
 ms.topic: quickstart
-ms.reviewer: janders
-ms.openlocfilehash: 703444b6077c2301e1ffec77c8096fb76ddaa731
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.reviewer: ravastra
+ms.openlocfilehash: 0a3cf3d7c7f3dc0b8ece6fd6a466e42ae970b61c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759935"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214727"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure blok zinciri hizmeti blok zinciri üyesi oluşturma
 
@@ -53,12 +53,12 @@ az resource create \
 | Parametre | Açıklama |
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. Önceki bölümde oluşturduğunuz kaynak grubunu kullanın.
-| **Adı** | Azure blok zinciri hizmeti blok zinciri üyesini tanımlayan benzersiz bir ad. Ad, genel uç nokta adresi için kullanılır. Örneğin, `myblockchainmember.blockchain.azure.com`.
+| **ada** | Azure blok zinciri hizmeti blok zinciri üyesini tanımlayan benzersiz bir ad. Ad, genel uç nokta adresi için kullanılır. Örneğin, `myblockchainmember.blockchain.azure.com`.
 | **konum** | Blok zinciri üyesinin oluşturulduğu Azure bölgesi. Örneğin, `westus2`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin.
-| **Parola** | Üyenin varsayılan işlem düğümü için parola. Blok zinciri üyesinin varsayılan işlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
+| **parolayı** | Üyenin varsayılan işlem düğümü için parola. Blok zinciri üyesinin varsayılan işlem düğümü genel uç noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
 | **unun** | Katılacak veya oluşturulacak konsorsiyumun adı. Consorda hakkında daha fazla bilgi için bkz. [Azure blok zinciri hizmeti Consortium](consortium.md).
 | **consortiumAccountPassword** | Konsorsiyum hesabı parolası üye hesap parolası olarak da bilinir. Üye hesabı parolası, üyelik için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Konsorsiyum yönetimi için üye hesabı ve üye hesabı parolasını kullanırsınız.
-| **skuName** | Katman türü. Standart için S0 ve temel için B0 kullanın.
+| **skuName** | Katman türü. Standart için S0 ve temel için B0 kullanın. Geliştirme, test ve kavram kanıtı için *temel* katmanı kullanın. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın.
 
 Blok zinciri üyesini ve destekleyici kaynakları oluşturmak yaklaşık 10 dakika sürer.
 

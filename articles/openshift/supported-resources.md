@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274911"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243672"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift kaynakları
 
@@ -34,7 +34,7 @@ Azure Red Hat OpenShift kümenizdeki işlem düğümleri için belirtebileceğin
 
 Aşağıdaki işlem düğümü boyutları Azure Red Hat Openshıft REST API tarafından desteklenir:
 
-|Boyut|vCPU|RAM|
+|Boyut|Sanal işlemci|RAM|
 |-|-|-|
 |Standart D4s v3|4|16 GB|
 |Standart D8s v3|8|32 GB|
@@ -54,7 +54,7 @@ Aşağıdaki işlem düğümü boyutları Azure Red Hat Openshıft REST API tara
 
 Aşağıdaki ana/altyapı düğüm boyutları, Azure Red Hat Openshıft REST API tarafından desteklenir:
 
-|Boyut|vCPU|RAM|
+|Boyut|Sanal işlemci|RAM|
 |-|-|-|
 |Standart D4s v3|4|16 GB|
 |Standart D8s v3|8|32 GB|

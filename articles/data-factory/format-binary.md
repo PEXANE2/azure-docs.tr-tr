@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
 ms.openlocfilehash: 8ebb4f0d1a06a7bf29dc46cd696b6acfd2527095
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386684"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260702"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure Data Factory ikili biçimi
 
@@ -31,10 +31,10 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| tür             | Veri kümesinin Type özelliği **binary**olarak ayarlanmalıdır. | Evet      |
-| konum         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`altında desteklenen özellikleri vardır. **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Evet      |
+| type             | Veri kümesinin Type özelliği **binary**olarak ayarlanmalıdır. | Yes      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`altında desteklenen özellikleri vardır. **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
 | sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | Hayır |
-| tür | İkili dosyaları okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler **bzip2**, **gzip**, **söndür**, **zipsöndür**. dosyasını kaydederken kullanmak için.<br>Bu dosyaları açmak ve dosya tabanlı havuz veri deposuna yazmak için kopyalama etkinliğini kullanırken dosyalar şu klasöre ayıklanacaktır: `<path specified in dataset>/<folder named as source zip file>/`. | Hayır       |
+| type | İkili dosyaları okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler **bzip2**, **gzip**, **söndür**, **zipsöndür**. dosyasını kaydederken kullanmak için.<br>Bu dosyaları açmak ve dosya tabanlı havuz veri deposuna yazmak için kopyalama etkinliğini kullanırken dosyalar şu klasöre ayıklanacaktır: `<path specified in dataset>/<folder named as source zip file>/`. | Hayır       |
 | düzey | Sıkıştırma oranı. Kopyalama etkinliği havuzunda veri kümesi kullanıldığında Uygula.<br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>**en hızlı - :** elde edilen dosya en iyi şekilde sıkıştırılmasa bile sıkıştırma işleminin mümkün olduğunca çabuk olması gerekir.<br>**en iyi**- : işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu. | Hayır       |
 
 Aşağıda, Azure Blob depolamada bir Ikili veri kümesi örneği verilmiştir:
@@ -75,7 +75,7 @@ Aşağıdaki özellikler, kopyalama etkinliği ***\*kaynak\**** bölümünde des
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **Binarysource**olarak ayarlanmalıdır. | Evet      |
+| type          | Kopyalama etkinliği kaynağının Type özelliği **Binarysource**olarak ayarlanmalıdır. | Yes      |
 | storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, `storeSettings`altında kendi desteklenen okuma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
 
 ### <a name="binary-as-sink"></a>Havuz olarak ikili
@@ -84,7 +84,7 @@ Aşağıdaki özellikler, kopyalama etkinliği ***\*havuzu\**** bölümünde des
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **Binarysink**olarak ayarlanmalıdır. | Evet      |
+| type          | Kopyalama etkinliği kaynağının Type özelliği **Binarysink**olarak ayarlanmalıdır. | Yes      |
 | storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının `storeSettings`altında kendi desteklenen yazma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
 
 ## <a name="next-steps"></a>Sonraki adımlar

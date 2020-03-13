@@ -12,15 +12,18 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 984d2e02ff75df459275fd10e313a4950c8d79c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ddd9603f22bd3820d18be020b9c620cf06aa42
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432173"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204418"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasik) Web hizmeti parametrelerini kullanma
-Bir Azure Machine Learning web hizmeti modülleri ile yapılandırılabilir parametreler içeren bir denemeyi yayımlayarak oluşturulur. Bazı durumlarda, web hizmetinin çalıştığı sırada modülü davranışını değiştirmek isteyebilirsiniz. *Web hizmeti parametreleri* bu işi yapmanıza olanak sağlar. 
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+Bir Azure Machine Learning web hizmeti modülleri ile yapılandırılabilir parametreler içeren bir denemeyi yayımlayarak oluşturulur. Bazı durumlarda, web hizmetinin çalıştığı sırada modülü davranışını değiştirmek isteyebilirsiniz. *Web hizmeti parametreleri* bu görevi yapmanıza izin verir. 
 
 Ortak bir örnek, Web hizmetine erişildiğinde yayınlanan Web hizmeti kullanıcısının farklı bir veri kaynağı belirleyebilmesi için [verileri Içeri aktarma][reader] modülünü ayarlamadır. Ya da [dışarı aktarma veri][writer] modülünü farklı bir hedefin belirtime için yapılandırma. Diğer bazı örnekler, [özellik karma][feature-hashing] modülünün bit sayısını veya [filtre tabanlı özellik seçimi][filter-based-feature-selection] modülünün istenen özelliklerinin sayısını değiştirmeyi içerir. 
 
@@ -38,7 +41,7 @@ Web hizmeti parametresi için varsayılan bir değer sağlamak karar verebilirsi
 Web hizmeti için API belgeleri, web hizmeti kullanıcı için Web hizmeti parametresi web hizmetine erişirken programlı olarak belirtme hakkında bilgi içerir.
 
 > [!NOTE]
-> Klasik bir Web hizmeti için API belgeleri, Machine Learning Studio (klasik) içindeki Web hizmeti **panosundaki** **API Yardım sayfası** bağlantısı aracılığıyla sağlanır. API belgeleri için yeni bir web hizmeti aracılığıyla sağlanan [Azure Machine Learning Web Hizmetleri](https://services.azureml.net/Quickstart) Şirket portalı **Tüket** ve **Swagger API'si** web sayfaları hizmeti.
+> Klasik bir Web hizmeti için API belgeleri, Machine Learning Studio (klasik) içindeki Web hizmeti **panosundaki** **API Yardım sayfası** bağlantısı aracılığıyla sağlanır. Yeni bir Web hizmetine yönelik API belgeleri, Web hizmetiniz için **kullanım ve** **Swagger API** sayfalarında [Azure Machine Learning Web Hizmetleri](https://services.azureml.net/Quickstart) portalı aracılığıyla sağlanır.
 > 
 > 
 
@@ -48,33 +51,33 @@ Web hizmeti için API belgeleri, web hizmeti kullanıcı için Web hizmeti param
 1. Machine Learning Studio (klasik) ' de, [verileri dışarı aktarma][writer] modülüne tıklayarak seçin. Özellikler bölmesinde deneme tuvaline sağındaki özellikleri gösterilmektedir.
 2. Depolama türünü belirtin:
    
-   * Altında **veri hedef zadejte**, "Azure Blob Depolama" seçin.
-   * Altında **Lütfen kimlik doğrulama türünü belirtin**, "Hesap" seçin.
+   * **Lütfen veri hedefini belirtin**bölümünde "Azure Blob depolama" seçeneğini belirleyin.
+   * **Lütfen kimlik doğrulama türünü belirtin**altında "hesap" seçeneğini belirleyin.
    * Azure blob depolama hesabı bilgilerini girin. 
 
-3. Simgesini sağ tarafındaki **kapsayıcı parametresi ile başlayan blob yolu**. Şöyle görünür:
+3. **Kapsayıcı parametresi ile başlayan blob yolunun**sağındaki simgeye tıklayın. Şöyle görünür:
    
    ![Web hizmeti parametre simgesi](./media/web-service-parameters/icon.png)
    
    "Web hizmeti parametre olarak Ayarla" seçin.
    
-   Bir girdi altında eklenir **Web hizmeti parametrelerini** Özellikler bölmesinde "blob kapsayıcısı ile başlayan yol" adlı alt kısmındaki. Bu, şu anda bu [veri verme][writer] modülü parametresiyle Ilişkili olan Web hizmeti parametresidir.
-4. Web hizmeti parametreyi yeniden adlandır, adına tıklayın, "Blob yolu" girin ve basın **Enter** anahtarı. 
-5. Web hizmeti parametresi için varsayılan bir değer sağlamak için adının sağ tarafındaki simgesine tıklayın, "sağlar. varsayılan değer"'i seçin, (örneğin, "container1/output1.csv"), bir değer girin ve basın **Enter** anahtarı.
+   Özellikler bölmesinin alt kısmındaki **Web hizmeti parametreleri** altına, "kapsayıcı ile başlayan blob yolu" adıyla bir giriş eklenir. Bu, şu anda bu [veri verme][writer] modülü parametresiyle Ilişkili olan Web hizmeti parametresidir.
+4. Web hizmeti parametresini yeniden adlandırmak için ada tıklayın, "blob yolu" yazın ve **ENTER** tuşuna basın. 
+5. Web hizmeti parametresi için varsayılan bir değer sağlamak üzere, adın sağ tarafındaki simgeye tıklayın, "varsayılan değer sağla" seçeneğini belirleyin, bir değer girin (örneğin, "kapsayıcı1/output1. csv") ve **ENTER** tuşuna basın.
    
    ![Web hizmeti parametresi](./media/web-service-parameters/parameter.png)
 6. **Çalıştır**’a tıklayın. 
-7. Tıklayın **Web hizmeti Dağıt** seçip **Web hizmeti dağıtma [Klasik]** veya **Web hizmeti dağıtma [Yeni]** web hizmeti dağıtmak için.
+7. Web **Hizmeti Dağıt ' a** tıklayın ve Web hizmetini dağıtmak için Web Hizmeti Dağıt **[klasik]** veya Web hizmeti dağıtma [ **Yeni]** seçeneğini belirleyin.
 
 > [!NOTE] 
-> Yeni bir web hizmetini dağıtmak için yeterli olan aboneliği, web hizmetini dağıtma olması gerekir. Daha fazla bilgi edinmek, [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme](manage-new-webservice.md). 
+> Yeni bir web hizmetini dağıtmak için yeterli olan aboneliği, web hizmetini dağıtma olması gerekir. Daha fazla bilgi için, [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme](manage-new-webservice.md)makalesine bakın. 
 
 Web hizmetinin kullanıcısı artık Web hizmetine erişirken [verileri dışarı aktarma][writer] modülü için yeni bir hedef belirtebilir.
 
 ## <a name="more-information"></a>Daha fazla bilgi
-Daha ayrıntılı bir örnek için bkz. [Web hizmeti parametrelerini](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) girişi [Machine Learning Web günlüğü](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
+Daha ayrıntılı bir örnek için [Machine Learning blogdaki](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) [Web hizmeti parametreleri](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) girişine bakın.
 
-Machine Learning web hizmetine erişim ile ilgili daha fazla bilgi için bkz: [bir Azure Machine Learning Web hizmetini kullanma](consume-web-services.md).
+Machine Learning Web hizmetine erişme hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti kullanma](consume-web-services.md).
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

@@ -8,11 +8,11 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277288"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254787"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınıza uzaktan bağlanma
 
@@ -189,7 +189,7 @@ Yukarıdaki yordamların her biri aşağıda açıklanmıştır.
 3. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından **görüntüle**' ye tıklayın. Uzak konağın kök deposuna gidin ve ardından **İleri**' ye tıklayın.
    
     ![Sertifika Içeri aktarma Sihirbazı 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. **Finish (Son)** düğmesine tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
+4. **Son**'a tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
    
     ![Sertifika Içeri aktarma Sihirbazı 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
@@ -229,7 +229,7 @@ Uzak Windows PowerShell bağlantısını yapmak istediğiniz bilgisayarda aşağ
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     Cmdlet 'teki-ComputerName parametresi için,*hedef cihaz > < seri numarasını*girin. Bu seri numarası, uzak ana bilgisayarınızdaki Hosts dosyasındaki 0 VERI IP adresine eşlendi; Örneğin, aşağıdaki görüntüde gösterildiği gibi **SHX0991003G44MT** .
-5. Tür:
+5. Şunu yazın:
    
      `Enter-PSSession $session`
 6. Birkaç dakika beklemeniz gerekir ve ardından, SSL üzerinden HTTPS aracılığıyla cihazınıza bağlanırsınız. Cihazınıza bağlı olduğunu belirten bir ileti görürsünüz.

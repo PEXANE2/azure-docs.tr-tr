@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381836"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247585"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium kural altyapısı özelliklerinden Azure CDN
 
@@ -153,7 +153,7 @@ Adı | Amaç
 -----|--------
 [Önbelleklenebilir HTTP yöntemleri](#cacheable-http-methods) | Ağda Önbelleğe alınabilecek ek HTTP yöntemleri kümesini belirler.
 [Önbelleklenebilir Istek gövdesi boyutu](#cacheable-request-body-size) | Bir POST yanıtının önbelleğe alınıp alınmayacağını belirlemek için eşiği tanımlar.
-[Kullanıcı değişkeni](#user-variable) | Yalnızca iç kullanım içindir.
+[Kullanıcı değişkeni](#user-variable) | Yalnızca dahili kullanım içindir.
 
 ## <a name="url-features"></a>URL özellikleri
 
@@ -410,7 +410,7 @@ Yeni yol|Yeni önbellek anahtarı için göreli yolu tanımlayın. Göreli bir y
 
 ---
 
-### <a name="comment"></a>Yorum
+### <a name="comment"></a>Açıklama
 
 **Amaç:** Kuralın içine bir notun eklenmesine izin verir.
 
@@ -1065,7 +1065,7 @@ Aşağıdaki HTTP üstbilgileri varsayılan listeye dahil edilmiştir:
 - X-Midgress
 - X-Gateway-List
 - X-EC-adı
-- Konak
+- Host
 
 **Varsayılan davranış:** Tüm CDN 'e özgü istek üstbilgileri, kaynak sunucuya iletilir.
 
@@ -1218,7 +1218,7 @@ Yanıt kodu|Yanıt adı|Açıklama
 301|Kalıcı olarak taşındı|Bu durum kodu, yetkisiz kullanıcıları konum üstbilgisinde belirtilen URL 'ye yönlendirir.
 302|Bulunamaz|Bu durum kodu, yetkisiz kullanıcıları konum üstbilgisinde belirtilen URL 'ye yönlendirir. Bu durum kodu, yeniden yönlendirme gerçekleştirmeye yönelik sektör standardı yöntemidir.
 307|Geçici yeniden yönlendirme|Bu durum kodu, yetkisiz kullanıcıları konum üstbilgisinde belirtilen URL 'ye yönlendirir.
-401|İzinsiz|Bu durum kodunu WWW-Authenticate Yanıt üstbilgisiyle birleştirmek, kullanıcıdan kimlik doğrulaması yapmasını ister.
+401|Yetkisiz|Bu durum kodunu WWW-Authenticate Yanıt üstbilgisiyle birleştirmek, kullanıcıdan kimlik doğrulaması yapmasını ister.
 403|Yasak|Bu ileti, yetkisiz bir kullanıcının korumalı içeriğe erişmeye çalışırken göreceği standart 403 yasaklanmış durum iletisidir.
 404|Dosya bulunamadı|Bu durum kodu, HTTP istemcisinin sunucuyla iletişim kurabildiğini, ancak istenen içeriğin bulunamadığını gösterir.
 
@@ -1240,7 +1240,7 @@ URL yönlendirmesi yalnızca 3xx yanıt kodları için geçerlidir.
 
 Isteğe bağlı üstbilgi değeri seçeneği alfasayısal karakterleri, tırnak işaretlerini ve boşlukları destekler.
 
-#### <a name="authentication"></a>Kimlik Doğrulama
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 Bu özellik, belirteç tabanlı kimlik doğrulamasıyla korunan içeriğe yetkisiz bir isteğe yanıt vermediğinde WWW-Authenticate üst bilgisini dahil etme özelliğini destekler. Yapılandırmanızda WWW-Authenticate üstbilgisi "temel" olarak ayarlandıysa, yetkisiz kullanıcıdan hesap kimlik bilgileri istenir.
 

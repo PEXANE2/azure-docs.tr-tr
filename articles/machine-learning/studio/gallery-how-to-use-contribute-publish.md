@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168541"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204333"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 **[Azure yapay zeka Galerisi](https://gallery.azure.ai)** , Azure AI ile oluşturulmuş çözümleri bulmak ve paylaşmak için topluluk odaklı bir sitedir.
 Galerinin kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz çeşitli kaynakları vardır.
@@ -86,7 +88,7 @@ Ve katkılarınız hakkında yorum bildirimleri almak için Disqus gibi bir tart
 
 1. Deneme tuvalinin altındaki Eylemler listesinde **Galeriye Yayımla**' yı seçin.
 
-1. Galeride, açıklayıcı bir **ad** ve **Etiketler** girin. Kullandığınız teknikleri veya çözüm yaptığınız gerçek sorunu vurgulayın. Bir tanımlayıcı deneme başlık örneğidir "ikili sınıflandırma: Twitter yaklaşım analizi."
+1. Galeride, açıklayıcı bir **ad** ve **Etiketler** girin. Kullandığınız teknikleri veya çözüm yaptığınız gerçek sorunu vurgulayın. Açıklayıcı bir deneme başlığına örnek olarak "Ikili sınıflandırma: Twitter Yaklaşım Analizi."
 
 1. **Özet** kutusunda, denemenizin bir özetini girin. Denemeyi çözen sorun ve nasıl yaklaşıldığında kısaca açıklayın.
 
@@ -158,7 +160,7 @@ Bir **öğreticiye** , makine öğrenimi kavramlarını açıklayan bir öğreti
    > [!TIP]
    > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Katkılarınız artık Azure Yapay Zeka Galerisi. Katkılarınız, **öğeler** sekmesindeki hesap sayfanızda listelenir.
 

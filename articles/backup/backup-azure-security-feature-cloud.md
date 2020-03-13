@@ -3,12 +3,12 @@ title: Bulut iş yüklerini korumaya yardımcı olan güvenlik özellikleri
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f89d9ab3ef373ecd9a7d15ef4ec9b2109750f8de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660844"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248079"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
@@ -178,24 +178,23 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 1. [Geçici silme özelliğini devre dışı bırakmak](#disabling-soft-delete)için adımları izleyin.
 2. Azure portal kasanıza gidin, **yedekleme öğeleri**' ne gidin ve geçici olarak silinen VM 'yi seçin.
 
-![Geçici olarak silinen VM 'yi seçin](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![Geçici olarak silinen VM 'yi seçin](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. **Silmeyi geri al**seçeneğini belirleyin.
 
-![Silmeyi geri al seçeneğini belirleyin](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
+   ![Silmeyi geri al seçeneğini belirleyin](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
 4. Bir pencere görüntülenir. **Silmeyi geri al**seçeneğini belirleyin.
 
-![Silmeyi geri al seçeneğini belirleyin](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![Silmeyi geri al seçeneğini belirleyin](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
 5. Yedekleme verilerini kalıcı olarak silmek için **yedekleme verilerini sil** ' i seçin.
 
-![Yedekleme verilerini Sil ' i seçin](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Yedekleme verilerini Sil ' i seçin](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. Kurtarma noktalarını silmek istediğinizi onaylamak için yedekleme öğesinin adını yazın.
 
-![Yedekleme öğesinin adını yazın](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Yedekleme öğesinin adını yazın](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. Öğe için yedekleme verilerini silmek için **Sil**' i seçin. Bir bildirim iletisi, yedekleme verilerinin silindiğini bilmenizi sağlar.
 
@@ -268,6 +267,10 @@ Azure Backup, müşteri tarafından yönetilen anahtarlar kullanılarak şifrele
 ### <a name="backup-of-encrypted-vms"></a>Şifrelenmiş VM 'Ler yedeklemesi
 
 Azure Backup hizmetini kullanarak Windows veya Linux Azure sanal makinelerini (VM) şifrelenmiş disklerle yedekleyebilir ve geri yükleyebilirsiniz. Yönergeler için bkz. [Azure Backup ile şifrelenmiş sanal makineleri yedekleme ve geri yükleme](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="private-endpoints"></a>Özel uç noktalar
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="other-security-features"></a>Diğer güvenlik özellikleri
 

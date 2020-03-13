@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 802dfa7e3b2d0b9deac957662ac1e7604d085fd9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6bae9e871be2a5d56d057d2a077de53329b8c3ec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828085"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208939"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine örnek geçişi SQL Server
 
@@ -72,14 +72,14 @@ SQL Server Örneğinizde ölçmeye ihtiyacınız olan parametrelerden bazıları
 - SQL Server 2016 + sürümünden geçiş yapıyorsanız dinamik yönetim görünümlerini veya sorgu deposunu inceleyerek iş yükünü ve sorgu performansını veya SQL Server örneğinizi izleyin. Yönetilen örnek üzerinde çalışan sorgularla karşılaştırmak için iş yükünüzün en önemli sorgularının ortalama süresini ve CPU kullanımını belirler.
 
 > [!Note]
-> Yüksek CPU kullanımı, sabit bellek baskısı, tempdb veya parametrization sorunları gibi SQL Server iş yükünüz ile ilgili herhangi bir sorun olduğunu fark ederseniz, taban çizgisini ve geçişi gerçekleştirmeden önce bunları kaynak SQL Server Örneğinizde çözmeyi denemelisiniz. Herhangi bir yeni sistem ile ilgili sorunları bildirmek, beklenmeyen sonuçlara neden olur ve tüm performans karşılaştırmasını geçersiz kılar.
+> Yüksek CPU kullanımı, sabit bellek baskısı, tempdb veya Parametreleştirme sorunları gibi SQL Server iş yükünüz ile ilgili herhangi bir sorun fark ederseniz, taban çizgisini ve geçişi gerçekleştirmeden önce bunları kaynak SQL Server Örneğinizde çözmeyi denemelisiniz. Herhangi bir yeni sistem ile ilgili sorunları bildirmek, beklenmeyen sonuçlara neden olur ve tüm performans karşılaştırmasını geçersiz kılar.
 
 Bu etkinliğin bir sonucu olarak, kaynak sisteminizdeki CPU, bellek ve GÇ kullanımı için Ortalama ve en yüksek değerler, ayrıca iş yükünüzün en çok baskın ve en kritik sorguların ortalama ve en fazla süresi ve CPU kullanımı için belgelenmiş bir değer elde etmeniz gerekir. Yönetilen örnekteki iş yükünüzün performansını, kaynak SQL Server iş yükünün temel performansına göre karşılaştırmak için bu değerleri daha sonra kullanmanız gerekir.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>En iyi boyuta sahip yönetilen örneğe dağıtın
 
 Yönetilen örnek, buluta geçiş yapmayı planlayan şirket içi iş yükleri için tasarlanmıştır. İş yükleriniz için doğru kaynak düzeyini seçerken daha fazla esneklik sağlayan [Yeni bir satın alma modeli](sql-database-service-tiers-vcore.md) sunar. Şirket içi dünyada, fiziksel çekirdekler ve GÇ bant genişliği kullanarak bu iş yüklerini boyutlandırmayı merak ediyor olabilirsiniz. Yönetilen örnek için satın alma modeli, sanal çekirdekleri veya ek depolama ve ıO 'ları ayrı olarak kullanılabilir olan "Vçekirdekler" temelinde temel alır. Sanal çekirdek modeli, buluttaki işlem gereksinimlerinizi ve şirket içi olarak kullandığınız şekilde anlamanız için daha basit bir yoldur. Bu yeni model, bulutta hedef ortamınızı doğru bir şekilde boyutlandırmanızı sağlar. Doğru hizmet katmanını ve özelliklerini seçmenize yardımcı olabilecek bazı genel yönergeler aşağıda açıklanmıştır:
-- Temel CPU kullanımına bağlı olarak, SQL Server üzerinde kullandığınız çekirdek sayısıyla eşleşen bir yönetilen örnek sağlayabilirsiniz, bu durumda CPU özelliklerinin [yönetilen örnek yüklendiği VM özellikleriyle eşleşecek şekilde ölçeklendirilmesi gerekebilir ](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- Temel CPU kullanımına bağlı olarak, SQL Server üzerinde kullandığınız çekirdek sayısıyla eşleşen bir yönetilen örnek sağlayabilirsiniz. Bu durumda, CPU özelliklerinin [yönetilen örnek yüklendiği VM özellikleriyle](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)eşleşecek şekilde ölçeklendirilmesi gerekebilir.
 - Temel bellek kullanımı temel alınarak [, eşleşen belleği olan hizmet katmanını](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)seçin. Bellek miktarı doğrudan seçilemez, bu nedenle, eşleşen belleği olan sanal çekirdek miktarıyla yönetilen örneği seçmeniz gerekir (örneğin, 5. nesil içinde 5,1 GB/sanal çekirdek). 
 - Dosya alt sisteminin temel GÇ gecikme süresine bağlı olarak Genel Amaçlı (5 MS 'den büyük gecikme) ve hizmet katmanlarını İş Açısından Kritik (3 MS 'den az gecikme) arasında seçim yapın.
 - Beklenen GÇ performansını almak için, temel verimlilik temelinde verilerin veya günlük dosyalarının boyutunu önceden ayırır.
@@ -113,13 +113,13 @@ Yönetilen örnek, aşağıdaki veritabanı geçiş seçeneklerini destekler (Ş
 
 [Azure veritabanı geçiş hizmeti (DMS)](../dms/dms-overview.md) , birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir. Bu hizmet, var olan üçüncü taraf ve SQL Server veritabanlarını Azure 'a taşımak için gereken görevleri basitleştirir. Genel önizlemede dağıtım seçenekleri Azure SQL veritabanı 'ndaki veritabanlarını ve bir Azure sanal makinesinde SQL Server veritabanlarını içerir. DMS, kurumsal iş yükleriniz için önerilen geçiş yöntemidir.
 
-Şirket içinde SQL Server SQL Server Integration Services (SSIS) kullanıyorsanız, DMS, SSIS paketlerini depolayan SSIS kataloğunu (SSSıSDB) geçirmeyi henüz desteklememektedir, Azure-SSIS Integration Runtime ancak Azure Data Factory (ADF) içinde, yönetilen bir örnekte yeni bir SSıSDB oluşturun ve ardından paketlerinizi buna yeniden dağıtabilirsiniz, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Şirket içinde SQL Server SQL Server Integration Services (SSIS) kullanıyorsanız, DMS, SSIS paketlerini depolayan SSIS kataloğunu (SSSıSDB) geçirmeyi henüz desteklememektedir, Azure Data Factory Azure-SSIS Integration Runtime ancak yönetilen bir örnekte yeni bir SSıSDB oluşturacak ve sonra paketlerinizi bu şekilde yeniden dağıtırsınız. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)konusuna bakın.
 
 DMS için bu senaryo ve yapılandırma adımları hakkında daha fazla bilgi edinmek için bkz. Şirket [içi VERITABANıNıZı DMS kullanarak yönetilen örneğe geçirme](../dms/tutorial-sql-server-to-managed-instance.md).  
 
 ### <a name="native-restore-from-url"></a>URL 'den yerel GERI yükleme
 
-[Azure Storage](https://azure.microsoft.com/services/storage/)'da bulunan SQL Server şirket içi veya [sanal makinelerde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)tarafından gerçekleştirilen yerel yedeklemelerin (. bak dosyaları) geri yüklenmesi, yönetilen örnek dağıtım seçeneğinin hızlı ve kolay bir şekilde çevrimdışı olmasını sağlayan temel yeteneklerden biridir Veritabanı geçişi.
+[Azure Storage](https://azure.microsoft.com/services/storage/)'da bulunan SQL Server şirket içi veya [sanal makinelerde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)tarafından gerçekleştirilen yerel yedeklemelerin (. bak dosyaları) geri yüklenmesi, yönetilen örnek dağıtım seçeneğinin, hızlı ve kolay bir şekilde çevrimdışı veritabanı geçişini sağlayan temel yeteneklerinden biridir.
 
 Aşağıdaki diyagramda, işleme ilişkin üst düzey bir genel bakış sunulmaktadır:
 

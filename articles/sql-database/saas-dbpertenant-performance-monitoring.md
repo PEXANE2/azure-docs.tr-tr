@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822228"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214460"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Çok kiracılı bir SaaS uygulamasında Azure SQL veritabanlarının ve havuzlarının performansını izleme ve yönetme
 
@@ -24,7 +24,7 @@ Bu öğreticide, SaaS uygulamalarında kullanılan bazı önemli performans yön
 
 Kiracı başına Wingtip bilet SaaS veritabanı uygulaması, her bir mekanın (kiracının) kendi veritabanına sahip olduğu tek kiracılı bir veri modeli kullanır. Birçok SaaS uygulaması gibi, beklenen kiracı iş yükü düzeni öngörülemez ve düzensizdir. Diğer bir deyişle, bilet satışı herhangi bir zamanda gerçekleşebilir. Bu tipik veritabanı kullanım düzeninden faydalanmak için, kiracı veritabanları elastik havuzlara dağıtılır. Elastik havuzlar, kaynakları çok sayıda veritabanı arasında paylaştırarak çözüm maliyetini en iyi duruma getirir. Bu düzen türü ile yüklerin havuzlar arasında makul bir şekilde dengelendiğinden emin olmak için veritabanı ve havuz kaynak kullanımının izlenmesi önemlidir. Ayrıca, her bir veritabanının yeterli kaynağa sahip olduğundan ve havuzların [eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model) sınırına ulaşmadığından emin olmanız gerekir. Bu öğreticide, veritabanı ve havuzları izleyip yönetme yollarını ve iş yükündeki değişikliklere yanıt olarak nasıl düzeltici işlem yapılacağını incelenmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > 
@@ -52,11 +52,11 @@ Havuzlar ve havuzlardaki veritabanları, kabul edilebilir performans aralıklar�
 * Performansı el ile izlemek zorunda kalmamak için, **veritabanları veya havuzların normal aralıklar dışına çıkar durumunda tetiklenecek uyarıları ayarlamak**en etkilidir.
 * Havuzun toplam işlem boyutundaki kısa süreli dalgalanmalara yanıt vermek için, **Havuz eDTU düzeyi yukarı veya aşağı ölçeklendirilebilir**. Bu dalgalanma düzenli veya öngörülebilir aralıklarla gerçekleşiyorsa, **havuz ölçeklendirmesi otomatik olarak gerçekleşecek şekilde zamanlanabilir**. Örneğin, iş yükünüzün hafif olduğunu bildiğiniz gece veya hafta sonları gibi zamanlarda ölçeği azaltabilirsiniz.
 * Daha uzun vadeli dalgalanmalara ya da veritabanı sayısındaki değişikliklere yanıt vermek için, **tek veritabanları diğer havuzlara taşınabilir**.
-* *Tek* bir veritabanı yüklemesinin kısa süreli artışlarına yanıt vermek için **tek tek veritabanları bir havuzdan alınmış olabilir ve bireysel bir işlem boyutu atanabilir**. Yükü azaldıktan sonra veritabanını havuza döndürebilirsiniz. Bu, önceden bilindiğinde, veritabanı her zaman gereken kaynaklara sahip olduğundan ve havuzdaki diğer veritabanları üzerindeki etkileri önlemek için veritabanları önceden hale taşınabilir. Popüler bir etkinlik için bilet satışı yoğunluğu yaşanan bir mekanda olduğu gibi bu gereksinim öngörülebildiği takdirde bu yönetim davranışı uygulamayla tümleştirilebilir.
+* *Tek* bir veritabanı yüklemesinin kısa süreli artışlarına yanıt vermek için **tek tek veritabanları bir havuzdan alınmış olabilir ve bireysel bir işlem boyutu atanabilir**. Yükü azaldıktan sonra veritabanını havuza döndürebilirsiniz. Bu, önceden bilindiğinde, veritabanının her zaman ihtiyaç duyabileceği kaynakları sağlamak ve havuzdaki diğer veritabanları üzerindeki etkileri önlemek için veritabanları preemptively taşınabilir. Popüler bir etkinlik için bilet satışı yoğunluğu yaşanan bir mekanda olduğu gibi bu gereksinim öngörülebildiği takdirde bu yönetim davranışı uygulamayla tümleştirilebilir.
 
 [Azure portalı](https://portal.azure.com), çoğu kaynak üzerinde yerleşik izleme ve uyarı özelliği sağlar. SQL Veritabanı için veritabanı ve havuzlarda izleme ve uyarı özellikleri kullanılabilir. Bu yerleşik izleme ve uyarı kaynağa özgüdür, bu nedenle az sayıda kaynak için kullanılması uygundur, ancak birçok kaynakla çalışırken çok kullanışlı değildir.
 
-Birçok kaynakla çalıştığınız yüksek hacimli senaryolar için [Azure izleyici günlükleri](saas-dbpertenant-log-analytics.md) kullanılabilir. Bu, bir Log Analytics çalışma alanında toplanan, yayılan tanılama günlükleri ve telemetri üzerinde analiz sağlayan ayrı bir Azure hizmetidir. Azure Izleyici günlükleri birçok hizmetten telemetri toplayabilir ve uyarıları sorgulamak ve ayarlamak için kullanılabilir.
+Birçok kaynakla çalıştığınız yüksek hacimli senaryolar için [Azure izleyici günlükleri](saas-dbpertenant-log-analytics.md) kullanılabilir. Bu, Log Analytics çalışma alanında toplanan, oluşturulan Günlükler üzerinde analiz sağlayan ayrı bir Azure hizmetidir. Azure Izleyici günlükleri birçok hizmetten telemetri toplayabilir ve uyarıları sorgulamak ve ayarlamak için kullanılabilir.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Kiracı uygulama betikleri başına Wingtip bilet SaaS veritabanını alın
 
@@ -74,7 +74,7 @@ Havuzlar yalnızca iki adet S3 veritabanı ile uygun maliyetli olabilse de, havu
 
 Bu betik, beş dakikadan daha kısa bir süre içinde 17 kiracı dağıtır.
 
-*New-tenantbatch* betiği, varsayılan olarak, yeni kiracı veritabanlarını oluşturmak üzere Katalog sunucusundaki **basetenantdb** veritabanını kopyalayan, iç içe geçmiş veya bağlı bir [Kaynak Yöneticisi](../azure-resource-manager/index.yml) şablonları kümesi kullanır. Bunları kataloğa kaydeder ve son olarak bunları kiracı adı ve mekan türü ile başlatır. Bu, uygulamanın yeni bir kiracı sağlama yöntemiyle tutarlıdır. *Basetenantdb* üzerinde yapılan tüm değişiklikler, bundan sonra sağlanan tüm yeni kiracılar için uygulanır. *Mevcut* kiracı veritabanlarında ( *basetenantdb* veritabanı dahil) şema değişiklikleri yapmayı öğrenmek için [şema yönetimi öğreticisine](saas-tenancy-schema-management.md) bakın.
+*New-tenantbatch* betiği, varsayılan olarak, yeni kiracı veritabanlarını oluşturmak üzere Katalog sunucusundaki **basetenantdb** veritabanını kopyalayan ve ardından bunları kataloğa kaydeden ve son olarak bunları kiracı adı ve mekan türü ile Başlatan bir dizi kiracı oluşturan iç içe veya bağlı [Kaynak Yöneticisi](../azure-resource-manager/index.yml) şablonları kullanır. Bu, uygulamanın yeni bir kiracı sağlama yöntemiyle tutarlıdır. *Basetenantdb* üzerinde yapılan tüm değişiklikler, bundan sonra sağlanan tüm yeni kiracılar için uygulanır. *Mevcut* kiracı veritabanlarında ( *basetenantdb* veritabanı dahil) şema değişiklikleri yapmayı öğrenmek için [şema yönetimi öğreticisine](saas-tenancy-schema-management.md) bakın.
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Tüm kiracı veritabanlarındaki kullanımın benzetimini gerçekleştirme
 
@@ -218,7 +218,7 @@ Contosoconcerthall veritabanı alt tarafları üzerinde yüksek yük olduktan so
 
 ## <a name="other-performance-management-patterns"></a>Diğer performans yönetimi desenleri
 
-**Önücü ölçekleme** Yukarıdaki alıştırmada, yalıtılmış bir veritabanının nasıl ölçeklendirilebileceği hakkında daha fazla bir veritabanı olduğunu bilirsiniz. Contoso Concert salonu yönetimi, yaklaşan bilet satışı hakkında bilgi sahibi olduysa, veritabanı havuzdan daha önceden bir şekilde taşınmış olabilir. Aksi takdirde, neler olduğunu belirlemek için havuz veya veritabanı üzerinde bir uyarı verilmesini isteyebilirdi. Bu durumu, havuzda performans düşüklüğünden şikayetçi olan diğer kiracılardan öğrenmek istemezsiniz. Kiracı ek kaynaklara ne süreyle ihtiyaç duyduğunu öngörebiliyorsa, tanımlanmış bir zamanlamaya göre veritabanını havuz dışına ve sonra tekrar içine taşımak için bir Azure Otomasyonu runbook'u ayarlayabilirsiniz.
+**Önücü ölçekleme** Yukarıdaki alıştırmada, yalıtılmış bir veritabanının nasıl ölçeklendirilebileceği hakkında daha fazla bir veritabanı olduğunu bilirsiniz. Contoso Concert salonu yönetimi, yaklaşan bilet satışı hakkında bilgi sahibi olduysa, veritabanı preemptively havuzunu taşımış olabilir. Aksi takdirde, neler olduğunu belirlemek için havuz veya veritabanı üzerinde bir uyarı verilmesini isteyebilirdi. Bu durumu, havuzda performans düşüklüğünden şikayetçi olan diğer kiracılardan öğrenmek istemezsiniz. Kiracı ek kaynaklara ne süreyle ihtiyaç duyduğunu öngörebiliyorsa, tanımlanmış bir zamanlamaya göre veritabanını havuz dışına ve sonra tekrar içine taşımak için bir Azure Otomasyonu runbook'u ayarlayabilirsiniz.
 
 **Kiracı self-servis ölçeklendirme** Ölçeklendirme, yönetim API’si aracılığıyla kolayca çağrılan bir görev olduğundan, kiracıya yönelik uygulamanızda kiracı veritabanlarını ölçeklendirme özelliğini kolayca oluşturabilir ve SaaS hizmetinizin bir özelliği olarak sunabilirsiniz. Örneğin, kiracıların ölçek artırma ve azaltma işlemini kendi kendine yönetmesine, belki de doğrudan faturalarına bağlamasına izin verebilirsiniz!
 
@@ -230,7 +230,7 @@ Toplu kiracı kullanımının öngörülebilir kullanım düzenlerini takip etti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Sağlanan bir yük oluşturucuyu çalıştırarak kiracı veritabanlarındaki kullanımın benzetimini gerçekleştirme

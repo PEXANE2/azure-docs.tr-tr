@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 7265cd0e2d292a2d8cc7273d2746348629ec4a06
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082345"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219637"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Konuşma hizmeti kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -112,25 +112,25 @@ Konuşma için kapsayıcı görüntüleri aşağıdaki Container Registry kullan
 
 # <a name="speech-to-text"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Depo |
 |-----------|------------|
 | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
 # <a name="custom-speech-to-text"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Depo |
 |-----------|------------|
 | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
 # <a name="text-to-speech"></a>[Metin okuma](#tab/tts)
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Depo |
 |-----------|------------|
 | Metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 # <a name="custom-text-to-speech"></a>[Özel metin okuma](#tab/ctts)
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Depo |
 |-----------|------------|
 | Özel metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
 

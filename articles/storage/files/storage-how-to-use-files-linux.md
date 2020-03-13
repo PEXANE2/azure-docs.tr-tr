@@ -8,11 +8,11 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: b2469a2b5819b3011f919a2b483933bb030eed70
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78926116"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268203"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `/etc/fstab`bir giriş oluşturarak `mount` komutuyla isteğe bağlı ve önyükleme.

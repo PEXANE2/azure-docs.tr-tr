@@ -4,11 +4,11 @@ description: Bilgi bankanızı artırmak ve uygulama/sohbet Robotu ait son kulla
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389453"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220781"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-cevap Oluşturucu Bilgi Bankası en iyi yöntemleri
 
@@ -118,7 +118,7 @@ Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı bi�
 
 |Özgün word|Eş anlamlılar|
 |--|--|
-|Satın alma|satın al<br>net-bankacılık<br>NET bankacılık|
+|Satın alma|satın alma<br>net-bankacılık<br>NET bankacılık|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Sorular ayırt etmek için farklı sözcükler kullanın
 Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelendirme algoritması, her bir soru farklı bir gereksinim ele alıyorsa en iyi şekilde geçerlidir. Soru-Cevap Oluşturma Yineleme sorular arasında ayarlanmış aynı kelimenin doğru yanıt sözcükleri ile verilen kullanıcı sorgusu için seçilen olasılığını azaltır.

@@ -13,11 +13,11 @@ ms.author: ajburnle
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376870"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240810"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Hızlı Başlangıç: Azure Active Directory'de yeni bir kiracı oluşturma
 Kuruluşunuz için yeni bir kiracı oluşturulması da dahil olmak üzere, Azure Active Directory (Azure AD) portalı kullanarak tüm yönetim görevlerinizi gerçekleştirebilirsiniz. 
