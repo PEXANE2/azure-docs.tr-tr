@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2de1130e28b5071913e4cf3632c3fe4407597a98
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.openlocfilehash: af6a7611381cbf7a251e65969d156f4c40d71843
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189149"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126778"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola karmaşıklığını yapılandırma
 
@@ -26,103 +26,126 @@ Azure Active Directory B2C (Azure AD B2C) ' de, bir hesap oluştururken bir kull
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
+[Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
+
 
 ## <a name="add-the-elements"></a>Öğeleri ekleyin
 
-1. Başlangıç paketiyle indirdiğiniz *Signuporsignın. xml* dosyasını kopyalayın ve bu dosyayı *Singuporsignınpasswordkarmaşıklık. xml*olarak adlandırın.
-2. *Singuporsignınpasswordkarmaşıklık. xml* dosyasını açın ve **PolicyId** ve **publicpolicyuri** ' i yeni bir ilke adıyla değiştirin. Örneğin, *B2C_1A_signup_signin_password_complexity*.
-3. Aşağıdaki **ClaimType** öğelerini `newPassword` ve `reenterPassword`tanımlayıcılarıyla ekleyin:
+Parola karmaşıklığını yapılandırmak için `newPassword` ve `reenterPassword` [talep türlerini](claimsschema.md) [koşul doğrulamaları](predicates.md#predicatevalidations)başvurusuyla geçersiz kılın. Predicatevalidation öğesi, bir talep türüne uygulanabilen bir kullanıcı girişi doğrulaması oluşturmak için bir koşullar kümesi gruplandırır. İlkenizin uzantıları dosyasını açın. Örneğin, <em> **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`</em>.
+
+1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
+1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
+1. `newPassword` ve `reenterPassword` taleplerini **Claimsschema** öğesine ekleyin.
 
     ```XML
-    <ClaimsSchema>
-      <ClaimType Id="newPassword">
-        <InputValidationReference Id="PasswordValidation" />
-      </ClaimType>
-      <ClaimType Id="reenterPassword">
-        <InputValidationReference Id="PasswordValidation" />
-      </ClaimType>
-    </ClaimsSchema>
+    <ClaimType Id="newPassword">
+      <PredicateValidationReference Id="CustomPassword" />
+    </ClaimType>
+    <ClaimType Id="reenterPassword">
+      <PredicateValidationReference Id="CustomPassword" />
+    </ClaimType>
     ```
 
-4. [Koşullarda](predicates.md) `IsLengthRange` veya `MatchesRegex`metot türleri vardır. `MatchesRegex` türü bir normal ifadeyle eşleştirmek için kullanılır. `IsLengthRange` türü en az ve en fazla dize uzunluğu alır. Aşağıdaki **koşul** öğeleriyle birlikte yoksa **buildingblocks** öğesine bir **doðrulama** öğesi ekleyin:
+1. [Koşullar](predicates.md) , bir talep türünün değerini denetlemek için temel bir doğrulama tanımlar ve true veya false değerini döndürür. Doğrulama, belirtilen bir yöntem öğesi ve yöntemiyle ilgili bir dizi parametre kullanılarak yapılır. Aşağıdaki koşulları, `</ClaimsSchema>` öğesinin kapanışından hemen sonra **Buildingblocks** öğesine ekleyin:
 
     ```XML
     <Predicates>
-      <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
+      <Predicate Id="LengthRange" Method="IsLengthRange">
+        <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
         <Parameters>
-          <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
+          <Parameter Id="Minimum">6</Parameter>
+          <Parameter Id="Maximum">64</Parameter>
         </Parameters>
       </Predicate>
-      <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">
+      <Predicate Id="Lowercase" Method="IncludesCharacters">
+        <UserHelpText>a lowercase letter</UserHelpText>
         <Parameters>
-          <Parameter Id="Minimum">8</Parameter>
-          <Parameter Id="Maximum">16</Parameter>
+          <Parameter Id="CharacterSet">a-z</Parameter>
+        </Parameters>
+      </Predicate>
+      <Predicate Id="Uppercase" Method="IncludesCharacters">
+        <UserHelpText>an uppercase letter</UserHelpText>
+        <Parameters>
+          <Parameter Id="CharacterSet">A-Z</Parameter>
+        </Parameters>
+      </Predicate>
+      <Predicate Id="Number" Method="IncludesCharacters">
+        <UserHelpText>a digit</UserHelpText>
+        <Parameters>
+          <Parameter Id="CharacterSet">0-9</Parameter>
+        </Parameters>
+      </Predicate>
+      <Predicate Id="Symbol" Method="IncludesCharacters">
+        <UserHelpText>a symbol</UserHelpText>
+        <Parameters>
+          <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
         </Parameters>
       </Predicate>
     </Predicates>
     ```
 
-5. Her **ınputvalidation** öğesi, tanımlanan **koşul** öğeleri kullanılarak oluşturulur. Bu öğe, `and` ve `or`benzer Boole toplamaları gerçekleştirmenize olanak tanır. Aşağıdaki **ınputvalidation** öğesiyle birlikte yoksa **Buildingblocks** öğesine **inputdoğrulamaları** öğesi ekleyin:
+1. Aşağıdaki koşul doğrulamaları, `</Predicates>` öğesinin kapanışından hemen sonra **Buildingblocks** öğesine ekleyin:
 
     ```XML
-    <InputValidations>
-      <InputValidation Id="PasswordValidation">
-        <PredicateReferences Id="LengthGroup" MatchAtLeast="1">
-          <PredicateReference Id="Length" />
-        </PredicateReferences>
-        <PredicateReferences Id="3of4" MatchAtLeast="3" HelpText="You must have at least 3 of the following character classes:">
-          <PredicateReference Id="Lowercase" />
-          <PredicateReference Id="Uppercase" />
-          <PredicateReference Id="Number" />
-          <PredicateReference Id="Symbol" />
-        </PredicateReferences>
-      </InputValidation>
-    </InputValidations>
+    <PredicateValidations>
+      <PredicateValidation Id="CustomPassword">
+        <PredicateGroups>
+          <PredicateGroup Id="LengthGroup">
+            <PredicateReferences MatchAtLeast="1">
+              <PredicateReference Id="LengthRange" />
+            </PredicateReferences>
+          </PredicateGroup>
+          <PredicateGroup Id="CharacterClasses">
+            <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+            <PredicateReferences MatchAtLeast="3">
+              <PredicateReference Id="Lowercase" />
+              <PredicateReference Id="Uppercase" />
+              <PredicateReference Id="Number" />
+              <PredicateReference Id="Symbol" />
+            </PredicateReferences>
+          </PredicateGroup>
+        </PredicateGroups>
+      </PredicateValidation>
+    </PredicateValidations>
     ```
 
-6. **Policyprofile** teknik profilinin aşağıdaki öğeleri içerdiğinden emin olun:
+1. Aşağıdaki teknik profiller, Azure Active Directory verileri okuyan ve yazan [Teknik profillerdir Active Directory](active-directory-technical-profile.md). Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. Güçlü parola ilkesini devre dışı bırakmak için `PersistedClaims` kullanın. **Claimsproviders** öğesini bulun.  Aşağıdaki talep sağlayıcılarını şu şekilde ekleyin:
 
     ```XML
-    <RelyingParty>
-      <DefaultUserJourney ReferenceId="SignUpOrSignIn"/>
-      <TechnicalProfile Id="PolicyProfile">
-        <DisplayName>PolicyProfile</DisplayName>
-        <Protocol Name="OpenIdConnect"/>
-        <InputClaims>
-          <InputClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
-        </InputClaims>
-        <OutputClaims>
-          <OutputClaim ClaimTypeReferenceId="displayName"/>
-          <OutputClaim ClaimTypeReferenceId="givenName"/>
-          <OutputClaim ClaimTypeReferenceId="surname"/>
-          <OutputClaim ClaimTypeReferenceId="email"/>
-          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-        </OutputClaims>
-        <SubjectNamingInfo ClaimType="sub"/>
-      </TechnicalProfile>
-    </RelyingParty>
+    <ClaimsProvider>
+      <DisplayName>Azure Active Directory</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+          </PersistedClaims>
+        </TechnicalProfile>
+        <TechnicalProfile Id="AAD-UserWritePasswordUsingObjectId">
+          <PersistedClaims>
+            <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+          </PersistedClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
     ```
 
-7. İlke dosyasını kaydedin.
+1. İlke dosyasını kaydedin.
 
 ## <a name="test-your-policy"></a>İlkenizi test etme
 
-Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden geçirebilmek için Azure AD B2C belirtecinin `https://jwt.ms` geri döndürüldüğünden yararlı olabilir.
-
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.
 5. Özel Ilkeler sayfasında, **Ilkeyi karşıya yükle**' ye tıklayın.
-6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *Singuporsignınpasswordkarmaşıklık. xml* dosyasını arayıp seçin.
+6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustFrameworkExtensions. xml* dosyasını bulun ve seçin.
 7. **Karşıya Yükle**'ye tıklayın.
 
 ### <a name="run-the-policy"></a>İlkeyi çalıştırma
 
-1. Değiştirdiğiniz ilkeyi açın. Örneğin, *B2C_1A_signup_signin_password_complexity*.
+1. Kaydolma veya oturum açma ilkesini açın. Örneğin, *B2C_1A_signup_signin*.
 2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Belirteci görmek için, **yanıt URL 'si** `https://jwt.ms`göstermelidir.
 3. **Şimdi çalıştır**’a tıklayın.
 4. **Şimdi kaydolun**' ı seçin, bir e-posta adresi girin ve yeni bir parola girin. Yönergeler, parola kısıtlamalarına göre sunulmuştur. Kullanıcı bilgilerini girmeyi ve ardından **Oluştur**' u tıklatın. Döndürülen belirtecin içeriğini görmeniz gerekir.
@@ -130,5 +153,4 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden ge�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory B2C özel ilkeleri kullanarak parola değişikliğini yapılandırmayı](custom-policy-password-change.md)öğrenin.
-
-
+- - IEF başvurusunda [koşullar](predicates.md) ve [predicatedoğrulamaları](predicates.md#predicatevalidations) öğeleri hakkında daha fazla bilgi edinin.
