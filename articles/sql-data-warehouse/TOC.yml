@@ -94,7 +94,7 @@
         - name: Erişim denetimi
           items:
             - name: Genel Bakış
-              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: Sütun düzeyi güvenlik
               href: column-level-security.md
             - name: Satır düzeyi güvenlik
