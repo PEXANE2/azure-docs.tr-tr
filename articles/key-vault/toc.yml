@@ -125,6 +125,8 @@
       href: event-grid-tutorial.md
     - name: Event Grid ve Logic Apps aracılığıyla bildirim alma
       href: event-grid-logicapps.md
+    - name: Tek kullanıcılı kaynaklar için gizli dizileri döndürme
+      href: tutorial-rotation.md
     - name: Azure İlkesi ile tümleştirme
       href: azure-policy.md
     - name: Azure Özel Bağlantı Hizmeti ile tümleştirme (Önizleme)

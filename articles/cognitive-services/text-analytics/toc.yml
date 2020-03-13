@@ -50,6 +50,8 @@
       href: named-entity-types.md
     - name: Dil ve bölge desteği
       href: language-support.md
+    - name: Metin uzaklıkları
+      href: concepts/text-offsets.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Metin Analizi API’sini çağırma

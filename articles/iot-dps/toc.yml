@@ -97,6 +97,8 @@
       href: concepts-security.md
     - name: Hizmet
       href: concepts-service.md
+    - name: DPS IP adreslerini anlama
+      href: iot-dps-understand-ip-address.md
     - name: TPM kanıtlama
       href: concepts-tpm-attestation.md
     - name: Simetrik anahtar kanıtlama
@@ -127,6 +129,8 @@
           href: how-to-manage-dps-with-cli.md
         - name: Sağlama Hizmeti API’lerine erişimi denetleme
           href: how-to-control-access.md
+        - name: IP filtrelemeyi yapılandırma
+          href: iot-dps-ip-filtering.md
     - name: IoT Edge cihazları hazırlama
       items:
         - name: Linux

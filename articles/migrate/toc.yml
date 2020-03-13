@@ -116,6 +116,8 @@
       href: how-to-modify-assessment.md
     - name: Geçiş araçları ekleme
       href: how-to-migrate.md
+    - name: VMware VM’lerini SSE ve CMK ile şifrelenmiş Azure VM’lerine geçirme
+      href: how-to-migrate-vmware-vms-with-cmk-disks.md
     - name: Makineleri geçişe hazırlama
       href: prepare-for-migration.md
     - name: Azure Geçişi projesini silme

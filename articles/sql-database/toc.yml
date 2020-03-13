@@ -71,13 +71,9 @@
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
         - name: En iyi güvenlik uygulamaları
           href: sql-database-security-best-practice.md
-        - name: Erişim yönetimi
-          items:
-            - name: Erişim denetimi
-              href: sql-database-control-access.md
-            - name: Oturum açma bilgileri ve kullanıcılar
-              href: sql-database-manage-logins.md
-        - name: Kimlik Doğrulaması
+        - name: 'Oturum açmalar, kullanıcı hesapları, roller ve izinler'
+          href: sql-database-manage-logins.md
+        - name: Azure AD Kimlik Doğrulaması
           href: sql-database-aad-authentication.md
           items:
             - name: Azure AD kimlik doğrulamasını yapılandırma
@@ -86,6 +82,8 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: Çok faktörlü kimlik doğrulamasını yapılandırma
               href: sql-database-ssms-mfa-authentication-configure.md
+            - name: Koşullu Erişim
+              href: sql-database-conditional-access.md
         - name: Veri koruma
           items:
             - name: Saydam Veri Şifrelemesi (TDE)
@@ -108,12 +106,12 @@
                   href: sql-database-always-encrypted.md
                 - name: Azure Key Vault kullanma
                   href: sql-database-always-encrypted-azure-key-vault.md
-        - name: 'İzleme, günlük kaydı ve denetim'
+        - name: Denetim
           items:
-            - name: Denetim
-              items:
-                - name: SQL Veritabanı denetimini kullanmaya başlama
-                  href: sql-database-auditing.md
+            - name: SQL Veritabanı denetimini kullanmaya başlama
+              href: sql-database-auditing.md
+            - name: Denetim Günlüğü Biçimi
+              href: sql-database-audit-log-format.md
         - name: Güvenlik yönetimi
           items:
             - name: Gelişmiş veri güvenliği
@@ -140,18 +138,12 @@
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
             - name: Özel Bağlantı
               href: sql-database-private-endpoint-overview.md
-            - name: Denetim Günlüğü Biçimi
-              href: sql-database-audit-log-format.md
-            - name: Koşullu Erişim
-              href: sql-database-conditional-access.md
         - name: Yönetilen örnek güvenliği
           items:
             - name: Genel uç noktaların güvenliğini sağlama
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: Yönetilen örnek denetimi
               href: sql-database-managed-instance-auditing.md
-        - name: Güvenlik temeli
-          href: security-baseline.md
     - name: Bağlanma ve sorgulama
       href: sql-database-connect-query.md
       items:
@@ -240,36 +232,40 @@
           href: sql-database-monitoring-tuning-index.yml
         - name: İzleme ve performansa genel bakış
           href: sql-database-monitor-tune-overview.md
-        - name: Performans izleme
+        - name: Veritabanı danışmanları ve Sorgu Performansı İçgörüleri
           items:
-            - name: Azure SQL Analytics izleme
-              href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
-            - name: Tanılama telemetri verilerini günlüğe kaydetme
-              href: sql-database-metrics-diag-logging.md
-        - name: Akıllı performans
-          items:
-            - name: Otomatik ayarlama
-              href: sql-database-automatic-tuning.md
-            - name: Performansa yönelik akıllı içgörüler
-              href: sql-database-intelligent-insights.md
-            - name: Ayarlama eylemleri ve öneriler
-              href: sql-database-performance.md
             - name: Veritabanı danışmanı performans önerileri
               href: sql-database-advisor.md
-        - name: Veritabanını izleme ve ayarlama
+            - name: Sorgu Performansı İçgörüleri
+              href: sql-database-query-performance.md
+        - name: Otomatik ayarlama
+          href: sql-database-automatic-tuning.md
+        - name: Akıllı İçgörüler ve SQL Analytics
           items:
-            - name: El ile ayarlama
+            - name: Performansa yönelik akıllı içgörüler
+              href: sql-database-intelligent-insights.md
+            - name: Tanılama telemetri verilerini günlüğe kaydetme
+              href: sql-database-metrics-diag-logging.md
+            - name: Akıllı İçgörüler tanılama günlüğünü kullanma
+              href: sql-database-intelligent-insights-use-diagnostics-log.md
+            - name: Akıllı İçgörüler ile performans sorunlarını giderme
+              href: sql-database-intelligent-insights-troubleshoot-performance.md
+            - name: SQL Analytics
+              href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
+        - name: El ile izleme ve ayarlama
+          items:
+            - name: Sorgu performansı sorunlarını tanımlama
+              href: sql-database-identify-query-performance-issues.md
+            - name: Uygulama ve veritabanı ayarlama kılavuzu
               href: sql-database-performance-guidance.md
             - name: Performansı izlemek için DMV’leri kullanma
               href: sql-database-monitoring-with-dmvs.md
-            - name: Performansı izlemek için Sorgu deposunu kullanma
-              href: sql-database-operate-query-store.md
-            - name: Akıllı İçgörüler ile performans sorunlarını giderme
-              href: sql-database-intelligent-insights-troubleshoot-performance.md
-            - name: Akıllı İçgörüler tanılama günlüğünü kullanma
-              href: sql-database-intelligent-insights-use-diagnostics-log.md
             - name: Bellek İçi OLTP alanını izleme
               href: sql-database-in-memory-oltp-monitoring.md
+            - name: Hiper ölçek performans tanılama
+              href: sql-database-hyperscale-performance-diagnostics.md
+            - name: Yoğun elastik havuzlardaki kaynak yönetimi
+              href: sql-database-elastic-pool-resource-management.md
             - name: Genişletilmiş olaylar
               items:
                 - name: Genişletilmiş olaylar
@@ -278,10 +274,6 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: Genişletilmiş olaylar - halka arabelleği
                   href: sql-database-xevent-code-ring-buffer.md
-        - name: Hiper ölçek performans tanılama
-          href: sql-database-hyperscale-performance-diagnostics.md
-        - name: Yoğun elastik havuzlardaki kaynak yönetimi
-          href: sql-database-elastic-pool-resource-management.md
     - name: Ölçeklenebilirlik
       items:
         - name: Ölçeklenebilirlik belgeleri
@@ -538,8 +530,6 @@
               href: sql-database-resource-limits-database-server.md
             - name: Bağlantı mimarisi
               href: sql-database-connectivity-architecture.md
-            - name: Bağlantı ayarları
-              href: sql-database-connectivity-settings.md
         - name: Veri eşitleme
           items:
             - name: Veri Eşitleme Aracısı
@@ -552,10 +542,6 @@
               href: sql-database-best-practices-data-sync.md
             - name: Data Sync’de sorun giderme
               href: sql-database-troubleshoot-data-sync.md
-        - name: Performans izleme
-          items:
-            - name: Sorgu Performansı İçgörüleri
-              href: sql-database-query-performance.md
         - name: T-SQL farklılıkları
           href: sql-database-transact-sql-information.md
         - name: Özellikler
@@ -739,7 +725,7 @@
           items:
             - name: MI pub - MI sub
               href: replication-with-sql-database-managed-instance.md
-            - name: 'MI pub, MI dist, SQL Sub'
+            - name: 'MI pub, MI dist, SQL sub'
               href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: Kavramlar
       items:
