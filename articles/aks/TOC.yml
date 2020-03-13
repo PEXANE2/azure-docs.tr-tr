@@ -117,18 +117,12 @@
   items:
     - name: Küm işlemleri
       items:
-        - name: AKS kümesi oluşturma
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: AKS kümesini ölçeklendirme
           href: scale-cluster.md
         - name: AKS kümesini yükseltme
           href: upgrade-cluster.md
         - name: İşlem düğümü işletim sistemi güncelleştirmeleri
           href: node-updates-kured.md
-        - name: AKS kümesini silme
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: AKS kümesi ile ACR'yi tümleştirme
           href: cluster-container-registry-integration.md
         - name: Sanal düğümler oluşturma
