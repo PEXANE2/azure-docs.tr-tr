@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 17ecc80fee3b024c334b8d36533663f1f3cebe4d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597975"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136914"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows 'da Azure dosyaları sorunlarını giderme
 
@@ -43,6 +43,14 @@ Depolama hesabında sanal ağ (VNET) ve güvenlik duvarı kuralları yapılandı
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
 Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapılandırıldığını doğrulayın. Sanal ağ veya güvenlik duvarı kurallarının soruna neden olup olmadığını test etmek için depolama hesabında **Tüm ağlardan erişime izin ver** ayarını geçici olarak değiştirin. Daha fazla bilgi edinmek için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Neden 3: kimlik tabanlı kimlik doğrulaması kullanılırken, paylaşma düzeyi izinleri yanlış
+
+Kullanıcılar Active Directory (AD) veya Azure Active Directory Domain Services (Azure AD DS) kimlik doğrulaması kullanarak Azure dosya paylaşımıyla erişiyorsa, paylaşma düzeyi izinleri yanlışsa dosya paylaşımının erişimi "erişim reddedildi" hatasıyla başarısız olur. 
+
+### <a name="solution-for-cause-3"></a>Neden 3 için çözüm
+
+Paylaşma düzeyi izinlerini güncelleştirmek için bkz. [bir kimliğe erişim Izinleri atama](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Bir Azure dosya paylaşımını bağladığınızda veya kaldırdığınızda hata 53, hata 67 veya hata 87

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 736b128e5207e58220afa69b4cf5dc4e8fea4a26
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268771"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140816"
 ---
 # <a name="enter-data-manually-module"></a>Verileri el Ile gir modülü
 
@@ -62,13 +62,13 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
   
     -   **Arff**: varolan bir arff biçim dosyasını yapıştırın. Değerleri doğrudan yazıyorsanız, verilerin başlangıcında isteğe bağlı üstbilgiyi ve gerekli öznitelik alanlarını eklediğinizden emin olun. 
     
-        Örneğin, aşağıdaki üst bilgi ve öznitelik satırları basit bir listeye eklenebilir. Sütun başlığı `SampleText`.
+        Örneğin, aşağıdaki üst bilgi ve öznitelik satırları basit bir listeye eklenebilir. Sütun başlığı `SampleText`. Dize türünün desteklenmediğini unutmayın.
     
         ```text
-        % Title: SampleText.ARFF  
-        % Source: Enter Data module  
-        @ATTRIBUTE SampleText STRING  
-        @DATA  
+        % Title: SampleText.ARFF
+        % Source: Enter Data module
+        @ATTRIBUTE SampleText NUMERIC
+        @DATA
         \<type first data row here>  
         ```
 

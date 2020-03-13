@@ -5,18 +5,18 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834276"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278681"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini ekleme
 
 Azure Otomasyonu, işletim sistemi güvenlik güncelleştirmelerini yönetmek, değişiklikleri izlemek ve bilgisayarlarınıza nelerin yüklü olduğunu envantere almak için çözümler sağlar. Makineleri eklemek için birçok yol vardır, çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [birden çok makineye göz atarak](automation-onboard-solutions-from-browse.md), Otomasyon hesabınızdan veya [runbook](automation-onboard-solutions.md)'a ekleyebilirsiniz. Bu makalede Otomasyon hesabınızdan bu çözümlerin eklenmesi ele alınmaktadır.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure'da oturum açın
 
@@ -35,17 +35,17 @@ Log Analytics çalışma alanını ve otomasyon hesabını seçin ve çözümü 
 
 Değişiklik İzleme ve Sayım çözümü, sanal makinelerinizde [değişiklikleri izleme](automation-vm-change-tracking.md) ve [sayım](automation-vm-inventory.md) olanağı sağlar. Bu adımda çözümü bir sanal makine üzerinde etkinleştirirsiniz.
 
-Değişiklik izleme ve sayım çözümü ekleme bildirimi tamamlandığında **YAPILANDIRMA YÖNETİMİ** bölümünde **Güncelleştirme Yönetimi**’ne tıklayın.
+Değişiklik izleme ve envanter çözümü ekleme bildirimi **tamamlandığında güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ni seçin.
 
-Güncelleştirme Yönetimi çözümü, Azure Windows VM’leriniz için güncelleştirmeleri ve yamaları yönetmenizi sağlar. Kullanılabilir güncelleştirmelerin durumunu değerlendirebilir, gerekli güncelleştirmelerin yüklemesini zamanlayabilir ve güncelleştirmelerin VM’ye başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirebilirsiniz. Bu eylem, VM 'niz için çözümü etkinleştirdi.
+Güncelleştirme Yönetimi çözümü, Azure ve karma sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmenizi sağlar. Kullanılabilir güncelleştirmelerin durumunu değerlendirebilir, gerekli güncelleştirmelerin yüklemesini zamanlayabilir ve güncelleştirmelerin bunlara başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirebilirsiniz.
 
-**Güncelleştirme**yönetimi altında **güncelleştirme yönetimi** ' ni seçin. Seçilen Log Analytics çalışma alanı, önceki adımda kullanılan çalışma alanıdır. Güncelleştirme yönetimi çözümünü eklemek için **Etkinleştir**’e tıklayın. Çözümün etkinleştirilmesi 15 dakika sürer.
+Çözümü Etkinleştir sayfasında, seçilen Log Analytics çalışma alanı, önceki adımda kullanılan çalışma alanıdır. Güncelleştirme Yönetimi çözümünü eklemek için **Etkinleştir** ' e tıklayın. Çözümün etkinleştirilmesi 15 dakika sürer.
 
 ![Güncelleştirme çözümünü ekleme](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
 ## <a name="scope-configuration"></a>Kapsam yapılandırması
 
-Her çözüm, çözümü alan bilgisayarları hedeflemek için çalışma alanında bir kapsam yapılandırması kullanır. Kapsam yapılandırması, çözümün kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için, Otomasyon hesabınızda **ılgılı kaynaklar**altında **çalışma alanı**' nı seçin. Sonra çalışma alanı **VERI kaynakları**altındaki çalışma alanında **kapsam yapılandırması**' nı seçin.
+Her çözüm, çözümü alan bilgisayarları hedeflemek için çalışma alanında bir kapsam yapılandırması kullanır. Kapsam yapılandırması, çözümün kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için, Otomasyon hesabınızda **ilgili kaynaklar**altında **çalışma alanı**' nı seçin. Sonra çalışma alanı **veri kaynakları**altındaki çalışma alanında **kapsam yapılandırması**' nı seçin.
 
 Seçilen çalışma alanında henüz Güncelleştirme Yönetimi veya Değişiklik İzleme Çözümleri yoksa, aşağıdaki kapsam konfigürasyonları oluşturulur:
 
@@ -61,10 +61,10 @@ Bir bilgisayar Güncelleştirme Yönetimi veya Değişiklik İzleme ve envanter 
 
 Log Analytics çalışma alanınıza gidin ve **genel**altında **kaydedilmiş aramalar** ' ı seçin. Bu çözümler tarafından kullanılan iki kayıtlı arama aşağıdaki tabloda görülebilir:
 
-|Ad     |Kategori  |Diğer ad  |
+|Adı     |Kategori  |Diğer ad  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Güncellemeler        | Updates__MicrosoftDefaultComputerGroup         |
+|MicrosoftDefaultComputerGroup     |  Değişiklik izleme dosyanız       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     | Güncelleştirmeler        | Updates__MicrosoftDefaultComputerGroup         |
 
 Grubu doldurmak için kullanılan sorguyu görüntülemek için kayıtlı arama ' yı seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:
 
@@ -125,7 +125,7 @@ Bu çözümleri kaldırdıktan sonra, Otomasyon Hesabınızın bağlantısını 
 
 2. Çalışma alanının bağlantısını Kaldır sayfasında, **çalışma alanının bağlantısını kaldır**' a tıklayın.
 
-   ![Çalışma alanının bağlantısını Kaldır sayfası](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
+   ![Çalışma alanının bağlantısını Kaldır sayfası](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)arasında yetersiz alanla karşılaştı.
 
    Devam etmek istediğinizi doğrulayan bir istem alacaksınız.
 
@@ -133,7 +133,7 @@ Bu çözümleri kaldırdıktan sonra, Otomasyon Hesabınızın bağlantısını 
 
 Güncelleştirme Yönetimi çözümünü kullandıysanız, isteğe bağlı olarak, çözümü kaldırdıktan sonra artık gerekli olmayan aşağıdaki öğeleri kaldırmak isteyebilirsiniz.
 
-* Zamanlamayı Güncelleştir-her birinin, oluşturduğunuz güncelleştirme dağıtımlarıyla eşleşen adları olur)
+* Zamanlamayı Güncelleştir-her biri, oluşturduğunuz güncelleştirme dağıtımlarıyla eşleşen adlara sahip olur.
 
 * Çözüm için oluşturulan karma çalışan grupları-her biri, machine1. contoso. com_9ceb8108-26c9-4051-B6B3-227600d715c8 ' e benzer şekilde adlandırılır.
 

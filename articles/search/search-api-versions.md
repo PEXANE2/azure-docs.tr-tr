@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2f774401f32ff02ced690173c418dafc4c789b5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278802"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137297"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -34,10 +34,10 @@ Azure Bilişsel Arama tüm programlama arabirimlerinin geçerli sürümlerinin b
 | --- | --- | --- |
 | [.NET SDK](https://aka.ms/search-sdk) |9.0 |Genel kullanıma sunulan, 2019 Mayıs |
 | [.NET SDK önizlemesi](https://aka.ms/search-sdk-preview) |8,0-Önizleme |Önizleme, yayın 2019 Nisan |
-| [Hizmet REST API'si](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Genel Kullanıma Sunuldu |
+| [Hizmet REST API'si](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Genel olarak kullanılabilir |
 | [Service REST API 2019-05-06-Önizleme](search-api-preview.md) |2019-05-06-Önizleme |Önizleme |
-| [.NET Yönetim SDK'sı](https://aka.ms/search-mgmt-sdk) |3.0 |Genel Kullanıma Sunuldu |
-| [Yönetim REST API'si](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Genel Kullanıma Sunuldu |
+| [.NET Yönetim SDK'sı](https://aka.ms/search-mgmt-sdk) |3.0 |Genel olarak kullanılabilir |
+| [Yönetim REST API'si](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|Genel olarak kullanılabilir |
 
 REST API 'Leri için, her çağrıda `api-version` de dahil olmak üzere gereklidir. `api-version` kullanmak, önizleme API 'SI gibi belirli bir sürümü hedeflemek kolaylaştırır. Aşağıdaki örnekte `api-version` parametresinin nasıl belirtildiği gösterilmektedir:
 

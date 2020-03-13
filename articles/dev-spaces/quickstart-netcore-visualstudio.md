@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcıl
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d3eaa3869c79852d1e598cae76e1dac81c08cdc2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245026"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137980"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te hata ayıklama ve yineleme: Visual Studio & .NET Core-Azure Dev Spaces
 
@@ -94,7 +94,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-Yukarıdaki örnekte, genel URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Hizmetinizin genel URL 'sine gidin ve geliştirme alanınızda çalışan hizmetle etkileşim kurun.
+Yukarıdaki örnekte, genel URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. 
+
+**Hata Ayıkla** ' yı seçin ve **hata ayıklamayı başlatın**. Birkaç saniye sonra hizmetiniz başlatılır ve Visual Studio, hizmetin genel URL 'sini içeren bir tarayıcı açar. Bir tarayıcı otomatik olarak açılmadığından, bir tarayıcıda hizmetinizin genel URL 'sine gidin ve geliştirme alanınızda çalışan hizmetle etkileşime geçin.
 
 Bu işlem hizmetinize genel erişimi devre dışı bırakmış olabilir. Ortak erişimi etkinleştirmek için, [ *values. YAML*değerindeki giriş değerini][ingress-update]güncelleştirebilirsiniz.
 
@@ -106,7 +108,7 @@ Visual Studio hala geliştirme alanınıza bağlıysa Durdur düğmesine tıklay
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Değişiklikleri kaydedin ve başlatma ayarları açılır listesinden **Azure dev Spaces** kullanarak hizmetinizi başlatın. Hizmetinizin genel URL 'sini bir tarayıcıda açın ve *hakkında*' ya tıklayın. Güncelleştirilmiş iletinizin göründüğünü gözlemleyin.
+Değişikliklerinizi kaydedin ve **Hata Ayıkla** ' yı seçin ve **hata ayıklamayı başlatın**. Birkaç saniye sonra hizmetiniz başlatılır ve Visual Studio, hizmetin genel URL 'sini içeren bir tarayıcı açar. Bir tarayıcı otomatik olarak açılmadığından, bir tarayıcıda hizmetinizin genel URL 'sine gidin ve *hakkında*' ya tıklayın. Güncelleştirilmiş iletinizin göründüğünü gözlemleyin.
 
 Kod düzenlemeleri her yapıldığında yeni bir kapsayıcı görüntüsünü yeniden oluşturmak ve yeniden dağıtmak yerine, daha hızlı bir düzenleme/hata ayıklama döngüsü sağlamak üzere mevcut kapsayıcı içindeki kodu artımlı olarak yeniden derler Azure Dev Spaces.
 

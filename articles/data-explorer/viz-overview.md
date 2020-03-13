@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7b1c7825beb769b610d661cb9644fc3f3919d548
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064572"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139071"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Azure Veri Gezgini ile veri görselleştirme 
 
@@ -42,6 +42,10 @@ Azure Veri Gezgini, [yerleşik yerel Excel bağlayıcısını](excel-connector.m
 ## <a name="grafana"></a>Grafana
 
 [Grafana](https://grafana.com) , Azure Veri Gezgini verileri görselleştirmenizi sağlayan bir Azure Veri Gezgini eklentisi sağlar. [Azure Veri Gezgini 'Yi Grafana için bir veri kaynağı olarak ayarlayın ve ardından verileri görselleştirin](/azure/data-explorer/grafana). 
+
+## <a name="kibana"></a>Kibana
+
+Azure Veri Gezgini, açık kaynak bağlayıcı olan K2Bridge kullanarak [kibana (bul sayfasına)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) bağlanma yeteneği sağlar. [Azure Veri Gezgini 'Yi kibana için bir veri kaynağı olarak ayarlayın ve ardından verileri görselleştirin](/azure/data-explorer/k2bridge).
 
 ## <a name="odbc-connector"></a>ODBC bağlayıcısı
 

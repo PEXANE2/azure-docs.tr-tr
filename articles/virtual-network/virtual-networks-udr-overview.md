@@ -17,11 +17,11 @@ ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356468"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280072"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
 
@@ -213,17 +213,17 @@ Resimdeki *Subnet1* için yol tablosu aşağıdaki yolları içerir:
 |Kimlik  |Kaynak |Durum  |Adres ön ekleri    |Sonraki atlama türü          |Sonraki atlama IP adresi|Kullanıcı tanımlı yol adı| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Varsayılan|Geçersiz|10.0.0.0/16         |Sanal ağ        |                   |              |
-|2   |Kullanıcı   |Active |10.0.0.0/16         |Sanal gereç      |10.0.100.4         |VNet1 içinde  |
-|3   |Kullanıcı   |Active |10.0.0.0/24         |Sanal ağ        |                   |Subnet1 içinde|
+|2   |Kullanıcı   |Etkin |10.0.0.0/16         |Sanal gereç      |10.0.100.4         |VNet1 içinde  |
+|3   |Kullanıcı   |Etkin |10.0.0.0/24         |Sanal ağ        |                   |Subnet1 içinde|
 |4   |Varsayılan|Geçersiz|10.1.0.0/16         |VNet eşlemesi           |                   |              |
 |5   |Varsayılan|Geçersiz|10.2.0.0/16         |VNet eşlemesi           |                   |              |
-|6   |Kullanıcı   |Active |10.1.0.0/16         |Yok                   |                   |ToVNet2-1-Bırak|
-|7   |Kullanıcı   |Active |10.2.0.0/16         |Yok                   |                   |ToVNet2-2-Bırak|
+|6   |Kullanıcı   |Etkin |10.1.0.0/16         |Yok                   |                   |ToVNet2-1-Bırak|
+|7   |Kullanıcı   |Etkin |10.2.0.0/16         |Yok                   |                   |ToVNet2-2-Bırak|
 |8   |Varsayılan|Geçersiz|10.10.0.0/16        |Sanal ağ geçidi|[X.X.X.X]          |              |
-|9   |Kullanıcı   |Active |10.10.0.0/16        |Sanal gereç      |10.0.100.4         |Şirket-İçine    |
-|10  |Varsayılan|Active |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
+|9   |Kullanıcı   |Etkin |10.10.0.0/16        |Sanal gereç      |10.0.100.4         |Şirket-İçine    |
+|10  |Varsayılan|Etkin |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
 |11  |Varsayılan|Geçersiz|0.0.0.0/0           |Internet               |                   |              |
-|12  |Kullanıcı   |Active |0.0.0.0/0           |Sanal gereç      |10.0.100.4         |Varsayılan-NVA   |
+|12  |Kullanıcı   |Etkin |0.0.0.0/0           |Sanal gereç      |10.0.100.4         |Varsayılan-NVA   |
 
 Her bir yol kimliğinin açıklaması aşağıdaki gibidir:
 
@@ -246,14 +246,14 @@ Resimdeki *Subnet2* için yol tablosu aşağıdaki yolları içerir:
 
 |Kaynak  |Durum  |Adres ön ekleri    |Sonraki atlama türü             |Sonraki atlama IP adresi|
 |------- |-------|------              |-------                   |--------           
-|Varsayılan |Active |10.0.0.0/16         |Sanal ağ           |                   |
-|Varsayılan |Active |10.1.0.0/16         |VNet eşlemesi              |                   |
-|Varsayılan |Active |10.2.0.0/16         |VNet eşlemesi              |                   |
-|Varsayılan |Active |10.10.0.0/16        |Sanal ağ geçidi   |[X.X.X.X]          |
-|Varsayılan |Active |0.0.0.0/0           |Internet                  |                   |
-|Varsayılan |Active |10.0.0.0/8          |Yok                      |                   |
-|Varsayılan |Active |100.64.0.0/10       |Yok                      |                   |
-|Varsayılan |Active |192.168.0.0/16      |Yok                      |                   |
+|Varsayılan |Etkin |10.0.0.0/16         |Sanal ağ           |                   |
+|Varsayılan |Etkin |10.1.0.0/16         |VNet eşlemesi              |                   |
+|Varsayılan |Etkin |10.2.0.0/16         |VNet eşlemesi              |                   |
+|Varsayılan |Etkin |10.10.0.0/16        |Sanal ağ geçidi   |[X.X.X.X]          |
+|Varsayılan |Etkin |0.0.0.0/0           |Internet                  |                   |
+|Varsayılan |Etkin |10.0.0.0/8          |Yok                      |                   |
+|Varsayılan |Etkin |100.64.0.0/10       |Yok                      |                   |
+|Varsayılan |Etkin |192.168.0.0/16      |Yok                      |                   |
 
 *Subnet2* yol tablosu Azure tarafından oluşturulan tüm varsayılan yolları ve isteğe bağlı VNet eşlemesi ile Sanal ağ geçidi isteğe bağlı yollarını içerir. Sanal ağa ağ geçidi ve eşleme eklendiğinde Azure, sanal ağ içindeki tüm alt ağlara isteğe bağlı yollar eklemiştir. 0\.0.0.0/0 adres ön eki için Kullanıcı tanımlı yol *Subnet1*'ye eklendiğinde Azure, 10.0.0.0/8, 192.168.0.0/16 ve 100.64.0.0/10 adres ön eklerinin yollarını *Subnet1* Route tablosundan kaldırdı.  
 

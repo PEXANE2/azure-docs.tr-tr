@@ -8,16 +8,16 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 9b3dba0041b38d9d59a10eaf80592bab91f65b98
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600286"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135896"
 ---
 # <a name="copy-a-blob-with-net"></a>.NET ile blob kopyalama
 
-Bu makalede, bir blob 'un Azure Storage hesabıyla nasıl kopyalanacağı gösterilmektedir. Ayrıca, zaman uyumsuz bir kopyalama işleminin nasıl iptal alınacağını gösterir. Örnek kod, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage/client)'nı kullanır.
+Bu makalede, bir blob 'un Azure Storage hesabıyla nasıl kopyalanacağı gösterilmektedir. Ayrıca, zaman uyumsuz bir kopyalama işleminin nasıl iptal alınacağını gösterir. Örnek kod, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)'nı kullanır.
 
 ## <a name="about-copying-blobs"></a>Blob 'ları kopyalama hakkında
 
@@ -109,7 +109,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 ## <a name="abort-a-blob-copy-operation"></a>Blob kopyalama işlemini durdur
 
-Bir kopyalama işleminin iptal edilmeden, blok Blobları, ekleme Blobları ve sayfa Blobları için sıfır uzunluğundaki hedef Blobun sonuçlanır. Ancak, hedef Blobun meta verileri, kaynak Blobun yeni değerleri kopyalayacak veya [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) ya da [Startcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) çağrısında açıkça ayarlanmış olacak. Özgün meta verileri kopyalama öncesinde tutmak için, `StartCopy` veya `StartCopyAsync` çağrılmadan önce hedef Blobun anlık görüntüsünü alın.
+Bir kopyalama işleminin iptal edilmeden, blok Blobları, ekleme Blobları ve sayfa Blobları için sıfır uzunluğundaki hedef Blobun sonuçlanır. Ancak, hedef Blobun meta verileri, kaynak Blobun yeni değerleri kopyalayacak veya [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) ya da [Startcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) çağrısında açıkça ayarlanmış olacak. Özgün meta verileri kopyalama öncesinde tutmak için, `StartCopy` veya `StartCopyAsync`çağrılmadan önce hedef Blobun anlık görüntüsünü alın.
 
 Devam eden bir blob kopyalama işlemini iptal ettiğinizde, hedef Blobun [CopyState. Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) , [Copystatus. durduruldu](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet)olarak ayarlanır.
 

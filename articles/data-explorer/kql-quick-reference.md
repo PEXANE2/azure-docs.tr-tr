@@ -1,18 +1,18 @@
 ---
 title: KQL hızlı başvurusu
 description: Yararlı KQL işlevlerinin ve sözdizimi örnekleri içeren tanımlarının listesi.
-author: yossi-karp
-ms.author: v-yokarp
+author: orspod
+ms.author: orspodek
 ms.reviewer: ''
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: c5d331b809d3f9f7db8d8c36add8b283bf0b9e39
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e7196ccccb1203ce56b2e53fa358d091374cd3f8
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664873"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139088"
 ---
 # <a name="kql-quick-reference"></a>KQL hızlı başvurusu
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c327629f0c5e88520a8bb0b9c4ff68e6edc00c35
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943552"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137348"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın
 
@@ -262,7 +262,7 @@ Azure kuyrukları ile .NET geliştirme için şu ek kaynaklara bakın:
 
 ### <a name="binaries-and-source-code"></a>İkili dosyalar ve kaynak kodu
 
-- [.Net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage/client) 'nın en son sürümüne yönelik NuGet paketlerini indirin
+- [.Net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet) 'nın en son sürümüne yönelik NuGet paketlerini indirin
     - [Birçok](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Kuyruklar](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - GitHub üzerinde [.NET istemci kitaplığı kaynak kodunu](https://github.com/Azure/azure-storage-net) görüntüleyin.

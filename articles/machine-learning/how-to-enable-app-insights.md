@@ -9,18 +9,22 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 11/12/2019
-ms.openlocfilehash: 34aba3c00ac0026abebbdfc93143aa5e7f788e8b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/12/2020
+ms.openlocfilehash: 464ec1fcf0986dc04bd92bbe9e31b5675e5822d4
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268474"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136202"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Service (AKS) veya Azure Container Instances (acı) içindeki Web hizmeti uç noktalarına dağıtılan modellerden veri toplamaya ve bunları izlemeye öğreneceksiniz. Bir uç noktanın giriş verilerini ve yanıtını toplamaya ek olarak şunları izleyebilirsiniz:
+Bu makalede, kullanarak Azure Kubernetes Service (AKS) veya Azure Container Instances (acı Application Insights) içindeki Web hizmeti uç noktalarına dağıtılan modellerden nasıl veri toplayacağınızı öğrenirsiniz. 
+* [Azure Machine Learning Python SDK'sı](#python)
+* [Azure Machine Learning studio](#studio) https://ml.azure.com
+
+Uç noktanın çıkış verilerini ve yanıtını toplamaya ek olarak şunları izleyebilirsiniz:
 
 * İstek ücretleri, yanıt süreleri ve hata oranları
 * Bağımlılık oranları, yanıt süreleri ve hata oranları
@@ -34,6 +38,7 @@ Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Servic
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 
 * Bir Azure Machine Learning çalışma alanı, yüklü Python için betikleri ve Azure Machine Learning SDK'sını içeren yerel bir dizin. Bu önkoşulları nasıl alabileceğinizi öğrenmek için bkz. [geliştirme ortamını yapılandırma](how-to-configure-environment.md)
+
 * Azure Kubernetes Service (AKS) veya Azure Container örneği (ACI) dağıtılması için eğitilen makine öğrenme modeli. Bir tane yoksa, bkz. [eğitim resmi sınıflandırma modeli](tutorial-train-models-with-aml.md) öğreticisi
 
 ## <a name="web-service-metadata-and-response-data"></a>Web hizmeti meta verileri ve yanıt verileri
@@ -42,6 +47,8 @@ Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Servic
 > Azure Application Insights, yalnızca 64 KB 'a kadar olan yükleri günlüğe kaydeder. Bu sınıra ulaşıldığında, yalnızca modelin en son çıkışları günlüğe kaydedilir. 
 
 Web hizmeti meta verilerine ve modelin tahminlere karşılık gelen meta veriler ve hizmetin yanıtı, ileti `"model_data_collection"`altındaki Azure Application Insights izlemelerinde günlüğe kaydedilir. Bu verilere erişmek için doğrudan Azure Application Insights sorgulayabilir veya daha uzun bekletme veya daha fazla işleme için depolama hesabına [sürekli bir dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ayarlayabilirsiniz. Model verileri daha sonra etiketleme, yeniden eğitim, explainability, veri analizi veya diğer kullanımı ayarlamak için Azure Machine Learning kullanılabilir. 
+
+<a name="python"></a>
 
 ## <a name="use-python-sdk-to-configure"></a>Yapılandırmak için Python SDK 'sını kullanma 
 
@@ -86,11 +93,27 @@ Azure Application Insights 'yi devre dışı bırakmak için aşağıdaki kodu k
 <service_name>.update(enable_app_insights=False)
 ```
 
+<a name="studio"></a>
+
+## <a name="use-azure-machine-learning-studio-to-configure"></a>Yapılandırmak için Azure Machine Learning Studio 'yu kullanma
+
+Ayrıca, modelinizi bu adımlarla dağıtmaya hazırsanız Azure Machine Learning Studio 'dan Azure Application Insights 'yi etkinleştirebilirsiniz.
+
+1. https://ml.azure.com/ çalışma alanınızda oturum açın
+1. **Modeller** ' e gidin ve dağıtmak istediğiniz modeli seçin
+1. **+ Dağıt** seçeneğini belirleyin
+1. **Dağıtım modeli** formunu doldur
+1. **Gelişmiş** menüyü Genişlet
+
+    ![Formu dağıt](./media/how-to-enable-app-insights/deploy-form.png)
+1. **Tanılamayı ve veri toplamayı etkinleştir Application Insights** seçin
+
+    ![App Insights 'ı etkinleştir](./media/how-to-enable-app-insights/enable-app-insights.png)
 ## <a name="evaluate-data"></a>Veri değerlendir
 Hizmetinizin verileri, Azure Application Insights hesabınızda, Azure Machine Learning ile aynı kaynak grubu içinde depolanır.
 Bunu görüntülemek için:
 
-1. [Azure Machine Learning Studio](https://ml.azure.com) 'daki Azure Machine Learning çalışma alanınıza gidin ve Application Insights bağlantısına tıklayın
+1. [Azure portal](https://ms.portal.azure.com/) Azure Machine Learning çalışma alanınıza gidin ve Application Insights bağlantısına tıklayın
 
     [![Appınsi, Sloc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 

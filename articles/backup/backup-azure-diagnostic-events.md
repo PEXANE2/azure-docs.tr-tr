@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanma
 description: Azure Backup için eski ve yeni tanılama olaylarının nasıl kullanılacağını açıklayan bir makale
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583954"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136948"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma
 
@@ -56,7 +56,9 @@ Veriler LA çalışma alanına akar, bu olayların her biri için adanmış tabl
 
 Geleneksel olarak, bir kasaya yönelik yedeklemeyle ilgili tüm Tanılama verileri ' AzureBackupReport ' adlı tek bir olayda yer alır. Yukarıda açıklanan altı olay, AzureBackupReport ' deki tüm verilerin bir ayrışmasıdır. 
 
-Şu anda, kullanıcıların bu olay üzerinde var olan özel sorgulara sahip olduğu durumlarda (örneğin, özel günlük uyarıları, özel görselleştirmeler vb.), geriye doğru uyumluluk için AzureBackupReport olayını desteklemeye devam ediyoruz. Bununla birlikte, bu durum, verileri günlük sorgularında daha kolay bir şekilde daha kolay hale getiren, şemalarda tüm yeni tanılama ayarları için yeni olayların seçilmesini öneririz, şemaları ve bunların yapısını daha iyi keşfedilmesini sağlar ve her iki giriş genelinde performansı geliştirir gecikme süresi ve sorgu süreleri. Azure Tanılama modunun kullanımı için destek sonunda zaman aşımına uğrar ve bu nedenle yeni olayların seçilmesi, daha sonraki bir tarihte karmaşık geçişlere engel olmanıza yardımcı olabilir.
+Şu anda, kullanıcıların bu olay üzerinde var olan özel sorgulara sahip olduğu durumlarda (örneğin, özel günlük uyarıları, özel görselleştirmeler vb.), geriye doğru uyumluluk için AzureBackupReport olayını desteklemeye devam ediyoruz. Bununla birlikte, verileri günlük sorgularında daha kolay bir şekilde daha kolay hale getiren, şemaları ve bunların yapısını daha iyi keşfedilmesini sağlayan **Yeni olaylara mümkün olduğunca erken geçmeyi öneririz**. bu sayede, hem alma gecikmesi hem de sorgu sürelerinde performans artar. **Azure tanılama modunun kullanımı Için destek sonunda zaman aşımına uğrar ve bu nedenle yeni olayların seçilmesi, daha sonraki bir tarihte karmaşık geçişlere engel olmanıza yardımcı olabilir**.
+
+Belirli bir kapsamdaki tüm kasalarınız için 6 yeni olayla yeni bir tanılama ayarı eklemek için Azure Backup yerleşik ilkesini kullanın: [kasa tanılama ayarlarını ölçeklendirerek yapılandırma](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 Yeni tablolardaki verileri kullanmak üzere tüm özel sorgularınızı geçirene kadar, AzureBackupReport için ayrı Tanılama ayarları ve altı yeni olay oluşturmayı tercih edebilirsiniz. Aşağıdaki görüntüde iki tanılama ayarı olan bir kasaya örnek gösterilmektedir. **Setting1** adlı ilk ayar, AzureBackupReport olayının verilerini AzureDiagnostics MODUNDAKI bir La çalışma alanına gönderir. **Setting2** adlı ikinci ayar, altı yeni Azure Backup olayının verilerini kaynağa özgü modda bir La çalışma alanına gönderir.
 

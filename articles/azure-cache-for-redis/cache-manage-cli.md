@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372005"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277992"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure klasik CLı kullanılarak Redsıs için Azure önbelleği oluşturma ve yönetme
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Aşağıdaki özellikler, Redsıs örnekleri için Azure önbelleği oluşturma 
 | --- | --- | --- |
 | ad |-n,--ad |Redsıs için Azure önbelleğinin adı. |
 | kaynak grubu |-g,--Resource-Group |Kaynak grubunun adı. |
-| konum |-l,--konum |Önbellek oluşturma konumu. |
+| location |-l,--konum |Önbellek oluşturma konumu. |
 | size |-z,--boyut |Redsıs için Azure önbelleğinin boyutu. Geçerli değerler: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | sku |-x, --sku |Redis SKU. Şunlardan biri olmalıdır: [temel, standart, Premium] |
 | EnableNonSslPort |-e,--etkinleştir-SSL olmayan-bağlantı noktası |Redin için Azure önbelleğinin EnableNonSslPort özelliği. Önbelleğiniz için SSL olmayan bağlantı noktasını etkinleştirmek istiyorsanız bu bayrağı ekleyin |

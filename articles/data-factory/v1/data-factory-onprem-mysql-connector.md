@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928103"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281294"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL 'Ten veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -46,11 +46,11 @@ MySQL veritabanına bağlanmak üzere Veri Yönetimi ağ geçidinin, Veri Yönet
 > [!TIP]
 > "Uzak taraf aktarım akışını kapattığından" kimlik doğrulaması başarısız oldu. "hatasını alırsanız MySQL bağlayıcısını/NET 'i daha yüksek sürüme yükseltmeyi göz önünde bulundurun.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için. 
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -65,12 +65,12 @@ Aşağıdaki bölümler, bir MySQL veri deposuna özgü Data Factory varlıklar�
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda, MySQL bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | type |Type özelliği: **OnPremisesMySql** olarak ayarlanmalıdır |Yes |
 | sunucu |MySQL sunucusunun adı. |Yes |
-| veritabanı |MySQL veritabanının adı. |Yes |
-| schema |Veritabanındaki şemanın adı. |Hayır |
+| database |MySQL veritabanının adı. |Yes |
+| şema |Veritabanındaki şemanın adı. |Hayır |
 | authenticationType |MySQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: `Basic`. |Yes |
 | userName adı |MySQL veritabanına bağlanmak için Kullanıcı adını belirtin. |Yes |
 | password |Belirttiğiniz kullanıcı hesabı için parola belirtin. |Yes |
@@ -81,7 +81,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable** türündeki veri kümesinin typeproperties bölümü (MySQL veri kümesini içerir) aşağıdaki özelliklere sahiptir
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | tableName |Bağlantılı hizmetin başvurduğu MySQL veritabanı örneğindeki tablonun adı. |Hayır ( **Relationalsource** **sorgusu** belirtilmişse) |
 
@@ -92,7 +92,7 @@ Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler h
 
 Copy etkinliğinin kaynağı **Relationalsource** (MySQL içeren) türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Hayır ( **veri kümesi** **TableName** belirtilmişse) |
 
@@ -300,18 +300,18 @@ MySQL 'e veri taşırken aşağıdaki eşlemeler MySQL türlerinden .NET türler
 
 | MySQL veritabanı türü | .NET Framework türü |
 | --- | --- |
-| büyük tamsayı işaretsiz |Decimal |
+| büyük tamsayı işaretsiz |Ondalık |
 | bigint |Int64 |
-| bit |Decimal |
+| bit |Ondalık |
 | blob |Byte[] |
 | bool |Boole |
 | char |Dize |
-| date |Datetime |
-| datetime |Datetime |
-| decimal |Decimal |
-| çift duyarlık |Double |
-| double |Double |
-| enum |Dize |
+| date |Tarih saat |
+| datetime |Tarih saat |
+| decimal |Ondalık |
+| çift duyarlık |çift |
+| double |çift |
+| Sabit listesi |Dize |
 | float |Tek |
 | int işaretsiz |Int64 |
 | int |Int32 |
@@ -320,19 +320,19 @@ MySQL 'e veri taşırken aşağıdaki eşlemeler MySQL türlerinden .NET türler
 | Long varbinary |Byte[] |
 | uzun varchar |Dize |
 | LONGBLOB |Byte[] |
-| longtext |Dize |
+| LONGTEXT |Dize |
 | düz blob |Byte[] |
 | düz int işaretsiz |Int64 |
 | düz tamsayı |Int32 |
 | düz metin |Dize |
-| numeric |Decimal |
-| real |Double |
+| numeric |Ondalık |
+| real |çift |
 | set |Dize |
 | küçük tamsayı işaretsiz |Int32 |
 | smallint |Int16 |
 | metin |Dize |
 | time |TimeSpan |
-| timestamp |Datetime |
+| timestamp |Tarih saat |
 | tinyblob |Byte[] |
 | mini tamsayı imzasız |Int16 |
 | tinyint |Int16 |

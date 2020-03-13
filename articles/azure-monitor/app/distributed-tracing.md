@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d9f67250a232d4666e4655f83e9bdc7622754331
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669599"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136749"
 ---
 # <a name="what-is-distributed-tracing"></a>Dağıtılmış Izleme nedir?
 
@@ -38,7 +38,7 @@ Bir uygulamadaki hizmetler genelinde dağıtılmış izlemeyi etkinleştirmek, h
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
-* [Python (Önizleme)](opencensus-python.md)
+* [Python](opencensus-python.md)
 
 Uygun Application Insights SDK yüklü ve yapılandırılmış olarak, popüler çerçeveler, kitaplıklar ve teknolojiler için izleme bilgileri SDK bağımlılığı otomatik toplayıcılarına göre otomatik olarak toplanır. Desteklenen teknolojilerin tam listesi [bağımlılık otomatik toplama belgelerinde](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)bulunabilir.
 
@@ -48,7 +48,7 @@ Uygun Application Insights SDK yüklü ve yapılandırılmış olarak, popüler 
 
 Application Insights SDK 'lara ek olarak, Application Insights [Opencensus](https://opencensus.io/)aracılığıyla dağıtılmış izlemeyi da destekler. OpenCensus, hizmetler için ölçüm koleksiyonu ve dağıtılmış izleme sağlamak üzere açık kaynaklı, satıcının bağımsız, tek kitaplıkların tek bir dağıtımı olur. Ayrıca, açık kaynak topluluğunun redin, Memcache veya MongoDB gibi popüler teknolojilerle dağıtılmış izlemeyi etkinleştirmesini sağlar. [Microsoft, diğer birçok izleme ve bulut iş ortaklarıyla OpenCensus üzerinde işbirliği](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/)yapıyor.
 
-[Python (Önizleme)](opencensus-python.md) 
+[Python](opencensus-python.md) 
 
 OpenCensus Web sitesi, [Python](https://opencensus.io/api/python/trace/usage.html) ve [Go](https://godoc.org/go.opencensus.io)için API başvuru belgelerini ve ayrıca opencensus kullanmaya yönelik çeşitli farklı kılavuzların bakımını yapar. 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297859"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138952"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını kullanarak hesaplarınızda oturum açın
 
@@ -112,7 +112,7 @@ Bir Android cihazında:
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Hesabınız için iki öğeli doğrulama kullanarak oturum açın
 
-Standart iki öğeli doğrulama yöntemi, oturum açmak için kullandığınız cihaza Kullanıcı adı ve parolanızı girmenizi ve sonra Microsoft Authenticator uygulamasının Microsoft Authenticator uygulama alıp almayacağını seçmeniz gerekir. Bir Android cihazında, bu doğrulama kodları hesaplar ekranında bulunabilir. Bir iOS cihazında, bu doğrulama kodları hesap türüne bağlı olarak **hesaplar** ekranında veya bir hesabın tam ekran görünümünde bulunabilir. Hesabı Microsoft Authenticator uygulamasına eklemek için, işlem kapsamında hesabınız için iki öğeli doğrulamayı açın.
+Standart iki öğeli doğrulama yöntemi, oturum açmak için kullandığınız cihaza Kullanıcı adınızı ve parolanızı girmenizi gerektirir. Ardından, Microsoft Authenticator uygulamanızı açıp hesabınız için rastgele oluşturulan kodu **girerek kodu gir** kutusuna yazın. Bir Android cihazında, bu doğrulama kodları **hesaplar** ekranında bulunabilir. Bir iOS cihazında, hesap türüne bağlı olarak, bu doğrulama kodları **hesaplar** ekranında veya bir hesabın tam ekran görünümünde bulunabilir. Hesabı Microsoft Authenticator uygulamasına eklemek için, işlem kapsamında hesabınız için iki öğeli doğrulamayı açın.
 
 >[!Note]
 >Microsoft Authenticator uygulamasının **hesaplar** ekranında iş veya okul hesabınızı veya kişisel hesabınızı görmüyorsanız, hesabı Microsoft Authenticator uygulamasına eklemediğiniz anlamına gelir. Hesabınızı eklemek için bkz. [iş veya okul hesabınızı ekleme](user-help-auth-app-add-work-school-account.md) veya [Kişisel hesaplarınızı ekleme](user-help-auth-app-add-personal-ms-account.md).

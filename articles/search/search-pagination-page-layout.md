@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e83ecb3888ed4b19933233f3ab511d1e86fb37af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721583"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136999"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 Bu makalede, toplam sayımlar, belge alımı, sıralama düzenleri ve gezinti gibi bir arama sonuçları sayfasının standart öğelerinin nasıl uygulanacağı hakkında rehberlik sunulmaktadır. Arama sonuçlarınıza veri veya bilgi katkıda bulunan sayfayla ilgili seçenekler, Azure Bilişsel Arama hizmetinize gönderilen [Arama belgesi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) istekleri aracılığıyla belirtilir. 
@@ -25,7 +25,7 @@ REST API istekler, hizmete ne istenmekte olduğunu ve yanıtı nasıl ifade edec
 + Bir arama çubuğu, çok yönlü gezinme ve sonuç alanı içeren bir HTML sayfası oluşturmak için portalda [uygulama oluşturucusunu](search-create-app-portal.md) kullanın.
 + İşlevsel bir istemci oluşturmak için [ilk uygulamanızı C# ](tutorial-csharp-create-first-app.md) öğreticide Oluşturma öğreticisini izleyin.
 
-Birçok kod örneği, burada bulabileceğiniz bir Web ön uç arabirimi içerir: [New York City işleri tanıtım uygulaması](https://azjobsdemo.azurewebsites.net/), [canlı tanıtım sitesiyle JavaScript örnek kodu](https://github.com/liamca/azure-search-javascript-samples)ve [bilivesearchön uç](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Birçok kod örneği, burada bulabileceğiniz bir Web ön uç arabirimi içerir: [New York City işleri tanıtım uygulaması](https://aka.ms/azjobsdemo), [canlı tanıtım sitesiyle JavaScript örnek kodu](https://github.com/liamca/azure-search-javascript-samples)ve [bilivesearchön uç](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Geçerli bir istek, hizmet URL 'SI ve yol, HTTP fiili, `api-version`vb. gibi çeşitli öğeleri içerir. Kısaltma için, yalnızca Sayfalandırmaya uygun olan sözdizimini vurgulamak üzere örnekleri kırptık. İstek sözdizimi hakkında daha fazla bilgi için bkz. [Azure BILIŞSEL arama REST API 'leri](https://docs.microsoft.com/rest/api/searchservice).

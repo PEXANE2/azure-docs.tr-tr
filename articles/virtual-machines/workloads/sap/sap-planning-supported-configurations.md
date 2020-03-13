@@ -13,17 +13,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28a9de63bb04a95fc2e655b05727963feaa3ec40
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599190"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137637"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure sanal makinesi desteklenen senaryolarda SAP iş yükü
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
 Azure 'da SAP NetWeaver, Business One, `Hybris` veya S/4HANA sistemleri mimarisi tasarlamak, ölçeklenebilir, verimli ve yüksek oranda kullanılabilir bir dağıtıma ulaşmak için kullanabileceğiniz çeşitli mimariler ve araçlar için çok sayıda farklı fırsat açar. Kullanılan işletim sistemine veya DBMS 'ye bağımlı olsa da kısıtlamalar vardır. Ayrıca, şirket içinde desteklenen tüm senaryolar Azure 'da aynı şekilde desteklenmez. Bu belge, Azure VM 'Leri kullanan desteklenen yüksek kullanılabilirliğe sahip olmayan yapılandırmaların ve yüksek kullanılabilirliğe sahip yapılandırmaların ve mimarilerin oluşmasına yol açacaktır. [Hana büyük örneklerle](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)desteklenen senaryolar IÇIN, [Hana büyük örnekler için desteklenen senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)makalesine bakın. 
 
 
@@ -66,7 +66,8 @@ Bu tür DBMS dağıtımı için desteklenir:
 - Windows üzerinde SQL Server
 - IBM DB2. Makalede [birden çok örnek (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html) ayrıntılarını bulma
 - Oracle için. Ayrıntılar için bkz. [sap destek notu #1778431](https://launchpad.support.sap.com/#/notes/1778431) ve ilgili SAP notları
-- SAP HANA için, bir VM 'de birden çok örnek, SAP bu dağıtım yöntemini (MCOS) çağırır, desteklenir. Ayrıntılar için bkz. SAP makalesi [bir konakta birden çok SAP HANA sistemi (MCOS)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/en-US/b2751fd43bec41a9a14e01913f1edf18.html)
+- SAP HANA için, bir VM 'de birden çok örnek, SAP bu dağıtım yöntemini (MCOS) çağırır, desteklenir. Ayrıntılar için bkz. SAP makalesi [bir konaktaki birden çok SAP HANA sistemi (MCOS)] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.htm html)
 
 Birden çok veritabanı örneğini bir konakta çalıştırırken, farklı örneklerin kaynaklar için rekabet olmadığından ve bu nedenle VM 'nin fiziksel kaynak sınırlarını aşmadığından emin olmanız gerekir. Bu durum özellikle, VM 'yi paylaşan örnek sayısını ayırabilmeniz gereken bellek için geçerlidir. Bu Ayrıca, farklı veritabanı örneklerinin faydalanma CPU kaynakları için de doğru olabilir. Bahsedilen tüm DBMS 'nin, bir örnek düzeyinde bellek ayırmayı ve CPU kaynaklarını sınırlandırmaya izin veren yapılandırmalara sahip olması gerekir.
 Azure VM 'Leri için bu tür bir yapılandırmaya yönelik destek sağlamak üzere, veriler için kullanılan disklerin veya birimlerin, farklı örnekler tarafından yönetilen veritabanlarının günlük/yineleme günlüğü dosyaları birbirinden ayrı olması beklenmektedir. Diğer bir deyişle, farklı DBMS örneği tarafından yönetilen veritabanlarının veri veya günlük/yineleme günlüğü dosyalarını aynı disklerin veya birimlerin paylaşılması gerekmez. 
@@ -121,6 +122,8 @@ Azure VM 'Ler için, aşağıdaki yüksek kullanılabilirlik yapılandırması D
 
 > [!IMPORTANT]
 > Yukarıda açıklanan senaryolardan hiçbiri için, bir VM 'de birden çok DBMS örneğinin yapılandırmasını destekliyoruz. Her durumda, sanal makine başına yalnızca bir veritabanı örneği dağıtılabilir ve açıklanan yüksek kullanılabilirlik yöntemleriyle korunabilir. Aynı Windows veya pacemaker yük devretme kümesi altında birden çok DBMS örneğinin korunması bu **noktada desteklenmez.** Ayrıca, Oracle Data Guard yalnızca VM dağıtım durumları başına tek bir örnek için desteklenir. 
+
+Çeşitli veritabanı sistemleri, tek bir DBMS örneği altında birden çok veritabanını barındırmanıza olanak tanır. SAP HANA durumda olduğu gibi, birden çok veritabanı birden çok veritabanı kapsayıcısında (MDC) barındırılabilir. Bu çok veritabanı yapılandırmalarının tek bir yük devretme kümesi kaynağı içinde çalıştığı durumlarda, bu konfigürasyonlar desteklenir. Desteklenmeyen yapılandırmalarda birden çok küme kaynağı olması gereken durumlar vardır. Birden çok SQL Server kullanılabilirlik grubu tanımladığınız yapılandırmalarda olduğu gibi, bir SQL Server örneği altında.
 
 
 ![DBMS HA yapılandırması](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)

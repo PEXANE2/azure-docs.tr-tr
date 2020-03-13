@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381493"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280540"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
 
@@ -92,15 +92,20 @@ Yeni bir Azure AD uygulaması oluşturma hakkında ayrıntılı bilgi için bkz.
 
 ## <a name="add-api-permissions"></a>API izinleri ekleme
 
-1. **Yönet** bölümünde **API izinleri**' ne tıklayın.
-2. **Izin Ekle** ' ye tıklayın ve ardından **Azure Active Directory grafik** **' i seçin**. 
-3. Aşağıdaki listeden **Kullanıcı** ' yı genişletin ve **Kullanıcı. oku** iznini etkinleştirin. **Kullanıcı. Read** varsayılan olarak etkinleştirilmişse, Kullanıcı. Read **Microsoft Graph** izin *değil* Kullanıcı. Read **Azure Active Directory Graph** **iznine sahip**olduğundan emin **olun.**
+[//]: # (Microsoft Graph olarak değiştirmeyin. Microsoft Graph ile çalışmaz.)
+1. **Yönet** bölümünde **API izinleri** ' ne tıklayın.
+2. **Izin Ekle** ' ye tıklayın ve ardından **Azure Active Directory grafik** **' i seçin**.
+> [!NOTE]
+> "Microsoft Graph" kutucuğunu değil, "Azure Active Directory Graf" öğesini seçtiğinizden emin olun.
+
+3. Aşağıdaki listeden **Kullanıcı** ' yı genişletin ve **Kullanıcı. oku** iznini etkinleştirin. **Kullanıcı. Read** varsayılan olarak etkinleştirilmişse, **kullanıcı. Read** **Azure Active Directory Graph** iznine sahip olduğundan emin olun.
 4. Yukarı kaydırın ve **Uygulama izinleri**' ni seçin.
-5. Aşağıdaki listede yer alan **dizini** genişletin ve **dizini etkinleştirin. ReadAll**
+5. Aşağıdaki listede yer alan **dizini** genişletin ve **Directory. ReadAll**öğesini etkinleştirin.
 6. Değişiklikleri kabul etmek için **Izin Ekle** ' ye tıklayın.
 7. API izinleri panelinde artık *User. Read* ve *Directory. ReadAll*gösterilmelidir. Lütfen *Directory. ReadAll*' ın yanındaki **yönetici onayı gerekli** sütununda uyarı ' yı unutmayın.
 8. *Azure abonelik yöneticisiyseniz*, aşağıdaki  ***abonelik adı* için yönetici onayı ver** ' e tıklayın. *Azure abonelik Yöneticisi*değilseniz, yöneticinizden onay isteyin.
-API izinleri panelinin ekran görüntüsünü ![. User. Read ve Directory. ReadAll izinleri eklendi, dizin için yönetici onayı gerekli. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
+
+![API izinleri bölmesinin ekran görüntüsü. User. Read ve Directory. ReadAll izinleri eklendi, dizin için yönetici onayı gerekli. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
 > Küme yöneticileri grubunun eşitlenmesi, yalnızca onay verildikten sonra çalışır. *Yönetici onayı gerekli* sütununda onay işareti olan yeşil bir daire ve " *abonelik adı*için verildi" iletisi görüntülenir.

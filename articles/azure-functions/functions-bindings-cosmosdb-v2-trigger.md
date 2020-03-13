@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: c006aa8c46864b78ae46aa9c351605cca1d1e425
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388604"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277576"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Azure Cosmos DB tetikleyicisi
 
@@ -236,7 +236,8 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `CosmosDBTrigger` öznitel
 |**leaseRenewInterval**| **LeaseRenewInterval**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden geçerli bir örnek tarafından tutulan bölümler için tüm kira yenileme aralığı tanımlar. 17000 (17 saniye) varsayılandır.
 |**Checkpointflik**| **Checkpointflik**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden kira kontrol noktaları arasındaki süreyi tanımlar. Varsayılan değer her bir Işlev çağrısından sonra olur.
 |**Maxıtemsperınvocation**| **Maxıtemsperınvocation**| Seçim Ayarlandığında, bu özellik, Işlev çağrısı başına alınan en fazla öğe sayısını ayarlar. İzlenen koleksiyondaki işlemler saklı yordamlar aracılığıyla gerçekleştiriliyorsa, değişiklik akışından öğe okurken [işlem kapsamı](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) korunur. Sonuç olarak, aynı işlem tarafından değiştirilen öğelerin bir atomik toplu işin parçası olarak döndürülmesi için alınan öğe sayısı belirtilen değerden daha yüksek olabilir.
-|**Startfromstarted**| **Startfromstarted**| Seçim Bu seçenek tetikleyicisine, geçerli zamandan başlamak yerine koleksiyonun değişiklik geçmişinden başlayarak değişiklikleri okumasını söyler. Başlangıçtan itibaren okuma, sonraki çalışmalarda olduğu gibi, yalnızca tetikleyici başlatıldığında çalışır ve kontrol noktaları zaten depolanır. Zaten oluşturulan kiralamalar varsa `true` için bu seçeneğin ayarlanması etkisizdir.
+|**Startfromstarted**| **Startfromstarted**| Seçim Bu seçenek tetikleyicisine, geçerli zamandan başlamak yerine koleksiyonun değişiklik geçmişinden başlayarak değişiklikleri okumasını söyler. Başlangıçtan itibaren okuma, sonraki çalışmalarda olduğu gibi, yalnızca tetikleyici başlatıldığında çalışır ve kontrol noktaları zaten depolanır. Zaten oluşturulan kiralamalar varsa `true` için bu seçeneğin ayarlanması etkisizdir. |
+|**preferredLocations**| **PreferredLocations**| Seçim Azure Cosmos DB hizmetindeki coğrafi olarak çoğaltılan veritabanı hesapları için tercih edilen konumları (bölgeleri) tanımlar. Değerler virgülle ayrılmalıdır. Örneğin, "Doğu ABD, Orta Güney ABD, Kuzey Avrupa". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

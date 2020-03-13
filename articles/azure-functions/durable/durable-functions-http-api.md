@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356007"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278174"
 ---
 # <a name="http-api-reference"></a>HTTP API başvurusu
 
@@ -56,8 +56,8 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan              | Parametre türü  | Açıklama |
 |--------------------|-----------------|-------------|
-| **`functionName`** | {1&gt;URL&lt;1}             | Başlatılacak Orchestrator işlevinin adı. |
-| **`instanceId`**   | {1&gt;URL&lt;1}             | İsteğe bağlı parametre. Orchestration örneğinin KIMLIĞI. Belirtilmemişse, Orchestrator işlevi rastgele bir örnek KIMLIĞIYLE başlayacaktır. |
+| **`functionName`** | URL'si             | Başlatılacak Orchestrator işlevinin adı. |
+| **`instanceId`**   | URL'si             | İsteğe bağlı parametre. Orchestration örneğinin KIMLIĞI. Belirtilmemişse, Orchestrator işlevi rastgele bir örnek KIMLIĞIYLE başlayacaktır. |
 | **`{content}`**    | İçerik isteme | İsteğe bağlı. JSON biçimli Orchestrator işlev girişi. |
 
 ### <a name="response"></a>Yanıt
@@ -146,7 +146,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan                   | Parametre türü  | Açıklama |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**        | URL'si             | Orchestration örneğinin KIMLIĞI. |
 | **`showInput`**         | Sorgu dizesi    | İsteğe bağlı parametre. `false`olarak ayarlanırsa, işlev girişi yanıt yüküne dahil edilmez.|
 | **`showHistory`**       | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa Orchestration yürütme geçmişi yanıt yüküne dahil edilir.|
 | **`showHistoryOutput`** | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa, işlev çıkışları Orchestration yürütme geçmişine dahil edilir.|
@@ -274,7 +274,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan                   | Parametre türü  | Açıklama |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**        | URL'si             | Orchestration örneğinin KIMLIĞI. |
 | **`showInput`**         | Sorgu dizesi    | İsteğe bağlı parametre. `false`olarak ayarlanırsa, işlev girişi yanıt yüküne dahil edilmez.|
 | **`showHistory`**       | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa Orchestration yürütme geçmişi yanıt yüküne dahil edilir.|
 | **`showHistoryOutput`** | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa, işlev çıkışları Orchestration yürütme geçmişine dahil edilir.|
@@ -372,7 +372,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**  | URL'si             | Orchestration örneğinin KIMLIĞI. |
 
 ### <a name="response"></a>Yanıt
 
@@ -485,8 +485,8 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
-| **`eventName`**   | {1&gt;URL&lt;1}             | Hedef düzenleme örneğinin beklediği olayın adı. |
+| **`instanceId`**  | URL'si             | Orchestration örneğinin KIMLIĞI. |
+| **`eventName`**   | URL'si             | Hedef düzenleme örneğinin beklediği olayın adı. |
 | **`{content}`**   | İçerik isteme | JSON biçimli olay yükü. |
 
 ### <a name="response"></a>Yanıt
@@ -540,7 +540,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**  | URL'si             | Orchestration örneğinin KIMLIĞI. |
 | **`reason`**      | Sorgu dizesi    | İsteğe bağlı. Orchestration örneğini sonlandırma nedeni. |
 
 ### <a name="response"></a>Yanıt
@@ -589,7 +589,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | {1&gt;URL&lt;1}             | Orchestration örneğinin KIMLIĞI. |
+| **`instanceId`**  | URL'si             | Orchestration örneğinin KIMLIĞI. |
 | **`reason`**      | Sorgu dizesi    | İsteğe bağlı. Orchestration örneğini yeniden sargı nedeni. |
 
 ### <a name="response"></a>Yanıt
@@ -631,8 +631,8 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`entityName`**  | {1&gt;URL&lt;1}             | Varlığın adı (türü). |
-| **`entityKey`**   | {1&gt;URL&lt;1}             | Varlığın anahtarı (benzersiz KIMLIĞI). |
+| **`entityName`**  | URL'si             | Varlığın adı (türü). |
+| **`entityKey`**   | URL'si             | Varlığın anahtarı (benzersiz KIMLIĞI). |
 | **`op`**          | Sorgu dizesi    | İsteğe bağlı. Çağrılacak Kullanıcı tanımlı işlemin adı. |
 | **`{content}`**   | İçerik isteme | JSON biçimli olay yükü. |
 
@@ -720,7 +720,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan                       | Parametre türü  | Açıklama |
 |-----------------------------|-----------------|-------------|
-| **`entityName`**            | {1&gt;URL&lt;1}             | İsteğe bağlı. Belirtildiğinde, döndürülen varlıkların listesini varlık adlarıyla (büyük/küçük harfe duyarsız) filtreler. |
+| **`entityName`**            | URL'si             | İsteğe bağlı. Belirtildiğinde, döndürülen varlıkların listesini varlık adlarıyla (büyük/küçük harfe duyarsız) filtreler. |
 | **`fetchState`**            | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa, varlık durumu yanıt yüküne dahil edilir. |
 | **`lastOperationTimeFrom`** | Sorgu dizesi    | İsteğe bağlı parametre. Belirtildiğinde, belirtilen ıSO8601 zaman damgasından sonra işlemleri işleyen döndürülen varlıkların listesine filtre uygular. |
 | **`lastOperationTimeTo`**   | Sorgu dizesi    | İsteğe bağlı parametre. Belirtildiğinde, belirtilen ıSO8601 zaman damgasından önce işlemleri işleyen döndürülen varlıkların listesine filtre uygular. |

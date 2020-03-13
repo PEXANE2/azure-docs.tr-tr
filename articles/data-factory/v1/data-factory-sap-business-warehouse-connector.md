@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387562"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281060"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'Tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -63,12 +63,12 @@ Aşağıdaki tabloda SAP Business Warehouse (siyah-beyaz) bağlantılı hizmetin
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-server | SAP BW örneğinin bulunduğu sunucunun adı. | string | Evet
-systemNumber | SAP BW sisteminin sistem numarası. | Dize olarak temsil edilen iki basamaklı ondalık sayı. | Evet
-clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI. | Dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet
-kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Evet
-password | Kullanıcının parolası. | string | Evet
-gatewayName | Data Factory hizmetinin şirket içi SAP BW örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Evet
+sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | string | Yes
+systemNumber | SAP BW sisteminin sistem numarası. | Dize olarak temsil edilen iki basamaklı ondalık sayı. | Yes
+clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI. | Dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes
+kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Yes
+password | Kullanıcının parolası. | string | Yes
+gatewayName | Data Factory hizmetinin şirket içi SAP BW örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Yes
 encryptedCredential | Şifrelenmiş kimlik bilgisi dizesi. | string | Hayır
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
@@ -86,7 +86,7 @@ Copy etkinliğinin kaynağı **Relationalsource** (SAP BW içerir) türünde old
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| query | SAP BW örneğinden verileri okumak için MDX sorgusunu belirtir. | MDX sorgusu. | Evet |
+| sorgu | SAP BW örneğinden verileri okumak için MDX sorgusunu belirtir. | MDX sorgusu. | Yes |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON örneği: SAP Business Warehouse 'tan Azure Blob 'a veri kopyalama
@@ -291,27 +291,27 @@ SAP BW verileri taşırken, SAP BW türlerinden .NET türlerine aşağıdaki eş
 ABAP Dictionary içindeki veri türü | .NET veri türü
 -------------------------------- | --------------
 ACCP |  Int
-CHAR | String
-CLNT | String
+CHAR | Dize
+CLNT | Dize
 CURR | Ondalık
-CUKY | String
+CUKY | Dize
 DEC | Ondalık
 FLTP | çift
 INT1 | Bayt
 INT2 | Int16
 INT4 | Int
-LANG | String
-LCHR | String
+LANG | Dize
+LCHR | Dize
 LRAW | Byte[]
 PREC | Int16
 QUA | Ondalık
 RAW | Byte[]
 RAWSTRING | Byte[]
-STRING | String
-UNIT | String
-KATALAR | String
-NUMC | String
-TIMS | String
+STRING | Dize
+UNIT | Dize
+KATALAR | Dize
+NUMC | Dize
+TIMS | Dize
 
 > [!NOTE]
 > Kaynak veri kümesindeki sütunları havuz veri kümesinden sütunlara eşlemek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).

@@ -6,11 +6,11 @@ ms.subservice: dsc
 ms.date: 09/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: a4a46837e366caf2860aa0d6597ec7aebc94905a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373531"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278993"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -266,7 +266,7 @@ Bu işlemi bir geliştirici iş istasyonundan veya [Azure DevOps](https://dev.az
    ![Yerel dosya için araştır](./media/automation-dsc-compile/import-browse.png)
 
 1. **Yapılandırma adı** alanına bir ad girin. Bu ad, düğüm yapılandırmasının derlendiği yapılandırmanın adıyla aynı olmalıdır.
-1. **Tamam**'a tıklayın.
+1. **Tamam** düğmesine tıklayın.
 
 ### <a name="import-a-node-configuration-with-azure-powershell"></a>Azure PowerShell bir düğüm yapılandırmasını içeri aktarma
 

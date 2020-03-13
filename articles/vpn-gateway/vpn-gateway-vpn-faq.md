@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357818"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279890"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway SSS
 
@@ -168,6 +168,10 @@ IPsec/IKE parametreleri için bkz. [Parametreler](vpn-gateway-about-vpn-devices.
 Siteden Siteyi şirket içi ve dışı yapılandırması için Windows Server 2012 Yönlendirme ve Uzaktan Erişim (RRAS) sunucularını destekliyoruz.
 
 Endüstri standardı IPsec uygulamalarıyla uyumlu olana kadar diğer yazılım VPN çözümleri bizim ağ geçidimizle çalışmalıdır. Yapılandırma ve destek hakkında yönergeler için yazılım satıcısına başvurun.
+
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Nasıl yaparım? Noktadan siteye bağlantılarım için kimlik doğrulaması türünü değiştirmek mi istiyorsunuz?
+
+Noktadan siteye bağlantılarınızın kimlik doğrulama yöntemini, VPN Gateway altındaki **Noktadan siteye yapılandırma** bölümüne giderek ve istenen radyo düğmesini denetleyerek değiştirebilirsiniz. Geçerli seçenekler **Azure sertifikası, RADIUS kimlik doğrulaması ve Azure Active Directory**. Yeni profil indirildikten ve istemciye yapılandırılana kadar, geçerli istemcilerin değişiklikten sonra **bağlanamayacağını** lütfen unutmayın.
 
 ## <a name="P2S"></a>Yerel Azure sertifika doğrulamasını kullanarak Noktadan Siteye
 

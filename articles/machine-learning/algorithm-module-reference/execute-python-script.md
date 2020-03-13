@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 52eb3bdb463389d075421661610b5ee94d14d77d
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3370c7ebb8e0253543e6b9cb6ce7614811fb5bd0
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037072"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140799"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -114,7 +114,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-İşlem hattı başarıyla gönderildikten sonra, modülün sağ panelindeki resmin önizlemesini karşıya yükleyebilirsiniz ![resim](media/module/upload-image-in-python-script.png)
+İşlem hattı başarıyla gönderildikten sonra, modülün sağ panelinde görüntünün önizlemesini yapabilirsiniz
+
+[!div class="mx-imgBorder"]
+Karşıya yüklenen ![-görüntü](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>Python betiğini yürütme betiği nasıl yapılandırılır
 
@@ -132,7 +135,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
     ![Python giriş eşlemesini Yürüt](media/module/python-module.png)
 
-4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi**'ne ekleyin. **Betik** paketine giriş, dosya türü veri kümesi olarak çalışma alanınıza yüklenmiş sıkıştırılmış bir dosya olmalıdır. 
+4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi**'ne ekleyin. **Betik** paketine giriş, dosya türü veri kümesi olarak çalışma alanınıza yüklenmiş sıkıştırılmış bir dosya olmalıdır. **Veri kümesi varlık sayfasında** veri kümesini karşıya yükleyebilir ve veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül ağacında bulunan **veri kümeleri** listesinden sürükleyip bırakabilirsiniz. 
 
     Karşıya yüklenen sıkıştırılmış arşivde bulunan herhangi bir dosya, işlem hattı yürütmesi sırasında kullanılabilir. Arşiv bir dizin yapısı içeriyorsa, yapı korunur, ancak **src** adlı bir dizini yola eklemek zorundasınız.
 

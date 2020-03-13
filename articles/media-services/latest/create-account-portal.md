@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c90278eccf889595378d3b6b07de2468910c660c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 5b05cd31a1747da0170556003e7a8534752e2fde
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080885"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137203"
 ---
 # <a name="use-the-azure-portal-to-create-a-media-services-account"></a>Media Services hesabı oluşturmak için Azure portal kullanın
 
@@ -54,8 +54,6 @@ Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrı
     
 1. Hesap dağıtımını ilerleme durumunu görmek için **Panoya sabitle**’yi seçin.
 1. Formun alt kısmındaki **Oluştur**’a tıklayın.
-   
-    Hesap başarıyla oluşturulduktan sonra genel bakış sayfası yüklenir. Akış uç noktası tablosunda, hesabın **durdurulmuş** durumda bir varsayılan akış uç noktası olacaktır. 
 
     Media Services hesabınız oluşturulduğunda hesabınıza **Durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçeriğinizi akışa almak ve [dinamik paketleme](dynamic-packaging-overview.md) ile [dinamik şifrelemeden](content-protection-overview.md)yararlanmak için içerik akışı yapmak Istediğiniz akış uç noktasının **çalışıyor** durumda olması gerekir. 
 

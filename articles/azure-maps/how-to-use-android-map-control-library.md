@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ca4051e56f7d51ac7ac5fbe534cb8fc536d64a68
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b43169b59425e97b0aa614eb64a5c86c20179a8d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368694"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136825"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanmaya başlama Android SDK
 
@@ -273,7 +273,7 @@ Desteklenen dillerin ve bölgesel görünümlerin tamamen listesi [burada](suppo
 Haritada kaplama verileri eklemeyi öğrenin:
 
 > [!div class="nextstepaction"]
-> [Android haritasına sembol katmanı ekleme](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
+> [Android haritasına sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Android haritasına şekil ekleme](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)

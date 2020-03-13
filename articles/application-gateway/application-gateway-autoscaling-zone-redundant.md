@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622006"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280020"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -167,15 +167,15 @@ Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırıl
 
 |Fark|Ayrıntılar|
 |--|--|
-|Kimlik doğrulama sertifikası|Desteklenmez.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca SSL 'ye genel bakış](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
+|Kimlik doğrulama sertifikası|Desteklenmiyor.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca SSL 'ye genel bakış](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
 |Aynı alt ağda Standard_v2 ve standart Application Gateway karıştırma|Desteklenmiyor|
 |Application Gateway alt ağında Kullanıcı tanımlı yol (UDR)|Desteklenmiyor|
 |Gelen bağlantı noktası aralığı için NSG| Standard_v2 SKU için-65200-65535<br>Standart SKU için-65503-65534 arası.<br>Daha fazla bilgi için bkz. [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
-|Azure tanılama 'da performans günlükleri|Desteklenmez.<br>Azure ölçümleri kullanılmalıdır.|
+|Azure tanılama 'da performans günlükleri|Desteklenmiyor.<br>Azure ölçümleri kullanılmalıdır.|
 |Faturalama|Faturalama 1 Temmuz 2019 tarihinde başlayacak şekilde zamanlandı.|
 |FIPS modu|Bunlar şu anda desteklenmiyor.|
 |Yalnızca ıLB modu|Bu şu anda desteklenmiyor. Ortak ve ıLB modu birlikte desteklenir.|
-|Netizleyici tümleştirmesi|Desteklenmez.|
+|Netizleyici tümleştirmesi|Desteklenmiyor.|
 |Azure Güvenlik Merkezi tümleştirmesi|Henüz bulunmamaktadır.
 
 ## <a name="migrate-from-v1-to-v2"></a>v1'den v2'ye geçiş

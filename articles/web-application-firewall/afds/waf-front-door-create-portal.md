@@ -1,24 +1,24 @@
 ---
-title: 'Öğretici: Azure ön kapısı için WAF ilkesi oluşturma-Azure portal'
-description: Bu öğreticide, Azure portal kullanarak bir Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturmayı öğreneceksiniz.
+title: 'Öğretici: Azure ön kapısı için Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma-Azure portal'
+description: Bu öğreticide, Azure portal kullanarak bir WAF ilkesi oluşturmayı öğreneceksiniz.
 author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/07/2019
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 2e4987273d0ecdc258a3134b89ffc3406e25e97c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186717"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137586"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Öğretici: Azure ön kapıda Azure portal kullanarak Web uygulaması güvenlik duvarı ilkesi oluşturma
 
-Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve Azure ön kapısının bir ön uç konağına uygulama işlemi gösterilmektedir.
+Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve ilkeyi Azure ön kapısının bir ön uç konağına uygulama işlemi gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * WAF ilkesi oluşturma
@@ -27,17 +27,18 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Hızlı başlangıç: ön kapı profili oluşturma](../../frontdoor/quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir ön kapı profili oluşturun. 
+[Hızlı başlangıç: ön kapı profili oluşturma](../../frontdoor/quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir ön kapı profili oluşturun.
 
 ## <a name="create-a-web-application-firewall-policy"></a>Web uygulaması güvenlik duvarı ilkesi oluşturma
 
-İlk olarak, portalı kullanarak yönetilen varsayılan kural kümesi (DRS) ile temel bir WAF ilkesi oluşturun. 
+İlk olarak, portalı kullanarak yönetilen varsayılan kural kümesi (DRS) ile temel bir WAF ilkesi oluşturun.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur**' u seçin > **WAF**araması yapın > **Web uygulaması güvenlik duvarı (Önizleme)** seçin > **Oluştur**' u seçin.
+1. Ekranın sol üst kısmında, **kaynak oluştur**' u seçin > **WAF**için arama yapın > * * Web uygulaması güvenlik duvarı * * > **Oluştur**' u seçin.
 2. **BIR WAF Ilkesi oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
-    | Ayar                 | Value                                              |
+    | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
+    | İlke            |Global WAF (ön kapı) seçeneğini belirleyin.|
     | Abonelik            |Ön kapı abonelik adınızı seçin.|
     | Kaynak grubu          |Ön kapı kaynak grubu adınızı seçin.|
     | İlke adı             |WAF ilkeniz için benzersiz bir ad girin.|
@@ -46,7 +47,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 3. **BIR WAF Ilkesi oluştur** sayfasının **ilişkilendirme** sekmesinde, **ön uç Konağı Ekle**' yi seçin, aşağıdaki ayarları girin ve ardından **Ekle**' yi seçin:
 
-    | Ayar                 | Value                                              |
+    | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Ön kapı              | Ön kapı profili adınızı seçin.|
     | Ön uç Konağı           | Ön kapı ana bilgisayarın adını ve ardından **Ekle**' yi seçin.|

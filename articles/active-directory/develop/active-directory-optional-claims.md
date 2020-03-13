@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/08/2019
+ms.date: 3/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 23d83b59c510f2565b2f66f78dad56c9c9592dd0
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300077"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136526"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Nasıl yapılır: Azure AD uygulamanıza isteğe bağlı talepler sağlama
 
@@ -85,10 +85,10 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 | `pwd_exp`     | Parola sona erme saati        | Parolanın süresi dolan tarih/saat. |       |
 | `pwd_url`     | Parola URL 'sini Değiştir             | Kullanıcının parolalarını değiştirmek için ziyaret edebildikleri bir URL.   |   |
 | `in_corp`     | Şirket içi ağ        | İstemci şirket ağından oturum açıyorsanız bildirir. Aksi takdirde talep dahil edilmez.   |  MFA 'daki [Güvenilen IP 'lerin](../authentication/howto-mfa-mfasettings.md#trusted-ips) ayarlarını temel alarak.    |
-| `nickname`    | takma ad                        | Kullanıcı için ek bir ad. Takma ad, birinciden veya soyadınızdan ayrıdır. | 
-| `family_name` | Soyadı                       | Kullanıcı nesnesinde tanımlandığı şekilde kullanıcının soyadı, soyadı veya aile adını sağlar. <br>"family_name": "Miller" | MSA ve Azure AD 'de desteklenir   |
-| `given_name`  | Ad                      | Kullanıcı nesnesinde ayarlandığı gibi, kullanıcının ilk veya "verilen" adını sağlar.<br>"given_name": "filiz"                   | MSA ve Azure AD 'de desteklenir  |
-| `upn`         | Kullanıcı Asıl Adı | Kullanıcı için username_hint parametresiyle kullanılabilecek bir tanımlayıcı.  Kullanıcı için dayanıklı bir tanımlayıcı değildir ve anahtar verileri için kullanılmamalıdır. | Talebin yapılandırması için aşağıdaki [ek özelliklere](#additional-properties-of-optional-claims) bakın. |
+| `nickname`    | takma ad                        | Kullanıcı için ek bir ad. Takma ad, birinciden veya soyadınızdan ayrıdır. `profile` kapsamını gerektirir.| 
+| `family_name` | Soyadı                       | Kullanıcı nesnesinde tanımlandığı şekilde kullanıcının soyadı, soyadı veya aile adını sağlar. <br>"family_name": "Miller" | MSA ve Azure AD 'de desteklenir. `profile` kapsamını gerektirir.   |
+| `given_name`  | Ad                      | Kullanıcı nesnesinde ayarlandığı gibi, kullanıcının ilk veya "verilen" adını sağlar.<br>"given_name": "filiz"                   | MSA ve Azure AD 'de desteklenir.  `profile` kapsamını gerektirir. |
+| `upn`         | Kullanıcı Asıl Adı | Kullanıcı için username_hint parametresiyle kullanılabilecek bir tanımlayıcı.  Kullanıcı için dayanıklı bir tanımlayıcı değildir ve anahtar verileri için kullanılmamalıdır. | Talebin yapılandırması için aşağıdaki [ek özelliklere](#additional-properties-of-optional-claims) bakın. `profile` kapsamını gerektirir.|
 
 ### <a name="additional-properties-of-optional-claims"></a>İsteğe bağlı taleplerin ek özellikleri
 
@@ -117,12 +117,13 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
         }
     ```
 
-Bu Optionalclaim nesnesi, istemciye döndürülen KIMLIK belirtecinin ek ana kiracı ve kaynak kiracı bilgilerine sahip başka bir UPN içermesini sağlar. `upn` talebi yalnızca Kullanıcı Kiracıdaki bir konuk ise (kimlik doğrulaması için farklı bir ıDP kullanır) belirteçte değiştirilir. 
+Bu Optionalclaim nesnesi, istemciye döndürülen KIMLIK belirtecinin ek ana kiracı ve kaynak kiracı bilgilerine sahip bir UPN talebi içermesini sağlar. `upn` talebi yalnızca Kullanıcı Kiracıdaki bir konuk ise (kimlik doğrulaması için farklı bir ıDP kullanır) belirteçte değiştirilir. 
 
 ## <a name="configuring-optional-claims"></a>İsteğe bağlı talepler yapılandırılıyor
 
 > [!IMPORTANT]
 > Erişim belirteçleri, **her zaman** istemcinin değil kaynağın bildirimi kullanılarak oluşturulur.  Bu nedenle, istek `...scope=https://graph.microsoft.com/user.read...` kaynak Microsoft Graph API 'sidir.  Bu nedenle, erişim belirteci, istemcinin bildirimi değil Microsoft Graph API bildirimi kullanılarak oluşturulur.  Uygulamanızın bildirimini değiştirmek, Microsoft Graph API 'sinin farklı görünmesini hiçbir şekilde neden olmaz.  `accessToken` değişikliklerinizin geçerli olduğunu doğrulamak için, başka bir uygulama değil, uygulamanız için bir belirteç isteyin.  
+
 
 Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz.
 
@@ -207,7 +208,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 | `additionalProperties` | Koleksiyon (EDM. String) | Talebin ek özellikleri. Bu koleksiyonda bir özellik varsa, ad özelliğinde belirtilen isteğe bağlı talebin davranışını değiştirir.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>Dizin uzantısı isteğe bağlı taleplerini yapılandırma
 
-Standart isteğe bağlı talepler kümesine ek olarak, belirteçleri uzantıları içerecek şekilde de yapılandırabilirsiniz. Bu özellik, uygulamanızın kullanabileceği ek kullanıcı bilgilerini eklemek için yararlıdır; Örneğin, kullanıcının ayarlamış olduğu ek bir tanımlayıcı veya önemli bir yapılandırma seçeneği. Bir örnek için bu sayfanın en altına bakın.
+Standart isteğe bağlı talepler kümesine ek olarak, belirteçleri uzantıları içerecek şekilde de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Graph extensionProperty belgeleri](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0) -şema ve açık uzantıların isteğe bağlı talepler tarafından desteklenmediğini, yalnızca AAD grafiğinin stil Dizin uzantılarını unutmayın. Bu özellik, uygulamanızın kullanabileceği ek kullanıcı bilgilerini eklemek için yararlıdır; Örneğin, kullanıcının ayarlamış olduğu ek bir tanımlayıcı veya önemli bir yapılandırma seçeneği. Bir örnek için bu sayfanın en altına bakın.
 
 > [!NOTE]
 > - Dizin şeması uzantıları yalnızca Azure AD özellikli bir özelliktir, bu nedenle uygulama bildiriminiz uygulamanızda özel bir uzantı ve bir MSA kullanıcısı oturum açarsa, bu uzantılar döndürülmez.
@@ -269,7 +270,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
    Belirteçte isteğe bağlı talepler bölümünde şirket içi AD grubu özniteliklerini içeren gruplar istiyorsanız, isteğe bağlı talebin adı, istenen isteğe bağlı talep ve istediğiniz ek özellikleri belirtin.  Birden çok belirteç türü listelenebilir:
 
    - OıDC KIMLIK belirtecinin ıdtoken 'ı
-   - OAuth/OıDC erişim belirteci için accessToken
+   - OAuth erişim belirteci için accessToken
    - SAML belirteçleri için Saml2Token.
 
    > [!NOTE]
