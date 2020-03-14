@@ -9,15 +9,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626239"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271232"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IOT Hub fiyatlandırma bilgileri
 
-[Azure IOT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub) farklı SKU'ları ve IOT hub'ı için fiyatlandırma hakkında genel bilgiler sağlar. Bu makalede, çeşitli IOT hub'ı işlevlerini iletileri olarak IOT Hub tarafından nasıl ölçülür ek ayrıntılı bilgi içerir.
+[Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub) , IoT Hub Için farklı SKU 'ların ve fiyatlandırmayla ilgili genel bilgileri sağlar. Bu makalede, çeşitli IOT hub'ı işlevlerini iletileri olarak IOT Hub tarafından nasıl ölçülür ek ayrıntılı bilgi içerir.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -28,8 +28,8 @@ ms.locfileid: "60626239"
 | Kimlik kayıt defteri işlemleri <br/> (oluşturma, Al, Listele, güncelleştirme ve silme) | Ücretsizdir. |
 | Cihazdan buluta iletiler | Başarıyla gönderilen iletileri IOT Hub'ına giriş üzerinde 4 KB'lık parçalar halinde ücretlendirilir. Örneğin, 6-KB'lık mesaj, 2 mesaj ücretlendirilir. |
 | Bulut-cihaz iletilerini | Başarıyla gönderilen iletiler 4 KB'lık parçalar halinde ücretlendirilir, örneğin 6 KB'lık bir ileti 2 ileti ücretlendirilir. |
-| Dosya yüklemeleri | IOT Hub tarafından Azure Depolama'ya dosya aktarımı ölçülen değil. Dosya aktarımı başlangıcını ve tamamlanmasını iletiler 4 KB'lık artışlarla tarifeli messaged olarak ücretlendirilir. 10 MB'lık dosya aktarmak, Azure Storage maliyetinin yanı sıra iki ileti olarak gibi ücretlendirilir. |
-| Doğrudan yöntemler | Yöntem başarılı istekleri 4 KB'lık parçalar halinde ücretlendirilir ve yanıt olarak ek iletiler 4 KB'lık parçalar halinde ücretlendirilir. Bağlantısı kesilmiş cihazlar isteklerine uygunsa iletiler 4 KB'lık parçalar halinde ücretlendirilir. Örneğin, hiçbir gövdesi ile bir yanıt CİHAZDAN sonuçlanır bir 4 KB'lık gövdesi olan bir yöntemi, iki ileti olarak ücretlendirilir. Bir CİHAZDAN bir 1 KB'lık yanıt sonuçlanır bir 6-KB gövdesi bir yöntemle yanı sıra başka bir ileti yanıtı için istek için iki ileti olarak ücretlendirilir. |
+| Dosya yüklemeleri | IOT Hub tarafından Azure Depolama'ya dosya aktarımı ölçülen değil. Dosya aktarımı başlangıcını ve tamamlanmasını iletiler 4 KB'lık artışlarla tarifeli messaged olarak ücretlendirilir. Örneğin, 10 MB 'lık bir dosyanın aktarılması, Azure depolama maliyetine ek olarak iki ileti olarak ücretlendirilir. |
+| Doğrudan yöntemler | Başarılı Yöntem istekleri 4 KB 'lık öbeklere göre ücretlendirilir ve yanıtlar ek iletiler olarak 4 KB 'lık parçalar halinde ücretlendirilir. Bağlantısı kesilmiş cihazlar isteklerine uygunsa iletiler 4 KB'lık parçalar halinde ücretlendirilir. Örneğin, cihazdan gövdesi olmayan bir Yanıt ile sonuçlanan 4 KB 'lık gövdeye sahip bir yöntem iki ileti olarak ücretlendirilir. Bir CİHAZDAN bir 1 KB'lık yanıt sonuçlanır bir 6-KB gövdesi bir yöntemle yanı sıra başka bir ileti yanıtı için istek için iki ileti olarak ücretlendirilir. |
 | Cihaz ve modül ikizi okumaları | İkiz cihaz veya modül ve çözüm arka uç, iletileri 512 baytlık parçalar halinde ücretlendirilir okur. Örneğin, 6-KB ikizi okuma 12 iletileri olarak ücretlendirilir. |
 | Cihaz ve modül ikizi güncelleştirmeleri (etiketler ve Özellikler) | Ve çözüm arka ucu cihaz veya modül ikizi güncelleştirmeleri iletileri 512 baytlık parçalar halinde ücretlendirilir. Örneğin, 6-KB ikizi okuma 12 iletileri olarak ücretlendirilir. |
 | Cihaz ve modül ikizi sorguları | Sorguları iletileri 512 baytlık öbekler halinde sonucu boyutuna bağlı olarak ücretlendirilir. |
@@ -38,11 +38,11 @@ ms.locfileid: "60626239"
 | Etkin tutma iletileri | AMQP veya MQTT protokolleri kullanırken bağlantı kurmak için alınıp verilen iletileri ve anlaşmasında alınıp verilen iletileri ücretlendirilmez. |
 
 > [!NOTE]
-> Tüm boyutları (Protokol çerçeveleme göz ardı edilir) bayt yükü boyutu dikkate hesaplanır. Özellikler ve gövdesi olan iletiler için bir protokol belirsiz şekilde boyutu hesaplanır. Daha fazla bilgi için [IOT Hub ileti biçimi](iot-hub-devguide-messages-construct.md).
+> Tüm boyutları (Protokol çerçeveleme göz ardı edilir) bayt yükü boyutu dikkate hesaplanır. Özellikler ve gövdesi olan iletiler için bir protokol belirsiz şekilde boyutu hesaplanır. Daha fazla bilgi için [IoT Hub ileti biçimi](iot-hub-devguide-messages-construct.md)bölümüne bakın.
 
 ## <a name="example-1"></a>Örnek #1
 
-Bir cihaz IOT Hub, ardından Azure Stream Analytics tarafından okunur dakika başına tek bir 1 KB'lık CİHAZDAN buluta ileti gönderir. Çözüm arka ucu bir yöntem (512 baytlık yüküyle) belirli bir eylemi tetiklemesine 10 dakikada bir cihazda çağırır. Cihaz yönteminin bir sonuç 200 bayt ile yanıt verir.
+Bir cihaz IOT Hub, ardından Azure Stream Analytics tarafından okunur dakika başına tek bir 1 KB'lık CİHAZDAN buluta ileti gönderir. Çözüm arka ucu, belirli bir eylemi tetiklemek için her 10 dakikada bir bir yöntemi (512 baytlık yük ile) çağırır. Cihaz yönteminin bir sonuç 200 bayt ile yanıt verir.
 
 Aygıt kullanır:
 

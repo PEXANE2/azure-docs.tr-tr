@@ -2,23 +2,17 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: 1a76e41b4b2264bc535752e8f765b3303080abbd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78924831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248417"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
-Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağıtırsınız. Bununla birlikte, kaynakları da oluşturabilirsiniz:
-
-* abonelik düzeyi (Bu makalede ele alınmıştır)
-* [Yönetim grubu düzeyi](deploy-to-management-group.md)
-* [Kiracı düzeyi](deploy-to-tenant.md)
-
-Bu düzeyde, kaynak grupları oluşturma veya [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)atama gibi işlemler gerçekleştirmek için abonelik düzeyi dağıtımlarını kullanırsınız.
+Azure aboneliğinizdeki kaynakların yönetimini basitleştirmek için, abonelik genelinde [ilkeleri](../../governance/policy/overview.md) veya [rol tabanlı erişim denetimlerini](../../role-based-access-control/overview.md) tanımlayabilir ve atayabilirsiniz. Abonelik düzeyi şablonları ile, ilkeleri bir şekilde uygulayın ve aboneliğe roller atayın. Ayrıca, kaynak grupları oluşturabilir ve kaynakları dağıtabilirsiniz.
 
 Şablonları abonelik düzeyinde dağıtmak için Azure CLı, PowerShell veya REST API kullanın. Azure portal, abonelik düzeyinde dağıtımı desteklemez.
 
@@ -46,10 +40,10 @@ Abonelik düzeyi dağıtımlar için kullandığınız şema, kaynak grubu dağ�
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-Parametre dosyaları için şunu kullanın:
+Bir parametre dosyasının şeması, tüm dağıtım kapsamları için aynıdır. Parametre dosyaları için şunu kullanın:
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Dağıtım komutları
@@ -387,5 +381,4 @@ New-AzSubscriptionDeployment `
 * Rol atama hakkında bilgi edinmek için bkz. [RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme](../../role-based-access-control/role-assignments-template.md).
 * Azure Güvenlik Merkezi için çalışma alanı ayarlarını dağıtmaya ilişkin bir örnek için bkz. [Deployascwithworkspace Settings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * Örnek Şablonlar [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments)' da bulunabilir.
-* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
-* Bir şablondaki kullanılabilir işlevlerin listesi için bkz. [Şablon işlevleri](template-functions.md).
+* Ayrıca, şablonları [Yönetim grubu düzeyinde](deploy-to-management-group.md) ve [kiracı düzeyinde](deploy-to-tenant.md)dağıtabilirsiniz.

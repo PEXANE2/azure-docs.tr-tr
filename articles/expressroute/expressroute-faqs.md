@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361741"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264927"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -50,7 +50,15 @@ Evet. Kez ayarlamak, bir ExpressRoute bağlantı hattı, bir sanal ağ içindeki
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>ExpressRoute özel eşlemesindeki VNET 'ler nasıl tanıtılsın?
 
-ExpressRoute ağ geçidi, Azure VNet 'in *Adres alanını* duyurur, alt ağ düzeyine dahil ve hariç tutmamanız gerekir. Her zaman tanıtılan VNet adres alanıdır. Ayrıca, VNet eşlemesi kullanılıyorsa ve eşlenmiş VNet "uzak ağ geçidini kullan" etkinse, eşlenen VNet 'in adres alanı da tanıtılacaktır.
+ExpressRoute ağ geçidi, Azure VNet 'in *Adres alanları* duyurur, alt ağ düzeyine dahil ve hariç tutmamanız gerekir. Her zaman tanıtılan VNet adres alanıdır. Ayrıca, VNet eşlemesi kullanılıyorsa ve eşlenmiş VNet "uzak ağ geçidini kullan" etkinse, eşlenen VNet 'in adres alanı da tanıtılacaktır.
+
+### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>ExpressRoute özel eşlemesindeki VNet 'ten şirket içine kaç önek tanıtılabilir?
+
+Tek bir ExpressRoute bağlantısında tanıtılan en fazla 200 ön ek veya ağ geçidi geçişi kullanan VNet eşlemesi vardır. Örneğin, bir ExpressRoute bağlantı hattına bağlı tek bir VNet üzerinde 199 adres alanları varsa, bu ön eklerin 199 ' i şirket içi olarak tanıtılabilir. Alternatif olarak, "uzaktan ağ geçidine Izin ver" seçeneği kullanılarak 1 adres alanı ve 150 bağlı ağ VNET 'leri ile ağ geçidi aktarımına izin veren bir VNet 'iniz varsa, ağ geçidiyle dağıtılan VNet, 151 ön eklerini şirket içine duyuracaktır.
+
+### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Bir ExpressRoute bağlantısında önek sınırını aşarsam ne olur?
+
+ExpressRoute bağlantı hattı ve ağ geçidi (varsa ağ geçidi geçişi kullanan eşlenmiş sanal ağlar) arasındaki bağlantı devre dışı bırakılır. Önek sınırının artık aşılmadığı zaman yeniden oluşturulur.  
 
 ### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Şirket içi ağınızdan gelen yollara filtre uygulayabilir miyim?
 

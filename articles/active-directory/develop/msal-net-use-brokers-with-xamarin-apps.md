@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25b8aa9b5e80720e9543dafce7970404a62b7d1f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1a57173311278c5e3e0304aeb12d4d6999379eb5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377454"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262795"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Intune Şirket Portalı kullanma
 
@@ -75,12 +75,12 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
     }
     
     else if (!AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url))
-    {               
-         return false;                
+    {                
+         return false;                  
     }
     
     return true;     
-}           
+}            
 ```
 
 Bu yöntem, uygulama her başlatıldığında çağrılır. Aracıdan gelen yanıtı işlemek ve MSAL.NET 'in başladığı kimlik doğrulama işlemini tamamlamaya yönelik bir fırsat olarak kullanılır.
@@ -96,20 +96,20 @@ Nesne penceresini ayarlamak için:
 1. `AcquireTokenInteractive` çağrısında `.WithParentActivityOrWindow(App.RootViewController)` ' i kullanın ve sonra kullanacağınız nesne penceresine geçirin.
 
     `App.cs` içinde:
-    
+
     ```csharp
        public static object RootViewController { get; set; }
     ```
-    
+
     `AppDelegate.cs` içinde:
-    
+
     ```csharp
        LoadApplication(new App());
        App.RootViewController = new UIViewController();
     ```
-    
+
     `AcquireToken` çağrısında:
-    
+
     ```csharp
     result = await app.AcquireTokenInteractive(scopes)
                  .WithParentActivityOrWindow(App.RootViewController)
@@ -143,11 +143,12 @@ MSAL.NET, aracıyı çağırmak için URL 'Ler kullanır ve sonra, aracı yanıt
 ```
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>6\. Adım: aracı tanımlayıcısını Lsapplicationqueriesdüzenlerinin bölümüne ekleme
+
 MSAL, aracının cihazda yüklü olup olmadığını denetlemek için `–canOpenURL:` kullanır. İOS 9 ' da, Apple bir uygulamanın sorgulayabilme düzenlerini kilitlemiş. 
 
 Aşağıdaki örnekte olduğu gibi `Info.plist` dosyasının `LSApplicationQueriesSchemes` bölümüne `msauthv2` ekleyin:
 
-```XML 
+```XML
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
@@ -156,16 +157,19 @@ Aşağıdaki örnekte olduğu gibi `Info.plist` dosyasının `LSApplicationQueri
 ```
 
 ### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>7\. Adım: yeniden yönlendirme URI 'nizi uygulama portalına kaydetme
+
 Aracıyı kullandığınızda, yeniden yönlendirme URI 'nizin ek bir gereksinimi vardır. Yeniden yönlendirme URI 'SI aşağıdaki biçime sahip _olmalıdır_ :
+
 ```csharp
 $"msauth.{BundleId}://auth"
 ```
 
-Bir örneği aşağıda verilmiştir: 
+Bir örneği aşağıda verilmiştir:
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
+
 Yeniden yönlendirme URI 'sinin, `Info.plist` dosyasına dahil ettiğiniz `CFBundleURLSchemes` adıyla eşleştiğinden emin olun.
 
 ### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>8\. Adım: yeniden yönlendirme URI 'sinin uygulamanıza kayıtlı olduğundan emin olun
@@ -198,9 +202,108 @@ Adımları tamamladığınızda, yeniden yönlendirme URI 'SI sizin için hesapl
 
 ## <a name="brokered-authentication-for-android"></a>Android için aracılı kimlik doğrulaması
 
-MSAL.NET yalnızca Xamarin. iOS platformunu destekler. Bu, Xamarin. Android platformu için aracıları henüz desteklememektedir.
+### <a name="step-1-enable-broker-support"></a>1\. Adım: aracı desteğini etkinleştirme
 
-MSAL Android yerel kitaplığı aracılı kimlik doğrulamasını zaten destekliyor. Daha fazla bilgi için bkz. [Android 'de aracılı kimlik doğrulaması](brokered-auth.md).
+Aracı desteği, PublicClientApplication temelinde etkinleştirilir. Varsayılan olarak devre dışıdır. `PublicClientApplicationBuilder`aracılığıyla `IPublicClientApplication` oluştururken `WithBroker()` parametresini kullanın (varsayılan olarak true olarak ayarlanır).
+
+```CSharp
+var app = PublicClientApplicationBuilder
+                .Create(ClientId)
+                .WithBroker()
+                .WithRedirectUri(redirectUriOnAndroid) //(see step 4 below)
+                .Build();
+```
+
+### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>2\. Adım: geri aramayı işlemek için AppDelegate 'i güncelleştirme
+
+MSAL.NET aracı çağırdığında, aracı sırasıyla OnActivityResult () yöntemiyle uygulamanıza geri çağrı yapılır. MSAL, aracıdan gelen yanıtı bekleyecek için, uygulamanızın sonucu MSAL.NET 'e yönlendirmesi gerekir.
+Bu, aşağıda gösterildiği gibi OnActivityResult () yöntemi geçersiz kılınarak sonucu `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` yönlendirilerek elde edilebilir
+
+```CSharp
+protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+{
+   base.OnActivityResult(requestCode, resultCode, data);
+   AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
+}
+```
+
+Bu yöntem, aracı uygulaması her başlatıldığında çağrılır ve aracıdan gelen yanıtı işleme ve MSAL.NET tarafından başlatılan kimlik doğrulama işlemini tamamlamaya yönelik bir fırsat olarak kullanılır.
+
+### <a name="step-3-set-an-activity"></a>3\. Adım: etkinlik ayarlama
+
+Aracılı kimlik doğrulamanın çalışması için, MSAL 'in aracıdan yanıt gönderebilmesi ve alabilmesi için bir etkinlik ayarlamanız gerekir.
+
+Bunu yapmak için, etkinliği (genellikle MainActivity) üst nesne olarak `WithParentActivityOrWindow(object parent)` sağlamanız gerekir. 
+
+**Örneğin:**
+
+Belirteç al çağrısında:
+
+```CSharp
+result = await app.AcquireTokenInteractive(scopes)
+             .WithParentActivityOrWindow((Activity)context))
+             .ExecuteAsync();
+```
+
+### <a name="step-4-register-your-redirecturi-in-the-application-portal"></a>4\. Adım: RedirectUri 'nizi uygulama portalına kaydetme
+
+MSAL, aracıyı çağırmak ve sonra uygulamanıza geri dönmek için URL 'Ler kullanır. Bu gidiş dönüş işleminin tamamlanabilmesi için, uygulamanız için bir URL şeması kaydetmeniz gerekir. Bu yeniden yönlendirme URI 'sinin, uygulamanız için geçerli bir yeniden yönlendirme URI 'SI olarak Azure AD uygulama kayıt portalı 'nda kayıtlı olması gerekir.
+
+
+Uygulamanız için gereken yeniden yönlendirme URI 'SI, APK 'yi imzalamak için kullanılan sertifikaya bağımlıdır.
+
+```
+Example: msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
+```
+
+URI 'nin son bölümü, `hgbUYHVBYUTvuvT&Y6tr554365466=`, APK 'nin imzalandığı imza, Base64 kodlamalı.
+Ancak, Visual Studio 'Yu kullanarak uygulamanızın geliştirme aşamasında, belirli bir sertifikayla APK imzalamadan kodunuzda hata ayıklaması yapıyorsanız, Visual Studio, hata ayıklama amacıyla APK 'yı imzalayıp üzerinde oluşturulduğu makine. Bu nedenle, uygulamanızı farklı bir makinede derlediğinizde, MSAL ile kimlik doğrulamak için uygulamanın kodundaki yeniden yönlendirme URI 'sini ve uygulamanın Azure portal kaydını güncelleştirmeniz gerekir. 
+
+Hata ayıklama sırasında, belirtilen yeniden yönlendirme URI 'sinin yanlış olduğunu belirten bir MSAL özel durumu (veya günlük iletisi) ile karşılaşabilirsiniz. Bu özel durum Ayrıca, üzerinde hata ayıkladığınız geçerli makineyle birlikte kullanmanız **gereken yeniden yönlendirme URI 'si sağlar** . Bu yeniden yönlendirme URI 'sini kullanarak geliştirmeye devam edebilirsiniz.
+
+Kodunuzu sonuçlamaya hazırladıktan sonra, koddaki yeniden yönlendirme URI 'sini güncelleştirdiğinizden emin olun ve Azure portal sertifikanın imzasını kullanmak için, ile APK 'yi imzalamış olursunuz.
+
+Uygulamada, bu, ekibin her üyesi için bir yeniden yönlendirme URI 'SI ve APK 'nin üretim imzalı sürümü için bir yeniden yönlendirme URI 'si kaydetmeniz gerektiği anlamına gelir.
+
+Ayrıca, MSAL şuna benzer şekilde, bu imzayı kendiniz de hesaplamanız gerekir: 
+
+```CSharp
+   private string GetRedirectUriForBroker()
+   {
+      string packageName = Application.Context.PackageName;
+      string signatureDigest = this.GetCurrentSignatureForPackage(packageName);
+      if (!string.IsNullOrEmpty(signatureDigest))
+      {
+            return string.Format(CultureInfo.InvariantCulture, "{0}://{1}/{2}", RedirectUriScheme,
+               packageName.ToLowerInvariant(), signatureDigest);
+      }
+
+      return string.Empty;
+   }
+
+   private string GetCurrentSignatureForPackage(string packageName)
+   {
+            PackageInfo info = Application.Context.PackageManager.GetPackageInfo(packageName,
+               PackageInfoFlags.Signatures);
+            if (info != null && info.Signatures != null && info.Signatures.Count > 0)
+            {
+               // First available signature. Applications can be signed with multiple signatures.
+               // The order of Signatures is not guaranteed.
+               Signature signature = info.Signatures[0];
+               MessageDigest md = MessageDigest.GetInstance("SHA");
+               md.Update(signature.ToByteArray());
+               return Convert.ToBase64String(md.Digest(), Base64FormattingOptions.None);
+               // Server side needs to register all other tags. ADAL will
+               // send one of them.
+            }
+   }
+```
+
+Aşağıdaki komutlarla Keytool kullanarak paketinizin imzasını alma seçeneğiniz de vardır:
+
+Windows için: `keytool.exe -list -v -keystore "%LocalAppData%\Xamarin\Mono for Android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`
+
+Mac için: `keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

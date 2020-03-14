@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cc8ccbbde56b57af684ad47840002a846bdcd8c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827960"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214153"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Çok kiracılı bir SaaS uygulamasında parçalı, çok kiracılı Azure SQL veritabanı 'nın performansını izleme ve yönetme
 
@@ -24,7 +24,7 @@ Bu öğreticide, SaaS uygulamalarında kullanılan bazı önemli performans yön
 
 Wingtip biletleri SaaS çok kiracılı veritabanı uygulaması, mekan çok kiracılı bir veri modeli kullanır. burada yer (kiracı) verileri, potansiyel olarak birden çok veritabanı arasında kiracı KIMLIĞIYLE dağıtılır. Birçok SaaS uygulaması gibi, beklenen kiracı iş yükü düzeni öngörülemez ve düzensizdir. Diğer bir deyişle, bilet satışı herhangi bir zamanda gerçekleşebilir. Bu tipik veritabanı kullanım deseninin avantajlarından yararlanmak için, veritabanlarının maliyetini iyileştirmek üzere veritabanları yukarı ve aşağı ölçeklendirilebilir. Bu tür bir düzende, yüklerin potansiyel olarak birden çok veritabanı arasında makul bir şekilde dengelendiği garantilemek için veritabanı kaynak kullanımını izlemeniz önemlidir. Ayrıca, ayrı veritabanlarının yeterli kaynaklara sahip olduğundan ve [DTU](sql-database-purchase-models.md#dtu-based-purchasing-model) sınırlarına ulaşmadığından emin olmanız gerekir. Bu öğretici veritabanlarını izlemenin ve yönetmenin yollarını ve iş yükündeki değişikliklere yanıt olarak düzeltici eylemi nasıl ele alınacağını anlatıyor.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > 
@@ -47,11 +47,11 @@ Veritabanı performans yönetimi, performans verilerini derleyip çözümlemeyi 
 * Performansı el ile izlemek zorunda kalmamak için, **veritabanları normal aralıklar dışında bırakıldığında tetiklenecek uyarıları ayarlamak**en etkilidir.
 * Bir veritabanının işlem boyutundaki kısa vadeli dalgalanmalara yanıt vermek için **DTU düzeyi yukarı veya aşağı ölçeklendirilebilir**. Bu dalgalanma düzenli veya öngörülebilir bir şekilde gerçekleşirse, **veritabanının ölçeklendirilmesi otomatik olarak gerçekleşecek şekilde zamanlanabilir**. Örneğin, iş yükünüzün hafif olduğunu bildiğiniz gece veya hafta sonları gibi zamanlarda ölçeği azaltabilirsiniz.
 * Daha uzun süreli dalgalanmalara veya kiracılardaki değişikliklere yanıt vermek için, **tek tek kiracılar diğer veritabanına taşınabilir**.
-* *Tek* tek kiracı yükünde kısa süreli artışlara yanıt vermek için, **tek tek kiracılar bir veritabanını alabilir ve bireysel bir işlem boyutu atanabilir**. Yük düşürültikten sonra kiracı, çok kiracılı veritabanına geri döndürülebilir. Bu, önceden bilindiğinde, veritabanı her zaman gereken kaynaklara sahip olduğundan ve çok kiracılı veritabanındaki diğer kiracılarda etkileri önlemek için kiracılar önceden hale taşınabilir. Popüler bir etkinlik için bilet satışı yoğunluğu yaşanan bir mekanda olduğu gibi bu gereksinim öngörülebildiği takdirde bu yönetim davranışı uygulamayla tümleştirilebilir.
+* *Tek* tek kiracı yükünde kısa süreli artışlara yanıt vermek için, **tek tek kiracılar bir veritabanını alabilir ve bireysel bir işlem boyutu atanabilir**. Yük düşürültikten sonra kiracı, çok kiracılı veritabanına geri döndürülebilir. Bu, önceden bilindiğinde, veritabanının her zaman gereken kaynaklara sahip olmasını sağlamak ve çok kiracılı veritabanındaki diğer kiracılarda etkileri önlemek için kiracılar preemptively taşınabilir. Popüler bir etkinlik için bilet satışı yoğunluğu yaşanan bir mekanda olduğu gibi bu gereksinim öngörülebildiği takdirde bu yönetim davranışı uygulamayla tümleştirilebilir.
 
 [Azure portalı](https://portal.azure.com), çoğu kaynak üzerinde yerleşik izleme ve uyarı özelliği sağlar. SQL veritabanı için, veritabanlarında izleme ve uyarı verme vardır. Bu yerleşik izleme ve uyarı kaynağa özgüdür, bu nedenle az sayıda kaynak için kullanılması uygundur, ancak birçok kaynakla çalışırken kullanışlı değildir.
 
-Birçok kaynakla çalıştığınız yüksek hacimli senaryolar için [Azure izleyici günlükleri](https://azure.microsoft.com/services/log-analytics/) kullanılabilir. Bu, bir Log Analytics çalışma alanında toplanan, yayılan tanılama günlükleri ve telemetri üzerinde analiz sağlayan ayrı bir Azure hizmetidir. Azure Izleyici günlükleri birçok hizmetten telemetri toplayabilir ve uyarıları sorgulamak ve ayarlamak için kullanılabilir.
+Birçok kaynakla çalıştığınız yüksek hacimli senaryolar için [Azure izleyici günlükleri](https://azure.microsoft.com/services/log-analytics/) kullanılabilir. Bu, Log Analytics çalışma alanında toplanan, oluşturulan Günlükler üzerinde analiz sağlayan ayrı bir Azure hizmetidir. Azure Izleyici günlükleri birçok hizmetten telemetri toplayabilir ve uyarıları sorgulamak ve ayarlamak için kullanılabilir.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Wingtip bilet SaaS çok kiracılı veritabanı uygulaması kaynak kodu ve betikleri alın
 
@@ -181,11 +181,11 @@ Portal ' a gidin ve izleme grafiklerini görüntülemek için **salixsalsa** > *
 
 **Kullanım düzenlerini eşleştirmek için bir zamanlamaya göre bir veritabanını yukarı ve aşağı ölçeklendirin**
 
-Toplam kiracı kullanımının öngörülebilir kullanım desenlerinin izlediği yerde, bir zamanlamaya göre bir veritabanını yukarı ve aşağı ölçeklendirmek için Azure Otomasyonu 'nu kullanabilirsiniz. Örneğin, kaynak gereksinimlerinde bir bırakma olduğunu bildiğiniz zaman, hafta içi bir veritabanını 18:00 'den sonra ölçeklendirin.
+Toplam kiracı kullanımının öngörülebilir kullanım desenlerinin izlediği yerde, bir zamanlamaya göre bir veritabanını yukarı ve aşağı ölçeklendirmek için Azure Otomasyonu 'nu kullanabilirsiniz. Örneğin, bir veritabanı 6 pm sonra de ölçeklendirmeyi azaltın ve yukarı 6 bildiğinizde hafta önce yeniden yok açılan kaynak gereksinimleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Sağlanan yük oluşturucuyu çalıştırarak, parçalı bir çok kiracılı veritabanında kullanım benzetimi yapma

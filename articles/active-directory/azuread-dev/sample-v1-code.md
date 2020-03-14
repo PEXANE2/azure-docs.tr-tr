@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377685"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263575"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kodu örnekleri (v 1.0 uç noktası)
 
@@ -78,7 +78,7 @@ Aşağıdaki örneklerde, bir kullanıcı adına Microsoft Graph veya bir Web AP
 - Sessizce (Windows üzerinde tümleşik Windows kimlik doğrulaması veya Kullanıcı adı/parola ile)
 - Etkileşimli oturum açmayı başka bir cihaza devrederden (Web denetimleri sağlamayan cihazlarda kullanılan cihaz kod akışı)
 
-İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph | Bir ASP.NET veya ASP.NET Core 2. x Web API 'SI çağırır
+istemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph | Bir ASP.NET veya ASP.NET Core 2. x Web API 'SI çağırır
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 Masaüstü (WPF)           | ![Bu görüntüde .NET/C# logo gösterilmektedir](media/sample-v2-code/logo-net.png)  | Etkileşimli | [DotNet-Native-MultiTarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) 'ın parçası | [DotNet-Yerel Masaüstü](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet-yerel-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-WebApi-Manual-JWT-doğrulama](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
 Mobil (UWP)            | arasında yetersiz alanla karşılaştı.![Bu görüntüde .NET/C#/UWP gösterilmektedir](media/sample-v2-code/logo-windows.png)   | Etkileşimli | [DotNet-yerel-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Bu örnek, [adal.net](https://aka.ms/adalnet) değil, [WAM](/windows/uwp/security/web-account-manager)kullanır|  [DotNet-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (tek kiracılı web API 'sini çağırmak için adal.NET kullanan UWP uygulaması) </p> [DotNet-WebApi-Multitenant-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (bir çok kiracılı web API 'sini çağırmak için adal.NET kullanan UWP uygulaması)|
@@ -93,7 +93,7 @@ Masaüstü (konsol)           | ![Bu görüntüde .NET Core/C# logosu gösterilm
 
 Aşağıdaki örnekler, Microsoft Graph veya Kullanıcı olmayan (uygulama kimliği ile) bir Web API 'sine erişen masaüstü veya Web uygulamalarını gösterir.
 
-İstemci uygulaması | Platform | Flow/ver | ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır
+istemci uygulaması | Platform | Flow/ver | ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır
 ------------------ | -------- | ---------- | -------------------- 
 Daemon uygulaması (konsol)          | ![Bu görüntüde .NET logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png) | Uygulama gizli anahtarı veya sertifikasıyla istemci kimlik bilgileri | [DotNet-Daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [DotNet-Daemon-sertifika-kimlik bilgileri](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 Daemon uygulaması (konsol)         | ![Bu görüntüde .NET logosu gösterilmektedir](media/sample-v2-code/logo-netcore.png) | Sertifika ile istemci kimlik bilgileri| [dotnetcore-Daemon-sertifika-kimlik bilgisi](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)

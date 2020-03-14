@@ -3,12 +3,12 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443120"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259701"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -47,9 +47,12 @@ Azure Advisor, tekrar tekrar başarısız olan Azure Data Factory işlem hatlar�
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Yönetilen diskler için standart anlık görüntüleri kullanma
 %60 maliyet tasarrufu elde etmek için, üst diskin depolama türünden bağımsız olarak anlık görüntülerinizi Standart Depolama’da depolamanızı öneririz. Bu seçenek, yönetilen diskler anlık görüntüleri için varsayılan seçenektir. Azure Danışmanı, Premium Depolama depolanan anlık görüntüleri belirler ve anlık görüntü ortamınızı Premium 'dan standart depolamaya geçirmeyi öneririz. [Yönetilen disk fiyatlandırması hakkında daha fazla bilgi edinin](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
+## <a name="utilize-lifecycle-management"></a>Yaşam Döngüsü Yönetimi'ni Kullanma
+Azure Advisor, bir veya daha fazla depolama hesabınızın, katman verilerine yönelik yaşam döngüsü yönetimini etkinleştirmek için en uygun olup olmadığını algılamak üzere Azure Blob depolama nesne sayısı, toplam boyutu ve işlemleri ile ilgili zeka 'yı kullanır. Verilerinizi, uygulama uyumluluğu için Azure Blob depolama alanındaki verilerinizi korurken depolama maliyetlerinizi iyileştirmek üzere otomatik olarak seyrek erişimli veya arşiv 'e yönelik bir yaşam döngüsü yönetimi kuralları oluşturmanızı ister.
+
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Danışmanı 'nda maliyet önerilerine erişme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Herhangi bir sayfadan [**danışman**](https://aka.ms/azureadvisordashboard) arayın ve seçin.
 
@@ -59,7 +62,7 @@ Azure Advisor, tekrar tekrar başarısız olan Azure Data Factory işlem hatlar�
 
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Advisor 'a giriş](advisor-overview.md)
-* [Kullanmaya Başlama](advisor-get-started.md)
+* [Başlarken](advisor-get-started.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)

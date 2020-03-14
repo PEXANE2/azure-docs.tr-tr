@@ -4,17 +4,17 @@ description: Azure depolama, verilerinizi buluta kalıcı yapmadan önce otomati
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.openlocfilehash: d28a342359114e05545f15624a86a17f7d0d3365
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130062"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268372"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure depolama şifrelemesi
 
@@ -65,7 +65,7 @@ Varsayılan olarak, depolama hesabınız Microsoft tarafından yönetilen şifre
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
 
-Azure depolama şifrelemesini, kendi anahtarlarınızın bulunduğu depolama hesabı düzeyinde yönetebilirsiniz. Depolama hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar, tüm blob ve dosya verilerini şifrelemek ve şifrelerini çözmek için kullanılan depolama hesabı için kök şifreleme anahtarına erişimi korumak ve denetlemek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
+Azure depolama şifrelemesini, kendi anahtarlarınızın bulunduğu depolama hesabı düzeyinde yönetebilirsiniz. Depolama hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar, tüm blob ve dosya verilerini şifrelemek ve şifrelerini çözmek için kullanılan depolama hesabı için kök şifreleme anahtarına erişimi korumak ve denetlemek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini yönetmek için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
 Müşteri tarafından yönetilen anahtarlarınızın depolanması için Azure Key Vault kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Depolama hesabı ve Anahtar Kasası aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/key-vault-overview.md).
 
@@ -102,7 +102,7 @@ Azure depolama şifrelemesi için Azure Key Vault ile müşteri tarafından yön
 
 Bir depolama hesabında müşteri tarafından yönetilen anahtarları etkinleştirmek için, anahtarlarınızı depolamak üzere bir Azure Key Vault kullanmanız gerekir. Anahtar kasasında hem **geçici silme** hem de **Temizleme** özelliklerini etkinleştirmeniz gerekir.
 
-Azure depolama şifrelemesi ile yalnızca 2048 boyutundaki RSA anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault anahtarlar** .
+Azure depolama şifrelemesi ile yalnızca RSA anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault anahtarlar** .
 
 ### <a name="rotate-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları döndür
 
@@ -112,7 +112,31 @@ Anahtarın döndürülmesi, depolama hesabındaki verilerin yeniden şifrelenmes
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>Müşterinin yönettiği anahtarlara erişimi iptal etme
 
-Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShell veya Azure CLı kullanın. Daha fazla bilgi için bkz. PowerShell veya [Azure Key Vault clı](/cli/azure/keyvault) [Azure Key Vault](/powershell/module/az.keyvault//) . Erişimi iptal etmek, şifreleme anahtarına Azure depolama tarafından erişilemediğinden, depolama hesabındaki tüm verilere erişimi etkin bir şekilde engeller.
+Depolama hesabının müşterinin yönettiği anahtara erişimini istediğiniz zaman iptal edebilirsiniz. Müşteri tarafından yönetilen anahtarlara erişim iptal edildiğinde veya anahtar devre dışı bırakıldıktan veya silindikten sonra istemciler, bir Blobun veya meta verilerinden okuma veya yazma işlemlerini çağıramaz. Aşağıdaki işlemlerden herhangi birini çağırma girişimleri, tüm kullanıcılar için 403 (yasak) hata kodu ile başarısız olur:
+
+- İstek URI 'sindeki `include=metadata` parametresiyle çağrıldığında [Blobları listeleyin](/rest/api/storageservices/list-blobs)
+- [Blob al](/rest/api/storageservices/get-blob)
+- [Blob özelliklerini al](/rest/api/storageservices/get-blob-properties)
+- [Blob meta verilerini al](/rest/api/storageservices/get-blob-metadata)
+- [Blob meta verilerini ayarla](/rest/api/storageservices/set-blob-metadata)
+- `x-ms-meta-name` istek üstbilgisiyle birlikte çağrıldığında [anlık görüntü blobu](/rest/api/storageservices/snapshot-blob)
+- [Blobu Kopyala](/rest/api/storageservices/copy-blob)
+- [Blob 'U URL 'Den Kopyala](/rest/api/storageservices/copy-blob-from-url)
+- [Blob katmanını ayarla](/rest/api/storageservices/set-blob-tier)
+- [Yerleştirme bloğu](/rest/api/storageservices/put-block)
+- [Bloğu URL 'Den koy](/rest/api/storageservices/put-block-from-url)
+- [Ekleme bloğu](/rest/api/storageservices/append-block)
+- [URL 'Den ekleme bloğu](/rest/api/storageservices/append-block-from-url)
+- [Blobu koy](/rest/api/storageservices/put-blob)
+- [Yerleştirme sayfası](/rest/api/storageservices/put-page)
+- [URL 'Den sayfa koy](/rest/api/storageservices/put-page-from-url)
+- [Artımlı kopya blobu](/rest/api/storageservices/incremental-copy-blob)
+
+Bu işlemleri yeniden çağırmak için, müşteri tarafından yönetilen anahtara erişimi geri yükleyin.
+
+Bu bölümde listelenmeyen tüm veri işlemleri, müşteri tarafından yönetilen anahtarlar iptal edildiğinde veya bir anahtar devre dışı bırakıldıktan veya silindikten sonra devam edebilir.
+
+Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) veya [Azure CLI](storage-encryption-keys-cli.md#revoke-customer-managed-keys)kullanın.
 
 ### <a name="customer-managed-keys-for-azure-managed-disks-preview"></a>Azure yönetilen diskler için müşteri tarafından yönetilen anahtarlar (Önizleme)
 
@@ -122,11 +146,11 @@ Azure yönetilen diskler şifrelemesini (Önizleme) yönetmek için müşteri ta
 
 Azure Blob depolamada istek yapan istemcilerin, tek bir istekte şifreleme anahtarı sağlama seçeneği vardır. İstek üzerine şifreleme anahtarı dahil olmak üzere, BLOB depolama işlemleri için şifreleme ayarları üzerinde ayrıntılı denetim sağlar. Müşteri tarafından sunulan anahtarlar (Önizleme), Azure Key Vault veya başka bir anahtar deposunda depolanabilir.
 
-Blob depolamaya yönelik bir istekte müşteri tarafından sağlanmış bir anahtarın nasıl belirtileceğini gösteren bir örnek için, bkz. [.net Ile BLOB depolama için bir istekte müşteri tarafından sağlanmış anahtar belirtme](../blobs/storage-blob-customer-provided-key.md). 
+Blob depolamaya yönelik bir istekte müşteri tarafından sağlanmış bir anahtarın nasıl belirtileceğini gösteren bir örnek için, bkz. [.net Ile BLOB depolama için bir istekte müşteri tarafından sağlanmış anahtar belirtme](../blobs/storage-blob-customer-provided-key.md).
 
 ### <a name="encrypting-read-and-write-operations"></a>Okuma ve yazma işlemlerini şifreleme
 
-İstemci uygulaması istekte bir şifreleme anahtarı sağlıyorsa, blob verilerini okurken ve yazarken Azure Storage şifreleme ve şifre çözme işlemlerini saydam bir şekilde gerçekleştirir. Azure depolama, blob içeriklerinin yanı sıra şifreleme anahtarının SHA-256 karmasını yazar. Karma, blob 'a yönelik tüm sonraki işlemlerin aynı şifreleme anahtarını kullanmasını doğrulamak için kullanılır. 
+İstemci uygulaması istekte bir şifreleme anahtarı sağlıyorsa, blob verilerini okurken ve yazarken Azure Storage şifreleme ve şifre çözme işlemlerini saydam bir şekilde gerçekleştirir. Azure depolama, blob içeriklerinin yanı sıra şifreleme anahtarının SHA-256 karmasını yazar. Karma, blob 'a yönelik tüm sonraki işlemlerin aynı şifreleme anahtarını kullanmasını doğrulamak için kullanılır.
 
 Azure depolama, istemcinin istekle birlikte gönderdiği şifreleme anahtarını depolamaz veya yönetemez. Şifreleme veya şifre çözme işlemi tamamlandıktan hemen sonra anahtar güvenle atılır.
 

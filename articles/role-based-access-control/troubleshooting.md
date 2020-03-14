@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980983"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245531"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure kaynakları için RBAC sorunlarını giderme
 
@@ -56,7 +56,7 @@ Bu makalede, Azure kaynakları için rol tabanlı erişim denetimi (RBAC) hakkı
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Bilinmeyen güvenlik sorumlusu olan rol atamaları
 
-Bir güvenlik sorumlusu (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) için bir rol atarsanız ve daha sonra rol atamasını kaldırmadan bu güvenlik sorumlusunu silerseniz, rol atamasının güvenlik sorumlusu türü **bilinmiyor**olarak listelenir. Aşağıdaki ekran görüntüsünde Azure portalında bir örnek gösterilir. Güvenlik sorumlusu adı, **kimlik silindi** olarak listelenir ve **kimlik artık yok**. 
+Bir güvenlik sorumlusu (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) için bir rol atarsanız ve daha sonra rol atamasını kaldırmadan bu güvenlik sorumlusunu silerseniz, rol atamasının güvenlik sorumlusu türü **bilinmiyor**olarak listelenir. Aşağıdaki ekran görüntüsünde Azure portal bir örnek gösterilmektedir. Güvenlik sorumlusu adı, **kimlik silindi** olarak listelenir ve **kimlik artık yok**. 
 
 ![Web uygulaması kaynak grubu](./media/troubleshooting/unknown-security-principal.png)
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378441"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264238"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları
 
@@ -80,7 +80,7 @@ Azure AD DS 'de, kullanılabilir performans ve Özellikler SKU 'YU temel alır. 
 
 | SKU adı   | En fazla nesne sayısı | Yedekleme sıklığı | En fazla giden orman güveni sayısı |
 |------------|----------------------|------------------|----|
-| Standard   | Sınırsız            | Her 7 günde bir     | 0  |
+| Standart   | Sınırsız            | Her 7 günde bir     | 0  |
 | Enterprise | Sınırsız            | 3 günde bir     | 5  |
 | Premium    | Sınırsız            | Günlük            | 10 |
 

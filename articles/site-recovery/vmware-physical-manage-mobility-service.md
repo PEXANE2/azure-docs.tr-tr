@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363246"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256971"
 ---
 # <a name="manage-the-mobility-agent"></a>Mobility aracısını yönetme 
 
@@ -37,11 +37,24 @@ VMware VM 'lerini ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarmas
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Windows Server 'da PowerShell betiği aracılığıyla Mobility hizmetini güncelleştirme
 
+Başlamadan önce, korunan makinelerde Mobility hizmetini güncelleştirmeden önce, yapılandırma sunucusunun, genişleme işlem sunucularının ve dağıtımınızın bir parçası olan ana hedef sunucuların güncelleştirildiğinden emin olun.
+
 Power Shell cmdlet 'i aracılığıyla bir sunucuda Mobility hizmetini yükseltmek için aşağıdaki betiği kullanın
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>Mobility hizmetini her korumalı sunucuda el ile güncelleştirme
+
+1. Başlamadan önce, korunan makinelerde Mobility hizmetini güncelleştirmeden önce, yapılandırma sunucusunun, genişleme işlem sunucularının ve dağıtımınızın bir parçası olan ana hedef sunucuların güncelleştirildiğinden emin olun.
+
+2. Sunucu işletim sistemine bağlı olarak [Aracı yükleyicisini bulun](vmware-physical-mobility-service-overview.md#locate-installer-files) .
+
+>[!IMPORTANT]
+> Azure IaaS VM 'yi bir Azure bölgesinden diğerine çoğaltırken, bu yöntemi kullanmayın. Kullanılabilir tüm seçeneklerle ilgili bilgi için [kılavuzumuza](azure-to-azure-autoupdate.md) bakın.
+
+3. Yükleme dosyasını korunan makineye kopyalayın ve Mobility Aracısı 'nı güncelleştirmek için çalıştırın.
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Mobility hizmetinin anında yüklenmesi için kullanılan hesabı Güncelleştir
 

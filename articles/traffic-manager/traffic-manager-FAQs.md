@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386906"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254371"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -43,7 +43,7 @@ Ayrıca, Traffic Manager tarafından alınan DNS sorgusunun kaynak IP adresi, is
 
 Bu nedenle, daha fazla araştırma uygulamaya odaklanmalıdır.
 
-İstemcinin tarayıcısından gönderilen HTTP ana bilgisayar üst bilgisi en yaygın sorun kaynağıdır. Uygulamanın, kullanmakta olduğunuz etki alanı adı için doğru ana bilgisayar üstbilgisini kabul edecek şekilde yapılandırıldığından emin olun. Azure App Service kullanan uç noktalar için, bkz. [Traffic Manager kullanarak Azure App Service bir Web uygulaması için özel etki alanı adı yapılandırma](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+İstemcinin tarayıcısından gönderilen HTTP ana bilgisayar üst bilgisi en yaygın sorun kaynağıdır. Uygulamanın, kullanmakta olduğunuz etki alanı adı için doğru ana bilgisayar üstbilgisini kabul edecek şekilde yapılandırıldığından emin olun. Azure App Service kullanan uç noktalar için, bkz. [Traffic Manager kullanarak Azure App Service bir Web uygulaması için özel etki alanı adı yapılandırma](../app-service/configure-domain-traffic-manager.md).
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Traffic Manager kullanmanın performans etkisi nedir?
 
@@ -145,9 +145,9 @@ Son Kullanıcı cihazları, genellikle DNS aramasını kendi adına bir DNS Çö
 
 Bir uç nokta ile ilişkilendirilecek IP adresleri iki şekilde belirtilebilir. İlk olarak, aralığı belirtmek için bir başlangıç ve bitiş adresleriyle dört noktalı ondalık sekizli gösterimini kullanabilirsiniz (örneğin, 1.2.3.4-5.6.7.8 veya 3.4.5.6-3.4.5.6). İkinci olarak, aralığı belirtmek için CıDR gösterimini kullanabilirsiniz (örneğin, 1.2.3.0/24). Birden çok Aralık belirtebilir ve bir Aralık kümesinde her iki gösterim türünü de kullanabilirsiniz. Birkaç kısıtlama geçerlidir.
 
--   Her IP 'nin yalnızca tek bir uç noktaya eşlenmesi gerektiğinden, adres aralıklarının çakışamaz
--   Başlangıç adresi bitiş adresinden daha fazla olamaz
--   CıDR gösteriminde, '/' öncesindeki IP adresinin bu aralığın başlangıç adresi olması gerekir (örneğin, 1.2.3.0/24 geçerlidir ancak 1.2.3.4.4/24 geçerli DEĞILDIR)
+-    Her IP 'nin yalnızca tek bir uç noktaya eşlenmesi gerektiğinden, adres aralıklarının çakışamaz
+-    Başlangıç adresi bitiş adresinden daha fazla olamaz
+-    CıDR gösteriminde, '/' öncesindeki IP adresinin bu aralığın başlangıç adresi olması gerekir (örneğin, 1.2.3.0/24 geçerlidir ancak 1.2.3.4.4/24 geçerli DEĞILDIR)
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Alt ağ yönlendirmesi kullanırken bir geri dönüş uç noktası nasıl belirtebilir?
 
@@ -382,25 +382,25 @@ Bir profille bir sorgu alındığında Traffic Manager önce, belirtilen yönlen
 
 Çoklu değer dışında herhangi bir yönlendirme yöntemine sahip profiller için:
 
-|Gelen sorgu isteği|    Uç nokta türü|  Yanıt sağlanmış|
+|Gelen sorgu isteği|     Uç nokta türü|     Yanıt sağlanmış|
 |--|--|--|
-|KAYDEDILMEMIŞ |  A/AAAA/CNAME |  Hedef uç nokta| 
-|A |    A/CNAME | Hedef uç nokta|
-|A |    AAAA |  NODATA |
-|AAAA | AAAA/CNAME |  Hedef uç nokta|
-|AAAA | A | NODATA |
-|CNAME |    CNAME | Hedef uç nokta|
-|CNAME  |A/AAAA | NODATA |
+|KAYDEDILMEMIŞ |    A/AAAA/CNAME |    Hedef uç nokta| 
+|A |    A/CNAME |    Hedef uç nokta|
+|A |    AAAA |    NODATA |
+|AAAA |    AAAA/CNAME |    Hedef uç nokta|
+|AAAA |    A |    NODATA |
+|CNAME |    CNAME |    Hedef uç nokta|
+|CNAME     |A/AAAA |    NODATA |
 |
 
 Yönlendirme yöntemi olan profillerin çoklu değer olarak ayarlandığı profiller için:
 
-|Gelen sorgu isteği|    Uç nokta türü | Yanıt sağlanmış|
+|Gelen sorgu isteği|     Uç nokta türü |    Yanıt sağlanmış|
 |--|--|--|
-|KAYDEDILMEMIŞ |  A ve AAAA karışımı | Hedef uç noktalar|
-|A |    A ve AAAA karışımı | Yalnızca A türünde hedef uç noktalar|
-|AAAA   |A ve AAAA karışımı|     Yalnızca AAAA türünde hedef uç noktalar|
-|CNAME |    A ve AAAA karışımı | NODATA |
+|KAYDEDILMEMIŞ |    A ve AAAA karışımı |    Hedef uç noktalar|
+|A |    A ve AAAA karışımı |    Yalnızca A türünde hedef uç noktalar|
+|AAAA    |A ve AAAA karışımı|     Yalnızca AAAA türünde hedef uç noktalar|
+|CNAME |    A ve AAAA karışımı |    NODATA |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Bir profili, iç içe geçmiş bir profilde IPv4/IPv6 ile ilgili belirtilen uç noktalarla kullanabilir miyim?
 

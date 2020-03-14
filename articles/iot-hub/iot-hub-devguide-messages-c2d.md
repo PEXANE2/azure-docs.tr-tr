@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379798"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271245"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT Hub 'ından buluttan cihaza iletileri gönderme
 
@@ -88,7 +88,7 @@ Buluttan cihaza bir ileti gönderdiğinizde, hizmet iletinin son durumu hakkınd
 | ------------ | ----------- |
 | EnqueuedTime | Merkez tarafından geri bildirim iletisinin alındığını gösteren zaman damgası |
 | UserID       | `{iot hub name}` |
-| contentType  | `application/vnd.microsoft.iothub.feedback.json` |
+| ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 Gövde, her biri aşağıdaki özelliklere sahip olan JSON seri hale getirilmiş bir kayıt dizisidir:
 

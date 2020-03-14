@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d43ad2ce88108a728b26e10eecc7082262a4b637
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359639"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271362"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub 'ınızdaki kimlik kayıt defterini anlayın
 
@@ -78,6 +78,8 @@ Cihaz kimliklerini bir IoT Hub 'ının kimlik kayıt defterinden toplu olarak d�
 Cihaz kimliklerini bir IoT Hub 'ının kimlik kayıt defterine toplu olarak içeri aktarmak için [IoT Hub kaynak sağlayıcısı uç noktasındaki](iot-hub-devguide-endpoints.md) zaman uyumsuz işlemleri kullanın. İçeri aktarmalar, kimlik kayıt defterine cihaz kimlik verileri yazmak için müşterinin sağladığı bir blob kapsayıcısında veri kullanan uzun süredir çalışan işlerdir.
 
 İçeri ve dışarı aktarma API 'Leri hakkında daha fazla bilgi için bkz. [IoT Hub kaynak sağlayıcısı REST API 'leri](/rest/api/iothub/iothubresource). İşleri içeri ve dışarı aktarma hakkında daha fazla bilgi edinmek için bkz. [IoT Hub cihaz kimliklerinin toplu yönetimi](iot-hub-bulk-identity-mgmt.md).
+
+Cihaz kimlikleri, hizmet API 'SI aracılığıyla bir IoT Hub [REST API](/rest/api/iothub/service/createimportexportjob) veya IoT Hub [hizmeti SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)'larından biri aracılığıyla da aktarılabilir ve içeri aktarılabilir.
 
 ## <a name="device-provisioning"></a>Cihaz sağlama
 

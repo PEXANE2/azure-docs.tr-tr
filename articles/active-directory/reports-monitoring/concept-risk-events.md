@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376378"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266487"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Risk algılamalarını Azure Active Directory
 
@@ -108,19 +108,19 @@ Aşağıdaki tabloda, bir algılama türünün ilgili bir raporda görünmesi i�
 | Algılama türü | Raporlama gecikmesi |
 | --- | --- |
 | Gerçek zamanlı | 5 ila 10 dakika |
-| Offline | 2-4 saat |
+| Çevrimdışı | 2-4 saat |
 
 
 Azure Active Directory algıladığı risk algılama türleri için, algılama türleri şunlardır:
 
 | Risk algılama türü | Algılama türü |
 | :-- | --- | 
-| [Sızdırılan kimlik bilgilerine sahip kullanıcılar](#leaked-credentials) | Offline |
+| [Sızdırılan kimlik bilgilerine sahip kullanıcılar](#leaked-credentials) | Çevrimdışı |
 | [Anonim IP adreslerinden oturum açma işlemleri](#sign-ins-from-anonymous-ip-addresses) | Gerçek zamanlı |
-| [Atipik konumlara imkansız seyahat](#impossible-travel-to-atypical-locations) | Offline |
+| [Atipik konumlara imkansız seyahat](#impossible-travel-to-atypical-locations) | Çevrimdışı |
 | [Bilmediğiniz konumlardan oturum açma işlemleri](#sign-in-from-unfamiliar-locations) | Gerçek zamanlı |
-| [Virüslü cihazlardan oturum açma işlemleri](#sign-ins-from-infected-devices) | Offline |
-| [Şüpheli etkinlikteki IP adreslerinden oturum açma işlemleri](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
+| [Virüslü cihazlardan oturum açma işlemleri](#sign-ins-from-infected-devices) | Çevrimdışı |
+| [Şüpheli etkinlikteki IP adreslerinden oturum açma işlemleri](#sign-ins-from-ip-addresses-with-suspicious-activity) | Çevrimdışı|
 
 
 ## <a name="risk-level"></a>Risk düzeyi

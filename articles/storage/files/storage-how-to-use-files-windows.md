@@ -8,11 +8,11 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380241"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268151"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -23,15 +23,15 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 
 | Windows sürümü        | SMB sürümü | Azure VM'de Bağlanabilir | Şirket İçinde Bağlanabilir |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Evet | Evet |
-| Windows 10<sup>1</sup> | SMB 3.0 | Evet | Evet |
-| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Evet | Evet |
-| Windows Server 2016 | SMB 3.0 | Evet | Evet |
-| Windows 8.1 | SMB 3.0 | Evet | Evet |
-| Windows Server 2012 R2 | SMB 3.0 | Evet | Evet |
-| Windows Server 2012 | SMB 3.0 | Evet | Evet |
-| Windows 7<sup>3</sup> | SMB 2.1 | Evet | Hayır |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Evet | Hayır |
+| Windows Server 2019 | SMB 3.0 | Yes | Yes |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server 2016 | SMB 3.0 | Yes | Yes |
+| Windows 8.1 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 | SMB 3.0 | Yes | Yes |
+| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Hayır |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Hayır |
 
 <sup>1</sup> Windows 10, sürüm 1507, 1607, 1709, 1803, 1809, 1903 ve 1909.  
 <sup>2</sup> Windows Server, sürüm 1809, 1903 ve 1909.  

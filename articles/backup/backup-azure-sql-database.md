@@ -4,11 +4,11 @@ description: Bu makalede SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanm
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462579"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273247"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
@@ -78,7 +78,7 @@ Yedekleme tercihine ve yedeklemeler türlerine (tam/değişiklik/günlük/salt k
 
 **Yedekleme türü** | **Node**
     --- | ---
-    Tam | Birincil
+    tümünü | Birincil
     Di | Birincil
     Günlük |  Birincil
     Salt kopya tam |  Birincil
@@ -87,7 +87,7 @@ Yedekleme tercihine ve yedeklemeler türlerine (tam/değişiklik/günlük/salt k
 
 **Yedekleme türü** | **Node**
 --- | ---
-Tam | Birincil
+tümünü | Birincil
 Di | Birincil
 Günlük |  İkincil
 Salt kopya tam |  İkincil
@@ -96,7 +96,7 @@ Salt kopya tam |  İkincil
 
 **Yedekleme türü** | **Node**
 --- | ---
-Tam | Birincil
+tümünü | Birincil
 Di | Birincil
 Günlük |  İkincil
 Salt kopya tam |  İkincil
@@ -105,7 +105,7 @@ Salt kopya tam |  İkincil
 
 **Yedekleme türü** | **Node**
 --- | ---
-Tam | Birincil
+tümünü | Birincil
 Di | Birincil
 Günlük |  İkincil
 Salt kopya tam |  İkincil
@@ -133,11 +133,11 @@ Diğer tüm sürümler için aşağıdaki adımlarla izinleri onarın:
 
       ![Oturum aç-yeni iletişim kutusunda ara ' yı seçin.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin**bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin. **OK (Tamam)** düğmesine tıklayın.
+  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin**bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin. **Tamam** düğmesine tıklayın.
 
       ![Bilinmeyen hizmet adını çözümlemek için adları denetle ' yi seçin](./media/backup-azure-sql-database/check-name.png)
 
-  5. **Sunucu rolleri**' nde **sysadmin** rolünün seçildiğinden emin olun. **OK (Tamam)** düğmesine tıklayın. Gerekli izinler artık var olmalıdır.
+  5. **Sunucu rolleri**' nde **sysadmin** rolünün seçildiğinden emin olun. **Tamam** düğmesine tıklayın. Gerekli izinler artık var olmalıdır.
 
       ![Sysadmin sunucu rolünün seçildiğinden emin olun](./media/backup-azure-sql-database/sysadmin-server-role.png)
 

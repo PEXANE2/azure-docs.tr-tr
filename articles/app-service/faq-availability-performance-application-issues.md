@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357781"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259870"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için uygulama performansı SSS
 
@@ -92,8 +92,9 @@ Kotalar ve sınırlamalar hakkında bilgi için bkz. [App Service sınırları](
 Varsayılan olarak, Web Apps, belirlenen süre boyunca boşta kalırsa kaldırılır. Bu şekilde, sistem kaynakları tasarrufu sağlayabilir. Downsıde, Web uygulamasının bellekten kaldırıldıktan sonraki ilk istek için yanıtın daha uzun olduğundan, Web uygulamasının yanıt vermeye çalışmasına izin verir. Temel ve standart hizmet planlarında, uygulamanın her zaman yüklenmesini sağlamak için **her zaman açık** ayarını açabilirsiniz. Bu, uygulama boşta kaldıktan sonra yükleme sürelerinin uzamayı ortadan kaldırır. **Her zaman açık** ayarını değiştirmek için:
 
 1. Azure portal web uygulamanıza gidin.
-2. **Uygulama ayarları**' nı seçin.
-3. **Her zaman açık**için **Açık**seçeneğini belirleyin.
+2. **Yapılandırma** Seç
+3. **Genel ayarları**seçin.
+4. **Her zaman açık**için **Açık**seçeneğini belirleyin.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Başarısız istek izlemeyi açmak Nasıl yaparım? mı?
 

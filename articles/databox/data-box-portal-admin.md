@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987482"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260000"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy yönetmek için Azure portal kullanın
 
@@ -48,12 +48,12 @@ Siparişi kopyalamak için aşağıdaki adımları gerçekleştirin.
 
     ![Siparişi kopyalama 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin.           **Oluştur**'a tıklayın.
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**'a tıklayın.
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 
 
-## <a name="delete-order"></a>Siparişi sil
+## <a name="delete-order"></a>Siparişi silme
 
 Tamamlanan siparişleri silmek isteyebilirsiniz. Siparişte adınız, adresiniz ve iletişim bilgileriniz gibi kişisel bilgileriniz yer alır. Sipariş silindiğinde bu kişisel bilgiler de silinir.
 
@@ -65,9 +65,9 @@ Yalnızca tamamlanan veya iptal edilen siparişleri silebilirsiniz. Siparişi si
 
     ![Data Box siparişini silme 1](media/data-box-portal-admin/delete-order1.png)
 
-3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. Tıklayın **Sil**.
+3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**'e tıklayın.
 
-## <a name="download-shipping-label"></a>Sevkiyat etiketini indirin
+## <a name="download-shipping-label"></a>Sevkiyat etiketini indirme
 
 Data Box’unuzun E-ink ekranı çalışmıyorsa ve iade gönderimi etiketini göstermiyorsa gönderim etiketini indirmeniz gerekebilir. Data Box Heavy bir E-mürekkep görüntülenmez ve bu nedenle bu iş akışı Data Box Heavy için uygulanmaz.
 
@@ -75,9 +75,9 @@ Sevkiyat etiketini indirmek için aşağıdaki adımları gerçekleştirin.
 
 1.  **Genel bakış > Sevkiyat etiketi indir** bölümüne gidin. Bu seçenek yalnızca cihaz gönderildikten sonra kullanılabilir. 
 
-    ![Sevkiyat etiketini indirin](media/data-box-portal-admin/download-shipping-label.png)
+    ![Sevkiyat etiketini indirme](media/data-box-portal-admin/download-shipping-label.png)
 
-2.  Aşağıda gösterilen iade sevkiyat etiketi indirilir. Etiketi kaydedin ve yazdırın. Etiketi katlayıp cihazdaki şeffaf kılıfa koyun. Etiketin görünür olduğundan emin olun. Cihazdaki önceki gönderimden kalan tüm çıkartmaları sökün.
+2.  Aşağıda gösterilen iade sevkiyat etiketi indirilir. Etiketi kaydedin ve yazdırın. Etiketi katlamalı ve cihazdaki açık manşon içine ekleyin. Etiketin görünür olduğundan emin olun. Cihazdaki önceki gönderimden kalan tüm çıkartmaları sökün.
 
     ![Örnek sevkiyat etiketi](media/data-box-portal-admin/example-shipping-label.png)
 
@@ -95,7 +95,7 @@ Siparişi düzenlemek için aşağıdaki adımları gerçekleştirin.
 
     ![Teslimat adresini düzenleme 2](media/data-box-portal-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Bildirim ayrıntılarını düzenle
+## <a name="edit-notification-details"></a>Bildirim ayrıntılarını düzenleme
 
 Sipariş durumu e-postalarının gönderilmesini istediğiniz kullanıcıları değiştirmek isteyebilirsiniz. Örneğin cihaz teslim edildiğinde veya alındığında bir kullanıcının bilgilendirilmesi gerekebilir. Verilerin kaynaktan silinmeden önce Azure depolama hesabında olduğunu doğrulayabilmeleri için, veri kopyalama işlemi tamamlandığında başka bir kullanıcının bilgilendirilmesi gerekebilir. Bu gibi durumlarda bildirim ayrıntılarını düzenleyebilirsiniz.
 
@@ -118,7 +118,7 @@ Sipariş geçmişini indirmek için aşağıdaki adımları uygulayın.
 
 1. Data Box siparişinizde **Genel Bakış**'a gidin. Siparişin tamamlandığından emin olun. Sipariş ve cihaz temizleme tamamlandıysa, **Sipariş ayrıntıları**'na gidin. **Sipariş geçmişi indirme** seçeneği bulunur.
 
-    ![Sipariş geçmişi indirme](media/data-box-portal-admin/download-order-history-1.png)
+    ![İndirme sırası geçmişi](media/data-box-portal-admin/download-order-history-1.png)
 
 2. **Sipariş geçmişini indir**'e tıklayın. İndirilen geçmişte kurye takip günlüklerini bir kaydını görürsünüz. Data Box Heavy iki düğüme karşılık gelen iki günlük kümesi olacaktır. Bu günlüğün en altına giderseniz, aşağıdakilere giden bağlantıları görebilirsiniz:
     
@@ -200,7 +200,7 @@ Cihaz durumu portalda değiştiğinde bu, size e-posta ile bildirilir.
 |Sipariş durumu |Açıklama |
 |---------|---------|
 |Sipariş edildi     | Sipariş başarıyla oluşturuldu. <br>Cihaz kullanılabilir durumdaysa Microsoft tarafından gönderilecek cihaz belirlenir ve cihaz hazırlanır. <br> Cihaz o anda mevcut değilse sipariş cihaz mevcut olduğunda işleme alınır. Siparişin işleme alınması birkaç gün ile birkaç ay sürebilir. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.         |
-|İşlenen     | Siparişin işlenmesi tamamlandı. Siparişiniz uyarınca cihaz gönderilmek üzere veri merkezinde hazırlanır.         |
+|İşlendi     | Siparişin işlenmesi tamamlandı. Siparişiniz uyarınca cihaz gönderilmek üzere veri merkezinde hazırlanır.         |
 |Yola çıktı     | Sipariş sevk edildi. Gönderiyi takip etmek için portalda, siparişinizde görüntülenen takip kimliğini kullanın.        |
 |Teslim Edildi     | Gönderim, belirtilen adrese teslim edildi.        |
 |Teslim alındı     |İade gönderiniz teslim alındı ve kurye tarafından tarandı.         |

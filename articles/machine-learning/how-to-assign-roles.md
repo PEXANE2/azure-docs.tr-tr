@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 11/06/2019
+ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064759"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270101"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,13 +25,13 @@ Bu makalede, Azure Machine Learning çalışma alanına erişimi yönetmeyi öğ
 
 ## <a name="default-roles"></a>Varsayılan roller
 
-Azure Machine Learning çalışma alanı bir Azure kaynağıdır. Diğer Azure kaynakları gibi yeni bir Azure Machine Learning çalışma alanı oluşturulduğunda, bu üç varsayılan rolle birlikte gelir. Çalışma alanına kullanıcı ekleyebilir ve bunları bu yerleşik rollerden birine atayabilirsiniz.
+Azure Machine Learning çalışma alanı bir Azure kaynağıdır. Diğer Azure kaynaklarında olduğu gibi yeni bir Azure Machine Learning çalışma alanı da oluşturulduğunda üç varsayılan role sahip olur. Çalışma alanına kullanıcı ekleyebilir ve bunları bu yerleşik rollerden birine atayabilirsiniz.
 
 | Rol | Erişim düzeyi |
 | --- | --- |
-| **Okuyucu** | Çalışma alanındaki salt okuma eylemleri. Okuyucular bir çalışma alanındaki varlıkları listeleyebilir ve görüntüleyebilir, ancak bu varlıkları oluşturamaz veya güncelleştiremez. |
-| **Katılımcı** | Çalışma alanındaki varlıkları görüntüleyin, oluşturun, düzenleyin veya silin (uygulanabilir). Örneğin, katkıda bulunanlar bir deneme oluşturabilir, bir işlem kümesi oluşturabilir veya ekleyebilir, bir çalıştırma gönderebilir ve bir Web hizmeti dağıtabilir. |
-| **Sahip** | Çalışma alanına, çalışma alanındaki varlıkları görüntüleme, oluşturma, düzenleme veya silme özelliği de dahil olmak üzere tam erişim. Ayrıca, rol atamalarını değiştirebilirsiniz. |
+| **Okuyucu** | Çalışma alanında salt okunur eylemler. Okuyucular çalışma alanındaki varlıkları listeleyip görüntüleyebilir ancak yeni varlık oluşturamaz ve var olan varlıkları güncelleştiremez. |
+| **Katılımcı** | Çalışma alanındaki varlıkları görüntüleme, oluşturma, düzenleme veya silme (geçerli durumlarda). Örneğin katkıda bulunanlar bir deneme oluşturabilir, işlem kümesi oluşturabilir veya ekleyebilir, çalıştırma gönderebilir ve bir web hizmeti dağıtabilir. |
+| **Sahip** | Çalışma alanındaki varlıkları görüntüleme, oluşturma, düzenleme veya silme (geçerli durumlarda) dahil olmak üzere tam çalışma alanı erişimi. İsterseniz rol atamalarını değiştirebilirsiniz. |
 
 > [!IMPORTANT]
 > Rol erişimi, Azure 'da birden çok düzey kapsamına eklenebilir. Örneğin, bir çalışma alanına sahip olan birisi, çalışma alanını içeren kaynak grubuna sahip erişimine sahip olmayabilir. Daha fazla bilgi için bkz. [RBAC çalışma](/azure/role-based-access-control/overview#how-rbac-works).
@@ -40,8 +40,8 @@ Belirli yerleşik roller hakkında daha fazla bilgi için bkz. [Azure Için yerl
 
 ## <a name="manage-workspace-access"></a>Çalışma alanı erişimini yönetme
 
-Bir çalışma alanının sahibiyseniz, çalışma alanı için roller ekleyebilir ve kaldırabilirsiniz. Ayrıca, kullanıcılara roller atayabilirsiniz. Erişimin nasıl yönetileceğini saptamak için aşağıdaki bağlantıları kullanın:
-- [Azure portal Kullanıcı arabirimi](/azure/role-based-access-control/role-assignments-portal)
+Bir çalışma alanının sahibiyseniz, çalışma alanı için rol ekleyebilir ve kaldırabilirsiniz. Diğer kullanıcılara da rol atayabilirsiniz. Erişim yönetimi süreçlerini keşfetmek için aşağıdaki bağlantıları kullanın:
+- [Azure portalı kullanıcı arabirimi](/azure/role-based-access-control/role-assignments-portal)
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
@@ -61,7 +61,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="create-custom-role"></a>Özel rol oluştur
 
-Yerleşik roller yetersizse, özel roller oluşturabilirsiniz. Özel rollerin bu çalışma alanında okuma, yazma, silme ve hesaplama kaynağı izinleri olabilir. Rolü belirli bir çalışma alanı düzeyinde, belirli bir kaynak grubu düzeyinde veya belirli bir abonelik düzeyinde kullanılabilir hale getirebilirsiniz.
+Yerleşik rollerin yetersiz olması durumunda özel roller oluşturabilirsiniz. Özel rollerin bu çalışma alanında okuma, yazma, silme ve hesaplama kaynağı izinleri olabilir. Rolü belirli bir çalışma alanı düzeyinde, belirli bir kaynak grubu düzeyinde veya belirli bir abonelik düzeyinde kullanılabilir hale getirebilirsiniz.
 
 > [!NOTE]
 > Bu kaynak içinde özel Roller oluşturmak için bu düzeyde kaynağın sahibi olmanız gerekir.

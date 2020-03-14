@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376063"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253604"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
 Bu makalede, Azure AD Connect ile Azure AD arasındaki bağlantının nasıl çalıştığı ve bağlantı sorunlarını nasıl giderebileceğiniz açıklanır. Bu sorunlar büyük olasılıkla ara sunucu içeren bir ortamda görülebilir.
@@ -43,7 +43,7 @@ Proxy sunucusunda gerekli URL 'Lerin açılması da gerekir. Resmi liste, [Offic
 
 Bu URL 'Lerde, her bir Azure AD 'ye bağlanabilmek için aşağıdaki tablo, tam olarak en düşük üyeliktir. Bu liste, parola geri yazma veya Azure AD Connect Health gibi isteğe bağlı özellikler içermez. İlk yapılandırma için sorun gidermeye yardımcı olmak üzere burada belgelenmiştir.
 
-| {1&gt;URL&lt;1} | Bağlantı noktası | Açıklama |
+| URL'si | Bağlantı noktası | Açıklama |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
 | \*. verisign.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
@@ -93,7 +93,7 @@ Proxy doğru yapılandırılmışsa, bir başarı durumu almalısınız: ![proxy
 Proxy doğru yapılandırılmamışsa bir hata alırsınız: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
 ![proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
-| Hata | Hata metni | Yorum |
+| Hata | Hata metni | Açıklama |
 | --- | --- | --- |
 | 403 |Yasak |Proxy, istenen URL için açılmadı. Proxy yapılandırmasını yeniden ziyaret edin ve [URL 'lerin](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) açık olduğundan emin olun. |
 | 407 |Proxy kimlik doğrulaması gerekli |Ara sunucu bir oturum açma işlemi gerektirdi ve hiçbiri sağlanmadı. Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, bu ayarın Machine. config dosyasında yapılandırıldığından emin olun. Ayrıca, Sihirbazı çalıştıran kullanıcı için ve hizmet hesabı için etki alanı hesapları kullandığınızdan emin olun. |
@@ -113,7 +113,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Azure AD'ye Bağlanma**
 
-| Zaman | {1&gt;URL&lt;1} |
+| Zaman | URL'si |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Yapılandırma**
 
-| Zaman | {1&gt;URL&lt;1} |
+| Zaman | URL'si |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **İlk eşitleme**
 
-| Zaman | {1&gt;URL&lt;1} |
+| Zaman | URL'si |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

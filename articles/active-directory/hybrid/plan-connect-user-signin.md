@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376242"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253747"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect Kullanıcı oturum açma seçenekleri
 Azure Active Directory (Azure AD) Connect, kullanıcılarınızın aynı parolaları kullanarak hem bulutta hem de şirket içi kaynaklarda oturum açmalarına olanak tanır. Bu makalede, Azure AD 'de oturum açmak için kullanmak istediğiniz kimliği seçmenize yardımcı olmak üzere her bir kimlik modeli için temel kavramlar açıklanır.
@@ -179,11 +179,11 @@ Sihirbazla Azure AD Connect ilk yapılandırmasından sonra Azure AD Connect ' d
 
 Sonraki sayfada Azure AD kimlik bilgilerini sağlamanız istenir.
 
-![Azure AD'ye bağlanın](./media/plan-connect-user-signin/changeusersignin2.png)
+![Azure AD'ye Bağlanma](./media/plan-connect-user-signin/changeusersignin2.png)
 
 **Kullanıcı oturum açma** sayfasında, istenen kullanıcı oturumunu seçin.
 
-![Azure AD'ye bağlanın](./media/plan-connect-user-signin/changeusersignin2a.png)
+![Azure AD'ye Bağlanma](./media/plan-connect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
 > Parola karması eşitlemeye yalnızca geçici bir anahtar oluşturuyorsanız, **Kullanıcı hesaplarını dönüştürmeyin** onay kutusunu seçin. Seçeneğinin işaretlenmesi, her bir kullanıcıyı federe 'a dönüştürecek ve bu işlem birkaç saat sürebilir.

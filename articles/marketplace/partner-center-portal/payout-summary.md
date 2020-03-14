@@ -8,11 +8,11 @@ ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
 ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715438"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269906"
 ---
 # <a name="payout-reporting"></a>Ödeme raporlaması
 
@@ -47,7 +47,7 @@ Azure Market 'te teklifler satmanız durumunda, **ödeme özetinde başarılı �
 | | Bulut İş Ortağı Portalı | İş Ortağı Merkezi |
 |---------|---------|---------|
 | Bağlantılar | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) ve [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
-| Gezinti | Öngörüler ödeme için sunulan ödeme raporlaması | Iş Ortağı Merkezi – ödeme simgesinde sunulan ödeme raporlaması |
+| Gezinme | Öngörüler ödeme için sunulan ödeme raporlaması | Iş Ortağı Merkezi – ödeme simgesinde sunulan ödeme raporlaması |
 | Kapsam | <ul> <li>Her satır öğesi için işlem görünür, koleksiyon devam ediyor, toplandı ve ücretli olarak </li> <li>Raporlama – bir satınalma siparişi oluşturulduktan sonra, devam eden koleksiyon ve devam eden faturalama dahil olmak üzere tüm satır öğelerini ve henüz ödenmeyen koleksiyon durumu ve satır öğelerini gösterir. </li> </ul> | <ul> <li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li> <li>Müşteriler ilk olarak Microsoft 'a ödeme yapar ve ardından ISV 'Ler ödeme raporunu görebilir.</li> <li>Ödeme raporu, devam eden ve faturalandırma aşamasında koleksiyonu göstermez.  </li> </ul>  |
 | İşlem ödeme için hazır değil | Faturalama devam ediyor | Sonraki tahmini ödeme: ödeme durumu işlenmemiş durumundadır.  |
 | Ödeme durumu |  | İşlenmemiş <br> Kazanç ödeme için uygun. Bu durum, bir soğutma dönemi için, ister program kılavuzunda, ister program kılavuzumuza göre tanımlanan bu durumda kalır. <br> <br> İlerideki <br> Ödeme siparişi tarafından oluşturulan, ödeme işlenmeden önce bekleyen dahili incelemeler. <br> <br> Gönderilip <br> Ödeme, bankanızla gönderilmiştir. |
@@ -99,7 +99,7 @@ Müşteriler, kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu d
 
 Bu seçenek, teşvikleri programı için geçerli olan Işlem geçmişi sayfasında gördüğünüz her bir atma satırı öğesinin bir indirisini, tür, tarih, ilişkili işlem miktarı, müşteri, ürün ve diğer işlem ayrıntılarını sağlar.
 
-| sütun adı     | Açıklama    |
+| Sütun adı     | Açıklama    |
 |-------------|-------------------------------|
 | Eardokgıd                      | Her bir atma için benzersiz tanımlayıcı                                                                                                       |
 | participantId                  | İş ortağının birincil kimliği program altında                                                                            |

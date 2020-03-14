@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 92d6dccec3ce6483072a81c8739b65e81ce2c7fe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359972"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268580"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme
 
@@ -106,10 +106,11 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 
 ### <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
-- Depolama birimi, 1 GB Artımlar kullanılarak en fazla boyut sınırına sağlanabilir. Yapılandırılabilir veri depolaması en az 5 GB 'dir
-- Tek bir veritabanı için depolama, [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak veya azaltılarak sağlanabilir.
-- SQL veritabanı, günlük dosyaları için ek depolama alanının %30 ' u ve TempDB için vCore başına 32 ' i ayırır, ancak 384GB ' ı aşamaz. TempDB, tüm hizmet katmanlarında eklenmiş bir SSD üzerinde bulunur.
-- Tek bir veritabanı için depolama fiyatı, veri depolama ve günlük depolama tutarlarının toplamı hizmet katmanının depolama birimi fiyatıyla çarpılır. TempDB 'nin maliyeti, sanal çekirdek fiyatına dahildir. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
+- Depolama, 1 GB 'lik artışlarla veri depolama maksimum boyut sınırına sağlanabilir. Yapılandırılabilir veri depolaması en az 1 GB 'dir. Her hizmet hedefi için [tek veritabanları](sql-database-vcore-resource-limits-single-databases.md) ve [Esnek havuzlar](sql-database-vcore-resource-limits-elastic-pools.md) için kaynak sınırı belge sayfalarına bakın.
+- Tek bir veritabanı için veri depolama, [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak veya azaltılarak sağlanabilir. En büyük boyut değeri bayt cinsinden belirtilirse, 1 GB (1073741824 bayt) katlarından biri olmalıdır.
+- Bir veritabanının veri dosyalarında depolanabilecek veri miktarı, yapılandırılan veri depolama maksimum boyutuyla sınırlıdır. Bu depolamaya ek olarak, SQL veritabanı işlem günlüğü için kullanılacak %30 daha fazla depolama alanı ayırır.
+- SQL veritabanı, `tempdb` veritabanı için sanal çekirdek başına 32 GB 'yi otomatik olarak ayırır. `tempdb`, tüm hizmet katmanlarında yerel SSD depolamada bulunur.
+- Tek bir veritabanı veya elastik havuz için depolama fiyatı, veri depolama ve işlem günlüğü depolama tutarlarının toplamıdır ve hizmet katmanının depolama birimi fiyatıyla çarpılır. `tempdb` maliyeti fiyata dahildir. Depolama fiyatı hakkında daha fazla bilgi için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
 > Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).

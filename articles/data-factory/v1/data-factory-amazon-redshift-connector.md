@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382643"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260533"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'Tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -61,12 +61,12 @@ Aşağıdaki tabloda, Amazon Redshift bağlı hizmetine özgü JSON öğeleri i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **type** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Evet |
-| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
+| **type** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Yes |
+| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
 | **bağ** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır (varsayılan değer 5439) |
-| **veritabanınızı** |Amazon Redshift veritabanının adı. |Evet |
-| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Evet |
-| **parolayı** |Kullanıcı hesabının parolası. |Evet |
+| **veritabanınızı** |Amazon Redshift veritabanının adı. |Yes |
+| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Yes |
+| **parolayı** |Kullanıcı hesabının parolası. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -335,12 +335,12 @@ Kopyalama etkinliği verileri bir Amazon Redshift türünden .NET türüne dön�
 | DECIMAL |Ondalık |
 | REAL |Tek |
 | DOUBLE PRECISION |çift |
-| BOOLEAN |String |
-| CHAR |String |
-| VARCHAR |String |
+| BOOLEAN |Dize |
+| CHAR |Dize |
+| VARCHAR |Dize |
 | DATE |DateTime |
 | TIMESTAMP |DateTime |
-| TEXT |String |
+| TEXT |Dize |
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
 Kaynak veri kümesindeki sütunların havuz veri kümesindeki sütunlara nasıl eşlendiğini öğrenmek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376305"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261105"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
 Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Office 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
@@ -123,7 +123,7 @@ Etki alanı filtresini ayarlamak için aşağıdaki adımları uygulayın:
 Etki alanı filtresini ayarlamak için aşağıdaki adımları uygulayın:
 
 1.  Azure AD Connect Sihirbazı 'nı başlatın
-2.  **Yapılandır**'ı tıklayın.
+2.  **Yapılandır**'a tıklayın.
 3.  **Eşitleme seçeneklerini Özelleştir** ' i seçin ve **İleri**' ye tıklayın.
 4.  Azure AD kimlik bilgilerinizi girin
 5.  **Bağlı dizinler** ekranında **İleri**' ye tıklayın.

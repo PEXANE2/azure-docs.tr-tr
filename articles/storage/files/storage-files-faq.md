@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362424"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268190"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure dosyaları hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -81,6 +81,9 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
   . Eklenebilir mi?**  
     Azure dosyaları ekibi, hizmetimiz ile ilgili tüm geri bildirimleri ve tüm geri bildirimlerinizi duymakla ilgileniyor. Lütfen [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)'daki özellik isteklerini oylayın! Birçok yeni özellik ile size çok fazla göz ımızı umuyoruz.
 
+  **Azure dosyaları dosya kilitlemeyi destekliyor mu?**  
+    Evet, Azure dosyaları SMB/Windows stili dosya kilitlemeyi tam olarak destekler, [bkz. Ayrıntılar](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
+    
 ## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 
 * <a id="afs-region-availability"></a>**Azure dosya eşitleme Için hangi bölgelerin desteklendiği 
@@ -211,6 +214,11 @@ Azure **dosyaları azure AD DS veya ad kimlik doğrulaması Linux VM 'lerini des
 
     Evet, Azure AD DS veya AD kimlik doğrulamasını Azure dosya eşitleme tarafından yönetilen bir dosya paylaşımında etkinleştirebilirsiniz. Yerel dosya sunucularındaki dizin/dosya NTFS ACL 'lerinde yapılan değişiklikler Azure dosyaları ile katmanlanacaktır ve tam tersi de geçerlidir.
 
+* <a id="ad-aad-smb-files"></a>**depolama hesabımın ve ad etki alanı BILGILERININ ad kimlik doğrulamasını etkinleştirdiğimde nasıl emin olabilirim 
+?**
+
+    Depolama hesabınızda Azure dosyaları AD kimlik doğrulamasının etkin olup olmadığını doğrulamak ve AD etki alanı bilgilerini almak için [burada](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) sağlanan yönergelere başvurabilirsiniz.
+    
 * <a id="encryption-at-rest"></a>**Azure dosya paylaşımımın bekleyen bir şekilde şifrelendiğinden nasıl emin olabilirim 
 ?**  
 

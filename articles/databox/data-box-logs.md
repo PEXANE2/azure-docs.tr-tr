@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535177"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260026"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy için izleme ve olay günlüğü
 
@@ -24,10 +24,10 @@ Aşağıdaki tabloda Data Box veya Data Box Heavy sipariş adımlarının bir ö
 | Data Box sipariş aşaması       | İzlenecek ve denetlenecek araç                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Sipariş oluştur               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order)                                                    |
-| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
+| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portalı </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)                                              |
 | Cihaza veri kopyalama        | Veri kopyası için [ *Error. xml* dosyalarını görüntüle](#view-error-log-during-data-copy)                                                             |
-| Göndermeye Hazırlama            | Cihazdaki [bom dosyalarını](#inspect-bom-during-prepare-to-ship) veya bildirim dosyalarını inceleyin                                      |
+| Göndermeye hazırlama            | Cihazdaki [bom dosyalarını](#inspect-bom-during-prepare-to-ship) veya bildirim dosyalarını inceleyin                                      |
 | Azure 'a veri yükleme       | Azure veri merkezinde karşıya veri yükleme sırasında oluşan hataları [kopyalama günlüklerini gözden geçirme](#review-copy-log-during-upload-to-azure)                         |
 | Cihazdan veri ernure   | Denetim günlükleri ve sıra geçmişi dahil [, gözetim günlüklerinin zincirini görüntüleme](#get-chain-of-custody-logs-after-data-erasure)                |
 
@@ -64,7 +64,7 @@ Siparişinizi Azure portal ve sevkiyat taşıyıcısı Web sitesi aracılığıy
 
 - Data Box, şirket içinde kilitli bir durumda ulaşır. Azure portal için kullanılabilir cihaz kimlik bilgilerini siparişiniz için kullanabilirsiniz.  
 
-    Bir Data Box ayarlandığında, cihaz kimlik bilgilerine kimlerin eriştiğini bilmeniz gerekebilir. **Cihaz kimlik bilgileri** dikey penceresine kimin eriştiğini anlamak için etkinlik günlüklerini sorgulayabilirsiniz.  **Cihaz ayrıntıları > kimlik bilgileri** dikey penceresine erişimi içeren herhangi bir eylem etkinlik günlüklerine eylem olarak `ListCredentials` kaydedilir.
+    Bir Data Box ayarlandığında, cihaz kimlik bilgilerine kimlerin eriştiğini bilmeniz gerekebilir. **Cihaz kimlik bilgileri** dikey penceresine kimin eriştiğini anlamak için etkinlik günlüklerini sorgulayabilirsiniz.  **Cihaz ayrıntılarına > kimlik bilgileri** dikey penceresine erişmeyi içeren herhangi bir eylem, etkinlik günlüklerine `ListCredentials` eylem olarak kaydedilir.
 
     ![Etkinlik günlüklerini sorgulama](media/data-box-logs/query-activity-log-1.png)
 
@@ -203,7 +203,7 @@ Azure 'a veri yükleme sırasında bir kopyalama günlüğü oluşturulur.
 
 Azure 'a yükleme sırasında Döngüsel artıklık denetimi (CRC) hesaplaması yapılır. Veri kopyalama işleminden sonra ve veri karşıya yüklemeden sonra CRCs 'Ler karşılaştırılır. CRC uyumsuzluğu, karşılık gelen dosyaların karşıya yüklenemediğini belirtir.
 
-Varsayılan olarak, Günlükler adlı `copylog`bir kapsayıcıya yazılır. Günlükler aşağıdaki adlandırma kuralına göre saklanır:
+Varsayılan olarak, Günlükler `copylog`adlı bir kapsayıcıya yazılır. Günlükler aşağıdaki adlandırma kuralına göre saklanır:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -257,7 +257,7 @@ Verileriniz Azure adlandırma kurallarına uymayan kapsayıcı/BLOB/dosya adlar�
 
 Azure 'a veri yükleme sırasında Azure adlandırma kurallarıyla uyumlu olmayan kapsayıcıların yeniden adlandırılmadığı bir kopya günlüğü örneği aşağıda verilmiştir.
 
-Kapsayıcıların yeni benzersiz adları biçimindedir `DataBox-GUID` ve kapsayıcının verileri yeni yeniden adlandırılmış kapsayıcıya konur. Kopyalama günlüğü, kapsayıcının eski ve yeni kapsayıcı adını belirtir.
+Kapsayıcılar için yeni benzersiz adlar `DataBox-GUID` biçimindedir ve kapsayıcının verileri yeni yeniden adlandırılmış kapsayıcıya konur. Kopyalama günlüğü, kapsayıcının eski ve yeni kapsayıcı adını belirtir.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -270,7 +270,7 @@ Kapsayıcıların yeni benzersiz adları biçimindedir `DataBox-GUID` ve kapsay�
 
 Azure 'a veri yükleme sırasında, Blobların veya Azure adlandırma kurallarıyla uyumlu olmayan dosyaların yeniden adlandırıldığını gösteren bir kopyalama günlüğü örneği aşağıda verilmiştir. Yeni blob veya dosya adları, kapsayıcıya göreli yolun SHA256 özetine dönüştürülür ve hedef türüne göre yola yüklenir. Hedef blok Blobları, sayfa Blobları veya Azure dosyaları olabilir.
 
-, `copylog` Eski ve yeni blob ya da dosya adını ve Azure 'daki yolu belirtir.
+`copylog`, eski ve yeni blob ya da dosya adını ve Azure 'daki yolu belirtir.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -297,7 +297,7 @@ NIST SP 800-88 düzeltme 1 yönergelerine göre Data Box disklerden veriler sili
 
 ### <a name="audit-logs"></a>Denetim günlükleri
 
-Denetim günlükleri Data Box veya Azure veri merkezi 'nin dışında olduğunda Data Box Heavy paylaşımlara erişme ve bunların nasıl çalıştığı hakkında bilgiler içerir. Bu Günlükler şurada bulunur:`storage-account/azuredatabox-chainofcustodylogs`
+Denetim günlükleri Data Box veya Azure veri merkezi 'nin dışında olduğunda Data Box Heavy paylaşımlara erişme ve bunların nasıl çalıştığı hakkında bilgiler içerir. Bu Günlükler şurada bulunur: `storage-account/azuredatabox-chainofcustodylogs`
 
 Data Box bir denetim günlüğü örneği aşağıda verilmiştir:
 
@@ -413,4 +413,4 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Data Box ve Data Box Heavy ilgili sorunları](data-box-troubleshoot.md)nasıl giderebileceğinizi öğrenin.
+- [Data Box ve Data Box Heavy ilgili sorunları nasıl giderebileceğinizi](data-box-troubleshoot.md)öğrenin.

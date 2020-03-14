@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697549"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263055"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform geliştirici sözlüğü
 
@@ -69,7 +69,7 @@ Kimliği doğrulanmış bir güvenlik sorumlusu iznini verme eylemi. Azure AD pr
 * [OAuth2 yetkilendirme verme](#authorization-grant) akışı sırasında: [kaynak sahibi](#resource-owner) [istemci uygulamaya](#client-application)yetkilendirme yaparken, istemcinin kaynak sahibinin kaynaklarına erişmesine izin verir.
 * İstemci tarafından kaynak erişimi sırasında: [kaynak sunucu](#resource-server)tarafından uygulandığı gibi, erişim denetim kararlarını bunlara dayalı hale getirmek için [erişim belirtecinde](#access-token) bulunan [talep](#claim) değerleri kullanılarak.
 
-## <a name="authorization-code"></a>yetkilendirme kodu
+## <a name="authorization-code"></a>Yetkilendirme kodu
 
 Dört OAuth2 [yetkilendirmesinin](#authorization-grant)bir parçası olarak, "yetkilendirme kodu" akışının bir parçası olarak, bir [istemci uygulamasına](#client-application) [Yetkilendirme uç noktası](#authorization-endpoint)tarafından bir kısa süreli "belirteç" sağlanmış. Kod, kaynak sahibinin kimlik doğrulamasının istenen kaynaklara erişim yetkisi olduğunu gösteren bir [kaynak sahibinin](#resource-owner)kimlik doğrulamasına yanıt olarak istemci uygulamasına döndürülür. Akışın bir parçası olarak, kod daha sonra bir [erişim belirteci](#access-token)için daha sonra kullanılır.
 
@@ -113,9 +113,9 @@ Bir son kullanıcı [kaynak sahibinin](#resource-owner)kimlik doğrulamasıyla i
 
 Daha fazla bilgi için bkz. [Microsoft Identity platform belirteci başvurusu][AAD-Tokens-Claims] .
 
-## <a name="microsoft-identity-platform"></a>Microsoft kimlik platformu
+## <a name="microsoft-identity-platform"></a>Microsoft Identity platformu
 
-Microsoft kimlik platformu, Azure Active Directory (Azure AD) kimlik hizmeti ve geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Bu, bir kimlik doğrulama hizmeti, kitaplıklar, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler. Daha fazla bilgi için bkz. [Microsoft Identity platform hakkında](about-microsoft-identity-platform.md) .
+Microsoft Identity Platform, Azure Active Directory (Azure AD) kimlik hizmeti ve geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Bu, bir kimlik doğrulama hizmeti, kitaplıklar, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler. Daha fazla bilgi için bkz. [Microsoft Identity platform hakkında](about-microsoft-identity-platform.md) .
 
 ## <a name="multi-tenant-application"></a>çok kiracılı uygulama
 
@@ -170,7 +170,7 @@ En iyi yöntem adlandırma kuralı, "Resource. Operation. Constraint" biçimini 
 
 OAuth2 belirteci veya SAML 2,0 onayı gibi talepler içeren imzalı bir belge. Bir OAuth2 [yetkilendirme izni](#authorization-grant)için, bir [erişim belirteci](#access-token) (OAuth2) ve [kimlik belirteci](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) , her ikisi de [JSON Web token (JWT)][JWT]olarak uygulanan güvenlik belirteçleri türleridir.
 
-## <a name="service-principal-object"></a>hizmet sorumlusu nesnesi
+## <a name="service-principal-object"></a>Hizmet sorumlusu nesnesi
 
 [Azure Portal][AZURE-portal]bir uygulamayı kaydettiğinizde/güncelleştirdiğinizde, Portal bu kiracı için hem bir [uygulama nesnesi](#application-object) hem de karşılık gelen bir hizmet sorumlusu nesnesi oluşturur/güncelleştirir. Uygulama nesnesi, uygulamanın kimlik yapılandırmasını küresel olarak (ilişkili uygulamanın erişim izni verilen tüm kiracılarda) *tanımlar* ve kendisine karşılık gelen hizmet sorumlusu nesnesinin, çalışma zamanında (belirli bir kiracıda) yerel olarak kullanılmak üzere *türetildiği* şablondur.
 
@@ -196,7 +196,7 @@ Azure AD dizininin bir örneği Azure AD kiracısı olarak adlandırılır. Aşa
 
 Azure AD kiracılar kayıt sırasında Azure ve Office 365 abonelikleri tarafından oluşturulur/ilişkilendirilir ve abonelik için Kimlik ve Erişim Yönetimi özellikler sağlar. Azure abonelik yöneticileri Azure portal aracılığıyla ek Azure AD kiracıları da oluşturabilir. Bir kiracıya erişim sağlamak için kullanabileceğiniz çeşitli yollarla ilgili ayrıntılar için bkz. [Azure Active Directory kiracı alma][AAD-How-To-Tenant] . Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkilendirilmesi][AAD-How-Subscriptions-Assoc] .
 
-## <a name="token-endpoint"></a>belirteç uç noktası
+## <a name="token-endpoint"></a>Belirteç uç noktası
 
 OAuth2 [yetkilendirmesini](#authorization-grant)desteklemek için [yetkilendirme sunucusu](#authorization-server) tarafından uygulanan uç noktalardan biri. Grant öğesine bağlı olarak, bir [erişim belirteci](#access-token) (ve ilgili "yenileme" belirteci) bir [Istemciye](#client-application)veya [OpenID Connect][OpenIDConnect] protokolüyle birlikte kullanıldığında [kimlik belirtecine](#id-token) sahip olmak için kullanılabilir.
 

@@ -12,11 +12,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387479"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260429"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir HTTP kaynağından veri taşıma
 
@@ -52,9 +52,9 @@ Aşağıdaki tabloda, HTTP bağlantılı hizmetine özgü JSON öğeleri açıkl
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür | **Type** özelliği **http**olarak ayarlanmalıdır. | Evet |
-| url | Web sunucusunun temel URL 'SI. | Evet |
-| authenticationType | Kimlik doğrulama türünü belirtir. İzin verilen değerler **anonim**, **temel**, **Özet**, **Windows**ve **ClientCertificate**'tir. <br><br> Daha fazla özellik ve bu kimlik doğrulama türleri için JSON örnekleri için bu makaledeki sonraki bölümlere bakın. | Evet |
+| type | **Type** özelliği **http**olarak ayarlanmalıdır. | Yes |
+| url | Web sunucusunun temel URL 'SI. | Yes |
+| authenticationType | Kimlik doğrulama türünü belirtir. İzin verilen değerler **anonim**, **temel**, **Özet**, **Windows**ve **ClientCertificate**'tir. <br><br> Daha fazla özellik ve bu kimlik doğrulama türleri için JSON örnekleri için bu makaledeki sonraki bölümlere bakın. | Yes |
 | enableServerCertificateValidation | Kaynak bir HTTPS Web sunucusu ise, sunucu SSL sertifika doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. HTTPS sunucunuz otomatik olarak imzalanan bir sertifika kullandığında, bu **değeri false**olarak ayarlayın. | Hayır<br /> (varsayılan değer **true**'dur) |
 | gatewayName | Şirket içi HTTP kaynağına bağlanmak için kullanılacak Veri Yönetimi ağ geçidi örneğinin adı. | Evet, şirket içi bir HTTP kaynağından veri kopyalıyorsanız |
 | encryptedCredential | HTTP uç noktasına erişmek için şifrelenmiş kimlik bilgileri. Değer, kopyalama sihirbazında veya **ClickOnce** iletişim kutusunu kullanarak kimlik doğrulama bilgilerini yapılandırdığınızda otomatik olarak oluşturulur. | Hayır<br /> (yalnızca şirket içi HTTP sunucusundan veri kopyaladığınızda geçerlidir) |
@@ -67,8 +67,8 @@ Aşağıdaki tabloda, HTTP bağlantılı hizmetine özgü JSON öğeleri açıkl
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| userName adı | HTTP uç noktasına erişmek için kullanılacak Kullanıcı adı. | Evet |
-| parola | Kullanıcının parolası (Kullanıcı**adı**). | Evet |
+| userName adı | HTTP uç noktasına erişmek için kullanılacak Kullanıcı adı. | Yes |
+| password | Kullanıcının parolası (Kullanıcı**adı**). | Yes |
 
 **Örnek: Basic, Digest veya Windows kimlik doğrulamasını kullanma**
 
@@ -97,7 +97,7 @@ Temel kimlik doğrulamasını kullanmak için **AuthenticationType** ' i **Clien
 | --- | --- | --- |
 | embeddedCertData | PFX dosyasının ikili verilerinin Base64 ile kodlanmış içeriği. | **Embeddedcertdata** veya **certparmak izi** belirtin |
 | certThumbprint | Ağ Geçidi makinenizin sertifika deposunda yüklü olan sertifikanın parmak izi. Yalnızca şirket içi HTTP kaynağından veri kopyaladığınızda geçerlidir. | **Embeddedcertdata** veya **certparmak izi** belirtin |
-| parola | Sertifikayla ilişkili parola. | Hayır |
+| password | Sertifikayla ilişkili parola. | Hayır |
 
 Kimlik doğrulaması için **Certparmak izi** kullanırsanız ve sertifika yerel bilgisayarın Kişisel deposunda yüklüyse, ağ geçidi hizmetine okuma izinleri verin:
 
@@ -159,7 +159,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin **türü** **http**olarak ayarlanmalıdır. | Evet |
+| type | Veri kümesinin **türü** **http**olarak ayarlanmalıdır. | Yes |
 | relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. <br><br> Dinamik bir URL oluşturmak için [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md)kullanabilirsiniz. Örnek: **relativeUrl**: **$ $Text. Format ('/My/Report? month = {0: yyyy}-{0: mm} & fmt = CSV ',, daBaşlat)** . | Hayır |
 | requestMethod | HTTP yöntemi. İzin verilen değerler **Al** ve **Postala**. | Hayır <br />(varsayılan değer **Al**) |
 | additionalHeaders | Ek HTTP istek üstbilgileri. | Hayır |
