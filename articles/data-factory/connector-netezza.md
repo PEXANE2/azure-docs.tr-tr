@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
 ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357203"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244543"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Netezza'dan verileri kopyalama
 
@@ -121,8 +121,8 @@ Netezza öğesinden veri kopyalamak için, veri kümesinin **Type** özelliğini
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | DataSet 'in Type özelliği: **NetezzaTable** olarak ayarlanmalıdır | Yes |
-| schema | Şemanın adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
-| table | Tablonun adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| şema | Şemanın adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| tablo | Tablonun adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve `table` kullanın. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**

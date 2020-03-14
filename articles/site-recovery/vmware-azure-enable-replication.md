@@ -7,11 +7,11 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363271"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257322"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware VM 'Leri için Azure 'a çoğaltmayı etkinleştirme
 

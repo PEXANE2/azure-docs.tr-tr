@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382855"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238933"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
 
@@ -347,7 +347,7 @@ Uygulamayı Azure 'a dağıtmadan önce, sertifikayı tüm uzak küme düğümle
 
 İlk olarak, sertifikayı bir PFX dosyasına aktarın. certlm.msc uygulamasını açın ve **Kişisel**>**Sertifikalar**’a gidin.  *Mytestcert* sertifikasına sağ tıklayın ve **dışarı aktar**>**Tüm görevler** ' i seçin.
 
-![Sertifikayı ver][image4]
+![Sertifikayı dışarı aktarma][image4]
 
 Dışarı aktarma sihirbazında **Evet, özel anahtarı dışarı aktar** seçeneğini belirleyin ve Kişisel Bilgi Değişimi (PFX) biçimini seçin.  Dosyayı *C:\Users\sfuser\votingappcert.pfx* konumuna aktarın.
 

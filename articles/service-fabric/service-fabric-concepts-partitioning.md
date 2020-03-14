@@ -4,11 +4,11 @@ description: Service Fabric durum bilgisi olan hizmetlerin nasıl bölümlenece�
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390206"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258622"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Güvenilir hizmetler Service Fabric bölüm
 Bu makalede, Azure Service Fabric güvenilir Hizmetleri bölümlemeye yönelik temel kavramlara giriş sunulmaktadır. Makalede kullanılan kaynak kodu [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)'da da kullanılabilir.

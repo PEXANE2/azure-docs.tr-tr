@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 6fef1829e008b58f50546e9e6e7ad2ccee037224
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78892831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245271"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -495,9 +495,17 @@ Spot fiyatlandırma hakkında daha fazla bilgi için [Azure spot sanal makineler
 
 Ayrıca, Azure adanmış bir konağın kavramlarını da sunmaktadır. Adanmış konak kavramı, Azure tarafından gerçekleştirilen düzeltme eki uygulama döngülerinde daha fazla denetim sağlar. Düzeltme eki uygulama, kendi zamanlamalarınız doğrultusunda zaman alabilir. Bu teklif, müşterileri normal iş yükü döngüsünü izleyemeyebilir iş yüküne yönelik olarak hedefler. Azure ayrılmış ana bilgisayar teklifleri kavramlarını okumak için, [Azure adanmış ana bilgisayar](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)makalesini okuyun. Bu teklifin kullanılması SAP iş yükü için desteklenir ve altyapı ve Microsoft 'un nihai bakım planları üzerinde daha fazla denetime sahip olmak isteyen çeşitli SAP müşterileri tarafından kullanılır. Microsoft 'un sanal makineleri barındıran Azure altyapısını nasıl koruduğu ve düzeltme eklerinin bulunduğu hakkında daha fazla bilgi için, [Azure 'da sanal makineler Için bakım](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates)makalesini okuyun.
 
+#### <a name="generation-1-and-generation-2-virtual-machines"></a>1\. nesil ve 2. nesil sanal makineler
+Microsoft 'un Hiper Yöneticisi iki farklı nesil sanal makineyi işleyebilir. Bu biçimler 1. **kuşak** ve **2. nesil**olarak adlandırılır. **2. nesil** Windows Server 2012 hiper yönetici ile 2012 yılında sunulmuştur. Azure, 1. nesil sanal makineler kullanarak başladı. Azure sanal makinelerini dağıtırken, varsayılan olarak 1. kuşak biçimini kullanmaya devam etmektedir. Ayrıca 2. nesil VM biçimlerini de dağıtabilirsiniz. [Azure üzerinde 2. nesil VM 'ler Için destek](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) makalesinde 2. nesil VM olarak DAĞıTıLABILECEK Azure VM aileleri listelenir. Bu makalede ayrıca, 2. nesil sanal makinelerin Hyper-V özel bulutu ve Azure üzerinde çalıştırılabilen çok önemli işlevsel farklılıkları listelenmektedir. Daha önemli bu makalede, 1. nesil sanal makineler ve 2. nesil VM 'Ler arasındaki işlevsel farklılıklar Azure 'da çalıştırılanlar için de listelenmiştir. 
+
+> [!NOTE]
+> Azure 'da çalışan 1. nesil ve 2. nesil VM 'lerin işlevsel farklılıkları vardır. Bu farklılıkların bir listesini görmek için [Azure 'da 2. nesil VM 'ler Için destek](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) makalesini okuyun.  
+ 
+Var olan bir VM 'yi bir nesle başka bir nesle taşımak mümkün değildir. Sanal makine üretimini değiştirmek için, oluşturma işlemi için gereken yeni bir VM 'yi dağıtmanız ve nesin sanal makinesinde çalıştırdığınız yazılımı yeniden yüklemeniz gerekir. Bu yalnızca VM 'nin temel VHD görüntüsünü etkiler ve veri diskleri veya bağlı NFS ya da SMB paylaşımlarını etkilemez. Örneğin, 1. nesil bir VM 'de, başlangıçta atanan veri diskleri, NFS veya SMB paylaşımları
+
+Bu andan itibaren, özellikle Azure a serisi VM 'Ler ve Mv2 serisi VM 'Ler arasında bu sorunla karşılaşırsınız. 1\. nesil VM biçimindeki sınırlamalar nedeniyle, Mv2 ailesinin büyük VM 'Leri 1. kuşak biçiminde sunulamaz, ancak özel olarak 2. nesil olarak sunulacak. Diğer taraftan, M serisi VM ailesi henüz 2. nesil olarak dağıtılmakta etkin değildir. Sonuç olarak, M serisi ve Mv2 serisi sanal makineler arasında yeniden boyutlandırma, yazılımın diğer VM ailesini hedeflediğiniz bir sanal makinede yeniden yüklenmesini gerektirir. Microsoft, 2. nesil dağıtımlar için e-serisi VM 'Leri dağıtmanıza olanak tanımak üzere çalışmaktadır. D serisi VM 'Leri daha sonra 2. nesil VM 'Ler olarak dağıtmak, d serisi ve Mv2 serisi sanal makineler arasında daha az yeniden boyutlandırmaya olanak tanımak için kullanılır. Her iki yönde de, d serisinden daha büyük Mv2 serisi sanal makinelere veya daha büyük Mv2 serisi VM 'lerden daha küçük d serisi VM 'lere aşağı doğru boyutlandırmaya kadar, E-serisi VM 'Ler 2. nesil VM 'Ler olarak dağıtılarak belgeler güncelleştirilir.    
 
  
-
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Depolama: Microsoft Azure Depolama ve veri diskleri
 Microsoft Azure Sanal Makineler farklı depolama türlerini kullanır. SAP 'yi Azure sanal makine Hizmetleri 'nde uygularken, bu iki ana depolama türü arasındaki farklılıkları anlamak önemlidir:

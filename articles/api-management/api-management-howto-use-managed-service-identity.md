@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
 ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380836"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249639"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management Yönetilen kimlikler kullanma
 
@@ -30,7 +30,7 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir API 
 
 1. Portalda genellikle yaptığınız gibi bir API Management örneği oluşturun. Portalda bu sayfaya gidin.
 2. **Yönetilen hizmet kimliklerini**seçin.
-3. Azure Active Directory için kayıt anahtarına kaydolun. Kaydet'e tıklayın.
+3. Azure Active Directory için kayıt anahtarına kaydolun. Kaydet’e tıklayın.
 
 ![MSI 'yi etkinleştirme](./media/api-management-msi/enable-msi.png)
 

@@ -4,11 +4,11 @@ description: Her düğüm türü/sanal makine ölçek kümesi için otomatik öl
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389870"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258739"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Bir kümenin ölçeğini daraltma veya genişletme
 

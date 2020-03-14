@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 37932a3669dc1ed7f8f3f103db93ee6757a06aad
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: dbea68f5699f26b866d2e22c960c0359bcb3479b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390453"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267202"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux sanal makineleri için Zamanlanan Olaylar
 
@@ -46,7 +46,7 @@ Zamanlanan Olaylar, uygulamanız bakımın ne zaman yapılacağını bulabilir v
 Zamanlanan Olaylar aşağıdaki kullanım durumlarında Olaylar sağlar:
 
 - [Platform tarafından başlatılan bakım](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (ÖRNEĞIN, VM yeniden başlatma, dinamik geçiş veya konak için güncelleştirmeleri koruma)
-- Azaltılmış donanım
+- Sanal makine, yakında başarısız olarak tahmin edilen [düşürülmüş konak donanımında](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) çalışıyor
 - Kullanıcı tarafından başlatılan bakım (örneğin, bir Kullanıcı bir VM 'yi yeniden başlatır veya yeniden dağıtır)
 - [Spot VM](spot-vms.md) ve [spot ölçek kümesi](../../virtual-machine-scale-sets/use-spot.md) örnek çıkarmaları.
 
@@ -146,6 +146,9 @@ Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, b
 | Yeniden dağıtım | 10 dakika |
 | Preempt | 30 saniye |
 | Sonlandırmayı | [Kullanıcı yapılandırılabilir](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 ila 15 dakika |
+
+> [!NOTE] 
+> Azure, bazı durumlarda ana bilgisayar başarısızlığını düşürülmüş bir donanım nedeniyle tahmin edebilir ve bir geçiş zamanlayarak hizmetinize olan kesintiyi azaltmaya çalışacaktır. Etkilenen sanal makineler, genellikle gelecekte birkaç gün olan `NotBefore` zamanlanan bir olay alacaktır. Gerçek süre, tahmin edilen hata riski değerlendirmesine bağlı olarak farklılık gösterir. Azure, mümkün olduğunda 7 gün daha kısa bir bildirimde bulunmaya çalışır, ancak tahmin, donanım arızalanmaya yönelik yüksek bir şansınız olması durumunda gerçek zaman değişir ve daha küçük olabilir. Sistemin sistem tarafından başlatılan geçişten önce başarısız olması durumunda hizmetinize yönelik riski en aza indirmek için, sanal makinenizi mümkün olan en kısa sürede otomatik olarak yeniden dağıtmanız önerilir.
 
 ### <a name="start-an-event"></a>Olay başlatma 
 

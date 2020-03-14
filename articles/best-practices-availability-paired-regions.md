@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jeconnoc
-ms.openlocfilehash: 0e47bde280e9483f3c265e0d3147eadcbb128612
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 778943dad9a04632797d5d9165b6f1f9a3eb9850
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344221"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248261"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşlenmiş bölgeler
 
@@ -26,7 +26,7 @@ Bölgesel bir çift aynı coğrafya içindeki iki bölgeden oluşur. Azure, her 
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Bazı Azure Hizmetleri, iş sürekliliği sağlamak ve veri kaybına karşı korumak için eşleştirilmiş bölgelerden daha fazla avantaj sağlar.  Azure, veri kullanılabilirliği sağlamak için eşleştirilmiş bölgelerin avantajlarından yararlanan birkaç [depolama çözümü](/storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) sağlar. Örneğin, [Azure coğrafi olarak yedekli depolama](/storage/common/storage-redundancy.md#geo-redundant-storage) (GRS), verileri bir ikincil bölgeye otomatik olarak çoğaltır ve verilerin, birincil bölgenin kurtarılabilir olmaması durumunda bile dayanıklı olmasını sağlar. 
+Bazı Azure Hizmetleri, iş sürekliliği sağlamak ve veri kaybına karşı korumak için eşleştirilmiş bölgelerden daha fazla avantaj sağlar.  Azure, veri kullanılabilirliği sağlamak için eşleştirilmiş bölgelerin avantajlarından yararlanan birkaç [depolama çözümü](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) sağlar. Örneğin, [Azure coğrafi olarak yedekli depolama](./storage/common/storage-redundancy.md#geo-redundant-storage) (GRS), verileri bir ikincil bölgeye otomatik olarak çoğaltır ve verilerin, birincil bölgenin kurtarılabilir olmaması durumunda bile dayanıklı olmasını sağlar. 
 
 Tüm Azure hizmetlerinin verileri otomatik olarak çoğaltmadığını ve tüm Azure hizmetlerinin otomatik olarak başarısız bir bölgeden çiftiyle geri dönemediğini unutmayın.  Bu gibi durumlarda, kurtarma ve çoğaltmanın müşteri tarafından yapılandırılması gerekir.
 

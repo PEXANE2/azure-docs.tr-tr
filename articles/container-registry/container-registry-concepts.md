@@ -4,11 +4,11 @@ description: Azure Container kayıt defterleri, depolar ve kapsayıcı görünt�
 ms.topic: article
 ms.date: 09/10/2019
 ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668853"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247065"
 ---
 # <a name="about-registries-repositories-and-images"></a>Kayıt defterleri, depolar ve görüntüler hakkında
 

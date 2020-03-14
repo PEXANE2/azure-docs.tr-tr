@@ -5,15 +5,15 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387096"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255151"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Ölçeklenebilir ve performansa yönelik tablolar tasarlama
 
@@ -140,19 +140,8 @@ Tablo hizmeti, varlık grubu işlemleri (EGTs) birden fazla varlıkta atomik gü
 Yumurtları, tasarımınızda değerlendirmenize yönelik potansiyel bir ticaretle da tanıtılmaktadır. Diğer bir deyişle, Azure 'un düğümler arasında yük dengeleme isteklerini daha fazla fırsata sahip olduğu için daha fazla bölüm kullanmak uygulamanızın ölçeklenebilirliğini artırır. Ancak daha fazla bölüm kullanılması, uygulamanızın Atomik işlemler gerçekleştirme becerisini sınırlayabilir ve verileriniz için güçlü tutarlılık sağlayabilir. Ayrıca, tek bir düğüm için bekleneceğiniz işlem verimini sınırlayabilen bir bölüm düzeyinde belirli ölçeklenebilirlik hedefleri vardır. Azure Standart depolama hesapları için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik hedefleri](../common/scalability-targets-standard-account.md). Tablo hizmeti için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Tablo depolama Için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md).
 
 ## <a name="capacity-considerations"></a>Kapasite konuları
-Aşağıdaki tabloda, bir tablo hizmeti çözümü tasarlarken farkında olacak bazı anahtar değerler açıklanmaktadır:  
 
-| Bir Azure depolama hesabının toplam kapasite | 500 TB |
-| --- | --- |
-| Bir Azure depolama hesabındaki tablolar sayısı |Depolama hesabının kapasite yalnızca sınırlıdır |
-| Bir tablodaki bölümlerin sayısı |Depolama hesabının kapasite yalnızca sınırlıdır |
-| Bir bölümdeki varlıkların sayısı |Depolama hesabının kapasite yalnızca sınırlıdır |
-| Tek bir varlık boyutu |Maksimum 255 özelliği olan 1 MB 'a kadar ( **Partitionkey**, **Rowkey**ve **timestamp**dahil) |
-| **Partitionkey** boyutu |Bir dize boyutu 1 KB'a kadar |
-| **Rowkey** boyutu |Bir dize boyutu 1 KB'a kadar |
-| Bir varlık grubu işlem boyutu |Bir işlem en fazla 100 varlık içerebilir ve yükü boyutu 4 MB'tan küçük olmalıdır. Bir EGT varlığın yalnızca bir kez güncelleştirebilirsiniz. |
-
-Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>Maliyetle ilgili konular
 Tablo Depolaması nispeten ucuzdur, ancak herhangi bir tablo hizmeti çözümünün değerlendirmesi kapsamında hem kapasite kullanımı hem de işlem miktarı için maliyet tahminleri dahil edilmelidir. Ancak, Çoğu senaryoda, çözümünüzün performansını veya ölçeklenebilirliğini geliştirmek için Normalleştirilmemiş veya yinelenen verilerin depolanması geçerli bir yaklaşımdır. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).  

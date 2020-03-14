@@ -4,11 +4,11 @@ description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlam
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391186"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273923"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 

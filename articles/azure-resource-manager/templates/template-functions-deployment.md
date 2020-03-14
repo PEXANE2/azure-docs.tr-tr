@@ -4,11 +4,11 @@ description: Dağıtım bilgilerini almak için bir Azure Resource Manager şabl
 ms.topic: conceptual
 ms.date: 11/27/2019
 ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357379"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274274"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonlar için dağıtım işlevleri 
 

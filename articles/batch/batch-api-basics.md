@@ -15,11 +15,11 @@ ms.date: 08/29/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025954"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247689"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch içe büyük ölçekli paralel işlem çözümleri geliştirme
 
@@ -77,7 +77,7 @@ Tek bir Batch hesabında birden fazla Batch iş yükü çalıştırabilir ya da 
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-## <a name="azure-storage-account"></a>Azure Depolama hesabınızın
+## <a name="azure-storage-account"></a>Azure Storage hesabı
 
 Batch çözümlerinin çoğu, kaynak dosyalarını ve çıkış dosyalarını depolamak için Azure Depolama kullanır. Örneğin, Batch görevleriniz (standart görevler, başlangıç görevleri, iş hazırlama görevleri ve iş bırakma görevleri dahil) genellikle depolama hesabında yer alan kaynak dosyalarını belirtir.
 
@@ -143,7 +143,7 @@ Batch havuzu oluştururken Azure sanal makine yapılandırmasını ve havuzdaki 
 
     * *İşletim Sistemi Ailesi*, işletim sistemiyle hangi .NET sürümlerinin yüklendiğini de belirler.
     * Cloud Services dahilindeki çalışan rollerinde olduğu gibi bir *İşletim Sistemi Sürümü* belirtebilirsiniz (çalışan rolleri hakkında daha fazla bilgi için bkz. [Cloud Services’e genel bakış](../cloud-services/cloud-services-choose-me.md)).
-    * Çalışan rollerinde olduğu gibi düğümlerin otomatik olarak yükseltilmesi için *İşletim Sistemi Sürümü* ’ne yönelik `*` belirtilmesi önerilir ve yeni yayımlanmış sürümlerin gereksinimini karşılamak için çalışma yapılması gerekmez. Belirli bir işletim sistemi sürümünün seçildiği birincil kullanım durumu, sürümün güncelleştirilmesine izin vermeden önce geriye dönük uyumluluk testinin gerçekleştirilmesine izin vererek uygulama uyumluluğunun sağlandığından emin olmaktır. Doğrulama sonrasında havuzun *İşletim Sistemi Sürümü* güncelleştirilebilir ve yeni işletim sistemi görüntüsü yüklenebilir; çalışan tüm görevler kesilir ve yeniden kuyruğa alınır.
+    * Çalışan rollerinde olduğu gibi düğümlerin otomatik olarak yükseltilmesi için `*`İşletim Sistemi Sürümü *’ne yönelik* belirtilmesi önerilir ve yeni yayımlanmış sürümlerin gereksinimini karşılamak için çalışma yapılması gerekmez. Belirli bir işletim sistemi sürümünün seçildiği birincil kullanım durumu, sürümün güncelleştirilmesine izin vermeden önce geriye dönük uyumluluk testinin gerçekleştirilmesine izin vererek uygulama uyumluluğunun sağlandığından emin olmaktır. Doğrulama sonrasında havuzun *İşletim Sistemi Sürümü* güncelleştirilebilir ve yeni işletim sistemi görüntüsü yüklenebilir; çalışan tüm görevler kesilir ve yeniden kuyruğa alınır.
 
 Havuz oluştururken VHD'nizin temel görüntüsünün işletim sistemine bağlı olarak uygun **nodeAgentSkuId** değerini seçmeniz gerekir. [Desteklenen düğüm Aracısı SKU 'Larını Listele](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) işlemini çağırarak, Işletim sistemi görüntüsü başvurularına kullanılabilir düğüm Aracısı SKU kimliklerinin eşlemesini alabilirsiniz.
 
@@ -189,7 +189,7 @@ Dinamik iş yükleri için bir havuza bir [Otomatik ölçeklendirme formülü](#
 
 [Düğüm başına en fazla görev](batch-parallel-node-tasks.md) yapılandırma seçeneği havuzdaki her bir işlem düğümünde paralel olarak çalıştırabilecek en fazla görev sayısını belirler.
 
-Varsayılan yapılandırma bir düğümde tek seferde bir görevin çalışacağını belirtir, ancak bir düğümde aynı anda iki veya daha fazla görev yürütülmesinin faydalı olduğu senaryolar da vardır. Düğüm başına birden fazla görevden nasıl yararlanabileceğinizi görmek için [eşzamanlı düğüm görevleri](batch-parallel-node-tasks.md) makalesindeki [örnek senaryoya](batch-parallel-node-tasks.md#example-scenario) bakın.
+Varsayılan yapılandırma bir düğümde tek seferde bir görevin çalışacağını belirtir, ancak bir düğümde aynı anda iki veya daha fazla görev yürütülmesinin faydalı olduğu senaryolar da vardır. Düğüm başına birden fazla görevden nasıl yararlanabileceğinizi görmek için [eşzamanlı düğüm görevleri](batch-parallel-node-tasks.md#example-scenario) makalesindeki [örnek senaryoya](batch-parallel-node-tasks.md) bakın.
 
 Ayrıca, Batch 'in görevleri bir havuzdaki tüm düğümlerde eşit olarak paketleyemeyeceğini veya bir düğümdeki görevleri başka bir düğüme atamadan önce en fazla sayıda göreve paketleyemeyeceğini belirleyen bir *Fill türü*de belirtebilirsiniz.
 
@@ -228,9 +228,9 @@ Havuz işlem düğümlerinin oluşturulması gereken Azure [sanal ağın (VNet)]
 
     Bir **duvar saati zamanı üst sınırı** ayarlayabilirsiniz; böylece bir iş belirtilen duvar saati zamanı üst sınırından daha uzun süre çalışırsa iş ve tüm görevleri sonlandırılır.
 
-    Batch başarısız olan görevleri algılayabilir ve sonra yeniden deneyebilir. Bir görevin *her zaman* yeniden deneneceği veya *hiçbir zaman* yeniden denenmeyeceği gibi kısıtlama olarak **en fazla görev yeniden deneme sayısı** belirtebilirsiniz. Bir görevi yeniden denemek, görevin tekrar çalıştırmak için yeniden kuyruğa olduğu anlamına gelir.
+    Batch başarısız olan görevleri algılayabilir ve sonra yeniden deneyebilir. Bir görevin **her zaman** yeniden deneneceği veya *hiçbir zaman* yeniden denenmeyeceği gibi kısıtlama olarak *en fazla görev yeniden deneme sayısı* belirtebilirsiniz. Bir görevi yeniden denemek, görevin tekrar çalıştırmak için yeniden kuyruğa olduğu anlamına gelir.
 
-* İstemci uygulamanız bir işe görevler ekleyebilir ya da bir [iş yöneticisi görevi](#job-manager-task) belirtebilirsiniz. Bir iş yöneticisi görevi havuzdaki işlem düğümlerinden birinde çalıştırılan görevle birlikte bir iş için gereken görevleri oluşturmak üzere gerekli bilgileri içerir. İş yöneticisi görevi özellikle Batch tarafından işlenir; işin oluşturulmasının hemen ardından kuyruğa alınır ve başarısız olursa yeniden başlatılır. İş örneği oluşturulmadan görevleri tanımlamanın tek yolu olduğundan iş yöneticisi görevi, bir [iş zamanlaması](#scheduled-jobs) tarafından oluşturulan işler için *gereklidir*.
+* İstemci uygulamanız bir işe görevler ekleyebilir ya da bir [iş yöneticisi görevi](#job-manager-task) belirtebilirsiniz. Bir iş yöneticisi görevi havuzdaki işlem düğümlerinden birinde çalıştırılan görevle birlikte bir iş için gereken görevleri oluşturmak üzere gerekli bilgileri içerir. İş yöneticisi görevi özellikle Batch tarafından işlenir; işin oluşturulmasının hemen ardından kuyruğa alınır ve başarısız olursa yeniden başlatılır. İş örneği oluşturulmadan görevleri tanımlamanın tek yolu olduğundan iş yöneticisi görevi, bir *iş zamanlaması* tarafından oluşturulan işler için [gereklidir](#scheduled-jobs).
 * Varsayılan olarak, işteki tüm görevler tamamlandığında iş etkin durumda kalır. Bu davranışı, işteki tüm görevler tamamlandığında işin otomatik olarak sonlandırılacağı şekilde değiştirebilirsiniz. Tüm görevleri tamamlandı durumundaysa işi otomatik olarak sonlandırmak için işin **onalltaskscompleted** özelliğini (Batch .net 'te[onalltaskscompleted][net_onalltaskscomplete] ) *terminatejob 'un engellenmesi* olarak ayarlayın.
 
     Batch hizmeti, tüm görevlerinin tamamlanması için görev *içermeyen* bir işi kabul eder. Bu nedenle, bu seçenek genellikle [iş yöneticisi görevi](#job-manager-task) ile kullanılır. İş yöneticisi olmadan otomatik iş sonlandırmayı kullanmak istiyorsanız başlangıçta yeni işin **onAllTasksComplete** özelliğini *noaction* olarak ayarlamanız ve işe görev eklemeyi bitirdiğinizde bu ayarı *terminatejob* olarak değiştirmeniz gerekir.
@@ -287,7 +287,7 @@ Başlangıç görevinin birincil avantajı, bir işlem düğümünü yapılandı
 
 Herhangi bir Azure Batch görevinde olduğu gibi, [Azure Storage][azure_storage]'da **kaynak dosyalarının** bir listesini de yürütülecek bir **komut satırına** belirtebilirsiniz. Batch hizmeti ilk olarak kaynak dosyaları düğümden Azure Depolama’ya kopyalar ve ardından komut satırını çalıştırır. Bir havuz başlangıç görevinde dosya listesi genellikle görev uygulamasını ve onun bağımlılıklarını içerir.
 
-Ancak başlangıç görevi, işlem düğümü üzerinde çalışan tüm görevler tarafından kullanılacak başvuru verilerini de içerebilir. Örneğin, bir başlangıç görevinin komut satırı, uygulama dosyalarını (kaynak dosya olarak belirtilir ve düğüme indirilir) başlangıç görevinin [çalışma dizininden](#files-and-directories)[paylaşılan klasöre](#files-and-directories) kopyalamak üzere bir `robocopy` işlemi gerçekleştirebilir ve ardından bir MSI ya da `setup.exe` çalıştırabilir.
+Ancak başlangıç görevi, işlem düğümü üzerinde çalışan tüm görevler tarafından kullanılacak başvuru verilerini de içerebilir. Örneğin, bir başlangıç görevinin komut satırı, uygulama dosyalarını (kaynak dosya olarak belirtilir ve düğüme indirilir) başlangıç görevinin `robocopy`çalışma dizininden[](#files-and-directories)paylaşılan klasöre[ kopyalamak üzere bir ](#files-and-directories) işlemi gerçekleştirebilir ve ardından bir MSI ya da `setup.exe` çalıştırabilir.
 
 Bu, düğümün görevlere atanmak üzere hazır olduğunu düşünmeden önce başlangıç görevinin tamamlanmasını beklemek amacıyla Batch hizmeti için genelde istenen bir durumdur, ancak bunu yapılandırabilirsiniz.
 

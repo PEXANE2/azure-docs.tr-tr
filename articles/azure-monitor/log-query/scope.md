@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
 ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358298"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249600"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics
 [Azure portal Log Analytics](get-started-portal.md)bir [günlük sorgusu](log-query-overview.md) çalıştırdığınızda, sorgu tarafından değerlendirilen veri kümesi, seçtiğiniz kapsama ve zaman aralığına bağlıdır. Bu makalede kapsam ve zaman aralığı ve gereksinimlerinize bağlı olarak her bir şekilde nasıl ayarlayabileceğiniz açıklanır. Ayrıca, farklı kapsam türlerinin davranışlarını açıklar.

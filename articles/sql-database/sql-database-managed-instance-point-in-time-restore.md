@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197530"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268814"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Yönetilen bir örnekteki SQL veritabanını önceki zaman noktasına geri yükleme
 
@@ -44,7 +44,7 @@ Aşağıdaki tabloda, yönetilen örnekler için zaman içinde geri yükleme sen
 
 |           |Mevcut VERITABANıNı aynı yönetilen örneğe geri yükle| Varolan VERITABANıNı başka bir yönetilen örneğe geri yükleme|Bırakılan VERITABANıNı aynı yönetilen örneğe geri yükle|Bırakılan VERITABANıNı başka bir yönetilen örneğe geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure portalındaki**| Yes|Hayır |Yes|Hayır|
+|**Azure portalında**| Yes|Hayır |Yes|Hayır|
 |**Azure CLI**|Yes |Yes |Hayır|Hayır|
 |**PowerShell**| Yes|Yes |Yes|Yes|
 

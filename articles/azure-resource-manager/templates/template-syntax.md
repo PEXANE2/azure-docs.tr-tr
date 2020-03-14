@@ -4,11 +4,11 @@ description: Bildirim temelli JSON sözdizimi kullanan Azure Resource Manager ş
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388132"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248248"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın
 

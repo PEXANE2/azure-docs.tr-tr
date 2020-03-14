@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 02/10/2020
+ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8c995a40e621f7155ad0741004d10b1146523489
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360060"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256061"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -65,7 +65,6 @@ Algılan
 
 - Yönetilen bir örnek ile, yedekleme sıkıştırması kullanılıyorsa 4 TB 'a kadar olan veritabanları için yeterli olan bir örnek veritabanını en fazla 32 şeritli bir yedeklemeye yedekleyebilirsiniz.
 - Hizmet tarafından yönetilen Saydam Veri Şifrelemesi (TDE) ile şifrelenen bir veritabanında `BACKUP DATABASE ... WITH COPY_ONLY` çalıştıramazsınız. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız. Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
-- Azure Blob depolamaya yönelik el ile yedeklemeler yalnızca [Blockblobstorage hesaplarında](/azure/storage/common/storage-account-overview#types-of-storage-accounts)desteklenir.
 - Yönetilen bir örnekteki `BACKUP` komutu kullanılarak en fazla yedekleme şeridi boyutu, en fazla BLOB boyutu olan 195 GB 'dir. Tek tek Stripe boyutunu azaltmak ve bu sınırın içinde kalmak için yedekleme komutundaki şeritler sayısını artırın.
 
     > [!TIP]
@@ -140,8 +139,8 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
     Yönetilen örnek, `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`söz dizimi ile Azure AD veritabanı sorumlularını destekler. Bu özellik, Azure AD içeren veritabanı kullanıcıları olarak da bilinir.
 
 - `CREATE LOGIN ... FROM WINDOWS` sözdizimiyle oluşturulan Windows oturum açmaları desteklenmez. Azure Active Directory oturumlarını ve kullanıcıları kullanın.
-- Örneği oluşturan Azure AD kullanıcısının [sınırsız yönetici ayrıcalıkları](sql-database-manage-logins.md#unrestricted-administrative-accounts)vardır.
-- Yönetici olmayan Azure AD Veritabanı düzeyi kullanıcılar `CREATE USER ... FROM EXTERNAL PROVIDER` sözdizimi kullanılarak oluşturulabilir. Bkz [. Kullanıcı oluşturma... Dış SAĞLAYıCıDAN](sql-database-manage-logins.md#non-administrator-users).
+- Örneği oluşturan Azure AD kullanıcısının [sınırsız yönetici ayrıcalıkları](sql-database-manage-logins.md)vardır.
+- Yönetici olmayan Azure AD Veritabanı düzeyi kullanıcılar `CREATE USER ... FROM EXTERNAL PROVIDER` sözdizimi kullanılarak oluşturulabilir. Bkz [. Kullanıcı oluşturma... Dış SAĞLAYıCıDAN](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
 - Azure AD Server sorumluları (oturum açmalar) yalnızca yönetilen bir örnek içindeki SQL özelliklerini destekler. Aynı Azure AD kiracısı veya farklı kiracılar dahilinde olup olmadıkları fark etmeksizin, Azure AD kullanıcıları için desteklenmez. Bu özelliklere örnek olarak şunlar verilebilir:
 
   - SQL işlem çoğaltması.
@@ -470,6 +469,7 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - `sp_execute_external_scripts` desteklenmez. Bkz. [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).

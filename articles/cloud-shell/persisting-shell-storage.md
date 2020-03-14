@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360163"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252109"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Dosyaları Azure Cloud Shell Sürdür
 Cloud Shell, dosyaları oturumlarda kalıcı hale getirmek için Azure dosya depolama kullanır. İlk başlangıçta Cloud Shell, dosyaları oturumlardaki kalıcı hale getirmek için yeni veya var olan bir dosya paylaşımından ilişkilendiremenizi ister.

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376065"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253617"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Eşitleme Azure AD Connect: Azure Active Directory ile eşitlenen öznitelikler
 Bu konu, Azure AD Connect eşitleme tarafından eşitlenen öznitelikleri listeler.  
@@ -39,7 +39,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 >
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
-| Öznitelik adı | Kullanıcı | Yorum |
+| Öznitelik adı | Kullanıcı | Açıklama |
 | --- |:---:| --- |
 | accountEnabled |X |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | CN = |X | |
@@ -52,7 +52,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | userPrincipalName |X |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | yardımc |X |X | | |
@@ -175,7 +175,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | Authorıg |X |X |X | |
@@ -217,7 +217,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | managedBy | | |X | |
 | Yöneticisi |X |X | | |
 | üye | | |X | |
-| MiddleName |X |X | | |
+| middleName |X |X | | |
 | Mobil |X |X | | |
 | msExchTeamMailboxExpiration |X | | | |
 | msExchTeamMailboxOwners |X | | | |
@@ -252,12 +252,12 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | Unauthorıg |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi
-. Lisans ataması için kullanılır. |
+arasında yetersiz alanla karşılaştı. Lisans ataması için kullanılır. |
 | userPrincipalName |X | | |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Takımlar ve Skype Kurumsal Çevrimiçi
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | c |X |X | | |
@@ -305,7 +305,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | CN = |X | |X |Ortak ad veya diğer ad. Genellikle [mail] değerinin ön eki. |
@@ -320,7 +320,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | userPrincipalName |X | | |Bu UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 
 ## <a name="intune"></a>Intune
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | c |X |X | | |
@@ -338,7 +338,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII
 | userPrincipalName |X | | |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | c |X |X | | |
@@ -377,7 +377,7 @@ Bu grup, genel bir iş yükü veya uygulama için gereken en az öznitelik olara
 
 Bu grup, Azure AD dizini Office 365, Dynamics veya Intune 'u desteklemek için kullanılmazsa kullanılabilecek bir öznitelikler kümesidir. Küçük bir çekirdek öznitelikleri kümesine sahiptir.
 
-| Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
+| Öznitelik adı | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
 | CN = |X | |X | |
@@ -399,7 +399,7 @@ Bu grup, Azure AD dizini Office 365, Dynamics veya Intune 'u desteklemek için k
 ## <a name="windows-10"></a>Windows 10
 Windows 10 etki alanına katılmış bir bilgisayar (cihaz) bazı öznitelikleri Azure AD 'ye eşitler. Senaryolar hakkında daha fazla bilgi için bkz. [Windows 10 deneyimleri için etki alanına katılmış cihazları Azure AD 'ye bağlama](../active-directory-azureadjoin-devices-group-policy.md). Bu öznitelikler her zaman eşitlenir ve Windows 10, bir uygulama olarak görünmez. Windows 10 etki alanına katılmış bir bilgisayar, userCertificate özniteliği doldurulmuş olarak tanımlanır.
 
-| Öznitelik adı | Cihaz | Yorum |
+| Öznitelik adı | Cihaz | Açıklama |
 | --- |:---:| --- |
 | accountEnabled |X | |
 | deviceTrustType |X |Etki alanına katılmış bilgisayarlar için sabit kodlanmış değer. |
@@ -413,7 +413,7 @@ Windows 10 etki alanına katılmış bir bilgisayar (cihaz) bazı öznitelikleri
 
 Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** için de kullanılır.  
 
-| Öznitelik adı | Kullanıcı | Yorum |
+| Öznitelik adı | Kullanıcı | Açıklama |
 | --- |:---:| --- |
 | domainFQDN |X |Ayrıca dnadı da denir. Örneğin, contoso.com. |
 | domainNetBios |X |NetBiosName de denir. Örneğin, CONTOSO. |
@@ -422,7 +422,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 ## <a name="exchange-hybrid-writeback"></a>Exchange karma geri yazma
 **Exchange karma**'i etkinleştirmeyi seçtiğinizde, bu ÖZNITELIKLER Azure AD 'den şirket içi Active Directory geri yazılır. Exchange sürümünüze bağlı olarak, daha az öznitelik eşitlenebilir.
 
-| Öznitelik adı (Şirket içi AD) | Öznitelik adı (Connect UI) | Kullanıcı | İletişim | Grup | Yorum |
+| Öznitelik adı (Şirket içi AD) | Öznitelik adı (Connect UI) | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-Externaldirectoryobjectıd| ms-DS-dış-dizin-nesne kimliği |X | | |Azure AD 'de Cloudbağlayıcısını türetiliyor. Bu öznitelik, Exchange 2016 ve Windows Server 2016 AD 'de yenidir. |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Çevrimiçi Arşiv: müşterilerin posta arşivlemesini sağlar. |
@@ -437,7 +437,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 ## <a name="exchange-mail-public-folder"></a>Exchange posta genel klasörü
 **Exchange mail ortak klasörünü**etkinleştirmeyi seçtiğinizde bu öznitelikler şirket Içi ACTIVE DIRECTORY Azure AD 'ye eşitlenir.
 
-| Öznitelik adı | PublicFolder | Yorum |
+| Öznitelik adı | PublicFolder | Açıklama |
 | --- | :---:| --- |
 | displayName | X |  |
 | posta | X |  |
@@ -449,7 +449,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 ## <a name="device-writeback"></a>Cihaz geri yazma
 Cihaz nesneleri Active Directory oluşturulur. Bu nesneler, Azure AD 'ye veya etki alanına katılmış Windows 10 bilgisayarlara katılmış cihazlar olabilir.
 
-| Öznitelik adı | Cihaz | Yorum |
+| Öznitelik adı | Cihaz | Açıklama |
 | --- |:---:| --- |
 | Altsecuritydentities |X | |
 | displayName |X | |

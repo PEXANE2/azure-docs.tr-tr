@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367122"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257790"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
 
@@ -32,7 +32,7 @@ Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önk
 | Boş disk alanı (işlem sunucusu önbelleği) | 600 GB
 | Boş disk alanı (bekletme diski) | 600 GB|
 | İşletim sistemi  | Windows Server 2012 R2 <br> Windows Server 2016 |
-| İşletim sistemi yerel ayarı | English (US)|
+| İşletim sistemi yerel ayarı | {1&gt;İngilizce (ABD)&lt;1}|
 | VMware vSphere PowerCLI sürümü | Gerekli değil|
 | Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V |
 | Grup ilkeleri| Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelle <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelle <br> -Dosya ekleri için güven mantığı <br> -Betik yürütmeyi aç <br> [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
@@ -217,7 +217,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
 
 ## <a name="upgrade-a-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
-Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örneğin:
+Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örnek:
 
 - 9,7, 9,8, 9,9 veya 9,10 çalıştırıyorsanız, doğrudan 9,11 'e yükseltebilirsiniz.
 - 9,6 veya önceki bir sürümünü çalıştırıyorsanız ve 9,11 sürümüne yükseltmek istiyorsanız, önce sürüm 9,7 ' ye yükseltmeniz gerekir. 9,11 öncesi.

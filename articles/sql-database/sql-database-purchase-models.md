@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/09/2020
 ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945655"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255996"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>VCore ve DTU satın alma modelleri arasında seçim yapın
 

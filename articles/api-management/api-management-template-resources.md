@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374425"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249509"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management şablonu kaynakları
 Azure API Management, geliştirici portalı şablonlarında kullanılmak üzere aşağıdaki kaynak türlerini sağlar.  
@@ -386,7 +386,7 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
 |Webproductsyouarenotabone|Bu ürüne abone oldunuz.|  
 |WebProductsYouRequestedSubscription|Bu ürüne abonelik istediniz.|  
 |ErrorYouNeedToAgreeWithLegalTerms|Devam edebilmeniz için kullanım koşullarını kabul etmeniz gerekir.|  
-|ButtonLabelAddSubscription|Abonelik ekle|  
+|ButtonLabelAddSubscription|Abonelik ekleme|  
 |LinkLabelChangeSubscriptionName|değiştirme|  
 |Buttonlabelonayla|Onayla|  
 |TextblockMultipleSubscriptionsCount|Bu ürüne {0} aboneliğiniz var:|  
@@ -523,11 +523,11 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
   
 |Adı|Metin|  
 |----------|----------|  
-|Pagetitlekaydolma|Kaydol|  
+|Pagetitlekaydolma|Kaydolma|  
 |WebAuthenticationAlreadyAMember|Zaten üye misiniz?|  
 |WebAuthenticationCreateNewAccount|Yeni bir API Management hesabı oluşturun|  
 |WebAuthenticationSigninNow|Şimdi oturum açın|  
-|ButtonLabelSignup|Kaydol|  
+|ButtonLabelSignup|Kaydolma|  
   
 ###  <a name="SubscriptionListStrings"></a>SubscriptionListStrings  
   
@@ -535,7 +535,7 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
 |----------|----------|  
 |SubscriptionCancelConfirmation|Bu aboneliği iptal etmek istediğinizden emin misiniz?|  
 |SubscriptionRenewConfirmation|Bu aboneliği yenilemek istediğinizden emin misiniz?|  
-|WebDevelopersManageSubscriptions|Abonelikleri yönetin|  
+|WebDevelopersManageSubscriptions|Abonelikleri yönetme|  
 |WebDevelopersPrimaryKey|Birincil anahtar|  
 |WebDevelopersRegenerateLink|Yeniden Oluştur|  
 |WebDevelopersSecondaryKey|İkincil anahtar|  
@@ -582,7 +582,7 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
 |TextboxLabelEmailLastName|Soyadı|  
 |TextboxLabelNotificationsSenderEmail|Bildirim gönderen e-postası|  
 |Textboxlabelorganizasyonadi|Kuruluş adı|  
-|Subscriptionstateactıve|Active|  
+|Subscriptionstateactıve|Etkin|  
 |Subscriptionstateiptal edildi|İptal Edildi|  
 |Subscriptionstatevadesi geçildi|Süresi doldu|  
 |SubscriptionStateRejected|Reddedildi|  

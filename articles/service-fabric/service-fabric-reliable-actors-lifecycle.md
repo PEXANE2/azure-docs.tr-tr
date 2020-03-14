@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389584"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258323"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktör yaşam döngüsü, otomatik atık toplama ve el ile silme
 Bir aktör, metotlarından herhangi birine ilk kez çağrı yapıldığında etkinleştirilir. Bir aktör, yapılandırılabilir bir süre için kullanılmıyorsa devre dışı bırakılır (aktör çalışma zamanı tarafından atık olarak toplanır). Aktör ve durumu istediğiniz zaman el ile de silinebilir.
