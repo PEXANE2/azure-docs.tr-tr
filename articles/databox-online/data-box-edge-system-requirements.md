@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384750"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260234"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge sistem gereksinimleri
 
@@ -60,7 +60,7 @@ Azure IoT Edge çalışma zamanını barındıran sunucular için bağlantı nok
 
 | Bağlantı noktası No. | Dışarı veya dışarı | Bağlantı noktası kapsamı | Gerekli | Rehber |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Dışı       | SW        | Evet      | IoT Edge sağlama için giden açık. Bu yapılandırma, el ile komut dosyaları veya Azure IOT cihaz sağlama hizmeti (DPS) kullanılırken gereklidir.|
+| TCP 443 (HTTPS)| Dışı       | SW        | Yes      | IoT Edge sağlama için giden açık. Bu yapılandırma, el ile komut dosyaları veya Azure IOT cihaz sağlama hizmeti (DPS) kullanılırken gereklidir.|
 
 Tüm bilgiler için [IoT Edge dağıtımı Için güvenlik duvarı ve bağlantı noktası yapılandırma kuralları](https://docs.microsoft.com/azure/iot-edge/troubleshoot)' na gidin.
 

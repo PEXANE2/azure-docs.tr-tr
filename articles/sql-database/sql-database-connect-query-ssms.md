@@ -11,79 +11,67 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: ed33d50da84347f55d355802e7767c8477c30e87
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 03/10/2020
+ms.openlocfilehash: 31bd47128a272e75d7021180b536fe6bf7420f55
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482151"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299303"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Hızlı Başlangıç: Bağlanmak ve bir Azure SQL veritabanı sorgulamak kullanım SQL Server Management Studio
 
-Bu hızlı başlangıçta, Azure SQL veritabanına bağlanmak için [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) kullanacaksınız. Ardından, verileri sorgulamak, eklemek, güncelleştirmek ve silmek için Transact-SQL deyimlerini çalıştıracaksınız. SSMS 'yi, Microsoft Windows için SQL Server 'den SQL veritabanı 'na herhangi bir SQL altyapısını yönetmek üzere kullanabilirsiniz.  
+Bu hızlı başlangıçta, SQL Server Management Studio (SSMS) kullanarak Azure SQL veritabanına bağlanıp bazı sorguları nasıl çalıştıracağınızı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+Bu hızlı başlangıcı tamamlamak için aşağıdaki öğeler gereklidir:
 
-  || Tek veritabanı | Yönetilen örnek |
-  |:--- |:--- |:---|
-  | Oluştur| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
-  |||[Siteden bağlantı](sql-database-managed-instance-configure-p2s.md)
-  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](sql-database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms/).
+- AdventureWorksLT örnek veritabanı. AdventureWorksLT veritabanının çalışan bir kopyasına ihtiyacınız varsa [Azure SQL veritabanı oluşturma](sql-database-single-database-get-started.md) hızlı başlangıcı ' nı tamamlayarak bir tane oluşturun.
+    - Bu makaledeki betikler, AdventureWorksLT veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek kullanıyorsanız, AdventureWorks veritabanını bir örnek veritabanına içeri aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
 
-  > [!IMPORTANT]
-  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
-
-## <a name="install-the-latest-ssms"></a>En son SSMS’yi yükleyin
-
-Başlamadan önce, en son [SSMS][ssms-install-latest-84g]'yi yüklediğinizden emin olun.
+Yalnızca bazı geçici sorguları SSMS yüklemeden çalıştırmak istiyorsanız, bkz. [hızlı başlangıç: Azure Portal sorgu düzenleyicisini kullanarak BIR SQL veritabanını sorgulama](sql-database-connect-query-portal.md).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
-Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
+Veritabanınıza bağlanmak için gereken bağlantı bilgilerini alın. Bu hızlı başlangıcı tamamlayabilmeniz için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
+2. Sorgulamak istediğiniz **SQL veritabanı** veya **SQL yönetilen örneği** 'ne gidin.
 
-3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
+3. **Genel bakış** sayfasında, tam sunucu adını kopyalayın. Tek bir veritabanı için **sunucu adı** veya yönetilen örnek Için **ana bilgisayar** ' ın yanındaki tam sunucu adı ' nın yanında. Tam nitelikli ad şöyle görünür: *ServerName.Database.Windows.net*, gerçek sunucu adı olması dışında.
 
 ## <a name="connect-to-your-database"></a>Veritabanınıza bağlanın
 
-SMSS Azure SQL veritabanı sunucunuza bağlanın.
+SSMS 'de Azure SQL veritabanı sunucunuza bağlanın.
 
 > [!IMPORTANT]
 > Azure SQL veritabanı sunucusu 1433 numaralı bağlantı noktasını dinler. Şirket güvenlik duvarının arkasındaki bir SQL veritabanı sunucusuna bağlanmak için, güvenlik duvarında bu bağlantı noktasının açık olması gerekir.
->
 
-1. SSMS’i açın. **Sunucuya Bağlan** iletişim kutusu görüntülenir.
+1. SSMS’i açın.
 
-2. Aşağıdaki bilgileri girin:
+2. **Sunucuya Bağlan** iletişim kutusu görüntülenir. Aşağıdaki bilgileri girin:
 
    | Ayar      | Önerilen değer    | Açıklama |
    | ------------ | ------------------ | ----------- |
    | **Sunucu türü** | Veritabanı altyapısı | Gerekli değer. |
-   | **Sunucu adı** | Tam sunucu adı | Şöyle bir şey: **mynewserver20170313.Database.Windows.net**. |
-   | **Kimlik Doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğreticide, SQL kimlik doğrulaması kullanır. |
+   | **Sunucu adı** | Tam sunucu adı | Şöyle bir şey: **ServerName.Database.Windows.net**. |
+   | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğreticide, SQL kimlik doğrulaması kullanır. |
    | **Oturum açma** | Sunucu yönetici hesabının kullanıcı kimliği | Sunucu oluşturmak için kullanılan sunucu yönetici hesabına ait kullanıcı kimliği. |
    | **Parola** | Sunucu yönetici hesabı parolası | Sunucu oluşturmak için kullanılan sunucu yönetici hesabı parolası. |
    ||||
 
    ![sunucuya bağlan](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. **Sunucuya Bağlan** Iletişim kutusunda **seçenekleri** belirleyin. **Veritabanına Bağlan** açılan menüsünde **mysampledatabase**' i seçin. Açılan kutudan varsayılan olarak çıkarsanız, bağlantı **ana** veritabanına yapılır.
+3. **Sunucuya Bağlan** Iletişim kutusunda **seçenekleri** belirleyin. **Veritabanına Bağlan** açılan menüsünde **mysampledatabase**' i seçin. [Önkoşullar bölümünde](#prerequisites) hızlı başlangıcı tamamlamak, mysampledatabase adlı bir AdventureWorksLT veritabanı oluşturur. AdventureWorks veritabanının çalışma kopyanız mySampleDatabase öğesinden farklı bir ada sahipse, bunun yerine bunu seçin.
 
    ![sunucuda veritabanına bağlanma](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
 4. **Bağlan**’ı seçin. Nesne Gezgini penceresi açılır.
 
-5. Veritabanının nesnelerini görüntülemek için **veritabanları** ' nı genişletin ve ardından **mysampledatabase**' i genişletin.
+5. Veritabanının nesnelerini görüntülemek için **veritabanları** ' nı genişletin ve ardından veritabanı düğümünüz ' ı genişletin.
 
    ![mySampleDatabase nesneleri](./media/sql-database-connect-query-ssms/connected.png)  
 
@@ -93,7 +81,7 @@ Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.micro
 
 1. Nesne Gezgini, **Mysampledatabase** ' e sağ tıklayın ve **Yeni sorgu**' yu seçin. Veritabanınıza bağlı yeni bir sorgu penceresi açılır.
 
-2. Bu SQL sorgusunu sorgu penceresine yapıştırın.
+2. Sorgu penceresinde, aşağıdaki SQL sorgusunu yapıştırın:
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -102,11 +90,11 @@ Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.micro
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. Araç çubuğunda, `Product` ve `ProductCategory` tablolarından veri almak için **Yürüt** ' ü seçin.
+3. Araç çubuğunda, sorguyu çalıştırmak ve `Product` ve `ProductCategory` tablolarından veri almak için **Yürüt** ' ü seçin.
 
     ![Tablo ürününden ve ProductCategory 'tan veri alma sorgusu](./media/sql-database-connect-query-ssms/query2.png)
 
-## <a name="insert-data"></a>Veri ekleme
+### <a name="insert-data"></a>Veri ekleme
 
 `SalesLT.Product` tablosunda yeni bir ürün oluşturmak için bu [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL kodunu çalıştırın.
 
@@ -133,7 +121,7 @@ Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.micro
 
 2. `Product` tablosuna yeni bir satır eklemek için **Yürüt** ' ü seçin. **İletiler** bölmesi **(1 satır etkilendi)** görüntülenir.
 
-## <a name="view-the-result"></a>Görünüm sonucu
+#### <a name="view-the-result"></a>Görünüm sonucu
 
 1. Önceki sorguyu Bununla değiştirin.
 
@@ -146,11 +134,11 @@ Kategoriye göre ilk 20 ürünü sorgulamak için bu [Select](https://msdn.micro
 
    ![Ürün tablosu sorgusunun sonucu](./media/sql-database-connect-query-ssms/result.png)
 
-## <a name="update-data"></a>Verileri güncelleştirme
+### <a name="update-data"></a>Verileri güncelleştirme
 
 Yeni ürününüzü değiştirmek için bu [güncelleştirme](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL kodunu çalıştırın.
 
-1. Önceki sorguyu Bununla değiştirin.
+1. Önceki sorguyu, daha önce oluşturulan yeni kaydı döndüren bir ile değiştirin:
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -160,7 +148,7 @@ Yeni ürününüzü değiştirmek için bu [güncelleştirme](https://msdn.micro
 
 2. `Product` tablosundaki belirtilen satırı güncelleştirmek için **Yürüt** ' ü seçin. **İletiler** bölmesi **(1 satır etkilendi)** görüntülenir.
 
-## <a name="delete-data"></a>Verileri silme
+### <a name="delete-data"></a>Verileri silme
 
 Yeni ürününüzü kaldırmak için bu [Delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL kodunu çalıştırın.
 
@@ -184,7 +172,3 @@ Yeni ürününüzü kaldırmak için bu [Delete](https://msdn.microsoft.com/libr
 - Java kullanarak bağlanıp sorgulamak için bkz. [Java ile bağlanma ve sorgulama](sql-database-connect-query-java.md).
 - Python kullanarak bağlanıp sorgulamak için bkz. [Python ile bağlanma ve sorgulama](sql-database-connect-query-python.md).
 - Ruby kullanarak bağlanıp sorgulamak için bkz. [Ruby ile bağlanma ve sorgulama](sql-database-connect-query-ruby.md).
-
-<!-- Article link references. -->
-
-[ssms-install-latest-84g]: https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms

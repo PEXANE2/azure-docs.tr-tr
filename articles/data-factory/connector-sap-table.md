@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356270"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281762"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP tablosundan veri kopyalama
 
@@ -74,23 +74,23 @@ Aşağıdaki özellikler SAP BW açık hub bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type` özelliği `SapTable`olarak ayarlanmalıdır. | Evet |
+| `type` | `type` özelliği `SapTable`olarak ayarlanmalıdır. | Yes |
 | `server` | SAP örneğinin bulunduğu sunucunun adı.<br/>SAP uygulama sunucusuna bağlanmak için kullanın. | Hayır |
 | `systemNumber` | SAP sisteminin sistem numarası.<br/>SAP uygulama sunucusuna bağlanmak için kullanın.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | Hayır |
 | `messageServer` | SAP ileti sunucusunun ana bilgisayar adı.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
 | `messageServerService` | İleti sunucusunun hizmet adı veya bağlantı noktası numarası.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
 | `systemId` | Tablonun bulunduğu SAP sisteminin KIMLIĞI.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
 | `logonGroup` | SAP sistemi için oturum açma grubu.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
-| `clientId` | SAP sistemindeki istemcinin KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet |
+| `clientId` | SAP sistemindeki istemcinin KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes |
 | `language` | SAP sisteminin kullandığı dil.<br/>Varsayılan değer `EN`.| Hayır |
-| `userName` | SAP sunucusuna erişimi olan kullanıcının adı. | Evet |
-| `password` | Kullanıcının parolası. Bu alanı, Data Factory güvenli bir şekilde depolamak için `SecureString` türü ile işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| `userName` | SAP sunucusuna erişimi olan kullanıcının adı. | Yes |
+| `password` | Kullanıcının parolası. Bu alanı, Data Factory güvenli bir şekilde depolamak için `SecureString` türü ile işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
 | `sncMode` | Tablonun bulunduğu SAP sunucusuna erişmek için SNC etkinleştirme göstergesi.<br/>SAP sunucusuna bağlanmak için SNC kullanmak istiyorsanız kullanın.<br/>İzin verilen değerler `0` (kapalı, varsayılan) veya `1` (açık). | Hayır |
 | `sncMyName` | Tablonun bulunduğu SAP sunucusuna erişmek için başlatıcının SNC adı.<br/>`sncMode` açık olduğunda geçerlidir. | Hayır |
 | `sncPartnerName` | Tablonun bulunduğu SAP sunucusuna erişmek için iletişim ortağının SNC adı.<br/>`sncMode` açık olduğunda geçerlidir. | Hayır |
 | `sncLibraryPath` | Tablonun bulunduğu SAP sunucusuna erişmek için dış güvenlik ürününün kitaplığı.<br/>`sncMode` açık olduğunda geçerlidir. | Hayır |
 | `sncQop` | Uygulanacak SNC koruma düzeyi kalitesi.<br/>`sncMode` açık olduğunda geçerlidir. <br/>İzin verilen değerler `1` (kimlik doğrulaması), `2` (bütünlük), `3` (Gizlilik), `8` (varsayılan), `9` (en yüksek). | Hayır |
-| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullardan](#prerequisites)daha önce belirtildiği gibi, şirket içinde barındırılan bir tümleştirme çalışma zamanı gereklidir. |Evet |
+| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullardan](#prerequisites)daha önce belirtildiği gibi, şirket içinde barındırılan bir tümleştirme çalışma zamanı gereklidir. |Yes |
 
 **Örnek 1: SAP uygulama sunucusuna bağlanma**
 
@@ -182,8 +182,8 @@ Ve SAP BW açık hub bağlantılı hizmetine veri kopyalamak için aşağıdaki 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type` özelliği `SapTableResource`olarak ayarlanmalıdır. | Evet |
-| `tableName` | Verilerin kopyalanacağı SAP tablosunun adı. | Evet |
+| `type` | `type` özelliği `SapTableResource`olarak ayarlanmalıdır. | Yes |
+| `tableName` | Verilerin kopyalanacağı SAP tablosunun adı. | Yes |
 
 ### <a name="example"></a>Örnek
 
@@ -214,7 +214,7 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik                         | Açıklama                                                  | Gerekli |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | `type` özelliği `SapTableSource`olarak ayarlanmalıdır.         | Evet      |
+| `type`                             | `type` özelliği `SapTableSource`olarak ayarlanmalıdır.         | Yes      |
 | `rowCount`                         | Alınacak satır sayısı.                              | Hayır       |
 | `rfcTableFields`                   | SAP tablosundan kopyalanacak alanlar (sütunlar). Örneğin, `column0, column1`. | Hayır       |
 | `rfcTableOptions`                  | SAP tablosundaki satırları filtrelemeye yönelik seçenekler. Örneğin, `COLUMN0 EQ 'SOMEVALUE'`. Bu makalenin ilerleyen kısımlarında Ayrıca bkz. SAP Query operator tablosu. | Hayır       |

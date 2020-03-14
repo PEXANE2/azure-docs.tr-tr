@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7003dc19a7bfc405809de91534028aba8e0416c5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913251"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136859"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java ve IntelliJ ile ilk Azure işlevinizi oluşturma
 
@@ -46,7 +46,7 @@ Java ve IntelliJ ile bir işlev geliştirmek için aşağıdaki yazılımı yük
 1. Arşiv **Ekle** penceresinde, alanları aşağıdaki gibi doldurun:
     - _GroupID_: com. Microsoft. Azure
     - _ArtifactId_: Azure-Functions-arşiv Etype
-    - _Sürüm_: ıNTELLIJ ıdedaki bir Maven projesi oluşturmak ![[Merkezi depodan](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) en son **1,22** sürümünü kullanın
+    - _Sürüm_: ıNTELLIJ ıdedaki bir Maven projesi oluşturmak ![[Merkezi depodan](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) en son sürümü denetleyin ve kullanın
     ](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. **Tamam**' ı ve ardından **İleri**' yi seçin.
 1. Geçerli proje için ayrıntılarınızı girin ve **son**' u seçin.

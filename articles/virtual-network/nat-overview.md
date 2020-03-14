@@ -1,5 +1,6 @@
 ---
 title: Azure sanal ağ NAT nedir?
+titlesuffix: Azure Virtual Network
 description: Sanal ağ NAT özellikleri, kaynakları, mimarisi ve uygulamaya genel bakış. Sanal ağ NAT 'ın nasıl çalıştığını ve NAT ağ geçidi kaynaklarını bulutta nasıl kullanacağınızı öğrenin.
 services: virtual-network
 documentationcenter: na
@@ -13,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d8ecabab596612b443f1eb0a50fd550fdc474c43
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359249"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370823"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>Sanal ağ NAT nedir (Genel Önizleme)?
+# <a name="what-is-virtual-network-nat"></a>Sanal ağ NAT nedir?
 
 Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Internet bağlantısını basitleştirir. Bir alt ağda yapılandırıldığında, tüm giden bağlantılar belirttiğiniz statik genel IP adreslerini kullanır.  Doğrudan sanal makinelere bağlı yük dengeleyici veya genel IP adresleri olmadan giden bağlantı kurulabilir. NAT tamamen yönetiliyor ve yüksek oranda dayanıklı.
 
@@ -36,10 +37,6 @@ Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Interne
 
 
 *Şekil: sanal ağ NAT*
-
-
->[!NOTE] 
->Sanal ağ NAT Şu anda genel önizleme olarak kullanılabilir. Şu anda yalnızca sınırlı sayıda [bölgede](#region-availability)kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Yalnızca giden statik IP adresleri
 
@@ -125,48 +122,6 @@ Azure Izleyici 'de kullanıma sunulan çok boyutlu ölçümler aracılığıyla 
 
 Genel kullanılabilirlik aşamasında NAT veri yolu en az% 99,9 kullanılabilir.
 
-## <a name = "region-availability"></a>Bölge kullanılabilirliği
-
-NAT Şu anda şu bölgelerde kullanılabilir:
-
-- Batı Avrupa
-- Doğu Japonya
-- ABD Doğu 2
-- ABD Batı
-- ABD Batı 2
-- ABD Orta Batı
-
-## <a name = "enable-preview"></a>Genel Önizleme katılımı
-
-Aboneliklerin, genel önizlemeye katılımını sağlamak için kayıtlı olması gerekir.  Katılım için iki adımlı bir işlem gerekir ve aşağıdaki Azure CLı ve Azure PowerShell yönergeleri sunulmaktadır.  Etkinleştirmenin tamamlanması birkaç dakika sürebilir.
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. aboneliği genel önizleme için Kaydet
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. kaydı etkinleştir
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-1. aboneliği genel önizleme için Kaydet
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. kaydı etkinleştir
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -180,7 +135,9 @@ NAT Gateway iki ayrı ölçü ile faturalandırılır:
 Bir NAT ağ geçidi kaynağının bulunduğu süre için kaynak saatleri hesapları.
 Bir NAT ağ geçidi kaynağı tarafından işlenen tüm trafik için veri işleme hesapları.
 
-Genel Önizleme sırasında fiyatlandırma %50 ' de indirimli.
+## <a name="availability"></a>Kullanılabilirlik
+
+Sanal ağ NAT ve NAT ağ geçidi kaynağı tüm Azure genel bulut [bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir.
 
 ## <a name="support"></a>Destek
 
@@ -188,11 +145,12 @@ NAT, normal destek kanalları aracılığıyla desteklenir.
 
 ## <a name="feedback"></a>Geri Bildirim
 
-Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [Görüşlerinizi genel önizlemede](https://aka.ms/natfeedback) bizimle paylaşabilirsiniz.  Ve [NAT Için UserVoice](https://aka.ms/natuservoice)'ta daha sonra derleme yapmanız gerekenleri de önerebilir.
+Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [NAT Için UserVoice](https://aka.ms/natuservoice)'ta daha sonra derleme yapmanız gerekenleri önerin ve oylayın.
+
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur.   Temel kaynaklar (örneğin, temel yük dengeleyici) ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
+* NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur. Temel yük dengeleyici gibi temel kaynaklar ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
 * IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.  NAT, IPv6 ön ekine sahip bir alt ağa dağıtılamaz.
 * NSG akış günlüğü, NAT kullanılırken desteklenmez.
 * NAT birden çok sanal ağa yayılamaz.
@@ -201,4 +159,4 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [Görüşlerinizi g
 
 * [NAT ağ geçidi kaynağı](./nat-gateway-resource.md)hakkında bilgi edinin.
 * [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
-* [Genel önizleme hakkında geri bildirim sağlayın](https://aka.ms/natfeedback).
+

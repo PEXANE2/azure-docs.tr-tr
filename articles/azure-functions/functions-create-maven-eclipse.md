@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227118"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136842"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java ve tutulma ile ilk işlevinizi oluşturma 
 
@@ -42,9 +42,9 @@ Azure Işlevleri 'ni çalıştırmaya ve hata ayıklamaya yönelik yerel bir ort
 1. [Azure-Functions-arşiv ETYPE](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)Için arşiv **ETYPE Ekle** ' yi seçin ve girişleri ekleyin.
     - Arşiv grubu KIMLIĞI: com. Microsoft. Azure
     - Bir arşiv türü yapıt KIMLIĞI: Azure-Functions-arşiv Etype
-    - Sürüm: [Merkezi depodan](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) en son **1,22** sürümünü kullanın
-    tutulma maven oluştur](media/functions-create-first-java-eclipse/functions-create-eclipse.png) ![  
-1. **Tamam** ' a ve ardından **İleri**' ye tıklayın.  `resourceGroup`, `appName`ve `appRegion` dahil tüm alanların değerlerini doldurduğunuzdan emin olun (lütfen **fabrikam-Function-20170920120101928**dışında farklı bir AppName kullanın) ve sonunda **son**' u kullanın.
+    - Sürüm: [Merkezi depodan](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) en son sürümü denetleyin ve kullanın
+    tutulma Maven oluştur](media/functions-create-first-java-eclipse/functions-create-eclipse.png) ![  
+1. **Tamam**’a tıklayın ve ardından **İleri**’ye tıklayın.  `resourceGroup`, `appName`ve `appRegion` dahil tüm alanların değerlerini doldurduğunuzdan emin olun (lütfen **fabrikam-Function-20170920120101928**dışında farklı bir AppName kullanın) ve sonunda **son**' u kullanın.
     ![tutulma Maven Create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven, _artifactId_ adlı yeni bir dosyada proje dosyalarını oluşturur. Projedeki oluşturulan kod, tetikleme HTTP isteğinin gövdesini yansıtan basit bir [http ile tetiklenen](/azure/azure-functions/functions-bindings-http-webhook) bir işlevdir.

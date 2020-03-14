@@ -3,19 +3,19 @@ title: Konuşmayı metne dönüştürme-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşmadan metne özelliği, ses akışlarının metin halinde gerçek zamanlı olarak dökümünü sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metin girişini kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, metinden konuşmaya (konuşma birleştirme) ve konuşma çevirisi özellikleriyle sorunsuz bir şekilde çalışır.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.author: erhopf
-ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/12/2020
+ms.author: dapine
+ms.openlocfilehash: c5befcade944ff481b5f55e3a4afe11672dad117
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79219549"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371265"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
@@ -24,9 +24,8 @@ Konuşma tanıma olarak da bilinen konuşma hizmetindeki konuşma metni, ses ak�
 Konuşmadan metne hizmet varsayılan olarak evrensel dil modelini kullanmaktır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmayı metne dönüştürme özelliğini kullanırken özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. Özelleştirme, çevresel gürültü veya sektöre özgü sözlük adreslemeye yardımcı olur.
 
 > [!NOTE]
-> Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
+> Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlarınız veya ürünleriniz Bing Konuşma API 'Leri kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
 > - [Bing Konuşma konuşma hizmetine geçirme](how-to-migrate-from-bing-speech.md)
-> - [Özel Konuşma Tanıma konuşma hizmetine geçirme](how-to-migrate-from-custom-speech-service.md)
 
 ## <a name="get-started-with-speech-to-text"></a>Konuşmaya metne Başlarken
 

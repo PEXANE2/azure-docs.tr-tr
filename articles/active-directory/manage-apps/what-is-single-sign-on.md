@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24a4209869d4c47f8ac73e250699ec55d006296
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f46bcf412403d8f911e484e12a9d1f421b1666f0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375290"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366079"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory'de uygulamalar için çoklu oturum açma
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda, tek oturum açma yöntemleri özetler ve daha fazla ayrın
 | [SAML](#saml-sso) | Bulut ve şirket içi | OpenID Connect veya OAuth kullanmayan mevcut uygulamalar için mümkün olduğunda SAML 'yi seçin. SAML, SAML protokollerinden birini kullanarak kimlik doğrulaması yapan uygulamalar için geçerlidir.|
 | [Parola tabanlı](#password-based-sso) | Bulut ve şirket içi | Uygulamanın Kullanıcı adı ve parolayla kimlik doğrulaması yaparken parola tabanlı ' yı seçin. Parola tabanlı çoklu oturum açma güvenli uygulama parola depolama ve bir web tarayıcısı uzantısı veya mobil uygulama kullanarak yeniden yürütme sağlar. Bu yöntem, uygulama tarafından sağlanan mevcut oturum açma işlemi kullanır, ancak yönetici parolaları yönetmek etkinleştirir. |
 | [Bağlandı](#linked-sign-on) | Bulut ve şirket içi | Uygulama, başka bir kimlik sağlayıcısı hizmetinde çoklu oturum açma için yapılandırıldığında, bağlantılı oturum açma seçeneğini belirleyin. Bu seçenek varsayılan olarak, uygulamayı çoklu oturum açma eklemez. Ancak, uygulamanın tek Active Directory Federasyon Hizmetleri gibi başka bir hizmet kullanılarak uygulanan oturum zaten olabilir.|
-| [Devre dışı](#disabled-sso) | Bulut ve şirket içi | Uygulama çoklu oturum açma için yapılandırılmaya Hazırlanmadıysa, çoklu oturum açmayı devre dışı bırak seçeneğini belirleyin. Kullanıcıların, bunlar bu uygulamayı başlatmak her seferinde kullanıcı adı ve parola girmeniz gerekir.|
+| [Devre dışı](#disabled-sso) | Bulut ve şirket içi | Uygulama çoklu oturum açma için yapılandırılmaya Hazırlanmadıysa, çoklu oturum açmayı devre dışı bırak seçeneğini belirleyin. Bu mod, uygulamayı oluştururken varsayılan moddur.|
 | [Tümleşik Windows kimlik doğrulaması (ıWA)](#integrated-windows-authentication-iwa-sso) | yalnızca şirket içi | [Tümleşik Windows kimlik doğrulaması (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)veya talep kullanan uygulamalar kullanan uygulamalar için IWA çoklu oturum açma seçeneğini belirleyin. IWA için uygulama proxy bağlayıcıları, kullanıcıların uygulama kimliğini doğrulamak için Kerberos kısıtlı temsilcisini (KCD) kullanır. |
 | [Üst bilgi tabanlı](#header-based-sso) | yalnızca şirket içi | Uygulama için kimlik doğrulama üst bilgileri kullandığında üst bilgi tabanlı çoklu oturum açma kullanın. Üst bilgi tabanlı çoklu oturum açma, Azure AD için PingAccess gerektirir. Uygulama Ara sunucusu kullanıcının kimliğini doğrulamak için Azure AD kullanır ve ardından bağlayıcı hizmetini üzerinden geçen trafik geçirir.  |
 
@@ -147,6 +147,8 @@ Devre dışı moda uygulama için çoklu oturum açma kullanılmayan anlamına g
 - Uygulamanın diğer yönleri test ediyorsanız veya
 - Bir şirket içi uygulamaya güvenlik katmanı olarak, kullanıcıların kimlik doğrulaması yapmasına gerek yoktur. Kullanıcı kimlik doğrulaması yapması, devre dışı.
 
+Uygulamayı SP tarafından başlatılan SAML tabanlı çoklu oturum açma için yapılandırdıysanız ve SSO modunu devre dışı olarak değiştirirseniz, kullanıcıların Uygulamaps portalının dışında uygulamaya kaydolmasını engellemez. Bunu başarmak için [kullanıcıların oturum açabilme özelliğini devre dışı bırakmanız](disable-user-sign-in-portal.md) gerekir
+
 ## <a name="integrated-windows-authentication-iwa-sso"></a>Tümleşik Windows kimlik doğrulaması (IWA) SSO
 
 [Uygulama proxy 'si](application-proxy.md) , [Tümleşik Windows kimlik doğrulaması (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)veya talep kullanan uygulamalar kullanan uygulamalar için çoklu oturum açma (SSO) sağlar. Uygulamanız IWA kullanıyorsa, uygulama proxy'si uygulamaya, Kerberos Kısıtlı temsilci (KCD) kullanarak kimliğini doğrular. Kullanıcı zaten Azure AD'yi kullanarak kimliğinin çünkü Azure Active Directory tarafından güvenilen bir talep kullanan uygulama için çoklu oturum açma çalışır.
@@ -189,7 +191,7 @@ Bu senaryo Azure AD ve PingAccess arasındaki bir iş ortaklığı aracılığı
 
 Daha fazla bilgi için bkz. [Azure Active Directory sürümleri](../fundamentals/active-directory-whatis.md).
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 * [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](../saas-apps/tutorial-list.md)
 * [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md)
 * [Parola tabanlı çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)

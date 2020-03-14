@@ -4,12 +4,12 @@ description: Düzenli aralıklarla satırları temizlemek için Azure SQL verita
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972243"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366827"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına bağlanma
 
@@ -29,7 +29,7 @@ Bu C# işlevlerle çalışırken ilk deneyiminize sahipseniz, [Azure C# işlevle
 
 [Azure Portal Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md)işlemi tamamlandığında oluşturduğunuz veritabanı için bağlantı dizesini almanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Sol taraftaki menüden **SQL veritabanları** ' nı seçin ve **SQL veritabanları** sayfasında veritabanınızı seçin.
 
@@ -39,11 +39,11 @@ Bu C# işlevlerle çalışırken ilk deneyiminize sahipseniz, [Azure C# işlevle
 
 ## <a name="set-the-connection-string"></a>Bağlantı dizesini ayarlama
 
-İşlev uygulaması, Azure'daki işlev yürütme işlemlerinizi barındırır. En iyi güvenlik uygulaması olarak, işlev uygulaması ayarlarınızda bağlantı dizelerini ve diğer gizli dizileri depolayın. Uygulama ayarlarının kullanılması, bağlantı dizesinin kodunuzla yanlışlıkla açıklanmasını önler. İşlev uygulamanız için uygulama ayarlarına, doğrudan Visual Studio 'dan erişebilirsiniz.
+Azure'da işlevlerinizin yürütülmesini bir işlev uygulaması barındırır. En iyi güvenlik uygulaması olarak, işlev uygulaması ayarlarınızda bağlantı dizelerini ve diğer gizli dizileri depolayın. Uygulama ayarlarının kullanılması, bağlantı dizesinin kodunuzla yanlışlıkla açıklanmasını önler. İşlev uygulamanız için uygulama ayarlarına, doğrudan Visual Studio 'dan erişebilirsiniz.
 
 Uygulamanızı daha önce Azure 'da yayımladınız. Daha önce yapmadıysanız, [işlev uygulamanızı Azure 'Da yayımlayın](functions-develop-vs.md#publish-to-azure).
 
-1. Çözüm Gezgini, uygulama projesine sağ tıklayın ve uygulama ayarlarını yönet > **Yayımla** ' yı seçin **...** **Ayar ekle**' yi seçin, **Yeni uygulama ayarı adı**yazın, `sqldb_connection`yazın ve **Tamam**' ı seçin.
+1. Çözüm Gezgini, uygulama projesine sağ tıklayın ve **yayımla** > **Düzenle Azure App Service ayarları**' nı seçin. **Ayar ekle**' yi seçin, **Yeni uygulama ayarı adı**yazın, `sqldb_connection`yazın ve **Tamam**' ı seçin.
 
     ![İşlev uygulaması için uygulama ayarları.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 

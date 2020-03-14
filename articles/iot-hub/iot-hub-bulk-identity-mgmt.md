@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub cihaz kimliklerinin içeri aktarılmasını içeri aktarma | Microsoft Docs
-description: Cihaz kimliklerini içeri ve dışarı aktarmak için kimlik kayıt defterine yönelik toplu işlemler gerçekleştirmek üzere Azure IoT hizmeti SDK 'sını kullanma. İçeri aktarma işlemleri, cihaz kimliklerini toplu olarak oluşturmanızı, güncelleştirmenizi ve silmenizi sağlar.
+title: Azure IoT Hub cihaz kimliklerini içeri/dışarı aktarma | Microsoft Docs
+description: Cihaz kimliklerini içeri ve dışarı aktarmak için kimlik kayıt defterine yönelik toplu işlemler çalıştırmak üzere Azure IoT hizmeti SDK 'sını kullanma. İçeri aktarma işlemleri, cihaz kimliklerini toplu olarak oluşturmanızı, güncelleştirmenizi ve silmenizi sağlar.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,18 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429252"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371588"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub cihaz kimliklerini toplu olarak içeri ve dışarı aktarma
 
 Her IoT Hub 'ında, hizmette cihaz başına kaynaklar oluşturmak için kullanabileceğiniz bir kimlik kayıt defteri vardır. Kimlik kayıt defteri, cihaza yönelik uç noktalara erişimi denetlemenize de olanak sağlar. Bu makalede, cihaz kimliklerinin bir kimlik kayıt defterine toplu ve dışarı aktarma işlemlerinin nasıl yapılacağı açıklanır. Üzerinde C# çalışan bir örnek görmek ve bir hub 'ı farklı bir bölgeye kopyalarken bu özelliği nasıl kullanabileceğinizi öğrenmek için, bkz. [IoT Hub kopyalama](iot-hub-how-to-clone.md).
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT Hub, yakın zamanda sınırlı sayıda bölgede sanal ağ desteği ekledi. Bu özellik, içeri ve dışarı aktarma işlemlerinin güvenliğini sağlar ve kimlik doğrulama için anahtar geçirme gereksinimini ortadan kaldırır.  Başlangıçta, sanal ağ desteği yalnızca şu bölgelerde kullanılabilir: *WestUS2*, *EastUS*ve *Güneydoğu ABD*. Sanal ağ desteği ve API çağrısı hakkında daha fazla bilgi edinmek için bkz. [sanal ağlar için IoT Hub desteği](virtual-network-support.md).
 
 İçeri ve dışarı aktarma işlemleri, bir IoT Hub 'ına karşı toplu hizmet işlemlerini yürütmelerine olanak sağlayan *işlerin* bağlamında gerçekleşir.
 
@@ -27,6 +28,7 @@ Her IoT Hub 'ında, hizmette cihaz başına kaynaklar oluşturmak için kullanab
 
 Bu konu, bir IoT Hub 'ının kimlik kayıt defterine ve aygıtlara toplu içeri aktarma ve dışarı aktarma işlemleri gerçekleştirmek için **Registrymanager** sınıfının ve **iş** sisteminin kullanımını tartışır. Ayrıca, Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak bir veya daha fazla IoT Hub 'ı için insan müdahalesi gerektirmeden tam zamanında sağlama olanağı sağlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [sağlama hizmeti belgeleri](/azure/iot-dps).
 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>İşler nedir?
 
@@ -84,6 +86,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+> [!NOTE]
+> Depolama hesabınızda IoT Hub bağlantısını kısıtlayan güvenlik duvarı yapılandırmalarına sahipseniz, [Microsoft 'un güvendiği ilk taraf özel durumunu](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) (yönetilen hizmet kimliğiyle IoT Hub 'ları için seçim bölgelerinde kullanılabilir) kullanmayı göz önünde bulundurun.
+
 
 ## <a name="device-importexport-job-limits"></a>Cihaz içeri/dışarı aktarma işi sınırları
 
@@ -261,7 +267,7 @@ Cihaz başına içeri aktarma işlemini denetlemek için her bir cihaz için ser
 | --- | --- |
 | **createOrUpdate** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, varolan bilgilerin, **ETag** değeriyle ilgili olarak girilen giriş verileriyle üzerine yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
 | **oluşturmaya** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten varsa, günlük dosyasına bir hata yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
-| **update** |Belirtilen **kimliğe**sahip bir cihaz zaten varsa, varolan bilgilerin **ETag** değerine bakılmaksızın, girilen giriş verileriyle üzerine yazılır. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. |
+| **Update** |Belirtilen **kimliğe**sahip bir cihaz zaten varsa, varolan bilgilerin **ETag** değerine bakılmaksızın, girilen giriş verileriyle üzerine yazılır. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. |
 | **updateIfMatchETag** |Belirtilen **kimliğe**sahip bir cihaz zaten varsa, yalnızca bir **ETag** eşleşmesi varsa, mevcut bilgilerin girilen giriş verileriyle üzerine yazılır. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. <br/>**ETag** uyumsuzluğu varsa, günlük dosyasına bir hata yazılır. |
 | **createOrUpdateIfMatchETag** |Belirtilen **kimliğe**sahip bir cihaz yoksa, yeni kaydedilir. <br/>Cihaz zaten mevcutsa, belirtilen giriş verileriyle yalnızca bir **ETag** eşleşmesi varsa, varolan bilgilerin üzerine yazılır. <br/>**ETag** uyumsuzluğu varsa, günlük dosyasına bir hata yazılır. <br> Kullanıcı isteğe bağlı olarak cihaz verileriyle birlikte ikizi verisi belirtebilir. İkizi 'ın ETag 'i, belirtilmişse cihazın ETag öğesinden bağımsız olarak işlenir. Varolan ikizi ETag ile bir uyumsuzluk varsa, günlük dosyasına bir hata yazılır. |
 | **sil** |Belirtilen **kimliğe**sahip bir cihaz zaten varsa, **ETag** değeri dikkate almadan silinir. <br/>Cihaz yoksa, günlük dosyasına bir hata yazılır. |

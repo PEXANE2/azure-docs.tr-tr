@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58a7689263f9bc761eb0b904a9376c1ca0112c13
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128093"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365398"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Öğretici: hizmet güncelleştirmelerini doğrulamak için bir konak havuzu oluşturma
 
@@ -76,7 +76,7 @@ Hizmet güncelleştirmeleri ayda bir gerçekleşir. Önemli sorunlar varsa, krit
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir doğrulama ana bilgisayar havuzu oluşturduğunuza göre, Microsoft sanal masaüstü kaynaklarını yönetmek için bir yönetim aracının nasıl dağıtılacağını ve bağlanacağını öğrenebilirsiniz.
+Bir doğrulama ana bilgisayar havuzu oluşturduğunuza göre, Windows sanal masaüstü dağıtımınızı izlemek için Azure hizmet durumunu nasıl kullanacağınızı öğrenebilirsiniz. 
 
 > [!div class="nextstepaction"]
-> [Yönetim Aracı öğreticisini dağıtma](./manage-resources-using-ui.md)
+> [Hizmet uyarılarını ayarlama](./set-up-service-alerts.md)

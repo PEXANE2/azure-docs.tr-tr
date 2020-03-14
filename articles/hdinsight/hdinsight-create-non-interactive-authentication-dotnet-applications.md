@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 1fbb4ef2341148de4026f47fc06a54bbfa60fff6
-ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
+ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500135"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371282"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Etkileşimli olmayan bir kimlik doğrulama .NET HDInsight uygulaması oluşturma
 
@@ -25,9 +25,9 @@ Etkileşimli olmayan .NET uygulamanızdan şunları yapmanız gerekir:
 * Azure Active Directory (Azure AD) uygulama istemci KIMLIĞI. Bkz. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) ve [uygulama kimliği edinme](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 * Azure AD uygulama gizli anahtarı. Bkz. [uygulama kimlik doğrulama anahtarını al](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-An HDInsight küme. Kullanmaya başlama [öğreticisine](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)bakın.
+An HDInsight küme. Kullanmaya başlama [öğreticisine](hadoop/apache-hadoop-linux-tutorial-get-started.md)bakın.
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Azure AD uygulamasına bir rol atama
 
@@ -35,7 +35,7 @@ Eylemleri gerçekleştirmek için izin vermek üzere Azure AD uygulamanıza bir 
 
 **Azure AD uygulamasına sahip rolünü eklemek için**
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Bu makalede daha sonra Hive sorgunuzu çalıştıracağınız HDInsight kümesine sahip kaynak grubuna gidin. Çok sayıda kaynak grubunuz varsa, istediğiniz birini bulmak için filtreyi kullanabilirsiniz.
 1. Kaynak grubu menüsünde, **erişim denetimi (IAM)** seçeneğini belirleyin.
 1. Geçerli rol atamalarını görmek için **rol atamaları** sekmesini seçin.

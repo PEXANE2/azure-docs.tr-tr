@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ea0b173f12a1c80f276af3ce3f6222efaad07972
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75691037"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370636"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada akış desteğini değiştirme (Önizleme)
 
 Değişiklik akışı amacı, bloblarda oluşan tüm değişikliklerin işlem günlüklerini ve Depolama hesabınızdaki blob meta verilerini sağlamaktır. Değişiklik akışı, bu değişikliklerin **sıralı**, **garantili**, **dayanıklı**, **sabit**ve **salt** yazılır günlüklerini sağlar. İstemci uygulamaları, akış veya toplu işlem modunda bu günlükleri dilediğiniz zaman okuyabilir. Değişiklik akışı, BLOB depolama hesabınızda gerçekleşen değişiklik olaylarını düşük bir maliyetle işleyen etkili ve ölçeklenebilir çözümler oluşturmanıza olanak sağlar.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Değişiklik akışı, standart [BLOB fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) maliyetinde Depolama hesabınızdaki özel bir kapsayıcıda [BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) olarak depolanır. Gereksinimlerinize göre bu dosyaların bekletme süresini denetleyebilirsiniz (geçerli yayının [koşullarına](#conditions) bakın). Değişiklik olayları, [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtiminde kayıt olarak değişiklik akışına eklenir: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili bir biçimdir. Bu biçim, Hadoop ekosistemi, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır.
 
@@ -55,7 +57,7 @@ Değişiklik akışını etkinleştirdiğinizde göz önünde bulundurmanız ger
 > [!IMPORTANT]
 > Değişiklik akışı genel önizlemededir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bu makalenin [koşullar](#conditions) bölümüne bakın. Önizlemeye kaydolmak için bu makalenin [aboneliğinizi kaydetme](#register) bölümüne bakın. Depolama hesaplarınızda değişiklik akışını etkinleştirebilmeniz için aboneliğinizi kaydetmeniz gerekir.
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak depolama hesabınızda değişiklik akışını etkinleştirin:
 
@@ -69,7 +71,7 @@ Azure portal kullanarak depolama hesabınızda değişiklik akışını etkinle�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak akışı değiştirme özelliğini etkinleştir:
 
@@ -87,7 +89,7 @@ PowerShell kullanarak akışı değiştirme özelliğini etkinleştir:
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
    ```
 
-4. Azure aboneliğinizde oturum açın `Connect-AzAccount` izleyin ve komut ekrandaki kimlik doğrulaması yapın.
+4. `Connect-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
 
    ```powershell
    Connect-AzAccount
@@ -99,7 +101,7 @@ PowerShell kullanarak akışı değiştirme özelliğini etkinleştir:
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
-### <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+### <a name="template"></a>[Şablon](#tab/template)
 Azure portal aracılığıyla mevcut depolama hesabınızda değişiklik akışını etkinleştirmek için bir Azure Resource Manager şablonu kullanın:
 
 1. Azure portal **kaynak oluştur**' u seçin.

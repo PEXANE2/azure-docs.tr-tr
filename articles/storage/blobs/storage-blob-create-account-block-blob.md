@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 98a9295363461864d3abbb11bbc22b8bd8d6fdfa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6dd5d98b559d49656c44b75e86398a017d923203
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933194"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371112"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage hesabı oluşturma
 
 BlockBlobStorage hesap türü, Premium performans özellikleriyle blok Blobları oluşturmanızı sağlar. Bu depolama hesabı türü, yüksek işlem ücretleri olan veya çok hızlı erişim süreleri gerektiren iş yükleri için iyileştirilmiştir. Bu makalede Azure portal, Azure CLı veya Azure PowerShell kullanarak bir blok Blobstorage hesabının nasıl oluşturulacağı gösterilmektedir.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 BlockBlobStorage hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
@@ -25,15 +27,15 @@ BlockBlobStorage hesapları hakkında daha fazla bilgi için bkz. [Azure depolam
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Hiçbiri.
+Yok.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 1.2.0 veya üstünü gerektirir. Geçerli sürümünüzü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps).
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure 'da oturum açabilir ve Azure CLı komutlarını iki şekilde çalıştırabilirsiniz:
 
@@ -52,17 +54,17 @@ Düğme, bu nasıl yapılır makalesinde özetlenen adımları çalıştırmak i
 
 ### <a name="install-the-cli-locally"></a>CLI’yi yerel olarak yükleme
 
-Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu nasıl yapılır makalesi, Azure CLı sürüm 2.0.46 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli). 
+Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu nasıl yapılır makalesi, Azure CLı sürüm 2.0.46 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
 
 ---
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 `Connect-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
 
@@ -70,7 +72,7 @@ Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu nasıl yap�
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure Cloud Shell başlatmak için [Azure Portal](https://portal.azure.com)oturum açın.
 
@@ -84,7 +86,7 @@ az login
 
 ## <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage hesabı oluşturma
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portal **depolama** kategorisi > depolama **hesapları**> **tüm hizmetler** ' i seçin.
@@ -115,9 +117,9 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
 
 1. Depolama hesabı ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
-## <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -153,9 +155,9 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı kullanarak bir Blok Blobu hesabı oluşturmak için önce Azure CLı v 'yi yüklemeniz gerekir. 2.0.46 veya sonraki bir sürümü. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
+Azure CLı kullanarak bir Blok Blobu hesabı oluşturmak için önce Azure CLı v 'yi yüklemeniz gerekir. 2.0.46 veya sonraki bir sürümü. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 1. Azure aboneliğinizde oturum açın.
 

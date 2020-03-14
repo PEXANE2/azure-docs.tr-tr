@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389694"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272090"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümelerinde Jupyter Not defteri için kernels
 
@@ -71,8 +71,8 @@ HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'
 
    | Magic | Örnek | Açıklama |
    | --- | --- | --- |
-   | Yardım |`%%help` |Örnek ve açıklama ile tüm kullanılabilir mıknatıc 'nin bir tablosunu oluşturur |
-   | info |`%%info` |Geçerli Livy uç noktası için oturum bilgilerini çıkışlar |
+   | yardım |`%%help` |Örnek ve açıklama ile tüm kullanılabilir mıknatıc 'nin bir tablosunu oluşturur |
+   | bilgi |`%%info` |Geçerli Livy uç noktası için oturum bilgilerini çıkışlar |
    | yapılandır |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Oturum oluşturmak için parametreleri yapılandırır. Oturumun bırakılmış ve yeniden oluşturulmasını sağlayan bir oturum zaten oluşturulduysa zorla bayrağı (-f) zorunludur. Geçerli parametrelerin listesi için [Livy 'ın/Sessions Istek gövdesine](https://github.com/cloudera/livy#request-body) bakın. Parametrelerin, örnek sütununda gösterildiği gibi, bir JSON dizesi olarak geçirilmesi ve bir sonraki satırda olması gerekir. |
    | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Bir Hive sorgusu sqlContext karşı yürütür. `-o` parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcı hale getirilir. |
    | Yerel |`%%local`<br>`a=1` |Sonraki satırlardaki tüm kodlar yerel olarak yürütülür. Kod, kullanmakta olduğunuz çekirdekten bağımsız olarak geçerli Python2 Code olmalıdır. Bu nedenle, Not defterini oluştururken **PySpark3** veya **Spark** çekirdekler ' ı seçmiş olsanız bile, bir hücrede `%%local` Magic kullanırsanız, bu hücrede yalnızca geçerli Python2 kodu olmalıdır. |

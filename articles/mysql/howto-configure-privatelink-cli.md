@@ -1,19 +1,19 @@
 ---
-title: MySQL için Azure veritabanı (Önizleme) CLı kurulum yöntemi için özel bağlantı
+title: Özel bağlantı-Azure CLı-MySQL için Azure veritabanı
 description: Azure CLı 'dan MySQL için Azure veritabanı için özel bağlantıyı yapılandırmayı öğrenin
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d9a401bfbf1f0c63995c8f7773abb6e8e874e7e
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561706"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368052"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>CLı kullanarak MySQL için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>CLı kullanarak MySQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu makalede, Azure CLı 'yi kullanarak Azure sanal ağında bir VM oluşturma ve Azure özel uç noktası ile MySQL için Azure veritabanı sunucusu oluşturma hakkında bilgi edineceksiniz.
 

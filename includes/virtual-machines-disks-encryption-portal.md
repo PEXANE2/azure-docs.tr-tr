@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 3ba5d74aa245fbcd9d43f2b4398387d7f59e202c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206318"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299540"
 ---
 ### <a name="portal"></a>Portal
 
@@ -49,9 +49,14 @@ Diskleriniz için müşteri tarafından yönetilen anahtarların kurulması, ilk
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Disk şifreleme kümesini ayarlama
 
-Disk şifreleme kümeleri oluşturup yapılandırmak için şu bağlantıyı kullanmanız gerekir: https://aka.ms/diskencryptionsets. Disk şifreleme kümesi oluşturma işlemi henüz genel Azure portal kullanılamıyor.
+Disk şifreleme kümeleri oluşturup yapılandırmak için şu bağlantıyı kullanmanız gerekir: https://aka.ms/diskencryptionsets. Microsoft Azure Kamu bölgelerimizden, bunun yerine bu bağlantıyı kullanmanız gerekir: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff). Disk şifreleme kümesi oluşturma işlemi henüz genel Azure portal kullanılamıyor.
 
-1. [Disk şifreleme kümeleri bağlantısını](https://aka.ms/diskencryptionsets)açın.
+1. Bölgeniz için uygun disk şifreleme kümeleri bağlantısını açın:
+
+    Ortak bölgeler: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Kamu bölgeleri: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
 1. **+ Ekle**' yi seçin.
 
     ![Disk şifreleme portalı ana ekranının ekran görüntüsü. Ekle düğmesini vurgulama](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
@@ -77,7 +82,12 @@ Disk şifreleme kümeleri oluşturup yapılandırmak için şu bağlantıyı kul
 Anahtar Kasanızı ve disk şifreleme kümesini oluşturup ayarladığınıza göre, şifrelemeyi kullanarak bir VM dağıtabilirsiniz.
 VM dağıtım işlemi standart dağıtım işlemine benzer, tek fark, VM 'yi diğer kaynaklarınızla aynı bölgeye dağıtmanız ve müşteri tarafından yönetilen anahtar kullanmayı tercih etmeniz gerekir.
 
-1. [Disk şifreleme kümeleri bağlantısını](https://aka.ms/diskencryptionsets)açın.
+1. Bölgeniz için uygun disk şifreleme kümeleri bağlantısını açın:
+
+    Ortak bölgeler: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Kamu bölgeleri: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+
 1. **Sanal makineleri** arayın ve **+ Ekle** ' yi seçerek bir VM oluşturun.
 1. **Temel** sekmede, disk şifreleme kümesi ve Azure Key Vault aynı bölgeyi seçin.
 1. **Temel** sekmedeki diğer değerleri istediğiniz şekilde girin.
@@ -97,8 +107,13 @@ Mevcut disklerinizde disk şifrelemesini yönetmek ve yapılandırmak için şu 
 > [!CAUTION]
 > Bir VM 'ye bağlı herhangi bir diskte disk şifrelemeyi etkinleştirmek, VM 'yi durdurmanız gerekir.
 
-1. [Disk şifreleme kümeleri bağlantısını](https://aka.ms/diskencryptionsets)açın.
-1. Disk şifreleme kümelerinizin biriyle aynı bölgedeki bir VM 'ye gidin.
+1. Bölgeniz için uygun disk şifreleme kümeleri bağlantısını açın:
+
+    Ortak bölgeler: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Kamu bölgeleri: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
+1. Disk şifreleme kümelerinizin biriyle aynı bölgede bulunan bir VM 'ye gidin.
 1. VM 'yi açın ve **Durdur**' u seçin.
 
     ![Örnek sanal makinenizin ana kaplamasıyla ilgili ekran görüntüsü. Durdur düğmesi vurgulanmış olarak](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)

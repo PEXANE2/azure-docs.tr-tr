@@ -1,19 +1,19 @@
 ---
-title: PostgreSQL için Azure veritabanı için özel bağlantı-tek sunucu (Önizleme) portalı kurulum yöntemi
+title: Özel bağlantı-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı için özel bağlantıyı yapılandırma hakkında bilgi edinin-tek sunucu Azure portal
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 187fa7cf52193d94b932d9021749917fa4f9b1dc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562607"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370925"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>Portal kullanarak PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-tek sunucu (Önizleme)
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-portalı kullanarak tek sunucu
 
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.  Bu makalede, Azure sanal ağında bir VM oluşturmak için Azure portal kullanmayı ve Azure özel uç noktası ile PostgreSQL için Azure veritabanı tek sunucu oluşturmayı öğreneceksiniz.
 
@@ -126,12 +126,12 @@ Bu bölümde, Azure 'da PostgreSQL için Azure veritabanı sunucusu oluşturacak
 
 Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ekleyeceksiniz. 
 
-1. Ekranın sol üst kısmında Azure portal **kaynak oluştur** > **ağ** > **özel bağlantı merkezi (Önizleme)** seçeneğini belirleyin.
+1. Ekranın sol üst kısmında Azure portal **kaynak oluştur** > **ağ** > **özel bağlantı**' yı seçin.
 2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
 
     ![Özel bağlantıya genel bakış](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. **Özel uç nokta oluştur (Önizleme)-temel**bilgiler için, bu bilgileri girin veya seçin:
+1. **Özel uç nokta oluşturma-temel**bilgiler için, bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -154,7 +154,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     |Hedef alt kaynak |*Postgrescollection sunucusu* seçin|
     |||
 7. Ileri 'yi seçin **: yapılandırma**.
-8. **Özel uç nokta (Önizleme) oluştur-yapılandırma**' da bu bilgileri girin veya seçin:
+8. **Özel uç nokta oluşturma-yapılandırma**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |

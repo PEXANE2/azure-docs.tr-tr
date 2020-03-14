@@ -5,18 +5,18 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773166"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368902"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Öğretici: Azure portal dışarıya aktarılmış şablon kullanma
 
 Bu öğretici serisinde, Azure depolama hesabı dağıtmak için bir şablon oluşturdunuz. Sonraki iki öğreticilerde, bir *App Service planı* ve bir *Web sitesi*eklersiniz. Sıfırdan şablon oluşturmak yerine, Azure portal şablonları dışarı aktarmayı ve [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/)örnek şablonları kullanmayı öğreneceksiniz. Bu şablonları kullanım için özelleştirirsiniz. Bu öğretici, şablonları dışarı aktarmaya ve şablonunuzun sonucunu özelleştirmeye odaklanır. Yaklaşık **14 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Çıktılar hakkında öğreticiyi](template-tutorial-add-outputs.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -32,11 +32,11 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
 
 ## <a name="create-app-service-plan"></a>App Service planı oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Seçin **kaynak Oluştur**.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Kaynak oluştur**' u seçin.
 1. **Markette ara**' te **App Service planı**girin ve **App Service planı**' nı seçin.  **App Service planı seçme (klasik)**
 1. **Oluştur**’u seçin.
-1. Girmesini
+1. Girin:
 
     - **Abonelik**: Azure aboneliğinizi seçin.
     - **Kaynak grubu**: **Yeni oluştur** ' u seçin ve ardından bir ad belirtin. Bu öğretici serisinde kullandığınızdan farklı bir kaynak grubu adı belirtin.
@@ -84,7 +84,7 @@ Bir şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın.
 
 Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -95,10 +95,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addappserviceplan \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -111,7 +111,7 @@ az group deployment create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Kaynak grubu, bir depolama hesabı ve bir App Service planı içerir.

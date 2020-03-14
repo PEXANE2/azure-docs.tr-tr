@@ -9,17 +9,18 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/07/2020
-ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: dcaaf3c2f793e7148e1695cdfaa68c768db5fff6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382364"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240544"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 
-Azure SQL veritabanı, T-SQL sorguları çalıştırmak ve bakım görevlerini gerçekleştirmek için bir veya daha fazla veritabanına göre düzenli olarak yürütülen işleri oluşturmanıza ve zamanlamanıza olanak sağlar. Her iş, yürütme durumunu günlüğe kaydeder ve herhangi bir hata oluşursa işlemleri otomatik olarak yeniden dener.
+Azure SQL veritabanı, T-SQL sorguları çalıştırmak ve bakım görevlerini gerçekleştirmek için bir veya daha fazla veritabanına göre düzenli olarak yürütülen işleri oluşturmanıza ve zamanlamanıza olanak sağlar.
+Her iş, yürütme durumunu günlüğe kaydeder ve herhangi bir hata oluşursa işlemleri otomatik olarak yeniden dener.
 İşin gerçekleştirileceği hedef veritabanı veya Azure SQL veritabanı gruplarını tanımlayabilir ve ayrıca bir işi çalıştırmaya yönelik zamanlamalar tanımlayabilirsiniz.
 Bir iş, hedef veritabanında oturum açma görevini işler. Ayrıca, Azure SQL veritabanı grubu genelinde yürütülecek Transact-SQL betikleri tanımlar, bakımını yapın ve kalıcı hale getirin.
 
@@ -48,10 +49,10 @@ Aşağıdaki iş zamanlama teknolojileri Azure SQL veritabanı 'nda kullanılabi
 
 SQL Aracısı (Şirket içi ve SQL veritabanı yönetilen örneği 'nin bir parçası olarak kullanılabilir) ve veritabanı elastik Iş Aracısı (Azure SQL veritabanı ve SQL veri ambarı 'ndaki veritabanları için kullanılabilir) arasında birkaç farklılık olduğunu belirtmekte bir değer.
 
-|  |Elastik İşler  |SQL Aracısı |
+| |Elastik İşler |SQL Aracısı |
 |---------|---------|---------|
-|Kapsam     |  İş aracısıyla aynı Azure bulutundaki herhangi bir sayıda Azure SQL veritabanı ve/veya veri ambarı. Hedefler farklı SQL veritabanı sunucularında, aboneliklerde ve/veya bölgelerde olabilir. <br><br>Hedef gruplar tek veritabanı veya veri ambarlarının yanı sıra bir sunucu, havuz veya parça eşlemesi içindeki tüm veritabanlarından (iş zamanında dinamik olarak numaralandırılır) oluşabilir. | SQL aracısıyla aynı SQL Server örneğindeki tek bir veritabanı. |
-|Desteklenen API’ler ve Araçlar     |  Portal, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
+|Kapsam | İş aracısıyla aynı Azure bulutundaki herhangi bir sayıda Azure SQL veritabanı ve/veya veri ambarı. Hedefler farklı SQL veritabanı sunucularında, aboneliklerde ve/veya bölgelerde olabilir. <br><br>Hedef gruplar tek veritabanı veya veri ambarlarının yanı sıra bir sunucu, havuz veya parça eşlemesi içindeki tüm veritabanlarından (iş zamanında dinamik olarak numaralandırılır) oluşabilir. | SQL aracısıyla aynı SQL Server örneğindeki tek bir veritabanı. |
+|Desteklenen API’ler ve Araçlar | Portal, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Aracısı Işleri
 
@@ -106,8 +107,8 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @email_address = '$(loginEmail)',
     @display_name = 'SQL Agent Account',
     @mailserver_name = '$(mailserver)' ,
-    @username = '$(loginEmail)' ,  
-    @password = '$(password)' 
+    @username = '$(loginEmail)' ,
+    @password = '$(password)'
 
 -- Create a Database Mail profile
 EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -125,13 +126,13 @@ Ayrıca, yönetilen örnekte Veritabanı Postası etkinleştirmeniz gerekir:
 
 ```sql
 GO
-EXEC sp_configure 'show advanced options', 1;  
-GO  
-RECONFIGURE;  
-GO  
-EXEC sp_configure 'Database Mail XPs', 1;  
-GO  
-RECONFIGURE 
+EXEC sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+EXEC sp_configure 'Database Mail XPs', 1;
+GO
+RECONFIGURE
 ```
 
 SQL Agent işleriniz ile ilgili bir şeyin olduğunu işlecine bildirebilirsiniz. Bir işleç, bir veya daha fazla yönetilen örnek bakımda sorumlu için kişi bilgilerini tanımlar. Bazen, operatör sorumlulukları tek bir kişiye atanır.
@@ -140,23 +141,24 @@ Birden çok yönetilen örnek veya SQL Server içeren sistemlerde, birçok kişi
 SSMS veya Transact-SQL komut dosyasını kullanarak aşağıdaki örnekte gösterilen işleçler oluşturabilirsiniz:
 
 ```sql
-EXEC msdb.dbo.sp_add_operator 
-    @name=N'Mihajlo Pupun', 
-        @enabled=1, 
-        @email_address=N'mihajlo.pupin@contoso.com'
+EXEC msdb.dbo.sp_add_operator
+    @name=N'Mihajlo Pupun',
+    @enabled=1,
+    @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
 Her türlü işi değiştirebilir ve iş tamamlandığında, başarısız olursa veya SSMS veya aşağıdaki Transact-SQL komut dosyası ile başarılı olursa e-posta yoluyla bildirim gönderilecek işleçleri atayabilirsiniz:
 
 ```sql
-EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
-        @notify_level_email=3,                        -- Options are: 1 on succeed, 2 on failure, 3 on complete
-        @notify_email_operator_name=N'Mihajlo Pupun'
+EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
+    @notify_level_email=3, -- Options are: 1 on succeed, 2 on failure, 3 on complete
+    @notify_email_operator_name=N'Mihajlo Pupun'
 ```
 
 ### <a name="sql-agent-job-limitations"></a>SQL Aracısı Iş sınırlamaları
 
 SQL Server ' de kullanılabilir olan SQL Aracısı özelliklerinden bazıları yönetilen örnekte desteklenmez:
+
 - SQL Aracısı ayarları salt okunurdur. Yordam `sp_set_agent_properties` yönetilen örnekte desteklenmez.
 - SQL aracısının etkinleştirilmesi/devre dışı bırakılması Şu anda yönetilen örnekte desteklenmiyor. SQL Aracısı her zaman çalışır.
 - Bildirimler kısmen destekleniyor
@@ -180,17 +182,16 @@ Aşağıdaki resimde farklı türlerdeki hedef gruplarda iş yürüten bir iş a
 
 ### <a name="elastic-job-components"></a>Elastik İş bileşenleri
 
-|Bileşen  | Açıklama (ek ayrıntılar tablonun altındadır) |
+|Bileşen | Açıklama (ek ayrıntılar tablonun altındadır) |
 |---------|---------|
-|[**Elastik İş aracısı**](#elastic-job-agent) |  İşleri çalıştırmak ve yönetmek için oluşturduğunuz Azure kaynağıdır.   |
-|[**İş veritabanı**](#job-database)    |    İş aracısının işle ilgili veriler, iş tanımları gibi bilgileri depolamak için kullandığı bir Azure SQL veritabanıdır.      |
-|[**Hedef grup**](#target-group)      |  Bir işin çalıştırılacağı sunucu, havuz, veritabanı ve parça eşlemesi kümesidir.       |
-|[**İş**](#job)  |  İş, bir veya daha fazla [iş adımından](#job-step)oluşan bir iş birimidir. İş adımları çalıştırılacak T-SQL betiğinin yanı sıra betiğin yürütülmesi için gerekli olan diğer ayrıntıları belirtir.  |
-
+|[**Elastik İş aracısı**](#elastic-job-agent) | İşleri çalıştırmak ve yönetmek için oluşturduğunuz Azure kaynağıdır. |
+|[**İş veritabanı**](#job-database) | İş aracısının işle ilgili veriler, iş tanımları gibi bilgileri depolamak için kullandığı bir Azure SQL veritabanıdır. |
+|[**Hedef grup**](#target-group) | Bir işin çalıştırılacağı sunucu, havuz, veritabanı ve parça eşlemesi kümesidir. |
+|[**İş**](#job) | İş, bir veya daha fazla [iş adımından](#job-step)oluşan bir iş birimidir. İş adımları çalıştırılacak T-SQL betiğinin yanı sıra betiğin yürütülmesi için gerekli olan diğer ayrıntıları belirtir. |
 
 #### <a name="elastic-job-agent"></a>Elastik İş aracısı
 
-Elastik İş aracısı; işlerin oluşturulması, çalıştırılması ve yönetilmesi için kullanılan Azure kaynağıdır. Elastik İş aracısı, portalda oluşturduğunuz bir Azure kaynağıdır ([PowerShell](elastic-jobs-powershell.md) ve REST de desteklenir). 
+Elastik İş aracısı; işlerin oluşturulması, çalıştırılması ve yönetilmesi için kullanılan Azure kaynağıdır. Elastik İş aracısı, portalda oluşturduğunuz bir Azure kaynağıdır ([PowerShell](elastic-jobs-powershell.md) ve REST de desteklenir).
 
 **Elastik İş aracısı** oluşturmak için bir SQL veritabanı gerekir. Aracı, mevcut veritabanını [*İş veritabanı*](#job-database) olarak yapılandırır.
 
@@ -202,24 +203,20 @@ Elastik İş aracısı ücretsizdir. İş veritabanı, herhangi bir SQL veritaba
 
 Geçerli önizlemede, Elastik İş aracısı oluşturmak için bir Azure SQL veritabanı (S0 veya üzeri) gerekir.
 
-*İş veritabanının* yeni olması gerekmez, ancak temiz, boş, S0 veya daha yüksek bir hizmet hedefi olmalıdır. *İş veritabanının* önerilen hizmet hedefi S1 veya daha yükseği, ancak en uygun seçenek, işinizin performans ihtiyaçlarına bağlıdır: iş adımları sayısı, iş hedefi sayısı ve işlerin ne sıklıkta çalıştırıldığı. Örneğin, bir S0 veritabanı, çok sayıda işi çalıştıran bir iş Aracısı için yeterli olabilir, ancak her dakika, bir S0 veritabanı ile yeterince hızlı olmayabilir ve daha yüksek bir hizmet katmanı daha iyi olabilir. 
+*İş veritabanının* yeni olması gerekmez, ancak temiz, boş, S0 veya daha yüksek bir hizmet hedefi olmalıdır. *İş veritabanının* önerilen hizmet hedefi S1 veya daha yükseği, ancak en uygun seçenek, işinizin performans ihtiyaçlarına bağlıdır: iş adımları sayısı, iş hedefi sayısı ve işlerin ne sıklıkta çalıştırıldığı. Örneğin, bir S0 veritabanı, çok sayıda işi çalıştıran bir iş Aracısı için yeterli olabilir, ancak her dakika, bir S0 veritabanı ile yeterince hızlı olmayabilir ve daha yüksek bir hizmet katmanı daha iyi olabilir.
 
-İş veritabanına yönelik işlemler beklenenden yavaşsa, Azure portal veya [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV kullanarak yavaşlığın süresi boyunca veritabanı performansını ve iş veritabanındaki kaynak kullanımını [izleyin](sql-database-monitor-tune-overview.md#monitor-database-performance) . CPU, veri g/ç gibi bir kaynağın kullanımı veya %100 günlük yazma yaklaşımının ve yavaşlığın süreleriyle ilişkili olması halinde, iş veritabanı performansı yeterince iyileştirene kadar veritabanını daha yüksek hizmet hedeflerine ( [DTU modelinde](sql-database-service-tiers-dtu.md) veya [Vcore modelinde](sql-database-service-tiers-vcore.md)) artımlı olarak ölçeklendirin.
-
+İş veritabanına yönelik işlemler beklenenden yavaşsa, Azure portal veya [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV kullanarak yavaşlığın süresi boyunca veritabanı performansını ve iş veritabanındaki kaynak kullanımını [izleyin](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) . CPU, veri g/ç gibi bir kaynağın kullanımı veya %100 günlük yazma yaklaşımının ve yavaşlığın süreleriyle ilişkili olması halinde, iş veritabanı performansı yeterince iyileştirene kadar veritabanını daha yüksek hizmet hedeflerine ( [DTU modelinde](sql-database-service-tiers-dtu.md) veya [Vcore modelinde](sql-database-service-tiers-vcore.md)) artımlı olarak ölçeklendirin.
 
 ##### <a name="job-database-permissions"></a>İş veritabanı izinleri
 
 İş aracısı oluşturma sırasında *İş veritabanında* bir şema, tablolar ve *jobs_reader* adlı bir rol oluşturulur. Rol, aşağıdaki izinle oluşturulur ve yöneticilere iş izleme için daha ayrıntılı erişim denetimi sunmak üzere tasarlanmıştır:
 
-
-|Rol adı  |'jobs' şeması izinleri  |'jobs_internal' şeması izinleri  |
+|Rol adı |'jobs' şeması izinleri |'jobs_internal' şeması izinleri |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Yok     |
+|**jobs_reader** | SELECT | Yok |
 
 > [!IMPORTANT]
 > Veritabanı yöneticisi olarak *İş veritabanına* erişim izni vermeden önce güvenlik durumunu gözden geçirin. İş oluşturma veya düzenleme izinlerine sahip olan kötü niyetli bir kullanıcı, kendi denetimindeki bir veritabanına bağlanmak için kayıtlı kimlik bilgisini kullanan bir iş oluşturarak veya düzenleyerek ilgili kimlik bilgisinin parolasını belirleyebilir.
-
-
 
 #### <a name="target-group"></a>Hedef grup
 
@@ -246,7 +243,6 @@ Aşağıdaki örneklerde işin çalıştırılacağı veritabanlarının belirle
 **Örnek 3**'te gösterilen hedef grup *Örnek 2*'dekine benzer ancak belirli veritabanları özel olarak hariç tutulmuştur. İş adımının eylemi hariç tutulan veritabanında *yürütülmez*.<br>
 **Örnek 4**'te hedef olarak bir elastik havuz içeren bir hedef grup gösterilmektedir. *Örnek 2*'ye benzer şekilde havuz iş çalıştırma zamanında dinamik olarak numaralandırılarak havuzdaki veritabanlarının listesi belirlenir.
 <br><br>
-
 
 ![Hedef grup örnekleri](media/elastic-jobs-overview/targetgroup-examples2.png)
 
@@ -287,7 +283,7 @@ Bir SQL elastik havuzundaki veritabanları üzerinde iş çalıştırılması s�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [SQL Server Agent nedir?](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
-- [Elastik işler oluşturma ve yönetme](elastic-jobs-overview.md) 
-- [PowerShell’i kullanarak Elastik İşler oluşturma ve yönetme](elastic-jobs-powershell.md) 
-- [Transact-SQL (T-SQL) kullanarak Elastik İşler oluşturma ve yönetme](elastic-jobs-tsql.md) 
+- [SQL Server Agent nedir?](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [Elastik işler oluşturma ve yönetme](elastic-jobs-overview.md)
+- [PowerShell’i kullanarak Elastik İşler oluşturma ve yönetme](elastic-jobs-powershell.md)
+- [Transact-SQL (T-SQL) kullanarak Elastik İşler oluşturma ve yönetme](elastic-jobs-tsql.md)

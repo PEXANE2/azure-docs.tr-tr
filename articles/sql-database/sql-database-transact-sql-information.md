@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e0870ac9dc818ca07e149421b486136c76dd61a4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822487"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208825"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL veritabanına geçiş sırasında Transact-SQL farklılıklarını çözme
 
@@ -38,7 +38,7 @@ SQL veritabanı tarafından desteklenen ve desteklenmeyen özelliklerin listesi 
 
 - CREATE ve ALTER DATABASE deyimlerinin üç düzine seçeneği vardır. Deyimler yalnızca SQL Server için uygulanan dosya yerleşimi, FıLESTREAM ve hizmet Aracısı seçeneklerini içerir. Bu, geçirmeden önce veritabanları oluşturma, ancak veritabanlarını oluşturan T-SQL kodunu geçiriyorsanız, kullandığınız tüm seçeneklerin desteklendiğinden emin olmak için Create Database ( [SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) SQL Server SÖZDIZIMI Ile [veritabanı oluşturma (Azure SQL veritabanı)](https://msdn.microsoft.com/library/dn268335.aspx) ile karşılaştırmanız gerekir. Azure SQL veritabanı için VERITABANı oluşturma hizmeti hedefi ve yalnızca SQL veritabanı için uygulanan elastik ölçek seçeneklerine sahiptir.
 - FıLESTREAM desteklenmediğinden CREATE ve ALTER TABLE deyimlerinin SQL veritabanında kullanılamayan FileTable seçenekleri var.
-- CREATE ve ALTER LOGIN deyimleri desteklenir, ancak SQL veritabanı tüm seçenekleri sunmaz. Veritabanınızı daha taşınabilir hale getirmek için SQL veritabanı, mümkün olduğunda oturum açma yerine içerilen veritabanı kullanıcılarını kullanarak teşvik eder. Daha fazla bilgi için bkz. [create/alter LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) ve [Database Access ile denetim ve verme](sql-database-manage-logins.md).
+- CREATE ve ALTER LOGIN deyimleri desteklenir, ancak SQL veritabanı tüm seçenekleri sunmaz. Veritabanınızı daha taşınabilir hale getirmek için SQL veritabanı, mümkün olduğunda oturum açma yerine içerilen veritabanı kullanıcılarını kullanarak teşvik eder. Daha fazla bilgi için bkz. [oturum açma ve değiştirme](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql) ve [oturumları ve kullanıcıları yönetme](sql-database-manage-logins.md).
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Transact-SQL sözdizimi Azure SQL veritabanı 'nda desteklenmiyor
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386082"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271011"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault sertifikalarla çalışmaya başlama
 Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.

@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121423"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297926"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux üzerinde App Service Azure Storage 'tan içerik sunma
 
@@ -25,7 +25,7 @@ Bu kılavuzda, Linux üzerinde App Service Azure Storage 'ın nasıl ekleneceği
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 veya üzeri).
 - [Linux uygulamasında](https://docs.microsoft.com/azure/app-service/containers/)mevcut bir App Service.
 - Bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)
-- Bir [Azure dosya paylaşma ve dizini](https://docs.microsoft.com/azure/storage/common/storage-azure-cli#create-and-manage-file-shares).
+- Bir [Azure dosya paylaşma ve dizini](../../storage/files/storage-how-to-use-files-cli.md).
 
 
 ## <a name="limitations-of-azure-storage-with-app-service"></a>App Service ile Azure depolama 'nın sınırlamaları
@@ -70,7 +70,7 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 Azure depolama, özel kimlik kullanarak çok Kapsayıcılı uygulamalarla bağlanabilir. Özel kimlik adını görüntülemek için [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)çalıştırın.
 
-*Docker-Compose. yıml* dosyanızda `volumes` seçeneğini `custom-id`eşleyin. Örneğin:
+*Docker-Compose. yıml* dosyanızda `volumes` seçeneğini `custom-id`eşleyin. Örnek:
 
 ```yaml
 wordpress:

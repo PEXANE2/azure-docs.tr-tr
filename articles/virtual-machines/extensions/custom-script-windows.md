@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: bf4c7e9fc623ad7dc74b6da943232d5c558d43a4
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 86128953130fdb34c660f6e40ec24565ff93edb4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920272"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299235"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -149,7 +149,7 @@ Ortak ayarlar, betiğin yürütüleceği sanal makineye şifresiz metin olarak g
 
 CustomScript (sürüm 1,10 ve üzeri), "fileUris" ayarında belirtilen URL 'lerden dosya indirmek için [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) destekler. Kullanıcı, SAS belirteçleri veya depolama hesabı anahtarları gibi gizli dizileri geçmesi gerekmeden, CustomScript 'in Azure Storage özel bloblarına veya kapsayıcılarına erişmesini sağlar.
 
-Bu özelliği kullanmak için kullanıcının, CustomScript 'in çalıştırılması beklenen VM 'ye veya VMSS 'ye [sistem tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) veya [Kullanıcı tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) bir kimlik eklemesi ve [yönetilen kimlik erişimini Azure depolama kapsayıcısına veya blobuna vermesi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)gerekir.
+Bu özelliği kullanmak için kullanıcının, CustomScript 'in çalıştırılması beklenen VM 'ye veya VMSS 'ye [sistem tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) veya [Kullanıcı tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) bir kimlik eklemesi ve [yönetilen kimlik erişimini Azure depolama kapsayıcısına veya blobuna vermesi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)gerekir.
 
 Hedef VM/VMSS 'de sistem tarafından atanan kimliği kullanmak için, "managedıdentity" alanını boş bir JSON nesnesi olarak ayarlayın. 
 

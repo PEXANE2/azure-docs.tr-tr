@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9ae8f5072573dcc91dd3e8bdcd08968790f6444d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79205205"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368528"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde sertifikaları döndürme
 
@@ -52,13 +52,13 @@ AKS aşağıdaki sertifikaları, sertifika yetkililerini ve hizmet hesaplarını
 
 AKS kümenizde oturum açmak için [az aks Get-Credentials][az-aks-get-credentials] kullanın. Bu komut ayrıca yerel makinenizde `kubectl` istemci sertifikasını indirir ve yapılandırır.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 Kümenizdeki tüm sertifikaları, CA 'Ları ve SAs 'yi döndürmek için `az aks rotate-certs` kullanın.
 
-```console
+```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
@@ -74,7 +74,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 
 `az aks get-credentials`çalıştırarak `kubectl` tarafından kullanılan sertifikayı güncelleştirin.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: ec218b1638183db463ff09488c988cad64d78c6d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096426"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370449"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid bildirimlerine abone olarak Azure Veri Gezgini blob alma
 
@@ -69,7 +69,7 @@ Azure Veri Gezgini, Event Hubs veri göndereceği bir tablo oluşturun. Kümede 
 
 1. Aşağıdaki komutu pencereye kopyalayın ve alınan verileri alacak tabloyu (TestTable) oluşturmak için **Çalıştır** ' ı seçin.
 
-    ```Kusto
+    ```kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
@@ -77,7 +77,7 @@ Azure Veri Gezgini, Event Hubs veri göndereceği bir tablo oluşturun. Kümede 
 
 1. Aşağıdaki komutu pencereye kopyalayın ve gelen JSON verilerini tablonun sütun adlarıyla ve veri türleriyle (TestTable) eşlemek için **Çalıştır** ' ı seçin.
 
-    ```Kusto
+    ```kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
     ```
 
@@ -130,11 +130,11 @@ Azure depolama kaynaklarıyla etkileşimde bulunmak için birkaç temel Azure CL
 
 Verileri bir dosyaya kaydedin ve bu komut dosyasıyla karşıya yükleyin:
 
-```Json
+```json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
 ```
 
-```bash
+```azurecli
 #!/bin/bash
 ### A simple Azure Storage example script
 
@@ -195,14 +195,14 @@ Gerekirse ilkeyi daha sonra değiştirebilirsiniz. Bu makalede birkaç dakikalı
 
 1. Veritabanına ulaşan ileti sayısını denetlemek için test veritabanınızda aşağıdaki sorguyu çalıştırın.
 
-    ```Kusto
+    ```kusto
     TestTable
     | count
     ```
 
 1. İletilerin içeriğini görmek için test veritabanınızda aşağıdaki sorguyu çalıştırın.
 
-    ```Kusto
+    ```kusto
     TestTable
     ```
 

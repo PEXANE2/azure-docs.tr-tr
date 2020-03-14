@@ -1,0 +1,46 @@
+---
+title: Ortak ağ erişimini reddetme-Azure portal-MySQL için Azure veritabanı
+description: MySQL için Azure veritabanınız için Azure portal kullanarak genel ağ erişimini reddetme hakkında bilgi edinin
+author: kummanish
+ms.author: manishku
+ms.service: mysql
+ms.topic: conceptual
+ms.date: 03/10/2020
+ms.openlocfilehash: b5f93f3a3583900810ca75f925c6a88df9102652
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79374959"
+---
+# <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda genel ağ erişimini reddetme
+
+Bu makalede, bir MySQL için Azure veritabanı sunucusunu tüm genel yapılandırmaların erişimini engelleyecek şekilde nasıl yapılandırabileceğiniz ve ağ güvenliğini daha da geliştirmek için özel uç noktalar aracılığıyla yalnızca bağlantılara izin veren açıklanır.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Bu nasıl yapılır kılavuzunda tamamlanması gerekir:
+
+* [MySQL Için Azure veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md)
+
+## <a name="set-deny-public-network-access"></a>Ortak ağ erişimini reddet ayarla
+
+MySQL Server 'ın ortak ağ erişimini reddetme Iznini ayarlamak için şu adımları izleyin:
+
+1. [Azure Portal](https://portal.azure.com/), var olan MySQL Için Azure veritabanı sunucunuzu seçin.
+
+1. MySQL sunucusu sayfasında, **Ayarlar**altında **bağlantı güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
+
+1. **Ortak ağ erişimini engelle**' de, MySQL sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
+
+    ![MySQL için Azure veritabanı ağ erişimini reddetme](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
+
+1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+
+1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
+
+    ![MySQL için Azure veritabanı ağ erişimini reddetme başarısı](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Ölçümler üzerinde uyarılar oluşturma](howto-alert-on-metric.md)hakkında bilgi edinin.

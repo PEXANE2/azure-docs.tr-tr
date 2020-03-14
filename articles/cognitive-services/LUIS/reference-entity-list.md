@@ -1,25 +1,18 @@
 ---
 title: Liste varlık türü-LUSıS
-titleSuffix: Azure Cognitive Services
 description: Liste varlıkları, sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUIS, liste varlıkları için ek değerler bulmaz. Geçerli listeye göre yeni kelimelerin önerilerini görmek için öner özelliğini kullanın.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 4313a1d644750c0961298bbee3ae211946de360a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 03/12/2020
+ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849777"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297246"
 ---
 # <a name="list-entity"></a>Liste varlığı
 
-Liste varlıkları, sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUIS, liste varlıkları için ek değerler bulmaz. Kullanım **önerilir** yeni sözcükleri sunabileceği önerileri görmek için özellik geçerli listede bağlı. Birden fazla liste varlığı ile aynı değeri varsa, her varlık uç nokta sorguda döndürülür.
+Liste varlıkları, sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUIS, liste varlıkları için ek değerler bulmaz. Geçerli listeye göre yeni kelimelerin önerilerini görmek için **öner** özelliğini kullanın. Birden fazla liste varlığı ile aynı değeri varsa, her varlık uç nokta sorguda döndürülür.
 
 Bir liste varlığı makine tarafından öğrenilen değildir. Tam metin bir eşleşmedir. LUIS, herhangi bir listede bir öğe için herhangi bir eşleşme yanıtta bir varlık olarak işaretler.
 
@@ -28,7 +21,7 @@ Bir liste varlığı makine tarafından öğrenilen değildir. Tam metin bir eş
 * Bilinen bir küme.
 * Genellikle değişmez. Listeyi sık olarak değiştirmeniz veya listenin kendi kendine genişlemesine ihtiyaç duyuyorsanız, tümcecik listesi ile birlikte bulunan basit bir varlık daha iyi bir seçimdir.
 * Küme, bu varlık türü için maksimum LUIS [sınırlarını](luis-boundaries.md) aşmaz.
-* Konuşmadaki metin bir eşanlamlı sözcük veya kurallı ad ile tam olarak eşleşiyor. LUSıS, tam metin eşleştirmelerinin ötesinde listeyi kullanmaz. Belirsiz eşleştirme, büyük/küçük harfe duyarlı, sözcük kökü oluşturma, plurals ve diğer çeşitlemeler bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün.
+* Söylenişi 'teki metin, eş anlamlı veya kurallı bir ada sahip büyük/küçük harf duyarsız bir eşleşmedir. LUSıS, listeyi eşleşmenin ötesinde kullanmaz. Belirsiz eşleme, sözcük kökü oluşturma, plurals ve diğer çeşitlemeler bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün.
 
 ![Liste varlığı](./media/luis-concept-entities/list-entity.png)
 
@@ -59,7 +52,7 @@ Bir liste varlığı makine tarafından öğrenilen değildir. Tam metin bir eş
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
 
-Adlı bir listesi uygulamanın olduğu varsayalım `Cities`, şehir adları havaalanı (tac Sea), havaalanı kodu (SEA), posta kodu (98101) ve telefon alan kodunu (206) bulunduğu şehir de dahil olmak üzere çeşitleri için izin verme.
+Uygulamanın, Havaalanı (deniz-Tac), Havaalanı Kodu (SEA), posta posta kodu (98101) ve telefon alanı kodu (206) dahil olmak üzere şehir adlarının çeşitlemelerine izin veren `Cities`adında bir liste olduğunu varsayalım.
 
 |Liste öğesi|Öğe eş anlamlı sözcükler|
 |---|---|
@@ -68,9 +61,9 @@ Adlı bir listesi uygulamanın olduğu varsayalım `Cities`, şehir adları hava
 
 `book 2 tickets to paris`
 
-Önceki utterance, sözcük içinde `paris` paris öğesine bir parçası olarak eşleştirilir `Cities` varlık listesi. Liste varlığı hem normalleştirilmiş öğenin adı, hem de öğe eş anlamlılar eşleşir.
+Önceki bir deyişle, `paris` sözcüğü `Cities` listesi varlığının bir parçası olarak Paris öğesiyle eşlenir. Liste varlığı hem normalleştirilmiş öğenin adı, hem de öğe eş anlamlılar eşleşir.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
   "entities": [
@@ -88,7 +81,7 @@ Adlı bir listesi uygulamanın olduğu varsayalım `Cities`, şehir adları hava
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 
 Bu, sorgu dizesinde `verbose=false` ayarlandıysa JSON olur:

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945579"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270946"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
 Bu makalede, laboratuvara Kullanıcı ekleme, laboratuvarda nasıl kayıt yapılacağı, VM 'nin kullanabileceği saat sayısını denetleme ve daha fazla bilgi edinebilirsiniz. 

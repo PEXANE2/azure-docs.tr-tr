@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9349969f1f9b037a271cb727233517daba999acd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446991"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367848"
 ---
-# <a name="custom-commands-preview"></a>Özel Komutlar (Önizleme)
+# <a name="what-are-custom-commands-preview"></a>Özel komutlar (Önizleme) nedir?
 
 [Sesli yardımcılar](voice-assistants.md) gibi sesli uygulamalar kullanıcıları dinler ve yanıt olarak bir işlem gerçekleştirebilir, genellikle geri konuşuyor. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir. Cihazlar, konuşma SDK 'sının `DialogServiceConnector` nesnesiyle birlikte yardımcılar 'a bağlanır.
 

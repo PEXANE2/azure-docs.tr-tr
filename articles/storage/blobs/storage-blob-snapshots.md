@@ -8,20 +8,22 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fb2da8acb0aa4d105f23ab5d1ad42f08a6ae722c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 17cd57fbcf9b1c14fb275a070bdefdd1282c4d6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595245"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370534"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>.NET 'te blob anlık görüntüsü oluşturma ve yönetme
 
-Anlık görüntü, bir Blobun zaman içinde alınmış bir salt okunurdur. Anlık görüntüler Blobları yedeklemek için faydalıdır. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage/client)'nı kullanarak blob anlık görüntülerinin oluşturulması ve yönetilmesi gösterilmektedir.
+Anlık görüntü, bir Blobun zaman içinde alınmış bir salt okunurdur. Anlık görüntüler Blobları yedeklemek için faydalıdır. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)'nı kullanarak blob anlık görüntülerinin oluşturulması ve yönetilmesi gösterilmektedir.
 
 ## <a name="about-blob-snapshots"></a>Blob anlık görüntüleri hakkında
 
-Blob URI 'si, blob URI 'sinin, anlık görüntünün alındığı saati belirtmek için blob URI 'sine eklenmiş bir **Tarih saat** değeri olması dışında, kendi temel blobuna benzer. Örneğin, bir Sayfa Blobu URI 'SI `http://storagesample.core.blob.windows.net/mydrives/myvhd`, anlık görüntü URI 'SI `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` benzerdir.
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+
+Blob URI 'si, blob URI 'sinin, anlık görüntünün alındığı saati belirtmek için blob URI 'sine eklenmiş bir **Tarih saat** değeri olması dışında, kendi temel blobuna benzer. Örneğin, bir Sayfa Blobu URI 'SI `http://storagesample.core.blob.windows.net/mydrives/myvhd`, anlık görüntü URI 'SI `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`benzerdir.
 
 > [!NOTE]
 > Tüm anlık görüntüler, temel Blobun URI 'sini paylaşır. Temel blob ve anlık görüntü arasındaki tek ayrım, eklenen **Tarih saat** değeridir.

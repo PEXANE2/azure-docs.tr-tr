@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382036"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284518"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması
 

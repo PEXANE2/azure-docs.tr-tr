@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Güç Azure Dev Spaces ve bunların azds. YAML yapılandırma dosyasında nasıl yapılandırıldığına ilişkin süreçler açıklanmaktadır
 keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375240"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259922"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces nasıl çalışıyor ve yapılandırılır
 
@@ -415,7 +415,7 @@ Ayrıca, başka bir geliştirme alanından türetilmiş yeni bir geliştirme ala
 
 Türetilmiş geliştirme alanı Ayrıca, kendi uygulamaları ve üst öğesinden paylaşılan uygulamalar arasında istekleri de akıllıca yönlendirir. Yönlendirme, istek türetilmiş geliştirme alanındaki bir uygulamaya yönlendirilmeye çalışarak ve üst geliştirme alanından paylaşılan uygulamaya geri dönerek yapılır. Uygulama üst alanda değilse, yönlendirme, ana alanda bulunan paylaşılan uygulamaya geri döner.
 
-Örneğin:
+Örnek:
 * Dev alanı *varsayılan* olarak, *Servicea* ve *serviceb* uygulamalarına sahiptir.
 * *Azureuser* dev Space, *varsayılan*olarak türetilir.
 * *Servicea* 'nın güncelleştirilmiş bir sürümü *azureuser*'e dağıtılır.

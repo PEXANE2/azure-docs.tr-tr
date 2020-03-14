@@ -3,12 +3,12 @@ title: Azure 'da Terraytest kullanarak Terrayform modüllerini test etme
 description: Terraform modüllerinizi test etmek için Terratest’i kullanmayı öğrenin.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 687a793af2b9b75efe463b042d121c32f18974d6
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158954"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370806"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Öğretici: Terraytest kullanarak Azure 'da Teraform modüllerini test etme
 
@@ -248,14 +248,17 @@ func TestUT_StorageAccountName(t *testing.T) {
 
 Birim testlerini çalıştırmak için komut satırında aşağıdaki adımları gerçekleştirin:
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestUT_StorageAccountName
 ```
 
 Geleneksel go test sonucu yaklaşık bir dakika içinde döndürülür.
@@ -369,21 +372,24 @@ func TestIT_HelloWorldExample(t *testing.T) {
 
 Tümleştirme testlerini çalıştırmak için komut satırında aşağıdaki adımları gerçekleştirin:
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestIT_HelloWorldExample
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestIT_HelloWorldExample
 ```
 
 Geleneksel go test sonucu yaklaşık iki dakika içinde döndürülür. Ayrıca, bu komutları yürüterek hem birim testlerini hem de tümleştirme testlerini çalıştırabilirsiniz:
 
 ```shell
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ go test
+go fmt
+go test
 ```
 
 Tümleştirme Testleri birim testlerinden çok daha uzun sürer (beş birim servis talebi için bir dakika ile karşılaştırıldığında bir tümleştirme çalışması için iki dakika). Ancak, bir senaryoda birim testlerini veya tümleştirme testlerini mi kullanacağınızı karardır. Genellikle, Terkform HCL işlevlerini kullanarak karmaşık mantık için birim testleri kullanmayı tercih ediyoruz. Genellikle bir kullanıcının uçtan uca perspektifi için tümleştirme testlerini kullanırız.
@@ -496,13 +502,16 @@ func Clean() error {
 
 Tam test paketini yürütmek için aşağıdaki komutları kullanabilirsiniz. Kod, önceki bölümde kullandığımız çalışan adımlara benzerdir. 
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
-GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage$ mage
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in magefile or test cases
+go fmt      # Only required when you change the magefile
+mage
 ```
 
 Son komut satırını ek Mage adımları ile değiştirebilirsiniz. Örneğin, `mage unit` veya `mage clean`kullanabilirsiniz. `dep` komutları ve `az login` ImageFile içine eklemek iyi bir fikirdir. Kodu burada göstermedik. 

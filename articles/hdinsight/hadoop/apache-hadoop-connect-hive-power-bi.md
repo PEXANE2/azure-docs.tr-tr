@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/02/2020
-ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: d9b64785dbd82842479eb3f313b8394f9f25b40b
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267809"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370007"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight 'ta ODBC kullanarak Microsoft Power BI ile Apache Hive verileri görselleştirme
 
@@ -32,7 +32,7 @@ Bilgiler ayrıca yeni [etkileşimli sorgu](../interactive-query/apache-interacti
 
 Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* HDInsight kümesi. Küme, Hive içeren bir HDInsight kümesi veya yeni yayımlanmış bir etkileşimli sorgu kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* HDInsight kümesi. Küme, Hive içeren bir HDInsight kümesi veya yeni yayımlanmış bir etkileşimli sorgu kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](apache-hadoop-linux-tutorial-get-started.md).
 
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/). Bir kopyasını [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz.
 

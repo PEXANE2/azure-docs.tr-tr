@@ -14,18 +14,18 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377360"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262899"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
 
 Kodunuzda, belirteçlerin kimliğini doğrulamak ve almak için yeni bir genel veya gizli istemci uygulaması (veya MSAL. js için Kullanıcı Aracısı) başlatabilirsiniz. İstemci uygulamasını Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) başlatırken bir dizi yapılandırma seçeneği belirleyebilirsiniz. Bu seçenekler iki gruba ayrılır:
 
 - Kayıt seçenekleri, şunlar dahildir:
-    - Yetkili (kimlik sağlayıcısı [örneğinden](#cloud-instance) ve uygulama için oturum açma [izleyicisiyle](#authority) ve muhtemelen kiracı kimliğinde) oluşur. [](#application-audience)
+    - Yetkili (kimlik sağlayıcısı [örneğinden](#cloud-instance) ve uygulama için oturum açma [izleyicisiyle](#authority) ve muhtemelen kiracı kimliğinde) oluşur. [audience](#application-audience)
     - [ISTEMCI kimliği](#client-id).
     - [Yeniden yönlendirme URI 'si](#redirect-uri).
     - [İstemci gizli](#client-secret) dizisi (gizli istemci uygulamaları için).

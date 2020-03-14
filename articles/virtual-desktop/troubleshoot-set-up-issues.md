@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 17505084095eb8fbe46c20c7aa226131e128b286
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127423"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371605"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -145,7 +145,7 @@ Ham hata örneği:
 
 Bunu yapmak için aşağıdaki işlemleri yapın:
 
-1. Azure portalını açın ve **sanal ağlar** dikey penceresine gidin.
+1. Azure portalını açın ve **sanal ağlar** sekmesine gidin.
 2. VNET 'nizi bulun ve **DNS sunucuları**' nı seçin.
 3. Ekranınızın sağ tarafında DNS sunucuları menüsü görünmelidir. Bu menüde **özel**' i seçin.
 4. Özel altında listelenen DNS sunucularının etki alanı denetleyicinize veya Active Directory etki alanına göre eşleştiğinden emin olun. DNS sunucunuzu görmüyorsanız, değerini **DNS sunucusu Ekle** alanına girerek ekleyebilirsiniz.

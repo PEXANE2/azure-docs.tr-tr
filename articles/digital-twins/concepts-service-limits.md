@@ -8,28 +8,22 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264959"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370397"
 ---
 # <a name="public-preview-service-limits"></a>Genel önizleme hizmet sınırları
 
-Genel Önizleme sırasında Azure dijital TWINS 'in aşağıdaki geçici abonelik, örnek ve hız sınırları vardır.
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-Bu kısıtlamalar, yeni hizmet ve birçok özelliği hakkında bilgi edinmeye yardımcı olmak için mevcuttur.
-
-> [!NOTE]
-> Bu sınırlar, genel kullanıma (GA) göre artar veya kaldırılır.
+Azure dijital TWINS, genel önizleme sırasında mevcut müşteriler için aşağıdaki geçici abonelik, örnek ve hız sınırlarına sahiptir. Bu kısıtlamalar, yeni hizmet ve birçok özelliği hakkında bilgi edinmeye yardımcı olmak için mevcuttur ve genel kullanıma (GA) göre arttırılacaktır.
 
 ## <a name="per-subscription-limits"></a>Abonelik başına sınırlar
 
-Genel Önizleme sırasında, her bir Azure aboneliği tek seferde yalnızca bir Azure dijital TWINS örneği oluşturabilir veya çalıştırabilir.
-
-> [!TIP]
-> Örneğinizi silerseniz yeni bir tane oluşturabilirsiniz.
+Genel Önizleme sırasında, her bir Azure aboneliği tek seferde yalnızca bir Azure dijital TWINS örneği oluşturabilir veya çalıştırabilir. Örneğinizi silerseniz yeni bir tane oluşturabilirsiniz.
 
 ## <a name="per-instance-limits"></a>Örnek başına sınırlar
 
@@ -71,7 +65,7 @@ Aşağıdaki sınırlar, Azure dijital TWINS örneğiniz için yapılan tüm Kul
 Aşağıdaki sınırlar, cihazlarınızın Azure dijital TWINS örneğine gönderebileceği tüm iletilerin toplam sayısıdır:
 
 - tüm cihazlarda saniye başına 100 ileti
--   cihaz başına saniyede 25 ileti
+-    cihaz başına saniyede 25 ileti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,18 +5,18 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 407a90827e856471fda33d57a14f56aefaedafc0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765741"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370789"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza çıktılar ekleme
 
 Bu öğreticide, şablonunuzda bir değer döndürmeyi öğrenirsiniz. Dağıtılan bir kaynaktan bir değere ihtiyacınız olduğunda çıktıları kullanırsınız. Bu öğreticinin tamamlana **7 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Değişkenler hakkında öğreticiyi](template-tutorial-add-variables.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -52,7 +52,7 @@ Son olarak, depolama hesabından en son eden **yenyenler** özelliğini döndür
 
 Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -63,10 +63,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addoutputs \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -94,7 +94,7 @@ Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden ge�
 
 Şimdi, kaynak grubuna ve dağıtım geçmişine bakalım.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Yaptığınız adımlara bağlı olarak, kaynak grubunda en az bir ve belki birkaç depolama hesabınız olmalıdır.

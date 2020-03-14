@@ -1,19 +1,19 @@
 ---
-title: MySQL için Azure veritabanı (Önizleme) portalı kurulum yöntemi için özel bağlantı
+title: Özel bağlantı-Azure portal-MySQL için Azure veritabanı
 description: Azure portal 'ten MySQL için Azure veritabanı için özel bağlantıyı yapılandırmayı öğrenin
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 193227ff98accb31c15e388c810aea7460a2cb5d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561672"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371928"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Portal kullanarak MySQL için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Portal kullanarak MySQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu makalede, Azure sanal ağında bir sanal makıne oluşturmak için Azure portal kullanmayı ve Azure özel uç noktası ile MySQL için Azure veritabanı sunucusunu nasıl kullanacağınızı öğreneceksiniz.
 
@@ -126,13 +126,13 @@ Bu bölümde, Azure 'da MySQL için Azure veritabanı sunucusu oluşturacaksın�
 
 Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ekleyeceksiniz. 
 
-1. Ekranın sol üst kısmında Azure portal **kaynak oluştur** > **ağ** > **özel bağlantı merkezi (Önizleme)** seçeneğini belirleyin.
+1. Ekranın sol üst kısmında Azure portal **kaynak oluştur** > **ağ** > **özel bağlantı**' yı seçin.
 
 2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
 
     ![Özel bağlantıya genel bakış](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. **Özel uç nokta oluştur (Önizleme)-temel**bilgiler için, bu bilgileri girin veya seçin:
+1. **Özel uç nokta oluşturma-temel**bilgiler için, bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -156,7 +156,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     |Hedef alt kaynak |*MySQLServer* seçin|
     |||
 7. Ileri 'yi seçin **: yapılandırma**.
-8. **Özel uç nokta (Önizleme) oluştur-yapılandırma**' da bu bilgileri girin veya seçin:
+8. **Özel uç nokta oluşturma-yapılandırma**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |

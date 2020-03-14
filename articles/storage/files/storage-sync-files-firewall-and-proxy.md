@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 93681813c12f0df99909c849e57153e7a64c78fb
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268047"
+ms.locfileid: "79299320"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -144,6 +144,55 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 > - https:\//kailani.one.microsoft.com (birincil uç nokta: Batı ABD)
 > - https:\//kailani1.one.microsoft.com (eşleştirilmiş başarısız bölge: Doğu ABD)
 > - https:\//tm-kailani.one.microsoft.com (birincil bölgenin bulma URL 'SI)
+
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure Dosya Eşitleme IP adresleri listesine izin ver
+Şirket içi güvenlik duvarınız Azure Dosya Eşitleme bağlanmak için bir izin verilenler listesine belirli IP adresleri eklenmesini gerektiriyorsa, bağlandığınız bölgelere göre aşağıdaki IP adresi aralıklarını ekleyebilirsiniz.
+
+| Bölge | IP adresi aralıkları |
+|--------|-------------------|
+| Orta ABD | 52.176.149.179/32, 20.37.157.80/29 |
+| Doğu ABD 2 | 40.123.47.110/32, 20.41.5.144/29 |
+| Doğu ABD | 104.41.148.238/32, 20.42.4.248/29 |
+| Orta Kuzey ABD | 65.52.62.167/32, 40.80.188.24/29 |
+| Orta Güney ABD | 104.210.219.252/32, 13.73.248.112/29 |
+| Batı ABD 2 | 52.183.27.204/32, 20.42.131.224/29 |
+| Orta Batı ABD | 52.161.25.233/32, 52.150.139.104/29 |
+| Batı ABD | 40.112.150.67/32, 40.82.253.192/29 |
+| Orta Kanada | 52.228.42.41/32, 52.228.81.248/29 |
+| Doğu Kanada | 52.235.36.119/32, 40.89.17.232/29 |
+| Güney Brezilya | 191.237.253.115/32, 191.235.225.216/29 |
+| Kuzey Avrupa | 40.113.94.67/32, 20.38.85.152/29 |
+| Batı Avrupa | 104.40.191.8/32, 20.50.1.0/29 |
+| Orta Fransa | 52.143.166.54/32, 20.43.42.8/29 |
+| Güney Fransa | 52.136.131.99/32, 51.105.88.248/29 |
+| Güney Birleşik Krallık | 51.140.67.72/32, 51.104.25.224/29 |
+| Batı Birleşik Krallık | 51.140.202.34/32, 51.137.161.240/29 |
+| İsviçre Kuzey | 51.107.48.224/29 |
+| İsviçre Batı | 51.107.144.216/29 |
+| Norveç Batı | 51.120.224.216/29 |
+| Norveç Doğu | 51.120.40.224/29 |
+| Doğu Asya | 23.102.225.54/32, 20.189.108.56/29 |
+| Güneydoğu Asya | 13.76.81.46/32, 20.43.131.40/29 |
+| Orta Avustralya | 20.37.224.216/29 |
+| Orta Avustralya 2 | 20.36.120.216/29 |
+| Doğu Avustralya | 13.75.153.240/32, 20.37.195.96/29 |
+| Güneydoğu Avustralya | 13.70.176.196/32, 20.42.227.128/29 |
+| Güney Hindistan | 104.211.231.18/32, 20.41.193.160/29 |
+| Batı Hindistan | 52.136.48.216/29 |
+| Doğu Japonya | 104.41.161.113/32, 20.43.66.0/29 |
+| Batı Japonya | 23.100.106.151/32, 40.80.57.192/29 |
+| Güney Kore - Orta | 52.231.67.75/32, 20.41.65.184/29 |
+| Güney Kore - Güney | 52.231.159.38/32, 40.80.169.176/29 |
+| Doğu US DoD | 20.140.72.152/29 |
+| US Gov Arizona | 20.140.64.152/29 |
+| US Gov Arizona | 52.244.75.224/32, 52.244.79.140/32 |
+| US Gov Iowa | 52.244.79.140/32, 52.244.75.224/32 |
+| US Gov Texas | 52.238.166.107/32, 52.238.79.29/32 |
+| US Gov Virginia | 13.72.17.152/32, 52.227.153.92/32 |
+| Güney Afrika Kuzey | 102.133.175.72/32 |
+| Güney Afrika Batı | 102.133.75.173/32, 102.133.56.128/29, 20.140.48.216/29 |
+| BAE Orta | 20.45.71.151/32, 20.37.64.216/29, 20.140.48.216/29 |
+| BAE Kuzey | 40.123.216.130/32, 20.38.136.224/29, 20.140.56.136/29 |
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Hizmet uç noktalarına ağ bağlantısını test etme
 Bir sunucu Azure Dosya Eşitleme hizmetine kaydedildikten sonra, bu sunucuya özgü tüm uç noktalar (URL) ile iletişimleri test etmek için test-StorageSyncNetworkConnectivity cmdlet 'i ve ServerRegistration. exe kullanılabilir. Bu cmdlet, tamamlanmamış iletişim, sunucunun Azure Dosya Eşitleme ile tamamen çalışmasını engellediğinde ve proxy ve güvenlik duvarı yapılandırmalarının ince ayar yapmak için kullanılabilir olduğunda sorun gidermeye yardımcı olabilir.

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/11/2019
 ms.author: memildin
 ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390010"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282737"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure sanal makineler 'de SQL sunucuları için gelişmiş veri güvenliği (Önizleme)
 Azure sanal makineler 'deki SQL sunucuları için gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Bu önizleme özelliği, olası veritabanı güvenlik açıklarını tanımlama ve azaltma ve veritabanınıza tehditler gösterebilen anormal etkinlikleri algılama işlevlerini içerir. 

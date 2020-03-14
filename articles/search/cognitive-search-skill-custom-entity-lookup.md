@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651347"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369786"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
 
 > [!IMPORTANT] 
 > Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
@@ -38,9 +38,9 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| entitiesDefinitionUri | Eşleştirilecek tüm hedef metinleri içeren bir JSON veya CSV dosyasının yolu. Bu varlık tanımı, Dizin Oluşturucu çalıştırmasının başlangıcında okundu. Bu dosya için her türlü güncelleştirme, sonraki Çalışmayana kadar gerçekleştirilmeyecek. Bu yapılandırmaya HTTPS üzerinden erişilebilir olması gerekir. Beklenen CSV veya JSON şeması için aşağıda " [özel varlık tanımı](#custom-entity-definition-format) biçimi" başlığına bakın.|
+| entitiesDefinitionUri    | Eşleştirilecek tüm hedef metinleri içeren bir JSON veya CSV dosyasının yolu. Bu varlık tanımı, Dizin Oluşturucu çalıştırmasının başlangıcında okundu. Bu dosya için her türlü güncelleştirme, sonraki Çalışmayana kadar gerçekleştirilmeyecek. Bu yapılandırmaya HTTPS üzerinden erişilebilir olması gerekir. Beklenen CSV veya JSON şeması için aşağıda " [özel varlık tanımı](#custom-entity-definition-format) biçimi" başlığına bakın.|
 |ınlineentitiesdefinition | Satır içi JSON varlık tanımları. Bu parametre, varsa entitiesDefinitionUri parametresinin yerini alır. En fazla 10 KB 'lik yapılandırma satır içi olarak sağlanmayabilir. Beklenen JSON şeması için aşağıdaki [özel varlık tanımına](#custom-entity-definition-format) bakın. |
-|defaultLanguageCode |  Seçim Giriş metnini simgeleştirme ve ayırma için kullanılan giriş metninin dil kodu. Aşağıdaki diller desteklenir: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer Ingilizce 'dir (`en`). LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.  |
+|defaultLanguageCode |    Seçim Giriş metnini simgeleştirme ve ayırma için kullanılan giriş metninin dil kodu. Aşağıdaki diller desteklenir: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer Ingilizce 'dir (`en`). LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.  |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
@@ -48,13 +48,13 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Giriş adı      | Açıklama                   |
 |---------------|-------------------------------|
 | metin          | Çözümlenecek metin.          |
-| languageCode  | İsteğe bağlı. `"en"` varsayılan değerdir.  |
+| languageCode    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
 
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
 
-| Çıkış adı     | Açıklama                   |
+| Çıkış adı      | Açıklama                   |
 |---------------|-------------------------------|
 | Varlık | Bulunan eşleşmeler ve ilgili meta veriler hakkında bilgi içeren bir nesne dizisi. Tanımlanan varlıkların her biri aşağıdaki alanları içerebilir:  <ul> <li> *ad*: tanımlanan en üst düzey varlık. Varlık "normalleştirilmiş" formunu temsil eder. </li> <li> *ID*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık için benzersiz bir tanımlayıcı.</li> <li> *Açıklama*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık açıklaması. </li> <li> *şunu yazın:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık türü.</li> <li> *alt tür:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık alt türü.</li>  <li> *eşleşmeler*: kaynak metindeki bu varlık için eşleşmelerin her birini tanımlayan koleksiyon. Her eşleşme aşağıdaki üyelere sahip olacaktır: </li> <ul> <li> *metin*: ham metin, kaynak belgeden eşleşir. </li> <li> *konum*: eşleşmenin metinde bulunduğu konum. </li> <li> *uzunluk*: eşleşen metnin uzunluğu. </li> <li> *eşleşme uzaklığı*: Bu eşleşmenin farklı karakter sayısı, özgün varlık adından veya diğer addan farklıdır.  </li> </ul> </ul>
   |
@@ -168,7 +168,7 @@ Aşağıdaki tablolarda, eşleştirilecek varlıkları tanımlarken ayarlayabile
 Bazı durumlarda, özel varlıkların listesini doğrudan yetenek tanımına uyacak şekilde sağlamak daha uygun olabilir. Bu durumda, yukarıda açıklanan şekilde benzer bir JSON biçimi kullanabilirsiniz, ancak bu, yetenek tanımında satır içine alınabilir.
 Yalnızca boyutu 10 KB 'tan (serileştirilmiş boyut) daha az olan konfigürasyonlar satır içi olarak tanımlanabilir. 
 
-##  <a name="sample-definition"></a>Örnek tanım
+##    <a name="sample-definition"></a>Örnek tanım
 
 Satır içi biçim kullanan örnek bir yetenek tanımı aşağıda gösterilmiştir:
 
@@ -231,7 +231,7 @@ Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar 
 
 ```
 
-##  <a name="sample-input"></a>Örnek giriş
+##    <a name="sample-input"></a>Örnek giriş
 
 ```json
 {
@@ -248,7 +248,7 @@ Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar 
 }
 ```
 
-##  <a name="sample-output"></a>Örnek çıktı
+##    <a name="sample-output"></a>Örnek çıktı
 
 ```json
   { 
@@ -295,6 +295,12 @@ Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar 
     ] 
   } 
 ```
+
+## <a name="errors-and-warnings"></a>Hatalar ve uyarılar
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>Uyarı: eşleşmeler için maksimum kapasiteye ulaşıldı, daha fazla yinelenen eşleşme atlanıyor.
+
+Bu uyarı, algılanan eşleşme sayısı izin verilen en fazla değerden fazlaysa, bu uyarı yayınlanacaktır. Bu durumda, yinelenen eşleşmeler dahil olmak üzere duracağız. Bu sizin için kabul edilemez, lütfen tek bir kullanım örneği için size yardımcı olabilmemiz için bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) yapın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

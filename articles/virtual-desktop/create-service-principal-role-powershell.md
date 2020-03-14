@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5bdc51f47a170922d4fc33e8538695af29e5159c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128123"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365432"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Öğretici: PowerShell kullanarak hizmet sorumluları ve rol atamaları oluşturma
 
@@ -113,4 +113,4 @@ Oturum açtıktan sonra, hizmet sorumlusu ile birkaç Windows sanal masaüstü P
 Hizmet sorumlusunu oluşturup Windows sanal masaüstü kiracınızda bir rol atadıktan sonra, bir konak havuzu oluşturmak için bu hizmeti kullanabilirsiniz. Konak havuzları hakkında daha fazla bilgi edinmek için Windows sanal masaüstü 'nde bir konak havuzu oluşturma öğreticisine geçin.
 
  > [!div class="nextstepaction"]
- > [Windows sanal masaüstü ana bilgisayar havuzu öğreticisi](./create-host-pools-azure-marketplace.md)
+ > [Azure Market ile ana bilgisayar havuzu oluşturma](./create-host-pools-azure-marketplace.md)

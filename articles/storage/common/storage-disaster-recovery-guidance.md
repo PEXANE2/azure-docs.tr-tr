@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894536"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365381"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Olağanüstü durum kurtarma ve hesap yük devretme (Önizleme)
 
 Microsoft, Azure hizmetlerinin her zaman kullanılabilir olduğundan emin olmaya çalışır. Ancak, planlanmamış hizmet kesintileri meydana gelebilir. Uygulamanız dayanıklılık gerektiriyorsa, Microsoft, verilerinizin ikinci bir bölgeye kopyalanması için coğrafi olarak yedekli depolamayı kullanmanızı önerir. Ayrıca, müşterilerin bölgesel hizmet kesintisi için bir olağanüstü durum kurtarma planı olması gerekir. Olağanüstü durum kurtarma planının önemli bir kısmı, birincil uç noktanın kullanılamaz hale geldiği olaydaki ikincil uç noktaya yük devretmek için hazırlanmalıdır.
 
 Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini (Önizleme) destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz. Yük devretme, ikincil bitiş noktasını, depolama hesabınız için birincil uç nokta olacak şekilde güncelleştirir. Yük devretme işlemi tamamlandıktan sonra istemciler yeni birincil uç noktaya yazmaya başlayabilir.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Bu makalede, hesap yük devretmesi ile ilgili kavramlar ve işlemler açıklanmakta ve depolama hesabınızın en az müşteri etkisi miktarına göre kurtarmaya nasıl hazırlanacağı anlatılmaktadır. Azure portal veya PowerShell 'de hesap yük devretmesini başlatmayı öğrenmek için bkz. [Hesap yük devretmesi başlatma (Önizleme)](storage-initiate-account-failover.md).
 
@@ -124,7 +126,7 @@ Hesap yük devretmesi, Azure Resource Manager dağıtımlarıyla GRS veya RA-GRS
 
 #### <a name="storage-account-containing-archived-blobs"></a>Arşivlenmiş blob 'ları içeren depolama hesabı
 
-Arşivlenmiş blob 'ları içeren depolama hesapları, hesap yük devretmesini destekler. Yük devretme işlemi tamamlandıktan sonra, hesabı GRS 'ye veya RA-GRS ' e geri dönüştürmek için tüm archieved Blobları önce çevrimiçi bir katmana yeniden doldurmanız gerekir.
+Arşivlenmiş blob 'ları içeren depolama hesapları, hesap yük devretmesini destekler. Yük devretme işlemi tamamlandıktan sonra, hesabı GRS 'ye veya RA-GRS ' e dönüştürmek için tüm arşivlenmiş blob 'ların önce çevrimiçi bir katmana yeniden doldurulması gerekir.
 
 #### <a name="storage-resource-provider"></a>Depolama kaynak sağlayıcısı
 

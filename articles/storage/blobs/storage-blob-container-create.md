@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372219"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135947"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET ile Azure depolama 'da kapsayıcı oluşturma veya silme
 
-Azure depolama 'daki Bloblar kapsayıcılar halinde düzenlenir. Bir blobu karşıya yüklemeden önce, önce bir kapsayıcı oluşturmanız gerekir. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage/client)ile kapsayıcıları oluşturma ve silme işlemlerinin nasıl yapılacağı gösterilmektedir.
+Azure depolama 'daki Bloblar kapsayıcılar halinde düzenlenir. Bir blobu karşıya yüklemeden önce, önce bir kapsayıcı oluşturmanız gerekir. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile kapsayıcıları oluşturma ve silme işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 ## <a name="name-a-container"></a>Bir kapsayıcıyı adlandırın
 
@@ -37,7 +37,7 @@ Bir kapsayıcı oluşturmak için aşağıdaki yöntemlerden birini çağırın:
 
 - [Oluşturma](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
-- [Createıfnotexists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
+- [Createıfnotexists çağırmanız](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
 
 Aynı ada sahip bir kapsayıcı zaten varsa **Create** ve **createasync** yöntemleri bir özel durum oluşturur.

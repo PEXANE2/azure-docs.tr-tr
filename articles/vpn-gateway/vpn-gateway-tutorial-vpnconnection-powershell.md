@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 1f4687a6af9cae7172a70527f336b98c75d0e9cd
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: c42d164647d608fc45e1135cd4111ff3900a733c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903382"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137169"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Öğretici: PowerShell kullanarak S2S VPN bağlantıları oluşturma ve yönetme
 
@@ -25,13 +25,13 @@ Azure S2S VPN bağlantıları müşterinin iş yeri ile Azure arasında güvenli
 > * Daha fazla VPN bağlantısı ekleme
 > * Bir VPN bağlantısını silme
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Aşağıdaki diyagramda bu öğreticinin topolojisi gösterilmektedir:
 
 ![Konumdan Konuma VPN bağlantısı diyagramı](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell ve Azure PowerShell çalışma
+
+[!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="requirements"></a>Gereksinimler
 

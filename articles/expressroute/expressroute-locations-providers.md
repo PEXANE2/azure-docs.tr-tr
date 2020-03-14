@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: aa0deaf00a5121d50a2621d146ac83f97ee45df4
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 9da6125111a817a5546bfca047d19e64f3da5cd5
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081718"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298895"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -81,7 +81,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Amsterdam2** | [Interxiyon AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | Batı Avrupa | 10G, 100G | CenturyLink Cloud Connect, Colt, DE-CIX, Eunetçalışmalar, ınterxiyon, turuncu, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | yok | yok | Equinix, Megaport |
 | **Auckland** | [Vocus grubu NZ Albümno](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | yok | 'Yi | Devoli, Kordia, Megaport, Spark NZ, Vocus Group NZ |
-| **Bangkok** | [AıS](http://business.ais.co.th/solution/microsoft-azure.html?category=cloud) | 2 | yok | 'Yi | AIS |
+| **Bangkok** | [AıS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | yok | 'Yi | AIS |
 | **Busan** | [LG CNS](https://www.lgcns.com/datacenter) | 2 | Güney Kore - Güney | yok | LG CNS |
 | **Kanberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Orta Avustralya | 10G, 100G | CDC |
 | **Kanberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Orta Avustralya 2| 10G, 100G | CDC |

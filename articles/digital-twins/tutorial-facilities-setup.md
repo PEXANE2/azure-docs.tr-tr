@@ -9,14 +9,16 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 878b64fe6dd491adbb61c4c74cf4a5fc039858cd
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163050"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371418"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Öğretici: Azure dijital TWINS önizlemesi dağıtma ve uzamsal bir grafik yapılandırma
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure Digital TWINS önizleme hizmetini kullanarak, kişileri, yerleri ve cihazları tutarlı bir uzamsal sisteme bir araya getirebilirsiniz. Bu öğretici serisinde, Azure dijital İkizlerini odası doluluk sıcaklık ve Uzaktan kalite en uygun koşullarla algılamak için nasıl kullanılacağını gösterir. 
 
@@ -38,7 +40,7 @@ Bu öğreticilerde [uygun odaları bulma hızlı başlangıcındaki](quickstart-
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliği. Azure hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Azure aboneliği. Azure hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
 
 - .NET Core SDK. Aşağıdaki öğreticilerde kullanılan dijital İkizlerini Azure örnekleri yazılan C#. Örneği derlemek ve çalıştırmak için geliştirme makinenize [.NET Core SDK sürüm 2.1.403 veya sonraki bir sürümü](https://www.microsoft.com/net/download) yüklediğinizden emin olun. Bir komut penceresinde `dotnet --version` çalıştırarak, makinenizde doğru sürümün yüklü olduğundan emin olun.
 
@@ -147,7 +149,7 @@ Uzamsal grafikler ve nesne modelleri hakkında daha fazla bilgi için bkz. [diji
 
 - **spaces**: Digital Twins nesne modelinde `spaces`, fiziksel konumları temsil eder. Her bir alanda `Type`&mdash;, bölge, mekan veya müşteri&mdash;ve kolay bir `Name`bulunur. Alanları, hiyerarşik bir yapıyı başka alanları için ait olabilir. Sanal bir yapı uzamsal grafiğini provisionSample.yaml dosyası vardır. `Floor` türündeki boşlukların mantıksal iç içe geçme `Venue`, bir zemin içinde `Area` ve bir alandaki `Room` düğümlere göz önünde bulundurmayın. 
 
-- **devices**: Alanlarda, bir dizi sensörü yöneten fiziksel veya sanal varlıklar olan `devices` öğeleri bulunabilir. Örneğin, bir cihaz bir kullanıcıya ait telefon, Raspberry Pi algılayıcı pod veya bir ağ geçidi olabilir. Örnekteki hayali binanın **Focus Room** adlı odasında bir **Raspberry Pi 3 A1** cihazı bulunmaktadır. Her cihaz düğümü, örneğe sabit kodlanmış benzersiz bir `hardwareId` değerine sahiptir. Bu örneği üretim amaçlı kullanım için yapılandırmak isterseniz bu değerleri kendi sisteminizdeki değerlerle değiştirmeniz gerekir.  
+- **devices**: Alanlarda, bir dizi sensörü yöneten fiziksel veya sanal varlıklar olan `devices` öğeleri bulunabilir. Örneğin, bir cihaz kullanıcının telefonu, Raspberry PI algılayıcısı Pod veya ağ geçidi olabilir. Örnekteki hayali binanın **Focus Room** adlı odasında bir **Raspberry Pi 3 A1** cihazı bulunmaktadır. Her cihaz düğümü, örneğe sabit kodlanmış benzersiz bir `hardwareId` değerine sahiptir. Bu örneği üretim amaçlı kullanım için yapılandırmak isterseniz bu değerleri kendi sisteminizdeki değerlerle değiştirmeniz gerekir.  
 
 - **Algılayıcılar**: bir cihazda birden çok `sensors`bulunabilir. Bunlar algılayabilir ve sıcaklık, hareket ve pil düzeyi kayıt fiziksel değişiklikleri ister. Her sensör düğümü, burada sabit kodlanmış `hardwareId` değeriyle benzersiz olarak tanımlanmıştır. Gerçek bir uygulama için bu kurulumda sensörlerden öğesinin benzersiz tanımlayıcıları kullanarak değiştirin. ProvisionSample. YAML dosyasının *hareketi* ve *Carbondioksit*kayıt işlemini yapmak için iki sensöri vardır. CarbonDioxide sensörünün tanımlandığı satırların altına aşağıdaki satırları ekleyerek *Temperature* (Sıcaklık) kaydı yapacak yeni bir sensör ekleyin. Bunlar, yorumlanan Sample. YAML 'de açıklamalı çizgiler olarak sağlanır. Her satırın önündeki `#` karakterini kaldırarak bunların açıklamasını kaldırabilirsiniz. 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271063"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371163"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>Kullanım DıŞı Log Analytics sahip bir Azure Container Service kümesini izleme
 
@@ -21,15 +21,15 @@ ms.locfileid: "76271063"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu izlenecek yol, [Azure Container Service kullanarak bir Kubernetes kümesi oluşturduğunuzu](container-service-kubernetes-walkthrough.md)varsayar.
 
 Ayrıca, Azure CLI `az` ve `kubectl` araçlarının yüklü olduğunu varsaymaktadır.
 
 Şunu çalıştırarak `az` aracı yüklüyse test edebilirsiniz:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 `az` aracı yüklü değilse, [burada](https://github.com/azure/azure-cli#installation)yönergeler vardır.
@@ -38,21 +38,24 @@ Alternatif olarak, Azure CLI `az` ve `kubectl` araçlarının zaten yüklü oldu
 Şunu çalıştırarak `kubectl` aracı yüklüyse test edebilirsiniz:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Yüklü `kubectl` yoksa şu şekilde çalıştırabilirsiniz:
-```console
-$ az acs kubernetes install-cli
+
+```azurecli
+az acs kubernetes install-cli
 ```
 
 Kubectl aracında Kubernetes anahtarlarınızın yüklü olup olmadığını test etmek için şunu çalıştırabilirsiniz:
+
 ```console
-$ kubectl get nodes
+kubectl get nodes
 ```
 
 Yukarıdaki komut hata alıyorsa, Kubernetes kümesi anahtarlarını kubectl aracınızı yüklemeniz gerekir. Bunu aşağıdaki komutla yapabilirsiniz:
-```console
+
+```azurecli
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -83,7 +86,7 @@ DaemonSets, Kubernetes tarafından kümedeki her konakta bir kapsayıcının tek
 Çalışma alanı KIMLIĞINIZI ve anahtarınızı DaemonSet yapılandırmasına ekledikten sonra, `kubectl` komut satırı aracıyla Log Analytics aracısını kümenize yükleyebilirsiniz:
 
 ```console
-$ kubectl create -f oms-daemonset.yaml
+kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Kubernetes gizli anahtarını kullanarak Log Analytics aracısını yükleme
@@ -94,16 +97,24 @@ Log Analytics çalışma alanı KIMLIĞINIZI ve anahtarınızı korumak için, D
   - Gizli şablon - gizli template.yaml
     - DaemonSet YAML dosyası-omsagent-DS-gizlilikler. YAML
 - Betiği çalıştırın. Betik Log Analytics çalışma alanı KIMLIĞI ve birincil anahtar ister. Bunu, çalıştırmak için betik gizli bir YAML dosyası oluşturacak şekilde ekleyin.
-  ```
-  #> sudo bash ./secret-gen.sh
+
+  ```console
+  sudo bash ./secret-gen.sh
   ```
 
-  - Aşağıdakileri çalıştırarak gizli dizileri oluşturun: ```kubectl create -f omsagentsecret.yaml```
+  - Gizli dizileri pod, aşağıdaki komutu çalıştırarak oluşturun:
+
+     ```console
+     kubectl create -f omsagentsecret.yaml
+     ```
 
   - Denetlemek için şu komutu çalıştırın:
 
+  ```console
+  kubectl get secrets
   ```
-  root@ubuntu16-13db:~# kubectl get secrets
+
+  ```output
   NAME                  TYPE                                  DATA      AGE
   default-token-gvl91   kubernetes.io/service-account-token   3         50d
   omsagent-secret       Opaque                                2         1d
@@ -121,7 +132,11 @@ Log Analytics çalışma alanı KIMLIĞINIZI ve anahtarınızı korumak için, D
   KEY:    88 bytes
   ```
 
-  - Arka plan programı kümesi çalıştırarak, omsagent oluşturma ```kubectl create -f omsagent-ds-secrets.yaml```
+  - Aşağıdaki komutu çalıştırarak omsagent Daemon 'nizi oluşturun:
+  
+  ```console
+  kubectl create -f omsagent-ds-secrets.yaml
+  ```
 
 ### <a name="conclusion"></a>Sonuç
 İşte bu kadar! Birkaç dakika sonra, Log Analytics panonuzda veri akışını görebilmelisiniz.

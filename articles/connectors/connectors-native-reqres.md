@@ -1,20 +1,20 @@
 ---
-title: HTTPS çağrılarını alma ve yanıtlama
-description: Azure Logic Apps kullanarak HTTPS isteklerini ve olaylarını gerçek zamanlı olarak işleyin
+title: HTTPS kullanarak çağrıları alma ve yanıtlama
+description: Azure Logic Apps kullanarak dış hizmetlerden gelen HTTPS isteklerini işleyin
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79247286"
+ms.locfileid: "79297313"
 ---
-# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak gelen HTTPS çağrılarını alma ve yanıtlama
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik istek tetikleyicisi veya yanıtı eylemiyle, gelen https isteklerini alıp yanıtlayan otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, mantıksal uygulamanızı kullanabilirsiniz:
 
@@ -202,6 +202,19 @@ Istek tetikleyicisinden alınan çıktılar hakkında daha fazla bilgi aşağıd
 Yanıt eylemini, gelen HTTPS isteğine bir yük (veri) ile yanıt vermek için, ancak yalnızca HTTPS isteği tarafından tetiklenen bir mantıksal uygulamada kullanabilirsiniz. Yanıt eylemini iş akışınızın herhangi bir noktasına ekleyebilirsiniz. Bu tetikleyicinin temel alınan JSON tanımı hakkında daha fazla bilgi için bkz. [yanıt eylem türü](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
 Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız çağırana bir `504 GATEWAY TIMEOUT` döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen çağırana `202 ACCEPTED` bir yanıt döndürür.
+
+> [!IMPORTANT]
+> Bir yanıt eylemi bu üstbilgileri içeriyorsa Logic Apps, bu üst bilgileri herhangi bir uyarı veya hata göstermeden oluşturulan yanıt iletisinden kaldırır:
+>
+> * `Allow`
+> * Bu özel durumlarla `Content-*`: `Content-Disposition`, `Content-Encoding`ve `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Last-Modified`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Logic Apps, bu üst bilgilerle bir yanıt eylemi olan mantıksal uygulamaları kaydetmenizi durdurmasa da, Logic Apps bu üst bilgileri yoksayar.
 
 1. Mantıksal uygulama Tasarımcısı ' nda, yanıt eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 

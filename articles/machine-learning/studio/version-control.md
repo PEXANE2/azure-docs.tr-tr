@@ -9,14 +9,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 1b76147ac48d0bfb7b7bb1302e33b21e5ababb77
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169073"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204145"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de uygulama yaşam döngüsü yönetimi (klasik)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Azure Machine Learning Studio (klasik), Azure bulut platformunda çalışır durumda olan Machine Learning denemeleri geliştirmeye yönelik bir araçtır. Visual Studio IDE ve ölçeklenebilir bulut hizmeti tek bir platformda birleştirilmiştir. Standart uygulama yaşam döngüsü yönetimi (ALM) uygulamalarını, çeşitli varlıkların dağıtımını otomatik yürütmeye ve dağıtıma, Azure Machine Learning Studio (klasik) içine ekleyebilirsiniz. Bu makalede bazı seçenekler ve yaklaşımların bazıları açıklanmaktadır.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

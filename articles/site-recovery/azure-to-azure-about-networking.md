@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5dcae83714ee3693288abf54afe8df7bb55dd578
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79258167"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371452"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
@@ -52,6 +52,8 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 login.microsoftonline.com | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve kimlik doğrulaması için gereklidir.
 *.hypervrecoverymanager.windowsazure.com | Site Recovery hizmeti iletişiminin sanal makineden gerçekleşebilmesi için gereklidir.
 *.servicebus.windows.net | Site Recovery izleme ve tanılama verilerinin VM 'den yazılabilmesini sağlamak için gereklidir.
+*.vault.azure.net | Portal aracılığıyla ADE özellikli sanal makineler için çoğaltmayı etkinleştirme erişimine izin verir
+*. automation.ext.azure.com | Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik olarak yükseltilmelerini olanaklı bir şekilde etkinleştirir
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP adresi aralıkları için giden bağlantı
 
@@ -63,6 +65,8 @@ Giden bağlantıyı denetlemek için bir NSG kullanıyorsanız, bu hizmet etiket
 - AAD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturma
 - Hedef bölge için Site Recovery izlemeye erişime izin veren bir EventsHub hizmet etiketi tabanlı NSG kuralı oluşturun.
 - Herhangi bir bölgedeki Site Recovery hizmetine erişime izin vermek için bir Azuresterecovery hizmet etiketi tabanlı NSG kuralı oluşturun.
+- Bir AzureKeyVault Service etiketi tabanlı NSG kuralı oluşturun. Bu, yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir.
+- GuestAndHybridManagement hizmet etiketi tabanlı NSG kuralı oluşturun. Bu yalnızca Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik yükseltmesini etkinleştirmek için gereklidir.
 - Gerekli NSG kurallarını bir test NSG üzerinde oluşturmanızı ve bir üretim NSG 'de kuralları oluşturmadan önce hiçbir sorun olmadığını doğrulamanızı öneririz.
 
 ## <a name="example-nsg-configuration"></a>Örnek NSG yapılandırması

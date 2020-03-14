@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 85403442119f73b363fee98a9c225b9c0ec18119
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e67a8f6b9cc175932b09e6f576148656dd9da9ba
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026867"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298827"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central 'e bağlanın
 
@@ -194,6 +194,9 @@ Gerçek bir cihaz IoT Central uygulamasına bağlanırsa, cihaz durumu aşağıd
     - Cihazlar sayfasında, geçerli kimlik bilgileriyle bağlantılı ancak kayıt sırasında şablon KIMLIĞINI **belirtmeden cihazlar sayfasında** el ile kayıtlı değil.  
 Işleci, **geçirme** düğmesini kullanarak bir cihazı **cihazlar** sayfasından bir şablonla ilişkilendirebilir.
 
+## <a name="best-practices"></a>En iyi uygulamalar 
+1.  Cihazları IoT Central 'e bağlamak için DPS kullanıldığında, (IoT Hub) cihaz bağlantı dizesinin kalıcı veya önbelleğe alınmadığından emin olun. Cihazları yeniden bağlamak için, doğru cihaz bağlantı dizesini almak üzere normal DPS cihaz kayıt akışı ' na gidin. Bağlantı dizesi önbelleğe alınmışsa, cihaz yazılımı IoT Central temel alınan Azure IoT Hub güncelleştirildiği senaryolarda eski bir bağlantı dizesine sahip olma riskine karşı çalışır. 
+
 ## <a name="sdk-support"></a>SDK desteği
 
 Azure cihaz SDK 'Ları, cihaz kodunuzu uygulamanız için en kolay yolu sunar. Aşağıdaki cihaz SDK 'Ları kullanılabilir:
@@ -213,7 +216,7 @@ IoT Hub ile tüm cihaz iletişimi aşağıdaki IoT Hub bağlantı seçeneklerini
 
 Aşağıdaki tabloda Azure IoT Central cihaz özelliklerinin IoT Hub özellikleriyle nasıl eşleme yapılacağı özetlenmektedir:
 
-| Azure IoT Central | Azure IoT Hub |
+| Azure IoT Central | Azure IoT Hub'ı |
 | ----------- | ------- |
 | Ölçüm: telemetri | Cihazdan buluta mesajlaşma |
 | Cihaz özellikleri | Cihaz ikizi bildirilen özellikler |

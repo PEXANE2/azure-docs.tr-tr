@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a367e4d98135b5d29c4a0e38363739ca2689dcab
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 158dd9d6a38cc1aaf7667c0b16518e23b3f7cecf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127977"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366692"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
 
@@ -35,7 +35,7 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
 4. Ana bilgisayara RDP ile bağlanırken kullandığınız hesabı "uzak masaüstü kullanıcısı" grubuna ekleyin. Bunu yapmazsanız, Active Directory etki alanınıza katladıktan sonra VM 'ye bağlanamadınız.
 5. SANAL makinenizde Windows Update gidin.
 6. Tüm Windows güncelleştirmelerini önemli kategoride yükler.
-7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) yüklüyor.
+7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) yüklüyor.
 8. Yerel Grup İlkesi Düzenleyicisi açın ve **Yönetim Şablonları** > **Windows bileşenleri** ** > Uzak Masaüstü Hizmetleri** ** > Uzak Masaüstü oturumu ana bilgisayarı** **uzak oturum ortamı** > **bilgisayar yapılandırması** ' na gidin. > 
 9. Uzak Masaüstü Protokolü 8,0 ilkesini etkinleştirin.
 10. Bu sanal makineyi Active Directory etki alanınıza ekleyin.

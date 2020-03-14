@@ -1,24 +1,24 @@
 ---
-title: PostgreSQL için Azure veritabanı için özel bağlantı-tek sunucu (Önizleme) CLı kurulum yöntemi
+title: Özel bağlantı-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı için özel bağlantıyı nasıl yapılandıracağınızı öğrenin-Azure CLı 'dan tek sunucu
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 0eacf0f65346247d5fda5b26ead924a8cfd94dd9
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d4288b901a0e6e132e32f8391d108e79861fc331
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562097"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371044"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>CLı kullanarak PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-tek sunucu (Önizleme)
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>For PostgreSQL için Azure veritabanı-CLı kullanarak tek sunucu için özel bağlantı oluşturma ve yönetme
 
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu makalede Azure CLı 'yı kullanarak bir Azure sanal ağında bir VM oluşturma ve Azure özel uç noktası ile PostgreSQL için Azure veritabanı tek sunucu oluşturma hakkında bilgi edineceksiniz.
 
 > [!NOTE]
-> Bu özellik, PostgreSQL için Azure veritabanı 'nın tek sunuculu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+> Bu özellik, PostgreSQL için Azure veritabanı-tek sunucu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

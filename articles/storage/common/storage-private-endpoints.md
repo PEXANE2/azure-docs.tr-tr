@@ -1,31 +1,34 @@
 ---
-title: Azure Storage ile özel uç noktaları kullanma | Microsoft Docs
+title: Özel uç noktaları kullan
+titleSuffix: Azure Storage
 description: Sanal ağlardan depolama hesaplarına güvenli erişim için özel uç noktalara genel bakış.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252654"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299065"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Azure depolama için özel uç noktaları kullanma (Önizleme)
+# <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
-Bir sanal ağdaki (VNet) istemcilerin [özel bir bağlantı](../../private-link/private-link-overview.md)üzerinden güvenli bir şekilde verilere erişmesine izin vermek Için, Azure depolama hesaplarınız Için [Özel uç noktaları](../../private-link/private-endpoint-overview.md) kullanabilirsiniz. Özel uç nokta, depolama hesabı hizmetiniz için VNet adres alanından bir IP adresi kullanır. VNet ve depolama hesabı arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
+Bir sanal ağdaki (VNet) istemcilerin [özel bir bağlantı](../../private-link/private-link-overview.md)üzerinden güvenli bir şekilde verilere erişmesine izin vermek Için, Azure depolama hesaplarınız için [Özel uç noktaları](../../private-link/private-endpoint-overview.md) kullanabilirsiniz. Özel uç nokta, depolama hesabı hizmetiniz için VNet adres alanından bir IP adresi kullanır. VNet ve depolama hesabı arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
 
 Depolama hesabınız için özel uç noktalar kullanmak şunları yapmanızı sağlar:
+
 - Depolama hizmeti için genel uç noktasındaki tüm bağlantıları engelleyecek şekilde depolama hesabınızı güvenli hale getirerek depolama hesabınızın güvenliğini sağlayın.
 - Sanal ağ (VNet) için güvenliği artırarak VNet 'ten veri alımını engelleyebilirsiniz.
 - [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../../expressroute/expressroute-locations.md) Ile özel eşleme ile sanal ağa bağlanan şirket içi ağlardan depolama hesaplarına güvenli bir şekilde bağlanın.
 
 ## <a name="conceptual-overview"></a>Kavramsal genel bakış
+
 ![Azure depolama için özel uç noktalara genel bakış](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
 Özel uç nokta, [sanal ağınızdaki](../../virtual-network/virtual-networks-overview.md) (VNet) bir Azure hizmeti için özel bir ağ arabirimidir. Depolama hesabınız için özel bir uç nokta oluşturduğunuzda, VNet 'iniz ve depolama ağınızdaki istemciler arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve depolama hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
@@ -43,7 +46,7 @@ Depolama hesabı sahipleri, [Azure Portal](https://portal.azure.com)depolama hes
 
 Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden erişimi reddedecek şekilde [yapılandırarak](storage-network-security.md#change-the-default-network-access-rule) , depolama hesabınızı yalnızca sanal ağınızdan gelen bağlantıları kabul edecek şekilde güvenli hale getirebilirsiniz. Depolama güvenlik duvarı yalnızca genel uç nokta üzerinden erişimi denetlemediğinden, özel bir uç noktası olan VNet 'ten gelen trafiğe izin vermek için bir güvenlik duvarı kuralına gerek yoktur. Bunun yerine özel uç noktalar, depolama hizmetine alt ağ erişimi sağlamak için izin akışını kullanır.
 
-### <a name="private-endpoints-for-storage-service"></a>Depolama hizmeti için özel uç noktalar
+### <a name="private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktalar
 
 Özel uç nokta oluştururken, bağlandığı depolama hesabını ve depolama hizmetini belirtmeniz gerekir. Her depolama hizmeti için, [BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md), [Dosya](../files/storage-files-introduction.md), [kuyruk](../queues/storage-queues-introduction.md), [tablo](../tables/table-storage-overview.md)veya [statik Web siteleri](../blobs/storage-blob-static-website.md)olmak üzere erişmeniz gereken bir depolama hesabında ayrı bir özel uç noktaya ihtiyacınız vardır.
 
@@ -51,8 +54,6 @@ Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden eri�
 > RA-GRS hesaplarında daha iyi okuma performansı için depolama hizmetinin ikincil örneği için ayrı bir özel uç nokta oluşturun.
 
 Coğrafi olarak yedekli depolama için yapılandırılmış bir depolama hesabıyla ikincil bölgeye okuma erişimi için, hizmetin birincil ve ikincil örnekleri için ayrı özel uç noktalara ihtiyacınız vardır. **Yük devretme**için ikincil örnek için özel bir uç nokta oluşturmanız gerekmez. Özel uç nokta, yük devretmeden sonra otomatik olarak yeni birincil örneğe bağlanır. Depolama artıklığı seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](storage-redundancy.md).
-
-#### <a name="resources"></a>Kaynaklar
 
 Depolama hesabınız için özel bir uç nokta oluşturma hakkında daha ayrıntılı bilgi için aşağıdaki makalelere bakın:
 
@@ -111,8 +112,6 @@ Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları 
 | Tablo hizmeti          | `privatelink.table.core.windows.net` |
 | Statik Web siteleri        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>Kaynaklar
-
 Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
@@ -124,16 +123,23 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
 
+Azure depolama için özel uç noktalar hakkında aşağıdaki bilinen sorunları göz önünde bulundurun.
+
 ### <a name="copy-blob-support"></a>Blob 'U kopyalama desteği
 
-Önizleme sırasında, kaynak depolama hesabı bir güvenlik duvarı tarafından korunduğunda özel uç noktalar aracılığıyla erişilen depolama hesaplarına verilen [kopyalama blobu](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) komutlarını desteklemiyoruz.
+Depolama hesabı bir güvenlik duvarı tarafından korunuyorsa ve hesaba özel uç noktalar üzerinden erişiliyorsa, bu hesap bir [BLOB kopyalama](/rest/api/storageservices/copy-blob) işleminin kaynağı olarak görev kullanamaz.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Özel uç noktalarla VNET 'lerdeki istemciler için depolama erişimi kısıtlamaları
 
-Özel uç noktaları olan diğer depolama hesaplarına erişirken, mevcut özel uç noktalar ile VNET 'lerdeki istemciler. Örneğin, bir VNet N1 'nin bir depolama hesabı için a1, blob hizmeti için özel bir uç noktası olduğunu varsayalım. A2 depolama hesabı, blob hizmeti için bir VNet için bir özel uç nokta içeriyorsa, VNet N1 içindeki istemciler de özel bir uç nokta kullanarak a2 hesabının blob hizmetine da erişir. A2 depolama hesabı, blob hizmeti için özel uç nokta içermiyorsa, VNet N1 içindeki istemciler blob hizmetine özel bir uç nokta olmadan erişebilir.
+Özel uç noktaları olan diğer depolama hesaplarına erişirken, mevcut özel uç noktalar ile VNET 'lerdeki istemciler. Örneğin, VNet N1 'ın blob depolaması için a1 depolama hesabı için özel bir uç noktası olduğunu varsayalım. A2 depolama hesabı, blob depolaması için bir sanal ağ için özel bir uç nokta içeriyorsa, VNet N1 içindeki istemciler de özel bir uç nokta kullanılarak a2 hesabındaki blob depolamaya da erişemez. A2 depolama hesabı, BLOB depolama için özel uç nokta içermiyorsa, VNet N1 içindeki istemciler bu hesaptaki blob depolamaya özel bir uç nokta olmadan erişebilir.
 
 Bu kısıtlama, a2 hesabı özel bir uç nokta oluşturduğunda yapılan DNS değişikliklerinin bir sonucudur.
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Özel uç noktaları olan alt ağlar için ağ güvenlik grubu kuralları
 
 Şu anda, [ağ güvenlik grubu](../../virtual-network/security-overview.md) (NSG) kurallarını ve özel uç noktalar için Kullanıcı tanımlı yolları yapılandıramazsınız. Özel uç noktasını barındıran alt ağa uygulanan NSG kuralları özel uç noktaya uygulanır. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](storage-network-security.md)
+- [BLOB depolama için güvenlik önerileri](../blobs/security-recommendations.md)

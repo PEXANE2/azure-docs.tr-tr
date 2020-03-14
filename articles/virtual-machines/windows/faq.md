@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 64aeaf412bc8af242a9d3184a3c1f0fa0ee4809e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: e3d2673ba52ba0cca36e2a999558313b64716ade
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243334"
+ms.locfileid: "79299623"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows Sanal Makineleri hakkında sık sorulan sorular
 Bu makalede, Azure 'da Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Windows sanal makineleri hakkında bazı yaygın soruların ele alınmaktadır. Bu konunun Linux sürümü için bkz. [Linux sanal makineleri hakkında sık sorulan sorular](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -41,7 +41,7 @@ Bir Windows sanal makinesi için Uzak Masaüstü Bağlantısı (RDP) kullanarak 
 
 Uzak Masaüstü ile ilgili sorun yaşıyorsanız, bkz. [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Hyper-V deneyiminiz varsa VMConnect’e benzer bir araç arıyor olabilirsiniz. Sanal makineye konsol erişimi desteklenmediğinden, Azure benzer bir araç sunmaz.
+Hyper-V ' y i kullandıysanız, VMConnect 'e benzer bir araç arıyor olabilirsiniz. Azure, bir sanal makineye konsol erişimi desteklenmediğinden benzer bir araç sunmaz.
 
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Verileri depolamak için geçici diski (varsayılan olarak D: sürücü) kullanabilir miyim?
 Verileri depolamak için geçici diski kullanmayın. Yalnızca geçici depolama alanı olduğundan, kurtarılamamış verileri kaybetme riskini alırsınız. Sanal makine farklı bir konağa taşınırsa veri kaybı oluşabilir. Sanal makinenin yeniden boyutlandırılması, konağın güncelleştirilmesi veya konaktaki bir donanım hatası, sanal makinenin taşınmasını gerektirecek olası nedenler arasındadır.
@@ -75,7 +75,7 @@ Evet. Denemek için hızlı bir şekilde bir Linux VM oluşturmak için, bkz. [p
 Evet, bu artık mümkündür. Önce VM 'nin serbest bırakılmasının durdurulması gerekir. Ardından, bir NIC ekleyebilir veya kaldırabilirsiniz (VM 'deki son NIC olmadığı müddetçe). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Herhangi bir bilgisayar adı gereksinimi var mı?
-Evet. Bilgisayar adı en fazla 15 karakter uzunluğunda olabilir. Kaynaklarınızı adlandırma hakkında daha fazla bilgi için bkz. [adlandırma kuralları kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#sample-naming-convention) .
+Evet. Bilgisayar adı en fazla 15 karakter uzunluğunda olabilir. Kaynaklarınızı adlandırma hakkında daha fazla bilgi için bkz. [adlandırma kuralları kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Herhangi bir kaynak grubu adı gereksinimi var mı?
 Evet. Kaynak grubu adı en fazla 90 karakter uzunluğunda olabilir. Kaynak grupları hakkında daha fazla bilgi için bkz. [adlandırma kuralları kuralları ve kısıtlamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) .

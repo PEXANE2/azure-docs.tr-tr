@@ -1,23 +1,23 @@
 ---
-title: Konuşma SDK 'Sı ile istemcideki özel komutları yerine getirmek
+title: Konuşma SDK 'Sı ile bir istemciden komutları yerine getirmek
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, konuşma SDK 'Sı ile istemcideki özel komut etkinliklerini nasıl işleyeceğinizi açıkladık.
+description: Bu makalede, konuşma SDK 'Sı ile bir istemcide özel komut etkinliklerinin nasıl işleneceğini açıkladık.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156514"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367758"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Nasıl yapılır: konuşma SDK 'Sı ile istemcide komutları yerine alma (Önizleme)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Konuşma SDK 'Sı (Önizleme) ile bir istemciden komutları yerine getirmek
 
 Özel bir komut uygulaması kullanarak görevleri gerçekleştirmek için, bağlı bir istemci cihazına özel yük gönderebilirsiniz.
 
@@ -26,7 +26,7 @@ Bu makalede şunları yapmanız gerekir:
 - Özel komutlar uygulamanızdan özel bir JSON yükü tanımlama ve gönderme
 - C# UWP konuşma SDK 'sı istemci UYGULAMASıNDAN özel JSON yükü içeriğini alma ve görselleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Konuşma hizmeti için bir Azure abonelik anahtarı
@@ -71,7 +71,7 @@ Bu makalede, adım adım, bir istemci uygulamanın özel komutlar uygulamanızla
 
 [Hızlı başlangıç: konuşma SDK 'sı (Önizleme) Ile özel bir komut uygulamasına bağlanma](./quickstart-custom-speech-commands-speech-sdk.md) `turn on the tv`, `turn off the fan`gibi komutları ele alan bir konuşma SDK 'sı istemci uygulaması oluşturdunuz. Şimdi bu komutların sonucunu görebilmeniz için bazı görseller ekleyin.
 
-Aşağıdaki **XML 'nin eklenmiş olduğunu belirten** metin içeren etiketli kutular ekleyin `MainPage.xaml.cs`
+Aşağıdaki **XML 'nin eklenmiş olduğunu belirten** metin içeren **Off** etiketli kutular ekleyin `MainPage.xaml.cs`
 
 ```xml
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">

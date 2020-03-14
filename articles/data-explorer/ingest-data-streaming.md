@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330983"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297093"
 ---
 # <a name="streaming-ingestion-preview"></a>Akış alma (Önizleme)
 
@@ -72,7 +72,7 @@ Desteklenen iki akış alma türü vardır:
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Akış alımı, [veritabanı imleçleri](/azure/kusto/management/databasecursor) veya [veri eşlemeyi](/azure/kusto/management/mappings)desteklemez. Yalnızca [önceden oluşturulmuş](/azure/kusto/management/tables#create-ingestion-mapping) veri eşleme destekleniyor. 
+* Akış alımı, [veritabanı imleçleri](/azure/kusto/management/databasecursor) veya [veri eşlemeyi](/azure/kusto/management/mappings)desteklemez. Yalnızca [önceden oluşturulmuş](/azure/kusto/management/create-ingestion-mapping-command) veri eşleme destekleniyor. 
 * Artan VM ve küme boyutları ile akış alma performansı ve kapasitesi ölçeklenir. Eş zamanlı içeri lamalar, çekirdek başına altı alma ile sınırlıdır. Örneğin, D14 ve L16 gibi 16 çekirdekli SKU 'Lar için, desteklenen en fazla 96 yükü eşzamanlı Alım olur. D11 gibi iki çekirdek SKU 'su için, en fazla desteklenen yük 12 eşzamanlı Alım olur.
 * Alma isteği başına veri boyutu sınırlaması 4 MB 'tır.
 * Tablo ve giriş eşlemelerinin oluşturulması ve değiştirilmesi gibi şema güncelleştirmeleri, akış alma hizmeti için beş dakikaya kadar sürebilir.

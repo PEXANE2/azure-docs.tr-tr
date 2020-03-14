@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597177"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371571"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -108,7 +108,7 @@ Kullanılabilir erişim katmanları şunlardır:
 
 - **Sık** erişimli erişim katmanı. Bu katman, depolama hesabındaki nesnelere sık sık erişim için iyileştirilmiştir. Sık erişimli katmanda verilere erişmek, depolama maliyetlerinin daha yüksektir. Yeni depolama hesapları varsayılan olarak sık erişimli katmanda oluşturulur.
 - Seyrek **erişimli erişim** katmanı. Bu katman, seyrek erişilen ve en az 30 gün içinde depolanan büyük miktardaki verileri depolamak için iyileştirilmiştir. Seyrek Erişimli katmanda verilerin depolanması daha uygun maliyetli bir işlemdir, ancak bu verilere erişilmesi, sık erişimli katmandaki verilere erişmenin daha pahalı olabilir.
-- **Arşiv** katmanı. Bu katman yalnızca bireysel blok Blobları ve ekleme Blobları için kullanılabilir. Arşiv katmanı, birkaç saatlik alma gecikmesini kabul eden ve arşiv katmanında en az 180 gün kalacak olan veriler için iyileştirilmiştir. Arşiv katmanı, verileri depolamak için en ekonomik seçenektir. Ancak, verilere erişmek, sık veya seyrek katmanlardaki verilere erişmenin daha pahalıdır.
+- **Arşiv** katmanı. Bu katman yalnızca bireysel blok Blobları için kullanılabilir. Arşiv katmanı, birkaç saatlik alma gecikmesini kabul eden ve arşiv katmanında en az 180 gün kalacak olan veriler için iyileştirilmiştir. Arşiv katmanı, verileri depolamak için en ekonomik seçenektir. Ancak, verilere erişmek, sık veya seyrek katmanlardaki verilere erişmenin daha pahalıdır.
 
 Verilerinizin kullanım düzeninde bir değişiklik varsa, bu erişim katmanları arasında istediğiniz zaman geçiş yapabilirsiniz. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md).
 

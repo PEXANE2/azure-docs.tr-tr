@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276993"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371146"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>Kullanım DıŞı Azure Container Service ile Kubernetes Web Kullanıcı arabirimini kullanma
 
@@ -21,7 +21,7 @@ ms.locfileid: "76276993"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu izlenecek yol, [Azure Container Service kullanarak bir Kubernetes kümesi oluşturduğunuzu](container-service-kubernetes-walkthrough.md)varsayar.
 
 
@@ -29,8 +29,8 @@ Ayrıca, Azure CLı ve `kubectl` araçlarının yüklü olduğunu varsaymaktadı
 
 Şunu çalıştırarak `az` aracı yüklüyse test edebilirsiniz:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 `az` aracı yüklü değilse, [burada](https://github.com/azure/azure-cli#installation)yönergeler vardır.
@@ -38,13 +38,13 @@ $ az --version
 Şunu çalıştırarak `kubectl` aracı yüklüyse test edebilirsiniz:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Yüklü `kubectl` yoksa şu şekilde çalıştırabilirsiniz:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="overview"></a>Genel Bakış
@@ -52,8 +52,8 @@ $ az acs kubernetes install-cli
 ### <a name="connect-to-the-web-ui"></a>Web Kullanıcı arabirimine bağlanma
 Şunu çalıştırarak Kubernetes Web Kullanıcı arabirimini başlatabilirsiniz:
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 Bu, yerel makinenizi Kubernetes Web Kullanıcı arabirimine bağlayan güvenli bir ara sunucu ile konuşmak için yapılandırılmış bir Web tarayıcısını açmalı.
@@ -77,7 +77,7 @@ Bu, yerel makinenizi Kubernetes Web Kullanıcı arabirimine bağlayan güvenli b
 
 4. Bu kapsayıcıları ve hizmetleri dağıtmak için **Dağıt** ' a tıklayın.
 
-    ![Kubernetes dağıtımı](./media/container-service-kubernetes-ui/deploy.png)
+    ![Kubernetes Dağıtımı](./media/container-service-kubernetes-ui/deploy.png)
 
 ### <a name="view-your-containers"></a>Kapsayıcılarınızı görüntüleyin
 **Dağıt**' a tıkladıktan sonra, Kullanıcı arabirimi, dağıttığı için hizmetinizin bir görünümünü gösterir:

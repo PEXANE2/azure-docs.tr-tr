@@ -1,5 +1,5 @@
 ---
-title: Konuşma cihazları SDK 'Sı hakkında-konuşma hizmeti
+title: Konuşma cihazları SDK 'Sı-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşma cihaz SDK'sı ile çalışmaya başlayın. Konuşma hizmeti çok çeşitli cihazlar ve ses kaynaklarıyla birlikte çalışmaktadır. Konuşma cihaz SDK'sı, amaca yönelik olarak tasarlanan, mikrofon dizi geliştirme takımları ile eşleştirilmiş önceden ayarlanmış bir kitaplıktır.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 40179c7d421a26fd9a77b435668f75ec6fde8ab1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136982"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370653"
 ---
-# <a name="about-the-speech-devices-sdk"></a>Konuşma Cihazları SDK’sı hakkında
+# <a name="what-is-the-speech-devices-sdk"></a>Konuşma cihazları SDK 'Sı nedir?
 
-[Konuşma hizmeti](overview.md) çok çeşitli cihazlar ve ses kaynaklarıyla birlikte çalışmaktadır. Şimdi, konuşma uygulamalarınızın eşleşen donanım ve yazılım ile bir sonraki düzeye alabilir. Konuşma cihaz SDK'sı, amaca yönelik olarak tasarlanan, mikrofon dizi geliştirme takımları ile eşleştirilmiş pretuned bir kitaplıktır.
+[Konuşma hizmeti](overview.md) çok çeşitli cihazlar ve ses kaynaklarıyla birlikte çalışmaktadır. Şimdi, konuşma uygulamalarınızın eşleşen donanım ve yazılım ile bir sonraki düzeye alabilir. Konuşma cihaz SDK'sı, amaca yönelik olarak tasarlanan, mikrofon dizi geliştirme takımları ile eşleştirilmiş önceden ayarlanmış bir kitaplıktır.
 
 Konuşma cihaz SDK'sı yardımcı olabilir:
 

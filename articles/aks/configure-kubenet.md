@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 9931c752d5ce33beb41dc00194c27d06b9469807
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3fe1d36b859884ab19a645e5693c7e7931fe5c2c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595902"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368477"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -118,9 +118,11 @@ az ad sp create-for-rbac --skip-assignment
 
 Aşağıdaki örnek çıktı, hizmet sorumlunuz için uygulama KIMLIĞINI ve parolayı gösterir. Bu değerler, hizmet sorumlusuna bir rol atamak ve ardından AKS kümesini oluşturmak için ek adımlarda kullanılır:
 
-```console
-$ az ad sp create-for-rbac --skip-assignment
+```azurecli
+az ad sp create-for-rbac --skip-assignment
+```
 
+```output
 {
   "appId": "476b3636-5eda-4c0e-9751-849e70b5cfad",
   "displayName": "azure-cli-2019-01-09-22-29-24",

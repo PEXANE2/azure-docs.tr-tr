@@ -4,14 +4,14 @@ description: Azure 'da özel bir kapsayıcı kayıt defteri kullanarak açık ka
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 03/11/2020
 ms.author: stevelas
-ms.openlocfilehash: cb58a7ed51ae15d33ffdbb616c9b32ef03bcbfb7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456262"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371061"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure Container Registry kullanarak bir OCı yapıtı gönderme ve çekme
 
@@ -66,10 +66,20 @@ echo "Here is an artifact!" > artifact.txt
 
 Bu metin dosyasını kayıt defterinize göndermek için `oras push` komutunu kullanın. Aşağıdaki örnekte örnek metin dosyası `samples/artifact` depoya iter. Kayıt defteri, tam olarak nitelenmiş kayıt defteri adı *myregistry.azurecr.io* (tümü küçük harf) ile tanımlanır. Yapıt `1.0`etiketlendi. Yapıtın, varsayılan olarak, dosya adı `artifact.txt`izleyen *medya türü* dizesi tarafından tanımlanan tanımlanmamış bir türü vardır. Ek türler için bkz. [OCI yapıtları](https://github.com/opencontainers/artifacts) . 
 
+**Linux**
+
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.io/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 Başarılı bir gönderme için çıkış aşağıdakine benzer:

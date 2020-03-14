@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a70e52771828de6cc9fad7998097d70c28a64fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 9f9f7f709d31967e892900ccb25657a5963c0379
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238821"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370228"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstünde kiracı oluşturma
 
@@ -82,7 +82,7 @@ TenantCreator uygulama rolünü atamak için:
 3. **Kullanıcı ve gruplar**'ı seçin. Uygulamaya izin veren yöneticinin, **varsayılan erişim** rolü atanmış olarak zaten listelendiğini görebilirsiniz. Bu, bir Windows sanal masaüstü kiracısı oluşturmak için yeterli değildir. Bir kullanıcıya **Tenantcreator** rolünü eklemek için bu yönergeleri takip edin.
    
    !["Windows sanal masaüstü" Kurumsal uygulamasını yönetmek için atanan kullanıcı ve grupların ekran görüntüsü. Ekran görüntüsünde, "varsayılan erişim" için olan yalnızca bir atama gösterilmektedir.](media/tenant-default-access.png)
-4. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** dikey penceresinde **Kullanıcılar ve gruplar** ' ı seçin.
+4. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** sekmesinden **Kullanıcılar ve gruplar** ' ı seçin.
 5. Windows sanal masaüstü kiracınızı oluşturacak bir kullanıcı hesabı arayın. Kolaylık olması için bu genel yönetici hesabı olabilir.
    - contosoadmin@live.com veya contosoadmin@outlook.comgibi bir Microsoft Identity sağlayıcısı kullanıyorsanız, Windows sanal masaüstü 'nde oturum açabilmeyebilirsiniz. Bunun yerine admin@contoso.com veya admin@contoso.onmicrosoft.com gibi etki alanına özgü bir hesap kullanmanızı öneririz.
 

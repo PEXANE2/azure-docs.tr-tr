@@ -9,14 +9,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: cd239106bfd3ac785cffbf1365f298da565179ec
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096654"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366096"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL bağlantı ayarları
+> [!NOTE]
+> Özellikler yalnızca **ABD Batı 2, ABD Doğu, ABD Orta Güney** Şu anda diğer bölgelerle kullanılabilir
+
 > [!NOTE]
 > Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
 

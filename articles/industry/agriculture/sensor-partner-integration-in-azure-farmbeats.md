@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132822"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298742"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
 Bu makalede, algılayıcı iş ortağı tümleştirmesini sağlayan Azure Farmtts **Translator** bileşeni hakkında bilgi sağlanır.
 
-Bu bileşeni kullanarak, iş ortakları, farmtts veri merkezi API 'Lerini kullanarak ve müşteri cihaz verilerini ve telemetri ' i veri merkezine gönderebilirler. Veriler Farmtörler 'de kullanılabilir olduktan sonra, Farmtts Hızlandırıcısı kullanılarak görselleştirilebilen ve veri Fusion ve makine öğrenimi/yapay zeka modelleri oluşturmak için kullanılabilir.
+Bu bileşeni kullanarak, iş ortakları Farmrets veri hub 'ı API 'Leri kullanarak ve müşteri cihaz verilerini ve telemetri ' i veri hub 'ına gönderebilirler. Veriler Farmtörler 'de kullanılabilir olduktan sonra, Farmtts Hızlandırıcısı kullanılarak görselleştirilebilen ve veri Fusion ve makine öğrenimi/yapay zeka modelleri oluşturmak için kullanılabilir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -25,7 +25,7 @@ Bu bileşeni kullanarak, iş ortakları, farmtts veri merkezi API 'Lerini kullan
 - API Uç Noktası
 - Kiracı Kimliği
 - İstemci Kimliği
-- İstemci Gizli Anahtarı
+- İstemci Parolası
 - EventHub bağlantı dizesi
 
 Yukarıdaki kimlik bilgilerini almak için bu bölüme bakın: [cihaz Tümleştirmesini Etkinleştirme](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)
@@ -50,7 +50,7 @@ Farmtler Microsoft Azure Active Directory kimlik doğrulamasını kullanır. A
 
 Daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
 
-Farmtts veri hub 'ı, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulaması kullanır:
+Farmrets veri hub 'ı, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
    - İstemci Kimliği
    - Gizli anahtar
    - Kiracı Kimliği
@@ -85,14 +85,14 @@ access_token = token_response.get('accessToken') 
 
 **HTTP istek üstbilgileri**
 
-Aşağıda, Farmtts veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereken en yaygın istek üstbilgileri verilmiştir.
+Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereken en yaygın istek üstbilgileri aşağıda verilmiştir.
 
 
 **Üst Bilgi** | **Açıklama ve örnek**
 --- | ---
-Content-Type | İstek biçimi (Content-Type: Application/<format>). Farmtts veri merkezi API 'Leri için biçim JSON olur. Content-Type: Application/JSON
+Content-Type | İstek biçimi (Content-Type: Application/<format>). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
 Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı < erişim-belirteç >
-Kabul et | Yanıt biçimi. Farmtts veri merkezi API 'Leri için biçim JSON olur. Kabul et: uygulama/JSON
+Kabul et | Yanıt biçimi. Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
 
 **API istekleri**
 
@@ -119,7 +119,7 @@ JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilde
 
 ## <a name="metadata-specifications"></a>Meta veri belirtimleri
 
-Farmtts veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta verilerini oluşturmasına ve yönetmesine olanak tanıyan aşağıdaki API 'Lere sahiptir.
+Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta verilerini oluşturmalarına ve yönetmesine olanak tanıyan aşağıdaki API 'Lere sahiptir.
 
 - /**devicemodel**: devicemodel cihaz, ağ geçidi veya düğüm olan üretici ve cihaz türü gibi cihazın meta verilerine karşılık gelir.
 - **cihaz**/: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
@@ -132,7 +132,7 @@ Farmtts veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta veri
   Üretici  | Üreticinin adı |
   ProductCode  | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800. |
   Bağlantı Noktaları  | Bağlantı noktası adı ve türü, dijital veya analog.  |
-  Ad  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
+  Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Üreticiden ek özellikler. |
   **Aygıtların** |  |
@@ -141,7 +141,7 @@ Farmtts veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta veri
   Reportingınterval |Saniye cinsinden raporlama aralığı. |
   Konum    |Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
   Parentdeviceıd | Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir düğüm bir ağ geçidine bağlıysa, düğümde ağ geçidi olarak Parentdeviceıd vardır. |
-  Ad  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
+  Adı  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
   Açıklama  | Anlamlı bir açıklama sağlayın.  |
   Özellikler  |Üreticiden ek özellikler.  |
   **SensorModel** |  |
@@ -155,7 +155,7 @@ Farmtts veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta veri
   Sensorölçüleri > AggregationType  | Hiçbiri, ortalama, maksimum, en az veya Standartsapması.
   Sensorölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
   Sensorölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın.
-  Ad  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+  Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın.
   Özellikler  | Üreticiden ek özellikler.
   **Algılayıcısı**  |  |
@@ -164,7 +164,7 @@ Farmtts veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta veri
   Konum  | Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).
   Bağlantı noktası > adı  |Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bu, cihaz modelinde tanımlananla aynı ada sahip olmalıdır.
   DeviceId  | Algılayıcıın bağlı olduğu cihazın KIMLIĞI.
-  Ad  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
+  Adı  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
   Açıklama  | Anlamlı bir açıklama sağlayın.
   Özellikler  | Üreticiden ek özellikler.
 
@@ -230,11 +230,11 @@ Kurallı ileti biçimi aşağıdaki gibidir:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -304,7 +304,7 @@ Müşteriler cihazları veya sensörleri satın aldıktan ve dağıttıktan sonr
 
 ## <a name="unlink-farmbeats"></a>Farmtörler bağlantısını kaldır
 
-Cihaz iş ortakları, müşterilerin mevcut bir Farmtts tümleştirmesinin bağlantısını kaldırmak için izin verebilir. Farmtların bağlantısını kaldırmak, Farmtts veri hub 'ında oluşturulan herhangi bir cihaz veya algılayıcı meta verilerini silmemelidir. Bağlantıyı kaldırma şunları yapar:
+Cihaz iş ortakları, müşterilerin mevcut bir Farmtts tümleştirmesinin bağlantısını kaldırmak için izin verebilir. Farmrekelerin bağlantısını kaldırmak, Farmtts veri hub 'ında oluşturulan herhangi bir cihaz veya algılayıcı meta verilerini silmemelidir. Bağlantıyı kaldırma şunları yapar:
 
    - Telemetri akışını durduruyor.
    - Cihaz ortağındaki tümleştirme kimlik bilgilerini siler ve siler.

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/29/2020
-ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/13/2020
+ms.openlocfilehash: b83828c3c78913598c103730e11222969fe1fddb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905239"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370177"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -30,7 +30,7 @@ Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir. HDInsight yayını,
 > [!IMPORTANT]  
 > Linux, HDInsight sürüm 3.4 ve üzerinde kullanılan tek işletim sistemidir. Daha fazla bilgi için bkz. [HDInsight sürüm oluşturma makalesi](hdinsight-component-versioning.md).
 
-## <a name="new-features"></a>Yeni özellikler
+## <a name="new-features"></a>Yeni Özellikler
 ### <a name="tls-12-enforcement"></a>TLS 1.2 zorlaması
 Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir. [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)hakkında daha fazla bilgi edinin. HDInsight, genel HTTPs uç noktalarında TLS 1,2 kullanır, ancak geriye dönük uyumluluk için TLS 1,1 hala desteklenmektedir. 
 
@@ -49,7 +49,7 @@ Bu sürümde hiçbir davranış değişikliği yok. Yaklaşan değişikliklere h
 Gelecek sürümlerde aşağıdaki değişiklikler olur. 
 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Baş düğüm için en az 4 çekirdekli bir VM gereklidir 
-Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek kullanılabilirliğini ve güvenilirliğini güvence altına almak için gereklidir. Müşteriler, 6 Nisan 2020 ' den başlayarak yeni HDInsight kümeleri için yalnızca 4 çekirdekli veya VM 'nin üzerinde baş düğüm olarak seçim yapabilir. Mevcut kümeler beklenen şekilde çalışmaya devam edecek. 
+Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek kullanılabilirliğini ve güvenilirliğini güvence altına almak için gereklidir. Müşteriler, 6 Nisan 2020 ' den başlayarak yeni HDInsight kümeleri için yalnızca 4 çekirdekli veya VM 'nin üzerinde baş düğüm olarak seçim yapabilir. Mevcut kümeler beklenen şekilde çalışmaya devam edecektir. 
 
 ### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark kümesi düğüm boyutu değişikliği 
 Yaklaşan sürümde, ESP Spark kümesi için izin verilen en düşük düğüm boyutu Standard_D13_V2 olarak değiştirilecektir. A serisi VM 'Ler görece düşük CPU ve bellek kapasitesi nedeniyle ESP kümesi sorunlarına neden olabilir. Yeni ESP kümeleri oluşturmak için A serisi VM 'Ler kullanım dışı olacaktır.
@@ -65,38 +65,3 @@ HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ed
 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
 Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini burada bulabilirsiniz.
-
-## <a name="known-issues"></a>Bilinen sorunlar
-
-29 Ocak 2020 itibariyle, bir Jupyter Not defteri kullanmaya çalışırken bir hata alabileceğiniz etkin bir sorun vardır. Sorunu onarmak için aşağıdaki adımları kullanın. Ayrıca, bu [MSDN gönderisini](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) veya güncel bilgiler Için bu [StackOverflow gönderisini](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) veya ek soru sorabilirsiniz. Bu sayfa, sorun düzeltildiğinde güncelleştirilecektir.
-
-**Hatası**
-
-* ValueError: Bu sürüm mevcut olmadığından Not defteri v5 'e dönüştürülemiyor
-* Not defteri yüklenirken hata oluştu bu not defteri yüklenirken bilinmeyen bir hata oluştu. Bu sürüm, v4 veya daha önceki bir not defteri biçimlerini yükleyebilir
-
-**Neden** 
-
-Kümedeki _version. Kopyala dosyası, 4.4. x. # # yerine 5. x. x olarak güncelleştirildi veya ambarı yeniden başlatılmalıdır.
-
-**Çözüm**
-
-Yeni bir Jupyter Not defteri oluşturup yukarıda listelenen hatalardan birini alırsanız, sorunu onarmak için aşağıdaki adımları gerçekleştirin.
-
-1. `https://CLUSTERNAME.azurehdinsight.net`' a giderek bir Web tarayıcısında ambarı açın, burada CLUSTERNAME kümenizin adıdır.
-1. Ambarı ' nda, sol taraftaki menüden **Jupo**' a ve ardından **hizmet eylemleri**' ne tıklayın, **Durdur**' a tıklayın.
-1. Jupyıter hizmetinin çalıştığı küme yayın düğümüne SSH.
-1. Sudo modunda, aşağıdaki/usr/bin/Anaconda/lib/python2.7/site-packages/nbformat/_version. Kopyala dosyasını açın.
-1. Version_info değerini denetleyin.
-1. Version_info değeri şu şekilde ayarlanmışsa: 
-
-    version_info = (5, 0, 3)
-
-    Ardından girişi şu şekilde değiştirin: 
-    
-    version_info = (4, 4, 0)
-
-    Ve dosyayı kaydedin. 
-
-    Version_info zaten (4, 4, 0) olarak ayarlandıysa, daha sonra yalnızca ambarı yeniden başlatılması gerektiğinden sonraki adımla devam edin, ek değişiklik yapmanız gerekmez.
-1. Ambarı 'na geri dönün ve **hizmet eylemlerinde** **Tümünü Yeniden Başlat**' a tıklayın.

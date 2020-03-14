@@ -2,17 +2,17 @@
 title: Azure yönetilen disklerinin sunucu tarafı şifrelemesi-Azure CLı
 description: Azure depolama, verilerinizi depolama kümelerine kalıcı yapmadan önce Rest durumunda şifreleyerek korur. Yönetilen disklerinizin şifrelenebilmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarınızla şifrelemeyi yönetmek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz.
 author: roygara
-ms.date: 01/13/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 495bdcfb619ff17a4a4b074fa673c5d2fb185730
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f50115732940eab14db30842be85b47cb4a552e1
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970522"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299541"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 
@@ -30,15 +30,19 @@ Aşağıdaki bölümlerde, anahtar yönetimiyle ilgili seçeneklerin her biri da
 
 ## <a name="platform-managed-keys"></a>Platform tarafından yönetilen anahtarlar
 
-Varsayılan olarak, yönetilen diskler platform tarafından yönetilen şifreleme anahtarlarını kullanır. 10 Haziran 2017 itibariyle, mevcut yönetilen disklere yazılan tüm yeni yönetilen diskler, anlık görüntüler, görüntüler ve yeni veriler, platform tarafından yönetilen anahtarlarla otomatik olarak şifrelenir. 
+Varsayılan olarak, yönetilen diskler platform tarafından yönetilen şifreleme anahtarlarını kullanır. 10 Haziran 2017 itibariyle, mevcut yönetilen disklere yazılan tüm yeni yönetilen diskler, anlık görüntüler, görüntüler ve yeni veriler, platform tarafından yönetilen anahtarlarla otomatik olarak şifrelenir.
 
 ## <a name="customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar
 
 Şifrelemeyi, her yönetilen disk düzeyinde, kendi anahtarlarınız ile yönetmeyi tercih edebilirsiniz. Müşteri tarafından yönetilen anahtarlarla yönetilen diskler için sunucu tarafı şifreleme, Azure Key Vault ile tümleşik bir deneyim sunar. [RSA anahtarlarınızı](../../key-vault/key-vault-hsm-protected-keys.md) Key Vault içeri aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz. Azure yönetilen diskler, [zarf şifrelemesini](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)kullanarak tam saydam bir biçimde şifrelemeyi ve şifre çözmeyi işler. Bir [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 tabanlı veri şifreleme anahtarı (dek) kullanarak verileri şifreler, bu, sırasıyla anahtarlarınız kullanılarak korunur. Key Vault yönetilen disklere erişim sağlamanız gerekir. bu tuşları şifrelemek ve bu DEK şifresini çözmek için anahtarlarınızı kullanın. Bu, veri ve anahtarlarınızın tam denetimini sağlar. Anahtarlarınızı devre dışı bırakabilir veya istediğiniz zaman yönetilen disklere erişimi iptal edebilirsiniz. Yalnızca yönetilen disklerin veya diğer güvenilen Azure hizmetlerinin Anahtarlarınıza erişebildiğinden emin olmak için Azure Key Vault izlemeye sahip şifreleme anahtarı kullanımını da denetleyebilirsiniz.
 
+Premium SSD 'Ler, standart SSD 'Ler ve standart HDD 'Ler için: anahtarınızı devre dışı bıraktığınızda veya sildiğinizde, bu anahtarı kullanan disklere sahip VM 'Ler otomatik olarak kapatılır. Bu işlem sonrasında, anahtar tekrar etkinleştirilmemişse veya yeni bir anahtar atarsanız VM 'Ler kullanılamaz.
+
+Ultra diskler için bir anahtarı devre dışı bıraktığınızda veya sildiğinizde, anahtar kullanan Ultra disklere sahip VM 'Ler otomatik olarak kapatılmaz. VM 'Leri serbest bırakırsanız ve yeniden başlattıktan sonra, diskler anahtarı kullanmayı durdurur ve ardından VM 'Ler yeniden çevrimiçi olmayacaktır. VM 'Leri yeniden çevrimiçi duruma getirmek için yeni bir anahtar atamanız veya mevcut anahtarı etkinleştirmeniz gerekir.
+
 Aşağıdaki diyagramda, yönetilen disklerin müşteri tarafından yönetilen anahtarı kullanarak istek yapmak için Azure Active Directory ve Azure Key Vault nasıl kullandığı gösterilmektedir:
 
-![Yönetilen disk ve müşteri tarafından yönetilen anahtarlar iş akışı. Yönetici bir Azure Key Vault oluşturur, ardından bir disk şifreleme kümesi oluşturur ve disk şifreleme kümesini ayarlar. Küme, diskin kimlik doğrulaması için Azure AD 'yi kullanmasına izin veren bir VM ile ilişkilendirilir](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Yönetilen disk ve müşteri tarafından yönetilen anahtarlar iş akışı. Yönetici bir Azure Key Vault oluşturur, ardından bir disk şifreleme kümesi oluşturur ve disk şifreleme kümesini ayarlar. Küme, diskin kimlik doğrulaması için Azure AD 'yi kullanmasına izin veren bir VM ile ilişkilendirilir.](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 Aşağıdaki listede diyagram daha da ayrıntılı şekilde açıklanmıştır:
@@ -56,15 +60,14 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için bkz. [Po
 
 ### <a name="supported-regions"></a>Desteklenen bölgeler
 
-Şu anda yalnızca şu bölgeler desteklenmektedir:
-
-- Doğu ABD, Batı ABD 2 ve Orta Güney ABD bölgelerinde bir GA teklifi olarak sunulmaktadır.
-- Orta Batı ABD, Doğu ABD 2, Kanada Orta ve Kuzey Avrupa bölgelerinde genel önizleme olarak kullanılabilir.
+[!INCLUDE [virtual-machines-disks-encryption-regions](../../../includes/virtual-machines-disks-encryption-regions.md)]
 
 ### <a name="restrictions"></a>Kısıtlamalar
 
 Şimdilik, müşteri tarafından yönetilen anahtarlar aşağıdaki kısıtlamalara sahiptir:
 
+- Diskiniz için bu özellik etkinleştirilirse, devre dışı bırakılamaz.
+    Bu sorunu geçici olarak çözmek için, [tüm verileri](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) , müşteri tarafından yönetilen anahtarları kullanmayan tamamen farklı bir yönetilen diske kopyalamanız gerekir.
 - 2080 boyutundaki yalnızca ["Soft" ve "Hard" RSA anahtarları](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) desteklenir, başka anahtarlar veya boyutlar desteklenmez.
 - Sunucu tarafı şifreleme ve müşterinin yönettiği anahtarlar kullanılarak şifrelenen özel görüntülerden oluşturulan diskler, müşteri tarafından yönetilen aynı anahtar kullanılarak şifrelenmelidir ve aynı abonelikte olmalıdır.
 - Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla şifrelenen disklerden oluşturulan anlık görüntüler, müşteri tarafından yönetilen aynı anahtarlarla şifrelenmelidir.
@@ -99,28 +102,28 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için bkz. [Po
     az keyvault key create --vault-name $keyVaultName -n $keyName --protection software
     ```
 
-1.  DiskEncryptionSet 'in bir örneğini oluşturun. 
+1.    DiskEncryptionSet 'in bir örneğini oluşturun. 
     
-    ```azurecli
-    keyVaultId=$(az keyvault show --name $keyVaultName --query [id] -o tsv)
+        ```azurecli
+        keyVaultId=$(az keyvault show --name $keyVaultName --query [id] -o tsv)
+    
+        keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+    
+        az disk-encryption-set create -n $diskEncryptionSetName -l $location -g $rgName --source-vault $keyVaultId --key-url $keyVaultKeyUrl
+        ```
 
-    keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+1.    DiskEncryptionSet kaynağına anahtar kasasına erişim izni verin. 
 
-    az disk-encryption-set create -n $diskEncryptionSetName -l $location -g $rgName --source-vault $keyVaultId --key-url $keyVaultKeyUrl
-    ```
+        > [!NOTE]
+        > Azure 'un, Azure Active Directory DiskEncryptionSet sitenizin kimliğini oluşturması birkaç dakika sürebilir. Aşağıdaki komutu çalıştırırken "Active Directory nesnesi bulunamıyor" gibi bir hata alırsanız, birkaç dakika bekleyip yeniden deneyin.
 
-1.  DiskEncryptionSet kaynağına anahtar kasasına erişim izni verin. 
-
-    > [!NOTE]
-    > Azure 'un, Azure Active Directory DiskEncryptionSet sitenizin kimliğini oluşturması birkaç dakika sürebilir. Aşağıdaki komutu çalıştırırken "Active Directory nesnesi bulunamıyor" gibi bir hata alırsanız, birkaç dakika bekleyip yeniden deneyin.
-
-    ```azurecli
-    desIdentity=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [identity.principalId] -o tsv)
-
-    az keyvault set-policy -n $keyVaultName -g $rgName --object-id $desIdentity --key-permissions wrapkey unwrapkey get
-
-    az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
-    ```
+        ```azurecli
+        desIdentity=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [identity.principalId] -o tsv)
+    
+        az keyvault set-policy -n $keyVaultName -g $rgName --object-id $desIdentity --key-permissions wrapkey unwrapkey get
+    
+        az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
+        ```
 
 #### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Market görüntüsü kullanarak VM oluşturma, işletim sistemi ve veri disklerini müşteri tarafından yönetilen anahtarlarla şifreleme
 

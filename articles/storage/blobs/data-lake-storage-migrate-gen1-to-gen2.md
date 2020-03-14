@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e8266e5750a14542e7f115e021daa40b2b0bf8f6
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 245bcac81189ac8aa63f81fbe4ed30655a457bc8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130007"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371907"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Gen1 'den Gen2 'e geçiş Azure Data Lake Storage
 
@@ -132,7 +132,8 @@ Bu en basit modeldir.
 
 4. Gen1 yetkisini alma.
 
-![Yükselt ve kaydırma stili](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
+> [!div class="mx-imgBorder"]
+> ![yükselt ve Kaydır](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
 
 #### <a name="considerations-for-using-the-lift-and-shift-pattern"></a>Asansör ve kaydırma deseninin kullanımı hakkında konular
 
@@ -152,7 +153,8 @@ Bu en basit modeldir.
 
 4. Gen1 yetkisini alma.
 
-![Artımlı kopyalama kalıbı](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
+> [!div class="mx-imgBorder"]
+> Artımlı kopyalama düzenine ![](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
 #### <a name="considerations-for-using-the-incremental-copy-pattern"></a>Artımlı kopyalama düzeninin kullanılmasıyla ilgili konular:
 
@@ -172,7 +174,8 @@ Bu en basit modeldir.
 
 4. Tüm Gen1 yazma işlemlerini durdurun ve ardından Gen1 yetkisini alın.
 
-![Çift ardışık düzen düzeni](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
+> [!div class="mx-imgBorder"]
+> ![çift ardışık düzen düzeni](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
 #### <a name="considerations-for-using-the-dual-pipeline-pattern"></a>Çift ardışık düzen deseninin kullanılmasıyla ilgili konular:
 
@@ -190,7 +193,8 @@ Bu en basit modeldir.
 
 4. Gen1 yetkisini alma.
 
-![Çift yönlü desenler](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
+> [!div class="mx-imgBorder"]
+> Çift yönlü düzende ![](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
 
 #### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>İki yönlü eşitleme deseninin kullanılmasıyla ilgili konular:
 

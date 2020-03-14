@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be403815838233350929c7d4ca0eed979d7dfa8c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 27fdf966f99ac2cba394515cb654ed74178d6673
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080334"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137654"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -43,7 +43,7 @@ Belirli sorularınız varsa, başlangıç sayfasının bu bölümündeki belirli
 - Azure VM 'Leri ve HANA büyük örneklerle desteklenen SAP dağıtım senaryoları. Desteklenen senaryolar hakkında daha fazla bilgi belgelerde bulunabilir:
     - [Azure sanal makinesi desteklenen senaryolarda SAP iş yükü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
     - [HANA büyük örneği için desteklenen senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
-- Azure Hizmetleri, Azure VM türleri ve Azure Storage farklı Azure bölgelerinde kullanılabilir, [bölgeye göre kullanılabilir site ürünlerini](https://azure.microsoft.com/global-infrastructure/services/) kontrol edin 
+- Azure Hizmetleri, Azure VM türleri ve Azure Depolama Hizmetleri farklı Azure bölgelerinde kullanılabilir, [bölgeye göre kullanılabilir site ürünlerini](https://azure.microsoft.com/global-infrastructure/services/) kontrol edin 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure’da SAP HANA (Büyük Örnekler)
@@ -110,6 +110,8 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
+- 03/11/2020: DBMS örnek desteği başına birden çok veritabanını netleştirmek için [Azure sanal makinesi desteklenen senaryolarda SAP iş](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) yükünde değişiklik yapın
+- 03/11/2020:1. nesil ve 2. nesil VM 'Ler [Için Azure sanal makinelerinde planlama ve uygulama NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 - 03/10/2020: ANF 'nin gerçek mevcut aktarım hızı sınırlarını netleştirmek için [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) değiştirin
 - 03/09/2020: SAP [NetWeaver for Azure VM 'lerinde SAP Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)değişikliği, SAP uygulamaları için SUSE Linux Enterprise Server, SAP [uygulamaları için Azure NetApp Files ile SuSE Linux Enterprise Server üzerinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)Azure VM 'lerde yüksek kullanılabilirlik, [SUSE Linux Enterprise Server üzerinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)Azure VM 'lerde yüksek kullanılabilirlik, Azure ['daki SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)Azure [VM](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)'lerinde yüksek kullanılabilirlik Kaynak Aracısı Azure-lb ile küme kaynaklarını güncelleştirmek için Azure sanal makinelerinde SUSE Linux Enterprise Server ve yüksek kullanılabilirliğe sahip Azure VM 'lerinde [SAP HANA yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) ve [RHEL çoklu SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) 
 - 03/05/2020: Azure sanal makinelerinde Azure bölgeleri ve Azure sanal makineleri için değişiklik ve içerik değişikliklerini, [SAP NetWeaver için planlama ve uygulamayı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) yapılandırma

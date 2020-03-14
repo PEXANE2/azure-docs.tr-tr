@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
 ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461575"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268970"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Öğretici: Azure SQL veritabanı ve şirket içi SQL Server arasında SQL Data Sync ayarlama
 
@@ -197,7 +197,7 @@ Veri eşitleme, değişiklik izleme için veritabanında ek tablolar oluşturur.
 
 **Bir eşitlemeden sonra veri dönüştürüme Gent mı?**
 
-Olmayabilir. Bir hub ve üç bağlı bileşen (A, B ve C) içeren bir eşitleme grubu alıp, eşitlemelerin hub olduğu, hub 'Dan B 'ye ve hub 'a Merkez 'e Veritabanında bir eşitleme *sonrasında* bir değişiklik yapılırsa, bu değişiklik sonraki eşitleme görevine kadar veritabanı B 'ye veya C veritabanına yazılmaz.
+Gerekli değildir. Bir hub ve üç bağlı bileşen (A, B ve C) içeren bir eşitleme grubu alıp, eşitlemelerin hub olduğu, hub 'Dan B 'ye ve hub 'a Merkez 'e Veritabanında bir eşitleme *sonrasında* bir değişiklik yapılırsa, bu değişiklik sonraki eşitleme görevine kadar veritabanı B 'ye veya C veritabanına yazılmaz.
 
 **Nasıl yaparım?, şema değişiklikleri bir eşitleme grubuna mı alınır?**
 
@@ -238,7 +238,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 - [Azure SQL Data Sync için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
 - [En iyi uygulamalar](sql-database-best-practices-data-sync.md) ve [Azure SQL Data Sync sorunları nasıl giderilir](sql-database-troubleshoot-data-sync.md)
 - [Azure Izleyici günlükleriyle SQL Data Sync izleme](sql-database-sync-monitor-oms.md)
-- [Transact-SQL veya PowerShell ile eşitleme şemasını güncelleştirme](sql-database-update-sync-schema.md) [](scripts/sql-database-sync-update-schema.md)
+- [Transact-SQL veya PowerShell ile eşitleme şemasını güncelleştirme](sql-database-update-sync-schema.md) [PowerShell](scripts/sql-database-sync-update-schema.md)
 
 SQL Veritabanı hakkında daha fazla bilgi için bkz.:
 

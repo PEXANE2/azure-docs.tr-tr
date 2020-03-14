@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 9a53cae61e48a8d0aa19b138d4084ca257ea705b
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79254007"
+ms.locfileid: "79299252"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux sanal makineleri ile Azure Özel Betik uzantısı sürüm 2 kullanın
 Özel Betik uzantısı sürüm 2, Azure sanal makinelerinde betikleri indirir ve çalıştırır. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yükleme veya başka bir yapılandırma/yönetim görevi için yararlıdır. Azure depolama veya başka bir erişilebilir internet konumundan betikleri indirebilir veya onları uzantı çalışma zamanına verebilirsiniz. 
@@ -212,7 +212,7 @@ CustomScript bir betiği yürütmek için aşağıdaki algoritmayı kullanır.
 
 CustomScript (sürüm 2,1 ve üzeri), "fileUris" ayarında belirtilen URL 'lerden dosya indirmek için [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) destekler. Kullanıcı, SAS belirteçleri veya depolama hesabı anahtarları gibi gizli dizileri geçmesi gerekmeden, CustomScript 'in Azure Storage özel bloblarına veya kapsayıcılarına erişmesini sağlar.
 
-Bu özelliği kullanmak için kullanıcının, CustomScript 'in çalıştırılması beklenen VM 'ye veya VMSS 'ye [sistem tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) veya [Kullanıcı tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) bir kimlik eklemesi ve [yönetilen kimlik erişimini Azure depolama kapsayıcısına veya blobuna vermesi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)gerekir.
+Bu özelliği kullanmak için kullanıcının, CustomScript 'in çalıştırılması beklenen VM 'ye veya VMSS 'ye [sistem tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) veya [Kullanıcı tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) bir kimlik eklemesi ve [yönetilen kimlik erişimini Azure depolama kapsayıcısına veya blobuna vermesi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)gerekir.
 
 Hedef VM/VMSS 'de sistem tarafından atanan kimliği kullanmak için, "managedıdentity" alanını boş bir JSON nesnesi olarak ayarlayın. 
 

@@ -5,18 +5,18 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7b0ed16f95281fc793b2d350f3ed45386e52d407
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765498"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370677"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza değişkenler ekleme
 
 Bu öğreticide, şablonunuza nasıl değişken ekleneceğini öğrenirsiniz. Değişkenler, bir ifadeyi bir kez yazmanızı ve şablon boyunca yeniden kullanılmasını sağlayarak şablonlarınızı basitleştirir. Bu öğreticinin tamamlana **7 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [İşlevlerle ilgili öğreticiyi](template-tutorial-add-functions.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -56,7 +56,7 @@ Son olarak, depolama adının bir parametre yerine artık değişkene ayarlı ol
 
 Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,10 +67,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addnamevariable \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -83,7 +83,7 @@ az group deployment create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabı kaynağının dağıtıldığını görürsünüz. Depolama hesabının adı, **Depo** ve rastgele karakterlerden oluşan bir dizedir.

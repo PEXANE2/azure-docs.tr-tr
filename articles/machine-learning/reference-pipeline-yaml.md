@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a677aaa891e21f4c9eeda02eebcb94e9d79a55ad
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771641"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368834"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML 'de makine öğrenimi işlem hatlarını tanımlama
 
@@ -25,14 +25,14 @@ Aşağıdaki tabloda, YAML 'de bir işlem hattı tanımlarken ne olduğu ve şu 
 
 | Adım türü | Destekleniyor mu? |
 | ----- | :-----: |
-| PythonScriptStep | Evet |
-| AdlaStep | Evet |
-| AzureBatchStep | Evet |
-| DatabricksStep | Evet |
-| DataTransferStep | Evet |
+| PythonScriptStep | Yes |
+| AdlaStep | Yes |
+| AzureBatchStep | Yes |
+| DatabricksStep | Yes |
+| DataTransferStep | Yes |
 | Oto Mlstep | Hayır |
 | HyperDriveStep | Hayır |
-| ModuleStep | Hayır |
+| ModuleStep | Yes |
 | MPIStep | Hayır |
 | EstimatorStep | Hayır |
 

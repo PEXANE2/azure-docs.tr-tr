@@ -8,11 +8,11 @@ ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128547"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274196"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure izleme verilerini bir olay hub 'ına akış
 Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulamalar ve hizmetler için eksiksiz bir tam yığın izleme çözümü sağlar. Verileri analiz etmek ve farklı izleme senaryolarında kullanmak için Azure Izleyici kullanmanın yanı sıra, bu dosyayı ortamınızdaki diğer izleme araçlarına göndermeniz gerekebilir. Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem [Azure Event Hubs](/azure/event-hubs/)kullanmaktır. Bu makalede, farklı kaynaklardan bir olay hub 'ına izleme verileri akışını ve ayrıntılı kılavuza bağlantıları nasıl alabileceğiniz hakkında kısa bir açıklama sunulmaktadır.

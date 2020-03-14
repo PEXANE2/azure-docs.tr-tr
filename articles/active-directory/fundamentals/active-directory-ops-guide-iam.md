@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 36b3857f8827f8a33e5fc0981b22a49128f7c193
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535333"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298623"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory kimlik ve erişim yönetimi işlemleri başvuru kılavuzu
 
@@ -170,7 +170,7 @@ Kullanıcılara hizmet planlarını tanımlamak için aşağıdaki yönergeleri 
 Kaynak sahipleri, **tüm kullanıcılar** grubunun yalnızca **Kurumsal çalışanları** ve **konukları**gerçekten içerdiğinde **Kurumsal çalışanları** içerdiğini düşünmeyebilir. Sonuç olarak, uygulama ataması için **tüm kullanıcılar** grubunu kullanırken ve SharePoint içeriği veya uygulamalar gibi kaynaklara erişim verirken özel bir dikkatli olmanız gerekir.
 
 > [!IMPORTANT]
-> **Tüm kullanıcılar** grubu etkinleştirilir ve koşullu erişim ilkeleri, uygulama veya kaynak ataması için kullanılırsa, Konuk kullanıcıları dahil etmek istemiyorsanız [grubun güvenli hale](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups#hardening-the-all-users-dynamic-group) geldiğinden emin olun. Ayrıca, yalnızca **Kurumsal çalışanları** içeren grupları oluşturup atayarak lisanslama atamalarınızı düzeltmelisiniz. Öte yandan, **tüm kullanıcılar** grubunun etkin olduğunu ancak kaynaklara erişim izni vermek için kullanılmadığını fark ederseniz, kuruluşunuzun işletimsel kılavuzunun bu grubu kasıtlı olarak ( **Kurumsal çalışanları** ve **konukları**dahil) kullanmak için olduğundan emin olun.
+> **Tüm kullanıcılar** grubu etkinleştirilir ve koşullu erişim ilkeleri, uygulama veya kaynak ataması için kullanılırsa, Konuk kullanıcıları dahil etmek istemiyorsanız [grubun güvenli hale](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) geldiğinden emin olun. Ayrıca, yalnızca **Kurumsal çalışanları** içeren grupları oluşturup atayarak lisanslama atamalarınızı düzeltmelisiniz. Öte yandan, **tüm kullanıcılar** grubunun etkin olduğunu ancak kaynaklara erişim izni vermek için kullanılmadığını fark ederseniz, kuruluşunuzun işletimsel kılavuzunun bu grubu kasıtlı olarak ( **Kurumsal çalışanları** ve **konukları**dahil) kullanmak için olduğundan emin olun.
 
 ### <a name="automated-user-provisioning-to-apps"></a>Uygulamalara otomatik Kullanıcı hazırlama
 

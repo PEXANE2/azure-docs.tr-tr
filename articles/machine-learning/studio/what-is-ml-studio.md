@@ -11,14 +11,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: be3a07eb2d4232d27a5b41ddc4258c89b79729bf
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 8179e36342f4f3544a1ecd503d7f136ea437d374
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169033"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217815"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Machine Learning Studio (klasik) nedir?
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -92,7 +94,7 @@ Bir deneme oluştururken, tuvalin solunda kullanılabilen veri kümeleri listesi
 
 Machine Learning Studio (klasik) eklenen örnek veri kümelerinin bir listesi için bkz. [Azure Machine Learning Studio (klasik) örnek veri kümelerini kullanma](use-sample-datasets.md).
 
-### <a name="modules"></a>Modüller
+### <a name="modules"></a>Modules
 Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Azure Machine Learning Studio (klasik), veri giriş işlevlerinden eğitim, Puanlama ve doğrulama işlemlerine kadar birçok modül içerir. Dahil olan modüllere aşağıda birkaç örnek verilmiştir:
 
 * [ARFF 'e Dönüştür][convert-to-arff] -.net seri hale getirilmiş bir veri kümesini öznitelik Ilişkisi dosya biçimine dönüştürür (arff).

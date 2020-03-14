@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: eed839c277156046ff9b7d97c6e87636a0822889
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767781"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299337"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için otomatik ayarlamayı etkinleştirin
 
@@ -33,6 +33,13 @@ Otomatik ayarlama, [Azure Portal](sql-database-automatic-tuning-enable.md#azure-
 ## <a name="enable-automatic-tuning-on-server"></a>Sunucuda otomatik ayarlamayı etkinleştir
 
 Sunucu düzeyinde, otomatik ayarlama yapılandırmasını "Azure Varsayılanları" ndan devralmayı veya yapılandırmayı devralma seçeneğini belirleyebilirsiniz. Azure Varsayılanları FORCE_LAST_GOOD_PLAN etkindir, CREATE_INDEX etkinleştirilmiştir ve DROP_INDEX devre dışıdır.
+
+> [!IMPORTANT]
+> Mart itibariyle, otomatik ayarlama için Azure varsayılanlarına yapılan 2020 değişiklikler şu şekilde etkili olacaktır:
+>
+> - Yeni Azure Varsayılanları FORCE_LAST_GOOD_PLAN = etkin, CREATE_INDEX = devre dışı ve DROP_INDEX = devre dışı olacaktır.
+> - Yapılandırılmış otomatik ayarlama tercihleri olmayan mevcut sunucular, yeni Azure varsayılanlarını DEVRALACAK şekilde otomatik olarak yapılandırılır. Bu, şu anda tanımsız bir durumda otomatik ayarlama için sunucu ayarlarına sahip olan tüm müşteriler için geçerlidir.
+> - Oluşturulan yeni sunucular yeni Azure varsayılanlarını DEVRALACAK şekilde otomatik olarak yapılandırılacak (otomatik ayarlama yapılandırması yeni sunucu oluşturma sırasında tanımsız bir durumda olduğunda, daha önce farklı olur).
 
 ### <a name="azure-portal"></a>Azure portalı
 
@@ -72,7 +79,7 @@ Lütfen şu anda DROP_INDEX seçeneğinin bölüm değiştirme ve Dizin ipuçlar
 
 İstediğiniz yapılandırmayı seçtikten sonra **Uygula**' ya tıklayın.
 
-### <a name="rest-api"></a>REST API 'SI
+### <a name="rest-api"></a>Rest API'si
 
 Tek bir veritabanında otomatik ayarlamayı etkinleştirmek üzere REST API kullanma hakkında daha fazla bilgi edinmek için bkz. [SQL veritabanı otomatik ayarlama güncelleştirme ve http YÖNTEMLERINI alma](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
 

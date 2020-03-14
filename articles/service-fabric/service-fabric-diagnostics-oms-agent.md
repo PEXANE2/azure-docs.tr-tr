@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c8978a0114caf57d01f7add0bd9357c5d0775dc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609953"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366754"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile performans Izleme
 
@@ -33,17 +33,17 @@ Log Analytics aracısını kümenize eklemenin en iyi yolu, Azure CLı ile birli
 
 3. Bir Windows kümesi ve Linux kümesi oluşturuyorsanız, **Linux sunucuları** Için **Windows Server** 'a tıklayın. Bu sayfada `workspace ID` ve `workspace key` gösterilir (portalda birincil anahtar olarak listelenir). Bir sonraki adımda her ikisine de ihtiyacınız olacak.
 
-4. Cloud Shell `vmss extension set` API 'sini kullanarak Log Analytics aracısını kümenize yüklemek için komutunu çalıştırın:
+4. `vmss extension set` API 'sini kullanarak Log Analytics aracısını kümenize yüklemek için komutunu çalıştırın:
 
     Bir Windows kümesi için:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
     Bir Linux kümesi için:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
@@ -53,7 +53,7 @@ Log Analytics aracısını kümenize eklemenin en iyi yolu, Azure CLı ile birli
 
 5. Aracıyı düğümlere başarıyla eklemek için bu 15 dakikadan az sürer. `az vmss extension list` API 'sini kullanarak aracıların eklendiğini doğrulayabilirsiniz:
 
-    ```sh
+    ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 

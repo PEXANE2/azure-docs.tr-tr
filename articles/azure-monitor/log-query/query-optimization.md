@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 7316415a0f0c423a8a37477020a4ffd0ec044d73
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269056"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369480"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -83,6 +83,7 @@ SecurityEvent
 | extend FilePath = tostring(Details.UserData.RuleAndFileData.FilePath)
 | extend FileHash = tostring(Details.UserData.RuleAndFileData.FileHash)
 | summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
 ```
 
 Veri kümesinde fiziksel olarak bulunan sütunlarda değil, değerlendirilen bir sütunda [WHERE](/azure/kusto/query/whereoperator) yan tümceleri içeren sorgular, verimliliği kaybeder. Değerlendirilen sütunlarda filtreleme, büyük veri kümeleri işlendiği sırada bazı sistem iyileştirmelerinin yapılmasını önler.

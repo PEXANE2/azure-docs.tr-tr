@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile canlı verileri (Önizleme) gör�
 description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanmadan Kubernetes günlüklerinin, olaylarının ve pod ölçümlerinin gerçek zamanlı görünümü açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404748"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216561"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme
 
@@ -84,7 +84,7 @@ Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme
     
 Seçtiğiniz nesne bir kapsayıcı ise, bölmedeki **Olaylar** seçeneğini belirleyin. Bir düğüm, Pod veya denetleyici seçtiyseniz, olayları görüntülemek otomatik olarak seçilir. 
 
-    ![Controller properties pane view events](./media/container-insights-livedata-overview/controller-properties-live-events.png)  
+![Denetleyici özellikleri bölmesi olayları görüntüle](./media/container-insights-livedata-overview/controller-properties-live-event.png)  
 
 Bölme başlığı, kapsayıcının gruplandırıldığı Pod 'ın adını gösterir.
 
@@ -113,6 +113,6 @@ Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure İzleyici ve diğer yönleri AKS kümenizi izlemek öğrenme devam etmek için bkz: [görünümü Azure Kubernetes hizmeti sistem durumu](container-insights-analyze.md).
+- Azure Izleyici 'yi kullanmayı ve AKS kümenizin diğer yönlerini izlemeyi öğrenmeye devam etmek için bkz. [Azure Kubernetes hizmet durumunu görüntüleme](container-insights-analyze.md).
 
 - Önceden tanımlanmış sorguları ve uyarı oluşturma, görselleştirmeler oluşturmak veya kümelerinizde daha fazla analiz yapmak için örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin.

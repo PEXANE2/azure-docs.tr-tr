@@ -1,7 +1,7 @@
 ---
 title: "Bilinen sorunlar: PostgreSQL 'ten PostgreSQL için Azure veritabanı 'na çevrimiçi geçişler"
 titleSuffix: Azure Database Migration Service
-description: Azure veritabanı geçiş hizmeti 'ni kullanarak PostgreSQL 'ten çevrimiçi geçişlerle PostgreSQL için Azure veritabanı 'na yapılan bilinen sorunlar ve geçiş sınırlamaları hakkında bilgi edinin.
+description: Azure veritabanı geçiş hizmeti 'ni kullanarak PostgreSQL için Azure veritabanı 'na PostgreSQL 'ten çevrimiçi geçişlerle ilgili bilinen sorunlar ve geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: ded3302c590a55f0da8e4e37869f2b7f5a702838
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: f149d8de6b736379388c4a93045b6a0178067892
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650512"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138306"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL ile PostgreSQL için Azure DB 'ye çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 

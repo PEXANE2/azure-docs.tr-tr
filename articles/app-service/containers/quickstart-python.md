@@ -6,12 +6,12 @@ ms.date: 10/22/2019
 ms.custom: cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 567e87b43c3fc3d7d2fb0c894ced53c89a133978
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 607cc0e5cd8236badfc1e5e591efda20d4fb669b
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524072"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368273"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -90,7 +90,7 @@ Azure CLı, Azure kaynaklarını komut satırından sağlamak ve yönetmek için
 
 Azure CLı 'de Azure komutlarını çalıştırmak için öncelikle `az login` komutunu kullanarak oturum açmanız gerekir. Bu komut, kimlik bilgilerinizi toplamak için bir tarayıcı açar.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -101,11 +101,11 @@ az login
 Örnek kodu içeren *Python-docs-Hello-World* klasöründe aşağıdaki `az webapp up` komutunu çalıştırın. `<app-name>`, genel olarak benzersiz bir uygulama adıyla değiştirin (*geçerli karakterler `a-z`, `0-9`ve `-`* ). Ayrıca **`<location-name>`,** **brazilsouth**, **westeurope**, **koreagüney**,, **merkezileştirme**vb **. gibi bir**Azure bölgesi ile değiştirin. ( [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz.)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
-Bu komutun tamamlanması birkaç dakika sürebilir. Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
+Bu komutun tamamen çalışması birkaç dakika sürebilir. Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
 
 ```output
 The behavior of this command has been altered by the following extension: webapp
@@ -157,7 +157,7 @@ Değişikliklerinizi kaydedin ve düzenleyiciden çıkın.
 
 Uygulamayı ilk kez dağıtmak için kullandığınız komutu kullanarak uygulamayı yeniden `az webapp up` dağıtın, `<app-name>` ve `<location-name>`, daha önce kullandığınız adlarla değiştirin. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -174,13 +174,13 @@ Uygulamanın içinden oluşturulan konsol günlüklerine ve çalıştığı kaps
 
 İlk olarak, bir terminalde aşağıdaki komutu çalıştırarak kapsayıcı günlüğünü açın. `<app-name>`, uygulamanızın adı ile ve kullandığınız `az webapp up` komutun çıktısında gösterilen kaynak grubunun adı ile `<resource-group-name>` (örneğin, "appsvc_rg_Linux_centralus"):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Kapsayıcı günlüğü açıldıktan sonra, günlük akışını göstermek için aşağıdaki komutu çalıştırın:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -217,7 +217,7 @@ App Service menüsü, uygulamanızı yapılandırmak için farklı sayfalar sağ
 
 Gelecekte bu kaynaklara ihtiyaç duymazsanız, aşağıdaki komutu çalıştırarak kaynak grubunu silin. `<resource-group-name>`, "appsvc_rg_Linux_centralus" gibi `az webapp up` komutunun çıktısında gösterilen kaynak grubuyla değiştirin. Komutun tamamlanması birkaç dakika sürebilir.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

@@ -1,17 +1,17 @@
 ---
-title: Active Directory kimlik doğrulaması-MySQL için Azure veritabanı-tek sunucu
-description: MySQL için Azure veritabanı-tek sunucu ile kimlik doğrulaması için Azure Active Directory kavramları hakkında bilgi edinin
+title: Active Directory kimlik doğrulaması-MySQL için Azure veritabanı
+description: MySQL için Azure veritabanı ile kimlik doğrulama Azure Active Directory kavramları hakkında bilgi edinin
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: eb26bc09ce273280b55a023c563427b5b323ace9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706108"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299031"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -47,7 +47,7 @@ Azure Active Directory kimlik doğrulamasını yapılandırmak ve kullanmak içi
 
 Aşağıdaki üst düzey diyagram, kimlik doğrulamasının MySQL için Azure veritabanı ile Azure AD kimlik doğrulaması kullanılarak nasıl çalıştığını özetler. Oklar, iletişim yollarını gösterir.
 
-![kimlik doğrulama akışı][1]
+![Kimlik doğrulama akışı][1]
 
 ## <a name="administrator-structure"></a>Yönetici yapısı
 
@@ -90,7 +90,7 @@ Active Directory göre kimlik doğrulamasından sonra bir belirteç alırsınız
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure AD oluşturma ve doldurma hakkında bilgi edinmek ve sonra Azure AD 'yi MySQL için Azure veritabanı ile yapılandırmak için, bkz. [MySQL için Azure veritabanı Için Azure AD Ile yapılandırma ve oturum açma](howto-configure-sign-in-azure-ad-authentication.md).
-- Oturum açma bilgileri ve MySQL için Azure veritabanı kullanıcılarına yönelik bir genel bakış için bkz. [MySQL Için Azure veritabanı 'nda Kullanıcı oluşturma-tek sunucu](howto-create-users.md).
+- Oturum açma bilgileri ve MySQL için Azure veritabanı kullanıcılarına yönelik bir genel bakış için bkz. [MySQL Için Azure veritabanı 'nda Kullanıcı oluşturma](howto-create-users.md).
 
 <!--Image references-->
 

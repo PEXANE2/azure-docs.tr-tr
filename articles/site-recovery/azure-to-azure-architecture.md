@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 224b69ab571f934f0bd3b05bbdeb9dc4013f96bf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759815"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371622"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -97,13 +97,13 @@ Aşağıdaki tabloda farklı türlerde tutarlılık açıklanmaktadır.
 
 ### <a name="crash-consistent"></a>Kilitlenme ile tutarlı
 
-**Açıklama** | **Ayrıntılar** | **Öneri**
+**Açıklama** | **Ayrıntılar** | **Önerilen**
 --- | --- | ---
 Kilitlenme ile tutarlı bir anlık görüntü, anlık görüntü çekilirken diskteki verileri yakalar. Bellekte herhangi bir şey içermez.<br/><br/> VM kilitlenirse veya güç kablosu anlık görüntünün alındığı anlık sunucudan çekilmişse mevcut olan disk üzerindeki verilerin eşdeğerini içerir.<br/><br/> Kilitlenme tutarlılığı, işletim sistemi veya VM 'deki uygulamalar için veri tutarlılığı garantisi vermez. | Site Recovery, varsayılan olarak her beş dakikada bir çökme ile tutarlı kurtarma noktaları oluşturur. Bu ayar değiştirilemez.<br/><br/>  | Günümüzde, çoğu uygulama kilitlenme ile tutarlı noktalarından iyi bir şekilde kurtarabilir.<br/><br/> Kilitlenme tutarlı kurtarma noktaları, genellikle işletim sistemlerinin ve DHCP sunucuları ve yazdırma sunucuları gibi uygulamaların çoğaltılması için yeterlidir.
 
 ### <a name="app-consistent"></a>Uygulamayla tutarlı
 
-**Açıklama** | **Ayrıntılar** | **Öneri**
+**Açıklama** | **Ayrıntılar** | **Önerilen**
 --- | --- | ---
 Uygulamayla tutarlı kurtarma noktaları, uygulamayla tutarlı anlık görüntülerden oluşturulur.<br/><br/> Uygulamayla tutarlı bir anlık görüntü, kilitlenme ile tutarlı bir anlık görüntüdeki tüm bilgileri, ayrıca bellekteki tüm verileri ve devam eden işlemleri içerir. | Uygulamayla tutarlı anlık görüntüler Birim Gölge Kopyası Hizmeti (VSS) kullanır:<br/><br/>   1) bir anlık görüntü başlatıldığında VSS, birimde bir kopyalama-yazma (COW) işlemi gerçekleştirir.<br/><br/>   2) COW 'yı gerçekleştirmeden önce VSS, makinede bellekte yerleşik verileri diske temizlemesi için gereken her uygulamayı bilgilendirir.<br/><br/>   3) VSS daha sonra yedekleme/olağanüstü durum kurtarma uygulamasının (Bu durumda Site Recovery) anlık görüntü verilerini okumasını ve devam etmesini sağlar. | Uygulamayla tutarlı anlık görüntüler, belirttiğiniz sıklığa göre yapılır. Bu sıklık, kurtarma noktalarını saklamak için ayarlamış olduğunuz her zaman daha az olmalıdır. Örneğin, varsayılan 24 saat ayarını kullanarak kurtarma noktalarını koruuyorsanız, sıklığı 24 saatten az olacak şekilde ayarlamanız gerekir.<br/><br/>Daha karmaşıktır ve kilitlenmeyle tutarlı anlık görüntülerden daha uzun sürer.<br/><br/> Çoğaltma için etkin bir VM üzerinde çalışan uygulamaların performansını etkiler. 
 
@@ -135,6 +135,8 @@ VM 'ler için giden erişim URL 'lerle denetleniyorsa, bu URL 'Lere izin verin.
 | login.microsoftonline.com | Site Recovery hizmet URL’leri için yetkilendirme ve kimlik doğrulama özellikleri sağlar. |
 | *.hypervrecoverymanager.windowsazure.com | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
 | *.servicebus.windows.net | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
+| *.vault.azure.net | Portal aracılığıyla ADE özellikli sanal makineler için çoğaltmayı etkinleştirme erişimine izin verir
+| *. automation.ext.azure.com | Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik olarak yükseltilmelerini olanaklı bir şekilde etkinleştirir
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP adresi aralıkları için giden bağlantı
 
@@ -143,21 +145,25 @@ Ağ bağlantısı gereksinimlerinin ayrıntılarının [ağ teknik incelemesi](a
 
 #### <a name="source-region-rules"></a>Kaynak bölgesi kuralları
 
-**Kural** |  **Ayrıntılar** | **Hizmet etiketi**
+**Kurallar** |  **Ayrıntılar** | **Hizmet etiketi**
 --- | --- | --- 
 HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<bölge adı >
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Active Directory karşılık gelen aralıklara izin ver (Azure AD)  | AzureActiveDirectory
 HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki Olay Hub 'ına karşılık gelen aralıklarına izin verin. | EventsHub.\<bölge adı >
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık gelen aralıklara izin ver  | Azuresterecovery
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Key Vault karşılık gelen aralıklara izin ver (Bu yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir) | AzureKeyVault
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine karşılık gelen aralıklara izin ver (Bu yalnızca, Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik yükseltmesini etkinleştirmek üzere gereklidir) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>Hedef bölge kuralları
 
-**Kural** |  **Ayrıntılar** | **Hizmet etiketi**
+**Kurallar** |  **Ayrıntılar** | **Hizmet etiketi**
 --- | --- | --- 
 HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<bölge adı >
 HTTPS giden izin ver: bağlantı noktası 443 | Azure AD 'ye karşılık gelen aralıklara izin ver  | AzureActiveDirectory
 HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki Olay Hub 'ına karşılık gelen aralıklara izin verin. | EventsHub.\<bölge adı >
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık gelen aralıklara izin ver  | Azuresterecovery
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Key Vault karşılık gelen aralıklara izin ver (Bu yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir) | AzureKeyVault
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine karşılık gelen aralıklara izin ver (Bu yalnızca, Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik yükseltmesini etkinleştirmek üzere gereklidir) | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>NSG kurallarıyla erişimi denetleme

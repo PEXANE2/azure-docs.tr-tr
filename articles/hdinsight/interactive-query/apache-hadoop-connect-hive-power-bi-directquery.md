@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467143"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368001"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight 'ta doğrudan sorgu kullanarak Microsoft Power BI ile etkileşimli sorgu Apache Hive verilerini görselleştirme
 
@@ -26,7 +26,7 @@ Power BI Desktop Genel ODBC Bağlayıcısı aracılığıyla içeri aktarmak iç
 ## <a name="prerequisites"></a>Önkoşullar
 Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* **HDInsight kümesi**. Küme, Apache Hive veya yeni bir etkileşimli sorgu kümesi olan bir HDInsight kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* **HDInsight kümesi**. Küme, Apache Hive veya yeni bir etkileşimli sorgu kümesi olan bir HDInsight kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Bir kopyasını [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz.
 
 ## <a name="load-data-from-hdinsight"></a>HDInsight 'tan veri yükleme

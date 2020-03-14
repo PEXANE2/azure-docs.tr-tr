@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033682"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267761"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell ile bir Windows sanal makinesine veri diski iliştirme
 
@@ -20,7 +20,7 @@ Bu makalede, PowerShell kullanarak yeni ve var olan disklerin her ikisini de bir
 
 İlk olarak, bu ipuçlarını gözden geçirin:
 
-* Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Daha fazla bilgi için [sanal makine boyutları](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Daha fazla bilgi için bkz. [sanal makineler Için boyutlar](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Premium SSD 'leri kullanmak için DS serisi veya GS serisi sanal makinesi gibi [Premium depolama özellikli BIR VM türüne](sizes-memory.md)ihtiyacınız vardır.
 
 Bu makale, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içinde PowerShell kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.

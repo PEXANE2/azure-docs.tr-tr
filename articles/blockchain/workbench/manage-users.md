@@ -5,17 +5,17 @@ ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 573ec477a3e75beb91f90da0545fb7d4c0f9bf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324705"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252187"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure blok zinciri çalışma ekranı 'nda kullanıcıları yönetme
 
 Azure blok zinciri çalışma ekranı, konsorsiyumun bir parçası olan kişiler ve kuruluşlar için Kullanıcı yönetimini içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Blok zinciri çalışma ekranı dağıtımı gereklidir. Dağıtım hakkındaki ayrıntılar için bkz. [Azure blok zinciri çalışma ekranı dağıtımı](deploy.md) .
 
@@ -25,14 +25,14 @@ Azure blok zinciri çalışma ekranı, kimlik doğrulaması, erişim denetimi ve
 
 Blok zinciri çalışma ekranı, uygulamaları ve rollere atamadan önce kullanıcıların Azure AD kiracısında mevcut olmaları gerekir. Azure AD 'ye Kullanıcı eklemek için aşağıdaki adımları kullanın:
 
-1.  [Azure Portal](https://portal.azure.com)’da oturum açın.
+1.  [Azure Portal](https://portal.azure.com) oturum açın.
 2.  Sağ üst köşede hesabınızı seçin ve blok zinciri çalışma ekranı ile ilişkili Azure AD kiracısına geçiş yapın.
 3.  **Azure Active Directory > kullanıcıları**' nı seçin. Dizininizde bulunan kullanıcıların listesini görürsünüz.
 4.  Dizine kullanıcı eklemek için **Yeni Kullanıcı**' yı seçin. Dış kullanıcılar için **Yeni Konuk Kullanıcı**' yı seçin.
 
-    ![Yeni Kullanıcı](./media/manage-users/add-ad-user.png)
+    ![Yeni kullanıcı](./media/manage-users/add-ad-user.png)
 
-5.  Yeni Kullanıcı için gerekli alanları doldurun. **Oluştur**'u seçin.
+5.  Yeni Kullanıcı için gerekli alanları doldurun. **Oluştur**’u seçin.
 
 Azure AD 'de kullanıcıları yönetme hakkında daha fazla bilgi için [Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) belgelerini ziyaret edin.
 
@@ -42,7 +42,7 @@ Kullanıcılar dizine eklendikten sonra, bir sonraki adım, hangi kullanıcılar
 
 Kullanıcıları Azure AD dizininde **yönetici** grubuna eklemek için:
 
-1.  [Azure Portal](https://portal.azure.com)’da oturum açın.
+1.  [Azure Portal](https://portal.azure.com) oturum açın.
 2.  Sağ üst köşede hesabınızı seçerek blok zinciri ile ilişkili Azure AD kiracısında olduğunuzdan emin olun.
 3.  **Kurumsal uygulamalar > Azure Active Directory**seçin.
 4.  Blok zinciri için Azure AD istemci uygulamasını seçme çalışma ekranı

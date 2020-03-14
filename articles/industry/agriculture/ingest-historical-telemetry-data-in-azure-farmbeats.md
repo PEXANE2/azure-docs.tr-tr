@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: d47fdb9461786d80d65ee2448cc983a7a8348ff2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131893"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298776"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -20,30 +20,29 @@ Cihazlar ve algılayıcılar gibi Nesnelerin İnterneti (IoT) kaynaklarından ge
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaleye devam etmeden önce, IoT cihazlarınızdan Farmtts 'yi yüklediğinizden ve geçmiş verileri topladığınızdan emin olun.
-Ayrıca, aşağıdaki adımlarda belirtildiği gibi iş ortağı erişimini de etkinleştirmeniz gerekir.
+Bu makaleye devam etmeden önce, IoT cihazlarınızdan Farmtts 'yi yüklediğinizden ve geçmiş verileri topladığınızdan emin olun. Ayrıca, aşağıdaki adımlarda belirtildiği gibi iş ortağı erişimini de etkinleştirmeniz gerekir.
 
 ## <a name="enable-partner-access"></a>İş ortağı erişimini etkinleştir
 
 Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz gerekir. Bu adım, cihaz iş ortağınız olarak Azure Farmtts örneğine erişimi olan bir istemci oluşturur ve sonraki adımlarda gerekli olan aşağıdaki değerleri sağlar:
 
-- API uç noktası: Bu veri hub URL 'sidir, örneğin, https://\<Datahub >. azurewebsites. net.
+- API uç noktası: Bu veri hub URL 'sidir, örneğin, https://\<Datahub >. azurewebsites. net
 - Kiracı Kimliği
 - İstemci Kimliği
 - Gizli anahtar
 - EventHub bağlantı dizesi
 
-Şu adımları izleyin.
+Şu adımları uygulayın:
 
 >[!NOTE]
 > Aşağıdaki adımları uygulamak için yönetici olmanız gerekir.
 
 1. [ZIP dosyasını](https://aka.ms/farmbeatspartnerscriptv2)indirin ve yerel sürücünüze ayıklayın. ZIP dosyasının içinde bir dosya olacaktır.
-2. https://portal.azure.com/ oturum açın ve Azure Active Directory > uygulama kayıtlarına gidin
+2. https://portal.azure.com/ oturum açın ve **Azure Active Directory** > **uygulama kayıtlarına**gidin.
 
-3. Farmtts dağıtımınızın bir parçası olarak oluşturulan uygulama kaydına tıklayın. Bu, Farmtts veri hub 'ınızla aynı ada sahip olacaktır.
+3. Farmtts dağıtımınızın bir parçası olarak oluşturulan **uygulama kaydını** seçin. Bu, Farmtts veri hub 'ınızla aynı ada sahip olacaktır.
 
-4. "Bir API 'yi kullanıma sunma" seçeneğine tıklayın-> "istemci uygulaması Ekle" ye tıklayın ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve "yetkilendirmeyi Yetkilendir" seçeneğini işaretleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLı (Cloud Shell) erişimi sağlar.
+4. Bir **API 'Yi kullanıma** sunma ' yı seçin > **istemci uygulaması Ekle** ' yi seçin ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve **Yetkilendirme kapsamını**denetleyin. Bu işlem, aşağıdaki adımları gerçekleştirmek için Azure CLı (Cloud Shell) erişimi sağlar:
 
 5. Cloud Shell'i açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
 
@@ -59,9 +58,9 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 
 8. Dosyanın karşıya yüklendiği dizine gidin. Varsayılan olarak, dosyalar Kullanıcı adı altında ana dizine yüklenir.
 
-9. Aşağıdaki betiği çalıştırın. Betik, Azure Active Directory > Genel Bakış sayfasından edinilen kiracı KIMLIĞINI ister.
+9. Aşağıdaki betiği çalıştırın. Betik, **Azure Active Directory** > **Genel Bakış sayfasından**elde edilen Kiracı kimliğini ister.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1   
 
@@ -70,9 +69,12 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 10. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
 ## <a name="create-device-or-sensor-metadata"></a>Cihaz veya algılayıcı meta verileri oluşturma
 
- Artık gerekli kimlik bilgilerine sahip olduğunuza göre, cihazı ve algılayıcıları tanımlayabilirsiniz. Bunu yapmak için, Farmpts API 'Lerini çağırarak meta verileri oluşturun. Lütfen yukarıdaki bölümde oluşturduğunuz istemci uygulaması olarak API 'Leri çağırmanız gerekeceğini unutmayın.
+ Artık gerekli kimlik bilgilerine sahip olduğunuza göre, cihazı ve algılayıcıları tanımlayabilirsiniz. Bunu yapmak için, Farmpts API 'Lerini çağırarak meta verileri oluşturun. API 'Leri yukarıdaki bölümde oluşturduğunuz istemci uygulaması olarak çağırdığınızdan emin olun.
 
- Farmrets veri hub 'ı, cihaz veya algılayıcı meta verilerinin oluşturulmasını ve yönetilmesini sağlayan aşağıdaki API 'Lere sahiptir. Lütfen bir iş ortağı olarak yalnızca okumak, meta verileri oluşturmak ve güncelleştirmek için erişiminiz olduğunu unutmayın; **İş ortağı tarafından silmeye izin verilmiyor.**
+ Farmrets veri hub 'ı, cihaz veya algılayıcı meta verilerinin oluşturulmasını ve yönetilmesini sağlayan aşağıdaki API 'Lere sahiptir.
+
+ > [!NOTE]
+ > Bir iş ortağı olarak yalnızca okuma, meta verileri oluşturma ve güncelleştirme için erişim sahibi olursunuz; **Sil seçeneği iş ortağıyla kısıtlıdır.**
 
 - /**devicemodel**: devicemodel, Cihazın üreticisi ve bir ağ geçidi ya da düğüm olan cihaz türü gibi cihazın meta verilerine karşılık gelir.
 - **cihaz**/: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
@@ -86,7 +88,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 |          Üretici            |         Üreticinin adı    |
 |  ProductCode                    |  Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800.  |
 |            Bağlantı Noktaları          |     Bağlantı noktası adı ve türü, dijital veya analog.
-|     Ad                 |  Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+|     Adı                 |  Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
       Açıklama     | Modelin anlamlı bir açıklamasını sağlayın.
 |    Özellikler          |    Üreticiden ek özellikler.   |
 |    **Aygıtların**             |                      |
@@ -95,7 +97,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 |  Reportingınterval        |   Saniye cinsinden raporlama aralığı.
 |  Konum            |  Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).   
 |Parentdeviceıd       |    Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir ağ geçidine bağlı bir düğüm. Bir düğümde ağ geçidi olarak Parentdeviceıd vardır.  |
-|    Ad            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
+|    Adı            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
 |     Açıklama       |      Anlamlı bir açıklama sağlayın. |
 |     Özellikler    |  Üreticiden ek özellikler.
 |     **SensorModel**        |          |
@@ -107,7 +109,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 |    Sensorölçüleri > türü    |Algılayıcı Telemetri verilerinin ölçüm türü. Sistem tanımlı türler şunlardır AmbientTemperature, CO2, Depth, Elektriicalttivity, Leafwetity, length, LiquidLevel, Nitrate, O2, PH, Fospnefret, PointInTime, Potassium, basınç, RainGauge, Relativenem, Salınity, SoilMoisture, Soilsıcaklık, SolarRadiation, durum, TimeDuration, UVRadiation, Uıvindex, hacim, WIN Direction, WIN Run, Wıngıı, Evapotranspiration, PAR. Daha fazla eklemek için/ExtendedType API 'sine bakın.|
 |        Sensorölçüleri > birimi              | Algılayıcı telemetri verileri birimi. Sistem tarafından tanımlanan birimler NoUnit, santigrat, Fahrenhayt, Kelvin, Rankine, Pascal, CIO, PSI, milimetre, santimetre, metre, Inç, fit, mil, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour daha fazla bilgi eklemek Için/ExtendedType API 'sine bakın.|
 |    Sensorölçüleri > AggregationType    |  Değerler None, Average, Maximum, minimum veya Standardsapması olabilir.  |
-|          Ad            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
+|          Adı            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
 |    Açıklama        | Modelin anlamlı bir açıklamasını sağlayın.  |
 |   Özellikler       |  Üreticiden ek özellikler.  |
 |    **Algılayıcısı**      |          |
@@ -116,7 +118,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 | Konum          |  Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).|
 |   Bağlantı noktası > adı        |  Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bunun, cihaz modelinde tanımlananla aynı ada sahip olması gerekir. |
 |    DeviceID  |    Algılayıcıın bağlı olduğu cihazın KIMLIĞI.     |
-| Ad            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.|
+| Adı            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.|
 |    Açıklama      | Anlamlı bir açıklama sağlayın. |
 |    Özellikler        |Üreticiden ek özellikler. |
 
@@ -284,6 +286,22 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
+Python 'da örnek bir kod aşağıda verilmiştir. Bu örnekte kullanılan erişim belirteci, kimlik doğrulaması sırasında alınan aynıdır.
+
+```python
+import requests
+import json
+
+# Got access token - Calling the Device Model API
+headers = {
+    "Authorization": "Bearer " + access_token,
+    "Content-Type" : "application/json"
+    }
+payload = '{"type" : "Node", "productCode" : "TestCode", "ports": [{"name": "port1","type": "Analog"}], "name" : "DummyDevice"}'
+response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=headers)
+```
+
+
 > [!NOTE]
 > API 'Ler oluşturulan her örnek için benzersiz kimlikler döndürür. Karşılık gelen telemetri iletilerini göndermek için kimlikleri tutmanız gerekir.
 
@@ -331,11 +349,11 @@ Geçmiş algılayıcı veri biçimini Azure Farmtarafından anladığı kurallı
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
         }
       ]
     }
@@ -392,8 +410,10 @@ Telemetri iletisine bir örnek aşağıda verilmiştir:
 
 **Düzeltici eylem**:
 
-1. İş ortağı kaydını doğru bir şekilde gerçekleştirdiğinizden emin olun. bunu, veri hub 'ının Swagger 'ınızla gidip/partner API 'sine giderek bir get yapın ve ortağın kayıtlı olup olmadığını kontrol edebilirsiniz. Aksi takdirde, iş ortağı eklemek için lütfen [buradaki adımları](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) izleyin.
+1. Uygun iş ortağı kaydını bitirdiğinizden emin olun. bunu, veri hub 'ının Swagger 'ınızla gidip/partner API 'sine giderek bir get yapın ve iş ortağının kayıtlı olup olmadığını kontrol edebilirsiniz. Aksi takdirde, iş ortağı eklemek için [buradaki adımları](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) izleyin.
+
 2. İş ortağı istemci kimlik bilgilerini kullanarak meta verileri (DeviceModel, cihaz, Sensormodeli, algılayıcı) oluşturduğunuzdan emin olun.
+
 3. Doğru telemetri ileti biçimini kullandığınızdan emin olun (aşağıda belirtildiği gibi):
 
 ```json
@@ -407,11 +427,11 @@ Telemetri iletisine bir örnek aşağıda verilmiştir:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }

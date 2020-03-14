@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906556"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370483"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme
 
 Özel bir etki alanını blob hizmeti uç noktası veya [statik bir Web sitesi](storage-blob-static-website.md) uç noktası ile eşleyebilirsiniz. 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Bu eşleme yalnızca alt etki alanları için geçerlidir (örneğin: `www.contoso.com`). Web uç noktanızın kök etki alanında kullanılabilir olmasını istiyorsanız (örneğin: `contoso.com`), Azure CDN kullanmanız gerekir. Rehberlik için, bu makalenin [https özellikli özel etki alanı eşleştirme](#enable-https) bölümüne bakın. Bu makalenin bu bölümüne, özel etki alanınızı kök etki alanını etkinleştirmek üzere gittiğinden, HTTPS 'yi etkinleştirmek için bu bölümdeki adım isteğe bağlıdır. 
@@ -231,7 +233,7 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
 
 Özel bir etki alanı eşlemesini kaldırmak için özel etki alanı kaydını silin. Aşağıdaki yordamlardan birini kullanın.
 
-#### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Özel etki alanı ayarını kaldırmak için şunları yapın:
 
@@ -246,7 +248,7 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
 
 Özel etki alanı başarıyla kaldırıldıktan sonra, depolama hesabınızın başarıyla güncelleştirildiğini belirten bir portal bildirimi görürsünüz
 
-#### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Özel bir etki alanı kaydını kaldırmak için [az Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI komutunu kullanın ve `--custom-domain` bağımsız değişken değeri için boş bir dize (`""`) belirtin.
 
@@ -268,7 +270,7 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

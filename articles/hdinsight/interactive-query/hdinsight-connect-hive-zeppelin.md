@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890408"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367933"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive sorguları yürütme
 
@@ -23,7 +23,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) .  **Etkileşimli sorgu** kümesi türünü seçtiğinizden emin olun.
+Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .  **Etkileşimli sorgu** kümesi türünü seçtiğinizden emin olun.
 
 ## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin notunun oluşturulması
 

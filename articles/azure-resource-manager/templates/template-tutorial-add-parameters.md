@@ -5,18 +5,18 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 930ae27acf09dfa54638e27c938d7680817cbbab
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773200"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370755"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza parametreler ekleme
 
 [Önceki öğreticide](template-tutorial-add-resource.md), şablona bir depolama hesabı eklemeyi ve bunu dağıtmayı öğrendiniz. Bu öğreticide, parametreleri ekleyerek şablonu geliştirmeyi öğrenirsiniz. Bu öğreticinin tamamlanabilmesi yaklaşık **14 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Kaynaklar hakkında öğreticiyi](template-tutorial-add-resource.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -44,7 +44,7 @@ Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -54,10 +54,10 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addnameparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -88,7 +88,7 @@ Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıt
 
 Yeniden dağıtım için hazırsınız. Varsayılan SKU **Standard_LRS**olarak ayarlandığı için, bu parametre için bir değer sağlamanız gerekmez.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -98,10 +98,10 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addskuparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -112,7 +112,7 @@ az group deployment create \
 
 Şablonunuzun esnekliğini görmek için yeniden dağıtmanıza izin verin. Bu kez, SKU parametresini **Standard_GRS**olarak ayarlayın. Farklı bir depolama hesabı oluşturmak için yeni bir ad geçirebilir ya da mevcut depolama hesabınızı güncelleştirmek için aynı adı kullanabilirsiniz. Her iki seçenek de çalışır.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -123,10 +123,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_GRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name usedefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -137,7 +137,7 @@ az group deployment create \
 
 Son olarak, bir test çalıştıralım ve izin verilen değerlerden biri olmayan bir SKU 'ya geçirdiğinizde ne olacağını görelim. Bu durumda, şablonunuzda bir kullanıcının **temel** olarak SKU 'lardan biri olduğu senaryoya test ederiz.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -148,10 +148,10 @@ New-AzResourceGroupDeployment `
   -storageSKU basic
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name testskuparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \

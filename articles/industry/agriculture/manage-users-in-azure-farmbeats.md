@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 47da8146d3984982a9024b3bd084a1ab384c944f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271700"
+ms.locfileid: "79298793"
 ---
 # <a name="manage-users"></a>Kullanıcıları yönetme
 
@@ -26,6 +26,8 @@ Azure Farmtts, Azure Active Directory (Azure AD) örneğinin parçası olan kiş
 Azure Farm, kimlik doğrulaması, erişim denetimi ve roller için Azure AD kullanır. Azure AD kiracısındaki kullanıcıları Azure Farmtempts ' deki kullanıcılar olarak ekleyebilirsiniz.
 
 > [!NOTE]
+> Bir Kullanıcı Azure AD kiracı kullanıcısı değilse, kurulumu gerçekleştirmek için **Azure AD kullanıcıları Ekle** bölümündeki yönergeleri izleyin.
+
 > Azure AD kiracısında bir Azure Farmınts kullanıcısı olarak eklemeye çalıştığınız bir kullanıcı yoksa, "Azure AD kullanıcıları ekleme" bölümündeki yönergeleri izleyerek Kurulumu doldurun.
 
 Azure Farmtts, iki tür Kullanıcı rolünü destekler:
@@ -63,7 +65,7 @@ Kullanıcıları Azure Farmtts sisteminden kaldırmak için:
 ## <a name="add-azure-ad-users"></a>Azure AD kullanıcıları ekleme
 
 > [!NOTE]
-> Azure Farm, kullanıcıların uygulama ve rollere atamadan önce Azure AD kiracısında mevcut olmaları gerekir. Azure Farmınts 'ye eklemek istediğiniz bir Kullanıcı Azure AD kiracısında zaten mevcut değilse, bu bölümdeki yönergeleri izleyin. Kullanıcı Azure AD kiracısında varsa, bu yönergeleri atlayabilirsiniz.
+> Azure Farm, kullanıcıların uygulamalara ve rollere atamadan önce Azure AD kiracısında mevcut olmaları gerekir. Bir Kullanıcı Azure AD kiracısında yoksa, bu bölümdeki yönergeleri izleyin. Azure AD kiracısında bir kullanıcı zaten varsa yönergeleri atlayın.
 
 Azure AD 'ye Kullanıcı eklemek için aşağıdakileri yapın:
 

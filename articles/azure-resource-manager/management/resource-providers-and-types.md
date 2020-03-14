@@ -3,12 +3,12 @@ title: Kaynak sağlayıcıları ve kaynak türleri
 description: Kaynak Yöneticisi, şemaları ve kullanılabilir API sürümlerini ve kaynakları barındırabildiğiniz bölgeleri destekleyen kaynak sağlayıcılarını açıklar.
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372228"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273988"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure kaynak sağlayıcıları ve türleri
 
@@ -84,7 +84,7 @@ Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, Registr
 
 Şuna benzer sonuçlar döndüren:
 
-```powershell
+```output
 ProviderNamespace                RegistrationState
 -------------------------------- ------------------
 Microsoft.ClassicCompute         Registered
@@ -102,7 +102,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 Şuna benzer sonuçlar döndüren:
 
-```powershell
+```output
 ProviderNamespace : Microsoft.Batch
 RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
@@ -119,7 +119,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 Şuna benzer sonuçlar döndüren:
 
-```powershell
+```output
 {ProviderNamespace : Microsoft.Batch
 RegistrationState : Registered
 ResourceTypes     : {batchAccounts}
@@ -136,7 +136,7 @@ Bir kaynak sağlayıcısının kaynak türlerini görmek için şunu kullanın:
 
 Şunu döndürür:
 
-```powershell
+```output
 batchAccounts
 operations
 locations
@@ -153,7 +153,7 @@ Bir kaynak türü için kullanılabilir API sürümlerini almak için şunu kull
 
 Şunu döndürür:
 
-```powershell
+```output
 2017-05-01
 2017-01-01
 2015-12-01
@@ -171,7 +171,7 @@ Kaynak türü için desteklenen konumları almak için kullanın.
 
 Şunu döndürür:
 
-```powershell
+```output
 West Europe
 East US
 East US 2
@@ -189,7 +189,7 @@ az provider list --query "[].{Provider:namespace, Status:registrationState}" --o
 
 Şuna benzer sonuçlar döndüren:
 
-```azurecli
+```output
 Provider                         Status
 -------------------------------- ----------------
 Microsoft.ClassicCompute         Registered
@@ -217,7 +217,7 @@ az provider show --namespace Microsoft.Batch
 
 Şuna benzer sonuçlar döndüren:
 
-```azurecli
+```output
 {
     "id": "/subscriptions/####-####/providers/Microsoft.Batch",
     "namespace": "Microsoft.Batch",
@@ -236,7 +236,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceT
 
 Şunu döndürür:
 
-```azurecli
+```output
 Result
 ---------------
 batchAccounts
@@ -255,7 +255,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 Şunu döndürür:
 
-```azurecli
+```output
 Result
 ---------------
 2017-05-01
@@ -275,7 +275,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 Şunu döndürür:
 
-```azurecli
+```output
 Result
 ---------------
 West Europe

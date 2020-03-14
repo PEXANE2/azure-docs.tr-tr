@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754044"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299371"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL veritabanı örnek havuzları (Önizleme) nasıl yapılır Kılavuzu
 
@@ -26,18 +26,18 @@ Bu makalede, [örnek havuzlarının](sql-database-instance-pools.md)nasıl oluş
 
 Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili kullanılabilir işlemler ve bunların kullanılabilirlikleri gösterilmektedir.
 
-|Komut|Azure Portal|PowerShell|
+|Komut|Azure portalı|PowerShell|
 |:---|:---|:---|
-|Örnek havuzu oluşturma|Hayır|Evet|
-|Örnek havuzunu güncelleştir (sınırlı sayıda özellik)|Hayır |Evet |
-|Örnek havuzunun kullanımını ve özelliklerini denetleme|Hayır|Evet |
-|Örnek havuzunu Sil|Hayır|Evet|
-|Örnek havuzu içinde yönetilen örnek oluştur|Hayır|Evet|
-|Yönetilen örnek kaynak kullanımını Güncelleştir|Evet |Evet|
-|Yönetilen örnek kullanımını ve özelliklerini denetleme|Evet|Evet|
-|Yönetilen örneği havuzdan Sil|Evet|Evet|
-|Yönetilen örnekte havuza yerleştirilmiş bir veritabanı oluşturma|Evet|Evet|
-|Yönetilen örnekten bir veritabanını silme|Evet|Evet|
+|Örnek havuzu oluşturma|Hayır|Yes|
+|Örnek havuzunu güncelleştir (sınırlı sayıda özellik)|Hayır |Yes |
+|Örnek havuzunun kullanımını ve özelliklerini denetleme|Hayır|Yes |
+|Örnek havuzunu Sil|Hayır|Yes|
+|Örnek havuzu içinde yönetilen örnek oluştur|Hayır|Yes|
+|Yönetilen örnek kaynak kullanımını Güncelleştir|Yes |Yes|
+|Yönetilen örnek kullanımını ve özelliklerini denetleme|Yes|Yes|
+|Yönetilen örneği havuzdan Sil|Yes|Yes|
+|Yönetilen örnekte havuza yerleştirilmiş bir veritabanı oluşturma|Yes|Yes|
+|Yönetilen örnekten bir veritabanını silme|Yes|Yes|
 
 Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/module/az.sql/)
 
@@ -50,7 +50,7 @@ Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/mo
 |[Get-Azsqlınstancepoolusage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Azure SQL örnek havuzu kullanımıyla ilgili bilgileri döndürür. |
 
 
-PowerShell 'i kullanmak için [PowerShell Core 'un en son sürümünü yükleyip](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core) [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps)için yönergeleri izleyin.
+PowerShell 'i kullanmak için [PowerShell Core 'un en son sürümünü yükleyip](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell) [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps)için yönergeleri izleyin.
 
 Hem havuzların hem de tek örneklerin içindeki örneklerle ilgili işlemler için, standart [yönetilen örnek komutlarını](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)kullanın, ancak bir havuzdaki bir örnek için bu komutlar kullanılırken *örnek havuzu adı* özelliği doldurulmalıdır.
 

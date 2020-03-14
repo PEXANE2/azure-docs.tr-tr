@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98706d0c9a86d53ae31d05bec48d7071f251b651
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944383"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Öğretici: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Bu öğreticide, çalışma alanını Azure Active Directory (Azure AD) ile Face
 * Kullanıcılarınızın Azure AD hesaplarıyla Facebook tarafından çalışma alanına otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -240,7 +240,7 @@ Erişim panelinde Facebook tarafından çalışma alanı kutucuğuna tıkladığ
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

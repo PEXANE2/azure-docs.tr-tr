@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: a05a2bf81a278322bc4e07ed959aedb828c39b73
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f2f0b277fb9dc6270e9015b5bf3205cc8aceaa0a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815465"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371248"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
@@ -23,13 +23,13 @@ Konuşma hizmetinden konuşma çevirisi, ses akışlarının gerçek zamanlı, �
 
 Microsoft 'un çeviri altyapısı iki farklı yaklaşımdan desteklenir: istatistiksel makine çevirisi (SMT) ve sinir makine çevirisi (NMT). SMT, birkaç sözcük bağlamında mümkün olan en iyi çevirileri tahmin etmek için gelişmiş istatistiksel analizler kullanır. NMT ile, sözcükleri çevirmek için Tümcelerin tam bağlamını kullanarak daha doğru, doğal bir şekilde daha doğru, doğal bir çeviri sağlamak için sinir Networks kullanılır.
 
-Günümüzde Microsoft, en popüler dillere çeviri için NMT kullanır. Tüm [konuşma konuşma çevirisi için kullanılabilen dilleri](language-support.md#speech-translation) NMT tarafından desteklenir. Konuşma metin çeviri dili çifti bağlı olarak SMT veya NMT kullanabilir. Hedef dil NMT tarafından desteklenirken, tam çeviri NMT destekli olur. Hedef dil NMT tarafından desteklenmediğinde, çeviri, iki dil arasında "pivot" olarak Ingilizce kullanan NMT ve SMT 'in bir karması olur.
+Günümüzde Microsoft, en popüler dillere çeviri için NMT kullanır. [Konuşma tanıma çevirisi için kullanılabilen tüm diller](language-support.md#speech-translation) NMT tarafından desteklenmektedir. Konuşma metin çeviri dili çifti bağlı olarak SMT veya NMT kullanabilir. Hedef dil NMT tarafından desteklenirken, tam çeviri NMT destekli olur. Hedef dil NMT tarafından desteklenmediğinde, çeviri, iki dil arasında "pivot" olarak Ingilizce kullanan NMT ve SMT 'in bir karması olur.
 
 ## <a name="core-features"></a>Temel Özellikler
 
 Konuşma SDK 'Sı ve REST API 'Leri aracılığıyla kullanılabilen özellikler şunlardır:
 
-| Kullanım örneği | SDK | REST |
+| Kullanım durumu | SDK | REST |
 |----------|-----|------|
 | Tanıma sonuçlarıyla konuşmaya metin çevirisi. | Yes | Hayır |
 | Konuşmadan konuşmaya çevirisi. | Yes | Hayır |
@@ -41,11 +41,11 @@ Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hız
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Göz atma](https://aka.ms/csspeech/cppref)|
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Göz atma](https://aka.ms/csspeech/javaref) |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
+| [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Ata](https://aka.ms/csspeech/cppref)|
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Ata](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Örnek kod
 

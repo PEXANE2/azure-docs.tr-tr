@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246269"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367083"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Otomasyonu grafik runbook’larında hata işleme
 
@@ -48,7 +48,7 @@ Bir hata üreten her etkinlik için başka bir etkinliğe işaret eden bir hata 
 1. Bu sorun hakkında bir bildirim gönderir.
 2. Bunun yerine otomatik olarak yeni bir VM sağlayan başka bir runbook başlatır.
 
-Bir çözüm, runbook 'ta birinci adımı işleyen bir etkinliğe işaret eden bir hata bağlantısına sahip olur. Örneğin, runbook, **Write-Warning** cmdlet 'ini ikinci adım Için, [Start-azautomationrunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet 'i gibi bir etkinliğe bağlayabilirler.
+Bir çözüm, runbook 'ta birinci adımı işleyen bir etkinliğe işaret eden bir hata bağlantısına sahip olur. Örneğin, runbook, [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet 'i gibi `Write-Warning` cmdlet 'ini ikinci adım için bir etkinliğe bağlayabilirler.
 
 Ayrıca, bu iki etkinliği ayrı bir hata işleme runbook 'una yerleştirerek birçok runbook 'ta kullanılmak üzere bu davranışı genelleştirebilirsiniz. Orijinal runbook 'unuzu bu hata işleme runbook 'unu çağırmadan önce, verilerinden özel bir ileti oluşturabilir ve ardından bunu runbook 'u hata işleme öğesine bir parametre olarak geçirebilir.
 
@@ -60,9 +60,9 @@ Yapılandırma ayarını etkinleştirdikten sonra, runbook 'un hatayı işleyen 
 
 Aşağıdaki örnekte, bir runbook bir sanal makinenin bilgisayar adını içeren bir değişken alır. Daha sonra VM 'yi bir sonraki etkinlikle başlatmaya çalışır.<br><br> ![Otomasyon Runbook 'u hata işleme örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-**Get-AutomationVariable** etkinliği ve [Start-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 'i, özel durumları hatalara dönüştürmek üzere yapılandırılır. Değişkeni alma veya VM 'yi başlatma sorunları varsa, kod hata oluşturur.<br><br> ![Automation runbook hata-işlem etkinliği ayarları](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png).
+`Get-AutomationVariable` etkinliği ve [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 'i, özel durumları hatalara dönüştürmek üzere yapılandırılır. Değişkeni alma veya VM 'yi başlatma sorunları varsa, kod hata oluşturur.<br><br> ![Automation runbook hata-işlem etkinliği ayarları](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png).
 
-Hata bağlantıları bu etkinliklerden tek bir **hata yönetimi** kodu etkinliğine akar. Bu etkinlik, geçerli özel durumu açıklayan iletiyi almak için `$Error.Exception.Message` birlikte işlemeyi durdurmak için **throw** anahtar sözcüğünü kullanan basit bir PowerShell ifadesiyle yapılandırılır.<br><br> ![Automation runbook hata işleme kodu örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Hata bağlantıları bu etkinliklerden tek bir `error management` kodu etkinliğine akar. Bu etkinlik, geçerli özel durumu açıklayan iletiyi almak için `$Error.Exception.Message` birlikte işlemeyi durdurmak için `throw` anahtar sözcüğünü kullanan basit bir PowerShell ifadesiyle yapılandırılır.<br><br> ![Automation runbook hata işleme kodu örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: a6896eaad86c5e361c50cd81257131ee75a8d6a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467046"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370330"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Hızlı başlangıç: Apache Phoenix ile Azure HDInsight 'ta Apache HBase 'i sorgulama
 
@@ -23,7 +23,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Apache HBase kümesi. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) .  **HBase** küme türünü seçtiğinizden emin olun.
+* Apache HBase kümesi. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .  **HBase** küme türünü seçtiğinizden emin olun.
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -59,7 +59,7 @@ HBase kümelerine bağlanmak için SSH kullanabilir ve sonra HBase tabloları ol
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Dizini Phoenix istemcisine değiştirin. Aşağıdaki komutu kullanın:
+2. Dizini Phoenix istemcisine değiştirin. Aşağıdaki komutu girin:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
@@ -71,44 +71,44 @@ HBase kümelerine bağlanmak için SSH kullanabilir ve sonra HBase tabloları ol
     ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
     ```
 
-4. Bir HBase tablosu oluşturun. Aşağıdaki komutu kullanın:
+4. Bir HBase tablosu oluşturun. Aşağıdaki komutu girin:
 
     ```sql
     CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
     ```
 
-5. HBase 'deki tüm tabloları listelemek için SQLLine `!tables` komutunu kullanın. Aşağıdaki komutu kullanın:
+5. HBase 'deki tüm tabloları listelemek için SQLLine `!tables` komutunu kullanın. Aşağıdaki komutu girin:
 
     ```sqlline
     !tables
     ```
 
-6. Tablodaki değerleri ekleyin. Aşağıdaki komutu kullanın:
+6. Tablodaki değerleri ekleyin. Aşağıdaki komutu girin:
 
     ```sql
     UPSERT INTO Company VALUES(1, 'Microsoft');
     UPSERT INTO Company VALUES(2, 'Apache');
     ```
 
-7. Tabloyu sorgulayın. Aşağıdaki komutu kullanın:
+7. Tabloyu sorgulayın. Aşağıdaki komutu girin:
 
     ```sql
     SELECT * FROM Company;
     ```
 
-8. Bir kaydı silin. Aşağıdaki komutu kullanın:
+8. Bir kaydı silin. Aşağıdaki komutu girin:
 
     ```sql
     DELETE FROM Company WHERE COMPANY_ID=1;
     ```
 
-9. Tabloyu bırakın. Aşağıdaki komutu kullanın:
+9. Tabloyu bırakın. Aşağıdaki komutu girin:
 
     ```hbase
     DROP TABLE Company;
     ```
 
-10. SQLLine 'dan çıkmak için SQLLine `!quit` komutunu kullanın. Aşağıdaki komutu kullanın:
+10. SQLLine 'dan çıkmak için SQLLine `!quit` komutunu kullanın. Aşağıdaki komutu girin:
 
     ```sqlline
     !quit

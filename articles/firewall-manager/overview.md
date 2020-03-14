@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 03/13/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443167"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366283"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Azure Güvenlik Duvarı Yöneticisi önizlemesi nedir?
 
@@ -80,13 +80,14 @@ Azure Güvenlik Duvarı Yöneticisi önizlemesi aşağıdaki bilinen sorunlara s
 
 |Sorun  |Açıklama  |Risk azaltma  |
 |---------|---------|---------|
-|Üçüncü taraf filtreleme sınırlamaları|V2I Azure Firewall B2V ve V2V ile üçüncü taraf sağlayıcılarla trafik filtrelemesi desteklenmez.|Şu anda araştırma.|
-|Trafik bölme şu anda desteklenmiyor|Office 365 ve Azure genel PaaS trafik bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse ortak hizmet aracılığıyla tüm Azure genel PaaS ve Office 365 trafiği de gönderilir.|Şu anda hub 'da trafik bölmeyi araştırıyoruz.
-|Bölge başına bir güvenli sanal hub|Bölge başına birden fazla güvenli sanal hub 'ınız olamaz|Bir bölgede birden çok sanal WAN oluşturun.|
-|Temel ilkeler yerel ilkeyle aynı bölgede olmalıdır|Tüm yerel ilkelerinizi temel ilkeyle aynı bölgede oluşturun. Başka bir bölgeden güvenli bir hub 'daki tek bir bölgede oluşturulmuş bir ilkeyi yine de uygulayabilirsiniz.|Şu anda araştırma.|
-|Güvenli sanal hub ile hub arası iletişim çalışmıyor|Güvenli sanal hub, güvenli sanal hub iletişimine henüz desteklenmiyor.|Şu anda araştırma.|
+|Üçüncü taraf filtreleme sınırlamaları.|V2I Azure Firewall B2V ve V2V ile üçüncü taraf sağlayıcılarla trafik filtrelemesi desteklenmez.|Araştırma|
+|Trafik bölme şu anda desteklenmiyor.|Office 365 ve Azure genel PaaS trafik bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse ortak hizmet aracılığıyla tüm Azure genel PaaS ve Office 365 trafiği de gönderilir.|Hub 'da trafik bölmeyi araştırma.
+|Bölge başına bir güvenli sanal hub.|Bölge başına birden fazla güvenli sanal hub 'ınız olamaz.|Bir bölgede birden çok sanal WAN oluşturun.|
+|Temel ilkeler yerel ilkeyle aynı bölgede olmalıdır.|Tüm yerel ilkelerinizi temel ilkeyle aynı bölgede oluşturun. Başka bir bölgeden güvenli bir hub 'daki tek bir bölgede oluşturulmuş bir ilkeyi yine de uygulayabilirsiniz.|Araştırma|
+|Güvenli sanal hub ile hub arası iletişim çalışmıyor|Güvenli sanal hub, güvenli sanal hub iletişimine henüz desteklenmiyor.|Araştırma|
 |Aynı sanal WAN 'ı paylaşan tüm güvenli sanal hub 'Lar aynı kaynak grubunda olmalıdır.|Bu davranış, bugün sanal WAN hub 'Ları ile hizalanır.|Farklı kaynak gruplarında güvenli sanal hub 'Ların oluşturulmasını sağlamak için birden çok sanal WAN oluşturun.|
-|Güvenlik Duvarı Ilkesinde IP grupları desteklenmez|IP grupları genel önizlemede ve şu anda yalnızca geleneksel güvenlik duvarı kuralları ile desteklenir|Çözüm devam ediyor
+|Güvenlik Duvarı Ilkesinde IP grupları desteklenmez.|IP grupları genel önizlemede ve şu anda yalnızca geleneksel güvenlik duvarı kuralları ile desteklenir.|Çözüm devam ediyor.
+|Bulut çözümü sağlayıcısı (CSP) abonelikleri desteklenmez.|Şu anda [CSP abonelikleri](https://azure.microsoft.com/offers/ms-azr-0145p/) desteklenmez.|Araştırma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

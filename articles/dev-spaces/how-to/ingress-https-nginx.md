@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces özel bir NGıNX giriş denetleyicisi kullanmak üzere yapılandırmayı ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 2debe6daf409200059f28aef52202223193e8f0c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 13b94d6079f665eeb5438b10b387360368b7a3ac
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79265343"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366062"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Özel NGıNX giriş denetleyicisi kullanma ve HTTPS 'yi yapılandırma
 
@@ -29,14 +29,14 @@ Bu makalede, Azure Dev Spaces özel bir NGıNX giriş denetleyicisi kullanmak ü
 
 Kubernetes komut satırı istemcisi olan [kubectl][kubectl]kullanarak kümenize bağlanın. Kubernetes kümenize bağlanmak üzere `kubectl` yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
-```azurecli-interactive
+```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
 ```
 
 Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu kullanarak küme düğümleri listesini alın.
 
 ```console
-$ kubectl get nodes
+kubectl get nodes
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
@@ -79,7 +79,7 @@ nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_
 
 [Az Network DNS Record-set A Add-Record][az-network-dns-record-set-a-add-record]kullanılarak, NGINX HIZMETININ dış IP adresiyle DNS bölgenize *bir* kayıt ekleyin.
 
-```console
+```azurecli
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \

@@ -1,21 +1,21 @@
 ---
-title: PostgreSQL için Azure veritabanı için özel bağlantı-tek sunucu (Önizleme)
+title: Özel bağlantı-PostgreSQL için Azure veritabanı-tek sunucu
 description: Özel bağlantının PostgreSQL için Azure veritabanı-tek sunucu ile nasıl çalıştığını öğrenin.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: e3667a60a326838b490f9082fd55bdc92d038cf9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898371"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371690"
 ---
-# <a name="private-link-for-azure-database-for-postgresql-single-server-preview"></a>PostgreSQL için Azure veritabanı için özel bağlantı-tek sunucu (Önizleme)
+# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı için özel bağlantı-tek sunucu
 
-Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine özel bir uç nokta aracılığıyla bağlanmanızı sağlar. Azure özel bağlantısı temel olarak Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. PaaS kaynaklarına, sanal ağ üzerindeki diğer kaynaklar gibi özel IP adresi kullanılarak erişilebilir.
+Özel bağlantı, PostgreSQL için Azure veritabanı-tek sunucu için özel uç noktalar oluşturmanızı sağlar ve bu nedenle Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. Özel uç nokta, veritabanı sunucunuza VNet 'teki diğer kaynaklar gibi bağlanmak için kullanabileceğiniz özel bir IP 'yi gösterir.
 
 Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin listesi için özel bağlantı [belgelerini](https://docs.microsoft.com/azure/private-link/index)gözden geçirin. Özel uç nokta, belirli bir [sanal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ağ ve alt ağ içindeki özel bir IP adresidir.
 
@@ -53,14 +53,11 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki PostgreSQL içi
 
 Özel bağlantıları etkinleştirmek için özel uç noktalar gereklidir. Bu işlem, aşağıdaki nasıl yapılır kılavuzlarından yararlanarak yapılabilir.
 
-* [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
+* [Azure portalında](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Onay Işlemi
-Ağ Yöneticisi özel uç noktayı (PE) oluşturduktan sonra, PostgreSQL Yöneticisi özel uç nokta bağlantısını (PEC) PostgreSQL için Azure veritabanı 'na yönetebilir.
-
-> [!NOTE]
-> Şu anda, PostgreSQL için Azure veritabanı tek sunucu yalnızca özel uç nokta için otomatik onayı destekler.
+Ağ Yöneticisi özel uç noktayı (PE) oluşturduktan sonra, PostgreSQL Yöneticisi özel uç nokta bağlantısını (PEC) PostgreSQL için Azure veritabanı 'na yönetebilir. Ağ Yöneticisi ve DBA arasındaki bu görev ayrımı, PostgreSQL için Azure veritabanı bağlantısı yönetimi için yararlıdır. 
 
 * Azure portal PostgreSQL için Azure veritabanı sunucu kaynağına gidin. 
     * Sol bölmedeki özel uç nokta bağlantılarını seçin
@@ -109,6 +106,19 @@ Bir PostgreSQL için Azure veritabanı 'na bağlantı kurmak için [VNET-VNET VP
 * Ortak trafiği veya bir hizmet uç noktasını yapılandırırsanız ve özel uç noktalar oluşturursanız, ilgili güvenlik duvarı kuralı tarafından farklı gelen trafik türlerine izin verilir.
 
 * Herhangi bir ortak trafik veya hizmet uç noktası yapılandırmazsanız ve özel uç noktalar oluşturursanız, PostgreSQL için Azure veritabanı tek sunuculu yalnızca özel uç noktalar aracılığıyla erişilebilir. Genel trafiği veya bir hizmet uç noktasını yapılandırmazsanız, tüm onaylanan özel uç noktalar reddedilir veya silindikten sonra, hiçbir trafik PostgreSQL için Azure veritabanı 'na tek sunucuya erişemez.
+
+## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu için genel erişimi reddetme
+
+Yalnızca PostgreSQL için Azure veritabanı tek sunucuya erişim için özel uç noktalara erişmek istiyorsanız, veritabanı sunucusunda **ortak ağ erişimini engelle** özelliğini ayarlayarak tüm genel uç noktaları ([güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-and-security-vnet.md)) ayarlamayı devre dışı bırakabilirsiniz. 
+
+Bu ayar *Evet* olarak ayarlandığında, PostgreSQL Için Azure veritabanı 'na yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *hiçbir Istemci yok* olarak ayarlandığında, güvenlik duvarınız veya VNET hizmeti uç noktası ayarına göre PostgreSQL Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri müşteriler olarak ayarlandığında mevcut ' güvenlik duvarı kuralları ' ve ' VNet hizmeti uç noktası kuralını ekleyemez ve/veya güncelleştiremez
+
+> [!Note]
+> Bu özellik, PostgreSQL için Azure veritabanı-tek sunucu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+>
+> Bu ayarın, PostgreSQL için Azure veritabanı tek sunuculu SSL ve TLS yapılandırmalarına etkisi yoktur.
+
+Azure portal 'den PostgreSQL için Azure veritabanı 'na yönelik **genel ağ erişimini reddetme** hakkında bilgi edinmek için, bkz. [reddetme genel ağ erişimini yapılandırma](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: f42be2a3075d313a490703562761a5df13542c85
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: ef82d748b67db736bc2294089cd92edd2adde4a7
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945870"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297975"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -127,7 +127,7 @@ HTTP veya HTTPS seçin:
 
 - HTTP ' yi seçerseniz, istemci ve uygulama ağ geçidi arasındaki trafik şifrelenmemiş olur.
 
-- [SSL sonlandırma](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) veya [uçtan uca SSL şifrelemeyi](https://docs.microsoft.com/azure/application-gateway/ssl-overview)istiyorsanız https seçeneğini belirleyin. İstemci ile uygulama ağ geçidi arasındaki trafik şifrelenir. Ve SSL bağlantısı uygulama ağ geçidinde sonlanır. Uçtan uca SSL şifrelemesi istiyorsanız, HTTPS 'yi seçmeniz ve **arka uç http** ayarını yapılandırmanız gerekir. Bu, uygulama ağ geçidinden arka uca seyahat edildiğinde trafiğin yeniden şifrelenmesini sağlar.
+- [SSL sonlandırma](features.md#secure-sockets-layer-ssltls-termination) veya [uçtan uca SSL şifrelemeyi](https://docs.microsoft.com/azure/application-gateway/ssl-overview)istiyorsanız https seçeneğini belirleyin. İstemci ile uygulama ağ geçidi arasındaki trafik şifrelenir. Ve SSL bağlantısı uygulama ağ geçidinde sonlanır. Uçtan uca SSL şifrelemesi istiyorsanız, HTTPS 'yi seçmeniz ve **arka uç http** ayarını yapılandırmanız gerekir. Bu, uygulama ağ geçidinden arka uca seyahat edildiğinde trafiğin yeniden şifrelenmesini sağlar.
 
 SSL sonlandırma ve uçtan uca SSL şifrelemesini yapılandırmak için, uygulama ağ geçidinin bir simetrik anahtar türetmesini sağlamak üzere dinleyiciye bir sertifika eklemeniz gerekir. Bu, SSL protokol belirtimi tarafından belirlenir. Simetrik anahtar, ağ geçidine gönderilen trafiği şifrelemek ve şifresini çözmek için kullanılır. Ağ Geçidi sertifikası kişisel bilgi değişimi (PFX) biçiminde olmalıdır. Bu biçim, ağ geçidinin trafiği şifrelemek ve şifresini çözmek için kullandığı özel anahtarı dışa aktarmanıza olanak tanır.
 

@@ -3,16 +3,23 @@ title: SQL Server veritabanlarını Azure 'a yedekleme
 description: Bu makalede SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanmaktadır. Makalede kurtarma SQL Server de açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273247"
+ms.locfileid: "79297501"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
-SQL Server veritabanları, düşük kurtarma noktası hedefi (RPO) ve uzun süreli saklama gerektiren kritik iş yükleridir. [Azure Backup](backup-overview.md)kullanarak Azure VM 'lerinde çalışan SQL Server veritabanlarını yedekleyebilirsiniz.
+[Azure Backup](backup-overview.md) , Azure VM 'lerinde çalışan SQL Server yedeklemek için akış tabanlı, özel bir çözüm sunar. Bu çözüm, Azure Backup sıfır altyapı yedeklemesi, uzun süreli saklama ve merkezi yönetim avantajlarıyla birlikte hizalanır. Buna ek olarak, SQL Server için aşağıdaki avantajları da sağlar:
+
+1. Tüm Yedekleme türlerini destekleyen iş yükü uyumlu yedeklemeler-tam, değişiklik ve günlük
+2. en sık kullanılan günlük yedeklemeleri ile 15 dakikalık RPO (kurtarma noktası hedefi)
+3. Bir saniyede en çok bir noktaya kurtarma
+4. Ayrı veritabanı düzeyinde yedekleme ve geri yükleme
+
+Günümüzde destekdiğimiz yedekleme ve geri yükleme senaryolarını görüntülemek için [destek matrisine](backup-azure-sql-database.md#scenario-support)bakın.
 
 ## <a name="backup-process"></a>Yedekleme işlemi
 

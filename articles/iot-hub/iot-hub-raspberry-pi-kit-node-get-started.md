@@ -2,20 +2,20 @@
 title: Raspberry PI 'yi Bulutta Azure IoT Hub bağlama (node. js)
 description: Bu öğreticide Azure Cloud Platform 'a veri göndermek üzere Raspberry PI 'yi ayarlamayı ve Azure IoT Hub için Azure 'a bağlamayı öğrenin.
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: Azure IoT Raspberry PI, Raspberry PI IoT Hub, Raspberry PI buluta veri gönderme, Raspberry Pi-buluta
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457106"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371519"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry PI 'yi Azure IoT Hub 'ye bağlama (node. js)
 
@@ -78,7 +78,7 @@ Aşağıdaki öğeler isteğe bağlıdır:
 > [!NOTE]
 > İsteğe bağlı öğeleriniz yoksa, sanal algılayıcı verilerini kullanabilirsiniz.
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -202,13 +202,13 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 3. Örnek uygulamayı kopyalayın.
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. Örnek için tüm paketleri yükler. Yükleme, Azure IoT cihaz SDK 'Sı, BME280 algılayıcı kitaplığı ve kablo kitaplığı 'nı içerir.
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 
@@ -244,9 +244,9 @@ Aşağıdaki komutu çalıştırarak örnek uygulamayı çalıştırın:
    > [!NOTE]
    > Cihazın bağlantı dizesini tek tırnak içine yapıştırdığınızdan emin olun.
 
-Sensör verilerinin ve IoT hub’ınıza gönderilen iletilerin gösterildiği aşağıdaki çıkışı görmelisiniz.
+Algılayıcı verilerini ve IoT Hub 'ınıza gönderilen iletileri gösteren aşağıdaki çıktıyı görmeniz gerekir.
 
-![Çıkış - Raspberry Pi'den IoT hub'ınıza gönderilen sensör verileri](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
+![Raspberry Pi 'den IoT Hub 'ınıza gönderilen çıkış algılayıcı verileri](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Hub 'ınız tarafından alınan iletileri okuyun
 

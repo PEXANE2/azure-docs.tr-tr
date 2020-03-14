@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/04/2020
-ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.date: 03/12/2020
+ms.openlocfilehash: 3a857c145959c1bcde169e95369ef0bea327dfaf
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238667"
+ms.locfileid: "79296991"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -168,6 +168,12 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. **Eksik verileri temizle** modülünü seçin.
 
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **sütunu Düzenle**' yi seçin.
+
+1. Görüntülenen **sütunlar** penceresinde, **Ekle**' nin yanındaki açılan menüyü genişletin. Seç, **tüm sütunlar**
+
+1. **Kaydet**’i seçin
+
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **temizleme modu**' nun altındaki **tüm satırı Kaldır** ' ı seçin.
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **Açıklama** kutusunu seçin ve *eksik değer satırlarını kaldır*' ı girin. 
@@ -213,9 +219,11 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
 
 1. **Doğrusal regresyon** > **gerileme** ' yı seçin ve bunu işlem hattı tuvaline sürükleyin.
 
-1. **Eğitim modeli** modülünü bulup ardışık düzen tuvaline sürükleyin. 
-
 1. **Doğrusal regresyon** modülünün çıkışını **eğitme modeli** modülünün sol girişine bağlayın.
+
+1. Modül paletinde, bölüm **modülü eğitimi**' ni genişletin ve **model eğitme** modülünü tuvale sürükleyin.
+
+1. **Model eğitme** modülünü seçin ve işlem hattı tuvaline sürükleyin.
 
 1. **Veri ayırma** modülünün eğitim verileri çıkışını (sol bağlantı noktası), **eğitme modeli** modülünün sağ girişine bağlayın.
     
@@ -224,8 +232,6 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
 
     ![Eğitim modeli modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Doğrusal regresyon modülü, model eğitimi modülünün sol bağlantı noktasına bağlanır ve bölünmüş veri modülü, tren modelinin sağ bağlantı noktasına bağlanır](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. Modül paletinde, bölüm **modülü eğitimi**' ni genişletin ve **model eğitme** modülünü tuvale sürükleyin.
-
 1. **Model eğitme** modülünü seçin.
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **sütun seçiciyi Düzenle** ' yi seçin.
@@ -233,6 +239,9 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
 1. **Etiket sütunu** iletişim kutusunda, açılan menüyü genişletin ve **sütun adları**' nı seçin. 
 
 1. Metin kutusuna modelinizin tahmin edilecek değeri belirtmek için *Fiyat* girin.
+
+    >[!IMPORTANT]
+    > Sütun adını tam olarak girdiğinizden emin olun. **Fiyatı**büyük harfle kaldırmayın. 
 
     İşlem hatlarınız şöyle görünmelidir:
 
@@ -260,7 +269,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
 ## <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
-İşlem hattınızda tüm kurulum olduğuna göre, makine öğrenimi modelinizi eğitebilmeniz için bir işlem hattı çalıştırması gönderebilirsiniz. Tasarımcı 'da işlem hatları oluştururken herhangi bir noktada işlem hattı çalıştırması gönderebilirsiniz. Bunu, işinizi yaptığınız şekilde denetlemek ve işlem hattının beklendiği gibi işlevlerinizi doğrulamak için yapabilirsiniz.
+İşlem hattınızda tüm kurulum olduğuna göre, makine öğrenimi modelinizi eğitebilmeniz için bir işlem hattı çalıştırması gönderebilirsiniz. Tasarımcı 'da işlem hatları oluştururken herhangi bir noktada işlem hattı çalıştırması gönderebilirsiniz. Bunu, işlem hattınızı beklendiği gibi çalıştığını doğrulamak için gittiğiniz çalışmanızı denetlemek için yapabilirsiniz.
 
 1. Tuvalin üst kısmında **Gönder**' i seçin.
 

@@ -4,12 +4,12 @@ description: Portaldan Azure 'da yeni bir işlev uygulaması oluşturun.
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 086a543e75d083094d4dfa789e71afaba5da6d6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276978"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368800"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure portalından işlev uygulaması oluşturma
 
@@ -18,10 +18,6 @@ Bu konuda, Azure portal bir işlev uygulaması oluşturmak için Azure Işlevler
 ## <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
-
-İşlev uygulaması oluştururken yalnızca harf, sayı ve kısa çizgi içerebilecek bir **Uygulama adı** sağlayın. Alt çizgi ( **_** ) izin verilen bir karakter değildir.
-
-Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Depolama hesabınızın adının Azure içinde benzersiz olması gerekir. 
 
 İşlev uygulaması oluşturulduktan sonra bir veya daha fazla dilde tek tek işlevler oluşturabilirsiniz. [Portalı kullanarak](functions-create-first-azure-function.md#create-function), [sürekli dağıtım](functions-continuous-deployment.md) aracılığıyla veya [FTP ile karşıya yükleyerek](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp) çeşitli işlevler oluşturun.
 

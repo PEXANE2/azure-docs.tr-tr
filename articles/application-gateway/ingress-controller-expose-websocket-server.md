@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795959"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297841"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>WebSocket sunucusunu Application Gateway kullanıma sunma
 
-Application Gateway v2 belgelerinde açıklandığı gibi [, WebSocket ve http/2 protokolleri için yerel destek sağlar](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic). Hem Application Gateway hem de Kubernetes girişi için, WebSocket desteğini seçmeli olarak etkinleştirmek veya devre dışı bırakmak için Kullanıcı tarafından yapılandırılabilir bir ayar olmadığına lütfen unutmayın.
+Application Gateway v2 belgelerinde açıklandığı gibi [, WebSocket ve http/2 protokolleri için yerel destek sağlar](features.md#websocket-and-http2-traffic). Hem Application Gateway hem de Kubernetes girişi için, WebSocket desteğini seçmeli olarak etkinleştirmek veya devre dışı bırakmak için Kullanıcı tarafından yapılandırılabilir bir ayar olmadığına lütfen unutmayın.
 
 Aşağıdaki Kubernetes dağıtımı YAML, bir WebSocket sunucusunu dağıtmak için kullanılan en düşük yapılandırmayı gösterir ve bu, normal bir Web sunucusunu dağıtmaya benzer:
 ```yaml
@@ -75,7 +75,7 @@ spec:
               servicePort: 80
 ```
 
-Tüm önkoşulların yerine getirildiğini ve AKS 'larınızın bir Kubernetes girişi tarafından denetlenen bir Application Gateway varsa yukarıdaki dağıtım, Application Gateway genel IP 'nizin 80 numaralı bağlantı noktasında kullanıma sunulan bir WebSockets sunucusu ve `ws.contoso.com` alanını.
+Tüm önkoşulların yerine getirildiğini ve AKS 'larınızın bir Kubernetes tarafından denetlenen bir Application Gateway varsa yukarıdaki dağıtım, Application Gateway genel IP ve `ws.contoso.com` etki alanının 80 numaralı bağlantı noktası üzerinde kullanıma sunulan bir WebSockets sunucusunun oluşmasına neden olur.
 
 Aşağıdaki kıvrımlı komutu WebSocket sunucu dağıtımını test edecektir:
 ```sh

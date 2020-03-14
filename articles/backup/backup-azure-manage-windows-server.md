@@ -3,12 +3,12 @@ title: Azure kurtarma hizmetleri kasalarını ve sunucularını yönetme
 description: Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurtarma hizmetleri Kasası genel bakış panosunu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b57d6eff5f5dfa2163962a47eee079d7e26257b5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586453"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136965"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
@@ -49,7 +49,7 @@ Kurtarma Hizmetleri Kasası **genel bakış** panosu, Izleme ve kullanım bilgil
 Izleme bölümünde, önceden tanımlanmış **yedekleme uyarıları** ve **yedekleme işleri** sorgularının sonuçları gösterilmektedir. Izleme kutucukları hakkında güncel bilgiler sağlar:
 
 * Yedekleme işleri için kritik ve uyarı uyarıları (son 24 saat)
-* Azure VM 'lerinin ön denetim durumu-denetim öncesi durumu hakkında tam bilgi Için bkz. [yedekleme ön denetim durumu](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)hakkında daha fazla bilgi için bkz. Backup blogu.
+* Azure VM 'lerinin ön denetim durumu. Ön denetim durumu hakkında tam bilgi için bkz. [yedekleme ön denetim durumu](#backup-pre-check-status).
 * Devam eden yedekleme işleri ve başarısız olan işler (son 24 saat içinde).
 
 Kullanım kutucukları şunları sağlar:
@@ -62,6 +62,22 @@ Kullanım kutucukları şunları sağlar:
 ![Kritik uyarılar için filtrelenmiş yedekleme uyarıları menüsü](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
 Yukarıdaki görüntüde bulunan yedekleme uyarıları menüsü, şu şekilde filtrelenmiştir: durum etkindir, önem derecesi kritik ve zaman, önceki 24 saattir.
+
+### <a name="backup-pre-check-status"></a>Yedekleme ön denetim durumu
+
+Yedekleme ön denetimleri, yedeklemeleri olumsuz etkileyebilecek sorunlar için sanal makinelerinizin yapılandırmasını denetler. Bu bilgileri, doğrudan kurtarma hizmetleri Kasası panosundan görüntüleyebilmeniz ve dosya tutarlı veya uygulamayla tutarlı yedeklemelerin başarılı olmasını sağlamak için düzeltici ölçümlere yönelik öneriler sağlayabilmeniz için toplar. Altyapı gerektirmez ve hiçbir ek ücret vermez.  
+
+Yedekleme ön denetimleri, Azure VM 'leriniz için zamanlanmış yedekleme işlemlerinin bir parçası olarak çalışır. Aşağıdaki durumlardan biriyle sonuçlarlar:
+
+* **Başarılı**: Bu durum, sanal makinenizin yapılandırmasının başarılı yedeklemelere neden olması gerektiğini ve bir düzeltici eylem yapılması gerektiğini gösterir.
+* **Uyarı**: Bu durum, VM yapılandırmasındaki yedekleme *hatalarına yol açabilecek* bir veya daha fazla sorunu gösterir. Başarılı yedeklemeler sağlamak için *Önerilen* adımları sağlar. Örneğin, en son VM aracısının yüklü olmaması, yedeklemelerin aralıklı olarak başarısız olmasına neden olabilir. Bu durum, bir uyarı durumu sağlar.
+* **Kritik**: Bu durum, VM yapılandırmasında yedekleme hatalarına yol *açacak* ve başarılı yedeklemeler sağlamak için *gerekli* adımları sağlayan bir veya daha fazla kritik sorunu belirtir. Örneğin, bir VM 'nin NSG kurallarına neden olan bir ağ sorunu, sanal makinenin Azure Backup hizmetiyle iletişim kurmasını önlediği için yedeklemelerin başarısız olmasına neden olur. Bu durum kritik bir durum sağlar.
+
+Kurtarma Hizmetleri kasasında VM yedeklemeleri için yedekleme ön denetimleri tarafından bildirilen tüm sorunları çözmeye başlamak için aşağıdaki adımları izleyin.
+
+* Kurtarma Hizmetleri Kasası panosunda **yedekleme ön denetim durumu (Azure VM 'ler)** kutucuğunu seçin.
+* Yedekleme ön denetim durumu **kritik** veya **Uyarı**olan herhangi bir VM 'yi seçin. Bu eylem **VM ayrıntıları** bölmesini açar.
+* Yapılandırma sorunu açıklaması ve düzeltme adımlarını göstermek için bölmenin üst kısmındaki bölme bildirimini seçin.
 
 ## <a name="manage-backup-alerts"></a>Yedekleme uyarılarını yönetme
 
@@ -272,4 +288,3 @@ Panodaki yedekleme depolama kutucuğu, Azure 'da tüketilen depolamayı gösteri
 
 * [Windows Server veya Windows Istemcisini Azure 'dan geri yükleme](backup-azure-restore-windows-server.md)
 * Azure Backup hakkında daha fazla bilgi edinmek için bkz. [Azure Backup genel bakış](backup-introduction-to-azure-backup.md)
-

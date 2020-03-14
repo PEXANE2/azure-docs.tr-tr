@@ -10,66 +10,54 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943339"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79365568"
 landingContent:
-- title: başlarken
+- title: Sesli yardımcılar hakkında
   linkLists:
   - linkListType: overview
     links:
-    - text: Ses Yardımcısı çözümleri
+    - text: Ses yardımcısı nedir?
       url: voice-assistants.md
-    - text: Özel komutlar hakkında
+    - text: Özel komutlar uygulaması nedir?
       url: custom-commands.md
-    - text: Doğrudan konuşma hattı hakkında
+    - text: Direct Line Speech nedir?
       url: direct-line-speech.md
   - linkListType: reference
     links:
-    - text: Fiyatlandırma
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: Ses yardımcıları hakkında SSS
       url: faq-voice-assistants.md
-- title: Özel anahtar sözcük
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Özel anahtar sözcük
-      url: speech-devices-sdk-create-kws.md
-  - linkListType: reference
-    links:
-    - text: Özel anahtar sözcük adlandırma yönergeleri
-      url: speech-devices-sdk-kws-guidelines.md
-- title: Özel komutlar
+    - text: Sesli yardımcılar fiyatlandırması
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: Özel komutlarla geliştirme
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Özel Komut oluşturma (önizleme)
+    - text: Özel komutlar uygulaması oluşturma
       url: quickstart-custom-speech-commands-create-new.md
-    - text: Parametreler içeren Özel Komut oluşturma (önizleme)
+    - text: Parametrelerle özel komut oluşturma
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Özel Ses ile Özel Komutları Kullanma (önizleme)
+    - text: Özel sesle özel komutlar kullanma
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Konuşma SDK'sı ile Özel Komutları kullanma (önizleme)
+    - text: Konuşma SDK 'Sı ile özel komutları kullanma
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Konuşma SDK 'Sı ile özel komutlar
+    - text: Bir istemciden komutları yerine getirmek
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Konuşma SDK'sı ile Özel Komutları uygulama
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Özel Komuta parametre doğrulaması ekleme
+    - text: Parametre doğrulaması ekle
       url: how-to-custom-speech-commands-validations.md
-    - text: Özel Komuta onay ekleme
+    - text: Onay ekleyin
       url: how-to-custom-speech-commands-confirmations.md
-    - text: Özel Komuta tek adımlı düzeltme ekleme
+    - text: Tek adımlı bir düzeltme ekleme
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Direct Line Speech
+- title: Doğrudan hat konuşmayla geliştirme
   linkLists:
   - linkListType: quickstart
     links:
@@ -83,3 +71,13 @@ landingContent:
     links:
     - text: Konuşma SDK’sı ile botunuzu ses ile etkinleştirme
       url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: Özel anahtar sözcükle geliştirme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Özel anahtar sözcük oluşturma
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: Özel anahtar sözcük adlandırma yönergeleri
+      url: speech-devices-sdk-kws-guidelines.md

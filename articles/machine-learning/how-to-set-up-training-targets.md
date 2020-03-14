@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 209ed755a7ef83b67170ef75911f93cdda742caa
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355821"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368205"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -154,15 +154,30 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
 
 1. **İliştirme**: var olan bir sanal makineyi işlem hedefi olarak eklemek için, sanal makine için tam etki alanı adı (FQDN), Kullanıcı adı ve parola sağlamalısınız. Örnekte, \<FQDN > VM 'nin Genel FQDN 'SI veya genel IP adresi ile değiştirin. \<Kullanıcı adı > ve \<Password >, VM için SSH Kullanıcı adı ve parolasıyla değiştirin.
 
+    > [!IMPORTANT]
+    > Aşağıdaki Azure bölgeleri VM 'nin genel IP adresini kullanarak bir sanal makine eklemeyi desteklemez. Bunun yerine, `resource_id` parametresiyle sanal makinenin Azure Resource Manager KIMLIĞINI kullanın:
+    >
+    > * ABD Doğu
+    > * ABD Batı 2
+    > * ABD Orta Güney
+    >
+    > VM 'nin kaynak KIMLIĞI, şu dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve VM adı kullanılarak oluşturulabilir: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
+
+
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
+   # If in US East, US West 2, or US South Central, use the following instead:
+   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+   #                                                 ssh_port=22,
+   #                                                 username='<username>',
+   #                                                 password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -198,6 +213,15 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
 
 1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek Için, HDInsight kümesi için konak adı, Kullanıcı adı ve parola sağlamalısınız. Aşağıdaki örnek, bir küme çalışma alanınıza eklemek için SDK'sını kullanır. Örnekte, \<clustername > değerini kümenizin adıyla değiştirin. \<Kullanıcı adı > ve \<Password >, kümenin SSH Kullanıcı adı ve parolasıyla değiştirin.
 
+    > [!IMPORTANT]
+    > Aşağıdaki Azure bölgeleri, kümenin genel IP adresini kullanarak bir HDInsight kümesi eklemeyi desteklemez. Bunun yerine, `resource_id` parametresiyle kümenin Azure Resource Manager KIMLIĞINI kullanın:
+    >
+    > * ABD Doğu
+    > * ABD Batı 2
+    > * ABD Orta Güney
+    >
+    > Kümenin kaynak KIMLIĞI, şu dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve küme adı kullanılarak oluşturulabilir: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
+
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
    from azureml.exceptions import ComputeTargetException
@@ -208,6 +232,11 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
+    # If you are in US East, US West 2, or US South Central, use the following instead:
+    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
+    #                                                      ssh_port=22, 
+    #                                                      username='<ssh-username>', 
+    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
@@ -234,9 +263,9 @@ Azure Batch, büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HP
 
 İşlem hedefi olarak Azure Batch iliştirmek için Azure Machine Learning SDK 'sını kullanmanız ve aşağıdaki bilgileri sağlamanız gerekir:
 
--   **Azure Batch işlem adı**: çalışma alanı içinde işlem için kullanılacak kolay bir ad
--   **Azure Batch hesap adı**: Azure Batch hesabının adı
--   **Kaynak grubu**: Azure Batch hesabını içeren kaynak grubu.
+-    **Azure Batch işlem adı**: çalışma alanı içinde işlem için kullanılacak kolay bir ad
+-    **Azure Batch hesap adı**: Azure Batch hesabının adı
+-    **Kaynak grubu**: Azure Batch hesabını içeren kaynak grubu.
 
 Aşağıdaki kod, Azure Batch işlem hedefi olarak nasıl ekleneceğini göstermektedir:
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246541"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367372"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda alt runbook 'lar
 
@@ -35,13 +35,13 @@ Hangi runbook türleri birbirini çağırabilirler?
 
 * Bir [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) 'u ve bir [grafik runbook](automation-runbook-types.md#graphical-runbooks) , her ikisi de PowerShell tabanlı olduğundan, her bir satır içi her satırı çağırabilir.
 * PowerShell iş akışı [runbook](automation-runbook-types.md#powershell-workflow-runbooks) 'u ve bir grafik PowerShell iş akışı runbook 'u, her Ikisi de PowerShell iş akışı tabanlı olan bir satır içi olarak çağırabilir.
-* PowerShell türleri ve PowerShell Iş akışı türleri birbirini her satır içi çağırabilir ve **Start-AzAutomationRunbook**kullanması gerekir.
+* PowerShell türleri ve PowerShell Iş akışı türleri birbirini hiç bir satır içi çağırabilir ve `Start-AzAutomationRunbook`kullanmalıdır.
 
 Siparişi ne zaman yayımlasın?
 
 Runbook 'ların yayımlama sırası yalnızca PowerShell Iş akışı ve grafik PowerShell Iş akışı runbook 'ları için önemlidir.
 
-Runbook 'unuza satır içi yürütme kullanarak bir grafik veya PowerShell Iş akışı alt runbook 'u çağırdığında, runbook 'un adını kullanır. Betiğin yerel dizinde bulunduğunu belirtmek için adın **.\\** ile başlaması gerekir.
+Runbook 'unuza satır içi yürütme kullanarak bir grafik veya PowerShell Iş akışı alt runbook 'u çağırdığında, runbook 'un adını kullanır. Betiğin yerel dizinde bulunduğunu belirtmek için ad `.\\` başlamalıdır.
 
 ### <a name="example"></a>Örnek
 
@@ -62,15 +62,15 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 ## <a name="starting-a-child-runbook-using-a-cmdlet"></a>Cmdlet kullanarak bir alt runbook 'u başlatma
 
 > [!IMPORTANT]
-> Runbook 'iniz *wait* parametresi ile **Start-azautomationrunbook** cmdlet 'i ile bir alt runbook 'u çağırır ve alt Runbook bir nesne sonucu üretirse, işlem bir hatayla karşılaşabilir. Hataya geçici bir çözüm bulmak için [Get-Azautomationjoi Putrecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) cmdlet 'ini kullanarak sonuçları yoklamaya yönelik mantığı nasıl uygulayacağınızı öğrenmek için [nesne çıkışı ile alt runbook 'lara](troubleshoot/runbooks.md#child-runbook-object) bakın.
+> Runbook 'larınız `Wait` parametresine sahip `Start-AzAutomationRunbook` cmdlet 'i ile bir alt runbook 'u çağırır ve alt Runbook bir nesne sonucu üretirse, işlem bir hatayla karşılaşabilir. Hataya geçici bir çözüm bulmak için [Get-Azautomationjoi Putrecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) cmdlet 'ini kullanarak sonuçları yoklamaya yönelik mantığı nasıl uygulayacağınızı öğrenmek için [nesne çıkışı ile alt runbook 'lara](troubleshoot/runbooks.md#child-runbook-object) bakın.
 
-[Windows PowerShell ile bir runbook başlatmak için](start-runbooks.md#start-a-runbook-with-powershell)bölümünde açıklandığı gibi bir runbook 'u başlatmak için **Start-azautomationrunbook** 'u kullanabilirsiniz. Bu cmdlet için iki mod kullanılması vardır. Tek modda, cmdlet alt runbook için iş oluşturulduğunda iş KIMLIĞINI döndürür. Betiğinizin bekleme parametresini belirterek izin *vermesini* sağlayan diğer modda, cmdlet alt iş bitene kadar bekler ve alt runbook 'tan çıkışı döndürür.
+[Windows PowerShell ile bir runbook başlatmak için](start-runbooks.md#start-a-runbook-with-powershell)bölümünde açıklandığı gibi bir runbook 'u başlatmak için `Start-AzAutomationRunbook` kullanabilirsiniz. Bu cmdlet için iki mod kullanılması vardır. Tek modda, cmdlet alt runbook için iş oluşturulduğunda iş KIMLIĞINI döndürür. Betiğinizin bekleme parametresini belirterek izin *vermesini* sağlayan diğer modda, cmdlet alt iş bitene kadar bekler ve alt runbook 'tan çıkışı döndürür.
 
 Alt runbook 'tan bir cmdlet ile başlatılan iş, üst runbook işinden ayrı olarak çalışır. Bu davranış, runbook 'un satır içi başlatılmasına kıyasla daha fazla iş sağlar ve işlerin izlenmesini zorlaştırır. Üst öğe, her birinin tamamlanmasını beklemeden, zaman uyumsuz olarak birden fazla alt runbook başlatabilir. Alt runbook 'ların satır içi olarak çağrılması bu paralel yürütme için, üst runbook 'un [Parallel anahtar sözcüğünü](automation-powershell-workflow.md#parallel-processing)kullanması gerekir.
 
-Zamanlama nedeniyle alt Runbook çıkışı üst runbook 'a güvenilir bir şekilde geri dönmez. Ayrıca, *$VerbosePreference*, *$WarningPreference*ve diğerleri gibi değişkenler alt runbook 'lara yayılmayabilir. Bu sorunlardan kaçınmak için, *bekleme* parametresiyle birlikte **Start-azautomationrunbook** kullanarak alt runbook 'ları ayrı otomasyon işleri olarak başlatabilirsiniz. Bu teknik, alt runbook tamamlanana kadar üst runbook 'u engeller.
+Zamanlama nedeniyle alt Runbook çıkışı üst runbook 'a güvenilir bir şekilde geri dönmez. Ayrıca, `$VerbosePreference`, `$WarningPreference`ve diğerleri gibi değişkenler alt runbook 'lara yayılmayabilir. Bu sorunlardan kaçınmak için, `Wait` parametresiyle `Start-AzAutomationRunbook` kullanarak alt runbook 'ları ayrı otomasyon işleri olarak başlatabilirsiniz. Bu teknik, alt runbook tamamlanana kadar üst runbook 'u engeller.
 
-Bekleme sırasında üst runbook 'un engellenmesini istemiyorsanız, *bekle* parametresi olmadan **Start-azautomationrunbook** kullanarak alt runbook 'u başlatabilirsiniz. Bu durumda, runbook 'unun iş tamamlanmasını beklemek için [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) kullanması gerekir. Sonuçları almak için [Get-Azautomationjoi put](/powershell/module/az.automation/get-azautomationjoboutput) ve [Get-Azautomationjoi putrecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) ' i de kullanmalıdır.
+Bekleme sırasında üst runbook 'un engellenmesini istemiyorsanız, `Wait` parametresi olmadan `Start-AzAutomationRunbook` kullanarak alt runbook 'u başlatabilirsiniz. Bu durumda, runbook 'unun iş tamamlanmasını beklemek için [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) kullanması gerekir. Sonuçları almak için [Get-Azautomationjoi put](/powershell/module/az.automation/get-azautomationjoboutput) ve [Get-Azautomationjoi putrecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) ' i de kullanmalıdır.
 
 Bir cmdlet ile başlatılan bir alt runbook için parametreler [runbook parametreleri](start-runbooks.md#runbook-parameters)bölümünde açıklandığı gibi karma tablosu olarak sağlanır. Yalnızca basit veri türleri kullanılabilir. Runbook karmaşık veri türü içeren bir parametreye sahipse satır içi olarak çağrılmalıdır.
 
@@ -80,7 +80,7 @@ Aynı Otomasyon hesabı içindeki işler birden fazla abonelikle çalışıyorsa
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, parametreleri olan bir alt runbook başlatır ve sonra *bekleme* parametresiyle birlikte **Start-azautomationrunbook** cmdlet 'ini kullanarak tamamlanmasını bekler. Tamamlandıktan sonra örnek, alt runbook 'tan cmdlet çıkışını toplar. **Start-AzAutomationRunbook**'u kullanmak Için betiğin Azure aboneliğinizde kimlik doğrulaması yapması gerekir.
+Aşağıdaki örnek, parametreleri olan bir alt runbook başlatır ve sonra `Wait` parametresiyle `Start-AzAutomationRunbook` cmdlet 'ini kullanarak tamamlanmasını bekler. Tamamlandıktan sonra örnek, alt runbook 'tan cmdlet çıkışını toplar. `Start-AzAutomationRunbook`kullanmak için betiğin Azure aboneliğinizde kimlik doğrulaması yapması gerekir.
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext

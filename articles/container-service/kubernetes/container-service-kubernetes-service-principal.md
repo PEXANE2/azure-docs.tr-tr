@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274362"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371129"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Kullanım DıŞı Kapsayıcı hizmetinde bir Kubernetes kümesi için Azure AD hizmet sorumlusu ayarlama
 
@@ -71,12 +71,12 @@ Kubernetes kümesini oluştururken, mevcut bir hizmet sorumlusunun **istemci kim
 Kubernetes kümesini dağıtırken, bu parametreleri [Azure Komut Satırı Arabirimi (CLI)](container-service-kubernetes-walkthrough.md), [Azure portalı](../dcos-swarm/container-service-deployment.md) veya diğer yöntemleri kullanarak belirtebilirsiniz.
 
 >[!TIP]
->**İstemci kimliğini** belirtirken, hizmet sorumlusunun `ObjectId` değerini değil `appId` değerini kullandığınızdan emin olun.
+>**İstemci kimliğini** belirtirken, hizmet sorumlusunun `appId` değerini değil `ObjectId` değerini kullandığınızdan emin olun.
 >
 
 Aşağıdaki örnekte Azure CLI ile parametreleri iletme yollarından biri gösterilmektedir. Bu örnekte [Kubernetes hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) kullanılmıştır.
 
-1. `azuredeploy.parameters.json` şablon parametre dosyasını GitHub’dan [indirin](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json).
+1. [ şablon parametre dosyasını GitHub’dan ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)indirin`azuredeploy.parameters.json`.
 
 2. Hizmet sorumlusunu belirtmek için dosyada `servicePrincipalClientId` ve `servicePrincipalClientSecret` değerlerini girin. (Ayrıca `dnsNamePrefix` ve `sshRSAPublicKey` için kendi değerlerinizi de belirtmeniz gerekir. İkincisi, kümeye erişmek için SSH ortak anahtarıdır.) Dosyayı kaydedin.
 
@@ -103,7 +103,7 @@ Diğer Kubernetes kümesi oluşturma seçeneklerinde olduğu gibi, `az acs creat
 
 Aşağıdaki komut, bir Kubernetes kümesi oluşturmaya ek olarak hem SSH anahtarlarını hem de hizmet sorumlusu kimlik bilgilerini üretir:
 
-```console
+```azurecli
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 
@@ -133,7 +133,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 Bir hizmet sorumlusu oluştururken `--years` parametresiyle özel bir geçerlilik penceresi belirtmediğiniz sürece, bir hizmet sorumlusu oluşturduğunuzda, kimlik bilgileri oluşturma zamanından sonraki 1 yıl boyunca geçerli olur. Kimlik bilgilerinin süresi dolduğunda, küme düğümleriniz bir **NotReady** durumu girebilir.
 
-Bir hizmet sorumlusunun sona erme tarihini denetlemek için, [az ad uygulamasını göster](/cli/azure/ad/app#az-ad-app-show) komutunu `--debug` parametresiyle yürütün ve çıktının altının yakınında bulunda `passwordCredentials` alanındaki `endDate` değerini arayın:
+Bir hizmet sorumlusunun sona erme tarihini denetlemek için, [az ad uygulamasını göster](/cli/azure/ad/app#az-ad-app-show) komutunu `--debug` parametresiyle yürütün ve çıktının altının yakınında bulunda `endDate` alanındaki `passwordCredentials` değerini arayın:
 
 ```azurecli
 az ad app show --id <appId> --debug

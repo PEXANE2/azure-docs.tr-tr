@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: f05ef9472f11a5025e9856cfb207cc0859f24c3e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 34333d4fe6e9b34a0c8b56cca8123f4ed93a917a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169360"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218108"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Azure Machine Learning Studio (klasik) çalışma alanını dağıtma
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Kullanarak bir Azure Resource Manager dağıtım şablonu, ölçeklenebilir bir şekilde vererek, zaman tasarrufu sağlar, birbirine bağlı bileşenleri ile bir doğrulama dağıtmak ve yeniden deneme mekanizması. Örneğin Azure Machine Learning Studio (klasik) çalışma alanlarını ayarlamak için önce bir Azure depolama hesabı yapılandırmanız ve ardından çalışma alanınızı dağıtmanız gerekir. Çalışma alanları yüzlerce için el ile bunu hayal edin. Daha kolay bir alternatif, bir Studio (klasik) çalışma alanını ve tüm bağımlılıklarını dağıtmak için Azure Resource Manager şablonu kullanmaktır. Bu makalede bu işlemi adım adım alır. Azure Resource Manager harika bir genel bakış için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 
@@ -84,10 +86,10 @@ Bu şablon, c:\temp\ altında mlworkspace.json dosyası olarak kaydedin.
 * Azure Resource Manager ve Azure hizmet yönetimi için modülleri yükleme
 
 ```powershell
-# Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
+# Install the Azure Resource Manager modules from the PowerShell Gallery (press "A")
 Install-Module Az -Scope CurrentUser
 
-# Install the Azure Service Management modules from the PowerShell Gallery (press “A”)
+# Install the Azure Service Management modules from the PowerShell Gallery (press "A")
 Install-Module Azure -Scope CurrentUser
 ```
 

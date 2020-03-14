@@ -8,16 +8,18 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252677"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370500"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure depolama 'da statik Web sitesi barındırma
 
 *$Web*adlı bir depolama kapsayıcısından doğrudan statik IÇERIK (HTML, CSS, JavaScript ve resim dosyaları) hizmeti sağlayabilirsiniz. İçeriğinizi Azure Storage 'da barındırmak, [Azure işlevleri](/azure/azure-functions/functions-overview) ve diğer hizmet olarak platform (PaaS) hizmetlerini içeren sunucusuz mimariler kullanmanıza olanak sağlar.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
 > Siteniz sunucu tarafı koduna bağımlıysa bunun yerine [Azure App Service](/azure/app-service/overview) kullanın.

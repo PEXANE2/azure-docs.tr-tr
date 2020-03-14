@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2020
+ms.date: 03/12/2020
 ms.author: allensu
-ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3cc459b7f4b81b14f57bbb702f0b0d988654189f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79217020"
+ms.locfileid: "79298663"
 ---
-# <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama (Genel Önizleme)
+# <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
 NAT ağ geçidi kaynakları, [sanal ağ NAT](nat-overview.md) 'nin bir parçasıdır ve bir sanal ağın bir veya daha fazla alt ağı Için giden Internet bağlantısı sağlar. Sanal ağ alt ağı hangi NAT ağ geçidinin kullanılacağını belirtir. NAT, bir alt ağ için kaynak ağ adresi çevirisi (SNAT) sağlar.  NAT ağ geçidi kaynakları, dış akışlar oluştururken sanal makinelerin hangi statik IP adresleri tarafından kullanılacağını belirtir. Statik IP adresleri, genel IP adresi kaynaklarından, genel IP öneki kaynaklarından veya her ikisiyle gelir. Bir NAT ağ geçidi kaynağı, bunlardan en fazla 16 statik IP adresi kullanabilir.
 
@@ -353,6 +353,7 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [NAT Için UserVoic
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
+  - [Şablon](./quickstart-create-nat-gateway-template.md)
 * NAT ağ geçidi kaynak API 'SI hakkında bilgi edinin
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)

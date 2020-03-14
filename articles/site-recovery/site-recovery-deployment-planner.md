@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 50a236154a0340bd49e84a8ca02f656e3cd9994a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394989"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366305"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware 'den Azure 'a Azure Site Recovery Dağıtım Planlayıcısı hakkında
 Bu makale, VMware’den Azure’a üretim dağıtımları için Azure Site Recovery Dağıtım Planlayıcısı kullanım kılavuzudur.
@@ -76,7 +76,7 @@ Araçta başlıca iki aşama vardır: profil oluşturma ve rapor oluşturma. Yal
 
 | Sunucu gereksinimi | Açıklama|
 |---|---|
-|Profil oluşturma ve aktarım hızı ölçümü| <ul><li>İşletim sistemi: Windows Server 2016 veya Windows Server 2012 R2<br>(En azından [yapılandırma sunucusuna yönelik boyut önerileri](https://aka.ms/asr-v2a-on-prem-components) ile eşleşmesi idealdir)</li><li>Makine yapılandırması: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 için Visual C++ Yeniden Dağıtılabilir](https://aka.ms/vcplusplus-redistributable)</li><li>Bu sunucudan Azure’a İnternet erişimi</li><li>Azure depolama hesabı</li><li>Sunucu üzerinde yönetici erişimi</li><li>En az 100 GB boş disk alanı (30 günlük profili oluşturulmuş ve her biri ortalama üç diske sahip 1.000 VM varsayıldığında)</li><li>VMware vCenter istatistik düzeyi ayarları 1 veya daha yüksek bir düzey olabilir</li><li>VCenter bağlantı noktasına izin ver (varsayılan 443): Site Recovery Dağıtım Planlayıcısı vCenter sunucusuna/ESXi konağına bağlanmak için bu bağlantı noktasını kullanır</ul></ul>|
+|Profil oluşturma ve aktarım hızı ölçümü| <ul><li>İşletim sistemi: Windows Server 2016 veya Windows Server 2012 R2<br>(En azından [yapılandırma sunucusuna yönelik boyut önerileri](https://aka.ms/asr-v2a-on-prem-components) ile eşleşmesi idealdir)</li><li>Makine yapılandırması: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 için Visual C++ Yeniden Dağıtılabilir](https://aka.ms/vcplusplus-redistributable)</li><li>Bu sunucudan Azure 'a (*. blob.core.windows.net) Internet erişimi, bağlantı noktası 443<br>[Bu isteğe bağlıdır. Rapor oluşturma sırasında kullanılabilir bant genişliğini el ile sağlamayı tercih edebilirsiniz.]</li><li>Azure depolama hesabı</li><li>Sunucu üzerinde yönetici erişimi</li><li>En az 100 GB boş disk alanı (30 günlük profili oluşturulmuş ve her biri ortalama üç diske sahip 1.000 VM varsayıldığında)</li><li>VMware vCenter istatistik düzeyi ayarları 1 veya daha yüksek bir düzey olabilir</li><li>VCenter bağlantı noktasına izin ver (varsayılan 443): Site Recovery Dağıtım Planlayıcısı vCenter sunucusuna/ESXi konağına bağlanmak için bu bağlantı noktasını kullanır</ul></ul>|
 | Rapor oluşturma | Excel 2013 veya üzeri bir Windows BILGISAYARı veya Windows Server.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 için Visual C++ Yeniden Dağıtılabilir](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) yalnızca VM 'lerin en son VM yapılandırma bilgilerini getirmek için rapor oluşturma komutunda Kullanıcı seçeneğini geçirdiğinizde gereklidir. Dağıtım Planlayıcısı vCenter Server 'a bağlanır. VCenter bağlantı noktası (varsayılan 443) bağlantı noktasının vCenter Server 'a bağlanmasına izin verin.</li>|
 | Kullanıcı izinleri | Profil oluşturma sırasında VMware vCenter sunucusuna/VMware vSphere ESXi ana bilgisayarına erişmek için kullanılan kullanıcı hesabına yönelik salt okunur izin |
 

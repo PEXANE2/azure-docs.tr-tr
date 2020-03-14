@@ -1,19 +1,19 @@
 ---
-title: MySQL için Azure veritabanı (Önizleme) için özel bağlantı
+title: Özel bağlantı-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı 'nda özel bağlantının nasıl çalıştığını öğrenin.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: d9738a1dca39e1b43f690bd65ff05d20b6a94fa1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897513"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371299"
 ---
-# <a name="private-link-for-azure-database-for-mysql-preview"></a>MySQL için Azure veritabanı (Önizleme) için özel bağlantı
+# <a name="private-link-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için özel bağlantı
 
 Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine özel bir uç nokta aracılığıyla bağlanmanızı sağlar. Azure özel bağlantısı temel olarak Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. PaaS kaynaklarına, sanal ağ üzerindeki diğer kaynaklar gibi özel IP adresi kullanılarak erişilebilir.
 
@@ -53,14 +53,11 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki MySQL için Azu
 
 Özel bağlantıları etkinleştirmek için özel uç noktalar gereklidir. Bu işlem, aşağıdaki nasıl yapılır kılavuzlarından yararlanarak yapılabilir.
 
-* [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
+* [Azure portalında](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Onay Işlemi
-Ağ Yöneticisi özel uç nokta (PE) oluşturduğunda, MySQL yöneticisi özel uç nokta bağlantısını (PEC) MySQL için Azure veritabanı 'na yönetebilir.
-
-> [!NOTE]
-> Şu anda, MySQL için Azure veritabanı yalnızca özel uç nokta için otomatik onayı destekliyor.
+Ağ Yöneticisi özel uç nokta (PE) oluşturduğunda, MySQL yöneticisi özel uç nokta bağlantısını (PEC) MySQL için Azure veritabanı 'na yönetebilir. Ağ Yöneticisi ile DBA arasındaki görev ayrımı, MySQL için Azure veritabanı bağlantısı yönetimi için yararlıdır. 
 
 * Azure portal MySQL için Azure veritabanı sunucu kaynağına gidin. 
     * Sol bölmedeki özel uç nokta bağlantılarını seçin
@@ -109,6 +106,19 @@ Farklı bir bölgedeki veya abonelikteki bir Azure VM 'den MySQL için Azure ver
 * Ortak trafiği veya bir hizmet uç noktasını yapılandırırsanız ve özel uç noktalar oluşturursanız, ilgili güvenlik duvarı kuralı tarafından farklı gelen trafik türlerine izin verilir.
 
 * Herhangi bir ortak trafik veya hizmet uç noktası yapılandırmazsanız ve özel uç noktalar oluşturursanız, MySQL için Azure veritabanı 'nda yalnızca özel uç noktalar aracılığıyla erişilebilir. Genel trafiği veya bir hizmet uç noktası yapılandırmazsanız, tüm onaylanan özel uç noktalar reddedildikten veya silindikten sonra, MySQL için Azure veritabanı 'na hiçbir trafik erişemez.
+
+## <a name="deny-public-access-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı genel erişimini reddetme
+
+MySQL için Azure veritabanı 'na erişmek üzere yalnızca özel uç noktalara bağlanmak istiyorsanız, veritabanı sunucusunda **ortak ağ erişimini engelle** özelliğini ayarlayarak tüm genel uç noktaları (yani [güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-and-security-vnet.md)) ayarını devre dışı bırakabilirsiniz. 
+
+Bu ayar *Evet*olarak ayarlandığında, MySQL Için Azure veritabanı 'na yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *Hayır*olarak ayarlandığında, istemciler, güvenlik duvarınız veya VNET hizmeti uç noktası ayarlarınıza göre MySQL Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri ayarlandıktan sonra, mevcut güvenlik duvarı ve VNet hizmeti uç noktası kurallarını ekleyemez ve/veya güncelleştiremezsiniz.
+
+> [!Note]
+> Bu özellik, PostgreSQL için Azure veritabanı-tek sunucu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
+>
+> Bu ayarın, MySQL için Azure veritabanı için SSL ve TLS yapılandırması üzerinde hiçbir etkisi yoktur.
+
+Azure portal 'ten MySQL için Azure veritabanı 'na **genel ağ erişimini reddetme** hakkında bilgi edinmek için, bkz. [reddetme genel ağ erişimini yapılandırma](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

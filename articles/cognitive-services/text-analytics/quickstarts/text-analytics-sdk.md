@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 02/24/2020
+ms.date: 03/12/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: c6883b9b79adfc4f91af354147d45ea27d806d78
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 1f5658c6fa52caa67de1f60c50048014dd77af13
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614485"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371348"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
@@ -44,7 +44,6 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 
 > [!IMPORTANT]
 > * Bu hızlı başlangıç yalnızca, Gelişmiş [yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) ve [adlandırılmış VARLıK tanıma (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)için genel önizleme içeren Metin Analizi istemci kitaplığının sürüm `3.0-preview` içindir.
->    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -57,6 +56,7 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 > * Metin Analizi API'si en son önizleme sürümü, Gelişmiş [yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) ve [adlandırılmış VARLıK tanıma (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)için genel önizleme içeren `3.0-preview`. En son kararlı sürüm `2.1`.
 >    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
+> * Metin Analizi istemci kitaplığı 'nın bu sürümünü [tarayıcınızda](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)de çalıştırabilirsiniz.
 
 [!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
 

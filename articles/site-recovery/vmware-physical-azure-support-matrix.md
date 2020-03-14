@@ -3,14 +3,14 @@ title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma içi
 description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/21/2020
+ms.date: 2/24/2020
 ms.author: raynew
-ms.openlocfilehash: b7ace4f470a4e054be5d7f5945fc3e9c4f7d0810
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79257049"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371401"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -135,7 +135,7 @@ SUSE Linux Enterprise Server 15 ve 15 SP1 | 9,32 | Tüm [hisse senedi SUSE 15 ve
 
 **Bileşen** | **Destekleniyor**
 --- | ---
-Dosya sistemleri | ext3, ext4, XFS
+Dosya sistemleri | ext3, ext4, XFS, BTRFS (bu tabloya göre geçerli olan koşullar)
 Birim Yöneticisi | -LVM destekleniyor.<br/> -LVM üzerinde-/Boot [güncelleştirme paketi 31](https://support.microsoft.com/help/4478871/) ' den (Mobility hizmeti sürüm 9,20) ve sonraki sürümlerde desteklenir. Önceki Mobility hizmeti sürümlerinde desteklenmez.<br/> -Birden çok işletim sistemi diski desteklenmez.
 Parasanallaştırılmış depolama cihazları | Parasanallaştırılmış sürücüler tarafından dışarı aktarılan cihazlar desteklenmez.
 Çok kuyruğundaki blok GÇ cihazları | Desteklenmiyor.

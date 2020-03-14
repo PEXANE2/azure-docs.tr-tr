@@ -10,11 +10,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390694"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283634"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows veri bilimi sanal makinesi üzerinde yapabileceğiniz on işlem
 
@@ -364,7 +364,7 @@ Veriler veri çerçevesi olarak okundu:
 
 ![İlk 10 veri satırlarını ekran görüntüsü](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
-### <a name="azure-data-lake"></a>Azure veri Gölü
+### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage, büyük veri analizi iş yükleri için hiper ölçekli bir depodur ve Hadoop Dağıtılmış Dosya Sistemi (bir) ile uyumludur. Hadoop, Spark ve Azure Data Lake Analytics ile çalışır. Bu bölümde, Azure Data Lake Analytics kullanarak Azure Data Lake Storage verileri nasıl taşıyabileceğinizi ve analizi nasıl çalıştıracağınızı öğreneceksiniz.
 
 #### <a name="prerequisites"></a>Önkoşullar

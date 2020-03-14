@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok dü
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: cf127cc75377c3ca3a18cdeaedbc1d450d6c3826
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b7025b896a1bd156c448ccfcd0e9001c49146be4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252850"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368290"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -93,9 +93,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 
 Aşağıdaki örnek çıktı, düğüm havuzundaki üç düğüm ile *mynodepool* başarıyla oluşturulduğunu gösterir. Önceki adımda AKS kümesi oluşturulduğunda, düğüm sayısı *2*olan varsayılan bir *nodepool1* oluşturulmuştur.
 
-```console
-$ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
-
+```output
 [
   {
     ...
@@ -148,9 +146,11 @@ az aks nodepool upgrade \
 
 [Az aks düğüm havuzu listesi][az-aks-nodepool-list] komutunu kullanarak düğüm havuzlarınızın durumunu yeniden listeleyin. Aşağıdaki örnek, *mynodepool* 'in *yükseltme* durumunda olduğunu *gösterir:*
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -234,9 +234,11 @@ az aks nodepool scale \
 
 [Az aks düğüm havuzu listesi][az-aks-nodepool-list] komutunu kullanarak düğüm havuzlarınızın durumunu yeniden listeleyin. Aşağıdaki örnek, *mynodepool* 'in yeni sayısı *5* düğüm olan *ölçekleme* durumunda olduğunu gösterir:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -284,9 +286,11 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name myn
 
 [Az aks düğüm havuzu List][az-aks-nodepool-list] komutundan alınan aşağıdaki örnek çıktı, *mynodepool* 'in *silme* durumunda olduğunu gösterir:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -337,9 +341,11 @@ az aks nodepool add \
 
 [Az aks düğüm havuzu List][az-aks-nodepool-list] komutundan aşağıdaki örnek çıktı, *Gpunodepool* belirtilen *VMSize*sahip düğümleri *oluşturuyor* olduğunu gösterir:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -375,8 +381,10 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 Artık kümenizde iki düğüm havuzu vardır; başlangıçta oluşturulan varsayılan düğüm havuzu ve GPU tabanlı düğüm Havuzu. Kümenizdeki düğümleri görüntülemek için [kubectl Get Nodes][kubectl-get] komutunu kullanın. Aşağıdaki örnek çıktı, düğümleri göstermektedir:
 
 ```console
-$ kubectl get nodes
+kubectl get nodes
+```
 
+```output
 NAME                                 STATUS   ROLES   AGE     VERSION
 aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
 aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
@@ -431,8 +439,10 @@ kubectl apply -f gpu-toleration.yaml
 Pod 'u zamanlamak ve NGıNX görüntüsünü çekmek birkaç saniye sürer. Pod durumunu görüntülemek için [kubectl betimleyen Pod][kubectl-describe] komutunu kullanın. Aşağıdaki sıkıştırılmış örnek çıktı *SKU = GPU: NoSchedule* toleranation ' ı gösterir. Olaylar bölümünde Zamanlayıcı, Pod 'yi *aks-gpunodepool-28993262-vmss000000* GPU tabanlı düğüme atamıştır:
 
 ```console
-$ kubectl describe pod mypod
+kubectl describe pod mypod
+```
 
+```output
 [...]
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
@@ -563,9 +573,11 @@ az aks nodepool add \
 
 [Az aks nodepool List][az-aks-nodepool-list] komutundan aşağıdaki örnek çıktı, *tagnodepool* belirtilen *etikete*sahip düğümleri *oluşturuyor* olduğunu gösterir:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...

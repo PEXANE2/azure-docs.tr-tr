@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9fc60549d895129af56f289c6247dcb377b973b
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612781"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298682"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -68,7 +68,7 @@ Güvenli LDAP kullanmak için, iletişimi şifrelemek için dijital bir sertifik
 * **Anahtar kullanımı** -sertifika, *dijital imzalar* ve *anahtar şifrelemesi*için yapılandırılmış olmalıdır.
 * **Sertifika amacı** -SERTIFIKA, SSL sunucusu kimlik doğrulaması için geçerli olmalıdır.
 
-Bu öğreticide, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 'ini kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım. **Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *aaddscontoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
+OpenSSL, Keytool, MakeCert, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet gibi otomatik olarak imzalanan sertifika oluşturmak için kullanabileceğiniz çeşitli araçlar vardır. Bu öğreticide, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 'ini kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım. **Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *aaddscontoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Bu iki anahtar, *özel* ve *genel* anahtarlar, yalnızca ilgili bilgisayarların
 1. Bu sertifika verilerin şifresini çözmek için kullanıldığından, erişimi dikkatle kontrol etmeniz gerekir. Sertifika kullanımını korumak için bir parola kullanılabilir. Doğru parola olmadan sertifika bir hizmete uygulanamaz.
 
     **Güvenlik** sayfasında, korumak için **parola** seçeneğini belirleyin *. PFX* sertifika dosyası. Bir parola girin ve onaylayın, ardından **İleri**' yi seçin. Bu parola, Azure AD DS yönetilen etki alanınız için Güvenli LDAP özelliğini etkinleştirmek üzere bir sonraki bölümde kullanılır.
-1. **Dışarı aktarılacak dosya** sayfasında, sertifikayı dışarı aktarmak istediğiniz dosya adını ve konumunu belirtin, örneğin *C:\Users\accountname\azure-AD-DS.pfx*.
+1. **Dışarı aktarılacak dosya** sayfasında, sertifikayı dışarı aktarmak istediğiniz dosya adını ve konumunu belirtin, örneğin *C:\Users\accountname\azure-AD-DS.pfx*. Parolasını ve konumunu bir yere göz önünde bulundurun *.* Bu bilgilerin sonraki adımlarda kullanılması IÇIN pfx dosyası.
 1. Gözden geçirme sayfasında, sertifikayı bir öğesine aktarmak için **son** ' u seçin *. PFX* sertifika dosyası. Sertifika başarıyla verildiğinde bir onay iletişim kutusu görüntülenir.
 1. Aşağıdaki bölümde MMC 'YI kullanılmak üzere açık bırakın.
 

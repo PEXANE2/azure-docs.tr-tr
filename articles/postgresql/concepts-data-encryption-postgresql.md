@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
+title: Müşteri tarafından yönetilen anahtar ile veri şifreleme-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı tek sunuculu veri şifreleme, müşteri tarafından yönetilen bir anahtarla, bekleyen veri koruması için Kendi Anahtarını Getir (BYOK) sağlar. Ayrıca, kuruluşların anahtar ve veri yönetiminde görev ayrımı uygulamasına olanak tanır.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198709"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297031"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
 
@@ -32,9 +32,9 @@ Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda 
 PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu aşağıdaki avantajları sağlar:
 
 * Veri erişimi, anahtarı kaldırabilme ve veritabanını erişilemez hale getirme özelliği tarafından tam olarak denetlenir 
-*   Anahtar yaşam döngüsü üzerinde, kurumsal ilkelerle hizalamak için anahtar dönüşü dahil tam denetim
-*   Azure Key Vault içinde anahtarların merkezi yönetimi ve organizasyonu
-*   Güvenlik ofisler ve DBA ve sistem yöneticileri arasında görev ayrımı uygulama yeteneği
+*    Anahtar yaşam döngüsü üzerinde, kurumsal ilkelerle hizalamak için anahtar dönüşü dahil tam denetim
+*    Azure Key Vault içinde anahtarların merkezi yönetimi ve organizasyonu
+*    Güvenlik ofisler ve DBA ve sistem yöneticileri arasında görev ayrımı uygulama yeteneği
 
 ## <a name="terminology-and-description"></a>Terminoloji ve açıklama
 

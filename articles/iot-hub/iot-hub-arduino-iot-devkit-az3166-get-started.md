@@ -9,11 +9,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
 ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391334"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271297"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 'i Azure 'a bağlama IoT Hub
 
@@ -328,7 +328,7 @@ IoT Hub içindeki cihazdan buluta (D2C) iletilerini izlemek için [Azure IoT ara
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın, oluşturduğunuz IoT Hub bulun.
 
-    ![Azure portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure portalı](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. **Paylaşılan erişim ilkeleri** bölmesinde, **ıothubowner Ilkesine**tıklayın ve IoT Hub 'ınızın bağlantı dizesini yazın.
 

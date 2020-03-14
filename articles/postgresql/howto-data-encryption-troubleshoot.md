@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda veri şifreleme sorunlarını giderme-tek sunucu
+title: Veri şifreleme sorunlarını giderme-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı 'nda veri şifreleme sorunlarını nasıl giderebileceğinizi öğrenin-tek sunucu
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: bd3303117bae307bb562390cec1fdfb62c01b7c6
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 2902ff17ac14a48f1a11259339c2ab1bc4595980
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851086"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299269"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda veri şifreleme sorunlarını giderme-tek sunucu
 

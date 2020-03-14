@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359618"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238373"
 ---
 # <a name="monitor-published-apis"></a>Yayımlanan API’leri izleme
 
@@ -189,11 +189,11 @@ API Management şu anda her bir girdi aşağıdaki şemayı içerecek şekilde t
 | durationMs | integer | Kısa süre sonra gönderilen istek sayısı dolduğunda, ağ geçidi tarafından alınan istek süresi (milisaniye). ClienTime, cacheTime ve backendTime bilgilerini içerir. |
 | callerIpAddress | string | İlk Ağ Geçidi çağıranın (bir aracı olabilir) IP adresi |
 | correlationId | string | API Management tarafından atanmış benzersiz http isteği tanımlayıcısı |
-| konum | string | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
+| location | string | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
 | httpStatusCodeCategory | string | Http yanıtı durum kodunun kategorisi: Başarılı (301 veya daha küçük ya da 304 ya da 307), Yetkisiz (401, 403, 429), Hatalı (400, 500 ve 600 arası), Diğer |
 | resourceId | string | /SUBSCRIPTIONS/\<aboneliğinin KIMLIĞI >/RESOURCEGROUPS/\<kaynak-grubu >/PROVIDERS/MICROSOFTAPI Management kaynağı. ICLAIMANA/HIZMET/\<adı > |
-| özellikler | object | Geçerli isteğin özellikleri |
-| yöntem | string | Gelen isteğin HTTP yöntemi |
+| properties | object | Geçerli isteğin özellikleri |
+| method | string | Gelen isteğin HTTP yöntemi |
 | url | string | Gelen isteğin URL’si |
 | clientProtocol | string | Gelen isteğin HTTP protokolü sürümü |
 | responseCode | integer | Bir istemciye gönderilen HTTP yanıtının durum kodu |
@@ -216,7 +216,7 @@ API Management şu anda her bir girdi aşağıdaki şemayı içerecek şekilde t
 | LastError | object | Son istek işleme hatası | 
 | elapsed | integer | Ağ geçidinin isteği aldığı ve hatanın gerçekleştiği sırada geçen milisaniye sayısı | 
 | source | string | İlke veya işleme iç işleyicisinin adı hataya neden oldu | 
-| kapsam | string | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
+| scope | string | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
 | section | string | Hataya neden olan ilkeyi içeren ilke belgesinin bölümü | 
 | reason | string | Hata nedeni | 
 | message | string | Hata iletisi | 

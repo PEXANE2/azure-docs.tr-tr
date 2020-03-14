@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8f48f73248e2108e79b8e244ed0d7b51855092a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: c12f15cc79d5329d028239ade4e18a853000bf01
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048146"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298606"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Azure portal yönetilen bir kimliğin hizmet sorumlusunu görüntüleme
 
@@ -35,7 +35,7 @@ Bu makalede, Azure portal kullanarak yönetilen bir kimliğin hizmet sorumlusunu
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın.
 - Henüz bir Azure hesabınız yoksa [ücretsiz hesap için kaydolun](https://azure.microsoft.com/free/).
-- [Bir sanal makine veya uygulama üzerinde sistem tarafından atanan kimliği](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) etkinleştirin. [](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity)
+- [Bir sanal makine veya uygulama üzerinde sistem tarafından atanan kimliği](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) etkinleştirin. [application](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity)
 
 ## <a name="view-the-service-principal"></a>Hizmet sorumlusunu görüntüleme
 

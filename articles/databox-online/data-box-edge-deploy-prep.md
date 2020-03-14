@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5192816ca7be47ecb5e602e46dff16951f7475ee
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384722"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370279"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Öğretici: dağıtıma hazırlanma Azure Data Box Edge  
 
@@ -25,6 +25,7 @@ Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
+>
 > * Yeni kaynak oluşturma
 > * Etkinleştirme anahtarı alma
 
@@ -52,14 +53,14 @@ Aşağıda, Data Box Edge kaynağınız, Data Box Edge cihazınız ve veri merke
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-- Microsoft Azure aboneliğiniz Data Box Edge bir kaynak için etkinleştirilir. Kullandıkça Öde abonelikleri desteklenmez.
-- Kaynak grubu düzeyinde Data Box Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynakları için sahip veya katkıda bulunan erişiminiz var.
+* Microsoft Azure aboneliğiniz Azure Stack Edge kaynağı için etkinleştirilir. [Microsoft kurumsal anlaşma (EA)](https://azure.microsoft.com/overview/sales-number/), [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)veya [Microsoft Azure sponsorluğu](https://azure.microsoft.com/offers/ms-azr-0036p/)gibi desteklenen bir abonelik kullandığınızdan emin olun.
+* Kaynak grubu düzeyinde Data Box Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynakları için sahip veya katkıda bulunan erişiminiz var.
 
-    - Herhangi bir Data Box Edge/Data Box Gateway kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan (veya üzeri) izinlere sahip olmanız gerekir. Ayrıca `Microsoft.DataBoxEdge` sağlayıcısının kayıtlı olduğundan emin olmanız gerekir. Kaydetme hakkında daha fazla bilgi için, [kayıt kaynak sağlayıcısı](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)' na gidin.
-    - Herhangi bir IoT Hub kaynağı oluşturmak için Microsoft. Devices sağlayıcısının kayıtlı olduğundan emin olun. Kaydetme hakkında daha fazla bilgi için, [kayıt kaynak sağlayıcısı](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)' na gidin.
-    - Bir depolama hesabı kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan veya daha yüksek erişim kapsamına ihtiyacınız vardır. Azure depolama, varsayılan olarak kayıtlı bir kaynak sağlayıcısıdır.
-- Azure Active Directory Graph API için yönetici veya Kullanıcı erişiminiz var. Daha fazla bilgi için bkz. [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
-- Erişim kimlik bilgilerine sahip bir Microsoft Azure Storage hesabınız var.
+  * Herhangi bir Data Box Edge/Data Box Gateway kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan (veya üzeri) izinlere sahip olmanız gerekir. Ayrıca `Microsoft.DataBoxEdge` sağlayıcısının kayıtlı olduğundan emin olmanız gerekir. Kaydetme hakkında daha fazla bilgi için, [kayıt kaynak sağlayıcısı](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)' na gidin.
+  * Herhangi bir IoT Hub kaynağı oluşturmak için Microsoft. Devices sağlayıcısının kayıtlı olduğundan emin olun. Kaydetme hakkında daha fazla bilgi için, [kayıt kaynak sağlayıcısı](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)' na gidin.
+  * Bir depolama hesabı kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan veya daha yüksek erişim kapsamına ihtiyacınız vardır. Azure depolama, varsayılan olarak kayıtlı bir kaynak sağlayıcısıdır.
+* Azure Active Directory Graph API için yönetici veya Kullanıcı erişiminiz var. Daha fazla bilgi için bkz. [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+* Erişim kimlik bilgilerine sahip bir Microsoft Azure Storage hesabınız var.
 
 ### <a name="for-the-data-box-edge-device"></a>Data Box Edge cihazı için
 

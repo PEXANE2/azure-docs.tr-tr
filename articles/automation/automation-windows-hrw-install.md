@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 420775fee36df900ce95718e58fee145de3a9f53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278460"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366998"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -71,14 +71,14 @@ Hedef makinede, Windows hibrit çalışan rolünün yükleme ve yapılandırmas�
 
 | Parametre | Durum | Açıklama |
 | --------- | ------ | ----------- |
-| *AAResourceGroupName* | Zorunlu | Otomasyon hesabınızla ilişkili kaynak grubunun adı. |
-| *AutomationAccountName* | Zorunlu | Otomasyon hesabınızın adı.
-| *Credential* | İsteğe bağlı | Azure ortamında oturum açarken kullanılacak kimlik bilgileri. |
-| *HybridGroupName* | Zorunlu | Bu senaryoyu destekleyen runbook 'lar için hedef olarak belirttiğiniz karma Runbook Worker grubunun adı. |
-| *OMSResourceGroupName* | İsteğe bağlı | Log Analytics çalışma alanı için kaynak grubunun adı. Bu kaynak grubu belirtilmemişse, *Aaresourcegroupname* değeri kullanılır. |
-| *SubscriptionID* | Zorunlu | Otomasyon hesabınızla ilişkili Azure aboneliğinin tanıtıcısı. |
-| *Değerine* | İsteğe bağlı | Otomasyon hesabınızla ilişkili kiracı kuruluşunun tanıtıcısı. |
-| *WorkspaceName* | İsteğe bağlı | Log Analytics çalışma alanı adı. Log Analytics çalışma alanınız yoksa, betik bir tane oluşturur ve yapılandırır. |
+| `AAResourceGroupName` | Zorunlu | Otomasyon hesabınızla ilişkili kaynak grubunun adı. |
+| `AutomationAccountName` | Zorunlu | Otomasyon hesabınızın adı.
+| `Credential` | İsteğe bağlı | Azure ortamında oturum açarken kullanılacak kimlik bilgileri. |
+| `HybridGroupName` | Zorunlu | Bu senaryoyu destekleyen runbook 'lar için hedef olarak belirttiğiniz karma Runbook Worker grubunun adı. |
+| `OMSResourceGroupName` | İsteğe bağlı | Log Analytics çalışma alanı için kaynak grubunun adı. Bu kaynak grubu belirtilmemişse, `AAResourceGroupName` değeri kullanılır. |
+| `SubscriptionID` | Zorunlu | Otomasyon hesabınızla ilişkili Azure aboneliğinin tanıtıcısı. |
+| `TenantID` | İsteğe bağlı | Otomasyon hesabınızla ilişkili kiracı kuruluşunun tanıtıcısı. |
+| `WorkspaceName` | İsteğe bağlı | Log Analytics çalışma alanı adı. Log Analytics çalışma alanınız yoksa, betik bir tane oluşturur ve yapılandırır. |
 
 > [!NOTE]
 > Çözümleri etkinleştirirken, Azure Otomasyonu yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı bağlamak için belirli bölgeleri destekler. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
@@ -89,7 +89,7 @@ Hedef makinede, Windows hibrit çalışan rolünün yükleme ve yapılandırmas�
 
 ### <a name="step-3---run-the-powershell-script"></a>3\. adım-PowerShell betiğini çalıştırma
 
-PowerShell komut satırı kabuğu 'nda indirdiğiniz betiği içeren klasöre gidin. *Automationaccountname*, *aaresourcegroupname*, *omsresourcegroupname*, *hybridgroupname*, *SubscriptionID*ve *çalışmaadı*parametrelerinin değerlerini değiştirin. Sonra betiği çalıştırın.
+PowerShell komut satırı kabuğu 'nda indirdiğiniz betiği içeren klasöre gidin. `AutomationAccountName`, `AAResourceGroupName`, `OMSResourceGroupName`, `HybridGroupName`, `SubscriptionID`ve `WorkspaceName`parametrelerinin değerlerini değiştirin. Sonra betiği çalıştırın.
 
 Betiği çalıştırdıktan sonra Azure ile kimlik doğrulaması yapmanız istenir. Abonelik yöneticileri rolünün üyesi ve aboneliğin ortak Yöneticisi olan bir hesapla oturum açmalısınız.
 
@@ -149,7 +149,7 @@ Aracı yüklemesini ve kurulumunu gerçekleştirmek için aşağıdaki adımlar�
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>4\. adım-runbook ortamını yükleyip Azure Otomasyonu 'na bağlanma
 
-Bir aracıyı Log Analytics çalışma alanına rapor verecek şekilde yapılandırdığınızda, otomasyon çözümü **Add-HybridRunbookWorker** cmdlet 'Ini Içeren **hybridregistration** PowerShell modülünü gönderir. Runbook ortamını bilgisayara yüklemek ve Azure Otomasyonu 'na kaydetmek için bu cmdlet 'i kullanın.
+Bir aracıyı Log Analytics çalışma alanına rapor verecek şekilde yapılandırdığınızda, otomasyon çözümü `Add-HybridRunbookWorker` cmdlet 'ini içeren `HybridRegistration` PowerShell modülünü gönderir. Runbook ortamını bilgisayara yüklemek ve Azure Otomasyonu 'na kaydetmek için bu cmdlet 'i kullanın.
 
 Yönetici modunda bir PowerShell oturumu açın ve aşağıdaki komutları çalıştırarak modülü içeri aktarın.
 
@@ -158,7 +158,7 @@ cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\
 Import-Module .\HybridRegistration.psd1
 ```
 
-Şimdi aşağıdaki söz dizimini kullanarak **Add-HybridRunbookWorker** cmdlet 'ini çalıştırın.
+Şimdi aşağıdaki sözdizimini kullanarak `Add-HybridRunbookWorker` cmdlet 'ini çalıştırın.
 
 ```powershell-interactive
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
@@ -168,18 +168,18 @@ Bu cmdlet için gereken bilgileri Azure portal anahtarları Yönet sayfasından 
 
 ![Anahtarları Yönet sayfası](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* *GroupName* parametresi Için karma Runbook Worker grubunun adını kullanın. Bu grup Otomasyon hesabında zaten mevcutsa, geçerli bilgisayar bu gruba eklenir. Bu grup yoksa, eklenir.
-* *Endpoint* parametresi Için anahtarları Yönet sayfasında **URL** girişini kullanın.
-* *Belirteç* parametresi Için anahtarları Yönet SAYFASıNDA **birincil erişim anahtarı** girişini kullanın.
-* Gerekirse, yükleme hakkındaki ayrıntıları almak için *ayrıntılı* parametreyi ayarlayın.
+* `GroupName` parametresi için karma Runbook Worker grubunun adını kullanın. Bu grup Otomasyon hesabında zaten mevcutsa, geçerli bilgisayar bu gruba eklenir. Bu grup yoksa, eklenir.
+* `EndPoint` parametresi için anahtarları Yönet sayfasında **URL** girişini kullanın.
+* `Token` parametresi için anahtarları Yönet sayfasında **BIRINCIL ERIŞIM anahtarı** girişini kullanın.
+* Gerekirse, yükleme hakkındaki ayrıntıları almak için `Verbose` parametresini ayarlayın.
 
 ### <a name="step-5----install-powershell-modules"></a>5\. adım-PowerShell modüllerini Install
 
 Runbook 'lar, Azure Otomasyonu ortamınızda yüklü olan modüllerde tanımlanan etkinlikleri ve cmdlet 'leri kullanabilir. Bu modüller şirket içi bilgisayarlara otomatik olarak dağıtılmadığından, el ile kurmanız gerekir. Özel durum Azure modülüdür. Bu modül varsayılan olarak yüklenir ve Azure Otomasyonu için tüm Azure hizmetleri ve etkinlikleri için cmdlet 'lere erişim sağlar.
 
-Karma Runbook Worker özelliğinin birincil amacı yerel kaynakları yönettiğinden, büyük olasılıkla bu kaynakları destekleyen modülleri, özellikle **PowerShellGet** modülünü yüklemeniz gerekir. Windows PowerShell modüllerini yükleme hakkında bilgi için bkz. [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
+Karma Runbook Worker özelliğinin birincil amacı yerel kaynakları yönettiğinden, büyük olasılıkla bu kaynakları destekleyen modülleri, özellikle de `PowerShellGet` modülünü yüklemeniz gerekir. Windows PowerShell modüllerini yükleme hakkında bilgi için bkz. [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
-Yüklenen modüller, karma çalışanın otomatik olarak içe aktarabilmesi için *PSModulePath* ortam değişkeni tarafından başvurulan bir konumda olmalıdır. Daha fazla bilgi için bkz. [PSModulePath Içinde modül yüklemeleri](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+Yüklü modüller, karma çalışanın otomatik olarak içeri aktarabilmesi için `PSModulePath` ortam değişkeni tarafından başvurulan bir konumda olmalıdır. Daha fazla bilgi için bkz. [PSModulePath Içinde modül yüklemeleri](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

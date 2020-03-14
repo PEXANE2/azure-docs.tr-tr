@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b76edb2d0db806d8ff4935d2b093fee3c2bb34d7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0713f59889962960b4f3ad5eba58ddb7b32e95ff
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248547"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369752"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -60,7 +60,7 @@ Tüm Azure NetApp Files birimleri FIPS 140-2 standardı kullanılarak şifreleni
 
 Azure NetApp Files için anahtar yönetimi, hizmet tarafından işlenir. Her birim için benzersiz bir XTS-AES-256 veri şifreleme anahtarı oluşturulur. Tüm birim anahtarlarını şifrelemek ve korumak için bir şifreleme anahtarı hiyerarşisi kullanılır. Bu şifreleme anahtarları hiçbir şekilde, şifrelenmemiş bir biçimde gösterilmez veya bildirilmez. Şifreleme anahtarları bir birim silindiğinde hemen silinir.
 
-Şu anda Kullanıcı tarafından yönetilen anahtarlar (kendi anahtarlarınızı getir) desteklenmez.
+Azure ayrılmış HSM 'yi kullanarak Kullanıcı tarafından yönetilen anahtarlar (kendi anahtarlarınızı getir) için destek, ABD Doğu, US West2 ve ABD Orta Güney bölgelerinde denetimli bir şekilde sunulmaktadır.  Müşteri anffeedback@microsoft.comerişim isteğinde bulunabilir ve kapasite kullanılabilir olduğunda istekler onaylanır.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Azure NetApp Files hizmeti bağlama hedefine erişimi denetlemek için NFS dışarı aktarma ilkesi kurallarını yapılandırabilir miyim?
 

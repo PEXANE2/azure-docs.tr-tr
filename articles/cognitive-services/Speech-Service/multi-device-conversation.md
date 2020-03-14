@@ -1,5 +1,5 @@
 ---
-title: Çoklu cihaz konuşması (Önizleme) hakkında-konuşma hizmeti
+title: Çok cihazlı konuşma (Önizleme)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560822"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371367"
 ---
-# <a name="about-multi-device-conversation-preview"></a>Çoklu cihazlı konuşma hakkında (Önizleme)
+# <a name="what-is-multi-device-conversation-preview"></a>Çok cihazlı konuşma (Önizleme) nedir?
 
 **Çoklu cihaz konuşması** , birden fazla istemci arasında konuşma veya metin konuşması oluşturmayı ve aralarında gönderilen iletileri koordine etmelerini kolaylaştırır.
 
@@ -75,8 +75,8 @@ Her istemci, ses veya anlık ileti gönderebilir. Hizmet, sesi metne dönüştü
 **Konuşma** , bir kullanıcının diğer katılan kullanıcıların katılması için başlattığı bir oturumdur. Tüm istemciler, beş harfli **konuşma kodunu**kullanarak konuşmaya bağlanır.
 
 Her konuşma aşağıdakileri içeren meta veriler oluşturur:
--   Görüşmenin başladığı ve sona erdiği zaman damgaları
--   Her kullanıcının seçtiği takma ad ve konuşma veya metin girişi için birincil dil içeren, konuşmadaki tüm katılımcıların listesi.
+-    Görüşmenin başladığı ve sona erdiği zaman damgaları
+-    Her kullanıcının seçtiği takma ad ve konuşma veya metin girişi için birincil dil içeren, konuşmadaki tüm katılımcıların listesi.
 
 
 Bir konuşmada iki tür Kullanıcı vardır: **ana bilgisayar** ve **katılımcı**.

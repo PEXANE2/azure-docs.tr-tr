@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 3b7a75ac1c0876d562dc49e9253fe734475a551a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268186"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298963"
 ---
-# <a name="recommended-on-premises-live-streaming-encoders"></a>Önerilen şirket içi canlı akış kodlayıcıları
+# <a name="tested-on-premises-live-streaming-encoders"></a>Sınanan şirket içi canlı akış kodlayıcıları
 
 Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/media/liveevents) (kanal) canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Canlı olay, canlı giriş akışlarını iki şekilde alır.
 
@@ -24,10 +24,12 @@ Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/medi
 
     Geçişli canlı etkinlik için Multi-bitücretler akışları kullanıyorsanız, kayıttan yürütme tarafında beklenmeyen bir davranışın olmaması için video GOP boyutu ve farklı bit hızlarındaki video parçaları eşitlenmelidir.
 
-  > [!NOTE]
+  > [!TIP]
   > Doğrudan geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
  
 * Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilen canlı olaya tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Canlı etkinlik daha sonra, gelen tek bit hızlı akışın çoklu bit hızında (Uyarlamalı) bir video akışına canlı kodlamasını gerçekleştirir.
+
+Bu makalede, sınanan şirket içi canlı akış kodlayıcıları açıklanmaktadır. Şirket içi Live Encoder ' ı nasıl doğrulayacağınız hakkında yönergeler için bkz. Şirket [içi kodlayıcınızı doğrulama](become-on-premises-encoder-partner.md)
 
 Media Services ile canlı kodlama hakkında ayrıntılı bilgi için bkz. [Media Services v3 Ile canlı akış](live-streaming-overview.md).
 
@@ -99,8 +101,8 @@ Canlı olay türleriniz için geçerli olan ayarlar hakkında daha fazla bilgi i
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Şirket içi kodlayıcı iş ortağı olun](become-on-premises-encoder-partner.md)
+[Media Services v3 ile canlı akış](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Media Services v3 ile canlı akış](live-streaming-overview.md)
+[Kodlayıcınızı doğrulama](become-on-premises-encoder-partner.md)

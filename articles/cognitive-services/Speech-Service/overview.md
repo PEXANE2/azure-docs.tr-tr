@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 02/10/2020
+ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a9dbd0d7a3b8dde45e317b624303082465f93bc9
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119913"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369497"
 ---
 # <a name="what-is-the-speech-service"></a>Konuşma tanıma hizmeti nedir?
 
 Konuşma hizmeti, konuşmadan metne, metinden konuşmaya ve konuşma çevirisi için tek bir Azure aboneliğine yönelik bir birleşme hizmetidir. Konuşma [SDK 'sı](speech-sdk-reference.md), [konuşma cihazları SDK](https://aka.ms/sdsdk-quickstart)'Sı veya [REST API 'leri](rest-apis.md)ile uygulamalarınızı, araçları ve cihazlarınızı kolayca yapabilirsiniz.
 
 > [!IMPORTANT]
-> Konuşma hizmeti Bing Konuşma API'si, Translator Konuşma Çevirisi ve Özel Konuşma Tanıma değiştirdi. Geçiş yönergeleri için bkz. _nasıl yapılır kılavuzlarından geçiş >_ .
+> Konuşma hizmeti Bing Konuşma API'si ve Translator Konuşma Çevirisi değiştirdi. Geçiş yönergeleri için bkz. _nasıl yapılır kılavuzlarından geçiş >_ .
 
 Bu özellikler konuşma hizmetini yapar. Her bir özellik için genel kullanım örnekleri hakkında daha fazla bilgi edinmek veya API başvurusuna gitmek için bu tablodaki bağlantıları kullanın.
 
 | Hizmet | Özellik | Açıklama | SDK | REST |
-| ------- | ------- | ----------- | --- | ---- |
+|---------|---------|-------------|-----|------|
 | [Konuşmayı metne dönüştürme](speech-to-text.md) | Konuşmayı metne dönüştürme | Konuşmadan metne dönüştürme, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı olarak metin halinde ses akışları. Kullanıcı amaçlarını [Language Understanding (lusıs)](https://docs.microsoft.com/azure/cognitive-services/luis/) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Toplu iş dökümü](batch-transcription.md) | Toplu iş dökümü, büyük hacimde verilerin zaman uyumsuz konuşmadan metne dökümünü sağlar. Bu, özelleştirme ve model yönetimi ile aynı uç noktayı kullanan REST tabanlı bir hizmettir. | Hayır | [Evet](https://westus.cris.ai/swagger/ui/index) |
 | | [Çok cihazlı konuşma](multi-device-conversation.md) | Konuşma ve çeviri için kolay destek sayesinde konuşma veya metin tabanlı iletiler göndermek için bir konuşmadaki birden çok cihaza veya istemciye bağlanın| Yes | Hayır |
@@ -43,7 +43,7 @@ Bu özellikler konuşma hizmetini yapar. Her bir özellik için genel kullanım 
 Her biri 10 dakikadan kısa bir süre içinde kod çalıştırmak için tasarlanan en popüler programlama dillerinde hızlı başlangıçları sunuyoruz. Bu tablo her bir özellik için en popüler hızlı başlangıçlara sahiptir. Ek dilleri ve platformları araştırmak için sol taraftaki gezintiyi kullanın.
 
 | Konuşmayı metne dönüştürme (SDK) | Metinden konuşmaya (SDK) | Çeviri (SDK) |
-| -------------------- | -------------------- | ----------------- |
+|----------------------|----------------------|-------------------|
 | [Ses dosyasından konuşmayı tanıma](quickstarts/speech-to-text-from-file.md) | [Konuşmayı bir ses dosyasına sentezleştirme](quickstarts/text-to-speech-audio-file.md) | [Konuşmayı metne çevir](quickstarts/translate-speech-to-text.md) |
 | [Konuşmayı bir mikrofonla tanıma](quickstarts/speech-to-text-from-microphone.md) | [Konuşmayı konuşmacıyı sentezleştirme](quickstarts/text-to-speech.md) | [Konuşmayı birden çok hedef dile çevirme](quickstarts/translate-speech-to-text-multiple-languages.md) |
 | [Blob depolamada depolanan konuşmayı tanıma](quickstarts/from-blob.md) | [Uzun biçimli ses için zaman uyumsuz sensıs](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Konuşmayı konuşmaya çevir](quickstarts/translate-speech-to-speech.md) |

@@ -3,12 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 2d33b7dddf29d37d174bdb7734e9048bc1658840
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484800"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277173"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -299,7 +299,7 @@ Işlevler projenizi yerel olarak çalıştırmak için aşağıdaki ek gereksini
 
     | Dil | Gereksinim |
     | -------- | --------- |
-    | **C#** | [C#uzantının](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI araçları](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
+    | **C#** | [C#uzantının](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI araçları](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Java uzantısı için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 veya üzeri](https://maven.apache.org/) |
     | **JavaScript** | [Node. js](https://nodejs.org/) <sup>*</sup> |  
     | **Python** | [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) önerilir|

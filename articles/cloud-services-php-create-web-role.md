@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 82bb5f153a2c70d3b26f295925f8e48693bc49b9
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 54410e1e70a2ec0d3a9e2f853dc9556cd05996ad
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146860"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297263"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP web ve çalışan rolleri oluşturma
 
@@ -26,13 +26,13 @@ ms.locfileid: "71146860"
 
 Bu kılavuzda, bir Windows geliştirme ortamında PHP Web veya çalışan rolleri oluşturma, "yerleşik" sürümlerde php 'nin belirli bir sürümünü seçme, PHP yapılandırmasını değiştirme, uzantıları etkinleştirme ve son olarak Azure 'a dağıtma işlemlerinin nasıl yapılacağı gösterilir. Ayrıca, sağladığınız bir Web veya çalışan rolünün PHP çalışma zamanını (özel yapılandırma ve uzantılarla birlikte) kullanacak şekilde nasıl yapılandırılacağını açıklar.
 
-Azure, uygulamaları çalıştırmak için üç bilgi işlem modeli sağlar: Azure App Service, Azure sanal makineleri ve Azure Cloud Services. Tüm üç model PHP 'yi destekler. Web ve çalışan rollerini içeren Cloud Services, *hizmet olarak platform (PaaS)* sağlar. Bir bulut hizmetinde web rolü, ön uç Web uygulamalarını barındırmak için adanmış bir Internet Information Services (IIS) Web sunucusu sağlar. Çalışan rolü, Kullanıcı etkileşimi veya girişten bağımsız olarak zaman uyumsuz, uzun süreli veya kalıcı görevleri çalıştırabilir.
+Azure, uygulamaları çalıştırmak için üç işlem modeli sağlar: Azure App Service, Azure sanal makineleri ve Azure Cloud Services. Tüm üç model PHP 'yi destekler. Web ve çalışan rollerini içeren Cloud Services, *hizmet olarak platform (PaaS)* sağlar. Bir bulut hizmetinde web rolü, ön uç Web uygulamalarını barındırmak için adanmış bir Internet Information Services (IIS) Web sunucusu sağlar. Çalışan rolü, Kullanıcı etkileşimi veya girişten bağımsız olarak zaman uyumsuz, uzun süreli veya kalıcı görevleri çalıştırabilir.
 
 Bu seçenekler hakkında daha fazla bilgi için bkz. [Azure tarafından sunulan işlem barındırma seçenekleri](cloud-services/cloud-services-choose-me.md).
 
-## <a name="download-the-azure-sdk-for-php"></a>PHP için Azure SDK'sını indirme
+## <a name="download-the-azure-sdk-for-php"></a>PHP için Azure SDK 'sını indirin
 
-[Php Için Azure SDK](https://github.com/Azure/azure-sdk-for-php) çeşitli bileşenlerden oluşur. Bu makale, bunlardan ikisini kullanır: Azure PowerShell ve Azure öykünücüleri. Bu iki bileşen Microsoft Web Platformu Yükleyicisi aracılığıyla yüklenebilir. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+[Php Için Azure SDK](https://github.com/Azure/azure-sdk-for-php) çeşitli bileşenlerden oluşur. Bu makalede bunların ikisi de kullanılır: Azure PowerShell ve Azure öykünücüleri. Bu iki bileşen Microsoft Web Platformu Yükleyicisi aracılığıyla yüklenebilir. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
 
 ## <a name="create-a-cloud-services-project"></a>Cloud Services projesi oluşturma
 
@@ -42,7 +42,7 @@ Yeni bir Azure hizmeti projesi oluşturmak için, Azure PowerShell yönetici ola
 
     PS C:\>New-AzureServiceProject myProject
 
-Bu komut, Web ve çalışan rolleri ekleyebileceğiniz`myProject`yeni bir dizin () oluşturur.
+Bu komut, Web ve çalışan rolleri ekleyebileceğiniz yeni bir dizin (`myProject`) oluşturur.
 
 ## <a name="add-php-web-or-worker-roles"></a>PHP Web veya çalışan rolleri ekleme
 
@@ -55,54 +55,7 @@ Bir çalışan rolü için şu komutu kullanın:
     PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 > [!NOTE]
-> `roleName` Parametresi isteğe bağlıdır. Atlanırsa, rol adı otomatik olarak oluşturulur. Oluşturulan `WebRole1`ilk web rolü olacaktır, ikincisi `WebRole2`olur ve bu şekilde devam eder. Oluşturulan `WorkerRole1`ilk çalışan rolü olacaktır, ikincisi `WorkerRole2`olur ve bu şekilde devam eder.
->
->
-
-## <a name="specify-the-built-in-php-version"></a>Yerleşik PHP sürümünü belirtin
-
-Bir projeye PHP Web veya çalışan rolü eklediğinizde, projenin yapılandırma dosyaları değiştirilir. Bu, PHP 'nin dağıtıldığında uygulamanızın her bir Web veya çalışan örneğine yüklenebilmesini sağlar. Varsayılan olarak yüklenecek PHP sürümünü görmek için şu komutu çalıştırın:
-
-    PS C:\myProject> Get-AzureServiceProjectRoleRuntime
-
-Yukarıdaki komutun çıktısı aşağıda gösterilene benzer şekilde görünür. Bu örnekte, `IsDefault` bayrağı PHP 5.3.17 için olarak `true` ayarlanır ve bu, varsayılan php sürümünün yüklü olacağını gösterir.
-
-```
-Runtime Version     PackageUri                      IsDefault
-------- -------     ----------                      ---------
-Node 0.6.17         http://nodertncu.blob.core...   False
-Node 0.6.20         http://nodertncu.blob.core...   True
-Node 0.8.4          http://nodertncu.blob.core...   False
-IISNode 0.1.21      http://nodertncu.blob.core...   True
-Cache 1.8.0         http://nodertncu.blob.core...   True
-PHP 5.3.17          http://nodertncu.blob.core...   True
-PHP 5.4.0           http://nodertncu.blob.core...   False
-```
-
-PHP çalışma zamanı sürümünü, listelenen PHP sürümlerinden herhangi birine ayarlayabilirsiniz. Örneğin, PHP sürümünü (adı `roleName`olan bir rol için) 5.4.0 olarak ayarlamak için aşağıdaki komutu kullanın:
-
-    PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
-
-> [!NOTE]
-> Kullanılabilir PHP sürümleri gelecekte değişebilir.
->
->
-
-## <a name="customize-the-built-in-php-runtime"></a>Yerleşik PHP çalışma zamanını özelleştirme
-
-Yukarıdaki adımları uyguladığınızda yüklü olan php çalışma zamanının yapılandırması üzerinde, `php.ini` ayarların değiştirilmesi ve uzantılarının etkinleştirilmesi da dahil olmak üzere tüm denetiminiz vardır.
-
-Yerleşik PHP çalışma zamanını özelleştirmek için şu adımları izleyin:
-
-1. Web rolünüzün `php` `bin` dizinine adlı yeni bir klasör ekleyin. Bir çalışan rolü için rolü rolün kök dizinine ekleyin.
-2. `php` Klasöründe adlı`ext`başka bir klasör oluşturun. Bu klasörde etkinleştirmek istediğiniz `php_mongo.dll` uzantıdosyalarını(ör.)yerleştirin.`.dll`
-3. `php` Klasöre bir `php.ini` dosya ekleyin. Tüm özel uzantıları etkinleştirin ve bu dosyada PHP yönergelerini ayarlayın. Örneğin, `display_errors` `php_mongo.dll` uzantıyı açmak ve etkinleştirmek istiyorsanız `php.ini` , dosyanızın içeriği aşağıdaki gibi olacaktır:
-
-        display_errors=On
-        extension=php_mongo.dll
-
-> [!NOTE]
-> Sağladığınız `php.ini` dosyada açıkça ayarlanmamanız gereken ayarlar, otomatik olarak varsayılan değerlerine ayarlanır. Ancak, bir dosyanın tamamını `php.ini` ekleyebileceğinizi aklınızda bulundurun.
+> `roleName` parametresi isteğe bağlıdır. Atlanırsa, rol adı otomatik olarak oluşturulur. Oluşturulan ilk web rolü `WebRole1`olacaktır, ikincisi `WebRole2`ve bu şekilde devam eder. Oluşturulan ilk çalışan rolü `WorkerRole1`, ikincisi ise `WorkerRole2`ve bu şekilde devam eder.
 >
 >
 
@@ -115,11 +68,11 @@ Bazı durumlarda, yerleşik bir PHP çalışma zamanı seçmek ve yukarıda aç�
 Bir Web rolünü sağladığınız PHP çalışma zamanını kullanacak şekilde yapılandırmak için aşağıdaki adımları izleyin:
 
 1. Bu konuda daha önce açıklandığı gibi bir Azure hizmeti projesi oluşturun ve bir PHP web rolü ekleyin.
-2. Web rolünüzün kök `php` dizinindeki `bin` klasörde bir klasör oluşturun ve ardından php çalışma zamanını (tüm ikili dosyalar, yapılandırma dosyaları, alt klasörler `php` vb.) klasöre ekleyin.
-3. SEÇIM PHP çalışma zamanının [SQL Server IÇIN php Için Microsoft sürücülerini][sqlsrv drivers]kullanması durumunda, Web rolünüzü, sağlandığında [SQL Server Native Client 2012][sql native client] yükleyecek şekilde yapılandırmanız gerekecektir. Bunu yapmak için, [Sqlncli. msi x64 yükleyicisi] `bin` Web rolünüzün kök dizinindeki klasöre ekleyin. Sonraki adımda açıklanan başlatma betiği, rol sağlandığında yükleyiciyi sessizce çalıştıracaktır. PHP çalışma zamanı SQL Server için PHP için Microsoft sürücülerini kullanmıyorsa, sonraki adımda gösterilen betikten aşağıdaki satırı kaldırabilirsiniz:
+2. Web rolünüzün kök dizinindeki `bin` klasöründe bir `php` klasörü oluşturun ve ardından PHP çalışma zamanını (tüm ikili dosyalar, yapılandırma dosyaları, alt klasörler vb.) `php` klasöre ekleyin.
+3. SEÇIM PHP çalışma zamanının [SQL Server IÇIN php Için Microsoft sürücülerini][sqlsrv drivers]kullanması durumunda, Web rolünüzü, sağlandığında [SQL Server Native Client 2012][sql native client] yükleyecek şekilde yapılandırmanız gerekecektir. Bunu yapmak için, [Sqlncli. msi x64 yükleyicisi] Web rolünüzün kök dizinindeki `bin` klasöre ekleyin. Sonraki adımda açıklanan başlatma betiği, rol sağlandığında yükleyiciyi sessizce çalıştıracaktır. PHP çalışma zamanı SQL Server için PHP için Microsoft sürücülerini kullanmıyorsa, sonraki adımda gösterilen betikten aşağıdaki satırı kaldırabilirsiniz:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. `.php` Sayfaların isteklerini işlemek için php çalışma zamanını kullanmak üzere [Internet Information Services (IIS)][iis.net] yapılandıran bir başlangıç görevi tanımlayın. Bunu yapmak için, `setup_web.cmd` dosyayı bir metin düzenleyicisinde ( `bin` Web rolünüzün kök dizini dosyasında) açın ve içeriğini aşağıdaki komut dosyasıyla değiştirin:
+4. `.php` sayfalarına yönelik istekleri işlemek için PHP çalışma zamanını kullanmak üzere [Internet Information Services (IIS)][iis.net] yapılandıran bir başlangıç görevi tanımlayın. Bunu yapmak için, bir metin düzenleyicisinde (Web rolünüzün `bin` dosyasında) `setup_web.cmd` dosyasını açın ve içeriğini aşağıdaki komut dosyasıyla değiştirin:
 
     ```cmd
     @ECHO ON
@@ -142,7 +95,7 @@ Bir Web rolünü sağladığınız PHP çalışma zamanını kullanacak şekilde
 6. Uygulamanızı [Yayımla](#publish-your-application) bölümünde açıklandığı gibi uygulamanızı yayımlayın.
 
 > [!NOTE]
-> Betik `download.ps1` (`bin` Web rolünün kök dizini klasöründe), yukarıdaki php çalışma zamanını kullanmak için yukarıda açıklanan adımları izledikten sonra silinebilir.
+> Kendi PHP çalışma zamanının kullanılması için yukarıda açıklanan adımları izledikten sonra, `download.ps1` betiği (Web rolünün kök dizininin `bin` klasöründe) silinebilir.
 >
 >
 
@@ -151,11 +104,11 @@ Bir Web rolünü sağladığınız PHP çalışma zamanını kullanacak şekilde
 Sağladığınız bir PHP çalışma zamanını kullanmak üzere bir çalışan rolü yapılandırmak için aşağıdaki adımları izleyin:
 
 1. Bu konuda daha önce açıklandığı gibi bir Azure hizmeti projesi oluşturun ve bir PHP Worker rolü ekleyin.
-2. Çalışan rolünün `php` kök dizininde bir klasör oluşturun ve ardından php çalışma zamanını (tüm ikili dosyalar, yapılandırma dosyaları, alt klasörler vb.) `php` klasöre ekleyin.
+2. Çalışan rolünün kök dizininde bir `php` klasörü oluşturun ve sonra PHP çalışma zamanını (tüm ikili dosyalar, yapılandırma dosyaları, alt klasörler vb.) `php` klasöre ekleyin.
 3. SEÇIM PHP çalışma zamanının [SQL Server IÇIN php Için Microsoft sürücülerini][sqlsrv drivers]kullanması durumunda, çalışan rolünüzü, sağlandığında [SQL Server Native Client 2012][sql native client] yükleyecek şekilde yapılandırmanız gerekecektir. Bunu yapmak için, [Sqlncli. msi x64 yükleyicisi] çalışan rolünün kök dizinine ekleyin. Sonraki adımda açıklanan başlatma betiği, rol sağlandığında yükleyiciyi sessizce çalıştıracaktır. PHP çalışma zamanı SQL Server için PHP için Microsoft sürücülerini kullanmıyorsa, sonraki adımda gösterilen betikten aşağıdaki satırı kaldırabilirsiniz:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Rol sağlandığında çalıştırılabilirinizi `php.exe` çalışan rolünün yol ortam değişkenine ekleyen bir başlangıç görevi tanımlayın. Bunu yapmak için, `setup_worker.cmd` dosyayı (çalışan rolünün kök dizininde) bir metin düzenleyicisinde açın ve içeriğini aşağıdaki komut dosyasıyla değiştirin:
+4. `php.exe` çalıştırılabilir dosyanızı, rol sağlandığında çalışan rolünün yol ortam değişkenine ekleyen bir başlangıç görevi tanımlayın. Bunu yapmak için, bir metin düzenleyicisinde `setup_worker.cmd` dosyasını (çalışan rolünün kök dizininde) açın ve içeriğini aşağıdaki komut dosyasıyla değiştirin:
 
     ```cmd
     @echo on
@@ -203,7 +156,7 @@ Aşağıdakine benzer bir çıktı görürsünüz:
     Role is running at http://127.0.0.1:81
     Started
 
-Uygulamanızı Öykünücüde çalışan bir Web tarayıcısı açıp çıktıda gösterilen yerel adrese (`http://127.0.0.1:81` yukarıdaki örnek çıktıda) göz atarak görebilirsiniz.
+Uygulamanızı Öykünücüde çalışan bir Web tarayıcısı açıp çıktıda gösterilen yerel adrese (Yukarıdaki örnek çıktıda`http://127.0.0.1:81`) göz atarak görebilirsiniz.
 
 Öykünücüleri durdurmak için şu komutu yürütün:
 

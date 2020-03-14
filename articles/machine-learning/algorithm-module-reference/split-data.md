@@ -9,86 +9,85 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: d889cd3325784f564d03e5d75dde1ec760c66804
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: b705b342708a038a7f3d8c15d6a4298e9fc17c75
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268530"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369820"
 ---
 # <a name="split-data-module"></a>Veri modülünü Böl
 
 Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
-Bir veri kümesini iki ayrı küme içine bölmek için bu modülü kullanın.
+Bir veri kümesini iki ayrı küme içine bölmek için bölünmüş veri modülünü kullanın.
 
-Bu modül özellikle, verileri eğitim ve test kümelerine ayırmanız gerektiğinde faydalıdır. Verilerin ne şekilde bölüneceğini de özelleştirebilirsiniz. Bazı seçenekler verilerin rastgele olarak kullanımını destekler; bazıları belirli bir veri türü veya model türü için uyarlanmıştır.
+Bu modül, verileri eğitim ve test kümelerine ayırmanız gerektiğinde faydalıdır. Verilerin bölünme şeklini de özelleştirebilirsiniz. Bazı seçenekler verilerin rastgele olarak kullanımını destekler. Bazıları belirli bir veri türü veya model türü için uyarlanmıştır.
 
-## <a name="how-to-configure"></a>Yapılandırma
+## <a name="configure-the-module"></a>Modülü yapılandırma
 
 > [!TIP]
 > Bölme modunu seçmeden önce, ihtiyacınız olan bölme türünü belirlemek için tüm seçenekleri okuyun.
-> Bölme modunu değiştirirseniz diğer tüm seçenekler sıfırlanabilir.
+> Bölme modunu değiştirirseniz, diğer tüm seçenekler sıfırlanmış olabilir.
 
 1. Tasarımcı 'daki işlem hattınızı **bölünmüş veri** modülünü ekleyin. Bu modülü, **veri dönüştürme**altında, **örnek ve bölünmüş** kategoride bulabilirsiniz.
 
-2. **Ayırma modu**: sahip olduğunuz veri türüne ve onu bölmek istediğiniz bir değere bağlı olarak aşağıdaki modlardan birini seçin. Her bölme modunun farklı seçenekleri vardır. Ayrıntılı yönergeler ve örnekler için aşağıdaki konulara tıklayın. 
+1. **Ayırma modu**: sahip olduğunuz veri türüne ve onu bölmek istediğiniz bir değere bağlı olarak aşağıdaki modlardan birini seçin. Her bölme modunun farklı seçenekleri vardır.
 
-    - **Satırları Böl**: yalnızca verileri iki parçaya bölmek istiyorsanız bu seçeneği kullanın. Her bir bölünmeye yerleştirilecek verilerin yüzdesini belirtebilirsiniz, ancak varsayılan olarak, veriler bölünmüş 50-50 ' dir.
+   - **Satırları Böl**: yalnızca verileri iki parçaya bölmek istiyorsanız bu seçeneği kullanın. Her bir bölünmeye yerleştirilecek veri yüzdesini belirtebilirsiniz. Varsayılan olarak, veriler bölünmüş 50/50 ' dir.
 
-        Ayrıca, her grupta satır seçimini rastgele rasgele hale getirebilirsiniz ve bunları Strata örnekleme kullanabilirsiniz. Bağlı örnekleme sırasında, değerlerinin iki sonuç veri kümesi arasında eşit olarak olmasını istediğiniz tek bir veri sütunu seçmelisiniz.  
+     Ayrıca, her grupta satır seçimini rastgele rasgele hale getirebilirsiniz ve bunları Strata örnekleme kullanabilirsiniz. Bağlı örnekleme sırasında, değerlerinin iki sonuç veri kümesi arasında eşit olarak olmasını istediğiniz tek bir veri sütunu seçmelisiniz.  
 
-    - **Normal Ifade bölme**  Bir değer için tek bir sütunu test ederek veri kümenizi bölmek istediğinizde bu seçeneği belirleyin.
+   - **Normal Ifade bölme**: bir değer için tek bir sütunu test ederek veri kümenizi bölmek istediğinizde bu seçeneği belirleyin.
 
-        Örneğin, yaklaşımı analiz ediyorsanız, bir metin alanında belirli bir ürün adının varlığını denetleyebilir ve sonra veri kümesini hedef ürün adı ve olmadan satırlara bölebilirsiniz.
+     Örneğin, yaklaşımı analiz ediyorsanız, belirli bir ürün adının bir metin alanında bulunup bulunmadığını kontrol edebilirsiniz. Daha sonra hedef ürün adı olmayan hedef ürün adı ve satırlarıyla veri kümesini satırlara bölebilirsiniz.
 
-    - **Göreli Ifade bölme**: bir sayı sütununa koşul uygulamak istediğinizde bu seçeneği kullanın. Sayı bir tarih/saat alanı, Yaş veya dolar miktarları içeren bir sütun veya hatta bir yüzde olabilir. Örneğin, öğelerin maliyetine göre veri kümesini bölmek, kişileri yaş aralıklarına göre gruplamak veya bir Takvim tarihine göre verileri ayırmak isteyebilirsiniz.
+   - **Göreli Ifade bölme**: bir sayı sütununa koşul uygulamak istediğinizde bu seçeneği kullanın. Sayı bir tarih/saat alanı, Yaş veya dolar miktarları içeren bir sütun veya hatta bir yüzde olabilir. Örneğin, veri kümenizi öğelerin maliyetine göre bölmek, kişileri yaş aralıklarına göre gruplamak veya bir Takvim tarihine göre ayırmak isteyebilirsiniz.
 
 ### <a name="split-rows"></a>Satırları Böl
 
-1.  Tasarımcıdaki [veri hattınızı bölünmüş veri](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesini bağlayın.
+1. Tasarımcı 'daki işlem hattınızı [bölünmüş veri](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesini bağlayın.
   
-2.  **Ayırma modu**Için **satırları Böl**' ü seçin. 
+1. **Ayırma modu**Için **satırları Böl**' ü seçin. 
 
-3.  **İlk çıkış veri kümesindeki satırların kesri**. İlk (sol taraftaki) çıktıya kaç satır gideceğini öğrenmek için bu seçeneği kullanın. Diğer tüm satırlar ikinci (sağ) çıktıya gidecektir.
+1. **İlk çıkış veri kümesindeki satırların kesri**: ilk (sol tarafta) çıktıya kaç satır gideceğini öğrenmek için bu seçeneği kullanın. Diğer tüm satırlar ikinci (sağ taraf) çıktıya gider.
 
-    Oran, ilk çıkış veri kümesine gönderilen satırların yüzdesini temsil eder, bu nedenle 0 ile 1 arasında bir ondalık sayı yazmanız gerekir.
+   Oran, ilk çıkış veri kümesine gönderilen satırların yüzdesini temsil eder, bu nedenle 0 ile 1 arasında bir ondalık sayı girmeniz gerekir.
      
-     Örneğin, değer olarak 0,75 yazarsanız, veri kümesi, ilk çıkış veri kümesine gönderilen satırların %75 ' i ve ikinci çıkış veri kümesine gönderilen %25 ' lik bir 75:25 oranı kullanılarak bölünür.
+   Örneğin, değer olarak **0,75** girerseniz, veri kümesi 75/25 ' i bölecektir. Bu bölme bölümünde satırların yüzde 75 ' ü ilk çıkış veri kümesine gönderilir. Kalan yüzde 25 ikinci çıkış veri kümesine gönderilir.
   
-4. Veri seçimini iki gruba rastgele atamak istiyorsanız **rastgele bölme** seçeneğini belirleyin. Bu, eğitim ve test veri kümeleri oluştururken tercih edilen seçenektir.
+1. Veri seçimini iki gruba rastgele atamak istiyorsanız **rastgele bölme** seçeneğini belirleyin. Bu, eğitim ve test veri kümeleri oluştururken tercih edilen seçenektir.
 
-5.  **Rastgele çekirdek**: kullanılacak örnek dizisini başlatmak için negatif olmayan bir tamsayı değeri yazın. Bu varsayılan çekirdek, rastgele sayılar üreten tüm modüllerde kullanılır. 
+1. **Rastgele çekirdek**: kullanılacak örnek dizisini başlatmak için negatif olmayan bir tamsayı değeri girin. Bu varsayılan çekirdek, rastgele sayılar üreten tüm modüllerde kullanılır. 
 
-     Bir çekirdek belirtmek sonuçları genellikle tekrarlanabilir hale getirir. Bir bölme işleminin sonuçlarını tekrarlamanız gerekiyorsa, rastgele numara Oluşturucu için bir çekirdek belirtmeniz gerekir. Aksi takdirde, rastgele çekirdek varsayılan olarak 0 olarak ayarlanır; Bu, ilk çekirdek değer sistem saatinden elde edilen anlamına gelir. Sonuç olarak, her bölme yaptığınızda verilerin dağıtılması biraz farklı olabilir. 
+   Bir çekirdek belirtme, sonuçların tekrarlanabilir olmasını sağlar. Bir bölme işleminin sonuçlarını tekrarlamanız gerekiyorsa, rastgele numara Oluşturucu için bir çekirdek belirtmeniz gerekir. Aksi takdirde, rastgele çekirdek varsayılan olarak **0**olarak ayarlanır; Bu, ilk çekirdek değer sistem saatinden elde edilen anlamına gelir. Sonuç olarak, her bölme yaptığınızda verilerin dağıtılması biraz farklı olabilir. 
 
-6. **Ayrılmış bölme**: iki çıkış veri kümesinin *konuşmasıyla Strata sütunu* veya *Stratification Key sütunundaki*değerlerin temsili bir örneğini içermesini sağlamak için bu seçeneği **true** olarak ayarlayın. 
+1. **Ayrılmış bölme**: iki çıkış veri kümesinin *konuşmasıyla Strata sütunu* veya *Stratification Key sütunundaki*değerlerin temsili bir örneğini içermesini sağlamak için bu seçeneği **true** olarak ayarlayın. 
 
-    Birbirine bağlı örnekleme ile, veriler her bir çıktı veri kümesinin her bir hedef değerin kabaca aynı yüzdesini almasını sağlayan şekilde bölünür. Örneğin, eğitim ve test kümelerinizin, sonuca göre veya cinsiyet gibi başka bir sütuna göre kabaca dengeleneceği şekilde emin olmak isteyebilirsiniz.
+   Birbirine bağlı örnekleme ile, veriler her bir çıktı veri kümesinin her bir hedef değerin kabaca aynı yüzdesini almasını sağlayan şekilde bölünür. Örneğin, eğitimin ve test küistemlerinizin, sonuca veya başka bir sütuna (cinsiyet gibi) göre kabaca dengeleneceği şekilde emin olmak isteyebilirsiniz.
 
-7. İşlem hattını çalıştırma.
+1. İşlem hattını çalıştırma.
 
 
-## <a name="regular-expression-split"></a>Normal ifade bölme
+## <a name="select-a-regular-expression"></a>Normal ifade seçin
 
-1.  Veri hattınızı [split Data](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesine girdi olarak bağlayın.  
+1. Veri hattınızı [split Data](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesine giriş olarak bağlayın.  
   
-2.  **Ayırma modu**için **normal ifade Böl**' ü seçin.
+1. **Ayırma modu**için **normal ifade Böl**' ü seçin.
 
-3. **Normal ifade** kutusuna geçerli bir normal ifade yazın. 
+1. **Normal ifade** kutusuna geçerli bir normal ifade girin. 
   
-   Normal ifade, Python normal ifade söz dizimini izlemelidir.
+   Normal ifade, normal ifadeler için Python söz dizimini izlemelidir.
 
+1. İşlem hattını çalıştırma.
 
-4. İşlem hattını çalıştırma.
-
-    Sağladığınız normal ifadeye bağlı olarak, veri kümesi iki satır kümesine ayrılır: ifadeyle eşleşen değerleri olan satırlar ve kalan tüm satırlar. 
+   Sağladığınız normal ifadeye bağlı olarak, veri kümesi iki satır kümesine ayrılır: ifadeyle eşleşen değerleri olan satırlar ve kalan tüm satırlar. 
 
 Aşağıdaki örneklerde, bir veri kümesinin **normal ifade** seçeneği kullanılarak nasıl bölüneceği gösterilmektedir. 
 
 ### <a name="single-whole-word"></a>Tek bir tam kelime 
 
-Bu örnek, sütun `Text`metin `Gryphon` içeren tüm satırları ilk veri kümesine koyar ve diğer satırları **bölünen verilerin**ikinci çıktısına koyar:
+Bu örnek, sütun `Text``Gryphon` metin içeren tüm satırları ilk veri kümesine yerleştirir. Diğer satırları **bölünen verilerin**ikinci çıktısına yerleştirir.
 
 ```text
     \"Text" Gryphon  
@@ -96,7 +95,7 @@ Bu örnek, sütun `Text`metin `Gryphon` içeren tüm satırları ilk veri kümes
 
 ### <a name="substring"></a>dizeden
 
-Bu örnek, veri kümesinin ikinci sütununda belirtilen dizeyi, 1 ' in dizin değeri ile belirtilen bir konumda arar. Eşleşme büyük/küçük harfe duyarlıdır.
+Bu örnek, veri kümesinin ikinci sütunundaki herhangi bir konumda belirtilen dizeyi arar. Konum, 1 ' in dizin değeri olarak gösterilir. Eşleşme büyük/küçük harfe duyarlıdır.
 
 ```text
 (\1) ^[a-f]
@@ -104,31 +103,31 @@ Bu örnek, veri kümesinin ikinci sütununda belirtilen dizeyi, 1 ' in dizin de�
 
 İlk sonuç veri kümesi, Dizin sütununun şu karakterlerden biriyle başladığı tüm satırları içerir: `a`, `b`, `c`, `d`, `e`, `f`. Diğer tüm satırlar ikinci çıktıya yönlendirilir.
 
-## <a name="relative-expression-split"></a>Göreli ifade bölme.
+## <a name="select-a-relative-expression"></a>Göreli bir ifade seçin
 
-1. Veri hattınızı [split Data](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesine girdi olarak bağlayın.
+1. Veri hattınızı [split Data](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesine giriş olarak bağlayın.
   
-2. **Ayırma modu**için **göreli ifade Böl**' ü seçin.
+1. **Ayırma modu**Için **göreli ifade**' ı seçin.
   
-3. **İlişkisel ifade** metin kutusuna, tek bir sütunda karşılaştırma işlemi gerçekleştiren bir ifade yazın:
+1. **İlişkisel ifade** kutusunda, tek bir sütunda karşılaştırma işlemi gerçekleştiren bir ifade girin.
 
    **Sayısal sütun**için:
    - Sütun, tarih ve saat veri türleri dahil olmak üzere herhangi bir sayısal veri türü sayı içerir.
    - İfade, en fazla bir sütun adına başvurabilir.
-   - VE işlemi için ve karakterini kullanın `&`. VEYA işlemi için `|` kanal karakterini kullanın.
+   - VE işlemi için `&`ampersan karakterini kullanın. VEYA işlemi için `|`kanal karakterini kullanın.
    - Şu işleçler desteklenir: `<`, `>`, `<=`, `>=`, `==`, `!=`.
-   - `(` ve `)`kullanarak işlemler gruplandırılamıyor.
+   - `(` ve `)`kullanarak işlemleri gruplayabilirsiniz.
    
    **Dize sütunu**için:
    - Şu işleçler desteklenir: `==`, `!=`.
 
-4. İşlem hattını çalıştırma.
+1. İşlem hattını çalıştırma.
 
-    İfade, veri kümesini iki satır kümesine böler: koşula uyan değerler içeren satırlar ve kalan tüm satırlar.
+   İfade, veri kümesini iki satır kümesine böler: koşula uyan değerler içeren satırlar ve kalan tüm satırlar.
 
-Aşağıdaki örneklerde, **bölünmüş veri** modülündeki **göreli ifade** seçeneği kullanılarak bir veri kümesinin nasıl bölüneceği gösterilmektedir:  
+Aşağıdaki örneklerde, **bölünmüş veri** modülündeki **göreli ifade** seçeneği kullanılarak bir veri kümesinin nasıl bölüneceği gösterilmektedir.  
 
-### <a name="using-calendar-year"></a>Takvim yılını kullanma
+### <a name="calendar-year"></a>Takvim yılı
 
 Yaygın bir senaryo, bir veri kümesini yıla göre bölmektir. Aşağıdaki ifade `Year` sütunundaki değerlerin `2010`daha büyük olduğu tüm satırları seçer.
 
@@ -136,7 +135,7 @@ Yaygın bir senaryo, bir veri kümesini yıla göre bölmektir. Aşağıdaki ifa
 \"Year" > 2010
 ```
 
-Tarih ifadesi, veri sütununa dahil edilen tüm tarih bölümlerinin ve veri sütunundaki tarih biçiminin tutarlı olması gerekir. 
+Tarih ifadesi, veri sütununa dahil edilen tüm tarih bölümlerinin dikkate alınmalıdır. Veri sütunundaki tarihlerin biçimi tutarlı olmalıdır. 
 
 Örneğin, `mmddyyyy`biçimini kullanan bir tarih sütununda, ifade şuna benzer olmalıdır:
 
@@ -144,7 +143,7 @@ Tarih ifadesi, veri sütununa dahil edilen tüm tarih bölümlerinin ve veri sü
 \"Date" > 1/1/2010
 ```
 
-### <a name="using-column-indices"></a>Sütun dizinlerini kullanma
+### <a name="column-index"></a>Sütun dizini
 
 Aşağıdaki ifade, bir veri kümesinin ilk sütununda 30 ' a eşit veya daha küçük değerler içeren, ancak 20 ' ye eşit olmayan tüm satırları seçmek için nasıl kullanabileceğinizi gösterir.
 

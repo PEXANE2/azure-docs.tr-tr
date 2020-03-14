@@ -9,14 +9,16 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863249"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370908"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Azure Digital Twins'e genel bakış
+# <a name="overview-of-azure-digital-twins-preview"></a>Azure dijital TWINS önizlemesine genel bakış
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure dijital TWINS önizlemesi, fiziksel ortamın kapsamlı modellerini oluşturan bir Azure IoT hizmetidir. Kişiler, boşluklar ve cihazlar arasındaki ilişkileri ve etkileşimleri modellemek için uzamsal zeka grafikleri oluşturabilir.
 

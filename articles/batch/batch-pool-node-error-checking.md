@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 95f7d4d03fbac6ec7c27630f1210ef999ddc776c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484137"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369276"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -137,8 +137,21 @@ Geçici sürücünün boyutu VM boyutuna bağlıdır. Bir VM boyutu seçerken, g
 
 Her bir görev tarafından yazılan dosyalar için, görev dosyalarının otomatik olarak temizlenmeden önce ne kadar süreyle tutulacağını belirleyen her bir görev için bir bekletme süresi belirtilebilir. Saklama süresi, depolama gereksinimlerini düşürmek için azaltılabilir.
 
-Geçici disk alanı doldurulabiliyor, şu anda düğüm çalışan görevleri durdurur. Gelecekte bir [düğüm hatası](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) bildirilir.
+Geçici diskte boş alan kalmadığında (veya alan tükendiğinden çok yakın), düğüm [kullanılamaz](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) duruma geçer ve bir düğüm hatası (bir bağlantıyı kullanın), diskin dolu olduğunu belirten bir rapor alınacaktır.
 
+### <a name="what-to-do-when-a-disk-is-full"></a>Disk dolduğunda Yapılacaklar
+
+Diskin dolu olduğunu belirle: düğüm üzerinde ne kadar alan bulunduğunu bilmiyorsanız, düğüm üzerinde uzak olarak ve alanın nerede gerçekleştiğinden el ile araştırılması önerilir. Batch tarafından yönetilen klasörlerdeki dosyaları incelemek için [toplu Işlem listesi dosyaları API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) 'sini de kullanabilirsiniz (örneğin, görev çıkışları). Bu API 'nin yalnızca Batch yönetilen dizinlerindeki dosyaları listelediğinden ve görevleriniz başka bir yerde dosya oluşturup görmeyecektir.
+
+İhtiyaç duyduğunuz tüm verilerin düğümden alındığından veya dayanıklı bir depoya yüklendiğinden emin olun. Disk dolu sorununa yönelik tüm hafifletme, boş alan kazanmak için verileri silmeyi içerir.
+
+### <a name="recovering-the-node"></a>Düğüm kurtarılıyor
+
+1. Havuzunuz bir [C. hoparlör hizmeti yapılandırma](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) havuzudur, [Batch yeniden görüntü API 'si](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)aracılığıyla düğümü yeniden görüntüleyebilirsiniz. Bu, diskin tamamını temizler. [Virtualmachineconfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzları için yeniden görüntü şu anda desteklenmiyor.
+
+2. Havuzunuz bir [Virtualmachineconfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)ise, [düğümleri kaldır API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes)'sini kullanarak düğümü havuzdan kaldırabilirsiniz. Sonra, bozuk düğümü yeni bir düğüm ile değiştirmek için havuzu yeniden büyüyebilirsiniz.
+
+3.  Görev verileri hala düğümlerde olan eski tamamlanmış işleri veya eski tamamlanmış görevleri silin. Hangi işlerin/görev verilerinin düğümlerde olduğunu bir ipucu için, düğümdeki [Recenttasks koleksiyonuna](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) veya [düğümdeki dosyalara](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)bakabilirsiniz. İşin silinmesi işteki tüm görevleri siler ve işteki görevleri silmek, düğümdeki görev dizinlerindeki verilerin silinmesine ve bu sayede boş alan boşaltmasını sağlayacaktır. Yeterli alan boşaltdıktan sonra, düğümü yeniden başlatın ve "kullanılamaz" durumundan sonra "boşta" ' dan "boş" durumuna geçer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

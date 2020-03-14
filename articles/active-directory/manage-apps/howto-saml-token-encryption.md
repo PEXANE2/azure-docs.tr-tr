@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafd209073b36265d24dbad4a66b3870d8f593db
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73148630"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365875"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Nasıl yapılır: Azure AD SAML belirteci şifrelemesini yapılandırma (Önizleme)
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Nasıl yapılır: Azure AD SAML belirteci şifrelemesini yapılandırma
 
 > [!NOTE]
 > Belirteç şifreleme bir Azure Active Directory (Azure AD) Premium özelliğidir. Azure AD sürümleri, Özellikler ve fiyatlandırma hakkında daha fazla bilgi edinmek için bkz. [Azure AD fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -56,7 +56,7 @@ SAML belirteci şifrelemesini yapılandırmak için aşağıdaki adımları izle
 
 Ortak sertifikayı, Azure portal içindeki uygulama yapılandırmanıza ekleyebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 
 1. **Azure Active Directory > Enterprise Applications** dikey penceresine gidin ve belirteç şifrelemesini yapılandırmak istediğiniz uygulamayı seçin.
 
@@ -71,7 +71,7 @@ Ortak sertifikayı, Azure portal içindeki uygulama yapılandırmanıza ekleyebi
 
     ![X. 509.440 sertifikasını içeren. cer dosyasını içeri aktarma](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. Sertifika içeri aktarıldıktan sonra ve özel anahtar uygulama tarafında kullanılmak üzere yapılandırıldıktan sonra, parmak izi durumunun yanındaki **...** ' yi seçerek şifrelemeyi etkinleştirin ve sonra, şu seçenekler arasından **belirteç şifrelemesini etkinleştir** ' i seçin. açılan menü.
+1. Sertifika içeri aktarıldıktan sonra ve özel anahtar uygulama tarafında kullanılmak üzere yapılandırıldıktan sonra, parmak izi durumunun yanındaki **...** öğesini seçerek şifrelemeyi etkinleştirin ve açılan menüdeki seçeneklerden **belirteç şifrelemeyi etkinleştir** ' i seçin.
 
 1. Belirteç şifreleme sertifikasının etkinleştirilmesini onaylamak için **Evet** ' i seçin.
 
@@ -123,26 +123,21 @@ Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığ
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>PowerShell kullanarak belirteç şifrelemesini yapılandırmak için
 
-Bu işlevsellik yakında sunulacak. 
+1. Kiracınıza bağlanmak için en son Azure AD PowerShell modülünü kullanın.
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** komutunu kullanarak belirteç şifreleme ayarlarını ayarlayın.
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. Aşağıdaki komutları kullanarak belirteç şifreleme ayarlarını okuyun.
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
     $app.KeyCredentials
     $app.TokenEncryptionKeyId
     ```
-
--->
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Uygulama bildirimini kullanarak belirteç şifrelemesini yapılandırmak için
 

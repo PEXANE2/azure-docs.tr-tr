@@ -4,11 +4,11 @@ description: ASP.NET uygulamalarından gelen özel durumları, istek telemetriyl
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 24b7acfa6610c2040daf0f7d8d25f25391140303
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375052"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276237"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile Web uygulamalarınızda özel durumları tanılama
 Canlı Web uygulamanızdaki özel durumlar [Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından raporlanır. Nedenleri hızlı bir şekilde tanılamanıza olanak tanımak için hem istemci hem de sunucudaki başarısız istekleri özel durumlarla ve diğer olaylarla ilişkilendirebileceğinizi unutmayın.

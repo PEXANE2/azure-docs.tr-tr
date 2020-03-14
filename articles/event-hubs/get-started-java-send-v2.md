@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 4ebb52aa3e8d4ccfee6b36fb60c7f041df08a69a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 44f57f52be512924e228d6488a786d117c6444e7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163033"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370602"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Azure Event Hubs (Azure-Messaging-eventhubs) olay göndermek veya olayları almak için Java 'Yı kullanma
 Bu hızlı başlangıçta, **Azure-Messaging-eventhubs** Java paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir.
@@ -55,7 +55,7 @@ import com.azure.messaging.eventhubs.*;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Sender {
-    public static void main(String[] args) {
+       public static void main(String[] args) {
     }
 }
 ```
@@ -208,7 +208,7 @@ Event Hubs için Java istemci kitaplığı, Maven [Merkezi deposundaki](https://
      }
     ```
     
-2. **Inmemorycheckpointstore. Java** dosyasını [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)'dan indirin ve projenize ekleyin. 
+2. **Inmemorycheckpointstore. Java** dosyasını [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/InMemoryCheckpointStore.java)'dan indirin ve projenize ekleyin. 
 3. Programı oluşturun ve hata olmadığından emin olun. 
 
 ## <a name="run-the-applications"></a>Uygulamaları çalıştırma

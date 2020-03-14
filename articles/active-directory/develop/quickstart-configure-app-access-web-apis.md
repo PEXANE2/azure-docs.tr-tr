@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerine erişmek için bir uygulama yapılandırma-Microsoft Identity platform | Mavisi
-description: Microsoft kimlik platformuyla kaydedilen uygulamaları yeniden yönlendirme URI’leri, kimlik bilgileri veya web API’lerine erişmek için izinleri içerecek şekilde yapılandırmayı öğrenin.
+title: "Hızlı başlangıç: uygulama için Web API 'Lerine erişim-Microsoft Identity platform | Mavisi"
+description: Bu hızlı başlangıçta, Web API 'Lerine erişim için yeniden yönlendirme URI 'Leri, kimlik bilgileri veya izinleri içerecek şekilde Microsoft Identity platformu ile kaydedilen bir uygulamayı yapılandırın.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,82 +8,64 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/07/2019
+ms.date: 03/09/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 32691892ccae31541855f47bd8274aa28b6dc185
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704298"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240901"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma
 
-Bir web/gizli istemci uygulamasının kimlik doğrulaması gerektiren bir yetkilendirme akışına dahil olabilmesi (ve erişim belirteci alabilmesi) için güvenli kimlik bilgileri kullanması gerekir. Azure portal tarafından desteklenen varsayılan kimlik doğrulaması yöntemi istemci kimliği ve gizli anahtar kullanımıdır.
+Bu hızlı başlangıçta, uygulamanız için Web API 'Lerine erişim için yeniden yönlendirme URI 'Leri, kimlik bilgileri veya izinleri eklersiniz. Bir Web veya gizli istemci uygulamasının, kimlik doğrulaması gerektiren bir yetkilendirme verme akışına katılması için güvenli kimlik bilgileri kurması gerekir. Azure portal tarafından desteklenen varsayılan kimlik doğrulaması yöntemi istemci kimliği ve gizli anahtar kullanımıdır. Uygulama, bu işlem sırasında bir erişim belirteci alır.
 
-Ayrıca, istemcinin bir kaynak uygulaması tarafından kullanıma sunulan web API'sine (Microsoft Graph API gibi) erişebilmesi için, onay çerçevesi istenen izinlere bağlı olarak istemcinin gerekli izni almasını sağlar. Varsayılan olarak, tüm uygulamalar Microsoft Graph API’sinden izinleri seçebilir. [Graph API “Oturum açma ve kullanıcı profilini okuma” izni](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions) varsayılan olarak seçilir. İstenen her web API'si için [iki izin türü](developer-glossary.md#permissions) arasından seçim yapabilirsiniz:
+İstemci, Microsoft Graph API gibi bir kaynak uygulama tarafından kullanıma sunulan bir Web API 'sine erişebilinceye kadar, izin çerçevesi istemcinin istenen izinler için gereken izin iznini almasını sağlar. Varsayılan olarak, tüm uygulamalar Microsoft Graph API 'sinden izin isteyebilir.
 
-* **Uygulama izinleri** - İstemci uygulamanızın web API'sine kendisi olarak (kullanıcı bağlamı olmadan) doğrudan erişmesi gerekir. Bu izin türü için yönetici onayı gerekir ve bu tür genel (masaüstü ve mobil) istemci uygulamalarında kullanılamaz.
-* **Temsilcili izinler** - İstemci uygulamanızın web API'sine oturum açmış kullanıcı olarak erişmesi gerekir ancak erişim seçilen izinle sınırlı olur. Yönetici onayı gerektirmediği sürece bu izin türü bir kullanıcı tarafından verilebilir.
+## <a name="prerequisites"></a>Önkoşullar
 
-  > [!NOTE]
-  > Bir uygulamaya temsilcili izin eklenmesi kiracı içindeki kullanıcılara otomatik olarak onay vermez. Yöneticinin tüm kullanıcıların adına onay vermemesi durumunda kullanıcıların yine çalışma zamanında eklenen temsilcili izinler için el ile onay vermesi gerekir.
-
-Bu hızlı başlangıçta, uygulamanızı aşağıdakiler için yapılandırmayı öğreneceksiniz:
-
-* [Uygulamanıza yeniden yönlendirme URI’leri ekleme](#add-redirect-uris-to-your-application)
-* [Uygulamanızın gelişmiş ayarlarını yapılandırma](#configure-advanced-settings-for-your-application)
-* [Desteklenen hesap türlerini değiştirme](#modify-supported-account-types)
-* [Web uygulamanıza kimlik bilgileri ekleme](#add-credentials-to-your-web-application)
-* [Web API’lerine erişim izinleri ekleme](#add-permissions-to-access-web-apis)
-
-## <a name="prerequisites"></a>Ön koşullar
-
-Başlamak için aşağıdaki önkoşulları karşıladığınızdan emin olun:
-
-* Diğer kullanıcılar veya uygulamalar tarafından kullanılması gereken uygulamaları derleme konusunda önemli olan desteklenen [izinler ve onaylar](v2-permissions-and-consent.md) hakkında bilgi edinin.
-* Kaydedilmiş uygulamaları olan bir kiracısı olma.
-  * Kayıtlı uygulama yoksa, [Microsoft kimlik platformu ile uygulamaları kaydetmeyi öğrenin](quickstart-register-app.md).
+* [Hızlı başlangıç: bir uygulamayı Microsoft Identity platformu Ile kaydetme](quickstart-register-app.md).
+* [Microsoft Identity platform uç noktasındaki izinleri ve onayı](v2-permissions-and-consent.md)gözden geçirin.
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
 
-Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabınızı seçin. Portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+1. Arama yapın ve **Azure Active Directory**seçin. **Yönet**altında **uygulama kayıtları**' yi seçin.
+1. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtikten sonra, uygulamanın **genel bakış** veya ana kayıt sayfasını görürsünüz.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
-1. **Azure Active Directory**'yi bulun ve seçin. 
-1. Sol bölmeden **uygulama kayıtları**' yi seçin.
-1. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtiğinizde, uygulamanın **Genel Bakış** veya ana kayıt sayfasını görürsünüz.
-1. Uygulamanızı web API'lerine erişmek üzere yapılandırmak için adımları izleyin:
-    * [Uygulamanıza yeniden yönlendirme URI’leri ekleme](#add-redirect-uris-to-your-application)
-    * [Uygulamanızın gelişmiş ayarlarını yapılandırma](#configure-advanced-settings-for-your-application)
-    * [Desteklenen hesap türlerini değiştirme](#modify-supported-account-types)
-    * [Web uygulamanıza kimlik bilgileri ekleme](#add-credentials-to-your-web-application)
-    * [Web API’lerine erişim izinleri ekleme](#add-permissions-to-access-web-apis)
+Uygulamanızı Web API 'Lerine erişecek şekilde yapılandırmak için aşağıdaki yordamları kullanın.
 
-## <a name="add-redirect-uris-to-your-application"></a>Uygulamanıza yeniden yönlendirme URI’leri ekleme
+## <a name="add-redirect-uris-to-your-application"></a>Uygulamanıza yeniden yönlendirme URI 'Leri ekleyin
 
-Uygulamanıza yeniden yönlendirme URI’si eklemek için:
+Uygulamanıza özel yeniden yönlendirme URI 'leri ve önerilen yeniden yönlendirme URI 'Leri ekleyebilirsiniz. Web ve genel istemci uygulamaları için özel bir yeniden yönlendirme URI 'SI eklemek için:
 
-1. Uygulamanın **Genel Bakış** sayfasında, **Kimlik doğrulaması** bölümünü seçin.
-1. Web ve genel istemci uygulamalarına özel bir yeniden yönlendirme URI’si eklemek için:
-   1. **Yeniden yönlendirme URI’si** bölümün bulun.
-   1. **Web** veya **Genel istemci (mobil ve masaüstü)** seçenekleri arasından oluşturduğunuz uygulama türünü seçin.
-   1. Uygulamanız için Yeniden Yönlendirme URI’sini girin.
-      * Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `http://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
-      * Genel uygulamalar için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örneğin: `https://MyFirstApp`.
+1. Uygulamaya **genel bakış** sayfasında **kimlik doğrulaması**' nı seçin.
+1. **Yeniden yönlendirme URI 'lerini**bulun. **Eski deneyime geç**' i seçmeniz gerekebilir.
+1. Oluşturmakta olduğunuz uygulamanın türünü seçin: **Web** veya **Public Client/native (Mobile & Desktop)** .
+1. Uygulamanız için Yeniden Yönlendirme URI’sini girin.
 
-1. Ortak istemciler (mobil, masaüstü) için önerilen Yeniden Yönlendirme URI'lerini seçemk için bu adımları izleyin:
-    1. **Ortak istemciler (mobil, masaüstü) için önerilen Yeniden Yönlendirme URI'leri** bölümünü bulun.
-    1. Onay kutularını kullanarak uygulamanız için uygun Yeniden Yönlendirme URI’lerini seçin. Ayrıca, özel bir yeniden yönlendirme URI 'SI de girebilirsiniz. Ne kullandığınızdan emin değilseniz, kitaplık belgelerine göz atın.
+   * Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `http://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
+   * Genel uygulamalar için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örneğin: `https://MyFirstApp`.
+1. **Kaydet**’i seçin.
 
-Yeniden yönlendirme URI 'Leri için uygulanan bazı kısıtlamalar vardır. [Yeniden YÖNLENDIRME URI kısıtlamaları ve sınırlamaları](https://docs.microsoft.com/azure/active-directory/develop/reply-url)hakkında daha fazla bilgi edinin.
+Ortak istemciler için önerilen yeniden yönlendirme URI 'lerinden seçim yapmak için şu adımları izleyin:
+
+1. Uygulamaya **genel bakış** sayfasında **kimlik doğrulaması**' nı seçin.
+1. **Ortak istemciler Için önerilen yeniden yönlendirme URI 'lerini bulun (mobil, masaüstü)** . **Eski deneyime geç**' i seçmeniz gerekebilir.
+1. Uygulamanız için bir veya daha fazla yeniden yönlendirme URI 'si seçin. Ayrıca, özel bir yeniden yönlendirme URI 'SI de girebilirsiniz. Ne kullandığınızdan emin değilseniz, kitaplık belgelerine bakın.
+1. **Kaydet**’i seçin.
+
+Belirli kısıtlamalar URI 'Leri yeniden yönlendirme için geçerlidir. Daha fazla bilgi için bkz. [yeniden YÖNLENDIRME URI/yanıt URL kısıtlamaları ve sınırlamaları](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+
 > [!NOTE]
 > Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni **kimlik doğrulama** ayarları deneyimini deneyin.
 >
-> Bu görünümü görmek için varsayılan **kimlik doğrulama** sayfası görünümündeki **Yeni deneyimi deneyin** ' i seçin.
+> Bu görünümü görmek için **kimlik doğrulama** sayfasından **Yeni deneyimi deneyin** ' i seçin.
 >
 > ![Platform yapılandırma görünümünü görmek için "yeni deneyimi deneyin" seçeneğine tıklayın](./media/quickstart-update-azure-ad-app-preview/authentication-try-new-experience-cropped.png)
 >
@@ -93,28 +75,27 @@ Yeniden yönlendirme URI 'Leri için uygulanan bazı kısıtlamalar vardır. [Ye
 
 Kayıt yaptığınız uygulamaya bağlı olarak, yapılandırmanız gerekebilecek bazı ek ayarlar vardır, örneğin:
 
-* **Oturum kapatma URL 'SI**
+* **Oturum kapatma URL 'si**.
 * Tek sayfalı uygulamalar için, **örtük izni** etkinleştirebilir ve yetkilendirme uç noktasının vermesini istediğiniz belirteçleri seçebilirsiniz.
-* **Varsayılan istemci türü** bölümünde tümleşik Windows kimlik doğrulaması, cihaz kod akışı veya Kullanıcı adı/parola ile belirteç alan masaüstü uygulamaları için, **uygulamayı ortak istemci olarak değerlendir** ayarını **Evet**olarak yapılandırın.
+* **Varsayılan istemci türü** bölümünde tümleşik Windows kimlik doğrulaması, cihaz kodu akışı veya Kullanıcı adı/parola kullanarak belirteçleri elde eden masaüstü uygulamaları için, **uygulamayı ortak istemci olarak değerlendir** ayarını **Evet**olarak ayarlayın.
 * Microsoft hesabı hizmetiyle tümleştirilecek canlı SDK 'yı kullanan eski uygulamalar için, **LIVE SDK desteği**' ni yapılandırın. Yeni uygulamalara bu ayara gerek yoktur.
-* **Varsayılan istemci türü**
+* **Varsayılan istemci türü**.
+* **Desteklenen hesap türleri**.
 
 ### <a name="modify-supported-account-types"></a>Desteklenen hesap türlerini değiştirme
 
 **Desteklenen hesap türleri** , uygulamayı KULLANABILECEK veya API 'ye erişebilecek kişileri belirtir.
 
-Uygulamayı ilk kez kaydettiğinizde [Desteklenen hesap türlerini yapılandırdıktan](quickstart-register-app.md) sonra, bu ayarı yalnızca şu durumlarda uygulama bildirimi düzenleyicisini kullanarak değiştirebilirsiniz:
+Uygulamayı kaydettiğinizde desteklenen hesap türlerini yapılandırdıysanız, bu ayarı yalnızca şu durumlarda uygulama bildirimi düzenleyicisini kullanarak değiştirebilirsiniz:
 
-* Hesap türlerini **Azureadmyorg** veya **Azureadmultipleorgs** Iken **Azureadandpersonmicrosoftaccount**veya tam tersi olarak değiştirirsiniz.
-* Hesap türlerini **Azureadmyorg** 'Den **Azureadmultipleorgs**olarak veya bunun tersini değiştirirsiniz.
+* Hesap türlerini **Azureadmyorg** veya **Azureadmultipleorgs** , **Azureadandpersonmicrosoftaccount**veya diğer bir şekilde değiştirin ya da
+* Hesap türlerini **Azureadmyorg** 'Den **Azureadmultipleorgs**olarak veya başka bir şekilde değiştirirsiniz.
 
-Mevcut bir uygulama kaydı için desteklenen hesap türlerini değiştirmek için:
-
-* Bkz. [uygulama bildirimini yapılandırma](reference-app-manifest.md) ve `signInAudience` anahtarını güncelleştirme.
+Mevcut bir uygulama kaydının desteklenen hesap türlerini değiştirmek için `signInAudience` anahtarını güncelleştirin. Daha fazla bilgi için bkz. [uygulama bildirimini yapılandırma](reference-app-manifest.md#configure-the-app-manifest).
 
 ## <a name="configure-platform-settings-for-your-application"></a>Uygulamanız için platform ayarlarını yapılandırma
 
-[![platforma veya cihaza bağlı olarak uygulamanızın ayarlarını yapılandırma](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+![Platforma veya cihaza göre uygulamanızın ayarlarını yapılandırın](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations.png)
 
 Uygulama ayarlarını platforma veya cihaza göre yapılandırmak için şunları hedefliyorsanız:
 
@@ -124,93 +105,108 @@ Uygulama ayarlarını platforma veya cihaza göre yapılandırmak için şunlar�
 
 1. Seçtiğiniz platforma bağlı olarak ayarlar bilgilerini girin.
 
-   | Platform                | Choices              | Yapılandırma ayarları            |
-   |-------------------------|----------------------|-----------------------------------|
-   | **Web uygulamaları**    | **Web**              | Uygulamanız için **yeniden yönlendirme URI 'si** girin. |
-   | **Mobil uygulamalar** | **iOS**              | Info. plist veya Build Settings içinde XCode içinde bulabileceğiniz uygulamanın **paket kimliğini**girin. Paket KIMLIĞINI eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur. |
-   |                         | **Android**          | * AndroidManifest. xml dosyasında bulabileceğiniz uygulamanın **paket adını**sağlayın.<br/>* **İmza karmasını**oluşturun ve girin. İmza karmasını eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur.  |
-   | **Masaüstü + cihazlar**   | **Masaüstü + cihazlar** | Seçim. Masaüstü ve cihazlar için uygulamalar oluşturuyorsanız önerilen **Önerilen yeniden yönlendirme URI** 'lerinden birini seçin.<br/>Seçim. Azure AD 'nin kullanıcıları kimlik doğrulama isteklerine yanıt olarak yeniden yönlendireceği konum olarak kullanılan **özel bir yeniden yönlendirme URI 'si**girin. Örneğin, etkileşimi istediğiniz .NET Core uygulamaları için `https://localhost`kullanın. |
+   | Platform                | Yapılandırma ayarları            |
+   |-------------------------|-----------------------------------|
+   | **Web**              | Uygulamanız için **yeniden yönlendirme URI 'si** girin. |
+   | **iOS/macOS**              | Info. plist veya Build Settings içinde XCode içinde bulabileceğiniz uygulama **paket kimliğini**girin. Paket KIMLIĞINI eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur. |
+   | **Android**          | AndroidManifest. xml dosyasında bulabileceğiniz uygulama **paketi adını**sağlayın.<br/>**İmza karmasını**oluşturun ve girin. İmza karmasını eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur.  |
+   | **Mobil ve Masaüstü uygulamaları**  | İsteğe bağlı. Masaüstü ve cihazlar için uygulamalar oluşturuyorsanız önerilen **Önerilen yeniden yönlendirme URI** 'lerinden birini seçin.<br/>İsteğe bağlı. Azure AD 'nin kullanıcıları kimlik doğrulama isteklerine yanıt olarak yeniden yönlendireceği konum olarak kullanılan **özel bir yeniden yönlendirme URI 'si**girin. Örneğin, etkileşimi istediğiniz .NET Core uygulamaları için `https://localhost`kullanın. |
 
    > [!IMPORTANT]
-   > En son MSAL kitaplığını kullanmayan veya bir aracı kullanmayan mobil uygulamalarda, bu uygulamalar için yeniden yönlendirme URI 'Lerini **Masaüstü + cihazlarda**yapılandırmanız gerekir.
+   > En son Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmayan veya bir aracı kullanmayan mobil uygulamalarda, bu uygulamalar için yeniden yönlendirme URI 'Lerini **Masaüstü + cihazlarda**yapılandırmanız gerekir.
 
-1. Seçtiğiniz platforma bağlı olarak, yapılandırabileceğiniz ek ayarlar olabilir. **Web** Apps için şunları yapabilirsiniz:
-    * Daha fazla yeniden yönlendirme URI 'si ekleyin
-    * Kimlik doğrulama uç noktası tarafından verilmek istediğiniz belirteçleri seçmek için **örtülü izni** yapılandırın:
-        * Tek sayfalı uygulamalar için, hem **erişim belirteçlerini** hem de **kimlik belirteçlerini** seçin
-        * Web Apps için **Kimlik belirteçleri** seçin
+Seçtiğiniz platforma bağlı olarak, yapılandırabileceğiniz ek ayarlar olabilir. **Web** Apps için şunları yapabilirsiniz:
+
+* Daha fazla yeniden yönlendirme URI 'si ekleyin
+* Kimlik doğrulama uç noktası tarafından verilmek istediğiniz belirteçleri seçmek için **örtülü izni** yapılandırın:
+
+  * Tek sayfalı uygulamalar için, hem **erişim belirteçlerini** hem de **kimlik belirteçlerini** seçin
+  * Web Apps için **Kimlik belirteçleri** seçin
 
 ## <a name="add-credentials-to-your-web-application"></a>Web uygulamanıza kimlik bilgileri ekleme
 
-Web uygulamanıza kimlik bilgileri eklemek için:
+Web uygulamanıza bir kimlik bilgisi eklemek için, bir sertifika ekleyin ya da bir istemci gizli anahtarı oluşturun. Sertifika eklemek için:
 
-1. Uygulamanın **Genel Bakış** sayfasında, **Sertifikalar ve gizli diziler** bölümünü seçin.
+1. Uygulamaya **genel bakış** sayfasında, **Sertifikalar & gizlilikler** bölümünü seçin.
+1. **Sertifikayı karşıya yükle**’yi seçin.
+1. Yüklemek istediğiniz dosyayı seçin. Şu dosya türlerinden biri olmalıdır: .cer, .pem, .crt.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
-1. Bir sertifika eklemek için aşağıdaki adımları izleyin:
+Bir istemci parolası eklemek için:
 
-    1. **Sertifikayı karşıya yükle**’yi seçin.
-    1. Yüklemek istediğiniz dosyayı seçin. Şu dosya türlerinden biri olmalıdır: .cer, .pem, .crt.
-    1. **Add (Ekle)** seçeneğini belirleyin.
-
-1. Bir istemci gizli dizisi eklemek için aşağıdaki adımları izleyin:
-
-    1. **Yeni istemci gizli dizisi**’ni seçin.
-    1. İstemci gizli diziniz için bir açıklama ekleyin.
-    1. Bir süre seçin.
-    1. **Add (Ekle)** seçeneğini belirleyin.
+1. Uygulamaya **genel bakış** sayfasında, **Sertifikalar & gizlilikler** bölümünü seçin.
+1. **Yeni istemci gizli dizisi**’ni seçin.
+1. İstemci gizli diziniz için bir açıklama ekleyin.
+1. Bir süre seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 > [!NOTE]
 > Yapılandırmada yaptığınız değişiklikleri kaydettikten sonra en sağdaki sütunda istemci gizli dizi değeri gösterilir. İstemci uygulamanızın kodunda kullanmak üzere **değeri kopyalamayı unutmayın**. Bu sayfadan ayrıldıktan sonra bu değere erişemezsiniz.
 
 ## <a name="add-permissions-to-access-web-apis"></a>Web API’lerine erişim izinleri ekleme
 
-İstemcinizden kaynak API'lerine erişim izni eklemek için:
+[Graph API oturum açma ve kullanıcı profilini Oku izni](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions) varsayılan olarak seçilidir. Her bir Web API 'SI için [iki tür izin](developer-glossary.md#permissions) arasından seçim yapabilirsiniz:
 
-1. Uygulamanın **Genel Bakış** sayfasında, **API izinleri** bölümünü seçin.
-1. **Yapılandırılan izinler** bölümünde, **izin Ekle** düğmesini seçin.
+* **Uygulama izinleri**. İstemci uygulamanızın, Kullanıcı bağlamı olmadan doğrudan kendi kendine Web API 'sine erişmesi gerekir. Bu izin türü yönetici onayı gerektirir. Bu izin masaüstü ve mobil istemci uygulamaları için kullanılamaz.
+* **Temsilci izinleri**. İstemci uygulamanızın, oturum açmış kullanıcı olarak Web API 'sine erişmesi gerekir, ancak erişim, seçilen izinle sınırlı olarak. Yönetici onayı gerektirmediği sürece bu izin türü bir kullanıcı tarafından verilebilir.
+
+  > [!NOTE]
+  > Bir uygulamaya temsilcili izin eklenmesi kiracı içindeki kullanıcılara otomatik olarak onay vermez. Yöneticinin tüm kullanıcıların adına onay vermemesi durumunda kullanıcıların yine çalışma zamanında eklenen temsilcili izinler için el ile onay vermesi gerekir.
+
+İstemcinizden kaynak API 'Lerine erişim izinleri eklemek için:
+
+1. Uygulamaya **genel bakış** sayfasında, **API izinleri**' ni seçin.
+1. **Yapılandırılan izinler**altında **izin Ekle**' yi seçin.
 1. Varsayılan olarak, görünüm **Microsoft API’leri** arasından seçim yapmanızı sağlar. İlgilendiğiniz API’leri seçin:
-    * **Microsoft API’leri** - Microsoft Graph gibi Microsoft API’leri için izinleri seçmenize olanak sağlar.
-    * **Kuruluşumun kullandığı API’ler** - Kuruluşunuz tarafından kullanıma sunulan API’ler veya kuruluşunuzun tümleştirdiği API’ler için izinleri seçmenize olanak sağlar.
-    * **API’lerim** - Kullanıma sunduğunuz API’ler için izinleri seçmenize olanak sağlar.
+
+    * **Microsoft API 'leri**. Microsoft Graph gibi Microsoft API 'Leri için izinleri seçmenizi sağlar.
+    * **Kuruluşumun kullandığı API 'ler**. Kuruluşunuzun sunduğu API 'Ler veya kuruluşunuzun tümleştirildiği API 'ler için izinleri seçmenizi sağlar.
+    * **API 'Lerim**. Sergilemiş olan API 'Ler için izinleri seçmenizi sağlar.
+
 1. API’leri seçtikten sonra, **API İzinleri İsteme** sayfasını görürsünüz. API hem temsilci hem de uygulama izinlerini kullanıma sunuyorsa, uygulamanız için gereken izin türünü seçin.
-1. İşiniz bittiğinde, **İzinleri ekle** seçeneğini belirleyin. İzinlerin kaydedilip tabloya eklendiği **API izinleri** sayfasına dönersiniz.
+1. İşiniz bittiğinde, **İzinleri ekle** seçeneğini belirleyin.
+
+**API izinleri** sayfasına dönersiniz. İzinler kaydedildi ve tabloya eklendi.
 
 ## <a name="understanding-api-permissions-and-admin-consent-ui"></a>API izinlerini ve yönetici onayı Kullanıcı arabirimini anlama
 
 ### <a name="configured-permissions"></a>Yapılandırılan izinler
 
-Bu bölümde, uygulama nesnesinde (\uygulamanın gerekli kaynak erişim listesinin parçası olan izinler) açık olarak yapılandırılmış izinler gösterilmektedir. Bu tabloya izinleri ekleyebilir veya kaldırabilirsiniz. Yönetici olarak Ayrıca, bu bölümde bir API 'nin izinleri veya ayrı izinler kümesi için yönetici onayı verebilir/iptal edebilirsiniz.
+Bu bölümde, uygulama nesnesi üzerinde açıkça yapılandırılmış izinler gösterilmektedir. Bu izinler, uygulamanın gerekli kaynak erişim listesinin bir parçasıdır. Bu tabloya izinleri ekleyebilir veya kaldırabilirsiniz. Yönetici olarak, bir API 'nin izinleri veya ayrı izinler kümesi için yönetici onayı de verebilir veya iptal edebilirsiniz.
 
 ### <a name="other-permissions-granted"></a>Diğer izinler verildi
 
-Uygulamanız bir kiracıda kayıtlıysa, **kiracı için verilen diğer izinler**başlıklı ek bir bölüm görebilirsiniz. Bu bölümde, kiracı için verilen ancak uygulama nesnesinde açıkça yapılandırılmamış olan izinler gösterilir (örneğin, dinamik olarak istenen ve onaylanan izinler). Bu bölüm yalnızca en az bir tane geçerli izin varsa görüntülenir.
+Uygulamanız bir kiracıda kayıtlıysa, **kiracı için verilen diğer izinler**başlıklı ek bir bölüm görebilirsiniz. Bu bölümde, kiracı için uygulama nesnesi üzerinde açıkça yapılandırılmamış izinler gösterilmektedir. Bu izinler dinamik olarak istendi ve yapıldı. Bu bölüm yalnızca en az bir tane geçerli izin varsa görüntülenir.
 
 Bu bölümde görüntülenen bir API 'nin izinleri veya ayrı izinler kümesi, **yapılandırılan izinler** bölümüne eklenebilir. Yönetici olarak, bu bölümdeki tek tek API 'Ler veya izinler için yönetici onayını de iptal edebilirsiniz.
 
 ### <a name="admin-consent-button"></a>Yönetici onay düğmesi
 
-Uygulamanız bir kiracıda kayıtlıysa, **kiracı için yönetici onayı verme** düğmesine görürsünüz. Yönetici değilseniz ya da uygulama için hiçbir izin yapılandırılmamışsa devre dışı bırakılır.
-Bu düğme, yöneticinin uygulama için yapılandırılan izinlere kolayca yönetici onayı vermesini sağlar. Yönetici onay düğmesine tıkladığınızda, tüm yapılandırılmış izinleri gösteren bir onay istemiyle birlikte yeni bir pencere açılır.
+Uygulamanız bir kiracıda kayıtlıysa, **kiracı için yönetici onayı verme** düğmesine görürsünüz. Yönetici değilseniz veya uygulama için hiçbir izin yapılandırılmamışsa devre dışı bırakılır.
+Bu düğme, yöneticinin uygulama için yapılandırılan izinlere yönetici onayı vermesini sağlar. Yönetici onay düğmesine tıkladığınızda, tüm yapılandırılmış izinleri gösteren bir onay istemiyle birlikte yeni bir pencere açılır.
 
 > [!NOTE]
 > Uygulama için yapılandırılan izinlerle izin isteminde görüntülenen izinler arasında bir gecikme vardır. İzin isteminde yapılandırılan tüm izinleri görmüyorsanız, kapatın ve yeniden başlatın.
 
-Verilmiş ancak yapılandırılmamış izinleriniz varsa, yönetici onay düğmesine tıklarken bu izinleri nasıl işleyeceğinize karar vermeniz istenir. Bunları, yapılandırılmış izinlere ekleyebilir veya kaldırabilirsiniz.
+Verilmiş ancak yapılandırılmamış izinleriniz varsa, yönetici onay düğmesi bu izinleri idare etmek isteyip istemediğinizi sorar. Bunları, yapılandırılmış izinlere ekleyebilir veya kaldırabilirsiniz.
 
-Onay istemi, **kabul etme** veya **iptal**etme seçeneğini sağlar. **Kabul et**' i seçerseniz, yönetici izni verilir. **İptal**' i seçerseniz, yönetici onayı verilmez ve onay reddedildiğini belirten bir hata görürsünüz.
+Onay istemi, **kabul etme** veya **iptal**etme seçeneğini sağlar. Yönetici izni vermek için **kabul et** ' i seçin. **İptal**' i seçerseniz, yönetici izni verilmez. Bir hata iletisi, onay reddedildiğini belirtir.
 
 > [!NOTE]
-> Yönetici onayı verme (onay isteminde **kabul et** ' i seçme) ve yönetici izninin Kullanıcı arabiriminde yansıtıldığı durum arasında bir gecikme vardır.
+> Onay isteminde **kabul et** ' i seçerek yönetici onayı verme arasında bir gecikme vardır ve yönetici onayınızın durumu portalda yansıtılmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
+Web API 'Lerini kullanıma sunma hakkında bilgi edinmek için sonraki makaleye ilerleyin.
+> [!div class="nextstepaction"]
+> [Hızlı başlangıç: Web API 'Lerini kullanıma sunmak için uygulama yapılandırma](quickstart-configure-app-expose-web-apis.md)
 
-* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
-* [Bir uygulamayı web API'lerini kullanıma sunacak şekilde yapılandırma](quickstart-configure-app-expose-web-apis.md)
-* [Bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
-* [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)
+* Kayıtlı uygulamayı temsil eden iki Azure AD nesnesi ve aralarındaki ilişki hakkında daha fazla bilgi edinmek için bkz. [Uygulama nesneleri ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
 
-Kayıtlı uygulamayı temsil eden iki Azure AD nesnesi ve aralarındaki ilişki hakkında daha fazla bilgi edinmek için bkz. [Uygulama nesneleri ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
+* Azure Active Directory ile uygulama geliştirirken kullanmanız gereken markalama yönergeleri hakkında daha fazla bilgi edinmek için bkz. [Uygulamalar için markalama yönergeleri](howto-add-branding-in-azure-ad-apps.md).
 
-Azure Active Directory ile uygulama geliştirirken kullanmanız gereken markalama yönergeleri hakkında daha fazla bilgi edinmek için bkz. [Uygulamalar için markalama yönergeleri](howto-add-branding-in-azure-ad-apps.md).
+* [Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md)
+
+* [Hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
+
+* [Hızlı başlangıç: Microsoft Identity platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)

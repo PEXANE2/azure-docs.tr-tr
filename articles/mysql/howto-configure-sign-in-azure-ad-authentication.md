@@ -1,17 +1,17 @@
 ---
-title: Azure Active Directory kullanın-MySQL için Azure veritabanı-tek sunucu
-description: MySQL için Azure veritabanı-tek sunucu ile kimlik doğrulaması için Azure Active Directory (Azure AD) ayarlama hakkında bilgi edinin
+title: Azure Active Directory kullanma-MySQL için Azure veritabanı
+description: MySQL için Azure veritabanı ile kimlik doğrulaması için Azure Active Directory (Azure AD) ayarlama hakkında bilgi edinin
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110617"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299014"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -46,7 +46,7 @@ Yönetici yapılandırıldıktan sonra artık oturum açabilirsiniz:
 
 Aşağıdaki üst düzey diyagram MySQL için Azure veritabanı ile Azure AD kimlik doğrulaması kullanma iş akışını özetler:
 
-![kimlik doğrulama akışı][1]
+![Kimlik doğrulama akışı][1]
 
 Azure AD tümleştirmesini, Azure AD Aware olmayan ve yalnızca MySQL 'e bağlanırken Kullanıcı adı ve parola belirtmeyi destekleyen MySQL CLı gibi ortak MySQL araçlarıyla çalışacak şekilde tasarladık. Yukarıdaki resimde gösterildiği gibi Azure AD belirtecini parola olarak geçiyoruz.
 
@@ -205,7 +205,7 @@ MySQL için Azure veritabanı 'nda Azure AD kimlik doğrulaması, kullanıcını
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [MySQL Için Azure veritabanı-tek sunucu ile Azure Active Directory kimlik doğrulaması](concepts-azure-ad-authentication.md) için genel kavramları gözden geçirin
+* [MySQL Için Azure veritabanı ile Azure Active Directory kimlik doğrulaması](concepts-azure-ad-authentication.md) için genel kavramları gözden geçirin
 
 <!--Image references-->
 

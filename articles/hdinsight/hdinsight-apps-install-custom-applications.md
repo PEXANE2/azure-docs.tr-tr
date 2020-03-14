@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c109f5309837de8c9b4bd3e4bc5a5da0a6da534e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 8fe9e551a4ca7dea8f53e0f8c2975ca3d88c48f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806873"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366266"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'ta özel Apache Hadoop uygulamaları yüklemeyi
 
@@ -23,7 +23,7 @@ Bir HDInsight uygulaması kullanıcıların bir HDInsight kümesine yükleyebile
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
+HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
 
 ## <a name="install-hdinsight-applications"></a>HDInsight uygulamaları yükleme
 
@@ -77,7 +77,7 @@ Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu dene
 
 ### <a name="azure-portal"></a>Azure portalı
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
 1. **Ayarlar** menüsünde, **uygulamalar**' ı seçin.
 1. Özellikleri görüntülemek için listeden **ton** ' ı seçin.  
@@ -125,11 +125,11 @@ Uygulama yüklemesi başarısız olursa, üç konumdan hata iletilerini ve hata 
 
 ### <a name="azure-portal"></a>Azure portalı
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
 1. **Ayarlar** menüsünde, **uygulamalar**' ı seçin.
 1. Kaldırmak istediğiniz uygulamaya sağ tıklayın ve ardından **Sil**' i seçin.
-1. Onaylamak için **Evet**'i seçin.
+1. Onaylamak için **Evet**’i seçin.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -145,5 +145,5 @@ az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resourc
 * [HDInsight uygulamaları yükleme](hdinsight-apps-install-applications.md): HDInsight uygulamalarını kümelerinize yükleme hakkında bilgi alın.
 * [HDInsight uygulamalarını yayımlama](hdinsight-apps-publish-applications.md): Özel HDInsight uygulamalarınızı Azure Marketi’nde nasıl yayımlayacağınızı öğrenin.
 * [Betik Eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md): ek uygulamalar yüklemek için Betik Eyleminin nasıl kullanılacağını öğrenin.
-* [Linux tabanlı Apache Hadoop kümelerini Resource Manager şablonlarını kullanarak HDInsight oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md): HDInsight kümeleri oluşturmak için Resource Manager şablonlarının nasıl çağrılacağını öğrenin.
-* [HDInsight’ta boş kenar düğümleri kullanma](hdinsight-apps-use-edge-node.md): HDInsight kümesine erişmek, HDInsight uygulamalarını test etmek ve HDInsight uygulamalarını barındırmak için boş bir kenar düğümünü kullanmayı öğrenin.
+* [HDInsight 'ta Kaynak Yöneticisi şablonları kullanarak Linux tabanlı Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md): HDInsight kümeleri oluşturmak için Kaynak Yöneticisi şablonlarının nasıl çağrılacağını öğrenin.
+* [HDInsight’ta boş kenar düğümleri kullanma](hdinsight-apps-use-edge-node.md): HDInsight kümesine erişmek, HDInsight uygulamaları test etmek ve HDInsight uygulamalarını barındırmak için boş bir kenar düğümünü kullanmayı öğrenin.

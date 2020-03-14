@@ -3,12 +3,12 @@ title: Azure Işlevlerinizi bir paketten çalıştırın
 description: Azure Işlevleri çalışma zamanının, işlev uygulaması proje dosyalarınızı içeren bir dağıtım paketi dosyası bağlayarak işlevlerinizi çalıştırmasını sağlayabilirsiniz.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087034"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365280"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Işlevlerinizi bir paket dosyasından çalıştırın
 
@@ -58,32 +58,6 @@ Aşağıda, Azure Blob depolamada barındırılan bir. zip dosyasından çalış
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-### <a name="use-key-vault-references"></a>Key Vault başvurularını kullan
-
-Ek güvenlik için, dış URL 'niz ile birlikte Key Vault başvurularını kullanabilirsiniz. Bu, URL 'YI Rest 'te şifreli tutar ve gizli yönetim ve döndürme için Key Vault faydalanmasına olanak tanır. İlişkili SAS anahtarını kolayca döndürebilmeniz için Azure Blob Storage kullanılması önerilir. Azure Blob depolama, bekleyen bir şekilde şifrelenir ve bu, App Service üzerinde dağıtıldığında Uygulama verilerinizi güvende tutar.
-
-1. Azure Key Vault oluşturun.
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
-    ```
-
-1. Dış URL 'nizi Key Vault bir gizli dizi olarak ekleyin.
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarı oluşturun ve değeri dış URL 'ye Key Vault başvuru olarak ayarlayın.
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
-    ```
-
-Daha fazla bilgi için aşağıdaki makalelere bakın.
-
-- [App Service için Key Vault başvurular](../app-service/app-service-key-vault-references.md)
-- [Bekleyen veriler için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

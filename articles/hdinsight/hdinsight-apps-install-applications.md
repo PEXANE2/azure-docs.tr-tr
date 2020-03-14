@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: a7d83d2bc418e62bc2858e2a7fb35d2113640c83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 22d27d50a7d2c304e5d1a04a9a5eaa03d2f0bfa6
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79272623"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366351"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight üzerinde üçüncü taraf Apache Hadoop uygulamaları yükleme
 
@@ -39,12 +39,12 @@ Aşağıdaki liste, yayımlanan uygulamalara gösterir:
 |[Trifacta Wrangler kurumsal](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01) |Hadoop, Spark, HBase |HDInsight için trifacta Wrangler Enterprise, herhangi bir veri ölçeği için kurumsal çapta veri wrangini destekler. Azure üzerinde Trifacta çalıştırmanın maliyeti, üç aylık abonelik maliyetlerinin yanı sıra sanal makineler için Azure altyapı maliyetlerinin bir birleşimidir. |
 |[Sınıfı olmayan veri platformu](https://unifisoftware.com/platform/) |Hadoop, HBase, fırtınası, Spark |Sınıfı olmayan veri platformu, iş kullanıcısına artımlı gelir sağlayan veri zorluklarını ortadan kaldırmak, maliyetleri azaltmak veya işlemsel karmaşıklığı düşürmek için tasarlanan, sorunsuz bir şekilde tümleştirilmiş self servis veri araçları paketidir. |
 |[Unkıveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |HDInsight Spark kümesi için veri uygulamasını kaldırma. |
-|[Filigran AI temelli veri kataloğu](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |İş terimleriyle verileri otomatik olarak etiketlemek için AI kullanarak verileri düzenler, düzenler ve yönetir. Waterline'nın iş literate Kataloğu, Self Servis analizler, uyumluluk ve idare ve BT yönetimi girişimleri için önemli bir başarı bileşenidir. |
+|[Filigran AI temelli veri kataloğu](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |İş terimleriyle verileri otomatik olarak etiketlemek için AI kullanarak verileri düzenler, düzenler ve yönetir. Sulu boya iş literı kataloğu, self servis analiz, uyumluluk ve idare ve BT yönetimi girişimleri için kritik, başarılı bir bileşendir. |
 
 Bu makalede verilen yönergeler Azure portalı kullanmaktadır. Ayrıca portaldan Azure Resource Manager şablonunu dışarı aktarabilir veya satıcılardan Resource Manager şablonunun bir kopyasını edinmek ve şablonu dağıtmak için Azure PowerShell ve klasik Azure CLI'yı kullanın.  Bkz. [Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
-HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
+HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
 
 ## <a name="install-applications-to-existing-clusters"></a>Var olan kümelere uygulama yükleme
 Aşağıdaki yordamda var olan bir HDInsight kümesine HDInsight uygulamalarının nasıl yükleneceği gösterilmektedir.
@@ -53,7 +53,7 @@ Aşağıdaki yordamda var olan bir HDInsight kümesine HDInsight uygulamaların�
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol menüden **tüm hizmetler** > **Analytics** > **HDInsight kümelerine**gidin.
-3. Listeden bir HDInsight kümesi seçin.  Henüz yoksa öncelikle bir tane oluşturmanız gerekir.  bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+3. Listeden bir HDInsight kümesi seçin.  Henüz yoksa öncelikle bir tane oluşturmanız gerekir.  bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    
     ![HDInsight uygulamaları portal menüsü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)

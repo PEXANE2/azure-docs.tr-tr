@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278382"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366845"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -33,7 +33,7 @@ Azure portalında veya Windows PowerShell 'den birini kullanarak Azure Otomasyon
 
 ### <a name="create-a-runbook-with-powershell"></a>PowerShell ile runbook oluşturma
 
-Boş bir [PowerShell Iş akışı runbook 'u](automation-runbook-types.md#powershell-workflow-runbooks)oluşturmak için [New-azautomationrunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 'ini kullanabilirsiniz. **New-AzAutomationRunbook**için tanımlanan runbook türlerinden birini belirtmek için *tür* parametresini kullanın.
+Boş bir [PowerShell Iş akışı runbook 'u](automation-runbook-types.md#powershell-workflow-runbooks)oluşturmak için [New-azautomationrunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 'ini kullanabilirsiniz. `New-AzAutomationRunbook`için tanımlanan runbook türlerinden birini belirtmek için `Type` parametresini kullanın.
 
 Aşağıdaki örnek, yeni bir boş runbook oluşturmayı gösterir.
 
@@ -75,7 +75,7 @@ Bir betik dosyasını Azure Otomasyonu 'na aktarmak için aşağıdaki yordamı 
 
 ### <a name="import-a-runbook-from-a-script-file-with-windows-powershell"></a>Windows PowerShell ile bir betik dosyasından bir runbook'u İçeri Aktar
 
-Bir betik dosyasını taslak PowerShell Iş akışı runbook 'u olarak içeri aktarmak için [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 'ini kullanın. Runbook zaten mevcutsa, cmdlet 'le *zorla* parametresini kullanmadığınız takdirde içeri aktarma başarısız olur.
+Bir betik dosyasını taslak PowerShell Iş akışı runbook 'u olarak içeri aktarmak için [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 'ini kullanın. Runbook zaten mevcutsa, cmdlet ile `Force` parametresini kullanmadığınız takdirde içeri aktarma başarısız olur.
 
 Aşağıdaki örnek bir runbook 'a bir betik dosyasının nasıl içeri aktarılacağını gösterir.
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Bir runbook'u test etme
 
-Bir runbook 'u test ettiğinizde [taslak sürümü](#publish-a-runbook) yürütülür ve gerçekleştirdiği tüm işlemler tamamlanır. İş geçmişi oluşturulmaz, ancak [Çıkış](automation-runbook-output-and-messages.md#output-stream) ve [uyarı ve hata](automation-runbook-output-and-messages.md#message-streams) akışları test çıkış bölmesinde görüntülenir. [Ayrıntılı akışa](automation-runbook-output-and-messages.md#message-streams) iletiler yalnızca, *VerbosePreference* değişkeni] (Automation-runbook-Output-ve-messages. MD # Preference-Variables) **devam**olarak ayarlandıysa çıkış bölmesinde görüntülenir.
+Bir runbook 'u test ettiğinizde [taslak sürümü](#publish-a-runbook) yürütülür ve gerçekleştirdiği tüm işlemler tamamlanır. İş geçmişi oluşturulmaz, ancak [Çıkış](automation-runbook-output-and-messages.md#output-stream) ve [uyarı ve hata](automation-runbook-output-and-messages.md#message-streams) akışları test çıkış bölmesinde görüntülenir. [Ayrıntılı akışa](automation-runbook-output-and-messages.md#message-streams) iletiler yalnızca `VerbosePreference` değişkeni] (Automation-runbook-Output-ve-messages. MD # Preference-Variables) devam olarak ayarlandıysa çıkış bölmesinde görüntülenir.
 
 Taslak sürümü çalıştırılsa da runbook hala normal şekilde yürütülür ve ortamdaki kaynaklara karşı herhangi bir eylem gerçekleştirir. Bu nedenle, yalnızca üretim dışı kaynaklarda runbook 'ları test etmelisiniz.
 

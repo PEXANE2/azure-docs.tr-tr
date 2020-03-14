@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376943"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263939"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve kısıtlamaları
 
@@ -57,7 +57,7 @@ Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesap
 * Azure AD kiracınız için *contoso.com*gibi özel bir etki alanı yapılandırılmıştır. veya
 * Azure AD Connect, şirket içi dizininizdeki kimlikler eşitleniyor
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 Tek bir geçit ilkesi, bir e-posta adresi *veya* telefon numarası gibi bir dizi kimlik doğrulama verisi gerektirir. Tek bir geçit ilkesi aşağıdaki koşullarda geçerlidir:
 

@@ -1,15 +1,15 @@
 ---
-title: Azure Application Insights nedir? | Microsoft Belgeleri
+title: Azure Application Insights nedir? | Microsoft Docs
 description: Uygulama Performansı Yönetimi ve canlı web uygulamanızın kullanımını izleme.  Sorunları algılayın, önceliklendirin ve tanılayın; kullanıcıların uygulamanızı nasıl kullandığını anlayın.
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: cfd5925c61d1edf1fe9477d3239ec77a4c3de326
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e7cde3ca47afd4db072b734c797a42ecd5a053aa
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666301"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136808"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
 [Azure izleyici](../overview.md)'nin bir özelliği olan Application Insights, geliştiriciler ve DevOps uzmanları için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı uygulamalarınızı izlemek için bu uygulamayı kullanın. Performans sorunlarını otomatik olarak algılar ve sorunları tanılamanıza ve hangi kullanıcıların uygulamanızla gerçekten ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. .NET, Node. js ve Java EE dahil olmak üzere şirket içi, karma veya herhangi bir genel bulut gibi çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
@@ -102,7 +102,7 @@ Hizmeti kullanmaya başlamanın birkaç yolu vardır. Sizin için en uygun yönt
   * [.NET konsol uygulamaları](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
-  * [Python (Önizleme)](../../azure-monitor/app/opencensus-python.md)
+  * [Python](../../azure-monitor/app/opencensus-python.md)
   * [Diğer platformlar](../../azure-monitor/app/platforms.md)
 * **[Web sayfalarınızı](../../azure-monitor/app/javascript.md)** sayfa görünümü, Ajax ve diğer istemci tarafı telemetri için işaretleyin.
 * Visual Studio App Center ile tümleştirerek **[mobil uygulama kullanımını çözümleyin](../../azure-monitor/learn/mobile-center-quickstart.md)** .
@@ -121,7 +121,7 @@ Geliştirme zamanında şunlarla kullanmaya başlayın:
 * [ASP.NET Çekirdeği](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python (Önizleme)](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)
 
 
 ## <a name="support-and-feedback"></a>Destek ve geri bildirim

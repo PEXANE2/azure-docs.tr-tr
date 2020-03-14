@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312626"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137620"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API 'ye Genel Bakış
 
-Bu makalede bazı anahtar Azure Event Hubs [.NET Framework Istemci API 'leri](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)özetlenmektedir. İki kategori vardır: yönetim ve çalışma zamanı API 'Leri. Çalışma zamanı API 'Leri, ileti göndermek ve almak için gereken tüm işlemlerden oluşur. Yönetim işlemleri varlıkları oluşturarak, güncelleştirerek ve silerek Event Hubs varlık durumunu yönetmenizi sağlar.
+Bu makalede bazı anahtar Azure Event Hubs [.NET Framework Istemci API 'leri](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)özetlenmektedir. İki kategori vardır: yönetim ve çalışma zamanı API 'Leri. Çalışma zamanı API 'Leri, ileti göndermek ve almak için gereken tüm işlemlerden oluşur. Yönetim işlemleri varlıkları oluşturarak, güncelleştirerek ve silerek Event Hubs varlık durumunu yönetmenizi sağlar.
 
 [İzleme senaryoları](event-hubs-metrics-azure-monitor.md) hem yönetim hem de çalışma zamanına yayılmalıdır. .NET API 'Lerinde ayrıntılı başvuru belgeleri için [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)ve [eventprocessorhost API](/dotnet/api/microsoft.azure.eventhubs.processor) başvurularına bakın.
 
@@ -26,7 +26,7 @@ Bu makalede bazı anahtar Azure Event Hubs [.NET Framework Istemci API 'leri](ht
 
 Aşağıdaki yönetim işlemlerini gerçekleştirmek için Event Hubs ad alanı üzerinde **Manage** izinleriniz olmalıdır:
 
-### <a name="create"></a>Create
+### <a name="create"></a>Oluşturma
 
 ```csharp
 // Create the event hub
@@ -35,7 +35,7 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>Güncelleştirme
+### <a name="update"></a>Güncelleştir
 
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);

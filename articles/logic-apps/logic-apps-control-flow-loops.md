@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358854"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270582"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemlerini veya işlem dizilerini yinelemek için döngüler oluşturma
 

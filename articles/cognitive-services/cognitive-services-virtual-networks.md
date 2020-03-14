@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647342"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371231"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure bilişsel hizmetler sanal ağlarını yapılandırma
 
@@ -27,19 +27,19 @@ Ağ kuralları etkin olduğunda bilişsel hizmetler kaynağına erişen bir uygu
 > * İstek, hedef bilişsel hizmetler hesabının izin verilen alt ağ listesindeki bir Azure sanal ağı (VNet) içinde çalışan bir hizmetten kaynaklanmalıdır. VNet 'ten kaynaklı isteklerdeki uç noktanın, bilişsel hizmetler hesabınızın [özel alt etki alanı](cognitive-services-custom-subdomains.md) olarak ayarlanması gerekir.
 > * Ya da istek, izin verilen bir IP adresi listesinden geliyor olmalıdır.
 >
-> Engellenen istekler diğer Azure hizmetlerinden, Azure portal, günlük ve ölçüm hizmetlerinden ve bu şekilde devam eder.
+> Engellenen istekleri, Azure portalından, günlük ve ölçüm hizmetlerden, diğer Azure hizmetlerinden gelen içerir ve benzeri.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Senaryolar
 
-Bilişsel hizmetler kaynağınızı güvenli hale getirmek için, önce varsayılan olarak tüm ağlardan (internet trafiği dahil) trafiğe erişimi reddetmek üzere bir kural yapılandırmanız gerekir. Ardından, belirli sanal ağlardan gelen trafiğe erişim veren kurallar yapılandırmanız gerekir. Bu yapılandırma, uygulamalarınız için güvenli bir ağ sınırı oluşturmanıza olanak sağlar. Ayrıca, belirli internet veya şirket içi istemcilerden gelen bağlantıları etkinleştirerek, genel İnternet IP adresi aralıklarından gelen trafiğe erişim izni vermek için kurallar da yapılandırabilirsiniz.
+Bilişsel hizmetler kaynağınızı güvenli hale getirmek için, önce varsayılan olarak tüm ağlardan (internet trafiği dahil) trafiğe erişimi reddetmek üzere bir kural yapılandırmanız gerekir. Ardından, belirli sanal ağlardan gelen trafiğe erişim veren kurallar yapılandırmanız gerekir. Bu yapılandırma, uygulamalarınız için bir güvenli ağ sınırı oluşturmanıza olanak sağlar. Ayrıca, belirli internet veya şirket içi istemcilerden gelen bağlantıları etkinleştirerek, genel İnternet IP adresi aralıklarından gelen trafiğe erişim izni vermek için kurallar da yapılandırabilirsiniz.
 
-Ağ kuralları, REST ve WebSocket dahil olmak üzere Azure bilişsel hizmetler 'e yönelik tüm ağ protokollerinde zorlanır. Azure test konsolları gibi araçları kullanarak verilere erişmek için açık ağ kurallarının yapılandırılması gerekir. Mevcut bilişsel hizmetler kaynaklarına ağ kuralları uygulayabilir veya yeni bilişsel hizmetler kaynakları oluşturabilirsiniz. Ağ kuralları uygulandıktan sonra, tüm istekler için zorlanır.
+Ağ kuralları, REST ve WebSocket dahil olmak üzere Azure bilişsel hizmetler 'e yönelik tüm ağ protokollerinde zorlanır. Azure test konsolları gibi araçları kullanarak verilere erişmek için açık ağ kurallarının yapılandırılması gerekir. Mevcut bilişsel hizmetler kaynaklarına ağ kuralları uygulayabilir veya yeni bilişsel hizmetler kaynakları oluşturabilirsiniz. Bir kez ağ kuralları uygulandığında, tüm istekler için zorunlu.
 
 ## <a name="supported-regions-and-service-offerings"></a>Desteklenen bölgeler ve hizmet teklifleri
 
-Bilişsel hizmetler için sanal ağ desteği, *Canary-Orta ABD EUAP*, *Batı Avrupa*ve *Batı ABD 2* Azure bölgeleriyle sınırlıdır. Ayrıca, bilişsel hizmet tekliflerinin hepsi sanal ağları desteklemez. Aşağıdaki bilişsel hizmet teklifleri, sanal ağların kullanılmasına izin verir. Hizmet teklifi burada listelenmiyorsa, sanal ağları desteklemez.
+Aşağıda listelenen bilişsel hizmetler için sanal ağ desteği *Orta ABD EUAP*, *Orta Güney ABD*, *Doğu ABD*, *Batı ABD 2*, *Kuzey Avrupa*, *Güney Afrika Kuzey*, *Batı Avrupa*, *Orta Hindistan*, *Avustralya Doğu*, *Batı ABD*ve *US gov Virginia* Azure bölgeleriyle sınırlıdır. Hizmet teklifi burada listelenmiyorsa, sanal ağları desteklemez.
 
 > [!div class="checklist"]
 > * [Anomali algılayıcısı](./anomaly-detector/index.yml)
@@ -51,19 +51,40 @@ Bilişsel hizmetler için sanal ağ desteği, *Canary-Orta ABD EUAP*, *Batı Avr
 > * [LUIS](./luis/index.yml)
 > * [Kişiselleştirici](./personalizer/index.yml)
 > * [Metin Analizi](./text-analytics/index.yml)
+> * [Soru-Cevap Oluşturma](./qnamaker/index.yml)
+
+Aşağıda listelenen bilişsel hizmetler için sanal ağ desteği *Orta ABD EUAP*, *Orta Güney ABD*, *Doğu ABD*, *Batı ABD 2*, *Global*ve *US gov Virginia* Azure bölgeleriyle sınırlıdır.
+> [!div class="checklist"]
+> * [Translator Metin Çevirisi](./translator/index.yml)
+
+## <a name="service-tags"></a>Hizmet etiketleri
+Bilişsel hizmetler, yukarıdaki hizmetler için sanal ağ hizmet uç noktalarını desteklemeye ek olarak, giden ağ kuralları yapılandırması için de bir hizmet etiketi destekler. Aşağıdaki hizmetler, Biliveservicesmanagement hizmeti etiketinde bulunur.
+> [!div class="checklist"]
+> * [Anomali algılayıcısı](./anomaly-detector/index.yml)
+> * [Görüntü İşleme](./computer-vision/index.yml)
+> * [Content Moderator](./content-moderator/index.yml)
+> * [Özel Görüntü İşleme](./custom-vision-service/index.yml)
+> * [Ünüzü](./face/index.yml)
+> * [Form tanıyıcı](./form-recognizer/index.yml)
+> * [LUIS](./luis/index.yml)
+> * [Kişiselleştirici](./personalizer/index.yml)
+> * [Metin Analizi](./text-analytics/index.yml)
+> * [Soru-Cevap Oluşturma](./qnamaker/index.yml)
+> * [Translator Metin Çevirisi](./translator/index.yml)
+> * [Konuşma Hizmeti](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Varsayılan ağ erişim kuralını değiştirme
 
-Bilişsel hizmetler kaynakları, varsayılan olarak herhangi bir ağdaki istemcilerden gelen bağlantıları kabul eder. Seçilen ağlara erişimi sınırlandırmak için, önce varsayılan eylemi değiştirmeniz gerekir.
+Bilişsel hizmetler kaynakları, varsayılan olarak herhangi bir ağdaki istemcilerden gelen bağlantıları kabul eder. Seçili ağlar erişimi sınırlamak için önce varsayılan eylem değiştirmeniz gerekir.
 
 > [!WARNING]
-> Ağ kurallarında değişiklik yapmak, uygulamalarınızın Azure bilişsel hizmetler 'e bağlanma yeteneğini etkileyebilir. Varsayılan ağ kuralını **Reddet** olarak ayarlamak, erişim **izni** veren belirli ağ kuralları da uygulanmamışsa veriye tüm erişimi engeller. Erişimi reddetmek üzere varsayılan kuralı değiştirmeden önce ağ kurallarını kullanarak izin verilen ağlara erişim izni vermediğinizden emin olun. Şirket içi Ağınızın IP adreslerini listelemesine izin verirseniz, tüm olası giden genel IP adreslerini şirket içi ağınızdan eklediğinizden emin olun.
+> Ağ kurallarında değişiklik yapmak, uygulamalarınızın Azure bilişsel hizmetler 'e bağlanma yeteneğini etkileyebilir. Varsayılan ağ kuralını **Reddet** olarak ayarlamak, erişim **izni** veren belirli ağ kuralları da uygulanmamışsa veriye tüm erişimi engeller. İzin verilen erişimi engellemek için varsayılan Kuralı değiştirmeden önce ağ kurallarını kullanarak herhangi bir ağa erişim vermek emin olun. Şirket içi Ağınızın IP adreslerini listelemesine izin verirseniz, tüm olası giden genel IP adreslerini şirket içi ağınızdan eklediğinizden emin olun.
 
 ### <a name="managing-default-network-access-rules"></a>Varsayılan ağ erişim kurallarını yönetme
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalında](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -78,7 +99,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
 
 1. Değişikliklerinizi uygulamak için **Kaydet** ' i seçin.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin**' i seçin.
 
@@ -92,7 +113,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).DefaultAction
     ```
 
-1. Varsayılan olarak ağ erişimini reddetmek için varsayılan kuralı ayarlayın.
+1. Varsayılan olarak ağ erişimini engellemek için varsayılan kuralı ayarlayın.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -103,7 +124,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-1. Varsayılan olarak ağ erişimine izin vermek için varsayılan kuralı ayarlayın.
+1. Varsayılan olarak ağ erişim izni vermek için varsayılan kuralı ayarlayın.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -114,7 +135,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin**' i seçin.
 
@@ -126,7 +147,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --query networkRuleSet.defaultAction
     ```
 
-1. Varsayılan olarak ağ erişimini reddetmek için varsayılan kuralı ayarlayın.
+1. Varsayılan olarak ağ erişimini engellemek için varsayılan kuralı ayarlayın.
 
     ```azurecli-interactive
     az cognitiveservices account update \
@@ -134,7 +155,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --default-action Deny
     ```
 
-1. Varsayılan olarak ağ erişimine izin vermek için varsayılan kuralı ayarlayın.
+1. Varsayılan olarak ağ erişim izni vermek için varsayılan kuralı ayarlayın.
 
     ```azurecli-interactive
     az cognitiveservices account update \
@@ -144,7 +165,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
 
 ***
 
-## <a name="grant-access-from-a-virtual-network"></a>Bir sanal ağdan erişim izni verme
+## <a name="grant-access-from-a-virtual-network"></a>Bir sanal ağdan erişim izni ver
 
 Bilişsel hizmetler kaynaklarını yalnızca belirli alt ağlardan erişime izin verecek şekilde yapılandırabilirsiniz. İzin verilen alt ağlar, farklı bir Azure Active Directory kiracısına ait abonelikler de dahil olmak üzere aynı abonelikte veya farklı bir abonelikte bulunan bir VNet 'e ait olabilir.
 
@@ -165,7 +186,7 @@ Bilişsel hizmetler kaynağı ve erişim verilen sanal ağlar, farklı bir Azure
 
 Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, PowerShell veya Azure CLı aracılığıyla yönetebilirsiniz.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalında](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -200,11 +221,11 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
 
 1. Değişikliklerinizi uygulamak için **Kaydet** ' i seçin.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin**' i seçin.
 
-1. Sanal ağ kurallarını listeleyin.
+1. Sanal ağ kuralları listesi.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -243,7 +264,7 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
     > [!TIP]
     > Başka bir Azure AD kiracısına ait bir sanal ağa ait bir ağ kuralı eklemek için, "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" biçiminde tam nitelikli bir **Virtualnetworkresourceıd** parametresi kullanın.
 
-1. Bir sanal ağ ve alt ağ için bir ağ kuralını kaldırın.
+1. Bir sanal ağ ve alt ağ için bir ağ kuralı kaldırın.
 
     ```azurepowershell-interactive
     $subParameters = @{
@@ -260,11 +281,11 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin**' i seçin.
 
-1. Sanal ağ kurallarını listeleyin.
+1. Sanal ağ kuralları listesi.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule list \
@@ -297,7 +318,7 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
     > 
     > Başka bir Azure AD kiracısına ait olan bir sanal ağın alt ağ KIMLIĞINI almak için **abonelik** parametresini kullanabilirsiniz.
 
-1. Bir sanal ağ ve alt ağ için bir ağ kuralını kaldırın.
+1. Bir sanal ağ ve alt ağ için bir ağ kuralı kaldırın.
 
     ```azurecli-interactive
     $subnetid=(az network vnet subnet show \
@@ -314,21 +335,21 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
 > [!IMPORTANT]
 > [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
-## <a name="grant-access-from-an-internet-ip-range"></a>İnternet IP aralığından erişim izni verme
+## <a name="grant-access-from-an-internet-ip-range"></a>İnternet'ten erişim ver IP aralığı
 
 Bilişsel hizmetler kaynaklarını belirli genel İnternet IP adresi aralıklarından erişime izin verecek şekilde yapılandırabilirsiniz. Bu yapılandırma, belirli hizmetlere ve şirket içi ağlara erişim verir ve genel İnternet trafiğini etkin bir şekilde engeller.
 
 `16.17.18.0/24` formunda [CIDR gösterimini](https://tools.ietf.org/html/rfc4632) kullanarak izin verilen Internet adresi aralıklarını veya `16.17.18.19`gıbı ayrı IP adresleri sağlayın.
 
    > [!Tip]
-   > "/31" veya "/32" önek boyutları kullanılarak küçük adres aralıkları desteklenmez. Bu aralıklar tek tek IP adresi kuralları kullanılarak yapılandırılmalıdır.
+   > Küçük adres aralıkları kullanarak "/ 31" veya "/ 32" öneki boyutları desteklenmez. Bu aralıklar, tek tek IP adresi kurallarını kullanarak yapılandırılmalıdır.
 
 IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına ( [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)' de tanımlandığı gıbı) IP kurallarında izin verilmez. Özel ağlarda `10.*`, `172.16.*` - `172.31.*`ve `192.168.*`ile başlayan adresler bulunur.
 
    > [!NOTE]
    > IP ağ kuralları, bilişsel hizmetler kaynağı ile aynı Azure bölgesinden kaynaklanan isteklere hiçbir etkiye sahip değildir. Aynı bölge isteklerine izin vermek için [sanal ağ kurallarını](#grant-access-from-a-virtual-network) kullanın.
 
-Şu anda yalnızca ıPV4 adresleri destekleniyor. Her bilişsel hizmetler kaynağı, [sanal ağ kurallarıyla](#grant-access-from-a-virtual-network)birleştirilebilir en fazla 100 IP ağ kuralını destekler.
+Şu anda yalnızca IPv4 adresleri desteklenir. Her bilişsel hizmetler kaynağı, [sanal ağ kurallarıyla](#grant-access-from-a-virtual-network)birleştirilebilir en fazla 100 IP ağ kuralını destekler.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Şirket içi ağlardan erişimi yapılandırma
 
@@ -340,7 +361,7 @@ IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verili
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla IP ağ kurallarını yönetebilirsiniz.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalında](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -358,11 +379,11 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
 
 1. Değişikliklerinizi uygulamak için **Kaydet** ' i seçin.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin**' i seçin.
 
-1. IP ağ kurallarını listeleyin.
+1. IP ağ kuralları listesi.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -383,7 +404,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
     Add-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Bir IP adresi aralığı için ağ kuralı ekleyin.
+1. Bir IP adresi aralığı için bir ağ kuralı ekleyin.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -394,7 +415,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
     Add-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Tek bir IP adresi için bir ağ kuralını kaldırın.
+1. Tek bir IP adresi için bir ağ kuralı kaldırın.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -405,7 +426,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Bir IP adresi aralığı için ağ kuralını kaldır.
+1. Ağ kuralı için bir IP adresi aralığı kaldırın.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -416,11 +437,11 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin**' i seçin.
 
-1. IP ağ kurallarını listeleyin.
+1. IP ağ kuralları listesi.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule list \
@@ -435,7 +456,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --ip-address "16.17.18.19"
     ```
 
-1. Bir IP adresi aralığı için ağ kuralı ekleyin.
+1. Bir IP adresi aralığı için bir ağ kuralı ekleyin.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule add \
@@ -443,7 +464,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --ip-address "16.17.18.0/24"
     ```
 
-1. Tek bir IP adresi için bir ağ kuralını kaldırın.
+1. Tek bir IP adresi için bir ağ kuralı kaldırın.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule remove \
@@ -451,7 +472,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --ip-address "16.17.18.19"
     ```
 
-1. Bir IP adresi aralığı için ağ kuralını kaldır.
+1. Ağ kuralı için bir IP adresi aralığı kaldırın.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule remove \

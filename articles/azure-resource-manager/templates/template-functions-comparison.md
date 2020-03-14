@@ -4,11 +4,11 @@ description: Değerleri karşılaştırmak için Azure Resource Manager şablond
 ms.topic: conceptual
 ms.date: 09/05/2017
 ms.openlocfilehash: 67cb1c1f92694ca217e99fb6528fb1d00f2cfcf6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357367"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248716"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için karşılaştırma işlevleri
 

@@ -3,17 +3,17 @@ title: Azure PowerShell kullanarak bir VHD 'yi Azure 'a yükleme
 description: Bir VHD 'yi Azure yönetilen diskine yüklemeyi ve Azure PowerShell kullanarak doğrudan karşıya yükleme yoluyla bir yönetilen diski bölgelere kopyalamayı öğrenin.
 author: roygara
 ms.author: rogarana
-ms.date: 05/06/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 883fea1e25ded26c35e96d11edd8f417e96db30e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459991"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369565"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Azure PowerShell kullanarak bir VHD 'yi Azure 'a yükleme
 
@@ -23,11 +23,11 @@ Azure 'da IaaS sanal makineleri için bir yedekleme çözümü sağlıyorsanız,
 
 Şu anda, standart HDD, standart SSD ve Premium SSD tarafından yönetilen diskler için doğrudan karşıya yükleme desteklenir. Henüz Ultra SSD 'Ler için desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [AzCopy ile v10 arasındaki 'ın](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)en son sürümünü indirin.
 - [Azure PowerShell modülünü yükler](/powershell/azure/install-Az-ps).
-- Şirket içinden bir VHD yüklemeyi planlıyorsanız: [Azure için hazırlanan](prepare-for-upload-vhd-image.md)bir VHD, yerel olarak depolanır.
+- Şirket içinden bir VHD yüklemeyi planlıyorsanız: [Azure için hazırlanan](prepare-for-upload-vhd-image.md)sabıt boyutlu VHD, yerel olarak depolanır.
 - Ya da bir kopyalama eylemi gerçekleştirmek istiyorsanız Azure 'da yönetilen bir disk.
 
 ## <a name="create-an-empty-managed-disk"></a>Boş bir yönetilen disk oluşturma
@@ -76,8 +76,6 @@ Bu karşıya yükleme, eşdeğer [Standart HDD](disks-types.md#standard-hdd)ile 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
-
-Yükleme sırasında SAS süresi dolarsa ve `revoke-access` henüz çağırmadıysanız, `grant-access`kullanarak karşıya yüklemeye devam etmek için yeni bir SAS alabilirsiniz.
 
 Karşıya yükleme tamamlandıktan sonra ve diske daha fazla veri yazmanıza gerek kalmadığında, SAS 'yi iptal edin. SAS iptal edildiğinde, yönetilen diskin durumu değişir ve diski bir VM 'ye eklemenize olanak tanır.
 

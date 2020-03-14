@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
 ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360899"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239591"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics kullanmaya başlama
 
@@ -39,7 +39,7 @@ Log Analytics, Azure Izleyici günlük sorgularını yazmak ve yürütmek için 
 ## <a name="firewall-requirements"></a>Güvenlik duvarı gereksinimleri
 Log Analytics kullanmak için tarayıcınızda aşağıdaki adreslere erişim gerekir. Tarayıcınız bir güvenlik duvarı üzerinden Azure portal erişiyorsa, bu adreslere erişimi etkinleştirmeniz gerekir.
 
-| Uri | IP | Bağlantı noktaları |
+| Uri | IP | Bağlantı Noktaları |
 |:---|:---|:---|
 | portal.loganalytics.io | Dinamik | 80,443 |
 | api.loganalytics.io | Dinamik | 80,443 |
@@ -105,7 +105,7 @@ Görüntülenecek "+" ve "-" simgelerinin sütun adının üstüne gelin. Yalnı
 
 Sütun başlığının yanındaki filtre simgesine tıklayın ve açılır pencerede metin _hatasıyla_ _başlayan_ değerleri seçin:
 
-![Filtrele](media/get-started-portal/filter.png)
+![Filtre](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>Sonuçları Sırala ve Gruplandır

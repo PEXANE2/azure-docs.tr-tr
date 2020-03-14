@@ -5,18 +5,18 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0feb0a1a682328f1e23a7d800eb4f5653a6acdd1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1e110bb4711490f53da7628f608f150a2bc3186c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765412"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368885"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Öğretici: Azure hızlı başlangıç şablonlarını kullanma
 
 [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) , topluluk tarafından katkıda bulunulan şablonların bir deposudur. Şablon geliştirmede örnek şablonları kullanabilirsiniz. Bu öğreticide bir Web sitesi kaynak tanımı bulur ve kendi şablonunuza eklersiniz. Yaklaşık **12 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [İçe aktarılmış şablonlar hakkında öğreticiyi](template-tutorial-export-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -63,7 +63,7 @@ Bir şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın.
 
 Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -75,10 +75,10 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addwebapp \
   --resource-group myResourceGroup \
   --template-file $templateFile \

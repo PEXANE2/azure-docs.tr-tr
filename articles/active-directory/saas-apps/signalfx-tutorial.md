@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8ba01ea8a443c4f8a3a8e7b911dcc605ee61ea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967701"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136423"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Öğretici: SignalFx ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Bu öğreticide, SignalFx 'i Azure Active Directory (Azure AD) ile tümleştirme
 * Kullanıcılarınızın Azure AD hesaplarıyla SignalFx 'e otomatik olarak oturum açmalarına olanak sağlar; '
 * Hesaplarınızı tek bir konumda (Azure portal) yönetin.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -57,7 +57,7 @@ SignalFx uygulamasını yönetilen SaaS uygulamaları listenize eklemek için bu
 1. **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. **Yeni uygulama**’yı seçin.
 1. **Galeriden Ekle** bölümünde, ara kutusuna **signalfx**' i girin ve seçin.
-    * Uygulamanın kiracınıza eklenmesi için birkaç dakika beklemeniz gerekebilir.
+     * Uygulamanın kiracınıza eklenmesi için birkaç dakika beklemeniz gerekebilir.
 1. Azure portal açık bırakın ve sonra yeni bir Web sekmesi açın.    
 
 ## <a name="step-2-begin-signalfx-sso-configuration"></a>2\. Adım: SignalFx SSO yapılandırmasına başla
@@ -175,7 +175,7 @@ SSO 'yu test etme ile ilgili olarak aşağıdaki bilgileri ve SignalFx ' de ilk 
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

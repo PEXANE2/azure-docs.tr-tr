@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 611937a709152823ddc1b88b1a0befe4161217cd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376048"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253643"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Karma Kimlik için Gereken Bağlantı Noktaları ve Protokoller
 Aşağıdaki belge, karma kimlik çözümü uygulamaya yönelik gereken bağlantı noktaları ve protokollerle ilgili teknik bir başvurudur. Aşağıdaki çizimi kullanın ve ilgili tabloya başvurun.

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/03/2020
+ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 147a131eb79c74dc38c4217d167c7d65ee8a9274
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046449"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366181"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -42,7 +42,7 @@ Azure AD PowerShell cmdlet 'lerini indirme ve yükleme hakkında daha fazla bilg
 
 ## <a name="activity-based-automatic-renewal"></a>Etkinlik tabanlı otomatik yenileme
 
-Azure AD Intelligence ile gruplar, son zamanlarda kullanılıp kullanıldıklarından bağımsız olarak otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint, takımlar veya Yammer gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel aldığı için Grup sahiplerine göre el ile gerçekleştirilen işlem gereksinimini ortadan kaldırır. Örneğin, bir sahip veya grup üyesi SharePoint 'te belge yükleme gibi bir şey kullanıyorsa, bir ekip kanalını ziyaret edin veya Outlook 'ta gruba bir e-posta gönderin, Grup otomatik olarak yenilenir ve sahip herhangi bir yenileme bildirimi almaz.
+Azure AD Intelligence ile gruplar, son zamanlarda kullanılıp kullanıldıklarından bağımsız olarak otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint veya takımlar gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel aldığı için Grup sahiplerine göre el ile gerçekleştirilen işlem gereksinimini ortadan kaldırır. Örneğin, bir sahip veya grup üyesi SharePoint 'te belge yükleme gibi bir şey kullanıyorsa, bir ekip kanalını ziyaret edin veya Outlook 'ta gruba bir e-posta gönderin, Grup otomatik olarak yenilenir ve sahip herhangi bir yenileme bildirimi almaz.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Grup süre sonunu otomatik olarak yenileme etkinlikleri
 

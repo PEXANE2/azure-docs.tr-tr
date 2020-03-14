@@ -9,18 +9,18 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547668"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248495"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure müşterileri [Azure Portal](https://portal.azure.com)destek istekleri oluşturabilir ve yönetebilir.
+Azure, destek bileti olarak da bilinen destek istekleri oluşturmanıza ve yönetmenize olanak sağlar. [Azure Portal](https://portal.azure.com), bu makalede ele alınan istekleri oluşturabilir ve yönetebilirsiniz. Ayrıca, [Azure destek bileti REST API](/rest/api/support)kullanarak istekleri programlı bir şekilde oluşturabilir ve yönetebilirsiniz.
 
 > [!NOTE]
 > Azure portal URL 'SI, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür.
@@ -37,19 +37,19 @@ Müşteri geri bildirimlerine göre, destek isteği deneyimini üç ana hedefle 
 * **Tümleşik**: bir Azure kaynağıyla ilgili sorun giderirken bağlam değiştirmeden kolayca bir destek isteği açabilirsiniz.
 * **Verimli**: sorununuzu verimli bir şekilde çözmek için destek aracınızın ihtiyaç duyacağı anahtar bilgilerini toplayın.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 Azure portal **Yardım + Destek** alabilirsiniz. Bu, bir hizmetin Azure portal menüsünde, genel üst bilgisinde veya kaynak menüsünden kullanılabilir. Bir destek isteğini kaydedebilmeniz için, uygun izinlere sahip olmanız gerekir.
 
 ### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Bir destek isteği oluşturmak için, bir yönetici olmanız veya [destek Isteği katılımcısı](../../role-based-access-control/built-in-roles.md#support-request-contributor) rolüne atanması gerekir.
+Bir destek isteği oluşturmak için, bir yönetici olmanız veya abonelik düzeyinde [destek Isteği katılımcısı](../../role-based-access-control/built-in-roles.md#support-request-contributor) rolüne atanması gerekir.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Genel üst bilgiden yardım + destek 'e gidin
 
 Azure portal her yerden bir destek talebi başlatmak için:
 
-1. Portalın sağ üst köşesindeki **?** Genel üst bilgisinde. **Yardım + Destek**' i seçin.
+1. Seçin **?** Genel üst bilgisinde. **Yardım + Destek**' i seçin.
 
    ![Yardım ve Destek](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -98,7 +98,7 @@ Sorunla ilgili tüm bilgileri aldıktan sonra, nasıl destek alınacağını se�
 
 Ardından, sizinle nasıl iletişim kurabileceğinizi bilmemiz için **iletişim bilgileri** bölümünü doldurun.
 
-### <a name="review--create"></a>Gözden geçir ve oluştur
+### <a name="review--create"></a>Gözden geçir + oluştur
 
 Her sekme için gerekli tüm bilgileri doldurun ve ardından **gözden geçir + oluştur**' u seçin. Destek için göndereceğiniz ayrıntıları denetleyin. Gerekirse değişiklik yapmak için herhangi bir sekmeye dönün. Destek isteği tamamlandıktan memnun olduğunuzda **Oluştur**' u seçin.
 

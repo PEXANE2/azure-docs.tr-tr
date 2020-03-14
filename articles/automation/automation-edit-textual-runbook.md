@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246415"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367287"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Azure Automation 'da metin runbook 'larını Düzenle
 
@@ -59,7 +59,7 @@ Metin düzenleyicisinde düzenleme için bir runbook 'u açmak üzere aşağıda
 
 ### <a name="insert-an-asset-into-a-runbook"></a>Runbook 'a varlık ekleme
 
-1. Metinsel düzenleyicinin tuvalinde, alt runbook için kodu yerleştirmek istediğiniz yere imleci konumlandırın.
+1. Metinsel düzenleyicinin tuval denetiminde, alt runbook için kodu yerleştirmek istediğiniz yere imleci konumlandırın.
 2. Kitaplık denetimindeki **varlıklar** düğümünü genişletin.
 3. İstenen varlık türü için düğümü genişletin.
 4. Eklemek için varlık adına sağ tıklayın ve **tuvale Ekle**' yi seçin. Değişken [varlıklar](automation-variables.md)için, değişkeni almak veya ayarlamak istediğinize bağlı olarak " **değişkeni al" seçeneğini tuvale ekleyin** veya **"set variable" öğesini tuvale ekleyin**.
@@ -67,7 +67,7 @@ Metin düzenleyicisinde düzenleme için bir runbook 'u açmak üzere aşağıda
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>Windows PowerShell kullanarak bir Azure Otomasyonu runbook 'unu düzenlemeyle
 
-Windows PowerShell ile bir runbook 'u düzenlemek için, seçtiğiniz düzenleyiciyi kullanın ve Runbook 'u bir ". ps1" dosyasına kaydedin. Runbook 'un içeriğini almak için [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 'ini kullanabilirsiniz. Var olan taslak runbook 'unu değiştirilmiş bir ile değiştirmek için [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 'ini kullanabilirsiniz.
+Windows PowerShell ile bir runbook 'u düzenlemek için, seçtiğiniz düzenleyiciyi kullanın ve Runbook 'u bir **. ps1** dosyasına kaydedin. Runbook 'un içeriğini almak için [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 'ini kullanabilirsiniz. Var olan taslak runbook 'unu değiştirilmiş bir ile değiştirmek için [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 'ini kullanabilirsiniz.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Windows PowerShell kullanarak bir runbook 'un içeriğini alma
 

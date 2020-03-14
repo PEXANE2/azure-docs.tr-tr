@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899901"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269815"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
 
@@ -26,7 +26,7 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun
 - .NET geliştirme için kullanmak istediğiniz bir araç yükler. Bu makaledeki adımlarda, [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)'ın nasıl kullanılacağı gösterilmektedir. Visual Studio Code kullanabilirsiniz, bkz. [çalışma C# ](https://code.visualstudio.com/docs/languages/csharp). Ya da farklı bir kod düzenleyicisi kullanabilirsiniz.
 
 > [!IMPORTANT]
@@ -145,7 +145,7 @@ namespace ConsoleApp1
 
 .NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Aşağıdaki kodda, GetCredentialsAsync işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerine göre ServiceClientCredentials nesnesini oluşturur.
 
-1. Açık `Program.cs`.
+1. `Program.cs` programını açın.
 1. Aşağıdaki kodu yapıştırın:
 
 ```csharp

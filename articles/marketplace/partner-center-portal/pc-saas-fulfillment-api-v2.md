@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c0d5deef609796501515fc9c7064a96ca1419b3a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816600"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371537"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS karşılama API 'Leri, sürüm 2 
 
@@ -38,7 +38,7 @@ Aşağıdaki diyagramda, bir sağlama senaryosu için API çağrılarının sır
 
 ![SaaS hizmeti sağlamak için API çağrıları](./media/saas-post-provisioning-api-v2-calls.png)
 
-#### <a name="provisioned"></a>Sağlanan
+#### <a name="provisioned"></a>Sağlandı
 
 Bu durum, sağlanan bir hizmetin kararlı durumudur.
 
@@ -58,7 +58,7 @@ Aşağıdaki diyagramda, SaaS hizmetinden bir güncelleştirme başlatıldığı
 
 ![SaaS hizmetinden güncelleştirme başlatıldığında API çağrıları](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>Alın
+#### <a name="suspended"></a>Askıya alındı
 
 Bu durum, bir müşterinin ödemesinin alınmadığını gösterir. İlkeye göre, aboneliği iptal etmeden önce müşteriye yetkisiz kullanım süresi sağlıyoruz. Bu durumda bir abonelik olduğunda: 
 
@@ -109,10 +109,10 @@ Genel olarak benzersiz tanımlayıcılar ([GUID 'ler](https://en.wikipedia.org/w
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  İçerik türü      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-MS-RequestId    |  İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
 |  x-MS-bağıntıkimliği |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
-|  yetkisi     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Örneğin: "`Bearer <access_token>`". |
+|  authorization     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Örneğin: "`Bearer <access_token>`". |
 |  x-MS-Market-belirteç  |  Kullanıcı SaaS ortağının Web sitesine Azure 'dan yönlendirildiğinde, URL 'deki belirteç sorgu parametresi (örneğin: `https://contoso.com/signup?token=..`). *Note:* URL, kullanılmadan önce tarayıcıdan belirteç değerinin kodunu çözer.  |
 
 *Yanıt kodları:*
@@ -173,10 +173,10 @@ Bir yayımcının tüm SaaS aboneliklerini listeler.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| İçerik türü       |  `application/json`  |
+| Content-Type       |  `application/json`  |
 | x-MS-RequestId     |  İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
 | x-MS-bağıntıkimliği |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
-| yetkisi      |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Örneğin: "`Bearer <access_token>`".  |
+| authorization      |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Örneğin: "`Bearer <access_token>`".  |
 
 *Yanıt kodları:*
 
@@ -281,7 +281,7 @@ Kod: 500<br>
 
 Belirtilen SaaS aboneliğini alır. Lisans bilgilerini ve plan bilgilerini almak için bu çağrıyı kullanın.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Al<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Al<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -294,10 +294,10 @@ Belirtilen SaaS aboneliğini alır. Lisans bilgilerini ve plan bilgilerini almak
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  İçerik türü      |  `application/json`  |
+|  Content-Type      |  `application/json`  |
 |  x-MS-RequestId    |  İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
 |  x-MS-bağıntıkimliği |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
-|  yetkisi     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Örneğin: "`Bearer <access_token>`".  |
+|  authorization     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Örneğin: "`Bearer <access_token>`".  |
 
 *Yanıt kodları:*
 
@@ -364,10 +364,10 @@ Geçerli yayımcı için özel veya genel teklifler olup olmadığını bulmak i
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   İçerik türü     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |   x-MS-RequestId   |   İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
 |  x-MS-bağıntıkimliği  | İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
-|  yetkisi     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`". |
+|  authorization     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`". |
 
 *Yanıt kodları:*
 
@@ -416,10 +416,10 @@ Kod: 500<br>
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  İçerik türü      | `application/json`  |
+|  Content-Type      | `application/json`  |
 |  x-MS-RequestId    | İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
 |  x-MS-bağıntıkimliği  | İstemcideki işlem için benzersiz bir dize değeri. Bu dize, istemci işlemindeki tüm olayları sunucu tarafında bulunan olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
-|  yetkisi     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`". |
+|  authorization     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`". |
 
 *İstek yükü:*
 
@@ -460,7 +460,7 @@ Kod: 500<br>
 
 Abonelikte planı güncelleştirin.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Düzeltmesi<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Düzeltme Eki<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -473,10 +473,10 @@ Abonelikte planı güncelleştirin.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  İçerik türü      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-MS-RequestId    |   İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
 |  x-MS-bağıntıkimliği  |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.    |
-| yetkisi      |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
+| authorization      |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
 
 *İstek yükü:*
 
@@ -539,10 +539,10 @@ Abonelikteki miktarı güncelleştirin.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  İçerik türü      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-MS-RequestId    |   İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
 |  x-MS-bağıntıkimliği  |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.    |
-| yetkisi      |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
+| authorization      |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
 
 *İstek yükü:*
 
@@ -593,7 +593,7 @@ Kod: 500<br>
 
 Belirtilen aboneliği kaldırın ve silin.
 
-##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionid-api-versionapiversion"></a>Sil<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`
+##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Sil<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -606,10 +606,10 @@ Belirtilen aboneliği kaldırın ve silin.
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   İçerik türü     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |  x-MS-RequestId    |   İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.   |
 |  x-MS-bağıntıkimliği  |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.   |
-|  yetkisi     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
+|  authorization     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
 
 *Yanıt kodları:*
 
@@ -659,10 +659,10 @@ Geçerli yayımcı için bekleyen işlemleri listeler.
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   İçerik türü     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |  x-MS-RequestId    |  İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
 |  x-MS-bağıntıkimliği |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
-|  yetkisi     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
+|  authorization     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
 
 *Yanıt kodları:*
 
@@ -722,10 +722,10 @@ Yayımcının belirtilen tetiklenen zaman uyumsuz işlemin durumunu izlemesini s
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  İçerik türü      |  `application/json`   |
+|  Content-Type      |  `application/json`   |
 |  x-MS-RequestId    |   İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
 |  x-MS-bağıntıkimliği |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır.  |
-|  yetkisi     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Örneğin: "`Bearer <access_token>`".  |
+|  authorization     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Örneğin: "`Bearer <access_token>`".  |
 
 *Yanıt kodları:*<br>
 
@@ -772,7 +772,7 @@ Kod: 500<br> İç sunucu hatası.
 
 Bir işlemin durumunu, belirtilen değerlerle başarı veya başarısızlığı gösterecek şekilde güncelleştirin.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Düzeltmesi<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Düzeltme Eki<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 
@@ -786,10 +786,10 @@ Bir işlemin durumunu, belirtilen değerlerle başarı veya başarısızlığı 
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   İçerik türü     | `application/json`   |
+|   Content-Type     | `application/json`   |
 |   x-MS-RequestId   |   İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
 |  x-MS-bağıntıkimliği |  İstemcideki işlem için benzersiz bir dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
-|  yetkisi     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
+|  authorization     |  [JSON Web belirteci (JWT) taşıyıcı belirtecini al](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Örneğin: "`Bearer <access_token>`".  |
 
 *İstek yükü:*
 

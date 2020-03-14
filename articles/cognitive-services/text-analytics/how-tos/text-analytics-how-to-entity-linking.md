@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117492"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203500"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -182,14 +182,13 @@ Metin Analizi API'si durum bilgisiz. Hesabınızda hiç veri depolanmaz ve sonu�
 
 Tüm POST istekleri, kimlik ve algılanan varlık özelliklerine sahip JSON biçimli bir yanıt döndürür.
 
-Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz.
-
+Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [metin farklarını işleme](../concepts/text-offsets.md) .
 
 #### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Örnek v3 yanıtları
 
-Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki işlem için de yanıtlar aşağıda verilmiştir.
+Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki işlem için de yanıtlar aşağıda verilmiştir. 
 
 #### <a name="example-ner-response"></a>Örnek NER yanıtı
 

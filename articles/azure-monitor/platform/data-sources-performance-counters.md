@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394390"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274768"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows ve Linux performansı veri kaynakları
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerinin toplanmasının yanı sıra, neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla performans sayaçlarını toplayabilir.
@@ -86,7 +86,7 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 | Nesne Adı | Sayaç adı |
 |:--|:--|
 | Mantıksal Disk | % Boş ınomdes |
-| Mantıksal Disk | % Boş alan |
+| Mantıksal Disk | Boş Alan Yüzdesi |
 | Mantıksal Disk | % Kullanılan ınomdes |
 | Mantıksal Disk | % Kullanılan alan |
 | Mantıksal Disk | Disk Okuma Bayt/sn |
@@ -129,14 +129,14 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 | İşlemci | % GÇ bekleme süresi |
 | İşlemci | % İyi zaman |
 | İşlemci | % Ayrıcalıklı zaman |
-| İşlemci | % İşlemci zamanı |
+| İşlemci | % İşlemci Zamanı |
 | İşlemci | % Kullanıcı Zamanı |
 | Sistem | Boş fiziksel bellek |
 | Sistem | Disk belleği dosyalarındaki boş alan |
 | Sistem | Boş sanal bellek |
 | Sistem | İşlemler |
 | Sistem | Disk belleği dosyalarında depolanan boyut |
-| Sistem | Çalışma Süresi |
+| Sistem | Çalışma süresi |
 | Sistem | Kullanıcılar |
 
 

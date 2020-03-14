@@ -9,11 +9,11 @@ ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 2685b9b519eaac453726f4923c46f1604cbd4681
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384277"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280865"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Bir sanal ağı ExpressRoute devresine bağlama
 > [!div class="op_single_selector"]
@@ -174,7 +174,7 @@ $connection.RoutingWeight = 100
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ```
 
-*Routingweight* aralığı 0 ile 32000 arasındadır. Varsayılan değer 0’dır.
+*Routingweight* aralığı 0 ile 32000 arasındadır. Varsayılan değer 0'dır.
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath yapılandırma 
 ExpressRoute bağlantı hattınızı [ExpressRoute Direct](expressroute-erdirect-about.md) üzerinde ise ve sanal ağ geçidiniz Ultra Performance veya ErGw3AZ Ise [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 'i etkinleştirebilirsiniz. FastPath, şirket içi ağınız ve sanal ağınız arasında saniye başına paket ve bağlantı gibi veri yolu performansını geliştirir. 

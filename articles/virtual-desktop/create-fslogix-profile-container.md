@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 7cd989d944a35af8b1fd932643826e1aedd03962
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128161"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370211"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
 
@@ -73,7 +73,7 @@ Başlamak için bir Azure NetApp Files hesabı ayarlamanız gerekir.
 7. Arama sonuçlarında **Azure NetApp Files** ' yi seçin ve ardından **Oluştur**' u seçin.
 
 8. **Ekle** düğmesini seçin.
-9. **Yeni NetApp hesabı** dikey penceresi açıldığında, aşağıdaki değerleri girin:
+9. **Yeni NetApp hesabı** sekmesi açıldığında, aşağıdaki değerleri girin:
 
     - **Ad**Için NetApp hesap adınızı girin.
     - **Abonelik**için, açılan menüden 4. adımda ayarladığınız depolama hesabı için aboneliği seçin.
@@ -92,7 +92,7 @@ Sonra yeni bir kapasite havuzu oluşturun:
 1. Azure NetApp Files menüsüne gidin ve yeni hesabınızı seçin.
 2. Hesap menünüzde depolama hizmeti altında **Kapasite havuzları** ' nı seçin.
 3. **Havuz Ekle**' yi seçin.
-4. **Yeni kapasite havuzu** dikey penceresi açıldığında, aşağıdaki değerleri girin:
+4. **Yeni kapasite havuzu** sekmesi açıldığında, aşağıdaki değerleri girin:
 
     - **Ad**için yeni kapasite havuzu için bir ad girin.
     - **Hizmet düzeyi**için, açılan menüden istediğiniz değeri seçin. Çoğu ortam için **Premium** önerilir.
@@ -127,7 +127,7 @@ Ardından, yeni bir birim oluşturmanız gerekir.
 
 1. **Birimler**' i seçin ve ardından **Birim Ekle**' yi seçin.
 
-2. **Birim oluştur** dikey penceresi açıldığında, aşağıdaki değerleri girin:
+2. **Birim oluştur** sekmesi açıldığında, aşağıdaki değerleri girin:
 
     - **Birim adı**için yeni birim için bir ad girin.
     - **Kapasite havuzu**için, açılan menüden yeni oluşturduğunuz kapasite havuzunu seçin.

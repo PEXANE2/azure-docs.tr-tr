@@ -1,19 +1,19 @@
 ---
-title: MariaDB için Azure veritabanı (Önizleme) portalı kurulum yöntemi için özel bağlantı
+title: Özel bağlantı-Azure portal-MariaDB için Azure veritabanı
 description: Azure portal 'ten MariaDB için Azure veritabanı için özel bağlantıyı yapılandırma hakkında bilgi edinin
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a9b3ae1ed28fc22d91760a4af3832a604a419a30
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 3f421cad64caf91b898bb1ec13dc909b93b7f72d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561740"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370347"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Portal kullanarak MariaDB için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Portal kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.  Bu makalede, Azure sanal ağında bir sanal makıne oluşturmak için Azure portal kullanmayı ve Azure özel uç noktası ile MariaDB sunucusu için Azure veritabanını nasıl kullanacağınızı öğreneceksiniz.
 
@@ -126,12 +126,12 @@ Bu bölümde, Azure 'da bir MariaDB sunucusu için Azure veritabanı oluşturaca
 
 Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız. 
 
-1. Ekranın sol üst kısmında Azure portal **kaynak oluştur** > **ağ** > **özel bağlantı merkezi (Önizleme)** seçeneğini belirleyin.
+1. Ekranın sol üst kısmında Azure portal **kaynak oluştur** > **ağ** > **özel bağlantı**' yı seçin.
 2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
 
     ![Özel bağlantıya genel bakış](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. **Özel uç nokta oluştur (Önizleme)-temel**bilgiler için, bu bilgileri girin veya seçin:
+1. **Özel uç nokta oluşturma-temel**bilgiler için, bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -154,7 +154,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     |Hedef alt kaynak |*Mariadbserver* seçin|
     |||
 7. Ileri 'yi seçin **: yapılandırma**.
-8. **Özel uç nokta (Önizleme) oluştur-yapılandırma**' da bu bilgileri girin veya seçin:
+8. **Özel uç nokta oluşturma-yapılandırma**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
