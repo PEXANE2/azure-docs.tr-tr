@@ -1,28 +1,20 @@
 ---
-title: Linux çalıştıran bir sanal makinede yazılım RAID yapılandırma
+title: Linux VM 'de yazılım RAID yapılandırma
 description: Azure 'da Linux üzerinde RAID yapılandırmak için mdaddm 'yi nasıl kullanacağınızı öğrenin.
-services: virtual-machines-linux
-documentationcenter: na
 author: rickstercdn
-manager: gwallace
-editor: tysonn
-tag: azure-service-management,azure-resource-manager
-ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534191"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250263"
 ---
-# <a name="configure-software-raid-on-linux"></a>Linux’ta Yazılım RAID yapılandırma
+# <a name="configure-software-raid-on-linux"></a>Linux 'ta yazılım RAID yapılandırma
 Azure 'daki Linux sanal makinelerinde yazılım RAID 'i kullanarak birden çok bağlı veri diskini tek bir RAID cihazı olarak sunmak için yaygın bir senaryodur. Genellikle bu, performansı artırmak ve yalnızca tek bir disk kullanılmasına kıyasla İyileştirilmiş işleme sağlamak için kullanılabilir.
 
 ## <a name="attaching-data-disks"></a>Veri diskleri iliştirme

@@ -3,12 +3,12 @@ title: Azure CLı ve şablonuyla kaynak dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 17307b1657afc133a7e1b1d7714363329573e48c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382898"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273910"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma
 
@@ -24,13 +24,13 @@ Dağıtımınızı bir Azure aboneliğine ya da bir abonelik içindeki bir kayna
 
 Bir **kaynak grubuna**dağıtmak için [az Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanın:
 
-```azurecli
+```azurecli-interactive
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
 Bir **aboneliğe**dağıtmak için [az Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)kullanın:
 
-```azurecli
+```azurecli-interactive
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
@@ -103,7 +103,7 @@ Parametre değerlerini geçirmek için satır içi parametreleri ya da bir param
 
 Satır içi parametreleri geçirmek için `parameters`değerleri girin. Örneğin, bir dizeye dize ve dizi geçirmek bir bash kabuğudur, şunu kullanın:
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
   --resource-group testgroup \
   --template-file demotemplate.json \
@@ -114,7 +114,7 @@ Windows komut Istemi (CMD) veya PowerShell ile Azure CLı kullanıyorsanız, diz
 
 Ayrıca dosyanın içeriğini alabilir ve bu içeriği satır içi bir parametre olarak sağlayabilirsiniz.
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
   --resource-group testgroup \
   --template-file demotemplate.json \

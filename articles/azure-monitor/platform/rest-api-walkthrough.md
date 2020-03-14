@@ -5,11 +5,11 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.openlocfilehash: 42a7034c586f4e01066e989dcb2b9fae4eebfa85
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250838"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248560"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Izleme REST API izlenecek yol
 

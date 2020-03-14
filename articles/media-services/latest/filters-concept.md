@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388104"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251472"
 ---
 # <a name="filters"></a>Filtreler
 
@@ -51,7 +51,7 @@ Filtreleri anlatmak için aşağıdaki özellikleri kullanabilirsiniz.
 |---|---|
 |firstQuality|Filtrenin ilk kalite bit hızı.|
 |presentationTimeRange|Sunum zaman aralığı. Bu özellik bildirim başlangıç/bitiş noktaları, sunum penceresi uzunluğu ve canlı başlangıç konumunu filtrelemek için kullanılır. <br/>Daha fazla bilgi için bkz. [Presentationtimerange](#presentationtimerange).|
-|izler|Seçim koşullarını izler. Daha fazla bilgi için bkz. [parçalar](#tracks)|
+|İzler|Seçim koşullarını izler. Daha fazla bilgi için bkz. [parçalar](#tracks)|
 
 ### <a name="presentationtimerange"></a>presentationTimeRange
 

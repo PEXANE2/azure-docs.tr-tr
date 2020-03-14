@@ -4,11 +4,11 @@ description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363779"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273624"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -94,10 +94,10 @@ Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler ö
 
 **Özellik** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green]
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green]
-Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green]
-Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
+Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
+Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
