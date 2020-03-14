@@ -11,11 +11,11 @@ ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365300"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246051"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler
 
@@ -29,9 +29,9 @@ ms.locfileid: "78365300"
 |-|-------------------|-----------------|
 | Hedef kullanıcılar | Kimlik uzmanlığına sahip veya olmayan tüm uygulama geliştiricileri. | Kimlik uzmanları, sistem tümleştiricileri, danışmanları ve şirket içi kimlik takımları. OpenID Connect akışlarıyla rahat ve kimlik sağlayıcılarını ve talep tabanlı kimlik doğrulamasını anlayın. |
 | Yapılandırma yöntemi | Kullanıcı dostu Kullanıcı arabirimi (UI) ile Azure portal. | XML dosyalarını doğrudan düzenleyip Azure portal karşıya yükleyin. |
-| UI özelleştirme | HTML, CSS ve JavaScript gibi tam UI özelleştirmesi.<br><br>Özel dizelerle çok dilli destek. | naklettiğiniz |
-| Öznitelik özelleştirmesi | Standart ve özel öznitelikler. | naklettiğiniz |
-| Belirteç ve oturum yönetimi | Özel belirteç ve çoklu oturum seçenekleri. | naklettiğiniz |
+| UI özelleştirme | HTML, CSS ve JavaScript gibi tam UI özelleştirmesi.<br><br>Özel dizelerle çok dilli destek. | Naklettiğiniz |
+| Öznitelik özelleştirmesi | Standart ve özel öznitelikler. | Naklettiğiniz |
+| Belirteç ve oturum yönetimi | Özel belirteç ve çoklu oturum seçenekleri. | Naklettiğiniz |
 | Kimlik Sağlayıcıları | Önceden tanımlanmış yerel veya sosyal sağlayıcı ve Azure Active Directory kiracılar ile Federasyon gibi çoğu OıDC kimlik sağlayıcısı. | Standartlara dayalı OıDC, OAUTH ve SAML.  REST API 'lerle tümleştirme kullanılarak da kimlik doğrulaması mümkündür. |
 | Kimlik görevleri | Yerel veya çok sayıda sosyal hesapla kaydolma veya oturum açma.<br><br>Self servis parola sıfırlama.<br><br>Profil düzenleme.<br><br>Multi-Factor Authentication.<br><br>Belirteçleri ve oturumları özelleştirin.<br><br>Belirteç akışlarına erişin. | Özel kimlik sağlayıcılarını kullanarak Kullanıcı akışlarıyla aynı görevleri tamamlayıp özel kapsamlar kullanın.<br><br>Kayıt sırasında başka bir sistemde bir kullanıcı hesabı sağlayın.<br><br>Kendi e-posta hizmet sağlayıcınızı kullanarak bir hoş geldiniz e-postası gönderin.<br><br>Azure AD B2C dışında bir kullanıcı deposu kullanın.<br><br>Bir API kullanarak güvenilir bir sistemle Kullanıcı tarafından sağlanmış bilgileri doğrulayın. |
 

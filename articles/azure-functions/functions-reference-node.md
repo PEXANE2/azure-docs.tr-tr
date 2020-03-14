@@ -4,12 +4,12 @@ description: JavaScript kullanarak işlevleri geliştirmeyi anlayın.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356800"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276835"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -363,6 +363,7 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 | _bilgisinde_ | Yanıt üst bilgilerini içeren bir nesne.             |
 | _isRaw_   | Yanıt için biçimlendirmenin atlandığını gösterir.    |
 | _durumlarına_  | Yanıtın HTTP durum kodu.                     |
+| _özgü_ | Yanıtta ayarlanan HTTP tanımlama bilgisi nesneleri dizisi. HTTP tanımlama bilgisi nesnesi, `maxAge` veya `sameSite`gibi `name`, `value`ve diğer tanımlama bilgisi özelliklerine sahiptir. |
 
 ### <a name="accessing-the-request-and-response"></a>İstek ve yanıta erişme 
 

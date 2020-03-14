@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358481"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244517"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve Oracle 'a kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -173,8 +173,8 @@ Ve Oracle 'dan verileri kopyalamak için, veri kümesinin Type özelliğini `Ora
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği `OracleTable`olarak ayarlanmalıdır. | Yes |
-| schema | Şemanın adı. |Kaynak, havuz için Evet Hayır  |
-| table | Tablo/görünüm adı. |Kaynak, havuz için Evet Hayır  |
+| şema | Şemanın adı. |Kaynak, havuz için Evet Hayır  |
+| tablo | Tablo/görünüm adı. |Kaynak, havuz için Evet Hayır  |
 | tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve `table`kullanın. | Kaynak, havuz için Evet Hayır |
 
 **Örnek:**
@@ -368,7 +368,7 @@ Ve Oracle 'a veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kopy
 | TIMESTAMP WITH TIME ZONE |Dize |
 | UNSIGNED INTEGER |Sayı |
 | VARCHAR2 |Dize |
-| XML |Dize |
+| {1&gt;XML&lt;1} |Dize |
 
 > [!NOTE]
 > Veri türleri zaman ARALıĞı ve Aralık gün/sanıye desteklenmez.

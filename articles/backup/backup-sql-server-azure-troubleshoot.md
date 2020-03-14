@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602328"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247832"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -21,6 +21,7 @@ Yedekleme işlemi ve sınırlamaları hakkında daha fazla bilgi için bkz. [Azu
 Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için, **AzureBackupWindowsWorkload** uzantısını bu sanal makineye yüklemelisiniz. **Usererrorsqlnosysadminmembership**hatasını alırsanız, SQL Server Örneğiniz gereken yedekleme izinlerine sahip olmadığı anlamına gelir. Bu hatayı onarmak için [VM Izinlerini ayarlama](backup-azure-sql-database.md#set-vm-permissions)bölümündeki adımları izleyin.
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Sorunları bulma ve yapılandırma sorunlarını giderme
+
 Bir kurtarma hizmetleri Kasası oluşturup yapılandırdıktan sonra, veritabanlarının keşfedilmesinden ve yedeklemenin yapılandırılması iki adımlı bir işlemdir.<br>
 
 ![SQL](./media/backup-azure-sql-database/sql.png)
@@ -35,9 +36,25 @@ Yedekleme yapılandırması sırasında, SQL sanal makinesi ve örnekleri **VM '
 
 - SQL VM 'nin veritabanlarını korumak için kullanılan kasada kayıtlı olduğu kasasında [yedekleme yapılandırma](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) adımlarını izleyin.
 
-SQL VM 'nin yeni kasada kayıtlı olması gerekiyorsa, eski kasadaki kaydı kaldırılmalıdır.  Bir SQL VM 'sinin kasadan silinmesi, korunan tüm veri kaynaklarının korunmasını gerektirir ve yedeklenen verileri silebilirsiniz. Yedeklenen verileri silme, bozucu bir işlemdir.  SQL VM kaydını silmek için tüm önlemleri inceledikten ve gerçekleştirdikten sonra, bu VM 'yi yeni bir kasa ile kaydedin ve yedekleme işlemini yeniden deneyin.
+SQL VM 'nin yeni kasada kayıtlı olması gerekiyorsa, eski kasadaki kaydı kaldırılmalıdır.  Kasadan bir SQL VM kaydının silinmesi, korunan tüm veri kaynaklarının korunmasını gerektirir ve sonra yedeklenen verileri silebilirsiniz. Yedeklenen verileri silme, bozucu bir işlemdir.  SQL VM kaydını silmek için tüm önlemleri inceledikten ve gerçekleştirdikten sonra, bu VM 'yi yeni bir kasa ile kaydedin ve yedekleme işlemini yeniden deneyin.
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>Yedekleme ve kurtarma sorunlarını giderme  
 
+Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabilir veya bu işlemler takılmış olabilir. Bunun nedeni, sanal makinenizde virüsten koruma programlarının olması olabilir. En iyi uygulama olarak, aşağıdaki adımları öneririz:
+
+1. Aşağıdaki klasörleri virüsten koruma taramayla hariç tutun:
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    `C:\`, *systemdrive*'nizin harfiyle değiştirin.
+
+1. Bir VM içinde çalışan aşağıdaki üç işlemi virüsten koruma taramayla hariç tutun:
+
+    - Iaaswlpluginsvc. exe
+    - Iaasworkloadkoordinatorservice. exe
+    - TriggerExtensionJob. exe
+
+1. SQL, virüsten koruma programlarıyla çalışmak üzere bazı yönergeler de sunmaktadır. Ayrıntılar için [Bu makaleye](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) bakın.
 
 ## <a name="error-messages"></a>Hata iletileri
 
@@ -149,7 +166,6 @@ Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınır
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
 VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak. | VM, Azure Backup hizmeti, Azure depolama veya Azure Active Directory Hizmetleri için giden bağlantı gerektirir.| -Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup hizmeti, Azure depolama veya Azure Active Directory Hizmetleri Azure Backup giden erişime izin vermek için AzureBackup Service etiketini kullanmanız gerekir. Erişim vermek için bu [adımları](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) izleyin.<br>-DNS 'nin Azure uç noktalarını çözümlediğinden emin olun.<br>-Sanal makinenin internet erişimini engelleyen bir yük dengeleyicinin arkasında olup olmadığını denetleyin. VM 'lere ortak IP atayarak bulma işlemi çalışacaktır.<br>-Yukarıdaki üç hedef hizmete yapılan çağrıları engelleyen bir güvenlik duvarı/virüsten koruma/proxy olmadığından emin olun.
-
 
 ## <a name="re-registration-failures"></a>Yeniden kayıt sorunları
 

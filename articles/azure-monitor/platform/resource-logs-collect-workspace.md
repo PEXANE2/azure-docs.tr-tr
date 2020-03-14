@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391049"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248599"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında Azure platform günlüklerini toplayın
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, güçlü günlük sorgularını kullanarak ve ayrıca uyarılar gibi diğer Azure Izleyici özelliklerinden yararlanmak için, bu dosyayı Azure Izleyici günlüklerinde toplanan diğer izleme verileriyle analiz etmenizi sağlayan bir Log Analytics çalışma alanında kaynak günlüklerinin toplanması açıklanır. görüntüler. 

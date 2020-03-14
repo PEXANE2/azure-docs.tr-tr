@@ -1,9 +1,9 @@
 ---
-title: Genişletilmiş etkinlikler
+title: Genişletilmiş olaylar
 description: Azure SQL veritabanı 'nda genişletilmiş olayları (XEvents) ve olay oturumlarının Microsoft SQL Server olay oturumlarından biraz farklı bir şekilde nasıl farklı olduğunu açıklar.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822292"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213954"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL veritabanında genişletilmiş olaylar
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -34,7 +34,7 @@ Azure SQL veritabanı ve Microsoft SQL Server için genişletilmiş olaylar hakk
 - [Hızlı başlangıç: SQL Server genişletilmiş olaylar](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Genişletilmiş Olaylar](https://msdn.microsoft.com/library/bb630282.aspx)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu konu başlığı altında zaten bir bilginiz olduğunu varsaymaktadır:
 
@@ -65,7 +65,7 @@ Aşağıdaki öğelerin önceki pozlaması, olay dosyasını [hedef](#AzureXEven
     - Aşama 1, Azure depolama kapsayıcısı oluşturmak için PowerShell 'dir.
     - 2\. aşama, Azure Storage kapsayıcısını kullanan Transact-SQL ' dir.
 
-## <a name="transact-sql-differences"></a>Transact-SQL farklılıkları
+## <a name="transact-sql-differences"></a>Transact-SQL farkları
 
 
 - SQL Server [olay oturumu oluştur](https://msdn.microsoft.com/library/bb677289.aspx) komutunu YÜRÜTTÜĞÜNÜZDE **on Server** yan tümcesini kullanırsınız. Ancak SQL veritabanı 'nda bunun yerine **on Database** yan tümcesini kullanın.
@@ -91,7 +91,7 @@ Genişletilmiş olaylar özelliği, çeşitli [Katalog görünümleri](https://m
 
 Microsoft SQL Server, benzer katalog görünümlerinde. *database\_* yerine *. Server\_* dahil olmak üzere adlar bulunur. Ad deseninin **sys. server_event_%** olduğu görülüyor.
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Yeni dinamik yönetim görünümleri [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Yeni dinamik yönetim görünümleri [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim görünümlerine (DMVs)](https://msdn.microsoft.com/library/bb677293.aspx) sahiptir. DMVs, *etkin* olay oturumları hakkında bilgi ister.
 
@@ -142,7 +142,7 @@ SELECT
 ```
 
 
-<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a> &nbsp;
+<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a>&nbsp;
 
 ## <a name="targets-for-your-sql-database-event-sessions"></a>SQL veritabanı olay oturumlarınız için hedefler
 

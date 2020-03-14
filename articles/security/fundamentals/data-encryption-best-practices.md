@@ -4,7 +4,7 @@ description: Bu makalede, yerleşik Azure özellikleri kullanılarak veri güven
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389987"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243503"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure veri güvenliği ve şifreleme için en iyi yöntemler
 Bu makalede veri güvenliği ve şifreleme için en iyi uygulamalar açıklanmaktadır.
@@ -108,7 +108,7 @@ Azure VPN Gateway, SSL/TLS ve HTTPS kullanımına özgü en iyi uygulamalar aşa
 **Ayrıntı**: [Noktadan siteye VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)kullanın.
 
 **En iyi yöntem**: adanmış bir yüksek hızlı WAN bağlantısı üzerine daha büyük veri kümeleri taşıyın.   
-**Ayrıntı**: [ExpressRoute](/azure/expressroute/expressroute-introduction)kullanın. ExpressRoute kullanmayı seçerseniz, ek koruma için [SSL/TLS](https://support.microsoft.com/kb/257591) veya diğer protokolleri kullanarak uygulama düzeyindeki verileri de şifreleyebilirsiniz.
+**Ayrıntı**: [ExpressRoute](/azure/expressroute/expressroute-introduction)kullanın. ExpressRoute kullanmayı seçerseniz, ek koruma için SSL/TLS veya diğer protokolleri kullanarak uygulama düzeyindeki verileri de şifreleyebilirsiniz.
 
 **En iyi yöntem**: Azure Portal üzerinden Azure depolama ile etkileşim kurun.   
 **Ayrıntı**: tüm işlemler https üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/)ile etkileşim kurmak için [depolama REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) https üzerinden de kullanabilirsiniz.

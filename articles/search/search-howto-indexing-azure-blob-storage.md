@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 32912f0aef91bd4a7c831a82d1e83f00a1e0f131
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379570"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283114"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Blob depolamada belge dizin oluşturma
 
@@ -289,16 +289,56 @@ Blob 'ları ayrıştırırken veya bir dizine belge eklerken, herhangi bir işle
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Artımlı dizin oluşturma ve silme algılaması
+
 Bir blob Dizin Oluşturucuyu bir zamanlamaya göre çalışacak şekilde ayarlarken, blob 'un `LastModified` zaman damgası tarafından belirlendiği şekilde yalnızca değiştirilen Blobları yeniden dizinleyebilirsiniz.
 
 > [!NOTE]
 > Değişiklik algılama ilkesi belirtmeniz gerekmez – artımlı dizin oluşturma sizin için otomatik olarak etkinleştirilir.
 
-Belge silmeyi desteklemek için "geçici silme" yaklaşımını kullanın. Blob 'ları sağ silme, ilgili belgeler arama dizininden kaldırılmaz. Bunun yerine, aşağıdaki adımları kullanın:  
+Belge silmeyi desteklemek için "geçici silme" yaklaşımını kullanın. Blob 'ları sağ silme, ilgili belgeler arama dizininden kaldırılmaz.
 
-1. Bilişsel Arama Azure 'da mantıksal olarak silindiğini göstermek için blob 'a özel meta veri özelliği ekleyin
-2. Veri kaynağında geçici silme algılama ilkesi yapılandırma
-3. Dizin Oluşturucu blob 'u işledikten sonra (Dizin Oluşturucu durum API 'SI tarafından gösterildiği gibi), blobu fiziksel olarak silebilirsiniz
+Geçici silme yaklaşımını uygulamak için iki yol vardır. Her ikisi de aşağıda açıklanmıştır.
+
+### <a name="native-blob-soft-delete-preview"></a>Yerel blob geçici silme (Önizleme)
+
+> [!IMPORTANT]
+> Yerel blob geçici silme desteği önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](https://docs.microsoft.com/azure/search/search-api-preview) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
+
+Bu yöntemde, Azure Blob depolama tarafından sunulan [Yerel blob geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) özelliğini kullanacaksınız. Veri kaynağının yerel bir geçici silme ilkesi kümesi varsa ve Dizin Oluşturucu, geçici olarak silinen bir duruma geçiş yapılmış bir blob bulursa, Dizin Oluşturucu bu belgeyi dizinden kaldırır.
+
+Aşağıdaki adımları kullanın:
+1. [Azure Blob depolaması için yerel geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)özelliğini etkinleştirin. Bekletme ilkesini, Dizin Oluşturucu aralığı zamanlamadan çok daha yüksek bir değere ayarlamanız önerilir. Bu şekilde, Dizin oluşturucuyu çalıştıran bir sorun varsa veya dizinlemek için çok sayıda belgeniz varsa, dizin oluşturucunun, geçici olarak silinen Blobları işlemesi çok fazla zaman vardır. Azure Bilişsel Arama Dizin oluşturucular, bir belgeyi, geçici olarak silinen bir durumdayken blobu işliyorsa siler.
+1. Veri kaynağında yerel bir blob geçici silme algılama ilkesi yapılandırın. Aşağıda bir örnek gösterilmiştir. Bu özellik önizlemede olduğundan, önizleme REST API kullanmanız gerekir.
+1. Dizin oluşturucuyu çalıştırın veya dizin Oluşturucuyu bir zamanlamaya göre çalışacak şekilde ayarlayın. Dizin Oluşturucu çalıştırıldığında ve blobu işlediğinde belge dizinden kaldırılır.
+
+    ```
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
+    Content-Type: application/json
+    api-key: [admin key]
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : null },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+        }
+    }
+    ```
+
+#### <a name="reindexing-undeleted-blobs"></a>Silinmeyen Blobların yeniden oluşturulması
+
+Depolama hesabınızda yerel geçici silme özelliği etkin olan bir blob 'u Azure Blob depolamadan silerseniz, blob, bu Blobun süre içinde geri alma seçeneği sunarak geçici olarak silinen bir duruma geçer. Bir Azure Bilişsel Arama veri kaynağında yerel bir blob geçici silme ilkesi olduğunda ve Dizin Oluşturucu geçici olarak silinen bir blobu işlediğinde, bu belgeyi dizinden kaldırır. Blob daha sonra silindiğinde, Dizin Oluşturucu her zaman o blobu yeniden **kullanmaz** . Bunun nedeni, dizin oluşturucunun blob `LastModified` zaman damgasına göre hangi Blobların dizine eklenebileceğini belirler. Geçici olarak silinen bir blob silinmeden `LastModified` zaman damgası güncellenmez. bu nedenle, Dizin Oluşturucu silinmemiş blob 'dan daha yeni `LastModified` zaman damgalarına sahip Blobları zaten işledi. Silinmeyen bir Blobun yeniden dizinlendiğinden emin olmak için bu Blobun meta verilerini yeniden kaydetmeniz gerekir. Meta verileri değiştirmeniz gerekmez, ancak meta verileri yeniden kaydetmeniz, dizin oluşturucunun bu blobu yeniden eklemesi gerektiğini bilmesi için Blobun `LastModified` zaman damgasını güncelleştirir.
+
+### <a name="soft-delete-using-custom-metadata"></a>Özel meta verileri kullanarak geçici silme
+
+Bu yöntemde, bir belgenin arama dizininden ne zaman kaldırılacağını göstermek için özel meta veri özelliğini kullanacaksınız.
+
+Aşağıdaki adımları kullanın:
+
+1. Mantıksal olarak silindiğini göstermek için blob 'a özel meta veri özelliği ekleyin Bilişsel Arama.
+1. Veri kaynağında geçici silme sütunu algılama ilkesi yapılandırın. Aşağıda bir örnek gösterilmiştir.
+1. Dizin Oluşturucu blobu işledikten ve belgeyi dizinden sildikten sonra, blob 'u Azure Blob depolama için silebilirsiniz.
 
 Örneğin, aşağıdaki ilke, bir blob 'un bir meta veri özelliği `IsDeleted`, `true`değeri ile bir blob 'unu kabul eder:
 
@@ -310,13 +350,17 @@ Belge silmeyi desteklemek için "geçici silme" yaklaşımını kullanın. Blob 
         "name" : "blob-datasource",
         "type" : "azureblob",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "container" : { "name" : "my-container", "query" : null },
         "dataDeletionDetectionPolicy" : {
             "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
             "softDeleteColumnName" : "IsDeleted",
             "softDeleteMarkerValue" : "true"
         }
-    }   
+    }
+
+#### <a name="reindexing-undeleted-blobs"></a>Silinmeyen Blobların yeniden oluşturulması
+
+Veri kaynağınızda geçici bir silme sütunu algılama ilkesi ayarlarsanız, işaret değeri olan bir Blobun özel meta veri özelliğini ekleyin ve ardından dizin oluşturucuyu çalıştırın, Dizin Oluşturucu bu belgeyi dizinden kaldırır. Bu belgenin yeniden dizin oluşturmak isterseniz, söz konusu Blobun için geçici silme meta verisi değerini değiştirmeniz ve Dizin oluşturucuyu yeniden çalıştırmanız yeterlidir.
 
 ## <a name="indexing-large-datasets"></a>Büyük veri kümelerini dizinleme
 

@@ -1,30 +1,47 @@
 ---
-title: HTTP ve HTTPS uç noktalarını çağırma
-description: Azure Logic Apps kullanarak giden istekleri HTTP ve HTTPS uç noktalarına gönderin
+title: HTTP veya HTTPS kullanarak hizmet uç noktalarını çağırma
+description: Azure Logic Apps 'den hizmet uç noktalarına giden HTTP veya HTTPS istekleri gönderme
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117989"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297227"
 ---
-# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak HTTP veya HTTPS uç noktalarına giden çağrıları gönderin
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps 'den HTTP veya HTTPS üzerinden hizmet uç noktalarını çağır
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik http tetikleyicisi veya eylemiyle, istekleri HERHANGI bir http veya HTTPS uç noktasına düzenli olarak gönderen otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Bunun yerine gelen HTTP veya HTTPS çağrılarını almak ve yanıtlamak için yerleşik [istek tetikleyicisi veya Yanıt eylemini](../connectors/connectors-native-reqres.md)kullanın.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik http tetikleyicisi veya EYLEMIYLE, http veya https üzerinden hizmet uç noktalarına istek gönderen otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Örneğin, bu uç noktayı belirli bir zamanlamaya göre denetleyerek Web siteniz için hizmet uç noktasını izleyebilirsiniz. Bu uç noktada belirtilen olay, Web siteniz gibi olduğunda, olay mantıksal uygulamanızın iş akışını tetikler ve bu iş akışındaki eylemleri çalıştırır. Bunun yerine gelen HTTPS çağrılarını alıp yanıtlamak istiyorsanız, yerleşik [istek tetikleyicisi veya Yanıt eylemini](../connectors/connectors-native-reqres.md)kullanın.
 
-Örneğin, belirli bir zamanlamaya göre bu uç noktayı denetleyerek Web siteniz için hizmet uç noktasını izleyebilirsiniz. Bu uç noktada ilgili Web siteniz gibi belirli bir olay gerçekleştiğinde, olay mantıksal uygulamanızın iş akışını tetikler ve belirtilen eylemleri çalıştırır.
+> [!NOTE]
+> Hedef uç noktanın özelliği temel alınarak, HTTP Bağlayıcısı Aktarım Katmanı Güvenliği (TLS) 1,0, 1,1 ve 1,2 sürümlerini destekler. Logic Apps, uç nokta ile mümkün olan en yüksek desteklenen sürümü kullanarak görüşür. Örneğin, uç nokta 1,2 ' ı destekliyorsa, bağlayıcı önce 1,2 ' i kullanır. Aksi halde, bağlayıcı desteklenen bir sonraki en yüksek sürümü kullanır.
 
-Bir uç noktayı düzenli bir zamanlamaya göre denetlemek veya *yoklamak* IÇIN, http tetikleyicisini iş akışınızın ilk adımı olarak kullanabilirsiniz. Her denetim için tetikleyici, uç noktaya bir çağrı veya *istek* gönderir. Uç noktanın yanıtı, mantıksal uygulamanızın iş akışının çalışıp çalışmadığını belirler. Tetikleyici, mantıksal uygulamanızdaki eylemlere karşılık gelen tüm içerik üzerinde geçiş yapar.
+Bir uç noktayı yinelenen bir zamanlamaya göre denetlemek veya *yoklamak* IÇIN, [http tetikleyicisini](#http-trigger) iş akışınıza ilk adım olarak ekleyin. Tetikleyici uç noktayı her denetlediğinde tetikleyici, uç noktaya bir istek çağırır veya bir *istek* gönderir. Uç noktanın yanıtı, mantıksal uygulamanızın iş akışının çalışıp çalışmadığını belirler. Tetikleyici, mantıksal uygulamanızdaki eylemlere bitiş noktası yanıtından içerik geçirir.
 
-HTTP eylemini, istediğiniz zaman uç noktayı çağırmak için iş akışınızda başka herhangi bir adım olarak kullanabilirsiniz. Uç noktanın yanıtı, iş akışınızın kalan eylemlerinin nasıl çalışacağını belirler.
+Bir uç noktayı iş akışınızda başka herhangi bir yerde çağırmak için [http eylemini ekleyin](#http-action). Uç noktanın yanıtı, iş akışınızın kalan eylemlerinin nasıl çalışacağını belirler.
 
-Hedef uç noktanın özelliği temel alınarak, HTTP Bağlayıcısı Aktarım Katmanı Güvenliği (TLS) 1,0, 1,1 ve 1,2 sürümlerini destekler. Logic Apps, uç nokta ile mümkün olan en yüksek desteklenen sürümü kullanarak görüşür. Bu nedenle, örneğin, uç nokta 1,2 ' ı destekliyorsa, bağlayıcı önce 1,2 ' i kullanır. Aksi halde, bağlayıcı desteklenen bir sonraki en yüksek sürümü kullanır.
+> [!IMPORTANT]
+> Bir HTTP tetikleyicisi veya eylemi bu üstbilgileri içeriyorsa Logic Apps, bu üst bilgileri herhangi bir uyarı veya hata görüntülenmeden oluşturulan istek iletisinden kaldırır:
+>
+> * `Accept-*`
+> * `Allow`
+> * Bu özel durumlarla `Content-*`: `Content-Disposition`, `Content-Encoding`ve `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Host`
+> * `Last-Modified`
+> * `Origin`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Logic Apps, bu üst bilgilerle bir HTTP tetikleyicisi veya eylemi kullanan mantıksal uygulamaları kaydetmenizi durdurmasa da, Logic Apps bu üst bilgileri yoksayar.
+
+Bu makalede mantıksal uygulamanızın iş akışına bir HTTP tetikleyicisi veya eyleminin nasıl ekleneceği gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -36,13 +53,15 @@ Hedef uç noktanın özelliği temel alınarak, HTTP Bağlayıcısı Aktarım Ka
 
 * Hedef uç noktayı çağırmak istediğiniz mantıksal uygulama. HTTP tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). HTTP eylemini kullanmak için mantıksal uygulamanızı istediğiniz tetikleyiciyle başlatın. Bu örnek, ilk adım olarak HTTP tetikleyicisini kullanır.
 
+<a name="http-trigger"></a>
+
 ## <a name="add-an-http-trigger"></a>HTTP tetikleyicisi ekleme
 
 Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "http" yazın. **Tetikleyiciler** listesinden **http** tetikleyicisi ' ni seçin.
+1. Tasarımcı 'nın arama kutusunda **yerleşik**' i seçin. Arama kutusuna filtreniz olarak `http` girin. **Tetikleyiciler** listesinden **http** tetikleyicisi ' ni seçin.
 
    ![HTTP tetikleyicisi seçin](./media/connectors-native-http/select-http-trigger.png)
 
@@ -63,11 +82,13 @@ Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrıs�
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
+<a name="http-action"></a>
+
 ## <a name="add-an-http-action"></a>HTTP eylemi ekleme
 
 Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek, ilk adım olarak HTTP tetikleyicisini kullanır.
 
@@ -75,7 +96,7 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
    Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "http" yazın. **Eylemler** listesinden **http** eylemini seçin.
+1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak `http` girin. **Eylemler** listesinden **http** eylemini seçin.
 
    ![HTTP eylemi seçin](./media/connectors-native-http/select-http-action.png)
 

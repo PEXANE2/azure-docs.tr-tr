@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254902"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273273"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -84,7 +84,7 @@ Linux makinelerini yedeklemek istiyorsanız, bu destek aşağıda verilmiştir:
 
 ## <a name="daylight-saving-time-support"></a>Gün ışığından yararlanma süresi desteği
 
-Azure Backup, Azure VM yedeklemeleri için gün ışığından yararlanma saatine yönelik otomatik saat ayarlamasını desteklemez. Yedekleme ilkelerini gerektiği şekilde el ile değiştirin.
+Azure Backup, Azure VM yedeklemeleri için gün ışığından yararlanma saatine yönelik otomatik saat ayarlamasını desteklemez. Yedeklemenin saatini ileriye veya geriye doğru kaydıramaz. Yedeklemenin istenen zamanda çalıştığından emin olmak için yedekleme ilkelerini gerektiği şekilde el ile değiştirin.
 
 ## <a name="disk-deduplication-support"></a>Disk yinelenenleri kaldırma desteği
 

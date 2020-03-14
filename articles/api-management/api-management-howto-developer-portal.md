@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6b11242831e68787fe225d4d0b66638f1388de6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126541"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297994"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -156,6 +156,12 @@ Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerini
     </expose-headers>
 </cors>
 ```
+
+CORS 'yi genel kapsama uygulayarak tüm API 'Ler için etkinleştirildiğinden emin olun.
+
+1. Azure portal API Management hizmetinizin **API 'leri** bölümünde **tüm API** 'lere gidin.
+2. **Gelen işleme** bölümündeki **</>** simgesine tıklayın.
+3. İlkeyi, XML dosyasının **<inbound>** bölümüne ekleyin. **<origin>** değerinin geliştirici portalının etki alanıyla eşleştiğinden emin olun.
 
 > [!NOTE]
 > 

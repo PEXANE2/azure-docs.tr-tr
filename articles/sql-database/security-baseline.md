@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d9cf78f3cc5399a9e974cd9b4f0b3f24c80dacce
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943648"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214115"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure SQL veritabanı için Azure Güvenlik temeli
 
@@ -238,13 +238,12 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 Ayrıca, Azure SQL tanılama telemetrisini Azure SQL Analytics, Azure SQL veritabanlarının, elastik havuzların ve yönetilen örneklerin performansını ölçekteki ve birden çok abonelik üzerinde izleyen bir bulut çözümü olarak da kullanabilirsiniz. Azure SQL veritabanı performans ölçümlerini toplamanıza ve görselleştirmenize yardımcı olabilir ve performans sorunlarını gidermek için yerleşik zekaya sahiptir.
 
-
 Azure SQL veritabanınız için Denetim kurma:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-Azure Izleyici ile platform günlükleri ve ölçümleri toplama:
+Azure Izleyici ile ölçümleri ve kaynak günlüklerini toplama:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 

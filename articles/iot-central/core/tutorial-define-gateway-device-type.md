@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623451"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298844"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türü tanımlama
 
@@ -105,8 +105,8 @@ Bir ağ geçidi cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikle
 
     | Görünen ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | None          | Tarih   |
-    | Müşteri adı     | None          | Dize |
+    | Son Hizmet Tarihi | Yok          | Tarih   |
+    | Müşteri adı     | Yok          | Dize |
 
 2. **Kaydet**’i seçin.
 
@@ -203,6 +203,9 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 * Cihaz telemetrisi için görselleştirme tanımlayın.
 * İlişkiler ekleyin.
 * Cihaz şablonunuzu yayımlayın.
+
+> [!NOTE]
+> VS Code tabanlı kod oluşturma şu anda IoT Central modeli oluşturulan ağ geçidi cihazları için desteklenmiyor.
 
 Ardından şunları yapabilirsiniz:
 

@@ -1,19 +1,19 @@
 ---
-title: MariaDB için Azure veritabanı (Önizleme) CLı kurulum yöntemi için özel bağlantı
+title: Özel bağlantı-Azure CLı-MariaDB için Azure veritabanı
 description: Azure CLı 'dan MariaDB için Azure veritabanı için özel bağlantıyı yapılandırma hakkında bilgi edinin
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b2d9fb9d4dc8268c0be45f8a6f24759a7be58427
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561808"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371809"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>CLı kullanarak MariaDB için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>CLı kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu makalede, Azure CLı 'yı kullanarak Azure sanal ağında bir VM oluşturma ve Azure özel uç noktası ile MariaDB sunucusu için Azure veritabanı oluşturma hakkında bilgi edineceksiniz.
 

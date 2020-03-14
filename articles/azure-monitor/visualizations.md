@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
 ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372215"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274118"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Izleyici 'den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
@@ -47,7 +47,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 ## <a name="azure-monitor-views"></a>Azure Izleyici görünümleri
 [Azure izleyici 'de görünümler](platform/view-designer.md) , günlük verileriyle özel görselleştirmeler oluşturmanıza olanak sağlar. Bunlar, topladıkları verileri sunmak için [çözümler izlenerek](insights/solutions.md) kullanılır.
 
-![Görüntüle](media/visualizations/view.png)
+![Görünüm](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Yararları
 - Günlük verileri için zengin görselleştirmeler.

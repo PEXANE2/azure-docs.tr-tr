@@ -1,28 +1,20 @@
 ---
 title: 'Öğretici: List Entity-LUSıS'
-titleSuffix: Azure Cognitive Services
 description: Bir listedeki önceden tanımlanmış öğelerle eşleşen verileri alma. Listedeki her öğenin tam olarak eşleşen eş anlamlıları da olabilir
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297416"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Öğretici: liste varlığıyla tam metin ile eşleşen verileri al
 
 Bu öğreticide, önceden tanımlanmış bir öğe listesiyle tam olarak eşleşen verilerin nasıl alınacağını anlayın.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -42,7 +34,7 @@ Liste varlığı bu veri türü için iyi bir seçimdir:
 
 * Veri değerleri bilinen bir kümedir.
 * Küme, bu varlık türü için maksimum LUIS [sınırlarını](luis-boundaries.md) aşmaz.
-* Konuşmadaki metin bir eşanlamlı sözcük veya kurallı ad ile tam olarak eşleşiyor. LUSıS, tam metin eşleştirmelerinin ötesinde listeyi kullanmaz. Sözcük kökü, plurals ve diğer çeşitlemeler yalnızca bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün.
+* Söylenişi 'teki metin, eş anlamlı veya kurallı bir ada sahip büyük/küçük harf duyarsız bir eşleşmedir. LUSıS, listeyi eşleşmenin ötesinde kullanmaz. Sözcük kökü, plurals ve diğer çeşitlemeler yalnızca bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün.
 
 > [!CAUTION]
 > Bir liste varlığına veya bir tümcecik listesi olan makine tarafından öğrenilen bir varlık için tanımlayıcı olarak tercih ettiğinizden emin değilseniz, en iyi ve en esnek uygulama, tanımlayıcı olarak bir ifade listesi olan makine tarafından öğrenilen bir varlık kullanmaktır. Bu yöntem, LUSıS 'in Ayıklanacak verilerin değerlerini öğrenmesine ve genişletmesine izin verir.
@@ -72,7 +64,7 @@ Birincil ad ve eş anlamlılar örnekleri şunlardır:
 |Kurallı ad|Eş anlamlılar|
 |--|--|
 |Derin çanak|derin<br>derin kırak<br>Mürekke<br>kalın Crust|
-|Yatay/dikey kaydırma|normal<br>Özgün<br>olağan<br>düzenli Crust<br>özgün Crust<br>normal Crust|
+|Kaydır|normal<br>Özgün<br>olağan<br>düzenli Crust<br>özgün Crust<br>normal Crust|
 |Peluş|peluş Crust|
 |İnce|ince Crust<br>Skinny<br>Skinny Crust|
 
@@ -108,7 +100,7 @@ Birincil ad ve eş anlamlılar örnekleri şunlardır:
 
     `Deliver 2 deep dish hawaiian pizzas and a thin pepperoni`
 
-    Son sorgu dizesi parametresi ifade **s**orgusu olan `query` öğesidir.
+    Son sorgu dizesi parametresi ifade `query`s**orgusu olan**  öğesidir.
 
 
     ```json

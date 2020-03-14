@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
-ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082424"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209411"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanma
 
@@ -43,7 +43,7 @@ Bu bölümde, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza ya
 
 - [El ile ayarlama](sql-database-performance-guidance.md)
 - [Performansı izlemek için DMVs 'yi kullanma](sql-database-monitoring-with-dmvs.md)
-- [Performansı izlemek için sorgu deposunu kullanma](sql-database-operate-query-store.md)
+- [Performansı izlemek için sorgu deposunu kullanma](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Akıllı İçgörüler performans sorunlarını giderme](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [Akıllı İçgörüler tanılama günlüğünü kullanın](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Bellek Içi OLTP alanını izleme](sql-database-in-memory-oltp-monitoring.md)

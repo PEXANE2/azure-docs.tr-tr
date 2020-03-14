@@ -3,12 +3,12 @@ title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356114"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276692"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -186,7 +186,7 @@ def main(req: func.HttpRequest,
 İşlev çağrıldığında, HTTP isteği işleve `req`olarak geçirilir. Yol URL 'sindeki _kimliğe_ göre Azure Blob depolama alanından bir giriş alınır ve işlev gövdesinde `obj` olarak kullanılabilir hale getirilir.  Burada, belirtilen depolama hesabı, işlev uygulaması tarafından kullanılan depolama hesabı olan AzureWebJobsStorage App ayarında bulunan bağlantı dizesidir.
 
 
-## <a name="outputs"></a>Çıktılar
+## <a name="outputs"></a>Çıkışlar
 
 Çıkış hem dönüş değeri hem de çıkış parametrelerinde ifade edilebilir. Yalnızca bir çıkış varsa, dönüş değerini kullanmanızı öneririz. Birden çok çıkış için çıkış parametrelerini kullanmanız gerekir.
 
@@ -334,7 +334,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin. 
 
-Örneğin:
+Örnek:
 
 ```python
 import azure.functions
@@ -394,7 +394,18 @@ Yerel geliştirme için, uygulama ayarları [yerel. Settings. json dosyasında t
 
 ## <a name="python-version"></a>Python sürümü 
 
-Şu anda Azure Işlevleri hem Python 3.6. x hem de 3.7. x (resmi cpi dağıtımlarını) destekler. Yerel olarak çalıştırılırken, çalışma zamanı kullanılabilir Python sürümünü kullanır. Azure 'da işlev uygulamanızı oluştururken belirli bir Python sürümü istemek için [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) komutunun `--runtime-version` seçeneğini kullanın. Yalnızca İşlev Uygulaması oluşturulurken sürüm değişikliğine izin verilir.  
+Azure Işlevleri aşağıdaki Python sürümlerini destekler:
+
+| İşlevler sürümü | Python<sup>*</sup> sürümleri |
+| ----- | ----- |
+| 3.x | 3.8<br/>3.7<br/>3.6 |
+| 2.x | 3.7<br/>3.6 |
+
+<sup>*</sup> Resmi Cpyıthon dağıtımları
+
+Azure 'da işlev uygulamanızı oluştururken belirli bir Python sürümü istemek için [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) komutunun `--runtime-version` seçeneğini kullanın. Işlevler çalışma zamanı sürümü `--functions-version` seçeneği tarafından ayarlanır. İşlev uygulaması oluşturulduğunda ve değiştirilemezler, Python sürümü ayarlanır.  
+
+Yerel olarak çalıştırılırken, çalışma zamanı kullanılabilir Python sürümünü kullanır. 
 
 ## <a name="package-management"></a>Paket yönetimi
 

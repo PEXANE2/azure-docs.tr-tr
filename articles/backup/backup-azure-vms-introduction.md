@@ -3,16 +3,22 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 67ff06e882ec61dff58922606469ac27a8bbf7fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273221"
+ms.locfileid: "79297366"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
 Bu makalede, [Azure Backup hizmetinin](backup-introduction-to-azure-backup.md) Azure sanal makinelerini (VM) nasıl yedeklediği açıklanır.
+
+Azure Backup, sanal makinelerinizdeki verilerin istenmeden yok edilmesiyle karşı koruma sağlamak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedeklemeler, kurtarma noktalarının yerleşik yönetimi ile bir kurtarma hizmetleri kasasında depolanır. Yapılandırma ve ölçekleme basittir, yedeklemeler en iyi duruma getirilir ve gerektiğinde kolayca geri yükleyebilirsiniz.
+
+Yedekleme işleminin bir parçası olarak, bir [anlık görüntü alınır](#snapshot-creation)ve veriler, üretim iş yükleri üzerinde hiçbir etkilenmeden kurtarma hizmetleri kasasına aktarılır. Anlık görüntü, [burada](#snapshot-consistency)açıklandığı gibi farklı tutarlılık düzeyleri sağlar.
+
+Azure Backup Ayrıca, iş yükü algılayan, 15 dakikalık RPO (kurtarma noktası hedefi) sunan ve ayrı veritabanlarının yedeklenme ve geri yüklenmesine izin veren [SQL Server](backup-azure-sql-database.md) ve [SAP HANA](sap-hana-db-about.md) gibi veritabanı iş yükleri için özelleştirilmiş tekliflerdir.
 
 ## <a name="backup-process"></a>Yedekleme işlemi
 
@@ -66,7 +72,7 @@ Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
   - Betiklerin ve son betiklerin başarıyla yürütülmesi Azure Backup kurtarma noktasını uygulamayla tutarlı olarak işaretler. Ancak, Özel betikler kullanırken, son olarak uygulama tutarlılığından sorumlu olursunuz.
   - Betikleri yapılandırma hakkında [daha fazla bilgi edinin](backup-azure-linux-app-consistent.md) .
 
-### <a name="snapshot-consistency"></a>Anlık görüntü tutarlılığı
+## <a name="snapshot-consistency"></a>Anlık görüntü tutarlılığı
 
 Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanmaktadır:
 

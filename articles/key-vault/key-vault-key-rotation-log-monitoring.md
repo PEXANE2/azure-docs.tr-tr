@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195524"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218411"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Anahtar döndürme ve denetimle Azure Key Vault ayarlama
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195524"
 
 Anahtar kasasından sonra anahtarları ve gizli dizileri depolamak için kullanmaya başlayabilirsiniz. Uygulamalarınızın artık anahtarlarınızı veya gizli dizileri kalıcı hale getirmek zorunda kalmaz, ancak gerektiğinde bunları kasadan talep edebilir. Anahtar Kasası, uygulamanızın davranışını etkilemeden anahtarları ve gizli dizileri güncelleştirmenize olanak tanır. Bu, anahtar ve gizli yönetibilmeniz için bir dizi olasılıktan oluşur.
 
->[!IMPORTANT]
-> Bu makaledeki örnekler yalnızca gösterim amacıyla verilmiştir. Bunlar, üretim kullanımı için tasarlanmamıştır. 
+Bu makalede, depolama hesabı anahtarları için zamanlanmış bir döndürmeyi uygulama, Anahtar Kasası denetim günlüklerini izleme ve beklenmeyen istekler yapıldığında uyarı oluşturma adımları gösterilmektedir. 
 
-Bu makalede izlenecek yol:
+Önce tercih ettiğiniz yöntemi kullanarak bir Anahtar Kasası oluşturmanız gerekir:
 
-- Gizli dizi depolamak için Azure Key Vault kullanılmasına bir örnek. Bu makalede, depolanan gizli dizi, bir uygulama tarafından erişilen Azure depolama hesabı anahtarıdır. 
-- Bu depolama hesabı anahtarının zamanlanan bir döndürmesini uygulama.
-- Anahtar Kasası denetim günlüklerini izleme ve beklenmeyen istekler yapıldığında uyarı oluşturma.
+- [Azure CLı kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](quick-create-cli.md)
+- [Azure PowerShell kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](quick-create-powershell.md)
+- [Azure portal kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](quick-create-portal.md)
 
-> [!NOTE]
-> Bu makalede, anahtar kasanızın ilk kurulumu ayrıntılı olarak açıklanmaz. Bu bilgi için bkz. [Azure Key Vault nedir?](key-vault-overview.md). Platformlar arası komut satırı arabirimi yönergeleri için bkz. [Azure CLI kullanarak Key Vault yönetme](key-vault-manage-with-cli2.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>Anahtar Kasası ayarlama
+## <a name="store-a-secret"></a>Gizli dizi depolayın
 
 Bir uygulamanın Key Vault bir gizli dizi almasına izin vermek için, öncelikle gizli anahtarı oluşturmanız ve bunu kasanıza yüklemeniz gerekir.
 

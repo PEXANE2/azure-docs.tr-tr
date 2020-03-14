@@ -4,11 +4,11 @@ description: Bu makalede, Azure VM 'lerde SAP HANA veritabanlarını yedeklemek 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: 8496dc4996cac68535bfe9be30e4b5f72e2d5721
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255971"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252447"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM’leri üzerinde SAP HANA veritabanlarının yedeklerine yönelik destek matrisi
 

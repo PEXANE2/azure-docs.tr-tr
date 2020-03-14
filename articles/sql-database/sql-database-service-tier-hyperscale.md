@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
 ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359830"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255840"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -82,7 +82,7 @@ Tek bir konum/işlem içindeki tüm veri yönetimi işlevlerinin merkezi olan ge
 
 Aşağıdaki diyagramda, bir hiper ölçek veritabanındaki farklı düğüm türleri gösterilmektedir:
 
-![mimari](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![architecture](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
 Hiper ölçekli bir veritabanı aşağıdaki farklı bileşen türlerini içerir:
 
@@ -166,8 +166,8 @@ Bir Azure SQL veritabanı hiper ölçek veritabanını, bir olağanüstü durum 
 
 Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde kullanılabilir:
 
-- Avustralya Doğu
-- Avustralya Güneydoğu
+- Doğu Avustralya
+- Güneydoğu Avustralya
 - Güney Brezilya
 - Orta Kanada
 - Orta ABD
@@ -176,18 +176,18 @@ Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde k
 - Doğu Asya
 - Doğu ABD
 - Doğu ABD 2
-- Fransa Orta
-- Japonya Doğu
-- Japonya Batı
-- Kore Orta
-- Kore Güney
+- Orta Fransa
+- Doğu Japonya
+- Batı Japonya
+- Güney Kore - Orta
+- Güney Kore - Güney
 - Orta Kuzey ABD
 - Kuzey Avrupa
 - Güney Afrika Kuzey
 - Orta Güney ABD
 - Güneydoğu Asya
-- Birleşik Krallık Güney
-- Birleşik Krallık Batı
+- Güney Birleşik Krallık
+- Batı Birleşik Krallık
 - Batı Avrupa
 - Batı ABD
 - Batı ABD 2

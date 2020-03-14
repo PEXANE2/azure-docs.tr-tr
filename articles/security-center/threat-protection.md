@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 8bd66b602201dbbb47a1fdba879c52a8ac441762
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 031423d72aecacc1feed692aaa32bcd1ff7efbab
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372989"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282711"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -127,6 +127,10 @@ Güvenlik Merkezi, farklı düzeylerde tehdit koruması sağlar:
 
 Ayrıca, güvenlik araştırmacıları küresel takımımız tehdidi sürekli olarak izler. Bulundukları gibi kapsayıcıya özgü uyarıları ve güvenlik açıklarını ekler.
 
+> [!TIP]
+> [Bu blog gönderisine](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)ait yönergeleri izleyerek kapsayıcı uyarılarının benzetimini yapabilirsiniz.
+
+
 
 
 
@@ -209,6 +213,9 @@ Daha fazla bilgi için bkz.
 * [Azure depolama için tehdit koruması uyarılarının listesi](alerts-reference.md#alerts-azurestorage)
 
 
+> [!TIP]
+> [Bu blog gönderisine](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)ilişkin yönergeleri Izleyerek Azure Storage uyarılarının benzetimini yapabilirsiniz.
+
 
 
 
@@ -266,7 +273,7 @@ Azure WAF lisansına sahipseniz, WAF uyarılarınız ek bir yapılandırma gerek
 
 Dağıtılmış hizmet reddi (DDoS) saldırılarına kolayca çalıştırılabilir. Özellikle de uygulamalarınızı buluta taşıyorsanız harika bir güvenlik sorunu haline gelmiştir. 
 
-DDoS saldırıları, bir uygulamanın kaynaklarını tüketerek uygulamanın geçerli kullanıcılar için kullanılamaz duruma gelmesini amaçlar. DDoS saldırıları Internet üzerinden erişilebilecek tüm uç noktaları hedefleyebilir.
+DDoS saldırısı, uygulamanın kaynaklarını tüketmeye çalışır ve uygulamayı meşru kullanıcılar için kullanılamaz hale getirir. DDoS saldırıları Internet üzerinden erişilebilecek tüm uç noktaları hedefleyebilir.
 
 DDoS saldırılarına karşı savunmak için, Azure DDoS koruması için bir lisans satın alın ve en iyi uygulama tasarımı uygulamalarından olduğunuzdan emin olun. DDoS koruması farklı hizmet katmanları sağlar. Daha fazla bilgi için bkz. [Azure DDoS korumasına genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 

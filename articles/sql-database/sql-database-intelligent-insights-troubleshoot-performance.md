@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: 739bba7ed9ab4770a762c08fccc422ce048ae11d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587388"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214087"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler Azure SQL veritabanı performans sorunlarını giderme
 
-Bu sayfada Azure SQL veritabanı hakkında bilgi ve [akıllı içgörüler](sql-database-intelligent-insights.md) veritabanı performansı tanılama günlüğü aracılığıyla algılanan yönetilen örnek performans sorunları sağlanmaktadır. Tanılama günlüğü telemetrisi, [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)'ya veya özel DevOps uyarısı ve raporlama özelliklerine yönelik bir üçüncü taraf çözümüne akışı yapılabilir.
+Bu sayfada Azure SQL veritabanı hakkında bilgi ve [akıllı içgörüler](sql-database-intelligent-insights.md) kaynak günlüğü aracılığıyla algılanan yönetilen örnek performans sorunları sağlanmaktadır. Ölçümler ve kaynak günlükleri, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-into-azure-storage)'ya veya üçüncü taraf bir çözüme akışla eklenebilir.
 
 > [!NOTE]
 > Akıllı İçgörüler kullanan hızlı bir SQL veritabanı performans sorunlarını giderme kılavuzu için, bu belgede [Önerilen sorun giderme akışı](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) Akış Çizelgesine bakın.
->
 
 ## <a name="detectable-database-performance-patterns"></a>Algılanabilir veritabanı performans desenleri
 
-Akıllı İçgörüler, sorgu yürütme bekleme süreleri, hatalar veya zaman aşımları temelinde SQL veritabanı ve yönetilen örnek veritabanları ile ilgili performans sorunlarını otomatik olarak algılar. Tanılama günlüğüne algılanan performans desenlerine çıkış verir. Algılanabilir performans desenleri aşağıdaki tabloda özetlenmiştir.
+Akıllı İçgörüler, sorgu yürütme bekleme süreleri, hatalar veya zaman aşımları temelinde Azure SQL veritabanı 'ndaki veritabanları ile ilgili performans sorunlarını otomatik olarak algılar. Akıllı İçgörüler çıktıları SQL veritabanı kaynak günlüğüne performans desenleri algıladı. Algılanabilir performans desenleri aşağıdaki tabloda özetlenmiştir.
 
 | Algılanabilir performans desenleri | Azure SQL veritabanı ve elastik havuzlar için açıklama | Yönetilen örnekteki veritabanlarının açıklaması |
 | :------------------- | ------------------- | ------------------- |
@@ -82,7 +81,7 @@ Bu performans modelinde, iş yükünün artmasından kaynaklanan sorunlar veya d
 
 Bu algılama, birkaç ölçüm birleşimi aracılığıyla yapılır. Ölçülen temel ölçüm, son iş yükü temeliyle karşılaştırıldığında iş yükündeki artışı algılıyor. Diğer algılama biçimi, etkin çalışan iş parçacıklarında, sorgu performansını etkileyecek kadar büyük bir artışı ölçmeye dayanır.
 
-Daha ciddi bir biçimde, iş yükü SQL veritabanının iş yükünü işleyememesi nedeniyle sürekli olarak oluşabilir. Sonuç, iş yükü yığın oluşturma koşulunun bulunduğu sürekli büyüyen bir iş yükü boyutudur. Bu koşul nedeniyle, iş yükünün yürütme için beklediği zaman artar. Bu durum, en ciddi veritabanı performans sorunlarından birini temsil eder. Bu sorun, durdurulan çalışan iş parçacıklarının sayısında artışı izleyerek algılanır. 
+Daha ciddi bir biçimde, iş yükü SQL veritabanının iş yükünü işleyememesi nedeniyle sürekli olarak oluşabilir. Sonuç, iş yükü yığın oluşturma koşulunun bulunduğu sürekli büyüyen bir iş yükü boyutudur. Bu koşul nedeniyle, iş yükünün yürütme için beklediği zaman artar. Bu durum, en ciddi veritabanı performans sorunlarından birini temsil eder. Bu sorun, durdurulan çalışan iş parçacıklarının sayısında artışı izleyerek algılanır.
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
@@ -102,29 +101,29 @@ Bellek baskısı daha ciddi bir biçimde bellek kümesi koşulundadır. Bu durum
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-Tanılama günlüğü, bellek nesne deposu ayrıntılarını, yüksek bellek kullanımı ve ilgili zaman damgaları için en yüksek neden olarak işaretlenen büro (yani, çalışan iş parçacığı) ile birlikte verir. Sorun giderme için temel olarak bu bilgileri kullanabilirsiniz. 
+Tanılama günlüğü, bellek nesne deposu ayrıntılarını, yüksek bellek kullanımı ve ilgili zaman damgaları için en yüksek neden olarak işaretlenen büro (yani, çalışan iş parçacığı) ile birlikte verir. Sorun giderme için temel olarak bu bilgileri kullanabilirsiniz.
 
 En yüksek bellek kullanımıyla birlikte bulunan kişilerle ilgili sorguları iyileştirebilirsiniz veya kaldırabilirsiniz. Ayrıca, kullanmayı planlamadığınız verileri sorgulediğinizden da emin olabilirsiniz. Her zaman sorgularda bir WHERE yan tümcesi kullanmak iyi bir uygulamadır. Ayrıca, verileri taramak yerine aramak için kümelenmemiş dizinler oluşturmanızı öneririz.
 
 Ayrıca, birden çok veritabanı üzerinde iyileştirerek veya dağıtarak iş yükünü azaltabilirsiniz. Ya da iş yükünüzü birden çok veritabanı arasında dağıtabilirsiniz. Bu çözümler mümkün değilse, veritabanı için kullanılabilir bellek kaynakları miktarını artırmak için SQL veritabanı aboneliğinizin fiyatlandırma katmanını artırmayı göz önünde bulundurun.
 
-Ek sorun giderme önerileri için bkz. [bellek desteği: çok sayıda adı olan, bilinmeyen SQL Server bellek tüketicisi](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Ek sorun giderme önerileri için bkz. [bellek desteği: çok sayıda adı olan, bilinmeyen SQL Server bellek tüketicisi](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994).
 
 ## <a name="locking"></a>Lemeye
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
-Bu performans stili, son yedi günlük performans temeliyle karşılaştırıldığında aşırı veritabanı kilitlenmesinin algılandığı geçerli veritabanı performansında düşme olduğunu gösterir. 
+Bu performans stili, son yedi günlük performans temeliyle karşılaştırıldığında aşırı veritabanı kilitlenmesinin algılandığı geçerli veritabanı performansında düşme olduğunu gösterir.
 
 Modern RDBMS 'de kilitleme, mümkün olduğunda birden çok eş zamanlı çalışan ve paralel veritabanı işlemi çalıştırarak performansın kapladıkları çok iş parçacıklı sistemleri uygulamak için gereklidir. Bu bağlamda kilitleme, yalnızca tek bir işlemin, gerekli olan ve kaynaklara yönelik başka bir işlemle rekabet olmayan satırlara, sayfalara, tablolara ve dosyalara özel olarak erişebileceği yerleşik erişim mekanizmasına başvurur. Kaynakları kullanım için kilitleyen işlem ile işiniz bittiğinde, bu kaynaklardaki kilit serbest bırakılır ve diğer işlemlerin gerekli kaynaklara erişmesine izin verilir. Kilitleme hakkında daha fazla bilgi için bkz. [Lock for Database Engine](https://msdn.microsoft.com/library/ms190615.aspx).
 
-SQL altyapısı tarafından yürütülen işlemler, kullanım için kilitlenen kaynaklara erişmek için uzun süreli süreler bekliyorsa, bu bekleme süresi iş yükü yürütme performansının yavaşlamasına neden olur. 
+SQL altyapısı tarafından yürütülen işlemler, kullanım için kilitlenen kaynaklara erişmek için uzun süreli süreler bekliyorsa, bu bekleme süresi iş yükü yürütme performansının yavaşlamasına neden olur.
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
 Tanılama günlüğü, sorun giderme için temel olarak kullanabileceğiniz kilitleme ayrıntılarının çıktısını verir. Bildirilen engelleme sorgularını analiz edebilir, diğer bir deyişle, kilitleme performansı düşüşünü tanıtan sorgular ve bunları kaldırabilirsiniz. Bazı durumlarda, engelleme sorgularını iyileştirirken başarılı olabilirsiniz.
 
-Sorunu azaltmanın en basit ve en güvenli yolu, işlem kısa tutulması ve en pahalı sorguların kilit parmak izini azaltmaktır. Büyük bir işlem toplu işlemini daha küçük işlemlere kesebilirsiniz. Sorgu kilit parmak izini mümkün olduğunca verimli hale getirerek iyi bir uygulamadır. Kilitlenme olasılığını artırdığından ve genel veritabanı performansını olumsuz yönde etkilediği için büyük taramalar sayısını azaltın. Kilitlemeye neden olan tanımlı sorgular için, tablo taramalarından kaçınmak üzere yeni dizinler oluşturabilir veya var olan dizine sütun ekleyebilirsiniz. 
+Sorunu azaltmanın en basit ve en güvenli yolu, işlem kısa tutulması ve en pahalı sorguların kilit parmak izini azaltmaktır. Büyük bir işlem toplu işlemini daha küçük işlemlere kesebilirsiniz. Sorgu kilit parmak izini mümkün olduğunca verimli hale getirerek iyi bir uygulamadır. Kilitlenme olasılığını artırdığından ve genel veritabanı performansını olumsuz yönde etkilediği için büyük taramalar sayısını azaltın. Kilitlemeye neden olan tanımlı sorgular için, tablo taramalarından kaçınmak üzere yeni dizinler oluşturabilir veya var olan dizine sütun ekleyebilirsiniz.
 
 Daha fazla öneri için, [SQL Server kilit yükseltme nedeniyle oluşan engelleme sorunlarını çözme](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)konusuna bakın.
 
@@ -136,7 +135,7 @@ Bu algılanabilir performans stili, seçilen bir sorgu yürütme planının çok
 
 Uzman sistem, geçerli veritabanı performansını temel dönemine göre analiz eder. Daha önce çalışan bir sorgunun daha yavaş çalışıp çalışmadığını belirler, çünkü sorgu yürütme planı, olması gerekenden daha paraleldir.
 
-SQL veritabanı 'ndaki MAXDOP sunucu yapılandırma seçeneği, aynı sorguyu paralel olarak yürütmek için kaç CPU çekirdeğinin kullanılabileceğini denetlemek için kullanılır. 
+SQL veritabanı 'ndaki MAXDOP sunucu yapılandırma seçeneği, aynı sorguyu paralel olarak yürütmek için kaç CPU çekirdeğinin kullanılabileceğini denetlemek için kullanılır.
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
@@ -164,7 +163,7 @@ Tanılama günlüğü, pagemandal çekişmesi ayrıntılarını verir. Sorun gid
 
 Bir pagemandalı SQL veritabanı 'nın iç denetim mekanizması olduğundan, bu, ne zaman kullanılacağını otomatik olarak belirler. Şema tasarımı dahil olmak üzere uygulama kararları, nesnelerin belirleyici davranışı nedeniyle pagemandal davranışını etkileyebilir.
 
-Mandal çekişmesini işlemek için bir yöntem, sıralı bir dizin anahtarını sıralı olmayan bir anahtarla değiştirmek ve bir dizin aralığına eklemeleri eşit bir şekilde dağıtmaktır. Genellikle, dizindeki önde gelen bir sütun iş yükünü orantılı olarak dağıtır. Dikkate alınması gereken başka bir yöntem de tablo bölümleniyor. Bölümlenmiş bir tabloda hesaplanan sütunlu bir karma bölümlendirme şeması oluşturma, aşırı mandal çekişmesini azaltmaya yönelik yaygın bir yaklaşımdır. Pagemanma GÇ çakışması durumunda, dizinler ile tanışın bu performans sorununu azaltmaya yardımcı olur. 
+Mandal çekişmesini işlemek için bir yöntem, sıralı bir dizin anahtarını sıralı olmayan bir anahtarla değiştirmek ve bir dizin aralığına eklemeleri eşit bir şekilde dağıtmaktır. Genellikle, dizindeki önde gelen bir sütun iş yükünü orantılı olarak dağıtır. Dikkate alınması gereken başka bir yöntem de tablo bölümleniyor. Bölümlenmiş bir tabloda hesaplanan sütunlu bir karma bölümlendirme şeması oluşturma, aşırı mandal çekişmesini azaltmaya yönelik yaygın bir yaklaşımdır. Pagemanma GÇ çakışması durumunda, dizinler ile tanışın bu performans sorununu azaltmaya yardımcı olur.
 
 Daha fazla bilgi için bkz. SQL Server (PDF indirme) [üzerindeki mandal çekişmesini tanılama ve çözme](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) .
 
@@ -208,13 +207,13 @@ Tanılama günlüğü, sorgu karmaları da dahil olmak üzere en fazla iki yeni 
 
 Bu algılanabilir performans stili, son yedi günlük iş yükü temeliyle karşılaştırıldığında kötü performanslı sorguların tanımlandığı bir iş yükü performans düşüşünü gösterir.
 
-Bu durumda, sistem diğer standart algılanabilir performans kategorileri altındaki zayıf performanslı sorguları sınıflandırıp, ancak gerileme karşı bekleme istatistiğini algıladı. Bu nedenle, bu dosyaları *artan bekleme istatistiği*olan sorgular olarak değerlendirir; burada gerileme ilgili bekleme istatistiği de sunulur. 
+Bu durumda, sistem diğer standart algılanabilir performans kategorileri altındaki zayıf performanslı sorguları sınıflandırıp, ancak gerileme karşı bekleme istatistiğini algıladı. Bu nedenle, bu dosyaları *artan bekleme istatistiği*olan sorgular olarak değerlendirir; burada gerileme ilgili bekleme istatistiği de sunulur.
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
 Tanılama günlüğü, etkilenen sorguların daha fazla bekleme süresi ayrıntıları ve sorgu karmaları hakkında bilgi verir.
 
-Sistem kötü performanslı sorguların kök nedenini başarıyla belirleyemediği için tanılama bilgileri el ile sorun giderme için iyi bir başlangıç noktasıdır. Bu sorguların performansını iyileştirebilirsiniz. Yalnızca kullanmanız gereken verileri getirmek ve karmaşık sorguları basitleştirmek ve daha küçük olanlara bölmek için iyi bir uygulamadır. 
+Sistem kötü performanslı sorguların kök nedenini başarıyla belirleyemediği için tanılama bilgileri el ile sorun giderme için iyi bir başlangıç noktasıdır. Bu sorguların performansını iyileştirebilirsiniz. Yalnızca kullanmanız gereken verileri getirmek ve karmaşık sorguları basitleştirmek ve daha küçük olanlara bölmek için iyi bir uygulamadır.
 
 Sorgu performansını iyileştirme hakkında daha fazla bilgi için bkz. [sorgu ayarlama](https://msdn.microsoft.com/library/ms176005.aspx).
 
@@ -226,15 +225,15 @@ Bu algılanabilir performans modelinde, tempDB kaynaklarına erişmeye çalışa
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-Tanılama günlüğünde tempDB çekişme ayrıntıları çıktı. Sorun giderme için başlangıç noktası olarak bu bilgileri kullanabilirsiniz. Bu tür çekişmeyi hafifetmek ve genel iş yükünün verimini artırmak için kullanabileceğiniz iki şey vardır: geçici tabloları kullanmayı durdurabilirsiniz. Bellek için iyileştirilmiş tabloları da kullanabilirsiniz. 
+Tanılama günlüğünde tempDB çekişme ayrıntıları çıktı. Sorun giderme için başlangıç noktası olarak bu bilgileri kullanabilirsiniz. Bu tür çekişmeyi hafifetmek ve genel iş yükünün verimini artırmak için kullanabileceğiniz iki şey vardır: geçici tabloları kullanmayı durdurabilirsiniz. Bellek için iyileştirilmiş tabloları da kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [bellek için iyileştirilmiş tablolara giriş](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
+Daha fazla bilgi için bkz. [bellek için iyileştirilmiş tablolara giriş](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables).
 
 ## <a name="elastic-pool-dtu-shortage"></a>Elastik havuz DTU eksik
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
-Bu algılanabilir performans stili, son yedi günlük taban çizgisiyle karşılaştırıldığında geçerli veritabanı iş yükü performansındaki düşüşünü gösterir. Bunun nedeni, aboneliğinizin elastik havuzundaki kullanılabilir DTU 'ların yetersizliğidir. 
+Bu algılanabilir performans stili, son yedi günlük taban çizgisiyle karşılaştırıldığında geçerli veritabanı iş yükü performansındaki düşüşünü gösterir. Bunun nedeni, aboneliğinizin elastik havuzundaki kullanılabilir DTU 'ların yetersizliğidir.
 
 SQL veritabanı 'ndaki kaynaklara genellikle, CPU ve GÇ (veri ve işlem günlüğü GÇ) kaynaklarının karışan bir ölçüden oluşan [DTU kaynakları](sql-database-purchase-models.md#dtu-based-purchasing-model)denir. [Azure elastik havuz kaynakları](sql-database-elastic-pool.md) , ölçekleme amacıyla birden çok veritabanı arasında paylaşılan bir kullanılabilir eDTU kaynakları havuzu olarak kullanılır. Elastik havuzunuzdaki kullanılabilir eDTU kaynakları, havuzdaki tüm veritabanlarını desteklemek için yeterince büyük değilse, sistem tarafından esnek bir havuz DTU performans sorunu algılanır.
 
@@ -258,13 +257,13 @@ Bu algılanabilir performans stili, plan regresyonun üç farklı durumunu birle
 
 Yeni plan gerileme koşulu, SQL veritabanı 'nın eski plan kadar verimli olmayan yeni bir sorgu yürütme planı yürütmeye başladığı bir duruma başvurur. Eski plan regresyon koşulu, SQL veritabanı yeni plan kadar verimli olmayan eski plana yeni, daha verimli bir plan kullanarak geçiş yaptığında durum anlamına gelir. Mevcut planlar değişti iş yükü gerileme, eski ve yeni planların sürekli olarak alternatif olduğu, Bakiyenin düşük performanslı plana göre daha fazla ilerlemelerine karşılık gelir.
 
-Plan gerilemeleri hakkında daha fazla bilgi için bkz. [SQL Server plan gerileme nedir?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/). 
+Plan gerilemeleri hakkında daha fazla bilgi için bkz. [SQL Server plan gerileme nedir?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/).
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
 Tanılama günlüğü sorgu karmaları, iyi plan KIMLIĞI, hatalı plan KIMLIĞI ve sorgu kimliklerini çıktı. Sorun giderme için temel olarak bu bilgileri kullanabilirsiniz.
 
-Belirtilen sorgu karmaları ile tanımlayabilmeniz için, belirli sorgularınız için hangi planın daha iyi performans gösterdiğini çözümleyebilirsiniz. Sorgularınız için hangi planın daha iyi çalıştığını belirledikten sonra, el ile zorlayabilirsiniz. 
+Belirtilen sorgu karmaları ile tanımlayabilmeniz için, belirli sorgularınız için hangi planın daha iyi performans gösterdiğini çözümleyebilirsiniz. Sorgularınız için hangi planın daha iyi çalıştığını belirledikten sonra, el ile zorlayabilirsiniz.
 
 Daha fazla bilgi için bkz. [SQL Server plan gerilemeleri nasıl engeller](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
@@ -300,7 +299,7 @@ Bu koşul yalnızca, son yedi günlük veritabanı iş yükü davranışına kı
 
 Bu algılanabilir performans modelinde bir istemci tarafı koşulu gösterilir. İstemci tarafı uygulama veya istemci tarafı ağında sorun giderme gereklidir. Tanılama günlüğü, son iki saat içinde istemcinin bunları kullanmasını bekleyen sorgu karmalarını ve bekleme sürelerini çıktı olarak verir. Sorun giderme için temel olarak bu bilgileri kullanabilirsiniz.
 
-Bu sorguların tüketimi için uygulamanızın performansını iyileştirebilirsiniz. Olası ağ gecikme sorunlarını da düşünebilirsiniz. Performans düşüşü sorunu son yedi günlük performans temelindeki değişikliği temel aldığı için, en son uygulamanın veya ağ koşulunun bu performans gerileme olayına neden olduğunu araştırabilirsiniz. 
+Bu sorguların tüketimi için uygulamanızın performansını iyileştirebilirsiniz. Olası ağ gecikme sorunlarını da düşünebilirsiniz. Performans düşüşü sorunu son yedi günlük performans temelindeki değişikliği temel aldığı için, en son uygulamanın veya ağ koşulunun bu performans gerileme olayına neden olduğunu araştırabilirsiniz.
 
 ## <a name="pricing-tier-downgrade"></a>Fiyatlandırma Katmanı düşürme
 
@@ -318,7 +317,7 @@ Fiyatlandırma katmanınızı düşürüyorsanız ve bu nedenle SQL veritabanı 
 
  Akıllı İçgörüler kullanarak performans sorunlarını gidermek için önerilen bir yaklaşım için akış çizelgesini izleyin.
 
-Azure SQL Analytics 'e giderek Azure portal üzerinden Akıllı İçgörüler erişin. Gelen performans uyarısını bulmayı deneyin ve seçin. Algılamalar sayfasında neler olduğunu belirler. Sorunun, sorgu metninin, sorgu süresi eğilimlerini ve olay evriminin belirtilen kök neden analizini gözlemleyin. Sorunu gidermek için Akıllı İçgörüler öneriyi kullanarak sorunu çözmeyi deneyin. 
+Azure SQL Analytics 'e giderek Azure portal üzerinden Akıllı İçgörüler erişin. Gelen performans uyarısını bulmayı deneyin ve seçin. Algılamalar sayfasında neler olduğunu belirler. Sorunun, sorgu metninin, sorgu süresi eğilimlerini ve olay evriminin belirtilen kök neden analizini gözlemleyin. Sorunu gidermek için Akıllı İçgörüler öneriyi kullanarak sorunu çözmeyi deneyin.
 
 [![sorun giderme akış grafiği](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
@@ -328,6 +327,7 @@ Azure SQL Analytics 'e giderek Azure portal üzerinden Akıllı İçgörüler er
 Akıllı İçgörüler, genellikle performans sorununun kök neden analizini gerçekleştirmek için bir saat gerektirir. Sorununuzu Akıllı İçgörüler bulamazsanız ve sizin için önemli olduğundan, performans sorununun kök nedenini el ile tanımlamak için Query Store 'u kullanın. (Genellikle, bu sorunlar bir saatten daha eski.) Daha fazla bilgi için bkz. [sorgu deposunu kullanarak performansı izleme](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - [Akıllı içgörüler](sql-database-intelligent-insights.md) kavramları öğrenin.
 - [Azure SQL veritabanı performans tanılama günlüğünü akıllı içgörüler](sql-database-intelligent-insights-use-diagnostics-log.md)kullanın.
 - [Azure SQL Analytics kullanarak Azure SQL veritabanını](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)izleyin.

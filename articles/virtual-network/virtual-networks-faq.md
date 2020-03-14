@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
 ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121809"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244816"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure sanal ağ hakkında sık sorulan sorular (SSS)
 
@@ -309,7 +309,7 @@ Evet. Aynı abonelikte veya farklı bir abonelikte eşlenmiş sanal ağlardaki i
 
 Sanal ağ dokunma önizlemededir. Önizleme süresince hizmet düzeyi sözleşmesi yoktur. Yetenek, üretim iş yükleri için kullanılmamalıdır. Bir sanal makine ağ arabirimi bir dokunma yapılandırması ile etkinleştirildiğinde, Azure ana bilgisayarında üretim trafiğini göndermek için ayrılan kaynaklar, yansıtma işlevini gerçekleştirmek ve yansıtılan paketleri göndermek için kullanılır. Sanal makinenin üretim trafiğini ve yansıtmalı trafiği gönderebilmesi için yeterli kaynakların kullanılabilir olduğundan emin olmak için doğru [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makine boyutunu seçin.
 
-### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>[Linux](create-vm-accelerated-networking-cli.md) veya [Windows](create-vm-accelerated-networking-powershell.md) IÇIN, sanal ağ dokunarak desteklenen hızlandırılmış ağ mı?
+### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>[Linux](create-vm-accelerated-networking-cli.md) veya [Windows](create-vm-accelerated-networking-powershell.md) IÇIN, sanal ağ dokunarak desteklenen hızlandırılmış ağ mı?
 
 Hızlandırılmış ağ ile etkinleştirilen bir sanal makineye bağlı bir ağ arabirimine bir dokunma yapılandırması ekleyebileceksiniz. Ancak, yansıtma trafiği için yük boşaltma Şu anda Azure hızlandırılmış ağ tarafından desteklenmediğinden, sanal makinedeki performans ve gecikme süresi, bir dokunma yapılandırması eklenerek etkilenecektir.
 
@@ -407,7 +407,7 @@ Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yo
 |Azure SQL Veri Ambarı|  128|
 |Azure Keykasası|    127|
 |Azure Cosmos DB|   64|
-|Azure Olay Hub'ı|   128|
+|Azure Event Hub|   128|
 |Azure Service Bus| 128|
 |Azure Data Lake Store v1|  100|
  

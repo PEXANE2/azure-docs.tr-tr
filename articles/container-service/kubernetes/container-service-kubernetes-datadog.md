@@ -7,26 +7,26 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 1f3f70c30ab397bd549a2f3305a738274ee4f64f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271044"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371180"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>Kullanım DıŞı Dataköpek ile Azure Container Service kümesini izleme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu izlenecek yol, [Azure Container Service kullanarak bir Kubernetes kümesi oluşturduğunuzu](container-service-kubernetes-walkthrough.md)varsayar.
 
 Ayrıca, Azure CLI `az` ve `kubectl` araçlarının yüklü olduğunu varsaymaktadır.
 
 Şunu çalıştırarak `az` aracı yüklüyse test edebilirsiniz:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 `az` aracı yüklü değilse, [burada](https://github.com/azure/azure-cli#installation)yönergeler vardır.
@@ -34,13 +34,13 @@ $ az --version
 Şunu çalıştırarak `kubectl` aracı yüklüyse test edebilirsiniz:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Yüklü `kubectl` yoksa şu şekilde çalıştırabilirsiniz:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="datadog"></a>DataDog

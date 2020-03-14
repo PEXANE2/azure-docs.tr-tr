@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245232"
+ms.locfileid: "79299354"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için en iyi Azure uygulamaları
 Bu makalede, ağ güveninizi geliştirmeye yönelik bir Azure en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, Azure ağ deneyimimizden ve bizim gibi müşterilerin deneyimlerimizden türetilir.
@@ -122,7 +122,7 @@ Bu, bir çevre ağının temel tasarımı olsa da, geri dönüş, Üçlü ve ço
 
 Daha önce bahsedilen sıfır güven kavramına göre, Azure kaynaklarınıza yönelik ağ güvenliği ve erişim denetimi düzeyini iyileştirmek için tüm yüksek güvenlikli dağıtımlar için bir çevre ağı kullanmayı düşünmeniz önerilir. Varlıklarınız ve internet arasında ek bir güvenlik katmanı sağlamak için Azure veya üçüncü taraf bir çözüm kullanabilirsiniz:
 
-- Azure yerel denetimleri. Application Gateway ' deki [Azure Güvenlik](/azure/firewall/overview) duvarı ve [Web uygulaması güvenlik duvarı](/azure/application-gateway/overview#web-application-firewall) , hizmet olarak tam durum bilgisi olan güvenlik duvarı, yerleşik yüksek kullanılabilirlik, KıSıTLANMAMıŞ bulut ölçeklenebilirliği, FQDN filtrelemesi, OWASP çekirdek kural kümeleri için destek ve basit kurulum ve yapılandırma ile temel güvenlik sağlar.
+- Azure yerel denetimleri. Application Gateway ' deki [Azure Güvenlik](/azure/firewall/overview) duvarı ve [Web uygulaması güvenlik duvarı](../../application-gateway/features.md#web-application-firewall) , hizmet olarak tam durum bilgisi olan güvenlik duvarı, yerleşik yüksek kullanılabilirlik, KıSıTLANMAMıŞ bulut ölçeklenebilirliği, FQDN filtrelemesi, OWASP çekirdek kural kümeleri için destek ve basit kurulum ve yapılandırma ile temel güvenlik sağlar.
 - Üçüncü taraf teklifleri. [Azure Marketi 'nde](https://azuremarketplace.microsoft.com/) yeni nesil güvenlik duvarı (NGFW) ve bilinen güvenlik araçları ve önemli ölçüde gelişmiş ağ güvenliği düzeyleri sağlayan diğer üçüncü taraf teklifleri arayın. Yapılandırma daha karmaşık olabilir, ancak üçüncü taraf bir teklif mevcut özellikleri ve becerileri kullanmanıza izin verebilir.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Adanmış WAN bağlantılarıyla internet 'ten Etkilenmemeye özen gösterin

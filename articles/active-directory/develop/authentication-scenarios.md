@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3ec965318da1361454b4a6bb78ed7147562b5fea
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195004"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138527"
 ---
 # <a name="authentication-basics"></a>Kimlik doğrulaması temel bilgileri
 
@@ -50,7 +50,7 @@ Azure AD Ayrıca, kuruluşların kullanıcılara, genellikle Google hesabı gibi
 
 Güvenlik belirteçleri, kullanıcılar ve uygulamalar hakkında bilgi içerir. Azure AD, talepler içeren JSON tabanlı belirteçleri (JWTs) kullanır.
 
-Bir talep, bir [istemci uygulaması](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) veya [kaynak sahibi](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)gibi bir varlık hakkında, [kaynak sunucusu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)gibi başka bir varlığa onay onayları sağlar.
+Bir talep, bir [istemci uygulaması](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) veya [kaynak sahibi](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)gibi bir varlık hakkında, [kaynak sunucusu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)gibi başka bir varlığa onay verir.
 
 Talepler, belirteç konusuyla ilgili olgu geçişi yapan ad/değer çiftleridir. Örneğin, bir talep [yetkilendirme sunucusu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server)tarafından kimliği doğrulanan güvenlik sorumlusu hakkında olgu içerebilir. Belirli bir belirteçte mevcut talepler, belirteç türü, konunun kimliğini doğrulamak için kullanılan kimlik bilgisi türü, uygulama yapılandırması vb. dahil olmak üzere birçok konuya bağlıdır.
 

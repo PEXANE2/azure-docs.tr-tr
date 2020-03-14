@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127905"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365228"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -71,7 +71,7 @@ Bir konak havuzunu genişletmek için Azure Resource Manager şablonunu yeniden 
 
 ## <a name="run-the-azure-marketplace-offering"></a>Azure Marketi teklifini çalıştırma
 
-[Yeni bir konak havuzu sağlamak Için Azure](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)marketi teklifini çalıştırmaya ulaşıncaya kadar [Azure Marketi 'ni kullanarak bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md) bölümündeki yönergeleri izleyin. Bu noktaya geldiğinizde, her dikey pencere için aşağıdaki bilgileri girmeniz gerekir:
+[Yeni bir konak havuzu sağlamak Için Azure](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)marketi teklifini çalıştırmaya ulaşıncaya kadar [Azure Marketi 'ni kullanarak bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md) bölümündeki yönergeleri izleyin. Bu noktaya geldiğinizde, her sekme için aşağıdaki bilgileri girmeniz gerekir:
 
 ### <a name="basics"></a>Temel Bilgiler
 

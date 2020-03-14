@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 3f1d0e13d9b76c7ef06edb953b59ebfa73c302de
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355231"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296855"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -204,6 +204,12 @@ Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel
 |**İzleme ve sürüm oluşturma**|Yineleme sırasında verileri ve sonuç yollarını el ile izlemek yerine, veri kaynaklarınızı, girdilerlerinizi ve çıkışları açıkça adlandırmak ve sürümüne eklemek için işlem hatları SDK 'sını kullanın. Ayrıca, daha fazla üretkenlik için betikleri ve verileri ayrı olarak yönetebilirsiniz.|
 | **Modülerlik** | Kaygıları ve değişiklikleri yalıtma alanlarının ayrılması, yazılımın daha yüksek kalitede daha hızlı gelişmeye olanak tanır. | 
 |**İş**|İşlem hatları, veri bilimcilerinin makine öğrenimi tasarım sürecinin tüm alanlarında işbirliği yapmasına olanak sağlarken işlem hattı adımlarında eşzamanlı olarak çalışabiliyor.|
+
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>Doğru ardışık düzen Inestep alt sınıfını seçme
+
+`PythonScriptStep` soyut `PipelineStep`en esnek alt sınıfıdır. `EstimatorStep` alt sınıfları ve `DataTransferStep` gibi diğer alt sınıflar, daha az kodla belirli görevleri gerçekleştirebilir. Örneğin, yalnızca adım, bir `Estimator`ve işlem hedefi için bir ad geçirerek bir `EstimatorStep` oluşturulabilir. Ya da girişleri ve çıkışları, işlem hattı parametrelerini ve bağımsız değişkenleri geçersiz kılabilirsiniz. Daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md). 
+
+`DataTransferStep` veri kaynakları ve havuzlar arasında veri taşımayı kolaylaştırır. Bunu el ile yapmak için kod basit ancak tekrarlı. Bunun yerine, yalnızca ad, veri kaynağı ve veri havuzu ve bir işlem hedefi olan bir `DataTransferStep` oluşturabilirsiniz. [DataTransferStep ile](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) not defteri Azure Machine Learning işlem hattı bu esnekliği gösterir.
 
 ## <a name="modules"></a>Modules
 

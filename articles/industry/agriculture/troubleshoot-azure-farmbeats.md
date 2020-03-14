@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705624"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298810"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
 Bu makalede, yaygın Azure Farmtts sorunlarına yönelik çözümler sağlanmaktadır.
 
-Ek Yardım için farmbeatssupport@microsoft.comadresinden bizimle iletişim kurun. E-postanıza **Deployer. log** dosyasını eklediğinizden emin olun.
+Ek Yardım için farmbeatssupport@microsoft.comadresinden bizimle iletişim kurun. **Deployer. log** dosyasını e-postanıza dahil etmek için emin olun.
 
 **Deployer. log** dosyasını indirmek için aşağıdakileri yapın:
 
@@ -51,7 +51,7 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
 
 **Düzeltici eylem**:
 
-1. İş ortağı kaydını doğru bir şekilde gerçekleştirdiğinizden emin olun. bunu, veri hub 'ının Swagger 'ınızla gidip/partner API 'sine giderek bir get yapın ve ortağın kayıtlı olup olmadığını kontrol edebilirsiniz. Aksi takdirde, iş ortağı eklemek için lütfen [buradaki adımları](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) izleyin.
+1. İş ortağı kaydını doğru bir şekilde gerçekleştirdiğinizden emin olun. bunu, veri hub 'ının Swagger 'ınızla gidip/partner API 'sine giderek bir get yapın ve ortağın kayıtlı olup olmadığını kontrol edebilirsiniz. Aksi takdirde, iş ortağı eklemek için [buradaki adımları](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) izleyin.
 2. Doğru telemetri ileti biçimini kullandığınızdan emin olun:
 
 ```json
@@ -65,11 +65,11 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -119,14 +119,14 @@ Bir cihazı silerken, aşağıdaki genel hata senaryolarından biriyle karşıla
 2. Belirli bir cihazı silin.  
 
     > [!NOTE]
-    > Sensörlerle ilişkiliyse bir cihazı silemezsiniz. İlişkili algılayıcıları silme hakkında daha fazla bilgi için, [algılayıcı iş ortaklarından algılayıcı verilerini alma](get-sensor-data-from-sensor-partner.md)konusunun "algılayıcı silme" bölümüne bakın.
+    > Sensörlerle ilişkiliyse bir cihazı silemezsiniz. İlişkili algılayıcıları silme hakkında daha fazla bilgi için, [algılayıcı iş ortaklarından algılayıcı verilerini alma](get-sensor-data-from-sensor-partner.md)konusunun **algılayıcı silme** bölümüne bakın.
 
 
 ## <a name="issues-with-jobs"></a>İşlerle ilgili sorunlar
 
 ### <a name="farmbeats-internal-error"></a>Farmtts iç hatası
 
-**İleti**: "diğer ayrıntılar için sorun giderme kılavuzu ' na bakın.
+**İleti**: "diğer ayrıntılar için sorun giderme kılavuzu" bölümüne bakın.
 
 **Düzeltici eylem**: Bu sorun, veri ardışık düzeninde geçici bir hatadan kaynaklanabilir. İşi tekrar oluşturun. Hata devam ederse, Farmtts forumundaki bir gönderiye hata iletisi ekleyin veya FarmBeatsSupport@microsoft.combaşvurun.
 
@@ -138,7 +138,7 @@ Bir cihazı silerken, aşağıdaki genel hata senaryolarından biriyle karşıla
 
 **İleti**: "eşleşen kullanıcı bulunamadı."
 
-**Düzeltici eylem**: rol ataması eklemeye çalıştığınız e-posta kimliğini denetleyin. E-posta KIMLIĞI, Active Directory bu kullanıcı için kayıtlı KIMLIğIN tam eşleşmesi olmalıdır. Hata devam ederse, Farmtts forumundaki bir gönderiye hata iletisi ekleyin veya FarmBeatsSupport@microsoft.combaşvurun.
+**Düzeltici eylem**: rol ataması eklemeye çalıştığınız e-posta kimliğini denetleyin. E-posta KIMLIĞI, Active Directory bu kullanıcı için kayıtlı olan KIMLIğIN tam eşleşmesi olmalıdır. Hata devam ederse, Farmtts forumundaki bir gönderiye hata iletisi ekleyin veya FarmBeatsSupport@microsoft.combaşvurun.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Hızlandırıcıda oturum açılamıyor
 
@@ -163,6 +163,7 @@ Hata devam ederse, Farmtts forumundaki bir gönderiye hata iletisi ekleyin veya 
 **Sorun**: FarmBeatsDeployment 'ı yükselttikten sonra bile, farmtts Hızlandırıcısı en son sürümü gösterilmiyor.
 
 **Düzeltici eylem**: Bu hata, tarayıcıda hizmet çalışanı kalıcılığı nedeniyle oluşur. Şunları yapın:
+
 1. Hızlandırıcı açık olan tüm tarayıcı sekmelerini kapatın ve tarayıcı penceresini kapatın.
 2. Tarayıcının yeni bir örneğini başlatın ve Hızlandırıcı URI 'sini yeniden yükleyin. Bu eylem, hızlandırıcının yeni sürümünü yükler.
 
@@ -175,6 +176,7 @@ Hata devam ederse, Farmtts forumundaki bir gönderiye hata iletisi ekleyin veya 
 **Düzeltici eylem**:
 
 Aşağıdakilerden birini yapın:
+
 - Veri hub 'ını doğru Kullanıcı adı ve parolayla yükseltmek için yükleyiciyi yeniden çalıştırın.
 - Başarısız işi yeniden çalıştırın veya 5 ile 7 gün arasında bir tarih aralığı için uydu dizinleri işi çalıştırın ve ardından işin başarılı olup olmadığını kontrol edin.
 
@@ -198,6 +200,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 1. Bakım gerçekleştirildiğinden herhangi bir iş veya işlem hattı başarısız olursa, işi bir süre sonra yeniden gönderin. 
 
    Planlı veya planlanmamış Sentinel bakım etkinlikleri hakkında daha fazla bilgi için [Copernicus Open Access hub Haberler](https://scihub.copernicus.eu/news/) sitesine gidin.  
+
 2. Başarısız işi yeniden çalıştırın veya 5 ile 7 gün arasında bir tarih aralığı için uydu dizinleri işi çalıştırın ve ardından işin başarılı olup olmadığını kontrol edin.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: en fazla bağlantı sayısına ulaşıldı
@@ -207,6 +210,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 **Anlamı**: en fazla bağlantı sayısına ulaşıldığından bir iş başarısız olursa, başka bir yazılım dağıtımında aynı Sentinel hesabı kullanılıyor.
 
 **Düzeltici eylem**: aşağıdakilerden birini deneyin:
+
 * Yeni bir Sentinel hesabı oluşturun ve ardından yeni bir Sentinel Kullanıcı adı ve parola kullanarak veri merkezini yükseltmek için yükleyiciyi yeniden çalıştırın.  
 * Başarısız işi yeniden çalıştırın veya 5 ile 7 gün arasında bir tarih aralığı için uydu dizinleri işi çalıştırın ve ardından işin başarılı olup olmadığını kontrol edin.
 
@@ -218,6 +222,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 1. Bakım gerçekleştirildiğinden herhangi bir iş veya işlem hattı başarısız olursa, işi bir süre sonra yeniden gönderin. 
 
    Planlı veya planlanmamış Sentinel bakım etkinlikleri hakkında daha fazla bilgi için [Copernicus Open Access hub Haberler](https://scihub.copernicus.eu/news/) sitesine gidin.  
+
 2. Başarısız işi yeniden çalıştırın veya 5 ile 7 gün arasında bir tarih aralığı için uydu dizinleri işi çalıştırın ve ardından işin başarılı olup olmadığını kontrol edin.
 
 ## <a name="collect-logs-manually"></a>Günlükleri el ile topla
@@ -225,7 +230,8 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 [Azure Depolama Gezgini yükleyip dağıtın]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Veri hub 'ında Azure Data Factory iş günlüklerini toplayın
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmrets Datahub kaynak grubunu arayın.
 
     > [!NOTE]
@@ -243,7 +249,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Hızlandırıcıda Azure Data Factory iş günlüklerini toplayın
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmtempts Hızlandırıcı kaynak grubunu arayın.
 
     > [!NOTE]
@@ -260,7 +266,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-datahub-app-service-logs"></a>Veri hub 'ı App Service günlüklerini topla
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmrets Datahub kaynak grubunu arayın.
 
     > [!NOTE]
@@ -276,7 +282,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-accelerator-app-service-logs"></a>Hızlandırıcı App Service günlüklerini toplayın
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmtempts Hızlandırıcı kaynak grubunu arayın.
 
     > [!NOTE]
@@ -300,7 +306,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="azure-active-directory-azure-ad-related-issues"></a>Azure Active Directory (Azure AD) ile ilgili sorunlar
 
-**Hata iletisi**: "gerekli ayarları güncelleştiremedi Azure AD uygulaması d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: işlemi gerçekleştirmek için yeterli ayrıcalıklara sahip değil. Yukarıdaki ayarların Azure AD Uygulaması için düzgün şekilde yapılandırıldığından emin olun. "
+**Hata iletisi**: "gerekli ayarları güncelleştiremedi Azure AD uygulaması d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: işlemi gerçekleştirmek için yeterli ayrıcalıklara sahip değil. Yukarıdaki ayarların Azure AD Uygulaması için düzgün yapılandırıldığından emin olun. "
 
 **Anlamı**: Azure AD uygulama kayıt yapılandırması düzgün tamamlanmadı.  
 

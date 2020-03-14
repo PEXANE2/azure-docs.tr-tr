@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 1d9f148351e4ce12d6f6bcd699cdd74e94ba09ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356135"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276913"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-Bu örnekte, `<RESOURCE_GROUP>` kaynak grubu ile `<PLAN_NAME>` ve plan için kaynak grubunda benzersiz olan bir adla değiştirin. Desteklenen bir [`<REGION>`](#regions)belirtin. Linux destekleyen bir Premium plan oluşturmak için `--is-linux` seçeneğini ekleyin.
+Bu örnekte, `<RESOURCE_GROUP>` kaynak grubu ile `<PLAN_NAME>` ve plan için kaynak grubunda benzersiz olan bir adla değiştirin. Desteklenen bir [`<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)belirtin. Linux destekleyen bir Premium plan oluşturmak için `--is-linux` seçeneğini ekleyin.
 
 Oluşturma planı ile, işlev uygulamanızı oluşturmak için [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) kullanabilirsiniz. Portalda hem plan hem de uygulama aynı anda oluşturulur. Azure CLı komut dosyasının tamamı hakkında bir örnek için bkz. [Premium planda işlev uygulaması oluşturma](scripts/functions-cli-create-premium-plan.md).
 
@@ -99,44 +99,42 @@ Daha fazla belleğe sahip bir makinede çalıştırmak, işlev uygulamanızın k
 
 Örneğin, bir JavaScript işlev uygulaması Node. js ' de varsayılan bellek sınırı ile kısıtlanır. Bu sabit bellek sınırını artırmak için, `--max-old-space-size=<max memory in MB>`bir değer `languageWorkers:node:arguments` uygulama ayarını ekleyin.
 
-## <a name="regions"></a>Bölgeler
+## <a name="region-max-scale-out"></a>Bölge maksimum ölçeği genişletme
 
-Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmiştir.
+Aşağıda, her bir bölgedeki ve işletim sistemi yapılandırmasındaki tek bir plan için desteklenen en büyük ölçek genişletme değerleri verilmiştir. Bir artış istemek için lütfen bir destek bileti açın.
+
+Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |Bölge| Windows | Linux |
 |--| -- | -- |
-|Orta Avustralya| ✔<sup>1</sup> | |
-|Orta Avustralya 2| ✔<sup>1</sup> | |
-|Doğu Avustralya| ✔ | ✔<sup>1</sup> |
-|Güneydoğu Avustralya | ✔ | ✔<sup>1</sup> |
-|Güney Brezilya| ✔<sup>2</sup> | ✔<sup>1</sup> |
-|Orta Kanada| ✔ | ✔<sup>1</sup> |
-|Orta ABD| ✔ | ✔<sup>1</sup> |
-|Doğu Asya| ✔ | ✔<sup>1</sup> |
-|Doğu ABD | ✔ | ✔<sup>1</sup> |
-|Doğu ABD 2| ✔ | ✔<sup>1</sup> |
-|Orta Fransa| ✔ | ✔<sup>1</sup> |
-|Almanya Orta Batı| ✔ | |
-|Doğu Japonya| ✔ | ✔<sup>1</sup> |
-|Batı Japonya| ✔ | ✔<sup>1</sup> |
-|Güney Kore - Orta| ✔ | ✔<sup>1</sup> |
-|Orta Kuzey ABD| ✔ | ✔<sup>1</sup> |
-|Kuzey Avrupa| ✔ | ✔<sup>1</sup> |
-|Norveç Doğu| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|Orta Güney ABD| ✔ | ✔<sup>1</sup> |
-|Güney Hindistan | ✔ | |
-|Güneydoğu Asya| ✔ | ✔<sup>1</sup> |
-|Güney Birleşik Krallık| ✔ | ✔<sup>1</sup> |
-|Batı Birleşik Krallık| ✔ | ✔<sup>1</sup> |
-|Batı Avrupa| ✔ | ✔<sup>1</sup> |
-|Batı Hindistan| ✔ | ✔<sup>1</sup> |
-|Orta Batı ABD| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|Batı ABD| ✔ | ✔<sup>1</sup> |
-|Batı ABD 2| ✔ | ✔<sup>1</sup> |
-
-<sup>1</sup> Maksimum ölçeği 20 örneğe sınırlı.  
-<sup>2</sup> Maksimum ölçeği 60 örnek ile sınırlıdır.
-
+|Orta Avustralya| 20 | Kullanılamıyor |
+|Orta Avustralya 2| 20 | Kullanılamıyor |
+|Doğu Avustralya| 100 | 20 |
+|Güneydoğu Avustralya | 100 | 20 |
+|Güney Brezilya| 60 | 20 |
+|Orta Kanada| 100 | 20 |
+|Orta ABD| 100 | 20 |
+|Doğu Asya| 100 | 20 |
+|Doğu ABD | 100 | 20 |
+|Doğu ABD 2| 100 | 20 |
+|Orta Fransa| 100 | 20 |
+|Almanya Orta Batı| 100 | Kullanılamıyor |
+|Doğu Japonya| 100 | 20 |
+|Batı Japonya| 100 | 20 |
+|Güney Kore - Orta| 100 | 20 |
+|Orta Kuzey ABD| 100 | 20 |
+|Kuzey Avrupa| 100 | 20 |
+|Norveç Doğu| 20 | 20 |
+|Orta Güney ABD| 100 | 20 |
+|Güney Hindistan | 100 | Kullanılamıyor |
+|Güneydoğu Asya| 100 | 20 |
+|Güney Birleşik Krallık| 100 | 20 |
+|Batı Birleşik Krallık| 100 | 20 |
+|Batı Avrupa| 100 | 20 |
+|Batı Hindistan| 100 | 20 |
+|Orta Batı ABD| 20 | 20 |
+|Batı ABD| 100 | 20 |
+|Batı ABD 2| 100 | 20 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391383"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258570"
 ---
 # <a name="replicas-and-instances"></a>Çoğaltmalar ve örnekler 
 Bu makalede, durum bilgisi olan hizmetlerin ve durum bilgisi olmayan hizmetlerin çoğaltmalarının yaşam döngüsüne genel bakış sunulmaktadır.

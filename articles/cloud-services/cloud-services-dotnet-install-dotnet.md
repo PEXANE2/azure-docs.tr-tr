@@ -10,29 +10,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
-ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360999"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214718"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services rollerine .NET 'i yükler
 Bu makalede, Azure Konuk IŞLETIM sistemiyle birlikte gelmeyen .NET Framework sürümlerinin nasıl yükleneceği açıklanır. Bulut hizmeti Web ve çalışan rollerinizi yapılandırmak için konuk işletim sisteminde .NET kullanabilirsiniz.
 
-Örneğin, .NET 4.6.2 'i Konuk işletim sistemi ailesi 4 ' te yükleyebilirsiniz. Bu sürüm, .NET 4,6 'nin herhangi bir sürümüyle birlikte gelmeyecektir. (Konuk işletim sistemi ailesi 5, .NET 4,6 ile gelir.) Azure Konuk işletim sistemi sürümleri hakkında en son bilgiler için bkz. [Azure Konuk işletim sistemi sürüm haberleri](cloud-services-guestos-update-matrix.md). 
+Örneğin, Konuk işletim sistemi aile 4 ' te .NET Framework 4.6.2 yükleyebilirsiniz ve bu, .NET Framework 4,6 ' un herhangi bir sürümüyle birlikte gelmeyecektir. (Konuk işletim sistemi ailesi 5, .NET Framework 4,6 ile gelir.) Azure Konuk işletim sistemi sürümleri hakkında en son bilgiler için bkz. [Azure Konuk işletim sistemi sürüm haberleri](cloud-services-guestos-update-matrix.md). 
 
 >[!IMPORTANT]
->Azure SDK 2,9, Konuk işletim sistemi ailesi 4 veya önceki sürümlerde .NET 4,6 dağıtımı hakkında bir kısıtlama içerir. [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) sitesinde kısıtlama için bir çözüm bulunur.
+>Azure SDK 2,9, Konuk işletim sistemi ailesi 4 veya önceki sürümlerde .NET Framework 4,6 ' i dağıtmaya yönelik bir kısıtlama içerir. [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) sitesinde kısıtlama için bir çözüm bulunur.
 
 Web ve çalışan rolleriniz üzerinde .NET yüklemek için, bulut hizmeti projenizin bir parçası olarak .NET web yükleyicisini dahil edin. Rolün başlangıç görevlerinin bir parçası olarak Yükleyiciyi başlatın. 
 
 ## <a name="add-the-net-installer-to-your-project"></a>Projenize .NET yükleyicisi ekleyin
 .NET Framework web yükleyicisini indirmek için, yüklemek istediğiniz sürümü seçin:
 
-* [.NET 4,8 Web Yükleyicisi](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET 4.7.2 Web Yükleyicisi](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET 4.6.2 Web Yükleyicisi](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4,8 Web Yükleyicisi](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.7.2 Web Yükleyicisi](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET Framework 4.6.2 Web Yükleyicisi](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Bir *Web* rolü için yükleyiciyi eklemek için:
   1. **Çözüm Gezgini**, bulut hizmeti projenizdeki **Roller** ' in altında *web* rolünüzü sağ tıklayıp > **Yeni klasör** **Ekle** ' yi seçin. **Bin**adlı bir klasör oluşturun.
@@ -44,7 +44,7 @@ Bir *çalışan* rolü için yükleyiciyi eklemek için:
 Bu şekilde, rol içerik klasörüne dosyalar eklendiğinde, bulut hizmeti paketinize otomatik olarak eklenir. Dosyalar daha sonra sanal makinede tutarlı bir konuma dağıtılır. Tüm rollerin yükleyicinin bir kopyasına sahip olması için bulut hizmetinizdeki her bir Web ve çalışan rolü için bu işlemi tekrarlayın.
 
 > [!NOTE]
-> Uygulamanız .NET 4,6 hedefliyorsa bile, bulut hizmeti rolünüze .NET 4.6.2 yüklemelisiniz. Konuk işletim sistemi, Bilgi Bankası [güncelleştirme 3098779](https://support.microsoft.com/kb/3098779) ve [güncelleştirme 3097997](https://support.microsoft.com/kb/3097997)' i içerir. .NET uygulamalarınızı, Bilgi Bankası güncelleştirmelerinin üzerine .NET 4,6 yüklenmişse sorun oluşabilir. Bu sorunlardan kaçınmak için sürüm 4,6 yerine .NET 4.6.2 ' yi yüklemek. Daha fazla bilgi için bkz. [Bilgi Bankası makalesi 3118750](https://support.microsoft.com/kb/3118750) ve [4340191](https://support.microsoft.com/kb/4340191).
+> Uygulamanız 4,6 .NET Framework hedefliyorsa bile bulut hizmeti rolünüze .NET Framework 4.6.2 yüklemelisiniz. Konuk işletim sistemi, Bilgi Bankası [güncelleştirme 3098779](https://support.microsoft.com/kb/3098779) ve [güncelleştirme 3097997](https://support.microsoft.com/kb/3097997)' i içerir. Bilgi Bankası güncelleştirmelerinin üzerine 4,6 .NET Framework yüklüyse, .NET uygulamalarınızı çalıştırdığınızda sorunlar oluşabilir. Bu sorunlardan kaçınmak için sürüm 4,6 yerine .NET Framework 4.6.2 ' yi yüklemelisiniz. Daha fazla bilgi için bkz. [Bilgi Bankası makalesi 3118750](https://support.microsoft.com/kb/3118750) ve [4340191](https://support.microsoft.com/kb/4340191).
 > 
 > 
 
@@ -82,7 +82,7 @@ Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görev
 
 2. **Install. cmd** adlı bir dosya oluşturun ve aşağıdaki Install betiğini dosyaya ekleyin.
 
-   Betik, kayıt defterini sorgulayarak .NET Framework belirtilen sürümünün makinede zaten yüklü olup olmadığını denetler. .NET sürümü yüklü değilse, .NET Web Yükleyicisi açılır. Herhangi bir sorunu gidermeye yardımcı olmak için, betik tüm etkinlikleri, **ınstalllogs** yerel depolama alanında depolanan startuptasklog (geçerli tarih ve saat). txt dosyasına kaydeder.
+   Betik, kayıt defterini sorgulayarak .NET Framework belirtilen sürümünün makinede zaten yüklü olup olmadığını denetler. .NET Framework sürümü yüklü değilse, .NET Framework Web Yükleyicisi açılır. Herhangi bir sorunu gidermeye yardımcı olmak için, betik tüm etkinlikleri, **ınstalllogs** yerel depolama alanında depolanan startuptasklog (geçerli tarih ve saat). txt dosyasına kaydeder.
    
    > [!IMPORTANT]
    > Install. cmd dosyasını oluşturmak için Windows Notepad gibi temel bir metin düzenleyicisi kullanın. Bir metin dosyası oluşturmak ve uzantıyı. cmd olarak değiştirmek için Visual Studio kullanıyorsanız, dosya yine de bir UTF-8 bayt sırası işareti içeriyor olabilir. Bu işaret, betiğin ilk satırı çalıştırıldığında hata oluşmasına neden olabilir. Bu hatayı önlemek için betiğin ilk satırını, bayt sırası işleme tarafından atlanacak bir REM ifadesinin önüne alın. 

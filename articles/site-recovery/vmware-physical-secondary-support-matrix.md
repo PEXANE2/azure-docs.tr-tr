@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363222"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256802"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM 'Leri ve fiziksel sunucuları ikincil bir siteye olağanüstü durum kurtarması için destek matrisi
 
@@ -68,15 +68,15 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 
 **Yapılandırma** | **Destekleniyor**  
 --- | --- 
-Konak-NIC Grubu oluşturma | Evet 
-Konak-VLAN | Evet 
-Ana bilgisayar-IPv4 | Evet 
+Konak-NIC Grubu oluşturma | Yes 
+Konak-VLAN | Yes 
+Ana bilgisayar-IPv4 | Yes 
 Ana bilgisayar-IPv6 | Hayır 
 Konuk VM-NIC ekibi oluşturma | Hayır
-Konuk VM-IPv4 | Evet
+Konuk VM-IPv4 | Yes
 Konuk VM-IPv6 | Hayır
-Konuk VM-Windows/Linux-statik IP adresi | Evet
-Konuk VM-çoklu NIC | Evet
+Konuk VM-Windows/Linux-statik IP adresi | Yes
+Konuk VM-çoklu NIC | Yes
 
 
 ## <a name="storage"></a>Depolama
@@ -85,30 +85,30 @@ Konuk VM-çoklu NIC | Evet
 
 **Depolama (ana bilgisayar)** | **Destekleniyor** 
 --- | --- 
-NFS | Evet 
-SMB 3.0 | YOK 
-SAN (ISCSı) | Evet 
-Çoklu yol (MPIO) | Evet 
+NFS | Yes 
+SMB 3.0 | Yok 
+SAN (ISCSı) | Yes 
+Çoklu yol (MPIO) | Yes 
 
 ### <a name="guest-or-physical-server-storage"></a>Konuk veya fiziksel sunucu depolaması
 
 **Yapılandırma** | **Destekleniyor** 
 --- | --- 
-VMDK | Evet 
-VHD/VHDX | YOK 
-Gen 2 VM | YOK 
-Paylaşılan küme diski | Evet 
+VMDK | Yes 
+VHD/VHDX | Yok 
+Gen 2 VM | Yok 
+Paylaşılan küme diski | Yes 
 Şifrelenmiş disk | Hayır 
-UEFı| Evet 
+UEFı| Yes 
 NFS | Hayır 
 SMB 3.0 | Hayır 
-RDM | Evet 
-Disk > 1 TB | Evet 
-Dizili disk > 1 TB olan birim<br/><br/> LVM | Evet 
+RDM | Yes 
+Disk > 1 TB | Yes 
+Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes 
 Depolama alanları | Hayır 
-Dinamik disk Ekle/Kaldır | Evet 
-Diski hariç tutma | Evet 
-Çoklu yol (MPIO) | YOK 
+Dinamik disk Ekle/Kaldır | Yes 
+Diski hariç tutma | Yes 
+Çoklu yol (MPIO) | Yok 
 
 ## <a name="vaults"></a>Kasalar
 

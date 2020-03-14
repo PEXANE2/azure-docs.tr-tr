@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0fd016e02c579f4e7230bd18d363cfe9a64c88eb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244270"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366113"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile uygulamalara uzaktan erişmenin güvenlik konuları
 
@@ -81,13 +81,9 @@ Bu raporların ve olayların birçoğu, güvenlik bilgileri ve olay yönetimi (S
 
 Azure AD Uygulama Ara Sunucusu tarafından yayınlanan uygulamaların güvenliğini artırmak için Web Gezgini Robotlarınızın uygulamalarınızı dizinlemesini ve arşivlemesini engelliyoruz. Web Gezgini robotları yayımlanmış bir uygulama için robot ayarlarını almaya çalıştığında, uygulama proxy 'Si, `User-agent: * Disallow: /`içeren bir robots. txt dosyası ile yanıt verir.
 
-### <a name="ddos-prevention"></a>DDOS önleme
+#### <a name="azure-ddos-protection-service"></a>Azure DDoS koruma hizmeti
 
-Uygulama proxy 'Si aracılığıyla yayımlanan uygulamalar, dağıtılmış hizmet reddi (DDOS) saldırılarına karşı korunur.
-
-Uygulama proxy hizmeti, uygulamalarınıza ve ağınıza ulaşmaya çalışan trafik miktarını izler. Uygulamalarınız için uzaktan erişim isteğinde bulunan cihazların sayısı, Microsoft, ağınıza erişimi kısıtlar. 
-
-Microsoft, bireysel uygulamalar ve aboneliğiniz için trafik desenlerini bir bütün olarak izler. Bir uygulama normal istekleri daha yükseğe alırsa, bu uygulamaya erişim istekleri kısa bir süre boyunca reddedilir. Tüm aboneliğiniz genelinde normal isteklerden daha yüksek istekler alıyorsanız, uygulamalarınızdan birine erişim istekleri reddedilir. Bu önleyici ölçü, şirket içi kullanıcılarınızın uygulamalarına erişimi sürdürmek için, uygulama sunucularınızın uzaktan erişim istekleri tarafından aşırı yüklenmesine devam eder. 
+Uygulama proxy 'Si aracılığıyla yayımlanan uygulamalar, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korunur. Azure **DDoS koruması** , Azure Platformlarınızı hizmet reddi saldırılarına karşı korumak için Azure platformunda sunulan bir hizmettir. **Temel** hizmet katmanı otomatik olarak etkinleştirildiğinden, her zaman açık trafik izleme ve ortak ağ düzeyi saldırıları için gerçek zamanlı risk azaltma sağlar. Ayrıca, Azure sanal ağ kaynaklarına özel olarak ayarlanmış ek risk azaltma özellikleri sunan **Standart** bir katman de mevcuttur. Ayrıntılar için bkz. [Azure DDoS koruması standardına genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
 ## <a name="under-the-hood"></a>Başlık altında
 

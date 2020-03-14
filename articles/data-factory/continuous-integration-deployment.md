@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc0da82447b5df0735b16f46298a2f473ee61ea0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187823"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371384"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -60,7 +60,7 @@ Aşağıda, Azure Repos git ile yapılandırılmış bir Azure Data Factory 'dek
 
    ![Kendi şablonunuzu oluşturun](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. **Dosya Yükle**' yi seçin ve ardından oluşturulan kaynak yöneticisi şablonunu seçin.
+1. **Dosya Yükle**' yi seçin ve ardından oluşturulan kaynak yöneticisi şablonunu seçin. Bu, 1. adımda dışarıya alınan. zip dosyasında bulunan **arm_template. JSON** dosyasıdır.
 
    ![Şablonu Düzenle](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -106,7 +106,7 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
 1.  **Yapıt Ekle**' yi seçin ve ardından veri fabrikayla yapılandırılmış depoyu seçin. **Varsayılan dal**için **adf_publish** seçin. **Varsayılan sürüm**için **varsayılan daldan en son**' u seçin.
 
-    ![Yapıt Ekle](media/continuous-integration-deployment/continuous-integration-image7.png)
+    ![Yapıt ekleme](media/continuous-integration-deployment/continuous-integration-image7.png)
 
 1.  Azure Resource Manager Dağıtım görevi ekleyin:
 
@@ -171,7 +171,7 @@ Gizli dizileri ele almanın iki yolu vardır:
 
     Parametre dosyasının da yayımlama dalında olması gerekir.
 
--  Önceki bölümde açıklanan Azure Resource Manager dağıtım görevinin önüne bir [Azure Key Vault görevi](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) ekleyin:
+1. Önceki bölümde açıklanan Azure Resource Manager dağıtım görevinin önüne bir [Azure Key Vault görevi](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) ekleyin:
 
     1.  **Görevler** sekmesinde yeni bir görev oluşturun. **Azure Key Vault** arayın ve ekleyin.
 
@@ -179,9 +179,9 @@ Gizli dizileri ele almanın iki yolu vardır:
 
     ![Key Vault görevi ekleme](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines aracısına izin verme
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines aracısına izin verme
 
-   Doğru izinler ayarlanmamışsa Azure Key Vault görev erişim reddedildi hatasıyla başarısız olabilir. Yayın için günlükleri indirin ve Azure Pipelines aracısına izin vermek için komutunu içeren. ps1 dosyasını bulun. Komutu doğrudan çalıştırabilirsiniz. Ya da asıl KIMLIĞI dosyadan kopyalayabilir ve Azure portal erişim ilkesini el ile ekleyebilirsiniz. `Get` ve `List` gereken en düşük izinlerdir.
+Doğru izinler ayarlanmamışsa Azure Key Vault görev erişim reddedildi hatasıyla başarısız olabilir. Yayın için günlükleri indirin ve Azure Pipelines aracısına izin vermek için komutunu içeren. ps1 dosyasını bulun. Komutu doğrudan çalıştırabilirsiniz. Ya da asıl KIMLIĞI dosyadan kopyalayabilir ve Azure portal erişim ilkesini el ile ekleyebilirsiniz. `Get` ve `List` gereken en düşük izinlerdir.
 
 ### <a name="update-active-triggers"></a>Etkin Tetikleyicileri Güncelleştir
 
@@ -471,7 +471,10 @@ GIT modundaysanız, şablonda parametreli olan özellikleri ve sabit kodlanmış
 * Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
 * Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
 
-Bu koşullar altında, varsayılan parameterleştirme şablonunu geçersiz kılmak için, Data Factory git tümleştirmesi için kök klasör olarak belirtilen klasörde ARM-Template-Parameters-Definition. JSON adlı bir dosya oluşturun. Bu tam dosya adını kullanmanız gerekir. Data Factory, bu dosyayı, yalnızca işbirliği dalından değil Azure Data Factory portalında yaptığınız daldan okur. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabiriminde **ARM şablonunu dışarı aktar** ' ı seçerek yaptığınız değişiklikleri test edebilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz. Dosya bulunamazsa, varsayılan şablon kullanılır.
+Bu koşullar altında, varsayılan parameterleştirme şablonunu geçersiz kılmak için, Data Factory git tümleştirmesi için kök klasör olarak belirtilen klasörde **ARM-Template-Parameters-Definition. JSON** adlı bir dosya oluşturun. Bu tam dosya adını kullanmanız gerekir. Data Factory, bu dosyayı, yalnızca işbirliği dalından değil Azure Data Factory portalında yaptığınız daldan okur. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabiriminde **ARM şablonunu dışarı aktar** ' ı seçerek yaptığınız değişiklikleri test edebilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz. Dosya bulunamazsa, varsayılan şablon kullanılır.
+
+> [!NOTE]
+> Özel bir parameterleştirme şablonu, 256 ARM şablon parametresi sınırını değiştirmez. Parametreli özellik sayısını seçmenizi ve azaltmanızı sağlar.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Özel parametre dosyasının sözdizimi
 
@@ -568,7 +571,7 @@ Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bö
 * `typeProperties`altında iki özellik parametrelenir. Birincisi, varsayılan bir değere sahip ve`string`türünde olan `maxConcurrency`. `<entityName>_properties_typeProperties_maxConcurrency`varsayılan parametre adı vardır.
 * `recurrence` özelliği de parametreleştirilenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum, tür `number`olarak parametreleştirilen `interval` özelliğidir. Parametre adı `<entityName>_properties_typeProperties_recurrence_triggerSuffix`ile Sonya düzeltildi. Benzer şekilde, `freq` özelliği bir dizedir ve bir dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
 
-#### <a name="linkedservices"></a>LinkedServices
+#### <a name="linkedservices"></a>linkedServices
 
 * Bağlı hizmetler benzersizdir. Bağlı hizmetler ve veri kümelerinin çok sayıda türü olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, `AzureDataLakeStore`türündeki tüm bağlı hizmetler için belirli bir şablon uygulanır. Tüm diğerleri için (`*`aracılığıyla), farklı bir şablon uygulanır.
 * `connectionString` özelliği bir `securestring` değeri olarak parametrelendirilecektir. Varsayılan bir değere sahip olmayacaktır. `connectionString`, sonekli olan kısaltılmış bir parametre adına sahip olur.
@@ -657,7 +660,7 @@ Geçerli varsayılan parameterleştirme şablonu aşağıda verilmiştir. Yalnı
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",

@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını geri yükleme
 description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yedeklenen SQL Server veritabanlarının nasıl geri yükleneceği açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390756"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252460"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 'lerinde SQL Server veritabanlarını geri yükleme
 
@@ -23,7 +23,7 @@ Azure Backup, Azure VM 'lerinde çalışan SQL Server veritabanlarını şu şek
 - İşlem günlüğü yedeklerini kullanarak belirli bir tarih veya saate (ikinci olarak) geri yükleyin. Azure Backup, uygun tam değişiklik yedeklemesini ve seçilen saate göre geri yüklemek için gereken günlük yedeklemeleri zincirini otomatik olarak belirler.
 - Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesini geri yükleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakileri göz önünde bulabilirsiniz:
 
@@ -112,24 +112,25 @@ Yedekleme verilerini bir veritabanı yerine. bak dosyaları olarak geri yükleme
 2. Yedekleme dosyalarını geri yüklemek istediğiniz SQL Server adını seçin.
 3. **Sunucu üzerindeki hedef yolda** , adım 2 ' de seçilen sunucudaki klasör yolunu girin. Bu, hizmetin tüm gerekli yedekleme dosyalarının dökümünü alacak konumudur. Genellikle, bir ağ paylaşımının yolu veya hedef yolu olarak belirtildiğinde bağlı bir Azure dosya paylaşımının yolu, bu dosyalara aynı ağdaki diğer makineler veya bunlara bağlı aynı Azure dosya paylaşımıyla daha kolay erişim sağlar.<BR>
 
->Veritabanı yedekleme dosyalarını, hedef kayıtlı VM 'ye bağlanmış bir Azure dosya paylaşımında geri yüklemek için NT AUTHORITY\SYSTEM 'ın dosya paylaşımında erişime sahip olduğundan emin olun. VM 'de takılı olan AFS 'ye okuma/yazma izinleri vermek için aşağıda verilen adımları gerçekleştirebilirsiniz:
->- NT AUTHORITY\SYSTEM kabuğu 'na girmek için `PsExec -s cmd` Çalıştır
->   - `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` yürütme
->   - `dir \\<storageacct>.file.core.windows.net\<filesharename>` erişimi doğrulama
->- Yol olarak `\\<storageacct>.file.core.windows.net\<filesharename>` için yedekleme kasasından dosya olarak geri yükleme başlatın<BR>
-PsExec 'i <https://docs.microsoft.com/sysinternals/downloads/psexec> aracılığıyla indirebilirsiniz
+    >Veritabanı yedekleme dosyalarını, hedef kayıtlı VM 'ye bağlanmış bir Azure dosya paylaşımında geri yüklemek için NT AUTHORITY\SYSTEM 'ın dosya paylaşımında erişime sahip olduğundan emin olun. VM 'de takılı olan AFS 'ye okuma/yazma izinleri vermek için aşağıda verilen adımları gerçekleştirebilirsiniz:
+    >
+    >- NT AUTHORITY\SYSTEM kabuğu 'na girmek için `PsExec -s cmd` Çalıştır
+    >   - `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` yürütme
+    >   - `dir \\<storageacct>.file.core.windows.net\<filesharename>` erişimi doğrulama
+    >- Yol olarak `\\<storageacct>.file.core.windows.net\<filesharename>` için yedekleme kasasından dosya olarak geri yükleme başlatın<BR>
+    PsExec 'i <https://docs.microsoft.com/sysinternals/downloads/psexec> aracılığıyla indirebilirsiniz
 
 4. **Tamam**’ı seçin.
 
-![Dosya olarak geri yükle ' yi seçin](./media/backup-azure-sql-database/restore-as-files.png)
+    ![Dosya olarak geri yükle ' yi seçin](./media/backup-azure-sql-database/restore-as-files.png)
 
 5. Tüm kullanılabilir. bak dosyalarının geri yükleneceği **geri yükleme noktasını** seçin.
 
-![Geri yükleme noktası seçin](./media/backup-azure-sql-database/restore-point.png)
+    ![Geri yükleme noktası seçin](./media/backup-azure-sql-database/restore-point.png)
 
 6. Seçilen kurtarma noktasıyla ilişkili tüm yedekleme dosyaları, hedef yoluna dökülür. Dosyaları, SQL Server Management Studio kullanarak mevcut oldukları herhangi bir makinede bir veritabanı olarak geri yükleyebilirsiniz.
 
-![Hedef yolundaki yedekleme dosyaları geri yüklendi](./media/backup-azure-sql-database/sql-backup-files.png)
+    ![Hedef yolundaki yedekleme dosyaları geri yüklendi](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Belirli bir zaman noktasına geri yükleme
 
@@ -163,6 +164,9 @@ Geri yükleme türü olarak **tam & türev** seçtiyseniz şunları yapın:
 1. Listeden bir kurtarma noktası seçin ve geri yükleme noktası yordamını gerçekleştirmek için **Tamam** ' ı seçin.
 
     ![Tam kurtarma noktası seçin](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+
+    >[!NOTE]
+    > Varsayılan olarak, son 30 günün kurtarma noktaları görüntülenir. **Filtre** ' ye tıklayıp özel bir Aralık seçerek 30 günden daha eski kurtarma noktalarını görüntüleyebilirsiniz.
 
 1. **Gelişmiş yapılandırma** menüsünde, geri yüklemeden sonra veritabanını işlemsel halde tutmak ISTIYORSANıZ, **norecovery ile geri yüklemeyi**etkinleştirin.
 1. Hedef sunucudaki geri yükleme konumunu değiştirmek istiyorsanız, yeni bir hedef yolu girin.

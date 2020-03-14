@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936967"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365177"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLı kullanarak bir DNS bölge dosyasını içeri ve dışarı aktarma
 
@@ -75,7 +75,7 @@ Değerler:
 
 Kaynak grubunda bu ada sahip bir bölge yoksa, sizin için oluşturulur. Bölge zaten varsa, içeri aktarılan kayıt kümeleri varolan kayıt kümeleriyle birleştirilir. 
 
-### <a name="step-1-import-a-zone-file"></a>1\. Adım Bölge dosyasını içeri aktarma
+### <a name="step-1-import-a-zone-file"></a>1\. Adım. Bölge dosyasını içeri aktarma
 
 Bölge **contoso.com**için bir bölge dosyasını içeri aktarma.
 
@@ -91,7 +91,7 @@ Bölge **contoso.com**için bir bölge dosyasını içeri aktarma.
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```
 
-### <a name="step-2-verify-the-zone"></a>2\. Adım. Bölgeyi doğrulama
+### <a name="step-2-verify-the-zone"></a>2\. Adım Bölgeyi doğrulama
 
 Dosyayı içeri aktardıktan sonra DNS bölgesini doğrulamak için aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
@@ -149,7 +149,7 @@ Dosyayı içeri aktardıktan sonra DNS bölgesini doğrulamak için aşağıdaki
         134.170.188.221
     ```
 
-### <a name="step-3-update-dns-delegation"></a>3\. Adım. DNS temsilcisini Güncelleştir
+### <a name="step-3-update-dns-delegation"></a>3\. Adım DNS temsilcisini Güncelleştir
 
 Bölgenin doğru bir şekilde içeri aktarıldığını doğruladıktan sonra, DNS temsilcisini Azure DNS ad sunucularına işaret etmek üzere güncelleştirmeniz gerekir. Daha fazla bilgi için [DNS temsilcisini güncelleştirme](dns-domain-delegation.md)makalesine bakın.
 
@@ -173,7 +173,7 @@ Bölge içeri aktarırken olduğu gibi, önce oturum açmanız, aboneliğinizi s
 
 **Myresourcegroup** kaynak grubundaki mevcut Azure DNS Zone **contoso.com** dosyasını **contoso. com. txt** dosyasına (geçerli klasörde) dışarı aktarmak için `azure network dns zone export`çalıştırın. Bu komut, bölgedeki kayıt kümelerini numaralandırmak ve sonuçları bağlama uyumlu bir bölge dosyasına aktarmak için Azure DNS hizmetini çağırır.
 
-```
+```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 

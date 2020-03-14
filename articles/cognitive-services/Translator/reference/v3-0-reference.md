@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 3/13/2020
 ms.author: swmachan
-ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4180dc6127fb2d31465400b1b25fb7e2d68f4754
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123046"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369174"
 ---
 # <a name="translator-text-api-v30"></a>Translator Metin Çevirisi API'si v 3.0
 
@@ -58,17 +58,74 @@ Aboneliğinizin kimliğini doğrulamak için kullanabileceğiniz üç üst bilgi
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*Gizli anahtarınızı geçirmektir bilişsel hizmetler aboneliğiyle kullanın*.<br/>Değer, aboneliğinizin Translator Metin Çevirisi API'si Azure gizli anahtarıdır.|
 |Yetkilendirme|*Kimlik doğrulama belirteci geçirçalışıyorsanız bilişsel hizmetler aboneliğiyle kullanın.*<br/>Değer, taşıyıcı belirtecidir: `Bearer <token>`.|
-|OCP-apim-Subscription-Region|*Çok sunuculu bir gizli anahtar geçirçalışıyorsanız bilişsel hizmetler çoklu hizmet aboneliği ile birlikte kullanın.*<br/>Değer, çoklu hizmet aboneliğinin bölgesidir. Bu değer, çok hizmet temelli bir abonelik kullanmadığınız zaman isteğe bağlıdır.|
+|OCP-apim-Subscription-Region|*Bilişsel hizmetler çoklu hizmet ve bölgesel çevirmen kaynağı ile kullanın.*<br/>Değer, çok hizmet veya bölgesel çevirmen kaynağının bölgesidir. Bu değer, genel bir çevirmen kaynağı kullanılırken isteğe bağlıdır.|
 
-###  <a name="secret-key"></a>Gizli anahtar
+###  <a name="secret-key"></a>Gizlilik anahtarı
 İlk seçenek `Ocp-Apim-Subscription-Key` üstbilgisini kullanarak kimlik doğrulaması yapmanız gerekir. `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` üst bilgisini isteğinize ekleyin.
 
-### <a name="authorization-token"></a>Yetkilendirme belirteci
+#### <a name="authenticating-with-a-global-resource"></a>Genel kaynakla kimlik doğrulama
+
+[Küresel bir çevirmen kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)kullandığınızda, Translator API 'sini çağırmak için bir üst bilgi eklemeniz gerekir.
+
+|Üst bilgiler|Açıklama|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| Değer, aboneliğinizin Translator Metin Çevirisi API'si Azure gizli anahtarıdır.|
+
+Aşağıda, genel çevirmen kaynağını kullanarak Translator API 'sini çağırma isteği verilmiştir
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>Bölgesel kaynakla kimlik doğrulama
+
+[Bölgesel bir çevirmen kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)kullandığınızda.
+Translator API 'sini çağırmanız gereken 2 üst bilgi vardır.
+
+|Üst bilgiler|Açıklama|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| Değer, aboneliğinizin Translator Metin Çevirisi API'si Azure gizli anahtarıdır.|
+|OCP-apim-Subscription-Region| Değer, çevirmen kaynağının bölgesidir. |
+
+Aşağıda, bölgesel çevirmen kaynağını kullanarak Translator API 'sini çağırma isteği verilmiştir
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>Çoklu hizmet kaynağıyla kimlik doğrulama
+
+Bilişsel hizmetin çoklu hizmet kaynağını kullandığınızda. Bu, birden çok hizmete yönelik isteklerin kimliğini doğrulamak için tek bir gizli anahtar kullanmanıza olanak sağlar. 
+
+Birden çok hizmet gizli anahtarı kullandığınızda, isteğinize iki kimlik doğrulama üst bilgisi eklemeniz gerekir. Translator API 'sini çağırmanız gereken 2 üst bilgi vardır.
+
+|Üst bilgiler|Açıklama|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| Değer, çok hizmet kaynağınız için Azure gizli anahtarı ' dır.|
+|OCP-apim-Subscription-Region| Değer, çoklu hizmet kaynağının bölgesidir. |
+
+Çoklu hizmet metin API 'SI aboneliği için bölge gereklidir. Seçtiğiniz bölge, çok sunuculu abonelik anahtarını kullanırken metin çevirisi için kullanabileceğiniz tek bölgedir ve Azure portal aracılığıyla çok hizmet aboneliğiniz için kaydolduğunuzda seçtiğiniz bölge olmalıdır.
+
+Kullanılabilir bölgeler `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`ve `southafricanorth`.
+
+Sorgu dizesinde gizli anahtarı `Subscription-Key`parametresi ile geçirirseniz, `Subscription-Region`sorgu parametresi ile bölgeyi belirtmeniz gerekir.
+
+### <a name="authenticating-with-an-access-token"></a>Erişim belirteci ile kimlik doğrulama
 Alternatif olarak, bir erişim belirteci için gizli anahtarınızı değiş tokuş edebilirsiniz. Bu belirteç her isteğe `Authorization` üst bilgisi olarak dahildir. Yetkilendirme belirteci almak için aşağıdaki URL 'ye bir `POST` isteği yapın:
 
-| Ortam     | Kimlik doğrulama hizmeti URL 'SI                                |
+| Kaynak türü     | Kimlik doğrulama hizmeti URL 'SI                                |
 |-----------------|-----------------------------------------------------------|
-| Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Genel          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Bölgesel veya çok hizmet | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 Aşağıda gizli anahtar verilen bir belirteç elde etmek için örnek istekler verilmiştir:
 
@@ -88,22 +145,29 @@ Authorization: Bearer <Base64-access_token>
 
 Bir kimlik doğrulama belirteci 10 dakika için geçerlidir. Çevirmen API 'Lerine birden çok çağrı yapıldığında belirtecin yeniden kullanılması gerekir. Ancak, programınız Translator API 'sine uzun süre boyunca istek yapıyorsa, programınızın düzenli aralıklarla yeni bir erişim belirteci istemesi gerekir (örneğin, her 8 dakikada bir).
 
-### <a name="multi-service-subscription"></a>Çoklu hizmet aboneliği
+## <a name="virtual-network-support"></a>Sanal ağ desteği
 
-Son kimlik doğrulama seçeneği bilişsel hizmetin çoklu hizmet aboneliği kullanmaktır. Bu, birden çok hizmete yönelik isteklerin kimliğini doğrulamak için tek bir gizli anahtar kullanmanıza olanak sağlar. 
+Translator hizmeti artık sınırlı bölgelerdeki (`WestUS2`, `EastUS`, `SouthCentralUS`, `WestUS`, `Central US EUAP`, `global`) sanal ağ özellikleri ile kullanılabilir. Sanal ağı etkinleştirmek için lütfen bkz. Azure bilişsel [Hizmetler sanal ağlarını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
-Birden çok hizmet gizli anahtarı kullandığınızda, isteğinize iki kimlik doğrulama üst bilgisi eklemeniz gerekir. İlk olarak gizli anahtarı geçirir, ikincisi aboneliğinizle ilişkili bölgeyi belirtir. 
-* `Ocp-Apim-Subscription-Key`
-* `Ocp-Apim-Subscription-Region`
+Bu özelliği etkinleştirdikten sonra, Translator API 'sini çağırmak için özel uç noktasını kullanmanız gerekir. Küresel çevirmen uç noktasını ("api.cognitive.microsofttranslator.com") kullanamazsınız ve bir erişim belirteciyle kimlik doğrulaması yapılamaz.
 
-Çoklu hizmet metin API 'SI aboneliği için bölge gereklidir. Seçtiğiniz bölge, çok sunuculu abonelik anahtarını kullanırken metin çevirisi için kullanabileceğiniz tek bölgedir ve Azure portal aracılığıyla çok hizmet aboneliğiniz için kaydolduğunuzda seçtiğiniz bölge olmalıdır.
+[Çevirmen kaynağını](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)oluşturduktan sonra özel uç noktayı bulabilirsiniz.
 
-Kullanılabilir bölgeler `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`ve `southafricanorth`.
+|Üst bilgiler|Açıklama|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| Değer, aboneliğinizin Translator Metin Çevirisi API'si Azure gizli anahtarıdır.|
+|OCP-apim-Subscription-Region| Değer, çevirmen kaynağının bölgesidir. Kaynak `global`, bu değer isteğe bağlıdır|
 
-Sorgu dizesinde gizli anahtarı `Subscription-Key`parametresi ile geçirirseniz, `Subscription-Region`sorgu parametresi ile bölgeyi belirtmeniz gerekir.
+Özel uç nokta kullanarak Translator API 'sini çağırmak için örnek bir istek aşağıda verilmiştir
 
-Bir taşıyıcı belirteç kullanıyorsanız, belirteç uç noktası: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
-
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
 
 ## <a name="errors"></a>Hatalar
 

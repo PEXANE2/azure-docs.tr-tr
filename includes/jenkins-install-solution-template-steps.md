@@ -4,12 +4,12 @@ ms.service: jenkins
 ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
-ms.openlocfilehash: 2468dc72881755a2990e8ddf8112d7fe27f64f4d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274882"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79199591"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -86,4 +86,4 @@ Jenkins çözüm şablonuyla ilgili hatalarla karşılaşırsanız [Jenkins GitH
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 > [!div class="nextstepaction"]
-> [Jenkins aracıları olarak Azure VM'leri ekleme](/azure/jenkins-azure-vm-agents)
+> [Jenkins aracıları olarak Azure VM'leri ekleme](/azure/jenkins/jenkins-azure-vm-agents)
