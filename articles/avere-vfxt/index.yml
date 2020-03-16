@@ -1,24 +1,64 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure için Avere vFXT Belgeleri
+### YamlMime:Landing
+title: Azure için Avere vFXT belgeleri
+summary: Azure için Avere vFXT yoğun veri kullanan yüksek performanslı bilgi işlem (HPC) görevlerinde bulut tabanlı bir önbellek katmanı sağlar.
 metadata:
-  title: Azure için Avere vFXT Belgeleri
-  description: Avere vFXT'yi yoğun okuma işlemleri içeren yüksek performanslı bilgi işlem (HPC) görevlerinde önbellek katmanı olarak kullanın
-  services: avere-vfxt
-  author: ekpgh
+  title: Azure için Avere vFXT belgeleri
+  description: Avere vFXT'yi yoğun okuma işlemleri içeren yüksek performanslı bilgi işlem (HPC) görevlerinde önbellek katmanı olarak kullanın.
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 12/19/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Azure için Avere vFXT yoğun veri kullanan yüksek performanslı bilgi işlem (HPC) görevlerinde bulut tabanlı bir önbellek katmanı sağlar. Avere vFXT dosyaları bilgi işlem düğümlerinizin yakınında önbelleğe alarak okuma sürelerini kısaltır ve en yoğun yükte bile sorunsuz çalışmanıza olanak tanır. Avere vFXT, en iyi 1.000 ile 40.000 istemci çekirdeği olan sistemlerde çalışır. <p>Avere vFXT, dosyaları Azure tabanlı bilgi işlem kaynaklarına yakın hale getirmek için mevcut veri depolamanızla birlikte çalışır. Etkin dosyalar, hala veri merkezinizde uzun vadeli olarak saklanır.'
-sections:
-  - title: Azure için Avere vFXT ile çalışmaya başlama
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="avere-vfxt-deploy-plan">Azure için Avere vFXT sisteminizi planlama</a>
-          - html: <a href="avere-vfxt-deploy-overview">Avere vFXT dağıtımı hakkında bilgi edinin</a>
-          - html: <a href="avere-vfxt-prereqs">Ön koşulları karşılama</a>
-          - html: <a href="avere-vfxt-deploy">Avere vFXT kümesini dağıtma</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 9b80c5dae1b9b08a5fc71c321813a28b576e0de4
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79297790"
+landingContent:
+- title: Azure için Avere vFXT hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure için Avere vFXT nedir?
+      url: avere-vfxt-overview.md
+  - linkListType: concept
+    links:
+    - text: SSS
+      url: avere-vfxt-faq.md
+- title: Planlama ve hazırlama
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Avere vFXT sisteminizi planlama
+      url: avere-vfxt-deploy-plan.md
+  - linkListType: how-to-guide
+    links:
+    - text: Avere vFXT oluşturmaya hazırlanma
+      url: avere-vfxt-prereqs.md
+- title: Oluşturma ve dağıtma
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Dağıtıma genel bakış
+      url: avere-vfxt-deploy-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: vFXT kümesini dağıtma
+      url: avere-vfxt-deploy.md
+- title: Bağlanma ve yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: vFXT kümesine erişme
+      url: avere-vfxt-cluster-gui.md
+    - text: Destek karşıya yüklemelerini etkinleştirme
+      url: avere-vfxt-enable-support.md
+    - text: Depolama alanını yapılandırma
+      url: avere-vfxt-add-storage.md
+    - text: Avere vFXT kümesini takma
+      url: avere-vfxt-mount-clients.md
+    - text: Verileri vFXT kümesine taşıma
+      url: avere-vfxt-data-ingest.md
+    - text: Avere vFXT kümesini yönetme
+      url: avere-vfxt-manage-cluster.md

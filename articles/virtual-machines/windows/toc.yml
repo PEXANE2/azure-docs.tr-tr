@@ -639,8 +639,10 @@
           href: snapshot-copy-managed-disk.md
         - name: Disk Depolama rezervasyonu yapma
           href: disks-reserved-capacity.md
-        - name: Artımlı anlık görüntü oluşturma
+        - name: Artımlı anlık görüntü oluşturma - PowerShell
           href: disks-incremental-snapshots.md
+        - name: Artımlı anlık görüntü oluşturma - Portal
+          href: disks-incremental-snapshots-portal.md
         - name: Yönetilmeyen diskleri yedekleme
           href: incremental-snapshots.md
         - name: Geçiş ve dönüştürme

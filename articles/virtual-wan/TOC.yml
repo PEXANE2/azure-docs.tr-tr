@@ -28,6 +28,8 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPsec ilkeleri
       href: virtual-wan-ipsec.md
+    - name: Noktadan Siteye VPN genel bakış
+      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sanal ağ geçidini Sanal WAN'a bağlama
@@ -56,6 +58,10 @@
           href: certificates-point-to-site.md
         - name: Kullanıcı VPN’i için Azure AD kiracısı yapılandırma
           href: openvpn-azure-ad-tenant.md
+        - name: AlwaysOn VPN kullanıcı tüneli yapılandırma
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+        - name: AlwaysOn VPN cihaz tüneli yapılandırma
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
         - name: Kullanıcı VPN’i için Çok Faktörlü Kimlik Doğrulamasını Etkinleştirme
           href: openvpn-azure-ad-mfa.md
         - name: Kullanıcı VPN’i için Azure AD kimlik doğrulamasını yapılandırma
@@ -91,7 +97,7 @@
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Abonelik ve hizmet sınırlamaları
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Fiyatlandırma hesaplayıcı

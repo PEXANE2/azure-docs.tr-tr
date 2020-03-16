@@ -1,42 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure FXT Edge Filer Belgeleri
+### YamlMime:Landing
+title: Azure FXT Edge Filer belgeleri
+summary: Azure FXT Edge Filer hibrit depolama önbelleği dosya tabanı, yoğun okuma işlemleri içeren yüksek performanslı (HPC) iş akışları için veri erişimini hızlandıran bir donanım/yazılım hibrit sistemdir.
 metadata:
-  title: Azure FXT Edge Filer Belgeleri
-  description: Azure FXT Edge Filer’ı yoğun okuma işlemleri içeren yüksek performanslı bilgi işlem (HPC) görevlerinde önbellek katmanı olarak kullanma
-  author: ekpgh
+  title: Azure FXT Edge Filer belgeleri
+  description: Azure FXT Edge Filer’ı yoğun okuma işlemleri içeren yüksek performanslı bilgi işlem (HPC) görevlerinde önbellek katmanı olarak kullanın.
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 07/10/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Azure FXT Edge Filer hibrit depolama önbelleği dosya tabanı, yoğun okuma işlemleri içeren yüksek performanslı (HPC) iş akışları için veri erişimini hızlandıran bir donanım/yazılım hibrit sistemdir. Üç veya daha fazla Azure FXT Edge Filer cihazından oluşan bir küme şirket için NAS sistemleri (NetApp veya Dell EMC Isilon), bulut depolama veya çözümlerin bir birleşimi için depolama performansını hızlandırabilir.'
-sections:
-  - title: Adım adım öğreticiler
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-install">Azure FXT Edge Filer donanımını yükleme</a>
-          - html: <a href="fxt-network-power">Azure FXT Edge Filer için ağ bağlantıları kurma</a>
-          - html: <a href="fxt-node-password">Donanım düğümleri üzerinde kök parola ayarlama</a>
-          - html: <a href="fxt-cluster-create">Hibrit depolama önbellek kümesi oluşturma</a>
-          - html: <a href="fxt-add-nodes">Küme düğümleri ekleme</a>
-          - html: <a href="fxt-add-storage">Arka uç deposu ekleme ve sanal ad alanı yapılandırma</a>
-          - html: <a href="fxt-configure-network">Kümenin ağ ayarlarını yapılandırma</a>
-  - title: Nasıl yapılır kılavuzları
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-mount-clients">İstemcileri Azure FXT Edge Filer kümesine bağlama</a>
-          - html: <a href="fxt-monitor">Azure FXT Edge Filer donanımını izleme</a>
-          - html: <a href="fxt-power-off">Bir donanım düğümünü güvenli bir şekilde kapatma</a>
-  - title: Kaynaklar
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-specs">Donanım belirtimleri</a>
-          - html: <a href="fxt-additional-doc">Diğer belgeler</a>
-          - html: <a href="fxt-support-ticket">Destek bileti açma</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79298861"
+landingContent:
+- title: Azure FXT Edge Filer hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure FXT Edge Filer nedir?
+      url: fxt-overview.md
+- title: başlarken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1 - Donanımı yükleme
+      url: fxt-install.md
+    - text: 2 - Kabloları bağlama
+      url: fxt-network-power.md
+    - text: 3 - Donanım parolalarını ayarlama
+      url: fxt-node-password.md
+    - text: 4 - Küme oluşturma
+      url: fxt-cluster-create.md
+    - text: 5 - Küme düğümleri ekleme
+      url: fxt-add-nodes.md
+    - text: 6 - Arka uç deposu ekleme ve sanal ad alanı yapılandırma
+      url: fxt-add-storage.md
+    - text: 7 - Kümenin ağ ayarlarını yapılandırma
+      url: fxt-configure-network.md
+- title: Yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: İstemcileri kümeye bağlama
+      url: fxt-mount-clients.md
+    - text: Donanım durumunu izleme
+      url: fxt-monitor.md
+    - text: Donanımı güvenli bir şekilde kapatma
+      url: fxt-power-off.md
+- title: Kaynaklar
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Donanım belirtimleri
+      url: fxt-specs.md
+    - text: Diğer belgeler
+      url: fxt-additional-doc.md
