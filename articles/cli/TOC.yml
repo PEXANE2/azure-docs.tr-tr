@@ -1,9 +1,0 @@
-- name: Komut Satırı Arabirimi (CLI)
-  href: index.yml
-  items:
-    - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: Azure Komut Satırı Arabirimi (CLI)
-      href: /cli/azure
-    - name: Visual Studio 2015 için PowerShell Araçları
-      href: 'https://adamdriscoll.gitbooks.io/powershell-tools-documentation/content/'
