@@ -1,66 +1,66 @@
 ---
-title: 'Hızlı başlangıç: Metin Analizi istemci kitaplığı C# | Microsoft Docs'
-description: İçin Metin Analizi istemci kitaplığı ile çalışmaya başlamaC#
+title: 'Hızlı Başlangıç: C# için Metin Analizi istemci kitaplığı | Microsoft Docs'
+description: C# için Metin Analizi istemci kitaplığını kullanmaya başlayın
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: b7c4bac7523cdec36beac64e2cd204588b0935fb
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 6adce0ed6b5b5768bd9a489fced25ce439a33e0a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155393"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203446"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
 
-v3 [başvurusu belgeleri](https://aka.ms/azsdk-net-textanalytics-ref-docs) | v3 [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics) | [v3 paketi (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3 Başvuru belgeleri](https://aka.ms/azsdk-net-textanalytics-ref-docs) | [v3 Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics) | [v3 Paketi (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 Örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-v2 [başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet-preview) | [v2 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2 paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2 örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2 Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet-preview) | [v2 Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2 Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2 Örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/)
-* Azure aboneliğiniz olduktan sonra, anahtarınızı ve uç noktanızı almak için</a> Azure portal bir kaynak Metin Analizi <span class="docon docon-navigate-external x-hidden-focus"></span> oluşturun"  target="_blank">metin analizi bir kaynak oluşturun <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=". 
-    * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu daha sonra hızlı başlangıçta yapacaksınız.
+* Azure aboneliği - [Ücretsiz olarak oluşturun](https://azure.microsoft.com/free/)
+* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
+* Azure aboneliğinizi oluşturduktan sonra, anahtarınızı ve uç noktanızı almak için Azure portalda <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Metin Analizi kaynağı oluşturun"  target="_blank">Metin Analizi kaynağı oluşturun <span class="docon docon-navigate-external x-hidden-focus"></span></a>. 
+    * Uygulamanızı Metin Analizi API’sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu hızlı başlangıçta daha sonra yapacaksınız.
     * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyebilir ve daha sonra üretim için ücretli bir katmana yükseltebilirsiniz.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-### <a name="create-a-new-net-core-application"></a>Yeni bir .NET Core uygulaması oluşturma
+### <a name="create-a-new-net-core-application"></a>Yeni .NET Core uygulaması oluşturma
 
-Visual Studio IDE 'yi kullanarak yeni bir .NET Core konsol uygulaması oluşturun. Bu, tek C# kaynak dosya içeren bir "Merhaba Dünya" projesi oluşturur: *program.cs*.
+Visual Studio IDE’yi kullanarak yeni bir .NET Core konsol uygulaması oluşturun. Bu, tek bir C# kaynak dosyasıyla (*program.cs*) “Merhaba Dünya” adında bir proje oluşturur.
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
 
-**Çözüm Gezgini** çözüme sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yüklemelisiniz. Açılan Paket Yöneticisi ' nde **, Seç '** i seçin, **ön sürümü dahil**et ' i işaretleyin ve `Azure.AI.TextAnalytics`arayın. Sürüm `1.0.0-preview.2`' yi seçin ve sonra ' yi **yükler**. [Paket Yöneticisi konsolunu](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)da kullanabilirsiniz.
-
-> [!TIP]
-> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)bulabilirsiniz. 
-
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
-
-**Çözüm Gezgini** çözüme sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yüklemelisiniz. Açılan paket yöneticisinde, **Araştır** ' ı seçin ve `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`arayın. Üzerine tıklayın ve sonra **uygulamasını**. [Paket Yöneticisi konsolunu](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)da kullanabilirsiniz.
+**Çözüm Gezgini**’nde çözüme sağ tıklayarak ve **NuGet paketlerini yönet** seçeneğini belirleyerek istemci kitaplığını yükleyin. Açılan paket yöneticisinde **Gözat**’ı seçip **Ön sürümü dahil et** seçeneğini işaretleyin ve `Azure.AI.TextAnalytics` için arama yapın. Sürüm olarak `1.0.0-preview.2` seçin ve **Yükle** seçeneğini belirleyin. [Paket Yöneticisi Konsolu](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)’nu da kullanabilirsiniz.
 
 > [!TIP]
-> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs)bulabilirsiniz. 
+> Tüm hızlı başlangıç kodunu aynı anda görüntülemek mi istiyorsunuz? Bunu, bu hızlı başlangıçtaki kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)’da bulabilirsiniz. 
+
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
+
+**Çözüm Gezgini**’nde çözüme sağ tıklayarak ve **NuGet paketlerini yönet** seçeneğini belirleyerek istemci kitaplığını yükleyin. Açılan paket yöneticisinde **Gözat**’ı seçin ve `Microsoft.Azure.CognitiveServices.Language.TextAnalytics` için arama yapın. Üzerine tıklayın ve **Yükle** seçeneğini belirleyin. [Paket Yöneticisi Konsolu](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)’nu da kullanabilirsiniz.
+
+> [!TIP]
+> Tüm hızlı başlangıç kodunu aynı anda görüntülemek mi istiyorsunuz? Bunu, bu hızlı başlangıçtaki kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs)’da bulabilirsiniz. 
 
 ---
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
 
-*Program.cs* dosyasını açın ve aşağıdaki `using` yönergeleri ekleyin:
+*Program.cs* dosyasını açın ve aşağıdaki `using` yönergesini ekleyin:
 
 ```csharp
 using System;
@@ -68,7 +68,7 @@ using System.Globalization;
 using Azure.AI.TextAnalytics;
 ```
 
-Uygulamanın `Program` sınıfında, kaynağınızın anahtarı ve uç noktası için değişkenler oluşturun.
+Uygulamanın `Program` sınıfında kaynağınızın anahtarına ve uç noktasına yönelik değişkenler oluşturun.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -77,7 +77,7 @@ private static readonly TextAnalyticsApiKeyCredential credentials = new TextAnal
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
-Uygulamanın `Main` yöntemini değiştirin. Burada, daha sonra çağrılan yöntemleri tanımlayacaksınız.
+Uygulamanın `Main` yöntemini değiştirin. Burada çağrılan yöntemleri daha sonra tanımlayacaksınız.
 
 ```csharp
 static void Main(string[] args)
@@ -96,13 +96,13 @@ static void Main(string[] args)
 }
 ```
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-*Program.cs* dosyasını açın ve aşağıdaki `using` yönergeleri ekleyin:
+*Program.cs* dosyasını açın ve aşağıdaki `using` yönergesini ekleyin:
 
 [!code-csharp[Import directives](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=imports)]
 
-Uygulamanın `Program` sınıfında, kaynağınızın anahtarı ve uç noktası için değişkenler oluşturun. 
+Uygulamanın `Program` sınıfında kaynağınızın anahtarına ve uç noktasına yönelik değişkenler oluşturun. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -111,7 +111,7 @@ private static readonly string key = "<replace-with-your-text-analytics-key-here
 private static readonly string endpoint = "<replace-with-your-text-analytics-endpoint-here>";
 ```
 
-Uygulamanın `Main` yöntemini değiştirin. Burada, daha sonra çağrılan yöntemleri tanımlayacaksınız.
+Uygulamanın `Main` yöntemini değiştirin. Burada çağrılan yöntemleri daha sonra tanımlayacaksınız.
 
 [!code-csharp[main method](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=main)]
 
@@ -119,36 +119,36 @@ Uygulamanın `Main` yöntemini değiştirin. Burada, daha sonra çağrılan yön
 
 ## <a name="object-model"></a>Nesne modeli
 
-Metin Analizi istemci, anahtarınızı kullanarak Azure 'da kimlik doğrulayan ve tek dizeler veya toplu işlem olarak metin kabul etmek için işlevler sağlayan bir `TextAnalyticsClient` nesnesidir. API 'ye eşzamanlı olarak veya zaman uyumsuz olarak metin gönderebilirsiniz. Yanıt nesnesi, göndereceğiniz her belge için analiz bilgilerini içerecektir. 
+Metin Analizi istemcisi, anahtarınızı kullanarak Azure’da kimlik doğrulaması yapan ve metnin tek dizeler halinde veya bir toplu iş olarak kabul edilmesine olanak tanıyan işlevleri sunan bir `TextAnalyticsClient` nesnesidir. Metinleri API’ye zaman uyumlu veya zaman uyumsuz olarak gönderebilirsiniz. Yanıt nesnesi, gönderdiğiniz her belgeye yönelik analiz bilgilerini içerir. 
 
-Sürüm `3.0-preview`kullanıyorsanız, istemciyi çeşitli varsayılan ayarlarla başlatmak için isteğe bağlı bir `TextAnalyticsClientOptions` örneğini kullanabilirsiniz (örneğin, varsayılan dil veya ülke ipucu). Ayrıca Azure Active Directory belirteci kullanarak kimlik doğrulaması yapabilirsiniz. 
+`3.0-preview` sürümünü kullanıyorsanız istemciyi çeşitli varsayılan ayarlarla başlatmak için isteğe bağlı bir `TextAnalyticsClientOptions` örneği kullanabilirsiniz (örneğin varsayılan dil veya ülke ipucu). Bir Azure Active Directory belirteci kullanarak da kimlik doğrulaması yapabilirsiniz. 
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-* [Yaklaşım Analizi](#sentiment-analysis)
+* [Yaklaşım analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
-* [Adlandırılmış varlık tanıma](#named-entity-recognition-ner)
-* [Kişisel bilgileri Algıla](#detect-personal-information)
+* [Adlandırılmış Varlık Tanıma](#named-entity-recognition-ner)
+* [Kişisel bilgileri algılama](#detect-personal-information)
 * [Varlık bağlama](#entity-linking)
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
 
-Daha önce gelen ana yönteminizin bitiş noktanız ve kimlik bilgilerinizle yeni bir istemci nesnesi oluşturduğundan emin olun.
+Daha önce kullandığınız ana yöntemin uç noktanız ve kimlik bilgilerinizle yeni bir istemci nesnesi oluşturduğundan emin olun.
 
 ```csharp
 var client = new TextAnalyticsClient(endpoint, credentials);
 ```
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-Kimlik bilgilerini depolamak ve istemcinin isteklerine eklemek için yeni bir `ApiKeyServiceClientCredentials` sınıfı oluşturun. İçinde, `Ocp-Apim-Subscription-Key` üstbilgisine anahtarınızı ekleyen `ProcessHttpRequestAsync()` için bir geçersiz kılma oluşturun.
+Kimlik bilgilerini depolamak ve bunları istemcinin isteklerine eklemek için yeni bir `ApiKeyServiceClientCredentials` sınıfı oluşturun. Bu sınıfta, anahtarınızı `Ocp-Apim-Subscription-Key` üst bilgisine ekleyen `ProcessHttpRequestAsync()` için bir geçersiz kılma işlevi oluşturun.
 
 [!code-csharp[Client class](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=clientClass)]
 
-Uç noktanız ve anahtarınızı içeren bir `ApiKeyServiceClientCredentials` nesnesi ile [TextAnalyticsClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-dotnet) nesnesini başlatmak için bir yöntem oluşturun.
+Uç noktanızda [TextAnalyticsClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-dotnet) nesnesinin ve anahtarınızı içeren `ApiKeyServiceClientCredentials` nesnesinin örneğini oluşturmak için bir yöntem oluşturun.
 
 [!code-csharp[Client authentication](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=authentication)]
 
@@ -156,9 +156,9 @@ Uç noktanız ve anahtarınızı içeren bir `ApiKeyServiceClientCredentials` ne
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
 
-Daha önce oluşturduğunuz istemciyi alan `SentimentAnalysisExample()` adlı yeni bir işlev oluşturun ve `AnalyzeSentiment()` işlevini çağırın. Döndürülen `Response<DocumentSentiment>` nesnesi, tüm giriş belgesi için yaklaşım etiketini ve Puanını, Ayrıca başarılı olursa her tümce için de yaklaşım analizini içerir. Bir hata oluşursa, bir `RequestFailedException`oluşturur.
+Önceden oluşturduğunuz istemciyi alan ve bunun `AnalyzeSentiment()` işlevini çağıran `SentimentAnalysisExample()` adlı yeni bir işlev oluşturun. Döndürülen `Response<DocumentSentiment>` nesnesi yaklaşım etiketini, tüm giriş belgesinin puanını ve başarılı olması durumunda her cümleye yönelik yaklaşım analizini içerir. Hata oluşursa bir `RequestFailedException` oluşturulur.
 
 ```csharp
 static void SentimentAnalysisExample(TextAnalyticsClient client)
@@ -170,12 +170,12 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
     var si = new StringInfo(inputText);
     foreach (var sentence in documentSentiment.Sentences)
     {
-        Console.WriteLine($"\tSentence [offset {sentence.Offset}, length {sentence.Length}]");
-        Console.WriteLine($"\tText: \"{si.SubstringByTextElements(sentence.Offset, sentence.Length)}\"");
+        Console.WriteLine($"\tSentence [length {sentence.GraphemeLength}]");
+        Console.WriteLine($"\tText: \"{si.SubstringByTextElements(sentence.GraphemeOffset, sentence.GraphemeLength)}\"");
         Console.WriteLine($"\tSentence sentiment: {sentence.Sentiment}");
-        Console.WriteLine($"\tPositive score: {sentence.SentimentScores.Positive:0.00}");
-        Console.WriteLine($"\tNegative score: {sentence.SentimentScores.Negative:0.00}");
-        Console.WriteLine($"\tNeutral score: {sentence.SentimentScores.Neutral:0.00}\n");
+        Console.WriteLine($"\tPositive score: {sentence.ConfidenceScores.Positive:0.00}");
+        Console.WriteLine($"\tNegative score: {sentence.ConfidenceScores.Negative:0.00}");
+        Console.WriteLine($"\tNeutral score: {sentence.ConfidenceScores.Neutral:0.00}\n");
     }
 }
 ```
@@ -185,14 +185,14 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 ```console
 Document sentiment: Positive
 
-        Sentence [offset 0, length 30]
+        Sentence [length 30]
         Text: "I had the best day of my life."
         Sentence sentiment: Positive
         Positive score: 1.00
         Negative score: 0.00
         Neutral score: 0.00
 
-        Sentence [offset 31, length 30]
+        Sentence [length 30]
         Text: "I wish you were there with me."
         Sentence sentiment: Neutral
         Positive score: 0.21
@@ -200,11 +200,11 @@ Document sentiment: Positive
         Neutral score: 0.77
 ```
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-Daha önce oluşturduğunuz istemciyi alan `SentimentAnalysisExample()` adlı yeni bir işlev oluşturun ve [Sentiment ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment?view=azure-dotnet) işlevini çağırın. Döndürülen [Sentimentresult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult?view=azure-dotnet) nesnesi başarılı olursa yaklaşım `Score` ve değilse bir `errorMessage` içerecektir. 
+Önceden oluşturduğunuz istemciyi alan ve bunun [Sentiment()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment?view=azure-dotnet) işlevini çağıran `SentimentAnalysisExample()` adlı yeni bir işlev oluşturun. Döndürülen [SentimentResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult?view=azure-dotnet) nesnesi başarılı olursa `Score` yaklaşımını içerir. Nesne başarısız olursa bir `errorMessage` içerir. 
 
-0 ' a yakın olan bir puan negatif bir yaklaşımı gösterir, 1 ' e yakın bir puan pozitif bir yaklaşımı gösterir.
+0’a yakın puanlar negatif yaklaşımı, 1’e yakın puanlar ise pozitif yaklaşımı gösterir.
 
 [!code-csharp[Sentiment analysis](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=sentiment)]
 
@@ -216,13 +216,13 @@ Sentiment Score: 0.87
 
 ## <a name="language-detection"></a>Dil algılama
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
 
 
-Daha önce oluşturduğunuz istemciyi alan `LanguageDetectionExample()` adlı yeni bir işlev oluşturun ve `DetectLanguage()` işlevini çağırın. Döndürülen `Response<DetectedLanguage>` nesnesi, algılanan dilin adı ve ISO-6391 koduyla birlikte içerecektir. Bir hata oluşursa, bir `RequestFailedException`oluşturur.
+Önceden oluşturduğunuz istemciyi alan ve bunun `DetectLanguage()` işlevini çağıran `LanguageDetectionExample()` adlı yeni bir işlev oluşturun. Döndürülen `Response<DetectedLanguage>` nesnesi, adıyla ve ISO-6391 koduyla birlikte algılanan dili içerir. Hata oluşursa bir `RequestFailedException` oluşturulur.
 
 > [!Tip]
-> Bazı durumlarda, girişi temel alarak dilleri ayırt etmek zor olabilir. 2 harfli bir ülke kodu belirtmek için `countryHint` parametresini kullanabilirsiniz. Varsayılan olarak, API varsayılan Countryipucu olarak "US" kullanıyor, bu davranışı kaldırmak için bu değeri boş dize `countryHint = ""`olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz. Farklı bir varsayılan ayarlamak için `TextAnalyticsClientOptions.DefaultCountryHint` özelliğini ayarlayın ve istemcinin başlatılması sırasında geçirin.
+> Bazı durumlarda girişi temel alarak dilleri netleştirmek zor olabilir. 2 harfli bir ülke kodu belirtmek için `countryHint` parametresini kullanabilirsiniz. API, countryHint için varsayılan olarak “US”değerini kullanır. Bu davranışı kaldırmak için bu değeri boş dize `countryHint = ""` olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz. Farklı bir varsayılan ayarlamak için `TextAnalyticsClientOptions.DefaultCountryHint` özelliğini ayarlayın ve müşterinin başlatma işlemi esnasında bunu geçirin.
 
 ```csharp
 static void LanguageDetectionExample(TextAnalyticsClient client)
@@ -240,12 +240,12 @@ Language:
         French, ISO-6391: fr
 ```
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-Daha önce oluşturduğunuz istemciyi alan `languageDetectionExample()` adlı yeni bir işlev oluşturun ve bunun [DetectLanguage ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağırın. Döndürülen [LanguageResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult?view=azure-dotnet) nesnesi, başarılı olursa `DetectedLanguages` algılanan dillerin listesini ve değilse bir `errorMessage` içerecektir. İlk döndürülen dili yazdır.
+Önceden oluşturduğunuz istemciyi alan ve bunun [DetectLanguage()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.detectlanguage?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_DetectLanguage_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağıran `languageDetectionExample()` adlı yeni bir işlev oluşturun. Döndürülen [LanguageResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.languageresult?view=azure-dotnet) nesnesi başarılı olursa `DetectedLanguages` öğesinde algılanan dillerin listesini içerir. Nesne başarısız olursa bir `errorMessage` içerir. İlk döndürülen dili yazdırın.
 
 > [!Tip]
-> Bazı durumlarda, girişi temel alarak dilleri ayırt etmek zor olabilir. 2 harfli bir ülke kodu belirtmek için `countryHint` parametresini kullanabilirsiniz. Varsayılan olarak, API varsayılan Countryipucu olarak "US" kullanıyor, bu davranışı kaldırmak için bu değeri boş dize `countryHint = ""` olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz.
+> Bazı durumlarda girişi temel alarak dilleri netleştirmek zor olabilir. 2 harfli bir ülke kodu belirtmek için `countryHint` parametresini kullanabilirsiniz. API, countryHint için varsayılan olarak “US”değerini kullanır. Bu davranışı kaldırmak için bu değeri boş dize `countryHint = ""` olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz.
 
 [!code-csharp[Language Detection example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=languageDetection)]
 
@@ -257,28 +257,28 @@ Language: English
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
+## <a name="named-entity-recognition-ner"></a>Adlandırılmış Varlık Tanıma (NER)
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
 
 
 > [!NOTE]
-> Sürüm `3.0-preview`yenilikleri:
-> * Varlık tanıma artık metindeki kişisel bilgileri algılama özelliğini içerir.
-> * Varlık bağlama artık varlık tanıma işleminden ayrılmıştır.
+> `3.0-preview` sürümündeki yenilikler:
+> * Varlık algılama artık metindeki kişisel bilgileri algılama özelliğini içeriyor.
+> * Varlık bağlama artık varlık tanımadan ayrıldı.
 
 
-Daha önce oluşturduğunuz istemciyi alan `EntityRecognitionExample()` adlı yeni bir işlev oluşturun, `RecognizeEntities()` işlevini çağırın ve sonuçlar arasında yineleme yapın. Döndürülen `Response<IReadOnlyCollection<CategorizedEntity>>` nesnesi algılanan varlıkların listesini içerecektir. Bir hata oluşursa, bir `RequestFailedException`oluşturur.
+Önceden oluşturduğunuz istemciyi alan ve bunun `RecognizeEntities()` işlevini çağırıp sonuçları yineleyen `EntityRecognitionExample()` adlı yeni bir işlev oluşturun. Döndürülen `Response<IReadOnlyCollection<CategorizedEntity>>` nesnesi algılanan varlıkların listesini içerir. Hata oluşursa bir `RequestFailedException` oluşturulur.
 
 ```csharp
 static void EntityRecognitionExample(TextAnalyticsClient client)
 {
     var response = client.RecognizeEntities("I had a wonderful trip to Seattle last week.");
     Console.WriteLine("Named Entities:");
-    foreach(var entity in response.Value)
+    foreach (var entity in response.Value)
     {
         Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tOffset: {entity.Offset},\tLength: {entity.Length},\tScore: {entity.Score:F3}\n");
+        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
     }
 }
 ```
@@ -288,15 +288,15 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 ```console
 Named Entities:
         Text: Seattle,  Category: Location,     Sub-Category: GPE
-                Offset: 26,     Length: 7,      Score: 0.920
+                Length: 7,      Score: 0.92
 
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
-                Offset: 34,     Length: 9,      Score: 0.800
+                Length: 9,      Score: 0.80
 ```
 
-## <a name="detect-personal-information"></a>Kişisel bilgileri Algıla
+## <a name="detect-personal-information"></a>Kişisel bilgileri algılama
 
-Daha önce oluşturduğunuz istemciyi alan `EntityPIIExample()` adlı yeni bir işlev oluşturun, `RecognizePiiEntities()` işlevini çağırın ve sonuçlar arasında yineleme yapın. Önceki işleve benzer şekilde, döndürülen `Response<IReadOnlyCollection<CategorizedEntity>>` nesnesi algılanan varlıkların listesini içerecektir. Bir hata oluşursa, bir `RequestFailedException`oluşturur.
+Önceden oluşturduğunuz istemciyi alan ve bunun `RecognizePiiEntities()` işlevini çağırıp sonuçları yineleyen `EntityPIIExample()` adlı yeni bir işlev oluşturun. Önceki işleve benzer olarak, döndürülen `Response<IReadOnlyCollection<CategorizedEntity>>` nesnesi algılanan varlıkların listesini içerir. Hata oluşursa bir `RequestFailedException` oluşturulur.
 
 ```csharp
 static void EntityPIIExample(TextAnalyticsClient client)
@@ -304,10 +304,10 @@ static void EntityPIIExample(TextAnalyticsClient client)
     string inputText = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
     var response = client.RecognizePiiEntities(inputText);
     Console.WriteLine("Personally Identifiable Information Entities:");
-    foreach(var entity in response.Value)
+    foreach (var entity in response.Value)
     {
         Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tOffset: {entity.Offset},\tLength: {entity.Length},\tScore: {entity.Score:F3}\n");
+        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
     }
 }
 ```
@@ -316,14 +316,14 @@ static void EntityPIIExample(TextAnalyticsClient client)
 
 ```console
 Personally Identifiable Information Entities:
-        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category: None
-                Offset: 33,     Length: 11,     Score: 0.850
+        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category:
+                Length: 11,     Score: 0.85
 ```
 
 
 ## <a name="entity-linking"></a>Varlık bağlama
 
-Daha önce oluşturduğunuz istemciyi alan `EntityLinkingExample()` adlı yeni bir işlev oluşturun, `RecognizeLinkedEntities()` işlevini çağırın ve sonuçlar arasında yineleme yapın. Döndürülen `Response<IReadOnlyCollection<LinkedEntity>>` algılanan varlıkların listesini temsil eder. Bir hata oluşursa, bir `RequestFailedException`oluşturur. Bağlantılı varlıklar benzersiz olarak tanımlandıklarından, aynı varlığın oluşumları bir `LinkedEntity` nesnesi altında `LinkedEntityMatch` nesnelerin listesi olarak gruplandırılır.
+Önceden oluşturduğunuz istemciyi alan ve bunun `RecognizeLinkedEntities()` işlevini çağırıp sonuçları yineleyen `EntityLinkingExample()` adlı yeni bir işlev oluşturun. Döndürülen `Response<IReadOnlyCollection<LinkedEntity>>` değeri algılanan varlıkların listesini temsil eder. Hata oluşursa bir `RequestFailedException` oluşturulur. Bağlı varlıklar benzersiz olarak tanımlandıkları için aynı varlıkların oluşumu `LinkedEntityMatch` nesnelerinin listesi olarak bir `LinkedEntity` nesnesinde gruplandırılır.
 
 ```csharp
 static void EntityLinkingExample(TextAnalyticsClient client)
@@ -337,12 +337,12 @@ static void EntityLinkingExample(TextAnalyticsClient client)
     Console.WriteLine("Linked Entities:");
     foreach (var entity in response.Value)
     {
-        Console.WriteLine($"\tName: {entity.Name},\tID: {entity.Id},\tURL: {entity.Url}\tData Source: {entity.DataSource}");
+        Console.WriteLine($"\tName: {entity.Name},\tID: {entity.DataSourceEntityId},\tURL: {entity.Url}\tData Source: {entity.DataSource}");
         Console.WriteLine("\tMatches:");
         foreach (var match in entity.Matches)
         {
             Console.WriteLine($"\t\tText: {match.Text}");
-            Console.WriteLine($"\t\tOffset: {match.Offset},\tLength: {match.Length},\tScore: {match.Score:F3}\n");
+            Console.WriteLine($"\t\tLength: {match.GraphemeLength},\tScore: {match.ConfidenceScore:F2}\n");
         }
     }
 }
@@ -355,46 +355,46 @@ Linked Entities:
         Name: Altair 8800,      ID: Altair 8800,        URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
                 Text: Altair 8800
-                Offset: 116,    Length: 11,     Score: 0.777
+                Length: 11,     Score: 0.78
 
         Name: Bill Gates,       ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
                 Text: Bill Gates
-                Offset: 25,     Length: 10,     Score: 0.555
+                Length: 10,     Score: 0.55
 
                 Text: Gates
-                Offset: 161,    Length: 5,      Score: 0.555
+                Length: 5,      Score: 0.55
 
         Name: Paul Allen,       ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
                 Text: Paul Allen
-                Offset: 40,     Length: 10,     Score: 0.533
+                Length: 10,     Score: 0.53
 
         Name: Microsoft,        ID: Microsoft,  URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
                 Text: Microsoft
-                Offset: 0,      Length: 9,      Score: 0.469
+                Length: 9,      Score: 0.47
 
                 Text: Microsoft
-                Offset: 150,    Length: 9,      Score: 0.469
+                Length: 9,      Score: 0.47
 
         Name: April 4,  ID: April 4,    URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
                 Text: April 4
-                Offset: 54,     Length: 7,      Score: 0.248
+                Length: 7,      Score: 0.25
 
         Name: BASIC,    ID: BASIC,      URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
                 Text: BASIC
-                Offset: 89,     Length: 5,      Score: 0.281
+                Length: 5,      Score: 0.28
 ```
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
 > [!NOTE]
-> Sürüm 2,1 ' de, varlık bağlama, NER yanıtına dahil edilir.
+> Sürüm 2.1’de, varlık bağlama NER yanıtına dahil edilir.
 
-Daha önce oluşturduğunuz istemciyi alan `RecognizeEntitiesExample()` adlı yeni bir işlev oluşturun ve [varlıklarını ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağırın. Sonuçlar arasında yineleme yapın. Döndürülen [Entitiesresult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult?view=azure-dotnet) nesnesi, başarılı olursa `Entities` algılanan varlıkların listesini ve değilse bir `errorMessage` içerir. Algılanan her varlık için, türünü, alt türünü, Viseı adını (varsa) ve özgün metindeki konumları yazdırın.
+Önceden oluşturduğunuz istemciyi alan ve bunun [Entities()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağıran `RecognizeEntitiesExample()` adlı yeni bir işlev oluşturun. Sonuçları yineleyin. Döndürülen [EntitiesResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult?view=azure-dotnet) nesnesi başarılı olursa `Entities` öğesinde algılanan varlıkların listesini içerir. Nesne başarısız olursa bir `errorMessage` içerir. Algılanan her varlık için bu varlığa yönelik Tür, Alt tür, Wikipedia adı (varsa) ve asıl metindeki konumları yazdırın.
 
 [!code-csharp[Entity Recognition example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=entityRecognition)]
 
@@ -403,9 +403,9 @@ Daha önce oluşturduğunuz istemciyi alan `RecognizeEntitiesExample()` adlı ye
 
 ## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
-#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
 
-Daha önce oluşturduğunuz istemciyi alan `KeyPhraseExtractionExample()` adlı yeni bir işlev oluşturun ve `ExtractKeyPhrases()` işlevini çağırın. Döndürülen `<Response<IReadOnlyCollection<string>>` nesnesi, algılanan anahtar tümceciklerin listesini içerecektir. Bir hata oluşursa, bir `RequestFailedException`oluşturur.
+Önceden oluşturduğunuz istemciyi alan ve bunun `ExtractKeyPhrases()` işlevini çağıran `KeyPhraseExtractionExample()` adlı yeni bir işlev oluşturun. Döndürülen `<Response<IReadOnlyCollection<string>>` nesnesi algılanan anahtar ifadelerin listesini içerir. Hata oluşursa bir `RequestFailedException` oluşturulur.
 
 ```csharp
 static void KeyPhraseExtractionExample(TextAnalyticsClient client)
@@ -430,9 +430,9 @@ Key phrases:
     veterinarian
 ```
 
-#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-Daha önce oluşturduğunuz istemciyi alan `KeyPhraseExtractionExample()` adlı yeni bir işlev oluşturun ve [KeyPhrases ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağırın. Sonuç, başarılı olursa `KeyPhrases` algılanan anahtar tümceciklerin listesini ve değilse bir `errorMessage` içerir. Algılanan tüm anahtar tümceleri yazdır.
+Önceden oluşturduğunuz istemciyi alan ve bunun [KeyPhrases()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağıran `KeyPhraseExtractionExample()` adlı yeni bir işlev oluşturun. Sonuç başarılı olursa `KeyPhrases` öğesindeki algılanan anahtar ifadelerin listesini içerir. Sonuç başarısız olursa bir `errorMessage` içerir. Algılanan tüm anahtar ifadeleri yazdırın.
 
 [!code-csharp[Key phrase extraction example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=keyPhraseExtraction)]
 
