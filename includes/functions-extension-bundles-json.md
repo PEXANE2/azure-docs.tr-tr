@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
-ms.openlocfilehash: 4ce048cafa4c20e3bbdbd8ecf1669748531ee122
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.openlocfilehash: f47a543143c949715fe2a49adccf074759a346fa
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129082"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79382168"
 ---
 ```json
 {
@@ -21,13 +21,13 @@ ms.locfileid: "74129082"
 }
 ```
 
-`extensionBundle`' de aşağıdaki özellikler mevcuttur:
+Aşağıdaki özellikler `extensionBundle` öğesinde kullanıma sunuldu:
 
 | Özellik | Açıklama |
 | -------- | ----------- |
-| id | Microsoft Azure Işlevleri Uzantısı paketleri için ad alanı. |
-| version | Yüklenecek paket sürümü. Işlevler çalışma zamanı her zaman, sürüm aralığı veya aralığı tarafından tanımlanan izin verilen en fazla sürümü seçer. Yukarıdaki sürüm değeri, 1.0.0 'e kadar tüm paket sürümlerinin 2.0.0 dahil değil, izin vermez. Daha fazla bilgi için bkz. [Sürüm aralıklarını belirtmek için Aralık gösterimi](/nuget/reference/package-versioning#version-ranges-and-wildcards). |
+| id | Microsoft Azure İşlevleri uzantı paket gruplarına yönelik ad alanı. |
+| version | Yüklenecek paket grubunun sürümü. İşlevler çalışma zamanı her zaman sürüm aralığı tarafından tanımlanan, izin verilen en yüksek sürümü seçer. Yukarıdaki sürüm değeri 1.0.0’dan yüksek tüm paket grubu sürümlerine izin verir ancak izin verilen sürüm aralığı 2.0.0’ı içermez. Daha fazla bilgi için bkz. [sürüm aralıklarını belirtmeye yönelik aralık gösterimi](/nuget/reference/package-versioning#version-ranges). |
 
-Paket sürümleri artıkında paket değişim artışı. Paketteki paketler ana bir sürümle artında ana sürüm değişiklikleri oluşur. Paketteki ana sürüm değişiklikleri genellikle Işlevler çalışma zamanının ana sürümündeki bir değişiklikle birlikte bulunur.  
+Paket grubu sürümleri paket grubu değişikliklerinde paket olarak artar. Ana sürüm değişiklikleri, paket grubu içindeki paketler bir ana sürüm kadar artırıldığında oluşur. Paket grubundaki ana sürüm değişiklikleri genelde İşlevler çalışma zamanının ana sürümündeki değişikliklerle kesişir.  
 
-Varsayılan paket tarafından yüklenen geçerli uzantılar kümesi, bu [Extensions. json dosyasında](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)numaralandırılır.
+Varsayılan paket grubu tarafından yüklenen mevcut uzantı kümesi bu [extensions.json dosyasında](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) numaralandırılır.
