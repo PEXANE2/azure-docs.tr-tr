@@ -4,28 +4,31 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: aebb82690a7a49aba071ed64349d37d516208cca
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188832"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128568"
 ---
-Cihazınızı sıfırlamak için güvenli bir şekilde dışarı veri diski ve cihazınızın önyükleme diski üzerindeki tüm verileri silme gerekir. 
+Cihazınızı sıfırlamak için veri diskinde ve cihazınızın önyükleme diskinde bulunan tüm verileri güvenli bir şekilde silmeniz gerekir. 
 
-Kullanım `Reset-HcsAppliance` cmdlet'i, veri disklerini ve önyükleme diski veya veri disklerini yalnızca out temizleme. `ClearData` Ve `BootDisk` anahtarlar önyükleme diski ve veri diskleri temizleme, sırasıyla izin verir.
+Hem veri disklerini ve önyükleme diskini veya yalnızca veri disklerini silmek için `Reset-HcsAppliance` cmdlet’ini kullanın. `ClearData` ve `BootDisk` anahtarları (sırasıyla) veri disklerini ve önyükleme diskini silmenize olanak tanır.
 
-Yerel web kullanıcı Arabiriminde sıfırlama cihaz kullandığınız, veri disklerini yalnızca güvenli bir şekilde temizlendiğinde ancak önyükleme diski olduğu gibi tutulur. Cihaz yapılandırması önyükleme diski içerir.
+`BootDisk` anahtarı önyükleme diskini siler ve cihazı kullanılamaz hale getirir. Yalnızca cihazın Microsoft’a iade edilmesi gerektiğinde kullanılması gerekir. Daha fazla bilgi için bkz. [Cihazı Microsoft’a iade etme](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
+
+Yerel web kullanıcı arabiriminde cihaz sıfırlama özelliğini kullanırsanız, yalnızca veri diskleri güvenli bir şekilde silinir ve önyükleme diskinde işlem yapılmaz. Önyükleme diski cihaz yapılandırmasını içerir.
 
 1. [PowerShell arabirimine bağlanma](#connect-to-the-powershell-interface).
 2. Komut istemine şunları yazın:
 
     `Reset-HcsAppliance -ClearData -BootDisk`
 
-    Aşağıdaki örnek bu cmdlet'in nasıl kullanılacağı gösterilmektedir:
-    ```
+    Aşağıdaki örnek bu cmdlet’in nasıl kullanıldığını gösterir:
+
+    ```powershell
     [10.128.24.33]: PS>Reset-HcsAppliance -ClearData -BootDisk
-    
+
     Confirm
     Are you sure you want to perform this action?
     Performing the operation "Reset-HcsAppliance" on target "ShouldProcess appliance".

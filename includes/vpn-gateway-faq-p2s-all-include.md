@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: be858e9200191de7e0bda0ae227519666d80fb7a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
-ms.translationtype: MT
+ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500579"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117114"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Noktadan Siteye yapılandırmamda kaç VPN istemci uç noktam olabilir?
 
-Ağ Geçidi SKU 'suna bağımlıdır. Desteklenen bağlantı sayısı hakkında daha fazla bilgi için bkz. [ağ geçidi SKU 'ları](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+Bu, ağ geçidi SKU’suna bağlıdır. Desteklenen bağlantı sayısı hakkında daha fazla bilgi edinmek için bkz. [Ağ geçidi SKU’ları](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
-### <a name="supportedclientos"></a>Noktadan Siteye ile hangi istemci işletim sistemlerini kullanabilirim?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Noktadan Siteye ile hangi istemci işletim sistemlerini kullanabilirim?
 
 Aşağıdaki istemci işletim sistemleri desteklenmektedir:
 
@@ -30,7 +30,7 @@ Aşağıdaki istemci işletim sistemleri desteklenmektedir:
 * Windows Server 2012 R2 (yalnızca 64 bit)
 * Windows Server 2016 (yalnızca 64 bit)
 * Windows 10
-* Mac OS X sürüm 10,11 veya üzeri
+* Mac OS X sürüm 10.11 veya üstü
 * Linux (StrongSwan)
 * iOS
 
@@ -38,13 +38,13 @@ Aşağıdaki istemci işletim sistemleri desteklenmektedir:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Noktadan Siteye özelliğini kullanarak ara sunucuları ve güvenlik duvarlarını geçirebilir miyim?
 
-Azure üç tür Noktadan siteye VPN seçeneğini destekler:
+Azure, üç tür noktadan siteye VPN seçeneğini destekler:
 
-* Güvenli Yuva Tünel Protokolü (SSTP). SSTP, çoğu güvenlik duvarı tarafından 443 SSL 'nin kullandığı giden TCP bağlantı noktasını açdığından güvenlik duvarlarını sızlayabileceğiniz Microsoft özel bir SSL tabanlı çözümüdür.
+* Güvenli Yuva Tünel Protokolü (SSTP). SSTP, Microsoft’a özel SSL tabanlı bir çözümdür ve çoğu güvenlik duvarı 443 SSL’nin kullandığı giden TCP bağlantı noktasını açtığı için güvenlik duvarlarından geçebilir.
 
-* OpenVPN. OpenVPN, çoğu güvenlik duvarları 443 SSL tarafından kullanılan giden TCP bağlantı noktasını açdığından güvenlik duvarlarını sızlayabileceğiniz SSL tabanlı bir çözümdür.
+* OpenVPN. OpenVPN, SSL tabanlı bir çözümdür ve çoğu güvenlik duvarı 443 SSL’nin kullandığı giden TCP bağlantı noktasını açtığı için güvenlik duvarlarından geçebilir.
 
-* IKEv2 VPN. IKEv2 VPN, 500 ve 4500 ve IP protokol No giden UDP bağlantı noktalarını kullanan standart tabanlı bir IPSec VPN çözümüdür. kullanır. Güvenlik duvarları her zaman bu bağlantı noktalarını açmaz ve bu nedenle IKEv2 VPN’nin proxy ile güvenlik duvarlarını geçememe olasılığı vardır.
+* IKEv2 VPN. Standart tabanlı bir IPsec VPN çözümü olan IKEv2 VPN, giden UDP bağlantı noktası 500 ve 4500 ile 50 numaralı IP protokolünü kullanır. Güvenlik duvarları her zaman bu bağlantı noktalarını açmaz ve bu nedenle IKEv2 VPN’nin proxy ile güvenlik duvarlarını geçememe olasılığı vardır.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Noktadan Siteye için yapılandırılmış istemci bilgisayarını yeniden başlatırsam VPN de otomatik olarak yeniden bağlanacak mı?
 
@@ -58,9 +58,13 @@ Otomatik olarak yeniden ve DDNS şu anda Noktadan Siteye VPN'lerde desteklenmiyo
 
 Evet. Resouce Manager dağıtım modeli için, ağ geçidiniz için RouteBased VPN türü olmalıdır. Klasik dağıtım modeli için dinamik bir ağ geçidiniz olması gerekir. Statik yönlendirme VPN ağ geçitleri veya PolicyBased VPN ağ geçitleri için Noktadan Siteye çözümünü desteklemiyoruz.
 
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Aynı anda birden çok sanal ağ geçidine bağlanmak için Noktadan Siteye istemcisi yapılandırabilir miyim?
+
+Bağlanılan sanal ağların veya istemcinin bağlandığı ağın arasında çakışan adres alanları olmadığı sürece kullandığınız VPN İstemcisine bağlı olarak birden fazla Sanal Ağ Geçidine bağlanabilirsiniz.  Azure VPN İstemcisi birden fazla VPN bağlantısını desteklese de, aynı anda yalnızca bir tane bağlantı bağlı olabilir.
+
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Aynı anda birden çok sanal ağa bağlanmak için Noktadan Siteye istemcisi yapılandırabilir miyim?
 
-Hayır. Noktadan Siteye bir istemci, yalnızca sanal ağ geçidinin bulunduğu sanal ağdaki kaynaklara bağlanabilir.
+Evet, bir sanal ağda dağıtılan bir Sanal Ağ Geçidi ile kurulan noktadan siteye bağlantılar, diğer eşlenmiş sanal ağlara erişimi olabilen diğer sanal ağlarla eşlenir.  Eşlenen sanal ağlar UseRemoteGateway / AllowGatewayTransit özelliklerini kullanıyorsa, noktadan siteye istemci eşlenen bu sanal ağlara bağlanabilir.  Daha fazla bilgi için lütfen [bu](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) makaleye bakın.
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Siteden Siteye ve Noktadan Siteye bağlantılardan ne kadar verimlilik bekleyebilirim?
 
@@ -68,11 +72,11 @@ VPN tünellerinin tam verimini elde etmek zordur. IPsec ve SSTP şifrelemesi ağ
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP ve/veya IKEv2 desteği sağlayan Noktadan Siteye bağlantı için herhangi bir yazılım VPN istemcisi kullanabilir miyim?
 
-Hayır. SSTP için yalnızca Windows’daki yerel VPN istemcisini ve IKEv2 için yalnızca Mac’teki yerel VPN istemcisini kullanabilirsiniz. Ancak, OpenVPN istemcisini, OpenVPN protokolüne bağlanmak için tüm platformlarda kullanabilirsiniz. Desteklenen istemci işletim sistemleri listesine başvurun.
+Hayır. SSTP için yalnızca Windows’daki yerel VPN istemcisini ve IKEv2 için yalnızca Mac’teki yerel VPN istemcisini kullanabilirsiniz. Ancak, OpenVPN protokolü üzerinden bağlanmak için tüm platformlarda OpenVPN istemcisini kullanabilirsiniz. Desteklenen istemci işletim sistemleri listesine başvurun.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure Windows ile IKEv2 VPN destekler mi?
 
-IKEv2, Windows 10 ve Server 2016’da desteklenir. Ancak IKEv2 kullanmak için güncelleştirmeleri yüklemeli ve yerel bir kayıt defteri anahtar değeri ayarlamalısınız. Windows 10 ' dan önceki işletim sistemi sürümleri desteklenmez ve yalnızca SSTP veya **OpenVPN® protokolünü**kullanabilir.
+IKEv2, Windows 10 ve Server 2016’da desteklenir. Ancak IKEv2 kullanmak için güncelleştirmeleri yüklemeli ve yerel bir kayıt defteri anahtar değeri ayarlamalısınız. Windows 10’dan önceki işletim sistemleri desteklenmez ve yalnızca SSTP veya **OpenVPN® Protocol** kullanabilir.
 
 IKEv2 için Windows 10 ve Server 2016’yı hazırlamak için:
 
@@ -99,9 +103,9 @@ Azure, P2S VPN için Windows, Mac ve Linux’u destekler.
 
 Evet, kullandığınız ağ geçidi SKU’sunun RADIUS ve/veya IKEv2’yi desteklemesi şartıyla Azure portalı veya PowerShell’i kullanarak zaten dağıtılmış ağ geçitleri üzerinde bu yeni özellikleri etkinleştirebilirsiniz. Örneğin VPN ağ geçidi Temel SKU’su RADIUS’u veya IKEv2’yi desteklemez.
 
-### <a name="removeconfig"></a>P2S bağlantısının yapılandırmasını kaldırmak Nasıl yaparım??
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>Bir P2S bağlantısının yapılandırması nasıl kaldırılır?
 
-Aşağıdaki komutları kullanarak Azure CLı ve PowerShell kullanılarak P2S yapılandırması kaldırılabilir:
+Bir P2S bağlantısı, aşağıdaki komutlar ve Azure CLI ve PowerShell kullanılarak kaldırılabilir:
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
