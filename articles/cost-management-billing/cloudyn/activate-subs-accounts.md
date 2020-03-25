@@ -1,26 +1,28 @@
 ---
-title: Azure aboneliklerini ve hesaplarını etkinleştirme | Microsoft Docs
+title: Azure aboneliklerini ve hesaplarını etkinleştirme
 description: Yeni ve mevcut hesaplar için Azure Resource Manager API'lerini kullanarak erişimi etkinleştirin ve ortak hesap sorunlarını çözün.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 2467ee65b3f7090e5854bdd7848abab667ccfe55
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301378"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474671"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure aboneliklerini ve hesaplarını Cloudyn ile etkinleştirme
 
 Azure Resource Manager kimlik bilgilerinizi eklemeniz veya güncelleştirmeniz Cloudyn'in Azure Kiracınızdaki tüm hesapları ve abonelikleri keşfetmesini sağlar. Sanal makinelerinizde Azure Tanılama da etkinse, Cloudyn, CPU ve bellek gibi genişletilmiş ölçümleri toplayabilir. Bu makalede, yeni ve mevcut hesaplar için Azure Resource Manager API'leri kullanılarak erişimin nasıl etkinleştirileceği açıklanmaktadır. Ayrıca genel hesap sorunlarının nasıl çözümleneceği de açıklanmaktadır.
 
 Cloudyn, abonelik _etkinleştirilmediğinde_ Azure abonelik verilerinizin çoğuna erişemez. _Etkinleştirilmemiş_ hesapları Cloudyn'in bunlara erişebilmesi için düzenlemelisiniz.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="required-azure-permissions"></a>Gerekli Azure izinleri
 

@@ -50,7 +50,7 @@
       href: concepts/anomaly-detection-best-practices.md
 - name: Başvuru
   items:
-    - name: REST API Başvurusu
+    - name: REST API’si Başvurusu
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
     - name: SDK’lar
       items:

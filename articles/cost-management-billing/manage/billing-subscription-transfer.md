@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245398"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238168"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -124,7 +124,7 @@ Azure portalında abonelik aktarımı aşağıda listelenen abonelik türleri i�
 
 Bu sık sorulan sorular, bir Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktaran kullanıcılar için geçerlidir.
 
-### <a name="whoisaa"></a> Hesabın faturalama yöneticisi kimdir?
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> Hesabın faturalama yöneticisi kimdir?
 
 Faturalama yöneticisi, bir hesabın faturalandırmasını yönetme iznine sahip olan kişidir. [Azure portalında](https://portal.azure.com) faturalandırma işlemine erişmek ve abonelik oluşturma, faturaları görüntüleme ve ödeme ya da ödeme yöntemlerini güncelleştirme gibi çeşitli faturalama görevlerini gerçekleştirmek için yetkilidir.
 
@@ -206,15 +206,15 @@ Evet. Aktarım isteğini kabul ederken hesabınıza bağlı mevcut bir ödeme y�
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a id="no-button"></a> "Aboneliği aktar" düğmesini neden görmüyorum?
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> "Aboneliği aktar" düğmesini neden görmüyorum?
 
 Ödeme hesabınız için self servis abonelik aktarımı kullanılamamaktadır. Şu anda, Azure portalın Kurumsal Anlaşma (EA) hesaplarındaki aboneliklerin faturalama sahipliğinin aktarımını desteklemiyoruz. Ayrıca, Microsoft temsilcisiyle çalışırken oluşturulan Microsoft Müşteri Sözleşmesi hesapları faturalama sahipliğinin aktarılmasını desteklemez.
 
-### <a id="no-button"></a> Aboneliğimin türü neden aktarımı desteklemiyor?
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> Aboneliğimin türü neden aktarımı desteklemiyor?
 
 Abonelik türlerinin hepsi faturalama sahipliğinin aktarımını desteklemez. Aktarımları destekleyen abonelik türlerinin listesini görüntülemek için bkz. [Desteklenen abonelik türleri](#supported-subscription-types)
 
-### <a id="no-button"></a> Bir aboneliğin faturalama sahipliğini aktarmaya çalıştığımda neden erişim reddedildi hatası alıyorum?
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> Bir aboneliğin faturalama sahipliğini aktarmaya çalıştığımda neden erişim reddedildi hatası alıyorum?
 
 Bir Microsoft Azure planı aboneliğini aktarmaya çalışıyorsanız ve gerekli izniniz yoksa bu hatayı görürsünüz. Bir Microsoft Azure planı aboneliğini aktarmak için, aboneliğin faturalandırıldığı fatura bölümünde bir sahip veya katkıda bulunan olmanız gerekir. Daha fazla bilgi için bkz. [Fatura bölümleri için abonelikleri yönetme](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 
