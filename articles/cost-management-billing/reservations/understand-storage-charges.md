@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: tamram
 ms.openlocfilehash: b6360619b7666ab7836a751491e05e379df32d93
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199203"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-storage"></a>Rezervasyon indiriminin Azure Depolama'ya nasıl uygulandığını anlama
@@ -54,4 +54,4 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ayrılmış kapasite ile Blob depolama maliyetlerini iyileştirme](../../storage/blobs/storage-blob-reserved-capacity.md)
-- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
+- [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)

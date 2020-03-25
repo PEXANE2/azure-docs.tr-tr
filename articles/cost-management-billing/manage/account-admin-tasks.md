@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201008"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portalındaki Hesap Yöneticisi görevleri
@@ -138,7 +138,7 @@ Harcama limiti, taahhüt planları veya kullandıkça öde fiyatlandırmasının
 
 1. Aboneliğiniz için bir ödeme yöntemi seçmek üzere **Ödeme yöntemini seçin**'e tıklayın. Bu yöntem, aboneliğinizin etkin ödeme yöntemi olur.
 
-1. **Son**'a tıklayın.
+1. **Finish (Son)** düğmesine tıklayın.
 
 ## <a name="add-credits-to-azure-in-open-subscription"></a>Open ile Azure aboneliğine kredi ekleme
 

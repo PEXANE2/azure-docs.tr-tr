@@ -113,7 +113,7 @@
           href: how-to-connect-power-bi.md
 - name: Başvuru
   items:
-    - name: Time Series Insights
+    - name: Zaman Serisi Öngörüleri
       items:
         - name: Azure Zaman Serisi Görüşleri
           href: /rest/api/time-series-insights/index

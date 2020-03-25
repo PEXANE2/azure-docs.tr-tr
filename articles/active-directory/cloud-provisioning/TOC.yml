@@ -40,7 +40,7 @@
       items:
         - name: Azure AD Connect bulut sağlama için topolojiler ve senaryolar
           href: plan-cloud-provisioning-topologies.md
-    - name: Yönetme
+    - name: Yönet
       items:
         - name: Aracıyı otomatik yükseltme
           href: how-to-automatic-upgrade.md

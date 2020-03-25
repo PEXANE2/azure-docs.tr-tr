@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199526"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure aboneliğinizi farklı bir teklife geçirme
@@ -94,7 +94,7 @@ Abonelikle ilişkili kullanıcılar için hizmet kapalı kalma süresi yoktur. A
 
 Teklifleri değiştirdiğinizde, [varsayılan limitin üzerindeki limit veya kota artışları](../../azure-portal/supportability/resource-manager-core-quotas-request.md) sıfırlanır. Varsayılan limiti aşan kaynaklarınız olsa bile hizmet kapalı kalma süresi yoktur. Örneğin, aboneliğinizde 200 çekirdek kullanıyorsanız, teklifler değiştirildiğinde çekirdeklerinizin kotası varsayılan 20 çekirdek sayısına geri getirilir. 200 çekirdek kullanan sanal makineler etkilenmez ve çalışmaya devam eder. Ancak başka bir kota artışı isteğinde bulunmazsanız başka çekirdek sağlayamazsınız.
 
-#### <a name="billing"></a>Faturalandırma
+#### <a name="billing"></a>Faturalama
 
 Geçiş yaptığınız gün, kalan tüm ücretler için bir fatura oluşturulur. Daha sonra aboneliğiniz yeni teklifin fiyatlandırma koşullarına göre faturalanır. Abonelik faturanızın yıldönümü, teklifleri değiştirdiğiniz tarihe değiştirilir. Teklif değişikliğinden önceki kullanım ve faturalama verileri saklanmadığından, geçiş yapmadan önce bir kopya indirmenizi öneririz.
 

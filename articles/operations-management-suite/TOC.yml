@@ -2,7 +2,7 @@
   items:
     - name: Aracı İzleme
       href: ../monitoring/index.md
-- name: Başlarken
+- name: başlarken
   items:
     - name: Azure İzleyici günlükleri
       href: ../log-analytics/log-analytics-get-started.md
@@ -12,7 +12,7 @@
       href: ../backup/backup-introduction-to-azure-backup.md
     - name: Site Recovery
       href: ../site-recovery/site-recovery-overview.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır?
   items:
     - name: Çözümleme
       items:

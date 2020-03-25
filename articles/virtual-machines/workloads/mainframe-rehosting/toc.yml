@@ -8,7 +8,7 @@
           href: partner-workloads.md
     - name: Kavramlar
       items:
-        - name: İşlem
+        - name: Bilgi İşlem
           href: concepts/mainframe-compute-azure.md
         - name: Depolama
           href: concepts/mainframe-storage-azure.md

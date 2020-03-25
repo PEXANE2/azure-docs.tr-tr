@@ -4,15 +4,15 @@ description: HIPAA HITRUST şema örneğine genel bakış. Bu şema örneği, m�
 ms.date: 12/3/2019
 ms.topic: sample
 ms.openlocfilehash: ebe907053b37ebe0ff99248aa181a480c045d533
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "75470075"
 ---
 # <a name="overview-of-the-hipaa-hitrust-blueprint-sample"></a>HIPAA HITRUST şema örneğine genel bakış
 
-HIPAA HITRUST şema örneği, [HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) kanıtlamasına yardımcı olan [Azure İlkesi](../../../policy/overview.md)'ni kullanarak bir idare koruma kümesi sağlar. 
+HIPAA HITRUST şema örneği, [HIPAA HITRUST](../../../policy/overview.md) kanıtlamasına yardımcı olan [Azure İlkesi](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)'ni kullanarak bir idare koruma kümesi sağlar. 
 
 ## <a name="blueprint-sample"></a>Şema örneği
 

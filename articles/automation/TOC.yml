@@ -305,11 +305,11 @@
 - name: Paylaşılan Kaynakları Yönetme
   items:
     - name: Sertifikalar
-      href: automation-certificates.md
+      href: shared-resources/certificates.md
     - name: Bağlantılar
       href: automation-connections.md
     - name: Kimlik Bilgileri
-      href: automation-credentials.md
+      href: shared-resources/credentials.md
     - name: PowerShell modülleri
       items:
         - name: Modüller
@@ -319,9 +319,9 @@
         - name: Azure PowerShell modüllerini güncelleştirme
           href: automation-update-azure-modules.md
     - name: Zamanlamalar
-      href: automation-schedules.md
+      href: shared-resources/schedules.md
     - name: Değişkenler
-      href: automation-variables.md
+      href: shared-resources/variables.md
     - name: Python 2 paketlerini yönetme
       href: python-packages.md
     - name: Paylaşılan Kaynak sorunlarını giderme

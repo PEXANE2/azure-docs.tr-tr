@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200753"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Ödeme hesabınızı özelleştirerek maliyetleri düzenleme
@@ -70,7 +70,7 @@ Bu bölümde maliyetleri ve karşılık gelen ödeme hesabı yapılarını düze
 
 Fatura bölümü oluşturmak için **faturalama profili sahibi** veya **faturalama profili katkıda bulunanı** olmanız gerekir. Daha fazla bilgi için bkz. [Faturalama profili için fatura bölümlerini yönetme](understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
@@ -88,7 +88,7 @@ Fatura bölümü oluşturmak için **faturalama profili sahibi** veya **faturala
 
    [![Fatura bölümü oluşturma sayfasını gösteren ekran görüntüsü](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
-6. **Oluştur**’u seçin.
+6. **Oluştur**'u seçin.
 
 ## <a name="create-a-new-billing-profile"></a>Yeni faturalama profili oluşturma
 
@@ -98,7 +98,7 @@ Faturalama profili oluşturmak için **ödeme hesabı sahibi** veya **ödeme hes
 >
 > Ek faturalama profillerinin eklenmesi toplam maliyetinizi etkileyebilir. Daha fazla bilgi için bkz. [Yeni faturalama profili eklerken dikkat edilmesi gerekenler](#things-to-consider-when-adding-new-billing-profiles).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
@@ -118,12 +118,12 @@ Faturalama profili oluşturmak için **ödeme hesabı sahibi** veya **ödeme hes
 
     |Alan  |Tanım  |
     |---------|---------|
-    |Adı     | Azure portalında faturalama profilini kolayca belirlemenize yardımcı olan görünen ad.  |
+    |Ad     | Azure portalında faturalama profilini kolayca belirlemenize yardımcı olan görünen ad.  |
     |Satın alma siparişi numarası    | İsteğe bağlı bir satın alma siparişi numarası. Satın alma siparişi numarası, faturalama profili için oluşturulan faturalara eklenir. |
     |Faturalandırma adresi   | Faturalandırma adresi, faturalama profili için oluşturulan faturalara eklenir. |
     |Faturayı e-posta ile gönder   | Bu faturalama profiline ait faturaları e-posta ile almak için Faturayı e-posta ile gönder kutusunu işaretleyin. Bunu tercih etmezseniz faturaları Azure portalından görüntüleyebilir ve indirebilirsiniz.|
 
-5. **Oluştur**’u seçin.
+5. **Oluştur**'u seçin.
 
 ## <a name="link-charges-to-invoice-sections-and-billing-profiles"></a>Ücretleri fatura bölümlerine ve faturalama profillerine bağlama
 
@@ -131,7 +131,7 @@ Faturalama profili oluşturmak için **ödeme hesabı sahibi** veya **ödeme hes
 
 ### <a name="link-a-new-subscription"></a>Yeni abonelik bağlama
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Abonelikler** araması yapın.
 
@@ -151,7 +151,7 @@ Faturalama profili oluşturmak için **ödeme hesabı sahibi** veya **ödeme hes
 
 7. Bir Azure planı seçin ve aboneliğiniz için kolay ad girin.
 
-9. **Oluştur**’a tıklayın.  
+9. **Oluştur**'a tıklayın.  
 
 ### <a name="link-existing-subscriptions-and-products"></a>Mevcut abonelikleri ve ürünleri bağlama
 
@@ -161,7 +161,7 @@ Mevcut Azure abonelikleriniz veya Azure Market ve App Source kaynakları gibi di
 >
 > Abonelikler ve diğer ürünler yalnızca aynı faturalama profiline ait olan fatura bölümleri arasında taşınabilir. Aboneliklerin ve ürünlerin farklı faturalama profillerindeki fatura bölümleri arasında taşınması desteklenmez.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 

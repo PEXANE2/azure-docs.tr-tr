@@ -57,7 +57,7 @@
           href: cdn-media-streaming-optimization.md
         - name: Dinamik site hızlandırma
           href: cdn-dynamic-site-acceleration.md
-    - name: Yönetme
+    - name: Yönet
       items:
         - name: Uç nokta oluşturma
           href: cdn-create-endpoint-how-to.md

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200957"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Ücretsiz Azure hesabınızla ücretlerden kaçının
@@ -37,7 +37,7 @@ Hesabınızı yükselttikten sonra, ücretsiz Azure hesabınıza ücretsiz olara
 
 Ücretsiz hizmetlerinizin ve miktarlarınızın süresi 12 ayın sonunda sona erer. Azure portalında ücretsiz hizmetlerinizin ne zaman süresinin dolduğunu öğrenebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Sol gezinti alanında **Tüm hizmetler**’i seçin.
 

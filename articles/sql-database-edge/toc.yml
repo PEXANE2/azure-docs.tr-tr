@@ -17,7 +17,7 @@
       href: tutorial-sync-data-factory.md
     - name: SQL Data Sync ile verileri eşitleme
       href: tutorial-sync-data-sync.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır?
   items:
     - name: DAC paketleri ve Stream Analytics işleri
       href: stream-analytics.md

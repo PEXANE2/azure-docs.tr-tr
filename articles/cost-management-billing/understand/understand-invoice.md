@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: a3bf55bef0f6fc25f98b362b4a22e22471a031f1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199067"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure faturanızdaki terimleri anlayın
@@ -93,7 +93,7 @@ Aşağıdaki tabloda, faturanızda gösterilen kullanım ücretleri sütun üst 
 
 | Süre |Açıklama |
 | --- | --- |
-| Adı |Kullanım için en üst düzey hizmeti belirtir |
+| Ad |Kullanım için en üst düzey hizmeti belirtir |
 | Tür |Fiyatı etkileyebilecek Azure hizmet türünü tanımlar |
 | Kaynak |Kullanılmakta olan ölçüm için ölçü birimini belirtir |
 | Bölge |Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir |

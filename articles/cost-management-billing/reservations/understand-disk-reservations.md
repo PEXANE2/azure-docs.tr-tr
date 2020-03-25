@@ -10,10 +10,10 @@ ms.workload: na
 ms.date: 01/30/2020
 ms.author: rogarana
 ms.openlocfilehash: 18fdda3e28761fcf912b716f51b5e270a9b224d0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77586657"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Rezervasyon indiriminizin Azure Disk Depolama’ya nasıl uygulandığını anlama
@@ -58,4 +58,4 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 - [Azure Disk Rezervasyonu ile maliyetleri azaltın (Linux)](../../virtual-machines/linux/disks-reserved-capacity.md)
 - [Azure Disk Rezervasyonu ile maliyetleri azaltın (Windows)](../../virtual-machines/windows/disks-reserved-capacity.md)
-- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
+- [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)

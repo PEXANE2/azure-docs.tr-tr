@@ -8,18 +8,17 @@ metadata:
   description: 'Metin Analizi API’si ham metin üzerinde gelişmiş doğal dil işleme sağlayan bulut tabanlı bir hizmettir ve dört ana işlev içerir: Yaklaşım analizi, anahtar ifade ayıklama, karakter kodu tanıma ve dil algılama. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle içeriği farklı şekillerde analiz etmeyi öğrenin.'
   author: aahill
   manager: nitinme
-  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: text-analytics
   ms.topic: landing-page
   ms.date: 01/29/2019
   ms.author: aahi
-  ms.openlocfilehash: c98f6b9994dfa80f51a78d9be22e283cca700ce9
-  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+  ms.openlocfilehash: 468315f79f7d0f9d10013c4068b5bb29436b3166
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/21/2020
-  ms.locfileid: "77524606"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "79415147"
 landingContent:
 - title: Metin Analizi API'si hakkında
   linkLists:

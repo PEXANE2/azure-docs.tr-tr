@@ -24,7 +24,7 @@
       href: private-endpoint-overview.md
     - name: Özel Bağlantı Hizmeti
       href: private-link-service-overview.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır?
   items:
     - name: Bir depolama hesabına özel olarak bağlanma
       href: create-private-endpoint-storage-portal.md

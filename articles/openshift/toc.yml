@@ -41,6 +41,8 @@
           href: howto-azure-monitor-v4.md
     - name: Azure Red Hat OpenShift kümesinde tek başına bir Prometheus dağıtma
       href: howto-deploy-prometheus.md
+    - name: Azure Red Hat OpenShift kümesinde projeleri yönetme
+      href: howto-manage-projects.md
     - name: Özel bir Azure Red Hat OpenShift kümesi oluşturma
       href: howto-create-private-cluster.md
     - name: İzleme ve günlüğe kaydetme

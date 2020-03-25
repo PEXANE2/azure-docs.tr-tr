@@ -1,5 +1,5 @@
 ---
-title: Azure harcama limiti | Microsoft Docs
+title: Azure harcama limiti
 description: Bu makalede, Azure harcama limitinin nasıl çalıştığı ve nasıl kaldırıldığı açıklanmaktadır.
 author: bandersmsft
 ms.reviewer: judupont
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6feac116c92f8dac7bd1dde2084f9b25f5e559f8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361027"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238066"
 ---
 # <a name="azure-spending-limit"></a>Azure harcama limiti
 
@@ -67,7 +67,7 @@ Azure aboneliğinizle ilişkili geçerli bir ödeme yöntemi olduğu sürece, ha
 
 1. Aboneliğiniz için bir ödeme yöntemi seçmek üzere **Ödeme yöntemini seçin**'e tıklayın. Bu yöntem, aboneliğinizin etkin ödeme yöntemi olur.
 
-1. **Son**'a tıklayın.
+1. **Finish (Son)** düğmesine tıklayın.
 
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Harcama limitini neden kaldırmak isteyebilirsiniz?

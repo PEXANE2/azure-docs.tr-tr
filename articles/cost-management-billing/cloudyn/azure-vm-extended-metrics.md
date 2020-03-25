@@ -1,20 +1,20 @@
 ---
-title: Azure sanal makineleri için genişletilmiş ölçüm ekleme | Microsoft Docs
+title: Azure sanal makineleri için genişletilmiş ölçüm ekleme
 description: Bu makale, Azure VM'leriniz için genişletilmiş tanılama ölçümlerini etkinleştirmenize ve yapılandırmanıza yardımcı olur.
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082923"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481628"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure sanal makineleri için genişletilmiş ölçüm ekleme
 
@@ -30,7 +30,9 @@ Cloudyn, Azure VM'lerin kaynakları hakkında ayrıntılı bilgiler sunmak için
 Örneğin Azure VM'lerinizin CPU ve Bellek yüzdesini izlemek isteyebilirsiniz. Azure ölçümleri, _CPU Yüzdesi_ ve _\Bellek\% Kullanımdaki Kaydedilmiş Baytlar_ değerlerini verir.
 
 > [!NOTE]
-> Genişletilmiş ölçüm veri koleksiyonu yalnızca Azure konuk seviyesinde izleme için desteklenir. Cloudyn, [Log Analytics aracısıyla](../../azure-monitor/platform/agents-overview.md) uyumlu değildir. 
+> Genişletilmiş ölçüm veri koleksiyonu yalnızca Azure konuk seviyesinde izleme için desteklenir. Cloudyn, [Log Analytics aracısıyla](../../azure-monitor/platform/agents-overview.md) uyumlu değildir.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Genişletilmiş ölçümlerin etkin olup olmadığını belirleme
 

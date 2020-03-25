@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 9979ced6d5bd71dd1a42d19c222111a76ed18428
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200240"
 ---
 # <a name="azure-software-plan-discount"></a>Azure yazılım planı indirimi
@@ -146,7 +146,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 Rezervasyonlar hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
+- [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
 - [Azure Ayrılmış Sanal Makine Örnekleri ile SUSE yazılım planları için ön ödeme yapma](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Azure Ayrılmış VM Örnekleri ile Sanal Makinelere ön ödeme yapma](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Azure Ayırmalarını yönetme](manage-reserved-vm-instance.md)

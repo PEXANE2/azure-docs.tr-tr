@@ -83,8 +83,6 @@
       items:
         - name: Azure EA portalını kullanmaya başlama
           href: ea-portal-get-started.md
-        - name: EA faturanızı anlama
-          href: ../understand/review-enterprise-agreement-bill.md
         - name: Azure'da EA rolleri
           href: understand-ea-roles.md
         - name: Azure EA portalı yönetimi

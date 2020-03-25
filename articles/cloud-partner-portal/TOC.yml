@@ -15,7 +15,7 @@
         - name: Yazar sanal makine teklifi
           href: ./cloud-partner-portal-publish-virtual-machine.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: './cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm'
             - name: Microsoft geliştirici hesabı kaydı
               href: ./cloud-partner-portal-dev-center-accounts-registration.md

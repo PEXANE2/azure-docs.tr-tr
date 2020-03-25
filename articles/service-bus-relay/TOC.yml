@@ -59,7 +59,7 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: Yönetme
+    - name: Yönet
       items:
         - name: Azure İzleyici ile Azure Relay’i izleme
           href: relay-metrics-azure-monitor.md
@@ -71,7 +71,7 @@
           href: /dotnet/api/microsoft.azure.relay
         - name: Microsoft.ServiceBus
           href: /dotnet/api/Microsoft.ServiceBus
-    - name: Özel durumlar
+    - name: Özel Durumlar
       href: relay-exceptions.md
     - name: Bağlantı noktası ayarları
       href: relay-port-settings.md

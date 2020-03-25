@@ -33,6 +33,10 @@
       href: cli-samples.md
 - name: Kavramlar
   items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Yük devretme ve yama uygulama
       href: cache-failover.md
     - name: En iyi uygulamalar
@@ -44,7 +48,7 @@
     - name: Planlama
       items:
         - name: Önbellek katmanı seçme
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
         - name: Kümelemeyle önbelleğinizi dağıtın
           href: cache-how-to-premium-clustering.md
         - name: Redis veri kalıcılığı ile önbelleğinizi koruyun
@@ -79,7 +83,7 @@
           items:
             - name: Spring Boot Başlatıcı uygulaması kullanma
               href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: Yönetme
+    - name: Yönet
       items:
         - name: Azure portalında yapılandırma
           href: cache-configure.md

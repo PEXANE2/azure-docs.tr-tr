@@ -22,7 +22,7 @@
           href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-table
         - name: Geçirilecek satırları seçme
           href: /sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database
-    - name: Yönetme
+    - name: Yönet
       items:
         - name: Veri geçişini izleme
           href: /sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database

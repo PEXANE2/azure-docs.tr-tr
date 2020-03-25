@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199254"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portalında Azure rezervasyonlarını görüntüleme
@@ -26,14 +26,14 @@ Daha fazla bilgi için bkz. [Rezervasyonu yönetebilecek kullanıcıları ekleme
 
 Bir rezervasyonu Sahip veya Okuyucu olarak görüntülemek için,
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Rezervasyonlar** araması yapın.
     ![Azure portalı aramasını gösteren ekran görüntüsü](./media/view-reservations/portal-reservation-search.png)  
 3. Listede, Sahip veya Okuyucu rolüne sahip olduğunuz tüm rezervasyonlar gösterilir. Her rezervasyon, bilinen son kullanım yüzdesini gösterir.  
     ![Rezervasyon listesini gösteren örnek](./media/view-reservations/view-reservations.png)
 4. Bir rezervasyon seçin ve son beş güne ait kullanım eğilimini görüntüleyin.  
     ![Rezervasyon kullanım eğilimini gösteren örnek](./media/view-reservations/reservation-utilization.png)
-5. Ayrılmış Örnek kullanımı API’sini kullanarak ve [Microsoft Azure Consumption Insights Power BI içerik paketi](/power-bi/service-connect-to-azure-consumption-insights) ile de [rezervasyon kullanımını](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) alabilirsiniz.
+5. Ayrılmış Örnek kullanımı API’sini kullanarak ve [Microsoft Azure Consumption Insights Power BI içerik paketi](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) ile de [rezervasyon kullanımını](/power-bi/service-connect-to-azure-consumption-insights) alabilirsiniz.
 
 Bir rezervasyonun kapsamını değiştirmeniz, rezervasyonu bölmeniz veya bir rezervasyonu kimin yönetebileceğini değiştirmeniz gerekirse bkz. [Azure Rezervasyonlarını Yönetme](manage-reserved-vm-instance.md).
 
@@ -43,7 +43,7 @@ Bir rezervasyonun kapsamını değiştirmeniz, rezervasyonu bölmeniz veya bir r
 
 Azure portalında rezervasyon işlemlerini görüntülemek için,
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 
     ![Azure portalı aramasını gösteren ekran görüntüsü](./media/view-reservations/portal-cm-billing-search.png)

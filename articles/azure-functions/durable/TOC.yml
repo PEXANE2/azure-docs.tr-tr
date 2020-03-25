@@ -135,7 +135,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter
       href: 'https://twitter.com/hashtag/DurableFunctions?src=hash'
-    - name: Ürün geri bildirimi sağlama
+    - name: Ürün geri bildirimi sağlayın
       href: 'https://feedback.azure.com/forums/355860-azure-functions'
     - name: Dayanıklı İşlevler GitHub deposu
       href: 'https://github.com/Azure/azure-functions-durable-extension'

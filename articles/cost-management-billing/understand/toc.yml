@@ -9,6 +9,8 @@
           href: review-customer-agreement-bill.md
         - name: Microsoft İş Ortağı Sözleşmesi faturanızı gözden geçirme
           href: review-partner-agreement-bill.md
+        - name: Kurumsal Sözleşme faturanızı gözden geçirme
+          href: review-enterprise-agreement-bill.md
     - name: Kavramlar
       items:
         - name: Bireysel abonelik kullanım koşulları

@@ -71,7 +71,7 @@
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: SSS
           href: dns-faq-private.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır?
   items:
     - name: Genel DNS
       items:
@@ -79,7 +79,7 @@
           href: dns-alias-appservice.md
         - name: DNS bölgelerini yönetme
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: dns-operations-dnszones-portal.md
             - name: Azure PowerShell
               href: dns-operations-dnszones.md
@@ -87,7 +87,7 @@
               href: dns-operations-dnszones-cli.md
         - name: DNS kayıtlarını yönetme
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: dns-operations-recordsets-portal.md
             - name: Azure PowerShell
               href: dns-operations-recordsets.md
@@ -157,22 +157,6 @@
           href: /dotnet/api/overview/azure/privatedns/management
         - name: REST
           href: /rest/api/dns/privatedns/privatezones
-- name: İlgili
-  items:
-    - name: Özel Bağlantı
-      href: ../private-link/private-link-overview.md
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Sanal Ağ
-      href: /azure/virtual-network/
-    - name: Sanal Makine
-      href: /azure/virtual-machines/
-    - name: Yük Dengeleyici
-      href: /azure/load-balancer/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: Web uygulamaları
-      href: /azure/app-service/
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

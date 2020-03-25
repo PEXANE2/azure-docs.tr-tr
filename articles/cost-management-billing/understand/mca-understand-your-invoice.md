@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200224"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237913"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft Müşteri Sözleşmesi faturanızdaki koşullar
 
@@ -23,7 +23,7 @@ Faturanızda ücretlerinizin özeti ve ödeme yönergeleri yer alır. [Azure por
 
 ## <a name="billing-period"></a>Faturalama dönemi
 
-Aylık olarak faturalandırılırsınız. [Azure portalında](https://portal.azure.com/) faturalama profili özellikleri bölümünde *fatura tarihi* bilgisini kontrol ederek faturaları ayın hangi günü alacağınızı öğrenebilirsiniz. Faturalama döneminin sonu ile fatura tarihi arasında gerçekleşen ücretler, sonraki faturalama döneminde yer aldığından sonraki ayın faturasına dahil edilir. Her bir fatura için faturalama dönemi başlangıç ve bitiş tarihleri, faturanın PDF dosyasında **Faturalama Özeti** bölümünün yukarısında listelenir.
+Aylık olarak faturalandırılırsınız. *Azure portalında* faturalama profili özellikleri bölümünde [fatura tarihi](https://portal.azure.com/) bilgisini kontrol ederek faturaları ayın hangi günü alacağınızı öğrenebilirsiniz. Faturalama döneminin sonu ile fatura tarihi arasında gerçekleşen ücretler, sonraki faturalama döneminde yer aldığından sonraki ayın faturasına dahil edilir. Her bir fatura için faturalama dönemi başlangıç ve bitiş tarihleri, faturanın PDF dosyasında **Faturalama Özeti** bölümünün yukarısında listelenir.
 
 ## <a name="invoice-terms-and-descriptions"></a>Fatura terimleri ve açıklamaları
 

@@ -69,7 +69,7 @@
           href: virtual-machines-windows-sql-register-with-resource-provider.md
         - name: Birden fazla VM'yi toplu kaydetme
           href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
-    - name: Yönetme
+    - name: Yönet
       items:
         - name: Lisanslama modeli
           displayName: 'ahb, ahub, payg, change, modify, update'
@@ -101,7 +101,7 @@
               href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: El ile yapılandırma
               items:
-                - name: Ön koşullar
+                - name: Önkoşullar
                   href: virtual-machines-windows-portal-sql-availability-group-prereq.md
                 - name: Öğretici
                   href: virtual-machines-windows-portal-sql-availability-group-tutorial.md

@@ -2,14 +2,14 @@
   tocHref: /azure/
   topicHref: /azure/index
   items:
-    - name: Key Vault
+    - name: Anahtar Kasası
       tocHref: /azure/
       topicHref: /azure/key-vault/index
 - name: Azure
   tocHref: /java/
   topicHref: /azure/index
   items:
-    - name: Key Vault
+    - name: Anahtar Kasası
       tocHref: /java/azure/
       topicHref: /azure/key-vault/
       items:
@@ -20,7 +20,7 @@
   tocHref: /powershell/
   topicHref: /azure/index
   items:
-    - name: Key Vault
+    - name: Anahtar Kasası
       tocHref: /powershell/module/
       topicHref: /azure/key-vault/
       items:
@@ -31,7 +31,7 @@
   tocHref: /cli/
   topicHref: /azure/index
   items:
-    - name: Key Vault
+    - name: Anahtar Kasası
       tocHref: /cli/azure/
       topicHref: /azure/key-vault/
       items:
@@ -52,7 +52,7 @@
   tocHref: /sccm/
   topicHref: /azure/index
   items:
-    - name: Key Vault
+    - name: Anahtar Kasası
       tocHref: /sccm/apps/
       topicHref: /azure/key-vault/index
       items:

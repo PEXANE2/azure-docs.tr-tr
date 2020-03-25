@@ -80,7 +80,7 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad ve Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Birleşik Devletler küçük harici Adaları                |                 |                |              |      ✓     |          ✓         |
-| Amerika Birleşik Devletler                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Amerika Birleşik Devletleri                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | İngiliz Virgin Adaları                              |                 |                |              |      ✓     |          ✓         |

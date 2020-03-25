@@ -48,7 +48,7 @@
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:
-    - name: Reports
+    - name: Raporlar
       items:
         - name: Etkinlik raporlarını bulma
           href: howto-find-activity-reports.md

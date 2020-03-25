@@ -80,32 +80,34 @@
           href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Canlı sohbeti açma/kapatma
           href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
-- name: İlgili
-  items:
-    - name: Platform hizmetleri
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Tak Çalıştır
-          href: /azure/iot-pnp
-        - name: IoT Hub Cihazı Sağlama Hizmeti
-          href: /azure/iot-dps
-        - name: Konum Tabanlı Hizmetler
-          href: /azure/location-based-services
-        - name: Hizmet SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge çözümleri
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT hizmetleri
+      items:
+        - name: IoT Hub’ı
+          href: /azure/iot-hub
+        - name: IoT Hub Cihazı Sağlama Hizmeti
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT çözüm hızlandırıcıları
+          href: /azure/iot-accelerators
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
+        - name: Azure Haritalar
+          href: /azure/azure-maps
+        - name: Zaman Serisi Öngörüleri
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK’ları
+      items:
+        - name: IoT Hizmet SDK’ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT Cihaz SDK'ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Müşteri verisi istekleri
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
     - name: Desteklenen tarayıcılar

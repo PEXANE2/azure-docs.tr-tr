@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: banders
 ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199696"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft Müşteri Sözleşmesi Azure kredi bakiyesini izleme
@@ -25,9 +25,9 @@ Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için g
 
 ## <a name="check-your-credit-balance"></a>Kredi bakiyenizi denetleme
 
-### <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
@@ -155,7 +155,7 @@ Kredi bakiyesini denetlemek istediğiniz faturalama profilini belirlemek için f
 
 ### <a name="get-azure-credit-balance"></a>Azure kredi bakiyesini alma
 
-`<billingProfileId>` değerini, ilk adımda (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```) kopyaladığınız `id` ile değiştirerek aşağıdaki istekte bulunun.
+`<billingProfileId>` değerini, ilk adımda (`id`) kopyaladığınız ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx``` ile değiştirerek aşağıdaki istekte bulunun.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/credits/balanceSummary?api-version=2019-10-01
@@ -206,7 +206,7 @@ API yanıtı, faturalama profili için tahmini ve geçerli bakiyeyi döndürür.
 
 ### <a name="get-list-of-credits"></a>Kredi listesini alma
 
-`<billingProfileId>` değerini, ilk adımda (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```) kopyaladığınız `id` ile değiştirerek aşağıdaki istekte bulunun.
+`<billingProfileId>` değerini, ilk adımda (`id`) kopyaladığınız ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx``` ile değiştirerek aşağıdaki istekte bulunun.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/lots?api-version=2019-10-01
@@ -270,7 +270,7 @@ API yanıtı, bir faturalama profiline ait Azure kredilerinin listesini döndür
 
 ### <a name="get-transactions-that-affected-credit-balance"></a>Kredi bakiyenizi etkileyen işlemleri alma
 
-`<billingProfileId>` değerini, ilk adımda (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```) kopyaladığınız `id` ile değiştirerek aşağıdaki istekte bulunun. İstediğiniz döneme ait işlemleri almak için bir **startDate** ve bir **endDate** geçirmeniz gerekir.
+`<billingProfileId>` değerini, ilk adımda (`id`) kopyaladığınız ```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx``` ile değiştirerek aşağıdaki istekte bulunun. İstediğiniz döneme ait işlemleri almak için bir **startDate** ve bir **endDate** geçirmeniz gerekir.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/events?api-version=2019-10-01&startDate=2018-10-01T00:00:00.000Z&endDate=2019-10-11T12:00:00.000Z?api-version=2019-10-01

@@ -303,7 +303,7 @@
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
-    - name: Yönetme
+    - name: Yönet
       items:
         - name: Mantıksal uygulamaları yönetme - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
@@ -409,7 +409,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter
       href: 'https://twitter.com/logicappsio'
-    - name: Ürün geri bildirimi sağlama
+    - name: Ürün geri bildirimi sağlayın
       href: 'https://feedback.azure.com/forums/287593-logic-apps'
     - name: Hizmet güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=logic-apps'

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201042"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Kurumsal Anlaşma'dan Microsoft Müşteri Sözleşmesi API'lerine geçiş
@@ -206,7 +206,7 @@ Kullanım kayıtları dizisini içeren özelliğin adı "data" yerine _values_ o
 | ResourceRate | effectivePrice | &nbsp;  |
 | HizmetYöneticisiKimliği | Yok | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
-| HizmetBilgisi2 | serviceInfo2 | &nbsp;  |
+| ServiceInfo2 | serviceInfo2 | &nbsp;  |
 | ServiceName | meterCategory | Tam dize değerleri farklı olabilir. |
 | ServiceTier | meterSubCategory | Tam dize değerleri farklı olabilir. |
 | StoreServiceIdentifier | Yok | &nbsp;  |

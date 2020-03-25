@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199866"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme, güncelleştirme veya kaldırma
@@ -122,10 +122,10 @@ Faturalama profilinizin varsayılan ödeme yöntemini çek/havale olarak değiş
 
 Kredi kartınızı değiştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 1. Soldaki menüde **Faturalama profili**’ne tıklayın.
-1. Faturalama profilini seçin.
+1. Bir faturalama profili seçin.
 1. Soldaki menüden **Ödeme yöntemleri**’ni seçin.
 
    ![Menüde ödeme yöntemlerini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-tab-mca.png)
@@ -142,10 +142,10 @@ Azure portalındaki hesap sayfanızdan kredi kartı bilgilerini düzenleyebilir 
 
 Bir kredi kartını düzenlemek veya silmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 1. Soldaki menüde **Faturalama profili**’ne tıklayın.
-1. Faturalama profilini seçin.
+1. Bir faturalama profili seçin.
 1. Soldaki menüden **Ödeme yöntemleri**’ni seçin.
 
    ![Menüde ödeme yöntemlerini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-tab-mca.png)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 45dbf43966b71d7db7ada8be7704f6b3b37aab25
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199186"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft İş Ortağı Sözleşmesi ödeme hesabınızı kullanmaya başlama
@@ -50,7 +50,7 @@ Müşterilerin kuruluşlarındaki kullanıcıların, Azure tüketimine yönelik 
 
 İlkeyi etkinleştirmek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 

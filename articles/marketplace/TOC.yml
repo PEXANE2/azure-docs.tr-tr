@@ -173,7 +173,7 @@
         - name: Azure uygulama teklifi
           href: ./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: ./cloud-partner-portal/azure-applications/cpp-prerequisites.md
             - name: Azure uygulama teklifi oluşturma
               href: ./cloud-partner-portal/azure-applications/cpp-create-offer.md
@@ -199,7 +199,7 @@
         - name: Danışmanlık hizmetleri
           href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
             - name: Danışmanlık hizmeti teklifi oluşturma
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
@@ -213,7 +213,7 @@
         - name: Kapsayıcılar teklifi
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: ./cloud-partner-portal/containers/cpp-prerequisites.md
             - name: Kapsayıcı teklifi oluşturma
               href: ./cloud-partner-portal/containers/cpp-create-offer.md
@@ -250,7 +250,7 @@
         - name: Dynamics 365 for Customer Engagement teklifi
           href: ./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: ./cloud-partner-portal/dyn365ce/cpp-prerequisites.md
             - name: Customer Engagement teklifi oluşturma
               href: ./cloud-partner-portal/dyn365ce/cpp-create-offer.md
@@ -272,7 +272,7 @@
         - name: Dynamics 365 for Operations teklifi
           href: ./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: ./cloud-partner-portal-orig/pre-requisites.md
             - name: Yayımlama
               href: ./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md
@@ -289,7 +289,7 @@
         - name: IoT Edge modülü teklifi
           href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
             - name: IoT Edge modülü teklifi oluşturma
               href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
@@ -311,7 +311,7 @@
         - name: Power BI Uygulaması teklifi
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
             - name: Power BI Uygulaması teklifi oluşturma
               href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
@@ -335,7 +335,7 @@
         - name: Sanal makine teklifi
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:
-            - name: Ön koşullar
+            - name: Önkoşullar
               href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
             - name: VM teklifi oluşturma
               href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
@@ -391,7 +391,7 @@
                   href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
                 - name: Yaygın SAS URL sorunları
                   href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: VM teklifini yayımlama
+            - name: VM teklifi yayımlama
               href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
             - name: Mevcut teklifi güncelleştirme
               href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
@@ -399,7 +399,7 @@
       items:
         - name: Genel Bakış
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: Ön koşullar
+        - name: Önkoşullar
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
         - name: Dikkat edilmesi gerekenler
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md

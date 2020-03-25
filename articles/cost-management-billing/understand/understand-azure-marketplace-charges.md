@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77587820"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Azure dış hizmet ücretlerinizi anlama
@@ -59,7 +59,7 @@ Azure Market ücretleri yerel para biriminiz üzerinden gösterilir.
 
 Şu adımları izleyerek Azure portalından Azure Market faturalarınızı görüntüleyebilir ve indirebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 1. Soldaki menüden **Faturalar**’ı seçin.
 1. Abonelik açılan menüsünde Market hizmetlerinizle ilişkili aboneliği seçin.
@@ -104,7 +104,7 @@ MCA veya MPA’nız yoksa, Market faturalarınızı aşağıdaki adımları izle
 
 Dış hizmet satın alırken, kaynak için bir Azure aboneliği seçersiniz. Seçilen Azure aboneliğinin ödeme yöntemi, dış hizmetin ödeme yöntemi olur. Bir dış hizmetin ödeme yöntemini değiştirmek için, o dış hizmete bağlı olan [Azure aboneliğinin ödeme yöntemini değiştirmeniz](../manage/change-credit-card.md) gerekir. Aşağıdaki adımları izleyerek dış hizmet siparişinizin hangi aboneliğe bağlı olduğunu öğrenebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Sol gezinti menüsünde **Tüm Kaynaklar**’a tıklayın.
      ![tüm kaynaklar menü öğesinin ekran görüntüsü](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Dış hizmetinizi arayın.
@@ -116,7 +116,7 @@ Dış hizmet satın alırken, kaynak için bir Azure aboneliği seçersiniz. Se�
 
 Dış hizmet siparişinizi iptal etmek istiyorsanız, [Azure portalında](https://portal.azure.com) kaynağı silin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Sol gezinti menüsünde **Tüm Kaynaklar**’a tıklayın.
     ![Tüm kaynaklar menü öğesinin ekran görüntüsü](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Dış hizmetinizi arayın.

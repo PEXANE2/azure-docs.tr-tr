@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344151"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238049"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama
 
@@ -176,7 +176,7 @@ Aşağıdaki tabloda abonelik bağlamında görevleri tamamlamak için ihtiyacı
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Azure portalında yerleşik rolleri yönetme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
