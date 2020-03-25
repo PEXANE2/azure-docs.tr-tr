@@ -9,16 +9,16 @@ layout: LandingPage
 ms.topic: landing-page
 ms.date: 02/23/2020
 ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "78898615"
 ---
 # <a name="scheduler-documentation"></a>Scheduler Belgeleri
 
 > [!IMPORTANT]
-> [Kullanımdan kaldırılan](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Azure Scheduler uygulamasının yerini [Azure Logic Apps](../logic-apps/logic-apps-overview.md) alacaktır. Scheduler’da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa zamanda [Azure Logic Apps’e geçin](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Kullanımdan kaldırılan](../logic-apps/logic-apps-overview.md) Azure Scheduler uygulamasının yerini [Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) alacaktır. Scheduler’da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa zamanda [Azure Logic Apps’e geçin](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 >
 > Scheduler artık Azure portalında kullanılamaz. Ancak işlerinizi ve iş koleksiyonlarınızı yönetebilmek için, [REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlet’lerini](scheduler-powershell-reference.md) şimdilik kullanmaya devam edebilirsiniz.
 

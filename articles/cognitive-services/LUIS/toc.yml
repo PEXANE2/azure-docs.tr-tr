@@ -189,7 +189,7 @@
         - name: Toplu işe testi
           href: luis-how-to-batch-test.md
           displayName: 'import, export'
-    - name: Yayımlama
+    - name: Yayımla
       href: luis-how-to-publish-app.md
     - name: Uygulama yönetme
       items:
@@ -372,7 +372,7 @@
               href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
 - name: İlgili
   items:
-    - name: Azure Bot Hizmeti
+    - name: Azure Robot Hizmeti
       href: 'https://dev.botframework.com/'
     - name: 'Bot Builder 4.x SDK C#'
       href: 'https://github.com/Microsoft/botbuilder-dotnet'
@@ -408,6 +408,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Şifreleme
+      href: luis-encryption-of-data-at-rest.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice

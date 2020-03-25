@@ -62,7 +62,7 @@
       href: load-balancer-standard-availability-zones.md
     - name: Yerleşik güvenlik denetimleri
       href: load-balancer-security-controls.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır?
   items:
     - name: Temel Load Balancer’ı Standart Load Balancer’a yükseltme
       items:
@@ -74,7 +74,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Giden kuralları yapılandırma
       items:
-        - name: Azure portal
+        - name: Azure portalı
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md

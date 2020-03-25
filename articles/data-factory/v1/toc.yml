@@ -33,7 +33,7 @@
     - name: Verileri dönüştürmek için bir işlem hattı oluşturma
       href: data-factory-build-your-first-pipeline.md
       items:
-        - name: Azure portal
+        - name: Azure portalı
           href: data-factory-build-your-first-pipeline-using-editor.md
         - name: Visual Studio
           href: data-factory-build-your-first-pipeline-using-vs.md

@@ -102,7 +102,7 @@
               href: microsoft-common-textblock.md
             - name: TextBox
               href: microsoft-common-textbox.md
-        - name: İşlem
+        - name: Bilgi İşlem
           items:
             - name: CredentialsCombo
               href: microsoft-compute-credentialscombo.md

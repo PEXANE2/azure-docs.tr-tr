@@ -10,7 +10,7 @@
       href: hpc-cache-namespace.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Ön koşullar
+    - name: Önkoşullar
       href: hpc-cache-prereqs.md
     - name: Önbelleği oluşturma
       href: hpc-cache-create.md

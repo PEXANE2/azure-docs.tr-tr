@@ -1,20 +1,19 @@
 ---
-title: Azure hesabı ile Office 365 için kaydolma | Microsoft Docs
+title: Azure hesabı ile Office 365 için kaydolma
 description: Azure hesabı kullanarak nasıl Office 365 aboneliği oluşturulacağını öğrenin
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 736009a88f309e0a38402222668a9609f844552f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199934"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204826"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure hesabınızla Office 365 aboneliğine kaydolma
 Azure abonesiyseniz, Office 365 aboneliğine kaydolmak için Azure hesabınızı kullanabilirsiniz. Azure aboneliği olan bir kuruluşun parçasıysanız, mevcut Azure Active Directory’nizde (Azure AD) kullanıcılar için Office 365 abonelikleri oluşturabilirsiniz. Azure Active Directory kiracınızda Genel Yönetici veya Faturalama Yöneticisi izinlerine sahip olan bir hesap kullanarak Office 365’e kaydolun. Daha fazla bilgi için bkz. [Azure AD’de hesap izinlerimi denetleme](#RoleInAzureAD) ve [Azure Active Directory’de yönetici rolleri atama](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -47,8 +46,8 @@ Kuruluşunuz için Office 365 aboneliği oluşturduysanız, Azure AD kullanıcı
 
 Kaydolmanızın ardından Office 365 aboneliği, Azure aboneliğinizin ait olduğu aynı Azure Active Directory örneğine eklenir. Daha fazla bilgi için bkz. [Azure ve Office 365 abonelikleri hakkında daha fazla bilgi](office-365-account-for-azure-subscription.md#more-about-subs) ve [Azure aboneliklerinin Azure Active Directory ile ilişkisi](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a id="RoleInAzureAD"></a>Azure AD’de hesap izinlerimi denetleme
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+## <a name="check-my-account-permissions-in-azure-ad"></a><a id="RoleInAzureAD"></a>Azure AD’de hesap izinlerimi denetleme
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Tüm hizmetler**’e tıklayın ve sonra **Active Directory** araması yapın.
 
     ![Azure portalında Active Directory ekran görüntüsü](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)

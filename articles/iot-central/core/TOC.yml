@@ -127,8 +127,10 @@
               href: howto-manage-preferences.md
             - name: Canlı sohbeti açma/kapatma
               href: howto-show-hide-chat.md
-- name: İlgili
+- name: Kaynaklar
   items:
+    - name: Destek ve yardım seçenekleri
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Sektör uygulama şablonları
       items:
         - name: Perakende
@@ -139,30 +141,30 @@
           href: ../government/overview-iot-central-government.md
         - name: Sağlık
           href: ../healthcare/overview-iot-central-healthcare.md
-    - name: Platform Hizmetleri
+    - name: Azure IoT hizmetleri
       items:
-        - name: IoT Hub
+        - name: IoT Hub’ı
           href: /azure/iot-hub
-        - name: IoT Tak Çalıştır
-          href: /azure/iot-pnp
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT çözüm hızlandırıcıları
+          href: /azure/iot-accelerators
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
+        - name: Azure Haritalar
+          href: /azure/azure-maps
+        - name: Zaman Serisi Öngörüleri
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK’ları
+      items:
         - name: IoT Hizmet SDK’ları
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Haritalar
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge çözümleri
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
         - name: IoT Cihaz SDK'ları
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: Kaynaklar
-  items:
-    - name: Destek ve yardım seçenekleri
-      href: /azure/iot-fundamentals/iot-support-help
     - name: IoT Central API başvurusu
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Müşteri verisi istekleri

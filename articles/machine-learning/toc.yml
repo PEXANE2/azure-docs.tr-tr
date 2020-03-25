@@ -13,6 +13,7 @@
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Öğreticiler
+  expanded: true
   items:
     - name: Studio ve Tasarımcı
       items:
@@ -87,10 +88,10 @@
       href: concept-workspace.md
     - name: Ortamlar
       href: concept-environments.md
-    - name: Veri erişimi
-      href: concept-data.md
     - name: Veri alımı
       href: concept-data-ingestion.md
+    - name: Veri erişimi
+      href: concept-data.md
     - name: Model eğitimi
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

@@ -184,7 +184,7 @@
           href: 'https://docs.microsoft.com/cli/azure/'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/powershell/'
-    - name: Faturalandırma
+    - name: Faturalama
       href: 'https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview'
 - name: Kaynaklar
   items:

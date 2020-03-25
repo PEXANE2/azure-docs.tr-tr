@@ -195,34 +195,34 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Özel Docker görüntüsü dağıtma
           href: iot-accelerators-device-simulation-deploy-image.md
-- name: İlgili
-  items:
-    - name: IoT Central
-      href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Platform Hizmetleri
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Tak Çalıştır
-          href: /azure/iot-pnp
-        - name: IoT Hub Cihazı Sağlama Hizmeti
-          href: /azure/iot-dps
-        - name: IoT Hizmet SDK’ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Haritalar
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: IoT Edge
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT hizmetleri
+      items:
+        - name: IoT Hub’ı
+          href: /azure/iot-hub
+        - name: IoT Hub Cihazı Sağlama Hizmeti
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT çözüm hızlandırıcıları
+          href: /azure/iot-accelerators
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
+        - name: Azure Haritalar
+          href: /azure/azure-maps
+        - name: Zaman Serisi Öngörüleri
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK’ları
+      items:
+        - name: IoT Hizmet SDK’ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT Cihaz SDK'ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Uzaktan izleme
       items:
         - name: Geliştirici başvuru kılavuzu (.NET)
@@ -254,7 +254,7 @@
     - name: Başvuru Mimarisi
       href: iot-accelerators-architecture-overview.md
       items:
-        - name: Karşıdan Yükle
+        - name: İndir
           href: 'https://aka.ms/iotrefarchitecture'
         - name: İş ortağı uygulamaları
           items:

@@ -1,20 +1,20 @@
 ---
 title: Azure'da Cloudyn bütçelerini yönetme
 description: Bu makale, Cloudyn'de hızlı bir şekilde bütçe oluşturmanıza ve bu bütçeleri yönetmeye başlamanıza yardımcı olur.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 1436c9b3b612a231760b6cdb04b5166fb45d7962
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2f8fdbf2b470e9f1eb0d82c4c6de230c2a9e78f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201144"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464164"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>Cloudyn ile Azure bütçelerini yönetme
 
@@ -27,6 +27,8 @@ Atanan bütçeleri temel alarak bütçenizin kullanılan bölümüne göre eşik
 Bütçe raporları atanan bütçeyi gösterir. Kullanıcılar, yaptıkları harcamaların zaman içindeki tüketimlerine göre fazla, az veya uygun olup olmadığını görüntüleyebilir. Raporun üstünde yer alan **Alanları Göster/Gizle**'yi seçerek maliyeti, bütçeyi, birikmiş maliyeti ve toplam bütçeyi görüntüleyebilirsiniz.
 
 Azure Maliyet Yönetimi, Cloudyn'e benzer işlevler sunar. Azure Maliyet Yönetimi, yerel Azure maliyet yönetimi çözümüdür. Maliyet analizi yapmanıza, bütçe oluşturup yönetmenize, verileri dışarı aktarmanıza ve tasarruf önerilerini gözden geçirip gerekli eylemleri gerçekleştirmenize yardımcı olur. Maliyet Yönetimi bütçeleri hakkında daha fazla bilgi için bkz. [Bütçe oluşturma ve yönetme](../costs/tutorial-acm-create-budgets.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="create-budgets"></a>Bütçe oluşturma
 

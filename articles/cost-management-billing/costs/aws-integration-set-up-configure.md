@@ -1,20 +1,18 @@
 ---
 title: Azure Maliyet Yönetimi ile AWS tümleştirmesini ayarlama
 description: Bu makale, AWS Maliyet ve Kullanım raporu ile Azure Maliyet Yönetimi tümleştirmesini ayarlama ve yapılandırma adımlarında size yol gösterecektir.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200002"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203092"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS Maliyet ve Kullanım raporu tümleştirmesini ayarlama ve yapılandırma
 
@@ -39,11 +37,11 @@ Aşağıdaki adımları izleyerek bir Maliyet ve Kullanım raporu oluşturmak i�
 9. S3 Demetini Yapılandır iletişim kutusunda aşağıdakilerden birini yapın:
     1. Açılan listeden bir demet seçin ve **İleri**'yi seçin.
     2. Demet adı ve yeni demeti oluşturmak istediğiniz Bölgeyi yazıp **İleri**'yi seçin.
-10. **Bu ilkenin doğru olduğunu onayladım**'ı seçip **Kaydet**'e tıklayın.
-11. (İsteğe bağlı) Rapor yolu ön eki alanına raporunuzun adına eklenmesini istediğiniz rapor yolu ön ekini girin.
+10.    **Bu ilkenin doğru olduğunu onayladım**'ı seçip **Kaydet**'e tıklayın.
+11.    (İsteğe bağlı) Rapor yolu ön eki alanına raporunuzun adına eklenmesini istediğiniz rapor yolu ön ekini girin.
 Ön ek belirtmezseniz varsayılan ön ek rapor için belirttiğiniz ad olur. Tarih aralığı `/report-name/date-range/` biçimindedir.
 12. **Zaman birimi** alanında **Her saat** girişini seçin.
-13. **Rapor sürümü oluşturma** alanında raporunuzun yeni sürümlerinin eski sürümün üzerinde yazması veya ek yeni rapor oluşturulması yönündeki tercihinizi belirtin.
+13.    **Rapor sürümü oluşturma** alanında raporunuzun yeni sürümlerinin eski sürümün üzerinde yazması veya ek yeni rapor oluşturulması yönündeki tercihinizi belirtin.
 14. **Şunun için veri tümleştirmesini etkinleştir:** alanında seçim yapmanıza gerek yoktur.
 15. **Sıkıştırma** bölümünde **GZIP**'i seçin.
 16. **İleri**’yi seçin.
@@ -124,8 +122,8 @@ AWS Kuruluşları için izin ekleme:
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },

@@ -10,10 +10,10 @@ ms.date: 02/14/2020
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 1dd0dfad0c68e18ae272d5d94fedd67d24be9ae1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200787"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Kuruluşunuzun Azure fiyatlandırmasını görüntüleme ve indirme
@@ -47,7 +47,7 @@ MCA’nız varsa, fiyatlandırmayı görüntülemek ve indirmek için faturalama
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
-1. Faturalama profilini seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
+1. Bir faturalama profili seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
 1. **Faturalar**'ı seçin.
 1. Fatura kılavuzunda, indirmek istediğiniz fiyat listesine karşılık gelen fatura satırını bulun.
 1. Satırın sonundaki üç noktaya (`...`) tıklayın.
@@ -64,7 +64,7 @@ MCA’nız varsa, geçerli faturalama dönemi için fiyatlandırmayı indirebili
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
-1. Faturalama profilini seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
+1. Bir faturalama profili seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
 1. **Genel Bakış** alanında, ay başından bugüne kadarki ücretlerin altında indirme bağlantılarını bulun.
 1. **Azure fiyat listesi**’ni seçin.
 ![Genel Bakış’tan indirme seçeneğini gösteren ekran görüntüsü](./media/ea-pricing/open-pricing01.png)

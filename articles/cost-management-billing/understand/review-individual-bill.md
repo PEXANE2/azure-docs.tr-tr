@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199135"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Öğretici: Bireysel Azure faturanızı gözden geçirme
@@ -120,7 +120,7 @@ Maliyet analizinde gösterilen maliyetler, faturanıza yansıtılan tek kaynağ�
 
 ![Fatura kullanım ücretleri](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>Dış hizmetler ayrı faturalanır
+## <a name="external-services-billed-separately"></a><a name="external"></a>Dış hizmetler ayrı faturalanır
 
 Dış hizmetler veya market ücretleri, üçüncü taraf yazılımı satıcıları tarafından oluşturulan kaynaklar için geçerlidir. Bu kaynakları Azure Market’ten sağlayabilirsiniz. Örneğin Barracuda Güvenlik Duvarı, üçüncü tarafın kullanıma sunduğu bir Azure Market kaynağıdır. Güvenlik duvarının tüm ücretleri ve bunlara karşılık gelen ölçümler dış hizmet ücretleri olarak görünür.
 
@@ -149,7 +149,7 @@ VM oluşturulduğunda her ölçüm kullanım kayıtları üretmeye başlar. Bu k
 
 CSV biçimindeki kullanım dosyanızda faturanızın hesaplanması için kullanılan ölçümleri görebilirsiniz.
 
-## <a name="payment"></a>Faturanızı ödeme
+## <a name="pay-your-bill"></a><a name="payment"></a>Faturanızı ödeme
 
 Ödeme yönteminiz olarak bir kredi kartı ayarladıysanız ödeme faturalama döneminin bitişinden sonraki 10 gün içinde otomatik olarak ücretlendirilir. Kredi kartı hesap özetinizde satır öğesi **MSFT Azure** olarak görünür.
 
