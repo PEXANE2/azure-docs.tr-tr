@@ -10,11 +10,11 @@ ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: d116ba81b0c8940687663c17a4ed403e86dd6c22
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187543"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214403"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işl
 
 ::: zone-end
 
-## <a name="in-us-canada-europetabin-us-canada-europe"></a>[ABD, Kanada, Avrupa](#tab/in-us-canada-europe)
+## <a name="in-us-canada-europe"></a>[ABD, Kanada, Avrupa](#tab/in-us-canada-europe)
 
 Cihazı ABD, Kanada veya Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
@@ -114,7 +114,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 ::: zone-end
 
 
-## <a name="in-australiatabin-australia"></a>[Avustralya](#tab/in-australia)
+## <a name="in-australia"></a>[Avustralya](#tab/in-australia)
 
 Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da gönderme için aşağıdaki adımları uygulayın.
 
@@ -143,7 +143,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 ::: zone-end
 
-## <a name="in-japantabin-japan"></a>[Japonya](#tab/in-japan) 
+## <a name="in-japan"></a>[Japonya](#tab/in-japan) 
 
 1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
 2. Cihazı kapatın ve kabloları çıkarın.
@@ -191,7 +191,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 ::: zone-end
 
-## <a name="in-singaporetabin-singapore"></a>[Singapur’da](#tab/in-singapore) 
+## <a name="in-singapore"></a>[Singapur’da](#tab/in-singapore) 
 
 1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
 2. İzleme numarasını (Data Box yerel web kullanıcı arabiriminin Göndermeye Hazırlama sayfasında başvuru numarası olarak gösterilir) not alın. Bu numara, göndermeye hazırlama adımı başarıyla tamamlandıktan sonra oluşturulur. Bu sayfadaki gönderim etiketini indirin ve kutunun üzerine yapıştırın. 
@@ -273,7 +273,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managedtabin-selfmanaged"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged) 
+## <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged) 
 
 Japonya, Singapur, Kore ve Batı Avrupa’da Data Box kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin. 
 

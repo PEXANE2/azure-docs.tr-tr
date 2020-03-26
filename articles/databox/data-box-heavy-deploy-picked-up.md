@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: cfb9f54f5ba219a4db87144ab1e7ebff2b72b69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380237"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214199"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Öğretici: Azure Data Box Heavy döndürün ve verileri Azure 'a yükleyin
+# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Öğretici: Azure Data Box Heavy'yi iade etme ve Azure'a veri yüklemeyi doğrulama
 
 ::: zone-end
 
@@ -35,17 +35,17 @@ Bu öğretici, Azure Data Box Heavy’nin nasıl iade edileceğini ve yüklenen 
 Bu öğreticide şu gibi konular hakkında bilgi edineceksiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Göndermeye hazırlama
 > * Data Box Heavy'yi Microsoft'a gönderme
 > * Azure'a verilerin yüklendiğini doğrulama
 > * Data Box Heavy'den veri silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunlardan emin olun:
 
-- [Öğreticiyi tamamladınız: verileri Azure Data Box kopyalayın ve doğrulayın](data-box-heavy-deploy-copy-data.md).
+- [Öğretici: Verileri Azure Data Box'a kopyalama ve doğrulama](data-box-heavy-deploy-copy-data.md) bölümünü tamamladınız.
 - Kopyalama işleri tamamlandı. Kopyalama işleri devam ediyorsa Göndermeye hazırlama işi gerçekleştirilemez.
 
 
@@ -134,7 +134,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Göndermeye hazırlama
 > * Data Box Heavy'yi Microsoft'a gönderme
 > * Azure'a verilerin yüklendiğini doğrulama

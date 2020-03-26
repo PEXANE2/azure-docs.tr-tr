@@ -10,25 +10,25 @@ ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380546"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214301"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Öğretici: Azure Data Box Disk 'den karşıya veri yüklemeyi doğrulama
+# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Öğretici: Azure Data Box Disk’ten veri yüklemesini doğrulama
 
-Bu, Deploy Azure Data Box Disk serisinin son öğreticisidir. Bu öğreticide şunları öğreneceksiniz:
+Bu, serinin son öğreticisidir: Azure Data Box Disk’i dağıtın. Bu öğreticide şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure'a verilerin yüklendiğini doğrulama
 > * Data Box Disk'ten verileri silinme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce öğreticiyi tamamladığınızdan emin olun [: Return Azure Data Box disk](data-box-disk-deploy-picked-up.md).
+Başlamadan önce [Öğretici: Azure Data Box Disk’i İade Etme](data-box-disk-deploy-picked-up.md) bölümünü tamamladığınızdan emin olun.
 
 
 ## <a name="verify-data-upload-to-azure"></a>Azure'a verilerin yüklendiğini doğrulama
