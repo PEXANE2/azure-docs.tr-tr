@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/13/2017
 ms.author: sewatson
 ms.openlocfilehash: bd5951fe86bde7e71c77d5564216421c1d2d1ea4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "64708475"
 ---
 # <a name="azure-cosmos-db-documentation"></a>Azure Cosmos DB Belgeleri
@@ -53,8 +53,8 @@ Azure Cosmos DB kullanarak uygulama geliştirmeyi öğrenin:
 
 - Cosmos DB ile uygulama geliştirme: [SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [Tablo](/azure/cosmos-db/tutorial-develop-table-dotnet) | [Graf](/azure/cosmos-db/tutorial-develop-graph-dotnet)
 - Verileri Cosmos DB'ye aktarma: [SQL](/azure/cosmos-db/sql-api-import-data) | [MongoDB](/azure/cosmos-db/mongodb-migrate) 
-- Cosmos DB ile verileri sorgulama: [SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [Tablo](/azure/cosmos-db/tutorial-query-table) | [Graf](/azure/cosmos-db/tutorial-query-graph)
-- Cosmos DB ile global veritabanı çoğaltma: [SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [Tablo](/azure/cosmos-db/tutorial-global-distribution-table | [Graf](/azure/cosmos-db/tutorial-global-distribution-graph)
+- Cosmos DB ile veri sorgulama: [SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [Tablo](/azure/cosmos-db/tutorial-query-table) | [Graph](/azure/cosmos-db/tutorial-query-graph)
+- Cosmos DB ile genel veritabanı çoğaltması: [SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [Tablo](/azure/cosmos-db/tutorial-global-distribution-table | [Graf](/azure/cosmos-db/tutorial-global-distribution-graph)
 - [Öykünücüyü kullanarak uygulamanızı yerel ortamda geliştirin](/azure/cosmos-db/local-emulator)
 
 ## <a name="samples"></a>Örnekler
