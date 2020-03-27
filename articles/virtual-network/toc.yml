@@ -23,23 +23,10 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Sanal ağları bağlama
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT
-      items:
-        - name: NAT ağ geçidi oluşturma - Portal
-          href: quickstart-create-nat-gateway-portal.md
-        - name: NAT ağ geçidi oluşturma - PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: NAT ağ geçidi oluşturma - CLI
-          href: quickstart-create-nat-gateway-cli.md
-        - name: NAT ağ geçidi oluşturma - ARM şablonu
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
-        - name: NAT ağ geçidi oluşturma ve doğrulama - Portal
-          href: tutorial-create-validate-nat-gateway-portal.md
-        - name: NAT ağ geçidi oluşturma ve doğrulama - PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: NAT ağ geçidi oluşturma ve doğrulama - CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
+    - name: NAT ağ geçidi oluşturma
+      href: quickstart-create-nat-gateway-portal.md
+    - name: NAT ağ geçidini oluşturma ve doğrulama
+      href: tutorial-create-validate-nat-gateway-portal.md
 - name: Örnekler
   items:
     - name: Azure CLI
@@ -359,6 +346,19 @@
           href: move-across-regions-publicip-portal.md
         - name: Genel IP'ler - PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: NAT
+      items:
+        - name: NAT ağ geçidi oluşturma - PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: NAT ağ geçidi oluşturma - CLI
+          href: quickstart-create-nat-gateway-cli.md
+        - name: NAT ağ geçidi oluşturma - ARM şablonu
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
+        - name: NAT ağ geçidi oluşturma ve doğrulama - PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: NAT ağ geçidi oluşturma ve doğrulama - CLI
+          href: tutorial-create-validate-nat-gateway-cli.md
     - name: Sorun giderme
       items:
         - name: Sanal ağ eşleme sorunlarını giderme

@@ -68,7 +68,7 @@
               href: manage-certificates-for-federated-single-sign-on.md
             - name: Kiracı kısıtlamaları
               href: tenant-restrictions.md
-            - name: SAML belirteci şifrelemesini yapılandırma (Önizleme)
+            - name: SAML belirteci şifrelemesini yapılandırma
               href: howto-saml-token-encryption.md
             - name: Son kullanıcı portalları
               href: end-user-experiences.md
@@ -139,9 +139,7 @@
               href: grant-admin-consent.md
             - name: Yönetici onayı iş akışını yapılandırma (önizleme)
               href: configure-admin-consent-workflow.md
-            - name: Kullanıcıları ve grupları bir uygulamaya atama yöntemleri
-              href: methods-for-assigning-users-and-groups.md
-            - name: Kullanıcıyı uygulamaya atama
+            - name: Uygulamaya kullanıcı veya grup atama
               href: assign-user-or-group-access-portal.md
             - name: Uygulamalarım üzerinde koleksiyonlar oluşturma
               href: access-panel-collections.md

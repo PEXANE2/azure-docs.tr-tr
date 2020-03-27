@@ -89,8 +89,10 @@
       items:
         - name: Adres arama
           href: how-to-search-for-address.md
-        - name: Arama için en iyi yöntemler
+        - name: Arama Hizmeti’ni kullanmanın En İyi Yöntemleri
           href: how-to-use-best-practices-for-search.md
+        - name: Yönlendirme Hizmeti’ni kullanmanın En İyi Yöntemleri
+          href: how-to-use-best-practices-for-routing.md
         - name: Statik haritada özel veri işleme
           href: how-to-render-custom-data.md
         - name: Genel geçiş yolları isteme
@@ -101,7 +103,7 @@
       items:
         - name: Harita denetimi
           items:
-            - name: Web harita denetimini kullanmaya başlama
+            - name: Azure Haritalar harita denetimini kullanma
               href: how-to-use-map-control.md
             - name: Harita oluşturma
               href: map-create.md
@@ -247,12 +249,38 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Hizmet modülü
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+        - name: Uzamsal GÇ modülü
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.maps/accounts
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT hizmetleri
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Cihazı Sağlama Hizmeti
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT çözüm hızlandırıcıları
+          href: /azure/iot-accelerators
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
+        - name: Azure Haritalar
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK’ları
+      items:
+        - name: IoT Hizmet SDK’ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT Cihaz SDK'ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Azure Haritalar kullanım koşulları
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Haritalar fiyatlandırması
@@ -281,31 +309,3 @@
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: IoT School üzerinde Azure Haritalar
       href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
-- name: İlgili
-  items:
-    - name: Çözümler
-      items:
-        - name: IoT çözüm hızlandırıcıları
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: /azure/iot-central/iot-support-help
-    - name: Platform hizmetleri
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Tak Çalıştır
-          href: /azure/iot-pnp
-        - name: IoT Hub Cihazı Sağlama Hizmeti
-          href: /azure/iot-dps
-        - name: Haritalar
-          href: /azure/azure-maps
-        - name: Hizmet SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge çözümleri
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

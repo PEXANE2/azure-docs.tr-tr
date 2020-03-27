@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
         - name: Runbook'larla küme oluşturma
           href: ./manage-clusters-runbooks.md
+        - name: Apache Ambari e-posta bildirimleri
+          href: ./apache-ambari-email.md
         - name: ETL işlem hattı oluşturma
           href: ./hdinsight-sales-insights-etl.md
     - name: Örnekler
@@ -272,7 +274,8 @@
           href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
         - name: Apache Spark kümesi oluşturma - Azure CLI
           href: ./spark/apache-spark-create-cluster-cli.md
-        - name: Apache Spark kümesi oluşturma - Şablon
+        - name: Apache Spark kümesi oluşturma - ARM şablonu
+          displayName: Resource Manager
           href: ./spark/apache-spark-jupyter-spark-sql.md
     - name: Öğreticiler
       items:
@@ -416,8 +419,8 @@
       items:
         - name: Apache Hadoop kümesi oluşturma - Portal
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-        - name: Apache Hadoop kümesi oluşturma - Şablon
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Apache Hadoop kümesi oluşturma - ARM şablonu
+          displayName: Resource Manager
           href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
     - name: Öğreticiler
       items:
@@ -435,8 +438,54 @@
               href: use-pig.md
         - name: Geliştirme
           items:
-            - name: Boş kenar düğümlerini kullanma
-              href: ./hdinsight-apps-use-edge-node.md
+            - name: Apache Hadoop ile MapReduce kullanma
+              items:
+                - name: MapReduce’a genel bakış
+                  href: ./hadoop/hdinsight-use-mapreduce.md
+                - name: SSH kullanma
+                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
+                - name: cURL kullanma
+                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
+                - name: Azure PowerShell kullanma
+                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
+                - name: .NET için SDK’yı kullanma
+                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
+                - name: MapReduce örneklerini çalıştırma
+                  href: ./hadoop/apache-hadoop-run-samples-linux.md
+                - name: Özel Apache Hadoop MapReduce programları çalıştırma
+                  href: ./hadoop/apache-hadoop-run-custom-programs.md
+                - name: 'C# ile MapReduce akış programları geliştirme'
+                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
+                - name: Java MapReduce programları geliştirme
+                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
+            - name: 'Apache Hive’ı ayıklama, dönüştürme ve yükleme (ETL) aracı olarak kullanma'
+              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+            - name: 'Ölçekli bir biçimde ayıklama, dönüştürme ve yükleme'
+              href: ./hadoop/apache-hadoop-etl-at-scale.md
+            - name: Etkileşimli olmayan kimlik doğrulaması ile çalıştırılan .NET HDInsight uygulamaları oluşturma
+              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
+            - name: Büyük verileri çözümleme
+              items:
+                - name: Power Query kullanarak çözümleme
+                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
+                - name: Power BI’ı Interactive Query’ye Bağlama
+                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+                - name: Power BI’ı Apache Hadoop’a Bağlama
+                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
+                - name: Excel'i Apache Hadoop’a Bağlama
+                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+                - name: Apache Hive JDBC sürücüsü kullanarak bağlanma
+                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+                - name: Depolanan tweetleri çözümleme
+                  href: ./hdinsight-analyze-twitter-data-linux.md
+                - name: Apache Mahout ile öneriler oluşturma
+                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
+                - name: HDInsight için gelişmiş analiz
+                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
+            - name: Yönetme
+              items:
+                - name: Boş kenar düğümlerini kullanma
+                  href: ./hdinsight-apps-use-edge-node.md
         - name: Sorun giderme
           items:
             - name: Genel sorunlar
@@ -499,8 +548,8 @@
           href: ./kafka/apache-kafka-get-started.md
         - name: Apache Kafka kümesi oluşturma - PowerShell
           href: ./kafka/apache-kafka-quickstart-powershell.md
-        - name: Apache Kafka kümesi oluşturma - Şablon
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Apache Kafka kümesi oluşturma - ARM şablonu
+          displayName: Resource Manager
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Öğreticiler
       items:
@@ -564,6 +613,9 @@
           href: ./hbase/apache-hbase-overview.md
     - name: Hızlı Başlangıçlar
       items:
+        - name: Apache HBase kümesi oluşturma - ARM Şablonu
+          displayName: Resource Manager
+          href: ./hbase/quickstart-resource-manager-template.md
         - name: Apache HBase’i sorgulama - Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Apache HBase’i Sorgulama - HBase Kabuğu
@@ -636,6 +688,9 @@
           href: ./interactive-query/apache-interactive-query-get-started.md
     - name: Hızlı Başlangıçlar
       items:
+        - name: Interactive Query kümesi oluşturma - ARM Şablonu
+          displayName: Resource Manager
+          href: ./interactive-query/quickstart-resource-manager-template.md
         - name: Apache Hive sorguları yürütme - Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
     - name: Öğreticiler
@@ -718,6 +773,9 @@
           href: ./r-server/r-server-overview.md
     - name: Hızlı Başlangıçlar
       items:
+        - name: ML Services kümesi oluşturma - ARM Şablonu
+          displayName: Resource Manager
+          href: ./r-server/quickstart-resource-manager-template.md
         - name: Örnek iş - RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
         - name: Örnek iş - R konsolu
@@ -800,8 +858,6 @@
           href: ./domain-joined/hdinsight-security-overview.md
     - name: Öğreticiler
       items:
-        - name: Giden trafiği kısıtlamak için güvenlik duvarı kullanma
-          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Apache Ranger ile Apache HBase RBAC
           href: ./domain-joined/apache-domain-joined-run-hbase.md
         - name: Apache Ranger ile Apache Hive RBAC
@@ -850,6 +906,8 @@
           href: ./domain-joined/ssh-domain-accounts.md
         - name: Verilerin güvenliğini sağlama
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+        - name: Giden trafiği kısıtlamak için güvenlik duvarı kullanma
+          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Sorun giderme
           items:
             - name: ESP Kimlik doğrulaması sorunları

@@ -1,24 +1,26 @@
 ---
-title: Azure'daki Cloudyn maliyet yönetimi raporlarını anlama | Microsoft Docs
+title: Azure’da Cloudyn maliyet yönetimi raporlarını anlama
 description: Bu makale, Cloudyn maliyet yönetimi raporlarının temel yapısını ve işlevlerini anlamanıza yardımcı olur.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773978"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474552"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn maliyet yönetimi raporlarını anlama
 
 Bu makale, Cloudyn maliyet yönetimi raporlarının temel yapısını ve işlevlerini anlamanıza yardımcı olur. Cloudyn raporları genellikle sezgiseldir ve aynı görünüme sahiptir. Bu makaleyi okuduktan sonra tüm maliyet yönetimi raporlarını kullanabilirsiniz. Birçok standart özellik farklı raporlarda mevcuttur ve raporlarda kolayca gezinmenize olanak tanır. Raporlar özelleştirilebilir ve sonuçları hesaplayıp görüntülemek için çeşitli seçenekler arasından seçim yapabilirsiniz.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-fields-and-options"></a>Rapor alanları ve seçenekleri
 
@@ -89,7 +91,7 @@ Yukarıdaki görüntüde numaralandırılmış alanlar, aşağıdaki bilgilerle 
      - **Hesap Adı**
        - Hesap veya abonelik adı. Azure'da Azure aboneliğinin adıdır.
      - **Hesap Numarası**
-       - Bir veya daha fazla hesap seçin ya da tüm hesapları birden seçin. Azure'da Azure aboneliğinin GUID değeridir.
+       - Bir veya daha fazla hesap seçin ya da tüm hesapları birden seçin. Azure'da bu Azure aboneliğinin GUID değeridir.
      - **Üst Hesap**
        - Üst hesabı, birden fazla hesabı veya tümünü seçin.
      - **Hizmet**

@@ -86,6 +86,8 @@
       href: publish-apps.md
     - name: MSIX uygulama iliştirmeyi ayarlama
       href: app-attach.md
+    - name: Microsoft Teams’i kullanma
+      href: teams-on-wvd.md
 - name: Kavramlar
   items:
     - name: Windows Sanal Masaüstü ortamı

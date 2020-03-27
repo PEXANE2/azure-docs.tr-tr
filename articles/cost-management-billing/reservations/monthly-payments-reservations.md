@@ -5,36 +5,24 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.author: banders
-ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ede60adc13dadc38e18ee5ade468e01b16523f4f
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587099"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235740"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Aylık ödemelerle rezervasyonlar satın alma
 
-Şu ana kadar Azure rezervasyonları için peşin ödeme gerekiyordu. Şimdiyse aylık ödemelerle rezervasyonlar için ödeme yapabilirsiniz. Tüm tutarı ödediğiniz peşin satın almadan farklı olarak aylık ödeme seçeneği, rezervasyonun toplam maliyetini dönemin her ayına eşit olarak böler. Peşin ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödemeyi seçtiğinizde ekstra ücret ödemezsiniz.
+Aylık ödemelerle rezervasyonlar için ödeme yapabilirsiniz. Tüm tutarı ödediğiniz peşin satın almadan farklı olarak aylık ödeme seçeneği, rezervasyonun toplam maliyetini dönemin her ayına eşit olarak böler. Peşin ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödemeyi seçtiğinizde ekstra ücret ödemezsiniz.
 
-Aylık ödeme tutarınız, yerel para biriminiz için güncel ayın döviz kuruna bağlı olarak değişiklik gösterebilir.
+Rezervasyonunuz Microsoft müşteri sözleşmesi (MCA) kullanılarak satın alındıysa, aylık ödeme tutarınız yerel para biriminiz için güncel ayın döviz kuruna bağlı olarak değişiklik gösterebilir.
 
-Şunlar için aylık ödemeler kullanılabilir:
+Şunlar için aylık ödemeler kullanılamaz: Databricks, SUSE Linux rezervasyonları, Red Hat Planları ve Azure Red Hat OpenShift Compute.
 
-- Sanal makineler
-- Azure Storage
-- SQL Veritabanları
-- SQL Veri Ambarı
-- Cosmos DB
-- App Service damga pulu ücreti
-- Yönetilen Disk
-- Azure Veri Gezgini
-- MariaDB için Azure Veritabanı, MySQL ve PostgreSQL
-- CloudSimple tarafından sunulan Azure VMware Çözümü
-
-
-[Azure portalında](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade) rezervasyon satın alın.
+[Azure portalında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) rezervasyon satın alın.
 
 ![Rezervasyon satın almayı gösteren örnek](./media/monthly-payments-reservations/purchase-reservation.png)
 
@@ -58,11 +46,11 @@ Bir rezervasyonu yenilediğinizde, faturalama sıklığını aylık olarak deği
 
 ## <a name="exchange-and-refunds"></a>Değiştirme ve para iadeleri
 
-Diğer rezervasyonlar gibi, aylık faturalama ile satın alınan rezervasyonları değiştirebilir veya para iadesi alabilirsiniz. Şu anda aylık faturalama ile satın alınan bir rezervasyon için değişim veya para iadesi başlatmak amacıyla bir destek isteği gönderebilirsiniz.
+Diğer rezervasyonlar gibi, aylık faturalama ile satın alınan rezervasyonları değiştirebilir veya para iadesi alabilirsiniz. 
 
 Aylık olarak ödenen bir rezervasyonu değiştirdiğinizde, yeni satın almanın toplam yaşam süresi maliyeti, iade edilen rezervasyon için iptal edilen kalan ödemelerden fazla olmalıdır. Değişimler için başka bir limit veya ücret yoktur. Aylık olarak faturalandırılan yeni bir rezervasyon satın almak için peşin ödenen bir rezervasyonu değiştirebilirsiniz. Ancak yeni rezervasyonun yaşam süresi değeri, iade edilen rezervasyonun eşit olarak dağıtılan değerinden büyük olmalıdır.
 
-Aylık olarak ödenen bir rezervasyonu iptal ederseniz, Microsoft iptal olan taahhüt edilmiş ödemelere %12 oranında iptal etme ücreti uygulayabilir. Ancak, şu anda Microsoft bu ücreti uygulamamaktadır. İptal edilmiş taahhüt edilen ödemeler 50.000 ABD Doları para iadesi limitine tahakkuk eder. İptal cezası uygulanırsa, iade limiti bundan etkilenmez.
+Aylık ödeme yapılan bir rezervasyonu iptal ederseniz, iptal edilen gelecek ödemeleri 50.000 ABD doları para iadesi sınırına kadar tahakkuk ettirilir.
 
 Değişim ve para iadeleri hakkında daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](exchange-and-refund-azure-reservations.md).
 

@@ -263,6 +263,8 @@
           href: search-pagination-page-layout.md
         - name: İlgi düzeyini ayarlama (puanlama profilleri)
           href: index-add-scoring-profiles.md
+        - name: İlgi düzeyini ayarlama (benzerlik algoritması)
+          href: index-ranking-similarity.md
     - name: Planlama
       items:
         - name: Katman seçme

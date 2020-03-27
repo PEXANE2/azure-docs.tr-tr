@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Machine Learning belgeleri
-summary: Azure Machine Learning, makine öğrenimi modellerinizi ve işlem hatlarınızı ölçeğe uygun olarak hızlı bir şekilde eğitip dağıtabilmeniz için web arabirimleri ve SDK’lar sunar. PyTorch, TensorFlow ve scikit-learn gibi açık kaynak Python çerçeveleri aracılığıyla bu özellikleri kullanın.
+summary: Makine öğrenmesi modellerini ve işlem hatlarını büyük ölçekte eğitmek, dağıtmak ve yönetmek için Azure Machine Learning’i nasıl kullanacağınızı öğrenin. Öğreticiler, kod örnekleri, API başvuruları ve daha fazlası bunu nasıl yapacağınızı gösterir.
 metadata:
   title: Azure Machine Learning belgeleri
-  description: Azure Machine Learning, size makine öğrenimi modellerinizi ve işlem hatlarınızı ölçeğe uygun olarak hızlı bir şekilde eğitip dağıtmaya yönelik web arabirimleri ve SDK’lar sunar. PyTorch, TensorFlow ve scikit-learn gibi açık kaynak Python çerçeveleri aracılığıyla bu özellikleri kullanın.
+  description: Makine öğrenmesi modellerini ve işlem hatlarını büyük ölçekte eğitmek, dağıtmak ve yönetmek için Azure Machine Learning’i nasıl kullanacağınızı öğrenin. Öğreticiler, kod örnekleri, API başvuruları ve daha fazlası bunu nasıl yapacağınızı gösterir.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,39 +11,33 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 03/05/2020
-  ms.openlocfilehash: 5165456617193f4701b1bc635c103d0719c8f403
-  ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+  ms.date: 03/18/2020
+  ms.openlocfilehash: 5855d523bf32798166ab32b6ff336cae95e81ca1
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/05/2020
-  ms.locfileid: "78328566"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80063965"
 landingContent:
-- title: Azure ML’yi kullanmaya başlama
+- title: Makine öğrenmesi ile çalışmaya başlama
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Python not defterlerinde deneme
+    - text: Python not defterleri
       url: tutorial-1st-experiment-sdk-setup.md
-    - text: RStudio'da deneme
-      url: tutorial-1st-r-experiment.md
-    - text: Sürükle ve bırak tasarımcısını kullanarak deneme
+    - text: Tasarımcı (sürükle ve bırak)
       url: tutorial-designer-automobile-price-train-score.md
-    - text: Otomatik ML ile deneme
+    - text: RStudio
+      url: tutorial-1st-r-experiment.md
+    - text: Otomatik ML
       url: tutorial-first-experiment-automated-ml.md
   - linkListType: overview
     links:
-    - text: Azure ML nedir?
+    - text: Azure Machine Learning nedir?
       url: overview-what-is-azure-ml.md
     - text: Mimari ve kavramlar
       url: concept-azure-machine-learning-architecture.md
-  - linkListType: how-to-guide
-    links:
-    - text: Ortamınızı ayarlama
-      url: how-to-configure-environment.md
-    - text: Eğitim işlem hedeflerini ayarlama
-      url: how-to-set-up-training-targets.md
-- title: "Deneme: Python SDK'sı"
+- title: Python SDK'yı kullanma
   linkLists:
   - linkListType: tutorial
     links:
@@ -55,6 +49,8 @@ landingContent:
       url: tutorial-auto-train-models.md
   - linkListType: how-to-guide
     links:
+    - text: Ortamınızı ayarlama
+      url: how-to-configure-environment.md
     - text: Scikit-learn ile eğitme
       url: how-to-train-scikit-learn.md
     - text: TensorFlow ile eğitme
@@ -63,28 +59,20 @@ landingContent:
       url: how-to-train-pytorch.md
     - text: Keras ile eğitme
       url: how-to-train-keras.md
-- title: ML İşlem Hatlarını kullanma
+- title: ML işlem hatlarını oluşturma
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ML işlem hatları oluşturma (Python)
+      url: tutorial-pipeline-batch-scoring-classification.md
+    - text: Fiyatları tahmin etmek için doğrusal regresyon (tasarımcı)
+      url: tutorial-designer-automobile-price-train-score.md
   - linkListType: overview
     links:
     - text: ML işlem hatları nedir?
       url: concept-ml-pipelines.md
-    - text: "'Sürükle-ve-bırak' tasarımcısı"
+    - text: Tasarımcı nedir?
       url: concept-designer.md
-  - linkListType: tutorial
-    links:
-    - text: Fiyatları tahmin etmek için doğrusal regresyon (tasarımcı)
-      url: tutorial-designer-automobile-price-train-score.md
-    - text: ML işlem hatları oluşturma (Python SDK'sı)
-      url: tutorial-pipeline-batch-scoring-classification.md
-  - linkListType: how-to-guide
-    links:
-    - text: İşlem hatlarını zamanlama (Python SDK'sı)
-      url: how-to-schedule-pipelines.md
-    - text: Gecikmeleri tahmin etme (tasarımcı)
-      url: how-to-designer-sample-classification-flight-delay.md
-    - text: Değişik sıklığını tahmin etme (tasarımcı)
-      url: how-to-designer-sample-classification-churn.md
 - title: Modelleri dağıtma ve yönetme
   linkLists:
   - linkListType: how-to-guide
@@ -93,14 +81,14 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: Nasıl ve nerede dağıtılır?
       url: how-to-deploy-and-where.md
-    - text: Kimlik Doğrulaması
-      url: how-to-setup-authentication.md
+    - text: MLOps örnekleri
+      url: https://github.com/microsoft/MLOps
     - text: Gerçek zamanlı tahmin
       url: how-to-consume-web-service.md
     - text: Toplu tahmin
       url: how-to-use-parallel-run-step.md
-    - text: Uçtan uca örnekler (GitHub)
-      url: https://github.com/microsoft/MLOps
+    - text: Kimlik Doğrulaması
+      url: how-to-setup-authentication.md
 - title: Başvuru belgelerine gitme
   linkLists:
   - linkListType: reference
@@ -109,11 +97,11 @@ landingContent:
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
     - text: R için SDK
       url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/azureml/
     - text: Machine learning CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
     - text: Tasarımcı algoritmaları ve modülleri
       url: algorithm-module-reference/module-reference.md
-    - text: REST API
-      url: https://docs.microsoft.com/rest/api/azureml/
     - text: AI referans mimarileri (GitHub)
       url: https://github.com/Microsoft/AI

@@ -1,20 +1,18 @@
 ---
-title: Azure Maliyet Yönetimi verilerini anlama | Microsoft Docs
+title: Azure Maliyet Yönetimi verilerini anlama
 description: Bu makale Azure Maliyet Yönetimi verilerini daha iyi anlamanıza ve işlenme, toplanma, gösterilme ve kapatılma sıklığı hakkında bilgi edinmenize yardımcı olur.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.custom: ''
-ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245366"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203024"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -165,9 +163,9 @@ Verileri almak için [Maliyet Yönetimi API'lerini](../index.yml), Power BI'ı v
 Maliyet Yönetimi’nde gösterilen ücretler yuvarlanır. Sorgu API’si tarafından döndürülen ücretler yuvarlanmaz. Örneğin:
 
 - Azure portalında maliyet analizi - Ücretler, standart yuvarlama kuralları kullanılarak yuvarlanır. 0,5’ten daha yüksek değerler yukarı, diğer değerler ise aşağı yuvarlanır. Yuvarlama, yalnızca değerler gösterildiğinde gerçekleşir. Yuvarlama veri işleme ve toplama işlemi esnasında gerçekleşmez. Örneğin, maliyet analizi maliyetleri şu şekilde toplar:
-  - Ücret 1: 0,004 ABD doları
+  -    Ücret 1: 0,004 ABD doları
   - Ücret 2: 0,004 ABD doları
-  - İşlenen toplam ücret: 0,004 + 0,004 = 0,008. Gösterilen ücret 0,01 ABD dolarıdır.
+  -    İşlenen toplam ücret: 0,004 + 0,004 = 0,008. Gösterilen ücret 0,01 ABD dolarıdır.
 - Sorgu API’si - Ücretler sekiz ondalık basamak ile gösterilir ve yuvarlama yapılmaz.
 
 

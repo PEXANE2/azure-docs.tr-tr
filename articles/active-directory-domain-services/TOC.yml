@@ -91,6 +91,8 @@
           href: password-policy.md
         - name: Güvenlik denetim olaylarını etkinleştirme
           href: security-audit-events.md
+        - name: Azure İzleyici Çalışma Kitaplarıyla denetim günlüklerini analiz etme
+          href: use-azure-monitor-workbooks.md
     - name: VM’leri etki alanına ekleme
       items:
         - name: Şablondan Windows Server VM

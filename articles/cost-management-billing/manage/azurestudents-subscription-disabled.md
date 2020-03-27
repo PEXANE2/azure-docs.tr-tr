@@ -1,5 +1,5 @@
 ---
-title: Devre dışı bırakılan Öğrenciler için Microsoft Azure aboneliğini yeniden etkinleştirme | Microsoft Docs
+title: Devre dışı bırakılan Öğrenciler için Microsoft Azure aboneliğini yeniden etkinleştirme
 description: Öğrenciler için Microsoft Azure aboneliğinizin neden devre dışı bırakıldığını ve nasıl yeniden etkinleştirileceğini açıklar.
 author: amberbhargava
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 66e87b36644f5ed018603c14b311c31d851a1785
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: fb091efd9888930f7e834d840d3cab047949dbf1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200940"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203007"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Öğrenciler için Microsoft Azure aboneliğim neden devre dışı bırakıldı ve nasıl yeniden etkinleştirebilirim?
 

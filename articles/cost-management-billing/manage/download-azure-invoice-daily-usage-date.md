@@ -1,5 +1,5 @@
 ---
-title: Azure faturasını ve günlük kullanım verilerini indirme | Microsoft Docs
+title: Azure faturasını ve günlük kullanım verilerini indirme
 description: Azure faturanızın ve günlük kullanım verilerinizin nasıl indirileceğini veya görüntüleneceğini açıklar.
 keywords: fatura, fatura indirme, azure faturası, azure kullanımı
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125641"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237692"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme
 
@@ -62,7 +62,7 @@ Faturalar, Microsoft Müşteri Sözleşmesi’ndeki her [faturalama profili](../
 6. İndirme açılır menüsünde **Fatura**’yı seçin.
 
 Son faturalama dönemine ait bir faturayı görmüyorsanız bkz. **Ek bilgiler**. <!-- Fix this -->
-### <a name="noinvoice"></a> Son faturalama dönemine ait faturamı neden göremiyorum?
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> Son faturalama dönemine ait faturamı neden göremiyorum?
 
 Bir faturayı görmemenizin birden fazla nedeni olabilir:
 

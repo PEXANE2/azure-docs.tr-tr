@@ -1,5 +1,5 @@
 ---
-title: Azure faturalamaya erişimi yönetme | Microsoft Docs
+title: Azure faturalamaya erişimi yönetme
 description: Takımınızın üyeleri için Azure faturalama bilgilerinize nasıl erişim yetkisi verileceğini öğrenin.
 author: vikramdesai01
 ms.reviewer: amberb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344652"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237675"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Azure için faturalama bilgilerine erişimi yönetme
 
@@ -44,7 +44,7 @@ Roller atamak için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme
 ** Kurumsal Anlaşma müşterisiyseniz, Hesap Sahibi takımın diğer kullanıcılarına yukarıdaki rolü atayabilir. Ancak bu kullanıcıların faturalama bilgilerini görüntülemesi için Kuruluş Yöneticisi, Enterprise portal’da AO ücretleri görüntüleme özelliğini etkinleştirmelidir.
 
 
-### <a name="opt-in"></a> Kullanıcıların faturaları indirmesine izin verme
+### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> Kullanıcıların faturaları indirmesine izin verme
 
 Bir Hesap Yöneticisi, diğer kullanıcılara uygun rolleri atadıktan sonra Azure portalında faturaları indirme erişimini etkinleştirmelidir. Aralık 2016’dan eski faturalar yalnızca Hesap Yöneticisi tarafından kullanılabilir.
 

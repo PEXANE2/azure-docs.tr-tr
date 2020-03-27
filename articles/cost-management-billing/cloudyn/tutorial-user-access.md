@@ -1,20 +1,20 @@
 ---
-title: 'Öğretici: Azure’da Cloudyn ile erişim atama | Microsoft Docs'
+title: 'Öğretici: Azure’da Cloudyn ile erişim atama'
 description: Bu öğreticide, varlıklara erişim düzeylerini tanımlayan kullanıcı hesapları ile Cloudyn verilerine erişim atamayı öğrenirsiniz.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774000"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463620"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Öğretici: Cloudyn verilerine erişim atama
 
@@ -33,6 +33,8 @@ Azure sözleşmenizi veya hesabınızı kaydettiğinizde, bu öğreticideki tüm
 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -68,9 +70,9 @@ Kendi kullanıcınızı kaldıramazsınız.
 > [!WARNING]
 > Sildiğiniz kullanıcıları geri yükleyemezsiniz.
 
-1.  Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve ardından **Kullanıcı Yönetimi**'ni seçin.
-2.  Kullanıcı listesinde silmek istediğiniz kullanıcıyı seçip **Kullanıcıyı Sil**'e (çöp kutusu simgesi) tıklayın.
-3.  Kullanıcıyı Sil kutusunda **Evet**'e ve ardından **Tamam**'a tıklayın.
+1.    Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve ardından **Kullanıcı Yönetimi**'ni seçin.
+2.    Kullanıcı listesinde silmek istediğiniz kullanıcıyı seçip **Kullanıcıyı Sil**'e (çöp kutusu simgesi) tıklayın.
+3.    Kullanıcıyı Sil kutusunda **Evet**'e ve ardından **Tamam**'a tıklayın.
 
 
 ## <a name="delete-or-export-personal-data"></a>Kişisel verileri silme veya dışarı aktarma

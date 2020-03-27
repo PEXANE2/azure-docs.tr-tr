@@ -1,51 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT Hub Cihaz Sağlama Hizmeti Belgeleri
+### YamlMime:Landing
+title: Azure IoT Hub Cihaz Sağlama Hizmeti (DPS) Belgeleri
+summary: IoT Hub Cihazı Sağlama Hizmeti (DPS) doğru IoT hub’a, kullanıcı müdahalesi gerektirmeden otomatik olarak tam zamanında sağlama olanağı sunan bir yardımcı hizmettir. Bu sayede müşteriler milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde sağlayabiliyor. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle IoT hub’larınıza cihaz sağlamayı öğrenin.
 metadata:
-  title: Azure IoT Hub Cihaz Sağlama Hizmeti Belgeleri
-  description: 'Azure IoT Hub Cihazı Sağlama Hizmeti - Öğreticiler, Hızlı Başlangıçlar, Nasıl Yapılır Videoları ve API Başvurusu'
-  author: nberdy
+  title: Azure IoT Hub Cihaz Sağlama Hizmeti (DPS) Belgeleri
+  description: Azure IoT Hub Cihazı Sağlama Hizmeti (DPS) - Öğreticiler, Hızlı Başlangıçlar, Nasıl Yapılır Videoları ve API Başvurusu
+  author: wesmc7777
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: nberdy
-abstract:
-  description: 'IoT Hub Cihazı Sağlama Hizmeti (DPS) doğru IoT hub’a, kullanıcı müdahalesi gerektirmeden otomatik olarak tam zamanında sağlama olanağı sunan bir yardımcı hizmettir. Bu sayede müşteriler milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde sağlayabiliyor. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle IoT hub’larınıza cihaz sağlamayı öğrenin.'
-sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: İlk Cihaz Sağlama Hizmeti örneğinizi ayarlamayı öğrenin ve IoT hub’ınıza bir sanal cihaz sağlayın.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: Otomatik sağlamayı ayarlama
-            href: /azure/iot-dps/quick-setup-auto-provision
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: Sanal cihaz oluşturma
-            href: /azure/iot-dps/quick-create-simulated-device
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: Tek veya birden çok IoT hub’ına otomatik olarak güvenliği etkinleştirilmiş cihazlar sağlamak için IoT Hub Cihaz Sağlama Hizmeti’ni kullanmayı öğrenin.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">Bulut kaynaklarını yapılandırma</a>
-          - html: <a href="/azure/iot-dps/tutorial-set-up-device">Cihazınızı Azure’a bağlanmak için ayarlama</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">Tek bir IoT hub için cihaz sağlama</a>
-          - html: '<a href="/azure/iot-dps/tutorial-provision-multiple-hubs">Birden çok, yük dengeli IoT hub için cihaz sağlama</a>'
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: <p><a href="/rest/api/iot-dps">REST</a></p>
-          - title: Azure IoT SDK’ları
-            html: '<p><a href="https://github.com/Azure/azure-iot-sdk-c">C</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-python">Python</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-node">Node</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-java">Java</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-csharp">C#</a></p>'
+  ms.date: 03/03/2020
+  ms.author: wesmc
+  ms.openlocfilehash: 2d89b99005a4e430aca85c109f3d000c3b21674c
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80133266"
+landingContent:
+- title: Azure IoT Hub Cihazı Sağlama Hizmeti (DPS) hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: DPS nedir?
+      url: about-iot-dps.md
+  - linkListType: concept
+    links:
+    - text: Azure IoT için otomatik sağlamak kavramları
+      url: concepts-auto-provisioning.md
+  - linkListType: video
+    links:
+    - text: IoT Hub DPS Tanıtımı
+      url: https://azure.microsoft.com/resources/videos/iot-hub-dps-demo/
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portalını kullanarak DPS’yi ayarlama
+      url: quick-setup-auto-provision.md
+  - linkListType: sample
+    links:
+    - text: C kullanarak simetrik anahtar cihazı simülasyonu sağlama
+      url: quick-create-simulated-device-symm-key.md
+    - text: Java kullanarak simetrik anahtar cihazı simülasyonu sağlama
+      url: quick-create-simulated-device-symmetric-key-java.md
+  - linkListType: how-to-guide
+    links:
+    - text: Çok kiracı için sağlama
+      url: how-to-provision-multitenant.md
+    - text: Özel ayırma ilkeleri kullanma
+      url: how-to-use-custom-allocation-policies.md
+- title: Erişimi yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Cihaz kayıtlarını yönetme
+      url: how-to-manage-enrollments.md
+    - text: Azure IoT Hub Cihazı Sağlama Hizmeti’ne erişimi denetleme
+      url: how-to-control-access.md
+- title: DPS ile IoT çözümü geliştirme
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: C için Azure IoT SDK'sı
+      url: https://github.com/Azure/azure-iot-sdk-c
+    - text: Python için Azure IoT SDK'sı
+      url: https://github.com/Azure/azure-iot-sdk-python
+    - text: Node.js için Azure IoT SDK'sı
+      url: https://github.com/Azure/azure-iot-sdk-node
+    - text: Java için Azure IoT SDK'sı
+      url: https://github.com/Azure/azure-iot-sdk-java
+    - text: .NET için Azure IoT SDK'sı
+      url: https://github.com/Azure/azure-iot-sdk-csharp
+    - text: REST API
+      url: /rest/api/iot-dps

@@ -26,6 +26,10 @@
       href: permissions.md
     - name: Öneriler için Uyarıları yapılandırma
       href: advisor-alerts.md
+    - name: Önerileri toplu olarak düzeltme
+      href: advisor-quick-fix.md
+    - name: Azure Kaynak Grafı’nda danışma verileri
+      href: advisor-azure-resource-graph.md
 - name: Başvuru
   items:
     - name: Güvenlik Merkezi

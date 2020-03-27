@@ -16,6 +16,12 @@
       href: powershell-samples.md
 - name: Kavramlar
   items:
+    - name: Uzaktan çalışma desteği
+      items:
+        - name: Uzaktan çalışma
+          href: work-remotely-support.md
+        - name: NVA yapılandırmaları ve uzaktan çalışma
+          href: nva-work-remotely-support.md
     - name: VPN Gateway ayarları hakkında
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: VPN cihazları hakkında
@@ -150,6 +156,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: OpenVPN istemcisi yapılandırması
               href: vpn-gateway-howto-openvpn-clients.md
+        - name: SSTP’den OpenVPN protokolüne veya IKEv2’ye geçme
+          href: ikev2-openvpn-from-sstp.md
         - name: P2S için genel CA ağ geçidi sertifikasına geçiş
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Always On VPN cihazı tüneli yapılandırma
@@ -217,7 +225,7 @@
           items:
             - name: Noktadan Siteye bağlantı sorunları
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
-            - name: Noktadan Siteye bağlantı sorunları - Mac OS X VPN istemcisi
+            - name: Noktadan Siteye bağlantı sorunları - macOS X VPN istemcisi
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
             - name: Noktadan Siteye - Azure AD kimlik doğrulaması
               href: troubleshoot-ad-vpn-client.md

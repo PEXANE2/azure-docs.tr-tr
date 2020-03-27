@@ -1,5 +1,5 @@
 ---
-title: Azure hesabını iş ortağı kimliğine bağlama | Microsoft Docs
+title: Azure hesabını iş ortağı kimliğine bağlama
 description: İş ortağı kimliğini, müşterinin kaynaklarını yönetmek için kullandığınız kullanıcı hesabına bağlayarak Azure müşterileriyle etkileşimleri izleyin.
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651398"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204809"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
 
-Microsoft iş ortakları, müşterilerin Microsoft ürünlerini kullanarak iş ve görev hedeflerini başarmasına yardımcı olan hizmetler sağlar. Azure hizmetlerini yöneten, yapılandıran ve destekleyen müşteri adına hareket ederken iş ortağı kullanıcılarının müşterinin ortamına erişmesi gerekir. İş ortakları, İş Ortağı Yönetici Bağlantısını kullanarak iş ortağı ağı kimliğini, hizmet teslimi için kullanılan kimlik bilgileriyle ilişkilendirebilir.
+Microsoft iş ortakları, müşterilerin Microsoft ürünlerini kullanarak iş ve görev hedeflerini başarmasına yardımcı olan hizmetler sağlar. Azure hizmetlerini yöneten, yapılandıran ve destekleyen müşteri adına hareket ederken iş ortağı kullanıcılarının müşterinin ortamına erişmesi gerekir. İş ortakları, İş Ortağı Yönetici Bağlantısını (PAL) kullanarak iş ortağı ağı kimliğini, hizmet teslimi için kullanılan kimlik bilgileriyle ilişkilendirebilir.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+PAL, Microsoft’un Azure müşteri başarısını artıran iş ortaklarını belirlemesine ve tanımasına olanak tanır. Microsoft hesabın izinleri (RBAC rolü) ve kapsamı (abonelik, kaynak grubu, kaynak) temelinde etkiyi ve Azure’ın tüketim gelirini kuruluşunuzla ilişkilendirebilir.
 
 ## <a name="get-access-from-your-customer"></a>Müşterinizden erişim elde etme
 

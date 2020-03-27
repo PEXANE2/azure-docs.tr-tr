@@ -30,12 +30,16 @@
   items:
     - name: Yönetici kılavuzu
       href: administrator-guide.md
+    - name: Hızlandırılmış laboratuvar hesabı kurulum kılavuzu
+      href: account-setup-guide.md
+    - name: Hızlandırılmış laboratuvar kurulum kılavuzu
+      href: setup-guide.md
     - name: Sınıf laboratuvarları - sınıf türleri
       items:
         - name: Sınıf türlerine genel bakış
           href: class-types.md
-        - name: Doğal işleme içinde derin öğrenme
-          href: class-type-deep-learning-natural-processing.md
+        - name: Doğal dilde işleme içinde derin öğrenme
+          href: class-type-deep-learning-natural-language-processing.md
         - name: Linux üzerinde kabuk betiği oluşturma
           href: class-type-shell-scripting-linux.md
         - name: Etik korsanlık
@@ -66,6 +70,8 @@
           href: how-to-configure-firewall-settings.md
         - name: Laboratuvarlar için Market görüntülerini belirtme
           href: specify-marketplace-images.md
+        - name: Destek bilgilerini belirtme (laboratuvar hesabı sahibi)
+          href: lab-account-owner-support-information.md
     - name: Sınıf laboratuvarı oluşturma ve yapılandırma (eğitmen)
       items:
         - name: Sınıf laboratuvarları oluşturma ve yönetme
@@ -87,17 +93,29 @@
         - name: Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme
           href: how-to-enable-shutdown-disconnect.md
         - name: Şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirme
-          href: how-to-enable-nested-virtualization-template-vm.md
+          items:
+            - name: Şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirmeye genel bakış
+              href: how-to-enable-nested-virtualization-template-vm.md
+            - name: Kullanıcı arabirimini kullanarak şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirme
+              href: how-to-enable-nested-virtualization-template-vm-ui.md
+            - name: Betik kullanarak şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirme
+              href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: Windows şablon VM’si hazırlama
           href: how-to-prepare-windows-template.md
+        - name: Destek bilgilerini görüntüleme (eğitmen)
+          href: lab-creator-support-information.md
     - name: Sınıf laboratuvarlarında VM’lere bağlanma (öğrenci)
       items:
         - name: Sınıf laboratuvarlarına erişim
           href: how-to-use-classroom-lab.md
         - name: Linux sanal makineleri için uzak masaüstü bağlantısını kullanma
           href: how-to-use-remote-desktop-linux-student.md
+        - name: RDP kullanarak Mac’ten sanal makineye bağlanma
+          href: connect-virtual-machine-mac-rdp.md
         - name: Sanal makineler için parola ayarlama veya sıfırlama
           href: how-to-set-virtual-machine-passwords-student.md
+        - name: Destek bilgilerini görüntüleme (öğrenci)
+          href: lab-user-support-information.md
 - name: Başvuru
   items:
     - name: REST API

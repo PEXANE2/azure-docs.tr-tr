@@ -28,14 +28,8 @@
           href: go.md
     - name: SDK
       items:
-        - name: 'C# kullanma'
-          href: news-search-sdk-quickstart.md
-        - name: Node.js'yi kullanma
-          href: news-search-sdk-node-quickstart.md
-        - name: Python’u kullanma
-          href: news-sdk-python-quickstart.md
-        - name: Java'yı kullanma
-          href: news-sdk-java-quickstart.md
+        - name: Bing Haber Arama istemci kitaplıkları
+          href: ./quickstarts/client-libraries.md
 - name: Öğreticiler
   items:
     - name: Tek sayfalı web uygulaması oluşturma

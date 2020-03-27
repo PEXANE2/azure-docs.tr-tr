@@ -1,21 +1,21 @@
 ---
-title: Hızlı Başlangıç - Maliyet analiziyle Azure maliyetlerini keşfetme | Microsoft Docs
+title: Hızlı Başlangıç - Maliyet analiziyle Azure maliyetlerini keşfetme
 description: Bu hızlı başlangıç, Azure kurumsal maliyetlerinizi keşfetmek ve analiz etmek için maliyet analizini kullanmanıza yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 002caa15b7054ab806018a733b32a1b2555e1aea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384192"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155962"
 ---
-# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı başlangıç: maliyet analizi ile maliyetleri araştırma ve analiz etme
+# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı Başlangıç: Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
 Azure maliyetlerinizi düzgün bir şekilde denetlemeden ve iyileştirmeden önce maliyetlerin kuruluşunuzun neresinden kaynaklandığını anlamanız gerekir. Hizmetlerinizin tutarının ne kadar olacağını bilmek, ortamlarınızı ve sistemlerinizi desteklemek için de yararlıdır. Maliyetlerin tüm kapsamıyla görünür olması kuruluşun harcama desenlerini doğru anlamak için önemlidir. Harcama desenlerini, bütçeler gibi maliyet denetim mekanizmalarını güçlendirmek için kullanabilirsiniz.
 
@@ -27,14 +27,13 @@ Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 - Maliyet görünümlerini özelleştirme
 - Maliyet analizi verilerini indirme
 
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Maliyet analizi, farklı türdeki Azure hesaplarını destekler. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md). Maliyet verilerini görüntülemek için Azure hesabınızda en azından okuma yetkisine sahip olmanız gerekir.
 
 Azure Maliyet Yönetimi verilerine erişim atama hakkında daha fazla bilgi için bkz. [Verilere erişim atama](../../cost-management/assign-access-acm-data.md).
 
-Yeni bir aboneliğiniz varsa, maliyet yönetimi özelliklerini hemen kullanamazsınız. Tüm maliyet yönetimi özelliklerini kullanabilmeniz için bu işlem 48 saat kadar sürebilir.
+Yeni bir aboneliğiniz varsa Maliyet Yönetimi özelliklerini hemen kullanamazsınız. Maliyet Yönetimi özelliklerini kullanabilmek için 48 saat kadar beklemeniz gerekebilir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -46,19 +45,23 @@ Maliyetlerinizi maliyet analizinde incelemek için Azure portalında kapsamı a�
 
 Veri birleştirmesi sağlamak ve maliyet bilgilerine erişimi denetlemek için seçtiğiniz kapsam Maliyet Yönetimi’nin tamamında kullanılır. Kapsamları kullandığınızda, birden çok kapsam seçemezsiniz. Bunun yerine, diğerlerinin toplandığı büyük bir kapsam seçer ve iç içe yerleştirilmiş kapsamları ihtiyacınıza göre daraltırsınız. Bazı kullanıcılar birden fazla iç içe yerleştirilmiş kapsamı içine alan tek bir üst kapsama erişim iznine sahip olmayabileceğinden bu yaklaşımı anlamak önemlidir.
 
+Maliyet Analizi’nin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için [Azure portalında Maliyet Yönetimi’ni kullanma](https://www.youtube.com/watch?v=mfxysF-kTFA) videosunu izleyin.
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
+
 İlk maliyet analizi görünümünde aşağıdaki alanlar bulunur.
 
-**Birikmiş maliyet görünümü**: önceden tanımlanmış maliyet analizi görünümü yapılandırmasını temsil eder. Her bir görünüm tarih aralığı, ayrıntı düzeyi, gruplama ölçütü ve filtreleme ayarlarını içerir. Varsayılan görünüm, geçerli faturalama dönemine ait birikmiş maliyetleri gösterir ancak diğer yerleşik görünümlere geçiş yapabilirsiniz. Daha fazla bilgi için bkz. [Maliyet görünümlerini özelleştirme](#customize-cost-views).
+**Birikmiş maliyet görünümü**: Önceden tanımlanmış maliyet analizi görünümü yapılandırmasını temsil eder. Her bir görünüm tarih aralığı, ayrıntı düzeyi, gruplama ölçütü ve filtreleme ayarlarını içerir. Varsayılan görünüm, geçerli faturalama dönemine ait birikmiş maliyetleri gösterir ancak diğer yerleşik görünümlere geçiş yapabilirsiniz. Daha fazla bilgi için bkz. [Maliyet görünümlerini özelleştirme](#customize-cost-views).
 
-**Gerçek maliyet**: geçerli ay tahakkuk edildiği ve faturanızda gösterileceği için toplam kullanım ve satın alma maliyetlerini gösterir.
+**Gerçek maliyet**: Geçerli aya ait olan toplam kullanım ve satın alma maliyetlerini, tahakkuk ettikleri ve faturanızda görüntülenecekleri şekilde gösterir.
 
-**Tahmin**: seçtiğiniz zaman döneminin toplam tahmini maliyetlerini gösterir.
+**Tahmin**: Seçtiğiniz zaman dönemine ait tahmini maliyet toplamını gösterir.
 
-**Bütçe**: varsa, seçili kapsam için planlanan harcama limitini gösterir.
+**Bütçe**: Varsa, seçilen kapsam için planlanan harcama limitini gösterir.
 
-**Birikmiş ayrıntı düzeyi**: fatura döneminin başından itibaren toplam günlük maliyetleri gösterir. Fatura hesabınız veya aboneliğiniz için [bütçe oluşturduktan](tutorial-acm-create-budgets.md) sonra, bütçeye göre harcama eğiliminizi hemen görebilirsiniz. Tarihin üzerine gelerek o gün için birikmiş maliyeti görüntüleyebilirsiniz.
+**Birikmiş ayrıntı düzeyi**: Fatura döneminin başından itibaren toplam günlük maliyetleri gösterir. Fatura hesabınız veya aboneliğiniz için [bütçe oluşturduktan](tutorial-acm-create-budgets.md) sonra, bütçeye göre harcama eğiliminizi hemen görebilirsiniz. Tarihin üzerine gelerek o gün için birikmiş maliyeti görüntüleyebilirsiniz.
 
-**Pivot (halka) grafikler**: ortak bir dizi standart özellik tarafından toplam maliyetten oluşan dinamik özet 'ler sağlar. Geçerli ay için en büyükten en küçüğe kadar tüm maliyetleri gösterir. İstediğiniz zaman farklı bir özet seçerek özet grafikleri değiştirebilirsiniz. Maliyetler varsayılan olarak şu kategorilere ayrılır: hizmet (ölçüm kategorisi), konum (bölge) ve alt kapsam. Örneğin, fatura hesapları altında kayıt hesapları, abonelikler altında kaynak grupları ve kaynak grupları altında kaynaklar bulunur.
+**Özet (halka) grafikler**: Toplam maliyeti ortak bir standart özellikler kümesine ayırarak dinamik özetler sağlar. Geçerli ay için en büyükten en küçüğe kadar tüm maliyetleri gösterir. İstediğiniz zaman farklı bir özet seçerek özet grafikleri değiştirebilirsiniz. Maliyetler varsayılan olarak şu kategorilere ayrılır: hizmet (ölçüm kategorisi), konum (bölge) ve alt kapsam. Örneğin, fatura hesapları altında kayıt hesapları, abonelikler altında kaynak grupları ve kaynak grupları altında kaynaklar bulunur.
 
 ![Azure portalındaki maliyet analizinin ilk görünümü](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
@@ -67,7 +70,6 @@ Veri birleştirmesi sağlamak ve maliyet bilgilerine erişimi denetlemek için s
 Maliyet tahmini, seçili döneme ait maliyetlerinizle ilgili bir tahmin gösterir. Model, zaman serisi regresyon modelini temel alır. Maliyetleri doğru bir şekilde tahmin etmek için en az 10 günlük güncel maliyetler ve kullanım verileri gerekir. Belirli bir süre için tahmin modeli, tahmin dönemine ait eşit eğitim verilerine ihtiyaç duyar. Örneğin üç aylık tahmin için en az üç aylık güncel maliyet ve kullanım verileri gerekir.
 
 Model, en fazla altı aylık eğitim verilerini kullanarak bir yıllık maliyet tahmininde bulunabilir. Tahminini değiştirmek için en az yedi günlük eğitim verisine ihtiyaç duyar. Bu tahmin, maliyet ve kullanım düzenlerindeki ani artışlar ve düşüşler gibi önemli değişiklikleri temel alır. Tahmin, **Gruplama ölçütü** özelliklerindeki her bir öğe için ayrı tahminler oluşturmaz. Yalnızca toplam birikmiş maliyetlerle ilgili tahmin sunar. Birden çok para birimi kullanıyorsanız model yalnızca ABD doları cinsindeki maliyetler için tahmin sağlar.
-
 
 ## <a name="customize-cost-views"></a>Maliyet görünümlerini özelleştirme
 
@@ -176,11 +178,17 @@ Terimler hakkında daha fazla bilgi için bkz. [Azure kullanımı ve ücretleri 
 
 Özelleştirilmiş görünümleri kaydetmek ve başkalarıyla paylaşmak için maliyet analizini Azure portalı panosuna sabitleyebilir veya maliyet analizi bağlantısını kopyalayabilirsiniz.
 
+Portalı kullanarak kuruluşunuzda maliyet bilgilerini paylaşma hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi’nde görünümleri paylaşma ve kaydetme](https://www.youtube.com/watch?v=kQkXXj-SmvQ) videosunu izleyin.
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 Maliyet analizini sabitlemek için sağ üst köşedeki sabitleme simgesini seçin. Maliyet analizini sabitlediğinizde yalnızca ana grafik veya tablo görünümü kaydedilir. Panoyu kaydederek kutucuğa başkalarının da erişmesini sağlayabilirsiniz. Bu işlem yalnızca pano yapılandırmasını paylaşır ve başkalarına temel alınan veriler için erişim izni vermez. Maliyetlere erişiminiz yoksa ancak paylaşılan bir panoya erişebiliyorsanız "erişim engellendi" iletisiyle karşılaşırsınız.
 
 Maliyet analizi bağlantısını paylaşmak için dikey pencerenin üst tarafında **Paylaş**'ı seçin. Bu belirli kapsam için belirli görünümü açan özel bir URL gösterilir. Maliyetlere erişiminiz yoksa bu URL'yi kullandığınızda "erişim engellendi" iletisiyle karşılaşırsınız.
 
 Desteklenen kapsamlar için maliyetlere erişim izni verme hakkında daha fazla bilgi için bkz. [Kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
+
+
 
 ## <a name="automation-and-offline-analysis"></a>Otomasyon ve çevrimdışı analiz
 

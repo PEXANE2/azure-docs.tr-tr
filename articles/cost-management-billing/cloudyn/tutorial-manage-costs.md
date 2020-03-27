@@ -1,20 +1,20 @@
 ---
-title: 'Öğretici: Azure’da Cloudyn ile maliyetleri yönetme | Microsoft Docs'
+title: 'Öğretici: Azure’da Cloudyn ile maliyetleri yönetme'
 description: Bu öğreticide, maliyet dağıtımı, ücret hesaplama raporları ve ücret yansıtma raporları kullanarak maliyetleri yönetmeyi öğrenirsiniz.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: a492f611ed5a785ae148894baf3f24c2df773df2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769902"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474586"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Öğretici: Cloudyn kullanarak maliyetleri yönetme
 
@@ -31,6 +31,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Ücret hesaplama ve ücret yansıtma raporları oluşturma.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 

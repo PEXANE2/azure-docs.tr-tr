@@ -315,6 +315,10 @@
               href: disk-encryption-sample-scripts.md
             - name: Yalıtılmış bir ağda disk şifrelemesi
               href: disk-encryption-isolated-network.md
+            - name: Şifreleme durumunu doğrulama
+              href: how-to-verify-encryption-status.md
+            - name: Şifrelemede LVM RAID’yi yapılandırma
+              href: how-to-configure-lvm-raid-on-crypt.md
             - name: Disk şifrelemesi sorunlarını giderme
               href: disk-encryption-troubleshooting.md
             - name: Disk şifrelemesi hakkında SSS
@@ -498,8 +502,6 @@
           href: capture-image.md
         - name: Packer ile görüntü derleme
           href: build-image-with-packer.md
-        - name: Azure'da RHEL görüntüleri
-          href: rhel-images.md
         - name: Mevcut bir diski indirme
           href: download-vhd.md
     - name: Kullanılabilirlik ve ölçek
@@ -520,6 +522,8 @@
           href: create-cli-availability-zone.md
     - name: Otomasyon araçları kullanma
       items:
+        - name: Özel veriler
+          href: ../custom-data.md
         - name: Ansible
           items:
             - name: Yükleme ve yapılandırma

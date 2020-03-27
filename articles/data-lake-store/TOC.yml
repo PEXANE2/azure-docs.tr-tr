@@ -1,5 +1,5 @@
-- name: Data Lake Storage 1. Nesil Belgeleri
-  href: index.md
+- name: Data Lake Storage 1. Nesil belgeleri
+  href: index.yml
 - name: Data Lake Storage 2. Nesil'e geçiş belgeleri
   href: 'https://docs.microsoft.com/azure/storage/data-lake-storage/introduction'
 - name: Genel Bakış

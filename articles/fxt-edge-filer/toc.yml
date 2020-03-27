@@ -20,10 +20,10 @@
       href: fxt-add-storage.md
     - name: 7 - Kümenin ağ ayarlarını yapılandırma
       href: fxt-configure-network.md
+    - name: 8 - İstemcileri bağlama
+      href: fxt-mount-clients.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: İstemcileri bağlama
-      href: fxt-mount-clients.md
     - name: Azure FXT Edge Filer donanımını izleme
       href: fxt-monitor.md
     - name: Bir donanım düğümünü güvenli bir şekilde kapatma

@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
-            - name: Azure Resource Manager şablonu
+            - name: ARM şablonu
               href: service-bus-resource-manager-namespace-queue.md
         - name: İleti alma ve gönderme
           items:
@@ -41,7 +41,7 @@
           items:
             - name: Azure portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure Resource Manager şablonu
+            - name: ARM şablonu
               href: service-bus-resource-manager-namespace-topic.md
         - name: İleti yayımlama ve iletilere abone olma
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: Envanteri güncelleştirme - CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: Event Grid yoluyla olaylara yanıt verme
+      href: service-bus-to-event-grid-integration-example.md
 - name: Örnekler
   items:
     - name: Service Bus örnekleri
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: Yerleşik güvenlik denetimleri
           href: service-bus-messaging-security-controls.md
+        - name: Ağ güvenliği
+          href: network-security.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: Azure Event Grid kullanarak ileti işleme
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Azure Event Grid örnekleri
-              href: service-bus-to-event-grid-integration-example.md
         - name: Konu başlığı filtreleri ve eylemleri
           href: topic-filters.md
         - name: Standart’tan Premium ad alanlarına geçirme
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Gelişmiş özellikler
           items:
-            - name: Güvenlik duvarlarını kullanma
-              href: service-bus-ip-filtering.md
-            - name: Sanal Ağ hizmet uç noktaları
-              href: service-bus-service-endpoints.md
             - name: Teslim edilemeyen iletiler sırası
               href: service-bus-dead-letter-queues.md
             - name: İletileri önceden getirme
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme
           href: entity-suspend.md
-        - name: Azure Resource Manager şablonlarını kullanma
+        - name: ARM şablonlarını kullanma
           href: service-bus-resource-manager-overview.md
           items:
             - name: Ad alanı oluşturma
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Güvenlik
       items:
-        - name: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma
+        - name: Güvenlik duvarlarını yapılandırma
+          href: service-bus-ip-filtering.md
+        - name: Sanal ağ hizmet uç noktalarını yapılandırma
+          href: service-bus-service-endpoints.md
+        - name: Özel uç noktaları yapılandırma (önizleme)
+          href: private-link-service.md
+        - name: Müşteri tarafından yönetilen anahtarları yapılandırma
           href: configure-customer-managed-key.md
     - name: Sorun giderme
       items:

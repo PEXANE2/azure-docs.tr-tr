@@ -1,18 +1,18 @@
 ---
 title: DoD Etki Düzeyi 4 şema örneğine genel bakış
 description: DoD Etki Düzeyi 4 örneğine genel bakış. Bu şema örneği, müşterilerin belirli DoD Etki Düzeyi 4 denetimlerini değerlendirmesine yardımcı olur.
-ms.date: 02/09/2020
+ms.date: 03/12/2020
 ms.topic: sample
-ms.openlocfilehash: faac024a0bd18f6a2f10e441ca9e44526463e435
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a67dae5399d3e2e24c226c53f915b91e2524e735
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154616"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "79415385"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>DoD Etki Düzeyi 4 şema örneğine genel bakış
 
-Savunma Departmanı Etki Düzeyi 4 (DoD IL4) şema örneği, belirli DoD Etki Düzeyi 4 denetimlerini değerlendirmenize yardımcı olan [Azure İlkesi](../../../policy/overview.md)’ni kullanarak idare korumaları sağlar. Bu şema müşterilerin DoD Etki Düzeyi 4 denetimlerini uygulaması gereken, Azure’da dağıtılmış herhangi bir mimari için bir dizi ilke dağıtmasına yardımcı olur.
+Savunma Departmanı Etki Düzeyi 4 (DoD IL4) şema örneği, belirli DoD Etki Düzeyi 4 denetimlerini değerlendirmenize yardımcı olan [Azure İlkesi](../../../policy/overview.md)’ni kullanarak idare korumaları sağlar. Bu şema müşterilerin DoD Etki Düzeyi 4 denetimlerini uygulaması gereken, Azure’da dağıtılmış herhangi bir mimari için bir dizi ilke dağıtmasına yardımcı olur. Hangi Azure Bulutlarının ve Hizmetlerinin DoD Etki Düzeyi 4 yetkilendirmesine uyduğu konusundaki en son bilgiler için bkz. [FedRAMP ve DoD CC SRG denetim kapsamına göre Azure hizmetleri](../../../../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
 
 ## <a name="control-mapping"></a>Denetim eşlemesi
 

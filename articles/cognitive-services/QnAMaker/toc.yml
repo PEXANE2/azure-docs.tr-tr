@@ -70,10 +70,12 @@
           href: How-To/business-continuity-plan.md
         - name: İşbirliği yapma
           href: How-To/collaborate-knowledge-base.md
+        - name: Etkin öğrenmeyi açma
+          href: How-To/use-active-learning.md
     - name: Bilgi bankasını yönetme
       items:
         - name: Bilgi bankası oluşturma
-          href: Quickstarts/create-publish-knowledge-base.md
+          href: How-To/manage-knowledge-bases.md
         - name: Dil seçimi
           href: How-To/language-knowledge-base.md
         - name: Sohbet ekleme
@@ -85,7 +87,7 @@
           href: How-To/test-knowledge-base.md
     - name: QnA kümelerini yönetme
       items:
-        - name: Bilgi bankasını düzenleme
+        - name: Soru-Cevap kümesini düzenleme
           href: How-To/edit-knowledge-base.md
         - name: İzleme istemleri ekleme
           href: How-To/multiturn-conversation.md

@@ -1,24 +1,23 @@
 ---
-title: Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme | Microsoft Docs
+title: Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 description: Bu makale bulut yatırımlarınızdan en iyi şekilde yararlanmanıza, maliyetlerinizi azaltmanıza ve paranızın nereye harcandığını değerlendirmenize yardımcı olur.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383522"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80157220"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 
-Azure Maliyet Yönetimi, bulut yatırımınızdan en iyi şekilde faydalanmak için plan yapmanızı, analiz gerçekleştirmenizi ve harcamalarınızı azaltmanızı sağlayan araçlar sunar. Bu belge, maliyet yönetimi konusunda yönteme dayalı bir yaklaşım sunmakta ve kuruluşunuzun maliyet konusunda karşılaştığı zorlukların üstesinden gelmek için kullanabileceğiniz araçlar hakkında bilgi vermektedir. Azure, bulut çözümü oluşturmayı ve dağıtmayı kolaylaştırır. Ancak kuruluşunuzun maliyetlerini en aza indirmek için bu çözümlerin iyileştirilmesi önemlidir. Bu belgedeki ilkeleri izleyerek ve sunulan araçları kullanarak kuruluşunuzun başarıya hazırlıklı olmasını sağlayabilirsiniz.
+Azure Maliyet Yönetimi, bulut yatırımınızdan en iyi şekilde faydalanmak için plan yapmanızı, analiz gerçekleştirmenizi ve harcamalarınızı azaltmanızı sağlayan araçlar sunar. Bu belge, maliyet yönetimi konusunda yönteme dayalı bir yaklaşım sunar ve kuruluşunuzun maliyet konusunda karşılaştığı zorlukların üstesinden gelmek için kullanabileceğiniz araçlar hakkında bilgi verir. Azure, bulut çözümü oluşturmayı ve dağıtmayı kolaylaştırır. Ancak kuruluşunuzun maliyetlerini en aza indirmek için bu çözümlerin iyileştirilmesi önemlidir. Bu belgedeki ilkeleri izleyerek ve sunulan araçları kullanarak kuruluşunuzun başarıya hazırlıklı olmasını sağlayabilirsiniz.
 
 ## <a name="methodology"></a>Yöntem
 
@@ -116,7 +115,7 @@ Daha fazla bilgi için bkz. [Azure fiyatlandırma hesaplayıcısı](https://azur
 
 Azure Geçişi, kuruluşunuzun şirket içindeki veri merkezlerinde çalışan iş yüklerini değerlendiren hizmettir. Bu hizmet, Azure'da oluşturacağınız çözümle ilgili ihtiyaçlarınız konusunda size yol gösterebilir. Azure Geçişi ilk olarak şirket içi ortamdaki makinelerinizi analiz eder ve geçişin mümkün olup olmadığını belirler. Daha sonra performansı en üst düzeye çıkarmak için Azure'daki VM boyutlarıyla ilgili önerilerde bulunur. Son olarak Azure tabanlı çözüm için bir tahmini maliyet çıkarır.
 
-Daha fazla bilgi için bkz. [Azure Geçişi](../../site-recovery/migrate-overview.md).
+Daha fazla bilgi için bkz. [Azure Geçişi](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
 
 ## <a name="analyze-and-manage-your-costs"></a>Maliyetlerinizi analiz etme ve yönetme
 
@@ -125,6 +124,11 @@ Kuruluşunuzun maliyetlerinin zaman içinde nasıl değiştiğini takip edin. Ha
 ### <a name="organize-and-tag-your-resources"></a>Kaynaklarınızı düzenleyin ve etiketleyin
 
 Kaynaklarınızı maliyetleri dikkate alarak düzenleyin. Abonelik ve kaynak grubu oluştururken ilgili maliyetlerden sorumlu olan ekipleri düşünün. Raporlamanın şirketiniz için uygun olduğundan emin olun. Abonelikler ve kaynak grupları, kuruluş genelindeki harcamaların düzenlenmesi ve atanması için uygun demetler sunar. Etiketler, maliyetleri atamak için uygun bir yöntem sunar. Etiketleri filtre olarak kullanabilirsiniz. Ayrıca bunları veri analizi ve maliyet inceleme aşamalarında gruplama ölçütü olarak da kullanabilirsiniz. Kurumsal Anlaşma müşterileri, departman oluşturabilir ve abonelikleri departmanların altına yerleştirebilir. Azure'daki maliyet tabanlı düzen, kuruluşunuzdaki ilgili kişilerin ekipleri tarafından yapılan harcamaların azaltılmasından sorumlu tutulmasını sağlar.
+
+Kuruluşunuzda ölçeklenebilir kaynak etiketlemeyi zorunlu tutmak amacıyla kullanabileceğiniz araçları anlamak için [Azure Maliyet Yönetimi ile etiket ilkelerini gözden geçirme](https://www.youtube.com/watch?v=nHQYcYGKuyw) videosunu izleyin.
+
+>[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
+
 
 ### <a name="use-cost-analysis"></a>Maliyet analizini kullanma
 
@@ -158,7 +162,7 @@ Harcamalarınızı iyileştirmek için aşağıdaki yöntemleri kullanın.
 
 Azure’da altyapınızı dağıttıktan sonra bu altyapının kullanıldığından emin olmanız önemlidir. Hemen tasarruf yapmaya başlamanın en kolay yolu, kaynaklarınızı gözden geçirmek ve kullanılmayan kaynakları kaldırmaktır. Bu şekilde kaynaklarınızın mümkün olduğunca verimli bir şekilde kullanılıp kullanılmadığını belirlemeniz gerekir.
 
-#### <a name="azure-advisor"></a>Azure Danışmanı
+#### <a name="azure-advisor"></a>Azure Advisor
 
 Azure Danışmanı, CPU ve ağ kullanımı açısından düşük kullanıma sahip olan sanal makineleri tanımlama gibi işlemler gerçekleştiren bir hizmettir. Buradan alacağınız verilerle makineleri çalıştırmaya devam etmenin tahmini maliyetini dikkate alarak makineyi kapatabilir veya yeniden boyutlandırabilirsiniz. Danışman ayrıca ayrılmış örnek satın alma işlemleriyle ilgili önerilerde de bulunur. Öneriler, son 30 gün içindeki sanal makine kullanımınızı temel alır. Gerekli işlemler yapıldığında öneriler, harcamalarınızı azaltmanıza yardımcı olabilir.
 

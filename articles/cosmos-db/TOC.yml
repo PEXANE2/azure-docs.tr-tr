@@ -53,7 +53,7 @@
               href: mobile-apps-with-xamarin.md
     - name: 2 - Verileri geçirme
       items:
-        - name: Veri geçişi aracını kullanma
+        - name: Veri Geçişi aracını kullanma
           href: import-data.md
         - name: .NET toplu desteğini kullanma
           href: tutorial-sql-api-dotnet-bulk-import.md
@@ -549,8 +549,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Gelişmiş tehdit koruması
-        - name: Yerleşik güvenlik denetimleri
-          href: cosmos-db-security-controls.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Kurumsal kullanıma hazır olma
       items:
         - name: Çevrimiçi yedekleme ve isteğe bağlı geri yükleme
@@ -600,7 +600,7 @@
             - name: Akışı değiştirme
               href: cassandra-change-feed.md
             - name: Mağaza ve Spring Verilerini yönetme
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra ve Spark
               items:
                 - name: Giriş
@@ -709,7 +709,7 @@
             - name: Veri dizinlemeyi yönetme
               href: mongodb-indexing.md
             - name: Mağaza ve Spring Verilerini yönetme
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: MongoDB uzantı komutları
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -776,7 +776,7 @@
             - name: Graf verilerini görselleştirme
               href: graph-visualization.md
             - name: Mağaza ve Spring Verilerini yönetme
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Resource Manager şablonlarını kullanarak yönetme
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -989,11 +989,11 @@
           href: use-notebook-features-and-commands.md
     - name: Sunucu tarafı programlama
       items:
-        - name: 'Saklı yordamlar, tetikleyiciler ve UDF’ler yazma'
+        - name: 'Saklı yordamları, tetikleyicileri ve UDF''leri yazma'
           href: how-to-write-stored-procedures-triggers-udfs.md
         - name: JavaScript sorgu API’si ile saklı yordamlar ve tetikleyiciler yazma
           href: how-to-write-javascript-query-api.md
-        - name: 'Saklı yordamları, tetikleyicileri ve UDF’leri kullanma'
+        - name: 'Saklı yordamlar, tetikleyiciler ve UDF''ler kullanma'
           href: how-to-use-stored-procedures-triggers-udfs.md
     - name: Güvenlik
       items:
@@ -1073,9 +1073,9 @@
         - name: Azure Event Hubs ve Azure Depolama
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Spring Boot Başlatıcı’yı kullanma
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
         - name: Spring Data geliştirici kılavuzu
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: ODBC sürücüsü
           href: odbc-driver.md
     - name: Verileri Cosmos DB’ye geçirme

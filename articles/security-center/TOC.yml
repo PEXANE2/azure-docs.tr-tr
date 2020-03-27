@@ -37,9 +37,7 @@
       href: security-center-compliance-dashboard.md
 - name: Kavramlar
   items:
-    - name: Güvenlik Merkezi'nde Güvenlik Puanı
-      href: security-center-secure-score.md
-    - name: Gelişmiş Güvenlik Puanı
+    - name: Güvenlik puanı
       href: secure-score-security-controls.md
     - name: İzinler
       href: security-center-permissions.md
@@ -59,16 +57,18 @@
           href: azure-kubernetes-service-integration.md
     - name: Tehdit koruması ve güvenlik uyarıları
       items:
+        - name: Azure Güvenlik Merkezi’nde tehdit koruması
+          href: threat-protection.md
         - name: Güvenlik uyarılarına genel bakış
           href: security-center-alerts-overview.md
         - name: Uyarıların başvuru listesi
           href: alerts-reference.md
+        - name: Uyarı şemaları
+          href: alerts-schemas.md
         - name: Güvenlik uyarılarını yönetme
           href: security-center-managing-and-responding-alerts.md
         - name: Güvenlik olaylarını yönetme
           href: security-center-incident.md
-        - name: Azure Güvenlik Merkezi’nde tehdit koruması
-          href: threat-protection.md
         - name: Bulut Akıllı Uyarı bağıntısı (olaylar)
           href: security-center-alerts-cloud-smart.md
         - name: Güvenlik uyarıları haritası ve tehdit bilgileri
@@ -201,6 +201,8 @@
       href: security-center-features-retirement-july2019.md
     - name: Uç nokta koruma değerlendirmesi ve önerileri
       href: security-center-endpoint-protection.md
+    - name: Güvenlik puanı (eski)
+      href: security-center-secure-score.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

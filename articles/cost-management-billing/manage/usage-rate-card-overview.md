@@ -1,5 +1,5 @@
 ---
-title: Azure Faturalama API’leri ile Azure kullanım bilgilerini alma | Microsoft Docs
+title: Azure Faturalama API’leri ile Azure kullanım bilgilerini alma
 description: Azure kaynak tüketimi ve eğilimlerine ilişkin içgörüler sağlamak için kullanılan Azure Faturalama Kullanımı ve RateCard API’leri hakkında bilgi edinin.
 author: tonguyen
 ms.reviewer: mumami
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 2765a1acca21081a696bb165b75a96e1a668aa40
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 7a9762d36d2c9ae6ede6718a31cae99afa230ef6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395814"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237641"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure kullanımınıza ilişkin program aracılığıyla içgörü elde etmek için Azure Faturalama API’lerini kullanın
 Kullanım ve kaynak verilerini tercih ettiğiniz veri analizi aracına almak için Azure Faturalama API'lerini kullanın. Azure Kaynak Kullanımı ve RateCard API'leri maliyetlerinizi doğru tahmin etmenize ve yönetmenize yardımcı olabilir. API’ler Kaynak Sağlayıcısı olarak ve Azure Resource Manager tarafından kullanıma sunulan API ailesi kapsamında uygulanır.  

@@ -92,6 +92,8 @@
   items:
     - name: Belirli bir kullanıcı alt kümesi için özelliği etkinleştirme
       href: howto-feature-filters-aspnet-core.md
+    - name: Ortam başına yapılandırma için etiketleri kullanma
+      href: howto-labels-aspnet-core.md
     - name: Yapılandırma verilerini içeri veya dışarı aktarma
       href: howto-import-export-data.md
     - name: Olayları özel bir uç noktaya yönlendirme

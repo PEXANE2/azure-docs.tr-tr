@@ -45,8 +45,11 @@
       items:
         - name: Güvenlik önerileri
           href: security-recommendations.md
-        - name: Azure Depolama şifrelemesi
+        - name: Azure Depolama bekleyen verileri şifreleme
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          items:
+            - name: Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Veri işlemlerini yetkilendirme
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:

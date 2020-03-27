@@ -1,35 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure NetApp Files belgeleri
+summary: Azure NetApp Files kullanarak NetApp hesaplarını, kapasite havuzlarını ve birimleri oluşturmayı ve yönetmeyi, dışarı aktarma ilkesini yapılandırmayı, sanal makine için birim takmayı ve anlık görüntüleri yönetmeyi öğrenin.
 metadata:
   title: Azure NetApp Files belgeleri
-  description: 'Azure NetApp Files hizmetini kullanarak birimleri ayarlamayı, bunlara erişmeyi ve bunları yönetmeyi öğrenin.'
-  author: b-juche
-  ms.author: b-juche
+  description: Azure NetApp Files hizmetini kullanarak birimleri ayarlamayı, bunlara erişmeyi ve bunları yönetmeyi öğrenin.
   ms.service: azure-netapp-files
   ms.topic: landing-page
-  ms.date: 04/10/2019
-abstract:
-  description: 'Azure NetApp Files kullanarak NetApp hesaplarını, kapasite havuzlarını ve birimleri oluşturmayı ve yönetmeyi, dışarı aktarma ilkesini yapılandırmayı, sanal makine için birim takmayı ve anlık görüntüleri yönetmeyi öğrenin. <p>Azure NetApp Files’ı kullanmak için Azure NetApp Files hizmetine erişiminiz olması gerekir. Erişim istemek için bkz. <a href="azure-netapp-files-register#waitlist"> Bekleme listesi isteği gönderme</a>.</p>'
-sections:
-  - title: 5 dakikalık hızlı başlangıçlar
-    items:
-      - type: paragraph
-        text: 'Şunları kullanarak Azure NetApp Files’ı ayarlamayı ve birim oluşturmayı öğrenin:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
-            text: Azure portal
-            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
-          - title: Azure Resource Manager
-            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Resource Manager şablonları</a></p>'
+  author: b-juche
+  ms.author: b-juche
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bcca681fcae02df3e3521b48f710acd36127c882
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79369061"
+landingContent:
+- title: Azure NetApp Files hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure NetApp Files nedir?
+      url: azure-netapp-files-introduction.md
+    - text: Depolama hiyerarşisini anlama
+      url: azure-netapp-files-understand-storage-hierarchy.md
+  - linkListType: concept
+    links:
+    - text: Hizmet düzeyleri
+      url: azure-netapp-files-service-levels.md
+    - text: Performansla ilgili önemli noktalar
+      url: azure-netapp-files-performance-considerations.md
+    - text: Ağ planlamasıyla ilgili yönergeler
+      url: azure-netapp-files-network-topologies.md
+  - linkListType: video
+    links:
+    - text: Azure NetApp Files videoları
+      url: azure-netapp-files-videos.md
+- title: başlarken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bekleme listesi isteği gönderme
+      url: azure-netapp-files-register.md#waitlist
+  - linkListType: quickstart
+    links:
+    - text: Azure NetApp Files’ı ayarlama ve NFS birimi oluşturma
+      url: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+- title: Oluştur
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: NetApp hesabı oluşturma
+      url: azure-netapp-files-create-netapp-account.md
+    - text: Kapasite havuzunu ayarlama
+      url: azure-netapp-files-set-up-capacity-pool.md
+    - text: Azure NetApp Files için bir alt ağı temsilci olarak belirleme
+      url: azure-netapp-files-delegate-subnet.md
+    - text: Azure NetApp Files için SMB birimi oluşturma
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: Azure NetApp Files için NFS birimi oluşturma
+      url: azure-netapp-files-create-volumes.md
+- title: Geliştirme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: REST API
+      url: azure-netapp-files-develop-with-rest-api.md
+    - text: Azure NetApp Files SDK’ları ve CLI araçları
+      url: azure-netapp-files-sdk-cli.md

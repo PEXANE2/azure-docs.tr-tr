@@ -58,7 +58,21 @@
     - name: Kavramlar
       items:
         - name: Geliştirme Alanları nasıl çalışır?
-          href: how-dev-spaces-works.md
+          items:
+            - name: Genel Bakış
+              href: how-dev-spaces-works.md
+            - name: Kümeyi ayarlama
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: Projeyi hazırlama
+              href: how-dev-spaces-works-prep.md
+            - name: Kodunuzu çalıştırma
+              href: how-dev-spaces-works-up.md
+            - name: Geliştirme alanları arasında yönlendirme
+              href: how-dev-spaces-works-routing.md
+            - name: Uzaktan hata ayıklama
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: Geliştirme bilgisayarınızı AKS’ye bağlama
+              href: how-dev-spaces-works-connect.md
         - name: Dev Spaces ile VS Code nasıl çalışır?
           href: how-vs-code-works-with-dev-spaces.md
         - name: Farklı ağ topolojilerinde ağ yapılandırması
@@ -95,7 +109,7 @@
           href: how-to/ingress-https-traefik.md
         - name: Özel giriş ve HTTPS için NGINX kullanma
           href: how-to/ingress-https-nginx.md
-        - name: Geliştirme makinenizi AKS kümesine bağlama (önizleme)
+        - name: Geliştirme bilgisayarınızı AKS kümesine bağlama (önizleme)
           href: how-to/connect.md
         - name: Azure Dev Spaces kümenizi Helm 3 kullanacak şekilde yapılandırma (önizleme)
           href: how-to/helm-3.md

@@ -4,6 +4,7 @@ title: Azure Container Service ile Kubernetes Belgeleri
 metadata:
   title: 'Azure Container Service ile Kubernetes Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes cluster. Learn how to use Azure Container Service in concert with Kubernetes with these quickstarts, tutorials, and samples.'
+  description: 'Azure Container Service, üretime hazır Kubernetes kümelerini dağıtmanızı sağlar. Bu hızlı başlangıç kılavuzları, öğreticiler ve örneklerle nasıl yapıldığını öğrenin.'
   services: container-service
   author: georgewallace
   manager: gwallace

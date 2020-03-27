@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199033"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065634"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure kullanımı ve ücretleri dosyasındaki terimleri anlama
 
@@ -74,10 +74,12 @@ MeterName | Tümü | Ölçümün adı.
 MeterRegion | Tümü | Konuma dayalı olarak fiyatlandırılan hizmetler için veri merkezi konumunun adı. Bkz. Location.
 MeterSubCategory | Tümü | Ölçüm alt sınıflandırma kategorisinin adı.
 OfferId<sup>1</sup> | Tümü | Satın alınan teklifin adı.
+PayGPrice | Tümü | Kaynak için perakende fiyatı.
 PartNumber<sup>1</sup> | EA, PAYG | Belirli bir ölçüm fiyatlandırmasını almak için kullanılan tanımlayıcı.
 PlanName | EA, PAYG | Market planı adı.
 PreviousInvoiceId | MCA | Bu satır öğesinde para iadesi yapılıyorsa özgün faturanın başvurusu.
 PricingCurrency | MCA | Anlaşmalı fiyatlar temelinde derecelendirirken kullanılan para birimi.
+PricingModel | Tümü | Ölçümün nasıl fiyatlandırıldığını gösteren tanımlayıcı. (Değerler: On Demand, Reservation, Spot)
 Ürün | Tümü | Ürünün adı.
 ProductId<sup>1</sup> | MCA | Ürünün benzersiz tanımlayıcısı.
 ProductOrderId | Tümü | Ürün siparişinin benzersiz tanımlayıcısı.

@@ -84,7 +84,7 @@
           href: hana-large-instance-virtual-machine-migration.md
 - name: Azure Sanal Makinelerde SAP HANA
   items:
-    - name: Tek örnek SAP HANA yüklemesi
+    - name: Azure Sanal Makineler’de SAP HANA’yı yükleme
       href: hana-get-started.md
     - name: S/4 HANA veya BW/4 HANA SAP CAL dağıtım kılavuzu
       href: cal-s4h.md

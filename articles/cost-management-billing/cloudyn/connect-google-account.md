@@ -1,25 +1,26 @@
 ---
-title: Azure'da Cloudyn'e Google Cloud Platform hesabı bağlama | Microsoft Docs
+title: Azure'da Cloudyn'e Google Cloud Platform hesabı bağlama
 description: Maliyet ve kullanım verilerini Cloudyn raporlarında görüntülemek için bir Google Cloud Platform hesabı bağlayın.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 09989337b2e78277c6182630ce0f1cdf57a0e0c1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4e10d39f744b40e7eb9058841eed9ff0f0e55d44
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770198"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474654"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform hesabına bağlanma
 
 Mevcut Google Cloud Platform hesabınızı Cloudyn'e bağlayabilirsiniz. Hesabınızı Cloudyn'e bağladıktan sonra maliyet ve kullanım verilerini Cloudyn raporlarında görüntüleyebilirsiniz. Bu makale, Google hesabınızı yapılandırma ve Cloudyn'e bağlama konusunda yardımcı olur.
 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="collect-project-information"></a>Proje bilgilerini toplama
 

@@ -1,8 +1,8 @@
-- name: Front Door Service Belgeleri
+- name: Front Door Belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Front Door Hizmeti nedir?
+    - name: Azure Front Door nedir?
       href: front-door-overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
@@ -27,6 +27,8 @@
       href: front-door-backend-pool.md
     - name: Front Door ile önbelleğe alma
       href: front-door-caching.md
+    - name: Front Door hakkında SSS
+      href: front-door-faq.md
     - name: Coğrafi filtreleme
       href: front-door-geo-filtering.md
     - name: Sistem durumu araştırmaları
@@ -49,6 +51,8 @@
       href: front-door-url-rewrite.md
     - name: URL yeniden yönlendirme
       href: front-door-url-redirect.md
+    - name: Joker karakter etki alanı
+      href: front-door-wildcard-domain.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Trafiği yeniden yönlendirme
@@ -65,10 +69,6 @@
           href: front-door-troubleshoot-routing.md
         - name: İzin verilen sertifika yetkilileri
           href: front-door-troubleshoot-allowed-ca.md
-- name: SSS
-  items:
-    - name: Front Door hakkında SSS
-      href: front-door-faq.md
 - name: Başvuru
   items:
     - name: Azure CLI

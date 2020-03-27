@@ -3,21 +3,25 @@ title: Öğretici - Önerilerle Azure maliyetlerini azaltma
 description: Bu öğretici, iyileştirme önerilerini kullanarak Azure maliyetlerinizi azaltmanıza yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245405"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155928"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Öğretici: Önerilerle maliyetleri iyileştirme
 
 Azure Maliyet Yönetimi, Azure Danışmanı ile birlikte çalışarak maliyet iyileştirme önerileri sunar. Azure Danışmanı boşta olan ve az kullanılan kaynakları belirleyerek verimliliği iyileştirmenize ve geliştirmenize yardımcı olur. Bu öğretici bir örnek üzerinden az kullanılan Azure kaynaklarını belirleme ve maliyetleri azaltmak için gerekli eylemleri gerçekleştirme konusunda size yol gösterecektir.
+
+Danışman kullanarak maliyetlerinizi iyileştirme hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi’nde bulut yatırımlarını iyileştirme](https://www.youtube.com/watch?v=cSNPoAb-TNc) videosunu izleyin.
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 

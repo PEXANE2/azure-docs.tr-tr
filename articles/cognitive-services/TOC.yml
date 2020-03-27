@@ -7,12 +7,28 @@
       href: Welcome.md
     - name: Bilişsel Hizmetler ve Makine öğrenmesi
       href: cognitive-services-and-machine-learning.md
-    - name: Bilişsel Hizmetler için sanal ağlar
-      href: cognitive-services-virtual-networks.md
     - name: Bilişsel Hizmetler’e yönelik özel alt etki alanları
       href: cognitive-services-custom-subdomains.md
     - name: Dil desteği
       href: language-support.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Azure portalını kullanarak yeni kaynak oluşturma
+      href: cognitive-services-apis-create-account.md
+    - name: Azure CLI’yi kullanarak yeni kaynak oluşturma
+      href: cognitive-services-apis-create-account-cli.md
+    - name: Tanılama günlüğüne kaydetme
+      href: diagnostic-logging.md
+- name: Güvenlik
+  items:
+    - name: Bilişsel Hizmetler güvenliği
+      href: cognitive-services-security.md
+    - name: Bilişsel Hizmetler için sanal ağlar
+      href: cognitive-services-virtual-networks.md
+    - name: Müşteri tarafından yönetilen anahtarları yapılandırma
+      href: ./encryption/cognitive-services-encryption-keys-portal.md
+    - name: Bilişsel Hizmetler için isteklerin kimliğini doğrulama
+      href: authentication.md
 - name: Kapsayıcı desteği
   items:
     - name: Kapsayıcı desteği
@@ -39,16 +55,6 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Hizmeti (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
-- name: Hızlı Başlangıçlar
-  items:
-    - name: Azure portalını kullanarak yeni kaynak oluşturma
-      href: cognitive-services-apis-create-account.md
-    - name: Azure CLI’yi kullanarak yeni kaynak oluşturma
-      href: cognitive-services-apis-create-account-cli.md
-    - name: Kimlik Doğrulaması
-      href: authentication.md
-    - name: Tanılama günlüğüne kaydetme
-      href: diagnostic-logging.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası
@@ -69,7 +75,7 @@
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
     - name: Hizmet güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Ürün Geri Bildirimi Sağlama
+    - name: Ürün geri bildirimi sağlama
       href: 'https://cognitive.uservoice.com/'
     - name: Kullanım kuralları
       href: 'https://go.microsoft.com/fwlink/?LinkId=698895'

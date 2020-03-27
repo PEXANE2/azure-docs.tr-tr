@@ -136,6 +136,8 @@
       href: feature-hashing.md
     - name: Metni Ön İşleme
       href: preprocess-text.md
+    - name: Görünmeyen Dirichlet Ayırması
+      href: latent-dirichlet-allocation.md
 - name: Öneri
   items:
     - name: Önereni Değerlendirme
@@ -144,5 +146,11 @@
       href: score-svd-recommender.md
     - name: SVD Önerenini Eğitme
       href: train-svd-recommender.md
+- name: Anomali Algılama
+  items:
+    - name: PCA Tabanlı Anomali Algılama
+      href: pca-based-anomaly-detection.md
+    - name: Anomali Algılama Modeli Eğitme
+      href: train-anomaly-detection-model.md
 - name: Modül hataları ve sorun giderme
   href: designer-error-codes.md

@@ -1,20 +1,20 @@
 ---
-title: Azure'da Cloudyn'e Amazon Web Services hesabı bağlama | Microsoft Docs
+title: Azure'da Cloudyn'e Amazon Web Services hesabı bağlama
 description: Maliyet ve kullanım verilerini Cloudyn raporlarında görüntülemek için bir Amazon Web Services hesabı bağlayın.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ROBOTS: NOINDEX
+ms.openlocfilehash: 38e5e253c32a2f85e18c80bdefa7d3b640da2e50
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086851"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464451"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Amazon Web Services hesabı bağlama
 
@@ -24,7 +24,7 @@ AWS IAM kimlikleri hakkında daha fazla bilgi için bkz. [Kimlikler (Kullanıcı
 
 Ayrıca AWS ayrıntılı faturalama raporlarını etkinleştirmeniz ve bilgileri bir AWS Simple Storage Service (S3) demetinde depolamanız gerekir. Ayrıntılı faturalama raporları, etiketlere ve kaynak b ilgilerine sahip saatlik faturalama ücretlerini kapsar. Raporların depolanması, Cloudyn'in bunları demetinizden alarak raporlarında göstermesini sağlar.
 
-
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 ## <a name="aws-role-based-access"></a>AWS rol tabanlı erişimi
 
 Aşağıdaki bölümlerde, Cloudyn için erişim sağlama amacıyla salt okunur IAM rolü oluşturma adımları listelenmiştir.
@@ -131,43 +131,43 @@ Ayrıntılı faturalandırma bilgilerini depolamak için bir S3 demeti oluşturu
 
    ```json
    {
-    "Version": "2012-10-17",
-    "Id": "Policy1426774604000",
-    "Statement": [
-        {
-            "Sid": "Stmt1426774604000",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::386209384616:root"
-            },
-            "Action": [
-                "s3:GetBucketAcl",
-                "s3:GetBucketPolicy"
-            ],
-            "Resource": "arn:aws:s3:::<BillingBucketName>"
-        },
-        {
-            "Sid": "Stmt1426774604001",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::386209384616:root"
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::<BillingBucketName>/*"
-        },
-        {
-            "Sid": "Stmt1426774604002",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "<ReadOnlyUserOrRole>"
-            },
-            "Action": [
-                "s3:List*",
-                "s3:Get*"
-            ],
-            "Resource": "arn:aws:s3:::<BillingBucketName>/*"
-        }
-    ]
+      "Version": "2012-10-17",
+      "Id": "Policy1426774604000",
+      "Statement": [
+          {
+              "Sid": "Stmt1426774604000",
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "arn:aws:iam::386209384616:root"
+              },
+              "Action": [
+                  "s3:GetBucketAcl",
+                  "s3:GetBucketPolicy"
+              ],
+              "Resource": "arn:aws:s3:::<BillingBucketName>"
+          },
+          {
+              "Sid": "Stmt1426774604001",
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "arn:aws:iam::386209384616:root"
+              },
+              "Action": "s3:PutObject",
+              "Resource": "arn:aws:s3:::<BillingBucketName>/*"
+          },
+          {
+              "Sid": "Stmt1426774604002",
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "<ReadOnlyUserOrRole>"
+              },
+              "Action": [
+                  "s3:List*",
+                  "s3:Get*"
+              ],
+              "Resource": "arn:aws:s3:::<BillingBucketName>/*"
+          }
+      ]
    }
    ```
 

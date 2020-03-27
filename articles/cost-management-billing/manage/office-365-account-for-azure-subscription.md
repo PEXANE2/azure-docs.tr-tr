@@ -1,5 +1,5 @@
 ---
-title: Office 365 hesabı ile Azure’a kaydolma | Microsoft Docs
+title: Office 365 hesabı ile Azure’a kaydolma
 description: Office 365 hesabı kullanarak nasıl Azure aboneliği oluşturulacağını öğrenin
 author: JiangChen79
 ms.reviewer: adwise
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 265d9bcafa7caf9af0f8c4c7f33de044fa02349c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199594"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238117"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Office 365 hesabınızla Azure aboneliğine kaydolma
 Office 365 aboneliğiniz varsa, Azure aboneliği oluşturmak için Office 365 hesabınızı kullanabilirsiniz. Office 365 kullanıcı adı ve parolanızı kullanarak [Azure portalında](https://portal.azure.com/) oturum açın. Sanal makineleri ayarlamak veya diğer Azure hizmetlerini kullanmak istiyorsanız, bir Azure aboneliğine kaydolmanız gerekir. Azure aboneliğinizi başkalarıyla paylaşabilir ve [Azure aboneliğinize ve kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimini kullanabilirsiniz](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -35,7 +35,7 @@ Office 365 kullanıcı adı ve parolanızı kullanarak Azure’a kaydolup zaman 
 
 - Kuruluşunuzdaki diğer kişileri Azure aboneliğine eklemeniz gerekiyorsa bkz. [Azure portalında erişim yönetimini kullanmaya başlama](../../role-based-access-control/overview.md).
 
-## <a id="more-about-subs">Azure ve Office 365 abonelikleri hakkında daha fazla bilgi</a>
+## <a name=""></a><a id="more-about-subs">Azure ve Office 365 abonelikleri hakkında daha fazla bilgi</a>
 Office 365 ve Azure, kullanıcıları ve abonelikleri yönetmek için Azure AD hizmetini kullanır. Azure dizini, kullanıcıları ve abonelikleri gruplandırabileceğiniz bir kapsayıcı gibidir. Azure ve Office 365 abonelikleriniz için aynı kullanıcı hesaplarını kullanmak istiyorsanız, Azure aboneliklerinin Office 365 abonelikleriyle aynı dizinde oluşturulduğundan emin olmanız gerekir. Aşağıdaki noktaları göz önünde bulundurun:
 
 * Abonelik bir dizin altında oluşturulur

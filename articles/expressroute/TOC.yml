@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: Kavramlar
   items:
+    - name: Uzaktan çalışma
+      href: work-remotely-support.md
     - name: Bağlantı modelleri
       href: expressroute-connectivity-models.md
     - name: Bağlantı hatları ve eşleme

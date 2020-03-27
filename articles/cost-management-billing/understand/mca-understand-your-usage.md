@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199169"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065698"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için Azure kullanımı ve ücretleri dosyasındaki terimler
 
@@ -21,7 +21,7 @@ Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için g
 
 Azure kullanım bilgilerini ve ücretlerini içeren CSV dosyası, geçerli faturalama dönemi için günlük ve ölçüm düzeyinde kullanım ücretlerini sunar.
 
-Azure kullanım bilgilerinizi ve ücretlerinizi içeren dosyayı almak için bkz. [Microsoft Müşteri Sözleşmeniz için Azure kullanım bilgilerinizi ve ücretlerinizi görüntüleme ve indirme](download-azure-daily-usage.md). Bu, bir elektronik tablo uygulamasında açabileceğiniz virgülle ayrılmış değerler (.csv) dosya biçiminde mevcuttur.
+Azure kullanım bilgilerinizi ve ücretlerinizi içeren dosyayı almak için bkz. [Microsoft Müşteri Sözleşmeniz için Azure kullanım bilgilerinizi ve ücretlerinizi görüntüleme ve indirme](download-azure-daily-usage.md). Bu, bir elektronik tablo uygulamasında açabileceğiniz virgülle ayrılmış değerler (.csv) dosya biçiminde sağlanır.
 
 Kullanım ücretleri bir abonelikteki toplam **aylık** ücretlerdir. Kullanım ücretleri, kredilerin veya indirimlerin hiçbirini dikkate almaz.
 
@@ -88,6 +88,8 @@ meterCategory | Ölçüm için sınıflandırma kategorisinin adı. Örneğin, *
 meterSubCategory | Ölçüm alt sınıflandırma kategorisinin adı
 meterRegion | Hizmet ölçümünün kullanılabilir olduğu bölgenin adı. Veri merkezi konumuna göre fiyatlandırılan belirli hizmetler için veri merkezinin konumunu belirtir.
 teklif | Satın alınan teklifin adı
+PayGPrice | Kaynak için perakende fiyatı.
+PricingModel | Ölçümün nasıl fiyatlandırıldığını gösteren tanımlayıcı (Değerler: On Demand, Reservation, Spot)
 productId | Ücretleri tahakkuk eden ürünün benzersiz tanımlayıcısı
 ürün | Ücretleri tahakkuk eden ürünün adı
 abonelik kimliği | Ücretleri tahakkuk eden aboneliğin benzersiz tanımlayıcısı

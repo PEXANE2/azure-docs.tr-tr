@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199713"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238151"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure faturasında beklenmeyen ücretlendirmeleri önleme ve maliyet yönetimi
 
@@ -25,6 +25,8 @@ Azure'a kaydolduğunuzda, harcamalarınız hakkında daha iyi bir fikir sahibi o
 - [Fatura](https://docs.microsoft.com/rest/api/billing/) ve [tüketim](https://docs.microsoft.com/rest/api/consumption/) API’lerini kullanarak fatura ve maliyet verilerini kendi raporlama sisteminizle tümleştirin.
 - Kurumsal Anlaşma (EA), Bulut Çözümü Sağlayıcısı (CSP) ve Azure Sponsorluğu müşterilerine yönelik ek kaynakları ve araçları kullanın.
 - [Ücretsiz Azure hesabı](create-free-services.md) ile sunulan [en popüler Azure hizmetlerinden bazılarını 12 ay boyunca ücretsiz](https://azure.microsoft.com/free/) kullanın. Aşağıda listelenen önerilere birlikte, bkz. [Ücretsiz hesap için ücret yansıtılmasını önleme](avoid-charges-free-account.md).
+
+Azure aboneliğinizi iptal etmeniz gerekiyorsa bkz. [Azure aboneliğinizi iptal etme](cancel-azure-subscription.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Azure hizmetlerini eklemeden önce tahmini maliyetleri alma
 
@@ -67,7 +69,7 @@ Maliyetleri aşağıdaki araçlarla izleyebilirsiniz:
 
 Maliyetleri yönetmek için [bütçeler](../costs/tutorial-acm-create-budgets.md) oluşturun ve paydaşların harcama anormalliklerini ve fazla harcamalarını size otomatik olarak bildiren [uyarılar](../costs/cost-mgt-alerts-monitor-usage-spending.md) oluşturun.
 
-### <a name="costs"></a> Maliyet analiziyle maliyetleri araştırma ve analiz etme
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a> Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
 Azure hizmetlerinizi çalışır duruma getirdikten sonra Azure harcamanızı izlemek için maliyetleri düzenli olarak denetleyin. Maliyet analizini, Azure kullanımınıza ilişkin maliyetlerin nereden kaynaklandığını anlamak için kullanabilirsiniz.
 
@@ -120,7 +122,7 @@ Azure'ı bir Microsoft Müşteri Sözleşmesi (MCA) aracılığıyla kullanıyor
 
 Fatura ve maliyet verilerini program aracılığıyla almak için Azure [fatura](https://docs.microsoft.com/rest/api/billing/) ve [tüketim](https://docs.microsoft.com/rest/api/consumption/) API’lerini kullanın. RateCard API'si ve Kullanım API'sini birlikte kullanarak faturalandırılan kullanımınızı alabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Azure kaynak kullanımınızla ilgili içgörüler edinin](usage-rate-card-overview.md).
 
-## <a name="other-offers"></a> Ek kaynaklar ve özel durumlar
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Ek kaynaklar ve özel durumlar
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA, CSP ve Sponsorluk müşterileri
 Başlamak için hesap yöneticiniz veya Azure iş ortağınızla konuşun.
@@ -133,7 +135,7 @@ Başlamak için hesap yöneticiniz veya Azure iş ortağınızla konuşun.
 
 Büyük bir kuruluşun BT yöneticisiyseniz, [Azure kurumsal iskelesi](/azure/architecture/cloud-adoption-guide/subscription-governance) ve [kurumsal BT teknik incelemesini](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf indirme, yalnızca İngilizce) okumanızı öneririz.
 
-### <a name="EA"></a> Azure portalındaki Kurumsal Anlaşma maliyet görünümleri
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a> Azure portalındaki Kurumsal Anlaşma maliyet görünümleri
 
 Kurumsal maliyet görünümleri şu anda Genel Önizleme aşamasındadır. Dikkat edilmesi gereken noktalar:
 
@@ -167,7 +169,7 @@ Kredi istemek için:
 2. Yeni bir destek isteği oluşturun.
 3. **Sorun türü** altında **Faturalandırma**’yı seçin.
 4. **Sorun türü** altında **Para İadesi İsteği**’ni seçin.
-5. Bir SLA kredisi istediğinizi belirtmek için ayrıntılar ekleyin; tarih/saat/saat dilimi ve etkilenen hizmetleri (VM'ler, Web Siteleri vb.) belirtin
+5. SLA kredisi istediğinizi belirtmek için ayrıntılar ekleyin; tarih/saat/saat dilimi ve etkilenen hizmetleri (VM'ler, Web Siteleri vb.) belirtin
 6. İletişim bilgilerinizi doğrulayın ve isteğinizi göndermek için **Oluştur**'u seçin.
 
 SLA eşikleri hizmete göre farklılık gösterir. Örneğin, SQL Web Katmanı %99,9, VM’ler %99,95 ve SQL Standard Katmanı %99,99 SLA’ya sahiptir.

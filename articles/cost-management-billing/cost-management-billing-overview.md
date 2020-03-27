@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970115"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474535"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Azure Maliyet Yönetimi ve Faturalandırma nedir?
 
@@ -89,13 +89,13 @@ Bütçeler kuruluşunuzda finansal sorumluluğu planlamanıza ve buna uymanıza 
 
 Maliyet yönetimi verilerine erişmek veya bu verileri incelemek için dış sistemleri kullanıyorsanız, verileri Azure'dan kolayca dışarı aktarabilirsiniz. Ayrıca CSV biçiminde günlük zamanlanmış dışarı aktarmalar ayarlayabilir ve veri dosyalarını Azure depolama alanında depolayabilirsiniz. Sonra bu verileri dış sisteminizden erişebilirsiniz.
 
-### <a name="consider-cloudyn"></a>Cloudyn'i göz önünde bulundurun
+### <a name="cloudyn-deprecation"></a>Cloudyn’in kullanımdan kaldırılması
 
-[Cloudyn](./cloudyn/overview.md), Maliyet Yönetimi ile ilgili bir Azure hizmetidir. Cloudyn ile, Azure kaynaklarınız için bulut kullanımını ve harcamalarını izleyebilirsiniz. Ayrıca AWS ve Google gibi diğer bulut sağlayıcılarını da destekler. Anlaşılması kolay pano raporları, maliyet ayırma ve ücret hesaplama/yansıtma konusunda yardımcı olur. Şu anda, Maliyet Yönetimi'nin geri gösterme/geri ödeme ve diğer bulut hizmeti sağlayıcıları için desteği yoktur. Öte yandan, Cloudyn bunları _destekleyen_ bir seçenektir. Maliyet Yönetimi şu an için Microsoft Bulut Hizmeti Sağlayıcısı (CSP) hesaplarını desteklememektedir ancak bu destek Cloudyn'de mevcuttur. CSP hesaplarınız varsa veya ücreti yansıtma/geri ödeme özelliklerini kullanmak istiyorsanız maliyet yönetimi için Cloudyn'i kullanabilirsiniz.
-
-İşletmenizin ihtiyaçlarına göre Azure Maliyet Yönetimi veya Cloudyn kullanmanız gereken durumlarla ilgili öneriler için [Azure Maliyet Yönetimi ve Cloudyn videosunu](https://www.youtube.com/watch?v=PmwFWwSluh8) izleyin.
-
->[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
+[Cloudyn](./cloudyn/overview.md) Maliyet Yönetimi ile ilgili bir Azure hizmeti ve 2020’nin sonunda kullanımdan kaldırılacak. Mevcut Cloudyn özellikleri mümkün olduğunca doğrudan Azure portalıyla tümleştiriliyor. Şu anda yeni müşteri eklenmiyor ama ürün tümüyle kullanımdan kaldırılana kadar ürünün desteği devam edecek.
+ 
+İşletmenizin ihtiyaçlarına göre Azure Maliyet Yönetimi veya Cloudyn kullanmanız gereken durumlar hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi ve Cloudyn videosunu](https://www.youtube.com/watch?v=15DzKPMBRxM) izleyin.
+ 
+>[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ### <a name="additional-azure-tools"></a>Ek Azure araçları
 

@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604769"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159311"
 landingContent:
 - title: Güvenlik Merkezi hakkında
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: Kapsayıcılarınızı koruma
       url: container-security.md
-    - text: Dinamik uyumluluk paketleri ekleme
-      url: update-regulatory-compliance-packages.md
-    - text: Windows Admin Center ile tümleştirme
-      url: windows-admin-center-integration.md
+    - text: VM'ler için tümleşik güvenlik açığı değerlendirmesi
+      url: built-in-vulnerability-assessment.md
+    - text: Güvenlik uyarıları için şemaları gözden geçirme
+      url: alerts-schemas.md
     - text: Uyarılara ve önerilere yanıtları otomatikleştirme
       url: workflow-automation.md
     - text: Güvenlik uyarılarını ve önerilerini dışarı aktarma
       url: continuous-export.md
-    - text: Azure Key Vault için gelişmiş tehdit koruması ayarlama
+    - text: Azure Key Vault için tehdit koruması ayarlama
       url: advanced-threat-protection-key-vault.md
 - title: başlarken
   linkLists:
@@ -56,8 +56,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Güvenlik Puanı nedir?
-      url: security-center-secure-score.md
+    - text: Güvenlik puanını anlama
+      url: secure-score-security-controls.md
     - text: Güvenlik önerilerini iyileştirme
       url: security-center-remediate-recommendations.md
     - text: Güvenlik önerilerinizi özelleştirme

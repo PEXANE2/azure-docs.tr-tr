@@ -22,6 +22,8 @@
       items:
         - name: Azure Maliyet Yönetimi en iyi yöntemleri
           href: cost-mgt-best-practices.md
+        - name: Maliyet Yönetimi ile Cloudyn arasında seçim yapma
+          href: choose-between-azure-cost-management-cloudyn.md
         - name: Maliyet Yönetimi verilerini anlama
           href: understand-cost-mgt-data.md
         - name: Kapsamları anlama ve bunlarla çalışma

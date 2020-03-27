@@ -59,6 +59,8 @@
           href: container-instances-vnet.md
         - name: Azure Container Registry üzerinden dağıtma
           href: container-instances-using-azure-container-registry.md
+        - name: GitHub Eylemleriyle dağıtma (önizleme)
+          href: container-instances-github-action.md
         - name: Dağıtım verilerini şifreleme
           href: container-instances-encrypt-data.md
         - name: Ayrılmış konaklara dağıtma
@@ -83,6 +85,8 @@
           href: container-instances-gpu.md
         - name: Sepette SSL uç noktasını etkinleştirme
           href: container-instances-container-group-ssl.md
+        - name: Statik IP adresini ortaya koyma
+          href: container-instances-application-gateway.md
     - name: Veri birimlerini bağlama
       items:
         - name: Azure dosya paylaşımı

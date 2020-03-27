@@ -35,6 +35,10 @@
     - name: Kavramlar
       expanded: false
       items:
+        - name: Güvenlik
+          items:
+            - name: Güvenlik temeli
+              href: security-baseline.md
         - name: Kapsayıcı kayıt defteri SKU’ları ve sınırları
           href: container-registry-skus.md
         - name: 'Kayıt defterleri, depolar ve resimler'
@@ -120,7 +124,7 @@
         - name: İzleme
           expanded: false
           items:
-            - name: Tanılama ve denetim günlükleri (önizleme)
+            - name: Tanılama ve denetim günlükleri
               href: container-registry-diagnostics-audit-logs.md
             - name: Azure İlkesi kullanarak uyumluluğu denetleme (önizleme)
               href: container-registry-azure-policy.md

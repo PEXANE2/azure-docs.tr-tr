@@ -9,18 +9,8 @@
       href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: İstemci SDK’sini kullanma
-      items:
-        - name: .NET SDK
-          href: quickstarts-sdk/csharp-sdk.md
-        - name: Python SDK'sı
-          href: quickstarts-sdk/python-sdk.md
-        - name: Java SDK
-          href: quickstarts-sdk/java-sdk.md
-        - name: Node.js SDK'sı
-          href: quickstarts-sdk/node-sdk.md
-        - name: Go SDK'sı
-          href: quickstarts-sdk/go-sdk.md
+    - name: İstemci kitaplığını kullanma
+      href: quickstarts-sdk/client-library.md
     - name: REST API’sini kullanma
       items:
         - name: Uzak resmi çözümleme
