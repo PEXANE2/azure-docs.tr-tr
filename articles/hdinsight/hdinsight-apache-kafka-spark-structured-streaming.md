@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Apache Spark akış & Apache Kafka-Azure HDInsight'
+title: 'Öğretici: Apache Spark Akış & Apache Kafka - Azure HDInsight'
 description: Apache Spark akışını kullanarak Apache Kafka içine veya dışına veri almayı öğrenin. Bu öğreticide, HDInsight üzerinde Spark’tan bir Jupyter not defterini kullanarak verilerinizi akışla aktaracaksınız.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,44 +9,44 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18
 ms.date: 03/11/2020
 ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79117223"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Öğretici: HDInsight üzerinde Apache Spark Yapılandırılmış Akışını Apache Kafka ile kullanma
 
-Bu öğreticide, Azure HDInsight üzerinde [Apache Kafka](./kafka/apache-kafka-introduction.md) ile verileri okumak ve yazmak Için [Apache Spark yapılandırılmış akışın](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) nasıl kullanılacağı gösterilmektedir.
+Bu öğretici, Azure HDInsight'ta [Apache Kafka](./kafka/apache-kafka-introduction.md) ile veri okumak ve yazmak için [Apache Spark Structured Streaming'in](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) nasıl kullanılacağını göstermektedir.
 
-Spark yapılandırılmış akış, Spark SQL üzerinde oluşturulmuş bir akış işleme motorudur. Bu altyapıyı kullanarak, statik veriler üzerinde toplu hesaplamayla aynı şekilde akış hesaplamalarını ifade edebilirsiniz.  
+Spark Structured Streaming, Spark SQL üzerine kurulmuş bir akış işleme motorudur. Bu altyapıyı kullanarak, statik veriler üzerinde toplu hesaplamayla aynı şekilde akış hesaplamalarını ifade edebilirsiniz.  
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Küme oluşturmak için bir Azure Resource Manager şablonu kullanma
-> * Spark yapısal akışını Kafka ile kullanma
+> * Kümeler oluşturmak için Azure Kaynak Yöneticisi şablonu kullanma
+> * Kafka ile Kıvılcım Yapılandırılmış Akış Kullanın
 
-Bu belgedeki adımlarla işiniz bittiğinde, fazla ücretlerden kaçınmak için kümeleri silmeyi unutmayın.
+Bu belgedeki adımları bitirdiğinizde, fazla ücretleri önlemek için kümeleri silmeyi unutmayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* bir komut satırı JSON işlemcisi olan JQ.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* jq, bir komut satırı JSON işlemci.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* HDInsight 'ta Spark ile [Jupyıter not defterlerini](https://jupyter.org/) kullanma hakkında benzerlik. Daha fazla bilgi için bkz. [HDInsight 'ta verileri yükleme ve sorguları çalıştırma Apache Spark](spark/apache-spark-load-data-run-query.md) .
+* HDInsight'ta Spark ile [Jupyter Notebook'ları](https://jupyter.org/) kullanma aşinalığı. Daha fazla bilgi için [Verileri Yükle'ye bakın ve HDInsight belgesinde Apache Spark ile sorguları çalıştırın.](spark/apache-spark-load-data-run-query.md)
 
 * [Scala](https://www.scala-lang.org/) programlama dilini bilme. Bu öğreticide kullanılan kod, Scala dilinde yazılmıştır.
 
-* Kafka konuları oluşturmayı bilme. Daha fazla bilgi için bkz. [HDInsight hızlı başlangıç belgesi Apache Kafka](kafka/apache-kafka-get-started.md) .
+* Kafka konuları oluşturmayı bilme. Daha fazla bilgi için [HDInsight hızlı başlatma belgesindeki Apache Kafka'ya](kafka/apache-kafka-get-started.md) bakın.
 
 > [!IMPORTANT]  
 > Bu belgede yer alan adımlar hem HDInsight üzerinde Spark hem de HDInsight kümesi üzerinde Kafka içeren bir Azure kaynak grubu gerektirir. Bu kümelerin her ikisi de Spark kümesinin Kafka kümesiyle doğrudan iletişim kurmasına olanak tanıyan bir Azure Sanal Ağı içinde bulunur.
 >
 > Size kolaylık sağlamak için bu belgede, tüm gerekli Azure kaynaklarını oluşturabilecek bir şablonun bağlantıları sağlanır.
 >
-> Bir sanal ağda HDInsight kullanma hakkında daha fazla bilgi için bkz. [HDInsight için sanal ağ planı](hdinsight-plan-virtual-network-deployment.md) belgesi.
+> Sanal ağda HDInsight kullanımı hakkında daha fazla bilgi için, [HDInsight](hdinsight-plan-virtual-network-deployment.md) belgesi için sanal ağ Planı'na bakın.
 
-## <a name="structured-streaming-with-apache-kafka"></a>Apache Kafka ile yapılandırılmış akış
+## <a name="structured-streaming-with-apache-kafka"></a>Apache Kafka ile Yapılandırılmış Akış
 
 Spark Yapılandırılmış Akışı, Spark SQL altyapısı üzerinde derlenen bir akış işleme altyapısıdır. Yapılandırılmış Akış kullanırken, toplu sorgular yazdığınız şekilde akış sorguları yazabilirsiniz.
 
@@ -94,9 +94,9 @@ Her iki kod parçacığında Kafka’dan veriler okunur ve dosyaya yazılır. Ö
 | `write` | `writeStream` |
 | `save` | `start` |
 
-Akış işlemi, 30.000 MS 'den sonra akışı durduran `awaitTermination(30000)`de kullanır.
+Akış işlemi, `awaitTermination(30000)`30.000 ms'den sonra akışı durduran akışı da kullanır.
 
-Kafka ile Yapılandırılmış Akışı kullanmak için projenizin `org.apache.spark : spark-sql-kafka-0-10_2.11` paketinde bir bağımlılığı olmalıdır. Bu paketin sürümü, HDInsight üzerinde Spark sürümüyle eşleşmelidir. Spark 2.2.0 (HDInsight 3.6’da kullanılabilir) için, [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar) adresinden farklı proje türleri için bağımlılık bilgilerini bulabilirsiniz.
+Kafka ile Yapılandırılmış Akışı kullanmak için projenizin `org.apache.spark : spark-sql-kafka-0-10_2.11` paketinde bir bağımlılığı olmalıdır. Bu paketin sürümü, HDInsight üzerinde Spark sürümüyle eşleşmelidir. Spark 2.2.0 için (HDInsight 3.6'da mevcuttur), farklı proje türlerine ait bağımlılık bilgilerini [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
 
 Bu öğreticide kullanılan Jupyter Notebook için aşağıdaki hücre bu paket bağımlılığını yükler:
 
@@ -112,7 +112,7 @@ Bu öğreticide kullanılan Jupyter Notebook için aşağıdaki hücre bu paket 
 
 ## <a name="create-the-clusters"></a>Kümeleri oluşturma
 
-HDInsight üzerinde Apache Kafka, genel İnternet üzerinden Kafka aracıları için erişim sağlamaz. Kafka kullanan her özellik aynı Azure sanal ağı içinde olmalıdır. Bu öğreticide hem Kafka hem de Spark kümeleri aynı Azure sanal ağı içinde yer alır.
+HDInsight'taki Apache Kafka, Kafka brokerlarına halka açık internet üzerinden erişim sağlamaz. Kafka kullanan her özellik aynı Azure sanal ağı içinde olmalıdır. Bu öğreticide hem Kafka hem de Spark kümeleri aynı Azure sanal ağı içinde yer alır.
 
 Aşağıdaki diyagramda Spark ile Kafka arasındaki iletişimin nasıl aktığı gösterilmektedir:
 
@@ -127,7 +127,7 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Spark kümeler
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-kafka-structured-streaming%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-kafka-spark-structured-streaming/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Azure Resource Manager şablonu **https://raw.githubusercontent.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming/master/azuredeploy.json** sayfasında bulunur.
+    Azure Kaynak Yöneticisi şablonu **https://raw.githubusercontent.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming/master/azuredeploy.json**' nda yer alır.
 
     Bu şablon aşağıdaki kaynakları oluşturur:
 
@@ -154,18 +154,18 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Spark kümeler
 
     ![Özelleştirilmiş şablonun ekran görüntüsü](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. **Hüküm ve koşulları**okuyun, ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u seçin.
+3. Şartlar **ve Koşullar**okuyun , sonra **ben yukarıda belirtilen hüküm ve koşulları kabul seçin.**
 
 4. **Satın al**'ı seçin.
 
 > [!NOTE]  
 > Kümelerin oluşturulması 20 dakikaya kadar sürebilir.
 
-## <a name="use-spark-structured-streaming"></a>Spark yapılandırılmış akışını kullanma
+## <a name="use-spark-structured-streaming"></a>Kıvılcım Yapılandırılmış Akış'ı Kullanma
 
-Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kullanılacağını gösterir. Bu, New York City tarafından sunulan TAXI seyahatlerinde verileri kullanır.  Bu not defteri tarafından kullanılan veri kümesi [2016 yeşil TAXI veri yolculuğuna](https://data.cityofnewyork.us/Transportation/2016-Green-Taxi-Trip-Data/hvrh-b6nb)ait.
+Bu örnek, HDInsight'ta Kafka ile Spark Structured Streaming'in nasıl kullanılacağını göstermektedir. New York city tarafından sağlanan taksi gezileri, verileri kullanır.  Bu not defteri tarafından kullanılan veri seti [2016 Yeşil Taksi Gezi Verileri'nden](https://data.cityofnewyork.us/Transportation/2016-Green-Taxi-Trip-Data/hvrh-b6nb)dir.
 
-1. Konak bilgilerini toplayın. Kafka ZooKeeper ve Broker Konakları bilgilerini almak için aşağıdaki kıvrımlı ve [JQ](https://stedolan.github.io/jq/) komutlarını kullanın. Komutlar bir Windows komut istemi için tasarlanan diğer ortamlar için hafif Çeşitlemeler gerekecektir. `KafkaCluster`, Kafka kümenizin adıyla değiştirin ve küme oturum açma parolasıyla `KafkaPassword`. Ayrıca, `C:\HDI\jq-win64.exe` değerini JQ yüklemenizin gerçek yoluyla değiştirin. Komutları bir Windows komut istemine girin ve sonraki adımlarda kullanmak için çıktıyı kaydedin.
+1. Ana bilgisayar bilgilerini toplayın. Kafka ZooKeeper ve broker hosts bilgi almak için aşağıdaki curl ve [jq](https://stedolan.github.io/jq/) komutları kullanın. Komutlar bir Windows komut istemi için tasarlanmıştır, diğer ortamlar için küçük varyasyonlar gerekir. Kafka `KafkaCluster` kümenizin adı ve `KafkaPassword` küme giriş parolası ile değiştirin. Ayrıca, `C:\HDI\jq-win64.exe` jq yükleme için gerçek yol ile değiştirin. Windows komut istemindeki komutları girin ve çıktıyı sonraki adımlarda kullanmak üzere kaydedin.
 
     ```cmd
     REM Enter cluster name in lowercase
@@ -178,13 +178,13 @@ Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kull
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/KAFKA/components/KAFKA_BROKER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")"
     ```
 
-1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net/jupyter`' a gidin; burada `CLUSTERNAME` kümenizin adıdır. Sorulduğunda, kümeyi oluştururken kullanılan küme kullanıcı adı (yönetici) ve parolasını girin.
+1. Bir web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/jupyter`kümenizin adı nerede' `CLUSTERNAME` ye gidin. Sorulduğunda, kümeyi oluştururken kullanılan küme kullanıcı adı (yönetici) ve parolasını girin.
 
-1. **Yeni > Spark** ' ı seçerek bir not defteri oluşturun.
+1. Not defteri oluşturmak için **Yeni > Kıvılcım'ı** seçin.
 
-1. Spark akışında mikro işleme vardır. Bu, verilerin toplu işler ve yürüticiler veri yığınlarıyla birlikte çalıştırılmasıdır. Yürütücü, toplu işi işlemek için gereken süreden daha düşük bir süre zaman aşımına uğramışsa, yürütmeleri sürekli olarak eklenir ve kaldırılır. Yürütme boşta kalma zaman aşımı, toplu iş süresinden fazlaysa, yürütücü hiçbir zaman kaldırılmaz. Bu nedenle **, akış uygulamalarını çalıştırırken spark. dynamicAllocation. Enabled ayarını false olarak ayarlayarak dinamik ayırmayı devre dışı bırakmanızı öneririz.**
+1. Kıvılcım akışı mikrobatching vardır, bu da veri toplu olarak gelir ve yürütücüler veri toplu çalışır. Uygulayıcının toplu iş işleme süresinden daha az boşta zaman acısı varsa, uygulayıcılar sürekli olarak eklenir ve kaldırılır. Uygulayıcılar boşta zaman dilimi toplu iş süresinden büyükse, uygulayıcı asla kaldırılmaz. Bu **nedenle, akış uygulamalarını çalıştırırken spark.dynamicAllocation.enabled'i yanlış olarak ayarlayarak dinamik ayırmayı devre dışı bırakmamanızı öneririz.**
 
-    Aşağıdaki bilgileri bir not defteri hücresine girerek Not defteri tarafından kullanılan paketleri yükleyin. **CTRL + ENTER**kullanarak komutu çalıştırın.
+    Not Defteri hücresine aşağıdaki bilgileri girerek Not Defteri tarafından kullanılan paketleri yükleyin. **CTRL + ENTER**kullanarak komutu çalıştırın.
 
     ```configuration
     %%configure -f
@@ -197,7 +197,7 @@ Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kull
     }
     ```
 
-1. Kafka konusunu oluşturun. `YOUR_ZOOKEEPER_HOSTS`, ilk adımda ayıklanan Zookeeper ana bilgisayar bilgileriyle değiştirerek aşağıdaki komutu düzenleyin. `tripdata` konusunu oluşturmak için Jupyter Notebook düzenlenen komutu girin.
+1. Kafka konusunu oluşturun. İlk adımda çıkarılan Zookeeper ana bilgisayar bilgilerini değiştirerek `YOUR_ZOOKEEPER_HOSTS` aşağıdaki komutu düzenleyin. Konuyu oluşturmak için Jupyter Notebook'unuza düzenlenmiş komutu `tripdata` girin.
 
     ```scala
     %%bash
@@ -206,7 +206,7 @@ Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kull
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic tripdata --zookeeper $KafkaZookeepers
     ```
 
-1. Vergi seyahatlerinde veri alın. Yeni York şehrinde vergi seyahatleri üzerine veri yüklemek için sonraki hücreye komutu girin. Veriler bir veri çerçevesine yüklenir ve ardından dataframe hücre çıktısı olarak görüntülenir.
+1. Taksi yolculukları ile ilgili verileri alın. New York'taki taksi yolculuklarına veri yüklemek için bir sonraki hücredeki komutu girin. Veriler bir veri çerçevesine yüklenir ve ardından veri çerçevesi hücre çıktısı olarak görüntülenir.
 
     ```scala
     import spark.implicits._
@@ -222,7 +222,7 @@ Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kull
     taxiDF.show()
     ```
 
-1. Kafka Broker ana bilgisayar bilgilerini ayarlayın. `YOUR_KAFKA_BROKER_HOSTS`, 1. Adımda ayıkladığınız aracı ana bilgisayar bilgileri ile değiştirin.  Sonraki Jupyter Notebook hücresinde düzenlenen komutunu girin.
+1. Kafka aracısını ayarlayın bilgi barındırı. 1. adımda çıkardığınız broker ana bilgisayar bilgileriyle değiştirin. `YOUR_KAFKA_BROKER_HOSTS`  Düzenlenen komutu sonraki Jupyter Notebook hücresine girin.
 
     ```scala
     // The Kafka broker hosts and topic used to write to Kafka
@@ -232,7 +232,7 @@ Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kull
     println("Finished setting Kafka broker and topic configuration.")
     ```
 
-1. Verileri Kafka 'ye gönderin. Aşağıdaki komutta, `vendorid` alanı Kafka iletisi için anahtar değer olarak kullanılır. Anahtar, verileri Bölümlemede Kafka tarafından kullanılır. Tüm alanlar, Kafka iletisinde JSON dizesi değeri olarak depolanır. Bir Batch sorgusu kullanarak verileri Kafka 'e kaydetmek için jupi 'de aşağıdaki komutu girin.
+1. Verileri Kafka'ya gönder. Aşağıdaki komutta, `vendorid` alan Kafka iletisi için anahtar değer olarak kullanılır. Anahtar Kafka tarafından veri bölümleme kullanılır. Tüm alanlar Kafka iletisinde JSON dize değeri olarak depolanır. Bir toplu iş sorgusu kullanarak verileri Kafka'ya kaydetmek için Jupyter'da aşağıdaki komutu girin.
 
     ```scala
     // Select the vendorid as the key and save the JSON string as the value.
@@ -241,7 +241,7 @@ Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kull
     println("Data sent to Kafka")
     ```
 
-1. Bir şema bildirin. Aşağıdaki komut, Kafka öğesinden JSON verileri okurken bir şemanın nasıl kullanılacağını göstermektedir. Sonraki Jupyıter hücresindeki komutu girin.
+1. Şema bildir. Aşağıdaki komut, Kafka'dan JSON verilerini okurken şema nın nasıl kullanılacağını göstermektedir. Bir sonraki Jupyter hücrenizdeki komutu girin.
 
     ```scala
     // Import bits useed for declaring schemas and working with JSON data
@@ -277,7 +277,7 @@ Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kull
     println("Schema declared")
     ```
 
-1. Verileri seçin ve akışı başlatın. Aşağıdaki komut, bir Batch sorgusu kullanılarak Kafka 'ten nasıl veri alınacağını ve sonra Spark kümesinde bir işlem için sonuçları ne şekilde yazılacağını gösterir. Bu örnekte `select`, iletiyi (değer alanı) Kafka adresinden alır ve şemayı buna uygular. Daha sonra bu veriler, Parquet biçiminde bir. Sonraki Jupyıter hücresindeki komutu girin.
+1. Verileri seçin ve akışı başlatın. Aşağıdaki komut, toplu bir sorgu kullanarak kafka'dan veri alınıp sonuçları Spark kümesindeki HDFS'ye nasıl yazacaklarını gösterir. Bu örnekte, `select` Kafka'dan iletiyi (değer alanı) alır ve şemayı ona uygular. Veriler daha sonra PARKE FORMATInDA HDFS 'ye (WASB veya ADL) yazılır. Bir sonraki Jupyter hücrenizdeki komutu girin.
 
     ```scala
     // Read a batch from Kafka
@@ -289,14 +289,14 @@ Bu örnek, HDInsight üzerinde Kafka ile Spark yapısal akışının nasıl kull
     println("Wrote data to file")
     ```
 
-1. Sonraki jupi hücresine komutu girerek dosyaların oluşturulduğunu doğrulayabilirsiniz. `/example/batchtripdata` dizinindeki dosyaları listeler.
+1. Dosyaların bir sonraki Jupyter hücrenizdeki komutu girerek oluşturulduğunu doğrulayabilirsiniz. `/example/batchtripdata` Dizindeki dosyaları listeler.
 
     ```scala
     %%bash
     hdfs dfs -ls /example/batchtripdata
     ```
 
-1. Önceki örnekte bir toplu iş sorgusu kullanılırken aşağıdaki komut, akış sorgusu kullanarak aynı şeyi nasıl yapabileceğinizi gösterir. Sonraki Jupyıter hücresindeki komutu girin.
+1. Önceki örnekte toplu iş sorgusu kullanılırken, aşağıdaki komut akış sorgusu kullanarak aynı şeyin nasıl yapılacağını gösterir. Bir sonraki Jupyter hücrenizdeki komutu girin.
 
     ```scala
     // Stream from Kafka
@@ -320,7 +320,7 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu sileb
 
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
-1. [Azure Portal](https://portal.azure.com/), sol taraftaki menüyü genişleterek hizmet menüsünü açın ve kaynak __grupları__ ' nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure [portalında,](https://portal.azure.com/)hizmetler menüsünü açmak için sol taraftaki menüyü genişletin ve ardından kaynak gruplarınızın listesini görüntülemek için __Kaynak Grupları'nı__ seçin.
 2. Silinecek kaynak grubunu bulun ve sonra listenin sağ tarafındaki __Daha fazla__ düğmesine (...) sağ tıklayın.
 3. __Kaynak grubunu sil__'i seçip onaylayın.
 
@@ -331,7 +331,7 @@ Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, HDInsight üzerinde [Apache Kafka](./kafka/apache-kafka-introduction.md) verileri yazmak ve okumak Için [Apache Spark yapılandırılmış akışın](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) nasıl kullanılacağını öğrendiniz. Kafka ile [Apache Storm](./storm/apache-storm-overview.md) nasıl kullanacağınızı öğrenmek için aşağıdaki bağlantıyı kullanın.
+Bu eğitimde, HdInsight'ta [Apache Kafka'dan](./kafka/apache-kafka-introduction.md) gelen verileri yazmak ve okumak için [Apache Spark Structured Streaming'i](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) kullanmayı öğrendiniz. Kafka ile [Apaçi Fırtınası'nın](./storm/apache-storm-overview.md) nasıl kullanılacağını öğrenmek için aşağıdaki bağlantıyı kullanın.
 
 > [!div class="nextstepaction"]
-> [Apache Kafka ile Apache Storm kullanma](hdinsight-apache-storm-with-kafka.md)
+> [Apaçi Kafka ile Apaçi Fırtınası kullanın](hdinsight-apache-storm-with-kafka.md)

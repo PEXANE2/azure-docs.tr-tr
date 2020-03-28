@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Kintone ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Kintone arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Kintone ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Kintone arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,98 +16,98 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227573"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Öğretici: Kintone ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Öğretici: Kintone ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Kintone 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Kintone 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu eğitimde, Kintone'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Kintone'u Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Azure AD 'de, Kintone erişimi olan bir denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Kintone (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Kintone erişimi olan Azure AD'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Kintone'da (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Kintone ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini Kintone ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* Kintone çoklu oturum açma etkin aboneliği
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Kintone tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Kintone **SP** tarafından başlatılan SSO 'yu destekler
+* Kintone **SP** başlatılan SSO destekler
 
 ## <a name="adding-kintone-from-the-gallery"></a>Galeriden Kintone ekleme
 
-Kintone 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Kintone eklemeniz gerekir.
+Kintone'un Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Kintone'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Kinton eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden Kintone eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Kintone**yazın, sonuç panelinden **Kintone** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusunda **Kintone**yazın, sonuç panelinden **Kintone'u** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
      ![Sonuç listesinde Kintone](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Kintone ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve Kintone içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD'nin Kintone ile **britta Simon**adlı bir test kullanıcısına göre tek oturum açma işlemini yapılandırıp test esiniz.
+Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile Kintone'daki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD çoklu oturum açmayı Kintone ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD oturumlarını Kintone ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Kintone çoklu oturum açmayı yapılandırma](#configure-kintone-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcı Azure AD gösterimine bağlı bir ınton 'da Britta Simon 'a sahip olmak için **[Kintone test kullanıcısı oluşturun](#create-kintone-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[Kintone Tek Oturum](#configure-kintone-single-sign-on)** Açma 'yı yapılandırır - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Kintone test kullanıcısını oluşturun](#create-kintone-test-user)** - Kintone'daki Britta Simon'ın, kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açmayı Kintone ile yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD oturumlarını Kintone ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **Kintone** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. Azure [portalında,](https://portal.azure.com/) **Kintone** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Kintone etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
+    ![Kintone Domain ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<companyname>.kintone.com`
+    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.kintone.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
     
     | |
     |--|
@@ -115,150 +115,150 @@ Azure AD çoklu oturum açmayı Kintone ile yapılandırmak için aşağıdaki a
     | `https://<companyname>.kintone.com` |
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Kintone istemci destek ekibine](https://www.kintone.com/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Kintone İstemci destek ekibine](https://www.kintone.com/contact/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. **Kintone ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+6. **Kintone'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-kintone-single-sign-on"></a>Kintone çoklu oturum açmayı yapılandırma
+### <a name="configure-kintone-single-sign-on"></a>Kintone Tek İşaretle Yapıla
 
-1. Farklı bir Web tarayıcısı penceresinde, **Kintone** şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak **Kintone** şirket sitenizde oturum açın.
 
 1. **Ayarlar simgesine**tıklayın.
 
     ![Ayarlar](./media/kintone-tutorial/ic785879.png "Ayarlar")
 
-1. **Sistem yönetimi & kullanıcılar**' a tıklayın.
+1. **Sistem Yönetimi & Kullanıcıları**tıklatın.
 
-    ![Sistem Yönetimi & kullanıcılar](./media/kintone-tutorial/ic785880.png "Sistem Yönetimi & kullanıcılar")
+    ![Sistem Yönetimi & Kullanıcılar](./media/kintone-tutorial/ic785880.png "Sistem Yönetimi & Kullanıcılar")
 
-1. **Sistem yönetimi \> güvenlik** altında **oturum aç**' a tıklayın.
+1. **Sistem İdaresi \> Güvenlik** altında **Giriş**'i tıklatın.
 
-    ![Oturum açma](./media/kintone-tutorial/ic785881.png "Oturum aç")
+    ![Oturum açma](./media/kintone-tutorial/ic785881.png "Oturum Aç")
 
-1. **SAML kimlik doğrulamasını etkinleştir**' e tıklayın.
+1. **SAML kimlik doğrulamasını etkinleştir'i**tıklatın.
 
-    ![SAML kimlik doğrulaması](./media/kintone-tutorial/ic785882.png "SAML kimlik doğrulaması")
+    ![SAML Kimlik Doğrulama](./media/kintone-tutorial/ic785882.png "SAML Kimlik Doğrulama")
 
-1. SAML kimlik doğrulaması bölümünde aşağıdaki adımları uygulayın:
+1. SAML Kimlik Doğrulama bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![SAML kimlik doğrulaması](./media/kintone-tutorial/ic785883.png "SAML kimlik doğrulaması")
+    ![SAML Kimlik Doğrulama](./media/kintone-tutorial/ic785883.png "SAML Kimlik Doğrulama")
 
-    a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    a. Giriş **URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin** değerini yapıştırın.
 
-    b. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
+    b. Oturum **Açma URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL** değerini yapıştırın.
 
-    c. İndirilen sertifika dosyanızı Azure portal karşıya yüklemek için, **Araştır** ' a tıklayın.
+    c. İndirilen sertifika dosyanızı Azure portalından yüklemek için **Gözat'ı** tıklatın.
 
-    d. **Save (Kaydet)** düğmesine tıklayın.
+    d. **Kaydet**'e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. **Kullanıcı adı** alan türü ' nde `brittasimon@yourcompanydomain.extension`  
+    b. Kullanıcı **adı** alanı türünde`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Kinı 'ye erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Britta Simon'ın Kintone'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Kintone**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Kintone'u**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Kintone**' ı seçin.
+2. Uygulamalar listesinde **Kintone'u**seçin.
 
     ![Uygulamalar listesindeki Kintone bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-kintone-test-user"></a>Kintone test kullanıcısı oluştur
+### <a name="create-kintone-test-user"></a>Kintone test kullanıcısı oluşturma
 
-Azure AD kullanıcılarının Kintone 'da oturum açmasını sağlamak için, bunların Kintone 'a sağlanması gerekir. Kintone durumunda, sağlama el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Kintone'da oturum açabilmeleri için Kintone'de oturum açmaları gerekir. Kintone durumunda, sağlama manuel bir görevdir.
 
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:
 
-1. **Kintone** şirket sitenizde yönetici olarak oturum açın.
+1. Yönetici olarak **Kintone** şirket sitenizde oturum açın.
 
 1. **Ayarlar simgesine**tıklayın.
 
     ![Ayarlar](./media/kintone-tutorial/ic785879.png "Ayarlar")
 
-1. **Sistem yönetimi & kullanıcılar**' a tıklayın.
+1. **Sistem Yönetimi & Kullanıcıları**tıklatın.
 
-    ![Kullanıcı & sistem yönetimi](./media/kintone-tutorial/ic785880.png "Kullanıcı & sistem yönetimi")
+    ![Kullanıcı & Sistem Yönetimi](./media/kintone-tutorial/ic785880.png "Kullanıcı & Sistem Yönetimi")
 
-1. **Kullanıcı yönetimi**altında, **Kullanıcılar & departmanlar**' a tıklayın.
+1. **Kullanıcı Yönetimi**altında, & **Kullanıcılar Bölümleri**tıklatın.
 
-    ![Departman & kullanıcıları](./media/kintone-tutorial/ic785888.png "Departman & kullanıcıları")
+    ![Bölüm & Kullanıcıları](./media/kintone-tutorial/ic785888.png "Bölüm & Kullanıcıları")
 
-1. **Yeni Kullanıcı**' ya tıklayın.
+1. **Yeni Kullanıcı'yı**tıklatın.
 
-    ![Yeni kullanıcılar](./media/kintone-tutorial/ic785889.png "Yeni kullanıcılar")
+    ![Yeni Kullanıcılar](./media/kintone-tutorial/ic785889.png "Yeni Kullanıcılar")
 
-1. **Yeni Kullanıcı** bölümünde aşağıdaki adımları gerçekleştirin:
+1. Yeni **Kullanıcı** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Yeni kullanıcılar](./media/kintone-tutorial/ic785890.png "Yeni kullanıcılar")
+    ![Yeni Kullanıcılar](./media/kintone-tutorial/ic785890.png "Yeni Kullanıcılar")
 
-    a. Bir **görünen ad**, **oturum açma adı**, **Yeni parola**, **parolayı onaylayın**, **e-posta adresi**ve ilgili metin kutularına sağlamak istediğiniz geçerli bir Azure AD hesabının diğer ayrıntılarını yazın.
+    a. Bir **Görüntü Adı,** **Giriş Adı,** **Yeni Parola,** **Parolayı Onayla,** **E-posta Adresi**ve ilgili metin kutularına sağlamak istediğiniz geçerli bir Azure REKLAM hesabının diğer ayrıntılarını yazın.
 
-    b. **Save (Kaydet)** düğmesine tıklayın.
+    b. **Kaydet**'e tıklayın.
 
 > [!NOTE]
-> Azure AD Kullanıcı hesapları sağlamak için Kintone tarafından sunulan diğer herhangi bir Kintone Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
+> Azure AD kullanıcı hesaplarını sağlamak için Kintone tarafından sağlanan diğer Kintone kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Kintone kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Kintone 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Kintone döşemesini tıklattığınızda, SSO'yu kurduğunuz Kintone'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

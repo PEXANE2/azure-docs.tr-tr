@@ -1,40 +1,40 @@
 ---
-title: Öğretici-Redto kullanarak Azure önbelleğinde önbellekleri yapılandırma
-description: Redsıs için Azure önbelleği 'ne bir güvenlik duvarı kuralı oluşturmak, ölçeklendirmek, yeniden başlatmak ve bu kuralı eklemek için nasıl kullanacağınızı öğrenin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Cache, redsıs
+title: Öğretici - Ansible kullanarak Redis için Azure Önbelleğinde önbellekleri yapılandırın
+description: Redis için Azure Önbelleği'ne güvenlik duvarı kuralı oluşturmak, ölçeklendirmek, yeniden başlatmak ve eklemek için Ansible'ı nasıl kullanacağınızı öğrenin
+keywords: ansible, masmavi, devops, bash, oyun kitabı, önbellek, redis
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156518"
 ---
-# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Öğretici: redin kullanarak Azure önbelleğinde önbellekleri yapılandırma
+# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Öğretici: Ansible kullanarak Redis için Azure Önbelleğinde önbellekleri yapılandırın
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Redsıs Için Azure Cache](/azure/azure-cache-for-redis/) , verilere hızlı erişim sağlayarak yanıt veren uygulamalar oluşturmanıza olanak sağlayan açık kaynaklı bir uyumlu hizmettir. 
+[Redis için Azure Önbelleği,](/azure/azure-cache-for-redis/) verilere hızlı erişim sağlayarak duyarlı uygulamalar oluşturmanıza olanak tanıyan açık kaynak uyumlu bir hizmettir. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Bir önbellek oluşturma
-> * Bir önbelleği ölçeklendirme
-> * Önbelleği yeniden Başlat
-> * Önbelleğe bir güvenlik duvarı kuralı ekleme
-> * Önbellek silme
+> * Önbelleği ölçeklendir
+> * Önbelleği yeniden başlatma
+> * Önbelleğe güvenlik duvarı kuralı ekleme
+> * Önbelleği silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 
-Yeni bir kaynak grubu içinde Reda için Azure önbelleği oluşturun.
+Yeni bir kaynak grubunda Redis için bir Azure Önbelleği oluşturun.
 
 ```yml
   - name: Create resource group
@@ -51,7 +51,7 @@ Yeni bir kaynak grubu içinde Reda için Azure önbelleği oluşturun.
         size: C1 
 ```
 
-Önbellek sağlamak birkaç dakika sürebilir. Aşağıdaki kod işlemin tamamlanmasını sağlar:
+Önbelleği sağlamak birkaç dakika sürebilir. Aşağıdaki kod, Ansible'a işlemin tamamlanmasını beklemesini söyler:
 
 ```yml
   - name: Wait for Redis provisioning to complete
@@ -64,7 +64,7 @@ Yeni bir kaynak grubu içinde Reda için Azure önbelleği oluşturun.
     delay: 60
 ```
 
-Uzun sağlama işlemi sırasında birkaç "hata" iletisi görüntülenir. Bu iletiler güvenle göz ardı edilebilir. Son ileti, önemli bir iletidir. Aşağıdaki örnekte, son ("Tamam") iletisine kadar birçok hata mesajı vardır.
+Uzun sağlama işlemi sırasında, birkaç "hata" iletisi görüntülenir. Bu iletiler güvenle yoksayılabilir. Önemli mesaj son mesajdır. Aşağıdaki örnekte, son ("tamam") iletiye kadar birçok hata iletisi vardır.
 
 ```Output
 FAILED - RETRYING: Get facts (100 retries left).
@@ -80,11 +80,11 @@ FAILED - RETRYING: Get facts (91 retries left).
 ok: [localhost]
 ```
 
-## <a name="scale-the-cache"></a>Önbelleği ölçeklendirme
+## <a name="scale-the-cache"></a>Önbelleği ölçeklendirin
 
-Redin için Azure önbelleğinde uygulamanızın ihtiyaçlarına bağlı olarak farklı önbellek teklifleri vardır. Bu önbellek seçenekleri, önbellek boyutu ve özellikleri seçimi için esneklik sağlar. Uygulama gereksinimleriniz, önbellek oluşturulduktan sonra değişiklik yaparsanız, önbelleği gerektiği gibi ölçeklendirebilirsiniz. Ölçeklendirme hakkında daha fazla bilgi için bkz. [redsıs Için Azure önbelleğini ölçeklendirme](/azure/azure-cache-for-redis/cache-how-to-scale).
+Redis için Azure Önbelleği, uygulamanızın gereksinimlerine bağlı olarak farklı önbellek tekliflerine sahiptir. Bu önbellek seçenekleri, önbellek boyutu ve özellikleri seçiminde esneklik sağlar. Önbellek oluşturulduktan sonra uygulama gereksinimleriniz değişirse, önbelleği gerektiği gibi ölçeklendirebilirsiniz. Ölçeklendirme hakkında daha fazla bilgi için [Redis için Azure Önbelleğini niçin ölçeklendireceğini](/azure/azure-cache-for-redis/cache-how-to-scale)öğrenin.
 
-Aşağıdaki örnek kod, önbelleği **Standart**olarak ölçeklendirir:
+Aşağıdaki örnek kod önbelleği **Standart**olarak ölçeklendirin:
 
 ```yml
 - name: Scale up Azure Cache for Redis
@@ -96,7 +96,7 @@ Aşağıdaki örnek kod, önbelleği **Standart**olarak ölçeklendirir:
         size: C1
 ```
 
-Bir önbelleğin ölçeklendirilmesi birkaç dakika sürebilir. Aşağıdaki kod işlemin tamamlanmasını sağlar:
+Önbelleği ölçeklendirmek birkaç dakika sürebilir. Aşağıdaki kod, Ansible'a işlemin tamamlanmasını beklemesini söyler:
 
 ```yml
   - name: Wait for Redis scaling up to complete
@@ -109,7 +109,7 @@ Bir önbelleğin ölçeklendirilmesi birkaç dakika sürebilir. Aşağıdaki kod
     delay: 60
 ```
 
-Redde için Azure Önbelleği sağlama görevine benzer şekilde, aşağıdaki ileti gibi bir çıktı normaldir:
+Redis için Azure Önbelleği sağlama görevine benzer şekilde, aşağıdaki ileti gibi çıktı normaldir:
 
 ```Ouput
 **FAILED - RETRYING: Get facts (100 retries left)** is normal.
@@ -117,7 +117,7 @@ Redde için Azure Önbelleği sağlama görevine benzer şekilde, aşağıdaki i
 
 ## <a name="reboot-the-cache"></a>Önbelleği yeniden başlatın
 
-Aşağıdaki kod, önceki bölümlerde oluşturulan önbelleği yeniden başlatır.
+Aşağıdaki kod önceki bölümlerde oluşturulan önbelleği yeniden başlatAbilir.
 
 ```yml
   - name: Reboot Azure Cache for Redis
@@ -128,7 +128,7 @@ Aşağıdaki kod, önceki bölümlerde oluşturulan önbelleği yeniden başlat�
         reboot_type: all
 ```
 
-### <a name="add-firewall-rule"></a>Güvenlik Duvarı Kuralı Ekle
+### <a name="add-firewall-rule"></a>Güvenlik duvarı kuralı ekleme
 
 Aşağıdaki kod önbelleğe bir güvenlik duvarı kuralı ekler:
 
@@ -154,11 +154,11 @@ Aşağıdaki kod önbelleği siler:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Örnek PlayBook 'u alın
+## <a name="get-the-sample-playbook"></a>Örnek oyun kitabını alın
 
-Örnek PlayBook 'un tamamını almanın iki yolu vardır:
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) ve `rediscache.yml`kaydedin.
-- `rediscache.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+Tam örnek oyun kitabını almanın iki yolu vardır:
+- [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) ve `rediscache.yml`'ye kaydedin.
+- Adlandırılmış `rediscache.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 - name: Manage Azure Cache for Redis
@@ -234,19 +234,19 @@ Aşağıdaki kod önbelleği siler:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Örnek PlayBook 'u çalıştırma
+## <a name="run-the-sample-playbook"></a>Örnek oyun kitabını çalıştırın
 
-Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için PlayBook 'u çalıştırın.
+Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için oyun kitabını çalıştırın.
 
-`vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+`vars` Bölümde, yer tutucuyu `{{ resource_group_name }}` kaynak grubunuzun adı ile değiştirin.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook rediscache.yml
 ```
 
-Çıktı aşağıdaki sonuçlara benzer şekilde görünür:
+Çıktı aşağıdaki sonuçlara benzer görünür:
 
 ```Output
 TASK [create resource group] 
@@ -322,9 +322,9 @@ Tuesday 12 March 2019  16:44:14 +0800 (0:00:06.217)       0:23:08.626
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
+Aşağıdaki kodu aşağıdaki `cleanup.yml`gibi kaydedin:
 
 ```yml
 - hosts: localhost
@@ -337,9 +337,9 @@ Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
         state: absent
 ```
 
-`vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+`vars` Bölümde, yer tutucuyu `{{ resource_group_name }}` kaynak grubunuzun adı ile değiştirin.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

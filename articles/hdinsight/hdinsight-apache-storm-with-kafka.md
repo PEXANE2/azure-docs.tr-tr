@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Apache Kafka ile Apache Storm-Azure HDInsight'
+title: 'Öğretici: Apache Kafka ile Apache Storm - Azure HDInsight'
 description: HDInsight üzerinde Apache Storm ve Apache Kafka kullanarak akış işlem hattı oluşturmayı öğrenin. Bu öğreticide, Kafka'dan veri akışı yapmak için KafkaBolt ve KafkaSpout bileşenlerini kullanırsınız.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494358"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Öğretici: HDInsight üzerinde Apache Kafka ile Apache Storm kullanma
 
-Bu öğreticide, HDInsight üzerinde [Apache Kafka](https://kafka.apache.org/) ile verileri okumak ve yazmak için [Apache Storm](https://storm.apache.org/) topolojisinin nasıl kullanılacağı gösterilmektedir. Bu öğretici Ayrıca verileri, fırtınası kümesindeki [Apache Hadoop](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) , uyumlu depolamada nasıl kalıcı hale getirebileceğinizi gösterir.
+Bu öğretici, HDInsight'ta [Apache Kafka](https://kafka.apache.org/) ile veri okumak ve yazmak için [Apache Storm](https://storm.apache.org/) topolojisi nasıl kullanılacağını göstermektedir. Bu öğretici ayrıca Fırtına kümesindeki [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) uyumlu depolama alanına verilerin nasıl kalıcı olduğunu da göstermektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Storm ve Kafka
@@ -32,11 +32,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Topolojileri durdurma
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Kafka konuları oluşturmayı bilme. Daha fazla bilgi için [HDInsight üzerinde Kafka hızlı başlangıcı](./kafka/apache-kafka-get-started.md) belgesine bakın.
 
-* Storm çözümleri (topolojileri) oluşturmayı ve dağıtmayı bilme. Özellikle, [Apache Storm Flox](https://storm.apache.org/releases/current/flux.html) Framework kullanan topolojiler. Daha fazla bilgi için bkz. [Java 'da Apache Storm topolojisi oluşturma](./storm/apache-storm-develop-java-topology.md) .
+* Storm çözümleri (topolojileri) oluşturmayı ve dağıtmayı bilme. Özellikle, [Apache Storm Flux](https://storm.apache.org/releases/current/flux.html) çerçeve kullanan topolojiler. Daha fazla bilgi için [Java belgesinde Apache Storm topolojisi oluştur'a](./storm/apache-storm-develop-java-topology.md) bakın.
 
 * [Java JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) veya üstü. HDInsight 3.5 veya üstü için Java 8 gerekir.
 
@@ -58,11 +58,11 @@ Dağıtım iş istasyonunuza Java ve JDK yüklerken aşağıdaki ortam değişke
 > 
 > Size kolaylık sağlamak için bu belgede, tüm gerekli Azure kaynaklarını oluşturabilecek bir şablonun bağlantıları sağlanır. 
 >
-> Bir sanal ağda HDInsight kullanma hakkında daha fazla bilgi için bkz. [HDInsight için sanal ağ planı](hdinsight-plan-virtual-network-deployment.md) belgesi.
+> Sanal ağda HDInsight kullanımı hakkında daha fazla bilgi için, [HDInsight](hdinsight-plan-virtual-network-deployment.md) belgesi için sanal ağ Planı'na bakın.
 
 ## <a name="storm-and-kafka"></a>Storm ve Kafka
 
-Apache Storm, Apache Kafka çalışmak için birkaç bileşen sağlar. Bu öğreticide aşağıdaki bileşenler kullanılır:
+Apache Storm, Apache Kafka ile çalışmak için çeşitli bileşenler sağlar. Bu öğreticide aşağıdaki bileşenler kullanılır:
 
 * `org.apache.storm.kafka.KafkaSpout`: Bu bileşen Kafka'dan verileri okur. Bu bileşen, aşağıdaki bileşenlere dayanır:
 
@@ -79,9 +79,9 @@ Apache Storm, Apache Kafka çalışmak için birkaç bileşen sağlar. Bu öğre
     * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Storm topolojisi içinde kullanılan tanımlama grubu veri yapısını Kafka'da depolanan alanlarla eşler.
 
 Bu bileşenler `org.apache.storm : storm-kafka` paketinde sağlanır. Storm sürümüyle eşleşen paket sürümünü kullanın. HDInsight 3.6 için, Storm sürümü 1.1.0'dır.
-Ayrıca, ek Kafka bileşenlerini içeren `org.apache.kafka : kafka_2.10` paketi de gereklidir. Kafka sürümüyle eşleşen paket sürümünü kullanın. HDInsight 3,6 için Kafka sürümü 1.1.1.
+Ayrıca, ek Kafka bileşenlerini içeren `org.apache.kafka : kafka_2.10` paketi de gereklidir. Kafka sürümüyle eşleşen paket sürümünü kullanın. HDInsight 3.6 için Kafka versiyonu 1.1.1'dir.
 
-Aşağıdaki XML [Apache Maven](https://maven.apache.org/) projesi için `pom.xml` bağımlılık bildirimidir:
+Aşağıdaki XML, Bir `pom.xml` [Apache Maven](https://maven.apache.org/) projesinin bağımlılık bildirimidir:
 
 ```xml
 <!-- Storm components for talking to Kafka -->
@@ -115,7 +115,7 @@ Aşağıdaki XML [Apache Maven](https://maven.apache.org/) projesi için `pom.xm
 
 ## <a name="understanding-the-code"></a>Kodu anlama
 
-Bu belgede kullanılan kod [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) adresinde sağlanır.
+Bu belgede kullanılan kod [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
 
 Bu öğreticide iki topoloji sağlanmaktadır:
 
@@ -128,7 +128,7 @@ Bu öğreticide iki topoloji sağlanmaktadır:
     >
     > Storm kümesini oluşturmak için bu belgedeki şablonu kullanmazsanız, betik eylemini kümenize el ile uygulamanız gerekir.
     >
-    > Betik eylemi [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) konumunda bulunur ve bu, fırtınası kümesinin gözetmen ve Nimbus düğümlerine uygulanır. Betik eylemlerini kullanma hakkında daha fazla bilgi için, [Betik eylemlerini kullanarak HDInsight'ı özelleştirme](hdinsight-hadoop-customize-cluster-linux.md) belgesine bakın.
+    > Komut dosyası eylemi, [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) Fırtına kümesinin denetleyici ve nimbus düğümlerinde bulunur ve uygulanır. Betik eylemlerini kullanma hakkında daha fazla bilgi için, [Betik eylemlerini kullanarak HDInsight'ı özelleştirme](hdinsight-hadoop-customize-cluster-linux.md) belgesine bakın.
 
 Topolojiler [Flux](https://storm.apache.org/releases/current/flux.html) kullanılarak tanımlanır. Flux Storm 0.10.x sürümünde kullanıma sunulmuştur ve topoloji yapılandırmasını koddan ayırmanıza olanak tanır. Flux çerçevesini kullanan Topolojiler için, topoloji YAML dosyasında tanımlanır. YAML dosyası topolojinin bir parçası olarak eklenebilir. Ayrıca, topolojiyi gönderirken kullandığınız tek başına bir dosya da olabilir. Flux, bu örnekte kullanılan çalışma zamanında değişken değiştirme özelliğini de destekler.
 
@@ -140,11 +140,11 @@ Aşağıdaki parametreler, bu topolojiler için çalışma zamanında ayarlanır
 
 * `${kafka.zookeeper.hosts}`: Kafka kümesinde Zookeeper'ın üzerinde çalıştırıldığı konaklar.
 
-* `${hdfs.url}`: HDFSBolt bileşeni için dosya sistemi URL'si. Verilerin bir Azure depolama hesabına mı yoksa Azure Data Lake Storage mi yazıldığını belirtir.
+* `${hdfs.url}`: HDFSBolt bileşeni için dosya sistemi URL'si. Verilerin bir Azure Depolama hesabına mı yoksa Azure Veri Gölü Depolamasına mı yazıldığını gösterir.
 
 * `${hdfs.write.dir}`: Verilerin yazıldığı dizin.
 
-Flux topolojileriyle ilgili daha fazla bilgi için bkz. [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html).
+Flux topolojileri hakkında daha [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)fazla bilgi için bkz.
 
 ### <a name="kafka-writer"></a>Kafka-yazıcı
 
@@ -368,11 +368,11 @@ Proje, topolojilerin kullandığı parametreleri geçirmek için kullanılan `de
 
 | dev.properties dosyası | Açıklama |
 | --- | --- |
-| `kafka.zookeeper.hosts` | [Apache ZooKeeper](https://zookeeper.apache.org/) , Kafka kümesi için barındırır. |
+| `kafka.zookeeper.hosts` | [Apache ZooKeeper](https://zookeeper.apache.org/) Kafka kümesi için ev sahipliği yapıyor. |
 | `kafka.broker.hosts` | Kafka aracısı konakları (çalışan düğümleri). |
 | `kafka.topic` | Topolojileri kullanan Kafka konusu. |
 | `hdfs.write.dir` | Kafka-okuyucu topolojisinin yazdığı dizin. |
-| `hdfs.url` | Storm kümesi tarafından kullanılan dosya sistemi. Azure Depolama hesapları için `wasb://` değerini kullanın. Azure Data Lake Storage 2. için `abfs://`değerini kullanın. Azure Data Lake Storage 1. için `adl://`değerini kullanın. |
+| `hdfs.url` | Storm kümesi tarafından kullanılan dosya sistemi. Azure Depolama hesapları için `wasb://` değerini kullanın. Azure Veri Gölü Depolama Gen2 için `abfs://`, . Azure Veri Gölü Depolama Gen1 için `adl://`, . |
 
 ## <a name="create-the-clusters"></a>Kümeleri oluşturma
 
@@ -383,7 +383,7 @@ Aşağıdaki diyagramda Storm ile Kafka arasındaki iletişimin nasıl aktığı
 ![Bir Azure sanal ağında Storm ve Kafka kümeleri diyagramı](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
 
 > [!NOTE]  
-> Kümedeki SSH ve [Apache ambarı](https://ambari.apache.org/) gibi diğer hizmetlere internet üzerinden erişilebilir. HDInsight üzerinde kullanılabilir olan genel bağlantı noktaları hakkında daha fazla bilgi için bkz. [HDInsight Tarafından Kullanılan Bağlantı Noktaları ve URI’ler](hdinsight-hadoop-port-settings-for-services.md).
+> SSH ve [Apache Ambari](https://ambari.apache.org/) gibi kümedeki diğer hizmetlere internet üzerinden erişilebilir. HDInsight üzerinde kullanılabilir olan genel bağlantı noktaları hakkında daha fazla bilgi için bkz. [HDInsight Tarafından Kullanılan Bağlantı Noktaları ve URI’ler](hdinsight-hadoop-port-settings-for-services.md).
 
 Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeleri oluşturmak için aşağıdaki adımları kullanın:
 
@@ -391,7 +391,7 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Azure Resource Manager şablonu **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** sayfasında bulunur. Aşağıdaki kaynakları oluşturur:
+    Azure Kaynak Yöneticisi şablonu **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**' nda yer alır. Aşağıdaki kaynakları oluşturur:
 
     * Azure kaynak grubu
     * Azure Sanal Ağ
@@ -429,7 +429,7 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
 
 ## <a name="build-the-topology"></a>Topoloji oluşturma
 
-1. Geliştirme ortamında [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) adresinden projeyi indirin, komut satırı açın ve dizinleri projeyi indirdiğiniz konumla değiştirin.
+1. Geliştirme ortamınızda, projeyi [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)bir komut satırı aç'tan indirin ve dizinleri projeyi karşıdan yüklediğiniz konuma değiştirin.
 
 2. **hdinsight-storm-java-kafka** dizininde, aşağıdaki komutu kullanarak projeyi derleyin ve dağıtım için paket oluşturun:
 
@@ -437,7 +437,7 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
    mvn clean package
    ```
 
-    Paket işlemi, `KafkaTopology-1.0-SNAPSHOT.jar` dizininde `target` adlı bir dosya oluşturur.
+    Paket işlemi, `target` dizininde `KafkaTopology-1.0-SNAPSHOT.jar` adlı bir dosya oluşturur.
 
 3. Paketi HDInsight kümesindeki Storm'a kopyalamak için aşağıdaki komutları kullanın. `sshuser` değerini kümenin SSH kullanıcı adıyla değiştirin. `stormclustername` değerini __Storm__ kümesinin adıyla değiştirin.
 
@@ -514,7 +514,7 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
         kafka.topic: stormtopic
 
     > [!IMPORTANT]  
-    > `hdfs.url` girdisi, Azure Depolama hesabı kullanan bir küme için yapılandırılır. Bu topolojiyi Data Lake Storage kullanan bir fırtınası kümesiyle birlikte kullanmak için, bu değeri `wasb` ' dan `adl`' e değiştirin.
+    > `hdfs.url` girdisi, Azure Depolama hesabı kullanan bir küme için yapılandırılır. Veri Gölü Depolama'yı kullanan bir Fırtına kümesiyle bu `wasb` topolojiyi kullanmak için bu değeri 'den 'ye `adl`çevirin
 
 4. `dev.properties` dosyasını kaydedin ve ardından aşağıdaki komutu kullanarak bu dosyayı **Storm** kümesine yükleyin:
 
@@ -572,7 +572,7 @@ Kafka, verileri bir _konu_ içinde depolar. Storm topolojilerini başlatmadan ö
 
     * `-R /writer.yaml`: Topolojiyi yapılandırmak için `writer.yaml` dosyasını kullanın. `-R`, bu kaynağın jar dosyası içinde yer aldığını gösterir. Bu, jar dosyasının kökünde yer aldığından yolu `/writer.yaml` şeklindedir.
 
-    * `--filter`: `writer.yaml` dosyasındaki değerleri kullanarak `dev.properties` topolojisindeki girdileri doldurun. Örneğin, dosyadaki `kafka.topic` girdisinin değeri topoloji tanımındaki `${kafka.topic}` girdisi yerine kullanılır.
+    * `--filter`: `dev.properties` dosyasındaki değerleri kullanarak `writer.yaml` topolojisindeki girdileri doldurun. Örneğin, dosyadaki `kafka.topic` girdisinin değeri topoloji tanımındaki `${kafka.topic}` girdisi yerine kullanılır.
 
 ## <a name="start-the-reader"></a>Okuyucuyu başlatma
 
@@ -633,7 +633,7 @@ Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, HDInsight üzerinde [Apache Kafka](https://kafka.apache.org/) yazmak ve okumak için [Apache Storm](https://storm.apache.org/) topolojisini nasıl kullanacağınızı öğrendiniz. Ayrıca HDInsight tarafından kullanılan [Apache Hadoop](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) , uyumlu depolama alanına veri depolamayı öğrendiniz.
+Bu eğitimde, HDInsight'ta [Apache Kafka'ya](https://kafka.apache.org/) yazmak ve okumak için [Apache Storm](https://storm.apache.org/) topolojisini kullanmayı öğrendiniz. HdInsight tarafından kullanılan [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) uyumlu depolama alanına nasıl veri depoladığınızı da öğrendiniz.
 
 > [!div class="nextstepaction"]
-> [Apache Kafka Producer ve tüketici API 'SI kullanma](kafka/apache-kafka-producer-consumer-api.md)
+> [Apache Kafka Üretici ve Tüketici API’sini kullanma](kafka/apache-kafka-producer-consumer-api.md)

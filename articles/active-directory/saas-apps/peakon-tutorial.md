@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Peakon | Microsoft Docs'
-description: Azure Active Directory ve Peakon arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Peakon ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Peakon arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,243 +16,243 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094715"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Öğretici: Peakon ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Öğretici: Peakon ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Peakon tümleştirme konusunda bilgi edinin.
-Azure AD ile Peakon tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, Peakon'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Peakon'u Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Peakon erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) Peakon için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Peakon erişimi olan Azure AD'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Peakon'da (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile Peakon yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Peakon ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Abonelik Peakon çoklu oturum açma etkin
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* Peakon tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Peakon destekler **SP** ve **IDP** tarafından başlatılan
+* Peakon **SP** ve **IDP'nin** başlattığı SSO'ya destek verdi
 
 ## <a name="adding-peakon-from-the-gallery"></a>Galeriden Peakon ekleme
 
-Azure AD'de Peakon tümleştirmesini yapılandırmak için Peakon Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Peakon'un Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Peakon'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
 **Galeriden Peakon eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Peakon**seçin **Peakon** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusunda **Peakon**yazın, sonuç panelinden **Peakon'u** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuç listesinde Peakon](common/search-new-app.png)
+     ![Sonuç listesinde peakon](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma Peakon adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının Peakon ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre yapılandırıp test edeyimsiniz.
+Tek oturum açmanın işe yaraması için, Bir Azure REKLAM kullanıcısı ile Peakon'daki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma Peakon ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD oturumaçmayı Peakon ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Peakon çoklu oturum açmayı yapılandırma](#configure-peakon-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Peakon test kullanıcısı oluşturma](#create-peakon-test-user)**  - kullanıcı Azure AD gösterimini bağlı Peakon Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[Peakon Tek Oturum Açma'yı uygulama](#configure-peakon-single-sign-on)** tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Peakon test kullanıcısını oluşturun](#create-peakon-test-user)** - Peakon'daki Britta Simon'ın, kullanıcının Azure AD gösterimine bağlı bir örneğine sahip olmak için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma ile Peakon yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD oturum açma işlemlerini Peakon ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Peakon** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. Azure [portalında,](https://portal.azure.com/) **Peakon** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** uygulamada yapılandırmak isterseniz, bölümü **IDP** başlatılan modu, aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
 
-    ![Peakon etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![Peakon Domain ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
 
-    a. İçinde **tanımlayıcı** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://app.peakon.com/saml/<companyid>/metadata`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.peakon.com/saml/<companyid>/metadata`
 
-    b. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://app.peakon.com/saml/<companyid>/assert`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.peakon.com/saml/<companyid>/assert`
 
-5. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız, aşağıdaki adımı uygulayın **SP** başlatılan modu:
+5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Peakon etki alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Peakon Domain ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
-    İçinde **oturum açma URL'si** metin kutusuna bir URL yazın:  `https://app.peakon.com/login`
+    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://app.peakon.com/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek tanımlayıcısı ve bu öğreticinin ilerleyen bölümlerinde açıklanan yanıt URL'si ile güncelleştirin. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek Tanımlayıcı ve Yanıt URL'si ile güncelleştirin. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-6. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (ham)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Ham)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
-7. Üzerinde **Peakon kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+7. **Peakon'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-peakon-single-sign-on"></a>Peakon tek oturum açmayı yapılandırın
+### <a name="configure-peakon-single-sign-on"></a>Peakon Tek Oturum Açma'yı Yapılandır
 
-1. Farklı bir web tarayıcı penceresinde Peakon için yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak Peakon'da oturum açın.
 
-2. Sayfanın sol tarafındaki menü çubuğundaki **yapılandırma**, ardından gidin **tümleştirmeler**.
+2. Sayfanın sol tarafındaki menü çubuğunda **Yapılandırma'yı**tıklatın ve ardından **Tümleştirmeler'e**gidin.
 
-    ![Yapılandırma](./media/peakon-tutorial/tutorial_peakon_config.png)
+    ![The Config](./media/peakon-tutorial/tutorial_peakon_config.png)
 
-3. Üzerinde **tümleştirmeler** sayfasında, tıklayarak **çoklu oturum açma**.
+3. **Tümleştirmeler** **sayfasında, Tek Oturum Açma'ya**tıklayın.
 
     ![Tek](./media/peakon-tutorial/tutorial_peakon_single.png)
 
-4. Altında **çoklu oturum açma** bölümünde, tıklayarak **etkinleştirme**.
+4. **Tek Oturum Açma** bölümünün altında **Etkinleştir'e**tıklayın.
 
-    ![Etkinleştir](./media/peakon-tutorial/tutorial_peakon_enable.png)
+    ![Etkinleştirme](./media/peakon-tutorial/tutorial_peakon_enable.png)
 
-5. Üzerinde **çoklu oturum açma için SAML kullanarak çalışanlara** bölümünde, aşağıdaki adımları gerçekleştirin:
+5. **SAML** bölümünü kullanan çalışanlar için Tek oturum açma da aşağıdaki adımları gerçekleştirin:
 
     ![Saml](./media/peakon-tutorial/tutorial_peakon_saml.png)
 
-    a. İçinde **SSO oturum açma URL'si** metin değerini yapıştırın **oturum açma URL'si**, hangi Azure portaldan kopyaladığınız.
+    a. **SSO Giriş URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin**değerini yapıştırın.
 
-    b. İçinde **SSO oturum kapatma URL'si** metin değerini yapıştırın **oturum kapatma URL'si**, hangi Azure portaldan kopyaladığınız.
+    b. **SSO Giriş URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL**değerini yapıştırın.
 
-    c. Tıklayın **dosya** sertifika kutusuna Azure portalından indirilen sertifikayı karşıya yüklemek için.
+    c. Azure portalından indirdiğiniz sertifikayı Sertifika kutusuna yüklemek için **dosyayı seç'i** tıklatın.
 
-    d. Tıklayın **simgesi** kopyalamak için **varlık kimliği** ve yapıştırın **tanımlayıcı** metin kutusunda **temel SAML yapılandırma** bölümü Azure portalı.
+    d. Azure portalındaki **Temel SAML Yapılandırma** sı bölümündeKi **Identifier** textbox'ta **Entity Id** ve yapıştırmayı kopyalamak için **simgeyi** tıklatın.
 
-    e. Tıklayın **simgesi** kopyalamak için **yanıt URL'si (ACS)** ve yapıştırın **yanıt URL'si** metin kutusunda **temel SAML yapılandırma** bölümü Azure portalı.
+    e. Azure portalındaki **Temel SAML Yapılandırması** bölümünde **Yanıtla URL'sini (ACS)** kopyalamak ve **Yanıtla URL** metin kutusuna yapıştırmak için **simgeyi** tıklatın.
 
-    f. **Kaydet**'e tıklayın.
+    f. **Kaydet'i** tıklatın
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
+    b. Kullanıcı **adı** alanı türünde**brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Peakon erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın Peakon'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Peakon**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve **ardından Peakon'u**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Peakon**.
+2. Uygulamalar listesinde **Peakon'u**seçin.
 
-    ![Uygulamalar listesinde Peakon bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Peakon bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
 ### <a name="create-peakon-test-user"></a>Peakon test kullanıcısı oluşturma
 
-Peakon için oturum açmak Azure AD kullanıcılarının etkinleştirmek için bunların Peakon sağlanması gerekir.  
-Peakon söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Peakon'da oturum açmalarını etkinleştirmek için Peakon'da oturum açmaları gerekir.  
+Peakon söz konusu olduğunda, sağlama manuel bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Peakon şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Peakon şirket sitenizde yönetici olarak oturum açın.
 
-2. Sayfanın sol tarafındaki menü çubuğundaki **yapılandırma**, ardından gidin **çalışanlar**.
+2. Sayfanın sol tarafındaki menü çubuğunda **Yapılandırma'yı**tıklatın ve ardından **Çalışanlar'a**gidin.
 
     ![Çalışan](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
-3. Sayfanın üst sağ tarafında tıklayın **Ekle çalışan**.
+3. Sayfanın sağ üst tarafında **çalışan ekle'yi**tıklatın.
 
-      ![Çalışanı Ekle](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+      ![Ek çalışan](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
-3. Üzerinde **yeni çalışan** iletişim sayfasında, aşağıdaki adımları gerçekleştirin:
+3. Yeni **çalışan** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
 
      ![Yeni çalışan](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. İçinde **adı** metin türü adı olarak **Britta** ve Soyadı olarak **simon**.
+    a. **Ad** metin kutusuna, ilk adı **Britta** ve **soyadını simon**olarak yazın.
 
-    b. İçinde **e-posta** metin kutusu, türü e-posta adresi ister **Brittasimon\@contoso.com**.
+    b. **E-posta** metin kutusuna **\@Brittasimon contoso.com**gibi e-posta adresini yazın.
 
-    c. Tıklayın **Oluştur çalışan**.
+    c. **Çalışan Oluştur'u**tıklatın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli Peakon kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama Peakon için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Peakon döşemesini tıklattığınızda, SSO'yu kurduğunuz Peakon'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

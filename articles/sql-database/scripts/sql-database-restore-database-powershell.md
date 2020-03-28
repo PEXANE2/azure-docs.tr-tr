@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği-geri yükleme-yedekleme-Azure SQL veritabanı
-description: Azure SQL tek veritabanını otomatik yedeklemelerden önceki bir zaman noktasına geri yüklemek için örnek betik Azure PowerShell
+title: PowerShell örnek-geri yükleme-yedekleme-Azure SQL veritabanı
+description: Azure SQL tek veritabanını otomatik yedeklemelerden daha önceki bir noktaya geri yüklemek için Azure PowerShell örnek komut dosyası
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,21 +12,21 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
 ms.openlocfilehash: da4236e138bd75237ca10b85dc1586fecd1cece4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73691562"
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Azure SQL tek veritabanını önceki bir zaman noktasına geri yüklemek için PowerShell 'i kullanma
+# <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Azure SQL tek veritabanını daha önceki bir noktaya geri yüklemek için PowerShell'i kullanın
 
-Bu PowerShell betiği örneği, bir Azure SQL veritabanını zaman içinde belirli bir noktaya geri yükler.  
+Bu PowerShell komut dosyası örneği, bir Azure SQL veritabanını belirli bir noktaya geri yükler.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu öğretici AZ PowerShell 1.4.0 veya daha sonra gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -47,12 +47,12 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek bir veritabanı veya elastik havuz barındıran bir SQL veritabanı sunucusu oluşturur. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | SQL veritabanı sunucusunda tek başına veya havuza alınmış bir veritabanı olarak bir veritabanı oluşturur. |
-[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Tek başına veya havuza alınmış bir veritabanının coğrafi olarak yedekli bir yedeğini alır. |
-| [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | SQL tek başına veya havuza alınmış bir veritabanını geri yükler. |
-|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | Azure SQL tek başına veya havuza alınmış bir veritabanını kaldırır. |
-| [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Geri yüklemek için silinen tek başına veya havuza alınmış bir veritabanını alır. |
+| [Yeni-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek bir veritabanı veya elastik havuz barındıran bir SQL Veritabanı sunucusu oluşturur. |
+| [Yeni-AzSqlVeritabanı](/powershell/module/az.sql/new-azsqldatabase) | SQL Veritabanı sunucusunda bağımsız veya havuzlu bir veritabanı olarak bir veritabanı oluşturur. |
+[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Bağımsız veya havuzlu bir veritabanının coğrafi yedekli yedeklemesini alır. |
+| [Geri Yükleme-AzSqlVeritabanı](/powershell/module/az.sql/restore-azsqldatabase) | SQL bağımsız veya havuzlu veritabanını geri yükler. |
+|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | Azure SQL bağımsız veya havuzlu veritabanını kaldırır. |
+| [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Geri yükleyebileceğiniz silinmiş bağımsız veya havuzlu bir veritabanı alır. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

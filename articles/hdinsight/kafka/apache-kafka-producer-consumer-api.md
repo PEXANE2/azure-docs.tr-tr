@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Apache Kafka üreticisi & tüketici API 'Leri-Azure HDInsight"
+title: "Öğretici: Apache Kafka Üretici & Tüketici API'leri - Azure HDInsight"
 description: HDInsight’ta Apache Kafka Üretici ve Tüketici API’lerini kullanmayı öğrenin. Bu öğreticide, bu API’leri HDInsight üzerinde Kafka ile kullanmayı öğreneceksiniz.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
 ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239542"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma
@@ -24,29 +24,29 @@ Kafka Üretici API’si, uygulamaların Kafka kümesine veri akışları gönder
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Kodu anlama
 > * Uygulama derleme ve dağıtma
 > * Uygulamayı küme üzerinde çalıştırma
 
 API’ler hakkında daha fazla bilgi için [Üretici API’si](https://kafka.apache.org/documentation/#producerapi) ve [Tüketici API’si](https://kafka.apache.org/documentation/#consumerapi) hakkında Apache belgelerine bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight kümesinde Apache Kafka. Küme oluşturma hakkında bilgi edinmek için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md).
-* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks) veya OpenJDK gibi bir eşdeğer.
-* Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
-* PuTTY gibi bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Apache Kafka HDInsight kümesi nde. Kümeyi nasıl oluşturacağınıöğrenmek için [HDInsight'ta Apache Kafka ile başlat'a](apache-kafka-get-started.md)bakın.
+* [Java Geliştirici Kiti (JDK) sürüm 8](https://aka.ms/azure-jdks) veya OpenJDK gibi eşdeğeri.
+* [Apache Maven](https://maven.apache.org/download.cgi) düzgün Apache göre [yüklü.](https://maven.apache.org/install.html)  Maven Java projeleri için bir proje inşa sistemidir.
+* Putty gibi bir SSH müşterisi. Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-Örnek uygulama, [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) konumunda `Producer-Consumer` alt dizininde bulunur. **Kurumsal güvenlik paketi (ESP)** etkin Kafka kümesi kullanıyorsanız, `DomainJoined-Producer-Consumer` alt dizininde bulunan uygulama sürümünü kullanmanız gerekir.
+Örnek [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)uygulama, `Producer-Consumer` alt dizinde yer alır. **Kurumsal Güvenlik Paketi (ESP)** etkin Kafka kümesi kullanıyorsanız, `DomainJoined-Producer-Consumer` alt dizinde bulunan uygulama sürümünü kullanmanız gerekir.
 
 Uygulama öncelikli olarak dört dosyadan oluşur:
 * `pom.xml`: Bu dosya, proje bağımlılıklarını, Java sürümünü ve paketleme yöntemlerini tanımlar.
 * `Producer.java`: Bu dosya, üretici API’sini kullanarak Kafka’ya rastgele tümceler gönderir.
 * `Consumer.java`: Bu dosya, tüketici API’sini kullanarak Kafka’dan verileri okur ve STDOUT’a yayar.
-* `AdminClientWrapper.java`: Bu dosya, Kafka konularını oluşturmak, anlatmak ve silmek için yönetim API 'sini kullanır.
+* `AdminClientWrapper.java`: Bu dosya Kafka konularını oluşturmak, açıklamak ve silmek için yönetici API'sını kullanır.
 * `Run.java`: Üretici ve tüketici kodunu çalıştırmak için kullanılan komut satırı arabirimi.
 
 ### <a name="pomxml"></a>Pom.xml
@@ -64,7 +64,7 @@ Uygulama öncelikli olarak dört dosyadan oluşur:
     </dependency>
     ```
 
-    `${kafka.version}` girişi, `<properties>..</properties>` dosyasının `pom.xml` bölümünde bildirilir ve HDInsight kümesinin Kafka sürümüne yapılandırılır.
+    `${kafka.version}` girişi, `pom.xml` dosyasının `<properties>..</properties>` bölümünde bildirilir ve HDInsight kümesinin Kafka sürümüne yapılandırılır.
 
 * Eklentiler: Maven eklentileri çeşitli özellikler sağlar. Bu projede aşağıdaki eklentiler kullanılır:
 
@@ -73,7 +73,7 @@ Uygulama öncelikli olarak dört dosyadan oluşur:
 
 ### <a name="producerjava"></a>Producer.java
 
-Üretici, Kafka aracı konakları (çalışan düğümleri) ile iletişim kurar ve verileri bir Kafka konusuna gönderir. Aşağıdaki kod parçacığı, [GitHub deposundan](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) [Producer. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) dosyasından bulunur ve üretici özelliklerinin nasıl ayarlanacağını gösterir:
+Üretici, Kafka aracı konakları (çalışan düğümleri) ile iletişim kurar ve verileri bir Kafka konusuna gönderir. Aşağıdaki kod parçacığı [GitHub deposundan](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) dosyasından gelir ve üretici özelliklerini nasıl ayarlayacaýný gösterir:
 
 ```java
 Properties properties = new Properties();
@@ -111,29 +111,29 @@ Bu kodda tüketici, konu başlangıcından okumak üzere yapılandırılmıştı
 
 ### <a name="runjava"></a>Run.java
 
-[Run. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) dosyası, üretici veya tüketici kodu çalıştıran bir komut satırı arabirimi sağlar. Kafka aracı konağı bilgilerini bir parametre olarak sağlamanız gerekir. İsteğe bağlı olarak, tüketici işlemi tarafından kullanılan bir grup KIMLIĞI değeri ekleyebilirsiniz. Aynı grup KIMLIĞINI kullanarak birden çok tüketici örneği oluşturursanız, bu, konudan okuma dengeyi yükler.
+[Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) dosyası, üretici veya tüketici kodunu çalıştıran bir komut satırı arabirimi sağlar. Kafka aracı konağı bilgilerini bir parametre olarak sağlamanız gerekir. İsteğe bağlı olarak, tüketici işlemi tarafından kullanılan bir grup kimliği değeri ekleyebilirsiniz. Aynı grup kimliğini kullanarak birden çok tüketici örneği oluşturursanız, bunlar konudaki bakiye okumasını yükler.
 
 ## <a name="build-and-deploy-the-example"></a>Örnek derleme ve dağıtma
 
-Bu adımı atlamak isterseniz, önceden oluşturulmuş jar dosyaları dışındaki `Prebuilt-Jars` alt dizininden indirilebilir. Kafka-Producer-Consumer. jar dosyasını indirin. Kümeniz **Kurumsal güvenlik paketi (ESP)** etkinse, Kafka-Producer-Consumer-ESP. jar kullanın. Jar dosyasını HDInsight kümenize kopyalamak için adım 3 ' ü yürütün.
+Bu adımı atlamak isterseniz, önceden oluşturulmuş kavanozlar `Prebuilt-Jars` alt dizinden indirilebilir. Kafka-üretici-tüketici.jar indirin. Kümeniz **Kurumsal Güvenlik Paketi (ESP)** etkinse, kafka-üretici-tüketici-esp.jar'ı kullanın. Kavanozu HDInsight kümenize kopyalamak için adım 3'e uygulayın.
 
-1. [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)örnekleri indirip ayıklayın.
+1. Örnekleri indirin ve [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)ayıklayın.
 
-2. Geçerli dizininizi `hdinsight-kafka-java-get-started\Producer-Consumer` dizininin konumuna ayarlayın. **Kurumsal güvenlik paketi (ESP)** etkin Kafka kümesi kullanıyorsanız, konumu `DomainJoined-Producer-Consumer`alt dizine ayarlamanız gerekir. Uygulamayı derlemek için aşağıdaki komutu kullanın:
+2. Geçerli dizininizi `hdinsight-kafka-java-get-started\Producer-Consumer` dizinin konumuna ayarlayın. Kurumsal Güvenlik **Paketi (ESP)** etkin Kafka kümesi kullanıyorsanız, `DomainJoined-Producer-Consumer`konumu alt dizine ayarlamanız gerekir. Uygulamayı oluşturmak için aşağıdaki komutu kullanın:
 
     ```cmd
     mvn clean package
     ```
 
-    Bu komut, `target` adlı dosyayı içeren `kafka-producer-consumer-1.0-SNAPSHOT.jar` adlı bir dizin oluşturur.
+    Bu komut, `kafka-producer-consumer-1.0-SNAPSHOT.jar` adlı dosyayı içeren `target` adlı bir dizin oluşturur.
 
-3. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `CLUSTERNAME` değerini kümenizin adıyla değiştirin. `kafka-producer-consumer-1.0-SNAPSHOT.jar` dosyasını HDInsight kümenize kopyalamak için aşağıdaki komutu girin. İstendiğinde, SSH kullanıcısının parolasını girin.
+3. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `CLUSTERNAME` değerini kümenizin adıyla değiştirin. Dosyayı `kafka-producer-consumer-1.0-SNAPSHOT.jar` HDInsight kümenize kopyalamak için aşağıdaki komutu girin. İstendiğinde, SSH kullanıcısının parolasını girin.
 
     ```cmd
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
-## <a id="run"></a> Örneği çalıştırma
+## <a name="run-the-example"></a><a id="run"></a> Örneği çalıştırma
 
 1. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `CLUSTERNAME` değerini kümenizin adıyla değiştirin. Aşağıdaki komutu girerek kümeye bir SSH bağlantısı açın. İstendiğinde, SSH kullanıcı hesabının parolasını girin.
 
@@ -141,7 +141,7 @@ Bu adımı atlamak isterseniz, önceden oluşturulmuş jar dosyaları dışında
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Kafka Broker konaklarına sahip olmak için, aşağıdaki komutta `<clustername>` ve `<password>` değerlerini yerine koyun ve yürütün. Azure portal gösterildiği gibi `<clustername>` için aynı büyük/küçük harf kullanın. `<password>` küme oturum açma parolasıyla değiştirip yürütün:
+1. Kafka broker ev sahiplerini almak `<clustername>` için, `<password>` değerleri aşağıdaki komutun yerine getirin ve uygulayın. Azure portalında gösterildiği `<clustername>` gibi aynı kılıfı kullanın. Küme `<password>` giriş parolası ile değiştirin ve çalıştırın:
 
     ```bash
     sudo apt -y install jq
@@ -151,9 +151,9 @@ Bu adımı atlamak isterseniz, önceden oluşturulmuş jar dosyaları dışında
     ```
 
     > [!Note]  
-    > Bu komut, ambarı erişimi gerektirir. Kümeniz bir NSG 'nin arkasındaysa, bu komutu ambarı erişebilen bir makineden çalıştırın.
+    > Bu komut Ambari erişimi gerektirir. Kümeniz bir NSG'nin arkasındaysa, bu komutu Ambari'ye erişebilen bir makineden çalıştırın.
 
-1. Aşağıdaki komutu girerek `myTest`Kafka konusu oluşturun:
+1. Kafka konusunu `myTest`aşağıdaki komutu girerek oluşturun:
 
     ```bash
     java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
@@ -195,14 +195,14 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-Bu komut, terminali iki sütuna bölmek için `tmux` kullanır. Her sütunda aynı grup kimliği değerine sahip bir tüketici başlatılır. Tüketici okumayı tamamladıktan sonra her birinin yalnızca kayıtların bir bölümünü okuduğuna dikkat edin. `tmux`çıkmak için __CTRL + C__ tuşlarına iki kez kullanın.
+Bu komut, terminali iki sütuna bölmek için `tmux` kullanır. Her sütunda aynı grup kimliği değerine sahip bir tüketici başlatılır. Tüketici okumayı tamamladıktan sonra her birinin yalnızca kayıtların bir bölümünü okuduğuna dikkat edin. Çıkmak `tmux`için __Ctrl + C'yi__ iki kez kullanın.
 
 Aynı gruptaki istemcilerin tüketimi, konu başlığının bölümleri aracılığıyla işlenir. Bu kod örneğinde, daha önce oluşturulan `test` konusunda sekiz bölüm vardır. Sekiz tüketici başlatırsanız, her tüketici konunun tek bir bölümünden kayıtları okur.
 
 > [!IMPORTANT]  
 > Bir tüketici grubunda bölümden daha fazla tüketici örneği olamaz. Bu örnekte, konu başlığındaki bölüm sayısı sekiz olduğu için bir tüketici grubu en fazla bu sayıda tüketici içerebilir. Ya da her biri en fazla sekiz tüketici içeren birden fazla tüketici grubunuz olabilir.
 
-Kafka içinde depolanan kayıtlar bir bölüm içinde alındıkları sırada depolanır. *Bir bölüm* içindeki kayıtlar için sıralı teslim sağlamak üzere, tüketici örneklerinin bölüm sayısıyla eşleştiği bir tüketici grubu oluşturun. *Konu başlığı içindeki* kayıtların sıralı teslim edilmesini sağlayabilmek için, yalnızca bir tüketici örneği içeren bir tüketici grubu oluşturun.
+Kafka'da saklanan kayıtlar, bir bölüm içinde alındıkları sırayla saklanır. *Bir bölüm* içindeki kayıtlar için sıralı teslim sağlamak üzere, tüketici örneklerinin bölüm sayısıyla eşleştiği bir tüketici grubu oluşturun. *Konu başlığı içindeki* kayıtların sıralı teslim edilmesini sağlayabilmek için, yalnızca bir tüketici örneği içeren bir tüketici grubu oluşturun.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -216,7 +216,7 @@ Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede, HDInsight üzerinde Kafka ile Apache Kafka üreticisi ve tüketici API 'sini kullanmayı öğrendiniz. Kafka ile çalışma hakkında daha fazla bilgi için aşağıdakileri kullanın:
+Bu belgede, HDInsight'ta Kafka ile Apache Kafka Üretici ve Tüketici API'sini kullanmayı öğrendiniz. Kafka ile çalışma hakkında daha fazla bilgi için aşağıdakileri kullanın:
 
-* [Kafka REST proxy kullan](rest-proxy.md)
-* [Apache Kafka günlüklerini çözümle](apache-kafka-log-analytics-operations-management.md)
+* [Kafka REST Proxy kullanın](rest-proxy.md)
+* [Apache Kafka günlüklerini çözümleme](apache-kafka-log-analytics-operations-management.md)

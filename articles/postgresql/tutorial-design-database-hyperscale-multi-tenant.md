@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: çok kiracılı bir veritabanı tasarlama-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı'
-description: Bu öğreticide, PostgreSQL için Azure veritabanı hiper ölçek (Citus) üzerinde dağıtılmış tabloları oluşturma, doldurma ve sorgulama işlemlerinin nasıl yapılacağı gösterilmektedir.
+title: 'Öğretici: Çok kiracılı bir veritabanı tasarla - Hyperscale (Citus) - PostgreSQL için Azure Veritabanı'
+description: Bu öğretici, PostgreSQL Hyperscale (Citus) için Azure Veritabanı'nda dağıtılmış tabloların nasıl oluşturulup doldurulur ve sorgulanır.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -10,34 +10,34 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74978160"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure veritabanı – hiper ölçek (Citus) kullanarak çok kiracılı bir veritabanı tasarlama
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure Veritabanını kullanarak çok kiracılı bir veritabanı tasarla – Hyperscale (Citus)
 
-Bu öğreticide, şu şekilde nasıl yapılacağını öğrenmek için PostgreSQL için Azure veritabanı-hiper ölçek (Citus) kullanacaksınız:
+Bu öğreticide, postgreSQL için Azure Veritabanını kullanın - Hyperscale (Citus) nasıl yapılacağını öğrenmek için:
 
 > [!div class="checklist"]
 > * Hiper Ölçek (Citus) (Citus) sunucu grubu oluşturma
 > * Şema oluşturmak için psql yardımcı programını kullanma
-> * Düğümler arasında parça tabloları
+> * Düğümler arasında shard tablolar
 > * Örnek verileri ekleme
-> * Kiracı verilerini sorgulama
-> * Kiracılar arasında veri paylaşma
-> * Kiracı başına şemayı özelleştirme
+> * Kiracı verilerini sorgula
+> * Verileri kiracılar arasında paylaşma
+> * Kiracı başına şema özelleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Şema oluşturmak için psql yardımcı programını kullanma
 
-Psql kullanarak PostgreSQL için Azure veritabanı-hiper ölçek (Citus) bağlantısı kurulduktan sonra bazı temel görevleri tamamlayabilirsiniz. Bu öğreticide, reklamcılarının kampanyalarını izlemelerine izin veren bir Web uygulaması oluşturma işlemi adım adım açıklanmaktadır.
+Psql kullanarak PostgreSQL - Hyperscale (Citus) için Azure Veritabanına bağlandıktan sonra bazı temel görevleri tamamlayabilirsiniz. Bu öğretici, reklamverenlerin kampanyalarını izlemelerine olanak tanıyan bir web uygulaması oluşturmada size yol alar.
 
-Birden çok şirket uygulamayı kullanabilir, böylece şirketler için bir tablo oluşturalım ve kampanyalar için başka bir tablo oluşturalım. Psql konsolunda şu komutları çalıştırın:
+Birden fazla şirket uygulamayı kullanabilir, bu nedenle şirketleri tutmak için bir tablo ve kampanyaları için başka bir tablo oluşturalım. psql konsolunda şu komutları çalıştırın:
 
 ```sql
 CREATE TABLE companies (
@@ -63,7 +63,7 @@ CREATE TABLE campaigns (
 );
 ```
 
-Her kampanya reklamları çalıştırmak için ödeme yapar. Yukarıdaki koddan sonra psql 'de aşağıdaki kodu çalıştırarak reklamları için de tablo ekleyin:
+Her kampanya reklam yayınlamak için ödeme yapar. Yukarıdaki koddan sonra psql'de aşağıdaki kodu çalıştırarak reklamlar için de bir tablo ekleyin:
 
 ```sql
 CREATE TABLE ads (
@@ -84,7 +84,7 @@ CREATE TABLE ads (
 );
 ```
 
-Son olarak, her ad için tıklama ve aksaklılar hakkında istatistikleri izliyoruz:
+Son olarak, her reklam için tıklamalar ve gösterimlerle ilgili istatistikleri izleyeceğiz:
 
 ```sql
 CREATE TABLE clicks (
@@ -118,19 +118,19 @@ CREATE TABLE impressions (
 );
 ```
 
-Yeni oluşturulan tabloları şu şekilde psql 'de bulunan tablolar listesinde görebilirsiniz:
+Yeni oluşturulan tabloları psql'de şimdi psql'de çalıştırarak görebilirsiniz:
 
 ```postgres
 \dt
 ```
 
-Çok kiracılı uygulamalar, tüm birincil ve yabancı anahtarların şirket KIMLIĞINI içermesi neden olan her kiracı için benzersizlik uygulayabilir.
+Çok kiracılı uygulamalar yalnızca kiracı başına benzersizliği zorlayabilir, bu nedenle tüm birincil ve yabancı anahtarlar şirket kimliğini içerir.
 
-## <a name="shard-tables-across-nodes"></a>Düğümler arasında parça tabloları
+## <a name="shard-tables-across-nodes"></a>Düğümler arasında shard tablolar
 
-Bir hiper ölçek dağıtımı, tablo satırlarını Kullanıcı tarafından belirlenen bir sütunun değerine göre farklı düğümlere depolar. Bu "dağıtım sütunu", hangi kiracının hangi satırlara sahip olduğunu işaretler.
+Hiper ölçekli dağıtım, kullanıcı tarafından atanan sütunun değerini temel alan tablo satırlarını farklı düğümlerde depolar. Bu "dağıtım sütunu" kiracının hangi satırlara sahip olduğunu işaretler.
 
-Dağıtım sütununu şirket\_kimliği, kiracı tanımlayıcısı olacak şekilde ayarlayalim. Psql 'de şu işlevleri çalıştırın:
+Dağıtım sütununa şirket\_kimliği, kiracı tanımlayıcısı olarak ayarlayalım. psql'de şu işlevleri çalıştırın:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -142,7 +142,7 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 ## <a name="ingest-sample-data"></a>Örnek verileri ekleme
 
-Şu anda psql dışında, normal komut satırında örnek veri kümelerini indirebilirsiniz:
+Şimdi psql dışında, normal komut satırında, örnek veri kümelerini indirin:
 
 ```bash
 for dataset in companies campaigns ads clicks impressions geo_ips; do
@@ -150,7 +150,7 @@ for dataset in companies campaigns ads clicks impressions geo_ips; do
 done
 ```
 
-Psql içinde geri dönerek verileri toplu yükleyin. Psql ' i veri dosyalarını indirdiğiniz aynı dizinde çalıştırmayı unutmayın.
+Psql'in içine geri dön, verileri toplu yükleyin. Veri dosyalarını indirdiğiniz aynı dizinde psql çalıştırdığınızdan emin olun.
 
 ```sql
 SET CLIENT_ENCODING TO 'utf8';
@@ -162,11 +162,11 @@ SET CLIENT_ENCODING TO 'utf8';
 \copy impressions from 'impressions.csv' with csv
 ```
 
-Bu veriler artık çalışan düğümlerine yayılacaktır.
+Bu veriler artık alt düğümlere yayılacak.
 
-## <a name="query-tenant-data"></a>Kiracı verilerini sorgulama
+## <a name="query-tenant-data"></a>Kiracı verilerini sorgula
 
-Uygulama tek bir kiracı için veri istediğinde, veritabanı sorguyu tek bir çalışan düğümünde yürütebilir. Tek kiracılı sorgular tek bir kiracı KIMLIĞINE göre filtreleyerek. Örneğin, aşağıdaki sorgu, reklamlar ve aksaklamalar için `company_id = 5` filtreler. Sonuçları görmek için psql 'de çalıştırmayı deneyin.
+Uygulama tek bir kiracı için veri istediğinde, veritabanı sorguyu tek bir alt düğümüzerinde yürütebilir. Tek kiracılı sorgular tek bir kiracı kimliğine göre filtrefiltreler. Örneğin, reklamlar ve gösterimler için aşağıdaki sorgu filtreleri. `company_id = 5` Sonuçları görmek için psql çalıştırarak deneyin.
 
 ```sql
 SELECT a.campaign_id,
@@ -183,11 +183,11 @@ GROUP BY a.campaign_id, a.id
 ORDER BY a.campaign_id, n_impressions desc;
 ```
 
-## <a name="share-data-between-tenants"></a>Kiracılar arasında veri paylaşma
+## <a name="share-data-between-tenants"></a>Verileri kiracılar arasında paylaşma
 
-Artık tüm tablolar `company_id`tarafından dağıtılana kadar, ancak bazı veriler doğal olarak hiçbir kiracıya özel olarak "ait değildir" ve paylaşılabilir. Örneğin, örnek ad platformundaki tüm şirketler, IP adreslerine bağlı olarak kendi hedef kitlesi için coğrafi bilgiler almak isteyebilir.
+Şimdiye kadar tüm tablolar `company_id`tarafından dağıtıldı, ancak bazı veriler doğal olarak özellikle herhangi bir kiracıya "ait" değildir ve paylaşılabilir. Örneğin, örnek reklam platformundaki tüm şirketler, IP adreslerine bağlı olarak hedef kitlelerine coğrafi bilgi almak isteyebilir.
 
-Paylaşılan coğrafi bilgileri tutacak bir tablo oluşturun. Psql 'de aşağıdaki komutları çalıştırın:
+Paylaşılan coğrafi bilgileri tutmak için bir tablo oluşturun. Psql'de aşağıdaki komutları çalıştırın:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -199,21 +199,21 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Sonra, her çalışan düğümünde tablonun bir kopyasını depolamak için bir "başvuru tablosu" `geo_ips`.
+Sonraki `geo_ips` her işçi düğümünde tablonun bir kopyasını depolamak için bir "başvuru tablosu" olun.
 
 ```sql
 SELECT create_reference_table('geo_ips');
 ```
 
-Örnek verilerle yükleyin. Bu komutu, veri kümesini indirdiğiniz Dizin içinden psql 'de çalıştırmayı unutmayın.
+Örnek verilerle yükleyin. Bu komutu veri kümesini indirdiğiniz dizinin içinden psql'de çalıştırmayı unutmayın.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Tıklama tablosunun coğrafi\_IP 'leri ile katılması tüm düğümlerde etkilidir.
-Ad 'ye tıklanan herkesin konumlarını bulmak için bir JOIN aşağıda verilmiştir
-290. Sorguyu psql 'de çalıştırmayı deneyin.
+Tıklama tablosuna geo\_ips ile katılmak tüm düğümlerde etkilidir.
+Burada reklam tıklayan herkesin konumlarını bulmak için bir birleştirme
+290. Sorguyu psql'de çalıştırmayı deneyin.
 
 ```sql
 SELECT c.id, clicked_at, latlon
@@ -223,14 +223,14 @@ SELECT c.id, clicked_at, latlon
    AND c.ad_id = 290;
 ```
 
-## <a name="customize-the-schema-per-tenant"></a>Kiracı başına şemayı özelleştirme
+## <a name="customize-the-schema-per-tenant"></a>Kiracı başına şema özelleştirme
 
-Her kiracının, diğerlerinin gerek duymayan özel bilgileri depolaması gerekebilir. Ancak, tüm kiracılar aynı veritabanı şemasıyla ortak bir altyapı paylaşır. Fazla veri nereden gidebileceği?
+Her kiracının başkaları tarafından gerekmeyen özel bilgileri depolaması gerekebilir. Ancak, tüm kiracılar aynı veritabanı şeması ile ortak bir altyapı paylaşır. İlave veriler nereye gidebilir?
 
-Tek bir adım PostgreSQL 'in JSONB gibi bir açık uçlu sütun türü kullanmaktır.  Şemamız `user_data`adlı `clicks` bir JSONB alanına sahiptir.
-Şirket (Şirket beşini), kullanıcının bir mobil cihazda olup olmadığını izlemek için sütununu kullanabilir.
+Bir hile PostgreSQL JSONB gibi açık uçlu sütun türü kullanmaktır.  Şemamızın `clicks` jsonb `user_data`alanı var.
+Bir şirket (şirket beş deyin), kullanıcının mobil cihazda olup olmadığını izlemek için sütunu kullanabilir.
 
-İşte kimin daha fazla tıklatığını bulmak için bir sorgu: mobil veya geleneksel ziyaretçiler.
+Burada kimlerin daha fazla tıkladığına dikkat çeken bir sorgu ver: mobil veya geleneksel ziyaretçiler.
 
 ```sql
 SELECT
@@ -242,7 +242,7 @@ GROUP BY user_data->>'is_mobile'
 ORDER BY count DESC;
 ```
 
-[Kısmi bir dizin](https://www.postgresql.org/docs/current/static/indexes-partial.html)oluşturarak bu sorguyu tek bir şirket için iyileştirebiliriz.
+Kısmi [bir dizin](https://www.postgresql.org/docs/current/static/indexes-partial.html)oluşturarak bu sorguyabiliriz.
 
 ```sql
 CREATE INDEX click_user_data_is_mobile
@@ -250,7 +250,7 @@ ON clicks ((user_data->>'is_mobile'))
 WHERE company_id = 5;
 ```
 
-Daha genel olarak, sütun içindeki her anahtar ve değer üzerinde bir [gın dizini](https://www.postgresql.org/docs/current/static/gin-intro.html) oluştururuz.
+Daha genel olarak, sütundaki her anahtar ve değer için bir [GIN dizinleri](https://www.postgresql.org/docs/current/static/gin-intro.html) oluşturabiliriz.
 
 ```sql
 CREATE INDEX click_user_data
@@ -267,12 +267,12 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Yukarıdaki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymazsanız, sunucu grubunu silin. Sunucu grubunuzun *genel bakış* sayfasında *Sil* düğmesine basın. Bir açılır sayfada istendiğinde, sunucu grubunun adını onaylayın ve son *Sil* düğmesine tıklayın.
+Önceki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymayı beklemiyorsanız, sunucu grubunu silin. Sunucu grubunuzun *Genel Bakış* *sayfasındasil* düğmesine basın. Açılır pencerede istendiğinde, sunucu grubunun adını onaylayın ve son *Sil* düğmesini tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir hiper ölçek (Citus) sunucu grubu sağlamayı öğrendiniz. Bu ağa psql ile bağlanırsınız, bir şema oluşturdunuz ve dağıtılmış veriler. Kiracılar içindeki ve içindeki verileri sorgulamayı ve kiracı başına şemayı özelleştirmeyi öğrendiniz.
+Bu eğitimde, bir Hyperscale (Citus) sunucu grubunu nasıl sağlarsınız. Ona psql ile bağlandınız, bir şema oluşturdunuz ve veri dağıttınız. Hem kiracılar içinde hem de kiracılar arasında veri sorgulamayı ve kiracı başına şemayı özelleştirmeyi öğrendiniz.
 
-Ardından, hyperscale kavramlarını öğrenin.
+Ardından, hiperölçek kavramları hakkında bilgi edinin.
 > [!div class="nextstepaction"]
-> [Hiper ölçek düğüm türleri](https://aka.ms/hyperscale-concepts)
+> [Hiper ölçekli düğüm türleri](https://aka.ms/hyperscale-concepts)

@@ -1,36 +1,36 @@
 ---
-title: Öğretici-Terrayform kullanarak Azure 'da şirket içi sanal ağ oluşturma
-description: Yerel kaynakların barındırıldığı Azure 'da şirket içi VNet 'in nasıl uygulanacağını gösteren öğretici
+title: Öğretici - Terraform'u kullanarak Azure'da şirket içi sanal ağ oluşturun
+description: Azure'da yerel kaynakları barındıran şirket içi bir VNet'in nasıl uygulanacağını gösteren öğretici
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 361f9919fdd406a1fef6bbf2b7512dbc20266a54
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159207"
 ---
-# <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da şirket içi sanal ağ oluşturma
+# <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>Öğretici: Terraform'u kullanarak Azure'da şirket içi sanal ağ oluşturun
 
-Bu öğreticide, bir Azure sanal ağı (VNet) kullanılarak şirket içi bir ağın nasıl uygulanacağı gösterilmektedir. Azure VNet, kendi özel sanal ağınızla değiştirilebilir. Bunu yapmak için, alt ağlardaki uygun IP adreslerini eşleyin.
+Bu öğretici, bir Azure sanal ağı (VNet) kullanarak şirket içi bir ağın nasıl uygulanacağını gösterir. Azure VNet'inyerine kendi özel sanal ağınız değiştirilebilir. Bunu yapmak için, alt ağlarda uygun IP adreslerieş.
 
-Aşağıdaki görevler açıklanmaktadır:
+Aşağıdaki görevler açıklanmıştır:
 
 > [!div class="checklist"]
-> * Hub-ışınsal-uç topolojisinde şirket içi VNet uygulamak için HCL (HashiCorp Language) kullanın
-> * Terrayform kullanarak Merkez ağı gereç kaynakları oluşturma
-> * Şirket içi sanal makine oluşturmak için Terrayform kullanma
-> * Şirket içi sanal özel ağ geçidi oluşturmak için Terrayform kullanma
+> * Hub-spoke topolojisinde şirket içi Bir VNet uygulamak için HCL 'yi (HashiCorp Dili) kullanın
+> * Hub ağ cihaz kaynakları oluşturmak için Terraform'u kullanın
+> * Şirket içi sanal makine oluşturmak için Terraform'u kullanın
+> * Şirket içi sanal özel ağ ağ geçidi oluşturmak için Terraform'u kullanın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. [Azure 'Da Terrayform ile bir hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
+1. [Azure'da Terraform ile bir hub ve kollu karma ağ topolojisi oluşturun.](./terraform-hub-spoke-introduction.md)
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
-Şirket içi bir ağın benzetimini yapmak için bir Azure sanal ağı oluşturun. Tanıtım sanal ağı, gerçek bir özel şirket içi ağın yerini alır. Mevcut şirket içi ağlarınız ile aynı yapmak için, alt ağlardaki uygun IP adreslerini eşleyin.
+Şirket içi ağı simüle etmek için bir Azure sanal ağı oluşturun. Demo VNet gerçek bir özel şirket içi ağın yerini alır. Mevcut şirket içi ağınızda da aynısını yapmak için alt ağlarda uygun IP adreslerini haritalandırın.
 
-1. [Azure portala](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com)göz atın.
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview)'i açın. Önceden bir ortam seçmediyseniz **Bash** ortamını seçin.
 
@@ -48,11 +48,11 @@ Aşağıdaki görevler açıklanmaktadır:
     cd hub-spoke
     ```
 
-## <a name="declare-the-on-premises-vnet"></a>Şirket içi VNet 'i bildirme
+## <a name="declare-the-on-premises-vnet"></a>Şirket içi VNet'i bildirin
 
-Şirket içi VNet bildiren Terrayform yapılandırma dosyasını oluşturun.
+Şirket içi VNet'i bildiren Terraform yapılandırma dosyasını oluşturun.
 
-1. Cloud Shell ' de, `on-prem.tf`adlı yeni bir dosya açın.
+1. Bulut Kabuğu'nda, '' `on-prem.tf`adlı yeni bir dosya açın.
 
     ```bash
     code on-prem.tf
@@ -222,4 +222,4 @@ Aşağıdaki görevler açıklanmaktadır:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure 'da Terrayform ile bir hub sanal ağı oluşturma](./terraform-hub-spoke-hub-network.md)
+> [Azure'da Terraform ile hub sanal ağı oluşturun](./terraform-hub-spoke-hub-network.md)

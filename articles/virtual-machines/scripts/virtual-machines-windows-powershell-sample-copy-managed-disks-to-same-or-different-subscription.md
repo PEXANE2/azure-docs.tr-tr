@@ -1,6 +1,6 @@
 ---
-title: Yönetilen diskleri bir aboneliğe kopyalama-PowerShell örneği
-description: Azure PowerShell betik örneği-yönetilen diskleri aynı veya farklı bir aboneliğe kopyalama veya taşıma
+title: Yönetilen diskleri aboneye kopyalama - PowerShell Sample
+description: Azure PowerShell Komut Dosyası Örneği - Yönetilen diskleri aynı veya farklı bir aboneye kopyalama veya taşıma
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
 ms.openlocfilehash: 8d0f14c0223667773af4e723acaf503460290194
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75368921"
 ---
-# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Yönetilen diskleri aynı abonelikte veya PowerShell ile farklı bir abonelikte kopyalama
+# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Yönetilen diskleri PowerShell ile aynı abonelikte veya farklı abonelikte kopyalayın
 
-Bu betik, mevcut bir yönetilen diskin aynı abonelikte veya farklı abonelikte bir kopyasını oluşturur. Yeni disk, ana yönetilen diskle aynı bölgede oluşturulur.   
+Bu komut dosyası, aynı abonelik veya farklı abonelik varolan yönetilen bir diskin bir kopyasını oluşturur. Yeni disk, üst yönetilen diskle aynı bölgede oluşturulur.   
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -42,8 +42,8 @@ Bu betik, kaynak yönetilen diskin kimliğini kullanarak hedef abonelikte yeni b
 
 | Komut | Notlar |
 |---|---|
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Disk oluşturmak için kullanılan disk yapılandırmasını oluşturur. Ana diskin kaynak kimliğini ve üst disk konumuyla aynı konumu içerir.  |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Parametre olarak geçirilen disk yapılandırmasını, disk adını ve kaynak grubu adını kullanarak bir disk oluşturur. |
+| [Yeni-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Disk oluşturmak için kullanılan disk yapılandırmasını oluşturur. Üst diskin kaynak kimliğini ve üst diskin konumuyla aynı olan konumu içerir.  |
+| [Yeni-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Parametre olarak geçirilen disk yapılandırmasını, disk adını ve kaynak grubu adını kullanarak bir disk oluşturur. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

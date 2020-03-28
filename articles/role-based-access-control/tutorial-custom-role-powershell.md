@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure PowerShell ile Azure kaynakları için özel bir rol oluşturma'
-description: Bu öğreticide Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturmaya başlayın.
+description: Bu eğitimde Azure PowerShell'i kullanarak Azure kaynakları için özel bir rol oluşturmaya başlayın.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77138274"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturma
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Öğretici: Azure PowerShell'i kullanarak Azure kaynakları için özel bir rol oluşturma
 
-[Azure kaynaklarına yönelik yerleşik roller](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi oluşturabilirsiniz. Bu öğretici için Azure PowerShell'i kullanarak Reader Support Tickets adlı özel bir rol oluşturacaksınız. Özel rol, kullanıcının bir aboneliğin yönetim düzlemine ait her şeyi görüntülemesine olanak sağlar ve destek biletlerini de açabilir.
+Azure [kaynakları için yerleşik roller](built-in-roles.md) kuruluşunuzun özel gereksinimlerini karşılamazsa, kendi özel rollerinizi oluşturabilirsiniz. Bu öğretici için Azure PowerShell'i kullanarak Reader Support Tickets adlı özel bir rol oluşturacaksınız. Özel rol, kullanıcının bir aboneliğin yönetim düzlemindeki her şeyi görüntülemesini ve ayrıca destek biletlerini açmasını sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Özel rol oluşturma
@@ -32,26 +32,26 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Özel rolü güncelleştirme
 > * Özel rolü silme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 - [Sahip](built-in-roles.md#owner) veya [Kullanıcı Erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi özel rol oluşturma izni
-- [Azure Cloud Shell](../cloud-shell/overview.md) veya [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure Bulut Shell](../cloud-shell/overview.md) veya [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="sign-in-to-azure-powershell"></a>Azure PowerShell oturumu açma
 
-[Azure PowerShell](/powershell/azure/authenticate-azureps) oturumu açın.
+[Azure PowerShell'de](/powershell/azure/authenticate-azureps)oturum açın.
 
 ## <a name="create-a-custom-role"></a>Özel rol oluşturma
 
 Özel rol oluşturmanın en kolay yolu yerleşik rolle başlayıp düzenledikten sonra yeni bir rol oluşturmaktır.
 
-1. PowerShell 'de, Microsoft. support kaynak sağlayıcısı 'nın işlem listesini almak için [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) komutunu kullanın. İzinlerinizi oluşturmak için kullanabileceğiniz işlemleri bilmeniz yararlıdır. İşlemlerin tam listesini [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md#microsoftsupport) sayfasında da görebilirsiniz.
+1. PowerShell'de, Microsoft.Support kaynak sağlayıcısının işlem listesini almak için [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) komutunu kullanın. İzinlerinizi oluşturmak için kullanabileceğiniz işlemleri bilmeniz yararlıdır. İşlemlerin tam listesini [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md#microsoftsupport) sayfasında da görebilirsiniz.
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
@@ -65,7 +65,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     Microsoft.Support/supportTickets/write Creates or Updates a Support Ticket. You can create a Support Tic...
     ```
 
-1. [Reader](built-in-roles.md#reader) rolünü JSON biçiminde çıkarmak için [Get-azroledefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
+1. Okuyucu [rolünü](built-in-roles.md#reader) JSON biçiminde çıktılamak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
 
     ```azurepowershell
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json
@@ -129,7 +129,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     }
     ```
     
-1. Yeni özel rolü oluşturmak için [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) komutunu kullanın ve JSON rol tanımı dosyasını belirtin.
+1. Yeni özel rolü oluşturmak için [Yeni-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) komutunu kullanın ve JSON rol tanımı dosyasını belirtin.
 
     ```azurepowershell
     New-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole.json"
@@ -171,7 +171,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Özel rolü güncelleştirmek için JSON dosyasını güncelleştirebilir veya `PSRoleDefinition` nesnesini kullanabilirsiniz.
 
-1. JSON dosyasını güncelleştirmek için, özel rolü JSON biçiminde çıkarmak üzere [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
+1. JSON dosyasını güncelleştirmek için, JSON biçiminde özel rolü çıktıalmak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
 
     ```azurepowershell
     Get-AzRoleDefinition -Name "Reader Support Tickets" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole2.json
@@ -203,7 +203,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     }
     ```
         
-1. Özel rolü güncelleştirmek için [set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) komutunu kullanın ve güncelleştirilmiş json dosyasını belirtin.
+1. Özel rolü güncelleştirmek için [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) komutunu kullanın ve güncelleştirilmiş JSON dosyasını belirtin.
 
     ```azurepowershell
     Set-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole2.json"
@@ -221,7 +221,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000}
     ```
 
-1. Özel rolünüzü güncelleştirmek için `PSRoleDefintion` nesnesini kullanmak için, önce rolü almak üzere [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
+1. `PSRoleDefintion` Özel rolünüzü güncelleştirmek için nesneyi kullanmak için, rolü almak için önce [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
 
     ```azurepowershell
     $role = Get-AzRoleDefinition "Reader Support Tickets"
@@ -233,7 +233,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*/read")
     ```
 
-1. Rolü güncelleştirmek için [set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) ' i kullanın.
+1. Rolü güncelleştirmek için [Set-AzRoleDefinition'ı](/powershell/module/az.resources/set-azroledefinition) kullanın.
 
     ```azurepowershell
     Set-AzRoleDefinition -Role $role
@@ -254,13 +254,13 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     
 ## <a name="delete-a-custom-role"></a>Özel rolü silme
 
-1. Özel rolün KIMLIĞINI almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
+1. Özel rolün kimliğini almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
 
     ```azurepowershell
     Get-AzRoleDefinition "Reader Support Tickets"
     ```
 
-1. [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) komutunu kullanın ve özel rolü silmek IÇIN rol kimliğini belirtin.
+1. [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) komutunu kullanın ve özel rolü silmek için rol kimliğini belirtin.
 
     ```azurepowershell
     Remove-AzRoleDefinition -Id "22222222-2222-2222-2222-222222222222"

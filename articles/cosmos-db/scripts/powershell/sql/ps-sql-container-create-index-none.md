@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos hesabında dizin olmadan kapsayıcı oluşturmak için PowerShell betiği
-description: Azure PowerShell betik örneği-Azure Cosmos hesabında kapsayıcı dizini oluşturma kapalı
+title: Azure Cosmos DB hesabında dizin oluşturma yla kap oluşturmak için PowerShell komut dosyası
+description: Azure PowerShell komut dosyası örneği - Azure Cosmos DB hesabında dizin oluşturma kapalı bir kapsayıcı oluşturma
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 13bec89b0c6f713a4b8c66f7bab6cda3d6513ef9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4cf09ede1ea532d784b6d486cdb54d510d13652
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441380"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365648"
 ---
-# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>PowerShell kullanarak bir Azure Cosmos hesabında kapsayıcı dizin oluşturma kapalı
+# <a name="create-a-container-with-indexing-turned-off-in-an-azure-cosmos-db-account-using-powershell"></a>PowerShell'i kullanarak Azure Cosmos DB hesabında dizin oluşturma kapalı bir kapsayıcı oluşturma
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441380"
 
 ## <a name="sample-script"></a>Örnek betik
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-container-create-index-none.ps1 "Create a container indexing turned off in an Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-container-create-index-none.ps1 "Create a container with indexing turned off in an Azure Cosmos DB account")]
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
@@ -38,9 +38,12 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure Kaynak grupları**| |
+|**Azure Cosmos DB**| |
+| [Yeni-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Yeni bir Cosmos DB Hesabı oluşturur. |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Yeni bir cosmos DB SQL Veritabanı oluşturur veya güncelleştirir. |
+| [Yeni-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | Set-AzCosmosDBSqlContainer için parametre olarak kullanılan PSSqlIndexingPolicy türünde yeni bir nesne oluşturur. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Yeni bir cosmos DB SQL Kapsayıcısı oluşturur veya güncelleştirir. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

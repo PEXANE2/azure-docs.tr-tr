@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
 ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239598"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights ile performans sorunlarını bulma ve tanılama
@@ -25,18 +25,18 @@ Azure Application Insights, uygulamanızdan çalışma ve performans analizine y
 > * Sorgu dilini kullanarak sayfa görüntülemelerinin ayrıntılarını analiz etme
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
-- Aşağıdaki iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra:
+- [Visual Studio 2019'u](https://www.visualstudio.com/downloads/) aşağıdaki iş yükleriyle yükleyin:
     - ASP.NET ve web geliştirme
     - Azure geliştirme
 - Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../../azure-monitor/app/asp-net.md).
 - Uygulamanız için [Application Insights profil oluşturucuyu etkinleştirme](../../azure-monitor/app/profiler.md#installation).
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+Azure portalına giriş [https://portal.azure.com](https://portal.azure.com)yapın.
 
 ## <a name="identify-slow-server-operations"></a>Yavaş sunucu işlemlerini belirleme
 Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntılarını toplar. Süresi en uzun olan işlemleri belirleyerek olası sorunları veya sürmekte olan geliştirme sürecinizin en iyi hedefini tanılayabilir ve uygulamanın genel performansını geliştirebilirsiniz.
@@ -58,12 +58,12 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
 
 5.  Toplam işlem süresini en çok Fabrikamaccount başlıklı Azure Tablosuna yapılan çağrının etkilediğini bir bakışta görebilirsiniz. Ayrıca, işlemin başarısız olmasına neden olan bir özel durum oluştuğunu da görebilirsiniz. Sağ tarafta ayrıntılarını görmek istediğiniz herhangi bir öğeye tıklayabilirsiniz. [İşlem tanılama deneyimi hakkında daha fazla bilgi edinin](../../azure-monitor/app/transaction-diagnostics.md)
 
-    ![İşlem uçtan uca ayrıntıları](media/tutorial-performance/4-end-to-end.png)
+    ![İşlem uçuca ayrıntıları](media/tutorial-performance/4-end-to-end.png)
     
 
 6.  **Profiler**, işlem için çalıştırılan gerçek kodu ve her adım için gereken süreyi göstererek kod düzeyinde tanılama konusunda size daha fazla yardımcı olur. Profil oluşturucu belirli aralıklarla çalıştığından, bazı işlemlerin izlemesi olmayabilir.  Zamanla daha fazla işlemin izlemesi olmalıdır.  İşlem için profil oluşturucuyu başlatmak için **Profiler izlemeleri**’ne tıklayın.
 5.  İzlemede her işleme yönelik olaylar tek tek gösterildiğinden, genel işlem süresinin kök nedenini tanılayabilirsiniz.  Üstteki en uzun süreye sahip örneklerden birine tıklayın.
-6.  İşlemin toplam süresine en çok katkıda bulunan olayların belirli yolunu vurgulamak için **etkin yol** ' e tıklayın.  Bu örnekte, en yavaş çağrının *FabrikamFiberAzureStorage.GetStorageTableData* metodundan geldiğini görebilirsiniz. En çok zaman alan bölüm *CloudTable.CreateIfNotExist* metodudur. İşlev her çağrıldığında bu kod satırı yürütülürse gereksiz ağ çağrısı ve CPU kaynağı tüketilir. Kodunuzu düzeltmenin en iyi yolu, bu satırı yalnızca bir kere yürütülen bir başlangıç yöntemine eklemektir.
+6.  İşlemin toplam süresine en çok katkıda bulunan olayların belirli yolunu vurgulamak için **Sıcak Yol'u** tıklatın.  Bu örnekte, en yavaş çağrının *FabrikamFiberAzureStorage.GetStorageTableData* metodundan geldiğini görebilirsiniz. En çok zaman alan bölüm *CloudTable.CreateIfNotExist* metodudur. İşlev her çağrıldığında bu kod satırı yürütülürse gereksiz ağ çağrısı ve CPU kaynağı tüketilir. Kodunuzu düzeltmenin en iyi yolu, bu satırı yalnızca bir kere yürütülen bir başlangıç yöntemine eklemektir.
 
     ![Profil oluşturucu ayrıntıları](media/tutorial-performance/5-hot-path.png)
 
@@ -71,41 +71,41 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
 
     ![Performans ipucu](media/tutorial-performance/6-perf-tip.png)
 
-8.   Daha fazla analiz için, izlemeyi indirmek üzere **Izlemeyi indir** ' e tıklayabilirsiniz. [PerfView](https://github.com/Microsoft/perfview#perfview-overview)kullanarak bu verileri görüntüleyebilirsiniz.
+8.   Daha fazla analiz için, izlemeyi indirmek için **İndir İzi'ni** tıklatabilirsiniz. Bu verileri [PerfView'i](https://github.com/Microsoft/perfview#perfview-overview)kullanarak görüntüleyebilirsiniz.
 
-## <a name="use-logs-data-for-server"></a>Sunucu için günlük verilerini kullan
- Günlükler, Application Insights tarafından toplanan tüm verileri analiz etmenizi sağlayan zengin bir sorgu dili sağlar. Bunu kullanarak istek ve performans verileri üzerinde ayrıntılı analiz gerçekleştirebilirsiniz.
+## <a name="use-logs-data-for-server"></a>Sunucu için günlük verilerini kullanma
+ Günlükler, Application Insights tarafından toplanan tüm verileri çözümlemenize olanak tanıyan zengin bir sorgu dili sağlar. Bunu kullanarak istek ve performans verileri üzerinde ayrıntılı analiz gerçekleştirebilirsiniz.
 
-1. İşlem ayrıntısı paneline dönün ve günlüklerde ![Günlükler simgesi görünümü ' ne tıklayın](media/tutorial-performance/app-viewinlogs-icon.png)**(Analiz)**
+1. İşlem ayrıntı paneline geri ![dönün ve Günlüklerde Günlükler](media/tutorial-performance/app-viewinlogs-icon.png)**simgesini görüntüle'yi tıklatın (Analytics)**
 
-2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır.  Bu sorguları olduğu gibi çalıştırabilir veya gereksinimlerinize göre özelleştirebilirsiniz.  İlk sorgu, zaman içinde bu işlemin süresini gösterir.
+2. Günlükler, paneldeki görünümlerin her biri için bir sorguyla açılır.  Bu sorguları olduğu gibi çalıştırabilir veya gereksinimlerinize göre özelleştirebilirsiniz.  İlk sorgu, zaman içinde bu işlemin süresini gösterir.
 
-    ![Günlük sorgusu](media/tutorial-performance/7-request-time-logs.png)
+    ![günlükleri sorgusu](media/tutorial-performance/7-request-time-logs.png)
 
 
 ## <a name="identify-slow-client-operations"></a>Yavaş istemci işlemlerini belirleme
 Application Insights, iyileştirilecek sunucu işlemlerini belirlemeye ek olarak istemci tarayıcılarının bakış açısını da analiz edebilir.  Bu, istemci bileşenlerine yönelik olası geliştirme fırsatlarını, hatta farklı tarayıcı veya konumlarla ilgili sorunları belirlemenize yardımcı olabilir.
 
-1. **Araştır** **' ın altında** **tarayıcı** ' yı **seçin ve** **tarayıcı performansı özetini** açmak için sağ üst köşedeki sunucu/tarayıcı geçişi düğmesine tıklayarak **tarayıcı sekmesine geçin** . Burada, tarayıcının bakış açısından uygulamanızın çeşitli telemetri verilerinin görsel bir özetini sağlar.
+1. **Tarayıcıyı Araştır'ın** altındaki **Tarayıcı'yı** seçin sonra **Tarayıcı Performansını** tıklatın veya **Araştır** altında **Performans'ı** seçin ve tarayıcı performans özetini açmak için sağ üstteki sunucu/tarayıcı geçiş düğmesini tıklatarak **Tarayıcı** sekmesine geçin. Burada, tarayıcının bakış açısından uygulamanızın çeşitli telemetri verilerinin görsel bir özetini sağlar.
 
     ![Tarayıcı özeti](media/tutorial-performance/8-browser.png)
 
-2. İşlem adlarından birini seçin ve ardından sağ alt köşedeki mavi örnekler düğmesine tıklayın ve bir işlem seçin. Bu, uçtan uca işlem ayrıntılarını getirecek ve sağ taraftaki **sayfa görünümü özelliklerini**görüntüleyemeyecektir. Bu, tarayıcı türü ve konumu dahil olmak üzere sayfayı isteyen istemcinin ayrıntılarını görüntülemenizi sağlar. Bu bilgiler, belirli istemci türleriyle ilgili performans sorunları olup olmadığını belirlemenize yardımcı olabilir.
+2. İşlem adlarından birini seçin, ardından sağ alttaki mavi örnekler düğmesini tıklatın ve bir işlem seçin. Bu uçuça işlem ayrıntılarını getirecek ve sağ tarafta **Sayfa Görünümü Özelliklerini**görüntüleyebilirsiniz. Bu, tarayıcının türü ve konumu da dahil olmak üzere sayfayı isteyen istemcinin ayrıntılarını görüntülemenizi sağlar. Bu bilgiler, belirli istemci türleriyle ilgili performans sorunları olup olmadığını belirlemenize yardımcı olabilir.
 
     ![Sayfa görüntüleme](media/tutorial-performance/9-page-view-properties.png)
 
-## <a name="use-logs-data-for-client"></a>İstemci için günlük verilerini kullan
-Sunucu performansı için toplanan veriler gibi Application Insights, tüm istemci verilerinin Günlükler kullanılarak ayrıntılı analiz için kullanılabilir olmasını sağlar.
+## <a name="use-logs-data-for-client"></a>İstemci için günlük verilerini kullanma
+Sunucu performansı için toplanan veriler gibi Application Insights da tüm istemci verilerini Günlükler kullanarak derin analiziçin kullanılabilir hale getirir.
 
-1. Tarayıcı özetine dönün ve günlüklerde ![Günlükler simgesine tıklayın](media/tutorial-performance/app-viewinlogs-icon.png) **görüntüle (Analiz)**
+1. Tarayıcı özetine dön ![ve Günlüklerde Günlükler](media/tutorial-performance/app-viewinlogs-icon.png) **simgesini görüntüle'yi tıklatın (Analytics)**
 
-2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır. İlk sorgu, zaman içinde farklı sayfa görüntüleme işlemlerinin süresini gösterir.
+2. Günlükler, paneldeki görünümlerin her biri için bir sorguyla açılır. İlk sorgu, zaman içinde farklı sayfa görüntüleme işlemlerinin süresini gösterir.
 
-    ![Günlük sorgusu](media/tutorial-performance/10-page-view-logs.png)
+    ![Günlükler sorgusu](media/tutorial-performance/10-page-view-logs.png)
 
-3.  Akıllı tanılama, verilerdeki benzersiz desenleri tanımlayan bir Günlükler özelliğidir. Çizgi grafikte Akıllı Tanılama noktasına tıkladığınızda, aynı sorgu anomaliye yol açan kayıtlar olmadan çalıştırılır. Sürenin aşırı uzun olmasına yol açan sayfa görüntülemelerini tanımlayabilmeniz için sorgunun açıklama bölümünde bu kayıtların ayrıntıları gösterilir.
+3.  Akıllı Tanılama, Günlükler'in verilerdeki benzersiz desenleri tanımlayan bir özelliğidir. Çizgi grafikte Akıllı Tanılama noktasına tıkladığınızda, aynı sorgu anomaliye yol açan kayıtlar olmadan çalıştırılır. Sürenin aşırı uzun olmasına yol açan sayfa görüntülemelerini tanımlayabilmeniz için sorgunun açıklama bölümünde bu kayıtların ayrıntıları gösterilir.
 
-    ![Akıllı tanılama ile Günlükler](media/tutorial-performance/11-page-view-logs-dsmart.png)
+    ![Akıllı Tanılama ile Günlükler](media/tutorial-performance/11-page-view-logs-dsmart.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,15 +1,15 @@
 ---
-title: App Service planında İşlev Uygulaması oluşturma-Azure CLı
+title: Uygulama Hizmeti planında İşlev Uygulaması Oluşturma - Azure CLI
 description: Azure CLI Betiği Örneği - App Service planında bir İşlev Uygulaması oluşturma
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc
 ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74532853"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>App Service planında bir İşlev Uygulaması oluşturma
@@ -20,7 +20,7 @@ Bu Azure İşlevleri örnek betiği, işlevleriniz için kapsayıcı olan bir i�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI sürüm 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI sürüm 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -38,7 +38,7 @@ Tablodaki her komut, komuta özgü belgelere yönlendirir. Bu betik şu komutlar
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Azure Depolama hesabı oluşturur. |
-| [az functionapp plan oluşturma](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Premium planı oluşturur. |
+| [az functionapp planı oluşturmak](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Premium plan oluşturur. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | App Service planında bir işlev uygulaması oluşturur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: Yaklaşım analizi için Azure Databricks kullanma
-description: Akış verilerinde neredeyse gerçek zamanlı olarak yaklaşım analizini çalıştırmak için Event Hubs ve bilişsel hizmetler API 'SI ile Azure Databricks kullanmayı öğrenin.
+title: Duyarlılık analizi için Azure Veri Tuğlaları'nı kullanma
+description: Veri akışı yla ilgili duyarlılık çözümlemesi yapmak için Etkinlik Hub'ları ve Bilişsel Hizmetler API'si ile Azure Veri Tuğlaları'nı kullanmayı öğrenin.
 services: azure-databricks
 author: lenadroid
 ms.author: alehall
@@ -10,21 +10,21 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.openlocfilehash: 382dff156c088f367200f0dd46c3758193ade189
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889238"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verileri ile ilgili yaklaşım analizi
 
-Bu öğreticide, Azure Databricks kullanarak neredeyse gerçek zamanlı veri akışı ile ilgili yaklaşım analizi çalıştırmak öğrenin. Azure Event Hubs’ı kullanarak veri alımı sistemini ayarlarsınız. Spark Event Hubs bağlayıcısını kullanarak Event Hubs’tan Azure Databricks’e iletileri kullanırsınız. Son olarak, akış verileri üzerinde yaklaşım analizini çalıştırmak için bilişsel hizmet API 'Lerini kullanırsınız.
+Bu eğitimde, Azure Veri Tuğlaları'nı kullanarak bir veri akışında duygu çözümlemesi nasıl çalıştırabileceğinizi neredeyse gerçek zamanlı olarak öğrenirsiniz. Azure Event Hubs’ı kullanarak veri alımı sistemini ayarlarsınız. Spark Event Hubs bağlayıcısını kullanarak Event Hubs’tan Azure Databricks’e iletileri kullanırsınız. Son olarak, akışlı veriler üzerinde duyarlılık çözümlemesi çalıştırmak için Bilişsel Hizmet API'lerini kullanırsınız.
 
 Bu öğreticinin sonunda, Twitter’daki "Azure" terimini içeren tweet’leri alır ve bu tweet’ler ile ilgili yaklaşım analizi çalıştırmış olursunuz.
 
 Aşağıdaki şekilde uygulama akışı gösterilmektedir:
 
-![Event Hubs ve bilişsel hizmetler ile Azure Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Event Hubs ve bilişsel hizmetler ile Azure Databricks")
+![Etkinlik Hub'ları ve Bilişsel Hizmetlere sahip Azure Veri Tuğlaları](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Etkinlik Hub'ları ve Bilişsel Hizmetlere sahip Azure Veri Tuğlaları")
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -34,16 +34,16 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Akış verilerine erişmek için bir Twitter uygulaması oluşturma
 > * Azure Databricks’te not defterleri oluşturma
 > * Event Hubs ve Twitter API’si için kitaplıklar ekleme
-> * Bilişsel Hizmetler hesabı oluşturma ve erişim anahtarını alma
+> * Bilişsel Hizmetler hesabı oluşturun ve erişim anahtarını alın
 > * Event Hubs’a tweet’ler gönderme
 > * Event Hubs’tan tweet’leri okuma
 > * Tweet’lerle ilgili yaklaşım analizi çalıştırma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall).
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall)
 
 > [!Note]
-> Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-azure-portal)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Bu öğretici **Azure Ücretsiz Deneme Aboneliği**kullanılarak gerçekleştirilemez.
+> Ücretsiz bir hesabınız varsa, profilinize gidin ve aboneliğinizi istediğiniz **kadar öde**olarak değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama sınırını kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-azure-portal)ve bölgenizdeki VCPU'lar için kota artışı [isteyin.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına ücretsiz Premium Azure Databricks DBUs'a 14 gün süreyle erişim sağlamak için **Deneme (Premium - 14 Gün Ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -57,15 +57,15 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall)oturum açın.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure portalında **Kaynak oluşturun** > **Veri ve Analiz** > **Azure Databricks** seçeneklerini belirleyin.
+1. Azure portalında **kaynak** > Veri Oluştur **+ Analitik** > **Azure Veri Tuğlaları'nı**seçin.
 
-    ![Azure portal databricks](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Azure portal databricks")
+    ![Azure portalında veri tuğlaları](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Azure portalında veri tuğlaları")
 
 3. **Azure Databricks Hizmeti** bölümünde, Databricks çalışma alanı oluşturmak için değerler sağlayın.
 
@@ -85,7 +85,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 4. Hesabın oluşturulması birkaç dakika sürer. Hesap oluşturma sırasında portal sağ tarafta **Azure Databricks için dağıtım gönderiliyor** kutucuğunu gösterir. Kutucuğu görmek için panonuzu sağa kaydırmanız gerekebilir. Ayrıca, ekranın üst kısmında gösterilen bir ilerleme çubuğu vardır. İlerleme durumu için her iki alanı da izleyebilirsiniz.
 
-    ![Databricks dağıtım kutucuğu](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "Databricks dağıtım kutucuğu")
+    ![Databricks dağıtım döşemesi](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "Databricks dağıtım döşemesi")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks’te Spark kümesi oluşturma
 
@@ -93,19 +93,19 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Küme**’yi seçin.
 
-    ![Azure 'da databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "Azure 'da databricks")
+    ![Azure'da Veri Tuğlaları](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "Azure'da Veri Tuğlaları")
 
 3. **Yeni küme** sayfasında, bir küme oluşturmak için değerleri girin.
 
-    ![Azure 'da Databricks Spark kümesi oluşturma](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Azure 'da Databricks Spark kümesi oluşturma")
+    ![Azure'da Veri Tuğlaları Kıvılcım kümesi Oluşturma](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Azure'da Veri Tuğlaları Kıvılcım kümesi Oluşturma")
 
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
    * Küme için bir ad girin.
-   * Bu makalede, **6,0** çalışma zamanına sahip bir küme oluşturun.
-   * **\_\_ dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
+   * Bu makale için, **6.0** çalışma süresi olan bir küme oluşturun.
+   * Dakikalar süren inaktivite onay kutusunun **ardından \_ \_ Sonlandırma'yı seçtiğinizden** emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-   Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
+   Teknik ölçütlerinize ve [bütçenize](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)uygun küme işçi ve sürücü düğümü boyutunu seçin.
 
      **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -113,82 +113,82 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturursunuz. Yönergeleri izleyerek bir Twitter uygulaması oluşturun ve bu öğreticiyi tamamlamak için ihtiyaç duyduğunuz değerleri kaydedin.
 
-1. Bir Web tarayıcısından, [geliştiriciler Için Twitter](https://developer.twitter.com/en/apps)' a gidin ve **uygulama oluştur**' u seçin. Twitter geliştirici hesabı için uygulamanız gerektiğini söyleyen bir ileti görebilirsiniz. Bu işlemi ücretsiz yapın ve uygulamanız onaylandıktan sonra bir onay e-postası görmeniz gerekir. Bir geliştirici hesabının onaylanması birkaç gün sürebilir.
+1. Bir web [tarayıcısından, Geliştiriciler için Twitter'a](https://developer.twitter.com/en/apps)gidin ve uygulama **oluştur'u**seçin. Bir Twitter geliştirici hesabına başvurmanız gerektiğini belirten bir ileti görebilirsiniz. Bunu yapmak için çekinmeyin ve başvurunuz onaylandıktan sonra bir onay e-postası görmelisiniz. Geliştirici hesabının onaylanması birkaç gün sürebilir.
 
-    ![Twitter geliştirici hesabı onayı](./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Twitter geliştirici hesabı onayı")
+    ![Twitter geliştirici hesap onayı](./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Twitter geliştirici hesap onayı")
 
 2. **Uygulama oluşturun** sayfasında yeni uygulamaya ilişkin ayrıntıları sağlayın ve **Kendi Twitter uygulamanızı oluşturun**’u seçin.
 
-    ![Twitter uygulaması ayrıntıları](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Twitter uygulaması ayrıntıları")
+    ![Twitter uygulama detayları](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Twitter uygulama detayları")
 
-    ![Twitter uygulaması ayrıntıları](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details-create.png "Twitter uygulaması ayrıntıları")
+    ![Twitter uygulama detayları](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details-create.png "Twitter uygulama detayları")
 
-3. Uygulama sayfasında **anahtarlar ve belirteçler** sekmesini seçin ve **Tüketici API anahtarı** ve **Tüketici API 'si gizli anahtarı**için değerleri kopyalayın. Ayrıca, erişim belirteçlerini oluşturmak için erişim belirteci altında **Oluştur** **ve erişim belirteci gizli anahtarı** ' nı seçin. **Erişim Belirteci** ve**Erişim Belirteci Parolası** değerlerini kopyalayın.
+3. Uygulama sayfasında, **Anahtarlar ve Belirteçler** sekmesini seçin ve **Tüketici API Anahtarı** ve Tüketici **API Gizli Anahtarı**değerlerini kopyalayın. Ayrıca, erişim belirteçlerini oluşturmak için **Access Token ve Access Token Secret** altında **Oluştur'u** seçin. **Erişim Belirteci** ve**Erişim Belirteci Parolası** değerlerini kopyalayın.
 
-    ![Twitter uygulaması ayrıntıları](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Twitter uygulaması ayrıntıları")
+    ![Twitter uygulama detayları](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Twitter uygulama detayları")
 
 Twitter uygulaması için aldığınız değerleri kaydedin. Öğreticinin sonraki bölümlerinde bu değerlere ihtiyacınız olacaktır.
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Spark kümesine kitaplıklar ekleme
 
-Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerini kullanırsınız. Azure Event Hubs’a verileri okuyup yazmak için de [Apache Spark Event Hubs bağlayıcısını](https://github.com/Azure/azure-event-hubs-spark?WT.mc_id=sparkeventhubs-docs-alehall) kullanırsınız. Kümenizin bir parçası olarak bu API 'Leri kullanmak için bunları Azure Databricks kitaplık olarak ekleyin ve Spark kümeniz ile ilişkilendirin. Aşağıdaki yönergeler bir kitaplığın nasıl ekleneceğini göstermektedir.
+Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerini kullanırsınız. Azure Event Hubs’a verileri okuyup yazmak için de [Apache Spark Event Hubs bağlayıcısını](https://github.com/Azure/azure-event-hubs-spark?WT.mc_id=sparkeventhubs-docs-alehall) kullanırsınız. Bu API'leri kümenizin bir parçası olarak kullanmak için, bunları Azure Databricks'e kitaplık olarak ekleyin ve Bunları Spark kümenizle ilişkilendirin. Aşağıdaki yönergeler kitaplık eklemeyi gösterir.
 
-1. Azure Databricks çalışma alanında **kümeler**' ı seçin ve var olan Spark kümenizi seçin. Küme menüsünde **Kitaplıklar** ' ı seçin ve **Yeni**' ye tıklayın.
+1. Azure Databricks çalışma alanında **Kümeler'i**seçin ve varolan Spark kümenizi seçin. Küme menüsünde **Kitaplıkları** seçin ve **Yeni Yükle'yi**tıklatın.
 
-   ![Kitaplık Ekle iletişim kutusu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Kitaplık ekleme kümeyi bulma")
+   ![Kitaplık iletişim kutusu ekleme](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Kitaplık bulma kümesi ekle")
 
-   ![Kitaplık Ekle iletişim kutusu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Kitaplık ekleme yeni yüklemesi")
+   ![Kitaplık iletişim kutusu ekleme](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Kitaplık ekle yeni yükle")
 
-2. Yeni Kitaplık sayfasında, **kaynak** **Seç ' i seçin**. **Koordinat**için, eklemek istediğiniz paket Için **arama paketleri** ' ne tıklayın. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
+2. Yeni Kütüphane sayfasında, **Kaynak** için **Maven**seçin. **Koordinat**için, eklemek istediğiniz paket için **Arama Paketleri'ni** tıklatın. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
 
    * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API’si - `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Maven koordinatları sağlama](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Maven koordinatları sağlama")
+     ![Maven koordinatlarını sağlayın](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Maven koordinatlarını sağlayın")
 
-     ![Maven koordinatları sağlama](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Maven koordinatları ara")
+     ![Maven koordinatlarını sağlayın](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Maven koordinatlarını ara")
 
 3. **Yükle**’yi seçin.
 
-4. Küme menüsünde, her iki kitaplıkların de yüklendiğinden ve doğru şekilde eklendiğinden emin olun.
+4. Küme menüsünde, her iki kitaplıkta da düzgün şekilde yüklendiğinden ve eklendiğinden emin olun.
 
-    ![Kitaplıkları denetle](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Kitaplıkları denetle")
+    ![Kitaplıkları denetleme](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Kitaplıkları denetleme")
 
 6. Twitter paketi için şu adımları yineleyin, `twitter4j-core:4.0.7`.
 
 ## <a name="get-a-cognitive-services-access-key"></a>Bilişsel Hizmetler erişim anahtarını alma
 
-Bu öğreticide, Azure bilişsel [hizmetler metin analizi API 'lerini](../cognitive-services/text-analytics/overview.md) kullanarak, neredeyse gerçek zamanlı olarak kavaklerin bulunduğu bir akışta yaklaşım analizini çalıştırın. API 'Leri kullanmadan önce Azure 'da bir Azure bilişsel Hizmetler hesabı oluşturmanız ve Metin Analizi API 'Lerini kullanmak için bir erişim anahtarı almanız gerekir.
+Bu eğitimde, bir tweet akışında neredeyse gerçek zamanlı olarak duyarlılık analizi yapmak için [Azure Bilişsel Hizmetler Metin Analizi API'lerini](../cognitive-services/text-analytics/overview.md) kullanırsınız. API'leri kullanmadan önce Azure'da bir Azure Bilişsel Hizmetler hesabı oluşturmanız ve Metin Analizi API'lerini kullanmak için bir erişim anahtarı almanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall)oturum açın.
 
 2. **+ Kaynak oluştur**’u seçin.
 
-3. Azure Marketi bölümünde **Yapay Zeka ve Bilişsel Hizmetler** > **Metin Analizi API’si** seçeneklerini belirleyin.
+3. Azure Marketi **altında, AI + Bilişsel Hizmetler** > **Metin Analizi API'yi**seçin.
 
-    ![Bilişsel Hizmetler hesabı oluşturma](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Bilişsel Hizmetler hesabı oluşturma")
+    ![Bilişsel hizmetler hesabı oluşturma](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Bilişsel hizmetler hesabı oluşturma")
 
 4. **Oluştur** iletişim kutusunda aşağıdaki değerleri sağlayın:
 
-    ![Bilişsel Hizmetler hesabı oluşturma](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Bilişsel Hizmetler hesabı oluşturma")
+    ![Bilişsel hizmetler hesabı oluşturma](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Bilişsel hizmetler hesabı oluşturma")
 
    - Bilişsel Hizmetler hesabı için bir ad girin.
    - Hesabın oluşturulacağı Azure aboneliğini seçin.
    - Bir Azure konumu seçin.
    - Hizmet için bir fiyatlandırma katmanı seçin. Bilişsel Hizmetler fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cognitive-services/?WT.mc_id=sparkeventhubs-docs-alehall).
-   - Yeni bir kaynak grubu oluşturun veya mevcut bir isteyip istemediğinizi belirtin.
+   - Yeni bir kaynak grubu oluşturmak mı yoksa varolan bir tane seçmek mi istediğinizi belirtin.
 
-     **Oluştur**’u seçin.
+     **Oluştur'u**seçin.
 
-5. Hesap oluşturulduktan sonra gelen **genel bakış** sekmesinde **erişim anahtarlarını gösterme**.
+5. Hesap oluşturulduktan sonra **Genel Bakış** sekmesinden **Erişim tuşlarını göster'i**seçin.
 
-    ![Erişim tuşlarını göster](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Erişim tuşlarını göster")
+    ![Erişim anahtarlarını göster](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Erişim anahtarlarını göster")
 
     Ayrıca ekran görüntüsünde gösterildiği gibi uç nokta URL’sinin bir kısmını kopyalayın. Öğreticide bu URL’ye ihtiyacınız olacaktır.
 
 6. **Anahtarları yönet** bölümünde, kullanmak istediğiniz anahtarın karşısındaki kopyala simgesini seçin.
 
-    ![Erişim anahtarlarını Kopyala](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-copy-access-keys.png "Erişim anahtarlarını Kopyala")
+    ![Erişim anahtarlarını kopyalama](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-copy-access-keys.png "Erişim anahtarlarını kopyalama")
 
 7. Uç nokta URL’si ve erişim anahtarı için bu adımda aldığınız değerleri kaydedin. Daha sonra bu öğreticide gerekli olacak.
 
@@ -201,22 +201,22 @@ Bu bölümde, Databricks çalışma alanında aşağıdaki adlarla iki not defte
 
 1. Sol bölmede **Çalışma Alanı**’nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur**’u ve sonra **Not Defteri**’ni seçin.
 
-    ![Databricks 'te Not defteri oluşturma](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
+    ![Databricks'te not defteri oluşturma](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Databricks'te not defteri oluşturma")
 
 2. **Not Defteri Oluştur** iletişim kutusuna **SendTweetsToEventHub** girin, dil olarak **Scala**’yı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-    ![Databricks 'te Not defteri oluşturma](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
+    ![Databricks'te not defteri oluşturma](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Databricks'te not defteri oluşturma")
 
-    **Oluştur**’u seçin.
+    **Oluştur'u**seçin.
 
 3. **AnalyzeTweetsFromEventHub** not defterini oluşturma adımlarını yineleyin.
 
 ## <a name="send-tweets-to-event-hubs"></a>Event Hubs’a tweet’ler gönderme
 
-**Sendtweetstoeventhub** not defterine aşağıdaki kodu yapıştırın ve yer tutucuları, daha önce oluşturduğunuz Event Hubs ad alanı ve Twitter uygulamanızın değerleriyle değiştirin. Bu not defteri, gerçek zamanlı olarak "Azure" anahtar sözcüğünü içeren tweet’leri Event Hubs’ta akışa alır.
+**SendTweetsToEventHub** not defterine, aşağıdaki kodu yapıştırın ve yer tutucuları daha önce oluşturduğunuz Etkinlik Hub'ları ad alanı ve Twitter uygulamanızın değerleriyle değiştirin. Bu not defteri, gerçek zamanlı olarak "Azure" anahtar sözcüğünü içeren tweet’leri Event Hubs’ta akışa alır.
 
 > [!NOTE]
-> Twitter API 'SI belirli istek kısıtlamalarına ve [kotalara](https://developer.twitter.com/en/docs/basics/rate-limiting.html)sahiptir. Twitter API 'sinde standart fiyat sınırlandırmasını tatmin ediyorsanız, bu örnekte Twitter API 'sini kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, değişken **veri kaynağını** `twitter` yerine `test` olarak ayarlayın ve **TestSource** listesini tercih edilen test girişi ile doldurun.
+> Twitter API belirli istek kısıtlamaları ve [kotaları](https://developer.twitter.com/en/docs/basics/rate-limiting.html)vardır. Twitter API'sinde standart fiyat sınırlaması ile memnun değilseniz, bu örnekte Twitter API'si kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, tercih `test` edilen `twitter` test girişi ile liste **testSource** yerine değişken **dataSource** ayarlayın ve doldurmak.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -439,7 +439,7 @@ Aşağıdaki çıkışı alırsınız:
     ...
     ...
 
-Artık, neredeyse gerçek zamanlı olarak Apache Spark için Event Hubs bağlayıcısını kullanarak Azure Databricks'e Azure Event Hubs verilerini yaptınız. Spark için Event Hubs bağlayıcısını kullanma hakkında daha fazla bilgi için [bağlayıcı belgesi](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall)ne başvurun.
+Artık Azure Etkinlik Hub'larından Azure Veri Tuğlaları'na alabildiğiniz verileri, Apache Spark'ın Etkinlik Hub'ları bağlayıcısını kullanarak neredeyse gerçek zamanlı olarak Azure Veri Tuğlaları'na aktarmış sınız. Spark için Event Hubs bağlayıcısını kullanma hakkında daha fazla bilgi için [bağlayıcı belgesi](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall)ne başvurun.
 
 ## <a name="run-sentiment-analysis-on-tweets"></a>Tweet’lerle ilgili yaklaşım analizi çalıştırma
 
@@ -463,7 +463,7 @@ case class RequestToTextApi(documents: Array[RequestToTextApiDocument]) extends 
 case class RequestToTextApiDocument(id: String, text: String, var language: String = "") extends Serializable
 ```
 
-Yeni bir kod hücresi ekleyin ve aşağıda sağlanan kod parçacığını yapıştırın. Bu kod parçacığı, dil algılama ve yaklaşım analizi çalıştırmak için Metin Analizi API’sini çağırma işlevlerini içeren bir nesneyi tanımlar. Yer tutucu `<PROVIDE ACCESS KEY HERE>`, bilişsel hizmetler hesabınız için aldığınız değer ile değiştirdiğinizden emin olun.
+Yeni bir kod hücresi ekleyin ve aşağıda sağlanan kod parçacığını yapıştırın. Bu kod parçacığı, dil algılama ve yaklaşım analizi çalıştırmak için Metin Analizi API’sini çağırma işlevlerini içeren bir nesneyi tanımlar. Yer tutucuyu `<PROVIDE ACCESS KEY HERE>` Bilişsel Hizmetler hesabınız için aldığınız değerle değiştirdiğinizden emin olun.
 
 ```scala
 import javax.net.ssl.HttpsURLConnection
@@ -552,7 +552,7 @@ object SentimentDetector extends Serializable {
 }
 ```
 
-Bir Spark yaklaşım belirleyen UDF (kullanıcı tanımlı işlev) tanımlamak için başka bir hücreye ekleyin.
+Duyarlılığı belirleyen bir Kıvılcım UDF (Kullanıcı tanımlı işlev) tanımlamak için başka bir hücre ekleyin.
 
 ```scala
 // User Defined Function for processing content of messages to return their sentiment.
@@ -614,7 +614,7 @@ Aşağıdaki kod parçacığı gibi bir çıktı görmeniz gerekir:
 
 **Yaklaşım** sütununda bir değerin **1** değerine yakın olması, Azure deneyiminin mükemmel olduğunu ifade eder. Bir değerin **0** değerine yakın olması, kullanıcının Microsoft Azure ile çalışırken sorunlarla karşılaştığını ifade eder.
 
-İşte bu kadar! Azure Databricks kullanarak verileri başarıyla yaptınız Azure Event Hubs'a, Event Hubs bağlayıcısını kullanarak akış verilerini kullandınız ve sonra verileri neredeyse gerçek zamanlı akış yaklaşım analizi çalıştırdınız.
+İşte bu kadar! Azure Veri Tuğlaları'nı kullanarak verileri Azure Etkinlik Hub'larına başarıyla aktarmış, Akış Verilerini Olay Hub'ları bağlayıcısını kullanarak tüketmiş ve ardından veri akışı nda neredeyse gerçek zamanlı olarak veri akışı üzerinde duyarlılık çözümlemesi çalıştırmışsınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -622,7 +622,7 @@ Aşağıdaki kod parçacığı gibi bir çıktı görmeniz gerekir:
 
 ![Databricks kümesini durdurma](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Kümeyi oluştururken **etkinlik dakikalarından \_ \_ sonra Sonlandırma** onay kutusunu seçmeniz koşuluyla, kümeyi el ile sonlandırmazsanız otomatik olarak durur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, verileri Azure Event Hubs’ta akışa almak ve sonra gerçek zamanlı olarak Event Hubs’tan akış verilerini okumak için Azure Databricks’i kullanmayı öğrendiniz. Şunları öğrendiniz:
@@ -640,5 +640,5 @@ Bu öğreticide, verileri Azure Event Hubs’ta akışa almak ve sonra gerçek z
 Azure Databricks kullanarak makine öğrenmesi görevleri gerçekleştirme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
->[Azure Databricks kullanarak Machine Learning](/azure/databricks/applications/machine-learning/mllib/decision-trees)
+>[Azure Databricks kullanarak Makine Öğrenimi](/azure/databricks/applications/machine-learning/mllib/decision-trees)
 

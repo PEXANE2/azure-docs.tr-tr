@@ -1,14 +1,14 @@
 ---
-title: Eğitim-Jenkins 'den Azure VM 'lerine Azure DevOps Services ile CI/CD
+title: Öğretici - Azure DevOps Hizmetleri ile Jenkins'ten Azure VM'lere CI/CD
 description: Bu öğreticide, bir Node.js uygulaması için Jenkins kullanarak Visual Studio Team Services veya Microsoft Team Foundation Server’daki Release Management’tan Azure sanal makinelerine yönelik sürekli tümleştirme (CI) ve sürekli dağıtımın (CD) nasıl ayarlanacağını öğreneceksiniz
-keywords: Jenkins, Azure, DevOps, sanal makine, cıcd
+keywords: jenkins, masmavi, devops, sanal makine, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78192617"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Öğretici: Jenkins ve Azure DevOps Services kullanarak uygulamanızı Azure üzerinde Linux sanal makinelerine dağıtma
@@ -26,7 +26,7 @@ bir [dağıtım grubuna](https://docs.microsoft.com/azure/devops/pipelines/relea
 > * Azure DevOps Services tümleştirmesi için Jenkins’i yapılandırın.
 > * Jenkins hizmet uç noktası oluşturma.
 > * Azure sanal makineleri için dağıtım grubu oluşturma.
-> * Azure Pipelines bir yayın işlem hattı oluşturun.
+> * Bir Azure Ardışık Hatları yayımı ardışık alanı oluşturun.
 > * El ile ve CI ile tetiklenen dağıtımlar yürütme.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -69,12 +69,12 @@ Bu uygulamanın çatalını oluşturun ve bu öğreticinin daha sonraki adımlar
 5. Jenkins panosuna geri dönüp **Manage Jenkins** (Jenkins’i yönet) seçeneğini belirleyin.
 6. **Genel Araç Yapılandırması** seçeneğini belirleyin. **NodeJS** öğesini bulun ve **NodeJS yüklemeleri** seçeneğini belirleyin.
 7. **Otomatik olarak yükle** seçeneğini belirleyin ve bir **Ad** değeri girin.
-8. **Kaydet**’i seçin.
+8. **Kaydet'i**seçin.
 
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Node.js için Jenkins Serbest stil projesi yapılandırma
 
 1. **Yeni Öğe**’yi seçin. Bir öğe adı girin.
-2. **Freestyle project**’i (Serbest stil projesi) seçin. **Tamam**’ı seçin.
+2. **Freestyle project**’i (Serbest stil projesi) seçin. **Tamam'ı**seçin.
 3. **Kaynak Kodu Yönetimi** sekmesinde **Git**’i seçin ve uygulama kodunuzu içeren deponun ve dalın ayrıntılarını girin.    
     ![Derlemenize bir depo ekleme](media/tutorial-build-deploy-jenkins/jenkins-git.png)
 4. **Derleme Tetikleyicileri** sekmesinde **SCM’yi Yokla** seçeneğini belirleyin ve üç dakikada bir Git deposundaki değişiklikleri yoklamak için `H/03 * * * *` zamanlamasını girin. 
@@ -96,9 +96,9 @@ Bu uygulamanın çatalını oluşturun ve bu öğreticinin daha sonraki adımlar
 5. **TFS/Team Services’te yayınlamayı tetikle** seçeneğini belirleyin. Azure DevOps Services kuruluşunuz için **https://{your-organization-name}.visualstudio.com** gibi bir URI girin.
 6. **Proje** adını girin.
 7. Yayın işlem hattı için bir ad seçin. (Bu işlem hattını daha sonra Azure DevOps Services’ta oluşturun.)
-8. Azure DevOps Services veya Azure DevOps Server ortamınıza bağlanmak için kimlik bilgilerini seçin:
+8. Azure DevOps Hizmetlerinize veya Azure DevOps Sunucu ortamınıza bağlanmak için kimlik bilgilerini seçin:
    - Azure DevOps Services kullanıyorsanız, **Kullanıcı adı** alanını boş bırakın. 
-   - Azure DevOps Server şirket içi bir sürümünü kullanıyorsanız, bir Kullanıcı adı ve parola girin.    
+   - Azure DevOps Server'ın şirket içi sürümünü kullanıyorsanız bir kullanıcı adı ve parola girin.    
    ![Jenkins derleme sonrası eylemlerini yapılandırma](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Jenkins projesini kaydedin.
 
@@ -122,7 +122,7 @@ Yayın işlem hattının sanal makinenize dağıtılabilmesi için Azure DevOps 
    > [!NOTE]
    > Aşağıdaki yordamda, önkoşulları yüklediğinizden ve *betiği sudo ayrıcalıklarıyla çalıştırmadığınızdan* emin olun.
 
-1. **Derleme ve Yayın** hub’ının **Yayınlar&amp; sekmesini açın,** Dağıtım grupları **’nı açın ve** + Yeni **’yi seçin.
+1. **Yapı &amp; Sürümü** hub'ının **Sürümler** sekmesini açın, **Dağıtım gruplarını**açın ve **+ Yeni'yi**seçin.
 2. Dağıtım grubu için bir ad ve isteğe bağlı bir açıklama girin. Ardından **Oluştur**’u seçin.
 3. Dağıtım hedefi sanal makineniz için işletim sistemini seçin. Örneğin, **Ubuntu 16.04+** seçeneğini belirleyin.
 4. **Kimlik doğrulaması için betikte kişisel bir erişim belirteci kullan** seçeneğini belirleyin.
@@ -132,18 +132,18 @@ Yayın işlem hattının sanal makinenize dağıtılabilmesi için Azure DevOps 
 8. Yüklemeden sonra sizden dağıtım grubu etiketleri istenir. Varsayılanları kabul edin.
 9. Azure DevOps Services’ta, **Dağıtım Grupları** bölümündeki **Hedefler** kısmında yeni kaydettiğiniz sanal makinenizin olup olmadığını denetleyin.
 
-## <a name="create-an-azure-pipelines-release-pipeline"></a>Azure Pipelines yayın işlem hattı oluşturma
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Azure Ardışık Hatları sürüm ardışık bir sözcük oluşturma
 
 Yayın işlem hattı, Azure Pipelines’ın uygulamayı dağıtmak için kullandığı işlemi belirtir. Bu örnekte, bir kabuk betiği yürütürsünüz.
 
 Azure Pipelines’da yayın işlem hattı oluşturmak için:
 
-1. **Derleme**  Yayın **hub’ının &amp;Yayınlar** sekmesini açın ve **Yayın işlem hattı oluştur**’u seçin. 
+1. **Derleme &amp; Yayın** hub’ının **Yayınlar** sekmesini açın ve **Yayın işlem hattı oluştur**’u seçin. 
 2. **Boş** şablonunu seçerek **Boş işlem** ile başlamayı seçin.
 3. **Yapıtlar** bölümünde **+ Yapıt Ekle** seçeneğini belirleyin ve **Kaynak türü** için **Jenkins**’i seçin. Jenkins hizmet uç noktası bağlantınızı seçin. Ardından Jenkins kaynak işini seçin ve **Ekle** seçeneğini belirleyin.
 4. **Ortam 1**’in yanındaki üç noktayı seçin. **Dağıtım grubu aşaması ekle**’yi seçin.
 5. Dağıtım grubunuzu seçin.
-5. **Dağıtım grubu aşaması+’na görev eklemek için**  seçeneğini belirleyin.
+5. Dağıtım **+** **grubu aşamasına**görev eklemek için seçin.
 6. **Kabuk Betiği** görevini seçin ve **Ekle** seçeneğini belirleyin. **Kabuk Betiği** görevi, Node.js’yi yükleyip uygulamayı başlatmak için her bir sunucuda çalıştırılacak bir betik için yapılandırmayı sağlar.
 8. **Betik Yolu** için **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** girin.
 9. **Gelişmiş**’i seçin ve **Çalışma Dizinini Belirtin** seçeneğini etkinleştirin.
@@ -174,11 +174,11 @@ Bu öğreticide, derleme için Jenkins’i ve yayın için Azure DevOps Services
 > * Jenkins’te uygulamanızı derleme.
 > * Azure DevOps Services tümleştirmesi için Jenkins’i yapılandırın.
 > * Azure sanal makineleri için dağıtım grubu oluşturma.
-> * VM 'Leri yapılandıran ve uygulamayı dağıtan bir Azure işlem hattı oluşturun.
+> * VM'leri yapılandıran ve uygulamayı dağıtan bir Azure Ardışık Alanı oluşturun.
 
-Hem derleme hem de sürüm adımları için Azure Pipelines kullanma hakkında bilgi [edinmek için, bkz..](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)
+Hem Yapı hem de Sürüm adımları için Azure Ardışık Hatlar'ı nasıl kullanacağınızı öğrenmek için [şuna](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)bakın.
 
-VM 'lere dağıtmak için YAML tabanlı bir CI/CD işlem hattının nasıl yazılacağı hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+VM'lere dağıtmak için YAML tabanlı BIR CI/CD ardışık nasıl yazılabildiğini öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Azure üzerinde Jenkins](/azure/Jenkins/)
+> [Azure'da Jenkins](/azure/Jenkins/)

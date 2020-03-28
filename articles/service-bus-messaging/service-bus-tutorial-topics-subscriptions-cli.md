@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure CLı ile yayımlama/abone olma kanalları ve konu filtrelerini kullanarak perakende envanter sınıflama 'nı güncelleştirme"
-description: 'Öğretici: Bu öğreticide, bir konudan ve abonelikten ileti gönderme ve alma ile Azure CLı kullanarak filtre kuralları ekleme ve kullanma hakkında bilgi edineceksiniz.'
+title: 'Öğretici: Azure CLI ile yayımla/abone ol kanallarını ve konu filtrelerini kullanarak perakende stok ürün yelpazesini güncelleştirin'
+description: "Öğretici: Bu eğitimde, bir konu ve abonelikten ileti gönderip alacağınızı ve Azure CLI'yi kullanarak filtre kurallarıeklemeyi ve kullanmayı öğrenirsiniz"
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718917"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Öğretici: CLI'yi ve konuları/abonelikleri kullanarak envanter güncelleştirme
 
-Microsoft Azure Service Bus, uygulamalar ve hizmetler arasında bilgi gönderen çok kiracılı bir bulut mesajlaşma hizmetidir. Zaman uyumsuz işlemler, esnek, aracılı mesajlaşmanın yanı sıra, ilk giren ilk çıkar (FIFO) yöntemiyle yapılandırılmış mesajlaşma ve yayımlama/abonelik olanakları da sunar. Bu öğretici, bir perakende stok senaryosunda, Azure CLI ve Java kullanan yayımlama/abone olma kanallarıyla Service Bus konu başlıklarını ve abonelikleri kullanmayı göstermektedir.
+Microsoft Azure Service Bus, uygulamalar ve hizmetler arasında bilgi gönderen çok kiracılı bir bulut mesajlaşma hizmetidir. Zaman uyumsuz işlemler esnek ve aracılı mesajlaşmanın yanı sıra ilk giren ilk çıkar (FIFO) yöntemiyle yapılandırılmış mesajlaşma ve yayımlama/abonelik olanakları da sunar. Bu öğretici, bir perakende stok senaryosunda, Azure CLI ve Java kullanan yayımlama/abone olma kanallarıyla Service Bus konu başlıklarını ve abonelikleri kullanmayı göstermektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * Azure CLI kullanarak bir Service Bus konu başlığı ve bu konu başlığına bir veya daha fazla abonelik oluşturma
 > * Azure CLI kullanarak konu başlığı filtreleri ekleme
@@ -138,7 +138,7 @@ Ad alanı ve konu başlıkları/abonelikler sağlandıktan ve gerekli kimlik bil
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Örnek klasörü `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java` gidin. Bash kabuğunda komutların büyük/küçük harfe duyarlı olduğunu ve yol ayırıcıların eğik çizgi olması gerektiğini unutmayın.
+2. Örnek `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java` klasörüne gidin. Bash kabuğunda komutların büyük/küçük harfe duyarlı olduğunu ve yol ayırıcıların eğik çizgi olması gerektiğini unutmayın.
 
 3. Uygulamayı derlemek için aşağıdaki komutu çalıştırın:
    
@@ -153,7 +153,7 @@ Ad alanı ve konu başlıkları/abonelikler sağlandıktan ve gerekli kimlik bil
 
    Konu başlığına 10 ileti gönderildiğini ve ardından bunların ayrı aboneliklerden alındığını gözlemleyin:
 
-   ![program çıkışı](./media/service-bus-tutorial-topics-subscriptions-cli/service-bus-tutorial-topics-subscriptions-cli.png)
+   ![program çıktısı](./media/service-bus-tutorial-topics-subscriptions-cli/service-bus-tutorial-topics-subscriptions-cli.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -326,7 +326,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 ```
 
 > [!NOTE]
-> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
+> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

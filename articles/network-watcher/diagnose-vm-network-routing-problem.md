@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: VM ağı yönlendirme sorununu tanılama-Azure portal'
+title: 'Öğretici: VM ağ yönlendirme sorununu tanıla - Azure portalı'
 titleSuffix: Azure Network Watcher
 description: Bu öğreticide, Azure Ağ İzleyicisi’nin IP sonraki atlama özelliği kullanılarak sanal makine ağ yönlendirme sorununu tanılama hakkında bilgi edineceksiniz.
 services: network-watcher
@@ -18,15 +18,15 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76845211"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir sanal ağ yönlendirme sorununu tanılama
 
-Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç varsayılan yol oluşturur. Azure’un varsayılan yollarını geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda özel bir yol, bir sanal makinenin diğer kaynaklarla iletişim kuramamasına neden olabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç varsayılan yol oluşturur. Azure’un varsayılan yollarını geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda özel bir yol, bir sanal makinenin diğer kaynaklarla iletişim kuramamasına neden olabilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * VM oluşturma
@@ -36,7 +36,7 @@ Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç 
 
 Tercih ederseniz, [Azure CLI](diagnose-vm-network-routing-problem-cli.md) veya [Azure PowerShell](diagnose-vm-network-routing-problem-powershell.md) kullanarak bir sanal makine ağ yönlendirme sorununu tanılayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -50,12 +50,12 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVm|
+    |Adı|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
-    |Konum| **Doğu ABD**’yi seçin|
+    |Konum| **Doğu ABD'yi** seçin|
 
 4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
 5. **Ayarlar** bölümünde tüm varsayılanları kabul edin ve **Tamam**’ı seçin.
@@ -74,7 +74,7 @@ En az bir bölgede etkinleştirilmiş bir ağ izleyiciniz zaten varsa [Sonraki a
 
     ![Ağ İzleyicisini etkinleştirme](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
-3. **Ağ izleyicisini etkinleştirme**’yi seçin.
+3. **Ağ İzleyicisini etkinleştirme**’yi seçin.
 
 ### <a name="use-next-hop"></a>Sonraki atlamayı kullanma
 
@@ -89,7 +89,7 @@ Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayıla
     | Sanal makine         | MyVm öğesini seçin                                            |
     | Ağ arabirimi       | myvm - Ağ arabiriminizin adı farklı olabilir.   |
     | Kaynak IP adresi       | 10.0.0.4                                               |
-    | Hedef IP adresi  | 13.107.21.200-< www. Bing. com > adreslerinden biridir. |
+    | Hedef IP adresi  | 13.107.21.200 - <www.bing.com> adreslerinden biri. |
 
     ![Sonraki atlama](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
@@ -106,7 +106,7 @@ Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayıla
 
     Testi [Sonraki atlamayı kullan](#use-next-hop) bölümündeki 13.107.21.200 adresini kullanarak çalıştırdığınızda, bu adresi içeren başka bir yol olmadığından trafiği adrese yönlendirmek için adres ön eki 0.0.0.0/0 olan yol kullanılmıştır. Varsayılan olarak, başka bir yolun adres ön ekinde belirtilmeyen tüm adresler İnternet'e yönlendirilir.
 
-    Ancak, testi 172.31.0.100 adresini kullanarak çalıştırdığınızda sonuç, sonraki atlama türü olmadığını size bildirir. Önceki resimde görebileceğiniz gibi, 172.16.0.0/12 adresini içeren 172.31.0.100 ön ekinin varsayılan bir yolu olmamasına rağmen **SONRAKİ ATLAMA TÜRÜ** **Hiçbiri**’dir. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, sanal ağın adres alanına 172.16.0.0/12 adres aralığını eklediyseniz, Azure yol için **SONRAKİ ATLAMA TÜRÜ**’nü **Sanal ağ** olarak değiştirir. Daha sonra bir denetimde **SONRAKİ ATLAMA TÜRÜ** **Sanal ağ** olarak gösterilir.
+    Ancak, testi 172.31.0.100 adresini kullanarak çalıştırdığınızda sonuç, sonraki atlama türü olmadığını size bildirir. Önceki resimde görebileceğiniz gibi, 172.16.0.0/12 adresini içeren 172.31.0.100 ön ekinin varsayılan bir yolu olmamasına rağmen **SONRAKİ ATLAMA TÜRÜ****Hiçbiri**’dir. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, sanal ağın adres alanına 172.16.0.0/12 adres aralığını eklediyseniz, Azure yol için **SONRAKİ ATLAMA TÜRÜ**’nü **Sanal ağ** olarak değiştirir. Daha sonra bir denetimde **SONRAKİ ATLAMA TÜRÜ****Sanal ağ** olarak gösterilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
