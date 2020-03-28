@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Linux VM 'Ler için Azure sanal ağları oluşturma ve yönetme
+title: Öğretici - Linux Sanal M'leri için Azure sanal ağları oluşturma ve yönetme
 description: Bu öğreticide, Azure CLI kullanarak Linux sanal makineleri için Azure sanal ağları oluşturup yönetmeyi öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d6624b9d5d77a8552584049463b63738bbf17627
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238604"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Öğretici: Azure CLI ile Linux sanal makineleri için Azure sanal ağlarını yönetme
@@ -33,9 +33,9 @@ Azure sanal makineleri, iç ve dış ağ iletişimi için Azure ağını kullan�
 > * Ağ trafiğinin güvenliğini sağlama
 > * Arka uç VM’si oluşturma
 
-Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
+Bu öğretici, sürekli olarak en son sürüme güncelleştirilen [Azure Bulut Kabuğu'ndaki](https://docs.microsoft.com/azure/cloud-shell/overview)CLI'yi kullanır. Bulut Kabuğu'nu açmak için, herhangi bir kod bloğunun üstünden **deneyin'i** seçin.
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="vm-networking-overview"></a>VM ağına genel bakış
 
@@ -190,7 +190,7 @@ az network vnet subnet update \
 
 Ön uç VM’si oluşturulduğunda 22 numaralı bağlantı noktasından gelen trafiğe izin veren bir NSG kuralı oluşturulur. Bu kural, VM ile SSH bağlantısı kurulmasına izin verir. Bu örnekte aynı zamanda *80* numaralı bağlantı noktasındaki trafiğe de izin verilmelidir. Bu yapılandırma VM’den web uygulamasına erişilmesine izin verir.
 
-[80](/cli/azure/network/nsg/rule) numaralı bağlantı noktası için bir kural oluşturmak üzere *az network nsg rule create* komutunu kullanın.
+*80* numaralı bağlantı noktası için bir kural oluşturmak üzere [az network nsg rule create](/cli/azure/network/nsg/rule) komutunu kullanın.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -304,4 +304,4 @@ Bu öğreticide sanal makinelerle ilgili Azure ağlarını oluşturup ve güvenl
 Azure Backup kullanarak sanal makinelerdeki verilerin güvenliğini sağlamayı öğrenmek için sonraki öğreticiye geçin. 
 
 > [!div class="nextstepaction"]
-> [Azure’da Linux sanal makinelerini yedekleme](./tutorial-backup-vms.md)
+> [Azure'da Linux sanal makinelerini yedekleme](./tutorial-backup-vms.md)

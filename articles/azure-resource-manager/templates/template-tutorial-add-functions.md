@@ -1,54 +1,54 @@
 ---
-title: Öğretici-şablon işlevleri ekleme
-description: Değerler oluşturmak için Azure Resource Manager şablonunuza şablon işlevleri ekleyin.
+title: Öğretici - şablon işlevleri ekle
+description: Değerleri oluşturmak için Azure Kaynak Yöneticisi şablonunuza şablon işlevleri ekleyin.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7e4282802c287becf9ccb036ba0063d3c48bc332
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 6bb95d5a8022c6ac94dd8b7c777c65ff5e20617a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370772"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369910"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza şablon işlevleri ekleme
+# <a name="tutorial-add-template-functions-to-your-arm-template"></a>Öğretici: ARM şablonunuza şablon işlevleri ekleme
 
-Bu öğreticide, şablonunuza [Şablon işlevleri](template-functions.md) eklemeyi öğreneceksiniz. Değerleri dinamik olarak oluşturmak için işlevlerini kullanırsınız. Sistem tarafından sağlanmış bu şablon işlevlerine ek olarak, [Kullanıcı tanımlı işlevler](./template-user-defined-functions.md)de oluşturabilirsiniz. Bu öğreticinin tamamlana **7 dakika** sürer.
+Bu eğitimde, Azure Kaynak Yöneticisi (ARM) şablonunuza [şablon işlevlerini](template-functions.md) nasıl ekleyeceğinizi öğrenirsiniz. Değerleri dinamik olarak oluşturmak için işlevleri kullanırsınız. Bu sistem tarafından sağlanan şablon işlevlerine ek olarak, [kullanıcı tanımlı işlevler](./template-user-defined-functions.md)de oluşturabilirsiniz. Bu eğitimin tamamlanması **7 dakika** sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-[Parametreler hakkında öğreticiyi](template-tutorial-add-parameters.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
+Parametreler le ilgili [eğitimi](template-tutorial-add-parameters.md)tamamlamanızı öneririz, ancak gerekli değildir.
 
-Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell veya Azure CLI ile Visual Studio Kodu'na sahip olmalısınız. Daha fazla bilgi için [şablon araçlarına](template-tutorial-create-first-template.md#get-tools)bakın.
 
 ## <a name="review-template"></a>Şablonu gözden geçir
 
-Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
+Önceki öğreticinin sonunda, şablonunuzun aşağıdaki JSON'u vardı:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-Depolama hesabının konumu **Doğu ABD**için sabit olarak kodlanmıştır. Ancak, depolama hesabını diğer bölgelere dağıtmanız gerekebilir. Daha fazla esneklik olmayan şablonunuzda bir sorunla karşılaşıyoruz. Konum için bir parametre ekleyebilirsiniz, ancak varsayılan değeri yalnızca sabit kodlanmış bir değerden daha anlamlı olursa harika olur.
+Depolama hesabının konumu **Doğu ABD**için sabit kodlanmış. Ancak, depolama hesabını diğer bölgelere dağıtmanız gerekebilir. Şablonunuzun esneklikten yoksun bir sorunuyla yine karşı karşıyasınız. Konum için bir parametre ekleyebilirsiniz, ancak varsayılan değeri sabit kodlanmış bir değerden daha anlamlı ysa harika olur.
 
-## <a name="use-function"></a>Use işlevi
+## <a name="use-function"></a>İşlev kullanma
 
-Bu serinin önceki öğreticisini tamamladıysanız, zaten bir işlev kullandınız. **"[Parameters (' storageName ')]"** eklediğinizde [Parameters](template-functions-deployment.md#parameters) işlevini kullandınız. Köşeli ayraçlar, köşeli ayracın içindeki sözdiziminin bir [şablon ifadesi](template-expressions.md)olduğunu gösterir. Kaynak Yöneticisi, sözdizimini değişmez değer olarak kabul etmek yerine, sözdizimini çözer.
+Bu serinin önceki öğreticisini tamamladıysanız, zaten bir işlev kullandınız. **"[parameters('storageName')]"** [eklediğinizde, parametreler](template-functions-deployment.md#parameters) işlevini kullandınız. Köşeli ayraçlar, parantez içindeki sözdiziminin bir [şablon ifadesi](template-expressions.md)olduğunu gösterir. Kaynak Yöneticisi, sözdizimini gerçek bir değer olarak ele almaktansa çözer.
 
-İşlevler, dağıtım sırasında değerleri dinamik olarak alarak şablonunuz için esneklik ekler. Bu öğreticide, dağıtım için kullanmakta olduğunuz kaynak grubunun konumunu almak üzere bir işlev kullanırsınız.
+Işlevler, dağıtım sırasında dinamik olarak değer alarak şablonunuza esneklik katar. Bu öğreticide, dağıtım için kullandığınız kaynak grubunun konumunu almak için bir işlev kullanırsınız.
 
-Aşağıdaki örnek, **konum**adlı bir parametre ekleme değişikliklerini vurgular.  Parametre varsayılan değeri [resourceGroup](template-functions-resource.md#resourcegroup) işlevini çağırır. Bu işlev, dağıtım için kullanılan kaynak grubuyla ilgili bilgileri içeren bir nesne döndürür. Nesnedeki özelliklerden biri bir konum özelliğidir. Varsayılan değeri kullandığınızda, depolama hesabı konumu kaynak grubuyla aynı konuma sahiptir. Kaynak grubu içindeki kaynakların aynı konumu paylaşması gerekmez. Gerektiğinde farklı bir konum da sağlayabilirsiniz.
+Aşağıdaki **örnekte, konum**adı verilen bir parametre eklemek için yapılan değişiklikler vurgulanır.  Parametre varsayılan değeri [kaynak Grubu](template-functions-resource.md#resourcegroup) işlevini çağırır. Bu işlev, dağıtım için kullanılan kaynak grubu hakkında bilgi içeren bir nesne döndürür. Nesneüzerindeki özelliklerden biri konum özelliğidir. Varsayılan değeri kullandığınızda, depolama hesabı konumu kaynak grubuyla aynı konuma sahiptir. Kaynak grubundaki kaynakların aynı konumu paylaşması gerekemez. Gerektiğinde farklı bir konum da sağlayabilirsiniz.
 
-Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
+Dosyanın tamamını kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json" range="1-44" highlight="24-27,34":::
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Önceki öğreticilerde, Doğu ABD bir depolama hesabı oluşturdunuz, ancak kaynak grubunuz Orta ABD oluşturulmuş. Bu öğreticide, depolama hesabınız kaynak grubuyla aynı bölgede oluşturulur. Konum için varsayılan değeri kullanın, bu nedenle bu parametre değerini belirtmeniz gerekmez. Farklı bir konumda depolama hesabı oluşturmakta olduğunuz için depolama hesabı için yeni bir ad sağlamalısınız. Örneğin, **store1**yerine ön ek olarak **store2** kullanın.
+Önceki öğreticilerde, Doğu ABD'de bir depolama hesabı oluşturdunuz, ancak kaynak grubunuz Orta ABD'de oluşturuldu. Bu öğretici için depolama hesabınız kaynak grubuyla aynı bölgede oluşturulur. Konum için varsayılan değeri kullanın, böylece bu parametre değerini sağlamanız gerekmez. Farklı bir konumda bir depolama hesabı oluşturduğunuz için depolama hesabı için yeni bir ad sağlamanız gerekir. Örneğin, **store2** yerine önek olarak **store2 kullanın1.**
 
-Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
+Kaynak grubunu oluşturmadıysanız, [bkz.](template-tutorial-create-first-template.md#create-resource-group) Örnek, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi **şablonDosya** değişkenini şablon dosyasına giden yola ayarladığınız varsayar.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -59,6 +59,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bu dağıtım komutunu çalıştırmak için Azure CLI'nin [en son sürümüne](/cli/azure/install-azure-cli) sahip olmalısınız.
 
 ```azurecli
 az deployment group create \
@@ -72,27 +74,27 @@ az deployment group create \
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
+Azure portalındaki kaynak grubunu keşfederek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sol menüden **kaynak grupları**' nı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Sol menüden **Kaynak gruplarını**seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabı kaynağının dağıtıldığını ve kaynak grubuyla aynı konuma sahip olduğunu görürsünüz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
+Bir sonraki öğreticiye geçiyorsanız, kaynak grubunu silmeniz gerekmez.
 
-Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
+Şimdi duruyorsanız, kaynak grubunu silerek dağıttığınız kaynakları temizlemek isteyebilirsiniz.
 
-1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
+1. Azure portalından sol menüden **Kaynak grubunu** seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
+4. Üst menüden **kaynak grubunu sil'i** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir parametre için varsayılan değeri tanımlarken bir işlev kullandınız. Bu öğretici serisinde, işlevleri kullanmaya devam edersiniz. Serinin sonuna kadar, şablonun her bölümüne işlevler ekleyeceksiniz.
+Bu öğreticide, bir parametre için varsayılan değeri tanımlarken bir işlev kullandınız. Bu öğretici seride, işlevleri kullanmaya devam eceksiniz. Serinin sonunda, şablonun her bölümüne işlevler eklersiniz.
 
 > [!div class="nextstepaction"]
-> [Değişken Ekle](template-tutorial-add-variables.md)
+> [Değişkenleri ekleme](template-tutorial-add-variables.md)

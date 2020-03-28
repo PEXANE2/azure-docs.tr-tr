@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB Gremlin API 'SI için RU/s 'yi güncelleştirme için PowerShell betiği
-description: Azure PowerShell Script-Gremlin API için Azure Cosmos DB güncelleştirme RU/s
+title: Azure Cosmos DB Gremlin API için RU/s'yi güncelleştirmek için PowerShell komut dosyası
+description: Azure PowerShell komut dosyası - Gremlin API için Azure Cosmos DB Update RU/s
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: c298ec58b0d69d20429413f0f36b3e28ff8e5e61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61c06fca0fe2f2449f67890dd962905642605716
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441436"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366023"
 ---
-# <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB-Gremlin API 'SI için bir veritabanı veya grafik için RU/sn 'yi güncelleştirme
+# <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB için bir veritabanı veya grafik için RU/s'yi güncelleştirin - Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,11 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure Kaynak grupları**| |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBGremlinVeritabanı](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlindatabase) | Gremlin API Veritabanı oluşturur veya güncelleştirir. |
+| [Al-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Gremlin API Grafiği alır. |
+| [Set-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlingraph) | Gremlin API Grafiği oluşturur veya güncelleştirir. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

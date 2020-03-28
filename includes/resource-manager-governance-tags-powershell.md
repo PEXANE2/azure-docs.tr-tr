@@ -9,13 +9,13 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67188305"
 ---
-Bir kaynak grubu için iki etiket eklemek için [kümesi AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) komutu:
+Bir kaynak grubuna iki etiket eklemek için [Set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) komutunu kullanın:
 
 ```azurepowershell-interactive
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ Dept="IT"; Environment="Test" }
@@ -86,7 +86,7 @@ Birkaç değeri tek etikette birleştirmek için bir JSON dizesi kullanın.
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ CostCenter="{`"Dept`":`"IT`",`"Environment`":`"Test`"}" }
 ```
 
-Mevcut olan etiketlerin kaybetmeden birkaç değerlerle yeni bir etiket eklemek için mevcut etiketleri alın, yeni etiket için bir JSON dizesi kullanın ve etiket koleksiyonu yeniden uygulayın:
+Varolan etiketleri kaybetmeden çeşitli değerlere sahip yeni bir etiket eklemek için varolan etiketleri almanız, yeni etiket için bir JSON dizesi kullanmanız ve etiket koleksiyonunu yeniden uygulamanız gerekir:
 
 ```azurepowershell-interactive
 # Get existing tags and add a new tag

@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75421839"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Güncelleştirme ve değişiklik izleme çözümlerini Azure Otomasyonu’na ekleme
@@ -27,13 +27,13 @@ Bu öğreticide VM’lere yönelik Güncelleştirme, Değişiklik İzleme ve Say
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
-* Azure aboneliği. Henüz bir aboneliğiniz yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ya da [ücretsiz hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) için kaydolabilirsiniz.
+* Azure aboneliği. Henüz bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](automation-offering-get-started.md).
 * Sisteme eklenecek bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="onboard-an-azure-vm"></a>Bir Azure VM ekleme
 
-Makine eklemek için birden çok yol vardır, çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md) [birden çok makineye göz atmaya](automation-onboard-solutions-from-browse.md) veya Runbook 'a ekleyebilirsiniz. Bu öğretici bir runbook üzerinden Güncelleştirme Yönetimi’ni etkinleştirme konusunda size yol gösterir. Uygun ölçekte Azure Sanal Makinelerin eklenmesi için mevcut bir VM’ye Değişiklik izleme veya Güncelleştirme yönetimi çözümünün eklenmesi gerekir. Bu adımda, bir sanal makineye Güncelleştirme yönetimi ve Değişiklik izleme özelliğini eklersiniz.
+Makine eklemenin birden fazla yolu vardır. Çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [birden çok makineye gözatmadan, ](automation-onboard-solutions-from-browse.md) [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md) veya runbook ile ekleyebilirsiniz. Bu öğretici bir runbook üzerinden Güncelleştirme Yönetimi’ni etkinleştirme konusunda size yol gösterir. Uygun ölçekte Azure Sanal Makinelerin eklenmesi için mevcut bir VM’ye Değişiklik izleme veya Güncelleştirme yönetimi çözümünün eklenmesi gerekir. Bu adımda, bir sanal makineye Güncelleştirme yönetimi ve Değişiklik izleme özelliğini eklersiniz.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzlemeyi ve Sayımı Etkinleştirme
 
@@ -77,7 +77,7 @@ Güncelleştirme yönetimi çözümü yüklenirken mavi renkli bir başlık gös
    ![VM için güncelleştirme çözümünü etkinleştirme](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Diğer çözümün tamamlanmasını beklerseniz, bir sonraki çözümü etkinleştirirken, *Bu veya farklı bir sanal makinede başka bir çözümün yüklenmesi durumunda olduğunu belirten bir ileti alırsınız. Yükleme tamamlandığında, etkinleştir düğmesi etkinleştirilir ve çözümün bu sanal makineye yüklenmesini isteyebilirsiniz.*
+> Diğer çözümün tamamlanmasını beklemezseniz, sonraki çözümü etkinleştirirken belirten bir ileti alırsınız: *Bu veya farklı bir sanal makinede başka bir çözümün yüklenmesi devam etmektedir. Bu yükleme tamamlandığında Etkinleştir düğmesi etkinleştirilir ve bu sanal makinede çözümün yüklenmesini isteyebilirsiniz.*
 
 ## <a name="install-and-update-modules"></a>Modülleri yükleme ve güncelleştirme
 
@@ -129,10 +129,10 @@ Bu runbook’u başlatmak için değişiklik izleme çözümünü veya güncelle
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
+Güncelleştirme Yönetimi'nden bir VM kaldırmak için:
 
-* Log Analytics çalışma alanınızda, kapsam yapılandırma `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan VM 'yi kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
-* Linux için [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 'ı veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
+* Günlük Analizi çalışma alanınızda, Kapsam Yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan VM'yi kaldırın. Kaydedilen aramalar çalışma alanınızda **Genel** altında bulunabilir.
+* Linux için [Microsoft İzleme aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Google Maps 'tan Web hizmetlerini geçirme | Microsoft Azure haritaları"
-description: Google Maps 'tan Microsoft Azure Maps 'a Web Hizmetleri geçirme.
+title: "Öğretici: Web hizmetlerini Google Haritalar'dan geçirin | Microsoft Azure Haritaları"
+description: Web hizmetlerinin Google Haritalar'dan Microsoft Azure Haritalar'a nasıl geçirilir?
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
@@ -9,153 +9,153 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d2f25f2b786686b8af9bad4ea8ce3c8aea9b589f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913827"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371470"
 ---
-# <a name="migrate-web-service-from-google-maps"></a>Web hizmetini Google Maps 'tan geçirme
+# <a name="migrate-web-service-from-google-maps"></a>Web hizmetini Google Haritalar'dan geçirin
 
-Hem Azure hem de Google Maps, REST Web Hizmetleri aracılığıyla uzamsal API 'lere erişim sağlar. Bu platformların API arabirimleri benzer işlevleri gerçekleştirir. Ancak, bunların her biri farklı adlandırma kuralları ve yanıt nesneleri kullanır.
+Hem Azure hem de Google Haritalar, REST web hizmetleri aracılığıyla mekansal API'lere erişim sağlar. Bu platformların API arabirimleri benzer işlevler gerçekleştirir. Ancak, her biri farklı adlandırma kuralları ve yanıt nesneleri kullanır.
 
-Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure Maps hizmeti API 'Lerini gösterir.
+Tablo, listelenen Google Haritalar hizmet API'lerine benzer bir işlevsellik olan Azure Haritalar hizmet API'lerini gösterir.
 
-| Google Maps hizmeti API 'SI | Azure haritalar hizmeti API 'SI                                                                      |
+| Google Haritalar hizmet API'si | Azure Haritalar hizmet API'si                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Yükleye              | [Yolu](https://docs.microsoft.com/rest/api/maps/route)                                     |
-| Uzaklık matrisi         | [Yol matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
-| Coğrafi kodlama               | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Konum arama           | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Otomatik tamamlamayı yerleştir      | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Yola yasla            | Bkz. [rotaları ve yönleri hesaplama](#calculate-routes-and-directions) bölümü.            |
-| Hız sınırları            | Bkz. [bir koordinat Için ters coğrafi kod](#reverse-geocode-a-coordinate) bölümü.                  |
-| Statik eşleme              | [İşlenecek](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
-| Saat Dilimi               | [Saat dilimi](https://docs.microsoft.com/rest/api/maps/timezone)                              |
+| Yol tarifleri              | [Rota](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Mesafe Matrisi         | [Rota Matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| Coğrafi kodlama               | [Arama](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Yerler Arama           | [Arama](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Otomatik Tamamlama yı yerleştir      | [Arama](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Yola Yapış            | Bkz. [Rotaları ve yönleri Hesapla](#calculate-routes-and-directions) bölümü.            |
+| Hız Limitleri            | Bkz. Bir koordinat bölümünü [tersine çevirgeocode.](#reverse-geocode-a-coordinate)                  |
+| Statik Harita              | [İşleme](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| Saat Dilimi               | [Saat Dilimi](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
-Aşağıdaki hizmet API 'Leri Şu anda Azure haritalar 'da kullanılabilir değildir:
+Aşağıdaki hizmet API'leri şu anda Azure Haritalar'da kullanılamıyor:
 
-- Nedeniyle
-- Konumu
-- Ayrıntılar ve fotoğraflar-telefon numaralarını ve Web sitesi URL 'sini Azure haritalar arama API 'sinde bulabilirsiniz.
-- Harita URL 'Leri
-- En yakın yollar-bu, [burada](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
-)gösterildiği gıbı Web SDK kullanılarak ulaşılabilir, ancak şu anda hizmet olarak kullanılamaz.
-- Statik cadde görünümü
+- Yükseklik
+- Coğrafi Konum
+- Yerler ayrıntıları ve fotoğraflar - Telefon numaraları ve web sitesi URL'si Azure Haritalar arama API'sinde mevcuttur.
+- Harita URL'leri
+- En Yakın Yollar - Bu [burada](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+)gösterildiği gibi Web SDK kullanılarak elde edilebilir , ancak şu anda bir hizmet olarak mevcut değildir.
+- Statik sokak görünümü
 
-Azure haritalar, ilgi çekici olabilecek birkaç ek REST Web hizmetine sahiptir:
+Azure Haritalar'da ilgi nizi çekebilir birkaç ek REST web hizmeti vardır:
 
-- [Uzamsal işlemler](https://docs.microsoft.com/rest/api/maps/spatial): bir hizmete bölge sınırlaması gibi karmaşık uzamsal hesaplamalar ve işlemler için yük boşaltma.
-- [Trafik](https://docs.microsoft.com/rest/api/maps/traffic): gerçek zamanlı trafik akışına ve olay verilerine erişin.
+- [Uzamsal işlemler](https://docs.microsoft.com/rest/api/maps/spatial): Karmaşık uzamsal hesaplamaları ve geofencing gibi işlemleri bir hizmete boşaltın.
+- [Trafik](https://docs.microsoft.com/rest/api/maps/traffic): Gerçek zamanlı trafik akışına ve olay verilerine erişin.
 
 ## <a name="geocoding-addresses"></a>Coğrafi kodlama adresleri
 
-Coğrafi kodlama, bir adresi bir koordinat içine dönüştürme işlemidir. Örneğin, "1 Microsoft Way, Redmond, WA", Boylam:-122,1298, Enlem: 47,64005 olarak dönüştürülür. Ardından, koordinatları farklı tür amaçlar için kullanılabilir (örneğin, bir haritada bir işaret ortalama konumlandırmayı).
+Coğrafi kodlama, bir adresi koordinata dönüştürme işlemidir. Örneğin, "1 Microsoft yolu, Redmond, WA" boylam dönüştürür: -122.1298, enlem: 47.64005. Daha sonra, Koordinatlar, bir işaretçiyi haritaüzerinde konumlandırma gibi farklı türde amaçlar için kullanılabilir.
 
-Azure Maps, coğrafi kodlama adresleri için çeşitli yöntemler sağlar:
+Azure Haritalar, coğrafi kodlama adresleri için çeşitli yöntemler sağlar:
 
-- [**Serbest biçimli adres coğrafi kodlama**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress): tek bir adres dizesi belirtip isteği hemen işleyin. "1 Microsoft Way, Redmond, WA" tek bir adres dizesinin bir örneğidir. Bu API, tek tek adreslere hızla coğrafi olarak kod eklemeniz gerekiyorsa önerilir.
-- [**Yapılandırılmış adres coğrafi kodlama**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured): sokak adı, şehir, ülke ve posta kodu gibi tek bir adresin parçalarını belirtin ve isteği hemen işleyin. Bu API, tek tek adreslerin hızlı bir şekilde coğrafi olarak kodılabilmesi ve verilerin zaten ayrı adres bölümlerine ayrıştırılabilmeniz halinde önerilir.
-- [**Toplu iş adresi coğrafi kodlama**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview): en fazla 10.000 adresi içeren ve bunların bir süre içinde işlenmesini içeren bir istek oluşturun. Tüm adresler, sunucuda paralel olarak coğrafi olarak kodlanmıştır ve tamamlandığında tam sonuç kümesi indirilecektir. Bu, büyük veri kümelerine coğrafi kodlama için önerilir.
-- [**Benzer arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): Bu API, adres coğrafi kodlamasını ilgi çekici arama noktasıyla birleştirir. Bu API, serbest biçimli bir dize alır. Bu dize bir adres, yer, yer işareti, ilgi noktası veya ilgi alanı kategorisi olabilir. Bu API, isteği gerçek zamanlı olarak işler. Bu API, kullanıcıların aynı metin kutusundaki adresleri veya ilgi noktalarını araytığına yönelik uygulamalar için önerilir.
-- [**Benzer toplu işlem araması**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): en fazla 10.000 adres, yer, yer işareti veya ilgi alanı içeren ve bunların bir süre içinde işlenmesini içeren bir istek oluşturun. Tüm veriler sunucuda paralel olarak işlenir ve tamamlandığında tam sonuç kümesi indirilecektir.
+- [**Serbest biçimli adres coğrafi kodlama**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress): Tek bir adres dizesi belirtin ve isteği hemen işle. "1 Microsoft yolu, Redmond, WA" tek bir adres dize örneğidir. Bu API, tek tek adresleri hızla coğrafi kodlamanız gerekiyorsa önerilir.
+- [**Yapılandırılmış adres coğrafi kodlama**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured): Sokak adı, şehir, ülke ve posta kodu gibi tek bir adresin bölümlerini belirtin ve isteği hemen işleme alın. Bu API, tek tek adresleri hızlı bir şekilde coğrafi olarak kodlamanız gerekiyorsa ve veriler zaten tek tek adres bölümlerine ayrıştırılırsa önerilir.
+- [**Toplu adres coğrafi kodlama**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview): 10.000 adrese kadar bir istek oluşturun ve bunları belirli bir süre içinde işletin. Tüm adresler sunucuda paralel olarak coğrafi olarak kodlanır ve tamamlandığında tam sonuç kümesi indirilebilir. Bu, büyük veri kümelerini coğrafi kodlama için önerilir.
+- [**Bulanık arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): Bu API, adres coğrafi kodlama ile ilgi noktası aramanoktasını birleştirir. Bu API serbest biçimli bir dize alır. Bu dize bir adres, yer, simge sel, ilgi noktası veya ilgi alanı kategorisi olabilir. Bu API isteği gerçek zamanlı ya yılönce işleme. Bu API, kullanıcıların adresleri veya aynı metin kutusunda ilgi çekici noktaları aradığı uygulamalar için önerilir.
+- [**Bulanık toplu arama**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): 10.000 adres, yer, yer veya ilgi alanı içeren bir istek oluşturun ve bunları belirli bir süre boyunca işleyin. Tüm veriler sunucuda paralel olarak işlenir ve tamamlandığında tam sonuç kümesi indirilebilir.
 
-Aşağıdaki tabloda, Google Maps API parametreleri Azure haritalar 'daki karşılaştırılabilir API parametreleriyle birlikte çapraz başvuru yapılır.
+Aşağıdaki tablo, Google Haritalar API parametrelerini Azure Haritalar'daki karşılaştırılabilir API parametreleriyle karşılaştırmıştır.
 
-| Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi  |
+| Google Haritalar API parametresi | Karşılaştırılabilir Azure Haritalar API parametresi  |
 |---------------------------|--------------------------------------|
 | `address`                   | `query`                            |
 | `bounds`                    | `topLeft` ve `btmRight`           |
-| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality`-şehir/şehir<br/>`municipalitySubdivision` – komşuları, alt/süper şehir<br/>`countrySubdivision` eyalet veya il<br/>`countrySecondarySubdivision` İlçesi<br/>`countryTertiarySubdivision`-District<br/>`countryCode`-iki harfli ülke kodu |
-| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                  | `language` – [desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality`- şehir / şehir<br/>`municipalitySubdivision`– mahalle, alt / süper şehir<br/>`countrySubdivision`- eyalet veya il<br/>`countrySecondarySubdivision`- ilçe<br/>`countryTertiarySubdivision`- ilçe<br/>`countryCode`- iki harfli ülke kodu |
+| `key`                       | `subscription-key`– Azure Haritalar belgelerinde [kimlik doğrulamaya](azure-maps-authentication.md) da bakın. |
+| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgelerine bakın.  |
 | `region`                    | `countrySet`                       |
 
-Arama hizmetinin nasıl kullanılacağına ilişkin bir örnek [burada](how-to-search-for-address.md)belgelenmiştir. [Arama için en iyi yöntemleri](how-to-use-best-practices-for-search.md)gözden geçirdiğinizden emin olun.
+Arama hizmetinin nasıl kullanılacağına bir örnek [burada](how-to-search-for-address.md)belgelenmiştir. Arama için [en iyi uygulamaları](how-to-use-best-practices-for-search.md)gözden geçirmek için emin olun.
 
 > [!TIP]
-> Serbest biçimli adres coğrafi kodlama ve benzer arama API 'Leri, istek URL 'sine `&amp;typeahead=true` eklenerek otomatik tamamlama modunda kullanılabilir. Bu, sunucuya giriş metninin büyük olasılıkla kısmi olduğunu ve aramanın tahmine dayalı moda gitmesini söyler.
+> Serbest biçimli adres coğrafi kodlama ve bulanık arama API'leri, `&typeahead=true` istek URL'sine eklenerek otomatik tamamlama modunda kullanılabilir. Bu, sunucuya giriş metninin büyük olasılıkla kısmi olduğunu ve aramanın tahmin moduna geçeceğini söyler.
 
-## <a name="reverse-geocode-a-coordinate"></a>Bir koordinatı tersine çevrilmiş coğrafi kod
+## <a name="reverse-geocode-a-coordinate"></a>Bir koordinatı tersine çevirgeokodu
 
-Ters coğrafi kodlama, coğrafi koordinatları yaklaşık bir adrese dönüştürme işlemidir. "Boylam:-122,1298, Latitude: 47,64005" ile koordinatları "1 Microsoft Way, Redmond, WA" olarak dönüştürür.
+Ters coğrafi kodlama, coğrafi koordinatları yaklaşık bir adrese dönüştürme işlemidir. "Boylam: -122.1298, enlem: 47.64005" ile koordinatları "1 Microsoft yolu, Redmond, WA" dönüştürmek.
 
-Azure haritalar, birkaç ters coğrafi kodlama yöntemi sağlar:
+Azure Haritalar birkaç ters coğrafi kodlama yöntemi sağlar:
 
-- [**Adres ters coğrafi bölge**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse): Bu koordinat ile ilgili yaklaşık adresi almak için tek bir coğrafi koordinat belirtin. İsteği gerçek zamanlı olarak işler.
-- [**Çapraz cadde ters Geocoder**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet): yakın çapraz cadde bilgilerini almak ve isteği hemen işlemek için tek bir coğrafi koordinat belirtin. Örneğin, aşağıdaki çapraz cadde 1 ' i ve ana St 'ı alabilirsiniz.
-- [**Batch adresi ters coğrafi makinesi**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatchpreview): en fazla 10.000 koordinat içeren bir istek oluşturun ve bunların bir süre içinde işlenmesini sağlayabilirsiniz. Tüm veriler, sunucuda paralel olarak işlenir. İstek tamamlandığında, tüm sonuç kümesini indirebilirsiniz.
+- [**Adres ters geocoder**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse): Bu koordinata karşılık gelen yaklaşık adresi almak için tek bir coğrafi koordinat belirtin. İsteği gerçek zamanlı olarak işler.
+- [**Çapraz sokak ters geocoder**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet): Yakındaki çapraz sokak bilgilerini almak ve isteği hemen işlemek için tek bir coğrafi koordinat belirtin. Örneğin, aşağıdaki çapraz sokaklar 1 St Ave ve Main St alabilirsiniz.
+- [**Toplu adres ters geocoder**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatchpreview): 10.000 koordinatı içeren bir istek oluşturun ve bunları bir süre boyunca işleyin. Tüm veriler sunucuda paralel olarak işlenir. İstek tamamlandığında, tüm sonuç kümesini indirebilirsiniz.
 
-Bu tablo, Google Maps API parametrelerine Azure haritalar 'daki karşılaştırılabilir API parametreleriyle çapraz başvurular.
+Bu tablo, Google Haritalar API parametrelerine Azure Haritalar'daki karşılaştırılabilir API parametreleriyle çapraz başvurularda bulunuyor.
 
-| Google Maps API parametresi   | Karşılaştırılabilir Azure Maps API parametresi   |
+| Google Haritalar API parametresi   | Karşılaştırılabilir Azure Haritalar API parametresi   |
 |-----------------------------|---------------------------------------|
-| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                  | `language` – [desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `key`                       | `subscription-key`– Azure Haritalar belgelerinde [kimlik doğrulamaya](azure-maps-authentication.md) da bakın. |
+| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgelerine bakın.  |
 | `latlng`                    | `query`  |
 | `location_type`             | *Yok*     |
 | `result_type`               | `entityType`    |
 
-[Arama için en iyi uygulamaları](how-to-use-best-practices-for-search.md)gözden geçirin.
+Arama için en iyi uygulamaları gözden [geçirin.](how-to-use-best-practices-for-search.md)
 
-Azure haritalar ters coğrafi kodlama API 'SI, Google Maps ' de kullanılamayan bazı ek özelliklere sahiptir. Uygulamanızı geçirirken, bu özellikler uygulamanızla tümleştirilecek şekilde yararlı olabilir:
+Azure Haritalar ters coğrafi kodlama API'si, Google Haritalar'da bulunmayan bazı ek özelliklere sahiptir. Bu özellikler, uygulamanızı geçirerken uygulamanızla tümleştirmek için yararlı olabilir:
 
 - Hız sınırı verilerini alma
-- Yol kullanım bilgilerini alma: yerel yol, arterial, sınırlı erişim, rampa, vb.
-- Bir koordinat bulunduğu cadde tarafını alma
+- Yol kullanım bilgilerini alın: yerel yol, arteriyel, sınırlı erişim, rampa ve benzeri
+- Koordinatın bulunduğu caddenin yan tarafını alma
 
 ## <a name="search-for-points-of-interest"></a>İlgi noktası arama
 
-Yer arama API 'sini kullanarak Google Haritalar 'da ilgi çekici verilerin bulunduğu noktaya erişilebilir. Bu API, ilgilendiğiniz noktaları aramak için üç farklı yol sağlar:
+İlgi çekici veriler, Yerler Arama API'si kullanılarak Google Haritalar'da aranabilir. Bu API, ilgi çekici noktaları aramak için üç farklı yol sağlar:
 
-- **Metinden yer bulun:** Adını, adresini veya telefon numarasını temel alarak bir ilgi alanı arar.
-- **Yakın arama**: bir konumun belirli bir uzaklıkta yer alan ilgi alanlarını arar.
-- **Metin arama:** Bir dizi ilgi ve konum bilgisi içeren serbest biçimli bir metin kullanarak yerleri arar. Örneğin, "New York 'ta pizza" veya "ana St yakınında" Restoranlar ".
+- **Metinden yer bulma:** Adını, adresini veya telefon numarasını temel alan bir ilgi noktası arar.
+- **Yakındaki Arama**: Bir konuma belirli bir mesafede ki ilgi alanlarını arar.
+- **Metin Arama:** İlgi alanı ve konum bilgilerini içeren serbest biçimli bir metin kullanarak yerleri arar. Örneğin, "New York'ta pizza" veya "ana st yakın restoranlar".
 
-Azure Maps, ilgi noktaları için çeşitli arama API 'Leri sağlar:
+Azure Haritalar ilgi çekici noktalar için çeşitli arama API'leri sağlar:
 
-- [**POI arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi): ada göre ilgi alanları için arama yapın. Örneğin, "Starbuları".
-- [**POI kategorisi arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory): kategoriye göre ilgi alanları için arama yapın. Örneğin, "Restoran".
-- [**Yakın arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby): bir konumun belirli bir uzaklıkta yer alan ilgi alanlarını arar.
-- [**Benzer arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): Bu API, adres coğrafi kodlamasını ilgi çekici arama noktasıyla birleştirir. Bu API, bir adres, yer, yer işareti, ilgi noktası veya ilgi alanı kategorisi olabilecek serbest biçimli bir dize alır. İstek neredeyse gerçek zamanlı olarak işlenir. Bu API, kullanıcıların aynı metin kutusundaki adresleri veya ilgi noktalarını araytığına yönelik uygulamalar için önerilir.
-- [**Geometri dahilinde ara**](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry): belirtilen geometri dahilinde ilgi alanları için arama yapın. Örneğin, bir çokgen içinde ilgi çekici bir noktada arama yapın.
-- [**Yol boyunca ara**](https://docs.microsoft.com/rest/api/maps/search/postsearchalongroute): belirtilen yol yolu boyunca ilgi alanları için arama yapın.
-- [**Benzer toplu işlem araması**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): en fazla 10.000 adres, yer, yer işareti veya ilgi alanı içeren bir istek oluşturun. İstek bir süre içinde işlendi. Tüm veriler, sunucuda paralel olarak işlenir. İstek işlemi tamamlandığında, tüm sonuç kümesini indirebilirsiniz.
+- [**POI arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi): Ada göre ilgi noktaları arayın. Örneğin, "Starbucks".
+- [**POI kategori arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory): Kategoriye göre ilgi alanları nın noktalarını arayın. Örneğin, "restoran".
+- [**Yakındaki arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby): Bir konuma belirli bir mesafede ki ilgi alanlarını arar.
+- [**Bulanık arama**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): Bu API, adres coğrafi kodlama ile ilgi noktası aramanoktasını birleştirir. Bu API, adres, yer, simge sel, ilgi noktası veya ilgi alanı kategorisi olabilecek serbest biçimli bir dize alır. İsteği gerçek zamanlı olarak işler. Bu API, kullanıcıların adresleri veya aynı metin kutusunda ilgi çekici noktaları aradığı uygulamalar için önerilir.
+- [**Geometri içinde ara**](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry): Belirli bir geometri içinde yer alan ilgi alanlarını arayın. Örneğin, çokgen içinde ilgi çekici bir nokta arayın.
+- [**Yol boyunca arama**](https://docs.microsoft.com/rest/api/maps/search/postsearchalongroute): Belirli bir rota yolu boyunca olan ilgi alanlarını arayın.
+- [**Bulanık toplu arama**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): 10.000 adres, yer, yer veya ilgi alanı içeren bir istek oluşturun. İsteği bir süre içinde işledi. Tüm veriler sunucuda paralel olarak işlenir. İstek işleme tamamlandığında, tüm sonuç kümesini indirebilirsiniz.
 
-Şu anda Azure Maps 'ta, Google Maps 'ta metin arama API 'sine yönelik karşılaştırılabilir bir API yok.
+Şu anda Azure Haritalar'da Google Haritalar'daki Metin Arama API'si ile karşılaştırılabilir bir API yoktur.
 
 > [!TIP]
-> POı araması, POı kategorisi araması ve benzer arama API 'Leri, istek URL 'sine `&amp;typeahead=true` eklenerek otomatik tamamlama modunda kullanılabilir. Bu, sunucuya giriş metninin büyük olasılıkla kısmi olduğunu bildirir. API, tahmine dayalı modda aramayı yürütmek için kullanılır.
+> İçN araması, İçN kategori araması ve bulanık arama API'leri `&typeahead=true` istek URL'sine eklenerek otomatik tamamlama modunda kullanılabilir. Bu, sunucuya giriş metninin büyük olasılıkla kısmi olduğunu söyler. API, aramayı tahmin modunda yürütecektir.
 
 Arama belgeleri [için en iyi uygulamaları](how-to-use-best-practices-for-search.md) gözden geçirin.
 
-### <a name="find-place-from-text"></a>Metinden yer bulun
+### <a name="find-place-from-text"></a>Metinden yer bulma
 
-Ad veya adrese göre ilgi alanlarını aramak için Azure Maps [POI aramasını](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) ve [benzer aramayı](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kullanın.
+İlgi alanlarını ada veya adrese göre aramak için Azure Haritalar [İçN aramasını](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) ve [Bulanık aramasını](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kullanın.
 
-Tabloda, Google Maps API parametrelerine benzer Azure Maps API parametreleri ile çapraz başvurular yapılır.
+Tablo, Google Haritalar API parametrelerine karşılaştırılabilir Azure Haritalar API parametreleri ile çapraz başvurular.
 
-| Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi |
+| Google Haritalar API parametresi | Karşılaştırılabilir Azure Haritalar API parametresi |
 |---------------------------|-------------------------------------|
 | `fields`                  | *Yok*                               |
 | `input`                   | `query`                             |
 | `inputtype`               | *Yok*                               |
-| `key`                     | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                | `language` – [desteklenen diller](supported-languages.md) belgesine bakın.  |
-| `locationbias`            | `lat`, `lon` ve `radius`<br/>`topLeft` ve `btmRight`<br/>`countrySet`  |
+| `key`                     | `subscription-key`– Azure Haritalar belgelerinde [kimlik doğrulamaya](azure-maps-authentication.md) da bakın. |
+| `language`                | `language`– [Desteklenen diller](supported-languages.md) belgelerine bakın.  |
+| `locationbias`            | `lat`ve `lon``radius`<br/>`topLeft` ve `btmRight`<br/>`countrySet`  |
 
 ### <a name="nearby-search"></a>Yakındaki arama
 
-Azure haritalar 'da, yakın ilgi noktalarını almak için [yakındaki arama](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) API 'sini kullanın.
+Azure Haritalar'da yakındaki ilgi alanlarını almak için [Yakındaki arama](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) API'sini kullanın.
 
-Tablo, Google Maps API parametrelerini karşılaştırılabilir Azure Maps API parametreleriyle gösterir.
+Tablo, Karşılaştırılabilir Azure Haritalar API parametreleri ile Google Maps API parametrelerini gösterir.
 
-| Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi  |
+| Google Haritalar API parametresi | Karşılaştırılabilir Azure Haritalar API parametresi  |
 |---------------------------|--------------------------------------|
-| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
+| `key`                       | `subscription-key`– Azure Haritalar belgelerinde [kimlik doğrulamaya](azure-maps-authentication.md) da bakın. |
 | `keyword`                   | `categorySet` ve `brandSet`        |
-| `language`                  | `language` – [desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgelerine bakın.  |
 | `location`                  | `lat` ve `lon`                     |
 | `maxprice`                  | *Yok*                               |
 | `minprice`                  | *Yok*                               |
@@ -164,128 +164,130 @@ Tablo, Google Maps API parametrelerini karşılaştırılabilir Azure Maps API p
 | `pagetoken`                 | `ofs` ve `limit`                   |
 | `radius`                    | `radius`                            |
 | `rankby`                    | *Yok*                               |
-| `type`                      | `categorySet –` bkz. [desteklenen arama kategorileri](supported-search-categories.md) belgeleri.   |
+| `type`                      | `categorySet –`[Desteklenen arama kategorileri](supported-search-categories.md) belgelerine bakın.   |
 
-## <a name="calculate-routes-and-directions"></a>Rotaları ve yönleri hesapla
+## <a name="calculate-routes-and-directions"></a>Rotaları ve yönleri hesaplama
 
-Azure haritalar 'ı kullanarak rotaları ve yönergeleri hesaplayın. Azure haritalar, Google Maps yönlendirme hizmetiyle aynı işlevselliklerin çoğuna sahiptir, örneğin:
+Azure Haritalar'ı kullanarak rotaları ve yol tariflerini hesaplayın. Azure Haritalar, Google Haritalar yönlendirme hizmetiyle aynı işlevlere sahiptir( örneğin:
 
-- Varış ve ayrılma süreleri.
+- Varış ve kalkış saatleri.
 - Gerçek zamanlı ve tahmine dayalı trafik rotaları.
-- Farklı ulaşım modları. Örneğin, gidiş, yürüyen, Bicycling.
+- Farklı ulaşım şekilleri. Araba sürmek, yürümek, bisiklet sürmek gibi.
 
 > [!NOTE]
-> Azure haritalar tüm waypoints 'in koordinatlarını gerektirir. Önce adreslerin coğrafi kodlanmış olması gerekir.
+> Azure Haritalar tüm yol işaretlerinin koordinat olmasını gerektirir. Önce adresler coğrafi kodlanmalıdır.
 
-Azure haritalar yönlendirme hizmeti, yolları hesaplamak için aşağıdaki API 'Leri sağlar:
+Azure Haritalar yönlendirme hizmeti, rotahesaplamaiçin aşağıdaki API'leri sağlar:
 
-- [**Rotayı hesapla**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): bir rotayı hesaplayın ve isteğin hemen işlenmesini sağlayabilirsiniz. Bu API hem GET hem POST isteklerini destekler. Çok sayıda waypoints belirtildiğinde veya URL isteğinin çok uzun olmadığından ve sorunlara yol açmamasına yetecek kadar fazla yol seçeneği kullanılırken POST istekleri önerilir. Azure haritalar 'daki POST rotası yönü, binlerce [destekleyici noktası](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) olan bir seçeneğe sahiptir ve bunları aralarında bir mantıksal yol yolu (yola yasla) yeniden oluşturmak için kullanır. 
-- [**Batch rotası**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): en fazla 1.000 yol isteği içeren bir istek oluşturun ve bunların bir süre içinde işlenmesini isteyin. Tüm veriler sunucuda paralel olarak işlenir ve tamamlandığında tam sonuç kümesi indirilecektir.
-- [**Mobility Hizmetleri**](https://docs.microsoft.com/rest/api/maps/mobility): genel aktarım kullanarak rotaları ve yönergeleri hesaplayın.
+- [**Rotayı Hesapla**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): Rotayı hesaplayın ve isteği hemen işletin. Bu API hem GET hem de POST isteklerini destekler. POSTA istekleri, çok sayıda yol noktası belirtirken veya URL isteğinin çok uzun olmamasını ve sorunlara neden olmasını sağlamak için çok sayıda yol seçeneği kullanırken önerilir. Azure Haritalar'daki POST Route Direction, binlerce destek [noktası](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) nı alan ve bunları aralarında mantıksal bir rota yolunu yeniden oluşturmak için kullanacak (yola yapış) bir seçeneğe sahiptir. 
+- [**Toplu işlem rotası**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): 1.000'e kadar rota isteği içeren bir istek oluşturun ve bunları belirli bir süre içinde işletin. Tüm veriler sunucuda paralel olarak işlenir ve tamamlandığında tam sonuç kümesi indirilebilir.
+- [**Mobilite hizmetleri**](https://docs.microsoft.com/rest/api/maps/mobility): Toplu taşıma araçlarını kullanarak güzergahları ve yol tariflerini hesaplayın.
 
-Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar 'daki karşılaştırılabilir API parametrelerini içeren çapraz başvurular.
+Tablo, Google Haritalar API parametrelerine Azure Haritalar'daki karşılaştırılabilir API parametreleriyle çapraz başvurularda bulunuyor.
 
-| Google Maps API parametresi    | Karşılaştırılabilir Azure Maps API parametresi  |
+| Google Haritalar API parametresi    | Karşılaştırılabilir Azure Haritalar API parametresi  |
 |------------------------------|--------------------------------------|
 | `alternatives`                 | `maxAlternatives`                  |
 | `arrival_time`                | `arriveAt`                          |
 | `avoid`                        | `avoid`                            |
 | `departure_time`              | `departAt`                          |
-| `destination`                  | `query`: `"lat0,lon0:lat1,lon1…."` biçimde koordinatları  |
-| `key`                          | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                     | `language` – [desteklenen diller](supported-languages.md) belgesine bakın.   |
+| `destination`                  | `query`– formattaki koordinatlar`"lat0,lon0:lat1,lon1…."`  |
+| `key`                          | `subscription-key`– Azure Haritalar belgelerinde [kimlik doğrulamaya](azure-maps-authentication.md) da bakın. |
+| `language`                     | `language`– [Desteklenen diller](supported-languages.md) belgelerine bakın.   |
 | `mode`                         | `travelMode`                       |
 | `optimize`                     | `computeBestOrder`                 |
 | `origin`                       | `query`                            |
-| `region`                       | *Yok* : Bu özellik, coğrafi kodlama ile ilgilidir. Azure Haritalar Coğrafi Kodlama API 'sini kullanırken *Countryset* parametresini kullanın.  |
-| `traffic_model`               | *Yok* – *trafik parametresi yalnızca trafik parametresiyle* birlikte kullanılması gerekiyorsa belirtilebilir. |
-| `transit_mode`                | [Mobility Hizmetleri belgelerine](https://docs.microsoft.com/rest/api/maps/mobility) bakın |
-| `transit_routing_preference` | [Mobility Hizmetleri belgelerine](https://docs.microsoft.com/rest/api/maps/mobility) bakın |
-| `units`                        | *Yok* – Azure Maps yalnızca ölçüm sistemini kullanır.  |
+| `region`                       | *N/A* – Bu özellik coğrafi kodlama ile ilgilidir. Azure Haritalar coğrafi kodlama API'sini kullanırken *countrySet* parametresini kullanın.  |
+| `traffic_model`               | *N/A* – Yalnızca trafik verisinin *trafik* parametresi ile kullanIlip kullanılmayabileceğini belirtebilirsiniz. |
+| `transit_mode`                | [Mobilite hizmetleri belgelerine](https://docs.microsoft.com/rest/api/maps/mobility) bakın |
+| `transit_routing_preference` | [Mobilite hizmetleri belgelerine](https://docs.microsoft.com/rest/api/maps/mobility) bakın |
+| `units`                        | *N/A* – Azure Haritalar yalnızca metrik sistemi kullanır.  |
 | `waypoints`                    | `query`                            |
 
 > [!TIP]
-> Varsayılan olarak, Azure Maps Route API 'SI yalnızca bir Özet döndürür. Yol yolu için uzaklık ve saat ve koordinatları döndürür. Geri alma yönergelerini almak için `instructionsType` parametresini kullanın. Ve, Özet ve yol yolunu filtrelemek için `routeRepresentation` parametresini kullanın.
+> Varsayılan olarak, Azure Haritalar rota API yalnızca bir özet döndürür. Mesafeyi, saatleri ve rota yolunun koordinatlarını döndürür. Sırayla `instructionsType` yönergeleri ni almak için parametreyi kullanın. Ayrıca, özet `routeRepresentation` ve rota yolunu filtrelemek için parametreyi kullanın.
 
-Azure haritalar yönlendirme API 'SI, Google Maps ' de kullanılamayan ek özelliklere sahiptir. Uygulamanızı geçirirken, bu özellikleri kullanmayı göz önünde bulundurun ve bunları yararlı bulabilirsiniz.
+Azure Haritalar yönlendirme API'si, Google Haritalar'da bulunmayan ek özelliklere sahiptir. Uygulamanızı geçirdiğinizde, bu özellikleri kullanmayı düşünün, bu özellikleri yararlı bulabilirsiniz.
 
-- Rota türü desteği: en kısa, en hızlı, trilini ve en çok yakıt etkin.
-- Ek seyahat modları için destek: Bus, motocycle, Taxi, kamyon ve Van.
-- 150 waypoints desteği.
-- Tek bir istekte birden çok seyahat süresi hesaplama; geçmiş trafik, canlı trafik, trafik yok.
-- Ek yol türlerinden kaçının: Carpool yol, geri alınamaz yollar, zaten kullanılan yollar.
-- Kaçınmak için özel alan belirtin.
-- Yolun Ascend olabileceği yükseltmeyi sınırlayın.
-- Altyapı belirtimlerine göre rota. Altyapı belirtimlerini ve kalan yakıt veya ücreti temel alan combustion veya elektrik taşıtlar için yolları hesaplayın.
-- Ticari araç yönlendirme parametrelerini destekler. Örneğin, araç boyutları, ağırlık, Axler sayısı ve kargo türü.
+- Rota türü için destek: en kısa, en hızlı, trilling ve en fazla yakıt verimli.
+- Ek seyahat modları için destek: otobüs, motosiklet, taksi, kamyon ve minibüs.
+- 150 yol noktası için destek.
+- Tek bir istekte birden çok seyahat kez hesaplayın; tarihi trafik, canlı trafik, trafik yok.
+- Ek yol tiplerinden kaçının: otopark yolları, asfaltsız yollar, zaten kullanılmış yollar.
+- Kaçınmak için özel alanlar belirtin.
+- Rotanın yükselebileceği yüksekliği sınırlayın.
+- Motor özelliklerine göre rota. Motor özelliklerine ve kalan yakıt veya şarja göre yanma veya elektrikli araçlar için rotaları hesaplayın.
+- Ticari araç rota parametrelerini destekleyin. Araç boyutları, ağırlık, aks sayısı ve kargo tipi gibi.
 - Maksimum araç hızını belirtin.
 
-Buna ek olarak, Azure Maps 'taki yönlendirme hizmeti [yönlendirilebilir aralıkları hesaplamayı](https://docs.microsoft.com/rest/api/maps/route/getrouterange)destekler. Yönlendirilebilir aralıkları hesaplama de ikizde olarak bilinir. Kaynak noktasından herhangi bir yöne doğru bir şekilde gezilecek bir alanı kapsayan bir çokgen oluşturmayı gerektirir. Tüm belirli bir süre veya yakıt veya ücret miktarı altında.
+Buna ek olarak, Azure Haritalar'daki rota [hizmeti, routable aralıklarının hesaplanmasını](https://docs.microsoft.com/rest/api/maps/route/getrouterange)destekler. Routable aralıkları hesaplanması da isochrones olarak bilinir. Bir başlangıç noktasından herhangi bir yöne seyahat edilebilir bir alanı kapsayan bir çokgen oluşturmayı gerektirir. Tüm zaman veya yakıt veya şarj miktarı belirli bir miktar altında.
 
-## <a name="retrieve-a-map-image"></a>Harita görüntüsünü al
+Belgeleri yönlendirme için en iyi uygulamaları gözden [geçirin.](how-to-use-best-practices-for-routing.md)
 
-Azure Maps, çakışan verilerle statik harita görüntülerini işlemek için bir API sağlar. Azure haritalar 'daki [harita görüntü işleme](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) API 'Si, Google Maps 'taki statik harita API 'siyle karşılaştırılabilir.
+## <a name="retrieve-a-map-image"></a>Harita görüntüsü alma
+
+Azure Haritalar, statik harita görüntülerini veri üzerine yığıldıktan işlemek için bir API sağlar. Azure Haritalar'daki [Harita görüntüsü oluşturma](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) API'si, Google Haritalar'daki statik harita API'si ile karşılaştırılabilir.
 
 > [!NOTE]
-> Azure haritalar, "boylam, enlem" biçiminde koordine edilecek merkezi, tüm işaretçiyi ve yol konumlarını gerektirir. Ancak, Google Maps "enlem, Boylam" biçimini kullanır. Önce adreslerin coğrafi kodlanmış olması gerekir.
+> Azure Haritalar, "boylam,enlem" biçiminde koordinatlar için merkez, tüm işaretçi ve yol konumlarının gerekli olmasını gerektirir. Oysa, Google Haritalar "enlem, boylam" biçimini kullanır. Adreslerin önce coğrafi kodlanmış olması gerekir.
 
-Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar 'daki karşılaştırılabilir API parametrelerini içeren çapraz başvurular.
+Tablo, Google Haritalar API parametrelerine Azure Haritalar'daki karşılaştırılabilir API parametreleriyle çapraz başvurularda bulunuyor.
 
-| Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi  |
+| Google Haritalar API parametresi | Karşılaştırılabilir Azure Haritalar API parametresi  |
 |---------------------------|--------------------------------------|
 | `center`                    | `center`                           |
-| `format`                    | `format`: URL yolunun bir parçası olarak belirtilir. Şu anda yalnızca PNG destekleniyor. |
-| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                  | `language` – [desteklenen diller](supported-languages.md) belgesine bakın.  |
-| `maptype`                   | `layer` ve `style` – [desteklenen harita stilleri](supported-map-styles.md) belgelerine bakın. |
+| `format`                    | `format`– URL yolunun bir parçası olarak belirtilir. Şu anda sadece PNG desteklenmiştir. |
+| `key`                       | `subscription-key`– Azure Haritalar belgelerinde [kimlik doğrulamaya](azure-maps-authentication.md) da bakın. |
+| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgelerine bakın.  |
+| `maptype`                   | `layer`ve `style` – [Bkz. Desteklenen harita stilleri](supported-map-styles.md) belgeleri. |
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
-| `region`                    | *Yok* – bu, coğrafi kodlama ile ilgili bir özelliktir. Azure Maps coğrafi kodlama API 'sini kullanırken `countrySet` parametresini kullanın.  |
+| `region`                    | *N/A* – Bu, coğrafi kodlama ile ilgili bir özelliktir. Azure `countrySet` Haritalar coğrafi kodlama API'sini kullanırken parametreyi kullanın.  |
 | `scale`                     | *Yok*                              |
-| `size`                      | `width` ve `height` – boyutu 8192x8192 olabilir. |
+| `size`                      | `width`ve `height` – boyutu 8192x8192 kadar olabilir. |
 | `style`                     | *Yok*                              |
 | `visible`                   | *Yok*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
-> Azure haritalar kutucuk sisteminde, kutucuklar Google Maps ' de kullanılan harita kutucuklarının iki katına alınır. Bu nedenle, Azure haritalar 'daki yakınlaştırma düzeyi değeri, Google Maps ile karşılaştırıldığında Azure Maps 'ta bir yakınlaştırma düzeyi daha yakından görünecektir. Bu farkı dengelemek için, geçirdiğiniz isteklerindeki yakınlaştırma düzeyini azaltın.
+> Azure Haritalar döşeme sisteminde, kutucuklar Google Haritalar'da kullanılan harita kutucuklarının iki katı büyüklüğündedir. Bu nedenle, Azure Haritalar'daki yakınlaştırma düzeyi değeri, Azure Haritalar'da Google Haritalar'a kıyasla bir yakınlaştırma düzeyi görünür. Bu farkı telafi etmek için, geçiş yaptığınız isteklerde yakınlaştırma düzeyini azat edin.
 
-Daha fazla bilgi için [harita görüntü Işleme API 'Sindeki nasıl yapılır kılavuzuna](how-to-render-custom-data.md)bakın.
+Daha fazla bilgi [için, harita görüntüsündeki Nasıl YapIlen kılavuzuna bakın.](how-to-render-custom-data.md)
 
-Azure haritalar işleme hizmeti, statik bir harita görüntüsü oluşturmaya ek olarak tarama (PNG) ve vektör biçimindeki harita kutucuklarına doğrudan erişme özelliği sağlar:
+Azure Haritalar işleme hizmeti, statik bir harita görüntüsü oluşturabilme özelliğinin yanı sıra, raster (PNG) ve vektör biçiminde harita kutucuklarına doğrudan erişme olanağı sağlar:
 
-- [**Harita kutucuğu**](https://docs.microsoft.com/rest/api/maps/render/getmaptile): temel haritalar (yollar, sınırlar, arka plan) için raster (png) ve vektör kutucukları alma.
-- [**Harita Imagery kutucuğu**](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile): havadan ve uydu görüntüsü al kutucukları alın.
+- [**Harita döşemesi**](https://docs.microsoft.com/rest/api/maps/render/getmaptile): Temel haritalar (yollar, sınırlar, arka plan) için raster (PNG) ve vektör karoları alın.
+- [**Harita görüntüleri kutucuğu**](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile): Havadan ve uydu görüntü kutucuklarını alın.
 
 > [!TIP]
-> Birçok Google harita, etkileşimli eşleme deneyimlerinden birkaç yıl önce statik harita görüntülerine geçti. Bu, maliyet tasarrufu yöntemi olarak gerçekleştirildi. Azure haritalar 'da, Web SDK 'sında etkileşimli harita denetimini kullanmak genellikle daha uygun maliyetli bir hale gelir. Etkileşimli harita denetim ücretleri, kutucuk yüklerinin sayısını temel alarak ücretlidir. Azure haritalar 'daki harita kutucukları büyük. Genellikle, aynı harita görünümünü statik eşleme ile yeniden oluşturmak için yalnızca birkaç kutucuk sürer. Harita kutucukları tarayıcı tarafından otomatik olarak önbelleğe alınır. Bu nedenle, etkileşimli harita denetimi genellikle statik harita görünümü çoğaltma yaparken bir işlemin bir bölümünü oluşturur. Kaydırma ve yakınlaştırma, daha fazla kutucuk yükler; Ancak, bu davranışı devre dışı bırakmak için harita denetiminde seçenekler vardır. Etkileşimli harita denetimi, statik eşleme hizmetlerinden çok daha fazla görselleştirme seçeneği de sağlar.
+> Birkaç yıl önce etkileşimli harita deneyimlerinden statik harita görüntülerine geçtiği birçok Google Haritalar uygulaması. Bu bir maliyet tasarrufu yöntemi olarak yapıldı. Azure Haritalar'da, Web SDK'daki etkileşimli harita denetimini kullanmak genellikle daha uygun maliyetlidir. Etkileşimli harita kontrol ücretleri, döşeme yüklerinin sayısını temel alar. Azure Haritalar'daki harita kutucukları büyüktür. Genellikle, statik bir harita yla aynı harita görünümünü yeniden oluşturmak için yalnızca birkaç döşeme gerekiyor. Harita döşemeleri tarayıcı tarafından otomatik olarak önbelleğe alınır. Bu nedenle, etkileşimli harita denetimi genellikle statik bir harita görünümünü çoğaltırken işlemin bir kısmını oluşturur. Kaydırma ve yakınlaştırma daha fazla döşeme yükler; ancak, bu davranışı devre dışı kılabilir için harita denetiminde seçenekler vardır. Etkileşimli harita denetimi de statik harita hizmetleri çok daha fazla görselleştirme seçenekleri sağlar.
 
-### <a name="marker-url-parameter-format-comparison"></a>İşaret URL 'SI parametre biçimi karşılaştırması
+### <a name="marker-url-parameter-format-comparison"></a>Marker URL parametre biçimi karşılaştırması
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-URL 'deki `markers` parametresini kullanarak işaretçiler ekleyin. `markers` parametresi, aşağıda gösterildiği gibi, bu stille birlikte haritada oluşturulacak konumların bir stilini ve bir listesini alır:
+URL'deki parametreyi `markers` kullanarak işaretçiler ekleyin. `markers` Parametre, haritada işlenecek konumların bir stilini ve listesini aşağıda gösterildiği gibi bu stilde alır:
 
 ```
 &markers=markerStyles|markerLocation1|markerLocation2|...
 ```
 
-Ek stiller eklemek için, URL 'nin `markers` parametrelerini farklı bir stille ve konum kümesiyle kullanın.
+Ek stiller eklemek `markers` için, parametreleri URL'ye farklı bir stil ve konum kümesiyle kullanın.
 
-"Enlem, Boylam" biçimiyle işaret konumları belirtin.
+"Enlem, boylam" biçiminde işaret konumlarını belirtin.
 
-Bu "optionName1: değer1\|optionName2: değer2" gibi kanal (\|) karakterleriyle ayrılmış birden çok stil içeren `optionName:value` biçimiyle işaretleyici stilleri ekleyin. Seçenek adları ve değerleri, iki nokta üst üste (:)) ayrılır. Google Maps 'ta stil işaretçileri için aşağıdaki stil seçeneğini kullanın:
+Bu "optionName1:value1 `optionName:value` \|\|optionName2:value2" gibi birden çok stilin pipe ( ) karakterleri yle ayrılmış biçimiyle işaretleyici stilleri ekleyin. Seçenek adları ve değerleri bir üst üste (:) ile ayrılır unutmayın. Google Haritalar'daki işaretçileri stillemek için stil seçeneğinin aşağıdaki adlarını kullanın:
 
-- `color`: varsayılan işaret simgesinin rengi. 24 bit onaltılı renk (`0xrrggbb`) veya aşağıdaki değerlerden biri olabilir; `black`, `brown`, `green`, `purple`, `yellow`, `blue`, `gray`, `orange`, `red`, `white`.
-- `label`: simgenin üstünde görüntülenecek tek bir büyük harf alfasayısal karakter.
-- `size`-işaretin boyutu. `tiny`, `mid`veya `small`olabilir.
+- `color`– Varsayılan işaretsimgesinin rengi. 24 bit hex rengi (`0xrrggbb`) veya aşağıdaki değerlerden biri olabilir; `black`, `brown`, `green`, `purple`, `yellow`, `blue`, `gray`, `orange`, `red`, `white`.
+- `label`– Simgenin üstünde görüntülenecek tek bir büyük alfasayısal karakter.
+- `size`- İşaretleyicinin boyutu. Olabilir `tiny`, `mid`veya `small`.
 
-Google Maps 'teki özel simgeler için aşağıdaki stil seçenekleri adlarını kullanın:
+Google Haritalar'daki Özel simgeler için aşağıdaki stil seçenekleri adlarını kullanın:
 
-- `anchor` – simge resminin koordinatya nasıl hizalanacağını belirtir. Bir piksel (x, y) değeri veya aşağıdaki değerlerden biri olabilir; `top`, `bottom`, `left`, `right`, `center`, `topleft`, `topright`, `bottomleft`veya `bottomright`.
-- `icon`: simge resmine işaret eden bir URL.
+- `anchor`– Simge görüntüsünün koordinatla nasıl hizalanır olduğunu belirtir. Bir piksel (x,y) değeri veya aşağıdaki değerlerden biri olabilir; `top`, `bottom` `left`, `right` `center`, `topleft` `topright`, `bottomleft`, `bottomright`, , veya .
+- `icon`– Simge resmine işaret eden bir URL.
 
-Örneğin, haritaya Boylam:-110, Enlem: 45 olan kırmızı, orta ölçekli bir işaret ekleyelim:
+Örneğin, boylamda haritaya kırmızı, orta ölçekli bir işaretçi ekleyelim: -110, enlem: 45:
 
 ```
 &markers=color:red|size:mid|45,-110
@@ -293,41 +295,41 @@ Google Maps 'teki özel simgeler için aşağıdaki stil seçenekleri adlarını
 
 <center>
 
-![Google Maps işaretleyici](media/migrate-google-maps-web-services/google-maps-marker.png)</center>
+![Google Haritalar işareti](media/migrate-google-maps-web-services/google-maps-marker.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-URL 'de `pins` parametresini belirterek statik harita resmine işaretçiler ekleyin. Google Maps gibi, parametresindeki konumların bir stilini ve bir listesini belirtin. Farklı stillerle işaretçileri desteklemek için `pins` parametresi birden çok kez belirtilebilir.
+URL'deki parametreyi `pins` belirterek statik harita görüntüsüne işaretçiler ekleyin. Google Haritalar gibi, parametredeki konumların bir stilini ve listesini belirtin. `pins` Parametre, farklı stilleri olan işaretçileri desteklemek için birden çok kez belirtilebilir.
 
 ```
 &pins=iconType|pinStyles||pinLocation1|pinLocation2|...
 ```
 
-Ek stilleri kullanmak için, URL 'ye farklı bir stille ve konum kümesiyle ek `pins` parametreleri ekleyin.
+Ek stilleri kullanmak için, URL'ye farklı bir stil ve konum kümesiyle ek `pins` parametreler ekleyin.
 
-Azure haritalar 'da, PIN konumunun "Boylam Enlem" biçiminde olması gerekir. Google Maps "enlem, Boylam" biçimini kullanır. Bir boşluk değil, bir virgül değil, boylam ve enlem 'yi Azure Maps biçiminde ayırır.
+Azure Haritalar'da pin konumunun "boylam enlemi" biçiminde olması gerekir. Google Haritalar "enlem, boylam" biçimini kullanır. Virgül değil, boşluk, Azure Haritalar biçiminde boylam ve enlem ayırır.
 
-`iconType` oluşturulacak PIN türünü belirtir. Aşağıdaki değerlere sahip olabilir:
+Oluşturulacak `iconType` pin türünü belirtir. Aşağıdaki değerlere sahip olabilir:
 
-- `default` – varsayılan pin simgesi.
-- `none` – hiçbir simge gösterilmez, yalnızca Etiketler işlenir.
-- `custom` – kullanılacak özel bir simge belirtir. Simge resmine işaret eden bir URL, PIN konum bilgileri sonrasında `pins` parametresinin sonuna eklenebilir.
-- `{udid}`: Azure Maps veri depolama platformunda depolanan bir simgenin benzersiz veri KIMLIĞI (UDıD).
+- `default`– Varsayılan pin simgesi.
+- `none`– Hiçbir simge görüntülenmez, yalnızca etiketler işlenir.
+- `custom`– Özel bir simge nin kullanılacağını belirtir. Simge resmine işaret eden bir URL, pin `pins` konum bilgilerinden sonra parametrenin sonuna eklenebilir.
+- `{udid}`– Azure Haritalar Veri Depolama platformunda depolanan bir simge için Benzersiz Veri Kimliği (UDID).
 
-`optionNameValue` biçimiyle PIN stilleri ekleyin. Birden çok stili kanal (\|) karakterleriyle ayırın. Örneğin: `iconType|optionName1Value1|optionName2Value2`. Seçenek adları ve değerleri ayrılmamış. Stil işaretçileri için aşağıdaki stil seçenek adlarını kullanın:
+`optionNameValue` Biçimle birlikte pin stilleri ekleyin. Birden çok stili pipe\|( ) karakterleri ile ayırın. Örneğin: `iconType|optionName1Value1|optionName2Value2`. Seçenek adları ve değerleri ayrılmaz. Stil işaretçileri için aşağıdaki stil seçeneği adlarını kullanın:
 
-- `al` – işaretin opaklığını (Alpha) belirtir. 0 ile 1 arasında bir sayı seçin.
-- `an` – pin bağlayıcısını belirtir. X ve y piksel değerlerini "x y" biçiminde belirtin.
-- `co` – PIN rengi. 24 bit onaltılık renk belirtin: `FFFFFF``000000`.
-- `la` – etiket bağlayıcısını belirtir. X ve y piksel değerlerini "x y" biçiminde belirtin.
-- `lc`: etiketin rengi. 24 bit onaltılık renk belirtin: `FFFFFF``000000`.
-- `ls`: etiketin piksel cinsinden boyutu. 0 ' dan büyük bir sayı seçin.
-- `ro`: simgeyi döndürmek için derece cinsinden bir değer. -360 ile 360 arasında bir sayı seçin.
-- `sc`: pin simgesi için bir ölçek değeri. 0 ' dan büyük bir sayı seçin.
+- `al`– İşaretleyicinin opaklığını (alfa) belirtir. 0 ile 1 arasında bir sayı seçin.
+- `an`– Pim çapasını belirtir. X ve y piksel değerlerini "x y" biçiminde belirtin.
+- `co`– Pimin rengi. 24 bit hex rengi `000000` belirtin: için `FFFFFF`.
+- `la`– Etiket çapasını belirtir. X ve y piksel değerlerini "x y" biçiminde belirtin.
+- `lc`– Etiketin rengi. 24 bit hex rengi `000000` belirtin: için `FFFFFF`.
+- `ls`– Piksel olarak etiketboyutu. 0'dan büyük bir sayı seçin.
+- `ro`– Simgeyi döndürmek için derece değeri. -360 ve 360 arasında bir sayı seçin.
+- `sc`– Pin simgesi için bir ölçek değeri. 0'dan büyük bir sayı seçin.
 
-Her PIN konumu için etiket değerlerini belirtin. Bu yaklaşım, konum listesindeki tüm işaretçilere tek bir etiket değeri uygulamaktan daha etkilidir. Etiket değeri birden çok karakterden oluşan bir dize olabilir. Bir stil veya konum değeri olarak yanlış alınana emin olmak için dizeyi tek tırnak işaretleriyle sarın.
+Her pin konumu için etiket değerlerini belirtin. Bu yaklaşım, konumlar listesindeki tüm işaretçilere tek bir etiket değeri uygulamaktan daha etkilidir. Etiket değeri birden çok karakterden oluşan bir dize olabilir. Stil veya konum değeri olarak yanlış olmadığından emin olmak için dizeyi tek tırnak işaretleriyle sarın.
 
-Aşağıda konumlandırılmış olan "Space Iğne" etiketiyle kırmızı (`FF0000`) bir varsayılan simge ekleyelim (15 50). Simge Boylam:-122,349300, Enlem: 47,620180:
+Aşağıda (15 50) konumlandırılmış "Space Needle" etiketiyle kırmızı (`FF0000`) varsayılan simgesi ekleyelim. Simge boylam: -122.349300, enlem: 47.620180:
 
 ```
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
@@ -335,9 +337,9 @@ Aşağıda konumlandırılmış olan "Space Iğne" etiketiyle kırmızı (`FF000
 
 <center>
 
-![Azure haritaları işaretçisi](media/migrate-google-maps-web-services/azure-maps-marker.png)</center>
+![Azure Haritalar işaretçisi](media/migrate-google-maps-web-services/azure-maps-marker.png)</center>
 
-' 1 ', ' 2 ' ve ' 3 ' Etiket değerleriyle üç PIN ekleyin:
+'1', '2' ve '3' etiket değerlerini içeren üç pin ekleyin:
 
 ```
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
@@ -345,30 +347,30 @@ Aşağıda konumlandırılmış olan "Space Iğne" etiketiyle kırmızı (`FF000
 
 <center>
 
-Azure ![çoklu işaretçileri eşler](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)</center>
+![Azure Haritalar birden çok işaretçi](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)</center>
 
 ### <a name="path-url-parameter-format-comparison"></a>Yol URL parametre biçimi karşılaştırması
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-URL 'deki `path` parametresini kullanarak statik harita resmine çizgiler ve çokgen ekleyin. `path` parametresi, aşağıda gösterildiği gibi bir stil ve haritada işlenecek konumların bir listesini alır:
+URL'deki parametreyi `path` kullanarak statik harita görüntüsüne satır ve çokgen ekleyin. `path` Parametre, aşağıda gösterildiği gibi, haritada işlenecek yerlerin bir stili ni ve listesini alır:
 
 ```
 &path=pathStyles|pathLocation1|pathLocation2|...
 ```
 
-URL 'ye farklı bir stille ve konum kümesiyle ek `path` parametreler ekleyerek ek stilleri kullanın.
+URL'ye farklı `path` bir stil ve konum kümesiyle ek parametreler ekleyerek ek stiller kullanın.
 
-Yol konumları `latitude1,longitude1|latitude2,longitude2|…` biçimiyle belirtilir. Yollar, noktaların adreslerini kodlanabilir veya içerebilir.
+Yol konumları `latitude1,longitude1|latitude2,longitude2|…` biçimiyle belirtilir. Yollar kodlanabilir veya puan adresleri içerebilir.
 
-`optionName:value` biçimiyle yol stilleri ekleyin ve birden çok stili kanal (\|) karakterleriyle ayırın. Ve seçenek adları ve değerlerini iki noktayla ayırın (:). Şöyle: `optionName1:value1|optionName2:value2`. Aşağıdaki stil seçenek adları, Google Maps içindeki yollara stil eklemek için kullanılabilir:
+`optionName:value` Biçimi ile yol stilleri ekleyin, boru (\|) karakterleri tarafından birden çok stilleri ayırın. Ve, bir iki nokta üst üste (:) ile ayrı seçenek adları ve değerleri. Bunun gibi: `optionName1:value1|optionName2:value2`. Aşağıdaki stil seçeneği adları, Google Haritalar'daki yolları stillemek için kullanılabilir:
 
-- `color`: yolun veya Çokgen anahattının rengi. 24 bit onaltılı renk (`0xrrggbb`), 32 bitlik bir onaltılık renk (`0xrrggbbbaa`) veya aşağıdaki değerlerden biri olabilir: siyah, kahverengi, yeşil, mor, sarı, mavi, gri, turuncu, kırmızı, beyaz.
-- `fillColor`: yol alanını (çokgen) dolduracak olan renk. 24 bit onaltılı renk (`0xrrggbb`), 32 bitlik bir onaltılık renk (`0xrrggbbbaa`) veya aşağıdaki değerlerden biri olabilir: siyah, kahverengi, yeşil, mor, sarı, mavi, gri, turuncu, kırmızı, beyaz.
-- `geodesic` – yolun, dünya eğriliği takip eden bir çizgi olması gerekip gerekmediğini gösterir.
-- `weight`: yolun piksel cinsinden kalınlığı.
+- `color`– Yolun rengi veya çokgen anahat. 24 bit hex rengi (`0xrrggbb`), 32-bit hex`0xrrggbbbaa`renk ( ) veya aşağıdaki değerlerden biri olabilir: siyah, kahverengi, yeşil, mor, sarı, mavi, gri, turuncu, kırmızı, beyaz.
+- `fillColor`– Yol alanını (çokgen) dolduracak renk. 24 bit hex rengi (`0xrrggbb`), 32-bit hex`0xrrggbbbaa`renk ( ) veya aşağıdaki değerlerden biri olabilir: siyah, kahverengi, yeşil, mor, sarı, mavi, gri, turuncu, kırmızı, beyaz.
+- `geodesic`– Yolun yeryüzünün eğriliğini takip eden bir çizgi olup olmadığını gösterir.
+- `weight`– Yol çizgisinin piksel kalınlığında.
 
-URL parametresindeki koordinatlar arasındaki haritaya kırmızı çizgi geçirgenliği ve piksel kalınlığı ekleyin. Aşağıdaki örnekte, satırda %50 opaklık ve dört piksel kalınlığı bulunur. Koordinatlar Boylam:-110, Enlem: 45 ve Boylam:-100, Enlem: 50.
+URL parametresinde koordinatlar arasındaki haritaya kırmızı çizgi opaklığı ve piksel kalınlığı ekleyin. Aşağıdaki örnekte, çizgi %50 donukluk ve dört piksel kalınlığındadır. Koordinatlar boylam: -110, enlem: 45 ve boylam: -100, enlem: 50.
 
 ```
 &path=color:0xFF000088|weight:4|45,-110|50,-100
@@ -376,28 +378,28 @@ URL parametresindeki koordinatlar arasındaki haritaya kırmızı çizgi geçirg
 
 <center>
 
-![Google Maps çoklu çizgi](media/migrate-google-maps-web-services/google-maps-polyline.png)</center>
+![Google Haritalar polyline](media/migrate-google-maps-web-services/google-maps-polyline.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-URL 'de `path` parametresini belirterek statik harita görüntüsüne çizgiler ve çokgenler ekleyin. Google Maps gibi, bu parametrede bir stil ve konumların bir listesini belirtin. Birden çok daire, çizgi ve poligonu farklı stillerle işlemek için `path` parametresini birden çok kez belirtin.
+URL'deki parametreyi belirterek statik harita resmine `path` çizgiler ve çokgenler ekleyin. Google Haritalar gibi, bu parametredeki bir stil ve konum listesi belirtin. Farklı `path` stillesahip birden çoklu daireleri, çizgileri ve çokgenleri işlemek için parametreyi birden çok kez belirtin.
 
 ```
 &path=pathStyles||pathLocation1|pathLocation2|...
 ```
 
-Azure haritalar, yol konumlarına geldiğinde, koordinatların "Boylam Enlem" biçiminde olmasını gerektirir. Google Maps "enlem, Boylam" biçimini kullanır. Bir boşluk değil, bir virgül değil, boylam ve enlem 'yi Azure Maps biçiminde ayırır. Azure Maps, noktalara yönelik kodlanmış yollar veya adresler desteklemez. Daha büyük veri kümelerini, [burada](how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)belgelenen Azure Maps VERI depolama API 'Sine bir geojson dosyası olarak yükleyin.
+Yol konumları söz konusu olduğunda, Azure Haritalar koordinatların "boylam enlemi" biçiminde olmasını gerektirir. Google Haritalar "enlem, boylam" biçimini kullanır. Virgül değil, boşluk, Azure Haritalar biçiminde boylam ve enlem ayırır. Azure Haritalar, puan için kodlanmış yolları veya adresleri desteklemez. [Burada](how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)belgelendiği gibi Azure Haritalar Veri Depolama API'sine GeoJSON dosyası olarak daha büyük veri kümelerini yükleyin.
 
-`optionNameValue` biçimiyle yol stilleri ekleyin. Birden çok stili, bu `optionName1Value1|optionName2Value2`gibi kanal (\|) karakterleriyle ayırın. Seçenek adları ve değerleri ayrılmamış. Azure haritalar 'daki stil yolları için aşağıdaki stil seçenek adlarını kullanın:
+`optionNameValue` Biçimle yol stilleri ekleyin. Bu gibi, boru\|( ) karakterleri, ayrı birden çok stilleri `optionName1Value1|optionName2Value2`. Seçenek adları ve değerleri ayrılmaz. Azure Haritalar'da yolları stiloluşturmak için aşağıdaki stil seçeneği adlarını kullanın:
 
-- `fa`-poligonları işlerken kullanılan Fill Color geçirgenliği (Alpha). 0 ile 1 arasında bir sayı seçin.
-- `fc`-bir çokgenin alanını işlemek için kullanılan Fill Color.
-- `la`: çizgiler ve çokgenler ana hattı işlenirken kullanılan çizgi rengi geçirgenliği (Alpha). 0 ile 1 arasında bir sayı seçin.
-- `lc`: çizgiler ve çokgenlerin anahattını işlemek için kullanılan çizgi rengi.
-- `lw`: çizginin piksel cinsinden genişliği.
-- `ra`: ölçümlerde bir daire yarıçapı belirtir.
+- `fa`- Çokgenleri işlerken kullanılan dolgu rengi opaklığı (alfa). 0 ile 1 arasında bir sayı seçin.
+- `fc`- Çokgenin alanını işlemek için kullanılan dolgu rengi.
+- `la`– Çizgileri ve çokgenlerin anahatlarını işlerken kullanılan çizgi rengi opaklığı (alfa). 0 ile 1 arasında bir sayı seçin.
+- `lc`– Çizgileri işlemek için kullanılan çizgi rengi ve çokgenlerin anahatları.
+- `lw`– Piksel olarak çizgigenişliği.
+- `ra`– Bir daire yarıçapını metre olarak belirtir.
 
-URL parametresinde, koordinatlar arasına kırmızı çizgi geçirgenliği ve piksel kalınlığı ekleyin. Aşağıdaki örnekte, satır %50 opaklık ve dört piksellik bir kalınlığa sahiptir. Koordinatlar şu değerlere sahiptir: Boylam:-110, Enlem: 45 ve Boylam:-100, Enlem: 50.
+URL parametresinde koordinatlar arasına kırmızı çizgi opaklığı ve piksel kalınlığı ekleyin. Aşağıdaki örnekte, çizgi %50 donukluk ve dört piksel kalınlığındadır. Koordinatlar aşağıdaki değerlere sahiptir: boylam: -110, enlem: 45 ve boylam: -100, enlem: 50.
 
 ```
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
@@ -405,88 +407,94 @@ URL parametresinde, koordinatlar arasına kırmızı çizgi geçirgenliği ve pi
 
 <center>
 
-![Azure Maps çoklu çizgi](media/migrate-google-maps-web-services/azure-maps-polyline.png)</center>
+![Azure Haritalar polyline](media/migrate-google-maps-web-services/azure-maps-polyline.png)</center>
 
 ## <a name="calculate-a-distance-matrix"></a>Uzaklık matrisini hesaplama
 
-Azure haritalar mesafe matris API 'sini sağlar. Seyahat sürelerini ve bir konum kümesi arasındaki mesafeyi, uzaklık matrisi ile hesaplamak için bu API 'yi kullanın. Google Maps 'taki uzaklık Matrisi API 'siyle karşılaştırılabilir.
+Azure Haritalar, mesafe matrisi API'sini sağlar. Bu API'yi, bir mesafe matrisi ile bir konum kümesi arasındaki seyahat sürelerini ve mesafeleri hesaplamak için kullanın. Google Haritalar'daki mesafe matris API'si ile karşılaştırılabilir.
 
-- [**Yol matrisi**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview): zaman uyumsuz bir çıkış ve hedef kümesi için seyahat sürelerini ve uzaklıkları hesaplar. İstek başına en fazla 700 hücreyi destekler. Bu, hedef sayısı ile çarpılan çıkış sayısıdır. Bu kısıtlama göz önünde bulundurularak, olası matris boyutlarına örnek olarak şunlar verilebilir: 700x1, 50x10, 10x10, 28x25, 10x70.
+- [**Rota matrisi**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview): Bir dizi kaynak ve varış noktası için seyahat sürelerini ve mesafeleri eşzamanlı olarak hesaplar. İstek başına 700'e kadar hücreyi destekler. Bu, hedef sayısıyla çarpılarak kaynak sayısıdır. Bu kısıtlama göz önünde bulundurularak, olası matris boyutlarıörnekleri şunlardır: 700x1, 50x10, 10x10, 28x25, 10x70.
 
 > [!NOTE]
-> Uzaklık Matrisi API 'sine yönelik bir istek yalnızca istek gövdesinde kaynak ve hedef bilgileri olan bir POST isteği kullanılarak yapılabilir. Ayrıca, Azure Maps tüm kaynakları ve hedefleri koordine etmek gerektirir. Önce adreslerin coğrafi kodlanmış olması gerekir.
+> Mesafe matris api için bir istek sadece istek gövdesinde kaynak ve hedef bilgileri ile bir POST isteği kullanılarak yapılabilir. Ayrıca, Azure Haritalar tüm kökenlerin ve hedeflerin eşgüdümlü olmasını gerektirir. Adreslerin önce coğrafi kodlanmış olması gerekir.
 
-Bu tablo, Google Maps API parametrelerine benzer Azure Maps API parametreleri ile çapraz başvuru yapıyor.
+Bu tablo, Google Haritalar API parametrelerine karşılaştırılabilir Azure Haritalar API parametreleri ile çapraz başvurular.
 
-| Google Maps API parametresi      | Karşılaştırılabilir Azure Maps API parametresi  |
+| Google Haritalar API parametresi      | Karşılaştırılabilir Azure Haritalar API parametresi  |
 |--------------------------------|--------------------------------------|
 | `arrivial_time`                | `arriveAt`                           |
 | `avoid`                        | `avoid`                              |
 | `depature_time`                | `departAt`                           |
-| `destinations`                 | `destination` – istek SONRASı gövdesinin coğrafi JSON olarak belirleyin. |
-| `key`                          | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                     | `language` – [desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `destinations`                 | `destination`- GeoJSON olarak POST istek gövdesinde belirtin. |
+| `key`                          | `subscription-key`– Azure Haritalar belgelerinde [kimlik doğrulamaya](azure-maps-authentication.md) da bakın. |
+| `language`                     | `language`– [Desteklenen diller](supported-languages.md) belgelerine bakın.  |
 | `mode`                         | `travelMode`                         |
-| `origins`                      | `origins` – istek SONRASı gövdesinin coğrafi JSON olarak belirleyin.  |
-| `region`                       | *Yok* : Bu özellik, coğrafi kodlama ile ilgilidir. Azure Maps coğrafi kodlama API 'sini kullanırken `countrySet` parametresini kullanın. |
-| `traffic_model`                | *Yok* – yalnızca trafik verilerinin `traffic` parametresiyle kullanılması gerekiyorsa belirtilebilir. |
-| `transit_mode`                 | *N/A* -aktarım tabanlı uzaklık matrisleri Şu anda desteklenmiyor.  |
-| `transit_routing_preference`   | *N/A* -aktarım tabanlı uzaklık matrisleri Şu anda desteklenmiyor.  |
-| `units`                        | *Yok* – Azure Maps yalnızca ölçüm sistemini kullanır. |
+| `origins`                      | `origins`- GeoJSON olarak POST istek gövdesinde belirtin.  |
+| `region`                       | *N/A* – Bu özellik coğrafi kodlama ile ilgilidir. Azure `countrySet` Haritalar coğrafi kodlama API'sini kullanırken parametreyi kullanın. |
+| `traffic_model`                | *N/A* – Yalnızca trafik verilerinin `traffic` parametreile birlikte kullanIlip kullanılmayabileceğini belirtebilirsiniz. |
+| `transit_mode`                 | *N/A* - Transit tabanlı mesafe matrisleri şu anda desteklenmez.  |
+| `transit_routing_preference`   | *N/A* - Transit tabanlı mesafe matrisleri şu anda desteklenmez.  |
+| `units`                        | *N/A* – Azure Haritalar yalnızca metrik sistemi kullanır. |
 
 > [!TIP]
-> Azure haritalar yönlendirme API 'sinde bulunan tüm gelişmiş yönlendirme seçenekleri Azure haritalar Mesafe Matrisi API 'sinde desteklenir. Gelişmiş yönlendirme seçenekleri şunlardır: kamyonu yönlendirme, altyapı belirtimleri vb.
+> Azure Haritalar yönlendirme API'sinde bulunan tüm gelişmiş yönlendirme seçenekleri Azure Haritalar mesafe matris apisinde desteklenir. Gelişmiş yönlendirme seçenekleri şunlardır: kamyon yönlendirme, motor özellikleri, ve benzeri.
 
-## <a name="get-a-time-zone"></a>Saat dilimi al
+Belgeleri yönlendirme için en iyi uygulamaları gözden [geçirin.](how-to-use-best-practices-for-routing.md)
 
-Azure Maps, bir koordinat saat dilimini almak için bir API sağlar. Azure haritalar Saat dilimi API 'SI, Google Maps 'taki saat dilimi API 'siyle karşılaştırılabilir:
+## <a name="get-a-time-zone"></a>Saat dilimi alma
 
-- [**Koordine eden saat dilimi**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates): koordinat belirtin ve koordinat saat dilimi ayrıntılarını alın.
+Azure Haritalar, bir koordinatın saat dilimini almak için bir API sağlar. Azure Haritalar saat dilimi API'si, Google Haritalar'daki saat dilimi API'si ile karşılaştırılabilir:
 
-Bu tablo, Google Maps API parametrelerine Azure haritalar 'daki karşılaştırılabilir API parametreleriyle çapraz başvurular.
+- [**Koordinat ile saat dilimi**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates): Koordinat belirtin ve koordinatın saat dilimi ayrıntılarını alın.
 
-| Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi   |
+Bu tablo, Google Haritalar API parametrelerine Azure Haritalar'daki karşılaştırılabilir API parametreleriyle çapraz başvurularda bulunuyor.
+
+| Google Haritalar API parametresi | Karşılaştırılabilir Azure Haritalar API parametresi   |
 |---------------------------|---------------------------------------|
-| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri.       |
-| `language`                  | `language` – [desteklenen diller](supported-languages.md) belgesine bakın.    |
+| `key`                       | `subscription-key`– Azure Haritalar belgelerinde [kimlik doğrulamaya](azure-maps-authentication.md) da bakın.       |
+| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgelerine bakın.    |
 | `location`                  | `query`             |
 | `timestamp`                 | `timeStamp`         |
 
-Azure Maps, bu API 'ye ek olarak çeşitli saat dilimi API 'Leri sağlar. Bu API 'Ler saati, saat diliminin adlarına veya kimliklerine göre dönüştürür:
+Bu API'ye ek olarak, Azure Haritalar bir dizi saat dilimi API'si sağlar. Bu API'ler saati saat diliminin adlarına veya dlerine göre dönüştürür:
 
-- [**Kimliğe göre saat dilimi**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid): belirtilen IANA saat dilimi kimliği için geçerli, geçmiş ve gelecekteki saat dilimi bilgilerini döndürür.
-- [**Bölge enum IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana): bir IANA saat dilimi kimliklerinin tam listesini döndürür. IANA hizmetine yapılan güncelleştirmeler sisteme bir gün içinde yansıtılır.
-- [**Zaman dilimi numaralandırması pencereleri**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows): Windows saat dilimi kimliklerinin tam listesini döndürür.
-- [**Saat dılımı IANA sürümü**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion): Azure haritalar tarafından kullanılan geçerli IANA sürüm numarasını döndürür.
-- [**IANA Için saat dilimi pencereleri**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonewindowstoiana): geçerli bir Windows saat dilimi kimliği verilen ılgılı bır IANA kimliğini döndürür. Tek bir Windows KIMLIĞI için birden çok ıANA kimliği döndürülebilir.
+- [**ID'ye göre saat dilimi**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid): Belirtilen IANA saat dilimi kimliği için geçerli, geçmiş ve gelecekteki saat dilimi bilgilerini verir.
+- [**Saat dilimi Enum IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana): IANA saat dilimi tam listesini verir. IANA hizmetindeki güncellemeler bir gün içinde sisteme yansıtılır.
+- [**Saat dilimi Enum Windows**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows): Windows Saat Dilimi tam listesini verir.
+- [**Saat dilimi IANA sürümü**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion): Azure Haritalar tarafından kullanılan geçerli IANA sürüm numarasını verir.
+- [**Windows'dan IANA'ya Saat Dilimi**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonewindowstoiana): Geçerli bir Windows Saat Dilimi Kimliği verilen karşılık gelen bir IANA kimliğini verir. Tek bir Windows Kimliği için birden çok IANA kimliği döndürülebilir.
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 
-Azure Maps, istemci kitaplıklarını aşağıdaki programlama dilleri için sağlar:
+Azure Haritalar, aşağıdaki programlama dilleri için istemci kitaplıkları sağlar:
 
-- JavaScript, TypeScript, Node. js – [belgeler](how-to-use-services-module.md) \| [NPM paketi](https://www.npmjs.com/package/azure-maps-rest)
+- JavaScript, TypeScript, Node.js – [belgeler](how-to-use-services-module.md) \| [NPM paketi](https://www.npmjs.com/package/azure-maps-rest)
 
-Bu açık kaynaklı istemci kitaplıkları diğer programlama dillerine yöneliktir:
+Bu Açık kaynak istemci kitaplıkları diğer programlama dilleri içindir:
 
-- .NET Standard 2,0 – [GitHub projesi](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet paketi](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+- .NET Standard 2.0 – [GitHub projesi](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet paketi](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Azure haritalar REST Hizmetleri için ek belgeler ve kaynaklar aşağıda verilmiştir.
+Aşağıda Azure Haritalar REST hizmetleri için ek belgeler ve kaynaklar ve bilgiler veremetleri yer alır.
 
-- [Arama için en iyi uygulamalar](how-to-use-best-practices-for-search.md)
-- [Adres arayın](how-to-search-for-address.md)
-- [Azure haritalar REST hizmeti API başvuru belgeleri](https://docs.microsoft.com/rest/api/maps/)
+- [Arama için en iyi yöntemler](how-to-use-best-practices-for-search.md)
+- [Adres arama](how-to-search-for-address.md)
+- [Yönlendirme için en iyi uygulamalar](how-to-use-best-practices-for-routing.md)
+- [Azure Haritalar REST Hizmet API başvuru belgeleri](https://docs.microsoft.com/rest/api/maps/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar REST hizmetleri hakkında daha fazla bilgi edinin.
+Azure Haritalar REST hizmetleri hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Arama hizmetini kullanmaya yönelik en iyi uygulamalar](how-to-use-best-practices-for-search.md)
+> [Arama hizmetini kullanmak için en iyi uygulamalar](how-to-use-best-practices-for-search.md)
 
 > [!div class="nextstepaction"]
-> [Hizmetler modülünü kullanma (Web SDK)](how-to-use-services-module.md)
+> [Yönlendirme hizmetini kullanmak için en iyi uygulamalar](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [Hizmetler modülü nasıl kullanılır (Web SDK)](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
 > [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)

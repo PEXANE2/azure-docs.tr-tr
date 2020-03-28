@@ -1,67 +1,67 @@
 ---
-title: Öğretici-şablona kaynak ekleme
-description: İlk Azure Resource Manager şablonunuzu oluşturma adımlarını açıklar. Şablon dosyası söz dizimi ve depolama hesabının nasıl dağıtılacağı hakkında bilgi edinirsiniz.
+title: Öğretici - Şablona kaynak ekleme
+description: İlk Azure Kaynak Yöneticisi şablonunuzu oluşturmak için adımları açıklar. Şablon dosyası sözdizimini ve depolama hesabının nasıl dağıtılabildiğini öğrenirsiniz.
 author: mumian
-ms.date: 02/24/2020
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e533b70ba713b8c52a29cfbcc1cd8ccb99b8543f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 79e337b411f9d115d93050ebeee346a526913d39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370704"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371727"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza kaynak ekleme
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>Öğretici: ARM şablonunuza kaynak ekleme
 
-[Önceki öğreticide](template-tutorial-create-first-template.md)boş bir şablon oluşturmayı ve bunu dağıtmayı öğrendiniz. Şimdi, gerçek bir kaynağı dağıtmaya hazırsınız demektir. Bu öğreticide bir depolama hesabı eklersiniz. Bu öğreticiyi tamamlamaya yaklaşık **9 dakika** sürer.
+Önceki [öğreticide,](template-tutorial-create-first-template.md)boş bir şablon oluşturmayı ve dağıtmayı öğrendiniz. Şimdi, gerçek bir kaynak dağıtmaya hazırsınız. Bu öğreticide, bir depolama hesabı eklersiniz. Bu öğretici tamamlamak için yaklaşık **9 dakika** sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-[Şablonlar hakkında giriş öğreticisini](template-tutorial-create-first-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
+[Şablonlar hakkındaki giriş eğitimini](template-tutorial-create-first-template.md)tamamlamanızı öneririz, ancak gerekli değildir.
 
-Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell veya Azure CLI ile Visual Studio Kodu'na sahip olmalısınız. Daha fazla bilgi için [şablon araçlarına](template-tutorial-create-first-template.md#get-tools)bakın.
 
-## <a name="add-resource"></a>Kaynak ekle
+## <a name="add-resource"></a>Kaynak ekleme
 
-Mevcut şablona bir depolama hesabı tanımı eklemek için, vurgulanan JSON ' a aşağıdaki örnekte bakın. Şablonun bölümlerini kopyalamaya çalışmak yerine, tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
+Varolan şablona bir depolama hesabı tanımı eklemek için aşağıdaki örnekte vurgulanan JSON'a bakın. Şablonun bölümlerini kopyalamaya çalışmak yerine, tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
-**{Sağlamasını-Unique-Name}** değerini benzersiz bir depolama hesabı adıyla değiştirin.
+**{benzersiz ad}** yerine benzersiz bir depolama hesabı adı değiştirin.
 
 > [!IMPORTANT]
-> Depolama hesabı adının Azure’da benzersiz olması gerekir. Ad yalnızca küçük harf veya rakam içermelidir. Bu, 24 karakterden uzun olamaz. Ön ek olarak **store1** kullanma ve sonra adınızın baş harflerini ve bugünün tarihini ekleme gibi bir adlandırma modelini deneyebilirsiniz. Örneğin, kullandığınız ad **store1abc09092019**gibi görünebilir.
+> Depolama hesabı adının Azure’da benzersiz olması gerekir. Adın yalnızca küçük harfleri veya sayıları olmalıdır. En fazla 24 karakter olabilir. **Store1'i** önek olarak kullanarak baş harflerinizi ve bugünün tarihini ekleme gibi bir adlandırma deseni deneyebilirsiniz. Örneğin, kullandığınız ad **store1abc09092019**gibi görünebilir.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
-Depolama hesabı için benzersiz bir ad tahmin etmek kolay değildir ve büyük dağıtımları otomatikleştirmede iyi çalışmaz. Bu öğretici serisinde daha sonra, benzersiz bir ad oluşturmayı kolaylaştıran şablon özelliklerini kullanacaksınız.
+Bir depolama hesabı için benzersiz bir adı tahmin etmek kolay değildir ve büyük dağıtımları otomatikleştirmek için iyi çalışmaz. Bu öğretici serinin ilerleyen saatlerinde, benzersiz bir ad oluşturmayı kolaylaştıran şablon özelliklerini kullanırsınız.
 
 ## <a name="resource-properties"></a>Kaynak özellikleri
 
-Her kaynak türü için kullanılacak özellikleri bulmayı merak ediyor olabilirsiniz. Dağıtmak istediğiniz kaynak türlerini bulmak için [Kaynak Yöneticisi şablonu başvurusunu](/azure/templates/) kullanabilirsiniz.
+Her kaynak türü için kullanılacak özellikleri nasıl bulacağınızı merak ediyor olabilirsiniz. Dağıtmak istediğiniz kaynak türlerini bulmak için [ARM şablonu başvurularını](/azure/templates/) kullanabilirsiniz.
 
-Dağıttığınız her kaynak en azından aşağıdaki üç özelliğe sahiptir:
+Dağıttığınız her kaynak en az aşağıdaki üç özellime sahiptir:
 
-- **tür**: kaynağın türü. Bu değer, kaynak sağlayıcının ve kaynak türünün (Microsoft. Storage/storageAccounts gibi) ad alanının bir birleşimidir.
-- **Apiversion**: kaynak oluşturmak için kullanılacak REST API sürümü. Her kaynak sağlayıcı kendi API sürümlerini yayımladı, bu nedenle bu değer türüne özeldir.
-- **ad**: kaynağın adı.
+- **türü**: Kaynağın türü. Bu değer, kaynak sağlayıcısının ad alanı nın ve kaynak türünün (Microsoft.Storage/storageAccounts gibi) bir leşimidir.
+- **apiVersion**: Kaynak oluşturmak için kullanılacak REST API sürümü. Her kaynak sağlayıcısı kendi API sürümlerini yayımlar, bu nedenle bu değer türüne özgüdür.
+- **ad**: Kaynağın adı.
 
-Kaynakların çoğu Ayrıca, kaynağın dağıtıldığı bölgeyi ayarlayan bir **Location** özelliğine sahiptir.
+Çoğu kaynağın, kaynağın dağıtıldığı bölgeyi belirleyen bir **konum** özelliği de var.
 
-Diğer özellikler kaynak türüne ve API sürümüne göre farklılık gösterir. API sürümü ve kullanılabilir özellikler arasındaki bağlantıyı anlamanız önemlidir. bu nedenle daha fazla ayrıntıya geçelim.
+Diğer özellikler kaynak türüne ve API sürümüne göre değişir. API sürümü ile kullanılabilir özellikler arasındaki bağlantıyı anlamak önemlidir, bu nedenle daha fazla ayrıntıya atlayalım.
 
-Bu öğreticide, şablona bir depolama hesabı eklediniz. Bu API sürümünü [Storageaccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts)' de görebilirsiniz. Tüm özellikleri şablonunuza eklemediğine dikkat edin. Özelliklerin birçoğu isteğe bağlıdır. Microsoft. Storage kaynak sağlayıcısı yeni bir API sürümünü serbest bırakabilir, ancak dağıttığınız sürümün değiştirmek zorunda değildir. Bu sürümü kullanmaya devam edebilir ve dağıtımınızın sonuçlarının tutarlı olacağını bilirsiniz.
+Bu öğreticide, şablona bir depolama hesabı eklediniz. Bu API sürümünü [storageAccounts 2019-04-01'de](/azure/templates/microsoft.storage/2019-04-01/storageaccounts)görebilirsiniz. Şablonunuzun tüm özelliklerini eklemediğinize dikkat edin. Özelliklerin çoğu isteğe bağlıdır. Microsoft.Storage kaynak sağlayıcısı yeni bir API sürümü yayımlayabilir, ancak dağıttığınız sürümün değişmesi gerekmez. Bu sürümü kullanmaya devam edebilir ve dağıtımınızın sonuçlarının tutarlı olacağını bilebilirsiniz.
 
-[Storageaccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)gibi eskı bir API sürümünü görüntülediğinizde, daha küçük bir özellik kümesinin kullanılabildiğini görürsünüz.
+[StorageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)gibi eski bir API sürümünü görüntülerseniz, daha küçük bir özellik kümesinin kullanılabildiğini görürsünüz.
 
-Bir kaynağın API sürümünü değiştirmeye karar verirseniz, bu sürümün özelliklerini değerlendirdiğinizden emin olun ve şablonunuzu uygun şekilde ayarlayın.
+Bir kaynak için API sürümünü değiştirmeye karar verirseniz, bu sürümün özelliklerini değerlendirip şablonunuzu uygun şekilde ayarladığınızdan emin olun.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Depolama hesabı oluşturmak için şablonu dağıtabilirsiniz. Farklı bir ad verin ve bu sayede geçmişi kolayca bulabilirsiniz.
+Depolama hesabı oluşturmak için şablonu dağıtabilirsiniz. Dağıtımınıza farklı bir ad verin, böylece tarihte kolayca bulabilirsiniz.
 
-Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
+Kaynak grubunu oluşturmadıysanız, [bkz.](template-tutorial-create-first-template.md#create-resource-group) Örnek, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi **şablonDosya** değişkenini şablon dosyasına giden yola ayarladığınız varsayar.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -72,6 +72,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+Bu dağıtım komutunu çalıştırmak için Azure CLI'nin [en son sürümüne](/cli/azure/install-azure-cli) sahip olmalısınız.
+
 ```azurecli
 az deployment group create \
   --name addstorage \
@@ -81,42 +83,42 @@ az deployment group create \
 
 ---
 
-Karşılaşabileceğiniz iki olası dağıtım başarısızlığı:
+Karşılaşabileceğiniz iki olası dağıtım hatası:
 
-- Hata: Code = Accountnamegeçersiz; Message = {sağlamasını-Unique-Name} geçerli bir depolama hesabı adı değil. Depolama hesabı adı 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır.
+- Hata: Kod=Hesap Adı Geçersiz; Message={provide-unique-name} geçerli bir depolama hesabı adı değildir. Depolama hesabı adı uzunluğu 3 ve 24 karakter arasında olmalı ve yalnızca sayılar ve küçük harfler kullanmalıdır.
 
-    Şablonda, **{saðtem-Name}** değerini benzersiz bir depolama hesabı adıyla değiştirin.  Bkz. [kaynak ekleme](#add-resource).
+    **Şablonda, {benzersiz ad sağlama}** yerine benzersiz bir depolama hesabı adı bulundurun.  Bkz. [Kaynak Ekle](#add-resource).
 
-- Hata: Code = Storageaccountalreadyçekildi; İleti = store1abc09092019 adlı depolama hesabı zaten alınmış.
+- Hata: Kod=StorageAccountAlreadyTaken; Mesaj=Store1abc09092019 adlı depolama hesabı zaten alınmıştır.
 
     Şablonda, farklı bir depolama hesabı adı deneyin.
 
-Bu dağıtım, depolama hesabı oluşturulduğundan boş şablon dağıtımınızdan daha uzun sürer. Bir dakika sürebilir, ancak genellikle daha hızlıdır.
+Depolama hesabı oluşturulduğundan, bu dağıtım boş şablon dağıtımınızdan daha uzun sürer. Bu yaklaşık bir dakika sürebilir ama genellikle daha hızlıdır.
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
+Azure portalındaki kaynak grubunu keşfederek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sol menüden **kaynak grupları**' nı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Sol menüden **Kaynak gruplarını**seçin.
 1. Dağıttığınız kaynak grubunu seçin.
-1. Bir depolama hesabının dağıtıldığını görürsünüz.
-1. Dağıtım etiketinin şimdi şöyle göründüğünü göreceksiniz: **dağıtımlar: 2 başarılı**.
+1. Bir depolama hesabının dağıtıldığını görüyorsunuz.
+1. Dağıtım etiketinde şu anda şöyle yazdığına dikkat edin: **Dağıtımlar: 2 Başarılı .**
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
+Bir sonraki öğreticiye geçiyorsanız, kaynak grubunu silmeniz gerekmez.
 
-Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
+Şimdi duruyorsanız, kaynak grubunu silerek dağıttığınız kaynakları temizlemek isteyebilirsiniz.
 
-1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
+1. Azure portalından sol menüden **Kaynak grubunu** seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
+4. Üst menüden **kaynak grubunu sil'i** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir Azure depolama hesabı dağıtmak için basit bir şablon oluşturdunuz.  Sonraki öğreticilerde, bir şablona parametreler, değişkenler, kaynaklar ve çıktılar eklemeyi öğreneceksiniz. Bu özellikler, çok daha karmaşık şablonlar için yapı taşlarıdır.
+Azure depolama hesabı dağıtmak için basit bir şablon oluşturdunuz.  Sonraki öğreticilerde, şablona parametreler, değişkenler, kaynaklar ve çıktılar eklemeyi öğrenirsiniz. Bu özellikler çok daha karmaşık şablonlar için yapı taşlarıdır.
 
 > [!div class="nextstepaction"]
-> [Parametreleri Ekle](template-tutorial-add-parameters.md)
+> [Parametre ekleme](template-tutorial-add-parameters.md)

@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB Tablo API'si işlemlerini listelemek ve almak için PowerShell betiği
-description: Azure PowerShell betiği Azure Cosmos DB listesi ve Tablo API'si için işlemleri al
+title: Azure Cosmos DB Tablo API işlemlerini listelemek ve almak için PowerShell komut dosyası
+description: Azure PowerShell komut dosyası - Azure Cosmos DB listesi ve Tablo API'sı için işlem alın
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9e904bdb635111b3fb0c3120be08f26e2e097236
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166b9c2d6b20fbd6a71ba5df17e049838038617d
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444936"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365916"
 ---
-# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB Tablo API'si için tabloları listeleme ve edinme
+# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB için tablo ları listele ve alın - Tablo API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure Kaynak grupları**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB Hesaplarını listeler veya belirli bir Cosmos DB Hesabı alır. |
+| [Get-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Bir Hesaptaki Cosmos DB Tablo API Tablolarını listeler veya bir Hesapta belirli bir Cosmos DB Tablo API Tablosu alır. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

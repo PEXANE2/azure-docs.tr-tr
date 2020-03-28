@@ -7,15 +7,15 @@ ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74276930"
 ---
-## <a name="putting-everything-together"></a>Her şeyi birlikte yerleştirme
+## <a name="putting-everything-together"></a>Her şeyi bir araya getirmek
 
-Tüm farklı öğeler birlikte yerleştirildikten sonra, Bütün `MainActivity` sınıf dosyası nasıl görünmelidir. Bunu kendi dosyanıza göre karşılaştırmak için bir başvuru olarak kullanabilir ve herhangi bir farklılık varsa, herhangi bir farklılık olabilir.
+Tüm farklı öğeler `MainActivity` bir araya getirildikten sonra tüm sınıf dosyasının nasıl görünmelidir: Kendi dosyanızla karşılaştırmak için başvuru olarak kullanabilirsiniz ve herhangi bir farkınız kalmışsa noktanızı görebilirsiniz.
 
 ```java
 package com.example.myfirstapp;
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure uzamsal bağlayıcılarla en önemli işlevselliği tümleştiren yeni bir Android uygulaması oluşturmayı öğrendiniz. Azure uzamsal bağlayıcı Kitaplığı hakkında daha fazla bilgi edinmek için, bağlantıları oluşturma ve bulma konusundaki kılavuzumuza devam edin.
+Bu eğitimde, ARCore işlevlerini Azure Uzamsal Çapalarıyla bütünleştiren yeni bir Android uygulamasının nasıl oluşturulacağı nızı gördünüz. Azure Uzamsal Çapalar kitaplığı hakkında daha fazla bilgi edinmek için, çapa oluşturma ve bulma kılavuzumuza devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure uzamsal bağlayıcıları kullanarak bağlantıları oluşturma ve bulma](/azure/spatial-anchors/create-locate-anchors-overview)
+> [Azure Uzamsal Bağlantılarını kullanarak bağlantı oluşturma ve bulma](/azure/spatial-anchors/create-locate-anchors-overview)

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory Spark kullanarak verileri dönüştürme '
+title: "Azure Veri Fabrikası'nda Spark'ı kullanarak verileri dönüştürme "
 description: Bu öğretici, Azure Data Factory'de bir Spark etkinliği kullanarak verileri dönüştürmeye ilişkin adım adım yönergeler sağlar.
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: ddc5032da415ebee9920556d3168d30bdae4a158
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439222"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de bir Spark etkinliği kullanarak verileri bulutta dönüştürme
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattı çalıştırması tetikleyin.
 > * İşlem hattı çalıştırmasını izleme.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -68,7 +68,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     if __name__ == "__main__":
         main()
     ```
-1. *&lt;storageAccountName&gt;* ’i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
+1. * &lt;&gt; storageAccountName'i* Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
 1. Azure Blob depolama alanında henüz yoksa **adftutorial** adlı bir kapsayıcı oluşturun. 
 1. **Spark** adlı bir klasör oluşturun.
 1. **Spark** klasörünün altında **script** adlı bir alt klasör oluşturun. 
@@ -90,7 +90,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
       
    ![“Yeni veri fabrikası” bölmesi](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Azure data factory adı *küresel olarak benzersiz* olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, **&lt;adınız&gt;ADFTutorialDataFactory** biçimini kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
+   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, ** &lt;adınızı&gt;ADFTutorialDataFactory**kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
   
    ![Bir ad kullanılamadığında alınan hata](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. **Abonelik** için, veri fabrikasını oluşturmak istediğiniz Azure aboneliğini seçin. 
@@ -105,7 +105,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
    Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Data Factory tarafından kullanılan veri depoları (Azure Depolama ve Azure SQL Veritabanı) ve işlemler (HDInsight gibi) başka bölgelerde olabilir.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur'u**seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra, **Veri fabrikası** sayfasını görürsünüz. Data Factory kullanıcı arabirimi uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
 
@@ -144,15 +144,15 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
 
    a. **Ad** için **AzureHDInsightLinkedService** girin.
    
-   b. **Tür için** **İsteğe Bağlı HDInsight**’ın seçili olduğunu onaylayın.
+   b. **Tür için****İsteğe Bağlı HDInsight**’ın seçili olduğunu onaylayın.
    
-   c. **Azure depolama bağlı hizmeti**için **AzureBlobStorage1**' yi seçin. Bu bağlı hizmeti daha önce oluşturmuştunuz. Farklı bir ad kullandıysanız, doğru adı burada belirtin. 
+   c. **Azure Depolama Bağlantılı Hizmet**için **AzureBlobStorage1'i**seçin. Bu bağlı hizmeti daha önce oluşturmuştunuz. Farklı bir ad kullandıysanız, doğru adı burada belirtin. 
    
    d. **Küme türü** için **spark**’ı seçin.
    
    e. **Hizmet sorumlusu kimliği** için, HDInsight kümesi oluşturma iznine sahip hizmet sorumlusunun kimliğini girin. 
    
-      Bu hizmet sorumlusu, abonelikte ya da kümenin oluşturulduğu kaynak grubunda Katkıda Bulunan rolünün bir üyesi olmalıdır. Daha fazla bilgi için bkz. [Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). **Hizmet sorumlusu kimliği** , *uygulama kimliğiyle*eşdeğerdir ve bir **hizmet sorumlusu anahtarı** , bir *istemci parolasının*değeri ile eşdeğerdir.
+      Bu hizmet sorumlusu, abonelikte ya da kümenin oluşturulduğu kaynak grubunda Katkıda Bulunan rolünün bir üyesi olmalıdır. Daha fazla bilgi için bkz. [Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). **Hizmet asıl kimliği** Uygulama *Kimliği'ne*eşdeğerdir ve Hizmet ana **anahtarı** *istemci sırrının*değerine eşdeğerdir.
    
    f. **Hizmet sorumlusu anahtarı** için anahtarı girin. 
    
@@ -164,7 +164,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    
    j. Kullanıcı için **Küme parolası** girin. 
    
-   k. **Son**’u seçin. 
+   k. **Bitiş'i**seçin. 
 
    ![HDInsight bağlı hizmet ayarları](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -173,7 +173,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1. **+** (artı) düğmesini ve sonra menüden **İşlem Hattı**'nı seçin.
+1. (artı) düğmesini **+** seçin ve menüde **Pipeline'ı** seçin.
 
    ![Yeni işlem hattı oluşturma düğmeleri](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
 1. **Etkinlikler** araç kutusunda **HDInsight**’ı genişletin. **Etkinlikler** araç kutusundan **Spark** etkinliğini işlem hattı tasarımcısının yüzeyine sürükleyin. 
@@ -188,7 +188,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    ![HDInsight bağlı hizmetini belirtme](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. **Betik/Jar** sekmesine geçin ve aşağıdaki adımları tamamlayın: 
 
-   a. **Iş bağlı hizmeti**için **AzureBlobStorage1**' yi seçin.
+   a. **İş Bağlantılı Hizmet**için **AzureBlobStorage1'i**seçin.
    
    b. **Depolamaya Gözat**’ı seçin.
 
@@ -196,7 +196,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    
    c. **adftutorial/spark/script** klasörüne göz atın, **WordCount_Spark.py** dosyasını seçin ve **Son**’a tıklayın.      
 
-1. İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesini seçin. Doğrulama penceresini kapatmak için **>>** (sağ ok) düğmesini seçin. 
+1. İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesini seçin. Doğrulama **>>** penceresini kapatmak için (sağ ok) düğmesini seçin. 
     
    !["Doğrula" düğmesi](./media/tutorial-transform-data-spark-portal/validate-button.png)
 1. **Tümünü Yayımla**. Data Factory kullanıcı arabirimi, varlıkları (bağlı hizmetler ve işlem hattı) Azure Data Factory hizmetinde yayımlar. 
@@ -204,14 +204,14 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    !["Tümünü Yayımla" düğmesi](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
 
-## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırması tetikleme
-Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin. 
+## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırmasını tetikleme
+Araç çubuğunda **Tetikleyici Ekle'yi** ve ardından Şimdi **Tetikle'yi**seçin. 
 
 !["Tetikleyici" ve "Şimdi Tetikle" düğmeleri](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
 ## <a name="monitor-the-pipeline-run"></a>İşlem hattı çalıştırmasını izleme
 
-1. **İzleyici** sekmesine geçin. bir işlem hattı çalıştırması Görtığınızdan emin olun. Spark kümesi oluşturma işlemi yaklaşık 20 dakika sürer. 
+1. **Monitör** sekmesine geçin. Bir ardışık hatlar çalışması gördüğünüzü onaylayın. Spark kümesi oluşturma işlemi yaklaşık 20 dakika sürer. 
    
 1. Düzenli aralıklarla **Yenile**’yi seçerek işlem hattı çalıştırmasının durumunu denetleyin. 
 
@@ -221,7 +221,7 @@ Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' 
 
    ![İşlem hattı çalıştırma durumu](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   En üstteki **Tüm Işlem hattı çalıştırmaları** bağlantısını seçerek işlem hattı çalıştırmaları görünümüne dönebilirsiniz.
+   En üstteki **Tüm Boru Hattı Çalışır** bağlantısını seçerek ardışık hatlar çalışır görünümüne geri dönebilirsiniz.
 
    !["Etkinlik Çalıştırmaları" görünümü](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 
@@ -230,7 +230,7 @@ adftutorial kapsayıcısının spark/otuputfiles/wordcount klasöründe çıktı
 
 ![Çıkış dosyasının konumu](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örneğin: 
+Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örnek: 
 
 ```
 (u'This', 1)

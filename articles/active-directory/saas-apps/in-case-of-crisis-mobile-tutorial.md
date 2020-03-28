@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: çapraz mobil çalışma durumunda ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı ve çapraz mobil için nasıl yapılandırılacağını öğrenin.
+title: 'Öğretici: Azure Active Directory tek oturum açma (SSO) entegrasyonu Kriz Durumunda - Mobil | Microsoft Dokümanlar'
+description: Azure Active Directory ile Kriz Durumunda Mobil arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,133 +17,133 @@ ms.date: 10/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83bff484e4ca3a1579067501be134d71da72abfa
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72266090"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---mobile"></a>Öğretici: çapraz mobil mobil durumunda ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---mobile"></a>Öğretici: Kriz Durumunda Azure Active Directory tek oturum açma (SSO) entegrasyonu - Mobil
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile çapraz Mobil durum durumunda nasıl tümleştirileceğini öğreneceksiniz. Azure AD ile çapraz Mobil durum durumunda tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Kriz Durumunda - Mobil ile Azure Active Directory (Azure AD) entegre etmeyi öğreneceksiniz. Kriz Durumunda - Mobil'i Azure AD ile entegre ettiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, çapraz Mobil Mobil durum durumunda erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla çapraz mobil olması durumunda kullanıcılarınızın otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Kriz Durumunda - Mobil'e erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Kriz Durumunda - Azure AD hesaplarıyla otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Çapraz Mobil çoklu oturum açma (SSO) etkin abonelik olması durumunda.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Kriz Durumunda - Mobil tek oturum açma (SSO) aboneliği etkinleştirildi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Çapraz mobil olması durumunda **IDP** tarafından başlatılan SSO 'yu destekler
+* Kriz Durumunda - Mobil **IDP'nin** Başlattığı SSO'ya destek
 
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir, bu nedenle yalnızca bir örnek bir kiracıda yapılandırılabilir.
 
-## <a name="adding-in-case-of-crisis---mobile-from-the-gallery"></a>Galeri 'den çapraz mobil durumunda ekleme
+## <a name="adding-in-case-of-crisis---mobile-from-the-gallery"></a>Kriz Durumunda Ekleme - Galeriden Mobil
 
-Azure AD 'ye çapraz mobil çalışma ıhtimaline ilişkin tümleştirmeyi yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize çapraz mobil olması durumunda eklemeniz gerekir.
+Kriz Durumunda - Mobil'in Azure AD'ye entegrasyonunu yapılandırmak için, In Case of Crisis - Mobile'ı galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **çapraz mobil olması durumunda** yazın.
-1. **Çapraz mobil** uygulama panelinden seçim yapın ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, Arama kutusuna **Kriz Durumunda - Mobil** yazın.
+1. **Kriz Durumunda -** Sonuç panelinden Mobil'i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-in-case-of-crisis---mobile"></a>Azure AD 'ye yönelik çoklu oturum açmayı yapılandırma ve test etme-mobil
+## <a name="configure-and-test-azure-ad-single-sign-on-for-in-case-of-crisis---mobile"></a>Kriz Durumunda Azure AD oturum açma işlemlerini yapılat ve test edin - Mobil
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, çapraz mobil durumunda ile birlikte yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında çapraz bir mobil olması durumunda bir bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO'nu Kriz Durumunda - Mobil ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure AD kullanıcısı ile Kriz Durumunda - Mobil'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu, çapraz mobil mobil durumda yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Kriz Durumunda - Mobil ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Çapraz MOBIL SSO durumunda yapılandırma](#configure-in-case-of-crisis---mobile-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. Çapraz **[Mobil test kullanıcısı durumunda](#create-in-case-of-crisis---mobile-test-user)** , kullanıcının Azure AD gösterimine bağlı bir çapraz mobil durumunda B. Simon 'a bir sahip olmak için bir de oluşturun.
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için Kriz Durumunda - Mobil SSO - **[yapılandırın.](#configure-in-case-of-crisis---mobile-sso)**
+    1. **[Create In Case of Crisis - Mobil test kullanıcısı](#create-in-case-of-crisis---mobile-test-user)** - B.Simon'ın bir örneğine sahip olmak, Kriz Durumunda - Kullanıcının Azure AD temsiline bağlı mobil.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **çapraz mobil** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında](https://portal.azure.com/), **Kriz Durumunda - Mobil** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1.  **Temel SAML yapılandırması** bölümünde, uygulama **IDP** başlatılmış modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının  **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
+1. Temel **SAML Yapılandırması** bölümünde uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL'ler azure ile önceden doldurulmuş durumdadır. Kullanıcının **Kaydet** düğmesini tıklatarak yapılandırmayı kaydetmesi gerekir.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika (Ham)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
-1. Sayfanın sol tarafındaki **Yönet** bölümüne gidin, **Özellikler sekmesine** tıklayın, ardından **Kullanıcı erişim URL** 'sini kopyalayın ve bilgisayarınıza kaydedin.
+1. Sayfanın sol tarafındaki **Yönet** bölümüne gidin, **Özellikler sekmesine** tıklayın ve ardından **Kullanıcı erişim URL'sini** kopyalayın ve bilgisayarınıza kaydedin.
 
-    ![Çoklu oturum açma özellikleri](./media/in-case-of-crisis-mobile-tutorial/properties.png)
+    ![Tek oturum açma özellikleri](./media/in-case-of-crisis-mobile-tutorial/properties.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B. Simon 'u, çapraz mobil şirket durumunda erişim izni vererek Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Kriz Durumunda - Mobil'e erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **çapraz mobil durumunda**' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde, Kriz **Durumunda seçin - Mobil**.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-in-case-of-crisis---mobile-sso"></a>Çapraz mobil SSO ıhtimaline karşı yapılandırma
+## <a name="configure-in-case-of-crisis---mobile-sso"></a>Kriz Durumunda Yapılandırın - Mobil SSO
 
-**Çapraz mobil taraf durumunda** çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal ' den [çapraz mobil destek ekibi olması durumunda](https://www.rockdovesolutions.com/features/enterprise-ready)' dan ' e kopyalanmış **Kullanıcı erişim URL 'sini** göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Kriz Durumunda Tek** Oturum Açma - Mobil tarafı yapılandırmak için, indirilen **Sertifikayı (Raw)** ve kopyalanan **Kullanıcı erişim URL'sini** Azure portalından Kriz Durumunda - Mobil destek [ekibine](https://www.rockdovesolutions.com/features/enterprise-ready)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
-### <a name="create-in-case-of-crisis---mobile-test-user"></a>Çapraz mobil test kullanıcısı durumunda oluştur
+### <a name="create-in-case-of-crisis---mobile-test-user"></a>Kriz Durumunda Oluştur - Mobil test kullanıcısı
 
-Bu bölümde, çapraz mobil mobil durumunda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Çapraz mobil platform söz konusu olduğunda kullanıcıları eklemek için [çapraz mobil destek ekibi](https://www.rockdovesolutions.com/features/enterprise-ready) ile birlikte çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, Kriz Durumunda Britta Simon adlı bir kullanıcı oluşturmak - Mobil. Kriz [Durumunda - Mobil destek ekibi](https://www.rockdovesolutions.com/features/enterprise-ready) ile çalışarak Kullanıcıları Kriz Durumunda - Mobil platforma ekleyin. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde çapraz mobil kutucuk durumunda öğesine tıkladığınızda, SSO 'yu ayarladığınız çapraz mobil için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Panelindeki In Case - Mobil karo'yu tıklattığınızda, SSO'yu kurduğunuz In Crisis - Mobile ile otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile çapraz Mobil durum durumunda deneyin](https://aad.portal.azure.com/)
+- [Kriz Durumunda Deneyin - Azure AD ile Mobil](https://aad.portal.azure.com/)
 

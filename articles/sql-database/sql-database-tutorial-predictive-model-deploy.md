@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: R 'de tahmine dayalı model dağıtma"
+title: "Öğretici: R'de tahmine dayalı bir model dağıtma"
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Üç bölümden oluşan Bu öğreticinin üçüncü bölümünde Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model dağıtacaksınız.
+description: Bu üç bölümlük öğreticinin üçüncü bölümünde, Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme) ile R'de tahmine dayalı bir model dağıtırsınız.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,42 +13,44 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7779db053344f99238d38d5d49762730efbc5fc4
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596779"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346313"
 ---
-# <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model dağıtma
+# <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model dağıtma (önizleme)
 
-Üç bölümden oluşan Bu öğreticinin üçüncü kısmında, Azure SQL veritabanı Machine Learning Services (Önizleme) kullanarak R 'de geliştirilen bir tahmine dayalı modeli SQL veritabanına dağıtırsınız.
-
-Modeli kullanarak tahminleri yapan gömülü bir R betiği ile saklı bir yordam oluşturacaksınız. Modeliniz Azure SQL veritabanında yürütüldüğü için, veritabanında depolanan verilere karşı kolayca eğitim yapılabilir.
-
-Bu makalede, bir ve iki bölümde geliştirmiş olduğunuz R betiklerini kullanarak şunları yapmayı öğreneceksiniz:
-
-> [!div class="checklist"]
-> * Machine Learning modelini üreten bir saklı yordam oluşturma
-> * Modeli bir veritabanı tablosunda depolayın
-> * Modeli kullanarak tahminleri yapan bir saklı yordam oluşturma
-> * Modeli yeni verilerle yürütme
-
-[Birinci bölümde](sql-database-tutorial-predictive-model-prepare-data.md), örnek bir veritabanını içeri aktarmayı ve ardından R 'deki tahmine dayalı bir modeli eğitmek için kullanılacak verileri oluşturmayı öğrendiniz.
-
-[İkinci bölümde](sql-database-tutorial-predictive-model-build-compare.md), R 'de birden çok makine öğrenimi modeli oluşturup eğitme ve en doğru olanı seçme hakkında bilgi edindiniz.
+Bu üç bölümlük öğreticinin üçüncü bölümünde, Azure SQL Veritabanı Makine Öğrenme Hizmetleri 'ni (önizleme) kullanarak R'de geliştirilen bir tahminmodelisql veritabanına dağıtırsınız.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+Modeli kullanarak öngörüler yapan katıştırılmış Bir R komut dosyası ile depolanmış bir yordam oluşturursunuz. Modeliniz Azure SQL veritabanında yürütüldeğinden, veritabanında depolanan verilere karşı kolayca eğitilebilir.
 
-* Bu öğretici serisinin üçüncü kısmı, [**bir**](sql-database-tutorial-predictive-model-prepare-data.md) kısmını ve [**ikinci kısmını**](sql-database-tutorial-predictive-model-build-compare.md)tamamladığınız varsayılır.
+Bu makalede, birinci ve ikinci bölümlerde geliştirdiğiniz R komut dosyalarını kullanarak şunları öğreneceksiniz:
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>Modeli oluşturan bir saklı yordam oluşturma
+> [!div class="checklist"]
+> * Makine öğrenme modelini oluşturan depolanmış bir yordam oluşturma
+> * Modeli veritabanı tablosunda depolama
+> * Modeli kullanarak öngörüler yapan depolanmış yordam oluşturma
+> * Modeli yeni verilerle yürütme
 
-Bu öğretici serisinin ikinci bölümünde, karar ağacı (dTree) modelinin en doğru olduğunu kararırdı. Şimdi, geliştirmiş olduğunuz R betiklerini kullanarak, iptal edilen bir saklı yordam`generate_rental_rx_model`() oluşturun ve rxdtree paketinden rxdtree kullanarak dTree modelini oluşturur.
+[Birinci bölümde,](sql-database-tutorial-predictive-model-prepare-data.md)örnek bir veritabanını nasıl içe aktarabileceğinizi ve daha sonra Verileri R'de bir tahminmodelinin eğitimi için nasıl hazırlayacağınızı öğrendiniz.
 
-Azure Data Studio veya SSMS 'de aşağıdaki komutları çalıştırın.
+[İkinci bölümde,](sql-database-tutorial-predictive-model-build-compare.md)R'de birden fazla makine öğrenme modeli oluşturmayı ve eğitmeyi öğrendiniz ve sonra en doğru olanı seçtiniz.
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Bu öğretici serisinin Bölüm üç [**bölüm bir**](sql-database-tutorial-predictive-model-prepare-data.md) ve [**bölüm iki**](sql-database-tutorial-predictive-model-build-compare.md)tamamlamış varsayar.
+
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>Modeli oluşturan depolanmış yordam oluşturma
+
+Bu öğretici serisinin ikinci bölümünde, bir karar ağacı (dtree) modeli en doğru olduğuna karar verdi. Şimdi, geliştirdiğiniz R komut dosyalarını kullanarak, RevoScaleR paketinden rxDTree kullanarak dtree modelini eğiten ve oluşturan bir depolanmış yordam`generate_rental_rx_model`() oluşturun.
+
+Azure Veri Stüdyosu veya SSMS'te aşağıdaki komutları çalıştırın.
 
 ```sql
 -- Stored procedure that trains and generates an R model using the rental_data and a decision tree algorithm
@@ -88,11 +90,11 @@ END;
 GO
 ```
 
-## <a name="store-the-model-in-a-database-table"></a>Modeli bir veritabanı tablosunda depolayın
+## <a name="store-the-model-in-a-database-table"></a>Modeli veritabanı tablosunda depolama
 
-Tutorialdb 'yi veritabanında bir tablo oluşturun ve ardından modeli tabloya kaydedin.
+TutorialDB veritabanında bir tablo oluşturun ve ardından modeli tabloya kaydedin.
 
-1. Modeli depolamak için bir`rental_rx_models`tablo () oluşturun.
+1. Modeli depolamak`rental_rx_models`için bir tablo ( ) oluşturun.
 
     ```sql
     USE TutorialDB;
@@ -105,7 +107,7 @@ Tutorialdb 'yi veritabanında bir tablo oluşturun ve ardından modeli tabloya k
     GO
     ```
 
-1. Modeli, model adı "rxDTree" olan bir ikili nesne olarak tabloya kaydedin.
+1. Modeli "rxDTree" model adı ile ikili nesne olarak tabloya kaydedin.
 
     ```sql
     -- Save model to table
@@ -128,9 +130,9 @@ Tutorialdb 'yi veritabanında bir tablo oluşturun ve ardından modeli tabloya k
     FROM rental_rx_models;
     ```
 
-## <a name="create-a-stored-procedure-that-makes-predictions"></a>Tahminleri yapan bir saklı yordam oluşturma
+## <a name="create-a-stored-procedure-that-makes-predictions"></a>Öngörüler yapan depolanmış yordam oluşturma
 
-Eğitilen modeli ve yeni`predict_rentalcount_new`veri kümesini kullanarak tahminleri yapan bir saklı yordam () oluşturun.
+Eğitilmiş modeli ve`predict_rentalcount_new`yeni veri kümesini kullanarak öngörüler yapan depolanmış yordam () oluşturun.
 
 ```sql
 -- Stored procedure that takes model name and new data as input parameters and predicts the rental count for the new data
@@ -175,7 +177,7 @@ GO
 
 ## <a name="execute-the-model-with-new-data"></a>Modeli yeni verilerle yürütme
 
-Artık yeni verilerden Kiralama sayısını tahmin etmek `predict_rentalcount_new` için saklı yordamı kullanabilirsiniz.
+Artık yeni verilerden kira `predict_rentalcount_new` sayısını tahmin etmek için depolanan yordamı kullanabilirsiniz.
 
 ```sql
 -- Use the predict_rentalcount_new stored procedure with the model name and a set of features to predict the rental count
@@ -190,37 +192,37 @@ EXECUTE dbo.predict_rentalcount_new @model_name = 'rxDTree'
 GO
 ```
 
-Aşağıdakine benzer bir sonuç görmeniz gerekir.
+Aşağıdakilere benzer bir sonuç görmeniz gerekir.
 
 ```results
 RentalCount_Predicted
 332.571428571429
 ```
 
-Bir Azure SQL veritabanında başarıyla bir model oluşturdunuz, eğitilen ve dağıttınız. Daha sonra bu modeli, değerleri yeni verilere göre tahmin etmek için bir saklı yordamda kullandınız.
+Bir Azure SQL veritabanında başarılı bir şekilde bir model oluşturdunuz, eğittiniz ve dağıttınız. Daha sonra bu modeli, yeni verilere dayalı değerleri tahmin etmek için depolanan bir yordamda kullandınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Tutorialdb 'yi veritabanını kullanmayı bitirdiğinizde Azure SQL veritabanı sunucusundan silin.
+TutorialDB veritabanını kullanmayı bitirdiğinizde, Azure SQL Veritabanı sunucunuzdan silin.
 
-Azure portal, aşağıdaki adımları izleyin:
+Azure portalından aşağıdaki adımları izleyin:
 
-1. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı veya **SQL veritabanları**' nı seçin.
-1. **Ada göre filtrele...** alanına **tutorialdb 'yi**girin ve aboneliğinizi seçin.
-1. Tutorialdb 'yi veritabanınızı seçin.
+1. Azure portalındaki sol menüden Tüm **kaynakları** veya **SQL veritabanlarını**seçin.
+1. **Ada göre Filtre...** alanına **TutorialDB'yi**girin ve aboneliğinizi seçin.
+1. TutorialDB veritabanınızı seçin.
 1. **Genel Bakış** sayfasında **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici serisinin üçüncü kısmında, şu adımları tamamladınız:
+Bu öğretici serinin üçüncü bölümünde, şu adımları tamamladınız:
 
-* Machine Learning modelini üreten bir saklı yordam oluşturma
-* Modeli bir veritabanı tablosunda depolayın
-* Modeli kullanarak tahminleri yapan bir saklı yordam oluşturma
+* Makine öğrenme modelini oluşturan depolanmış bir yordam oluşturma
+* Modeli veritabanı tablosunda depolama
+* Modeli kullanarak öngörüler yapan depolanmış yordam oluşturma
 * Modeli yeni verilerle yürütme
 
-Azure SQL veritabanı Machine Learning Services (Önizleme) içinde R kullanma hakkında daha fazla bilgi için bkz.:
+Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R kullanma hakkında daha fazla bilgi edinmek için (önizleme), bkz:
 
-* [Machine Learning Services kullanarak Azure SQL veritabanı 'nda gelişmiş R işlevleri yazma (Önizleme)](sql-database-machine-learning-services-functions.md)
-* [Azure SQL veritabanı 'nda R ve SQL verileriyle çalışma Machine Learning Services (Önizleme)](sql-database-machine-learning-services-data-issues.md)
-* [Azure SQL veritabanı 'na R paketi ekleme Machine Learning Services (Önizleme)](sql-database-machine-learning-services-add-r-packages.md)
+* [Machine Learning Services 'i kullanarak Azure SQL Veritabanı'na gelişmiş R işlevleri yazın (önizleme)](sql-database-machine-learning-services-functions.md)
+* [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R ve SQL verileriyle çalışma (önizleme)](sql-database-machine-learning-services-data-issues.md)
+* [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'ne R paketi ekleme (önizleme)](sql-database-machine-learning-services-add-r-packages.md)

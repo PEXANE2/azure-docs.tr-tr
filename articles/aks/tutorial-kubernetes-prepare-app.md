@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593169"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti (AKS) için uygulamayı hazırlama
@@ -25,13 +25,13 @@ Tamamlandıktan sonra, aşağıdaki uygulama yerel geliştirme ortamınızda ça
 
 ![Azure’da Kubernetes kümesinin görüntüsü](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-Ek öğreticilerde, kapsayıcı görüntüsü bir Azure Container Registry yüklenir ve ardından bir AKS kümesine dağıtılır.
+Ek öğreticilerde, kapsayıcı görüntüsü bir Azure Kapsayıcı Kayıt Defteri'ne yüklenir ve ardından bir AKS kümesine dağıtılır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Bu öğreticide kapsayıcılar, kapsayıcı görüntüleri ve `docker` komutları gibi temel Docker kavramları hakkında bilgi sahibi olduğunuz varsayılmıştır. Kapsayıcı temelleri hakkında bilgi için bkz. [Docker ile çalışmaya başlama][docker-get-started].
 
-Bu öğreticiyi tamamlamak için Linux kapsayıcılarını çalıştıran yerel bir Docker geliştirme ortamı gerekir. Docker, bir [Mac][docker-for-mac], [Windows][docker-for-windows]veya [Linux][docker-for-linux] sisteminde Docker 'ı yapılandıran paketler sağlar.
+Bu öğreticiyi tamamlamak için Linux kapsayıcılarını çalıştıran yerel bir Docker geliştirme ortamı gerekir. Docker [Mac][docker-for-mac], [Windows][docker-for-windows] veya [Linux][docker-for-linux] sisteminde Docker'ı kolayca yapılandırmanızı sağlayan paketler sağlar.
 
 Azure Cloud Shell, bu öğreticilerdeki her adımı tamamlamak için gerekli olan Docker bileşenlerini içermez. Bu yüzden, eksiksiz bir Docker geliştirme ortamı kullanmanızı öneririz.
 
@@ -45,7 +45,7 @@ Bu öğreticide kullanılan örnek uygulama, temel oylama uygulamasıdır. Bu uy
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Kopyalanmış dizine geçin.
+Klonlanmış dizine dönüş.
 
 ```console
 cd azure-voting-app-redis
@@ -55,7 +55,7 @@ Dizinin içinde uygulama kaynak kodu, önceden oluşturulmuş Docker Compose dos
 
 ## <a name="create-container-images"></a>Kapsayıcı görüntüleri oluşturma
 
-[Docker Compose][docker-compose] , kapsayıcı görüntüleri oluşturmayı ve çok Kapsayıcılı uygulamaların dağıtımını otomatikleştirmek için kullanılabilir.
+[Docker Compose][docker-compose] kapsayıcı görüntülerinden alınan derlemeyi ve çoklu kapsayıcı uygulamalarının dağıtımını otomatikleştirmek için kullanılabilir.
 
 Kapsayıcı görüntüsünü oluşturmak için örnek `docker-compose.yaml` dosyasını çalıştırın, Redis görüntüsünü indirin ve uygulamayı başlatın:
 
@@ -74,7 +74,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Çalışan kapsayıcıları görmek için [Docker PS][docker-ps] komutunu çalıştırın:
+Çalışan kapsayıcıları görmek için [docker ps][docker-ps] komutunu çalıştırın:
 
 ```
 $ docker ps
@@ -92,15 +92,15 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık uygulama işlevselliği doğrulandığından, çalışan kapsayıcılar durdurulup kaldırılabilir. Kapsayıcı görüntülerini silmeyin. Bir sonraki öğreticide *azure-vote-front* görüntüsü bir Azure Container Registry örneğine yüklenecektir.
+Artık uygulama işlevselliği doğrulandığından, çalışan kapsayıcılar durdurulup kaldırılabilir. Kapsayıcı görüntülerini silmeyin - bir sonraki öğreticide, *azure oy ön* resmi bir Azure Kapsayıcı Kayıt Defteri örneğine yüklenir.
 
-[Docker-Compose aşağı][docker-compose-down] komutuyla kapsayıcı örneklerini ve kaynakları durdurun ve kaldırın:
+[docker-compose down][docker-compose-down] komutuyla kapsayıcı örneklerini ve kaynakları durdurabilir ve kaldırabilirsiniz:
 
 ```console
 docker-compose down
 ```
 
-Yerel uygulama kaldırıldığında, sonraki öğreticide kullanılmak üzere Azure oy uygulamasını, *Azure-oyönünü*Içeren bir Docker görüntüsüne sahip olursunuz.
+Yerel uygulama kaldırıldığında, bir sonraki öğreticide kullanılmak üzere Azure Oylaması uygulaması olan *azure oy ön*uygulamasını içeren bir Docker resminiz vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

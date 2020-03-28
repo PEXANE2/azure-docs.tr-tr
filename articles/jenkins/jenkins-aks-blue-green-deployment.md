@@ -1,14 +1,14 @@
 ---
-title: Jenkins ve mavi/yeşil dağıtım modelini kullanarak Azure Kubernetes hizmetine dağıtın
+title: Jenkins ve mavi/yeşil dağıtım deseni kullanarak Azure Kubernetes Hizmetine dağıtın
 description: Jenkins ve mavi/yeşil dağıtım düzenini kullanarak Azure Kubernetes Service'e (AKS) nasıl dağıtım yapacağınızı öğrenin.
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, mavi yeşil dağıtım, sürekli teslim, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251471"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins ve mavi/yeşil dağıtım düzenini kullanarak Azure Kubernetes Service'e (AKS) dağıtım yapma
@@ -26,7 +26,7 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 > * Bir Kubernetes kümesini el ile yapılandırma
 > * Bir Jenkins işi oluşturma ve çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - [GitHub hesabı](https://github.com) : Örnek deposunu kopyalamak için bir GitHub hesabınız olması gerekir.
 - [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) : Kubernetes kümesi oluşturmak için Azure CLI 2.0 kullanılır.
 - [Chocolatey](https://chocolatey.org): kubectl yüklemek için kullanılan bir paket yöneticisi.
@@ -113,10 +113,10 @@ Mavi/yeşil dağıtımı AKS'de el ile veya önceden kopyalanan örnekte sağlan
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>Kubernetes kümesini örnek kurulum betiği ile ayarlama
 1. Aşağıdaki yer tutucuları ortamınız için uygun değerler ile değiştirerek **deploy/aks/setup/setup.sh** dosyasını düzenleyin: 
 
-   - **&lt;kaynak-grubu-adınız>**
-   - **&lt;kubernetes-kümesi-adınız>**
-   - **&lt;konumunuz>**
-   - **&lt;dns-adı-sonekiniz>**
+   - **&lt;kaynak-grup adı-adı>**
+   - **&lt;sizin-kubernetes-küme-adı>**
+   - **&lt;bulunduğunuz yer>**
+   - **&lt;sizin-dns-isim-soneki>**
 
      ![Bazı yer tutucuları vurgulanmış olan bir bash setup.sh betiğinin ekran görüntüsü](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
@@ -143,7 +143,7 @@ Mavi/yeşil dağıtımı AKS'de el ile veya önceden kopyalanan örnekte sağlan
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Genel ve test uç noktaları için DNS adını güncelleştirin. Bir Kubernetes kümesi oluşturduğunuzda, aynı zamanda adlandırma düzeni [MC_](https://github.com/Azure/AKS/issues/3)kaynak-grubu-adınız> **&lt;kubernetes-kümesi-adınız> _&lt;konumunuz>_ olan bir &lt;ek kaynak grubu** da oluşturmuş olursunuz.
+1. Genel ve test uç noktaları için DNS adını güncelleştirin. Bir Kubernetes kümesi oluşturduğunuzda, aynı zamanda adlandırma düzeni **MC_&lt;kaynak-grubu-adınız>_&lt;kubernetes-kümesi-adınız>_&lt;konumunuz>** olan bir [ek kaynak grubu](https://github.com/Azure/AKS/issues/3) da oluşturmuş olursunuz.
 
     Kaynak grubundaki genel IP'leri bulun.
 
@@ -197,7 +197,7 @@ Bu bölümde, Jenkins sunucusunu test için kullanılan bir derlemeyi çalışt�
    sudo apt-get install git maven 
    ```
    
-1. [Docker'ı yükleyin](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce). `jenkins` kullanıcısının `docker` komutlarını çalıştırmak için izni olduğundan emin olun.
+1. [Docker'ı yükleyin.](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce) `jenkins` kullanıcısının `docker` komutlarını çalıştırmak için izni olduğundan emin olun.
 
 1. [kubectl yükleyin](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
@@ -214,7 +214,7 @@ Bu bölümde, Jenkins sunucusunu test için kullanılan bir derlemeyi çalışt�
     1. **Manage Jenkins > Manage Plugins > Available**'ı (Jenkins’i yönet > Eklentileri yönet > Kullanılabilir) seçin.
     1. Azure Container Service eklentisini arayın ve yükleyin.
 
-1. Azure'da kaynakları yönetmek için kimlik bilgilerini ekleyin. Zaten eklentiniz yoksa, **Azure kimlik bilgisi** eklentisini yükleyebilirsiniz.
+1. Azure'da kaynakları yönetmek için kimlik bilgilerini ekleyin. Eklentiniz zaten yoksa, **Azure Kimlik Bilgileri** eklentisini yükleyin.
 
 1. Azure Hizmet Sorumlusu kimlik bilgilerinizi **Microsoft Azure Service Principal** (Microsoft Azure Hizmet Sorumlusu) türünde ekleyin.
 
@@ -247,7 +247,7 @@ Bu bölümde, Jenkins sunucusunu test için kullanılan bir derlemeyi çalışt�
 ## <a name="create-the-job"></a>İşi oluşturma
 1. **Pipeline** (İşlem hattı) türünde yeni bir iş ekleyin.
 
-1. **Pipeline** > **Definition** > **Pipeline script from SCM**'yi (İşlem hattı > Tanım > SCM'den işlem hattı betiği) seçin.
+1. **SCM'den** **Pipeline** > **Definition** > Pipeline komut dosyası'nı seçin.
 
 1. SCM depo URL'sini kendi &lt;çatal-oluşturulan-deponuz> değerinizle girin.
 
@@ -289,4 +289,4 @@ Jenkins eklentileriyle ilgili hatalarla karşılaşırsanız [Jenkins JIRA](http
 Bu öğreticide, Jenkins ve mavi/yeşil dağıtım düzenini kullanarak AKS'ye nasıl dağıtım yapacağınızı öğrendiniz. Azure Jenkins sağlayıcısı hakkında daha fazla bilgi için Azure üzerinde Jenkins sitesine bakın.
 
 > [!div class="nextstepaction"]
-> [Azure üzerinde Jenkins](/azure/jenkins/)
+> [Azure'da Jenkins](/azure/jenkins/)

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Hizmeti için bir etki alanında coğrafi filtreleme | Microsoft Docs
-description: Bu makalede Azure Front Door hizmeti için coğrafi filtreleme ilkesi hakkında bilgi edineceksiniz
+title: Azure Ön Kapı için bir etki alanında coğrafi filtreleme | Microsoft Dokümanlar
+description: Bu makalede, Azure Ön Kapı için coğrafi filtreleme ilkesi hakkında bilgi edinin
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 80641ca27949435f65222ecab17cc3079e2a6359
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846421"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471617"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Bir etki alanındaki Azure ön kapı için coğrafi filtreleme nedir?
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door için bir etki alanında coğrafi filtreleme nedir?
 
-Azure Front Door Hizmeti, varsayılan olarak kullanıcı isteklerine, isteğin geldiği konumdan bağımsız olarak yanıt verir. Ancak, bazı durumlarda, ülke/bölge tarafından web uygulamalarınız için erişimi kısıtlamak isteyebilirsiniz. Web uygulaması Güvenlik Duvarı (WAF) hizmeti ön Kapıda izin vermek veya belirtilen ülkeler/bölgelerden gelen erişimi engellemek için belirli yolu uç noktanız için özel erişim kuralları kullanarak bir ilkesi tanımlamanızı sağlar. 
+Varsayılan olarak, Azure Ön Kapı, isteği yapan kullanıcının konumuna bakılmaksızın kullanıcı isteklerine yanıt verir. Ancak, bazı durumlarda, web uygulamalarınıza erişimi ülkeye/bölgeye göre kısıtlamak isteyebilirsiniz. Front Door'daki Web uygulaması güvenlik duvarı (WAF) hizmeti, belirli ülkelerden/bölgelerden erişime izin vermek veya engellemek için bitiş noktanızdaki belirli bir yol için özel erişim kurallarını kullanarak bir ilke tanımlamanıza olanak tanır. 
 
-Bir WAF İlkesi, genellikle bir özel kural kümesi içerir. Bir kural eşleşme koşullarından, bir eylemden ve bir öncelikten oluşur. Eşleşme koşulunda bir eşleşme değişkeni, işleç ve eşleşme değeri tanımlarsınız.  Coğrafi filtreleme kuralı için eşleşme değişkeni REMOTE_ADDR, işleç GeoMatch, değer ise söz konusu ülkenin iki harfli kodudur. Yola göre bir coğrafi filtreleme kuralı oluşturmak için bir GeoMatch koşulunu ve bir REQUEST_URI dizesi eşleşme koşulunu birleştirebilirsiniz.
+WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşullarından, bir eylemden ve bir öncelikten oluşur. Eşleşme koşulunda bir eşleşme değişkeni, işleç ve eşleşme değeri tanımlarsınız.  Coğrafi filtreleme kuralı için eşleşme değişkeni REMOTE_ADDR, işleç GeoMatch, değer ise söz konusu ülkenin iki harfli kodudur. Yola göre bir coğrafi filtreleme kuralı oluşturmak için bir GeoMatch koşulunu ve bir REQUEST_URI dizesi eşleşme koşulunu birleştirebilirsiniz.
 
-Ya da bir coğrafi filtreleme İlkesi, ön kapısı yapılandırabilirsiniz [Azure PowerShell](front-door-tutorial-geo-filtering.md) kullanarak veya bizim [Hızlı Başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+[Azure PowerShell'i](front-door-tutorial-geo-filtering.md) kullanarak veya [hızlı başlangıç şablonumuzu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)kullanarak Ön Kapınız için bir coğrafi filtreleme ilkesi ni yapılandırabilirsiniz.
 
 ## <a name="country-code-reference"></a>Ülke kodu başvurusu
 
@@ -53,7 +53,7 @@ Ya da bir coğrafi filtreleme İlkesi, ön kapısı yapılandırabilirsiniz [Azu
 | BH | Bahreyn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Saint Barthelemy|
+| BL | Aziz Barthélemy|
 | BN | Barış Yurdu Brunei Devleti|
 | BO | Bolivya|
 | BR | Brezilya|
@@ -63,10 +63,10 @@ Ya da bir coğrafi filtreleme İlkesi, ön kapısı yapılandırabilirsiniz [Azu
 | BY | Belarus|
 | BZ | Beliz|
 | CA | Kanada|
-| CD | Kongo Demokratik Cumhuriyeti|
+| CD | Demokratik Kongo Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
 | CH | İsviçre|
-| CI | Fildişi Sahili (Côte d’Ivoire)|
+| CI | Fildişi Kıyısı|
 | CL | Şili|
 | CM | Kamerun|
 | CN | Çin|
@@ -98,12 +98,12 @@ Ya da bir coğrafi filtreleme İlkesi, ön kapısı yapılandırabilirsiniz [Azu
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong SAR|
+| HK | Hong Kong ÖİB|
 | HN | Honduras|
 | HR | Hırvatistan|
 | HT | Haiti|
 | HU | Macaristan|
-| id | Endonezya|
+| Kimlik | Endonezya|
 | IE | İrlanda|
 | IL | İsrail|
 | IN | Hindistan|

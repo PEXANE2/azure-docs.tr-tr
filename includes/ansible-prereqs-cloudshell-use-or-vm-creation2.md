@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 04/30/2019
 ms.author: tarcher
 ms.openlocfilehash: fc04bcbe811db189c040b32f6924b3a51d3d9b10
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77193591"
 ---
-- Daha **erişilebilir**: aşağıdaki seçeneklerden birini yapın:
+- **Ansible yükle**: Aşağıdaki seçeneklerden birini yapın:
 
-    - Linux sanal makinesine, [yükleyip](/azure/ansible/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) [yapılandırma](/azure/ansible/ansible-install-configure#create-azure-credentials) 
-    - [Azure Cloud Shell yapılandırın](/azure/cloud-shell/quickstart) ve-bir Linux sanal makinesine erişiminiz yoksa [sanal makine oluşturun](/azure/ansible/ansible-create-vm).
+    - Ansible'ı Linux sanal makinesine [yükleme](/azure/ansible/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) ve [yapılandırma](/azure/ansible/ansible-install-configure#create-azure-credentials) 
+    - [Azure Bulut Kabuğu'nu yapılandırın](/azure/cloud-shell/quickstart) ve Bir Linux sanal makinesine erişiminiz yoksa [Ansible ile sanal bir makine oluşturun.](/azure/ansible/ansible-create-vm)

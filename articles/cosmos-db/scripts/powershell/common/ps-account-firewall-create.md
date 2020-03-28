@@ -1,19 +1,19 @@
 ---
-title: IP güvenlik duvarı ile bir Azure Cosmos hesabı oluşturmak için PowerShell betiği
-description: Azure PowerShell betik örneği-IP güvenlik duvarıyla Azure Cosmos hesabı oluşturma
+title: IP Firewall ile Bir Azure Cosmos DB hesabı oluşturmak için PowerShell komut dosyası
+description: Azure PowerShell komut dosyası örneği - IP Firewall ile Azure Cosmos DB hesabı oluşturun
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6f018815bb8afd50bd9f21f8c088fd688ace1174
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f01e8e818a1b3cf4f999afa1e0801b2341ede2bf
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445082"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365671"
 ---
-# <a name="create-an-azure-cosmos-account-with-ip-firewall"></a>IP güvenlik duvarıyla Azure Cosmos hesabı oluşturma
+# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>IP Firewall ile Azure Cosmos DB hesabı oluşturma
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75445082"
 ## <a name="sample-script"></a>Örnek betik
 
 > [!NOTE]
-> Bu örnekte bir SQL (Core) API hesabı kullanılması gösterilmektedir. Bu örneği diğer API 'Ler için kullanmak üzere ilgili özellikleri kopyalayın ve API 'ye özel betiğe uygulayın
+> Bu örnek, bir SQL (Core) API hesabı nın kullanılmasını gösterir. Bu örneği diğer API'ler için kullanmak için, ilgili özellikleri kopyalayın ve API'nize özel komut dosyanıza uygulayın
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-firewall-create.ps1 "Create an Azure Cosmos account with IP Firewall")]
 
@@ -40,10 +40,9 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturun. |
-|**Azure Kaynak grupları**| |
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+|**Azure Cosmos DB**| |
+| [Yeni-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Yeni bir Cosmos DB Hesabı oluşturur. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

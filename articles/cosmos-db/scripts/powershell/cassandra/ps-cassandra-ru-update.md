@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB Cassandra API kaynaklarında RU/s 'yi güncelleştirmek için PowerShell betiği
-description: Bir anahtar uzayı veya Azure Cosmos DB bir tablo için üretilen işi güncelleştirmek üzere bir PowerShell betiği kullanmayı öğrenin Cassandra API
+title: Azure Cosmos DB Cassandra API kaynaklarında RU/ları güncelleştirmek için PowerShell komut dosyası
+description: Azure Cosmos DB Cassandra API'de bir anahtar alanı veya tablo için iş bürünme için PowerShell komut dosyasını nasıl kullanacağınızı öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 12/05/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4f81f278c87b096b2dae844252229fb1dee45599
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ef10dd7566d74a112a849f500da1831bc8ccb682
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445055"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365692"
 ---
-# <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB-Cassandra API için bir anahtar alanı veya tablo için ru/sn 'yi Güncelleştir
+# <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB için bir anahtar alanı veya tablo için RU/ları güncelleştir - Cassandra API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,13 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure Kaynak grupları**| |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | Cosmos DB Cassandra API Anahtar Alanı oluşturur veya güncelleştirir. |
+| [Yeni-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | Yeni bir CosmosDB Cassandra Cluster Tuşu oluşturur. |
+| [Yeni-AzCosmosDBCassandraSütun](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | Yeni bir CosmosDB Cassandra Sütunu oluşturur. |
+| [Yeni-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | Yeni bir CosmosDB Cassandra Schema oluşturur. |
+| [Set-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandratable) | Cosmos DB Cassandra API Tablosu oluşturur veya güncelleştirir. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

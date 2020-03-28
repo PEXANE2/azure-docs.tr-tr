@@ -1,21 +1,21 @@
 ---
-title: 'Kubernetes geliştirme alanı oluşturma: Visual Studio Code & Java'
+title: 'Bir Kubernetes dev alan oluşturun: Visual Studio Code & Java'
 services: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Bu öğreticide, Azure Kubernetes hizmetinde bir Java uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
+description: Bu öğretici, Azure Kubernetes Hizmeti'nde bir Java uygulamasını hata ayıklamak ve hızla doğrulamak için Azure Dev Alanları ve Görsel Stüdyo Kodunu nasıl kullanacağınızı gösterir
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: d4e335826090d4ca4819c7466c7231cceb0d5bce
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c71471d1a89188a065bafef2c5b6372aeff35851
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252439"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240530"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturun: Azure Dev Spaces ile Visual Studio Code ve Java
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Bir Kubernetes dev alanı oluşturun: Azure Dev Spaces ile Visual Studio Kodu ve Java
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -24,7 +24,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 - Kodunuzu bir ekip ortamında verimli bir şekilde geliştirip test edin.
 
 > [!Note]
-> Herhangi bir zamanda **takıldıysanız** , [sorun giderme](troubleshooting.md) bölümüne bakın.
+> Herhangi bir zamanda **sıkışıp kalırsanız,** [Sorun Giderme](troubleshooting.md) bölümüne bakın.
 
 ## <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
 Azure Dev Spaces, çok az yerel makine kurulumu gerektirir. Geliştirme ortamı yapılandırmanızın büyük bölümü bulutta depolanır ve diğer kullanıcılarla paylaşılabilir. İlk olarak [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) indirip yükleyin.
@@ -46,7 +46,7 @@ az login
 az account list --output table
 ```
 
-*IsDefault*Için *true değerine* sahip aboneliği bulun.
+*IsDefault*için *True* olan aboneliği bulun.
 Kullanmak istediğiniz abonelik bu değilse, varsayılan aboneliği değiştirebilirsiniz:
 
 ```azurecli
@@ -55,7 +55,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces için bir Kubernetes kümesi oluşturma
 
-Komut isteminde, [Azure dev Spaces destekleyen bir bölgede][supported-regions]kaynak grubunu oluşturun.
+Komut isteminde, Kaynak grubunu [Azure Dev Spaces'i destekleyen][supported-regions]bir bölgede oluşturun.
 
 ```azurecli
 az group create --name MyResourceGroup --location <region>
@@ -78,7 +78,7 @@ AKS kümenizi içeren kaynak grubuyla AKS kümesi adınızı kullanarak aşağı
    ```
 
 > [!IMPORTANT]
-> Azure Dev Spaces yapılandırma işlemi, varsa kümedeki `azds` ad alanını kaldırır.
+> Azure Dev Spaces yapılandırma işlemi `azds` varsa kümedeki ad alanını kaldırır.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>VS Code için Kubernetes hata ayıklaması edinin
 Kubernetes hata ayıklaması gibi zengin özellikler VS Code kullanarak .NET Core ve Node.js geliştiricileri için kullanılabilir.
@@ -93,7 +93,7 @@ Azure Dev Spaces ile Java uygulamalarında hata ayıklamak istiyorsanız VS Code
 Bu bölümde bir Java web uygulaması oluşturacak ve Kubernetes’teki bir kapsayıcı içinde çalıştıracaksınız.
 
 ### <a name="create-a-java-web-app"></a>Java web uygulaması oluşturma
-[https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) giderek GitHub 'dan kod Indirin ve GitHub deposunu yerel ortamınıza Indirmek için **Kopyala veya indir** ' i seçin. Bu kılavuzun kodu `samples/java/getting-started/webfrontend` içindedir.
+GitHub deposunu yerel ortamınıza indirmek için [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) Clone veya Download'a gidip **clone veya Download'u** seçerek GitHub'dan kod indirin. Bu kılavuzun kodu `samples/java/getting-started/webfrontend` içindedir.
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Docker ve Kubernetes geliştirme için kod hazırlama
 Şimdiye kadar, yerel olarak çalıştırılabilen temel bir web uygulamanız vardı. Şimdi uygulamanın kapsayıcısını tanımlayan varlıklar oluşturup Kubernetes’de nasıl dağıtılacağını belirleyerek uygulamayı kapsayıcılı hale getireceksiniz. Bu görev Azure Dev Spaces ile kolayca gerçekleştirilebilir: 
@@ -108,17 +108,17 @@ Bu bölümde bir Java web uygulaması oluşturacak ve Kubernetes’teki bir kaps
 
 Azure CLI’nin `azds prep` komutu varsayılan ayarlarla Docker ve Kubernetes varlıklarını oluşturur:
 * `./Dockerfile`, uygulamanın kapsayıcı görüntüsünü açıklar, kaynak kodunun nasıl derlendiğini ve kapsayıcının içinde çalıştırıldığını belirtir.
-* [ altındaki ](https://docs.helm.sh)Helm grafiği`./charts/webfrontend`, kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
+* `./charts/webfrontend` altındaki [Helm grafiği](https://docs.helm.sh), kapsayıcının Kubernetes'de nasıl dağıtıldığını açıklar.
 
 > [!TIP]
-> Projeniz için [Dockerfile ve HELI grafiği](how-dev-spaces-works.md#prepare-your-code) , kodunuzu derlemek ve çalıştırmak için Azure dev Spaces tarafından kullanılır, ancak projenin oluşturulup çalıştırıldığını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
+> Projenizin [Dockerfile ve Helm grafiği,](how-dev-spaces-works-prep.md#prepare-your-code) kodunuzu oluşturmak ve çalıştırmak için Azure Dev Spaces tarafından kullanılır, ancak projenin oluşturulma ve çalışma şeklini değiştirmek isterseniz bu dosyaları değiştirebilirsiniz.
 
 Şimdilik bu dosyaların tüm içeriğini anlamanız gerekli değildir. Bununla birlikte, **geliştirme aşamasından üretim aşamasına kadar aynı Kubernetes ve Docker kod yapılandırmalı varlıklarının kullanılabildiğini, bu şekilde farklı ortamlarda daha tutarlı sonuçlar sağlanabildiğini** belirtmek gerekir.
  
-`./azds.yaml` komutuyla `prep` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
+`prep` komutuyla `./azds.yaml` adlı bir dosya da oluşturulur ve bu dosya Azure Dev Spaces’in yapılandırma dosyasıdır. Azure’da yinelemeli bir geliştirme deneyimi sağlamak için Docker ve Kubernetes yapıtlarını ek yapılandırmayla tamamlar.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes'de kodu oluşturma ve çalıştırma
-Şimdi kodumuzu çalıştıralım! Terminal penceresinde, bu komutu webfrontend **kök kod klasöründen** çalıştırın:
+Şimdi kodumuzu çalıştıralım! Terminal penceresinde, bu komutu webfrontend **kök kod klasöründen** çalıştırın: 
 
 ```cmd
 azds up
@@ -143,18 +143,18 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-`up` komutundan çıkışta hizmetin genel URL 'sini belirler. `.azds.io`biter. Yukarıdaki örnekte, genel URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Komuttan çıktıdaki hizmetin ortak URL'sini tanımlayın. `up` `.azds.io`Bitiyor. Yukarıdaki örnekte, genel URL' dir. `http://webfrontend.1234567890abcdef1234.eus.azds.io/`
 
-Web uygulamanızı görmek için genel URL 'YI bir tarayıcıda açın. Ayrıca, `stdout` ve `stderr` çıkışı, Web uygulamanızla etkileşime geçerek *azds Trace* Terminal penceresine akışla kaydedilir. Ayrıca, sistemde ilerlediklerinde HTTP istekleri için izleme bilgilerini görürsünüz. Bu, geliştirme sırasında karmaşık çok hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen araçlar bu istek izlemeyi sağlar.
+Web uygulamanızı görmek için herkese açık URL'yi bir tarayıcıda açın. Ayrıca, `stdout` web `stderr` uygulamanızla etkileşimde bulundukça bildirim ve çıktı *azds izleme* terminali penceresine aktarılır. Ayrıca, http istekleriiçin izleme bilgilerini sistemde gezinirken de görürsünüz. Bu, geliştirme sırasında karmaşık çoklu hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen enstrümantasyon bu istek izleme sağlar.
 
 > [!Note]
-> Genel URL 'nin yanı sıra, konsol çıkışında görüntülenen alternatif `http://localhost:<portnumber>` URL 'sini de kullanabilirsiniz. Localhost URL'sini kullanırsanız kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte AKS'de çalışıyordur. Azure Dev Spaces, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak localhost bağlantı noktasını aks 'de çalışan kapsayıcıya eşler. Bu, yerel makinenizden hizmetle etkileşimde bulunmayı kolaylaştırır.
+> Ortak URL'ye ek olarak, konsol `http://localhost:<portnumber>` çıktısında görüntülenen alternatif URL'yi de kullanabilirsiniz. Localhost URL'sini kullanırsanız kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte AKS'de çalışıyordur. Azure Dev Spaces, yerel ana bilgisayar bağlantı noktasını AKS'de çalışan kapsayıcıyla eşlemek için Kubernetes *bağlantı noktası* ileri etme işlevini kullanır. Bu, yerel makinenizden gelen hizmetle etkileşimi kolaylaştırır.
 
 ### <a name="update-a-content-file"></a>İçerik dosyası güncelleştirme
 Azure Dev Spaces yalnızca kodu Kubernetes’te çalıştırmaya yönelik değildir; aynı zamanda kod değişikliklerinizin buluttaki bir Kubernetes ortamında uygulandığını hızlıca ve yinelenerek görmenizi sağlar.
 
 1. Terminal penceresinde `Ctrl+C` düğmesine basın (`azds up` hizmetini durdurmak için).
-1. `src/main/java/com/ms/sample/webfrontend/Application.java`açın ve [19. satırdaki](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)tebrik iletisini düzenleyin:
+1. Açık `src/main/java/com/ms/sample/webfrontend/Application.java`ve [satır 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)üzerinde tebrik iletisi düzenle:
 
     ```java
     return "Hello from webfrontend in Azure!";
@@ -192,19 +192,19 @@ Bu, `.vscode` klasörünün altında Azure Dev Spaces için hata ayıklama yapı
 ![](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> Komut Paletinde herhangi bir Azure Dev Spaces komutu görmüyorsanız, Azure Dev Spaces için VS Code uzantısını yüklediğinizden emin olun. VS Code ' de açtığınız çalışma alanının `azds.yaml`içeren klasör olduğundan emin olun.
+> Komut Paletinde herhangi bir Azure Dev Spaces komutu görmüyorsanız, Azure Dev Spaces için VS Code uzantısını yüklediğinizden emin olun. VS Code'da açtığınız çalışma alanının `azds.yaml`.
 
 ### <a name="debug-the-container-in-kubernetes"></a>Kubernetes’te kapsayıcının hatalarını ayıklama
-Kubernetes’te kodunuzun hatalarını ayıklamak için **F5**’e basın.
+Kubernetes'te kodunuzu hata ayıklamak için **F5** tuşuna bas.
 
 `up` komutunda olduğu gibi kod, geliştirme ortamıyla eşitlenir ve bir kapsayıcı derlenip Kubernetes’e dağıtılır. Elbette bu kez, hata ayıklayıcı uzak kapsayıcıya eklenir.
 
 > [!Tip]
-> VS Code durum çubuğu, hata ayıklayıcının ekli olduğunu belirten turuncu kullanacaktır. Ayrıca, uygulamanızı açmak için kullanabileceğiniz tıklatılabilir bir URL görüntüler.
+> VS Kodu durum çubuğu turuncuya dönerek hata ayıklayıcının bağlı olduğunu gösterir. Ayrıca, uygulamanızı açmak için kullanabileceğiniz tıklanabilir bir URL de görüntülenir.
 
 ![](media/common/vscode-status-bar-url.png)
 
-Sunucu tarafı kod dosyasında (örneğin `greeting()` kaynak dosyasındaki `src/main/java/com/ms/sample/webfrontend/Application.java` işlevi içinde) bir kesme noktası belirleyin. Tarayıcı sayfasının yenilenmesi, kesme noktasına ulaşılmasına neden olur.
+Sunucu tarafı kod dosyasında (örneğin `src/main/java/com/ms/sample/webfrontend/Application.java` kaynak dosyasındaki `greeting()` işlevi içinde) bir kesme noktası belirleyin. Tarayıcı sayfasının yenilenmesi, kesme noktasına ulaşılmasına neden olur.
 
 Kodun yerel olarak yürütülmesi durumunda olduğu gibi, çağrı yığını, yerel değişkenler, özel durum bilgileri vb. hata ayıklama bilgilerine tam erişiminiz vardır.
 
@@ -218,7 +218,7 @@ public String greeting()
 }
 ```
 
-Dosyayı kaydedin ve **Hata Ayıkla eylemleri bölmesinde** **Yeniden Başlat** düğmesine tıklayın.
+Dosyayı kaydedin ve **Hata Ayıklama eylemleri bölmesinde** **Yeniden Başlat** düğmesini tıklatın.
 
 ![](media/common/debug-action-refresh.png)
 
@@ -226,7 +226,7 @@ Azure Dev Spaces, her kod düzenlemesi yapıldığında yeni bir kapsayıcı gö
 
 Tarayıcıda web uygulamasını yenileyin. Özel iletinizin kullanıcı arabiriminde görüntülendiğini görürsünüz.
 
-**Artık kod üzerinde hızlıca yineleme ve doğrudan Kubernetes’te hata ayıklamaya yönelik bir yönteminiz var!** Ardından, ikinci bir kapsayıcıyı nasıl oluşturabileceğinizi ve çağırabileceğinizi göreceksiniz.
+**Artık kod üzerinde hızla yineleme ve doğrudan Kubernetes’te hata ayıklamaya yönelik bir yönteminiz var!** Ardından, ikinci bir kapsayıcıyı nasıl oluşturabileceğinizi ve çağırabileceğinizi göreceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

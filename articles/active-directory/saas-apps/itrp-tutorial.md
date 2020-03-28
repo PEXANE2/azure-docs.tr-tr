@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile ITRP | Microsoft Docs'
-description: Bu öğreticide, Azure Active Directory ve ITRP arasında çoklu oturum açmayı yapılandırma öğreneceksiniz.
+title: 'Öğretici: ITRP ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Bu eğitimde, Azure Active Directory ve ITRP arasında tek oturum açma yı nasıl yapılandırabileceğinizi öğreneceksiniz.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,242 +16,242 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67656687"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Öğretici: ITRP ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Öğretici: ITRP ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile ITRP tümleştirme öğreneceksiniz.
-Bu tümleştirme aşağıdaki avantajları sağlar:
+Bu eğitimde, ITRP'yi Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Bu tümleştirme şu avantajları sağlar:
 
-* Azure AD ITRP erişimi denetlemek için kullanabilirsiniz.
-* Kullanıcılarınız için ITRP (çoklu oturum açma) ile Azure AD hesaplarına otomatik olarak oturum açmanız etkinleştirebilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilir: Azure portalı.
+* BTRP'ye kimlerin erişebileceğini denetlemek için Azure AD'yi kullanabilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla BTRP'de (tek oturum açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory'de uygulamalar için çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek [için Azure Active Directory'deki uygulamalarda tek](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)oturum açma'ya bakın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile ITRP yapılandırmak için sahip olmanız gerekir:
+Azure AD tümleştirmesini BTRP ile yapılandırmak için şunları yapmanız gerekir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/free/).
-* Tekli etkin oturum sahip bir ITRP aboneliği.
+* Azure AD aboneliği. Azure REKLAM ortamınız [yoksa, ücretsiz](https://azure.microsoft.com/free/)bir hesap alabilirsiniz.
+* Tek oturum açma özelliği etkin olan bir ITRP aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD oturum açma işlemlerini bir test ortamında yapılandıracak ve sınayacaksınız.
 
-* ITRP SP tarafından başlatılan SSO'yu destekler.
+* ITRP, SP tarafından başlatılan SSO'yı destekler.
 
-## <a name="add-itrp-from-the-gallery"></a>Galeriden ITRP Ekle
+## <a name="add-itrp-from-the-gallery"></a>Galeriden ITRP ekleme
 
-Azure AD'de ITRP tümleştirmesini ayarlamak için yönetilen SaaS uygulamaları listenize Galeriden ITRP eklemeniz gerekir.
+ITRP'nin Azure AD'ye entegrasyonunu ayarlamak için, BTRP'yi galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. İçinde [Azure portalında](https://portal.azure.com), sol bölmede seçin **Azure Active Directory**:
+1. Azure [portalında](https://portal.azure.com), sol bölmede, **Azure Etkin Dizini'ni**seçin:
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. Git **kurumsal uygulamalar** > **tüm uygulamaları**:
+2. Kurumsal **uygulamalara** > git**Tüm uygulamalar:**
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-3. Bir uygulama eklemek için seçin **yeni uygulama** pencerenin üst kısmındaki:
+3. Uygulama eklemek için pencerenin üst kısmında **Yeni uygulama'yı** seçin:
 
-    ![Yeni uygulama seçme](common/add-new-app.png)
+    ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **ITRP**. Seçin **ITRP** seçin ve arama sonuçlarını **Ekle**.
+4. Arama kutusuna **ITRP**girin. Arama sonuçlarında **ITRP'yi** seçin ve ardından **Ekle'yi**seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırın ve Azure AD çoklu oturum açma ile ITRP Britta Simon adlı bir test kullanıcısı kullanarak test edin.
-Çoklu oturum açmayı etkinleştirmek için ITRP içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir ilişki yapmanız gerekir.
+Bu bölümde, Britta Simon adlı bir test kullanıcısı kullanarak Azure AD oturum açma işlemini BTRP ile yapılandıracak ve sınayacaksınız.
+Tek oturum açmayı etkinleştirmek için, bir Azure REKLAM kullanıcısı ile BTRP'deki ilgili kullanıcı arasında bir ilişki kurmanız gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma ITRP ile test etmek için bu adımları tamamlamak gerekir:
+Azure AD oturumlarını BTRP ile yapılandırmak ve test etmek için şu adımları tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırma](#configure-azure-ad-single-sign-on)**  kullanıcılarınız için özelliği etkinleştirmek için.
-2. **[ITRP çoklu oturum açmayı yapılandırma](#configure-itrp-single-sign-on)**  uygulama tarafında.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  Azure AD çoklu oturum açmayı test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  Azure AD çoklu oturum açma için kullanıcı etkinleştirmek için.
-5. **[Bir ITRP test kullanıcısı oluşturma](#create-an-itrp-test-user)**  kullanıcı Azure AD gösterimini bağlı.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  yapılandırma çalıştığını doğrulayın.
+1. Azure AD oturumunu, kullanıcılarınız için özelliği etkinleştirmek için **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Uygulama tarafında ITRP tek oturum açma yı **[yapılandırın.](#configure-itrp-single-sign-on)**
+3. Azure AD tek oturum açma'yı test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Azure AD test kullanıcısını, kullanıcı için Azure AD oturum açmayı etkinleştirmek için **[atayın.](#assign-the-azure-ad-test-user)**
+5. Kullanıcının Azure AD gösterimine bağlı **[bir ITRP test kullanıcısı oluşturun.](#create-an-itrp-test-user)**
+6. Yapılandırmanın çalıştığını doğrulamak için **[tek oturum](#test-single-sign-on)** açma yı test edin.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalındaki etkinleştirmeniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma ile ITRP yapılandırmak için şu adımları uygulayın:
+Azure AD oturum açma işlemlerini BTRP ile yapılandırmak için şu adımları izleyin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), ITRP uygulama tümleştirme sayfasında **çoklu oturum açma**:
+1. Azure [portalında](https://portal.azure.com/), ITRP uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin:
 
-    ![Çoklu oturum açma seçin](common/select-sso.png)
+    ![Tek oturum açma'yı seçin](common/select-sso.png)
 
-2. İçinde **tek bir oturum açma yönteminizi seçmeniz** Seç iletişim kutusunda **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için:
+2. Tek **oturum** açma yöntemi iletişim kutusunu seç'te, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin:
 
     ![Tek bir oturum açma yöntemi seçin](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim kutusunda:
+3. **SAML** ile Tek Oturum Açma'da, **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini seçin:
 
     ![Düzenle simgesi](common/edit-urls.png)
 
-4. İçinde **temel SAML yapılandırma** iletişim kutusunda, aşağıdaki adımları uygulayın.
+4. Temel **SAML Yapılandırma** iletişim kutusunda aşağıdaki adımları izleyin.
 
-    ![Temel SAML yapılandırma iletişim kutusu](common/sp-identifier.png)
+    ![Temel SAML Yapılandırma iletişim kutusu](common/sp-identifier.png)
 
-    1. İçinde **oturum açma URL'si** kutusuna, bu düzende bir URL girin:
+    1. **URL'de Oturum Aç** kutusuna, bu desene bir URL girin:
     
        `https://<tenant-name>.itrp.com`
 
-    1. İçinde **tanımlayıcı (varlık kimliği)** kutusuna, bu düzende bir URL girin:
+    1. Tanımlayıcı **(Entity ID)** kutusuna, bu desene bir URL girin:
 
        `https://<tenant-name>.itrp.com`
 
     > [!NOTE]
-    > Bu değerler yer tutuculardır. Gerçek oturum açma URL'si ve tanımlayıcı kullanmanız gerekir. İlgili kişi [ITRP Destek ekibine](https://www.itrp.com/support) değerleri alabilirsiniz. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** Azure portalında iletişim kutusu.
+    > Bu değerler yer tutuculardır. Gerçek oturum açma URL'sini ve tanımlayıcıyı kullanmanız gerekir. Değerleri almak için [ITRP destek ekibine](https://www.itrp.com/support) başvurun. Azure portalındaki **Temel SAML Yapılandırma** iletişim kutusunda gösterilen desenlere de başvurabilirsiniz.
 
-5. İçinde **SAML imzalama sertifikası** bölümünden **Düzenle** açmak için simgeyi **SAML imzalama sertifikası** iletişim kutusunda:
+5. **SAML İmzalama Sertifikası** bölümünde, **SAML İmzalama Sertifikası** iletişim kutusunu açmak için **Edit** simgesini seçin:
 
     ![Düzenle simgesi](common/edit-certificate.png)
 
-6. İçinde **SAML imzalama sertifikası** iletişim kutusu, kopyalama **parmak izi** değeri ve kaydedin:
+6. **SAML İmzalama Sertifikası** iletişim kutusunda, **Thumbprint** değerini kopyalayın ve kaydedin:
 
-    ![Parmak izi değerini kopyalayın](common/copy-thumbprint.png)
+    ![Parmak Izi değerini kopyalama](common/copy-thumbprint.png)
 
-7. İçinde **ITRP kümesi** bölümünde, gereksinimlerinize göre uygun URL'ler kopyalayın:
+7. **ITRP'yi Ayarla** bölümünde, gereksinimlerinize göre uygun URL'leri kopyalayın:
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    1. **Oturum açma URL'si**.
+    1. **Giriş URL'si**.
 
-    1. **Azure AD tanımlayıcısı**.
+    1. **Azure AD Tanımlayıcısı**.
 
-    1. **Oturum kapatma URL'si**.
+    1. **Çıkış URL'si**.
 
-### <a name="configure-itrp-single-sign-on"></a>ITRP çoklu oturum açmayı yapılandırın
+### <a name="configure-itrp-single-sign-on"></a>ITRP tek oturum açma yapılandırma
 
-1. Yeni bir web tarayıcısı penceresinde ITRP şirketinizin sitesi için bir yönetici olarak oturum açın
+1. Yeni bir web tarayıcısı penceresinde, BTRP şirket sitenizde yönetici olarak oturum açın.
 
-1. Pencerenin üst kısmında seçin **ayarları** simgesi:
+1. Pencerenin üst kısmında **Ayarlar** simgesini seçin:
 
-    ![Ayarlar simgesi](./media/itrp-tutorial/ic775570.png "ayarlar simgesi")
+    ![Ayarlar simgesi](./media/itrp-tutorial/ic775570.png "Ayarlar simgesi")
 
-1. Sol bölmede seçin **çoklu oturum açma**:
+1. Sol bölmede Tek **Oturum Açma'yı**seçin:
 
-    ![Çoklu oturum açma seçin](./media/itrp-tutorial/ic775571.png "çoklu oturum açma seçin")
+    ![Tek Oturum Açma'yı seçin](./media/itrp-tutorial/ic775571.png "Tek Oturum Açma'yı seçin")
 
-1. İçinde **çoklu oturum açma** yapılandırma bölümünde, aşağıdaki adımları uygulayın.
+1. Tek **Oturum Açma** yapılandırma bölümünde aşağıdaki adımları izleyin.
 
-    ![Çoklu oturum açma bölümüne](./media/itrp-tutorial/ic775572.png "çoklu oturum açma bölümü")
+    ![Tek İşaret-On bölümü](./media/itrp-tutorial/ic775572.png "Tek İşaret-On bölümü")
 
-    ![Çoklu oturum açma bölümüne](./media/itrp-tutorial/ic775573.png "çoklu oturum açma bölümü")
+    ![Tek İşaret-On bölümü](./media/itrp-tutorial/ic775573.png "Tek İşaret-On bölümü")
 
-    1. **Etkin**’i seçin.
+    1. **Etkin**'i seçin.
 
-    1. İçinde **uzak oturum kapatma URL'si** kutusu, yapıştırma **oturum kapatma URL'si** Azure portaldan kopyaladığınız değeri.
+    1. Uzaktan **çıkış URL** kutusuna, Azure portalından kopyaladığınız **Logout URL** değerini yapıştırın.
 
-    1. İçinde **SAML SSO URL** kutusu, yapıştırma **oturum açma URL'si** Azure portaldan kopyaladığınız değeri.
+    1. **SAML SSO URL** kutusuna Azure portalından kopyaladığınız **Giriş URL** değerini yapıştırın.
 
-    1. İçinde **sertifika parmak izi** kutusu, yapıştırma **parmak izi** Azure portaldan kopyaladığınız sertifika değeri.
+    1. Sertifika **parmak izi** kutusuna, Azure portalından kopyaladığınız sertifikanın **Parmak Izi** değerini yapıştırın.
 
-    1. **Kaydet**’i seçin.
+    1. **Kaydet'i**seçin.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portalında **Azure Active Directory** seçin sol bölmede **kullanıcılar**ve ardından **tüm kullanıcılar**:
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni** seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin:
 
-    ![Tüm kullanıcıları seçin](common/users.png)
+    ![Tüm kullanıcılar'ı seçin](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üst kısmındaki:
+2. Ekranın üst kısmında **Yeni kullanıcı** seçin:
 
-    ![Yeni bir kullanıcı seçin](common/new-user.png)
+    ![Yeni kullanıcıyı seçin](common/new-user.png)
 
-3. İçinde **kullanıcı** iletişim kutusunda, aşağıdaki adımları uygulayın.
+3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları izleyin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. İçinde **adı** kutusuna **BrittaSimon**.
+    1. **Ad** **kutusuna BrittaSimon**girin.
   
-    1. İçinde **kullanıcı adı** kutusuna **@ BrittaSimon\<yourcompanydomain >.\< Uzantı >** . (Örneğin, BrittaSimon@contoso.com.)
+    1. Kullanıcı **adı** kutusuna, **\<şirketinizin alan\< BrittaSimon@> girin. uzantısı>**. (Örneğin, BrittaSimon@contoso.com.)
 
-    1. Seçin **Göster parola**ve ardından içinde bir değer yazın **parola** kutusu.
+    1. **Parolayı Göster'i**seçin ve ardından **Parola** kutusundaki değeri yazın.
 
-    1. **Oluştur**’u seçin.
+    1. **Oluştur'u**seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için ITRP erişim vererek Britta Simon tıklatmalarını sağlarsınız.
+Bu bölümde, Britta Simon'A ITRP erişimi vererek Azure tek oturum açma işlemini kullanasınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**ve ardından **ITRP**.
+1. Azure portalında **Kurumsal uygulamaları**seçin, **Tüm uygulamaları**seçin ve ardından **ITRP'yi**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde seçin **ITRP**.
+2. Uygulamalar listesinde **ITRP'yi**seçin.
 
-    ![Uygulamaların listesi](common/all-applications.png)
+    ![Başvuru listesi](common/all-applications.png)
 
-3. Sol bölmede seçin **kullanıcılar ve gruplar**:
+3. Sol **bölmede, Kullanıcıları ve grupları**seçin:
 
-    ![Kullanıcıları ve grupları seçin](common/users-groups-blade.png)
+    ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
 
-4. Seçin **Kullanıcı Ekle**ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim kutusu.
+4. **Kullanıcı Ekle'yi**seçin ve ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-    ![Kullanıcı Ekle seçeneğini belirleme](common/add-assign-user.png)
+    ![Kullanıcı ekle seçeneğini belirleme](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** kullanıcıların listesini ve ardından **seçin** pencerenin alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, kullanıcı listesinde **Britta Simon'ı** seçin ve ardından pencerenin altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması rol değeri de beklediğiniz **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin. Tıklayın **seçin** pencerenin alt kısmındaki düğmesi.
+6. SAML iddiasında, **Rolü Seç** iletişim kutusunda bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Pencerenin altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim kutusunda **atama**.
+7. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
 
-### <a name="create-an-itrp-test-user"></a>Bir ITRP test kullanıcısı oluşturma
+### <a name="create-an-itrp-test-user"></a>BIR ITRP test kullanıcısı oluşturma
 
-ITRP için oturum açmak Azure AD kullanıcılarının sağlamak için ITRP eklemeniz gerekir. Bunları el ile eklemeniz gerekir.
+Azure AD kullanıcılarının ITRP'de oturum açabilmesini sağlamak için bunları ITRP'ye eklemeniz gerekir. Bunları el ile eklemeniz gerekir.
 
-Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
+Bir kullanıcı hesabı oluşturmak için şu adımları izleyin:
 
-1. ITRP kiracınızda oturum açın.
+1. ITRP kiracınızla oturum açın.
 
-1. Pencerenin üst kısmında seçin **kayıtları** simgesi:
+1. Pencerenin üst **kısmında, Kayıtlar** simgesini seçin:
 
-    ![Kayıt simgesini](./media/itrp-tutorial/ic775575.png "kayıtları simgesi")
+    ![Kayıtlar simgesi](./media/itrp-tutorial/ic775575.png "Kayıtlar simgesi")
 
-1. Menüde **kişiler**:
+1. Menüde **Kişiler'i**seçin:
 
-    ![Kişileri seçin](./media/itrp-tutorial/ic775587.png "kişileri seçin")
+    ![Kişileri Seçin](./media/itrp-tutorial/ic775587.png "Kişileri Seçin")
 
-1. Artı işaretini seçin ( **+** ) yeni bir kişiye eklemek için:
+1. Yeni bir kişi**+** eklemek için artı işaretini ( ) seçin:
 
-    ![Artı işaretini seçin](./media/itrp-tutorial/ic775576.png "artı işaretini seçin")
+    ![Artı işaretini seçin](./media/itrp-tutorial/ic775576.png "Artı işaretini seçin")
 
-1. İçinde **Yeni Kişi Ekle** iletişim kutusunda, aşağıdaki adımları uygulayın.
+1. Yeni **Kişi Ekle** iletişim kutusunda aşağıdaki adımları izleyin.
 
-    ![Windows yeni kişi Ekle iletişim kutusu](./media/itrp-tutorial/ic775577.png "Yeni Kişi Ekle iletişim kutusu")
+    ![Yeni Kişi iletişim kutusu ekle](./media/itrp-tutorial/ic775577.png "Yeni Kişi iletişim kutusu ekle")
 
-    1. Geçerli bir Azure ad ve e-posta adresini girin, eklemek istediğiniz bir AD hesabı.
+    1. Eklemek istediğiniz geçerli bir Azure REKLAM hesabının adını ve e-posta adresini girin.
 
-    1. **Kaydet**’i seçin.
+    1. **Kaydet'i**seçin.
 
 > [!NOTE]
-> Herhangi bir kullanıcı hesabı oluşturma aracı kullanabilir veya API Azure AD'ye kullanıcı hesapları sağlamak için ITRP tarafından sağlanan.
+> Azure AD kullanıcı hesaplarını sağlamak için BTRP tarafından sağlanan herhangi bir kullanıcı hesabı oluşturma aracını veya API'yi kullanabilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Şimdi Azure AD çoklu oturum açma yapılandırmanızı erişim panelini kullanarak test gerekir.
+Artık Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı test etmeniz gerekir.
 
-Erişim Paneli'nde ITRP kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama ITRP örneği için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim ve kullanım uygulamaları uygulamalarım portalında](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki ITRP döşemesini seçtiğinizde, SSO'yu kurduğunuz ITRP örneğinde otomatik olarak oturum açmalısınız. Access Paneli hakkında daha fazla bilgi için [Access'e bakın ve Uygulamalarım portalındaki uygulamaları kullanın.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

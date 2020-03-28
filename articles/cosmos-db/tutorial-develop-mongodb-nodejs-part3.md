@@ -1,5 +1,5 @@
 ---
-title: MongoDB için Azure Cosmos DB API 'SI ile angular uygulama kullanıcı arabirimi oluşturma (part3)
+title: MongoDB için Azure Cosmos DB'nin API'si ile Açısal uygulama UI'sini oluşturun (Bölüm3)
 description: MongoDB için kullandığınız API'lerle Azure Cosmos DB üzerinde Angular ve Node ile bir MongoDB uygulaması oluşturma öğreticisi dizisinin 3. bölümü.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,15 +11,15 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444733"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-kullanıcı arabirimini angular ile derleme
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>MongoDB için Azure Cosmos DB'nin API'si ile Açısal bir uygulama oluşturun - Açısal ile ui oluşturun
 
-Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
+Bu çok parçalı öğretici nasıl Express ve Angular ile Node.js yazılmış yeni bir uygulama oluşturmak ve daha sonra [Cosmos hesabı Cosmos DB's API MongoDB için yapılandırılan](mongodb-introduction.md)bağlanmak için nasıl gösterir.
 
 Öğreticinin 3. bölümünde [2. bölümdeki](tutorial-develop-mongodb-nodejs-part2.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
@@ -398,7 +398,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
 6. Ampule ve ardından **Import Hero from "/app/hero".** ("/uygulama/hero"dan Hero İçeri Aktar) seçeneğine tıklayın. veya **Import Hero from "./hero".** ("./hero"dan Hero İçeri Aktar.) seçeneğine tıklayın. (İleti, kurulumunuza bağlı olarak değişebilir)
 
-    2\. satırda yeni bir kod satırı görünür. 2\. satır /app/hero’ya başvuruyorsa, yerel klasördeki (./hero) hero dosyasına başvurması için bu satırı değiştirin. 2\. satır şu şekilde görünmelidir:
+    2. satırda yeni bir kod satırı görünür. 2. satır /app/hero’ya başvuruyorsa, yerel klasördeki (./hero) hero dosyasına başvurması için bu satırı değiştirin. 2. satır şu şekilde görünmelidir:
 
    ```
    import { Hero } from "./hero";
@@ -416,7 +416,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
 2. Visual Studio Code’da **heroes.components.ts** dosyasına geri dönün. `constructor(private heroService: HeroService) {}` satırında (13. satır), `HeroService` altında kırmızı bir çizgi vardır. `HeroService`’e tıkladığınızda kod bloğunun sol tarafında bir ampul görünür. Ampule ve **Import HeroService from "./hero.service ".** ("./hero.service "den İçeri Aktar.) seçeneğine veya **Import HeroService from "/app/hero.service ".** ("/uygulama/hero.service"den HeroService İçeri Aktar) seçeneğine tıklayın.
 
-    Ampule tıkladığınızda 2. satıra yeni bir kod satırı eklenir. 2\. satır/App/heroman hizmet klasörüne başvuruyorsa, yerel klasördeki (./HEROM hizmeti) Hero dosyasına başvurması için bu dosyayı değiştirin. 2\. satır şu şekilde görünmelidir:
+    Ampule tıkladığınızda 2. satıra yeni bir kod satırı eklenir. Satır 2 /app/hero.service klasörüne başvuruyorsa, yerel klasörden (./hero.service) kahraman dosyasına atıfta bulunabilecek şekilde değiştirin. 2. satır şu şekilde görünmelidir:
     
     ```javascript
     import { HeroService } from "./hero.service"

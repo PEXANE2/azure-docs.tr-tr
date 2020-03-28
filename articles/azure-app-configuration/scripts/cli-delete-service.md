@@ -1,7 +1,7 @@
 ---
-title: Azure CLı betik örneği-Azure uygulama yapılandırma deposunu silme
+title: Azure CLI Script Örneği - Azure Uygulama Yapılandırma Mağazanı Silme
 titleSuffix: Azure App Configuration
-description: Azure uygulama yapılandırma deposunu silmek için Azure CLı betiği kullanma
+description: Azure Uygulama Yapılandırma mağazasını silmek için Azure CLI Script'i kullanma
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,15 +10,15 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 7f73de459d8ce9f74e3925789af630b7c804d605
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523584"
 ---
-# <a name="delete-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposunu silme
+# <a name="delete-an-azure-app-configuration-store"></a>Azure Uygulama Yapılandırma mağazalarını silme
 
-Bu örnek betik bir Azure Uygulama yapılandırması örneğini siler.
+Bu örnek komut dosyası, Azure Uygulama Yapılandırması örneğini siler.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,14 +39,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu betik, bir uygulama yapılandırma deposunu silmek için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu komut dosyası, bir Uygulama Yapılandırma mağazasını silmek için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
-| [az appconfig Delete](/cli/azure/appconfig#az-appconfig-delete) | Bir uygulama yapılandırma deposu kaynağını siler. |
+| [az appconfig silme](/cli/azure/appconfig#az-appconfig-delete) | Bir Uygulama Yapılandırma deposu kaynağını siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek uygulama yapılandırması CLı betiği örnekleri, [Azure Uygulama YAPıLANDıRMASı CLI örneklerinde](../cli-samples.md)bulunabilir.
+Ek Uygulama Yapılandırması CLI komut dosyası örnekleri [Azure App Configuration CLI örnekleri](../cli-samples.md)bulunabilir.

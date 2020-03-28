@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure portal kullanarak ağ iletişimini Izleme
-description: Bu öğreticide, Azure ağ Izleyicisi 'nin bağlantı izleyici özelliği ile iki sanal makine arasındaki ağ iletişimini izlemeyi öğrenin.
+title: Öğretici - Azure portalını kullanarak ağ iletişimini izleyin
+description: Bu eğitimde, Azure Ağ İzleyicisi'nin bağlantı izleme özelliğine sahip iki sanal makine arasındaki ağ iletişimini nasıl izleyeceğinizi öğrenin.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -16,15 +16,15 @@ ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76834663"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak iki sanal makine arasındaki ağ iletişimini izleme
 
-Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki iletişimin başarılı olması, kuruluşunuz için kritik olabilir. Bazen iletişimi kesebilecek yapılandırma değişiklikleri olur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki iletişimin başarılı olması, kuruluşunuz için kritik olabilir. Bazen iletişimi kesebilecek yapılandırma değişiklikleri olur. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * İki sanal makine oluşturma
@@ -32,11 +32,11 @@ Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki 
 > * Bağlantı İzleyicisi ölçümlerine göre uyarı oluşturma
 > * İki sanal makine arasındaki bir iletişim sorununu tanılama ve nasıl çözümleyebileceğinizi öğrenme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com)oturum açın.
 
 ## <a name="create-vms"></a>VM oluşturma
 
@@ -50,12 +50,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVm1|
+    |Adı|myVm1|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
-    |Konum| **Doğu ABD**’yi seçin|
+    |Konum| **Doğu ABD'yi** seçin|
 
 4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
 5. **Ayarlar** bölümünde **Uzantılar**’ı seçin. Aşağıdaki resimde gösterildiği gibi **Uzantı ekle**’yi ve **Windows için Ağ İzleyicisi Aracısı**’nı seçin:
@@ -72,11 +72,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 |Adım|Ayar|Değer|
 |---|---|---|
-| 1 | **Ubuntu Server** sürümü seçin |                                                                         |
-| 3 | Ad                                  | myVm2                                                                   |
+| 1 | **Ubuntu Server** sürümünü seçin |                                                                         |
+| 3 | Adı                                  | myVm2                                                                   |
 | 3 | Kimlik doğrulaması türü                   | SSH genel anahtarınızı yapıştırın veya **Parola**’yı seçin bir parola girin. |
 | 3 | Kaynak grubu                        | **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.                 |
-| 6 | Uzantılar                            | **Linux için ağ Izleyicisi Aracısı**                                             |
+| 6 | Uzantılar                            | **Linux için Ağ İzleyici Savar**                                             |
 
 Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etmeden önce sanal makinenin dağıtımı tamamlamasını bekleyin.
 
@@ -84,15 +84,15 @@ Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etm
 
 *myVm1*’den *myVm2*’ye 22 numaralı TCP bağlantı noktası üzerinden iletişimi izlemek için bir bağlantı izleyicisi oluşturun.
 
-1. Portalın sol tarafındaki **Tüm hizmetler**’i seçin.
-2. **Filtre** kutusuna *ağ izleyicisi* yazmaya başlayın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
+1. Portalın sol tarafından **Tüm hizmetler**’i seçin.
+2. **Filtre** kutusuna *ağ izleyicisi* yazmaya başlayın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde seçin.
 3. **İZLEME** bölümünde **Bağlantı izleyicisi**’ni seçin.
 4. **+ Ekle** öğesini seçin.
 5. İzlemek istediğiniz bağlantı için bilgileri girin veya seçin ve sonra **Ekle**’yi seçin. Aşağıdaki resimde gösterilen örnekte izlenen bağlantı, 22 numaralı bağlantı noktası üzerinden *myVm1* sanal makinesinden *myVm2* sanal makinesine doğrudur:
 
     | Ayar                  | Değer               |
     | ---------                | ---------           |
-    | Ad                     | myVm1-myVm2(22)     |
+    | Adı                     | myVm1-myVm2(22)     |
     | Kaynak                   |                     |
     | Sanal makine          | myVm1               |
     | Hedef              |                     |
@@ -149,9 +149,9 @@ Varsayılan olarak Azure, aynı sanal ağ üzerindeki sanal makineler arasında 
     | Ayar                 | Değer          |
     | ---                     | ---            |
     | Hedef bağlantı noktası aralıkları | 22             |
-    | Eylem                  | Deny           |
+    | Eylem                  | Reddet           |
     | Öncelik                | 100            |
-    | Ad                    | DenySshInbound |
+    | Adı                    | DenySshInbound |
 
 5. Bağlantı izleyicisi 60’ar saniyelik aralıklarla araştırma yaptığından birkaç dakika bekleyin ve sonra portalın sol tarafında **Ağ İzleyicisi**’ni, ardından **Bağlantı izleyicisi**’ni ve sonra tekrar **myVm1-myVm2(22)** izleyicisini seçin. Aşağıdaki resimde gösterildiği gibi sonuçlar şimdi farklıdır:
 

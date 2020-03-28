@@ -1,17 +1,17 @@
 ---
-title: Azure 'da bir Service Fabric kümesine Java uygulaması dağıtma
+title: Azure'daki Hizmet Kumaşı kümesine Java uygulaması dağıtma
 description: Bu öğreticide, Java Service Fabric uygulamasının bir Azure Service Fabric kümesine nasıl dağıtılacağını öğreneceksiniz.
 author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252795"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292033"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure’da bir Service Fabric kümesine Java uygulamasını dağıtma
 
@@ -32,7 +32,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-java-elk.md)
 > * [CI/CD ayarlama](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -162,9 +162,9 @@ Aşağıdaki adımlar, bir Service Fabric kümesinde uygulamanızı dağıtmak i
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    EventHubs için SAS URL 'niz Şu yapıyı izler: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`. Örneğin, `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
+    EventHub'lar için SAS URL'niz `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`yapıyı izler: . Örneğin, `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
 
-12. *sfdeploy.parameters.json* dosyasını açın ve önceki adımlarda bulunan aşağıdaki içerikleri değiştirin. [SAS-URL-STORAGE-ACCOUNT] 8. adımda belirtilmiştir. [SAS-URL-EVENT-HUBS] 11. adımda belirtilmiştir.
+12. *sfdeploy.parameters.json* dosyasını açın ve aşağıdaki içerikleri önceki adımlardan değiştirin. [SAS-URL-STORAGE-ACCOUNT] 8. adımda belirtilmiştir. [SAS-URL-EVENT-HUBS] 11. adımda belirtilmiştir.
 
     ```json
     "applicationDiagnosticsStorageAccountName": {
@@ -217,15 +217,15 @@ Aşağıdaki adımlar, bir Service Fabric kümesinde uygulamanızı dağıtmak i
     ./install.sh
     ```
 
-5. Service Fabric Explorer’a erişmek için sık kullandığınız tarayıcıyı açıp https://testlinuxcluster.westus.cloudapp.azure.com:19080 yazın. Bu uç noktaya bağlanmak için kullanmak istediğiniz sertifika deposundan sertifikayı seçin. Linux makinesi kullanıyorsanız, Service Fabric Explorer’ı görüntülemek için *new-service-fabric-cluster-certificate.sh* betiği tarafından oluşturulan sertifikaların Chrome’a içeri aktarılması gerekir. Mac kullanıyorsanız, Anahtarlığınıza PFX dosyasını yüklemeniz gerekir. Uygulamanızın kümeye yüklendiğini görürsünüz.
+5. Service Fabric Explorer’a erişmek için sık kullandığınız tarayıcıyı açıp `https://testlinuxcluster.westus.cloudapp.azure.com:19080` yazın. Bu uç noktaya bağlanmak için kullanmak istediğiniz sertifika deposundan sertifikayı seçin. Linux makinesi kullanıyorsanız, Service Fabric Explorer’ı görüntülemek için *new-service-fabric-cluster-certificate.sh* betiği tarafından oluşturulan sertifikaların Chrome’a içeri aktarılması gerekir. Mac kullanıyorsanız, Anahtarlığınıza PFX dosyasını yüklemeniz gerekir. Uygulamanızın kümeye yüklendiğini görürsünüz.
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. Uygulamanıza erişmek için https://testlinuxcluster.westus.cloudapp.azure.com:8080 yazın
+6. Uygulamanıza erişmek için `https://testlinuxcluster.westus.cloudapp.azure.com:8080` yazın
 
     ![Oylama Uygulaması Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. Uygulamanızı kümeden kaldırmak için *Betikler* klasöründeki **uninstall.sh** betiğini çalıştırın
+7. Uygulamanızı kümeden kaldırmak için **Betikler** klasöründeki *uninstall.sh* betiğini çalıştırın
 
     ```bash
     ./uninstall.sh

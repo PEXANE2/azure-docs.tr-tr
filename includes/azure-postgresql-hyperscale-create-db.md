@@ -9,70 +9,70 @@ ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973432"
 ---
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com)oturum açın.
 
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)
+## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL - Hyperscale (Citus) için Azure Veritabanı Oluşturma
 
 PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uygulayın:
-1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
+1. Azure portalının sol üst köşesinde **kaynak oluştur'u** tıklatın.
 2. **Yeni** sayfasından **Veritabanları**’nı seçin ve **Veritabanları** sayfasından **PostgreSQL için Azure Veritabanı**’nı seçin.
-3. Dağıtım seçeneği için, **Hyperscale (Citus) sunucu grubu** altında **Oluştur** düğmesine tıklayın.
+3. Dağıtım seçeneği **için, Hyperscale (Citus) sunucu grubunun** altındaki **Oluştur** düğmesini tıklatın.
 4. Yeni sunucu ayrıntıları formunu aşağıdaki bilgilerle doldurun:
-   - Kaynak grubu: Bu alan için metin kutusunun altındaki **Yeni oluştur** bağlantısına tıklayın. **Myresourcegroup**gibi bir ad girin.
-   - Sunucu grubu adı: sunucu alt etki alanı için de kullanılacak yeni sunucu grubu için benzersiz bir ad girin.
-   - Yönetici Kullanıcı adı: Şu anda **citus**değeri olması gerekiyordu ve değiştirilemez.
-   - Parola: en az sekiz karakter uzunluğunda olmalı ve şu kategorilerden üçünden (Ingilizce büyük harfler, Ingilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #,%, vb.) karakter içermelidir.
-   - Konum: verilere en hızlı erişim sağlamak için kullanıcılarınıza en yakın konumu kullanın.
+   - Kaynak grubu: Bu alan için metin kutusunun altındaki yeni bağlantı **oluştur'u** tıklatın. **Myresourcegroup**gibi bir ad girin.
+   - Sunucu grup adı: yeni sunucu grubu için benzersiz bir ad girin, bu ad sunucu alt etki alanı için de kullanılacaktır.
+   - Yönetici kullanıcı adı: şu anda değeri **citus**olması gereklidir ve değiştirilemez.
+   - Şifre: en az sekiz karakter uzunluğunda olmalı ve aşağıdaki kategorilerden üçünden karakterler içermelidir – İngilizce büyük harfler, İngilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #, %, vb.)
+   - Konum: Verilere en hızlı erişimi sağlamak için kullanıcılarınıza en yakın konumu kullanın.
 
    > [!IMPORTANT]
-   > Burada belirttiğiniz sunucu yöneticisi parolası, sunucuda ve veritabanlarında oturum açmak için gereklidir. Bu bilgileri daha sonra kullanmak üzere aklınızda tutun veya kaydedin.
+   > Burada belirttiğiniz sunucu yöneticisi parolasının sunucuda ve veritabanlarında oturum açması gerekir. Bu bilgileri daha sonra kullanmak üzere aklınızda tutun veya kaydedin.
 
-5. **Sunucu grubunu yapılandır**öğesine tıklayın. Bu bölümdeki ayarları değiştirmeden bırakın ve **Kaydet**' e tıklayın.
-6. Ileri ' ye tıklayın, ekranın alt kısmındaki **ağ >** .
+5. **Sunucu grubunu yapılandır'ı**tıklatın. Bu bölümdeki ayarları değiştirmeden bırakın ve **Kaydet'i**tıklatın.
+6. İleri' yi tıklatın : Ekranın alt kısmında **ağ >.**
 
-7. **Ağ** sekmesinde, **genel uç nokta** radyo düğmesine tıklayın.
-   ![ortak uç nokta seçildi](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
-8. Bağlantı **+ geçerli ISTEMCI IP adresini ekle**' ye tıklayın.
-   ![eklenen istemci IP](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
+7. **Ağ** sekmesinde, Ortak **bitiş noktası** radyo düğmesini tıklatın.
+   ![Genel bitiş noktası seçildi](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
+8. Bağlantıyı tıklatın **+ Geçerli istemci IP adresi ekle**.
+   ![İstemci IP eklendi](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
-   > Azure PostgreSQL sunucusu, 5432 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 5432 numaralı bağlantı noktasını açmadığı müddetçe Hyperscale (Citus) kümenize bağlanamazsınız.
+   > Azure PostgreSQL sunucusu, 5432 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu nedenle, BT departmanınız 5432 bağlantı noktasını açmadıkça Hyperscale (Citus) kümenize bağlanamazsınız.
    >
 
-9. Sunucuyu sağlamak için **gözden geçir + oluştur** ' a ve ardından **Oluştur** ' a tıklayın. Sağlama birkaç dakika sürer.
-10. Sayfa dağıtımı izlemeye yeniden yönlendirilir. **Dağıtımınızdan** canlı durum değişikliği **dağıtımınız tamamlandığında**, sayfanın solundaki **çıktılar** menü öğesine tıklayın.
-11. Çıktılar sayfası, değeri panoya kopyalamak için düğmenin yanında bir düğme içeren bir düzenleyici ana bilgisayar adı içerecektir. Bu bilgileri daha sonra kullanmak üzere kaydedin.
+9. **Sunucuyu sağlamak** için Gözden Geçir + oluştur'u ve ardından **Oluştur'u** tıklatın. Sağlama birkaç dakika sürer.
+10. Sayfa dağıtımı izlemek için yönlendirecektir. **Dağıtımınızdan** **dağıtımınıza**kadar canlı durum değişiklikleri tamamlandığında, sayfanın solundaki **Çıktılar** menü öğesini tıklatın.
+11. Çıktılar sayfası, değeri panoya kopyalamak için yanındaki düğmeyi içeren bir koordinatör ana bilgisayar adı içerir. Bu bilgileri daha sonra kullanmak üzere kaydedin.
 
-## <a name="connect-to-the-database-using-psql"></a>Psql kullanarak veritabanına bağlanma
+## <a name="connect-to-the-database-using-psql"></a>psql kullanarak veritabanına bağlanın
 
-PostgreSQL için Azure veritabanı sunucusunu oluştururken, **citus** adlı varsayılan bir veritabanı oluşturulur. Veritabanı sunucunuza bağlanmak için bir bağlantı dizesi ve yönetici parolası gerekir.
+PostgreSQL sunucusu için Azure Veritabanınızı oluşturduğunuzda, **citus** adında varsayılan bir veritabanı oluşturulur. Veritabanı sunucunuza bağlanmak için bir bağlantı dizesi ve yönetici parolası gerekir.
 
-1. Bağlantı dizesini edinin. Sunucu grubu sayfasında **bağlantı dizeleri** menü öğesine tıklayın. ( **Ayarlar**altında.) **Psql**olarak işaretlenmiş dizeyi bulun. Şu biçimdedir:
+1. Bağlantı dizesini edinin. Sunucu grubu sayfasında **Bağlantı dizeleri** menü öğesini tıklatın. (Ayarlar altında **Settings**.) **Psql**işaretli dizeyi bulun. Bu formda olacak:
 
    ```
    psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
-   Dizeyi kopyalayın. "{\_Password}" öğesini, daha önce seçtiğiniz yönetici parolasıyla değiştirmeniz gerekir. Sistem düz metin parolanızı depolamaz, bağlantı dizesinde sizin için görüntüleyemez.
+   Dizekopyalayın. "{parolanız}"\_ile daha önce seçtiğiniz yönetim parolasını değiştirmeniz gerekir. Sistem düz metin parolanızı depolamaz ve bu nedenle bağlantı dizesinde sizin için görüntülemez.
 
-2. Yerel bilgisayarınızda bir Terminal penceresi açın.
+2. Yerel bilgisayarınızda bir terminal penceresi açın.
 
-3. İstemde, [psql](https://www.postgresql.org/docs/current/app-psql.html) yardımcı programıyla PostgreSQL Için Azure veritabanı sunucunuza bağlanın. Bağlantı dizenizi tırnak içine geçirin ve parolanızı içerdiğinden emin olun:
+3. Komut istemiyle, [psql](https://www.postgresql.org/docs/current/app-psql.html) yardımcı programıyla PostgreSQL sunucusu için Azure Veritabanınıza bağlanın. Parolanızı içerdiğinden emin olmak için bağlantı dizenizi tırnak içinde geçirin:
    ```bash
    psql "host=..."
    ```
 
-   Örneğin, aşağıdaki komut, **demosunucum**sunucu grubunun düzenleyici düğümüne bağlanır:
+   Örneğin, aşağıdaki komut sunucu grubu **mydemoserver**koordinatör düğümüne bağlanır:
 
    ```bash
    psql "host=mydemoserver-c.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"

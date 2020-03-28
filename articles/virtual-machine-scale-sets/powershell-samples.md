@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell Örnekleri
-description: Ölçek kümesi oluşturma ve yönetme gibi Azure PowerShell kullanılarak oluşturulan örnek Bash betiklerinin bağlantılarını içeren bir tablo.
+description: Bir ölçek kümesi oluşturma ve yönetme gibi Azure PowerShell kullanılarak oluşturulmuş örnek bash komut dosyalarına bağlantılar içeren bir tablo.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,13 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 2ad4008b0cdd4d655902a1423bdd8f01d1a2af8f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76273714"
 ---
-# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure PowerShell örnekleri.
+# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri için Azure PowerShell örnekleri.
 
 Aşağıdaki tablo, Azure PowerShell kullanılarak derlenen bash komut dosyalarının bağlantılarını içerir.
 
@@ -26,7 +26,7 @@ Aşağıdaki tablo, Azure PowerShell kullanılarak derlenen bash komut dosyalar�
 | [Tam bir sanal makine ölçek kümesi oluşturma](scripts/powershell-sample-create-complete-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | Bir sanal makine ölçek kümesi ve yapılandırma dosyasına sahip ilişkili kaynakları oluşturur. |
 | [Özel bir sanal makine görüntüsünden ölçek kümesi oluşturma](scripts/powershell-sample-create-scale-set-from-custom-image.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Özel bir sanal makine görüntüsü kullanan bir sanal makine ölçek kümesi oluşturur. |
 | [Ölçek kümesine uygulama yükleme](scripts/powershell-sample-install-apps.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ölçek kümesine temel bir web uygulaması yüklemek için Azure Özel Betik Uzantısı kullanın. |
-|**Depolamayı yönetme**||
+|**Depolamayı yönetin**||
 | [Disk oluşturma ve ölçek kümesine ekleme](scripts/powershell-sample-attach-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bağlı veri diskleri ile sanal makine ölçek kümesi oluşturur. |
 |**Ölçek ve yedeklemeyi yönetme**||
 | [Ana bilgisayar tabanlı otomatik ölçeklendirmeyi etkinleştirme](scripts/powershell-sample-enable-autoscale.md?toc=%2fpowershell%2fazure%2ftoc.json) | CPU kullanımına göre otomatik olarak ölçeklendirmek için yapılandırılmış bir sanal makine ölçeği oluşturur. |

@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB Tablo API'si için RU/s 'yi güncelleştirmek üzere PowerShell betiği
-description: Azure Cosmos DB Tablo API'si hesabındaki bir veritabanının veya kapsayıcının verimini güncelleştirmek için bir PowerShell betiği kullanmayı öğrenin
+title: Azure Cosmos DB Tablo API'si için RU/s'yi güncelleştirmek için PowerShell komut dosyası
+description: Azure Cosmos DB Tablo API hesabındabir veritabanı veya kapsayıcının veri memlerini güncelleştirmek için PowerShell komut dosyasını nasıl kullanacağınızı öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 37e7ab82a42b8bcd633e0c083e1a3f51505a95cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 101e9e5591198b84bb9bba886249b0784cc6b43e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444916"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365954"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB Tablo API'si için bir tablo için RU/sn güncelleştirme
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB için tablo için RU/s'yi güncelleştir - Tablo API'sı
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,9 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure Kaynak grupları**| |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Cosmos DB Tablo API Tablosu oluşturur veya güncelleştirir. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

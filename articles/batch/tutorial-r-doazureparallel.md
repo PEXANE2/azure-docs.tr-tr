@@ -12,10 +12,10 @@ ms.date: 01/23/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025852"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Öğretici: Azure Batch ile paralel R simülasyonu çalıştırma 
@@ -38,14 +38,14 @@ Bu öğreticide bir Batch havuzu dağıtma ve doğrudan RStudio içinde Azure Ba
 
 * Bir Azure Batch hesabı ve bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın. 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>doAzureParallel yükleme
 
-RStudio konsolunda, [DoAzureParallel GitHub paketini](https://www.github.com/Azure/doAzureParallel)yükledikten sonra. Aşağıdaki komutlar, paketi ve bağımlılıklarını geçerli R oturumunuzda indirip yükler: 
+RStudio konsolunda [doAzureParallel GitHub paketini](https://www.github.com/Azure/doAzureParallel)yükleyin. Aşağıdaki komutlar, paketi ve bağımlılıklarını geçerli R oturumunuzda indirip yükler: 
 
 ```R
 # Install the devtools package  
@@ -226,7 +226,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-Simülasyon, görevleri Batch havuzundaki düğümlere dağıtır. Azure portalında havuzun ısı haritasındaki etkinliği görebilirsiniz]. **Batch hesapları** > *myBatchAccount*’a gidin. **Havuzlar** > *myPoolName* öğesine tıklayın. 
+Simülasyon, görevleri Batch havuzundaki düğümlere dağıtır. Azure portalında havuzun ısı haritasındaki etkinliği görebilirsiniz]. Toplu **hesaplara** > gidin*myBatchAccount*. **Pools** > *myPoolName'yi*tıklatın. 
 
 ![Paralel R görevleri çalıştıran havuzun ısı haritası](media/tutorial-r-doazureparallel/pool.png)
 

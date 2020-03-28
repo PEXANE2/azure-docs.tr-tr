@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs-Işlem Apache Kafka olayları
-description: "Öğretici: Bu makalede Azure Stream Analytics kullanılarak Olay Hub 'ları aracılığıyla alınan Kafka olaylarının nasıl işlenmesi gösterilmektedir."
+title: Azure Etkinlik Hub'ları - Apache Kafka etkinliklerini işleme
+description: "Öğretici: Bu makalede, Azure Akış Analitiği kullanılarak etkinlik hub'ları aracılığıyla yutulan Kafka olaylarının nasıl işlendiği gösterilmektedir"
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -13,45 +13,45 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 8047ac5d3db2db230a00583e888a4afea3b282b9
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 054b5c7d13df39de4fa57167e0363c0b4acf9b08
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969367"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80280754"
 ---
-# <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Stream Analytics kullanarak Event Hubs olaylar için Işlem Apache Kafka 
-Bu makalede, veri akışı Kafka özellikli Event Hubs'a ve Azure Stream Analytics ile işlemek gösterilmektedir. Aşağıdaki adımları gösterilmektedir: 
+# <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Akış analizini kullanarak Etkinlik Hub'ları etkinlikleri için Apache Kafka'yı işleme 
+Bu makalede, veri lerin Olay Hub'larına nasıl aktarılacağa ve Azure Akış Analitiği ile nasıl işlenirken işlenmeyi gösterilmektedir. Size aşağıdaki adımları ilerehberlik edin: 
 
-1. Oluşturma bir Kafka Event Hubs ad alanı etkin.
-2. Olay hub'ına ileti gönderen bir Kafka istemci oluşturun.
-3. Olay hub'ından bir Azure blob depolama alanına veri kopyalayan bir Stream Analytics işi oluşturun. 
+1. Kafka etkin Olay Hub'ları ad alanı oluşturun.
+2. Olay merkezine ileti gönderen bir Kafka istemcisi oluşturun.
+3. Etkinlik merkezindeki verileri Azure blob depolama alanına kopyalayan bir Akış Analizi işi oluşturun. 
 
-Protokol istemcilerinize değiştirmek veya bir olay hub'ı tarafından kullanıma sunulan Kafka uç noktası kullandığınızda, kendi kümeleri çalıştırın gerekmez. Azure Event Hubs [Apache Kafka sürüm 1.0](https://kafka.apache.org/10/documentation.html)’ı destekler. ve üstü. 
+Bir olay hub'ı tarafından açığa çıkarılan Kafka uç noktasını kullandığınızda protokol istemcilerinizi değiştirmeniz veya kendi kümelerinizi çalıştırmanız gerekmez. Azure Event Hubs [Apache Kafka sürüm 1.0](https://kafka.apache.org/10/documentation.html)’ı destekler. ve yukarıda. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki önkoşulların karşılandığından emin olun:
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
+* [Java Geliştirme Kiti (JDK) 1.7+](https://aka.ms/azure-jdks).
 * Bir Maven ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html).
 * [Git](https://www.git-scm.com/)
-* Bir **Azure depolama hesabı**. Yoksa, devam etmeden önce [bir tane oluşturun](../storage/common/storage-account-create.md) . Bu izlenecek yolda Stream Analytics işi çıktı verilerini bir Azure blob depolama alanında depolar. 
+* Bir **Azure Depolama hesabı**. Eğer yoksa, daha fazla devam etmeden önce [bir tane oluşturun.](../storage/common/storage-account-create.md) Bu gözden geçirmedeki Akış Analizi işi, çıktı verilerini bir Azure blob depolama alanında depolar. 
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka etkin Event Hubs ad alanı oluşturma
-Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için Kafka uç noktası otomatik olarak etkinleştirilir. Kafka protokolünü kullanan uygulamalarınızdan olayları Standart katman Event Hubs akışı yapabilirsiniz. **Standart** katman Event Hubs ad alanı oluşturmak için [Azure Portal kullanarak Olay Hub 'ı oluşturma](event-hubs-create.md) bölümünde adım adım yönergeleri izleyin. 
+**Standart** bir katman Olay Hub'ları ad alanı oluşturduğunuzda, ad alanı için Kafka bitiş noktası otomatik olarak etkinleştirilir. Kafka protokolünü kullanan uygulamalarınızdan olayları standart katman Etkinlik Hub'larına aktarabilirsiniz. **Standart** bir katman Olay Hub'ları ad alanı oluşturmak için [Azure portalını kullanarak etkinlik hub'ı oluştur'da](event-hubs-create.md) adım adım yönergeleri izleyin. 
 
 > [!NOTE]
-> Kafka için Event Hubs yalnızca **Standart** ve **adanmış** katmanlarda kullanılabilir. **Temel** katman Event Hubs Kafka desteklemez.
+> Kafka için Etkinlik Hub'ları yalnızca **standart** ve **özel** katmanlarda kullanılabilir. **Temel** katman Etkinlik Hub'larında Kafka'yı desteklemez.
 
-## <a name="send-messages-with-kafka-in-event-hubs"></a>Olay hub'ları, Kafka ile iletileri gönder
+## <a name="send-messages-with-kafka-in-event-hubs"></a>Etkinlik Hub'larında Kafka ile mesaj gönderin
 
-1. [Azure Event Hubs for Kafka Repository](https://github.com/Azure/azure-event-hubs-for-kafka) 'yi makinenize kopyalayın.
-2. Şu klasöre gidin: `azure-event-hubs-for-kafka/quickstart/java/producer`. 
-4. `src/main/resources/producer.config`' de üreticinin yapılandırma ayrıntılarını güncelleştirin. **Olay Hub 'ı ad alanı**için **adı** ve **bağlantı dizesini** belirtin. 
+1. [Kafka deposu için Azure Etkinlik Hub'larını](https://github.com/Azure/azure-event-hubs-for-kafka) makinenize kopyala.
+2. Klasöre gidin: `azure-event-hubs-for-kafka/quickstart/java/producer`. 
+4. Üreticinin yapılandırma ayrıntılarını `src/main/resources/producer.config`güncelleştirin. **Olay göbeği ad alanının** **adını** ve **bağlantı dizesini** belirtin. 
 
     ```xml
     bootstrap.servers={EVENT HUB NAMESPACE}.servicebus.windows.net:9093
@@ -60,90 +60,90 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`gidin ve **Testdatareporter. Java** dosyasını seçtiğiniz bir düzenleyicide açın. 
-6. Aşağıdaki kod satırını açıklama satırı yapın:
+5. `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`Seçtiğiniz bir düzenleyicide **TestDataReporter.java** dosyasına gidin ve açın. 
+6. Aşağıdaki kod satırına yorum yapın:
 
     ```java
                 //final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(TOPIC, time, "Test Data " + i);
     ```
-3. Aşağıdaki açıklama eklenen kod yerine kod satırını ekleyin: 
+3. Yorumlanan kodun yerine aşağıdaki kod satırını ekleyin: 
 
     ```java
                 final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(TOPIC, time, "{ \"eventData\": \"Test Data " + i + "\" }");            
     ```
 
-    Bu kod, olay verilerini **JSON** biçiminde gönderir. Stream Analytics işine ilişkin giriş yapılandırdığınızda, giriş veri biçimi olarak JSON belirtin. 
-7. **Producer** ve Stream 'i Kafka özellikli Event Hubs olarak çalıştırın. Bir Windows makinesinde, **Node. js komut istemi**kullanırken, bu komutları çalıştırmadan önce `azure-event-hubs-for-kafka/quickstart/java/producer` klasörüne geçin. 
+    Bu kod olay verilerini **JSON** biçiminde gönderir. Bir Akış Analizi işi için giriş yapılandırırken, giriş verilerinin biçimi olarak JSON'u belirtirsiniz. 
+7. **Yapımcıyı çalıştırın** ve Olay Hub'larına aktarın. Bir Windows makinesinde, **Bir Düğüm.js komut istemi** `azure-event-hubs-for-kafka/quickstart/java/producer` kullanırken, bu komutları çalıştırmadan önce klasöre geçin. 
    
     ```shell
     mvn clean package
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
 
-## <a name="verify-that-event-hub-receives-the-data"></a>Bu olay hub'ın verileri alan doğrulayın
+## <a name="verify-that-event-hub-receives-the-data"></a>Olay merkezinin verileri aldığını doğrulayın
 
-1. **Varlıklar**altında **Event Hubs** seçin. **Test**adlı bir olay hub 'ı görtığınızdan emin olun. 
+1. **VARLıKLAR**altında **Olay Hub'larını** seçin. **Test**adlı bir olay hub'ı gördüğünüze onaylayın. 
 
-    ![Olay hub'ı - test etme](./media/event-hubs-kafka-stream-analytics/test-event-hub.png)
-2. Olay hub'ına gelen iletileri gördüğünüzü onaylayın. 
+    ![Olay merkezi - test](./media/event-hubs-kafka-stream-analytics/test-event-hub.png)
+2. Etkinlik merkezine gelen iletileri gördüğünüzden onaylayın. 
 
-    ![Olay hub'ı - iletileri](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
+    ![Olay merkezi - iletiler](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
-## <a name="process-event-data-using-a-stream-analytics-job"></a>Bir Stream Analytics işi kullanarak olay verilerini işleme
-Bu bölümde, Azure Stream Analytics işi oluşturun. Kafka istemci, olayları olay hub'ına gönderir. Olay verileri girdi olarak alır ve bir Azure blob depolama alanına çıkaran bir Stream Analytics işi oluşturun. **Azure depolama hesabınız**yoksa [bir tane oluşturun](../storage/common/storage-account-create.md).
+## <a name="process-event-data-using-a-stream-analytics-job"></a>Akış Analizi işini kullanarak olay verilerini işleme
+Bu bölümde, bir Azure Akışı Analizi işi oluşturursunuz. Kafka istemcisi olayları etkinlik merkezine gönderir. Olay verilerini giriş olarak alan ve azure blob depolamasına çıkaran bir Akış Analizi işi oluşturursunuz. **Azure Depolama hesabınız**yoksa, bir [hesap oluşturun.](../storage/common/storage-account-create.md)
 
-Stream Analytics işinde sorgu, herhangi bir analiz yapmadan aracılığıyla verileri geçirir. Farklı bir biçimde veya elde edildi öngörülerle çıkış verileri üretmek üzere giriş verilerini dönüştüren bir sorgu oluşturabilirsiniz.  
+Akış Analizi işindeki sorgu, herhangi bir analiz yapmadan verilerden geçer. Çıktı verilerini farklı bir biçimde veya elde edilmiş öngörülerle oluşturmak için giriş verilerini dönüştüren bir sorgu oluşturabilirsiniz.  
 
 ### <a name="create-a-stream-analytics-job"></a>Akış Analizi işi oluşturma 
 
-1. Azure portal **+ kaynak oluştur** ' u seçin [](https://portal.azure.com).
-2. **Azure Marketi** menüsünde **analiz** ' i seçin ve **Stream Analytics iş**' ı seçin. 
-3. **Yeni Stream Analytics** sayfasında aşağıdaki işlemleri yapın: 
+1. Select + [Azure portalında](https://portal.azure.com) **kaynak oluşturun.**
+2. **Azure Marketi** menüsünde **Analytics'i** seçin ve **Akış Analizi işini**seçin. 
+3. Yeni **Akış Analizi** sayfasında aşağıdaki işlemleri yapın: 
     1. İş için bir **ad** girin. 
     2. **Aboneliğinizi**seçin.
-    3. **Kaynak grubu** Için **Yeni oluştur** ' u seçin ve adı girin. **Var olan bir** kaynak grubunu da kullanabilirsiniz. 
+    3. Kaynak grubu için **yeni oluştur'u** seçin ve adı girin. **resource group** Varolan bir kaynak grubunu da **kullanabilirsiniz.** 
     4. İş için bir **konum** seçin.
-    5. İşi oluşturmak için **Oluştur** ' u seçin. 
+    5. İşi oluşturmak için **Oluştur'u** seçin. 
 
         ![Yeni Stream Analytics işi](./media/event-hubs-kafka-stream-analytics/new-stream-analytics-job.png)
 
 ### <a name="configure-job-input"></a>İş girişi yapılandırma
 
-1. Bildirim iletisinde, **Stream Analytics işi** sayfasını görmek Için **Kaynağa Git** ' i seçin. 
-2. Sol menüdeki **Iş topolojisi** bölümünde **girişler** ' i seçin.
-3. **Akış girişi Ekle**' yi ve ardından **Olay Hub**'ı ' nı seçin. 
+1. Bildirim iletisinde, **Akış Analizi iş** sayfasını görmek için **kaynağa Git'i** seçin. 
+2. Sol menüdeki **JOB TOPOLOGY** bölümündeki **Girişleri** seçin.
+3. **Akış girişi ekle'yi**seçin ve ardından **Olay Hub'ını**seçin. 
 
-    ![Girdi olarak Event hub'ı Ekle](./media/event-hubs-kafka-stream-analytics/select-event-hub-input.png)
-4. **Olay Hub 'ı giriş** yapılandırması sayfasında, aşağıdaki işlemleri yapın: 
+    ![Giriş olarak olay hub'ı ekleme](./media/event-hubs-kafka-stream-analytics/select-event-hub-input.png)
+4. Olay **Hub'ı giriş** yapılandırma sayfasında aşağıdaki işlemleri yapın: 
 
-    1. Giriş için bir **diğer ad** belirtin. 
-    2. Azure **aboneliğinizi** seçin.
-    3. Daha önce oluşturduğunuz **Olay Hub 'ı ad alanını** seçin. 
-    4. **Olay Hub 'ı**için **Test** ' i seçin. 
-    5. **Kaydet**’i seçin. 
+    1. Giriş için bir **takma ad** belirtin. 
+    2. Azure **aboneliğinizi**seçin.
+    3. Daha önce oluşturduğunuz **etkinlik merkezi ad alanını** seçin. 
+    4. **Olay merkezi**için **test** seçin. 
+    5. **Kaydet'i**seçin. 
 
-        ![Olay hub'ı giriş yapılandırma](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
+        ![Olay merkezi giriş yapılandırması](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
 ### <a name="configure-job-output"></a>İş çıkışını yapılandırma 
 
-1. Menüdeki **Iş topolojisi** bölümünde yer alan **çıktılar** ' i seçin. 
-2. Araç çubuğunda **+ Ekle** ' yi seçin ve **BLOB depolama** ' yı seçin.
-3. Blob Depolama çıkış Ayarları sayfasında, aşağıdaki eylemleri gerçekleştirin: 
-    1. Çıkış için bir **diğer ad** belirtin. 
-    2. Azure **aboneliğinizi** seçin. 
-    3. **Azure depolama hesabınızı**seçin. 
-    4. Stream Analytics sorgusundan çıkış verilerini depolayan **kapsayıcı için bir ad** girin.
-    5. **Kaydet**’i seçin.
+1. Menüdeki JOB **TOPOLOGY** bölümünde **çıktıları** seçin. 
+2. Araç çubuğuna **+ Ekle'yi** seçin ve **Blob depolama alanını** seçin
+3. Blob depolama çıktı ayarları sayfasında aşağıdaki işlemleri yapın: 
+    1. Çıktı için bir **takma ad** belirtin. 
+    2. Azure **aboneliğinizi**seçin. 
+    3. Azure **Depolama hesabınızı**seçin. 
+    4. Akış Analizi sorgusundaki çıktı verilerini depolayan **kapsayıcıiçin** bir ad girin.
+    5. **Kaydet'i**seçin.
 
-        ![BLOB Depolama çıktı yapılandırma](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
+        ![Blob Depolama çıktı yapılandırması](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
 
-### <a name="define-a-query"></a>Bir sorgu tanımlama
-Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan sonraki adım, verileri gerçek zamanlı olarak analiz eden bir dönüştürme oluşturmaktır. Dönüştürme sorgusunu [Stream Analytics sorgu dilini](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanarak tanımlarsınız. Bu izlenecek yolda, herhangi bir dönüştürme gerçekleştirmeden veri aktaran bir sorgu tanımlayabilirsiniz.
+### <a name="define-a-query"></a>Sorgu tanımlama
+Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan sonraki adım, verileri gerçek zamanlı olarak analiz eden bir dönüştürme oluşturmaktır. Dönüştürme sorgusunu [Stream Analytics sorgu dilini](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanarak tanımlarsınız. Bu gözden geçirmede, herhangi bir dönüşüm gerçekleştirmeden verilerden geçen bir sorgu tanımlarsınız.
 
-1. **Sorgu**seçin.
-2. Sorgu penceresinde, `[YourOutputAlias]` daha önce oluşturduğunuz çıktı diğer adıyla değiştirin.
-3. `[YourInputAlias]`, daha önce oluşturduğunuz giriş diğer adıyla değiştirin. 
+1. **Sorgu'u**seçin.
+2. Sorgu penceresinde, daha `[YourOutputAlias]` önce oluşturduğunuz çıktı diğer adını değiştirin.
+3. Daha `[YourInputAlias]` önce oluşturduğunuz giriş takma adlarıyla değiştirin. 
 4. Araç çubuğunda **Kaydet**’i seçin. 
 
     ![Sorgu](./media/event-hubs-kafka-stream-analytics/query.png)
@@ -151,24 +151,24 @@ Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan 
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 
-1. Sol menüdeki **Genel Bakış ' ı** seçin. 
-2. **Başlat**' ı seçin. 
+1. Sol menüde **Genel Bakış'ı** seçin. 
+2. **Başlat**'ı seçin. 
 
     ![Başlat menüsü](./media/event-hubs-kafka-stream-analytics/start-menu.png)
-1. **Işi Başlat** sayfasında **Başlat**' ı seçin. 
+1. İş **başlat** sayfasında **Başlat'ı**seçin. 
 
-    ![Başlangıç işi sayfası](./media/event-hubs-kafka-stream-analytics/start-job-page.png)
-1. İşin durumunun **çalışmaya** **başlamasını** bekleyin. 
+    ![İş sayfasını başlat](./media/event-hubs-kafka-stream-analytics/start-job-page.png)
+1. **Çalıştırmaya başlamadan** işin durumu **değişene**kadar bekleyin. 
 
     ![İş durumu - çalışan](./media/event-hubs-kafka-stream-analytics/running.png)
 
-## <a name="test-the-scenario"></a>Test senaryosu
-1. Olayları Olay Hub 'ına göndermek için **Kafka üreticisi** 'ni yeniden çalıştırın. 
+## <a name="test-the-scenario"></a>Senaryoyu test edin
+1. Etkinlik merkezine etkinlik göndermek için **Kafka yapımcısını** tekrar çalıştırın. 
 
     ```shell
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
-1. **Azure Blob depolamada** **çıktı verilerinin** oluşturulduğunu görtığınızdan emin olun. Aşağıdaki örnek satırlar gibi ara 100 satır kapsayıcıdaki bir JSON dosyası görürsünüz: 
+1. **Azure blob depolama**alanında **çıktı verilerinin** oluşturulduğunu gördüğünüzü doğrulayın. Aşağıdaki örnek satırlara benzeyen 100 satıriçeren kapsayıcıda bir JSON dosyası görürsünüz: 
 
     ```
     {"eventData":"Test Data 0","EventProcessedUtcTime":"2018-08-30T03:27:23.1592910Z","PartitionId":0,"EventEnqueuedUtcTime":"2018-08-30T03:27:22.9220000Z"}
@@ -176,20 +176,20 @@ Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan 
     {"eventData":"Test Data 2","EventProcessedUtcTime":"2018-08-30T03:27:23.3936511Z","PartitionId":0,"EventEnqueuedUtcTime":"2018-08-30T03:27:22.9220000Z"}
     ```
 
-    Azure Stream Analytics işi, giriş verileri olay hub'ından alınan ve bu senaryoda Azure blob depolamada depolanan. 
+    Azure Akış Analizi işi, olay merkezinden giriş verilerini aldı ve bu senaryoda Azure blob depolama alanında depolandı. 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede protokol istemcilerinizi değiştirmenize veya kendi kümelerinizi çalıştırmanıza gerek kalmadan Kafka etkin Event Hubs’a nasıl akış oluşturacağınızı öğrendiniz. Event Hubs ve Kafka için Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki konuya bakın:  
+Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Olay Hub'larına nasıl akış yapılacağını öğrendiniz. Event Hubs ve Kafka için Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki konuya bakın:  
 
 - [Event Hubs hakkında bilgi edinin](event-hubs-what-is-event-hubs.md)
 - [Apache Kafka için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka özellikli Event Hubs oluşturma](event-hubs-create-kafka-enabled.md)
+- [Kafka özellikli Event Hubs oluşturma](event-hubs-create.md)
 - [Kafka uygulamalarınızdan Event Hubs'a akış yapma](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka özellikli bir olay hub'ında Kafka aracısını yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Apache Spark'ı Kafka özellikli bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)
-- [Apache Flink'i Kafka özellikli bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
-- [Kafka Connect'i Kafka özellikli olay hub'ıyla tümleştirme](event-hubs-kafka-connect-tutorial.md)
-- [Akka Streams’i Kafka özellikli olay hub'ına bağlama](event-hubs-kafka-akka-streams-tutorial.md)
+- [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)
+- [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
+- [Kafka Connect'i bir etkinlik merkeziyle bütünleştirin](event-hubs-kafka-connect-tutorial.md)
+- [Akka Akışlarını bir etkinlik merkezine bağlayın](event-hubs-kafka-akka-streams-tutorial.md)
 - [GitHub'ımızdaki örnekleri inceleme](https://github.com/Azure/azure-event-hubs-for-kafka) 

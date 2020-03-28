@@ -1,6 +1,6 @@
 ---
-title: PowerShell ile Azure-SSIS Integration Runtime ayarlama
-description: Azure 'da SSIS paketlerini dağıtabilmeniz ve çalıştırabilmek için PowerShell ile Azure Data Factory Azure-SSIS Integration Runtime ayarlamayı öğrenin.
+title: PowerShell ile Azure-SSIS Tümleştirme Çalışma Süresi ayarlama
+description: PowerShell ile Azure Veri Fabrikası'nda SSIS paketlerini dağıtıp çalıştırabilmeniz için Azure Veri Fabrikası'nda azure-SSIS Tümleştirme Çalışma Süresi'ni nasıl ayarlayabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,64 +9,64 @@ ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/01/2020
+ms.date: 03/27/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e8dd9f310c303cc5a1c6db6150cf4d350b0da672
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0eb3a3d6c988746c1174398005463d25911c11e1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187496"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80336139"
 ---
-# <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell kullanarak Azure Data Factory Azure-SSIS IR ayarlama
+# <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell'i kullanarak Azure Veri Fabrikası'nda Azure-SSIS IR'si ayarlama
 
-Bu öğreticide, Azure Data Factory içinde bir Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) nasıl kullanabileceğiniz gösterilmektedir. Bir Azure-SSIS IR, ' ye dağıtılan paketlerin çalıştırılmasını destekler:
-* Bir Azure SQL veritabanı sunucusu örneği veya yönetilen örnek (proje dağıtım modeli) tarafından barındırılan bir SSIS Kataloğu (SSıSDB).
-* Dosya sistemleri, dosya paylaşımları veya bir Azure dosya paylaşımı (paket dağıtım modeli). 
+Bu öğretici, Azure Veri Fabrikası'nda Azure-SQL Sunucu Tümleştirme Hizmetleri Tümleştirme Çalışma Süresini (Azure-SSIS IR) nasıl yükselteceklerini gösterir. Azure-SSIS IR, şu şekilde dağıtılan paketleri çalıştırmayı destekler:
+* Azure SQL Veritabanı sunucu örneği veya yönetilen bir örnek (proje dağıtım modeli) tarafından barındırılan bir SSIS kataloğu (SSISDB).
+* Dosya sistemleri, dosya paylaşımları veya Azure Dosyaları paylaşımı (paket dağıtım modeli). 
 
-Azure-SSIS IR kurulduktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için SQL Server Veri Araçları (SSDT) ve SQL Server Management Studio (SSMS) gibi tanıdık araçları kullanabilirsiniz. `dtinstall`, `dtutil`ve `dtexec`gibi komut satırı yardımcı programlarını da kullanabilirsiniz.  
+Azure-SSIS IR kurulduktan sonra, paketlerinizi Azure'da dağıtmak ve çalıştırmak için SQL Server Data Tools (SSDT) ve SQL Server Management Studio (SSMS) gibi tanıdık araçları kullanabilirsiniz. Ayrıca, , , `dtinstall` `dtutil`ve `dtexec`. gibi komut satırı yardımcı programları kullanabilirsiniz.  
 
 > [!NOTE]
-> Bu makalede bir Azure-SSIS IR ayarlamak için Azure PowerShell kullanımı gösterilmektedir. Azure-SSIS IR ayarlamak için Azure portal veya Azure Data Factory uygulamasını kullanmak için bkz. [öğretici: bir Azure-SSIS IR ayarlama](tutorial-create-azure-ssis-runtime-portal.md). 
+> Bu makalede, bir Azure-SSIS IR kurmak için Azure PowerShell kullanımı gösteriştir. Azure-SSIS IR'yi kurmak için Azure portalını veya Azure Veri Fabrikası uygulamasını kullanmak için [Bkz.](tutorial-create-azure-ssis-runtime-portal.md) 
 
 Bu öğreticide şunları yapacaksınız:
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.
-> * Azure-SSIS Integration Runtime oluşturun.
-> * Azure-SSIS Integration Runtime başlatın.
-> * Tüm betiği inceleyin.
+> * Azure-SSIS Tümleştirme Çalışma Zamanı oluşturun.
+> * Azure-SSIS Tümleştirme Çalışma Süresini başlatın.
+> * Komut dosyasının tamamını gözden geçirin.
 > * SSIS paketlerini dağıtın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). Azure-SSIS IR hakkında kavramsal bilgiler için bkz. [Azure-SSIS Integration Runtime genel bakış](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+- Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/) Azure-SSIS IR hakkında kavramsal bilgi için [Azure-SSIS Tümleştirme Çalışma Süresi'ne genel bakış'a](concepts-integration-runtime.md#azure-ssis-integration-runtime)bakın.
 
-- Seçim Azure SQL veritabanı sunucusu. Henüz bir veritabanı sunucunuz yoksa, başlamadan önce Azure portalında bir tane oluşturun. Azure Data Factory, bu veritabanı sunucusunda SSıSDB oluşturacak şekilde açılır. Veritabanı sunucusunu tümleştirme çalışma zamanı ile aynı Azure bölgesinde oluşturmanız önerilir. Bu yapılandırma, tümleştirme çalışma zamanının Azure bölgelerinden geçmeden SSISDB’ye yürütme günlüklerini yazmasına olanak tanır. 
-    - Seçilen veritabanı sunucusuna bağlı olarak, SSıSDB sizin adınıza tek bir veritabanı, elastik havuzun bir parçası veya yönetilen bir örnek olarak veya bir sanal ağa katılarak erişilebilir bir şekilde oluşturulabilir. SSıSDB barındıracak veritabanı sunucusu türünü seçme konusunda rehberlik için bkz. [Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). 
+- (İsteğe bağlı) Azure SQL Veritabanı sunucusu. Henüz bir veritabanı sunucunuz yoksa, başlamadan önce Azure portalında bir tane oluşturun. Azure Veri Fabrikası da bu veritabanı sunucusunda SSISDB oluşturur. Veritabanı sunucusunu tümleştirme çalışma zamanı ile aynı Azure bölgesinde oluşturmanız önerilir. Bu yapılandırma, tümleştirme çalışma zamanının Azure bölgelerinden geçmeden SSISDB’ye yürütme günlüklerini yazmasına olanak tanır. 
+    - Seçilen veritabanı sunucusuna bağlı olarak, SSISDB sizin adınıza tek bir veritabanı, elastik bir havuzun parçası veya yönetilen bir örnek olarak oluşturulabilir ve ortak bir ağda veya sanal ağa katılarak erişilebilir. SSISDB'yi barındıracak veritabanı sunucusu türünü seçmede kılavuz için [bkz.](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance) 
     
-      Bir IP güvenlik duvarı veya sanal ağ hizmet uç noktaları ile bir Azure SQL veritabanı sunucusu veya SSSıSDB 'yi barındırmak için özel bir uç noktası olan yönetilen bir örnek kullanıyorsanız veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağ. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Veritabanı sunucusunda **Azure hizmetlerine erişime izin ver** ayarının etkin olduğundan emin olun. Bu ayar, IP güvenlik duvarı kuralları veya sanal ağ hizmet uç noktaları ile bir Azure SQL veritabanı sunucusu kullandığınızda veya SSSıSDB barındırmak için özel bir uç noktası olan yönetilen bir örnekle birlikte kullanıldığında geçerli değildir. Daha fazla bilgi için bkz. [Azure SQL veritabanınızın güvenliğini sağlama](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Bu ayarı PowerShell kullanarak etkinleştirmek için, bkz. [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
-    - Veritabanı sunucusunun güvenlik duvarı ayarlarındaki istemci IP adresi listesine istemci makinenin IP adresini veya istemci makinenin IP adresini içeren IP adresi aralığını ekleyin. Daha fazla bilgi için bkz. [Azure SQL Veritabanı'nda sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları yapılandırma](../sql-database/sql-database-firewall-configure.md).
-    - Veri fabrikanızın yönetilen kimliğiyle Sunucu Yöneticisi kimlik bilgilerinizle veya Azure Active Directory (Azure AD) kimlik doğrulamasıyla SQL kimlik doğrulaması kullanarak veritabanı sunucusuna bağlanabilirsiniz. Azure AD kimlik doğrulaması için, veri fabrikanızın yönetilen kimliğini veritabanı sunucusuna erişim izinleri olan bir Azure AD grubuna eklemek için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Veritabanı sunucunuzun zaten bir SSSıSDB içermediğinden emin olun. Azure-SSIS IR ayarlamak, var olan bir SSıSDB kullanımını desteklemez.
+      IP güvenlik duvarı veya sanal ağ hizmeti bitiş noktalarına sahip bir Azure SQL Veritabanı sunucusu veya SSISDB'yi barındıracak özel bir bitiş noktası olan yönetilen bir örnek kullanıyorsanız veya kendi kendine barındırılan bir IR yapılandırmadan şirket içi verilere erişmeye ihtiyaç duyuyorsanız, Azure-SSIS IR'nize bir sanal ağ. Daha fazla bilgi için bkz. [sanal ağda Azure-SSIS IR oluştur.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+    - Veritabanı sunucusu **için Azure hizmetlerine Erişime İzin Ver** ayarının etkinleştirildiğinden onaylayın. Bu ayar, IP güvenlik duvarı kurallarına veya sanal ağ hizmeti bitiş noktalarına sahip bir Azure SQL Veritabanı sunucusu veya SSISDB'yi barındıracak özel bir bitiş noktası olan yönetilen bir örnek kullandığınızda geçerli değildir. Daha fazla bilgi için bkz. [Azure SQL veritabanınızın güvenliğini sağlama](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). PowerShell kullanarak bu ayarı etkinleştirmek için [Bkz. Yeni-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
+    - İstemci makinesinin IP adresini veya istemci makinesinin IP adresi de dahil olmak üzere bir dizi IP adresini veritabanı sunucusunun güvenlik duvarı ayarlarındaki istemci IP adres listesine ekleyin. Daha fazla bilgi için bkz. [Azure SQL Veritabanı'nda sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları yapılandırma](../sql-database/sql-database-firewall-configure.md).
+    - Sunucu yönetici kimlik bilgilerinizle SQL kimlik doğrulaması veya veri fabrikanızın yönetilen kimliğiyle Azure Active Directory (Azure AD) kimlik doğrulaması kullanarak veritabanı sunucusuna bağlanabilirsiniz. Azure AD kimlik doğrulaması için, veri fabrikanızın yönetilen kimliğini veritabanı sunucusuna erişim izinleri olan bir Azure REKLAM grubuna eklemek için [bkz.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+    - Veritabanı sunucunuzun zaten bir SSISDB'si olmadığını doğrulayın. Azure-SSIS IR'si kurmak, varolan bir SSISDB'yi kullanmayı desteklemez.
 
-- Azure PowerShell. Azure-SSIS IR ayarlamak üzere bir PowerShell Betiği çalıştırmak için, [Azure PowerShell yükleyip yapılandırma](/powershell/azure/install-Az-ps)bölümündeki yönergeleri izleyin.
+- Azure PowerShell. Azure-SSIS IR'nizi ayarlamak için bir PowerShell komut dosyası çalıştırmak için Yükleme yönergelerini izleyin [ve Azure PowerShell'i yapılandırın.](/powershell/azure/install-Az-ps)
 
 > [!NOTE]
-> Azure Data Factory ve Azure-SSIS IR Şu anda kullanılabildiği Azure bölgelerinin bir listesi için bkz. [bölgeye göre Azure Data Factory ve Azure-SSIS IR kullanılabilirliği](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
+> Azure Veri Fabrikası ve Azure-SSIS IR'nin şu anda kullanılabildiği Azure bölgelerinin listesi için, [bölgeye göre Azure Veri Fabrikası ve Azure-SSIS IR kullanılabilirliğine](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)bakın. 
 
-## <a name="open-the-windows-powershell-ise"></a>Windows PowerShell ISE açın
+## <a name="open-the-windows-powershell-ise"></a>Windows PowerShell ISE'yi açın
 
-Windows PowerShell Tümleşik komut dosyası ortamı 'nı (ıSE) yönetici izinleriyle açın. 
+Windows PowerShell Tümleşik Komut Dosyası Ortamını (ISE) yönetici izinleriyle açın. 
 
 ## <a name="create-variables"></a>Değişken oluşturma
 
-Aşağıdaki betiği ıSE 'ye kopyalayın. Değişkenlerin değerlerini belirtin. 
+Aşağıdaki komut dosyasını Ise'e kopyalayın. Değişkenler için değerleri belirtin. 
 
 ```powershell
 ### Azure Data Factory info
@@ -95,7 +95,7 @@ $AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while Ba
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-$ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
+$ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
 $SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
@@ -112,16 +112,16 @@ $DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data 
 
 ## <a name="sign-in-and-select-your-subscription"></a>Oturum açın ve aboneliğinizi seçin
 
-Oturum açmak ve Azure aboneliğinizi seçmek için betiğe aşağıdaki kodu ekleyin:
+Oturum açmak ve Azure aboneliğinizi seçmek için komut dosyasına aşağıdaki kodu ekleyin:
 
 ```powershell
 Connect-AzAccount
 Select-AzSubscription -SubscriptionName $SubscriptionName
 ```
 
-## <a name="validate-the-connection-to-your-database-server"></a>Veritabanı sunucunuza yönelik bağlantıyı doğrulama
+## <a name="validate-the-connection-to-your-database-server"></a>Veritabanı sunucunuzla bağlantıyı doğrulama
 
-Azure SQL veritabanı sunucunuzu doğrulamak için aşağıdaki betiği ekleyin: 
+Azure SQL Veritabanı sunucunuzu doğrulamak için aşağıdaki komut dosyasını ekleyin: 
 
 ```powershell
 # Validate only if you're using SSISDB
@@ -146,7 +146,7 @@ if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
 }
 ```
 
-Betiğin bir parçası olarak bir Azure SQL veritabanı örneği oluşturmak için aşağıdaki örneğe bakın. Önceden tanımlanmamış değişkenlerin değerlerini ayarlayın (örneğin, SSISDBServerName, Firewalpaddress). 
+Komut dosyasının bir parçası olarak bir Azure SQL Veritabanı örneği oluşturmak için aşağıdaki örneğe bakın. Daha önce tanımlanmamış değişkenler için değerleri ayarlayın (örneğin, SSISDBServerName, FirewallIPAddress). 
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $ResourceGroupName `
@@ -163,7 +163,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $S
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği mantıksal bir kapsayıcıdır.
 
 Kaynak grubunuz zaten varsa, bu kodu betiğinize kopyalamayın. 
 
@@ -181,9 +181,9 @@ Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Name $DataFactoryName
 ```
 
-## <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime oluşturma
+## <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS Tümleştirme Çalışma Zamanı Oluşturma
 
-Azure 'da SSIS paketlerini çalıştıran bir Azure-SSIS Integration Runtime oluşturmak için aşağıdaki komutları çalıştırın. SSSıSDB kullanmıyorsanız, CatalogServerEndpoint, CatalogPricingTier ve CatalogAdminCredential parametrelerini atlayabilirsiniz.
+Azure'da SSIS paketlerini çalıştıran bir Azure-SSIS Tümleştirme Çalışma Zamanı oluşturmak için aşağıdaki komutları çalıştırın. SSISDB kullanmıyorsanız, CatalogServerEndpoint, CatalogPricingTier ve CatalogAdminCredential parametrelerini atlayabilirsiniz.
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -249,6 +249,24 @@ if(![string]::IsNullOrEmpty($ExpressCustomSetup))
     {
         $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup)
     }
+    if($ExpressCustomSetup -eq "KingswaySoft.IntegrationToolkit")
+    {
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }
+    if($ExpressCustomSetup -eq "KingswaySoft.ProductivityPack")
+    {
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }    
+    if($ExpressCustomSetup -eq "Theobald.XtractIS")
+    {
+        $jsonData = Get-Content -Raw -Path YourLicenseFile.json
+        $jsonData = $jsonData -replace '\s',''
+        $jsonData = $jsonData.replace('"','\"')
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString($jsonData)
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }
     # Create an array of one or more express custom setups
     $setups = New-Object System.Collections.ArrayList
     $setups.Add($setup)
@@ -278,9 +296,9 @@ if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::Is
 }
 ```
 
-## <a name="start-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime başlatın
+## <a name="start-the-azure-ssis-integration-runtime"></a>Azure-SSIS Tümleştirme Çalışma Süresini Başlatın
 
-Azure-SSIS IR başlatmak için aşağıdaki komutları çalıştırın:
+Azure-SSIS IR'yi başlatmak için aşağıdaki komutları çalıştırın:
 
 ```powershell
 write-host("##### Starting #####")
@@ -294,24 +312,24 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 > [!NOTE]
-> Özel kurulum süresini dışlayarak, bu işlem beş dakika içinde tamamlanmalıdır.
+> Herhangi bir özel kurulum süresi hariç, bu işlem beş dakika içinde tamamlanmalıdır.
 >
-> SSSıSDB kullanıyorsanız, Azure Data Factory hizmeti SSıSDB 'yi hazırlamak için veritabanı sunucunuza bağlanır. 
+> SSISDB kullanıyorsanız, Azure Veri Fabrikası hizmeti SSISDB hazırlamak için veritabanı sunucunuza bağlanır. 
 > 
-> Bir Azure-SSIS IR ayarlarken, SSIS için yeniden dağıtılabilir ve Azure Özellik paketi de yüklenir. Bu bileşenler, yerleşik bileşenler tarafından zaten desteklenen veri kaynaklarına ek olarak Excel/Access dosyalarına ve çeşitli Azure veri kaynaklarına bağlantı sağlar. Ayrıca, ek bileşenleri de yükleyebilirsiniz, bkz. [Azure-SSIS IR Için özel kurulum](how-to-configure-azure-ssis-ir-custom-setup.md).
+> Bir Azure-SSIS IR ayarladığınızda, SSIS için Access Yeniden Dağıtılabilir ve Azure Özellik Paketi de yüklenir. Bu bileşenler, yerleşik bileşenler tarafından zaten desteklenen veri kaynaklarına ek olarak Excel/Access dosyalarına ve çeşitli Azure veri kaynaklarına bağlantı sağlar. Ayrıca ek bileşenler yükleyebilirsiniz, [Bkz. Azure-SSIS IR için Özel kurulum.](how-to-configure-azure-ssis-ir-custom-setup.md)
 
 ## <a name="full-script"></a>Tam betik
 
-Bu bölümdeki PowerShell betiği, SSIS paketlerini çalıştıran bir Azure-SSIS IR örneğini yapılandırır. Bu betiği başarıyla çalıştırdıktan sonra, Azure 'da SSIS paketlerini dağıtabilir ve çalıştırabilirsiniz.
+Bu bölümdeki PowerShell komut dosyası, SSIS paketlerini çalıştıran Azure-SSIS IR örneğini yapılandırır. Bu komut dosyalarını başarıyla çalıştırdıktan sonra SSIS paketlerini Azure'da dağıtabilir ve çalıştırabilirsiniz.
 
-1. ISE 'yi açın.
-2. ISE komut isteminde aşağıdaki komutu çalıştırın:  
+1. İmKB'yi açın.
+2. İmKB komut isteminde aşağıdaki komutu çalıştırın:  
 
     ```powershell
     Set-ExecutionPolicy Unrestricted -Scope CurrentUser
     ```
 
-3. Bu bölümdeki PowerShell betiğini ıSE 'ye kopyalayın.
+3. Bu bölümdeki PowerShell komut dosyasını Ise'e kopyalayın.
 4. Betiğin başında tüm parametreler için uygun değerleri sağlayın.
 5. Betiği çalıştırın. 
 
@@ -342,7 +360,7 @@ $AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while Ba
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-$ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
+$ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
 $SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you want to use SSISDB, ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
@@ -451,6 +469,24 @@ if(![string]::IsNullOrEmpty($ExpressCustomSetup))
     {
         $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup)
     }
+    if($ExpressCustomSetup -eq "KingswaySoft.IntegrationToolkit")
+    {
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }
+    if($ExpressCustomSetup -eq "KingswaySoft.ProductivityPack")
+    {
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }    
+    if($ExpressCustomSetup -eq "Theobald.XtractIS")
+    {
+        $jsonData = Get-Content -Raw -Path YourLicenseFile.json
+        $jsonData = $jsonData -replace '\s',''
+        $jsonData = $jsonData.replace('"','\"')
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString($jsonData)
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }
     # Create an array of one or more express custom setups
     $setups = New-Object System.Collections.ArrayList
     $setups.Add($setup)
@@ -490,27 +526,27 @@ write-host("##### Completed #####")
 write-host("If any cmdlet is unsuccessful, please consider using -Debug option for diagnostics.")   
 ```
 
-## <a name="monitor-and-manage-your-azure-ssis-ir"></a>Azure-SSIS IR izleyin ve yönetin
+## <a name="monitor-and-manage-your-azure-ssis-ir"></a>Azure-SSIS IR'nizi izleyin ve yönetin
 
-Azure-SSIS IR izleme ve yönetme hakkında bilgi için, bkz.: 
+Azure-SSIS IR'yi izleme ve yönetme hakkında bilgi için bkz: 
 
-- [Azure-SSIS IR izleme](monitor-integration-runtime.md#azure-ssis-integration-runtime)
-- [Azure-SSIS IR yönetme](manage-azure-ssis-integration-runtime.md)
+- [Azure-SSIS IR'yi izleyin](monitor-integration-runtime.md#azure-ssis-integration-runtime)
+- [Azure-SSIS IR'yi yönetme](manage-azure-ssis-integration-runtime.md)
 
 ## <a name="deploy-ssis-packages"></a>SSIS paketlerini dağıtma
 
-SSSıSDB kullanıyorsanız, paketlerinizi bu sunucuya dağıtabilir ve sunucu uç noktası aracılığıyla veritabanı sunucunuza bağlanan SQL Server Veri Araçları (SSDT) veya SQL Server Management Studio (SSMS) araçlarını kullanarak Azure-SSIS IR çalıştırabilirsiniz. Azure SQL veritabanı sunucu örneğiniz veya ortak uç nokta içeren yönetilen bir örnek için sunucu uç noktası biçimleri *<server name>. Database.Windows.net* ve *<server name>. public.<dns prefix>. Database. Windows. net, 3342*, sırasıyla. 
+SSISDB kullanıyorsanız, paketlerinizi ona dağıtabilir ve sunucu bitiş noktası üzerinden veritabanı sunucunuza bağlanan SQL Server Data Tools (SSDT) veya SQL Server Management Studio (SSMS) araçlarını kullanarak Azure-SSIS IR'de çalıştırabilirsiniz. Azure SQL Veritabanı sunucu örneğiniz veya ortak bitiş noktası olan yönetilen bir örnek için sunucu bitiş noktası biçimleri sırasıyla * <server name>.database.windows.net* ve * <server name>.public.<dns prefix>.database.windows.net,3342'dir.* 
 
-SSSıSDB kullanmıyorsanız, paketlerinizi dosya sistemlerine, dosya paylaşımlarına veya bir Azure dosya paylaşımına dağıtabilir ve `dtinstall`/`dtutil`/komut satırı yardımcı programlarını kullanarak Azure-SSIS IR çalıştırabilirsiniz.`dtexec` Daha fazla bilgi için bkz. [SSIS paketlerini dağıtma](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
+SSISDB kullanmıyorsanız, paketlerinizi dosya sistemlerine, dosya paylaşımlarına veya Azure Dosyaları paylaşımına dağıtabilir ve komut satırı `dtinstall` / `dtutil` / `dtexec` yardımcı programları kullanarak Azure-SSIS IR'de çalıştırabilirsiniz. Daha fazla bilgi için [bkz.](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server) 
 
-Her iki durumda da, Azure Data Factory işlem hatları içinde SSIS paketi yürütme etkinliğini kullanarak Azure-SSIS IR dağıtılan paketlerinizi çalıştırabilirsiniz. Daha fazla bilgi için bkz. [birinci sınıf Azure Data Factory etkinliği olarak SSIS paketi yürütmeyi çağırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Her iki durumda da, Azure Veri Fabrikası ardışık hatlarında SSIS paket etkinliğini yürüt'üni kullanarak dağıtılan paketlerinizi Azure-SSIS IR'de de çalıştırabilirsiniz. Daha fazla bilgi için, [birinci sınıf bir Azure Veri Fabrikası etkinliği olarak Invoke SSIS paket yürütmesi'ne](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)bakın.
 
-Daha fazla SSIS belgesi için bkz.: 
+Daha fazla SSIS dokümantasyonu için bkz: 
 
-- [Azure 'da SSIS paketlerini dağıtma, çalıştırma ve izleme](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
-- [Azure 'da SSıSDB 'ye bağlanma](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
-- [Azure 'da paket yürütmelerini zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
+- [Azure'da SSIS paketlerini dağıtma, çalıştırma ve izleme](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
+- [Azure'da SSISDB'ye bağlanın](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
 - [Windows kimlik doğrulaması ile şirket içi veri kaynaklarına bağlanma](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
+- [Azure'da paket yürütmelerini zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -518,12 +554,12 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.
-> * Azure-SSIS Integration Runtime oluşturun.
-> * Azure-SSIS Integration Runtime başlatın.
-> * Tüm betiği inceleyin.
+> * Azure-SSIS Tümleştirme Çalışma Zamanı oluşturun.
+> * Azure-SSIS Tümleştirme Çalışma Süresini başlatın.
+> * Komut dosyasının tamamını gözden geçirin.
 > * SSIS paketlerini dağıtın.
 
-Azure-SSIS Integration Runtime özelleştirme hakkında bilgi edinmek için aşağıdaki makaleye bakın:
+Azure-SSIS Tümleştirme Çalışma Sürenizi özelleştirme hakkında bilgi edinmek için aşağıdaki makaleye bakın:
 
 > [!div class="nextstepaction"]
->[Azure-SSIS IR özelleştirin](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)
+>[Azure-SSIS IR'nizi özelleştirin](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)

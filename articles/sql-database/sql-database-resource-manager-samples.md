@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager şablonları
-description: Azure SQL veritabanı oluşturmak ve yapılandırmak için Azure Resource Manager şablonlarını kullanın.
+description: Azure SQL Veritabanı oluşturmak ve yapılandırmak için Azure Kaynak Yöneticisi şablonlarını kullanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,44 +12,44 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
 ms.openlocfilehash: b254621cc414fb9b2b76263957adc80da6e9c22d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79213997"
 ---
-# <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL veritabanı için Azure Resource Manager şablonları
+# <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL Veritabanı için Azure Kaynak Yöneticisi şablonları
 
-Azure Resource Manager şablonlar altyapınızı kod olarak tanımlamanızı ve çözümlerinizi Azure bulutuna dağıtmanızı sağlar.
+Azure Kaynak Yöneticisi şablonları, altyapınızı kod olarak tanımlamanızı ve çözümlerinizi Azure bulutuna dağıtmanızı sağlar.
 
 ## <a name="single-database--elastic-pool"></a>[Tek veritabanı & elastik havuz](#tab/single-database)
 
-Aşağıdaki tabloda, Azure SQL veritabanı için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
+Aşağıdaki tablo, Azure SQL Veritabanı için Azure Kaynak Yöneticisi şablonlarına bağlantılar içerir.
 
 | |  |
 |---|---|
-| [Tek veritabanı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Bu Azure Resource Manager şablonu, mantıksal sunucu ile tek bir Azure SQL veritabanı oluşturur ve güvenlik duvarı kurallarını yapılandırır. |
-| [Mantıksal sunucu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Bu Azure Resource Manager şablonu, Azure SQL veritabanı için bir mantıksal sunucu oluşturur. |
-| [Elastik havuz](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Bu şablon, yeni ilişkili SQL Server ve buna atamak için yeni SQL veritabanlarıyla yeni bir elastik havuz dağıtmanıza olanak tanır. |
-| [Yük devretme grupları](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Bu şablon iki Azure SQL mantıksal sunucusu, bir SQL veritabanı ve bir yük devretme grubu oluşturur.|
-| [Tehdit algılama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Bu şablon, her veritabanı için uyarılar için bir e-posta adresi ile bir Azure SQL mantıksal sunucusunu ve tehdit algılama özelliği etkinleştirilmiş bir dizi Azure SQL veritabanını dağıtmanıza olanak tanır. Tehdit algılama, SQL Gelişmiş tehdit koruması (ATP) sunumunun bir parçasıdır ve SQL Server ve veritabanları üzerinden olası tehditlere yanıt veren bir güvenlik katmanı sağlar.|
-| [Azure Blob depolamaya yönelik denetim](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Bu şablon, Denetim günlüklerini blob depolamaya yazmak için denetim etkinleştirilmiş bir Azure SQL mantıksal sunucusu dağıtmanıza olanak tanır. Azure SQL veritabanı için denetim, veritabanı olaylarını izler ve bunları Azure depolama hesabınıza, OMS çalışma alanınıza veya Event Hubs yerleştirilebilecek bir denetim günlüğüne yazar.|
-| [Azure Olay Hub 'ına denetim](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Bu şablon, çıkış bir olay hub 'ına denetim günlükleri yazmak için etkin denetim ile bir Azure SQL Server dağıtmanıza olanak tanır. Olay Hub 'ına denetim olayları göndermek için denetim ayarlarını `Enabled` `State` olarak ayarlayın ve `IsAzureMonitorTargetEnabled` `true`olarak ayarlayın. Ayrıca, tanılama ayarlarını `master` veritabanında `SQLSecurityAuditEvents` log kategorisi ile yapılandırın (örneğin, hizmeti düzeyinde denetim için). Azure SQL veritabanı ve SQL veri ambarı için denetim, veritabanı olaylarını izler ve bunları Azure depolama hesabınıza, OMS çalışma alanınıza veya Event Hubs yerleştirilebilecek bir denetim günlüğüne yazar.|
-| [SQL veritabanı ile Azure Web uygulaması](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Bu örnek, "temel" hizmet düzeyinde ücretsiz bir Azure Web uygulaması ve SQL veritabanı oluşturur.|
-| [Azure Web uygulaması ve SQL veritabanı ile Redis Cache](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Bu şablon, aynı kaynak grubunda bir Web uygulaması, Redis Cache ve SQL veritabanı oluşturur ve SQL veritabanı ve Redis Cache için Web uygulamasında iki bağlantı dizesi oluşturur.|
-| [ADF v2 kullanarak blob depolamadan veri aktarma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Bu Azure Resource Manager şablonu, verileri Azure Blob depolama alanından SQL veritabanına kopyalayan Azure Data Factory v2 oluşturur.|
-| [SQL veritabanı içeren HDInsight kümesi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Bu şablon, bir HDInsight kümesi, bir SQL veritabanı sunucusu, bir SQL veritabanı ve iki tablo oluşturmanıza olanak sağlar. Bu şablon, [HDInsight 'Ta Hadoop Ile Sqoop kullanma makalesinde](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) kullanılır |
-| [Bir SQL saklı yordamını zamanlamaya göre çalıştıran Azure Logic App](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Bu şablon, zamanlamaya göre bir SQL saklı yordamı çalıştıracak bir mantıksal uygulama oluşturmanıza olanak tanır. Yordamın tüm bağımsız değişkenleri, şablonun gövde bölümüne yerleştirilebilir.|
+| [Tek veritabanı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Bu Azure Kaynak Yöneticisi şablonu, mantıksal sunucuya sahip tek bir Azure SQL Veritabanı oluşturur ve güvenlik duvarı kurallarını yapılandırır. |
+| [Mantıksal sunucu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Bu Azure Kaynak Yöneticisi şablonu, Azure SQL Veritabanı için mantıksal bir sunucu oluşturur. |
+| [Elastik havuz](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Bu şablon, yeni ilişkili SQL Server ve yeni SQL Veritabanları ile yeni bir Elastik havuz dağıtmak için ona atamak için izin verir. |
+| [Başarısız gruplar](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Bu şablon, iki Azure SQL mantıksal sunucu, bir SQL veritabanı ve bir başarısız grup oluşturur.|
+| [Tehdit Algılama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Bu şablon, her veritabanı için uyarılar için bir e-posta adresi yle, Tehdit Algılama etkinleştirilmiş bir Azure SQL mantıksal sunucusu ve bir dizi Azure SQL Veritabanı dağıtmanızı sağlar. Tehdit Algılama, SQL Gelişmiş Tehdit Koruması (ATP) teklifinin bir parçasıdır ve SQL sunucuları ve veritabanları üzerindeki olası tehditlere yanıt veren bir güvenlik katmanı sağlar.|
+| [Azure Blob Depolamasına Denetim](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Bu şablon, denetim günlüklerini blob depolamasına yazmak için Denetim etkinleştirilmiş bir Azure SQL mantıksal sunucusu dağıtmanızı sağlar. Azure SQL Veritabanı denetimi veritabanı olaylarını izler ve bunları Azure depolama hesabınıza, OMS çalışma alanınıza veya Olay Hub'larınıza yerleştirilebilen bir denetim günlüğüne yazar.|
+| [Azure Etkinlik Hub'ına Denetim](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Bu şablon, denetim günlüklerini çıkan bir Olay Hub'ına yazmak için Denetim etkinleştirilmiş bir Azure SQL sunucusu dağıtmanızı sağlar. Denetim olaylarını Event Hub'a göndermek için `Enabled` `State` denetim `IsAzureMonitorTargetEnabled` ayarlarını ayarlayın ve ' ' olarak `true`ayarlayın. Ayrıca, `master` Veritabanında günlük `SQLSecurityAuditEvents` kategorisi ile Tanılama Ayarları yapılandırın (hizmet düzeyi denetimi için). Azure SQL Veritabanı ve SQL Veri Ambarı denetimi veritabanı olaylarını izler ve bunları Azure depolama hesabınıza, OMS çalışma alanınıza veya Olay Hub'larınıza yerleştirilebilen bir denetim günlüğüne yazar.|
+| [SQL Veritabanı ile Azure Web Uygulaması](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Bu örnek, "Temel" hizmet düzeyinde ücretsiz bir Azure Web Uygulaması ve SQL Veritabanı oluşturur.|
+| [SQL Veritabanı ile Azure Web Uygulaması ve Redis Önbelleği](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Bu şablon, aynı kaynak grubunda bir Web Uygulaması, Redis Önbelleği ve SQL Veritabanı oluşturur ve SQL Veritabanı ve Redis Önbelleği için Web Uygulamasında iki bağlantı dizeleri oluşturur.|
+| [ADF V2 kullanarak blob depolamadan veri alma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Bu Azure Kaynak Yöneticisi şablonu, Azure Blob Depolama'dan SQL Veritabanı'na kadar verileri kopyalayan Azure Veri Fabrikası V2 oluşturur.|
+| [SQL Veritabanı ile HDInsight kümesi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Bu şablon, bir HDInsight kümesi, bir SQL Veritabanı sunucusu, bir SQL Veritabanı ve iki tablo oluşturmanıza olanak tanır. Bu şablon [HDInsight makalesinde Hadoop ile Sqoop kullanın](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) tarafından kullanılır |
+| [Bir zamanlamada SQL Stored Yordamı çalıştıran Azure Mantık Uygulaması](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Bu şablon, sql depolanmış yordamı zamanında çalıştıracak bir Mantık Uygulaması oluşturmanıza olanak tanır. Yordam için herhangi bir bağımsız değişken şablonun gövde bölümüne konulabilir.|
 
-## <a name="managed-instance"></a>[Yönetilen örnek](#tab/managed-instance)
+## <a name="managed-instance"></a>[Yönetilen Örnek](#tab/managed-instance)
 
-Aşağıdaki tabloda, Azure SQL veritabanı yönetilen örneği için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
+Aşağıdaki tablo, Azure SQL Veritabanı - Yönetilen Örnek için Azure Kaynak Yöneticisi şablonlarına bağlantılar içerir.
 
 | |  |
 |---|---|
-| [Yeni bir VNet 'te yönetilen örnek](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Bu Azure Resource Manager şablonu, sanal ağda yeni bir yapılandırılmış Azure VNet ve yönetilen örnek oluşturur. |
-| [Yönetilen örnek için ağ ortamı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Bu dağıtım, yönetilen örneklerinize ayrılan iki alt ağa sahip yapılandırılmış bir Azure sanal ağı ve diğer kaynakları (örneğin, VM 'Ler, App Service ortamları, vb.) yerleştirebileceğiniz başka bir sanal ağ oluşturur. Bu şablon, yönetilen örnekleri dağıtabileceğiniz, düzgün şekilde yapılandırılmış bir ağ ortamı oluşturacak. |
-| [P2S bağlantısıyla yönetilen örnek](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Bu dağıtım, iki alt ağ `ManagedInstance` ve `GatewaySubnet`bir Azure sanal ağı oluşturacak. Yönetilen örnek, ManagedInstance alt ağında dağıtılacak. Sanal ağ geçidi, `GatewaySubnet` alt ağda oluşturulur ve Noktadan siteye VPN bağlantısı için yapılandırılır. |
-| [Sanal makine ile yönetilen örnek](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Bu dağıtım, iki alt ağ `ManagedInstance` ve `Management`bir Azure sanal ağı oluşturacak. Yönetilen örnek, `ManagedInstance` alt ağına dağıtılacak. SQL Server Management Studio (SSMS) en son sürümüne sahip sanal makine `Management` alt ağda dağıtılır. |
+| [Yeni bir VNet'te Yönetilen Örnek](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Bu Azure Kaynak Yöneticisi şablonu, VNet'te yeni yapılandırılmış bir Azure VNet ve Yönetilen Örnek oluşturur. |
+| [Yönetilen Örnek için ağ ortamı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Bu dağıtım, biri Yönetilen Örneklerinize, diğeri de başka kaynaklar (örneğin VM'ler, Uygulama Hizmeti ortamları vb.) yerleştirebileceğiniz iki alt ağiçeren yapılandırılmış bir Azure Sanal Ağı oluşturur. Bu şablon, Yönetilen Örnekleri dağıtabileceğiniz düzgün yapılandırılmış bir ağ ortamı oluşturur. |
+| [P2S bağlantısı ile Yönetilen Örnek](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Bu dağıtım, iki alt ağa `ManagedInstance` ve `GatewaySubnet`. Yönetilen Örnek ManagedInstance alt ağına dağıtılır. Sanal ağ ağ geçidi `GatewaySubnet` alt ağda oluşturulur ve Noktaya Sayfa VPN bağlantısı için yapılandırılır. |
+| [Sanal makine ile Yönetilen Örnek](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Bu dağıtım, iki alt ağa `ManagedInstance` ve `Management`. Yönetilen Örnek alt ağda `ManagedInstance` dağıtılacaktır. SQL Server Management Studio 'nın (SSMS) en son `Management` sürümüne sahip sanal makine alt ağda dağıtılacaktır. |
 
 ---

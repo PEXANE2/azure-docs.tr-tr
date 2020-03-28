@@ -3,7 +3,7 @@ title: Azure CLI Betik Örneği - ACS DC/OS Kümesi Oluşturma
 description: Azure CLI Betik Örneği - ACS DC/OS Kümesi Oluşturma
 author: iainfoulds
 tags: acs, azure-container-service
-keywords: Docker, Container’lar, Mikro hizmetler, Kumernetes, DC/OS, Azure
+keywords: Docker, Container’lar, Mikro hizmetler, Kubernetes, DC/OS, Azure
 ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
@@ -11,13 +11,13 @@ ms.topic: sample
 ms.date: 05/30/2017
 ms.author: iainfou
 ms.openlocfilehash: b01d8d58da5a25ca9aa3d1ac16f10495fde8fc2b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76270536"
 ---
-# <a name="deprecated-create-an-azure-container-service-dcos-cluster"></a>Kullanım DıŞı Azure Container Service DC/OS kümesi oluşturma
+# <a name="deprecated-create-an-azure-container-service-dcos-cluster"></a>(AmortismanA Uğradı) Azure Kapsayıcı Hizmeti DC/İşletim Sistemi Kümesi Oluşturma
 
 [!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 

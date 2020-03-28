@@ -1,33 +1,33 @@
 ---
-title: Öğretici-Azure sanal ağ eşlemesini, anormal kullanarak yapılandırma
-description: Sanal ağ eşlemesi ile sanal ağları bağlamak için nasıl kullanılacağını öğrenin.
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, ağ, eşleme
+title: Öğretici - Ansible kullanarak Azure sanal ağ eşleme yapılandırma
+description: Sanal ağları sanal ağ yla ilişkilendirmek için Ansible'ı nasıl kullanacağınızı öğrenin.
+keywords: ansible, azure, devops, bash, oyun kitabı, ağ, bakan
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155736"
 ---
-# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Öğretici: Azure sanal ağ eşlemesini, anormal kullanarak yapılandırma
+# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Öğretici: Ansible'ı kullanarak Azure sanal ağ eşlemenizi yapılandırın
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Sanal ağ (VNet) eşlemesi](/azure/virtual-network/virtual-network-peering-overview) , iki Azure sanal ağını sorunsuzca bağlamanıza olanak tanır. Eşlendikten sonra iki sanal ağ bağlantı amaçlarıyla bir tane olarak görünür. 
+[Sanal ağ (VNet) eşleme,](/azure/virtual-network/virtual-network-peering-overview) iki Azure sanal ağını sorunsuz bir şekilde bağlamanızı sağlar. Bir kez bakıldıktan sonra, iki sanal ağ bağlantı amacıyla bir olarak görünür. 
 
-Trafik, özel IP adresleri aracılığıyla aynı sanal ağdaki VM 'Ler arasında yönlendirilir. Benzer şekilde, eşlenmiş bir sanal ağdaki VM 'Ler arasındaki trafik, Microsoft omurga altyapısı aracılığıyla yönlendirilir. Sonuç olarak, farklı sanal ağlardaki VM 'Ler birbirleriyle iletişim kurabilir.
+Trafik, aynı sanal ağdaki VM'ler arasında özel IP adresleri üzerinden yönlendirilir. Benzer şekilde, eşlenen bir sanal ağdaki VM'ler arasındaki trafik Microsoft omurga altyapısı üzerinden yönlendirilir. Sonuç olarak, farklı sanal ağlardaki VM'ler birbirleriyle iletişim kurabilir.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * İki sanal ağ oluşturma
-> * İki sanal ağı eşler
-> * İki ağ arasındaki eşlemeyi silme
+> * İki sanal ağı eşleyin
+> * İki ağ arasındaki eşlemi silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -36,7 +36,7 @@ Trafik, özel IP adresleri aracılığıyla aynı sanal ağdaki VM 'Ler arasınd
 
 Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
+Bu bölümdeki örnek oyun kitabı kodu aşağıdakileri yapmak için kullanılır:
 
 - İki kaynak grubu oluşturma 
 
@@ -53,7 +53,7 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
 
 ## <a name="create-the-first-virtual-network"></a>İlk sanal ağı oluşturma
 
-Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
+Bu bölümdeki örnek oyun kitabı kodu aşağıdakileri yapmak için kullanılır:
 
 - Sanal ağ oluşturma
 - Sanal ağ içinde bir alt ağ oluşturma
@@ -74,7 +74,7 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
 
 ## <a name="create-the-second-virtual-network"></a>İkinci sanal ağı oluşturma
 
-Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
+Bu bölümdeki örnek oyun kitabı kodu aşağıdakileri yapmak için kullanılır:
 
 - Sanal ağ oluşturma
 - Sanal ağ içinde bir alt ağ oluşturma
@@ -93,12 +93,12 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
       virtual_network: "{{ vnet_name2 }}"
 ```
 
-## <a name="peer-the-two-virtual-networks"></a>İki sanal ağı eşler
+## <a name="peer-the-two-virtual-networks"></a>İki sanal ağı eşleyin
 
-Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
+Bu bölümdeki örnek oyun kitabı kodu aşağıdakileri yapmak için kullanılır:
 
-- Sanal Ağ eşlemesini Başlat
-- Daha önce oluşturulmuş ikinci sanal ağ
+- Sanal ağ eşleme başlatma
+- Eş iki daha önce oluşturulmuş sanal ağlar
 
 ```yml
   - name: Initial vnet peering
@@ -124,11 +124,11 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
       allow_forwarded_traffic: true
 ```
 
-## <a name="delete-the-virtual-network-peering"></a>Sanal Ağ eşlemesini Sil
+## <a name="delete-the-virtual-network-peering"></a>Sanal ağ eşlemesini silme
 
-Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
+Bu bölümdeki örnek oyun kitabı kodu aşağıdakileri yapmak için kullanılır:
 
-- Daha önce oluşturulan iki sanal ağ arasındaki eşlemeyi Sil
+- Daha önce oluşturulmuş iki sanal ağ arasındaki eşlemi silme
 
 ```yml
   - name: Delete vnet peering
@@ -139,12 +139,12 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Örnek PlayBook 'u alın
+## <a name="get-the-sample-playbook"></a>Örnek oyun kitabını alın
 
-Örnek PlayBook 'un tamamını almanın iki yolu vardır:
+Tam örnek oyun kitabını almanın iki yolu vardır:
 
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) ve `vnet_peering.yml`kaydedin.
-- `vnet_peering.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+- [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) ve `vnet_peering.yml`'ye kaydedin.
+- Adlandırılmış `vnet_peering.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 - hosts: localhost
@@ -225,21 +225,21 @@ Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Örnek PlayBook 'u çalıştırma
+## <a name="run-the-sample-playbook"></a>Örnek oyun kitabını çalıştırın
 
-Bu bölümdeki örnek PlayBook kodu, bu öğretici genelinde gösterilen çeşitli özellikleri test etmek için kullanılır.
+Bu bölümdeki örnek oyun kitabı kodu, bu öğretici boyunca gösterilen çeşitli özellikleri test etmek için kullanılır.
 
-Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
+Örnek oyun kitabıyla çalışırken göz önünde bulundurulması gereken bazı önemli notlar şunlardır:
 
-- `vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+- `vars` Bölümde, yer tutucuyu `{{ resource_group_name }}` kaynak grubunuzun adı ile değiştirin.
 
-Anerişilebilir-PlayBook komutunu kullanarak PlayBook 'u çalıştırın:
+Ansible-playbook komutunu kullanarak oyun kitabını çalıştırın:
 
 ```bash
 ansible-playbook vnet_peering.yml
 ```
 
-PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
+Oyun kitabını çalıştırdıktan sonra, aşağıdaki sonuçlara benzer çıktı görürsünüz:
 
 ```Output
 PLAY [localhost] 
@@ -288,11 +288,11 @@ localhost                  : ok=12   changed=9    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
+Bu bölümdeki örnek oyun kitabı kodu aşağıdakileri yapmak için kullanılır:
 
-- Daha önce oluşturulan iki kaynak grubunu sil
+- Daha önce oluşturulan iki kaynak grubuna silme
 
 Aşağıdaki playbook'u `cleanup.yml` olarak kaydedin:
 
@@ -315,13 +315,13 @@ Aşağıdaki playbook'u `cleanup.yml` olarak kaydedin:
         state: absent
 ```
 
-Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
+Örnek oyun kitabıyla çalışırken göz önünde bulundurulması gereken bazı önemli notlar şunlardır:
 
-- `{{ resource_group_name-1 }}` yer tutucusunu oluşturulan ilk kaynak grubunun adıyla değiştirin.
-- `{{ resource_group_name-2 }}` yer tutucusunu, oluşturulan ikinci kaynak grubunun adıyla değiştirin.
-- Belirtilen iki kaynak grubu içindeki tüm kaynaklar silinecek.
+- Yer `{{ resource_group_name-1 }}` tutucuyu oluşturulan ilk kaynak grubunun adı ile değiştirin.
+- Yer `{{ resource_group_name-2 }}` tutucuyu oluşturulan ikinci kaynak grubunun adı ile değiştirin.
+- Belirtilen iki kaynak grubundaki tüm kaynaklar silinir.
 
-Anerişilebilir-PlayBook komutunu kullanarak PlayBook 'u çalıştırın:
+Ansible-playbook komutunu kullanarak oyun kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

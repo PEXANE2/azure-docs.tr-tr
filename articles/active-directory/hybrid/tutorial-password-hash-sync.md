@@ -1,6 +1,6 @@
 ---
-title: "Öğretici:  Tek bir AD ormanında PHS'ı kullanarak azure'a tümleştirin"
-description: Parola Karması eşitleme kullanarak bir karma kimlik ortamını ayarlama işlemi gösterilmektedir.
+title: "Öğretici: PHS kullanarak tek bir AD ormanını Azure' a entegre etme"
+description: Parola karma eşitlemeyi kullanarak karma kimlik ortamının nasıl kurulabildiğini gösterir.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,37 +15,37 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66474007"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Öğretici:  Parola karması eşitleme (PHS) kullanarak tek bir AD ormanında tümleştirme
+# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Öğretici: Parola karma eşitleme (PHS) kullanarak tek bir AD ormanLarını tümleştir
 
-![Create](media/tutorial-password-hash-sync/diagram.png)
+![Oluşturma](media/tutorial-password-hash-sync/diagram.png)
 
-Aşağıdaki öğreticiye parola karması eşitleme kullanarak bir karma kimlik ortamı oluşturma işleminde size yol gösterir.  Bu ortam, test etmek veya bir karma kimlik nasıl çalışır hakkında daha fazla bilgi almak için kullanılabilir.
+Aşağıdaki öğretici, parola karma eşitlemeyi kullanarak karma bir kimlik ortamı oluşturmada size yol gösterir.  Bu ortam daha sonra sınamak veya karma kimliğin nasıl çalıştığını daha iyi tanımak için kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu öğreticiyi tamamlamak için gereken önkoşulları şunlardır:
-- Bir bilgisayarla [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü.  Üzerinde ya da bunu yapmak için önerilen bir [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayar.
-- Bir [dış ağ bağdaştırıcısı](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) sanal makinenin internet ile iletişim kurmasına izin vermek için.
+## <a name="prerequisites"></a>Ön koşullar
+Bu öğreticinin tamamlanması için gerekli ön koşullar aşağıda dır.
+- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir Windows 10 veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir. [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os)
+- Sanal makinenin internetle iletişim kurmasını sağlamak için harici ağ [bağdaştırıcısı.](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)
 - [Azure aboneliği](https://azure.microsoft.com/free)
-- Windows Server 2016'ın bir kopyalama
+- Windows Server 2016'nın bir kopyası
 
 > [!NOTE]
-> Bu öğreticide, hızlı sürede öğretici ortamı oluşturabilmeniz PowerShell betikleri kullanılır.  Her komut betikleri başında bildirilen değişkenleri kullanır.  Yapabilir ve ortamınızı yansıtmak üzere değişkenleri değiştirmeniz gerekir.
+> Bu öğretici, en kısa sürede öğretici ortamı oluşturabilmeniz için PowerShell komut dosyalarını kullanır.  Komut dosyalarının her biri, komut dosyalarının başında bildirilen değişkenleri kullanır.  Değişkenleri ortamınızı yansıtacak şekilde değiştirebilirsiniz ve değiştirmelisiniz.
 >
->Kullanılan komut dosyaları, Azure AD Connect'i yüklemeden önce genel bir Active Directory ortamı oluşturun.  Bunlar tüm öğreticileri için uygundur.
+>Kullanılan komut dosyaları, Azure AD Connect'i yüklemeden önce genel bir Etkin Dizin ortamı oluşturur.  Tüm öğreticiler için geçerlidir.
 >
-> Bu öğreticide kullanılan PowerShell betikleri kopyalarını Github'da bulunmaktadır [burada](https://github.com/billmath/tutorial-phs).
+> Bu eğitimde kullanılan PowerShell komut dosyalarının kopyalarını [Burada](https://github.com/billmath/tutorial-phs)GitHub'da bulabilirsiniz.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
-Şirket içi Active Directory Sunucumuz kullanılacak bir sanal makine oluşturmak için çalışan yapmak için karma kimlik ortamımızda ürününü ihtiyacımız ve ilk şey.  Şunları yapın:
+Hibrid kimlik ortamımızı çalışır hale getirmek için yapmamız gereken ilk şey, şirket içi Active Directory sunucumuz olarak kullanılacak sanal bir makine oluşturmaktır.  Şunları yapın:
 
-1. Yönetici olarak PowerShell ISE'yi açın.
-2. Aşağıdaki betiği çalıştırın.
+1. PowerShell ISE'yi Yönetici olarak açın.
+2. Aşağıdaki komut dosyasını çalıştırın.
 
 ```powershell
 #Declare variables
@@ -73,24 +73,24 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 ```
 
 ## <a name="complete-the-operating-system-deployment"></a>İşletim sistemi dağıtımını tamamlama
-Sanal makine oluşturma işlemini tamamlamak için işletim sistemi yüklemesinin tamamlanması gerekir.
+Sanal makine bina bitirmek için, işletim sistemi yükleme bitirmek gerekir.
 
-1. Hyper-V Yöneticisi, sanal makinede çift tıklatın
+1. Hyper-V Manager, sanal makineye çift tıklayın
 2. Başlat düğmesine tıklayın.
-3. 'CD veya DVD'den önyükleme için bir tuşa basın için ' istenir. Devam edin ve bunu yapın.
-4. Windows Server başlangıç ekranı dilinizi seçin ve tıklayın **sonraki**.
-5. Tıklayın **Şimdi Yükle**.
-6. Lisans anahtarınızı girip __iade **sonraki**.
-7. Denetleme ** lisans koşullarını kabul edin ve tıklayın **sonraki**.
-8. Seçin **özel:  Yalnızca Windows yükleyin (Gelişmiş)**
-9. **İleri**'ye tıklayın.
-10. Yükleme tamamlandıktan sonra VM'yi en güncel olduğundan emin olmak için oturum açma ve çalıştırma Windows güncelleştirmeleri, sanal makineyi yeniden başlatın.  En son güncelleştirmeleri yüklersiniz.
+3. 'CD veya DVD'den önyükleme için herhangi bir tuşa basın' sizden istenir. Devam et ve yap.
+4. Windows Server başlangıç ekranında dilinizi seçin ve **İleri'yi**tıklatın.
+5. **Şimdi Yükle'yi**tıklatın.
+6. Lisans anahtarınızı girin ve **İleri'yi**tıklatın.
+7. Kontrol **Lisans koşullarını kabul ediyorum ve **İleri'yi**tıklatın.
+8. **Özel'i seçin: Yalnızca Windows'u Yükle (Gelişmiş)**
+9. **İleri'yi** tıklatın
+10. Yükleme tamamlandıktan sonra sanal makineyi yeniden başlatın, VM'nin en güncel olduğundan emin olmak için Windows güncelleştirmelerini oturum açın ve çalıştırın.  En son güncelleştirmeleri yükleyin.
 
-## <a name="install-active-directory-prerequisites"></a>Active Directory önkoşulları yükleyin
-Bir sanal makine sahibiz, Active Directory yüklemeden önce birkaç şey yapmanız gerekir.  Diğer bir deyişle, sanal makine yeniden adlandırma, bir statik IP adresi ve DNS bilgilerini ayarlayabilir ve Uzak Sunucu Yönetim Araçları'nı yükleme ihtiyacımız var.   Şunları yapın:
+## <a name="install-active-directory-prerequisites"></a>Etkin Dizin önkoşulları yükleyin
+Artık sanal bir makinemiz olduğuna göre, Active Directory'yi yüklemeden önce birkaç şey yapmamız gerekiyor.  Diğer bir de sanal makinenin adını yeniden adlandırmamız, statik bir IP adresi ve DNS bilgileri ayarlamamız ve Uzaktan Sunucu Yönetimi araçlarını yüklememiz gerekir.   Şunları yapın:
 
-1. Yönetici olarak PowerShell ISE'yi açın.
-2. Aşağıdaki betiği çalıştırın.
+1. PowerShell ISE'yi Yönetici olarak açın.
+2. Aşağıdaki komut dosyasını çalıştırın.
 
 ```powershell
 #Declare variables
@@ -123,10 +123,10 @@ Restart-Computer
 ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD ortamı oluşturma
-Oluşturulan VM sunuyoruz ve yeniden adlandırıldı ve bir statik IP adresine sahip olduğunuzdan, biz devam edin ve yükleyebilir ve Active Directory Domain Services'ı yapılandırın.  Şunları yapın:
+Şimdi VM oluşturulan ve yeniden adlandırıldı ve statik bir IP adresi vardır, biz devam edin ve yüklemek ve Aktif Dizin Etki Alanı Hizmetleri yapılandırmak.  Şunları yapın:
 
-1. Yönetici olarak PowerShell ISE'yi açın.
-2. Aşağıdaki betiği çalıştırın.
+1. PowerShell ISE'yi Yönetici olarak açın.
+2. Aşağıdaki komut dosyasını çalıştırın.
 
 ```powershell 
 #Declare variables
@@ -153,11 +153,11 @@ Get-WindowsFeature | Where installed >>$featureLogPath
 Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $SecureString -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
 ```
 
-## <a name="create-a-windows-server-ad-user"></a>Bir Windows Server AD kullanıcısı oluşturun
-Active Directory ortamımızda sahibiz, bir test hesabına ihtiyacımız var.  Bu hesap, şirket içinde oluşturulacak AD ortamını ve ardından Azure AD'ye eşitlenen.  Şunları yapın:
+## <a name="create-a-windows-server-ad-user"></a>Windows Server AD kullanıcısı oluşturma
+Artık Aktif Dizin ortamımız olduğuna göre, bir test hesabına ihtiyacımız var.  Bu hesap şirket içi REKLAM ortamımızda oluşturulur ve azure AD ile senkronize edilir.  Şunları yapın:
 
-1. Yönetici olarak PowerShell ISE'yi açın.
-2. Aşağıdaki betiği çalıştırın.
+1. PowerShell ISE'yi Yönetici olarak açın.
+2. Aşağıdaki komut dosyasını çalıştırın.
 
 ```powershell 
 #Declare variables
@@ -178,63 +178,63 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ```
 
 ## <a name="create-an-azure-ad-tenant"></a>Azure AD kiracısı oluşturma
-Artık Azure AD kiracısı oluşturun, böylece biz kullanıcılarımız için bulut eşitlemek ihtiyacımız var.  Yeni bir Azure AD oluşturmak için Kiracı, aşağıdakileri yapın.
+Şimdi, kullanıcılarımızı bulutla senkronize edebilmemiz için bir Azure AD kiracıoluşturmamız gerekiyor.  Yeni bir Azure AD kiracısı oluşturmak için aşağıdaki adımları uygulayın.
 
-1. Gözat [Azure portalında](https://portal.azure.com) ve bir Azure aboneliğine sahip bir hesapla oturum açın.
-2. Seçin **simgesini (+) artı** araması **Azure Active Directory**.
-3. Seçin **Azure Active Directory** arama sonuçlarında.
-4. **Oluştur**’u seçin.</br>
+1. [Azure portalına](https://portal.azure.com) gidip Azure aboneliği olan bir hesapla oturum açın.
+2. **Artı simgesini (+)** seçip **Azure Active Directory** terimini aratın.
+3. Arama sonuçlarında **Azure Active Directory** girişini seçin.
+4. **Oluştur'u**seçin.</br>
 ![Oluşturma](media/tutorial-password-hash-sync/create1.png)</br>
-5. Sağlayan bir **kuruluş adı** ile birlikte **ilk etki alanı adı**. Ardından **Oluştur**’u seçin. Bu dizin oluşturur.
-6. Bu tamamlandıktan sonra tıklayın **burada** dizini yönetmek için bağlantı.
+5. **Kuruluş için bir ad** ve **ilk etki alanı adı** girin. Ardından **Oluştur**’u seçin. Dizininiz oluşturulur.
+6. Bu işlem tamamlandıktan sonra, dizini yönetmek için **buradaki** bağlantıyı tıklatın.
 
-## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD genel Yöneticisi oluşturma
-Azure AD kiracısı sahibiz, genel yönetici hesabını oluşturacağız.  Bu hesap, Azure AD Connect yüklemesi sırasında Azure AD Bağlayıcısı hesabı oluşturmak için kullanılır.  Azure AD Bağlayıcısı hesabı bilgileri Azure AD'ye yazmak için kullanılır.   Genel yönetici oluşturmak için hesabı aşağıdakileri yapın.
+## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD'de genel bir yönetici oluşturma
+Artık bir Azure AD kiracımız olduğuna göre, genel bir yönetici hesabı oluşturacağız.  Bu hesap, Azure AD Connect yüklemesi sırasında Azure AD Bağlayıcısı hesabını oluşturmak için kullanılır.  Azure AD Bağlayıcısı hesabı, Azure AD'ye bilgi yazmak için kullanılır.   Genel yönetici hesabını oluşturmak için aşağıdakileri yapın.
 
 1.  **Yönet** bölümünde **Kullanıcılar**’ı seçin.</br>
 ![Oluşturma](media/tutorial-password-hash-sync/gadmin1.png)</br>
-2.  Seçin **tüm kullanıcılar** seçip **+ yeni kullanıcı**.
-3.  Bu kullanıcı için bir ad ve kullanıcı adı sağlayın. Bu kiracının genel Yöneticisi olacaktır. Ayrıca değiştirmek isteyeceksiniz **dizin rolü** için **genel yönetici.** Geçici parolayı da gösterebilirsiniz. İşiniz bittiğinde **Oluştur**’u seçin.</br>
+2.  **Tüm kullanıcılar**'ı ve ardından **+ Yeni kullanıcı**'yı seçin.
+3.  Bu kullanıcı için bir ad ve kullanıcı adı girin. Bu kullanıcı kiracınızın Genel Yöneticisi olacak. **Dizin rolünü** Global yönetici olarak da değiştirmek isteyeceksiniz. **Global administrator.** İsterseniz geçici parolayı da gösterebilirsiniz. İşiniz bittiğinde **Oluştur**'u seçin.</br>
 ![Oluşturma](media/tutorial-password-hash-sync/gadmin2.png)</br>
-4. Bu tamamlandıktan sonra yeni bir web tarayıcısı açın ve yeni genel yönetici hesabını ve geçici parolayı kullanarak myapps.microsoft.com için oturum açın.
-5. Genel yönetici, hatırlanır bir şey için parolayı değiştirin.
+4. Bu işlem tamamlandıktan sonra, yeni bir web tarayıcısı açın ve yeni genel yönetici hesabını ve geçici parolayı kullanarak myapps.microsoft.com oturum açın.
+5. Genel yöneticinin parolasını hatırlayacağınız bir şeyle değiştirin.
 
-## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect yükleme ve indirme
-Artık Azure AD Connect karşıdan yüklenip kurulacak zamanı geldi.  Yüklendikten sonra hızlı yükleme çalıştıracağız.  Şunları yapın:
+## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect'i indirin ve yükleyin
+Şimdi Azure AD Connect'i indirme ve yükleme zamanı.  Kurulduktan sonra ekspres kurulum üzerinden çalışacaktır.  Şunları yapın:
 
-1. İndirme [Azure AD'ye bağlanma](https://www.microsoft.com/download/details.aspx?id=47594)
+1. [Azure AD Connect'i](https://www.microsoft.com/download/details.aspx?id=47594) İndir
 2. **AzureADConnect.msi** öğesine gidin ve çift tıklayın.
 3. Hoş Geldiniz ekranında, lisans koşullarını kabul ettiğinizi belirten kutuyu seçin ve **Devam**'a tıklayın.  
 4. Hızlı ayarlar ekranında **Hızlı ayarları kullan**'a tıklayın.</br>  
 ![Oluşturma](media/tutorial-password-hash-sync/express1.png)</br>
-5. Bağlanma ekranında Azure AD, Azure AD için kullanıcı ve genel yönetici parolasını girin. **İleri**’ye tıklayın.  
-6. AD DS'ye Bağlanma ekranında kuruluş yöneticisi hesabına ilişkin kullanıcı adını ve parolayı girin. **İleri**’ye tıklayın.  
+5. Azure AD'ye Bağlan ekranına, kullanıcı adını girin ve Azure AD'nin genel yöneticisini parolayla şifrelayın. **İleri**'ye tıklayın.  
+6. AD DS'ye Bağlanma ekranında kuruluş yöneticisi hesabına ilişkin kullanıcı adını ve parolayı girin. **İleri**'ye tıklayın.  
 7. Yapılandırma için hazır ekranında **Yükle**'ye tıklayın.
 8. Yükleme tamamlandığında **Çıkış**'a tıklayın.
-9. Yükleme tamamlandıktan sonra oturumu kapatın ve Eşitleme Hizmeti Yöneticisi'ni veya Synchronization Rule Editor'ı kullanmadan önce yeniden oturum açın.
+9. Yükleme tamamlandıktan sonra, Eşitleme Hizmet Yöneticisi veya Eşitleme Kuralı Düzenleyicisi'ni kullanmadan önce oturum açın ve yeniden oturum açın.
 
 
-## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Kullanıcılar oluşturulur ve eşitleme gerçekleşen doğrulayın
-Artık, şirket içi dizininde vardı kullanıcıları eşitlenmiştir ve artık Azure AD kiracısı mevcut doğrulayacağız.  Bunun tamamlanması birkaç saat sürebileceğini unutmayın.  Kullanıcı eşitlenmişse doğrulamak için aşağıdakileri yapın.
+## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Kullanıcıların oluşturulduğunu ve eşitlemenin oluştuğunu doğrulayın
+Şimdi şirket içi dizinimizde bulunan kullanıcıların senkronize edildiğini ve artık Azure AD kiracıdışında var olduğunu doğrulayabiliyoruz.  Bunun tamamlanmasının birkaç saat sürebileceğini unutmayın.  Kullanıcıların senkronize olduğunu doğrulamak için aşağıdakileri yapın.
 
 
-1. Gözat [Azure portalında](https://portal.azure.com) ve bir Azure aboneliğine sahip bir hesapla oturum açın.
-2. Sol tarafta, seçin **Azure Active Directory**
+1. [Azure portalına](https://portal.azure.com) gidip Azure aboneliği olan bir hesapla oturum açın.
+2. Solda Azure **Etkin Dizini'ni** seçin
 3. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
-4. Yeni kullanıcılar kendi kiracısında gördüğünüzü doğrulayın</br>
-![Eşitleme](media/tutorial-password-hash-sync/synch1.png)</br>
+4. Kiracımızda yeni kullanıcıları gördüğünüzden doğrulama</br>
+![Synch](media/tutorial-password-hash-sync/synch1.png)</br>
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızın biriyle oturum açma testi
+## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızdan biriyle oturum açma testini test edin
 
-1. Göz atın [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Sunduğumuz yeni kiracıda oluşturduğunuz kullanıcı hesabı ile oturum.  Aşağıdaki biçimi kullanarak oturum açmanız gerekir: (user@domain.onmicrosoft.com). Kullanıcının oturum açmak için kullandığı aynı parolayı kullanan şirket içi.</br>
-   ![Doğrulayın](media/tutorial-password-hash-sync/verify1.png)</br>
+1. Göz atın[https://myapps.microsoft.com](https://myapps.microsoft.com)
+2. Yeni kiracımızda oluşturulan bir kullanıcı hesabıyla oturum açın.  Aşağıdaki biçimi kullanarak oturum açmanız gerekir:user@domain.onmicrosoft.com( ). Kullanıcının şirket içinde oturum açmada kullandığı parolayı kullanın.</br>
+   ![Doğrulama](media/tutorial-password-hash-sync/verify1.png)</br>
 
-Şimdi başarıyla test edin ve hangi Azure sunduğu ile kendinizi alıştırın için kullanabileceğiniz bir karma kimlik ortamı vardır.
+Azure'un sunduklarını sınamak ve tanımak için kullanabileceğiniz karma bir kimlik ortamını başarıyla kurabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
-- [Hızlı ayarlar](how-to-connect-install-express.md)
-- [Parola karması eşitlemesi](how-to-connect-password-hash-synchronization.md)|
+- [Ekspres ayarlar](how-to-connect-install-express.md)
+- [Parola karma senkronizasyonu](how-to-connect-password-hash-synchronization.md)|

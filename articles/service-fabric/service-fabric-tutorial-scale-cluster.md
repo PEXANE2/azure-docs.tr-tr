@@ -1,30 +1,30 @@
 ---
-title: Azure 'da bir Service Fabric kümesini ölçeklendirme
-description: Bu öğreticide, Azure 'da ve ' de bir Service Fabric kümesinin ölçeğini ve kalan kaynakları temizleme hakkında bilgi edineceksiniz.
+title: Azure’da Service Fabric kümesi ölçeklendirme
+description: Bu eğitimde, Azure'da bir Hizmet Kumaşı kümesini nasıl ölçeklendirdiğinizi ve kalan kaynakları nasıl temizleyesiniz öğrenirsiniz.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251806"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'daki bir Service Fabric kümesini ölçeklendirme
 
-Bu öğretici, bir serinin üçüncü bölümüdür ve mevcut kümenizi nasıl ölçeklendirebilirsiniz ve içinde nasıl ölçeklenebilmeniz gerektiğini gösterir. Tamamladığınızda, kümenizin nasıl ölçekleneceğini ve kalan kaynakların nasıl temizleneceğini öğrenmiş olacaksınız.  Azure 'da çalışan bir kümeyi ölçeklendirme hakkında daha fazla bilgi için [ölçek Service Fabric kümelerini](service-fabric-cluster-scaling.md)okuyun.
+Bu öğretici, bir serinin üçüncü bölümüdür ve varolan kümenizi nasıl ölçeklendirdiğinizi ve içinde nasıl ölçeklendirilebildiğinizi gösterir. Tamamladığınızda, kümenizin nasıl ölçekleneceğini ve kalan kaynakların nasıl temizleneceğini öğrenmiş olacaksınız.  Azure'da çalışan bir kümeyi ölçekleme hakkında daha fazla bilgi için [Ölçekleme Hizmeti Kumaş kümelerini](service-fabric-cluster-scaling.md)okuyun.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Düğüm ekleme ve kaldırma (ölçeği genişletme ve ölçekleme)
-> * Düğüm türleri ekleme ve kaldırma (ölçeği genişletme ve ölçekleme)
-> * Düğüm kaynaklarını artırma (ölçeği artırma)
+> * Düğümekleme ve kaldırma (ölçeklendirin ve ölçeklendirin)
+> * Düğüm türlerini ekleme ve kaldırma (ölçeklendirin ve ölçeklendirin)
+> * Düğüm kaynaklarını artırma (ölçeklendirin)
 
 Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
-> * Şablon kullanarak Azure 'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
+> * Şablon kullanarak Azure'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
 > * [Bir kümeyi izleme](service-fabric-tutorial-monitor-cluster.md)
 > * Bir kümenin ölçeğini daraltma veya genişletme
 > * [Bir kümenin çalışma zamanını yükseltme](service-fabric-tutorial-upgrade-cluster.md)
@@ -33,81 +33,81 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yi yükler.
-* Azure 'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) veya [Azure CLI'yi yükleyin.](/cli/azure/install-azure-cli)
+* Azure'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
 
-## <a name="important-considerations-and-guidelines"></a>Önemli konular ve yönergeler
+## <a name="important-considerations-and-guidelines"></a>Önemli hususlar ve yönergeler
 
-Uygulama iş yükleri zaman içinde değişiklik yaparken, mevcut hizmetlerinizin daha fazla (veya daha az) kaynağa ihtiyacı var mı?  Küme kaynaklarını artırmak veya azaltmak için düğüm türünden [düğüm ekleyin veya kaldırın](#add-nodes-to-or-remove-nodes-from-a-node-type) .
+Uygulama iş yükleri zaman içinde değişir, varolan hizmetlerinizin daha fazla (veya daha az) kaynağa ihtiyacı var mı?  Küme kaynaklarını artırmak veya azaltmak için düğümleri düğüm türünden ekleyin veya [kaldırın.](#add-nodes-to-or-remove-nodes-from-a-node-type)
 
-Kümenize 100 'den fazla düğüm eklemeniz gerekiyor mu?  Tek bir Service Fabric düğüm türü/ölçek kümesi 100 taneden fazla düğüm/VM içeremez.  Bir kümeyi 100 düğümden daha fazla ölçeklendirmek için [ek düğüm türleri ekleyin](#add-nodes-to-or-remove-nodes-from-a-node-type).
+Kümenize 100'den fazla düğüm eklemeniz gerekiyor mu?  Tek bir Hizmet Kumaş düğüm türü/ölçek kümesi 100'den fazla düğüm/VM içeremez.  Bir kümeyi 100 düğümün ötesine ölçeklendirmek için [ek düğüm türleri ekleyin.](#add-nodes-to-or-remove-nodes-from-a-node-type)
 
-Uygulamanızda birden fazla hizmet var mı ve bunların herkese açık veya internet 'e yönelik olması gerekiyor mu?  Tipik uygulamalar, bir istemciden giriş ve ön uç hizmetleriyle iletişim kuran bir veya daha fazla arka uç hizmeti içeren bir ön uç ağ geçidi hizmeti içerir. Bu durumda, kümeye [en az iki düğüm türü eklemenizi](#add-nodes-to-or-remove-nodes-from-a-node-type) öneririz.  
+Uygulamanızın birden çok hizmeti var mı ve bunlardan herhangi birinin herkese açık veya internetle karşı karşıya olması gerekiyor mu?  Tipik uygulamalar, istemciden giriş alan bir ön uç ağ geçidi hizmeti ve ön uç hizmetleriyle iletişim sağlayan bir veya daha fazla arka uç hizmeti içerir. Bu durumda, kümeye [en az iki düğüm türü eklemenizi](#add-nodes-to-or-remove-nodes-from-a-node-type) öneririz.  
 
-Hizmetleriniz, daha fazla RAM veya daha yüksek CPU döngüsü gibi farklı altyapı ihtiyaçlarına sahip mi? Örneğin, uygulamanız bir ön uç hizmeti ve arka uç hizmeti içerir. Ön uç hizmeti, internet 'e açık bağlantı noktaları olan daha küçük VM 'lerde (D2 gibi VM boyutları) çalıştırılabilir. Ancak arka uç hizmeti, hesaplama için yoğun ve internet 'e yönelik olmayan daha büyük VM 'lerde (D4, D6, D15 gibi VM boyutları ile) çalıştırılması gerekir. Bu durumda, kümenize [iki veya daha fazla düğüm türü eklemenizi](#add-nodes-to-or-remove-nodes-from-a-node-type) öneririz. Bu, her düğüm türünün internet bağlantısı veya VM boyutu gibi farklı özelliklere sahip olmasına olanak sağlar. VM 'lerin sayısı bağımsız olarak ölçeklendirilebilir.
+Hizmetlerinizin daha fazla RAM veya daha yüksek CPU döngüleri gibi farklı altyapı gereksinimleri var mı? Örneğin, uygulamanız bir ön uç hizmeti ve bir arka uç hizmeti içerir. Ön uç hizmeti, bağlantı noktaları internete açık olan daha küçük VM'lerde (D2 gibi VM boyutları) çalıştırılabilir. Ancak arka uç hizmeti, hesaplama yoğundur ve internete dönük olmayan daha büyük VM'lerde (D4, D6, D15 gibi VM boyutlarında) çalışması gerekir. Bu durumda, kümenize [iki veya daha fazla düğüm türü eklemenizi](#add-nodes-to-or-remove-nodes-from-a-node-type) tavsiye ettik. Bu, her düğüm türünün internet bağlantısı veya VM boyutu gibi farklı özelliklere sahip olmasını sağlar. VM sayısı da bağımsız olarak ölçeklendirilebilir.
 
-Bir Azure kümesini ölçeklendirirken aşağıdaki yönergeleri göz önünde bulundurun:
+Bir Azure kümesini ölçeklerken aşağıdaki yönergeleri göz önünde bulundurun:
 
-* Tek bir Service Fabric düğüm türü/ölçek kümesi 100 taneden fazla düğüm/VM içeremez.  Bir kümeyi 100 düğümden daha fazla ölçeklendirmek için ek düğüm türleri ekleyin.
-* Üretim iş yüklerini çalıştıran birincil düğüm türleri için bir [dayanıklılık düzeyi][durability] altın veya gümüş olmalıdır ve her zaman beş veya daha fazla düğüm olmalıdır.
-* Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
-* Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
-* Altın veya gümüş herhangi bir düğüm [türü, her][durability] zaman beş veya daha fazla düğüme sahip olmalıdır.
-* Ölçeklendirme (düğümleri öğesinden kaldırma) bir birincil düğüm türü ise, [güvenilirlik düzeyinin][reliability] gerektirdiği örnek sayısını asla azaltmalısınız.
+* Tek bir Hizmet Kumaş düğüm türü/ölçek kümesi 100'den fazla düğüm/VM içeremez.  Bir kümeyi 100 düğümün ötesine ölçeklendirmek için ek düğüm türleri ekleyin.
+* Üretim iş yüklerini çalıştıran birincil düğüm türleri Altın veya Gümüş [dayanıklılık düzeyine][durability] sahip olmalı ve her zaman beş veya daha fazla düğüme sahip olmalıdır.
+* Durum lu üretim iş yüklerini çalıştıran birincil olmayan düğüm türlerinin her zaman beş veya daha fazla düğümü olmalıdır.
+* Durum dışı üretim iş yüklerini çalıştıran birincil olmayan düğüm türlerinin her zaman iki veya daha fazla düğümü olmalıdır.
+* Altın veya Gümüş [dayanıklılık düzeyi][durability] herhangi bir düğüm türü her zaman beş veya daha fazla düğüm olmalıdır.
+* Birincil düğüm türünde ölçekleme (düğümleri kaldırma) varsa, örnek sayısını hiçbir zaman [güvenilirlik düzeyinin][reliability] gerektirdiğinden daha aza düşürmemelisiniz.
 
-Daha fazla bilgi için [küme kapasitesi Kılavuzu](service-fabric-cluster-capacity.md)' nu okuyun.
+Daha fazla bilgi için [küme kapasitesi kılavuzunu](service-fabric-cluster-capacity.md)okuyun.
 
 ## <a name="export-the-template-for-the-resource-group"></a>Kaynak grubu için şablonu dışarı aktarma
 
-Güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturup kaynak grubunuzu başarıyla ayarladıktan sonra, kaynak grubunun Kaynak Yöneticisi şablonunu dışarı aktarın. Şablonu dışarı aktarmak, tüm tüm altyapıyı içerdiğinden, kümenin ve kaynaklarının gelecekteki dağıtımlarını otomatikleştirmenizi sağlar.  Şablonları dışarı aktarma hakkında daha fazla bilgi için [Azure Portal kullanarak Azure Resource Manager kaynak gruplarını yönetme](/azure/azure-resource-manager/manage-resource-groups-portal)makalesini okuyun.
+Güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturduktan ve kaynak grubunuzu başarıyla ayarladıktan sonra, kaynak grubu için Kaynak Yöneticisi şablonunu dışa aktarın. Şablonu dışa aktarmak, şablonun tüm altyapısını içerdiğinden kümenin ve kaynaklarının gelecekteki dağıtımlarını otomatikleştirmenize olanak tanır.  Şablonları dışa aktarma hakkında daha fazla bilgi için Azure [portalını kullanarak Azure Kaynak Yöneticisi kaynak gruplarını yönet'i](/azure/azure-resource-manager/manage-resource-groups-portal)okuyun.
 
-1. [Azure Portal](https://portal.azure.com), kümeyi içeren kaynak grubuna gidin (Bu öğreticiyi takip ediyorsanız**sfclustertutorialgroup**). 
+1. Azure [portalında,](https://portal.azure.com)kümeyi içeren kaynak grubuna **(sfclustertutorialgroup**, bu öğreticiyi takip ediyorsanız) gidin. 
 
-2. Sol bölmede **dağıtımlar**' ı seçin veya **dağıtımlar**' ın altındaki bağlantıyı seçin. 
+2. Sol **bölmede, Dağıtımlar'ı**seçin veya **Dağıtımlar**altındaki bağlantıyı seçin. 
 
 3. Listeden en son başarılı dağıtımı seçin.
 
-4. Sol bölmede **şablon** ' u ve ardından **İndir** ' i seçerek şablonu ZIP dosyası olarak dışarı aktarın.  Şablonu ve parametreleri yerel bilgisayarınıza kaydedin.
+4. Sol bölmede **Şablon'u** seçin ve ardından şablonu ZIP dosyası olarak dışa aktarmak için **İndir'i** seçin.  Şablonu ve parametreleri yerel bilgisayarınıza kaydedin.
 
-## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Düğüm türüne düğüm ekleme veya düğüm türünden düğüm kaldırma
+## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Düğüm türüne düğüm ekleme veya düğümleri kaldırma
 
-Ölçek Genişletme ve genişletme veya yatay ölçeklendirme, kümedeki düğümlerin sayısını değiştirir. Ölçeği büyütme veya uzaklaştırma sırasında, ölçek kümesine daha fazla sanal makine örneği eklersiniz. Bu örnekler, Service Fabric tarafından kullanılan düğümler haline gelir. Service Fabric, ölçek kümesine ne zaman daha fazla örnek eklendiğini bilir (ölçek genişletilerek) ve otomatik olarak tepki verir. Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.
+Ölçekleme girip çıkma veya yatay ölçekleme kümedeki düğüm sayısını değiştirir. Ölçeklendirildiğinde veya çıktığınızda, ölçek kümesine daha fazla sanal makine örneği eklersiniz. Bu örnekler, Service Fabric tarafından kullanılan düğümler haline gelir. Service Fabric, ölçek kümesine ne zaman daha fazla örnek eklendiğini bilir (ölçek genişletilerek) ve otomatik olarak tepki verir. Kümede iş yükleri çalışıyor olsa bile, kümeyi istediğiniz zaman ölçeklendirebilirsiniz.
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Bu öğreticide [örnek şablon][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır ve her düğüm türü için düğüm sayısını ayarlanmış üç parametre vardır: *nt0InstanceCount*, *nt1InstanceCount*ve *nt2InstanceCount*.  Örneğin, *nt1InstanceCount* parametresi, ikinci düğüm türü için örnek sayısını ayarlar ve ilişkili sanal makine ölçek kümesindeki VM sayısını ayarlar.
+En son dağıtım için kaynak grubundan [bir şablon ve parametre dosyası dışa](#export-the-template-for-the-resource-group) aktarın.  *Parametreler.json* dosyasını açın.  Kümeyi bu öğreticideki [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü ve her düğüm türü için düğüm sayısını ayarlayan üç parametre vardır: *nt0InstanceCount*, *nt1InstanceCount*ve *nt2InstanceCount*.  Örneğin *nt1InstanceCount* parametresi, ikinci düğüm türü için örnek sayısını ayarlar ve ilişkili sanal makine ölçeği kümesindeki VM sayısını ayarlar.
 
-Bu nedenle, *nt1InstanceCount* değerini güncelleştirerek ikinci düğüm türündeki düğümlerin sayısını değiştirirsiniz.  Bir düğüm türünü 100 ' dan fazla düğüme ölçeklendiremezsiniz.  Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır. Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
+Bu nedenle, *nt1InstanceCount* değerini güncelleyerek ikinci düğüm türünde düğüm sayısını değiştirirsiniz.  Unutmayın, bir düğüm türünü 100'den fazla düğüme ölçeklendiremezsiniz.  Durum lu üretim iş yüklerini çalıştıran birincil olmayan düğüm türlerinin her zaman beş veya daha fazla düğümü olmalıdır. Durum dışı üretim iş yüklerini çalıştıran birincil olmayan düğüm türlerinin her zaman iki veya daha fazla düğümü olmalıdır.
 
-İçinde ölçeklendirme yapıyorsanız, düğüm kaldırma [dayanıklılığı düzeyi][durability] olan düğüm türü, [Bu düğümlerin durumunu el ile kaldırmanız](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)gerekir.  Gümüş ve altın dayanıklılık katmanı için, bu adımlar platform tarafından otomatik olarak yapılır.
+Eğer ölçekleme, düğümleri kaldırarak, Bronz [dayanıklılık düzeyi][durability] bir düğüm türü el ile [bu düğümlerin durumunu kaldırmanız](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)gerekir.  Gümüş ve Altın dayanıklılık katmanı için bu adımlar platform tarafından otomatik olarak yapılır.
 
 ### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
-*Template. JSON* ve *Parameters. JSON* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
+*Template.json* ve *parameters.json* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
-Veya aşağıdaki Azure CLı komutu:
+Veya aşağıdaki Azure CLI komutu:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="add-a-node-type-to-the-cluster"></a>Kümeye düğüm türü ekleme
 
-Azure 'da çalışan bir Service Fabric kümesinde tanımlanan her düğüm türü [ayrı bir sanal makine ölçek kümesi](service-fabric-cluster-nodetypes.md)olarak ayarlanır. Her düğüm türü ayrıca yönetilebilir. Her bir düğüm türünü yukarı veya aşağı ölçeklendirebilir, farklı bağlantı noktası kümelerine sahip olabilir ve farklı kapasite ölçümleri kullanabilirsiniz. Ayrıca, her bir küme düğümünde çalışan işletim sistemi SKU 'sunu bağımsız olarak değiştirebilirsiniz, ancak örnek kümede çalışan Windows ve Linux 'un bir karışımına sahip olamayacağını unutmayın. Tek düğümlü bir tür/ölçek kümesi 100 taneden fazla düğüm içeremez.  Ek düğüm türleri/ölçek kümeleri ekleyerek bir kümeyi 100 düğümden daha fazlasına ölçeklendirebilirsiniz. Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.
+Azure'da çalışan bir Hizmet Kumaşı kümesinde tanımlanan her düğüm türü ayrı bir [sanal makine ölçek kümesi](service-fabric-cluster-nodetypes.md)olarak ayarlanır. Her düğüm türü daha sonra ayrı ayrı yönetilebilir. Bağımsız olarak her düğüm türünü yukarı veya aşağı ölçeklendirebilir, farklı bağlantı noktaları kümelerini açabilir ve farklı kapasite ölçümleri kullanabilirsiniz. Ayrıca, her küme düğümünde çalışan işletim sistemi SKU'yu bağımsız olarak değiştirebilirsiniz, ancak örnek kümede çalışan Windows ve Linux karışımına sahip olamazsınız. Tek bir düğüm türü/ölçek kümesi 100'den fazla düğüm içeremez.  Ek düğüm türleri/ölçek kümeleri ekleyerek bir kümeyi yatay olarak 100'den fazla düğüme ölçeklendirebilirsiniz. Kümede iş yükleri çalışıyor olsa bile, kümeyi istediğiniz zaman ölçeklendirebilirsiniz.
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  Bu bölümde bir Kaynak Yöneticisi şablonunu güncelleştirerek ve dağıtarak dördüncü düğüm türü eklersiniz. 
+En son dağıtım için kaynak grubundan [bir şablon ve parametre dosyası dışa](#export-the-template-for-the-resource-group) aktarın.  *Parametreler.json* dosyasını açın.  Bu öğreticideki [örnek şablonu][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır.  Bu bölümde, Kaynak Yöneticisi şablonu güncelleştirerek ve dağıtarak dördüncü bir düğüm türü eklersiniz. 
 
-Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sanal ağın ayrı alt ağında çalışan) ve ağ güvenlik grubunu da eklersiniz.  Yeni ölçek kümesi için yeni veya var olan genel IP adresi ve Azure yük dengeleyici kaynakları eklemeyi seçebilirsiniz.  Yeni düğüm türünün bir [dayanıklılık düzeyi][durability] ve "Standard_D2_V2" boyutu vardır.
+Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçeği kümesini (sanal ağın ayrı bir alt ağında çalışır) ve ağ güvenlik grubunu da eklersiniz.  Yeni ölçek kümesi için yeni veya varolan genel IP adresi ve Azure yük dengeleyici kaynakları eklemeyi seçebilirsiniz.  Yeni düğüm türü Gümüş [dayanıklılık düzeyine][durability] ve "Standard_D2_V2" boyutuna sahiptir.
 
-*Template. JSON* dosyasında aşağıdaki yeni parametreleri ekleyin:
+*template.json* dosyasına aşağıdaki yeni parametreleri ekleyin:
 ```json
 "nt3InstanceCount": {
     "defaultValue": 5,
@@ -122,7 +122,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 },
 ```
 
-*Template. JSON* dosyasında aşağıdaki yeni değişkenleri ekleyin:
+*template.json* dosyasına aşağıdaki yeni değişkenleri ekleyin:
 ```json
 "lbID3": "[resourceId('Microsoft.Network/loadBalancers',concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
 "lbIPConfig3": "[concat(variables('lbID3'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -144,7 +144,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 "subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
 ```
 
-*Template. JSON* dosyasında, sanal ağ kaynağına yeni bir alt ağ ekleyin:
+*template.json* dosyasında, sanal ağ kaynağına yeni bir alt ağ ekleyin:
 ```json
 {
     "type": "Microsoft.Network/virtualNetworks",
@@ -181,7 +181,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 },
 ```
 
-*Template. JSON* dosyasında, yenı genel IP adresi ve yük dengeleyici kaynakları ekleyin:
+*template.json* dosyasına, yeni genel IP adresi ve yük bakiyesi kaynakları ekleyin:
 ```json
 {
     "type": "Microsoft.Network/publicIPAddresses",
@@ -362,7 +362,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 },
 ```
 
-*Template. JSON* dosyasında, yeni ağ güvenlik grubu ve sanal makine ölçek kümesi kaynakları ekleyin.  Sanal makine ölçek kümesinin Service Fabric uzantısı özellikleri içindeki NodeTypeRef özelliği, belirtilen düğüm türünü ölçek kümesine eşler.
+*template.json* dosyasında, yeni ağ güvenlik grubu ve sanal makine ölçeği kümesi kaynakları ekleyin.  Sanal makine ölçeğinin Hizmet Kumaşı uzantısı özellikleri içindeki NodeTypeRef özelliği, belirtilen düğüm türünü ölçek kümesiyle eşler.
 
 ```json
 {
@@ -746,7 +746,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 },
 ```
 
-*Template. JSON* dosyasında, küme kaynağını güncelleştirin ve yeni bir düğüm türü ekleyin:
+*template.json* dosyasında küme kaynağını güncelleştirin ve yeni bir düğüm türü ekleyin:
 ```json
 {
     "type": "Microsoft.ServiceFabric/clusters",
@@ -782,7 +782,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 }                
 ```
 
-*Parameters. JSON* dosyasında aşağıdaki yeni parametreleri ve değerleri ekleyin:
+*parameters.json* dosyasına aşağıdaki yeni parametreleri ve değerleri ekleyin:
 ```json
 "nt3InstanceCount": {
     "Value": 5    
@@ -793,23 +793,23 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 ```
 
 ### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
-*Template. JSON* ve *Parameters. JSON* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
+*Template.json* ve *parameters.json* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
-Veya aşağıdaki Azure CLı komutu:
+Veya aşağıdaki Azure CLI komutu:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="remove-a-node-type-from-the-cluster"></a>Kümeden düğüm türünü kaldırma
-Bir Service Fabric kümesi oluşturduktan sonra, düğüm türünü (sanal makine ölçek kümesi) ve tüm düğümlerini kaldırarak bir kümeyi yatay olarak ölçeklendirebilirsiniz. Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz. Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
+## <a name="remove-a-node-type-from-the-cluster"></a>Kümeden bir düğüm türünü kaldırma
+Hizmet Kumaşı kümesi oluşturduktan sonra, düğüm türünü (sanal makine ölçek kümesi) ve tüm düğümlerini kaldırarak kümeyi yatay olarak ölçeklendirebilirsiniz. Kümede iş yükleri çalışıyor olsa bile, kümeyi istediğiniz zaman ölçeklendirebilirsiniz. Küme ölçeklendikçe, uygulamalarınız da otomatik olarak ölçeklenir.
 
 > [!WARNING]
-> Bir üretim kümesinden düğüm türünü kaldırmak için Remove-AzServiceFabricNodeType kullanılması, sıklıkla kullanılması önerilmez. Düğüm türünün arkasındaki sanal makine ölçek kümesi kaynağını sildiği için bu, tehlikeli bir komuttur. 
+> Bir üretim kümesinden bir düğüm türünü kaldırmak için Remove-AzServiceFabricNodeType'ın kullanılması sık olarak kullanılması önerilmez. Düğüm türünün arkasındaki sanal makine ölçeği ayarlı kaynağı sildiği için tehlikeli bir komutdur. 
 
-Düğüm türünü kaldırmak için [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet 'ini çalıştırın.  Düğüm türü gümüş veya altın [dayanıklılık düzeyinde][durability] olmalıdır cmdlet, düğüm türüyle ilişkili ölçek kümesini siler ve işlemin tamamlanmasını biraz zaman alır.  Ardından, kaldırılacak düğümlerin her birinde [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) cmdlet 'ini çalıştırın, bu, düğüm durumunu siler ve düğümleri kümeden kaldırır. Düğümlerde hizmetler varsa, hizmetler önce başka bir düğüme taşınır. Küme Yöneticisi çoğaltma/hizmet için bir düğüm bulamazsa, işlem gecikmeli/engellenir.
+Düğüm türünü kaldırmak için [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) cmdlet'i çalıştırın.  Düğüm türü Gümüş veya Altın [dayanıklılık düzeyi][durability] olmalıdır Cmdlet düğüm türüile ilişkili ölçek kümesini siler ve tamamlanması biraz zaman alır.  Ardından kaldırılacak düğümlerin her birinde [kaldır-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) cmdlet'i çalıştırın, bu da düğüm durumunu siler ve düğümleri kümeden kaldırır. Düğümlerde hizmetler varsa, hizmetler önce başka bir düğüme taşınır. Küme yöneticisi yineleme/hizmet için bir düğüm bulamazsa, işlem geciktirilir/engellenir.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -833,29 +833,29 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Düğüm kaynaklarını artırma 
-Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM 'lerinin işletim sistemini yükseltebilirsiniz.  
+Hizmet Kumaşı kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM'lerin işletim sistemini yükseltebilirsiniz.  
 
 > [!WARNING]
-> Bir ölçek kümesi/düğüm türünün sanal makine SKU 'sunu, gümüş dayanıklılık veya daha büyük bir zamanda çalışmadığı takdirde değiştirmenizi öneririz. VM SKU 'SU boyutunun değiştirilmesi, veri bozucu bir yerinde altyapı işlemidir. Bu değişikliği gecikme veya izlemeye yönelik bir özellik olmadan, işlem durum bilgisi olmayan hizmetler için veri kaybına neden olabilir veya durum bilgisiz iş yükleri için bile öngörülemeyen çalışma sorunlarına neden olabilir.
+> Silver dayanıklılıkveya daha büyük bir ölçek kümesi/düğümü türündeki VM SKU'yu değiştirmemenizi öneririz. VM SKU boyutunu değiştirmek, yerinde veri yıkıcı bir altyapı işlemidir. Bu değişikliği geciktirme veya izleme yeteneği olmadan, işlemin devlet tarafından sunulan hizmetler için veri kaybına veya devlet siz iş yüklerinde bile öngörülemeyen diğer operasyonel sorunlara neden olması mümkündür.
 
 > [!WARNING]
-> Tehlikeli bir işlem ve desteklenmeyen birincil düğüm türünün VM SKU 'sunu değiştirmenizi öneririz.  Daha fazla küme kapasitesine ihtiyaç duyuyorsanız daha fazla sanal makine örneği veya ek düğüm türü ekleyebilirsiniz.  Bu mümkün değilse, yeni bir küme oluşturabilir ve eski kümenizde uygulama durumunu (varsa) [geri yükleyebilirsiniz](service-fabric-reliable-services-backup-restore.md) .  Bu mümkün değilse, [birincil düğüm türünün VM SKU 'sunu değiştirebilirsiniz](service-fabric-scale-up-node-type.md).
+> Tehlikeli bir işlem olan ve desteklenmeyen birincil düğüm türünün VM SKU'yu değiştirmemenizi öneririz.  Daha fazla küme kapasitesine ihtiyacınız varsa, daha fazla VM örneği veya ek düğüm türü ekleyebilirsiniz.  Bu mümkün değilse, eski kümenizden yeni bir küme oluşturabilir ve uygulama durumunu (varsa) [geri yükleyebilirsiniz.](service-fabric-reliable-services-backup-restore.md)  Bu mümkün değilse, [birincil düğüm türünün VM SKU'yu değiştirebilirsiniz.](service-fabric-scale-up-node-type.md)
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  
+En son dağıtım için kaynak grubundan [bir şablon ve parametre dosyası dışa](#export-the-template-for-the-resource-group) aktarın.  *Parametreler.json* dosyasını açın.  Bu öğreticideki [örnek şablonu][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır.  
 
-İkinci düğüm türündeki VM 'lerin boyutu *vmNodeType1Size* parametresinde ayarlanır.  Standard_D2_V2 *vmNodeType1Size* parametre değerini, her bir sanal makine örneğinin kaynaklarını çift eden [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md)olarak değiştirin.
+İkinci düğüm türündeki VM'lerin boyutu *vmNodeType1Size* parametresinde ayarlanır.  *VmNodeType1Size* parametre değerini Standard_D2_V2'dan [Standard_D3_V2'a](../virtual-machines/dv2-dsv2-series.md)değiştirin ve bu da her VM örneğinin kaynaklarını ikikatına çıkar.
 
-Her üç düğüm türünün VM SKU 'SU *Vmımagesku* parametresinde ayarlanır.  Yine, bir düğüm türünün VM SKU 'sunu değiştirmek approached olmalıdır ve birincil düğüm türü için önerilmez.
+Her üç düğüm türü için VM SKU *vmImageSku* parametre ayarlanır.  Yine, bir düğüm türünün VM SKU'su değiştirilmelidir ve birincil düğüm türü için önerilmez.
 
 ### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
-*Template. JSON* ve *Parameters. JSON* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
+*Template.json* ve *parameters.json* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
-Veya aşağıdaki Azure CLı komutu:
+Veya aşağıdaki Azure CLI komutu:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
@@ -865,9 +865,9 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Düğüm ekleme ve kaldırma (ölçeği genişletme ve ölçekleme)
-> * Düğüm türleri ekleme ve kaldırma (ölçeği genişletme ve ölçekleme)
-> * Düğüm kaynaklarını artırma (ölçeği artırma)
+> * Düğümekleme ve kaldırma (ölçeklendirin ve ölçeklendirin)
+> * Düğüm türlerini ekleme ve kaldırma (ölçeklendirin ve ölçeklendirin)
+> * Düğüm kaynaklarını artırma (ölçeklendirin)
 
 Ardından, kümenin çalışma zamanının nasıl yükseltileceğini öğrenmek için aşağıdaki öğreticiye geçin.
 > [!div class="nextstepaction"]
@@ -878,8 +878,8 @@ Ardından, kümenin çalışma zamanının nasıl yükseltileceğini öğrenmek 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
 
-> * Düğüm türleri ekleme ve kaldırma (ölçeği genişletme ve ölçekleme)
-> * Düğüm kaynaklarını artırma (ölçeği artırma)
+> * Düğüm türlerini ekleme ve kaldırma (ölçeklendirin ve ölçeklendirin)
+> * Düğüm kaynaklarını artırma (ölçeklendirin)
 
 Ardından, kümenin çalışma zamanının nasıl yükseltileceğini öğrenmek için aşağıdaki öğreticiye geçin.
 > [!div class="nextstepaction"]

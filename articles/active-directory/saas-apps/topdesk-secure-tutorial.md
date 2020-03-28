@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: TOPdesk ile güvenli Azure Active Directory tümleştirme | Microsoft Docs'
-description: Azure Active Directory ve TOPdesk ile güvenli arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: TOPdesk ile Azure Active Directory entegrasyonu - Secure | Microsoft Dokümanlar'
+description: Azure Active Directory ve TOPdesk - Secure arasında tek oturum açma işlemlerini nasıl yapılandırılabildiğini öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,272 +17,272 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233394"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Öğretici: Topmasa güvenliğine Azure Active Directory tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Öğretici: TOPdesk ile Azure Active Directory entegrasyonu - Güvenli
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile TOPdesk ile güvenli tümleştirme hakkında bilgi edineceksiniz.
-Azure AD ile TOPdesk ile güvenli bir şekilde tümleştirmek aşağıdaki avantajları sağlar:
+Bu eğitimde, TOPdesk - Secure ile Azure Etkin Dizini (Azure AD) entegre etmeyi öğrenirsiniz.
+TOPdesk'i tümleştirme - Azure AD ile güvenli olmak size aşağıdaki avantajları sağlar:
 
-* Azure AD 'de, Topmasa ile güvenli erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak güvenli bir şekilde (çoklu oturum açma) oturum açmasını sağlayabilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* TOPdesk - Secure erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla TOPdesk - Secure (Tek Oturum Açma) ile otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini TOPdesk ile güvenli bir şekilde yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+TOPdesk - Secure ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Topmasa-güvenli çoklu oturum açma etkin abonelik
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* TOPdesk - Güvenli tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* TOPdesk-Secure **SP** tarafından başlatılan SSO 'yu destekler
+* TOPdesk - **Secure, SP** tarafından başlatılan SSO'ya destek veriyor
 
-## <a name="adding-topdesk---secure-from-the-gallery"></a>Topolojinin, Galeriden güvenli şekilde eklenmesi
+## <a name="adding-topdesk---secure-from-the-gallery"></a>TOPdesk ekleme - Galeriden güvenli
 
-TOPdesk ile güvenli hale getirmek için Azure AD ile güvenli bir şekilde yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize Topmasa-Secure ' ı eklemeniz gerekir.
+TOPdesk - Secure ile Azure AD'nin entegrasyonunu yapılandırmak için, topdesk - Secure'u galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Topmasa-Secure eklemek için aşağıdaki adımları uygulayın:**
+**TOPdesk eklemek için - Galeriden güvenli, aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **TopDesk-Secure**yazın, sonuç panelinden **TopDesk-Secure** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **TOPdesk yazın - Güvenli**, **TOPdesk** seçin - Sonuç panelinden güvenli sonra uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![TOPdesk-sonuçlar listesinde güvenli](common/search-new-app.png)
+     ![TOPdesk - Sonuç listesinde güvenli](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre TopDesk ile güvenli bir şekilde yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile TOPdesk-Secure arasındaki bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD tek oturum açma işlemini TOPdesk - Secure ile **Britta Simon**adlı bir test kullanıcısına göre yapılandırıp test edeyimsiniz.
+Tek oturum açmanın çalışması için, Bir Azure AD kullanıcısı ile TOPdesk'teki ilgili kullanıcı - Secure arasında bir bağlantı ilişkisi kurulması gerekir.
 
-Azure AD çoklu oturum açmayı, TOPdesk ile güvenli bir şekilde yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD oturum açma işlemlerini TOPdesk - Secure ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[TOPdesk-Secure çoklu oturum açmayı yapılandırın](#configure-topdesk---secure-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Topmasa **[-Secure test kullanıcısı oluşturun](#create-topdesk---secure-test-user)** . Bu, kullanıcının Azure AD gösterimine bağlı olan Topmasa 'da güvenli bir Britta Simon 'a sahip olacak.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[TOPdesk -Secure Single Sign-On](#configure-topdesk---secure-single-sign-on)** - yapıla.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[TOPdesk oluşturun - Güvenli test kullanıcısı](#create-topdesk---secure-test-user)** - TOPdesk'te Britta Simon'ın bir muadili olması için - Kullanıcının Azure AD temsiline bağlı güvenli.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açmayı TOPdesk ile güvenli olarak yapılandırmak için aşağıdaki adımları uygulayın:
+TOPdesk - Secure ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **TopDesk-Secure** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. **TOPdesk - Güvenli** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Topmasa-güvenli etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
+    ![TOPdesk - Güvenli Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier-reply.png)
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<companyname>.topdesk.net`
+    a. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.topdesk.net`
 
-    b. **Tanımlayıcı URL 'si** kutusunda, TopDesk yapılandırmasından alabileceğiniz TopDesk meta veri URL 'sini girin. Şu stili kullanmalıdır: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    b. Tanımlayıcı **URL** kutusunda, TOPdesk yapılandırmasından alabileceğiniz TOPdesk meta veri URL'sini doldurun. Aşağıdaki deseni kullanmalıdır:`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
 
-    c. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<companyname>.topdesk.net/tas/secure/login/verify`
+    c. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.topdesk.net/tas/secure/login/verify`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Topmasa-güvenli istemci desteği ekibine](https://www.topdesk.com/us/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si, Tanımlayıcı ve Yanıt URL'si ile güncelleştirin. Bu değerleri almak için [TOPdesk - Secure Client destek ekibine](https://www.topdesk.com/us/support/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. **TOPdesk-Secure ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+6. **ToPdesk- Secure** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
-    b. Azure AD tanımlayıcısı
+    b. Azure Reklam Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-topdesk---secure-single-sign-on"></a>TOPdesk-Secure çoklu oturum açmayı yapılandırma
+### <a name="configure-topdesk---secure-single-sign-on"></a>TOPdesk'i Yapılandır - Güvenli Tek Oturum Açma
 
-1. **Topoloji güvenli** şirket sitenizde yönetici olarak oturum açın.
+1. **TOPdesk - Secure** şirket sitenizde yönetici olarak oturum açın.
 
-2. **TopDesk** menüsünde **Ayarlar**' a tıklayın.
+2. **TOPdesk** menüsünde **Ayarlar'ı**tıklatın.
 
     ![Ayarlar](./media/topdesk-secure-tutorial/ic790598.png "Ayarlar")
 
-3. **Oturum açma ayarları**' na tıklayın.
+3. **Giriş Ayarları'nı**tıklatın.
 
-    ![Oturum açma ayarları](./media/topdesk-secure-tutorial/ic790599.png "Oturum açma ayarları")
+    ![Giriş Ayarları](./media/topdesk-secure-tutorial/ic790599.png "Giriş Ayarları")
 
-4. **Oturum açma ayarları** menüsünü genişletin ve ardından **genel**' e tıklayın.
+4. Giriş **Ayarları** menüsünü genişletin ve ardından **Genel'i**tıklatın.
 
     ![Genel](./media/topdesk-secure-tutorial/ic790600.png "Genel")
 
-5. **SAML oturum açma** Yapılandırması bölümünün **güvenli** bölümünde aşağıdaki adımları uygulayın:
+5. **SAML oturum açma** yapılandırması bölümünün **Güvenli** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Teknik ayarlar](./media/topdesk-secure-tutorial/ic790855.png "Teknik ayarlar")
+    ![Teknik Ayarlar](./media/topdesk-secure-tutorial/ic790855.png "Teknik Ayarlar")
 
-    a. Ortak meta veri dosyasını indirmek için **İndir** ' e tıklayın ve ardından bilgisayarınıza yerel olarak kaydedin.
+    a. Ortak meta veri dosyasını indirmek ve ardından bilgisayarınıza yerel olarak kaydetmek için **İndir'i** tıklatın.
 
-    b. Meta veri dosyasını açın ve ardından **Assertionconsumerservice** düğümünü bulun.
+    b. Meta veri dosyasını açın ve ardından **AssertionConsumerService** düğümini bulun.
 
-    ![Onaylama tüketici hizmeti](./media/topdesk-secure-tutorial/ic790856.png "Onaylama tüketici hizmeti")
+    ![İddia Tüketici Hizmeti](./media/topdesk-secure-tutorial/ic790856.png "İddia Tüketici Hizmeti")
 
-    c. **Assertionconsumerservice** değerini kopyalayın, bu değeri, **TopDesk-Secure etki alanı ve URL 'ler** bölümündeki Yanıt URL metin kutusuna yapıştırın.
+    c. **AssertionConsumerService** değerini kopyalayın, bu değeri **TOPdesk - Güvenli Etki Alanı ve URL'ler** bölümündeki YanıtURL textbox'ına yapıştırın.
 
-6. Bir sertifika dosyası oluşturmak için aşağıdaki adımları gerçekleştirin:
+6. Sertifika dosyası oluşturmak için aşağıdaki adımları gerçekleştirin:
 
     ![Sertifika](./media/topdesk-secure-tutorial/ic790606.png "Sertifika")
 
-    a. İndirilen meta veri dosyasını Azure portal açın.
+    a. Azure portalından indirilen meta veri dosyasını açın.
 
-    b. **Xsi: Type türünde** **Besleyicisi: Applicationservicetype**olan **RoleDescriptor** düğümünü genişletin.
+    b. **Xsi:fed türü** olan **RoleScriptor** düğümünün **genişletin:ApplicationServiceType**.
 
-    c. **X509Certificate** düğümünün değerini kopyalayın.
+    c. **X509Sertifika** düğümünün değerini kopyalayın.
 
-    d. Kopyalanmış **X509Certificate** değerini bilgisayarınıza yerel olarak bir dosyaya kaydedin.
+    d. Kopyalanan **X509Sertifika** değerini bilgisayarınıza yerel olarak bir dosyaya kaydedin.
 
-7. **Genel** bölümünde, **Ekle**' ye tıklayın.
+7. **Genel** bölümünde **Ekle'yi**tıklatın.
 
-    ![Ekleyemiyorum](./media/topdesk-secure-tutorial/ic790607.png "Ekle")
+    ![Ekle](./media/topdesk-secure-tutorial/ic790607.png "Ekle")
 
-8. **SAML yapılandırma Yardımcısı** iletişim kutusunda, aşağıdaki adımları uygulayın:
+8. **SAML yapılandırma yardımcısı** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![SAML yapılandırma Yardımcısı](./media/topdesk-secure-tutorial/ic790608.png "SAML yapılandırma Yardımcısı")
+    ![SAML Yapılandırma Asistanı](./media/topdesk-secure-tutorial/ic790608.png "SAML Yapılandırma Asistanı")
 
-    a. İndirilen meta veri dosyanızı Azure portal karşıya yüklemek için, **Federasyon meta verileri**altında, **Araştır**' a tıklayın.
+    a. İndirdiğiniz meta veri dosyanızı Azure portalından, **Federasyon Meta verileri**altında yüklemek için **Gözat'ı**tıklatın.
 
-    b. Sertifika dosyanızı karşıya yüklemek için, **sertifika (RSA)** altında, **Araştır**' a tıklayın.
+    b. Sertifika dosyanızı yüklemek için **Sertifika (RSA)** altında **Gözat'ı**tıklatın.
 
-    c. **Özel anahtar (RSA, PKCS8, der)** için kendi özel anahtarınızı karşıya yükleyebilir veya özel anahtarı almak Için [TopDesk-Secure istemci destek ekibine](https://www.topdesk.com/us/support) başvurabilirsiniz.
+    c. **Özel anahtar (RSA, PKCS8, DER)** için kendi özel anahtarınızı yükleyebilir veya özel anahtarı almak için [TOPdesk - Secure Client destek ekibiyle](https://www.topdesk.com/us/support) iletişime geçebilirsiniz.
 
-    d. TOPdesk destek ekibinden aldığınız logo dosyasını karşıya yüklemek için, **logo simgesi**altında, **Araştır**' a tıklayın.
+    d. TOPdesk destek ekibinden aldığınız logo dosyasını **Logo simgesinin**altına yüklemek için **Gözat'ı**tıklatın.
 
-    e. **Kullanıcı adı öznitelik** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`yazın.
+    e. Kullanıcı **adı özniteliği** textbox,. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    f. **Görünen ad** metin kutusuna yapılandırmanız için bir ad yazın.
+    f. Görüntü **adı** metin kutusuna yapılandırmanız için bir ad yazın.
 
-    g. **Save (Kaydet)** düğmesine tıklayın.
+    g. **Kaydet**'e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
+    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Topmasa ile güvenli erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Britta Simon'ın TOPdesk - Secure'a erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **TopDesk-Secure**' u seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin, ardından **TOPdesk - Secure**'u seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Topmasa-Secure**' ı yazın ve seçin.
+2. Uygulamalar listesinde **TOPdesk - Secure**yazın ve seçin.
 
-    ![Uygulamalar listesindeki Topmasa-Secure bağlantısı](common/all-applications.png)
+    ![TOPdesk - Uygulamalar listesindeki güvenli bağlantı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-topdesk---secure-test-user"></a>TOPdesk-Secure test kullanıcısı oluşturma
+### <a name="create-topdesk---secure-test-user"></a>TOPdesk oluşturma - Güvenli test kullanıcısı
 
-Azure AD kullanıcılarının Topmasa ile güvenli oturum açmasını sağlamak için, bu kullanıcıların Topmasa-Secure ' a sağlanması gerekir.  
-Topmasa-Secure durumunda sağlama, el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının TOPdesk - Secure'a giriş yapabilmeleri için, TOPdesk - Secure'da oturum açmaları gerekir.  
+TOPdesk durumunda - Güvenli, sağlama manuel bir görevdir.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları uygulayın:
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Kullanıcı sağlama yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. **Topoloji güvenli** şirket sitenizde yönetici olarak oturum açın.
+1. **TOPdesk - Secure** şirket sitenizde yönetici olarak oturum açın.
 
-2. Üstteki menüde, **yeni \> destek dosyaları \> işleci \> TopDesk ' e**tıklayın.
+2. Üstteki menüde **TOPdesk \> Yeni \> Destek \> Dosyaları Operatörü'nü**tıklatın.
 
-    ![İşlecinde](./media/topdesk-secure-tutorial/ic790610.png "İşleç")
+    ![Işleç](./media/topdesk-secure-tutorial/ic790610.png "İşleç")
 
-3. **Yeni operatör** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
+3. Yeni **Operatör** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    ![New Işleci](./media/topdesk-secure-tutorial/ic790611.png "New Işleci")
+    ![Yeni Operatör](./media/topdesk-secure-tutorial/ic790611.png "Yeni İşleç")
 
-    a. **Genel** sekmesine tıklayın.
+    a. **Genel** sekmesini tıklatın.
 
-    b. **Soyadı** metin kutusunda, **Simon**gibi kullanıcının soyadı yazın.
+    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcının Soyadı yazın.
 
-    c. **Konum** bölümünde hesap Için bir **site** seçin.
+    c. **Konum** bölümündeki hesap için bir **Site** seçin.
 
-    d. **TopDesk oturum** açma bölümünün **oturum açma adı** metin kutusunda, Kullanıcı için bir oturum açma adı yazın.
+    d. **TOPdesk Giriş** bölümünün **Giriş Adı** metin kutusuna, kullanıcınız için bir giriş adı yazın.
 
-    e. **Save (Kaydet)** düğmesine tıklayın.
+    e. **Kaydet**'e tıklayın.
 
 > [!NOTE]
-> Azure AD Kullanıcı hesapları sağlamak için, TOPdesk-Secure tarafından sunulan diğer tüm Topolojli Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
+> Diğer TOPdesk -Güvenli kullanıcı hesabı oluşturma araçlarını veya TOPdesk tarafından sağlanan API'leri kullanabilirsiniz - Azure AD kullanıcı hesaplarını sağlamak için güvenli.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde topoloji güvenli Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız en güvenli topoloji için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki GÜVENLI döşeme olan TOPdesk 'i tıklattığınızda, SSO'yu kurduğunuz TOPdesk - Secure'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

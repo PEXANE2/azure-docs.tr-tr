@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: a673f02af9d92b7135e47961f13e0899a1f0e02f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67188070"
 ---
-Bir erişim belirteci ayarlanmadıysa işlemelidir `TokenRequired` olay ya da uygulama `tokenRequired` yöntemi temsilci protokolü.
+Bir erişim belirteci ayarlı değilse, `TokenRequired` olayı işlemeniz `tokenRequired` veya temsilci iletişim kuralında yöntemi uygulamanız gerekir.
 
-Olay bağımsız değişkenleri üzerinde ayarlayarak olayı eşzamanlı olarak işleyebilirsiniz.
+Olay bağımsız değişkenleri üzerinde özellik ayarlayarak olay eşzamanlı olarak işleyebilir.

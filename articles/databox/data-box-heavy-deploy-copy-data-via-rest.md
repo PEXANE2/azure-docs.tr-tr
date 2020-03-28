@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: REST API 'Leri aracılığıyla Azure Data Box blob depolamaya veri kopyalama"
-description: REST API 'Leri aracılığıyla Azure Data Box Heavy BLOB depolama alanına veri kopyalamayı öğrenin
+title: "Öğretici: REST API'leri aracılığıyla verileri Azure Veri Kutusu Blob depolama alanına kopyalama"
+description: REST API'leri aracılığıyla Verileri Azure Veri Kutusu Heavy Blob depolama alanınıza nasıl kopyalayatıyarı öğrenin
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,192 +8,192 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560346"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80297221"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Öğretici: REST API 'Leri aracılığıyla Azure Data Box blob depolamaya veri kopyalama  
+# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Öğretici: REST API'leri aracılığıyla verileri Azure Veri Kutusu Blob depolama alanına kopyalama  
 
-Bu öğretici, *http* veya *https*üzerinden REST API 'leri aracılığıyla Azure Data Box blob depolamaya bağlanma yordamlarını açıklar. Bağlandıktan sonra, verileri Data Box blob depolamaya kopyalamak için gereken adımlar açıklanır.
+Bu öğretici, *http* veya *https*üzerinden REST API'leri aracılığıyla Azure Veri Kutusu Blob depolamabağlanmak için prosedürleri açıklar. Bağlandıktan sonra, verileri Veri Kutusu Blob depolama alanına kopyalamak için gereken adımlar açıklanır.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
-> * *Http* veya *https* aracılığıyla Data Box blob depolamaya bağlanma
+> * Ön koşullar
+> * *Http* veya *https* üzerinden Veri Kutusu Blob depolamaya bağlanın
 > * Data Box Heavy’ye veri kopyalama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. [Öğreticiyi tamamladınız: Azure Data Box Heavy ayarlama](data-box-heavy-deploy-set-up.md).
+1. [Öğreticiyi tamamladınız: Azure Veri Kutusu Ağır'ı ayarlayın.](data-box-heavy-deploy-set-up.md)
 2. Data Box Heavy’yi teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
-3. [Data Box BLOB depolama için sistem gereksinimlerini](data-box-system-requirements-rest.md) incelediyseniz ve desteklenen API 'Ler, SDK 'lar ve araçların sürümleriyle ilgili bilgi sahibisiniz.
-4. Data Box Heavy üzerine kopyalamak istediğiniz verilerin bulunduğu bir ana bilgisayara erişirsiniz. Konak bilgisayarınızda:
+3. [Veri Kutusu Blob depolama sistemi gereksinimlerini](data-box-system-requirements-rest.md) gözden geçirdiniz ve API'lerin, SDK'ların ve araçların desteklenen sürümlerini tanıdık.
+4. Veri Kutusu Ağır'a kopyalamak istediğiniz verilere sahip bir ana bilgisayara erişebilirsiniz. Konak bilgisayarınızda:
     - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
     - Yüksek hızlı bir ağa bağlı olmalıdır. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir. 
-5. Ana bilgisayarınızda [AzCopy 7.1.0 indirin](https://aka.ms/azcopyforazurestack20170417) . Ana bilgisayarınızdan Azure Data Box BLOB depolama alanına veri kopyalamak için AzCopy kullanacaksınız.
+5. [AzCopy 7.1.0'ı](https://aka.ms/azcopyforazurestack20170417) ana bilgisayarınızdan indirin. AzCopy'yi kullanarak ana bilgisayardan Azure Veri Kutusu Blob depolama alanına veri kopyalarsınız.
 
 
-## <a name="connect-via-http-or-https"></a>Http veya HTTPS aracılığıyla bağlanma
+## <a name="connect-via-http-or-https"></a>http veya https üzerinden bağlan
 
-*Http* veya *https*üzerinden Data Box blob depolamaya bağlanabilirsiniz.
+Veri Kutusu Blob *depolamaya http* veya *https*üzerinden bağlanabilirsiniz.
 
-- *Https* , Data Box blob depolamaya bağlanmak için güvenli ve önerilen bir yoldur.
-- Güvenilen ağlar üzerinden bağlanılırken *http* kullanılır.
+- *Https,* Data Box Blob depolama alanına bağlanmanın güvenli ve önerilen yoludur.
+- *Http,* güvenilen ağlar üzerinden bağlanırken kullanılır.
 
-*Http* veya *https*üzerinden Data Box blob depolamaya bağlandığınızda, bağlanma adımları farklıdır.
+Http *veya* *https*üzerinden Veri Kutusu Blob depolama bağlandığınızda bağlanmak için adımlar farklıdır.
 
-## <a name="connect-via-http"></a>Http üzerinden Bağlan
+## <a name="connect-via-http"></a>Http üzerinden bağlan
 
-*Http* üzerinden Data Box BLOB depolama REST API 'lerine bağlantı aşağıdaki adımları gerektirir:
+*Http* üzerinden Veri Kutusu Blob depolama REST API'lere bağlantı aşağıdaki adımları gerektirir:
 
-- Uzak konağa cihaz IP ve BLOB hizmeti uç noktası ekleme
-- Üçüncü taraf yazılımları yapılandırın ve bağlantıyı doğrulayın
+- Aygıt IP ve blob hizmeti bitiş noktasını uzak ana bilgisayara ekleme
+- Üçüncü taraf yazılımlarını yapılandırma ve bağlantıyı doğrulama
 
 Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 
 > [!IMPORTANT]
-> Data Box Heavy için, ikinci düğüme bağlanmak üzere tüm bağlantı talimatlarını tekrarlamanız gerekir.
+> Data Box Heavy için, ikinci düğüme bağlanmak için tüm bağlantı yönergelerini yinelemeniz gerekir.
 
-### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Cihaz IP adresi ve BLOB hizmeti uç noktası ekle
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Aygıt IP adresi ve blob hizmeti bitiş noktası ekleme
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
 
 
-### <a name="configure-partner-software-and-verify-connection"></a>İş ortağı yazılımını yapılandırma ve bağlantıyı doğrulama
+### <a name="configure-partner-software-and-verify-connection"></a>İş ortağı yazılımLarını yapılandırma ve bağlantıyı doğrulama
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
 [!INCLUDE [data-box-verify-connection](../../includes/data-box-verify-connection.md)]
 
-## <a name="connect-via-https"></a>Https üzerinden Bağlan
+## <a name="connect-via-https"></a>https üzerinden bağlan
 
-Https üzerinden Azure Blob depolama REST API 'Lerine yönelik bağlantı aşağıdaki adımları gerektirir:
+Azure Blob depolama REST API'lerine https üzerinden bağlantı etmek için aşağıdaki adımları gerektirir:
 
-- Sertifikayı Azure portal indirin
-- Sertifikayı istemci veya uzak ana bilgisayara aktarma
-- İstemci veya uzak konağa cihaz IP ve BLOB hizmeti uç noktası ekleme
-- Üçüncü taraf yazılımları yapılandırın ve bağlantıyı doğrulayın
+- Sertifikayı Azure portalından indirin
+- İstemci veya uzak ana bilgisayarda sertifika alma
+- Aygıt IP ve blob hizmeti bitiş noktasını istemciye veya uzak ana bilgisayara ekleme
+- Üçüncü taraf yazılımlarını yapılandırma ve bağlantıyı doğrulama
 
 Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 
 > [!IMPORTANT]
-> Data Box Heavy için, ikinci düğüme bağlanmak üzere tüm bağlantı talimatlarını tekrarlamanız gerekir.
+> Data Box Heavy için, ikinci düğüme bağlanmak için tüm bağlantı yönergelerini yinelemeniz gerekir.
 
-### <a name="download-certificate"></a>Sertifikayı indirin
+### <a name="download-certificate"></a>Sertifikayı karşıdan yükleme
 
-Sertifikayı indirmek için Azure portal kullanın.
+Sertifikayı indirmek için Azure portalını kullanın.
 
-1. Azure portal oturum açın.
-2. Data Box siparişiniz sayfasına gidin ve **genel > cihaz ayrıntılarına**gidin.
-3. **Cihaz kimlik bilgileri**altında cihaza **API erişimi** ' ne gidin. **İndir**’e tıklayın. Bu eylem, **sipariş adı >. cer** sertifika dosyası\<indirir. Bu dosyayı **kaydedin** . Bu sertifikayı, cihaza bağlanmak için kullanacağınız istemci veya ana bilgisayara yüklersiniz.
+1. Azure Portal’da oturum açın.
+2. Veri Kutusu siparişinize gidin ve **Genel > Cihazı ayrıntılarına**gidin.
+3. **Aygıt kimlik bilgileri**altında, aygıta **API erişimine** gidin. **İndir'i**tıklatın. Bu eylem sipariş ** \<adı>.cer** sertifika dosyasını indirir. Bu dosyayı **kaydedin.** Bu sertifikayı aygıta bağlanmak için kullanacağınız istemci veya ana bilgisayara yüklersiniz.
 
-    ![Azure portal sertifikayı indirin](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
+    ![Azure portalında sertifika indirin](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
-### <a name="import-certificate"></a>Sertifikayı al 
+### <a name="import-certificate"></a>Sertifikayı içeri aktarma 
 
-HTTPS üzerinden Data Box blob depolamaya erişmek için cihaz için bir SSL sertifikası gerekir. Bu sertifikanın istemci uygulama tarafından kullanılabilir hale getirilme yöntemi, uygulamadan uygulamaya ve işletim sistemleri ve dağıtımlar arasında farklılık gösterir. Bazı uygulamalar, sistem sertifika deposuna aktarıldıktan sonra sertifikaya erişebilir, ancak diğer uygulamalar bu mekanizmayı kullanmaz.
+DATA Box Blob depolama alanına HTTPS üzerinden erişmek için cihaz için TLS/SSL sertifikası gerekir. Bu sertifikanın istemci uygulamasına sunulma şekli, uygulamadan uygulamaya ve işletim sistemleri ve dağıtımlar arasında değişir. Bazı uygulamalar sertifikaya sistemin sertifika deposuna alındıktan sonra erişebilirken, diğer uygulamalar bu mekanizmadan yararlanamaz.
 
-Bazı uygulamalar için belirli bilgiler bu bölümde belirtilmiştir. Diğer uygulamalar hakkında daha fazla bilgi için, uygulamanın ve kullanılan işletim sisteminin belgelerine başvurun.
+Bu bölümde bazı uygulamalar için özel bilgiler denbelirtilmiştir. Diğer uygulamalar hakkında daha fazla bilgi için, uygulama ve kullanılan işletim sistemi için belgelere başvurun.
 
-`.cer` dosyasını bir Windows veya Linux istemcisinin kök deposuna aktarmak için aşağıdaki adımları izleyin. Windows sisteminde, Windows PowerShell veya Windows Server Kullanıcı arabirimini kullanarak sertifikayı içeri aktarabilir ve sisteminize yükleyebilirsiniz.
+Dosyayı `.cer` bir Windows veya Linux istemcisinin kök deposuna almak için aşağıdaki adımları izleyin. Windows sisteminde, sertifikayı sisteminize almak ve yüklemek için Windows PowerShell veya Windows Server UI'yi kullanabilirsiniz.
 
-#### <a name="use-windows-powershell"></a>Windows PowerShell 'i kullanma
+#### <a name="use-windows-powershell"></a>Windows PowerShell kullanma
 
-1. Yönetici olarak bir Windows PowerShell oturumu başlatın.
+1. Bir Windows PowerShell oturumunu yönetici olarak başlatın.
 2. Komut istemine şunları yazın:
 
     ```
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
     ```
 
-#### <a name="use-windows-server-ui"></a>Windows Server Kullanıcı arabirimini kullanma
+#### <a name="use-windows-server-ui"></a>Windows Server UI kullanma
 
-1.  `.cer` dosyasına sağ tıklayın ve **sertifikayı yüklensin**' i seçin. Bu eylem, sertifika alma Sihirbazı 'nı başlatır.
-2.  **Depo konumu**Için **yerel makine**' yi seçin ve ardından **İleri**' ye tıklayın.
+1.  Dosyaya `.cer` sağ tıklayın ve **sertifikayı yükle'yi**seçin. Bu eylem Sertifika Alma Sihirbazı'nı başlatır.
+2.  **Mağaza konumu**için **Yerel Makine'yi**seçin ve sonra **İleri'yi**tıklatın.
 
-    ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![PowerShell kullanarak sertifika alma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.  **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından **görüntüle**' ye tıklayın. Uzak konağın kök deposuna gidin ve ardından **İleri**' ye tıklayın.
+3.  **Aşağıdaki mağazadaki tüm sertifikaları yerleştir'i**seçin ve ardından **Gözat'ı**tıklatın. Uzak ana makinenizin kök deposuna gidin ve sonra **İleri'yi**tıklatın.
 
-    ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![PowerShell kullanarak sertifika alma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  **Son**'a tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
+4.  **Son**'a tıklayın. Alma işleminin başarılı olduğunu belirten bir ileti görüntülenir.
 
-    ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![PowerShell kullanarak sertifika alma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Linux sistemi kullanma
 
-Sertifikayı içeri aktarma yöntemi dağıtıma göre değişir.
+Sertifika alma yöntemi dağıtıma göre değişir.
 
 > [!IMPORTANT]
-> Data Box Heavy için, ikinci düğüme bağlanmak üzere tüm bağlantı talimatlarını tekrarlamanız gerekir.
+> Data Box Heavy için, ikinci düğüme bağlanmak için tüm bağlantı yönergelerini yinelemeniz gerekir.
 
-Ubuntu ve deni gibi birkaç tane, `update-ca-certificates` komutunu kullanır.  
+Ubuntu ve Debian gibi birkaç, `update-ca-certificates` komutu kullanın.  
 
-- Base64 ile kodlanmış sertifika dosyasını `.crt` uzantıya sahip olacak şekilde yeniden adlandırın ve `/usr/local/share/ca-certificates directory`kopyalayın.
-- `update-ca-certificates`komutunu çalıştırın.
+- Base64 kodlanmış sertifika dosyasını bir `.crt` uzantıya sahip olacak `/usr/local/share/ca-certificates directory`şekilde yeniden adlandırın ve 'ye kopyalayın.
+- `update-ca-certificates` komutunu çalıştırın.
 
-RHEL, Fedora ve CentOS 'ın son sürümleri `update-ca-trust` komutunu kullanır.
+RHEL, Fedora ve CentOS'un `update-ca-trust` son sürümleri nde bu komut kullanılır.
 
-- Sertifika dosyasını `/etc/pki/ca-trust/source/anchors` dizinine kopyalayın.
+- Sertifika dosyasını dizine kopyalayın. `/etc/pki/ca-trust/source/anchors`
 - `update-ca-trust` öğesini çalıştırın.
 
-Ayrıntılar için dağıtıma özgü belgelere başvurun.
+Ayrıntılar için dağıtımınıza özel belgelere başvurun.
 
-### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Cihaz IP adresi ve BLOB hizmeti uç noktası ekle 
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Aygıt IP adresi ve blob hizmeti bitiş noktası ekleme 
 
-[ *Http*ÜZERINDEN bağlanılırken cihaz IP adresi ve BLOB hizmeti uç noktası eklemek](#add-device-ip-address-and-blob-service-endpoint)için aynı adımları izleyin.
+[ *Http*üzerinden bağlanırken cihaz IP adresi ve blob hizmet bitiş noktası eklemek için](#add-device-ip-address-and-blob-service-endpoint)aynı adımları izleyin.
 
-### <a name="configure-partner-software-and-verify-connection"></a>İş ortağı yazılımını yapılandırma ve bağlantıyı doğrulama
+### <a name="configure-partner-software-and-verify-connection"></a>İş ortağı yazılımLarını yapılandırma ve bağlantıyı doğrulama
 
-[ *Http*üzerinden bağlanırken kullandığınız Iş ortağı yazılımını yapılandırmak](#configure-partner-software-and-verify-connection)için adımları izleyin. Tek fark, *http kullan seçeneğini* işaretlenmemiş olarak bırakmanız gerektiğidir.
+http üzerinden [bağlanırken kullandığınız iş ortağı yazılımını *http*yapılandırmak için](#configure-partner-software-and-verify-connection)adımları izleyin. Tek fark, Kullanım http *seçeneğini* işaretsiz bırakmanızgerektiğidir.
 
 ## <a name="copy-data-to-data-box-heavy"></a>Data Box Heavy’ye veri kopyalama
 
-Data Box blob depolamaya bağlandıktan sonra, bir sonraki adım verileri kopyalamaktır. Veri kopyalamadan önce aşağıdaki noktaları gözden geçirin:
+Veri Kutusu Blob depolamasına bağlandıktan sonra, bir sonraki adım verileri kopyalamaktır. Veri kopyalamadan önce aşağıdaki hususları gözden geçirin:
 
--  Verileri kopyalarken, veri boyutunun [Azure depolama ve Data Box Heavy limitlerde](data-box-limits.md)açıklanan boyut sınırlarına uyduğundan emin olun.
-- Data Box Heavy tarafından karşıya yüklenen veriler, Data Box Heavy dışındaki diğer uygulamalar tarafından aynı anda karşıya yüklenirse, bu durum karşıya yükleme işi hatalarıyla ve verilerin bozulmasına yol açabilir.
+-  Verileri kopyalarken, veri boyutunun Azure depolama ve Veri [Kutusu Ağır sınırlarında](data-box-limits.md)açıklanan boyut sınırlarına uyduklarından emin olun.
+- Data Box Heavy tarafından yüklenen veriler, Data Box Heavy dışındaki diğer uygulamalar tarafından aynı anda yükleniyorsa, bu durum yükleme iş hatalarına ve veri bozulmasına neden olabilir.
 
-Bu öğreticide, AzCopy, verileri Data Box blob depolamaya kopyalamak için kullanılır. Ayrıca, verileri kopyalamak için Azure Depolama Gezgini (GUI tabanlı bir aracı tercih ediyorsanız) veya iş ortağı yazılımını da kullanabilirsiniz.
+Bu eğitimde, AzCopy Verileri Veri Kutusu Blob depolama kopyalamak için kullanılır. Verileri kopyalamak için Azure Depolama Gezgini 'ni (GUI tabanlı bir aracı tercih ederseniz) veya iş ortağı yazılımını da kullanabilirsiniz.
 
-Kopyalama yordamı aşağıdaki adımlara sahiptir:
+Kopyalama yordamı aşağıdaki adımları vardır:
 
 - Bir kapsayıcı oluşturma
-- Bir klasörün içeriğini Data Box BLOB depolama alanına yükleme
-- Değiştirilen dosyaları Data Box blob depolamaya yükle
+- Bir klasörün içeriğini Veri Kutusu Blob depolama alanına yükleme
+- Değiştirilen dosyaları Veri Kutusu Blob depolama alanına yükleme
 
 
-Bu adımların her biri, aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
+Bu adımların her biri aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
 
 > [!IMPORTANT]
-> Data Box Heavy için, verileri ikinci düğüme kopyalamak üzere tüm kopyalama talimatlarını tekrarlamanız gerekir.
+> Data Box Heavy için, verileri ikinci düğüme kopyalamak için tüm kopyalama yönergelerini yinelemeniz gerekir.
 
 ### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-İlk adım bir kapsayıcı oluşturmaktır, çünkü Bloblar her zaman bir kapsayıcıya yüklenir. Kapsayıcılar, bilgisayarınızdaki klasörlerde dosyaları düzenlediğiniz gibi BLOB gruplarını düzenler. Blob kapsayıcısı oluşturmak için aşağıdaki adımları izleyin.
+Lekeler her zaman bir kapsayıcıya yüklendiğinden, ilk adım bir kapsayıcı oluşturmaktır. Kapsayıcılar, bilgisayarınızdaki klasörlerdeki dosyaları düzenlediğiniz gibi blob gruplarını düzenler. Bir blob kapsayıcı oluşturmak için aşağıdaki adımları izleyin.
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, blob kapsayıcısını oluşturmak istediğiniz depolama hesabını genişletin.
-3. **BLOB kapsayıcıları**' na sağ tıklayın ve bağlam menüsünden **BLOB kapsayıcısı oluştur**' u seçin.
+3. **Blob Containers'ı**sağ tıklatın ve bağlam menüsünden **Blob Kapsayıcı oluştur'u**seçin.
 
-   ![Blob kapsayıcıları Oluştur bağlam menüsü](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![Blob kapsayıcıları bağlam menüsü oluşturma](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
-4. **BLOB kapsayıcıları** klasörünün altında bir metin kutusu görünür. Blob kapsayıcınızın adını girin. Blob kapsayıcıları adlandırma kuralları ve kısıtlamaları hakkında bilgi için [kapsayıcı oluşturma ve izinleri ayarlama](../storage/blobs/storage-quickstart-blobs-dotnet.md) bölümüne bakın.
-5. Blob kapsayıcısını oluşturmak için veya iptal etmek için **ESC** **tuşuna basın** . Blob kapsayıcısı başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcıları** klasörü altında görüntülenir.
+4. **Blob Kapsayıcılar** klasörün altında bir metin kutusu görüntülenir. Blob kapsayıcınızın adını girin. [Kapsayıcıyı Oluştur'a](../storage/blobs/storage-quickstart-blobs-dotnet.md) bakın ve blob kapsayıcılarını adlandırma kuralları ve kısıtlamaları hakkında bilgi için izinler ayarlayın.
+5. Blob kapsayıcısını oluşturmak için yapıldığında **Enter** tuşuna basın veya iptal etmek için **Esc** tuşuna basın. Blob kapsayıcısı başarıyla oluşturulduktan sonra, seçili depolama hesabı için **Blob Kapsayıcılar** klasörü altında görüntülenir.
 
-   ![Blob kapsayıcısı oluşturuldu](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)
+   ![Blob konteyner oluşturuldu](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)
 
-### <a name="upload-contents-of-a-folder-to-data-box-blob-storage"></a>Bir klasörün içeriğini Data Box BLOB depolama alanına yükleme
+### <a name="upload-contents-of-a-folder-to-data-box-blob-storage"></a>Bir klasörün içeriğini Veri Kutusu Blob depolama alanına yükleme
 
-Bir klasördeki tüm dosyaları Windows veya Linux 'ta blob depolamaya yüklemek için AzCopy kullanın. Bir klasördeki tüm blobları karşıya yüklemek için aşağıdaki AzCopy komutunu girin:
+Bir klasördeki tüm dosyaları Windows veya Linux'taki Blob depolama alanına yüklemek için AzCopy'yi kullanın. Bir klasördeki tüm blobları karşıya yüklemek için aşağıdaki AzCopy komutunu girin:
 
 #### <a name="linux"></a>Linux
 
@@ -208,15 +208,15 @@ Bir klasördeki tüm dosyaları Windows veya Linux 'ta blob depolamaya yüklemek
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 
 
-`<key>`, hesap anahtarınızla değiştirin. Hesap anahtarınızı almak için Azure portal depolama hesabınıza gidin. **Ayarlar > erişim anahtarlarına**gidin, bir anahtar seçin ve AzCopy komutuna yapıştırın.
+Hesap `<key>` anahtarınızla değiştirin. Azure portalında hesap anahtarınızı almak için depolama hesabınıza gidin. Ayarlar **> Erişim tuşlarına**gidin, bir anahtar seçin ve AzCopy komutuna yapıştırın.
 
-Belirtilen hedef kapsayıcı mevcut değilse, AzCopy bu kapsayıcıyı oluşturur ve dosyayı kapsayıcıya yükler. Kaynak yolunu veri dizininiz için güncelleştirin ve hedef URL 'deki `data-box-storage-account-name`, Data Box ilişkili depolama hesabının adıyla değiştirin.
+Belirtilen hedef kapsayıcı mevcut değilse, AzCopy bu kapsayıcıyı oluşturur ve dosyayı kapsayıcıya yükler. Kaynak yolu veri dizininize güncelleştirin ve hedef URL'yi Veri Kutunuzla ilişkili depolama hesabının adıyla değiştirin. `data-box-storage-account-name`
 
 Belirtilen dizinin içeriklerini Blob depolama alanına yinelemeli olarak yüklemek için `--recursive` (Linux) veya `/S` (Windows) seçeneğini belirtin. AzCopy komutunu şu seçeneklerden biriyle çalıştırdığınızda tüm alt klasörler ve bu klasörlerin dosyaları da karşıya yüklenir.
 
-### <a name="upload-modified-files-to-data-box-blob-storage"></a>Değiştirilen dosyaları Data Box blob depolamaya yükle
+### <a name="upload-modified-files-to-data-box-blob-storage"></a>Değiştirilen dosyaları Veri Kutusu Blob depolama alanına yükleme
 
-En son değiştirilme zamanına göre dosyaları karşıya yüklemek için AzCopy kullanın. Bunu denemek için, test amacıyla kaynak dizininizde yeni dosyalar oluşturun veya değiştirin. Yalnızca güncelleştirilmiş veya yeni dosyaları karşıya yüklemek için, AzCopy komutuna `--exclude-older` (Linux) veya `/XO` (Windows) parametresini ekleyin.
+Dosyaları son değiştirilen zamana göre yüklemek için AzCopy'i kullanın. Bunu denemek için, test amacıyla kaynak dizininizde yeni dosyalar oluşturun veya değiştirin. Yalnızca güncelleştirilmiş veya yeni dosyaları karşıya yüklemek için, AzCopy komutuna `--exclude-older` (Linux) veya `/XO` (Windows) parametresini ekleyin.
 
 Yalnızca hedefte bulunmayan çıkış kaynaklarını kopyalamak istiyorsanız, AzCopy komutunda `--exclude-older` ve `--exclude-newer` (Linux) veya `/XO` ve `/XN` (Windows) parametrelerini belirtin. AzCopy, yalnızca güncelleştirilmiş verileri zaman damgasına göre karşıya yükler.
 
@@ -232,17 +232,17 @@ Yalnızca hedefte bulunmayan çıkış kaynaklarını kopyalamak istiyorsanız, 
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
-Bağlanma veya kopyalama işlemi sırasında herhangi bir hata oluşursa bkz. [Data Box blob depolamayla ilgili sorunları giderme](data-box-troubleshoot-rest.md).
+Bağlantı veya kopyalama işlemi sırasında herhangi bir hata varsa, [Veri Kutusu Blob depolama alanıyla ilgili Sorun Giderme sorunlarına](data-box-troubleshoot-rest.md)bakın.
 
-Sonraki adım, cihazınızı sevk etmek için hazırlamaktır.
+Bir sonraki adım, cihazınızı gönderiye hazırlamaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
-> * *Http* veya *https* aracılığıyla Data Box blob depolamaya bağlanma
+> * Ön koşullar
+> * *Http* veya *https* üzerinden Veri Kutusu Blob depolamaya bağlanın
 > * Data Box Heavy’ye veri kopyalama
 
 

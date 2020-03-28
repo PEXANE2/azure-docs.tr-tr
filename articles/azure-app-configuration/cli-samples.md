@@ -1,30 +1,30 @@
 ---
-title: Azure CLı örnekleri-Azure Uygulama yapılandırması
-description: Azure Uygulama yapılandırması için belirtilen örnek betikler hakkında bilgi
+title: Azure CLI örnekleri - Azure Uygulama Yapılandırması
+description: Azure Uygulama Yapılandırması için sağlanan örnek komut dosyaları hakkında bilgi
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 02/19/2020
 ms.openlocfilehash: a255db3fbce2c111a0a629c01b86cc891d71e803
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523756"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI örnekleri
 
-Aşağıdaki tablo, Azure CLı kullanarak Azure Uygulama yapılandırması için bash betiklerinin bağlantılarını içerir.
+Aşağıdaki tabloda Azure CLI'yi kullanarak Azure Uygulama Yapılandırması için bash komut dosyasına bağlantılar yer almaktadır.
 
 | | |
 |-|-|
-|**Oluşturma**||
-| [Uygulama yapılandırma deposu oluşturma](./scripts/cli-create-service.md) | Bir kaynak grubu ve bir uygulama yapılandırma deposu örneği oluşturur.  |
+|**Oluştur**||
+| [Uygulama Yapılandırma mağazası oluşturma](./scripts/cli-create-service.md) | Bir kaynak grubu ve Bir Uygulama Yapılandırma deposu örneği oluşturur.  |
 |**Kullanma**||
-| [Anahtar değerleriyle çalışma](./scripts/cli-work-with-keys.md) | Anahtar değerlerini oluşturur, görüntüler, güncelleştirir ve siler. |
-| [Anahtar değerlerini içeri aktar](./scripts/cli-import.md) | Diğer kaynaklardaki anahtar değerlerini içeri aktarır. |
-| [Anahtar değerlerini dışarı aktar](./scripts/cli-export.md) | Anahtar değerlerini diğer hedeflere dışa aktarır. |
-|**Silme**||
-| [Uygulama yapılandırma deposunu silme](./scripts/cli-delete-service.md) | Bir uygulama yapılandırma deposu örneğini siler.  |
+| [Anahtar değerlerle çalışma](./scripts/cli-work-with-keys.md) | Önemli değerleri oluşturur, görüntüler, günceller ve siler. |
+| [Anahtar değerleri alma](./scripts/cli-import.md) | Önemli değerleri diğer kaynaklardan içeri aktlar. |
+| [Anahtar değerleri dışa aktarma](./scripts/cli-export.md) | Önemli değerleri diğer hedeflere dışa dışa dışa aktarma. |
+|**Sil**||
+| [Uygulama Yapılandırma mağazalarını silme](./scripts/cli-delete-service.md) | Bir Uygulama Yapılandırma mağaza örneğini siler.  |
 | | |

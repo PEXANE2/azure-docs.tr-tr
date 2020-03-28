@@ -1,14 +1,14 @@
 ---
-title: Kestrel kullanarak HTTPS uç noktası ekleme
+title: Kestrel kullanarak BIR HTTPS bitiş noktası ekleme
 description: Bu öğreticide Kestrel kullanarak bir ASP.NET Core ön uç web hizmetine HTTPS uç noktası ekleme ve uygulamayı bir kümeye dağıtma işlemi hakkında bilgi alacaksınız.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238933"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
@@ -30,23 +30,23 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [.NET Service Fabric uygulaması oluşturma](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Uygulamayı uzak kümeye dağıtma](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Bir ASP.NET Core ön uç hizmetine HTTPS uç noktası ekleme
-> * [Azure Pipelines ile CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-monitoring-aspnet.md)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* **Azure geliştirme** ve **ASP.net ve Web geliştirme** Iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/) sürüm 15,5 veya üstünü yükledikten sonra.
-* [Service Fabric SDK'yı yükleyin](service-fabric-get-started.md)
+* [Visual Studio 2019](https://www.visualstudio.com/) sürümünü 15.5 veya sonraki sürümlerle **Azure geliştirme** ve ASP.NET ve **web geliştirme** iş yükleriyle yükleyin.
+* [Servis Kumaşı SDK'yı yükleyin](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Sertifika edinme veya otomatik olarak imzalanan geliştirme sertifikası oluşturma
 
-Üretim uygulamaları için [bir sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority) alınan bir sertifikayı kullanın. Geliştirme ve test için otomatik olarak imzalanan bir sertifika oluşturup bunu kullanabilirsiniz. Service Fabric SDK’sı, otomatik olarak imzalanan bir sertifika oluşturup *sertifika deposuna aktaran*CertSetup.ps1`Cert:\LocalMachine\My` betiğini sağlar. Yönetici olarak bir komut istemi açın ve "CN = mytestcert" konusuyla bir sertifika oluşturmak için aşağıdaki komutu çalıştırın:
+Üretim uygulamaları için [bir sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority) alınan bir sertifikayı kullanın. Geliştirme ve test için otomatik olarak imzalanan bir sertifika oluşturup bunu kullanabilirsiniz. Service Fabric SDK’sı, otomatik olarak imzalanan bir sertifika oluşturup `Cert:\LocalMachine\My` sertifika deposuna aktaran *CertSetup.ps1* betiğini sağlar. Yönetici olarak bir komut istemi açın ve "CN=mytestcert" öznesi olan bir sertifika oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
@@ -68,7 +68,7 @@ Thumbprint                                Subject
 
 ## <a name="define-an-https-endpoint-in-the-service-manifest"></a>Hizmet bildiriminde bir HTTPS uç noktası tanımlama
 
-Visual Studio’yu **yönetici** olarak başlatın ve Oylama çözümünü açın. Çözüm Gezgini'nde *VotingWeb/PackageRoot/ServiceManifest.xml* dosyasını açın. Hizmet bildirimi, hizmet uç noktalarını tanımlar.  **Uç Noktalar** bölümünü bulun ve var olan "ServiceEndpoint" uç noktasını düzenleyin.  Adı "EndpointHttps" olarak değiştirin, protokolü *https*, türü *Girdi*, bağlantı noktasını ise *443* olarak ayarlayın.  Yaptığınız değişiklikleri kaydedin.
+Visual Studio’yu **yönetici** olarak başlatın ve Oylama çözümünü açın. Çözüm Explorer, açık *VotingWeb / PackageRoot / ServiceManifest.xml*. Hizmet bildirimi, hizmet uç noktalarını tanımlar.  **Uç Noktalar** bölümünü bulun ve var olan "ServiceEndpoint" uç noktasını düzenleyin.  Adı "EndpointHttps" olarak değiştirin, protokolü *https*, türü *Girdi*, bağlantı noktasını ise *443* olarak ayarlayın.  Yaptığınız değişiklikleri kaydedin.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -152,8 +152,8 @@ serviceContext =>
 
 Ayrıca, Kestrel’in konuyu kullanarak sertifikayı `Cert:\LocalMachine\My` deposunda bulabilmesi için aşağıdaki yöntemi ekleyin.  
 
-Önceki PowerShell komutuyla otomatik olarak imzalanan bir sertifika oluşturduysanız veya sertifikanızın CN 'sini kullanıyorsanız "&lt;your_CN_value&gt;" değerini "mytestcert" ile değiştirin.
-Yerel dağıtım durumunda, kimlik doğrulama özel durumlarının önüne geçmek için "CN = localhost" kullanmanın tercih ettiğini `localhost` unutmayın.
+Önceki&lt;PowerShell komutuyla kendi imzalı bir sertifika oluşturduysanız veya sertifikanızın CN'sini kullanıyorsanız " your_CN_value"&gt;ile "mytestcert" ile değiştirin.
+Yerel dağıtım `localhost` söz konusu olduğunda kimlik doğrulama özel durumlarını önlemek için "CN=localhost" kullanılmasının tercih edildiğini unutmayın.
 
 ```csharp
 private X509Certificate2 GetHttpsCertificateFromStore()
@@ -176,11 +176,11 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Sertifikanın özel anahtarına AĞ HİZMETİ erişimi verme
 
-Önceki adımlardan birinde sertifikayı geliştirme bilgisayarındaki `Cert:\LocalMachine\My` deposuna aktarmıştınız.  Şimdi, hizmeti çalıştıran hesaba (varsayılan olarak ağ HIZMETI) sertifikanın özel anahtarına erişimi açıkça verin. Bu adımı el ile yapabilirsiniz (Certlm. msc aracını kullanarak), ancak hizmet bildiriminin **Setupentrypoint** öğesinde bir [Başlangıç betiği yapılandırarak](service-fabric-run-script-at-service-startup.md) otomatik olarak bir PowerShell Betiği çalıştırmak daha iyidir.
+Önceki adımlardan birinde sertifikayı geliştirme bilgisayarındaki `Cert:\LocalMachine\My` deposuna aktarmıştınız.  Şimdi, hizmeti çalıştıran hesaba açıkça (NETWORK SERVICE, varsayılan olarak) sertifikanın özel anahtarına erişim verin. Bu adımı el ile (certlm.msc aracını kullanarak) yapabilirsiniz, ancak hizmet bildiriminin **SetupEntryPoint'inde** [bir başlangıç komut dosyası yapılandırarak](service-fabric-run-script-at-service-startup.md) bir PowerShell komut dosyasını otomatik olarak çalıştırmak daha iyidir.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Hizmet kurulumu giriş noktasını yapılandırma
 
-Çözüm Gezgini'nde *VotingWeb/PackageRoot/ServiceManifest.xml* dosyasını açın.  **CodePackage** bölümünde **SetupEntryPoint** düğümünü ve sonra bir **ExeHost** düğümünü ekleyin.  **ExeHost** düğümünde **Program** ayarını "Setup.bat" ve **WorkingFolder** ayarını "CodePackage" olarak belirleyin.  VotingWeb hizmeti başlatıldığında, VotingWeb.exe başlatılmadan önce CodePackage klasöründe Setup.bat betiği yürütülür.
+Çözüm Explorer, açık *VotingWeb / PackageRoot / ServiceManifest.xml*.  **CodePackage** bölümünde **SetupEntryPoint** düğümünü ve sonra bir **ExeHost** düğümünü ekleyin.  **ExeHost** düğümünde **Program** ayarını "Setup.bat" ve **WorkingFolder** ayarını "CodePackage" olarak belirleyin.  VotingWeb hizmeti başlatıldığında, VotingWeb.exe başlatılmadan önce CodePackage klasöründe Setup.bat betiği yürütülür.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -335,23 +335,23 @@ Sonra, VotingWebPkg **ServiceManifestImport** bölümünde bir **RunAsPolicy** y
 
 ## <a name="run-the-application-locally"></a>Uygulamayı yerel olarak çalıştırma
 
-Çözüm Gezgini, **Oylama** uygulamasını seçin ve **Uygulama URL 'si** özelliğini "https:\//localhost: 443" olarak ayarlayın.
+Solution Explorer'da **Oylama** uygulamasını seçin ve **Uygulama URL** \/özelliğini "https: /localhost:443" olarak ayarlayın.
 
-Tüm dosyaları kaydedin ve F5’e basarak uygulamayı yerel olarak çalıştırın.  Uygulama dağıtıldıktan sonra, https:\//localhost: 443 olan bir Web tarayıcısı açılır. Otomatik olarak imzalanan bir sertifika kullanıyorsanız, bilgisayarınızın bu web sitesinin güvenliğine güvenmediğini bildiren bir uyarı görürsünüz.  Web sayfasına devam edin.
+Tüm dosyaları kaydedin ve F5’e basarak uygulamayı yerel olarak çalıştırın.  Uygulama dağıtıldıktan sonra https:\//localhost:443 adresine bir web tarayıcısı açılır. Otomatik olarak imzalanan bir sertifika kullanıyorsanız, bilgisayarınızın bu web sitesinin güvenliğine güvenmediğini bildiren bir uyarı görürsünüz.  Web sayfasına devam edin.
 
 ![Oylama uygulaması][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Küme düğümlerine sertifika yükleme
 
-Uygulamayı Azure 'a dağıtmadan önce, sertifikayı tüm uzak küme düğümlerinin `Cert:\LocalMachine\My` deposuna yüklemelisiniz.  Hizmetler, kümenin farklı düğümlerine geçebilir.  Ön uç web hizmeti bir küme düğümünde başladığında, başlangıç betiği sertifikayı arar ve erişim izinlerini yapılandırır.
+Uygulamayı Azure'a dağıtmadan önce, sertifikayı `Cert:\LocalMachine\My` tüm uzak küme düğümlerinin deposuna yükleyin.  Hizmetler kümenin farklı düğümlerine taşınabilir.  Ön uç web hizmeti bir küme düğümünde başladığında, başlangıç betiği sertifikayı arar ve erişim izinlerini yapılandırır.
 
-İlk olarak, sertifikayı bir PFX dosyasına aktarın. certlm.msc uygulamasını açın ve **Kişisel**>**Sertifikalar**’a gidin.  *Mytestcert* sertifikasına sağ tıklayın ve **dışarı aktar**>**Tüm görevler** ' i seçin.
+İlk olarak, sertifikayı bir PFX dosyasına aktarın. certlm.msc uygulamasını açın ve **Kişisel**>**Sertifikalar'a**gidin.  *Mytestcert* sertifikasına sağ tıklayın ve **Tüm Görevler**>**Dışa Aktarma'yı**seçin.
 
 ![Sertifikayı dışarı aktarma][image4]
 
 Dışarı aktarma sihirbazında **Evet, özel anahtarı dışarı aktar** seçeneğini belirleyin ve Kişisel Bilgi Değişimi (PFX) biçimini seçin.  Dosyayı *C:\Users\sfuser\votingappcert.pfx* konumuna aktarın.
 
-Ardından, [belirtilen PowerShell betiklerini](./scripts/service-fabric-powershell-add-application-certificate.md)kullanarak sertifikayı uzak kümeye yükler.
+Ardından, [bu sağlanan Powershell komut dosyalarını](./scripts/service-fabric-powershell-add-application-certificate.md)kullanarak sertifikayı uzak kümeye yükleyin.
 
 > [!Warning]
 > Geliştirme ve test uygulamaları için otomatik olarak imzalanan bir sertifika yeterlidir. Üretim uygulamaları için otomatik olarak imzalanan sertifika yerine [bir sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority) sertifikayı kullanın.
@@ -385,7 +385,7 @@ $slb | Set-AzLoadBalancer
 
 Tüm dosyaları kaydedin, Hata Ayıklama’dan Yayın’a geçin ve F6’ya basarak yeniden oluşturun.  Çözüm Gezgini’nde **Oylama**’ya sağ tıklayın ve **Yayımla**’yı seçin. [Bir kümeye uygulama dağıtma](service-fabric-tutorial-deploy-app-to-party-cluster.md) bölümünde oluşturulan kümenin bağlantı uç noktasını veya başka bir kümeyi seçin.  Uygulamayı uzak kümede yayımlamak için **Yayımla**’ya tıklayın.
 
-Uygulama dağıtılırken bir web tarayıcısı açın ve [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) sayfasına gidin (URL'yi kümenizin bağlantı uç noktasıyla güncelleştirin). Otomatik olarak imzalanan bir sertifika kullanıyorsanız, bilgisayarınızın bu web sitesinin güvenliğine güvenmediğini bildiren bir uyarı görürsünüz.  Web sayfasına devam edin.
+Uygulama dağıtıldığında, bir web tarayıcısı [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) açın ve (kümenizin bağlantı bitiş noktasıyla URL'yi güncelleyin). Otomatik olarak imzalanan bir sertifika kullanıyorsanız, bilgisayarınızın bu web sitesinin güvenliğine güvenmediğini bildiren bir uyarı görürsünüz.  Web sayfasına devam edin.
 
 ![Oylama uygulaması][image3]
 
@@ -403,7 +403,7 @@ Uygulama dağıtılırken bir web tarayıcısı açın ve [https://mycluster.reg
 
 Sonraki öğreticiye ilerleyin:
 > [!div class="nextstepaction"]
-> [Azure Pipelines ile CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 [image1]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/SetupBatProperties.png
 [image2]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/VotingAppLocal.png

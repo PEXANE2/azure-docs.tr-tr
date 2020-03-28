@@ -1,14 +1,14 @@
 ---
-title: Öğretici-Jenkins ile Azure 'da bir geliştirme işlem hattı oluşturma
+title: Öğretici - Jenkins ile Azure'da geliştirme boru hattı oluşturma
 description: Bu öğreticide, Azure’da işlenen her kodu GitHub’dan çeken ve uygulamanızı çalıştırmak için yeni bir Docker kapsayıcısı oluşturan bir Jenkins sanal makinesi oluşturmayı öğrenirsiniz.
-keywords: Jenkins, Azure, DevOps, işlem hattı, cicd, Docker
+keywords: jenkins, masmavi, devops, boru hattı, cicd, docker
 ms.topic: tutorial
 ms.date: 03/27/2017
 ms.openlocfilehash: 2560d03282b2b3c8193a0b8c2a7a9f7c4036e75a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77606450"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Öğretici: Azure’da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde geliştirme altyapısı oluşturma
@@ -23,9 +23,9 @@ Uygulama geliştirme sürecinin derleme ve test aşamasını otomatikleştirmek 
 > * Uygulamanız için bir Docker görüntüsü oluşturma
 > * GitHub işlemelerinin yeni Docker görüntüsü oluşturduğunu ve çalışmakta olan uygulamayı güncelleştirdiğini doğrulama
 
-Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
+Bu öğretici, sürekli olarak en son sürüme güncelleştirilen [Azure Bulut Kabuğu'ndaki](https://docs.microsoft.com/azure/cloud-shell/overview)CLI'yi kullanır. Bulut Kabuğu'nu açmak için, herhangi bir kod bloğunun üstünden **deneyin'i** seçin.
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="create-jenkins-instance"></a>Jenkins örneği oluşturma
 [İlk önyüklemede Linux sanal makinelerini özelleştirme](../virtual-machines/linux/tutorial-automate-vm-deployment.md) konulu önceki bir öğreticide, cloud-init ile VM özelleştirmeyi nasıl otomatikleştirebileceğinizi öğrendiniz. Bu öğreticide, bir VM’ye Jenkins ve Docker yüklemek için cloud-init dosyası kullanılır. Jenkins, sürekli tümleştirme (CI) ve sürekli teslimi (CD) etkinleştirmek için Azure ile sorunsuz bir şekilde tümleştirilen popüler bir açık kaynak otomasyon sunucusudur. Jenkins kullanmayla ilgili diğer öğreticiler için bkz. [Azure’da Jenkins merkezi](https://docs.microsoft.com/azure/jenkins/).
@@ -97,7 +97,7 @@ Güvenlik nedeniyle, Jenkins yüklemesini başlatmak için VM’nizde bir metin 
 ssh azureuser@<publicIps>
 ```
 
-`service` komutunu kullanarak Jenkins 'nin çalıştığını doğrulayın:
+Jenkins'in komutu `service` kullanarak çalıştığını doğrulayın:
 
 ```bash
 $ service jenkins status
@@ -128,7 +128,7 @@ Dosya henüz kullanılamıyorsa cloud-init tarafından Jenkins ve Docker yüklem
 - **Kaydet ve Bitir**’i seçin
 - Jenkins hazır olduktan sonra **Jenkins kullanmaya başla**’yı seçin
   - Jenkins kullanmaya başladığınızda web tarayıcınız boş bir sayfa görüntülerse, Jenkins hizmetini yeniden başlatın. SSH oturumundan `sudo service jenkins restart` yazın ve web tarayıcınızı yenileyin.
-- Gerekirse, Jenkins 'de oluşturduğunuz Kullanıcı adı ve parolayla oturum açın.
+- Gerekirse, oluşturduğunuz kullanıcı adı ve şifre ile Jenkins oturum açın.
 
 
 ## <a name="create-github-webhook"></a>GitHub web kancası oluşturma
@@ -136,13 +136,13 @@ GitHub tümleştirmesini yapılandırmak için Azure örnek deposundan [Node.js 
 
 Oluşturduğunuz çatalın içinde bir web kancası oluşturun:
 
-- **Ayarlar**' ı seçin ve ardından sol taraftaki **Web kancaları** ' nı seçin.
-- **Web kancası Ekle**' yi seçin ve ardından, filtre kutusuna *Jenkins* yazın.
-- **Yük URL 'si**için `http://<publicIps>:8080/github-webhook/`girin. Sondaki / karakterini eklemeyi unutmayın
-- **İçerik türü**için *Application/x-www-form-urlencoded*öğesini seçin.
-- **Bu Web kancasını tetiklemek istediğiniz olayları seçin?** *yalnızca anında iletme olayını seçin.*
-- **Etkin** olarak işaretlendi olarak ayarlayın.
-- **Web kancası Ekle**' ye tıklayın.
+- **Ayarlar'ı**seçin, ardından sol **taraftaki Webhooks'ları** seçin.
+- **Webhook Ekle'yi**seçin, ardından filtre kutusuna *Jenkins* girin.
+- **Payload**URL'si `http://<publicIps>:8080/github-webhook/`için , girin. Sondaki / karakterini eklemeyi unutmayın
+- **İçerik türü için** *uygulama/x-www-form-urlencoded'u*seçin.
+- **Bu webhook'u hangi olaylar için tetiklemek istersiniz?** *Just the push event.*
+- **Etkin'i** denetlenene ayarlayın.
+- **Webhook Ekle'yi**tıklatın.
 
 ![GitHub web kancasını çatalı oluşturulan deponuza ekleyin](media/tutorial-jenkins-github-docker-cicd/github-webhook.png)
 
@@ -153,7 +153,7 @@ Jenkins’in GitHub’daki kod işleme gibi olaylara yanıt vermesini sağlamak 
 Jenkins web sitenizde, giriş sayfasından **Yeni iş oluştur**’u seçin:
 
 - İş adı olarak *HelloWorld* adını girin. **Serbest tarzda proje**’yi seçip **Tamam**’ı seçin.
-- **Genel** bölümünden **GitHub projesi**’ni seçip çatalı oluşturulan deponuzun URL’sini *https://github.com/cynthn/nodejs-docs-hello-world* şeklinde girin
+- **Genel** bölümde, **GitHub projesini** seçin ve çatallı repo URL'nizi girin, örneğin*https://github.com/cynthn/nodejs-docs-hello-world*
 - **Kaynak kodu yönetimi** bölümünden **Git**’i seçip çatalı oluşturulan deponuzun *.git* URL’sini *https://github.com/cynthn/nodejs-docs-hello-world.git* şeklinde girin
 - **Derleme Tetikleyicileri** bölümünden **GITScm yoklaması için GitHub kanca tetikleyicisi**’ni seçin.
 - **Derleme** bölümünden **Derleme adımı ekle**’yi seçin. **Kabuğu yürüt**’ü seçin ve komut penceresine `echo "Test"` ifadesini girin.

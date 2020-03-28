@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 32466cc0a1ab9b86fc2fb8eb791c232ae13f1c01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79213566"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Öğretici: Azure Data Box Gateway veri aktarma
+# <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Öğretici: Azure Veri Kutusu Ağ Geçidi ile veri aktarımı
 
 
 ## <a name="introduction"></a>Giriş
 
-Bu makalede, Data Box Gateway paylaşımlara nasıl ekleneceğini ve bunların nasıl bağlanabileceği açıklanır. Paylaşımlar eklendikten sonra cihaz, verileri Azure 'a aktarabilir Data Box Gateway.
+Bu makalede, Veri Kutusu Ağ Geçidinizdeki paylaşımlara nasıl ekleyeceğiniz ve bunlara bağlanılabilmek açıklanmaktadır. Paylaşımları ekledikten sonra, Veri Kutusu Ağ Geçidi aygıtı verileri Azure'a aktarabilir.
 
 Bu yordamın tamamlanması 10 dakika kadar sürebilir.
 
@@ -31,64 +31,64 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Paylaşım ekleme
 > * Paylaşıma bağlanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Data Box Gateway cihazınıza paylaşım eklemeden önce aşağıdakilerden emin olun:
 
-- Bir sanal cihaz sağladınız ve [Hyper-V ' d e bir Data Box Gateway sağlama](data-box-gateway-deploy-provision-hyperv.md) veya [VMware 'de bir Data Box Gateway sağlama](data-box-gateway-deploy-provision-vmware.md)bölümünde ayrıntılı şekilde bağlantı kurdu olabilirsiniz.
+- Bir sanal aygıt saysanız ve [hyper-v'deki Veri Kutusu Ağ Geçidi'nde](data-box-gateway-deploy-provision-hyperv.md) ayrıntılı olarak belirtildiği gibi ona bağlandınız veya [VMware'de Bir Veri Kutusu Ağ Geçidi'ni Sağlama.'](data-box-gateway-deploy-provision-vmware.md)
 
-- [Bağlama ve Azure Data Box Gateway etkinleştirme](data-box-gateway-deploy-connect-setup-activate.md)bölümünde açıklanan sanal cihazı etkinleştirdiniz.
+- Connect'te açıklanan sanal aygıtı [etkinleştirdiniz ve Azure Veri Kutusu Ağ Geçidinizi etkinleştirdin.](data-box-gateway-deploy-connect-setup-activate.md)
 
 - Cihazınız paylaşım oluşturmak ve veri aktarmak için hazır durumda.
 
 ## <a name="add-a-share"></a>Paylaşım ekleme
 
-Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
+Bir paylaşım oluşturmak için aşağıdaki yordamı yapın:
 
-1. [Azure Portal](https://portal.azure.com/), Data Box Gateway kaynağını seçin ve **genel bakış**' a gidin. Cihazınızın çevrimiçi olması gerekir. Cihaz komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
+1. Azure [portalında,](https://portal.azure.com/)Veri Kutusu Ağ Geçidi kaynağınızı seçin ve ardından **Genel Bakış'a**gidin. Cihazınız çevrimiçi olmalıdır. Aygıt komut çubuğunda **+ Paylaşım ekle'yi** seçin.
    
    ![Paylaşım ekleme](./media/data-box-gateway-deploy-add-shares/click-add-share.png)
 
-4. **Paylaşma Ekle**bölümünde aşağıdaki yordamı uygulayın:
+4. **Share**Ekle'de, aşağıdaki yordamı yapın:
 
-    1. Paylaşımınız için benzersiz bir ad sağlayın. Paylaşma adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir. Paylaşma adı 3 ila 63 karakter uzunluğunda olmalı ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır.
+    1. Paylaşımınız için benzersiz bir ad sağlayın. Paylaşım adlarında yalnızca küçük harfler, sayılar ve tireler olabilir. Paylaşım adı 3 ile 63 karakter uzunluğunda olmalı ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır.
     
     2. Paylaşım için **Tür** seçin. Tür SMB veya NFS olabilir; varsayılan tür SMB'dir. SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
 
-    3. Paylaşımın bulunacağı bir depolama hesabı sağlayın. Zaten bir kapsayıcı yoksa, depolama hesabında yeni oluşturulan paylaşma adıyla oluşturulur. Kapsayıcı zaten varsa, o kapsayıcı kullanılır.
+    3. Paylaşımın bulunacağı bir depolama hesabı sağlayın. Bir kapsayıcı zaten yoksa, depolama hesabında yeni oluşturulan paylaşım adı ile oluşturulur. Kapsayıcı zaten varsa, bu kapsayıcı kullanılır.
        > [!IMPORTANT]
-       > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Kullandığınız Azure Depolama hesabının üzerinde bir Azure Yığını Kenarı veya Veri Kutusu Ağ Geçidi aygıtıyla kullanıyorsanız, üzerinde geçici çözümegeçirim ilkeleri olmadığından emin olun. Daha fazla bilgi [için, blob depolama için değişmezlik ilkelerini ayarla ve yönetin.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)
     
     4. Blok blobundan, sayfa blobundan veya dosyadan **Depolama hizmeti**'ni seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, buradaki örnekte biz verilerin Azure'da blob blokları olarak tutulmasını istediğimiz için Blok Blobunu seçtik. Sayfa Blobunu seçerseniz, verilerinizi 512 bayt hizalı olduğundan emin olmalısınız. Örneğin VHDX her zaman 512 bayt hizalıdır.
    
     5. Bu adım SMB paylaşımı mı yoksa NFS paylaşımı mı oluşturduğunuza bağlıdır.
      
-    - **SMB paylaşma** - **Tüm ayrıcalıklı yerel kullanıcı**altında **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni bir yerel kullanıcı oluşturursanız, bir **Kullanıcı adı** ve **parola**girip **parolayı onaylayın**. Bu eylem, izinleri yerel kullanıcıya atar. Paylaşma düzeyi izinlerinin değiştirilmesi Şu anda desteklenmiyor.
+    - **SMB payı** - **Tüm ayrıcalık yerel kullanıcı**altında, yeni **oluştur** veya **varolan kullan'ı**seçin. Yeni bir yerel kullanıcı oluşturursanız, bir **kullanıcı adı** ve **parola**girin ve ardından **parolayı onaylayın.** Bu eylem, izinleri yerel kullanıcıya atar. Hisse düzeyi izinlerinin değiştirilmesi şu anda desteklenmez.
     
         ![SMB paylaşımı ekleme](./media/data-box-gateway-deploy-add-shares/add-share-smb-1.png)
         
-        Bu paylaşma verileri için **yalnızca okuma Işlemlerine Izin ver** onay kutusunu seçerseniz, salt okunurdur kullanıcılar belirtebilirsiniz.
+        Bu paylaşım verileri için yalnızca okuma işlemleri onay kutusunu **seçin,** salt okunur kullanıcıları belirtebilirsiniz.
         
-    - **NFS paylaşma** -paylaşıma erişebilen izin VERILEN istemcilerin IP adreslerini girin.
+    - **NFS payı** - Paylaşıma erişebilen izin verilen istemcilerin IP adreslerini girin.
 
         ![NFS paylaşımı ekleme](./media/data-box-gateway-deploy-add-shares/add-share-nfs-1.png)
    
-9. Paylaşma oluşturmak için **Oluştur** ' u seçin.
+9. Paylaşımı oluşturmak için **Oluştur'u** seçin.
     
-    Paylaşma oluşturma işleminin devam ettiğini size bildirilir. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** kutucuğunu yeni paylaşımı yansıtacak şekilde güncelleştirir.
+    Paylaşım oluşturma nın devam ettiği size bildirilir. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, Yeni paylaşımı yansıtacak şekilde **Hisse** döşemesi güncellenir.
     
-    ![Güncelleştirilmiş paylaşımlar kutucuğu](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
+    ![Güncelleştirilmiş Hisse döşemesi](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
 
 ## <a name="connect-to-the-share"></a>Paylaşıma bağlanma
 
-Artık son adımda oluşturduğunuz bir veya daha fazla paylaşıma bağlanabilirsiniz. SMB veya NFS paylaşımınız olmasına bağlı olarak, adımlar farklılık gösterebilir.
+Artık son adımda oluşturduğunuz paylaşımlardan birine veya daha fazlasına bağlanabilirsiniz. SMB'niz veya NFS payınız olup olmadığına bağlı olarak adımlar değişebilir.
 
 ### <a name="connect-to-an-smb-share"></a>SMB paylaşımına bağlanma
 
-Data Box Gateway bağlı Windows Server istemcisinde, komutları girerek bir SMB paylaşımıyla bağlantı kurmak için:
+Veri Kutusu Ağ Geçidinize bağlı Windows Server istemcinizde, komutları girerek bir Kobİ paylaşımına bağlanın:
 
 
-1. Bir komut penceresinde, şunu yazın:
+1. Komut penceresinde şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -106,8 +106,8 @@ Data Box Gateway bağlı Windows Server istemcisinde, komutları girerek bir SMB
     ```   
 
 
-2. Klavyenizde Windows + R ' yi seçin. 
-3. **Çalıştır** penceresinde, `\\<device IP address>` belirtin ve ardından **Tamam**' ı seçin. Dosya Gezgini açılır. Artık, klasör olarak oluşturduğunuz paylaşımları görüntüleyebilmelisiniz. Dosya Gezgini 'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
+2. Klavyenizde Windows + R'yi seçin. 
+3. **Çalıştır** penceresinde, belirtin `\\<device IP address>` ve sonra **Tamam'ı**seçin. Dosya Gezgini açılır. Artık oluşturduğunuz paylaşımları klasör olarak görüntüleyebilmelisiniz. Dosya Gezgini'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
  
     ![SMB paylaşımına bağlanma](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -115,9 +115,9 @@ Data Box Gateway bağlı Windows Server istemcisinde, komutları girerek bir SMB
 
 ### <a name="connect-to-an-nfs-share"></a>NFS paylaşımına bağlanma
 
-Data Box Edge cihazınıza bağlı Linux istemciniz üzerinde aşağıdaki yordamı uygulayın:
+Veri Kutusu Edge cihazınıza bağlı Linux istemcinizde aşağıdaki yordamı yapın:
 
-1. İstemcide NFSv4 istemcisinin yüklü olduğundan emin olun. NFS istemcisini yüklemek için aşağıdaki komutu kullanın:
+1. İstemcinin NFSv4 istemcisinin yüklü olduğundan emin olun. NFS istemcisini yüklemek için aşağıdaki komutu kullanın:
 
    `sudo apt-get install nfs-common`
 
@@ -134,10 +134,10 @@ Data Box Edge cihazınıza bağlı Linux istemciniz üzerinde aşağıdaki yorda
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
-> Bu sürüm için aşağıdaki uyarılar geçerlidir:
-> - Paylaşımlardaki bir dosya oluşturulduktan sonra dosyanın yeniden adlandırılması desteklenmez.
+> Aşağıdaki uyarılar bu sürüm için geçerlidir:
+> - Paylaşımlarda bir dosya oluşturulduktan sonra, dosyanın yeniden adlandırılması desteklenmez.
 > - Paylaşımdan dosya silindiğinde, depolama hesabındaki girdi silinmez.
-> - Verileri kopyalamak için `rsync` kullanıyorsanız `rsync -a` seçeneği desteklenmez.
+> - Verileri `rsync` kopyalamak için `rsync -a` kullanıyorsanız, seçenek desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

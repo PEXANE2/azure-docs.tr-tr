@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure IoT Edge Machine Learning ortamı ayarlama'
-description: 'Öğretici: ortamınızı, uçtan makine öğrenimi için geliştirme ve modüllerin dağıtımı için hazırlayın.'
+title: "Öğretici: Ortamı ayarlama - Azure IoT Edge'de Makine Öğrenimi"
+description: 'Öğretici: Çevrenizi, makine öğrenimi için modüllerin geliştirilmesi ve dağıtımı için hazırlayın.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,50 +9,50 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79296820"
 ---
-# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
+# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge'de makine öğrenimi için bir ortam ayarlama
 
 > [!NOTE]
-> Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
+> Bu makale, IoT Edge'de Azure Machine Learning'i kullanma yla ilgili bir öğretici için bir serinin parçasıdır. Bu makaleye doğrudan ulaştıysanız, en iyi sonuçlar için serinin [ilk makalesiile](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
 
-Bu makalede, ortamınız geliştirme ve dağıtım için hazırlanmanıza yardımcı olur. İlk olarak, ihtiyacınız olan tüm araçlarla bir geliştirme makinesi ayarlayın. Daha sonra, Azure 'da gerekli bulut kaynaklarını oluşturun.
+Bu makale, ortamınızı geliştirme ve dağıtım için hazırlamanıza yardımcı olur. İlk olarak, ihtiyacınız olan tüm araçları içeren bir geliştirme makinesi ayarlayın. Ardından Azure'da gerekli bulut kaynaklarını oluşturun.
 
-## <a name="set-up-the-development-vm"></a>Geliştirme sanal makinesini ayarlama
+## <a name="set-up-the-development-vm"></a>Geliştirme VM'sini ayarlama
 
-Bu adım genellikle bir bulut geliştiricisi tarafından gerçekleştirilir. Bazı yazılımlar da bir veri bilimcı için yararlı olabilir.
+Bu adım genellikle bir bulut geliştiricisi tarafından gerçekleştirilir. Bazı yazılımlar da bir veri bilim adamı için yararlı olabilir.
 
-Zaten yapılandırılmış bir çok önkoşul içeren bir Azure sanal makinesi oluşturan bir PowerShell betiği oluşturduk. Oluşturduğumuz sanal makinenin [iç içe sanallaştırmayı](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)işleyebilmesi gerekir, bu nedenle [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) makine boyutu seçtik.
+Önceden yapılandırılmış olan birçok ön koşula sahip bir Azure sanal makinesi oluşturan bir PowerShell komut dosyası oluşturduk. Oluşturduğumuz [VM'nin iç içe sanallaştırmayı](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)ele alabilmeleri gerekiyor, bu yüzden [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) bir makine boyutu seçtik.
 
-Geliştirme sanal makinesi şu şekilde ayarlanır:
+Geliştirme VM ile kurulacaktır:
 
 * Windows 10
-* [Chocolatey](https://chocolatey.org/)
-* [Windows için Docker Desktop](https://www.docker.com/products/docker-desktop)
+* [Çikolatalı](https://chocolatey.org/)
+* [Windows için Docker Masaüstü](https://www.docker.com/products/docker-desktop)
 * [Windows için Git](https://gitforwindows.org/)
-* [Windows için git kimlik bilgileri Yöneticisi](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
-* [.NET Core SDK](https://dotnet.microsoft.com/)
+* [Windows için Git Kimlik Yöneticisi](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
+* [.NET Çekirdek SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
-* [VS Code uzantıları](https://marketplace.visualstudio.com/search?target=VSCode)
-  * [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+* [VS Kod Uzantıları](https://marketplace.visualstudio.com/search?target=VSCode)
+  * [Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  * [C #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
-  * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
+  * [Powershell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
-Geliştirici VM 'si kesinlikle gerekli değildir – tüm geliştirme araçları yerel bir makinede çalıştırılabilir. Bununla birlikte, bir düzey yürütülüyor alanı sağlamak için VM 'nin kullanılması önemle önerilir.
+Geliştirici VM kesinlikle gerekli değildir - tüm geliştirme araçları yerel bir makine üzerinde çalıştırılabilir. Ancak, eşit bir oyun alanı sağlamak için VM'yi kullanmanızı şiddetle öneririz.
 
-Sanal makineyi oluşturmak ve yapılandırmak yaklaşık 30 dakika sürer.
+Sanal makinenin oluşturulması ve yapılandırılması yaklaşık 30 dakika sürer.
 
-1. [Machine Learning ve IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) örnek deposunu yerel bilgisayarınıza kopyalayın veya indirin.
+1. [Machine Learning ve IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) örnek deposunu yerel bilgisayarınıza klonla veya indirin.
 
-1. PowerShell 'i yönetici olarak açın ve kodu indirdiğiniz kök dizin altında bulunan **\ıotedgeandmlsample\devvm** dizinine gidin. `srcdir`olarak kaynağınız için kök dizine başvuracağız.
+1. PowerShell'i yönetici olarak açın ve kodu indirdiğiniz kök dizinin altında bulunan **\IoTEdgeAndMlSample\DevVM** dizinine gidin. Kaynağınızın kök dizinine " olarak `srcdir`atıfta bulunacağız.
 
     ```powershell
     cd c:\srcdir\IoTEdgeAndMlSample\DevVM
@@ -60,13 +60,13 @@ Sanal makineyi oluşturmak ve yapılandırmak yaklaşık 30 dakika sürer.
 
    DevVM dizini, bu öğreticiyi tamamlamak için uygun bir Azure sanal makinesi oluşturmak için gereken dosyaları içerir.
 
-1. Betiklerin yürütülmesine izin vermek için aşağıdaki komutu çalıştırın. İstendiğinde **Evet** ' i seçin.
+1. Komut dosyalarının yürütülmesine izin vermek için aşağıdaki komutu çalıştırın. İstendiğinde **Tümüne Evet'i** seçin.
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Create-AzureDevVM. ps1 ' i çalıştırın.
+1. Create-AzureDevVM.ps1 çalıştırın.
 
     ```powershell
     .\Create-AzureDevVm.ps1
@@ -74,71 +74,71 @@ Sanal makineyi oluşturmak ve yapılandırmak yaklaşık 30 dakika sürer.
 
     İstendiğinde, aşağıdaki bilgileri sağlayın:
 
-    * **Azure ABONELIK kimliği**: portalda [Azure aboneliklerinde](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) bulunan abonelik Kimliğiniz.
-    * **Kaynak grubu adı**: Azure 'da yeni veya var olan bir kaynak grubunun adı.
-    * **Konum**: sanal makinenin oluşturulacağı Azure konumunu seçin. Örneğin, ' Batı ABD 2 ' veya ' Kuzey Avrupa '. Daha fazla bilgi için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).
-    * **Kullanıcı adı**: VM için yönetici hesabı için hatırlayabileceğiniz bir ad sağlayın.
+    * **Azure Abonelik Kimliği**: Portaldaki Azure [Abonelikleri'nde](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) bulunan abonelik kimliğiniz.
+    * **Kaynak Grubu Adı**: Azure'da yeni veya varolan bir kaynak grubunun adı.
+    * **Konum**: Sanal makinenin oluşturulacağı bir Azure konumu seçin. Örneğin, 'Batı ABD 2' veya 'Kuzey Avrupa'. Daha fazla bilgi için [Azure konumları'na](https://azure.microsoft.com/global-infrastructure/locations/)bakın.
+    * **Kullanıcı Adı**: VM için yönetici hesabı için unutulmaz bir ad sağlayın.
     * **Parola**: VM için yönetici hesabı için bir parola ayarlayın.
 
-   Komut dosyası aşağıdaki adımları yürüttüğünde birkaç dakika çalışır:
+   Komut dosyası, aşağıdaki adımları yürütürken birkaç dakika çalışır:
 
-    1. [Azure PowerShell az Module 'ü](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)yüklüyor.
-    1. Azure 'da oturum açmanızı ister.
-    1. VM 'nizin oluşturulmasıyla ilgili bilgileri onaylar. Devam etmek için **y** veya **ENTER** tuşuna basın.
-    1. Mevcut değilse kaynak grubunu oluşturur.
-    1. Sanal makineyi dağıtır.
-    1. VM üzerinde Hyper-V ' d i etkinleştirilir.
-    1. Geliştirme için yazılım gereksinimini ve örnek depoyu klonlayın.
-    1. VM 'yi yeniden başlatır.
-    1. SANAL makineye bağlanmak için masaüstünüzde bir RDP dosyası oluşturur.
+    1. [Azure PowerShell Az modüllerini](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)yükler.
+    1. Azure'da oturum açmanızı ister.
+    1. VM'nizin oluşturulmasına ait bilgileri onaylar. Devam etmek için **y** tuşuna basın veya **Enter** tuşuna basın.
+    1. Yoksa kaynak grubu oluşturur.
+    1. Sanal makineyi dağıtıyor.
+    1. VM'de Hyper-V sağlar.
+    1. Geliştirme için yazılım gereksinimini yükler ve örnek deposunu klonlar.
+    1. VM'yi yeniden başlatır.
+    1. VM'ye bağlanmak için masaüstünüzde bir RDP dosyası oluşturur.
 
-   Yeniden başlatmak için VM 'nin adı istenirse, adını betik çıktısından kopyalayabilirsiniz. Çıktı Ayrıca, sanal makineye bağlanmak için RDP dosyasının yolunu gösterir.
+   VM adının yeniden başlatması istenirse, komut dosyası çıktısından adını kopyalayabilirsiniz. Çıktı, VM'ye bağlanmak için RDP dosyasına giden yolu da gösterir.
 
-### <a name="set-auto-shutdown-schedule"></a>Otomatik kapatılma zamanlamasını ayarla
+### <a name="set-auto-shutdown-schedule"></a>Otomatik kapatma zamanlamasını ayarlama
 
-Maliyeti azaltmanıza yardımcı olmak için, geliştirme sanal makinesi, 1900 PST olarak ayarlanan bir otomatik kapatılma zamanlaması ile oluşturulmuştur. Konumunuza ve zamanlamanıza bağlı olarak bu ayarı güncelleştirmeniz gerekebilir. Kapalı zamanlamayı güncelleştirmek için:
+Maliyeti azaltmanıza yardımcı olmak için, geliştirme VM'si 1900 PST olarak ayarlanmış otomatik kapatma zamanlamasıyla oluşturulmuştur. Konumunuza ve zamanlamanıza bağlı olarak bu ayarı güncelleştirmeniz gerekebilir. Kapatma zamanlamasını güncelleştirmek için:
 
-1. Azure portal, betiğin oluşturulduğu VM 'ye gidin.
+1. Azure portalında, komut dosyasının oluşturduğu VM'ye gidin.
 
-1. Sol bölme menüsünde, **işlemler**altında **otomatik olarak kapalı**' yı seçin.
+1. Sol bölme menüsünden, **İşlemler**altında Otomatik **kapatma'yı**seçin.
 
-1. **Zamanlanan kapalı** ve **saat dilimini** Istediğiniz şekilde ayarlayın ve **Kaydet**' i seçin.
+1. **Zamanlanan kapatma** ve **Saat dilimini** istenilen şekilde ayarlayın ve **Kaydet'i**seçin.
 
-## <a name="connect-to-the-development-vm"></a>Geliştirme sanal makinesine bağlanma
+## <a name="connect-to-the-development-vm"></a>Geliştirme VM'sine bağlanın
 
-Bir VM oluşturduğumuz artık öğreticiyi tamamlamaya yönelik gereken yazılımı yüklemeyi tamamlamamız gerekir.
+Şimdi biz öğretici tamamlamak için gerekli yazılımı yüklemeyi bitirmek gerekir bir VM oluşturduk.
 
 1. Komut dosyasının masaüstünüzde oluşturduğu RDP dosyasına çift tıklayın.
 
-1. Uzak bağlantı yayımcısının bilinmediğini belirten bir iletişim kutusu görüntülenir. Bu kabul edilebilir, bu nedenle **Bağlan**' ı seçin.
+1. Uzak bağlantının yayımcısının bilinmediğini belirten bir iletişim kutusu sunulur. Bu kabul edilebilir, bu nedenle **Bağlan'ı**seçin.
 
-1. VM oluşturmak için sağladığınız yönetici parolasını girip **Tamam**' a tıklayın.
+1. VM'yi oluşturmak için sağladığınız yönetici parolasını sağlayın ve **Tamam'ı**tıklatın.
 
-1. VM için sertifikayı kabul etmeniz istenir. **Evet**’i seçin.
+1. VM sertifikasını kabul etmeniz istenir. **Evet'i**seçin.
 
-## <a name="install-visual-studio-code-extensions"></a>Visual Studio Code uzantıları 'nı yükler
+## <a name="install-visual-studio-code-extensions"></a>Visual Studio Code uzantılarını yükleyin
 
-Geliştirme makinesine bağlandığınıza göre, geliştirme deneyimini kolaylaştırmak için Visual Studio Code bazı yararlı uzantılar ekleyin.
+Geliştirme makinesine bağlandığınızda, geliştirme deneyimini kolaylaştırmak için Visual Studio Code'a bazı kullanışlı uzantılar ekleyin.
 
-1. Geliştirme VM 'sine bağlanın, bir PowerShell penceresi açın ve **C:\source\ıotedgeandmlsample\devvm** dizinine gidin. Bu dizin, VM 'yi oluşturan komut dosyası tarafından oluşturuldu.
+1. Geliştirme VM'ine bağlanın, bir PowerShell penceresi açın ve **C:\source\IoTEdgeAndMlSample\DevVM** dizinine gidin. Bu dizin, VM'yi oluşturan komut dosyası tarafından oluşturulmuştur.
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-1. Betiklerin yürütülmesine izin vermek için aşağıdaki komutu çalıştırın. İstendiğinde **Evet** ' i seçin.
+1. Komut dosyalarının yürütülmesine izin vermek için aşağıdaki komutu çalıştırın. İstendiğinde **Tümüne Evet'i** seçin.
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Visual Studio Code uzantıları betiğini çalıştırın.
+1. Visual Studio Code uzantıları komut dosyasını çalıştırın.
 
     ```powershell
     .\Enable-CodeExtensions.ps1
     ```
 
-1. Betik, VS Code uzantılarını yüklerken birkaç dakika çalışır:
+1. Komut dosyası VS kod uzantıları yükleyerek birkaç dakika çalışacaktır:
 
     * Azure IoT Araçları
     * Python
@@ -146,80 +146,80 @@ Geliştirme makinesine bağlandığınıza göre, geliştirme deneyimini kolayla
     * Docker
     * PowerShell
 
-## <a name="set-up-iot-hub-and-storage"></a>IoT Hub ve depolamayı ayarlama
+## <a name="set-up-iot-hub-and-storage"></a>IoT Hub ve Depolama'yı ayarlama
 
 Bu adımlar genellikle bir bulut geliştiricisi tarafından gerçekleştirilir.
 
-Azure IoT Hub, IoT cihazları ve bulutu arasındaki güvenli iletişimi işlediği için tüm IoT uygulamalarının kalbidir. IoT Edge Machine Learning çözümünün çalışması için ana düzenleme noktasıdır.
+Azure IoT Hub, IoT aygıtları ile bulut arasındaki güvenli iletişimi işlediği için tüm IoT uygulamalarının kalbidir. IoT Edge makine öğrenme çözümünün çalışması için ana koordinasyon noktasıdır.
 
-* IoT Hub, IoT cihazlarından gelen verileri diğer aşağı akış hizmetlerine yönlendirmek için yollar kullanır. Azure depolama 'ya cihaz verileri göndermek için IoT Hub yolların avantajlarından yararlanacağız. Azure depolama 'da cihaz verileri, kalan kullanım ömrü (RUL) sınıflandırıcımızı eğitmek için Azure Machine Learning tarafından kullanılır.
+* IoT Hub, Gelen verileri IoT aygıtlarından diğer akış aşağı hizmetlerine yönlendirmek için rotalar kullanır. Aygıt verilerini Azure Depolama'ya göndermek için IoT Hub yollarından yararlanacağız. Azure Depolama'da cihaz verileri, kalan kullanışlı yaşam (RUL) sınıflandırıcımızı eğitmek için Azure Machine Learning tarafından tüketilir.
 
-* Öğreticide daha sonra, Azure IoT Edge cihazımızı yapılandırmak ve yönetmek için IoT Hub kullanacağız.
+* Öğreticinin ilerleyen saatlerinde, Azure IoT Edge aygıtımızı yapılandırmak ve yönetmek için IoT Hub'ı kullanacağız.
 
-Bu bölümde, bir Azure IoT Hub 'ı ve bir Azure depolama hesabı oluşturmak için bir komut dosyası kullanırsınız. Azure portal, hub tarafından alınan verileri bir Azure depolama kapsayıcısına ileten bir rota yapılandırırsınız. Bu adımların tamamlanması yaklaşık 10 dakika sürer.
+Bu bölümde, bir Azure IoT hub'ı ve bir Azure Depolama hesabı oluşturmak için bir komut dosyası kullanırsınız. Azure portalında, hub tarafından alınan verileri bir Azure Depolama kapsayıcısına ileten bir rotayı yapılandırırsınız. Bu adımların tamamlanması yaklaşık 10 dakika sürer.
 
-1. Geliştirme VM 'sine bağlanın, bir PowerShell penceresi açın ve **ıothub** dizinine gidin.
+1. Geliştirme VM'sine bağlanın, bir PowerShell penceresi açın ve **IoTHub** dizinine gidin.
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\IoTHub
     ```
 
-1. Oluşturma betiğini çalıştırın. Geliştirme sanal makinesini oluştururken yaptığınız gibi abonelik KIMLIĞI, konum ve kaynak grubu için aynı değerleri kullanın.
+1. Oluşturma komut dosyasını çalıştırın. Geliştirme VM'sini oluştururken abonelik kimliği, konum ve kaynak grubu için aynı değerleri kullanın.
 
     ```powershell
     .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location <location> -ResourceGroupName <resource group>
     ```
 
     * Azure'da oturum açmanız istenir.
-    * Betik, hub ve depolama hesabınızın oluşturulmasına ilişkin bilgileri onaylar. Devam etmek için **y** veya **ENTER** tuşuna basın.
+    * Komut dosyası, Hub ve Depolama hesabınızın oluşturulmasına ait bilgileri onaylar. Devam etmek için **y** tuşuna basın veya **Enter** tuşuna basın.
 
-Betiğin çalıştırılması iki dakika sürer. Komut dosyası tamamlandıktan sonra IoT Hub 'ın ve depolama hesabının adını verir.
+Betiğin çalıştırılması yaklaşık iki dakika sürer. Tamamlandıktan sonra, komut dosyası IoT hub'ının ve depolama hesabının adını çıkartır.
 
-## <a name="review-route-to-storage-in-iot-hub"></a>IoT Hub depolama alanını gözden geçirme
+## <a name="review-route-to-storage-in-iot-hub"></a>IoT Hub'daki depolama ya da depolama yolunu gözden geçirme
 
-IoT Hub 'ı oluşturmanın bir parçası olarak, önceki bölümde çalıştık bir komut dosyası özel bir uç nokta ve bir yol de oluşturulmuştur. IoT Hub yollar bir sorgu ifadesinden ve bir uç noktadan oluşur. Bir ileti ifadesiyle eşleşiyorsa, veriler ilişkili uç noktaya yol üzerinden gönderilir. Uç noktalar Event Hubs, Service Bus kuyrukları ve konuları olabilir. Bu durumda, uç nokta depolama hesabındaki bir blob kapsayıcısıdır. Betiğimizden oluşturulan yolu gözden geçirmek için Azure portal kullanalım.
+IoT hub'ını oluşturmanın bir parçası olarak, önceki bölümde çalıştırdığımız komut dosyası da özel bir bitiş noktası ve bir rota oluşturdu. IoT Hub yolları bir sorgu ifadesi ve bir bitiş noktasından oluşur. İleti ifadeyle eşleşirse, veriler ilişkili bitiş noktasına giden yol boyunca gönderilir. Uç noktalar Olay Hub'ları, Servis Veri Hizmetleri Sıraları ve Konular olabilir. Bu durumda, bitiş noktası bir depolama hesabındabir blob kapsayıcıdır. Komut dosyamızın oluşturduğu rotayı gözden geçirmek için Azure portalını kullanalım.
 
-1. [Azure Portal](https://portal.azure.com) açın ve bu öğretici için kullanmakta olduğunuz kaynak grubuna gidin.
+1. Azure [portalını](https://portal.azure.com) açın ve bu eğitim için kullandığınız kaynak grubuna gidin.
 
-1. Kaynak listesinde, betiğin oluşturduğu IoT Hub seçin. `IotEdgeAndMlHub-jrujej6de6i7w`gibi rastgele karakterlerle biten bir ada sahip olacaktır.
+1. Kaynaklar listesinde, komut dosyasının oluşturduğu IoT Hub'ını seçin. Bu gibi rasgele karakterler ile biten `IotEdgeAndMlHub-jrujej6de6i7w`bir ad olacak.
 
-1. Sol bölme menüsünde, **mesajlaşma**altında **ileti yönlendirme**' yi seçin.
+1. Sol bölme menüsünden, **Mesajlaşma**altında İleti **yönlendirmesini**seçin.
 
-1. **İleti yönlendirme** sayfasında **Özel uç noktalar** sekmesini seçin.
+1. İleti **yönlendirme** sayfasında, **Özel uç noktalar** sekmesini seçin.
 
 1. **Depolama** bölümünü genişletin:
 
-   ![Türbofandevicesstorage 'ın özel uç noktalar listesinde olduğunu doğrulama](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![TurbofanDeviceStorage'ın özel uç noktalar listesinde olduğunu doğrulayın](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   **Turbofandevicesstorage** özel uç noktalar listesinde görüyoruz. Bu uç nokta hakkında aşağıdaki özelliklere göz önünde edin:
+   **TurbofanDeviceStorage'ın** özel uç noktalar listesinde olduğunu görüyoruz. Bu bitiş noktası ile ilgili aşağıdaki özelliklere dikkat edin:
 
-   * **Kapsayıcı adına**göre gösterildiği gibi `devicedata` adlı oluşturduğunuz BLOB depolama kapsayıcısını işaret eder.
-   * **Dosya adı biçimi** , adı içindeki son öğe olarak bölümlenir. Bu biçimi, öğreticide daha sonra Azure Notebooks yapacağız dosya işlemleri için daha uygun olduğunu bulduk.
+   * `devicedata` **Oluşturduğunuz**blob depolama kabına işaret ediyor.
+   * **Dosya adı biçimi,** adındaki son öğe olarak bölümlenmiştir. Bu biçimi, daha sonra eğitimde Azure Notebook'larla yapacağımız dosya işlemleri için daha uygun buluyoruz.
    * **Durumu** sağlıklı olmalıdır.
 
 1. **Rotalar** sekmesini seçin.
 
-1. **Turbofandevicedatatostorage**adlı yolu seçin.
+1. **turbofanDeviceDataToStorage**adlı rotayı seçin.
 
-1. **Rotalar ayrıntıları** sayfasında, yolun uç noktasının **Turbofandevicesstorage** uç noktası olduğunu unutmayın.
+1. **Rotalar ayrıntıları** sayfasında, rotanın bitiş noktasının **turbofanDeviceStorage** bitiş noktası olduğunu unutmayın.
 
    ![TurbofanDeviceDataToStorage rotası hakkındaki ayrıntıları gözden geçirin](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. **Doğru**olarak ayarlanan **yönlendirme sorgusuna**bakın. Bu ayar, tüm cihaz telemetri iletilerinin bu rota ile eşleştiği anlamına gelir; Bu nedenle, tüm iletiler **Turbofandevicesstorage** uç noktasına gönderilir.
+1. **Doğru**olarak ayarlanmış **Yönlendirme sorgusuna**bakın. Bu ayar, tüm aygıt telemetri iletilerinin bu rotayla eşleşeceği anlamına gelir; ve bu nedenle tüm mesajlar **turbofanDeviceStorage** bitiş noktasına gönderilecektir.
 
-1. Hiçbir düzenleme yapılmazdan bu yana yalnızca bu sayfayı kapatmanız yeterlidir.
+1. Hiçbir ediniş yapılmadığından, bu sayfayı kapatman.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede bir IoT Hub oluşturdunuz ve bir Azure depolama hesabına yol yapılandırdınız. Daha sonra, depolama hesabına IoT Hub aracılığıyla bir sanal cihaz kümesinden veri gönderecağız. Öğreticide daha sonra, IoT Edge cihazımuzu ve modüllerimizi yapılandırdıktan sonra yönlendirmeleri geri ziyaret edeceğiz ve yönlendirme sorgusunda biraz daha fazla görüneceğiz.
+Bu makalede, bir IoT Hub'ı oluşturduk ve bir Azure Depolama hesabına bir rota yapılandırıldık. Daha sonra, ioT Hub üzerinden bir dizi simüle edilmiş cihazdan gelen verileri depolama hesabına göndeririz. Öğreticinin ilerleyen dakikalarında, IoT Edge cihazımızı ve modüllerimizi yapılandırdıktan sonra rotaları yeniden ziyaret edeceğiz ve yönlendirme sorgusuna biraz daha bakacağız.
 
-IoT Edge öğreticisindeki Machine Learning bu bölümünde ele alınan adımlar hakkında daha fazla bilgi için bkz.:
+IoT Edge öğreticisinde Machine Learning'in bu bölümünde kapsanan adımlar hakkında daha fazla bilgi için bkz:
 
-* [Azure IoT Temel Konuları](https://docs.microsoft.com/azure/iot-fundamentals/)
+* [Azure IoT Temelleri](https://docs.microsoft.com/azure/iot-fundamentals/)
 * [IoT Hub ile ileti yönlendirmeyi yapılandırma](../iot-hub/tutorial-routing.md)
-* [Azure portal kullanarak IoT Hub 'ı oluşturma](../iot-hub/iot-hub-create-through-portal.md)
+* [Azure portalını kullanarak bir IoT hub'ı oluşturma](../iot-hub/iot-hub-create-through-portal.md)
 
-İzlenecek sanal bir cihaz oluşturmak için sonraki makaleye devam edin.
+İzlenecek benzetimli bir aygıt oluşturmak için sonraki makaleye devam edin.
 
 > [!div class="nextstepaction"]
-> [Cihaz verileri oluştur](tutorial-machine-learning-edge-03-generate-data.md)
+> [Aygıt verileri oluşturma](tutorial-machine-learning-edge-03-generate-data.md)

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
 ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79199591"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure aboneliği
 * Bilgisayarınızın komut satırından (Bash kabuğu veya [PuTTY](https://www.putty.org/) gibi) SSH’ye erişin.
@@ -25,7 +25,7 @@ Jenkins, tek bir Jenkins yüklemesinin çok sayıda projeyi barındırması veya
 
 ## <a name="connect-to-jenkins"></a>Jenkins’e bağlanma
 
-Web tarayıcınızda sanal makinenize (örneğin, `http://jenkins2517454.eastus.cloudapp.azure.com/`) gidin. Jenkins konsoluna güvenli olmayan HTTP üzerinden erişilemeyeceğinden Jenkins konsoluna bilgisayarınızdan SSH tüneli kullanarak güvenli bir şekilde erişmek için yönergeler bu sayfada sağlanmıştır.
+Web tarayıcınızda sanal makinenize `http://jenkins2517454.eastus.cloudapp.azure.com/`(örneğin) gidin. Jenkins konsoluna güvenli olmayan HTTP üzerinden erişilemeyeceğinden Jenkins konsoluna bilgisayarınızdan SSH tüneli kullanarak güvenli bir şekilde erişmek için yönergeler bu sayfada sağlanmıştır.
 
 ![Jenkins’in kilidini açma](./media/jenkins-install-solution-template-steps/jenkins-ssh-instructions.png)
 
@@ -63,11 +63,11 @@ Jenkins konsolundan **Yeni iş oluştur**’u seçin, ardından işi **mySampleA
 
 ![Git deposunu tanımlayın](./media/jenkins-install-solution-template-steps/jenkins-job-git-configuration.png) 
 
-**Yapı** sekmesini ve ardından **Yapı ekleme adımı**’nı ve **Gradle betiğini başlat**’ı seçin. **Gradle sarmalayıcıyı kullan**’ı seçin, ardından `complete`Sarmalayıcı konumu **’na**  değerini, `build`Görevler**için** değerini girin.
+**Yapı** sekmesini ve ardından **Yapı ekleme adımı**’nı ve **Gradle betiğini başlat**’ı seçin. **Gradle sarmalayıcıyı kullan**’ı seçin, ardından **Sarmalayıcı konumu**’na `complete` değerini, **Görevler** için `build` değerini girin.
 
 ![Derlemek için Gradle sarmalayıcıyı kullanma](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-config.png) 
 
-**Advanced**'i (Gelişmiş) seçin ve `complete`Root Build script **(Kök Derleme betiği) alanına** değerini girin. **Kaydet**’i seçin.
+**Advanced**'i (Gelişmiş) seçin ve **Root Build script** (Kök Derleme betiği) alanına `complete` değerini girin. **Kaydet'i**seçin.
 
 ![Gradle sarmalayıcısı derleme adımında Gelişmiş ayarları belirleme](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-advances.png) 
 

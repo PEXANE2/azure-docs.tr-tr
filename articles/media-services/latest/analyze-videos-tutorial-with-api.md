@@ -1,7 +1,7 @@
 ---
-title: Media Services v3 ile videoları analiz etme
+title: Medya Hizmetleri v3 ile videoları analiz edin
 titleSuffix: Azure Media Services
-description: Azure Media Services kullanarak videoları çözümlemeyi öğrenin.
+description: Azure Medya Hizmetleri'ni kullanarak videoları nasıl analiz edebilirsiniz öğrenin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,43 +10,43 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: abd4a3a3a3e8494ea325e65a78eea7fb56b78f94
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b7864d89cc14a1473fd43e94bfe74c368bcb391d
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988371"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349478"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Öğretici: Media Services v3 ile videoları analiz etme
+# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Öğretici: Medya Hizmetleri v3 ile videoları analiz edin
 
 > [!NOTE]
-> Bu öğretici [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
+> Bu öğretici [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örneklerini kullansa da, genel adımlar [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)veya diğer desteklenen [SDK'lar](media-services-apis-overview.md#sdks)için aynıdır.
 
-Bu öğreticide Azure Media Services ile videoları analiz etme işlemi gösterilir. Kayıtlı videolar veya ses içerikleri hakkında derin içgörüler kazanmak isteyebileceğiniz çok sayıda senaryo mevcuttur. Örneğin, daha yüksek müşteri memnuniyeti elde etmek isteyen kuruluşlar, müşteri destek kayıtlarını dizinler ve panolarla aranabilir bir katalog haline getirmek için konuşmayı metne dönüştürme işlemini çalıştırabilir. Daha sonra, işletdiklerinde Öngörüler elde edebilirler. Bu Öngörüler, yaygın şikayetlerin bir listesini, bu tür şikayetlerin kaynaklarını ve diğer yararlı bilgileri içerir.
+Bu öğreticide Azure Media Services ile videoları analiz etme işlemi gösterilir. Kayıtlı videolar veya ses içerikleri hakkında derin içgörüler kazanmak isteyebileceğiniz çok sayıda senaryo mevcuttur. Örneğin, daha yüksek müşteri memnuniyeti elde etmek isteyen kuruluşlar, müşteri destek kayıtlarını dizinler ve panolarla aranabilir bir katalog haline getirmek için konuşmayı metne dönüştürme işlemini çalıştırabilir. Daha sonra, kendi iş içine anlayışlar elde edebilirsiniz. Bu bilgiler, yaygın şikayetlerin bir listesini, bu tür şikayetlerin kaynaklarını ve diğer yararlı bilgileri içerir.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
 > [!div class="checklist"]
-> * Konusunda açıklanan örnek uygulamayı indirin.
-> * Belirtilen videoyu çözümleyen kodu inceleyin.
+> * Konuyla açıklanan örnek uygulamayı indirin.
+> * Belirtilen videoyu analiz eden kodu inceleyin.
 > * Uygulamayı çalıştırın.
 > * Çıktıyı inceleyin.
 > * Kaynakları temizleyin.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="compliance-privacy-and-security"></a>Uyumluluk, gizlilik ve güvenlik
+## <a name="compliance-privacy-and-security"></a>Uyumluluk, Gizlilik ve Güvenlik
  
-Önemli bir anımsatıcı olarak, Video Indexer ortamınızda geçerli olan tüm yasalara uymak zorundasınız ve Video Indexer ya da başka bir Azure hizmetini diğerlerinin haklarını ihlal eden veya başkalarına zararlı olabilecek bir biçimde kullanamazsınız. Biyometrik veriler de dahil olmak üzere herhangi bir videoyu, işleme ve depolama için Video Indexer hizmetine yüklemeden önce, videodaki her türden uygun tüm haklara sahip olmanız gerekir. Microsoft bilişsel [Hizmetler koşulları](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)video Indexer, uyumluluk, gizlilik ve güvenlik hakkında bilgi edinmek için. Microsoft 'un gizlilik yükümlülüklerini ve verilerinizi işleme için lütfen Microsoft 'un [Gizlilik bildirimini](https://privacy.microsoft.com/PrivacyStatement), [çevrimiçi hizmetler koşullarını](https://www.microsoft.com/licensing/product-licensing/products) ("OST") ve [veri Işleme eki](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) 'ni ("DPA") gözden geçirin. Veri saklama, silme/yok etme dahil olmak üzere ek gizlilik bilgileri, OST ve [burada](../video-indexer/faq.md)bulunabilir. Video Indexer kullanarak bilişsel hizmetler koşulları, OST, DPA ve gizlilik bildirimiyle bağlanmayı kabul etmiş olursunuz.
+Önemli bir hatırlatma olarak, Video Dizinleyici'yi kullanımınızda geçerli tüm yasalara uymanız gerekir ve Video Dizinleyici'yi veya başka bir Azure hizmetini başkalarının haklarını ihlal eden veya başkalarına zarar verebilecek şekilde kullanamazsınız. Herhangi bir biyometrik veri de dahil olmak üzere herhangi bir videoyu işleme ve depolama için Video Dizinleyici hizmetine yüklemeden önce, videodaki bireyden (ler) tüm uygun izinler de dahil olmak üzere tüm uygun haklara sahip olmalısınız. Video Dizinleyici'de uyumluluk, gizlilik ve güvenlik hakkında bilgi edinmek için, Microsoft [Bilişsel Hizmetler Koşulları.](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/) Microsoft'un gizlilik yükümlülükleri ve verilerinizin işlenmesi için lütfen Microsoft'un [Gizlilik Bildirimini,](https://privacy.microsoft.com/PrivacyStatement) [Çevrimiçi Hizmet Koşullarını](https://www.microsoft.com/licensing/product-licensing/products) ("OST") ve Veri [İşleme Eki'ni](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") gözden geçirin. Veri saklama, silme/imha gibi ek gizlilik bilgileri OST'de ve [burada](../video-indexer/faq.md)mevcuttur. Video Indexer'ı kullanarak Bilişsel Hizmetler Koşulları, OST, DPA ve Gizlilik Bildirimi'ne bağlı olmayı kabul edersiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Visual Studio yüklü değilse, [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)' i alın.
-- [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
-- [Azure CLI Ile Access Azure Media Services API 'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
+- Visual Studio yüklü değilseniz Visual [Studio Community 2017'yi](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)alın.
+- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)<br/>Kaynak grubu adı ve Medya Hizmetleri hesap adı için kullandığınız değerleri hatırladığınızdan emin olun.
+- [Azure CLI ile Azure Medya Hizmetleri API'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API'ye erişmek için bunları kullanmanız gerekir.
 
 ## <a name="download-and-configure-the-sample"></a>Örneği indirin ve yapılandırın
 
@@ -58,7 +58,7 @@ Aşağıdaki komutu kullanarak, .NET örneğini içeren bir GitHub havuzunu maki
 
 Örnek, [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) klasöründe yer alır.
 
-İndirilen projenizde [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) ' yı açın. Değerleri, [API 'lere erişirken](access-api-cli-how-to.md)aldığınız kimlik bilgileriyle değiştirin.
+İndirilen projede [appsettings.json'ı](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) açın. Değerleri [API'lara erişirerek](access-api-cli-how-to.md)aldığınız kimlik bilgileriyle değiştirin.
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Belirtilen videoyu analiz eden kodu inceleme
 
@@ -66,8 +66,8 @@ Bu bölümde, *AnalyzeVideos* projesinin [Program.cs](https://github.com/Azure-S
 
 Örnek aşağıdaki eylemleri tamamlar:
 
-1. Görüntünüzü çözümleyen bir **dönüşüm** ve **iş** oluşturur.
-2. Bir giriş **varlığı** oluşturur ve videoyu buna yükler. Varlık, işin girişi olarak kullanılır.
+1. Videonuzu analiz eden bir **Dönüşüm** ve **İş** oluşturur.
+2. Bir giriş **Varlığı** oluşturur ve videoyu içine yükler. Varlık, işin girişi olarak kullanılır.
 3. İşin çıkışını depolayan bir çıkış varlığı oluşturur.
 4. İşi gönderir.
 5. İşin durumunu denetler.
@@ -78,21 +78,23 @@ Bu bölümde, *AnalyzeVideos* projesinin [Program.cs](https://github.com/Azure-S
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK ile Media Services API’sini kullanmaya başlama
 
-.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında kopyaladığınız koddaki **GetCredentialsAsync** işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alan ServiceClientCredentials nesnesini oluşturur. 
+.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında kopyaladığınız kodda, **GetCredentialsAsync** işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alarak ServiceClientCredentials nesnesi oluşturur. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Bir giriş varlığı oluşturma ve içine yerel dosya yükleme 
 
-**CreateInputAsset** işlevi yeni bir giriş [Varlığı](https://docs.microsoft.com/rest/api/media/assets) oluşturur ve içine belirtilen yerel video dosyasını yükler. Bu Varlık, kodlama işinizde giriş olarak kullanılır. Media Services v3’te bir İşe yapılan giriş, Varlık olabilir veya HTTPS URL’leri üzerinden Media Services hesabınızın kullanımına açtığınız bir içerik olabilir. HTTPS URL 'sinden kodlama hakkında bilgi edinmek için [Bu](job-input-from-http-how-to.md) makaleye bakın.  
+**CreateInputAsset** işlevi yeni bir giriş [Varlığı](https://docs.microsoft.com/rest/api/media/assets) oluşturur ve içine belirtilen yerel video dosyasını yükler. Bu Varlık, kodlama işinizde giriş olarak kullanılır. Media Services v3’te bir İşe yapılan giriş, Varlık olabilir veya HTTPS URL’leri üzerinden Media Services hesabınızın kullanımına açtığınız bir içerik olabilir. HTTPS URL'sinden nasıl kodkodlamayı öğrenmek için [bu](job-input-from-http-how-to.md) makaleye bakın.  
 
 Media Services v3’te dosyaları karşıya yüklemek için Azure Depolama API’lerini kullanırsınız. Aşağıdaki .NET kod parçacığı bunun nasıl yapıldığını gösterir.
 
 Aşağıdaki işlev bu eylemleri tamamlar:
 
-* Bir varlık oluşturur.
-* [Depolama alanındaki varlığın kapsayıcısına](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)yazılabilir bir [SAS URL 'si](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) alır.
-* SAS URL 'sini kullanarak dosyayı depolama alanındaki kapsayıcıya yükler.
+* Bir Varlık oluşturur.
+* Depodaki Varlığın konteynerine yazılabilir bir [SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [URL'si](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)alır.
+
+    SAS URL'lerini almak için varlığın [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) işlevini kullanıyorsanız, her depolama hesabı için iki depolama hesabı anahtarı olduğundan işlevin birden çok SAS URL'si döndürtettiğini unutmayın. Depolama hesabının iki anahtarı vardır, çünkü depolama hesabı anahtarlarının sorunsuz bir şekilde döndürülmesine izin verir (örneğin, birini diğerini kullanırken değiştirin ve sonra yeni anahtarı kullanmaya başlayın ve diğer anahtarı döndürün). 1. SAS URL depolama anahtarı1 ve ikinci bir depolama anahtarı2 temsil eder.
+* Dosyayı SAS URL'sini kullanarak depolama alanında kapsayıcıya yükler.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
 
@@ -104,19 +106,19 @@ Aşağıdaki işlev bu eylemleri tamamlar:
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Bir dönüşüm ve videoları analiz eden bir iş oluşturma
 
-Media Services içeriği kodlarken veya işlerken, kodlama ayarlarını tarif olarak ayarlamak için ortak bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni Işler göndererek, bu tarifi kitaplığınızdaki tüm videolara uygulayacağız. Media Services bir tarif, **dönüşüm**olarak adlandırılır. Daha fazla bilgi için [Dönüşümler ve işler](transform-concept.md) konusuna bakın. Bu öğreticide açıklanan örnek, belirtilen videoyu analiz eden bir tarifi tanımlar.
+Medya Hizmetleri'nde içeriği kodlarken veya işlerken, kodlama ayarlarını bir reçete olarak ayarlamak yaygın bir deönemlidir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni İşler göndererek, bu tarifi kitaplığınızdaki tüm videolara uyguluyorsunuz. Medya Hizmetleri bir tarifi **dönüşüm**denir. Daha fazla bilgi için [Dönüşümler ve işler](transform-concept.md) konusuna bakın. Bu öğreticide açıklanan örnek, belirtilen videoyu analiz eden bir tarifi tanımlar.
 
 #### <a name="transform"></a>Dönüşüm
 
-Yeni bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. **Transformoutput** gerekli bir parametredir. Her **TransformOutput** bir **Ön ayar** içerir. **Ön ayar**, video ve/veya ses işleme işlemlerinin istenen **TransformOutput** nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu örnekte, **Videoanaliz Zerönayar ön ayarı** kullanılır ve dili ("en-US") oluşturucuya (`new VideoAnalyzerPreset("en-US")`) geçirilir. Bu ön ayar, bir videodan birden fazla ses ve video içgörüsü elde etmenizi sağlar. Bir videodan birden fazla ses içgörüsü elde etmeniz gerekiyorsa **AudioAnalyzerPreset** ön ayarını kullanın.
+Yeni bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. **TransformOutput** gerekli bir parametredir. Her **TransformOutput** bir **Ön ayar** içerir. **Ön ayar**, video ve/veya ses işleme işlemlerinin istenen **TransformOutput** nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu örnekte, **VideoAnalyzerPreset** önceden ayarlanmış kullanılır ve dil ("en-US") onun`new VideoAnalyzerPreset("en-US")`oluşturucu ( ) geçirilir. Bu ön ayar, bir videodan birden fazla ses ve video içgörüsü elde etmenizi sağlar. Bir videodan birden fazla ses içgörüsü elde etmeniz gerekiyorsa **AudioAnalyzerPreset** ön ayarını kullanın.
 
-Bir **dönüşüm**oluştururken, aşağıdaki kodda gösterildiği gibi **Get** metodunu kullanarak zaten bir tane varsa işaretleyin. Media Services v3’te varlıklar üzerindeki **Get** yöntemleri, varlığın mevcut olmaması durumunda **null** değerini döndürür (büyük/küçük harfe duyarlı ad denetimi).
+**Dönüşüm**oluştururken, aşağıdaki kodda gösterildiği **gibi, Get** yöntemini kullanarak önce bir tane nin var olup olmadığını denetleyin. Media Services v3’te varlıklar üzerindeki **Get** yöntemleri, varlığın mevcut olmaması durumunda **null** değerini döndürür (büyük/küçük harfe duyarlı ad denetimi).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#EnsureTransformExists)]
 
 #### <a name="job"></a>İş
 
-Yukarıda bahsedildiği gibi [Transform](https://docs.microsoft.com/rest/api/media/transforms) nesnesi tarif, [Job](https://docs.microsoft.com/rest/api/media/jobs) ise bu **Transform** nesnesini belirli bir giriş videosu veya ses içeriğine uygulamak için Media Services’e gönderilen gerçek istektir. **İş** , giriş videonun konumu ve çıktının konumu gibi bilgileri belirtir. Videonuzun konumunu, Media Services hesabınızda bulunan HTTPS URL’lerini, SAS URL’lerini veya Varlıkları kullanarak belirtebilirsiniz.
+Yukarıda bahsedildiği gibi [Transform](https://docs.microsoft.com/rest/api/media/transforms) nesnesi tarif, [Job](https://docs.microsoft.com/rest/api/media/jobs) ise bu **Transform** nesnesini belirli bir giriş videosu veya ses içeriğine uygulamak için Media Services’e gönderilen gerçek istektir. **İş,** giriş videosunun konumu ve çıktının konumu gibi bilgileri belirtir. Videonuzun konumunu, Media Services hesabınızda bulunan HTTPS URL’lerini, SAS URL’lerini veya Varlıkları kullanarak belirtebilirsiniz.
 
 Bu örnekte, iş girdisi yerel bir videodur.  
 
@@ -124,35 +126,35 @@ Bu örnekte, iş girdisi yerel bir videodur.
 
 ### <a name="wait-for-the-job-to-complete"></a>İşin tamamlanmasını bekleyin
 
-İşin tamamlaması biraz zaman alır. Ne zaman sorulduğunda bildirim almak istersiniz. [İşin](https://docs.microsoft.com/rest/api/media/jobs) tamamlanması hakkında bildirim almaya ilişkin farklı seçenekler mevcuttur. En basit seçenek (burada gösterilen) yoklamayı kullanmaktır.
+İşi tamamlamak biraz zaman alır. Bu olduğunda, size haberdar olmak istiyorum. [İşin](https://docs.microsoft.com/rest/api/media/jobs) tamamlanması hakkında bildirim almaya ilişkin farklı seçenekler mevcuttur. En basit seçenek (burada gösterilen) yoklama kullanmaktır.
 
-Yoklama, olası gecikme nedeniyle üretim uygulamaları için önerilen en iyi uygulamadır. Yoklama, bir hesap üzerinde gereğinden fazla kullanılırsa kısıtlanabilir. Geliştiricilerin onun yerine Event Grid kullanmalıdır.
+Yoklama, potansiyel gecikme nedeniyle üretim uygulamaları için önerilen en iyi uygulama değildir. Yoklama, bir hesap üzerinde gereğinden fazla kullanılırsa kısıtlanabilir. Geliştiricilerin onun yerine Event Grid kullanmalıdır.
 
-Event Grid yüksek kullanılabilirlik, tutarlı performans ve dinamik ölçek için tasarlanmıştır. Event Grid ile uygulamalarınız neredeyse tüm Azure hizmetleri ve özel kaynaklardan gelen olayları takip edip bu olaylara yanıt verebilir. Basit, HTTP tabanlı reaktif olay işleme özelliği, olayların akıllı filtrelenmesi ve yönlendirilmesi sayesinde etkili çözümler oluşturmanıza yardımcı olur. Daha fazla bilgi için bkz. [olayları özel bir Web uç noktasına yönlendirme](job-state-events-cli-how-to.md).
+Event Grid yüksek kullanılabilirlik, tutarlı performans ve dinamik ölçek için tasarlanmıştır. Event Grid ile uygulamalarınız neredeyse tüm Azure hizmetleri ve özel kaynaklardan gelen olayları takip edip bu olaylara yanıt verebilir. Basit, HTTP tabanlı reaktif olay işleme özelliği, olayların akıllı filtrelenmesi ve yönlendirilmesi sayesinde etkili çözümler oluşturmanıza yardımcı olur. Daha fazla bilgi için, [olayları özel bir web bitiş noktasına yönlendir'](job-state-events-cli-how-to.md)e bakın.
 
-**İş** genellik şu aşamalardan geçer: **Zamanlandı**, **Kuyruğa Alındı**, **İşleniyor**, **Tamamlandı** (son aşama). İş bir hatayla karşılaşmışsa, **hata** durumunu alırsınız. İşin iptal edilme süreciiyorsa, **iptal** edip tamamlandığında **iptal etmiş** olursunuz.
+**İş** genellik şu aşamalardan geçer: **Zamanlandı**, **Kuyruğa Alındı**, **İşleniyor**, **Tamamlandı** (son aşama). İş bir hatayla karşılaştıysa, **Hata** durumunu alırsınız. İş iptal edilme sürecindeyse, **İptal** edilir ve bittiğinde **iptal edilir.**
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
 
 ### <a name="job-error-codes"></a>İş hata kodları
 
-Bkz. [hata kodları](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+[Bkz. Hata kodları.](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 
 ### <a name="download-the-result-of-the-job"></a>İşin sonucunu indirme
 
-Aşağıdaki işlev, iş sonuçlarını incelemenize olanak sağlamak için [Çıkış varlıkındaki sonuçları "çıkış"](https://docs.microsoft.com/rest/api/media/assets) klasörüne indirir.
+Aşağıdaki işlev, çıktı [Varlık'tan](https://docs.microsoft.com/rest/api/media/assets) gelen sonuçları "çıktı" klasörüne indirir, böylece işin sonuçlarını inceleyebilirsiniz.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Media Services hesabınızdaki kaynakları temizleme
 
-Genellikle, yeniden kullanmayı planladığınız nesneler hariç her şeyi temizlemeniz gerekir (genellikle dönüştürmeleri yeniden kullanacaksınız ve Streamingbulleyicileri kalıcı hale getiriyorsunuz). Deneme sonrasında hesabınızın temiz olmasını istiyorsanız, kullanmayı planlamadığınız kaynakları silin. Örneğin, aşağıdaki kod Işleri siler:
+Genellikle, yeniden kullanmayı planladığınız nesneler dışındaki her şeyi temizlemeniz gerekir (genellikle, Transforms'ı yeniden kullanır ve StreamingLocators'ı devam ettirmeniz gerekir). Denemeden sonra hesabınızın temiz olmasını istiyorsanız, yeniden kullanmayı planlamadığınız kaynakları silin. Örneğin, aşağıdaki kod İşler'i siler:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-*Analiz Zevideolarını* uygulamasını çalıştırmak için CTRL + F5 tuşlarına basın.
+*AnalyzeVideos* uygulamasını çalıştırmak için Ctrl+F5 tuşuna basın.
 
 Programı çalıştırdığınızda iş, videoda bulduğu her yüz için küçük resimler üretir. Ayrıca, insights.json dosyasını oluşturur.
 
@@ -164,7 +166,7 @@ Analiz edilen videoların çıktı dosyası insights.json olarak adlandırılır
 
 Bu öğreticide oluşturduğunuz Media Services ve depolama hesapları dahil olmak üzere, kaynak grubunuzdaki kaynaklardan herhangi birine artık ihtiyacınız yoksa kaynak grubunu silebilirsiniz.
 
-Aşağıdaki CLı komutunu yürütün:
+Aşağıdaki CLI komutunu uygulayın:
 
 ```azurecli
 az group delete --name amsResourceGroup
@@ -172,11 +174,11 @@ az group delete --name amsResourceGroup
 
 ## <a name="multithreading"></a>Çoklu iş parçacığı kullanımı
 
-Azure Media Services v3 SDK 'Ları iş parçacığı açısından güvenli değildir. Çok iş parçacıklı bir uygulamayla çalışırken, iş parçacığı başına yeni bir Azudüzeltici Istemci nesnesi oluşturmanız gerekir.
+Azure Medya Hizmetleri v3 SDK'ları iş parçacığı için güvenli değildir. Çok iş parçacığı uygulamasıyla çalışırken, iş parçacığı başına yeni bir AzureMediaServicesClient nesnesi oluşturmanız gerekir.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde, güncellemeler alın
 
-Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
+Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

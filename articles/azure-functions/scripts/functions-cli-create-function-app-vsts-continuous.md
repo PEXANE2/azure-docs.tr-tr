@@ -1,19 +1,19 @@
 ---
-title: DevOps dağıtımı ile bir işlev uygulaması oluşturma-Azure CLı
+title: DevOps dağıtımı yla bir işlev uygulaması oluşturma - Azure CLI
 description: Bir İşlev Uygulaması oluşturma ve işlev kodunu Azure DevOps'tan dağıtma
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
 ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922651"
 ---
-# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure DevOps 'tan dağıtılan Azure 'da bir işlev oluşturma
+# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure'da Azure DevOps'lerden dağıtılan bir işlev oluşturma
 
-Bu konu başlığı altında, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir Işlev uygulaması oluşturmak için Azure işlevlerinin nasıl kullanılacağı gösterilmektedir. İşlevleriniz için bir kapsayıcı olan işlev uygulaması, sürekli olarak bir Azure DevOps deposundan dağıtılır. 
+Bu konu, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir işlev uygulaması oluşturmak için Azure İşlevlerini nasıl kullanacağınızı gösterir. İşlevleriniz için bir kapsayıcı olan işlev uygulaması, bir Azure DevOps deposundan sürekli olarak dağıtılır. 
 
 Bu konuyu tamamlamak için şunlara sahip olmalısınız:
 
@@ -24,7 +24,7 @@ Bu konuyu tamamlamak için şunlara sahip olmalısınız:
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLI’yi yerel olarak kullanırsanız, sürüm 2.0 veya sonraki bir sürümü yükleyip kullanmanız gerekir. Azure CLI sürümünü belirlemek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli). 
+Bunun yerine Azure CLI’yi yerel olarak kullanırsanız, sürüm 2.0 veya sonraki bir sürümü yükleyip kullanmanız gerekir. Azure CLI sürümünü belirlemek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Örnek betik
 

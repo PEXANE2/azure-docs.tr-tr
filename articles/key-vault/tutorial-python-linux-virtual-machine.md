@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure Key Vault gizli dizileri depolamak için bir Linux sanal makinesi ve Python uygulaması kullanın | Microsoft Docs
-description: Bu öğreticide, Azure Key Vault bir gizli dizi okumak için bir Python uygulamasını nasıl yapılandıracağınızı öğreneceksiniz.
+title: Öğretici - Azure Key Vault'ta sırları saklamak için Linux sanal makinesi ve Python uygulaması kullanın | Microsoft Dokümanlar
+description: Bu eğitimde, Azure Key Vault'tan bir sırrı okumak için Python uygulamasını nasıl yapılandırabileceğinizi öğrenirsiniz.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -10,50 +10,50 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 59b8abf59212d9cfb0719b6b76e9542249ee4c41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198159"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472699"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Öğretici: Azure Key Vault içinde gizli dizileri depolamak için bir Linux sanal makinesi ve Python uygulaması kullanma
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Öğretici: Azure Key Vault'ta sırları depolamak için Linux VM ve Python uygulamasını kullanın
 
-Azure Key Vault, uygulamalarınıza, hizmetlerinize ve BT kaynaklarınıza erişmek için gereken API anahtarları ve veritabanı bağlantı dizeleri gibi gizli dizileri korumanıza yardımcı olur.
+Azure Key Vault, uygulamalarınıza, hizmetlerinize ve BT kaynaklarınıza erişmek için gereken API anahtarları ve veritabanı bağlantı dizeleri gibi sırları korumanıza yardımcı olur.
 
-Bu öğreticide, Azure kaynakları için Yönetilen kimlikler kullanarak Azure Key Vault bilgi okumak üzere bir Azure Web uygulaması ayarlarsınız. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu eğitimde, Azure kaynakları için yönetilen kimlikleri kullanarak Azure Key Vault'tan gelen bilgileri okumak için bir Azure web uygulaması ayarlayın. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Bir anahtar kasası oluşturma
-> * Anahtar kasanıza gizli dizi depolayın
+> * Anahtar kasanızda bir sır saklayın
 > * Linux sanal makinesi oluşturma
-> * Sanal makine için [yönetilen kimliği](../active-directory/managed-identities-azure-resources/overview.md) etkinleştir
-> * Anahtar kasasından verileri okumak için konsol uygulaması için gerekli izinleri verme
-> * Anahtar kasanızdan gizli dizi alma
+> * Sanal makine için yönetilen bir [kimliği](../active-directory/managed-identities-azure-resources/overview.md) etkinleştirme
+> * Anahtar kasasından verileri okumak için konsol uygulaması için gerekli izinleri verin
+> * Anahtar kasanızdan bir sır alın
 
-Daha sonra devam etmeden önce [Key Vault temel kavramlarını](basic-concepts.md)anladığınızdan emin olun.
+Daha ileri gitmeden önce [Key Vault hakkındaki temel kavramları](basic-concepts.md)anladığınızdan emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Git](https://git-scm.com/downloads).
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-* [Azure CLI sürüm 2.0.4 veya üzeri](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ya da Azure Cloud Shell.
+* [Git.](https://git-scm.com/downloads)
+* Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+* [Azure CLI sürüm 2.0.4 veya sonraki](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sürüm veya Azure Bulut BulutU.
 
 [!INCLUDE [Azure Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
-## <a name="understand-managed-service-identity"></a>Yönetilen Hizmet Kimliği anlayın
+## <a name="understand-managed-service-identity"></a>Yönetilen Hizmet Kimliğini Anlama
 
-Azure Key Vault, kimlik bilgilerini kodunuzda olmayan güvenli bir şekilde saklayabilir. Bunları almak için Azure Key Vault kimlik doğrulaması yapmanız gerekir. Ancak, Key Vault kimlik doğrulaması yapmak için bir kimlik bilgisi gerekir. Bu, klasik bir önyükleme sorunudur. Azure ve Azure Active Directory (Azure AD) aracılığıyla, Yönetilen Hizmet Kimliği (MSI), işleri daha kolay hale getiren bir önyükleme kimliği sağlar.
+Azure Key Vault kimlik bilgilerini güvenli bir şekilde depolayabilir, böylece kodunuzda yer almaz. Bunları almak için Azure Key Vault'a kimlik doğrulamanız gerekir. Ancak, Key Vault'a kimlik doğrulamak için bir kimlik bilgisine ihtiyacınız vardır. Klasik bir bot kapanı problemi. Azure ve Azure Etkin Dizin (Azure AD) aracılığıyla Yönetilen Hizmet Kimliği (MSI), bir şeyleri başlatmayı kolaylaştıran bir önyükleme kimliği sağlar.
 
-Sanal makineler, App Service veya Işlevler gibi bir Azure hizmeti için MSI 'yi etkinleştirdiğinizde Azure, Azure AD 'de hizmet örneği için bir hizmet sorumlusu oluşturur. Hizmet sorumlusunun kimlik bilgilerini hizmet örneğine çıkartır.
+Sanal Makineler, Uygulama Hizmeti veya İşlevler gibi bir Azure hizmeti için MSI'ı etkinleştirdiğinizde, Azure, Azure AD'deki hizmet örneği için bir hizmet ilkesi oluşturur. Hizmet sorumlusunun kimlik bilgilerini hizmet örneğine enjekte eder.
 
 ![MSI](media/MSI.png)
 
-Daha sonra, kodunuz, bir erişim belirteci almak için Azure kaynağında bulunan bir yerel meta veri hizmetini çağırır. Kodunuz, Azure Key Vault bir hizmette kimlik doğrulamak için yerel MSI uç noktasından aldığı erişim belirtecini kullanır.
+Ardından, kodunuz, bir erişim jetonunu almak için Azure kaynağında bulunan yerel bir meta veri hizmetini çağırır. Kodunuz, yerel MSI bitiş noktasından bir Azure Anahtar Kasası hizmetine kimlik doğrulamasına kadar aldığı erişim belirtecikullanır.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure CLı kullanarak Azure 'da oturum açmak için şunu girin:
+Azure CLI'yi kullanarak Azure'da oturum açabilmek için şunları girin:
 
 ```azurecli-interactive
 az login
@@ -63,20 +63,20 @@ az login
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Aşağıdaki kodla Batı ABD konumundaki `az group create` komutunu kullanarak bir kaynak grubu oluşturun. `YourResourceGroupName` yerine istediğiniz adı koyun.
+Aşağıdaki kodla Batı `az group create` ABD konumundaki komutu kullanarak bir kaynak grubu oluşturun. Seçtiğiniz `YourResourceGroupName` bir ad ile değiştirin.
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
 az group create --name "<YourResourceGroupName>" --location "West US"
 ```
 
-Bu kaynak grubunu öğretici genelinde kullanırsınız.
+Bu kaynak grubunu öğretici boyunca kullanırsınız.
 
 ## <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
 
-Ardından, önceki adımda oluşturduğunuz kaynak grubunda bir Anahtar Kasası oluşturursunuz. Şu bilgileri belirtin:
+Ardından, önceki adımda oluşturduğunuz kaynak grubunda bir anahtar kasası oluşturursunuz. Şu bilgileri belirtin:
 
-* Anahtar Kasası adı: ad 3-24 karakter uzunluğunda olmalıdır ve yalnızca 0-9, a-z, A-Z ve kısa çizgi (-) içermelidir.
+* Anahtar kasa adı: Adı 3-24 karakterden oluşan bir dize olmalı ve yalnızca 0-9, a-z, A-Z ve tire (-) içermelidir.
 * Kaynak grubu adı.
 * Konum: **West US**.
 
@@ -88,7 +88,7 @@ Bu noktada Azure hesabınız, bu yeni anahtar kasasında herhangi bir işlemi ge
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Anahtar kasasına gizli dizi ekleme
 
-Bunun nasıl çalıştığını göstermemize yardımcı olması için bir gizli dizi ekliyoruz. Hem güvenli hem de uygulamanızda kullanılabilir olması gereken herhangi bir SQL bağlantı dizesini veya diğer bilgileri depolamak isteyebilirsiniz.
+Bunun nasıl çalıştığını göstermemize yardımcı olması için bir gizli dizi ekliyoruz. Bir SQL bağlantı dizesini veya hem güvenli hem de uygulamanız için kullanılabilir tutulması gereken diğer bilgileri depolamak isteyebilirsiniz.
 
 Anahtar kasasında *AppSecret* adlı bir gizli dizi oluşturmak için aşağıdaki komutları yazın. Bu gizli dizi **MySecret** değerini depolar.
 
@@ -98,9 +98,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-linux-virtual-machine"></a>Linux sanal makinesi oluşturma
 
-`az vm create` komutunu kullanarak bir VM oluşturun.
+Komutu `az vm create` kullanarak bir VM oluşturun.
 
-Aşağıdaki örnek, **myVM** adlı bir VM oluşturur ve **azureuser** adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys` parametresi otomatik olarak bir SSH anahtarı oluşturur ve varsayılan anahtar konumuna ( **~/vb SSH**) koyar. Bunun yerine belirli bir anahtar kümesi oluşturmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, **myVM** adlı bir VM oluşturur ve **azureuser** adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys` Parametre otomatik olarak bir SSH tuşu oluşturur ve varsayılan anahtar konumuna koyar (**~/.ssh).** Bunun yerine belirli bir anahtar kümesi `--ssh-key-value` oluşturmak için seçeneği kullanın.
 
 ```azurecli-interactive
 az vm create \
@@ -111,9 +111,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer. Aşağıdaki örnek çıktı, VM oluşturma işleminin başarılı olduğunu göstermektedir:
+VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer. Aşağıdaki örnek çıktı, VM oluşturmanın başarılı olduğunu gösterir:
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -126,11 +126,11 @@ VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer. Aşağıd
 }
 ```
 
-SANAL makinenizin çıktısında kendi `publicIpAddress` bir bölümünü bir yere iade edin. Bu adresi sonraki adımlarda VM 'ye erişmek için kullanacaksınız.
+VM'nizden çıktınızda kendi `publicIpAddress` notunuzu belirtin. Daha sonraki adımlarda VM'ye erişmek için bu adresi kullanırsınız.
 
-## <a name="assign-an-identity-to-the-vm"></a>VM 'ye bir kimlik atama
+## <a name="assign-an-identity-to-the-vm"></a>VM'ye kimlik atama
 
-Aşağıdaki komutu çalıştırarak sanal makineye sistem tarafından atanan bir kimlik oluşturun:
+Aşağıdaki komutu çalıştırarak sanal makineye sistem tarafından atanmış bir kimlik oluşturun:
 
 ```azurecli-interactive
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -138,40 +138,40 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 Komutun çıktısı aşağıdaki gibidir.
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
 }
 ```
 
-`systemAssignedIdentity`bir kopyasını alın. Sonraki adımda kullanacaksınız.
+Bir not ala. `systemAssignedIdentity` Bir sonraki adımda kullan.
 
-## <a name="give-the-vm-identity-permission-to-key-vault"></a>Key Vault için VM kimliği izni verin
+## <a name="give-the-vm-identity-permission-to-key-vault"></a>Key Vault için VM kimlik izni verin
 
-Artık oluşturduğunuz kimliğe Key Vault izin verebilirsiniz. Şu komutu çalıştırın:
+Artık Key Vault'u oluşturduğunuz kimlik için izin verebilirsiniz. Şu komutu çalıştırın:
 
 ```azurecli-interactive
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="log-in-to-the-vm"></a>VM 'de oturum açma
+## <a name="log-in-to-the-vm"></a>VM'de oturum açın
 
-Bir Terminal kullanarak sanal makinede oturum açın.
+Bir terminal kullanarak sanal makineye giriş yapın.
 
 ```terminal
 ssh azureuser@<PublicIpAddress>
 ```
 
-## <a name="install-python-library-on-the-vm"></a>SANAL makineye Python kitaplığı 'nı yükler
+## <a name="install-python-library-on-the-vm"></a>VM'de Python kitaplığını yükleme
 
-HTTP GET çağrısı yapmak için [istekleri](https://pypi.org/project/requests/2.7.0/) Python Kitaplığı ' nı indirip yükleyin.
+HTTP GET aramaları yapmak için Python kitaplığı [isteklerini](https://pypi.org/project/requests/2.7.0/) indirin ve yükleyin.
 
-## <a name="create-edit-and-run-the-sample-python-app"></a>Örnek Python uygulaması oluşturma, düzenleme ve çalıştırma
+## <a name="create-edit-and-run-the-sample-python-app"></a>Örnek Python uygulamasını oluşturun, edinve çalıştırın
 
 **Sample.py**adlı bir Python dosyası oluşturun.
 
-Sample.py açın ve aşağıdaki kodu içerecek şekilde düzenleyin:
+Sample.py açın ve aşağıdaki kodu içerecek şekilde edin:
 
 ```python
 # importing the requests library
@@ -193,24 +193,24 @@ kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer "
 print(kvSecret.json()["value"])
 ```
 
-Yukarıdaki kod iki adımlı bir işlem gerçekleştirir:
+Önceki kod iki adımlı bir işlem gerçekleştirir:
 
-   1. VM 'deki yerel MSI uç noktasından bir belirteç getirir. Uç nokta daha sonra Azure Active Directory bir belirteç getirir.
-   1. Belirteci anahtar kasasına geçirir ve gizli dizinizi getirir.
+   1. VM'deki yerel MSI bitiş noktasından bir belirteç getirir. Bitiş noktası, Azure Etkin Dizin'den bir belirteç getirir.
+   1. Jetonu anahtar kasasına aktarır ve sırrınızı getirir.
 
-Aşağıdaki komutu çalıştırın. Gizli değeri görmeniz gerekir.
+Şu komutu çalıştırın. Gizli değeri görmelisin.
 
 ```console
 python Sample.py
 ```
 
-Bu öğreticide, Azure Key Vault Linux sanal makinesinde çalışan bir Python uygulamasıyla nasıl kullanacağınızı öğrendiniz.
+Bu eğitimde, Linux sanal makinesinde çalışan bir Python uygulamasıyla Azure Key Vault'u kullanmayı öğrendiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyaç kalmadığında kaynak grubunu, sanal makineyi ve tüm ilgili kaynakları silin. Bunu yapmak için VM 'nin kaynak grubunu seçin ve **Sil**' i seçin.
+Kaynak grubunu, sanal makineyi ve ilgili tüm kaynakları artık ihtiyacınız olmadığında silin. Bunu yapmak için VM kaynak grubunu ve **Sil** öğesini seçin.
 
-`az keyvault delete` komutunu kullanarak anahtar kasasını silin:
+Komutu kullanarak anahtar `az keyvault delete` kasasını silin:
 
 ```azurecli-interactive
 az keyvault delete --name
@@ -221,4 +221,4 @@ az keyvault delete --name
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [Azure Anahtar Kasası REST API](https://docs.microsoft.com/rest/api/keyvault/)

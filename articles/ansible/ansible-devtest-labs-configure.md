@@ -1,21 +1,21 @@
 ---
-title: Öğretici-Azure DevTest Labs kullanarak laboratuvarları yapılandırma
-description: Azure DevTest Labs kullanarak bir laboratuvarı yapılandırma hakkında bilgi edinin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, DevTest Labs
+title: Öğretici - Azure DevTest Labs'daki laboratuvarları Ansible kullanarak yapılandırın
+description: Azure DevTest Labs'daki bir laboratuarı Ansible kullanarak nasıl yapılandırılayacağınızı öğrenin
+keywords: ansible, masmavi, devops, bash, oyun kitabı, devtest laboratuarları
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: b6981ee94c4d82997c574db037befb9782465d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156267"
 ---
-# <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Öğretici: Azure DevTest Labs ' de laboratuvarları yapılandırma ve kullanma
+# <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Öğretici: Azure DevTest Labs'daki laboratuvarları Ansible kullanarak yapılandırın
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure DevTest Labs](/azure/lab-services/devtest-lab-overview) , geliştiricilerin UYGULAMALARı için VM ortamlarının oluşturulmasını otomatik hale getirmenizi sağlar. Bu ortamlar uygulama geliştirme, test ve eğitim için yapılandırılabilir. 
+[Azure DevTest Labs,](/azure/lab-services/devtest-lab-overview) geliştiricilerin uygulamaları için VM ortamlarının oluşturulmasını otomatikleştirmelerine olanak tanır. Bu ortamlar uygulama geliştirme, test etme ve eğitim için yapılandırılabilir. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -23,17 +23,17 @@ ms.locfileid: "74156267"
 >
 > * Laboratuvar oluşturma
 > * Laboratuvar ilkelerini ayarlama
-> * Laboratuvar zamanlamalarını ayarlama
-> * Laboratuvar sanal ağını oluşturma
-> * Laboratuvar için bir yapıt kaynağı tanımlama
-> * Laboratuvar dahilinde VM oluşturma
-> * Laboratuvarın yapıt kaynaklarını ve yapıtları listeleyin
-> * Yapıt kaynakları için Azure Resource Manager bilgileri alın
+> * Laboratuvar programlarını ayarlama
+> * Laboratuvar sanal ağ oluşturma
+> * Laboratuvar için bir yapı kaynağı tanımlama
+> * Laboratuvar içinde bir VM oluşturma
+> * Laboratuvarın eser kaynaklarını ve eserlerini listele
+> * Yapı kaynakları için Azure Kaynak Yöneticisi bilgilerini alın
 > * Laboratuvar ortamını oluşturma
 > * Laboratuvar görüntüsünü oluşturma
-> * Laboratuvarı silme
+> * Laboratuarı silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "74156267"
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-Örnek PlayBook kod parçacığı, bir Azure Kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+Örnek oyun kitabı snippet bir Azure kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```yml
   - name: Create a resource group
@@ -50,9 +50,9 @@ ms.locfileid: "74156267"
       location: "{{ location }}"
 ```
 
-## <a name="create-the-lab"></a>Laboratuvar oluşturma
+## <a name="create-the-lab"></a>Laboratuvarı oluşturun
 
-Sonraki görev, örnek Laboratuvarı oluşturur.
+Sonraki görev örnek laboratuarı oluşturur.
 
 ```yml
 - name: Create the lab
@@ -69,14 +69,14 @@ Sonraki görev, örnek Laboratuvarı oluşturur.
 
 Laboratuvar ilkesi ayarlarını ayarlayabilirsiniz. Aşağıdaki değerler ayarlanabilir:
 
-- `user_owned_lab_vm_count`, bir kullanıcının sahip olduğu VM 'lerin sayısıdır
-- `user_owned_lab_premium_vm_count`, bir kullanıcının sahip olduğu Premium VM 'lerin sayısıdır
-- `lab_vm_count` en yüksek laboratuvar VM sayısıdır
-- `lab_premium_vm_count` en yüksek laboratuvar Premium VM sayısıdır
-- `lab_vm_size`, izin verilen laboratuvar VM 'lerinin boyutudur
-- `gallery_image`, izin verilen Galeri görüntüs
-- `user_owned_lab_vm_count_in_subnet`, bir alt ağdaki en fazla Kullanıcı sanal makine sayısıdır
-- `lab_target_cost`, laboratuvarın hedef maliyetidir
+- `user_owned_lab_vm_count`bir kullanıcının sahip olabileceği VM sayısıdır
+- `user_owned_lab_premium_vm_count`bir kullanıcının sahip olabileceği premium VM sayısıdır
+- `lab_vm_count`laboratuvar VM'lerinin maksimum sayısıdır
+- `lab_premium_vm_count`laboratuvar premium VM maksimum sayısıdır
+- `lab_vm_size`izin verilen laboratuvar VMs boyutu(lar)
+- `gallery_image`izin verilen galeri resim(ler)
+- `user_owned_lab_vm_count_in_subnet`bir alt ağdaki kullanıcının maksimum VM sayısıdır
+- `lab_target_cost`laboratuvarın hedef maliyetidir
 
 ```yml
 - name: Set the lab policies
@@ -89,11 +89,11 @@ Laboratuvar ilkesi ayarlarını ayarlayabilirsiniz. Aşağıdaki değerler ayarl
     threshold: 5
 ```
 
-## <a name="set-the-lab-schedules"></a>Laboratuvar zamanlamalarını ayarlama
+## <a name="set-the-lab-schedules"></a>Laboratuvar programlarını ayarlama
 
-Bu bölümdeki örnek görev, laboratuvar zamanlamasını yapılandırır. 
+Bu bölümdeki örnek görev laboratuar zamanlamasını yapılandırır. 
 
-Aşağıdaki kod parçacığında, VM başlatma süresini belirtmek için `lab_vms_startup` değeri kullanılır. Benzer şekilde, `lab_vms_shutdown` değerini ayarlamak laboratuvar VM 'si kapatılma süresini belirler.
+Aşağıdaki kod `lab_vms_startup` snippet'inde, değer VM başlangıç süresini belirtmek için kullanılır. Aynı şekilde, `lab_vms_shutdown` değeri ayarlamak laboratuar VM kapatma süresini belirler.
 
 ```yml
 - name: Set the lab schedule
@@ -106,9 +106,9 @@ Aşağıdaki kod parçacığında, VM başlatma süresini belirtmek için `lab_v
   register: output
 ```
 
-## <a name="create-the-lab-virtual-network"></a>Laboratuvar sanal ağını oluşturma
+## <a name="create-the-lab-virtual-network"></a>Laboratuvar sanal ağ oluşturma
 
-Aşağıdaki görev, varsayılan laboratuvar sanal ağını oluşturur.
+Aşağıdaki görev varsayılan laboratuar sanal ağ oluşturur.
 
 ```yml
 - name: Create the lab virtual network
@@ -121,9 +121,9 @@ Aşağıdaki görev, varsayılan laboratuvar sanal ağını oluşturur.
   register: output
 ```
 
-## <a name="define-an-artifact-source-for-the-lab"></a>Laboratuvar için bir yapıt kaynağı tanımlama
+## <a name="define-an-artifact-source-for-the-lab"></a>Laboratuvar için bir yapı kaynağı tanımlama
 
-Yapıt kaynağı, yapıt tanımı ve Azure Resource Manager şablonları içeren doğru şekilde yapılandırılmış bir GitHub deposudur. Her laboratuvar önceden tanımlanmış ortak yapıtlar ile gelir. Aşağıdaki görevler, bir laboratuvar için yapıt kaynağı oluşturmayı gösterir.
+Yapı kaynağı, yapı tanımı ve Azure Kaynak Yöneticisi şablonları içeren düzgün yapılandırılmış bir GitHub deposudur. Her laboratuvar önceden tanımlanmış kamu eserleri ile birlikte gelir. Takip görevleri, bir laboratuvar için bir yapı kaynağının nasıl oluşturulabileceğinizi gösterir.
 
 ```yml
 - name: Define the lab artifacts source
@@ -137,9 +137,9 @@ Yapıt kaynağı, yapıt tanımı ve Azure Resource Manager şablonları içeren
     security_token: "{{ github_token }}"
 ```
 
-## <a name="create-a-vm-within-the-lab"></a>Laboratuvar dahilinde VM oluşturma
+## <a name="create-a-vm-within-the-lab"></a>Laboratuvar içinde bir VM oluşturma
 
-Laboratuvar dahilinde bir VM oluşturun.
+Laboratuar içinde bir VM oluşturun.
 
 ```yml
 - name: Create a VM within the lab
@@ -169,9 +169,9 @@ Laboratuvar dahilinde bir VM oluşturun.
     expiration_date: "2029-02-22T01:49:12.117974Z"
 ```
 
-## <a name="list-the-labs-artifact-sources-and-artifacts"></a>Laboratuvarın yapıt kaynaklarını ve yapıtları listeleyin
+## <a name="list-the-labs-artifact-sources-and-artifacts"></a>Laboratuvarın eser kaynaklarını ve eserlerini listele
 
-Laboratuvardaki tüm varsayılan ve özel yapıt kaynaklarını listelemek için aşağıdaki görevi kullanın:
+Laboratuardaki tüm varsayılan ve özel yapı kaynaklarını listelemek için aşağıdaki görevi kullanın:
 
 ```yml
 - name: List the artifact sources
@@ -183,7 +183,7 @@ Laboratuvardaki tüm varsayılan ve özel yapıt kaynaklarını listelemek için
     var: output
 ```
 
-Aşağıdaki görev tüm yapıtları listeler:
+Aşağıdaki görev tüm yapıları listeler:
 
 ```yml
 - name: List the artifact facts
@@ -196,9 +196,9 @@ Aşağıdaki görev tüm yapıtları listeler:
     var: output
 ```
 
-## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Yapıt kaynakları için Azure Resource Manager bilgileri alın
+## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Yapı kaynakları için Azure Kaynak Yöneticisi bilgilerini alın
 
-`public environment repository`tüm Azure Resource Manager şablonlarını listelemek için, önceden tanımlanmış depo şablonlar:
+Tüm Azure Kaynak Yöneticisi şablonlarını `public environment repository`, şablonlarla önceden tanımlanmış depoda listelemek için:
 
 ```yml
 - name: List the Azure Resource Manager template facts
@@ -210,7 +210,7 @@ Aşağıdaki görev tüm yapıtları listeler:
     var: output
 ```
 
-Aşağıdaki görev, depodan belirli bir Azure Resource Manager şablonunun ayrıntılarını alır:
+Ve aşağıdaki görev, belirli bir Azure Kaynak Yöneticisi şablonunun ayrıntılarını depodan alır:
 
 ```yml
 - name: Get Azure Resource Manager template facts
@@ -226,7 +226,7 @@ Aşağıdaki görev, depodan belirli bir Azure Resource Manager şablonunun ayr�
 
 ## <a name="create-the-lab-environment"></a>Laboratuvar ortamını oluşturma
 
-Aşağıdaki görev, genel ortam deposundan şablonlardan birini temel alan laboratuvar ortamını oluşturur.
+Aşağıdaki görev, ortak ortam deposundaki şablonlardan birini temel alan laboratuar ortamını oluşturur.
 
 ```yml
 - name: Create the lab environment
@@ -242,7 +242,7 @@ Aşağıdaki görev, genel ortam deposundan şablonlardan birini temel alan labo
 
 ## <a name="create-the-lab-image"></a>Laboratuvar görüntüsünü oluşturma
 
-Aşağıdaki görev, bir VM 'den bir görüntü oluşturur. Görüntü, özdeş VM 'Ler oluşturmanızı sağlar.
+Aşağıdaki görev bir VM bir görüntü oluşturur. Görüntü, aynı VM'leri oluşturmanıza olanak tanır.
 
 ```yml
 - name: Create the lab image
@@ -254,9 +254,9 @@ Aşağıdaki görev, bir VM 'den bir görüntü oluşturur. Görüntü, özdeş 
     linux_os_state: non_deprovisioned
 ```
 
-## <a name="delete-the-lab"></a>Laboratuvarı silme
+## <a name="delete-the-lab"></a>Laboratuarı silme
 
-Laboratuvarı silmek için aşağıdaki görevi kullanın:
+Laboratuarı silmek için aşağıdaki görevi kullanın:
 
 ```yml
 - name: Delete the lab
@@ -271,11 +271,11 @@ Laboratuvarı silmek için aşağıdaki görevi kullanın:
       - output.changed
 ```
 
-## <a name="get-the-sample-playbook"></a>Örnek PlayBook 'u alın
+## <a name="get-the-sample-playbook"></a>Örnek oyun kitabını alın
 
-Örnek PlayBook 'un tamamını almanın iki yolu vardır:
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) ve `devtestlab-create.yml`kaydedin.
-- `devtestlab-create.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+Tam örnek oyun kitabını almanın iki yolu vardır:
+- [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) ve `devtestlab-create.yml`'ye kaydedin.
+- Adlandırılmış `devtestlab-create.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 ---
@@ -440,15 +440,15 @@ Laboratuvarı silmek için aşağıdaki görevi kullanın:
         state: absent
 ```
 
-## <a name="run-the-playbook"></a>PlayBook 'u çalıştırma
+## <a name="run-the-playbook"></a>Oyun kitabını çalıştırın
 
-Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için PlayBook 'u çalıştırın.
+Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için oyun kitabını çalıştırın.
 
-PlayBook 'u çalıştırmadan önce aşağıdaki değişiklikleri yapın:
-- `vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
-- GitHub belirtecini `GITHUB_ACCESS_TOKEN`adlı bir ortam değişkeni olarak depolayın.
+Oyun kitabını çalıştırmadan önce aşağıdaki değişiklikleri yapın:
+- `vars` Bölümde, yer tutucuyu `{{ resource_group_name }}` kaynak grubunuzun adı ile değiştirin.
+- GitHub belirteci adlı `GITHUB_ACCESS_TOKEN`bir ortam değişkeni olarak depolayın.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook devtestlab-create.yml
@@ -456,9 +456,9 @@ ansible-playbook devtestlab-create.yml
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
+Aşağıdaki kodu aşağıdaki `cleanup.yml`gibi kaydedin:
 
 ```yml
 - hosts: localhost
@@ -472,7 +472,7 @@ Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
         state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

@@ -1,17 +1,17 @@
 ---
-title: Öğretici-kapsayıcı uygulamasını kapsayıcı örneğine dağıtma
-description: Azure Container Instances öğreticisi Bölüm 3/3-kapsayıcı uygulamayı Azure Container Instances dağıtma
+title: Öğretici - Konteyner örneğine konteyner uygulamasını dağıtma
+description: Azure Kapsayıcı Örnekleri 3'ün bölüm 3'ü öğretici - Kapsayıcı uygulamasını Azure Kapsayıcı Örneklerine dağıtma
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78249966"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Öğretici: Azure Container Instances bir kapsayıcı uygulaması dağıtma
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Öğretici: Kapsayıcı uygulamasını Azure Kapsayıcı Örneklerine dağıtma
 
 Bu, üç kısımdan oluşan serinin son öğreticisidir. Serinin önceki kısımlarında [bir kapsayıcı görüntüsü oluşturuldu](container-instances-tutorial-prepare-app.md) ve [Azure Container Registry’ye gönderildi](container-instances-tutorial-prepare-acr.md). Bu makalede, Azure Container Instances’a kapsayıcı dağıtılarak seri tamamlanır.
 
@@ -32,11 +32,11 @@ Bu bölümde, [birinci öğreticide](container-instances-tutorial-prepare-app.md
 
 ### <a name="get-registry-credentials"></a>Kayıt defteri kimlik bilgilerini alma
 
-[İkinci öğreticide](container-instances-tutorial-prepare-acr.md)oluşturulan gibi özel bir Azure Container Registry 'de barındırılan bir görüntüyü dağıtırken, kayıt defterine erişmek için kimlik bilgilerini sağlamanız gerekir. 
+[İkinci öğreticide](container-instances-tutorial-prepare-acr.md)oluşturulan gibi özel bir Azure kapsayıcı kayıt defterinde barındırılan bir görüntüyü dağıttığınızda, kayıt defterine erişmek için kimlik bilgileri sağlamanız gerekir. 
 
-Birçok senaryo için en iyi yöntem, Kayıt defterinize yönelik *çekme* izinleriyle Azure Active Directory hizmet sorumlusu oluşturmak ve yapılandırmak olacaktır. Gerekli izinlere sahip bir hizmet sorumlusu oluşturmak için örnek betikler için [Azure Container Instances Azure Container Registry Ile kimlik doğrulama](../container-registry/container-registry-auth-aci.md) konusuna bakın. *Hizmet sorumlusu kimliği* ve *hizmet sorumlusu parolasını*göz önünde yararlanın. Bu kimlik bilgilerini, kapsayıcıyı dağıtırken kayıt defterine erişmek için kullanırsınız.
+Birçok senaryo için en iyi yöntem, kayıt defterinize *çekme* izinleri içeren bir Azure Active Directory hizmet yöneticisi oluşturmak ve yapılandırmaktır. Gerekli izinlere sahip bir hizmet ilkesi oluşturmak için örnek komut dosyaları için [Azure Kapsayıcı Örnekleri'nden Azure Kapsayıcı Kayıt Defteri](../container-registry/container-registry-auth-aci.md) ile Kimlik Doğrulaması'ya bakın. Hizmet ana *kimliği* ve *hizmet temel parolasını*not alın. Kapsayıcıyı dağıtırken kayıt defterine erişmek için bu kimlik bilgilerini kullanırsınız.
 
-Ayrıca, kapsayıcı kayıt defteri oturum açma sunucusunun tam adına de ihtiyacınız vardır (`<acrName>` kayıt defterinizin adıyla değiştirin):
+Ayrıca konteyner kayıt defteri giriş sunucusunun tam adı `<acrName>` (kayıt defterinin adı ile değiştirin):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
@@ -44,7 +44,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>Kapsayıcıyı dağıtma
 
-Şimdi, kapsayıcıyı dağıtmak için [az Container Create][az-container-create] komutunu kullanın. `<acrLoginServer>`, önceki komuttan elde ettiğiniz değerle değiştirin. `<service-principal-ID>` ve `<service-principal-password>`, kayıt defterine erişmek için oluşturduğunuz hizmet sorumlusu KIMLIĞI ve parolasıyla değiştirin. `<aciDnsLabel>`, istenen bir DNS adıyla değiştirin.
+Şimdi kapsayıcıyı dağıtmak için [az container create][az-container-create] komutunu kullanın. Önceki `<acrLoginServer>` komuttan elde ettiğiniz değerle değiştirin. Kayıt defterine erişmek için oluşturduğunuz hizmet temel kimliği ve parolasını değiştirin. `<service-principal-ID>` `<service-principal-password>` İstenilen bir DNS adı ile değiştirin. `<aciDnsLabel>`
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -54,17 +54,17 @@ Birkaç saniye içinde Azure’dan bir ilk yanıt almanız gerekir. `--dns-name-
 
 ### <a name="verify-deployment-progress"></a>Dağıtım ilerleme durumunu doğrulama
 
-Dağıtımın durumunu görüntülemek için [az Container Show][az-container-show]öğesini kullanın:
+Dağıtımın durumunu görüntülemek için [az container show][az-container-show] komutunu kullanın:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-Durum *bekliyor* ' dan *çalışıyor*' a dönüşene kadar [az Container Show][az-container-show] komutunu tekrarlayın, bu da bir dakika içinde sürer. Kapsayıcı *Çalışıyor* durumunda olduğunda sonraki adıma ilerleyin.
+*Beklemede* olan durum *Çalışıyor* olarak değişinceye kadar [az container show][az-container-show] komutunu yineleyin; bu bir dakikadan kısa sürecektir. Kapsayıcı *Çalışıyor* durumunda olduğunda sonraki adıma ilerleyin.
 
 ## <a name="view-the-application-and-container-logs"></a>Uygulama ve kapsayıcı günlüklerini görüntüleme
 
-Dağıtım başarılı olduktan sonra, kapsayıcının tam etki alanı adını (FQDN) [az Container Show][az-container-show] komutuyla görüntüleyin:
+Dağıtım başarılı olduktan sonra, [az container show][az-container-show] komutuyla kapsayıcının tam etki alanı adını görüntüleyin:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
@@ -95,7 +95,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğretici serisinde oluşturduğunuz kaynaklara artık ihtiyacınız yoksa, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [az Group Delete][az-group-delete] komutunu çalıştırabilirsiniz. Bu komut, oluşturduğunuz kapsayıcı kayıt defterinin yanı sıra çalışan kapsayıcıyı ve tüm ilişkili kaynakları siler.
+Artık bu öğretici serisinde oluşturduğunuz kaynakların herhangi birine ihtiyacınız yoksa, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [az group delete][az-group-delete] komutunu yürütebilirsiniz. Bu komut, oluşturduğunuz kapsayıcı kayıt defterinin yanı sıra çalışan kapsayıcıyı ve tüm ilişkili kaynakları siler.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

@@ -1,20 +1,20 @@
 ---
-title: Yerleşik ilke tanımlarının listesi
-description: Azure Ilkesi için yerleşik ilke tanımlarını listeleyin. Kategoriler arasında Etiketler, mevzuat uyumluluğu, Key Vault, Kubernetes, Konuk yapılandırma ve daha fazlası bulunur.
+title: Yerleşik ilke tanımları listesi
+description: Azure İlkesi için yerleşik ilke tanımlarını listeleyin. Kategoriler Etiketler, Mevzuata Uygunluk, Anahtar Kasası, Kubernetes, Konuk Yapılandırması ve daha fazlasını içerir.
 ms.date: 02/15/2020
 ms.topic: sample
 ms.openlocfilehash: 06c913bdccd8b35970a195f6ee658ce7b1d97a7b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239745"
 ---
-# <a name="azure-policy-built-in-policy-definitions"></a>Azure Ilkesi yerleşik ilke tanımları
+# <a name="azure-policy-built-in-policy-definitions"></a>Azure İlkesi yerleşik ilke tanımları
 
-Bu sayfa, Azure Ilkesi yerleşik ilke tanımlarının bir dizinidir.
+Bu sayfa, Azure İlkesi yerleşik ilke tanımlarının bir dizinidir.
 
-Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı adı. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **kaynak** sütunundaki bağlantıyı kullanın. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, tarayıcınızın arama özelliğini kullanmak için <kbd>Ctrl</kbd>-<kbd>F</kbd> kullanın.
+Azure portalındaki ilke tanımına bağlı her yerleşik bağlantının adı. [Azure İlkesi GitHub repo'sundaki](https://github.com/Azure/azure-policy)kaynağı görüntülemek için **Kaynak** sütundaki bağlantıyı kullanın. **Yerleşikler, meta verilerdeki** **kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**atlamak için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, tarayıcınızın arama özelliğini kullanmak için <kbd>Ctrl</kbd>-<kbd>F'yi</kbd> kullanın.
 
 [!INCLUDE [azure-policy-samples-policies-index](../../../../includes/azure-policy-samples-policies-index.md)]
 

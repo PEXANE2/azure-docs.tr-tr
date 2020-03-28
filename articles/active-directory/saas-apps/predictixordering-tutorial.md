@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Predictix sıralama ile Azure Active Directory Tümleştirme | Microsoft Docs'
-description: Bu öğreticide, Azure Active Directory ve Predictix sıralama arasında çoklu oturum açmayı yapılandırma öğreneceksiniz.
+title: 'Öğretici: Predictix Sipariş ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Bu eğitimde, Azure Active Directory ve Predictix Ordering arasında tek oturum açma nın nasıl yapılandırılabildiğini öğreneceksiniz.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,99 +16,99 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094131"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Öğretici: Predictix sıralama ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Öğretici: Predictix Sipariş ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile tümleştirme Predictix sıralama öğreneceksiniz.
-Bu tümleştirme aşağıdaki avantajları sağlar:
+Bu eğitimde, Predictix Siparişini Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Bu tümleştirme şu avantajları sağlar:
 
-* Azure AD Predictix sıralama erişimi denetlemek için kullanabilirsiniz.
-* Otomatik olarak (çoklu oturum açma) Predictix sıralama için kendi Azure AD hesapları ile oturum açmanız, kullanıcılarınızın etkinleştirebilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilir: Azure portalı.
+* Predictix Siparişi'ne kimlerin erişebileceğini denetlemek için Azure AD'yi kullanabilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Predictix Sipariş (tek oturum açma) ile otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory'de uygulamalar için çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek [için Azure Active Directory'deki uygulamalarda tek](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)oturum açma'ya bakın.
 
-Azure aboneliğiniz yoksa, [ücretsiz bir hesap oluşturma](https://azure.microsoft.com/free/) başlamadan önce.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesi Predictix sıralama ile yapılandırmak için sahip olmanız gerekir:
+Azure AD tümleştirmesini Predictix Ordering ile yapılandırmak için şunları yapmanız gerekir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/).
-* Tekli etkin oturum sahip Predictix sıralama abonelik.
+* Azure AD aboneliği. Azure REKLAM ortamınız [yoksa, ücretsiz](https://azure.microsoft.com/pricing/free-trial/)bir hesap alabilirsiniz.
+* Tek oturum açma özelliği etkin olan Predictix Sipariş aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD oturum açma işlemlerini bir test ortamında yapılandıracak ve sınayacaksınız.
 
-* Predictix sıralama SP tarafından başlatılan SSO'yu destekler.
+* Predictix Ordering, SP tarafından başlatılan SSO'yı destekler.
 
-## <a name="add-predictix-ordering-from-the-gallery"></a>Galeriden Predictix sıralama Ekle
+## <a name="add-predictix-ordering-from-the-gallery"></a>Galeriden Predictix Siparişi Ekleme
 
-Azure AD'de Predictix sipariş tümleştirmeyi ayarlamak için Predictix sıralama Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Predictix Ordering'in Azure AD'ye entegrasyonunu ayarlamak için, galeriden Yönetilen SaaS uygulamaları listenize Predictix Siparişi eklemeniz gerekir.
 
-1. İçinde [Azure portalında](https://portal.azure.com), sol bölmede seçin **Azure Active Directory**:
+1. Azure [portalında](https://portal.azure.com), sol bölmede, **Azure Etkin Dizini'ni**seçin:
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. Git **kurumsal uygulamalar** > **tüm uygulamaları**:
+2. Kurumsal **uygulamalara** > git**Tüm uygulamalar:**
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Bir uygulama eklemek için seçin **yeni uygulama** pencerenin üst kısmındaki:
+3. Uygulama eklemek için pencerenin üst kısmında **Yeni uygulama'yı** seçin:
 
-    ![Yeni uygulama seçme](common/add-new-app.png)
+    ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **Predictix sıralama**. Seçin **Predictix sıralama** seçin ve arama sonuçlarını **Ekle**.
+4. Arama kutusuna **Predictix Siparişi'ni**girin. Arama sonuçlarında **Predictix Siparişi'ni** seçin ve ardından **Ekle'yi**seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırın ve Azure AD çoklu oturum açma Predictix sıralama ile Britta Simon adlı bir test kullanıcısı kullanarak test edin.
-Çoklu oturum açmayı etkinleştirmek için bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir ilişki Predictix sıralamada yapmanız gerekir.
+Bu bölümde, Britta Simon adlı bir test kullanıcısı kullanarak Predictix Ordering ile Azure AD oturum açma işlemini yapılandıracak ve sınayacaksınız.
+Tek oturum açmayı etkinleştirmek için Predictix Ordering'de bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir ilişki kurmanız gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma Predictix sıralama ile test etmek için bu adımları tamamlamak gerekir:
+Predictix Ordering ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için şu adımları tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırma](#configure-azure-ad-single-sign-on)**  kullanıcılarınız için özelliği etkinleştirmek için.
-2. **[Predictix sıralama çoklu oturum açmayı yapılandırma](#configure-predictix-ordering-single-sign-on)**  uygulama tarafında.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  Azure AD çoklu oturum açmayı test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  Azure AD çoklu oturum açma için kullanıcı etkinleştirmek için.
-5. **[Predictix sıralama test kullanıcısı oluşturma](#create-a-predictix-ordering-test-user)**  kullanıcı Azure AD gösterimini bağlı.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  yapılandırma çalıştığını doğrulayın.
+1. Azure AD oturumunu, kullanıcılarınız için özelliği etkinleştirmek için **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[Predictix Siparişi](#configure-predictix-ordering-single-sign-on)** uygulama tarafında tek oturum açma yı yapılandırın.
+3. Azure AD tek oturum açma'yı test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Azure AD test kullanıcısını, kullanıcı için Azure AD oturum açmayı etkinleştirmek için **[atayın.](#assign-the-azure-ad-test-user)**
+5. Kullanıcının Azure AD gösterimine bağlı **[bir Predictix Sipariş testi kullanıcısı oluşturun.](#create-a-predictix-ordering-test-user)**
+6. Yapılandırmanın çalıştığını doğrulamak için **[tek oturum](#test-single-sign-on)** açma yı test edin.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalındaki etkinleştirmeniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma Predictix sıralama ile yapılandırmak için şu adımları uygulayın:
+Predictix Ordering ile Azure AD oturum açma işlemlerini yapılandırmak için şu adımları izleyin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Predictix sıralama** uygulama tümleştirme sayfasında **çoklu oturum açma**:
+1. Azure [portalında,](https://portal.azure.com/) **Predictix Sipariş** uygulama tümleştirme sayfasında **Tek oturum açma**seçeneğini belirleyin:
 
-    ![Çoklu oturum açma seçin](common/select-sso.png)
+    ![Tek oturum açma'yı seçin](common/select-sso.png)
 
-2. İçinde **tek bir oturum açma yönteminizi seçmeniz** Seç iletişim kutusunda **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için:
+2. Tek **oturum** açma yöntemi iletişim kutusunu seç'te, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin:
 
     ![Tek bir oturum açma yöntemi seçin](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim kutusunda:
+3. **SAML** ile Tek Oturum Açma'da, **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini seçin:
 
     ![Düzenle simgesi](common/edit-urls.png)
 
-4. İçinde **temel SAML yapılandırma** iletişim kutusunda, aşağıdaki adımları tamamlayın.
+4. Temel **SAML Yapılandırma** iletişim kutusunda aşağıdaki adımları tamamlayın.
 
-    ![Temel SAML yapılandırma iletişim kutusu](common/sp-identifier.png)
+    ![Temel SAML Yapılandırma iletişim kutusu](common/sp-identifier.png)
 
-    1. İçinde **oturum açma URL'si** kutusuna, bu düzende bir URL girin:
+    1. **URL'de Oturum Aç** kutusuna, bu desene bir URL girin:
 
        `https://<companyname-pricing>.ordering.predictix.com/sso/request`
 
-    1. İçinde **tanımlayıcı (varlık kimliği)** kutusuna, bu düzende bir URL girin:
+    1. Tanımlayıcı **(Entity ID)** kutusuna, bu desene bir URL girin:
 
         | |
         |--|
@@ -117,90 +117,90 @@ Azure AD çoklu oturum açma Predictix sıralama ile yapılandırmak için şu a
         | |
 
     > [!NOTE]
-    > Bu değerler yer tutuculardır. Gerçek oturum açma URL'si ve tanımlayıcı kullanmanız gerekir. İlgili kişi [Predictix sıralama Destek ekibine](https://www.predix.io/support/) değerleri alabilirsiniz. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** Azure portalında iletişim kutusu.
+    > Bu değerler yer tutuculardır. Gerçek oturum açma URL'sini ve tanımlayıcıyı kullanmanız gerekir. Değerleri almak için [Predictix Sipariş destek ekibine](https://www.predix.io/support/) başvurun. Azure portalındaki **Temel SAML Yapılandırma** iletişim kutusunda gösterilen desenlere de başvurabilirsiniz.
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünden **indirme** yanındaki bağlantı **sertifika (Base64)** , gereksinimlerinize göre ve bilgisayarınızdaki sertifika Kaydet:
+5. **SAML Ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, gereksinimlerinize göre Sertifika **(Base64)** yanındaki **İndir** bağlantısını seçin ve sertifikayı bilgisayarınıza kaydedin:
 
-    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+    ![Sertifika indirme linki](common/certificatebase64.png)
 
-6. İçinde **Predictix sıralama ayarlamak** bölümünde, gereksinimlerinize göre uygun URL'ler kopyalayın:
+6. **Predictix Siparişi Ayarlama** bölümünde, gereksinimlerinize göre uygun URL'leri kopyalayın:
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    1. **Oturum açma URL'si**.
+    1. **Giriş URL'si**.
 
-    2. **Azure AD tanımlayıcısı**.
+    2. **Azure AD Tanımlayıcısı**.
 
-    3. **Oturum kapatma URL'si**.
+    3. **Çıkış URL'si**.
 
-### <a name="configure-predictix-ordering-single-sign-on"></a>Predictix sıralama çoklu oturum açmayı yapılandırın
+### <a name="configure-predictix-ordering-single-sign-on"></a>Predictix Sipariştek oturum açma yapılandırma
 
-Çoklu oturum açma Predictix sıralama tarafında yapılandırmak için indirdiğiniz sertifika ve Azure için portaldan kopyaladığınız URL'leri Gönder gereken [Predictix sıralama Destek ekibine](https://www.predix.io/support/). SAML SSO bağlantının her iki kenarı da düzgün ayarlandığından bu takım sağlar.
+Predictix Sipariş tarafında tek oturum açma işlemi yapmak için, indirdiğiniz sertifikayı ve Azure portalından kopyaladığınız URL'leri [Predictix Sipariş destek ekibine](https://www.predix.io/support/)göndermeniz gerekir. Bu ekip, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanınmasını sağlar.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portalında **Azure Active Directory** seçin sol bölmede **kullanıcılar**ve ardından **tüm kullanıcılar**:
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni** seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin:
 
-    ![Tüm kullanıcıları seçin](common/users.png)
+    ![Tüm kullanıcılar'ı seçin](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üst kısmındaki:
+2. Ekranın üst kısmında **Yeni kullanıcı** seçin:
 
-    ![Yeni bir kullanıcı seçin](common/new-user.png)
+    ![Yeni kullanıcıyı seçin](common/new-user.png)
 
-3. İçinde **kullanıcı** iletişim kutusunda, aşağıdaki adımları uygulayın.
+3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları izleyin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. İçinde **adı** kutusuna **BrittaSimon**.
+    1. **Ad** **kutusuna BrittaSimon**girin.
   
-    1. İçinde **kullanıcı adı** kutusuna **@ BrittaSimon\<yourcompanydomain >.\< Uzantı >** . (Örneğin, BrittaSimon@contoso.com.)
+    1. Kullanıcı **adı** kutusuna, **\<şirketinizin alan\< BrittaSimon@> girin. uzantısı>**. (Örneğin, BrittaSimon@contoso.com.)
 
-    1. Seçin **Göster parola**ve ardından içinde bir değer yazın **parola** kutusu.
+    1. **Parolayı Göster'i**seçin ve ardından **Parola** kutusundaki değeri yazın.
 
-    1. **Oluştur**’u seçin.
+    1. **Oluştur'u**seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure AD çoklu oturum açma Predictix sıralama için erişim vererek kullanmak Britta Simon tıklatmalarını sağlarsınız.
+Bu bölümde, Britta Simon'A Predictix Sipariş ii'ne erişimini sağlayarak Azure AD oturumunu tek oturum açma olanağı sağlayacaksınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**ve ardından **Predictix sıralama**:
+1. Azure portalında **Kurumsal uygulamaları**seçin , **Tüm uygulamaları**seçin ve ardından **Predictix Siparişi'ni**seçin:
 
     ![Kurumsal uygulamalar](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde seçin **Predictix sıralama**.
+2. Uygulamalar listesinde **Predictix Siparişi'ni**seçin.
 
-    ![Uygulamaların listesi](common/all-applications.png)
+    ![Başvuru listesi](common/all-applications.png)
 
-3. Sol bölmede seçin **kullanıcılar ve gruplar**:
+3. Sol **bölmede, Kullanıcıları ve grupları**seçin:
 
-    ![Kullanıcıları ve grupları seçin](common/users-groups-blade.png)
+    ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
 
-4. Seçin **Kullanıcı Ekle**ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim kutusu.
+4. **Kullanıcı Ekle'yi**seçin ve ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-    ![Kullanıcı Ekle seçeneğini belirleme](common/add-assign-user.png)
+    ![Kullanıcı ekle seçeneğini belirleme](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** kullanıcıların listesini ve ardından **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, kullanıcı listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması rol değeri de beklediğiniz **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin. Tıklayın **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında, **Rolü Seç** iletişim kutusunda bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim kutusunda **atama**.
+7. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
 
-### <a name="create-a-predictix-ordering-test-user"></a>Predictix sıralama test kullanıcısı oluşturma
+### <a name="create-a-predictix-ordering-test-user"></a>Predictix Sipariş testi kullanıcısı oluşturma
 
-Sonra Britta Simon Predictix sıralama, adlı bir kullanıcı oluşturmanız gerekir. Çalışmak [Predictix sıralama Destek ekibine](https://www.predix.io/support/) kullanıcıları eklemek için. Kullanıcıların oluşturulabilir ve çoklu oturum açma kullanan önce etkinleştirmeniz gerekir.
+Ardından, Predictix Ordering'de Britta Simon adında bir kullanıcı oluşturmanız gerekir. Kullanıcıları eklemek için [Predictix Sipariş destek ekibiyle](https://www.predix.io/support/) birlikte çalışın. Tek oturum açmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Şimdi Azure AD çoklu oturum açma yapılandırmanızı erişim panelini kullanarak test gerekir.
+Artık Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı test etmeniz gerekir.
 
-Erişim Paneli'nde Predictix sıralama kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama Predictix sıralama örneği için oturum açmanız. Daha fazla bilgi için [erişim ve kullanım uygulamaları uygulamalarım portalında](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Predictix Sipariş döşemesini seçtiğinizde, SSO'yu kurduğunuz Predictix Sipariş örneğinde otomatik olarak oturum açmalısınız. Daha fazla bilgi için [Access'e bakın ve Uygulamalarım portalındaki uygulamaları kullanın.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

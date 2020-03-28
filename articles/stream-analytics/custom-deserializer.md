@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure Stream Analytics bulut işleri için özel .NET seri hale getiriciler
-description: Bu öğreticide, Visual Studio kullanarak Azure Stream Analytics bir bulut işi için özel bir .NET seri hale getirici oluşturma işlemi gösterilmektedir.
+title: Öğretici - Azure Akış Analizi bulut işleri için Özel .NET deserializers
+description: Bu öğretici, Visual Studio'u kullanarak Azure Akış Analizi bulut işi için özel bir .NET deserializer nasıl oluşturulacak larını gösterir.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,117 +8,117 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
 ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75443688"
 ---
-# <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Öğretici: Azure Stream Analytics için özel .NET seri hale Getiricileri
+# <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Öğretici: Azure Akış Analizi için Özel .NET deserializers
 
-Azure Stream Analytics [üç veri biçimi için yerleşik desteğe](stream-analytics-parsing-json.md)sahiptir: JSON, CSV ve avro. Özel .NET seri hale Getiricileri sayesinde, hem bulut hem de kenar işleri için [protokol arabelleği](https://developers.google.com/protocol-buffers/), [Bono](https://github.com/Microsoft/bond) ve diğer Kullanıcı tanımlı biçimler gibi diğer biçimlerden verileri okuyabilirsiniz.
+Azure Akış Analizi, JSON, CSV ve Avro [olmak üzere üç veri biçimi için yerleşik destek](stream-analytics-parsing-json.md)ekidir. Özel .NET deserializers ile, [Protokol Arabelle,](https://developers.google.com/protocol-buffers/) [Bond](https://github.com/Microsoft/bond) ve diğer kullanıcı tanımlı biçimleri hem bulut hem de kenar işleri için diğer biçimleri verileri okuyabilirsiniz.
 
-Bu öğreticide, Visual Studio kullanarak Azure Stream Analytics bir bulut işi için özel bir .NET seri hale getirici oluşturma işlemi gösterilmektedir. 
+Bu öğretici, Visual Studio'u kullanarak Azure Akış Analizi bulut işi için özel bir .NET deserializer nasıl oluşturulacak larını gösterir. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Protokol arabelleği için özel bir seri hale getirici oluşturun.
-> * Visual Studio 'da bir Azure Stream Analytics işi oluşturun.
-> * Stream Analytics işinizi özel seri hale getirici 'yi kullanacak şekilde yapılandırın.
-> * Özel seri hale getirici 'yi test etmek için Stream Analytics işinizi yerel olarak çalıştırın.
+> * Protokol arabelleği için özel bir deserializer oluşturun.
+> * Visual Studio'da bir Azure Akışı Analizi işi oluşturun.
+> * Özel deserializer kullanmak için Stream Analytics iş yapılandırın.
+> * Özel deserializer'ı test etmek için Stream Analytics işinizi yerel olarak çalıştırın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+* Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
 
-* [Visual studio 2017](https://www.visualstudio.com/downloads/) veya [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/)' ü yükler. Enterprise (Ultimate/Premium), Professional ve Community sürümleri desteklenir. Express sürümü desteklenmiyor.
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) veya Visual [Studio 2015'i](https://www.visualstudio.com/vs/older-downloads/)yükleyin. Enterprise (Ultimate/Premium), Professional ve Community sürümleri desteklenir. Express sürümü desteklenmez.
 
-* [Visual Studio için Stream Analytics araçları 'nı](stream-analytics-tools-for-visual-studio-install.md) veya en son sürüme güncelleştirin. Aşağıdaki Visual Studio sürümleri desteklenir:
+* [Visual Studio için Stream Analytics araçlarını yükleyin](stream-analytics-tools-for-visual-studio-install.md) veya en son sürüme güncelleştirin. Visual Studio'nun aşağıdaki sürümleri desteklenir:
    * Visual Studio 2015
    * Visual Studio 2017
 
-* Visual Studio 'da **bulut Gezgini** 'ni açın ve Azure aboneliğinizde oturum açın.
+* Visual Studio'da **Bulut Gezgini'ni** açın ve Azure aboneliğinizde oturum açın.
 
-* Azure depolama hesabınızda bir kapsayıcı oluşturun.
-Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolamak için kullanılacaktır. Kapsayıcı bulunan bir depolama hesabınız varsa onu kullanabilirsiniz. Yoksa [yeni bir kapsayıcı oluşturmanız](../storage/blobs/storage-quickstart-blobs-portal.md) gerekir.
+* Azure Depolama Hesabınızda bir kapsayıcı oluşturun.
+Oluşturduğunuz kapsayıcı, Stream Analytics işinizle ilgili varlıkları depolamak için kullanılır. Kapsayıcı bulunan bir depolama hesabınız varsa onu kullanabilirsiniz. Yoksa [yeni bir kapsayıcı oluşturmanız](../storage/blobs/storage-quickstart-blobs-portal.md) gerekir.
 
-## <a name="create-a-custom-deserializer"></a>Özel seri hale getirici oluşturma
+## <a name="create-a-custom-deserializer"></a>Özel bir deserializer oluşturma
 
-1. Visual Studio 'Yu açın ve **dosya > yeni > proje**' yi seçin. **Stream Analytics** arayın ve özel seri **hale getirici projesi (.net) Azure Stream Analytics**seçin. Projeye **prototipsiz seri hale getirici**gibi bir ad verin.
+1. Visual Studio'u açın ve **Dosya > Yeni > Projesi'ni**seçin. Akış **Analizi'ni** arayın ve **Azure Akış Analizi Özel Deserializer Project'i (.NET)** seçin. **Protobuf Deserializer**gibi projeye bir isim verin.
 
-   ![Visual Studio DotNet standart sınıf kitaplığı projesi oluştur](./media/custom-deserializer/create-dotnet-library-project.png)
+   ![Visual Studio dotnet standart sınıf kitaplık projesi oluşturma](./media/custom-deserializer/create-dotnet-library-project.png)
 
-2. Çözüm Gezgini, **prototip seri hale getirici** projenize sağ tıklayın ve menüden **NuGet Paketlerini Yönet** ' i seçin. Ardından **Microsoft. Azure. StreamAnalytics** ve **Google. prototipi** NuGet paketlerini yükler.
+2. Solution Explorer'da **Protobuf Deserializer** projenize sağ tıklayın ve menüden **NuGet Paketlerini Yönet'i** seçin. Ardından **Microsoft.Azure.StreamAnalytics** ve **Google.Protobuf** NuGet paketlerini yükleyin.
 
-3. [Messagebodyproto sınıfını](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/MessageBodyProto.cs) ve [Messagebodydeserializer sınıfını](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/MessageBodyDeserializer.cs) projenize ekleyin.
+3. [MessageBodyProto sınıfını](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/MessageBodyProto.cs) ve [MessageBodyDeserializer sınıfını](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/MessageBodyDeserializer.cs) projenize ekleyin.
 
-4. **Protoseri hale getirici** projesi oluşturun.
+4. **Protobuf Deserializer** projesini oluşturun.
 
-## <a name="add-an-azure-stream-analytics-project"></a>Azure Stream Analytics projesi ekleme
+## <a name="add-an-azure-stream-analytics-project"></a>Azure Akışı Analizi projesi ekleme
 
-1. Çözüm Gezgini, **prototip seri hale getirici** çözümüne sağ tıklayın ve **> yeni proje Ekle**' yi seçin. **Azure Stream Analytics > Stream Analytics**altında **Azure Stream Analytics Uygulama**' yı seçin. **Prototipbufcloudserializer** olarak adlandırın ve **Tamam**' ı seçin. 
+1. Çözüm Gezgini'nde **Protobuf Deserializer** çözümünü sağ tıklatın ve **Yeni Proje ekle >** seçin. **Azure Akış Analizi > Akış Analizi**altında Azure Akış Analizi **Uygulamasını**seçin. Adını **ProtobufCloudDeserializer** ve **Tamam**seçin. 
 
-2. **Prototipbufclouddeserializer** Azure Stream Analytics projesi altındaki **Başvurular** ' a sağ tıklayın. **Projeler**altında, **protoseri hale getirici**ekleyin. Sizin için otomatik olarak doldurulmalıdır.
+2. **ProtobufCloudDeserializer** Azure Akış Analizi projesi kapsamında **Başvurular'a** sağ tıklayın. **Projeler**altında, **Protobuf Deserializer**ekleyin. Otomatik olarak sizin için doldurulmalıdır.
 
-## <a name="configure-a-stream-analytics-job"></a>Stream Analytics işi yapılandırma
+## <a name="configure-a-stream-analytics-job"></a>Akış Analizi işini yapılandırma
 
-1. **Jobconfig. JSON**öğesine çift tıklayın. Aşağıdaki ayarlar dışında varsayılan konfigürasyonları kullanın:
+1. Çift tıklayın **JobConfig.json**. Aşağıdaki ayarlar dışında varsayılan yapılandırmaları kullanın:
 
    |Ayar|Önerilen Değer|
    |-------|---------------|
-   |Genel depolama ayarları kaynağı|Geçerli hesaptaki veri kaynağını seçin|
-   |Genel depolama ayarları aboneliği| aboneliğinizi < >|
-   |Genel depolama ayarları depolama hesabı| depolama hesabınızı < >|
-   |Özel kod depolama ayarları kaynağı|Geçerli hesaptaki veri kaynağını seçin|
-   |Özel kod depolama ayarları depolama hesabı|depolama hesabınızı < >|
-   |Özel kod depolama ayarları kapsayıcısı|depolama kapsayıcınızı < >|
+   |Genel Depolama Ayarları Kaynak|Geçerli hesaptaki veri kaynağını seçin|
+   |Genel Depolama Ayarları Aboneliği| Aboneliğinizi < >|
+   |Genel Depolama Ayarları Depolama Hesabı| depolama hesabınızı < >|
+   |Özel Kod Depolama Ayarları Kaynak|Geçerli hesaptaki veri kaynağını seçin|
+   |Özel Kod Depolama Ayarları Depolama Hesabı|depolama hesabınızı < >|
+   |Özel Kod Depolama Ayarları Kapsayıcısı|Depolama kapsayıcınızı < >|
 
-2. **Girişler**altında **Input. JSON**öğesine çift tıklayın. Aşağıdaki ayarlar dışında varsayılan konfigürasyonları kullanın:
+2. **Girişler**altında, **input.json'a**çift tıklayın. Aşağıdaki ayarlar dışında varsayılan yapılandırmaları kullanın:
 
    |Ayar|Önerilen Değer|
    |-------|---------------|
    |Kaynak|Blob Depolama|
    |Kaynak|Geçerli hesaptaki veri kaynağını seçin|
-   |Abonelik|aboneliğinizi < >|
+   |Abonelik|Aboneliğinizi < >|
    |Depolama Hesabı|depolama hesabınızı < >|
-   |Kapsayıcı|depolama kapsayıcınızı < >|
-   |Olay serileştirme biçimi|Diğer (Protoarabellek, XML, özel...)|
-   |Kaynak|ASA projesi başvurusundan veya CodeBehind 'ten yükleme|
-   |CSharp derleme adı|Prototipbufdeserializer. dll|
-   |Sınıf Adı|MessageBodyProto. MessageBodyDeserializer|
-   |Olay sıkıştırma türü|Hiçbiri|
+   |Kapsayıcı|Depolama kapsayıcınızı < >|
+   |Olay Serileştirme Biçimi|Diğer (Protobuf, XML, tescilli...)|
+   |Kaynak|ASA Proje Referansı veya CodeBehind'dan Yük|
+   |CSharp Montaj Adı|ProtobufDeserializer.dll|
+   |Sınıf Adı|MessageBodyProto.MessageBodyDeserializer|
+   |Olay Sıkıştırma Türü|None|
 
-3. Aşağıdaki sorguyu **Script. aşama QL** dosyasına ekleyin.
+3. **Script.asaql** dosyasına aşağıdaki sorguyu ekleyin.
 
    ```sql
    SELECT * FROM Input
    ```
 
-4. [Örnek prototip giriş dosyasını](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)indirin. **Girişler** klasöründe, **Input. JSON** öğesine sağ tıklayın ve **yerel giriş Ekle**' yi seçin. Ardından **local_Input. JSON** öğesine çift tıklayın ve aşağıdaki ayarları yapılandırın:
+4. Örnek [protobuf giriş dosyasını](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)indirin. **Girişler** klasöründe, **Input.json'a** sağ tıklayın ve **Yerel Giriş Ekle'yi**seçin. Ardından, **local_Input.json'a** çift tıklayın ve aşağıdaki ayarları yapılandırın:
 
    |Ayar|Önerilen Değer|
    |-------|---------------|
-   |Girdi Diğer Adı|Girdi|
+   |Girdi Diğer Adı|Giriş|
    |Kaynak Türü|Veri Akışı|
-   |Olay serileştirme biçimi|Diğer (Protoarabellek, XML, özel...)|
-   |CSharp derleme adı|Prototipbufdeserializer. dll|
-   |Sınıf Adı|MessageBodyProto. MessageBodyDeserializer|
-   |Yerel giriş dosyası yolu|indirilen örnek prototipme giriş dosyasının dosya yolunu < >|
+   |Olay Serileştirme Biçimi|Diğer (Protobuf, XML, tescilli...)|
+   |CSharp Montaj Adı|ProtobufDeserializer.dll|
+   |Sınıf Adı|MessageBodyProto.MessageBodyDeserializer|
+   |Yerel Giriş Dosya Yolu|< indirilen örnek protobuf giriş dosyası için dosya yolu>|
 
-## <a name="execute-the-stream-analytics-job"></a>Stream Analytics işini yürütün
+## <a name="execute-the-stream-analytics-job"></a>Akış Analizi işini yürütün
 
-1. **Script. aşama QL** açın ve **yerel olarak çalıştır**' ı seçin.
+1. **Script.asaql'ı** açın ve **Yerel Olarak Çalıştır'ı**seçin.
 
-2. **Stream Analytics yerel çalıştırma sonuçlarındaki**sonuçları gözlemleyin.
+2. **Stream Analytics Yerel Çalıştırma Sonuçları'nda**sonuçları gözlemleyin.
 
-Stream Analytics işiniz için özel bir seri hale getirici başarıyla uyguladık! Bu öğreticide, özel seri hale getirici 'yi yerel olarak test edersiniz. Gerçek verileriniz için girişi ve çıktıyı doğru şekilde yapılandırırsınız. Ardından, yeni uyguladığınız özel seri hale getirici 'yi kullanarak işinizi bulutta çalıştırmak için Visual Studio 'dan Azure 'a gönderebilirsiniz.
+Stream Analytics işiniz için özel bir deserializer'ı başarıyla uyguladınız! Bu öğreticide, özel deserializer yerel olarak test edilmiştir. Gerçek verileriniz için, giriş ve çıktıyı düzgün bir şekilde yapılandırabilirsiniz. Ardından, az önce uyguladığınız özel deserializer'i kullanarak işinizi bulutta çalıştırmak için İşinizi Visual Studio'dan Azure'a gönderin.
 
-## <a name="debug-your-deserializer"></a>Seri hale getiricide hata ayıklama
+## <a name="debug-your-deserializer"></a>Deserializer'ınızı hataayıklama
 
-.NET seri hale getiricinizi standart .NET kodunda hata ayıklamanıza benzer şekilde yerel olarak hata ayıklaması yapabilirsiniz. 
+.NET deserializer'ınızı, standart .NET kodunu hata ayıklamak gibi yerel olarak hata ayıklayabilirsiniz. 
 
-1. İşlevinizde kesme noktaları ekleyin.
+1. İşlevinize kesme noktaları ekleyin.
 
 2. Hata ayıklamaya başlamak için **F5**'e basın. Program beklendiği gibi kesme noktalarında durur.
 
@@ -132,7 +132,7 @@ Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, protokol arabelleği giriş serileştirme için özel bir .NET seri hale getiricisi nasıl uygulayacağınızı öğrendiniz. Özel seri hale getiriciler oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki makaleye geçin:
+Bu öğreticide, protokol arabelleği giriş serileştirmesi için özel bir .NET deserializer nasıl uygulanacağını öğrendiniz. Özel deserializers oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki makaleye devam edin:
 
 > [!div class="nextstepaction"]
-> [Azure Stream Analytics işleri için farklı .NET seri hale Getiricileri oluşturma](custom-deserializer-examples.md)
+> [Azure Akış Analizi işleri için farklı .NET deserializers oluşturun](custom-deserializer-examples.md)

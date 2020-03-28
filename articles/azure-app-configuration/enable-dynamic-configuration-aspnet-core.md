@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: ASP.NET Core 'de uygulama yapılandırması dinamik yapılandırması 'Nı kullanın"
+title: "Öğretici: ASP.NET Core'da Uygulama Yapılandırması dinamik yapılandırmayı kullanın"
 titleSuffix: Azure App Configuration
-description: Bu öğreticide ASP.NET Core uygulamalar için yapılandırma verilerini dinamik olarak güncelleştirme hakkında bilgi edineceksiniz.
+description: Bu eğitimde, ASP.NET Core uygulamaları için yapılandırma verilerini dinamik olarak nasıl güncelleştirdiğinizi öğreneceksiniz
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -15,50 +15,60 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 3c461e543e3b01501ec47589a9eab3d74820491a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500226"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348846"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma
+# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırmayı kullanın
 
-ASP.NET Core, çeşitli kaynaklardan yapılandırma verilerini okuyabilen takılabilir bir yapılandırma sistemine sahiptir. Uygulamanın yeniden başlatılmasına neden olmadan anında değişiklikleri işleyebilir. ASP.NET Core, yapılandırma ayarlarının kesin belirlenmiş .NET sınıflarına bağlamasını destekler. Çeşitli `IOptions<T>` düzenlerini kullanarak bunları kodunuza çıkartır. Bu modellerden biri, temelde `IOptionsSnapshot<T>`, temel alınan veriler değiştiğinde uygulamanın yapılandırmasını otomatik olarak yeniden yükler. Azure Uygulama yapılandırmasında depolanan en son yapılandırmaya erişmek için uygulamanızdaki denetleyicilere `IOptionsSnapshot<T>` ekleyebilirsiniz.
+ASP.NET Core çeşitli kaynaklardan yapılandırma verilerini okuyabilen takılabilir bir yapılandırma sistemine sahiptir. Bir uygulamanın yeniden başlatılmasına neden olmadan değişiklikleri dinamik olarak işleyebilir. ASP.NET Core, .NET sınıflarını güçlü bir şekilde yazmak için yapılandırma ayarlarının bağlanmasını destekler. Çeşitli `IOptions<T>` desenleri kullanarak kodunuza enjekte eder. Bu desenlerden biri, özellikle, `IOptionsSnapshot<T>`temel veriler değiştiğinde uygulamanın yapılandırmasını otomatik olarak yeniden yükler. Azure Uygulama `IOptionsSnapshot<T>` Yapılandırması'nda depolanan en son yapılandırmaya erişmek için uygulamanızdaki denetleyicilere enjekte edebilirsiniz.
 
-Ayrıca, bir ara yazılım kullanarak bir yapılandırma ayarları kümesini dinamik olarak yenilemek için, uygulama yapılandırması ASP.NET Core istemci Kitaplığı ' nı da ayarlayabilirsiniz. Web uygulaması istekleri almaya devam ettiği sürece yapılandırma ayarları yapılandırma deposu ile çalışmaya devam eder.
+Ayrıca, bir ara yazılım kullanarak bir dizi yapılandırma ayarını dinamik olarak yenilemek için App Configuration ASP.NET Core istemci kitaplığını da ayarlayabilirsiniz. Yapılandırma ayarları, web uygulaması istek aldığı sürece yapılandırma deposuyla her seferinde güncellenir.
 
-Ayarları güncel tutmak ve yapılandırma deposuna çok fazla çağrı önlemek için, her bir ayar için bir önbellek kullanılır. Bir ayarın önbelleğe alınmış değeri sona erene kadar, yenileme işlemi değeri, değer yapılandırma deposunda değiştiği zaman bile güncelleştirmez. Her istek için varsayılan kullanım süresi 30 saniyedir, ancak gerekirse geçersiz kılınabilir.
+Uygulama Yapılandırması, yapılandırma mağazasına çok fazla çağrı yapılmasını önlemek için her ayarı otomatik olarak önbelleğe ayarı razlar. Yenileme işlemi, yapılandırma deposundaki değeri değişse bile bu ayarı güncelleştirmek için bir ayarın önbelleğe alınmış değerinin süresi dolana kadar bekler. Varsayılan önbellek son kullanma süresi 30 saniyedir. Gerekirse bu son kullanma süresini geçersiz kılabilirsiniz.
 
-Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl uygulayabileceğinizi gösterir. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
+Bu öğretici, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl uygulayabileceğinizi gösterir. Bu quickstarts tanıtılan web uygulaması üzerine oluşturur. Devam etmeden önce, [önce App Configuration ile ASP.NET Core uygulaması oluşturun'u](./quickstart-aspnet-core-app.md) tamamla.
 
-Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
+Bu öğreticideki adımları yapmak için herhangi bir kod düzenleyicisini kullanabilirsiniz. [Visual Studio Code,](https://code.visualstudio.com/) Windows, macOS ve Linux platformlarında kullanılabilen mükemmel bir seçenektir.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için uygulamanızı ayarlayın.
-> * En son yapılandırmayı uygulamanızın denetleyicilerine ekleme.
+> * Uygulama yapılandırma mağazasındaki değişikliklere yanıt olarak yapılandırmasını güncelleştirecek şekilde uygulamanızı ayarlayın.
+> * Uygulamanızın denetleyicilerine en son yapılandırmayı enjekte edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi yapmak için [.NET Core SDK](https://dotnet.microsoft.com/download)' yi yüklemelisiniz.
+Bu öğreticiyapmak için [,.NET Core SDK'yı](https://dotnet.microsoft.com/download)yükleyin.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
+Devam etmeden önce, [önce App Configuration ile ASP.NET Core uygulaması oluşturun'u](./quickstart-aspnet-core-app.md) tamamla.
 
-## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
+## <a name="add-a-sentinel-key"></a>Sentinel anahtarı ekleme
 
-1. Aşağıdaki komutu çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet paketine bir başvuru ekleyin:
+*Sentinel anahtarı,* yapılandırma değiştiğinde sinyal vermek için kullanılan özel bir anahtardır. Uygulamanız değişiklikler için sentinel anahtarını izler. Bir değişiklik algılandığında, tüm yapılandırma değerlerini yenilersiniz. Bu yaklaşım, uygulamanız tarafından Uygulama Yapılandırması'na yapılan toplam istek sayısını, değişiklikler için tüm anahtarları izlemekle karşılaştırıldığında azaltır.
 
-    ```CLI
+1. Azure portalında Yapılandırma **Gezgini > > Anahtar Değeri Oluştur'u**seçin.
+
+1. **Anahtar**için, *TestApp girin:Ayarlar:Sentinel*. **Değer**için , 1 girin. **Etiket** ve **İçerik türünü** boş bırakın.
+
+1. **Uygula**’yı seçin.
+
+## <a name="reload-data-from-app-configuration"></a>Uygulama Yapılandırmasından verileri yeniden yükleme
+
+1. `Microsoft.Azure.AppConfiguration.AspNetCore` Aşağıdaki komutu çalıştırarak NuGet paketine bir başvuru ekleyin:
+
+    ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. *Program.cs*öğesini açın ve `config.AddAzureAppConfiguration()` metodunu eklemek için `CreateWebHostBuilder` yöntemini güncelleştirin.
+1. *Program.cs*açın ve `CreateWebHostBuilder` yöntemi eklemek `config.AddAzureAppConfiguration()` için yöntemi güncelleştirin.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Çekirdek 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -71,17 +81,16 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
                 {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
                            .ConfigureRefresh(refresh =>
-                           {
-                               refresh.Register("TestApp:Settings:BackgroundColor")
-                                      .Register("TestApp:Settings:FontColor")
-                                      .Register("TestApp:Settings:Message");
-                           });
+                                {
+                                    refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                           .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                });
                 });
             })
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Çekirdek 3.x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -91,23 +100,29 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
                 {
                     var settings = config.Build();
                     config.AddAzureAppConfiguration(options =>
-                    {   
+                    {
                         options.Connect(settings["ConnectionStrings:AppConfig"])
-                            .ConfigureRefresh(refresh =>
-                                {
-                                    refresh.Register("TestApp:Settings:BackgroundColor")
-                                            .Register("TestApp:Settings:FontColor")
-                                            .Register("TestApp:Settings:Message");
-                                });
+                               .ConfigureRefresh(refresh =>
+                                    {
+                                        refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                               .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                    });
                     });
                 })
             .UseStartup<Startup>());
     ```
     ---
 
-    `ConfigureRefresh` yöntemi, bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini uygulama yapılandırma deposu ile güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. Yenileme işlemini gerçekten tetikleyebilmek için, herhangi bir değişiklik gerçekleştiğinde uygulamanın yapılandırma verilerini yenilemesi için bir yenileme ara yazılımı yapılandırılması gerekir.
+    Yöntem, `ConfigureRefresh` bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini Uygulama Yapılandırma deposuyla güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. Yöntemin `refreshAll` `Register` parametresi, sentinel anahtarı değişirse tüm yapılandırma değerlerinin yenilenmesi gerektiğini gösterir.
 
-2. Yeni bir `Settings` sınıfını tanımlayan ve uygulayan bir *Settings.cs* dosyası ekleyin.
+    Ayrıca, `SetCacheExpiration` yöntem varsayılan önbellek son kullanma süresini geçersiz kakarak bunun yerine 5 dakikalık bir süre belirtir. Bu, Uygulama Yapılandırması'na yapılan istek sayısını azaltır.
+
+    > [!NOTE]
+    > Sınama amacıyla önbellek son kullanma süresini düşürmek isteyebilirsiniz.
+
+    Bir yenileme işlemini gerçekten tetiklemek için, herhangi bir değişiklik olduğunda yapılandırma verilerini yenilemek için uygulama için bir yenileme ara yazılımını yapılandırmanız gerekir. Bunu daha sonraki bir adımda nasıl yapacağınızı göreceksiniz.
+
+2. Yeni `Settings` bir sınıfı tanımlayan ve uygulayan *bir Settings.cs* dosyası ekleyin.
 
     ```csharp
     namespace TestAppConfig
@@ -122,9 +137,9 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     }
     ```
 
-3. *Startup.cs*'i açın ve yapılandırma verilerini `Settings` sınıfına bağlamak için `ConfigureServices` yönteminde `IServiceCollection.Configure<T>` kullanın.
+3. *Startup.cs*açın ve `IServiceCollection.Configure<T>` yapılandırma `ConfigureServices` verilerini `Settings` sınıfa bağlamak için yöntemde kullanın.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Çekirdek 2.x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -134,7 +149,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Çekirdek 3.x](#tab/core3x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -145,10 +160,10 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     ```
     ---
 
-4. ASP.NET Core Web uygulaması istekleri almaya devam ederken yenileme için kaydedilen yapılandırma ayarlarının güncelleştirilmesine izin vermek üzere `UseAzureAppConfiguration` ara yazılımı ekleyerek `Configure` yöntemini güncelleştirin.
+4. ASP.NET `Configure` Core web `UseAzureAppConfiguration` uygulaması istek almaya devam ederken yenileme için kayıtlı yapılandırma ayarlarının güncellenmesi için ara yazılımı ekleyerek yöntemi güncelleştirin.
 
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Çekirdek 2.x](#tab/core2x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -165,7 +180,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Çekirdek 3.x](#tab/core3x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -202,22 +217,19 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     ```
     ---
     
-    Ara yazılım, ASP.NET Core Web uygulaması tarafından alınan her istek için yenileme tetiklenmesi için `Program.cs` `AddAzureAppConfiguration` yönteminde belirtilen yenileme yapılandırmasını kullanır. Her istek için bir yenileme işlemi tetiklenir ve istemci kitaplığı, kayıtlı yapılandırma ayarları için önbelleğe alınan değerin dolduğunu kontrol eder. Tarihi geçen önbelleğe alınmış değerler için, ayarların değerleri uygulama yapılandırma deposuyla güncelleştirilir ve kalan değerler değişmeden kalır.
-    
-    > [!NOTE]
-    > Yapılandırma ayarı için varsayılan önbellek süre sonu zamanı 30 saniyedir, ancak `SetCacheExpiration` yöntemi bir bağımsız değişken olarak geçirilen seçenekler başlatıcısında `ConfigureRefresh` yöntemine çağırarak geçersiz kılınabilir.
+    Ara yazılım, ASP.NET Core web `AddAzureAppConfiguration` uygulaması `Program.cs` tarafından alınan her istek için bir yenilemeyi tetiklemek için yöntemde belirtilen yenileme yapılandırmasını kullanır. Her istek için bir yenileme işlemi tetiklenir ve istemci kitaplığı, kayıtlı yapılandırma ayarı için önbelleğe alınmış değerin süresi dolup olmadığını denetler. Süresi dolmuşsa, yenilenir.
 
-## <a name="use-the-latest-configuration-data"></a>En son yapılandırma verilerini kullan
+## <a name="use-the-latest-configuration-data"></a>En son yapılandırma verilerini kullanma
 
-1. *HomeController.cs* ' ı denetleyiciler dizininde açın ve `Microsoft.Extensions.Options` paketine bir başvuru ekleyin.
+1. Denetleyiciler dizininde *HomeController.cs* açın ve `Microsoft.Extensions.Options` pakete bir başvuru ekleyin.
 
     ```csharp
     using Microsoft.Extensions.Options;
     ```
 
-2. Bağımlılık ekleme yoluyla `Settings` almak için `HomeController` sınıfını güncelleştirin ve değerlerini kullanın.
+2. Bağımlılık `HomeController` enjeksiyonu `Settings` yoluyla almak için sınıfı güncelleştirin ve değerlerinden yararlanın.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Çekirdek 2.x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -240,7 +252,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Çekirdek 3.x](#tab/core3x)
 
     ```csharp
     public class HomeController : Controller
@@ -271,7 +283,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 
 
 
-3. Görünümler > giriş dizininde *Index. cshtml* dosyasını açın ve içeriğini aşağıdaki komut dosyasıyla değiştirin:
+3. Görünümler > Giriş dizininde *Index.cshtml'i* açın ve içeriğini aşağıdaki komut dosyasıyla değiştirin:
 
     ```html
     <!DOCTYPE html>
@@ -282,7 +294,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
         }
         h1 {
             color: @ViewData["FontColor"];
-            font-size: @ViewData["FontSize"];
+            font-size: @ViewData["FontSize"]px;
         }
     </style>
     <head>
@@ -294,36 +306,33 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     </html>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
+## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak oluşturma ve çalıştırma
 
-1. .NET Core CLI kullanarak uygulamayı derlemek için komut kabuğu 'nda aşağıdaki komutu çalıştırın:
+1. .NET Core CLI kullanarak uygulamayı oluşturmak için komut kabuğunda aşağıdaki komutu çalıştırın:
 
         dotnet build
 
-2. Oluşturma başarıyla tamamlandıktan sonra, Web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
+1. Yapı başarıyla tamamlandıktan sonra, web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
 
         dotnet run
+1. Bir tarayıcı penceresi açın ve çıktıda `dotnet run` gösterilen URL'ye gidin.
 
-3. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000`' a gidin.
+    ![Hızlı başlatma uygulamasını yerel olarak başlatma](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-    ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/aspnet-core-app-launch-local-before.png)
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Tüm kaynakları**seçin ve hızlı başlangıçta oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
 
-4. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
-
-5. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
+1. **Configuration Explorer'ı**seçin ve aşağıdaki tuşların değerlerini güncelleştirin:
 
     | Anahtar | Değer |
     |---|---|
-    | TestApp: ayarlar: BackgroundColor | green |
-    | TestApp: ayarlar: FontColor | Açık gri |
-    | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından alınan veriler-canlı güncelleştirmeler ile şimdi! |
+    | TestApp:Ayarlar:BackgroundColor | green |
+    | TestApp:Ayarlar:FontColor | ışıkGri |
+    | TestApp:Ayarlar:Mesaj | Azure Uygulama Yapılandırmasından veriler - şimdi canlı güncellemelerle! |
+    | TestApp:Ayarlar:Sentinel | 2 |
 
-6. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin. Değişikliklerin yansıtılması için tarayıcı sayfasının birden fazla yenilenmesi gerekebilir.
+1. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin. Değişikliklerin yansıtılması için birden fazla kez yenilemeniz gerekebilir.
 
-    ![Hızlı başlangıç uygulaması yerel yenileme](./media/quickstarts/aspnet-core-app-launch-local-after.png)
-    
-    > [!NOTE]
-    > Yapılandırma ayarları varsayılan süre sonu 30 saniyelik bir süre içinde önbellekte bulunduğundan, uygulama yapılandırma deposundaki ayarlarda yapılan değişiklikler yalnızca önbelleğin süresi dolduğunda Web uygulamasına yansıtılır.
+    ![Güncelleştirilmiş hızlı başlatma uygulamasını yerel olarak başlatma](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -331,7 +340,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, uygulama yapılandırmasından yapılandırma ayarlarını dinamik olarak yenilemek için ASP.NET Core Web uygulamanızı etkinleştirdiniz. Azure yönetilen kimliğin uygulama yapılandırmasına erişimi kolaylaştırmak için nasıl kullanılacağını öğrenmek için bir sonraki öğreticiye geçin.
+Bu eğitimde, ASP.NET Core web uygulamanızın Uygulama Yapılandırması'ndan yapılandırma ayarlarını dinamik olarak yenilemesini sağladınız. Uygulama Yapılandırması'na erişimi kolaylaştırmak için Azure tarafından yönetilen bir kimliği nasıl kullanacağınızı öğrenmek için bir sonraki öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
 > [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)

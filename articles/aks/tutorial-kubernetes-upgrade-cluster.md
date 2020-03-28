@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 4d9ef061904fb1a0fff25506eedb82158971bed5
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77622020"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) Kubernetes’i yükseltme
@@ -25,9 +25,9 @@ Yedi parçalık bu öğreticinin yedinci kısmında, bir Kubernetes kümesi yük
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Önceki öğreticilerde, bir uygulama bir kapsayıcı görüntüsüne paketlendi. Bu görüntü, Azure Container Registry yüklendi ve bir AKS kümesi oluşturdunuz. Uygulama daha sonra AKS kümesine dağıtıldı. Bu adımları yapmadıysanız ve birlikte takip etmek istiyorsanız, [öğretici 1 – kapsayıcı görüntüleri oluşturma][aks-tutorial-prepare-app]ile başlayın.
+Önceki öğreticilerde, bir uygulama bir kapsayıcı görüntüsüne paketlenmişti. Bu resim Azure Kapsayıcı Kayıt Defteri'ne yüklendi ve bir AKS kümesi oluşturdunuz. Uygulama daha sonra AKS kümesine dağıtıldı. Bu adımları yapmadıysanız ve takip etmek istiyorsanız, Tutorial 1 ile başlayın [– Kapsayıcı görüntüleri oluşturun.][aks-tutorial-prepare-app]
 
-Bu öğreticide, Azure CLı sürüm 2.0.53 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+Bu öğretici, Azure CLI sürümünü 2.0.53 veya daha sonra çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 ## <a name="get-available-cluster-versions"></a>Kullanılabilir küme sürümlerini alma
 
@@ -37,7 +37,7 @@ Bir kümeyi yükseltmeden önce, [az aks get-upgrades][] komutunu kullanarak han
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnekte, geçerli sürüm *1.14.8*' dir ve kullanılabilir sürümler *yükseltmeler* sütununda gösterilir.
+Aşağıdaki örnekte, geçerli sürüm *1.14.8'dir*ve kullanılabilir *sürümler Yükseltmeler* sütunu altında gösterilir.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
@@ -47,24 +47,24 @@ default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 
 ## <a name="upgrade-a-cluster"></a>Kümeyi yükseltme
 
-Uygulama çalıştırma kesintisini en aza indirmek için AKS düğümleri dikkatle ve drenaj. Bu işlemde aşağıdaki adımlar gerçekleştirilir:
+Çalışan uygulamalardaki aksamaları en aza indirmek için AKS düğümleri dikkatlice kordon altına alınır ve boşaltılır. Bu işlemde, aşağıdaki adımlar gerçekleştirilir:
 
-1. Kubernetes Zamanlayıcı, Yükseltilecek düğüm üzerinde ek yığınların zamanlanmasını önler.
-1. Düğüm üzerinde pod çalıştırmak, kümedeki diğer düğümlere zamanlanır.
+1. Kubernetes zamanlayıcısı yükseltilecek bir düğüm üzerinde zamanlanan ek bölmeleri önler.
+1. Düğümüzerinde çalışan bölmeler kümedeki diğer düğümlerde zamanlanır.
 1. En son Kubernetes bileşenlerini çalıştıran bir düğüm oluşturulur.
-1. Yeni düğüm hazır olduğunda ve kümeye katıldığında, Kubernetes Zamanlayıcı üzerinde pod çalıştırmaya başlar.
-1. Eski düğüm silinir ve kümedeki bir sonraki düğüm Cordon ve boşalt işlemini başlatır.
+1. Yeni düğüm hazır olduğunda ve kümeye birleştiğinde, Kubernetes zamanlayıcısı bölmeleri çalıştırmaya başlar.
+1. Eski düğüm silinir ve kümedeki bir sonraki düğüm kordon ve boşaltma işlemini başlatır.
 
-AKS kümesini yükseltmek için [az aks upgrade][] komutunu kullanın. Aşağıdaki örnek, kümeyi Kubernetes sürüm *1.14.6*'ye yükseltir.
+AKS kümesini yükseltmek için [az aks upgrade][] komutunu kullanın. Aşağıdaki örnek kümeyi Kubernetes sürüm *1.14.6'ya*yükseltir.
 
 > [!NOTE]
-> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14. x* ' den *1.15. x*' e yükseltebilirsiniz, ancak *1.14. x* ' ten doğrudan *1.16. x* ' e yükseltemezsiniz. *1.14. x* ' den *1.16. x*' e yükseltmek için, ilk olarak *1.14. x* ' ten *1.15. x*' e yükseltin, sonra *1.15. x* ' den *1.16.* x ' e yükseltme gerçekleştirin
+> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14.x'ten* *1.15.x'e*yükseltebilirsiniz, ancak *doğrudan 1.14.x'ten* *1.16.x'e* yükseltemezsiniz. *1.14.x'ten* *1.16.x'e*yükseltmek için, önce *1.14.x'ten* *1.15.x'e*yükseltme, sonra *1.15.x'ten* *1.16.x'e*başka bir yükseltme gerçekleştirin.
 
 ```azurecli
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık Reports *1.15.5*raporları gösterilmektedir:
+Aşağıdaki yoğunlaştırılmış örnek çıktı *kubernetesVersion* şimdi *1.15.5*raporları gösterir:
 
 ```json
 {
@@ -97,7 +97,7 @@ Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.15.5*gösterilmektedir:
+Aşağıdaki örnek çıktı AKS küme *KubernetesSürüm 1.15.5*çalışır gösterir:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
@@ -107,14 +107,14 @@ myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded       
 
 ## <a name="delete-the-cluster"></a>Küme silme
 
-Bu öğretici serinin son parçasıysa, AKS kümesini silmek isteyebilirsiniz. Kubernetes düğümleri Azure sanal makinelerinde (VM) çalıştığından kümeyi kullanmasanız dahi ücret tahsil edilmeye devam eder. Kaynak grubunu, kapsayıcı hizmetini ve ilgili tüm kaynakları kaldırmak için [az Group Delete][az-group-delete] komutunu kullanın.
+Bu öğretici serinin son bölümü olduğundan, AKS kümesini silmek isteyebilirsiniz. Kubernetes düğümleri Azure sanal makinelerinde (VM) çalıştığından kümeyi kullanmasanız dahi ücret tahsil edilmeye devam eder. [az group delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve ilgili tüm kaynakları kaldırabilirsiniz.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [aks hizmet sorumlusu konuları ve silme][sp-delete].
+> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [AKS hizmet sorumlusuyla ilgili önemli noktalar ve silme][sp-delete].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -128,7 +128,7 @@ Bu öğreticide, bir AKS kümesinde Kubernetes’i yükselttiniz. Şunları öğ
 AKS hakkında daha fazla bilgi için bu bağlantıyı izleyin.
 
 > [!div class="nextstepaction"]
-> [AKS genel bakış][aks-intro]
+> [AKS'ye genel bakış][aks-intro]
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
