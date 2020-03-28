@@ -1,18 +1,18 @@
 ---
-title: WAF 'yi yapılandırma
-description: Azure Application Gateway veya üçüncü taraf bir WAF ile App Service Ortamı önünde bir Web uygulaması güvenlik duvarı (WAF) yapılandırma hakkında bilgi edinin.
+title: WAF'ı yapılandırma
+description: Azure Uygulama Ağ Geçidi veya üçüncü taraf WAF ile Uygulama Hizmet Ortamınızın önünde bir web uygulaması güvenlik duvarını (WAF) nasıl yapılandıracaklarınızı öğrenin.
 author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: ba53438eb5ae1870cb180b169348ab0f92e5f305
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688767"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057442"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service Ortamı için Web Uygulaması Güvenlik Duvarı (WAF) Yapılandırma
 ## <a name="overview"></a>Genel Bakış
@@ -66,12 +66,12 @@ Oturum açtıktan sonra, aşağıdaki görüntüde gösterildiği gibi WAF korum
 
 ![Yönetim Panosu][ManagementDashboard]
 
-**Hizmetler** sekmesine tıklayarak WAF’yi koruduğu hizmetler için yapılandırabilirsiniz. Barracuda WAF’nizi yapılandırma hakkında daha ayrıntılı bilgi için [ilgili belgelere](https://techlib.barracuda.com/waf/getstarted1) bakın. Aşağıdaki örnekte, HTTP ve HTTPS üzerinde trafiğe hizmet veren bir App Service uygulaması yapılandırılmıştır.
+**Hizmetler** sekmesine tıklayarak WAF’yi koruduğu hizmetler için yapılandırabilirsiniz. Barracuda WAF’nizi yapılandırma hakkında daha ayrıntılı bilgi için [ilgili belgelere](https://techlib.barracuda.com/waf/getstarted1) bakın. Aşağıdaki örnekte, HTTP ve HTTPS'de trafiğe hizmet veren bir Uygulama Hizmeti uygulaması yapılandırılmıştır.
 
 ![Yönetim Hizmet Ekleme][ManagementAddServices]
 
 > [!NOTE]
-> Uygulamalarınızın nasıl yapılandırıldığına ve App Service Ortamı hangi özelliklerin kullanıldığına bağlı olarak, 80 ve 443 dışındaki TCP bağlantı noktaları için trafiği iletmeniz gerekir, örneğin, bir App Service uygulaması için IP SSL kurulum seçeneğiniz vardır. App Service Ortamlarında kullanılan ağ bağlantı noktalarının listesi için [Gelen Trafiği Denetleme belgelerinde](app-service-app-service-environment-control-inbound-traffic.md) Ağ Bağlantı Noktaları bölümüne bakın.
+> Uygulamalarınızın nasıl yapılandırıldığına ve Uygulama Hizmet Ortamınızda hangi özelliklerin kullanıldığına bağlı olarak, örneğin bir App Service uygulaması için IP SSL kurulumunuz varsa, 80 ve 443 dışındaki TCP bağlantı noktaları için trafiği iletmeniz gerekir. App Service Ortamlarında kullanılan ağ bağlantı noktalarının listesi için [Gelen Trafiği Denetleme belgelerinde](app-service-app-service-environment-control-inbound-traffic.md) Ağ Bağlantı Noktaları bölümüne bakın.
 > 
 > 
 
@@ -80,9 +80,9 @@ Uygulamanız birden fazla bölgede kullanılabiliyorsa, [Azure Traffic Manager](
 
 ![Traffic Manager Uç Noktası][TrafficManagerEndpoint]
 
-Uygulamanız kimlik doğrulaması gerektiriyorsa, uygulamanızın kullanılabilirliği için ping işlemi yapmak üzere Traffic Manager için herhangi bir kimlik doğrulaması gerektirmeyen bazı kaynaklarınızın olduğundan emin olun. [Azure portalının](https://portal.azure.com) **Yapılandırma** sayfasındaki URL’yi aşağıdaki görüntüde gösterildiği gibi yapılandırabilirsiniz:
+Uygulamanız kimlik doğrulaması gerektiriyorsa, uygulamanızın kullanılabilirliği için ping işlemi yapmak üzere Traffic Manager için herhangi bir kimlik doğrulaması gerektirmeyen bazı kaynaklarınızın olduğundan emin olun. [Azure portalının](https://portal.azure.com)**Yapılandırma** sayfasındaki URL’yi aşağıdaki görüntüde gösterildiği gibi yapılandırabilirsiniz:
 
-![Traffic Manager'ı yapılandırma][ConfigureTrafficManager]
+![Traffic Manager'ı Yapılandırma][ConfigureTrafficManager]
 
 WAF’nizden gelen Traffic Manager pinglerini uygulamanıza iletmek için, aşağıdaki görüntüde gösterildiği gibi trafiği uygulamanıza iletmek üzere Barracuda WAF’niz üzerinde Web Sitesi Çevirilerini ayarlamanız gerekir:
 

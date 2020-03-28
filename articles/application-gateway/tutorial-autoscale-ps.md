@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Web uygulaması erişimini geliştirme-Azure Application Gateway'
-description: Bu öğreticide, Azure PowerShell kullanarak, ayrılmış IP adresine sahip, bir otomatik ölçeklendirme, bölgesel olarak yedekli uygulama ağ geçidi oluşturma hakkında bilgi edinin.
+title: 'Öğretici: Web uygulaması erişimini geliştirin - Azure Uygulama Ağ Geçidi'
+description: Bu eğitimde, Azure PowerShell'i kullanarak ayrılmış bir IP adresine sahip otomatik ölçekleme, bölge gereksiz bir uygulama ağ geçidi oluşturmayı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,34 +9,34 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74011358"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Öğretici: Web uygulaması erişimini geliştiren bir uygulama ağ geçidi oluşturma
 
-Web uygulaması erişimini iyileştirmeye yönelik bir BT yöneticisiyseniz, uygulama ağ geçidinizin, müşteri taleplerine göre ölçeklendirilmesi ve birden çok kullanılabilirlik alanını yaymak için iyileştirebilirler. Bu öğretici, Azure Application Gateway özelliklerini yapılandırmanıza yardımcı olur: otomatik ölçeklendirme, bölge artıklığı ve ayrılmış VIP 'ler (statik IP). Azure PowerShell cmdlet 'lerini ve Azure Resource Manager dağıtım modelini kullanarak sorunu çözebilirsiniz.
+Web uygulaması erişimini geliştirmekle ilgili bir BT yöneticisiyseniz, uygulama ağ geçidinizi müşteri talebine göre ölçeklendirecek şekilde optimize edebilir ve birden çok kullanılabilirlik bölgesine yayabilirsiniz. Bu öğretici, azure uygulama ağ geçidi özelliklerini yapılandırmanıza yardımcı olur: otomatik ölçekleme, bölge artıklığı ve ayrılmış VIP'ler (statik IP). Sorunu çözmek için Azure PowerShell cmdlets'i ve Azure Kaynak Yöneticisi dağıtım modelini kullanırsınız.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Otomatik olarak imzalanan sertifika oluşturma
-> * Otomatik ölçeklendirme sanal ağı oluşturma
+> * Otomatik ölçeklendirme sanal ağ oluşturma
 > * Ayrılmış genel IP adresi oluşturma
 > * Uygulama ağ geçidi altyapınızı ayarlama
 > * Otomatik ölçeklendirmeyi belirtme
 > * Uygulama ağ geçidi oluşturma
 > * Uygulama ağ geçidini test etme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu öğretici için Azure PowerShell’i yerel olarak çalıştırmanız gerekir. Azure PowerShell Module sürümü 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
+Bu öğretici için Azure PowerShell’i yerel olarak çalıştırmanız gerekir. Azure PowerShell modülü sürümü 1.0.0 veya daha sonra yüklü olmalıdır. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -89,7 +89,7 @@ Export-PfxCertificate `
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-Otomatik ölçeklendirme uygulama ağ geçidi için bir ayrılmış alt ağa sahip bir sanal ağ oluşturun. Şu anda her ayrılmış alt ağda yalnızca bir otomatik ölçeklendirme yapan uygulama ağ geçidi dağıtılabilir.
+Otomatik ölçekleme uygulaması ağ geçidi için özel bir alt ağ içeren bir sanal ağ oluşturun. Şu anda her ayrılmış alt ağda yalnızca bir otomatik ölçeklendirme yapan uygulama ağ geçidi dağıtılabilir.
 
 ```azurepowershell
 #Create VNet with two subnets
@@ -101,7 +101,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>Ayrılmış genel IP adresi oluşturma
 
-Publicıpaddress 'in ayırma yöntemini **static**olarak belirtin. Otomatik ölçeklendirme yapan uygulama ağ geçidi VIP’si yalnızca statik olabilir. Dinamik IP’ler desteklenmez. Yalnızca standart PublicIpAddress SKU’su desteklenir.
+PublicIPAddress'in ayırma yöntemini **Statik**olarak belirtin. Otomatik ölçeklendirme yapan uygulama ağ geçidi VIP’si yalnızca statik olabilir. Dinamik IP’ler desteklenmez. Yalnızca standart PublicIpAddress SKU’su desteklenir.
 
 ```azurepowershell
 #Create static public IP
@@ -111,7 +111,7 @@ $pip = New-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 
 ## <a name="retrieve-details"></a>Ayrıntıları alma
 
-Uygulama ağ geçidinin IP yapılandırma ayrıntılarını oluşturmak için yerel bir nesnede kaynak grubunun, alt ağın ve IP 'nin ayrıntılarını alın.
+Uygulama ağ geçidiiçin IP yapılandırma ayrıntılarını oluşturmak için yerel bir nesnedeki kaynak grubu, alt ağ ve IP ayrıntılarını alın.
 
 ```azurepowershell
 $resourceGroup = Get-AzResourceGroup -Name $rg
@@ -122,7 +122,7 @@ $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork
 
 ## <a name="configure-the-infrastructure"></a>Altyapıyı yapılandırma
 
-IP yapılandırması, ön uç IP yapılandırması, arka uç havuzu, HTTP ayarları, sertifika, bağlantı noktası, dinleyici ve kuralı aynı biçimde varolan standart uygulama ağ geçidine göre yapılandırın. Yeni SKU, standart SKU ile aynı nesne modelini izler.
+IP config, front-end IP config, arka uç havuzu, HTTP ayarları, sertifika, bağlantı noktası, dinleyici ve kural varolan Standart uygulama ağ geçidi ile aynı biçimde yapılandırın. Yeni SKU, standart SKU ile aynı nesne modelini izler.
 
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -150,7 +150,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleType bas
 
 ## <a name="specify-autoscale"></a>Otomatik ölçeklendirmeyi belirtme
 
-Artık uygulama ağ geçidi için otomatik ölçeklendirme yapılandırmasını belirtebilirsiniz. İki otomatik ölçeklendirme yapılandırması türü desteklenir:
+Artık uygulama ağ geçidi için otomatik ölçek yapılandırmasını belirtebilirsiniz. İki otomatik ölçeklendirme yapılandırması türü desteklenir:
 
 * **Sabit kapasite modu**. Bu modda, uygulama ağ geçidi otomatik ölçeklendirme yapmaz ve sabit bir Ölçek Birimi kapasitesinde çalışır.
 
@@ -167,7 +167,7 @@ Artık uygulama ağ geçidi için otomatik ölçeklendirme yapılandırmasını 
 
 ## <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Uygulama ağ geçidini oluşturun ve artıklık bölgelerini ve otomatik ölçeklendirme yapılandırmasını ekleyin.
+Uygulama ağ geçidini oluşturun ve artıklık bölgeleri ve otomatik ölçek yapılandırması ekleyin.
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
@@ -180,13 +180,13 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için Get-Azpublicıpaddress komutunu kullanın. Genel IP adresini veya DNS adını kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
+Uygulama ağ geçidinin genel IP adresini almak için Get-AzPublicIPAddress'i kullanın. Genel IP adresini veya DNS adını kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İlk olarak, uygulama ağ geçidiyle oluşturulan kaynakları araştırın. Daha sonra, artık gerekli olmadığında, kaynak grubunu, uygulama ağ geçidini ve tüm ilgili kaynakları kaldırmak için `Remove-AzResourceGroup` komutunu kullanabilirsiniz.
+Önce uygulama ağ geçidi yle oluşturulan kaynakları keşfedin. Daha sonra, artık bunlara ihtiyaç duyulmadığında, kaynak grubunu, uygulama ağ geçidini ve ilgili tüm kaynakları kaldırmak için `Remove-AzResourceGroup` komutu kullanabilirsiniz.
 
 `Remove-AzResourceGroup -Name $rg`
 

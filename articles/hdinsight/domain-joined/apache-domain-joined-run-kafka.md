@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Apache Kafka & Kurumsal Güvenlik-Azure HDInsight
-description: Öğretici-Azure HDInsight 'ta Kurumsal Güvenlik Paketi ile Kafka için Apache Ranger ilkelerini yapılandırmayı öğrenin.
+title: Öğretici - Apache Kafka & Kurumsal Güvenlik - Azure HDInsight
+description: Öğretici - Kurumsal Güvenlik Paketi ile Azure HDInsight'ta Kafka için Apache Ranger politikalarını nasıl yapılandıracağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78204744"
 ---
-# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache Kafka ilkeleri yapılandırma (Önizleme)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: Kurumsal Güvenlik Paketi ile HDInsight Apache Kafka politikaları yapılandırma (Önizleme)
 
-Kurumsal Güvenlik Paketi (ESP) Apache Kafka kümeleri için Apache Ranger ilkelerini nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, `sales` ve `marketingspend` konularına erişimi kısıtlamak için iki Ranger ilkesi oluşturacaksınız.
+Kurumsal Güvenlik Paketi (ESP) Apache Kafka kümeleri için Apache Ranger politikalarını nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, `sales` ve `marketingspend` konularına erişimi kısıtlamak için iki Ranger ilkesi oluşturacaksınız.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisite"></a>Önkoşul
 
-[Kurumsal güvenlik paketi olan bir HDInsight Kafka kümesi](./apache-domain-joined-configure-using-azure-adds.md).
+[Kurumsal Güvenlik Paketi ile hdinsight Kafka küme](./apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger Yönetici Arabirimine bağlanma
 
@@ -36,11 +36,11 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 2. Azure Active Directory (AD) yönetici kimlik bilgilerinizi kullanarak oturum açın. Azure AD yönetici kimlik bilgileri HDInsight küme kimlik bilgileri veya Linux HDInsight düğümü SSH kimlik bilgileriyle aynı değildir.
 
-   ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger Yönetici UI](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
 
 ## <a name="create-domain-users"></a>Etki alanı kullanıcılarını oluşturma
 
-[sales_user](./apache-domain-joined-configure-using-azure-adds.md) ve **marketing_user** etki alanı kullanıcılarını nasıl oluşturacağınızı öğrenmek için **Kurumsal Güvenlik Paketi ile HDInsight kümesi oluşturma** bölümünü ziyaret edin. Bir üretim senaryosunda, etki alanı kullanıcıları Active Directory kiracınızdan gelir.
+**sales_user** ve **marketing_user** etki alanı kullanıcılarını nasıl oluşturacağınızı öğrenmek için [Kurumsal Güvenlik Paketi ile HDInsight kümesi oluşturma](./apache-domain-joined-configure-using-azure-adds.md) bölümünü ziyaret edin. Bir üretim senaryosunda, etki alanı kullanıcıları Active Directory kiracınızdan gelir.
 
 ## <a name="create-ranger-policy"></a>Ranger ilkesini oluşturma
 
@@ -48,9 +48,9 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 1. **Ranger Yönetici Arabirimini** açın.
 
-2. **Kafka**altında **_kafka\<clustername >** seçin. Bir önceden yapılandırılmış ilke listelenebilir.
+2. **Kafka**altında ** \<ClusterName>_kafka'ı** seçin. Bir önceden yapılandırılmış ilke listelenebilir.
 
-3. **Yeni Ilke Ekle** ' yi seçin ve aşağıdaki değerleri girin:
+3. **Yeni İlke Ekle'yi** seçin ve aşağıdaki değerleri girin:
 
    |Ayar  |Önerilen değer  |
    |---------|---------|
@@ -64,13 +64,13 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
    * ’*’ karakterlerin sıfır veya daha fazla kez geçtiğini gösterir.
    * ’?‘ tek karakteri gösterir.
 
-   ![Apache Ranger yönetici kullanıcı arabirimi Policy1 oluşturma](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Apache Ranger Yönetici UI Create Policy1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    **Select User** için bir etki alanı kullanıcısı otomatik olarak doldurulmazsa, Ranger’ın Azure AD ile eşitlenmesi için birkaç dakika bekleyin.
 
-4. İlkeyi kaydetmek için **Ekle** ' yi seçin.
+4. İlkeyi kaydetmek için **Ekle'yi** seçin.
 
-5. **Yeni Ilke Ekle** ' yi seçin ve ardından aşağıdaki değerleri girin:
+5. **Yeni İlke Ekle'yi** seçin ve ardından aşağıdaki değerleri girin:
 
    |Ayar  |Önerilen değer  |
    |---------|---------|
@@ -79,13 +79,13 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
    |Kullanıcı Seçin  |  marketing_user1 |
    |İzinler  | yayımlama, kullanma, oluşturma |
 
-   ![Apache Ranger yönetici kullanıcı arabirimi Policy2 oluşturma](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Apache Ranger Yönetici UI Create Policy2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
-6. İlkeyi kaydetmek için **Ekle** ' yi seçin.
+6. İlkeyi kaydetmek için **Ekle'yi** seçin.
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>ESP ile Kafka kümesinde konu oluşturma
 
-`salesevents` ve `marketingspend`iki konu oluşturmak için:
+İki konu oluşturmak `salesevents` `marketingspend`ve:
 
 1. Kümeye SSH bağlantısı açmak için aşağıdaki komutu kullanın:
 
@@ -93,7 +93,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   `DOMAINADMIN`, küme [oluşturma](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)sırasında yapılandırılmış kümenizin Yönetici kullanıcısı ile değiştirin ve `CLUSTERNAME` değerini kümenizin adıyla değiştirin. İstenirse, yönetici kullanıcı hesabının parolasını girin. HDInsight ile `SSH` kullanma hakkında daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+   Küme `DOMAINADMIN` [oluşturma](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)sırasında yapılandırılan kümeniz için yönetici `CLUSTERNAME` kullanıcıyla değiştirin ve kümenizin adıyla değiştirin. İstenirse, yönetici kullanıcı hesabının parolasını girin. HDInsight ile `SSH` kullanma hakkında daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Küme adını bir değişkene kaydedip JSON ayrıştırma yardımcı programını (`jq`) yüklemek için aşağıdaki komutları kullanın. İstendiğinde, Kafka kümesi adını girin.
 
@@ -102,17 +102,17 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. Kafka aracı konaklarına ulaşmak için aşağıdaki komutları kullanın. İstendiğinde, küme yöneticisi hesabı için parolayı girin.
+3. Kafka broker ev sahiplerini almak için aşağıdaki komutları kullanın. İstendiğinde, küme yöneticisi hesabı için parolayı girin.
 
    ```bash
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
 
-   Devam etmeden önce, henüz yapmadıysanız geliştirme ortamınızı ayarlamanız gerekebilir. Java JDK, Apache Maven ve SCP ile SSH istemcisi gibi bileşenlere ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [Kurulum yönergeleri](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+   Devam etmeden önce, geliştirme ortamınızı ayarlamanız gerekebilir. Java JDK, Apache Maven ve scp içeren bir SSH istemcisi gibi bileşenlere ihtiyacınız olacaktır. Daha fazla bilgi için [kurulum yönergelerine](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)bakın.
 
 1. [Apache Kafka etki alanına katılmış üretici tüketici örneklerini](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer) indirin.
 
-1. **Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma** sayfasının [Örneği derleme ve dağıtma](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) bölümündeki 2 ve 3 numaralı adımları izleyin.
+1. [Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) sayfasının **Örneği derleme ve dağıtma** bölümündeki 2 ve 3 numaralı adımları izleyin.
 
 1. Aşağıdaki komutları çalıştırın:
 
@@ -123,7 +123,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="test-the-ranger-policies"></a>Ranger ilkelerini test etme
 
-**Sales_user** , yapılandırılan Ranger ilkelerine bağlı olarak, konu `salesevents` oluşturabilir/tüketebilir `marketingspend`konu vermez. Buna karşılık, **marketing_user** konu `marketingspend` oluşturabilir/kullanabilir, ancak konu `salesevents`vermez.
+Yapılandırılan Ranger politikalarına göre, **sales_user** konu `salesevents` üretebilir/tüketebilir, ancak konu `marketingspend`oluşturamaz. Tersine, **marketing_user** konu `marketingspend` üretebilir/tüketebilir, `salesevents`ancak konuyu tüketemez.
 
 1. Kümeye yeni bir SSH bağlantısı açın. **sales_user1** olarak oturum açmak için aşağıdaki komutu kullanın:
 
@@ -137,7 +137,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
    export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
    ```
 
-3. Aşağıdaki ortam değişkenini ayarlamak için önceki bölümdeki aracı adlarını kullanın:
+3. Aşağıdaki ortam değişkenini ayarlamak için önceki bölümdeki broker adlarını kullanın:
 
    ```bash
    export KAFKABROKERS=<brokerlist>:9092
@@ -145,17 +145,17 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
    Örnek: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Derleme bölümünde 3. adımı izleyin **ve örneği** öğreticide dağıtın: `kafka-producer-consumer.jar` **sales_user**için de kullanılabilir olduğundan emin olmak Için [Apache Kafka Producer ve tüketici API 'lerini kullanın](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) .
+4. Yapı altında Adım 3'i izleyin ve Öğretici'deki **örneği dağıtın:** [Apache Kafka Üretici ve Tüketici API'lerini kullanarak](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) `kafka-producer-consumer.jar` **sales_user'nın**da kullanılabilir olduğundan emin olun.
 
-**Not: Bu öğretici Için, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullanın (etki alanına katılmış olmayan senaryolar için, Producer-Consumer projesi altında değil).**
+**Not: Bu öğretici için lütfen "DomainJoined-Producer-Consumer" projesi altında kafka-producer-consumer.jar kullanın (alan adı olmayan birleştirilmiş senaryolar için olan Üretici-Tüketici projesi kapsamındaki projeyi değil).**
 
-5. **Sales_user1** , aşağıdaki komutu yürüterek konuya `salesevents` üretebildiğini doğrulayın:
+5. Aşağıdaki **sales_user1** komutu çalıştırarak `salesevents` sales_user1 konuya üretebileceğini doğrulayın:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. `salesevents`konu başlığı altında kullanmak için aşağıdaki komutu yürütün:
+6. Konu `salesevents`dan tüketmek için aşağıdaki komutu çalıştırın:
 
    ```bash
    java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
@@ -163,7 +163,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
    İletileri okuyabildiğinizi doğrulayın.
 
-7. **Sales_user1** , aynı SSH penceresinde aşağıdakileri yürüterek konu `marketingspend` üretemiyor.
+7. **Sales_user1'nin** aynı ssh penceresinde `marketingspend` aşağıdakileri çalıştırarak konuya üretilemediğini doğrulayın:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
@@ -171,11 +171,11 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
    Bir yetkilendirme hatası oluşur ve bu yok sayılabilir.
 
-8. **Marketing_user1** konu `salesevents`tüketmeyen dikkat edin.
+8. **marketing_user1'ın** bu konudan `salesevents`tüketilememesine dikkat edin.
 
-   Yukarıdaki 1-4 adımları yineleyin, ancak bu kez **marketing_user1**.
+   Yukarıdaki adımları 1-4 tekrarlayın, ama **marketing_user1**olarak bu kez .
 
-   `salesevents`konu başlığı altında kullanmak için aşağıdaki komutu yürütün:
+   Konu `salesevents`dan tüketmek için aşağıdaki komutu çalıştırın:
 
    ```bash
    java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
@@ -185,20 +185,20 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 9. Ranger kullanıcı arabiriminden denetim erişimi olaylarını görüntüleyin.
 
-   ![Ranger UI ilkesi denetim erişim olayları ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   ![Ranger UI ilke denetimi erişim olayları ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla oluşturduğunuz Kafka kümesini silin:
+Bu uygulamayı kullanmaya devam etmeyecekseniz, oluşturduğunuz Kafka kümesini aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-1. Üstteki **arama** kutusuna **HDInsight**yazın.
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
-1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
-1. **Sil**'e tıklayın. **Evet**'e tıklayın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. Üstteki **Arama** kutusuna **HDInsight**yazın.
+1. **Hizmetler**altında **HDInsight kümelerini** seçin.
+1. Görünen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** 'yı tıklatın. 
+1. **Sil'i**tıklatın. **Evet'i**tıklatın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Kafka-Producer-Consumer. jar, etki alanına katılmış bir kümede çalışmazsa, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullandığınızdan emin olun (etki alanı olmayanlar için, Producer-Consumer projesi altında değil). Birleşik senaryolar).
+Kafka-producer-consumer.jar bir etki alanında çalışmıyorsa, lütfen "DomainJoined-Producer-Consumer" projesi kapsamında kafka-producer-consumer.jar'ı kullandığınızdan emin olun (Alan adı olmayan Üretici-Tüketici projesi kapsamındaki proje birleştirilmiş senaryolar).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

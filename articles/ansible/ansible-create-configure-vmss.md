@@ -1,17 +1,17 @@
 ---
-title: Öğretici-Azure 'da sanal makine ölçek kümelerini, anormal kullanarak yapılandırma
-description: Azure 'da sanal makine ölçek kümeleri oluşturmak ve yapılandırmak için nasıl kullanılacağını öğrenin
+title: Öğretici - Ansible kullanarak Azure'daki sanal makine ölçek kümelerini yapılandırın
+description: Azure'da sanal makine ölçeği kümeleri oluşturmak ve yapılandırmak için Ansible'ı nasıl kullanacağınızı öğrenin
 keywords: ansible, azure, devops, bash, playbook, sanal makine, sanal makine ölçek kümesi, vmss
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156542"
 ---
-# <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Öğretici: Azure 'da sanal makine ölçek kümelerini, anormal kullanarak yapılandırma
+# <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Öğretici: Ansible kullanarak Azure'daki sanal makine ölçeği kümelerini yapılandırın
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -22,30 +22,30 @@ ms.locfileid: "74156542"
 > [!div class="checklist"]
 >
 > * VM için kaynakları yapılandırma
-> * Ölçek kümesi yapılandırma
-> * Ölçek kümesini sanal makine örneklerinin artırarak ölçeklendirin 
+> * Ölçek kümesini yapılandırma
+> * VM örneklerini artırarak belirlenen ölçeği ölçeklendirin 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="configure-a-scale-set"></a>Ölçek kümesi yapılandırma
+## <a name="configure-a-scale-set"></a>Ölçek kümesini yapılandırma
 
-Bu bölümdeki PlayBook kodu aşağıdaki kaynakları tanımlar:
+Bu bölümdeki oyun kitabı kodu aşağıdaki kaynakları tanımlar:
 
-* Tüm kaynaklarınızın dağıtılacağı **kaynak grubu** .
+* Tüm kaynaklarınızın dağıtılacayacağı **kaynak grubu.**
 * 10.0.0.0/16 adres alanında **sanal ağ**
 * Sanal ağ içinde **alt ağ**
 * İnternet üzerindeki kaynaklara erişmenizi sağlayan **genel IP adresi**
-* Ölçek kümesi içindeki ve olmayan ağ trafiği akışını denetleyen **ağ güvenlik grubu**
+* Ölçek kümenize giriş ve çıkışta ağ trafiğinin akışını kontrol eden **ağ güvenlik grubu**
 * Yük dengeleyici kurallarını kullanarak trafiği tanımlı bir VM'ler kümesi arasında dağıtan **yük dengeleyici**
 * Oluşturulan tüm kaynakları kullanan **sanal makine ölçek kümesi**
 
-Örnek PlayBook 'u almanın iki yolu vardır:
+Örnek oyun kitabını almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) ve `vmss-create.yml`kaydedin.
-* `vmss-create.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+* [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) ve `vmss-create.yml`'ye kaydedin.
+* Adlandırılmış `vmss-create.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 - hosts: localhost
@@ -141,17 +141,17 @@ Bu bölümdeki PlayBook kodu aşağıdaki kaynakları tanımlar:
             caching: ReadOnly
 ```
 
-PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
+Oyun kitabını çalıştırmadan önce aşağıdaki notalara bakın:
 
-* `vars` bölümünde, `{{ admin_password }}` yer tutucusunu kendi parolanızla değiştirin.
+* `vars` Bölümde, yer tutucuyu `{{ admin_password }}` kendi parolanızla değiştirin.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook vmss-create.yml
 ```
 
-PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
+Oyun kitabını çalıştırdıktan sonra, aşağıdaki sonuçlara benzer çıktı görürsünüz:
 
 ```Output
 PLAY [localhost] 
@@ -185,23 +185,23 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 ```
 
-## <a name="view-the-number-of-vm-instances"></a>Sanal makine örneklerinin sayısını görüntüleme
+## <a name="view-the-number-of-vm-instances"></a>VM örneklerinin sayısını görüntüleme
 
-[Yapılandırılmış ölçek kümesinde](#configure-a-scale-set) Şu anda iki örnek vardır. Bu değeri doğrulamak için aşağıdaki adımlar kullanılır:
+[Yapılandırılan ölçek kümesi](#configure-a-scale-set) şu anda iki örneği vardır. Bu değeri onaylamak için aşağıdaki adımlar kullanılır:
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
 
 1. Yapılandırdığınız ölçek kümesine gidin.
 
-1. Ölçek kümesi adını parantez içindeki örneklerin sayısıyla görürsünüz: `Standard_DS1_v2 (2 instances)`
+1. Parantez içinde örnek sayısı ile ölçek kümesi adı bakın:`Standard_DS1_v2 (2 instances)`
 
-1. Aşağıdaki komutu çalıştırarak [Azure Cloud Shell](https://shell.azure.com/) örnek sayısını da doğrulayabilirsiniz:
+1. Aşağıdaki komutu çalıştırarak [Azure Bulut Kabuğu](https://shell.azure.com/) ile örnek sayısını da doğrulayabilirsiniz:
 
     ```azurecli-interactive
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    Cloud Shell ' de Azure CLı komutunu çalıştırmanın sonuçları üç örnek olduğunu gösterir: 
+    Azure CLI komutunu Cloud Shell'de çalıştırmanın sonuçları, şu anda üç örneğin var olduğunu göstermektedir: 
 
     ```bash
     {
@@ -209,14 +209,14 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
     }
     ```
 
-## <a name="scale-out-a-scale-set"></a>Ölçek kümesinin ölçeğini genişletme
+## <a name="scale-out-a-scale-set"></a>Ölçek kümesini ölçeklendirin
 
-Bu bölümdeki PlayBook kodu, ölçek kümesi hakkındaki bilgileri alır ve kapasitesini iki ile üç arasında değişir.
+Bu bölümdeki oyun kitabı kodu ölçek kümesi hakkında bilgi alır ve kapasitesini ikiden üçe değiştirir.
 
-Örnek PlayBook 'u almanın iki yolu vardır:
+Örnek oyun kitabını almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) ve `vmss-scale-out.yml`kaydedin.
-* `vmss-scale-out.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+* [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) ve `vmss-scale-out.yml`'ye kaydedin.
+* Adlandırılmış `vmss-scale-out.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 - hosts: localhost
@@ -243,13 +243,13 @@ Bu bölümdeki PlayBook kodu, ölçek kümesi hakkındaki bilgileri alır ve kap
       azure_rm_virtualmachinescaleset: "{{ body }}"
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook vmss-scale-out.yml
 ```
 
-PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
+Oyun kitabını çalıştırdıktan sonra, aşağıdaki sonuçlara benzer çıktı görürsünüz:
 
 ```Output
 PLAY [localhost] 
@@ -285,15 +285,15 @@ PLAY RECAP
 localhost                  : ok=5    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="verify-the-results"></a>Sonuçları doğrulama
+## <a name="verify-the-results"></a>Sonuçları doğrulayın
 
-Azure portal yoluyla çalışmalarınızın sonuçlarını doğrulayın:
+Çalışmalarınızın sonuçlarını Azure portalı üzerinden doğrulayın:
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
 
 1. Yapılandırdığınız ölçek kümesine gidin.
 
-1. Ölçek kümesi adını parantez içindeki örneklerin sayısıyla görürsünüz: `Standard_DS1_v2 (3 instances)` 
+1. Parantez içinde örnek sayısı ile ölçek kümesi adı bakın:`Standard_DS1_v2 (3 instances)` 
 
 1. Değişikliği [Azure Cloud Shell](https://shell.azure.com/) ile aşağıdaki komutu çalıştırarak da doğrulayabilirsiniz:
 
@@ -301,7 +301,7 @@ Azure portal yoluyla çalışmalarınızın sonuçlarını doğrulayın:
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    Cloud Shell ' de Azure CLı komutunu çalıştırmanın sonuçları üç örnek olduğunu gösterir: 
+    Azure CLI komutunu Cloud Shell'de çalıştırmanın sonuçları, şu anda üç örneğin var olduğunu göstermektedir: 
 
     ```bash
     {
@@ -312,4 +312,4 @@ Azure portal yoluyla çalışmalarınızın sonuçlarını doğrulayın:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Öğretici: Azure 'daki sanal makine ölçek kümelerine uygulama dağıtma (Anlabilen)](./ansible-deploy-app-vmss.md)
+> [Öğretici: Uygulamaları Ansible kullanarak Azure'daki sanal makine ölçeği kümelerine dağıtma](./ansible-deploy-app-vmss.md)

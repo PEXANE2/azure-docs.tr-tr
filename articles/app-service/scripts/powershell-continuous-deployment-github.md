@@ -1,26 +1,26 @@
 ---
-title: "PowerShell: GitHub 'dan sürekli olarak dağıtın"
-description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, GitHub 'dan CI/CD ile bir uygulamanın nasıl oluşturulacağını gösterir.
+title: "PowerShell: GitHub'dan sürekli dağıtın"
+description: Uygulama Hizmeti'nin dağıtımını ve yönetimini otomatikleştirmek için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Bu örnek, GitHub'dan CI/CD ile nasıl bir uygulama oluşturulacak larını gösterir.
 tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: eee6ac9f9c469f9e1a9344ab4a30626c219d7836
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74685163"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>GitHub’dan sürekli dağıtım ile bir web uygulaması oluşturma
 
-Bu örnek betik, App Service içinde ilgili kaynaklarıyla birlikte bir Web uygulaması oluşturur ve sonra bir GitHub deposundan [sürekli dağıtımı](../deploy-continuous-deployment.md) ayarlar. Sürekli dağıtım olmadan GitHub dağıtımı için bkz. [Bir web uygulaması oluşturma ve GitHub’dan kod dağıtma](powershell-deploy-github.md).
+Bu örnek komut dosyası, ilgili kaynaklarıyla Birlikte App Service'de bir web uygulaması oluşturur ve ardından GitHub deposundan [sürekli dağıtım](../deploy-continuous-deployment.md) ayarlar. Sürekli dağıtım olmadan GitHub dağıtımı için bkz. [Bir web uygulaması oluşturma ve GitHub’dan kod dağıtma](powershell-deploy-github.md).
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview) bulunan yönergeleri kullanarak Azure PowerShell’i yükleyin ve ardından Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın. Ayrıca, şunları yaptığınızdan emin olun:
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell'i yükleyin ve ardından Azure ile bağlantı oluşturmak için çalıştırın. `Connect-AzAccount` Ayrıca, şunları yaptığınızdan emin olun:
 
-- Uygulama kodu, sahip olduğunuz genel veya özel bir GitHub deposunda bulunur. Otomatik derlemeler almak için, deponuzu [hazırlama](../deploy-continuous-deployment.md#prepare-your-repository) tablonuza göre yapısını yapın.
-- [GitHub hesabınızda bir kişisel erişim belirteci oluşturdunuz](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
+- Uygulama kodu, sahip olduğunuz genel veya özel bir GitHub deposunda bulunur. Otomatik yapılar elde etmek için [deponuzu hazırla tablonuza](../deploy-continuous-deployment.md#prepare-your-repository) göre yapılayın.
+- [GitHub hesabınızda kişisel erişim jetonu oluşturdunuz.](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -43,8 +43,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service planı oluşturur. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Bir web uygulaması oluşturur. |
+| [Yeni-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service planı oluşturur. |
+| [Yeni-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Bir web uygulaması oluşturur. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Bir kaynak grubundaki kaynağı değiştirir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

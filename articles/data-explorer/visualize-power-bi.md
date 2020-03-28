@@ -8,19 +8,19 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037352"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Öğretici: Azure Veri Gezgini verilerini Power BI'da görselleştirme
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Power BI, verilerinizi görselleştirmenizi ve sonuçları kuruluşunuzda paylaşmanızı sağlayan bir iş analizi çözümüdür. Bu öğreticide ilk olarak Azure Veri Gezgini'nde görsel oluşturmayı öğreneceksiniz. Ardından Power BI ile Azure Veri Gezgini'ne bağlanıp örnek verileri temel alan bir rapor oluşturacak ve bu raporu Power BI hizmetinde yayımlayacaksınız.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Power BI, verilerinizi görselleştirmenizi ve sonuçları kuruluşunuzda paylaşmanızı sağlayan bir iş analizi çözümüdür. Bu öğreticide ilk olarak Azure Veri Gezgini'nde görsel oluşturmayı öğreneceksiniz. Ardından Power BI ile Azure Veri Gezgini'ne bağlanıp örnek verileri temel alan bir rapor oluşturacak ve bu raporu Power BI hizmetinde yayımlayacaksınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun. Power BI Pro’ya kaydolmadıysanız başlamadan önce [ücretsiz deneme için kaydolun](https://app.powerbi.com/signupredirect?pbi_source=web).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure Veri Gezgini'nde görsel oluşturma
@@ -29,21 +29,21 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Görsel içeren rapor oluşturma
 > * Raporu yayımlama ve paylaşma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için Azure ve Power BI aboneliklerine ek olarak aşağıdakilere ihtiyacınız vardır:
 
 * [Test kümesi ve veritabanı](create-cluster-database-portal.md)
 
-* [StormEvents örnek verileri](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+* [StormEvents örnek verileri.](ingest-sample-data.md) [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) ( **indirmeyi ücretsiz**Seç)
+* [Power BI Masaüstü](https://powerbi.microsoft.com/get-started/) **(ÜCRETSIZ İndir'i**seçin )
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>Azure Veri Gezgini'nde görsel oluşturma
 
 Power BI'a geçmeden önce Azure Veri Gezgini'nde görsel oluşturma adımlarını inceleyelim. Bu özellik verileri hızlıca analiz etmek için idealdir.
 
-1. [https://dataexplorer.azure.com](https://dataexplorer.azure.com) adresinde oturum açın.
+1. Oturum [https://dataexplorer.azure.com](https://dataexplorer.azure.com)aç.
 
 1. Soldaki bölmede StormEvents örnek verilerini içeren test veritabanını seçin.
 
@@ -81,17 +81,17 @@ Artık Power BI'a geçebiliriz ancak Azure Veri Gezgini'nde yapabileceklerinizin
 
 Artık Power BI Desktop'tan Azure Veri Gezgini'ne bağlanabilirsiniz.
 
-1. **Giriş** sekmesinde Power BI Desktop **veri al** ' ı **seçin.**
+1. **Ana Sayfa** sekmesindeki Power BI Desktop'da Daha **Fazla** **Veri Al'ı** seçin.
 
     ![Verileri alma](media/visualize-power-bi/get-data-more.png)
 
-1. *Azure Veri Gezgini*araması yapın, **Azure Veri Gezgini (Beta)** seçeneğini belirleyin ve sonra **bağlantısını**yapın.
+1. Azure *Veri Gezgini'ni*arayın, **Azure Veri Gezgini'ni (Beta)** seçin ve ardından **Bağlanın.**
 
     ![Arama ve veri alma](media/visualize-power-bi/search-get-data.png)
 
 1. **Bağlayıcıyı önizle** ekranında **Devam**'ı seçin.
 
-1. Sonraki ekranda, test kümenizin ve veritabanınızın adını girin. Küme `https://<ClusterName>.<Region>.kusto.windows.net` biçiminde olmalıdır. Tablo adı olarak *StormEvents* yazın. Diğer seçenekleri varsayılan değerleriyle bırakın ve **Tamam**'ı seçin.
+1. Bir sonraki ekranda, test kümenizin ve veritabanınızın adını girin. Küme `https://<ClusterName>.<Region>.kusto.windows.net` biçiminde olmalıdır. Tablo adı olarak *StormEvents* yazın. Diğer seçenekleri varsayılan değerleriyle bırakın ve **Tamam**'ı seçin.
 
     ![Küme, veritabanı, tablo seçenekleri](media/visualize-power-bi/cluster-database-table.png)
 
@@ -219,7 +219,7 @@ Oluşturduğunuz raporu saklamak istemiyorsanız *storm-events.pbix* dosyasını
 
 1. **Çalışma alanım** sayfasında **RAPORLAR** bölümüne inin ve **storm-events** adlı raporu bulun.
 
-1. **storm-events** girişinin yanındaki üç noktayı ( **. . .** ) ve ardından **KALDIR**'ı seçin.
+1. **storm-events** girişinin yanındaki üç noktayı (**. . .**) ve ardından **KALDIR**'ı seçin.
 
     ![Raporu kaldırma](media/visualize-power-bi/remove-report.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Periscope verileriyle tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Periscope verileri arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Periscope Verileri ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Periscope Data arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,225 +16,225 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160203"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Öğretici: Periscope verileriyle tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Öğretici: Periscope Verileri ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Periscope verilerini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Periscope verilerini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu eğitimde, Periscope Verilerini Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Periscope Verilerini Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Periscope verilerine erişimi olan Azure AD 'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Periscope veri (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Periskop Verilerine erişimi olan Azure AD'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Periscope Verileri'nde (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Periscope verileriyle yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini Periscope Verileri ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Periscope verileri çoklu oturum açma etkin aboneliği
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* Periscope Data tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Periscope verileri **SP** tarafından başlatılan SSO 'yu destekler
+* Periscope **Data, SP** tarafından başlatılan SSO'ya destek veriyor
 
-## <a name="adding-periscope-data-from-the-gallery"></a>Galeriden Periscope verileri ekleme
+## <a name="adding-periscope-data-from-the-gallery"></a>Galeriden Periscope Veriekleme
 
-Periscope verilerinin Azure AD ile tümleştirilmesini yapılandırmak için galerideki Periscope verilerini, yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Periscope Verilerinin Azure AD'ye entegrasyonunu yapılandırmak için, galerideki Periscope Verilerini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Periscope verileri eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden Periscope Verileri eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Periscope Data**yazın, sonuç panelinden **Periscope verileri** seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusunda **Periscope Verileri**yazın, sonuç panelinden **Periscope Verileri'ni** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuçlar listesindeki Periscope verileri](common/search-new-app.png)
+     ![Sonuç listesindeki Periscope Verileri](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Periscope VERILERIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve Periscope verilerinde ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD tek oturum açma işlemini Periscope Verileri ile yapılandırıp test esiniz.
+Tek oturum açmanın işe yaraması için, Bir Azure REKLAM kullanıcısı ile Periscope Verileri'ndeki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD çoklu oturum açma 'yı Periscope verilerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD oturumlarını Periscope Verileri ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Periscope Data çoklu oturum açmayı yapılandırın](#configure-periscope-data-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan Periscope verilerinde Britta Simon 'a sahip olmak için **[Periscope Data test kullanıcısı oluşturun](#create-periscope-data-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Periscope Veri Tek Oturum](#configure-periscope-data-single-sign-on)** Açma'yı yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Periscope Veri test kullanıcısını oluşturun](#create-periscope-data-test-user)** - Kullanıcının Azure AD gösterimine bağlı Periscope Verileri'nde Britta Simon'ın bir örneğine sahip olmak için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD oturumaçmayı Periscope Verileri ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **Periscope veri** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. Azure [portalında,](https://portal.azure.com/) **Periscope Data** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Periscope veri etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
+    ![Periscope Veri Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
 
-    a. **Oturum açma URL 'si** metin kutusuna URL 'lerden herhangi birini yazın:
+    a. URL metin kutusunda **Oturum Aç** kutusuna URL'lerden herhangi birini yazın:
     
     | |
     |--|
     | `https://app.periscopedata.com/` |
     | `https://app.periscopedata.com/app/<SITENAME>` |
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://app.periscopedata.com/<SITENAME>/sso`
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.periscopedata.com/<SITENAME>/sso`
 
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Değerleri gerçek oturum açma URL 'SI ile güncelleştirin. Öğreticide daha sonra açıklanan bu değeri ve **Configure Periscope Data çoklu oturum açma** bölümünden alacağınız tanımlayıcı değeri almak Için [Periscope Data Client support ekibine](mailto:support@periscopedata.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > URL değerindeki Oturum gerçek değildir. URL'de gerçek Oturum İşareti ile değerleri güncelleştirin. Bu değeri ve daha sonra öğreticide açıklanan **Yapılandırma Periscope Veri Tek Oturum Açma** bölümünden alacağınız Tanımlayıcı değerini almak için [Periscope Veri İstemci destek ekibine](mailto:support@periscopedata.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-periscope-data-single-sign-on"></a>Periscope verileri çoklu oturum açmayı yapılandırma
+### <a name="configure-periscope-data-single-sign-on"></a>Periskop Verilerini Yapılandırma Tek Oturum Açma
 
-1. Farklı bir Web tarayıcısı penceresinde, Periscope verilerinde yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak Periscope Data'da oturum açın.
 
-2. Sol alt taraftaki dişli menüsünü açın ve **faturalandırma** > **güvenlik** menüsünü açın ve aşağıdaki adımları gerçekleştirin. Bu ayarlara yalnızca yöneticiler erişebilir.
+2. Sol alttaki vites menüsünü açın ve **Fatura Güvenliği** > **menüsünü** açın ve aşağıdaki adımları gerçekleştirin. Yalnızca yöneticiler bu ayarlara erişebilir.
 
-    ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure01.png)
+    ![Periskop Veri Yapılandırma bilgileri](./media/periscope-data-tutorial/configure01.png)
 
-    a. #5 **SAML Imzalama sertifikasından** **uygulama Federasyon meta veri URL 'sini** kopyalayın ve bir tarayıcıda açın. Bu, bir XML belgesi açar.
+    a. **Saml İmzaLama Sertifikası** adım#5 App **Federation Metadata URL'sini** kopyalayın ve bir tarayıcıda açın. Bu bir XML belgesi açılır.
 
-    b. **Çoklu oturum açma** metin kutusunda **Azure Active Directory**' yi seçin.
+    b. Tek **Oturum Açma** metin kutusunda **Azure Etkin Dizini'ni**seçin.
 
-    c. **Singlesignonservice** etiketini bulun ve **LOCATION** değerini **SSO URL** metin kutusuna yapıştırın.
+    c. **SingleSignOnService** etiketini bulun ve **SSO URL** metin kutusuna **Konum** değerini yapıştırın.
 
-    d. **Singlelogoutservice** etiketini bulun ve **konum** değerini **SLO URL** metin kutusuna yapıştırın.
+    d. **SingleLogoutService** etiketini bulun ve Konum **değerini** **SLO URL** metin kutusuna yapıştırın.
 
-    e. Örneğiniz için **tanımlayıcı** değeri kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünün **tanımlayıcı (varlık kimliği)** metin kutusuna yapıştırın.
+    e. Örneğiniz için **Tanımlayıcı** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırması** bölümünün **Tanımlayıcı (Entity ID)** textbox'ına yapıştırın.
 
-    f. XML dosyasının ilk etiketini bulun, **EntityId** değerini kopyalayın ve **veren** metin kutusuna yapıştırın.
+    f. XML dosyasının ilk etiketini bulun, **entityID** değerini kopyalayın ve **Veren** metin kutusuna yapıştırın.
 
-    g. SAML protokolüyle **ıdpssodescriptor** etiketini bulur. Bu bölüm içinde, **Use = imzalamayı**Içeren etiket **KeyDescriptor** ' ı bulun. **X509Certificate** değerini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
+    g. SAML protokolü ile **IDPSSODescriptor** etiketini bulun. Bu bölümde, **use=signing**ile **AnahtarTanımlayıcı** etiketini bulun. **X509Certificate** değerini kopyalayın ve **Sertifika** metin kutusuna yapıştırın.
 
-    h. Birden çok boşluk içeren siteler **varsayılan alandan** açılan varsayılan alanı seçebilir. Bu, yeni kullanıcıların ilk kez Periscope verilerinde oturum açtıklarında eklendiği ve Active Directory çoklu oturum açma yoluyla sağlandığı zaman bir alandır.
+    h. Birden çok boşalana sahip siteler **Varsayılan Alan** açılır tarihinden varsayılan alanı seçebilir. Bu alan, yeni kullanıcıların Periscope Data'da ilk kez oturum açtıklarında ve Active Directory Single Sign On aracılığıyla sağlandığında eklenecekleri alan olacaktır.
 
-    i. Son olarak **Kaydet** ' e tıklayın ve **oturum kapatma**yazarak SSO ayarları değişikliğini **onaylayın** .
+    i. Son olarak, **Kaydet'i** tıklatın **ve** **Logout**yazarak SSO ayarlarını değiştirin.
 
-    ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure02.png)
+    ![Periskop Veri Yapılandırma bilgileri](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
+    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Periscope verilerine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
+Bu bölümde, Britta Simon'ın Periscope Verilerine erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Periscope verileri**' ni seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve **ardından Periscope Verileri'ni**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Periscope verileri**' ni seçin.
+2. Uygulamalar listesinde **Periscope Verileri'ni**seçin.
 
-    ![Uygulamalar listesindeki Periscope veri bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Periscope Veri bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-periscope-data-test-user"></a>Periscope Data test kullanıcısı oluşturma
+### <a name="create-periscope-data-test-user"></a>Periscope Veri test kullanıcıoluşturma
 
-Azure AD kullanıcılarının Periscope verilerinde oturum açmasını sağlamak için, Periscope verilerine sağlanması gerekir. Periscope verilerinde, sağlama el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Periscope Verileri'nde oturum açabilmeleri için Periscope Verileri'nde bunların sağlanması gerekir. Periskop Verilerinde, sağlama el ile bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Periscope verilerinde yönetici olarak oturum açın.
+1. Yönetici olarak Periscope Data'da oturum açın.
 
-2. Menünün sol alt kısmındaki **Ayarlar** simgesine tıklayın ve **izinler**' e gidin.
+2. Menünün sol alt kısmındaki **Ayarlar** simgesine tıklayın ve **İzinler'e**gidin.
 
-    ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure03.png)
+    ![Periskop Veri Yapılandırma bilgileri](./media/periscope-data-tutorial/configure03.png)
 
-3. **Kullanıcı Ekle** ' ye tıklayın ve aşağıdaki adımları uygulayın:
+3. **ADD USER'a** tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-      ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure04.png)
+      ![Periskop Veri Yapılandırma bilgileri](./media/periscope-data-tutorial/configure04.png)
 
-    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    a. **Ad metin** kutusuna, **Britta**gibi kullanıcının ilk adını girin.
 
-    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcının soyadını girin.
 
-    c. **E-posta** metin kutusuna, **\@contoso.com**gibi kullanıcının e-postasını girin.
+    c. **E-posta** metin kutusuna, **\@brittasimon contoso.com**gibi kullanıcının e-posta girin.
 
-    d. **Ekle**' ye tıklayın.
+    d. **EKLE'yi**tıklatın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Periscope veri kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Periscope verilerinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Periscope Veri döşemesini tıklattığınızda, SSO'yu kurduğunuz Periscope Verileri'nde otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

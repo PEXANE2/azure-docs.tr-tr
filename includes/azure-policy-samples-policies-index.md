@@ -1,16 +1,16 @@
 ---
 ms.openlocfilehash: bdd46f06357a806a707882a623520235e3903581
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79381752"
 ---
 ## <a name="app-configuration"></a>Uygulama Yapılandırması
 
 [!INCLUDE [azure-policy-samples-policies-app-configuration](azure-policy-samples-policies-app-configuration.md)]
 
-## <a name="app-platform"></a>Uygulama platformu
+## <a name="app-platform"></a>Uygulama Platformu
 
 [!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
 
@@ -18,7 +18,7 @@ ms.locfileid: "79381752"
 
 [!INCLUDE [azure-policy-samples-policies-app-service](azure-policy-samples-policies-app-service.md)]
 
-## <a name="automation"></a>Otomasyon
+## <a name="automation"></a>Automation
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "79381752"
 
 [!INCLUDE [azure-policy-samples-policies-cosmos-db](azure-policy-samples-policies-cosmos-db.md)]
 
-## <a name="custom-provider"></a>Özel sağlayıcı
+## <a name="custom-provider"></a>Özel Sağlayıcı
 
 [!INCLUDE [azure-policy-samples-policies-custom-provider](azure-policy-samples-policies-custom-provider.md)]
 
@@ -70,7 +70,7 @@ ms.locfileid: "79381752"
 
 [!INCLUDE [azure-policy-samples-policies-internet-of-things](azure-policy-samples-policies-internet-of-things.md)]
 
-## <a name="key-vault"></a>Anahtar Kasası
+## <a name="key-vault"></a>Key Vault
 
 [!INCLUDE [azure-policy-samples-policies-key-vault](azure-policy-samples-policies-key-vault.md)]
 
@@ -78,11 +78,11 @@ ms.locfileid: "79381752"
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](azure-policy-samples-policies-kubernetes.md)]
 
-## <a name="kubernetes-service"></a>Kubernetes hizmeti
+## <a name="kubernetes-service"></a>Kubernetes servisi
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes-service](azure-policy-samples-policies-kubernetes-service.md)]
 
-## <a name="lighthouse"></a>Açık bir kullanım
+## <a name="lighthouse"></a>Lighthouse
 
 [!INCLUDE [azure-policy-samples-policies-lighthouse](azure-policy-samples-policies-lighthouse.md)]
 
@@ -90,7 +90,7 @@ ms.locfileid: "79381752"
 
 [!INCLUDE [azure-policy-samples-policies-logic-apps](azure-policy-samples-policies-logic-apps.md)]
 
-## <a name="managed-application"></a>Yönetilen uygulama
+## <a name="managed-application"></a>Yönetilen Uygulama
 
 [!INCLUDE [azure-policy-samples-policies-managed-application](azure-policy-samples-policies-managed-application.md)]
 
@@ -102,7 +102,7 @@ ms.locfileid: "79381752"
 
 [!INCLUDE [azure-policy-samples-policies-network](azure-policy-samples-policies-network.md)]
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Search
 
 [!INCLUDE [azure-policy-samples-policies-search](azure-policy-samples-policies-search.md)]
 
@@ -126,7 +126,7 @@ ms.locfileid: "79381752"
 
 [!INCLUDE [azure-policy-samples-policies-storage](azure-policy-samples-policies-storage.md)]
 
-## <a name="stream-analytics"></a>Akış Analizi
+## <a name="stream-analytics"></a>Stream Analytics
 
 [!INCLUDE [azure-policy-samples-policies-stream-analytics](azure-policy-samples-policies-stream-analytics.md)]
 

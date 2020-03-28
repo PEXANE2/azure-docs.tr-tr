@@ -1,5 +1,5 @@
 ---
-title: Azure 'da ölçeklenebilir bir uygulama için VM ve depolama hesabı oluşturma
+title: Azure'da ölçeklenebilir bir uygulama için VM ve depolama hesabı oluşturma
 description: Azure blob depolama kullanarak ölçeklenebilir bir uygulama çalıştırmak için kullanılacak bir VM’yi dağıtmayı öğrenme
 author: roygara
 ms.service: storage
@@ -8,34 +8,34 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75372321"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Ölçeklenebilir bir uygulama için sanal makine ve depolama hesabı oluşturma
 
-Bu öğretici, bir serinin birinci bölümüdür. Bu öğretici, Azure depolama hesabı ile büyük miktarda rastgele veri yükleyen ve indiren bir uygulamayı nasıl dağıtacağınızı gösterir. İşinizi tamamladığınızda, bir sanal makine üzerinde bir depolama hesabına büyük miktarlarda veri yükleyip indirdiğiniz bir konsol uygulaması çalıştırırsınız.
+Bu öğretici, bir dizinin birinci bölümüdür. Bu öğretici, Azure depolama hesabı ile büyük miktarda rastgele veri yükleyen ve indiren bir uygulamayı nasıl dağıtacağınızı gösterir. İşinizi tamamladığınızda, bir sanal makine üzerinde bir depolama hesabına büyük miktarlarda veri yükleyip indirdiğiniz bir konsol uygulaması çalıştırırsınız.
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Depolama hesabı oluşturma
-> * Sanal makine oluşturun
+> * Sanal makine oluşturma
 > * Özel betik uzantısı yapılandırma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü az 0,7 veya üzeri bir sürümü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu öğretici azure PowerShell modülü Az sürüm 0.7 veya daha sonra gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir Azure kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -43,7 +43,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
  
-Örnek, 50 büyük dosyayı bir Azure Depolama hesabındaki blob kapsayıcısına yükler. Depolama hesabı, Azure Storage veri nesnelerinizi depolamak ve bunlara erişmek için benzersiz ad alanı sağlar. [Yeni-AzStorageAccount](/powershell/module/az.Storage/New-azStorageAccount) komutunu kullanarak oluşturduğunuz kaynak grubunda bir depolama hesabı oluşturun.
+Örnek, 50 büyük dosyayı bir Azure Depolama hesabındaki blob kapsayıcısına yükler. Depolama hesabı, Azure Storage veri nesnelerinizi depolamak ve bunlara erişmek için benzersiz ad alanı sağlar. [Yeni Depolama Hesabı](/powershell/module/az.Storage/New-azStorageAccount) komutunu kullanarak oluşturduğunuz kaynak grubunda bir depolama hesabı oluşturun.
 
 Aşağıdaki komutta, Blob depolama hesabına ilişkin kendi genel benzersiz adınızı `<blob_storage_account>` yer tutucusunu gördüğünüz yere yerleştirin.
 
@@ -55,11 +55,11 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName myResourceGroup `
   -Kind Storage `
 ```
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 Sanal makine yapılandırması oluşturun. Bu yapılandırma, sanal makineyi dağıtırken kullanılan sanal makine görüntüsü, boyutu ve kimlik doğrulama yapılandırması gibi ayarları içerir. Bu adımı çalıştırırken kimlik bilgileri istenir. Girdiğiniz değerler, sanal makinenin kullanıcı adı ve parolası olarak yapılandırılır.
 
-[New-AzVM](/powershell/module/az.compute/new-azvm)ile sanal makineyi oluşturun.
+[New-AzVM](/powershell/module/az.compute/new-azvm)ile sanal makine oluşturun.
 
 ```azurepowershell-interactive
 # Variables for common values
@@ -127,7 +127,7 @@ Serinin birinci bölümünde, bir depolama hesabı oluşturmayı, bir sanal maki
 
 > [!div class="checklist"]
 > * Depolama hesabı oluşturma
-> * Sanal makine oluşturun
+> * Sanal makine oluşturma
 > * Özel betik uzantısı yapılandırma
 
 Üstel yeniden deneme ve paralelliği kullanarak depolama hesabına büyük miktarlarda veri yüklemek için serinin ikinci bölümüne ilerleyin.

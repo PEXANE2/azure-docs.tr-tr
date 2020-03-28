@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure Analysis Services bir örnek model ekleme | Microsoft Docs
+title: Öğretici - Örnek bir model ekle- Azure Analiz Hizmetleri | Microsoft Dokümanlar
 description: Bu öğretici derste, Azure Analysis Services'e örnek model eklemeyi öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74326572"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Öğretici: Portaldan bir örnek model ekleme
@@ -22,7 +22,7 @@ Bu öğreticide, sunucunuza örnek Adventure Works tablolu model veritabanını 
 > * Sunucuya tamamlanmış bir örnek tablolu veri modeli ekleme 
 > * SSMS ile modele bağlanma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -35,7 +35,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Portalda](https://portal.azure.com/) oturum açın.
+[Portalda](https://portal.azure.com/)oturum aç.
 
 ## <a name="add-a-sample-model"></a>Örnek model ekleme
 
@@ -43,7 +43,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
     ![Örnek model oluşturma](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. **Yeni modelde** > **bir veri kaynağı seçin**, **örnek verilerin** seçili olduğunu doğrulayın ve ardından **Ekle**' ye tıklayın.
+2. **Yeni modelde** > **bir veri kaynağı seçin,** **Örnek verilerin** seçildiğini doğrulayın ve sonra **Ekle'yi**tıklatın.
 
     ![Örnek verileri seçme](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
@@ -73,6 +73,6 @@ Bu adımlarda, SSMS kullanarak sunucudan modelin nasıl silineceği açıklanır
 Bu öğreticide, sunucunuza temel bir örnek model eklemeyi öğrendiniz. Artık bir model veritabanınız olduğuna göre, SQL Server Management Studio'dan bu veritabanına bağlanabilir ve kullanıcı rollerini ekleyebilirsiniz. Daha fazla bilgi edinmek için sonraki öğreticiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Sunucu yönetici ve kullanıcı rollerini yapılandırma](tutorials/analysis-services-tutorial-roles.md)
+> [Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma](tutorials/analysis-services-tutorial-roles.md)
 
 

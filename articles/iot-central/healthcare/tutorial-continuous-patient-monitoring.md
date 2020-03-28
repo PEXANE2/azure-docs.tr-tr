@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central sürekli bir hasta izleme uygulaması oluşturun | Microsoft Docs
-description: Azure IoT Central uygulama şablonlarını kullanarak sürekli bir hasta izleme uygulaması derlemeyi öğrenin.
+title: Azure IoT Central | Microsoft Dokümanlar
+description: Azure IoT Central uygulama şablonlarını kullanarak sürekli bir hasta izleme uygulaması oluşturmayı öğrenin.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -9,120 +9,120 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77021296"
 ---
-# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: sürekli hasta izleme uygulama şablonunu dağıtma ve gözden geçirme
+# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: Sürekli hasta izleme uygulaması şablonu dağıtma ve gözden geçirme
 
 
 
-Bu öğreticide, bir çözüm Oluşturucu olarak IoT Central bir sürekli hasta izleme uygulama şablonu dağıtarak nasıl başlacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve bundan sonra neler yapabileceğinizi öğreneceksiniz.
+Bu öğretici, bir çözüm oluşturucu olarak, bir IoT Merkezi sürekli hasta izleme uygulama şablonu dağıtarak nasıl başlatılabilirsiniz gösterir. Şablonu nasıl dağıtacağınızı, kutunun dışında nelerin eklenmiş olduğunu ve bundan sonra neler yapabileceğinizi öğreneceksiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Uygulama şablonu oluşturma
-> * Uygulama şablonunu gözden geçir
+> * Uygulama şablonunda yürüme
 
 ## <a name="create-an-application-template"></a>Uygulama şablonu oluşturma
 
-[Azure IoT Central uygulama Yöneticisi Web sitesine](https://apps.azureiotcentral.com/)gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **sağlık** sekmesine tıklayın. 
+[Azure IoT Central uygulama yöneticisi web sitesine](https://apps.azureiotcentral.com/)gidin. Sol daki gezinme çubuğundan **Oluştur'u** seçin ve ardından **Sağlık Sekmesi'ni** tıklatın. 
 
 >[!div class="mx-imgBorder"] 
->![App Manager sağlık](media/app-manager-health.png)
+>![Uygulama yöneticisi Sağlık](media/app-manager-health.png)
 
-Uygulamanızı oluşturmaya başlamak için uygulama **Oluştur** düğmesine tıklayın ve ardından bir Microsoft kişisel, iş veya okul hesabıyla oturum açın. Bu işlem sizi **Yeni uygulama** sayfasına götürür.
+Uygulamanızı oluşturmaya başlamak için **Uygulama Oluştur** düğmesini tıklatın ve ardından microsoft kişisel, iş veya okul hesabıyla oturum açın. Sizi **Yeni uygulama** sayfasına götürecektir.
 
-![Uygulama sağlık hizmetleri oluşturma](media/app-manager-health-create.png)
+![Uygulama Sağlık oluşturun](media/app-manager-health-create.png)
 
-![Uygulama sağlık bilgileri faturalandırma bilgilerini oluşturma](media/app-manager-health-create-billinginfo.png)
+![Uygulama Sağlık fatura bilgileri oluşturma](media/app-manager-health-create-billinginfo.png)
 
 Uygulamanızı oluşturmak için:
 
-1. Azure IoT Central, seçtiğiniz şablona göre otomatik olarak bir uygulama adı önerir. Bu adı kabul edebilir veya **sürekli hasta izleme**gibi kendi kolay uygulama adınızı girebilirsiniz. Azure IoT Central, uygulama adına göre sizin için benzersiz bir URL ön eki de oluşturur. İsterseniz bu URL önekini daha kolay bir şekilde değiştirebilirsiniz.
+1. Azure IoT Central, seçtiğiniz şablonu temel alan bir uygulama adı önerir. Bu adı kabul edebilir veya **Sürekli Hasta İzleme**gibi kendi dostu başvuru adınızı girebilirsiniz. Azure IoT Central, uygulama adını temel alan benzersiz bir URL öneki de oluşturur. İsterseniz bu URL önekini daha akılda kalıcı bir şeyle değiştirmekte özgürsunuz.
 
-2. *Ücretsiz* fiyatlandırma planı veya *Standart* fiyatlandırma planlarından birini kullanarak uygulamayı oluşturmak isteyip istemediğinizi seçebilirsiniz. Ücretsiz planı kullanarak oluşturduğunuz uygulamalar, süreleri dolmadan yedi gün önce ücretsizdir ve beş adede kadar ücretsiz cihaza izin verir. Ücretsiz plandaki bir uygulamayı, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına taşıyabilirsiniz. Ücretsiz planı seçerseniz, iletişim bilgilerinizi girmeniz ve Microsoft 'tan bilgi ve ipucu alıp almadığınızı belirlemeniz gerekir. Standart bir plan kullanarak oluşturduğunuz uygulamalar, en fazla iki ücretsiz cihazı destekler ve faturalandırma için Azure abonelik bilgilerinizi girmenizi gerektirir.
+2. *Ücretsiz* fiyatlandırma planını mı yoksa *standart* fiyatlandırma planlarından birini mi kullanarak uygulamayı oluşturmak isteyip istemeyeceğiniz konusunda seçim yapabilirsiniz. Ücretsiz planı kullanarak oluşturduğunuz uygulamalar, süresi dolmadan önce yedi gün boyunca ücretsizdir ve en fazla beş ücretsiz cihaza izin verir. Bir uygulamayı, süresi dolmadan önce istediğiniz zaman ücretsiz plandan standart bir fiyatlandırma planına taşıyabilirsiniz. Ücretsiz planı seçerseniz, kişi bilgilerinizi girmeniz ve Microsoft'tan bilgi ve ipucu alıp almayacağınızı seçmeniz gerekir. Standart bir plan kullanarak oluşturduğunuz uygulamalar en fazla iki ücretsiz aygıtı destekler ve faturalandırma için Azure abonelik bilgilerinizi girmenizi gerektirir.
 
-3. Uygulamanızı dağıtmak için sayfanın alt kısmındaki **Oluştur** ' u seçin.
+3. Uygulamanızı dağıtmak için sayfanın alt kısmında **Oluştur'u** seçin.
 
-## <a name="walk-through-the-application-template"></a>Uygulama şablonunu gözden geçir
+## <a name="walk-through-the-application-template"></a>Uygulama şablonunda yürüme
 
 ### <a name="dashboards"></a>Panolar
 
-Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**gideceksiniz. Lamna sağlık, iki hastaneler: Woodgrove Hospstanve Burkville hospstani içeren kurgusal bir barındırma sistemidir. Woodgrove Hosstana için bu operatör panosunda, bu şablondaki cihazlarla ilgili bilgileri ve telemetrisi, gerçekleştirebileceğiniz bir komut, iş ve eylem kümesiyle birlikte görürsünüz. Panodan şunları yapabilirsiniz:
+Uygulama şablonu dağıtıldıktan sonra, ilk olarak **Lamna hasta izleme panosuna**ineceksiniz. Woodgrove Hastanesi ve Burkville Hastanesi: Lamna Sağlık iki hastane içeren hayali bir hastane sistemidir. Woodgrove Hastanesi'nin bu operatör panosunda, bu şablondaki aygıtlar hakkında bilgi ve telemetri nin yanı sıra yapabileceğiniz bir dizi komut, iş ve eylem görürsünüz. Panodan şunları yapabilirsiniz:
 
-* Cihazınızın **pil düzeyi** veya **bağlantı** durumu gibi cihaz telemetrisi ve özellikleri konusuna bakın.
+* Cihazınızın telemetrisine ve cihazınızın **pil düzeyi** veya **bağlantı** durumu gibi özelliklere bakın.
 
-* Akıllı vitals yaması cihazının **kat planını** ve konumunu görüntüleyin.
+* Smart Vitals Patch cihazının **kat planını** ve konumunu görüntüleyin.
 
-* Yeni bir hasta için akıllı Vintals düzeltme ekini **yeniden sağlayın** .
+* Smart Vitals Patch'i yeni bir hasta için **yeniden temin edin.**
 
-* Bir hastanma ekibinin hastalarını izlemek için görebileceğini bir **sağlayıcı panosu** örneğine bakın.
+* Bir hastane bakım ekibinin hastalarını izlemek için görebileceği bir **sağlayıcı panosu** örneğine bakın.
 
-* Cihazın hasta veya uzak bir senaryo için kullanıldığını belirtmek üzere cihazınızın **hasta durumunu** değiştirin.
-
->[!div class="mx-imgBorder"] 
->![Lamna](media/lamna-in-patient.png)
-
-Ayrıca, Burkville hastanı için kullanılan ikinci operatör panosunu görmek için **uzak hasta panosuna git ' e** tıklayabilirsiniz. Bu pano benzer bir eylem, telemetri ve bilgi kümesi içerir. Ayrıca, birden çok cihazın kullanıldığını ve her birinde **bellenimi güncelleştirme** yeteneğine sahip olduğunu görebilirsiniz.
+* Cihazın hasta veya uzak bir senaryo için kullanIlip kullanılmadığını belirtmek için cihazınızın **hasta durumunu** değiştirin.
 
 >[!div class="mx-imgBorder"] 
->![Lamna uzak](media/lamna-remote.png)
+>![Lamna hasta](media/lamna-in-patient.png)
 
-Her iki panoda da bu belgeye her zaman geri bağlanabilirsiniz.
-
-### <a name="device-templates"></a>Cihaz şablonları
-
-**Cihaz şablonları** sekmesine tıklarsanız, şablonun bir parçası olan iki farklı cihaz türü olduğunu görürsünüz:
-
-* **Akıllı Vinals düzeltme eki**: Bu cihaz, farklı türlerde vitals işaretlerini ölçen bir düzeltme ekini temsil eder. Bu, hastaların içinde ve dışında hastaları izlemek için kullanılabilir. Şablona tıkladığınızda, pil düzeyi ve cihaz sıcaklığı gibi cihaz verilerini göndermenin yanı sıra, düzeltme ekinin de hastam oranı ve kan basıncı gibi hasta sistem durumu verileri göndermesi gerektiğini görürsünüz.
-
-* **Akıllı Knee ayracı**: Bu cihaz, bir Knee değiştirme Sury 'den kurtarma yaparken hastaların kullanabileceği bir Knee ayracı temsil eder. Bu şablona tıkladığınızda, cihaz verilerine ek olarak hareket ve hızlandırma aralığı gibi yetenekler görürsünüz.
+Burkville Hastanesi için kullanılan ikinci operatör panosunu görmek için **uzak hasta panosuna git'e** de tıklayabilirsiniz. Bu pano benzer bir eylem kümesi, telemetri ve bilgi içerir. Buna ek olarak, birden çok aygıtın kullanıldığını görebilir ve her birinde **firmware'i güncelleştirme** yeteneğine sahip olabilirsiniz.
 
 >[!div class="mx-imgBorder"] 
->Akıllı vitals düzeltme eki cihaz şablonu ![](media/smart-vitals-device-template.png)
+>![Lamna uzaktan kumanda](media/lamna-remote.png)
 
-**Cihaz grupları** sekmesine tıklarsanız, bu cihaz şablonlarının kendileri için cihaz gruplarının otomatik olarak oluşturulduğunu da görürsünüz.
+Her iki panoda da bu belgelere her zaman bağlanabilirsiniz.
+
+### <a name="device-templates"></a>Aygıt şablonları
+
+**Aygıt şablonları** sekmesini tıklattığınızda, şablonun bir parçası olan iki farklı aygıt türü olduğunu görürsünüz:
+
+* **Akıllı Vitals Patch**: Bu cihaz hayati işaretleri farklı ölçen bir yama temsil eder. Hastane içinde ve dışında hastaların izlenmesi için kullanılabilir. Şablona tıklarsanız, pil seviyesi ve cihaz sıcaklığı gibi cihaz verilerini göndermenin yanı sıra, yamanın solunum hızı ve kan basıncı gibi hasta sağlık verilerini de gönderdiğini görürsünüz.
+
+* **Akıllı Diz Desteği**: Bu cihaz, hastaların diz protezi ameliyatından sonra iyileşirken kullanabilecekleri bir diz liköre sahip olduğunu gösterir. Bu şablonu tıklatırsanız, aygıt verilerine ek olarak hareket aralığı ve hızlanma gibi özellikleri görürsünüz.
+
+>[!div class="mx-imgBorder"] 
+>![Smart Vitals Patch Cihazı Şablonu](media/smart-vitals-device-template.png)
+
+**Aygıt grupları** sekmesini tıklattığınızda, bu aygıt şablonlarının kendileri için otomatik olarak aygıt grupları oluşturulduğunu da görürsünüz.
 
 ### <a name="rules"></a>Kurallar
 
-Kurallar sekmesine atladıktan sonra, uygulama şablonunda var olan üç kural görürsünüz:
+Kurallar sekmesine atlarken, uygulama şablonunda bulunan üç kural görürsünüz:
 
-* **Ayraç sıcaklığı yüksek**: Bu kural, Smart Knee ayracın cihaz sıcaklığı 5 dakikalık bir pencere üzerinde 95&deg;F 'den büyükse tetiklenir. Bu kuralı, hasta ve bakım ekibine uyarı vermek ve cihazı uzaktan yavaşlatmak için kullanabilirsiniz.
+* **Ayraç sıcaklığı yüksek**: Akıllı Diz Ayracının cihaz sıcaklığı 5&deg;dakikalık bir süre içinde 95 F'den büyük olduğunda bu kural tetiklenir. Bu kuralı hasta ve bakım ekibini uyarmak ve cihazı uzaktan soğutmak için kullanabilirsiniz.
 
-* **Düşüş tespit edildi**: Bu kural bir hasta olursa tetiklenir. Bu kuralı, işlem ekibinin süresi düşmüş olan hastaya yardımcı olmak üzere bir operasyonel takım dağıtmak üzere bir eylem yapılandırmak için kullanabilirsiniz.
+* **Düşme saptandı**: Hasta düşmesi tespit edilirse bu kural tetiklenir. Düşen hastaya yardımcı olmak için bir operasyon ekibi dağıtmak için bir eylemi yapılandırmak için bu kuralı kullanabilirsiniz.
 
-* **Düzeltme Eki pili düşük**: Bu kural, cihazdaki pil düzeyi %10 ' un altına gittiğinde tetiklenir. Bu kuralı, cihazındaki cihazlarını ücretlendirmesi için bir bildirim tetikleyebilmeniz için kullanabilirsiniz.
+* **Yama pili düşük**: Cihazdaki pil seviyesi %10'un altına düştüğünde bu kural tetiklenir. Bu kuralı, cihazını şarj etmek için hastaya bir bildirim tetiklemek için kullanabilirsiniz.
 
 >[!div class="mx-imgBorder"] 
->![ayracı sıcaklık yüksek kuralı](media/brace-temp-rule.png)
+>![Ayraç sıcaklığı yüksek kural](media/brace-temp-rule.png)
 
 ### <a name="devices"></a>Cihazlar
 
-**Cihazlar** sekmesine tıklayın ve ardından **akıllı Knee ayracın**bir örneğini seçin. Seçtiğiniz belirli bir cihazla ilgili bilgileri araştırmak için üç görünüm olduğunu göreceksiniz. Bu görünümler, cihazınızın cihaz şablonu oluşturulurken oluşturulur ve yayımlanır, bu, bağlandığınız veya benzetim yaptığınız tüm cihazlarda tutarlı olabilecekleri anlamına gelir.
+**Cihazlar** sekmesine tıklayın ve ardından **Akıllı Diz Ayracı'nın**bir örneğini seçin. Seçtiğiniz belirli aygıt hakkında bilgi keşfetmek için üç görünüm olduğunu görürsünüz. Bu görünümler, aygıtınız için aygıt şablonu oluşturulur ve yayımlanır, bu da bağladığınız veya simüle ettiğiniz tüm aygıtlar arasında tutarlı olacağı anlamına gelir.
 
-**Pano** görünümü, operatör odaklı cihazdan gelen telemetri ve özelliklere genel bir bakış sağlar.
+**Pano** görünümü, operatör ekive yönlendirilen aygıttan gelen telemetri ve özelliklere genel bir bakış sağlar.
 
-**Özellikler** sekmesi, bulut özelliklerini düzenlemenize ve cihaz özelliklerini okuma/yazma özelliği sağlayacak.
+**Özellikler** sekmesi bulut özelliklerini ve okuma/yazma aygıt özelliklerini değiştirmenize olanak tanır.
 
-**Komutlar** sekmesi, cihaz şablonunuzun bir parçası olarak modellenen komutları çalıştırmanıza olanak sağlayacak.
+**Komutlar** sekmesi, aygıt şablonunuzun bir parçası olarak modellenmiş komutları çalıştırmanızı sağlar.
 
 >[!div class="mx-imgBorder"] 
->Knee ayraç görünümlerini ![](media/knee-brace-dashboard.png)
+>![Diz ayracı görünümleri](media/knee-brace-dashboard.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam edemeyecekiniz, **yönetim > uygulama ayarlarını** ziyaret ederek uygulamayı silin ve **Sil**' e tıklayın.
+Bu uygulamayı kullanmaya devam etmeyecekseniz, İdare > Uygulama **ayarlarını** ziyaret ederek uygulamayı silin ve **Sil'i**tıklatın.
 
 >[!div class="mx-imgBorder"] 
->![uygulama](media/admin-delete.png) Sil
+>![Uygulamayı silme](media/admin-delete.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Central uygulamanıza bağlanan bir sağlayıcı panosunun nasıl oluşturulacağını öğrenmek için sonraki makaleye ilerleyin.
+IoT Merkezi uygulamanıza bağlanan bir sağlayıcı panosuoluşturmayı öğrenmek için bir sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Sağlayıcı panosu oluşturma](howto-health-data-triage.md)

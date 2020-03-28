@@ -1,41 +1,41 @@
 ---
-title: Öğretici-Terrayform kullanarak Azure 'da bir hub ve bağlı ağ ağını doğrulama
-description: Hub ve bağlı bileşen ağ topolojisini birbirine bağlı tüm sanal ağlarla doğrulama öğreticisi.
+title: Öğretici - Terraform kullanarak Azure'da hub ve konuşan ağı doğrulama
+description: Birbirine bağlı tüm sanal ağlarla hub ve kollu ağ topolojisini doğrulamak için öğretici.
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 9ba4780c59e5e9da4999573abbc08ecd2738a2cd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159196"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da bir hub ve bağlı ağ ağını doğrulama
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Öğretici: Terraform'u kullanarak Azure'da hub ve konuşan ağı doğrulama
 
-Bu makalede, bu serinin önceki makalesinde oluşturulan teraform dosyalarını yürütüteolursunuz. Sonuç, tanıtım sanal ağları arasındaki bağlantının doğrulanmasından kaynaklanır.
+Bu makalede, bu serinin önceki makalede oluşturulan terraform dosyaları yürütmek. Sonuç, demo sanal ağlar arasındaki bağlantının doğrulanmasıdır.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Hub-ışınsal-uç topolojisinde hub VNet 'i uygulamak için HCL (HashiCorp Language) kullanın
-> * Dağıtılacak kaynakları doğrulamak için Terrayform planını kullanma
-> * Azure 'da kaynak oluşturmak için Terrayform Uygula ' yı kullanın
+> * Hub VNet'i hub konuşan topolojide uygulamak için HCL'yi (HashiCorp Dili) kullanın
+> * Dağıtılacak kaynakları doğrulamak için Terraform planını kullanma
+> * Azure'daki kaynakları oluşturmak için Terraform uygulaması kullanın
 > * Farklı ağlar arasındaki bağlantıyı doğrulama
-> * Tüm kaynakları yok etmek için Terrayform kullanın
+> * Tüm kaynakları yok etmek için Terraform'u kullanın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. [Azure 'Da Terrayform ile bir hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
-1. [Azure 'Da Terrayform ile şirket içi sanal ağ oluşturun](./terraform-hub-spoke-on-prem.md).
-1. [Azure 'Da Terrayform ile bir hub sanal ağı oluşturun](./terraform-hub-spoke-hub-network.md).
-1. [Azure 'Da Terrayform ile bir hub sanal ağ gereci oluşturun](./terraform-hub-spoke-hub-nva.md).
-1. [Azure 'Da Terrayform ile bir bağlı bileşen sanal ağı oluşturun](./terraform-hub-spoke-spoke-network.md).
+1. [Azure'da Terraform ile bir hub ve kollu karma ağ topolojisi oluşturun.](./terraform-hub-spoke-introduction.md)
+1. [Azure'da Terraform ile şirket içi sanal ağ oluşturun.](./terraform-hub-spoke-on-prem.md)
+1. [Azure'da Terraform ile bir hub sanal ağı oluşturun.](./terraform-hub-spoke-hub-network.md)
+1. [Azure'da Terraform ile hub sanal ağ cihazı oluşturun.](./terraform-hub-spoke-hub-nva.md)
+1. [Azure'da Terraform ile konuşlu sanal ağlar oluşturun.](./terraform-hub-spoke-spoke-network.md)
 
 ## <a name="verify-your-configuration"></a>Yapılandırmanızı doğrulayın
 
-[Önkoşulları](#prerequisites)tamamladıktan sonra uygun yapılandırma dosyalarının mevcut olduğunu doğrulayın.
+[Ön koşulları](#prerequisites)tamamladıktan sonra, uygun config dosyalarının mevcut olduğunu doğrulayın.
 
-1. [Azure portala](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com)göz atın.
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview)'i açın. Önceden bir ortam seçmediyseniz **Bash** ortamını seçin.
 
@@ -53,27 +53,27 @@ Bu öğretici aşağıdaki görevleri kapsar:
     cd hub-spoke
     ```
 
-1. Önceki öğreticilerde oluşturulan `.tf` config dosyalarının listelendiğini doğrulamak için `ls` komutunu çalıştırın:
+1. Önceki `ls` öğreticilerde oluşturulan `.tf` config dosyalarının listeli olduğunu doğrulamak için komutu çalıştırın:
 
-    ![Terrayform demo yapılandırma dosyaları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
+    ![Terraform demo config dosyaları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
 ## <a name="deploy-the-resources"></a>Kaynakları dağıtma
 
-1. Terrayform sağlayıcısını başlatın:
+1. Terraform sağlayıcısını başlatma:
     
     ```bash
     terraform init
     ```
     
-    !["Terrayform init" komutunun örnek sonuçları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
+    !["Terraform init" komutunun örnek sonuçları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
     
-1. Yürütmeden önce dağıtımın etkisini görmek için `terraform plan` komutunu çalıştırın:
+1. Yürütmeden `terraform plan` önce dağıtımın etkisini görmek için komutu çalıştırın:
 
     ```bash
     terraform plan
     ```
     
-    !["Terrayform planı" komutunun örnek sonuçları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
+    !["Terraform plan" komutunun örnek sonuçları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
 
 1. Çözümü dağıtın:
 
@@ -81,62 +81,62 @@ Bu öğretici aşağıdaki görevleri kapsar:
     terraform apply
     ```
     
-    Dağıtımı onaylamanız istendiğinde `yes` girin.
+    Dağıtımı `yes` onaylamak istendiğinde girin.
 
-    !["Terrayform Apply" komutunun örnek sonuçları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
+    !["Terraform apply" komutunun örnek sonuçları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
     
-## <a name="test-the-hub-vnet-and-spoke-vnets"></a>Hub VNet ve bağlı bileşen sanal ağlarını test etme
+## <a name="test-the-hub-vnet-and-spoke-vnets"></a>Hub VNet'i ve kollu VNet'leri test edin
 
-Bu bölümde, sanal şirket içi ortamdan hub VNet 'e bağlantının nasıl test yapılacağı gösterilmektedir.
+Bu bölümde, benzetilen şirket içi ortamdan vnet hub'ına bağlantı nın nasıl test edilebildiğini gösterilmektedir.
 
-1. Azure portal **onprez-VNET-RG** kaynak grubuna gidin.
+1. Azure **portalında, onprem-vnet-rg** kaynak grubuna göz atın.
 
-1. **Onpred-VNET-RG** sekmesinde **onpred-VM**adlı VM 'yi seçin.
+1. **onprem-vnet-rg** sekmesinde, **onprem-vm**adlı VM'yi seçin.
 
 1. **Bağlan**’ı seçin.
 
-1. **VM yerel hesabını kullanarak metin oturum açma**seçeneğinin yanında, **SSH** komutunu panoya kopyalayın.
+1. **VM yerel hesabını kullanarak**metin Girişi'nin yanında, **ssh** komutunu panoya kopyalayın.
 
-1. Bir Linux istemiyle çalıştırılabilen `ssh` simülasyonu yapılmış şirket içi ortama bağlanmak için. `on-prem.tf` parametre dosyasında belirtilen parolayı kullanın.
+1. Linux komut isteminden, simüle edilen şirket içi ortama bağlanmak için çalıştırın. `ssh` Parametre dosyasında `on-prem.tf` belirtilen parolayı kullanın.
 
-1. Hub VNet 'teki sıçrama kutusu VM 'sine bağlantıyı sınamak için `ping` komutunu çalıştırın:
+1. Hub `ping` VNet'teki atlama kutusu VM'ye bağlantıyı test etmek için komutu çalıştırın:
 
    ```bash
    ping 10.0.0.68
    ```
 
-1. Her bir bağlı bileşen içindeki sıçrama kutusu VM 'lerine bağlantıyı sınamak için `ping` komutunu çalıştırın:
+1. Her `ping` konuşmada atlama kutusu VM'lere bağlantıyı test etmek için komutu çalıştırın:
 
    ```bash
    ping 10.1.0.68
    ping 10.2.0.68
    ```
 
-1. **Onpree-VM** sanal makinesindeki SSH oturumundan çıkmak için `exit` girin ve > Enter &lt;tuşuna basın.
+1. **onprem-vm** sanal makinedeki ssh oturumundan `exit` çıkmak &lt;için enter ve enter> tuşuna basın.
 
-## <a name="troubleshoot-vpn-issues"></a>VPN sorunlarını giderme
+## <a name="troubleshoot-vpn-issues"></a>Sorun giderme VPN sorunları
 
-VPN hatalarını çözme hakkında daha fazla bilgi için bkz. [karma VPN bağlantısıyla Ilgili sorun giderme](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn).
+VPN hatalarını çözme hakkında bilgi için, makaleye bakın, [Karma VPN bağlantısı sorun giderme](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, öğretici serisinde oluşturulan kaynakları silin.
+Artık gerekmediğinde, öğretici seride oluşturulan kaynakları silin.
 
-1. Planda belirtilen kaynakları kaldırın:
+1. Planda bildirilen kaynakları kaldırın:
 
     ```bash
     terraform destroy
     ```
 
-    Kaynakların kaldırılmasını onaylamanız istendiğinde `yes` girin.
+    Kaynakların `yes` kaldırılmasını onaylamak için istendiğinde girin.
 
-1. Dizinleri üst dizinle değiştirin:
+1. Dizinleri üst dizine değiştirin:
 
     ```bash
     cd ..
     ```
 
-1. `hub-scope` dizinini silin (tüm dosyaları dahil):
+1. Dizinini `hub-scope` silin (tüm dosyaları dahil):
 
     ```bash
     rm -r hub-spoke
@@ -145,4 +145,4 @@ Artık gerekli değilse, öğretici serisinde oluşturulan kaynakları silin.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](/azure/terraform)
+> [Azure'da Terraform'u kullanma hakkında daha fazla bilgi edinin](/azure/terraform)

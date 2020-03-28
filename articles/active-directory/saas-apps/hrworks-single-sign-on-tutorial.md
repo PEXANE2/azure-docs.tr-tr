@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Hrçalışmalar çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Hrçalışmalerde çoklu oturum açma arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: HRworks Tek Oturum Açma ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve HRworks Single Sign-On arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,172 +16,172 @@ ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b20ce5f754333aec78513e32901b0608f8bee3b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75638782"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Öğretici: Hrçalışmalar çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Öğretici: HRworks Tek Oturum Açma ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Hrçalışmaları çoklu oturum açmayı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Hrçalışmalarla çoklu oturum açmayı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, HRworks Tek Oturum Açma'yı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. HRworks Tek Oturum Açma'yı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Hrçalışmalar çoklu oturum açma 'ya erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla HR, çoklu oturum açma için otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Azure AD'de HRworks Tek Oturum Açma erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla HRworks Tek Oturum Açma'da otomatik olarak oturum açmalarını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Hrçalışmaktadır çoklu oturum açma çoklu oturum açma (SSO) etkin abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* HRworks Tek Oturum Açma tek oturum açma (SSO) aboneliği sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Hrçalışmalar çoklu oturum açma, **SP** tarafından başlatılan SSO 'yu destekler
+* HRworks Tek İşaret-On **SP** başlatılan SSO destekler
 
-## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>Galeriden Hrçalışmalar çoklu oturum açma ekleme
+## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>Galeriden HRworks Tek Oturum Açma Ekleme
 
-HR, çoklu oturum açma 'nın Azure AD 'de tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize hrçalışmalardan çoklu oturum açma eklemeniz gerekir.
+HRworks Tek Oturum Açma'nın Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize HRworks Tek Oturum Açma eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **hrçalışmaçoklu oturum açma** yazın.
-1. Sonuçlar panelinden **Hrçalışmaçoklu oturum açma** 'yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **HRworks Tek İşaret-On** yazın.
+1. Sonuç panelinden **HRworks Tek Oturum** Açma'yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-hrworks-single-sign-on"></a>Hrçalışmalar çoklu oturum açma için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-hrworks-single-sign-on"></a>HRworks Tek Oturum Açma için Azure AD oturum açma işlemlerini yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak HR, çoklu oturum açma Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Hrwork çoklu oturum açma içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak HRworks Tek Oturum Açma ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile HRworks Tek Oturum Açma'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu Hrçalışmalar çoklu oturum açma özelliğiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu HRworks Tek Oturum Açma ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Hrçalışmaçoklu oturum açma SSO 'Yu yapılandırma](#configure-hrworks-single-sign-on-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * **[Hrçalışmalar çoklu oturum açma testi Kullanıcı oluşturma](#create-hrworks-single-sign-on-test-user)** -kullanıcının Azure AD gösterimine bağlı olan HR, çoklu oturum açma bölümünde B. Simon 'a karşılık
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[HRworks Tek Oturum Açma SSO'yu uygulama](#configure-hrworks-single-sign-on-sso)** tarafındaki tek oturum açma ayarlarını yapılandırmak için yapılandırın.
+    * **[HRworks Tek Oturum](#create-hrworks-single-sign-on-test-user)** Açma test kullanıcısını oluşturun - Kullanıcının Azure AD gösterimine bağlı HRworks Tek Oturum Açma'da B.Simon'ın bir muadili olması için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **hrçalışmaçoklu oturum açma** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında,](https://portal.azure.com/) **HRworks Tek Oturum** Açma uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Hrçalışmaçoklu oturum açma istemci desteği ekibine](mailto:nadja.sommerfeld@hrworks.de) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Oturum Açma URL'si ile güncelleştirin. Değeri almak için [HRworks Tek Oturum Açma İstemci destek ekibiyle](mailto:nadja.sommerfeld@hrworks.de) iletişime geçin. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML İmza Sertifikası** bölümünde **SAML ile tek oturum açma'da** **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **Hrçalışmalarınızla çoklu oturum açma ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **HRworks Tek Oturum Açma** bölümünü ayarlayın, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Hruse çoklu oturum açma 'ya erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın HRworks Tek Oturum Açma'ya erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Hrçalışmaçoklu oturum açma**' yı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **HRworks Tek Oturum Açma'yı**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-hrworks-single-sign-on-sso"></a>Hrçalışmalar çoklu oturum açma SSO 'SU yapılandırma
+## <a name="configure-hrworks-single-sign-on-sso"></a>HRworks Tek İşaret-On SSO yapılandırılması
 
-1. Hrmın çoklu oturum açma içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. HRworks Tek Oturum Açma içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
 
-    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
 
-1. Tarayıcıya Uzantı eklendikten sonra, **HR, tek oturum** açma 'yı ayarla ' ya tıklayın. Bu, sizi Hrup çoklu oturum açma uygulamasına yönlendirir. Buradan, Hrçalışmalar çoklu oturum açma 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-4 adımlarını otomatikleştirecektir.
+1. Tarayıcıya uzantı ekledikten sonra, **HRworks Tek Oturum Açma'yı** ayarla'ya tıklayın ve sizi HRworks Tek Oturum Açma uygulamasına yönlendirecektir. Buradan, HRworks Tek Oturum Açma'da oturum açabilmek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-4 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-1. Hrçalışmaları çoklu oturum açmayı el ile kurmak istiyorsanız, yeni bir Web tarayıcısı penceresi açın ve Hrçalışmaçoklu oturum açma şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+1. HRworks Tek Oturum Açma'yı el ile kurmak istiyorsanız, yeni bir web tarayıcısı penceresi açın ve HRworks Tek Oturum Açma şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. **Yönetici** > , menü çubuğunun sol tarafındaki **güvenlik** > **Çoklu oturum açma** > **temelleri** ve aşağıdaki adımları gerçekleştirin:
+1. Menü çubuğunun sol tarafından **Administrator** > **Basics** > **Security** > Tek**Oturum** Açma'ya tıklayın ve aşağıdaki adımları gerçekleştirin:
 
     ![Çoklu oturum açmayı yapılandırma](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
-    a. **Çoklu oturum açma kullan** kutusunu işaretleyin.
+    a. Tek **Oturum Açma** kutusunu Kullan'ı işaretleyin.
 
-    b. **Meta veri giriş yöntemi**olarak **XML meta** verilerini seçin.
+    b. Meta veri giriş **yöntemi**olarak **XML Meta verilerini** seçin.
 
-    c. **NameID Için** **bağımsız bir NameID tanımlayıcı** değeri seçin.
+    c. **NameID için Değer**olarak Bireysel **NameID tanımlayıcısı** seçin.
 
-    d. Not defteri 'nde, Azure portal indirdiğiniz meta veri XML dosyasını açın, içeriğini kopyalayın ve sonra **meta veri** metin kutusuna yapıştırın.
+    d. Not Defteri'nde, Azure portalından indirdiğiniz Metadata XML'yi açın, içeriğini kopyalayın ve meta **veri** metin kutusuna yapıştırın.
 
-    e. **Save (Kaydet)** düğmesine tıklayın.
+    e. **Kaydet**'e tıklayın.
 
-### <a name="create-hrworks-single-sign-on-test-user"></a>Hrçalışmalar çoklu oturum açma test kullanıcısı oluşturma
+### <a name="create-hrworks-single-sign-on-test-user"></a>HRworks Tek Oturum Açma test kullanıcısı oluşturma
 
-Azure AD kullanıcılarını etkinleştirmek için, hr, çoklu oturum açma 'da oturum açın, hr, çoklu oturum açma ' ya sağlanması gerekir. Hrçalışmalerde çoklu oturum açma bölümünde, sağlama el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının HRworks Tek Oturum Açma'da oturum açmalarını etkinleştirmek için HRworks Tek Oturum Açma'ya dahil olmaları gerekir. HRworks Tek Oturum Açma'da, sağlama el ile bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Hrçalışmalerde yönetici olarak çoklu oturum açma oturumu açın.
+1. Yönetici olarak HRworks Tek Oturum Açma'da oturum açın.
 
-1. **Yönetici** > **kişiler** > , menü çubuğunun sol tarafındaki **kişiler** > **Yeni kişi** ' ye tıklayın.
+1. **Yönetici** > **Kişiler** > **Kişiler** > menüsü çubuğunun sol tarafında yeni**kişi** tıklayın.
 
-     ![Çoklu oturum açmayı yapılandırın](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Tek İşaret-On'u Yapılandır](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
-1. Açılır pencerede **İleri**' ye tıklayın.
+1. Açılır Pencere'de **İleri'yi**tıklatın.
 
-    ![Çoklu oturum açmayı yapılandırın](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![Tek İşaret-On'u Yapılandır](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
-1. **Yasal koşullar için ülke ile yeni kişi oluştur** açılır penceresinde, **ad**, **Soyadı** gibi ilgili ayrıntıları girin ve **Oluştur**' a tıklayın.
+1. Yasal **terimler için ülke ile yeni kişi oluştur** açılır, **Ad ,** **Soyad** ve **oluştur**gibi ilgili ayrıntıları doldurun .
 
-    ![Çoklu oturum açmayı yapılandırın](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![Tek İşaret-On'u Yapılandır](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
-## <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Hrçalışmaçoklu oturum açma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız HR, çoklu oturum açma için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki HRworks Tek Oturum Açma döşemesini tıklattığınızda, Otomatik olarak SSO'yu kurduğunuz HRworks Single Sign-On'da oturum açmanız gerekir. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Hrçalışmalar çoklu oturum açmayı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile HRworks Tek Oturum Açma'yı deneyin](https://aad.portal.azure.com/)

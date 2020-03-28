@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Trisotech dijital kuruluş sunucusu ile Azure Active Directory Tümleştirme | Microsoft Docs'
-description: Azure Active Directory Trisotech dijital kuruluş sunucusu arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Trisotech Digital Enterprise Server ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Trisotech Digital Enterprise Server arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,204 +16,204 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 56399f99ede611c4a120603cce3a3eede2728c6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088257"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Öğretici: Azure Active Directory tümleştirmesiyle Trisotech dijital kuruluş sunucusu
+# <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Öğretici: Trisotech Digital Enterprise Server ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Trisotech dijital Enterprise Server Tümleştirme konusunda bilgi edinin.
-Azure AD ile Trisotech dijital Enterprise Server Tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, Trisotech Digital Enterprise Server'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Trisotech Digital Enterprise Server'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Trisotech dijital kuruluş sunucusuna erişimi olan Azure AD'de kontrol edebilirsiniz.
-* Azure AD hesaplarına otomatik olarak Trisotech dijital kuruluş sunucusuna (çoklu oturum açma) oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Azure AD'de Trisotech Digital Enterprise Server'a erişimi olan kişiler kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Trisotech Digital Enterprise Server'da (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesi Trisotech dijital Kurumsal sunucusuyla yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Trisotech Digital Enterprise Server ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Abonelik Trisotech dijital kuruluş sunucusu çoklu oturum açma etkin
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* Trisotech Digital Enterprise Server tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Trisotech dijital Enterprise Server destekler **SP** tarafından başlatılan
+* Trisotech Digital Enterprise **Server, SP** tarafından başlatılan SSO'ya destek veriyor
 
-* Trisotech dijital Enterprise Server destekler **zamanında** kullanıcı sağlama
+* Trisotech Digital Enterprise Server **Just In Time** kullanıcı sağlama destekler
 
-## <a name="adding-trisotech-digital-enterprise-server-from-the-gallery"></a>Galeriden Trisotech dijital kuruluş sunucusu ekleme
+## <a name="adding-trisotech-digital-enterprise-server-from-the-gallery"></a>Galeriden Trisotech Digital Enterprise Server ekleme
 
-Azure AD'de Trisotech dijital Enterprise Server tümleştirmesini yapılandırmak için yönetilen SaaS uygulamaları listenize Galeriden Trisotech dijital kuruluş sunucusu eklemeniz gerekir.
+Trisotech Digital Enterprise Server'ın Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Trisotech Digital Enterprise Server'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Trisotech dijital Kurumsal sunucusu eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Trisotech Digital Enterprise Server eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Trisotech dijital Enterprise Server**seçin **Trisotech dijital Enterprise Server** sonucu panelinden ardından **Ekle** düğme eklemek için uygulama.
+4. Arama kutusunda, **Trisotech Digital Enterprise Server**yazın, sonuç panelinden **Trisotech Digital Enterprise Server'ı** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuç listesinde Trisotech dijital kuruluş sunucusu](common/search-new-app.png)
+     ![Trisotech Digital Enterprise Server sonuç listesinde](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma Trisotech dijital Kurumsal adlı bir test kullanıcı tabanlı sunucuyu test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısı ve ilgili kullanıcı Trisotech dijital kuruluş sunucusu arasında bir bağlantı ilişki kurulması gerekir.
+Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Trisotech Digital Enterprise Server ile yapılandırıp test edersiniz.
+Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile Trisotech Digital Enterprise Server'daki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma Trisotech dijital kuruluş sunucusu ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD oturumlarını Trisotech Digital Enterprise Server ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Trisotech dijital Kurumsal sunucusu çoklu oturum açmayı yapılandırma](#configure-trisotech-digital-enterprise-server-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Trisotech dijital Enterprise Server test kullanıcısı oluşturma](#create-trisotech-digital-enterprise-server-test-user)**  - Trisotech dijital Kurumsal Server'da kullanıcı Azure AD gösterimini bağlı Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[Trisotech Digital Enterprise Server Tek Oturum Açma](#configure-trisotech-digital-enterprise-server-single-sign-on)** 'yı uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Trisotech Digital Enterprise Server test kullanıcısını oluşturun](#create-trisotech-digital-enterprise-server-test-user)** - Kullanıcının Azure AD temsiline bağlı Trisotech Digital Enterprise Server'da Britta Simon'ın bir muadili olması için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma Trisotech dijital Kurumsal sunucusuyla yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD oturumaçmayı Trisotech Digital Enterprise Server ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Trisotech dijital Enterprise Server** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. Azure [portalında,](https://portal.azure.com/) **Trisotech Digital Enterprise Server** uygulama tümleştirme sayfasında Tek oturum **açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Trisotech dijital Kurumsal sunucusu etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![Trisotech Digital Enterprise Server Domain ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
 
-    a. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<companyname>.trisotech.com`
+    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.trisotech.com`
 
-    b. İçinde **tanımlayıcı (varlık kimliği)** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<companyname>.trisotech.com`
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.trisotech.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek oturum açma URL ve tanımlayıcıdır ile güncelleştirin. İlgili kişi [Trisotech dijital Kurumsal sunucusu istemci Destek ekibine](mailto:support@trisotech.com) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Trisotech Digital Enterprise Server Client destek ekibine](mailto:support@trisotech.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-4. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **SAML imzalama sertifikası** bölümünde, kopyalamak için Kopyala düğmesine **uygulama Federasyon meta verileri URL'sini** ve üzerinde kaydedin, bilgisayar.
+4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-trisotech-digital-enterprise-server-single-sign-on"></a>Trisotech dijital Kurumsal sunucusu çoklu oturum açmayı yapılandırın
+### <a name="configure-trisotech-digital-enterprise-server-single-sign-on"></a>Trisotech Digital Enterprise Server Tek Oturum Açma
 
-1. Farklı bir web tarayıcı penceresinde Trisotech dijital Enterprise sunucu yapılandırması şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak Trisotech Digital Enterprise Server Configuration şirket sitenizde oturum açın.
 
-2. Tıklayarak **menüsü simgesi** seçip **Yönetim**.
+2. **Menü simgesine** tıklayın ve ardından **İdare'yi**seçin.
 
-    ![Çoklu oturum açmayı yapılandırın](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
+    ![Tek İşaret-On'u Yapılandır](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
-3. Seçin **kullanıcı sağlayıcısı**.
+3. **Kullanıcı Sağlayıcı'yı**seçin.
 
-    ![Çoklu oturum açmayı yapılandırın](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
+    ![Tek İşaret-On'u Yapılandır](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
-4. İçinde **kullanıcı sağlayıcısı yapılandırmalarını** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. Kullanıcı **Sağlayıcı Yapılandırmaları** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırın](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
+    ![Tek İşaret-On'u Yapılandır](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
-    a. Seçin **güvenli onaylama işlemi biçimlendirme dili 2 (SAML 2)** açılır listeden **kimlik doğrulama yöntemi**.
+    a. **Kimlik Doğrulama Yöntemi'ndeki**açılır bırakma dan **Güvenli İddia İşaretle dili 2 (SAML 2)** seçin.
 
-    b. İçinde **meta veri URL'si** metin kutusu, yapıştırma **uygulama Federasyon meta verileri URL'sini** kopyaladığınız değeri form Azure portalı.
+    b. **Metadata URL** metin kutusuna, Azure portalını kopyaladığınız **Uygulama Federasyonu Metadata Url** değerini yapıştırın.
 
-    c. İçinde **uygulama kimliği** metin kutusuna şu biçimi kullanarak URL'yi girin: `https://<companyname>.trisotech.com`.
+    c. Uygulama **Kimliği** metin kutusuna aşağıdaki deseni kullanarak `https://<companyname>.trisotech.com`URL'yi girin: .
 
-    d. **Kaydet**'e tıklayın.
+    d. **Kaydet'i** tıklatın
 
-    e. Etki alanı adı girin **(boş gösterir herkes) etki alanlarına izin verilir** metin otomatik olarak atar izin etki alanları ile eşleşen kullanıcılar için lisans
+    e. İzin Verilen Etki **Alanları (boş herkes anlamına gelir)** textbox alan adını girin, otomatik olarak İzin Verilen Etki Alanları eşleşen kullanıcılar için lisansatar
 
-    f. **Kaydet**'e tıklayın.
+    f. **Kaydet'i** tıklatın
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. Kullanıcı **adı** alanı brittasimon@yourcompanydomain.extensiontüründe. Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Trisotech dijital kuruluş sunucusuna erişim izni verdiğinizde, Azure çoklu oturum açma kullanılacak Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın Trisotech Digital Enterprise Server'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Trisotech dijital Enterprise Server**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Trisotech Digital Enterprise Server'ı**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Trisotech dijital Enterprise Server**.
+2. Uygulamalar listesinde **Trisotech Digital Enterprise Server'ı**seçin.
 
-    ![Uygulamalar listesinde Trisotech dijital Enterprise Server bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Trisotech Digital Enterprise Server bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-trisotech-digital-enterprise-server-test-user"></a>Trisotech dijital Enterprise Server test kullanıcısı oluşturma
+### <a name="create-trisotech-digital-enterprise-server-test-user"></a>Trisotech Digital Enterprise Server test kullanıcısı oluşturun
 
-Bu bölümde, Britta Simon adlı bir kullanıcı Trisotech dijital Kurumsal Server'da oluşturulur. Trisotech dijital Enterprise Server just-ın-time kullanıcı hazırlama, varsayılan olarak etkin olduğu destekler. Bu bölümde, hiçbir eylem öğesini yoktur. Bir kullanıcı Trisotech dijital Kurumsal Server'da zaten mevcut değilse yeni bir kimlik doğrulamasından sonra oluşturulur.
+Bu bölümde, Britta Simon adlı bir kullanıcı Trisotech Digital Enterprise Server oluşturulur. Trisotech Digital Enterprise Server, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Bir kullanıcı Trisotech Digital Enterprise Server'da zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 >[!Note]
->Bir kullanıcı el ile oluşturmanız gerekiyorsa, kişi [Trisotech dijital Enterprise Server Destek ekibine](mailto:support@trisotech.com).
+>El ile bir kullanıcı oluşturmanız gerekiyorsa, [Trisotech Digital Enterprise Server destek ekibine](mailto:support@trisotech.com)başvurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli Trisotech dijital Enterprise Server kutucuğa tıkladığınızda, size otomatik olarak Trisotech dijital kuruluş SSO'yu ayarlama sunucusuna oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Trisotech Digital Enterprise Server döşemesini tıklattığınızda, SSO'yu kurduğunuz Trisotech Digital Enterprise Server'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

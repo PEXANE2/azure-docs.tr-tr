@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü konak havuzu Azure Marketi-Azure
-description: Azure Marketi 'ni kullanarak Windows sanal masaüstü konak havuzu oluşturma.
+title: Windows Sanal Masaüstü ana bilgisayar havuzu Azure Marketplace - Azure
+description: Azure Marketi'ni kullanarak Windows Sanal Masaüstü ana bilgisayar havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,33 +9,33 @@ ms.date: 03/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238625"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
+# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi'ni kullanarak ana bilgisayar havuzu oluşturma
 
-Bu öğreticide, bir Microsoft Azure Market teklifi kullanarak Windows sanal masaüstü kiracısı içinde bir konak havuzu oluşturmayı öğreneceksiniz.
+Bu eğitimde, Microsoft Azure Marketi teklifini kullanarak Windows Sanal Masaüstü kiracısı içinde ana bilgisayar havuzu oluşturmayı öğreneceksiniz.
 
-Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
+Ana bilgisayar havuzları, Windows Sanal Masaüstü kiracı ortamlarında bir veya daha fazla aynı sanal makineden oluşan bir koleksiyondur. Her ana bilgisayar havuzu, kullanıcıların fiziksel bir masaüstünde olduğu gibi etkileşim kurabileceği bir uygulama grubu içerebilir.
 
-Bu öğreticideki görevler şunları içerir:
+Bu öğreticideki görevler şunlardır:
 
 > [!div class="checklist"]
 >
-> * Windows sanal masaüstü 'nde bir konak havuzu oluşturun.
-> * Bir Azure aboneliğinde VM 'Ler içeren bir kaynak grubu oluşturun.
-> * VM 'Leri Active Directory etki alanına katın.
-> * VM 'Leri Windows sanal masaüstü ile kaydedin.
+> * Windows Sanal Masaüstü'nde ana bilgisayar havuzu oluşturun.
+> * Azure aboneliğinde VM'ler içeren bir kaynak grubu oluşturun.
+> * Active Directory etki alanına VM'lere katılın.
+> * Sanal Bilgisayarlara Windows Sanal Masaüstü kaydedin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Sanal masaüstündeki kiracı. Önceki [öğreticide](tenant-setup-azure-active-directory.md) kiracı oluşturulur.
-* [Windows sanal masaüstü PowerShell modülü](/powershell/windows-virtual-desktop/overview/).
+* Sanal Masaüstü'nde bir kiracı. Önceki [bir öğretici](tenant-setup-azure-active-directory.md) bir kiracı oluşturur.
+* [Windows Sanal Masaüstü PowerShell modülü](/powershell/windows-virtual-desktop/overview/).
 
-Bu modülden sonra, hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
+Bu modülü aldıktan sonra hesabınızda oturum açabilmek için aşağıdaki cmdlet'i çalıştırın:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -43,120 +43,120 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com)oturum açın.
 
-## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırın
+## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Yeni bir ana bilgisayar havuzu sağlamak için Azure Marketi teklifini çalıştırın
 
-Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
+Yeni bir ana bilgisayar havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
-1. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
-1. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Market arama penceresinde **Windows Sanal Masaüstü'nü** girin.
+1. **Windows Sanal Masaüstü'nü**seçin - Ana bilgisayar havuzu sağlama ve ardından **Oluştur'u**seçin.
 
-Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer alan yönergeleri izleyin.
+Bundan sonra, uygun sekmeler için bilgileri girmek için bir sonraki bölümdeki yönergeleri izleyin.
 
 ### <a name="basics"></a>Temel Bilgiler
 
-**Temel kavramlar** sekmesi için şunları yapın:
+**Temel bilgiler** sekmesi için şunları yaparsınız:
 
 1. Bir **Abonelik** seçin.
-1. **Kaynak grubu**Için **Yeni oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
-1. Bir **bölge**seçin.
-1. Windows sanal masaüstü kiracısı içinde benzersiz olan konak havuzu için bir ad girin.
-1. **Masaüstü türünü**seçin. **Kişisel**' i seçerseniz, bu konak havuzuna bağlanan her bir Kullanıcı, bir sanal makineye kalıcı olarak atanır.
-1. Windows sanal masaüstü istemcilerinde oturum açabilen ve bir masaüstüne erişebilen kullanıcıları girin. Virgülle ayrılmış bir liste kullanın. Örneğin, `user1@contoso.com` atamak ve `user2@contoso.com` erişim istiyorsanız, *`user1@contoso.com,user2@contoso.com`* girin
-1. **Hizmet meta verileri konumu**için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
+1. **Kaynak grubu**için **yeni oluştur'u** seçin ve yeni kaynak grubu için bir ad sağlayın.
+1. Bir **Bölge**seçin.
+1. Windows Sanal Masaüstü kiracıiçinde benzersiz ana bilgisayar havuzu için bir ad girin.
+1. **Masaüstü türünü**seçin. **Kişisel'i**seçerseniz, bu ana bilgisayar havuzuna bağlanan her kullanıcı kalıcı olarak sanal bir makineye atanır.
+1. Windows Sanal Masaüstü istemcilerinde oturum açabilen ve masaüstüne erişebilen kullanıcıları girin. Virgülle ayrılmış bir liste kullanın. Örneğin, atamak `user1@contoso.com` ve `user2@contoso.com` erişmek istiyorsanız,*`user1@contoso.com,user2@contoso.com`*
+1. **Hizmet meta veri konumu**için, Active Directory sunucusuna bağlantı olan sanal ağla aynı konumu seçin.
 
    >[!IMPORTANT]
-   >Saf Azure Active Directory Domain Services (Azure AD DS) ve Azure Active Directory (Azure AD) çözümü kullanıyorsanız, etki alanına ekleme ve kimlik bilgisi hatalarından kaçınmak için konak havuzunuzu Azure AD DS ile aynı bölgede dağıttığınızdan emin olun.
+   >Saf bir Azure Etkin Dizin Etki Alanı Hizmetleri (Azure AD DS) ve Azure Etkin Dizin (Azure AD) çözümü kullanıyorsanız, etki alanı birleştirme ve kimlik bilgisi hatalarını önlemek için ana bilgisayar havuzunuzu Azure AD DS'niz ile aynı bölgede dağıttığınızdan emin olun.
 
-1. **İleri ' yi seçin: sanal makineleri yapılandırın**.
+1. **Sonraki'ni Seçin: Sanal makineleri yapılandırın.**
 
 ### <a name="configure-virtual-machines"></a>Sanal makineleri yapılandırma
 
-**Sanal makineleri Yapılandır** sekmesini için:
+Sanal **makineleri yapılandır** sekmesi için:
 
-1. Varsayılanları kabul edin ya da sanal makinelerin sayısını ve boyutunu özelleştirin.
+1. Varsayılanları kabul edin veya sanal makinelerin sayısını ve boyutunu özelleştirin.
 
     >[!NOTE]
-    >Aradığınız belirli bir sanal makine boyutu, boyut seçicisinde görünmüyorsa, bunun nedeni, henüz Azure Market aracına eklendi. Bir boyut istemek için [Windows sanal masaüstü UserVoice forumundaki](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)bir istek oluşturun veya var olan bir isteği oylayın.
+    >Aradığınız belirli sanal makine boyutu boyut seçicide görünmüyorsa, bunun nedeni henüz Azure Marketi aracına binmemiş olmamızdır. Bir boyut istemek için, bir istek oluşturun veya [Windows Sanal Masaüstü UserVoice forumunda](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)varolan bir isteği yüksek oylandırın.
 
-1. Sanal makinelerin adları için bir ön ek girin. Örneğin, *ön ek*girerseniz, sanal makineler **önek-0**, **ön ek-1**vb. olarak adlandırılır.
-1. **İleri ' yi seçin: sanal makine ayarları**.
+1. Sanal makinelerin adları için bir önek girin. Örneğin, *önek*girerseniz, sanal makineler **öneki-0 , önek-1**ve benzeri olarak adlandırılır. **prefix-1**
+1. **Sonraki'ni seçin: Sanal makine ayarları.**
 
 ### <a name="virtual-machine-settings"></a>Sanal makine ayarları
 
-**Sanal makine ayarları** sekmesi için:
+Sanal **makine ayarları** sekmesi için:
 
-1. **Görüntü kaynağı**için kaynağı seçin ve nasıl bulacağınızı ve nasıl depolanacağını öğrenmek için uygun bilgileri girin. Seçenekleriniz BLOB depolama, yönetilen görüntü ve Galeri için farklılık gösterir.
+1. **Resim kaynağı**için, kaynağı seçin ve nasıl bulabileceğiniz ve nasıl depolacağı için uygun bilgileri girin. Seçenekleriniz Blob depolama, Yönetilen görüntü ve Galeri için farklıdır.
 
-   Yönetilen diskler kullanmayı tercih ederseniz, *. vhd* dosyasını içeren depolama hesabını seçin.
-1. Kullanıcı asıl adını ve parolasını girin. Bu hesap, sanal makinelere Active Directory etki alanına katılacak etki alanı hesabı olmalıdır. Bu aynı Kullanıcı adı ve parola, sanal makinelerde yerel bir hesap olarak oluşturulacaktır. Bu yerel hesapları daha sonra sıfırlayabilirsiniz.
+   Yönetilen diskleri kullanmamayı *seçerseniz,.vhd* dosyasını içeren depolama hesabını seçin.
+1. Kullanıcı adı ve parolasını girin. Bu hesap, sanal makineleri Active Directory etki alanına katılacak etki alanı hesabı olmalıdır. Bu aynı kullanıcı adı ve parola, sanal makinelerde yerel bir hesap olarak oluşturulur. Bu yerel hesapları daha sonra sıfırlayabilirsiniz.
 
    >[!NOTE]
-   > Sanal makinelerinizi bir Azure AD DS ortamına katılıyorsanız, etki alanına katılma Kullanıcı tarafından [AAD DC yöneticileri grubunun](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)bir üyesi olduğundan emin olun.
+   > Sanal makinelerinizi Azure AD DS ortamına katılıyorsanız, etki alanı birleştirme kullanıcınızın [AAD DC Yöneticileri grubunun](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)bir üyesi olduğundan emin olun.
    >
-   > Hesap Ayrıca Azure AD DS yönetilen etki alanının veya Azure AD kiracısının bir parçası olmalıdır. Azure AD kiracınızla ilişkilendirilen dış dizinlerden hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz.
+   > Hesabın ayrıca Azure AD DS yönetilen etki alanının veya Azure AD kiracısının bir parçası olması gerekir. Azure AD kiracınızla ilişkili dış dizinlerden gelen hesaplar, etki alanı birleştirme işlemi sırasında doğru şekilde doğru şekilde doğru şekilde doğru şekilde doğru şekilde doğru şekilde doğru şekilde doğru şekilde doğru şekilde doğru şekilde doğru yapamaz.
 
-1. Active Directory sunucusuyla bağlantısı olan **sanal ağı** seçin ve ardından sanal makineleri barındırmak için bir alt ağ seçin.
-1. **İleri ' yi seçin: Windows sanal masaüstü bilgileri**.
+1. Active Directory sunucusuna bağlantı sağlayan **Sanal ağı** seçin ve ardından sanal makineleri barındıracak bir alt ağ seçin.
+1. **Sonraki'ni seçin: Windows Sanal Masaüstü bilgileri.**
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Windows sanal masaüstü kiracı bilgileri
+### <a name="windows-virtual-desktop-tenant-information"></a>Windows Sanal Masaüstü kiracı bilgileri
 
-**Windows sanal masaüstü kiracı bilgileri** sekmesi için:
+Windows **Sanal Masaüstü kiracı bilgileri** sekmesi için:
 
-1. **Windows sanal masaüstü kiracı grubu adı**için kiracınızı içeren kiracı grubunun adını girin. Belirli bir kiracı grubu adı sağlanmadığınız sürece varsayılan olarak bırakın.
-1. **Windows sanal masaüstü kiracı adı**için, bu konak havuzunu oluşturacağınız kiracının adını girin.
-1. Windows sanal masaüstü kiracı RDS sahibi olarak kimlik doğrulaması yapmak için kullanmak istediğiniz kimlik bilgileri türünü belirtin. UPN veya hizmet sorumlusu ve bir parola girin.
+1. **Windows Sanal Masaüstü kiracı grup adı için,** kiracınızı içeren kiracı grubunun adını girin. Belirli bir kiracı grup adı verilmedikçe varsayılan olarak bırakın.
+1. **Windows Sanal Masaüstü kiracı adı için,** bu ana bilgisayar havuzunu oluşturacak kiracının adını girin.
+1. Windows Sanal Masaüstü kiracı RDS Sahibi olarak kimlik doğrulaması yapmak için kullanmak istediğiniz kimlik bilgilerini belirtin. UPN veya Hizmet ilkesini ve parolayı girin.
 
-   [PowerShell öğreticisi ile hizmet sorumluları ve rol atamaları oluştur](./create-service-principal-role-powershell.md)' u tamamladıysanız **hizmet sorumlusu**' nı seçin.
+   [PowerShell öğreticisiyle hizmet ilkelerini ve rol ödevlerini oluştur'u](./create-service-principal-role-powershell.md)tamamladıysanız, **Servis ilkesini**seçin.
 
-1. **Hizmet sorumlusu**Için, **Azure AD Kiracı kimliği**Için HIZMET sorumlusunu içeren Azure AD örneği için kiracı yönetici hesabını girin. Yalnızca parola kimlik bilgilerine sahip hizmet sorumluları desteklenir.
-1. **İleri ' yi seçin: gözden geçir + oluştur**.
+1. **Hizmet sorumlusu**için, Azure AD **kiracı kimliği**için, hizmet ilkesini içeren Azure REKLAM örneği için kiracı yönetici hesabını girin. Yalnızca parola kimlik bilgisi olan hizmet ilkeleri desteklenir.
+1. **Sonraki'ni Seçin: Gözden Geçirin + oluşturun.**
 
-## <a name="complete-setup-and-create-the-virtual-machine"></a>Kurulumu tamamladıktan sonra sanal makineyi oluşturun
+## <a name="complete-setup-and-create-the-virtual-machine"></a>Kurulumu tamamlayın ve sanal makineyi oluşturun
 
-**İnceleme ve oluşturma**bölümünde kurulum bilgilerini gözden geçirin. Bir değişiklik yapmanız gerekiyorsa, geri dönüp değişiklik yapın. Hazırsanız, konak havuzunuzu dağıtmak için **Oluştur** ' u seçin.
+**Gözden Geçir ve Oluştur'da,** kurulum bilgilerini gözden geçirin. Bir şeyi değiştirmeniz gerekiyorsa, geri dön ve değişiklik yap. Hazır olduğunuzda, ana bilgisayar havuzunuzu dağıtmak için **Oluştur'u** seçin.
 
-Bu işlem, kaç sanal makineye sahip olduğunuza bağlı olarak tamamlanması 30 dakika veya daha fazla sürebilir.
+Oluşturduğunuz sanal makine sayısına bağlı olarak, bu işlemin tamamlanması 30 dakika veya daha uzun sürebilir.
 
 >[!IMPORTANT]
-> Azure 'da Windows sanal masaüstü ortamınızı güvenli hale getirmeye yardımcı olmak için, sanal makinelerinizde gelen bağlantı noktası 3389 ' i açmanız önerilir. Windows sanal masaüstü, kullanıcıların konak havuzunun sanal makinelerine erişmesi için açık bir gelen bağlantı noktası 3389 gerektirmez.
+> Azure'da Windows Sanal Masaüstü ortamınızın güvenliğini sağlamak için, sanal makinelerinizde gelen bağlantı noktası 3389'u açmamanızı öneririz. Windows Sanal Masaüstü, kullanıcıların ana bilgisayar havuzunun sanal makinelerine erişmesi için açık bir gelen bağlantı noktası 3389 gerektirmez.
 >
-> Sorun giderme amacıyla bağlantı noktası 3389 ' i açmanız gerekiyorsa, tam zamanında erişim kullanmanızı öneririz. Daha fazla bilgi için bkz. [tam zamanında erişim ile yönetim bağlantı noktalarınızı güvenli hale getirme](../security-center/security-center-just-in-time.md).
+> Sorun giderme amacıyla 3389 bağlantı noktasını açmanız gerekiyorsa, tam zamanında erişim kullanmanızı öneririz. Daha fazla bilgi için, [tam zamanında erişimle yönetim bağlantı noktalarınızı güvenli](../security-center/security-center-just-in-time.md)hale bakın.
 
-## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>Seçim Masaüstü uygulama grubuna ek kullanıcılar atama
+## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>(İsteğe bağlı) Masaüstü uygulama grubuna ek kullanıcı atama
 
-Azure Marketi havuzu oluşturmayı tamamladıktan sonra, Masaüstü uygulama grubuna daha fazla kullanıcı atayabilirsiniz. Daha fazla eklemek istemiyorsanız, bu bölümü atlayın.
+Azure Marketi havuzu oluşturmayı tamamladıktan sonra, masaüstü uygulama grubuna daha fazla kullanıcı atayabilirsiniz. Daha fazla eklemek istemiyorsanız, bu bölümü atlayın.
 
-Kullanıcıları Masaüstü uygulama grubuna atamak için:
+Kullanıcıları masaüstü uygulama grubuna atamak için:
 
-1. Bir PowerShell penceresi açın.
+1. PowerShell penceresini açın.
 
-1. Windows sanal masaüstü ortamında oturum açmak için aşağıdaki komutu çalıştırın:
+1. Windows Sanal Masaüstü ortamında oturum açabilmek için aşağıdaki komutu çalıştırın:
 
    ```powershell
    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    ```
 
-1. Şu komutu kullanarak masaüstü uygulama grubuna kullanıcı ekleyin:
+1. Bu komutu kullanarak kullanıcıları masaüstü uygulama grubuna ekleyin:
 
    ```powershell
    Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
    ```
 
-   Kullanıcının UPN 'si kullanıcının Azure AD 'deki kimliğiyle eşleşmelidir; Örneğin, *user1@contoso.com* . Birden çok kullanıcı eklemek istiyorsanız, her kullanıcı için komutunu çalıştırın.
+   Kullanıcının UPN'si, örneğin Azure AD'de kullanıcının *user1@contoso.com*kimliğiyle eşleşmelidir. Birden çok kullanıcı eklemek istiyorsanız, her kullanıcı için komutu çalıştırın.
 
-Masaüstü uygulama grubuna eklediğiniz kullanıcılar, desteklenen uzak masaüstü istemcileri ile Windows sanal masaüstü 'nde oturum açabilir ve oturum Masaüstü için bir kaynak görebilirler.
+Masaüstü uygulama grubuna eklediğiniz kullanıcılar desteklenen Uzak Masaüstü istemcileriyle Windows Sanal Masaüstü'nde oturum açabilir ve oturum masaüstü için bir kaynak görebilir.
 
-Desteklenen geçerli istemciler şunlardır:
+Geçerli desteklenen istemciler şunlardır:
 
 * [Windows 7 ve Windows 10 için Uzak Masaüstü istemcisi](connect-windows-7-and-10.md)
-* [Windows Sanal Masaüstü Web istemcisi](connect-web.md)
+* [Windows Sanal Masaüstü web istemcisi](connect-web.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir konak havuzu oluşturdunuz ve kullanıcılara masaüstüne erişim atadık. Konak havuzunuzu RemoteApp programları ile doldurabilirsiniz. Windows sanal masaüstündeki uygulamaları yönetme hakkında daha fazla bilgi edinmek için şu öğreticiye bakın:
+Ana bilgisayar havuzu yaptınız ve kullanıcıları masaüstüne erişebilmek için atadınız. Uzaktan App programları ile ana bilgisayar havuzu doldurabilirsiniz. Windows Sanal Masaüstü'ndeki uygulamaları nasıl yönetirecek hakkında daha fazla bilgi edinmek için şu öğreticiye bakın:
 
 > [!div class="nextstepaction"]
-> [Uygulama gruplarını yönetme öğreticisi](./manage-app-groups.md)
+> [Uygulama grupları öğreticiyi yönetme](./manage-app-groups.md)

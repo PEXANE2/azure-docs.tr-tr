@@ -1,24 +1,24 @@
 ---
-title: Service Catalog ile yönetilen uygulama yayımlama
+title: Hizmet kataloğu yönetilen uygulamayı yayımla
 description: Kuruluşunuzun üyelerine yönelik bir Azure yönetilen uygulaması oluşturmayı gösterir.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903277"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473022"
 ---
-# <a name="create-and-publish-a-managed-application-definition"></a>Yönetilen uygulama tanımı oluşturma ve yayımlama
+# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>Öğretici: Yönetilen bir uygulama tanımı oluşturma ve yayımlama
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Kuruluşunuzun üyelerine yönelik Azure [yönetilen uygulamaları](overview.md) oluşturup yayımlayabilirsiniz. Örneğin, BT departmanı kurumsal standartlara uymak için yönetilen uygulamalar yayımlayabilir. Bu yönetilen uygulamalara Azure marketten değil, hizmet kataloğu üzerinden erişilebilir.
 
-Azure hizmet kataloğunuza yönetilen bir uygulama yayımlamak için şunları yapmanız gerekir:
+Yönetilen bir uygulamayı Azure Hizmet Kataloğunuzda yayınlamak için şunları yapmalısınız:
 
 * Yönetilen uygulama ile dağıtılacak kaynakları tanımlayan bir şablon oluşturun.
 * Yönetilen uygulamayı dağıtırken portal için kullanıcı arabirimi öğeleri tanımlayın.
@@ -81,13 +81,13 @@ Aşağıdaki JSON’u dosyanıza ekleyin. Depolama hesabı oluşturma parametrel
 
 mainTemplate.json dosyasını kaydedin.
 
-## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Createuıdefinition. JSON kullanarak oluşturma deneyiminizi tanımlama
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>CreateUiDefinition.json kullanarak oluşturma deneyiminizi tanımlama
 
-Yayımcı olarak, yönetilen uygulamalar oluşturan kullanıcılar için arabirim üreten **Createuıdefinition. JSON** dosyasını kullanarak oluşturma deneyiminizi tanımlarsınız. Kullanıcıların, açılan liste, metin kutuları ve parola kutuları dahil olmak üzere [Denetim öğelerini](create-uidefinition-elements.md) kullanarak her bir parametre için giriş nasıl sağlayacağınızı tanımlarsınız.
+Yayımcı olarak, yönetilen uygulamalar oluşturan kullanıcılar için arabirim oluşturan **createUiDefinition.json** dosyasını kullanarak oluşturma deneyiminizi tanımlarsınız. Açılan lar, metin kutuları ve parola kutuları gibi [denetim öğelerini](create-uidefinition-elements.md) kullanarak kullanıcıların her parametre için girişi nasıl sağladığını tanımlarsınız.
 
-**Createuıdefinition. JSON** adlı bir dosya oluşturun (Bu ad büyük/küçük harfe duyarlıdır)
+**createUiDefinition.json** adlı bir dosya oluşturma (Bu ad büyük/küçük harf duyarlıdır)
 
-Aşağıdaki Başlatıcı JSON dosyasını dosyaya ekleyin ve kaydedin.
+Aşağıdaki başlangıç json dosyaya ekleyin ve kaydedin.
 
 ```json
 {
@@ -138,7 +138,7 @@ Aşağıdaki Başlatıcı JSON dosyasını dosyaya ekleyin ve kaydedin.
 }
 ```
 
-Daha fazla bilgi için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+Daha fazla bilgi için [createUiDefinition ile başlayın.](create-uidefinition-overview.md)
 
 ## <a name="package-the-files"></a>Dosyaları paketleme
 
@@ -209,29 +209,29 @@ New-AzManagedApplicationDefinition `
 ```
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Yönetilen uygulama tanımı için kendi depolama alanınızı getirin
-Yönetilen uygulama tanımınızı, oluşturma sırasında sizin tarafınızdan belirtilen bir depolama hesabı içinde depolamayı tercih edebilirsiniz. böylece, konum ve erişim, mevzuata gereksinimleriniz için tam olarak sizin tarafınızdan yönetilebilir.
+Yönetilen uygulama tanımınızı, konumu ve erişiminin düzenleyici ihtiyaçlarınız için tam olarak yönetilebilmesi için oluşturma sırasında sizin sağladığınız bir depolama hesabında saklamayı seçebilirsiniz.
 
 > [!NOTE]
-> Kendi depolama alanınızı getir yalnızca ARM şablonuyla desteklenir veya yönetilen uygulama tanımının REST API dağıtımlarıyla desteklenir.
+> Kendi depolama getir in sadece yönetilen uygulama tanımının ARM Şablonu veya REST API dağıtımları ile desteklenir.
 
 ### <a name="select-your-storage-account"></a>Depolama hesabınızı seçin
-Service Catalog ile kullanmak üzere yönetilen uygulama tanımınızı içeren [bir depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir.
+Hizmet Kataloğu ile kullanmak için yönetilen uygulama tanımınızı içerecek [bir depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir.
 
-Depolama hesabının kaynak KIMLIĞINI kopyalayın. Tanım dağıtıldığında daha sonra kullanılacaktır.
+Depolama hesabının kaynak kimliğini kopyalayın. Tanımı dağıtılırken daha sonra kullanılacaktır.
 
-### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Depolama hesabınızda "gereç kaynak sağlayıcısı" için rol atamasını ayarlama
-Yönetilen uygulama tanımınızın depolama hesabınıza dağıtılabilmesi için, yönetim dosyalarını depolama hesabınızın kapsayıcısına yazabilmesi için **gereç kaynak sağlayıcısı** rolüne katkıda bulunan izinleri vermeniz gerekir.
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Depolama hesabınızdaki "Beyaz Cihaz Kaynak Sağlayıcısı" için rol atamasını ayarlama
+Yönetilen uygulama tanımınızın depolama hesabınıza dağıtılabilmesi için, tanım dosyalarını depolama hesabınızın kapsayıcısına yazabilmesi için katkıda bulunanlara **Appliance Resource Provider** rolüne izin vermeniz gerekir.
 
-1. [Azure portalında](https://portal.azure.com) depolama hesabınıza gidin.
-1. Depolama hesabının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
-1. **Rol ataması Ekle** penceresinde, **katkıda** bulunan rolünü seçin. 
-1. **Erişim ata** ALANıNDAN **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
-1. **Gereç kaynak sağlayıcısı** rolünü ara ' yı **seçin** ve bunu seçin.
-1. Rol atamasını kaydedin.
+1. Azure [portalında](https://portal.azure.com)depolama hesabınıza gidin.
+1. Depolama hesabının erişim denetim ayarlarını görüntülemek için **Access denetimini (IAM)** seçin. Rol **atamaları** listesini görmek için Rol atamaları sekmesini seçin.
+1. Rol **atama ekle** penceresinde **Katılımcı** rolünü seçin. 
+1. Alana **Atama erişiminden** Azure **AD kullanıcısını, grubunu veya hizmet sorumlusunu**seçin.
+1. Appliance Resource **Provider** rolünü **seçin** ve seçin.
+1. Rol atamasını kaydet.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Yönetilen uygulama tanımını ARM şablonuyla dağıtma 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Yönetilen uygulama tanımını ARM Şablonuyla dağıtma 
 
-Paketlenmiş yönetilen uygulamanızı, tanım dosyaları kendi depolama hesabınızda depolanan ve tutulan hizmet kataloğunda yeni bir yönetilen uygulama tanımı olarak dağıtmak için aşağıdaki ARM şablonunu kullanın:
+Tanım dosyaları kendi depolama hesabınızda depolanan ve tutulan Hizmet Kataloğu'nda yeni yönetilen bir uygulama tanımı olarak paketlenmiş yönetilen uygulamanızı dağıtmak için aşağıdaki ARM Şablonunu kullanın:
    
 ```json
     {
@@ -303,12 +303,12 @@ Paketlenmiş yönetilen uygulamanızı, tanım dosyaları kendi depolama hesabı
 }
 ```
 
-ApplicationDefintion 'un özelliklerine **Storageaccountıd** adlı yeni bir özellik ekledik ve tanımınızı kendi değeri olarak depolamak istediğiniz depolama hesabı kimliğini sağlayın:
+Uygulamanıza **storageAccountId** adlı yeni bir özellik ekledikDefintion'Un özellikleri ve tanımınızı değeri olarak saklamak istediğiniz depolama hesabı kimliği sağladık:
 
-Uygulama tanımı dosyalarının, **applicationdefinitions**başlıklı bir kapsayıcıda, belirtilen depolama hesabınıza kaydedildiğini doğrulayabilirsiniz.
+Uygulama tanım dosyalarının sağlanan depolama hesabınıza **uygulama tanımları**başlıklı bir kapsayıcıda kayda alındığını doğrulayabilirsiniz.
 
 > [!NOTE]
-> Ek güvenlik için, yönetilen bir uygulama tanımı oluşturmak için [şifreleme etkin olan bir Azure depolama hesabı blobu](../../storage/common/storage-service-encryption.md)içinde depolama alanı tanımlayabilirsiniz. Tanım içerikleri, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izinlerine sahip kullanıcılar, hizmet kataloğunda tanımı görebilir.
+> Daha fazla güvenlik için, yönetilen bir uygulama tanımı oluşturabilirsiniz, şifrelemenin etkin olduğu bir [Azure depolama hesabı blob'unda](../../storage/common/storage-service-encryption.md)depolayabilirsiniz. Tanım içeriği, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izni olan kullanıcılar Hizmet Kataloğu'ndaki tanımı görebilir.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Kullanıcıların tanımınızı görebilmesini sağlama
 

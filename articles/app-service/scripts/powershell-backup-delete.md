@@ -1,21 +1,21 @@
 ---
-title: 'PowerShell: uygulama yedeklemesini silme'
-description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulama yedeklemesinin nasıl silineceğini gösterir.
+title: 'PowerShell: Uygulama yedeklemesi silme'
+description: Uygulama Hizmeti'nin dağıtımını ve yönetimini otomatikleştirmek için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulama yedeklemesi nasıl silinir gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: b8d3175b4266e132d94f6f2dde163cb60fb11396
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 93b53bedef291b9aa740f5bbe9c492185f035f89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685810"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044831"
 ---
-# <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web yedeklemesi silme
+# <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Azure PowerShell'i kullanarak bir web için yedeklemeyi silme
 
 Bu örnek betik, App Service’te ilgili kaynaklarıyla birlikte bir web uygulaması oluşturur ve sonra bu web uygulaması için tek seferlik bir yedekleme oluşturur. 
 

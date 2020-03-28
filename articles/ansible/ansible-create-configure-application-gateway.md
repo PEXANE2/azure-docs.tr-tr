@@ -1,21 +1,21 @@
 ---
-title: Öğretici-Azure Application Gateway ile Web trafiğini yönetme
+title: Öğretici - Ansible kullanarak Azure Application Gateway ile web trafiğini yönetme
 description: Web trafiğini yönetmek üzere bir Azure Application Gateway oluşturup yapılandırmak için Ansible kullanmayı öğrenin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Application Gateway, yük dengeleyici, Web trafiği
+keywords: ansible, azure, devops, bash, playbook, uygulama ağ geçidi, yük dengeleyici, web trafiği
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 07f75e39b8c6f592ecd4c48697527493b1109bb9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156619"
 ---
-# <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Öğretici: Azure Application Gateway kullanarak Web trafiğini yönetme
+# <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Öğretici: Ansible'ı kullanarak Azure Application Gateway ile web trafiğini yönetme
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-[Azure Application Gateway](/azure/application-gateway/overview), web uygulamalarınıza trafiği yönetmenizi sağlayan bir web trafiği yük dengeleyicisidir. Kaynak IP adresi ve bağlantı noktasına bağlı olarak, geleneksel yük dengeleyiciler trafiği bir hedef IP adresine ve bağlantı noktasına yönlendirir. Application Gateway, trafiğin URL 'ye göre yönlendirilebileceği daha ayrıntılı bir denetim sağlar. Örneğin, `images` URL 'nin yolu ise trafik, görüntüler için yapılandırılmış belirli bir sunucu kümesine (havuz olarak bilinir) yönlendirildiğini tanımlayabilirsiniz.
+[Azure Application Gateway](/azure/application-gateway/overview), web uygulamalarınıza trafiği yönetmenizi sağlayan bir web trafiği yük dengeleyicisidir. Kaynak IP adresi ve bağlantı noktasına bağlı olarak, geleneksel yük dengeleyicileri trafiği bir hedef IP adresine ve bağlantı noktasına yönlendirir. Uygulama Ağ Geçidi, trafiğin URL'ye göre yönlendirilebildiği daha hassas bir denetim düzeyi sağlar. Örneğin, URL'nin yoluysa, `images` trafiğin görüntüler için yapılandırılan belirli bir sunucu kümesine (havuz olarak bilinir) yönlendirildiğini tanımlayabilirsiniz.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -25,14 +25,14 @@ ms.locfileid: "74156619"
 > * HHPD görüntüleriyle iki Azure kapsayıcı örneği oluşturma
 > * Sunucu havuzundaki Azure kapsayıcı örnekleriyle bir uygulama ağ geçidi oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bu bölümdeki PlayBook kodu bir Azure Kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarının yapılandırıldığı mantıksal bir kapsayıcıdır.  
+Bu bölümdeki oyun kitabı kodu bir Azure kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarının yapılandırıldığı mantıksal bir kapsayıcıdır.  
 
 Aşağıdaki playbook'u `rg.yml` olarak kaydedin:
 
@@ -48,12 +48,12 @@ Aşağıdaki playbook'u `rg.yml` olarak kaydedin:
         location: "{{ location }}"
 ```
 
-PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
+Oyun kitabını çalıştırmadan önce aşağıdaki notalara bakın:
 
-- Kaynak grubu adı `myResourceGroup`. Bu değer öğretici genelinde kullanılır.
-- Kaynak grubu `eastus` konumunda oluşturulur.
+- Kaynak grubu `myResourceGroup`adı. Bu değer öğretici boyunca kullanılır.
+- Kaynak grubu `eastus` konumda oluşturulur.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook rg.yml
@@ -61,7 +61,7 @@ ansible-playbook rg.yml
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
-Bu bölümdeki PlayBook kodu, uygulama ağ geçidinin diğer kaynaklarla iletişim kurmasını sağlamak için bir sanal ağ oluşturur.
+Bu bölümdeki oyun kitabı kodu, uygulama ağ geçidinin diğer kaynaklarla iletişim kurmasını sağlamak için sanal bir ağ oluşturur.
 
 Aşağıdaki playbook'u `vnet_create.yml` olarak kaydedin:
 
@@ -101,12 +101,12 @@ Aşağıdaki playbook'u `vnet_create.yml` olarak kaydedin:
         domain_name_label: "{{ publicip_domain }}"
 ```
 
-PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
+Oyun kitabını çalıştırmadan önce aşağıdaki notalara bakın:
 
-* `vars` bölümü, ağ kaynaklarını oluşturmak için kullanılan değerleri içerir. 
-* Bu değerleri, belirli ortamınız için değiştirmeniz gerekir.
+* Bölüm, `vars` ağ kaynaklarını oluşturmak için kullanılan değerleri içerir. 
+* Özel ortamınız için bu değerleri değiştirmeniz gerekir.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook vnet_create.yml
@@ -114,7 +114,7 @@ ansible-playbook vnet_create.yml
 
 ## <a name="create-servers"></a>Sunucu oluşturma
 
-Bu bölümdeki PlayBook kodu, uygulama ağ geçidi için Web sunucusu olarak kullanılacak HTTPD görüntüleriyle iki Azure Container örneği oluşturur.  
+Bu bölümdeki oyun kitabı kodu, uygulama ağ geçidi için web sunucusu olarak kullanılmak üzere HTTPD görüntüleriyle birlikte iki Azure kapsayıcı örneği oluşturur.  
 
 Aşağıdaki playbook'u `aci_create.yml` olarak kaydedin:
 
@@ -159,7 +159,7 @@ Aşağıdaki playbook'u `aci_create.yml` olarak kaydedin:
               - 80
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook aci_create.yml
@@ -167,7 +167,7 @@ ansible-playbook aci_create.yml
 
 ## <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Bu bölümdeki PlayBook kodu, `myAppGateway`adlı bir uygulama ağ geçidi oluşturur.  
+Bu bölümdeki oyun kitabı kodu , `myAppGateway`.  
 
 Aşağıdaki playbook'u `appgw_create.yml` olarak kaydedin:
 
@@ -253,16 +253,16 @@ Aşağıdaki playbook'u `appgw_create.yml` olarak kaydedin:
             name: rule1
 ```
 
-PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
+Oyun kitabını çalıştırmadan önce aşağıdaki notalara bakın:
 
-* `appGatewayIP` `gateway_ip_configurations` bloğunda tanımlanmıştır. Ağ geçidinin IP yapılandırması için alt ağ başvurusu gerekir.
-* `appGatewayBackendPool` `backend_address_pools` bloğunda tanımlanmıştır. Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
-* `appGatewayBackendHttpSettings` `backend_http_settings_collection` bloğunda tanımlanmıştır. Bağlantı noktası 80 ve bir HTTP protokolünün iletişim için kullanıldığını belirtir.
-* `appGatewayHttpListener` `backend_http_settings_collection` bloğunda tanımlanmıştır. appGatewayBackendPool ile ilişkilendirilmiş varsayılan dinleyicidir.
-* `appGatewayFrontendIP` `frontend_ip_configurations` bloğunda tanımlanmıştır. appGatewayHttpListener’a myAGPublicIPAddress’i atar.
-* `rule1` `request_routing_rules` bloğunda tanımlanmıştır. appGatewayHttpListener ile ilişkilendirilmiş varsayılan yönlendirme kuralıdır.
+* `appGatewayIP``gateway_ip_configurations` blokta tanımlanır. Ağ geçidinin IP yapılandırması için alt ağ başvurusu gerekir.
+* `appGatewayBackendPool``backend_address_pools` blokta tanımlanır. Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
+* `appGatewayBackendHttpSettings``backend_http_settings_collection` blokta tanımlanır. Bu bağlantı noktası 80 ve bir HTTP protokolü iletişim için kullanılan belirtir.
+* `appGatewayHttpListener``backend_http_settings_collection` blokta tanımlanır. appGatewayBackendPool ile ilişkilendirilmiş varsayılan dinleyicidir.
+* `appGatewayFrontendIP``frontend_ip_configurations` blokta tanımlanır. appGatewayHttpListener’a myAGPublicIPAddress’i atar.
+* `rule1``request_routing_rules` blokta tanımlanır. appGatewayHttpListener ile ilişkilendirilmiş varsayılan yönlendirme kuralıdır.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook appgw_create.yml
@@ -272,13 +272,13 @@ Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir.
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-1. [Kaynak grubu oluştur](#create-a-resource-group) bölümünde bir konum belirtirsiniz. Değerini aklınızda yapın.
+1. Kaynak [grubu oluştur](#create-a-resource-group) bölümünde bir konum belirtirsiniz. Değerine dikkat edin.
 
-1. [Ağ kaynakları oluştur](#create-network-resources) bölümünde, etki alanını belirtirsiniz. Değerini aklınızda yapın.
+1. Ağ [kaynakları oluştur](#create-network-resources) bölümünde etki alanını belirtirsiniz. Değerine dikkat edin.
 
-1. Aşağıdaki kalıbı konum ve etki alanı ile değiştirerek test URL 'SI için: `http://<domain>.<location>.cloudapp.azure.com`.
+1. Aşağıdaki deseni konum ve etki alanıyla değiştirerek `http://<domain>.<location>.cloudapp.azure.com`test URL'si için: .
 
-1. Test URL 'sine gidin.
+1. Test URL'sine göz atın.
 
 1. Aşağıdaki sayfayı görürseniz, uygulama ağ geçidi beklendiği gibi çalışıyor demektir.
 
@@ -286,9 +286,9 @@ Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
+Aşağıdaki kodu aşağıdaki `cleanup.yml`gibi kaydedin:
 
 ```yml
 - hosts: localhost
@@ -301,7 +301,7 @@ Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
         state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

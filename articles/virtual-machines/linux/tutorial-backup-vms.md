@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure portal Linux sanal makinelerini yedekleme
+title: Öğretici - Azure portalında Linux sanal makinelerini yedekleme
 description: Bu öğreticide, Azure Backup ile Linux sanal makinelerinizi korumak için Azure portalını kullanmayı öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034595"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066487"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Öğretici: Azure’da Linux sanal makineleri için dosyaları yedekleme ve geri yükleme
 
-Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında depolanan kurtarma noktaları oluşturur. Bir kurtarma noktasından geri yükleme yaptığınızda VM’nin tamamını veya belirli dosyaları geri yükleyebilirsiniz. Bu makalede tek bir dosyanın nginx çalıştıran bir Linux VM’ye nasıl geri yükleneceği açıklanır. Kullanılabilecek bir VM’niz zaten yoksa [Linux hızlı başlangıcını](quick-create-cli.md) kullanarak VM oluşturabilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında depolanan kurtarma noktaları oluşturur. Bir kurtarma noktasından geri yükleme yaptığınızda VM’nin tamamını veya belirli dosyaları geri yükleyebilirsiniz. Bu makalede tek bir dosyanın nginx çalıştıran bir Linux VM’ye nasıl geri yükleneceği açıklanır. Kullanılabilecek bir VM’niz zaten yoksa [Linux hızlı başlangıcını](quick-create-cli.md) kullanarak VM oluşturabilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Bir VM’nin yedeğini oluşturma
@@ -43,7 +43,7 @@ Veri aktarımı tamamlandığında, anlık görüntü kaldırılır ve bir kurta
 ## <a name="create-a-backup"></a>Yedekleme oluşturma
 Bir Kurtarma Hizmetleri Kasasına zamanlanmış günlük yedekleme oluşturun:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 2. Sol taraftaki menüden **Sanal makineler**'i seçin. 
 3. Listeden yedekleyeceğiniz VM'yi seçin.
 4. VM dikey penceresinde, **Ayarlar** bölümünden **Yedekleme**’ye tıklayın. **Yedeklemeyi etkinleştir** dikey penceresi açılır.
@@ -64,7 +64,7 @@ Bir dosyayı yanlışlıkla siler veya dosyada yanlışlıkla değişiklik yapar
 
 Bu örnekte, varsayılan /var/www/html/index.nginx-debian.html nginx web sayfasının nasıl kurtarılacağı gösterilmektedir. Bu örnekte VM’mizin genel IP adresi *13.69.75.209* şeklindedir. Aşağıdaki adımları uygulayarak VM’nizin IP adresini bulabilirsiniz:
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
@@ -78,6 +78,7 @@ Bu örnekte, varsayılan /var/www/html/index.nginx-debian.html nginx web sayfas�
     ```bash
     ssh 13.69.75.209
     ```
+
 2. /var/www/html/index.nginx-debian.html kısmını silin.
 
     ```bash
@@ -122,7 +123,7 @@ Bu örnekte, varsayılan /var/www/html/index.nginx-debian.html nginx web sayfas�
     
 12. Betiğin çıkışı, takma noktasına ilişkin yolu size sağlar. Çıkış şuna benzer:
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           

@@ -1,5 +1,5 @@
 ---
-title: Cihaz sorunlarını algılamak için uzaktan Izleme çözümünü kullanma-Azure | Microsoft Docs
+title: Aygıt sorunlarını algılamak için Uzaktan İzleme çözümünü kullanma - Azure | Microsoft Dokümanlar
 description: Bu öğreticide Uzaktan İzleme çözümündeki eşik değer tabanlı cihaz sorunlarını otomatik olarak algılama amacıyla kuralların ve eylemlerin nasıl kullanılacağı gösterilmektedir.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239521"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Öğretici: İzleme çözümünüze bağlı cihazlarla sorunları algılama
@@ -33,7 +33,7 @@ Bu öğreticide şunları yaptınız:
 > * Var olan kuralı düzenleme
 > * Kuralları açma ve kapatma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Çözüm hızlandırıcısının **Rules** (Kurallar) sayfasında geçerli kuralların listesi görüntülenir:
 
-[![Rules (Kurallar) Sayfası](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
+[![Kurallar sayfası](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
 Yalnızca soğutucular için geçerli olan kuralları görüntülemek için bir filtre uygulayın. Listedeki kurallardan birini seçerek hakkında daha fazla bilgi görüntüleyebilir ve düzenleyebilirsiniz:
 
@@ -86,7 +86,7 @@ Son beş dakika içinde cihaz içindeki ortalama nem oranı %80'den fazla olan v
 | Koşul 1 değeri    | 80                                |
 | Önem derecesi  | Kritik                              |
 
-[![Birden fazla koşula sahip kural oluşturma birinci bölüm](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
+[![Birinci bölümbirden çok koşul kuralı oluşturma](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
 İkinci koşulu eklemek için "+ Add condition" (Koşul ekle) öğesine tıklayın. Yeni koşul için aşağıdaki değerleri kullanın:
 
@@ -96,25 +96,25 @@ Son beş dakika içinde cihaz içindeki ortalama nem oranı %80'den fazla olan v
 | Koşul 2 işleci | Büyüktür                      |
 | Koşul 2 değeri    | 75                                |
 
-[![Birden fazla koşula sahip kural oluşturma ikinci bölüm](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
+[![Bölüm ikide birden çok koşul kuralı oluşturma](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
 Yeni kuralı kaydetmek için **Apply** (Uygula) öğesine tıklayın.
 
 Kuralın tetiklendiğini **Rules** (Kurallar) veya **Dashboard** (Pano) sayfasında görebilirsiniz:
 
-[![Birden fazla koşula sahip kural tetiklendi](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
+[![Birden çok koşul kuralı tetiklendi](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
 ## <a name="edit-an-existing-rule"></a>Var olan kuralı düzenleme
 
 Var olan bir kuralı değiştirmek için kural listesinden seçip **Edit** (Düzenle) öğesine tıklayın:
 
-[![Kuralı düzenleme](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-expanded.png#lightbox)
+[![Kuralı edin](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-expanded.png#lightbox)
 
 ## <a name="disable-a-rule"></a>Kuralı devre dışı bırakma
 
 Bir kuralı geçici olarak kapatmak için kural listesinden devre dışı bırakabilirsiniz. Devre dışı bırakılacak kuralı ve ardından **Devre Dışı Bırak**'ı seçin. Kuralın listedeki **Status** (Durum) alanı değişir ve kuralın devre dışı olduğunu belirtir. Aynı yordamı kullanarak önceden devre dışı bıraktığınız bir kuralı yeniden etkinleştirebilirsiniz.
 
-[![Kuralı devre dışı bırakma](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
+[![Kuralı devre dışı](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
 
 Listeden birden fazla kural seçerek aynı anda etkinleştirebilir ve devre dışı bırakabilirsiniz.
 

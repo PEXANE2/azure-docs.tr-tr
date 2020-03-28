@@ -1,6 +1,6 @@
 ---
-title: Azure CLı kullanarak App Service ile SignalR hizmeti oluşturma
-description: App Service ile SignalR hizmeti oluşturmak için Azure CLı 'yi kullanın. Azure SignalR hizmeti için tüm CLı komutlarını öğrenin.
+title: Azure CLI kullanarak Uygulama Hizmeti ile SignalR Hizmeti Oluşturun
+description: Uygulama Hizmeti ile SignalR Hizmeti oluşturmak için Azure CLI'yi kullanın. Azure SignalR Hizmeti için tüm CLI komutlarını öğrenin.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158029"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>App Service ile SignalR Hizmeti Oluşturma
