@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: uç nokta utterlerini gözden geçirme-LUSıS'
+title: 'Öğretici: Uç nokta söyleyerek gözden geçirme - LUIS'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, LUSıS 'nin emin olduğu LUSıS HTTP uç noktası aracılığıyla alınan utslarını doğrulayarak veya düzelterek uygulama tahminlerini geliştirebilirsiniz. Bazı konuşmaların amacının, diğerlerinin ise varlığının doğrulanması gerekebilir.
+description: Bu eğitimde, LUIS HTTP bitiş noktası üzerinden alınan ve LUIS'in emin olmadığı sözcükleri doğrulayarak veya düzelterek uygulama tahminlerini geliştirin. Bazı konuşmaların amacının, diğerlerinin ise varlığının doğrulanması gerekebilir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843982"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: uç nokta dıklarını inceleyerek, hariç tahminleri çözme
-Bu öğreticide, LUSıS HTTPS uç noktası aracılığıyla alınan ve bu LUSıS 'in eksik olduğu noktaları doğrulayarak veya düzelterek uygulama tahminlerini geliştirebilirsiniz. Zamanlanan LUSıS bakımın düzenli bir parçası olarak uç nokta utslerini incelemeniz gerekir.
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: Uç nokta söyleyerek emin olmayan tahminleri düzeltme
+Bu eğitimde, LUIS HTTPS bitiş noktası üzerinden alınan ve LUIS'in emin olmadığı, dilerleri doğrulayarak veya düzelterek uygulama tahminlerini geliştirin. Planlanan LUIS bakımınızın düzenli bir parçası olarak uç nokta söyleyişlerini gözden geçirmelisiniz.
 
-Bu gözden geçirme işlemi, LUSıS 'in uygulama etki alanınızı öğrenmeye olanak tanır. LUO, gözden geçirme listesinde görünen detersliği seçer. Bu liste:
+Bu inceleme işlemi, LUIS'in uygulama alan adını öğrenmesini sağlar. LUIS, inceleme listesinde görünen tümleçleri seçer. Bu liste:
 
 * Uygulamaya özeldir.
 * Uygulamanın tahmin doğruluğunu geliştirmek için hazırlanmıştır.
@@ -29,46 +29,46 @@ Bu gözden geçirme işlemi, LUSıS 'in uygulama etki alanınızı öğrenmeye o
 
 Uç nokta ifadelerini gözden geçirerek, ifadenin tahmin edilen amacını doğrular veya düzeltirsiniz.
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Örnek uygulamayı içeri aktar
+> * Örnek uygulamayı içe aktarma
 > * Uç nokta konuşmasını gözden geçirme
-> * Uygulamayı eğitme ve yayımlama
+> * Eğitim ve yayın uygulaması
 > * LUIS JSON yanıtını görmek için uygulamanın uç noktasını sorgulama
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
+## <a name="import-example-app"></a>Örnek uygulamayı içe aktarma
 
-Bir uygulamayı içeri aktarmak için aşağıdaki adımları kullanın.
+Bir uygulamayı almak için aşağıdaki adımları kullanın.
 
 1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) indirip kaydedin.
 
-1. [ÖNIZLEME Luu portalında](https://preview.luis.ai),. json dosyasını yeni bir uygulamaya aktarın.
+1. Önizleme [LUIS portalında](https://preview.luis.ai).json dosyasını yeni bir uygulamaya aktarın.
 
 1. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `review` olarak adlandırın.
 
     > [!TIP]
-    > Uygulamanızı değiştirmeden önce yeni bir sürüme kopyalama en iyi uygulamadır. Bir sürümü bitirdiğinizde sürümü (. JSON veya. lu dosyası olarak) dışa aktarın ve dosyayı kaynak denetim sisteminize kontrol edin.
+    > Uygulamanızı değiştirmeden önce yeni bir sürüme klonlamak en iyi yöntemdir. Bir sürümü tamamladığınızda, sürümü (.json veya .lu dosyası olarak) dışa aktarın ve dosyayı kaynak denetim sisteminize denetleyin.
 
 
-1. Uygulamayı eğiteiçin **eğitme**' yi seçin.
+1. Uygulamayı eğitmek için **Train'i**seçin.
 
-## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Uygulamayı HTTP uç noktasından erişmek üzere yayımlayın
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>HTTP bitiş noktasından erişmek için uygulamayı yayımlayın
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="add-utterances-at-the-endpoint"></a>Uç noktada utsliği ekleme
+## <a name="add-utterances-at-the-endpoint"></a>Bitiş noktasına söyleyiş ekleme
 
-Bu uygulamada, hedefleri ve varlıkları vardır ancak uç nokta kullanımınız yoktur. Bu uç nokta kullanımı, uç nokta söylenişi gözden geçirimiyle uygulamayı geliştirmek için gereklidir.
+Bu uygulamada, amacınız ve varlıklarınız vardır, ancak bitiş noktası kullanımınız yoktur. Bu uç nokta kullanımı, bitiş noktası söyleyişi incelemesi ile uygulamayı geliştirmek için gereklidir.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Aşağıdaki noktaları eklemek için uç noktayı kullanın.
+1. Aşağıdaki söyleyiyi eklemek için bitiş noktasını kullanın.
 
-    |Uç nokta söylenişi|Hizalanmış amaç|
+    |Uç nokta söyleyiş|Hizalanmış niyet|
     |--|--|
     |`I'm looking for a job with Natural Language Processing`|`GetJobInformation`|
     |`I want to cancel on March 3`|`Utilities.Cancel`|
@@ -84,31 +84,31 @@ Bu uygulamada, hedefleri ve varlıkları vardır ancak uç nokta kullanımınız
 
 ## <a name="review-endpoint-utterances"></a>Uç nokta konuşmasını gözden geçirme
 
-Doğru hizalanmış amaç için uç nokta utslerini gözden geçirin. Tüm sürümlerde gözden geçirilecek tek bir havuz havuzu olsa da, amacı doğru şekilde hizalamak, örneği yalnızca geçerli _etkin modele_ ekler.
+Doğru hizalanmış niyet için bitiş noktası söyleyişlerini gözden geçirin. Tüm sürümler arasında gözden geçirilen tek bir sözcük havuzu olsa da, amacı doğru hizalama işlemi yalnızca geçerli _etkin modele_ örnek sözcük ekler.
 
-1. Portalın **Build** bölümünde sol gezinmede **uç nokta Utlerini gözden geçir** ' i seçin. Bu liste **ApplyForJob** amacı için filtrelenmiştir.
-
-    > [!div class="mx-imgBorder"]
-    > Sol gezinti](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png) uç nokta ututlerini gözden geçirme düğmesinin ekran görüntüsünü ![
-
-    Bu utterance `I'm looking for a job with Natural Language Processing`, doğru amaç içinde değil.
-
-1.  Bu söyleyeni hizalamak için, söylenişi satırında `GetJobInformation`doğru **hizalanmış hedefini** seçin. Onay işaretini seçerek değiştirilen söylenişi 'i uygulamaya ekleyin.
+1. Portalın **Yapı** bölümünden, sol gezintiden **son nokta sözcüklerini gözden geçir'i** seçin. Bu liste **ApplyForJob** amacı için filtrelenmiştir.
 
     > [!div class="mx-imgBorder"]
-    > Sol gezinti](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png) uç nokta ututlerini gözden geçirme düğmesinin ekran görüntüsünü ![
+    > ![Sol gezintideki uç nokta ifadelerini gözden geçir düğmesinin ekran görüntüsü](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-    Bu amaca göre kalan diğer çizgileri inceleyerek, hizalanmış amacı gereken şekilde düzeltin. Hizalanmış amacı görüntülemek için bu öğreticideki ilk söylenişi tablosunu kullanın.
+    Bu söz, `I'm looking for a job with Natural Language Processing`doğru niyet değildir.
 
-    **Gözden geçirme uç noktası uttersları** listesi artık düzeltilen noktalara sahip olmamalıdır. Daha fazla yer görünürse, liste boş olana kadar hizalanmış hedefleri düzelterek listede çalışmaya devam edin.
+1.  Bu söyleyiyi hizalamak için, söyleyiş satırında, doğru `GetJobInformation` **Hizalanmış Amaç'ı** seçin. Onay işaretini seçerek değiştirilen söyleyiyi uygulamaya ekleyin.
 
-    Varlık etiketlemenin herhangi bir düzeltmesi, amaç ayrıntıları sayfasından, amaç hizalandıktan sonra yapılır.
+    > [!div class="mx-imgBorder"]
+    > ![Sol gezintideki uç nokta ifadelerini gözden geçir düğmesinin ekran görüntüsü](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+
+    Bu amaçla kalan deyişler gözden geçirin, gerektiğinde hizalanmış niyeti düzeltin. Hizalanmış amacı görüntülemek için bu öğreticideki ilk söyleyiş tablosunu kullanın.
+
+    **Gözden Geçirme uç nokta lı söz listesi** artık düzeltilmiş tümleçlere sahip olmamalıdır. Daha fazla sözcük görünüyorsa, liste boşalana kadar hizalanmış amaçları düzelterek liste boyunca çalışmaya devam edin.
+
+    Varlık etiketlemesinin düzeltilmesi, niyet hizalandıktan sonra, Niyet ayrıntıları sayfasından yapılır.
 
 1. Uygulamayı yeniden eğitin ve yayımlayın.
 
-## <a name="get-intent-prediction-from-endpoint"></a>Uç noktadan amaç tahminini al
+## <a name="get-intent-prediction-from-endpoint"></a>Bitiş noktasından niyet tahmini alma
 
-Doğru hizalanmış örnek, uygulamanın tahmininin iyileştirildiklerini doğrulamak için, düzeltilen söylenişi 'e yakın bir şekilde deneyin.
+Doğru hizalanmış örnek söyleyişlerin uygulamanın tahminini iyileştirdiğini doğrulamak için, düzeltilmiş söyleyişe yakın bir söyleyiş deneyin.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -218,7 +218,7 @@ Doğru hizalanmış örnek, uygulamanın tahmininin iyileştirildiklerini doğru
     }
    ```
 
-   Artık eksik olan söyleymelerin doğru hizalandığına göre, doğru amaç **yüksek puan**ile tahmin edildi.
+   Şimdi emin olmayan söyleyişler doğru hizalanmış, doğru niyet yüksek bir **puan**ile tahmin edildi .
 
 ## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Gözden geçirme işleminin yerini daha fazla ifade ekleme alabilir mi?
 Neden daha fazla örnek ifade eklenmediğini merak ediyor olabilirsiniz. Uç nokta ifadelerini gözden geçirmenin amacı nedir? Gerçek dünyadaki bir LUIS uygulamasında, uç nokta ifadeleri henüz alışmadığınız sözcük seçimi ve yerleşimi olan kullanıcılara aittir. Aynı sözcük seçimini ve yerleşimini daha önce kullandıysanız, özgün tahminin yüzdesi yüksek olabilir.

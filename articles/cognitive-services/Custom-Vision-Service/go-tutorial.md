@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: go için Özel Görüntü İşleme SDK ile bir görüntü sınıflandırma projesi oluşturma'
+title: 'Quickstart: Go için Özel Vizyon SDK ile bir görüntü sınıflandırma projesi oluşturun'
 titleSuffix: Azure Cognitive Services
-description: Git SDK kullanarak bir proje oluşturun, Etiketler ekleyin, görüntü yükleyin, projenizi eğitin ve tahmin yapın.
+description: Bir proje oluşturun, etiket ekleyin, resim yükleyin, projenizi eğitin ve Go SDK'sını kullanarak bir tahminde bulunun.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: f8391818ebf13afb3b07eead55133aadde6158f0
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170098"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Hızlı başlangıç: Özel Görüntü İşleme go SDK ile görüntü sınıflandırma projesi oluşturma
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Quickstart: Custom Vision Go SDK ile bir görüntü sınıflandırma projesi oluşturun
 
-Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Go ile Özel Görüntü İşleme SDK 'Yı kullanmaya başlamanıza yardımcı olacak bilgiler ve örnek kod sağlanmaktadır. Oluşturulduktan sonra Etiketler ekleyebilir, görüntü yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı olarak test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi go uygulamanızı oluşturmak için bir şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
+Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Git ile Özel Vizyon SDK kullanmaya başlamak yardımcı olmak için bilgi ve örnek kod sağlar. Oluşturulduktan sonra etiketler ekleyebilir, resim yükleyebilir, projeyi eğitebilir, projenin yayınlanmış tahmin bitiş noktası URL'sini alabilir ve bir resmi programlı olarak sınamak için bitiş noktasını kullanabilirsiniz. Bu örneği kendi Go uygulamanızı oluşturmak için şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Go 1.8 +](https://golang.org/doc/install)
+- [1.8+ git](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
 
-Go için Özel Görüntü İşleme Service SDK 'yı yüklemek için PowerShell 'de aşağıdaki komutu çalıştırın:
+Go için Custom Vision hizmeti SDK'yı yüklemek için PowerShell'de aşağıdaki komutu çalıştırın:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-veya `dep`kullanıyorsanız, deponuzda çalıştırın:
+veya repo `dep`çalışmanızda kullanırsanız:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -45,13 +45,13 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>Kod ekleme
 
-Tercih ettiğiniz proje dizinine *örnek. go* adlı yeni bir dosya oluşturun.
+Tercih ettiğiniz proje dizininde *örnek.go* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
 Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Ayrıca, Özel Görüntü İşleme Web sitesinin ayarlar sayfasından uç nokta URL 'nizi alın.
 
-Projenizi oluştururken diğer seçenekleri belirtmek için [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) yöntemine bakın (sınıflandırıcı Web portalı [oluşturma](getting-started-build-a-classifier.md) kılavuzunda açıklanmıştır).
+Projenizi oluştururken diğer seçenekleri belirtmek için [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) yöntemine bakın [(sınıflandırıcı](getting-started-build-a-classifier.md) web portalı oluştur kılavuzunda açıklanmıştır).
 
 ```go
 import(
@@ -91,7 +91,7 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
 
-Projenize sınıflandırma etiketleri oluşturmak için aşağıdaki kodu örnek sonuna ekleyin *. git*:
+Projenize sınıflandırma etiketleri oluşturmak *için, sample.go'nun*sonuna aşağıdaki kodu ekleyin:
 
 ```go
 // Make two tags in the new project
@@ -101,10 +101,10 @@ cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese
 
 ### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu kod, her görüntüyü ilgili etiketiyle birlikte karşıya yükler. Tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz.
+Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu kod, her görüntüyü ilgili etiketiyle birlikte karşıya yükler. Tek bir toplu iş halinde en fazla 64 resim yükleyebilirsiniz.
 
 > [!NOTE]
-> Bilişsel hizmetler git SDK örnekleri projesini daha önce indirdiğiniz yere göre görüntülerin yolunu değiştirmeniz gerekir.
+> Bilişsel Hizmetler Go SDK Örnekleri projesini daha önce indirdiğiniz yere bağlı olarak resimlerin yolunu değiştirmeniz gerekir.
 
 ```go
 fmt.Println("Adding images...")
@@ -132,9 +132,9 @@ for _, file := range japaneseCherryImages {
 }
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitme ve yayımlama
+### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitin ve yayımlayın
 
-Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
+Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve sonra bu yinelemeyi tahmin bitiş noktasına yayımlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin bitiş noktasında kullanılamaz.
 
 ```go
 fmt.Println("Training...")
@@ -152,7 +152,7 @@ fmt.Println("Training status: " + *iteration.Status)
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Yayınlanan yinelemeyi tahmin bitiş noktasında alın ve kullanın
 
 Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın sonuna aşağıdaki kodu ekleyin:
 
@@ -172,7 +172,7 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-*Örnek. go*çalıştırın.
+*Örnek çalıştırın.go*.
 
 ```shell
 go run sample.go
@@ -193,7 +193,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Ardından test görüntüsünün ( **<base_image_url>/Images/Test/** yolunda bulunur) düzgün etiketlendiğini doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
+Ardından test görüntüsünün (**<base_image_url>/Images/Test/** yolunda bulunur) düzgün etiketlendiğini doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

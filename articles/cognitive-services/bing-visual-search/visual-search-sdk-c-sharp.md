@@ -1,7 +1,7 @@
 ---
-title: Hızlı başlangıç:-Bing Görsel Arama için C# SDK 'yı kullanarak görüntü öngörüleri alın
+title: "Quickstart: C# için SDK'yı kullanarak görüntü öngörüleri alın - Bing Görsel Arama"
 titleSuffix: Azure Cognitive Services
-description: Bing Görsel Arama SDK kullanarak bir görüntüyü karşıya yüklemeyi ve bu hızlı başlangıç ile ilgili öngörüleri almayı öğrenin.
+description: Bing Visual Search SDK'yı kullanarak bir resmi nasıl yükleyip bu hızlı başlangıçla bu konuda nasıl fikir edindiğinizi öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: b1f5274bcae1f6e59f6dea94beee810a4613d739
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446605"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Hızlı başlangıç: Bing Görsel Arama SDK 'sını kullanarak görüntü öngörülerini alınC#
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Quickstart: C için Bing Görsel Arama SDK'sını kullanarak görüntü öngörüleri alın #
 
-C# SDK 'yı kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch)' da bulunabilir.
+C# SDK'yı kullanarak Bing Görsel Arama hizmetinden görüntü öngörüleri almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama çoğu programlama diliyle uyumlu bir REST API'ye sahip olsa da, SDK hizmeti uygulamalarınız için tümleştirmenin kolay bir yolunu sağlar. Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch)bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
 * NuGet Görsel Arama paketi. 
-    - Visual Studio'daki Çözüm Gezgini'nde projenize sağ tıklayıp menüden `Manage NuGet Packages` öğesini seçin. `Microsoft.Azure.CognitiveServices.Search.VisualSearch` paketini yükleyin. NuGet paketlerini yüklemek aşağıdakileri de yapar:
+    - Visual Studio'daki Çözüm Gezgini'nde projenize sağ tıklayıp menüden `Manage NuGet Packages` öğesini seçin. `Microsoft.Azure.CognitiveServices.Search.VisualSearch` paketini yükleyin. NuGet paketlerinin yüklenmesi de aşağıdakileri yükler:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -38,22 +38,22 @@ C# SDK 'yı kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Visual Studio 'da yeni bir proje oluşturun. Ardından aşağıdaki yönergeleri ekleyin.
+1. Visual Studio'da yeni bir proje oluşturun. Ardından aşağıdaki yönergeleri ekleyin.
     
     ```csharp
     using Microsoft.Azure.CognitiveServices.Search.VisualSearch;
     using Microsoft.Azure.CognitiveServices.Search.VisualSearch.Models;
     ```
 
-2. Abonelik anahtarınızla istemci örneğini oluşturun.
+2. Abonelik anahtarınızla istemciyi anında anında ele alabilmenizi.
     
     ```csharp
     var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
     
-## <a name="send-a-search-request"></a>Arama isteği gönder 
+## <a name="send-a-search-request"></a>Arama isteği gönderme 
 
-1. Görüntülerinize `FileStream` oluşturun (Bu durumda `TestImages/image.jpg`). Ardından `client.Images.VisualSearchMethodAsync()`kullanarak bir arama isteği göndermek için istemcisini kullanın. 
+1. Resimlerinize `FileStream` a oluşturun (bu `TestImages/image.jpg`durumda). Ardından istemciyi kullanarak `client.Images.VisualSearchMethodAsync()`bir arama isteği göndermek için kullanın. 
     
     ```csharp
      System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open);
@@ -97,4 +97,4 @@ C# SDK 'yı kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı Web uygulaması oluşturma](tutorial-bing-visual-search-single-page-app.md)
+> [Tek sayfalık bir web uygulaması oluşturma](tutorial-bing-visual-search-single-page-app.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: go için istemci kitaplığı Metin Analizi | Microsoft Docs'
+title: 'Quickstart: Go için Text Analytics istemci kitaplığı | Microsoft Dokümanlar'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'den go Metin Analizi istemci kitaplığını kullanarak dili algılayın.
+description: Bu hızlı başlangıçta, Azure Bilişsel Hizmetler'den Go Text Analytics istemci kitaplığını kullanarak dili algılayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,100 +11,100 @@ ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
 ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77912658"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Hızlı başlangıç: go için Metin Analizi istemci kitaplığını kullanma
+# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Hızlı başlangıç: Go için Text Analytics istemci kitaplığını kullanın
 
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [paketi (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[Referans belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [Paketi (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [Örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
-> Bu hızlı başlangıç yalnızca Metin Analizi sürüm 2,1 için geçerlidir. Şu anda Go için bir v3 istemci kitaplığı kullanılamıyor.
+> Bu hızlı başlangıç yalnızca Text Analytics sürüm 2.1 için geçerlidir. Şu anda, Go için bir v3 istemci kitaplığı kullanılamıyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* En son [Go](https://golang.org/dl/) sürümü
-* Azure aboneliğiniz olduktan sonra, anahtarınızı ve uç noktanızı almak için</a> Azure portal bir kaynak Metin Analizi <span class="docon docon-navigate-external x-hidden-focus"></span> oluşturun"  target="_blank">metin analizi bir kaynak oluşturun <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=". 
-    * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu daha sonra hızlı başlangıçta yapacaksınız.
-    * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyebilir ve daha sonra üretim için ücretli bir katmana yükseltebilirsiniz.
+* Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* [Go'nun](https://golang.org/dl/) en son sürümü
+* Azure aboneliğinizi aldıktan <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="sonra, Anahtar ve"  target="_blank">bitiş noktanızı <span class="docon docon-navigate-external x-hidden-focus"></span> </a> almak için Azure portalında bir Metin Analizi kaynağı oluşturun. 
+    * Uygulamanızı Text Analytics API'sine bağlamak için oluşturduğunuz kaynaktan gelen anahtar ve bitiş noktasına ihtiyacınız olacaktır. Bunu daha sonra hızlı bir şekilde yapacaksınız.
+    * Hizmeti denemek için ücretsiz fiyatlandırma katmanını kullanabilir ve daha sonra üretim için ücretli bir katmana yükseltebilirsiniz.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-### <a name="create-a-new-go-project"></a>Yeni bir go projesi oluştur
+### <a name="create-a-new-go-project"></a>Yeni bir Go projesi oluşturun
 
-Konsol penceresinde (cmd, PowerShell, Terminal, Bash), go projeniz için yeni bir çalışma alanı oluşturun ve bu projeye gidin. Çalışma alanınız üç klasör içerir: 
+Konsol penceresinde (cmd, PowerShell, Terminal, Bash), Go projeniz için yeni bir çalışma alanı oluşturun ve projeye gidin. Çalışma alanınız üç klasör içerir: 
 
-* **src** -bu dizin, kaynak kodu ve paketleri içerir. `go get` komutuyla yüklenmiş tüm paketler burada yer alır.
-* **pkg** -bu dizin, derlenmiş go paketi nesnelerini içerir. Bu dosyaların hepsi `.a` uzantısına sahiptir.
-* **bin** -bu dizin, `go install`çalıştırdığınızda oluşturulan ikili yürütülebilir dosyaları içerir.
+* **src** - Bu dizin kaynak kodu ve paketleri içerir. `go get` Komutu ile yüklü tüm paketler burada bulunacaktır.
+* **pkg** - Bu dizin derlenmiş Go paket nesnelerini içerir. Bu dosyaların hepsinin `.a` bir uzantısı var.
+* **bin** - Bu dizin çalıştırdığınızda `go install`oluşturulan ikili yürütülebilir dosyaları içerir.
 
 > [!TIP]
-> [Go çalışma alanının](https://golang.org/doc/code.html#Workspaces)yapısı hakkında daha fazla bilgi edinin. Bu kılavuz `$GOPATH` ve `$GOROOT`ayarlamaya yönelik bilgiler içerir.
+> [Go çalışma alanının](https://golang.org/doc/code.html#Workspaces)yapısı hakkında daha fazla bilgi edinin. Bu kılavuz, ayar `$GOPATH` `$GOROOT`ve .
 
-`my-app` ve `src`, `pkg`ve `bin`için gereken alt dizinleri adlı bir çalışma alanı oluşturun:
+Adlı `my-app` bir çalışma alanı ve için `src`gerekli `pkg`alt `bin`dizinler oluşturun , , ve:
 
 ```console
 $ mkdir -p my-app/{src, bin, pkg}  
 $ cd my-app
 ```
 
-### <a name="install-the-text-analytics-client-library-for-go"></a>Go için Metin Analizi istemci kitaplığını yüklemesi
+### <a name="install-the-text-analytics-client-library-for-go"></a>Go için Text Analytics istemci kitaplığını yükleme
 
-Go için istemci kitaplığını yükler: 
+Go için istemci kitaplığını yükleyin: 
 
 ```console
 $ go get -u <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
 ```
 
-ya da DEP kullanıyorsanız, deponuzda çalıştırın:
+veya repo çalışmanızda dep kullanıyorsanız:
 
 ```console
 $ dep ensure -add <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
 ```
 
-### <a name="create-your-go-application"></a>Go uygulamanızı oluşturma
+### <a name="create-your-go-application"></a>Go uygulamanızı oluşturun
 
-Sonra, `src/quickstart.go`adlı bir dosya oluşturun:
+Ardından, adlı `src/quickstart.go`bir dosya oluşturun:
 
 ```bash
 $ cd src
 $ touch quickstart.go
 ```
 
-`quickstart.go` en sevdiğiniz IDE veya metin düzenleyicisinde açın. Ardından, paket adını ekleyin ve aşağıdaki kitaplıkları içeri aktarın:
+En `quickstart.go` sevdiğiniz IDE veya metin düzenleyicisinde açın. Ardından paket adını ekleyin ve aşağıdaki kitaplıkları içe aktarın:
 
 [!code-go[Import statements](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=imports)]
 
 ## <a name="object-model"></a>Nesne modeli 
 
-Metin Analizi istemcisi, anahtarınızı kullanarak Azure 'da kimlik doğrulayan bir [Baseclient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) nesnesidir. İstemci, tek bir dize veya bir toplu iş olarak metin çözümlemek için çeşitli yöntemler sağlar. 
+Text Analytics istemcisi, anahtarınızı kullanarak Azure'a doğrulayan bir [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) nesnesidir. İstemci, metni tek bir dize veya toplu iş olarak çözümleme için çeşitli yöntemler sağlar. 
 
-Metin, kullanılan yönteme bağlı olarak `id`, `text`ve `language` özniteliklerinin bir birleşimini içeren `dictionary` nesneler olan `documents`bir liste olarak API 'ye gönderilir. `text` özniteliği, kaynak `language`analiz edilecek metni depolar ve `id` herhangi bir değer olabilir. 
+Metin, kullanılan yönteme bağlı olarak `documents`, `dictionary` , ve `id` `text` `language` özniteliklerin birleşimini içeren nesneler listesi olarak API'ye gönderilir. Öznitelik, `text` metnin kaynağında `language`çözümlenecek metni depolar ve herhangi bir değer `id` olabilir. 
 
-Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir. 
+Yanıt nesnesi, her belge için çözümleme bilgilerini içeren bir listedir. 
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını gösterir:
+Bu kod parçacıkları Python için Text Analytics istemci kitaplığı ile aşağıdakileri nasıl yapacağınızı gösterir:
 
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Yaklaşım Analizi](#sentiment-analysis)
+* [İstemcinin kimliğini doğrula](#authenticate-the-client)
+* [Duygusallık Analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Varlık tanıma](#entity-recognition)
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar tümcecik çıkarma](#key-phrase-extraction)
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
 
-Yeni bir işlevde, kaynağınızın Azure uç noktası ve abonelik anahtarı için değişkenler oluşturun.
+Yeni bir işlevde, kaynağınızın Azure bitiş noktası ve abonelik anahtarı için değişkenler oluşturun.
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-Yeni bir [Baseclient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) nesnesi oluşturun. Anahtarınızı oto Rest 'e geçirin [. Newbiliveservicesauthorizer ()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) işlevi, daha sonra istemcinin `authorizer` özelliğine geçirilir.
+Yeni bir [BaseClient nesnesi](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) oluşturun. Anahtarınızı [otosuna iletin. Daha](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) sonra istemcinin `authorizer` özelliğine geçirilecek NewCognitiveServicesAuthorizer() işlevi.
 
 ```go
 func GetTextAnalyticsClient() textanalytics.BaseClient {
@@ -120,13 +120,13 @@ func GetTextAnalyticsClient() textanalytics.BaseClient {
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-`SentimentAnalysis()` adlı yeni bir işlev oluşturun ve daha önce oluşturulan `GetTextAnalyticsClient()` yöntemi kullanarak bir istemci oluşturun. Analiz etmek istediğiniz belgeleri içeren [Multilanguageınput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id`, `Language` ve bir `text` özniteliği içerir. `text` özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. 
+Çağrılan `SentimentAnalysis()` yeni bir işlev oluşturun ve `GetTextAnalyticsClient()` daha önce oluşturulan yöntemi kullanarak bir istemci oluşturun. Çözümlemek istediğiniz belgeleri içeren [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id` `Language` ve `text` bir öznitelik içerir. Öznitelik, `text` çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. 
 
-İstemcinin [Sentiment ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
+Müşterinin [Sentiment()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) işlevini arayın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin kimliğini ve duyarlılık puanını yazdırın. 0'a yakın bir puan olumsuz bir duyguyu gösterirken, 1'e yakın bir puan olumlu bir duyguyu gösterir.
 
 [!code-go[Sentiment analysis sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=sentimentAnalysis)]
 
-projenizdeki `SentimentAnalysis()` çağırın.
+projenizi arayın. `SentimentAnalysis()`
 
 ### <a name="output"></a>Çıktı
 
@@ -139,13 +139,13 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Dil algılama
 
-`LanguageDetection()` adlı yeni bir işlev oluşturun ve daha önce oluşturulan `GetTextAnalyticsClient()` yöntemi kullanarak bir istemci oluşturun. Analiz etmek istediğiniz belgeleri içeren [Languageınput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id` ve `text` özniteliği içerir. `text` özniteliği çözümlenecek metni depolar ve `id` herhangi bir değer olabilir. 
+Çağrılan `LanguageDetection()` yeni bir işlev oluşturun ve `GetTextAnalyticsClient()` daha önce oluşturulan yöntemi kullanarak bir istemci oluşturun. Çözümlemek istediğiniz belgeleri içeren [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id` ve `text` bir öznitelik içerir. Öznitelik, `text` çözümlenecek metni depolar ve `id` herhangi bir değer olabilir. 
 
-İstemcinin [DetectLanguage ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) öğesini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve algılanan dili yazdırın.
+İstemcinin [DetectLanguage()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) numaralı telefonlarını arayın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin kimliğini yazdırın ve algılanan dili yazdırın.
 
 [!code-go[Language detection sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=languageDetection)]
 
-projenizdeki `LanguageDetection()` çağırın.
+Projenizi arayın. `LanguageDetection()`
 
 ### <a name="output"></a>Çıktı
 
@@ -157,13 +157,13 @@ Document ID: 2 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Varlık tanıma
 
-`ExtractEntities()` adlı yeni bir işlev oluşturun ve daha önce oluşturulan `GetTextAnalyticsClient()` yöntemi kullanarak bir istemci oluşturun. Analiz etmek istediğiniz belgeleri içeren [Multilanguageınput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id`, `language`ve bir `text` özniteliği içerir. `text` özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. 
+Çağrılan `ExtractEntities()` yeni bir işlev oluşturun ve `GetTextAnalyticsClient()` daha önce oluşturulan yöntemi kullanarak bir istemci oluşturun. Çözümlemek istediğiniz belgeleri içeren [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id` `language`, ve `text` bir öznitelik içerir. Öznitelik, `text` çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. 
 
-İstemcinin [varlıklarını ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın, her belge KIMLIĞINI ve ayıklanan varlık Puanını yazdırın.
+İstemcinin [Varlıklarını Arayın()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin kimliğini yazdırın ve ayıklanan varlıklar puanı yazdırın.
 
 [!code-go[entity recognition sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=entityRecognition)]
 
-projenizdeki `ExtractEntities()` çağırın.
+projenizi arayın. `ExtractEntities()`
 
 ### <a name="output"></a>Çıktı
 
@@ -197,13 +197,13 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
-`ExtractKeyPhrases()` adlı yeni bir işlev oluşturun ve daha önce oluşturulan `GetTextAnalyticsClient()` yöntemi kullanarak bir istemci oluşturun. Analiz etmek istediğiniz belgeleri içeren [Multilanguageınput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id`, `language`ve bir `text` özniteliği içerir. `text` özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir.
+Çağrılan `ExtractKeyPhrases()` yeni bir işlev oluşturun ve `GetTextAnalyticsClient()` daha önce oluşturulan yöntemi kullanarak bir istemci oluşturun. Çözümlemek istediğiniz belgeleri içeren [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id` `language`, ve `text` bir öznitelik içerir. Öznitelik, `text` çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir.
 
-İstemcinin [KeyPhrases ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) öğesini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve ayıklanan anahtar tümceleri yazdırın.
+İstemcinin [Anahtar İfadelerini()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) arayın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin kimliğini yazdırın ve anahtar tümcecikleri ayıklayın.
 
 [!code-go[key phrase extraction sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=keyPhrases)]
 
-projenizdeki `ExtractKeyPhrases()` çağırın.
+Projenizi arayın. `ExtractKeyPhrases()`
 
 ### <a name="output"></a>Çıktı
 

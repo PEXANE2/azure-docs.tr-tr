@@ -1,7 +1,7 @@
 ---
 title: Görüntü İşleme API’sini çağırma
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler 'de REST API kullanarak Görüntü İşleme API'si nasıl çağrılacağını öğrenin.
+description: Azure Bilişsel Hizmetler'de REST API'sini kullanarak BilgisayarLı Vizyon API'sini nasıl arayacağınızı öğrenin.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -12,60 +12,60 @@ ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72177056"
 ---
 # <a name="call-the-computer-vision-api"></a>Görüntü İşleme API’sini çağırma
 
-Bu makalede, REST API kullanılarak Görüntü İşleme API'si nasıl çağrılacağını gösterir. Örnekler, Görüntü İşleme API'si istemci kitaplığı ve C# http post veya Get çağrıları kullanılarak üzerinde yazılır. Makale şu şekilde odaklanır:
+Bu makalede, REST API kullanarak Bilgisayar Görme API nasıl çağrılabilir gösterir. Örnekler, Computer Vision API istemci kitaplığı kullanılarak ve HTTP POST veya GET çağrıları kullanılarak C# olarak yazılır. Makale üzerinde duruluyor:
 
-- Etiketler, bir açıklama ve Kategoriler alma
-- Etki alanına özgü bilgileri veya "ünlüleri" alma
+- Etiketleri, açıklamayı ve kategorileri alma
+- Etki alanına özgü bilgiler veya "ünlüler" alma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Yerel olarak depolanmış görüntünün bir resim URL 'SI veya yolu
-- Desteklenen giriş yöntemleri: bir uygulama/sekizli akış veya bir görüntü URL 'SI biçiminde Ham görüntü ikilisi
+- Bir resim URL'si veya yerel olarak depolanan bir resme giden yol
+- Desteklenen giriş yöntemleri: uygulama/sekizli akış veya görüntü URL'si şeklinde ham görüntü ikilisi
 - Desteklenen görüntü dosyası biçimleri: JPEG, PNG, GIF ve BMP
-- Görüntü dosyası boyutu: 4 MB veya daha az
-- Resim boyutları: 50 &times; 50 piksel veya daha büyük
+- Resim dosyası boyutu: 4 MB veya daha az
+- Görüntü boyutları: &times; 50 50 piksel veya daha büyük
   
-Bu makaledeki örneklerde aşağıdaki özellikler gösterilmektedir:
+Bu makaledeki örnekler aşağıdaki özellikleri göstermektedir:
 
-* Bir resim dizisini ve açıklamayı döndürmek için bir görüntüyü analiz etme
-* Bir görüntüyü alana özgü bir modelle analiz etme (özellikle, "Ünlüler" modeli), JSON 'da karşılık gelen sonucu döndürecek şekilde
+* Bir dizi etiket ve açıklama döndürmek için görüntüyü çözümleme
+* JSON'da karşılık gelen sonucu döndürmek için bir görüntüyü etki alanına özgü bir modelle (özellikle "ünlüler" modeli) analiz etme
 
 Özellikler aşağıdaki seçenekleri sunar:
 
-- **Seçenek 1**: kapsamlı analiz-yalnızca belirtilen modeli çözümle
-- **Seçenek 2**: gelişmiş analiz- [86-Categories taksonomi](../Category-Taxonomy.md) kullanarak ek ayrıntılar sağlamak için çözümleyin
+- **Seçenek 1**: Kapsamlı Çözümleme - Yalnızca belirli bir modeli analiz
+- **Seçenek 2**: Gelişmiş Analiz - [86 kategorili taksonomi](../Category-Taxonomy.md) kullanarak ek ayrıntılar sağlamak için analiz
   
-## <a name="authorize-the-api-call"></a>API çağrısını yetkilendir
+## <a name="authorize-the-api-call"></a>API çağrısını yetkilendirme
 
-Görüntü İşleme API’sine yapılan her çağrı için bir abonelik anahtarı gerekir. Bu anahtar, bir sorgu dizesi parametresi aracılığıyla geçirilmelidir veya istek üstbilgisinde belirtilmelidir.
+Görüntü İşleme API’sine yapılan her çağrı için bir abonelik anahtarı gerekir. Bu anahtar, sorgu dize parametresinden geçirilmeli veya istek üstbilgisinde belirtilmelidir.
 
 Ücretsiz deneme anahtarı almak için aşağıdakilerden birini yapın:
-* Bilişsel [Hizmetler 'ı deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) sayfasına gidin. 
-* Görüntü İşleme abone olmak için bilişsel [Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) sayfasına gidin.
+* [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) sayfasına gidin. 
+* Computer Vision'a abone olmak için [Bilişsel Hizmetler hesabı oluştur](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) sayfasına gidin.
 
-Aşağıdakilerden birini yaparak abonelik anahtarını geçirebilirsiniz:
+Aşağıdakilerden birini yaparak abonelik anahtarını geçebilirsiniz:
 
-* Bu Görüntü İşleme API'si örnekte olduğu gibi bir sorgu dizesi aracılığıyla geçirin:
+* Bu Bilgisayar Lı Vizyon API örneğinde olduğu gibi, bir sorgu dizesinde geçirin:
 
   ```
   https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
   ```
 
-* Bunu HTTP istek üstbilgisinde belirtin:
+* HTTP istek üstbilgisinde belirtin:
 
   ```
   ocp-apim-subscription-key: <Your subscription key>
   ```
 
-* İstemci kitaplığını kullandığınızda, anahtarı ComputerVisionClient Oluşturucusu aracılığıyla geçirin ve bölgeyi istemcinin bir özelliğinde belirtin:
+* İstemci kitaplığını kullandığınızda, anahtarı ComputerVisionClient'ın oluşturucusundan geçirin ve istemcinin özelliğinde bölgeyi belirtin:
 
     ```
     var visionClient = new ComputerVisionClient(new ApiKeyServiceClientCredentials("Your subscriptionKey"))
@@ -74,13 +74,13 @@ Aşağıdakilerden birini yaparak abonelik anahtarını geçirebilirsiniz:
     }
     ```
 
-## <a name="upload-an-image-to-the-computer-vision-api-service"></a>Görüntü İşleme API'si hizmetine bir görüntü yükleme
+## <a name="upload-an-image-to-the-computer-vision-api-service"></a>Görüntübilgisayar Görme API hizmetine yükleme
 
-Görüntü İşleme API'si çağrısını gerçekleştirmenin temel yolu, etiketleri, açıklamayı ve ünlüleri döndürmek için doğrudan bir görüntü karşıya yüklüyor. Bunu, HTTP gövdesinde ikili görüntüyle bir "POST" isteği göndererek, görüntüden okunan verilerle birlikte oluşturursunuz. Yükleme yöntemi tüm Görüntü İşleme API'si çağrılarında aynıdır. Tek fark, belirttiğiniz sorgu parametreleridir. 
+Computer Vision API aramasını gerçekleştirmenin temel yolu, etiketleri, açıklamayı ve ünlüleri doğrudan döndürmek için bir resim yüklemektir. Bunu, görüntüden okunan verilerle birlikte HTTP gövdesindeki ikili görüntüyle birlikte bir "POST" isteği göndererek yaparsınız. Yükleme yöntemi tüm Computer Vision API aramaları için aynıdır. Tek fark, belirttiğiniz sorgu parametreleridir. 
 
-Belirtilen bir görüntü için aşağıdaki seçeneklerden birini kullanarak Etiketler ve bir açıklama alın:
+Belirli bir resim için, aşağıdaki seçeneklerden birini kullanarak etiketleri ve açıklamayı alın:
 
-### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Seçenek 1: etiketlerin ve açıklamanın listesini alın
+### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Seçenek 1: Etiketlerin listesini ve açıklamayı alma
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
@@ -100,16 +100,16 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Seçenek 2: yalnızca etiketlerin veya yalnızca bir açıklamanın listesini alın
+### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Seçenek 2: Yalnızca etiketlerin listesini veya yalnızca bir açıklama alma
 
-Yalnızca Etiketler için şunu çalıştırın:
+Yalnızca etiketler için çalıştırın:
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
 var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
-Yalnızca bir açıklama için şunu çalıştırın:
+Yalnızca bir açıklama için çalıştırın:
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
@@ -119,9 +119,9 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-## <a name="get-domain-specific-analysis-celebrities"></a>Etki alanına özgü analiz (ünlüler) Al
+## <a name="get-domain-specific-analysis-celebrities"></a>Etki alanına özel analiz (ünlüler) alın
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Seçenek 1: kapsamlı analiz-yalnızca belirtilen modeli çözümle
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Seçenek 1: Kapsamlı çözümleme - Yalnızca belirli bir modeli analiz
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
@@ -134,19 +134,19 @@ GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models
 var models = await visionClient.ListModelsAsync();
 ```
 
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Seçenek 2: gelişmiş analiz-86-Categories taksonomi kullanarak ek ayrıntılar sağlamak için çözümleyin
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Seçenek 2: Gelişmiş analiz - 86 kategorili taksonomi kullanarak ek ayrıntılar sağlamak için analiz
 
-Bir veya daha fazla etki alanına özgü modelden ayrıntıların yanı sıra genel görüntü analizini almak istediğiniz uygulamalar için modeller sorgu parametresini kullanarak v1 API 'sini genişletin.
+Bir veya daha fazla etki alanına özgü modelden ayrıntılara ek olarak genel bir görüntü analizi almak istediğiniz uygulamalarda, modeller sorgu parametresini kullanarak v1 API'sini genişletin.
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
 ```
 
-Bu yöntemi çağırdığınızda, önce [86 kategori](../Category-Taxonomy.md) sınıflandırıcısını çağırın. Kategorilerden herhangi biri bilinen veya eşleşen bir modelle eşleşiyorsa, bir sınıflandırıcı çağırmaları ikinci geçişi oluşur. Örneğin, "details = All" veya "details", "Ünlüler" i içeriyorsa, 86 kategori sınıflandırıcısını çağırdıktan sonra ünlüler modelini çağırabilirsiniz. Sonuç, kategori kişiyi içerir. Seçenek 1 ' in aksine bu yöntem, ünlülerle ilgilenen kullanıcılar için gecikme süresini artırır.
+Bu yöntemi çağırdığınızda, önce [86 kategorili](../Category-Taxonomy.md) sınıflandırıcıyı çağırırsınız. Kategorilerden herhangi biri bilinen veya eşleşen bir modelle eşleşirse, ikinci bir sınıflandırıcı çağrıları oluşur. Örneğin, "ayrıntılar=tümü" veya "ayrıntılar" "ünlüler" içeriyorsa, 86 kategorili sınıflandırıcıyı aradıktan sonra ünlüler modelini ararsınız. Sonuç kategori kişi içerir. Seçenek 1'in aksine, bu yöntem ünlülerle ilgilenen kullanıcılar için gecikme sürelerini artırır.
 
-Bu durumda, tüm v1 sorgu parametreleri aynı şekilde davranır. VisualFeatures = Kategoriler belirtmezseniz, örtülü olarak etkinleştirilir.
+Bu durumda, tüm v1 sorgu parametreleri aynı şekilde olur. visualFeatures=kategoriler belirtmezseniz, dolaylı olarak etkinleştirilir.
 
-## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Analiz için JSON çıkışını alma ve anlama
+## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Analiz için JSON çıktısını alın ve anlayın
 
 Bir örneği aşağıda verilmiştir:
 
@@ -179,17 +179,17 @@ Bir örneği aşağıda verilmiştir:
 
 Alan | Tür | İçerik
 ------|------|------|
-Etiketler  | `object` | Bir etiket dizisi için en üst düzey nesne.
-tags[].Name | `string`  | Etiketler sınıflandırıcıdan anahtar sözcüğü.
-tags[].Score    | `number`  | Güvenirlik puanı, 0 ile 1 arasındadır.
-açıklama  | `object` | Bir açıklama için en üst düzey nesne.
-description.tags[] |    `string`    | Etiketlerin listesi.  Bir resim yazısı üretebilme özelliği için yeterli güven yoksa, Etiketler çağıranın kullanabildiği tek bilgiler olabilir.
+Etiketler  | `object` | Bir dizi etiket için üst düzey nesne.
+tags[].Name | `string`  | Etiketler sınıflandırıcıdan gelen anahtar kelime.
+tags[].Score    | `number`  | Güven puanı, 0 ile 1 arasında.
+açıklama  | `object` | Açıklama için üst düzey nesne.
+description.tags[] |    `string`    | Etiket listesi.  Resim yazısı oluşturma özelliğine yeterince güven yoksa, etiketler arayan kişi için kullanılabilen tek bilgi olabilir.
 description.captions[].text | `string`  | Görüntüyü açıklayan bir ifadedir.
-description.captions[].confidence   | `number`  | İfadenin Güvenirlik puanı.
+description.captions[].confidence   | `number`  | İfadenin güven puanı.
 
-## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Etki alanına özgü modellerin JSON çıkışını alma ve anlama
+## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Etki alanına özgü modellerin JSON çıktısını alın ve anlayın
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Seçenek 1: kapsamlı analiz-yalnızca belirtilen modeli çözümle
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Seçenek 1: Kapsamlı çözümleme - Yalnızca belirli bir modeli analiz
 
 Çıktı, aşağıdaki örnekte gösterildiği gibi bir etiket dizisidir:
 
@@ -208,9 +208,9 @@ description.captions[].confidence   | `number`  | İfadenin Güvenirlik puanı.
 }
 ```
 
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Seçenek 2: gelişmiş analiz-"86-Categories" taksonomi kullanarak ek ayrıntılar sağlamak için çözümleyin
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Seçenek 2: Gelişmiş analiz - "86 kategorili" taksonomi kullanarak ek ayrıntılar sağlamak için analiz
 
-Seçenek 2 (gelişmiş analiz) kullanan alana özgü modeller için, aşağıdaki örnekte gösterildiği gibi kategori dönüş türü genişletilir:
+Seçenek 2'yi (gelişmiş çözümleme) kullanan etki alanına özgü modellerde, aşağıdaki örnekte gösterildiği gibi kategoriler inttürü genişletilir:
 
 ```json
 {  
@@ -237,20 +237,20 @@ Seçenek 2 (gelişmiş analiz) kullanan alana özgü modeller için, aşağıdak
 }
 ```
 
-Kategoriler alanı, orijinal taksonominin bir veya daha fazla [86 kategorisinin](../Category-Taxonomy.md) listesidir. Alt çizgi ile biten Kategoriler, bu kategori ve alt öğeleri ile eşleşir (örneğin, "people_" veya "people_group", ünlüler modeli için).
+Kategoriler alanı, özgün taksonomideki [86 kategoriden](../Category-Taxonomy.md) birinin veya daha fazlasının listesidir. Alt puanla biten kategoriler bu kategoriyle ve alt oyunlarıyla eşleşir (örneğin, "people_" veya "people_group" ünlüler modeli için).
 
 Alan   | Tür  | İçerik
 ------|------|------|
 kategoriler | `object`   | Üst düzey nesne.
-categories[].name    | `string` | 86-kategori taksonomi listesindeki addır.
-categories[].score  | `number`  | Güvenirlik puanı, 0 ile 1 arasındadır.
-categories[].detail  | `object?`      | Seçim Ayrıntı nesnesi.
+categories[].name    | `string` | 86 kategorili taksonomi listesindeki ad.
+categories[].score  | `number`  | Güven puanı, 0 ile 1 arasında.
+categories[].detail  | `object?`      | (İsteğe bağlı) Ayrıntı nesnesi.
 
-Birden çok kategori eşleşiyorsa (örneğin, 86 kategori Sınıflandırıcısı, model = ünlüler olduğunda "people_" ve "people_young" için bir puan döndürürse, ayrıntılar en genel düzey eşleştirmeye (Bu örnekteki "people_") eklenir.
+Birden çok kategori eşleşirse (örneğin, 86 kategorili sınıflandırıcı, model=ünlüler olduğunda hem "people_" hem de "people_young" için bir puan döndürür), ayrıntılar en genel düzey eşleşmesine eklenir ("people_," bu örnekte).
 
 ## <a name="error-responses"></a>Hata yanıtları
 
-Bu hatalar, hem 1 hem de seçenek 2 senaryolarında döndürülen ek NotSupportedModel hatası (HTTP 400) ile birlikte İncelenme ile aynıdır. Seçenek 2 (gelişmiş analiz) için, ayrıntılarda belirtilen modellerden herhangi biri tanınmazsa, API bir veya daha fazla geçerli olsa bile NotSupportedModel döndürür. Hangi modellerin desteklendiğini öğrenmek için Listmodellerini çağırabilirsiniz.
+Bu hatalar, hem Seçenek 1 hem de Seçenek 2 senaryolarında döndürülebilecek ek NotSupportedModel hatasıyla (HTTP 400) vision.analyze'dakilerle aynıdır. Seçenek 2 (gelişmiş çözümleme) için, ayrıntılarda belirtilen modellerden herhangi biri tanınmıyorsa, api bir veya daha fazlası geçerli olsa bile bir NotSupportedModel döndürür. Hangi modellerin desteklenebileceğini öğrenmek için listModels'i arayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

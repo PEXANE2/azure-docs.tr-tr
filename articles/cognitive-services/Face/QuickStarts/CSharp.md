@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Azure REST API ile görüntüdeki yüzeyleri algılama veC#'
+title: 'Hızlı başlatma: Azure REST API ve C ile görüntüdeki yüzleri algılama #'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için ile birlikte C# REST API Azure yüz kullanacaksınız.
+description: Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak için C# içeren Azure Yüz REST API'ni kullanırsınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 8d1349c096b6a6c9bffef38a8b8b3c7ea6bbd432
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 0be98ac60e11b3e21a864aa4ca18fcac2c7f014c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301820"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053398"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Hızlı başlangıç: yüz REST API kullanarak görüntüdeki yüzeyleri algılama veC#
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Hızlı başlatma: Yüz REST API ve C'yi kullanarak görüntüdeki yüzleri algılama #
 
-Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için ile C# REST API Azure yüz kullanacaksınız.
+Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için C# içeren Azure Yüz REST API'sini kullanırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
+- Yüz abonelik anahtarı. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ücretsiz deneme abonelik anahtarı alabilirsiniz. Veya Face hizmetine abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin.
 - [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio projesini oluşturma
 
-1. Visual Studio 'da yeni bir **konsol uygulaması (.NET Framework)** projesi oluşturun ve bunu **Facedetection**olarak adlandırın.
+1. Visual Studio'da yeni bir **Konsol uygulaması (.NET Framework)** projesi oluşturun ve **adını FaceDetection olarak**adlandırın.
 1. Çözümünüzde başka projeler de varsa, tek başlangıç projesi olarak bunu seçin.
 
 ## <a name="add-face-detection-code"></a>Yüz algılama kodu ekleme
 
-Yeni projenin *program.cs* dosyasını açın. Burada, görüntüleri yüklemek ve yüzeyleri algılamak için gereken kodu ekleyeceksiniz.
+Yeni projenin *Program.cs* dosyasını açın. Burada, görüntüleri yüklemek ve yüzleri algılamak için gereken kodu eklersiniz.
 
 ### <a name="include-namespaces"></a>Ad alanlarını ekleme
 
@@ -50,9 +50,9 @@ using System.Net.Http.Headers;
 using System.Text;
 ```
 
-### <a name="add-essential-fields"></a>Gerekli alanları Ekle
+### <a name="add-essential-fields"></a>Temel alanlar ekleme
 
-Aşağıdaki alanları içeren **Program** sınıfını ekleyin. Bu veriler, yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` alanını abonelik anahtarınızın değeri ile güncelleştirmeniz gerekir ve kaynak uç nokta dizenizi içermesi için `uriBase` dizesini değiştirmeniz gerekebilir.
+Aşağıdaki alanları içeren **Program** sınıfını ekleyin. Bu veriler, Face hizmetine nasıl bağlanılacağını ve girdi verilerinin nereden alınacağını belirtir. `subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve kaynak bitiş noktası `uriBase` dizenizi içerecek şekilde dizeyi değiştirmeniz gerekebilir.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -70,18 +70,13 @@ namespace DetectFace
             "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
-### <a name="receive-image-input"></a>Görüntü girişi al
+### <a name="receive-image-input"></a>Görüntü girişi alma
 
-**Program** sınıfının **Main** yöntemine aşağıdaki kodu ekleyin. Bu kod, kullanıcıdan bir görüntü URL 'SI girmesini isteyen konsola bir istem yazar. Daha sonra bu konumdaki görüntüyü işlemek için, **Makeanalysisrequest**, başka bir yöntemi çağırır.
+**Program** sınıfının **Ana** yöntemine aşağıdaki kodu ekleyin. Bu kod, kullanıcıdan bir resim URL'si girmesini isteyen bir istem konsoluna yazar. Sonra başka bir yöntem çağırır, **MakeAnalysisRequest**, bu konumda görüntü işlemek için.
 
 ```csharp
         static void Main(string[] args)
         {
-
-            // Explicitly set TLS 1.2.
-            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
-                SecurityProtocolType.Tls12;
-
             // Get the path and filename to process from the user.
             Console.WriteLine("Detect faces:");
             Console.Write(
@@ -108,11 +103,11 @@ namespace DetectFace
         }
 ```
 
-### <a name="call-the-face-detection-rest-api"></a>Yüz algılamayı çağırın REST API
+### <a name="call-the-face-detection-rest-api"></a>Yüz algılama REST API'yi arayın
 
-**Program** sınıfına aşağıdaki yöntemi ekleyin. Uzak görüntüdeki yüz bilgilerini algılamak için Yüz Tanıma API'si bir REST çağrısı oluşturur (`requestParameters` dizesi alınacak yüz özniteliklerini belirtir). Ardından, çıkış verilerini bir JSON dizesine yazar.
+**Program** sınıfına aşağıdaki yöntemi ekleyin. Uzak görüntüdeki yüz bilgilerini algılamak için Face API'ye `requestParameters` REST çağrısı oluşturur (dize hangi yüz özniteliklerini alır) belirtir. Sonra çıktı verilerini JSON dizesine yazar.
 
-Aşağıdaki adımlarda yardımcı yöntemleri tanımlayacaksınız.
+Yardımcı yöntemleri aşağıdaki adımlarda tanımlarsınız.
 
 ```csharp
         // Gets the analysis of the specified image by using the Face REST API.
@@ -159,9 +154,9 @@ Aşağıdaki adımlarda yardımcı yöntemleri tanımlayacaksınız.
         }
 ```
 
-### <a name="process-the-input-image-data"></a>Giriş resim verilerini işleme
+### <a name="process-the-input-image-data"></a>Giriş görüntü verilerini işleme
 
-**Program** sınıfına aşağıdaki yöntemi ekleyin. Bu yöntem, belirtilen URL 'deki görüntüyü bir bayt dizisine dönüştürür.
+**Program** sınıfına aşağıdaki yöntemi ekleyin. Bu yöntem, belirtilen URL'deki görüntüyü bayt dizilimine dönüştürür.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -176,9 +171,9 @@ Aşağıdaki adımlarda yardımcı yöntemleri tanımlayacaksınız.
         }
 ```
 
-### <a name="parse-the-json-response"></a>JSON yanıtını Ayrıştır
+### <a name="parse-the-json-response"></a>Ayrışdırış JSON yanıtı
 
-**Program** sınıfına aşağıdaki yöntemi ekleyin. Bu yöntem JSON girişini daha kolay okunabilir olacak şekilde biçimlendirir. Uygulamanız, bu dize verilerini konsola yazacak. Daha sonra sınıfı ve ad alanını kapatabilirsiniz.
+**Program** sınıfına aşağıdaki yöntemi ekleyin. Bu yöntem, JSON girişini daha kolay okunabilir olacak şekilde biçimlendirebilir. Uygulamanız bu dize verilerini konsola yazar. Daha sonra sınıfı ve ad alanını kapatabilirsiniz.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -249,7 +244,7 @@ Aşağıdaki adımlarda yardımcı yöntemleri tanımlayacaksınız.
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-Başarılı bir yanıt, yüz verileri kolay okunabilir JSON biçiminde görüntüler. Örnek:
+Başarılı bir yanıt, Face verilerini kolayca okunabilir JSON formatında görüntüler. Örnek:
 
 ```json
 [
@@ -347,7 +342,7 @@ Başarılı bir yanıt, yüz verileri kolay okunabilir JSON biçiminde görünt�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure yüz hizmeti ile REST çağrılarını kullanan basit bir .NET konsol uygulaması oluşturdunuz. Daha sonra, desteklenen senaryolar hakkında daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
+Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak ve özniteliklerini döndürmek için Azure Face hizmetiyle REST çağrılarını kullanan basit bir .NET konsol uygulaması oluşturdunuz. Ardından, desteklenen senaryolar hakkında daha fazla bilgi edinmek için Yüz API başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API’si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Yüz API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

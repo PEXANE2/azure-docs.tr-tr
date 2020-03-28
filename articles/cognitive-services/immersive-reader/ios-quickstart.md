@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: tam ekran okuyucuyu (Swift) başlatan bir iOS uygulaması oluşturma'
+title: 'Quickstart: Immersive Reader (Swift) başlatan bir iOS uygulaması oluşturun'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, sıfırdan bir iOS uygulaması oluşturacaksınız ve tam ekran okuyucu işlevselliği eklersiniz.
+description: Bu hızlı başlangıçta, sıfırdan bir iOS uygulaması oluşturacak ve Sürükleyici Okuyucu işlevini ekleyeceksiniz.
 author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
@@ -9,46 +9,46 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 9003eb85938cc3afaad7fef341b1ed2826e8fbc9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841618"
 ---
-# <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Hızlı başlangıç: tam ekran okuyucuyu (Swift) başlatan bir iOS uygulaması oluşturma
+# <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Quickstart: Immersive Reader (Swift) başlatan bir iOS uygulaması oluşturun
 
-[Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
+[Immersive Reader,](https://www.onenote.com/learningtools) okuma anlama geliştirmek için kanıtlanmış teknikleri uygulayan kapsayıcı bir şekilde tasarlanmış bir araçtır.
 
-Bu hızlı başlangıçta, sıfırdan bir iOS uygulaması oluşturup tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)ulaşabilirsiniz.
+Bu hızlı başlangıçta, sıfırdan bir iOS uygulaması oluşturun ve Sürükleyici Okuyucu'yu entegre edebilirsiniz. Bu quickstart tam bir çalışma örneği [burada](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)mevcuttur.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Örnek proje özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
+* Azure Etkin Dizin kimlik doğrulaması için yapılandırılan Sürükleyici Bir Reader kaynağı. Kurulumu için [bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Örnek proje özelliklerini yapılandırırken burada oluşturulan bazı değerlere ihtiyacınız olacaktır. Oturumunuzun çıktısını ileride başvurmak için bir metin dosyasına kaydedin.
 
-## <a name="create-an-xcode-project"></a>Xcode projesi oluşturma
+## <a name="create-an-xcode-project"></a>Bir Xcode projesi oluşturma
 
-Xcode 'da yeni bir proje oluşturun.
+Xcode'da yeni bir proje oluşturun.
 
 ![Yeni Proje](./media/ios/xcode-create-project.png)
 
-**Tek görünüm uygulaması**' nı seçin.
+**Tek Görünüm Uygulaması**seçin.
 
-![Yeni tek görünüm uygulaması](./media/ios/xcode-single-view-app.png)
+![Yeni Tek Görünüm Uygulaması](./media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>Kimlik doğrulamasını ayarlama
 
-Üstteki menüde **ürün > düzeni > düzeni Düzenle**' ye tıklayın...
+Üst menüde Ürün **> Düzeni > Düzendüzen...** seçeneğini tıklayın.
 
-![Düzeni Düzenle](./media/ios/quickstart-ios-edit-scheme.png)
+![Düzenle Şeması Düzenle](./media/ios/quickstart-ios-edit-scheme.png)
 
-**Çalıştır** görünümünde, **bağımsız değişkenler** sekmesine tıklayın.
+**Çalıştır** görünümünde **Bağımsızlar** sekmesine tıklayın.
 
-![Düzeni Düzenle](./media/ios/quickstart-ios-env-vars.png)
+![Düzenle Şeması Düzenle](./media/ios/quickstart-ios-env-vars.png)
 
-**Ortam değişkenleri** bölümünde, tam ekran okuyucuyu oluştururken verilen değerleri sağlayarak aşağıdaki adları ve değerleri ekleyin.
+Çevre **Değişkenleri** bölümünde, Sürükleyici Okuyucu kaynağınızı oluşturduğunuzda verilen değerleri sağlayarak aşağıdaki adları ve değerleri ekleyin.
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -57,9 +57,9 @@ CLIENT_SECRET<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
 
-## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Uygulamayı görsel taslak olmadan çalışacak şekilde ayarlama
+## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Uygulamayı bir film şeridi olmadan çalışacak şekilde ayarlama
 
-*Appdelegate. Swift* dosyasını açın ve dosyayı aşağıdaki kodla değiştirin.
+*AppDelegate.swift'i* açın ve dosyayı aşağıdaki kodla değiştirin.
 
 ```swift
 import UIKit
@@ -108,9 +108,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-## <a name="create-the-view-controllers-and-add-sample-content"></a>Görünüm denetleyicilerini oluşturma ve örnek içerik ekleme
+## <a name="create-the-view-controllers-and-add-sample-content"></a>Görünüm denetleyicilerini oluşturun ve örnek içerik ekleyin
 
-*ViewController. Swift* 'ı *launchviewcontroller. Swift* olarak yeniden adlandırıp dosyayı aşağıdaki kodla değiştirin.
+*ViewController.swift'i* *LaunchViewController.swift* olarak yeniden adlandırın ve dosyayı aşağıdaki kodla değiştirin.
 
 ```swift
 import UIKit
@@ -259,7 +259,7 @@ class LaunchViewController: UIViewController {
 }
 ```
 
-*ImmersiveReaderViewController. Swift* adlı proje kök klasörüne yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin.
+*ImmersiveReaderViewController.swift* adlı proje kök klasörüne yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin.
 
 ```swift
 import UIKit
@@ -438,7 +438,7 @@ extension ImmersiveReaderViewController: WKScriptMessageHandler {
 }
 ```
 
-*LaunchImmersiveReader. Swift* adlı proje kök klasörüne başka bir yeni dosya ekleyin ve aşağıdaki kodu ekleyin.
+*LaunchImmersiveReader.swift* adlı proje kök klasörüne yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin.
 
 ```swift
 import UIKit
@@ -528,7 +528,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 }
 ```
 
-*Iframemessaging. js* adlı *Resources* klasörüne bir dosya ekleyin ve aşağıdaki kodu ekleyin.
+*iFrameMessaging.js* adlı *Kaynaklar* klasörüne bir dosya ekleyin ve aşağıdaki kodu ekleyin.
 
 ```javascript
 window.addEventListener("message", function(message) {
@@ -556,22 +556,22 @@ function sendContentToReader(message) {
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-Bir simülatör veya cihaz hedefi seçerek Xcode 'da arşiv şemasını ayarlayın.
+Bir simülatör veya aygıt hedefi seçerek arşiv düzenini Xcode'da ayarlayın.
 
 ![Arşiv şeması](./media/ios/xcode-archive-scheme.png)
 
 ![Hedef seçme](./media/ios/xcode-select-target.png)
 
-Xcode 'da, projeyi çalıştırmak için **CTRL + R** tuşlarına basın veya oynat düğmesine tıklayın. Uygulamanın belirtilen simülatör veya cihazda başlatılması gerekir.
+Xcode'da **Ctrl+R** tuşuna basın veya projeyi çalıştırmak için oynat düğmesine tıklayın. Uygulama belirtilen simülatör veya cihaz üzerinde başlatılmalıdır.
 
 Uygulamanızda şunları görmeniz gerekir:
 
 ![Örnek uygulama](./media/ios/sample-app-ipad.png)
 
-**Tam ekran okuyucu** düğmesine tıkladığınızda, modern okuyucu uygulamasının uygulama içeriğiyle birlikte başlatılan olduğunu görürsünüz.
+**Sürükleyici Okuyucu** düğmesini tıklattığınızda, uygulamadaki içerikle başlatılan Sürükleyici Okuyucuyu görürsünüz.
 
 ![Tam Ekran Okuyucu](./media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
+* Sürükleyici [Okuyucu SDK Referans](./reference.md) keşfedin

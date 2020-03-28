@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: geliştirme platformunu ayarlama'
+title: 'Quickstart: Dev platform ayarlama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, tercih ettiğiniz platform ve programlama dili birleşimi için konuşma SDK 'sını yüklemeyi öğreneceksiniz.
+description: Bu hızlı başlangıçta, tercih ettiğiniz platform ve programlama dili kombinasyonu için Konuşma SDK'sını nasıl yükleyeceğinizi öğreneceksiniz.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/19/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-three
 ms.openlocfilehash: 9c29fd1c808ead71738dbd4597e5290b9239f691
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77470063"
 ---
-# <a name="quickstart-setup-development-environment"></a>Hızlı başlangıç: geliştirme ortamını kurulum
+# <a name="quickstart-setup-development-environment"></a>Quickstart: Kurulum geliştirme ortamı
 
 ::: zone pivot="programming-language-csharp"
 **Hedef ortamınızı seçin**
@@ -26,7 +26,7 @@ ms.locfileid: "77470063"
 [!INCLUDE [dotnet](../includes/quickstarts/platform/csharp-dotnet-windows.md)]
 #### <a name="net-core"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](../includes/quickstarts/platform/csharp-dotnetcore-windows.md)]
-#### <a name="unity"></a>['Yi](#tab/unity)
+#### <a name="unity"></a>[Unity](#tab/unity)
 [!INCLUDE [unity](../includes/quickstarts/platform/csharp-unity.md)]
 #### <a name="uwp"></a>[UWP](#tab/uwp)
 [!INCLUDE [uwp](../includes/quickstarts/platform/csharp-uwp.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "77470063"
 **Hedef ortamınızı seçin**
 #### <a name="linux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](../includes/quickstarts/platform/cpp-linux.md)]
-#### <a name="macos"></a>[macOS](#tab/macos)
+#### <a name="macos"></a>[Macos](#tab/macos)
 [!INCLUDE [macos](../includes/quickstarts/platform/cpp-macos.md)]
 #### <a name="windows"></a>[Windows](#tab/windows)
 [!INCLUDE [windows](../includes/quickstarts/platform/cpp-windows.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "77470063"
 
 ::: zone pivot="programming-language-java"
 **Hedef ortamınızı seçin**
-#### <a name="java-runtime"></a>[Java çalışma zamanı](#tab/jre)
+#### <a name="java-runtime"></a>[Java Çalışma Süresi](#tab/jre)
 [!INCLUDE [jre](../includes/quickstarts/platform/java-jre.md)]
 #### <a name="android"></a>[Android](#tab/android)
 [!INCLUDE [android](../includes/quickstarts/platform/java-android.md)]

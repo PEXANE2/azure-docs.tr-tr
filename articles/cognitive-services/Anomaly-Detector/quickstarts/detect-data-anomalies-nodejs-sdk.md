@@ -1,128 +1,128 @@
 ---
-title: 'Hızlı başlangıç: Python için anomali algılayıcı istemci kitaplığını kullanarak veri anormalilerini algılama'
+title: 'Quickstart: Python için Anomali Dedektörü istemci kitaplığını kullanarak veri anomalilerini algılama'
 titleSuffix: Azure Cognitive Services
-description: Veri serinizdeki tüm verileri toplu olarak veya bu hızlı başlangıç ile akış verilerinde tespit etmek için anomali algılayıcı API 'sini kullanın.
+description: Veri serinizdeki anormallikleri toplu olarak veya veri akışı nda algılamak için Anomali Dedektörü API'sını nasıl kullanacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c13657b8f2dae3868c1b9820236585aa930c6be4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770450"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239091"
 ---
-# <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>Hızlı başlangıç: node. js için anomali algılayıcı istemci kitaplığı
+# <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>Quickstart: Node.js için Anomali Dedektörü istemci kitaplığı
 
-Node. js için anomali algılayıcı istemci kitaplığını kullanmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Anomali algılayıcı hizmeti, sektör, senaryo veya veri hacminin ne olursa olsun, üzerinde en iyi şekilde sığdırma modellerini kullanarak zaman serisi verilerinizde yer alan anormallikleri bulmanıza olanak sağlar.
+Node.js için Anomaly Detector istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin. Anomaly Detector hizmeti, endüstri, senaryo veya veri hacmine bakılmaksızın, üzerinde otomatik olarak en uygun modelleri kullanarak zaman serisi verilerinizdeki anormallikleri bulmanızı sağlar.
 
-Node. js için anomali algılayıcı istemci kitaplığını kullanarak şunları yapın:
+Node.js için Anomaly Detector istemci kitaplığını kullanın:
 
-* Toplu istek olarak zaman serisi veri kümeniz genelinde anomali algılama
-* Zaman serinizdeki en son veri noktasının anomali durumunu Algıla
+* Toplu iş isteği olarak, zaman serisi veri setiniz boyunca anormallikleri algılama
+* Zaman serinizdeki en son veri noktasının anomali durumunu algılama
 
-[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) [GitHub 'da kodu bulun](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector) | 
+[Referans belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [Paketi (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [GitHub üzerinde kodu bulun](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* [Node. js](https://nodejs.org/) ' nin geçerli sürümü
-* Anomali algılayıcı anahtarı ve uç noktası
+* Azure aboneliği - [Ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* [Node.js'nin](https://nodejs.org/) geçerli sürümü
+* Anomali dedektörü anahtarı ve bitiş noktası
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-### <a name="create-an-anomaly-detector-azure-resource"></a>Anomali algılayıcı Azure kaynağı oluşturma
+### <a name="create-an-anomaly-detector-azure-resource"></a>Bir Anomali Dedektörü Azure kaynağı oluşturma
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu pencereye gidin. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Bir `package.json` dosyası ile bir düğüm uygulaması oluşturmak için `npm init` komutunu çalıştırın. 
+Bir `npm init` dosya ile bir düğüm uygulaması oluşturmak için komutu çalıştırın. `package.json` 
 
 ```console
 npm init
 ```
 
-`index.js` adlı bir dosya oluşturun ve aşağıdaki kitaplıkları içeri aktarın:
+Adlı `index.js` bir dosya oluşturun ve aşağıdaki kitaplıkları aktarın:
 
 [!code-javascript[Import statements](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=imports)]
 
-Kaynağınızın Azure uç noktası ve anahtarı için değişken oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir. Daha sonraki bir adımda indirileceği örnek veri dosyası için başka bir değişken ve veri noktaları için boş bir liste oluşturun. Sonra anahtarı içeren bir `ApiKeyCredentials` nesnesi oluşturun.
+Kaynağınızın Azure bitiş noktası ve anahtarı değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için düzenleyiciyi, IDE'yi veya bu uygulamayı çalıştıran kabuğu kapatmanız ve yeniden açmanız gerekir. Daha sonraki bir adımda indireceğiniz örnek veri dosyası için başka bir değişken ve veri noktaları için boş bir liste oluşturun. Ardından anahtarı `ApiKeyCredentials` içerecek bir nesne oluşturun.
 
 [!code-javascript[Initial endpoint and key variables](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=vars)]
 
-### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükleme
 
-`ms-rest-azure` ve `azure-cognitiveservices-anomalydetector` NPM paketlerini yükler. Bu hızlı başlangıçta CSV ayrıştırma kitaplığı da kullanılır:
+Ve `azure-cognitiveservices-anomalydetector` `ms-rest-azure` NPM paketlerini yükleyin. CSV-ayrıştıran kitaplık da bu quickstart kullanılır:
 
 ```console
 npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
 ```
 
-Uygulamanızın `package.json` dosyası bağımlılıklarla güncelleştirilecektir.
+Uygulamanızın `package.json` dosyası bağımlılıklarla güncelleştirilir.
 
 ## <a name="object-model"></a>Nesne modeli
 
-Anomali algılayıcı istemcisi, anahtarınızı kullanarak Azure 'da kimlik doğrulaması yapan bir [Anokidetectorclient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) nesnesidir. İstemci,, [Entiredetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--)kullanan bir veri kümesinin tamamında ve [lastdetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-)kullanan en son veri noktasında iki anomali algılama yöntemi sağlar. 
+Anomaly Detector istemcisi, anahtarınızı kullanarak Azure'a doğrulayan bir [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) nesnesidir. İstemci iki anomali algılama yöntemi sağlar: [Tüm Detect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--)kullanarak tüm veri kümesinde ve [LastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-)kullanarak en son veri noktasında. 
 
-Zaman serisi verileri bir [istek](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) nesnesinde bir dizi [işaret](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) olarak gönderilir. `Request` nesnesi, verileri (örneğin,[ayrıntı düzeyi](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity) ) ve anomali algılama parametrelerini tanımlamaya yönelik özellikler içerir. 
+Zaman serisi verileri, [İstek](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) nesnesinde [Puan](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) lar dizisi olarak gönderilir. Nesne, `Request` verileri (örneğin[tanecikli)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity) açıklayan özellikler ve anomali algılama parametreleri içerir. 
 
-Anomali algılayıcısı yanıtı, kullanılan yönteme bağlı olarak bir [Lastdetectresponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) veya [entiredetectresponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) nesnesidir. 
+Anomali Dedektörü yanıtı, kullanılan yönteme bağlı olarak [lastdetectresponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) veya [EntireDetectResponse nesnesidir.](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 
 
 ## <a name="code-examples"></a>Kod örnekleri 
 
-Bu kod parçacıkları, Node. js için anomali algılayıcı istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
+Bu kod parçacıkları, Node.js için Anomaly Detector istemci kitaplığı ile aşağıdakileri nasıl yapacağınızı gösterir:
 
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Bir dosyadan zaman serisi veri kümesi yükleme](#load-time-series-data-from-a-file)
-* [Tüm veri kümesindeki anormallikleri Algıla](#detect-anomalies-in-the-entire-data-set) 
-* [En son veri noktasının anomali durumunu Algıla](#detect-the-anomaly-status-of-the-latest-data-point)
+* [İstemcinin kimliğini doğrula](#authenticate-the-client)
+* [Bir dosyadan zaman serisi veri kümesini yükleme](#load-time-series-data-from-a-file)
+* [Tüm veri kümesindeki anormallikleri algılama](#detect-anomalies-in-the-entire-data-set) 
+* [En son veri noktasının anomali durumunu algılama](#detect-the-anomaly-status-of-the-latest-data-point)
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
-Uç noktanız ve kimlik bilgilerinizle bir [Anorivtorclient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) nesnesi örneği oluşturun.
+Bir [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) nesnesi bitiş noktası ve kimlik bilgileri ile anında.
 
 [!code-javascript[Authentication](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=authentication)]
 
-## <a name="load-time-series-data-from-a-file"></a>Bir dosyadan zaman serisi verilerini yükle
+## <a name="load-time-series-data-from-a-file"></a>Dosyadan zaman serisi verileri yükleme
 
-Bu hızlı başlangıçta [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/AnomalyDetector/request-data.csv)'dan örnek verileri indirin:
-1. Tarayıcınızda, **RAW**' a sağ tıklayın.
-2. **Bağlantıyı farklı kaydet**' e tıklayın.
-3. Dosyayı uygulama dizininize bir. csv dosyası olarak kaydedin.
+[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/AnomalyDetector/request-data.csv)bu hızlı başlangıç için örnek verileri indirin:
+1. Tarayıcınızda **Raw'a**sağ tıklayın.
+2. **Olarak Kaydet bağlantısını**tıklatın.
+3. .csv dosyası olarak dosyayı uygulama dizininize kaydedin.
 
-Bu zaman serisi verileri. csv dosyası olarak biçimlendirilir ve anomali algılayıcısı API 'sine gönderilir.
+Bu zaman serisi verileri .csv dosyası olarak biçimlendirilir ve Anomaly Detector API'sine gönderilir.
 
-CSV ayrıştırma kitaplığının `readFileSync()` yöntemiyle veri dosyanızı okuyun ve dosyayı `parse()`ayrıştırın. Her satır için zaman damgasını içeren bir [nokta](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) nesnesi ve sayısal değeri gönderin.
+CSV-ayrıştiran kitaplığın `readFileSync()` yöntemiyle veri dosyanızı okuyun ve dosyayı `parse()`ayrıştınız. Her satır için, zaman damgasını ve sayısal değeri içeren bir [Nokta](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) nesnesini itin.
 
 [!code-javascript[Read the data file](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=readFile)]
 
-## <a name="detect-anomalies-in-the-entire-data-set"></a>Tüm veri kümesindeki anormallikleri Algıla 
+## <a name="detect-anomalies-in-the-entire-data-set"></a>Tüm veri kümesindeki anormallikleri algılama 
 
-İstemcinin [Entiredetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) yöntemiyle bir toplu iş olarak tüm zaman serilerinin bozuklukilerini algılamak için API 'yi çağırın. Döndürülen [Entiredetectresponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) nesnesini depolayın. Yanıtın `isAnomaly` listesini yineleyin ve `true` değerlerinin dizinini yazdırın. Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
+İstemcinin [tüm Detect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) yöntemiyle tüm zaman serileri boyunca anormallikleri bir toplu iş olarak algılamak için API'yi arayın. Döndürülen [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) nesnesini saklayın. Yanıt `isAnomaly` ın listesini yineleyin ve tüm `true` değerlerin dizinini yazdırın. Varsa, bu değerler anormal veri noktalarıdizine karşılık gelir.
 
 [!code-javascript[Batch detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=batchCall)]
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>En son veri noktasının anomali durumunu Algıla
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>En son veri noktasının anomali durumunu algılama
 
-En son veri noktanağınızın, istemcinin [Lastdetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) yöntemini kullanarak bir anomali olup olmadığını belirlemek ve döndürülen [lastdetectresponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) nesnesini depolamak IÇIN anomali algılayıcısı API 'sini çağırın. Yanıtın `isAnomaly` değeri, bu noktanın anomali durumunu belirten bir Boole değerdir.  
+En son veri noktanızın istemcinin [lastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) yöntemini kullanarak bir anormallik olup olmadığını belirlemek için Anomaly Detector API'yi arayın ve döndürülen [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) nesnesini saklayın. Yanıtın `isAnomaly` değeri, o noktanın anomali durumunu belirten bir boolean'dır.  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızdaki `node` komutuyla çalıştırın.
+Hızlı başlatma dosyanızdaki `node` komutla uygulamayı çalıştırın.
 
 ```console
 node index.js

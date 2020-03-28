@@ -1,5 +1,5 @@
 ---
-title: REST çağrısı ile tahmin alC#
+title: "C'deki REST araması ile tahmin de bulunun #"
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,53 +9,53 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 4cbec342bc20de35c0c62284e4e1fe1ae8b8e8a4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76966723"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
+* [.NET Çekirdek V2.2+](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Ortak uygulama KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Genel uygulama kimliği:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Tahminler için LUSıS çalışma zamanı anahtarı oluşturma
+## <a name="create-luis-runtime-key-for-predictions"></a>Öngörüler için LUIS çalışma zamanı anahtarı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
-1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
-1. Çalışma zamanı anahtarı için tüm gerekli ayarları girin:
+1. [Azure portalında](https://portal.azure.com) oturum açma
+1. [Dil **Anlama Oluştur'u** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklatın
+1. Runtime tuşu için gerekli tüm ayarları girin:
 
     |Ayar|Değer|
     |--|--|
-    |Ad|İstenen ad (2-64 karakter)|
+    |Adı|İstenilen ad (2-64 karakter)|
     |Abonelik|Uygun aboneliği seçin|
     |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
-    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
+    |Fiyatlandırma Katmanı|`F0`- minimum fiyatlandırma katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçme|
 
-1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
-1. Yapılandırılmış `endpoint` ve bir `key`toplayın.
+1. **Oluştur'u** tıklatın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
+1. Yapılandırılmış `endpoint` ve bir `key`toplamak .
 
 ## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
-C# [Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucu almak için (.NET Core) kullanın.
+[Tahmin bitiş noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucunu almak için C# (.NET Core) kullanın.
 
-1. `predict-with-rest`bir proje ve klasör adı ile C# dili hedefleyen yeni bir konsol uygulaması oluşturun.
+1. C# dilini hedefleyen, proje ve klasör adı ile yeni `predict-with-rest`bir konsol uygulaması oluşturun.
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. Yeni oluşturduğunuz `predict-with-rest` dizinine geçin ve gerekli bağımlılıkları şu komutlarla birlikte yüklemelisiniz:
+1. Yeni oluşturduğunuz dizine `predict-with-rest` değiştirin ve bu komutlarla gerekli bağımlılıkları yükleyin:
 
     ```console
     cd predict-with-rest
     dotnet add package System.Net.Http
     ```
 
-1. En sevdiğiniz IDE veya düzenleyicide `Program.cs` açın. Ardından aşağıdaki kodla `Program.cs` üzerine yazın:
+1. En `Program.cs` sevdiğiniz IDE veya düzenleyicide açın. Sonra aşağıdaki `Program.cs` kod ile üzerine yazın:
 
    ```csharp
     using System;
@@ -115,20 +115,20 @@ C# [Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak v
 
    ```
 
-1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin anahtarınızla ve uç noktanızla değiştirin.
+1. `YOUR-KEY` Ve `YOUR-ENDPOINT` değerleri kendi tahmin anahtarınız ve bitiş noktanızla değiştirin.
 
     |Bilgi|Amaç|
     |--|--|
-    |`YOUR-KEY`|32 karakter tahmini anahtarınız.|
-    |`YOUR-ENDPOINT`| Tahmin URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|32 karakter tahmin anahtarınız.|
+    |`YOUR-ENDPOINT`| Tahmin URL bitiş noktanız. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
-1. Aşağıdaki komutla konsol uygulaması oluşturun:
+1. Bu komutla konsol uygulamasını oluşturun:
 
     ```console
     dotnet build
     ```
 
-1. Konsol uygulamasını çalıştırın. Konsol çıktısı, daha önce tarayıcı penceresinde gördüğünüz JSON 'ı görüntüler.
+1. Konsol uygulamasını çalıştırın. Konsol çıkışı, tarayıcı penceresinde daha önce gördüğünüz JSON'ı görüntüler.
 
     ```console
     dotnet run
@@ -141,7 +141,7 @@ C# [Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak v
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Okunabilirlik için biçimlendirilen JSON yanıtı:
+    JSON yanıtı okunabilirlik için biçimlendirilmiş:
 
     ```JSON
     {
@@ -186,9 +186,9 @@ C# [Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak v
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin.
+Bu hızlı başlatmayı bitirdiğinizde, dosyayı dosya sisteminden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Utterslar ve tren ekleme](../get-started-get-model-rest-apis.md)
+> [Söyleyiş ve tren ekle](../get-started-get-model-rest-apis.md)

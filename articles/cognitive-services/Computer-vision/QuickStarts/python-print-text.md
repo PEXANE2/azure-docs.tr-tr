@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: yazdırılan metni Ayıkla-REST, Python'
+title: 'Quickstart: Yazdırılan metni ayıklayın - REST, Python'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Python ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
 services: cognitive-services
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d89c50867b8c66c0dfb40021982b201078fa67d1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af755af9404cc98c650164e5f891661f2530f77b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774303"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244783"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Python kullanarak yazdırılan metni (OCR) Ayıkla
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Quickstart: Computer Vision REST API ve Python kullanarak yazdırılan metni (OCR) ayıklayın
 
 > [!NOTE]
-> Ingilizce dil metnini ayıklıyorsanız, yeni [okuma işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı düşünün. [Python hızlı](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) başlangıcı kullanılabilir. 
+> İngilizce metin ayıklıyorsanız, yeni Okuma [işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı düşünün. [Python quickstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) kullanılabilir. 
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
+Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir görüntüden optik karakter tanıma (OCR) içeren basılı metinler ayıklanırsınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
 
-[MyBinder](https://mybinder.org)’da Jupyter not defterini kullanarak bu hızlı başlangıcı adım adım çalıştırabilirsiniz. Bağlayıcıyı başlatmak için aşağıdaki düğmeyi seçin:
+[MyBinder](https://mybinder.org) üzerinde bir Jupyter not defteri kullanarak bu hızlı başlangıcı adım adım görüntülenecek şekilde çalıştırabilirsiniz. Bağlayıcıyı başlatmak için aşağıdaki düğmeyi seçin:
 
-[![Bağlayıcı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Cilt](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/try/cognitive-services/) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/try/cognitive-services/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Örneği yerel olarak çalıştırmak istiyorsanız [Python](https://www.python.org/downloads/) yüklenmiş olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
@@ -47,6 +47,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python get-printed-text.py`.
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline
@@ -104,9 +106,9 @@ plt.show()
 plt.axis("off")
 ```
 
-## <a name="upload-image-from-local-storage"></a>Yerel depodan görüntü yükleme
+## <a name="upload-image-from-local-storage"></a>Yerel depolama dan resim yükleme
 
-Yerel bir görüntüyü çözümlemek istiyorsanız, Content-Type üst bilgisini Application/sekizli-Stream olarak ayarlayın ve istek gövdesini JSON verileri yerine bir bayt dizisi olarak ayarlayın.
+Yerel bir görüntüyü çözümlemek istiyorsanız, İçerik Türü üstbilgisini uygulama/sekizli akış olarak ayarlayın ve istek gövdesini JSON verileri yerine bir bayt dizisine ayarlayın.
 
 ```python
 image_path = "<path-to-local-image-file>"
@@ -121,7 +123,7 @@ response = requests.post(ocr_url, headers=headers, params=params, data = image_d
 
 ## <a name="examine-the-response"></a>Yanıtı inceleme
 
-JSON’da başarılı bir yanıt döndürülür. Örnek web sayfası, aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp komut istemi penceresinde görüntüler:
+Başarılı bir yanıt JSON biçiminde döndürülür. Örnek web sayfası, aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp komut istemi penceresinde görüntüler:
 
 ```json
 {

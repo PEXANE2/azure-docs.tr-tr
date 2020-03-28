@@ -1,106 +1,106 @@
 ---
-title: 'Öğretici: List Entity-LUSıS'
+title: 'Öğretici: Liste varlık - LUIS'
 description: Bir listedeki önceden tanımlanmış öğelerle eşleşen verileri alma. Listedeki her öğenin tam olarak eşleşen eş anlamlıları da olabilir
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79297416"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Öğretici: liste varlığıyla tam metin ile eşleşen verileri al
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Öğretici: Liste varlığıyla bir sözcükten tam metin eşleştirme verileri alın
 
-Bu öğreticide, önceden tanımlanmış bir öğe listesiyle tam olarak eşleşen verilerin nasıl alınacağını anlayın.
+Bu öğreticide, önceden tanımlanmış öğelerlistesiyle tam olarak eşleşen verileri nasıl elde edebilirsiniz.
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Uygulamayı içeri aktarın ve mevcut amacı kullanın
+> * Uygulamayı içe aktarma ve mevcut amacı kullanma
 > * Liste varlığı ekleme
-> * Ayıklanan verileri almak için uygulamayı eğitme, yayımlama ve sorgulama
+> * Çıkarılan verileri almak için uygulama, yayımlama ve sorgu uygulaması
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="what-is-a-list-entity"></a>Liste varlığı nedir?
 
-Liste varlığı, söylenme içindeki sözcüklerle tam metin eşleşmelidir. Listeden her öğenin bir eşanlamlı sözcükler listesi olabilir. Tam bir eşleşme istediğinizde bir liste varlığı kullanın.
+Liste varlığı, sözcükteki sözcüklerle tam bir metin eşleşmesidir. Listeden her öğenin bir eşanlamlı sözcükler listesi olabilir. Tam eşleşme istediğinizde bir liste varlığı kullanın.
 
-Bu içeri aktarılan pizza uygulaması için farklı tür pizza Crust türleri için bir liste varlığı oluşturun.
+Bu alınan pizza uygulaması için, pizza kabuğu farklı türleri için bir liste varlık oluşturun.
 
 Liste varlığı bu veri türü için iyi bir seçimdir:
 
 * Veri değerleri bilinen bir kümedir.
 * Küme, bu varlık türü için maksimum LUIS [sınırlarını](luis-boundaries.md) aşmaz.
-* Söylenişi 'teki metin, eş anlamlı veya kurallı bir ada sahip büyük/küçük harf duyarsız bir eşleşmedir. LUSıS, listeyi eşleşmenin ötesinde kullanmaz. Sözcük kökü, plurals ve diğer çeşitlemeler yalnızca bir liste varlığıyla çözümlenmez. Çeşitlemeleri yönetmek için, isteğe bağlı metin söz dizimine sahip bir [model](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün.
+* Söyleyişdeki metin, eşanlamlı veya kanonik adla yapılan büyük/küçük harf duyarsız bir eşleşmedir. LUIS listeyi maçın ötesinde kullanmıyor. Stemming, çoğulve diğer varyasyonlar yalnızca bir liste varlığı ile çözülmez. Varyasyonları yönetmek için isteğe bağlı metin sözdizimi içeren bir [desen](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) kullanmayı düşünün.
 
 > [!CAUTION]
-> Bir liste varlığına veya bir tümcecik listesi olan makine tarafından öğrenilen bir varlık için tanımlayıcı olarak tercih ettiğinizden emin değilseniz, en iyi ve en esnek uygulama, tanımlayıcı olarak bir ifade listesi olan makine tarafından öğrenilen bir varlık kullanmaktır. Bu yöntem, LUSıS 'in Ayıklanacak verilerin değerlerini öğrenmesine ve genişletmesine izin verir.
+> Bir liste varlığı veya açıklayıcı olarak bir ifade listesi ile makine öğrenilen bir varlık istiyorsanız emin değilseniz, en iyi ve en esnek uygulama bir ifade listesi açıklayıcı olarak bir makine öğrenilen varlık kullanmaktır. Bu yöntem, LUIS'in verilerin değerlerini ayıklamayı öğrenmesini ve genişletmesini sağlar.
 
-## <a name="import-example-json-and-add-utterances"></a>Örnek. JSON öğesini içeri aktarın ve utterslar ekleyin
+## <a name="import-example-json-and-add-utterances"></a>İthalat örneği .json ve söyleyiş eklemek
 
-1.  [Uygulama json dosyasını](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)indirip kaydedin.
+1.  Uygulamayı indirin ve kaydedin [JSON dosyasını.](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. İçeri aktarılan uygulamanın `OrderPizza` amacı vardır. Bu amacı seçin ve yeni Crust türleriyle birkaç tane ekleyin:
+1. Alınan uygulamanın `OrderPizza` bir amacı vardır. Bu amacı seçin ve yeni kabuk türleri ile birkaç söyleyerek ekleyin:
 
-    |Yeni utterslar|
+    |Yeni söyleyişler|
     |--|--|
-    |Lütfen bir Pan Crust küçük pepperoni pizza sıralayın|
-    |3 ince Crust Hawaii Haian Pizzas|
-    |iki peluş Crust Pizzas 'i birlikte bulunan kişilerle sunun|
-    |toplama için bir kalın Crust pizza|
-    |tek derin bir pepperoni pizza|
+    |bir tava kabuk küçük pepperoni pizza sipariş edin|
+    |3 ince kabuk hawaii pizza|
+    |ekmek çubukları ile 2 doldurulmuş kabuk pizza teslim|
+    |pikap için bir kalın kabuk pizza|
+    |bir derin çanak pepperoni pizza|
 
-## <a name="crust-list-entity"></a>Crust listesi varlığı
+## <a name="crust-list-entity"></a>Kabuk listesi varlığı
 
-Artık **Orderpizza** hedefinin, Crust türleri ile örnek olarak olduğuna göre, lusıs 'in, Crust türlerini temsil eden kelimeleri anlaması gerekir.
+Şimdi **OrderPizza** niyet kabuk türleri ile örnek sözler vardır, LUIS hangi kelimelerin kabuk türleri temsil anlamak gerekir.
 
-Birincil ad ve eş anlamlılar örnekleri şunlardır:
+Birincil ad ve eşanlamlı örnekler şunlardır:
 
-|Kurallı ad|Eş anlamlılar|
+|Kanonik ad|Eş anlamlılar|
 |--|--|
-|Derin çanak|derin<br>derin kırak<br>Mürekke<br>kalın Crust|
-|Kaydır|normal<br>Özgün<br>olağan<br>düzenli Crust<br>özgün Crust<br>normal Crust|
-|Peluş|peluş Crust|
-|İnce|ince Crust<br>Skinny<br>Skinny Crust|
+|Derin çanak|Derin<br>derin çanak kabuk<br>Kalın<br>kalın kabuk|
+|Kaydır|Normal<br>Özgün<br>Normal<br>düzenli kabuk<br>orijinal kabuk<br>normal kabuk|
+|Doldurulmuş|kabuk dolması|
+|İnce|ince kabuk<br>Sıska<br>sıska kabuk|
 
 1. Sol panelde **Entities** (Varlıklar) öğesini seçin.
 
-1. **+ Oluştur**seçeneğini belirleyin.
+1. Seçin **+ Oluştur**.
 
-1. Açılan varlık iletişim kutusunda varlık adı olarak `CrustList`, varlık türü olarak da **List** (Liste) seçin. **İleri**’yi seçin.
-
-    > [!div class="mx-imgBorder"]
-    > yeni varlık açılır menüsü oluşturma iletişim ![ekran görüntüsü](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)
-
-1. **Liste varlığı oluştur** sayfasında, her bir kurallı ad için kurallı adları ve Eşanlamlı sözcükleri girip **Oluştur**' u seçin.
+1. Açılan varlık iletişim kutusunda varlık adı olarak `CrustList`, varlık türü olarak da **List** (Liste) seçin. **Sonraki'ni**seçin.
 
     > [!div class="mx-imgBorder"]
-    > liste varlığına öğe eklemenin ekran görüntüsünü ![](media/luis-quickstart-intent-and-list-entity/add-pizza-crust-items-list-entity.png)
+    > ![Yeni varlık oluşturma açılan iletişim kutusunun ekran görüntüsü](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)
 
-    Bir LUSıS uygulamasına bir liste varlığı eklediğinizde, metni liste varlığıyla [etiketlemenize](label-entity-example-utterance.md) gerek yoktur. Tüm amaçlar için tüm söyleye uygulanır.
+1. Liste **varlık** oluştur sayfasında, her kanonik ad için kanonik adları ve eşanlamlıları girin ve ardından **Oluştur'u**seçin.
 
-## <a name="train-the-app-before-testing-or-publishing"></a>Test veya yayımlamadan önce uygulamayı eğitme
+    > [!div class="mx-imgBorder"]
+    > ![Liste varlığına öğe ekleme ekran görüntüsü](media/luis-quickstart-intent-and-list-entity/add-pizza-crust-items-list-entity.png)
+
+    Bir LUIS uygulamasına bir liste varlığı eklediğinizde, metni liste varlığıyla [etiketlemeniz](label-entity-example-utterance.md) gerekmez. Tüm niyetlerle tüm sözlerle uygulanır.
+
+## <a name="train-the-app-before-testing-or-publishing"></a>Uygulamayı test etmeden veya yayınlamadan önce eğitin
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Uygulamayı bitiş noktasından sorgulamak üzere yayımlayın
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Uygulamayı bitiş noktasından sorgulamak için yayımlama
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Uç noktadan amacı ve varlık tahminini alın
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Bitiş noktasından niyet ve varlık tahmini alın
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. Adresteki URL 'nin sonuna gidin ve aşağıdaki deterance 'i girin:
+2. Adresteki URL'nin sonuna gidin ve aşağıdaki söyleyiyi girin:
 
     `Deliver 2 deep dish hawaiian pizzas and a thin pepperoni`
 
-    Son sorgu dizesi parametresi ifade `query`s**orgusu olan**  öğesidir.
+    Son sorgu dizesi parametresi ifade **s**orgusu olan `query` öğesidir.
 
 
     ```json
@@ -178,23 +178,23 @@ Birincil ad ve eş anlamlılar örnekleri şunlardır:
     }
     ```
 
-    Crust türleri tam metin eşleştirirken bulundu ve JSON yanıtında döndürüldü. Bu bilgiler, istemci uygulaması tarafından sırayı işlemek için kullanılır.
+    Kabuk türleri tam metin eşleşmeleri olarak bulundu ve JSON yanıtı döndü. Bu bilgiler, siparişi işlemek için istemci uygulaması tarafından kullanılır.
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* [Liste varlığı](luis-concept-entity-types.md#list-entity) kavramsal bilgileri
-* [Eğitme](luis-how-to-train.md)
-* [Yayımlama nasıl yapılır?](luis-how-to-publish-app.md)
-* [LUSıS portalında test etme](luis-interactive-test.md)
-* [Kavram-varlıklar](luis-concept-entity-types.md)
-* [Normal ifade varlığının JSON başvurusu](reference-entity-regular-expression.md?tabs=V3)
-* [Verileri ayıklamak için varlık ekleme](luis-how-to-add-entities.md)
+* Varlık kavramsal bilgilerini [listele](luis-concept-entity-types.md#list-entity)
+* [Nasıl eğitilir?](luis-how-to-train.md)
+* [Yayımlama](luis-how-to-publish-app.md)
+* [LUIS portalında test nasıl](luis-interactive-test.md)
+* [Kavram - varlıklar](luis-concept-entity-types.md)
+* [Normal ifade varlığının JSON referansı](reference-entity-regular-expression.md?tabs=V3)
+* [Veri ayıklamak için varlıklar ekleme](luis-how-to-add-entities.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğretici örnek bir şekilde eklenmiştir ve sonra gelen metinlerin tam metin eşleşmelerini ayıklamak için bir liste varlığı oluşturmuştur. Uygulama eğitildikten ve yayımlandıktan sonra uç noktaya gönderilen bir sorgu amacı tanımladı ve ayıklanan verileri döndürdü.
+Bu öğretici, örnek ifadeler ekledi, sonra tam metin eşleşmeleri ifadeler ayıklamak için bir liste varlık oluşturdu. Uygulama eğitildikten ve yayımlandıktan sonra uç noktaya gönderilen bir sorgu amacı tanımladı ve ayıklanan verileri döndürdü.
 
 > [!div class="nextstepaction"]
-> [Role sahip önceden oluşturulmuş varlık ekleme](tutorial-entity-roles.md)
+> [Rolü olan önceden oluşturulmuş varlık ekleme](tutorial-entity-roles.md)
 

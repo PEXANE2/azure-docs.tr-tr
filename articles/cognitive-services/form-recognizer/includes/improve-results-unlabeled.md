@@ -6,14 +6,14 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379309"
 ---
-`"pageResults"` düğümü altındaki her bir anahtar/değer sonucunun `"confidence"` değerlerini inceleyin. Ayrıca, metin okuma işlemine karşılık gelen `"readResults"` düğümündeki güven puanlarını de göz atalım. Okuma sonuçlarının güvenilirliği, anahtar/değer ayıklama sonuçlarının güvenini etkilemez, bu nedenle her ikisini de denetlemeniz gerekir.
-* Okuma işleminin güven puanları düşükse, giriş belgelerinizin kalitesini geliştirmeyi deneyin (bkz. [giriş gereksinimleri](../overview.md#input-requirements)).
-* Anahtar/değer ayıklama işleminin güven puanları düşükse, çözümlenmekte olan belgelerin Eğitim kümesinde kullanılan belgelerle aynı türde olduğundan emin olun. Eğitim kümesindeki belgeler görünümde Çeşitlemeler içeriyorsa, bunları farklı klasörlere bölmeyi ve her varyasyon için bir modeli eğitmek için bir modele göz önünde bulundurun.
+Düğüm `"confidence"` altında her anahtar/değer sonucuiçin `"pageResults"` değerleri inceleyin. `"readResults"` Düğümdeki güven puanlarına da bakmalısınız, bu da metin okuma işlemine karşılık gelir. Okuma sonuçlarının güveni anahtar/değer çıkarma sonuçlarının güvenini etkilemez, bu nedenle her ikisini de kontrol etmelisiniz.
+* Okuma işlemi için güven puanları düşükse, giriş belgelerinizin kalitesini yükseltmeye çalışın (bkz. [Giriş gereksinimleri).](../overview.md#input-requirements)
+* Anahtar/değer çıkarma işleminin güven puanları düşükse, analiz edilen belgelerin eğitim kümesinde kullanılan belgelerle aynı türde olduğundan emin olun. Eğitim kümesindeki belgelerin görünüm varyasyonları varsa, bunları farklı klasörlere bölmeyi ve her varyasyon için bir modeli eğitmeyi düşünün.
 
-Hedeflediğiniz güven puanları kullanım örneğine bağlıdır, ancak genellikle %80 veya üzeri bir puanı hedeflemek iyi bir uygulamadır. Tıbbi kayıtları veya faturalandırma deyimlerini okumak gibi daha hassas durumlar için %100 puanı önerilir.
+Hedeflediğiniz güven puanları kullanım durumunuza bağlıdır, ancak genellikle %80 veya üzerinde bir puanı hedeflemek iyi bir uygulamadır. Tıbbi kayıtların okunması veya faturalandırma ekstrelerinin okunması gibi daha hassas vakalar için %100 puan önerilir.

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Sentezleştirme konuşma, Java (Windows, Linux, macOS)-konuşma hizmeti'
+title: 'Quickstart: Synthesize konuşma, Java (Windows, Linux, macOS) - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, metinden konuşma yakalayan ve bunu varsayılan konuşmacı ile oynatabilecek basit bir Java uygulaması oluşturmayı öğreneceksiniz.
+description: Bu hızlı başlangıçta, metni yakalayıp sentezleyen basit bir Java uygulaması oluşturmayı ve varsayılan hoparlörle oynatmayı öğreneceksiniz.
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: yulili
 ms.openlocfilehash: a49fadee598d1fa87c6dddbbf6ad388243ea6fb8
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925443"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
+1. Java projenize yeni bir boş sınıf eklemek için**Yeni** > **Sınıf** **Dosyası'nı** > seçin.
 
 1. **Yeni Java Sınıfı** penceresinde, **Paket** alanına **speechsdk.quickstart** ve **Ad** alanına da **Ana** girin.
 
@@ -45,8 +45,8 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-F11 tuşuna basın veya **Çalıştır** > **Hata Ayıkla** seçeneğini belirleyin.
-İstendiğinde bir metin girin ve varsayılan konuşmacının sunduğu birleştirilmiş sesi duyun.
+F11 tuşuna basın veya**Hata Ayıklama'yı** **çalıştır'ı** > seçin.
+İstendiğinde bir metin giriş ve varsayılan hoparlörden çalınan sentezlenmiş ses duyarsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -54,5 +54,5 @@ F11 tuşuna basın veya **Çalıştır** > **Hata Ayıkla** seçeneğini belirle
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Özel bir ses oluşturun](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Özel ses örneklerini Kaydet](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Özel Ses Oluşturma](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Özel ses örneklerini kaydetme](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

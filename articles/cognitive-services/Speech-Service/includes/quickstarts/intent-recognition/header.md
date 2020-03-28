@@ -6,19 +6,19 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: dapine
 ms.openlocfilehash: d59a55a9b6d57d90ac6ae893b05e1064c11eb58b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900443"
 ---
-Bu hızlı başlangıçta, bir mikrofondan yakalanan ses verilerinden amaçları tanımak için [konuşma SDK 'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) ve Language UNDERSTANDING (Luu) hizmetini kullanacaksınız. Özellikle, konuşmayı yakalamak için konuşma SDK 'sını ve bir ışığı açma ve kapatma gibi LUYA 'ın giriş Otomasyonu amaçlarını belirlemek için de bir ön derlenmiş etki alanı kullanacaksınız. 
+Bu hızlı başlangıçta, mikrofondan yakalanan ses verilerinden gelen sesleri tanımak için [Konuşma SDK'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) ve Dil Anlayışı (LUIS) hizmetini kullanırsınız. Özellikle, konuşma yakalamak için Speech SDK'yı ve LUIS'in önceden oluşturulmuş bir etki alanını, ışığı açıp kapatmak gibi ev otomasyonu niyetlerini belirlemek için kullanırsınız. 
 
-Birkaç önkoşulu karşıladıktan sonra, konuşma ve tanımlama amaçlarını bir mikrofondan tanımayı yalnızca birkaç adım sürer:
+Birkaç ön koşulu yerine getirerek, konuşmayı tanıma ve mikrofondan niyetlerini tanımlama yalnızca birkaç adım dan sonra:
 
 > [!div class="checklist"]
 >
-> * Abonelik anahtarınızdan ve bölgenizde bir `SpeechConfig` nesnesi oluşturun.
-> * Yukarıdaki `SpeechConfig` nesnesini kullanarak bir `IntentRecognizer` nesnesi oluşturun.
-> * `IntentRecognizer` nesnesini kullanarak, tek bir söylik için tanıma sürecini başlatın.
-> * Döndürülen `IntentRecognitionResult` inceleyin.
+> * Abonelik `SpeechConfig` anahtarınızdan ve bölgenizden bir nesne oluşturun.
+> * Nesneyi `IntentRecognizer` yukarıdan `SpeechConfig` kullanarak bir nesne oluşturun.
+> * Nesneyi `IntentRecognizer` kullanarak, tek bir söyleyiş için tanıma işlemini başlatın.
+> * İade `IntentRecognitionResult` edilenleri inceleyin.

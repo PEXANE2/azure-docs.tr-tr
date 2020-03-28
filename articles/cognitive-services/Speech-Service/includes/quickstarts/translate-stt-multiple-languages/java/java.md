@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı birden çok dile çevirme, Java-konuşma hizmeti'
+title: 'Quickstart: Konuşmayı birden çok dile çevir, Java - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: e1d4fa1d13b5993c2d502b80ff0efe52578a48c0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74980763"
 ---
 [!INCLUDE [jre](./jre.md)]

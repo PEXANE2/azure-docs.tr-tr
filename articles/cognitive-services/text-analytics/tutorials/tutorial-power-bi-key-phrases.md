@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme'
 titleSuffix: Azure Cognitive Services
-description: Power BI depolanan metinden anahtar ifadeleri ayıklamak için Metin Analizi API'si nasıl kullanacağınızı öğrenin.
+description: Power BI'de depolanan metinden anahtar tümcecikleri ayıklamak için Metin Analizi API'sını nasıl kullanacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378543"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme
@@ -94,7 +94,7 @@ Metin Analizi hizmetinin [Anahtar İfadeler API](https://westus.dev.cognitive.mi
 | | |
 | - | - |
 | `id`  | İstekte bu belge için yer alan benzersiz tanımlayıcı. Yanıtta da bu alan bulunur. Böylece, birden fazla belge işlemeniz halinde, ayıklanan anahtar ifadeleri bu ifadelerin kaynağı olan belge ile kolayca eşleyebilirsiniz. Bu öğreticide, istek başına yalnızca bir belge işlediğinizden, `id` değerini, her bir istek için aynı olacak şekilde doğrudan yazabilirsiniz.|
-| `text`  | İşlenecek metin. Bu alanın değeri, [önceki bölümde](#PreparingData) oluşturduğunuz ve konu satırını ve yorum metnini birlikte içeren `Merged` sütunundan gelir. Anahtar tümceleri API 'SI bu verilerin yaklaşık 5.120 karakterden uzun olmaması gerekir.|
+| `text`  | İşlenecek metin. Bu alanın değeri, [önceki bölümde](#PreparingData) oluşturduğunuz ve konu satırını ve yorum metnini birlikte içeren `Merged` sütunundan gelir. Anahtar Tümcecikler API'si, bu verilerin yaklaşık 5.120 karakterden fazla olmamasını gerektirir.|
 | `language` | Belgenin yazıldığı doğal dilin kodu. Örnek verilerdeki tüm iletiler İngilizce’dir, bu nedenle bu alan için `en` değerini doğrudan yazabilirsiniz.|
 
 ## <a name="create-a-custom-function"></a>Özel işlev oluşturma
@@ -114,7 +114,7 @@ Sorgular listesinde, başlangıçta `Query1` olarak adlandırılan yeni bir sorg
 Şimdi **Ana Sayfa** şeridindeki **Sorgu** grubunda **Gelişmiş Düzenleyici**’ye tıklayarak Gelişmiş Düzenleyici penceresini açın. Pencerede bulunan kodu silin ve aşağıdaki kodu yapıştırın. 
 
 > [!NOTE]
-> Aşağıdaki örnek uç noktayı (`<your-custom-subdomain>`içeren) Metin Analizi kaynağınız için oluşturulan uç noktayla değiştirin. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açıp metin analizi aboneliğinizi seçip `Quick start`' yı seçerek bu uç noktayı bulabilirsiniz.
+> Aşağıdaki örnek bitiş noktasını `<your-custom-subdomain>`(içeren) metin analizi kaynağınız için oluşturulan uç noktayla değiştirin. Bu bitiş noktasını [Azure portalında](https://azure.microsoft.com/features/azure-portal/)oturum açarak, Metin Analizi aboneliğinizi seçerek ve `Quick start`.
 
 
 ```fsharp
@@ -132,7 +132,7 @@ Sorgular listesinde, başlangıçta `Query1` olarak adlandırılan yeni bir sorg
 in  keyphrases
 ```
 
-`YOUR_API_KEY_HERE` değerini, Metin Analizi erişim anahtarınızla değiştirin. [Azure portalda](https://azure.microsoft.com/features/azure-portal/) oturum açıp Metin Analizi aboneliğinizi ve sonra Genel Bakış sayfasını seçerek de bu anahtarı bulabilirsiniz. Anahtarın önündeki ve arkasındaki tırnak işaretlerini kaldırmadığınızdan emin olun. Ardından, **Bitti** seçeneğine tıklayın.
+`YOUR_API_KEY_HERE` değerini, Metin Analizi erişim anahtarınızla değiştirin. [Azure portalda](https://azure.microsoft.com/features/azure-portal/) oturum açıp Metin Analizi aboneliğinizi ve sonra Genel Bakış sayfasını seçerek de bu anahtarı bulabilirsiniz. Anahtarın önündeki ve arkasındaki tırnak işaretlerini kaldırmadığınızdan emin olun. Ardından **Bitti'yi tıklatın.**
 
 ## <a name="use-the-custom-function"></a>Özel işlevi kullanma
 <a name="UseCustomFunction"></a>
@@ -145,7 +145,7 @@ Power BI Desktop’ta Sorgu Düzenleyicisi penceresinde `FabrikamComments` sorgu
 
 Özel İşlev Çağır iletişim kutusu görüntülenir. **Yeni sütun adı** bölümüne `keyphrases` girin. **İşlev sorgusu** bölümünde, oluşturduğunuz özel işlevi (`KeyPhrases`) seçin.
 
-İletişim kutusunda yeni bir alan görüntülenir: **metin (isteğe bağlı)** . Bu alan, Anahtar İfadeler API’sinin `text` parametresi için değer sağlamak amacıyla hangi sütunu kullanmak istediğimizi sorar. (`language` ve `id` parametrelerinin değerlerini zaten sabit olarak kodlayacağınızdan emin olmalısınız.) Açılır menüden `Merged` ( [daha önce](#PreparingData) konu ve ileti alanlarını birleştirerek oluşturduğunuz sütun) öğesini seçin.
+İletişim kutusunda yeni bir alan görüntülenir: **metin (isteğe bağlı)**. Bu alan, Anahtar İfadeler API’sinin `text` parametresi için değer sağlamak amacıyla hangi sütunu kullanmak istediğimizi sorar. (Parametreler ve `language` `id` parametreler için değerleri zaten sabit kodladığınızı unutmayın.) Açılan `Merged` menüden (konu ve ileti alanlarını birleştirerek [daha önce](#PreparingData) oluşturduğunuz sütunu) seçin.
 
 ![[Özel işlev çağırma]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -166,15 +166,15 @@ Her şey hazırsa Power BI, tablodaki her bir satır için bir kez özel işlevi
 > Metin Analizi hizmeti, erişim anahtarınızı kullanarak kimliğinizi doğruladığından `Anonymous` seçeneğini belirlersiniz, bu nedenle Power BI’ın HTTP isteği için kimlik bilgileri sağlaması gerekmez.
 
 > [!div class="mx-imgBorder"]
-> ![[kimlik doğrulaması anonim olarak ayarlanıyor]](../media/tutorials/power-bi/access-web-content.png)
+> ![[kimlik doğrulamasını anonim olarak ayarlama]](../media/tutorials/power-bi/access-web-content.png)
 
-Anonim erişim ' i seçtikten sonra bile kimlik bilgilerini düzenle başlığını görürseniz, Metin Analizi erişim anahtarınızı `KeyPhrases` [özel işlevindeki](#CreateCustomFunction)koda yapıştırmayı unutmuş olabilirsiniz.
+Anonim erişimi seçtiğiniz halde Kimlik Bilgilerini Düzenle bandını görüyorsanız, `KeyPhrases` [özel işlevdeki](#CreateCustomFunction) koda Metin Analizi erişim anahtarınızı yapıştırmayı unutmuş olabilirsiniz.
 
 Ardından, veri kaynaklarınızın gizliliği hakkında bilgiler sunmanızın istendiği bir bant görüntülenebilir. 
 
 ![[gizlilik bandı]](../media/tutorials/power-bi/privacy-banner.png)
 
-**Devam Et**’e tıklayın ve iletişim kutusundaki her bir veri kaynağı için `Public` seçeneğini belirleyin. Ardından, **Kaydet**'e tıklayın.
+**Devam Et**’e tıklayın ve iletişim kutusundaki her bir veri kaynağı için `Public` seçeneğini belirleyin. Ardından **Kaydet'i tıklatın.**
 
 ![[veri kaynağı gizliliğini ayarlama]](../media/tutorials/power-bi/privacy-dialog.png)
 
@@ -190,7 +190,7 @@ Power BI Desktop kısa bir süre içinde gerekli HTTP isteklerini yapar. Tabloda
 > [!NOTE]
 > Kelime bulutu oluşturmak için her bir yorumun tam metni yerine neden ayıklanan anahtar ifadeleri kullanmalı? Anahtar ifadeler bize yalnızca müşteri yorumlarında yer alan *en sık kullanılan* sözcükleri değil, *önemli* sözcükleri de sunar. Ayrıca sonuçta elde edilen buluttaki sözcük boyutlandırması, bir kelimenin nispeten az sayıda yorumda sık olarak kullanılmasına göre şekillenmez.
 
-Henüz yapmadıysanız, Word Cloud özel görselini yükleyin. Çalışma alanının sağ tarafındaki Görsel Öğeler bölmesinde, üç nokta ( **...** ) simgesine tıklayın ve **Marketten içe aktarın** seçeneğini belirleyin. Ardından, "cloud" araması yapın ve Word Cloud görselinin yanındaki **Ekle** düğmesine tıklayın. Power BI, Sözcük Bulutu görselini yükler ve başarıyla yüklendiğini size bildirir.
+Henüz yapmadıysanız, Word Cloud özel görselini yükleyin. Çalışma alanının sağ tarafındaki Görsel Öğeler bölmesinde, üç nokta (**...**) simgesine tıklayın ve **Marketten içe aktarın** seçeneğini belirleyin. Ardından, "cloud" araması yapın ve Word Cloud görselinin yanındaki **Ekle** düğmesine tıklayın. Power BI, Sözcük Bulutu görselini yükler ve başarıyla yüklendiğini size bildirir.
 
 ![[özel görsel ekleme]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -217,7 +217,7 @@ Kelime bulutumuzu daha yakından incelemek için raporda Odak Modu aracına tık
 
 Microsoft Azure tarafından sunulan Bilişsel Hizmetler'den biri olan Metin Analizi hizmeti, yaklaşım analizi ve dil algılama özelliklerini de sunar. Dil algılama özellikle de müşteri geri bildirimi tamamen İngilizce dilinde değilse faydalıdır.
 
-Bu diğer API’lerin her ikisi de Anahtar İfadeler API’sine oldukça benzerdir. Başka bir deyişle, bu öğreticide oluşturduğunuza neredeyse benzer özel işlevleri kullanarak bunları Power BI Desktop ile tümleştirebilirsiniz. Boş bir sorgu oluşturup aşağıdaki uygun kodu daha önce yaptığınız gibi Gelişmiş Düzenleyici'ye yapıştırmanız yeterlidir. (Erişim anahtarınızı unutmayın!) Daha sonra, daha önce olduğu gibi, tabloya yeni bir sütun eklemek için işlevini kullanın.
+Bu diğer API’lerin her ikisi de Anahtar İfadeler API’sine oldukça benzerdir. Başka bir deyişle, bu öğreticide oluşturduğunuza neredeyse benzer özel işlevleri kullanarak bunları Power BI Desktop ile tümleştirebilirsiniz. Boş bir sorgu oluşturup aşağıdaki uygun kodu daha önce yaptığınız gibi Gelişmiş Düzenleyici'ye yapıştırmanız yeterlidir. (Erişim anahtarınızı unutmayın!) Daha sonra, daha önce olduğu gibi, tabloya yeni bir sütun eklemek için işlevi kullanın.
 
 Aşağıdaki Yaklaşım Analizi işlevi, metinde ifade edilen yaklaşımın ne ölçüde olumlu olduğunu gösteren bir puan döndürür.
 
@@ -296,7 +296,7 @@ Metin Analizi hizmeti, Power Query M formül dili veya Power BI hakkında daha f
 > [Metin Analizi API'si başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Power Query M başvurusu](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
+> [Güç Sorgusu M başvurusu](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Power BI belgeleri](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

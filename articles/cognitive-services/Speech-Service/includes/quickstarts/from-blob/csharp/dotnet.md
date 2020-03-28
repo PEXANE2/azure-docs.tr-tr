@@ -5,41 +5,41 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dapine
 ms.openlocfilehash: 230a2328a2d03d2167cb1312eb2f02d4b2cedd64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79296272"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Kaynak dosyayı Azure blob'una yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
-## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
+## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
 
-İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
+İlk adım, visual studio'da projenizin açık olduğundan emin olmaktır.
 
-1. Visual Studio 2019 ' i başlatın.
-2. Projenizi yükleyin ve `Program.cs`açın.
+1. Görsel Stüdyo 2019'u başlatın.
+2. Projenizi yükleyin `Program.cs`ve açın.
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Newtonsoft. JSON öğesine bir başvuru ekleyin
+## <a name="add-a-reference-to-newtonsoftjson"></a>Newtonsoft.Json için bir referans ekleyin
 
-1. Çözüm Gezgini, **HelloWorld** projesine sağ tıklayın ve ardından NuGet Paket Yöneticisi ' ni görüntülemek Için **NuGet Paketlerini Yönet** ' i seçin.
-1. Sağ üst köşede, **paket kaynağı** açılan kutusunu bulun ve **`nuget.org`** seçili olduğundan emin olun.
-1. Sol üst köşede, **Araştır**' ı seçin.
-1. Arama kutusuna *Newtonsoft. JSON* yazın ve **ENTER**' u seçin.
-1. Arama sonuçlarından [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) paketini seçin ve ardından en son kararlı sürümü yüklemek için **yükler** ' i seçin.
+1. Çözüm Gezgini'nde **helloworld** projesine sağ tıklayın ve ardından **NuGet** Paket Yöneticisi'ni göstermek için Paketleri Yönet'i seçin.
+1. Sağ üst köşede, Paket **Kaynağı** açılır kutusunu bulun ve seçildiğinden **`nuget.org`** emin olun.
+1. Sol üst köşede **Gözat'ı**seçin.
+1. Arama kutusunda *newtonsoft.json* yazın ve **Enter'u**seçin.
+1. Arama sonuçlarından [**Newtonsoft.Json**](https://www.nuget.org/packages/Newtonsoft.Json) paketini seçin ve ardından en son kararlı sürümü yüklemek için **Yükle'yi** seçin.
 1. Yüklemeyi başlatmak için tüm anlaşmaları ve lisansları kabul edin.
-   Paket yüklendikten sonra, **Paket Yöneticisi konsol** penceresinde bir onay görüntülenir.
+   Paket yüklendikten sonra **Paket Yöneticisi Konsol** penceresinde bir onay görüntülenir.
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
 
-Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
+Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
 
 ```csharp
 class Program
@@ -79,12 +79,12 @@ class Program
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>JSON sarmalayıcıları
+## <a name="json-wrappers"></a>JSON Sarmalayıcılar
 
-REST API JSON biçiminde istek alma ve ayrıca JSON 'daki sonuçları geri döndürme gibi yalnızca dizeleri kullanarak etkileşime girebiliriz ancak bu önerilmez.
-İsteklerin ve yanıtların yönetimini kolaylaştırmak için, JSON 'u serileştirmek/seri durumdan çıkarmak için kullanmak üzere birkaç sınıf tanımlayacağız.
+REST API's JSON formatında isteklerini almak ve aynı zamanda JSON sonuçları dönmek gibi biz sadece dizeleri kullanarak onlarla etkileşim olabilir, ama bu tavsiye edilmez.
+İstekleri ve yanıtları yönetmeyi kolaylaştırmak için, JSON'u seri hale getirmek / deserialize etmek için kullanmak üzere birkaç sınıf bildiririz.
 
-Devam edin ve `TranscribeAsync`sonra bildirimlerini yerleştirin.
+Devam edin ve sonra `TranscribeAsync`beyanlarını koymak.
 
 ```csharp
 public class ModelIdentity
@@ -185,9 +185,9 @@ public class TranscriptionDefinition
 }
 ```
 
-## <a name="create-and-configure-an-http-client"></a>Http Istemcisi oluşturma ve yapılandırma
-İhtiyaç duyduğumuz ilk şey, doğru temel URL ve kimlik doğrulama kümesine sahip bir http Istemcidir.
-Bu kodu `TranscribeAsync`ekleyin.
+## <a name="create-and-configure-an-http-client"></a>Http İstemci oluşturma ve yapılandırma
+İhtiyacımız olan ilk şey, doğru temel URL'ye ve kimlik doğrulama kümesine sahip bir Http İstemcisi'dir.
+Bu kodu `TranscribeAsync`ekle.
 
 ```csharp
 var client = new HttpClient
@@ -201,8 +201,8 @@ var client = new HttpClient
 };
 ```
 
-## <a name="generate-a-transcription-request"></a>Döküm isteği oluştur
-Ardından, döküm isteğini oluşturacağız. Bu kodu `TranscribeAsync`ekleyin.
+## <a name="generate-a-transcription-request"></a>Transkripsiyon isteği oluşturma
+Sonra, transkripsiyon isteğini oluşturacağız. Bu kodu `TranscribeAsync`ekle.
 
 ```csharp
 var transcriptionDefinition =
@@ -217,8 +217,8 @@ var sc = new StringContent(res);
 sc.Headers.ContentType = JsonMediaTypeFormatter.DefaultMediaType;
 ```
 
-## <a name="send-the-request-and-check-its-status"></a>İsteği gönder ve durumunu denetle
-Artık isteği konuşma hizmetine gönderiyoruz ve ilk yanıt kodunu denetliyoruz. Bu yanıt kodu yalnızca hizmetin isteği aldığını gösterir. Hizmet, yanıt üst bilgilerinde, döküm durumunu depolayacağı konuma bir URL döndürür.
+## <a name="send-the-request-and-check-its-status"></a>İsteği gönderin ve durumunu kontrol edin
+Şimdi isteği Konuşma hizmetine postalıyoruz ve ilk yanıt kodunu kontrol ediyoruz. Bu yanıt kodu yalnızca hizmetin isteği alYıp almadığını gösterir. Hizmet, transkripsiyon durumunu depolayacak konumu olan yanıt başlıklarında bir Url döndürecektir.
 
 ```csharp
 Uri transcriptionLocation = null;
@@ -234,12 +234,12 @@ using (var response = await client.PostAsync($"{SpeechToTextBasePath}Transcripti
 }
 ```
 
-## <a name="wait-for-the-transcription-to-complete"></a>Döküm işleminin tamamlanmasını bekleyin
-Hizmet, dökümü zaman uyumsuz olarak işlediğinden, her ne kadar her durumda yoklama yapması gerekir. Her 5 saniyede bir kontrol edeceğiz.
+## <a name="wait-for-the-transcription-to-complete"></a>Transkripsiyonun tamamlanmasını bekleyin
+Hizmet transkripsiyona eşit olarak işlediği için, bu durumun durumunu sık sık yoklamamız gerekir. Her 5 saniyede bir kontrol edeceğiz.
 
-İstek gönderildiğinde elde ettiğimiz URL 'deki içeriği alarak durumu kontrol edebilirsiniz. İçeriği geri edindiğimiz zaman, ile etkileşime geçmesini kolaylaştırmak için yardımcı sınıfımızın bir üyesi olarak seri durumdan çıkardık.
+İstek yayınlandığında aldığımız Url'deki içeriği alarak durumu kontrol edebiliriz. İçeriği geri aldığımızda, etkileşimi kolaylaştırmak için onu yardımcı sınıfımızdan birine dönüştürüruz.
 
-Başarılı bir tamamlama haricinde her şey için durum görüntüleme ile yoklama kodu aşağıda verilmiştir.
+İşte başarılı bir tamamlama dışında her şey için durum ekranlı anket kodu, biz bir dahaki sefere yapacağız.
 
 ```csharp
 Console.WriteLine($"Created transcription at location {transcriptionLocation}.");
@@ -292,9 +292,9 @@ Console.WriteLine("Press any key...");
 Console.ReadKey();
 ```
 
-## <a name="display-the-transcription-results"></a>Döküm sonuçlarını görüntüleme
-Hizmet başarıyla tamamlandığında, sonuçlar durum yanıtından elde ettiğimiz başka bir URL 'de depolanır. Burada, bu sonuçları okumadan ve serisini kaldırmadan önce geçici bir dosyaya indirmek için bir istek yaptık.
-Sonuçlar yüklendikten sonra bunları konsola yazdırabiliriz. `case "Succeeded":` etiketine aşağıdaki kodu ekleyin.
+## <a name="display-the-transcription-results"></a>Transkripsiyon sonuçlarını görüntüleme
+Hizmet transkripsiyon başarıyla tamamlandıktan sonra sonuçlar durum yanıtı alabileceğimiz başka bir Url'de saklanır. Burada okumadan ve deserialize etmeden önce bu sonuçları geçici bir dosyaya indirmek için bir istekte bulunacağız.
+Sonuçlar yüklendikten sonra konsola yazdırabiliriz. `case "Succeeded":` Etikete aşağıdaki kodu ekleyin.
 
 ```csharp
 completed = true;
@@ -306,8 +306,8 @@ Console.WriteLine($"Transcription succeeded. Results: {Environment.NewLine}{resu
 File.Delete(filename);
 ```
 
-## <a name="check-your-code"></a>Kodunuzu denetleyin
-Bu noktada, kodunuz şuna benzemelidir: (Bu sürüme bazı açıklamalar ekledik)
+## <a name="check-your-code"></a>Kodunuzu kontrol edin
+Bu noktada, kodunuz şu şekilde görünmelidir: (Bu sürüme bazı yorumlar ekledik)
 
 ```csharp
 using Newtonsoft.Json;
@@ -547,13 +547,13 @@ namespace BatchClient
 }
 ```
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
+Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma tanımamızı test etmeye hazırsınız.
 
-1. **Kodu derleyin** -Visual Studio menü çubuğundan **derleme** > **Build Solution**' ı seçin.
-2. **Uygulamanızı başlatın** -menü çubuğundan **Hata Ayıkla** > hata **ayıklamayı Başlat** ' ı seçin veya **F5**tuşuna basın.
-3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
+1. **Kodu derle** - Visual Studio'nun menü çubuğundan **Build** > **Build Solution'ı**seçin.
+2. **Uygulamanızı başlatın** - Menü çubuğundan **Hata** > **Ayıklama'yı** seçin veya **F5 tuşuna**basın.
+3. **Tanımaya başlayın** - İngilizce bir ifade konuşmanızı ister. Konuşmanız Konuşma hizmetine gönderilir, metin olarak yazılır ve konsolda işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,19 +1,19 @@
 ---
-title: "Hızlı başlangıç: Bilgi Bankası oluşturmak ve yönetmek için SDK 'Yı kullanma-Soru-Cevap Oluşturma"
-description: Bu hızlı başlangıçta, istemci SDK 'sını kullanarak bilgi bankaınızı oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir.
+title: "Quickstart: Bilgi tabanı oluşturmak ve yönetmek için SDK'yı kullanın - QnA Maker"
+description: Bu hızlı başlangıç, istemci SDK'yı kullanarak bilgi tabanınızı nasıl oluşturup yöneteceklerinizi gösterir.
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
 ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79241769"
 ---
-# <a name="quickstart-create-and-manage-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası oluşturma ve yönetme
+# <a name="quickstart-create-and-manage-knowledge-base"></a>Quickstart: Bilgi tabanı oluşturma ve yönetme
 
-Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
+QnA Maker istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
@@ -30,8 +30,8 @@ Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Öğretici: bilgi bankaınızı bir toplu iş dosyasıyla test etme](./batch-testing.md)
+>[Öğretici: Bilgi tabanınızı toplu dosyayla test edin](./batch-testing.md)
 
-* [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
-* [Bilgi Bankası düzenleme](../how-to/edit-knowledge-base.md)
-* [Kullanım analizlerini al](../how-to/get-analytics-knowledge-base.md)
+* [QnA Maker API nedir?](../Overview/overview.md)
+* [Bilgi bankası düzenleme](../how-to/edit-knowledge-base.md)
+* [Kullanım analitiği alın](../how-to/get-analytics-knowledge-base.md)

@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Bing Varlık Arama tek sayfalı web uygulaması'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, Bing Varlık Arama API'si tek sayfalı bir Web uygulamasında nasıl kullanılacağı gösterilmektedir.
+description: Bu öğretici, Bing Varlık Arama API'sinin tek sayfalık bir Web uygulamasında nasıl kullanılacağını gösterir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943129"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
@@ -39,7 +39,7 @@ Uygulamamız, kullanıcı tarafından girilen bir konumdan enlem ve boylamı alm
 > [!NOTE]
 > Sayfanın en altındaki JSON ve HTTP başlıklarına tıklandığında, JSON yanıt ve HTTP istek bilgileri gösterilir. Bu ayrıntılar hizmeti keşfederken yararlıdır.
 
-Öğretici uygulamasında aşağıdakilerin nasıl yapılacağı gösterilmektedir:
+Öğretici uygulaması şunları gösterir:
 
 > [!div class="checklist"]
 > * JavaScript'te Bing Varlık Arama API'sine çağrı yapma
@@ -56,9 +56,9 @@ Bu öğreticide, kaynak kodun yalnızca seçilen bölümlerini açıklıyoruz. T
 > [!NOTE]
 > Bu öğretici, [tek sayfalı Bing Web Araması uygulaması öğreticisine](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) büyük ölçüde benzer, ancak yalnızca varlık araması sonuçlarını ele alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Öğreticiyle birlikte izlemek için Bing Arama API 'si ve Bing Haritalar API 'SI için abonelik anahtarlarına ihtiyacınız vardır. Bunlar yoksa, [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ve [temel Bing Haritalar anahtarını](https://www.microsoft.com/maps/create-a-bing-maps-key)kullanabilirsiniz.
+Öğreticiyi takip etmek için Bing Arama API'si ve Bing Haritalar API'sı için abonelik anahtarlarına ihtiyacınız var. Bunlara sahip değilseniz, [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ve temel Bing [Haritalar anahtarı](https://www.microsoft.com/maps/create-a-bing-maps-key)nı kullanabilirsiniz.
 
 ## <a name="app-components"></a>Uygulama bileşenleri
 
@@ -90,7 +90,7 @@ HTML, arama sonuçlarının gösterildiği bölümleri de (HTML `<div>` etiketle
 
 Bing Arama ve Bing Haritalar API'si abonelik anahtarlarını koda eklemek zorunda kalmamak için, bunları tarayıcının kalıcı depolamasını kullanarak depolarız. Anahtarların biri depolanmazsa bunu isteriz ve daha sonra kullanmak üzere depolarız. Anahtar daha sonra API tarafından reddedilirse, depolanan anahtarı geçersiz kılarız ve böylelikle kullanıcıdan sonraki aramasında anahtar istenir.
 
-`storeValue` nesnesini (tarayıcı destekliyorsa) veya bir tanımlama bilgisi kullanan `retrieveValue` ve `localStorage` işlevlerini tanımlarız. `getSubscriptionKey()` işlevimiz, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+`localStorage` nesnesini (tarayıcı destekliyorsa) veya bir tanımlama bilgisi kullanan `storeValue` ve `retrieveValue` işlevlerini tanımlarız. `getSubscriptionKey()` işlevimiz, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
 
 ```javascript
 // cookie names for data we store
@@ -124,7 +124,7 @@ function getSearchSubscriptionKey() {
 }
 ```
 
-HTML `<body>` etiketi, sayfanın yüklenmesi tamamlandığında `onload` ve `getSearchSubscriptionKey()` çağıran bir `getMapsSubscriptionKey()` özniteliği içerir. Bu çağrılar, henüz girmediyse kullanıcıdan hemen anahtarlarını istemek için kullanılır.
+HTML `<body>` etiketi, sayfanın yüklenmesi tamamlandığında `getSearchSubscriptionKey()` ve `getMapsSubscriptionKey()` çağıran bir `onload` özniteliği içerir. Bu çağrılar, henüz girmediyse kullanıcıdan hemen anahtarlarını istemek için kullanılır.
 
 ```html
 <body onload="document.forms.bing.query.focus(); getSearchSubscriptionKey(); getMapsSubscriptionKey();">
@@ -139,7 +139,7 @@ HTML formu aşağıdaki denetimleri içerir:
 | | |
 |-|-|
 |`where`|Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü.|
-|`query`|Arama terimlerinin girileceği metin alanı.|
+|`query`|Arama terimlerinin girildiği metin alanı.|
 |`safe`|SafeSearch özelliğinin açık olup olmadığını gösteren bir onay kutusu ("yetişkin" sonuçlarını kısıtlar)|
 |`what`|Varlıkları, yerleri veya her ikisini de arama tercihinin yapıldığı bir menü.|
 |`mapquery`|Bing Varlık Aramanın daha ilgili sonuçlar döndürmesine yardımcı olmak için kullanıcının tam veya kısmi adres, simgesel yapı vb. girebileceği metin alanı.|
@@ -167,7 +167,7 @@ function bingSearchOptions(form) {
 
 ## <a name="obtaining-a-location"></a>Konum alma
 
-Bing Haritalar API’si, kullanıcının girdiği konumun enlemini ve boylamını almak için kullandığımız [`locationQuery` yöntemini](//msdn.microsoft.com/library/ff701711.aspx) sunar. Bu koordinatlar daha sonra kullanıcının isteğiyle Bing Varlık Arama API’sine iletilir. Arama sonuçları, belirtilen konuma yakın olan varlıkları ve yerleri önceliklendirir.
+Bing Maps API, [ `locationQuery` ](//msdn.microsoft.com/library/ff701711.aspx)kullanıcının girdiği yerin enlem ve boylamını bulmak için kullandığımız bir yöntem sunar. Bu koordinatlar daha sonra kullanıcının isteğiyle Bing Varlık Arama API’sine iletilir. Arama sonuçları, belirtilen konuma yakın olan varlıkları ve yerleri önceliklendirir.
 
 Hizmet çıkış noktaları arası sorguları desteklemediğinden Web uygulamasında sıradan bir `XMLHttpRequest` kullanarak Bing Haritalar API’sine erişemeyiz. Neyse ki JSONP ("P" harfi "doldurulmuş" anlamı taşır) desteği sağlıyor. JSONP yanıtı, bir işlev çağrısına sarmalanmış sıradan bir JSON yanıtıdır. İstek, belgeye bir `<script>` etiketi eklenerek yapılır. (Betiklerin yüklenmesi tarayıcı güvenlik ilkelerine tabi değildir.)
 
@@ -518,7 +518,7 @@ Varlık işleyici işlevimiz:
 
 ## <a name="persisting-client-id"></a>Kalıcı istemci kimliği
 
-Bing arama API'lerinden gelen yanıtlar, başarılı isteklerle birlikte API'ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API’si kullanılıyorsa, mümkün olduğunca bu API’lerin tümünde aynı istemci kimliği kullanılmalıdır.
+Bing arama API'lerinden gelen yanıtlar, başarılı isteklerle birlikte API'ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API'si kullanılıyorsa, mümkün olduğunca bu API'lerin tümünde aynı istemci kimliği kullanılmalıdır.
 
 Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API'leri kullanıcının tüm aramalarını ilişkilendirebilir. Bunun iki önemli avantajı vardır.
 
@@ -529,7 +529,7 @@ Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API'leri kullanıcı
 Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScript'in kullanımına sunulmasını engelleyebilir. Bu sınırlama, arama sonucunun kaynağı istekte bulunan sayfadan farklı olduğunda ortaya çıkar. Üretim ortamında, Web sayfasıyla aynı etki alanında API çağrısı yapan bir sunucu tarafı betiği barındırarak bu ilkeye uymalısınız. Betiğin kaynağı Web sayfasıyla aynı olduğundan, `X-MSEdge-ClientID` üst bilgisi JavaScript'in kullanımına sunulur.
 
 > [!NOTE]
-> Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API’si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
+> Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
 Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Böyle bir ara sunucudan gelen yanıtta, yanıt üst bilgilerini beyaz listeye alan ve JavaScript’in kullanımına sunan `Access-Control-Expose-Headers` üst bilgisi bulunur.
 

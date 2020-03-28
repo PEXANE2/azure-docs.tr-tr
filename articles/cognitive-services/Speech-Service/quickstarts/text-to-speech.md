@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı bir konuşmacı konuşma hizmetine Sentezleştirme'
+title: 'Quickstart: Konuşmayı konuşmacıya sentezleme - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, metni sentezleştirilmiş konuşmaya dönüştürmek ve çıktıyı bir konuşmacının oynatacak şekilde konuşma SDK 'sını kullanacaksınız.
+description: Bu hızlı başlangıçta, metni sentezlenmiş konuşmaya dönüştürmek ve çıktıyı bir hoparlörde oynatmak için Konuşma SDK'sını kullanırsınız.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 95cf6ea645e4a9a769e95692e1116ec2f1ac8c61
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119418"
 ---
-# <a name="quickstart-synthesize-speech-to-a-speaker"></a>Hızlı başlangıç: konuşmayı konuşmacıyı Sentezleştirme
+# <a name="quickstart-synthesize-speech-to-a-speaker"></a>Quickstart: Konuşmayı konuşmacıya sentezleme
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts/header.md)]

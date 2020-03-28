@@ -1,7 +1,7 @@
 ---
-title: Kiracı modeli oluşturma (Önizleme)-konuşma hizmeti
+title: Kiracı modeli oluşturma (önizleme) - Konuşma Hizmeti
 titleSuffix: Azure Cognitive Services
-description: ', Kuruluşa özgü şartlar için en iyi konuşma tanımayı sunmak üzere Office 365 verilerinizi kullanan güvenli, uyumlu bir kiracı modelini (Office 365 verileriyle Özel Konuşma Tanıma) otomatik olarak oluşturun.'
+description: Kuruluşa özel terimler için en iyi konuşma tanımayı sunmak için Office 365 verilerinizi kullanan güvenli ve uyumlu bir kiracı modeli (Office 365 verileriyle Özel Konuşma) otomatik olarak oluşturun.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,100 +11,100 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
 ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77469026"
 ---
-# <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: kiracı modeli oluşturma (Önizleme)
+# <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: Kiracı modeli oluşturma (önizleme)
 
-Kiracı modeli (Office 365 verileriyle Özel Konuşma Tanıma), kuruluşunuzun Office 365 verilerinden otomatik olarak özel bir konuşma tanıma modeli üreten Office 365 kurumsal müşterilerine yönelik bir katılım hizmetidir. Model, teknik koşullar, jargon ve kişilerin adları için en iyi duruma getirilmiştir, güvenli ve uyumlu bir şekilde yapılır.
+Kiracı Modeli (Office 365 verileriyle Özel Konuşma), kuruluşunuzun Office 365 verilerinden otomatik olarak özel bir konuşma tanıma modeli oluşturan Office 365 kurumsal müşterileri için bir kabul hizmetidir. Model, teknik terimler, jargon ve kişilerin adları için güvenli ve uyumlu bir şekilde optimize edilmiştir.
 
 > [!IMPORTANT]
-> Kuruluşunuz kiracı modeli hizmetini kullanarak kaydolur, konuşma hizmeti kuruluşunuzun dil modeline erişebilir. Model, kuruluşunuzdaki herkes tarafından görülemeyen Office 365 Genel Grup e-postalarından ve belgelerinden oluşturulur. Kuruluşunuzun Office 365 Yöneticisi, Office 365 Yönetim portalından kuruluş genelindeki dil modelinin kullanımını açabilir veya kapatabilir.
+> Kuruluşunuz Kiracı Modeli hizmetini kullanarak kaydoluyorsa, Konuşma Hizmeti kuruluşunuzun dil modeline erişebilir. Model, kuruluşunuzdaki herkes tarafından görülebilen Office 365 ortak grup e-postalarından ve belgelerinden oluşturulur. Kuruluşunuzun Office 365 yöneticisi, Office 365 yönetici portalından kuruluş genelindeki dil modelini açabilir veya kullanabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Microsoft 365 Yönetim merkezini kullanarak kiracı modeline kaydolma
-> * Konuşma aboneliği anahtarı al
+> * Microsoft 365 yönetici merkezini kullanarak Kiracı Modeline kaydolun
+> * Konuşma abonelik anahtarı alın
 > * Kiracı modeli oluşturma
-> * Kiracı modeli dağıtma
-> * Konuşma SDK 'sını kullanarak kiracı modelinizi kullanın
+> * Kiracı modelini dağıtma
+> * Konuşma SDK ile kiracı modelinizi kullanın
 
-## <a name="enroll-in-the-tenant-model-service"></a>Kiracı model hizmetine kaydolma
+## <a name="enroll-in-the-tenant-model-service"></a>Kiracı Modeli hizmetine kaydolun
 
-Kiracı modelinizi dağıtabilmeniz için önce kiracı modeli hizmetine kaydolmuş olmanız gerekir. Kayıt, Microsoft 365 Yönetim merkezinde tamamlanır ve yalnızca Microsoft 365 yöneticiniz tarafından yapılabilir.
+Kiracı modelinizi dağıtmadan önce Kiracı Modeli hizmetine kaydolmanız gerekir. Kayıt Microsoft 365 yönetici merkezinde tamamlanır ve yalnızca Microsoft 365 yöneticiniz tarafından yapılabilir.
 
-1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com)oturum açın.
+1. [Microsoft 365 yönetim merkezinde](https://admin.microsoft.com) oturum açın.
 
-1. Sol bölmede **Ayarlar**' ı seçin, ardından iç Içe menüsünden **Ayarlar** ' ı seçin ve ardından Ana penceredeki **Azure konuşma Hizmetleri** ' ni seçin.
+1. Sol bölmede **Ayarlar'ı**seçin, ardından iç içe açılan menüden **Ayarlar'ı** seçin ve ardından ana pencereden **Azure Konuşma Hizmetleri'ni** seçin.
 
    !["Hizmetler & eklentileri" bölmesi](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. **Kuruluş genelinde dil modeline Izin ver** onay kutusunu seçin ve ardından **Değişiklikleri Kaydet**' i seçin.
+1. Kuruluş **genelindeki dil modeli** onay kutusunu İzin ver'i seçin ve ardından **değişiklikleri kaydet'i**seçin.
 
-   ![Azure konuşma Hizmetleri bölmesi](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Azure Konuşma Hizmetleri bölmesi](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
-Kiracı model örneğini devre dışı bırakmak için:
-1. Yukarıdaki 1. ve 2. adımları yineleyin.
-1. **Kuruluş genelinde dil modeline Izin ver** onay kutusunu temizleyin ve ardından **Değişiklikleri Kaydet**' i seçin.
+Kiracı modeli örneğini kapatmak için:
+1. Önceki adımları 1 ve 2'yi yineleyin.
+1. Kuruluş **genelindeki dil modeli** onay kutusunu İzin ver ve ardından **değişiklikleri kaydet'i**seçin.
 
-## <a name="get-a-speech-subscription-key"></a>Konuşma aboneliği anahtarı al
+## <a name="get-a-speech-subscription-key"></a>Konuşma abonelik anahtarı alın
 
-Kiracı modelinizi konuşma SDK 'Sı ile kullanmak için bir konuşma kaynağına ve onunla ilişkili abonelik anahtarına ihtiyacınız vardır.
+Kiracı modelinizi Konuşma SDK ile kullanmak için bir Konuşma kaynağına ve ilişkili abonelik anahtarına ihtiyacınız vardır.
 
-1. [Azure Portal](https://aka.ms/azureportal) oturum açın.
-1. **Kaynak oluştur**' u seçin.
-1. **Arama** kutusuna **konuşma**yazın.
-1. Sonuçlar listesinde **konuşma**' yı seçin ve ardından **Oluştur**' u seçin.
-1. Kaynağı oluşturmak için ekrandaki yönergeleri izleyin. Şunları yaptığınızdan emin olun:
-   * **Konum** **eastus** veya **westus**olarak ayarlanır.
+1. [Azure portalında](https://aka.ms/azureportal)oturum açın.
+1. **Kaynak oluştur**’u seçin.
+1. **Arama** kutusunda Konuşma **yazın.**
+1. Sonuç listesinde **Konuşma'yı**seçin ve ardından **Oluştur'u**seçin.
+1. Kaynağınızı oluşturmak için ekrandaki yönergeleri izleyin. Şunlardan emin olun:
+   * **Konumu** **eastus** veya **westus**olarak ayarlanır.
    * **Fiyatlandırma katmanı** **S0**olarak ayarlanır.
-1. **Oluştur**’u seçin.
+1. **Oluştur'u**seçin.
 
-   Birkaç dakika sonra kaynağınız oluşturulur. Abonelik anahtarı, kaynağınızın **genel bakış** bölümünde bulunabilir.
+   Birkaç dakika sonra kaynağınız oluşturulur. Abonelik anahtarı kaynağınız için **Genel Bakış** bölümünde kullanılabilir.
 
 ## <a name="create-a-language-model"></a>Dil modeli oluşturma
 
-Yöneticiniz kuruluşunuz için kiracı modelini etkinleştirdikten sonra, Office 365 verilerinizi temel alan bir dil modeli oluşturabilirsiniz.
+Yöneticiniz kuruluşunuz için Kiracı Modeli'ni etkinleştirdikten sonra Office 365 verilerinizi temel alan bir dil modeli oluşturabilirsiniz.
 
-1. [Konuşma Studio](https://speech.microsoft.com/)'da oturum açın.
-1. Sağ üst köşedeki **Ayarlar** ' ı (dişli simgesi) seçin ve ardından **kiracı modeli ayarları**' nı seçin.
+1. [Konuşma Stüdyosu'nda](https://speech.microsoft.com/)oturum açın.
+1. Sağ üstte **Ayarlar'ı** (vites simgesi) seçin ve ardından **Kiracı Modeli ayarlarını**seçin.
 
-   !["Kiracı model ayarları" bağlantısı](media/tenant-language-model/tenant-language-settings.png)
+   !["Kiracı Model ayarları" bağlantısı](media/tenant-language-model/tenant-language-settings.png)
 
-   Konuşma Studio, kiracı modeli oluşturmak için uygun olup olmadığını bilmenizi sağlayan bir ileti görüntüler.
+   Speech Studio, kiracı modeli oluşturmak için nitelikli olup olmadığınızı bilmenizi sağlayan bir ileti görüntüler.
 
    > [!NOTE]
-   > Kuzey Amerika 'de Office 365 Kurumsal müşterileri bir kiracı modeli (Ingilizce) oluşturmaya uygundur. Müşteri Kasası, müşteri anahtarı veya Office 365 Kamu müşterisiyseniz bu özellik kullanılamaz. Müşteri Kasası veya müşteri anahtarı müşterisi olup olmadığınızı öğrenmek için bkz.:
+   > Kuzey Amerika'daki Office 365 kurumsal müşterileri kiracı modeli (İngilizce) oluşturabilir. Müşteri Kilit Kutusu, Müşteri Anahtarı veya Office 365 Devlet müşterisiyseniz, bu özellik kullanılamaz. Müşteri Kilit Kutusu veya Müşteri Anahtarı müşterisi olup olmadığınızı belirlemek için bkz:
    > * [Müşteri Kasası](/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Müşteri anahtarı](/microsoft-365/compliance/customer-key-overview)
-   > * [Office 365 Kamu](https://www.microsoft.com/microsoft-365/government)
+   > * [Müşteri Anahtarı](/microsoft-365/compliance/customer-key-overview)
+   > * [Office 365 Hükümet](https://www.microsoft.com/microsoft-365/government)
 
 1. **Kabul et**’i seçin.
 
-   Kiracı modeliniz hazırlandığınızda, daha fazla yönerge içeren bir onay e-posta iletisi alırsınız.
+   Kiracı modeliniz hazır olduğunda, başka talimatlar içeren bir onay e-posta iletisi alırsınız.
 
-## <a name="deploy-your-tenant-model"></a>Kiracı modelinizi dağıtın
+## <a name="deploy-your-tenant-model"></a>Kiracı modelinizi dağıtma
 
-Kiracı modeli örneğiniz hazırlandığınızda, aşağıdakileri yaparak dağıtın:
+Kiracı model örneğiniz hazır olduğunda, aşağıdakileri yaparak dağıtın:
 
-1. Onay e-posta iletinizde **modeli görüntüle** düğmesini seçin. Veya [konuşma Studio](https://speech.microsoft.com/)'da oturum açın.
-1. Sağ üst köşedeki **Ayarlar** ' ı (dişli simgesi) seçin ve ardından **kiracı modeli ayarları**' nı seçin.
+1. Onay e-posta iletinizde **Modeli Görüntüle** düğmesini seçin. Ya da [Speech Studio'da](https://speech.microsoft.com/)oturum açın.
+1. Sağ üstte **Ayarlar'ı** (vites simgesi) seçin ve ardından **Kiracı Modeli ayarlarını**seçin.
 
-   !["Kiracı model ayarları" bağlantısı](media/tenant-language-model/tenant-language-settings.png)
+   !["Kiracı Model ayarları" bağlantısı](media/tenant-language-model/tenant-language-settings.png)
 
 1. **Dağıt**'ı seçin.
 
-   Modeliniz dağıtıldığında, durum *dağıtıldı*olarak değişir.
+   Modeliniz dağıtıldığında, durum *Dağıtıldı*olarak değişir.
 
-## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Konuşma SDK 'sını kullanarak kiracı modelinizi kullanın
+## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Konuşma SDK ile kiracı modelinizi kullanın
 
-Modelinizi dağıttığınıza göre, artık bunu konuşma SDK 'Sı ile kullanabilirsiniz. Bu bölümde, Azure Active Directory (Azure AD) kimlik doğrulaması kullanarak konuşma hizmetini çağırmak için örnek kod kullanırsınız.
+Artık modelinizi dağıttığınıza göre, Konuşma SDK ile kullanabilirsiniz. Bu bölümde, Azure Etkin Dizin (Azure AD) kimlik doğrulaması kullanarak Konuşma Hizmeti'ni aramak için örnek kodu kullanırsınız.
 
-' De C#konuşma SDK 'sını çağırmak için kullanacağınız koda göz atalım. Bu örnekte, kiracı modelinizi kullanarak konuşma tanımayı gerçekleştirirsiniz. Bu kılavuz, platformunuzun zaten ayarlandığı varsayılır. Kurulum Yardımı 'na ihtiyacınız varsa bkz. [hızlı başlangıç: konuşmayı tanıma C# , (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+C#'daki Konuşma SDK'sını aramak için kullanacağınız koda bakalım. Bu örnekte, kiracı modelinizi kullanarak konuşma tanıma gerçekleştirin. Bu kılavuz, platformunuzun zaten ayarlandığını varsayılır. Kurulum yardımına ihtiyacınız varsa, [bkz.](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
 
 Bu kodu projenize kopyalayın:
 
@@ -287,11 +287,11 @@ namespace PrincetonSROnly.FrontEnd.Samples
 }
 ```
 
-Ardından, komut satırından projeyi yeniden oluşturup çalıştırmanız gerekir. Komutu çalıştırmadan önce, aşağıdakileri yaparak birkaç parametreyi güncelleştirin:
+Ardından, projeyi komut satırından yeniden oluşturmanız ve çalıştırmanız gerekir. Komutu çalıştırmadan önce, aşağıdakileri yaparak birkaç parametreyi güncelleştirin:
 
-1. `<Username>` ve `<Password>` değerlerini geçerli bir kiracı kullanıcısının değerleriyle değiştirin.
-1. `<Subscription-Key>`, konuşma kaynağınızın abonelik anahtarıyla değiştirin. Bu değer, [Azure Portal](https://aka.ms/azureportal)konuşma kaynağınızın **genel bakış** bölümünde bulunur.
-1. `<Endpoint-Uri>` aşağıdaki uç noktayla değiştirin. `{your region}`, konuşma kaynağınızın oluşturulduğu bölge ile değiştirdiğinizden emin olun. Bu bölgeler desteklenir: `westus`, `westus2`ve `eastus`. Bölge bilgileriniz, [Azure Portal](https://aka.ms/azureportal)konuşma kaynağınızın **genel bakış** bölümünde bulunabilir.
+1. Geçerli `<Username>` `<Password>` bir kiracı kullanıcı için değerleri değiştirin ve değiştirin.
+1. Konuşma `<Subscription-Key>` kaynağınız için abonelik anahtarıyla değiştirin. Bu değer, [Azure portalındaki](https://aka.ms/azureportal)Konuşma kaynağınız için **Genel Bakış** bölümünde kullanılabilir.
+1. Aşağıdaki `<Endpoint-Uri>` bitiş noktasıyla değiştirin. Konuşma kaynağınızın `{your region}` oluşturulduğu bölgeyle değiştirdiğinizden emin olun. Bu bölgeler `westus`desteklenir: `westus2`, `eastus`, ve . Bölge bilgileriniz, [Azure portalındaki](https://aka.ms/azureportal)Konuşma kaynağınızın **Genel Bakış** bölümünde mevcuttur.
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
@@ -301,9 +301,9 @@ Ardından, komut satırından projeyi yeniden oluşturup çalıştırmanız gere
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-Bu öğreticide, Office 365 verilerini kullanarak özel bir konuşma tanıma modeli oluşturmayı, dağıtmayı ve konuşma SDK 'Sı ile kullanmayı öğrendiniz.
+Bu eğitimde, özel bir konuşma tanıma modeli oluşturmak, dağıtmak ve Konuşma SDK ile kullanmak için Office 365 verilerini nasıl kullanacağınızı öğrendiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma Studio](https://speech.microsoft.com/)
+* [Konuşma Stüdyosu](https://speech.microsoft.com/)
 * [Konuşma SDK'sı](speech-sdk.md)

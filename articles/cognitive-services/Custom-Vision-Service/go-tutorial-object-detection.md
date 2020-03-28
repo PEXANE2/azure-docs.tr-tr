@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: go için SDK ile bir nesne algılama projesi oluşturma-Özel Görüntü İşleme'
+title: 'Quickstart: SDK for Go ile nesne algılama projesi oluşturun - Özel Vizyon'
 titleSuffix: Azure Cognitive Services
-description: Go SDK 'sını kullanarak bir proje oluşturun, Etiketler ekleyin, resimleri karşıya yükleyin, projenize eğitme yapın ve nesneleri algılayın.
+description: Go SDK'yı kullanarak proje oluşturun, etiket ekleyin, resim yükleyin, projenizi eğitin ve nesneleri algılayın.
 services: cognitive-services
 author: areddish
 ms.author: areddish
@@ -11,30 +11,30 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.openlocfilehash: c6303b494c7ea3a15a38cd5fb8bf6a77b0320363
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170142"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Hızlı başlangıç: Özel Görüntü İşleme go SDK ile bir nesne algılama projesi oluşturma
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Quickstart: Custom Vision Go SDK ile nesne algılama projesi oluşturma
 
-Bu makalede, bir nesne algılama modeli oluşturmak için Go ile Özel Görüntü İşleme SDK 'Yı kullanmaya başlamanıza yardımcı olacak bilgiler ve örnek kod sağlanmaktadır. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi go uygulamanızı oluşturmak için bir şablon olarak kullanın.
+Bu makalede, bir nesne algılama modeli oluşturmak için Git ile Özel Vizyon SDK kullanmaya başlamak yardımcı olmak için bilgi ve örnek kod sağlar. Oluşturulduktan sonra, etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayınlanmış tahmin bitiş noktası URL'sini alabilir ve bir resmi programlı olarak sınamak için bitiş noktasını kullanabilirsiniz. Bu örneği kendi Go uygulamanızı oluşturmak için şablon olarak kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Go 1.8 +](https://golang.org/doc/install)
+- [1.8+ git](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
 
-Go için Özel Görüntü İşleme Service SDK 'yı yüklemek için PowerShell 'de aşağıdaki komutu çalıştırın:
+Go için Custom Vision hizmeti SDK'yı yüklemek için PowerShell'de aşağıdaki komutu çalıştırın:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-veya `dep`kullanıyorsanız, deponuzda çalıştırın:
+veya repo `dep`çalışmanızda kullanırsanız:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -45,13 +45,13 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>Kod ekleme
 
-Tercih ettiğiniz proje dizinine *örnek. go* adlı yeni bir dosya oluşturun.
+Tercih ettiğiniz proje dizininde *örnek.go* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
 Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Ayrıca, Özel Görüntü İşleme Web sitesinin ayarlar sayfasından uç nokta URL 'nizi alın.
 
-Projenizi oluştururken diğer seçenekleri belirtmek için bkz. [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) yöntemi ( [bir algılayıcı derleme](get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).
+Projenizi oluştururken diğer seçenekleri belirtmek için [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) yöntemine bakın [(dedektör](get-started-build-detector.md) web portalı oluştur kılavuzunda açıklanmıştır).
 
 ```go
 import(
@@ -99,7 +99,7 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
 
-Projenize sınıflandırma etiketleri oluşturmak için aşağıdaki kodu örnek sonuna ekleyin *. git*:
+Projenize sınıflandırma etiketleri oluşturmak *için, sample.go'nun*sonuna aşağıdaki kodu ekleyin:
 
 ```Go
 # Make two tags in the new project
@@ -109,10 +109,10 @@ scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of sciss
 
 ### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Nesne algılama projelerinde görüntüleri etiketlediğinizde etiketli her nesnenin bölgesini normalleştirilmiş koordinatları kullanarak belirtmeniz gerekir.
+Nesne algılama projelerinde resimleri etiketlediğinizde, her etiketlenmiş nesnenin bölgesini normalleştirilmiş koordinatları kullanarak belirtmeniz gerekir.
 
 > [!NOTE]
-> Bölgelerin koordinatlarını işaretlemek için bir tıklama ve sürükleme yardımcı programına sahip değilseniz, [Customvision.ai](https://www.customvision.ai/)adresindeki Web Kullanıcı arabirimini kullanabilirsiniz. Bu örnekte, koordinatlar zaten sağlanmış.
+> Bölgelerin koordinatlarını işaretlemek için tıkla ve sürükley yardımcı programınız yoksa, web Web Arama Sayfasını [Customvision.ai'da](https://www.customvision.ai/)kullanabilirsiniz. Bu örnekte, koordinatlar zaten sağlanmıştır.
 
 Projeye görüntüler, etiket ve bölgeler eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu öğreticide bölgelerin satır içi sabit kodlanmış olduğunu unutmayın. Bölgeler, sınırlayıcı kutuyu normalleştirilmiş koordinatlarıyla belirtir ve koordinatlar şu sırayla verilir: sol, üst, genişlik, yükseklik.
 
@@ -163,10 +163,10 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Ardından, her bir örnek görüntüsünü bölge koordinatları ile karşıya yüklemek için bu ilişkilerin haritasını kullanın (tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz). Aşağıdaki kodu ekleyin.
+Ardından, her örnek resmi bölge koordinatlarıyla yüklemek için bu ilişkilendirme ler haritasını kullanın (tek bir toplu iş halinde 64 görüntüye kadar yükleyebilirsiniz). Aşağıdaki kodu ekleyin.
 
 > [!NOTE]
-> Bilişsel hizmetler git SDK örnekleri projesini daha önce indirdiğiniz yere göre görüntülerin yolunu değiştirmeniz gerekir.
+> Bilişsel Hizmetler Go SDK Örnekleri projesini daha önce indirdiğiniz yere bağlı olarak resimlerin yolunu değiştirmeniz gerekir.
 
 ```Go
 // Go through the data table above and create the images
@@ -226,9 +226,9 @@ if (!*scissor_batch.IsBatchSuccessful) {
 }     
 ```
 
-### <a name="train-the-project-and-publish"></a>Projeyi eğitme ve yayımlama
+### <a name="train-the-project-and-publish"></a>Projeyi eğitin ve yayınlayın
 
-Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayınlanana kadar tahmin uç noktasında kullanılamaz.
+Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve sonra bu yinelemeyi tahmin bitiş noktasına yayımlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayınlanana kadar tahmin uç noktasında kullanılamaz.
 
 ```go
 iteration, _ := trainer.TrainProject(ctx, *project.ID)
@@ -245,7 +245,7 @@ for {
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Yayınlanan yinelemeyi tahmin bitiş noktasında alın ve kullanın
 
 Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın sonuna aşağıdaki kodu ekleyin:
 
@@ -273,7 +273,7 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-*Örnek. go*çalıştırın.
+*Örnek çalıştırın.go*.
 
 ```shell
 go run sample.go

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma C# , (.net)-konuşma hizmeti'
+title: 'Quickstart: Bir mikrofon, C# (.NET) konuşma tanıma - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,76 +10,76 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: c969b5e5daa4c4cfd84695fef70f0a2a5c50ce02
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924918"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
-## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
+## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
 
-İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
+İlk adım, visual studio'da projenizin açık olduğundan emin olmaktır.
 
-1. Visual Studio 2019 ' i başlatın.
-2. Projenizi yükleyin ve `Program.cs`açın.
+1. Görsel Stüdyo 2019'u başlatın.
+2. Projenizi yükleyin `Program.cs`ve açın.
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
 
-Projemiz için bir çatı olarak çalışacak bir kod ekleyelim. `RecognizeSpeechAsync()`adlı zaman uyumsuz bir yöntem oluşturduğunuzdan emin olun.
+Projemiz için iskelet görevi gören bazı kodlar ekleyelim. 'li bir `RecognizeSpeechAsync()`async yöntemi oluşturduğunuza dikkat edin.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=5-15,43-52)]
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Bir `SpeechRecognizer` nesnesi başlatabilmeniz için önce abonelik anahtarınızı ve abonelik bölgenizi kullanan bir yapılandırma oluşturmanız gerekir (bölgeden **bölge tanımlayıcısı** ' nı [seçin.](https://aka.ms/speech/sdkregion) `RecognizeSpeechAsync()` yöntemine bu kodu ekleyin.
+Bir `SpeechRecognizer` nesneyi başlatmadan önce, abonelik anahtarınızı ve abonelik bölgenizi kullanan bir yapılandırma oluşturmanız gerekir [(bölgeden](https://aka.ms/speech/sdkregion) **Bölge tanımlayıcısını** seçin. Yönteme `RecognizeSpeechAsync()` bu kodu ekleyin.
 
 > [!NOTE]
-> Bu örnek, `SpeechConfig`oluşturmak için `FromSubscription()` yöntemini kullanır. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Bu örnek, `FromSubscription()` `SpeechConfig`'yi oluşturmak için yöntemi kullanır. Kullanılabilir yöntemlerin tam listesi için [SpeechConfig Class'a](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)bakın.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=16)]
-> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
+> Konuşma SDK dil için en-us kullanarak tanıma varsayılan olacaktır, kaynak dil seçimi hakkında bilgi [için metin konuşma için kaynak dil belirtin](../../../../how-to-specify-source-language.md) bakın.
 
-## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer başlatma
+## <a name="initialize-a-speechrecognizer"></a>Bir SpeechRecognizer'ı Başlatma
 
-Şimdi bir `SpeechRecognizer`oluşturalım. Yönetilmeyen kaynakların doğru şekilde yayınlanmasıyla emin olmak için bir using ifadesinin içinde bu nesne oluşturulur. Bu kodu, konuşma yapılandırmanızın hemen altına `RecognizeSpeechAsync()` yöntemine ekleyin.
+Şimdi, bir. `SpeechRecognizer` Bu nesne, yönetilmeyen kaynakların doğru şekilde serbest bırakılmasını sağlamak için kullanılan bir deyimin içinde oluşturulur. Bu kodu yönteme, `RecognizeSpeechAsync()` Konuşma yapılandırmanızın hemen altına ekleyin.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=17-19,42)]
 
 ## <a name="recognize-a-phrase"></a>Bir tümceciği tanıma
 
-`SpeechRecognizer` nesnesinden `RecognizeOnceAsync()` yöntemini çağıracağız. Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.
+Nesneden, `SpeechRecognizer` `RecognizeOnceAsync()` yöntemi aramalısınız. Bu yöntem, Konuşma hizmetinin tanınmak için tek bir ifade gönderdiğinizi ve ifade tanımlandıktan sonra konuşmayı tanımayı durdurmak için tanımladığını bilmesini sağlar.
 
-Using ifadesinin içinde, bu kodu ekleyin.
+Using deyiminin içine bu kodu ekleyin.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=20)]
 
-## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hatalarını) görüntüleme
+## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hataları) görüntüleme
 
-Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgili bir şey yapmak isteyeceksiniz. Bu uygulamayı basit tutmaya ve sonucu konsola yazdıracağız.
+Tanıma sonucu Konuşma hizmeti tarafından döndürüldüğünde, bununla ilgili bir şey yapmak istersiniz. Basit tutacağız ve sonucu konsola yazdıracağız.
 
-Using ifadesinin içinde, `RecognizeOnceAsync()`aşağıdaki kodu ekleyin.
+Aşağıdaki kullanarak deyimi `RecognizeOnceAsync()`içinde, bu kodu ekleyin.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
 
-## <a name="check-your-code"></a>Kodunuzu denetleyin
+## <a name="check-your-code"></a>Kodunuzu kontrol edin
 
-Bu noktada, kodunuz şöyle görünmelidir.
+Bu noktada, kodunuz bu gibi görünmelidir.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
+Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma tanımamızı test etmeye hazırsınız.
 
-1. **Kodu derleyin** -Visual Studio menü çubuğundan **derleme** > **Build Solution**' ı seçin.
-2. **Uygulamanızı başlatın** -menü çubuğundan **Hata Ayıkla** > hata **ayıklamayı Başlat** ' ı seçin veya **F5**tuşuna basın.
-3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
+1. **Kodu derle** - Visual Studio'nun menü çubuğundan **Build** > **Build Solution'ı**seçin.
+2. **Uygulamanızı başlatın** - Menü çubuğundan **Hata** > **Ayıklama'yı** seçin veya **F5 tuşuna**basın.
+3. **Tanımaya başlayın** - İngilizce bir ifade konuşmanızı ister. Konuşmanız Konuşma hizmetine gönderilir, metin olarak yazılır ve konsolda işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

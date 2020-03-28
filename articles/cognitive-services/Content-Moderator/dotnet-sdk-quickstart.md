@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: .NET için Content Moderator istemci kitaplığı'
+title: 'Quickstart: .NET için İçerik Moderatör istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıç ile .NET için Content Moderator istemci kitaplığı ile çalışmaya başlayın.
+description: Bu hızlı başlangıçla .NET için İçerik Moderatör istemci kitaplığı ile başlayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,57 +11,57 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: dccd2ebb6ac2c11e19e986d39eabda5f0ab6a8fc
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774300"
 ---
-# <a name="quickstart-content-moderator-client-library-for-net"></a>Hızlı başlangıç: .NET için Content Moderator istemci kitaplığı
+# <a name="quickstart-content-moderator-client-library-for-net"></a>Quickstart: .NET için İçerik Moderatör istemci kitaplığı
 
-.NET için Content Moderator istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Content Moderator, zararlı olabilecek, riskli veya başka türlü istenmeyen malzemeler için metin, resim ve video içeriğini denetleyen bir bilişsel hizmettir. Hizmet, böyle bir öğeyle karşılaştığında içeriğe uygun etiketler (bayraklar) ekler. Uygulamanız daha sonra bayraklı içeriği idare edebilir veya kullanıcılara yönelik hedeflenen ortamı koruyabilir.
+.NET için İçerik Moderatör istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin. İçerik Moderatör potansiyel saldırgan, riskli veya başka bir istenmeyen malzeme için metin, görüntü ve video içeriğini kontrol eden bir bilişsel hizmettir. Hizmet, böyle bir öğeyle karşılaştığında içeriğe uygun etiketler (bayraklar) ekler. Uygulamanız daha sonra, yönetmeliklere uymak veya kullanıcılar için amaçlanan ortamı korumak için işaretlenmiş içeriği işleyebilir.
 
-.NET için Content Moderator istemci kitaplığı 'nı kullanın:
+.NET için İçerik Moderatör istemci kitaplığını kullanın:
 
 * [Orta metin](#moderate-text)
 * [Orta görüntüler](#moderate-images)
-* [İnceleme oluştur](#create-a-review)
+* [İnceleme oluşturma](#create-a-review)
 
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [örnekleri](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
+[Referans belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [Örnekleri](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
+* Azure aboneliği - [Ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* [.NET Core'un](https://dotnet.microsoft.com/download/dotnet-core)geçerli sürümü.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-### <a name="create-a-content-moderator-azure-resource"></a>Content Moderator Azure kaynağı oluşturma
+### <a name="create-a-content-moderator-azure-resource"></a>İçerik ModeratörÜ Azure kaynağı oluşturma
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Content moderator için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
+Azure Bilişsel Hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure portalını](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI'yi](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak İçerik Moderatörü için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
-* [Azure Portal](https://portal.azure.com/) kaynağı görüntüleyin
+* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra Azure [web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)kullanıma sunulacaktır.  
+* Azure [portalında](https://portal.azure.com/) kaynağınızı görüntüleme
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, sırasıyla `CONTENT_MODERATOR_SUBSCRIPTION_KEY` ve `CONTENT_MODERATOR_ENDPOINT`adlı anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağınızdan bir anahtar aldıktan sonra, sırasıyla ve sırasıyla `CONTENT_MODERATOR_ENDPOINT`anahtar `CONTENT_MODERATOR_SUBSCRIPTION_KEY` ve bitiş noktası URL'si için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
-### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
+### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Tercih ettiğiniz metin düzenleyicisinde veya IDE 'de yeni bir .NET Core uygulaması oluşturun. 
+Tercih ettiğiniz metin düzenleyicisinde veya IDE'de yeni bir .NET Core uygulaması oluşturun. 
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `content-moderator-quickstart`adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: *program.cs*.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adı `content-moderator-quickstart`olan yeni bir konsol uygulaması oluşturmak için komutu kullanın. Bu komut, tek bir kaynak dosyası ile basit bir "Hello World" C# projesi oluşturur: *Program.cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart
 ```
 
-Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. Uygulamayı ile oluşturabilirsiniz:
+Diziniyeniyeniyeni oluşturulan uygulama klasörüne değiştirin. Uygulamayı aşağıdakilerle oluşturabilirsiniz:
 
 ```console
 dotnet build
 ```
 
-Derleme çıktısı hiçbir uyarı veya hata içermemelidir. 
+Yapı çıktısı hiçbir uyarı veya hata içermemelidir. 
 
 ```console
 ...
@@ -71,178 +71,178 @@ Build succeeded.
 ...
 ```
 
-Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki `using` deyimlerini ekleyin:
+Proje dizininden, tercih ettiğiniz düzenleyici veya IDE'deki *Program.cs* dosyasını açın. Aşağıdaki `using` deyimlerini ekleyin:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_using)]
 
-**Program** sınıfında, kaynak uç noktası konumu ve anahtarı ortam değişkenleri olarak bir değişken oluşturun.
+**Program** sınıfında, kaynağınızın bitiş noktası konumu için değişkenler ve ortam değişkenleri olarak anahtar oluşturun.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_creds)]
 
 > [!NOTE]
-> Uygulamayı başlattıktan sonra ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+> Uygulamayı başlattıktan sonra ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için düzenleyiciyi, IDE'yi veya bu uygulamayı çalıştıran kabuğu kapatmanız ve yeniden açmanız gerekir.
 
-### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükleme
 
-Uygulama dizini içinde, aşağıdaki komutla .NET için Content Moderator istemci Kitaplığı ' nı yüklemelisiniz:
+Uygulama dizininde ,.NET için Content Moderator istemci kitaplığını aşağıdaki komutla yükleyin:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 2.0.0
 ```
 
-Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGet paketi olarak kullanılabilir.
+Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir NuGet paketi olarak kullanılabilir.
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar, Content Moderator .NET SDK 'nın bazı önemli özelliklerini işler.
+Aşağıdaki sınıflar İçerik Moderatör .NET SDK'nın bazı temel özelliklerini işler.
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
-|[Imagedenetlemesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
-|[Textdenetlemesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metin çözümleme işlevlerini sağlar.|
-|[İnceleyen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|Bu sınıf, iş oluşturma, özel iş akışları ve insan incelemeleri için yöntemler de dahil olmak üzere, gözden geçirme API 'lerinin işlevlerini sağlar.|
+|[İçerikModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Bu sınıf tüm İçerik Moderatör işlevselliği için gereklidir. Abonelik bilgilerinizle anında kullanırsınız ve bunu diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
+|[ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Bu sınıf, yetişkinlere uygun içerik, kişisel bilgiler veya insan yüzleri için görüntüleri çözümleme işlevini sağlar.|
+|[TextModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|Bu sınıf, dil, küfür, hatalar ve kişisel bilgiler için metni çözümleme işlevini sağlar.|
+|[İncelemeler](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|Bu sınıf, iş oluşturma yöntemleri, özel iş akışları ve insan incelemeleri de dahil olmak üzere Gözden Geçirme API'lerinin işlevselliğini sağlar.|
 
 ## <a name="code-examples"></a>Kod örnekleri
 
 
-Bu kod parçacıkları, .NET için Content Moderator istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
+Bu kod parçacıkları, .NET için İçerik Moderatörü istemci kitaplığıyla aşağıdaki görevleri nasıl yapacağınızı gösterir:
 
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
+* [İstemcinin kimliğini doğrula](#authenticate-the-client)
 * [Orta metin](#moderate-text)
 * [Orta görüntüler](#moderate-images)
-* [İnceleme oluştur](#create-a-review)
+* [İnceleme oluşturma](#create-a-review)
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
-Yeni bir yöntemde, uç nokta ve anahtarınızla istemci nesneleri oluşturun. Her senaryo için farklı bir istemciye ihtiyacınız yoktur, ancak kodunuzu düzenli tutmaya yardımcı olabilir.
+Yeni bir yöntemde, istemci nesnelerini bitiş noktanız ve anahtarınızla anında anons edin. Her senaryo için farklı bir istemciye ihtiyacınız yoktur, ancak kodunuzu düzenli tutmaya yardımcı olabilir.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_client)]
 
 ## <a name="moderate-text"></a>Orta metin
 
-Aşağıdaki kod, bir metin gövdesini çözümlemek ve sonuçları konsola yazdırmak için bir Content Moderator istemcisi kullanır. **Program** sınıfınızın kökünde, giriş ve çıkış dosyalarını tanımlayın:
+Aşağıdaki kod, bir metin gövdesini çözümlemek ve sonuçları konsola yazdırmak için İçerik Moderatöristemcisi kullanır. **Program** sınıfınızın kökünde, giriş ve çıktı dosyalarını tanımlayın:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_text_vars)]
 
-Sonra projenizin kökünde bir *textfile. txt* dosyası ekleyin. Bu dosyaya kendi metninizi ekleyin veya aşağıdaki örnek metni kullanın:
+Daha sonra projenizin köküne bir *TextFile.txt* dosyası ekleyin. Bu dosyaya kendi metninizi ekleyin veya aşağıdaki örnek metni kullanın:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
 Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
-Aşağıdaki yöntem çağrısını `Main` yöntemine ekleyin:
+Yönteminize `Main` aşağıdaki yöntem çağrısını ekleyin:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
-Ardından, **Program** sınıfınıza bir yerde metin denetleme yöntemi tanımlayın:
+Ardından, **Program** sınıfınızda bir yerde metin moderasyon yöntemini tanımlayın:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_textmod)]
 
 ## <a name="moderate-images"></a>Orta görüntüler
 
-Aşağıdaki kod, Yetişkin ve kcy içeriği için uzak görüntüleri çözümlemek üzere bir [ımagemoderasyonu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) nesnesiyle birlikte bir Content moderator istemcisi kullanır.
+Aşağıdaki kod, yetişkinlere uygun ve müstehcen içerik için uzak görüntüleri çözümlemek için bir [ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) nesnesi ile birlikte bir İçerik Moderatör istemcisi kullanır.
 
 > [!NOTE]
-> Yerel görüntünün içeriğini de çözümleyebilirsiniz. Yerel görüntülerle çalışan Yöntemler ve işlemler için [başvuru belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) bakın.
+> Yerel bir resmin içeriğini de analiz edebilirsiniz. Yerel görüntülerle çalışan yöntemler ve işlemler için [başvuru belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) bakın.
 
-### <a name="get-sample-images"></a>Örnek görüntüleri al
+### <a name="get-sample-images"></a>Örnek görüntüler alın
 
-Giriş ve çıkış dosyalarınızı tanımlayın:
+Giriş ve çıktı dosyalarınızı tanımlayın:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_image_vars)]
 
-Ardından, projenizin kökündeki *ımagefiles. txt*giriş dosyasını oluşturun. Bu dosyada, her satırda bir URL&mdash;analiz edilecek görüntülerin URL 'Lerini eklersiniz. Aşağıdaki örnek görüntüleri kullanabilirsiniz:
+Ardından projenizin kökünde *ImageFiles.txt*giriş dosyasını oluşturun. Bu dosyada, her satırda bir URL&mdash;çözümlemek için görüntülerin URL'lerini eklersiniz. Aşağıdaki örnek görüntüleri kullanabilirsiniz:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-Giriş ve çıkış dosyalarınızı `Main` yönteminde aşağıdaki yöntem çağrısına geçirin. Bu yöntemi sonraki bir adımda tanımlayacaksınız.
+Giriş ve çıktı dosyalarınızı yöntemde aşağıdaki `Main` yöntem çağrısına geçirin. Bu yöntemi daha sonraki bir adımda tanımlarsınız.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
-### <a name="define-helper-class"></a>Yardımcı sınıfı tanımla
+### <a name="define-helper-class"></a>Yardımcı sınıfını tanıt
 
-**Program** sınıfına aşağıdaki sınıf tanımını ekleyin. Bu iç sınıf, görüntü denetleme sonuçlarını işleyecek.
+**Program** sınıfına aşağıdaki sınıf tanımını ekleyin. Bu iç sınıf görüntü ılımlılık sonuçlarını işleyecek.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_dataclass)]
 
-### <a name="define-the-image-moderation-method"></a>Görüntü denetleme yöntemini tanımlama
+### <a name="define-the-image-moderation-method"></a>Görüntü ılımlılık yöntemini tanımlama
 
-Aşağıdaki yöntem bir metin dosyasındaki görüntü URL 'Lerinde yinelenir, bir **EvaluationData** örneği oluşturur ve yetişkinlere/rampaiçeriği, metin ve insan yüzeyleri için görüntüyü analiz eder. Ardından, son **EvaluationData** örneğini bir listeye ekler ve döndürülen verilerin tüm listesini konsola yazar.
+Aşağıdaki yöntem, metin dosyasındaki görüntü URL'lerini yineler, bir **Değerlendirme Verileri** örneği oluşturur ve görüntüyü yetişkinlere uygun/müstehcen içerik, metin ve insan yüzleri için analiz eder. Daha sonra son **EvaluationData** örneğini bir listeye ekler ve döndürülen verilerin tam listesini konsola yazar.
 
-#### <a name="iterate-through-image-urls"></a>Görüntü URL 'Leri üzerinden yineleme
+#### <a name="iterate-through-image-urls"></a>Görüntü URL'leri aracılığıyla yineleyin
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_imagemod_iterate)]
 
 #### <a name="analyze-content"></a>İçeriği analiz etme
 
-Ekranları Content Moderator görüntü öznitelikleri hakkında daha fazla bilgi için bkz. [görüntü denetleme kavramları](./image-moderation-api.md) Kılavuzu.
+İçerik Moderatör'ün ekrana verdiği görüntü öznitelikleri hakkında daha fazla bilgi için [Görüntü Denetleme Kavramları](./image-moderation-api.md) kılavuzuna bakın.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_imagemod_analyze)]
 
-#### <a name="write-moderation-results-to-file"></a>Dosyaya denetleme sonuçları yaz
+#### <a name="write-moderation-results-to-file"></a>Moderasyon sonuçlarını dosyaya yazma
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_imagemod_save)]
 
-## <a name="create-a-review"></a>İnceleme oluştur
+## <a name="create-a-review"></a>İnceleme oluşturma
 
-Content Moderator .NET SDK 'Yı kullanarak, insan moderatör tarafından gözden geçirebilmesi için içeriği [Gözden geçirme aracında](https://contentmoderator.cognitive.microsoft.com) akışını sağlayabilirsiniz. Inceleme aracı hakkında daha fazla bilgi edinmek için bkz. [İnceleme aracı kavramsal Kılavuzu](./review-tool-user-guide/human-in-the-loop.md).
+İçerik Moderatör .NET SDK'yı kullanarak içeriği [Gözden Geçirme aracına](https://contentmoderator.cognitive.microsoft.com) yedirebilir, böylece insan moderatörler içeriği inceleyebilir. İnceleme aracı hakkında daha fazla bilgi edinmek için [Gözden Geçirme aracı kavramsal kılavuzuna](./review-tool-user-guide/human-in-the-loop.md)bakın.
 
-Bu bölümdeki Yöntem, gözden geçirme oluşturmak, KIMLIĞINI almak ve gözden geçirme aracının Web portalı aracılığıyla insan girişini aldıktan sonra ayrıntılarını denetlemek için [İncelemeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) sınıfını kullanır. Tüm bu bilgileri bir çıktı metin dosyasında günlüğe kaydeder. `Main` yönteminden yöntemi çağırın:
+Bu bölümdeki yöntem, gözden geçirme oluşturmak, kimliğini almak ve Gözden Geçirme aracının web portalı üzerinden insan girdisi aldıktan sonra ayrıntılarını denetlemek için [İncelemeler](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) sınıfını kullanır. Tüm bu bilgileri bir çıktı metin dosyasında kaydeder. Yönteminizi yönteminizden `Main` arayın:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_review_call)]
 
-### <a name="get-sample-images"></a>Örnek görüntüleri al
+### <a name="get-sample-images"></a>Örnek görüntüler alın
 
-**Program** sınıfınızın kökünde aşağıdaki diziyi bildirin. Bu değişken, gözden geçirmeyi oluşturmak için kullanılacak örnek bir görüntüye başvurur.
+**Program** sınıfının kökünde aşağıdaki diziyi bildirin. Bu değişken, incelemeyi oluşturmak için kullanılacak örnek bir görüntüye başvurur.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_review_urls)]
 
-### <a name="get-review-credentials"></a>İnceleme kimlik bilgilerini al
+### <a name="get-review-credentials"></a>İnceleme kimlik bilgilerini alın
 
-[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com) oturum açın ve takımınızın adını alın. Ardından, **Program** sınıfındaki uygun değişkene atayın. İsteğe bağlı olarak, gözden geçirme etkinliği üzerinde güncelleştirmeleri almak için bir geri çağırma uç noktası ayarlayabilirsiniz.
+Gözden Geçirme [aracında](https://contentmoderator.cognitive.microsoft.com) oturum açın ve takım adınızı alın. Ardından **program** sınıfındaki uygun değişkene atayın. İsteğe bağlı olarak, incelemenin etkinliğinde güncelleştirmeleri almak için bir geri arama bitiş noktası ayarlayabilirsiniz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_review_vars)]
 
-### <a name="define-helper-class"></a>Yardımcı sınıfı tanımla
+### <a name="define-helper-class"></a>Yardımcı sınıfını tanıt
 
-Aşağıdaki sınıf tanımını **Program** sınıfınız içine ekleyin. Bu sınıf, gözden geçirme aracına gönderilen tek bir gözden geçirme örneğini temsil etmek için kullanılacaktır.
+**Program** sınıfınızda aşağıdaki sınıf tanımını ekleyin. Bu sınıf, Gözden Geçirme aracına gönderilen tek bir gözden geçirme örneğini temsil etmek için kullanılır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_review_item)]
 
-### <a name="define-helper-method"></a>Helper metodunu tanımla
+### <a name="define-helper-method"></a>Yardımcı yöntemini tanımlama
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. Bu yöntem, gözden geçirme sorgularının sonuçlarını çıktı metin dosyasına yazar.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_writeline)]
 
-### <a name="define-the-review-creation-method"></a>İnceleme oluşturma yöntemini tanımlayın
+### <a name="define-the-review-creation-method"></a>Gözden geçirme oluşturma yöntemini tanımlama
 
-Şimdi, gözden geçirme oluşturma ve sorgulama işleyecek yöntemi tanımlamaya hazır olursunuz. Yeni bir yöntem, **Createreviews**ekleyin ve aşağıdaki yerel değişkenleri tanımlayın.
+Artık gözden geçirme oluşturma ve sorgulama yı işleyecek yöntemi tanımlamaya hazırsınız. Yeni bir yöntem ekleyin, **CreateReviews**ve aşağıdaki yerel değişkenleri tanımlayın.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 
-#### <a name="post-reviews-to-the-review-tool"></a>Inceleme aracında incelemeler gönderi
+#### <a name="post-reviews-to-the-review-tool"></a>İnceleme aracına yorum gönderme
 
-Ardından, belirtilen örnek görüntüler arasında yinelemek için aşağıdaki kodu ekleyin, meta verileri ekleyin ve tek bir toplu işte Inceleme aracına gönderin. 
+Ardından, verilen örnek görüntüler aracılığıyla yinelemek için aşağıdaki kodu ekleyin, meta veriler ekleyin ve bunları tek bir toplu iş halinde Gözden Geçirme aracına gönderin. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_createreview_create)]
 
-API çağrısından döndürülen nesne, karşıya yüklenen her resim için benzersiz KIMLIK değerleri içerir. Aşağıdaki kod, bu kimlikleri ayrıştırır ve sonra toplu işteki her bir görüntünün durumu için Content Moderator sorgulamak üzere kullanır.
+API çağrısından döndürülen nesne, yüklenen her resim için benzersiz kimlik değerleri içerir. Aşağıdaki kod bu teşekklü leri ayrışdırır ve daha sonra toplu işteki her görüntünün durumu için İçerik Moderatör'ü sorgulamak için bunları kullanır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_createreview_ids)]
 
-### <a name="get-review-details"></a>İnceleme ayrıntılarını al
+### <a name="get-review-details"></a>İnceleme ayrıntılarını alın
 
-Aşağıdaki kod programın kullanıcı girişini beklemesine neden olur. Çalışma zamanında bu adıma gittiğinizde, [Gözden geçirme aracına](https://contentmoderator.cognitive.microsoft.com) kendiniz gidebilir, örnek görüntünün karşıya yüklendiğini ve bununla etkileşime geçebilirsiniz. Bir gözden geçirime nasıl etkileşim kuracağınızı öğrenmek için bkz. [nasıl yapılır Kılavuzu](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). İşiniz bittiğinde programa devam etmek ve İnceleme işleminin sonuçlarını almak için herhangi bir tuşa basabilirsiniz.
+Aşağıdaki kod, programın kullanıcı girişi için beklemesine neden olur. Çalışma zamanında bu adıma geldiğinizde, Gözden [Geçirme aracına](https://contentmoderator.cognitive.microsoft.com) kendiniz gidebilir, örnek resmin yüklendiğini doğrulayabilir ve onunla etkileşimkurabilirsiniz. Bir incelemeyle nasıl etkileşimde bulundurunuz hakkında bilgi [için, İncelemeler nasıl yapılacağını kılavuzuna](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images)bakın. Bitirdikten sonra, programa devam etmek ve inceleme sürecinin sonuçlarını almak için herhangi bir tuşa basabilirsiniz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_createreview_results)]
 
-Bu senaryoda bir geri çağırma uç noktası kullandıysanız, bu biçimde bir olay almalıdır:
+Bu senaryoda bir geri arama bitiş noktası kullandıysanız, bu biçimde bir olay almalısınız:
 
 ```console
 {'callback_endpoint': 'https://requestb.in/qmsakwqm',
@@ -260,7 +260,7 @@ Bu senaryoda bir geri çağırma uç noktası kullandıysanız, bu biçimde bir 
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı `dotnet run` komutuyla uygulama dizininizden çalıştırın.
+Uygulama dizininizdeki uygulamayı komutla `dotnet run` çalıştırın.
 
 ```dotnet
 dotnet run 
@@ -268,17 +268,17 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
+Bilişsel Hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynak veya kaynak grubunu silebilirsiniz. Kaynak grubunu silmek, bununla ilişkili diğer kaynakları da siler.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Content Moderator .NET kitaplığını kullanarak denetleme görevlerini nasıl kullanacağınızı öğrendiniz. Daha sonra, bir kavramsal kılavuz okuyarak görüntülerin veya diğer ortamların denetimi hakkında daha fazla bilgi edinin.
+Bu hızlı başlangıçta, Moderasyon görevleri yapmak için Content Moderator .NET kitaplığını nasıl kullanacağınızı öğrendiniz. Ardından, kavramsal bir kılavuz okuyarak görüntülerin veya diğer medyanın moderasyonu hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Görüntü denetleme kavramları](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
+> [Görüntü ılımlılığı kavramları](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Azure Content Moderator nedir?](./overview.md)
-* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ContentModerator/Program.cs)' da bulunabilir.
+* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ContentModerator/Program.cs)bulunabilir.

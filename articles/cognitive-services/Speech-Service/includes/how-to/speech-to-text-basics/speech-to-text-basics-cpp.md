@@ -5,73 +5,73 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: dapine
 ms.openlocfilehash: 8392e03f272c6db2bb384c8031cb975bca53d530
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79372805"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../get-started.md).
+Bu makalede, bir Azure hesabınız ve Konuşma hizmeti aboneliğiniz olduğu varsayar. Hesabınız ve aboneliğiniz yoksa, [Konuşma hizmetini ücretsiz olarak deneyin.](../../../get-started.md)
 
-## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
+## <a name="install-the-speech-sdk"></a>Konuşma SDK'yı yükleyin
 
-Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gerekir. Platformunuza bağlı olarak, aşağıdaki yönergeleri kullanın:
+Herhangi bir şey yapmadan önce Konuşma SDK'sını yüklemeniz gerekir. Platformunuza bağlı olarak aşağıdaki yönergeleri kullanın:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=linux&pivots=programming-language-cpp" target="_blank">'Un<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=macos&pivots=programming-language-cpp" target="_blank">macOS<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=windows&pivots=programming-language-cpp" target="_blank">Pencerelerin<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=linux&pivots=programming-language-cpp" target="_blank">Linux<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=macos&pivots=programming-language-cpp" target="_blank">Macos<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=windows&pivots=programming-language-cpp" target="_blank">Windows<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)oluşturmanız gerekir. Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
+Konuşma SDK'sını kullanarak Konuşma hizmetini aramak için [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)bir . Bu sınıf, anahtarınız ve ilişkili bölgeniz, bitiş noktanız, ana bilgisayar veya yetkilendirme belirteciniz gibi aboneliğiniz hakkında bilgiler içerir.
 
 > [!NOTE]
-> Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
+> Konuşma tanıma, konuşma sentezi, çeviri veya niyet tanıma gerçekleştirin, her zaman bir yapılandırma oluşturursunuz.
 
-[`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)başlatabilmeniz için birkaç yol vardır:
+Bir baş harfe başlatmanın birkaç [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)yolu vardır:
 
-* Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
-* Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
-* Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
-* Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
+* Abonelikle: bir anahtar ve ilişkili bölgede geçirin.
+* Bir bitiş noktası ile: Konuşma hizmeti bitiş noktası geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
+* Bir ana bilgisayar ile: bir ana bilgisayar adresi geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
+* Yetkilendirme belirteci yle: yetkilendirme jetonundan ve ilişkili bölgeye geçin.
 
-Bir anahtar ve bölge kullanarak nasıl [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) oluşturulduğuna göz atalım.
+Bir anahtar ve bölge kullanılarak [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) nasıl oluşturulduğuna bir göz atalım.
 
 ```cpp
 auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-## <a name="initialize-a-recognizer"></a>Tanıyıcı başlatma
+## <a name="initialize-a-recognizer"></a>Tanıyıcıyı başlatma
 
-Bir [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)oluşturduktan sonra, bir sonraki adım bir [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)başlatmaktır. Bir [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)başlattığınızda, `speech_config`geçirmeniz gerekir. Bu, konuşma hizmetinin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
+Bir , bir [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)sonraki adım oluşturduktan sonra [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)bir . Bir [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)harfini başharflediğinizde, bunu geçirmeniz `speech_config`gerekir. Bu, konuşma hizmetinin isteğinizi doğrulamak için gerektirdiği kimlik bilgilerini sağlar.
 
-Cihazınızın varsayılan mikrofonunu kullanarak konuşmayı tanıyor olmanız durumunda [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) şöyle görünmelidir:
+Cihazınızın varsayılan mikrofonunu kullanarak konuşmayı fark ediyorsanız, aşağıdaki [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) gibi görünmelidir:
 
 ```cpp
 auto recognizer = SpeechRecognizer::FromConfig(config);
 ```
 
-Ses giriş cihazını belirtmek isterseniz, [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)başlatırken bir [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) oluşturmanız ve `audioConfig` parametresini sağlamanız gerekir.
+Ses giriş aygıtını belirtmek istiyorsanız, ''ınızı ilke [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) olarak alırken `audioConfig` bir parametre [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)oluşturmanız ve parametreyi sağlamanız gerekir.
 
 > [!TIP]
-> [Ses giriş cihazınız için CIHAZ kimliğini nasıl alabileceğinizi öğrenin](../../../how-to-select-audio-input-devices.md).
+> [Ses giriş aygıtınız için aygıt kimliğini nasıl alacağınızı öğrenin.](../../../how-to-select-audio-input-devices.md)
 
-İlk olarak, `#include` tanımlarınızın ardından aşağıdaki `using namespace` ifadesini ekleyin.
+İlk olarak, `using namespace` tanımlarınızdan `#include` sonra aşağıdaki ifadeyi ekleyin.
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech::Audio;
 ```
 
-Daha sonra, `AudioConfig` nesnesine aşağıdaki gibi başvurabileceksiniz:
+Ardından, `AudioConfig` nesneye aşağıdaki gibi başvuruda bulunabilirsiniz:
 
 ```cpp
 auto audioConfig = AudioConfig::FromDefaultMicrophoneInput();
 auto recognizer = SpeechRecognizer::FromConfig(config, audioConfig);
 ```
 
-Mikrofon kullanmak yerine bir ses dosyası sağlamak istiyorsanız, yine de bir `audioConfig`sağlamanız gerekir. Ancak, `FromDefaultMicrophoneInput`çağırmak yerine bir [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig)oluşturduğunuzda, `FromWavFileOutput` çağırır ve `filename` parametresini geçireceğiz.
+Mikrofon kullanmak yerine ses dosyası sağlamak istiyorsanız, yine de `audioConfig`bir . Ancak, `FromDefaultMicrophoneInput`aramak yerine [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig)bir , parametre oluşturduğunuzda, `filename` arar `FromWavFileOutput` ve parametregeçersiniz.
 
 ```cpp
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
@@ -80,27 +80,27 @@ auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
 
 ## <a name="recognize-speech"></a>Konuşma tanıma
 
-İçin C++ konuşma SDK 'Sı için [tanıyıcı sınıfı](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) , konuşma tanıma için kullanabileceğiniz birkaç yöntem sunar.
+C++ için Konuşma SDK'sının [Recognizer sınıfı,](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) konuşma tanıma için kullanabileceğiniz birkaç yöntemi ortaya çıkarır.
 
-* Tek atışı tanıma (Async)-engelleyici olmayan (zaman uyumsuz) modda tanıma gerçekleştirir. Bu, tek bir utterance algılar. Tek bir utterüance 'in sonunda, sonda sessizlik dinlemesi veya en fazla 15 saniyelik ses işlenene kadar belirlenir.
-* Sürekli tanıma (Async)-zaman uyumsuz olarak sürekli tanıma işlemini başlatır. Kullanıcı, tanıma sonuçlarını almak için olayı işlemek üzere bağlanmalıdır. Zaman uyumsuz sürekli tanımayı durdurmak için [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync)çağırın.
+* Tek çekim tanıma (async) - Engellemesiz (asynchronous) modda tanıma gerçekleştirir. Bu tek bir söyleyiş tanıyacaktır. Tek bir söyleyninin sonu, sonunda sessizlik dinleyerek veya en fazla 15 saniyelik ses işlenene kadar belirlenir.
+* Sürekli tanıma (async) - Asynchronously sürekli tanıma işlemi başlatır. Kullanıcı tanıma sonuçları almak için olayı işlemek için bağlanmak zorundadır. Eşzamanlı sürekli tanımayı durdurmak için. [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync)
 
 > [!NOTE]
-> [Konuşma tanıma modunu seçme](../../../how-to-choose-recognition-mode.md)hakkında daha fazla bilgi edinin.
+> [Konuşma tanıma modunu](../../../how-to-choose-recognition-mode.md)nasıl seçeceğiniz hakkında daha fazla bilgi edinin.
 
-### <a name="single-shot-recognition"></a>Tek atışı tanıma
+### <a name="single-shot-recognition"></a>Tek çekim tanıma
 
-[`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync)kullanarak zaman uyumsuz tek kararlı tanıma bir örnek aşağıda verilmiştir:
+Burada kullanarak [`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync)eşzamanlı tek çekim tanıma bir örnek:
 
 ```cpp
 auto result = recognizer->RecognizeOnceAsync().get();
 ```
 
-Sonucu işlemek için bazı kodlar yazmanız gerekir. Bu örnek [`result->Reason`](https://docs.microsoft.com/cpp/cognitive-services/speech/recognitionresult#reason)değerlendirir:
+Sonucu işlemek için bazı kod yazmanız gerekir. Bu örnek şu [`result->Reason`](https://docs.microsoft.com/cpp/cognitive-services/speech/recognitionresult#reason)şekilde değerlendirilir:
 
-* Tanınma sonucunu yazdırır: `ResultReason::RecognizedSpeech`
-* Bir tanıma eşleşmesi yoksa, kullanıcıyı bilgilendirin: `ResultReason::NoMatch`
-* Bir hata ile karşılaşırsanız, hata iletisini yazdırın: `ResultReason::Canceled`
+* Tanıma sonucunu yazdırır:`ResultReason::RecognizedSpeech`
+* Tanıma eşleşmesi yoksa, kullanıcıyı bilgilendirin:`ResultReason::NoMatch`
+* Bir hatayla karşılaşılırsa, hata iletisini yazdırın:`ResultReason::Canceled`
 
 ```cpp
 switch (result->Reason)
@@ -130,27 +130,27 @@ switch (result->Reason)
 
 ### <a name="continuous-recognition"></a>Sürekli tanıma
 
-Sürekli tanıma, tek kararlı tanıma göre biraz daha karmaşıktır. Tanınma sonuçlarını almak için `Recognizing`, `Recognized`ve `Canceled` olaylarına abone olmanızı gerektirir. Tanımayı durdurmak için [StopContinuousRecognitionAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync)öğesini çağırmanız gerekir. İşte, bir ses giriş dosyasında sürekli tanımanın nasıl gerçekleştirilebileceğini gösteren bir örnek.
+Sürekli tanıma, tek çekimtanımadan biraz daha fazla ilgilidir. Tanıma sonuçlarını almak için `Recognizing` `Recognized`, `Canceled` ve olaylara abone olmak için gerekli. Tanımayı durdurmak için [StopContinuousRecognitionAsync'i](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync)aramanız gerekir. Aşağıda, ses giriş dosyasında sürekli tanımanın nasıl gerçekleştirildiğine ilişkin bir örnek verilmiştir.
 
-Girişi tanımlayarak ve bir [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)başlatarak başlayalım:
+Girişi tanımlayarak ve bir [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)baş harfe başlayalım:
 
 ```cpp
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
 auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
 ```
 
-Sonra, konuşma tanımanın durumunu yönetmek için bir değişken oluşturalım. Başlamak için, tanımanın başlangıcında bitmediğini güvenli bir şekilde varsaydığımız için bir `promise<void>`bildireceğiz.
+Sonra, konuşma tanıma durumunu yönetmek için bir değişken oluşturalım. Başlangıç olarak, tanımanın `promise<void>`başlangıcından beri güvenli bir şekilde bitmediğini varsayabiliriz.
 
 ```cpp
 promise<void> recognitionEnd;
 ```
 
-[`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)gönderilen olaylara abone edeceğiz.
+Biz gönderilen olaylara abone olacağız [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer).
 
-* [`Recognizing`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizing): ara tanıma sonuçları içeren olaylar için sinyal.
-* [`Recognized`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognized): son tanıma sonuçlarını içeren olaylar için sinyal (başarılı bir tanıma denemesi olduğunu gösterir).
-* [`SessionStopped`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#sessionstopped): bir tanıma oturumunun (işlem) sonunu gösteren olaylar için sinyal.
-* [`Canceled`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#canceled): iptal edilen tanıma sonuçlarını içeren olaylar için sinyal (sonuç veya doğrudan iptal isteği olarak iptal edilen bir tanıma girişimi veya ya da bir aktarım ya da protokol arızası).
+* [`Recognizing`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizing): Ara tanıma sonuçlarını içeren olaylar için sinyal.
+* [`Recognized`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognized): Nihai tanıma sonuçlarını içeren olaylar için sinyal (başarılı bir tanıma denemesi gösteren).
+* [`SessionStopped`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#sessionstopped): Tanıma oturumunun (operasyonun) sona erini gösteren olaylar için sinyal.
+* [`Canceled`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#canceled): İptal edilmiş tanıma sonuçlarını içeren olaylar için sinyal (sonuç olarak iptal edilen bir tanıma girişimi veya doğrudan iptal isteği veya alternatif olarak bir aktarım veya protokol hatası) gösterir.
 
 ```cpp
 recognizer->Recognizing.Connect([](const SpeechRecognitionEventArgs& e)
@@ -191,7 +191,7 @@ recognizer->SessionStopped.Connect([&recognitionEnd](const SessionEventArgs& e)
     });
 ```
 
-Her şey ayarlandığında [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#startcontinuousrecognitionasync)çağırabiliriz.
+Her şey ayarlandırıtamam, arayabiliyoruz. [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#startcontinuousrecognitionasync)
 
 ```cpp
 // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
@@ -204,43 +204,43 @@ recognitionEnd.get_future().get();
 recognizer->StopContinuousRecognitionAsync().get();
 ```
 
-### <a name="dictation-mode"></a>Dikte etme modu
+### <a name="dictation-mode"></a>Dikte modu
 
-Sürekli tanıma kullanırken, ilgili "dikte etmeyi etkinleştir" işlevini kullanarak dikte işlemini etkinleştirebilirsiniz. Bu mod, konuşma yapılandırma örneğinin noktalama gibi tümce yapılarının sözcük açıklamalarını yorumlamasını sağlar. Örneğin, "kasadaki gerçek zamanlı olarak", "kasadaki canlı mısınız?" metni olarak yorumlanabilir.
+Sürekli tanıma kullanırken, ilgili "dikte işlemini etkinleştir" işlevini kullanarak dikte işlemini etkinleştirebilirsiniz. Bu mod, noktalama işaretleri gibi tümce yapılarının sözcük açıklamalarını yorumlamak için konuşma config örneğine neden olur. Örneğin, "Şehirde mi yaşıyorsunuz soru işareti" sözü "Şehirde mi yaşıyorsunuz?" şeklinde yorumlanır.
 
-Dikte modunu etkinleştirmek için [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) [`EnableDictation`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation) yöntemi kullanın.
+Dikte modunu etkinleştirmek için, [`EnableDictation`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation) yöntemi [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)nikullanarak.
 
 ```cpp
 config->EnableDictation();
 ```
 
-## <a name="change-source-language"></a>Kaynak dilini değiştir
+## <a name="change-source-language"></a>Kaynak dilini değiştirme
 
-Konuşma tanıma için ortak bir görev, giriş (veya kaynak) dilini belirtmektir. Giriş dilini Almanca olarak nasıl değiştirebileceğinizi göz atalım. Kodunuzda [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)bulun ve ardından bu satırı hemen altına ekleyin.
+Konuşma tanıma için ortak bir görev giriş (veya kaynak) dilini belirtmektir. Giriş dilini Almanca'ya nasıl değiştireceğinize bir göz atalım. Kodunuzda, [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)bu satırı doğrudan altına ekleyin.
 
 ```cpp
 config->SetSpeechRecognitionLanguage("fr-FR");
 ```
 
-[`SetSpeechRecognitionLanguage`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechrecognitionlanguage) bağımsız değişken olarak bir dize alan parametredir. Desteklenen [yerel ayarlar/diller](../../../language-support.md)listesinde herhangi bir değer sağlayabilirsiniz.
+[`SetSpeechRecognitionLanguage`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechrecognitionlanguage)bir bağımsız değişken olarak bir dize alan bir parametredir. Desteklenen [yerel halk/dil](../../../language-support.md)listesinde herhangi bir değer sağlayabilirsiniz.
 
-## <a name="improve-recognition-accuracy"></a>Tanıma doğruluğunu geliştirme
+## <a name="improve-recognition-accuracy"></a>Tanıma doğruluğunu artırın
 
-Konuşma SDK 'Sı ile tanıma doğruluğunu geliştirmenin birkaç yolu vardır. Tümcecik listelerine göz atalım. Tümcecik listeleri, bir kişinin adı veya belirli bir konum gibi, ses verilerinde bilinen tümcecikleri belirlemek için kullanılır. Tek sözcükler veya bütün ifadeler, bir tümcecik listesine eklenebilir. Tanıma sırasında, tüm tümcecik için tam eşleşme sese dahil olursa tümcecik listesindeki bir giriş kullanılır. Tümcecikle tam eşleşme bulunamazsa, tanıma yardımlı değildir.
+Konuşma SDK ile tanıma doğruluğunu artırmanın birkaç yolu vardır. İfade Listeleri'ne bir göz atalım. Tümcecik Listeleri, ses verilerindeki bilinen ifadeleri tanımlamak için kullanılır, örneğin bir kişinin adı veya belirli bir konum. Tümcecik Listesine tek sözcük veya tam tümcecik eklenebilir. Tanıma sırasında, sese tüm tümcecik için tam bir eşleşme varsa, bir ifade listesindeki bir giriş kullanılır. İfadeyle tam eşleşme bulunamazsa, tanıma yardımcı olmaz.
 
 > [!IMPORTANT]
-> Tümcecik listesi özelliği yalnızca Ingilizce olarak kullanılabilir.
+> İfade Listesi özelliği yalnızca İngilizce olarak kullanılabilir.
 
-Bir tümcecik listesi kullanmak için, önce bir [`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar) nesnesi oluşturun, sonra [`AddPhrase`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar#addphrase)olan belirli sözcükleri ve tümceleri ekleyin.
+Bir tümcecik listesini kullanmak [`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar) için önce bir nesne oluşturun, sonra [`AddPhrase`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar#addphrase)belirli sözcükler ve tümcecikler ekleyin.
 
-[`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar) yapılan herhangi bir değişiklik, bir sonraki tanıma göre veya konuşma hizmetine yeniden bağlanmaya sonra devreye girer.
+Bir sonraki [`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar) tanıma da veya Konuşma hizmetine yeniden bağlantı dan sonra etkili olacak değişiklikler.
 
 ```cpp
 auto phraseListGrammar = PhraseListGrammar::FromRecognizer(recognizer);
 phraseListGrammar->AddPhrase("Supercalifragilisticexpialidocious");
 ```
 
-Tümcecik listenizi temizlemeniz gerekirse: 
+İfade listenizi temizlemeniz gerekiyorsa: 
 
 ```cpp
 phraseListGrammar->Clear();
@@ -250,5 +250,5 @@ phraseListGrammar->Clear();
 
 Tümcecik listeleri, tanıma doğruluğunu artırmak için yalnızca bir seçenektir. Aşağıdakileri de yapabilirsiniz: 
 
-* [Özel Konuşma Tanıma doğruluğu iyileştirme](../../../how-to-custom-speech.md)
+* [Özel Konuşma ile doğruluğu geliştirme](../../../how-to-custom-speech.md)
 * [Kiracı modelleriyle doğruluğu geliştirme](../../../tutorial-tenant-model.md)

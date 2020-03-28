@@ -1,5 +1,5 @@
 ---
-title: Java 'da REST çağrısıyla model al
+title: Java'da REST araması ile model alın
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 92552a9870f037555a6cde9daa67d3af112ccee7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368387"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Language Understanding-yazma kaynağı 32 karakter anahtarı ve yazma uç noktası URL 'SI. [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)ile oluşturun.
-* Bilişsel hizmetler-dil düzeyi GitHub deposundan [Travelagent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) uygulamasını içeri aktarın.
-* Alınan TravelAgent uygulaması için LUSıS uygulama KIMLIĞI. Uygulama kimliği, uygulama panosunda gösterilir.
-* Uygulama içindeki, uttersliği alan sürüm KIMLIĞI. Varsayılan kimlik: "0.1".
+* Azure Dil Anlama - Kaynak 32 karakter anahtarı yazma ve bitiş noktası URL yazma. [Azure portalı](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)ile oluşturun.
+* [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) uygulamasını bilişsel-hizmet dili-anlayan GitHub deposundan aktarın.
+* İçeri aktarılan TravelAgent uygulamasının LUIS uygulama kimliği. Uygulama kimliği, uygulama panosunda gösterilir.
+* Konuşmaları alan uygulamanın içindeki sürüm kimliği. Varsayılan kimlik: "0.1".
 * [JDK SE](https://aka.ms/azure-jdks)  (Java Geliştirme Seti, Standart Sürüm)
 * [Visual Studio Code](https://code.visualstudio.com/) veya en sevdiğiniz IDE
 
@@ -28,13 +28,13 @@ ms.locfileid: "77368387"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="change-model-programmatically"></a>Modeli program aracılığıyla değiştirme
+## <a name="change-model-programmatically"></a>Modeli programlı olarak değiştirme
 
-1. `lib` adlı bir alt dizin oluşturun ve aşağıdaki Java LIBS ' de kopyalayın:
+1. Adlandırılmış `lib` bir alt dizini yapın ve aşağıdaki java libs'te kopyalayın:
 
-    * [Commons-logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [HttpClient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. `Model.java` adlı yeni bir dosya oluşturun. Aşağıdaki kodu ekleyin:
 
@@ -128,17 +128,17 @@ ms.locfileid: "77368387"
     }
     ```
 
-1. `YOUR-` ile başlayan değerleri kendi değerlerinizle değiştirin.
+1. Kendi değerlerinizle `YOUR-` başlayan değerleri değiştirin.
 
     |Bilgi|Amaç|
     |--|--|
-    |`YOUR-KEY`|32 karakter yazma anahtarınız.|
-    |`YOUR-ENDPOINT`| Yazma URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Kaynağı oluşturduğunuzda kaynak adınızı ayarlarsınız.|
-    |`YOUR-APP-ID`| LUSıS uygulama KIMLIĞINIZ. |
+    |`YOUR-KEY`|32 karakter yazarlık anahtarın.|
+    |`YOUR-ENDPOINT`| Yazma URL bitiş noktanız. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Kaynağı oluşturduğunuzda kaynak adınızı ayarlarsınız.|
+    |`YOUR-APP-ID`| LUIS uygulama kimliğiniz. |
 
-    Atanan anahtarlar ve kaynaklar, **Azure kaynakları** sayfasındaki Yönet bölümündeki Luo portalında görünür. Uygulama KIMLIĞI, **uygulama ayarları** sayfasında aynı Yönet bölümünde bulunur.
+    Atanan anahtarlar ve kaynaklar, **Azure kaynakları** sayfasındaki Yönet bölümündeki LUIS portalında görülebilir. Uygulama kimliği, **Uygulama Ayarları** sayfasında aynı Yönet bölümünde mevcuttur.
 
-1. Dosyayı oluşturduğunuz dizindeki aynı dizinde bir komut istemiyle birlikte, Java dosyasını derlemek için aşağıdaki komutu girin:
+1. Dosyayı oluşturduğunuz da aynı dizinde bir komut istemiyle, Java dosyasını derlemek için aşağıdaki komutu girin:
 
     ```console
     javac -cp ":lib/*" Model.java
@@ -152,7 +152,7 @@ ms.locfileid: "77368387"
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin.
+Bu hızlı başlatmayı bitirdiğinizde, dosyayı dosya sisteminden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

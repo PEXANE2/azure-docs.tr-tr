@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: Metin Analizi API'sini çağırmak için Ruby kullanma"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örneklerinin nasıl alınacağı gösterilmektedir.
+description: Bu hızlı başlangıç, Azure Bilişsel Hizmetler'de Metin Analizi API'sini hızla kullanmaya başlamanıza yardımcı olacak bilgi ve kod örneklerinin nasıl alındığını gösterir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 0e43d6c3565ea8ae019ab624cbc85965678ea3b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378475"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için Ruby kullanma
 <a name="HOLTop"></a>
 
-Bu makalede, Ruby ile  [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dilin nasıl algılanacağı](#Detect), yaklaşım [analiziyle](#SentimentAnalysis), [anahtar tümceciklerini ayıklamayla](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
+Bu makalede, ruby ile [Metin Analizi API'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dil](#Detect)algılama, duyarlılığı [analiz etme,](#SentimentAnalysis) [anahtar ifadeleri ayıklama](#KeyPhraseExtraction)ve [bağlantılı varlıkları nasıl tanımlayabileceğiniz](#Entities) gösterilmektedir.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -36,7 +36,7 @@ Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitiv
 
 1. Sık kullandığınız IDE'de yeni bir Ruby projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
-1. Metin Analizi anahtarınızı ve uç noktanızı koda kopyalayın. 
+1. Metin Analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın. 
 1. Programı çalıştırın.
 
 ```ruby
@@ -127,7 +127,7 @@ Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cogni
 
 1. Sık kullandığınız IDE'de yeni bir Ruby projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
-1. Metin Analizi anahtarınızı ve uç noktanızı koda kopyalayın. 
+1. Metin Analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın. 
 1. Programı çalıştırın.
 
 ```ruby
@@ -191,7 +191,7 @@ Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentral
 
 1. Sık kullandığınız IDE'de yeni bir Ruby projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
-1. Metin Analizi anahtarınızı ve uç noktanızı koda kopyalayın.
+1. Metin Analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın.
 1. Programı çalıştırın.
 
 
@@ -276,7 +276,7 @@ Varlıklar API'si, [Varlıklar metodunu](https://westcentralus.dev.cognitive.mic
 
 1. Sık kullandığınız IDE'de yeni bir Ruby projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
-1. Metin Analizi anahtarınızı ve uç noktanızı koda kopyalayın.
+1. Metin Analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın.
 1. Programı çalıştırın.
 
 ```ruby

@@ -1,7 +1,7 @@
 ---
-title: 'Örnek: görüntülerde yüzeyleri tanımla-yüz'
+title: 'Örnek: Görüntülerdeki yüzleri belirleme - Yüz'
 titleSuffix: Azure Cognitive Services
-description: Bu kılavuzda, bilinen kişilerden önceden oluşturulan PersonGroup nesneleri kullanılarak bilinmeyen yüzlerin nasıl tanımlandığı gösterilmektedir.
+description: Bu kılavuz, önceden bilinen kişilerden oluşturulan PersonGroup nesnelerini kullanarak bilinmeyen yüzlerinasıl tanımlayılabildiğini gösterir.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -11,38 +11,38 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169908"
 ---
-# <a name="example-identify-faces-in-images"></a>Örnek: görüntülerdeki yüzeyleri tanımla
+# <a name="example-identify-faces-in-images"></a>Örnek: Resimlerdeki yüzleri tanımlama
 
-Bu kılavuzda, bilinen kişilerden önceden oluşturulan PersonGroup nesneleri kullanılarak bilinmeyen yüzlerin nasıl tanımlandığı gösterilmektedir. Örnekler, Azure bilişsel hizmetler istemci kitaplığı kullanılarak dilinde C# yazılır.
+Bu kılavuz, önceden bilinen kişilerden oluşturulan PersonGroup nesnelerini kullanarak bilinmeyen yüzlerinasıl tanımlayılabildiğini gösterir. Örnekler, Azure Bilişsel Hizmetler Yüz istemci kitaplığı kullanılarak C# olarak yazılır.
 
 ## <a name="preparation"></a>Hazırlık
 
-Bu örnek şunları gösterir:
+Bu örnek şunları göstermektedir:
 
-- Bir kişilik grubu oluşturma. Bu PersonGroup, bilinen kişilerin bir listesini içerir.
-- Her kişiye yüz atama. Bu yüzeyler, kişileri tanımlamak için temel olarak kullanılır. Yüzlerin açık ve tamamen görünümlerini kullanmanızı öneririz. Fotoğraf KIMLIĞI bir örnektir. İyi bir fotoğraf kümesi, farklı pozlar, giyme renkleriyle veya ince stillerde aynı kişinin yüzlerini içerir.
+- PersonGroup nasıl oluşturulur. Bu Kişi Grubu, bilinen kişilerin listesini içerir.
+- Her kişiye yüz atama. Bu yüzler, kişileri tanımlamak için temel olarak kullanılır. Yüzlerin açık ön görünümlerini kullanmanızı öneririz. Bir örnek bir fotoğraflı kimliktir. İyi bir fotoğraf seti, farklı pozlarda, renk renklerinde veya saç stillerinde aynı kişinin yüzlerini içerir.
 
-Bu örneğin gösterimini yürütmek için, hazırlama:
+Bu örneğin gösterisini gerçekleştirmek için aşağıdakileri hazırlayın:
 
-- Kişinin yüzünü içeren birkaç fotoğraf. Anna, Bill ve Clare için [örnek fotoğraflar indirin](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) .
-- Bir dizi test fotoğrafı. Fotoğraflar, Anna, faturanız veya Clare 'nin yüzlerini içermeyebilir ya da içermeyebilir. Bu, tanımlamayı test etmek için kullanılır. Ayrıca, önceki bağlantıdaki bazı örnek görüntüleri de seçin.
+- Kişinin yüzünü içeren birkaç fotoğraf. Anna, Bill ve Clare için [örnek fotoğrafları indirin.](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data)
+- Bir dizi test fotoğrafı. Fotoğraflar Anna, Bill veya Clare'in yüzlerini içerebilir veya içermeyebilir. Kimlik tespitini test etmek için kullanılırlar. Ayrıca, önceki bağlantıdan bazı örnek görüntüler seçin.
 
-## <a name="step-1-authorize-the-api-call"></a>1\. Adım: API çağrısını yetkilendirme
+## <a name="step-1-authorize-the-api-call"></a>1. Adım: API çağrısını yetkilendirme
 
-Yüz Tanıma API’sine yapılan her çağrı için bir abonelik anahtarı gerekir. Bu anahtar, bir sorgu dizesi parametresi aracılığıyla geçirilebilir veya istek üstbilgisinde belirtilebilir. Abonelik anahtarını bir sorgu dizesi aracılığıyla geçirmek için, örnek olarak [yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) için istek URL 'sine bakın:
+Yüz Tanıma API’sine yapılan her çağrı için bir abonelik anahtarı gerekir. Bu anahtar, sorgu dize parametresinden geçirilebilir veya istek üstbilgisinde belirtilebilir. Abonelik anahtarını sorgu dizesi üzerinden geçirmek için [Yüz - Algıla'nın](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) istek URL'sine örnek olarak bakın:
 ```
 https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
 &subscription-key=<Subscription key>
 ```
 
-Alternatif olarak, HTTP istek üst bilgisi **OCP-apim-Subscription-Key: &lt;abonelik anahtarı&gt;** abonelik anahtarını belirtin.
-Bir istemci kitaplığı kullandığınızda, abonelik anahtarı FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örneğin:
+Alternatif olarak, http istek üstbilgisinde abonelik **anahtarını belirtin &lt;ocp-apim-subscription-key: Abonelik Anahtarı&gt;**.
+İstemci kitaplığı kullandığınızda, abonelik anahtarı FaceClient sınıfının oluşturucusundan geçirilir. Örnek:
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
@@ -50,20 +50,20 @@ private readonly IFaceClient faceClient = new FaceClient(
             new System.Net.Http.DelegatingHandler[] { });
 ```
  
-Abonelik anahtarını almak için Azure portal Azure Marketi 'ne gidin. Daha fazla bilgi için bkz. [abonelikler](https://azure.microsoft.com/try/cognitive-services/).
+Abonelik anahtarını almak için Azure portalından Azure Marketi'ne gidin. Daha fazla bilgi için [Abonelikler'e](https://azure.microsoft.com/try/cognitive-services/)bakın.
 
-## <a name="step-2-create-the-persongroup"></a>2\. Adım: PersonGroup oluşturma
+## <a name="step-2-create-the-persongroup"></a>2. Adım: PersonGroup oluşturma
 
-Bu adımda, "Myarkadaşlar" adlı bir kişi grubu, Anna, faturanızı ve Clare 'yi içerir. Her kişinin kayıtlı birkaç yüzü vardır. Görüntülerden yüzler algılanmalıdır. Tüm bu adımlardan sonra, aşağıdaki görüntüye benzer bir PersonGroup öğeniz olur:
+Bu adımda, "MyFriends" adlı bir PersonGroup Anna, Bill ve Clare içerir. Her kişinin kayıtlı birkaç yüzü vardır. Yüzler görüntülerden algılanmalıdır. Tüm bu adımlardan sonra, aşağıdaki görüntüye benzer bir PersonGroup öğeniz olur:
 
-![Myarkadaşlar](../Images/group.image.1.jpg)
+![Dostlarım](../Images/group.image.1.jpg)
 
-### <a name="step-21-define-people-for-the-persongroup"></a>Adım 2,1: PersonGroup için kişileri tanımlama
-Kişi, temel bir tanımlama birimidir. Bir kişinin bir veya daha fazla bilinen yüzü kayıtlı olabilir. Bir PersonGroup, bir kişi koleksiyonudur. Her kişi belirli bir kişilik grubu içinde tanımlanır. Kimlik bir PersonGroup 'A göre yapılır. Görev, bir PersonGroup oluşturmak ve ardından bu kişinin, örneğin Anna, Bill ve Clare gibi kişileri oluşturmak için kullanılır.
+### <a name="step-21-define-people-for-the-persongroup"></a>Adım 2.1: PersonGroup için kişileri tanımlayın
+Kişi, temel bir tanımlama birimidir. Bir kişinin bir veya daha fazla bilinen yüzü kayıtlı olabilir. PersonGroup, bir insan topluluğudur. Her kişi belirli bir PersonGroup içinde tanımlanır. Kimlik tanımlaması bir PersonGroup'a karşı yapılır. Görev bir PersonGroup oluşturmak ve daha sonra anna, Bill ve Clare gibi içinde insanlar oluşturmaktır.
 
-İlk olarak, [persongroup-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API kullanarak yeni bir persongroup oluşturun. Karşılık gelen istemci kitaplığı API 'SI, FaceClient sınıfı için CreatePersonGroupAsync yöntemidir. Grubu oluşturmak için belirtilen grup KIMLIĞI her abonelik için benzersizdir. Ayrıca, diğer kişiler API 'Lerini kullanarak de kişi grupları alabilir, güncelleştirebilir veya silebilirsiniz. 
+İlk olarak, [PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API'yi kullanarak yeni bir Kişi Grubu oluşturun. Karşılık gelen istemci kitaplığı API, FaceClient sınıfı için CreatePersonGroupAsync yöntemidir. Grubu oluşturmak için belirtilen grup kimliği her abonelik için benzersizdir. Ayrıca, diğer PersonGroup API'lerini kullanarak Kişi Grupları alabilir, güncelleyebilir veya silebilirsiniz. 
 
-Bir grup tanımlandıktan sonra, kişinin içindeki kişileri, [Kişiskii grubu oluşturma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API 'sini kullanarak tanımlayabilirsiniz. İstemci kitaplığı yöntemi, CreatePersonAsync yöntemidir. Her kişiye, oluşturulduktan sonra bir yüz ekleyebilirsiniz.
+Bir grup tanımlandıktan sonra, [PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API'yi kullanarak içindeki kişileri tanımlayabilirsiniz. İstemci kitaplığı yöntemi, CreatePersonAsync yöntemidir. Oluşturulduktan sonra her kişiye bir yüz ekleyebilirsiniz.
 
 ```csharp 
 // Create an empty PersonGroup
@@ -80,10 +80,10 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step2-2"></a>Adım 2,2: yüzeyleri algılama ve bunları doğru kişiye kaydetme
-HTTP istek gövdesinde görüntü dosyası ile [Yüz - Algılama](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API’sine bir “POST” web isteği gönderilerek algılama gerçekleştirilir. İstemci kitaplığını kullandığınızda, algılama algılaması aracılığıyla yüz tanıma işlemi yapılır. FaceClient sınıfının zaman uyumsuz yöntemleri.
+### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a>Adım 2.2: Yüzleri algılama ve doğru kişiye kaydetme
+HTTP istek gövdesinde görüntü dosyası ile [Yüz - Algılama](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API’sine bir “POST” web isteği gönderilerek algılama gerçekleştirilir. İstemci kitaplığını kullandığınızda, yüz algılama algıla... FaceClient sınıfının async yöntemleri.
 
-Algılanan her yüz için, [Persongroup kişisine](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) çağrı yapın ve doğru kişiye eklemek Için yüz ekleyin.
+Algılanan her yüz için [PersonGroup Person - Add Face'i](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) doğru kişiye eklemek için arayın.
 
 Aşağıdaki kod, bir görüntüden yüzü algılama ve bu yüzü bir kişiye ekleme işlemini göstermektedir:
 
@@ -102,17 +102,17 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 }
 // Do the same for Bill and Clare
 ``` 
-Görüntüde birden fazla yüz varsa yalnızca en büyük yüz eklenir. Kişiye başka yüzler ekleyebilirsiniz. "TargetFace = sol, üst, genişlik, yükseklik" biçiminde bir dizeyi [insana grubuna geçirin-yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API 'Sinin targetface sorgu parametresini ekleyin. Diğer yüzeyleri eklemek için AddPersonFaceAsync yöntemi için targetFace isteğe bağlı parametresini de kullanabilirsiniz. Kişiye eklenen her yüz için benzersiz bir kalıcı yüz KIMLIĞI verilir. Bu KIMLIĞI [Kişiskii grubu](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e) içinde kullanabilirsiniz; yüz ve [yüzü Sil – tanımla](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+Görüntü birden fazla yüz içeriyorsa, yalnızca en büyük yüz eklenir. Kişiye başka yüzler ekleyebilirsiniz. [PersonGroup Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) - Face API'nın targetFace sorgu parametresine "targetFace = sol, üst, genişlik, yükseklik" biçiminde bir dize geçirin. AddPersonFaceAsync yöntemi için diğer yüzler eklemek için targetFace isteğe bağlı parametresini de kullanabilirsiniz. Kişiye eklenen her yüz, benzersiz bir kalıcı yüz kimliği verilir. Bu kimliği [PersonGroup Person – Delete Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e) and Face – Identify ['de](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)kullanabilirsiniz.
 
-## <a name="step-3-train-the-persongroup"></a>3\. Adım: PersonGroup’u eğitme
+## <a name="step-3-train-the-persongroup"></a>3. Adım: PersonGroup’u eğitme
 
-Bir kimlik kullanılarak bir kimlik gerçekleştirilmeden önce PersonGroup 'un eğitilmeli olması gerekir. Kişi ekledikten veya kaldırdıktan sonra ya da bir kişinin kayıtlı yüzünü düzenlerseniz, PersonGroup 'un geri çekilmesi gerekir. Eğitim, [PersonGroup – Eğitim](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API’si tarafından gerçekleştirilir. İstemci kitaplığını kullandığınızda, TrainPersonGroupAsync yöntemine bir çağrıdir:
+Kimlik kullanılarak bir tanımlama yapılabilmesi için PersonGroup'un eğitilmesi gerekir. PersonGroup, herhangi bir kişiyi ekledikten veya kaldırdıktan sonra veya bir kişinin kayıtlı yüzünü yeniden edindiğinizde yeniden eğitilmelidir. Eğitim, [PersonGroup – Eğitim](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API’si tarafından gerçekleştirilir. İstemci kitaplığını kullandığınızda, TrainPersonGroupAsync yöntemine yapılan bir çağrıdır:
  
 ```csharp 
 await faceClient.PersonGroup.TrainAsync(personGroupId);
 ```
  
-Eğitim zaman uyumsuz bir işlemdir. TrainPersonGroupAsync yöntemi dönüşdikten sonra bile bitmeyebilir. Eğitim durumunu sorgulamanızı gerekebilir. İstemci kitaplığının [Persongroup-Get eğitim durumu](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) API 'Sini veya Getpersongrouptraıningstatusasync metodunu kullanın. Aşağıdaki kod, PersonGroup eğitiminin tamamlanmasını beklerken basit bir mantığı göstermektedir:
+Eğitim asynchronous bir süreçtir. TrainPersonGroupAsync yöntemi döndükten sonra bile tamamlanamayabilir. Eğitim durumunu sorgulamanız gerekebilir. [PersonGroup - Get Training Status](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) API veya GetPersonGroupTrainingStatusAsync yöntemini istemci kitaplığı kullanın. Aşağıdaki kod, PersonGroup eğitiminin tamamlanmasını beklemenin basit bir mantığını gösterir:
  
 ```csharp 
 TrainingStatus trainingStatus = null;
@@ -129,13 +129,13 @@ while(true)
 } 
 ``` 
 
-## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>4\. Adım: Tanımlı bir PersonGroup öğesine karşı yüzü belirleme
+## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>4. Adım: Tanımlı bir PersonGroup öğesine karşı yüzü belirleme
 
-Yüz hizmeti tanımlamaları yaptığında, bir grup içindeki tüm yüzler arasında bir test yüzünün benzerliğini hesaplar. Test yüzü için en çok karşılaştırılabilen kişileri döndürür. Bu işlem, istemci kitaplığının [yüz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) tanıma API 'Si veya ıdentıyasync yöntemi aracılığıyla yapılır.
+Face hizmeti tanımlamaları gerçekleştirdiğinde, bir grup içindeki tüm yüzler arasındaki test yüzünün benzerliğini hesaplar. Test yüzü için en karşılaştırılabilir kişileri döndürür. Bu işlem Yüz [- Tanım](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API veya istemci kitaplığın IdentifyAsync yöntemi üzerinden yapılır.
 
-Önceki adımlar kullanılarak test yüzü algılanmalıdır. Ardından, yüz KIMLIĞI kimlik API 'sine ikinci bir bağımsız değişken olarak geçirilir. Birden çok yüz kimliği, bir kerede tanımlanabilir. Sonuç, tüm tanımlanan sonuçları içerir. Varsayılan olarak, kimlik işlemi en iyi test yüzüyle eşleşen bir kişi döndürür. İsterseniz, kimlik işleminin daha fazla aday döndürmesini sağlamak için isteğe bağlı maxNumOfCandidatesReturned parametresini belirtin.
+Test yüzü önceki adımlar kullanılarak algılanmalıdır. Daha sonra yüz kimliği ikinci bir bağımsız değişken olarak kimlik API'sine aktarılır. Aynı anda birden çok yüz kimliği tanımlanabilir. Sonuç, tanımlanan tüm sonuçları içerir. Varsayılan olarak, tanımlama işlemi test yüzle en iyi eşleşen yalnızca bir kişiyi döndürür. İstersenizin, tanımlama işleminin daha fazla aday alabilsin diye isteğe bağlı parametre maxNumOfCandidatesReturned'i belirtin.
 
-Aşağıdaki kod, tanımlama işlemini göstermektedir:
+Aşağıdaki kod tanımlama işlemini gösterir:
 
 ```csharp 
 string testImageFile = @"D:\Pictures\test_img1.jpg";
@@ -164,28 +164,28 @@ using (Stream s = File.OpenRead(testImageFile))
 }
 ``` 
 
-Adımları tamamladıktan sonra farklı yüzeyleri belirlemeyi deneyin. Gamze algılama için karşıya yüklenen görüntülere, faturanızda veya Clare 'nin yüzlerine göre doğru şekilde tanımlanabilir olup olmadığını görün. Aşağıdaki örneklere bakın:
+Adımları bitirdikten sonra, farklı yüzleri tanımlamaya çalışın. Anna, Bill veya Clare'in yüzlerinin yüz algılama için yüklenen resimlere göre doğru bir şekilde tanımlanabiliyor mu diye bakın. Aşağıdaki örneklere bakın:
 
-![Farklı yüzeyleri tanımla](../Images/identificationResult.1.jpg )
+![Farklı yüzleri tanımlama](../Images/identificationResult.1.jpg )
 
-## <a name="step-5-request-for-large-scale"></a>5\. Adım: büyük ölçekli Istek
+## <a name="step-5-request-for-large-scale"></a>Adım 5: Büyük ölçekli istek
 
-Bir PersonGroup, önceki tasarım sınırlamasını temel alan 10.000 kişiden fazlasını tutabilir.
+Bir PersonGroup, önceki tasarım sınırlamasına bağlı olarak en fazla 10.000 kişiyi tutabilir.
 Milyon ölçekli senaryolar hakkında daha fazla bilgi için bkz. [Büyük ölçek özelliğini kullanma](how-to-use-large-scale.md).
 
 ## <a name="summary"></a>Özet
 
-Bu kılavuzda, bir PersonGroup oluşturma ve bir kişiyi tanımlama sürecini öğrendiniz. Aşağıdaki özellikler açıklanmıştı ve gösterilmiştir:
+Bu kılavuzda, bir Kişi Grubu oluşturma ve bir kişiyi tanımlama işlemini öğrendiniz. Aşağıdaki özellikler açıklanmış ve gösterilmiştir:
 
-- [Yüz algılama](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d) API 'sini kullanarak yüzeyleri tespit edin.
-- [Persongroup-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API ' i kullanarak kişilik grupları oluşturun.
-- Kişiler [-oluşturma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API 'Sini kullanarak kişi oluşturun.
-- [Persongroup – tren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API 'sini kullanarak bir persongroup 'ı eğitme.
-- [Yüz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) tanıma API 'sini kullanarak, persongroup 'a karşı bilinmeyen yüzeyleri tespit edin.
+- Yüz - [ApI'yi](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d) algılayarak yüzleri algıla.
+- [PersonGroup - CREATE](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API'yi kullanarak Kişi Grupları oluşturun.
+- [PersonGroup Person - CREATE](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API kullanarak kişi oluşturun.
+- PersonGroup – Train API'yi kullanarak bir [PersonGroup'u eğitin.](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+- [Yüz - ApI'yi](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) Tanımla'yı kullanarak Kişi Grubu'na karşı bilinmeyen yüzleri tanımlayın.
 
 ## <a name="related-topics"></a>İlgili konular
 
 - [Yüz tanıma kavramları](../concepts/face-recognition.md)
-- [Görüntüdeki yüzeyleri algılama](HowtoDetectFacesinImage.md)
-- [Yüz Ekle](how-to-add-faces.md)
-- [Büyük ölçekli özelliği kullanın](how-to-use-large-scale.md)
+- [Bir görüntüdeki yüzleri algılama](HowtoDetectFacesinImage.md)
+- [Yüz ekleme](how-to-add-faces.md)
+- [Büyük ölçek özelliğini kullanma](how-to-use-large-scale.md)

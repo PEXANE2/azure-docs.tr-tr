@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: etki alanına özgü içerik-REST, Python'
+title: 'Quickstart: Etki alanına özel içerik - REST, Python'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Python ile Görüntü İşleme API'sini kullanarak bir görüntüdeki yer işaretlerini ve ünlü kişileri tanımlamak için alan modeli kullanacaksınız.
 services: cognitive-services
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8e5ff917e7283457e7ff1d4c5fd0cbd91a1b0ace
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9fa9d414b89c7229b0577faad778f6cc8b87fa99
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973756"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244827"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Hızlı Başlangıç: Görüntü İşleme’de REST API’sini ve Python’ı kullanarak etki alanı modelini kullanma
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak uzaktan depolanan bir görüntüde yer alan ve isteğe bağlı olarak ünlüleri belirlemek için bir etki alanı modeli kullanacaksınız. [Etki Alanına Özgü İçeriği Tanıma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) yöntemiyle, bir görüntüdeki içeriği tanımak için etki alanına özgü bir model uygulayabilirsiniz.
+Bu hızlı başlangıçta, bilgisayar lı Vision REST API'yi kullanarak simge yapılarını veya isteğe bağlı olarak ünlüleri uzaktan depolanmış bir görüntüdeki ünlüleri tanımlamak için bir etki alanı modeli kullanırsınız. [Etki Alanına Özgü İçeriği Tanıma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) yöntemiyle, bir görüntüdeki içeriği tanımak için etki alanına özgü bir model uygulayabilirsiniz.
 
 [MyBinder](https://mybinder.org) üzerinde bir Jupyter not defteri kullanarak bu hızlı başlangıcı adım adım görüntülenecek şekilde çalıştırabilirsiniz. Bağlayıcıyı başlatmak için aşağıdaki düğmeyi seçin:
 
-[![Bağlayıcı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Cilt](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/try/cognitive-services/) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/try/cognitive-services/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Örneği yerel olarak çalıştırmak istiyorsanız [Python](https://www.python.org/downloads/) yüklenmiş olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
 ## <a name="create-and-run-the-landmarks-sample"></a>Yer işareti örneği oluşturma ve çalıştırma
 
@@ -44,6 +44,8 @@ Yer işareti örneğini oluşturup çalıştırmak için aşağıdaki adımları
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python get-landmarks.py`.
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline

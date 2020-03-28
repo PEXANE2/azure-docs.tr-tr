@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma'
+title: 'Quickstart: Blob depolamada depolanan konuşmayı tanıma'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir SAS blobu içinde depolanan konuşmayı zaman uyumsuz olarak tanımak için toplu Iş dökümü REST API kullanacaksınız.
+description: Bu hızlı başlangıçta, Toplu Transkripsiyon REST API'sını kullanarak bir SAS blob'da depolanan konuşmayı eş senkronize olarak tanıyacaksınız.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: df06d41e72026295de4673fd272c07d510e639fd
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119370"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma
+# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Quickstart: Blob depolamada depolanan konuşmayı tanıma
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

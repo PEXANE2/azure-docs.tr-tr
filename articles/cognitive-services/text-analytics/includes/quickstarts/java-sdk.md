@@ -1,38 +1,38 @@
 ---
-title: 'Hızlı Başlangıç: Java için Metin Analizi v3 istemci kitaplığı | Microsoft Docs'
-description: Java için Metin Analizi v3 istemci kitaplığı ile çalışmaya başlayın.
+title: 'Quickstart: Java için Text Analytics v3 istemci kitaplığı | Microsoft Dokümanlar'
+description: Java için v3 Text Analytics istemci kitaplığı ile başlayın.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 11092b74c0256d298dece0f909d8d7dd241e7b13
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
-ms.translationtype: HT
+ms.openlocfilehash: a0e6b5b7d5cedc821ee34bdd219ae07bb9d43199
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371350"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79481917"
 ---
 <a name="HOLTop"></a>
 
-[Başvuru belgeleri](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referans belgeleri](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [Örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği - [Ücretsiz olarak oluşturun](https://azure.microsoft.com/free/)
-* [Java Geliştirme Seti](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) sürüm 8 veya üstü
-* Azure aboneliğinizi oluşturduktan sonra, anahtarınızı ve uç noktanızı almak için Azure portalda <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Metin Analizi kaynağı oluşturun"  target="_blank">Metin Analizi kaynağı oluşturun <span class="docon docon-navigate-external x-hidden-focus"></span></a>. 
-    * Uygulamanızı Metin Analizi API’sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu hızlı başlangıçta daha sonra yapacaksınız.
-    * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyebilir ve daha sonra üretim için ücretli bir katmana yükseltebilirsiniz.
+* Azure aboneliği - [Ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* [Java Geliştirme Kiti](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) sürüm 8 veya üzeri
+* Azure aboneliğinizi aldıktan <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="sonra, Anahtar ve"  target="_blank">bitiş noktanızı <span class="docon docon-navigate-external x-hidden-focus"></span> </a> almak için Azure portalında bir Metin Analizi kaynağı oluşturun.  Dağıtıladıktan sonra **kaynağa git'i**tıklatın.
+    * Uygulamanızı Text Analytics API'sine bağlamak için oluşturduğunuz kaynaktan gelen anahtar ve bitiş noktasına ihtiyacınız olacaktır. Anahtarınızı ve bitiş noktanızı daha sonra hızlı başlatmada aşağıdaki koda yapıştıracaksınız.
+    * Hizmeti denemek için ücretsiz`F0`fiyatlandırma katmanını kullanabilir ve daha sonra üretim için ücretli bir katmana yükseltebilirsiniz.
 
 ## <a name="setting-up"></a>Ayarlama
 
 ### <a name="add-the-client-library"></a>İstemci kitaplığını ekleme
 
-Tercih ettiğiniz IDE veya geliştirme ortamında bir Maven projesi oluşturun. Ardından aşağıdaki bağımlılığı projenizin *pom.xml* dosyasına ekleyin. [Diğer derleme araçlarına](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) yönelik uygulama söz dizimini çevrimiçi olarak bulabilirsiniz.
+Tercih ettiğiniz IDE veya geliştirme ortamında bir Maven projesi oluşturun. Ardından projenizin *pom.xml* dosyasına aşağıdaki bağımlılığı ekleyin. [Diğer yapı araçları için](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) uygulama sözdizimini çevrimiçi olarak bulabilirsiniz.
 
 ```xml
 <dependencies>
@@ -45,9 +45,9 @@ Tercih ettiğiniz IDE veya geliştirme ortamında bir Maven projesi oluşturun. 
 ```
 
 > [!TIP]
-> Tüm hızlı başlangıç kodunu aynı anda görüntülemek mi istiyorsunuz? Bunu, bu hızlı başlangıçtaki kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java)’da bulabilirsiniz. 
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek ister misiniz? Bu hızlı başlatmada kod örneklerini içeren [GitHub'da](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java)bulabilirsiniz. 
 
-`TextAnalyticsSamples.java` adlı bir Java dosyası oluşturun. Dosyayı açıp aşağıdaki `import` deyimlerini ekleyin:
+Adlandırılmış `TextAnalyticsSamples.java`bir Java dosyası oluşturun. Dosyayı açın ve `import` aşağıdaki ifadeleri ekleyin:
 
 ```java
 import com.azure.ai.textanalytics.models.*;
@@ -55,7 +55,7 @@ import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
 ```
 
-Java dosyasına yeni bir sınıf ekleyin Azure kaynağınızın anahtarını ve uç noktasını aşağıda gösterildiği gibi ekleyin.
+Java dosyasında, yeni bir sınıf ekleyin ve azure kaynağınızın anahtarını ve bitiş noktasını aşağıda gösterildiği gibi ekleyin.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -66,7 +66,7 @@ public class TextAnalyticsSamples {
 }
 ```
 
-Aşağıdaki ana yöntemi sınıfa ekleyin. Burada çağrılan yöntemleri daha sonra tanımlayacaksınız.
+Sınıfa aşağıdaki ana yöntemi ekleyin. Burada çağrılan yöntemleri daha sonra tanımlarsınız.
 
 ```java
 public static void main(String[] args) {
@@ -84,20 +84,20 @@ public static void main(String[] args) {
 
 ## <a name="object-model"></a>Nesne modeli
 
-Metin Analizi istemcisi, anahtarınızı kullanarak Azure’da kimlik doğrulaması yapan ve metnin tek dizeler halinde veya bir toplu iş olarak kabul edilmesine olanak tanıyan işlevleri sunan bir `TextAnalyticsClient` nesnesidir. Metinleri API’ye zaman uyumlu veya zaman uyumsuz olarak gönderebilirsiniz. Yanıt nesnesi, gönderdiğiniz her belgeye yönelik analiz bilgilerini içerir. 
+Text Analytics istemcisi, anahtarınızı kullanarak Azure'a doğrulayan ve metni tek dizeleri veya toplu iş olarak kabul eden işlevler sağlayan bir `TextAnalyticsClient` nesnedir. API'ye eşzamanlı veya eşzamanlı olarak metin gönderebilirsiniz. Yanıt nesnesi, gönderdiğiniz her belgenin çözümleme bilgilerini içerir. 
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Yaklaşım Analizi](#sentiment-analysis) 
+* [İstemcinin kimliğini doğrula](#authenticate-the-client)
+* [Duygusallık Analizi](#sentiment-analysis) 
 * [Dil algılama](#language-detection)
 * [Adlandırılmış Varlık tanıma](#named-entity-recognition-ner) 
 * [Varlık bağlama](#entity-linking)
-* [Anahtar ifade ayıklama](#key-phrase-extraction)
+* [Anahtar tümcecik çıkarma](#key-phrase-extraction)
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
-Anahtar ve Metin Analizi kaynağınıza yönelik uç noktasıyla `TextAnalyticsClient` nesnesinin örneğini oluşturmak için bir yöntem oluşturun.
+Metin Analizi kaynağınızın anahtarı `TextAnalyticsClient` ve bitiş noktasıyla nesneyi anında oluşturmak için bir yöntem oluşturun.
 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
@@ -108,11 +108,11 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 }
 ```
 
-İstemcinin örneğini oluşturmak için programınızın `main()` yönteminde kimlik doğrulaması yöntemini çağırın.
+Programınızın `main()` yönteminde, istemciyi anında anımsamak için kimlik doğrulama yöntemini arayın.
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-Önceden oluşturduğunuz istemciyi alan ve bunun `analyzeSentiment()` işlevini çağıran `sentimentAnalysisExample()` adlı yeni bir işlev oluşturun. Çağrı başarılı olursa döndürülen `AnalyzeSentimentResult` nesnesi `documentSentiment` ve `sentenceSentiments` içerir. Çağrı başarısız olursa nesne `errorMessage` içerir. 
+Daha önce oluşturduğunuz istemciyi alan ve `sentimentAnalysisExample()` `analyzeSentiment()` işlevini çağıran yeni bir işlev oluşturun. Döndürülen `AnalyzeSentimentResult` nesne `documentSentiment` içerir `sentenceSentiments` ve başarılı `errorMessage` olursa, ya da değilse. 
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -149,10 +149,10 @@ Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.7
 
 ## <a name="language-detection"></a>Dil algılama
 
-Önceden oluşturduğunuz istemciyi alan ve bunun `detectLanguage()` işlevini çağıran `detectLanguageExample()` adlı yeni bir işlev oluşturun. Döndürülen `DetectLanguageResult` nesnesi başarılı olursa algılanan birincil dili ve algılanan diğer dillerin listesini içerir. Başarısız olursa nesne `errorMessage` içerir.
+Daha önce oluşturduğunuz istemciyi alan ve `detectLanguageExample()` `detectLanguage()` işlevini çağıran yeni bir işlev oluşturun. Döndürülen `DetectLanguageResult` nesne algılanan bir birincil dil, başarılı olursa algılanan diğer `errorMessage` dillerin bir listesini veya değilse bir içerir.
 
 > [!Tip]
-> Bazı durumlarda girişi temel alarak dilleri netleştirmek zor olabilir. 2 harfli bir ülke kodu belirtmek için `countryHint` parametresini kullanabilirsiniz. API, countryHint için varsayılan olarak “US”değerini kullanır. Bu davranışı kaldırmak için bu değeri boş `countryHint = ""` dizesi olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz. Farklı bir varsayılan ayarlamak için `TextAnalyticsClientOptions.DefaultCountryHint` özelliğini ayarlayın ve müşterinin başlatma işlemi esnasında bunu geçirin.
+> Bazı durumlarda girişe göre dilleri ayrıştırmak zor olabilir. Parametreyi `countryHint` 2 harfli ülke kodu belirtmek için kullanabilirsiniz. Varsayılan olarak API varsayılan countryHint olarak "ABD" kullanıyor, bu davranışı kaldırmak için bu değeri boş `countryHint = ""`dize için ayarlayarak bu parametreyi sıfırlayabilirsiniz. Farklı bir varsayılan ayarlamak `TextAnalyticsClientOptions.DefaultCountryHint` için özelliği ayarlayın ve istemcinin başlatma sırasında geçirin.
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -173,14 +173,14 @@ static void detectLanguageExample(TextAnalyticsClient client)
 ```console
 Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 ```
-## <a name="named-entity-recognition-ner"></a>Adlandırılmış Varlık Tanıma (NER)
+## <a name="named-entity-recognition-ner"></a>Adlandırılmış Varlık tanıma (NER)
 
 > [!NOTE]
-> `3.0-preview` sürümünde:
+> Sürümde `3.0-preview`:
 > * NER, kişisel bilgileri algılamak için ayrı yöntemler içerir. 
-> * Varlık bağlama, NER’den ayrı bir istektir.
+> * Varlık bağlama NER'den ayrı bir istektir.
 
-Önceden oluşturduğunuz istemciyi alan ve bunun `recognizeEntities()` işlevini çağıran `recognizeEntitiesExample()` adlı yeni bir işlev oluşturun. Çağrı başarılı olursa döndürülen `RecognizeEntitiesResult` nesnesi `NamedEntity` listesini içerir. Çağrı başarısız olursa nesne `errorMessage` içerir.
+Daha önce oluşturduğunuz istemciyi alan ve `recognizeEntitiesExample()` `recognizeEntities()` işlevini çağıran yeni bir işlev oluşturun. Döndürülen `RecognizeEntitiesResult` nesne, başarılı `NamedEntity` olup olmadığının `errorMessage` bir listesini veya başarısız olup olmadığını içerir.
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -206,9 +206,9 @@ Recognized entity: Seattle, entity category: Location, entity sub-category: GPE,
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
-## <a name="using-ner-to-recognize-personal-information"></a>Kişisel bilgileri tanımak için NER kullanma
+## <a name="using-ner-to-recognize-personal-information"></a>Kişisel bilgileri tanımak için NER'i kullanma
 
-Önceden oluşturduğunuz istemciyi alan ve bunun `recognizePiiEntities()` işlevini çağıran `recognizePIIEntitiesExample()` adlı yeni bir işlev oluşturun. Çağrı başarılı olursa döndürülen `RecognizePiiEntitiesResult` nesnesi `NamedEntity` listesini içerir. Çağrı başarısız olursa nesne `errorMessage` içerir. 
+Daha önce oluşturduğunuz istemciyi alan ve `recognizePIIEntitiesExample()` `recognizePiiEntities()` işlevini çağıran yeni bir işlev oluşturun. Döndürülen `RecognizePiiEntitiesResult` nesne, başarılı `NamedEntity` olup olmadığının `errorMessage` bir listesini veya başarısız olup olmadığını içerir. 
 
 ```java
 static void recognizePIIEntitiesExample(TextAnalyticsClient client)
@@ -236,7 +236,7 @@ entity sub-category: null, score: 0.85.
 
 ## <a name="entity-linking"></a>Varlık bağlama
 
-Önceden oluşturduğunuz istemciyi alan ve bunun `recognizeLinkedEntities()` işlevini çağıran `recognizeLinkedEntitiesExample()` adlı yeni bir işlev oluşturun. Çağrı başarılı olursa döndürülen `RecognizeLinkedEntitiesResult` nesnesi `LinkedEntity` listesini içerir. Çağrı başarısız olursa nesne `errorMessage` içerir. Bağlı varlıklar benzersiz olarak tanımlandıkları için aynı varlıkların oluşumu `LinkedEntityMatch` nesnelerinin listesi olarak bir `LinkedEntity` nesnesinde gruplandırılır.
+Daha önce oluşturduğunuz istemciyi alan ve `recognizeLinkedEntitiesExample()` `recognizeLinkedEntities()` işlevini çağıran yeni bir işlev oluşturun. Döndürülen `RecognizeLinkedEntitiesResult` nesne, başarılı `LinkedEntity` olup olmadığının `errorMessage` bir listesini veya başarısız olup olmadığını içerir. Bağlı varlıklar benzersiz olarak tanımlandığından, aynı varlığın oluşumları `LinkedEntity` `LinkedEntityMatch` nesnelerin listesi olarak bir nesne altında gruplandırılır.
 
 ```java
 static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
@@ -292,7 +292,7 @@ Text: BASIC, Score: 0.28
 ```
 ## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
-Önceden oluşturduğunuz istemciyi alan ve bunun `extractKeyPhrases()` işlevini çağıran `extractKeyPhrasesExample()` adlı yeni bir işlev oluşturun. Çağrı başarılı olursa döndürülen `ExtractKeyPhraseResult` nesnesi anahtar ifadelerin listesini içerir. Çağrı başarısız olursa nesne `errorMessage` içerir.
+Daha önce oluşturduğunuz istemciyi alan ve `extractKeyPhrasesExample()` `extractKeyPhrases()` işlevini çağıran yeni bir işlev oluşturun. Döndürülen `ExtractKeyPhraseResult` nesne, başarılı olursa anahtar tümceciklerin `errorMessage` bir listesini veya başarısız olursa içerir.
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)

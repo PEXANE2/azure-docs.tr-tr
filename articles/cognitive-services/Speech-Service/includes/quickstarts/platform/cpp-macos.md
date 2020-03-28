@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: konuşma C++ SDK 'sı (MacOS) Platform Kurulumu-konuşma hizmeti"
+title: 'Hızlı başlangıç: Konuşma SDK C++ (macOS) platformu kurulumu - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmeti SDK 'Sı ile macOS C++ 'ta platformunuzu ayarlamak için bu kılavuzu kullanın.
+description: Konuşma hizmeti SDK ile macOS'ta C++ platformunuzu kurmak için bu kılavuzu kullanın.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: d0f9bc44145f75d7c3b503fffe43042c650025f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75468140"
 ---
-Bu kılavuzda, macOS 10,13 ve üzeri sürümlerde için C++ [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
+Bu kılavuz, C++ için [Speech SDK'nın](~/articles/cognitive-services/speech-service/speech-sdk.md) macOS 10.13 ve üzeri üzerine nasıl yüklenirken nasıl yüklenirolduğunu gösterir.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Sistem gereksinimleri
 
-macOS 10,13 ve üzeri
+macOS 10.13 ve üzeri
 
 ## <a name="install-speech-sdk"></a>Konuşma SDK'sını yükleme
 
@@ -39,7 +39,7 @@ macOS 10,13 ve üzeri
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Konuşma SDK çerçevesini içeren `.zip` Arşivi indirin ve ayıklayın:
+1. Konuşma SDK `.zip` çerçevesini içeren arşivi indirin ve ayıklayın:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -52,9 +52,9 @@ macOS 10,13 ve üzeri
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Dizin listesi, üçüncü taraf bildirim ve lisans dosyalarının yanı sıra `MicrosoftCognitiveServicesSpeech.framework` bir dizin içermelidir.
+   Dizin listesi, üçüncü taraf bildirim ve lisans dosyalarının `MicrosoftCognitiveServicesSpeech.framework` yanı sıra bir dizin içermelidir.
 
-Şimdi aşağıdaki [adımlara](#next-steps) geçebilirsiniz.
+Artık aşağıdaki Sonraki [adımlara](#next-steps) geçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

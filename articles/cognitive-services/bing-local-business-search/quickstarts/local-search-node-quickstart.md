@@ -1,7 +1,7 @@
 ---
-title: Hızlı başlangıç-Node. js kullanarak API 'ye bir sorgu gönderme-Bing yerel Iş arama
+title: Quickstart - Node.js kullanarak API'ye sorgu gönderme - Bing Yerel İş Arama
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın.
+description: Azure Bilişsel Hizmeti olan Bing Yerel İş Arama API'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: beab594126ce292ea1fc47e399a12274dbb31aa3
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74665704"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Hızlı başlatma: Node.js kullanarak Bing Yerel İş Arama API'sine sorgu gönderme
 
-Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama Node. js ' de yazıldığı sırada, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
+Azure Bilişsel Hizmeti olan Bing Yerel İş Arama API'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama Node.js olarak yazılmış olsa da, API, HTTP isteklerini yapma ve JSON ayrıştırma yeteneğine sahip herhangi bir programlama dili ile uyumlu bir RESTful Web hizmetidir.
 
-Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
+Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API'den yerel yanıt verilerini alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Node.js](https://nodejs.org/en/download/)’in en son sürümü.
+* [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 
-* [JavaScript Istek kitaplığı](https://github.com/request/request)
+* [JavaScript İstek Kitaplığı](https://github.com/request/request)
 
-Bing API 'lerle bir bilişsel [Hizmetler API 'si hesabınızın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olması gerekir. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Ücretsiz deneme tarafından sunulan erişim anahtarını kullanın.  Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Bing API'leri ile [Bilişsel Hizmetler API hesabınız](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olmalıdır. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Ücretsiz deneme sürümü tarafından sağlanan erişim anahtarını kullanın.  Ayrıca bakınız [Bilişsel Hizmetler Fiyatlandırma - Bing Arama API.](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 ## <a name="code-scenario"></a>Kod senaryosu
 
-Aşağıdaki kod, isteği tanımlar ve gönderir. Aşağıdaki adımları izler:
+Aşağıdaki kod tanımlar ve isteği gönderir. Aşağıdaki adımları izler:
 
 1. Ana bilgisayar ve yol ile uç noktayı belirtmek için değişkenleri bildirme.
 2. Sorguyu belirtin ve sorgu parametresini ekleyin.
 3. Yanıt için bir işleyici işlevi oluşturma.
-4. İsteği oluşturan arama işlevini tanımlayın ve OCP-apim-Subscription-Key üstbilgisini ekler.
+4. İsteği oluşturan ve Ocp-Apim-Subscription-Key üst bilgisini ekleyen Search işlevini tanımlama.
 5. Search işlevini çalıştırma.
 
 Bu tanıtımda kullanılan kodun tamamı aşağıda verilmiştir:
@@ -94,6 +94,6 @@ Search();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Yerel Iş araması hızlı başlangıç](local-quickstart.md)
-* [Yerel Iş arama Java hızlı başlangıç](local-search-java-quickstart.md)
-* [Yerel Iş arama Python hızlı başlangıç](local-search-python-quickstart.md)
+* [Yerel İş Arama sıcağınızda](local-quickstart.md)
+* [Yerel İş Arama Java quickstart](local-search-java-quickstart.md)
+* [Yerel İş Arama Python quickstart](local-search-python-quickstart.md)

@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: c6291a714083df8954d5162ad38d31b2e3caee76
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925713"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. **Program.cs**açın ve içindeki tüm kodu aşağıdaki kodla değiştirin:
+1. **Program.cs**açın ve tüm kodu aşağıdaki kodla değiştirin:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -199,26 +199,26 @@ Başlamadan önce şunları yaptığınızdan emin olun:
     }
     ```
 
-1. Aynı dosyada, dize `YourSubscriptionKey`, bilişsel konuşma abonelik anahtarınızla değiştirin.
+1. Aynı dosyada, dizeyi `YourSubscriptionKey` Bilişsel Konuşma abonelik anahtarınızla değiştirin.
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Menü çubuğundan **dosya** > **Tümünü Kaydet**' i seçin.
+1. Menü çubuğundan **Dosya** > **Yı Tümle'yi kaydet'i**seçin.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Yeni bir konuşma oluşturmak için uygulamayı derleyin ve çalıştırın
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Yeni bir konuşma oluşturmak için uygulamayı oluşturma ve çalıştırma
 
-1. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1. **HelloWorld** uygulamasını başlatmak Için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın).
+1. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna basın) seçin.
 
-1. `Started transcribing` ileti göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
-    - Konuşma kodunu diğer kişilerle paylaşırsanız ve konuşmaya katılırsanız, bu kişilerin de onların dökümünü görürsünüz.
+1. İletinin `Started transcribing` göründüğünü gördüğünüzde konuşmaya başlayabilirsiniz. Siz konuşurken transkripsiyonların göründüğünü göreceksiniz.
+    - Konuşma kodunu diğerleriyle paylaşırsanız ve onlar konuşmaya katılırsa, onların transkripsiyonlarını da görürsünüz.
 
-1. Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın ve konuşmayı sonlandırın.
+1. Konuşmayı bitirdikten sonra, ses yakalamayı durdurmak ve konuşmayı sonlamak için <kbd>Ctrl+C</kbd> tuşuna basın.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Mevcut bir konuşmaya katmak için uygulamayı derleyin ve çalıştırın
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Varolan bir konuşmaya katılmak için uygulamayı oluşturma ve çalıştırma
 
-1. Aşağıdaki işlevi kopyalayıp **program.cs**yapıştırın:
+1. Aşağıdaki işlevi **kopyalayıp Program.cs:**
 
     ```csharp
     static async Task JoinConversationAsync(string conversationId)
@@ -294,7 +294,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
     }
     ```
 
-2. `public static async Task Main(string[] args)` işlevinizdeki `CreateConversationAsync();` değiştirin:
+2. İşlevinizi `public static async Task Main(string[] args)` şu şekilde değiştirin: `CreateConversationAsync();`
 
     ```csharp
     // Set this to the conversation you want to join
@@ -303,18 +303,18 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Visual Studio 'ya geri dönün ve dize `YourConversationId`, önceki adımda oluşturduğunuz konuşma KIMLIĞIYLE değiştirin.
+4. Visual Studio'ya geri dön `YourConversationId` ve dizeyi önceki adımda oluşturduğunuz konuşma kimliğiyle değiştirin.
 
-5. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun artık hatasız derlenmesi gerekir.
+5. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
 
-6. **HelloWorld** uygulamasını başlatmak Için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın).
+6. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna basın) seçin.
 
-7. `Started transcribing` ileti göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
-    - Tarayıcınıza geri giderseniz, yaptığınız gibi, yaptığınız gibi görünmeler burada görünür.
+7. İletinin `Started transcribing` göründüğünü gördüğünüzde konuşmaya başlayabilirsiniz. Siz konuşurken transkripsiyonların göründüğünü göreceksiniz.
+    - Tarayıcınıza geri dönerseniz, siz konuşurken transkripsiyonlarınızın orada da göründüğünü görmeniz gerekir.
 
-8. Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın ve konuşmayı sonlandırın.
+8. Konuşmayı bitirdikten sonra, ses yakalamayı durdurmak ve konuşmayı sonlamak için <kbd>Ctrl+C</kbd> tuşuna basın.
 
-9. Tarayıcınıza geri dönün ve sağ üst köşedeki Çıkış düğmesini kullanarak konuşmadan çıkın.
+9. Tarayıcınıza geri dönün ve sağ üst köşedeki çıkış düğmesini kullanarak konuşmaçıkın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

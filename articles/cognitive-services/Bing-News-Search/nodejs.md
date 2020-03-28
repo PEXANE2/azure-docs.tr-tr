@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: node. js ile bir haber araması gerçekleştirme-Bing Haber Arama REST API'
+title: 'Quickstart: Node.js ile bir haber araması gerçekleştirin - Bing Haberler Arama REST API'
 titleSuffix: Azure Cognitive Services
-description: Node. js kullanarak Bing Haber Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
+description: Node.js kullanarak Bing Haberler Arama REST API'sine bir istek göndermek ve JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383141"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: node. js ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirin
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Quickstart: Node.js ve Bing Haberler Arama REST API kullanarak bir haber araması gerçekleştirin
 
 İlk Bing Resim Arama API’si çağrınızı yapmak ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API’ye bir arama sorgusu gönderir ve ham sonuçları görüntüler.
 
 Bu uygulama JavaScript ile yazılmış ve Node.js’de çalışıyor olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
-Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js)’da mevcuttur.
+Bu örnek için kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js)kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Node.js](https://nodejs.org/en/download/)’in en son sürümü.
+* [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 
-* [JavaScript Istek kitaplığı](https://github.com/request/request)
+* [JavaScript İstek Kitaplığı](https://github.com/request/request)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -43,7 +43,7 @@ Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-ser
     let https = require('https');
     ```
 
-2. API uç noktası, görüntü API’si arama yolu, abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz. 
+2. API uç noktası, görüntü API’si arama yolu, abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz. 
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -70,7 +70,7 @@ Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-ser
         });
         ```
 
-    3. Bir **bitiş** bayrağına işaret EDILDIĞINDE, JSON ve üstbilgiler görüntülenebilir.
+    3. Bir **bitiş** bayrağı sinyali verildiğinde, JSON ve üstbilgi görüntülenebilir.
 
         ```javascript
         response.on('end', function () {
@@ -85,7 +85,7 @@ Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-ser
          });
         ```
 
-## <a name="json-response"></a>JSON yanıtı
+## <a name="json-response"></a>JSON Yanıt
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür: 
 

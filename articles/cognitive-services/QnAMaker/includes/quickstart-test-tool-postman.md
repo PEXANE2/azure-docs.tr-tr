@@ -11,47 +11,47 @@ ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112337"
 ---
-Bu Postman tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konusunda size yol gösterir.
+Bu Postman tabanlı quickstart bilgi tabanından bir cevap alma ile size yol.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* En son [**Postman**](https://www.getpostman.com/).
-* Sahip olmanız gerekir
-    * Bir [soru-cevap oluşturma hizmeti](../How-To/set-up-qnamaker-service-azure.md)
-    * Hızlı başlangıçtan oluşturulan [sorular ve yanıtlar ile](../Quickstarts/add-question-metadata-portal.md) eğitilen ve yayınlanmış bir bilgi tabanı, meta veriler ve BT sohbeti ile yapılandırılır.
+* Son [**Postacı.**](https://www.getpostman.com/)
+* Sahip olmalısınız.
+    * [QnA Maker hizmeti](../How-To/set-up-qnamaker-service-azure.md)
+    * Hızlı başlangıç tan oluşturulmuş [sorular ve yanıtlar içeren](../Quickstarts/add-question-metadata-portal.md) eğitimli ve yayınlanmış bir bilgi tabanı meta veriler ve Chit sohbet ile yapılandırılır.
 
 > [!NOTE]
-> Bilgi tabanınızdan bir soruya yanıt oluşturmaya hazırsanız, bilgi bankasını [eğitmeniz](../Quickstarts/create-publish-knowledge-base.md#save-and-train) ve [yayımlamanız](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) gerekir. Bilgi Bankası 'niz yayımlandığında **Yayımla** sayfası, yanıt oluşturmak için http isteği ayarlarını görüntüler. **Postman** sekmesi, yanıt oluşturmak için gereken ayarları gösterir.
+> Bilgi tabanınızdan bir soruya yanıt vermeye hazır olduğunuzda, bilgi tabanınızı [eğitmeli](../Quickstarts/create-publish-knowledge-base.md#save-and-train) ve [yayınlamanız](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) gerekir. Bilgi tabanınız yayımlandığında, Yanıt oluşturmak için **Yayımla** sayfası HTTP istek ayarlarını görüntüler. **Postacı** sekmesi, yanıt oluşturmak için gereken ayarları gösterir.
 
-## <a name="set-up-postman-for-requests"></a>İstekler için Postman ayarla
+## <a name="set-up-postman-for-requests"></a>İstekler için Postacı'yı ayarlama
 
-Bu hızlı başlangıç, Postman **Post** isteği için aynı ayarları kullanır ve daha sonra, sorgulanılmaya çalıştığınız öğesine göre Service 'e gönderilen JSON gövde gönderisini yapılandırır.
+Bu hızlı başlatma Postman **POST** isteği için aynı ayarları kullanır sonra post gövde JSON için sorgulamak için çalışıyoruz ne dayalı hizmete gönderilen yapılandırır.
 
-Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini yapılandırmak için sonraki her bölümü okuyun.
+Postman yapılandırmak için bu yordamı kullanın, sonra POST gövde JSON yapılandırmak için sonraki her bölümü okuyun.
 
-1. Bilgi Bankası 'nın **Ayarlar** sayfasında, bilgi bankasından yanıt oluşturmak için kullanılan yapılandırmayı görmek Için **Postman** sekmesini seçin. Postman 'da kullanmak için aşağıdaki bilgileri kopyalayın.
+1. Bilgi tabanının **Ayarlar** sayfasından, bilgi tabanından yanıt oluşturmak için kullanılan yapılandırmayı görmek için **Postacı** sekmesini seçin. Postacı'da kullanmak için aşağıdaki bilgileri kopyalayın.
 
-    |Ad|Ayar|Amaç ve değer|
+    |Adı|Ayar|Amaç ve değer|
     |--|--|--|
-    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Bu, URL için HTTP yöntemidir ve yoldur.|
-    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Bu, URL 'nin ana bilgisayarı. Tüm generateAnswer URL 'sini almak için Konağı ve gönderi değerlerini birleştirin.|
-    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Azure 'a isteğinizi yetkilendirmek için üst bilgi değeri. |
-    |`Content-type`|`application/json`|İçeriğiniz için üst bilgi değeri.|
-    ||`{"question":"<Your question>"}`|POST isteğinin gövdesi JSON nesnesi olarak. Bu değer, sorgunun ne işe hazırlandığına bağlı olarak, aşağıdaki her bir bölümde değişecektir.|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Bu, URL için HTTP yöntemi ve rotasıdır.|
+    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Bu URL'nin ana bilgisayarıdır. Tam generateAnswer URL'sini almak için Ana Bilgisayar ve Posta değerlerini birleştirin.|
+    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|İsteğinizi Azure'a yetkilendirmek için üstbilgi değeri. |
+    |`Content-type`|`application/json`|İçeriğiniz için üstbilgi değeri.|
+    ||`{"question":"<Your question>"}`|Bir JSON nesnesi olarak POST isteğinin gövdesi. Bu değer, sorgunun ne yapacağına bağlı olarak aşağıdaki her bölümde değişecektir.|
 
-1. Postman 'ı açın ve yayımlanan Bilgi Bankası ayarlarınıza sahip yeni bir temel **gönderi** isteği oluşturun. Aşağıdaki bölümlerde, POSTAYı Bilgi Bankası ile değiştirmek için JSON gövdesini değiştirin.
+1. Postman'ı açın ve yayınlanmış bilgi tabanı ayarlarınızla yeni bir temel **POST** isteği oluşturun. Aşağıdaki bölümlerde, sorguyu bilgi tabanınıza değiştirmek için POST gövdesi JSON'u değiştirin.
 
-## <a name="use-metadata-to-filter-answer"></a>Yanıtı filtrelemek için meta verileri kullanma
+## <a name="use-metadata-to-filter-answer"></a>Yanıta filtre lemek için meta verileri kullanma
 
-Önceki bir hızlı başlangıçta, iki farklı soruyu ayırt etmek için meta veriler iki QnA kümesine eklenmiştir. Filtreyi yalnızca ilgili QnA kümesiyle kısıtlamak için sorguya meta verileri ekleyin.
+Önceki hızlı başlatmada, iki farklı soruyu ayırt etmek için iki QnA kümesine meta veriler eklenmiştir. Filtreyi yalnızca ilgili QnA kümesiyle sınırlamak için sorguya meta verileri ekleyin.
 
-1. Postman 'da, `service:qna_maker`ad/değer çiftiyle `strictFilters` özelliğini ekleyerek yalnızca JSON sorgusunu değiştirin. JSON gövdesi şu olmalıdır:
+1. Postman'da, yalnızca json sorgusunu `strictFilters` değiştirerek özelliği ad/değer çiftinin ''in' ile birlikte `service:qna_maker`eklemesini Vücut JSON olmalıdır:
 
     ```json
     {
@@ -64,11 +64,11 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
     }
     ```
 
-    Bu soru, iki sorudan ve yanıt kümelerinden birini döndürebilen tek bir sözcüktür `size`. `strictFilters` dizisi, yanıta yalnızca `qna_maker` yanıtlara karşı azaltmasını söyler.
+    Soru sadece tek bir `size`kelime, iki soru ve cevap kümeleri de döndürebilir. Dizi, `strictFilters` yanıtı sadece `qna_maker` yanıtlara indirgeyecek şekilde söyler.
 
-1. Yanıt yalnızca filtre ölçütlerini karşılayan yanıtı içerir.
+1. Yanıt, yalnızca filtre ölçütlerini karşılayan yanıtı içerir.
 
-    Aşağıdaki yanıt okunabilirlik için biçimlendirildi:
+    Aşağıdaki yanıt okunabilirlik için biçimlendirilmiştir:
 
     ```JSON
     {
@@ -103,13 +103,13 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
     }
     ```
 
-    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt kümesi varsa, bu geri döndürülemez. Bunun yerine, genel yanıt `No good match found in KB.` döndürülür.
+    Arama terimini karşılamayan ancak filtreyi karşılayan bir soru ve yanıt kümesi varsa, döndürülmez. Bunun yerine, `No good match found in KB.` genel yanıt döndürülür.
 
-## <a name="use-debug-query-property"></a>Hata ayıklama sorgu özelliğini kullan
+## <a name="use-debug-query-property"></a>Hata ayıklama sorgusu özelliğini kullanma
 
-Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Faydalı olsa da gerekli değildir. Hata ayıklama bilgileriyle bir yanıt oluşturmak için `debug` özelliğini ekleyin:
+Hata ayıklama bilgileri, döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Yararlı olsa da, gerekli değildir. Hata ayıklama bilgileriyle yanıt oluşturmak `debug` için aşağıdaki özelliği ekleyin:
 
-1. Postman 'da, yalnızca `debug` özelliğini ekleyerek JSON gövdesini değiştirin. JSON şu olmalıdır:
+1. Postman olarak, mülkiyet ekleyerek sadece vücut `debug` JSON değiştirin. JSON olmalıdır:
 
     ```json
     {
@@ -121,7 +121,7 @@ Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlaman�
     }
     ```
 
-1. Yanıt, Yanıtla ilgili bilgileri içerir. Aşağıdaki JSON çıktısında, bazı hata ayıklama ayrıntıları üç nokta ile değiştirilmiştir.
+1. Yanıt, yanıtla ilgili bilgileri içerir. Aşağıdaki JSON çıkışında, bazı hata ayıklama ayrıntıları elips ile değiştirilmiştir.
 
     ```console
     {
@@ -211,11 +211,11 @@ Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlaman�
     }
     ```
 
-## <a name="use-test-knowledge-base"></a>Sınama Bilgi Bankası 'nı kullanın
+## <a name="use-test-knowledge-base"></a>Test bilgi tabanını kullanma
 
-Sınama Bilgi Bankası 'ndan bir yanıt almak istiyorsanız, `isTest` Body özelliğini kullanın.
+Eğer test bilgi tabanından bir cevap almak `isTest` istiyorsanız, vücut özelliğini kullanın.
 
-Postman 'da, yalnızca `isTest` özelliğini ekleyerek JSON gövdesini değiştirin. JSON şu olmalıdır:
+Postman olarak, mülkiyet ekleyerek sadece vücut `isTest` JSON değiştirin. JSON olmalıdır:
 
 ```json
 {
@@ -224,14 +224,14 @@ Postman 'da, yalnızca `isTest` özelliğini ekleyerek JSON gövdesini değişti
 }
 ```
 
-JSON yanıtı yayımlanan Bilgi Bankası sorgusuyla aynı şemayı kullanır.
+JSON yanıtı, yayımlanmış bilgi bankası sorgusuyla aynı şema kullanır.
 
 > [!NOTE]
-> Test ve yayımlanan bilgi tabanı tam olarak aynı ise, test dizini kaynaktaki tüm bilgi tabanları arasında paylaşıldığından bazı hafif değişimler de olabilir.
+> Test ve yayımlanmış bilgi tabanları tamamen aynıysa, test dizini kaynaktaki tüm bilgi tabanları arasında paylaşıldığından bazı küçük farklılıklar olabilir.
 
-## <a name="query-for-a-chit-chat-answer"></a>Bir CHIT-chat yanıtı sorgusu
+## <a name="query-for-a-chit-chat-answer"></a>Chit-chat yanıtı için sorgu
 
-1. Postman 'da, kullanıcıdan yalnızca JSON gövdesini bir konuşma bitiş bildirimiyle değiştirin. JSON şu olmalıdır:
+1. Postman'da, yalnızca json gövdesini kullanıcıdan gelen bir konuşma sonu deyimiolarak değiştirin. JSON olmalıdır:
 
     ```json
     {
@@ -239,7 +239,7 @@ JSON yanıtı yayımlanan Bilgi Bankası sorgusuyla aynı şemayı kullanır.
     }
     ```
 
-1. Yanıt puanı ve yanıtı içerir.
+1. Yanıt, skoru ve yanıtı içerir.
 
     ```json
     {
@@ -321,13 +321,13 @@ JSON yanıtı yayımlanan Bilgi Bankası sorgusuyla aynı şemayı kullanır.
     }
     ```
 
-    `Thank you` sorusu bir genel konuşma sorusuyla tam olarak eşleştiği için Soru-Cevap Oluşturma tam olarak emindir ve 100 puan döndürür. Soru-Cevap Oluşturma Ayrıca, tüm ilgili soruların yanı sıra CHIT-chat meta veri etiketi bilgilerini içeren meta veri özelliği de döndürülür.
+    `Thank you` sorusu bir genel konuşma sorusuyla tam olarak eşleştiği için Soru-Cevap Oluşturma tam olarak emindir ve 100 puan döndürür. QnA Maker ayrıca ilgili tüm soruların yanı sıra Chit-chat meta veri etiketi bilgilerini içeren meta veri özelliğini de iade etti.
 
-## <a name="use-threshold-and-default-answer"></a>Eşik ve varsayılan yanıtı kullan
+## <a name="use-threshold-and-default-answer"></a>Eşik ve varsayılan yanıtı kullanma
 
-Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayılan yanıt döndürülür.
+Yanıt için minimum bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayılan yanıt döndürülür.
 
-1. Postman 'da, kullanıcıdan yalnızca JSON gövdesini bir konuşma bitiş bildirimiyle değiştirin. JSON şu olmalıdır:
+1. Postman'da, yalnızca json gövdesini kullanıcıdan gelen bir konuşma sonu deyimiolarak değiştirin. JSON olmalıdır:
 
     ```json
     {
@@ -336,9 +336,9 @@ Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayıla
     }
     ```
 
-    Sorunun puanı %71 olduğundan ve bunun yerine Bilgi Bankası oluşturduğunuzda verdiğiniz varsayılan yanıtı geri döndürtiğinden Bilgi Bankası bu yanıtı bulamaz.
+    Sorunun puanı %71 olduğundan bilgi tabanı bu yanıtı bulamamalı ve bunun yerine bilgi tabanını oluşturduğunuzda sağladığınız varsayılan yanıtı döndürmelidir.
 
-    Puan ve yanıt dahil döndürülen JSON yanıtı:
+    Puan ve cevap da dahil olmak üzere döndürülen JSON yanıtı:
 
     ```json
     {
@@ -357,9 +357,9 @@ Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayıla
     }
     ```
 
-    Soru-Cevap Oluşturma bir `0`puanı döndürdü, bu, güven anlamına gelir. Ayrıca varsayılan yanıtı da döndürür.
+    QnA Maker bir `0`puan döndü , hangi güven anlamına gelir. Ayrıca varsayılan yanıtı döndürdü.
 
-1. Eşik değerini %60 olarak değiştirip sorguyu yeniden isteyin:
+1. Eşik değerini %60'a değiştirin ve sorguyu yeniden isteyin:
 
     ```json
     {
@@ -368,7 +368,7 @@ Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayıla
     }
     ```
 
-    Döndürülen JSON yanıtı buldu.
+    İade edilen JSON cevabı buldu.
 
     ```json
     {

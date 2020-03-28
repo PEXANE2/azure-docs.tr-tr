@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: metin betiğini Dönüştür-Translator Metin Çevirisi'
+title: 'Hızlı başlangıç: Metin komut dosyalarını dönüştürme - Çevirmen Metni'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Translator Metin Çevirisi API'si kullanarak metni bir betikten diğerine (dönüştürme) nasıl ayırt leyeceğinizi öğreneceksiniz. Bu örnekte Japonca, Latin alfabesine dönüştürülmektedir.
+description: Bu hızlı başlangıçta, Çevirmen Metin API'sini kullanarak metni bir komut dosyasından diğerine nasıl çevireceğinizi (dönüştürmeyi) öğreneceksiniz. Bu örnekte Japonca, Latin alfabesine dönüştürülmektedir.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4247983fd39cd8d9acf256d313ae10aa2002585f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525133"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Hızlı başlangıç: metni alfabeden ayırmak için Translator Metin Çevirisi API'si kullanın
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Hızlı başlangıç: Metni çevirmek için Çevirmen Metin API'sini kullanın
 
-Bu hızlı başlangıçta, Translator Metin Çevirisi REST API kullanarak metni bir betikten diğerine nasıl dönüştüreceğinizi öğreneceksiniz. Verilen örnekte Japonca, Latin alfabesine dönüştürülmektedir.
+Bu hızlı başlangıçta, Çevirmen Metin REST API'sini kullanarak metni bir komut dosyasından diğerine nasıl çevireceğinizi (dönüştürmeyi) öğreneceksiniz. Verilen örnekte Japonca, Latin alfabesine dönüştürülmektedir.
 
 Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 

@@ -11,38 +11,38 @@ ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77495111"
 ---
-Bu kıvrımlı tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konusunda size yol gösterir.
+Bu cURL tabanlı quickstart bilgi tabanından bir cevap alma ile size yol.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* En son [**kıvır**](https://curl.haxx.se/).
-* Sahip olmanız gerekir
-    * Bir [soru-cevap oluşturma hizmeti](../How-To/set-up-qnamaker-service-azure.md)
-    * Önceki [hızlı](../Quickstarts/add-question-metadata-portal.md)başlangıçta, meta veriler ve tek BT sohbeti ile yapılandırılan, sorular ve yanıtlarla ilgili eğitim ve yanıt verilen bir bilgi tabanı.
+* Son [**cURL**](https://curl.haxx.se/).
+* Sahip olmalısınız.
+    * [QnA Maker hizmeti](../How-To/set-up-qnamaker-service-azure.md)
+    * Sorular ve cevaplar ile eğitimli ve yayınlanan bilgi tabanı, önceki [quickstart](../Quickstarts/add-question-metadata-portal.md)itibaren, meta veri ve Chit sohbet ile yapılandırılmış.
 
 > [!NOTE]
-> Bilgi tabanınızdan bir soruya yanıt oluşturmaya hazırsanız, bilgi bankasını [eğitmeniz](../Quickstarts/create-publish-knowledge-base.md#save-and-train) ve [yayımlamanız](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) gerekir. Bilgi Bankası 'niz yayımlandığında **Yayımla** sayfası, yanıt oluşturmak için http isteği ayarlarını görüntüler. **Kıvrımlı** sekmesi, komut satırı aracından bir yanıt oluşturmak için gereken ayarları gösterir.
+> Bilgi tabanınızdan bir soruya yanıt vermeye hazır olduğunuzda, bilgi tabanınızı [eğitmeli](../Quickstarts/create-publish-knowledge-base.md#save-and-train) ve [yayınlamanız](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) gerekir. Bilgi tabanınız yayımlandığında, Yanıt oluşturmak için **Yayımla** sayfası HTTP istek ayarlarını görüntüler. **cURL** sekmesi komut satırı aracından yanıt oluşturmak için gereken ayarları gösterir.
 
-## <a name="use-metadata-to-filter-answer"></a>Yanıtı filtrelemek için meta verileri kullanma
+## <a name="use-metadata-to-filter-answer"></a>Yanıta filtre lemek için meta verileri kullanma
 
-Meta verilere dayalı bir yanıt için önceki hızlı bir şekilde sorgu Bilgi Bankası 'nı kullanın.
+Meta verilere dayalı bir yanıt için önceki hızlı sorgu bilgi tabanını kullanın.
 
-1. Bilgi Bankası 'nın **Ayarlar** sayfasında, bilgi bankasından bir yanıt oluşturmak için kullanılan örnek bir kıvrımlı komutu görmek için **kıvrımlı** sekmesini seçin.
-1. Komutu düzenleyebilmeniz için komutu düzenlenebilir bir ortama (örneğin, bir metin dosyası) kopyalayın. `service:qna_maker` meta verilerinin QnA Sets için bir filtre olarak kullanılması için soru değerini aşağıda gösterildiği gibi düzenleyin.
+1. Bilgi tabanının **Ayarlar** sayfasından, bilgi tabanından yanıt oluşturmak için kullanılan örnek bir cURL komutunu görmek için **CURL** sekmesini seçin.
+1. Komutu yeniden yapabilmek için komutu editable ortama (metin dosyası gibi) kopyalayın. Soru değerini, qna kümeleri için `service:qna_maker` filtre olarak kullanılacak şekilde aşağıdaki gibi edin.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Bu soru, iki QnA kümesinden birini döndürebilen tek bir sözcüktür `size`. `strictFilters` dizisi, yanıta yalnızca `qna_maker` yanıtlara karşı azaltmasını söyler.
+    Soru sadece tek bir `size`kelime, iki QnA setleri de döndürebilir. Dizi, `strictFilters` yanıtı sadece `qna_maker` yanıtlara indirgeyecek şekilde söyler.
 
-1. Yanıt yalnızca filtre ölçütlerini karşılayan yanıtı içerir. Aşağıdaki kıvrımlı yanıtı okunabilirlik için biçimlendirildi:
+1. Yanıt, yalnızca filtre ölçütlerini karşılayan yanıtı içerir. Aşağıdaki cURL yanıtı okunabilirlik için biçimlendirilmiştir:
 
     ```JSON
     {
@@ -77,23 +77,23 @@ Meta verilere dayalı bir yanıt için önceki hızlı bir şekilde sorgu Bilgi 
     }
     ```
 
-    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt kümesi varsa, bu geri döndürülemez. Bunun yerine, genel yanıt `No good match found in KB.` döndürülür.
+    Arama terimini karşılamayan ancak filtreyi karşılayan bir soru ve yanıt kümesi varsa, döndürülmez. Bunun yerine, `No good match found in KB.` genel yanıt döndürülür.
 
-## <a name="use-debug-query-property"></a>Hata ayıklama sorgu özelliğini kullan
+## <a name="use-debug-query-property"></a>Hata ayıklama sorgusu özelliğini kullanma
 
-Hata ayıklama bilgileri döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Faydalı olsa da gerekli değildir. Hata ayıklama bilgileriyle bir yanıt oluşturmak için `debug` özelliğini ekleyin:
+Hata ayıklama bilgileri, döndürülen yanıtın nasıl belirlendiğini anlamanıza yardımcı olur. Yararlı olsa da, gerekli değildir. Hata ayıklama bilgileriyle yanıt oluşturmak `debug` için aşağıdaki özelliği ekleyin:
 
 ```json
 Debug: {Enable:true}
 ```
 
-1. Daha fazla bilgi görmek için, hata ayıklama özelliğini içerecek şekilde kıvrımlı komutunu düzenleyin.
+1. Daha fazla bilgi görmek için hata ayıklama özelliğini içerecek şekilde cURL komutunu edin.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
     ```
 
-1. Yanıt, Yanıtla ilgili bilgileri içerir. Aşağıdaki JSON çıkışında bazı hata ayıklama ayrıntıları, kısaltma için üç nokta ile değiştirilmiştir.
+1. Yanıt, yanıtla ilgili bilgileri içerir. Aşağıdaki JSON çıkışında, bazı hata ayıklama ayrıntıları kısalık için elips ile değiştirilmiştir.
 
     ```console
     {
@@ -183,36 +183,36 @@ Debug: {Enable:true}
     }
     ```
 
-## <a name="use-test-knowledge-base"></a>Sınama Bilgi Bankası 'nı kullanın
+## <a name="use-test-knowledge-base"></a>Test bilgi tabanını kullanma
 
-Sınama Bilgi Bankası 'ndan bir yanıt almak istiyorsanız, `isTest` Body özelliğini kullanın.
+Eğer test bilgi tabanından bir cevap almak `isTest` istiyorsanız, vücut özelliğini kullanın.
 
-Özelliği bir Boole değeridir.
+Özellik bir boolean değeridir.
 
 ```json
 isTest:true
 ```
 
-Kıvrımlı komutu şöyle görünür:
+cURL komutu aşağıdaki gibi görünür:
 
 ```bash
 curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
 ```
 
-JSON yanıtı yayımlanan Bilgi Bankası sorgusuyla aynı şemayı kullanır.
+JSON yanıtı, yayımlanmış bilgi bankası sorgusuyla aynı şema kullanır.
 
 > [!NOTE]
-> Test ve yayımlanan bilgi tabanı tam olarak aynı ise, test dizini kaynaktaki tüm bilgi tabanları arasında paylaşıldığından bazı hafif değişimler de olabilir.
+> Test ve yayımlanmış bilgi tabanları tamamen aynıysa, test dizini kaynaktaki tüm bilgi tabanları arasında paylaşıldığından bazı küçük farklılıklar olabilir.
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Bir GIT-chat yanıtı sorgulamak için kıvrımlı kullanın
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Chit-chat yanıtı için sorgulama kURL'yi kullanın
 
-1. Kıvrımlı özellikli terminalde, kullanıcıdan, soru olarak `Thank you` gibi bir bot konuşma bitiş ekstresi kullanın. Ayarlanacak başka hiçbir özellik yok.
+1. cURL özellikli terminalde, soru gibi `Thank you` kullanıcıdan gelen bir bot konuşma bitiş deyimi kullanın. Ayarlı başka özellik yok.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
     ```
 
-1. Kıvrımlı komutunu çalıştırın ve puan ve yanıt dahil olmak üzere JSON yanıtını alın.
+1. CURL komutunu çalıştırın ve puan ve yanıt da dahil olmak üzere JSON yanıtını alın.
 
     ```json
     {
@@ -294,19 +294,19 @@ JSON yanıtı yayımlanan Bilgi Bankası sorgusuyla aynı şemayı kullanır.
     }
     ```
 
-    `Thank you` sorusu bir genel konuşma sorusuyla tam olarak eşleştiği için Soru-Cevap Oluşturma tam olarak emindir ve 100 puan döndürür. Soru-Cevap Oluşturma Ayrıca, tüm ilgili soruların yanı sıra CHIT-chat meta veri etiketi bilgilerini içeren meta veri özelliği de döndürülür.
+    `Thank you` sorusu bir genel konuşma sorusuyla tam olarak eşleştiği için Soru-Cevap Oluşturma tam olarak emindir ve 100 puan döndürür. QnA Maker ayrıca ilgili tüm soruların yanı sıra Chit-chat meta veri etiketi bilgilerini içeren meta veri özelliğini de iade etti.
 
-## <a name="use-curl-with-threshold-and-default-answer"></a>Eşik ve varsayılan Yanıtla kıvrımlı kullanın
+## <a name="use-curl-with-threshold-and-default-answer"></a>Eşik ve varsayılan yanıt ile cURL kullanma
 
-Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayılan yanıt döndürülür.
+Yanıt için minimum bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayılan yanıt döndürülür.
 
-1. %80 veya daha iyi bir eşiğin `size` yanıt vermesini istemek için kendi kaynak adınızla, Bilgi Bankası KIMLIĞINIZLE ve uç nokta anahtarınızla değiştirerek aşağıdaki kıvrımlı komutunu kullanın. Sorunun puanı %71 olduğundan ve bunun yerine Bilgi Bankası oluşturduğunuzda verdiğiniz varsayılan yanıtı geri döndürtiğinden Bilgi Bankası bu yanıtı bulamaz.
+1. %80 veya daha iyi bir `size` eşikle yanıt istemek için kendi kaynak adınızı, bilgi bankası kimliğinizi ve bitiş noktası anahtarınızı değiştirerek aşağıdaki cURL komutunu kullanın. Sorunun puanı %71 olduğundan bilgi tabanı bu yanıtı bulamamalı ve bunun yerine bilgi tabanını oluşturduğunuzda sağladığınız varsayılan yanıtı döndürmelidir.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
     ```
 
-1. Kıvrımlı komutunu çalıştırın ve puan ve yanıt dahil olmak üzere JSON yanıtını alın.
+1. CURL komutunu çalıştırın ve puan ve yanıt da dahil olmak üzere JSON yanıtını alın.
 
     ```json
     {
@@ -325,7 +325,7 @@ Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayıla
     }
     ```
 
-    Soru-Cevap Oluşturma bir `0`puanı döndürdü, bu, güven anlamına gelir. Ayrıca varsayılan yanıtı da döndürür.
+    QnA Maker bir `0`puan döndü , hangi güven anlamına gelir. Ayrıca varsayılan yanıtı döndürdü.
 
     ```json
     {
@@ -407,19 +407,19 @@ Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayıla
     }
     ```
 
-    `Thank you` sorusu bir genel konuşma sorusuyla tam olarak eşleştiği için Soru-Cevap Oluşturma tam olarak emindir ve 100 puan döndürür. Soru-Cevap Oluşturma Ayrıca, tüm ilgili soruların yanı sıra CHIT-chat meta veri etiketi bilgilerini içeren meta veri özelliği de döndürülür.
+    `Thank you` sorusu bir genel konuşma sorusuyla tam olarak eşleştiği için Soru-Cevap Oluşturma tam olarak emindir ve 100 puan döndürür. QnA Maker ayrıca ilgili tüm soruların yanı sıra Chit-chat meta veri etiketi bilgilerini içeren meta veri özelliğini de iade etti.
 
-## <a name="use-curl-with-threshold-and-default-answer"></a>Eşik ve varsayılan Yanıtla kıvrımlı kullanın
+## <a name="use-curl-with-threshold-and-default-answer"></a>Eşik ve varsayılan yanıt ile cURL kullanma
 
-Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayılan yanıt döndürülür.
+Yanıt için minimum bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayılan yanıt döndürülür.
 
-1. %80 veya daha iyi bir eşikle `size` bir yanıt istemek için `threshold` özelliğini ekleyin. Sorunun puanı %71 olduğundan Bilgi Bankası bu yanıtı bulamamalıdır. Sonuç, Bilgi Bankası oluşturduğunuzda verdiğiniz varsayılan yanıtı döndürür.
+1. % `threshold` 80 veya daha `size` iyi bir eşik ile bir cevap istemek için özelliği ekleyin. Soru puanı% 71 olduğu için bilgi tabanı bu cevabı bulamamalıdır. Sonuç, bilgi tabanını oluşturduğunuzda sağladığınız varsayılan yanıtı döndürür.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
     ```
 
-1. Kıvrımlı komutunu çalıştırın ve JSON yanıtını alın.
+1. cURL komutunu çalıştırın ve JSON yanıtını alın.
 
     ```json
     {
@@ -438,15 +438,15 @@ Yanıt için en az bir eşik isteyebilirsiniz. Eşik karşılanmazsa, varsayıla
     }
     ```
 
-    Soru-Cevap Oluşturma bir `0`puanı döndürdü, bu, güven anlamına gelir. Ayrıca varsayılan yanıtı da döndürür.
+    QnA Maker bir `0`puan döndü , hangi güven anlamına gelir. Ayrıca varsayılan yanıtı döndürdü.
 
-1. Eşik değerini %60 olarak değiştirip sorguyu yeniden isteyin:
+1. Eşik değerini %60'a değiştirin ve sorguyu yeniden isteyin:
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
     ```
 
-    Döndürülen JSON yanıtı buldu.
+    İade edilen JSON cevabı buldu.
 
     ```json
     {

@@ -11,22 +11,22 @@ ms.custom: include file
 ms.date: 01/15/2020
 ms.author: diberry
 ms.openlocfilehash: 11abd52681d7c9962af4e5bf0728f97b256223c1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122904"
 ---
-## <a name="create-a-personalizer-azure-resource"></a>Bir kişiselleştirici Azure kaynağı oluşturma
+## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure kaynağı oluşturma
 
-Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak kişiselleştirici için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
+Yerel makinenizde [Azure portalını](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI'yi](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Personalizer için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-* [Deneme anahtarını](https://azure.microsoft.com/try/cognitive-services) ücretsiz olarak 7 gün boyunca geçerli olacak şekilde öğrenin. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.
-* [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
+* Ücretsiz olarak 7 gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services) alın. Kaydolduktan sonra Azure [web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)satışa sunulacaktır.
+* Azure [portalında](https://portal.azure.com/)kaynağınızı görüntüleyin.
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)oluşturun:
+Deneme aboneliğinizden veya kaynağınızdan bir anahtar aldıktan sonra, iki [ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)oluşturun:
 
-* Kaynak anahtarı için `PERSONALIZER_RESOURCE_KEY`.
-* Kaynak uç noktası için `PERSONALIZER_RESOURCE_ENDPOINT`.
+* `PERSONALIZER_RESOURCE_KEY`kaynak anahtarı için.
+* `PERSONALIZER_RESOURCE_ENDPOINT`kaynak bitiş noktası için.
 
-Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** sayfasından kullanılabilir.
+Azure portalında, hem anahtar hem de bitiş noktası değerleri **hızlı başlangıç** sayfasından kullanılabilir.

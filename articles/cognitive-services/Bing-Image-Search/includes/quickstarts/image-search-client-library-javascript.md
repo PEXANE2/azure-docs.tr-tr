@@ -1,5 +1,5 @@
 ---
-title: Bing Resim Arama JavaScript istemci kitaplığı hızlı başlangıç
+title: Bing Resim Arama JavaScript istemci kitaplığı hızlı başlat
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: a37439d24a39a16e8bb51a09c9a33abecfa36fc0
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899590"
 ---
-API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama istemci kitaplığını kullanarak ilk görüntünüzü aramanızı sağlamak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
+API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Image Search istemci kitaplığını kullanarak ilk resim aramanızı yapmak için bu hızlı başlatmayı kullanın. Bu basit JavaScript uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
 
-Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js)'da bulunabilir.
+Bu örnek için kaynak kodu, ek hata işleme ve ek açıklamalar ile [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js için Bilişsel Hizmetler Görüntü Arama SDK'sı](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
     * `npm install @azure/cognitiveservices-imagesearch` kullanarak yükleme

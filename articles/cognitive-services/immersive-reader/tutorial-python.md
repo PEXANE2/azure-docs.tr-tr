@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Python kullanarak modern okuyucu başlatma'
+title: 'Öğretici: Python kullanarak Immersive Reader başlatın'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, tam ekran okuyucuyu Başlatan bir Python uygulaması oluşturacaksınız.
+description: Bu öğreticide, Sürükleyici Okuyucu'yu başlatan bir Python uygulaması oluşturursunuz.
 services: cognitive-services
 author: dylankil
 manager: nitinme
@@ -11,38 +11,38 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.openlocfilehash: a252afae0a007ee0b791b56d19ffb0685848d30a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844369"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Öğretici: Python örnek projesini kullanarak modern okuyucu başlatma
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Öğretici: Python örnek projesini kullanarak Sürükleyici Okuyucuyu başlatın
 
-[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. Bu öğreticide, tam ekran okuyucuyu Başlatan bir Python web uygulamasının nasıl oluşturulacağı ele alınmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Genel [bakışta,](./overview.md)Sürükleyici Okuyucu'nun ne olduğunu ve dil öğrenenler, yeni ortaya çıkan okuyucular ve öğrenme farklılıkları olan öğrenciler için okuma anlamayı geliştirmek için kanıtlanmış teknikleri nasıl uyguladığını öğrendiniz. Bu öğretici, Sürükleyici Reader'ı başlatan bir Python web uygulamasının nasıl oluşturulacağını kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Örnek bir proje kullanarak PIP, Flask, Jınja ve virtualalenv ile bir Python web uygulaması oluşturma
+> * Örnek bir proje kullanarak Pip, Flask, Jinja ve virtualenv ile python web uygulaması oluşturun
 > * Erişim belirteci alma
-> * Örnek içerikle modern okuyucu başlatma
+> * Örnek içerikle Sürükleyici Okuyucuyu başlatın
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
+* Azure Etkin Dizin kimlik doğrulaması için yapılandırılan Sürükleyici Bir Reader kaynağı. Kurulumu için [bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerlere ihtiyacınız olacaktır. Oturumunuzun çıktısını ileride başvurmak için bir metin dosyasına kaydedin.
 * [Git](https://git-scm.com/)
-* [Modern Okuyucu SDK 'Sı](https://github.com/microsoft/immersive-reader-sdk)
-* [Python](https://www.python.org/downloads/) ve [PIP](https://docs.python.org/3/installing/index.html). Python 3,4 ' den başlayarak, PIP Python ikili yükleyicilerine göre varsayılan olarak dahil edilir.
-* [Flask](https://flask.palletsprojects.com/en/1.0.x/)
-* [Jınja](http://jinja.pocoo.org/docs/2.10/)
-* [virtualalenv](https://virtualenv.pypa.io/en/latest/) ve [virtualalenvwrapper-](https://pypi.org/project/virtualenvwrapper-win/) [OSX için Windows veya virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/) için Win
-* [istekler modülü](https://pypi.org/project/requests/2.7.0/)
-* [Visual Studio Code](https://code.visualstudio.com/) gıbı bir IDE
+* [Sürükleyici Okuyucu SDK](https://github.com/microsoft/immersive-reader-sdk)
+* [Python](https://www.python.org/downloads/) ve [pip](https://docs.python.org/3/installing/index.html). Python 3.4 ile başlayarak, pip varsayılan olarak Python ikili yükleyicileri ile birlikte verilir.
+* [Şişe](https://flask.palletsprojects.com/en/1.0.x/)
+* [Jinja](http://jinja.pocoo.org/docs/2.10/)
+* [Virtualenv](https://virtualenv.pypa.io/en/latest/) ve [Virtualenvwrapper-Windows](https://pypi.org/project/virtualenvwrapper-win/) veya [OSX için virtualenvwrapper kazanmak](https://virtualenvwrapper.readthedocs.io/en/latest/)
+* [istekleri modülü](https://pypi.org/project/requests/2.7.0/)
+* [Visual Studio Code](https://code.visualstudio.com/) gibi bir IDE
 
 ## <a name="configure-authentication-credentials"></a>Kimlik doğrulama kimlik bilgilerini yapılandırma
 
-_. Env_adlı yeni bir dosya oluşturun ve bu dosyaya aşağıdaki kodu yapıştırarak, derinlikli okuyucu kaynağını oluştururken verilen değerleri sağlayabilirsiniz.
+_.env_adlı yeni bir dosya oluşturun ve Immersive Reader kaynağınızı oluşturduğunuzda verilen değerleri sağlayarak aşağıdaki kodu yapıştırın.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -51,17 +51,17 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Ortak olmaması gereken gizli dizileri içerdiğinden, bu dosyayı kaynak denetimine yürütmemeyi unutmayın.
+Bu dosyayı kaynak denetimine işlemeyeceğinden emin olun, çünkü kamuya açıklanmaması gereken sırlar içerir.
 
-**Getimmersivereadertoken** API uç noktası, yetkisiz kullanıcıların, bir dizi kimlik doğrulaması (örneğin, [OAuth](https://oauth.net/2/)) arkasında güvenli hale gelmelidir Bu iş, Bu öğreticinin kapsamı dışındadır.
+**Getimmersivereadertoken** API bitiş noktası, yetkisiz kullanıcıların Sürükleyici Reader hizmetinize ve faturanıza karşı kullanılacak jetonları almasını önlemek için bir tür kimlik doğrulamanın (örneğin, [OAuth)](https://oauth.net/2/)arkasına sabitlenmelidir; bu çalışma bu öğretici kapsamı dışındadır.
 
-## <a name="create-a-python-web-app-on-windows"></a>Windows 'da Python web uygulaması oluşturma
+## <a name="create-a-python-web-app-on-windows"></a>Windows'da Python web uygulaması oluşturma
 
-Windows üzerinde `flask` kullanarak bir Python web uygulaması oluşturun.
+Windows'da kullanarak `flask` bir Python web uygulaması oluşturun.
 
-[Git](https://git-scm.com/)'i yükleyin.
+[Git'i yükleyin.](https://git-scm.com/)
 
-Git yüklendikten sonra bir komut Istemi açın ve tam ekran okuyucu SDK Git deposunu bilgisayarınızdaki bir klasöre ' kopyalayın '
+Git yüklendikten sonra bir Komut İstemi açın ve Bilgisayarınızdaki bir klasöre Sürükleyici Reader SDK Git deposu 'klon'
 
 ```cmd
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -69,73 +69,73 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 [Python](https://www.python.org/downloads/)'ı yükleyin.
 
-YOLA Python ekleme kutusunu işaretleyin.
+Python'u PATH kutusuna ekle kutusunu işaretleyin.
 
-![Python Windows yüklemesi Iletişim kutusu 1. adım](./media/pythoninstallone.jpg)
+![Python Windows Install İletişim Adımı 1](./media/pythoninstallone.jpg)
 
-Kutuları işaretleyerek Isteğe bağlı özellikler ekleyin ve ardından ' Ileri ' düğmesine tıklayın.
+Kutuları işaretleyerek İsteğe Bağlı Özellikler ekle ve ardından 'İleri' düğmesini tıklatın.
 
-![Python Windows yüklemesi Iletişim kutusu 2. adım](./media/pythoninstalltwo.jpg)
+![Python Windows Install İletişim Adımı 2](./media/pythoninstalltwo.jpg)
 
-' Özel yükleme ' öğesini seçin ve yükleme yolunu kök klasörünüz olarak ayarlayın, örneğin, `C:\Python37-32\` ' yükleme ' düğmesine tıklayın.
+'Özel yükleme'yi seçin ve yükleme yolunu kök klasörünüz olarak ayarlayın, örneğin `C:\Python37-32\` 'Yükle' düğmesini tıklatın.
 
-![Python Windows yüklemesi Iletişim kutusu 3. adım](./media/pythoninstallthree.jpg)
+![Python Windows Install Dialog Adım 3](./media/pythoninstallthree.jpg)
 
-Python yüklemesi tamamlandıktan sonra, bir komut Istemi açın ve Python betikleri klasörüne `cd`.
+Python Yükleme tamamlandıktan sonra bir `cd` Komut İstemi ve Python Komut Dosyaları klasörüne açın.
 
 ```cmd
 cd C:\Python37-32\Scripts
 ```
 
-Flask 'yi yükler.
+Flask'ı yükleyin.
 
 ```cmd
 pip install flask
 ```
 
-Jinja2 'i yükler. Python için tam özellikli bir şablon altyapısı.
+Jinja2'yi yükleyin. Python için tam özellikli şablon motoru.
 
 ```cmd
 pip install jinja2
 ```
 
-Virtualenv 'yi yükler. Yalıtılmış Python ortamları oluşturmaya yönelik bir araç.
+Virtualenv yükleyin. Yalıtılmış Python ortamları oluşturmak için bir araç.
 
 ```cmd
 pip install virtualenv
 ```
 
-Virtualalenvwrapper-WIN 'yi yükler. Virtualalenvwrapper arkasındaki fikir virtualalenv kullanımını kolaylaştırmaya yönelik.
+virtualenvwrapper-win yükleyin. Virtualenvwrapper arkasındaki fikir virtualenv kullanımını kolaylaştırmaktır.
 
 ```cmd
 pip install virtualenvwrapper-win
 ```
 
-İstekler modülünü yükler. İstekler, Python 'da yazılmış bir apache2 lisanslı HTTP kitaplığı.
+İstekmodüllerini yükleyin. İstekler Python'da yazılmış bir Apache2 Lisanslı HTTP kütüphanesidir.
 
 ```cmd
 pip install requests
 ```
 
-Python-dotenv modülünü yükler. Bu modül,. env dosyasından anahtar-değer çiftini okur ve bunları ortam değişkenine ekler.
+Python-dotenv modüllerini yükleyin. Bu modül .env dosyasından anahtar değeri çiftini okur ve bunları ortam değişkenine ekler.
 
 ```cmd
 pip install python-dotenv
 ```
 
-Sanal ortam oluşturma
+Sanal ortam yaratın
 
 ```cmd
 mkvirtualenv advanced-python
 ```
 
-örnek proje kök klasörüne `cd`.
+`cd`örnek proje kök klasörüne.
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
 ```
 
-Örnek projeyi ortamla bağlayın. Bu, yeni oluşturulan sanal ortamı örnek proje kök klasörüne eşler.
+Örnek projeyi ortama bağlayın. Bu, yeni oluşturulan sanal ortamı örnek proje kök klasörüne eşler.
 
 ```cmd
 setprojectdir .
@@ -147,7 +147,7 @@ Sanal ortamı etkinleştirin.
 activate
 ```
 
-Proje artık etkin olmalıdır ve komut Isteminde `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` gibi bir şey görürsünüz.
+Proje artık etkin olmalıdır ve Komut İstemi'nde gibi `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` bir şey görürsünüz.
 
 Ortamı devre dışı bırakın.
 
@@ -155,31 +155,31 @@ Ortamı devre dışı bırakın.
 deactivate
 ```
 
-Artık ortamın devre dışı bırakılmakta olduğu için `(advanced-python)` ön eki ilerlemelidir.
+Önek `(advanced-python)` şimdi ortam devre dışı bırakıldığından gitmiş olmalıdır.
 
-`workon advanced-python` ortamı yeniden etkinleştirmek için örnek proje kök klasöründen çalıştırın.
+Ortamı yeniden etkinleştirmek `workon advanced-python` için örnek proje kök klasöründen çalıştırın.
 
 ```cmd
 workon advanced-python
 ```
 
-### <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle modern okuyucu başlatma
+### <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle Sürükleyici Okuyucuyu başlatın
 
-Ortam etkin olduğunda, örnek proje kök klasöründen `flask run` girerek örnek projeyi çalıştırın.
+Ortam etkin olduğunda, örnek proje kök `flask run` klasöründen girerek örnek projeyi çalıştırın.
 
 ```cmd
 flask run
 ```
 
-Tarayıcınızı açın ve _http://localhost:5000_ gidin.
+Tarayıcınızı açın ve _http://localhost:5000_' ye gidin.
 
-## <a name="create-a-python-web-app-on-osx"></a>OSX üzerinde bir Python web uygulaması oluşturma
+## <a name="create-a-python-web-app-on-osx"></a>OSX'te Python web uygulaması oluşturma
 
-OSX üzerinde `flask` kullanarak bir Python web uygulaması oluşturun.
+OSX'i kullanarak `flask` bir Python web uygulaması oluşturun.
 
-[Git](https://git-scm.com/)'i yükleyin.
+[Git'i yükleyin.](https://git-scm.com/)
 
-Git yüklendikten sonra, açık terminal ' i açın ve bilgisayarınızdaki bir klasöre ' kopyalayın ' ve modern Okuyucu SDK Git deposunu
+Git terminali ve 'klon' yüklü sonra Bilgisayarınızdaki bir klasöre Sürükleyici Reader SDK Git deposu
 
 ```bash
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -187,9 +187,9 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 [Python](https://www.python.org/downloads/)'ı yükleyin.
 
-Python kök klasörü gibi `Python37-32`, şimdi uygulamalar klasöründe olmalıdır.
+Python kök klasörü örneğin `Python37-32` artık Uygulamalar klasöründe olmalıdır.
 
-Python yüklemesi tamamlandıktan sonra, Terminal ve `cd` Python betikleri klasörüne açın.
+Python Yükleme tamamlandıktan sonra `cd` Terminal'i ve Python Scripts klasörünü açın.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -201,7 +201,7 @@ Pip yükleyin.
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ```
 
-Ardından, izin sorunlarından kaçınmak için şu anda oturum açmış olan kullanıcı için PIP 'yi yüklemek üzere aşağıdakileri çalıştırın.
+Ardından, izin sorunlarını önlemek için şu anda oturum açmış kullanıcı için pip yüklemek için aşağıdakileri çalıştırın.
 
 ```bash
 python get-pip.py --user
@@ -212,67 +212,67 @@ sudo nano /etc/paths
 ```
 
 - İstendiğinde parolanızı girin.
-- PIP yüklemenizin yolunu PATH değişkenine ekleyin.
-- Dosyanın sonuna gidin ve listenin son öğesi olarak eklemek istediğiniz yolu girin, örneğin `PATH=$PATH:/usr/local/bin`.
-- Çıkmak için Control-x ' i vurun.
-- Değiştirilen arabelleği kaydetmek için `Y` girin.
-- İşte bu kadar! Test etmek için yeni Terminal penceresinde şunu yazın: `echo $PATH`.
+- PIP yüklemenizin yolunu PATH değişkeninize ekleyin.
+- Dosyanın altına gidin ve listenin son öğesi olarak eklemek istediğiniz yolu girin. `PATH=$PATH:/usr/local/bin`
+- Çıkmak için control-x tuşuna bas.
+- Değiştirilen `Y` arabelleği kaydetmek için girin.
+- İşte bu kadar! Test etmek için, yeni Terminal `echo $PATH`penceresinde: .
 
-Flask 'yi yükler.
+Flask'ı yükleyin.
 
 ```bash
 pip install flask --user
 ```
 
-Jinja2 'i yükler. Python için tam özellikli bir şablon altyapısı.
+Jinja2'yi yükleyin. Python için tam özellikli şablon motoru.
 
 ```bash
 pip install Jinja2 --user
 ```
 
-Virtualenv 'yi yükler. Yalıtılmış Python ortamları oluşturmaya yönelik bir araç.
+Virtualenv yükleyin. Yalıtılmış Python ortamları oluşturmak için bir araç.
 
 ```bash
 pip install virtualenv --user
 ```
 
-Virtualalenvwrapper 'ı yükler. Virtualalenvwrapper arkasındaki fikir virtualalenv kullanımını kolaylaştırmaya yönelik.
+virtualenvwrapper yükleyin. Virtualenvwrapper arkasındaki fikir virtualenv kullanımını kolaylaştırmaktır.
 
 ```bash
 pip install virtualenvwrapper --user
 ```
 
-İstekler modülünü yükler. İstekler, Python 'da yazılmış bir apache2 lisanslı HTTP kitaplığı.
+İstekmodüllerini yükleyin. İstekler Python'da yazılmış bir Apache2 Lisanslı HTTP kütüphanesidir.
 
 ```bash
 pip install requests --user
 ```
 
-Python-dotenv modülünü yükler. Bu modül,. env dosyasından anahtar-değer çiftini okur ve bunları ortam değişkenine ekler.
+Python-dotenv modüllerini yükleyin. Bu modül .env dosyasından anahtar değeri çiftini okur ve bunları ortam değişkenine ekler.
 
 ```bash
 pip install python-dotenv --user
 ```
 
-Sanal ortamlarınızı tutmak istediğiniz klasörü seçin ve bu komutu çalıştırın
+Sanal ortamlarınızı korumak istediğiniz bir klasör seçin ve bu komutu çalıştırın
 
 ```bash
 mkdir ~/.virtualenvs
 ```
 
-Tam ekran okuyucu SDK 'Sı Python örnek uygulama klasörü `cd`.
+`cd`Immersive Reader SDK Python örnek uygulama klasörüne.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
 ```
 
-Sanal ortam oluşturma
+Sanal ortam yaratın
 
 ```bash
 mkvirtualenv -p /usr/local/bin/python3 advanced-python
 ```
 
-Örnek projeyi ortamla bağlayın. Bu, yeni oluşturulan sanal ortamı örnek proje kök klasörüne eşler.
+Örnek projeyi ortama bağlayın. Bu, yeni oluşturulan sanal ortamı örnek proje kök klasörüne eşler.
 
 ```bash
 setprojectdir .
@@ -284,7 +284,7 @@ Sanal ortamı etkinleştirin.
 activate
 ```
 
-Proje artık etkin olmalıdır ve komut Isteminde `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` gibi bir şey görürsünüz.
+Proje artık etkin olmalıdır ve Komut İstemi'nde gibi `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` bir şey görürsünüz.
 
 Ortamı devre dışı bırakın.
 
@@ -292,25 +292,25 @@ Ortamı devre dışı bırakın.
 deactivate
 ```
 
-Artık ortamın devre dışı bırakılmakta olduğu için `(advanced-python)` ön eki ilerlemelidir.
+Önek `(advanced-python)` şimdi ortam devre dışı bırakıldığından gitmiş olmalıdır.
 
-`workon advanced-python` ortamı yeniden etkinleştirmek için örnek proje kök klasöründen çalıştırın.
+Ortamı yeniden etkinleştirmek `workon advanced-python` için örnek proje kök klasöründen çalıştırın.
 
 ```bash
 workon advanced-python
 ```
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle modern okuyucu başlatma
+## <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle Sürükleyici Okuyucuyu başlatın
 
-Ortam etkin olduğunda, örnek proje kök klasöründen `flask run` girerek örnek projeyi çalıştırın.
+Ortam etkin olduğunda, örnek proje kök `flask run` klasöründen girerek örnek projeyi çalıştırın.
 
 ```bash
 flask run
 ```
 
-Tarayıcınızı açın ve _http://localhost:5000_ gidin.
+Tarayıcınızı açın ve _http://localhost:5000_' ye gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
-* [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/) 'daki kod örneklerini görüntüle
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) ve [Immersive Reader SDK Referans](./reference.md) keşfedin
+* Kod örneklerini [GitHub'da](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/) görüntüleme

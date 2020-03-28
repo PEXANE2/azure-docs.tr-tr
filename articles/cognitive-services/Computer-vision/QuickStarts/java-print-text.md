@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: yazdırılan metni Ayıkla-REST, Java'
+title: 'Quickstart: Yazdırılan metni ayıklayın - REST, Java'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Java ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
 services: cognitive-services
@@ -12,31 +12,31 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: b976002ee185a87daedf37a93f3d02a166eb6f8a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974606"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Java kullanarak yazdırılan metni (OCR) Ayıkla
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Quickstart: Computer Vision REST API ve Java kullanarak yazdırılan metni (OCR) ayıklayın
 
 > [!NOTE]
-> Ingilizce dil metnini ayıklıyorsanız, yeni [okuma işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı düşünün. [Java hızlı](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text) başlangıcı kullanılabilir. 
+> İngilizce metin ayıklıyorsanız, yeni Okuma [işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı düşünün. [Java quickstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text) kullanılabilir. 
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
+Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir görüntüden optik karakter tanıma (OCR) içeren basılı metinler ayıklanırsınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Java&trade; Platform, Standard Edition Geliştirme Seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8) yüklü olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. Sık kullandığınız IDE veya düzenleyicide yeni bir Java projesi oluşturun. Seçenek yoksa, Java projesini bir komut satırı uygulaması şablondan oluşturun.
+1. Tercih ettiğiniz IDE veya düzenleyicide bir Java projesi oluşturun. Seçenek yoksa, Java projesini bir komut satırı uygulaması şablondan oluşturun.
 1. Aşağıdaki kitaplıkları Java projenize içeri aktarın. Maven kullanıyorsanız, her bir kitaplık için Maven koordinatları sağlanır.
    - [Apache HTTP istemcisi](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
    - [Apache HTTP çekirdek](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
@@ -56,7 +56,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    import org.json.JSONObject;
    ```
 
-1. `Main` ortak sınıfını aşağıdaki kodla değiştirin.
+1. `Main` Ortak sınıfı aşağıdaki kodla değiştirin.
 1. İsteğe bağlı olarak, `imageToAnalyze` değerini, içinden yazdırılan metni ayıklamak istediğiniz başka bir görüntünün URL’si ile değiştirin.
 1. Kaydedin, ardından Java projesini derleyin.
 1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin, `java Main`.

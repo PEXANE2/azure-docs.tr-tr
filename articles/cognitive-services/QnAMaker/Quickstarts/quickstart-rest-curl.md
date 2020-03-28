@@ -1,45 +1,45 @@
 ---
-title: 'Hızlı başlangıç: bilgi bankasını yönetmek için kıvrımlı & REST kullanın-Soru-Cevap Oluşturma'
-description: Bu hızlı başlangıçta, REST API 'Lerini kullanarak bilgi bankasını oluşturma, yayımlama ve sorgulama işlemlerinin nasıl yapılacağı gösterilir.
+title: "Quickstart: Bilgi tabanını yönetmek için cURL & REST'i kullanın - QnA Maker"
+description: Bu hızlı başlangıç, REST API'lerini kullanarak bilgi tabanınızı nasıl oluşturabileceğinizi, yayımlayacağınızı ve sorgulayacağınızı gösterir.
 ms.date: 02/27/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
 ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78851198"
 ---
-# <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'Nı yönetmek için kıvrımlı ve REST kullanma
+# <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Quickstart: Bilgi tabanını yönetmek için cURL ve REST'i kullanın
 
-Bu hızlı başlangıçta bilgi bankasını oluşturma, yayımlama ve sorgulama işlemleri adım adım gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/knowledge-base.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
+Bu hızlı başlangıç, bilgi tabanınızı oluşturma, yayımlama ve sorgulama konusunda size yol gösterir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/knowledge-base.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Geçerli [kıvrın](https://curl.haxx.se/)sürümü. Birkaç komut satırı anahtarı, [kıvrımlı belgelerde](https://curl.haxx.se/docs/manpage.html)belirtilen hızlı başlangıçlarda kullanılır.
-* Bir [soru-cevap oluşturma kaynağınız](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve kaynak adınızı almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin. Kaynak adı, uç nokta URL 'sinin ilk bölümüdür:
+* [cURL](https://curl.haxx.se/)geçerli sürümü . [CURL belgelerinde](https://curl.haxx.se/docs/manpage.html)belirtilen quickstarts'da çeşitli komut satırı anahtarları kullanılır.
+* [Bir QnA Maker kaynağınız](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtar ve kaynak adınızı almak için Azure portalındaki kaynağınız için **Hızlı Başlat'ı** seçin. Kaynak adı bitiş noktası URL'sinin ilk bölümüdür:
 
     `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
-> Aşağıdaki BASH örnekleri `\` satırı devamlılık karakterini kullanır. Konsol veya Terminal farklı bir satır devamlılık karakteri kullanıyorsa, bu karakteri kullanın.
+> Aşağıdaki BASH örnekleri `\` satır devamı karakterini kullanır. Konsol veya terminal farklı bir satır devam karakteri kullanıyorsa, bu karakteri kullanın.
 
 ## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
 
-REST API 'Leri ve kıvrımlı bir Bilgi Bankası oluşturmak için aşağıdaki bilgilere sahip olmanız gerekir:
+REST API'leri ve cURL'si ile bir bilgi tabanı oluşturmak için aşağıdaki bilgilere sahip olmanız gerekir:
 
-|Bilgi|Kıvrımlı yapılandırma|Amaç|
+|Bilgi|cURL yapılandırması|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma kaynak anahtarı|`Ocp-Apim-Subscription-Key` üst bilgisi için `-h` parametresi|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
-|Bilgi bankasını açıklayan JSON|`-d` param|JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
-|JSON boyutunun bayt cinsinden boyutu|`Content-Size` üst bilgisi için `-h` parametresi||
+|QnA Maker kaynak adı|URL'si|URL oluşturmak için kullanılan|
+|QnA Maker kaynak anahtarı|`-h`üstbilgi `Ocp-Apim-Subscription-Key` için param|QnA Maker hizmetine kimlik doğrulaması|
+|JSON bilgi tabanını tanımlıyor|`-d`param|JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|Baytlarda JSON boyutu|`-h`üstbilgi `Content-Size` için param||
 
-Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla, JSON değerlerinizle ve JSON boyutunda düzenleyin.
+CURL komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınız, kaynak anahtarınız ve JSON değerleriniz ve JSON boyutuyla edin.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/create \
@@ -50,7 +50,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -d '{ name: "QnA Maker FAQ",urls: [ "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs"]}'
 ```
 
-Soru-Cevap Oluşturma arasındaki kıvrımlı yanıt, [işlemin durumunu almak](#get-status-of-operation)için gerekli olan `operationId` içerir.
+QnA Maker cURL yanıtı `operationId` içerir , [operasyonun durumunu almak](#get-status-of-operation)için gerekli olan .
 
 ```json
 {
@@ -62,17 +62,17 @@ Soru-Cevap Oluşturma arasındaki kıvrımlı yanıt, [işlemin durumunu almak](
 }
 ```
 
-## <a name="get-status-of-operation"></a>İşlemin durumunu al
+## <a name="get-status-of-operation"></a>Operasyonun durumunu alın
 
-Bir Bilgi Bankası oluşturduğunuzda, işlem zaman uyumsuz olduğundan, yanıt durumu belirlemede bilgiler içerir.
+Bir bilgi tabanı oluşturduğunuzda, işlem eşit olduğundan, yanıt durumu belirlemek için bilgiler içerir.
 
-|Bilgi|Kıvrımlı yapılandırma|Amaç|
+|Bilgi|cURL yapılandırması|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|İşlem kimliği|URL yolu|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
-|Soru-Cevap Oluşturma kaynak anahtarı|`Ocp-Apim-Subscription-Key` üst bilgisi için `-h` parametresi|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
+|QnA Maker kaynak adı|URL'si|URL oluşturmak için kullanılan|
+|Operasyon Kimliği|URL rotası|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
+|QnA Maker kaynak anahtarı|`-h`üstbilgi `Ocp-Apim-Subscription-Key` için param|QnA Maker hizmetine kimlik doğrulaması|
 
-Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve işlem KIMLIĞINIZLE düzenleyin.
+CURL komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınız, kaynak anahtarınız ve çalışma kimliğinizle birlikte edin.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/operations/REPLACE-WITH-YOUR-OPERATION-ID \
@@ -80,7 +80,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
 
-Kıvrımlı yanıtı durumu içerir. İşlem durumu başarılı olursa `resourceLocation` Bilgi Bankası KIMLIĞINI içerir.
+CURL yanıtı durumu içerir. İşlem durumu başarılı olursa, bilgi `resourceLocation` bankası kimliği içerir.
 
 ```json
 {
@@ -95,19 +95,19 @@ Kıvrımlı yanıtı durumu içerir. İşlem durumu başarılı olursa `resource
 
 ## <a name="publish-knowledge-base"></a>Bilgi bankası yayımlama
 
-Bilgi Bankası 'nı sorgulanmadan önce şunları yapmanız gerekir:
+Bilgi tabanını sorgulamadan önce şunları yapmanız gerekir:
 * Bilgi bankası yayımlama
-* Çalışma zamanı uç noktası anahtarını al
+* Çalışma zamanı bitiş noktası anahtarını alın
 
-Bu görev Bilgi Bankası 'nı yayımlar. Çalışma zamanı uç noktası anahtarını alma işlemi [ayrı bir görevdir](#get-published-knowledge-bases-runtime-endpoint-key).
+Bu görev bilgi tabanını yayımlar. Çalışma zamanı bitiş noktası anahtarını almak ayrı bir [görevdir.](#get-published-knowledge-bases-runtime-endpoint-key)
 
-|Bilgi|Kıvrımlı yapılandırma|Amaç|
+|Bilgi|cURL yapılandırması|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma kaynak anahtarı|`Ocp-Apim-Subscription-Key` üst bilgisi için `-h` parametresi|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
-|Bilgi Bankası kimliği|URL yolu|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|QnA Maker kaynak adı|URL'si|URL oluşturmak için kullanılan|
+|QnA Maker kaynak anahtarı|`-h`üstbilgi `Ocp-Apim-Subscription-Key` için param|QnA Maker hizmetine kimlik doğrulaması|
+|Bilgi bankası Kimliği|URL rotası|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
-Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve Bilgi Bankası KIMLIĞINIZLE düzenleyin.
+CURL komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınız, kaynak anahtarınız ve bilgi bankası kimliğinizle birlikte edin.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
@@ -117,24 +117,24 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 --data-raw ''
 ```
 
-Yanıt durumu, sonuç olmadan 204 ' dir. Kıvrımlı komutuna ilişkin ayrıntılı çıktıyı görmek için `-v` komut satırı parametresini kullanın. Bu, HTTP durumunu içerir.
+Yanıt durumu 204 ve sonuç yok. cURL `-v` komutu için ayrıntılı çıktıgörmek için komut satırı parametresini kullanın. Bu, HTTP durumunu içerir.
 
-## <a name="get-published-knowledge-bases-runtime-endpoint-key"></a>Yayımlanan Bilgi Bankası 'nın çalışma zamanı uç noktası anahtarını al
+## <a name="get-published-knowledge-bases-runtime-endpoint-key"></a>Yayınlanmış bilgi tabanının çalışma zamanı bitiş noktası anahtarını alın
 
-Bilgi Bankası 'nı sorgulanmadan önce şunları yapmanız gerekir:
+Bilgi tabanını sorgulamadan önce şunları yapmanız gerekir:
 * Bilgi bankası yayımlama
-* Çalışma zamanı uç noktası anahtarını al
+* Çalışma zamanı bitiş noktası anahtarını alın
 
-Bu görev, çalışma zamanı uç noktası anahtarını alır. Bilgi bankasını yayımlamak ayrı bir [görevdir](#publish-knowledge-base).
+Bu görev, çalışma zamanı bitiş noktası anahtarını alır. Bilgi tabanını yayımlama ayrı bir [görevdir.](#publish-knowledge-base)
 
-Çalışma zamanı uç noktası anahtarı, Soru-Cevap Oluşturma kaynağını kullanan tüm bilgi tabanları için aynı anahtardır.
+Çalışma süresi bitiş noktası anahtarı, QnA Maker kaynağını kullanan tüm bilgi tabanları için aynı anahtardır.
 
-|Bilgi|Kıvrımlı yapılandırma|Amaç|
+|Bilgi|cURL yapılandırması|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma kaynak anahtarı|`Ocp-Apim-Subscription-Key` üst bilgisi için `-h` parametresi|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
+|QnA Maker kaynak adı|URL'si|URL oluşturmak için kullanılan|
+|QnA Maker kaynak anahtarı|`-h`üstbilgi `Ocp-Apim-Subscription-Key` için param|QnA Maker hizmetine kimlik doğrulaması|
 
-Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla düzenleyin.
+CURL komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınız, kaynak anahtarınızla edin.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/endpointkeys \
@@ -143,7 +143,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 ```
 
 
-Kıvrımlı yanıtı, çalışma zamanı uç noktası anahtarlarını içerir. Bilgi bankasından yanıt almak için sorgulama yaparken anahtarlardan yalnızca birini kullanın.
+cURL yanıtı çalışma zamanı bitiş noktası anahtarlarını içerir. Bilgi tabanından bir yanıt almak için sorgu yaparken anahtarlardan sadece birini kullanın.
 
 ```json
 {
@@ -154,19 +154,19 @@ Kıvrımlı yanıtı, çalışma zamanı uç noktası anahtarlarını içerir. B
 }
 ```
 
-## <a name="query-for-answer-from-published-knowledge-base"></a>Yayımlanan bilgi bankasından yanıt sorgusu
+## <a name="query-for-answer-from-published-knowledge-base"></a>Yayınlanan bilgi tabanından yanıt için sorgu
 
-Bilgilerden bir yanıt almak, bilgi bankasını yönetmeden ayrı bir çalışma zamanından yapılır. Ayrı bir çalışma zamanı olduğundan, bir çalışma zamanı anahtarıyla kimlik doğrulaması yapmanız gerekir.
+Bilgiden yanıt almak, bilgi tabanını yönetmekten çok ayrı bir çalışma zamanından yapılır. Ayrı bir çalışma zamanı olduğundan, çalışma zamanı anahtarıyla kimlik doğrulamanız gerekir.
 
-|Bilgi|Kıvrımlı yapılandırma|Amaç|
+|Bilgi|cURL yapılandırması|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma çalışma zamanı anahtarı|`Authorization` üst bilgisi için `-h` parametresi|Anahtar, `Endpointkey `sözcüğünü içeren bir dizenin parçasıdır. Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
-|Bilgi Bankası kimliği|URL yolu|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|Sorguyu açıklayan JSON|`-d` param|[İstek gövdesi parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) ve JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
-|JSON boyutunun bayt cinsinden boyutu|`Content-Size` üst bilgisi için `-h` parametresi||
+|QnA Maker kaynak adı|URL'si|URL oluşturmak için kullanılan|
+|QnA Maker çalışma zamanı anahtarı|`-h`üstbilgi `Authorization` için param|Anahtar, sözcüğü `Endpointkey `içeren bir dize parçasıdır. QnA Maker hizmetine kimlik doğrulaması|
+|Bilgi bankası Kimliği|URL rotası|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|JSON sorgu açıklayan|`-d`param|[İstek vücut parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) ve JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|Baytlarda JSON boyutu|`-h`üstbilgi `Content-Size` için param||
 
-Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve Bilgi Bankası KIMLIĞINIZLE düzenleyin.
+CURL komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınız, kaynak anahtarınız ve bilgi bankası kimliğinizle birlikte edin.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID/generateAnswer \
@@ -177,19 +177,19 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 -d '{"question": "How are QnA Maker and LUIS used together?","top": 6,"isTest": true,  "scoreThreshold": 20, "strictFilters": [], "userId": "sd53lsY="}'
 ```
 
-Başarılı bir yanıt, bir sohbet bot gibi istemci uygulamalarının kullanıcıya yanıt görüntülemesi gereken diğer bilgilerle birlikte en iyi yanıtı içerir.
+Başarılı bir yanıt, bir istemci uygulamasının kullanıcıya yanıt göstermesi gereken diğer bilgilerle birlikte en üst yanıtı içerir.
 
-## <a name="delete-knowledge-base"></a>Bilgi bankasını Sil
+## <a name="delete-knowledge-base"></a>Bilgi tabanını silme
 
-Bilgi Bankası ile işiniz bittiğinde silin.
+Bilgi tabanı ile bittiğinde, silin.
 
-|Bilgi|Kıvrımlı yapılandırma|Amaç|
+|Bilgi|cURL yapılandırması|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma kaynak anahtarı|`Ocp-Apim-Subscription-Key` üst bilgisi için `-h` parametresi|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
-|Bilgi Bankası kimliği|URL yolu|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|QnA Maker kaynak adı|URL'si|URL oluşturmak için kullanılan|
+|QnA Maker kaynak anahtarı|`-h`üstbilgi `Ocp-Apim-Subscription-Key` için param|QnA Maker hizmetine kimlik doğrulaması|
+|Bilgi bankası Kimliği|URL rotası|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
-Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve Bilgi Bankası KIMLIĞINIZLE düzenleyin.
+CURL komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınız, kaynak anahtarınız ve bilgi bankası kimliğinizle birlikte edin.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
@@ -198,13 +198,13 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
 
-Yanıt durumu, sonuç olmadan 204 ' dir. Kıvrımlı komutuna ilişkin ayrıntılı çıktıyı görmek için `-v` komut satırı parametresini kullanın. Bu, HTTP durumunu içerir.
+Yanıt durumu 204 ve sonuç yok. cURL `-v` komutu için ayrıntılı çıktıgörmek için komut satırı parametresini kullanın. Bu, HTTP durumunu içerir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Yazma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Başvuru belgeleri
-* [Çalışma zamanı](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Başvuru belgeleri
-* [Kıvrımlı kullanarak örnek BASH betikleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
+* [Yazma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Referans belgeleri
+* [Çalışma zamanı](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Referans belgeleri
+* [CURL kullanarak örnek BASH komut dosyaları](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

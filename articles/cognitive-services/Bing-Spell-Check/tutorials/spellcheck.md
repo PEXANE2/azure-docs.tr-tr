@@ -1,7 +1,7 @@
 ---
 title: "Öğretici: Bing Yazım Denetimi API'si ile Yazım Denetimi Sonuçlarını Alma"
 titleSuffix: Azure Cognitive Services
-description: Bing Yazım Denetimi API'si sorguları gönderen ve sonuçları görüntüleyen bir Web sayfası oluşturmak için bu öğreticiyi kullanın.
+description: Bing Yazım Denetimi API'sine sorgu gönderen ve sonuçları görüntüleyen bir web sayfası oluşturmak için bu öğreticiyi kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943103"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Öğretici: Web sayfası şeklinde bir Yazım Denetimi istemcisi oluşturma
 
-Bu öğreticide kullanıcıların Bing Yazım Denetimi API'sini sorgulamasını sağlayan bir Web sayfası oluşturacağız. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html)' da kullanılabilir.
+Bu öğreticide kullanıcıların Bing Yazım Denetimi API'sini sorgulamasını sağlayan bir Web sayfası oluşturacağız. Bu uygulamanın kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html)kullanılabilir.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -27,9 +27,9 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 > - Bing Yazım Denetimi API'sine basit bir sorgu gönderme
 > - Sorgu sonuçlarını görüntüleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Öğreticiyi takip edebilmek için Bing Yazım Denetimi API'si için bir abonelik anahtarına ihtiyacınız olacaktır. Bir tane yoksa, Azure portal [Bing yazım denetimi bir kaynak oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) . [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)da kullanabilirsiniz.
+Öğreticiyi takip edebilmek için Bing Yazım Denetimi API'si için bir abonelik anahtarına ihtiyacınız olacaktır. Yoksa, Azure portalında [Bing Büyüsü Denetimi kaynağı oluşturun.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) Deneme [anahtarı](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)da kullanabilirsiniz.
 
 ## <a name="create-a-new-web-page"></a>Yeni bir Web sayfası oluşturma
 

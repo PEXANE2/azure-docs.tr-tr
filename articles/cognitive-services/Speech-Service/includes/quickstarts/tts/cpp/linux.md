@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Sentezleştirme C++ konuşma, (Linux)-konuşma hizmeti'
+title: 'Quickstart: Synthesize konuşma, C++ (Linux) - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'sını kullanarak Linux 'ta C++ konuşmayı nasıl sentezleyeceğinizi öğrenin
+description: Konuşma SDK'sını kullanarak C++'da Konuşmayı Linux'ta nasıl sentezleyin
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: yinhew
 ms.openlocfilehash: 40befc98c2280418a443ff80e4d246b6e2957e56
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924808"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=linux)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
@@ -52,7 +52,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* Bir **ARM64** (64 bit) sisteminde, uygulamayı derlemek için aşağıdaki komutu çalıştırın.
+* **ARM64** (64 bit) sisteminde, uygulamayı oluşturmak için aşağıdaki komutu çalıştırın.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -74,7 +74,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * Bir **ARM64** (64-bit) sisteminde, aşağıdaki komutu girin.
+   * **ARM64** (64 bit) sisteminde aşağıdaki komutu girin.
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
@@ -86,7 +86,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
    ./helloworld
    ```
 
-1. Konsol penceresinde bir istem belirir ve bir metin yazmanızı ister. Birkaç kelime veya tümce yazın. Yazdığınız metin konuşma hizmetine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
+1. Konsol penceresinde, bir istem görüntülenir ve bazı metin yazmanızı ister. Birkaç kelime veya cümle yazın. Yazdığınız metin Konuşma hizmetine aktarılır ve konuşmacınızda çalan konuşmayla sentezlenir.
 
    ```text
    Type some text that you want to speak...
@@ -101,5 +101,5 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Özel bir ses oluşturun](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Özel ses örneklerini Kaydet](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Özel Ses Oluşturma](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Özel ses örneklerini kaydetme](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

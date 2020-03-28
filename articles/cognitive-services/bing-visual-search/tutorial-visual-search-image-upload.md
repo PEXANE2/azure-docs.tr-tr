@@ -11,32 +11,32 @@ ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: scottwhi
 ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74689173"
 ---
-# <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Öğretici: Bing Görsel Arama API'si görüntüleri yükleme
+# <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Öğretici: Bing Görsel Arama API'sine resim yükleme
 
-Bing Görsel Arama API'si, Web 'de karşıya yüklediğiniz resimleri benzer görüntüler için arama yapmanızı sağlar. API 'ye görüntü gönderebilen bir Web uygulaması oluşturmak ve Web sayfasında döndürdüğü öngörüleri görüntülemek için bu öğreticiyi kullanın. Bu uygulamanın tüm Bing kullanımına bağlı kalmadığını ve API 'YI kullanmaya yönelik [gereksinimleri görüntülemesini](../bing-web-search/use-display-requirements.md) unutmayın.
+Bing Görsel Arama API'si, yüklediğiniz resimlere benzer görüntüler için web'de arama yapmanızı sağlar. API'ye görüntü gönderebilen bir web uygulaması oluşturmak ve web sayfası içinde döndürdettiği bilgileri görüntülemek için bu öğreticiyi kullanın. Bu uygulamanın API'yi kullanmak için tüm [Bing Kullanımı ve Görüntüleme Gereksinimlerine](../bing-web-search/use-display-requirements.md) uymadığını unutmayın.
 
-Bu örnek için tam kaynak kodunu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchUploadImage.html)' da ek hata işleme ve ek açıklama ile bulabilirsiniz.
+Bu örnek için tam kaynak [kodunu, github'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchUploadImage.html)ek hata işleme ve ek açıklamalarla bulabilirsiniz.
 
 Öğretici uygulaması şunları gösterir:
 
 > [!div class="checklist"]
-> * Bing Görsel Arama API'si bir görüntü yükleme
-> * Görüntü arama sonuçlarını bir Web uygulamasında görüntüle
-> * API tarafından sunulan farklı öngörüleri keşfet
+> * Bing Görsel Arama API'sine resim yükleme
+> * Görüntü arama sonuçlarını bir web uygulamasında görüntüleme
+> * API tarafından sağlanan farklı öngörüleri keşfedin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-structure-the-webpage"></a>Web sayfasını oluşturma ve yapılandırma
 
-Bing Görsel Arama API'si görüntü Gönderen, öngörüleri alan ve görüntüleyen bir HTML sayfası oluşturun. En sevdiğiniz düzenleyicide veya IDE 'de "uploaddemo. html" adlı bir dosya oluşturun. Aşağıdaki temel HTML yapısını dosyaya ekleyin:
+Bing Görsel Arama API'sine görüntü gönderen, öngörüler alan ve bunları görüntüleyen bir HTML sayfası oluşturun. Sık kullanılan düzenleyicinizde veya IDE'de "uploaddemo.html" adlı bir dosya oluşturun. Dosyaya aşağıdaki temel HTML yapısını ekleyin:
 
 ```html
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ Bing Görsel Arama API'si görüntü Gönderen, öngörüleri alan ve görüntü
 </html>
 ```
 
-Sayfayı, kullanıcının istek için gereken tüm bilgileri sağladığı istek bölümüne, öngörülerin görüntülendiği bir yanıt bölümüne bölün. Aşağıdaki `<div>` etiketlerini `<body>`ekleyin. `<hr>` etiketi yanıt bölümünden görsel olarak istek bölümünü ayırır:
+Sayfayı, kullanıcının istek için gerekli tüm bilgileri sağladığı bir istek bölümüne ve öngörülerin görüntülendiği bir yanıt bölümüne bölün. Aşağıdaki `<div>` etiketleri `<body>`ekleyin. Etiket, `<hr>` istek bölümünü yanıt bölümünden görsel olarak ayırır:
 
 ```html
 <div id="requestSection"></div>
@@ -58,20 +58,20 @@ Sayfayı, kullanıcının istek için gereken tüm bilgileri sağladığı istek
 <div id="responseSection"></div>
 ```
 
-Uygulamanın JavaScript 'ı içermesi için `<head>` etiketine bir `<script>` etiketi ekleyin:
+Uygulama `<script>` için `<head>` JavaScript'i içerecek şekilde etikete bir etiket ekleyin:
 
 ```html
 <script>
 <\script>
 ```
 
-## <a name="get-the-upload-file"></a>Karşıya yükleme dosyasını al
+## <a name="get-the-upload-file"></a>Yükleme dosyasını alma
 
-Kullanıcının karşıya yüklenecek bir görüntü seçmesini sağlamak için, uygulama tür özniteliği `file`olarak ayarlanan `<input>` etiketini kullanır. Uygulamanın, arama sonuçlarını almak için uygulamanın Bing kullanıp kullanmadığını açık hale getirmek gerekir.
+Kullanıcının yüklemek için bir resim seçmesine `<input>` izin vermek için, `file`uygulama türü özniteliği 'ne ayarlanmış etiketi kullanır. Kullanıcı Arabirimi'nin, uygulamanın arama sonuçlarını almak için Bing kullandığını açıkça belirtmesi gerekir.
 
-Aşağıdaki `<div>` `requestSection` `<div>`ekleyin. Dosya girişi, herhangi bir resim türünde tek dosya kabul eder (örneğin, .jpg, .gif, .png). `onchange` olayı, kullanıcı dosyayı seçtiğinde çağrılan işleyiciyi belirtir.
+Aşağıdakileri `<div>` `requestSection` `<div>`ekleyin. Dosya girişi, herhangi bir resim türünde tek dosya kabul eder (örneğin, .jpg, .gif, .png). `onchange` olayı, kullanıcı dosyayı seçtiğinde çağrılan işleyiciyi belirtir.
 
-`<output>` etiketi, seçilen görüntünün küçük resmini göstermek için kullanılır:
+Etiket, `<output>` seçili resmin küçük resmini görüntülemek için kullanılır:
 
 ```html
 <div>
@@ -85,7 +85,7 @@ Aşağıdaki `<div>` `requestSection` `<div>`ekleyin. Dosya girişi, herhangi bi
 
 ## <a name="create-a-file-handler"></a>Dosya işleyicisi oluşturma
 
-Karşıya yüklemek istediğiniz görüntüde okuyabileceğiniz bir işleyici işlevi oluşturun. `FileList` nesnesindeki dosyalar arasında yineleme yaparken, işleyicinin seçili dosyanın bir görüntü dosyası olduğundan ve boyutunun 1 MB veya daha az olduğundan emin olması gerekir. Görüntü daha büyükse, karşıya yüklemeden önce boyutunu azaltmanız gerekir. Son olarak, işleyici görüntünün küçük resmini görüntüler:
+Yüklemek istediğiniz resimde okuyabilen bir işleyici işlevi oluşturun. `FileList` Nesnedeki dosyaları yinelerken, işleyici seçili dosyanın bir görüntü dosyası olduğundan ve boyutunun 1 MB veya daha az olduğundan emin olmalıdır. Görüntü daha büyükse, yüklemeden önce boyutunu azaltmanız gerekir. Son olarak, işleyici görüntünün bir küçük resmini görüntüler:
 
 ```javascript
 function handleFileSelect(selector) {
@@ -135,7 +135,7 @@ function handleFileSelect(selector) {
 
 ## <a name="add-and-store-a-subscription-key"></a>Abonelik anahtarı ekleme ve depolama
 
-Uygulama, Bing Görsel Arama API'si çağrı yapmak için bir abonelik anahtarı gerektirir. Bu öğreticide, bunu Kullanıcı arabiriminde sağlayacaksınız. Aşağıdaki `<input>` etiketini (tür özniteliği metin olarak ayarlanmış şekilde) dosyanın `<output>` etiketinin hemen altındaki `<body>` ekleyin:
+Uygulama, Bing Görsel Arama API'sine arama yapmak için bir abonelik anahtarı gerektirir. Bu öğretici için, ui bunu sağlarsınız. Dosya `<input>` `<output>` etiketinin `<body>` hemen altına aşağıdaki etiketi (metin için tür özniteliği ayarlanmış şekilde) ekleyin:
 
 ```html
     <div>
@@ -145,9 +145,9 @@ Uygulama, Bing Görsel Arama API'si çağrı yapmak için bir abonelik anahtarı
     </div>
 ```
 
-Görüntü ve abonelik anahtarıyla, görüntüyle ilgili Öngörüler elde etmek için Bing Görsel Arama çağrısı yapabilirsiniz. Bu öğreticide, çağrı varsayılan Pazar (`en-us`) ve güvenli arama değerini (`moderate`) kullanır.
+Görüntü ve abonelik anahtarıyla, görüntü hakkında bilgi almak için Bing Görsel Arama'yı arayabilirsiniz. Bu öğreticide, arama varsayılan pazar`en-us`( ) ve`moderate`güvenli arama değeri ( ) kullanır.
 
-Bu uygulamanın bu değerleri değiştirme seçeneği vardır. Aşağıdaki `<div>` abonelik anahtarı `<div>`altına ekleyin. Uygulama, Pazar ve güvenli arama değerleri için açılan bir liste sağlamak üzere bir `<select>` etiketi kullanır. Her iki liste de varsayılan değeri görüntüler.
+Bu uygulama, bu değerleri değiştirmek için bir seçenek vardır. Abonelik anahtarının `<div>` `<div>`altına aşağıdakileri ekleyin. Uygulama, pazar `<select>` ve güvenli arama değerleri için açılır liste sağlamak için bir etiket kullanır. Her iki liste de varsayılan değeri görüntüler.
 
 ```html
 <div>
@@ -211,7 +211,7 @@ Bu uygulamanın bu değerleri değiştirme seçeneği vardır. Aşağıdaki `<di
 
 ## <a name="add-search-options-to-the-webpage"></a>Web sayfasına arama seçenekleri ekleme
 
-Uygulama, sorgu seçenekleri bağlantısı tarafından denetlenen daraltılabilir bir `<div>` listeleri gizler. Sorgu seçenekleri bağlantısına tıkladığınızda, sorgu seçeneklerini görüp değiştirebilmeniz için `<div>` genişletilir. Sorgu seçenekleri bağlantısına yeniden tıklarsanız, `<div>` daraltılır ve gizlenir. Aşağıdaki kod parçacığında, sorgu seçenekleri bağlantısının `onclick` işleyicisi gösterilmektedir. İşleyici, `<div>` genişletildiğini veya daraltılıp daraltılmadığını denetler. Bu işleyiciyi `<script>` bölümüne ekleyin. İşleyici, gösteride tüm daraltılabilir `<div>` bölümleri tarafından kullanılır.
+Uygulama, listeleri Sorgu seçenekleri bağlantısı `<div>` tarafından denetlenebilen bir daraltılabilir olarak gizler. Sorgu seçenekleri bağlantısını tıklattığınızda, sorgu seçeneklerini görebilmeniz ve değiştirebilmeniz için `<div>` genişletir. Sorgu seçenekleri bağlantısını yeniden tıklattığınızda, `<div>` daraltılır ve gizlenir. Aşağıdaki snippet Sorgu seçenekleri bağlantısının `onclick` işleyicisini gösterir. İşleyici genişletilmiş veya `<div>` daraltılmış olup olmadığını denetler. Bu işleyiciyi `<script>` bölüme ekleyin. Işleyici, demodaki tüm `<div>` katlanabilir bölümler tarafından kullanılır.
 
 ```javascript
 // Contains the toggle state of divs.
@@ -233,19 +233,19 @@ function expandCollapse(divToToggle) {
 }
 ```
 
-## <a name="call-the-onclick-handler"></a>`onclick` işleyicisini çağırma
+## <a name="call-the-onclick-handler"></a>Işleyiciyi çağırın `onclick`
 
-Aşağıdaki `"Get insights"` düğmesini, gövdenin `<div>` altına ekleyin. Düğme, çağrıyı başlatabilmenizi sağlar. Düğmeye tıklandığında, imleç dönen bekleme imlecine dönüştürülür ve `onclick` işleyicisi çağrılır.
+Gövdedeki `"Get insights"` seçeneklerin `<div>` altına aşağıdaki düğmeyi ekleyin. Düğme aramayı başlatmanızı sağlar. Düğme tıklatıldığında imleç dönen bekleme imleci olarak değiştirilir ve `onclick` işleyici çağrılır.
 
 ```html
 <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-Düğmenin `onclick` işleyicisini `<script>` etiketine `handleQuery()` ekleyin.
+Düğmenin `onclick` işleyicisini `handleQuery()` `<script>` etikete ekleyin.
 
-## <a name="handle-the-query"></a>Sorguyu işle
+## <a name="handle-the-query"></a>Sorguyu işleme
 
-İşleyici `handleQuery()`, abonelik anahtarının mevcut ve 32 karakter uzunluğunda olduğunu ve bir görüntünün seçili olmasını sağlar. Ayrıca önceki sorgudan talan tüm içgörüleri de temizler. Daha sonra, çağrısı yapmak için `sendRequest()` işlevini çağırır.
+İşleyici, `handleQuery()` abonelik anahtarının mevcut olmasını ve 32 karakter uzunluğunda olmasını ve görüntünün seçilmesini sağlar. Ayrıca önceki sorgudan talan tüm içgörüleri de temizler. Daha sonra, `sendRequest()` arama yapmak için işlevi çağırır.
 
 ```javascript
 function handleQuery() {
@@ -282,9 +282,9 @@ function handleQuery() {
 }
 ```
 
-## <a name="send-the-search-request"></a>Arama isteğini gönder
+## <a name="send-the-search-request"></a>Arama isteğini gönderme
 
-`sendRequest()` işlevi, uç nokta URL 'sini biçimlendirir, `Ocp-Apim-Subscription-Key` üst bilgisini abonelik anahtarına ayarlar, yüklenecek görüntünün ikilisini ekler, yanıt işleyicisini belirtir ve çağrıyı yapar:
+İşlev `sendRequest()` uç nokta URL'sini `Ocp-Apim-Subscription-Key` biçimlendiriyor, üstbilgiyi abonelik anahtarına ayarlar, yüklemek için görüntünün ikilisini ekler, yanıt işleyicisini belirtir ve aramayı yapar:
 
 ```javascript
 function sendRequest(file, key) {
@@ -304,9 +304,9 @@ function sendRequest(file, key) {
 }
 ```
 
-## <a name="get-and-handle-the-api-response"></a>API yanıtını al ve işle
+## <a name="get-and-handle-the-api-response"></a>API yanıtını alın ve işleme
 
-`handleResponse()` işlevi, Bing Görsel Arama çağrısından yanıtı işler. Çağrı başarılı olursa, JSON yanıtını içgörüleri içeren tek tek etiketlere ayrıştırır. Sonra, arama sonuçlarını sayfasına ekler. Daha sonra uygulama, ne kadar veri görüntülendiğini yönetmek için her etiket için daraltılabilir bir `<div>` oluşturur. İşleyiciyi `<script>` bölümüne ekleyin.
+İşlev, `handleResponse()` aramadan Bing Görsel Arama'ya gelen yanıtı işler. Çağrı başarılı olursa, JSON yanıtını içgörüleri içeren tek tek etiketlere ayrıştırır. Ardından, arama sonuçlarını sayfaya ekler. Uygulama daha sonra, ne `<div>` kadar veri görüntüleneceğini yönetmek için her etiket için bir katlanabilir oluşturur. `<script>` Işleyiciyi bölüme ekleyin.
 
 ```javascript
 function handleResponse() {
@@ -326,9 +326,9 @@ function handleResponse() {
 }
 ```
 
-### <a name="parse-the-response"></a>Yanıtı Ayrıştır
+### <a name="parse-the-response"></a>Yanıtı ayrıştırma
 
-`parseResponse` işlevi, JSON yanıtını `json.tags`ile yineleme yaparak bir sözlük nesnesine dönüştürür.
+İşlev, `parseResponse` JSON yanıtını bir sözlük nesnesine `json.tags`dönüştürerek.
 
 ```javascript
 function parseResponse(json) {
@@ -351,7 +351,7 @@ function parseResponse(json) {
 
 ### <a name="build-a-tag-section"></a>Etiket bölümü oluşturma
 
-`buildTagSections()` işlevi, ayrıştırılmış JSON etiketleri boyunca yinelenir ve her etiket için bir `<div>` oluşturmak üzere `buildDiv()` işlevini çağırır. Her etiket bir bağlantı olarak görüntülenir. Bağlantı tıklandığında, etiketiyle ilişkili öngörüleri gösteren etiket genişletilir. Bağlantıyı yeniden tıklatmak bölümün daraltılmasına neden olur.
+İşlev `buildTagSections()` ayrışmış JSON etiketleri aracılığıyla yinelenir ve `<div>` her etiket için bir işlev oluşturmak için `buildDiv()` işlevi çağırır. Her etiket bir bağlantı olarak görüntülenir. Bağlantı tıklandığında, etiketle ilişkili öngörüleri gösteren etiket genişler. Bağlantıyı yeniden tıklatmak bölümün çökmesine neden olur.
 
 ```javascript
 function buildTagSections(tags) {
@@ -388,13 +388,13 @@ function buildDiv(tags, tag) {
 }
 ```
 
-## <a name="display-the-search-results-in-the-webpage"></a>Web sayfasında arama sonuçlarını görüntüleme
+## <a name="display-the-search-results-in-the-webpage"></a>Arama sonuçlarını web sayfasında görüntüleme
 
-`buildDiv()` işlevi, her etiketin daraltılabilir `<div>`içeriğini oluşturmak için `addDivContent` işlevini çağırır.
+İşlev, `buildDiv()` `addDivContent` her etiketin katlanabilir `<div>`içeriğini oluşturmak için işlevi çağırır.
 
-Etiketin içeriğinde, etiket için yanıttan gelen JSON yer alır. Başlangıçta, yalnızca ilk 100 karakter JSON gösterilir, ancak JSON dizesine tıklayarak tüm JSON 'yi gösterebilirsiniz. Yeniden tıklarsanız, JSON dizesi tekrar 100 karaktere daraltılır.
+Etiketin içeriğinde, etiket için yanıttan gelen JSON yer alır. Başlangıçta, JSON sadece ilk 100 karakter gösterilir, ancak tüm JSON göstermek için JSON dizesini tıklatabilirsiniz. Yeniden tıklarsanız, JSON dizesi tekrar 100 karaktere daraltılır.
 
-Ardından, etikette bulunan eylem türlerini ekleyin. Her eylem türü için, öngörülerini eklemek için uygun işlevleri çağırın:
+Ardından, etikette bulunan eylem türlerini ekleyin. Her eylem türü için, öngörülerini eklemek için uygun işlevleri arayın:
 
 ```javascript
 function addDivContent(div, tag, json) {
@@ -469,16 +469,16 @@ function addDivContent(div, tag, json) {
 }
 ```
 
-## <a name="display-insights-for-different-actions"></a>Farklı eylemler için öngörüleri görüntüleyin
+## <a name="display-insights-for-different-actions"></a>Farklı eylemler için öngörüler görüntüleyin
 
-Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşlevler, görüntü hakkında daha fazla bilgi içeren bir Web sayfasına gönderen tıklatılabilir bir görüntü veya tıklatılabilir bağlantı sağlar. Bu sayfa, Bing.com veya resmin özgün Web sitesi tarafından barındırılır. Tüm Öngörüler verileri bu uygulamada gösterilmez. Bir öngörü için kullanılabilen tüm alanları görmek için bkz. [Images-görsel arama](https://aka.ms/bingvisualsearchreferencedoc) Reference.
+Aşağıdaki işlevler farklı eylemler için öngörüler görüntüler. İşlevler, görüntü hakkında daha fazla bilgi içeren bir web sayfasına sizi gönderen tıklanabilir bir resim veya tıklanabilir bir bağlantı sağlar. Bu sayfa ya Bing.com veya resmin orijinal web sitesi tarafından barındırılan. Bu uygulamada öngörülerin tüm verileri görüntülenmez. Bir kavrayış için kullanılabilen tüm alanları görmek için [Görseller - Görsel Arama](https://aka.ms/bingvisualsearchreferencedoc) başvurusuna bakın.
 
 > [!NOTE]
-> Sayfada görüntülemesi gereken en az miktarda öngörü bilgisi vardır. Daha fazla bilgi için bkz. [BING arama API kullanımı ve görüntüleme gereksinimleri](../bing-web-search/use-display-requirements.md) .
+> Sayfada görüntülemeniz gereken en az miktarda içgörü bilgisi vardır. Bing [Arama API kullanımı ve](../bing-web-search/use-display-requirements.md) daha fazlası için gereksinimleri görüntüleme ye bakın.
 
-### <a name="relatedimages-insights"></a>RelatedImages öngörüleri
+### <a name="relatedimages-insights"></a>RelatedImages görüşleri
 
-`addRelatedImages()` işlevi, ilgili görüntüyü barındıran her bir Web sitesi için bir başlık oluşturur ve her biri için dış `<div>` bir `<img>` etiketi ekleyerek bir `RelatedImages`:
+Bu `addRelatedImages()` işlev, eylemlerin listesini yineleyerek ve her biri için dışa `RelatedImages` `<img>` `<div>` bir etiket ekleyerek ilgili resmi barındıran web sitelerinin her biri için bir başlık oluşturur:
 
 ```javascript
     function addRelatedImages(div, images) {
@@ -507,9 +507,9 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
     }
 ```
 
-### <a name="pagesincluding-insights"></a>Öngörüler dahil Pages
+### <a name="pagesincluding-insights"></a>Sayfalarİçeriş Bilgileri Dahil
 
-`addPagesIncluding()` işlevi, karşıya yüklenen görüntüyü barındıran Web sitelerinin her biri için bir bağlantı oluşturur `PagesIncluding` Eylemler listesinde, bir `<img>` etiketini her biri için dış `<div>` ekleyerek.
+Bu `addPagesIncluding()` işlev, yüklenen görüntüyü barındıran web sitelerinin her biri `PagesIncluding` için, eylemler listesi aracılığıyla `<img>` yineleyerek ve `<div>` her biri için dışa bir etiket ekleyerek bir bağlantı oluşturur:
 
 ```javascript
 
@@ -531,9 +531,9 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
     }
 ```
 
-### <a name="relatedsearches-insights"></a>Relatedaramaları öngörüleri
+### <a name="relatedsearches-insights"></a>RelatedAramalar anlayışlar
 
-`addRelatedSearches()` işlevi, görüntüyü barındıran Web sitesi için bir bağlantı oluşturur, `RelatedSearches` eylemler listesini çağırarak ve her biri için dış `<div>` bir `<img>` etiketi ekleyerek:
+İşlev, `addRelatedSearches()` `RelatedSearches` eylemler listesini yineleyerek ve her biri için dışa `<img>` `<div>` bir etiket ekleyerek, görüntüyü barındıran web sitesi için bir bağlantı oluşturur:
 
 ```javascript
 
@@ -564,9 +564,9 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
     }
 ```
 
-### <a name="recipes-insights"></a>Tarifler öngörüleri
+### <a name="recipes-insights"></a>Yemek tarifleri anlayışlar
 
-`addRecipes()` işlevi, `Recipes` eylemleri listesinde yineleme yaparak döndürülen her bir tarifeden için bir bağlantı oluşturur ve her biri için dış `<div>` `<img>` etiketi ekleyerek:
+İşlev, `addRecipes()` `Recipes` eylemler listesi aracılığıyla yineleyerek döndürülen her bir yemek tarifi için `<img>` bir bağlantı `<div>` oluşturur ve her biri için bir etiketi dışa ekler:
 
 ```javascript
     // Display links to the first 10 recipes. Include the recipe's rating,
@@ -596,9 +596,9 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
     }
 ```
 
-### <a name="shopping-insights"></a>Alışveriş öngörüleri
+### <a name="shopping-insights"></a>Alışveriş anlayışları
 
-`addShopping()` işlevi, tüm döndürülen alışveriş sonuçları için `RelatedImages` eylemleri listesinde yineleme yaparak bir bağlantı oluşturur ve her biri için dış `<div>` bir `<img>` etiketi ekleme:
+İşlev, `addShopping()` `RelatedImages` eylemlerin listesini yineleyerek ve her biri için dışa `<img>` `<div>` bir etiket ekleyerek döndürülen alışveriş sonuçları için bir bağlantı oluşturur:
 
 ```javascript
     // Display links for the first 10 shopping offers.
@@ -627,7 +627,7 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
 
 ### <a name="products-insights"></a>Ürün öngörüleri
 
-`addProducts()` işlevi, `Products` eylemleri listesinde yinelenerek ve her biri için dış `<div>` bir `<img>` etiketi ekleyerek döndürülen tüm ürünler için bir bağlantı oluşturur:
+İşlev, `addProducts()` `Products` eylemler listesini yineleyerek ve her biri için dışa `<img>` `<div>` bir etiket ekleyerek döndürülen ürünler için bir bağlantı oluşturur:
 
 ```javascript
 
@@ -691,7 +691,7 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
 
 ### <a name="textresult-insights"></a>TextResult öngörüleri
 
-`addTextResult()` işlevi görüntüde tanınan tüm metni görüntüler:
+İşlev, `addTextResult()` resimde tanınan herhangi bir metni görüntüler:
 
 ```javascript
 
@@ -702,7 +702,7 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
     }
 ```
 
-`addEntity()` işlevi, kullanıcıyı, algılanan varlık türü hakkındaki ayrıntıları Bing.com 'e götüren bir bağlantıyı görüntüler, varsa:
+İşlev, `addEntity()` kullanıcıyı görüntüdeki varlık türü yle ilgili ayrıntıları alabilecekleri Bing.com götüren bir bağlantı görüntüler:
 
 ```javascript
     // If the image is of a person, the tag might include an entity
@@ -718,7 +718,7 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
     }
 ```
 
-`addImageWithWebSearchUrl()` işlevi, kullanıcının Bing.com üzerinde sonuçları aramasını sağlayan `<div>` tıklatılabilir bir görüntü görüntüler:
+İşlev, `addImageWithWebSearchUrl()` kullanıcıyı `<div>` Bing.com sonuçları aramaya götüren tıklatılabilir bir görüntü görüntüler:
 
 ```javascript
     function addImageWithWebSearchUrl(div, image, action) {
@@ -737,7 +737,7 @@ Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşl
 
 ## <a name="add-a-css-style"></a>CSS stili ekleme
 
-Web sayfasının yerleşimini düzenlemek için aşağıdaki `<style>` bölümünü `<head>` etiketine ekleyin:
+Web sayfasının düzenini `<style>` `<head>` düzenlemek için etikete aşağıdaki bölümü ekleyin:
 
 ```html
         <style>
@@ -773,4 +773,4 @@ Web sayfasının yerleşimini düzenlemek için aşağıdaki `<style>` bölümü
 ## <a name="next-steps"></a>Sonraki adımlar
 
 >[!div class="nextstepaction"]
-> [Öğretici: ımageınsiizstoken kullanarak önceki aramalardan benzer görüntüleri bulma](./tutorial-visual-search-insights-token.md)
+> [Öğretici: ImageInsightsToken'i kullanarak önceki aramalardan benzer görüntüler bulun](./tutorial-visual-search-insights-token.md)

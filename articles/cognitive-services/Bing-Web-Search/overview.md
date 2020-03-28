@@ -1,5 +1,5 @@
 ---
-title: Bing Web Araması API'si nedir?
+title: Bing Web Arama API'si nedir?
 titleSuffix: Azure Cognitive Services
 description: Bing Web araması API'si, kullanıcı sorgularına anında yanıt sağlayan bir RESTful hizmetidir. Arama sonuçları; web sayfalarını, görüntüleri, videoları, haberleri, çevirileri ve daha fazlasını içerecek şekilde yapılandırılabilir. Sonuçlar, JSON biçiminde sunulur ve aramayla ilgi düzeyini ve Bing Web Araması aboneliklerinizi temel alır.
 services: cognitive-services
@@ -12,15 +12,15 @@ ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77650291"
 ---
-# <a name="what-is-the-bing-web-search-api"></a>Bing Web Araması API'si nedir?
+# <a name="what-is-the-bing-web-search-api"></a>Bing Web Arama API'si nedir?
 
-Bing Web araması API'si, kullanıcı sorgularına anında yanıt sağlayan bir RESTful hizmetidir. Arama sonuçları; web sayfalarını, görüntüleri, videoları, haberleri, çevirileri ve daha fazlasını içerecek şekilde yapılandırılabilir. Bing Web Araması Sonuçları, arama ilgisi ve Bing Web Araması aboneliklerine göre JSON olarak sağlar.
+Bing Web araması API'si, kullanıcı sorgularına anında yanıt sağlayan bir RESTful hizmetidir. Arama sonuçları; web sayfalarını, görüntüleri, videoları, haberleri, çevirileri ve daha fazlasını içerecek şekilde yapılandırılabilir. Bing Web Arama, sonuçları arama alaka düzeyine ve Bing Web Arama aboneliklerinize göre JSON olarak sağlar.
 
 Bu API, bir kullanıcının arama sorgusuyla ilişkili olan tüm içeriğe erişmesi gereken uygulamalar için idealdir. Yalnızca belirli bir sonuç türünü gerektiren bir uygulama oluşturuyorsanız [Bing Resim Arama API'si](../Bing-Image-Search/overview.md), [Bing Video Arama API'si](../Bing-Video-Search/search-the-web.md) veya [Bing Haber Arama API'sini](../Bing-News-Search/search-the-web.md) kullanabilirsiniz. Bing Arama API'lerinin tam listesi için bkz. [Bilişsel Hizmetler API'leri](https://docs.microsoft.com/azure/cognitive-services).
 
@@ -28,7 +28,7 @@ Nasıl çalıştığını görmek ister misiniz? [Bing Web Araması API'si tanı
 
 ## <a name="features"></a>Özellikler  
 
-Bing Web Araması yalnızca anında yanıtlar için erişim izni vermez. Ayrıca, kullanıcılarınız için arama sonuçlarını özelleştirmenize imkan tanıyan ek özellikler ve işlevler de sağlar.
+Bing Web Araması yalnızca anlık yanıtlara erişmenizi sağlamakla kalmıyor. Ayrıca, kullanıcılarınız için arama sonuçlarını özelleştirmenize olanak tanıyan ek özellikler ve işlevler de sağlar.
 
 | Özellik | Açıklama |
 |---------|-------------|
@@ -40,9 +40,9 @@ Bing Web Araması yalnızca anında yanıtlar için erişim izni vermez. Ayrıca
 
 ## <a name="workflow"></a>İş akışı
 
-Bing Web Araması API'si, HTTP isteklerinin yapılabildiği ve JSON yanıtlarının ayrıştırabildiği herhangi bir programlama dili ile kolayca çağrılabilir. Hizmete [REST API](quickstarts/python.md) veya [Bing Web araması istemci kitaplıkları](./quickstarts/client-libraries.md)kullanılarak erişilebilir.
+Bing Web Araması API'si, HTTP isteklerinin yapılabildiği ve JSON yanıtlarının ayrıştırabildiği herhangi bir programlama dili ile kolayca çağrılabilir. Hizmete [REST API](quickstarts/python.md) veya [Bing Web Arama istemci kitaplıkları](./quickstarts/client-libraries.md)kullanılarak erişilebilir.
 
-1. Bing Arama API'leri için [bir Azure kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oluşturabilirsiniz.  
+1. Bing Arama API'leri için [bir Azure kaynağı oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) Azure aboneliğiniz [yoksa, ücretsiz bir hesap oluşturabilirsiniz.](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)  
 2. [Bing Web Araması API'sine yönelik bir istek](quickstarts/python.md) gönderin.
 3. JSON yanıtını ayrıştırın.
 

@@ -1,92 +1,87 @@
 ---
-title: 'Hızlı başlangıç: ses dosyasına konuşma Sentezleştirme, Python-konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: chlandsi
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 07/05/2019
-ms.author: chlandsi
-ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.date: 03/20/2020
+ms.author: dapine
+ms.openlocfilehash: 983a3c38c19d60a2ad890255ab2120ea58776436
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383836"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80117091"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](~/articles/cognitive-services/Speech-Service/get-started.md).
-* [Python 3,5 ile 3,8](https://www.python.org/downloads/)arasında.
-* Python konuşma SDK 'Sı paketi, bu işletim sistemleri için kullanılabilir:
+* Konuşma hizmeti için azure abonelik anahtarı. [Ücretsiz bir tane alın.](~/articles/cognitive-services/Speech-Service/get-started.md)
+* [Python 3.5 ile 3.8](https://www.python.org/downloads/)arasında.
+* Python Speech SDK paketi bu işletim sistemleri için kullanılabilir:
     * Windows: x64 ve x86.
-    * Mac: macOS X sürüm 10,12 veya üzeri.
-    * Linux: Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8, x64 üzerinde.
-* Linux 'ta, gerekli paketleri yüklemek için şu komutları çalıştırın:
+    * Mac: macOS X sürüm 10.12 veya sonrası.
+    * Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 x64 üzerinde.
+* Linux'ta, gerekli paketleri yüklemek için bu komutları çalıştırın:
 
-  * Ubuntu 'da:
+# <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.0 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libasound2
+```
 
-  * On yıl 9 ' da:
+# <a name="debian-9"></a>[Debian 9](#tab/debian)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.2 libasound2
+```
 
-  * RHEL/CentOS 8 ' de:
+# <a name="rhel--centos-8"></a>[RHEL / CentOS 8](#tab/rhel-centos)
 
-    ```sh
-    sudo yum update
-    sudo yum install alsa-lib openssl python3
-    ```
+```Bash
+sudo yum update
+sudo yum install alsa-lib openssl python3
+```
 
 > [!NOTE]
-> RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
+> RHEL/CentOS 8'de [OpenSSL'in Linux için nasıl yapılandırılacağı](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yla ilgili talimatları uygulayın.
 
-* Windows 'ta, platformunuz için [Visual Studio C++ 2019 için Microsoft Visual yeniden dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gereklidir.
+---
 
-## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
+* Windows'da, platformunuz [için Visual Studio 2019 için Microsoft Visual C++ Yeniden Dağıtılabilir'e](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) ihtiyacınız vardır.
+
+## <a name="install-the-speech-sdk"></a>Konuşma SDK'yı yükleyin
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-Bu komut, konuşma SDK 'Sı için [Pypı](https://pypi.org/) 'den Python paketini yüklüyor:
+Bu komut, Konuşma SDK için [PyPI](https://pypi.org/) Python paketini yükler:
 
-```sh
+```Bash
 pip install azure-cognitiveservices-speech
 ```
 
-## <a name="support-and-updates"></a>Destek ve güncelleştirmeler
+## <a name="support-and-updates"></a>Destek ve güncellemeler
 
-Konuşma SDK 'Sı Python paketine yönelik güncelleştirmeler PyPI aracılığıyla dağıtılır ve [sürüm notlarında](~/articles/cognitive-services/Speech-Service/releasenotes.md)duyurulmuştur.
-Yeni bir sürüm varsa, bunu komut `pip install --upgrade azure-cognitiveservices-speech`ile güncelleştirebilirsiniz.
-`azure.cognitiveservices.speech.__version__` değişkenini inceleyerek Şu anda yüklü olan sürümü denetleyin.
+Konuşma SDK Python paketindeki güncellemeler PyPI üzerinden dağıtılır ve [Sürüm notlarında duyurulur.](~/articles/cognitive-services/Speech-Service/releasenotes.md)
+Yeni bir sürüm varsa, komutu `pip install --upgrade azure-cognitiveservices-speech`ile bunu güncelleyebilirsiniz.
+Değişkeni inceleyerek şu anda `azure.cognitiveservices.speech.__version__` hangi sürümün yüklü olduğunu denetleyin.
 
-Bir sorununuz varsa veya bir özellik eksikse, bkz. [destek ve yardım seçenekleri](~/articles/cognitive-services/Speech-Service/support.md).
+Bir sorununuz varsa veya bir özelliğiniz yoksa Destek [ve Yardım seçeneklerine](~/articles/cognitive-services/Speech-Service/support.md)bakın.
 
-## <a name="create-a-python-application-that-uses-the-speech-sdk"></a>Konuşma SDK 'sını kullanan bir Python uygulaması oluşturma
+## <a name="create-a-python-application-that-uses-the-speech-sdk"></a>Konuşma SDK kullanan bir Python uygulaması oluşturma
 
 ### <a name="run-the-sample"></a>Örneği çalıştırma
 
-Bu hızlı başlangıçta [örnek kodu](#sample-code) bir kaynak dosyaya kopyalayabilir `quickstart.py` ve IDE 'niz içinde veya konsolunda çalıştırabilirsiniz:
+[Örnek kodu](#sample-code) bu hızlı başlangıçtan kaynak dosyaya `quickstart.py` kopyalayabilir ve IDE'nizde veya konsolunuzda çalıştırabilirsiniz:
 
-```sh
+```Bash
 python quickstart.py
 ```
 
-Ya da bu hızlı başlangıç öğreticisini [konuşma SDK 'sı örnek deposundan](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) [Jupyter](https://jupyter.org) Not defteri olarak indirebilir ve Not defteri olarak çalıştırabilirsiniz.
+Ya da bu quickstart öğreticisini [Konuşma SDK örnek deposundan](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) [Jupyter](https://jupyter.org) dizüstü bilgisayar olarak indirebilir ve not defteri olarak çalıştırabilirsiniz.
 
 ### <a name="sample-code"></a>Örnek kod
 
-````Python
-
+````python
 import azure.cognitiveservices.speech as speechsdk
 
 # Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -96,7 +91,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 # Creates an audio configuration that points to an audio file.
 # Replace with your own audio filename.
 audio_filename = "helloworld.wav"
-audio_output = speechsdk.AudioOutputConfig(filename=audio_filename)
+audio_output = speechsdk.audio.AudioOutputConfig(filename=audio_filename)
 
 # Creates a synthesizer with the given settings
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_output)
@@ -118,38 +113,38 @@ elif result.reason == speechsdk.ResultReason.Canceled:
     print("Did you update the subscription info?")
 ````
 
-### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Konuşma SDK 'sını Visual Studio Code ile yükleyip kullanma
+### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Visual Studio Code ile Konuşma SDK'yı yükleyin ve kullanın
 
-1. Bilgisayarınızda [Python](https://www.python.org/downloads/), 3,8 3,5 ' nin 64 bitlik bir sürümünü indirip bilgisayarınıza yükleyin.
-1. [Visual Studio Code](https://code.visualstudio.com/Download)indirin ve yükleyin.
-1. Visual Studio Code açın ve Python uzantısını yükler. Menüden **dosya** > **tercihleri** > **uzantıları** ' nı seçin. **Python**için arama yapın.
+1. [Python'un](https://www.python.org/downloads/)64 bit sürümünü bilgisayarınıza 3,5 ile 3,8 arasında indirin ve yükleyin.
+1. [Visual Studio Code'u](https://code.visualstudio.com/Download)indirin ve kurun.
+1. Visual Studio Kodunu açın ve Python uzantısını yükleyin. Menüden **Dosya** > **Tercihleri** > **Uzantıları'nı** seçin. **Python'u**arayın.
 
-   ![Python uzantısını yükler](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
+   ![Python uzantısını yükleme](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
-1. Projenin depolandığı bir klasör oluşturun. Bir örnek, Windows Gezgini 'ni kullanmaktır.
-1. Visual Studio Code, **Dosya** simgesini seçin. Ardından oluşturduğunuz klasörü açın.
+1. Projeyi depolamak için bir klasör oluşturun. Bir örnek Windows Explorer kullanarak.
+1. Visual Studio Code'da **Dosya** simgesini seçin. Ardından oluşturduğunuz klasörü açın.
 
-   ![Bir klasörü açın](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
+   ![Klasör açma](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
 
-1. Yeni dosya simgesini seçerek `speechsdk.py`yeni bir Python kaynak dosyası oluşturun.
+1. Yeni dosya simgesini `speechsdk.py`seçerek yeni bir Python kaynak dosyası oluşturun.
 
    ![Dosya oluşturma](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 
 1. [Python kodunu](#sample-code) kopyalayın, yapıştırın ve yeni oluşturulan dosyaya kaydedin.
 1. Konuşma hizmeti abonelik bilgilerinizi ekleyin.
-1. Seçilirse, pencerenin alt kısmındaki durum çubuğunun sol tarafında bir Python yorumlayıcı görüntülenir.
-   Aksi takdirde, kullanılabilir Python yorumlayıcılarını bir listesini alın. Komut paletini açın (Ctrl + Shift + P) ve **Python: yorumlayıcı Seç**' i girin. Uygun olanı seçin.
-1. Konuşma SDK 'Sı Python paketini Visual Studio Code içinden yükleyebilirsiniz. Seçtiğiniz Python yorumlayıcı için henüz yüklenmemişse bunu yapın.
-   Konuşma SDK 'Sı paketini yüklemek için bir Terminal açın. Komut paletini tekrar açın (Ctrl + Shift + P) ve **Terminal: yeni tümleşik Terminal oluştur**' a girin.
-   Açılan terminalde, komut `python -m pip install azure-cognitiveservices-speech` veya sisteminiz için uygun komutu girin.
-1. Örnek kodu çalıştırmak için, düzenleyicinin içinde herhangi bir yere sağ tıklayın. **Terminalde Python dosyasını çalıştır '** ı seçin.
-   Metniniz konuşmaya dönüştürülür ve belirtilen ses verilerinde kaydedilir.
+1. Seçilirse, bir Python yorumlayıcısı pencerenin altındaki durum çubuğunun sol tarafında görüntülenir.
+   Aksi takdirde, kullanılabilir Python yorumlayıcılarının bir listesini getirin. Komut paletini<kbd>(Ctrl+Shift+P)</kbd>açın ve **Python girin: Yorumlayıcı'yı seçin.** Uygun bir tane seçin.
+1. Speech SDK Python paketini Visual Studio Code içinden yükleyebilirsiniz. Seçtiğiniz Python yorumlayıcısı için henüz yüklenmediyse bunu yapın.
+   Konuşma SDK paketini yüklemek için bir terminal açın. Komut paletini tekrar getirin<kbd>(Ctrl+Shift+P)</kbd>ve **Terminalgirin: Yeni Entegre Terminal oluşturun.**
+   Açılan terminalde, sisteminiz için `python -m pip install azure-cognitiveservices-speech` komutu veya uygun komutu girin.
+1. Örnek kodu çalıştırmak için, düzenleyicinin içinde bir yere sağ tıklayın. **Terminal'de Python Dosyasini Çalıştır'ı**seçin.
+   Metniniz konuşmaya dönüştürülür ve belirtilen ses verilerine kaydedilir.
 
-   ```text
+   ```console
    Speech synthesized to [helloworld.wav] for text [Hello world!]
    ```
 
-Bu talimatları takip eden sorunlarınız varsa, daha kapsamlı [Visual Studio Code Python öğreticisine](https://code.visualstudio.com/docs/python/python-tutorial)bakın.
+Bu yönergeleri izleyerek sorunlarınız varsa, daha kapsamlı [Visual Studio Code Python öğreticibakın.](https://code.visualstudio.com/docs/python/python-tutorial)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -157,5 +152,5 @@ Bu talimatları takip eden sorunlarınız varsa, daha kapsamlı [Visual Studio C
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Özel bir ses oluşturun](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Özel ses örneklerini Kaydet](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Özel Ses Oluşturma](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Özel ses örneklerini kaydetme](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

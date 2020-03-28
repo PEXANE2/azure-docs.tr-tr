@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Bileşik varlık öğreticisi-LUSıS'
+title: 'Öğretici: Kompozit varlık öğretici - LUIS'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, bileşik bir varlık içeren tek bir varlığa çeşitli türlerde ayıklanan veri paketi ekleyin. İstemci uygulama, verileri paketleme tarafından farklı veri türlerinde ilgili verileri kolayca ayıklayabilirsiniz.
+description: Bu öğreticide, çıkarılan çeşitli türleri tek bir varlık içine demetlemek için bileşik bir varlık ekleyin. İstemci uygulaması, verileri biraraya getirebilir ve ilgili verileri farklı veri türlerinde kolayca ayıklayabilir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,115 +12,115 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75447958"
 ---
-# <a name="tutorial-group-and-extract-related-data"></a>Öğretici: ilgili verileri gruplandırın ve ayıklayın
-Bu öğreticide, bileşik bir varlık içeren tek bir varlığa çeşitli türlerde ayıklanan veri paketi ekleyin. İstemci uygulama, verileri paketleme tarafından farklı veri türlerinde ilgili verileri kolayca ayıklayabilirsiniz.
+# <a name="tutorial-group-and-extract-related-data"></a>Öğretici: İlgili verileri gruplandırma ve ayıklama
+Bu öğreticide, çıkarılan çeşitli türleri tek bir varlık içine demetlemek için bileşik bir varlık ekleyin. İstemci uygulaması, verileri biraraya getirebilir ve ilgili verileri farklı veri türlerinde kolayca ayıklayabilir.
 
-Bileşik varlık amacı bir üst kategori varlığa ilgili varlıkları grup. Bir bileşik oluşturulmadan önce bilgi ayrı varlıklar olarak bulunmaktadır.
+Bileşik varlığın amacı, ilgili varlıkları bir üst kategori varlığında gruplandırmaktır. Bileşik oluşturulmadan önce bilgiler ayrı varlıklar olarak var.
 
-Bileşik varlık olduğundan bu veri türü için uygun olan veri:
+Bileşik varlık bu veri türü için iyi bir uyum, çünkü veri:
 
-* Birbiriyle ilgilidir.
-* Varlık türleri çeşitli kullanın.
+* Birbirleri ile akrabalar.
+* Çeşitli varlık türleri kullanın.
 * İstemci uygulama tarafından bir bilgi birimi olarak gruplanmaları ve işlenmeleri gerekir.
 
 **Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Örnek uygulamayı içeri aktar
+> * Örnek uygulamayı içe aktarma
 > * Amaç oluşturma
 > * Bileşik varlık ekleme
-> * Eğitin
+> * Eğitim
 > * Yayımlama
 > * Uç noktadan amaçları ve varlıkları alma
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
+## <a name="import-example-app"></a>Örnek uygulamayı içe aktarma
 
-1.  [Uygulama json dosyasını](
-https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) liste varlık öğreticiden indirip kaydedin.
+1.  [Uygulama JSON dosyasını](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) Liste varlık öğreticisinden indirin ve kaydedin.
 
-2. Yeni bir uygulamaya, [halsıs portalını](https://www.luis.ai)kullanarak JSON alın.
+2. JSON'u [LUIS portalını](https://www.luis.ai)kullanarak yeni bir uygulamaya aktarın.
 
-3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `composite` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
+3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `composite` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
 
 ## <a name="composite-entity"></a>Bileşik varlık
 
-Bu uygulamada, departman adı **Departman** listesi varlığında tanımlanmıştır ve eş anlamlılar içerir.
+Bu uygulamada, bölüm adı **Bölüm** listesi varlığında tanımlanır ve eşanlamlıları içerir.
 
-**Transferemployeetodepartment** amacı, bir çalışanın yeni bir departmana taşınmasını istemek için örnek bir örnektir.
+**TransferEmployeeToDepartment** amacı, bir çalışanın yeni bir departmana taşınmasını istemek için örnek bir sözlüğe sahiptir.
 
-Bu amaca yönelik örnek bildirimler şunlardır:
+Bu amaç için örnek söz:
 
 |Örnek konuşmalar|
 |--|
-|John W. Smith 'i muhasebe departmanına taşı|
-|Jill Jones 'ten R & D 'ye aktar|
+|John W. Smith'i muhasebe bölümüne taşıyın|
+|R&D jill Jones transferi|
 
-Taşıma isteği, Bölüm adı ve çalışan adı ' nı içermelidir.
+Taşıma isteği bölüm adını ve çalışan adını içermelidir.
 
-## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Ortak veri türü ayıklamasıyla ilgili yardım için PersonName önceden oluşturulmuş varlığını ekleyin
+## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Ortak veri türü çıkarma ile yardımcı olmak için PersonName önceden oluşturulmuş varlık ekleyin
 
 LUIS, ortak veri ayıklama işlemi için önceden oluşturulmuş birkaç varlık sunar.
 
-1. Üstteki gezinmede **Oluştur** ' u seçin ve ardından sol gezinti menüsünden **varlıklar** ' ı seçin.
+1. Üst gezintiden **Oluştur'u** seçin ve ardından soldaki gezinti menüsünden **Varlıklar'ı** seçin.
 
 1. **Önceden oluşturulmuş varlıkları yönet** düğmesini seçin.
 
-1. Önceden oluşturulmuş varlıklar listesinden **[PersonName](luis-reference-prebuilt-person.md)** ' i seçin ve **bitti**' yi seçin.
+1. Önceden oluşturulmuş varlıklar listesinden **[Kişi Adı'nı](luis-reference-prebuilt-person.md)** seçin ve **ardından Bitti'yi**seçin.
 
     ![Önceden oluşturulmuş varlıklar iletişim kutusunda sayının seçildiğini gösteren ekran görüntüsü](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
     Bu varlık, istemci uygulamanıza ad tanıma eklemenize yardımcı olur.
 
-## <a name="create-composite-entity-from-example-utterances"></a>Örnek utbotlardan Bileşik varlık oluşturma
+## <a name="create-composite-entity-from-example-utterances"></a>Örnek söyleyişlerden bileşik varlık oluşturma
 
 1. Sol gezinti bölmesinden **Intents** (Amaçlar) öğesini seçin.
 
-1. Amaçlar listesinden **Transferemployeetodepartment** öğesini seçin.
+1. Niyet listesinden **TransferEmployeeToDepartment'ı** seçin.
 
-1. Söylenişi `place John Jackson in engineering`, kişi adı varlığını seçin, `John Jackson`ve ardından açılan menü listesinden aşağıdaki söylik için **bileşik varlıkta Wrap** ' ı seçin.
+1. Söyleyiş, `place John Jackson in engineering`personName varlık seçin, `John Jackson`sonra aşağıdaki söyleyerek için açılan menü listesinde **bileşik varlık Sarın** seçin.
 
-    ![Açılan kutudan kaydırmayı kaydır iletişim kutusunun ekran görüntüsü](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
+    ![Açılan iletişim kutusunda kaydırma bileşik seçimi ekran görüntüsü](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. Son varlık hemen ardından `engineering` utterance içinde. Bileşik bir varlığı gösteren sözcüklerin altında yeşil bir çubuk çizilir. Açılır menüde, bileşik adını `TransferEmployeeInfo` seçin ENTER.
+1. Sonra hemen son varlığı `engineering` seçin, söyleyerek. Bileşik varlığı gösteren seçili sözcüklerin altına yeşil çubuk çizilir. Açılan menüde bileşik adı `TransferEmployeeInfo` girin ve ardından enter'u seçin.
 
-    ![Açılan liste iletişim kutusunda bileşik ad girme ekran görüntüsü](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
+    ![Açılan iletişim kutusuna bileşik ad girme ekran görüntüsü](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. **Ne tür bir varlık oluşturmak istiyorsunuz?** , gereken tüm alanlar listede: `personName` ve `Department`. **Done** (Bitti) öğesini seçin. Önceden oluşturulmuş varlığın, personName, bileşik varlığa eklendiğini unutmayın. Başlangıç ve bitiş belirteçleri bileşik bir varlığın arasında görünür önceden oluşturulmuş bir varlık olabilir, önceden oluşturulmuş bu varlıkların bileşik varlığı içermelidir. Önceden oluşturulmuş varlıklar dahil edilmez, bileşik bir varlık değil doğru şekilde tahmin edildiğinde ancak her tek öğedir.
+1. **Ne tür bir varlık oluşturmak istiyorsunuz?** `personName` `Department` **Done** (Bitti) öğesini seçin. Önceden oluşturulmuş varlık olan personName'nin bileşik varlığa eklenmiştir. Bileşik varlığın başlangıcı ve bitiş belirteçleri arasında önceden oluşturulmuş bir varlık görüntülenebilseydiniz, bileşik varlığın bu önceden oluşturulmuş varlıkları içermesi gerekir. Önceden oluşturulmuş varlıklar dahil edilmezse, bileşik varlık doğru tahmin edilmez, ancak her bir öğe dir.
 
-    ![Açılan liste iletişim kutusunda bileşik ad girme ekran görüntüsü](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
+    ![Açılan iletişim kutusuna bileşik ad girme ekran görüntüsü](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
-## <a name="label-example-utterances-with-composite-entity"></a>Bileşik varlıkla etiket örnek konuşma
+## <a name="label-example-utterances-with-composite-entity"></a>Bileşik varlıklı etiket örneği söyleyemeleri
 
-1. Her örnek utterance içinde bileşik içinde olması gereken en soldaki varlığı seçin. Ardından **kaydırma bileşik varlıkta**.
+1. Her örnekte, bileşikte olması gereken en sol daki varlığı seçin. Ardından **bileşik varlıkta Sarın'ı**seçin.
 
-1. Bileşik varlıktaki son sözcüğü seçin ve ardından açılan menüden **Transferemployeeınfo** öğesini seçin.
+1. Bileşik varlıktaki son sözcüğü seçin ve açılan menüden **TransferEmployeeInfo'yu** seçin.
 
-1. Tüm konuşma amacı, bileşik bir varlık ile etiketlenmiş doğrulayın.
+1. Amaçtaki tüm tüm söyleyemelerin bileşik varlıkla etiketlendiğini doğrulayın.
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamaya yapılan değişikliklerin test edilebilir olması için uygulamayı eğitme
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamada yapılan değişikliklerin test edilebilmeleri için uygulamayı eğitin
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Eğitilen modelin uç noktadan sorgulanabilir olması için uygulamayı yayımlayın
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Eğitimli modelin bitiş noktasından sorgulanabilir olması için uygulamayı yayımlayın
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Uç noktadan amacı ve varlık tahminini alın
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Bitiş noktasından niyet ve varlık tahmini alın
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Adres çubuğundaki URL'nin sonuna gidip `Move Jill Jones to DevOps` yazın. Son sorgu dizesi parametresi `q`, utterance sorgu.
+2. Adres çubuğundaki URL'nin sonuna gidip `Move Jill Jones to DevOps` yazın. Son querystring parametresi , sözcük sorgusudur. `q`
 
-    Bileşik doğru bir şekilde ayıklandıktan doğrulamak için bu test olduğundan, bir test ya da mevcut bir örnek utterance veya yeni bir utterance içerebilir. Bileşik varlıktaki tüm alt varlıklar eklemek iyi bir testtir.
+    Bu test, bileşimin doğru şekilde ayıklanmış olduğunu doğrulamak için olduğundan, bir test varolan bir örnek söyleyiş veya yeni bir söyleyiş içerebilir. İyi bir test, tüm alt varlıkları bileşik varlığa dahil etmektir.
 
     ```json
     {
@@ -184,7 +184,7 @@ LUIS, ortak veri ayıklama işlemi için önceden oluşturulmuş birkaç varlık
     }
     ```
 
-   Bu utterance bir bileşik varlıkları dizisi döndürür. Her varlık türü ve değeri verilir. Her bir alt varlık için daha fazla duyarlık bulmak için karşılık gelen öğe varlıkları dizide bulmak için bileşik bir dizi öğesi türü ve bir kombinasyonu kullanın.
+   Bu söyleyiş, bileşik varlıklar dizini döndürür. Her varlığa bir tür ve değer verilir. Her alt varlık için daha fazla kesinlik bulmak için, varlıklar dizisinde karşılık gelen öğeyi bulmak için bileşik dizi öğesinden tür ve değer birleşimini kullanın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -192,16 +192,16 @@ LUIS, ortak veri ayıklama işlemi için önceden oluşturulmuş birkaç varlık
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* [Varlık öğreticisini listeleme](luis-quickstart-intents-only.md)
-* [Bileşik varlık](luis-concept-entity-types.md) kavramsal bilgileri
-* [Eğitme](luis-how-to-train.md)
-* [Yayımlama nasıl yapılır?](luis-how-to-publish-app.md)
-* [LUSıS portalında test etme](luis-interactive-test.md)
+* [Varlık öğreticilerini listele](luis-quickstart-intents-only.md)
+* [Bileşik varlık](luis-concept-entity-types.md) kavramsal bilgi
+* [Nasıl eğitilir?](luis-how-to-train.md)
+* [Yayımlama](luis-how-to-publish-app.md)
+* [LUIS portalında test nasıl](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici, var olan varlıkları kapsüllemek için bileşik bir varlık oluşturuldu. Bu konuşmaya devam etmek için farklı veri türleri ilgili bir veri grubu bulmak istemci uygulaması sağlar. Bu İnsan Kaynakları uygulamasında, bir istemci uygulamanın hangi gün ve saat taşıma başlamalı ve bitmelidir gerekiyor sorabilirsiniz. Ayrıca, fiziksel telefon gibi diğer bir taşıma için başka bir lojisinden da sorabilir.
+Bu öğretici, varolan varlıkları kapsüllemek için bileşik bir varlık oluşturdu. Bu, istemci uygulamasının konuşmaya devam etmek için farklı veri türlerinde ilgili veri grubunu bulmasına olanak tanır. Bu İnsan Kaynakları uygulaması için bir istemci uygulaması, hareketin hangi gün ve saatte başlaması ve sona ermesi gerektiğini sorabilir. Ayrıca fiziksel bir telefon gibi hareket diğer lojistik hakkında sorabilir.
 
 > [!div class="nextstepaction"]
-> [Uç nokta dıklarını inceleyerek, hariç tahminleri düzeltir](luis-tutorial-review-endpoint-utterances.md)
+> [Uç nokta söyleyerek emin olmayan tahminleri düzeltme](luis-tutorial-review-endpoint-utterances.md)

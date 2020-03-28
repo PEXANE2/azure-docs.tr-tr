@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma C# , (Unity)-konuşma hizmeti'
+title: 'Quickstart: Bir mikrofondan konuşmayı tanıma, C# (Birlik)- Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,126 +10,126 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: be8497cb07bd3c761c59bfc55e773b5dcc937c50
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924877"
 ---
 > [!NOTE]
-> Unity için konuşma SDK 'Sı, Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatör, ARM32 ve ARM64) destekler
+> Unity için Konuşma SDK Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatörü, ARM32 ve ARM64) destekler
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
-Bunu zaten yaptıysanız harika. Şimdi devam edelim.
+Bunu zaten yaptıysan, harika. Devam edelim.
 
-## <a name="create-a-unity-project"></a>Unity projesi oluşturma
+## <a name="create-a-unity-project"></a>Birlik projesi oluşturma
 
-1. Unity 'yi açın. Unity 'yi ilk kez kullanıyorsanız, **Unity Hub** *<version number>* penceresi görüntülenir. (Ayrıca, bu pencereye ulaşmak için Unity hub 'ını doğrudan açabilirsiniz.)
+1. Birlik'i aç. Birlik'i ilk kez kullanıyorsanız, **Unity Hub** *<version number>* penceresi görüntülenir. (Bu pencereye ulaşmak için doğrudan Unity Hub'ı da açabilirsiniz.)
 
-   [![Unity hub penceresi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png#lightbox)
-1. **Yeni**'yi seçin. **Unity ile yeni proje oluştur** *<version number>* penceresi görüntülenir.
+   [![Unity Hub penceresi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png#lightbox)
+1. **Yeni'yi**seçin. **Unity** *<version number>* penceresi ile yeni bir proje oluştur görüntülenir.
 
-   [Unity hub 'da yeni bir proje oluşturmak ![](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png#lightbox)
-1. **Proje adı**' nda, **CSharp-Unity**girin.
-1. **Şablonlar**' da, **3B** zaten seçili değilse, bunu seçin.
-1. **Konum**' da, projenin kaydedileceği klasörü seçin veya oluşturun.
-1. **Oluştur**’u seçin.
+   [![Unity Hub'da yeni bir proje oluşturma](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png#lightbox)
+1. **Proje Adı'na** **csharp-unity**girin.
+1. **Şablonlar'da** **, 3B** zaten seçilmemişse, seçin.
+1. **Konum'da,** projeyi kaydetmek için bir klasör seçin veya oluşturun.
+1. **Oluştur'u**seçin.
 
-Bir süre sonra Unity Düzenleyicisi penceresi görüntülenir.
+Bir süre sonra, Unity Editor penceresi görüntülenir.
 
 
 
 ## <a name="add-ui"></a>UI Ekle
 
-Şimdi sahemizi en az bir kullanıcı arabirimi ekleyelim. Bu Kullanıcı arabirimi, konuşma tanımayı tetikleme ve sonucu görüntüleyen bir metin alanı içeren bir düğmeden oluşur. [ **Hiyerarşi** penceresinde](https://docs.unity3d.com/Manual/Hierarchy.html), Unity 'nin yeni projeyle oluşturulan örnek bir sahne gösterilmektedir.
+Şimdi sahnemize minimum bir uI ekleyelim. Bu Kullanıcı GEkibi, konuşma tanımayı tetiklemek için bir düğme ve sonucu görüntülemek için bir metin alanından oluşur. [ **Hiyerarşi** penceresinde,](https://docs.unity3d.com/Manual/Hierarchy.html)yeni projeyle oluşturulan Birleşim' in bir örnek sahnesi gÜ
 
-1. **Hiyerarşi** penceresinin üst kısmında > **Kullanıcı arabirimi** > düğmesi **Oluştur** ' u seçin.
+1. **Hiyerarşi** penceresinin üst**kısmında, UI** >  **Oluştur** > **düğmesini**seçin.
 
-   Bu eylem **hiyerarşi** penceresinde görebileceğiniz üç oyun nesnesi oluşturur: **düğme** nesnesi, düğmeyi içeren bir **tuval** nesnesi ve bir **EventSystem** nesnesi.
+   Bu **eylem, Hiyerarşi** penceresinde görebileceğiniz üç oyun nesnesi oluşturur: **Düğme** nesnesi, düğmeyi içeren bir **Tuval** nesnesi ve **Bir EventSystem** nesnesi.
 
-   [![Unity düzenleyici ortamı](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-editor-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-editor-window.png#lightbox)
+   [![Unity Editor ortamı](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-editor-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-editor-window.png#lightbox)
 
-1. [ ](https://docs.unity3d.com/Manual/SceneViewNavigation.html) Sahnenin ve [ **sahne** görünümündeki](https://docs.unity3d.com/Manual/UsingTheSceneView.html)düğmenin iyi bir görünümünü görmek için sahne görünümünde gezinin.
+1. [Tuvalin **Scene** ](https://docs.unity3d.com/Manual/SceneViewNavigation.html) ve [ **Sahne** görünümündeki](https://docs.unity3d.com/Manual/UsingTheSceneView.html)düğmenin iyi bir görünümünü görmek için Sahne görünümünde gezinin.
 
-1. [ **Inspector** penceresinde](https://docs.unity3d.com/Manual/UsingTheInspector.html) (varsayılan olarak, sağ tarafta), **POS X** ve **POS Y** özelliklerini **0**olarak ayarlayın, bu nedenle düğme tuvalin ortasında ortalanır.
+1. [ **Denetçi** penceresinde](https://docs.unity3d.com/Manual/UsingTheInspector.html) (varsayılan olarak sağda), **Pos X** ve **Pos Y** özelliklerini **0**olarak ayarlayın, böylece düğme tuvalin ortasında ortalanır.
 
-1. **Hiyerarşi** penceresinde, **metin** nesnesi **oluşturmak Için** > **Kullanıcı arabirimi** > **Oluştur** ' u seçin.
+1. **Hiyerarşi** penceresinde, **Metin** **nesnesi** > oluşturmak için Kullanıcı Arası Oluştur**Metni'ni** **seçin.** > 
 
-1. **Inspector** penceresinde, **POS X** ve **pos Y** özelliklerini **0** ve **120**olarak ayarlayıp **Genişlik** ve **Yükseklik** özelliklerini **240** ve **120**olarak ayarlayın. Bu değerler metin alanının ve düğmenin çakışmadığından emin olmanızı sağlamaktır.
+1. **Denetçi** penceresinde, Pos **X** ve **Pos Y** özelliklerini **0** ve **120**olarak ayarlayın ve **Genişlik** ve **Yükseklik** özelliklerini **240** ve **120**olarak ayarlayın. Bu değerler, metin alanı nın ve düğmenin çakışmamasını sağlar.
 
-İşiniz bittiğinde **sahne** görünümü şu ekran görüntüsüne benzer görünmelidir:
+İşi bittiğinde, **Sahne** görünümü bu ekran görüntüsüne benzer olmalıdır:
 
-[Unity düzenleyicisinde ![sahne görünümü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-02-ui-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-02-ui-inline.png#lightbox)
+[![Unity Editor'da sahne görünümü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-02-ui-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-02-ui-inline.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>Örnek kod ekleme
 
-Unity projesi için örnek betik kodu eklemek için aşağıdaki adımları izleyin:
+Unity projesi için örnek komut dosyası kodunu eklemek için aşağıdaki adımları izleyin:
 
-1. Yeni C# bir betik eklemek için [Proje penceresinde](https://docs.unity3d.com/Manual/ProjectView.html) >  **C# betiği** **Oluştur** ' u seçin.
+1. Proje [penceresinde,](https://docs.unity3d.com/Manual/ProjectView.html)yeni bir C# komut dosyası eklemek için**C# komut dosyası** **oluştur'u** > seçin.
 
-   [Unity düzenleyicisinde proje penceresini ![](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png#lightbox)
-1. Betiği `HelloWorld`olarak adlandırın.
+   [![Unity Editor'da proje penceresi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png#lightbox)
+1. Komut dosyasına `HelloWorld`isim .
 
-1. Yeni oluşturulan betiği düzenlemek için `HelloWorld` çift tıklayın.
+1. Yeni oluşturulan `HelloWorld` komut dosyasını yeniden yapmak için çift tıklatın.
 
    > [!NOTE]
-   > Kod düzenleyicisini düzenleme için Unity tarafından kullanılacak şekilde yapılandırmak için > **tercihlerini** **Düzenle** ' yi seçin ve ardından **dış araçlar** tercihlerine gidin. Daha fazla bilgi için bkz. [Unity Kullanıcı el kitabı](https://docs.unity3d.com/Manual/Preferences.html).
+   > Düzenleme için Unity tarafından kullanılacak kod düzenleyicisini yapılandırmak için**Tercihleri** **Düzenle'yi** > seçin ve ardından **Dış Araçlar** tercihlerine gidin. Daha fazla bilgi için [Birlik Kullanım Kılavuzu'na](https://docs.unity3d.com/Manual/Preferences.html)bakın.
 
-1. Mevcut betiği şu kodla değiştirin:
+1. Varolan komut dosyasını aşağıdaki kodla değiştirin:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. `YourSubscriptionKey` dize, konuşma hizmeti abonelik anahtarınızla bulun ve değiştirin.
+1. Dizeyi `YourSubscriptionKey` bulun ve Konuşma hizmeti abonelik anahtarınızla değiştirin.
 
-1. Dize `YourServiceRegion` bulun ve, aboneliğinizle ilişkili bölgeden **bölge tanımlayıcısı** ile [](https://aka.ms/speech/sdkregion) değiştirin. Örneğin, ücretsiz denemeyi kullanıyorsanız bölge `westus` olur.
+1. Dizeyi, `YourServiceRegion` aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) **Bölge tanımlayıcısıyla** bulun ve değiştirin. Örneğin, ücretsiz denemeyi kullanıyorsanız bölge `westus` olur.
 
-1. Değişiklikleri betikte kaydedin.
+1. Değişiklikleri komut dosyasına kaydedin.
 
-Şimdi Unity düzenleyicisine dönün ve betiği oyun nesnelerinizin birine bileşen olarak ekleyin:
+Şimdi Unity Editor'a dönün ve komut dosyasını oyun nesnelerinizden birine bileşen olarak ekleyin:
 
-1. **Hiyerarşi** penceresinde **tuval** nesnesini seçin.
+1. **Hiyerarşi** **penceresinde, Kanvas** nesnesini seçin.
 
-1. **Inspector** penceresinde, **Bileşen Ekle** düğmesini seçin.
+1. **Denetleç** penceresinde Bileşen **Ekle** düğmesini seçin.
 
-   [Unity düzenleyicisinde ![Inspector penceresi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-inspector-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-inspector-window.png#lightbox)
+   [![Unity Editor'da Müfettiş penceresi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-inspector-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-inspector-window.png#lightbox)
 
-1. Aşağı açılan listede, yukarıda oluşturduğumuz `HelloWorld` betiği arayın ve ekleyin. **Inspector** penceresinde, iki başlatılmamış özellik, **çıkış metni** ve **Start ku düğmesi**listelenerek bir **Merhaba Dünya (betik)** bölümü görüntülenir. Bu Unity bileşen özellikleri `HelloWorld` sınıfının ortak özellikleriyle eşleşir.
+1. Açılan listede, yukarıda oluşturduğumuz `HelloWorld` komut dosyasını arayın ve ekleyin. Bir **Hello World (Script)** bölümü **Müfettiş** penceresinde, iki başlatılmamış özellikleri, **Çıkış Metni** ve Başlangıç **Reco Düğmesi**listeleyen görünür. Bu Birlik bileşeni özellikleri sınıfın `HelloWorld` ortak özellikleriyle eşleşir.
 
-1. **Start ku Button** özelliğinin nesne seçicisini (özelliğin sağ tarafındaki küçük daire simgesini) seçin ve daha önce oluşturduğunuz **düğme** nesnesini seçin.
+1. Başlat **Reco Düğmesi** özelliğinin nesne seçicisini (özelliğin sağındaki küçük daire simgesi) seçin ve daha önce oluşturduğunuz **Düğme** nesnesini seçin.
 
-1. **Çıkış metni** özelliğinin nesne seçicisini seçin ve daha önce oluşturduğunuz **metin** nesnesini seçin.
+1. Çıktı **Metni** özelliğinin nesne seçicisini seçin ve daha önce oluşturduğunuz **Metin** nesnesini seçin.
 
    > [!NOTE]
-   > Düğme Ayrıca iç içe metin nesnesine sahiptir. Metni yanlışlıkla metin çıktısı için seçtiğinizden emin olun (veya bir karışıklığı önlemek için **Inspector** penceresindeki **ad** alanını kullanarak metin nesnelerinden birini yeniden adlandırın).
+   > Düğmede iç içe bir metin nesnesi de vardır. Metin çıktısı için yanlışlıkla seçmediğinizden (veya karışıklığı önlemek için **Inspector** penceresindeki **Ad** alanını kullanan metin nesnelerinden birini yeniden adlandırmadığınızdan) emin olun.
 
-## <a name="run-the-application-in-the-unity-editor"></a>Uygulamayı Unity düzenleyicisinde çalıştırma
+## <a name="run-the-application-in-the-unity-editor"></a>Birliğin Düzenleyicisi'nde uygulamayı çalıştırın
 
-Artık, uygulamayı Unity Düzenleyicisi içinde çalıştırmaya hazırsınız.
+Artık uygulamayı Unity Editor içinde çalıştırmaya hazırsınız.
 
-1. Unity Düzenleyici araç çubuğunda (menü çubuğunun altında) **oynat** düğmesini (sağ taraftaki bir üçgen) seçin.
+1. Unity Editor araç çubuğunda (menü çubuğunun altında) **Oynat** düğmesini (sağişaret üçgeni) seçin.
 
-1. [ **Oyun** görünümü](https://docs.unity3d.com/Manual/GameView.html)' ne gidin ve **metin** nesnesinin **konuşmayı tanımak için düğme ' yi**görüntülemesini bekleyin. (Uygulamanın başlatıldığı veya yanıt vermeye hazırlanmadığı durumlarda **Yeni metin** görüntüler.)
+1. [ **Oyun** görünümüne](https://docs.unity3d.com/Manual/GameView.html)gidin ve **metni** tanımak için Metin nesnesinin **görüntülemesini bekleyin.** (Uygulama başlatılmadığında veya yanıt vermeye hazır olmadığında **Yeni Metin** görüntüler.)
 
-1. Düğmesini seçin ve bilgisayarınızın mikrofonuna bir Ingilizce tümcecik veya cümle konuşun. Konuşma, konuşma hizmetine iletilir ve **oyun** görünümünde görüntülenen metne gönderilir.
+1. Düğmeyi seçin ve bilgisayarınızın mikrofonuna İngilizce bir tümcecik veya cümle konuşun. Konuşmanız Konuşma hizmetine aktarılır ve **Oyun** görünümünde görünen metne aktarılır.
 
-   [Unity düzenleyicisinde oyun görünümü ![](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
+   [![Unity Editor'da oyun görünümü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 
-1. Hata ayıklama iletileri için [ **konsol** penceresini](https://docs.unity3d.com/Manual/Console.html) denetleyin. **Konsol** penceresi görünmüyorsa, menü çubuğuna gidin ve bunu göstermek için **pencere** > **genel** > **konsolu** ' nu seçin.
+1. Hata ayıklama iletileri için [ **Konsol** penceresinden](https://docs.unity3d.com/Manual/Console.html) denetleyin. **Konsol** penceresi görünmüyorsa, menü çubuğuna gidin ve görüntülemek için **Pencere** > **Genel** > **Konsolu'nu** seçin.
 
-1. Konuşmayı tanımayı tamamladığınızda, uygulamayı durdurmak için Unity Düzenleyici araç çubuğundaki **oynat** düğmesini seçin.
+1. Konuşmayı tanımayı bitirdiğinizde, uygulamayı durdurmak için Unity Editor araç çubuğundaki **Oynat** düğmesini seçin.
 
 ## <a name="additional-options-to-run-this-application"></a>Bu uygulamayı çalıştırmak için ek seçenekler
 
-Bu uygulama, bir Android uygulaması, Windows tek başına uygulaması veya UWP uygulaması olarak da dağıtılabilir.
-Daha fazla bilgi için bkz. [örnek depomız](https://aka.ms/csspeech/samples). `quickstart/csharp-unity` klasörü, bu ek hedeflerin yapılandırmasını açıklar.
+Bu uygulama aynı zamanda bir Android uygulaması, tek başına bir Windows uygulaması veya bir UWP uygulaması olarak da dağıtılabilir.
+Daha fazla bilgi için [örnek depomuza](https://aka.ms/csspeech/samples)bakın. Klasör, `quickstart/csharp-unity` bu ek hedeflerin yapılandırmasını açıklar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

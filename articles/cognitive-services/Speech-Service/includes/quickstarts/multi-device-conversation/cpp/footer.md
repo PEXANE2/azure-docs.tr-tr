@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: 3f92e0515c9e8218b29149a3a33383f49eae068d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264595"
 ---
 > [!div class="nextstepaction"]
-> [GitHub C++ 'daki örnekleri keşfet](https://aka.ms/speech/github-cpp)
+> [GitHub'da C++ örneklerini keşfedin](https://aka.ms/speech/github-cpp)

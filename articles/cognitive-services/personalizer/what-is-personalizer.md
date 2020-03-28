@@ -1,7 +1,7 @@
 ---
 title: Kişiselleştirme nedir?
 titleSuffix: Azure Cognitive Services
-description: Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza gösterilecek en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
+description: Personalizer, kullanıcılarınıza gerçek zamanlı davranışlarından ders çıkarılarak göstermek için en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,95 +10,97 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622732"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052051"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
-Azure kişiselleştirici, istemci uygulamanızın her kullanıcıyı göstermek için en iyi, tek _içerik_ öğesini seçmesini sağlayan bulut tabanlı bir API hizmetidir. Hizmet, içerik ve bağlam hakkında sağladığınız toplu gerçek zamanlı bilgilere göre içerik öğelerinden en iyi öğeyi seçer.
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Kullanıcı için içerik öğesini sunduktan sonra, sistem kullanıcı davranışını izler ve aldığı bağlam bilgilerine göre en iyi içeriği seçme yeteneğini geliştirmek için bir geri puanı Kişiselleştiriciye bildirir.
+Azure Personalizer, istemci uygulamanızın her kullanıcıyı göstermek için en iyi, tek _içerik_ öğesini seçmesine yardımcı olan bulut tabanlı bir API hizmetidir. Hizmet, içerik ve bağlam hakkında sağladığınız toplu gerçek zamanlı bilgilere dayanarak içerik öğelerinden en iyi öğeyi seçer.
 
-**İçerik** , metin, görüntü, URL veya e-posta gibi istediğiniz herhangi bir bilgi birimi olabilir.
+İçerik öğesini kullanıcınıza sunduktan sonra, sisteminiz kullanıcı davranışını izler ve aldığı bağlam bilgilerine göre en iyi içeriği seçme yeteneğini geliştirmek için bir ödül puanını Personalizer'a geri bildirir.
+
+**İçerik,** kullanıcınıza göstermek için seçmek istediğiniz metin, resim, url veya e-posta gibi herhangi bir bilgi birimi olabilir.
 
 <!--
 ![What is personalizer animation](./media/what-is-personalizer.gif)
 -->
 
-## <a name="how-does-personalizer-select-the-best-content-item"></a>Kişiselleştirici en iyi içerik öğesini nasıl seçer?
+## <a name="how-does-personalizer-select-the-best-content-item"></a>Personalizer en iyi içerik öğesini nasıl seçer?
 
-Kişiselleştirici, tüm kullanıcılar arasında toplu davranışa ve yeniden puanları temel alan en iyi öğeyi (_eylem_) seçmek için **pekiştirmeye dayalı Learning** kullanır. Eylemler, haber makaleleri, belirli filmler veya aralarından seçim yapabileceğiniz ürünler gibi içerik öğeleridir.
+Personalizer tüm kullanıcılar arasında kolektif davranış ve ödül puanları dayalı en iyi öğe _(eylem)_ seçmek için **takviye öğrenme** kullanır. Eylemler, haber makaleleri, belirli filmler veya seçim yapabileceğiniz ürünler gibi içerik öğeleridir.
 
-**Sıralama** çağrısı, eylem öğesini ve eylem özelliklerini ve en üstteki eylem öğesini seçmek için bağlam özelliklerini alır:
+**Rank** çağrısı eylem öğesini, eylem özellikleriyle birlikte alır ve en üstteki eylem öğesini seçmek için bağlam özellikleri:
 
-* **Özelliklerle Ilgili eylemler** -her bir öğeye özgü özelliklerle içerik öğeleri
-* **Bağlam özellikleri** -uygulamanızın kullanımı sırasında kullanıcılarınızın özellikleri, bağlamları veya ortamları
+* **Özelliklere sahip eylemler** - her öğeye özgü özelliklere sahip içerik öğeleri
+* **Bağlam özellikleri** - uygulamanızı kullanırken kullanıcılarınızın özellikleri, bağlamları veya çevreleri
 
-Sıralama çağrısı, **geri dönüş EYLEMI kimliği** alanında kullanıcıya gösterilecek içerik öğesi, __eylem__kimliğini döndürür.
-Kullanıcıya gösterilen __eylem__ , makine öğrenimi modelleriyle seçilir ve zaman içinde toplam yeniden kullanım miktarını en üst düzeye çıkarmaya çalışıyor.
+Rank çağrısı, **Ödül Eylem Kimliği** alanında kullanıcıya göstermek üzere hangi içerik öğesinin kimliğini, __eylemi__kullanıcıya gösterir.
+Kullanıcıya gösterilen __eylem,__ zaman içinde toplam ödül miktarını en üst düzeye çıkarmaya çalışan makine öğrenimi modelleri ile seçilir.
 
 Birkaç örnek senaryo şunlardır:
 
-|İçerik türü|**Eylemler (özelliklerle birlikte)**|**Bağlam özellikleri**|Geri alınan geri dönüş eylemi KIMLIĞI<br>(Bu içeriği görüntüle)|
+|İçerik türü|**Eylemler (özelliklere sahip)**|**Bağlam özellikleri**|İade Ödül Eylem Kimliği<br>(bu içeriği görüntüleyin)|
 |--|--|--|--|
-|Haber listesi|a. `The president...` (Ulusal, politika, [metin])<br>b. `Premier League ...` (küresel, spor, [metin, görüntü, video])<br> c. `Hurricane in the ...` (bölgesel, hava durumu, [metin, görüntü]|Cihaz haberleri okundu<br>Ay veya mevsim<br>|bir `The president...`|
-|Filmler listesi|1. `Star Wars` (1977, [Action, Adventure, FI], George Lucas)<br>2. `Hoop Dreams` (1994, [belgesel, spor], Steve James<br>3. `Casablanca` (1942, [Romantik, Drama, war], Michael Curtiz)|Cihaz filminin izlenen<br>ekran boyutu<br>Kullanıcı türü<br>|3. `Casablanca`|
-|Ürün listesi|i. `Product A` (3 kg, $ $ $ $, 24 saat içinde teslim et)<br>ii. `Product B` (20 kg, $ $, 2 hafta, gümrük ile teslim)<br>iii. `Product C` (3 kg, $ $ $, 48 saat içinde teslim)|Cihaz alışverişi buradan okundu<br>Kullanıcının harcama katmanı<br>Ay veya mevsim|ii. `Product B`|
+|Haber listesi|a. `The president...`(ulusal, siyaset, [metin])<br>b. `Premier League ...`(global, spor, [metin, resim, video])<br> c. `Hurricane in the ...`(bölgesel, hava durumu, [metin,resim]|Cihaz haberleri<br>Ay veya sezon<br>|A`The president...`|
+|Film listesi|1. `Star Wars` (1977, [aksiyon, macera, fantezi], George Lucas)<br>2. `Hoop Dreams` (1994, [belgesel, spor], Steve James<br>3. `Casablanca` (1942, [romantizm, dram, savaş], Michael Curtiz)|Cihaz filmi izlenir<br>ekran boyutu<br>Kullanıcı türü<br>|3.`Casablanca`|
+|Ürün listesi|i. `Product A`(3 kg, $$$$, 24 saat içinde teslim)<br>ii. `Product B`(20 kg, $$, gümrükile 2 hafta nakliye)<br>iii. `Product C`(3 kg, $$$, 48 saat içinde teslimat)|Cihaz alışverişi<br>Kullanıcının harcama katmanı<br>Ay veya sezon|ii. `Product B`|
 
-Kişiselleştirici, pekiştirmeye dayalı öğrenimi, bir birleşimini temel alarak _eylem kimliği_olarak bilinen tek bir en iyi eylemi seçmek için kullanılır:
-* Eğitilen model-son bilgiler kişiselleştirme hizmeti alındı
-* Özelliklerle ve bağlam özellikleriyle geçerli veriye özgü eylemler
+Personalizer tek en iyi eylem seçmek için takviye öğrenme kullanılan, _ödül eylem kimliği_olarak bilinen , bir arada dayalı:
+* Eğitimli model - Personalizer hizmetinin aldığı geçmiş bilgiler
+* Güncel veriler - Özellikleri ve bağlam özellikleri ile belirli eylemler
 
-## <a name="when-to-call-personalizer"></a>Kişiselleştirici ne zaman çağrılacağını
+## <a name="when-to-call-personalizer"></a>Personalizer ne zaman arama
 
-Kişiselleştirici 'in **sıralama** [API 'si](https://go.microsoft.com/fwlink/?linkid=2092082) , _her içerik her seferinde_ gerçek zamanlı olarak çağrılır. Bu, _olay kimliği_ile belirtilen bir **olay**olarak bilinir.
+Personalizer's **Rank** [API](https://go.microsoft.com/fwlink/?linkid=2092082) gerçek zamanlı olarak, içerik sunmak _her zaman_ denir. Bu bir **olay**olarak bilinir, bir _olay kimliği_ile kaydetti.
 
-Kişiselleştiriciye yönelik **Reward** [API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) gerçek zamanlı olarak çağrılabilir veya altyapınıza daha iyi uyum sağlamak için gecikebilir. İş gereksinimlerinize göre ödül puanı ' nı belirlersiniz. Bu, iyi için 1 ve hatalı için 0 gibi tek bir değer ya da iş hedeflerinizi ve ölçümünüzü göz önünde bulundurarak oluşturduğunuz bir algoritma tarafından üretilen bir sayı olabilir.
+Personalizer'ın **Ödül** [API'si,](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) altyapınıza daha iyi uyacak şekilde gerçek zamanlı olarak çağrılabilir veya geciktirilebilir. Ödül puanını iş gereksinimlerinize göre belirlersiniz. Bu, iyi için 1 ve kötü ler için 0 gibi tek bir değer veya iş hedefleriniz ve ölçümleriniz göz önünde bulundurularak oluşturduğunuz bir algoritma tarafından üretilen bir sayı olabilir.
 
-## <a name="personalizer-content-requirements"></a>Kişiselleştirici içerik gereksinimleri
+## <a name="personalizer-content-requirements"></a>Personalizer içerik gereksinimleri
 
-İçeriğiniz için kişiselleştirici kullanın:
+İçeriğiniz:
 
-* Öğesinin arasından seçim yapmak için sınırlı sayıda öğe (en fazla ~ 50) vardır. Daha büyük bir listeniz varsa, listeyi 50 öğe olarak azaltmak için [bir öneri altyapısı kullanın](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) .
-* , Derecelendirilir, Özellikler ve _bağlam özellikleriyle_ _Eylemler_ hakkında bilgi içerir.
-* Kişiselleştirici için en az ~ 1k/gün içeriğe ilişkin olay ile ilgili olaylar geçerlidir. Kişiselleştirici gereken en düşük trafiği almazsa, hizmet en iyi tek içerik öğesini belirlemede daha uzun sürer.
+* Seçilecek sınırlı bir öğe kümesi (en fazla ~50) vardır. Daha büyük bir listenizin varsa, listeyi 50 öğeye düşürmek için [bir öneri altyapısı kullanın.](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution)
+* Sıralamalı istediğiniz içeriği açıklayan bilgilere sahiptir: özellikleri ve _bağlam özelliklerine_ _sahip eylemler._
+* Personalizer'ın etkili olabilmek için en az ~1k/gün içerikle ilgili etkinliklere sahiptir. Personalizer gereken minimum trafiği almazsa, hizmetin tek en iyi içerik öğesini belirlemesi daha uzun sürer.
 
-Kişiselleştirici, tek en iyi içerik öğesini döndürmek için neredeyse gerçek zamanlı olarak toplu bilgiler kullandığından, hizmet şunları yapmaz:
-* Kullanıcı profili bilgilerini kalıcı yapın ve yönetin
-* Bireysel kullanıcıların tercihlerini veya geçmişini günlüğe kaydet
-* Temizlenen ve etiketlenmiş içerik gerektir
+Personalizer, tek en iyi içerik öğesini döndürmek için toplu bilgileri neredeyse gerçek zamanlı olarak kullandığından, hizmet şunları yapmaz:
+* Kullanıcı profili bilgilerini oluşturma ve yönetme
+* Tek tek kullanıcıların tercihlerini veya geçmişini günlüğe kaydetme
+* Temizlenmiş ve etiketlenmiş içerik gerektirme
 
-## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>İstemci uygulamanız için kişiselleştirici tasarlama ve uygulama
+## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Müşteri uygulamanız için Personalizer nasıl tasarlar ve uygularım?
 
-1. İçeriği, **_eylemleri_** ve **_bağlamı_** [tasarlayın](concepts-features.md) ve planlayın. **_Ödül_** puanı için yeniden dengeleme algoritmasını saptayın.
-1. Oluşturduğunuz her bir [kişiselleştirici kaynağı](how-to-settings.md) 1 öğrenme döngüsü olarak kabul edilir. Döngü, bu içerik veya Kullanıcı deneyimi için hem derecelendirme hem de yeniden çağrıları alacaktır.
-1. Web sitenize veya içerik sisteminize kişiselleştirici ekleyin:
-    1. İçerik kullanıcıya gösterilmeden önce en iyi, tek _içerik_ öğesini belirleyebilmek için, uygulamanızda, Web sitenizde veya sisteminizde kişiselleştiriciye bir **Derecelendirme** çağrısı ekleyin.
-    1. Kullanıcıya döndürülen geri dönüş _EYLEMI kimliği_olan en iyi, tek _içerik_ öğesini görüntüleyin.
-    1. Kullanıcının nasıl davrandığını öğrenmek için, şu gibi, **yeniden** Puanlama sağlamak üzere toplanan bilgilere _algoritma_ uygulayın:
+1. [Tasarım](concepts-features.md) ve içerik, **_eylemler_** ve **_bağlam_** için plan . **_Ödül_** puanı için ödül algoritmasını belirleyin.
+1. Oluşturduğunuz her [Personalizer Kaynak](how-to-settings.md) 1 Öğrenme Döngüsü olarak kabul edilir. Döngü, bu içerik veya kullanıcı deneyimi için hem Rütbe hem de Ödül çağrılarını alır.
+1. Web sitenize veya içerik sisteminize Personalizer ekleyin:
+    1. İçerik kullanıcıya gösterilmeden önce en iyi tek _içerik_ öğesini belirlemek için uygulamanızda, web sitenizde veya sisteminizde Personalizzer'a **Bir Rank** çağrısı ekleyin.
+    1. Döndürülen _ödül eylem kimliği_olan en iyi, tek _içerik_ öğesini kullanıcıya görüntüleyin.
+    1. Kullanıcının nasıl bir şekilde nasıl bir şekilde nasıl bir şekilde nasıl bir şekilde nasıl bir şekilde uygulandığıhakkında toplanan **bilgilere, ödül** puanını belirlemek için _aşağıdakiler_ gibi algoritma uygulayın:
 
         |Davranış|Hesaplanan ödül puanı|
         |--|--|
-        |Kullanıcı tarafından seçilen en iyi, tek _içerik_ öğesi (Reward eylem kimliği)|**1**|
-        |Kullanıcı tarafından seçilen diğer içerik|**0**|
-        |Kullanıcı duraklatıldı, en iyi ve tek içerik öğesini seçmeden önce, tek _içerik_ öğesi (Reward eylem kimliği)|**0,5**|
+        |Kullanıcı en iyi, tek _içerik_ öğesi (ödül eylem kimliği) seçilen|**1**|
+        |Kullanıcı seçilen diğer içerik|**0**|
+        |Kullanıcı durakladı, kararsız bir şekilde gezinme, en iyi, tek _içerik_ öğesi (ödül eylem kimliği) seçmeden önce|**0.5**|
 
-    1. Bir **ödül** çağrısı ekleyerek 0 ile 1 arasında bir ödül puanı gönderiliyor
+    1. 0 ile 1 arasında ödül puanı göndererek **ödül** çağrısı ekleme
         * İçeriğinizi gösterdikten hemen sonra
-        * Veya sonraki bir süre sonra çevrimdışı bir sistem
-    1. Bir kullanım süresinden sonra [çevriminizi](concepts-offline-evaluation.md) çevrimdışı değerlendirmede değerlendirin. Çevrimdışı bir değerlendirme, kodunuzu değiştirmeden veya Kullanıcı deneyimini etkilemeden, kişiselleştirici hizmetin verimliliğini test etmenize ve değerlendirmenize olanak tanır.
+        * Veya bir süre sonra çevrimdışı sistemde
+    1. Kullanım süresinden sonra [döngünüzü](concepts-offline-evaluation.md) çevrimdışı bir değerlendirmeyle değerlendirin. Çevrimdışı değerlendirme, kodunuzu değiştirmeden veya kullanıcı deneyimini etkilemeden Kisilikhizmetinin etkinliğini test etmenizi ve değerlendirmenizi sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 
-* [Kişiselleştirici nasıl kullanılır?](how-personalizer-works.md)
-* [Pekiştirmeye dayalı Learning nedir?](concepts-reinforcement-learning.md)
-* [Sıralama isteğine yönelik özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
-* [Reward isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
+* [Kişiselleştirme nasıl çalışır?](how-personalizer-works.md)
+* [Pekiştirme Öğrenme Nedir?](concepts-reinforcement-learning.md)
+* [Rank isteğine ilişkin özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
+* [Ödül isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
 * [Hızlı başlangıçlar](sdk-learning-loop.md)
 * [Öğretici](tutorial-use-azure-notebook-generate-loop-data.md)
-* [Etkileşimli tanıtımı kullanma](https://personalizationdemo.azurewebsites.net/)
+* [Etkileşimli demoyu kullanma](https://personalizationdemo.azurewebsites.net/)

@@ -1,7 +1,7 @@
 ---
 title: Form Tanıma nedir?
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler formu tanıyıcı, form belgelerinden anahtar/değer çiftlerini ve tablo verilerini tanımlamanızı ve ayıklamanızı sağlar.
+description: Azure Bilişsel Hizmetler Formu Tanıyır, form belgelerinden anahtar/değer çiftleri ve tablo verilerini tanımlamanıza ve ayıklamanıza olanak tanır.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,77 +9,79 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6b19dc11438274ecf6218d5c0bd8c9ef3dafbf01
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241741"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052426"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
-Azure form tanıyıcı, form belgelerinden metin, anahtar/değer çiftleri ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bilişsel bir hizmettir. Formdan metin alır ve özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıkarır. El ile müdahale veya kapsamlı veri bilimi uzmanlığı olmadan, belirli içeriğinize kolayca doğru sonuçlar elde edersiniz. Form tanıyıcı özel modellerden, önceden oluşturulmuş makbuz modelinden ve Düzen API 'sinden oluşur. Karmaşıklığı azaltmak ve iş akışınız veya uygulamanızla bütünleştirmek için bir REST API kullanarak form tanıyıcı modellerini çağırabilirsiniz.
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Form tanıyıcı aşağıdaki hizmetlerden oluşur:
-* **Özel modeller** -formlardan anahtar/değer çiftlerini ve tablo verilerini ayıklayın. Bu modeller kendi verileriniz ile eğitilmiş olduğundan, formlarınıza göre uyarlanmıştır.
-* **Önceden oluşturulmuş makbuz modeli** -önceden oluşturulmuş bir model kullanarak ABD satış makbuzlarından verileri ayıklayın.
-* **Düzen API 'si** -metin ve tablo yapılarını, belgelerden sınırlayıcı kutu koordinatlarıyla birlikte ayıklayın.
+Azure Form Tanıyıcısı, form belgelerinden metin, anahtar/değer çiftleri ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bir bilişsel hizmettir. Formlardan metin alır ve özgün dosyadaki ilişkileri içeren yapılandırılmış verilerden çıktı alır. Ağır manuel müdahale veya kapsamlı veri bilimi uzmanlığı olmadan özel içeriğinize göre uyarlanmış doğru sonuçları hızlı bir şekilde elde edersiniz. Form Tanıyıcısı özel modeller, önceden oluşturulmuş giriş modeli ve düzen API'den oluşur. Karmaşıklığı azaltmak ve iş akışınıza veya uygulamanıza entegre etmek için REST API kullanarak Form Recognizer modellerini arayabilirsiniz.
+
+Form Tanıyıcısı aşağıdaki hizmetlerden oluşur:
+* **Özel modeller** - Formlardan anahtar/değer çiftleri ve tablo verilerini ayıklayın. Bu modeller kendi verilerinizle eğitilir, böylece formlarınıza göre uyarlanırlar.
+* **Önceden oluşturulmuş giriş modeli** - Önceden oluşturulmuş bir modeli kullanarak ABD satış makbuzlarından veri ayıklayın.
+* **Düzen API** ' si - Metin ve tablo yapılarını, sınırlayıcı kutu koordinatlarıyla birlikte belgelerden ayıklayın.
 
 <!-- add diagram -->
 
 ## <a name="custom-models"></a>Özel modeller
 
-Form tanıyıcı özel modelleri kendi verilerinize eğitme ve başlamak için yalnızca beş örnek giriş formunuz olması gerekir. Eğitilen bir model, özgün form belgesindeki ilişkileri içeren yapılandırılmış verileri çıktısını alabilir. Modeli eğdikten sonra, bunu test edebilir ve yeniden eğitebilir ve sonunda, gereksinimlerinize göre daha fazla formdan verileri güvenilir bir şekilde çıkarmak için kullanabilirsiniz.
+Form Recognizer özel modelleri kendi verilerinize çalışır ve başlamak için yalnızca beş örnek giriş formuna ihtiyacınız vardır. Eğitilmiş bir model, özgün form belgesindeki ilişkileri içeren yapılandırılmış veriler çıkartabilir. Modeli eğittikten sonra, modeli test edebilir ve yeniden eğitebilir ve sonunda ihtiyaçlarınıza göre daha fazla formdan güvenilir bir şekilde veri ayıklamak için kullanabilirsiniz.
 
-Özel modeller eğlendirmede aşağıdaki seçenekleriniz vardır: etiketli verilerle ve etiketli veriler olmadan eğitim.
+Özel modeller eğitirken aşağıdaki seçeneklere sahipsiniz: etiketli verilerle ve etiketli veriler olmadan eğitim.
 
-### <a name="train-without-labels"></a>Etiketler olmadan eğitme
+### <a name="train-without-labels"></a>Etiketsiz tren
 
-Form tanıyıcı, formlardaki alanlar ve girişler arasındaki düzeni ve ilişkileri anlamak için, varsayılan olarak denetimsiz öğrenme kullanır. Giriş formlarınızı gönderdiğinizde, algoritma formları türe göre kümeler, hangi anahtarların ve tabloların mevcut olduğunu bulur ve değerleri anahtarlar ve girdilerle tablolarla ilişkilendirir. Bu, el ile veri etiketleme veya yoğun kodlama ve bakım gerektirmez ve öncelikle bu yöntemi denemenizi öneririz.
+Varsayılan olarak, Form Tanıyıcısı formlarınızdaki alanlar ve girişler arasındaki düzeni ve ilişkileri anlamak için denetimsiz öğrenmeyi kullanır. Giriş formlarınızı gönderdiğinizde, algoritma formları türüne göre kümeler, hangi anahtarların ve tabloların bulunduğunu keşfeder ve değerleri anahtarlarla ve tablolara girişlerle ilişkilendirir. Bu, manuel veri etiketleme veya yoğun kodlama ve bakım gerektirmez ve önce bu yöntemi denemenizi öneririz.
 
-### <a name="train-with-labels"></a>Etiketlerle eğitme
+### <a name="train-with-labels"></a>Etiketlerle tren
 
-Etiketli verilerle eğitedığınızda, model, sağladığınız etiketli formları kullanarak ilgilendiğiniz değerleri ayıklamak üzere öğrenir. Bu, daha iyi çalışan modellerle sonuçlanır ve anahtar içermeyen karmaşık formlarla veya formlarla çalışan modeller oluşturabilir.
+Etiketli verilerle eğitim aldığınızda, model, sağladığınız etiketli formları kullanarak ilgi değerlerini ayıklamak için denetimli öğrenme yapar. Bu, daha iyi performans gösteren modeller ile sonuçlanır ve anahtarsız değerler içeren karmaşık formlarla veya formlarla çalışan modeller üretebilir.
 
-Form tanıyıcı, yazdırılan ve el yazısı metin öğelerinin beklenen boyutlarını ve konumlarını öğrenmek için [Düzen API](#layout-api) 'sini kullanır. Ardından, belgelerde anahtar/değer ilişkilendirmelerini öğrenmek için Kullanıcı tarafından belirtilen etiketleri kullanır. Yeni bir modeli eğitmek ve model doğruluğunu artırmak için gerektiğinde daha fazla etiketli veri eklemek için aynı türden beş el ile etiketlenmiş beş form kullanmanızı öneririz.
+Form Tanıyıcısı, yazdırılan ve el yazısımetin yazıldığı metin öğelerinin beklenen boyutlarını ve konumlarını öğrenmek için [Düzen API'sini](#layout-api) kullanır. Daha sonra belgelerdeki anahtar/değer çağrışımlarını öğrenmek için kullanıcı tarafından belirtilen etiketleri kullanır. Yeni bir modeli eğitirken başlamak ve modeldoğruluğunu artırmak için gerektiğinde daha fazla etiketli veri eklemek için aynı türde beş el ile etiketlenmiş form kullanmanızı öneririz.
 
 ## <a name="prebuilt-receipt-model"></a>Önceden oluşturulmuş makbuz modeli
 
-Form tanıyıcı Ayrıca, restoranlar, gaz istasyonları, perakende vb. ([örnek alış irsaliyesi](./media/contoso-receipt-small.png)) tarafından kullanılan tür&mdash;Birleşik Devletler İngilizce satış alındılarını okumak için bir model içerir. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler ve toplam miktar gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur.
+Form Recognizer ayrıca, amerika birleşik devletleri&mdash;tarafından kullanılan tip, benzin istasyonları, perakende, vb[(örnek makbuz)](./media/contoso-receipt-small.png)İngilizce satış makbuzları okumak için bir model içerir. Bu model, işlemin saati ve tarihi, satıcı bilgileri, vergi tutarları ve toplamlar ve daha fazlası gibi önemli bilgileri ayıklar. Buna ek olarak, önceden oluşturulmuş makbuz modeli, tüm metni bir makbuzüzerindeki tanıma ve iade etmek üzere eğitilmiştir.
 
-## <a name="layout-api"></a>Düzen API 'SI
+## <a name="layout-api"></a>Düzen API'si
 
-Form tanıyıcı, yüksek tanımlı optik karakter tanıma (OCR) kullanarak metin ve tablo yapısını (metinle ilişkili satır ve sütun numaraları) de ayıklayabilir. 
+Form Tanıyıcısı, yüksek tanımlı optik karakter tanıma (OCR) kullanarak metin ve tablo yapısını (metinle ilişkili satır ve sütun numaraları) ayıklayabilir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
-Formlarınızın verilerini ayıklamaya başlamak için hızlı başlangıcı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
+Formlarınızdan veri ayıklamaya başlamak için hızlı bir başlangıç izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
 
-* Özel-formlarınızı modelize eğitme
-  * Etiketler olmadan eğitme
-    * [Hızlı başlangıç: kıvrımlı ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama](quickstarts/curl-train-extract.md)
-    * [Hızlı başlangıç: Python ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama](quickstarts/python-train-extract.md)
-  * Etiketlerle eğitme 
-    * [Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme](quickstarts/label-tool.md)
-    * [REST API ve Python kullanarak etiketli form tanıyıcı modelini eğitme](quickstarts/python-labeled-data.md) 
-* Önceden oluşturulmuş alındılar-ABD satış makbuzlarından veri ayıklama
-  * [Hızlı başlangıç: kıvrımlı kullanarak alış verilerini ayıklama](quickstarts/curl-receipts.md)
-  * [Hızlı başlangıç: Python kullanarak alış verilerini ayıklama](quickstarts/python-receipts.md)
-* Düzen-formlardan metin ve tablo yapısını Ayıkla
-  * [Hızlı başlangıç: Python kullanarak düzen verilerini ayıklama](quickstarts/python-layout.md)
+* Özel - formlarıiçin bir model eğitmek
+  * Etiketsiz tren
+    * [Quickstart: CURL ile REST API kullanarak bir Form Tanıyıcı modeli ve ayıklama formu verileri tren](quickstarts/curl-train-extract.md)
+    * [Quickstart: Python ile REST API'sini kullanarak form Tanıyıcı modelini eğitin ve form verilerini ayıklayın](quickstarts/python-train-extract.md)
+  * Etiketlerle tren
+    * [Örnek etiketleme aracını kullanarak etiketlerle form tanıyıcı modelini eğitin](quickstarts/label-tool.md)
+    * [REST API ve Python kullanarak etiketleri olan bir Form Tanıyıcı modeli eğitin](quickstarts/python-labeled-data.md)
+* Önceden oluşturulmuş makbuzlar - ABD satış makbuzlarından veri ayıklamak
+  * [Quickstart: cURL kullanarak makbuz verilerini ayıklama](quickstarts/curl-receipts.md)
+  * [Quickstart: Python kullanarak giriş verilerini ayıklama](quickstarts/python-receipts.md)
+* Düzen - formlardan metin ve tablo yapısını ayıkla
+  * [Quickstart: Python kullanarak düzen verilerini ayıklama](quickstarts/python-layout.md)
 
-### <a name="review-the-rest-apis"></a>REST API 'Leri gözden geçirme
+### <a name="review-the-rest-apis"></a>REST API'lerini gözden geçirin
 
-Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için aşağıdaki API 'Leri kullanacaksınız.
+Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için aşağıdaki API'leri kullanırsınız.
 
 |Adı |Açıklama |
 |---|---|
-| **Özel modeli eğitme**| Formlarınızı aynı türden beş form kullanarak analiz etmek için yeni bir model eğitme. El ile etiketlenmiş verileri eğitmek için _Uselabelfile_ parametresini `true` olarak ayarlayın. |
-| **Formu çözümle** |Metin, anahtar/değer çiftleri ve tablolardaki tabloları özel modelinize çıkarmak için akış olarak geçirilmiş tek bir belgeyi analiz edin.  |
-| **Okundu bilgisi** |Anahtar bilgilerini ve diğer makbuz metnini ayıklamak için tek bir alış belgesi çözümleyin.|
-| **Düzeni çözümle** |Metin ve tablo yapısını ayıklamak için formun yerleşimini çözümleyin.|
+| **Tren Özel Model**| Aynı türde beş form kullanarak formlarınızı analiz etmek için yeni bir model eğitin. El ile etiketlenmiş verilerle eğitmek için `true` _useLabelFile_ parametresini ayarlayın. |
+| **Analiz Formu** |Özel modelinizle birlikte metin, anahtar/değer çiftleri ve tabloları formdan ayıklamak için akış olarak geçirilen tek bir belgeyi çözümleştirin.  |
+| **Makbuzu Analiz Et** |Anahtar bilgileri ve diğer makbuz metnini ayıklamak için tek bir giriş belgesini çözümle.|
+| **Düzeni Analiz Et** |Metin ve tablo yapısını ayıklamak için formun düzenini çözümle.|
 
-Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
+Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) keşfedin. API'nin önceki bir sürümünü biliyorsanız, son değişiklikler hakkında bilgi edinmek için [yeni](./whats-new.md) makaleye bakın.
 
 ## <a name="input-requirements"></a>Giriş gereksinimleri
 ### <a name="custom-model"></a>Özel model
@@ -90,16 +92,16 @@ Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.d
 
 Makbuz modeli için giriş gereksinimleri biraz farklıdır.
 
-* Biçim JPEG, PNG, BMP, PDF (metin veya taranan) veya TIFF olmalıdır.
-* Dosya boyutu 20 MB 'tan az olmalıdır.
-* Resim boyutları 50 x 50 piksel ve 10000 x 10000 piksel arasında olmalıdır. 
-* PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
-* PDF ve TIFF için yalnızca ilk 200 sayfa işlenir (ücretsiz bir katman aboneliğiyle yalnızca ilk iki sayfa işlenir).
+* Biçim JPEG, PNG, BMP, PDF (metin veya taranmış) veya TIFF olmalıdır.
+* Dosya boyutu 20 MB'dan az olmalıdır.
+* Görüntü boyutları 50 x 50 piksel ile 10000 x 10000 piksel arasında olmalıdır.
+* PDF boyutları en fazla 17 x 17 inç olmalıdır, Yasal veya A3 kağıt boyutlarına karşılık gelir ve daha küçüktür.
+* PDF ve TIFF için yalnızca ilk 200 sayfa işlenir (ücretsiz katman aboneliği yle yalnızca ilk iki sayfa işlenir).
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 
-Bu hizmet, [çevrimiçi hizmet koşulları](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)kapsamında bir Azure hizmetinin [önizlemesi](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) olarak sunulur. Tüm bilişsel hizmetlerde olduğu gibi, form tanıyıcı hizmetini kullanan geliştiriciler müşteri verilerinde Microsoft ilkeleriyle uyumlu olmalıdır. Daha fazla bilgi edinmek için Microsoft Güven Merkezi ' nde bilişsel [Hizmetler sayfasına](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) bakın.
+Bu hizmet, [Çevrimiçi Hizmet Koşulları](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)kapsamında bir Azure hizmetinin [önizlemesi](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) olarak sunulur. Tüm bilişsel hizmetlerde olduğu gibi, Form Recognizer hizmetini kullanan geliştiriciler, müşteri verilerine ilişkin Microsoft ilkelerinden haberdar olmalıdır. Daha fazla bilgi edinmek için Microsoft Güven Merkezi'ndeki [Bilişsel Hizmetler sayfasına](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Form tanıyıcı API 'lerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)kullanmaya başlamak için [hızlı](quickstarts/curl-train-extract.md) başlangıcı doldurun.
+[Form Recognizer API'leri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)ile başlamak için hızlı bir [başlangıç](quickstarts/curl-train-extract.md) tamamlayın.

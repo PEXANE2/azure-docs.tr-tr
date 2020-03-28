@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: .NET için Bing Otomatik Öneri istemci kitaplığı | Microsoft Docs'
-description: .NET için Bing Otomatik Öneri istemci kitaplığı ile çalışmaya başlayın ve kısmi sorgu dizelerine göre arama önerileri alın.
+title: 'Quickstart: Bing Otomatik öner istemci kitaplığı için .NET | Microsoft Dokümanlar'
+description: .NET için Bing Otomatik Öner istemci kitaplığını başlatın ve kısmi sorgu dizelerini temel alan arama önerileri alın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,45 +10,45 @@ ms.topic: quickstart
 ms.date: 12/20/2019
 ms.author: aahi
 ms.openlocfilehash: 6bcd89422188d8c0064547c37b4d425f47dd6496
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75473930"
 ---
-# <a name="quickstart-bing-autosuggest-client-library-for-net"></a>Hızlı başlangıç: .NET için Bing Otomatik Öneri istemci kitaplığı
+# <a name="quickstart-bing-autosuggest-client-library-for-net"></a>Quickstart: Bing Otomatik öner istemci kitaplığı için .NET
 
-.NET için Bing Otomatik Öneri istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+.NET için Bing Autosuggest istemci kitaplığını başlatın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.
 
-Kısmi sorgu dizelerine göre arama önerileri almak için .NET için Bing Otomatik Öneri istemci Kitaplığı ' nı kullanın.
+Kısmi sorgu dizelerine dayalı arama önerileri almak için .NET için Bing Otomatik Öner istemci kitaplığını kullanın.
 
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | [örnek kod](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
+[Referans belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | Örnek[kodu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
+* Azure aboneliği - [Ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* [.NET Core'un](https://dotnet.microsoft.com/download/dotnet-core)geçerli sürümü.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
 ### <a name="create-an-azure-resource"></a>Azure kaynağı oluşturma
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
+### <a name="create-an-environment-variable"></a>Bir ortam değişkeni oluşturma
 
 >[!NOTE]
-> 1 Temmuz 2019 ' den sonra oluşturulan deneme olmayan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> 1 Temmuz 2019'dan sonra oluşturulan deneme dışı kaynakların bitiş noktaları, aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tam listesi [için, Bilişsel Hizmetler için Özel alt alan adları bölümüne](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)bakın. 
 
-Oluşturduğunuz kaynaktan anahtarınızı ve uç noktayı kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
+Oluşturduğunuz kaynaktan anahtar ve bitiş noktanızı kullanarak kimlik doğrulaması için iki ortam değişkeni oluşturun:
 <!-- replace the below variable names with the names expected in the code sample.-->
-* `AUTOSUGGEST_SUBSCRIPTION_KEY`-isteklerinizin kimliğini doğrulamak için kaynak anahtarı.
-* `AUTOSUGGEST_ENDPOINT`-API isteklerinin gönderilmesi için kaynak uç noktası. Şöyle görünür: 
+* `AUTOSUGGEST_SUBSCRIPTION_KEY`- İsteklerinizi doğrulamak için kaynak anahtarı.
+* `AUTOSUGGEST_ENDPOINT`- API isteklerini göndermek için kaynak bitiş noktası. Bu gibi görünecektir: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
-İşletim sisteminiz için yönergeleri kullanın.
+İşletim sisteminiziçin yönergeleri kullanın.
 <!-- replace the below endpoint and key examples -->
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx AUTOSUGGEST_SUBSCRIPTION_KEY <replace-with-your-autosuggest-api-key>
@@ -57,7 +57,7 @@ setx AUTOSUGGEST_ENDPOINT <replace-with-your-autosuggest-api-endpoint>
 
 Ortam değişkenini ekledikten sonra konsol penceresini yeniden başlatın.
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -66,9 +66,9 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[Macos](#tab/unix)
 
-`.bash_profile`düzenleyin ve ortam değişkenini ekleyin:
+'nizi `.bash_profile`ve ortam değişkenini ekleyin:
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -78,23 +78,23 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source .bash_profile` çalıştırın.
 ***
 
-### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
+### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun. 
+Tercih ettiğiniz düzenleyicide veya IDE'de yeni bir .NET Core uygulaması oluşturun. 
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `bing-autosuggest-quickstart`adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: *program.cs*. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adı `bing-autosuggest-quickstart`olan yeni bir konsol uygulaması oluşturmak için komutu kullanın. Bu komut, tek bir kaynak dosyası ile basit bir "Hello World" C# projesi oluşturur: *program.cs.* 
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
 ```
 
-Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. Uygulamayı ile oluşturabilirsiniz:
+Diziniyeniyeniyeni oluşturulan uygulama klasörüne değiştirin. Uygulamayı aşağıdakilerle oluşturabilirsiniz:
 
 ```console
 dotnet build
 ```
 
-Derleme çıktısı hiçbir uyarı veya hata içermemelidir. 
+Yapı çıktısı hiçbir uyarı veya hata içermemelidir. 
 
 ```console
 ...
@@ -104,7 +104,7 @@ Build succeeded.
 ...
 ```
 
-Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki `using` yönergelerini ekleyin:
+Proje dizininden, tercih ettiğiniz düzenleyici veya IDE'deki *program.cs* dosyasını açın. Aşağıdaki `using` yönergeleri ekleyin:
 
 ```csharp
 using System;
@@ -114,7 +114,7 @@ using System.Text;
 using System.Threading.Tasks;
 ```
 
-`Program` sınıfında, kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+`Program` Sınıfta, kaynağınızın Azure bitiş noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için düzenleyiciyi, IDE'yi veya bu uygulamayı çalıştıran kabuğu kapatmanız ve yeniden açmanız gerekir.
 
 ```csharp
 private const string key_var = "AUTOSUGGEST_SUBSCRIPTION_KEY";
@@ -125,7 +125,7 @@ private const string endpoint_var = "AUTOSUGGEST_ENDPOINT";
 private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
 ```
 
-Uygulamanın `Main` yönteminde, daha sonra tanımlayacağınızı aşağıdaki Yöntem çağrılarını ekleyin.
+Uygulama `Main` yönteminde, daha sonra tanımlayacak aşağıdaki yöntem çağrıları ekleyin.
 
 ```csharp
 static void Main(string[] args)
@@ -136,30 +136,30 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükleme
 
-Uygulama dizini içinde, aşağıdaki komutla .NET için Bing Otomatik Öneri istemci Kitaplığı ' nı yüklemelisiniz:
+Uygulama dizininde ,.NET için Bing Autosuggest istemci kitaplığını aşağıdaki komutla yükleyin:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.Search.AutoSuggest --version 2.0.0
 ```
 
-Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGet paketi olarak kullanılabilir.
+Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir NuGet paketi olarak kullanılabilir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, .NET için Bing Otomatik Öneri istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
+Bu kod parçacıkları, .NET için Bing Otomatik Öner istemci kitaplığıyla aşağıdaki görevleri nasıl yapacağınızı gösterir:
 
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Otomatik öneri isteği gönder](#send-an-autosuggest-request)
+* [İstemcinin kimliğini doğrula](#authenticate-the-client)
+* [Otomatik önerme isteği gönderme](#send-an-autosuggest-request)
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
 > [!NOTE]
-> Bu hızlı başlangıçta, Bing Otomatik Öneri anahtarınız için `AUTOSUGGEST_SUBSCRIPTION_KEY`ve `AUTOSUGGEST_ENDPOINT`adlı uç nokta için bir [ortam değişkeni oluşturdunuz](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayılır.
+> Bu hızlı başlatma, Bing Autosuggest anahtarınız için bir [ortam değişkeni oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar, adlı `AUTOSUGGEST_SUBSCRIPTION_KEY`ve bitiş noktanız için .. `AUTOSUGGEST_ENDPOINT`
 
 
-Yeni bir zaman uyumsuz yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) nesnesi oluşturun ve bir [AutosuggestClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Yeni bir eşzamanlı yöntemle, son noktanız ve anahtarınızla istemciyi anında anında işaretedin. Anahtarınızla bir [ApiKeyServiceClientCredentials nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) oluşturun ve bir [AutosuggestClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) nesnesi oluşturmak için bitiş noktanızla birlikte kullanın.
 
 ```csharp
 async static Task RunQuickstart()
@@ -173,9 +173,9 @@ async static Task RunQuickstart()
 }
 ```
 
-## <a name="send-an-autosuggest-request"></a>Otomatik öneri isteği gönder
+## <a name="send-an-autosuggest-request"></a>Otomatik önerme isteği gönderme
 
-Aynı yöntemde, Bing 'e bir sorgu göndermek için istemcinin [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) yöntemini kullanın. Sonra [öneriler](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) yanıtı üzerinde yineleme yapın ve ilk öneriyi yazdırın.
+Aynı yöntemde, Bing'e sorgu göndermek için istemcinin [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) yöntemini kullanın. Ardından [Öneriler](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) yanıtını tekrarlayın ve ilk öneriyi yazdırın.
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");
@@ -203,7 +203,7 @@ else
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı `dotnet run` komutuyla uygulama dizininizden çalıştırın.
+Uygulama dizininizdeki uygulamayı komutla `dotnet run` çalıştırın.
 
 ```dotnet
 dotnet run
@@ -211,7 +211,7 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
+Bilişsel Hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynak veya kaynak grubunu silebilirsiniz. Kaynak grubunu silmek, bununla ilişkili diğer kaynakları da siler.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -224,4 +224,4 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Bing Otomatik Öneri nedir?](../get-suggested-search-terms.md)
-- [Bing Otomatik Öneri DotNet başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)
+- [Bing Autosuggest dotnet başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)

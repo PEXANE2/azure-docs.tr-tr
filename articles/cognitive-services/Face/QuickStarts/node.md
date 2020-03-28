@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Azure REST API ve Node. js ile görüntüdeki yüzeyleri algılama'
+title: 'Hızlı başlatma: Azure REST API ve Node.js ile görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için Node. js ile REST API Azure yüz kullanacaksınız.
+description: Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak için Node.js içeren Azure Yüz REST API'sini kullanırsınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: pafarley
 ms.openlocfilehash: 7897c1602a8b9ed6a1fea68e80d57cd5bae1c004
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165959"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlangıç: yüz REST API ve Node. js kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlatma: Face REST API ve Node.js kullanarak görüntüdeki yüzleri algılama
 
-Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Node. js ile Azure yüz REST API kullanacaksınız.
+Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için Node.js içeren Azure Yüz REST API'sini kullanırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
-- [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
+- Yüz abonelik anahtarı. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ücretsiz deneme abonelik anahtarı alabilirsiniz. Veya Face hizmetine abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin.
+- Visual Studio Code gibi bir kod [düzenleyicisi](https://code.visualstudio.com/download)
 
 ## <a name="set-up-the-node-environment"></a>Düğüm ortamını ayarlama
 
-Projenizi oluşturmak istediğiniz klasöre gidin ve yeni bir dosya oluşturun, *facedetection. js*. Sonra `requests` modülünü bu projeye yükler. Bu, betiklerinizin HTTP istekleri yapmasına olanak sağlar.
+Projenizi oluşturmak istediğiniz klasöre gidin ve yeni bir dosya, *facedetection.js*oluşturun. Ardından modülü `requests` bu projeye yükleyin. Bu, komut dosyalarınızın HTTP isteklerini yapmasına olanak tanır.
 
 ```shell
 npm install request --save
 ```
 
-## <a name="write-the-nodejs-script"></a>Node. js betiğini yazma
+## <a name="write-the-nodejs-script"></a>Düğüm.js komut dosyası yazın
 
-Aşağıdaki kodu *facedetection. js*dosyasına yapıştırın. Bu alanlar yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` alanını abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve doğru uç nokta dizesini içermesi için `uriBase` dizesini değiştirmeniz gerekir. `imageUrl` alanını kendi giriş görüntünüzü gösterecek şekilde değiştirmek isteyebilirsiniz.
+Aşağıdaki kodu *facedetection.js'ye*yapıştırın. Bu alanlar, Yüz hizmetine nasıl bağlanılabildiğini ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz ve `uriBase` doğru bitiş noktası dizesini içermesi için dizeyi değiştirmeniz gerekir. Alanı kendi giriş `imageUrl` resminizi işaret etmek için değiştirmek isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -59,7 +59,7 @@ const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
 ```
 
-Ardından, Yüz Tanıma API'si çağırmak ve giriş görüntüsünden yüz öznitelik verilerini almak için aşağıdaki kodu ekleyin. `returnFaceAttributes` alanı alınacak yüz özniteliklerini belirtir. Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
+Ardından, Face API'yi aramak ve giriş görüntüsünden yüz özniteliği verilerini almak için aşağıdaki kodu ekleyin. Alan, `returnFaceAttributes` alınacak öznitelikleri n için belirtir. Bu dizeyi, amacınıza bağlı olarak değiştirmek isteyebilirsiniz.
 
 
 ```javascript
@@ -92,15 +92,15 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-## <a name="save-and-run-the-script"></a>Betiği Kaydet ve Çalıştır
+## <a name="save-and-run-the-script"></a>Komut dosyasını kaydedin ve çalıştırın
 
-Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve dosyayı `node` komutuyla çalıştırın.
+Değişikliklerinizi yaptıktan sonra bir komut istemi açın ve dosyayı `node` komutla çalıştırın.
 
 ```
 node facedetection.js
 ```
 
-Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz gerekir. Örneğin:
+Konsol penceresinde JSON verisi olarak görüntülenen yüz bilgilerini görmeniz gerekir. Örnek:
 
 ```json
 [
@@ -283,7 +283,7 @@ Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz ge
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure yüz hizmeti 'ni çağıran bir Node. js betiği yazdı. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
+Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak ve özniteliklerini döndürmek için Azure Face hizmetini çağıran bir Düğüm.js komut dosyası yazdınız. Ardından, daha fazla bilgi edinmek için Yüz API başvuru belgelerini keşfedin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API’si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Yüz API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

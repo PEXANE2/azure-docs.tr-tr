@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Yerel görüntüyü çözümleme-REST,C#'
+title: 'Quickstart: Yerel bir görüntüyü analiz et - REST, C #'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, C# ile Görüntü İşleme API’si kullanarak bir yerel görüntüyü analiz edeceksiniz.
 services: cognitive-services
@@ -12,28 +12,28 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 0344ba8263fe9d14c6939124f09adc104f0c611d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75770399"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API kullanarak yerel görüntüyü analiz etme veC#
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Quickstart: Computer Vision REST API ve C'yi kullanarak yerel bir görüntüyü analiz edin #
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özellikleri ayıklamak için yerel olarak depolanmış bir görüntüyü analiz edersiniz. [Görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğinden görsel özellik bilgilerini ayıklayabilirsiniz.
+Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak görsel özellikleri ayıklamak için yerel olarak depolanan bir görüntüyü analiz eve verirsiniz. Görüntü [Çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğinden görsel özellik bilgileri ayıklayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya üzerine sahip olmanız gerekir.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
 Örneği Visual Studio’da oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Visual Studio 'da görsel C# konsol uygulaması (.NET Framework) şablonunu kullanarak yeni bir Visual Studio çözümü oluşturun.
+1. Visual C# Console App (.NET Framework) şablonu kullanarak Visual Studio'da yeni bir Visual Studio çözümü oluşturun.
 1. Newtonsoft.Json NuGet paketini yükleyin.
     1. Menüde **Araçlar**’a tıklayın, **NuGet Paket Yöneticisi**’ni ve ardından **Çözüm için NuGet Paketlerini Yönet**’i seçin.
     1. **Gözat** sekmesine tıklayın ve **Arama** kutusuna "Newtonsoft.Json" yazın.
@@ -167,7 +167,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>Yanıtı inceleme
 
-JSON’da başarılı bir yanıt döndürülür. Örnek uygulama aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp konsol penceresinde görüntüler:
+Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp konsol penceresinde görüntüler:
 
 ```json
 {
@@ -243,4 +243,4 @@ JSON’da başarılı bir yanıt döndürülür. Örnek uygulama aşağıdaki ö
 Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan temel bir Windows uygulaması keşfedin. Akıllı kırpılmış küçük resimler oluşturun. Buna ek olarak, bir görüntüdeki yüzler gibi görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve açıklayın.
 
 > [!div class="nextstepaction"]
-> [Görüntü İşleme API'si C# öğreticisi](../Tutorials/CSharpTutorial.md)
+> [BilgisayarLı Vizyon API C# Öğretici](../Tutorials/CSharpTutorial.md)

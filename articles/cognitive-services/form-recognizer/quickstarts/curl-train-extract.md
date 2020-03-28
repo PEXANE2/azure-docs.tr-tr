@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: bir modeli eğitme ve form verilerini kıvrımlı biçimli tanıyıcı kullanarak ayıklama'
+title: 'Quickstart: CURL kullanarak bir model ve ayıklama formu verileri eğitin - Form Tanıyın'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir modeli eğitme ve formlardan veri ayıklayarak form tanıyıcı REST API kıvrımlı olarak kullanacaksınız.
+description: Bu hızlı başlangıçta, bir modeli eğitmek ve formlardan veri ayıklamak için cURL ile Form Recognizer REST API'yi kullanırsınız.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,62 +10,62 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118397"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Hızlı başlangıç: kıvrımlı ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Quickstart: CURL ile REST API kullanarak bir Form Tanıyıcı modeli ve ayıklama formu verileri tren
 
-Bu hızlı başlangıçta, anahtar-değer çiftlerini ve tabloları ayıklamak üzere formları eğitme ve Puanlama yapmak için Azure form tanıyıcısı 'nı kıvrımlı REST API kullanacaksınız.
+Bu hızlı başlangıçta, anahtar değer çiftleri ve tabloları ayıklamak için formları eğitmek ve puanlamak için cURL'li Azure Form Recognizer REST API'yi kullanırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
-- [kıvrımlı](https://curl.haxx.se/windows/) yüklendi.
-- Aynı türde en az altı biçim kümesi. Modeli eğitebilmeniz için bunlardan beş birini kullanacaksınız ve ardından bunu altıncı formla test edeceksiniz. Formlarınızın farklı dosya türleri olabilir, ancak aynı belge türünde olması gerekir. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin. Test dosyalarını ayrı bir klasöre yerleştirebilirsiniz.
+Bu hızlı başlangıcı tamamlamak için şunları yapmış olmalısınız:
+- [cURL](https://curl.haxx.se/windows/) yüklendi.
+- Aynı türden en az altı formdan oluşan bir küme. Modeli eğitmek için bunlardan beş tane kullanacaksınız, ve sonra altıncı formla test edeceksiniz. Formlarınız farklı dosya türlerine ait olabilir, ancak aynı belge türünde olmalıdır. Bu hızlı başlatma için örnek bir [veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure Depolama hesabındaki bir blob depolama kapsayıcısının köküne yükleyin. Test dosyalarını ayrı bir klasöre koyabilirsiniz.
 
-## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
+## <a name="create-a-form-recognizer-resource"></a>Form Tanıyıcı kaynağı oluşturma
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Form tanıyıcı modeli eğitme
+## <a name="train-a-form-recognizer-model"></a>Form Tanıyıcı modelini eğitin
 
-İlk olarak, bir Azure depolama blobunda eğitim verileri kümesine ihtiyacınız olacaktır. Ana giriş verilerinize göre aynı türde/yapıda en az beş adet doldurulmuş form (PDF belgesi ve/veya resim) olmalıdır. Ya da, iki doldurulmuş form ile tek bir boş form kullanabilirsiniz. Boş formun dosya adının "Empty" sözcüğünü içermesi gerekir. Eğitim verilerinizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../build-training-data-set.md) .
+İlk olarak, bir Azure Depolama blob'unda bir dizi eğitim verisi gerekir. Ana giriş verilerinizle aynı türde/yapıda en az beş doldurulmuş form (PDF belgeleri ve/veya görüntüler) olmalıdır. Veya, iki doldurulmuş formiçeren tek bir boş form kullanabilirsiniz. Boş formun dosya adının "boş" sözcüğüne dahil edilmesi gerekir. Bkz. Eğitim verilerinizi bir araya getirmek için ipuçları ve seçenekler için [özel bir model için bir eğitim veri kümesi oluşturun.](../build-training-data-set.md)
 
 > [!NOTE]
-> Daha önce eğitim verilerinizin bazılarını veya tümünü el ile etiketlemek için etiketli veri özelliğini kullanabilirsiniz. Bu daha karmaşık bir işlemdir, ancak daha iyi eğitilen bir model ile sonuçlanır. Bu özellik hakkında daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
+> Eğitim verilerinizin bir kısmını veya tümünün önceden el ile etiketlendiğiniz veri özelliğini kullanabilirsiniz. Bu daha karmaşık bir süreçtir ancak daha iyi eğitilmiş bir model le sonuçlanır. Bu özellik hakkında daha fazla bilgi edinmek için genel bakışın [etiketleri ile Tren](../overview.md#train-with-labels) bölümüne bakın.
 
-Azure Blob kabınızda bulunan belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki kıvrımlı komutunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
+Azure blob kapsayıcınızdaki belgelerle birlikte bir Form Tanıyıcı modelini eğitmek için aşağıdaki cURL komutunu çalıştırarak **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API'yi arayın. Komutu çalıştırmadan önce şu değişiklikleri yapın:
 
-1. `<Endpoint>`, form tanıyıcı aboneliğinizle edindiğiniz uç noktayla değiştirin.
-1. `<subscription key>`, önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
-1. `<SAS URL>` Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'SI ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Form `<Endpoint>` Recognizer aboneliğinizle elde ettiğiniz bitiş noktasıyla değiştirin.
+1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. Azure `<SAS URL>` Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL'sini değiştirin. SAS URL'sini almak için Microsoft Azure Depolama Gezgini'ni açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim imzasını al'ı**seçin. **Okuma** ve **Liste** izinlerinin denetlendiğinden emin olun ve **Oluştur'** u tıklatın. Ardından **URL** bölümündeki değeri kopyalayın. Bu formu olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Bir **konum** üst bilgisi ile `201 (Success)` yanıtı alacaksınız. Bu üstbilginin değeri, eğitilen yeni modelin KIMLIĞIDIR. 
+Konum üstbilgili `201 (Success)` bir **Location** yanıt alırsınız. Bu üstbilginin değeri, eğitilen yeni modelin kimliğidir. 
 
-## <a name="get-training-results"></a>Eğitim sonuçlarını al
+## <a name="get-training-results"></a>Eğitim sonuçlarını alın
 
-Eğitme işlemini başlattıktan sonra, eğitim durumunu denetlemek için yeni bir işlem kullanın, **[özel model alın](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** . Eğitim durumunu denetlemek için model KIMLIĞINI bu API çağrısına geçirin:
+Tren işlemine başladıktan sonra, eğitim durumunu kontrol etmek için **[Özel Model alın'](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** ı yeni bir işlem kullanırsınız. Model kimliğini, eğitim durumunu kontrol etmek için bu API çağrısına geçirin:
 
-1. `<Endpoint>`, form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin.
-1. `<subscription key>`, abonelik anahtarınızla değiştirin
-1. `<model ID>`, önceki adımda aldığınız model KIMLIĞIYLE değiştirin
+1. Form `<Endpoint>` Recognizer abonelik anahtarınızla elde ettiğiniz bitiş noktasıyla değiştirin.
+1. Abonelik `<subscription key>` anahtarınızla değiştirin
+1. Önceki `<model ID>` adımda aldığınız model kimliğiyle değiştirme
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-Aşağıdaki biçimde bir JSON gövdesi ile `200 (Success)` yanıtı alacaksınız. `"status"` alanına dikkat edin. Bu, eğitim tamamlandıktan sonra `"ready"` değerine sahip olacaktır. Modelde eğitim bitmiyor ise, komutu yeniden çalıştırarak hizmeti tekrar sorgulamanızı gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
+Aşağıdaki biçimde `200 (Success)` bir JSON gövdesi ile bir yanıt alırsınız. Sahaya `"status"` dikkat et. Eğitim tamamlandıktan `"ready"` sonra bu değere sahip olacaktır. Model eğitimini tamamlamadıysa, komutu yeniden çalıştırarak hizmeti yeniden sorgulamanız gerekir. Aramalar arasında bir veya daha fazla bir ara vermenizi öneririz.
 
-`"modelId"` alanı, eğitiminde olduğunuz modelin KIMLIĞINI içerir. Bu, bir sonraki adımda gerekli olacaktır.
+Alan, `"modelId"` eğitdiğiniz modelin kimliğini içerir. Bir sonraki adım için buna ihtiyacın olacak.
 
 ```json
 { 
@@ -133,36 +133,36 @@ Aşağıdaki biçimde bir JSON gövdesi ile `200 (Success)` yanıtı alacaksın�
 }
 ```
 
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Anahtar-değer çiftleri ve tablolar için formları analiz etme
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Anahtar değeri çiftleri ve tablolar için formları analiz edin
 
-Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Aşağıdaki kıvrımlı komutunu çalıştırarak **[formu çözümle](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
+Ardından, bir belgeyi çözümlemek ve anahtar değeri çiftleri ve tabloları ayıklamak için yeni eğitilmiş modelinizi kullanırsınız. Aşağıdaki cURL komutunu çalıştırarak **[Analiz Formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API'sini arayın. Komutu çalıştırmadan önce şu değişiklikleri yapın:
 
-1. `<Endpoint>`, form tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. `<model ID>`, önceki bölümde aldığınız model KIMLIĞIYLE değiştirin.
-1. `<SAS URL>` Azure Storage 'daki dosyanız için bir SAS URL 'SI ile değiştirin. Eğitim bölümündeki adımları izleyin, ancak tüm blob kapsayıcısı için bir SAS URL 'SI almak yerine, çözümlemek istediğiniz belirli dosya için bir tane alın.
+1. Form `<Endpoint>` Recognizer abonelik anahtarınızdan elde ettiğiniz bitiş noktasıyla değiştirin. Form Recognizer kaynak **Genel Bakış** sekmenizde bulabilirsiniz.
+1. Önceki `<model ID>` bölümde aldığınız model kimliğiyle değiştirin.
+1. Azure `<SAS URL>` depolama alanında dosyanıza bir SAS URL ile değiştirin. Eğitim bölümündeki adımları izleyin, ancak tüm blob kapsayıcısı için Bir SAS URL'si almak yerine, çözümlemek istediğiniz belirli dosya için bir tane alın.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 ```bash
 curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-**Işlem konumu** üst bilgisi ile `202 (Success)` yanıtı alacaksınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullandığınız bir sonuç KIMLIĞI içerir. Sonraki adım için bu sonuç KIMLIĞINI kaydedin.
+`202 (Success)` **İşlem-Konum** üstbilgisiyle bir yanıt alırsınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullandığınız bir sonuç kimliği içerir. Bu sonuç kimliğini bir sonraki adıma kaydedin.
 
-## <a name="get-the-analyze-results"></a>Analiz sonuçlarını al
+## <a name="get-the-analyze-results"></a>Analiz sonuçlarını alın
 
-Çözümle işleminin sonuçlarını sorgulamak için aşağıdaki API 'yi kullanın.
+Çözümle işleminin sonuçlarını sorgulamak için aşağıdaki API'yi kullanın.
 
-1. `<Endpoint>`, form tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. `<result ID>`, önceki bölümde aldığınız KIMLIK ile değiştirin.
+1. Form `<Endpoint>` Recognizer abonelik anahtarınızdan elde ettiğiniz bitiş noktasıyla değiştirin. Form Recognizer kaynak **Genel Bakış** sekmenizde bulabilirsiniz.
+1. Önceki `<result ID>` bölümde aldığınız kimlikle değiştirin.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-Aşağıdaki biçimde bir JSON gövdesi ile `200 (Success)` yanıtı alacaksınız. Çıktı basitlik için kısaltıldı. En alttaki `"status"` alanına dikkat edin. Bu, Çözümle işlemi tamamlandığında `"succeeded"` değerine sahip olacaktır. Çözümle işlemi tamamlanmadıysa, komutu yeniden çalıştırarak hizmeti tekrar sorgulamanızı gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
+Aşağıdaki biçimde `200 (Success)` bir JSON gövdesi ile bir yanıt alırsınız. Çıktı basitlik için kısaltıldı. Alttaki `"status"` alana dikkat edin. Çözümleme işlemi `"succeeded"` tamamlandığında bu değere sahip olacaktır. Çözümle işlemi tamamlanmadıysa, komutu yeniden çalıştırarak hizmeti yeniden sorgulamanız gerekir. Aramalar arasında bir veya daha fazla bir ara vermenizi öneririz.
 
-Ana anahtar/değer çifti ilişkilendirmeleri ve tablolar `"pageResults"` düğümüdür. Ayrıca, *ıncludetekxtdetails* URL parametresi aracılığıyla düz metin ayıklama belirttiyseniz, `"readResults"` düğümü belgedeki tüm metinlerin içeriğini ve konumlarını gösterir.
+Ana anahtar/değer çifti ilişkilendirmeleri `"pageResults"` ve tablolar düğümdedir. *IncludeTextDetails* URL parametresi aracılığıyla düz metin çıkarma `"readResults"` da belirttiyseniz, düğüm belgedeki tüm metnin içeriğini ve konumlarını gösterir.
 
 ```json
 {
@@ -413,13 +413,13 @@ Ana anahtar/değer çifti ilişkilendirmeleri ve tablolar `"pageResults"` düğ�
 }
 ```
 
-## <a name="improve-results"></a>Sonuçları geliştirme
+## <a name="improve-results"></a>Sonuçları iyileştirme
 
 [!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir modeli eğitme ve örnek bir senaryoda çalıştırmak için, biçim tanıyıcı 'i kıvrımlı REST API kullandınız. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için başvuru belgelerine bakın.
+Bu hızlı başlatmada, bir modeli eğitmek ve örnek bir senaryoda çalıştırmak için cURL ile Form Recognizer REST API'yi kullandınız. Ardından, Form Tanıyıcısı API'sini daha derinlemesine incelemek için başvuru belgelerine bakın.
 
 > [!div class="nextstepaction"]
 > [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

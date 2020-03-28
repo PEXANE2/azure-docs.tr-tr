@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 4e0959155b3f3e0821ffece9de0faba92486d503
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79082194"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
+1. Java projenize yeni bir boş sınıf eklemek için**Yeni** > **Sınıf** **Dosyası'nı** > seçin.
 
 1. **Yeni Java Sınıfı** penceresinde, **Paket** alanına **speechsdk.quickstart** ve **Ad** alanına da **Ana** girin.
 
@@ -111,17 +111,17 @@ ms.locfileid: "79082194"
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Dize `whatstheweatherlike.wav` kendi dosya adıyla değiştirin.
+1. Dizeyi `whatstheweatherlike.wav` kendi dosya adınız ile değiştirin.
 
 1. Proje üzerindeki değişiklikleri kaydedin.
 
 > [!NOTE]
-> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
+> Konuşma SDK dil için en-us kullanarak tanıma varsayılan olacaktır, kaynak dil seçimi hakkında bilgi [için metin konuşma için kaynak dil belirtin](../../../../how-to-specify-source-language.md) bakın.
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-F11 tuşuna basın veya **Çalıştır** > **Hata Ayıkla** seçeneğini belirleyin.
-Ses dosyanızdaki konuşma girişi ilk 15 saniye, konsol penceresinde tanınacaktır ve günlüğe kaydedilir.
+F11 tuşuna basın veya**Hata Ayıklama'yı** **çalıştır'ı** > seçin.
+Ses dosyanızdan gelen konuşma girişinin ilk 15 saniyesi tanınır ve konsol penceresinde oturum açar.
 
    ```text
    Recognizing first result...

@@ -5,97 +5,97 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
 ms.openlocfilehash: 20dfc49acdaa30bea6f0652640e007c16f08c572
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925445"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
+> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Kaynak dosyayı Azure blob'una yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
-## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
+## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
 
-İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
+İlk adım, visual studio'da projenizin açık olduğundan emin olmaktır.
 
-1. Visual Studio 2019 ' i başlatın.
-2. Projenizi yükleyin ve `helloworld.cpp`açın.
+1. Görsel Stüdyo 2019'u başlatın.
+2. Projenizi yükleyin `helloworld.cpp`ve açın.
 
-## <a name="add-a-references"></a>Başvuru ekleme
+## <a name="add-a-references"></a>Referans ekleme
 
-Kod geliştirmemiz için birkaç harici bileşen kullanacağız:
-* [Cpp Rest SDK 'sı](https://github.com/microsoft/cpprestsdk) REST hizmetine REST çağrıları yapmak için bir istemci kitaplığı.
-* [nlohmann/JSON](https://github.com/nlohmann/json) Kullanışlı JSON ayrıştırma/serileştirme/seri kaldırma kitaplığı.
+Kod geliştirmemizi hızlandırmak için birkaç dış bileşen kullanacağız:
+* [CPP Dinlenme SDK](https://github.com/microsoft/cpprestsdk) REST hizmetine REST aramaları yapmak için bir istemci kitaplığı.
+* [nlohmann/json](https://github.com/nlohmann/json) Kullanışlı JSON Ayrıştırma / Serialization / Deserialization kitaplığı.
 
-Her ikisi de [vcpkg](https://github.com/Microsoft/vcpkg/)kullanılarak yüklenebilir.
+Her ikisi de [vcpkg](https://github.com/Microsoft/vcpkg/)kullanılarak kurulabilir.
 
 ```
 vcpkg install cpprestsdk cpprestsdk:x64-windows
 vcpkg install nlohmann-json
 ```
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
 
-Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
+Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-32,187-190,300-309)]
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>JSON sarmalayıcıları
+## <a name="json-wrappers"></a>JSON Sarmalayıcılar
 
-REST API JSON biçiminde istek alma ve ayrıca JSON 'daki sonuçları geri döndürme gibi yalnızca dizeleri kullanarak etkileşime girebiliriz ancak bu önerilmez.
-İstekleri ve yanıtları yönetmeyi kolaylaştırmak için, JSON 'u serileştirmek/seri durumdan çıkarmak ve nlohmann/JSON yardımı için bazı yöntemleri kullanmak üzere birkaç sınıf tanımlayacağız.
+REST API's JSON formatında isteklerini almak ve aynı zamanda JSON sonuçları dönmek gibi biz sadece dizeleri kullanarak onlarla etkileşim olabilir, ama bu tavsiye edilmez.
+İstekleri ve yanıtları yönetmek için daha kolay hale getirmek için, JSON'u seri hale getirmek/ deserialize etmek için kullanmak üzere birkaç sınıf ve nlohmann/json'a yardımcı olacak bazı yöntemler beyan edeceğiz.
 
-Devam edin ve `recognizeSpeech` önce bildirimlerini yerleştirin.
+Devam edin ve önce `recognizeSpeech` kendi beyanlarını koymak.
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=33-185)]
 
-## <a name="create-and-configure-an-http-client"></a>Http Istemcisi oluşturma ve yapılandırma
-İhtiyaç duyduğumuz ilk şey, doğru temel URL ve kimlik doğrulama kümesine sahip bir http Istemcidir.
-Bu kodu `recognizeSpeech` ekleyin
+## <a name="create-and-configure-an-http-client"></a>Http İstemci oluşturma ve yapılandırma
+İhtiyacımız olan ilk şey, doğru temel URL'ye ve kimlik doğrulama kümesine sahip bir Http İstemcisi'dir.
+Bu kodu ekleme`recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=191-197)]
 
-## <a name="generate-a-transcription-request"></a>Döküm isteği oluştur
-Ardından, döküm isteğini oluşturacağız. Bu kodu `recognizeSpeech` ekleyin
+## <a name="generate-a-transcription-request"></a>Transkripsiyon isteği oluşturma
+Sonra, transkripsiyon isteğini oluşturacağız. Bu kodu`recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
 
-## <a name="send-the-request-and-check-its-status"></a>İsteği gönder ve durumunu denetle
-Artık isteği konuşma hizmetine gönderiyoruz ve ilk yanıt kodunu denetliyoruz. Bu yanıt kodu yalnızca hizmetin isteği aldığını gösterir. Hizmet, yanıt üst bilgilerinde, döküm durumunu depolayacağı konuma bir URL döndürür.
+## <a name="send-the-request-and-check-its-status"></a>İsteği gönderin ve durumunu kontrol edin
+Şimdi isteği Konuşma hizmetine postalıyoruz ve ilk yanıt kodunu kontrol ediyoruz. Bu yanıt kodu yalnızca hizmetin isteği alYıp almadığını gösterir. Hizmet, transkripsiyon durumunu depolayacak konumu olan yanıt başlıklarında bir Url döndürecektir.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=204-216)]
 
-## <a name="wait-for-the-transcription-to-complete"></a>Döküm işleminin tamamlanmasını bekleyin
-Hizmet, dökümü zaman uyumsuz olarak işlediğinden, her ne kadar her durumda yoklama yapması gerekir. Her 5 saniyede bir kontrol edeceğiz.
+## <a name="wait-for-the-transcription-to-complete"></a>Transkripsiyonun tamamlanmasını bekleyin
+Hizmet transkripsiyona eşit olarak işlediği için, bu durumun durumunu sık sık yoklamamız gerekir. Her 5 saniyede bir kontrol edeceğiz.
 
-İstek gönderildiğinde elde ettiğimiz URL 'deki içeriği alarak durumu kontrol edebilirsiniz. İçeriği geri edindiğimiz zaman, ile etkileşime geçmesini kolaylaştırmak için yardımcı sınıfımızın bir üyesi olarak seri durumdan çıkardık.
+İstek yayınlandığında aldığımız Url'deki içeriği alarak durumu kontrol edebiliriz. İçeriği geri aldığımızda, etkileşimi kolaylaştırmak için onu yardımcı sınıfımızdan birine dönüştürüruz.
 
-Başarılı bir tamamlama haricinde her şey için durum görüntüleme ile yoklama kodu aşağıda verilmiştir.
+İşte başarılı bir tamamlama dışında her şey için durum ekranlı anket kodu, biz bir dahaki sefere yapacağız.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=222-245,285-299)]
 
-## <a name="display-the-transcription-results"></a>Döküm sonuçlarını görüntüleme
-Hizmet başarıyla tamamlandığında, sonuçlar durum yanıtından elde ettiğimiz başka bir URL 'de depolanır.
+## <a name="display-the-transcription-results"></a>Transkripsiyon sonuçlarını görüntüleme
+Hizmet transkripsiyon başarıyla tamamlandıktan sonra sonuçlar durum yanıtı alabileceğimiz başka bir Url'de saklanır.
 
-Bu URL 'nin içeriğini indirecek, JSON serisini kaldıracak ve ekran metnini gittiğimiz şekilde gösteren sonuçlar boyunca döngü yapacağız.
+Bu URL'nin içeriğini indireceğiz, JSON'u deserialize edeceğiz ve görüntülerdeki metni yazdırırken sonuçları gözden geçireceğiz.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=246-284)]
 
-## <a name="check-your-code"></a>Kodunuzu denetleyin
-Bu noktada, kodunuz şuna benzemelidir: (Bu sürüme bazı açıklamalar ekledik)
+## <a name="check-your-code"></a>Kodunuzu kontrol edin
+Bu noktada, kodunuz şu şekilde görünmelidir: (Bu sürüme bazı yorumlar ekledik)
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
+Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma tanımamızı test etmeye hazırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

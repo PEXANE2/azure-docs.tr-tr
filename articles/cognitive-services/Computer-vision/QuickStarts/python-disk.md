@@ -11,31 +11,31 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9a8201012b088b9db73f110a0f84ab5716f584be
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52097963e900411aa07fabc23786a794ee3f3ec1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973790"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80245030"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Python kullanarak yerel bir görüntüyü çözümleme
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Quickstart: Computer Vision REST API ve Python'u kullanarak yerel bir görüntüyü analiz edin
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özellikleri ayıklamak için yerel olarak depolanmış bir görüntüyü analiz edersiniz. [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğini temel alarak görsel özellikleri ayıklayabilirsiniz.
+Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak görsel özellikleri ayıklamak için yerel olarak depolanan bir görüntüyü analiz eve verirsiniz. [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğini temel alarak görsel özellikleri ayıklayabilirsiniz.
 
 [MyBinder](https://mybinder.org) üzerinde bir Jupyter not defteri kullanarak bu hızlı başlangıcı adım adım görüntülenecek şekilde çalıştırabilirsiniz. Bağlayıcıyı başlatmak için aşağıdaki düğmeyi seçin:
 
-[![Bağlayıcı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Cilt](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/try/cognitive-services/) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/try/cognitive-services/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Örneği yerel olarak çalıştırmak istiyorsanız [Python](https://www.python.org/downloads/) yüklenmiş olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
-- Aşağıdaki Python paketlerinin yüklü olması gerekir. Python paketlerini yüklemek için [PIP](https://packaging.python.org/tutorials/installing-packages/) kullanabilirsiniz.
-    - istekler
-    - [Matplotlib](https://matplotlib.org/)
-    - [Pillow](https://python-pillow.org/)
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
+- Aşağıdaki Python paketlerini yüklemelisiniz. Python paketlerini yüklemek için [pip](https://packaging.python.org/tutorials/installing-packages/) kullanabilirsiniz.
+    - Istek
+    - [matplotlib](https://matplotlib.org/)
+    - [Yastık](https://python-pillow.org/)
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
@@ -48,6 +48,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python analyze-local-image.py`.
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline

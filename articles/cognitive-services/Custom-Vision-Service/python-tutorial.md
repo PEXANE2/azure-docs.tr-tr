@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: ffb12af93e249b0b9bb510d3507a30e67d6cd19f
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169139"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Hızlı Başlangıç: Özel Görüntü İşleme Python SDK’sı ile görüntü sınıflandırma projesi oluşturma
 
-Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Python ile Özel Görüntü İşleme SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra Etiketler ekleyebilir, görüntü yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı olarak test etmek için uç noktayı kullanabilirsiniz. Kendi Python uygulamanızı oluştururken bu örneği şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
+Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Python ile Özel Vizyon SDK kullanmaya başlamak için nasıl gösterir. Oluşturulduktan sonra etiketler ekleyebilir, resim yükleyebilir, projeyi eğitebilir, projenin yayınlanmış tahmin bitiş noktası URL'sini alabilir ve bir resmi programlı olarak sınamak için bitiş noktasını kullanabilirsiniz. Kendi Python uygulamanızı oluştururken bu örneği şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -47,7 +47,7 @@ Tercih ettiğiniz proje dizininde *sample.py* adlı yeni bir dosya oluşturun.
 
 Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Ayrıca, Özel Görüntü İşleme Web sitesinin ayarlar sayfasından uç nokta URL 'nizi alın.
 
-Projenizi oluştururken diğer seçenekleri belirtmek için [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) yöntemine bakın (sınıflandırıcı Web portalı [oluşturma](getting-started-build-a-classifier.md) kılavuzunda açıklanmıştır).  
+Projenizi oluştururken diğer seçenekleri belirtmek için [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) yöntemine bakın [(sınıflandırıcı](getting-started-build-a-classifier.md) web portalı oluştur kılavuzunda açıklanmıştır).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -81,10 +81,10 @@ cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 
 ### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu kod, her görüntüyü ilgili etiketiyle birlikte karşıya yükler. Tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz.
+Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu kod, her görüntüyü ilgili etiketiyle birlikte karşıya yükler. Tek bir toplu iş halinde en fazla 64 resim yükleyebilirsiniz.
 
 > [!NOTE]
-> Bilişsel hizmetler Python SDK örnek deposunu indirdiğiniz yere bağlı olarak görüntülerin yolunu değiştirmeniz gerekir.
+> Bilişsel Hizmetler Python SDK Örnekleri repo'yu daha önce indirdiğiniz yere bağlı olarak resimlerin yolunu değiştirmeniz gerekir.
 
 ```Python
 base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
@@ -111,9 +111,9 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitme ve yayımlama
+### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitin ve yayımlayın
 
-Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
+Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve sonra bu yinelemeyi tahmin bitiş noktasına yayımlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin bitiş noktasında kullanılamaz.
 
 ```Python
 import time
@@ -130,7 +130,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Yayınlanan yinelemeyi tahmin bitiş noktasında alın ve kullanın
 
 Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın sonuna aşağıdaki kodu ekleyin:
 
@@ -171,7 +171,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Daha sonra ( **< base_image_url > görüntülerde/testinde**bulunan) test görüntüsünün uygun şekilde etiketlendiğini doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
+Daha sonra test görüntüsünün **(<base_image_url>görüntülerin/Test/ )** uygun şekilde etiketlendirildiğini doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

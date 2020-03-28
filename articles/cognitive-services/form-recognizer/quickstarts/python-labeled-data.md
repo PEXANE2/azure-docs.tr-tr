@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: REST API ve Python form tanıyıcıyı kullanarak etiketlerle eğitme'
+title: 'Quickstart: REST API ve Python kullanarak etiketlerle tren - Form Tanıyın'
 titleSuffix: Azure Cognitive Services
-description: Özel bir modeli eğitmek için REST API ve Python ile Data özelliği olarak etiketlenen form tanıyıcıyı nasıl kullanacağınızı öğrenin.
+description: Özel bir model eğitmek için REST API ve Python ile Form Recognizer etiketli veri özelliğini nasıl kullanacağınızı öğrenin.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,60 +10,60 @@ ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
 ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482302"
 ---
-# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API ve Python kullanarak etiketli form tanıyıcı modelini eğitme
+# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API ve Python kullanarak etiketleri olan bir Form Tanıyıcı modeli eğitin
 
-Bu hızlı başlangıçta, el ile etiketlenmiş verileri olan özel bir modeli eğitebilmeniz için Python ile REST API form tanıyıcıyı kullanacaksınız. Bu özellik hakkında daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
+Bu hızlı başlatmada, el ile etiketlenmiş verilere sahip özel bir modeli eğitmek için Python ile Form Recognizer REST API'yi kullanırsınız. Bu özellik hakkında daha fazla bilgi edinmek için genel bakışın [etiketleri ile Tren](../overview.md#train-with-labels) bölümüne bakın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
+Bu hızlı başlangıcı tamamlamak için şunları yapmış olmalısınız:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
-- Aynı türde en az altı biçim kümesi. Bu verileri, modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
+- Aynı türden en az altı formdan oluşan bir küme. Bu verileri modeli eğitmek ve bir formu test etmek için kullanacaksınız. Bu hızlı başlatma için örnek bir [veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure Depolama hesabındaki bir blob depolama kapsayıcısının köküne yükleyin.
 
-## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
+## <a name="create-a-form-recognizer-resource"></a>Form Tanıyıcı kaynağı oluşturma
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="set-up-training-data"></a>Eğitim verilerini ayarlama
 
-Daha sonra gerekli giriş verilerini ayarlamanız gerekir. Etiketli veri özelliği, özel bir modeli eğitmek için gerekenlerden daha fazla özel giriş gereksinimlerine sahiptir. 
+Daha sonra gerekli giriş verilerini ayarlamanız gerekir. Etiketli veri özelliği, özel bir modeli eğitmek için gerekenlerin ötesinde özel giriş gereksinimlerine sahiptir. 
 
-Tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Birden çok biçimdeki formlara sahipseniz, bunları ortak biçime göre alt klasörlere göre düzenleyin. Eğitedığınızda, API 'yi bir alt klasöre yönlendirmeniz gerekir.
+Tüm eğitim belgelerinin aynı formatta olduğundan emin olun. Birden çok biçimde formlarınız varsa, bunları ortak biçime göre alt klasörlerde düzenleyin. Eğitim alırken, API'yi bir alt klasöre yönlendirmeniz gerekir.
 
-Etiketli verileri kullanarak bir modeli eğitebilmek için, alt klasörde giriş olarak aşağıdaki dosyalar gerekir. Aşağıda bu dosyanın nasıl oluşturulacağını öğreneceksiniz.
+Etiketli verileri kullanarak bir modeli eğitmek için alt klasördeki giriş olarak aşağıdaki dosyalara ihtiyacınız olur. Bu dosyayı nasıl oluşturacağınızı aşağıda öğreneceksiniz.
 
-* **Kaynak formları** : verilerin ayıklanacağı formlar. Desteklenen türler JPEG, PNG, BMP, PDF veya TIFF.
-* **OCR düzen dosyaları** -her kaynak formunda tüm okunabilir metinlerin boyutlarını ve konumlarını tanımlayan JSON dosyaları. Bu verileri oluşturmak için form tanıyıcı düzeni API 'SI kullanılır. 
-* **Etiket dosyaları** -bir kullanıcının el ile girdiği veri etiketlerini açıklayan JSON dosyaları.
+* **Kaynak formları** – veri ayıklamak için formlar. Desteklenen türleri JPEG, PNG, BMP, PDF veya TIFF vardır.
+* **OCR düzen dosyaları** - Her kaynak formdaki tüm okunabilir metnin boyutlarını ve konumlarını açıklayan JSON dosyaları. Bu verileri oluşturmak için Form Recognizer Düzen API'sini kullanırsınız. 
+* **Etiket dosyaları** - Bir kullanıcının el ile girdiği veri etiketlerini açıklayan JSON dosyaları.
 
-Tüm bu dosyalar aynı alt klasörü kaplamalıdır ve aşağıdaki biçimde olmalıdır:
+Bu dosyaların tümü aynı alt klasörü kapsamalı ve aşağıdaki biçimde olmalıdır:
 
-* input_file1. PDF 
-* input_file1. PDF. OCR. JSON
-* input_file1. PDF. Labels. JSON 
-* input_file2. PDF 
-* input_file2. PDF. OCR. JSON
-* input_file2. PDF. Labels. JSON
+* input_file1.pdf 
+* input_file1.pdf.ocr.json
+* input_file1.pdf.labels.json 
+* input_file2.pdf 
+* input_file2.pdf.ocr.json
+* input_file2.pdf.labels.json
 * ...
 
 > [!TIP]
-> Formu, tanıyıcı [örnek etiketleme aracını](./label-tool.md)kullanarak etiketleyerek, araç bu etıketı ve OCR düzen dosyalarını otomatik olarak oluşturur.
+> Form Recognizer örnek etiketleme [aracını](./label-tool.md)kullanarak formları etiketlediğinizde, araç bu etiketi ve OCR düzen dosyalarını otomatik olarak oluşturur.
 
-### <a name="create-the-ocr-output-files"></a>OCR çıkış dosyalarını oluşturma
+### <a name="create-the-ocr-output-files"></a>OCR çıktı dosyalarını oluşturma
 
-Hizmetin etiketli eğitim için karşılık gelen giriş dosyalarını göz önünde bulundurmasını sağlamak üzere OCR sonuç dosyaları gerekir. Belirli bir kaynak formun OCR sonuçlarını almak için aşağıdaki adımları izleyin:
+Hizmetin etiketli eğitim için karşılık gelen giriş dosyalarını dikkate alabilmesi için OCR sonuç dosyalarına ihtiyacınız var. Belirli bir kaynak formu için OCR sonuçlarını elde etmek için aşağıdaki adımları izleyin:
 
-1. Okuma düzeni kapsayıcısında, istek gövdesinin bir parçası olarak giriş dosyasını içeren **[Düzen çözümleme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API 'sini çağırın. Yanıtın **Işlem konumu** üst BILGISINDE bulunan kimliği kaydedin.
-1. Önceki adımdan alınan işlem KIMLIĞINI kullanarak, çözüm **[Düzenleme sonucunu al](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API 'sini çağırın.
-1. Yanıtı alın ve içeriği bir dosyaya yazın. Her kaynak formu için, karşılık gelen OCR dosyası `.ocr.json`özgün dosya adına eklenmiş olmalıdır. OCR JSON çıktısı aşağıdaki biçimde olmalıdır. Tam bir örnek için [örnek OCR dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) bakın. 
+1. İstek gövdesinin bir parçası olarak giriş dosyasıyla okundu Düzen kapsayıcısında **[KiDüzen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API'sini çözümle'yi arayın. Yanıtın **İşlem-Konum** üstbilgisinde bulunan kimliği kaydedin.
+1. Önceki adımdaki işlem kimliğini kullanarak **[Analiz Edin Düzen Sonuç](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API'sini çağırın.
+1. Yanıtı alın ve içeriğini bir dosyaya yazın. Her kaynak form için, ilgili OCR dosyasının özgün `.ocr.json`dosya adı ile eklenmelidir. OCR JSON çıktısı aşağıdaki biçime sahip olmalıdır. Tam bir örnek için [örnek OCR dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) bakın. 
 
     ```json
     {
@@ -116,11 +116,11 @@ Hizmetin etiketli eğitim için karşılık gelen giriş dosyalarını göz ön�
 
 ### <a name="create-the-label-files"></a>Etiket dosyalarını oluşturma
 
-Etiket dosyaları, bir kullanıcının el ile girdiği anahtar-değer ilişkilerini içerir. Etiketlendirilmiş veri eğitiminde olmaları gerekir, ancak her kaynak dosyanın karşılık gelen bir etiket dosyası olması gerekmez. Etiketleri olmayan kaynak dosyalar, sıradan eğitim belgeleri olarak değerlendirilir. Güvenilir eğitim için beş veya daha fazla etiketlenmiş dosya öneririz.
+Etiket dosyaları, bir kullanıcının el ile girdiği anahtar değeri ilişkilendirmelerini içerir. Bunlar etiketli veri eğitimi için gereklidir, ancak her kaynak dosyanın karşılık gelen bir etiket dosyasına sahip olması gerekmez. Etiketleri olmayan kaynak dosyalar sıradan eğitim belgeleri olarak kabul edilecektir. Güvenilir eğitim için beş veya daha fazla etiketli dosya öneririz.
 
-Bir etiket dosyası oluşturduğunuzda, verileri isteğe bağlı olarak belgedeki değerlerin tam konumlarına&mdash;belirtebilirsiniz. Bu, eğitime daha da fazla doğruluk sağlar. Bölgeler dört X, Y koordinatlarına karşılık gelen sekiz değer kümesi olarak biçimlendirilir: sol üst, sağ üst, sağ alt ve sol alt. Koordinat değerleri, sayfanın boyutlarına ölçeklendirilen sıfır ve diğeri arasındadır.
+Bir etiket dosyası oluşturduğunuzda, isteğe&mdash;bağlı olarak bölgelere belgedeki değerlerin tam konumlarını belirtebilirsiniz. Bu eğitim daha yüksek doğruluk verecektir. Bölgeler, dört X,Y koordinatına karşılık gelen sekiz değer kümesi olarak biçimlendirilir: sol üstte, üst-sağ, alt-sağ ve alt-sol. Koordinat değerleri sayfanın boyutlarına ölçeklendirilir, sıfır ve bir arasındadır.
 
-Her kaynak formu için, karşılık gelen etiket dosyası `.labels.json`eklenmiş özgün dosya adına sahip olmalıdır. Etiket dosyası aşağıdaki biçimde olmalıdır. Tam bir örnek için [örnek etiket dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) bakın.
+Her kaynak form için, ilgili etiket dosyasının orijinal `.labels.json`dosya adı ile eklenmiş olmalıdır. Etiket dosyası aşağıdaki biçime sahip olmalıdır. Tam bir örnek için [örnek etiket dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) bakın.
 
 ```json
 {
@@ -188,16 +188,16 @@ Her kaynak formu için, karşılık gelen etiket dosyası `.labels.json`eklenmi�
 ```
 
 > [!NOTE]
-> Her metin öğesine yalnızca bir etiket uygulayabilirsiniz ve her etiket sayfa başına yalnızca bir kez uygulanabilir. Şu anda birden çok sayfada bir etiket uygulayamazsınız.
+> Her metin öğesine yalnızca bir etiket uygulayabilirsiniz ve her etiket sayfa başına yalnızca bir kez uygulanabilir. Şu anda birden çok sayfaya etiket uygulayamazsınız.
 
 
-## <a name="train-a-model-using-labeled-data"></a>Etiketli verileri kullanarak bir modeli eğitme
+## <a name="train-a-model-using-labeled-data"></a>Etiketli verileri kullanarak bir model eve aktarma
 
-Etiketli verilerle bir modeli eğiteetmek için aşağıdaki python kodunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
+Etiketli verilere sahip bir modeli eğitmek için, aşağıdaki python kodunu çalıştırarak **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API'yi arayın. Kodu çalıştırmadan önce aşağıdaki değişiklikleri yapın:
 
-1. `<Endpoint>`, form tanıyıcı kaynağınızın uç nokta URL 'siyle değiştirin.
-1. `<SAS URL>` Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'SI ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-1. `<Blob folder name>`, giriş verilerinin bulunduğu blob kapsayıcısındaki klasör adıyla değiştirin. Ya da verileriniz kökse, bunu boş bırakın ve HTTP isteğinin gövdesinden `"prefix"` alanını kaldırın.
+1. Form `<Endpoint>` Tanıyıcı kaynağınız için uç nokta URL'si ile değiştirin.
+1. Azure `<SAS URL>` Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL'sini değiştirin. SAS URL'sini almak için Microsoft Azure Depolama Gezgini'ni açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim imzasını al'ı**seçin. **Okuma** ve **Liste** izinlerinin denetlendiğinden emin olun ve **Oluştur'** u tıklatın. Ardından **URL** bölümündeki değeri kopyalayın. Bu formu olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Giriş `<Blob folder name>` verilerinin bulunduğu blob kapsayıcınızdaki klasör adı ile değiştirin. Veya verileriniz kökündeyse, bu boşluğu boş `"prefix"` bırakın ve alanı HTTP isteğinin gövdesinden kaldırın.
 
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
@@ -240,9 +240,9 @@ except Exception as e:
     quit() 
 ```
 
-## <a name="get-training-results"></a>Eğitim sonuçlarını al
+## <a name="get-training-results"></a>Eğitim sonuçlarını alın
 
-Eğitme işlemini başlattıktan sonra, işlemin durumunu almak için döndürülen KIMLIĞI kullanırsınız. Aşağıdaki kodu Python betiğinizin altına ekleyin. Bu, yeni bir API çağrısındaki eğitim çağrısından ID değerini kullanır. Eğitim işlemi zaman uyumsuzdur, bu nedenle eğitim durumu tamamlanana kadar bu betik API 'YI düzenli aralıklarla çağırır. Bir saniye veya daha fazla Aralık öneririz.
+Tren işlemine başladıktan sonra, işlemin durumunu almak için döndürülen kimliği kullanırsınız. Python komut dosyanızın altına aşağıdaki kodu ekleyin. Bu, yeni bir API çağrısında eğitim çağrısındaki kimlik değerini kullanır. Eğitim işlemi asynchronous'dur, bu nedenle bu komut dosyası, eğitim durumu tamamlanana kadar API'yi düzenli aralıklarla çağırır. Bir veya daha fazla bir aralık öneririz.
 
 ```python 
 n_tries = 15
@@ -274,7 +274,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Eğitim süreci tamamlandığında, aşağıdaki gibi JSON içeriğiyle `201 (Success)` bir yanıt alırsınız. Yanıt kolaylık sağlaması için kısaltıldı.
+Eğitim süreci tamamlandığında, aşağıdaki gibi JSON içeriği yle bir `201 (Success)` yanıt alırsınız. Yanıt basitlik için kısaltıldı.
 
 ```json
 { 
@@ -342,11 +342,11 @@ Eğitim süreci tamamlandığında, aşağıdaki gibi JSON içeriğiyle `201 (Su
 }
 ```
 
-Aşağıdaki adımlarda kullanılmak üzere `"modelId"` değerini kopyalayın.
+Aşağıdaki `"modelId"` adımlardaki kullanım değerini kopyalayın.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-İşlem tamamlandığında, JSON içeriğiyle aşağıdaki biçimde bir `202 (Success)` yanıtı alırsınız. Yanıt kolaylık sağlaması için kısaltıldı. Ana anahtar/değer ilişkilendirmeleri `"documentResults"` düğümüdür. Düzen API 'SI sonuçları (belgedeki tüm metnin içeriği ve konumları) `"readResults"` düğümüdür.
+İşlem tamamlandığında, aşağıdaki biçimde JSON içeriğiyle ilgili bir `202 (Success)` yanıt alırsınız. Yanıt basitlik için kısaltıldı. Ana anahtar/değer çağrışımları `"documentResults"` düğümdedir. Düzen API sonuçları (belgedeki tüm metnin içeriği ve konumları) `"readResults"` düğümdedir.
 
 ```json
 { 
@@ -549,18 +549,18 @@ Aşağıdaki adımlarda kullanılmak üzere `"modelId"` değerini kopyalayın.
 }
 ```
 
-## <a name="improve-results"></a>Sonuçları geliştirme
+## <a name="improve-results"></a>Sonuçları iyileştirme
 
-`"documentResults"` düğümü altındaki her bir anahtar/değer sonucunun `"confidence"` değerlerini inceleyin. Ayrıca, düzen işlemine karşılık gelen `"readResults"` düğümündeki güven puanlarını de göz atabilirsiniz. Düzen sonuçlarının güvenilirliği, anahtar/değer ayıklama sonuçlarının güvenini etkilemez, bu nedenle her ikisini de denetlemeniz gerekir.
-* Düzen işleminin güven puanları düşükse, giriş belgelerinizin kalitesini geliştirmeyi deneyin (bkz. [giriş gereksinimleri](../overview.md#input-requirements)).
-* Anahtar/değer ayıklama işleminin güven puanları düşükse, çözümlenmekte olan belgelerin Eğitim kümesinde kullanılan belgelerle aynı türde olduğundan emin olun. Eğitim kümesindeki belgeler görünümde Çeşitlemeler içeriyorsa, bunları farklı klasörlere bölmeyi ve her varyasyon için bir modeli eğitmek için bir modele göz önünde bulundurun.
+Düğüm `"confidence"` altında her anahtar/değer sonucuiçin `"documentResults"` değerleri inceleyin. `"readResults"` Düğümdeki Düzen işlemine karşılık gelen güven puanlarına da bakmalısınız. Düzen sonuçlarının güveni anahtar/değer çıkarma sonuçlarının güvenini etkilemez, bu nedenle her ikisini de kontrol etmelisiniz.
+* Düzen çalışmasının güven puanları düşükse, giriş belgelerinizin kalitesini yükseltmeye çalışın [(giriş gereksinimlerine](../overview.md#input-requirements)bakın).
+* Anahtar/değer çıkarma işleminin güven puanları düşükse, analiz edilen belgelerin eğitim kümesinde kullanılan belgelerle aynı türde olduğundan emin olun. Eğitim kümesindeki belgelerin görünüm varyasyonları varsa, bunları farklı klasörlere bölmeyi ve her varyasyon için bir modeli eğitmeyi düşünün.
 
-### <a name="avoid-cluttered-labels"></a>Karışık etiketlerden kaçının
+### <a name="avoid-cluttered-labels"></a>Karmaşık etiketlerden kaçının
 
-Bazen aynı metin satırı içinde farklı Etiketler uyguladığınızda, hizmet bu etiketleri tek bir alanda birleştirebilir. Örneğin, bir adreste şehir, eyalet ve ZIP kodunu farklı alanlar olarak etiketleyebilir, ancak tahmin sırasında bu alanlar ayrı olarak tanınmaz.
+Bazen aynı metin satırına farklı etiketler uyguladığınız zaman, hizmet bu etiketleri tek bir alanda birleştirilebilir. Örneğin, bir adreste, şehir, eyalet ve posta kodunu farklı alanlar olarak etiketleyebilir, ancak tahmin sırasında bu alanlar ayrı olarak tanınmaz.
 
-Bu senaryonun müşterilerimiz için önemli olduğunu anladık ve gelecekte bunu geliştirmeye çalışıyoruz. Şu anda kullanıcılarımızın birden çok dağınık alanı tek bir alan olarak etiketlemesini ve sonra bu koşulları ayıklama sonuçlarının bir işlem sonrası olarak ayırmasını öneririz.
+Bu senaryonun müşterilerimiz için gerekli olduğunu biliyoruz ve gelecekte bunu geliştirmek için çalışıyoruz. Şu anda, kullanıcılarımızın birden çok karmaşık alanı tek bir alan olarak etiketlemelerini ve sonra çıkarma sonuçlarının işlenmesi nin ardından terimleri ayırmalarını öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, el ile etiketlenmiş verilerle bir modeli eğitmek için Python ile REST API form tanıyıcıyı kullanmayı öğrendiniz. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için [API başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) bakın.
+Bu hızlı başlangıçta, el ile etiketlenmiş verilere sahip bir modeli eğitmek için Python ile Form Recognizer REST API'yi nasıl kullanacağınızı öğrendiniz. Ardından, Form Tanıyıcısı API'sini daha derinlemesine incelemek için [API başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) bakın.

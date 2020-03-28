@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Sentezleştirme C# konuşma, (UWP)-konuşma hizmeti'
+title: 'Quickstart: Synthesize konuşma, C# (UWP) - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, oluşturduğunuz bir C# Bilişsel hizmetler konuşma SDK'sı kullanarak evrensel Windows Platformu (UWP) uygulama. Konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünü sentezleştir. Uygulama, konuşma SDK 'Sı NuGet paketiyle oluşturulmuştur ve 2019 Microsoft Visual Studio.
+description: Bu makalede Bilişsel HizmetlerKonuşma SDK'sı'nı kullanarak bir C# Evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Konuşmayı metinden gerçek zamanlı olarak cihazınızın hoparlörüne sentezlersiniz. Uygulama Speech SDK NuGet Paketi ve Microsoft Visual Studio 2019 ile oluşturulmuştır.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,58 +11,58 @@ ms.topic: include
 ms.date: 08/19/2019
 ms.author: yinhew
 ms.openlocfilehash: 8ca97be2863bd8e45ac7937c49c464fa2f216b11
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925681"
 ---
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve arka plan C# kod uygulamasını ekleyin.
+Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve C# kodu arkasını uygulama ekleyin.
 
-1. **Çözüm Gezgini**' de `MainPage.xaml`açın.
+1. **Çözüm Gezgini'nde**, açık `MainPage.xaml`.
 
-1. Tasarımcı XAML görünümünde, **kılavuz** ETIKETINE aşağıdaki xaml kod parçacığını ekleyin (`<Grid>` ve `</Grid>`arasında):
+1. Tasarımcının XAML görünümünde, **Grid** etiketine aşağıdaki XAML snippet'i `</Grid>`ekleyin (arasında ve arasında): `<Grid>`
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/text-to-speech/helloworld/MainPage.xaml#StackPanel)]
 
-1. **Çözüm Gezgini**, arka plan kod kaynak dosyası `MainPage.xaml.cs`açın. (`MainPage.xaml`altında gruplandırılır.)
+1. **Çözüm Gezgini'nde,** kod arkasındaki `MainPage.xaml.cs`kaynak dosyayı açın. (Bu altında `MainPage.xaml`gruplandı .)
 
-1. İçindeki tüm kodu aşağıdaki kod parçacığıyla değiştirin:
+1. Aşağıdaki parçacıkla tüm kodu değiştirin:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/text-to-speech/helloworld/MainPage.xaml.cs#code)]
 
-1. Kaynak dosyanın `Speak_ButtonClicked` işleyicisinde, `YourSubscriptionKey`dizesini bulun ve abonelik anahtarınızla değiştirin.
+1. Kaynak dosyanın `Speak_ButtonClicked` işleyicisinde dizeyi `YourSubscriptionKey`bulun ve abonelik anahtarınızla değiştirin.
 
-1. `Speak_ButtonClicked` işleyicisinde, `YourServiceRegion`dizesini bulun ve aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. (Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.)
+1. İşleyicide `Speak_ButtonClicked` dizeyi `YourServiceRegion`bulun ve aboneliğinizle ilişkili [bölgeyle](~/articles/cognitive-services/Speech-Service/regions.md) değiştirin. (Örneğin, ücretsiz `westus` deneme aboneliği için kullanın.)
 
-1. Değişikliklerinizi kaydetmek için menü çubuğundan **dosya** > **Tümünü Kaydet** ' i seçin.
+1. Menü çubuğundan, değişikliklerinizi kaydetmek için**Tümlerini Kaydet'i** **seçin.** > 
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-Artık uygulamanızı derlemek ve test etmek için hazırsınız.
+Artık uygulamanızı oluşturmaya ve test etmeye hazırsınız.
 
-1. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözüm'üne** bakın' ı seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatmak için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
+1. Uygulamayı başlatmak için **Hata Ayıklama** > **Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna) seçin. **Helloworld** penceresi görüntülenir.
 
-   ![Örnek UWP konuşma sen, Hızlı Başlangıç C# uygulaması](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
+   ![C# örnek UWP konuşma sentezi uygulaması - quickstart](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
-1. Metin kutusuna bir metin girin ve **konuş**' a tıklayın. Metniniz konuşma hizmetine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
+1. Textbox'a bazı metinler girin ve **Konuş'u**tıklatın. Metniniz Konuşma hizmetine aktarılır ve hoparlörünüzün üzerinde çalan konuşmayla sentezlenir.
 
-    ![Konuşma birleştirme Kullanıcı arabirimi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
+    ![Konuşma sentezi kullanıcı arabirimi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -70,5 +70,5 @@ Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Özel bir ses oluşturun](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Özel ses örneklerini Kaydet](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Özel Ses Oluşturma](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Özel ses örneklerini kaydetme](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

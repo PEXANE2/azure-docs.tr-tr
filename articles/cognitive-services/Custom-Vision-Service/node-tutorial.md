@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: node. js için Özel Görüntü İşleme SDK ile bir görüntü sınıflandırma projesi oluşturma'
+title: 'Quickstart: Node.js için Özel Vizyon SDK ile bir görüntü sınıflandırma projesi oluşturun'
 titleSuffix: Azure Cognitive Services
-description: Node. js SDK 'sını kullanarak bir proje oluşturun, Etiketler ekleyin, görüntü yükleyin, projenize eğitme yapın ve tahmin edin.
+description: Bir proje oluşturun, etiket ekleyin, resim yükleyin, projenizi eğitin ve Node.js SDK'yı kullanarak bir tahminde bulunun.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -10,26 +10,26 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 7490e1261262ff26eec48a691e22ec177954dcf3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f1c0d8f72fe59ff9a8c0fdba86d97ea588a9a808
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169460"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366632"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Hızlı başlangıç: Özel Görüntü İşleme Node. js SDK 'Sı ile bir görüntü sınıflandırma projesi oluşturma
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Quickstart: Özel Vizyon Düğüm.js SDK ile bir görüntü sınıflandırma projesi oluşturun
 
-Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Node. js ile Özel Görüntü İşleme SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra Etiketler ekleyebilir, görüntü yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı olarak test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi Node. js uygulamanızı oluşturmak için bir şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
+Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Node.js ile Özel Vizyon SDK kullanarak başlamak için nasıl gösterir. Oluşturulduktan sonra etiketler ekleyebilir, resim yükleyebilir, projeyi eğitebilir, projenin yayınlanmış tahmin bitiş noktası URL'sini alabilir ve bir resmi programlı olarak sınamak için bitiş noktasını kullanabilirsiniz. Kendi Düğüm.js uygulamanızı oluşturmak için bu örneği şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Node. js 8](https://www.nodejs.org/en/download/) veya üzeri yüklü.
-- [NPM](https://www.npmjs.com/) yüklendi.
+- [Node.js 8](https://www.nodejs.org/en/download/) veya daha sonra yüklenir.
+- [npm](https://www.npmjs.com/) yüklendi.
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
 
-Node. js için Özel Görüntü İşleme Service SDK 'yı yüklemek için PowerShell 'de aşağıdaki komutu çalıştırın:
+Node.js için Custom Vision hizmeti SDK'yı yüklemek için PowerShell'de aşağıdaki komutu çalıştırın:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -42,17 +42,17 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>Kod ekleme
 
-Tercih ettiğiniz proje dizininde *Sample. js* adlı yeni bir dosya oluşturun.
+Tercih ettiğiniz proje dizininde *sample.js* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
-Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin ve sampleDataRoot Path değerini görüntü klasörü yolunuza ayarlayın. Uç nokta değerinin [Customvision.ai](https://www.customvision.ai/)adresinde oluşturduğunuz eğitim ve tahmin uç noktalarıyla eşleştiğinden emin olun. Nesne algılama ve görüntü sınıflandırma projesi oluşturma arasındaki farkın **CreateProject** çağrısında belirtilen etki alanı olduğunu unutmayın.
+Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin ve örnekDataRoot yol değerini resim klasörü yolunuza ayarlayın. endPoint değerinin [Customvision.ai](https://www.customvision.ai/)oluşturduğunuz eğitim ve tahmin uç noktalarıyla eşleştiğinden emin olun. Nesne algılama ve görüntü sınıflandırma projesi oluşturma arasındaki farkın **createProject** çağrısında belirtilen etki alanı olduğunu unutmayın.
 
 ```javascript
 const util = require('util');
 const fs = require('fs');
-const TrainingApiClient = require("@azure/cognitiveservices-customvision-training");
-const PredictionApiClient = require("@azure/cognitiveservices-customvision-prediction");
+const TrainingApi = require("@azure/cognitiveservices-customvision-training");
+const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -65,7 +65,7 @@ const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "classifyModel";
 
-const trainer = new TrainingApiClient(trainingKey, endPoint);
+const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
 (async () => {
     console.log("Creating project...");
@@ -74,7 +74,7 @@ const trainer = new TrainingApiClient(trainingKey, endPoint);
 
 ### <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
 
-Projenize sınıflandırma etiketleri oluşturmak için, *Sample. js*' nin sonuna aşağıdaki kodu ekleyin:
+Projenize sınıflandırma etiketleri oluşturmak için *sample.js*sonuna aşağıdaki kodu ekleyin:
 
 ```javascript
 const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
@@ -83,10 +83,10 @@ const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 
 ### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu kod, her görüntüyü ilgili etiketiyle birlikte karşıya yükler. Tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz.
+Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu kod, her görüntüyü ilgili etiketiyle birlikte karşıya yükler. Tek bir toplu iş halinde en fazla 64 resim yükleyebilirsiniz.
 
 > [!NOTE]
-> *Sampledataroot* ' i, bilişsel hizmetler Node. js SDK örnekleri projesini daha önce indirdiğiniz yere bağlı olarak görüntüler.
+> Daha önce Bilişsel Hizmetler Düğümü.js SDK Örnekleri projesini indirdiğiniz yere bağlı olarak *örnekDataRoot'u* görüntülere giden yol için değiştirmeniz gerekir.
 
 ```javascript
 console.log("Adding images...");
@@ -107,9 +107,9 @@ japaneseCherryFiles.forEach(file => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitme ve yayımlama
+### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitin ve yayımlayın
 
-Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
+Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve sonra bu yinelemeyi tahmin bitiş noktasına yayımlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin bitiş noktasında kullanılamaz.
 
 ```javascript
 console.log("Training...");
@@ -128,12 +128,12 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Yayınlanan yinelemeyi tahmin bitiş noktasında alın ve kullanın
 
 Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın sonuna aşağıdaki kodu ekleyin:
 
 ```javascript
-    const predictor = new PredictionApiClient(predictionKey, endPoint);
+    const predictor = new PredictionApi.PredictionAPIClient(predictionKey, endPoint);
     const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_image.jpg`);
 
     const results = await predictor.classifyImage(sampleProject.id, publishIterationName, testFile);
@@ -148,7 +148,7 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-*Sample. js*' i çalıştırın.
+*Örnek.js*çalıştırın.
 
 ```shell
 node sample.js
@@ -170,7 +170,7 @@ Results:
          Japanese Cherry: 0.01%
 ```
 
-Ardından test görüntüsünün ( **<base_image_url>/Images/Test/** yolunda bulunur) düzgün etiketlendiğini doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
+Ardından test görüntüsünün (**<base_image_url>/Images/Test/** yolunda bulunur) düzgün etiketlendiğini doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: ses dosyasından konuşmayı tanıma-konuşma hizmeti'
+title: 'Quickstart: Bir ses dosyasından konuşmayı tanıma - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, ses dosyasından konuşmayı tanımak için konuşma SDK 'sını kullanacaksınız.
+description: Bu hızlı başlatmada, bir ses dosyasındaki konuşmayı tanımak için Konuşma SDK'sını kullanırsınız.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: da6094cd654652625a2ebab303c72fb16fb49b6b
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119480"
 ---
-# <a name="quickstart-recognize-speech-from-an-audio-file"></a>Hızlı başlangıç: ses dosyasından konuşmayı tanıma
+# <a name="quickstart-recognize-speech-from-an-audio-file"></a>Hızlı başlatma: Ses dosyasından konuşmayı tanıma
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-file/header.md)]

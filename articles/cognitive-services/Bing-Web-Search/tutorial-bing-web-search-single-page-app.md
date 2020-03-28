@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943888"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web Araması API’sini kullanarak tek sayfalı uygulama oluşturma
@@ -32,12 +32,12 @@ Bu örnek uygulama şunları yapabilir:
 
 Bu uygulamayı kullanmak için Bing Arama API'lerine sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Uygulamayı çalıştırmak için ihtiyacınız olacak birkaç şey:
 
 * Node.js 8 veya üstü
-* Bing Arama API 'SI için bir abonelik anahtarı. Yoksa, [bir Bing arama v7 kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)da kullanabilirsiniz.
+* Bing Arama API'si için bir abonelik anahtarı. Yoksa Bing [Search v7 kaynağı oluşturun.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) Deneme [anahtarı](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)da kullanabilirsiniz.
 ## <a name="get-the-source-code-and-install-dependencies"></a>Kaynak kodu alma ve bağımlılıkları yükleme
 
 İlk adım, örnek uygulamanın kaynak koduyla depoyu kopyalamaktır.
@@ -66,7 +66,7 @@ Bu öğretici `scripts.js` dosyasına ve Bing Web Araması API'sini çağırıp 
 
 ## <a name="html-form"></a>HTML formu
 
-`index.html`, kullanıcıların arama yapmasına ve arama seçeneklerini belirtmesine olanak sağlayan bir form içerir. Form gönderilip `onsubmit` dosyasında tanımlanan `bingWebSearch()` yöntemi çağrıldığında, `scripts.js` özniteliği çağrılır. Üç bağımsız değişken alır:
+`index.html`, kullanıcıların arama yapmasına ve arama seçeneklerini belirtmesine olanak sağlayan bir form içerir. Form gönderilip `scripts.js` dosyasında tanımlanan `bingWebSearch()` yöntemi çağrıldığında, `onsubmit` özniteliği çağrılır. Üç bağımsız değişken alır:
 
 * Arama sorgusu
 * Belirtilen seçenekler
@@ -127,9 +127,9 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch``strict`, `moderate` veya `off` olarak ayarlanabilir; Bing Web Araması'nın varsayılan ayarı `moderate` ayarıdır. Bu form, iki durum içeren bir onay kutusu kullanır: `strict` veya `moderate`.
+`SafeSearch``strict`, `moderate` veya `off` olarak ayarlanabilir; Bing Web Araması'nın varsayılan ayarı `moderate` ayarıdır. Bu form, iki durum vardır bir `strict` `moderate`onay kutusu kullanır: veya .
 
-**Yükselt** onay kutularından herhangi bir seçildiyse, sorguya `answerCount` parametresi eklenir. `answerCount` parametresi kullanıldığında `promote` gereklidir. Bu kod parçacığında, tüm kullanılabilir sonuç türlerinin döndürülmesi için değer `9` olarak ayarlanmıştır.
+**Yükselt** onay kutularından herhangi bir seçildiyse, sorguya `answerCount` parametresi eklenir. `promote` parametresi kullanıldığında `answerCount` gereklidir. Bu kod parçacığında, tüm kullanılabilir sonuç türlerinin döndürülmesi için değer `9` olarak ayarlanmıştır.
 > [!NOTE]
 > Sonuç türünün yükseltilmesi, bunun arama sonuçlarına eklenmesini *garanti* etmez. Bunun yerine, yükseltme işlemi bu tür sonuçların derecelendirmesini kendi normal derecelerine göre yükseltir. Aramaları belirli sonuç türleriyle sınırlandırmak için, `responseFilter` sorgu parametresini kullanın ya da Bing Resim Arama veya Bing Haber Arama gibi daha belirgin bir uç noktayı çağırın.
 
@@ -331,7 +331,7 @@ function renderSearchResults(results) {
 }
 ```
 
-`renderResultsItems()` işlevi her `RankingResponse` koleksiyonundaki öğelerde yinelenir, `answerType` ve `resultIndex` değerlerini kullanarak her derecelendirme sonucunu bir arama sonucuna eşler ve HTML'yi oluşturmak için uygun işleme işlevini çağırır. Öğe için `resultIndex` belirtilmediyse, `renderResultsItems()` bu türdeki tüm sonuçlarda yinelenir ve her öğe için işleme işlevini çağırır. Sonuçta elde edilen HTML, `<div>` dosyasındaki uygun `index.html` öğesine eklenir.
+`renderResultsItems()` işlevi her `RankingResponse` koleksiyonundaki öğelerde yinelenir, `answerType` ve `resultIndex` değerlerini kullanarak her derecelendirme sonucunu bir arama sonucuna eşler ve HTML'yi oluşturmak için uygun işleme işlevini çağırır. Öğe için `resultIndex` belirtilmediyse, `renderResultsItems()` bu türdeki tüm sonuçlarda yinelenir ve her öğe için işleme işlevini çağırır. Sonuçta elde edilen HTML, `index.html` dosyasındaki uygun `<div>` öğesine eklenir.
 
 ```javascript
 // Render search results from the RankingResponse object per rank response and

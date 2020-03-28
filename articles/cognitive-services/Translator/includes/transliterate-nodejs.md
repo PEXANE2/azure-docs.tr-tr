@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 4395e0a14819021bd1e4ae32c89ffb0cf8e07d00
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906456"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906456"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir proje oluşturun veya masaüstünüzde adlı `translate-text.js` bir dosya içeren yeni bir klasör oluşturun. Sonra bu kod parçacığını projenize/dosyanıza kopyalayın:
+En sevdiğiniz IDE veya düzenleyiciyi veya masaüstünüzde bir `translate-text.js` dosya içeren yeni bir klasör kullanarak yeni bir proje oluşturun. Ardından bu kod parçacıklarını projenize/dosyanıza kopyalayın:
 
 ```javascript
 const request = require('request');
@@ -29,9 +29,9 @@ const uuidv4 = require('uuid/v4');
 
 Bu modüller HTTP isteği ve `'X-ClientTraceId'` üst bilgisi için benzersiz tanıtıcı oluşturmak için gereklidir.
 
-## <a name="set-the-subscription-key-and-endpoint"></a>Abonelik anahtarını ve uç noktayı ayarlama
+## <a name="set-the-subscription-key-and-endpoint"></a>Abonelik anahtarını ve bitiş noktasını ayarlama
 
-Bu örnek, bu ortam değişkenlerinden Translator metin çevirisi abonelik anahtarınızı ve uç noktasını okumaya çalışacaktır: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` ve. `TRANSLATOR_TEXT_ENDPOINT` Ortam değişkenlerine alışkın değilseniz, dizeler ayarlayabilir ve koşullu deyimleri açıklama `subscriptionKey` `endpoint` olarak ayarlayabilirsiniz.
+Bu örnek, çevirmen metin abonelik anahtarınızı ve bitiş noktanızı `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` `TRANSLATOR_TEXT_ENDPOINT`bu ortam değişkenlerinden okumaya çalışır: ve . Ortam değişkenlerini bilmiyorsanız, koşullu ifadeleri `subscriptionKey` ayarlayabilir ve `endpoint` dizeleri olarak yorumlayabilirsiniz.
 
 Bu kodu projenize kopyalayın:
 
@@ -53,7 +53,7 @@ var endpoint = process.env[endpoint_var];
 İstek modülü aracılığıyla kullanıma sunulan `request()` yöntemi HTTP yöntemi, URL, istek parametreleri, üst bilgileri ve JSON gövdesi bileşenlerini `options` nesnesi olarak geçirmemizi sağlar. Bu kod parçacığında isteği yapılandıracağız:
 
 >[!NOTE]
-> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz [. Translator metin çevirisi API'si 3,0: Alfabede olacak şekilde.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)
+> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator Metin Çevirisi API’si 3.0: Karakter dönüştürme](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
 ```javascript
 let options = {
@@ -80,7 +80,7 @@ let options = {
 
 Bir isteğin kimliğini doğrulamanın en kolay yolu, abonelik anahtarınızda bir `Ocp-Apim-Subscription-Key` üst bilgisi olarak geçirmektir. Bu örnekte bu yöntem kullanılır. Alternatif olarak, abonelik anahtarınızı bir erişim belirteciyle değiştirebilir ve isteğinizi doğrulamak için erişim belirtecini bir `Authorization` üst bilgisi olarak geçirebilirsiniz.
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek üst bilgilerine de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir.
+Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek `Ocp-Apim-Subscription-Region` üstbilginize de eklemeniz gerekir.
 
 Daha fazla bilgi için bkz. [Kimlik doğrulaması](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
@@ -124,7 +124,7 @@ Abonelik anahtarınızı programınıza sabit kodladıysanız, bu hızlı başla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

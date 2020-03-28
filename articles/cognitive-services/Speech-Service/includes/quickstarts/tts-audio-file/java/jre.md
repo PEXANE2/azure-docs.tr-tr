@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925873"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
+1. Java projenize yeni bir boş sınıf eklemek için**Yeni** > **Sınıf** **Dosyası'nı** > seçin.
 
 1. **Yeni Java Sınıfı** penceresinde, **Paket** alanına **speechsdk.quickstart** ve **Ad** alanına da **Ana** girin.
 
@@ -104,16 +104,16 @@ ms.locfileid: "78925873"
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Dize `helloworld.wav` kendi dosya adıyla değiştirin.
+1. Dizeyi `helloworld.wav` kendi dosya adınız ile değiştirin.
 
-1. Dize `Hello world!` kendi metninizdeki ile değiştirin.
+1. Dizeyi `Hello world!` kendi metniniz ile değiştirin.
 
 1. Proje üzerindeki değişiklikleri kaydedin.
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-F11 tuşuna basın veya **Çalıştır** > **Hata Ayıkla** seçeneğini belirleyin.
-Metniniz konuşmaya dönüştürülür ve belirtilen ses verilerinde kaydedilir.
+F11 tuşuna basın veya**Hata Ayıklama'yı** **çalıştır'ı** > seçin.
+Metniniz konuşmaya dönüştürülür ve belirtilen ses verilerine kaydedilir.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -125,5 +125,5 @@ Metniniz konuşmaya dönüştürülür ve belirtilen ses verilerinde kaydedilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Özel bir ses oluşturun](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Özel ses örneklerini Kaydet](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Özel Ses Oluşturma](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Özel ses örneklerini kaydetme](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

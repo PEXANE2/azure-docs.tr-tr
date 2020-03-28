@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: node. js ile modern okuyucuyu Başlatan bir Web uygulaması oluşturma'
+title: 'Quickstart: Node.js ile Sürükleyici Okuyucu başlattı bir web uygulaması oluşturun'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturup tam ekran okuyucusu API işlevini eklersiniz.
+description: Bu hızlı başlangıçta, sıfırdan bir web uygulaması oluşturur ve Sürükleyici Reader API işlevselliğini eklersiniz.
 author: pasta
 manager: nitinme
 ms.service: cognitive-services
@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: 749e75fed409632c613713a49154e4cd8dc265b3
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75946330"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>Hızlı başlangıç: tam ekran okuyucuyu Başlatan bir Web uygulaması oluşturma (node. js)
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>Quickstart: Sürükleyici Okuyucu (Node.js) başlattı bir web uygulaması oluşturun
 
-[Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
+[Immersive Reader,](https://www.onenote.com/learningtools) okuma anlama geliştirmek için kanıtlanmış teknikleri uygulayan kapsayıcı bir şekilde tasarlanmış bir araçtır.
 
-Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturur ve modern Okuyucu SDK 'sını kullanarak tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)ulaşabilirsiniz.
+Bu hızlı başlangıçta, sıfırdan bir web uygulaması oluşturun ve Sürükleyici Reader SDK'yı kullanarak Sürükleyici Okuyucu'yu entegre edebilirsiniz. Bu quickstart tam bir çalışma örneği [burada](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)mevcuttur.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
-* [Node. js](https://nodejs.org/) ve [Yarn](https://yarnpkg.com)
-* [Visual Studio Code](https://code.visualstudio.com/) gıbı bir IDE
+* Azure Etkin Dizin kimlik doğrulaması için yapılandırılan Sürükleyici Bir Reader kaynağı. Kurulumu için [bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerlere ihtiyacınız olacaktır. Oturumunuzun çıktısını ileride başvurmak için bir metin dosyasına kaydedin.
+* [Düğüm.js](https://nodejs.org/) ve [İplik](https://yarnpkg.com)
+* [Visual Studio Code](https://code.visualstudio.com/) gibi bir IDE
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Express ile Node. js web uygulaması oluşturma
+## <a name="create-a-nodejs-web-app-with-express"></a>Express ile Bir Düğüm.js web uygulaması oluşturma
 
-`express-generator` aracıyla bir Node. js web uygulaması oluşturun.
+`express-generator` Araçla bir Düğüm.js web uygulaması oluşturun.
 
 ```bash
 npm install express-generator -g
@@ -40,7 +40,7 @@ express --view=pug quickstart-nodejs
 cd quickstart-nodejs
 ```
 
-Yarn bağımlılıklarını yükleyip daha sonra hızlı başlangıçta kullanılacak bağımlılıklar `request` ve `dotenv`ekleyin.
+Iplik bağımlılıklarını yükleyin ve `request` bağımlılıkları ekleyin ve `dotenv`daha sonra hızlı başlatmada kullanılacaktır.
 
 ```bash
 yarn
@@ -52,7 +52,7 @@ yarn add dotenv
 
 ### <a name="configure-authentication-values"></a>Kimlik doğrulama değerlerini yapılandırma
 
-Projenizin kökünde _. env_ adlı yeni bir dosya oluşturun. Aşağıdaki kodu, tam ekran okuyucuyu oluştururken verilen değerleri sağlayarak buna yapıştırın.
+Projenizin kökünde _.env_ adlı yeni bir dosya oluşturun. Immersive Reader kaynağınızı oluşturduğunuzda verilen değerleri sağlayarak aşağıdaki kodu yapıştırın.
 Tırnak işaretlerini veya "{" ve "}" karakterlerini eklemeyin.
 
 ```text
@@ -62,18 +62,18 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Ortak olmaması gereken gizli dizileri içerdiğinden, bu dosyayı kaynak denetimine yürütmemeyi unutmayın.
+Bu dosyayı kaynak denetimine işlemeyeceğinden emin olun, çünkü kamuya açıklanmaması gereken sırlar içerir.
 
-Sonra _app. js_ dosyasını açın ve dosyanın en üstüne aşağıdakileri ekleyin. Bu,. env dosyasında tanımlanan özellikleri, düğümüne ortam değişkenleri olarak yükler.
+Ardından _app.js'yi_ açın ve aşağıdakileri dosyanın üst bölümüne ekleyin. Bu, .env dosyasında tanımlanan özellikleri ortam değişkenleri olarak Düğüme yükler.
 
 ```javascript
 require('dotenv').config();
 ```
 
-### <a name="update-the-router-to-acquire-the-token"></a>Belirteci almak için yönlendiriciyi güncelleştirme
-_Routes\ındex.js_ dosyasını açın ve otomatik olarak oluşturulan kodu aşağıdaki kodla değiştirin.
+### <a name="update-the-router-to-acquire-the-token"></a>Belirteci edinmek için yönlendiriciyi güncelleştirme
+_Routes\index.js_ dosyasını açın ve otomatik olarak oluşturulan kodu aşağıdaki kodla değiştirin.
 
-Bu kod, hizmet sorumlusu parolanızı kullanarak bir Azure AD kimlik doğrulama belirteci alan bir API uç noktası oluşturur. Alt etki alanı da alır. Sonra belirteci ve alt etki alanını içeren bir nesne döndürür.
+Bu kod, hizmet temel parolanızı kullanarak bir Azure AD kimlik doğrulama belirteci alan bir API bitiş noktası oluşturur. Ayrıca alt etki alanını da alır. Daha sonra belirteç ve alt etki alanı içeren bir nesne döndürür.
 
 ```javascript
 var express = require('express');
@@ -125,11 +125,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-**Gettokenandalt etki alanı** API uç noktası, yetkisiz kullanıcıların, bir dizi kimlik doğrulaması (örneğin, [OAuth](https://oauth.net/2/)) arkasında güvenli hale gelmelidir Bu iş, bu hızlı başlangıç kapsamının ötesinde.
+**GetTokenAndSubdomain** API bitiş noktası, yetkisiz kullanıcıların Sürükleyici Reader hizmetinize ve faturanıza karşı kullanılacak jeton almalarını önlemek için bir tür kimlik doğrulamanın (örneğin, [OAuth)](https://oauth.net/2/)arkasına sabitlenmelidir; bu iş bu hızlı başlatma kapsamı dışındadır.
 
-## <a name="add-sample-content"></a>Örnek içerik Ekle
+## <a name="add-sample-content"></a>Örnek içerik ekleme
 
-Şimdi bu Web uygulamasına örnek içerik ekleyeceğiz. _Views\ındex.Pug_ dosyasını açın ve otomatik olarak oluşturulan kodu şu örnekle değiştirin:
+Şimdi, bu web uygulamasına örnek içerik ekleyeceğiz. _Görünümler\index.pug'u_ açın ve otomatik olarak oluşturulan kodu bu örnekle değiştirin:
 
 ```pug
 doctype html
@@ -235,26 +235,26 @@ script(type="text/javascript").
 ```
 
 
-Metnin tümünde, metnin dillerini açıklayan bir **lang** özniteliği olduğuna dikkat edin. Bu öznitelik, modern okuyucunun ilgili dil ve dil bilgisi özelliklerini sağlamasına yardımcı olur.
+Metnin tümünün, metnin dillerini açıklayan bir **lang** özniteliği ne sahip olduğuna dikkat edin. Bu öznitelik, Immersive Reader'ın ilgili dil ve dilbilgisi özellikleri sağlamasına yardımcı olur.
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-Web Uygulamam artık hazır. Uygulamayı çalıştırarak başlatın:
+Web uygulamamız artık hazır. Çalıştırarak uygulamayı başlatın:
 
 ```bash
 npm start
 ```
 
-Tarayıcınızı açın ve _http://localhost:3000_ gidin. Şunları görmeniz gerekir:
+Tarayıcınızı açın ve _http://localhost:3000_' ye gidin. Şunları görmeniz gerekir:
 
 ![Örnek uygulama](./media/quickstart-nodejs/1-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>Tam ekran okuyucuyu başlatın
+## <a name="launch-the-immersive-reader"></a>Sürükleyici Okuyucuyu Başlat
 
-"Modern okuyucu" düğmesine tıkladığınızda, sayfadaki içerikle birlikte modern okuyucu başlatılır.
+"Sürükleyici Okuyucu" düğmesine tıkladığınızda, sayfadaki içerikle başlatılan Sürükleyici Okuyucuyu görürsünüz.
 
 ![Tam Ekran Okuyucu](./media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) ve [Immersive Reader SDK Referans](./reference.md) keşfedin

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: ses dosyasından konuşmayı tanıma, C++ konuşma hizmeti'
+title: 'Quickstart: Ses dosyasından konuşmayı tanıma, C++ - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,11 +10,11 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: 94da324828a768983122b04cd5c8a4e14ab9c8bb
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75928096"
 ---
 > [!div class="nextstepaction"]
-> [GitHub 'da Python örneklerini keşfet](https://aka.ms/speech/github-python)
+> [GitHub'da Python örneklerini keşfedin](https://aka.ms/speech/github-python)

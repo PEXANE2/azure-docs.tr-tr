@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69907092"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
 [!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
-## <a name="create-a-net-core-project"></a>.NET Core projesi oluşturma
+## <a name="create-a-net-core-project"></a>Bir .NET Core projesi oluşturma
 
 Yeni bir komut istemi (veya terminal oturumu) açın ve şu komutları çalıştırın:
 
@@ -24,17 +24,17 @@ dotnet new console -o alternate-sample
 cd alternate-sample
 ```
 
-İlk komut şu iki işlemi yapar. Yeni bir .NET konsol uygulaması oluşturur ve adlı bir dizin oluşturur `alternate-sample`. İkinci komut, proje dizinine değiştirir.
+İlk komut iki şey yapar. Yeni bir .NET konsol uygulaması oluşturur ve adlı `alternate-sample`bir dizin oluşturur. İkinci komut, projenizin dizininde değişir.
 
-Sonra, Json.Net yüklemeniz gerekir. Projenizin dizininden şunu çalıştırın:
+Ardından, Json.Net yüklemeniz gerekir. Projenizin dizininden çalıştır:
 
 ```console
 dotnet add package Newtonsoft.Json --version 11.0.2
 ```
 
-## <a name="add-required-namespaces-to-your-project"></a>Gerekli ad alanları projenize ekleyin.
+## <a name="add-required-namespaces-to-your-project"></a>Projenize gerekli ad alanları ekleme
 
-`dotnet new console` Daha önce çalıştırdığınız komutu tarafından oluşturulan bir projeyi dahil olmak üzere `Program.cs`. Burada uygulama kodunuza giriyorum bu dosyasıdır. Açık `Program.cs`, mevcut using deyimlerinin değiştirin. Bu deyimler, derlemek ve örnek uygulamayı çalıştırmak için gerekli tüm türlerine erişimi olduğundan emin olun.
+Daha `dotnet new console` önce çalıştırdığınız komut, `Program.cs`'. Bu dosya, uygulama kodunuzu koyacağınız yerdir. Varolan ifadeleri açın `Program.cs`ve değiştirin. Bu ifadeler, örnek uygulamayı oluşturmak ve çalıştırmak için gereken tüm türlere erişebildiğinizi sağlar.
 
 ```csharp
 using System;
@@ -43,9 +43,9 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
-## <a name="get-subscription-information-from-environment-variables"></a>Ortam değişkenlerinden abonelik bilgilerini al
+## <a name="get-subscription-information-from-environment-variables"></a>Çevre değişkenlerinden abonelik bilgileri alma
 
-`Program` Sınıfına aşağıdaki satırları ekleyin. Bu satırlar, ortam değişkenlerinden, abonelik anahtarınızı ve uç noktayı okur ve herhangi bir sorunla karşılaşırsanız bir hata oluşturur.
+`Program` Sınıfa aşağıdaki satırları ekleyin. Bu satırlar, abonelik anahtarınızı ve bitiş noktanızı ortam değişkenlerinden okur ve herhangi bir sorunla karşılaştığınızda hata atar.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -70,7 +70,7 @@ static Program()
 
 ## <a name="create-a-function-to-get-alternate-translations"></a>Alternatif çeviriler almak için bir işlev oluşturma
 
-Sınıfı içinde adlı `AltTranslation`bir işlev oluşturun. `Program` Bu sınıf, sözlük kaynağını çağırmak için kullanılan kodu kapsüller ve sonucu konsola yazdırır.
+`Program` Sınıf içinde, adı verilen `AltTranslation`bir işlev oluşturun. Bu sınıf, Sözlük kaynağını aramak için kullanılan kodu kapsüller ve sonucu konsola yazdırır.
 
 ```csharp
 static void AltTranslation()
@@ -82,9 +82,9 @@ static void AltTranslation()
 }
 ```
 
-## <a name="construct-the-uri"></a>URI 'yi oluşturun
+## <a name="construct-the-uri"></a>URI'yi inşa edin
 
-Bu satırları `AltTranslation` işleve ekleyin. İle `api-version`birlikte, iki ek parametre bildirildiğine dikkat edin. Bu parametreler, çeviri girişini ve çıkışını ayarlamak için kullanılır. Bu örnekte, bunlar İngilizce (`en`) ve İspanyolca (`es`).
+Bu satırları işleve `AltTranslation` ekleyin. İki ek parametrenin `api-version`birlikte beyan edildiğini fark edeceksiniz. Bu parametreler çeviri giriş ve çıktısını ayarlamak için kullanılır. Bu örnekte, bunlar`en`İngilizce (`es`) ve İspanyolca ( )
 
 ```csharp
 string route = "/dictionary/lookup?api-version=3.0";
@@ -92,16 +92,16 @@ static string params_ = "from=en&to=es";
 static string uri = endpoint + path + params_;
 ```
 
-Ardından, çevirmek istediğiniz metni içeren JSON nesnesini oluşturup serileştirmemiz gerekir. Dikkat edin, `body` dizide birden fazla nesne geçirebilirsiniz.
+Ardından, çevirmek istediğiniz metni içeren JSON nesnesini oluşturmamız ve seri hale vermemiz gerekir. Unutmayın, `body` dizide birden fazla nesne geçirebilirsiniz.
 
 ```csharp
 System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
 
-## <a name="instantiate-the-client-and-make-a-request"></a>İstemci örneği oluşturma ve bir istek oluşturma
+## <a name="instantiate-the-client-and-make-a-request"></a>Müşteriyi anında anlayıp bir istekte bulunun
 
-Bu satırlar `HttpClient` `HttpRequestMessage`ve ' nin örneğini oluşturur:
+Bu satırlar anında `HttpClient` `HttpRequestMessage`ve:
 
 ```csharp
 using (var client = new HttpClient())
@@ -111,18 +111,18 @@ using (var request = new HttpRequestMessage())
 }
 ```
 
-## <a name="construct-the-request-and-print-the-response"></a>İsteği oluşturun ve yanıtı yazdırın
+## <a name="construct-the-request-and-print-the-response"></a>İsteği oluşturma ve yanıtı yazdırma
 
-İçinde şunları `HttpRequestMessage` yapabilirsiniz:
+`HttpRequestMessage` İçinde:
 
 * HTTP yöntemini bildirin
-* İstek URI 'sini oluşturun
-* İstek gövdesini (serileştirilmiş JSON nesnesi) ekleme
-* Gerekli üst bilgileri ekle
-* Zaman uyumsuz istek oluşturma
+* İstek URI'yi oluşturma
+* İstek gövdesini ekleme (serileştirilmiş JSON nesnesi)
+* Gerekli üstbilgi ekleme
+* Eşzamanlı istekte bulunun
 * Yanıtı yazdırma
 
-Bu kodu öğesine `HttpRequestMessage`ekleyin:
+Bu kodu `HttpRequestMessage`ekleyin:
 
 ```csharp
 // Set the method to POST
@@ -146,7 +146,7 @@ Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
 
-JSON `PrettyPrint` yanıtınıza biçimlendirme eklemek için ekleyin:
+JSON yanıtınıza biçimlendirme eklemek için ekleyin: `PrettyPrint`
 ```csharp
 static string PrettyPrint(string s)
 {
@@ -154,11 +154,11 @@ static string PrettyPrint(string s)
 }
 ```
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek parametrelerinize `Ocp-Apim-Subscription-Region` de eklemeniz gerekir. [Çoklu hizmet aboneliği ile kimlik doğrulama hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım, `AltTranslation()` `Main` işlevini çağırmak için kullanılır. Şu `static void Main(string[] args)` satırları bulun ve ekleyin:
+Son adım `AltTranslation()` `Main` işlevi aramaktır. Bu `static void Main(string[] args)` satırları bulun ve ekleyin:
 
 ```csharp
 AltTranslation();
@@ -168,7 +168,7 @@ Console.ReadKey();
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-Bu, örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırını (veya terminal oturumu), proje dizinine gidin ve çalıştırın:
+İşte bu, örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumundan), proje dizininize gidin ve çalıştırın:
 
 ```console
 dotnet run
@@ -204,11 +204,11 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan olan gizli bilgilerin kaldırdığınızdan emin olun.
+Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan gizli bilgileri kaldırdıklarından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

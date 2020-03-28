@@ -7,102 +7,102 @@ ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 3481d751aacd4183bf5a999422b9631ec0e21edb
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925853"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükleyip boş bir örnek proje<span class="docon docon-navigate-external x-hidden-focus"></span>oluşturun</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Geliştirme ortamınız için<span class="docon docon-navigate-external x-hidden-focus"></span>Konuşma SDK'sını yükleyin ve boş bir örnek proje oluşturun.</a>
 
-## <a name="create-a-luis-app-for-intent-recognition"></a>Amaç tanıma için bir LUSıS uygulaması oluşturma
+## <a name="create-a-luis-app-for-intent-recognition"></a>Niyet tanıma için bir LUIS uygulaması oluşturma
 
 [!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
 ## <a name="open-your-project"></a>Projenizi açın
 
-1. Tercih ettiğiniz IDE 'yi açın.
-2. Projenizi yükleyin ve `Main.java`açın.
+1. Tercih ettiğiniz IDE'yi açın.
+2. Projenizi yükleyin `Main.java`ve açın.
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
 
-Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
+Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-20,68-75)]
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Bir `IntentRecognizer` nesnesi başlatabilmeniz için, LUSıS tahmin kaynağınız için anahtar ve konum kullanan bir yapılandırma oluşturmanız gerekir.  
+Bir `IntentRecognizer` nesneyi başlatmadan önce, LUIS tahmin kaynağınızın anahtarını ve konumunu kullanan bir yapılandırma oluşturmanız gerekir.  
 
-Bu kodu `main()`try/catch bloğuna ekleyin. Bu değerleri güncelleştirdiğinizden emin olun:
+Bu kodu try / catch bloğuna `main()`ekleyin. Bu değerleri güncelleştirdiğinden emin olun:
 
-* `"YourLanguageUnderstandingSubscriptionKey"` değerini LUSıS tahmin anahtarınızla değiştirin.
-* `"YourLanguageUnderstandingServiceRegion"` değerini LUSıS konumunuz ile değiştirin. Bölgeden **bölge tanımlayıcısı** kullan [](https://aka.ms/speech/sdkregion)
+* LUIS `"YourLanguageUnderstandingSubscriptionKey"` tahmin anahtarınızla değiştirin.
+* LUIS `"YourLanguageUnderstandingServiceRegion"` konumunuzla değiştirin. [Bölgeden](https://aka.ms/speech/sdkregion) **Bölge tanımlayıcısı** kullanma
 
 >[!TIP]
-> Bu değerleri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
+> Bu değerleri bulmak için yardıma ihtiyacınız varsa, [bkz.](#create-a-luis-app-for-intent-recognition)
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=27)]
 
-Bu örnek, `SpeechConfig`oluşturmak için `FromSubscription()` yöntemini kullanır. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+Bu örnek, `FromSubscription()` `SpeechConfig`'yi oluşturmak için yöntemi kullanır. Kullanılabilir yöntemlerin tam listesi için [SpeechConfig Class'a](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)bakın.
 
-Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
+Konuşma SDK dil için en-us kullanarak tanıma varsayılan olacaktır, kaynak dil seçimi hakkında bilgi [için metin konuşma için kaynak dil belirtin](../../../../how-to-specify-source-language.md) bakın.
 
-## <a name="initialize-an-intentrecognizer"></a>Bir Yoğunlumtanıyıcıyı başlatma
+## <a name="initialize-an-intentrecognizer"></a>Bir IntentRecognizer'ı Başlatma
 
-Şimdi bir `IntentRecognizer`oluşturalım. Konuşma yapılandırmanızın hemen altına bu kodu ekleyin.
+Şimdi, bir. `IntentRecognizer` Bu kodu Konuşma yapılandırmanızın hemen altına ekleyin.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=30)]
 
-## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel ve amaçlar ekleyin
+## <a name="add-a-languageunderstandingmodel-and-intents"></a>Bir LanguageUnderstandingModel ve Niyetler ekleyin
 
-Bir `LanguageUnderstandingModel`, amaç tanıyıcı ile ilişkilendirmeniz ve tanınan hedefleri eklemeniz gerekir. Ana otomasyon için önceden oluşturulmuş etki alanındaki amaçları kullanacağız.
+A'yı `LanguageUnderstandingModel` niyet tanıyan kişiyle ilişkilendirmeniz ve tanınmak istediğiniz amaçları eklemeniz gerekir. Ev otomasyonu için önceden oluşturulmuş alan dan gelen niyetleri kullanacağız.
 
-Bu kodu `IntentRecognizer`altına ekleyin. `"YourLanguageUnderstandingAppId"`, LUSıS uygulama KIMLIĞINIZ ile değiştirdiğinizden emin olun.
+Bu kodu aşağıdaki `IntentRecognizer`kodu ekleyin. LUIS uygulama kimliğinizle değiştirdiğinizden `"YourLanguageUnderstandingAppId"` emin olun.
 
 >[!TIP]
-> Bu değeri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
+> Bu değeri bulmak için yardıma ihtiyacınız varsa, [bkz.](#create-a-luis-app-for-intent-recognition)
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-35)]
 
-## <a name="recognize-an-intent"></a>Amacı tanıma
+## <a name="recognize-an-intent"></a>Bir niyeti tanıma
 
-`IntentRecognizer` nesnesinden `recognizeOnceAsync()` yöntemini çağıracağız. Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.
+Nesneden, `IntentRecognizer` `recognizeOnceAsync()` yöntemi aramalısınız. Bu yöntem, Konuşma hizmetinin tanınmak için tek bir ifade gönderdiğinizi ve ifade tanımlandıktan sonra konuşmayı tanımayı durdurmak için tanımladığını bilmesini sağlar.
 
 Bu kodu modelinizin altına ekleyin:
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=40)]
 
-## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hatalarını) görüntüleme
+## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hataları) görüntüleme
 
-Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgili bir şey yapmak isteyeceksiniz. Bu uygulamayı basit tutmaya ve sonucu konsola yazdıracağız.
+Tanıma sonucu Konuşma hizmeti tarafından döndürüldüğünde, bununla ilgili bir şey yapmak istersiniz. Basit tutacağız ve sonucu konsola yazdıracağız.
 
-`recognizeOnceAsync()`çağrın altına bu kodu ekleyin.
+Bu kodu çağrınızın altına `recognizeOnceAsync()`ekle.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=43-64)]
 
-## <a name="release-resources"></a>Yayın kaynakları
+## <a name="release-resources"></a>Yayın Kaynakları
 
-Bunları kullanarak işiniz bittiğinde konuşma kaynaklarını serbest bırakmanız önemlidir. Try/catch bloğunun sonuna bu kodu ekleyin:
+Bunları kullanmayı bitirdiğinizde konuşma kaynaklarını serbest bırakmak önemlidir. Bu kodu try / catch bloğunun sonuna ekleyin:
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=66-67)]
 
-## <a name="check-your-code"></a>Kodunuzu denetleyin
+## <a name="check-your-code"></a>Kodunuzu kontrol edin
 
-Bu noktada, kodunuzun şöyle görünmesi gerekir:
+Bu noktada, kodunuz şu şekilde görünmelidir:
 
 > [!NOTE]
-> Bu sürüme bazı açıklamalar ekledik.
+> Bu sürüme bazı yorumlar ekledik.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-75)]
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
 
-<kbd>F11</kbd>tuşuna basın veya **hata ayıklama** > **Çalıştır** ' ı seçin.
+<kbd>F11</kbd>tuşuna basın veya**Hata Ayıklama'yı** **çalıştır'ı** > seçin.
 Mikrofonunuzdan yapılan sonraki 15 saniyelik konuşma girişi tanınır ve konsol penceresinde günlüğe kaydedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

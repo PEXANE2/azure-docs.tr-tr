@@ -1,25 +1,25 @@
 ---
-title: 'Hızlı başlangıç: Bing Otomatik Öneri REST API ve PHP ile arama sorguları önerme'
+title: 'Quickstart: Bing Autosuggest REST API ve PHP ile arama sorguları önerin'
 titleSuffix: Azure Cognitive Services
-description: Bing Otomatik Öneri API'si ile gerçek zamanlı olarak arama terimleri önerme hakkında hızlı bir başlangıç yapmayı öğrenin.
+description: Bing Autosuggest API ile arama terimlerini gerçek zamanlı olarak önermeye nasıl hızla başlayacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 64874791be62ec1ed5c1c5874fb055efa4b44dc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0aa309ba34abdfbe91493498ae6ec49785e0e0d4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384737"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238992"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ve PHP ile arama sorguları önerme
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Quickstart: Bing Autosuggest REST API ve PHP ile arama sorguları önerin
 
-Bing Otomatik Öneri API'si çağrı yapmaya başlamak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu basit PHP uygulaması, API 'ye kısmi bir arama sorgusu gönderir ve aramalar için öneriler döndürür. Bu uygulama PHP 'de yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bing Autosuggest API'sini arama yapmaya ve JSON yanıtını almaya başlamak için bu hızlı başlangıcı kullanın. Bu basit PHP uygulaması API'ye kısmi bir arama sorgusu gönderir ve aramalar için öneriler döndürür. Bu uygulama PHP ile yazılmış olsa da, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -32,7 +32,7 @@ Bing Otomatik Öneri API'si çağrı yapmaya başlamak ve JSON yanıtını almak
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
 2. Aşağıda sağlanan kodu ekleyin.
 3. `subscriptionKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
-4. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+4. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
 5. Programı çalıştırın.
 
 ```php

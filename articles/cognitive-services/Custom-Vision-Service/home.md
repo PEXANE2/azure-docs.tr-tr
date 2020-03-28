@@ -10,41 +10,43 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 829921ae5600873fdc8f2946ae3ff355bffb06a8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a48c553f1c96b8777e0a591f428dca3f15d7d30e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978603"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053632"
 ---
 # <a name="what-is-custom-vision"></a>Özel Görüntü İşleme nedir?
 
-Özel Görüntü İşleme, kendi resim sınıflandırıcılarınızı oluşturmanıza, dağıtmanıza ve geliştirmenize olanak sağlayan bir bilişsel hizmettir. Görüntü Sınıflandırıcısı, görsel özelliklerine göre resimlere (sınıfları temsil eden _sınıflar_) uygulanan bir AI hizmetidir. [Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) hizmetinin aksine, özel görüntü işleme uygulanacak etiketleri belirlemenizi sağlar.
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="what-it-does"></a>Neler yapar?
+Özel Görüntü İşleme, kendi resim sınıflandırıcılarınızı oluşturmanıza, dağıtmanıza ve geliştirmenize olanak sağlayan bir bilişsel hizmettir. Görüntü sınıflandırıcı, görsel özelliklerine göre resimlere etiketler _(sınıfları_temsil eden) uygulayan bir AI hizmetidir. Computer [Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) hizmetinin aksine, Custom Vision uygulanacak etiketleri belirlemenize olanak tanır.
 
-Özel Görüntü İşleme Hizmeti, resimlere etiket uygulamak için bir makine öğrenimi algoritması kullanır. Geliştirici, söz konusu özelliklere sahip olan ve özellik olmayan görüntü gruplarını göndermesi gerekir. Görüntüleri gönderme sırasında kendiniz etiketlendirin. Daha sonra algoritma bu verilere yönelik olarak bir test yapar ve kendisini aynı görüntülerle test ederek kendi doğruluğunu hesaplar. Algoritma eğitilirken, bunu test edebilir, yeniden eğitebilir ve en sonunda, yeni görüntüleri uygulamanızın gereksinimlerine göre sınıflandırmak için kullanabilirsiniz. İsterseniz modeli çevrimdışı kullanmak üzere dışarı aktarabilirsiniz.
+## <a name="what-it-does"></a>Ne yapar?
+
+Custom Vision hizmeti, resimlere etiketler uygulamak için bir makine öğrenme algoritması kullanır. Geliştirici olarak siz, söz konusu özellik ve özellikleri olmayan görüntü gruplarını göndermeniz gerekir. Teslim sırasında görüntüleri kendiniz etiketlersiniz. Sonra algoritma bu verilere trenler ve aynı görüntüler üzerinde kendini test ederek kendi doğruluğunu hesaplar. Algoritma eğitildikten sonra, yeni görüntüleri uygulamanızın gereksinimlerine göre sınıflandırmak için test edebilir, yeniden eğitebilir ve sonunda kullanabilirsiniz. İsterseniz modeli çevrimdışı kullanmak üzere dışarı aktarabilirsiniz.
 
 ### <a name="classification-and-object-detection"></a>Sınıflandırma ve nesne algılama
 
-Özel Görüntü İşleme hizmeti iki bölüme ayrılabilir. **Görüntü sınıflandırması** bir görüntüye bir veya daha fazla etiket uygular. **Nesne algılama** benzerdir, ancak uygulanan etiketlerin bulunduğu görüntüdeki koordinatları de döndürür.
+Özel Görüntü İşleme hizmeti iki bölüme ayrılabilir. **Görüntü sınıflandırması** bir görüntüye bir veya daha fazla etiket uygular. **Nesne algılama** benzer, ancak aynı zamanda uygulanan etiket(ler) bulunabilir görüntüdeki koordinatları döndürür.
 
 ### <a name="optimization"></a>İyileştirme
 
-Özel Görüntü İşleme hizmeti, görüntüler arasındaki önemli farkları hızlı bir şekilde tanımak üzere iyileştirildiğinden modelinizin prototipini oluşturmaya az miktarda veriyle başlayabilirsiniz. Her etiket için 50 görüntü genellikle iyi bir başlangıç. Ancak, görüntüde hafif farklılıkları tespit etmek için en uygun değildir (örneğin, kalite güvencesi senaryolarındaki küçük bir yandan veya en yüzlerini algılama).
+Özel Görme hizmeti, görüntüler arasındaki büyük farklılıkları hızlı bir şekilde tanıyabilmek için optimize edilsin, böylece modelinizi az miktarda veriyle prototiplemeye başlayabilirsiniz. Etiket başına 50 görüntü genellikle iyi bir başlangıç. Ancak, hizmet görüntülerdeki ince farklılıkları algılamak için uygun değildir (örneğin, kalite güvence senaryolarında küçük çatlaklar veya çentikler algılama).
 
-Ayrıca, örneğin, yer işaretleri veya perakende öğeleri gibi belirli konu&mdash;malzemelere sahip görüntüler için en iyi duruma getirilmiş Özel Görüntü İşleme algoritmasından çok sayıda değişken arasından seçim yapabilirsiniz. Daha fazla bilgi için bkz. [sınıflandırıcı oluşturma](getting-started-build-a-classifier.md) Kılavuzu.
+Ayrıca, belirli konu materyalleri,&mdash;yer işaretleri veya perakende öğeler gibi görüntüler için optimize edilmiş Özel Vizyon algoritmasının çeşitli çeşitleri arasından seçim yapabilirsiniz. Daha fazla bilgi için [bir sınıflandırıcı oluştur](getting-started-build-a-classifier.md) kılavuzuna bakın.
 
 ## <a name="what-it-includes"></a>Neleri içerir
 
-Özel Görüntü İşleme Hizmeti, yerel SDK'lara ek olarak [Özel Görüntü İşleme giriş sayfası](https://customvision.ai/) üzerinden web tabanlı arabirim aracılığıyla da sunulmaktadır. Bir modeli bir arabirim aracılığıyla oluşturabilir, test edebilir ve eğitebilirsiniz ya da ikisini birlikte kullanabilirsiniz.
+Özel Görüntü İşleme Hizmeti, yerel SDK'lara ek olarak [Özel Görüntü İşleme giriş sayfası](https://customvision.ai/) üzerinden web tabanlı arabirim aracılığıyla da sunulmaktadır. Bir modeli arabirim üzerinden oluşturabilir, sınayabilir ve eğitebilir veya her ikisini de birlikte kullanabilirsiniz.
 
 ![Chrome tarayıcı penceresinde Özel Görüntü İşleme giriş sayfası](media/browser-home.png)
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 
-Tüm bilişsel hizmetlerde olduğu gibi, Özel Görüntü İşleme hizmetini kullanan geliştiriciler Microsoft 'un müşteri verileri ilkelerine göre farkında olmalıdır. Daha fazla bilgi edinmek için Microsoft Güven Merkezi ' nde bilişsel [Hizmetler sayfasına](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) bakın.
+Tüm Bilişsel Hizmetlerde olduğu gibi, Custom Vision hizmetini kullanan geliştiriciler microsoft'un müşteri verilerine ilişkin ilkelerinden haberdar olmalıdır. Daha fazla bilgi edinmek için Microsoft Güven Merkezi'ndeki [Bilişsel Hizmetler sayfasına](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Web üzerinde Özel Görüntü İşleme kullanmaya başlamak için [sınıflandırıcının derleme](getting-started-build-a-classifier.md) kılavuzunu izleyin veya kodda temel bir senaryoyu uygulamak Için bir [görüntü sınıflandırması öğreticisini](csharp-tutorial.md) tamamlayın.
+Web'de Özel Görme'yi kullanmaya başlamak için [bir sınıflandırıcı oluştur](getting-started-build-a-classifier.md) kılavuzunu izleyin veya kodda temel bir senaryo uygulamak için bir [Resim sınıflandırma öğreticisini](csharp-tutorial.md) tamamlayın.

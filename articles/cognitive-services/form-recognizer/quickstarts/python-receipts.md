@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Python form tanıyıcısı kullanarak alındı verilerini ayıklama'
+title: 'Quickstart: Python kullanarak alma makbuzu verilerini ayıklayın - Form Tanıyın'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, ABD satış girişlerinin görüntülerinden veri ayıklamak için Python ile REST API adlı form tanıyıcıyı kullanacaksınız.
+description: Bu hızlı başlangıçta, ABD satış makbuzlarının görüntülerinden veri ayıklamak için Python ile Form Recognizer REST API'yi kullanırsınız.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,35 +10,35 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 2224ec64712ff9d1745231f39a1521ae941304ff
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118760"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak alındı verilerini ayıklama
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Quickstart: Python ile Form Recognizer REST API kullanarak alma makbuz verileri ayıklama
 
-Bu hızlı başlangıçta, ABD satış girişlerinde ilgili bilgileri ayıklamak ve tanımlamak için Python ile Azure form tanıyıcı REST API kullanacaksınız.
+Bu hızlı başlangıçta, ABD satış makbuzlarında ilgili bilgileri ayıklamak ve tanımlamak için Python ile azure form recognizer REST API'sini kullanırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
+Bu hızlı başlangıcı tamamlamak için şunları yapmış olmalısınız:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
-- Bir makbuz görüntüsünün URL 'SI. Bu hızlı başlangıç için [örnek bir görüntü](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) kullanabilirsiniz.
+- Makbuz resminin URL'si. Bu hızlı başlangıç için örnek bir [resim](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) kullanabilirsiniz.
 
-## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
+## <a name="create-a-form-recognizer-resource"></a>Form Tanıyıcı kaynağı oluşturma
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="analyze-a-receipt"></a>Okundu bilgisi Analizi
+## <a name="analyze-a-receipt"></a>Bir makbuzu analiz
 
-Bir alındısı analizine başlamak için aşağıdaki Python betiğini kullanarak **[Çözümleme alındı](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API 'sini çağırabilirsiniz. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
+Bir makbuzu çözümlemeye başlamak için, aşağıdaki Python komut dosyasını kullanarak **[Analiz Makbuzu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API'sini ararsınız. Komut dosyasını çalıştırmadan önce aşağıdaki değişiklikleri yapın:
 
-1. `<Endpoint>`, form tanıyıcı aboneliğinizle edindiğiniz uç noktayla değiştirin.
-1. `<your receipt URL>`, bir makbuz resminin URL adresiyle değiştirin.
-1. `<subscription key>`, önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. Form `<Endpoint>` Recognizer aboneliğinizle elde ettiğiniz bitiş noktasıyla değiştirin.
+1. Makbuz `<your receipt URL>` görüntüsünün URL adresiyle değiştirin.
+1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
     ```python
     ########### Python Form Recognizer Async Layout #############
@@ -78,19 +78,19 @@ Bir alındısı analizine başlamak için aşağıdaki Python betiğini kullanar
         quit()
     ```
 
-1. Kodu. Kopyala uzantılı bir dosyaya kaydedin. Örneğin, *form-recognizer-receipts.py*.
+1. Kodu .py uzantılı bir dosyaya kaydedin. Örneğin, *form-recognizer-receipts.py.*
 1. Bir komut istemi penceresi açın.
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognizer-receipts.py`.
 
-Komut dosyasının konsola yazdırılacağı bir **Işlem konumu** üst bilgisi içeren `202 (Success)` yanıtını alırsınız. Bu üst bilgi, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnek değerde, `operations/` sonraki dize işlem KIMLIĞIDIR.
+Komut dosyasının `202 (Success)` konsola yazdıracağı **İşlem-Konum** üstbilgisini içeren bir yanıt alırsınız. Bu üstbilgi, eşzamanlı işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem kimliği içerir. Aşağıdaki örnek değerde, sonraki `operations/` dize işlem kimliğidir.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>Makbuz sonuçlarını alma
+## <a name="get-the-receipt-results"></a>Makbuz sonuçlarını alın
 
-**Çözümleme alındı** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **[çözümleme sonucu alma](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API 'sini çağırın. Aşağıdaki kodu Python betiğinizin altına ekleyin. Bu işlem KIMLIĞI değerini yeni bir API çağrısında kullanır. Bu betik, sonuçlar kullanılabilir olana kadar, API 'YI düzenli aralıklarla çağırır. Bir saniye veya daha fazla Aralık öneririz.
+**Analiz Makbuzu** API'sini aradıktan sonra, işlemin durumunu ve çıkarılan verileri almak için **[Analiz Makbuzu Sonuç](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API'sini alırsınız. Python komut dosyanızın altına aşağıdaki kodu ekleyin. Bu, yeni bir API çağrısında işlem kimliği değerini kullanır. Bu komut dosyası, sonuçlar kullanılabilir olana kadar API'yi düzenli aralıklarla çağırır. Bir veya daha fazla bir aralık öneririz.
 
 ```python
 n_tries = 10
@@ -119,18 +119,18 @@ while n_try < n_tries:
         quit()
 ```
 
-1. Betiği kaydedin.
-1. Örneği çalıştırmak için `python` komutunu yeniden kullanın. Örneğin, `python form-recognizer-receipts.py`.
+1. Senaryoyu kaydet.
+1. Yine örneği `python` çalıştırmak için komutu kullanın. Örneğin, `python form-recognizer-receipts.py`.
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 
-Komut dosyası, **teslim alma** işlemi tamamlanana kadar konsola gönderilen yanıtları yazdıracaktır. Daha sonra, ayıklanan metin verilerini JSON biçiminde yazdıracaktır. `"recognitionResults"` alanı, alış irsaliyesinden ayıklanan her metin satırını içerir ve `"understandingResults"` alanı, girişin en ilgili bölümleri için anahtar/değer bilgilerini içerir.
+Komut dosyası, **Çözümleme Girişi** işlemi tamamlanana kadar yanıtları konsola yazdırır. Daha sonra, çıkarılan metin verilerini JSON biçiminde yazdırır. Alan, `"recognitionResults"` fişten çıkarılan her metin satırını içerir `"understandingResults"` ve alan makbuzun en alakalı bölümleri için anahtar/değer bilgilerini içerir.
 
-Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına bakın. Çıktı okunabilirlik için kısaltıldı.
+Aşağıdaki makbuz resmine ve ilgili JSON çıkışına bakın. Çıktı okunabilirlik için kısaltıldı.
 
-![Contoso mağazasından alındı](../media/contoso-allinone.jpg)
+![Contoso mağazasından bir makbuz](../media/contoso-allinone.jpg)
 
-`"recognitionResults"` düğüm tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"understandingResults"` düğümü, modelin bulduğu girişe özgü değerleri içerir. Burada, vergi, toplam, ticari adres vb. gibi faydalı anahtar/değer çiftleri bulacaksınız.
+Düğüm, `"recognitionResults"` tanınan metnin tümlerini içerir. Metin sayfaya, sonra satıra, sonra da tek tek sözcüklerle düzenlenir. Düğüm, `"understandingResults"` modelin keşfettiği makbuza özgü değerleri içerir. Burada vergi, toplam, tüccar adresi ve benzeri gibi yararlı anahtar/ değer çiftleri bulacaksınız.
 
 ```json
 { 
@@ -459,7 +459,7 @@ Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir satış girişinin içeriğini ayıklamak için Python ile REST API adlı form tanıyıcıyı kullandınız. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için başvuru belgelerine bakın.
+Bu hızlı başlangıçta, bir satış makbuzunun içeriğini ayıklamak için Python ile Form Recognizer REST API'sini kullandınız. Ardından, Form Tanıyıcısı API'sini daha derinlemesine incelemek için başvuru belgelerine bakın.
 
 > [!div class="nextstepaction"]
 > [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

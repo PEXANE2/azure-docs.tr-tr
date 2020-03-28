@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: yazdırılan metni Ayıkla (OCR)-REST,C#'
+title: 'Hızlı başlatma: Yazdırılan metni ayıklayın (OCR) - REST, C #'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, C# ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
 services: cognitive-services
@@ -12,25 +12,25 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 16ac76c32acfdd72533a82e3958475f2e09e34a5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75770416"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API kullanarak yazdırılan metni (OCR) Ayıkla veC#
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Quickstart: Computer Vision REST API ve C kullanarak yazdırılan metni (OCR) ayıklayın #
 
 > [!NOTE]
-> Ingilizce dil metnini ayıklıyorsanız, yeni [okuma işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı düşünün. Hızlı başlangıç kullanılabilir. [ C# ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) 
+> İngilizce metin ayıklıyorsanız, yeni Okuma [işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı düşünün. [C# quickstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) kullanılabilir. 
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) özelliği ile bir görüntüdeki yazdırılmış metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilen bir karakter akışına ayıklayabilir.
+Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir görüntüden optik karakter tanıma (OCR) içeren basılı metinler ayıklanırsınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) özelliği ile, görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışına ayıklayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya üzerine sahip olmanız gerekir.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
@@ -164,7 +164,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>Yanıtı inceleme
 
-JSON’da başarılı bir yanıt döndürülür. Örnek uygulama aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp konsol penceresinde görüntüler:
+Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp konsol penceresinde görüntüler:
 
 ```json
 {
@@ -247,4 +247,4 @@ JSON’da başarılı bir yanıt döndürülür. Örnek uygulama aşağıdaki ö
 Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan temel bir Windows uygulaması keşfedin. Akıllı kırpılmış küçük resimler oluşturun. Buna ek olarak, bir görüntüdeki yüzler gibi görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve açıklayın.
 
 > [!div class="nextstepaction"]
-> [Görüntü İşleme API'si C# öğreticisi](../Tutorials/CSharpTutorial.md)
+> [BilgisayarLı Vizyon API C# Öğretici](../Tutorials/CSharpTutorial.md)

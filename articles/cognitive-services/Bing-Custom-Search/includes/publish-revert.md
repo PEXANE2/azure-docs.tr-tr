@@ -1,12 +1,12 @@
 ---
 ms.openlocfilehash: 7987e8a7a9db06608f663b6ae414788ba8330f65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188702"
 ---
-## <a name="publish-or-revert"></a>Yayımlama veya geri döndür
-İçinde bir özel arama örneği için yaptığınız değişiklikleri yapılan **yapılandırma** yaptığınız değişiklikleri doğrulayabilirsiniz için sekmesinde. Değişiklik ve yayımlamaya hazır olan işiniz bittiğinde tıklayın **Yayımla**. Yayımladığınız kadar üretim uç noktalarınızda değişiklikler yansıtılmaz.
+## <a name="publish-or-revert"></a>Yayımla veya geri
+Özel Arama örneğinde yaptığınız değişiklikler, değişikliklerinizi doğrulayabilmeniz için **Yapılandırma** sekmesinde yapılır. Değişiklik yapmayı bitirdiğinizde ve yayımlamaya hazır olduğunuzda **Yayımla'yı**tıklatın. Siz yayınlayana kadar değişiklikler üretim uç noktalarınıza yansıtılmaz.
 
-Değişiklikleri tutmak istemediğiniz karar verirseniz yayımlanmadan önce tıklayın yaptığınız **Revert**. Yaptığınız değişiklikleri geri al, Canlı durum yapılandırması değiştirilmez ve **yapılandırma** sekmesini Canlı durumuyla eşleşen dönüldü.
+Yayımlamadan önce, yaptığınız değişiklikleri tutmak istemediğiniz için **Geri Dön'e**tıklayın. Değişikliklerinizi geri aldığınızda, canlı durum yapılandırması değişmez ve **Yapılandırma** sekmesi canlı durumla eşleşecek şekilde döndürülrilir.

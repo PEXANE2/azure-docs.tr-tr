@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı Başlangıç: REST API ve Go kullanarak bir görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Go ile yüz hizmetini kullanarak bir görüntüden yüzleri algılayın.
+description: Bu hızlı başlatmada, Go ile Face hizmetini kullanarak görüntüdeki yüzleri algılarsınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 246b9c81e3cb726236143b9749486ba362128756
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165835"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Hızlı Başlangıç: REST API ve Go kullanarak bir görüntüdeki yüzleri algılama
 
-Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Azure yüz REST API 'i Go ile kullanacaksınız.
+Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için Go ile Azure Yüz REST API'sini kullanırsınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
-- [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
+- Yüz abonelik anahtarı. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ücretsiz deneme abonelik anahtarı alabilirsiniz. Veya Face hizmetine abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin.
+- Visual Studio Code gibi bir kod [düzenleyicisi](https://code.visualstudio.com/download)
 
-## <a name="write-the-script"></a>Betiği yaz
+## <a name="write-the-script"></a>Komut dosyasını yazma
 
-Yeni bir dosya oluşturun, _Facedetection. go_yapın ve aşağıdaki kodu ekleyin. Bu, belirli bir görüntü URL 'SI için Yüz Tanıma API'si çağırır.
+Yeni bir dosya oluşturun, _faceDetection.go_ve aşağıdaki kodu ekleyin. Bu, belirli bir resim URL'si için Yüz API'sını çağırır.
 
 ```go
 package main
@@ -108,11 +108,11 @@ func main() {
 }
 ```
 
-`subscriptionKey` değerini abonelik anahtarınızla güncelleştirmeniz ve `uriBase` dizesini doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir.
+`subscriptionKey` Değeri abonelik anahtarınızla güncelleştirmeniz ve doğru bitiş `uriBase` noktası dizesini içerecek şekilde dizeyi değiştirmeniz gerekir.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-`imageUrl` alanını kendi giriş görüntünüzü işaret etmek için de değiştirmek isteyebilirsiniz. Alınacak yüz özniteliklerini belirten `returnFaceAttributes` alanını da değiştirmek isteyebilirsiniz.
+Ayrıca `imageUrl` alanı kendi giriş resminize işaret etmek için değiştirmek isteyebilirsiniz. Ayrıca, almak için `returnFaceAttributes` hangi yüz özniteliklerini belirtir alanını değiştirmek isteyebilirsiniz.
 
 ## <a name="run-the-script"></a>Betiği çalıştırın
 
@@ -122,13 +122,13 @@ Bir komut istemi açın ve aşağıdaki komutla programı oluşturun:
 go build faceDetection.go
 ```
 
-Ardından programı çalıştırın:
+Sonra programı çalıştırın:
 
 ```shell
 detect-face
 ```
 
-Konsola yazdırılmış algılanan yüz verilerinin JSON dizesini görmeniz gerekir. Başarılı bir JSON yanıtı örneği aşağıda verilmiştir.
+Konsola yazdırılan algılanan yüz verilerinden oluşan bir JSON dizesi görmeniz gerekir. Aşağıda başarılı bir JSON yanıtı örneği verilmiştir.
 
 ```json
 [
@@ -311,7 +311,7 @@ Konsola yazdırılmış algılanan yüz verilerinin JSON dizesini görmeniz gere
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure yüz hizmetini çağıran bir go konsol uygulaması yazıldı. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
+Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak ve özniteliklerini döndürmek için Azure Face hizmetini çağıran bir Go Console Uygulaması yazdınız. Ardından, daha fazla bilgi edinmek için Yüz API başvuru belgelerini keşfedin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API’si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Yüz API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: .NET için yüz istemci kitaplığı'
-description: Bu hızlı başlangıç ile .NET için yüz istemci kitaplığı 'nı kullanmaya başlayın.
+title: 'Quickstart: .NET için face istemci kitaplığı'
+description: Bu hızlı başlangıçla .NET için Face istemci kitaplığı ile başlayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,59 +10,59 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78401766"
 ---
-# <a name="quickstart-face-client-library-for-net"></a>Hızlı başlangıç: .NET için yüz istemci kitaplığı
+# <a name="quickstart-face-client-library-for-net"></a>Quickstart: .NET için face istemci kitaplığı
 
-.NET için yüz istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
+.NET için Face istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin. Face hizmeti, görüntülerdeki insan yüzlerini algılamak ve tanımak için gelişmiş algoritmalara erişmenizi sağlar.
 
-.NET için yüz istemci kitaplığı 'nı kullanarak şunları yapın:
+.NET için Face istemci kitaplığını kullanın:
 
-* [Görüntüdeki yüzeyleri algılama](#detect-faces-in-an-image)
-* [Benzer yüzeyleri bulun](#find-similar-faces)
+* [Bir görüntüdeki yüzleri algılama](#detect-faces-in-an-image)
+* [Benzer yüzleri bulma](#find-similar-faces)
 * [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
-* [Yüz tanıma](#identify-a-face)
-* [Veri geçişi için bir anlık görüntü alın](#take-a-snapshot-for-data-migration)
+* [Bir yüzü tanımlama](#identify-a-face)
+* [Veri geçişi için anlık görüntü alma](#take-a-snapshot-for-data-migration)
 
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) | [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Referans belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) | [Örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
+* Azure aboneliği - [Ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* [.NET Core'un](https://dotnet.microsoft.com/download/dotnet-core)geçerli sürümü.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
 ### <a name="create-a-face-azure-resource"></a>Yüz Azure kaynağı oluşturma
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak yüz için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
+Azure Bilişsel Hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde Azure [portalını](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI'yi](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Yüz için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
-* [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
+* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra Azure [web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)kullanıma sunulacaktır.  
+* Azure [portalında](https://portal.azure.com/)kaynağınızı görüntüleyin.
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, anahtar ve uç nokta URL 'SI için sırasıyla `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`adlı [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağınızdan bir anahtar aldıktan sonra, sırasıyla ve sırasıyla `FACE_ENDPOINT`anahtar `FACE_SUBSCRIPTION_KEY` ve bitiş noktası URL'si için bir ortam [değişkeni oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
-### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
+### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun. 
+Tercih ettiğiniz düzenleyicide veya IDE'de yeni bir .NET Core uygulaması oluşturun. 
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `face-quickstart`adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: *program.cs*. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adı `face-quickstart`olan yeni bir konsol uygulaması oluşturmak için komutu kullanın. Bu komut, tek bir kaynak dosyası ile basit bir "Hello World" C# projesi oluşturur: *Program.cs*. 
 
 ```dotnetcli
 dotnet new console -n face-quickstart
 ```
 
-Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. Uygulamayı ile oluşturabilirsiniz:
+Diziniyeniyeniyeni oluşturulan uygulama klasörüne değiştirin. Uygulamayı aşağıdakilerle oluşturabilirsiniz:
 
 ```dotnetcli
 dotnet build
 ```
 
-Derleme çıktısı hiçbir uyarı veya hata içermemelidir. 
+Yapı çıktısı hiçbir uyarı veya hata içermemelidir. 
 
 ```output
 ...
@@ -72,219 +72,219 @@ Build succeeded.
 ...
 ```
 
-Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki `using` yönergelerini ekleyin:
+Proje dizininden, tercih ettiğiniz düzenleyici veya IDE'deki *Program.cs* dosyasını açın. Aşağıdaki `using` yönergeleri ekleyin:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_using)]
 
-Uygulamanın `Main` yönteminde, kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
+Uygulama `Main` yönteminde, kaynağınızın Azure bitiş noktası ve anahtarı için değişkenler oluşturun.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_mainvars)]
 
-### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükleme
 
-Uygulama dizini içinde, aşağıdaki komutla .NET için yüz istemci kitaplığı 'nı yüklersiniz:
+Uygulama dizininde ,.NET için Yüz istemci kitaplığını aşağıdaki komutla yükleyin:
 
 ```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0-preview.1
 ```
 
-Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGet paketi olarak kullanılabilir.
+Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir NuGet paketi olarak kullanılabilir.
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, yüz .NET SDK 'sının önemli özelliklerinden bazılarını işler:
+Aşağıdaki sınıflar ve arabirimler Face .NET SDK'nın bazı temel özelliklerini işler:
 
 |Adı|Açıklama|
 |---|---|
-|[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
-|[Çok yönlü Işlemler](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
-|[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
-|[FaceListOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
-|[Persongrouppersonextensıons](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
-|[PersonGroupOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| Bu sınıf, bir dizi yönetilen **kişi** nesnesini depolayan, bulut ile depolanmış olan **persongroup** yapılarını yönetir. |
-|[ShapshotOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)|Bu sınıf, anlık görüntü işlevselliğini yönetir. Tüm bulut tabanlı yüz verilerinizi geçici olarak kaydetmek ve bu verileri yeni bir Azure aboneliğine geçirmek için kullanabilirsiniz. |
+|[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Bu sınıf, Yüz hizmetini kullanma yetkinizi temsil eder ve tüm Yüz işlevleri için bu hizmete ihtiyacınız vardır. Abonelik bilgilerinizle anında kullanırsınız ve bunu diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
+|[Yüz İşlemleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Bu sınıf, insan yüzleri ile yapabileceğiniz temel algılama ve tanıma görevlerini işler. |
+|[Algılanan Yüz](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|Bu sınıf, görüntüdeki tek bir yüzdealgılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için kullanabilirsiniz.|
+|[FaceListİşlemleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|Bu sınıf, çeşitli yüzler kümesini depolayan bulut depolanan **FaceList** yapılarını yönetir. |
+|[PersonGroupPersonExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| Bu sınıf, tek bir kişiye ait bir yüz kümesini depolayan bulut depolanan **Kişi** yapılarını yönetir.|
+|[PersonGroupİşlemleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| Bu sınıf, çeşitli **Kişi** nesneleri kümesini depolayan bulut depolanan **Kişi Grubu** yapılarını yönetir. |
+|[ShapshotOperasyonları](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)|Bu sınıf Anlık Görüntü işlevini yönetir. Bulut tabanlı Yüz verilerinizi geçici olarak kaydetmek ve bu verileri yeni bir Azure aboneliğine geçirmek için kullanabilirsiniz. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Aşağıdaki kod parçacıkları, .NET için yüz istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını göstermektedir:
+Aşağıdaki kod parçacıkları ,NET için Yüz istemci kitaplığı ile aşağıdaki görevleri nasıl yapacağınızı gösterir:
 
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Görüntüdeki yüzeyleri algılama](#detect-faces-in-an-image)
-* [Benzer yüzeyleri bulun](#find-similar-faces)
+* [İstemcinin kimliğini doğrula](#authenticate-the-client)
+* [Bir görüntüdeki yüzleri algılama](#detect-faces-in-an-image)
+* [Benzer yüzleri bulma](#find-similar-faces)
 * [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
-* [Yüz tanıma](#identify-a-face)
-* [Veri geçişi için bir anlık görüntü alın](#take-a-snapshot-for-data-migration)
+* [Bir yüzü tanımlama](#identify-a-face)
+* [Veri geçişi için anlık görüntü alma](#take-a-snapshot-for-data-migration)
 
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
 > [!NOTE]
-> Bu hızlı başlangıç, `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`adlı yüz anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar.
+> Bu hızlı başlatma, Face tuşu ve bitiş noktası nız için `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT`ortam [değişkenleri oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar, adı ve .
 
-Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** nesnesi oluşturun ve bir **[faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Yeni bir yöntemde, son noktanız ve anahtarınızla istemciyi anında anons edin. Anahtarınızla bir **[ApiKeyServiceClientCredentials nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** oluşturun ve **[faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi oluşturmak için bitiş noktanızla birlikte kullanın.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
-Büyük olasılıkla `Main` yönteminde bu yöntemi çağırmak isteyeceksiniz.
+Bu yöntemi `Main` yöntemde aramak isteyebilirsiniz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
 
 ## <a name="detect-faces-in-an-image"></a>Bir görüntüdeki yüzleri algılama
 
-Sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu URL bir örnek görüntüler kümesini işaret eder.
+Sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu URL, örnek görüntüler kümesine işaret edir.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
 
-İsteğe bağlı olarak, algılanan yüzlerden veri ayıklamak için hangi AI modelinin kullanılacağını seçebilirsiniz. Bu seçenekler hakkında bilgi için bkz. [bir tanıma modeli belirtme](../Face-API-How-to-Topics/specify-recognition-model.md) .
+İsteğe bağlı olarak, algılanan yüz(ler) verileri ayıklamak için hangi AI modelini kullanacağınızı seçebilirsiniz. Bkz. Bu seçeneklerle ilgili bilgiler için [bir tanıma modeli belirtin.](../Face-API-How-to-Topics/specify-recognition-model.md)
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-Son algılama işlemi bir **[Faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi, bir görüntü URL 'si ve bir tanıma modeli alır.
+Son Algıla işlemi bir **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi, bir görüntü URL'si ve bir tanıma modeli alır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
-### <a name="get-detected-face-objects"></a>Algılanan yüz nesneleri Al
+### <a name="get-detected-face-objects"></a>Algılanan yüz nesnelerini alma
 
-Sonraki kod bloğunda, `DetectFaceExtract` Yöntemi verilen URL 'nin üç görüntüde bulunan yüzeyleri algılar ve program belleğindeki **[algılayıcısı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** olan nesnelerin bir listesini oluşturur. **[Faceattributetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** değerlerinin listesi hangi özelliklerin ayıklanacağını belirtir. 
+Bir sonraki kod bloğunda `DetectFaceExtract` yöntem, verilen URL'deki görüntülerin üçündeki yüzleri algılar ve program belleğinde **[Algılanmış Yüz](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** nesnelerinin bir listesini oluşturur. **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** değerleri listesi hangi özellikleri ayıklamak için belirtir. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
-### <a name="display-detected-face-data"></a>Algılanan yüz verileri görüntüle
+### <a name="display-detected-face-data"></a>Algılanan yüz verilerini görüntüleme
 
-`DetectFaceExtract` yönteminin geri kalanı algılanan her bir yüzey için öznitelik verilerini ayrıştırır ve yazdırır. Her öznitelik, özgün yüz algılama API çağrısında ( **[Faceattributetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç tane kullanmanız gerekir.
+Yöntemin `DetectFaceExtract` geri kalanı, algılanan her yüz için öznitelik verilerini ayrıştirır ve yazdırır. Her öznitelik özgün yüz algılama API çağrısında **[(FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç kullanmanız gerekir.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 
 ## <a name="find-similar-faces"></a>Benzer yüzleri bulma
 
-Aşağıdaki kod, algılanan tek bir yüzeyi (kaynak) alır ve eşleşmeleri bulmak için bir diğer yüzün (hedef) kümesini arar. Bir eşleşme bulduğunda, eşleşen yüzün KIMLIĞINI konsola yazdırır.
+Aşağıdaki kod tek bir algılanan yüz (kaynak) alır ve eşleşmeleri bulmak için diğer yüzler (hedef) kümesi arar. Bir eşleşme bulduğunda, eşleşen yüzün kimliğini konsola yazdırır.
 
-### <a name="detect-faces-for-comparison"></a>Karşılaştırılacak Yüzleri Algıla
+### <a name="detect-faces-for-comparison"></a>Karşılaştırma için yüzleri algılama
 
-İlk olarak, ikinci bir yüz algılama yöntemi tanımlayın. Bunları karşılaştırabilmeniz için görüntülerdeki yüzeyleri saptamanız gerekir ve bu algılama yöntemi karşılaştırma işlemleri için iyileştirilmiştir. Yukarıdaki bölümde olduğu gibi ayrıntılı yüz özniteliklerini ayıklamaz ve farklı bir tanıma modeli kullanır.
+İlk olarak, ikinci bir yüz algılama yöntemi tanımlayın. Karşılaştırmayapmadan önce görüntülerdeki yüzleri algılamanız gerekir ve bu algılama yöntemi karşılaştırma işlemleri için optimize edi. Yukarıdaki bölümdeki gibi ayrıntılı yüz öznitelikleri ayıklamaz ve farklı bir tanıma modeli kullanır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_face_detect_recognize)]
 
 ### <a name="find-matches"></a>Eşleşmeleri bul
 
-Aşağıdaki yöntem, bir hedef görüntüler kümesindeki yüzeyleri ve tek bir kaynak görüntüyü algılar. Ardından, bunları karşılaştırır ve kaynak görüntüye benzer tüm hedef görüntüleri bulur.
+Aşağıdaki yöntem, hedef görüntüler kümesinde ve tek bir kaynak görüntüdeki yüzleri algılar. Daha sonra, bunları karşılaştırır ve kaynak görüntüye benzer tüm hedef görüntüleri bulur.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar)]
 
-### <a name="print-matches"></a>Yazdırma eşleşmeleri
+### <a name="print-matches"></a>Baskı eşleşmeleri
 
-Aşağıdaki kod, eşleşme ayrıntılarını konsola yazdırır:
+Aşağıdaki kod, maç ayrıntılarını konsola yazdırır:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
 
 ## <a name="create-and-train-a-person-group"></a>Kişi grubu oluşturma ve eğitme
 
-Aşağıdaki kod, altı farklı **kişi** nesnesi Ile bir **persongroup** oluşturur. Her **kişiyi** bir örnek görüntü kümesiyle ilişkilendirir ve sonra her kişiyi yüz özellikleriyle tanıyacak şekilde algılar. **Person** ve **Persongroup** nesneleri, Verify, tanımla ve Gruplandır işlemlerinde kullanılır.
+Aşağıdaki kod, altı farklı **Kişi** nesnesi olan bir **Kişi Grubu** oluşturur. Her **Kişiyi** bir dizi örnek resimle ilişkilendirir ve daha sonra her kişiyi yüz özelliklerine göre tanımayı zorlar. **Kişi** ve **Kişi Grubu** nesneleri, Doğrula, Tanımla ve Grup işlemlerinde kullanılır.
 
-Daha önce yapmadıysanız, sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu bir örnek görüntü kümesine işaret eder.
+Bunu daha önce yapmadıysanız, sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu, örnek görüntüler kümesine işaret etmek.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
 
-Bu bölümün ilerleyen kısımlarında yer alacak olan kod, yüzlerden veri ayıklamak için bir tanıma modeli belirtir ve aşağıdaki kod parçacığı kullanılabilir modellere başvurular oluşturur. Bkz. tanıma modelleri hakkında bilgi için [bir tanıma modeli belirtme](../Face-API-How-to-Topics/specify-recognition-model.md) .
+Bu bölümde daha sonra kod yüzlerden veri ayıklamak için bir tanıma modeli belirtecek ve aşağıdaki parçacık kullanılabilir modellere başvurular oluşturur. Bkz. Tanıma modelleri hakkında bilgi için [bir tanıma modeli belirtin.](../Face-API-How-to-Topics/specify-recognition-model.md)
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-### <a name="create-persongroup"></a>Kişilik grubu oluştur
+### <a name="create-persongroup"></a>Kişi Grubu Oluştur
 
-Oluşturduğunuz **Persongroup** 'un kimliğini temsil etmek için sınıfınızın kökünde bir dize değişkeni bildirin.
+Oluşturacağınız **Kişi Grubu'nun** kimliğini temsil etmek için sınıfınızın kökünde bir dize değişkeni bildirin.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_declare)]
 
-Yeni bir yöntemde aşağıdaki kodu ekleyin. Bu kod, kişilerin adlarını örnek görüntülerle ilişkilendirir.
+Yeni bir yöntemde, aşağıdaki kodu ekleyin. Bu kod, örnek resimleriyle kişilerin adlarını ilişkilendirer.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
 
-Sonra, Sözlükteki her kişi için bir **kişi** nesnesi oluşturmak ve uygun görüntülerden yüz verilerini eklemek için aşağıdaki kodu ekleyin. Her **kişi** nesnesi, benzersiz kimlik dizesi aracılığıyla aynı **persongroup** ile ilişkilendirilir. `client`, `url`ve `RECOGNITION_MODEL1` değişkenlerini Bu metoda geçirdiğinizden hatırlayın.
+Ardından, Sözlük'teki her kişi için bir **Kişi** nesnesi oluşturmak için aşağıdaki kodu ekleyin ve uygun resimlerden yüz verilerini ekleyin. Her **Kişi** nesnesi, benzersiz kimlik dizesi aracılığıyla aynı **Kişi Grubu** ile ilişkilidir. Değişkenleri `client`, , `url`ve `RECOGNITION_MODEL1` bu yönteme geçirmeyi unutmayın.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
 
-### <a name="train-persongroup"></a>Kişilik grubu eğitme
+### <a name="train-persongroup"></a>Tren Kişi Grubu
 
-Görüntülerinizden yüz verilerini ayıkladıktan ve farklı **kişi** nesnelerine sıraladıktan sonra, **kişi** nesnelerinden her biriyle ilişkili görsel özellikleri belirlemek için **persongroup** 'u eğitmeniz gerekir. Aşağıdaki kod, zaman uyumsuz **eğitme** yöntemini çağırır ve sonuçları, durumu konsola yazdırarak tarar.
+Görüntülerinizden yüz verilerini ayıklayıp farklı **Kişi** nesnelerine sıraladıktan sonra, **PersonGroup'u** **Kişi** nesnelerinin her biriyle ilişkili görsel özellikleri tanımlaması için eğitmeniz gerekir. Aşağıdaki kod, eşzamanlı **tren** yöntemini çağırır ve durumu konsola yazdırarak sonuçları anketler.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
 
-Bu **kişi** grubu ve ilişkili **kişi** nesneleri artık doğrulama, tanımla veya grupla işlemlerinde kullanılmak üzere hazırdır.
+Bu **Kişi** grubu ve ilişkili **Kişi** nesneleri artık Doğrula, Tanımla veya Grup işlemlerinde kullanılmaya hazırdır.
 
-## <a name="identify-a-face"></a>Yüz tanıma
+## <a name="identify-a-face"></a>Bir yüzü tanımlama
 
-Tanımlama işlemi, bir kişinin (veya birden çok kişinin) bir görüntüsünü alır ve görüntüde her bir yüzün kimliğini bulmak için arama yapar. Algılanan her yüzü, yüz özellikleri bilinen farklı **kişi** nesnelerinin bir veritabanı olan bir **persongroup**ile karşılaştırır.
+Tanımla işlemi bir kişinin (veya birden çok kişinin) görüntüsünü alır ve görüntüdeki her yüzün kimliğini bulmaya bakar. Algılanan her yüzü, yüz özellikleri bilinen farklı **Kişi** nesnelerinin veritabanı olan **PersonGroup**ile karşılaştırır.
 
 > [!IMPORTANT]
-> Bu örneği çalıştırmak için, önce [bir kişi grubu oluştur ve eğitme](#create-and-train-a-person-group)bölümünde kodu çalıştırmanız gerekir. Bu&mdash;bölümde kullanılan değişkenler `client`, `url`ve `RECOGNITION_MODEL1`&mdash;de kullanılabilir olmalıdır.
+> Bu örneği çalıştırmak için önce Kodu Oluştur'da çalıştırmanız [ve bir kişi grubunu eğitmenniz](#create-and-train-a-person-group)gerekir. Bu&mdash;`client`bölümde kullanılan değişkenler `url`, `RECOGNITION_MODEL1` &mdash;, , ve ayrıca burada bulunmalıdır.
 
-### <a name="get-a-test-image"></a>Test görüntüsü al
+### <a name="get-a-test-image"></a>Test görüntüsü alın
 
-[Bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group) için kodun bir değişken `sourceImageFileName`tanımladığına dikkat edin. Bu değişken, tanımlamak üzere kişileri içeren görüntünün&mdash;kaynak görüntüye karşılık gelir.
+[Bir kişi grubu Oluştur ve eğitme](#create-and-train-a-person-group) kodunun `sourceImageFileName`bir değişken tanımladığına dikkat edin. Bu değişken, tanımlayabilmek için kişileri içeren görüntünün kaynak görüntüsüne&mdash;karşılık gelir.
 
 ### <a name="identify-faces"></a>Yüzleri belirleme
 
-Aşağıdaki kod, kaynak görüntüyü alır ve görüntüde algılanan tüm yüzlerin bir listesini oluşturur. Bunlar, **Persongroup**ile ilgili olarak tanımlanabilecek yüzlerdir.
+Aşağıdaki kod kaynak görüntüyü alır ve resimde algılanan tüm yüzlerin bir listesini oluşturur. Bunlar **PersonGroup'a**karşı tanımlanacak yüzlerdir.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify_sources)]
 
-Sonraki kod parçacığı, tanımla işlemini çağırır ve sonuçları konsola yazdırır. Burada hizmet, kaynak görüntüdeki her yüzü, belirtilen Person **grubundaki**bir **kişiye** eşleştirmeye çalışır.
+Sonraki kod snippet Tanımla işlemini çağırır ve sonuçları konsola yazdırır. Burada, hizmet, kaynak görüntüdeki her yüzü verilen Kişi **Grubundaki**bir **Kişiyle** eşleştirmeye çalışır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Veri geçişi için bir anlık görüntü alın
+## <a name="take-a-snapshot-for-data-migration"></a>Veri geçişi için anlık görüntü alma
 
-Anlık görüntüler özelliği, eğitilen **Grup**gibi kayıtlı yüz verilerinizi farklı bir Azure bilişsel hizmetler aboneliğine taşımanızı sağlar. Örneğin, ücretsiz bir deneme aboneliği kullanarak bir **Persongroup** nesnesi oluşturduysanız ve bunu ücretli bir aboneliğe geçirmek istiyorsanız bu özelliği kullanmak isteyebilirsiniz. Anlık görüntüler özelliğine genel bakış için bkz. [yüz verilerinizi geçirme](../Face-API-How-to-Topics/how-to-migrate-face-data.md) .
+Anlık Görüntüler özelliği, kaydedilmiş Yüz verilerinizi (örneğin, eğitimli bir **Kişi Grubu)** farklı bir Azure Bilişsel Hizmetler Yüz aboneliğine taşımanızı sağlar. Örneğin, ücretsiz deneme aboneliği kullanarak bir **PersonGroup** nesnesi oluşturduysanız ve ücretli bir aboneliğe geçirmek istiyorsanız, bu özelliği kullanmak isteyebilirsiniz. Bkz. Anlık Görüntüler özelliğine genel bir bakış için [yüz verilerinizi geçirin.](../Face-API-How-to-Topics/how-to-migrate-face-data.md)
 
-Bu örnekte, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde oluşturduğunuz **persono grubunu** geçirirsiniz. Öncelikle bu bölümü tamamlayabilir veya geçirilecek kendi yüz veri yapısını oluşturabilirsiniz.
+Bu örnekte, Oluştur'da oluşturduğunuz **Kişi Grubunu** geçirip bir kişi [grubunu eğiteceksiniz.](#create-and-train-a-person-group) Önce bu bölümü tamamlayabilir veya geçiş yapmak için kendi Yüz veri yapı(larınızı oluşturabilirsiniz.
 
-### <a name="set-up-target-subscription"></a>Hedef aboneliği ayarla
+### <a name="set-up-target-subscription"></a>Hedef aboneliği ayarlama
 
-İlk olarak, yüz kaynağına sahip ikinci bir Azure aboneliğine sahip olmanız gerekir; Bunu, [Kurulum](#setting-up) bölümündeki adımları izleyerek yapabilirsiniz. 
+İlk olarak, Yüz kaynağına sahip ikinci bir Azure aboneliğiniz olmalıdır; [bunu, Kurulum](#setting-up) bölümündeki adımları izleyerek yapabilirsiniz. 
 
-Ardından, programınızın `Main` yönteminde aşağıdaki değişkenleri tanımlayın. Azure hesabınızın abonelik KIMLIĞI için yeni ortam değişkenleri ve yeni (hedef) hesabınızın anahtar, uç noktası ve abonelik KIMLIĞI için de oluşturmanız gerekir. 
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
-
-Bu örnek için, hedef kişi **grubunun** kimliği için bir değişken bildirin, bu, verilerinizi kopyalayacaksınız yeni aboneliğe ait olan nesneyi&mdash;.
+Ardından, programınızın `Main` yönteminde aşağıdaki değişkenleri tanımlayın. Azure hesabınızın abonelik kimliğinin yanı sıra yeni (hedef) hesabınızın anahtar, bitiş noktası ve abonelik kimliği için yeni ortam değişkenleri oluşturmanız gerekir. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
 
-### <a name="authenticate-target-client"></a>Hedef istemcinin kimliğini doğrulama
+Bu örnekte, verilerinizi kopyalayabilmeniz için yeni aboneliğe ait nesneyi hedef **Kişi Grubu**&mdash;kimliği için bir değişken bildirin.
 
-Ardından, ikincil yüz aboneliğinizin kimliğini doğrulamak için kodu ekleyin.
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
+
+### <a name="authenticate-target-client"></a>Hedef istemciyi doğrula
+
+Ardından, ikincil Face aboneliğinizi doğrulamak için kodu ekleyin.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_client)]
 
 ### <a name="use-a-snapshot"></a>Anlık görüntü kullanma
 
-Anlık görüntü işlemlerinin geri kalanı zaman uyumsuz bir yöntem içinde gerçekleşmelidir. 
+Anlık görüntü işlemlerinin geri kalanı bir eşzamanlı yöntem içinde yer almalıdır. 
 
-1. İlk adım, özgün aboneliğinizin yüz verilerini geçici bir bulut konumuna kaydeden anlık görüntüyü **almak** için kullanılır. Bu yöntem, işlemin durumunu sorgulamak için kullandığınız bir KIMLIK döndürür.
+1. İlk adım, orijinal aboneliğinizin yüz verilerini geçici bir bulut konumuna kaydeden anlık fotoğrafı **almaktır.** Bu yöntem, işlemin durumunu sorgulamak için kullandığınız bir kimliği döndürür.
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_take)]
 
-1. Sonra, işlem tamamlanana kadar KIMLIĞI sorgulayın.
+1. Ardından, işlem tamamlanana kadar kimliği sorgula.
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_take_wait)]
 
-1. Ardından, hedef aboneliğinize yüz verilerinizi yazmak için **Uygula** işlemini kullanın. Bu yöntem bir KIMLIK değeri de döndürür.
+1. Ardından, yüz verilerinizi hedef aboneliğinize yazmak için **uygula** işlemini kullanın. Bu yöntem, bir kimlik değeri de döndürür.
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_apply)]
 
-1. Yine, işlem tamamlanana kadar yeni KIMLIĞI sorgulayın.
+1. Yine, işlem tamamlanana kadar yeni kimliği sorgula.
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_apply)]
 
-1. Son olarak, try/catch bloğunu tamamladıktan sonra yöntemi doldurun.
+1. Son olarak, try/catch bloğunu tamamlayın ve yöntemi tamamlayın.
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_trycatch)]
 
-Bu noktada, yeni **Persongroup** nesnenizin özgün dosyayla aynı verilere sahip olması ve yeni (hedef) Azure yüz aboneliğinizden erişilebilir olması gerekir.
+Bu noktada, yeni **PersonGroup** nesneniz orijinalindekiyle aynı veriye sahip olmalı ve yeni (hedef) Azure Yüz aboneliğinizden erişilebilmeli.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı `dotnet run` komutuyla uygulama dizininizden çalıştırın.
+Uygulama dizininizdeki uygulamayı komutla `dotnet run` çalıştırın.
 
 ```dotnetcli
 dotnet run
@@ -292,29 +292,29 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
+Bilişsel Hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynak veya kaynak grubunu silebilirsiniz. Kaynak grubunu silmek, bununla ilişkili diğer kaynakları da siler.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Bu hızlı başlangıçta bir **kişilik grubu** oluşturduysanız ve silmek istiyorsanız, programınızda aşağıdaki kodu çalıştırın:
+Bu hızlı başlangıçta bir **PersonGroup** oluşturduysanız ve onu silmek istiyorsanız, programınızda aşağıdaki kodu çalıştırın:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_delete)]
 
-Aşağıdaki kodla birlikte silme yöntemini tanımlayın:
+Silme yöntemini aşağıdaki kodla tanımlayın:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_deletepersongroup)]
 
-Ayrıca, bu hızlı başlangıçta anlık görüntü özelliğini kullanarak veri geçirdiyseniz, hedef abonelikte kayıtlı olan **Persongroup grubunu** da silmeniz gerekir.
+Ayrıca, bu hızlı başlatmada Anlık Görüntü özelliğini kullanarak verileri aktardıysanız, hedef aboneliğe kaydedilen **Kişi Grubu'nu** da silmeniz gerekir.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_target_persongroup_delete)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, .NET için yüz kitaplığı 'nı kullanarak temel görevleri nasıl kullanacağınızı öğrendiniz. Daha sonra, kitaplık hakkında daha fazla bilgi edinmek için başvuru belgelerini inceleyin.
+Bu hızlı başlangıçta, temel görevleri yapmak için .NET için Yüz kitaplığını nasıl kullanacağınızı öğrendiniz. Ardından, kitaplık hakkında daha fazla bilgi edinmek için başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API'si Başvurusu (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+> [Yüz API başvurusu (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
-* [Yüz hizmeti nedir?](../overview.md)
-* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs)' da bulunabilir.
+* [Yüz Tanıma hizmeti nedir?](../overview.md)
+* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs)bulunabilir.

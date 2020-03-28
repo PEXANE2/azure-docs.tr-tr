@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906996"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -29,9 +29,9 @@ const uuidv4 = require('uuid/v4');
 
 Bu modüller HTTP isteği ve `'X-ClientTraceId'` üst bilgisi için benzersiz tanıtıcı oluşturmak için gereklidir.
 
-## <a name="set-the-endpoint"></a>Uç noktayı ayarla
+## <a name="set-the-endpoint"></a>Bitiş noktasını ayarlama
 
-Bu örnek, Translator Metin Çevirisi uç noktanızı bir ortam değişkeninden okumaya çalışır: `TRANSLATOR_TEXT_ENDPOINT`. Ortam değişkenlerini bilmiyorsanız, `endpoint` öğesini dize olarak ayarlayabilir ve koşul deyimini açıklama satırı yapabilirsiniz.
+Bu örnek, Çevirmen Metni bitiş noktanızı bir `TRANSLATOR_TEXT_ENDPOINT`ortam değişkeninden okumaya çalışır: . Ortam değişkenlerini bilmiyorsanız, `endpoint` öğesini dize olarak ayarlayabilir ve koşul deyimini açıklama satırı yapabilirsiniz.
 
 ```javascript
 lorum ipsum
@@ -42,7 +42,7 @@ lorum ipsum
 İstek modülü aracılığıyla kullanıma sunulan `request()` yöntemi HTTP yöntemi, URL, istek parametreleri, üst bilgileri ve JSON gövdesi bileşenlerini `options` nesnesi olarak geçirmemizi sağlar. Bu kod parçacığında isteği yapılandıracağız:
 
 >[!NOTE]
-> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz [. Translator metin çevirisi API'si 3,0: Diller](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator Metin Çevirisi API’si 3.0: Diller](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```javascript
 let options = {
@@ -60,7 +60,7 @@ let options = {
 };
 ```
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek parametrelerinize `Ocp-Apim-Subscription-Region` de eklemeniz gerekir. [Çoklu hizmet aboneliği ile kimlik doğrulama hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
 
 ## <a name="make-the-request-and-print-the-response"></a>İstekte bulunma ve yanıtı yazdırma
 
@@ -87,7 +87,7 @@ Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam örnek kodu [GitHub](http
 
 ## <a name="sample-response"></a>Örnek yanıt
 
-Bu [diller listesinde](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)ülke/bölge kısaltmasını bulun.
+Bu dil listesinde ülke/bölge [kısaltmasını](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)bulun.
 
 Bu örnek sonucun bir bölümünü gösterecek şekilde kısaltılmıştır:
 
@@ -181,7 +181,7 @@ Abonelik anahtarınızı programınıza sabit kodladıysanız, bu hızlı başla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

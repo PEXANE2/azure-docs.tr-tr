@@ -1,5 +1,5 @@
 ---
-title: Bing Özel Arama C# istemci kitaplığı hızlı başlangıç
+title: Bing Özel Arama C# istemci kitaplığı hızlı başlat
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,29 +8,29 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: b722fd34a78f1e9c2f4a660c205cf4a1e163a5d7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ba80d1396b30b61bdfe4c121220429f5a7d994b0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252894"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79485990"
 ---
-İçin C#Bing özel arama istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Bing Özel Arama API'si, ilgilendiğiniz konular için özel, reklam ücretsiz arama deneyimleri oluşturmanıza olanak sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)' da bulunabilir.
+C# için Bing Özel Arama istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin. Bing Özel Arama API'si, önem verdiğiniz konular için özel, reklamsız arama deneyimleri oluşturmanıza olanak tanır. Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)bulunabilir.
 
-İçin Bing Özel Arama istemci kitaplığını C# kullanın:
-* Bing Özel Arama örneğinden Web 'de arama sonuçları bulun.
+Aşağıdakiler için C# için Bing Özel Arama istemci kitaplığını kullanın:
+* Bing Özel Arama örneğinden web'de arama sonuçlarını bulun.
 
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[Referans belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) | [Örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](../../quick-start.md) .
+- Bing Özel Arama örneği. Bkz. Hızlı Başlangıç: Daha fazla bilgi için [ilk Bing Özel Arama örneğini oluşturun.](../../quick-start.md)
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/) sürümü
+- [Visual Studio 2017 veya sonrası](https://www.visualstudio.com/downloads/) herhangi bir sürümü
 - Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
-- [Bing özel arama](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet paketi. 
-    - Visual Studio 'daki **Çözüm Gezgini** , projenize sağ tıklayın ve menüden **NuGet Paketlerini Yönet** ' i seçin. `Microsoft.Azure.CognitiveServices.Search.CustomSearch` paketini yükleyin. NuGet Özel Arama paketini yüklediğinizde aşağıdaki derlemeler de yüklenir:
+- [Bing Özel Arama](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet paketi. 
+    - Visual **Studio'daki Solution Explorer'dan** projenize sağ tıklayın ve menüden **NuGet Paketlerini Yönet'i** seçin. `Microsoft.Azure.CognitiveServices.Search.CustomSearch` paketini yükleyin. NuGet Özel Arama paketini yüklediğinizde aşağıdaki derlemeler de yüklenir:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -40,7 +40,7 @@ ms.locfileid: "78252894"
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Visual Studio 'da C# yeni bir konsol uygulaması oluşturun. Ardından projenize aşağıdaki paketleri ekleyin.
+1. Visual Studio'da yeni bir C# konsol uygulaması oluşturun. Ardından projenize aşağıdaki paketleri ekleyin.
 
     ```csharp
     using System;
@@ -48,22 +48,22 @@ ms.locfileid: "78252894"
     using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
     ```
 
-2. Uygulamanızın ana yönteminde API anahtarınızla Search Client örneğini oluşturun.
+2. Uygulamanızın ana yönteminde, arama istemcisini API anahtarınızla anında anınız edin.
 
     ```csharp
     var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-SUBSCRIPTION-KEY"));
     ```
 
-## <a name="send-the-search-request-and-receive-a-response"></a>Arama isteğini gönderme ve yanıt alma
+## <a name="send-the-search-request-and-receive-a-response"></a>Arama isteğini gönderin ve yanıt alın
     
-1. İstemcinizin `SearchAsync()` yöntemini kullanarak bir arama sorgusu gönderin ve yanıtı kaydedin. `YOUR-CUSTOM-CONFIG-ID`, örneğinizin yapılandırma KIMLIĞIYLE değiştirdiğinizden emin olun (KIMLIĞI [Bing özel arama portalında](https://www.customsearch.ai/)bulabilirsiniz). Bu örnek, "Xbox" için arama yapar.
+1. İstemcinizin `SearchAsync()` yöntemini kullanarak bir arama sorgusu gönderin ve yanıtı kaydedin. Örneğinizin `YOUR-CUSTOM-CONFIG-ID` yapılandırma kimliğiyle değiştirdiğinizden emin olun (Kimliği Bing [Özel Arama portalında](https://www.customsearch.ai/)bulabilirsiniz). Bu örnekte "Xbox" aranıyor.
 
     ```csharp
     // This will look up a single query (Xbox).
     var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
     ```
 
-2. `SearchAsync()` metodu bir `WebData` nesnesi döndürür. Bulunan tüm `WebPages` yinelemek için nesnesini kullanın. Bu kod ilk web sayfası sonucunu bulur ve web sayfasının `Name` ile `URL` değerlerini yazdırır.
+2. `SearchAsync()` metodu bir `WebData` nesnesi döndürür. Nesneyi, bulunan herhangi bir `WebPages` nesne aracılığıyla yinelemek için kullanın. Bu kod ilk web sayfası sonucunu bulur ve web sayfasının `Name` ile `URL` değerlerini yazdırır.
 
     ```csharp
     if (webData?.WebPages?.Value?.Count > 0)
@@ -86,9 +86,9 @@ ms.locfileid: "78252894"
     {
         Console.WriteLine("Didn't see any Web data..");
     }
-    ```csharp
+    ```
 
-## Next steps
+## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Build a Custom Search web app](../../tutorials/custom-search-web-page.md)
+> [Özel Arama web uygulaması oluşturma](../../tutorials/custom-search-web-page.md)

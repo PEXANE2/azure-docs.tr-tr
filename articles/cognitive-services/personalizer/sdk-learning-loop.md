@@ -1,24 +1,24 @@
 ---
-title: 'Hızlı başlangıç: SDK-kişiselleştirici ile öğrenme döngüsü oluşturma ve kullanma'
-description: Bu hızlı başlangıçta, istemci SDK 'sını kullanarak bilgi bankaınızı oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir.
+title: 'Quickstart: SDK ile öğrenme döngüsü oluşturun ve kullanın - Personalizer'
+description: Bu hızlı başlangıç, istemci SDK'yı kullanarak bilgi tabanınızı nasıl oluşturup yöneteceklerinizi gösterir.
 ms.topic: quickstart
 ms.date: 01/15/2020
 zone_pivot_groups: programming-languages-set-six
 ms.openlocfilehash: 7ebe22227b4323b2e6b1c3fc9ca31e171d1d97cd
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77524878"
 ---
-# <a name="quickstart-personalizer-client-library"></a>Hızlı başlangıç: kişiselleştirici istemci kitaplığı
+# <a name="quickstart-personalizer-client-library"></a>Quickstart: Personalizer istemci kitaplığı
 
-Bu hızlı başlangıçta kişiselleştirilmiş içeriği kişiselleştirici hizmeti ile görüntüleyin.
+Kişiselleştirilmiş içeriği Personalizer hizmetiyle bu hızlı başlangıçta görüntüleyin.
 
-Kişiselleştirici istemci kitaplığını kullanmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+Personalizer istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.
 
- * Derecelendirme API 'SI-içerik ve bağlam hakkında sağladığınız gerçek zamanlı bilgilere göre içerik öğelerinden en iyi öğeyi seçer.
- * Ödül API-iş gereksinimlerinize göre ödül puanı belirlenir, ardından bu API ile kişiselleştiriciye gönderebilirsiniz. Bu puan, 1 gibi tek bir değer olabilir ve hatalı için 0 veya iş gereksinimlerinize göre oluşturduğunuz bir algoritmadır.
+ * Rank API - İçerik ve bağlam hakkında sağladığınız gerçek zamanlı bilgilere dayanarak içerik öğelerinden en iyi öğeyi seçer.
+ * Ödül API - Ödül puanını işletme gereksinimlerinize göre belirler, ardından bu API ile Personalizer'a gönderirsiniz. Bu puan, iyi için 1 ve kötü için 0 gibi tek bir değer veya iş gereksinimlerinize göre oluşturduğunuz bir algoritma olabilir.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# SDK](./includes/quickstart-sdk-csharp.md)]
@@ -34,7 +34,7 @@ Kişiselleştirici istemci kitaplığını kullanmaya başlayın. Paketi yüklem
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
+Bilişsel Hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynak veya kaynak grubunu silebilirsiniz. Kaynak grubunu silmek, bununla ilişkili diğer kaynakları da siler.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -42,9 +42,9 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Kişiselleştirici nasıl kullanılır?](how-personalizer-works.md)
+>[Kişiselleştirme nasıl çalışır?](how-personalizer-works.md)
 
-* [Kişiselleştirici nedir?](what-is-personalizer.md)
-* [Kişiselleştirici 'yi nerede kullanabilirsiniz?](where-can-you-use-personalizer.md)
+* [Kişiselleştirme nedir?](what-is-personalizer.md)
+* [Kişiselleştirme’yi nerelerde kullanabilirsiniz?](where-can-you-use-personalizer.md)
 * [Sorun giderme](troubleshooting.md)
-* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)' da bulunabilir.
+* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)bulunabilir.

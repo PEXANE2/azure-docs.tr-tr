@@ -1,37 +1,37 @@
 ---
-title: " Tek sayfalı Web uygulaması oluşturma-Bing Görsel Arama"
+title: " Tek sayfalık bir Web uygulaması oluşturma - Bing Visual Search"
 titleSuffix: Azure Cognitive Services
-description: Bing Görsel Arama API'si tek sayfalı bir Web uygulamasıyla tümleştirmeyi öğrenin.
+description: Bing Görsel Arama API'sini tek sayfalık bir Web uygulamasına nasıl entegre acağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: 02095a307e5227f477f51e857ee423d22a8edf8f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 83cdaecfb819fb1f4677b051f87e23e0e03daef2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689169"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370109"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>Görsel Arama tek sayfalı Web uygulaması oluşturma
+# <a name="tutorial-create-a-visual-search-single-page-web-app"></a>Öğretici: Görsel Arama tek sayfalık web uygulaması oluşturma
 
-Bing Görsel Arama API'si bir görüntü için öngörüleri döndürür. Bir görüntüyü karşıya yükleyebilir veya bir URL sağlayabilirsiniz. Öngörüler görsel olarak benzer görüntüler, alışveriş kaynakları, görüntü içeren Web sayfaları ve daha fazlasını içerir. Bing Görsel Arama API'si tarafından döndürülen Öngörüler, Bing.com/images 'de gösterilenlere benzerdir.
+Bing Görsel Arama API'si, görüntü yle ilgili öngörüleri döndürür. Bir resim yükleyebilir veya birine URL sağlayabilirsiniz. Öngörüler görsel olarak benzer görüntüler, alışveriş kaynakları, görüntüyü içeren web sayfaları ve daha fazlasıdır. Bing Görsel Arama API'si tarafından döndürülen öngörüler, Bing.com/images'da gösterilenlere benzer.
 
-Bu öğreticide, Bing Resim Arama API'si için tek sayfalı bir Web uygulamasının nasıl genişletileceği açıklanmaktadır. Bu öğreticiyi görüntülemek veya burada kullanılan kaynak kodu almak için bkz. [öğretici: Bing resim arama API'si için tek sayfalı uygulama oluşturma](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md).
+Bu öğretici, Bing Resim Arama API'si için tek sayfalık bir web uygulamasının nasıl genişletilen açıklanmaktadır. Bu öğreticiyi görüntülemek veya kaynak kodunu burada görüntülemek [için Bkz. Öğretici: Bing Resim Arama API'sı için tek sayfalık bir uygulama oluşturun.](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)
 
-Bu uygulama için tam kaynak kodu (Bing Görsel Arama API'si kullanmak üzere genişlettikten sonra), [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html)' da kullanılabilir.
+Bu uygulama için tam kaynak kodu (Bing Görsel Arama API kullanmak için genişlettikten sonra), [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html)kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Bing Görsel Arama API'si çağırın ve yanıtı işleyin
+## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>Bing Görsel Arama API'sini arayın ve yanıtı işleme
 
-Bing Resim Arama öğreticisini düzenleyin ve aşağıdaki kodu `<script>` öğesinin sonuna ekleyin (kapanış `</script>` etiketinden önce). Aşağıdaki kod, API 'den bir görsel arama yanıtı işler, sonuçlar boyunca yinelenir ve bunları görüntüler:
+Bing Resim Arama öğreticisini edin ve `<script>` öğenin sonuna (ve kapanış `</script>` etiketinden önce) aşağıdaki kodu ekleyin. Aşağıdaki kod API'den gelen görsel arama yanıtını işler, sonuçları yineler ve bunları görüntüler:
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -63,7 +63,7 @@ function handleVisualSearchResponse(){
 }
 ```
 
-Aşağıdaki kod, `handleVisualSearchResponse()`çağırmak için bir olay dinleyicisi kullanarak API 'ye bir arama isteği gönderir:
+Aşağıdaki kod, arama `handleVisualSearchResponse()`yapmak için bir olay dinleyicisi kullanarak API'ye bir arama isteği gönderir:
 
 ```javascript
 function bingVisualSearch(insightsToken){
@@ -101,7 +101,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>İçgörü elde etme belirteci
 
-`searchItemsRenderer` nesnesine aşağıdaki kodu ekleyin. Bu kod, tıklandığında `bingVisualSearch` işlevini çağıran bir **benzerlerini bulma** bağlantısı ekler. İşlevi, `imageInsightsToken` bağımsız değişken olarak alır.
+`searchItemsRenderer` Nesneye aşağıdaki kodu ekleyin. Bu kod, tıklandığında `bingVisualSearch` işlevini çağıran bir **benzerlerini bulma** bağlantısı ekler. İşlev bir `imageInsightsToken` bağımsız değişken olarak alır.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -109,7 +109,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 
 ## <a name="display-similar-images"></a>Benzer resimler görüntüleme
 
-Aşağıdaki HTML kodunu 601. satıra ekleyin. Bu biçimlendirme kodu, Bing Görsel Arama API'si çağrısının sonuçlarını göstermek için bir öğesi ekler:
+Aşağıdaki HTML kodunu 601. satıra ekleyin. Bu biçimlendirme kodu Bing Görsel Arama API çağrısının sonuçlarını görüntülemek için bir öğe ekler:
 
 ``` html
 <div id="insights">
@@ -123,4 +123,4 @@ Yeni JavaScript kodu ve HTML öğeleri yerleştirildikten sonra arama sonuçlar�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: bir görüntüyü Bing Görsel Arama SDK 'Sı ile kırpınC#](tutorial-visual-search-crop-area-results.md)
+> [Öğretici: C için Bing Görsel Arama SDK ile bir görüntü kırpma #](tutorial-visual-search-crop-area-results.md)

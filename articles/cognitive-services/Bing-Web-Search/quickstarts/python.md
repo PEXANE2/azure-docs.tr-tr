@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı Başlangıç: Python ile arama gerçekleştirme - Bing Web Araması API’si'
 titleSuffix: Azure Cognitive Services
-description: Python kullanarak istekleri Bing Web Araması REST API göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın
+description: Python'u kullanarak Bing Web Search REST API'sine istek göndermek ve JSON yanıtı almak için bu hızlı başlatmayı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,23 +12,23 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: c1af1142faca76cc58b6b3ca9a7106bc0433ea18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976375"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web Araması API’sini çağırmak için Python kullanma  
 
-Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Python uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Web Arama API'sine ilk aramanızı yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Python uygulaması API'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
-Bu örnek [MyBinder](https://mybinder.org) üzerinde bir Jupyter notebook olarak çalıştırılır. Cildi Başlat rozetini seçin:
+Bu örnek [MyBinder](https://mybinder.org) üzerinde bir Jupyter notebook olarak çalıştırılır. Başlatma bağlayıcı rozetini seçin:
 
-[![Bağlayıcı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
+[![Cilt](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Python 2. x veya 3. x](https://www.python.org/)
+* [Python 2.x veya 3.x](https://www.python.org/)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -41,7 +41,7 @@ subscription_key = "YOUR_ACCESS_KEY"
 assert subscription_key
 ```
 
-Bing Web Araması API’si uç noktasını tanımlayın. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+Bing Web Araması API’si uç noktasını tanımlayın. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
@@ -69,7 +69,7 @@ search_results = response.json()
 
 ## <a name="format-and-display-the-response"></a>Yanıtı biçimlendirme ve görüntüleme
 
-`search_results` nesnesi, arama sonuçlarını ve ilgili sorgular ve sayfalar gibi meta verileri içerir. Bu kodda yanıtı biçimlendirmek ve tarayıcınızda görüntülemek için `IPython.display` kitaplığı kullanılır.
+Nesne, `search_results` ilgili sorgular ve sayfalar gibi arama sonuçlarını ve meta verileri içerir. Bu kodda yanıtı biçimlendirmek ve tarayıcınızda görüntülemek için `IPython.display` kitaplığı kullanılır.
 
 ```python
 from IPython.display import HTML
@@ -82,7 +82,7 @@ rows = "\n".join(["""<tr>
 HTML("<table>{0}</table>".format(rows))
 ```
 
-## <a name="sample-code-on-github"></a>GitHub 'da örnek kod
+## <a name="sample-code-on-github"></a>GitHub'da örnek kod
 
 Bu kodu yerel ortamda çalıştırmak isterseniz [GitHub'da örneğin tamamına ulaşabilirsiniz](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py).
 

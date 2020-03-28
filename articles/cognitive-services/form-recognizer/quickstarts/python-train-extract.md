@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Python form tanıyıcı ile REST API kullanarak model eğitme ve form verilerini ayıklama'
+title: 'Quickstart: Python ile REST API kullanarak bir model ve ayıklama formu verileri tren - Form Tanıyın'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir modeli eğitmek ve formlardan veri ayıklamak için Python ile REST API form tanıyıcıyı kullanacaksınız.
+description: Bu hızlı başlangıçta, python ile form tanıma yıkınve formlardan veri ayıklamak için Form Recognizer REST API'sini kullanırsınız.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,41 +10,41 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118097"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Quickstart: Python ile REST API'sini kullanarak form Tanıyıcı modelini eğitin ve form verilerini ayıklayın
 
-Bu hızlı başlangıçta, anahtar-değer çiftlerini ve tabloları ayıklamak üzere formları eğitme ve Puanlama yapmak için Azure form tanıyıcısı 'nı Python ile REST API kullanacaksınız.
+Bu hızlı başlangıçta, anahtar değeri çiftleri ve tabloları ayıklamak için formları eğitmek ve puanlamak için Python ile Azure Form Recognizer REST API'yi kullanırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
+Bu hızlı başlangıcı tamamlamak için şunları yapmış olmalısınız:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
-- Aynı türde en az beş form kümesi. Bu verileri modeli eğitmek için kullanacaksınız. Formlarınızın farklı dosya türleri olabilir, ancak aynı belge türünde olması gerekir. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
+- Aynı türden en az beş formdan oluşan bir küme. Bu verileri modeli eğitmek için kullanacaksınız. Formlarınız farklı dosya türlerine ait olabilir, ancak aynı belge türünde olmalıdır. Bu hızlı başlatma için örnek bir [veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure Depolama hesabındaki bir blob depolama kapsayıcısının köküne yükleyin.
 
-## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
+## <a name="create-a-form-recognizer-resource"></a>Form Tanıyıcı kaynağı oluşturma
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Form tanıyıcı modeli eğitme
+## <a name="train-a-form-recognizer-model"></a>Form Tanıyıcı modelini eğitin
 
-İlk olarak, bir Azure Storage blob kapsayıcısında bir eğitim verileri kümesine ihtiyacınız olacaktır. Ana giriş verilerinize göre aynı türde/yapıda en az beş adet doldurulmuş form (PDF belgesi ve/veya resim) olmalıdır. Ya da, iki doldurulmuş form ile tek bir boş form kullanabilirsiniz. Boş formun dosya adının "Empty" sözcüğünü içermesi gerekir. Eğitim verilerinizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../build-training-data-set.md) .
+İlk olarak, bir Azure Depolama blob kapsayıcısında bir eğitim verisi kümesine ihtiyacınız olacaktır. Ana giriş verilerinizle aynı türde/yapıda en az beş doldurulmuş form (PDF belgeleri ve/veya görüntüler) olmalıdır. Veya, iki doldurulmuş formiçeren tek bir boş form kullanabilirsiniz. Boş formun dosya adının "boş" sözcüğüne dahil edilmesi gerekir. Bkz. Eğitim verilerinizi bir araya getirmek için ipuçları ve seçenekler için [özel bir model için bir eğitim veri kümesi oluşturun.](../build-training-data-set.md)
 
 > [!NOTE]
-> Daha önce eğitim verilerinizin bazılarını veya tümünü el ile etiketlemek için etiketli veri özelliğini kullanabilirsiniz. Bu daha karmaşık bir işlemdir, ancak daha iyi eğitilen bir model ile sonuçlanır. Daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
+> Eğitim verilerinizin bir kısmını veya tümünün önceden el ile etiketlendiğiniz veri özelliğini kullanabilirsiniz. Bu daha karmaşık bir süreçtir ancak daha iyi eğitilmiş bir model le sonuçlanır. Daha fazla bilgi edinmek için genel bakışın [etiketleri ile Tren](../overview.md#train-with-labels) bölümüne bakın.
 
-Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki python kodunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
+Azure blob kapsayıcınızdaki belgelerle birlikte bir Form Tanıyıcı modelini eğitmek için, aşağıdaki python kodunu çalıştırarak **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API'yi arayın. Kodu çalıştırmadan önce aşağıdaki değişiklikleri yapın:
 
-1. `<SAS URL>` Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'SI ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-1. `<subscription key>`, önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
-1. `<endpoint>`, form tanıyıcı kaynağınızın uç nokta URL 'siyle değiştirin.
-1. `<Blob folder name>`, formlarınızın bulunduğu blob depolamadaki klasörün yoluyla değiştirin. Formlarınızın kapsayıcının kökü varsa, bu dizeyi boş bırakın.
+1. Azure `<SAS URL>` Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL'sini değiştirin. SAS URL'sini almak için Microsoft Azure Depolama Gezgini'ni açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim imzasını al'ı**seçin. **Okuma** ve **Liste** izinlerinin denetlendiğinden emin olun ve **Oluştur'** u tıklatın. Ardından **URL** bölümündeki değeri kopyalayın. Bu formu olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. Form `<endpoint>` Tanıyıcı kaynağınız için uç nokta URL'si ile değiştirin.
+1. Formlarınızın bulunduğu blob depolama klasörüne giden yol ile değiştirin. `<Blob folder name>` Formlarınız kapsayıcınızın kökündeyse, bu dizeyi boş bırakın.
 
     ```python
     ########### Python Form Recognizer Labeled Async Train #############
@@ -86,13 +86,13 @@ Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek i
         print("POST model failed:\n%s" % str(e))
         quit() 
     ```
-1. Kodu. Kopyala uzantılı bir dosyaya kaydedin. Örneğin, *form-recognizer-train.py*.
+1. Kodu .py uzantılı bir dosyaya kaydedin. Örneğin, *form-recognizer-train.py.*
 1. Bir komut istemi penceresi açın.
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognizer-train.py`.
 
-## <a name="get-training-results"></a>Eğitim sonuçlarını al
+## <a name="get-training-results"></a>Eğitim sonuçlarını alın
 
-Eğitme işlemini başlattıktan sonra, işlemin durumunu almak için döndürülen KIMLIĞI kullanırsınız. Aşağıdaki kodu Python betiğinizin altına ekleyin. Bu, yeni bir API çağrısındaki eğitim çağrısından ID değerini kullanır. Eğitim işlemi zaman uyumsuzdur, bu nedenle eğitim durumu tamamlanana kadar bu betik API 'YI düzenli aralıklarla çağırır. Bir saniye veya daha fazla Aralık öneririz.
+Tren işlemine başladıktan sonra, işlemin durumunu almak için döndürülen kimliği kullanırsınız. Python komut dosyanızın altına aşağıdaki kodu ekleyin. Bu, yeni bir API çağrısında eğitim çağrısındaki kimlik değerini kullanır. Eğitim işlemi asynchronous'dur, bu nedenle bu komut dosyası, eğitim durumu tamamlanana kadar API'yi düzenli aralıklarla çağırır. Bir veya daha fazla bir aralık öneririz.
 
 ```python 
 n_tries = 15
@@ -124,7 +124,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Eğitim süreci tamamlandığında, JSON içeriğiyle aşağıdaki gibi bir `201 (Success)` yanıtı alırsınız:
+Eğitim süreci tamamlandığında, JSON içeriğiyle `201 (Success)` aşağıdaki gibi bir yanıt alırsınız:
 
 ```json
 { 
@@ -192,11 +192,11 @@ Eğitim süreci tamamlandığında, JSON içeriğiyle aşağıdaki gibi bir `201
 }
 ```
 
-Aşağıdaki adımlarda kullanılmak üzere `"modelId"` değerini kopyalayın.
+Aşağıdaki `"modelId"` adımlardaki kullanım değerini kopyalayın.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-İşlem tamamlandığında, JSON içeriğiyle aşağıdaki biçimde bir `200 (Success)` yanıtı alırsınız. Yanıt kolaylık sağlaması için kısaltıldı. Ana anahtar/değer çifti ilişkilendirmeleri ve tablolar `"pageResults"` düğümüdür. Ayrıca, *ıncludetekxtdetails* URL parametresi aracılığıyla düz metin ayıklama belirttiyseniz, `"readResults"` düğümü belgedeki tüm metinlerin içeriğini ve konumlarını gösterir.
+İşlem tamamlandığında, aşağıdaki biçimde JSON içeriğiyle ilgili bir `200 (Success)` yanıt alırsınız. Yanıt basitlik için kısaltıldı. Ana anahtar/değer çifti ilişkilendirmeleri `"pageResults"` ve tablolar düğümdedir. *IncludeTextDetails* URL parametresi aracılığıyla düz metin çıkarma `"readResults"` da belirttiyseniz, düğüm belgedeki tüm metnin içeriğini ve konumlarını gösterir.
 
 ```bash
 {
@@ -447,13 +447,13 @@ Aşağıdaki adımlarda kullanılmak üzere `"modelId"` değerini kopyalayın.
 }
 ```
 
-## <a name="improve-results"></a>Sonuçları geliştirme
+## <a name="improve-results"></a>Sonuçları iyileştirme
 
 [!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir modeli eğitme ve örnek bir senaryoda çalıştırmak için Python ile birlikte REST API form tanıyıcıyı kullandınız. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için başvuru belgelerine bakın.
+Bu hızlı başlatmada, bir modeli eğitmek ve örnek bir senaryoda çalıştırmak için Python ile Form Recognizer REST API'yi kullandınız. Ardından, Form Tanıyıcısı API'sini daha derinlemesine incelemek için başvuru belgelerine bakın.
 
 > [!div class="nextstepaction"]
 > [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı konuşmaya çevirme, C++ (Windows)-konuşma hizmeti'
+title: 'Quickstart: Konuşma-konuşma, C++ (Windows) - Konuşma hizmeti çevirme'
 titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: e4136a7c843b543f75ae55d39f324e160dc8cbc0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75469904"
 ---
 > [!div class="nextstepaction"]
-> [GitHub C++ 'daki örnekleri keşfet](https://aka.ms/speech/github-cpp)
+> [GitHub'da C++ örneklerini keşfedin](https://aka.ms/speech/github-cpp)

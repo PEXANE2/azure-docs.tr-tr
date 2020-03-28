@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6c72cd270e634ca0aebff7c17d5663241428e182
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69907049"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69907049"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir Python projesi oluşturun veya masaüstünüzde yeni bir klasör oluşturun. Bu kod parçacığını projenize/klasörünüze adlı `dictionary-lookup.py`bir dosyaya kopyalayın.
+En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir Python projesi oluşturun veya masaüstünüzde yeni bir klasör oluşturun. Bu kod parçacıklarını proje/klasörünüze kopyala `dictionary-lookup.py`.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -29,9 +29,9 @@ import os, requests, uuid, json
 
 İlk açıklama Python yorumlayıcısına UTF-8 kodlaması kullanması gerektiğini bildirir. Ardından bir ortam değişkeninden abonelik anahtarınızı okumak, HTTP isteğini yapılandırmak, benzersiz bir tanımlayıcı oluşturmak ve Translator Metin Çevirisi API'si tarafından döndürülen JSON yanıtını işlemek için gereken modüller içeri aktarılır.
 
-## <a name="set-the-subscription-key-endpoint-and-path"></a>Abonelik anahtarını, uç noktayı ve yolu ayarla
+## <a name="set-the-subscription-key-endpoint-and-path"></a>Abonelik anahtarını, bitiş noktasını ve yolu ayarlama
 
-Bu örnek, ortam değişkenlerinden Translator metin çevirisi abonelik anahtarınızı ve uç noktasını okumaya çalışacaktır: `TRANSLATOR_TEXT_KEY` ve. `TRANSLATOR_TEXT_ENDPOINT` Ortam değişkenlerine alışkın değilseniz, bir dize ayarlayabilir ve koşullu deyimleri açıklama `subscription_key` `endpoint` olarak ayarlayabilirsiniz.
+Bu örnek, Çevirmen Metni abonelik anahtarınızı ve bitiş noktanızı `TRANSLATOR_TEXT_KEY` `TRANSLATOR_TEXT_ENDPOINT`ortam değişkenlerinden okumaya çalışacaktır: ve . Ortam değişkenlerini bilmiyorsanız, dizeleri olarak `subscription_key` ayarlayabilir ve `endpoint` koşullu ifadeleri yorumlayabilirsiniz.
 
 Bu kodu projenize kopyalayın:
 
@@ -47,12 +47,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Translator Metin Çevirisi genel uç noktası olarak `endpoint`ayarlanır. `path`, `dictionary/lookup` rotasını ayarlar ve API sürüm 3’ü kullanmak istediğimizi belirler.
+Çevirmen Metni genel bitiş noktası `endpoint`olarak ayarlanır. `path`, `dictionary/lookup` rotasını ayarlar ve API sürüm 3’ü kullanmak istediğimizi belirler.
 
 `params` kaynak ve çıkış dillerini ayarlamak için kullanılır. Bu örnekte İngilizce ve İspanyolca dillerini temsil eden `en` ve `es` değerlerini kullanıyoruz.
 
 >[!NOTE]
-> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz [. Translator metin çevirisi API'si 3,0: Sözlük arama](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
+> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator Metin Çevirisi API’si 3.0: Sözlük Arama](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ```python
 path = '/dictionary/lookup?api-version=3.0'
@@ -74,7 +74,7 @@ headers = {
 }
 ```
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek parametrelerinize `Ocp-Apim-Subscription-Region` de eklemeniz gerekir. [Çoklu hizmet aboneliği ile kimlik doğrulama hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
 
 ## <a name="create-a-request-to-find-alternate-translations"></a>Alternatif çevirileri bulma isteği oluşturma
 
@@ -147,7 +147,7 @@ Abonelik anahtarınızı programınıza sabit kodladıysanız, bu hızlı başla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

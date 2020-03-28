@@ -1,7 +1,7 @@
 ---
-title: Project Acoustics Unity tasarım öğreticisi
+title: Proje Akustik Birlik Tasarım Eğitimi
 titlesuffix: Azure Cognitive Services
-description: Bu öğretici, Unity 'de Project Acoustics için tasarım iş akışını açıklar.
+description: Bu öğretici, Unity Proje Akustik için tasarım iş akışını açıklar.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,85 +12,85 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: fd00e4105ce4edae9d014df2a83c5ae3aaf778da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68854272"
 ---
-# <a name="project-acoustics-unity-design-tutorial"></a>Project Acoustics Unity tasarım öğreticisi
-Bu öğreticide, Unity 'de Project Acoustics için tasarım araçları ve iş akışı açıklanmaktadır.
+# <a name="project-acoustics-unity-design-tutorial"></a>Proje Akustik Birlik Tasarım Eğitimi
+Bu öğretici, Unity'deki Project Acoustics'in tasarım araçlarını ve iş akışını açıklar.
 
-Önkoşullar:
-* Windows için Unity 2018.2 +
-* Bakmış Acoustics varlığı içeren bir Unity sahneyi
+Ön koşullar:
+* Windows için Unity 2018.2+
+* Pişmiş akustik varlık ile bir Birlik sahnesi
 
-Bu öğreticide, bakmış Acoustics varlığına sahip bir Unity sahneyi iki şekilde edinebilirsiniz:
-* [Unity projenize proje Acoustics ekleyin](unity-integration.md), ardından [Azure Batch bir hesap alın](create-azure-account.md)ve ardından [Unity sahnüslerinizi](unity-baking.md) ekleyin
-* Veya [Project Acoustics Unity örnek içeriğini](unity-quickstart.md)kullanın.
+Bu öğretici için, pişmiş akustik varlık ile bir Birlik sahne iki şekilde alabilirsiniz:
+* [Unity projenize Project Acoustics ekleyin,](unity-integration.md)ardından [Azure Toplu Hesap alın](create-azure-account.md)ve Unity [sahnenizi pişirin](unity-baking.md)
+* Veya Project [Acoustics Unity örnek içeriğini](unity-quickstart.md)kullanın.
 
-## <a name="review-design-process-concepts"></a>Tasarım süreci kavramlarını gözden geçirin
-Project Acoustics, kaynaklarınızı işlemek için ortak ses dijital sinyal işleme (DSP) yöntemlerini kullanır ve occlusiyon, Wet/kuru karışımı ve yankı kuyruğu uzunluğu (RT60) dahil tanıdık Acoustics özellikleri üzerinde denetim elde etmenizi sağlar. Ancak, temel [Proje Acoustics tasarım süreci kavramı](design-process.md) , bu özellikleri doğrudan ayarlamak yerine, bu özellikleri işlemek için benzetim sonuçlarının nasıl kullanıldığını kontrol edersiniz. Her denetim için varsayılan ayarlar fiziksel olarak doğru Acoustics temsil eder.
+## <a name="review-design-process-concepts"></a>Tasarım süreci kavramlarını gözden geçirme
+Project Acoustics kaynaklarınızı işlemek için ortak ses dijital sinyal işleme (DSP) yöntemlerini kullanır ve oklüzyon, ıslak/kuru karışım ve yankılanma kuyruk uzunluğu (RT60) dahil olmak üzere tanıdık akustik özellikleri üzerinde kontrol sağlar. Ancak temel [Project Acoustics tasarım süreci konsepti,](design-process.md) bu özellikleri doğrudan ayarlamak yerine, simülasyon sonuçlarının bu özellikleri yönlendirmek için nasıl kullanıldığını kontrol etmektir. Her denetim için varsayılan ayarlar fiziksel olarak doğru akustiği temsil eder.
 
-## <a name="design-acoustics-for-each-source"></a>Her kaynak için Acoustics Tasarla
-Project Acoustics, bir dizi kaynağa özgü Acoustics tasarım denetimi sağlar. Bu, bazı kaynakları vurgulayarak ve diğerlerini kaldırarak sahnedeki karışımı denetlemenize olanak tanır.
+## <a name="design-acoustics-for-each-source"></a>Her kaynak için akustik tasarlayın
+Project Acoustics, kaynağa özel akustik tasarım denetimleri sağlar. Bu, bazı kaynakları vurgulayarak ve diğerlerini vurgulayarak bir sahnedekarışımı kontrol etmenizi sağlar.
 
-### <a name="adjust-distance-based-attenuation"></a>Uzaklık tabanlı zayıflamayı ayarla
-**Project Acoustics** Unity spatializer eklentisi tarafından sunulan ses DSP 'Si, Unity düzenleyicisinde yerleşik olarak bulunan ve kaynak başına uzaklık tabanlı zayıflatılaşmaya uyar. Uzaklık tabanlı zayıflalama denetimleri, **3B ses ayarları**altında, ses kaynaklarının **Inspector** panelinde bulunan **ses kaynağı** bileşenidir:
+### <a name="adjust-distance-based-attenuation"></a>Mesafe tabanlı zayıflamayı ayarlama
+**Project Acoustics** Unity spatializer eklentisi tarafından sağlanan ses DSP, Unity Editor'da yerleşik olarak bulunan kaynak başına mesafe tabanlı zayıflamaya saygı duyar. Mesafe tabanlı zayıflama **denetimleri, 3B Ses Ayarları**altında, ses kaynaklarının **Müfettiş** panelinde bulunan **Ses Kaynağı** bileşeninde bulunmaktadır:
 
-![Unity uzaklık zayıflalama seçenekleri panelinin ekran görüntüsü](media/distance-attenuation.png)
+![Birlik mesafesi zayıflama seçenekleri panelinin ekran görüntüsü](media/distance-attenuation.png)
 
-Acoustics, oynatıcı konum etrafında ortalanmış bir "simülasyon bölgesi" kutusunda hesaplama gerçekleştirir. Bir ses kaynağı, bu benzetim bölgesinin dışında bulunan Player 'dan uzak bir biçimde olursa, yalnızca kutudaki geometri, occluders oyuncunun oynatıcının yakın olduğu durumlarda makul bir şekilde çalışır. Ancak, oynatıcı açık alanda olduğunda ancak occlular, uzak ses kaynağına yakın olduğunda, ses, gerçekçi bir şekilde parçalanabilir. Önerilen geçici çözümümüzü, sesin, Player 'ın varsayılan yatay mesafesi olan 45. yaklaşık olarak 1 ' e kadar kapanmasına dikkat edin.
+Akustik, oyuncunun bulunduğu yerin etrafında ortalanmış bir "simülasyon bölgesi" kutusunda hesaplama yapar. Bir ses kaynağı bu simülasyon bölgesinin dışında bulunan oynatıcıdan uzaksa, yalnızca kutunun içindeki geometri, oklüzörler oyuncunun yakınında yken oldukça iyi çalışan ses yayılımını (tıkamaya neden olmak gibi) etkiler. Ancak, oynatıcının açık alanda olduğu ancak oklüderlerin uzak ses kaynağına yakın olduğu durumlarda, ses gerçekçi olmayan bir şekilde ayrıştırılabilir. Önerilen geçici çözüm, bu gibi durumlarda ses zayıflamasının yaklaşık 45 m'de 0'a düşmesini sağlamaktır, bu da oyuncunun kutunun kenarına olan varsayılan yatay uzaklığıdır.
 
-![Unity SpeakerMode seçenek bölmesinin ekran görüntüsü](media/speaker-mode.png)
+![Unity SpeakerMode seçenek panelinin ekran görüntüsü](media/speaker-mode.png)
 
-### <a name="adjust-occlusion-and-transmission"></a>Occlusiyon ve iletimi ayarla
-**AcousticsAdjust** betiğini bir kaynağa eklemek, bu kaynak için ayarlama parametrelerinin ayarlanmasını sağlar. Betiği eklemek için **Inspector** panelinin alt kısmındaki **Bileşen Ekle** ' ye tıklayın ve **> Acoustics ayarla**' ya gidin. Betik altı denetime sahiptir:
+### <a name="adjust-occlusion-and-transmission"></a>Oklüzyon ve iletimi ayarlama
+AcousticsAdjust komut dosyasının bir kaynağa **takılması,** o kaynak için ayar parametrelerini sağlar. Komut dosyasını eklemek **için, Denetçi** panelinin altındaki **Bileşen Ekle'yi** tıklatın ve Komut > **Akustik Ayarla'ya**gidin. Komut dosyasının altı denetimi vardır:
 
-![Unity AcousticsAdjust betiğinin ekran görüntüsü](media/acoustics-adjust.png)
+![Unity AcousticsAdjust komut dosyasının ekran görüntüsü](media/acoustics-adjust.png)
 
-* **Enable Acoustics** -bu kaynağa Acoustics uygulanıp uygulanmadığını denetler. İşaretlenmediğinde, kaynak HRTFs veya kaydırma ile maça üzerinde kalır, ancak Acoustics olmaz. Bu, düşüşe, occlusiyon veya Level ve Decay gibi dinamik geri alma parametreleri anlamına gelir. Ters geri alma, hala sabit bir düzey ve Decay zaman ile uygulanmış.
-* **Occlusiyon** -Acoustics sistemi tarafından hesaplanan Occlusiyon DB düzeyine bir çarpan uygular. Bu çarpan 1 ' den büyükse, occlusiyon, 1 ' den küçük değerler, occluson efektini daha hafif hale getirir ve 0 değeri occlusiyon 'ı devre dışı bırakır.
-* **İletim (DB)** -geometri aracılığıyla aktarımdan kaynaklanan zayıflamayı (DB 'de) ayarlayın. İletimi devre dışı bırakmak için bu kaydırıcıyı en düşük düzeyine ayarlayın. Acoustics maça, sahne geometrisi (portaling) çevresinde ulaşan ilk kuru sesi gösterir. İletim, görüş satırı yönünde istenmeyen bir ek kurutma sağlar. Kaynak için olan uzaklık zayıflalama eğrisinin de uygulandığını unutmayın.
+* **Etkinleştir Akustik** - Bu kaynağa akustik uygulanıp uygulanmadığını denetler. İşaretlenmediğinde, kaynak HRTF'ler veya kaydırma ile uzamsallaştırılacaktır, ancak akustik olmayacaktır. Bu, seviye ve bozunma süresi gibi tıkanıklık, tıkanıklık veya dinamik yankı parametreleri anlamına gelir. Yankılanma hala sabit bir seviye ve çürüme süresi ile uygulanır.
+* **Oklüzyon** - Akustik sistemi tarafından hesaplanan oklüzyon dB seviyesine bir çarpan uygulayın. Bu çarpan 1'den büyükse, oklüzyon abartılı olurken, 1'den küçük değerler oklüzyon etkisini daha ince ve 0 devre dışı kalarak bir değer yaratır.
+* **İletim (dB)** - Geometri yoluyla iletimin neden olduğu zayıflamayı (dB'de) ayarlayın. İletimi devre dışı bırakabilmek için bu kaydırıcıyı en düşük düzeye ayarlayın. Akustik sahne geometrisi (portaling) etrafında gelen olarak ilk kuru ses mekansallaştırır. İletim, görüş hattı yönünde uzamsallaştırılan ek bir kuru varış sağlar. Kaynak için uzaklık zayıflama eğriside de uygulandığını unutmayın.
 
-### <a name="adjust-reverberation"></a>Ters ayarlamayı ayarla
-* **Wettik (DB)** -kaynaktaki mesafeye göre, DB 'de ters b gücünü ayarlar. Pozitif değerler daha ters bir ses yapar, negatif değerler ise ses daha fazla yapılır. Eğri düzenleyicisini açmak için eğri denetimine (yeşil çizgi) tıklayın. İstediğiniz işlevi oluşturmak için noktaları eklemek ve bu noktaları sürüklemek için sağ tıklayıp eğriyi değiştirin. X ekseni kaynağından uzaklığı ve y ekseni, dB 'de ters bir ayarlamadır. Eğrileri düzenlemeyle ilgili daha fazla bilgi için bkz. bu [Unity el kitabı](https://docs.unity3d.com/Manual/EditingCurves.html). Eğriyi varsayılana varsayılanına sıfırlamak için, **Wetlik** 'e sağ tıklayın ve **Sıfırla**' yı seçin.
-* **Zaman ölçeğini** azaltma-zaman ölçeği için bir çarpanı ayarlar. Örneğin, hazırlama sonucu 750 milisaniyelik bir süre belirtiyorsa, ancak bu değer 1,5 olarak ayarlanırsa, kaynağa uygulanan Decay süresi 1.125 milisaniyedir.
-* **Outdoorness** -Acoustics sisteminin bir kaynaktaki geri alma işlemlerinin ne kadar "dışarıda bırakma" tahminine yönelik tahmine sahip bir toplama ayarlaması. Bu değer 1 olarak ayarlandığında, kaynak her zaman tamamen dışarıda bırakılır ve-1 olarak ayarlandığında, kaynak ses tamamen kapılara göre yapılır.
+### <a name="adjust-reverberation"></a>Yankılanmayı ayarlama
+* **Islürlik (dB)** - Kaynaktan uzaklığa göre dB'deki reverb gücünü ayarlar. Pozitif değerler sesi daha yankı uyandırırken, negatif değerler sesi daha kuru hale sağlar. Eğri düzenleyicisini getirmek için eğri denetimine (yeşil çizgi) tıklayın. Noktaları eklemek ve istediğiniz işlevi oluşturmak için bu noktaları sürükleyerek sol tıklatarak eğriyi değiştirin. X ekseni kaynaktan uzak, y ekseni ise dB'de yankı ayarıdır. Düzenleme eğrileri hakkında daha fazla bilgi için bu [Birlik Kılavuzu'na](https://docs.unity3d.com/Manual/EditingCurves.html)bakın. Eğriyi varsayılana geri ayarlamak **için, Islaçıklık'a** sağ tıklayın ve **Sıfırla'yı**seçin.
+* **Bozunma Zaman Ölçeği** - Bir çarpanı bozunma süresi için ayarlar. Örneğin, fırın sonucu 750 milisaniyelik bir bozunma süresi belirtir, ancak bu değer 1,5 olarak ayarlanırsa, kaynağa uygulanan bozunma süresi 1.125 milisaniyedir.
+* **Outdoorness** - akustik sisteminin tahmini bir katkı ayarlamanasıl "açık" bir kaynak üzerinde yankı sesi gerekir. Bu değeri 1'e ayarlamak, bir kaynağın her zaman tamamen açık havada ses çıkarmasını, -1'e ayarlanması ise bir kaynağın tamamen kapalı mekanda ses çıkarmasını sağlayacaktır.
 
-**AcousticsAdjustExperimental** betiğini bir kaynağa eklemek, bu kaynak için ek deneysel ayarlama parametreleri sağlar. Betiği eklemek için **Inspector** panelinin alt kısmındaki **Bileşen Ekle** ' ye tıklayın ve **betikler > Acoustics ayarla**' ya gidin. Şu anda bir deneysel denetim var:
+**AcousticsAdjustExperimental** komut dosyasının bir kaynağa takılması, o kaynak için ek deneysel ayar parametreleri sağlar. Komut dosyasını eklemek **için, Denetçi** panelinin altındaki **Bileşen Ekle'yi** tıklatın ve Komut > Akustik **Için Gidin.** Şu anda bir deneysel kontrol vardır:
 
-![Unity AcousticsAdjustExperimental betiğinin ekran görüntüsü](media/acoustics-adjust-experimental.png)
+![Unity AcousticsAdjustExperimental komut dosyasının ekran görüntüsü](media/acoustics-adjust-experimental.png)
 
-* **Algısal uzaklık warp** -kurutma oranını hesaplamak için kullanılan uzaklığa üstel bir çarpıtma uygular. Acoustics sistemi alanın tamamında, mesafede sorunsuzca farklılık gösteren ve algısal uzaklık ipuçları sağlayan ıslak düzeylerini hesaplar. Bu etkiyi, 1 ' den büyük olan değerlerin çarpılmasından sonra, mesafeden fazla geri alma düzeyini artırarak, "uzak" sesi yaparak bu etkiyi ortadan kaldırma. 1 ' den küçük değerleri çarpıtma, uzaklık tabanlı geri alma değişikliğini daha hafif hale getirerek sesi daha da "var" hale getirir.
+* **Algısal Mesafe Çözgü** - Kuru-ıslak oranı hesaplamak için kullanılan mesafeye üstel çözgü uygulayın. Akustik sistemi, mesafeile sorunsuz bir şekilde değişen ve algısal mesafe ipuçları sağlayan alan boyunca ıslak seviyeleri hesaplar. 1'den büyük değerleri çarpıtma, mesafeyle ilgili yankı düzeylerini artırarak bu etkiyi abartır ve sesi "uzak" hale getirir. 1'den küçük değerleri çarpıtma mesafe tabanlı yankı değişikliği daha ince hale getirerek sesi daha "mevcut" hale getirir.
 
-## <a name="design-acoustics-for-all-sources"></a>Tüm kaynaklar için Acoustics Tasarla
-Tüm kaynakların parametrelerini ayarlamak için Unity 'nin **Ses karıştırıcı**' da kanal şeridine tıklayın ve **Proje Acoustics karıştırıcı** efektinin parametrelerini ayarlayın.
+## <a name="design-acoustics-for-all-sources"></a>Tüm kaynaklar için akustik tasarlayın
+Tüm kaynakların parametrelerini ayarlamak için Unity'nin **Ses**Karıştırıcısı'ndaki kanal şeridine tıklayın ve **Project Acoustics Mikser** efektindeki parametreleri ayarlayın.
 
-![Project Acoustics Unity karıştırıcı özelleştirme bölmesinin ekran görüntüsü](media/mixer-parameters.png)
+![Project Acoustics Unity Mixer özelleştirme panelinin ekran görüntüsü](media/mixer-parameters.png)
 
-* **Wettik ayarı** -kaynak dinleyicisi uzaklığına bağlı olarak sahne içindeki tüm kaynaklarda, DB 'deki ters b gücünü ayarlar. Pozitif değerler daha ters bir ses yapar, negatif değerler ise ses daha fazla yapılır.
-* **RT60 Scale** -Reverb süresi için ölçek skalar skaler.
-* **Yatay kaydırma kullan** -sesin Binaural (0) veya çok kanallı kaydırma (1) olarak çıktı olup olmadığını denetler. 1 dışındaki tüm değerler Binaural gösterir. Binaural çıkışı, Htfs ile kullanım için ve çok kanallı bir surround konuşmacı sistemleriyle kullanım için VBAP ile birlikte istenmeyen çıkış ile birlikte kullanıma yönelik olarak tasarlanmıştır. Çok kanallı Panner kullanıyorsanız, **proje ayarları** > **sesi**altında bulunan cihaz ayarlarınızla eşleşen hoparlör modunu seçtiğinizden emin olun.
+* **Islaklık Ayarla** - Kaynak dinleyici mesafesine göre sahnedeki tüm kaynaklarda dB'deki yankı gücünü ayarlar. Pozitif değerler sesi daha yankı uyandırırken, negatif değerler sesi daha kuru hale sağlar.
+* **RT60 Ölçeği** - Reverb süresi için çarpan calar.
+* **Kaydırma'yı kullanın** - Sesin binaural (0) veya çok kanallı kaydırma (1) olarak çıktı olup olmadığını denetler. 1'den başka herhangi bir değer binaural'ı gösterir. Binaural çıkış kulaklıkile kullanılmak üzere HRTF'ler ile mekansallaştırılır ve çok kanallı çıkış vbap ile çok kanallı surround hoparlör sistemleri ile kullanılmak üzere uzamsallaştırılır. Çok kanallı panner kullanıyorsanız, **Project Settings** > **Audio**altında bulunan cihaz ayarlarınızla eşleşen hoparlör modunu seçtiğinizden emin olun.
 
-## <a name="check-proper-sound-source-placement"></a>Doğru ses kaynağı yerleştirmesini denetle
-Dolu voxkine yerleştirilmiş ses kaynakları, akustik işleme almaz. VOX, görünür sahne geometrisini genişlettiğinden, Visual Geometry tarafından bir kaynağı Voxel içine yerleştirmek mümkündür. **Sahne** görünümü 'nin sağ üst köşesindeki **şeyler** menüsündeki Voxel Kılavuzu onay kutusunu değiştirerek Project Acoustics voxx 'i görüntüleyebilirsiniz.
+## <a name="check-proper-sound-source-placement"></a>Uygun ses kaynağı yerleşimini kontrol edin
+İşgal edilmiş voxel'lerin içine yerleştirilen ses kaynakları akustik tedavi göremez. Voxel'ler görünür sahne geometrisini aştıklarından, görsel geometri tarafından engellenmemiş görünürken bir kaynağı bir voksilin içine yerleştirmek mümkündür. Project Acoustics voxels'i, **Scene** view'in sağ üst kısmındaki **Gizmos** menüsündeki voxel ızgara onay kutusunu değiştirerek görüntüleyebilirsiniz.
 
-![Unity şeyler menüsünün ekran görüntüsü](media/gizmos-menu.png)  
+![Unity Gizmos menüsünün ekran görüntüsü](media/gizmos-menu.png)  
 
-Voxel ekran, oyunun görsel bileşenlerinin bunlara uygulanmış bir dönüşüm olup olmadığını belirlemenize de yardımcı olabilir. Bu durumda, **Acoustics Manager**'ı barındıran gameobject 'e aynı dönüşümü uygulayın.
+Voxel ekran, oyundaki görsel bileşenlerin kendilerine uygulanan bir dönüşüme sahip olup olmadığını belirlemede de yardımcı olabilir. Eğer öyleyse, **Akustik Yöneticisi**barındıran GameObject için aynı dönüşümü uygulayın.
 
-### <a name="bake-time-vs-run-time-voxels"></a>Bake saati ile çalışma zamanı voxki
-Oyun tasarım zamanında ve çalışma zamanında oyun penceresinde, düzenleyici penceresinde voxkleri görüntülemek mümkündür. Bu görünümlerde voxboyutlarının boyutu farklıdır. Bunun nedeni, Acoustics çalışma zamanının, daha yumuşak ilişkilendirme sonuçları için daha hassas Voxel kılavuz kullanması nedeniyle oluşur. Ses kaynağı yerleşimi, çalışma zamanı voxiksel kullanılarak doğrulanmalıdır.
+### <a name="bake-time-vs-run-time-voxels"></a>Pişirme süresi vs çalışma süresi voxels
+Oyun tasarım saatinde editör penceresinde ve çalışma zamanında oyun penceresinde voxels görüntülemek mümkündür. Voxels boyutu bu görünümlerde farklıdır. Bunun nedeni, akustik çalışma zamanı enterpolasyonunun daha düzgün enterpolasyon sonuçları için daha ince bir voxel ızgarası kullanmasıdır. Ses kaynağı yerleşimi çalışma zamanı voxels kullanılarak doğrulanmalıdır.
 
-Tasarım zamanı voxpiksel:
+Tasarım süresi voxels:
 
-![Tasarım zamanı sırasında projenin Acoustics voxpiksel ekran görüntüsü](media/voxels-design-time.png)
+![Tasarım süresi boyunca Project Acoustics voxels ekran görüntüsü](media/voxels-design-time.png)
 
-Çalışma zamanı voxpiksel:
+Çalışma zamanı voxels:
 
-![Çalışma zamanı sırasında Acoustics VOX, projenin ekran görüntüsü](media/voxels-runtime.png)
+![Çalışma süresi boyunca Project Acoustics voxels ekran görüntüsü](media/voxels-runtime.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Tasarım sürecinin](design-process.md) arkasındaki kavramları vurgulayan örnek olay incelemelerini keşfet
+* [Tasarım sürecinin](design-process.md) arkasındaki kavramları vurgulayan örnek çalışmaları keşfedin
 

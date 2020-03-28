@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: REST API 'Leri ile amaç al-LUıS"
+title: "Quickstart: REST API'leri ile niyet edin - LUIS"
 titleSuffix: Azure Cognitive Services
-description: Bu REST API hızlı başlangıçta, kullanıcının konuşma metinleriyle bir amaç olduğunu öğrenmek için kullanılabilir bir genel LUO uygulaması kullanın.
+description: Bu REST API hızlı başlangıcında, bir kullanıcının konuşma metninden niyetini belirlemek için kullanılabilir bir genel LUIS uygulamasını kullanın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -13,15 +13,15 @@ ms.date: 02/14/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 58f164f1522975faa2e7a7e7d7ed08145a6c5889
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77524657"
 ---
-# <a name="quickstart-change-model-with-rest-apis"></a>Hızlı başlangıç: modeli REST API 'Leri ile değiştirme
+# <a name="quickstart-change-model-with-rest-apis"></a>Quickstart: REST API'leri ile modeli değiştirin
 
-Bu hızlı başlangıçta, bir seyahat Aracısı uygulamasına örnek ekleme ve uygulamayı eğitme. Örnek konuşmalar, bir amaçla eşleşmiş kullanıcı konuşma metinleridir. Amaçlar için örnek konuşmalar sağlayarak, LUIS’e kullanıcı tarafından sağlanan hangi tür metinlerin hangi amaca ait olduğunu öğretirsiniz.
+Bu hızlı başlangıçta, bir Seyahat Acentesi uygulamasına örnek söz ler ekleyin ve uygulamayı eğitin. Örnek konuşmalar, bir amaçla eşleşmiş kullanıcı konuşma metinleridir. Amaçlar için örnek konuşmalar sağlayarak, LUIS’e kullanıcı tarafından sağlanan hangi tür metinlerin hangi amaca ait olduğunu öğretirsiniz.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](./includes/get-started-get-model-rest-csharp.md)]

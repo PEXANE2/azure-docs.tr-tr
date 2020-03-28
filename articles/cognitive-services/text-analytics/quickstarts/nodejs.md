@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Metin Analizi çağırmak için Node. js kullanın REST API'
+title: "Quickstart: Text Analytics REST API'yi aramak için Node.js kullanın"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olacak bilgiler ve kod örneklerinin nasıl alınacağı gösterilmektedir.
+description: Bu hızlı başlangıç, Azure Bilişsel Hizmetler'de Metin Analizi API'sini hızla kullanmaya başlamanıza yardımcı olacak bilgi ve kod örneklerinin nasıl alındığını gösterir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,16 +12,16 @@ ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-javascript-september2019
 ms.openlocfilehash: c111937dbbea5e588e82bc9753a71d1d597ca767
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378798"
 ---
-# <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi bilişsel hizmeti 'ni çağırmak için Node. js kullanma  
+# <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Quickstart: Metin Analizi Bilişsel Servisini aramak için Node.js'yi kullanın  
 <a name="HOLTop"></a>
 
-Bu makalede, Node. JS ile  [metin analizi API 'lerini](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dilin nasıl algılanacağı](#Detect), yaklaşım [analiziyle](#SentimentAnalysis), [anahtar tümceciklerini ayıkladığınızda](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
+Bu makalede, dili nasıl algılayabildiğinizi, [duyarlılığı nasıl analiz](#SentimentAnalysis)edin, anahtar [tümcecikleri ayıklayın](#KeyPhraseExtraction)ve Node.JS ile [Metin Analizi API'lerini](//go.microsoft.com/fwlink/?LinkID=759711)kullanarak [bağlantılı varlıkları nasıl belirleyeceğiz.](#Entities) [detect language](#Detect)
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -35,9 +35,9 @@ Bu makalede, Node. JS ile  [metin analizi API 'lerini](//go.microsoft.com/fwli
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 
-1. En sevdiğiniz IDE 'de veya masaüstünüzdeki bir klasörde yeni bir Node. JS projesi oluşturun.
-1. Aşağıda belirtilen kodu yeni bir `.js` dosyasına ekleyin.
-1. Anahtarınızı ve uç noktanızı koda kopyalayın. 
+1. En sevdiğiniz IDE'de veya masaüstünüzde bir klasörde yeni bir Düğüm.JS projesi oluşturun.
+1. Aşağıda sağlanan kodu yeni `.js` bir dosyaya ekleyin.
+1. Anahtarınızı ve bitiş noktanızı koda kopyalayın. 
 1. Programı IDE veya komut satırınızdan çalıştırın, örneğin `npm start` veya `node detect.js`.
 
 ```javascript
@@ -142,11 +142,11 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="analyze-sentiment"></a>Yaklaşımı analiz etme
 
-Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Yaklaşım analizi, olumlu veya olumsuz yaklaşım hakkında ipuçları için ham metni çözümleyerek hangi müşterilerin markanızı veya konuyu düşündüğünü öğrenmek için kullanılabilir. Aşağıdaki örnek, biri Ingilizce ve diğeri Ispanyolca olmak üzere iki belge için puanlar sağlar.
+Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Duyarlılık analizi, olumlu veya olumsuz duygular hakkında ipuçları için ham metni analiz ederek müşterilerin markanız veya konunuz hakkında ne düşündüğünü öğrenmek için kullanılabilir. Aşağıdaki örnekte, biri İngilizce, diğeri İspanyolca olmak üzere iki belge için puan lar verilmektedir.
 
-1. En sevdiğiniz IDE 'de veya masaüstünüzdeki bir klasörde yeni bir Node. JS projesi oluşturun.
-1. Aşağıda belirtilen kodu yeni bir `.js` dosyasına ekleyin.
-1. Metin Analizi anahtarınızı ve uç noktanızı koda kopyalayın. 
+1. En sevdiğiniz IDE'de veya masaüstünüzde bir klasörde yeni bir Düğüm.JS projesi oluşturun.
+1. Aşağıda sağlanan kodu yeni `.js` bir dosyaya ekleyin.
+1. Metin Analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın. 
 1. Programı IDE veya komut satırınızdan çalıştırın, örneğin `npm start` veya `node sentiment.js`.
 
 ```javascript
@@ -203,7 +203,7 @@ get_sentiments(documents);
 
 **Yaklaşım analizi yanıtı**
 
-Sonuç, 0,0 ' e daha yakınsa 1,0 ve negatif bir değer alıyorsa pozitif olarak ölçülür.
+Sonuç, 1.0'a yakın, negatif ise 0.0'a yakın puanlanırsa pozitif olarak ölçülür.
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 
 ```json
@@ -226,11 +226,11 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="extract-key-phrases"></a>Anahtar ifadeleri ayıklama
 
-Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Anahtar tümceciği ayıklama bir belgenin veya metnin ana noktalarını hızlı bir şekilde belirlemek için kullanılır. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtarı ifadeleri ayıklanır.
+Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Anahtar tümcecik ayıklama, belge veya metnin ana noktalarını hızlı bir şekilde tanımlamak için kullanılır. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtarı ifadeleri ayıklanır.
 
-1. En sevdiğiniz IDE 'de veya masaüstünüzdeki bir klasörde yeni bir Node. JS projesi oluşturun.
-1. Aşağıda belirtilen kodu yeni bir `.js` dosyasına ekleyin.
-1. Metin Analizi anahtarınızı ve uç noktanızı koda kopyalayın. 
+1. En sevdiğiniz IDE'de veya masaüstünüzde bir klasörde yeni bir Düğüm.JS projesi oluşturun.
+1. Aşağıda sağlanan kodu yeni `.js` bir dosyaya ekleyin.
+1. Metin Analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın. 
 1. Programı IDE veya komut satırınızdan çalıştırın, örneğin `npm start` veya `node key-phrases.js`.
 
 ```javascript
@@ -330,11 +330,11 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="identify-linked-entities"></a>Bağlantılı varlıkları tanımlama
 
-Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" türü `location`, vikipe bağlantısı `https://en.wikipedia.org/wiki/United_States`.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
+Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) metinden "Amerika Birleşik Devletleri" gibi sözcükler ayıklar ve ardından bu kelimenin (ler) türünü ve/veya Vikipedi bağlantısını verir. "Amerika Birleşik Devletleri" `location`için türü , Vikipedi `https://en.wikipedia.org/wiki/United_States`bağlantı ise .  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
-1. En sevdiğiniz IDE 'de veya masaüstünüzdeki bir klasörde yeni bir Node. JS projesi oluşturun.
-1. Aşağıda belirtilen kodu yeni bir `.js` dosyasına ekleyin.
-1. Metin analizi anahtarınızı ve uç noktanızı koda kopyalayın
+1. En sevdiğiniz IDE'de veya masaüstünüzde bir klasörde yeni bir Düğüm.JS projesi oluşturun.
+1. Aşağıda sağlanan kodu yeni `.js` bir dosyaya ekleyin.
+1. Metin analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın
 1. Programı IDE veya komut satırınızdan çalıştırın, örneğin `npm start` veya `node entities.js`.
 
 ```javascript

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: dapine
 ms.openlocfilehash: d020f69df9c65d96cd04ea2d0a5130d456b209f4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900469"
 ---
-Sağ tarafta doğrudan geçiş yapmayı tercih ediyorsanız, GitHub 'da tüm <a href="https://aka.ms/speech/github-java">konuşma SDK 'Sı Java örneklerini</a> görüntüleyin veya indirin. Aksi takdirde, haydi başlayalım.
+Hemen atlayış etmeyi tercih ederseniz, GitHub'daki tüm <a href="https://aka.ms/speech/github-java">Speech SDK Java Örneklerini</a> görüntüleyin veya indirin. Yoksa başlayalım.

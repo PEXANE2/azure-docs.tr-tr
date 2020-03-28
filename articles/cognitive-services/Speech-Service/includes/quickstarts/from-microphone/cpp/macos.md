@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma C++ , (MacOS)-konuşma hizmeti'
+title: 'Quickstart: Bir mikrofondan konuşmayı tanıma, C++ (macOS) - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: wolfma61
@@ -10,20 +10,20 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
 ms.openlocfilehash: 96836c494cdf8f3df1621ee0e2eea6c6f64a039c
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925852"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=macos)
-> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=macos)
+> * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
@@ -33,17 +33,17 @@ Başlamadan önce:
 
 1. Bu yeni dosyada `YourSubscriptionKey` dizesini Konuşma hizmeti abonelik anahtarınız ile değiştirin.
 
-1. `YourServiceRegion` dize, aboneliğinizle ilişkili bölgeden **bölge tanımlayıcısıyla** değiştirin [](https://aka.ms/speech/sdkregion) (örneğin, ücretsiz deneme aboneliği için `westus`).
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) Bölge `westus` **tanımlayıcısıyla** değiştirin (örneğin, ücretsiz deneme aboneliği için).
 
 > [!NOTE]
-> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
+> Konuşma SDK dil için en-us kullanarak tanıma varsayılan olacaktır, kaynak dil seçimi hakkında bilgi [için metin konuşma için kaynak dil belirtin](../../../../how-to-specify-source-language.md) bakın.
 
 ## <a name="build-the-app"></a>Uygulama oluşturma
 
 > [!NOTE]
 > Aşağıdaki komutları _tek bir komut satırı_ olarak girdiğinizden emin olun. Bunu yapmanın en kolay yolu, komutu her komutun yanındaki **Kopyala** düğmesini kullanarak kopyalayıp kabuk isteminize yapıştırmaktır.
 
-* Uygulamayı derlemek için aşağıdaki komutu çalıştırın.
+* Uygulamayı oluşturmak için aşağıdaki komutu çalıştırın.
 
   ```sh
   g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech

@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: Python platformu için konuşma SDK 'Sı kurulumu-konuşma hizmeti"
+title: 'Quickstart: Python platform kurulumu için Konuşma SDK - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmeti SDK 'Sı ile Python kullanmaya yönelik platformunuzu ayarlamak için bu kılavuzu kullanın.
+description: Konuşma hizmeti SDK ile Python kullanmak için platform kurmak için bu kılavuzu kullanın.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,42 +11,42 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925783"
 ---
-Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlamanızı istiyorsanız `pip install azure-cognitiveservices-speech`çalıştırın.
+Bu kılavuz, Python için [Konuşma SDK'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yüklenir olduğunu gösterir. Paket adının kendi başınızın başlamasını istiyorsanız, `pip install azure-cognitiveservices-speech`çalıştırın.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-- Python konuşma SDK 'Sı paketi, bu işletim sistemleri için kullanılabilir:
+- Python Speech SDK paketi bu işletim sistemleri için kullanılabilir:
   - Windows: x64 ve x86
-  - Mac: macOS X sürüm 10,12 veya üzeri
-  - Linux: Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8, x64 üzerinde
+  - Mac: macOS X sürüm 10.12 veya sonrası
+  - Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 x64 üzerinde
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Desteklenen Linux platformları, belirli kitaplıkların yüklü olmasını gerektirir (Güvenli Yuva Katmanı desteği için`libssl` ve ses desteği için `libasound2`). Bu kitaplıkların doğru sürümlerini yüklemek için gereken komutlar için aşağıdaki dağıtıma bakın.
+- Desteklenen Linux platformları belirli kitaplıkların (güvenli soket `libasound2` katmanı desteği ve ses desteği`libssl` için) yüklenmesini gerektirir. Bu kitaplıkların doğru sürümlerini yüklemek için gereken komutlar için aşağıdaki dağıtıma bakın.
 
-  - Ubuntu 'da gerekli paketleri yüklemek için aşağıdaki komutları çalıştırın:
+  - Ubuntu'da, gerekli paketleri yüklemek için aşağıdaki komutları çalıştırın:
 
         ```sh
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.0 libasound2
         ```
 
-  - 9\. yıl 'da, gerekli paketleri yüklemek için aşağıdaki komutları çalıştırın:
+  - Debian 9'da, gerekli paketleri yüklemek için aşağıdaki komutları çalıştırın:
 
         ```sh
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - RHEL/CentOS 8 ' de, gerekli paketleri yüklemek için aşağıdaki komutları çalıştırın:
+  - RHEL/CentOS 8'de, gerekli paketleri yüklemek için aşağıdaki komutları çalıştırın:
 
         ```sh
         sudo yum update
@@ -54,53 +54,53 @@ Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-service
         ```
 
 > [!NOTE]
-> RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
+> RHEL/CentOS 8'de [OpenSSL'in Linux için nasıl yapılandırılacağı](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yla ilgili talimatları uygulayın.
 
-- Windows 'ta, platformunuz için [Visual Studio C++ 2019 için Microsoft Visual yeniden dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gereklidir. Bunu ilk kez yüklemek, bu kılavuza devam etmeden önce Windows 'u yeniden başlatmanızı gerektirebilir.
-- Son olarak, [Python 3,5 ile 3,8](https://www.python.org/downloads/)arasında olmalıdır. Yüklemenizi denetlemek için bir komut istemi açın ve komut `python --version` yazın ve sonucu denetleyin. Doğru yüklenmişse, "Python 3.5.1" veya benzer bir yanıt alırsınız.
+- Windows'da, platformunuz [için Visual Studio 2019 için Microsoft Visual C++ Yeniden Dağıtılabilir'e](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) ihtiyacınız vardır. Bunu ilk kez yüklemenin, bu kılavuzla devam etmeden önce Windows'u yeniden başlatmanızı gerektirebileceğini unutmayın.
+- Ve son olarak, [Python 3.5-3.8](https://www.python.org/downloads/)gerekir. Yüklemenizi denetlemek için bir komut istemi `python --version` açın ve komutu yazın ve sonucu kontrol edin. Düzgün yüklenirse, "Python 3.5.1" veya benzeri bir yanıt alırsınız.
 
-## <a name="install-the-speech-sdk-from-pypi"></a>Pypı 'den konuşma SDK 'sını yükler
+## <a name="install-the-speech-sdk-from-pypi"></a>PyPI'den Konuşma SDK'sını yükleyin
 
-Kendi ortamınızı veya yapı araçlarınızı kullanıyorsanız, [Pypı](https://pypi.org/)'den konuşma SDK 'sını yüklemek için aşağıdaki komutu çalıştırın. Visual Studio Code kullanıcıları için, kılavuzlu yükleme için sonraki alt bölüme atlayın.
+Kendi ortamınızı kullanıyorsanız veya araçlar oluşturuyorsanız, [PyPI'den](https://pypi.org/)Konuşma SDK'sını yüklemek için aşağıdaki komutu çalıştırın. Visual Studio Code kullanıcıları için, kılavuzlu yükleme için bir sonraki alt bölüme atlayın.
 
 ```sh
 pip install azure-cognitiveservices-speech
 ```
 
-MacOS kullanıyorsanız, yukarıdaki `pip` komutunu almak için aşağıdaki komutu çalıştırmanız gerekebilir:
+macOS'taysanız, yukarıdaki komutun `pip` çalışması için aşağıdaki komutu çalıştırmanız gerekebilir:
 
 ```sh
 python3 -m pip install --upgrade pip
 ```
 
-`azure-cognitiveservices-speech`yüklemek için `pip` başarıyla kullandıysanız, ad alanını Python projelerinize aktararak konuşma SDK 'sını kullanabilirsiniz.
+Yüklemeyi `pip` `azure-cognitiveservices-speech`başarıyla kullandıktan sonra, Python projelerinize ad alanını aktararak Speech SDK'yı kullanabilirsiniz.
 
 ```py
 import azure.cognitiveservices.speech as speechsdk
 ```
 
-## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Visual Studio Code kullanarak konuşma SDK 'sını yükler
+## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Visual Studio Kodunu kullanarak Konuşma SDK'sını yükleyin
 
-1. Platformunuz için desteklenen en son [Python](https://www.python.org/downloads/) sürümünü indirip yükleyin, 3,5 3,8.
-   - Windows kullanıcıları, yükleme işlemi sırasında "yolunuza Python Ekle" seçeneğini belirlediğinizden emin olmanızı sağlar.
-1. [Visual Studio Code](https://code.visualstudio.com/Download)indirin ve yükleyin.
-1. Visual Studio Code açın ve Python uzantısını yükler. Menüden **dosya** > **tercihleri** > **uzantıları** ' nı seçin. **Python** için arama yapın ve **Install**'a tıklayın.
+1. [Python'un](https://www.python.org/downloads/) platformunuz için desteklenen en son sürümünü 3,5 ile 3,8 arasında indirin ve kurun.
+   - Windows kullanıcıları yükleme işlemi sırasında "PATH'inize Python ekle" seçeneğini seçtiğinizden emin olun.
+1. [Visual Studio Code'u](https://code.visualstudio.com/Download)indirin ve kurun.
+1. Visual Studio Kodunu açın ve Python uzantısını yükleyin. Menüden **Dosya** > **Tercihleri** > **Uzantıları'nı** seçin. **Python'u** arayın ve **Yükle'yi**tıklatın.
 
-   ![Python uzantısını yükler](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
+   ![Python uzantısını yükleme](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
-1. Ayrıca, Visual Studio Code içinden, tümleşik komut satırından konuşma SDK 'Sı Python paketini de yüklemelisiniz:
-   1. Bir Terminal açın (açılan menülerden, **terminal** > **Yeni terminalden**)
-   1. Açılan terminalde, komutu girin `python -m pip install azure-cognitiveservices-speech`
+1. Ayrıca Visual Studio Code içinden, tümleşik komut satırından Konuşma SDK Python paketini yükleyin:
+   1. Bir terminal açın (açılan menülerden, **Terminal** > **Yeni Terminal)**
+   1. Açılan terminalde, komutu girin`python -m pip install azure-cognitiveservices-speech`
 
-Visual Studio Code yeni kullanıyorsanız, daha kapsamlı [Visual Studio Code belgelerine](https://code.visualstudio.com/docs)bakın. Visual Studio Code ve Python hakkında daha fazla bilgi için bkz. [Visual Studio Code Python öğreticisi](https://code.visualstudio.com/docs/python/python-tutorial).
+Visual Studio Code'da yeniyseniz, daha kapsamlı [Visual Studio Code Dokümantasyonu'na](https://code.visualstudio.com/docs)bakın. Visual Studio Code ve Python hakkında daha fazla bilgi için [Visual Studio Code Python öğreticisi'ne](https://code.visualstudio.com/docs/python/python-tutorial)bakın.
 
-## <a name="support-and-updates"></a>Destek ve güncelleştirmeler
+## <a name="support-and-updates"></a>Destek ve güncellemeler
 
-Konuşma SDK 'Sı Python paketine yönelik güncelleştirmeler PyPI aracılığıyla dağıtılır ve [sürüm notlarında](~/articles/cognitive-services/speech-service/releasenotes.md)duyurulmuştur.
-Yeni bir sürüm varsa, bunu komut `pip install --upgrade azure-cognitiveservices-speech`ile güncelleştirebilirsiniz.
-`azure.cognitiveservices.speech.__version__` değişkenini inceleyerek Şu anda yüklü olan sürümü denetleyin.
+Konuşma SDK Python paketindeki güncellemeler PyPI üzerinden dağıtılır ve [Sürüm notlarında duyurulur.](~/articles/cognitive-services/speech-service/releasenotes.md)
+Yeni bir sürüm varsa, komutu `pip install --upgrade azure-cognitiveservices-speech`ile bunu güncelleyebilirsiniz.
+Değişkeni inceleyerek şu anda `azure.cognitiveservices.speech.__version__` hangi sürümün yüklü olduğunu denetleyin.
 
-Bir sorununuz varsa veya bir özellik eksikse, bkz. [destek ve yardım seçenekleri](~/articles/cognitive-services/speech-service/support.md).
+Bir sorununuz varsa veya bir özelliğiniz yoksa Destek [ve Yardım seçeneklerine](~/articles/cognitive-services/speech-service/support.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,83 +5,83 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
 ms.openlocfilehash: 02e0e1494a897b31cb6ef28083677fa48f854c91
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924767"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
+> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Kaynak dosyayı Azure blob'una yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 
-## <a name="open-your-project-in-eclipse"></a>Projenizi tutulma içinde açın
+## <a name="open-your-project-in-eclipse"></a>Eclipse'de projenizi açın
 
-İlk adım, projenizin Çakışan Küreler üzerinde açık olduğundan emin olmak.
+İlk adım, eclipse'de projenizin açık olduğundan emin olmaktır.
 
 1. Eclipse başlatma
-2. Projenizi yükleyin ve `Main.java`açın.
+2. Projenizi yükleyin `Main.java`ve açın.
 
-## <a name="add-a-reference-to-gson"></a>Gson 'a başvuru ekleme
-Bu hızlı başlangıçta bir dış JSON seri hale getirici/seri hale getirici kullanacağız. Java için [Gson](https://github.com/google/gson)' a seçtik.
+## <a name="add-a-reference-to-gson"></a>Gson'a referans ekleme
+Biz bu quickstart harici bir JSON serializer / deserializer kullanarak olacak. Java için [Gson'ı](https://github.com/google/gson)seçtik.
 
-Poz. XML dosyanızı açın ve aşağıdaki başvuruyu ekleyin.
+Pom.xml'inizi açın ve aşağıdaki başvuruyu ekleyin.
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
 
-Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
+Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>JSON sarmalayıcıları
+## <a name="json-wrappers"></a>JSON Sarmalayıcılar
 
-REST API JSON biçiminde istek alma ve ayrıca JSON 'daki sonuçları geri döndürme gibi yalnızca dizeleri kullanarak etkileşime girebiliriz ancak bu önerilmez.
-İsteklerin ve yanıtların yönetimini kolaylaştırmak için, JSON 'u serileştirmek/seri durumdan çıkarmak için kullanmak üzere birkaç sınıf tanımlayacağız.
+REST API's JSON formatında isteklerini almak ve aynı zamanda JSON sonuçları dönmek gibi biz sadece dizeleri kullanarak onlarla etkileşim olabilir, ama bu tavsiye edilmez.
+İstekleri ve yanıtları yönetmeyi kolaylaştırmak için, JSON'u seri hale getirmek / deserialize etmek için kullanmak üzere birkaç sınıf bildiririz.
 
-Devam edin ve `Main`önce bildirimlerini yerleştirin.
+Devam edin ve önce `Main`kendi beyanlarını koymak.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=15-93)]
 
-## <a name="create-and-configure-an-http-client"></a>Http Istemcisi oluşturma ve yapılandırma
-İhtiyaç duyduğumuz ilk şey, doğru temel URL ve kimlik doğrulama kümesine sahip bir http Istemcidir.
-Bu kodu `Main` [!code-javaekleyin [](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
+## <a name="create-and-configure-an-http-client"></a>Http İstemci oluşturma ve yapılandırma
+İhtiyacımız olan ilk şey, doğru temel URL'ye ve kimlik doğrulama kümesine sahip bir Http İstemcisi'dir.
+Bu kodu `Main` ekleme[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
 
-## <a name="generate-a-transcription-request"></a>Döküm isteği oluştur
-Ardından, döküm isteğini oluşturacağız. Bu kodu `Main` [!code-javaekleyin [](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
+## <a name="generate-a-transcription-request"></a>Transkripsiyon isteği oluşturma
+Sonra, transkripsiyon isteğini oluşturacağız. Bu kodu `Main`[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
 
-## <a name="send-the-request-and-check-its-status"></a>İsteği gönder ve durumunu denetle
-Artık isteği konuşma hizmetine gönderiyoruz ve ilk yanıt kodunu denetliyoruz. Bu yanıt kodu yalnızca hizmetin isteği aldığını gösterir. Hizmet, yanıt üst bilgilerinde, döküm durumunu depolayacağı konuma bir URL döndürür.
+## <a name="send-the-request-and-check-its-status"></a>İsteği gönderin ve durumunu kontrol edin
+Şimdi isteği Konuşma hizmetine postalıyoruz ve ilk yanıt kodunu kontrol ediyoruz. Bu yanıt kodu yalnızca hizmetin isteği alYıp almadığını gösterir. Hizmet, transkripsiyon durumunu depolayacak konumu olan yanıt başlıklarında bir Url döndürecektir.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=118-129)]
 
-## <a name="wait-for-the-transcription-to-complete"></a>Döküm işleminin tamamlanmasını bekleyin
-Hizmet, dökümü zaman uyumsuz olarak işlediğinden, her ne kadar her durumda yoklama yapması gerekir. Her 5 saniyede bir kontrol edeceğiz.
+## <a name="wait-for-the-transcription-to-complete"></a>Transkripsiyonun tamamlanmasını bekleyin
+Hizmet transkripsiyona eşit olarak işlediği için, bu durumun durumunu sık sık yoklamamız gerekir. Her 5 saniyede bir kontrol edeceğiz.
 
-İstek gönderildiğinde elde ettiğimiz URL 'deki içeriği alarak durumu kontrol edebilirsiniz. İçeriği geri edindiğimiz zaman, ile etkileşime geçmesini kolaylaştırmak için yardımcı sınıfımızın bir üyesi olarak seri durumdan çıkardık.
+İstek yayınlandığında aldığımız Url'deki içeriği alarak durumu kontrol edebiliriz. İçeriği geri aldığımızda, etkileşimi kolaylaştırmak için onu yardımcı sınıfımızdan birine dönüştürüruz.
 
-Başarılı bir tamamlama haricinde her şey için durum görüntüleme ile yoklama kodu aşağıda verilmiştir.
+İşte başarılı bir tamamlama dışında her şey için durum ekranlı anket kodu, biz bir dahaki sefere yapacağız.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=131-159,192-204)]
 
-## <a name="display-the-transcription-results"></a>Döküm sonuçlarını görüntüleme
-Hizmet başarıyla tamamlandığında, sonuçlar durum yanıtından elde ettiğimiz başka bir URL 'de depolanır.
+## <a name="display-the-transcription-results"></a>Transkripsiyon sonuçlarını görüntüleme
+Hizmet transkripsiyon başarıyla tamamlandıktan sonra sonuçlar durum yanıtı alabileceğimiz başka bir Url'de saklanır.
 
-Bu URL 'nin içeriğini indirecek, JSON serisini kaldıracak ve ekran metnini gittiğimiz şekilde gösteren sonuçlar boyunca döngü yapacağız.
+Bu URL'nin içeriğini indireceğiz, JSON'u deserialize edeceğiz ve görüntülerdeki metni yazdırırken sonuçları gözden geçireceğiz.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=6-160-190)]
 
-## <a name="check-your-code"></a>Kodunuzu denetleyin
-Bu noktada, kodunuz şuna benzemelidir: (Bu sürüme bazı açıklamalar ekledik) [! Code-Java [] (~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java]
+## <a name="check-your-code"></a>Kodunuzu kontrol edin
+Bu noktada, kodunuz şu şekilde görünmelidir: (Bu sürüme bazı yorumlar ekledik) [!code-java[](~/örnekler-bilişsel-hizmetler-konuşma-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java]
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
+Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma tanımamızı test etmeye hazırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

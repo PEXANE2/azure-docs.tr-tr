@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Azure REST API ve kıvrımlı bir görüntüdeki yüzeyleri algılama'
+title: 'Hızlı başlatma: Azure REST API ve cURL ile görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, görüntüdeki yüzeyleri algılamak için Azure yüz REST API kıvrımlı olarak kullanacaksınız.
+description: Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak için cURL'li Azure Yüz REST API'sini kullanırsınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 6a1a6d1fdce4853a2ac73f10eb4cf0a0505fa4c7
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165902"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Hızlı başlangıç: yüz REST API ve kıvrımlı kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Hızlı başlatma: Yüz REST API ve cURL kullanarak görüntüdeki yüzleri algılama
 
-Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini saptamak için Azure yüz REST API 'yi kıvrımlı olarak kullanacaksınız.
+Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için cURL'li Azure Yüz REST API'sini kullanırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
+- Yüz abonelik anahtarı. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ücretsiz deneme abonelik anahtarı alabilirsiniz. Veya Face hizmetine abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin.
 
 ## <a name="write-the-command"></a>Komutu yazın
  
-Yüz Tanıma API'si çağırmak ve bir görüntüden yüz öznitelik verileri almak için aşağıdaki gibi bir komut kullanacaksınız. İlk olarak, kodu bir metin düzenleyicisine kopyalayın&mdash;, çalıştırmadan önce komutun belirli kısımlarında değişiklik yapmanız gerekir.
+Yüz API'sini aramak ve görüntüden yüz özniteliği verileri almak için aşağıdaki gibi bir komut kullanırsınız. İlk olarak, kodu çalıştırabilmeniz için komutun belirli bölümlerinde değişiklik yapmanız gereken bir metin düzenleyicisine&mdash;kopyalayın.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
 ### <a name="subscription-key"></a>Abonelik anahtarı
-`<Subscription Key>` geçerli yüz abonelik anahtarınızla değiştirin.
+Geçerli `<Subscription Key>` Face abonelik anahtarınızla değiştirin.
 
-### <a name="face-endpoint-url"></a>Yüz uç noktası URL 'SI
+### <a name="face-endpoint-url"></a>Yüz uç noktası URL'si
 
-URL `https://<My Endpoint String>.com/face/v1.0/detect` Sorgulanacak Azure yüz uç noktasını belirtir. Bu URL 'nin ilk kısmını, abonelik anahtarınıza karşılık gelen uç noktayla eşleşecek şekilde değiştirmeniz gerekebilir.
+URL, `https://<My Endpoint String>.com/face/v1.0/detect` sorguiçin Azure Yüz bitiş noktasını gösterir. Bu URL'nin ilk bölümünü abonelik anahtarınıza karşılık gelen bitiş noktasıyla eşleşecek şekilde değiştirmeniz gerekebilir.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ### <a name="url-query-string"></a>URL sorgu dizesi
 
-Yüz uç nokta URL 'sinin sorgu dizesi alınacak yüz özniteliklerini belirtir. Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
+Face endpoint URL'sinin sorgu dizesi, alınacak özniteliklerin hangi sini olduğunu belirtir. Bu dizeyi, amacınıza bağlı olarak değiştirmek isteyebilirsiniz.
 
 ```
 ?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise
 ```
 
-### <a name="image-source-url"></a>Görüntü kaynağı URL 'SI
-Kaynak URL 'SI, giriş olarak kullanılacak resmi belirtir. Bunu, çözümlemek istediğiniz herhangi bir görüntüyü işaret ederek değiştirebilirsiniz.
+### <a name="image-source-url"></a>Resim kaynak URL'si
+Kaynak URL, giriş olarak kullanılacak resmi gösterir. Bunu, çözümlemek istediğiniz herhangi bir görüntüye işaret etmek için değiştirebilirsiniz.
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
@@ -61,7 +61,7 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 
 ## <a name="run-the-command"></a>Yeni bir “kurtarma VM’si” oluşturmak ve sorunlu VM’nin işletim sistemi diskini kurtarma VM’sine veri diski olarak takmak için
 
-Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve yeni komutu girin. Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz gerekir. Örneğin:
+Değişikliklerinizi yaptıktan sonra bir komut istemi açın ve yeni komutu girin. Konsol penceresinde JSON verisi olarak görüntülenen yüz bilgilerini görmeniz gerekir. Örnek:
 
 ```json
 [
@@ -157,7 +157,7 @@ Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve yeni komutu gi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure yüz hizmetini çağıran bir kıvrımlı komut yazdınız. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
+Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak ve özniteliklerini döndürmek için Azure Face hizmetini çağıran bir cURL komutu yazdınız. Ardından, daha fazla bilgi edinmek için Yüz API başvuru belgelerini keşfedin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API’si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Yüz API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

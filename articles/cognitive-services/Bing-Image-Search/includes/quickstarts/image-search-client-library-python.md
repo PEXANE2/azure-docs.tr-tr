@@ -1,5 +1,5 @@
 ---
-title: Bing Resim Arama Python istemci kitaplığı hızlı başlangıç
+title: Bing Resim Arama Python istemci kitaplığı hızlı başlat
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: e3dc3fd30d1eceab4b24b6699dd81a91bca51115
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899597"
 ---
-API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama istemci kitaplığını kullanarak ilk görüntünüzü aramanızı sağlamak için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL’sini görüntüler.
+API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Image Search istemci kitaplığını kullanarak ilk resim aramanızı yapmak için bu hızlı başlatmayı kullanın. Bu basit Python uygulaması, bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL’sini görüntüler.
 
-Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py)’da bulunabilir.
+Bu örnek için kaynak kodu, ek hata işleme ve ek açıklamalar ile [GitHub kullanılabilir.](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 2.7 veya 3.4](https://www.python.org/) ve üzeri.
 
-* Python için [Azure resim arama istemci kitaplığı](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/)
+* Python için [Azure Resim Arama istemci kitaplığı](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/)
     * `pip install azure-cognitiveservices-search-imagesearch` kullanarak yükleme
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]

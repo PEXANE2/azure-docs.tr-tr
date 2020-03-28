@@ -11,29 +11,31 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9a76d4f083c791bb1e3c29b4068c2f82f3cd0bc5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 21d8659e13506777f6045272f68c69dd63f09cf5
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973705"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244690"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Python kullanarak küçük resim oluşturma
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Quickstart: Computer Vision REST API ve Python kullanarak bir küçük resim oluşturun
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden küçük resim oluşturacaksınız. [Küçük resim al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) yöntemiyle, istenen yüksekliği ve genişliği belirtebilir ve görüntü işleme akıllı kırpma kullanarak ilgilendiğiniz alanı ve bu bölgeyi temel alan kırpma koordinatları oluşturabilir.
+Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir görüntüden küçük resim oluşturursunuz. Küçük [Resmi Al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) yöntemiyle, istediğiniz yükseklik ve genişliği belirtebilirsiniz ve Computer Vision, ilgi alanını akıllıca belirlemek ve o bölgeye göre kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/try/cognitive-services/) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/try/cognitive-services/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
-- [Visual Studio Code](https://code.visualstudio.com/download)gibi bir kod Düzenleyicisi.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
+- [Visual Studio Code](https://code.visualstudio.com/download)gibi bir kod düzenleyicisi.
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
-Örneği oluşturmak ve çalıştırmak için, kod düzenleyicisine aşağıdaki kodu kopyalayın. 
+Örneği oluşturmak ve çalıştırmak için aşağıdaki kodu kod düzenleyicisine kopyalayın. 
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline
@@ -73,7 +75,7 @@ plt.axis("off")
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 ```
 
-Sonra, şunları yapın:
+Ardından, aşağıdakileri yapın:
 1. `image_url` değerini isterseniz küçük resmini oluşturmak istediğiniz başka bir görüntünün URL'si ile de değiştirebilirsiniz.
 1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin, `get-thumbnail.py`.
 1. Bir komut istemi penceresi açın.
@@ -81,17 +83,17 @@ Sonra, şunları yapın:
 
 ## <a name="examine-the-response"></a>Yanıtı inceleme
 
-Başarılı bir yanıt, küçük resim için görüntü verilerini temsil eden ikili veriler olarak döndürülür. Örnek bu görüntüyü görüntülemelidir. İstek başarısız olursa, yanıt komut istemi penceresinde görüntülenir ve bir hata kodu içermelidir.
+Başarılı bir yanıt, küçük resim için görüntü verilerini temsil eden ikili veri olarak döndürülür. Örnek bu görüntüyü görüntülemelidir. İstek başarısız olursa, yanıt komut istemi penceresinde görüntülenir ve bir hata kodu içermelidir.
 
-## <a name="run-in-jupyter-optional"></a>Jupyıter 'da Çalıştır (isteğe bağlı)
+## <a name="run-in-jupyter-optional"></a>Jupyter'da çalıştırın (isteğe bağlı)
 
-Bu hızlı başlangıcı, [Myciltçi](https://mybinder.org)üzerinde bir Jupyter Not defteri kullanarak bir adım adım biçimde çalıştırabilirsiniz. Bağlayıcıyı başlatmak için aşağıdaki düğmeyi seçin:
+Bu hızlı başlangıcı [myBinder'da](https://mybinder.org)bir Jupyter dizüstü bilgisayar kullanarak adım adım olarak çalıştırabilirsiniz. Bağlayıcıyı başlatmak için aşağıdaki düğmeyi seçin:
 
-[![Bağlayıcı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Cilt](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha sonra, küçük resim oluşturma özelliği hakkında daha ayrıntılı bilgi edinin.
+Ardından, küçük resim oluşturma özelliği hakkında daha ayrıntılı bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Küçük resim oluşturma](../concept-generating-thumbnails.md)
+> [Küçük resimler oluşturma](../concept-generating-thumbnails.md)

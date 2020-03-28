@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: node. js için Özel Görüntü İşleme SDK 'Sı ile bir nesne algılama projesi oluşturma"
+title: 'Quickstart: Node.js için Özel Vizyon SDK ile bir nesne algılama projesi oluşturun'
 titleSuffix: Azure Cognitive Services
-description: Node. js SDK 'sını kullanarak bir proje oluşturun, Etiketler ekleyin, görüntü yükleyin, projenize eğitme yapın ve nesneleri algılayın.
+description: Bir proje oluşturun, etiket ekleyin, resim yükleyin, projenizi eğitin ve Düğüm.js SDK'yı kullanarak nesneleri algılayın.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705726"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Hızlı başlangıç: Özel Görüntü İşleme Node. js SDK 'Sı ile bir nesne algılama projesi oluşturma
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Quickstart: Özel Vizyon Düğümü.js SDK ile nesne algılama projesi oluşturma
 
-Bu makalede bir nesne algılama modeli oluşturmak için Node. js ile Özel Görüntü İşleme SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi Node. js uygulamanızı oluşturmak için bir şablon olarak kullanın.
+Bu makalede, bir nesne algılama modeli oluşturmak için Node.js ile Özel Vizyon SDK kullanarak başlamak için nasıl gösterir. Oluşturulduktan sonra, etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayınlanmış tahmin bitiş noktası URL'sini alabilir ve bir resmi programlı olarak sınamak için bitiş noktasını kullanabilirsiniz. Kendi Düğüm.js uygulamanızı oluşturmak için bu örneği şablon olarak kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Node. js 8](https://www.nodejs.org/en/download/) veya üzeri yüklü.
-- [NPM](https://www.npmjs.com/) yüklendi.
+- [Node.js 8](https://www.nodejs.org/en/download/) veya daha sonra yüklenir.
+- [npm](https://www.npmjs.com/) yüklendi.
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
@@ -34,7 +34,7 @@ Bu makalede bir nesne algılama modeli oluşturmak için Node. js ile Özel Gör
 
 ## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
 
-Projenize Node. js için Özel Görüntü İşleme Hizmeti SDK 'Ları yüklemek için aşağıdaki komutları çalıştırın:
+Projenizde Düğümler için Özel Görme hizmeti SDK'larını yüklemek için aşağıdaki komutları çalıştırın:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -43,11 +43,11 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>Kod ekleme
 
-Tercih ettiğiniz proje dizininde *Sample. js* adlı yeni bir dosya oluşturun.
+Tercih ettiğiniz proje dizininde *sample.js* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
-Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin ve sampleDataRoot Path değerini görüntü klasörü yolunuza ayarlayın. Uç nokta değerinin [Customvision.ai](https://www.customvision.ai/)adresinde oluşturduğunuz eğitim ve tahmin uç noktalarıyla eşleştiğinden emin olun. Nesne algılama ve görüntü sınıflandırma projesi oluşturma arasındaki farkın **CreateProject** çağrısında belirtilen etki alanı olduğunu unutmayın.
+Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin ve örnekDataRoot yol değerini resim klasörü yolunuza ayarlayın. endPoint değerinin [Customvision.ai](https://www.customvision.ai/)oluşturduğunuz eğitim ve tahmin uç noktalarıyla eşleştiğinden emin olun. Nesne algılama ve görüntü sınıflandırma projesi oluşturma arasındaki farkın **createProject** çağrısında belirtilen etki alanı olduğunu unutmayın.
 
 ```javascript
 const fs = require('fs');
@@ -86,7 +86,7 @@ async function asyncForEach (array, callback) {
 
 ### <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
 
-Projenize sınıflandırma etiketleri oluşturmak için, *Sample. js*' nin sonuna aşağıdaki kodu ekleyin:
+Projenize sınıflandırma etiketleri oluşturmak için *sample.js*sonuna aşağıdaki kodu ekleyin:
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
@@ -95,12 +95,12 @@ Projenize sınıflandırma etiketleri oluşturmak için, *Sample. js*' nin sonun
 
 ### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Nesne algılama projelerinde görüntüleri etiketlediğinizde etiketli her nesnenin bölgesini normalleştirilmiş koordinatları kullanarak belirtmeniz gerekir. 
+Nesne algılama projelerinde resimleri etiketlediğinizde, her etiketlenmiş nesnenin bölgesini normalleştirilmiş koordinatları kullanarak belirtmeniz gerekir. 
 
 > [!NOTE]
-> Bölgelerin koordinatlarını işaretlemek için bir tıklama ve sürükleme yardımcı programına sahip değilseniz, [Customvision.ai](https://www.customvision.ai/)adresindeki Web Kullanıcı arabirimini kullanabilirsiniz. Bu örnekte, koordinatlar zaten sağlanmış.
+> Bölgelerin koordinatlarını işaretlemek için tıkla ve sürükley yardımcı programınız yoksa, web Web Arama Sayfasını [Customvision.ai'da](https://www.customvision.ai/)kullanabilirsiniz. Bu örnekte, koordinatlar zaten sağlanmıştır.
 
-Projeye görüntüler, etiket ve bölgeler eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu öğretici için, bölgelerin kod ile satır içi doğrudan eklendiğini unutmayın. Bölgeler, sınırlayıcı kutuyu normalleştirilmiş koordinatlarıyla belirtir ve koordinatlar şu sırayla verilir: sol, üst, genişlik, yükseklik. Tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz.
+Projeye görüntüler, etiket ve bölgeler eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu öğretici için, bölgelerin kod ile satır içi doğrudan eklendiğini unutmayın. Bölgeler, sınırlayıcı kutuyu normalleştirilmiş koordinatlarıyla belirtir ve koordinatlar şu sırayla verilir: sol, üst, genişlik, yükseklik. Tek bir toplu iş halinde en fazla 64 resim yükleyebilirsiniz.
 
 ```javascript
 const forkImageRegions = {
@@ -179,9 +179,9 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>Projeyi eğitme ve yayımlama
+### <a name="train-the-project-and-publish"></a>Projeyi eğitin ve yayınlayın
 
-Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
+Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve sonra bu yinelemeyi tahmin bitiş noktasına yayımlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin bitiş noktasında kullanılamaz.
 
 ```javascript
 console.log("Training...");
@@ -201,7 +201,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Yayınlanan yinelemeyi tahmin bitiş noktasında alın ve kullanın
 
 Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın sonuna aşağıdaki kodu ekleyin:
 
@@ -221,7 +221,7 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-*Sample. js*' i çalıştırın.
+*Örnek.js*çalıştırın.
 
 ```shell
 node sample.js

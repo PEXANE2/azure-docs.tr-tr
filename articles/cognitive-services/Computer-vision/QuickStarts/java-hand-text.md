@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Görüntü İşleme 2,0 ve 2,1-Ayıkla ve el yazısı metin-REST, Java'
+title: 'Quickstart: Computer Vision 2.0 ve 2.1 - Basılı ve el yazısı metin ayıklama - REST, Java'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Java ile Görüntü İşleme API'si kullanarak bir görüntüden yazdırılmış ve el yazısı metni ayıkladığınızda.
+description: Bu hızlı başlangıçta, Java ile Bilgisayar Lı Vizyon API'sini kullanarak bir görüntüden yazdırılmış ve el yazısıyla metin ayıklarsınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,41 +12,41 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 15c84b0c4cd4311300b951c3bf86b2bd62d48bfd
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77566140"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Hızlı başlangıç: Görüntü İşleme 2,0 ve 2,1 REST API ve Java kullanarak yazdırılmış ve el yazısı metin Ayıkla
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Quickstart: Computer Vision 2.0 ve 2.1 REST API ve Java kullanarak basılı ve el yazısı metin ayıklama
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden yazdırılmış ve/veya el ile yazılmış metin ayıklayacaksınız. [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) ve [okuma işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) yöntemleriyle, görüntüdeki metni algılayabilir ve tanınan karakterleri makine tarafından okunabilen bir karakter akışına ayıklayabilirsiniz. API, her metin satırı için hangi tanıma modelinin kullanılacağını belirleyecek ve bu sayede hem yazdırılmış hem de el yazısı metinle birlikte görüntüleri destekler.
+Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir resimden basılı ve/veya el yazısıyla metin ayıklayacaktır. Toplu [İşlem Sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [Nuyöntemleriyle,](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) görüntüdeki metni algılayabilir ve tanınan karakterleri makine tarafından okunabilir bir karakter akışına ayıklayabilirsiniz. API, her metin satırı için hangi tanıma modelinin kullanılacağını belirler, böylece hem basılı hem de el yazısı metiniçeren görüntüleri destekler.
 
-Görüntü İşleme 2,0 ve 2,1 ile karşılaştırıldığında, Görüntü İşleme 3,0 genel önizlemesi şunları sağlar:
+Computer Vision 2.0 ve 2.1 ile karşılaştırıldığında, Computer Vision 3.0 Public Preview şunları sağlar:
 
-* daha da iyi doğruluk
-* değiştirilen bir çıkış biçimi
-* sözcüklerin Güvenirlik puanı
-* ek dil parametresiyle hem Ispanyolca hem de Ingilizce dil desteği
+* daha iyi doğruluk
+* değiştirilmiş bir çıktı biçimi
+* kelimeler için güven puanı
+* ek dil parametresi ile hem İspanyolca hem de İngilizce dil desteği
 
 #### <a name="version-2"></a>[Sürüm 2](#tab/version-2)
 
 > [!IMPORTANT]
-> [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının değerinde bir URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API 'sini temsil eden bu URI 'yi çağırabilirsiniz.
+> [Toplu Okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi eşsenkronize çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine, Toplu Okuma yöntemi `Operation-Location` yanıt üstbilgi alanının değerinde bir URI döndürür. Daha sonra, hem durumu denetlemek hem de Toplu Okuma yöntemi çağrısının sonuçlarını döndürmek için Bu URI'yi, [Okuma İşlemi Sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API'sini temsil eden bu URI'yi arayabilirsiniz.
 
-#### <a name="version-3-public-preview"></a>[Sürüm 3 (Genel Önizleme)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Sürüm 3 (Genel önizleme)](#tab/version-3)
 
 > [!IMPORTANT]
-> [Batch okuma](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının değerinde bir URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API 'sini temsil eden bu URI 'yi çağırabilirsiniz.
+> [Toplu Okuma](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) yöntemi eşsenkronize çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine, Toplu Okuma yöntemi `Operation-Location` yanıt üstbilgi alanının değerinde bir URI döndürür. Daha sonra, hem durumu denetlemek hem de Toplu Okuma yöntemi çağrısının sonuçlarını döndürmek için Bu URI'yi, [Okuma İşlemi Sonucu](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API'sini temsil eden bu URI'yi arayabilirsiniz.
 
 ---
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) bir hesap oluşturun.
 
 - [Java&trade; Platform, Standard Edition Geliştirme Seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8) yüklü olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
@@ -54,7 +54,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. Sık kullandığınız IDE veya düzenleyicide yeni bir Java projesi oluşturun. Seçenek yoksa, Java projesini bir komut satırı uygulaması şablondan oluşturun.
+1. Tercih ettiğiniz IDE veya düzenleyicide bir Java projesi oluşturun. Seçenek yoksa, Java projesini bir komut satırı uygulaması şablondan oluşturun.
 1. Aşağıdaki kitaplıkları Java projenize içeri aktarın. Maven kullanıyorsanız, her bir kitaplık için Maven koordinatları sağlanır.
    - [Apache HTTP istemcisi](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
    - [Apache HTTP çekirdek](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
@@ -76,8 +76,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    import org.json.JSONObject;
    ```
 
-1. `Main` ortak sınıfını aşağıdaki kodla değiştirin.
-1. İsteğe bağlı olarak, `imageToAnalyze` değerini, metin çıkarmak istediğiniz farklı bir görüntünün URL 'siyle değiştirin.
+1. `Main` Ortak sınıfı aşağıdaki kodla değiştirin.
+1. İsteğe bağlı olarak, `imageToAnalyze` metin ayıklamak istediğiniz farklı bir resmin URL'si ile değerini değiştirin.
 1. Kaydedin, ardından Java projesini derleyin.
 1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin, `java Main`.
 
@@ -192,11 +192,11 @@ public class Main {
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[Sürüm 3 (Genel Önizleme)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Sürüm 3 (Genel önizleme)](#tab/version-3)
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. Sık kullandığınız IDE veya düzenleyicide yeni bir Java projesi oluşturun. Seçenek yoksa, Java projesini bir komut satırı uygulaması şablondan oluşturun.
+1. Tercih ettiğiniz IDE veya düzenleyicide bir Java projesi oluşturun. Seçenek yoksa, Java projesini bir komut satırı uygulaması şablondan oluşturun.
 1. Aşağıdaki kitaplıkları Java projenize içeri aktarın. Maven kullanıyorsanız, her bir kitaplık için Maven koordinatları sağlanır.
    - [Apache HTTP istemcisi](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
    - [Apache HTTP çekirdek](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
@@ -218,9 +218,9 @@ public class Main {
     import org.json.JSONObject;
     ```
 
-1. `Main` ortak sınıfını aşağıdaki kodla değiştirin.
-1. İsteğe bağlı olarak, `language` değerini, tanımak istediğiniz dille değiştirin. Kabul edilen değerler şunlardır. Ingilizce ve "es" için "en" Ispanyolca.
-1. İsteğe bağlı olarak, `imageToAnalyze` değerini, metin çıkarmak istediğiniz farklı bir görüntünün URL 'siyle değiştirin.
+1. `Main` Ortak sınıfı aşağıdaki kodla değiştirin.
+1. İsteğe bağlı olarak, `language` değerini tanımak istediğiniz dille değiştirin. Kabul edilen değerler İngilizce için "en", İspanyolca için "es" olarak kabul edilir.
+1. İsteğe bağlı olarak, `imageToAnalyze` metin ayıklamak istediğiniz farklı bir resmin URL'si ile değerini değiştirin.
 1. Kaydedin, ardından Java projesini derleyin.
 1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin, `java Main`.
 
@@ -456,7 +456,7 @@ Text recognition result response:
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[Sürüm 3 (Genel Önizleme)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Sürüm 3 (Genel önizleme)](#tab/version-3)
 
 ```json
 {

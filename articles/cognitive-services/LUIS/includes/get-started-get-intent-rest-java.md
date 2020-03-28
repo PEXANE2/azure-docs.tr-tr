@@ -1,5 +1,5 @@
 ---
-title: Java 'da REST çağrısıyla amacı alın
+title: Java'da REST araması ile niyet edin
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,44 +9,44 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987823"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [JDK SE](https://aka.ms/azure-jdks)  (Java Geliştirme Seti, Standart Sürüm)
 * [Visual Studio Code](https://code.visualstudio.com/) veya en sevdiğiniz IDE
-* Ortak uygulama KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Genel uygulama kimliği:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Tahminler için LUSıS çalışma zamanı anahtarı oluşturma
+## <a name="create-luis-runtime-key-for-predictions"></a>Öngörüler için LUIS çalışma zamanı anahtarı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
-1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
-1. **Çalışma zamanı** anahtarı için tüm gerekli ayarları girin:
+1. [Azure portalında](https://portal.azure.com) oturum açma
+1. [Dil **Anlama Oluştur'u** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklatın
+1. **Runtime** tuşu için gerekli tüm ayarları girin:
 
     |Ayar|Değer|
     |--|--|
-    |Ad|İstenen ad (2-64 karakter)|
+    |Adı|İstenilen ad (2-64 karakter)|
     |Abonelik|Uygun aboneliği seçin|
     |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
-    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
+    |Fiyatlandırma Katmanı|`F0`- minimum fiyatlandırma katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçme|
 
-1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
-1. Yapılandırılmış `endpoint` ve bir `key`toplayın.
+1. **Oluştur'u** tıklatın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
+1. Yapılandırılmış `endpoint` ve bir `key`toplamak .
 
 ## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
-[Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucu almak için Java kullanın.
+[Tahmin bitiş noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve bir tahmin sonucu almak için Java'yı kullanın.
 
-1. `lib` adlı bir alt dizin oluşturun ve aşağıdaki Java LIBS ' de kopyalayın:
+1. Adlandırılmış `lib` bir alt dizini yapın ve aşağıdaki java libs'te kopyalayın:
 
-    * [Commons-logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [HttpClient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. `Predict.java` adlı bir dosyada bir sınıf oluşturmak için aşağıdaki kodu kopyalayın:
 
@@ -117,21 +117,21 @@ ms.locfileid: "76987823"
     }
     ```
 
-1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin **çalışma zamanı** anahtarınızla ve uç noktanızla değiştirin.
+1. `YOUR-KEY` Ve `YOUR-ENDPOINT` değerleri kendi tahmininizle **Runtime** tuşu ve bitiş noktasıile değiştirin.
 
     |Bilgi|Amaç|
     |--|--|
-    |`YOUR-KEY`|32 karakter tahmini **çalışma zamanı** anahtarınız.|
-    |`YOUR-ENDPOINT`| Tahmin URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|32 karakter tahmini **Runtime** anahtarınız.|
+    |`YOUR-ENDPOINT`| Tahmin URL bitiş noktanız. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 
-1. Komut satırından Java programını derleyin:
+1. Java programını komut satırından derle:
 
     ```console
     javac -cp ":lib/*" Predict.java
     ```
 
-1. Komut satırından Java programını çalıştırın:
+1. Java programını komut satırından çalıştırın:
 
     ```console
     java -cp ":lib/*" Predict
@@ -143,7 +143,7 @@ ms.locfileid: "76987823"
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Okunabilirlik için biçimlendirilen JSON yanıtı:
+    JSON yanıtı okunabilirlik için biçimlendirilmiş:
 
     ```JSON
     {
@@ -188,9 +188,9 @@ ms.locfileid: "76987823"
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin.
+Bu hızlı başlatmayı bitirdiğinizde, dosyayı dosya sisteminden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Java ile utterer ve tren ekleme](../get-started-get-model-rest-apis.md)
+> [Söz ekleme ve Java ile eğitim](../get-started-get-model-rest-apis.md)

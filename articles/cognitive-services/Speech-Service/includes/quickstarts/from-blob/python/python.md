@@ -5,95 +5,95 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
 ms.openlocfilehash: 646cce25efcbebab6229389f63912346e3712cdd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924854"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md)
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md)
+> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Kaynak dosyayı Azure blob'una yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
-## <a name="download-and-install-the-api-client-library"></a>API istemci kitaplığını indirme ve yükleme
+## <a name="download-and-install-the-api-client-library"></a>API istemci kitaplığını karşıdan yükleyin ve yükleyin
 
-Örneği yürütmek için, [Swagger](https://swagger.io)aracılığıyla oluşturulan REST API için Python kitaplığı oluşturmanız gerekir.
+Örneği yürütmek için [Swagger](https://swagger.io)aracılığıyla oluşturulan REST API için Python kitaplığını oluşturmanız gerekir.
 
 Yükleme için aşağıdaki adımları izleyin:
 
 1. https://editor.swagger.io kısmına gidin.
-1. **Dosya**' ya ve ardından **URL içeri aktar**' a tıklayın.
-1. Konuşma hizmeti aboneliğinizin bölgesi de dahil olmak üzere Swagger URL 'sini girin: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
-1. **Istemci oluştur** ' a tıklayın ve **Python**' ı seçin.
+1. **Dosya'yı**tıklatın, ardından **URL'yi Içe Aktar'ı**tıklatın.
+1. Konuşma hizmeti aboneliğiniz için bölge de dahil olmak `https://<your-region>.cris.ai/docs/v2.0/swagger`üzere Swagger URL'sini girin: .
+1. **İstemci Oluştur'u** tıklatın ve **Python'u**seçin.
 1. İstemci kitaplığını kaydedin.
-1. İndirilen Python-Client-generated. zip dosyasını dosya sisteminizde bir yere ayıklayın.
-1. PIP: `pip install path/to/package/python-client`kullanarak Python ortamınıza ayıklanan Python-Client modülünü yükler.
-1. Yüklü paketin adı `swagger_client`. Yüklemenin `python -c "import swagger_client"`komutu kullanılarak çalıştığını kontrol edebilirsiniz.
+1. İndirilen python istemcisi tarafından oluşturulan.zip'i dosya sisteminizin bir yerinde ayıklayın.
+1. Çıkarılan python istemcisi modülünü Pip kullanarak `pip install path/to/package/python-client`Python ortamınıza yükleyin: .
+1. Yüklenen paketadı `swagger_client`vardır. Yüklemenin komutu `python -c "import swagger_client"`kullanarak çalışıp çalışmadığını kontrol edebilirsiniz.
 
 > [!NOTE]
-> [Swagger yeniden oluşturmada bilinen bir hata](https://github.com/swagger-api/swagger-codegen/issues/7541)nedeniyle `swagger_client` paketini içeri aktarırken hatalarla karşılaşabilirsiniz.
-> Bu, satırı içerikle silerek düzeltilebilir
+> [Swagger otojenerasyonundaki bilinen](https://github.com/swagger-api/swagger-codegen/issues/7541)bir hata `swagger_client` nedeniyle, paketi alma konusunda hatalarla karşılaşabilirsiniz.
+> Bunlar, satırın içerikle birlikte silerek düzeltilebilir
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
 > ```
-> dosya `swagger_client/models/model.py` ve içeriğe sahip satır
+> dosyadan `swagger_client/models/model.py` ve içerikle birlikte satırdan
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
-> dosyası, yüklü paketin içinde `swagger_client/models/inner_error.py`. Hata mesajı, bu dosyaların yüklemenizin bulunduğu yer olduğunu bildirir.
+> yüklenen paketin `swagger_client/models/inner_error.py` içindeki dosyadan. Hata iletisi, yüklemeniz için bu dosyaların nerede bulunduğunu size gösterir.
 
-## <a name="install-other-dependencies"></a>Diğer bağımlılıkları yükler
+## <a name="install-other-dependencies"></a>Diğer bağımlılıkları yükleme
 
-Örnek, `requests` kitaplığını kullanır. Komutunu komutuyla yükleyebilirsiniz
+Örnek `requests` kitaplığı kullanır. Komutu ile yükleyebilirsiniz
 
 ```bash
 pip install requests
 ```
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
 
-Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
+Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="create-and-configure-an-http-client"></a>Http Istemcisi oluşturma ve yapılandırma
-İhtiyaç duyduğumuz ilk şey, doğru temel URL ve kimlik doğrulama kümesine sahip bir http Istemcidir.
-Bu kodu `transcribe` [!code-pythonekleyin [](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
+## <a name="create-and-configure-an-http-client"></a>Http İstemci oluşturma ve yapılandırma
+İhtiyacımız olan ilk şey, doğru temel URL'ye ve kimlik doğrulama kümesine sahip bir Http İstemcisi'dir.
+Bu kodu `transcribe` ekleme[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
 
-## <a name="generate-a-transcription-request"></a>Döküm isteği oluştur
-Ardından, döküm isteğini oluşturacağız. Bu kodu `transcribe` [!code-pythonekleyin [](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
+## <a name="generate-a-transcription-request"></a>Transkripsiyon isteği oluşturma
+Sonra, transkripsiyon isteğini oluşturacağız. Bu kodu `transcribe`[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
 
-## <a name="send-the-request-and-check-its-status"></a>İsteği gönder ve durumunu denetle
-Artık isteği konuşma hizmetine gönderiyoruz ve ilk yanıt kodunu denetliyoruz. Bu yanıt kodu yalnızca hizmetin isteği aldığını gösterir. Hizmet, yanıt üst bilgilerinde, döküm durumunu depolayacağı konuma bir URL döndürür.
+## <a name="send-the-request-and-check-its-status"></a>İsteği gönderin ve durumunu kontrol edin
+Şimdi isteği Konuşma hizmetine postalıyoruz ve ilk yanıt kodunu kontrol ediyoruz. Bu yanıt kodu yalnızca hizmetin isteği alYıp almadığını gösterir. Hizmet, transkripsiyon durumunu depolayacak konumu olan yanıt başlıklarında bir Url döndürecektir.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=65-73)]
 
-## <a name="wait-for-the-transcription-to-complete"></a>Döküm işleminin tamamlanmasını bekleyin
-Hizmet, dökümü zaman uyumsuz olarak işlediğinden, her ne kadar her durumda yoklama yapması gerekir. Her 5 saniyede bir kontrol edeceğiz.
+## <a name="wait-for-the-transcription-to-complete"></a>Transkripsiyonun tamamlanmasını bekleyin
+Hizmet transkripsiyona eşit olarak işlediği için, bu durumun durumunu sık sık yoklamamız gerekir. Her 5 saniyede bir kontrol edeceğiz.
 
-Bu konuşma hizmeti kaynağının işlediği tüm dökümlerini listelettireceğiz ve oluşturduğumuz bir arama yapacağız.
+Bu Konuşma hizmeti kaynağının işlediğimiz tüm transkripsiyonlarını sayısala erdireceğiz ve oluşturduğumuz transkripsiyonu arayacağız.
 
-Başarılı bir tamamlama haricinde her şey için durum görüntüleme ile yoklama kodu aşağıda verilmiştir.
+İşte başarılı bir tamamlama dışında her şey için durum ekranlı anket kodu, biz bir dahaki sefere yapacağız.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=75-94,99-112)]
 
-## <a name="display-the-transcription-results"></a>Döküm sonuçlarını görüntüleme
-Hizmet başarıyla tamamlandığında, sonuçlar durum yanıtından elde ettiğimiz başka bir URL 'de depolanır.
+## <a name="display-the-transcription-results"></a>Transkripsiyon sonuçlarını görüntüleme
+Hizmet transkripsiyon başarıyla tamamlandıktan sonra sonuçlar durum yanıtı alabileceğimiz başka bir Url'de saklanır.
 
-Burada, bu sonuç JSON ' i alır ve onu görüntüyoruz.
+Burada bu sonucu JSON olsun ve görüntülemek.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=95-98)]
 
-## <a name="check-your-code"></a>Kodunuzu denetleyin
-Bu noktada, kodunuz şuna benzemelidir: (Bu sürüme bazı açıklamalar ekledik) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
+## <a name="check-your-code"></a>Kodunuzu kontrol edin
+Bu noktada, kodunuz şu şekilde görünmelidir: (Bu sürüme bazı yorumlar ekledik)[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
+Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma tanımamızı test etmeye hazırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
 ms.openlocfilehash: 158e4dcd07f6ba31ad0efdd88f030f8db99fcfdd
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170024"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Hızlı Başlangıç: Özel Görüntü İşleme .NET SDK'sıyla görüntü sınıflandırma projesi oluşturma
 
-Bu makalede, Özel Görüntü İşleme SDK'sını C# ile kullanarak görüntü sınıflandırma modeli oluşturmaya başlarken size yardımcı olacak bilgiler ve örnek kod sağlanır. Oluşturulduktan sonra etiketler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Kendi .NET uygulamanızı oluştururken bu örneği şablon olarak kullanın. Kod _olmadan_ bir sınıflandırma modeli oluşturma ve kullanma sürecini yapmak istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](getting-started-build-a-classifier.md) bakın.
+Bu makalede, Özel Görüntü İşleme SDK'sını C# ile kullanarak görüntü sınıflandırma modeli oluşturmaya başlarken size yardımcı olacak bilgiler ve örnek kod sağlanır. Oluşturulduktan sonra etiketler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi .NET uygulamanızı oluşturmak için bir şablon olarak kullanın. Kodsuz bir sınıflandırma modeli oluşturma ve kullanma _without_ işleminden geçmek istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](getting-started-build-a-classifier.md) bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü
+- [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/) herhangi bir sürümü
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Özel Görüntü İşleme SDK’sını ve örnek kodu alma
+## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Özel Görüntü İşleme SDK 'sını ve örnek kodu alın
 
-Özel Görüntü İşleme kullanan bir .NET uygulaması yazmak için Özel Görüntü İşleme NuGet paketlerine ihtiyacınız olacaktır. Bu paketler, indirileceği örnek projeye dahildir, ancak bunlara ayrı ayrı erişebilirsiniz.
+Özel Görüntü İşleme kullanan bir .NET uygulaması yazmak için Özel Görüntü İşleme NuGet paketleri gerekir. Bu paketler, indirileceği örnek projeye dahildir, ancak bunlara ayrı ayrı erişebilirsiniz.
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
@@ -41,7 +41,7 @@ Bu Visual Studio projesi, [Özel Görüntü İşleme web sitesi](https://customv
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-_Program.cs_ dosyasını açın ve kodu inceleyin. Eğitim ve tahmin anahtarlarınız için sırasıyla `CUSTOM_VISION_TRAINING_KEY` ve `CUSTOM_VISION_PREDICTION_KEY`adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Betik bu değişkenlere bakar.
+_Program.cs_ dosyasını açın ve kodu inceleyin. Sırasıyla ve sırasıyla eğitim `CUSTOM_VISION_TRAINING_KEY` `CUSTOM_VISION_PREDICTION_KEY`ve tahmin anahtarlarınız için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) Komut dosyası bu değişkenleri arayacaktır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
 
@@ -53,7 +53,7 @@ Aşağıdaki kod satırları projenin birincil işlevini yürütür.
 
 ### <a name="create-a-new-custom-vision-service-project"></a>Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturma
 
-Oluşturulan proje, daha önce ziyaret ettiğiniz [Özel Görüntü İşleme web sitesinde](https://customvision.ai/) gösterilir. Projenizi oluştururken diğer seçenekleri belirtmek için [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) yöntemine bakın (sınıflandırıcı Web portalı [oluşturma](getting-started-build-a-classifier.md) kılavuzunda açıklanmıştır).   
+Oluşturulan proje, daha önce ziyaret ettiğiniz [Özel Görüntü İşleme web sitesinde](https://customvision.ai/) gösterilir. Projenizi oluştururken diğer seçenekleri belirtmek için [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) yöntemine bakın [(sınıflandırıcı](getting-started-build-a-classifier.md) web portalı oluştur kılavuzunda açıklanmıştır).   
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
 
@@ -63,13 +63,13 @@ Oluşturulan proje, daha önce ziyaret ettiğiniz [Özel Görüntü İşleme web
 
 ### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Bu projenin görüntüleri dahil edilmiştir. Bunlara, _Program.cs_'de **LoadImagesFromDisk** yönteminde başvurulur. Tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz.
+Bu projenin görüntüleri dahil edilmiştir. Bunlara, _Program.cs_'de **LoadImagesFromDisk** yönteminde başvurulur. Tek bir toplu iş halinde en fazla 64 resim yükleyebilirsiniz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 
-### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitme ve yayımlama
+### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitin ve yayımlayın
 
-Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Tahmin istekleri göndermek için yinelemenin adını kullanabilirsiniz. Bir yineleme, yayınlanana kadar tahmin uç noktasında kullanılamaz.
+Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve sonra bu yinelemeyi tahmin bitiş noktasına yayımlar. Tahmin istekleri göndermek için yinelemenin adını kullanabilirsiniz. Bir yineleme, yayınlanana kadar tahmin uç noktasında kullanılamaz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 
@@ -81,13 +81,13 @@ Tahmin uç noktası, bir görüntüyü geçerli modele göndermek ve sınıfland
 
 ### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>Varsayılan tahmin uç noktasına bir görüntü gönderme
 
-Bu betikte, test görüntüsü **LoadImagesFromDisk** yönteminde yüklenir ve modelin tahmin çıkışı konsolda görüntülenir. `publishedModelName` değişkenin değeri, Özel Görüntü İşleme portalının **performans** sekmesinde bulunan "Yayınlanan as" değerine karşılık gelmelidir. 
+Bu betikte, test görüntüsü **LoadImagesFromDisk** yönteminde yüklenir ve modelin tahmin çıkışı konsolda görüntülenir. `publishedModelName` Değişkenin değeri, Özel Vizyon portalının **Performans** sekmesinde bulunan "Yayımlanmış olarak" değerine karşılık gelmelidir. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulama çalışırken bir konsol penceresi açmalı ve aşağıdaki çıkışı yazmalıdır:
+Uygulama çalışırken, bir konsol penceresi açıp aşağıdaki çıktıyı yazmalıdır:
 
 ```console
 Creating new project:
@@ -106,7 +106,7 @@ Ardından test görüntüsünün (**Images/Test/** yolunda bulunur) düzgün eti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi kodda görüntü sınıflandırma işleminin her adımını nasıl yapacağınızı gördünüz. Bu örnek tek bir eğitim yinelemesi yürütür ama modelinizin daha doğru olmasını sağlamak için çoğunlukla birden çok kez eğitmeniz ve test etmeniz gerekecektir.
+Şimdi kod görüntü sınıflandırma sürecinin her adımı yapmak için nasıl gördüm. Bu örnek tek bir eğitim yinelemesi yürütür ama modelinizin daha doğru olmasını sağlamak için çoğunlukla birden çok kez eğitmeniz ve test etmeniz gerekecektir.
 
 > [!div class="nextstepaction"]
 > [Modeli test etme ve yeniden eğitme](test-your-model.md)

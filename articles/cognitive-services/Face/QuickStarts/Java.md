@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Azure REST API ve Java ile görüntüdeki yüzeyleri algılama'
+title: 'Hızlı başlatma: Azure REST API ve Java ile görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için Java ile REST API Azure yüz kullanacaksınız.
+description: Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak için Java içeren Azure Yüz REST API'sini kullanırsınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,39 +11,39 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: d6d0a5cdf4b33ba290042627f0ceaf4cf73a375c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169318"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Hızlı Başlangıç: REST API ve Java kullanarak bir görüntüdeki yüzleri algılama
 
-Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Java ile REST API Azure yüz kullanacaksınız.
+Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için Java ile Azure Yüz REST API'sini kullanırsınız.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
-- Dilediğiniz Java IDE.
+- Yüz abonelik anahtarı. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ücretsiz deneme abonelik anahtarı alabilirsiniz. Veya Face hizmetine abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin.
+- Seçtiğiniz herhangi bir Java IDE.
 
-## <a name="create-the-java-project"></a>Java projesi oluşturma
+## <a name="create-the-java-project"></a>Java projesini oluşturma
 
-1. IDE 'nize yeni bir komut satırı Java uygulaması oluşturun ve **Main** yöntemine sahip bir **ana** sınıf ekleyin.
+1. IDE'nizde yeni bir komut satırı Java uygulaması oluşturun ve **ana** yöntemle bir **Ana** sınıf ekleyin.
 1. Aşağıdaki kitaplıkları Java projenize içeri aktarın. Maven kullanıyorsanız, her bir kitaplık için Maven koordinatları sağlanır.
-   - [Apache HTTP istemcisi](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: HttpClient: 4.5.6)
-   - [Apache HTTP Core](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: httpcore: 4.4.10)
+   - [Apache HTTP istemcisi](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.6)
+   - [Apache HTTP çekirdek](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.10)
    - [JSON kitaplığı](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-   - [Apache Commons günlüğü](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (Commons günlük: Commons-Logging: 1.1.2)
+   - [Apache Commons günlüğü](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (commons-logging:commons-logging:1.1.2)
 
 ## <a name="add-face-detection-code"></a>Yüz algılama kodu ekleme
 
-Projenizin ana sınıfını açın. Burada, görüntüleri yüklemek ve yüzeyleri algılamak için gereken kodu ekleyeceksiniz.
+Projenizin ana sınıfını açın. Burada, görüntüleri yüklemek ve yüzleri algılamak için gereken kodu eklersiniz.
 
 ### <a name="import-packages"></a>Paketleri içeri aktarma
 
-Aşağıdaki `import` deyimlerini dosyanın en üstüne ekleyin.
+Aşağıdaki `import` ifadeleri dosyanın üstüne ekleyin.
 
 ```java
 // This sample uses Apache HttpComponents:
@@ -63,13 +63,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 ```
 
-### <a name="add-essential-fields"></a>Gerekli alanları Ekle
+### <a name="add-essential-fields"></a>Temel alanlar ekleme
 
-**Ana** sınıfı aşağıdaki kodla değiştirin. Bu veriler, yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` alanını abonelik anahtarınızın değeriyle güncelleştirmeniz ve `uriBase` dizesini doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. Ayrıca, `imageWithFaces` değerini farklı bir görüntü dosyasına işaret eden bir yol olarak ayarlamak isteyebilirsiniz.
+**Ana** sınıfı aşağıdaki kodla değiştirin. Bu veriler, Face hizmetine nasıl bağlanılacağını ve girdi verilerinin nereden alınacağını belirtir. `subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz ve dizeyi `uriBase` doğru bitiş noktası dizesini içerecek şekilde değiştirmeniz gerekir. `imageWithFaces` Ayrıca, değeri farklı bir resim dosyasına işaret eden bir yola ayarlamak isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-`faceAttributes` alanı yalnızca belirli öznitelik türlerinin bir listesidir. Algılanan yüzler hakkında hangi bilgilerin alınacağı belirler.
+Alan `faceAttributes` sadece belirli özniteliklerin bir listesidir. Algılanan yüzler hakkında hangi bilgilerin alınacağını belirtir.
 
 ```Java
 public class Main {
@@ -86,9 +86,9 @@ public class Main {
         "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 ```
 
-### <a name="call-the-face-detection-rest-api"></a>Yüz algılamayı çağırın REST API
+### <a name="call-the-face-detection-rest-api"></a>Yüz algılama REST API'yi arayın
 
-**Ana** yöntemi aşağıdaki kodla ekleyin. Uzak görüntüdeki yüz bilgilerini algılamak için Yüz Tanıma API'si bir REST çağrısı oluşturur (`faceAttributes` dizesi alınacak yüz özniteliklerini belirtir). Ardından, çıkış verilerini bir JSON dizesine yazar.
+Aşağıdaki kodu içeren **ana** yöntemi ekleyin. Uzak görüntüdeki yüz bilgilerini algılamak için Face API'ye `faceAttributes` REST çağrısı oluşturur (dize hangi yüz özniteliklerini alır) belirtir. Sonra çıktı verilerini JSON dizesine yazar.
 
 ```Java
     public static void main(String[] args) {
@@ -120,9 +120,9 @@ public class Main {
             HttpEntity entity = response.getEntity();
 ```
 
-### <a name="parse-the-json-response"></a>JSON yanıtını Ayrıştır
+### <a name="parse-the-json-response"></a>Ayrışdırış JSON yanıtı
 
-Önceki kodun hemen altına, döndürülen JSON verilerini konsola yazdırmadan önce daha kolay okunabilir bir biçime dönüştüren aşağıdaki bloğu ekleyin. Son olarak, try-catch bloğunu, **Main** yöntemini ve **ana** sınıfı kapatın.
+Önceki kodun hemen altına, döndürülen JSON verilerini konsola yazdırmadan önce daha kolay okunabilir bir biçime dönüştüren aşağıdaki bloğu ekleyin. Son olarak, try-catch bloğunu, **ana** yöntemi ve **Ana** sınıfı kapatın.
 
 ```Java
             if (entity != null)
@@ -154,7 +154,7 @@ public class Main {
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-Kodu derleyin ve çalıştırın. Başarılı bir yanıt, yüz verilerini konsol penceresinde kolay okunabilir JSON biçiminde görüntüler. Örneğin:
+Kodu derle ve çalıştır. Başarılı bir yanıt, Yüz verilerini konsol penceresinde kolayca okunabilir JSON formatında görüntüler. Örnek:
 
 ```json
 [{
@@ -248,7 +248,7 @@ Kodu derleyin ve çalıştırın. Başarılı bir yanıt, yüz verilerini konsol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak ve özniteliklerini döndürmek için Azure Yüz Tanıma API'si REST çağrılarını kullanan basit bir Java konsol uygulaması oluşturdunuz. Daha sonra, Android uygulamasında bu işlevle daha fazlasını yapmayı öğrenin.
+Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak ve özniteliklerini döndürmek için Azure Yüz API'sine REST çağrıları kullanan basit bir Java konsolu uygulaması oluşturdunuz. Ardından, bir Android uygulamasında bu işlevsellikle nasıl daha fazlasını yapacağınızı öğrenin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: yüzeyleri algılamak ve çerçeveye eklemek için bir Android uygulaması oluşturma](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Öğretici: Yüzleri algılamak ve çerçevelemek için bir Android uygulaması oluşturun](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

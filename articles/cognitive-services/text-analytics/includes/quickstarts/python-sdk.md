@@ -2,49 +2,49 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0803a847e9e864b361917df9f1a9c6b059ca2fe9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 617ab4114fd200c0b4306e3c27825bafe06b1764
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203449"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80240134"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
-[v3 Başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [v3 Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 Paketi (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 Örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3 Referans dokümantasyon](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [v3 Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 Paketi (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 Örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-[v2 Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [v2 Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2 Paketi (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 Örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[v2 Referans dokümantasyon](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [v2 Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2 Paketi (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 Örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği - [Ücretsiz olarak oluşturun](https://azure.microsoft.com/free/)
+* Azure aboneliği - [Ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* Azure aboneliğinizi oluşturduktan sonra, anahtarınızı ve uç noktanızı almak için Azure portalda <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Metin Analizi kaynağı oluşturun"  target="_blank">Metin Analizi kaynağı oluşturun <span class="docon docon-navigate-external x-hidden-focus"></span></a>. 
-    * Uygulamanızı Metin Analizi API’sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu hızlı başlangıçta daha sonra yapacaksınız.
-    * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyebilir ve daha sonra üretim için ücretli bir katmana yükseltebilirsiniz.
+* Azure aboneliğinizi aldıktan <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="sonra, Anahtar ve"  target="_blank">bitiş noktanızı <span class="docon docon-navigate-external x-hidden-focus"></span> </a> almak için Azure portalında bir Metin Analizi kaynağı oluşturun. Dağıtıladıktan sonra **kaynağa git'i**tıklatın.
+    * Uygulamanızı Text Analytics API'sine bağlamak için oluşturduğunuz kaynaktan gelen anahtar ve bitiş noktasına ihtiyacınız olacaktır. Anahtarınızı ve bitiş noktanızı daha sonra hızlı başlatmada aşağıdaki koda yapıştıracaksınız.
+    * Hizmeti denemek için ücretsiz`F0`fiyatlandırma katmanını kullanabilir ve daha sonra üretim için ücretli bir katmana yükseltebilirsiniz.
 
 ## <a name="setting-up"></a>Ayarlama
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükleme
 
-Python yükledikten sonra şunları kullanarak istemci kitaplığını yükleyebilirsiniz:
+Python'u yükledikten sonra istemci kitaplığını aşağıdakilerle yükleyebilirsiniz:
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
 ```console
 pip install azure-ai-textanalytics
 ```
 
 > [!TIP]
-> Tüm hızlı başlangıç kodunu aynı anda görüntülemek mi istiyorsunuz? Bunu, bu hızlı başlangıçtaki kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py)’da bulabilirsiniz. 
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek ister misiniz? Bu hızlı başlatmada kod örneklerini içeren [GitHub'da](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py)bulabilirsiniz. 
 
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
@@ -53,13 +53,13 @@ pip install --upgrade azure-cognitiveservices-language-textanalytics
 ```
 
 > [!TIP]
-> Tüm hızlı başlangıç kodunu aynı anda görüntülemek mi istiyorsunuz? Bunu, bu hızlı başlangıçtaki kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)’da bulabilirsiniz. 
+> Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek ister misiniz? Bu hızlı başlatmada kod örneklerini içeren [GitHub'da](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)bulabilirsiniz. 
 
 ---
 
-### <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
+### <a name="create-a-new-python-application"></a>Yeni bir python uygulaması oluşturma
 
-Yeni bir Python dosyası oluşturun ve kaynağınızın Azure uç noktası abonelik anahtarına yönelik değişkenler oluşturun.
+Yeni bir Python dosyası oluşturun ve kaynağınızın Azure bitiş noktası ve abonelik anahtarı için değişkenler oluşturun.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -71,38 +71,38 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="object-model"></a>Nesne modeli
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
-Metin Analizi istemcisi, anahtarınızı kullanarak Azure’da kimlik doğrulaması yapan bir `TextAnalyticsClient` nesnesidir. İstemci, metni bir toplu iş olarak analiz etmeye yönelik çeşitli yöntemler sunar. 
+Text Analytics istemcisi, anahtarınızı kullanarak Azure'a doğrulayan bir `TextAnalyticsClient` nesnedir. İstemci, metni toplu olarak çözümleme için çeşitli yöntemler sağlar. 
 
-Toplu iş metni, kullanılan yönteme bağlı olarak `id`, `text`ve `language` özniteliklerinin bir birleşimini içeren `dictionary` nesneleri olan bir `documents` listesi olarak API’ye gönderildiğinde. `text` özniteliği, kaynak `language` içinde analiz edilecek metni depolar ve `id` herhangi bir değer olabilir. 
+Toplu işleme metni, kullanılan yönteme bağlı `documents`olarak , `dictionary` , ve `id` `text` `language` özniteliklerin birleşimini içeren nesneler listesi olarak API'ye gönderildiğinde. Öznitelik, `text` metnin kaynağında `language`çözümlenecek metni depolar ve herhangi bir değer `id` olabilir. 
 
-Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listedir. 
+Yanıt nesnesi, her belge için çözümleme bilgilerini içeren bir listedir. 
 
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-Metin Analizi istemcisi, anahtarınızı kullanarak Azure’da kimlik doğrulaması yapan bir [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) nesnesidir. İstemci, tek bir dize veya bir toplu iş olarak metni çözümlemek için çeşitli yöntemler sağlar. 
+Text Analytics istemcisi, anahtarınızı kullanarak Azure'a doğrulayan bir [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) nesnesidir. İstemci, metni tek bir dize veya toplu iş olarak çözümleme için çeşitli yöntemler sağlar. 
 
-Metin, kullanılan yönteme bağlı olarak `id`, `text`ve `language` özniteliklerinin bir birleşimini içeren `dictionary` nesneleri olan bir `documents` listesi olarak API’ye gönderilir. `text` özniteliği, kaynak `language` içinde analiz edilecek metni depolar ve `id` herhangi bir değer olabilir. 
+Metin, kullanılan yönteme bağlı olarak `documents`, `dictionary` , ve `id` `text` `language` özniteliklerin birleşimini içeren nesneler listesi olarak API'ye gönderilir. Öznitelik, `text` metnin kaynağında `language`çözümlenecek metni depolar ve herhangi bir değer `id` olabilir. 
 
 ---
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşağıdaki görevlerin nasıl yapıldığını gösterir:
+Bu kod parçacıkları, Python için Text Analytics istemci kitaplığıyla aşağıdaki görevleri nasıl yapacağınızı gösterir:
 
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Yaklaşım Analizi](#sentiment-analysis)
+* [İstemcinin kimliğini doğrula](#authenticate-the-client)
+* [Duygusallık Analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Adlandırılmış Varlık tanıma](#named-entity-recognition-ner) 
 * [Varlık bağlama](#entity-linking)
-* [Anahtar ifade ayıklama](#key-phrase-extraction)
+* [Anahtar tümcecik çıkarma](#key-phrase-extraction)
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
-Yukarıda oluşturduğunuz `key` ve `endpoint` öğeleriyle `TextAnalyticsClient` nesnesinin örneğini oluşturmak için bir işlev oluşturun. Ardından yeni bir istemci oluşturun. 
+Yukarıda oluşturulmuş ve `TextAnalyticsClient` `key` `endpoint` nesneyi anında anımsamak için bir işlev oluşturun. Sonra yeni bir istemci oluşturun. 
 
 ```python
 from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiKeyCredential
@@ -120,7 +120,7 @@ client = authenticate_client()
 
 [!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
-Yukarıda oluşturduğunuz `key` ve `endpoint` öğeleriyle `TextAnalyticsClient` nesnesinin örneğini oluşturmak için bir işlev oluşturun. Ardından yeni bir istemci oluşturun. 
+Yukarıda oluşturulmuş ve `TextAnalyticsClient` `key` `endpoint` nesneyi anında anımsamak için bir işlev oluşturun. Sonra yeni bir istemci oluşturun. 
 
 [!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
 
@@ -128,9 +128,9 @@ Yukarıda oluşturduğunuz `key` ve `endpoint` öğeleriyle `TextAnalyticsClient
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
-İstemciyi bir bağımsız değişken olarak alan ve `analyze_sentiment()` işlevini arayan `sentiment_analysis_example()` adlı yeni bir işlev oluşturun. Döndürülen yanıt nesnesi yaklaşım etiketini, tüm giriş belgesinin puanını ve her cümleye yönelik yaklaşım analizini içerir.
+İstemciyi bağımsız `sentiment_analysis_example()` değişken olarak alan, ardından `analyze_sentiment()` işlevi çağıran yeni bir işlev oluşturun. Döndürülen yanıt nesnesi, tüm giriş belgesinin duyarlılık etiketini ve puanını ve her cümle için bir duygu analizini içerir.
 
 
 ```python
@@ -180,7 +180,7 @@ Negative=0.02
 
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-Bir istemci nesnesinin kimliğini doğrulayın ve [sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) nesnesini çağırın. Sonuçları yineleyin ve her belgenin kimliğini ve yaklaşım puanını yazdırın. 0’a yakın puanlar negatif yaklaşımı, 1’e yakın puanlar ise pozitif yaklaşımı gösterir.
+İstemci nesnesini doğrula ve [duyarlılık()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) işlevini çağırın. Sonuçları yineleyin ve her belgenin kimliğini ve duyarlılık puanını yazdırın. 0'a yakın bir puan olumsuz bir duyguyu gösterirken, 1'e yakın bir puan olumlu bir duyguyu gösterir.
 
 [!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
 
@@ -197,12 +197,12 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Dil algılama
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
-İstemciyi bir bağımsız değişken olarak alıp `detect_language()` işlevini çağıran `language_detection_example()` adlı yeni bir işlev oluşturun. Döndürülen yanıt nesnesi başarılı olursa `primary_language` öğesinde algılanan dili içerir. Nesne başarısız olursa bir `error` içerir.
+İstemciyi bağımsız `language_detection_example()` değişken olarak alan, ardından `detect_language()` işlevi çağıran yeni bir işlev oluşturun. Döndürülen yanıt nesnesi, `primary_language` başarılı olursa algılanan `error` dili ve başarısız olursa içermez.
 
 > [!Tip]
-> Bazı durumlarda girişi temel alarak dilleri netleştirmek zor olabilir. 2 harfli bir ülke kodu belirtmek için `country_hint` parametresini kullanabilirsiniz. API, countryHint için varsayılan olarak “US”değerini kullanır. Bu davranışı kaldırmak için bu değeri boş dize `country_hint : ""` olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz. 
+> Bazı durumlarda girişe göre dilleri ayrıştırmak zor olabilir. Parametreyi `country_hint` 2 harfli ülke kodu belirtmek için kullanabilirsiniz. Varsayılan olarak API varsayılan countryHint olarak "ABD" kullanıyor, bu davranışı kaldırmak için bu değeri boş `country_hint : ""`dize için ayarlayarak bu parametreyi sıfırlayabilirsiniz. 
 
 ```python
 def language_detection_example(client):
@@ -225,7 +225,7 @@ Language:  French
 
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-Daha önce oluşturulan istemciyi kullanarak [detect_language ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) öğesini çağırın ve sonucu alın. Ardından, sonuçları yineleyip her belgenin kimliğini ve ilk döndürülen dili yazdırın.
+Daha önce oluşturulan istemciyi [kullanarak, detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) numaralı telefonu arayın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin kimliğini ve ilk döndürülen dili yazdırın.
 
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
@@ -240,16 +240,16 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Adlandırılmış Varlık Tanıma (NER)
+## <a name="named-entity-recognition-ner"></a>Adlandırılmış Varlık tanıma (NER)
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
 > [!NOTE]
-> `3.0-preview` sürümünde:
+> Sürümde `3.0-preview`:
 > * NER, kişisel bilgileri algılamak için ayrı yöntemler içerir. 
-> * Varlık bağlama, NER’den ayrı bir istektir.
+> * Varlık bağlama NER'den ayrı bir istektir.
 
-İstemciyi bir bağımsız değişken olarak alıp `recognize_entities()` işlevini çağıran ve sonuçları yineleyen `entity_recognition_example` adlı yeni bir işlev oluşturun. Döndürülen yanıt nesnesi başarılı olursa `entity` öğesindeki algılanan varlıkların listesini içerir. Nesne başarısız olursa bir `error` içerir. Algılanan her varlık için varlığa ilişkin Kategori ve Alt kategoriyi (varsa) yazdırın.
+İstemciyi bağımsız `entity_recognition_example` değişken olarak alan, ardından `recognize_entities()` işlevi çağıran ve sonuçları yineleyen yeni bir işlev oluşturun. Döndürülen yanıt nesnesi, başarılı `entity` olursa algılanan varlıkların `error` listesini ve başarısız olursa listesini içerir. Algılanan her varlık için varsa Kendi Kategorisini ve Alt Kategorisini yazdırın.
 
 ```python
 def entity_recognition_example(client):
@@ -280,9 +280,9 @@ Named Entities:
     Length:          9      Confidence Score:        0.8
 ```
 
-## <a name="using-ner-to-detect-personal-information"></a>Kişisel bilgileri algılamak için NER kullanma
+## <a name="using-ner-to-detect-personal-information"></a>Kişisel bilgileri algılamak için NER'i kullanma
 
-İstemciyi bir bağımsız değişken olarak alıp `recognize_pii_entities()` işlevini çağıran ve sonucu alan `entity_pii_example()` adlı yeni bir işlev oluşturun. Ardından sonuçları yineleyin ve varlıkları yazdırın.
+İstemciyi bağımsız `entity_pii_example()` değişken olarak alan, ardından `recognize_pii_entities()` işlevi çağıran ve sonucu alan yeni bir işlev oluşturun. Ardından sonuçları yineleyin ve varlıkları yazdırın.
 
 ```python
 def entity_pii_example(client):
@@ -311,7 +311,7 @@ Personally Identifiable Information Entities:
 
 ## <a name="entity-linking"></a>Varlık Bağlama
 
-İstemciyi bir bağımsız değişken olarak alıp `recognize_linked_entities()` işlevini çağıran ve sonuçları yineleyen `entity_linking_example()` adlı yeni bir işlev oluşturun. Döndürülen yanıt nesnesi başarılı olursa `entities` öğesindeki algılanan varlıkların listesini içerir. Nesne başarısız olursa bir `error` içerir. Bağlı varlıklar benzersiz olarak tanımlandıkları için aynı varlıkların oluşumu `match` nesnelerinin listesi olarak bir `entity` nesnesinde gruplandırılır.
+İstemciyi bağımsız `entity_linking_example()` değişken olarak alan, ardından `recognize_linked_entities()` işlevi çağıran ve sonuçları yineleyen yeni bir işlev oluşturun. Döndürülen yanıt nesnesi, başarılı `entities` olursa algılanan varlıkların `error` listesini ve başarısız olursa listesini içerir. Bağlı varlıklar benzersiz olarak tanımlandığından, aynı varlığın oluşumları `entity` `match` nesnelerin listesi olarak bir nesne altında gruplandırılır.
 
 ```python
 def entity_linking_example(client):
@@ -390,9 +390,9 @@ Linked Entities:
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
 > [!NOTE]
-> Sürüm 2.1’de, varlık bağlama NER yanıtına dahil edilir.
+> Sürüm 2.1'de, varlık bağlantısı NER yanıtına dahildir.
 
-Daha önce oluşturulan istemciyi kullanarak [entities()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) işlevini çağırın ve sonucu alın. Ardından, sonuçları yineleyip her belgenin kimliğini ve bunun içerdiği varlıkları yazdırın.
+Daha önce oluşturulan istemciyi [kullanarak, varlıkları()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) işlevini arayın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin kimliğini ve içinde bulunan varlıkları yazdırın.
 
 [!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
 
@@ -440,9 +440,9 @@ Document ID: 2
 ## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
-İstemciyi bir bağımsız değişken olarak alıp `extract_key_phrases()` işlevini çağıran `key_phrase_extraction_example()` adlı yeni bir işlev oluşturun. Sonuç başarılı olursa `key_phrases` öğesindeki algılanan anahtar ifadelerin listesini içerir. Sonuç başarısız olursa bir `error` içerir. Algılanan tüm anahtar ifadeleri yazdırın.
+İstemciyi bağımsız `key_phrase_extraction_example()` değişken olarak alan, ardından `extract_key_phrases()` işlevi çağıran yeni bir işlev oluşturun. Sonuç, başarılı `key_phrases` olursa algılanan anahtar tümceciklerin listesini `error` ve başarısız olursa listesini içerir. Algılanan anahtar tümcecikleri yazdırın.
 
 ```python
 def key_phrase_extraction_example(client):
@@ -476,7 +476,7 @@ key_phrase_extraction_example(client)
 
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
 
-Daha önce oluşturulan istemciyi kullanarak [key_phrases ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyip her belgenin kimliğini ve bunun içerdiği anahtar ifadeleri yazdırın.
+Daha önce oluşturulan istemciyi [kullanarak, key_phrases()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) işlevini arayın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin kimliğini ve içinde bulunan anahtar tümcecikleri yazdırın.
 
 [!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
 

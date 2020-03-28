@@ -11,42 +11,42 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77372049"
 ---
-Python için Language Understanding (LUSıS) yazma istemci kitaplığını şu şekilde kullanın:
+Python için İstemci kitaplığını yazan Dil Anlayışını (LUIS) kullanın:
 
-* Uygulama oluşturun.
-* Amaç, varlık ve örnek ekleme.
-* Tümcecik listesi gibi özellikler ekleme.
-* Bir uygulamayı eğitme ve yayımlama.
+* Bir uygulama oluşturun.
+* Niyetler, varlıklar ve örnek söz lerle ekleyin.
+* İfade listesi gibi özellikler ekleyin.
+* Bir uygulamayı eğitin ve yayınlayın.
 
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [yazma paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
+[Referans belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [Yazma Paketi (Pypi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [Örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Language Understanding (LUSıS) portal hesabı: [ücretsiz bir tane oluşturun](https://www.luis.ai).
-* [Python 3. x](https://www.python.org/)
+* Dil Anlama (LUIS) portal hesabı: [Ücretsiz bir oluşturun.](https://www.luis.ai)
+* [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUSıS) başlangıç anahtarınızı alın
+### <a name="get-your-language-understanding-luis-starter-key"></a>Dil Anlayışınızı (LUIS) başlangıç anahtarınızı alın
 
-Bir LUSıS yazma kaynağı oluşturarak [Başlangıç anahtarınızı](../luis-how-to-azure-subscription.md#starter-key) alın. Bir sonraki adımda anahtarınızı ve anahtarın bölgesini saklayın.
+Bir LUIS yazma kaynağı oluşturarak [başlangıç anahtarınızı](../luis-how-to-azure-subscription.md#starter-key) alın. Anahtarınızı ve anahtarın bulunduğu bölgeyi bir sonraki adım için saklayın.
 
-### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
+### <a name="create-an-environment-variable"></a>Bir ortam değişkeni oluşturma
 
-Anahtarınızı ve anahtarın bölgesini kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
+Anahtarınızı ve anahtar için bölgeyi kullanarak kimlik doğrulaması için iki ortam değişkeni oluşturun:
 
-* `LUIS_AUTHORING_KEY`-isteklerinizin kimliğini doğrulamak için kaynak anahtarı.
-* `LUIS_REGION`-anahtarınızla ilişkili bölge. Örneğin, `westus`.
+* `LUIS_AUTHORING_KEY`- İsteklerinizi doğrulamak için kaynak anahtarı.
+* `LUIS_REGION`- Anahtarınızla ilişkili bölge. Örneğin, `westus`.
 
-İşletim sisteminiz için yönergeleri kullanın.
+İşletim sisteminiziçin yönergeleri kullanın.
 
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
@@ -55,7 +55,7 @@ setx LUIS_REGION <replace-with-your-luis-region>
 
 Ortam değişkenini ekledikten sonra konsol penceresini yeniden başlatın.
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
@@ -64,9 +64,9 @@ export LUIS_REGION=<replace-with-your-luis-region>
 
 Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[Macos](#tab/unix)
 
-`.bash_profile`düzenleyin ve ortam değişkenini ekleyin:
+'nizi `.bash_profile`ve ortam değişkenini ekleyin:
 
 ```bash
 export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
@@ -76,9 +76,9 @@ export LUIS_REGION=<replace-with-your-luis-region>
 Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source .bash_profile` çalıştırın.
 ***
 
-### <a name="install-the-python-library-for-luis"></a>LUSıS için Python kitaplığını yükler
+### <a name="install-the-python-library-for-luis"></a>LUIS için Python kitaplığını yükleme
 
-Uygulama dizini içinde, aşağıdaki komutla Python için Language Understanding (LUSıS) yazma istemci Kitaplığı ' nı yükleyeceksiniz:
+Uygulama dizininde python için dil bilgisi (LUIS) yazan istemci kitaplığını aşağıdaki komutla yükleyin:
 
 ```console
 pip install azure-cognitiveservices-language-luis
@@ -86,103 +86,103 @@ pip install azure-cognitiveservices-language-luis
 
 ## <a name="object-model"></a>Nesne modeli
 
-Language Understanding (LUSıS) yazma istemcisi, yazma anahtarınızı içeren Azure 'da kimlik doğrulayan bir [Luisauthoringclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-python) nesnesidir.
+Dil Anlama (LUIS) yazma istemcisi, Azure'a doğrulayan ve yazar anahtarınızı içeren bir [LUISAuthoringClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-python) nesnesidir.
 
-İstemci oluşturulduktan sonra aşağıdaki işlevlere erişmek için bu istemciyi kullanın:
+İstemci oluşturulduktan sonra, aşağıdakiler de dahil olmak üzere işlevsellik erişmek için bu istemciyi kullanın:
 
-* Uygulamalar- [oluşturma](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#add-application-create-object--custom-headers-none--raw-false----operation-config-), [silme](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#delete-app-id--force-false--custom-headers-none--raw-false----operation-config-), [Yayımlama](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#publish-app-id--version-id-none--is-staging-false--custom-headers-none--raw-false----operation-config-)
-* Örnek araslar- [Batch ile ekleme](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#batch-app-id--version-id--example-label-object-array--custom-headers-none--raw-false----operation-config-), [kimliğe göre silme](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#delete-app-id--version-id--example-id--custom-headers-none--raw-false----operation-config-)
-* Özellikler- [tümcecik listelerini](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.featuresoperations?view=azure-python#add-phrase-list-app-id--version-id--phraselist-create-object--custom-headers-none--raw-false----operation-config-) yönetme
-* Model- [amaçları](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) ve varlıkları yönetme
-* Desen yönetme [desenleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.patternoperations?view=azure-python#add-pattern-app-id--version-id--pattern-none--intent-none--custom-headers-none--raw-false----operation-config-)
-* Eğitim- [uygulamayı](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#train-version-app-id--version-id--custom-headers-none--raw-false----operation-config-) ve yoklama [durumunu](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#get-status-app-id--version-id--custom-headers-none--raw-false----operation-config-) eğitme
-* [Sürümler](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.versionsoperations?view=azure-python) -kopyalama, dışarı aktarma ve silme ile yönetme
+* Uygulamalar - [oluşturmak](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#add-application-create-object--custom-headers-none--raw-false----operation-config-), [silmek](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#delete-app-id--force-false--custom-headers-none--raw-false----operation-config-), [yayınlamak](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#publish-app-id--version-id-none--is-staging-false--custom-headers-none--raw-false----operation-config-)
+* Örnek söyleyinçler - [toplu iş ekle](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#batch-app-id--version-id--example-label-object-array--custom-headers-none--raw-false----operation-config-), [ID'ye göre sil](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#delete-app-id--version-id--example-id--custom-headers-none--raw-false----operation-config-)
+* Özellikler - [ifade listelerini](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.featuresoperations?view=azure-python#add-phrase-list-app-id--version-id--phraselist-create-object--custom-headers-none--raw-false----operation-config-) yönetme
+* Model - [niyetleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) ve varlıkları yönetme
+* Desen - [desenleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.patternoperations?view=azure-python#add-pattern-app-id--version-id--pattern-none--intent-none--custom-headers-none--raw-false----operation-config-) yönetme
+* Tren - [eğitim durumu](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#get-status-app-id--version-id--custom-headers-none--raw-false----operation-config-) için uygulamayı ve anketi [eğitin](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#train-version-app-id--version-id--custom-headers-none--raw-false----operation-config-)
+* [sürümler](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.versionsoperations?view=azure-python) - klonla yönetin, dışa aktarma ve silme
 
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, Python için Language Understanding (LUSıS) yazma istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
+Bu kod parçacıkları, python için istemci kitaplığı yazan Dil Anlayışı (LUIS) ile aşağıdakileri nasıl yapacağınızı gösterir:
 
 * [Uygulama oluşturma](#create-a-luis-app)
 * [Varlık ekleme](#create-entities-for-the-app)
 * [Hedef ekleme](#create-intent-for-the-app)
-* [Örnek ekleme](#add-example-utterance-to-intent)
+* [Örnek konuşmalar ekleme](#add-example-utterance-to-intent)
 * [Uygulamayı eğitme](#train-the-app)
 * [Uygulamayı yayımlama](#publish-a-language-understanding-app)
 
-## <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
+## <a name="create-a-new-python-application"></a>Yeni bir python uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir Python uygulaması oluşturun. Ardından aşağıdaki kitaplıkları içeri aktarın.
+Tercih ettiğiniz düzenleyiciveya IDE'de yeni bir Python uygulaması oluşturun. Ardından aşağıdaki kitaplıkları içe aktarın.
 
 [!code-python[Create a new Python application in your preferred editor or IDE.](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=Dependencies)]
 
-Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+Kaynağınızın Azure bitiş noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için düzenleyiciyi, IDE'yi veya bu uygulamayı çalıştıran kabuğu kapatmanız ve yeniden açmanız gerekir.
 
 [!code-python[Create variables for your resource's Azure endpoint and key.](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=AuthorizationVariables)]
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
-Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [Luisauthoringclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Anahtarınızla bir [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [LUISAuthoringClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-python) nesnesi oluşturmak için bitiş noktanızla birlikte kullanın.
 
 [!code-python[Create LUIS client object](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=Client)]
 
-## <a name="create-a-luis-app"></a>Bir LUIS uygulaması oluşturma
+## <a name="create-a-luis-app"></a>LUIS uygulaması oluşturma
 
-1. Hedefleri, varlıkları ve örnek kullanımları tutan doğal dil işleme (NLP) modelini içeren bir LUO uygulaması oluşturun.
+1. Amaçları, varlıkları ve örnek söyleyiyi tutan doğal dil işleme (NLP) modelini içeren bir LUIS uygulaması oluşturun.
 
-1. Uygulamayı oluşturmak için bir [AppsOperation](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python) nesnesinin [Add](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#add-application-create-object--custom-headers-none--raw-false----operation-config-) metodunu oluşturun. Ad ve dil kültürü gerekli özelliklerdir.
+1. Uygulamayı oluşturmak için [AppsOperation](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python) nesnesinin [ekleme](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#add-application-create-object--custom-headers-none--raw-false----operation-config-) yöntemini oluşturun. Ad ve dil kültürü gerekli özellikleri vardır.
 
     [!code-python[Create LUIS client app](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=createApp)]
 
 
-## <a name="create-intent-for-the-app"></a>Uygulama için amaç oluştur
-Bir LUıN uygulamasının modelindeki birincil nesne, amaç ' dır. Amaç, Kullanıcı utterlerinin bir gruplandırması ile _hizalanır._ Bir Kullanıcı soru sorabilir veya bir bot 'tan (veya başka bir istemci uygulamasından) belirli bir _amaçlanan_ yanıtı bulmak için bir ifade oluşturabilir. Bir uçuşmaya örnek olarak, hedef şehirdeki hava durumu hakkında bilgi isteyerek ve müşteri hizmetleri için iletişim bilgilerini soruyor.
+## <a name="create-intent-for-the-app"></a>Uygulama için niyet oluşturma
+LUIS uygulamasının modelindeki birincil nesne amaçtır. Niyet kullanıcı söyleyiş _niyetleri_bir gruplama ile hizalar. Bir kullanıcı bir soru sorabilir veya bir bottan (veya başka bir istemci uygulamasından) belirli bir _yanıt_ arayan bir açıklama yapabilir. Bir uçuş rezervasyonu, varış şehrindeki hava durumu hakkında soru sormak ve müşteri hizmetleri için iletişim bilgilerini sormak gibi niyetörnekleri ne verilebilir:
 
-[Model. add_intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) yöntemini benzersiz bir amaç adıyla kullanın, ardından uygulama kimliği, sürüm kimliği ve yeni amaç adını geçirin.
+Benzersiz amaç adı ile [model.add_intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) yöntemini kullanın ve ardından uygulama kimliğini, sürüm kimliğini ve yeni niyet adını geçirin.
 
 [!code-python[Create LUIS client app](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=addIntents)]
 
-## <a name="create-entities-for-the-app"></a>Uygulama için varlık oluşturma
+## <a name="create-entities-for-the-app"></a>Uygulama için varlıklar oluşturma
 
-Varlıklar gerekli olmasa da, çoğu uygulama içinde bulunur. Varlık, kullanıcının amaç bilgisini almak için gerekli olan bilgileri Kullanıcı aracılığıyla ayıklar. Her biri kendi veri dönüştürme nesnesi (DTO) modelleriyle birlikte, çok sayıda [önceden oluşturulmuş](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) ve özel varlık türü vardır.  Uygulamanıza eklenecek ortak önceden oluşturulmuş varlıklar [Number](../luis-reference-prebuilt-number.md), [datetimeV2](../luis-reference-prebuilt-datetimev2.md), [geographyV2](../luis-reference-prebuilt-geographyv2.md), [Ordinal](../luis-reference-prebuilt-ordinal.md)içerir.
+Varlıklar gerekli olmasa da, çoğu uygulamada bulunur. Varlık, kullanıcının niyetini tamolarak dosyalamak için gerekli olan kullanıcı sözcüklerinden bilgi ayıklar. Önceden [oluşturulmuş](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) ve özel varlıklar, her biri kendi veri dönüştürme nesnesi (DTO) modelleri ile çeşitli türleri vardır.  Uygulamanıza eklemek için ortak önceden oluşturulmuş varlıklar [numarası,](../luis-reference-prebuilt-number.md) [datetimeV2,](../luis-reference-prebuilt-datetimev2.md) [geographyV2](../luis-reference-prebuilt-geographyv2.md), [ordinal](../luis-reference-prebuilt-ordinal.md)içerir.
 
-Bu **add_entities** yöntemi iki role sahip `Location` basit bir varlık, `Class` basit bir varlık, `Flight` bileşik bir varlık oluşturdu ve çok sayıda önceden oluşturulmuş varlık ekliyor.
+Bu **add_entities** yöntemi `Location` iki rol, basit `Class` bir varlık, bileşik varlık ve birkaç önceden oluşturulmuş varlıklar ekler basit bir `Flight` varlık oluşturdu.
 
-Varlıkların bir amaç ile işaretlenmediğini bilmek önemlidir. Bunlar, genellikle birçok amaç için uygulanabilir. Yalnızca belirli bir amaç için örnek Kullanıcı utbotları işaretlenir.
+Varlıkların bir niyetle işaretlenmediğini bilmek önemlidir. Onlar ve genellikle birçok niyet için geçerli dir. Yalnızca örnek kullanıcı sözcükleri belirli, tek bir amaç için işaretlenir.
 
-Varlıklar için oluşturma yöntemleri, [ModelOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python) sınıfının bir parçasıdır. Her varlık türünün kendi veri dönüştürme nesnesi (DTO) modeli vardır.
+Varlıklar için oluşturma yöntemleri [Modelİşlemleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python) sınıfının bir parçasıdır. Her varlık türünün kendi veri dönüştürme nesnesi (DTO) modeli vardır.
 
 [!code-python[Create LUIS client app](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=addEntities)]
 
-## <a name="add-example-utterance-to-intent"></a>Amaca göre örnek ekleme
+## <a name="add-example-utterance-to-intent"></a>Niyete örnek söyleyiş ekleme
 
-Bir utterance 'in amacı ve ayıklama varlıklarını tespit etmek için, uygulama için örneklere örnek gerekir. Örneklerin belirli, tek bir amacı hedeflemesi ve tüm özel varlıkları işaretlemesi gerekir. Önceden oluşturulmuş varlıkların işaretlenmesi gerekmez.
+Bir söyleyiş niyetini belirlemek ve varlıkları ayıklamak için, uygulamanın söyleyiş örneklerine ihtiyacı vardır. Örneklerin belirli, tek bir amacı hedeflemesi ve tüm özel varlıkları işaretlemesi gerekir. Önceden oluşturulmuş varlıkların işaretlemesi gerekmez.
 
-Her örnek için tek bir nesne olan [Examplelabelobject](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-python) nesnelerinin bir listesini oluşturarak örnek bir parametre ekleyin. Her örnek, varlık adı ve varlık değerinin ad/değer çiftleri sözlüğüne sahip tüm varlıkları işaretlemelidir. Varlık değeri, örnek utterine 'nın metninde göründüğünden tam olarak olmalıdır.
+[Örnek Etiket Nesnesi](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-python) nesnelerinin bir listesini oluşturarak örnek söyleyerek, her örnek için bir nesne ekleyin. Her örnek, varlık adı ve varlık değerinin ad/değer çiftleri sözlüğü ile tüm varlıkları işaretlemelidir. Varlık değeri tam olarak örnek söyleyiş metninde göründüğü gibi olmalıdır.
 
-Örneklere çağrı yapın. uygulama KIMLIĞI, sürüm KIMLIĞI ve örnek listesi ile [Batch](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#batch-app-id--version-id--example-label-object-array--custom-headers-none--raw-false----operation-config-) . Çağrı, bir sonuç listesiyle yanıt verir. Modele başarıyla eklendiğinden emin olmak için her bir örneğin sonucunu denetlemeniz gerekir.
+[Arama örnekleri.batch](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#batch-app-id--version-id--example-label-object-array--custom-headers-none--raw-false----operation-config-) uygulama kimliği, sürüm kimliği ve örneklerin listesi ile. Arama, bir sonuç listesiyle yanıt verir. Modele başarıyla eklenmiştir emin olmak için her örneğin sonucunu denetlemeniz gerekir.
 
 [!code-python[Add example utterances via a batch](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=addUtterances)]
 
 ## <a name="train-the-app"></a>Uygulamayı eğitme
 
-Model oluşturulduktan sonra, bu modelin bu sürümü için LUıN uygulamasının eğitililmesi gerekir. Eğitilen bir model [kapsayıcıda](../luis-container-howto.md)kullanılabilir veya hazırlama veya ürün yuvalarında [yayımlanabilir](../luis-how-to-publish-app.md) .
+Model oluşturulduktan sonra, LUIS uygulamasının modelin bu sürümü için eğitilmesi gerekir. Eğitimli bir model bir [kapta](../luis-container-howto.md)kullanılabilir veya evreleme veya ürün yuvalarında [yayınlanabilir.](../luis-how-to-publish-app.md)
 
-[Eğit. train_version](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#train-version-app-id--version-id--custom-headers-none--raw-false----operation-config-) YÖNTEMI uygulama kimliği ve sürüm kimliği gerektirir.
+[Train.train_version](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#train-version-app-id--version-id--custom-headers-none--raw-false----operation-config-) yönteminin uygulama kimliği ne ve sürüm kimliği ne kadar önemli olduğunu.
 
-Bu hızlı başlangıç gibi çok küçük bir model, çok hızlı bir şekilde eğitecektir. Üretim düzeyinde uygulamalar için, uygulamanın eğitim ne zaman ne zaman veya ne zaman başarılı olduğunu anlamak için [get_Status](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#get-status-app-id--version-id--custom-headers-none--raw-false----operation-config-) yöntemine bir yoklama çağrısı içermesi gerekir. Yanıt, her bir nesne için ayrı bir durum içeren [Modeltrainingınfo](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-python) nesnelerinin bir listesidir. Eğitimin tamamlandı olarak kabul edilmesi için tüm nesnelerin başarılı olması gerekir.
+Çok küçük bir model, bu quickstart gösterir gibi, çok hızlı bir şekilde tren olacaktır. Üretim düzeyindeki uygulamalar için, uygulamanın eğitimi, eğitimin ne zaman veya ne zaman başarılı olduğunu belirlemek için [get_status](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#get-status-app-id--version-id--custom-headers-none--raw-false----operation-config-) yöntemine bir yoklama çağrısı içermelidir. Yanıt, her nesne için ayrı bir durum olan [ModelTrainingInfo](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-python) nesnelerinin listesidir. Eğitimin tamamlanmış sayılması için tüm nesnelerin başarılı olması gerekir.
 
 [!code-python[Train LUIS client app](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=train)]
 
-## <a name="publish-a-language-understanding-app"></a>Language Understanding uygulaması yayımlama
+## <a name="publish-a-language-understanding-app"></a>Dil Anlama uygulaması yayınlama
 
-[App. Publish](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#publish-app-id--version-id-none--is-staging-false--custom-headers-none--raw-false----operation-config-) metodunu kullanarak lusıs uygulamasını yayımlayın. Bu, geçerli eğitilen sürümü uç noktada belirtilen yuvaya yayımlar. İstemci uygulamanız bu uç noktayı, amaç ve varlık ayıklama amacıyla Kullanıcı utbotları göndermek için kullanır.
+App.publish yöntemini kullanarak LUIS uygulamasını [yayımlayın.](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.appsoperations?view=azure-python#publish-app-id--version-id-none--is-staging-false--custom-headers-none--raw-false----operation-config-) Bu, geçerli eğitilmiş sürümü bitiş noktasında belirtilen yuvaya yayımlar. İstemci uygulamanız, amaç ve varlık çıkarma tahmini için kullanıcı yla ilgili söyleyişler göndermek için bu bitiş noktasını kullanır.
 
 [!code-python[Publish LUIS client app](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=publish)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızdaki `python` komutuyla çalıştırın.
+Hızlı başlatma dosyanızdaki `python` komutla uygulamayı çalıştırın.
 
 ```console
 python quickstart-file.py
@@ -190,4 +190,4 @@ python quickstart-file.py
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Tahminlerinizi tamamladığınızda, dosyayı ve alt dizinlerini silerek bu hızlı başlangıçta işi temizleyin.
+Öngörüleriniz bittiğinde, dosyayı ve alt dizinlerini silerek bu hızlı başlatmadan çalışmayı temizleyin.

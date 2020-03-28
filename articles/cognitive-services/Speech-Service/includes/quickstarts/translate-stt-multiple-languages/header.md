@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı birden çok dile çevirme-konuşma hizmeti'
+title: 'Quickstart: Konuşmayı birden çok dile çevirin - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
+description: TBD
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: yulili
 ms.openlocfilehash: 8c8cbc4e4f531d7a06ae3a33c33df9264c2cc6f2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74981202"
 ---
-Bu hızlı başlangıçta konuşmayı bir dilden başka bir dilde konuşmaya etkileşimli bir şekilde çevirmek için [konuşma SDK 'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Birkaç önkoşul karşıladıktan sonra, birden çok dilde konuşmayı metne çevirme yalnızca altı adımdan yararlanır:
+Bu hızlı başlangıçta, konuşmayı bir dilden konuşmaya başka bir dilde etkileşimli olarak çevirmek için [Konuşma SDK'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Birkaç ön koşulu yerine getirerek, konuşmayı birden çok dilde metne çevirmek yalnızca altı adımdan oluşur:
 > [!div class="checklist"]
-> * Abonelik anahtarınızdan ve bölgenizde bir ````SpeechTranslationConfig```` nesnesi oluşturun.
-> * Konuşma tanıma kaynak dilini belirtmek için ````SpeechTranslationConfig```` nesnesini güncelleştirin.
-> * Birden çok çeviri hedefi dili belirtmek için ````SpeechTranslationConfig```` nesnesini güncelleştirin.
-> * Yukarıdaki ````SpeechTranslationConfig```` nesnesini kullanarak bir ````TranslationRecognizer```` nesnesi oluşturun.
-> * ````TranslationRecognizer```` nesnesini kullanarak, tek bir söylik için tanıma sürecini başlatın.
-> * Döndürülen ````TranslationRecognitionResult```` inceleyin.
+> * Abonelik ````SpeechTranslationConfig```` anahtarınızdan ve bölgenizden bir nesne oluşturun.
+> * Konuşma ````SpeechTranslationConfig```` tanıma kaynak dilini belirtmek için nesneyi güncelleştirin.
+> * Birden ````SpeechTranslationConfig```` çok çeviri hedef dilbelirtmek için nesneyi güncelleştirin.
+> * Nesneyi ````TranslationRecognizer```` yukarıdan ````SpeechTranslationConfig```` kullanarak bir nesne oluşturun.
+> * Nesneyi ````TranslationRecognizer```` kullanarak, tek bir söyleyiş için tanıma işlemini başlatın.
+> * İade ````TranslationRecognitionResult```` edilenleri inceleyin.

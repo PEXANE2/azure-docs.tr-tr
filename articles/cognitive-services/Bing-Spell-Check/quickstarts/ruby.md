@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: REST API ve Ruby-Bing Yazım Denetimi ile yazım denetimi yapma'
+title: 'Quickstart: REST API ve Ruby ile yazım denetimi - Bing Yazım Denetimi'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıç ile yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
+description: Bu hızlı başlangıçla yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API'sını kullanmaya başlayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448425"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Ruby ile yazım denetimi yapma
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Quickstart: Bing Yazım Denetimi REST API ve Ruby ile yazım denetimi
 
-Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit uygulama, API 'ye bir istek gönderir ve tanımadığı sözcüklerin bir listesini, ardından önerilen düzeltmeleri döndürür. Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb) 'da kullanılabilir
+Ruby'yi kullanarak Bing Spell Check REST API'ye ilk aramanızı yapmak için bu hızlı başlangıcı kullanın. Bu basit uygulama API'ye bir istek gönderir ve tanımadığı sözcüklerin listesini döndürür ve ardından önerilen düzeltmeler de vardır. Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb) kullanılabilir
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) veya üzeri.
+* [Yakut 2.4](https://www.ruby-lang.org/en/downloads/) veya sonrası.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. En sevdiğiniz düzenleyicide veya IDE 'de yeni bir Ruby dosyası oluşturun ve aşağıdaki gereksinimleri ekleyin. 
+1. Sık kullanılan düzenleyicinizde veya IDE'nizde yeni bir Ruby dosyası oluşturun ve aşağıdaki gereksinimleri ekleyin. 
 
     ```ruby
     require 'net/http'
@@ -38,7 +38,7 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
     require 'json'
     ```
 
-2. Abonelik anahtarınız, uç nokta URI 'SI ve yolu için değişkenler oluşturun. `mkt=` parametresini pazarınıza ekleyerek ve `proof` kanıt moduna `&mode` istek parametrelerinizi oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. Abonelik anahtarınız, bitiş noktası URI'niz ve yolunuz için değişkenler oluşturun. Parametreyi `mkt=` pazarınıza ve `&mode` `proof` prova moduna ekleyerek istek parametrelerinizi oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -47,9 +47,9 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
     params = 'mkt=en-us&mode=proof'
     ```
 
-## <a name="send-a-spell-check-request"></a>Yazım denetimi isteği gönder
+## <a name="send-a-spell-check-request"></a>Yazım denetimi isteği gönderme
 
-1. Konak Uri 'si, yolu ve parametre dizinizden bir URI oluşturun. Sorgu, yazım denetimi yapmak istediğiniz metni içerecek şekilde ayarlanır.
+1. Ana bilgisayar uri, yol ve parametreler dizenizden bir URI oluşturun. Sorgusunu denetimi hecelemek istediğiniz metni içerecek şekilde ayarlayın.
 
    ```ruby
    uri = URI(uri + path + params)
@@ -59,7 +59,7 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
    })
    ```
 
-2. Yukarıda oluşturulan URI 'yi kullanarak bir istek oluşturun. Anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin.
+2. Yukarıda oluşturulmuş URI'yi kullanarak bir istek oluşturun. Üstbilgi için `Ocp-Apim-Subscription-Key` anahtarınızı ekleyin.
 
     ```ruby
     request = Net::HTTP::Post.new(uri)
@@ -75,7 +75,7 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
     end
     ```
 
-4. JSON yanıtını alın ve konsolunda yazdırın. 
+4. JSON yanıtını alın ve konsola yazdırın. 
 
     ```ruby
     result = JSON.pretty_generate(JSON.parse(response.body))
@@ -84,7 +84,7 @@ Ruby kullanarak Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Projenizi derleyin ve çalıştırın.
+Projenizi oluşturun ve çalıştırın.
 
 Komut satırını kullanıyorsanız, uygulamayı çalıştırmak için aşağıdaki komutu kullanın.
 
@@ -137,7 +137,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı Web uygulaması oluşturma](../tutorials/spellcheck.md)
+> [Tek sayfalı web uygulaması oluşturma](../tutorials/spellcheck.md)
 
-- [Bing Yazım Denetimi API'si nedir?](../overview.md)
+- [Bing Yazım Denetimi API’si nedir?](../overview.md)
 - [Bing Yazım Denetimi API’si v7 Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

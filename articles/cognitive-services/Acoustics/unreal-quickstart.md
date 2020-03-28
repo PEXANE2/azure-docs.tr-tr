@@ -1,7 +1,7 @@
 ---
-title: Proje Acoustics hızlı başlangıç-gerçek olmayan
+title: Unreal ile Project Acoustics hızlı bir başlangıç
 titlesuffix: Azure Cognitive Services
-description: Proje Acoustics tasarım denetimleriyle gerçek zamanlı ve Wwise 'ta denemeler yapmak ve Windows Masaüstü ' ne dağıtmak için örnek içeriği kullanın.
+description: Unreal ve Wwise'daki Project Acoustics tasarım denetimlerini denemek ve Windows masaüstüne dağıtmak için örnek içeriği kullanın.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,90 +12,90 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: d3afcded894f72626a4f24bcbe85c34ac1329c29
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72242915"
 ---
-# <a name="project-acoustics-unrealwwise-quickstart"></a>Proje Acoustics Unreal/Wwise hızlı başlangıç
-Bu hızlı başlangıçta, Unreal Engine ve Wwise için örnek içerik kullanarak Project Acoustics tasarım denetimleriyle denemeler yapacaksınız.
+# <a name="project-acoustics-unrealwwise-quickstart"></a>Proje Akustik Unreal / Wwise quickstart
+Bu hızlı başlangıçta, Unreal Engine ve Wwise için örnek içerik kullanarak Project Acoustics tasarım denetimlerini deneyeceksiniz.
 
-Örnek içeriği kullanmaya yönelik yazılım gereksinimleri:
-* [Unreal Engine](https://www.unrealengine.com/) 4,22
-* [Audiokinetik Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
+Örnek içeriği kullanmak için yazılım gereksinimleri:
+* [Gerçek Dışı Motor](https://www.unrealengine.com/) 4.22
+* [AudioKintic Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
 
 ## <a name="download-the-sample-package"></a>Örnek paketi indirin
-[Projeyi Acoustics Unreal ve Wwise örnek paketini](https://www.microsoft.com/download/details.aspx?id=58090)indirin. Örnek paket şunları içerir:
+Project [Acoustics Unreal ve Wwise örnek paketini](https://www.microsoft.com/download/details.aspx?id=58090)indirin. Örnek paket şunları içerir:
 - Unreal Engine projesi
-- Gerçek olmayan proje için Wwise projesi
-- Proje Acoustics Wwise eklentisi
+- Unreal projesi için Wwise projesi
+- Proje Akustik Wwise eklentisi
 
 ## <a name="set-up-the-project-acoustics-sample-project"></a>Project Acoustics örnek projesini ayarlama
-İlk olarak, Project Acoustics eklentisini Wwise 'a yüklemeniz gerekir. Sonra, Wwise ikililerini gerçek olmayan projeye dağıtın. Ardından, proje Acoustics desteklemek için Wwise Unreal eklentisini ayarlayın.
+İlk olarak, Project Acoustics eklentisini Wwise'a takın. Ardından, Wwise ikililerini Unreal projesine dağıtın. Ardından, Project Acoustics'i desteklemek için Wwise Unreal eklentisini ayarlayın.
 
-### <a name="install-the-project-acoustics-wwise-plug-in"></a>Projeyi Acoustics Wwise eklentisini yükler
-Wwise başlatıcısı 'nı açın. **Eklentiler** sekmesinde, **yeni eklentiler yüklensin**bölümünde **dizinden Ekle**' yi seçin. İndirdiğiniz pakette bulunan *AcousticsWwisePlugin\ProjectAcoustics* dizinini seçin.
+### <a name="install-the-project-acoustics-wwise-plug-in"></a>Project Acoustics Wwise eklentisini yükleyin
+Wwise Launcher'ı açın. **Eklentiler** sekmesinde, **Yeni Eklentileri Yükle'nin**altında, **dizinden ekle'yi**seçin. İndirdiğiniz pakete dahil edilen *AcousticsWwisePlugin\ProjectAcoustics* dizinini seçin.
 
-![Wwise eklentisini Wwise başlatıcısı 'na yüklemek için seçeneği](media/wwise-install-new-plugin.png)
+![Wwise Başlatıcısı'na Wwise eklentisini yükleme seçeneği](media/wwise-install-new-plugin.png)
 
-### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>Proje Acoustics Unreal örnek projesine Wwise ikilileri ekleme
-1. Wwise Başlatıcısı ' nda, **Unreal Engine** sekmesini seçin. 
-1. **Son Real Engine projelerinin**yanındaki "hamburger" (Icon) menüsünü seçin ve ardından **proje için Gözat**' ı seçin. *AcousticsSample\AcousticsGame\AcousticsGame.uproject*paketindeki gerçek olmayan proje *. uıproject* dosyasını açın.
+### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>Project Acoustics Unreal örnek projesine Wwise ikilileri ekleyin
+1. Wwise Launcher'da **Unreal Engine** sekmesini seçin. 
+1. **Son Gerçek Dışı Motor Projeleri'nin**yanındaki "hamburger" (simge) menüsünü seçin ve ardından proje için **Gözat'ı**seçin. *Akustik/Akustik\AkustikOyun\Uproject*paketinde örnek Unreal project *.uproject* dosyasını açın.
 
-   ![Wwise başlatıcısı 'ndaki gerçek olmayan sekme](media/wwise-unreal-tab.png)
+   ![Wwise Launcher unreal sekmesi](media/wwise-unreal-tab.png)
 
-3. Project Acoustics örnek projesinin yanında, **projede Wwise 'ı tümleştirin**' ı seçin.
+3. Project Acoustics örnek projesinin yanında, **Projeye Tümle Wwise'ı**seçin.
 
-   ![Wwise başlatıcısı, tümleştir seçeneği vurgulanmış şekilde Acoustics Game Unreal projesini gösterir.](media/wwise-acoustics-game-project.png)
+   ![Wwise Launcher, Akustik Oyunu Unreal projesini Tümleştirme seçeneği yle birlikte vurgular.](media/wwise-acoustics-game-project.png)
 
-### <a name="extend-wwise-unreal-plug-in-functionality"></a>Wwise Unreal eklenti işlevlerini Genişlet
-Project Acoustics Unreal eklentisinin, Wwise Unreal eklenti API 'sinden açık olan ek davranışları olması gerekir. Bu değişiklikleri otomatikleştirmek için Project Acoustics Unreal eklentisiyle birlikte gelen toplu iş dosyasını çalıştırın.
-* *AcousticsGame\Plugins\ProjectAcoustics\Resources*Içinde, *patchwwise. bat*dosyasını çalıştırın.
+### <a name="extend-wwise-unreal-plug-in-functionality"></a>Wwise Unreal eklenti işlevini genişletin
+Project Acoustics Unreal eklentisinin Wwise Unreal eklentisi API'sinden açığa çıkan ek davranışlara ihtiyacı vardır. Bu değişiklikleri otomatikleştirmek için Project Acoustics Unreal eklentisiyle birlikte gelen toplu dosyayı çalıştırın.
+* Inside *AcousticsGame\Plugins\ProjectAcoustics\Resources*, *run PatchWwise.bat*.
 
-    ![Bir Windows Explorer penceresinde vurgulanan Wwise projesine yama betiği](media/patch-wwise-script.png)
+    ![Windows Explorer penceresinde vurgulanan Wwise projesini yamalamak için komut dosyası](media/patch-wwise-script.png)
 
-* DirectX SDK yüklü değilse: kullanmakta olduğunuz Wwise sürümüne bağlı olarak, *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs*içinde `DXSDK_DIR` içeren satırı açıklama eklemeniz gerekebilir:
+* DirectX SDK yüklü yoksa: Wwise sürümüne bağlı olarak kullandığınız, `DXSDK_DIR` *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs*içeren satırı dışarı yorum gerekebilir:
 
-    !["DXSDK" açıklama olarak gösterildiği kod Düzenleyicisi](media/directx-sdk-comment.png)
+    !["DXSDK" gösteren kod düzenleyicisi yorumladı](media/directx-sdk-comment.png)
 
-* Visual Studio 2019 kullanarak derlerseniz: bir bağlama hatasını Wwise ile çözmek Için, *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs* Içinde *VSVersion* varsayılan değerini **vc150**olarak değiştirin:
+* Visual Studio 2019'u kullanarak derlerseniz: Wwise ile bağlantı hatası nın çözümünü yapmak **için,** *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs'de* varsayılan *değeri* manuel olarak değiştirin:
 
-    ![VSVersion içeren kod Düzenleyicisi "vc150" olarak değiştirildi](media/vsversion-comment.png)
+    ![VSVersion ile kod düzenleyicisi "vc150" olarak değiştirildi](media/vsversion-comment.png)
 
-### <a name="open-the-unreal-project"></a>Gerçek olmayan projeyi açma 
-Gerçek olmayan projeyi açtığınızda, modülleri yeniden oluşturmanız istenir. **Evet**' i seçin.
+### <a name="open-the-unreal-project"></a>Unreal Projesini Açın 
+Unreal projesini açtığınızda, modülleri yeniden oluşturmanızı ister. **Evet'i**seçin.
 
-Projeyi açmak derleme hataları nedeniyle başarısız olursa, Project Acoustics Wwise eklentisini Project Acoustics örnek projesinde kullanılan aynı Wwise sürümüne yüklediğinizden emin olun.
+Projeyi açma, yapı hataları nedeniyle başarısız olursa, Project Acoustics Wwise eklentisini Project Acoustics örnek projesinde kullanılan Wwise'ın aynı sürümüne yüklediğinizi denetleyin.
 
-2019,1 sürümünden daha önce bir [Audiokinetik Wwise](https://www.audiokinetic.com/products/wwise/) sürümü kullanıyorsanız, Project Acoustics örnek projesini kullanarak ses bankalarını oluşturamazsınız. Wwise sürüm 2019,1 ' i örnek projede tümleştirmeniz gerekir.
+[AudioKintic Wwise](https://www.audiokinetic.com/products/wwise/) sürümünü 2019.1 sürümünden daha önce kullanıyorsanız, Project Acoustics örnek projesini kullanarak ses bankaları oluşturamazsınız. Wwise sürüm 2019.1'i örnek projeye entegre etmeniz gerekir.
 
-## <a name="experiment-with-project-acoustics-design-controls"></a>Project Acoustics tasarım denetimleriyle deneyin
-Gerçek olmayan düzenleyicide Oynat düğmesini seçerek sahnenin nasıl seslere dinleyebildiğini dinleyin. Gezinmek için W, A, S ve D tuşlarını ve fareyi kullanın. Ek denetimlerin klavye kısayollarını görmek için F1 ' i seçin.
+## <a name="experiment-with-project-acoustics-design-controls"></a>Project Acoustics tasarım kontrolleri ile denemeler
+Unreal editöründeki oynat düğmesini seçerek sahnenin nasıl göründüğünü dinleyin. Hareket etmek için W, A, S ve D tuşlarını ve fareyi kullanın. Ek denetimler için klavye kısayollarını görmek için F1'i seçin.
 
-Aşağıdaki bilgiler, deneyebileceğiniz bazı tasarım etkinliklerini açıklamaktadır.
+Aşağıdaki bilgiler, denemek için bazı tasarım etkinlikleri açıklar.
 
-### <a name="modify-occlusion-and-transmission"></a>Occlusiyon ve iletimi değiştirme
-Her bir gerçek olmayan ses aktör üzerinde kaynak başına proje Acoustics tasarım denetimleri vardır.
+### <a name="modify-occlusion-and-transmission"></a>Oklüzyon ve iletimi değiştirin
+Her Unreal ses aktöründe kaynak başına Project Acoustics tasarım denetimleri vardır.
 
-![Unreal Editor Acoustics tasarım denetimleri](media/demo-scene-sound-source-design-controls.png)
+![Unreal Editor akustik tasarım kontrolleri](media/demo-scene-sound-source-design-controls.png)
 
-**Occlusiyon** çarpanı 1 ' den büyükse (varsayılan 1 ' dir), occlusiyon kullanılır. 1 ' den küçük bir ayar, occlusiyon efektini daha hafif hale getirir.
+**Oklüzyon** çarpanı 1'den büyükse (varsayılan değer 1'dir), oklüzyon abartılır. 1'den küçük bir ayar, oklüzyon efektini daha ince hale getirir.
 
-Duvar üzerinden iletimi etkinleştirmek için, **iletim (DB)** kaydırıcısını en düşük düzeyinden uzağa taşıyın.
+Duvardan iletimi etkinleştirmek **için, Şanzıman (dB)** kaydırıcısını en düşük seviyesinden uzağa taşıyın.
 
-### <a name="modify-wetness-for-a-source"></a>Bir kaynak için wetliği değiştirme
-Mesafede ne kadar hızlı bir şekilde değişiklik yapıldığını değiştirmek için, **algısal mesafe warp**kullanın. Project Acoustics, benzetim aracılığıyla boşluk boyunca ıslak düzeylerini hesaplar. Düzeyler, mesafede sorunsuzca farklılık gösterir ve algısal uzaklık ipuçları sağlar. Bu etkiyi ortadan kaldırmaya yönelik mesafeyi çarpmayı artırmak için mesafe ile ilgili ıslak düzeylerini artırın. 1 ' den küçük değerleri çarpıtma, uzaklık tabanlı ters getirme değişikliğini daha hafif hale getirir. Ayrıca, **Wettik (DB)** ayarı aracılığıyla bu etkiye yönelik daha ayrıntılı ayarlamalar yapabilirsiniz.
+### <a name="modify-wetness-for-a-source"></a>Bir kaynak için ıslaklığı değiştirme
+ıslaklığın mesafeyle ne kadar hızlı değiştiğini değiştirmek için **Algısal Mesafe Çözgü'si**kullanın. Project Acoustics simülasyon yoluyla uzay boyunca ıslak seviyeleri hesaplar. Düzeyleri mesafe ile sorunsuz değişir ve algısal mesafe ipuçları sağlar. Bu etkiyi abartmak için, mesafe çözgü artırmak için mesafe ile ilgili ıslak düzeylerini artırmak. 1'den küçük değerlerin çarpıtılması, mesafe tabanlı yankıdeğişimini daha ince hale getirin. Iskan **(dB)** ayarı ile bu yönde daha ince ayarlamalar da yapabilirsiniz.
 
-Boşluk boyunca zaman ölçeğini artırmak için, **zaman ölçeğini**ayarlayın. Simülasyon sonucunun 1,5 saniyelik bir süre olduğu bir durum düşünün. **Decay zaman ölçeğini** 2 olarak ayarlamak, kaynağa 3 saniyelik bir süre boyunca uygulanan bir süre boyunca neden olur.
+Boşluk boyunca çürüme süresini artırmak **için, Bozunma Zaman Ölçeğini**ayarlayın. Simülasyon sonucunun 1,5 saniyelik bir çürüme süresi olduğu bir durum düşünün. **Çürüme Süresi Ölçeği'ni** kaynağa uygulanan 3 saniyelik bozunma süresiyle 2 sonuç olarak ayarlamak.
 
-### <a name="modify-distance-based-attenuation"></a>Uzaklık tabanlı zayıflamayı değiştirme
-Project Acoustics Wwise Mixer eklentisi, Wwise içinde yerleşik olan kaynak başına uzaklık tabanlı zayıflalama ile uyar. Bu eğrinin değiştirilmesi, Kuru yol düzeyini değiştirir. Project Acoustics eklentisi, benzetim ve tasarım denetimleri tarafından belirtilen ıslak/kuru karışımını sürdürmek için ıslak düzeyini ayarlar.
+### <a name="modify-distance-based-attenuation"></a>Mesafe tabanlı zayıflamayı değiştirme
+Project Acoustics Wwise mikser eklentisi, Wwise'da yerleşik olan kaynak başına mesafe tabanlı zayıflamaya saygı duyar. Bu eğrinin değiştirilmesi kuru yol düzeyini değiştirir. Project Acoustics eklentisi, simülasyon ve tasarım kontrolleri tarafından belirtilen ıslak/kuru karışımı korumak için ıslak seviyeyi ayarlar.
 
-![Simülasyon sınırından önce 0 ' a giderek zayıflalama gösteren, Wwise zayıflalama eğrisi bölmesi](media/demo-sounds-attenuation.png)
+![Wwise zayıflama eğrisi paneli, simülasyon sınırından önce 0'a giden zayıflamayı gösterir](media/demo-sounds-attenuation.png)
 
-Project Acoustics, her bir sanal oynatıcı konumunun ortalanmasını sağlayan bir "simülasyon bölgesi" kutusunda hesaplar. Örnek paketteki Acoustics varlıkları, 45 ölçümün bir simülasyon bölge yarıçapı ile fırlaştırılmış. Zayıflamalar 45 metreden önce 0 ' a düşecek şekilde tasarlandı. Bu azalma kesin bir gereksinim olmadığından, desteklenmediği uyarısıyla yalnızca dinleyicinin 45 ölçümlerinin içindeki geometrinin, sesleri occside eder.
+Project Acoustics, simüle edilen her oyuncu konumunun etrafında ortalanmış bir "simülasyon bölgesi" kutusunda işlem eder. Örnek paketteki akustik varlıklar 45 metrelik bir simülasyon bölgesi yarıçapı ile pişirildi. Zayıflama 45 metreden önce 0'a düşecek şekilde tasarlanmıştır. Bu düşüş sıkı bir gereklilik olmasa da, dinleyicinin 45 metre içindeki sadece geometrinin sesleri tıkadığı uyrunu taşır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Project Acoustics](unreal-integration.md) eklentisini gerçek olmayan projenizden tümleştirin.
-* Kendi baklarınız için [bir Azure hesabı oluşturun](create-azure-account.md) .
+* [Project Acoustics eklentisini](unreal-integration.md) Unreal projenize entegre edin.
+* Kendi fırınlarınız için [bir Azure hesabı oluşturun.](create-azure-account.md)

@@ -1,7 +1,7 @@
 ---
 title: HeadPose özniteliğini kullanma
 titleSuffix: Azure Cognitive Services
-description: Yüz dikdörtgenini otomatik olarak döndürmek veya bir video akışında baş hareketleri algılamak için Headpoz özniteliğini nasıl kullanacağınızı öğrenin.
+description: HeadPose özniteliğini kullanarak yüz dikdörtgenini otomatik olarak döndürdüğünüz veya video akışında kafa hareketlerini nasıl algılayıcı kullanacağınızı öğrenin.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,25 +10,25 @@ ms.topic: sample
 ms.date: 05/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 534846044770d66ec5171ad4f61de921d2d5d194
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169798"
 ---
 # <a name="use-the-headpose-attribute"></a>HeadPose özniteliğini kullanma
 
-Bu kılavuzda, bazı önemli senaryoları etkinleştirmek için algılanan bir yüzün Headpoz özniteliğini nasıl kullanabileceğinizi göreceksiniz.
+Bu kılavuzda, bazı önemli senaryoları etkinleştirmek için algılanan bir yüzün HeadPose özniteliğini nasıl kullanabileceğinizi göreceksiniz.
 
-## <a name="rotate-the-face-rectangle"></a>Yüz dikdörtgenini döndürme
+## <a name="rotate-the-face-rectangle"></a>Yüz dikdörtgenini döndürün
 
-Algılanan her yüz ile döndürülen yüz dikdörtgeni, görüntüdeki yüzün konumunu ve boyutunu işaretler. Varsayılan olarak, dikdörtgen her zaman görüntüyle hizalanır (kenarları dikey ve yatay olur); Bu, çerçeveleme açılı yüzleri için verimsiz olabilir. Görüntüdeki yüzeyleri program aracılığıyla kırpmak istediğiniz durumlarda, kırpmak için dikdörtgeni döndürebilmek daha iyidir.
+Algılanan her yüzle döndürülen yüz dikdörtgeni, görüntüdeki yüzün konumunu ve boyutunu işaretler. Varsayılan olarak, dikdörtgen her zaman görüntüyle hizalanır (kenarları dikey ve yataydır); bu, açılı yüzleri çerçeveleme için verimsiz olabilir. Görüntüdeki yüzleri programlı bir şekilde kırpmak istediğiniz durumlarda, dikdörtgeni kırpmak için döndürebilmek daha iyidir.
 
-Bilişsel [Hizmetler yüz WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) örnek uygulaması, algılanan yüz dikdörtgenlerini döndürmek Için headpoz özniteliğini kullanır.
+[Bilişsel Hizmetler Yüz WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) örnek uygulaması algılanan yüz dikdörtgenleri döndürmek için HeadPose özniteliği ni kullanır.
 
-### <a name="explore-the-sample-code"></a>Örnek kodu keşfet
+### <a name="explore-the-sample-code"></a>Örnek kodu keşfedin
 
-Baş dikdörtgeni, Headpoz özniteliğini kullanarak programlı bir şekilde döndürebilirsiniz. Yüzeyleri algılamadığında bu özniteliği belirtirseniz (bkz. [yüzleri algılama](HowtoDetectFacesinImage.md)), daha sonra sorgulayabilirsiniz. Bilişsel [Hizmetler yüz WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) uygulamasının aşağıdaki yöntemi, **algılayıcısı geçen yüz** nesnelerinin bir listesini alır ve **[yüz](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** nesnelerinin bir listesini döndürür. Buradaki **yüz** , güncelleştirilmiş dikdörtgen koordinatları dahil yüz verileri depolayan özel bir sınıftır. Yeni değerler üst, **sol**, **Genişlik**ve **Yükseklik**için hesaplanır ve yeni bir alan olan **çok** **yönlü açı** döndürme işlemini belirtir.
+HeadPose özniteliğini kullanarak yüz dikdörtgenini programlı bir şekilde döndürebilirsiniz. Yüzleri algılarken bu özniteliği belirtirseniz [(yüzleri nasıl algılayacak gerektiğine](HowtoDetectFacesinImage.md)bakın), daha sonra sorgulayabilirsiniz. [Bilişsel Hizmetler Yüz WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) uygulamasından aşağıdaki **yöntem, Algısal Yüz** nesnelerinin bir listesini alır ve **[Yüz](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** nesnelerinin bir listesini döndürür. **Face** here, güncelleştirilmiş dikdörtgen koordinatları da dahil olmak üzere yüz verilerini depolayan özel bir sınıftır. Yeni değerler **üst,** **sol**, **genişlik**ve **yükseklik**için hesaplanır ve yeni bir alan **FaceAngle** döndürme belirtir.
 
 ```csharp
 /// <summary>
@@ -108,7 +108,7 @@ public static IEnumerable<Face> CalculateFaceRectangleForRendering(IList<Detecte
 
 ### <a name="display-the-updated-rectangle"></a>Güncelleştirilmiş dikdörtgeni görüntüleme
 
-Buradan, görüntüinizdeki döndürülen **yüzey** nesnelerini kullanabilirsiniz. [Facedetectionpage. xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) tarafından verilen aşağıdaki satırlar, yeni dikdörtgenin bu verilerden nasıl işleneceğini gösterir:
+Buradan, ekranınızdaki döndürülen **Yüz** nesnelerini kullanabilirsiniz. [FaceDetectionPage.xaml'ın](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) aşağıdaki satırları, yeni dikdörtgenin bu verilerden nasıl işlenir olduğunu gösterir:
 
 ```xaml
  <DataTemplate>
@@ -120,17 +120,17 @@ Buradan, görüntüinizdeki döndürülen **yüzey** nesnelerini kullanabilirsin
 </DataTemplate>
 ```
 
-## <a name="detect-head-gestures"></a>Baş hareketleri Algıla
+## <a name="detect-head-gestures"></a>Kafa hareketlerini algılama
 
-Yayın pozları gerçek zamanlı olarak izleyerek nodding ve Head gerçekleşmesi gibi baş hareketleri tespit edebilirsiniz. Bu özelliği, özel bir özel algılayıcı algılayıcısı olarak kullanabilirsiniz.
+HeadPose değişikliklerini gerçek zamanlı olarak izleyerek kafa sallayarak ve kafa sallayarak kafa hareketlerini algılayabilirsiniz. Bu özelliği özel bir canlılık dedektörü olarak kullanabilirsiniz.
 
-Lizleştirme algılama, bir konunun bir görüntü veya video temsili değil gerçek bir kişi olduğunu belirleme görevidir. Bir baş hareket algılayıcısı, özellikle de bir kişinin görüntü gösteriminin aksine, sızma doğrulamanızı sağlamaya yardımcı olmak için bir yol sunar.
+Canlılık algılama, bir öznenin görüntü veya video gösterimi değil, gerçek bir kişi olduğunu belirleme görevidir. Bir baş hareket dedektörü canlılık doğrulamak için bir yol olarak hizmet verebilir, özellikle bir kişinin bir görüntü temsilaksine.
 
 > [!CAUTION]
-> Baş hareketleri gerçek zamanlı olarak algılamak için, Yüz Tanıma API'si yüksek bir hızda (saniye başına birden fazla) çağırmanız gerekir. Ücretsiz bir katmanlı (F0) aboneliğiniz varsa, bu mümkün olmayacaktır. Ücretli bir aboneliğiniz varsa, baş hareket algılaması için hızlı API çağrıları yapma maliyetlerini hesapladığınızdan emin olun.
+> Kafa hareketlerini gerçek zamanlı olarak algılamak için Yüz API'sini yüksek oranda (saniyede birden fazla) aramanız gerekir. Serbest katman (f0) aboneliğiniz varsa, bu mümkün olmayacaktır. Ücretli bir katman aboneliğiniz varsa, kafa hareketi algılaması için hızlı API çağrıları yapmanın maliyetini hesapladığınıza emin olun.
 
-Baş hareket algılamasında çalışan bir örnek için GitHub 'daki [yüz Headpoz örneğine](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) bakın.
+Baş hareketi algılamanın çalışma örneği için GitHub'daki [Yüz Kafası Örneği'ne](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Döndürülmüş yüz dikdörtgenlerinin çalışan bir örneği için GitHub 'da bilişsel [Hizmetler 'ın WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) uygulamasına bakın. Ya da, baş hareketleri algılamak için Headpoz özniteliğini gerçek zamanlı olarak izleyen [yüz Headpoz örnek](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) uygulamasına bakın.
+Döndürülmüş yüz dikdörtgenlerinin çalışma örneği için GitHub'daki [Bilişsel Hizmetler Yüz WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) uygulamasına bakın. Veya kafa hareketlerini algılamak için HeadPose özniteliğini gerçek zamanlı olarak izleyen [Face HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) uygulamasına bakın.

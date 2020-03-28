@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: REST API ve PHP kullanarak video arayın-Bing Video Arama'
+title: 'Quickstart: REST API ve PHP kullanarak video ara - Bing Video Arama'
 titleSuffix: Azure Cognitive Services
-description: PHP kullanarak Bing Video Arama REST API video arama istekleri göndermek için bu hızlı başlangıcı kullanın
+description: PHP kullanarak Bing Video Search REST API'sine video arama istekleri göndermek için bu hızlı başlatmayı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448356"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Hızlı başlangıç: Bing Video Arama REST API ve PHP kullanarak video arama
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Quickstart: Bing Video Search REST API ve PHP kullanarak video ara
 
-Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama sonucu görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulama JavaScript 'te yazıldığı ve Node. js kullandığından, API çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
+Bing Video Arama API'sine ilk aramanızı yapmak ve JSON yanıtından bir arama sonucunu görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması API'ye bir HTTP video arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulama JavaScript'te yazılıyken ve Node.js kullanırken, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 Örnek kod PHP 5.6 ile çalışmak üzere yazılmıştır.
 
 API'lerle ilgili teknik ayrıntılar için [API başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)'na bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* PHP 5,6 veya üzeri
+* PHP 5.6 veya sonrası
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -37,7 +37,7 @@ API'lerle ilgili teknik ayrıntılar için [API başvurusu](https://docs.microso
 1. Kod açıklamasında belirtildiği gibi `php.ini` dosyanızda güvenli HTTP desteğinin etkinleştirildiğinden emin olun.
 2. Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun.
 3. Aşağıda sağlanan kodu ekleyin.
-4. `$accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin. `$endpoint`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.
+4. `$accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin. `$endpoint`aşağıdaki genel bitiş noktası veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktası olabilir.
 5. Programı çalıştırın.
 
 ```php
@@ -213,7 +213,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı Web uygulaması oluşturma](../tutorial-bing-video-search-single-page-app.md)
+> [Tek sayfalık bir web uygulaması oluşturma](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 

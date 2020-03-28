@@ -1,5 +1,5 @@
 ---
-title: Bing Web Araması Java istemci kitaplığı hızlı başlangıç
+title: Bing Web Arama Java istemci kitaplığı hızlı başlat
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925195"
 ---
-Bing Web Araması istemci kitaplığı, Bing Web Araması Java uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
+Bing Web Arama istemci kitaplığı, Bing Web Arama'yı Java uygulamanıza entegre etmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
-Kodu hemen görmek istiyor musunuz? [Java için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) örnekleri GitHub ' da kullanılabilir.
+Kodu hemen görmek istiyor musunuz? [Java için Bing Arama istemci kitaplıkları için](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) örnekler GitHub'da mevcuttur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
@@ -29,9 +29,9 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 
 [!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="create-a-project-and-set-up-your-pom-file"></a>Bir proje oluşturun ve pod dosyanızı ayarlayın
+## <a name="create-a-project-and-set-up-your-pom-file"></a>Proje oluşturma ve POM dosyanızı ayarlama
 
-Maven veya favori derleme otomasyonu aracınızı kullanarak yeni bir Java projesi oluşturun. Maven kullandığınızı varsayarsak, [proje nesne modeli (pod)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) dosyanıza aşağıdaki satırları ekleyin. `mainClass` yerine uygulamanızı yazın.
+Maven veya favori derleme otomasyonu aracınızı kullanarak yeni bir Java projesi oluşturun. Maven kullandığınızı varsayarsak, [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) dosyanıza aşağıdaki satırları ekleyin. `mainClass` yerine uygulamanızı yazın.
 
 ```xml
 <build>
@@ -141,7 +141,7 @@ public class BingWebSearchSample {
 
 ## <a name="construct-a-request"></a>İstek oluşturma
 
-`runSample` sınıfında bulunan `BingWebSearchSample` metodu, isteği oluşturur. Şu kodu uygulamanıza kopyalayın:
+`BingWebSearchSample` sınıfında bulunan `runSample` metodu, isteği oluşturur. Şu kodu uygulamanıza kopyalayın:
 
 ```java
 public static boolean runSample(BingWebSearchAPI client) {

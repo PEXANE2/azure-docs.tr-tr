@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: REST API ve Python ile yazım denetimi-Bing Yazım Denetimi'
+title: 'Quickstart: REST API ve Python ile yazım denetimi - Bing Yazım Denetimi'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıç ile yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
+description: Bu hızlı başlangıçla yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API'sını kullanmaya başlayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448465"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Python ile yazım denetimi yapma
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Quickstart: Bing Yazım Denetimi REST API ve Python ile yazım denetimi
 
-Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) 'da kullanılabilir
+Bing Yazım Denetimi REST API'ye ilk aramanızı yapmak için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması API'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama Python ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) kullanılabilir
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Python [3. x](https://www.python.org)
+* Python [3.x](https://www.python.org)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Uygulamayı başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki içeri aktarma ifadesini ekleyin.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki alma deyimini ekleyin.
 
    ```python
    import requests
    import json
    ```
 
-2. Yazım denetimi yapmak istediğiniz metin, abonelik anahtarınız ve Bing Yazım Denetimi uç noktanız için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+2. Denetimi hecelemek istediğiniz metin, abonelik anahtarınız ve Bing Büyüsü Denetimi bitiş noktanız için değişkenler oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -46,13 +46,13 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 
 ## <a name="create-the-parameters-for-the-request"></a>İstek için parametreleri oluşturma
 
-1. Anahtar olarak `text` yeni bir sözlük ve değer olarak metninizi oluşturun.
+1. Anahtar `text` olarak yeni bir sözlük ve değer olarak metin oluşturun.
 
     ```python
     data = {'text': example_text}
     ```
 
-2. İsteğiniz için parametreleri ekleyin. `mkt=`sonra Pazar kodunuzu ekleyin. Pazar kodu, isteği yaptığınız ülkeniz. Ayrıca, `&mode=`sonra yazım denetimi modlarınızı ekleyin. Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (en fazla yazım denetimi hatası değil, en çok yazım yakalar).
+2. İsteğiniz için parametreleri ekleyin. Sonra pazar kodunuzu `mkt=`ekle. Piyasa kodu, talepte bulunduğunuz ülkedir. Ayrıca, yazım denetimi modunuzu `&mode=`sonra ekleyin. Mod ya `proof` (çoğu yazım/dilbilgisi hatalarını yakalar) ya da `spell` (çoğu yazım ı yakalar, ancak o kadar çok dilbilgisi hatası yakalamaz).
 
     ```python
     params = {
@@ -61,7 +61,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
         }
     ```
 
-3. `Ocp-Apim-Subscription-Key` üstbilgisine `Content-Type` üst bilgisi ve abonelik anahtarınızı ekleyin.
+3. Üstbilgi `Content-Type` ve abonelik anahtarınızı üstbilgiye `Ocp-Apim-Subscription-Key` ekleyin.
 
     ```python
     headers = {
@@ -70,9 +70,9 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
         }
     ```
 
-## <a name="send-the-request-and-read-the-response"></a>İsteği gönder ve yanıtı oku
+## <a name="send-the-request-and-read-the-response"></a>İsteği gönderin ve yanıtı okuyun
 
-1. İstekler kitaplığını kullanarak POST isteğini gönderin.
+1. İstek kitaplığını kullanarak POST isteğini gönderin.
 
     ```python
     response = requests.post(endpoint, headers=headers, params=params, data=data)
@@ -139,7 +139,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalı Web uygulaması oluşturma](../tutorials/spellcheck.md)
+> [Tek sayfalı web uygulaması oluşturma](../tutorials/spellcheck.md)
 
-- [Bing Yazım Denetimi API'si nedir?](../overview.md)
+- [Bing Yazım Denetimi API’si nedir?](../overview.md)
 - [Bing Yazım Denetimi API’si v7 Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

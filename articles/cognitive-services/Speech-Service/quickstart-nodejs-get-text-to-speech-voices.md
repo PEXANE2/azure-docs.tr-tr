@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: metin okuma seslerini, Node. js-konuşma hizmetini listeleyin'
+title: 'Hızlı başlangıç: Metinden konuşmaya sesleri, Düğüm.js -Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Node. js kullanarak bir bölgenin/uç noktanın standart ve sinir sesinden tam listesini almayı öğreneceksiniz. Liste JSON olarak döndürülür ve ses kullanılabilirliği bölgeye göre değişir.
+description: Bu hızlı başlangıçta, Node.js kullanarak bir bölge/bitiş noktası için standart ve sinirsel seslerin tam listesini nasıl alacağınızı öğreneceksiniz. Liste JSON olarak döndürülür ve ses kullanılabilirliği bölgeye göre değişir.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 7a929794ffaea4f863ffaef7227e58c7ccf901f0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976579"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak metinden konuşmaya seslerin listesini alın
+# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Quickstart: Düğüm.js kullanarak metinden konuşmaya seslerin listesini alın
 
-Bu hızlı başlangıçta, Node. js kullanarak bir bölgenin/uç noktanın standart ve sinir sesinden tam listesini almayı öğreneceksiniz. Liste JSON olarak döndürülür ve ses kullanılabilirliği bölgeye göre değişir. Desteklenen bölgelerin listesi için bkz. [bölgeler](regions.md).
+Bu hızlı başlangıçta, Node.js kullanarak bir bölge/bitiş noktası için standart ve sinirsel seslerin tam listesini nasıl alacağınızı öğreneceksiniz. Liste JSON olarak döndürülür ve ses kullanılabilirliği bölgeye göre değişir. Desteklenen bölgelerin listesi için [bkz.](regions.md)
 
-Bu hızlı başlangıç, bir konuşma hizmeti kaynağı olan bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
+Bu hızlı başlatma, Konuşma hizmeti kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
 * [Node 8.12.x veya üzeri](https://nodejs.org/en/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), veya en sevdiğiniz metin düzenleyiciyi
-* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın!](get-started.md).
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), veya en sevdiğiniz metin editörü
+* Konuşma hizmeti için azure abonelik anahtarı. [Ücretsiz bir tane al!](get-started.md)
 
 ## <a name="create-a-project-and-require-dependencies"></a>Proje oluşturma ve bağımlılıklar gerektirme
 
-En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir Node. js projesi oluşturun. Ardından bu kod parçacığını projenizde `get-voices.js` adlı bir dosyaya kopyalayın.
+En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir Düğüm.js projesi oluşturun. Ardından bu kod parçacığını projenizde `get-voices.js` adlı bir dosyaya kopyalayın.
 
 ```javascript
 // Requires request and request-promise for HTTP requests
@@ -48,9 +48,9 @@ const fs = require('fs');
 
 ## <a name="get-an-access-token"></a>Bir erişim belirteci alma
 
-Metin okuma REST API, kimlik doğrulaması için bir erişim belirteci gerektirir. Erişim belirteci almak için bir exchange gereklidir. Bu işlev, `issueToken` uç noktasını kullanarak bir erişim belirteci için konuşma hizmeti abonelik anahtarınızı değiştirir.
+Metinden konuşmaya REST API kimlik doğrulaması için bir erişim belirteci gerektirir. Bir erişim jetonu almak için bir değişim gereklidir. Bu işlev, bitiş noktasını kullanarak bir erişim belirteci için Konuşma hizmeti abonelik anahtarınızı `issueToken` değiştirir.
 
-Bu örnek, konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölgeye kullanıyorsanız, değerini güncelleştirin `uri`. Tam bir listesi için bkz [bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Bu örnek, Konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölge kullanıyorsanız, `uri`değeri güncelleştirin. Tam liste için [Bölgeler'e](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)bakın.
 
 Bu kodu projenize kopyalayın:
 
@@ -69,15 +69,15 @@ function getAccessToken(subscriptionKey) {
 ```
 
 > [!NOTE]
-> Kimlik doğrulaması hakkında daha fazla bilgi için bkz. [bir erişim belirteciyle kimlik doğrulama](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
+> Kimlik doğrulama hakkında daha fazla bilgi için [erişim belirteciyle Kimlik Doğrulaması'na](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)bakın.
 
-Sonraki bölümde, seslerin listesini almak ve JSON çıkışını dosyaya kaydetmek için işlevi oluşturacağız.
+Bir sonraki bölümde, seslerin listesini almak ve JSON çıktısını dosyaya kaydetmek için işlevi oluşturacağız.
 
-## <a name="make-a-request-and-save-the-response"></a>Bir istekte bulunmak ve yanıt Kaydet
+## <a name="make-a-request-and-save-the-response"></a>İstekte bulunun ve yanıtı kaydedin
 
-Burada, isteği derleyip döndürülen seslerin listesini kaydedeceklürsünüz. Bu örnek, Batı ABD uç nokta kullanmakta olduğunuz varsayılır. Kaynağınız için farklı bir bölgede kayıtlı değilse, güncelleştirdiğinizden emin olun `uri`. Daha fazla bilgi için bkz. [konuşma hizmeti bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Burada isteği oluşturup iade edilen seslerin listesini kaydedebilirsiniz. Bu örnek, Batı ABD bitiş noktasını kullandığınızı varsayar. Kaynağınız farklı bir bölgeye kayıtlıysa, 'yi `uri`güncelleştirdiğinizden emin olun Daha fazla bilgi için konuşma [hizmet bölgelerine](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)bakın.
 
-Sonra, istek için gerekli üstbilgileri ekleyin. Son olarak, hizmete istek yapacaksınız. İstek başarılı olursa ve 200 durum kodu döndürülürse, yanıt dosyaya yazılır.
+Ardından, istek için gerekli üstbilgi ekleyin. Son olarak, servise bir istekte bulunacaksınız. İstek başarılı olursa ve 200 durum kodu döndürülürse, yanıt dosyaya yazılır.
 
 ```javascript
 function textToSpeech(accessToken) {
@@ -104,9 +104,9 @@ function textToSpeech(accessToken) {
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Neredeyse bitti. Son adım zaman uyumsuz bir işlev oluşturmaktır. Bu işlev, bir ortam değişkeninden abonelik anahtarınızı okur, belirteç alır, isteğin tamamlanmasını bekler, ardından JSON yanıtını dosyaya yazar.
+Neredeyse bitti. Son adım bir eşzamanlı fonksiyon oluşturmaktır. Bu işlev, abonelik anahtarınızı bir ortam değişkeninden okuyacak, bir belirteç alacak, isteğin tamamlanmasını bekleyecek ve ardından Dosyaya JSON yanıtını yazacaktır.
 
-Ortam değişkenlerini tanımıyorsanız veya bir dize olarak abonelik anahtarınız ile test yapmayı tercih ediyorsanız, `process.env.SPEECH_SERVICE_KEY` bir dize olarak abonelik anahtarınızla değiştirin.
+Ortam değişkenlerini bilmiyorsanız veya abonelik anahtarınızı dize olarak kodlanmış olarak test `process.env.SPEECH_SERVICE_KEY` etmeyi tercih ediyorsanız, bir dize olarak abonelik anahtarınızla değiştirin.
 
 ```javascript
 // Use async and await to get the token before attempting
@@ -133,7 +133,7 @@ main()
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-Bu, örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırını (veya terminal oturumu), proje dizinine gidin ve çalıştırın:
+İşte bu, örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumundan), proje dizininize gidin ve çalıştırın:
 
 ```console
 node get-voices.js
@@ -141,15 +141,15 @@ node get-voices.js
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan olan gizli bilgilerin kaldırdığınızdan emin olun.
+Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan gizli bilgileri kaldırdıklarından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [GitHub 'da Node. js örneklerini keşfet](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
+> [GitHub'da Node.js örneklerini keşfedin](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Metin Okuma API başvurusu](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [Özel ses tipi olarak oluşturma](how-to-customize-voice-font.md)
-* [Özel ses oluşturma kayıt ses örnekleri](record-custom-voice-samples.md)
+* [Metin okuma API başvurusu](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
+* [Özel ses yazı tipleri oluşturma](how-to-customize-voice-font.md)
+* [Özel bir ses oluşturmak için ses örneklerini kaydetme](record-custom-voice-samples.md)

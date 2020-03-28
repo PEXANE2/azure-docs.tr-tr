@@ -1,7 +1,7 @@
 ---
 title: "Öğretici: .NET'te videoları ve transkriptleri denetleme - Content Moderator"
 titleSuffix: Azure Cognitive Services
-description: Bu öğretici, makine destekli denetleme ve Kullanıcı döngüsü incelemesi oluşturma ile tam bir video ve döküm denetimi çözümü oluşturmayı anlamanıza yardımcı olur.
+description: Bu öğretici, makine destekli ılımlılık ve döngü içinde insan incelemesi oluşturma ile tam bir video ve transkript ılımlılık çözümü oluşturmak için nasıl anlamanıza yardımcı olur.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976987"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Öğretici: Video ve transkript denetimi
 
-Bu öğreticide, makine destekli denetleme ve insan incelemesi tümleştirmesiyle tam video ve döküm denetimi çözümü oluşturmayı öğreneceksiniz.
+Bu eğitimde, makine destekli ılımlılık ve insan inceleme entegrasyonu ile tam bir video ve transkript ılımlılık çözümü oluşturmak için nasıl öğreneceksiniz.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -32,17 +32,17 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 > - Metin denetimi hizmetiyle transkripti denetleme
 > - Denetlenen transkripti video incelemesine ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) Web sitesine kaydolun ve özel etiketler oluşturun. Bu adımla ilgili yardıma ihtiyacınız varsa [etiketleri kullanma](Review-Tool-User-Guide/tags.md) bölümüne bakın.
+- İçerik Moderatör [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) web sitesine kaydolun ve özel etiketler oluşturun. Bu adımda yardıma ihtiyacınız varsa [Etiketleri Kullan'ı](Review-Tool-User-Guide/tags.md) görün.
 
-    ![Video denetleme özel etiketlerinin ekran görüntüsü](images/video-tutorial-custom-tags.png)
-- Örnek uygulamayı çalıştırmak için bir Azure hesabına, bir Azure Media Services kaynağına, bir Azure Content Moderator kaynağına ve Azure Active Directory kimlik bilgilerine sahip olmanız gerekir. Bu kaynakları alma hakkında yönergeler için bkz. [video denetleme API](video-moderation-api.md) Kılavuzu.
-- GitHub 'dan [video inceleme konsol uygulamasını](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) indirin.
+    ![Video ılımlılığı özel etiketleri ekran görüntüsü](images/video-tutorial-custom-tags.png)
+- Örnek uygulamayı çalıştırmak için bir Azure hesabı, bir Azure Medya Hizmetleri kaynağı, bir Azure İçerik Yöneticisi kaynağı ve Azure Etkin Dizin kimliği gerekir. Bu kaynakların nasıl alınacağına ilişkin talimatlar için [Video Moderasyon API](video-moderation-api.md) kılavuzuna bakın.
+- GitHub'dan [Video inceleme konsolu uygulamasını](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) indirin.
 
 ## <a name="enter-credentials"></a>Kimlik bilgilerini girin
 
-`App.config` dosyasını düzenleyin ve `#####`tarafından belirtilen Active Directory kiracı adını, hizmet uç noktalarını ve abonelik anahtarlarını ekleyin. Aşağıdaki bilgiler gerekir:
+Dosyayı `App.config` düzenleme ve Etkin Dizin kiracı adı, hizmet bitiş noktaları `#####`ve abonelik anahtarları tarafından belirtilen ekleyin. Aşağıdaki bilgiler gerekir:
 
 |Anahtar|Açıklama|
 |-|-|
@@ -58,7 +58,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 `Program.cs` içindeki `Program` sınıfı, video denetim uygulamasına ana giriş noktasıdır.
 
-### <a name="methods-of-program-class"></a>Program sınıfının yöntemleri
+### <a name="methods-of-program-class"></a>Program sınıfı nın yöntemleri
 
 |Yöntem|Açıklama|
 |-|-|
@@ -79,10 +79,10 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 - Denetleme için gönderilecek MPEG-4 video dosyalarını içeren dizinin yolu. Bu dizindeki ve onun alt dizinlerindeki tüm `*.mp4` dosyaları denetleme için gönderilir.
 - İsteğe bağlı olarak, sesi denetlemek amacıyla metin transkriptlerinin oluşturulup oluşturulmayacağını gösteren bir Boole (doğru/yanlış) bayrağı.
 
-Hiçbir komut satırı bağımsız değişkeni yoksa, `Main()` `GetUserInputs()` çağrısı yapar. Bu yöntem kullanıcıdan tek bir video dosyasının yolunu girmesini ve metin transkriptinin oluşturulup oluşturulmayacağını belirtmesini ister.
+Hiçbir komut satırı bağımsız değişkeni yoksa, `Main()``GetUserInputs()` çağrısı yapar. Bu yöntem kullanıcıdan tek bir video dosyasının yolunu girmesini ve metin transkriptinin oluşturulup oluşturulmayacağını belirtmesini ister.
 
 > [!NOTE]
-> Konsol uygulaması, karşıya yüklenen videonun ses izlemesindeki dökümü oluşturmak için [Azure MEDIA Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
+> Konsol uygulaması, yüklenen videonun ses parçasından transkript oluşturmak için [Azure Media Indexer API'sini](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT formatında sağlanmaktadır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize ve ProcessVideo yöntemleri
 
@@ -110,7 +110,7 @@ Son olarak, video dosyalarının her biri için `ProcessVideo()` yöntemi çağr
 
 Aşağıdaki bölümlerde `ProcessVideo()` tarafından çağrılan tek tek işlemler biraz daha ayrıntılı incelenecektir. 
 
-## <a name="compress-the-video"></a>Videoyu sıkıştır
+## <a name="compress-the-video"></a>Videoyu sıkıştırın
 
 Ağ trafiğini en aza indirmek için, uygulama video dosyalarını H.264 (MPEG-4 AVC) biçimine dönüştürür ve en çok 640 piksel genişliğe ölçeklendirir. Yüksek verimliliği (sıkıştırma oranı) nedeniyle H.264 codec bileşeni önerilir. Sıkıştırma, Visual Studio çözümünün `Lib` klasörüne eklenmiş olan ücretsiz `ffmpeg` komut satırı aracı kullanılarak yapılır. Giriş dosyaları, en yaygın kullanılan video dosyası biçimleri ve codec bileşenleri de dahil olmak üzere `ffmpeg` tarafından desteklenen herhangi bir biçimde olabilir.
 
@@ -135,7 +135,7 @@ Kod aşağıdaki adımları gerçekleştirir:
 
 Bu yöntem sıkıştırılmış çıkış dosyasının adını döndürür.
 
-## <a name="upload-and-moderate-the-video"></a>Videoyu karşıya yükleme ve orta
+## <a name="upload-and-moderate-the-video"></a>Videoyu yükleme ve orta
 
 Videonun Content Moderation hizmeti tarafından işlenebilmesi için önce Azure Media Services'de depolanması gerekir. `Program.cs` içindeki `Program` sınıfının, videoyu karşıya yüklemek için kullanılan akış isteğini temsil eden bir nesnenin döndürüldüğü kısa bir `CreateVideoStreamingRequest()` yöntemi vardır.
 
@@ -151,7 +151,7 @@ Bu satırlar aşağıdaki görevleri gerçekleştirir:
 - Kullanıcı metin transkripti istediyse isteğin `GenerateVTT` bayrağını ayarlama
 - Karşıya yüklemeyi gerçekleştirmek ve sonucu almak için `CreateAzureMediaServicesJobToModerateVideo()` çağrısı yapma
 
-## <a name="examine-video-moderation-code"></a>Video denetleme kodunu inceleme
+## <a name="examine-video-moderation-code"></a>Video moderasyon kodunu inceleme
 
 `CreateAzureMediaServicesJobToModerateVideo()` yöntemi, Azure Media Services ile etkileşim kuran kodun büyük bölümünün yer aldığı `VideoModerator.cs` içindedir. Yöntemin kaynak kodu aşağıdaki alıntıda gösterilir.
 
@@ -164,7 +164,7 @@ Bu kod aşağıdaki görevleri gerçekleştirir:
 - Dosyayı karşıya yükleyerek ve işlemeye başlayarak işi gönderir
 - Denetleme sonuçlarını, metin transkriptini (istendiyse) ve diğer bilgileri alır
 
-## <a name="sample-video-moderation-output"></a>Örnek video denetleme çıkışı
+## <a name="sample-video-moderation-output"></a>Örnek video moderasyon çıktısı
 
 Video denetimi işinin sonucu (Bkz. [video denetimine hızlı başlangıç](video-moderation-api.md)), denetim sonuçlarını içeren bir JSON veri yapısıdır. Bu sonuçlarda, inceleme için bayrak eklenmiş anahtar karelerle olayları (klipleri) içeren video içindeki parçaların (çekimlerin) dökümü yer alır. Her anahtar kare, yetişkinlere yönelik veya müstehcen içerik bulundurma olasılığına göre puanlanır. Aşağıdaki örnekte JSON yanıtı gösterilir:
 
@@ -223,7 +223,7 @@ Video denetimi işinin sonucu (Bkz. [video denetimine hızlı başlangıç](vide
 `GenerateVTT` bayrağı ayarlandığında videodan ses transkripsiyonu da oluşturulur.
 
 > [!NOTE]
-> Konsol uygulaması, karşıya yüklenen videonun ses izlemesindeki dökümü oluşturmak için [Azure MEDIA Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
+> Konsol uygulaması, yüklenen videonun ses parçasından transkript oluşturmak için [Azure Media Indexer API'sini](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT formatında sağlanmaktadır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
 
 ## <a name="create-a-human-review"></a>İnsan incelemesi oluşturma
 
@@ -234,7 +234,7 @@ Denetleme işlemi videodaki anahtar karelerin listesini ve ses parçalarının t
 `CreateVideoReviewInContentModerator()` aşağıdaki görevleri gerçekleştirmek için başka bazı yöntemleri çağırır:
 
 > [!NOTE]
-> Konsol uygulaması küçük resimleri oluşturmak için [FFmpeg](https://ffmpeg.org/) kitaplığını kullanır. Bu küçük resimler (görüntüler), video denetleme çıkışında kare zaman damgalarına karşılık gelir.
+> Konsol uygulaması küçük resimleri oluşturmak için [FFmpeg](https://ffmpeg.org/) kitaplığını kullanır. Bu küçük resimler (görüntüler), video denetimi çıkışındaki kare zaman damgalarına karşılık gelir.
 
 |Görev|Yöntemler|Dosya|
 |-|-|-|
@@ -246,7 +246,7 @@ Aşağıdaki ekranda önceki adımların sonuçları gösterilir.
 
 ![Video incelemesi varsayılan görünümü](images/video-tutorial-default-view.PNG)
 
-## <a name="process-the-transcript"></a>Dökümü işle
+## <a name="process-the-transcript"></a>Transkripti işleme
 
 Şimdiye kadar, bu öğreticide tanıtılan kod görsel içeriğe odaklanmıştı. Konuşma içeriğinin incelenmesi ayrı ve isteğe bağlı bir işlemdir ve daha önce belirtildiği gibi sesten oluşturulan transkripti kullanır. Artık metin transkriptlerinin nasıl oluşturulduğunu ve inceleme işleminde nasıl kullanıldığını gözden geçirmenin zamanı geldi. Transkript oluşturma görevi, [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content) hizmetinin kapsamına girer.
 
@@ -279,7 +279,7 @@ Transkript bir AMS varlığı olarak yayımlanır. Transkripti uygunsuz içerik 
 
 Bazı gerekli AMS kurulum işlemlerinden sonra, indirme işlemi AMS varlığını yerel dosyaya kopyalayan genel `DownloadAssetToLocal()` işlevi çağrılarak gerçekleştirilir.
 
-## <a name="moderate-the-transcript"></a>Orta yazı
+## <a name="moderate-the-transcript"></a>Transkriptin ortası
 
 Transkript elinizin altında olduğundan, taranır ve incelemede kullanılır. İncelemeyi oluşturmak `CreateVideoReviewInContentModerator()` yönteminin konusudur ve bu işi yapmak için `GenerateTextScreenProfanity()` yöntemini çağırır. Bu yöntem de işlevlerin çoğunu içeren `TextScreen()` yöntemini çağırır.
 
@@ -314,7 +314,7 @@ Ardından, ayrıştırılmış metin açıklamalı alt yazıları Content Modera
 
 [!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
-### <a name="text-moderation-breakdown"></a>Metin denetleme dökümü
+### <a name="text-moderation-breakdown"></a>Metin moderasyonu dökümü
 
 `TextScreen()` önemli bir yöntemdir, bu nedenle şimdi onu bölümlerine ayıralım.
 
@@ -359,7 +359,7 @@ Total Elapsed Time: 00:05:56.8420355
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, TRANSCRIPT içerik&mdash;dahil olmak üzere video&mdash;içeriğini destekleyen bir uygulama ayarlarsınız ve Inceleme aracında incelemeler oluşturur. Daha sonra, video denetleme ayrıntıları hakkında daha fazla bilgi edinin.
+Bu öğreticide, transkript içeriği&mdash;&mdash;de dahil olmak üzere video içeriğini denetleyen ve İnceleme aracında incelemeler oluşturan bir uygulama ayarlarsınız. Ardından, video moderasyonunun ayrıntıları hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Video denetimi](./video-moderation-human-review.md)

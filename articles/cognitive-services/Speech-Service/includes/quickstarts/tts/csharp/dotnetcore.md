@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: senize konuşma C# , (.NET Core)-konuşma hizmeti'
+title: 'Quickstart: Synthesize konuşma, C# (.NET Core) - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'sını kullanarak Windows üzerinde .NET C# Core altında konuşmayı nasıl sentezleyeceğinizi öğrenin
+description: Konuşma SDK'sını kullanarak C# 'da .NET Core on Windows altında konuşmayı nasıl sentezleyebilirsiniz öğrenin
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: include
 ms.date: 6/24/2019
 ms.author: yinhew
 ms.openlocfilehash: ba6a373f678f8d34b34a669b3fbb3b570c90ed0d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925718"
 ---
 > [!NOTE]
 > .NET Core, [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) teknik özelliklerini gerçekleştiren açık kaynaklı, platformlar arası bir .NET platformudur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
@@ -42,17 +42,17 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-1. Uygulamayı derleyin. Menü çubuğundan **Derle** > **Çözümü Derle**'yi seçin. Kodun hatasız derlenmesi gerekir.
+1. Uygulamayı derleyin. Menü çubuğundan **Yapı** > **Çözüm'üne**bakın. Kodun hatasız derlenmesi gerekir.
 
-    ![Derleme çözümü seçeneği vurgulanmış şekilde Visual Studio uygulamasının ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Başarılı derleme")
+    ![Visual Studio uygulamasının, Çözümü Derle seçeneğinin vurgulandığı ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Başarılı yapı")
 
-1. Uygulamayı başlatın. Menü çubuğundan **Hata Ayıklama** > **Hata Ayıklamayı Başlat**'ı seçin veya **F5** tuşuna basın.
+1. Uygulamayı başlatın. Menü çubuğundan **Hata** > **Ayıklama Başlat'ı**seçin veya **F5 tuşuna**basın.
 
-    ![Hata ayıklamayı Başlat seçeneği vurgulanmış şekilde Visual Studio uygulamasının ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Uygulamayı hata ayıklamada Başlat")
+    ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneğinin vurgulandığı ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Uygulamayı hata ayıklamaya başlatın")
 
-1. Bir konsol penceresi görünür ve bir metin yazmanızı ister. Birkaç kelime veya tümce yazın. Yazdığınız metin konuşma hizmetine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
+1. Bir konsol penceresi görüntülenir ve bazı metin yazmanızı ister. Birkaç kelime veya cümle yazın. Yazdığınız metin Konuşma hizmetine aktarılır ve konuşmacınızda çalan konuşmayla sentezlenir.
 
-    ![Başarılı birleştirme sonrasında konsol çıktısının ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Başarılı birleştirme sonrasında konsol çıkışı")
+    ![Başarılı sentezden sonra konsol çıkışının ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Başarılı sentezden sonra konsol çıkışı")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -60,5 +60,5 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Özel bir ses oluşturun](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Özel ses örneklerini Kaydet](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Özel Ses Oluşturma](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Özel ses örneklerini kaydetme](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

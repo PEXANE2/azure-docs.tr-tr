@@ -1,5 +1,5 @@
 ---
-title: Bing Resim Arama C# istemci kitaplığı hızlı başlangıç
+title: Bing Resim Arama C# istemci kitaplığı hızlı başlat
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 9e74742858c5de2abf56b80ea4e4f275bc2c9b23
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899576"
 ---
-API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama istemci kitaplığını kullanarak ilk görüntünüzü aramanızı sağlamak için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL’sini görüntüler.
+API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Image Search istemci kitaplığını kullanarak ilk resim aramanızı yapmak için bu hızlı başlatmayı kullanın. Bu basit C# uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL’sini görüntüler.
 
-Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch)’da bulunabilir.
+Bu örnek için kaynak kodu, ek hata işleme ve ek açıklamalar ile [GitHub kullanılabilir.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch)
 
-## <a name="prerequisites"></a>Önkoşullar
-* Herhangi bir [Visual Studio 2017 veya üzeri](https://visualstudio.microsoft.com/vs/whatsnew/)sürümü.
+## <a name="prerequisites"></a>Ön koşullar
+* [Visual Studio 2017 veya sonrası](https://visualstudio.microsoft.com/vs/whatsnew/)herhangi bir baskı .
 * [Bilişsel Görüntü Arama NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/).
 
-Visual Studio 'da Bing Resim Arama istemci kitaplığını yüklemek için, **Çözüm Gezgini**' dan **NuGet Paketlerini Yönet** seçeneğini kullanın.
+Visual Studio'da Bing Resim Arama istemci kitaplığını yüklemek için **Solution Explorer'dan** **NuGet Paketlerini Yönet** seçeneğini kullanın.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Ayrıca bakınız [Bilişsel Hizmetler Fiyatlandırma - Bing Arama API.](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 

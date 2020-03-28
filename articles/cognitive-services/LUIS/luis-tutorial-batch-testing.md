@@ -1,140 +1,140 @@
 ---
-title: 'Öğretici: sorunları bulmak için Batch testi-LUSıS'
-description: Bu öğreticide, Language Understanding (LUSıS) uygulamanızın kalitesini doğrulamak için Batch test kullanımı gösterilmektedir.
+title: 'Öğretici: Sorunları bulmak için toplu test - LUIS'
+description: Bu öğretici, Dil Anlama (LUIS) uygulamanızın kalitesini doğrulamak için toplu testin nasıl kullanılacağını gösterir.
 ms.topic: tutorial
 ms.date: 03/02/2020
 ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78250529"
 ---
-# <a name="tutorial-batch-test-data-sets"></a>Öğretici: Batch test veri kümeleri
+# <a name="tutorial-batch-test-data-sets"></a>Öğretici: Toplu test veri setleri
 
-Bu öğreticide, Language Understanding (LUSıS) uygulamanızın kalitesini doğrulamak için Batch test kullanımı gösterilmektedir.
+Bu öğretici, Dil Anlama (LUIS) uygulamanızın kalitesini doğrulamak için toplu testin nasıl kullanılacağını gösterir.
 
-Toplu test etkin doğrulamanıza olanak tanır, modelin bilinen durumuyla etiketli konuşma ve varlıkların eğitim. JSON biçimli bir toplu iş dosyası Konuşma ekleme ve gereksinim duyduğunuz varlık etiketleri içinde utterance tahmin ayarlayın.
+Toplu işlem, etkin, eğitilmiş modelin durumunu bilinen bir etiketlenmiş sözcük ve varlıklar kümesiyle doğrulamanıza olanak tanır. JSON biçimli toplu iş dosyasında, sözcük leri ekleyin ve söyleyiş içinde tahmin edilmesi gereken varlık etiketlerini ayarlayın.
 
-Toplu test etmek için gereksinimler:
+Toplu test için gereksinimler:
 
-* En fazla test başına 1000 konuşma.
-* Yinelenen değer yok.
-* İzin verilen varlık türleri: yalnızca, öğrenilen varlıkları öğrendi.
+* Test başına en fazla 1000 kelime.
+* Kopya yok.
+* İzin verilen varlık türleri: yalnızca işlenmiş öğrenilen varlıklar.
 
-Bu öğreticiden başka bir uygulama kullanırken, uygulamanıza zaten eklenmiş olan örnek utbotları *kullanmayın.*
+Bu öğretici dışında bir uygulama *not* kullanırken, uygulamanız için zaten eklenen örnek ifadelerini kullanmayın.
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Örnek uygulamayı içeri aktar
-> * Toplu test dosyası oluşturma
-> * Toplu test çalıştırma
+> * Örnek uygulamayı içe aktarma
+> * Toplu iş testi dosyası oluşturma
+> * Toplu iş testi çalıştırma
 > * Test sonuçlarını gözden geçirme
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
+## <a name="import-example-app"></a>Örnek uygulamayı içe aktarma
 
-`1 pepperoni pizza on thin crust`gibi bir pizza sırası alan bir uygulamayı içeri aktarın.
+Pizza siparişi alan bir uygulamayı `1 pepperoni pizza on thin crust`içe aktarın.
 
 1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) indirip kaydedin.
 
-1. [ÖNIZLEME Luo portalını](https://preview.luis.ai/)kullanın, JSON 'u yeni bir uygulamaya aktarın, uygulamayı `Pizza app`olarak adlandırın.
+1. Önizleme [LUIS portalını](https://preview.luis.ai/)kullanın, JSON'u yeni bir `Pizza app`uygulamaya aktarın, uygulamayı adlandırın.
 
-1. Uygulamayı eğitebilmeniz için, gezinmede sağ üst köşedeki **eğitme** ' yi seçin.
+1. Uygulamayı eğitmek için navigasyonun sağ üst köşesindeki **Tren'i** seçin.
 
-## <a name="what-should-the-batch-file-utterances-include"></a>Toplu iş dosyası dıksları neleri içerir?
+## <a name="what-should-the-batch-file-utterances-include"></a>Toplu dosya tasnifleri neleri içermelidir?
 
-Toplu iş dosyası, başlangıç ve bitiş konumu dahil olmak üzere, en üst düzey makine tarafından öğrenilen varlıklar ile utterslar içermelidir. Söyleyler uygulamada zaten bulunan örneklerin bir parçası olmamalıdır. Bu, amaç ve varlıklar için olumlu tahmin etmek istediğiniz söyler olmalıdır.
+Toplu iş dosyası, başlangıç ve bitiş konumu da dahil olmak üzere etiketlenmiş üst düzey makine öğrenilen varlıklara sahip tümlemeleri içermelidir. Bu söyleyişler, uygulamada zaten bulunan örneklerin bir parçası olmamalıdır. Bunlar, niyet ve varlıklar için olumlu tahmin etmek istediğiniz söyleyişler olmalıdır.
 
-Testleri amaç ve/veya varlığa göre ayırabilir veya aynı dosyadaki tüm testlere (1000 ' e kadar) sahip olabilirsiniz.
+Testleri niyet ve/veya tüzel kişiye göre ayırabilir veya tüm testleri (1000'e kadar söyleyerek) aynı dosyada bulabilirsiniz.
 
 ## <a name="batch-file"></a>Toplu iş dosyası
 
-JSON örneği, bir test dosyasının nasıl göründüğünü göstermek için etiketlenmiş bir varlığa sahip bir söylenişi içerir. Kendi testlerinizde, doğru amaç ve makine tarafından öğrenilen varlık etiketli birçok kullanım sahibi olmanız gerekir.
+JSON örneği, test dosyasının nasıl göründüğünü göstermek için etiketli bir varlıkla bir sözcük içerir. Kendi testlerinizde, doğru niyete sahip birçok söyleyişiniz ve makineden öğrenilen varlık etiketlenmiş olmalıdır.
 
-1. Bir metin düzenleyicisinde `pizza-with-machine-learned-entity-test.json` oluşturun veya [indirin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) .
+1. Metin `pizza-with-machine-learned-entity-test.json` düzenleyicisinde oluşturun veya [indirin.](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true)
 
-2. JSON biçimli toplu iş dosyasında, testte tahmin etmek istediğiniz **amacı** içeren bir söylenişi ekleyin.
+2. JSON biçimlendirilmiş toplu iş dosyasında, testte tahmin edilen **Niyet** ile bir söyleyiş ekleyin.
 
    [!code-json[Add the intents to the batch test file](~/samples-cognitive-services-data-files/luis/batch-tests/pizza-with-machine-learned-entity-test.json "Add the intent to the batch test file")]
 
-## <a name="run-the-batch"></a>Toplu işlem çalıştırın
+## <a name="run-the-batch"></a>Toplu işlemi çalıştırma
 
-1. Üst gezinti çubuğunda **Test** ' i seçin.
+1. Üst gezinti çubuğunda **Test'i** seçin.
 
-2. Sağ taraftaki panelde **Batch test paneli** ' ni seçin.
+2. Sağ taraftaki **panelde Toplu İşlem test panelini** seçin.
 
-3. **Veri kümesini Içeri aktar**seçeneğini belirleyin.
-
-    > [!div class="mx-imgBorder"]
-    > Içeri aktarma veri kümesi vurgulanmış LUO uygulamasının ekran görüntüsünü ![](./media/luis-tutorial-batch-testing/import-dataset-button.png)
-
-4. `pizza-with-machine-learned-entity-test.json` dosyanın dosya konumunu seçin.
-
-5. Veri kümesini `pizza test` adlandırın ve **bitti**' yi seçin.
+3. **Veri kümesini Aktar'ı**seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![dosya](./media/luis-tutorial-batch-testing/import-dataset-modal.png) seçin
+    > ![Alma veri kümesi vurgulanan LUIS uygulamasının ekran görüntüsü](./media/luis-tutorial-batch-testing/import-dataset-button.png)
+
+4. `pizza-with-machine-learned-entity-test.json` Dosyanın dosya konumunu seçin.
+
+5. Veri kümesini `pizza test` adlandırın ve **Bitti'yi**seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Dosyayı seçin](./media/luis-tutorial-batch-testing/import-dataset-modal.png)
 
 6. **Çalıştır** düğmesini seçin.
 
-7. **Sonuçları göster**' i seçin.
+7. **Sonuçları Gör'i**seçin.
 
-8. Gösterge ve grafik sonuçlarını gözden geçirin.
+8. Grafik ve gösterge deki sonuçları gözden geçirin.
 
-## <a name="review-batch-results-for-intents"></a>Amaçlar için Batch sonuçlarını gözden geçirme
+## <a name="review-batch-results-for-intents"></a>Niyetler için toplu iş sonuçlarını gözden geçirme
 
-Test sonuçları, test dıksları 'nın etkin sürüme göre nasıl tahmin edildiği hakkında grafiksel olarak gösterilir.
+Test sonuçları, test intibakının etkin sürüme karşı nasıl tahmin edildiğini grafikolarak gösterir.
 
-Batch grafik dört quadrants sonuçlarını görüntüler. Grafiğin sağına bir filtredir. Filtre, amaçları ve varlıkları içerir. Grafiğin bir [bölümünü](luis-concept-batch-test.md#batch-test-results) veya grafik içindeki bir noktayı seçtiğinizde, ilişkili söyleyler grafiğin altında görüntülenir.
+Toplu iş grafiği dört dizi sonuç görüntüler. Grafiğin sağında bir filtre var. Filtre niyet ve varlıklar içerir. [Grafiğin](luis-concept-batch-test.md#batch-test-results) bir bölümünü veya grafik içindeki bir noktayı seçtiğinizde, grafiğin altındaki ilişkili sözcük(ler) görüntülenir.
 
-Grafik üzerine gelindiğinde, fare tekerleğini büyütebilir veya grafikte görüntülenecek azaltın. Bu, sıkı bir şekilde birlikte kümelenmiş grafik üzerinde çok sayıda noktası olduğunda yararlıdır.
+Grafiğin üzerinde gezinirken, fare tekerleği grafikteki ekranı büyütebilir veya azaltabilir. Bu, grafikte sıkıca kümelenmiş birçok nokta olduğunda yararlıdır.
 
-Grafik dört Çeyrek dairelerle iki kırmızı renkte gösterilir bölümlerin birlikte kullanılıyor.
+Grafik dört çeyreğinde, iki bölüm kırmızı görüntülenir.
 
-1. Filtre listesinden **Modifyorder** hedefini seçin.
-
-    > [!div class="mx-imgBorder"]
-    > Filtre listesinden ModifyOrder hedefini ![seçin](./media/luis-tutorial-batch-testing/select-intent-from-filter-list.png)
-
-    Söylenişi, toplu iş dosyasında listelenen pozitif tahmine başarıyla eşleşeceğinden, **gerçek bir pozitif** anlamı olarak tahmin edilir.
+1. Filtre listesinde **ki ModifyOrder** amacını seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![utterance, pozitif tahminiyle başarıyla eşleşti](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
+    > ![Filtre listesinden DeğiştirAmaçlı amacını seçin](./media/luis-tutorial-batch-testing/select-intent-from-filter-list.png)
 
-    Filtreler listesindeki yeşil onay işaretleri de her bir amaç için testin başarısını gösterir. Diğer tüm amaçlar, toplu iş testinde listelenmeyen herhangi bir amaç için negatif bir test olarak her bir amaca karşı test edildiğinden, tüm diğer amaçlar 1/1 pozitif bir puana göre listelenir.
-
-1. **Onay** hedefini seçin. Bu amaç Batch testinde listelenmez, bu nedenle Batch testinde listelenen söylenişi 'in negatif bir testi olur.
+    Söyleyiş, **gerçek pozitif** olarak tahmin edilir, bu da sözün toplu iş dosyasında listelenen olumlu tahminini başarıyla eşleştirmesi anlamına gelir.
 
     > [!div class="mx-imgBorder"]
-    > ![utterance, toplu iş dosyasındaki listelenmemiş amaç için negatif olarak tahmin edildi](./media/luis-tutorial-batch-testing/true-negative-intent.png)
+    > ![Utterance başarıyla olumlu tahmin eşleşti](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
 
-    Negatif test, filtredeki yeşil metin ve kılavuz ile belirtilen şekilde başarılı oldu.
+    Filtreler listesindeki yeşil onay işaretleri, her amaç için testin başarısını da gösterir. Tüm diğer niyetler 1/1 pozitif puanla listelenir, çünkü söz, toplu iş testinde listelenmemiş herhangi bir niyet için negatif bir test olarak, her bir niyete karşı test edilmiştir.
 
-## <a name="review-batch-test-results-for-entities"></a>Varlıklar için Batch test sonuçlarını gözden geçirme
-
-Alt varlıkların bulunduğu bir makine varlığı olarak ModifyOrder varlığı, üst düzey varlığın eşleştiğini ve alt varlıkların nasıl tahmin edilir olduğunu görüntüler.
-
-1. Filtre listesinden **Modifyorder** varlığını seçin ve ardından kılavuzdaki daireyi seçin.
-
-1. Varlık tahmini grafiğin altında görüntülenir. Ekranda, beklenmeler ile eşleşmeyen tahminler için beklenmeler ve noktalı çizgiler ile eşleşen tahminler için düz çizgiler bulunur.
+1. **Onay** niyetini seçin. Bu amaç toplu iş testinde listelenmez, bu nedenle bu toplu iş testinde listelenen söyleyiş negatif bir testtir.
 
     > [!div class="mx-imgBorder"]
-    > ![varlık üst öğesi toplu iş dosyasında başarıyla tahmin edildi](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
+    > ![Toplu iş dosyasında listelenmemiş amaç için negatif olarak başarıyla tahmin edilen](./media/luis-tutorial-batch-testing/true-negative-intent.png)
 
-## <a name="finding-errors-with-a-batch-test"></a>Batch testinde hata bulma
+    Negatif test, filtredeki yeşil metin ve ızgarada belirtildiği gibi başarılı oldu.
 
-Bu öğretici, bir testin nasıl çalıştırılacağını ve sonuçların nasıl yorumlanacağını gösterdi. Test felsesayısını veya başarısız testlerin nasıl yanıt vereceğini kapsamadı.
+## <a name="review-batch-test-results-for-entities"></a>Varlıklar için toplu test sonuçlarını gözden geçirme
 
-* Testinizde, farklı ancak ilgili bir amaç için tahmin edilebilir olan her ikisinin de olumlu ve negatif uttlerini kapsadığınızdan emin olun.
-* Başarısız olan bildirimler için aşağıdaki görevleri gerçekleştirin ve ardından testleri yeniden çalıştırın:
-    * Amaçlar ve varlıklar için geçerli örnekleri gözden geçirin, etkin sürümün örnek utalklarından her ikisi de amaç ve varlık etiketleme için doğru olduğunu doğrulayın.
-    * Uygulamanızın amaçları ve varlıklarını tahmin etmeye yardımcı olacak özellikler ekleyin
-    * Daha fazla olumlu örnek ekleme
-    * Amaç genelinde örnek dengelerini gözden geçirme
+ModifyOrder varlığı, subentities olan bir makine varlığı olarak, üst düzey varlık eşleşen ve subentities nasıl tahmin görüntüler görüntüler.
+
+1. Filtre listesindeki **ModifyOrder** varlığını seçin ve ardından ızgaradaki daireyi seçin.
+
+1. Varlık tahmini grafiğin altında görüntülenir. Ekran, beklentiyle eşleşen öngörüler için düz çizgiler ve beklentiyle eşleşmeyen öngörüler için noktalı çizgiler içerir.
+
+    > [!div class="mx-imgBorder"]
+    > ![Toplu iş dosyasında başarıyla tahmin edilen varlık üst öğesi](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
+
+## <a name="finding-errors-with-a-batch-test"></a>Toplu iş testiile hataları bulma
+
+Bu öğretici nasıl bir test çalıştırmak ve sonuçları yorumlamak gösterdi. Test felsefesini ya da başarısız testlere nasıl yanıt verilebildiğini kapsamıyor.
+
+* Farklı ama ilgili bir amaç için tahmin edilebilecek söyleyişler de dahil olmak üzere, testinizde hem pozitif hem de olumsuz sözlerinizi kapsadığınızdan emin olun.
+* Başarısız ifadeler için aşağıdaki görevleri gerçekleştirin ve testleri yeniden çalıştırın:
+    * Niyetler ve varlıklar için geçerli örnekleri gözden geçirin, etkin sürümün örnek söyleyişlerini doğrulayın hem niyet hem de varlık etiketleme için doğrudur.
+    * Uygulamanızın amaçları ve varlıkları tahmin etmelerine yardımcı olacak özellikler ekleme
+    * Daha olumlu örnek söyleyinekler ekleyin
+    * Örneğin dilermedengesini,
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -142,7 +142,7 @@ Bu öğretici, bir testin nasıl çalıştırılacağını ve sonuçların nası
 
 ## <a name="next-step"></a>Sonraki adım
 
-Öğretici, geçerli modeli doğrulamak için bir Batch testi kullandı.
+Öğretici, geçerli modeli doğrulamak için bir toplu iş testi kullandı.
 
 > [!div class="nextstepaction"]
 > [Desenler hakkında bilgi edinin](luis-tutorial-pattern.md)

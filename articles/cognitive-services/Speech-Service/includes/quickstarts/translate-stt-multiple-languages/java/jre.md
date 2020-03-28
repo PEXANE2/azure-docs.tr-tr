@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı birden çok dile çevirme, Java (Windows, Linux)-konuşma hizmeti'
+title: 'Quickstart: Konuşmayı birden çok dile çevir, Java (Windows, Linux) - Konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: f729c8638f18e5745f76acc1f2fad51077149642
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925370"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
+1. Java projenize yeni bir boş sınıf eklemek için**Yeni** > **Sınıf** **Dosyası'nı** > seçin.
 
 1. **Yeni Java Sınıfı** penceresinde, **Paket** alanına **speechsdk.quickstart** ve **Ad** alanına da **Ana** girin.
 
@@ -133,9 +133,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-F11 tuşuna basın veya **Çalıştır** > **Hata Ayıkla** seçeneğini belirleyin.
+F11 tuşuna basın veya**Hata Ayıklama'yı** **çalıştır'ı** > seçin.
 
-1. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı konuşma hizmetine iletir, bu da metin (Bu durumda, Fransızca ve Almanca) olarak metne dönüştürür. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
+1. İngilizce bir deyim ya da cümle söyleyin. Uygulama konuşmanızı konuşma hizmetine iletir ve metne (bu durumda Fransızca ve Almanca) çevirir ve aktarır. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
 
 ````
 Say something...
