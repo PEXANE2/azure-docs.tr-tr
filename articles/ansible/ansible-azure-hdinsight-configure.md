@@ -1,39 +1,39 @@
 ---
-title: Öğretici-Azure HDInsight 'ta anormal bir küme yapılandırma
-description: Azure HDInsight kümesini yapılandırmak, yeniden boyutlandırmak ve silmek için nasıl kullanılacağını öğrenin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Apache Hadoop, HDInsight
+title: Öğretici - Ansible kullanarak Azure HDInsight'ta bir kümeyi yapılandırma
+description: Bir Azure HDInsight kümesini yapılandırmak, yeniden boyutlandırmak ve silmek için Ansible'ı nasıl kullanacağınızı öğrenin
+keywords: ansible, masmavi, devops, bash, oyun kitabı, apache hadoop, hdinsight
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2281c9683583e1def034b79809829a068ef9f3e6
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156661"
 ---
-# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Öğretici: Azure HDInsight 'ta bir kümeyi erişilebilir kullanarak yapılandırma
+# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Öğretici: Ansible kullanarak Azure HDInsight'ta bir kümeyi yapılandırma
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure HDInsight](/azure/hdinsight/) , verileri Işlemeye yönelik Hadoop tabanlı bir analiz hizmetidir. HDInsight, yapılandırılmış veya yapılandırılmamış büyük verilerle çalışmak için kullanılan bir ETL (Ayıkla, dönüştürme, yükleme) aracıdır. HDInsight, her türün farklı bir bileşen kümesini desteklediği çeşitli [küme türlerini](/azure/hdinsight/hadoop/apache-hadoop-introduction) destekler. 
+[Azure HDInsight,](/azure/hdinsight/) verileri işlemek için Hadoop tabanlı bir analiz hizmetidir. HDInsight, yapılandırılmış veya yapılandırılmamış büyük verilerle çalışmak için kullanılan bir ETL (ayıklama, dönüştürme, yükleme) aracıdır. HDInsight, her tür farklı bir bileşen kümesini desteklediği birkaç [küme türünü](/azure/hdinsight/hadoop/apache-hadoop-introduction) destekler. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * HDInsight için bir depolama hesabı oluşturma
-> * Bir [HDInsight Spark kümesi](/azure/hdinsight/spark/apache-spark-overview)yapılandırın.
-> * Kümeyi yeniden boyutlandırma
+> * [HDInsight Spark kümesini](/azure/hdinsight/spark/apache-spark-overview)yapılandırın.
+> * Bir kümeyi yeniden boyutlandırma
 > * Küme silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 
-## <a name="create-a-random-postfix"></a>Rastgele sonek oluşturma
+## <a name="create-a-random-postfix"></a>Rasgele bir postfix oluşturma
 
-Bu bölümdeki PlayBook kodu, Azure HDInsight küme adının bir parçası olarak kullanılmak üzere rastgele bir sonek oluşturur.
+Bu bölümdeki oyun kitabı kodu, Azure HDInsight küme adının bir parçası olarak kullanmak üzere rasgele bir gönderi düzeltmesi oluşturur.
 
 ```yml
 - hosts: localhost
@@ -48,9 +48,9 @@ Bu bölümdeki PlayBook kodu, Azure HDInsight küme adının bir parçası olara
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir kapsayıcıdır.
 
-Bu bölümdeki PlayBook kodu bir kaynak grubu oluşturur.
+Bu bölümdeki oyun kitabı kodu bir kaynak grubu oluşturur.
 
 
 ```yml
@@ -61,11 +61,11 @@ Bu bölümdeki PlayBook kodu bir kaynak grubu oluşturur.
         location: "{{ location }}"
 ```
 
-## <a name="create-a-storage-account-and-retrieve-key"></a>Depolama hesabı oluşturma ve anahtar alma
+## <a name="create-a-storage-account-and-retrieve-key"></a>Bir depolama hesabı oluşturma ve anahtar alma
 
 Azure depolama hesabı, HDInsight kümesi için varsayılan depolama alanı olarak kullanılır. 
 
-Bu bölümdeki PlayBook kodu, depolama hesabına erişmek için kullanılan anahtarı alır.
+Bu bölümdeki oyun kitabı kodu, depolama hesabına erişmek için kullanılan anahtarı alır.
 
 ```yml
 - name: Create storage account
@@ -93,7 +93,7 @@ Bu bölümdeki PlayBook kodu, depolama hesabına erişmek için kullanılan anah
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>HDInsight Spark kümesi oluşturma
 
-Bu bölümdeki PlayBook kodu, Azure HDInsight kümesini oluşturur.
+Bu bölümdeki oyun kitabı kodu Azure HDInsight kümesini oluşturur.
 
 ```yml
 - name: Create instance of Cluster
@@ -134,13 +134,13 @@ Bu bölümdeki PlayBook kodu, Azure HDInsight kümesini oluşturur.
           password: MuABCPassword!!@123
 ```
 
-Örnek oluşturma işleminin tamamlanması birkaç dakika sürebilir.
+Örnek oluşturmanın tamamlanması birkaç dakika sürebilir.
 
 ## <a name="resize-the-cluster"></a>Kümeyi yeniden boyutlandırma
 
-Küme oluşturulduktan sonra değiştirebilmeniz için tek ayar çalışan düğümlerinin sayısıdır. 
+Küme oluşturmadan sonra değiştirebileceğiniz tek ayar alt düğüm sayısıdır. 
 
-Bu bölümdeki PlayBook kodu, `workernode`içindeki `target_instance_count` güncelleştirerek çalışan düğümlerinin sayısını artırır.
+Bu bölümdeki oyun kitabı kodu, içindeki `target_instance_count` `workernode`alt düğüm sayısını yükselterek.
 
 ```yml
 - name: Resize cluster
@@ -186,9 +186,9 @@ Bu bölümdeki PlayBook kodu, `workernode`içindeki `target_instance_count` gün
 
 ## <a name="delete-the-cluster-instance"></a>Küme örneğini silme
 
-HDInsight kümeleri için faturalandırma, dakika başına eşit olarak dağıtılır. 
+HDInsight kümeleri için faturalandırma dakikada eşit olarak eşitlenir. 
 
-Bu bölümdeki PlayBook kodu kümeyi siler.
+Bu bölümdeki oyun kitabı kodu kümeyi siler.
 
 ```yml
 - name: Delete instance of Cluster
@@ -198,11 +198,11 @@ Bu bölümdeki PlayBook kodu kümeyi siler.
     state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Örnek PlayBook 'u alın
+## <a name="get-the-sample-playbook"></a>Örnek oyun kitabını alın
 
-Örnek PlayBook 'un tamamını almanın iki yolu vardır:
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) ve `hdinsight_create.yml`kaydedin.
-- `hdinsight_create.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+Tam örnek oyun kitabını almanın iki yolu vardır:
+- [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) ve `hdinsight_create.yml`'ye kaydedin.
+- Adlandırılmış `hdinsight_create.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 ---
@@ -344,14 +344,14 @@ Bu bölümdeki PlayBook kodu kümeyi siler.
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Örnek PlayBook 'u çalıştırma
+## <a name="run-the-sample-playbook"></a>Örnek oyun kitabını çalıştırın
 
-Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için PlayBook 'u çalıştırın.
+Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için oyun kitabını çalıştırın.
 
-PlayBook 'u çalıştırmadan önce aşağıdaki değişiklikleri yapın:
-- `vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+Oyun kitabını çalıştırmadan önce aşağıdaki değişiklikleri yapın:
+- `vars` Bölümde, yer tutucuyu `{{ resource_group_name }}` kaynak grubunuzun adı ile değiştirin.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -359,9 +359,9 @@ ansible-playbook hdinsight.yml
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
+Aşağıdaki kodu aşağıdaki `cleanup.yml`gibi kaydedin:
 
 ```yml
 - hosts: localhost
@@ -375,7 +375,7 @@ Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
         state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

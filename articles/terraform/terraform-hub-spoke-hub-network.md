@@ -1,43 +1,43 @@
 ---
-title: Öğretici-Terrayform kullanarak Azure 'da hub sanal ağı oluşturma
-description: Azure 'da diğer ağlar arasında ortak bağlantı noktası görevi gören bir hub sanal ağı oluşturmayı gösteren öğretici
+title: Öğretici - Terraform'u kullanarak Azure'da hub sanal ağ oluşturma
+description: Azure'da diğer ağlar arasında ortak bir bağlantı noktası görevi gören hub sanal ağının nasıl oluşturulacağımı gösteren öğretici
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 6669e90c3d12fcf55bcb1ad69c3b275c5117a8fc
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159052"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da hub sanal ağı oluşturma
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Öğretici: Terraform'u kullanarak Azure'da hub sanal ağı oluşturun
 
-Hub sanal ağı, şirket içi ağa merkezi bağlantı noktası görevi görür. Sanal ağ, bağlı olan sanal ağlarda barındırılan iş yükleri tarafından tüketilen paylaşılan hizmetleri barındırır. Tanıtım amacıyla, bu öğreticide hiçbir paylaşılan hizmet uygulanmaz.
+Hub sanal ağ, şirket içi ağa bağlantının merkezi noktası olarak hareket eder. Sanal ağ, konuşan sanal ağlarda barındırılan iş yükleri tarafından tüketilen paylaşılan hizmetleri barındırıyor. Demo amacıyla, bu öğreticide paylaşılan hizmetler uygulanmaz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Hub ve bağlı bileşen topolojisinde hub sanal ağını uygulamak için HashiCorp yapılandırma dilini (HCL) kullanın.
-> * Bir hub sıçrama kutusu sanal makinesi oluşturmak için terrayform 'u kullanın.
-> * Bir hub sanal özel ağ geçidi oluşturmak için Terrayform 'u kullanın.
-> * Hub ve şirket içi ağ geçidi bağlantıları oluşturmak için Terrayform 'u kullanın.
+> * Hub sanal ağını hub ve kollu bir topolojide uygulamak için HashiCorp Yapılandırma Dili'ni (HCL) kullanın.
+> * Bir hub jumpbox sanal makine oluşturmak için Terraform kullanın.
+> * Hub sanal özel ağ ağ geçidi oluşturmak için Terraform'u kullanın.
+> * Hub ve şirket içi ağ geçidi bağlantıları oluşturmak için Terraform'u kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. [Azure 'Da Terrayform ile hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
-1. [Azure 'Da Terrayform ile şirket içi sanal ağ oluşturun](./terraform-hub-spoke-on-prem.md).
+1. [Azure'da Terraform ile hub ve kollu karma ağ topolojisi oluşturun.](./terraform-hub-spoke-introduction.md)
+1. [Azure'da Terraform ile şirket içinde sanal ağ oluşturun.](./terraform-hub-spoke-on-prem.md)
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
 Hub ağı aşağıdaki bileşenlerden oluşur:
 
-- Hub sanal ağı
-- Hub sanal ağ geçidi
+- Hub sanal ağ
+- Hub sanal ağ ağ geçidi
 - Hub ağ geçidi bağlantıları 
 
-Aşağıdaki Terrayform yapılandırma dosyası kaynakları tanımlar:
+Aşağıdaki Terraform yapılandırma dosyası kaynakları tanımlar:
 
-1. [Azure portala](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com)göz atın.
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview)'i açın. Önceden bir ortam seçmediyseniz **Bash** ortamını seçin.
 
@@ -49,15 +49,15 @@ Aşağıdaki Terrayform yapılandırma dosyası kaynakları tanımlar:
     cd clouddrive
     ```
 
-1. Dizinleri yeni dizinle değiştirin.
+1. Dizinleri yeni dizin olarak değiştirin.
 
     ```bash
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-virtual-network"></a>Hub sanal ağını bildirme
+## <a name="declare-the-hub-virtual-network"></a>Hub sanal ağı bildirme
 
-Hub sanal ağını bildiren Terrayform yapılandırma dosyasını oluşturun.
+Hub sanal ağı bildiren Terraform yapılandırma dosyasını oluşturun.
 
 1. Cloud Shell'de `hub-vnet.tf` adlı bir dosya oluşturun.
 
@@ -223,9 +223,9 @@ Hub sanal ağını bildiren Terrayform yapılandırma dosyasını oluşturun.
     }
     ```
     
-3. Dosyayı kaydedin ve düzenleyiciden çıkın.
+3. Dosyayı kaydedin ve editörden çıkın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure 'da Terrayform ile bir hub sanal ağ gereci oluşturma](./terraform-hub-spoke-hub-nva.md)
+> [Azure'da Terraform ile hub sanal ağ cihazı oluşturma](./terraform-hub-spoke-hub-nva.md)

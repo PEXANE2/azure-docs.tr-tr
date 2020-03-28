@@ -1,5 +1,5 @@
 ---
-title: İlk Data Factory 'nizi derleme (PowerShell)
+title: İlk veri fabrikanızı oluşturun (PowerShell)
 description: Bu öğreticide Azure PowerShell kullanarak örnek bir Azure Data Factory işlem hattı oluşturursunuz.
 services: data-factory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438987"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak ilk Azure data factory’nizi derleme
 > [!div class="op_single_selector"]
-> * [Genel bakış ve önkoşullar](data-factory-build-your-first-pipeline.md)
+> * [Genel bakış ve ön koşullar](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager Şablonu](data-factory-build-your-first-pipeline-using-arm.md)
+> * [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Kaynak Yöneticisi Şablonu](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 >
 >
@@ -39,7 +39,7 @@ Bu öğreticideki işlem hattı bir etkinlik içerir: **HDInsight Hive etkinliğ
 > [!NOTE]
 > Bu öğreticideki veri işlem hattı, çıkış verileri üretmek üzere giriş verilerini dönüştürür. Bir kaynak veri deposundan hedef veri deposuna verileri kopyalamaz. Azure Data Factory kullanarak verileri kopyalama öğreticisi için bkz. [Öğretici: Blob Depolama’dan SQL Veritabanı’na veri kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
-> Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliğin diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [Data Factory'de zamanlama ve yürütme](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
+> Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliğin diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Daha fazla bilgi için [Veri Fabrikası'nda zamanlama ve yürütme](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)ye bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -65,13 +65,13 @@ Bu adımda **FirstDataFactoryPSH** adlı bir Azure Data Factory oluşturmak içi
      ```PowerShell
      Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
      ```     
-2. Aşağıdaki komutu kullanarak **ADFTutorialResourceGroup** adlı bir Azure kaynak grubu oluşturun:
+2. Aşağıdaki komutu çalıştırarak **ADFTutorialResourceGroup** adında bir Azure kaynak grubu oluşturun:
     
     ```PowerShell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     Bu öğreticideki adımlardan bazıları ADFTutorialResourceGroup adlı kaynak grubunu kullandığınızı varsayar. Farklı bir kaynak grubu kullanıyorsanız, bu öğreticide ADFTutorialResourceGroup yerine onu kullanmanız gerekir.
-3. **Firstdatafactorypsh**adlı bir veri fabrikası oluşturan **New-azdatafactory** cmdlet 'ini çalıştırın.
+3. **FirstDataFactoryPSH**adında bir veri fabrikası oluşturan **Yeni-AzDataFactory** cmdlet'i çalıştırın.
 
     ```PowerShell
     New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
@@ -81,7 +81,7 @@ Bu adımda **FirstDataFactoryPSH** adlı bir Azure Data Factory oluşturmak içi
 * Azure Data Factory adı küresel olarak benzersiz olmalıdır. Şu hatayı alırsanız: **“FirstDataFactoryPSH” veri fabrikası adı yok**, adı değiştirin (örneğin, yournameFirstDataFactoryPSH). Bu öğreticide adımları uygularken ADFTutorialFactoryPSH yerine bu adı kullanın. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.
 * Data Factory örnekleri oluşturmak için, Azure aboneliğinde katılımcı/yönetici rolünüz olmalıdır
 * Veri fabrikasının adı gelecekte bir DNS adı olarak kaydedilmiş ve herkese görünür hale gelmiş olabilir.
-* Şu hatayı alırsanız: "**Abonelik, Microsoft.DataFactory ad alanını kullanacak şekilde kaydedilmemiş**", aşağıdakilerden birini yapın ve yeniden yayımlamayı deneyin:
+* Hata alırsanız: "**Bu abonelik namespace Microsoft.DataFactory kullanmak için kayıtlı değil**", aşağıdakilerden birini yapın ve yeniden yayımlamayı deneyin:
 
   * Azure PowerShell’de Data Factory sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
 
@@ -117,24 +117,24 @@ Bu adımda, Azure Depolama hesabınızı veri fabrikanıza bağlarsınız. Giri�
         }
     }
     ```
-    **accountname** sözcüğünü Azure depolama hesabınızın adıyla, **accountkey** sözcüğünü de Azure depolama hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
+    **accountname** sözcüğünü Azure depolama hesabınızın adıyla, **accountkey** sözcüğünü de Azure depolama hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alacağınızı öğrenmek için [bkz.](../../storage/common/storage-account-keys-manage.md)
 2. Azure PowerShell’de ADFGetStarted klasörüne geçin.
-3. Bağlı bir hizmet oluşturan **New-AzDataFactoryLinkedService** cmdlet 'ini kullanabilirsiniz. Bu öğreticide kullandığınız bu cmdlet ve diğer Data Factory cmdlet’lerini *ResourceGroupName* ve *DataFactoryName* parametreleri için değerleri geçirmeniz gerekir. Alternatif olarak, bir **DataFactory** nesnesini almak ve bir cmdlet 'i her çalıştırdığınızda *Resourcegroupname* ve *datafactoryname* yazmadan nesneyi geçirmek için **Get-azdatafactory** ' yi kullanabilirsiniz. **Get-AzDataFactory** cmdlet 'inin çıkışını bir **$df** değişkenine atamak için aşağıdaki komutu çalıştırın.
+3. Bağlantılı bir hizmet oluşturan **Yeni AzDataFactoryLinkedService** cmdlet'i kullanabilirsiniz. Bu öğreticide kullandığınız bu cmdlet ve diğer Veri Fabrikası cmdletleri, *ResourceGroupName* ve *DataFactoryName* parametreleri için değerleri geçirmenizi gerektirir. Alternatif olarak, Bir **DataFactory** nesnesi almak ve bir cmdlet çalıştırdığınızda *ResourceGroupName* ve *DataFactoryName* yazmadan nesneyi geçmek için **Get-AzDataFactory'yi** kullanabilirsiniz. **Get-AzDataFactory** cmdlet çıktısını **$df** bir değişkene atamak için aşağıdaki komutu çalıştırın.
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-4. Şimdi, bağlantılı **StorageLinkedService** hizmetini oluşturan **New-AzDataFactoryLinkedService** cmdlet 'ini çalıştırın.
+4. Şimdi, bağlantılı **StorageLinkedService** hizmetini oluşturan **Yeni AzDataFactoryLinkedService** cmdlet'i çalıştırın.
 
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\StorageLinkedService.json
     ```
-    **Get-AzDataFactory** cmdlet 'ini çalıştırıp **$df** değişkenine çıkış atadıysanız, *Resourcegroupname* ve *datafactoryname* parametrelerinin değerlerini aşağıdaki gibi belirtmeniz gerekir.
+    **Get-AzDataFactory** cmdlet'i çalıştırmadıysanız ve çıktıyı **$df** değişkene atamadıysanız, *ResourceGroupName* ve *DataFactoryName* parametreleri için değerleri aşağıdaki gibi belirtmeniz gerekir.
 
     ```PowerShell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
     ```
-    Öğreticinin ortasında Azure PowerShell kapatırsanız, Öğreticiyi tamamladıktan sonra Azure PowerShell başlattığınızda **Get-AzDataFactory** cmdlet 'ini çalıştırmanız gerekir.
+    Azure PowerShell'i öğreticinin ortasında kapatırsanız, öğreticiyi tamamlamak için Azure PowerShell'i bir sonraki başlatığınızda **Get-AzDataFactory** cmdlet'i çalıştırmanız gerekir.
 
 ### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight bağlı hizmeti oluşturma
 Bu adımda, isteğe bağlı HDInsight kümesini data factory’nize bağlarsınız. HDInsight kümesi çalışma zamanında otomatik olarak oluşturulur ve işlenmesi bittiğinde ve belirtilen sürede boşta kalırsa silinir. İsteğe bağlı HDInsight kümesi yerine kendi HDInsight kümenizi kullanabilirsiniz. Ayrıntılar için bkz. [İşlem Bağlı Hizmetleri](data-factory-compute-linked-services.md).
@@ -167,19 +167,19 @@ Bu adımda, isteğe bağlı HDInsight kümesini data factory’nize bağlarsın�
     Aşağıdaki noktalara dikkat edin:
 
    * Data Factory, sizin için JSON ile **Linux tabanlı** bir HDInsight kümesi oluşturur. Ayrıntılar için bkz. [İsteğe Bağlı HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
-   * İsteğe bağlı HDInsight kümesi yerine **kendi HDInsight kümenizi** kullanabilirsiniz. Ayrıntılar için bkz. [HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
-   * HDInsight kümesi JSON’da belirttiğiniz blob depolamada (**linkedServiceName**) bir **varsayılan kapsayıcı** oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlı hizmeti kullanıldığında, mevcut canlı bir küme olmadığı sürece bir dilim her işlendiğinde bir HDInsight kümesi oluşturulur (**timeToLive**). Küme, işlem tamamlandığında otomatik olarak silinir.
+   * İsteğe bağlı HDInsight kümesini kullanmak yerine **kendi HDInsight kümenizi** kullanabilirsiniz. Ayrıntılar için bkz. [HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
+   * HDInsight kümesi, JSON **(linkedServiceName)** olarak belirttiğiniz blob depolama alanında varsayılan bir **kapsayıcı** oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlantılı hizmetile, varolan bir canlı küme **(timeToLive)** olmadığı sürece bir dilim her işlenirken bir HDInsight kümesi oluşturulur. Küme, işlem tamamlandığında otomatik olarak silinir.
 
-       Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcıların adları şu deseni izler: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Azure blob depolamada kapsayıcı silmek için [Microsoft Storage Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
+       Daha fazla dilim işlendikçe, Azure blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcıların adları bir desen izler: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Azure blob depolamada kapsayıcı silmek için [Microsoft Storage Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 
      Ayrıntılar için bkz. [İsteğe Bağlı HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
-2. Hdınsightondemandlinkedservice adlı bağlı hizmeti oluşturan **New-AzDataFactoryLinkedService** cmdlet 'ini çalıştırın.
+2. HDInsightOnDemandLinkedService adlı bağlantılı hizmeti oluşturan **Yeni AzDataFactoryLinkedService** cmdlet'i çalıştırın.
     
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
     ```
 
-## <a name="create-datasets"></a>Veri kümeleri oluşturun
+## <a name="create-datasets"></a>Veri kümeleri oluşturma
 Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturursunuz. Bu veri kümeleri, bu öğreticide daha önce oluşturduğunuz **StorageLinkedService** öğesine başvurur. Bağlı hizmet Azure Storage hesabını belirtirken, veri kümeleri de girdi ve çıktı verilerini tutan depolama biriminde kapsayıcı, klasör, dosya adı belirtir.
 
 ### <a name="create-input-dataset"></a>Girdi veri kümesi oluşturma
@@ -265,7 +265,7 @@ Bu adımda, **HDInsightHive** etkinliğiyle ilk işlem hattınızı oluşturursu
 1. C:\ADFGetStarted klasöründe aşağıdaki içeriğe sahip MyFirstPipelinePSH.json adlı bir JSON dosyası oluşturun:
 
    > [!IMPORTANT]
-   > **storageaccountname**’i JSON’daki depolama adınızla değiştirin.
+   > **Depolama hesap adını** JSON'daki depolama hesabınızın adı ile değiştirin.
    >
    >
 
@@ -336,12 +336,12 @@ Bu adımda, **HDInsightHive** etkinliğiyle ilk işlem hattınızı oluşturursu
 ## <a name="monitor-pipeline"></a>İşlem hattını izleme
 Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure PowerShell kullanırsınız.
 
-1. **Get-AzDataFactory** komutunu çalıştırın ve çıktıyı bir **$df** değişkenine atayın.
+1. **Get-AzDataFactory'yi** çalıştırın ve çıktıyı **$df** değişkenine atayın.
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-2. İşlem hattının çıkış tablosu olan **Empsqltable**' ın tüm dilimlerinin ayrıntılarını almak için **Get-AzDataFactorySlice** komutunu çalıştırın.
+2. Boru hattının çıkış tablosu olan **EmpSQLTable'ın**tüm dilimleri hakkında ayrıntılı bilgi almak için **Get-AzDataFactorySlice'ı** çalıştırın.
 
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -360,7 +360,7 @@ Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure PowerShe
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. Belirli bir dilim için etkinlik çalıştırmalarının ayrıntılarını almak için **Get-AzDataFactoryRun** komutunu çalıştırın.
+3. Belirli bir dilim için etkinlik çalışır ayrıntılarını almak için **Get-AzDataFactoryRun** çalıştırın.
 
     ```PowerShell
     Get-AzDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -392,7 +392,7 @@ Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure PowerShe
     ![çıktı verileri](./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png)
 
 > [!IMPORTANT]
-> İsteğe bağlı HDInsight kümesinin oluşturulması genellikle biraz zaman alır (yaklaşık 20 dakika). Bu nedenle, işlem hattının dilimi işlemesi için **yaklaşık 30 dakika** bekleyin.
+> İsteğe bağlı HDInsight kümesinin oluşturulması genellikle biraz zaman alır (yaklaşık 20 dakika). Bu nedenle, boru hattının dilimin işlenmesi **yaklaşık 30 dakika** sürer.
 >
 > Dilim başarıyla işlendiğinde girdi dosyası silinir. Bu nedenle, dilimi yeniden çalıştırmak veya öğreticiyi yeniden uygulamak isterseniz girdi dosyasını (input.log) adfgetstarted kapsayıcısının inputdata klasörüne yükleyin.
 >
@@ -405,7 +405,7 @@ Bu öğreticide, HDInsight hadoop kümesindeki Hive betiği çalıştırılarak 
 2. Oluşturulan iki **bağlı hizmet**:
    1. Girdi/çıktı dosyalarını tutan Azure blob depolamanızı data factory’ye bağlamak için **Azure Storage** bağlı hizmeti.
    2. İsteğe bağlı HDInsight Hadoop kümesini data factory’ye bağlamak için isteğe bağlı **Azure HDInsight** bağlı hizmeti. Azure Data Factory, girdi verilerini işlemek, çıktı verilerini de oluşturmak için tam zamanında HDInsight Hadoop kümesi oluşturur.
-3. İşlem hattındaki HDInsight Hive etkinliğiyle ilgili girdi ve çıktı verilerini açıklayan oluşturulan iki **veri kümesi**.
+3. Ardışık yöndeki HDInsight Hive etkinliği için giriş ve çıktı verilerini açıklayan iki **veri kümesi**oluşturuldu.
 4. **HDInsight Hive** etkinliğine sahip oluşturulan bir **işlem hattı**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -413,7 +413,7 @@ Bu makalede, isteğe bağlı Azure HDInsight kümesinde bir Hive betiği çalı�
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-| Konu | Açıklama |
+| Konu başlığı | Açıklama |
 |:--- |:--- |
 | [Data Factory Cmdlet Başvurusu](/powershell/module/az.datafactory) |Data Factory cmdlet'leri hakkında kapsamlı belgelere bakma |
 | [İşlem hatları](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarının ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |

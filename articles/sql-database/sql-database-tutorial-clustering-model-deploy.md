@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: R 'de kümeleme modeli dağıtma"
+title: "Öğretici: R'de bir kümeleme modeli dağıtma"
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Bu üç bölümden oluşan öğretici serisinin üçünde, Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'ye bir kümeleme modeli dağıtırsınız.
+description: Bu üç bölümlük öğretici serinin üçüncü bölümünde, Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme) ile R'de bir kümeleme modeli dağıtacaksınız.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,44 +13,46 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: d67f007ac91d4830557a2cae646698b130b02314
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640915"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345795"
 ---
-# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme modeli dağıtma
+# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de bir kümeleme modeli dağıtma (önizleme)
 
-Bu üç bölümden oluşan öğretici serisinin üçüncü kısmında, Azure SQL veritabanı Machine Learning Services (Önizleme) kullanarak R 'de geliştirilen bir kümeleme modelini bir SQL veritabanına dağıtırsınız.
-
-Kümeleme gerçekleştiren gömülü bir R betiği ile saklı bir yordam oluşturacaksınız. Modeliniz Azure SQL veritabanında yürütüldüğü için, veritabanında depolanan verilere karşı kolayca eğitim yapılabilir.
-
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
-
-> [!div class="checklist"]
-> * Modeli oluşturan bir saklı yordam oluşturma
-> * SQL veritabanında kümeleme gerçekleştir
-> * Kümeleme bilgilerini kullanma
-
-[Birinci bölümde](sql-database-tutorial-clustering-model-prepare-data.md), verileri BIR Azure SQL veritabanından kümeleme gerçekleştirmek üzere nasıl hazırlayacağınızı öğrendiniz.
-
-[İkinci bölümde](sql-database-tutorial-clustering-model-build.md), R 'de K-bir kümeleme modeli oluşturmayı ve eğiteyi öğrendiniz.
+Bu üç bölümlük öğretici serinin üçüncü bölümünde, Azure SQL Veritabanı Makine Öğrenme Hizmetleri 'ni (önizleme) kullanarak R'de geliştirilen bir kümeleme modelini bir SQL veritabanına dağıtırsınız.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+Kümeleme gerçekleştiren katıştırılmış Bir R komut dosyası ile depolanmış bir yordam oluşturursunuz. Modeliniz Azure SQL veritabanında yürütüldeğinden, veritabanında depolanan verilere karşı kolayca eğitilebilir.
 
-* Bu öğretici serisinin üçüncü kısmı, [**bir**](sql-database-tutorial-clustering-model-prepare-data.md) kısmını ve [**ikinci kısmını**](sql-database-tutorial-clustering-model-build.md)tamamladığınız varsayılır.
+Bu makalede, nasıl öğreneceksiniz:
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>Modeli oluşturan bir saklı yordam oluşturma
+> [!div class="checklist"]
+> * Modeli oluşturan depolanmış yordam oluşturma
+> * SQL Veritabanında kümeleme gerçekleştirin
+> * Kümeleme bilgilerini kullanma
 
-Saklı yordamı oluşturmak için aşağıdaki T-SQL betiğini çalıştırın. Yordam, bu öğretici serisinin bir ve iki bölümünde geliştirdiğiniz adımları yeniden oluşturur:
+Birinci [bölümde,](sql-database-tutorial-clustering-model-prepare-data.md)kümeleme gerçekleştirmek için azure SQL veritabanından verileri nasıl hazırlayacağınızı öğrendiniz.
 
-* müşterileri satın alma ve iade geçmişine göre sınıflandır
-* K-anlamı algoritması kullanarak dört müşteri kümesi oluşturma
+[İkinci bölümde,](sql-database-tutorial-clustering-model-build.md)R'de bir K-Means kümeleme modeli oluşturmayı ve eğitmeyi öğrendiniz.
 
-Yordam, sonuç müşteri kümesi eşlemelerini **customer_return_clusters**veritabanı tablosunda depolar.
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Bu öğretici serisinin Bölüm üç [**bölüm bir**](sql-database-tutorial-clustering-model-prepare-data.md) ve [**bölüm iki**](sql-database-tutorial-clustering-model-build.md)tamamlamış varsayar.
+
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>Modeli oluşturan depolanmış yordam oluşturma
+
+Depolanan yordamı oluşturmak için aşağıdaki T-SQL komut dosyasını çalıştırın. Yordam, bu öğretici serinin birinci ve ikinci bölümlerinde geliştirdiğiniz adımları yeniden oluşturur:
+
+* müşterileri satın alma ve iade geçmişlerine göre sınıflandırmak
+* K-Means algoritması kullanarak dört müşteri kümesi oluşturmak
+
+Yordam, veritabanı tablosunda ortaya çıkan müşteri küme eşlemlerini **customer_return_clusters.**
 
 ```sql
 USE [tpcxbb_1gb]
@@ -175,9 +177,9 @@ END;
 GO
 ```
 
-## <a name="perform-clustering-in-sql-database"></a>SQL veritabanında kümeleme gerçekleştir
+## <a name="perform-clustering-in-sql-database"></a>SQL Veritabanında kümeleme gerçekleştirin
 
-Saklı yordamı oluşturduğdığınıza göre, kümelendirmeyi gerçekleştirmek için aşağıdaki betiği yürütün.
+Depolanan yordamı oluşturduğunuza göre, kümeleme gerçekleştirmek için aşağıdaki komut dosyasını çalıştırın.
 
 ```sql
 --Empty table of the results before running the stored procedure
@@ -188,7 +190,7 @@ TRUNCATE TABLE customer_return_clusters;
 EXECUTE [dbo].[generate_customer_return_clusters];
 ```
 
-Çalıştığını ve aslında müşteriler ve küme eşlemeleriyle ilgili olduğunu doğrulayın.
+İşe yaradığını ve müşterilerin listesini ve küme eşlemelerini gerçekten aldığımızı doğrulayın.
 
 ```sql
 --Select data from table customer_return_clusters
@@ -208,9 +210,9 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 
 ## <a name="use-the-clustering-information"></a>Kümeleme bilgilerini kullanma
 
-Kümeleme yordamını veritabanında depoladığınız için, aynı veritabanında depolanan müşteri verilerine göre kümeleme işlemi etkili bir şekilde gerçekleştirilebilir. Müşteri verileriniz güncelleştirildiğinde yordamı yürütebilir ve güncelleştirilmiş kümeleme bilgilerini kullanabilirsiniz.
+Kümeleme yordamını veritabanında depoladığıiçin, kümeleme işlemini aynı veritabanında depolanan müşteri verilerine karşı verimli bir şekilde gerçekleştirebilir. Müşteri verileriniz güncelleştirildiğinde yordamı yürütebilir ve güncelleştirilmiş kümeleme bilgilerini kullanabilirsiniz.
 
-Küme 3 ' teki müşterilere bir promosyon e-postası göndermek istediğinizi varsayalım. daha etkin bir geri dönüş davranışı olan grup (dört kümenin [ikinci bölümünde](sql-database-tutorial-clustering-model-build.md#analyze-the-results)açıklandığını görebilirsiniz). Aşağıdaki kod, küme 3 ' teki müşterilerin e-posta adreslerini seçer.
+Daha etkin iade davranışına sahip grup olan küme 3'teki müşterilere tanıtım e-postası göndermek istediğinizi varsayalım (dört kümenin [ikinci bölümde](sql-database-tutorial-clustering-model-build.md#analyze-the-results)nasıl açıklandığını görebilirsiniz). Aşağıdaki kod, küme 3'teki müşterilerin e-posta adreslerini seçer.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -222,30 +224,30 @@ JOIN [dbo].[customer_return_clusters] AS r ON r.customer = customer.c_customer_s
 WHERE r.cluster = 3
 ```
 
-**R. Cluster** değerini, diğer kümelerdeki müşterilere ait e-posta adreslerini döndürecek şekilde değiştirebilirsiniz.
+Diğer kümelerde müşteriler için e-posta adreslerini döndürmek için **r.cluster** değerini değiştirebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticiyi tamamladığınızda, tpcxbb_1gb veritabanını Azure SQL veritabanı sunucusundan silebilirsiniz.
+Bu öğreticiyi bitirdikten sonra, Azure SQL Veritabanı sunucunuzdaki tpcxbb_1gb veritabanını silebilirsiniz.
 
-Azure portal, aşağıdaki adımları izleyin:
+Azure portalından aşağıdaki adımları izleyin:
 
-1. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı veya **SQL veritabanları**' nı seçin.
-1. **Ada göre filtrele...** alanına **tpcxbb_1gb**girin ve aboneliğinizi seçin.
-1. **Tpcxbb_1gb** veritabanınızı seçin.
+1. Azure portalındaki sol menüden Tüm **kaynakları** veya **SQL veritabanlarını**seçin.
+1. **Ada göre Filtre'ye...** alanına **tpcxbb_1gb**girin ve aboneliğinizi seçin.
+1. **tpcxbb_1gb** veritabanınızı seçin.
 1. **Genel Bakış** sayfasında **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici serisinin üçüncü kısmında, şu adımları tamamladınız:
+Bu öğretici serinin üçüncü bölümünde, şu adımları tamamladınız:
 
-* Modeli oluşturan bir saklı yordam oluşturma
-* SQL veritabanında kümeleme gerçekleştir
+* Modeli oluşturan depolanmış yordam oluşturma
+* SQL Veritabanında kümeleme gerçekleştirin
 * Kümeleme bilgilerini kullanma
 
-Azure SQL veritabanı Machine Learning Services (Önizleme) içinde R kullanma hakkında daha fazla bilgi için bkz.:
+Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R kullanma hakkında daha fazla bilgi edinmek için (önizleme), bkz:
 
-* [Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model eğitme için veri hazırlama](sql-database-tutorial-predictive-model-prepare-data.md)
-* [Machine Learning Services kullanarak Azure SQL veritabanı 'nda gelişmiş R işlevleri yazma (Önizleme)](sql-database-machine-learning-services-functions.md)
-* [Azure SQL veritabanı 'nda R ve SQL verileriyle çalışma Machine Learning Services (Önizleme)](sql-database-machine-learning-services-data-issues.md)
-* [Azure SQL veritabanı 'na R paketi ekleme Machine Learning Services (Önizleme)](sql-database-machine-learning-services-add-r-packages.md)
+* [Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir modeli eğitmek için veri hazırlama (önizleme)](sql-database-tutorial-predictive-model-prepare-data.md)
+* [Machine Learning Services 'i kullanarak Azure SQL Veritabanı'na gelişmiş R işlevleri yazın (önizleme)](sql-database-machine-learning-services-functions.md)
+* [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R ve SQL verileriyle çalışma (önizleme)](sql-database-machine-learning-services-data-issues.md)
+* [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'ne R paketi ekleme (önizleme)](sql-database-machine-learning-services-add-r-packages.md)

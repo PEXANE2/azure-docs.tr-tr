@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile TeamSeer | Microsoft Docs'
-description: Azure Active Directory ve TeamSeer arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: TeamSeer ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve TeamSeer arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,234 +16,234 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3e505e4823db8c9f42bbff216f30326081110dcf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088974"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Öğretici: TeamSeer ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Öğretici: TeamSeer ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile TeamSeer tümleştirme konusunda bilgi edinin.
-Azure AD ile TeamSeer tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, TeamSeer'ı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+TeamSeer'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* TeamSeer erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) TeamSeer için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* TeamSeer'a erişimi olan Azure AD'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla TeamSeer 'da (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile TeamSeer yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini TeamSeer ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* Abonelik TeamSeer çoklu oturum açma etkin
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* TeamSeer tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* TeamSeer destekler **SP** tarafından başlatılan
+* TeamSeer **SP** başlatılan SSO destekler
 
 ## <a name="adding-teamseer-from-the-gallery"></a>Galeriden TeamSeer ekleme
 
-Azure AD'de TeamSeer tümleştirmesini yapılandırmak için TeamSeer Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+TeamSeer'In Azure AD'ye entegrasyonunu yapılandırmak için, galeriden TeamSeer'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
 **Galeriden TeamSeer eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **TeamSeer**seçin **TeamSeer** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusunda **TeamSeer**yazın, sonuç panelinden **TeamSeer'ı** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
      ![Sonuç listesinde TeamSeer](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma TeamSeer adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının TeamSeer ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre TeamSeer ile Azure AD tek oturum açma işlemini yapılandırın ve test esiniz.
+Tek oturum açmanın işe yaraması için, Bir Azure REKLAM kullanıcısı ile TeamSeer'daki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma TeamSeer ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+TeamSeer ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[TeamSeer çoklu oturum açmayı yapılandırma](#configure-teamseer-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[TeamSeer test kullanıcısı oluşturma](#create-teamseer-test-user)**  - kullanıcı Azure AD gösterimini bağlı TeamSeer Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[TeamSeer Tek Oturum Açma](#configure-teamseer-single-sign-on)** 'yı uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[TeamSeer test kullanıcısını oluşturun](#create-teamseer-test-user)** - TeamSeer'da Kullanıcının Azure AD gösterimine bağlı Britta Simon'ın bir muadili olması için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma ile TeamSeer yapılandırmak için aşağıdaki adımları gerçekleştirin:
+TeamSeer ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **TeamSeer** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. Azure [portalında,](https://portal.azure.com/) **TeamSeer** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![TeamSeer etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-signonurl.png)
+    ![TeamSeer Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-signonurl.png)
 
-    İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://www.teamseer.com/<companyid>`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://www.teamseer.com/<companyid>`
 
     > [!NOTE]
-    > Değer, gerçek değil. Değerini gerçek oturum açma URL'si ile güncelleştirin. İlgili kişi [TeamSeer istemci Destek ekibine](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) değeri alınamıyor. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Değer gerçek değil. Değeri gerçek Oturum Açma URL'si ile güncelleştirin. Değeri almak için [TeamSeer Client destek ekibine](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. Üzerinde **TeamSeer kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+6. **TeamSeer'ı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-teamseer-single-sign-on"></a>TeamSeer tek oturum açmayı yapılandırın
+### <a name="configure-teamseer-single-sign-on"></a>TeamSeer Tek Oturum Açma'yı Yapılandır
 
-1. Farklı bir web tarayıcı penceresinde TeamSeer şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, TeamSeer şirket sitenizde yönetici olarak oturum açın.
 
-1. Git **ik Yöneticisi**.
+1. İk **Admin**gidin.
 
-    ![İK Yöneticisi](./media/teamseer-tutorial/ic789634.png "ik Yöneticisi")
+    ![İk Yöneticisi](./media/teamseer-tutorial/ic789634.png "İk Yöneticisi")
 
-1. Tıklayın **Kurulum**.
+1. **Kurulum'u**tıklatın.
 
-    ![Kurulum](./media/teamseer-tutorial/ic789635.png "Kurulumu")
+    ![Kurulum](./media/teamseer-tutorial/ic789635.png "Kurulum")
 
-1. Tıklayın **SAML sağlayıcı ayrıntılarını ayarlama**.
+1. **SAML sağlayıcı ayrıntılarını ayarla'yı**tıklatın.
 
-    ![SAML ayarlarını](./media/teamseer-tutorial/ic789636.png "SAML ayarları")
+    ![SAML Ayarları](./media/teamseer-tutorial/ic789636.png "SAML Ayarları")
 
-1. SAML sağlayıcısı Ayrıntılar bölümünde aşağıdaki adımları gerçekleştirin:
+1. SAML sağlayıcı ayrıntıları bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![SAML ayarlarını](./media/teamseer-tutorial/ic789637.png "SAML ayarları")
+    ![SAML Ayarları](./media/teamseer-tutorial/ic789637.png "SAML Ayarları")
 
-    a. İçinde **URL** metin kutusu, yapıştırma **oturum açma URL'si** Azure portaldan kopyaladığınız değeri.
+    a. **URL** metin kutusuna, Azure portalından kopyaladığınız **Giriş URL** değerini yapıştırın.
 
-    b. Base-64 kodlanmış sertifikanızı Not Defteri'nde açın, içinde içeriği panonuza kopyalayın ve ardından ona yapıştırın **IDP ortak sertifika** metin.
+    b. Taban-64 kodlanmış sertifikanızı not defterinde açın, içeriğini panonuza kopyalayın ve ardından **IdP Genel Sertifika** metin kutusuna yapıştırın.
 
-1. SAML sağlayıcısı yapılandırmasını tamamlamak için aşağıdaki adımları gerçekleştirin:
+1. SAML sağlayıcı yapılandırmasını tamamlamak için aşağıdaki adımları gerçekleştirin:
 
-    ![SAML ayarlarını](./media/teamseer-tutorial/ic789638.png "SAML ayarları")
+    ![SAML Ayarları](./media/teamseer-tutorial/ic789638.png "SAML Ayarları")
 
-    a. İçinde **Test e-posta adreslerini**, test kullanıcının e-posta adresini yazın.
+    a. Test **E-posta**Adresleri'nde, test kullanıcısının e-posta adresini yazın.
   
-    b. İçinde **veren** metin hizmet sağlayıcısı veren URL'sini yazın.
+    b. **Veren** metin kutusuna, servis sağlayıcısının Veren URL'sini yazın.
   
-    c. **Kaydet**’e tıklayın.
+    c. **Kaydet**'e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
+    b. Kullanıcı **adı** alanı türünde**brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için TeamSeer erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın TeamSeer'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **TeamSeer**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **TeamSeer'ı**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **TeamSeer**.
+2. Uygulamalar listesinde **TeamSeer'ı**seçin.
 
-    ![Uygulamalar listesinde TeamSeer bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeteamSeer bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
 ### <a name="create-teamseer-test-user"></a>TeamSeer test kullanıcısı oluşturma
 
-Azure AD kullanıcıları için TeamSeer oturum açmak etkinleştirmek için bunlar içinde ShiftPlanning için sağlanması gerekir. TeamSeer söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının TeamSeer'da oturum açabilmeleri için ShiftPlanning'de oturum açmaları gerekir. TeamSeer durumunda, sağlama manuel bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Oturum açın, **TeamSeer** yönetici olarak şirketin site.
+1. **TeamSeer** şirket sitenizde yönetici olarak oturum açın.
 
-1. Git **ik Yöneticisi \> kullanıcılar** ve ardından **yeni kullanıcı Sihirbazı'nı çalıştırın**.
+1. İk ** \> Yönetici Kullanıcıları'na** gidin ve ardından **Yeni Kullanıcı sihirbazını çalıştır'ı**tıklatın.
 
-    ![İK Yöneticisi](./media/teamseer-tutorial/ic789640.png "ik Yöneticisi")
+    ![İk Yöneticisi](./media/teamseer-tutorial/ic789640.png "İk Yöneticisi")
 
-1. İçinde **kullanıcı ayrıntıları** bölümünde, aşağıdaki adımları gerçekleştirin:
+1. Kullanıcı **Ayrıntıları** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Kullanıcı ayrıntılarını](./media/teamseer-tutorial/ic789641.png "kullanıcı ayrıntıları")
+    ![Kullanıcı Detayları](./media/teamseer-tutorial/ic789641.png "Kullanıcı Detayları")
 
-    a. Tür **ad**, **Soyadı**, **kullanıcı adı (e-posta adresi)** geçerli bir Azure AD hesabı için ilgili metin kutularına, sağlamak istediğiniz.
+    a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure REKLAM hesabının **Adı,** **Soyadı,** **Kullanıcı adı (E-posta adresi)** yazın.
   
-    b. **İleri**’ye tıklayın.
+    b. **İleri**'ye tıklayın.
 
-1. İzleyin ekrandaki yönergeleri yeni bir kullanıcı eklemek için tıklayın **son**.
+1. Yeni bir kullanıcı eklemek için ekrandaki yönergeleri izleyin ve **Bitir'i**tıklatın.
 
 > [!NOTE]
-> Herhangi diğer TeamSeer kullanıcı hesabı oluşturma araçları kullanabilir veya API Azure AD'ye kullanıcı hesapları sağlamak için TeamSeer tarafından sağlanan.
+> Azure AD kullanıcı hesaplarını sağlamak için TeamSeer tarafından sağlanan diğer TeamSeer kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli TeamSeer kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama TeamSeer için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki TeamSeer döşemesini tıklattığınızda, SSO'yu kurduğunuz TeamSeer'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

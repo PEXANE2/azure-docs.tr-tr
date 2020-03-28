@@ -1,208 +1,208 @@
 ---
-title: UK resmi & UK NHS şema örnek denetimleri
-description: UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
+title: İngiltere'de RESMI & İngiltere NHS planı örnek kontrolleri
+description: İngiltere RESMİ ve İngiltere NHS plan örneklerinin kontrol haritalama. Her denetim, değerlendirmeye yardımcı olan bir veya daha fazla Azure İlkesiyle eşlenir.
 ms.date: 12/04/2019
 ms.topic: sample
 ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74851375"
 ---
-# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
+# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>İngiltere RESMİ ve İngiltere NHS plan örneklerinin kontrol haritalama
 
-Aşağıdaki makalede, UK RESMI ve UK NHS şeması örneklerinin UK RESMI ve UK NHS denetimleriyle nasıl eşlendiğini ayrıntılarıyla anlatılmaktadır. Denetimler hakkında daha fazla bilgi için bkz. [UK resmi](https://www.gov.uk/government/publications/government-security-classifications).
+Aşağıdaki makalede, Birleşik Krallık RESMİ ve İngiltere NHS planı örneklerinin Birleşik Krallık RESMİ ve İngiltere NHS kontrollerine nasıl harita landığı ayrıntılı olarak açıklanmıştır. Denetimler hakkında daha fazla bilgi [için, İngiltere RESMİ](https://www.gov.uk/government/publications/government-security-classifications)bakın.
 
-Aşağıdaki eşlemeler **UK resmi** ve **UK NHS** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, **UK resmi ve UK NHS denetimlerini kontrol\] ve belırlı VM uzantılarını, denetim gereksinimleri** yerleşik ilke girişimi ' ni destekleyecek şekilde bulun ve\[seçin.
+Aşağıdaki **haritalamalar İngiltere RESMİ** ve **İngiltere NHS** kontrolleri içindir. Doğrudan belirli bir denetim eşleleme sine atlamak için sağdaki gezinmeyi kullanın. Eşlenen denetimlerin çoğu bir Azure [İlkesi](../../../policy/overview.md) girişimiyle uygulanır. Girişimin tamamını incelemek için Azure portalında **İlke'yi** açın ve **Tanımlar** sayfasını seçin. Ardından, ** \[Preview\] Audit UK OFFICIAL ve UK NHS denetimlerini** bulun ve seçin ve yerleşik politika girişimini desteklemek için belirli VM Uzantılarını dağıtın.
 
 > [!IMPORTANT]
-> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)bakın.
+> Aşağıdaki her denetim bir veya daha fazla [Azure İlkesi](../../../policy/overview.md) tanımıyla ilişkilidir. Bu ilkeler, denetime [uygunluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; ancak, genellikle bir denetim ve bir veya daha fazla ilke arasında 1:1 veya tam bir eşleşme yoktur. Bu nedenle, Azure İlkesinde **Uyumlu olmak** yalnızca ilkelerin kendileri için başvurur; bu, bir denetimin tüm gereksinimlerine tam olarak uymanızı sağlamaz. Ayrıca, uyumluluk standardı şu anda herhangi bir Azure İlkesi tanımı tarafından ele alınmayan denetimleri içerir. Bu nedenle, Azure İlkesi'ndeki uyumluluk, genel uyumluluk durumunuza yalnızca kısmi bir görünümdür. Bu uyumluluk planı örneği için denetimler ve Azure İlkesi tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub Commit History'ye](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)bakın.
 
-## <a name="1-data-in-transit-protection"></a>geçiş koruması 1 veri
+## <a name="1-data-in-transit-protection"></a>1 Transit koruma verileri
 
-Şema, depolama hesaplarına Güvenli olmayan bağlantıları denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve Redis Cache Azure hizmetleri ile bilgi aktarımını güvence altına almanıza yardımcı olur.
+Plan, depolama hesaplarına ve Redis Önbelleğine güvenli olmayan bağlantıları denetleyen [Azure İlkesi](../../../policy/overview.md) tanımları atayarak Azure hizmetleriyle bilgi aktarımının güvenli olmasını sağlamanıza yardımcı olur.
 
-- Redis Cache'inize yalnızca güvenli bağlantılar etkinleştirilmelidir
+- Yalnızca Redis Önbelleğinize güvenli bağlantılar etkinleştirilmelidir
 - Depolama hesaplarına güvenli aktarım etkinleştirilmelidir
-- Güvenli iletişim protokolleri kullanmayan Windows Web sunucularından denetim sonuçlarını göster
-- Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetlemek için önkoşulları dağıtma
-- API uygulamanızda en son TLS sürümü kullanılmalıdır
-- Web uygulamanızda en son TLS sürümü kullanılmalıdır
-- İşlev Uygulaması en son TLS sürümü kullanılmalıdır
+- Güvenli iletişim protokolleri kullanmayan Windows web sunucularından gelen denetim sonuçlarını göster
+- Güvenli iletişim protokolleri kullanmayan Windows web sunucularını denetlemek için ön koşulları dağıtma
+- API Uygulamanızda en son TLS sürümü kullanılmalıdır
+- Web Uygulamanızda en son TLS sürümü kullanılmalıdır
+- Fonksiyon Uygulamanızda en son TLS sürümü kullanılmalıdır
 
-## <a name="23-data-at-rest-protection"></a>2,3 veri bekleyen koruma
+## <a name="23-data-at-rest-protection"></a>2.3 Dinlenme korumasındaki veriler
 
-Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve zayıf şifreleme ayarlarının kullanımını denetleyerek, ilkenizi cryptograph denetimleri kullanarak zorlamanıza yardımcı olur.
-Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilkeler Data Lake Storage hesapları için şifrelemeyi gerektirir; SQL veritabanlarında saydam veri şifrelemesi gerektir; depolama hesaplarında, SQL veritabanlarında, sanal makine disklerinde ve Otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetleyin; depolama hesaplarına Güvenli olmayan bağlantıları denetleme ve Redis Cache; zayıf sanal makine parola şifrelemesini denetleme; ve şifrelenmemiş Service Fabric iletişimini denetleyin.
+Bu plan, belirli şifreleme denetimlerini zorlayan [Azure İlkesi](../../../policy/overview.md) tanımları atayarak ve zayıf şifreleme ayarlarının denetim kullanımını kullanarak şifreleme denetimlerinin kullanımına ilişkin ilkenizi uygulamanıza yardımcı olur.
+Azure kaynaklarınızın en iyi olmayan şifreleme yapılandırmalarına sahip olabileceğini anlamak, kaynakların bilgi güvenliği politikanıza uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemlerde yardımcı olabilir. Özellikle, bu plan tarafından atanan ilkeler veri gölü depolama hesapları için şifreleme gerektirir; SQL veritabanlarında saydam veri şifreleme gerektirir; depolama hesapları, SQL veritabanları, sanal makine diskleri ve otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetlemek; depolama hesaplarına ve Redis Cache'ye güvenli olmayan bağlantıları denetlemek; denetim zayıf sanal makine şifre şifreleme; ve şifrelenmemiş Hizmet Kumaşı iletişimini denetleyin.
 
-- Sanal makinelere disk şifrelemesi uygulanmalıdır
+- Disk şifreleme sanal makinelerde uygulanmalıdır
 - Otomasyon hesabı değişkenleri şifrelenmelidir
-- Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır
-- SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
+- Service Fabric kümeleri ClusterProtectionLevel özelliğini EncryptAndSign olarak ayarlamalıdır
+- SQL veritabanlarında Saydam Veri Şifrelemesi etkinleştirilmelidir
 - SQL DB saydam veri şifrelemesini dağıtma
-- Data Lake Store hesaplarında şifreleme gerektir
-- İzin verilen konumlar ("UK Güney" ve "UK Batı" için sabit olarak kodlanmış)
-- Kaynak grupları için izin verilen konumlar ("UK Güney" ve "UK Batı" olarak kodlanmıştır)
+- Data Lake Store hesaplarında şifreleme gerektirme
+- İzin verilen konumlar ("UK SOUTH" ve "UK WEST" olarak kodlanmıştır)
+- Kaynak grupları için izin verilen konumlar ("UK SOUTH" ve "UK WEST" olarak kodlanmıştır)
 
-## <a name="52-vulnerability-management"></a>5,2 güvenlik açığı yönetimi
+## <a name="52-vulnerability-management"></a>5.2 Güvenlik Açığı Yönetimi
 
-Bu şema, eksik Endpoint Protection, eksik sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları, SQL güvenlik açıkları ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Bu Öngörüler, dağıtılan kaynaklarınızın güvenlik durumu hakkında gerçek zamanlı bilgiler sağlar ve düzeltme eylemlerinin önceliklerini belirlemenize yardımcı olabilir.
+Bu plan, eksik uç nokta korumayı, eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure İlkesi](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Bu öngörüler, dağıtılmış kaynaklarınızın güvenlik durumu hakkında gerçek zamanlı bilgiler sağlar ve düzeltme eylemlerine öncelik vermenize yardımcı olabilir.
 
-- Eksik Endpoint Protection'ı Azure Güvenlik Merkezi'nde izle
+- Azure Güvenlik Merkezi'nde eksik Uç Nokta Koruması'nı izleme
 - Makinelerinize sistem güncelleştirmeleri yüklenmelidir
-- Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir
-- Makinelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
+- Sanal makine ölçek kümelerinde sistem güncellemeleri yüklenmelidir
+- Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
-- Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
-- SQL sunucularınızda güvenlik açığı değerlendirmesi etkin olmalıdır
-- SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
-- Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Güvenlik açıkları, Güvenlik Açığı Değerlendirmesi çözümü yle düzeltilmelidir
+- SQL sunucularınızda güvenlik açığı değerlendirmesi etkinleştirilmelidir
+- SQL yönetilen örneklerinizde güvenlik açığı değerlendirmesi etkinleştirilmelidir
+- Sanal makine ölçeği kümelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
+- SQL yönetilen örneklerinizde gelişmiş veri güvenliği etkinleştirilmelidir
+- SQL sunucularınızda gelişmiş veri güvenliği etkinleştirilmelidir
 
-## <a name="53-protective-monitoring"></a>5,3 koruyucu Izleme
+## <a name="53-protective-monitoring"></a>5.3 Koruyucu İzleme
 
-Bu şema, Kısıtlanmamış erişim, liste etkinliğine izin verme ve tehditlere karşı koruyucu izleme sağlayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi varlıklarını korumanıza yardımcı olur.
+Bu plan, sınırsız erişimde koruyucu izleme sağlayan, liste etkinliğine ve tehditlere izin veren [Azure İlkesi](../../../policy/overview.md) tanımları atayarak bilgi sistemi varlıklarını korumanıza yardımcı olur.
 
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
-- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
-- Olağanüstü durum kurtarma yapılandırması olmadan sanal makineleri denetleme
-- DDoS Koruması Standardı etkinleştirilmelidir
-- Gelişmiş tehdit koruması türleri SQL yönetilen örneği gelişmiş veri güvenliği ayarları içinde ' All ' olarak ayarlanmalıdır
-- Gelişmiş tehdit koruması türleri SQL Server Gelişmiş veri güvenliği ayarları 'nda ' tümü ' olarak ayarlanmalıdır
-- SQL Server 'lar üzerinde tehdit algılamayı dağıtma
-- Windows Server için varsayılan Microsoft ıaasantimalware uzantısını dağıt
+- Depolama hesaplarına sınırsız ağ erişimini denetleme
+- Uyarlanabilir Uygulama Denetimleri sanal makinelerde etkinleştirilmelidir
+- Olağanüstü durum kurtarma yapılandırması yapılmadan sanal makineleri denetleme
+- DDoS Koruma Standardı etkinleştirilmelidir
+- Gelişmiş Tehdit Koruması türleri SQL yönetilen örnek Gelişmiş Veri Güvenliği ayarlarında 'Tümü' olarak ayarlanmalıdır
+- Gelişmiş Tehdit Koruması türleri SQL sunucusu Gelişmiş Veri Güvenliği ayarlarında 'Tümü' olarak ayarlanmalıdır
+- SQL sunucularında Tehdit Algılamayı Dağıtma
+- Windows Server için varsayılan Microsoft IaaaSAntimalware uzantısı dağıtma
 
-## <a name="9-secure-user-management"></a>9 güvenli Kullanıcı Yönetimi 
+## <a name="9-secure-user-management"></a>9 Güvenli Kullanıcı Yönetimi 
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya okuma/yazma izinlerine sahip olan dış hesapları, çok faktörlü kimlik doğrulamasının etkin olmadığı okuma ve/veya yazma izinlerine göre denetlemek için [Azure ilke](../../../policy/overview.md) tanımları atayarak erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
+Azure, Azure'daki kaynaklara kimlerin erişebildiğinizi yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portalını kullanarak, Azure kaynaklarına ve izinlerine kimlerin erişimi olduğunu inceleyebilirsiniz. Bu plan, azure [ilkesi](../../../policy/overview.md) tanımlarını, sahibi ve/veya okuma/yazma izinleri ve çok faktörlü kimlik doğrulaması etkin olmayan sahibi, okuma ve/yazma izinleri olan dış hesapları denetlemek için atayarak erişim haklarını kısıtlamanıza ve denetlemenize yardımcı olur.
 
-- MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
+- MFA, aboneliğinizde sahip izni olan hesaplarda etkinleştirilmelidir
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
-- Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
+- Okuma izinleri olan harici hesaplar aboneliğinizden kaldırılmalıdır
 
-## <a name="10-identity-and-authentication"></a>10 kimlik ve kimlik doğrulama
+## <a name="10-identity-and-authentication"></a>10 Kimlik ve Kimlik Doğrulama
 
-Bu şema, sahip ve/veya okuma/yazma izinlerine sahip olan dış hesapları, çok faktörlü kimlik doğrulamasının etkin olmadığı okuma ve/veya yazma izinlerine göre denetlemek için [Azure ilke](../../../policy/overview.md) tanımları atayarak erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
+Bu plan, azure [ilkesi](../../../policy/overview.md) tanımlarını, sahibi ve/veya okuma/yazma izinleri ve çok faktörlü kimlik doğrulaması etkin olmayan sahibi, okuma ve/yazma izinleri olan dış hesapları denetlemek için atayarak erişim haklarını kısıtlamanıza ve denetlemenize yardımcı olur.
 
-- MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
+- MFA, aboneliğinizde sahip izni olan hesaplarda etkinleştirilmelidir
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
-- Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
+- Okuma izinleri olan harici hesaplar aboneliğinizden kaldırılmalıdır
 
-Bu şema, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere Azure ilke tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.
+Bu plan, SQL sunucuları ve Hizmet Dokusu için Azure Active Directory kimlik doğrulamasını denetlemek için Azure İlkesi tanımlarını atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin basitleştirilmiş izin yönetimini ve merkezi kimlik yönetimini sağlar.
 
-- SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
-- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
+- SQL sunucuları için bir Azure Active Directory yöneticisi sağlanmalıdır
+- Hizmet Kumaş kümeleri yalnızca müşteri kimlik doğrulaması için Azure Etkin Dizini kullanmalıdır
 
-Bu şema Ayrıca, amortisman hesapları ve dış hesaplar dahil olmak üzere incelenmesi gereken denetim hesaplarına Azure Ilke tanımları atar. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu şema, kaldırma için göz önünde bulundurmanız gereken amorti edilmiş hesabı denetlemek için iki Azure Ilke tanımı atar.
+Bu plan ayrıca, amortismana tabi hesaplar ve dış hesaplar da dahil olmak üzere gözden geçirilmesi için öncelik verilmesi gereken denetim hesaplarına Azure İlkesi tanımları atar. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu plan, amortismana tabi hesabı denetlemek için kaldırılması gereken iki Azure İlkesi tanımı atar.
 
-- Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
-- Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
+- Amortismana alınan hesaplar aboneliğinizden kaldırılmalıdır
+- Sahip izinleri olan amortismana alınmış hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 
-Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
+Bu plan ayrıca, yanlış ayarlanmışsa uyarmak için Linux VM parola dosyası izinlerini denetleyen bir Azure İlkesi tanımı da atar. Bu tasarım, kimlik doğrulayıcıların tehlikeye girmediğinden emin olmak için düzeltici eylemde bulunmanızı sağlar.
 
-- \[Preview\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme\]: 0644 olarak ayarlanmış passwd dosya izinleri olmayan Linux VM'lerinden gelen denetim sonuçlarını göster
 
-Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows VM 'Leri denetleyen Azure Ilke tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden VM 'lerin farkında, tüm VM Kullanıcı hesaplarının parolalarının ilkeyle uyumlu olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olur.
+Bu plan, minimum güç ve diğer parola gereksinimlerini zorlamayan Windows VM'lerini denetleyen Azure İlkesi tanımları atayarak güçlü parolalar uygulamanıza yardımcı olur. Parola gücü ilkesini ihlal eden VM'lerin farkında olmak, tüm VM kullanıcı hesaplarının parolalarının ilkeyle uyumlu olduğundan emin olmak için düzeltici eylemlerde yardımcı olur.
 
-- \[Preview\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetlemek için önkoşulları dağıtın
-- \[Preview\]: en fazla 70 gün parola yaşı olmayan Windows sanal makinelerini denetlemek için önkoşulları dağıtın
-- \[Preview\]: en az 1 günlük parola yaşı olmayan Windows VM 'Leri denetlemek için önkoşulları dağıtın
-- \[Preview\]: en az parola uzunluğu 14 karakter olan Windows VM 'Leri denetlemek için önkoşulları dağıtın
-- \[Preview\]: önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için önkoşulları dağıtın
-- \[Preview\]: parola karmaşıklığı ayarı etkinleştirilmemiş Windows VM 'lerinden denetim sonuçlarını göster
-- \[Preview\]: en fazla 70 gün parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Preview\]: en az 1 günlük parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Preview\]: en düşük parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerinden denetim sonuçlarını göster
-- \[Preview\]: önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerinden denetim sonuçlarını gösterme
+- \[Önizleme\]: Parola karmaşıklığı ayarı etkin olmayan Windows VM'lerini denetlemek için ön koşulları dağıtma
+- \[Önizleme\]: En fazla 70 günlük parola yaşı olmayan Windows VM'lerini denetlemek için ön koşulları dağıtma
+- \[Önizleme\]: Minimum parola yaşı 1 gün olmayan Windows VM'lerini denetlemek için ön koşulları dağıtma
+- \[Önizleme\]: Minimum parola uzunluğunu 14 karakterle sınırlamayan Windows VM'lerini denetlemek için ön koşulları dağıtma
+- \[Önizleme\]: Önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM'lerini denetlemek için ön koşulları dağıtma
+- \[Önizleme\]: Parola karmaşıklığı ayarı etkin olmayan Windows VM'lerinden gelen denetim sonuçlarını göster
+- \[Önizleme\]: En fazla 70 günlük parola yaşı olmayan Windows VM'lerinden gelen denetim sonuçlarını göster
+- \[Önizleme\]: En az parola yaşı 1 gün olmayan Windows VM'lerinden gelen denetim sonuçlarını göster
+- \[Önizleme\]: En az parola uzunluğunu 14 karakterle sınırlamayan Windows VM'lerinden gelen denetim sonuçlarını göster
+- \[Önizleme\]: Önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM'lerinden gelen denetim sonuçlarını göster
 
-Bu şema ayrıca Azure ilke tanımlarını atayarak Azure kaynaklarına erişimi denetlemenize yardımcı olur. Bu ilkeler, kaynaklara daha fazla izin vermeyi sağlayan kaynak türlerinin ve yapılandırmaların kullanımını denetler. Bu ilkeleri ihlal eden kaynakları anlamak, Azure kaynaklarının yetkili kullanıcılarla sınırlı olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olabilir.
+Bu plan, Azure İlkesi tanımları atayarak Azure kaynaklarına erişimi denetlemenize de yardımcı olur. Bu ilkeler, kaynaklara daha fazla izin veren erişime izin verebilecek kaynak türlerinin ve yapılandırmaların kullanımını denetler. Bu ilkeleri ihlal eden kaynakları anlamak, Azure kaynaklarına erişimin yetkili kullanıcılarla sınırlı olduğundan emin olmak için düzeltici eylemlerde yardımcı olabilir.
 
-- \[Preview\]: parola olmayan hesaplara sahip Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Preview\]: parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
-- \[önizleme\]: parolaları olmayan hesaplara sahip Linux VM 'lerini denetleme
-- \[Preview\]: parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
-- Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
-- Sanal makineler yeni Azure Resource Manager kaynaklarına geçirilmelidir
-- Yönetilen diskleri kullanmayan VM 'Leri denetleme
+- \[Önizleme\]: Parolaları olmayan hesapları olan Linux VM'lerini denetlemek için gereksinimleri dağıtma
+- \[Önizleme\]: Parola olmayan hesaplardan uzaktan bağlantı sağlayan Linux VM'lerini denetlemek için gereksinimleri dağıtma
+- \[Önizleme\]: Parolasız hesapları olan Linux VM'lerini denetle
+- \[Önizleme\]: Parolasız hesaplardan uzaktan bağlantı sağlayan Linux VM'lerini denetle
+- Depolama hesapları yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir
+- Sanal makineler yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir
+- Yönetilen diskleri kullanmayan denetim VM'leri
 
-## <a name="11-external-interface-protection"></a>11 harici arabirim koruması
+## <a name="11-external-interface-protection"></a>11 Dış Arayüz Koruması
 
-Uygun güvenli Kullanıcı yönetimi için 25 ' ten fazla ilke kullanmaktan başka, bu şema, kısıtlanmamış depolama hesaplarını izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak hizmet arabirimlerini yetkisiz erişimden korumanıza yardımcı olur. Sınırsız erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir. Bu şema ayrıca sanal makinelerde Uyarlamalı uygulama denetimleri sağlayan bir ilke atar.
+Bu plan, uygun güvenli kullanıcı yönetimi için 25'ten fazla ilke kullanmanın dışında, sınırsız depolama hesaplarını izleyen bir [Azure İlkesi](../../../policy/overview.md) tanımı atayarak hizmet arabirimlerini yetkisiz erişime karşı korumanıza yardımcı olur. Sınırsız erişime sahip depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeyen erişime izin verebilir. Bu plan ayrıca sanal makinelerde uyarlanabilir uygulama denetimleri sağlayan bir ilke atar.
 
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
-- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
-- IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır
-- Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
-- Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır
-- Sanal makine ölçek kümelerine uç nokta koruma çözümü yüklenmelidir
+- Depolama hesaplarına sınırsız ağ erişimini denetleme
+- Uyarlanabilir Uygulama Denetimleri sanal makinelerde etkinleştirilmelidir
+- IaaS'deki web uygulamaları için NSGs kuralları sertleştirilmiş olmalıdır
+- Internet'ten erişim bitiş noktasına dönük olarak kısıtlanmalıdır
+- Internet'in sanal makinelerle karşı karşıya olması için Ağ Güvenliği Grubu Kuralları sertleştirilmiş olmalıdır
+- Uç nokta koruma çözümü sanal makine ölçek kümeleri üzerine kurulmalıdır
 - Sanal makinelere anlık ağ erişim denetimi uygulanmalıdır
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- Depolama hesaplarına sınırsız ağ erişimini denetleme
 - İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
-- Uzaktan hata ayıklama için Web uygulaması kapalı olmaları
-- API uygulaması için uzaktan hata ayıklama kapatılmalıdır
-- Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- Web Uygulaması için uzaktan hata ayıklama kapatılmalıdır
+- API Uygulaması için uzaktan hata ayıklama kapatılmalıdır
+- Web Uygulamasına yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- Fonksiyon Uygulamasına yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- API Uygulamasına yalnızca HTTPS üzerinden erişilebilir olmalıdır
 
-## <a name="12-secure-service-administration"></a>12 güvenli hizmet yönetimi
+## <a name="12-secure-service-administration"></a>12 Güvenli Servis İdaresi
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya yazma izinlerine sahip olan dış hesapları ve/veya Multi-Factor Authentication etkinleştirilmemiş yazma izinlerini denetlemek için beş [Azure ilke](../../../policy/overview.md) tanımı atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
+Azure, Azure'daki kaynaklara kimlerin erişebildiğinizi yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portalını kullanarak, Azure kaynaklarına ve izinlerine kimlerin erişimi olduğunu inceleyebilirsiniz. Bu plan, sahip sahibi ve/veya sahibi olan izinleri ve hesaplarını denetlemek ve/veya çok faktörlü kimlik doğrulaması etkin olmayan izinler yazmak için beş [Azure İlkesi](../../../policy/overview.md) tanımı atayarak ayrıcalıklı erişim haklarını kısıtlamanıza ve denetlemenize yardımcı olur.
 
-Bulut hizmetini yönetmek için kullanılan sistemler bu hizmete yüksek ayrıcalıklı erişime sahip olur. Güvenlik denetimlerini atlama ve büyük hacimlere yönelik verileri çalmaya veya düzenlemeye yönelik araçlar da dahil olmak üzere bunun tehlikeye düşmesi önemli ölçüde etkiler. Hizmet sağlayıcısının yöneticileri tarafından işletimsel hizmeti yönetmek için kullanılan yöntemler, hizmetin güvenliğine daha fazla yararlanabilecek herhangi bir risk düzeyini azaltmak için tasarlanmalıdır. Bu ilke uygulanmadıysa, bir saldırgan güvenlik denetimlerini atlama ve büyük hacimlere veri çalmak veya işlemek için bir yol açabilir.
+Bir bulut hizmetinin yönetimi için kullanılan sistemler, bu hizmete son derece ayrıcalıklı erişime sahip olacaktır. Bu uzlaşma, güvenlik denetimlerini atlama ve büyük hacimli verileri çalma veya işleme araçları da dahil olmak üzere önemli bir etkiye sahip olacaktır. Hizmet sağlayıcının yöneticileri tarafından operasyonel hizmeti yönetmek için kullanılan yöntemler, hizmetin güvenliğini zedeleyebilecek herhangi bir yararlanma riskini azaltmak üzere tasarlanmalıdır. Bu ilke uygulanmazsa, saldırgan güvenlik denetimlerini atlamak ve büyük hacimli verileri çalmak veya işlemek için araçlara sahip olabilir.
 
-- MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
+- MFA, aboneliğinizde sahip izni olan hesaplarda etkinleştirilmelidir
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 
-Bu şema, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere Azure ilke tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.
+Bu plan, SQL sunucuları ve Hizmet Dokusu için Azure Active Directory kimlik doğrulamasını denetlemek için Azure İlkesi tanımlarını atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin basitleştirilmiş izin yönetimini ve merkezi kimlik yönetimini sağlar.
 
-- SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
-- Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır
+- SQL sunucuları için bir Azure Active Directory yöneticisi sağlanmalıdır
+- Hizmet Kumaş kümeleri yalnızca müşteri kimlik doğrulaması için Azure Etkin Dizini kullanmalıdır
 
-Bu şema Ayrıca, hesap tanımlarını, ve yükseltilmiş izinlere sahip olan amortisman hesapları ve dış hesaplar dahil olmak üzere, incelenmek üzere önceliklendirilebilecek denetim hesaplarına atar. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu şema, kaldırma için göz önünde bulundurmanız gereken amorti edilmiş hesabı denetlemek için iki Azure Ilke tanımı atar.
+Bu plan ayrıca, amortismana tabi hesaplar ve yüksek izinlere sahip dış hesaplar da dahil olmak üzere gözden geçirilmesi için öncelik verilmesi gereken denetim hesaplarına Azure İlkesi tanımlarını da atar. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu plan, amortismana tabi hesabı denetlemek için kaldırılması gereken iki Azure İlkesi tanımı atar.
 
-- Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
-- Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
+- Amortismana alınan hesaplar aboneliğinizden kaldırılmalıdır
+- Sahip izinleri olan amortismana alınmış hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 
-Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
+Bu plan ayrıca, yanlış ayarlanmışsa uyarmak için Linux VM parola dosyası izinlerini denetleyen bir Azure İlkesi tanımı da atar. Bu tasarım, kimlik doğrulayıcıların tehlikeye girmediğinden emin olmak için düzeltici eylemde bulunmanızı sağlar.
 
-- \[Preview\]: denetim Linux VM/etc/passwd dosyası izinleri 0644 olarak ayarlanmıştır
+- \[Önizleme\]: Denetim Linux VM /etc/passwd dosya izinleri 0644 olarak ayarlanır
 
-## <a name="13-audit-information-for-users"></a>Kullanıcılar için 13 denetim bilgileri
+## <a name="13-audit-information-for-users"></a>13 Kullanıcılar için Denetim Bilgileri
 
-Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur. Atanan bir ilke, sanal makinelerin belirli bir Log Analytics çalışma alanına günlük gönderip göndermemişse de denetler.
+Bu plan, Azure kaynaklarında günlük ayarlarını denetleyen [Azure İlkesi](../../../policy/overview.md) tanımları atayarak sistem olaylarının günlüğe kaydedilmesini sağlamanıza yardımcı olur. Atanan bir ilke, sanal makineler günlükleri belirli bir günlük analizi çalışma alanına göndermiyorsa da denetler.
 
-- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
+- SQL Server'da gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
-- Sanal ağlar oluşturulduğunda Ağ İzleyicisi dağıt
+- \[Önizleme\]: Linux VM'leri için Log Analytics Agent'ı dağıtın
+- \[Önizleme\]: Windows VM'ler için Günlük Analizi Aracısı Dağıt
+- Sanal ağlar oluşturulduğunda ağ izleyicisini dağıtma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-UK RESMI ve UK NHS şemaları denetim eşlemesini gözden geçirdiğinize göre, genel bakış ve bu örneği dağıtma hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
+Şimdi İngiltere'de RESMİ ve İngiltere NHS planları kontrol haritalama inceledik, genel bakış ve nasıl bu örnek dağıtmak hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [UK resmi ve UK NHS şemaları-genel bakış](./index.md)
-> [UK resmi ve UK NHS şemaları-dağıtım adımları](./deploy.md)
+> [İngiltere RESMİ ve İngiltere NHS planları - Genel Bakış](./index.md)
+> [İngiltere RESMİ ve İngiltere NHS planları - Dağıtım adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Plan yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
-- [Mevcut atamaları güncelleştirmeyi](../../how-to/update-existing-assignments.md) öğrenin.
+- Varolan atamaları nasıl [güncelleştirini](../../how-to/update-existing-assignments.md)öğrenin.

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box Edge ile paylaşımlara veri aktarma öğreticisi | Microsoft Docs
+title: Azure Veri Kutusu Kenarı ile paylaşımlara veri aktarma eğitimi | Microsoft Dokümanlar
 description: Data Box Edge cihazında paylaşımları eklemeyi ve bunlara bağlanmayı öğrenin.
 services: databox
 author: alkohli
@@ -10,15 +10,15 @@ ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: 3b1988656e2c15515e121df3ee71e31ce7edd750
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79212955"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>Öğretici: Azure Data Box Edge veri aktarma
+# <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>Öğretici: Azure Veri Kutusu Kenarı ile veri aktarımı
 
-Bu öğretici, Data Box Edge cihazınızda paylaşımların nasıl ekleneceğini ve bağlanılacağını açıklamaktadır. Paylaşımlar eklendikten sonra Data Box Edge Azure 'a veri aktarabilir.
+Bu öğretici, Veri Kutusu Kenarı aygıtınızdaki paylaşımlara nasıl ekleyeceğiniz ve bunlara nasıl bağlanılabildiğini açıklar. Paylaşımları ekledikten sonra, Data Box Edge verileri Azure'a aktarabilir.
 
 Bu yordamın tamamlanması 10 dakika kadar sürebilir.
 
@@ -29,77 +29,77 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Paylaşıma bağlanma
 
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Data Box Edge paylaşımlar eklemeden önce şunları yaptığınızdan emin olun:
+Veri Kutusu Edge'e paylaşım eklemeden önce şunları yapın:
 
-- Fiziksel cihazınızı [yükleme Azure Data Box Edge](data-box-edge-deploy-install.md)bölümünde açıklandığı gibi yüklediniz.
+- Azure [Veri Kutusu Kenarını Yükle'de](data-box-edge-deploy-install.md)açıklandığı gibi fiziksel aygıtınızı yükledin.
 
-- Fiziksel cihazı, [bağlanma, ayarlama ve etkinleştirme Azure Data Box Edge](data-box-edge-deploy-connect-setup-activate.md)açıklandığı şekilde etkinleştirdiniz.
+- Fiziksel aygıtı [Connect,set ve etkinleştirazure Veri Kutusu Kenarı'nda](data-box-edge-deploy-connect-setup-activate.md)açıklandığı şekilde etkinleştirdin.
 
 
 ## <a name="add-a-share"></a>Paylaşım ekleme
 
-Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
+Bir paylaşım oluşturmak için aşağıdaki yordamı yapın:
 
-1. [Azure portal](https://portal.azure.com/)Data Box Edge kaynağınızı seçip **genel bakış**' a gidin. Cihazınızın çevrimiçi olması gerekir.
+1. Azure [portalında,](https://portal.azure.com/)Veri Kutusu Kenarı kaynağınızı seçin ve ardından **Genel Bakış'a**gidin. Cihazınız çevrimiçi olmalıdır.
 
    ![Cihaz çevrimiçi](./media/data-box-edge-deploy-add-shares/device-online-1.png)
 
-2. Cihaz komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
+2. Aygıt komut çubuğunda **+ Paylaşım ekle'yi** seçin.
 
    ![Paylaşım ekleme](./media/data-box-edge-deploy-add-shares/select-add-share-1.png)
 
-3. **Paylaşma Ekle** bölmesinde aşağıdaki yordamı uygulayın:
+3. Paylaşım **Ekle** bölmesinde aşağıdaki yordamı yapın:
 
     a. **Ad** kutusunda, paylaşımınız için benzersiz bir ad sağlayın.  
-    Paylaşma adı yalnızca küçük harf, sayı ve kısa çizgi içerebilir. 3 ila 63 karakter arasında olmalıdır ve bir harf veya rakam ile başlamalıdır. Kısa çizgilerden önce ve ardından bir harf ya da rakam gelmelidir.
+    Paylaşım adının yalnızca küçük harfleri, rakamları ve tireleri olabilir. 3 ila 63 karakter arasında olmalı ve bir harf veya bir sayı ile başlamalıdır. Tireler önce ve bir harf veya bir sayı takip edilmelidir.
     
     b. Paylaşım için **Tür** seçin.  
-    Tür **SMB** veya **NFS** olabilir; varsayılan tür SMB'dir. SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır.  
-    SMB veya NFS paylaşımlarını seçmenize bağlı olarak, seçeneklerin geri kalanı biraz farklılık gösterir. 
+    Tür **SMB** veya **NFS**olabilir, SMB varsayılan olarak. SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır.  
+    SMB veya NFS hisselerini seçip seçmediğinize bağlı olarak, diğer seçenekler biraz değişir. 
 
     c. Paylaşımın bulunacağı bir depolama hesabı sağlayın.
 
       > [!IMPORTANT]
-      > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+      > Kullandığınız Azure Depolama hesabının üzerinde bir Azure Yığını Kenarı veya Veri Kutusu Ağ Geçidi aygıtıyla kullanıyorsanız, üzerinde geçici çözümegeçirim ilkeleri olmadığından emin olun. Daha fazla bilgi [için, blob depolama için değişmezlik ilkelerini ayarla ve yönetin.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)
 
-    d. **Depolama hizmeti** açılan listesinde, **Blok Blobu**, **Sayfa Blobu**veya **dosyalar**' ı seçin.  
-    Seçtiğiniz hizmetin türü, verilerin Azure 'da kullanmasını istediğiniz biçime bağlıdır. Bu örnekte, verileri Azure 'da blok Blobları olarak depolamak istiyoruz, **Blok Blobu**seçtik. **Sayfa Blobu**' nı seçerseniz, verilerinizin 512 bayt hizalı olduğundan emin olun. Örneğin VHDX her zaman 512 bayt hizalıdır.
+    d. Depolama **hizmeti** açılır listesinde Blob, Sayfa **Blob**veya **Dosyaları** **Engelle'yi**seçin.  
+    Seçtiğiniz hizmet türü, verilerin Azure'da hangi biçimi kullanmasını istediğinize bağlıdır. Bu örnekte, verileri Azure'da blok blobolarak depolamak istediğimizden, **Blob'u engelle'yi**seçin. **Sayfa Blob'u**seçerseniz, verilerinizin 512 bayt hizalanmış olduğundan emin olun. Örneğin VHDX her zaman 512 bayt hizalıdır.
 
-    e. Yeni bir blob kapsayıcısı oluşturun veya açılan listeden mevcut bir tane kullanın. Blob kapsayıcısı oluşturuyorsanız bir kapsayıcı adı sağlayın. Zaten bir kapsayıcı yoksa, depolama hesabında yeni oluşturulan paylaşma adıyla oluşturulur.
+    e. Yeni bir blob kapsayıcısı oluşturun veya açılır listeden varolan bir kapsayıcı kullanın. Bir blob kapsayıcı sıyrık oluşturuyorsanız, bir kapsayıcı adı sağlayın. Bir kapsayıcı zaten yoksa, depolama hesabında yeni oluşturulan paylaşım adı ile oluşturulur.
 
-    f. Bir SMB veya NFS paylaşımının oluşturulup oluşturulmayacağını bağlı olarak, aşağıdaki adımlardan birini yapın:
+    f. Bir Kobİ payı veya NFS payı oluşturup oluşturmadığınıza bağlı olarak aşağıdaki adımlardan birini yapın:
 
-    * **SMB paylaşma**: **tüm ayrıcalık yerel kullanıcısı**' nın altında, **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni bir yerel kullanıcı oluşturursanız, bir Kullanıcı adı ve parola girin ve parolayı onaylayın. Bu eylem, yerel kullanıcıya izinler atar. Paylaşma düzeyi izinlerinin değiştirilmesi Şu anda desteklenmiyor.
+    * **SMB payı**: **Tüm ayrıcalık yerel kullanıcı**altında, yeni **oluştur** veya **varolan kullan'ı**seçin. Yeni bir yerel kullanıcı oluşturursanız, bir kullanıcı adı ve parola girin ve ardından parolayı onaylayın. Bu eylem, yerel kullanıcıya izinatar. Hisse düzeyi izinlerinin değiştirilmesi şu anda desteklenmez.
 
-        Bu paylaşma verileri için **yalnızca okuma Işlemlerine Izin ver** onay kutusunu seçerseniz, salt okunurdur kullanıcıları belirtebilirsiniz.
+        Bu paylaşım verileri için **yalnızca okuma işlemlerine izin ver** onay kutusunu seçerseniz, salt okunur kullanıcıları belirtebilirsiniz.
 
         ![SMB paylaşımı ekleme](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
 
-    * **NFS paylaşma**: paylaşıma erişebilen izin VERILEN istemcilerin IP adreslerini girin.
+    * **NFS payı**: Paylaşıma erişebilen izin verilen istemcilerin IP adreslerini girin.
 
         ![NFS paylaşımı ekleme](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
 
-4. Paylaşma oluşturmak için **Oluştur** ' u seçin.
+4. Paylaşımı oluşturmak için **Oluştur'u** seçin.
     
-    Paylaşma oluşturma işleminin devam ettiğini size bildirilir. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, **Paylaşımlar** kutucuğunu yeni paylaşımı yansıtacak şekilde güncelleştirir.
+    Paylaşım oluşturma nın devam ettiği size bildirilir. Paylaşım belirtilen ayarlarla oluşturulduktan sonra, Yeni paylaşımı yansıtacak şekilde **Hisse** döşemesi güncellenir.
     
 
 ## <a name="connect-to-the-share"></a>Paylaşıma bağlanma
 
-Artık son adımda oluşturduğunuz bir veya daha fazla paylaşıma bağlanabilirsiniz. SMB veya NFS paylaşımınız olmasına bağlı olarak, adımlar farklılık gösterebilir.
+Artık son adımda oluşturduğunuz paylaşımlardan birine veya daha fazlasına bağlanabilirsiniz. SMB'niz veya NFS payınız olup olmadığına bağlı olarak adımlar değişebilir.
 
 ### <a name="connect-to-an-smb-share"></a>SMB paylaşımına bağlanma
 
-Data Box Edge cihazınıza bağlı Windows Server istemcisinde şu komutları girerek bir SMB paylaşımıyla bağlantı edin:
+Veri Kutusu Kenar ı aygıtınıza bağlı Windows Server istemcinizde, komutları girerek bir Kobİ paylaşımına bağlanın:
 
 
-1. Bir komut penceresinde, şunu yazın:
+1. Komut penceresinde şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-2. İstendiğinde, paylaşımın parolasını girin.  
+2. Sizden istendiğinde, paylaşım için parolayı girin.  
    Burada, bu komutun örnek çıkışı gösterilir.
 
     ```powershell
@@ -114,10 +114,10 @@ Data Box Edge cihazınıza bağlı Windows Server istemcisinde şu komutları gi
     ```   
 
 
-3. Klavyenizde Windows + R ' yi seçin.
+3. Klavyenizde Windows + R'yi seçin.
 
-4. **Çalıştır** penceresinde, `\\<device IP address>`belirtin ve ardından **Tamam**' ı seçin.  
-   Dosya Gezgini açılır. Artık, klasör olarak oluşturduğunuz paylaşımları görüntüleyebilmelisiniz. Dosya Gezgini 'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
+4. **Çalıştır** penceresinde , `\\<device IP address>`' **OK**  
+   Dosya Gezgini açılır. Artık oluşturduğunuz paylaşımları klasör olarak görüntüleyebilmelisiniz. Dosya Gezgini'nde, içeriği görüntülemek için bir paylaşıma (klasör) çift tıklayın.
  
     ![SMB paylaşımına bağlanma](./media/data-box-edge-deploy-add-shares/connect-to-share2.png)
 
@@ -125,40 +125,40 @@ Data Box Edge cihazınıza bağlı Windows Server istemcisinde şu komutları gi
 
 ### <a name="connect-to-an-nfs-share"></a>NFS paylaşımına bağlanma
 
-Data Box Edge cihazınıza bağlı Linux istemciniz üzerinde aşağıdaki yordamı uygulayın:
+Veri Kutusu Edge cihazınıza bağlı Linux istemcinizde aşağıdaki yordamı yapın:
 
-1. İstemcide NFSv4 istemcisinin yüklü olduğundan emin olun. NFS istemcisini yüklemek için aşağıdaki komutu kullanın:
+1. İstemcinin NFSv4 istemcisinin yüklü olduğundan emin olun. NFS istemcisini yüklemek için aşağıdaki komutu kullanın:
 
    `sudo apt-get install nfs-common`
 
     Daha fazla bilgi için [NFSv4 istemcisini yükleme](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client) konusuna gidin.
 
-2. NFS istemcisi yüklendikten sonra, aşağıdaki komutu kullanarak Data Box Edge cihazınızda oluşturduğunuz NFS payını bağlayın:
+2. NFS istemcisi yüklendikten sonra, aşağıdaki komutu kullanarak Veri Kutusu Kenarı aygıtınızda oluşturduğunuz NFS payını monte edin:
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     > [!IMPORTANT]
-    > Paylaşımlar bağlama sırasında `sync` seçeneğinin kullanımı, büyük dosyaların aktarım hızlarını geliştirir.
-    > Paylaşma 'yı bağlamadan önce, yerel bilgisayarınızda bağlama noktası olarak görev yapacak dizinlerin zaten oluşturulduğundan emin olun. Bu dizinler herhangi bir dosya veya alt klasör içermemelidir.
+    > Hisse `sync` montajı yaparken opsiyon kullanımı, büyük dosyaların aktarım oranlarını artırır.
+    > Paylaşıma binmeden önce, yerel bilgisayarınızda montaj noktaları olarak hareket edecek dizinlerin zaten oluşturulduğundan emin olun. Bu dizinler herhangi bir dosya veya alt klasör içermemelidir.
 
     Aşağıdaki örnekte, Data Box Edge cihazındaki bir paylaşıma NFS yoluyla nasıl bağlanılacağı gösterilir. Cihaz IP adresi: `10.10.10.60`. `mylinuxshare2` paylaşımı ubuntuVM öğesine bağlanmış. Paylaşımı bağlama noktası: `/home/databoxubuntuhost/edge`.
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
 > [!NOTE] 
-> Bu sürüm için aşağıdaki uyarılar geçerlidir:
-> - Paylaşımda bir dosya oluşturulduktan sonra dosyanın yeniden adlandırılması desteklenmez. 
-> - Bir paylaşımdan bir dosyanın silinmesi, depolama hesabındaki girişi silmez.
+> Aşağıdaki uyarılar bu sürüm için geçerlidir:
+> - Paylaşımda bir dosya oluşturulduktan sonra, dosyanın yeniden adlandırılması desteklenmez. 
+> - Bir dosyayı bir paylaşımdan silmek, depolama hesabındaki girişi silmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, aşağıdaki Data Box Edge konular hakkında bilgi edindiniz:
+Bu eğitimde, aşağıdaki Data Box Edge konuları hakkında bilgi edinilmişsinizdir:
 
 > [!div class="checklist"]
 > * Paylaşım ekleme
 > * Paylaşıma bağlanma
 
-Data Box Edge kullanarak verilerinizi nasıl dönüştürebileceğinizi öğrenmek için sonraki öğreticiye ilerleyin:
+Data Box Edge'i kullanarak verilerinizi nasıl dönüştürerinizi öğrenmek için bir sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
 > [Data Box Edge ile veri dönüştürme](./data-box-edge-deploy-configure-compute.md)

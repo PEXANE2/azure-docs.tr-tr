@@ -1,168 +1,168 @@
 ---
-title: 'Öğretici: bir Azure FXT Edge filminin kablolarını bağlama'
-description: Azure FXT Edge Filer donanımı için ağ bağlantı noktalarını kablo ve ek güç iliştirme
+title: "Öğretici: Kabloları Azure FXT Edge Filer'a bağlayın"
+description: Azure FXT Edge Filer donanımı için ağ bağlantı noktalarını kabloya bağlama ve güç ekleme
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239787"
 ---
-# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Öğretici: Azure FXT Edge Filer düğümüne ağ bağlantıları oluşturma ve güç sağlama
+# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Öğretici: Azure FXT Edge Filer düğümüne ağ bağlantıları ve güç sağlama
 
-Bu öğreticide, bir Azure FXT Edge Filer donanım düğümü için ağ bağlantılarını nasıl kablolu olarak kullanabileceğiniz öğretilir.
+Bu öğretici, bir Azure FXT Edge Filer donanım düğümü için ağ bağlantılarını nasıl kabloyla bağlayın öğretir.
 
 Bu öğreticide şunları öğreneceksiniz: 
 
 > [!div class="checklist"]
 > * Ortamınız için ağ kablosu türünü seçme
 > * Azure FXT Edge Filer düğümünü veri merkezi ağınıza bağlama
-> * Kabloları kablo yönetimi ARM (CMA) aracılığıyla yönlendirme
-> * Gücü çıkarılan cihaza bağlama ve şirket içinde açma
+> * Kablolar kablo yönetim kolundan (CMA) nasıl yönlendirilir?
+> * Gücü raflı cihaza bağlama ve üzerinde güç verme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiye başlamadan önce, Azure FXT Edge Filer 'ın standart bir ekipman rafıyla yüklenmesi gerekir. CMA 'nın, dosyalayıcı düğümüne yüklenmesi gerekir. 
+Bu öğreticiye başlamadan önce Azure FXT Edge Filer standart bir donanım rafına yüklenmelidir. CMA filer düğümüne takılmalıdır. 
 
-## <a name="identify-ports"></a>Bağlantı noktalarını tanımla
+## <a name="identify-ports"></a>Bağlantı noktalarını tanımlama
 
-Azure FXT Edge filin arkasında yer alan çeşitli bağlantı noktalarını belirler. 
+Azure FXT Edge Filer'ınızın arka tarafındaki çeşitli bağlantı noktalarını tanımlayın. 
  
-![Kablolu bir cihazın geri dönmesi](media/fxt-back-annotated.png)
+![Kablolu aygıtın arkası](media/fxt-back-annotated.png)
 
 ## <a name="cable-the-device"></a>Cihazın kablolarını bağlama
 
-* [Ağ bağlantı noktalarında](#network-ports)açıklandığı gıbı, RJ-45 bağlantı noktalarını veri merkezinize ait ağ kaynağına bağlayın.  
-* [Idrac bağlantı noktasını](#idrac-port) GÜVENLI bir DHCP sunucusu ile ayrı bir ağa güvenli bir şekilde bağlayın. 
-* İlk kurulum için düğüme bir klavye ve izleyici bağlamak üzere USB bağlantı noktalarını ve VGA bağlantı noktasını kullanın. Düğümün diğer bağlantı noktalarını etkinleştirmek için düğümü önyüklemeniz ve [bir başlangıç parolası ayarlamanız](fxt-node-password.md) gerekir. Ayrıntılar için [Başlangıç parolalarını ayarla](fxt-node-password.md) bölümünü okuyun. 
+* RJ-45 bağlantı noktalarını [Ağ bağlantı noktalarında](#network-ports)açıklandığı şekilde veri merkezinizin ağ kaynağına bağlayın.  
+* [iDRAC bağlantı noktasını](#idrac-port) güvenli bir DHCP sunucusuyla ayrı bir ağa güvenli bir şekilde bağlayın. 
+* Bir klavyeyi bağlamak ve ilk kurulum için düğüme monitör bağlamak için USB bağlantı noktalarını ve VGA bağlantı noktasını kullanın. Düğümü önyüklemeniz ve düğümün diğer bağlantı noktalarını etkinleştirmek için [bir başlangıç parolaayarlamanız](fxt-node-password.md) gerekir. Ayrıntılar için [ilk parolaları ayarla'yı](fxt-node-password.md) okuyun. 
 
-Bu makalede ayrıca düğüm için [AC gücünün nasıl bağlanacağı](#connect-power-cables) açıklanır. 
+Bu makalede, düğüm için [AC gücü](#connect-power-cables) nasıl bağlanılmayı da açıklamaktadır. 
 
-Bu makalede ayrıca, özel sorun giderme için gerekliyse düğümün [seri bağlantı noktasına](#serial-port-only-when-necessary)nasıl bağlanabileceğiniz açıklanır. 
+Bu makalede, özel sorun giderme için gerekirse düğümün [seri bağlantı noktasına](#serial-port-only-when-necessary)nasıl bağlanılacak açıklanır. 
 
 ### <a name="network-ports"></a>Ağ bağlantı noktaları 
 
-Her Azure FXT Edge Filer düğümü aşağıdaki ağ bağlantı noktalarını içerir: 
+Her Azure FXT Kenar Filer düğümü aşağıdaki ağ bağlantı noktalarını içerir: 
 
-* Altı yüksek hızlı 25GbE/10GbE çift hız veri bağlantı noktaları: 
+* Altı yüksek hızlı 25GbE/10GbE çift rate veri portu: 
 
-  * İki Dual-Port eklentisi ağ bağdaştırıcısı tarafından sunulan dört bağlantı noktası
-  * Ana kart Mezzanine ağ bağdaştırıcısı tarafından belirtilen iki bağlantı noktası 
+  * İki çift bağlantı noktası eklentisi ağ bağdaştırıcısı tarafından sağlanan dört bağlantı noktası
+  * Anakart asma ağ bağdaştırıcısı tarafından sağlanan iki bağlantı noktası 
 
-* Anakart Mezzanine ağ bağdaştırıcısı tarafından iki adet 1GbE bağlantı noktası belirtildi 
+* Anakart asma ağ adaptörü tarafından sağlanan iki 1GbE bağlantı noktası 
 
-Yüksek hızlı 25GbE/10GbE veri bağlantı noktalarında standart SFP28 uyumlu cages vardır. Optik kabloları kullanmak için SFP28 Optical ileticisi modülleri (sağlanmadı) yüklemelisiniz.
+Yüksek hızlı 25GbE/10GbE veri bağlantı noktaları standart SFP28 uyumlu kafeslere sahiptir. Optik kabloları kullanmak için SFP28 optik alıcı-verici modüllerini yüklemeniz gerekir (sağlanmaz).
 
-1GbE bağlantı noktalarında standart RJ-45 bağlayıcıları vardır.
+1GbE bağlantı noktaları standart RJ-45 konektörlerine sahiptir.
 
-Desteklenen kabloların, anahtarların ve alıcı sayısının tam listesi için, [Cavium Fastlınq 41000 serisi birlikte çalışabilirlik matrisine](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)başvurun.
+Desteklenen kabloların, anahtarların ve alıcı vericilerin tam listesi için [Cavium FastlinQ 41000 Serisi Birlikte Çalışabilirlik](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)Matrisi'ne başvurun.
 
-Sisteminiz için kullanılacak bağlantı türü, veri merkezi ortamınıza bağlıdır.
+Sisteminiz için kullanılacak bağlantı türü veri merkezi ortamınıza bağlıdır.
 
-* Bir 25GbE ağına bağlanılıyorsa, yüksek hızlı veri bağlantı noktalarından her birini aşağıdaki kablo türlerinden biri ile kablo olarak bağlayın:
+* 25GbE'lik bir ağa bağlanıyorsanız, yüksek hızlı veri bağlantı noktalarının her birini aşağıdaki kablo türlerinden biriyle kablolayın:
 
-  * 25GbE veya çift hız 25GbE/10GbE özelliğine sahip optik kablo ve SFP28 Optical alıcısı
-  * SFP28 Type 25GbE-özellikli doğrudan Attach twinaxial kablosu
+  * 25GbE veya çift sınıf 25GbE/10GbE özelliğine sahip optik kablo ve SFP28 optik alıcı-verici
+  * SFP28 tipi 25GbE özellikli doğrudan takmak twinaxial kablo
 
-* Bir 10GbE ağa bağlanıyorsanız, yüksek hızlı veri bağlantı noktalarından her birini aşağıdakilerden biriyle kablo olarak bağlayın: 
+* 10GbE'lik bir ağa bağlanıyorsanız, yüksek hızlı veri bağlantı noktalarının her birini aşağıdakilerden biriyle kablolayın: 
 
-  * 10GbE veya çift hız 25GbE/10GbE özelliğine sahip optik kablo ve SFP28 Optical alıcısı.
-  * SFP28 Type 25GbE-özellikli doğrudan Attach twinaxial kablosu
-  * SFP28 türü 10GbE özellikli doğrudan Attach twinaxial kablosu
+  * 10GbE veya çift sınıf 25GbE/10GbE özelliğine sahip optik kablo ve SFP28 optik alıcı-verici.
+  * SFP28 tipi 25GbE özellikli doğrudan takmak twinaxial kablo
+  * SFP28 tipi 10GbE özellikli doğrudan takmak twinaxial kablo
 
-* 1GbE ağ bağlantı noktaları, küme yönetimi trafiği için kullanılır. Küme yapılandırması için fiziksel olarak ayrı bir ağ oluşturmak istiyorsanız ( [Yönetim ağını yapılandırma](fxt-cluster-create.md#configure-the-management-network)bölümünde açıklanmıştır), kümeyi oluştururken **1 GB MGMT ağ kullan** seçeneğini işaretleyin. Desteklenen kablolar listesinde açıklandığı gibi standart Cat5 veya daha iyi bir kabloyla bağlantı noktalarını bağlayın.
+* 1GbE ağ bağlantı noktaları küme yönetimi trafiği için kullanılır. Küme yapılandırması için fiziksel olarak ayrı bir ağ oluşturmak istiyorsanız küme oluşturulurken **1Gb mgmt ağ** kullan seçeneğini işaretleyin [(yönetim ağını Yapılandırma'da](fxt-cluster-create.md#configure-the-management-network)açıklanmıştır). Bağlantı noktalarını desteklenen kablolar listesinde açıklandığı gibi standart Cat5 veya daha iyi kabloyla kablolayın.
 
-  Tüm trafik için yüksek hızda bağlantı noktalarını kullanmayı planlıyorsanız, 1GbE bağlantı noktalarını kablolu olarak bırakabilirsiniz. Varsayılan olarak, 1 GbE ağ bağlantı noktaları, daha yüksek hızda bir veri bağlantı noktası varsa kullanılmaz.  
+  Tüm trafik için yüksek hızlı bağlantı noktalarını kullanmayı planlıyorsanız, 1GbE bağlantı noktalarını kablosuz bırakabilirsiniz. Varsayılan olarak, daha yüksek hızlı bir veri bağlantı noktası varsa 1GbE ağ bağlantı noktaları kullanılmaz.  
 
-### <a name="idrac-port"></a>Idrac bağlantı noktası  
+### <a name="idrac-port"></a>iDRAC bağlantı noktası  
 
-Idrac etiketli bağlantı noktası, donanım yönetimi ve izleme için kullanılan bir uzaktan erişim denetleyicisiyle iletişime izin veren bir 1Gb bağlantıdır. FXT yazılımı, sorun giderme ve kurtarma için bu denetleyiciyle akıllı platform yönetim arabirimi 'ni (ıPMı) kullanır. Bu bağlantı noktası aracılığıyla donanımı izlemek için yerleşik [Idrac arabirimini](https://www.dell.com/support/manuals/idrac9-lifecycle-controller-v3.30.30.30/idrac_3.30.30.30_ug/) kullanabilirsiniz. Idrac ve ıPMı erişimi varsayılan olarak etkindir. 
+iDRAC etiketli bağlantı noktası, donanım yönetimi ve izleme için kullanılan bir uzaktan erişim denetleyicisi ile iletişim sağlayan bir 1Gb bağlantısıdır. FXT yazılımı, sorun giderme ve kurtarma için bu denetleyiciile Akıllı Platform Yönetim Arabirimi 'ni (IPMI) kullanır. Bu bağlantı noktası üzerinden donanım izlemek için yerleşik [iDRAC arabirimini](https://www.dell.com/support/manuals/idrac9-lifecycle-controller-v3.30.30.30/idrac_3.30.30.30_ug/) kullanabilirsiniz. iDRAC ve IPMI erişimi varsayılan olarak etkinleştirilir. 
 
 > [!Note]
-> Idrac bağlantı noktası, işletim sistemini atlayabilir ve düğümdeki donanımla doğrudan etkileşim kurabilir. 
+> iDRAC bağlantı noktası işletim sistemini atlayabilir ve düğümüzerindeki donanımla doğrudan etkileşimde bulunabilir. 
 
-Idrac bağlantı noktasını bağlarken ve yapılandırırken bu güvenlik stratejilerini kullanın:
+iDRAC bağlantı noktasını bağlarken ve yapılandırırken bu güvenlik stratejilerini kullanın:
 
-* Idrac bağlantı noktalarını yalnızca kümeye erişmek için kullanılan veri ağından fiziksel olarak ayrılmış bir ağa bağlayın.
-* Her düğümde güvenli bir Idrac yönetici parolası ayarlayın. Bu parolayı, [donanım parolalarını ayarla](fxt-node-password.md)bölümündeki donanım izleme yönergelerini etkinleştirmek için ayarlamanız gerekir.
-* Varsayılan Idrac bağlantı noktası yapılandırması, IP adresi ataması için DHCP ve IPv4 kullanır. DHCP ortamınızın iyi korunduğundan ve bağlantıların DHCP istemcileri ile DHCP sunucusu arasında kısıtlanmasını sağlayın. (Küme denetim masası, kümeyi oluşturduktan sonra düğümlerin adres yapılandırma yöntemini değiştirme ayarlarını içerir.)
-* Idrac/ıPMı ağ trafiğini adanmış RJ-45 bağlantı noktasıyla sınırlayan Idrac bağlantı noktasını "adanmış mod" (varsayılan) olarak ayarlayın.
+* Yalnızca iDRAC bağlantı noktalarını kümeye erişmek için kullanılan veri ağından fiziksel olarak ayrılmış bir ağa bağlayın.
+* Her düğümde güvenli bir iDRAC yönetici parolası ayarlayın. Donanımı etkinleştirmek için bu parolayı ayarlamanız gerekir - [Donanım parolalarını](fxt-node-password.md)ayarla'daki yönergeleri izleyin.
+* Varsayılan iDRAC bağlantı noktası yapılandırması, IP adresi ataması için DHCP ve IPv4 kullanır. DHCP ortamınızın iyi korunduğundan ve bağlantıların DHCP istemcileri ile DHCP sunucusu arasında kısıtlandığından emin olun. (Küme denetim paneli, kümeyi oluşturduktan sonra düğümlerin adres yapılandırma yöntemini değiştirmek için ayarlar içerir.)
+* iDRAC bağlantı noktasını, iDRAC/IPMI ağ trafiğini özel RJ-45 bağlantı noktasına sınırlayan "özel mod" (varsayılan) olarak bırakın.
 
-Idrac bağlantı noktası yüksek hızlı bir ağ bağlantısı gerektirmez.
+iDRAC bağlantı noktası yüksek hızlı ağ bağlantısı gerektirmez.
   
-### <a name="serial-port-only-when-necessary"></a>Seri bağlantı noktası (yalnızca gerekli olduğunda)
+### <a name="serial-port-only-when-necessary"></a>Seri bağlantı noktası (yalnızca gerektiğinde)
 
-Bazı durumlarda, Microsoft hizmet ve destek bir sorunu tanılamak için bir terminali bir düğümün seri bağlantı noktasına bağlanmanızı söyleyebilir.  
+Bazı durumlarda, Microsoft Service ve Support, bir sorunu tanılamak için bir terminali düğümün seri bağlantı noktasına bağlamanızı söyleyebilir.  
 
-Konsolunu eklemek için:
+Konsolu takmak için:
 
-1. FXT Edge Filer düğümünün arka tarafında bulunan seri (COM1) bağlantı noktasını bulun.
-1. Seri bağlantı noktasını ANSI-115200-8N1 için yapılandırılmış bir terminale bağlamak üzere boş bir modem kablosu kullanın.
-1. Konsolunda oturum açın ve destek personeli tarafından yönlendirilmiş olarak diğer adımları uygulayın.
+1. FXT Edge Filer düğümünün arkasındaki seri (COM1) bağlantı noktasını bulun.
+1. Seri bağlantı noktasını ANSI-115200-8N1 için yapılandırılmış bir terminale bağlamak için null modem kablosu kullanın.
+1. Konsolda oturum açın ve destek personeli tarafından yönlendirilen diğer adımları atın.
 
-## <a name="route-cables-in-the-cable-management-arm-cma"></a>Kablo yönetimi ARM (CMA) içindeki yönlendirme kabloları
+## <a name="route-cables-in-the-cable-management-arm-cma"></a>Kablo yönetim kolundaki rota kabloları (CMA)
 
-Her Azure FXT Edge Filer düğümü, isteğe bağlı bir kablo yönetimi ARM ile birlikte gelir. CMA, kablo yönlendirmeyi basitleştirir ve kabloların bağlantısını kesmenize gerek kalmadan kasanın arkasına daha kolay erişim sağlar. 
+Her Azure FXT Edge Filer düğümü isteğe bağlı kablo yönetim koluyla birlikte gelir. CMA kablo yönlendirmeyi kolaylaştırır ve kabloların kesilmesine gerek kalmadan kasanın arkasına daha kolay erişim sağlar. 
 
-Kabloları CMA ile yönlendirmek için aşağıdaki yönergeleri izleyin: 
+Kabloları CMA üzerinden yönlendirmek için aşağıdaki talimatları izleyin: 
 
-1. Belirtilen kravat 'yi kullanarak, kabloları girip, bitişik sistemlerle karışabilmeleri için (1), sepetleri bir araya koyun.
-1. Hizmet konumundaki CMA 'yı kullanarak, kablo paketini iç ve dış sepetlerle (2) yönlendirin.
-1. Kabloları (3) güvenli hale getirmek için sepetlerinin her iki ucunda da önceden yüklenmiş kanca ve döngü döngüsü kullanın.
-1. CMA 'yı (4) tepsisinde geri dönüşümlü hale getirin.
-1. Durum göstergesi kablosunu sistemin arkasına yükler ve kabloyu CMA aracılığıyla yönlendirerek güvenli hale getirin. Kablonun diğer sonunu dış CMA sepetinin (5) köşesine ekleyin. 
+1. Sağlanan kravat sargılarını kullanarak, kabloları bitişik sistemlere müdahale etmemeleri için sepetlere girerken ve çıkarken bir araya getirin (1).
+1. CMA servis konumundaolduğu için, kablo paketini iç ve dış sepetlere yönlendirin (2).
+1. Kabloları sabitlemek için sepetlerin her iki ucundaki önceden yüklenmiş kanca ve döngü kayışlarını kullanın (3).
+1. CMA'yı tepside tekrar yerine yerleştirin (4).
+1. Durum göstergesi kablosunu sistemin arkasına töhalive CMA üzerinden yönlendirme yaparak kabloyu sabitle. Kablonun diğer ucunu dış CMA sepetinin köşesine takın (5). 
 
    > [!CAUTION]
-   > Kablolar arasındaki kabloların olası hasarını önlemek için, bu kabloyu CMA aracılığıyla yönlendirdikten sonra durum göstergesi kablosunda herhangi bir bolluğu güvenli hale getirin. 
+   > Çıkıntılı kablolardan gelebilecek olası hasarları önlemek için, bu kabloyu CMA üzerinden yönlendirmeden sonra durum göstergesi kablosundaki gevşekliği sabitlayın. 
 
-![Kablolar yüklü CMA çizimi](media/fxt-install/cma-cabling-400.png)
+![Kabloları yüklü CMA İllüstrasyon](media/fxt-install/cma-cabling-400.png)
 
 > [!NOTE]
->  CMA 'yı yüklemediğinizde, kabloları sisteminizin arkasına yönlendirmek için, kıl setinde sunulan iki kanca ve döngü Straps 'yi kullanın.
+>  CMA'yı yüklemediyseniz, sisteminizin arka sideki kabloları yönlendirmek için ray kitinde bulunan iki kanca ve döngü kayışını kullanın.
 > 
->  1. Her iki raf ayracın iç taraflarındaki dış CMA ayraçlarını bulun.
->  2. Kabloları yavaşça paketleyin ve bu, sol ve sağ tarafa sistem bağlayıcılarının seçimini çekmesini sağlar.
->  3. Kablo paketlerini güvenli hale getirmek için, bir yandan, sistemin her tarafındaki dış CMA köşeli ayraçları üzerinden kanca ve döngü, katman zincirler arasında geçiş yapın.
+>  1. Her iki raf flanşının iç taraflarında dış CMA braketlerini bulun.
+>  2. Kabloları yavaşça paketleyin ve sistem konektörlerinden sol ve sağ kenarlara doğru çekin.
+>  3. Kablo demetlerini sabitlemek için kanca ve döngü kayışlarını sistemin her iki tarafındaki dış CMA braketleri üzerindeki takımlı yuvalardan geçirin.
 > 
 >     ![CMA olmadan yönlendirilen kablolar](media/fxt-install/fxt-route-cables-no-cma-400.png)
 
 ## <a name="about-ip-address-requirements"></a>IP adresi gereksinimleri hakkında
 
-Azure FXT Edge Filer karma depolama önbelleğinde bulunan donanım düğümleri için, IP adresleri küme yazılımı tarafından yönetilir.
+Azure FXT Edge Filer karma depolama önbelleğindeki donanım düğümleri için IP adresleri küme yazılımı tarafından yönetilir.
 
-Her düğüm en az bir IP adresi gerektirir, ancak kümeye düğüm eklendiğinde veya kümeden kaldırıldığında düğüm adresleri atanır. 
+Her düğüm en az bir IP adresi gerektirir, ancak düğümler kümeye eklendiğinde veya kümeden kaldırıldığında düğüm adresleri atanır. 
 
-Gerekli olan IP adreslerinin toplam sayısı, önbelleğinizi oluşturan düğüm sayısına bağlıdır. 
+Gereken toplam IP adresi sayısı, önbelleğinizi oluşturan düğüm sayısına bağlıdır. 
 
-Düğümler yüklendikten sonra Denetim Masası yazılımını kullanarak IP adresi aralığını yapılandırın. Daha fazla bilgi edinmek için, [küme için bilgi toplama bilgilerini](fxt-cluster-create.md#gather-information-for-the-cluster)okuyun.  
+Düğümler yüklendikten sonra Kontrol Masası yazılımını kullanarak IP adres aralığını yapılandırın. Daha fazla bilgi edinmek [için küme için bilgi topla'yı](fxt-cluster-create.md#gather-information-for-the-cluster)okuyun.  
 
-## <a name="connect-power-cables"></a>Güç kablolarını bağlama
+## <a name="connect-power-cables"></a>Güç kablolarını bağlayın
 
-Her Azure FXT Edge Filer düğümü iki güç kaynağı birimi (PSUs) kullanır. 
+Her Azure FXT Edge Filer düğümü iki güç kaynağı birimi (PSU) kullanır. 
 
 > [!TIP] 
-> İki yedekli PSUs avantajlarından yararlanmak için, her AC güç kablosunu bağımsız bir dal devresine bir güç dağıtım birimine (PDU) ekleyin.  
+> İki gereksiz PSU'dan yararlanmak için, her AC güç kablosunu bağımsız bir dal devresi üzerindeki bir güç dağıtım ünitesine (PDU) takın.  
 > 
-> Ek koruma için PTE 'leri desteklemek üzere bir UPS kullanabilirsiniz. 
+> Ekstra koruma için PSU'lara güç sağlamak için bir UPS kullanabilirsiniz. 
 
-1. Dahil edilen güç bağıntılarını kasadaki PSUs 'e bağlayın. Eş ve PSUs 'lerin tam olarak yerleştirildiğinden emin olun. 
-1. Güç gücünü ekipman rafından güç dağıtım birimlerine ekleyin. Mümkünse, iki eş dizin için iki ayrı güç kaynağı kullanın. 
+1. Kasadaki PSU'lara dahil güç kablolarını bağlayın. Kabloların ve PSU'ların tamamen oturduğundan emin olun. 
+1. Güç kablolarını ekipman rafındaki güç dağıtım ünitelerine takın. Mümkünse, iki kablo için iki ayrı güç kaynağı kullanın. 
  
-### <a name="power-on-an-azure-fxt-edge-filer-node"></a>Azure FXT Edge Filer düğümünü açma
+### <a name="power-on-an-azure-fxt-edge-filer-node"></a>Azure FXT Kenar Filer düğümünde güç
 
-Düğümü açmak için sistemin önündeki güç düğmesine basın. Düğme, sağ taraftaki denetim masasından yapılır. 
+Düğümü açmak için sistemin önündeki güç düğmesine basın. Düğme sağ taraftaki kontrol panelinde. 
 
-### <a name="power-off-an-azure-fxt-edge-filer-node"></a>Azure FXT Edge Filer düğümünü kapatma
+### <a name="power-off-an-azure-fxt-edge-filer-node"></a>Azure FXT Edge Filer düğümükapalı güç
 
-Güç düğmesi, test sırasında ve bir kümeye eklenmeden önce sistemi kapatmak için kullanılabilir. Ancak, bir Azure FXT Edge Filer düğümü bir kümenin parçası olarak kullanıldıktan sonra, donanımı kapatmak için küme Denetim Masası yazılımını kullanmanız gerekir. Ayrıntılar için [Azure FXT Edge Filer donanımını güvenli bir şekilde kapatma hakkında](fxt-power-off.md) bilgi edinin. 
+Güç düğmesi, test sırasında ve kümeye eklemeden önce sistemi kapatmak için kullanılabilir. Ancak, bir Azure FXT Kenar Filer düğümü kümenin bir parçası olarak kullanımda kaldıktan sonra, donanımı kapatmak için küme denetim paneli yazılımını kullanmanız gerekir. Ayrıntılar [için Azure FXT Edge Filer donanımı](fxt-power-off.md) güvenli bir şekilde nasıl kapatabilirsiniz'ı okuyun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Donanımı kablolama işini tamamladıktan sonra düğümlerin her birinde güç yapın ve kök parolalarını ayarlayarak onları başlatın. 
+Donanımı kablolamayı bitirdikten sonra, düğümlerin her birinde güç ve kök parolalarını ayarlayarak onları başlatma. 
 > [!div class="nextstepaction"]
-> [Başlangıç parolalarını ayarla](fxt-node-password.md)
+> [İlk parolaları ayarlama](fxt-node-password.md)

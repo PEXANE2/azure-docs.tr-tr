@@ -1,28 +1,28 @@
 ---
 title: 'Öğretici: Azure Cosmos DB için veritabanı geçiş aracı'
-description: 'Öğretici: MongoDB, SQL Server, tablo depolama, Amazon DynamoDB, CSV ve JSON dosyaları gibi çeşitli kaynaklardan Azure Cosmos DB verileri içeri aktarmak için açık kaynaklı Azure Cosmos DB veri geçiş araçlarını nasıl kullanacağınızı öğrenin. CSV’yi JSON’a dönüştürme.'
+description: "Öğretici: MongoDB, SQL Server, Tablo depolama, Amazon DinamoDB, CSV ve JSON dosyaları gibi çeşitli kaynaklardan Azure Cosmos DB'ye veri almak için açık kaynak Azure Cosmos DB veri geçiş araçlarını nasıl kullanacağınızı öğrenin. CSV’yi JSON’a dönüştürme."
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238695"
 ---
-# <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Öğretici: verilerinizi Azure Cosmos DB geçirmek için veri geçiş aracını kullanma
+# <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Öğretici: Verilerinizi Azure Cosmos DB'ye geçirmek için Veri geçiş aracını kullanın
 
 Bu öğreticide, çeşitli kaynaklardan Azure Cosmos kapsayıcılarına ve tablolarına verileri içeri aktarabilen Azure Cosmos DB Veri Geçişi aracının kullanımına ilişkin yönergeler sağlanmaktadır. JSON dosyalarından, CSV dosyalarından, SQL, MongoDB, Azure Tablo depolamadan, Amazon DynamoDB ve hatta Azure Cosmos DB SQL API koleksiyonlarından içeri aktarma işlemi yapabilirsiniz. Bu verileri, Azure Cosmos DB ile birlikte kullanmak için koleksiyonlara ve tablolara geçirirsiniz. Veri Geçişi aracı, tek bir bölüm koleksiyonundan SQL API’si için çok bölümlü bir koleksiyona geçirme işlemi sırasında da kullanılabilir.
 
 Azure Cosmos DB ile hangi API’yi kullanacaksınız?
 
-* **[SQL API’si](documentdb-introduction.md)** : Verileri içeri aktarmak için Veri Geçişi aracında sağlanan kaynak seçeneklerinin herhangi birini kullanabilirsiniz.
-* **[Tablo API’si](table-introduction.md)** : Verileri içeri aktarmak için Veri Geçişi aracını veya AzCopy’yi kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si ile kullanılmak üzere verileri içeri aktarma](table-import.md).
-* **[MongoDB IÇIN apı Azure Cosmos DB](mongodb-introduction.md)** -veri geçiş aracı şu anda mongodb için Azure Cosmos DB API 'sini kaynak veya hedef olarak desteklememektedir. Azure Cosmos DB içindeki koleksiyonların içindeki veya olmayan verileri geçirmek istiyorsanız, yönergeler için [MongoDB verilerini MongoDB için Azure Cosmos DB API 'Siyle nasıl geçirebileceğiniz](mongodb-migrate.md) konusuna bakın. SQL API’si ile kullanılmak üzere MongoDB’den Azure Cosmos DB SQL API koleksiyonlarına verileri dışarı aktarmak için Veri Geçişi aracını kullanmaya devam edebilirsiniz.
-* **[GREMLIN API](graph-introduction.md)** -veri geçiş aracı şu anda Gremlin API hesapları için desteklenen bir içeri aktarma aracı değil.
+* **[SQL API’si](documentdb-introduction.md)**: Verileri içeri aktarmak için Veri Geçişi aracında sağlanan kaynak seçeneklerinin herhangi birini kullanabilirsiniz.
+* **[Tablo API’si](table-introduction.md)**: Verileri içeri aktarmak için Veri Geçişi aracını veya AzCopy’yi kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si ile kullanılmak üzere verileri içeri aktarma](table-import.md).
+* **[Azure Cosmos DB'nin MongoDB için API'si](mongodb-introduction.md)** - Veri Geçişi aracı şu anda Azure Cosmos DB'nin MongoDB için API'sini kaynak olarak veya hedef olarak desteklemiyor. Verileri Azure Cosmos DB'deki koleksiyonlara veya bunların dışına geçirmek istiyorsanız, [mongodb verilerini bir Cosmos veritabanına nasıl geçirilir, Azure Cosmos DB'nin MongoDB için api'sini](mongodb-migrate.md) talimatlar için aktarın. SQL API’si ile kullanılmak üzere MongoDB’den Azure Cosmos DB SQL API koleksiyonlarına verileri dışarı aktarmak için Veri Geçişi aracını kullanmaya devam edebilirsiniz.
+* **[Gremlin API](graph-introduction.md)** - Veri Aktarım aracı şu anda Gremlin API hesapları için desteklenen bir alma aracı değildir.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -31,17 +31,17 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Farklı veri kaynaklarından verileri içeri aktarma
 > * Azure Cosmos DB’den JSON’a dışarı aktarma
 
-## <a id="Prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a><a id="Prerequisites"></a>Ön koşullar
 
-Bu makaledeki yönergeleri izlemeden önce aşağıdakileri yaptığınızdan emin olun:
+Bu makaledeki yönergeleri izleyerek önce aşağıdaki adımları yaptığınızdan emin olun:
 
-* [Microsoft .NET Framework 4,51](https://www.microsoft.com/download/developer-tools.aspx) veya üstünü yükler.
+* [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) veya üzeri **yükleyin.**
 
-* **Aktarım hızını artırma:** Veri geçişinizin süresi, tek bir koleksiyon veya bir koleksiyon kümesi için ayarladığınız aktarım hızı miktarına bağlıdır. Büyük veri geçişleri için aktarım hızını artırdığınızdan emin olun. Geçişi tamamladıktan sonra maliyet tasarrufu sağlamak için aktarım hızını azaltın. Azure portal aktarım hızını artırma hakkında daha fazla bilgi için, bkz. Azure Cosmos DB [performans düzeyleri](performance-levels.md) ve [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/cosmos-db/) .
+* **İş artış:** Veri geçişinizin süresi, tek bir koleksiyon veya bir koleksiyon kümesi için ayarladığınız iş miktarına bağlıdır. Büyük veri geçişleri için aktarım hızını artırdığınızdan emin olun. Geçişi tamamladıktan sonra maliyet tasarrufu sağlamak için aktarım hızını azaltın. Azure portalında iş ortasını artırma hakkında daha fazla bilgi için Azure Cosmos DB'deki [performans düzeyleri](performance-levels.md) ve [fiyatlandırma katmanlarına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
 
-* **Azure Cosmos DB kaynaklarını oluşturma:** Veri geçişini başlatmadan önce Azure portaldan tüm koleksiyonlarınızı oluşturun. Veritabanı düzeyinde aktarım hızı olan bir Azure Cosmos DB hesabına geçiş yapmak için, Azure Cosmos kapsayıcıları oluştururken bir bölüm anahtarı sağlayın.
+* **Azure Cosmos DB kaynaklarını oluşturma:** Veri geçişini başlatmadan önce Azure portaldan tüm koleksiyonlarınızı oluşturun. Veritabanı düzeyinde iş düzeyi verime sahip bir Azure Cosmos DB hesabına geçiş yapmak için, Azure Cosmos kapsayıcılarını oluştururken bir bölüm anahtarı sağlayın.
 
-## <a id="Overviewl"></a>Genel Bakış
+## <a name="overview"></a><a id="Overviewl"></a>Genel Bakış
 
 Veri Geçişi aracı, aşağıda örnekleri verilen çeşitli kaynaklardan Azure Cosmos DB’ye veri içeri aktaran bir açık kaynak çözümüdür:
 
@@ -54,9 +54,9 @@ Veri Geçişi aracı, aşağıda örnekleri verilen çeşitli kaynaklardan Azure
 * HBase
 * Azure Cosmos kapsayıcıları
 
-İçeri aktarma aracı bir grafiksel kullanıcı arabirimi (dtui.exe) içerse de, komut satırından (dt.exe) da tetiklenebilir. Aslında, bir içeri aktarma kullanıcı Arabirimi aracılığıyla kurduktan sonra ilişkili komut çıktısı için bir seçenek yoktur. İçeri aktarma sırasında hiyerarşik ilişkileri (alt) oluşturmak için SQL Server veya CSV dosyaları gibi tablo kaynak verileri dönüştürebilirsiniz. Kaynak seçenekleri, her bir kaynaktan içeri aktarma için örnek komutlar, hedef seçenekler ve içeri aktarma sonuçlarını görüntüleme hakkında daha fazla bilgi edinmek için devamını okuyun.
+İçeri aktarma aracı bir grafiksel kullanıcı arabirimi (dtui.exe) içerse de, komut satırından (dt.exe) da tetiklenebilir. Aslında, UI üzerinden bir alma ayarladıktan sonra ilişkili komutu çıktı seçeneği vardır. Alma sırasında hiyerarşik ilişkiler (alt belgeler) oluşturmak için SQL Server veya CSV dosyaları gibi tabular kaynak verilerini dönüştürebilirsiniz. Kaynak seçenekleri, her bir kaynaktan içeri aktarma için örnek komutlar, hedef seçenekler ve içeri aktarma sonuçlarını görüntüleme hakkında daha fazla bilgi edinmek için devamını okuyun.
 
-## <a id="Install"></a>Yükleme
+## <a name="installation"></a><a id="Install"></a>Yükleme
 
 Geçiş aracı kaynak koduna GitHub’da [bu depodan](https://github.com/azure/azure-documentdb-datamigrationtool) erişilebilir. Çözümü yerel olarak indirip derleyebilir veya [önceden derlenmiş bir ikiliyi indirip](https://aka.ms/csdmtool) daha sonra aşağıdakilerden birini çalıştırabilirsiniz:
 
@@ -72,7 +72,7 @@ Aracı yükledikten sonra verilerinizin içeri aktarılmasına sıra gelir. Ne t
 * [MongoDB Dışarı aktarma dosyaları](#MongoDBExport)
 * [SQL Server](#SQL)
 * [CSV dosyaları](#CSV)
-* [Azure Tablo Depolama](#AzureTableSource)
+* [Azure Tablo depolama](#AzureTableSource)
 * [Amazon DynamoDB](#DynamoDBSource)
 * [Blob](#BlobImport)
 * [Azure Cosmos kapsayıcıları](#SQLSource)
@@ -80,9 +80,9 @@ Aracı yükledikten sonra verilerinizin içeri aktarılmasına sıra gelir. Ne t
 * [Azure Cosmos DB toplu içeri aktarma](#SQLBulkTarget)
 * [Azure Cosmos DB sıralı kayıt içeri aktarma](#SQLSeqTarget)
 
-## <a id="JSON"></a>JSON dosyalarını içeri aktarma
+## <a name="import-json-files"></a><a id="JSON"></a>JSON dosyalarını içeri aktarma
 
-JSON dosyası kaynak alma seçeneği alma bir veya daha fazla tek belge JSON dosyaları veya her bir dizi JSON belgeleri olan JSON dosyaları sağlar. JSON dosyalarını içeri aktarmak için klasör eklerken, yinelemeli olarak alt klasörlerdeki dosyaları aranıyor seçeneğiniz vardır.
+JSON dosya kaynağı içe aktarma seçeneği, her biri JSON belgeleri bir dizi var bir veya daha fazla tek belge JSON dosyaları veya JSON dosyaları içe aktarmanızı sağlar. Altabilmek için JSON dosyaları olan klasörler eklerken, alt klasörlerdeki dosyaları özyinelemeli olarak arama seçeneğiniz vardır.
 
 ![JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları](./media/import-data/jsonsource.png)
 
@@ -90,14 +90,14 @@ Bağlantı dizesi aşağıdaki biçimdedir:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
-* `<CosmosDB Endpoint>` uç nokta URI 'sidir. Bu değeri Azure portal alabilir. Azure Cosmos hesabınıza gidin. **Genel bakış** bölmesini açın ve **URI** değerini kopyalayın.
-* `<AccountKey>`, "parola" veya **BIRINCIL anahtardır**. Bu değeri Azure portal alabilir. Azure Cosmos hesabınıza gidin. **Bağlantı dizelerini** veya **anahtarlar** bölmesini açın ve "parola" veya **birincil anahtar** değerini kopyalayın.
-* `<CosmosDB Database>` CosmosDB veritabanı adıdır.
+* Son `<CosmosDB Endpoint>` nokta URI. Bu değeri Azure portalından alabilirsiniz. Azure Cosmos hesabınıza gidin. Genel **Bakış** bölmesini açın ve **URI** değerini kopyalayın.
+* "Parola" `<AccountKey>` veya **BIRINCIL ANAHTAR.** Bu değeri Azure portalından alabilirsiniz. Azure Cosmos hesabınıza gidin. Bağlantı **Dizeleri** veya **Keys** bölmesini açın ve "Parola" veya **PRIMARY KEY** değerini kopyalayın.
+* `<CosmosDB Database>` CosmosDB veritabanı adı.
 
 Örnek: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
 
 > [!NOTE]
-> Bağlantı dizesi alanında belirtilen Cosmos DB hesabına erişilebildiğinden emin olmak için Doğrula komutunu kullanın.
+> Bağlantı dizesi alanında belirtilen Cosmos DB hesabına erişilebilmesini sağlamak için Doğrula komutunu kullanın.
 
 Aşağıda, JSON dosyalarını içeri aktarmak için bazı komut satırı örnekleri verilmiştir:
 
@@ -118,12 +118,12 @@ dt.exe /s:JsonFile /s.Files:C:\Tweets\*.*;C:\LargeDocs\**\*.*;C:\TESessions\Sess
 dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 ```
 
-## <a id="MongoDB"></a>MongoDB’den içeri aktarma
+## <a name="import-from-mongodb"></a><a id="MongoDB"></a>MongoDB’den içeri aktarma
 
 > [!IMPORTANT]
-> MongoDB için Azure Cosmos DB API 'SI ile yapılandırılmış bir Cosmos hesabına aktarıyorsanız, bu [yönergeleri](mongodb-migrate.md)izleyin.
+> Azure Cosmos DB'nin MongoDB api'si ile yapılandırılan bir Cosmos hesabına aktarıyorsanız, aşağıdaki [yönergeleri](mongodb-migrate.md)izleyin.
 
-MongoDB kaynak alma seçeneği ile tek bir MongoDB koleksiyonundan içeri aktarma, isteğe bağlı olarak bir sorgu kullanarak belgeleri filtreler ve belge yapısı bir yansıtma kullanarak değiştirin.  
+MongoDB kaynak içe aktarma seçeneği ile tek bir MongoDB koleksiyonundan içe aktarabilir, sorgukullanarak belgeleri isteğe bağlı olarak filtreleyebilir ve bir projeksiyon kullanarak belge yapısını değiştirebilirsiniz.  
 
 ![MongoDB kaynağı seçeneklerinin ekran görüntüsü](./media/import-data/mongodbsource.png)
 
@@ -134,7 +134,7 @@ Bağlantı dizesi, standart MongoDB biçimindedir:
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen MongoDB örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-İçinden verilerin içeri aktarılacağı koleksiyonun adını girin. İsteğe bağlı olarak, `{pop: {$gt:5000}}`gibi bir sorgu için bir dosya veya `{loc:0}`gibi bir yansıtma ya da içeri aktardığınız verileri filtrelemek ve şekillendirmek için bir dosya belirtebilirsiniz.
+İçinden verilerin içeri aktarılacağı koleksiyonun adını girin. Aktarım yaptığınız verileri hem filtrelemek hem de `{pop: {$gt:5000}}`şekillendirmek için isteğe bağlı olarak bir sorgu veya projeksiyon gibi `{loc:0}`bir dosya belirtebilir veya sağlayabilirsiniz.
 
 Aşağıda, MongoDB’den içeri aktarılacak bazı komut satırı örnekleri verilmiştir:
 
@@ -146,16 +146,16 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 ```
 
-## <a id="MongoDBExport"></a>MongoDB dışarı aktarma dosyalarını içeri aktarma
+## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>MongoDB dışarı aktarma dosyalarını içeri aktarma
 
 > [!IMPORTANT]
-> MongoDB desteğiyle Azure Cosmos DB bir hesaba aktarıyorsanız, bu [yönergeleri](mongodb-migrate.md)izleyin.
+> MongoDB desteğiyle bir Azure Cosmos DB hesabına aktarıyorsanız, aşağıdaki [yönergeleri](mongodb-migrate.md)izleyin.
 
 MongoDB dışarı aktarma JSON dosyası kaynak içeri aktarıcı seçeneği, mongoexport yardımcı programından üretilen bir veya daha fazla JSON dosyasını içeri aktarmanıza olanak sağlar.  
 
 ![MongoDB dışarı aktarma kaynağı seçeneklerinin ekran görüntüsü](./media/import-data/mongodbexportsource.png)
 
-MongoDB dışarı aktarma JSON dosyaları içeri aktarma için klasör eklerken, yinelemeli olarak alt klasörlerdeki dosyaları aranıyor seçeneğiniz vardır.
+Alma için MongoDB dışa aktarma JSON dosyaları olan klasörler eklerken, alt klasörlerdeki dosyaları özyinelemeli olarak arama seçeneğiniz vardır.
 
 Aşağıda, MongoDB dışarı aktarma JSON dosyalarından içeri aktarma işlemi yapmak için bir komut satırı örneği verilmiştir:
 
@@ -163,7 +163,7 @@ Aşağıda, MongoDB dışarı aktarma JSON dosyalarından içeri aktarma işlemi
 dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionThroughput:2500
 ```
 
-## <a id="SQL"></a>SQL Server’dan içeri aktarma
+## <a name="import-from-sql-server"></a><a id="SQL"></a>SQL Server’dan içeri aktarma
 
 SQL kaynak içeri aktarıcı seçeneği, tek bir SQL Server veritabanından içeri aktarma işlemi yapmanıza ve isteğe bağlı şekilde bir sorgu kullanarak içeri aktarılacak kayıtları filtrelemenize olanak sağlar. Ayrıca bir iç içe geçirme ayırıcısı belirterek de belge yapısını değiştirebilirsiniz (kısa bir süre sonra bununla ilgili daha fazla bilgi verilecektir).  
 
@@ -196,9 +196,9 @@ dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=Adventur
 dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionThroughput:2500
 ```
 
-## <a id="CSV"></a>CSV dosyalarını içeri aktarma ve CSV’yi JSON’a dönüştürme
+## <a name="import-csv-files-and-convert-csv-to-json"></a><a id="CSV"></a>CSV dosyalarını içeri aktarma ve CSV’yi JSON’a dönüştürme
 
-CSV dosyası kaynak içeri aktarıcı seçeneği, bir veya daha fazla CSV dosyasını içeri aktarmanıza olanak sağlar. CSV dosyaları içeri aktarma için klasör eklerken, yinelemeli olarak alt klasörlerdeki dosyaları aranıyor seçeneğiniz vardır.
+CSV dosyası kaynak içeri aktarıcı seçeneği, bir veya daha fazla CSV dosyasını içeri aktarmanıza olanak sağlar. Aksama için CSV dosyaları olan klasörler eklerken, alt klasörlerdeki dosyaları özyinelemeli olarak arama seçeneğiniz vardır.
 
 ![CSV kaynak seçeneklerinin ekran görüntüsü: CSV’den JSON’a](media/import-data/csvsource.png)
 
@@ -208,9 +208,9 @@ SQL kaynağına benzer şekilde, içeri aktarma sırasında hiyerarşik ilişkil
 
 DomainInfo.Domain_Name ve RedirectInfo.Redirecting gibi diğer adlara dikkat edin. İç içe geçirme ayırıcısı olarak '.' öğesi belirtildiğinde içeri aktarma aracı içeri aktarma sırasında DomainInfo ve RedirectInfo alt belgelerini oluşturur. Aşağıda, Azure Cosmos DB’de elde edilen bir belge örneği verilmiştir:
 
-*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV"}, "Federal kurum": "Birleşik Devletler Yönetim Konferansı", "Redirectınfo": {"yeniden yönlendirme": "0", "Redirect_Destination": ""}, "kimlik": "9cc565c5-EBCD-1c03-ebd3-cc3e2ecd814d"}*
+*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV" }, "Federal Ajans": "Amerika Birleşik Devletleri İdari Konferansı", "Yönlendirme": { "Yönlendirme": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814" }*
 
-İçeri aktarma Aracı (tırnak içine alınmış değerler her zaman dize olarak kabul edilir), tırnak işareti olmayan değerleri CSV dosyaları için tür bilgilerini çıkarmasına dener.  Türler şu sırayla tanımlanır: sayı, tarih saat, boole.  
+Alma aracı, CSV dosyalarında tırnak içinde verilmemiş değerler için tür bilgilerini çıkartmaya çalışır (teklif edilen değerler her zaman dizeleri olarak kabul edilir).  Türler şu sırayla tanımlanır: sayı, tarih saat, boole.  
 
 CSV içeri aktarımı ile ilgili dikkat edilecek iki şey daha vardır:
 
@@ -223,11 +223,11 @@ Aşağıda, CSV içeri aktarımı için bir komut satırı örneği verilmiştir
 dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
 ```
 
-## <a id="AzureTableSource"></a>Azure Tablo depolamadan içeri aktarma
+## <a name="import-from-azure-table-storage"></a><a id="AzureTableSource"></a>Azure Tablo depolamadan içeri aktarma
 
 Azure Tablo depolama kaynak içeri aktarıcı seçeneği, tek bir Azure Tablo depolama tablosundan içeri aktarma işlemi yapmanıza olanak sağlar. İsteğe bağlı olarak, içeri aktarılacak tablo varlıklarını filtreleyebilirsiniz.
 
-Azure tablo Depolama'dan Azure Cosmos DB tabloları ve varlıkları tablo API'si ile kullanmak için içeri aktarılan veri çıkış. İçeri aktarılan veriler ayrıca koleksiyonları ve belgeleri SQL API ile kullanılmak için çıkış olabilir. Ancak, tablo API'si yalnızca komut satırı yardımcı programı hedef olarak kullanılabilir. Veri Geçiş Aracı kullanıcı arabirimini kullanarak tablo API'sine dışarı aktaramazsınız. Daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si ile kullanılmak üzere verileri içeri aktarma](table-import.md).
+Azure Tablo Depolama'ndan Azure Cosmos DB tablolarına ve tablo API'si ile kullanılmak üzere varlıklara aktarılan verileri çıktı nız olabilir. Alınan veriler, SQL API ile kullanılmak üzere koleksiyonlara ve belgelere de çıktı olabilir. Ancak, Tablo API yalnızca komut satırı yardımcı olduğunda hedef olarak kullanılabilir. Veri Geçişi aracı kullanıcı arabirimini kullanarak Tablo API'sine dışa aktaramazsınız. Daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si ile kullanılmak üzere verileri içeri aktarma](table-import.md).
 
 ![Azure Tablo depolama kaynağı seçeneklerinin ekran görüntüsü](./media/import-data/azuretablesource.png)
 
@@ -247,7 +247,7 @@ Azure Tablo depolama kaynağı içeri aktarıcı seçeneği aşağıdaki ek seç
    2. Hiçbiri: Tüm iç alanları dışla
    3. RowKey: Yalnızca RowKey alanını dahil et
 2. Sütun Seç
-   1. Azure tablo depolama filtreleri projeksiyonlar desteklemez. Yalnızca belirli Azure Tablo varlığı özelliklerini içeri aktarmak istiyorsanız bunları Sütun Seç listesine ekleyin. Diğer tüm varlık özellikleri yoksayılır.
+   1. Azure Tablo depolama filtreleri projeksiyonları desteklemez. Yalnızca belirli Azure Tablo varlığı özelliklerini içeri aktarmak istiyorsanız bunları Sütun Seç listesine ekleyin. Diğer tüm varlık özellikleri yoksayılır.
 
 Aşağıda, Azure Tablo depolamadan içeri aktarılacak bir komut satırı örneği verilmiştir:
 
@@ -255,9 +255,9 @@ Aşağıda, Azure Tablo depolamadan içeri aktarılacak bir komut satırı örne
 dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:metrics /t.CollectionThroughput:2500
 ```
 
-## <a id="DynamoDBSource"></a>Amazon DynamoDB’den içeri aktarma
+## <a name="import-from-amazon-dynamodb"></a><a id="DynamoDBSource"></a>Amazon DynamoDB’den içeri aktarma
 
-Amazon DynamoDB kaynak alma seçeneği, tek bir Amazon DynamoDB tablodan içeri aktarmanıza olanak sağlar. İsteğe bağlı olarak içeri aktarılacak varlıkları filtre uygulayabilirsiniz. İçeri aktarımın mümkün olduğunca kolay şekilde ayarlanması için birçok şablon sağlanır.
+Amazon DinamoDB kaynak ithalatçı seçeneği tek bir Amazon DinamoDB tablodan ithal etmenizi sağlar. İsteğe bağlı olarak alınacak varlıkları filtreleyebilir. İçeri aktarımın mümkün olduğunca kolay şekilde ayarlanması için birçok şablon sağlanır.
 
 ![Amazon DynamoDB kaynağı seçeneklerinin ekran görüntüsü: veritabanı geçişi araçları](./media/import-data/dynamodbsource1.png)
 
@@ -276,7 +276,7 @@ Aşağıda, Amazon DynamoDB’den içeri aktarım için bir komut satırı örne
 dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<Azure Cosmos DB Endpoint>;AccountKey=<Azure Cosmos DB Key>;Database=<Azure Cosmos database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 ```
 
-## <a id="BlobImport"></a>Azure Blob depolama alanından içeri aktarma
+## <a name="import-from-azure-blob-storage"></a><a id="BlobImport"></a>Azure Blob depolama alanından içeri aktarma
 
 JSON dosyası, MongoDB dışarı aktarma dosyası ve CSV dosyası kaynak içeri aktarıcı seçenekleri, Azure Blob depolama alanından bir veya daha fazla dosyayı içeri aktarmanıza olanak sağlar. Bir Blob kapsayıcı URL’si ve Hesap Anahtarı belirttikten sonra, içeri aktarılacak dosyaları seçmek için bir normal ifade sağlayın.
 
@@ -288,9 +288,9 @@ Aşağıda, Azure Blob depolama alanından JSON dosyalarını içeri aktarmak i�
 dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 ```
 
-## <a id="SQLSource"></a>SQL API koleksiyonundan içeri aktarma
+## <a name="import-from-a-sql-api-collection"></a><a id="SQLSource"></a>SQL API koleksiyonundan içeri aktarma
 
-Azure Cosmos DB kaynak içeri aktarma seçeneği, bir veya daha fazla Azure Cosmos kapsayıcılarından verileri içeri aktarmanıza ve isteğe bağlı olarak belgeleri bir sorgu kullanarak filtrelemenize olanak tanır.  
+Azure Cosmos DB kaynak içe aktarıcı seçeneği, bir veya daha fazla Azure Cosmos kapsayıcısından veri almanızı ve isteğe bağlı olarak bir sorgu kullanarak belgeleri filtrelemenize olanak tanır.  
 
 ![Azure Cosmos DB kaynağı seçeneklerinin ekran görüntüsü](./media/import-data/documentdbsource.png)
 
@@ -298,17 +298,17 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-[Azure Cosmos DB hesabı yönetme](manage-account.md)bölümünde açıklandığı gibi, Azure Portal anahtarlar sayfasından Azure Cosmos DB hesabı bağlantı dizesini alabilirsiniz. Ancak, veritabanı adını şu biçimde bağlantı dizesine eklenmesi gerekir:
+Azure Cosmos DB [hesabının nasıl yönetilir'de](manage-account.md)açıklandığı gibi Azure portalının Keys sayfasından Azure Cosmos DB hesap bağlantı dizesini alabilirsiniz. Ancak, veritabanının adının aşağıdaki biçimde bağlantı dizesine ekilmesi gerekir:
 
 `Database=<CosmosDB Database>;`
 
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen Azure Cosmos DB örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-Tek bir Azure Cosmos kapsayıcısından içeri aktarmak için, verilerin içeri aktarılacağı koleksiyonun adını girin. Birden fazla Azure Cosmos kapsayıcısından içeri aktarmak için bir veya daha fazla koleksiyon adıyla eşleşecek bir normal ifade sağlayın (örneğin, collection01 | collection02 | collection03). İsteğe bağlı olarak belirtin veya bir sorgu hem filter hem de aldığınız veri şekli için için bir dosya sağlayın.
+Tek bir Azure Cosmos kapsayıcısından içe aktarım yapmak için, verileri almak için koleksiyonun adını girin. Birden fazla Azure Cosmos kapsayıcısından içe aktarmak için, bir veya daha fazla koleksiyon adıyla eşleşen normal bir ifade sağlayın (örneğin, collection01 | collection02 | collection03). İsteğe bağlı olarak, içe aktardığınız verileri hem filtrelemek hem de şekillendirmek için bir sorgu belirtebilir veya bunun için bir dosya sağlayabilirsiniz.
 
 > [!NOTE]
-> Normal ifade karakterleri adı olan tek bir koleksiyondan alıyorsanız normal ifadeler, koleksiyon alanın kabul olduğundan, bu karakterler uygun şekilde kaçınılmalıdır.
+> Toplama alanı düzenli ifadeleri kabul ettiği için, adı normal ifade karakterleri olan tek bir koleksiyondan içe aktarıyorsanız, bu karakterler buna göre kaçılmalıdır.
 
 Azure Cosmos DB kaynağı içeri aktarıcı seçeneği aşağıdaki gelişmiş seçenekleri içerir:
 
@@ -338,7 +338,7 @@ dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;Ac
 > [!TIP]
 > Azure Cosmos DB Veri İçeri Aktarma Aracı, [Azure Cosmos DB Öykünücüsü](local-emulator.md)’nden verilerin içeri aktarımını da destekler. Yerel bir öykünücüden verilerini içeri aktarırken uç noktayı `https://localhost:<port>` olarak ayarlayın.
 
-## <a id="HBaseSource"></a>HBase’den içeri aktarma
+## <a name="import-from-hbase"></a><a id="HBaseSource"></a>HBase’den içeri aktarma
 
 HBase kaynak içeri aktarıcı seçeneği, bir HBase tablosundan verileri içeri aktarmanıza ve isteğe bağlı olarak verileri filtrelemenize olanak sağlar. İçeri aktarımın mümkün olduğunca kolay şekilde ayarlanması için birçok şablon sağlanır.
 
@@ -359,9 +359,9 @@ Aşağıda, HBase’den içeri aktarım için bir komut satırı örneği verilm
 dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:hbaseimport
 ```
 
-## <a id="SQLBulkTarget"></a>SQL API’sine içeri aktarma (Toplu İçeri Aktarma)
+## <a name="import-to-the-sql-api-bulk-import"></a><a id="SQLBulkTarget"></a>SQL API’sine içeri aktarma (Toplu İçeri Aktarma)
 
-Azure Cosmos DB Toplu içeri aktarıcı, verimlilik için bir Azure Cosmos DB saklı yordamını kullanarak kullanılabilir kaynak seçeneklerden herhangi birinden içeri aktarma işlemi yapmanıza olanak sağlar. Araç, tek bölümlenmiş bir Azure Cosmos kapsayıcısına içeri aktarmayı destekler. Ayrıca, verilerin birden fazla tek bölümlenmiş Azure Cosmos kapsayıcısına bölünmesinin parçalı içeri aktarmayı da destekler. Verileri bölümleme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB'de bölümleme ve ölçeklendirme](partition-data.md). Araç, saklı yordam oluşturur, yürütür ve sonra hedef koleksiyonlardan saklı yordamı siler.  
+Azure Cosmos DB Toplu içeri aktarıcı, verimlilik için bir Azure Cosmos DB saklı yordamını kullanarak kullanılabilir kaynak seçeneklerden herhangi birinden içeri aktarma işlemi yapmanıza olanak sağlar. Araç, tek bölümlü bir Azure Cosmos kapsayıcısına içe aktarmayı destekler. Ayrıca, verilerin birden fazla tek bölümlü Azure Cosmos kapsayıcısına bölünmesi yle, parçalanmış içe aktarmayı da destekler. Verileri bölümleme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB'de bölümleme ve ölçeklendirme](partition-data.md). Araç, saklı yordam oluşturur, yürütür ve sonra hedef koleksiyonlardan saklı yordamı siler.  
 
 ![Azure Cosmos DB toplu seçeneklerinin ekran görüntüsü](./media/import-data/documentdbbulk.png)
 
@@ -376,7 +376,7 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen Azure Cosmos DB örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-Tek bir koleksiyona içeri aktarmak için, içinden verilerin içeri aktarılacağı koleksiyonun adını girin ve Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her bir koleksiyon adını tek tek girin veya birden fazla koleksiyon belirtmek için şu sözdizimini kullanın: *collection_prefix*[Dizin sonu dizinini Başlat]. Yukarıda sözü edilen söz dizimi kullanılarak birden fazla koleksiyon belirtirken, aşağıdaki yönergeleri göz önünde bulundurun:
+Tek bir koleksiyona içeri aktarmak için, içinden verilerin içeri aktarılacağı koleksiyonun adını girin ve Ekle düğmesine tıklayın. Birden fazla koleksiyona içe aktarmak için, her koleksiyon adını ayrı ayrı girin veya birden fazla koleksiyon belirtmek için aşağıdaki sözdizimini kullanın: *collection_prefix*[başlat dizini - bitiş dizini]. Yukarıda belirtilen sözdizimini kullanarak birden fazla koleksiyon belirtirken, aşağıdaki yönergeleri göz önünde bulundurun:
 
 1. Yalnızca tamsayı aralığı adı desenleri desteklenir. Örneğin, collection[0-3] belirtildiğinde şu koleksiyonlar oluşturulur: collection0, collection1, collection2, collection3.
 2. Kısaltılmış bir sözdizimi kullanabilirsiniz: collection[3], 1. adımda belirtilen aynı koleksiyon kümesini oluşturur.
@@ -385,11 +385,11 @@ Tek bir koleksiyona içeri aktarmak için, içinden verilerin içeri aktarılaca
 Koleksiyon adları belirtildikten sonra, koleksiyonların istediğiniz aktarım hızını seçin (400 RU - 10.000 RU). En iyi içeri aktarma performansı için daha yüksek bir aktarım hızı seçin. Performans düzeyleri hakkında daha fazla bilgi için bkz. [Azure Cosmos DB’de performans düzeyleri](performance-levels.md).
 
 > [!NOTE]
-> Performans aktarım hızı ayarı yalnızca koleksiyon oluşturma için geçerlidir. Belirtilen koleksiyon zaten varsa, aktarım hızı değişiklik olmaz.
+> Performans aktarım hızı ayarı yalnızca koleksiyon oluşturma için geçerlidir. Belirtilen koleksiyon zaten varsa, iş bilgililiği değiştirilmez.
 
-Birden fazla koleksiyona içeri aktardığınızda, içeri aktarma aracı karma tabanlı parçalama destekler. Bu senaryoda, bölüm anahtarı olarak kullanmak istediğiniz belge özelliği belirtin. (Bölüm anahtarı boş bırakılırsa rastgele hedef koleksiyonlarındaki parçalı belgelerdir.)
+Birden fazla koleksiyona içe aktardığınızda, alma aracı karma tabanlı parçalamayı destekler. Bu senaryoda, Bölüm Anahtarı olarak kullanmak istediğiniz belge özelliğini belirtin. (Partition Key boş bırakılırsa, belgeler hedef koleksiyonları arasında rasgele bölünür.)
 
-İsteğe bağlı olarak, içeri aktarma sırasında Azure Cosmos DB belge kimliği özelliği olarak içeri aktarma kaynaktaki hangi alanın kullanılması gerektiğini belirtebilirsiniz. Bu özellik belgeleri yoksa, içeri aktarma aracı kimliği özellik değeri bir GUID oluşturur.
+Alma işlemi sırasında Azure Cosmos DB belge kimliği özelliği olarak içe aktarma kaynağındaki hangi alanın kullanılması gerektiğini isteğe bağlı olarak belirtebilirsiniz. Belgelerbu özelliğe sahip değilse, alma aracı kimlik özelliği değeri olarak bir GUID oluşturur.
 
 İçeri aktarma sırasında kullanılabilen birçok gelişmiş seçenek vardır. İlk olarak, araç varsayılan bir toplu içeri aktarma saklı yordamı (BulkInsert.js) içerse de, kendi içeri aktarma saklı yordamınızı belirtmeyi seçebilirsiniz:
 
@@ -407,9 +407,9 @@ Azure Cosmos DB Toplu içeri aktarıcı aşağıdaki ek gelişmiş seçenekleri 
 
 1. Toplu İş Boyutu: Araç varsayılan olarak 50 toplu iş boyutunu belirler.  İçeri aktarılacak belgeler büyükse, toplu iş boyutunu küçültün. Aksine, içeri aktarılacak belgeler küçükse, toplu iş boyutunu büyütün.
 2. Maksimum Betik Boyutu (bayt): Araç varsayılan olarak 512 KB maksimum betik boyutunu belirler.
-3. Otomatik kimliği oluşturma devre dışı bırak: içeri aktarılacak her belgenin Kimliği alanı varsa, ardından bu seçeneğin belirlenmesi performansı artırabilirsiniz. Benzersiz bir kimliği alanı eksik belgeleri içe aktarılmaz.
-4. Güncelleştirme mevcut belgeler: varolan belgeleri Kimliğiyle çelişiyor değiştirerek değil aracı varsayılanlarını. Bu seçeneğin belirlenmesi, kimlikleriyle eşleşen ile varolan belgeleri üzerine yazmasını sağlar. Bu özellik, mevcut belgeleri güncelleştiren zamanlanmış veri geçişleri için yararlıdır.
-5. Hata durumunda yeniden deneme sayısı: genellikle geçici hatalar (örneğin, ağ bağlantı kesintisi) sırasında Azure Cosmos DB bağlantı yeniden deneme işlemleri belirtir.
+3. Otomatik Kimlik Oluşturmayı devre dışı: İçe aktarılacak her belgenin bir kimlik alanı varsa, bu seçeneği seçmek performansı artırabilir. Benzersiz bir kimlik alanı eksik belgeler içe aktarılmaz.
+4. Varolan Belgeleri Güncelleştirme: Araç, varolan belgeleri kimlik çakışmaları ile değiştirmeme varsayılandır. Bu seçeneğin seçilmesi, varolan belgelerin eşleşen t'lerle birlikte üzerine yazılmasına olanak tanır. Bu özellik, mevcut belgeleri güncelleştiren zamanlanmış veri geçişleri için yararlıdır.
+5. Hata da Yeniden Deneme Sayısı: Geçici hatalar sırasında Azure Cosmos DB bağlantısını ne sıklıkta yeniden deneyeceklerini belirtir (örneğin, ağ bağlantısı kesintisi).
 6. Yeniden Deneme Aralığı: Geçici hatalar (örneğin, ağ bağlantısı kesintisi) olması durumunda Azure Cosmos DB’ye yapılacak bağlantı yeniden denemeleri arasında beklenecek süreyi belirtir.
 7. Bağlantı Modu: Azure Cosmos DB ile kullanılacak bağlantı modunu belirtir. Kullanılabilir seçenekler, DirectTcp, DirectHttps ve Gateway seçenekleridir. Doğrudan bağlantı modları daha hızlıyken, ağ geçidi modu ise yalnızca 443 numaralı bağlantı noktasını kullandığından güvenlik duvarıyla daha kolay kullanılabilir.
 
@@ -418,9 +418,9 @@ Azure Cosmos DB Toplu içeri aktarıcı aşağıdaki ek gelişmiş seçenekleri 
 > [!TIP]
 > İçeri aktarma aracı, varsayılan olarak DirectTcp bağlantı moduna geçer. Güvenlik duvarıyla ilgili sorun yaşarsanız, Ağ Geçidi bağlantı moduna geçin; bu yalnızca 443 numaralı bağlantı noktasını gerektirir.
 
-## <a id="SQLSeqTarget"></a>SQL API’sine içeri aktarma (Sıralı Kayıt İçeri Aktarma)
+## <a name="import-to-the-sql-api-sequential-record-import"></a><a id="SQLSeqTarget"></a>SQL API’sine içeri aktarma (Sıralı Kayıt İçeri Aktarma)
 
-Azure Cosmos DB sıralı kaydı alma kayıt kayıt temelinde bir kullanılabilir kaynak seçeneğinden almanızı sağlar. Saklı yordam kotasına ulaşmış olan mevcut bir koleksiyona içeri aktarma işlemi yapıyorsanız bu seçeneği belirleyebilirsiniz. Araç tek bir (tek bölümlü ve çok bölgeli) Azure Cosmos kapsayıcısına aktarmayı destekler. Ayrıca, verilerin birden fazla tek bölümlü veya çok bölgeli Azure Cosmos kapsayıcısına bölümlenmesi halinde bulunan parçalı içeri aktarmayı destekler. Verileri bölümleme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB'de bölümleme ve ölçeklendirme](partition-data.md).
+Azure Cosmos DB sıralı kayıt içe aktarıcısı, kullanılabilir bir kaynak seçeneğinden kayıt bazında içe aktarmayapmanızı sağlar. Saklı yordam kotasına ulaşmış olan mevcut bir koleksiyona içeri aktarma işlemi yapıyorsanız bu seçeneği belirleyebilirsiniz. Araç, tek bir (tek bölümlü ve çok bölümlü) Azure Cosmos kapsayıcısına alma işlemi destekler. Ayrıca, verilerin birden fazla tek bölümlü veya çok bölümlü Azure Cosmos kapsayıcısına bölünmesi yle, parçalanmış içe aktarmayı da destekler. Verileri bölümleme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB'de bölümleme ve ölçeklendirme](partition-data.md).
 
 ![Azure Cosmos DB sıralı kayıt içeri aktarma seçeneklerinin ekran görüntüsü](./media/import-data/documentdbsequential.png)
 
@@ -428,14 +428,14 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-[Azure Cosmos DB hesabını yönetme](manage-account.md)bölümünde açıklandığı gibi, Azure Portal anahtarlar sayfasından Azure Cosmos DB hesabının bağlantı dizesini alabilirsiniz. Ancak, veritabanı adını şu biçimde bağlantı dizesine eklenmesi gerekir:
+Azure Cosmos DB hesabının bağlantı dizesini, [Azure Cosmos DB hesabının nasıl yönetilir'de](manage-account.md)açıklandığı gibi Azure portalının Anahtarlar sayfasından alabilirsiniz. Ancak, veritabanının adının aşağıdaki biçimde bağlantı dizesine ekilmesi gerekir:
 
 `Database=<Azure Cosmos database>;`
 
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen Azure Cosmos DB örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-Tek bir koleksiyonu içeri aktarmak için verileri içine aktarmak için koleksiyon adı girin ve ardından Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak üzere ayrı ayrı her bir koleksiyon adı girin. Ayrıca, birden fazla koleksiyon belirtmek için şu sözdizimini kullanabilirsiniz: *collection_prefix*[Dizin bitiş dizinini Başlat]. Yukarıda sözü edilen söz dizimi aracılığıyla birden fazla koleksiyon belirtirken, aşağıdaki yönergeleri göz önünde bulundurun:
+Tek bir koleksiyona almak için, verileri içe aktarmak için koleksiyonun adını girin ve sonra Ekle düğmesini tıklatın. Birden fazla koleksiyona almak için her koleksiyon adını ayrı ayrı girin. Birden fazla koleksiyon belirtmek için aşağıdaki sözdizimini de kullanabilirsiniz: *collection_prefix*[başlat dizini - bitiş dizini]. Yukarıda belirtilen sözdizimi aracılığıyla birden fazla koleksiyon belirtirken, aşağıdaki yönergeleri göz önünde bulundurun:
 
 1. Yalnızca tamsayı aralığı adı desenleri desteklenir. Örneğin, collection[0-3] belirtildiğinde şu koleksiyonlar oluşturulur: collection0, collection1, collection2, collection3.
 2. Kısaltılmış bir sözdizimi kullanabilirsiniz: collection[3], 1. adımda belirtilen aynı koleksiyon kümesini oluşturur.
@@ -444,11 +444,11 @@ Tek bir koleksiyonu içeri aktarmak için verileri içine aktarmak için koleksi
 Koleksiyon adları belirtildikten sonra, koleksiyonların istediğiniz aktarım hızını seçin (400 RU - 250.000 RU). En iyi içeri aktarma performansı için daha yüksek bir aktarım hızı seçin. Performans düzeyleri hakkında daha fazla bilgi için bkz. [Azure Cosmos DB’de performans düzeyleri](performance-levels.md). Aktarım hızı 10.000 RU’da büyük olan koleksiyonlara içeri aktarma işlemi için bölüm anahtarı gerekir. 250.000’den fazla RU’nuz olmasını seçerseniz, hesabınızın artırılması için portalda bir istekte bulunmanız gerekir.
 
 > [!NOTE]
-> Aktarım hızı ayarı yalnızca koleksiyon veya veritabanı oluşturma için geçerlidir. Belirtilen koleksiyon zaten varsa, aktarım hızı değişiklik olmaz.
+> Aktarım hızı ayarı yalnızca koleksiyon veya veritabanı oluşturma için geçerlidir. Belirtilen koleksiyon zaten varsa, iş bilgililiği değiştirilmez.
 
-Birden fazla koleksiyona içeri aktarırken, içeri aktarma aracı karma tabanlı parçalama destekler. Bu senaryoda, bölüm anahtarı olarak kullanmak istediğiniz belge özelliği belirtin. (Bölüm anahtarı boş bırakılırsa rastgele hedef koleksiyonlarındaki parçalı belgelerdir.)
+Birden fazla koleksiyona içe aktarırken, alma aracı karma tabanlı parçalamayı destekler. Bu senaryoda, Bölüm Anahtarı olarak kullanmak istediğiniz belge özelliğini belirtin. (Partition Key boş bırakılırsa, belgeler hedef koleksiyonları arasında rasgele bölünür.)
 
-İsteğe bağlı olarak, içeri aktarma sırasında Azure Cosmos DB belge kimliği özelliği olarak içeri aktarma kaynaktaki hangi alanın kullanılması gerektiğini belirtebilirsiniz. (Belgeler, bu özelliği yoksa, daha sonra içeri aktarma aracı bir GUID kimliği özellik değeri oluşturur.)
+Alma işlemi sırasında Azure Cosmos DB belge kimliği özelliği olarak içe aktarma kaynağındaki hangi alanın kullanılması gerektiğini isteğe bağlı olarak belirtebilirsiniz. (Belgeler bu özelliğe sahip değilse, alma aracı kimlik özelliği değeri olarak bir GUID oluşturur.)
 
 İçeri aktarma sırasında kullanılabilen birçok gelişmiş seçenek vardır. İlk olarak, veri türlerini içeri aktarırken (örneğin, SQL Server veya MongoDB’den) üç içeri aktarma seçeneği arasından seçim yapabilirsiniz:
 
@@ -461,10 +461,10 @@ Birden fazla koleksiyona içeri aktarırken, içeri aktarma aracı karma tabanl�
 Azure Cosmos DB: Sıralı kayıt içeri aktarıcı aşağıdaki ek gelişmiş seçenekleri içerir:
 
 1. Paralel İstek Sayısı: Araç varsayılan olarak iki paralel isteği belirler. İçeri aktarılacak belgeler küçükse, paralel istek sayısını yükseltin. Bu sayı çok fazla yükseltilirse içeri aktarma sırasında hız sınırlama oluşabilir.
-2. Otomatik kimliği oluşturma devre dışı bırak: içeri aktarılacak her belgenin Kimliği alanı varsa, ardından bu seçeneğin belirlenmesi performansı artırabilirsiniz. Benzersiz bir kimliği alanı eksik belgeleri içe aktarılmaz.
-3. Güncelleştirme mevcut belgeler: varolan belgeleri Kimliğiyle çelişiyor değiştirerek değil aracı varsayılanlarını. Bu seçeneğin belirlenmesi, kimlikleriyle eşleşen ile varolan belgeleri üzerine yazmasını sağlar. Bu özellik, mevcut belgeleri güncelleştiren zamanlanmış veri geçişleri için yararlıdır.
-4. Hata durumunda yeniden deneme sayısı: genellikle geçici hatalar (örneğin, ağ bağlantı kesintisi) sırasında Azure Cosmos DB bağlantı yeniden deneme işlemleri belirtir.
-5. Yeniden deneme aralığı: geçici hatalar (örneğin, ağ bağlantı kesintisi) sırasında Azure Cosmos DB bağlantı yeniden deneniyor arasında beklenecek süreyi belirtir.
+2. Otomatik Kimlik Oluşturmayı devre dışı: İçe aktarılacak her belgenin bir kimlik alanı varsa, bu seçeneği seçmek performansı artırabilir. Benzersiz bir kimlik alanı eksik belgeler içe aktarılmaz.
+3. Varolan Belgeleri Güncelleştirme: Araç, varolan belgeleri kimlik çakışmaları ile değiştirmeme varsayılandır. Bu seçeneğin seçilmesi, varolan belgelerin eşleşen t'lerle birlikte üzerine yazılmasına olanak tanır. Bu özellik, mevcut belgeleri güncelleştiren zamanlanmış veri geçişleri için yararlıdır.
+4. Hata da Yeniden Deneme Sayısı: Geçici hatalar sırasında Azure Cosmos DB bağlantısını ne sıklıkta yeniden deneyeceklerini belirtir (örneğin, ağ bağlantısı kesintisi).
+5. Yeniden Deneme Aralığı: Geçici hatalar sırasında Azure Cosmos DB bağlantısını yeniden deneme arasında ne kadar bekleyeceğinizi belirtir (örneğin, ağ bağlantısı kesintisi).
 6. Bağlantı Modu: Azure Cosmos DB ile kullanılacak bağlantı modunu belirtir. Kullanılabilir seçenekler, DirectTcp, DirectHttps ve Gateway seçenekleridir. Doğrudan bağlantı modları daha hızlıyken, ağ geçidi modu ise yalnızca 443 numaralı bağlantı noktasını kullandığından güvenlik duvarıyla daha kolay kullanılabilir.
 
 ![Azure Cosmos DB sıralı kayıt içeri aktarma gelişmiş seçeneklerinin ekran görüntüsü](./media/import-data/documentdbsequentialoptions.png)
@@ -472,7 +472,7 @@ Azure Cosmos DB: Sıralı kayıt içeri aktarıcı aşağıdaki ek gelişmiş se
 > [!TIP]
 > İçeri aktarma aracı, varsayılan olarak DirectTcp bağlantı moduna geçer. Güvenlik duvarıyla ilgili sorun yaşarsanız, Ağ Geçidi bağlantı moduna geçin; bu yalnızca 443 numaralı bağlantı noktasını gerektirir.
 
-## <a id="IndexingPolicy"></a>Dizin oluşturma ilkesi belirtme
+## <a name="specify-an-indexing-policy"></a><a id="IndexingPolicy"></a>Dizin oluşturma ilkesi belirtme
 
 Geçiş aracının, içeri aktarma sırasında Azure Cosmos DB SQL API koleksiyonları oluşturmasına izin verdiğinizde koleksiyonların dizin oluşturma ilkesini belirtebilirsiniz. Azure Cosmos DB Sıralı kayıt seçenekleri ve Azure Cosmos DB Toplu içeri aktarmanın gelişmiş seçenekler bölümünde Dizin Oluşturma İlkesi bölümüne gidin.
 
@@ -482,31 +482,31 @@ Dizin Oluşturma İlkesi gelişmiş seçeneğini kullanarak, bir dizin oluşturm
 
 Aracın sağladığı ilke şablonları şunlardır:
 
-* Varsayılan. Bu ilke, dizelere yönelik eşitlik sorguları gerçekleştirirken en iyisidir. ORDER BY, aralık ve eşitlik sorguları için numaraları kullanırsanız de çalışır. Bu ilkenin, Aralıktan daha düşük dizin depolama yükü vardır.
-* Aralık. Bu ilke, sayılar ve dizeler, ORDER BY, aralık ve eşitlik sorguları kullandığınızda en iyisidir. Bu ilkenin, Varsayılan veya Karmadan daha yüksek dizin depolama yükü vardır.
+* Varsayılan. Bu ilke, dizeleri karşı eşitlik sorguları gerçekleştirirken en iyisidir. Ayrıca, sayılar için ORDER BY, aralık ve eşitlik sorguları kullanıyorsanız da çalışır. Bu ilkenin, Aralıktan daha düşük dizin depolama yükü vardır.
+* Aralık. Bu ilke, hem sayılarda hem de dizelerde ORDER BY, aralık ve eşitlik sorgularını kullandığınızda en iyisidir. Bu ilkenin, Varsayılan veya Karmadan daha yüksek dizin depolama yükü vardır.
 
 ![Azure Cosmos DB Dizin Oluşturma İlkesi gelişmiş seçeneklerinin ekran görüntüsü](./media/import-data/indexingpolicy2.png)
 
 > [!NOTE]
-> Bir dizin oluşturma ilkesini belirtmezseniz varsayılan ilkenin geçerli olduğu. Dizin oluşturma ilkeleri hakkında daha fazla bilgi için bkz: [Azure Cosmos DB dizin oluşturma ilkeleri](index-policy.md).
+> Bir dizin oluşturma ilkesi belirtmezseniz, varsayılan ilke uygulanır. Dizin oluşturma ilkeleri hakkında daha fazla bilgi için bkz: [Azure Cosmos DB dizin oluşturma ilkeleri](index-policy.md).
 
 ## <a name="export-to-json-file"></a>JSON dosyasına dışarı aktarma
 
-Azure Cosmos DB JSON verici, kullanılabilir kaynak seçeneklerden herhangi biri bir dizi JSON belgelerini içeren bir JSON dosyası vermenize olanak sağlar. Sizin için dışarı aktarma Aracı'nı işler. Alternatif olarak, elde edilen geçiş komut görüntüleyip komutu kendi başınıza çalıştırmak seçebilirsiniz. Sonuçta elde edilen JSON dosyası, yerel olarak veya Azure Blob depolama alanında depolanabilir.
+Azure Cosmos DB JSON ihracatçısı, kullanılabilir kaynak seçeneklerinden herhangi birini bir dizi JSON belgesine sahip bir JSON dosyasına dışa aktarmanıza olanak tanır. Araç sizin için dışa aktarma işler. Alternatif olarak, ortaya çıkan geçiş komutunu görüntülemeyi ve komutu kendiniz çalıştırmayı seçebilirsiniz. Sonuçta elde edilen JSON dosyası, yerel olarak veya Azure Blob depolama alanında depolanabilir.
 
 ![Azure Cosmos DB JSON yerel dosya dışarı aktarma seçeneğinin ekran görüntüsü](./media/import-data/jsontarget.png)
 
 ![Azure Cosmos DB JSON Azure Blob depolama alanı dışarı aktarma seçeneğinin ekran görüntüsü](./media/import-data/jsontarget2.png)
 
-İsteğe bağlı olarak elde edilen JSON prettify tercih edebilirsiniz. Bu eylem içeriği yaparken daha fazla sonuç belgesi boyutunu artıracaktır insan tarafından okunabilir.
+İsteğe bağlı olarak ortaya çıkan JSON prettify seçebilirsiniz. Bu eylem, içeriği daha okunabilir hale getirirken, ortaya çıkan belgenin boyutunu artırır.
 
-* Standart JSON dışarı aktarma
+* Standart JSON ihracatı
 
   ```JSON
   [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places to see in Paris"}]}]
   ```
 
-* Prettified JSON dışarı aktarma
+* Prettified JSON ihracat
 
   ```JSON
     [
@@ -548,16 +548,16 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 
 Gelişmiş yapılandırma ekranında, hataların yazılmasını istediğiniz günlük dosyasının konumunu belirtin. Bu sayfa için aşağıdaki kurallar geçerlidir:
 
-1. Ardından dosya adı belirtilmezse, sonuçları sayfasında tüm hatalar döndürülür.
+1. Bir dosya adı sağlanmadıysa, tüm hatalar Sonuçlar sayfasında döndürülür.
 2. Bir dizin olmadan dosya adı sağlanırsa, geçerli ortam dizininde dosya oluşturulur (veya dosyanın üzerine yazılır).
-3. Mevcut bir belirlerseniz dosyasını ve ardından dosyanın üzerine yazılır, ekleme seçeneği yoktur.
+3. Varolan bir dosyayı seçerseniz, dosya üzerine yazılır, ek seçeneği yoktur.
 4. Daha sonra tüm hata iletilerinin mi, kritik hata iletilerinin mi günlüğe kaydedileceğini yoksa hiçbir hata iletisinin günlüğe kaydedilmeyeceğini mi seçin. Son olarak, ekrandaki aktarım iletisinin ilerleme durumunun ne sıklıkla güncelleştirileceğine karar verin.
 
    ![Gelişmiş yapılandırma ekranının görüntüsü](./media/import-data/AdvancedConfiguration.png)
 
-## <a name="confirm-import-settings-and-view-command-line"></a>Ayarları içeri aktarma ve görüntüleme komut satırı onaylayın
+## <a name="confirm-import-settings-and-view-command-line"></a>Alma ayarlarını onaylama ve komut satırLarını görüntüleme
 
-1. Kaynak bilgileri, hedef bilgileri ve Gelişmiş Yapılandırma belirttikten sonra geçiş özeti gözden geçirin ve görüntülemek veya isterseniz sonuçta elde edilen geçiş komutu kopyalayın. (Kopyalama komutu alma işlemlerini otomatik hale getirmek kullanışlıdır.)
+1. Kaynak bilgileri, hedef bilgileri ve gelişmiş yapılandırmayı belirttikten sonra, geçiş özetini gözden geçirin ve isterseniz ortaya çıkan geçiş komutunu görüntüleyin veya kopyalayın. (Komutu kopyalamak alma işlemlerini otomatikleştirmek için yararlıdır.)
 
     ![Özet ekranının ekran görüntüsü](./media/import-data/summary.png)
 
@@ -567,7 +567,7 @@ Gelişmiş yapılandırma ekranında, hataların yazılmasını istediğiniz gü
 
     ![Azure Cosmos DB JSON dışarı aktarma seçeneğinin ekran görüntüsü](./media/import-data/viewresults.png)
 
-3. Yeni bir alma işlemi ayrıca, tüm değerlerini sıfırlama veya var olan ayarları tutmak da başlatılabilir. (Örneğin, bağlantı dizesi bilgilerini, kaynak ve hedef seçimi ve daha fazla korumak seçebilirsiniz.)
+3. Ayrıca, tüm değerleri sıfırlayarak veya varolan ayarları tutarak yeni bir alma işlemi başlatabilirsiniz. (Örneğin, bağlantı dize bilgileri, kaynak ve hedef seçimi ve daha fazla tutmayı seçebilirsiniz.)
 
     ![Azure Cosmos DB JSON dışarı aktarma seçeneğinin ekran görüntüsü](./media/import-data/newimport.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Web uygulaması oluşturma (önbelleğe alma)-Redsıs için Azure önbelleği'
-description: Ön uç modelini kullanan Reda için Azure önbelleği ile bir Web uygulaması oluşturmayı öğrenin.
+title: 'Öğretici: Bir Web Uygulaması Oluşturma (önbellek kenara) - Redis için Azure Önbelleği'
+description: Önbellek kenara deseni kullanan Redis için Azure Önbelleği ile nasıl bir Web Uygulaması oluşturacağınızı öğrenin.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411949"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Öğretici: ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma
 
-Bu öğreticide, [redde için Azure önbelleği için ASP.net hızlı](cache-web-app-howto.md)başlangıcı ' nda oluşturulan *contosoteamstats* ASP.NET Web uygulamasını, redsıs için Azure Cache ile birlikte [önbellek modelini](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) kullanan bir puan tablosu içerecek şekilde güncelleştecaksınız. Örnek uygulama bir veritabanındaki ekip istatistiklerinin listesini görüntüler ve performansı artırmak için önbellekten veri depolamak ve almak için Azure önbelleği 'ni kullanmak için farklı yollar gösterir. Öğreticiyi tamamladığınızda, bir veritabanını okuyan ve yazan, Redsıs için Azure önbelleğiyle en iyi duruma getirilmiş ve Azure 'da barındırılan, çalışan bir Web uygulamasına sahip olursunuz.
+Bu eğitimde, [Redis için Azure Önbelleği için ASP.NET hızlı başlatılırken](cache-web-app-howto.md)oluşturulan *ContosoTeamStats* ASP.NET web uygulamasını, Redis için Azure Önbelleği ile [önbellek kenara desenkullanan](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) bir lider panosu içerecek şekilde güncelleyeceksiniz. Örnek uygulama, bir veritabanındaki ekip istatistiklerinin bir listesini görüntüler ve performansı artırmak için önbellekten veri depolamak ve almak için Redis için Azure Önbelleğini kullanmanın farklı yollarını gösterir. Öğreticiyi tamamladığınızda, Redis için Azure Önbelleği ile optimize edilmiş ve Azure'da barındırılan bir veritabanını okuyan ve yazan çalışan bir web uygulamanız vardır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Redsıs için Azure önbelleği 'ni kullanarak verileri depolayarak ve alarak veri üretimini geliştirme ve veritabanı yükünü azaltma.
+> * Improve data throughput and reduce database load by storing and retrieving data using Azure Cache for Redis.
 > * En iyi beş takımı almak için bir Redis sıralanmış kümesi kullanma.
 > * Resource Manager şablonunu kullanarak uygulama için Azure kaynakları sağlama.
 > * Visual Studio kullanarak uygulamayı yayımlama.
@@ -30,10 +30,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için aşağıdaki önkoşullara sahip olmanız gerekir:
+Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gerekir:
 
-* Bu öğretici [, redin Için Azure önbelleği için ASP.net hızlı](cache-web-app-howto.md)başlangıcı ' nda kaldığınız yerden devam eder. Henüz yapmadıysanız önce hızlı başlangıcı izleyin.
-* Aşağıdaki iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra:
+* Bu öğretici, [Redis için Azure Önbelleği için ASP.NET hızlı başlatmada](cache-web-app-howto.md)kaldığınız yerden devam ediyor. Henüz yapmadıysanız önce hızlı başlangıcı izleyin.
+* [Visual Studio 2019'u](https://www.visualstudio.com/downloads/) aşağıdaki iş yükleriyle yükleyin:
     * ASP.NET ve web geliştirme
     * Azure Geliştirme
     * [SQL Server 2017 Express edition](https://www.microsoft.com/sql-server/sql-server-editions-express) veya SQL Server Express LocalDB ile .NET masaüstü geliştirmesi.
@@ -44,7 +44,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki önkoşullara sahip olmanız gerek
 
 ### <a name="add-the-entity-framework-to-the-project"></a>Projeye Entity Framework ekleme
 
-1. Visual Studio 'da [redsıs Için Azure önbelleği için ASP.net hızlı başlangıç](cache-web-app-howto.md)bölümünde oluşturduğunuz *contosoteamstats* çözümünü açın.
+1. Visual Studio'da, [Redis için Azure Önbelleği için ASP.NET hızlı başlatmada](cache-web-app-howto.md)oluşturduğunuz *ContosoTeamStats* Çözüm'üne açın.
 2. **Araçlar > NuGet Paket Yöneticisi > Paket Yöneticisi Konsolu**’na tıklayın.
 3. EntityFramework’ü yüklemek için **Paket Yöneticisi Konsolu** penceresinden aşağıdaki komutu çalıştırın:
 
@@ -142,13 +142,13 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
     }
     ```
 
-1. **Çözüm Gezgini**’nde, **Web.config**’i açmak için çift tıklayın.
+1. **Çözüm Gezgini'nde,** açmak için **Web.config'i** çift tıklatın.
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
 1. Aşağıdaki `connectionStrings` bölümünü `configuration` bölümüne ekleyin. Bağlantı dizesinin adı, Entity Framework veritabanı bağlamı sınıfının adı olan `TeamContext` ile eşleşmelidir.
 
-    Bu bağlantı dizesi [önkoşulları](#prerequisites) karşıladığınızı ve Visual Studio 2019 ile yüklenen *.net masaüstü geliştirme* iş yükünün bir parçası olan LocalDB SQL Server Express yüklediğinizi varsayar.
+    Bu bağlantı dizesi, Visual Studio 2019 ile yüklenen *.NET masaüstü geliştirme* iş yükünün bir parçası olan [Önkoşullar'ı](#prerequisites) karşıladığınızı ve SQL Server Express LocalDB yüklü olduğunuzu varsayar.
 
     ```xml
     <connectionStrings>
@@ -226,7 +226,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. `body` bölümünde, *Redsıs testi Için Azure Cache*bağlantısının hemen altındaki *contoso Team stats* için aşağıdaki yeni `Html.ActionLink` ifadesini ekleyin.
+1. Bölüme, `body` Redis Testi `Html.ActionLink` için *Azure Önbelleği*bağlantısının hemen altına *Contoso Takım İstatistikleri* için aşağıdaki yeni bildirimi ekleyin.
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -234,13 +234,13 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
     ![Kod değişiklikleri](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Uygulamayı derleyip çalıştırmak için **Ctrl+F5**'e basın. Uygulamasının bu sürümü, sonuçları doğrudan veritabanından okur. **Yeni Oluştur**, **Düzenle**, **Ayrıntılar** ve **Sil** eylemlerinin **Görünümlere sahip MVC 5 Denetleyici, Entity Framework kullanarak** iskelesi tarafından otomatik olarak uygulamaya eklendiğini unutmayın. Öğreticinin sonraki bölümünde, veri erişimini iyileştirmek ve uygulamaya ek özellikler sağlamak için Redsıs için Azure önbelleği ekleyeceksiniz.
+1. Uygulamayı derleyip çalıştırmak için **Ctrl+F5**'e basın. Uygulamasının bu sürümü, sonuçları doğrudan veritabanından okur. **Yeni Oluştur**, **Düzenle**, **Ayrıntılar** ve **Sil** eylemlerinin **Görünümlere sahip MVC 5 Denetleyici, Entity Framework kullanarak** iskelesi tarafından otomatik olarak uygulamaya eklendiğini unutmayın. Öğreticinin bir sonraki bölümünde, veri erişimini optimize etmek ve uygulamaya ek özellikler sağlamak için Redis için Azure Önbelleği eklersiniz.
 
     ![Başlangıç uygulaması](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
-## <a name="configure-the-app-for-azure-cache-for-redis"></a>Redsıs için uygulamayı Azure önbelleği için yapılandırma
+## <a name="configure-the-app-for-azure-cache-for-redis"></a>Redis için Azure Önbelleği için uygulamayı yapılandırma
 
-Öğreticinin bu bölümünde, [StackExchange. redsıs](https://github.com/StackExchange/StackExchange.Redis) Önbellek istemcisini kullanarak bir redin örneği Için Azure önbelleğinden contoso ekip istatistiklerini depolamak ve almak üzere örnek uygulamayı yapılandırırsınız.
+Öğreticinin bu bölümünde, [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) önbellek istemcisini kullanarak, örnek uygulamayı, Redis örneği için bir Azure Önbelleği'nden Contoso takım istatistiklerini depolamak ve almak üzere yapılandırırsınız.
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>Teams Controller’a önbellek bağlantısı ekleme
 
@@ -250,7 +250,7 @@ Hızlı başlangıçta *StackExchange.Redis* istemci kitaplığı paketini zaten
 
     ![Ekip denetleyicisi](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. **TeamsController.cs** deyimlerini kullanarak aşağıdaki iki `using` deyimini ekleyin:
+1. TeamsController.cs aşağıdaki `using` iki **TeamsController.cs**ifadeleri ekleyin:
 
     ```csharp
     using System.Configuration;
@@ -280,7 +280,7 @@ Hızlı başlangıçta *StackExchange.Redis* istemci kitaplığı paketini zaten
 
 Bu örnekte, ekip istatistikleri veritabanı veya önbellekten alınabilir. Ekip istatistikleri seri hale getirilmiş bir `List<Team>` ve ayrıca, Redis veri türleri kullanılarak sıralanmış bir küme olarak veritabanında depolanır. Bir sıralanmış kümeden öğeleri alırken, belirli öğeler için bazı, tümü veya sorgu alabilirsiniz. Bu örnekte, galibiyet sayısına göre sıralanan en iyi 5 takım için sıralanmış kümeyi sorgulayacaksınız.
 
-Redsıs için Azure önbelleğini kullanmak amacıyla, takım istatistiklerini önbellekte birden çok biçimde depolamak gerekli değildir. Bu öğretici, verileri önbelleğe almak için kullanabileceğiniz farklı yol ve farklı veri türlerinin bazılarını göstermek için birden çok biçim kullanır.
+Redis için Azure Önbelleğini kullanmak için takım istatistiklerini önbellekte birden çok biçimde depolamak gerekmez. Bu öğretici, verileri önbelleğe almak için kullanabileceğiniz farklı yol ve farklı veri türlerinin bazılarını göstermek için birden çok biçim kullanır.
 
 1. Aşağıdaki `using` deyimlerini `TeamsController.cs` dosyasının üst tarafındaki diğer `using` deyimleri ile değiştirin:
 
@@ -408,7 +408,7 @@ Redsıs için Azure önbelleğini kullanmak amacıyla, takım istatistiklerini �
     }
     ```
 
-    `GetFromList` yöntemi önbellekteki ekip istatistiklerini seri hale getirilmiş bir `List<Team>` olarak okur. Önbellekte istatistikler mevcut değilse, bir önbellek isabetsizliği oluşur. Önbellek isabetsizliği için, veritabanından takım istatistikleri okunur ve sonraki istek için önbellekte depolanır. Bu örnekte, önbelleğe veya önbellekten .NET nesnelerini seri hale getirmek için JSON.NET seri hale getirme kullanılmaktadır. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleğinde .NET nesneleriyle çalışma](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
+    `GetFromList` yöntemi önbellekteki ekip istatistiklerini seri hale getirilmiş bir `List<Team>` olarak okur. Önbellekte istatistikler mevcut değilse, bir önbellek isabetsizliği oluşur. Önbellek isabetsizliği için, veritabanından takım istatistikleri okunur ve sonraki istek için önbellekte depolanır. Bu örnekte, önbelleğe veya önbellekten .NET nesnelerini seri hale getirmek için JSON.NET seri hale getirme kullanılmaktadır. Daha fazla bilgi için [Redis için Azure Önbelleğinde .NET nesneleri ile nasıl çalışılır](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)konusuna bakın.
 
     ```csharp
     List<Team> GetFromList()
@@ -630,11 +630,11 @@ Bu örneğin bir parçası olarak oluşturulan iskele kurma kodu ekip ekleme, d�
 
 Takımları desteklemek için eklenmiş olan işlevselliği doğrulamak üzere makinenizde yerel olarak uygulamayı çalıştırın.
 
-Bu testte uygulama ve veritabanının her ikisi de yerel olarak çalışmaktadır. Ancak, redde Azure önbelleği Azure 'da uzaktan barındırılır. Bu nedenle önbellek büyük olasılıkla veritabanı performansının biraz gerisinde kalır. En iyi performansı elde etmek için, istemci uygulaması ve Redsıs örneği için Azure önbelleği aynı konumda olmalıdır. Sonraki bölümde, önbellek kullanımından elde edilen yüksek performansı görmek için tüm kaynakları Azure’a dağıtacaksınız.
+Bu testte uygulama ve veritabanının her ikisi de yerel olarak çalışmaktadır. Ancak, Redis için Azure Önbelleği Azure'da uzaktan barındırılır. Bu nedenle önbellek büyük olasılıkla veritabanı performansının biraz gerisinde kalır. En iyi performans için istemci uygulaması ve Redis örneği için Azure Önbelleği aynı konumda olmalıdır. Sonraki bölümde, önbellek kullanımından elde edilen yüksek performansı görmek için tüm kaynakları Azure’a dağıtacaksınız.
 
 Uygulamayı yerel olarak çalıştırmak için:
 
-1. Uygulamayı çalıştırmak için **Ctrl+F5**'e basın.
+1. Uygulamayı çalıştırmak için **Ctrl+F5** tuşuna basın.
 
     ![Yerel olarak çalıştırılan uygulama](./media/cache-web-app-cache-aside-leaderboard/cache-local-application.png)
 
@@ -657,14 +657,14 @@ Bu bölümde, Azure’da barındırılan, kullanılacak uygulama için yeni bir 
    | **Veritabanı adı** | *ContosoTeamsDatabase* | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Abonelik** | *Aboneliğiniz*  | Önbelleği oluşturmak ve App Service’i barındırmak için kullandığınız aynı aboneliği seçin. |
    | **Kaynak grubu**  | *TestResourceGroup* | **Var olanı kullan**’a tıklayın ve önbelleğinizi ve App Service’i yerleştirdiğiniz aynı kaynak grubunu kullanın. |
-   | **Kaynak seçme** | **Boş veritabanı** | Boş bir veritabanıyla başlayın. |
+   | **Kaynağı seçin** | **Boş veritabanı** | Boş bir veritabanıyla başlayın. |
 
 1. **Sunucu** bölümünde, **Gerekli ayarları yapılandır** > **Yeni sunucu oluştur** seçeneklerine tıklayın ve aşağıdaki bilgileri girip **Seç** düğmesine tıklayın:
 
    | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
-   | **Sunucu yöneticisi oturum açma bilgileri** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
+   | **Sunucu admin giriş** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Parola** | Geçerli bir parola | Parolanızda en az 8 karakter bulunmalı ve parolanız şu üç kategoriden karakterler içermelidir: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
    | **Konum** | *Doğu ABD* | Önbelleği ve App Service’i oluşturduğunuz aynı bölgeyi seçin. |
 
@@ -736,4 +736,4 @@ Eylemlerden bazılarına tıklayın ve farklı kaynaklardan veri alma denemeleri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Redsıs için Azure önbelleğini ölçeklendirme](./cache-how-to-scale.md)
+> [Redis için Azure Önbelleği Nasıl Ölçeklendirilir?](./cache-how-to-scale.md)

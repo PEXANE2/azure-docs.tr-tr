@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: R 'de tahmine dayalı modelleri eğitme ve karşılaştırma"
+title: 'Öğretici: Tren ve R tahminmodelleri karşılaştırın'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, R 'de Azure SQL veritabanı Machine Learning Services (Önizleme) ile birlikte iki tahmine dayalı model oluşturacak ve en doğru modeli seçeceksiniz.
+description: Bu üç bölümlük öğretici serinin ikinci bölümünde, Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme) ile R'de iki tahmine dayalı model oluşturacak ve ardından en doğru modeli seçeceksiniz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,37 +13,39 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 2c85a378dc219e8af1b6458344ee4dba0fa73e68
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 52f4347fa545df88f11878709b4061662d5faffe
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596803"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345743"
 ---
-# <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: R 'de Azure SQL veritabanı Machine Learning Services tahmine dayalı model oluşturma (Önizleme)
+# <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model oluşturun (önizleme)
 
-Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, R 'de iki tahmine dayalı model oluşturacak ve en doğru modeli seçmelisiniz. Bu serinin bir sonraki bölümünde, bu modeli Azure SQL veritabanı Machine Learning Services (Önizleme) ile bir SQL veritabanında dağıtacaksınız.
-
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
-
-> [!div class="checklist"]
-> * İki makine öğrenimi modeli eğitimi
-> * Her iki modelden de tahminler yapın
-> * En doğru modeli seçmek için sonuçları karşılaştırın
-
-[Birinci bölümde](sql-database-tutorial-predictive-model-prepare-data.md), örnek bir veritabanını içeri aktarmayı ve ardından R 'deki tahmine dayalı bir modeli eğitmek için kullanılacak verileri oluşturmayı öğrendiniz.
-
-[Üçüncü kısımda](sql-database-tutorial-predictive-model-deploy.md), modeli bir veritabanında nasıl depolayacağınızı öğrenirsiniz ve sonra bir ve iki bölümde geliştirdiğiniz R betiklerinden saklı yordamlar oluşturabilirsiniz. Saklı yordamlar yeni verilere göre tahmine dayalı hale getirmek için bir SQL veritabanında çalışır.
+Bu üç bölümlük öğretici serinin ikinci bölümünde, R'de iki tahminmodeli oluşturacak ve en doğru modeli seçeceksiniz. Bu serinin bir sonraki bölümünde, bu modeli Azure SQL Database Machine Learning Services (önizleme) içeren bir SQL veritabanında dağıtacaksınız.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+Bu makalede, nasıl öğreneceksiniz:
 
-* Bu öğreticinin ikinci bölümünde [**Birinci bölüm bir**](sql-database-tutorial-predictive-model-prepare-data.md) ve önkoşulları tamamladığınız varsayılır.
+> [!div class="checklist"]
+> * İki makine öğrenme modeli eğitin
+> * Her iki modelden de öngörülerde bulunun
+> * En doğru modeli seçmek için sonuçları karşılaştırın
 
-## <a name="train-two-models"></a>İki modeli eğitme
+[Birinci bölümde,](sql-database-tutorial-predictive-model-prepare-data.md)örnek bir veritabanını nasıl içe aktarabileceğinizi ve daha sonra Verileri R'de bir tahminmodelinin eğitimi için nasıl hazırlayacağınızı öğrendiniz.
 
-Kayak kiralama verileri için en iyi modeli bulmak için, iki farklı model (doğrusal regresyon ve karar ağacı) oluşturun ve hangisinin daha doğru bir şekilde tahmin edilebileceğine bakın. Bu serinin bir bölümünde oluşturduğunuz veri `rentaldata` çerçevesini kullanacaksınız.
+[Üçüncü bölümde,](sql-database-tutorial-predictive-model-deploy.md)modeli veritabanında nasıl depoladığınızı ve ardından bir ve ikinci bölümlerde geliştirdiğiniz R komut dosyalarından depolanmış yordamlar oluşturmayı öğreneceksiniz. Depolanan yordamlar, yeni verilere dayalı öngörüler yapmak için bir SQL veritabanında çalışır.
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Bu öğretici Bölüm iki bölüm [**bir**](sql-database-tutorial-predictive-model-prepare-data.md) ve ön koşulları tamamlamış varsayar.
+
+## <a name="train-two-models"></a>İki modeli eğitin
+
+Kayak kiralama verileri için en iyi modeli bulmak için iki farklı model (doğrusal regresyon ve karar ağacı) oluşturun ve hangisinin daha doğru tahmin ettiğini görün. Bu serinin birinci `rentaldata` bölümünde oluşturduğunuz veri çerçevesini kullanırsınız.
 
 ```r
 #First, split the dataset into two different sets:
@@ -61,9 +63,9 @@ model_linmod <- rxLinMod(RentalCount ~  Month + Day + WeekDay + Snow + Holiday, 
 model_dtree  <- rxDTree(RentalCount ~ Month + Day + WeekDay + Snow + Holiday, data = train_data);
 ```
 
-## <a name="make-predictions-from-both-models"></a>Her iki modelden de tahminler yapın
+## <a name="make-predictions-from-both-models"></a>Her iki modelden de öngörülerde bulunun
 
-Her eğitilen modeli kullanarak Kiralama sayılarını tahmin etmek için bir tahmin işlevi kullanın.
+Her eğitimli modeli kullanarak kiralama sayılarını tahmin etmek için bir tahmin işlevi kullanın.
 
 ```r
 #Use both models to make predictions using the test data set.
@@ -95,7 +97,7 @@ head(predict_dtree);
 
 ## <a name="compare-the-results"></a>Sonuçları karşılaştırın
 
-Artık modellerden hangisinin en iyi tahminlere sahip olduğunu görmek istiyorsunuz. Bunu yapmanın hızlı ve kolay bir yolu, eğitim verilerinizde gerçek değerler ve tahmin edilen değerler arasındaki farkı görüntülemek için temel bir çizim işlevi kullanmaktır.
+Şimdi hangi modellerin en iyi tahminleri verdiğini görmek istiyorsunuz. Bunu yapmanın hızlı ve kolay bir yolu, eğitim verilerinizdeki gerçek değerler le öngörülen değerler arasındaki farkı görüntülemek için temel bir çizim işlevi kullanmaktır.
 
 ```r
 #Use the plotting functionality in R to visualize the results from the predictions
@@ -106,28 +108,28 @@ plot(predict_dtree$RentalCount_Pred  - predict_dtree$RentalCount,  main = "Diffe
 
 ![İki modeli karşılaştırma](./media/sql-database-tutorial-predictive-model-build-compare/compare-models.png)
 
-Karar ağacı modeli, iki modelden daha doğru bir şekilde görünür.
+Bu karar ağacı modeli iki model daha doğru gibi görünüyor.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticiye devam edemeyecekinizden Tutorialdb 'yi veritabanını Azure SQL veritabanı sunucusundan silin.
+Bu öğreticiyle devam etmeyecekseniz, TutorialDB veritabanını Azure SQL Veritabanı sunucunuzdan silin.
 
-Azure portal, aşağıdaki adımları izleyin:
+Azure portalından aşağıdaki adımları izleyin:
 
-1. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı veya **SQL veritabanları**' nı seçin.
-1. **Ada göre filtrele...** alanına **tutorialdb 'yi**girin ve aboneliğinizi seçin.
-1. Tutorialdb 'yi veritabanınızı seçin.
+1. Azure portalındaki sol menüden Tüm **kaynakları** veya **SQL veritabanlarını**seçin.
+1. **Ada göre Filtre...** alanına **TutorialDB'yi**girin ve aboneliğinizi seçin.
+1. TutorialDB veritabanınızı seçin.
 1. **Genel Bakış** sayfasında **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici serisinin ikinci bölümünde, şu adımları tamamladınız:
+Bu öğretici serinin ikinci bölümünde, şu adımları tamamladınız:
 
-* İki makine öğrenimi modeli eğitimi
-* Her iki modelden de tahminler yapın
+* İki makine öğrenme modeli eğitin
+* Her iki modelden de öngörülerde bulunun
 * En doğru modeli seçmek için sonuçları karşılaştırın
 
-Oluşturduğunuz Machine Learning modelini dağıtmak için, bu öğretici serisinin üçüncü kısmını izleyin:
+Oluşturduğunuz makine öğrenimi modelini dağıtmak için bu öğretici serinin üçüncü bölümünü izleyin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model dağıtma](sql-database-tutorial-predictive-model-deploy.md)
+> [Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model dağıtma (önizleme)](sql-database-tutorial-predictive-model-deploy.md)

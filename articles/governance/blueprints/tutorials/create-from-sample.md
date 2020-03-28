@@ -1,189 +1,189 @@
 ---
-title: 'Öğretici: yeni ortama Blueprint örneği'
-description: Bu öğreticide, iki kaynak grubu ayarlayan ve her biri için bir rol ataması yapılandıran bir şema tanımı oluşturmak üzere bir şema örneği kullanırsınız.
-ms.date: 11/21/2019
+title: 'Öğretici: Yeni ortama blueprint örneği'
+description: Bu öğreticide, iki kaynak grubu oluşturan ve her biri için bir rol ataması yapılandıran bir plan tanımı oluşturmak için bir plan örneği kullanırsınız.
+ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321728"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80282027"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: bir şema örneğinden ortam oluşturma
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: Plan örneğinden bir ortam oluşturma
 
-Örnek planlar, Azure şemaları kullanılarak neler yapılabileceğini örnekler sağlar. Her biri belirli bir amaç veya amaca sahip bir örnektir, ancak kendileri tarafından tamamen bir ortam oluşturmaz. Her biri, dahil edilen yapıların, tasarımların ve parametrelerin çeşitli birleşimleri ile Azure şemaları kullanılarak araştırılacak başlangıç yeri olarak hazırlanmıştır.
+Örnek planlar, Azure Planları kullanılarak neler yapılabileceğinin örneklerini sağlar. Her biri belirli bir amaç veya amaca sahip bir örnektir, ancak tek başlarına tam bir ortam oluşturmaz. Her biri, azure planlarını n içindahil olan yapı, tasarım ve parametrelerin çeşitli kombinasyonları ile birlikte kullanarak keşfetmek için bir başlangıç noktası olarak tasarlanmıştır.
 
-Aşağıdaki öğreticide, planlar hizmetinin farklı yönlerini göstermek için RBAC şeması örneği **Ile kaynak grupları** kullanılmaktadır. Aşağıdaki adımlar ele alınmıştır:
+Aşağıdaki öğretici, Blueprints hizmetinin farklı yönlerini sergilemek için RBAC plan örneğine **sahip Kaynak Gruplarını** kullanır. Aşağıdaki adımlar kapsanmaktadır:
 
 > [!div class="checklist"]
-> - Örnekten yeni bir şema tanımı oluşturun
-> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
-> - Şema kopyanızı mevcut bir aboneliğe atama
-> - Atama için dağıtılan kaynakları İncele
-> - Kilitleri kaldırmak için şema atamasını kaldırma
+> - Örnekten yeni bir plan tanımı oluşturma
+> - Örnek kopyanızı **Yayımlanmış** olarak işaretleme
+> - Planın kopyasını varolan bir aboneye atama
+> - Atama için dağıtılan kaynakları denetleme
+> - Kilitleri kaldırmak için planı atama
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliği gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Bu öğreticiyi tamamlamak için bir Azure aboneliği gerekir. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="create-blueprint-definition-from-sample"></a>Örnekten şema tanımı oluştur
+## <a name="create-blueprint-definition-from-sample"></a>Örnekten plan tanımı oluşturma
 
-İlk olarak, şema örneğini uygulayın. İçeri aktarma, ortamınızda örneğe bağlı olarak yeni bir şema oluşturur.
+İlk olarak, plan örneğini uygulayın. İçe aktarma, örneğine dayalı olarak ortamınızda yeni bir plan oluşturur.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
 
-1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
+1. Soldaki **Başlat'tan plan** _Oluştur'un_altındaki **Oluştur** düğmesini seçin.
 
-1. _Diğer örnekler_ altında RBAC şeması örneği **ile kaynak gruplarını** bulun ve **Bu örneği kullan**' ı seçin.
+1. _Diğer Örnekler_ altında RBAC plan örneği içeren **Kaynak Gruplarını** bulun ve seçin.
 
-1. Şema örneği _hakkında temel bilgileri_ girin:
+1. Plan örneğinin _Temellerini_ girin:
 
-   - **Şema adı**: şema örneğinin kopyasına bir ad verin. Bu öğreticide,- _role-atamaları ile birlikte iki-RGS_adı kullanacağız.
-   - **Tanım konumu**: üç noktayı kullanın ve örnek kopyanızı kaydetmek için yönetim grubunu veya aboneliği seçin.
+   - **Plan adı**: Plan örneğinin kopyası için bir ad verin. Bu öğretici _için, iki rgs-rol-atamaları ile_adını kullanacağız.
+   - **Tanım yeri**: Elipsleri kullanın ve numunenin kopyasını kaydetmek için yönetim grubunu veya aboneliği seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
+1. Sayfanın üst kısmındaki _Eserler_ sekmesini veya **Sonraki: Sayfanın** altındaki Eserler sekmesini seçin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Bu örnek, _prodrg_ ve _preprodrg_görünen adları ile iki kaynak grubu tanımlar. Her kaynak grubunun son adı ve konumu, şema atama sırasında ayarlanır. _Prodrg_ kaynak grubuna _katkıda_ bulunan rolü atanır ve _Preprodrg_ kaynak grubuna _sahip_ ve _Okuyucular_ rolleri atanır. Tanımda atanan roller statiktir, ancak rol atanmış kullanıcı, uygulama veya Grup, şema atama sırasında ayarlanır.
+1. Plan örneğini oluşturan yapıtların listesini gözden geçirin. Bu örnek, _ProdRG_ ve _PreProdRG_ekran adlarını içeren iki kaynak grubu tanımlar. Her kaynak grubunun son adı ve konumu plan ataması sırasında ayarlanır. _ProdRG_ kaynak grubuna _Katılımcı_ rolü atanır ve _PreProdRG_ kaynak grubuna _Sahibi_ ve _Okuyucuları_ rolleri atanır. Tanımda atanan roller statiktir, ancak rol atanan kullanıcı, uygulama veya grup plan ataması sırasında ayarlanır.
 
-1. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
+1. Plan örneğini gözden geçirmeyi bitirdiğinizde **Taslağı Kaydet'i** seçin.
 
-Bu adım, seçili yönetim grubunda veya abonelikte örnek şema tanımının bir kopyasını oluşturur. Kayıtlı şema tanımı, sıfırdan oluşturulan herhangi bir şema gibi yönetilir. Örneği, gereken sayıda yönetim grubunuza veya aboneliğine kaydedebilirsiniz. Ancak, her kopyaya benzersiz bir ad verilmelidir.
+Bu adım, seçili yönetim grubunda veya abonelikte örnek plan tanımının bir kopyasını oluşturur. Kaydedilen plan tanımı sıfırdan oluşturulan herhangi bir plan gibi yönetilir. Örneği yönetim grubunuzun veya aboneliğinize gerektiği kadar kaydedebilirsiniz. Ancak, her kopyaya benzersiz bir ad verilmelidir.
 
-Şema **tanımını kaydetme başarılı oldu** Portal bildirimi göründüğünde, sonraki adıma geçin.
+**Planını Kaydetme tanımı başarılı** portal bildirimi göründükten sonra bir sonraki adıma geçin.
 
-## <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
+## <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımla
 
-Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir. Bu öğreticide hiçbir değişiklik yapmayacağız.
+Plan örneğinin kopyası artık ortamınızda oluşturuldu. **Taslak** modunda oluşturulur ve atanıp dağıtılmadan önce **yayımlanmalıdır.** Plan örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir. Bu öğretici için herhangi bir değişiklik yapmayacağız.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. _İki-RGS-rol-atamaları_ şema tanımını bulmak için filtreleri kullanın ve ardından bunu seçin.
+1. Soldaki **Blueprint tanımları** sayfasını seçin. _İki rgs-rol atamaları_ plan tanımını bulmak ve sonra seçmek için filtreleri kullanın.
 
-1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağdaki yeni bölmede, şema örneğinin kopyası için **Sürüm** _1,0_ olarak sağlayın. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "RBAC şeması örneği ile kaynak gruplarından yayımlanan Ilk sürüm" gibi **değişiklik notları** sağlayın. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
+1. Sayfanın üst kısmında **ki planı Yayımla'yı** seçin. Sağdaki yeni bölmede, plan örneğinin kopyası için _Sürüm'ü 1.0_ olarak sağlayın. **Version** Bu özellik, daha sonra bir değişiklik yaparsanız için yararlıdır. "RBAC plan örneğine sahip kaynak gruplarından yayınlanan ilk sürüm" gibi **Değişiklik notları** sağlayın. Ardından sayfanın altındaki **Yayımla'yı** seçin.
 
-Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıktan sonra değişiklikler yine de yapılabilir. Aynı şema tanımının farklı sürümleri arasındaki farkları izlemek için ek değişiklikler yeni bir **Sürüm** değeriyle yayımlamayı gerektirir.
+Bu adım, planı bir aboneye atamayı mümkün kılar. Yayımlandıktan sonra değişiklikler yapılabilir. Ek değişiklikler, aynı plan tanımının farklı sürümleri arasındaki farkları izlemek için yeni bir **Sürüm** değeriyle yayımlama gerektirir.
 
-Şema **tanımını yayımlama başarılı oldu** Portal bildirimi göründüğünde bir sonraki adıma geçin.
+**Yayımlama planı tanımı başarılı** portal bildirimi göründükten sonra bir sonraki adıma geçin.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Plan örneğinin kopyası başarıyla **Yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneye atanabilir. Bu adım, plan örneğinin her kopyasını benzersiz hale getirmek için parametrelerin sağlandığı adımdır.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. _İki-RGS-rol-atamaları_ şema tanımını bulmak için filtreleri kullanın ve ardından bunu seçin.
+1. Soldaki **Blueprint tanımları** sayfasını seçin. _İki rgs-rol atamaları_ plan tanımını bulmak ve sonra seçmek için filtreleri kullanın.
 
-1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
+1. Plan tanımı sayfasının üst **kısmındaki plan atay'ı** seçin.
 
-1. Şema atamasının parametre değerlerini sağlayın:
+1. Plan ataması için parametre değerlerini sağlayın:
 
    - Temel Bilgiler
 
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
-     - **Atama adı**: ad, şema tanımının adına göre önceden doldurulur.
-     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
-       Bu öğretici için _Doğu ABD 2_' yi seçin.
-     - Şema **tanımı sürümü**: örnek şema tanımının **yayınlanmış** sürüm _1,0_ ' i seçin.
+     - **Abonelikler**: Plan örneğinin kopyasını kaydettiğiniz yönetim grubundaki aboneliklerden birini veya birkaçını seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Atama adı**: Plan tanımının adına göre ad sizin için önceden doldurulur.
+     - **Konum**: Oluşturulan yönetilen kimlik için bir bölge seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
+       Bu öğretici için _Doğu ABD 2'yi_seçin.
+     - **Blueprint tanımı sürümü**: Örnek plan tanımının kopyanızın **Yayınlanmış** sürüm _1.0'ını_ seçin.
 
-   - Kilit ataması
+   - Kilit Ataması
 
-     _Salt okuma_ şeması kilit modunu seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
+     Salt _Okunur_ plan kilidi modunu seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
 
    - Yönetilen Kimlik
 
-     Varsayılan _sistem atanmış_ seçeneğini bırakın. Daha fazla bilgi için bkz. [Yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Varsayılan _Sistem atanmış_ seçeneği bırakın. Daha fazla bilgi için [yönetilen kimliklere](../../../active-directory/managed-identities-azure-resources/overview.md)bakın.
 
-   - Yapıt parametreleri
+   - Yapı parametreleri
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini **değer** sütununda tanımlananla ayarlayın. `{Your ID}`için Azure kullanıcı hesabınızı seçin.
+     Bu bölümde tanımlanan parametreler, tanımlandığı yapı için geçerlidir. Bu parametreler, planın atanması sırasında tanımlandıkları için [dinamik parametrelerdir.](../concepts/parameters.md#dynamic-parameters) Her yapı için parametre değerini **Değer** sütununda tanımlanan değere ayarlayın. Bunun `{Your ID}`için Azure kullanıcı hesabınızı seçin.
 
-     |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
+     |Artefakt adı|Artefakt türü|Parametre adı|Değer|Açıklama|
      |-|-|-|-|-|
-     |ProdRG kaynak grubu|Kaynak grubu|Ad|Üretim RG|İlk kaynak grubunun adını tanımlar.|
+     |ProdRG kaynak grubu|Kaynak grubu|Adı|ProductionRG|İlk kaynak grubunun adını tanımlar.|
      |ProdRG kaynak grubu|Kaynak grubu|Konum|Batı ABD 2|İlk kaynak grubunun konumunu ayarlar.|
-     |Katılımcı|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İlk kaynak grubu içinde _katkıda_ bulunan rol atamasını hangi kullanıcı veya gruba veririm tanımlar.|
-     |PreProdRG kaynak grubu|Kaynak grubu|Ad|Ön üretim RG|İkinci kaynak grubunun adını tanımlar.|
+     |Katılımcı|Rol ataması|Kullanıcı veya Grup|{Kimliğiniz}|İlk kaynak grubunda _Katılımcı_ rol ataması vermek için hangi kullanıcı veya grup tanımlar.|
+     |PreProdRG kaynak grubu|Kaynak grubu|Adı|Üretim ÖncesiRG|İkinci kaynak grubunun adını tanımlar.|
      |PreProdRG kaynak grubu|Kaynak grubu|Konum|Batı ABD|İkinci kaynak grubunun konumunu ayarlar.|
-     |Sahip|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _sahip_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
-     |Okuyucular|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _Okuyucular_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
+     |Sahip|Rol ataması|Kullanıcı veya Grup|{Kimliğiniz}|İkinci kaynak grubunda _Sahibine_ rol ataması verecek kullanıcı veya grubu tanımlar.|
+     |Okuyucular|Rol ataması|Kullanıcı veya Grup|{Kimliğiniz}|İkinci kaynak grubu içinde _Okuyuculara_ rol ataması verecek kullanıcı veya grubu tanımlar.|
 
-1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin.
+1. Tüm parametreler girildikten sonra, sayfanın alt kısmında **Ata'yı** seçin.
 
-Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapılandırır. Blueprint kilitlerinin uygulanması 30 dakika kadar sürebilir.
+Bu adım, tanımlanan kaynakları dağıtır ve seçili **Kilit Atamasını**yapılandırır. Plan kilitleri uygulamak için 30 dakika kadar sürebilir.
 
-Şema **tanımı başarılı oldu** Portal bildirimi seçildikten sonra bir sonraki adıma geçin.
+Atama **planı tanımı başarılı** portal bildirimi göründükten sonra bir sonraki adıma geçin.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Atama tarafından dağıtılan kaynakları İncele
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Atama tarafından dağıtılan kaynakları denetleme
 
-Şema ataması, şema tanımında tanımlanan yapıtları oluşturur ve izler. Nesnelerin durumunu şema atama sayfasından görebilir ve kaynaklara doğrudan bakarak erişebilirsiniz.
+Plan ataması, plan tanımında tanımlanan yapıları oluşturur ve izler. Planların atama sayfasından ve kaynaklara doğrudan bakarak kaynakların durumunu görebiliriz.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
 
-1. Sol taraftaki **atanan** şemalar sayfasını seçin. ------------------ _Role-_ ----------
+1. Soldaki **Atanan planlar** sayfasını seçin. _Atama-iki-rgs-rol atamaları_ plan atamasını bulmak ve sonra seçmek için filtreleri kullanın.
 
-   Bu sayfadan, atamanın başarılı olduğunu ve oluşturulan kaynakların listesini şema Lock durumuyla birlikte görebiliriz. Atama güncelleştirilirse, **atama işlemi** açılır listesi her tanım sürümünün dağıtımıyla ilgili ayrıntıları gösterir. Oluşturulan her kaynak, tıklanmış ve bu kaynaklar özellik sayfasını açacak.
+   Bu sayfadan, atamanın başarılı olduğunu ve oluşturulan kaynakların listesini plan kilit durumuyla birlikte görebiliriz. Atama güncelleştirilirse, **Atama işlemi** açılır, her tanım sürümünün dağıtımıyla ilgili ayrıntıları gösterir. Oluşturulan listelenen her kaynak tıklanabilir ve bu kaynaklar özelliği sayfasını açar.
 
-1. **Üretim RG** kaynak grubunu seçin.
+1. **ProductionRG** kaynak grubunu seçin.
 
-   Kaynak grubunun adının, yapıt görünen adı _Prodrg_değil, **Üretim** için olduğunu görüyoruz. Bu ad, şema ataması sırasında ayarlanan değerle eşleşir.
+   Kaynak grubunun adının _ProdRG_değil, artefakt görüntü adı **ProductionRG** olduğunu görüyoruz. Bu ad, plan ataması sırasında ayarlanan değerle eşleşir.
 
-1. Sol taraftaki **erişim denetimi (IAM)** sayfasını ve ardından **rol atamaları** sekmesini seçin.
+1. Soldaki **Access denetimi (IAM)** sayfasını ve ardından **Rol atamaları** sekmesini seçin.
 
-   Burada, hesabınıza _Bu kaynağın_kapsamında _katkıda_ bulunan rolü verildiğini görüyoruz. ----------------- --------------- _Rol atamaları_ Bu izinler, yapılandırılmış şema kilitleri olan kaynakları yönetmek için de kullanılır.
+   Burada, hesabınıza _Bu kaynak_kapsamında _Katılımcı_ rolü verildiğini görüyoruz. _Atama-iki-rgs-rol atamaları_ ile plan atama kaynak grubu oluşturmak için kullanılan olarak _Sahibi_ rolü vardır. Bu izinler, yapılandırılmış plan kilitleri ile kaynakları yönetmek için de kullanılır.
 
-1. Azure portal içerik haritasında, bir sayfa geri **gitmek için----** ------------- ------------
+1. Azure portalı kırıntısından, bir sayfa geriye gitmek için **Atama-iki rgs-rol atamaları'nı** seçin ve ardından **PreProductionRG** kaynak grubunu seçin.
 
-1. Sol taraftaki **erişim denetimi (IAM)** sayfasını ve ardından **rol atamaları** sekmesini seçin.
+1. Soldaki **Access denetimi (IAM)** sayfasını ve ardından **Rol atamaları** sekmesini seçin.
 
-   Burada, hesabınıza hem _sahip_ hem de _okuyucu_ rollerinin verildiğini, her ikisi de _Bu kaynağın_kapsamını görürsünüz. Şema atamasının aynı zamanda ilk kaynak grubu gibi _sahip_ rolü de vardır.
+   Burada, hesabınızın hem Bu _kaynak_kapsamında hem _Sahibi_ hem de _Okuyucu_ rolleri verildiğini görüyoruz. Plan ataması, ilk kaynak grubu gibi _Sahibi_ rolüne de sahiptir.
 
-1. **Atamaları Reddet** sekmesini seçin.
+1. Atamaları **Reddet** sekmesini seçin.
 
-   Şema ataması, _salt okuma_ şeması kilit modunu zorlamak için dağıtılan kaynak grubunda bir [reddetme ataması](../../../role-based-access-control/deny-assignments.md) oluşturdu. Reddetme ataması, _rol atamaları_ sekmesinde uygun haklara sahip birinin belirli eylemleri almasını engeller. Reddetme ataması _tüm sorumluları_etkiler.
+   Plan ataması, _Yalnızca Salt Plan_ kilidi modunu zorlamak için dağıtılan kaynak grubunda bir [reddet ataması](../../../role-based-access-control/deny-assignments.md) oluşturdu. Reddet ataması, _Rol atamaları_ sekmesinde uygun haklara sahip birinin belirli eylemlerde durmasını engeller. Reddet _atamatüm ilkeleri_etkiler.
 
-1. Reddetme atamasını seçin, ardından sol taraftaki **Izinleri reddedildi** sayfasını seçin.
+1. Reddet atamasını seçin ve ardından soldaki **Reddedilen İzinler** sayfasını seçin.
 
-   Reddetme ataması **\*** ve **eylem** yapılandırmasıyla tüm Işlemleri engellemektedir, ancak **NotActions**aracılığıyla **\*/Read** 'i dışlayarak okuma erişimine izin verir.
+   Reddet **\*** ataması ve **Eylem** yapılandırması ile tüm işlemleri engelliyor, ancak **NotActions**üzerinden ** \*/read'i** hariç tutarak okuma erişimine izin veriyor.
 
-1. Azure portal içerik haritasında, **ön üretim RG-Access Control (IAM)** seçeneğini belirleyin. Ardından sol taraftaki **genel bakış** sayfasını ve ardından **kaynak grubunu sil** düğmesini seçin. Silmeyi onaylamak için _Preüretim RG_ adını girin ve bölmenin altındaki **Sil** ' i seçin.
+1. Azure portalı kırıntısından **PreProductionRG - Access denetimi (IAM) seçeneğini**belirleyin. Ardından soldaki **Genel Bakış** sayfasını ve ardından **kaynak grup** larını sil düğmesini seçin. Silmeyi onaylamak için _PreProductionRG_ adını girin ve bölmenin altındaki **Sil'i** seçin.
 
-   Portal bildirim **silme kaynak grubu ön üretim RG başarısız oldu** . Hata, hesabınız kaynak grubunu silme iznine sahip olsa da, şema atama tarafından erişim reddedilir. Şema atama sırasında _yalnızca okuma_ şeması kilit modunu seçtiğinizi unutmayın. Şema Lock, izin olan bir hesabın, hatta _sahibi_, kaynağın silinmesini engeller. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
+   Portal bildirimi **Delete kaynak grubu PreProductionRG başarısız** görüntülenir. Hata, hesabınızda kaynak grubunu silme izni olsa da, erişimin plan ataması tarafından reddedildiğini belirtir. Plan ataması sırasında _Salt Okunur_ plan kilidi modunu seçtiğimizi unutmayın. Plan kilidi, kaynak silme izni olan bir hesabı, hatta _Sahibin_bile olmasını engeller. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
 
-Bu adımlar, kaynaklarımızın tanımlandığı şekilde oluşturulduğunu ve şema kilitleri izin içeren bir hesaptan bile istenmeyen silme işlemini engellediğini gösterir.
+Bu adımlar, kaynaklarımızın tanımlandığı şekilde oluşturulduğunu ve plan kilitlerinin izinli bir hesaptan bile istenmeyen silinmesini engellediğini gösterir.
 
-## <a name="unassign-the-blueprint"></a>Şema atamasını kaldırma
+## <a name="unassign-the-blueprint"></a>Planı atama
 
-Son adım, şema 'in ve dağıtıldığı kaynakların atanmasını kaldırmakta.
-Atamanın kaldırılması dağıtılan yapıtları kaldırmaz.
+Son adım, planın atamasını ve dağıtdığı kaynakları kaldırmaktır.
+Atamayı kaldırmak, dağıtılan yapıları kaldırmaz.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
 
-1. Sol taraftaki **atanan** şemalar sayfasını seçin. ------------------ _Role-_ ----------
+1. Soldaki **Atanan planlar** sayfasını seçin. _Atama-iki-rgs-rol atamaları_ plan atamasını bulmak ve sonra seçmek için filtreleri kullanın.
 
-1. Sayfanın üst kısmındaki **şema atamasını Kaldır** düğmesini seçin. Onay iletişim kutusunda uyarıyı okuyun ve **Tamam**' ı seçin.
+1. Sayfanın üst kısmındaki **Atama zat ını** seçin. Onay iletişim kutusundaki uyarıyı okuyun ve **ardından Tamam'ı**seçin.
 
-   Şema ataması kaldırıldığında, şema kilitleri da kaldırılır. Oluşturulan kaynaklar, izinleri olan bir hesap tarafından yeniden silinir.
+   Plan ataması kaldırıldığında, plan kilitleri de kaldırılır. Oluşturulan kaynaklar, izinleri olan bir hesap tarafından bir kez daha silinebilir.
 
-1. Azure menüsünden **kaynak grupları** ' nı seçin ve ardından **Üretim RG**' yi seçin.
+1. Azure menüsünden **Kaynak grupları** seçin ve ardından **ProductionRG'yi**seçin.
 
-1. Sol taraftaki **erişim denetimi (IAM)** sayfasını ve ardından **rol atamaları** sekmesini seçin.
+1. Soldaki **Access denetimi (IAM)** sayfasını ve ardından **Rol atamaları** sekmesini seçin.
 
-Her kaynak grubu için güvenlik, dağıtılan rol atamalarına hala sahiptir, ancak şema atamasının artık _sahip_ erişimi yoktur.
+Her kaynak gruplarının güvenliği hala dağıtılan rol atamalarına sahiptir, ancak plan ataması artık _Sahip erişimine_ sahip değildir.
 
-Şema **atamasını kaldırma başarılı oldu** Portal bildirimi göründüğünde bir sonraki adıma geçin.
+Blueprint **atamasını kaldırma** başarılı portal bildirimi göründükten sonra bir sonraki adıma geçin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticiyle işiniz bittiğinde aşağıdaki kaynakları silin:
+Bu öğretici yle tamamlandığında, aşağıdaki kaynakları silin:
 
-- Kaynak grubu _Üretim RG_
-- Kaynak grubu _ön üretim RG_
-- Blueprint Definition _iki-RGS-rol-atamalar_
+- Kaynak grubu _ProductionRG_
+- Kaynak grubu _PreProductionRG_
+- Plan tanımı _iki rgs-rol-atamaları ile_
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, örnek tanımdan yeni bir şema oluşturmayı öğrendiniz. Azure şemaları hakkında daha fazla bilgi edinmek için şema yaşam döngüsü makalesine ilerleyin.
+Bu öğreticide, örnek bir tanımdan yeni bir plan oluşturmayı öğrendiniz. Azure Planları hakkında daha fazla bilgi edinmek için, plan yaşam döngüsü makalesine devam edin.
 
 > [!div class="nextstepaction"]
-> [Şema yaşam döngüsü hakkında bilgi edinin](../concepts/lifecycle.md)
+> [Plan yaşam döngüsü hakkında bilgi edinin](../concepts/lifecycle.md)

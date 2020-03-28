@@ -15,47 +15,47 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79128645"
 ---
-## <a name="test-your-code"></a>Kodunuzu test etme
+## <a name="test-your-code"></a>Kodunuza test etme
 
-Projenizi çalıştırmak için, Visual Studio 'da **F5**' i seçin. Uygulama **MainWindow** , burada gösterildiği gibi görüntülenir:
+Projenizi çalıştırmak için Visual Studio'da **F5'i**seçin. Uygulamanız **MainWindow** burada gösterildiği gibi görüntülenir:
 
-![Uygulamanızı test edin](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
+![Başvurunuzu test edin](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-Uygulamayı ilk kez çalıştırdığınızda ve **çağrı MICROSOFT Graph API** düğmesini seçtiğinizde, oturum açmanız istenir. Test etmek için bir Azure Active Directory hesabı (iş veya okul hesabı) veya bir Microsoft hesabı (live.com, outlook.com) kullanın.
+Uygulamayı ilk çalıştırdığınızda ve **Microsoft Graph API'yi ara** düğmesini seçtiğinizde oturum açmanız istenir. Test etmek için azure Active Directory hesabını (iş veya okul hesabı) veya Microsoft hesabı (live.com, outlook.com) kullanın.
 
 ![Uygulamada oturum açma](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
-### <a name="provide-consent-for-application-access"></a>Uygulama erişimi için onay sağlayın
+### <a name="provide-consent-for-application-access"></a>Uygulama erişimi için onay sağlama
 
-Uygulamanızda ilk kez oturum açtığınızda, uygulamanın profilinize erişmesine izin vermek ve burada gösterildiği gibi, oturumunuzu açmak için de onay vermeniz istenir:
+Uygulamanızda ilk oturum açtığınızda, uygulamanın profilinize erişmesine ve burada gösterildiği gibi oturum açmasına izin vermek için izin vermeniz de istenir:
 
-![Uygulama erişimi için izin verin](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
+![Başvuru erişimi için onayınızı sağlayın](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
-### <a name="view-application-results"></a>Uygulama sonuçlarını görüntüle
+### <a name="view-application-results"></a>Uygulama sonuçlarını görüntüleme
 
-Oturum açtıktan sonra, Microsoft Graph API 'sine yapılan çağrı tarafından döndürülen Kullanıcı profili bilgilerini görmeniz gerekir. Sonuçlar **API çağrı sonuçları** kutusunda görüntülenir. `AcquireTokenInteractive` veya `AcquireTokenSilent` çağrısı aracılığıyla elde edilen belirteç hakkındaki temel bilgiler, **belirteç bilgisi** kutusunda görünür olmalıdır. Sonuçlar aşağıdaki özellikleri içerir:
+Oturum açmadan sonra, Microsoft Graph API'ye yapılan çağrıyla döndürülen kullanıcı profili bilgilerini görmeniz gerekir. Sonuçlar **API Çağrı Sonuçları** kutusunda görüntülenir. Çağrı yoluyla edinilen `AcquireTokenInteractive` veya `AcquireTokenSilent` **Belirteç Bilgileri** kutusunda görünür olması gereken belirteç hakkında temel bilgiler. Sonuçlar aşağıdaki özellikleri içerir:
 
 |Özellik  |Biçimlendir  |Açıklama |
 |---------|---------|---------|
-|**Kullanıcı Adı** |<span>user@domain.com</span> |Kullanıcıyı tanımlamak için kullanılan Kullanıcı adı.|
-|**Belirtecin süresi doluyor** |DateTime |Belirtecin süresinin dolacağı zaman. MSAL, belirteci gerektiği şekilde yenileyerek sona erme tarihini genişletir.|
+|**Username** |<span>user@domain.com</span> |Kullanıcıyı tanımlamak için kullanılan kullanıcı adı.|
+|**Belirteç Süresi Doluyor** |DateTime |Belirteç süresinin dolduğu saat. MSAL, belirteci gerektiği gibi yenileyerek son kullanma tarihini uzatar.|
 
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Kapsamlar ve temsilci izinleri hakkında daha fazla bilgi
 
-Microsoft Graph API 'SI, kullanıcının profilini okumak için *Kullanıcı. Read* kapsamını gerektirir. Bu kapsam, uygulama kayıt portalı 'nda kayıtlı her uygulamada varsayılan olarak otomatik olarak eklenir. Microsoft Graph için diğer API 'Ler ve arka uç sunucunuza yönelik özel API 'Ler için ek kapsamlar gerekebilir. Microsoft Graph API 'SI, kullanıcıların takvimlerini listelemek için *takvimler. Read* Scope 'ı gerektirir.
+Microsoft Graph API' si, kullanıcının profilini okuması için *kullanıcının okuma* kapsamını gerektirir. Bu kapsam, Uygulama Kayıt Portalı'na kayıtlı olan her uygulamada varsayılan olarak otomatik olarak eklenir. Microsoft Graph için diğer API'lerin yanı sıra arka uç sunucunuz için özel API'ler ek kapsamlar gerektirebilir. Microsoft Graph API, kullanıcının takvimlerini listelemek için *Takvimler.Oku* kapsamını gerektirir.
 
-Kullanıcının takvimlerine bir uygulama bağlamında erişmek için, *takvimler.* uygulama kayıt bilgilerine, temsilci olarak oku iznini ekleyin. Ardından, `acquireTokenSilent` çağrısına *takvimlere. Read* kapsamını ekleyin.
+Bir uygulama bağlamında kullanıcının takvimlerine erişmek için, uygulama kayıt bilgilerine *Takvimler.Read* temsilcisi iznini ekleyin. Ardından, `acquireTokenSilent` aramaiçin *Takvimler.Oku* kapsamını ekleyin.
 
 >[!NOTE]
->Kapsam sayısını artırdıkça kullanıcıdan ek Yarışması istenebilir.
+>Kapsam sayısını artırdıkça kullanıcıdan ek izinler istenebilir.
 
 <!--end-collapse-->
 

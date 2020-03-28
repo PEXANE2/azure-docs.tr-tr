@@ -1,6 +1,6 @@
 ---
-title: Java Spring Boot uygulamasında başvuruları Key Vault Azure Uygulama yapılandırması kullanma öğreticisi | Microsoft Docs
-description: Bu öğreticide, bir Java Spring Boot uygulamasından Azure Uygulama yapılandırması Key Vault başvurularını kullanmayı öğreneceksiniz
+title: Java Bahar Önyükleme uygulamasında Azure App Configuration Key Vault referanslarını kullanmak için öğretici | Microsoft Dokümanlar
+description: Bu eğitimde, Bir Java Bahar Önyükleme uygulamasından Azure App Configuration'ın Key Vault referanslarını nasıl kullanacağınızı öğreniyorsunuz
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -15,92 +15,92 @@ ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79216737"
 ---
-# <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Öğretici: Java Spring uygulamasındaki Key Vault başvurularını kullanma
+# <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Öğretici: Java Spring uygulamasında Anahtar Vault referanslarını kullanma
 
-Bu öğreticide, Azure Key Vault ile birlikte Azure uygulama yapılandırma hizmetini kullanmayı öğreneceksiniz. Uygulama yapılandırması ve Key Vault, çoğu uygulama dağıtımında yan yana kullanılan tamamlayıcı hizmetlerdir.
+Bu eğitimde, Azure Anahtar Kasası ile birlikte Azure Uygulama Yapılandırma hizmetini nasıl kullanacağınızı öğreneceksiniz. Uygulama Yapılandırması ve Anahtar Kasası, çoğu uygulama dağıtımında yan yana kullanılan tamamlayıcı hizmetlerdir.
 
-Uygulama yapılandırması, Key Vault depolanan değerlere başvuruda bulunan anahtarlar oluşturarak Hizmetleri birlikte kullanmanıza yardımcı olur. Uygulama yapılandırması böyle anahtarlar oluşturduğunda, değerlerinin kendileri yerine Key Vault değerlerinin URI 'Lerini depolar.
+Uygulama Yapılandırması, Key Vault'ta depolanan değerlere başvuru yapan anahtarlar oluşturarak hizmetleri birlikte kullanmanıza yardımcı olur. App Configuration bu tür anahtarları oluşturduğunda, değerlerin kendileri yerine Key Vault değerlerinin URI'lerini depolar.
 
-Uygulamanız, uygulama yapılandırmasında depolanan diğer anahtarların yaptığı gibi Key Vault başvurularını almak için uygulama yapılandırma istemci sağlayıcısını kullanır. Bu durumda, uygulama yapılandırmasında depolanan değerler Key Vault değerlere başvuran URI 'Lerdir. Bunlar Key Vault değerler veya kimlik bilgileri değildir. İstemci sağlayıcısı anahtarları Key Vault başvuru olarak tanıdığından, değerlerini almak için Key Vault kullanır.
+Uygulamanız, Uygulama Yapılandırması'nda depolanan diğer anahtarlarda olduğu gibi Key Vault başvurularını almak için App Configuration istemci sağlayıcısını kullanır. Bu durumda, Uygulama Yapılandırmasında depolanan değerler, Anahtar Kasası'ndaki değerlere başvuran ÜR'lerdir. Bunlar Key Vault değerleri veya kimlik bilgileri değildir. İstemci sağlayıcı anahtarları Key Vault başvuruları olarak tanıdığından, değerlerini almak için Key Vault'u kullanır.
 
-Uygulamanız hem uygulama yapılandırması hem de Key Vault için düzgün şekilde kimlik doğrulaması yapmaktan sorumludur. İki hizmet doğrudan iletişim kurmaz.
+Uygulamanız, hem Uygulama Yapılandırması hem de Key Vault'a doğru şekilde doğru doğrulamadan sorumludur. İki servis doğrudan iletişim kurmaz.
 
-Bu öğretici kodunuzda Key Vault başvuruların nasıl uygulanacağını gösterir. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce, önce [uygulama yapılandırmasıyla bir Java Spring uygulaması oluşturun](./quickstart-java-spring-app.md) .
+Bu öğretici, anahtarınıza Anahtar Kasa başvurularının nasıl uygulanacağını gösterir. Bu quickstarts tanıtılan web uygulaması üzerine oluşturur. Devam etmeden önce, [önce App Configuration ile java spring uygulaması oluşturun'u](./quickstart-java-spring-app.md) tamamlayın.
 
-Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. Örneğin, [Visual Studio Code](https://code.visualstudio.com/) Windows, MacOS ve Linux işletim sistemleri için kullanılabilen platformlar arası bir kod düzenleyicisidir.
+Bu öğreticideki adımları yapmak için herhangi bir kod düzenleyicisini kullanabilirsiniz. Örneğin, [Visual Studio Code,](https://code.visualstudio.com/) Windows, macOS ve Linux işletim sistemleri için kullanılabilen bir çapraz platform kod düzenleyicisidir.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturun.
-> * Bu anahtarın değerine bir Java Spring uygulamasından erişin.
+> * Key Vault'ta depolanan bir değere başvuran bir Uygulama Yapılandırması anahtarı oluşturun.
+> * Java Spring uygulamasından bu anahtarın değerine erişin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Sürüm 8 ile desteklenen bir [Java Geliştirme Seti (JDK)](https://docs.microsoft.com/java/azure/jdk) .
-* [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3,0 veya üzeri.
+* Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* Sürüm 8 ile desteklenen [bir Java Geliştirme Kiti (JDK).](https://docs.microsoft.com/java/azure/jdk)
+* [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3.0 veya üzeri.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-1. Azure portal, sol üst köşedeki **kaynak oluştur** seçeneğini belirleyin:
+1. Azure portalının sol üst köşesinde **kaynak oluştur** seçeneğini seçin:
 
-    ![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](./media/quickstarts/search-services.png)
-1. Arama kutusuna **Key Vault**girin.
-1. Sonuçlar listesinden sol taraftaki **Anahtar kasaları** ' nı seçin.
-1. **Anahtar kasaları**' nda **Ekle**' yi seçin.
-1. **Anahtar Kasası oluşturma**' da sağ tarafta aşağıdaki bilgileri sağlayın:
-    * Abonelik seçmek için **abonelik** ' ı seçin.
-    * **Kaynak grubu**' nda **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
-    * **Anahtar Kasası adında**, benzersiz bir ad gereklidir. Bu öğretici için **contoso-vault2**girin.
-    * **Bölge** açılan listesinde bir konum seçin.
-1. Diğer **Anahtar Kasası oluşturma** seçeneklerini varsayılan değerleriyle bırakın.
-1. **Oluştur**’u seçin.
+    ![Anahtar kasası oluşturma tamamlandıktan sonra çıktı](./media/quickstarts/search-services.png)
+1. Arama kutusuna, **Anahtar Kasası**girin.
+1. Sonuç listesinden soldaki **Anahtar kasalarını** seçin.
+1. **Anahtar kasalarında** **Ekle'yi**seçin.
+1. Sağdaki **Create anahtar kasasında,** aşağıdaki bilgileri sağlayın:
+    * Abonelik seçmek için **Abonelik'i** seçin.
+    * **Kaynak Grubu'nda** **yeni oluştur'u** seçin ve bir kaynak grubu adı girin.
+    * **Anahtar kasası adında,** benzersiz bir ad gereklidir. Bu öğretici için **Contoso-vault2'yi**girin.
+    * **Bölge** açılır listesinde bir konum seçin.
+1. Diğer **Create anahtar kasa** seçeneklerini varsayılan değerleriyle bırakın.
+1. **Oluştur'u**seçin.
 
-Bu noktada, Azure hesabınız, bu yeni kasaya erişme yetkisine sahip tek bir hesaptır.
+Bu noktada, azure hesabınız bu yeni kasaya erişmeye yetkili tek hesaptır.
 
-![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](./media/quickstarts/vault-properties.png)
+![Anahtar kasası oluşturma tamamlandıktan sonra çıktı](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault’a gizli dizi ekleme
 
-Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmeniz gerekir. Bu durumda, Key Vault alımı test etmek için kullanabileceğiniz bir ileti ekleyin. İleti **ileti**olarak adlandırılır ve "Hello 'dan Key Vault" değerini depolar.
+Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anahtar Kasa sıyrıksını test etmek için kullanabileceğiniz bir ileti ekleyin. İletinin adı **İleti**ve içinde "Key Vault'tan Merhaba" değerini saklarsınız.
 
-1. Key Vault Özellikler sayfalarında **gizli**dizileri ' ni seçin.
-1. **Oluştur/Içeri aktar**' ı seçin.
-1. Gizli dizi **Oluştur** bölmesinde aşağıdaki değerleri girin:
-    * **Karşıya yükleme seçenekleri**: **el ile**girin.
-    * **Ad**: **ileti**girin.
-    * **Değer**: **Key Vault Merhaba**yazın.
-1. Diğerini varsayılan değerleriyle **gizli bir özellikler oluşturmamaya** ayrılın.
-1. **Oluştur**’u seçin.
+1. Key Vault özellikleri sayfalarından **Sırlar'ı**seçin.
+1. **Oluştur/İçe Aktar'ı**seçin.
+1. Gizli **bölmeoluştur'da** aşağıdaki değerleri girin:
+    * **Yükleme seçenekleri**: **Kılavuzu**Girin .
+    * **Adı**: **İleti**girin .
+    * **Değer**: **Key Vault'tan Merhaba**girin.
+1. Diğer invarsayılan değerleri ile **gizli özellikler oluştur** bırakın.
+1. **Oluştur'u**seçin.
 
-## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama Yapılandırmasına Anahtar Kasa sı başvurusu ekleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Tüm kaynakları**seçin ve ardından hızlı başlatmada oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
 
-1. **Yapılandırma Gezgini**' ni seçin.
+1. **Configuration Explorer'ı**seçin.
 
-1. **+ Oluştur** > **Anahtar Kasası başvurusu**' nu seçin ve ardından aşağıdaki değerleri belirtin:
-    * **Anahtar**: **/Application/config.asp keyvaultmessage** seçin
+1. +**Anahtar kasası başvurusu** **oluştur'u** > seçin ve ardından aşağıdaki değerleri belirtin:
+    * **Anahtar**: **Seç /application/config.keyvaultmessage**
     * **Etiket**: Bu değeri boş bırakın.
-    * **Abonelik**, **kaynak grubu**ve **Anahtar Kasası**: önceki bölümde oluşturduğunuz anahtar kasasındaki değerlere karşılık gelen değerleri girin.
-    * **Gizli**: önceki bölümde oluşturduğunuz gizli anahtar adlı **iletiyi** seçin.
+    * **Abonelik**, **Kaynak grubu**ve **Anahtar kasası**: Önceki bölümde oluşturduğunuz anahtar kasasına değerlere karşılık gelen değerleri girin.
+    * **Gizli**: Önceki bölümde oluşturduğunuz **İleti** adlı sırrı seçin.
 
-## <a name="connect-to-key-vault"></a>Key Vault Bağlan
+## <a name="connect-to-key-vault"></a>Anahtar Kasasına Bağlan
 
-1. Bu öğreticide, Key Vault kimlik doğrulaması için bir hizmet sorumlusu kullanırsınız. Bu hizmet sorumlusunu oluşturmak için Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın:
+1. Bu öğreticide, Key Vault kimlik doğrulaması için bir hizmet ilkesi kullanın. Bu hizmet ilkesini oluşturmak için Azure CLI [az reklam sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın:
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
     ```
 
-    Bu işlem bir dizi anahtar/değer çiftini döndürür:
+    Bu işlem bir dizi anahtar/değer çifti döndürür:
 
     ```console
     {
@@ -116,31 +116,31 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     }
     ```
 
-1. Hizmet sorumlusunun anahtar kasanıza erişmesine izin vermek için aşağıdaki komutu çalıştırın:
+1. Servis müdürünün anahtar kasanıza erişebilsin diye aşağıdaki komutu çalıştırın:
 
     ```console
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
-1. Nesne kimliğinizi almak için aşağıdaki komutu çalıştırın ve uygulama yapılandırmasına ekleyin.
+1. Nesne kimliğinizi almak için aşağıdaki komutu çalıştırın ve ardından Uygulama Yapılandırması'na ekleyin.
 
     ```console
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Önceki adımda görüntülenen hizmet sorumlusunun değerlerini kullanarak aşağıdaki ortam değişkenlerini oluşturun:
+1. Önceki adımda görüntülenen hizmet ilkesi değerlerini kullanarak aşağıdaki ortam değişkenlerini oluşturun:
 
-    * **AZURE_CLIENT_ID**: *ClientID*
-    * **AZURE_CLIENT_SECRET**: *ClientSecret*
-    * **AZURE_TENANT_ID**: *tenantıd*
+    * **AZURE_CLIENT_ID**: *clientId*
+    * **AZURE_CLIENT_SECRET**: *clientSecret*
+    * **AZURE_TENANT_ID**: *tenantId*
 
 > [!NOTE]
-> Bu Key Vault kimlik bilgileri yalnızca uygulamanız içinde kullanılır.  Uygulamanız, uygulama yapılandırma hizmeti 'ni eklemeden bu kimlik bilgilerini kullanarak Key Vault doğrudan kimlik doğrulaması yapar.  Key Vault, anahtarları paylaşmadan veya göstermeden hem uygulamanız hem de uygulama yapılandırma hizmetiniz için kimlik doğrulaması sağlar.
+> Bu Anahtar Kasa kimlik bilgileri yalnızca uygulamanızda kullanılır.  Uygulamanız, Uygulama Yapılandırma hizmetini dahil etmeden bu kimlik bilgilerini kullanarak doğrudan Key Vault ile kimlik doğrulaması sağlar.  Key Vault, anahtarları paylaşmadan veya açığa çıkarmadan hem uygulamanız hem de Uygulama Yapılandırma hizmetiniz için kimlik doğrulaması sağlar.
 
-## <a name="update-your-code-to-use-a-key-vault-reference"></a>Kodunuzu Key Vault bir başvuru kullanacak şekilde güncelleştirin
+## <a name="update-your-code-to-use-a-key-vault-reference"></a>Key Vault referansını kullanmak için kodunuzu güncelleştirin
 
-1. *MessageProperties. Java*' yı açın. *Keyvaultmessage*adlı yeni bir değişken ekleyin:
+1. *MessageProperties.java'yı*aç. *keyVaultMessage*adlı yeni bir değişken ekleyin:
 
     ```java
     private String keyVaultMessage;
@@ -154,7 +154,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     }
     ```
 
-1. *Hellocontroller. Java*' yı açın. Key Vault alınan iletiyi dahil etmek için *GetMessage* yöntemini güncelleştirin.
+1. *HelloController.java'yı*açın. Key Vault'tan alınan iletiyi içerecek şekilde *getMessage* yöntemini güncelleştirin.
 
     ```java
     @GetMapping
@@ -163,7 +163,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     }
     ```
 
-1. *AzureCredentials. Java* adlı yeni bir dosya oluşturun ve aşağıdaki kodu ekleyin.
+1. *AzureCredentials.java* adında yeni bir dosya oluşturun ve aşağıdaki kodu ekleyin.
 
     ```java
     package com.example;
@@ -192,7 +192,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     }
     ```
 
-1. *Appconfiguration. Java*adlı yeni bir dosya oluşturun. Ve aşağıdaki kodu ekleyin.
+1. *AppConfiguration.java*adında yeni bir dosya oluşturun. Ve aşağıdaki kodu ekleyin.
 
     ```java
     package com.example;
@@ -210,27 +210,27 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     }
     ```
 
-1. Kaynaklarınızda *yay. fabrikalar* ve Ekle adlı yeni bir dosya oluşturun.
+1. Kaynaklarımeta-INF dizininde *spring.factorys* adlı yeni bir dosya oluşturun ve ekleyin.
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
     com.example.AppConfiguration
     ```
 
-1. Maven ile Spring Boot uygulamanızı derleyin ve çalıştırın, örneğin:
+1. Bahar Önyükleme uygulamanızı Maven ile oluşturun ve örneğin çalıştırın:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-1. Uygulamanız çalıştırıldıktan sonra, uygulamanızı test etmek için *kıvrımlı* kullanın, örneğin:
+1. Uygulamanız çalışmaya devam ettikten sonra, örneğin uygulamanızı test etmek için *bukle'yi* kullanın:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
 
-    Uygulama yapılandırma deposuna girdiğiniz iletiyi görürsünüz. Ayrıca, Key Vault girdiğiniz iletiyi görürsünüz.
+    Uygulama Yapılandırma sıcağında girdiğiniz iletiyi görürsünüz. Key Vault'a girdiğiniz iletiyi de görürsünüz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -238,7 +238,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturdunuz. Java Spring uygulamanızda Özellik bayraklarını nasıl kullanacağınızı öğrenmek için bir sonraki öğreticiye geçin.
+Bu eğitimde, Key Vault'ta depolanan bir değere başvuran bir Uygulama Yapılandırması anahtarı oluşturdunuz. Java Spring uygulamanızda özellik bayraklarını nasıl kullanacağınızı öğrenmek için bir sonraki öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
 > [Yönetilen kimlik tümleştirmesi](./quickstart-feature-flag-spring-boot.md)

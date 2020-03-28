@@ -1,38 +1,38 @@
 ---
-title: Öğretici-Azure Spring Cloud uygulamanıza bir Azure Cosmos DB bağlama
-description: Bu öğreticide, Azure Cosmos DB Azure Spring Cloud uygulamanıza nasıl bağlayacağınızı öğrenin
+title: Öğretici - Azure Cosmos DB'yi Azure İlkbahar Bulutu uygulamanıza bağlama
+description: Bu eğitimde, Azure Cosmos DB'yi Azure İlkbahar Bulutu uygulamanıza nasıl bağlatıyarız öğrenin
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
 ms.openlocfilehash: 1566b6ab59e858217adcf6818e1d62f851f37eb1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277559"
 ---
-# <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB veritabanını Azure Spring Cloud uygulamanıza bağlama
+# <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB veritabanını Azure İlkbahar Bulutu uygulamanıza bağlama
 
-Spring Boot uygulamalarınızı el ile yapılandırmak yerine Azure Spring Cloud kullanarak Azure hizmetlerini otomatik olarak uygulamalarınıza bağlayabilirsiniz. Bu makalede, uygulamanızı bir Azure Cosmos DB veritabanına nasıl bağlayacağınız gösterilmektedir.
+Bahar Önyükleme uygulamalarınızı el ile yapılandırmak yerine, Azure Bulutu'nu kullanarak belirli Azure hizmetlerini uygulamalarınız için otomatik olarak bağlayabilirsiniz. Bu makalede, uygulamanızın Azure Cosmos DB veritabanına nasıl bağlanılmayı gösterin.
 
 Ön koşullar:
 
-* Dağıtılmış bir Azure yay bulutu örneği. Kullanmaya başlamak için [Azure CLI aracılığıyla dağıtmaya yönelik hızlı başlangıç](spring-cloud-quickstart-launch-app-cli.md) Öğreticimizi izleyin.
-* En düşük izin düzeyi katkıda bulunan Azure Cosmos DB hesabı.
+* Dağıtılmış bir Azure İlkbahar Bulutu örneği. Başlamak [için Azure CLI üzerinden dağıtıma hızlı bir şekilde başlamamızı](spring-cloud-quickstart-launch-app-cli.md) takip edin.
+* En az katılımcı izin düzeyine sahip bir Azure Cosmos DB hesabı.
 
-## <a name="bind-azure-cosmos-db"></a>Bağlama Azure Cosmos DB
+## <a name="bind-azure-cosmos-db"></a>Azure Cosmos DB'yi Bağlama
 
-Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir. Aşağıdaki yordamda bunların nasıl kullanılacağı gösterilmektedir:
+Azure Cosmos DB'de bağlamayı destekleyen beş farklı API türü vardır. Aşağıdaki yordam, bunların nasıl kullanılacağını gösterir:
 
-1. Azure Cosmos DB veritabanı oluşturun. Yardım için [veritabanı oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) hızlı başlangıç kılavuzuna bakın. 
+1. Azure Cosmos DB veritabanı oluşturun. Yardım için bir [veritabanı oluşturmaya](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) hızlı başlamaya bakın. 
 
-1. Veritabanınızın adını kaydedin. Bu yordam için veritabanı adı **TestDB**' dir.
+1. Veritabanınızın adını kaydedin. Bu yordam için veritabanı adı **testdb'dir.**
 
-1. Azure Spring Cloud uygulamanızın Pod. xml dosyasına aşağıdaki bağımlılıklardan birini ekleyin. API türü için uygun olan bağımlılığı seçin.
+1. Azure İlkbahar Bulutu uygulamanızın pom.xml dosyasına aşağıdaki bağımlılıklardan birini ekleyin. API türünüze uygun bağımlılığı seçin.
 
-    * API türü: çekirdek (SQL)
+    * API türü: Çekirdek (SQL)
 
       ```xml
       <dependency>
@@ -70,7 +70,7 @@ Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir. Aş
       </dependency>
       ```
 
-    * API türü: Azure tablosu
+    * API türü: Azure Tablosu
 
       ```xml
       <dependency>
@@ -80,22 +80,22 @@ Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir. Aş
       </dependency>
       ```
 
-1. Geçerli dağıtımı güncelleştirmek için `az spring-cloud app update` kullanın veya yeni bir dağıtım oluşturmak için `az spring-cloud app deployment create` kullanın. Bu komutlar uygulamayı yeni bağımlılık ile güncelleştirir veya oluşturur.
+1. Geçerli `az spring-cloud app update` dağıtımı güncelleştirmek veya `az spring-cloud app deployment create` yeni bir dağıtım oluşturmak için kullanın. Bu komutlar, yeni bağımlılıkla uygulamayı günceller veya oluşturur.
 
-1. Azure portal Azure Spring Cloud Service sayfanıza gidin. **Uygulama panosu** ' na gidin ve Azure Cosmos DB bağlanacak uygulamayı seçin. Bu uygulama, önceki adımda güncelleştirdiğiniz veya dağıttığınız aynı bir uygulamadır.
+1. Azure portalındaki Azure İlkbahar Buluthizmet sayfanıza gidin. Uygulama **Panosu'na** gidin ve Azure Cosmos DB'ye bağlamak için uygulamayı seçin. Bu uygulama, önceki adımda güncelleştirdiğiniz veya dağıttığınız uygulamayla aynıdır.
 
-1. **Hizmet bağlaması**' nı seçin ve **hizmet bağlamayı oluştur**' u seçin. Formu doldururken şunları seçin:
+1. **Hizmet bağlamayı**seçin ve **hizmet bağlama yı**seçin. Formu doldurmak için şunları seçin:
    * **Bağlama türü** değeri **Azure Cosmos DB**.
    * API türü.
-   * Veritabanı adınız.
+   * Veritabanı adın.
    * Azure Cosmos DB hesabı.
 
     > [!NOTE]
     > Cassandra kullanıyorsanız, veritabanı adı için bir anahtar alanı kullanın.
 
-1. Uygulama sayfasında **Yeniden Başlat** ' i seçerek uygulamayı yeniden başlatın.
+1. Uygulama sayfasında **Yeniden Başlat'ı** seçerek uygulamayı yeniden başlatın.
 
-1. Hizmetin doğru şekilde bağlandığından emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. `property` alan bu örneğe benzer olmalıdır:
+1. Hizmetin doğru şekilde bağlı olduğundan emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. Alan `property` bu örneğe benzer olmalıdır:
 
     ```
     azure.cosmosdb.uri=https://<some account>.documents.azure.com:443
@@ -105,7 +105,7 @@ Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir. Aş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Spring Cloud uygulamanızı bir Azure Cosmos DB veritabanına bağlamayı öğrendiniz. Uygulamanızı Redsıs önbelleği için bir Azure önbelleğine bağlamayı öğrenmek için bir sonraki öğreticiye geçin.
+Bu eğitimde, Azure İlkbahar Bulutu uygulamanızı azure cosmos DB veritabanına bağlamayı öğrendiniz. Uygulamanızı Redis önbelleği için azure önbelleğine nasıl bağlatıracağınıöğrenmek için bir sonraki öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Redsıs önbelleği için bir Azure önbelleğine bağlamayı öğrenin](spring-cloud-tutorial-bind-redis.md)
+> [Redis önbelleği için Azure Önbelleğine nasıl bağlanacağınız hakkında bilgi edinin](spring-cloud-tutorial-bind-redis.md)

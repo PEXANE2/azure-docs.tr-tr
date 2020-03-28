@@ -1,50 +1,50 @@
 ---
-title: Öğretici-şablona parametreler ekleme
-description: Yeniden kullanılabilir hale getirmek için Azure Resource Manager şablonunuza parametreler ekleyin.
+title: Öğretici - şablona parametre ekleme
+description: Yeniden kullanılabilir hale getirmek için Azure Kaynak Yöneticisi şablonunuza parametreler ekleyin.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 930ae27acf09dfa54638e27c938d7680817cbbab
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: b4f8d5098fc9cf2f91139979cae430594edac5af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370755"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369863"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza parametreler ekleme
+# <a name="tutorial-add-parameters-to-your-arm-template"></a>Öğretici: ARM şablonunuza parametreler ekleme
 
-[Önceki öğreticide](template-tutorial-add-resource.md), şablona bir depolama hesabı eklemeyi ve bunu dağıtmayı öğrendiniz. Bu öğreticide, parametreleri ekleyerek şablonu geliştirmeyi öğrenirsiniz. Bu öğreticinin tamamlanabilmesi yaklaşık **14 dakika** sürer.
+Önceki [öğreticide,](template-tutorial-add-resource.md)şablona bir depolama hesabı eklemeyi ve dağıtmayı öğrendiniz. Bu eğitimde, parametreler ekleyerek Azure Kaynak Yöneticisi (ARM) şablonunu nasıl geliştireceğinizi öğrenirsiniz. Bu öğreticinin tamamlanması yaklaşık **14 dakika** sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-[Kaynaklar hakkında öğreticiyi](template-tutorial-add-resource.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
+[Kaynaklarla ilgili eğitimi](template-tutorial-add-resource.md)tamamlamanızı öneririz, ancak gerekli değildir.
 
-Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell veya Azure CLI ile Visual Studio Kodu'na sahip olmalısınız. Daha fazla bilgi için [şablon araçlarına](template-tutorial-create-first-template.md#get-tools)bakın.
 
 ## <a name="review-template"></a>Şablonu gözden geçir
 
-Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
+Önceki öğreticinin sonunda, şablonunuzun aşağıdaki JSON'u vardı:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
-Bu şablonla ilgili bir sorun olduğunu fark etmiş olabilirsiniz. Depolama hesabı adı sabit kodlanmış. Bu şablonu yalnızca aynı depolama hesabını her seferinde dağıtmak için kullanabilirsiniz. Bir depolama hesabını farklı bir adla dağıtmak için, dağıtımlarınızı otomatik hale getirmenin pratik bir yolu olmayan yeni bir şablon oluşturmanız gerekir.
+Bu şablonda bir sorun olduğunu fark etmiş olabilirsiniz. Depolama hesabı adı sabit kodlanmış. Bu şablonu yalnızca her seferinde aynı depolama hesabını dağıtmak için kullanabilirsiniz. Farklı bir ada sahip bir depolama hesabı dağıtmak için, dağıtımlarınızı otomatikleştirmenin pratik bir yolu olmadığı belli olan yeni bir şablon oluşturmanız gerekir.
 
-## <a name="make-template-reusable"></a>Şablonu yeniden kullanılabilir yap
+## <a name="make-template-reusable"></a>Şablonu yeniden kullanılabilir hale getirme
 
-Şablonunuzu yeniden kullanılabilir hale getirmek için, depolama hesabı adında geçiş yapmak üzere kullanabileceğiniz bir parametre ekleyelim. Aşağıdaki örnekteki vurgulanmış JSON, şablonunuzda nelerin değiştiğini gösterir. **Storagename** parametresi bir dize olarak tanımlanır. Çok uzun olan adların önlenmesi için en fazla uzunluk 24 karakter olarak ayarlanır.
+Şablonunuzu yeniden kullanılabilir hale getirmek için, bir depolama hesabı adına geçmek için kullanabileceğiniz bir parametre ekleyelim. Aşağıdaki örnekte vurgulanan JSON şablonunuzda nelerin değiştiğini gösterir. **storageName** parametresi bir dize olarak tanımlanır. En uzun, çok uzun olan adları önlemek için 24 karakterolarak ayarlanır.
 
-Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
+Dosyanın tamamını kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Şablonu dağıtalım. Aşağıdaki örnek, şablonu Azure CLı veya PowerShell ile dağıtır. Depolama hesabı adını dağıtım komutundaki değerlerden biri olarak sağladığınızdan emin olun. Depolama hesabı adı için, önceki öğreticide kullandığınız adı belirtin.
+Şablonu dağıtalım. Aşağıdaki örnekte, şablonAzure CLI veya PowerShell ile dağıtılır. Depolama hesabı adını dağıtım komutundaki değerlerden biri olarak verdiğinize dikkat edin. Depolama hesabı adı için, önceki öğreticide kullandığınız adı sağlayın.
 
-Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
+Kaynak grubunu oluşturmadıysanız, [bkz.](template-tutorial-create-first-template.md#create-resource-group) Örnek, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi **şablonDosya** değişkenini şablon dosyasına giden yola ayarladığınız varsayar.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -55,6 +55,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bu dağıtım komutunu çalıştırmak için Azure CLI'nin [en son sürümüne](/cli/azure/install-azure-cli) sahip olmalısınız.
 
 ```azurecli
 az deployment group create \
@@ -68,27 +70,27 @@ az deployment group create \
 
 ## <a name="understand-resource-updates"></a>Kaynak güncelleştirmelerini anlama
 
-Önceki bölümde, daha önce oluşturduğunuz aynı ada sahip bir depolama hesabı dağıttınız. Kaynağın yeniden dağıtım tarafından nasıl etkilendiğini merak ediyor olabilirsiniz.
+Önceki bölümde, daha önce oluşturduğunuz aynı ada sahip bir depolama hesabı dağıttınız. Kaynağın yeniden dağıtımdan nasıl etkilendiğini merak ediyor olabilirsiniz.
 
-Kaynak zaten varsa ve özelliklerde hiçbir değişiklik algılanırsa hiçbir işlem yapılmaz. Kaynak zaten varsa ve bir özellik değiştiyse, kaynak güncellenir. Kaynak yoksa, oluşturulur.
+Kaynak zaten varsa ve özelliklerde değişiklik algılanmamışsa, hiçbir işlem yapılmaz. Kaynak zaten varsa ve bir özellik değiştiyse, kaynak güncelleştirilir. Kaynak yoksa, oluşturulur.
 
-Güncelleştirmeleri işlemenin bu yolu, şablonunuz bir Azure çözümü için ihtiyaç duyduğunuz tüm kaynakları içerebileceği anlamına gelir. Şablonu güvenle yeniden gönderebilir ve kaynakların değiştirildiğini veya yalnızca gerektiğinde oluşturulduğunu bilirsiniz. Örneğin, depolama hesabınıza dosya eklediyseniz depolama hesabını bu dosyaları kaybetmeden yeniden dağıtabilirsiniz.
+Güncelleştirmeleri işleme nin bu yolu, şablonunuzun Bir Azure çözümü için ihtiyacınız olan tüm kaynakları içerebileceği anlamına gelir. Şablonu güvenle yeniden dağıtabilir ve kaynakların yalnızca gerektiğinde değiştirildiğini veya oluşturulduğunu bilebilirsiniz. Örneğin, depolama hesabınıza dosya eklediyseniz, bu dosyaları kaybetmeden depolama hesabını yeniden dağıtabilirsiniz.
 
 ## <a name="customize-by-environment"></a>Ortama göre özelleştirme
 
-Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıtımı özelleştirmenizi sağlar. Örneğin, geliştirme, test ve üretim için bir ortama dağıtıp dağıtsanız farklı değerleri geçirebilirsiniz.
+Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıtımı özelleştirmenizi sağlar. Örneğin, geliştirme, test ve üretim için bir ortama dağıtım yapıp yaptığınıza bağlı olarak farklı değerleri geçebilirsiniz.
 
-Önceki şablon her zaman bir Standard_LRS depolama hesabı dağıttı. Ortama bağlı olarak farklı SKU 'Ları dağıtma esnekliği isteyebilirsiniz. Aşağıdaki örnek, SKU için bir parametre eklemek için yapılan değişiklikleri gösterir. Tüm dosyayı kopyalayın ve şablonunuzun üzerine yapıştırın.
+Önceki şablon her zaman bir Standard_LRS depolama hesabı dağıtılır. Ortama bağlı olarak farklı SNU'lar dağıtmak için esneklik isteyebilirsiniz. Aşağıdaki örnekte SKU için bir parametre eklemek için değişiklikler gösterilmektedir. Dosyanın tamamını kopyalayın ve şablonunuzun üzerine yapıştırın.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-**Storagesku** parametresinin varsayılan bir değeri vardır. Bu değer, dağıtım sırasında bir değer belirtilmediğinde kullanılır. Ayrıca, izin verilen değerlerin bir listesini içerir. Bu değerler, bir depolama hesabı oluşturmak için gereken değerlerle eşleşir. Şablon kullanıcılarının çalışmayan SKU 'Larda geçmesini istemezsiniz.
+**StorageSKU** parametresi varsayılan değere sahiptir. Bu değer, dağıtım sırasında bir değer belirtilmediğinde kullanılır. Ayrıca izin verilen değerlerin bir listesi vardır. Bu değerler, bir depolama hesabı oluşturmak için gereken değerlerle eşleşir. Şablonunuzun kullanıcılarının çalışmayan SDO'larda geçmesini istemezsiniz.
 
 ## <a name="redeploy-template"></a>Şablonu yeniden dağıtma
 
-Yeniden dağıtım için hazırsınız. Varsayılan SKU **Standard_LRS**olarak ayarlandığı için, bu parametre için bir değer sağlamanız gerekmez.
+Tekrar göreve hazırsın. Varsayılan SKU **Standard_LRS**olarak ayarlandığı için, bu parametre için bir değer sağlamanız gerekmez.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -110,9 +112,9 @@ az deployment group create \
 
 ---
 
-Şablonunuzun esnekliğini görmek için yeniden dağıtmanıza izin verin. Bu kez, SKU parametresini **Standard_GRS**olarak ayarlayın. Farklı bir depolama hesabı oluşturmak için yeni bir ad geçirebilir ya da mevcut depolama hesabınızı güncelleştirmek için aynı adı kullanabilirsiniz. Her iki seçenek de çalışır.
+Şablonunuzun esnekliğini görmek için yeniden dağıtalım. Bu kez SKU parametresini **Standard_GRS**ayarlayın. Farklı bir depolama hesabı oluşturmak için yeni bir ad geçebilir veya varolan depolama hesabınızı güncelleştirmek için aynı adı kullanabilirsiniz. Her iki seçenek de çalışır.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -135,9 +137,9 @@ az deployment group create \
 
 ---
 
-Son olarak, bir test çalıştıralım ve izin verilen değerlerden biri olmayan bir SKU 'ya geçirdiğinizde ne olacağını görelim. Bu durumda, şablonunuzda bir kullanıcının **temel** olarak SKU 'lardan biri olduğu senaryoya test ederiz.
+Son olarak, bir test daha çalıştıralım ve izin verilen değerlerden biri olmayan bir SKU'yu geçtiğinde ne olacağını görelim. Bu durumda, şablonunuzun bir kullanıcısının **temel** SNU'lardan biri olduğunu düşündüğü senaryoyu test ediyoruz.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -160,22 +162,22 @@ az deployment group create \
 
 ---
 
-Komut, hangi değerlere izin verileceğini belirten bir hata iletisiyle hemen başarısız olur. Kaynak Yöneticisi, dağıtım başlamadan önce hatayı tanımlar.
+Komut, hangi değerlere izin verildiğini belirten bir hata iletisiyle hemen başarısız olur. Kaynak Yöneticisi dağıtım başlamadan önce hatayı tanımlar.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
+Bir sonraki öğreticiye geçiyorsanız, kaynak grubunu silmeniz gerekmez.
 
-Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
+Şimdi duruyorsanız, kaynak grubunu silerek dağıttığınız kaynakları temizlemek isteyebilirsiniz.
 
-1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
+1. Azure portalından sol menüden **Kaynak grubunu** seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
+4. Üst menüden **kaynak grubunu sil'i** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Parametreleri ekleyerek [ilk öğreticide](template-tutorial-create-first-template.md) oluşturulan şablonu geliştirdik. Sonraki öğreticide, Şablon işlevleri hakkında bilgi edineceksiniz.
+Parametreler ekleyerek [ilk öğreticide](template-tutorial-create-first-template.md) oluşturulan şablonu geliştirdiniz. Bir sonraki öğreticide, şablon işlevleri hakkında bilgi edineceksiniz.
 
 > [!div class="nextstepaction"]
 > [Şablon işlevleri ekleme](template-tutorial-add-functions.md)

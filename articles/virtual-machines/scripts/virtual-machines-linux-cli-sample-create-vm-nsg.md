@@ -1,6 +1,6 @@
 ---
-title: 'CLı örneği: iç ve dış NSG ile iki VM oluşturma'
-description: Azure CLı kullanarak ağ trafiğini güvenli hale getirmek için iç ve dış NSG ile iki VM oluşturun.
+title: 'CLI Örnek: İç ve dış NSG ile iki VM oluşturun'
+description: Azure CLI'yi kullanarak ağ trafiğini güvence altına almak için dahili ve harici NSG'li iki VM oluşturun.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -17,10 +17,10 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458381"
 ---
 # <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>NSG kullanarak sanal makineler arasında güvenli ağ trafiği

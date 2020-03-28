@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos hesabına yönelik anahtar ve bağlantı dizesi işlemlerini almak için PowerShell betiği
-description: Azure PowerShell betiği örneği-Azure Cosmos hesabı için hesap anahtarı ve bağlantı dizesi işlemleri
+title: Azure Cosmos DB hesabı için anahtar ve bağlantı dize işlemleri almak için PowerShell komut dosyası
+description: Azure PowerShell komut dosyası örneği - Azure Cosmos DB hesabı için hesap anahtarı ve bağlantı dize işlemleri
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 96be5f09cddf5eefec6b471d30cf87d0f687485d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f6dd9d1290ea9d18fc6a5f18196585926b2ab91a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441528"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366095"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>PowerShell kullanarak bir Azure Cosmos hesabı için bağlantı dizesi ve hesap anahtarı işlemleri
+# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-db-account-using-powershell"></a>PowerShell'i kullanarak bir Azure Cosmos DB hesabı için bağlantı dizesi ve hesap anahtarı işlemleri
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441528"
 ## <a name="sample-script"></a>Örnek betik
 
 > [!NOTE]
-> Bu örnekte bir SQL (Core) API hesabı kullanılması gösterilmektedir. Bu örneği diğer API 'Ler için kullanmak üzere ilgili özellikleri kopyalayın ve API 'ye özel betiğe uygulayın
+> Bu örnek, bir SQL API hesabı nın kullanılmasını gösterir. Bu örneği diğer API'ler için kullanmak için, ilgili özellikleri kopyalayın ve API'ye özgü komut dosyanıza uygulayın
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 
@@ -40,9 +40,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Kaynak üzerinde bir eylemi çağırır. |
-|**Azure Kaynak grupları**| |
+|**Azure Cosmos DB**| |
+| [Al-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) | Cosmos DB Hesabı için bağlantı dizesini veya anahtarını (salt okuma yazma veya salt okunur) alır. |
+| [Yeni-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey) | Cosmos DB Hesabı için belirtilen anahtarı yeniden oluşturun. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

@@ -1,23 +1,23 @@
 ---
-title: 'PowerShell: Web sunucusu günlükleri ile Izleme'
-description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, Web sunucusu günlükleri ile bir uygulamanın nasıl izleneceğini gösterir.
+title: 'PowerShell: Web sunucusu günlükleri ile monitör'
+description: Uygulama Hizmeti'nin dağıtımını ve yönetimini otomatikleştirmek için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Bu örnek, web sunucusu günlükleri ile bir uygulamayı nasıl izleyişgösteriz gösterir.
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 79b5ef411abde3a4ef293516a43adaa1e669b6d9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74684619"
 ---
-# <a name="monitor-a-web-appwith-web-server-logs"></a>Web sunucusu günlükleri ile bir Web uygulamasını izleme
+# <a name="monitor-a-web-appwith-web-server-logs"></a>Web sunucusu günlükleri ile bir web uygulamasını izleme
 
 Bu senaryoda bir kaynak grubu, app service planı ve web uygulaması oluşturacaksınız ve web uygulamasını web sunucusu günlüklerini etkinleştirecek şekilde yapılandıracaksınız. Ardından, gözden geçirmek üzere günlük dosyalarını indireceksiniz.
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview) bulunan yönergeleri kullanarak Azure PowerShell’i yükleyin ve ardından Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell'i yükleyin ve ardından Azure ile bağlantı oluşturmak için çalıştırın. `Connect-AzAccount`
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -40,10 +40,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service planı oluşturur. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Bir web uygulaması oluşturur. |
+| [Yeni-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service planı oluşturur. |
+| [Yeni-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Bir web uygulaması oluşturur. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Web uygulamasının yapılandırmasını değiştirir. |
-| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | Web uygulamasının ölçümlerini alır. |
+| [Al-Azwebappmetric](/powershell/module/az.websites/get-azwebappmetric) | Web uygulamasının ölçümlerini alır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

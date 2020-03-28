@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: Python 'da ilk Azure ML modelinizi eğitme"
+title: "Öğretici: Python'da ilk Azure ML modelinizi eğitin"
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide Azure Machine Learning temel tasarım düzenlerini öğrenir ve diabetes veri kümesine bağlı olarak basit bir scikit-öğrenme modeli eğitirsiniz.
+description: Bu eğitimde, Azure Machine Learning'deki temel tasarım modellerini öğrenir ve diyabet veri kümesine dayalı basit bir scikit-learn modeli eğitin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,60 +11,60 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238681"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
+# <a name="tutorial-train-your-first-ml-model"></a>Öğretici: Tren ilk ML modeli
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. Önceki öğreticide [bir çalışma alanı oluşturdunuz ve bir geliştirme ortamı seçtiniz](tutorial-1st-experiment-sdk-setup.md). Bu öğreticide Azure Machine Learning temel tasarım düzenlerini öğrenir ve diabetes veri kümesine bağlı olarak basit bir scikit-öğrenme modeli eğitirsiniz. Bu Öğreticiyi tamamladıktan sonra, daha karmaşık denemeleri ve iş akışları geliştirmek üzere ölçeklenebilmeniz için SDK 'nın pratik bilgisine sahip olursunuz.
+Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. Önceki öğreticide, [bir çalışma alanı oluşturdunuz ve bir geliştirme ortamı seçtiniz.](tutorial-1st-experiment-sdk-setup.md) Bu eğitimde, Azure Machine Learning'deki temel tasarım modellerini öğrenir ve diyabet veri kümesine dayalı basit bir scikit-learn modeli eğitin. Bu öğreticiyi tamamladıktan sonra, daha karmaşık deneyler ve iş akışları geliştirmeye kadar ölçeklendirmek için SDK'nın pratik bilgisine sahip olabilirsiniz.
 
 Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Çalışma alanınızı bağlayın ve bir deneme oluşturun
-> * Veri yükleme ve scikit 'i eğitme-modelleri öğrenme
-> * Portalda Eğitim sonuçlarını görüntüleme
+> * Veri yükleme ve tren scikit-öğren modelleri
+> * Seminer sonuçlarını portalda görüntüleme
 > * En iyi modeli alma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md)çalıştırmanın bir parçasıdır.
+Tek ön koşul bu öğretici, Kurulum ortamı [ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md)nın bir bölümünü çalıştırmaktır.
 
-Öğreticinin bu bölümünde, birinci bölüm sonunda açılan örnek Jupyter Not defteri *öğreticileri/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-train. ipynb* 'de kodu çalıştırın. Bu makalede, not defterindeki aynı koda adım adım yol gösterilir.
+Öğreticinin bu bölümünde, jupyter dizüstü bilgisayar *öğreticiler/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* bölümünde açılan örnek kodu çalıştırın. Bu makale, not defterindeki kodun üzerinden geçer.
 
-## <a name="open-the-notebook"></a>Not defterini açın
+## <a name="open-the-notebook"></a>Not defterini açma
 
-1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
+1. [Azure Machine Learning stüdyosunda](https://ml.azure.com/)oturum açın.
 
-1. [Bir kısım](tutorial-1st-experiment-sdk-setup.md#open)içinde gösterildiği gibi, klasörünüzde **-1. deneme-SDK-tren. ipynb öğreticisini** açın.
+1. Birinci [bölümde](tutorial-1st-experiment-sdk-setup.md#open)gösterildiği gibi **öğretici-1st-experiment-sdk-train.ipynb** dosyanızda açın.
 
 
 > [!Warning]
-> Jupyter arabiriminde *Yeni* bir Not **defteri oluşturmayın!** Bu öğretici için **gereken tüm kod ve verileri** içeren Not defteri *öğreticileri/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-train. ipynb* .
+> Jupyter arayüzünde *yeni* bir dizüstü bilgisayar **oluşturmayın!** Not defteri *öğreticileri/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* bu öğretici için **gerekli tüm kod ve verileri** içerir.
 
-## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
+## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlayın ve deneme oluşturun
 
 > [!Important]
-> Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
+> Bu makalenin geri kalanı, not defterinde gördüğünüz le aynı içeriği içerir.  
 >
-> Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
-> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
+> Kodu çalıştırırken okumak istiyorsanız hemen Jupyter not defterine geçin. 
+> Not defterinde tek bir kod hücresini çalıştırmak için kod hücresini tıklatın ve **Shift+Enter'a**basın. Veya tüm dizüstü bilgisayarı üst araç çubuğundan **Çalıştır'ı** seçerek tüm dizüstü bilgisayarı çalıştırın.
 
-`Workspace` sınıfını içeri aktarın ve bu işlevi kullanarak abonelik bilgilerinizi dosya `config.json` yükleyin `from_config().` bu, varsayılan olarak geçerli dizindeki JSON dosyasını arar, ancak `from_config(path="your/file/path")`kullanarak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz. Bir bulut Not defteri sunucusunda, dosya otomatik olarak kök dizinde bulunur.
+Sınıfı `Workspace` içeri aktarın ve abonelik bilgilerinizi `config.json` dosyadan `from_config().` bu işlevi kullanarak yükleyin Bu varsayılan olarak geçerli dizindeki JSON dosyasını arar, `from_config(path="your/file/path")`ancak dosyayı kullanarak işaret etmek için bir yol parametresi de belirtebilirsiniz. Bulut not defteri sunucusunda, dosya otomatik olarak kök dizinindedir.
 
-Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir.
+Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırın ve kimlik doğrulama belirteci girin.
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Şimdi çalışma alanınızda bir deneme oluşturun. Deneme, deneme koleksiyonunu temsil eden başka bir temel bulut kaynağıdır (bireysel model çalıştırmaları). Bu öğreticide, çalıştırma oluşturmak ve Azure Machine Learning Studio 'daki model öğreticinizi izlemek için denemeyi kullanırsınız. Parametreler, çalışma alanı başvurunuz ve deneme için bir dize adı içerir.
+Şimdi çalışma alanınızda bir deneme oluşturun. Deneme, deneme koleksiyonunu (tek tek model çalıştırmaları) temsil eden başka bir temel bulut kaynağıdır. Bu öğreticide, azure machine learning stüdyosunda çalıştırmalar oluşturmak ve model eğitiminizi izlemek için denemeyi kullanırsınız. Parametreler çalışma alanı başvurunuzu ve deneme için bir dize adını içerir.
 
 
 ```python
@@ -72,9 +72,9 @@ from azureml.core import Experiment
 experiment = Experiment(workspace=ws, name="diabetes-experiment")
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>Veri yükleme ve eğitim için hazırlanma
+## <a name="load-data-and-prepare-for-training"></a>Verileri yükleyin ve eğitime hazırlanın
 
-Bu öğreticide, diabetes ilerlemesini tahmin etmek için Age, cinsiyet ve BMI gibi özellikleri kullanan diabetes veri kümesini kullanırsınız. [Azure Open DataSet](https://azure.microsoft.com/services/open-datasets/) sınıfından verileri yükleyin ve `train_test_split()`kullanarak eğitim ve test kümelerine ayırın. Bu işlev, modeli aşağıdaki eğitimin test edilmesi için kullanılacak görülmeyen verileri içerecek şekilde ayırır.
+Bu öğretici için, diyabet hastalığının ilerlemesini tahmin etmek için yaş, cinsiyet ve BMI gibi özellikleri kullanan diyabet veri kümesini kullanırsınız. [Azure Açık Veri Kümeleri](https://azure.microsoft.com/services/open-datasets/) sınıfındaki verileri yükleyin ve kullanarak `train_test_split()`eğitim ve test kümelerine bölün. Bu işlev verileri ayırır, böylece model, eğitimden sonra test etmek için kullanılacak görünmeyen verilere sahiptir.
 
 
 ```python
@@ -89,9 +89,9 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>Modeli eğitme
 
-Basit bir scikit-eğitim modeli, küçük ölçekli eğitim için kolayca yerel olarak yapılabilir, ancak onlarca farklı özellik bilimiyle ve hiper parametre ayarları ile birçok yinelemeye eğitim yaparken, eğitilen modelleri ve bunları nasıl kullanabileceğinizi izlemek kolaydır. bunları eğitimli. Aşağıdaki tasarım modelinde, bulutta öğreticinizi kolayca izlemek için SDK 'nın nasıl kullanılacağı gösterilmektedir.
+Basit bir scikit-learn modelini küçük ölçekli eğitim için yerel olarak kolayca eğitim yapılabilir, ancak düzinelerce farklı özellik permütasyonu ve hiperparametre ayarlarıyla birçok yineleme yitirdiğinizde, hangi modelleri eğittiğinizi ve nasıl eğittiğinizi kolayca gözden kaçırabilirsiniz. onları eğitti. Aşağıdaki tasarım deseni, buluttaki eğitiminizi kolayca izlemek için SDK'dan nasıl yararlanabileceğinizi gösterir.
 
-Farklı hiper parametre alfa değerleri aracılığıyla bir döngüdeki modelleri gösteren bir betik oluşturun.
+Sırt modellerini farklı hiperparametre alfa değerleri arasında bir döngü içinde eğiten bir komut dosyası oluşturun.
 
 
 ```python
@@ -120,36 +120,36 @@ for alpha in alphas:
     run.complete()
 ```
 
-Yukarıdaki kod şunları gerçekleştirir:
+Yukarıdaki kod aşağıdakileri gerçekleştirir:
 
-1. `alphas` dizisindeki her Alfa hiper parametre değeri için, deneme içinde yeni bir çalıştırma oluşturulur. Alfa değeri, her çalıştırma arasında ayrım yapmak için günlüğe kaydedilir.
-1. Her çalıştırmada, bir Ridge modeli örneği oluşturulur, eğitilmiş ve tahmin çalıştırmaları için kullanılır. Kök-ortalama-kare-hatası, fiili ve tahmin edilen değerler için hesaplanır ve ardından çalıştırmaya kaydedilir. Bu noktada, çalışma için hem alfa değeri hem de rmo doğruluğu için eklenmiş meta veriler vardır.
-1. Ardından, her bir çalıştırmaya ait model serileştirilir ve çalıştırmaya yüklenir. Bu, model dosyasını portalda çalıştırağından indirmelerine olanak sağlar.
-1. Her yinelemenin sonunda, çalıştırma `run.complete()`çağırarak tamamlanır.
+1. Dizideki `alphas` her alfa hiperparametre değeri için deneme içinde yeni bir çalıştırma oluşturulur. Alfa değeri, her çalıştırma arasında ayrım yapmak için günlüğe kaydedilir.
+1. Her çalıştırmada, bir Ridge modeli anlık, eğitimli ve tahminleri çalıştırmak için kullanılır. Kök ortalaması-kareli hata, gerçek ve öngörülen değerler için hesaplanır ve sonra çalıştır'a kaydedilir. Bu noktada çalışma hem alfa değeri hem de rmse doğruluğu için bağlı meta veri vardır.
+1. Ardından, her çalıştırma için model seri hale getirilir ve çalıştırmaya yüklenir. Bu, portaldaki çalıştırmadan model dosyasını indirmenizi sağlar.
+1. Her yinelemenin sonunda çalışma çağrılar `run.complete()`ekilerek tamamlanır.
 
-Eğitim tamamlandıktan sonra, portalda deneye bir bağlantı getirmek için `experiment` değişkenini çağırın.
+Eğitim tamamlandıktan sonra, `experiment` portaldaki denemeye bir bağlantı getirmek için değişkeni arayın.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Adı</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Adı</th><th>Çalışma alanı</th><th>Rapor Sayfası</th><th>Dokümanlar Sayfası</th></tr><tr><td>diyabet deneyi</td><td>çalışma alanı-adı</td><td>Azure portalına bağlantı</td><td>Belgelere Bağlantı</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>Portalda Eğitim sonuçlarını görüntüleme
+## <a name="view-training-results-in-portal"></a>Eğitim sonuçlarını portalda görüntüleyin
 
-**Azure Portal bağlantısını** izleyen ana deneme sayfasına gidersiniz. İşte denemenize ait tüm bireysel çalıştırmaları görürsünüz. Özel olarak günlüğe kaydedilen tüm değerler (Bu durumda`alpha_value` ve `rmse`) her çalıştırma için alanlar haline gelir ve ayrıca deneme sayfasının en üstündeki grafikler ve kutucuklar için kullanılabilir hale gelir. Bir grafiğe veya kutucuğa günlüğe kaydedilmiş bir ölçüm eklemek için, üzerine gelin, Düzenle düğmesine tıklayın ve özel olarak günlüğe kaydedilen ölçümünüzün bulun.
+Azure **bağlantısı portalı'nı** takip etmek sizi ana deneme sayfasına götürür. Burada deneydeki tüm bireysel koşuları görüyorsunuz. Özel günlüğe kaydedilmiş`alpha_value` değerler `rmse`(ve bu durumda) her çalıştırma için alan haline gelir ve deneme sayfasının üst kısmındaki grafikler ve kutucuklar için de kullanılabilir hale gelir. Bir grafiğe veya döşemeye günlüğe kaydedilmiş bir metrik eklemek için, grafiğin üzerine tıklayın, edit düğmesini tıklatın ve özel günlüğe kaydedilmiş metrikünüzü bulun.
 
-Eğitim modelleri, yüzlerce ve binlerce ayrı çalıştırma üzerinde ölçeklendirirseniz, Bu sayfa, eğitilen her modeli, özellikle eğitilen ve benzersiz ölçümlerinizin zaman içinde nasıl değiştiğini görmenizi kolaylaştırır.
+Yüzlerce ve binlerce ayrı çalıştırmaüzerinde ölçekte eğitim modelleri incelendiğinde, bu sayfa, eğittiğiniz her modeli, özellikle nasıl eğitildiğini ve benzersiz ölçümlerinizin zaman içinde nasıl değiştiğini görmenizi kolaylaştırır.
 
-![Portalda ana deneme sayfası](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+![Portal'da Ana Deney sayfası](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
 
-`RUN NUMBER` sütununda bir çalıştırma numarası bağlantısına tıkladığınızda her bir çalıştırmaya ilişkin sayfaya gidersiniz. Varsayılan sekme **ayrıntıları** , her çalıştırma hakkında daha ayrıntılı bilgi gösterir. **Çıktılar** sekmesine gidin ve her eğitim yinelemesi sırasında çalıştırmaya yüklenmiş olan modelin `.pkl` dosyasını görürsünüz. Burada, model dosyasını el ile yeniden eğitmek yerine indirebilirsiniz.
+Sütundaki bir çalıştırma numarası `RUN NUMBER` bağlantısına tıkladığınızda, her bir çalışma için sayfaya gidin. Varsayılan sekme **Ayrıntılar,** her çalıştırmada daha ayrıntılı bilgiler gösterir. **Çıktılar** sekmesine gidin ve her `.pkl` eğitim yinelemesi sırasında çalıştırılan modelin dosyasını görürsünüz. Burada model dosyasını el ile yeniden eğitmek yerine indirebilirsiniz.
 
-![Portalda Ayrıntılar sayfasını Çalıştır](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+![Portal'da ayrıntılar sayfasını çalıştır](./media/tutorial-1st-experiment-sdk-train/model-download.png)
 
-## <a name="get-the-best-model"></a>En iyi modeli al
+## <a name="get-the-best-model"></a>En iyi modeli alın
 
-Portaldaki deneyden model dosyalarını indirebilmenin yanı sıra, bunları program aracılığıyla da indirebilirsiniz. Aşağıdaki kod, denemenin her bir çalıştırmasında yinelenir ve hem günlüğe kaydedilen çalışma ölçümlerine hem de çalıştırma ayrıntılarına (run_id içeren) erişir. Bu, en iyi çalışmayı izler, bu durumda en düşük kök-ortalama-kare-hatası ile çalıştırılır.
+Portaldaki denemeden model dosyalarını indirebilmeek, bunları programlı olarak da indirebilirsiniz. Aşağıdaki kod, denemedeki her çalıştırmada yinelenir ve hem günlüğe kaydedilmiş çalıştırma ölçümlerine hem de çalıştırma ayrıntılarına (run_id içerir) erişir. Bu, en iyi çalıştırmayı izler, bu durumda en düşük kök ortalaması-kareli hata ile çalıştırın.
 
 ```python
 minimum_rmse_runid = None
@@ -177,7 +177,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-Deneme nesnesiyle birlikte `Run` oluşturucusunu kullanarak bireysel çalışmayı getirmek için en iyi çalıştırma KIMLIĞINI kullanın. Sonra bu çalıştırınızdan yüklenebilecek tüm dosyaları görmek için `get_file_names()` çağırın. Bu durumda, yalnızca eğitim sırasında her çalıştırma için bir dosya karşıya yüklenir.
+Deneme nesnesi ile birlikte `Run` oluşturucuyu kullanarak tek tek çalıştırmayı getirmek için en iyi çalıştırılaç kimliğini kullanın. Ardından, `get_file_names()` bu çalıştırmadan indirilebilecek tüm dosyaları görmek için arayın. Bu durumda, eğitim sırasında her çalıştırma için yalnızca bir dosya yüklemiş siniz.
 
 ```python
 from azureml.core import Run
@@ -187,7 +187,7 @@ print(best_run.get_file_names())
 
     ['model_alpha_0.1.pkl']
 
-Çalıştırılacak model dosyası adını belirterek çalıştırma nesnesinde `download()` çağırın. Varsayılan olarak, bu işlev geçerli dizine indirir.
+İndirmek için model dosya adını belirterek çalıştır nesnesini arayın. `download()` Varsayılan olarak bu işlev geçerli dizine indirilir.
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
@@ -195,26 +195,26 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
+Diğer Azure Machine Learning eğitimlerini çalıştırmayı planlıyorsanız bu bölümü tamamlamayın.
 
-### <a name="stop-the-compute-instance"></a>İşlem örneğini durdur
+### <a name="stop-the-compute-instance"></a>İşlem örneğini durdurma
 
 [!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
 
-### <a name="delete-everything"></a>Her şeyi sil
+### <a name="delete-everything"></a>Her şeyi silme
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve **Sil**' i seçin.
+Kaynak grubunu da tutabilir, ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve **Sil'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, aşağıdaki görevleri yaptınız:
 
 > [!div class="checklist"]
-> * Çalışma alanınızı bağladınız ve bir deneme oluşturdunuz
-> * Yüklenen veriler ve eğitimli scikit-modelleri öğrenme
-> * Görüntülenen eğitim sonuçları portalda ve modeller alındı
+> * Çalışma alanınızı bağladı ve bir deneme oluşturdu
+> * Yüklü veri ve eğitimli scikit-learn modelleri
+> * Portalda görüntülenen eğitim sonuçları ve alınan modeller
 
-[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile dağıtın.
-[Otomatik makine öğrenimi](tutorial-auto-train-models.md) denemeleri geliştirmeyi öğrenin.
+Azure Machine Learning ile [modelinizi dağıtın.](tutorial-deploy-models-with-aml.md)
+Otomatik makine [öğrenimi](tutorial-auto-train-models.md) deneylerini nasıl geliştireceklerini öğrenin.

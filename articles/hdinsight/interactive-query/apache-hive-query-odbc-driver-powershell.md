@@ -1,7 +1,7 @@
 ---
-title: ODBC sürücüsü ile sorgu Apache Hive & PowerShell-Azure HDInsight
-description: Azure HDInsight 'ta Apache Hive kümelerini sorgulamak için Microsoft Hive ODBC sürücüsünü ve PowerShell 'i kullanın.
-keywords: Hive, Hive ODBC, PowerShell
+title: ODBC Sürücüsü & PowerShell ile Apache Hive Sorgula - Azure HDInsight
+description: Azure HDInsight'ta Apache Hive kümelerini sorgulamak için Microsoft Hive ODBC sürücüsünü ve PowerShell'i kullanın.
+keywords: kovan,kovan odbc,powershell
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,80 +9,80 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494327"
 ---
-# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Öğretici: ODBC ve PowerShell ile Apache Hive sorgulama
+# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Öğretici: ODBC ve PowerShell ile Apache Hive Sorgu
 
-Microsoft ODBC sürücüleri, Apache Hive dahil olmak üzere farklı türlerde veri kaynaklarıyla etkileşimde bulunmak için esnek bir yol sağlar. Hive kümenize bir bağlantı açmak, seçtiğiniz bir sorguyu geçirmek ve sonuçları göstermek için ODBC sürücülerini kullanan PowerShell gibi komut dosyası dillerinde kod yazabilirsiniz.
+Microsoft ODBC sürücüleri, Apache Hive da dahil olmak üzere farklı veri kaynaklarıyla etkileşim kurmak için esnek bir yol sağlar. Hive kümenize bağlantı açmak, seçtiğiniz bir sorguyu geçmek ve sonuçları görüntülemek için ODBC sürücülerini kullanan PowerShell gibi komut dosyası dillerinde kod yazabilirsiniz.
 
-Bu öğreticide aşağıdaki görevleri gerçekleştirirsiniz:
+Bu öğreticide, aşağıdaki görevleri yapacaksınız:
 
 > [!div class="checklist"]
-> * Microsoft Hive ODBC sürücüsünü indirme ve yükleme
-> * Kümenize bağlı Apache Hive ODBC veri kaynağı oluşturma
-> * PowerShell kullanarak kümenizdeki örnek bilgileri sorgulama
+> * Microsoft Hive ODBC sürücüsünü indirin ve yükleyin
+> * Kümenize bağlı bir Apache Hive ODBC veri kaynağı oluşturma
+> * PowerShell'i kullanarak kümenizdeki örnek bilgileri sorgula
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* HDInsight üzerinde etkileşimli bir sorgu kümesi. Bir tane oluşturmak için bkz. [Azure HDInsight kullanmaya başlama](../hdinsight-hadoop-provision-linux-clusters.md). Küme türü olarak **etkileşimli sorgu** ' yı seçin.
+* HDInsight'ta Etkileşimli Sorgu kümesi. Bir tane oluşturmak için Azure [HDInsight ile başlayın'](../hdinsight-hadoop-provision-linux-clusters.md)a bakın. Küme türü olarak **Etkileşimli Sorgu'yu** seçin.
 
-## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC sürücüsünü yükler
+## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC sürücüsünü yükleme
 
-[Microsoft Hive ODBC sürücüsü](https://www.microsoft.com/download/details.aspx?id=40886)indirin ve yükleyin.
+[Microsoft Hive ODBC Sürücüsünü](https://www.microsoft.com/download/details.aspx?id=40886)indirin ve kurun.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC veri kaynağı oluşturma
 
-Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları gösterilmektedir.
+Aşağıdaki adımlar, apache hive ODBC veri kaynağının nasıl oluşturulacağını gösterir.
 
-1. Windows 'da, Windows **Yönetim araçları** > **ODBC veri kaynakları (32 bit)/(64 bit)**  > **Başlat** ' a gidin.  **ODBC veri kaynağı Yöneticisi** penceresi açılır.
+1. Windows'dan**Windows Yönetim Araçları** > **ODBC Veri Kaynaklarını Başlat'a (32 bit)/(64-bit)** gidin. **Start** >   **ODBC Veri Kaynağı Yöneticisi** penceresi açılır.
 
-    ![OBDC veri kaynağı Yöneticisi](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC veri kaynağı Yöneticisi 'ni kullanarak bir DSN yapılandırma")
+    ![OBDC veri kaynağı yöneticisi](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC Veri Kaynağı Yöneticisi ni kullanarak Bir DSN'yi yapılandırma")
 
-1. **Yeni veri kaynağı oluştur** penceresini açmak IÇIN **Kullanıcı DSN** sekmesinden **Ekle** ' yi seçin.
+1. Kullanıcı **DSN** sekmesinden Yeni Veri **Kaynağı Oluştur** penceresini açmak için **Ekle'yi** seçin.
 
-1. **Microsoft Hive ODBC sürücüsü**' yi seçin ve ardından **son** ' u seçerek **Microsoft Hive ODBC sürücüsü DSN kurulum** penceresini açın.
+1. **Microsoft Hive ODBC Sürücüsü'nü**seçin ve ardından **Microsoft Hive ODBC Driver DSN Kurulum** penceresini açmak için **Finish'i** seçin.
 
 1. Aşağıdaki değerleri yazın veya seçin:
 
    | Özellik | Açıklama |
    | --- | --- |
    |  Data Source Name |Veri kaynağınız için bir ad verin |
-   |  Ana bilgisayar (ler) |`CLUSTERNAME.azurehdinsight.net` yazın. Örneğin, `myHDICluster.azurehdinsight.net` |
+   |  Ana bilgisayar(lar) |`CLUSTERNAME.azurehdinsight.net` yazın. Örneğin, `myHDICluster.azurehdinsight.net` |
    |  Bağlantı noktası |**443** yazın.|
-   |  Database |**Varsayılanı**kullanın. |
-   |  Mechanism |**Windows Azure HDInsight hizmetini** seçin |
-   |  User Name |HDInsight kümesi HTTP Kullanıcı Kullanıcı adı girin. Varsayılan kullanıcı adı **admin** şeklindedir. |
-   |  Parola |HDInsight kümesi Kullanıcı parolasını girin. **Parolayı Kaydet (şifreli)** onay kutusunu seçin.|
+   |  Database |**Varsayılan kullanın.** |
+   |  Mechanism |**Windows Azure HDInsight Hizmetini** Seçin |
+   |  User Name |HDInsight kümesi HTTP kullanıcı adını girin. Varsayılan kullanıcı adı **admin** şeklindedir. |
+   |  Parola |HDInsight küme kullanıcı parolası girin. Parolayı **Kaydet (Şifreli)** onay kutusunu seçin.|
 
-1. İsteğe bağlı: **Gelişmiş Seçenekler**' i seçin.  
+1. İsteğe bağlı: **Gelişmiş Seçenekleri**seçin.  
 
    | Parametre | Açıklama |
    | --- | --- |
-   |  Yerel sorgu kullan |Seçildiğinde, ODBC sürücüsü TSQL HiveQL 'e dönüştürmeyi denemez. Bu seçeneği yalnızca %100, saf HiveQL deyimlerini gönderdikten emin olduğunuzda kullanın. SQL Server veya Azure SQL veritabanı 'na bağlanırken, işareti kaldırılmış olarak bırakmalısınız. |
-   |  Blok başına getirilen satırlar |Çok sayıda kayıt getirilirken, en iyi performansı sağlamak için bu parametreyi ayarlama gerekebilir. |
-   |  Varsayılan dize sütunu uzunluğu, Ikili sütun uzunluğu, ondalık sütun ölçeği |Veri türü uzunlukları ve ön ekleri verilerin nasıl döndürüldüğünü etkileyebilir. Duyarlık ve kesilme kaybı nedeniyle yanlış bilgilerin döndürülmesine neden olur. |
+   |  Yerel Sorgu'yı kullanma |Seçildiğinde, ODBC sürücüsü TSQL'i HiveQL'ye dönüştürmeye çalışmaz. Bu seçeneği yalnızca saf HiveQL ekstreleri gönderdiğinden %100 eminseniz kullanın. SQL Server veya Azure SQL Veritabanı'na bağlanırken, veritabanını işaretsiz bırakmalısınız. |
+   |  Blok başına getirilen satırlar |Çok sayıda kayıt alırken, en iyi performansları sağlamak için bu parametrenin alımı gerekebilir. |
+   |  Varsayılan dize sütun uzunluğu, İkili sütun uzunluğu, Ondalık sütun ölçeği |Veri türü uzunlukları ve hassasiyetleri verilerin döndürülme şeklini etkileyebilir. Hassaslık ve kesilme kaybı nedeniyle yanlış bilgilerin döndürülmesine neden olurlar. |
 
     ![Gelişmiş DSN yapılandırma seçenekleri](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Gelişmiş DSN yapılandırma seçenekleri")
 
-1. Veri kaynağını test etmek için **Test** ' i seçin. Veri kaynağı doğru şekilde yapılandırıldığında, test sonucu **başarıyı**gösterir.  
+1. Veri kaynağını sınamak için **Test'i** seçin. Veri kaynağı doğru yapılandırıldığında, test sonucu **BAŞARı**gösterir.  
 
-1. Test penceresini kapatmak için **Tamam ' ı** seçin.  
+1. Test penceresini kapatmak için **Tamam'ı** seçin.  
 
-1. **MICROSOFT HIVE ODBC sürücüsü DSN kurulum** penceresini kapatmak için **Tamam ' ı** seçin.  
+1. **Microsoft Hive ODBC Driver DSN Kurulum** penceresini kapatmak için **Tamam'ı** seçin.  
 
-1. **ODBC veri kaynağı Yöneticisi** penceresini kapatmak için **Tamam ' ı** seçin.  
+1. **ODBC Veri Kaynağı Yöneticisi** penceresini kapatmak için **Tamam'ı** seçin.  
 
-## <a name="query-data-with-powershell"></a>PowerShell ile verileri sorgulama
+## <a name="query-data-with-powershell"></a>PowerShell ile verileri sorgula
 
-Aşağıdaki PowerShell betiği, bir Hive kümesini sorgulamak için ODBC 'nin bir işlevidir.
+Aşağıdaki PowerShell komut dosyası, ODBC'nin hive kümesini sorgulayan bir işlevdir.
 
 ```powershell
 function Get-ODBC-Data {
@@ -109,7 +109,7 @@ function Get-ODBC-Data {
 }
 ```
 
-Aşağıdaki kod parçacığı, öğreticinin başlangıcında oluşturduğunuz etkileşimli sorgu kümesinde bir sorgu yürütmek için yukarıdaki işlevi kullanır. `DATASOURCENAME`, **MICROSOFT HIVE ODBC sürücüsü DSN kurulum** ekranında belirttiğiniz **veri kaynağı adıyla** değiştirin. Kimlik bilgileri istendiğinde, kümeyi oluştururken **küme oturum açma Kullanıcı adı** ve **küme oturum açma parolası** altında girdiğiniz kullanıcı adını ve parolayı girin.
+Aşağıdaki kod parçacığı, öğreticinin başında oluşturduğunuz Etkileşimli Sorgu kümesinde bir sorgu yürütmek için yukarıdaki işlevi kullanır. Microsoft `DATASOURCENAME` **Hive ODBC Driver DSN Kurulum** ekranında belirttiğiniz Veri **Kaynağı Adı** ile değiştirin. Kimlik bilgileri istendiğinde, kümeyi oluşturduğunuzda **Cluster login kullanıcı adı** ve Cluster giriş **parolası** altında girdiğiniz kullanıcı adı ve parolayı girin.
 
 ```powershell
 
@@ -122,11 +122,11 @@ Get-ODBC-Data -query $query -dsn $dsn
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu, HDInsight kümesini ve depolama hesabını silin. Bunu yapmak için kümenin oluşturulduğu kaynak grubunu seçin ve **Sil**' e tıklayın.
+Artık gerekmediğinde, kaynak grubunu, HDInsight kümesini ve depolama hesabını silin. Bunu yapmak için kümenin oluşturulduğu kaynak grubunu seçin ve **Sil'i**tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure HDInsight etkileşimli sorgu kümenizdeki verileri almak için Microsoft Hive ODBC sürücüsü ve PowerShell 'in nasıl kullanılacağını öğrendiniz.
+Bu eğitimde, Azure HDInsight İnteraktif Sorgu kümenizden veri almak için Microsoft Hive ODBC sürücüsünü ve PowerShell'i nasıl kullanacağınızı öğrendiniz.
 
 > [!div class="nextstepaction"]
-> [ODBC kullanarak Excel 'i Apache Hive bağlama](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)
+> [ODBC kullanarak Excel'i Apache Hive'a bağlayın](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)

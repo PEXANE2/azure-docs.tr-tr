@@ -1,51 +1,51 @@
 ---
-title: Öğretici-Azure Paylaşılan görüntü galerisinden bir VM veya sanal makine ölçek kümesi oluşturma
-description: Paylaşılan görüntü galerisinde genelleştirilmiş bir görüntüye göre VM veya sanal makine ölçek kümesi oluşturmak için nasıl kullanılacağını öğrenin.
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, sanal makine, sanal makine ölçek kümesi, paylaşılan görüntü Galerisi
+title: Öğretici - Ansible kullanarak Azure Paylaşılan Resim Galerisi'nden VM veya sanal makine ölçeği seti oluşturun
+description: Paylaşılan Resim Galerisi'nde genelleştirilmiş bir görüntüye dayalı VM veya sanal makine ölçeği kümesi oluşturmak için Ansible'ı nasıl kullanacağınızı öğrenin.
+keywords: ansible, azure, devops, bash, playbook, sanal makine, sanal makine ölçek seti, paylaşılan resim galerisi
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155829"
 ---
-# <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Öğretici: Azure Paylaşılan görüntü galerisinden bir VM veya sanal makine ölçek kümesi oluşturma
+# <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Öğretici: Ansible kullanarak Azure Paylaşılan Resim Galerisi'nden VM veya sanal makine ölçeği seti oluşturun
 
 [!INCLUDE [ansible-29-note.md](../../includes/ansible-29-note.md)]
 
-[Paylaşılan görüntü Galerisi](/azure/virtual-machines/windows/shared-image-galleries) , özel yönetilen görüntüleri kolayca yönetmenizi, paylaşmanızı ve düzenlemenizi sağlayan bir hizmettir. Bu özellik birçok görüntünün nerede tutulur ve paylaşıldığını senaryolar için faydalıdır. Özel görüntüler, abonelikler arasında ve Azure Active Directory kiracılar arasında paylaşılabilir. Daha hızlı dağıtım ölçeklendirmesi için görüntüler aynı zamanda birden çok bölgeye çoğaltılabilir.
+[Paylaşılan Resim Galerisi,](/azure/virtual-machines/windows/shared-image-galleries) özel olarak yönetilen görüntüleri kolayca yönetmenize, paylaşmanıza ve düzenlemenize olanak tanıyan bir hizmettir. Bu özellik, birçok görüntükorunduğu ve paylaşıldığı senaryolar için yararlıdır. Özel görüntüler abonelikler arasında ve Azure Etkin Dizin kiracıları arasında paylaşılabilir. Görüntüler, daha hızlı dağıtım ölçekleme için birden çok bölgeye çoğaltılabilir.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Genelleştirilmiş bir VM ve özel görüntü oluşturma
-> * Paylaşılan görüntü galerisi oluşturma
-> * Paylaşılan görüntü ve görüntü sürümü oluşturma
-> * Genelleştirilmiş görüntü kullanarak VM oluşturma
-> * Genelleştirilmiş görüntü kullanarak bir sanal makine ölçek kümesi oluşturma
-> * Paylaşılan görüntü galeriniz, görüntünüz ve sürümünüz hakkında bilgi alın.
+> * Genelleştirilmiş VM ve özel görüntü oluşturma
+> * Paylaşılan Resim Galerisi Oluşturma
+> * Paylaşılan bir resim ve resim sürümü oluşturma
+> * Genelleştirilmiş görüntüyü kullanarak VM oluşturma
+> * Genelleştirilmiş görüntüyü kullanarak sanal makine ölçeği kümesi oluşturma
+> * Paylaşılan Resim Galeriniz, resminiz ve sürümünüz hakkında bilgi alın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="get-the-sample-playbooks"></a>Örnek PlayBook 'ları alın
+## <a name="get-the-sample-playbooks"></a>Örnek oyun kitaplarını alın
 
-Tüm örnek PlayBook 'ları almanın iki yolu vardır:
+Örnek oyun kitaplarının tüm kümesini almanın iki yolu vardır:
 
 - [SIG klasörünü indirin](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) ve yerel makinenize kaydedin.
-- Her bölüm için yeni bir dosya oluşturun ve örnek PlayBook 'u kopyalayın.
+- Her bölüm için yeni bir dosya oluşturun ve buradaki örnek oyun kitabını kopyalayın.
 
-`vars.yml` dosyası, bu öğretici için tüm örnek PlayBook 'lar tarafından kullanılan değişkenleri içerir. Benzersiz adlar ve değerler sağlamak için dosyayı düzenleyebilirsiniz.
+Dosya, `vars.yml` bu öğretici için tüm örnek oyun kitapları tarafından kullanılan değişkenleri içerir. Benzersiz adlar ve değerler sağlamak için dosyayı değiştirebilirsiniz.
 
-İlk örnek PlayBook `00-prerequisites.yml`, bu öğreticiyi tamamlamaya yönelik gerekenleri oluşturur:
-- Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir kapsayıcı olan bir kaynak grubu.
-- Bir sanal ağ; alt ağ VM için genel IP adresi ve ağ arabirimi kartı.
-- Genelleştirilmiş görüntü oluşturmak için kullanılan bir kaynak sanal makine.
+İlk örnek oyun `00-prerequisites.yml` kitabı, bu öğreticiyi tamamlamak için gerekenleri oluşturur:
+- Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir kapsayıcı olan kaynak grubu.
+- Sanal ağ; alt ağ; VM için genel IP adresi ve ağ arabirim kartı.
+- Genelleştirilmiş görüntü oluşturmak için kullanılan bir kaynak Sanal Makine.
 
 ```yml
 - hosts: localhost
@@ -100,17 +100,17 @@ Tüm örnek PlayBook 'ları almanın iki yolu vardır:
           version: latest
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook 00-prerequisites.yml
 ```
 
-[Azure Portal](https://portal.azure.com), yeni sanal makineyi ve oluşturduğunuz çeşitli kaynakları görmek için `vars.yml` belirttiğiniz kaynak grubunu kontrol edin.
+Azure [portalında,](https://portal.azure.com)yeni sanal makineyi `vars.yml` ve oluşturduğunuz çeşitli kaynakları görmek için belirttiğiniz kaynak grubunu denetleyin.
 
-## <a name="generalize-the-vm-and-create-a-custom-image"></a>VM 'yi genelleştirin ve özel bir görüntü oluşturun
+## <a name="generalize-the-vm-and-create-a-custom-image"></a>VM'yi genelleştirin ve özel bir görüntü oluşturun
 
-`01a-create-generalized-image.yml`bir sonraki PlayBook, önceki adımda oluşturulan kaynak VM 'yi genelleştirir ve bunu temel alan özel bir görüntü oluşturur.
+Sonraki oyun kitabı, `01a-create-generalized-image.yml`önceki adımda oluşturulan kaynak VM genelleştirir ve daha sonra buna dayalı özel bir görüntü oluşturur.
 
 ```yml
 - hosts: localhost
@@ -132,17 +132,17 @@ ansible-playbook 00-prerequisites.yml
         source: "{{ source_vm_name }}"
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook 01a-create-generalized-image.yml
 ```
 
-Kaynak grubunuzu denetleyin ve `testimagea` göründüğünden emin olun.
+Kaynak grubunuzu kontrol `testimagea` edin ve görünenden emin olun.
 
-## <a name="create-the-shared-image-gallery"></a>Paylaşılan görüntü galerisini oluşturma
+## <a name="create-the-shared-image-gallery"></a>Paylaşılan Resim Galerisini Oluşturma
 
-Görüntü Galerisi, görüntüleri paylaşmak ve yönetmek için bir depodur. `02-create-shared-image-gallery.yml` örnek PlayBook kodu, kaynak grubunuzda paylaşılan bir görüntü Galerisi oluşturur.
+Resim galerisi, görüntüleri paylaşmak ve yönetmek için bir depodur. Örnek oyun kitabı `02-create-shared-image-gallery.yml` kodu, kaynak grubunuzda Paylaşılan Resim Galerisi oluşturur.
 
 ```yml
 - hosts: localhost
@@ -159,19 +159,19 @@ Görüntü Galerisi, görüntüleri paylaşmak ve yönetmek için bir depodur. `
         description: This is the gallery description.
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook 02-create-shared-image-gallery.yml
 ```
 
-Artık kaynak grubunuzda `myGallery`yeni bir galeri görürsünüz.
+Şimdi kaynak grubunuzda `myGallery`yeni bir galeri görüyorsunuz.
 
-## <a name="create-a-shared-image-and-image-version"></a>Paylaşılan görüntü ve görüntü sürümü oluşturma
+## <a name="create-a-shared-image-and-image-version"></a>Paylaşılan bir resim ve resim sürümü oluşturma
 
-Sonraki PlayBook, `03a-create-shared-image-generalized.yml` bir görüntü tanımı ve bir görüntü sürümü oluşturur.
+Sonraki oyun kitabı, `03a-create-shared-image-generalized.yml` bir resim tanımı ve bir görüntü sürümü oluşturur.
 
-Görüntü tanımları, görüntü türü (Windows veya Linux), sürüm notları ve en düşük ve en yüksek bellek gereksinimlerini içerir. Görüntü sürümü görüntünün sürümüdür. Galeri, görüntü tanımı ve görüntü sürümü, mantıksal gruplardaki görüntüleri düzenlemenize yardımcı olur. 
+Resim tanımları görüntü türünü (Windows veya Linux), sürüm notlarını ve minimum ve maksimum bellek gereksinimlerini içerir. Resim sürümü, görüntünün sürümüdür. Galeri, resim tanımı ve resim sürümü, görüntüleri mantıksal gruplar halinde düzenlemenize yardımcı olur. 
 
 ```yml
 - hosts: localhost
@@ -221,17 +221,17 @@ Görüntü tanımları, görüntü türü (Windows veya Linux), sürüm notları
         var: output
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook 03a-create-shared-image-generalized.yml
 ```
 
-Kaynak grubunuz artık galeriniz için bir görüntü tanımına ve görüntü sürümüne sahip.
+Kaynak grubunuzun artık galeriniz için bir resim tanımı ve resim sürümü var.
 
-## <a name="create-a-vm-based-on-the-generalized-image"></a>Genelleştirilmiş görüntüye göre VM oluşturma
+## <a name="create-a-vm-based-on-the-generalized-image"></a>Genelleştirilmiş görüntüye dayalı bir VM oluşturma
 
-Son olarak, önceki adımda oluşturduğunuz Genelleştirilmiş görüntüye göre bir VM oluşturmak için `04a-create-vm-using-generalized-image.yml` çalıştırın.
+Son olarak, önceki adımda oluşturduğunuz genelleştirilmiş görüntüye dayalı bir VM oluşturmak için çalıştırın. `04a-create-vm-using-generalized-image.yml`
 
 ```yml
 - hosts: localhost
@@ -252,15 +252,15 @@ Son olarak, önceki adımda oluşturduğunuz Genelleştirilmiş görüntüye gö
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook 04a-create-vm-using-generalized-image.yml
 ```
 
-## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Genelleştirilmiş görüntü temelinde sanal makine ölçek kümeleri oluşturma
+## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Genelleştirilmiş görüntüye dayalı sanal makine ölçeği kümeleri oluşturma
 
-Genelleştirilmiş görüntüye göre bir sanal makine ölçek kümesi de oluşturabilirsiniz. Bunu yapmak için `05a-create-vmss-using-generalized-image.yml` çalıştırın.
+Ayrıca, genelleştirilmiş görüntüye dayalı sanal bir makine ölçeği kümesi de oluşturabilirsiniz. Bunu `05a-create-vmss-using-generalized-image.yml` yapmak için koş.
 
 ```yml
 - hosts: localhost
@@ -285,7 +285,7 @@ Genelleştirilmiş görüntüye göre bir sanal makine ölçek kümesi de oluşt
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook 05a-create-vmss-using-generalized-image.yml
@@ -293,7 +293,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
 
 ## <a name="get-information-about-the-gallery"></a>Galeri hakkında bilgi alın
 
-`06-get-info.yml`çalıştırarak Galeri, görüntü tanımı ve sürüm hakkında bilgi edinebilirsiniz.
+Galeri, resim tanımı ve sürüm `06-get-info.yml`hakkında bilgi alarak.
 
 ```yml
 - hosts: localhost
@@ -319,7 +319,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
       name: "{{ shared_image_version }}"
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook 06-get-info.yml
@@ -327,7 +327,7 @@ ansible-playbook 06-get-info.yml
 
 ## <a name="delete-the-shared-image"></a>Paylaşılan görüntüyü silme
 
-Galeri kaynaklarını silmek için örnek PlayBook `07-delete-gallery.yml`bakın. Kaynakları ters sırada silin. Görüntü sürümünü silerek başlayın. Tüm görüntü sürümlerini sildikten sonra, görüntü tanımını silebilirsiniz. Tüm görüntü tanımlarını sildikten sonra, galeriyi silebilirsiniz.
+Galeri kaynaklarını silmek için örnek `07-delete-gallery.yml`oyun kitabına bakın. Kaynakları ters sırada silin. Resim sürümünü silerek başlayın. Tüm resim sürümlerini sildikten sonra, resim tanımını silebilirsiniz. Tüm resim tanımlarını sildikten sonra galeriyi silebilirsiniz.
 
 ```yml
 - hosts: localhost
@@ -358,7 +358,7 @@ Galeri kaynaklarını silmek için örnek PlayBook `07-delete-gallery.yml`bakın
       state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook 07-delete-gallery.yml
@@ -366,11 +366,11 @@ ansible-playbook 07-delete-gallery.yml
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Bu bölümdeki örnek PlayBook kodu şu şekilde kullanılır:
+Bu bölümdeki örnek oyun kitabı kodu aşağıdakileri yapmak için kullanılır:
 
-- Daha önce oluşturulan iki kaynak grubunu sil
+- Daha önce oluşturulan iki kaynak grubuna silme
 
 Aşağıdaki playbook'u `cleanup.yml` olarak kaydedin:
 
@@ -386,12 +386,12 @@ Aşağıdaki playbook'u `cleanup.yml` olarak kaydedin:
         state: absent
 ```
 
-Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
+Örnek oyun kitabıyla çalışırken göz önünde bulundurulması gereken bazı önemli notlar şunlardır:
 
-- `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
-- Belirtilen iki kaynak grubu içindeki tüm kaynaklar silinecek.
+- Yer `{{ resource_group_name }}` tutucuyu kaynak grubunuzun adı ile değiştirin.
+- Belirtilen iki kaynak grubundaki tüm kaynaklar silinir.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml
