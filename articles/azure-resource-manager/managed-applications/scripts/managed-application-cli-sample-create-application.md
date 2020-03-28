@@ -1,16 +1,16 @@
 ---
-title: Azure CLı betik örneği-yönetilen bir uygulama dağıtma
-description: Aboneliğe Azure yönetilen uygulama tanımını dağıtan Azure CLı örnek betiği sağlar.
+title: Azure CLI komut dosyası örneği - Yönetilen bir uygulamayı dağıtma
+description: Aboneye Azure Yönetilen Uygulama tanımı dağıtan Azure CLI örnek komut dosyası sağlar.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: 346ea59209bc2f74970e708c947f5caa158a0338
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650068"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Azure CLI ile hizmet kataloğu için bir yönetilen uygulamayı dağıtma

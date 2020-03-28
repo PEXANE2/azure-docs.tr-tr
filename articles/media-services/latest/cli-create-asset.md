@@ -1,5 +1,5 @@
 ---
-title: Azure CLı kullanarak Azure Media Services varlığa içerik yükleme
+title: Azure CLI kullanarak içeriği Azure Medya Hizmetleri varlığına yükleme
 description: Bu konudaki Azure CLI betiği, içine içerik yüklenebilecek bir Media Services Varlığı oluşturmayı gösterir.
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: 0c24464050d0beee120dcb234582a464d6245270
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76310654"
 ---
 # <a name="cli-example-create-an-asset"></a>CLI örneği: Varlık oluşturma
@@ -27,7 +27,7 @@ Bu makaledeki Azure CLI betiği, içine içerik yüklenebilecek bir Azure Media 
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-[Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).
+[Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -37,4 +37,4 @@ Bu makaledeki Azure CLI betiği, içine içerik yüklenebilecek bir Azure Media 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Media Services genel bakış](media-services-overview.md)
+[Medya Hizmetlerine genel bakış](media-services-overview.md)

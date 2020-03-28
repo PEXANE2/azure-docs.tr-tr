@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: ZIVVER ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve ZIVVER arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: ZIVVER ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve ZIVVER arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,221 +16,221 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233252"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Öğretici: ZIVVER ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Öğretici: ZIVVER ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, ZIVVER 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-ZIVVER 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu eğitimde, ZIVVER'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+ZIVVER'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Azure AD 'de ZIVVER 'e erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla ZIVVER (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* ZIVVER erişimi olan Azure AD'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla ZIVVER 'de (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini ZIVVER ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini ZIVVER ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* ZIVVER çoklu oturum açma etkin aboneliği
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* ZIVVER tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* ZIVVER, **IDP** tarafından başlatılan SSO 'yu destekler
+* ZIVVER, **IDP'nin** Başlattığı SSO'ya destek verdi
 
 ## <a name="adding-zivver-from-the-gallery"></a>Galeriden ZIVVER ekleme
 
-ZIVVER 'in Azure AD 'ye tümleştirilmesini yapılandırmak için galerideki ZIVVER 'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+ZIVVER'in Azure AD'ye entegrasyonunu yapılandırmak için galeriden ZIVVER'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden ZIVVER eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden ZIVVER eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **zivver**yazın, sonuç panelinden **zivver** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusunda, **ZIVVER**yazın, sonuç panelinden **ZIVVER'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuçlar listesinde ZIVVER](common/search-new-app.png)
+     ![Sonuç listesinde ZIVVER](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre ZIVVER Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve ZIVVER içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD tek oturum açma işlemini ZIVVER ile yapılandırıp test esinizsiniz.
+Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile ZIVVER'deki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD çoklu oturum açma 'yı ZIVVER ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD oturumaçmayı ZIVVER ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[ZIVVER çoklu oturum açmayı yapılandırma](#configure-zivver-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan ZIVVER 'de Britta Simon 'ın bir karşılığı olacak şekilde **[zivver test kullanıcısı oluşturun](#create-zivver-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[ZIVVER Tek Oturum Açma](#configure-zivver-single-sign-on)** 'yı uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[ZIVVER test kullanıcısını oluşturun](#create-zivver-test-user)** - ZIVVER'de Britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma 'yı ZIVVER ile yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD oturumaçmayı ZIVVER ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **zivver** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. Azure [portalında](https://portal.azure.com/), **ZIVVER** uygulama tümleştirme sayfasında Tek **oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![ZIVVER etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-identifier.png)
+    ![ZIVVER Etki Alanı ve URL'ler tek oturum açma bilgileri](common/idp-identifier.png)
 
-    **Tanımlayıcı** metin kutusuna bir URL yazın: `https://app.zivver.com/SAML/Zivver`
+    **Tanımlayıcı** metin kutusuna bir URL yazın:`https://app.zivver.com/SAML/Zivver`
 
-5. ZIVVER uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. ZIVVER uygulaması **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+5. ZIVVER uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir, **nameidentifier** **user.userprincipalname**ile eşlenir gibi. ZIVVER uygulaması **nameidentifier** **user.mail**ile eşlenen bekliyor , bu yüzden **düzenleme** simgesine tıklayarak öznitelik eşleme düzenlemeniz ve öznitelik eşleme değiştirmek gerekir.
 
     ![image](common/edit-attribute.png)
 
-6. Yukarıdaki ZIVVER uygulaması, daha fazla özniteliğin SAML yanıtına geri geçirilmesini bekliyor. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
+6. Yukarıdakilere ek olarak, ZIVVER uygulaması SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. **Kullanıcı Öznitelikleri** iletişim kutusundaki **Kullanıcı Talepleri** bölümünde, aşağıdaki tabloda gösterildiği gibi SAML belirteç özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Name | Ad Alanı | Kaynak özniteliği|
+    | Adı | Ad Alanı | Kaynak Özniteliği|
     | ---------------| --------------- |
-    | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | User. ObjectID |
+    | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
     >[!NOTE]
-    >Şirket içi Active Directory ve Azure AD Connect aracı ile karma bir kurulum kullanıyorsanız, değer `user.objectGUID` olarak ayarlanmalıdır
+    >Şirket içinde Active Directory ve Azure AD Connect Aracı ile karma bir kurulum kullanıyorsanız, VALUE`user.objectGUID`
 
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
+    a. **Kullanıcı taleplerini yönet** iletişim kutusunu açmak için yeni **talep ekle'yi** tıklatın.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
+    b. **Ad** metin kutusunda, bu satır için gösterilen öznitelik adını yazın.
 
-    c. **Ad alanını** boş bırakın.
+    c. Ad **alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Kaynak'ı Öznitelik**olarak seçin.
 
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
+    e. Kaynak **öznitelik** listesinden, bu satır için gösterilen öznitelik değerini yazın.
 
-    f. **Save (Kaydet)** düğmesine tıklayın.
+    f. **Kaydet**'e tıklayın.
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta verileri XML** 'ini indirmek Için **Indir** ' **e tıklayın ve** **uygulama Federasyon meta veri URL 'sini** , gereksiniminize göre belirtilen seçeneklerden kopyalayın ve bilgisayarınıza kaydedin.
+7. **SAML Ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'i** indirmek için **İndir'i** tıklatın ve App **Federation Metadata url'sini** gereksiniminize göre verilen seçeneklerden kopyalamak ve bilgisayarınıza kaydetmek için **Kopyala** simgesine tıklayın.
 
-    ![Sertifika URL 'SI indirme bağlantısı](./media/zivver-tutorial/metadataxmlurl.png)
+    ![Sertifika URL indirme bağlantısı](./media/zivver-tutorial/metadataxmlurl.png)
 
-8. **ZIVVER ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+8. **ZIVVER'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-zivver-single-sign-on"></a>ZIVVER çoklu oturum açmayı Yapılandır
+### <a name="configure-zivver-single-sign-on"></a>ZIVVER Tek İşaret-On yapıla
 
-1. Farklı bir Web tarayıcısı penceresinde, ZIVVER Şirket [sitenizde](https://app.zivver.com/login) yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak ZIVVER şirket [sitenizde](https://app.zivver.com/login) oturum açın.
 
-2. Tarayıcı pencerenizin sol alt kısmındaki **kuruluş ayarları** simgesine tıklayın.
+2. Tarayıcı pencerenizin sol alt kısmındaki **Kuruluş ayarları** simgesini tıklatın.
 
-3. **Çoklu oturum açma**'ya gidin.
+3. Tek **oturum açma'ya**git.
 
-4. Azure portal indirdiğiniz Federasyon meta veri XML dosyasını açın.
+4. Azure portalından indirdiğiniz Federasyon Metadata XML dosyasını açın.
 
-5. **Kimlik sağlayıcısı meta veri URL 'si** metin kutusunda, daha önce Azure Portal kaydettiğiniz **uygulama Federasyon meta veri URL 'sini** yapıştırın.
+5. Kimlik **Sağlayıcısı meta veri URL** metin kutusuna, daha önce Azure portalından kaydettiğiniz **Uygulama Federasyonu Metaveri URL'sini** yapıştırın.
 
-6. **SSO 'Yu etkinleştirme**onay kutusunu işaretleyin.
+6. Onay kutusunu **Işaretle SSO'yu açın.**
 
-7. **KAYDET**'e tıklayın.
+7. **KAYDET'i**tıklatın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. **Kullanıcı adı** alanına `brittasimon@yourcompanydomain.extension`yazın. Örneğin, BrittaSimon@contoso.com
+    b. Kullanıcı **adı** alanı `brittasimon@yourcompanydomain.extension`türünde. Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, ZIVVER 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Britta Simon'ın ZIVVER'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **zivver**' i seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve **ardından ZIVVER'i**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Zivver**' i seçin.
+2. Uygulamalar listesinde **ZIVVER'i**seçin.
 
     ![Uygulamalar listesindeki ZIVVER bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-zivver-test-user"></a>ZIVVER test kullanıcısı oluştur
+### <a name="create-zivver-test-user"></a>ZIVVER test kullanıcısı oluşturma
 
-Bu bölümde, ZIVVER içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Zivver platformunda kullanıcıları eklemek için [zivver destek ekibi](https://support.zivver.com/) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, ZIVVER'de Britta Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları ZIVVER platformuna eklemek için [ZIVVER destek ekibiyle](https://support.zivver.com/) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde ZIVVER kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ZIVVER ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki ZIVVER döşemesini tıklattığınızda, SSO'yu kurduğunuz ZIVVER'de otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,5 +1,5 @@
 ---
-title: VM ağ trafiğini filtreleme-Azure CLı betik örneği
+title: VM ağ trafiğini filtrele - Azure CLI komut dosyası örneği
 description: Azure CLI betiği örneği - Gelen ve giden sanal makine ağ trafiğini filtreleme.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: 71de6c9c3f742e006762fb8778948cff2e5d96af
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084041"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Gelen ve giden sanal makine ağ trafiğini filtreleme betiği örneği

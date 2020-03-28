@@ -1,5 +1,5 @@
 ---
-title: Güvenlik duvarının arkasındaki Key Vault erişim-Azure Key Vault | Microsoft Docs
+title: Güvenlik duvarının arkasındaki Anahtar Kasasına Erişin - Azure Key Vault | Microsoft Dokümanlar
 description: Güvenlik duvarının arkasındaki bir uygulamadan Azure Anahtar Kasasına nasıl erişebileceğinizi öğrenin
 services: key-vault
 author: amitbapat
@@ -10,37 +10,37 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 36dada57e587da6e023a83c8ebb6555abe44b9ba
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 42b4eab5f2417f97ab3d37274e6fca1965eca95f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184855"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457466"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Güvenlik duvarının ardındayken Azure Anahtar Kasası’na erişme
 
-## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>Anahtar kasasına erişmek için bir güvenlik duvarı arkasındaki Anahtar Kasası istemci uygulamamı etkinleştirmek için hangi bağlantı noktalarını, Konakları veya IP adreslerini açmalıyım?
+## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>Güvenlik duvarının arkasındaki anahtar kasa istemci uygulamamın anahtar kasasına erişmesini sağlamak için hangi bağlantı noktalarını, ana bilgisayarları veya IP adreslerini açmalıyım?
 
 Bir anahtar kasasına erişmek için, anahtar kasası istemci uygulamanızın çeşitli işlevlere ilişkin birden çok uç noktaya erişebilmesi gerekir:
 
 * Azure Active Directory aracılığıyla kimlik doğrulama (Azure AD).
 * Azure Anahtar Kasası'nın yönetimi. Buna, Azure Resource Manager aracılığıyla erişim ilkeleri oluşturma, okuma, güncelleştirme, silme ve ayarlama da dahildir.
-* Key Vault’ta depolanan nesnelere (anahtarlar ve gizli diziler) erişim ve bu nesnelerin yönetimi, Key Vault’a özgü uç nokta üzerinden gerçekleşir (örneğin, [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)).  
+* Key Vault'ta depolanan nesnelere (anahtarlar ve sırlar) erişme ve yönetme, Key [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)Vault'a özgü bitiş noktasından (örneğin).  
 
 Yapılandırmanıza ve ortamınıza bağlı olarak, bazı farklılıklar mevcuttur.
 
 ## <a name="ports"></a>Bağlantı Noktaları
 
-Üç işlev (kimlik doğrulama, yönetim ve veri düzlemi erişimi) için de anahtar kasası trafiği HTTPS: bağlantı noktası 443 üzerinden gider. Ancak CRL için zaman zaman HTTP (bağlantı noktası 80) trafiği de olacaktır. OCSP destekleyen istemciler CRL'ye erişmemelidir, ancak zaman zaman [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) adresine erişebilirler.  
+Üç işlev (kimlik doğrulama, yönetim ve veri düzlemi erişimi) için de anahtar kasası trafiği HTTPS: bağlantı noktası 443 üzerinden gider. Ancak CRL için zaman zaman HTTP (bağlantı noktası 80) trafiği de olacaktır. OCSP'yi destekleyen istemciler CRL'ye ulaşmamalı, ancak zaman zaman [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).  
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Anahtar kasası istemci uygulamasının, kimlik doğrulaması için Azure Active Directory uç noktalarına erişmesi gerekir. Kullanılan uç nokta, Azure AD kiracı yapılandırmasına, sorumlu türüne (kullanıcı sorumlusu veya hizmet sorumlusu) ve hesap türüne (örneğin, Microsoft hesabı ya da iş veya okul hesabı) bağlıdır.  
 
 | Sorumlu türü | Uç nokta:bağlantı noktası |
 | --- | --- |
-| Microsoft hesabı kullanan kullanıcı<br> (örneğin, user@hotmail.com) |**Genel:**<br> login.microsoftonline.com:443<br><br> **Azure Çin:**<br> login.chinacloudapi.cn:443<br><br>**Azure ABD:**<br> login.microsoftonline.us:443<br><br>**Azure Almanya:**<br> login.microsoftonline.de:443<br><br> ile <br>login.live.com:443 |
-| Azure AD ile iş veya okul hesabı kullanan kullanıcı veya hizmet sorumlusu (örneğin, user@contoso.com) |**Genel:**<br> login.microsoftonline.com:443<br><br> **Azure Çin:**<br> login.chinacloudapi.cn:443<br><br>**Azure ABD:**<br> login.microsoftonline.us:443<br><br>**Azure Almanya:**<br> login.microsoftonline.de:443 |
+| Microsoft hesabı kullanan kullanıcı<br> (örneğin, user@hotmail.com) |**Küresel:**<br> login.microsoftonline.com:443<br><br> **Azure Çin:**<br> login.chinacloudapi.cn:443<br><br>**Azure ABD Hükümeti:**<br> login.microsoftonline.us:443<br><br>**Azure Almanya:**<br> login.microsoftonline.de:443<br><br> ve <br>login.live.com:443 |
+| Azure AD ile iş veya okul hesabı kullanan kullanıcı veya hizmet sorumlusu (örneğin, user@contoso.com) |**Küresel:**<br> login.microsoftonline.com:443<br><br> **Azure Çin:**<br> login.chinacloudapi.cn:443<br><br>**Azure ABD Hükümeti:**<br> login.microsoftonline.us:443<br><br>**Azure Almanya:**<br> login.microsoftonline.de:443 |
 | İş veya okul hesabı ve Active Directory Federasyon Hizmetleri (AD FS) veya başka bir federasyon uç noktası kullanan kullanıcı veya hizmet sorumlusu (örneğin, user@contoso.com) |İş veya okul hesabı için tüm uç noktalar ve AD FS veya diğer federasyon uç noktaları |
 
 Farklı olası karmaşık senaryolar da mevcuttur. Daha fazla bilgi için bkz. [Azure Active Directory Kimlik Doğrulaması Akışı](../active-directory/develop/authentication-scenarios.md), [Uygulamaları Azure Active Directory ile Tümleştirme](../active-directory/develop/active-directory-how-to-integrate.md) ve [Active Directory Kimlik Doğrulaması Protokolleri](https://msdn.microsoft.com/library/azure/dn151124.aspx).  
@@ -51,8 +51,8 @@ Anahtar Kasası yönetimi için (CRUD ve erişim ilkesi ayarı), anahtar kasası
 
 | İşlem türü | Uç nokta:bağlantı noktası |
 | --- | --- |
-| Anahtar Kasası denetim düzlemi işlemleri<br> Azure Resource Manager yoluyla |**Genel:**<br> management.azure.com:443<br><br> **Azure Çin:**<br> management.chinacloudapi.cn:443<br><br> **Azure ABD:**<br> management.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> management.microsoftazure.de:443 |
-| Azure Active Directory Graph API'si |**Genel:**<br> graph.windows.net:443<br><br> **Azure Çin:**<br> graph.chinacloudapi.cn:443<br><br> **Azure ABD:**<br> graph.windows.net:443<br><br> **Azure Almanya:**<br> graph.cloudapi.de:443 |
+| Anahtar Kasası denetim düzlemi işlemleri<br> Azure Resource Manager yoluyla |**Küresel:**<br> management.azure.com:443<br><br> **Azure Çin:**<br> management.chinacloudapi.cn:443<br><br> **Azure ABD Hükümeti:**<br> management.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> management.microsoftazure.de:443 |
+| Microsoft Graph API'si |**Küresel:**<br> graph.microsoft.com:443<br><br> **Azure Çin:**<br> graph.chinacloudapi.cn:443<br><br> **Azure ABD Hükümeti:**<br> graph.microsoft.com:443<br><br> **Azure Almanya:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Anahtar Kasası işlemleri
 
@@ -60,7 +60,7 @@ Tüm anahtar kasası nesne (anahtarlar ve gizli anahtarlar) yönetimi ve şifrel
 
 | İşlem türü | Uç nokta:bağlantı noktası |
 | --- | --- |
-| Anahtarlar üzerindeki şifreleme işlemlerini de içeren işlemler, anahtarları ve gizli anahtarları oluşturma, okuma, güncelleştirme ve silme, anahtar kasası nesnelerindeki etiketleri ve diğer öznitelikleri (anahtarlar ya da gizli anahtarlar) ayarlama veya alma |**Genel:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Çin:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure ABD:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |
+| Anahtarlar üzerindeki şifreleme işlemlerini de içeren işlemler, anahtarları ve gizli anahtarları oluşturma, okuma, güncelleştirme ve silme, anahtar kasası nesnelerindeki etiketleri ve diğer öznitelikleri (anahtarlar ya da gizli anahtarlar) ayarlama veya alma |**Küresel:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Çin:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure ABD Hükümeti:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |
 
 ## <a name="ip-address-ranges"></a>IP adresi aralıkları
 
@@ -68,4 +68,4 @@ Anahtar Kasası hizmeti, PaaS altyapısı gibi diğer Azure kaynaklarını kulla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Anahtar Kasası ile ilgili sorularınız varsa bkz. [Azure Anahtar Kasası Forumları](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Key Vault hakkında sorularınız varsa Azure [Anahtar Kasası Forumlarını](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)ziyaret edin.

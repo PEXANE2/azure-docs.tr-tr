@@ -12,17 +12,17 @@ ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 74a72df9d8c0bc8a578fea57ab81fb496f8e6add
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74420361"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell kullanarak Elastik İş aracısı oluşturma
 
 [Elastik işler](sql-database-job-automation-overview.md#elastic-database-jobs-preview), bir veya daha fazla Transact-SQL (T-SQL) betiğinin birden fazla veritabanında paralel olarak çalıştırılmasını sağlar.
 
-Bu öğreticide, birden çok veritabanında bir sorgu çalıştırmak için gereken adımları öğreneceksiniz:
+Bu öğreticide, bir sorguyu birden çok veritabanında çalıştırmak için gereken adımları öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Elastik İş aracısı oluşturma
@@ -34,15 +34,15 @@ Bu öğreticide, birden çok veritabanında bir sorgu çalıştırmak için gere
 > * Bir işin yürütülmesini başlatma
 > * Bir işi izleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Elastik Veritabanı işleri yükseltilen sürümünde, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlet 'leri kümesi vardır. Bu yeni cmdlet 'ler, tüm mevcut iş kimlik bilgilerinizi, hedefleri (veritabanları, sunucular, özel koleksiyonlar dahil), iş Tetikleyicileri, iş zamanlamaları, iş içerikleri ve işleri yeni bir elastik Iş aracısına aktarır.
+Elastik Veritabanı işlerinin yükseltilmiş sürümü, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlets setine sahiptir. Bu yeni cmdletler, varolan tüm iş kimlik bilgilerinizi, hedeflerinizi (veritabanları, sunucular, özel koleksiyonlar dahil), iş tetikleyicilerini, iş zamanlamalarını, iş içeriğini ve işleri yeni bir Elastik İş aracısına aktarın.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>En son elastik Işler cmdlet 'lerini yükler
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>En son Elastik İşler cmdlets yükleyin
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-En son elastik Iş cmdlet 'lerini almak için **az. SQL** modülünü yükler. PowerShell 'de Yönetim erişimiyle aşağıdaki komutları çalıştırın.
+En son Elastik İş cmdlets almak için **Az.Sql** modülyükleyin. PowerShell'de aşağıdaki komutları yönetim erişimiyle çalıştırın.
 
 ```powershell
 # installs the latest PackageManagement and PowerShellGet packages
@@ -58,13 +58,13 @@ Import-Module Az.Sql
 Get-Module Az.Sql
 ```
 
-Bu öğretici, **az. SQL** modülüne ek olarak *SqlServer* PowerShell modülünü de gerektirir. Ayrıntılar için bkz. [SQL Server PowerShell modülünü Install](/sql/powershell/download-sql-server-ps-module).
+**Az.Sql** modülüne ek olarak, bu öğretici de *SqlServer* PowerShell modülü gerektirir. Ayrıntılar için SQL [Server PowerShell modüllerini yükleyin.](/sql/powershell/download-sql-server-ps-module)
 
 ## <a name="create-required-resources"></a>Gerekli kaynakları oluşturma
 
 Elastik İş aracısı oluşturmak için [İş veritabanı](sql-database-job-automation-overview.md#job-database) olarak kullanılacak bir veritabanı (S0 veya üzeri) gerekir.
 
-Aşağıdaki komut dosyası, Iş veritabanı olarak kullanılmak üzere yeni bir kaynak grubu, sunucu ve veritabanı oluşturur. İkinci komut, işleri yürütmek için iki boş veritabanı ile ikinci bir sunucu oluşturur.
+Aşağıdaki betik yeni bir kaynak grubu ve sunucunun yanı sıra İş veritabanı olarak kullanılacak bir veritabanı oluşturur. İkinci komut dosyası, işleri yürütmek için iki boş veritabanlarına sahip ikinci bir sunucu oluşturur.
 
 Elastik İşlere özel adlandırma gereksinimleri olmadığından [Azure gereksinimlerine](/azure/architecture/best-practices/resource-naming) uygun olduğu sürece istediğiniz adlandırma kuralını kullanabilirsiniz.
 
@@ -122,9 +122,9 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Elastik Işler kullanma
+## <a name="use-elastic-jobs"></a>Elastik İşler kullanın
 
-Elastik Işleri kullanmak için, aşağıdaki komutu çalıştırarak özelliği Azure aboneliğinize kaydedin. Elastik Iş aracısını sağlamayı planladığınız abonelik için bu komutu bir kez çalıştırın. Yalnızca iş hedefleri olan veritabanları içeren aboneliklerin kaydedilmesi gerekmez.
+Elastik İşler'i kullanmak için aşağıdaki komutu çalıştırarak azure aboneliğinizde özelliği kaydedin. Elastik İş aracısını sağlamayı planladığınız abonelik için bu komutu bir kez çalıştırın. Yalnızca iş hedefi olan veritabanları içeren aboneliklerin kaydedilmesi gerekmez.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
@@ -134,7 +134,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 Elastik İş aracısı; işlerin oluşturulması, çalıştırılması ve yönetilmesi için kullanılan bir Azure kaynağıdır. Aracı işleri belirli bir plana göre veya tek seferlik iş olarak yürütür.
 
-**New-Azsqtalakjobagent** cmdlet 'ı IÇIN Azure SQL veritabanı 'nın zaten mevcut olması gerekir. bu nedenle, *resourcegroupname*, *ServerName*ve *DatabaseName* parametrelerinin hepsi mevcut kaynaklara işaret etmelidir.
+**New-AzSqlElasticJobAgent** cmdlet zaten var olan bir Azure SQL veritabanı gerektirir, bu nedenle *resourceGroupName*, *serverName*ve *databaseName parametreleri* tüm varolan kaynakları işaret etmelidir.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -145,13 +145,13 @@ $jobAgent
 
 ### <a name="create-the-job-credentials"></a>İş kimlik bilgilerini oluşturma
 
-İşler, yürütme ve yürütme betikleri üzerinde hedef grup tarafından belirtilen hedef veritabanlarına bağlanmak için veritabanı kapsamlı kimlik bilgilerini kullanır. Bu veritabanı kapsamlı kimlik bilgileri aynı zamanda hedef grup üyesi türü olarak kullanıldığında bir sunucu veya elastik havuzdaki tüm veritabanlarını numaralandırma amacıyla asıl veritabanına bağlanmak için kullanılır.
+İşler, yürütme ve yürütme komut dosyaları üzerine hedef grup tarafından belirtilen hedef veritabanlarına bağlanmak için veritabanı kapsamı kimlik bilgilerini kullanır. Bu veritabanı kapsamlı kimlik bilgileri aynı zamanda hedef grup üyesi türü olarak kullanıldığında bir sunucu veya elastik havuzdaki tüm veritabanlarını numaralandırma amacıyla asıl veritabanına bağlanmak için kullanılır.
 
 Veritabanı kapsamlı kimlik bilgileri iş veritabanında oluşturulmalıdır. İşin başarıyla tamamlanması için hedef veritabanlarının tümünde yeterli izinlere sahip bir oturum açma adı olmalıdır.
 
 ![Elastik İşler kimlik bilgileri](media/elastic-jobs-overview/job-credentials.png)
 
-Aşağıdaki betikte görüntüdeki kimlik bilgilerine ek olarak **GRANT** komutlarının kullanıldığına dikkat edin. Bu izinler, bu örnek işte seçtiğimiz betik için geçerlidir. Örnek, hedeflenen veritabanlarında yeni bir tablo oluşturduğundan, her hedef DB 'nin başarıyla çalışması için uygun izinlere ihtiyacı vardır.
+Aşağıdaki betikte görüntüdeki kimlik bilgilerine ek olarak **GRANT** komutlarının kullanıldığına dikkat edin. Bu izinler, bu örnek işte seçtiğimiz betik için geçerlidir. Örnek, hedeflenen veritabanlarında yeni bir tablo oluşturduğundan, her hedef db'nin başarılı bir şekilde çalıştırılması için uygun izinlere ihtiyacı vardır.
 
 Gereken iş kimlik bilgilerini (iş veritabanında) oluşturmak için aşağıdaki betiği çalıştırın:
 
@@ -204,7 +204,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [Hedef grup](sql-database-job-automation-overview.md#target-group), işin üzerinde çalışacağı veritabanı bir veya daha fazla veritabanından oluşan kümeyi tanımlar.
 
-Aşağıdaki kod parçacığı iki hedef grubu oluşturur: *ServerGroup*ve *serverGroupExcludingDb2*. *ServerGroup* , yürütme sırasında sunucuda var olan tüm veritabanlarını hedefler ve *serverGroupExcludingDb2* , *targetDb2*dışında, sunucudaki tüm veritabanlarını hedefler.
+Aşağıdaki parçacık iki hedef grup oluşturur: *serverGroup*ve *serverGroupExcludingDb2*. *serverGroup* yürütme sırasında sunucuda bulunan tüm veritabanlarını hedefler ve *serverGroupExcludingDb2* *targetDb2*hariç sunucudaki tüm veritabanlarını hedefler:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -218,9 +218,9 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerName -Database $db2.DatabaseName -Exclude
 ```
 
-### <a name="create-a-job-and-steps"></a>Bir iş ve adım oluşturun
+### <a name="create-a-job-and-steps"></a>İş ve adımlar oluşturma
 
-Bu örnek, işin çalışması için bir işi ve iki iş adımını tanımlar. Birinci iş adımı (*step1*), hedef *ServerGroup* grubundaki her veritabanında yeni bir tablo (*Step1Table*) oluşturur. İkinci iş adımı (*Step2*), daha önce belirtilen hedef grup hariç tutmak için tanımlandığından, *TargetDb2*hariç her veritabanında yeni bir tablo (*Step2Table*) oluşturur.
+Bu örnek, bir iş ve işin çalışması için iki iş adımı tanımlar. Birinci iş adımı (*step1*), hedef *ServerGroup* grubundaki her veritabanında yeni bir tablo (*Step1Table*) oluşturur. İkinci iş adımı (*step2*), *TargetDb2* haricindeki tüm veritabanlarında yeni bir tablo (*Step2Table*) oluşturur. Bunun nedeni hedef grubun önceden bu veritabanını hariç tutacak şekilde tanımlanmış olmasıdır.
 
 ```powershell
 Write-Output "Creating a new job..."
@@ -272,27 +272,27 @@ $jobExecution | Get-AzSqlElasticJobStepExecution
 $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
 
-Aşağıdaki tabloda olası iş yürütme durumları listelenmektedir:
+Aşağıdaki tabloda olası iş yürütme durumları listelemektedir:
 
-|State|Açıklama|
+|Durum|Açıklama|
 |:---|:---|
-|**Yaratıl** | İş yürütmesi yeni oluşturulmuştur ve henüz devam etmiyor.|
-|**Ediyor** | İş yürütmesi Şu anda devam ediyor.|
-|**WaitingForRetry** | İş yürütmesi, işlemini tamamlayamadı ve yeniden denenmayı bekliyor.|
-|**Baarı** | İşin yürütülmesi başarıyla tamamlandı.|
-|**SucceededWithSkipped** | İş yürütmesi başarıyla tamamlandı, ancak bazı alt öğeleri atlandı.|
-|**Başaramadı** | İş yürütmesi başarısız oldu ve yeniden deneme süresi bitti.|
-|**Zaman aşımına uğradı** | İş yürütme zaman aşımına uğradı.|
-|**Edilmesi** | İş yürütmesi iptal edildi.|
-|**Atlandı** | Aynı iş adımının başka bir yürütmesi aynı hedefte zaten çalıştığı için iş yürütmesi atlandı.|
-|**Waitingforchildjobyürütmeler** | İş yürütmesi, alt yürütmelerinin tamamlanmasını bekliyor.|
+|**Oluşturulan** | İş yürütme sadece oluşturuldu ve henüz devam etmiyor.|
+|**Devam Ediyor** | İş yürütme şu anda devam ediyor.|
+|**WaitingForRetry** | İş yürütme eylemini tamamlamak mümkün değildi ve yeniden denemek için bekliyor.|
+|**Başarılı oldu** | İş yürütme başarıyla tamamlandı.|
+|**BaşarılıWithSkipped** | İş yürütme başarıyla tamamlandı, ancak bazı çocukları atlandı.|
+|**Başarısız** | İş infazı başarısız oldu ve yeniden denemelerini tüketti.|
+|**TimedOut** | İş infazı zaman doldu.|
+|**İptal edildi** | İş yürütme iptal edildi.|
+|**Atlandı** | Aynı iş adımının başka bir yürütme zaten aynı hedef üzerinde çalışıyordu çünkü iş yürütme atlandı.|
+|**WaitingForChildJobExecutions** | İş yürütme, alt infazlarının tamamlanmasını bekliyor.|
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Kaynak grubunu silerek bu öğreticide oluşturulan Azure kaynaklarını silebilirsiniz.
 
 > [!TIP]
-> Bu işlerle çalışmaya devam etmeyi planlıyorsanız, bu makalede oluşturulan kaynakları temizlemeyin.
+> Bu işlerle çalışmaya devam etmeyi planlıyorsanız, bu makalede oluşturulan kaynakları temizlemezsiniz.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName

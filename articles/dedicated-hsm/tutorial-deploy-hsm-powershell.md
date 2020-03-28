@@ -1,6 +1,6 @@
 ---
-title: Öğretici PowerShell - Azure ayrılmış HSM kullanarak mevcut bir sanal ağa dağıtma | Microsoft Docs
-description: PowerShell kullanarak mevcut bir sanal ağa ayrılmış bir HSM dağıtmayı gösteren öğretici.
+title: PowerShell - Azure Özel HSM | Microsoft Dokümanlar
+description: PowerShell kullanarak özel bir HSM'nin mevcut bir sanal ağa nasıl dağıtılabildiğini gösteren öğretici
 services: dedicated-hsm
 documentationcenter: na
 author: msmbaldwin
@@ -13,79 +13,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368549"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474433"
 ---
-# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Öğretici: PowerShell kullanarak mevcut sanal ağına HSM'ler dağıtma
+# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Öğretici – PowerShell kullanarak HSM'leri mevcut bir sanal ağa dağıtma
 
-Azure ayrılmış HSM hizmetini fiziksel bir cihaz için tam yönetim denetimi ve tam yönetim sorumluluk ile tek bir müşterinin kullanım sağlar. Fiziksel donanım sağlama nedeniyle Microsoft kapasite etkili bir şekilde yönetildiğinden emin olmak için bu cihazları nasıl ayrıldığını denetleyen gerekir. Sonuç olarak, bir Azure aboneliğinde, ayrılmış HSM hizmetini normalde kaynak sağlama için görünür olmaz. Ayrılmış HSM hizmetine erişim gerektiren herhangi bir Azure müşterisi ilk başvurmalısınız, Microsoft hesap yöneticinize istek kayıt için ayrılmış HSM hizmeti. Yalnızca bu işlemi başarıyla tamamlandıktan sonra sağlama mümkün olacaktır.
-Tipik bir sağlama işlemini göstermek için bu öğreticiyi amaçlar burada:
+Azure Özel HSM Hizmeti, tüm müşteri kullanımı için tam yönetim kontrolü ve tam yönetim sorumluluğuyla fiziksel bir aygıt sağlar. Fiziksel donanım sağlaması nedeniyle Microsoft, kapasitenin etkin bir şekilde yönetilmesini sağlamak için bu aygıtların nasıl tahsis edildiğini denetlemelidir. Sonuç olarak, bir Azure aboneliği içinde, Özel HSM hizmeti normalde kaynak sağlama için görünmez. Özel HSM hizmetine erişim gerektiren herhangi bir Azure müşterisi, Özel HSM hizmeti için kayıt istemek için öncelikle Microsoft hesap yöneticilerine başvurmalıdır. Ancak bu işlem başarıyla tamamlandığında sağlama mümkün olacaktır.
+Bu öğretici, tipik bir sağlama işlemini göstermeyi amaçlamaktadır:
 
-- Bir müşteri sanal ağ zaten var
-- Bir sanal makineye sahip oldukları
-- Bunlar, mevcut ortamına HSM kaynakları eklemeniz gerekir.
+- Bir müşterinin zaten sanal bir ağı vardır
+- Sanal bir makineleri var.
+- HSM kaynaklarını bu varolan ortama eklemeleri gerekir.
 
-Tipik, yüksek kullanılabilirlik, çok bölgeli dağıtım mimarisi şu şekilde görünebilir:
+Tipik, yüksek kullanılabilirlik, çok bölgeli dağıtım mimarisi aşağıdaki gibi görünebilir:
 
-![Çok bölgeli dağıtım](media/tutorial-deploy-hsm-powershell/high-availability.png)
+![çok bölgeli dağıtım](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
-Bu öğreticide HSM'ler çifti üzerinde odaklanır ve gerekli ExpressRoute (bkz. Yukarıdaki alt ağ 1) bir sanal mevcut tümleştirilmektedir ağ geçidi ağ (VNET 1 yukarıdaki bakın).  Diğer tüm kaynaklar standart Azure kaynaklarıdır. Aynı tümleştirme işlemi HSM'ler için yukarıdaki VNET 3 4 ağda kullanılabilir.
+Bu öğretici, bir çift HSM'ye ve gerekli ExpressRoute Ağ Geçidi'nin (yukarıdaki Subnet 1'e bakınız) varolan bir sanal ağa entegre edilmesine odaklanır (yukarıdaki VNET 1'e bakın).  Diğer tüm kaynaklar standart Azure kaynaklarıdır. Yukarıdaki VNET 3'te 4 alt netindeki HSM'ler için de aynı tümleştirme işlemi kullanılabilir.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure ayrılmış HSM Azure portalında şu anda kullanılamıyor, bu nedenle tüm etkileşim hizmeti ile komut satırı veya kullanarak PowerShell olur. Bu öğreticide, Azure Cloud Shell'de PowerShell kullanacaksınız. PowerShell 'i kullanmaya yeni başladıysanız başlangıç yönergelerini buradan izleyin: [Azure PowerShell kullanmaya](https://docs.microsoft.com/powershell/azure/get-started-azureps)başlayın.
+Azure Özel HSM şu anda Azure portalında mevcut değildir, bu nedenle hizmetle tüm etkileşim komut satırı veya PowerShell kullanılarak olacaktır. Bu öğretici, Azure Bulut Shell'de PowerShell'i kullanır. PowerShell'de yeniyseniz, başlangıç yönergelerini buradan takip edin: [Azure PowerShell Başlayın.](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 Varsayımlar:
 
-- Azure ayrılmış HSM kayıt sürecinde olan ve hizmeti kullanmak için onaylanmış. Aksi durumda, ardından ayrıntılar için Microsoft hesap temsilcinize başvurun. 
-- Bu kaynaklar için bir kaynak grubu oluşturdunuz ve Bu öğreticide dağıtılan yenilerini bu gruba katılacak.
-- Gerekli sanal ağ, alt ağ ve sanal makineler Yukarıdaki diyagramda göre oluşturmuş ve artık 2 HSM'ler bu dağıtımı ile tümleştirmek istediğiniz.
+- Azure Özel HSM kayıt işleminden geçtiniz ve hizmetin kullanımı için onaylandınız. Değilse, ayrıntılar için Microsoft hesap temsilcinize başvurun. 
+- Bu kaynaklar için bir Kaynak Grubu oluşturdunuz ve bu öğreticide dağıtılan yeni ler bu gruba katılacak.
+- Yukarıdaki diyagrama göre gerekli sanal ağı, alt ağı ve sanal makineleri zaten oluşturdunuz ve şimdi bu dağıtıma 2 HSM entegre etmek istiyorsunuz.
 
-Aşağıdaki tüm yönergeler Azure portal zaten gezindiği ve Cloud Shell açtığınız varsayılır (portalın sağ üst köşesinde yer alan "\>\_" öğesini seçin).
+Aşağıdaki tüm talimatlar Azure portalına çoktan yönlendirdiğinizi ve Bulut Kabuğu'nu\>\_açtığınızı varsayar (portalın sağ üst ağına doğru " " seçeneğini belirleyin).
 
-## <a name="provisioning-a-dedicated-hsm"></a>Ayrılmış HSM sağlama
+## <a name="provisioning-a-dedicated-hsm"></a>Özel HSM Sağlama
 
-HSM'ler sağlama ve var olan bir sanal ağı ExpressRoute ağ geçidi üzerinden oturum tümleştirme doğrulanmış kullanarak ssh erişimi ve diğer yapılandırma etkinlikleri için HSM cihazını temel kullanılabilirliğini sağlamak için komut satırı aracı. Aşağıdaki komutlar, HSM kaynaklar ve ilişkili ağ kaynakları oluşturmak için Resource Manager şablonu kullanır.
+HSM'lerin sağlanması ve ExpressRoute Ağ Geçidi üzerinden mevcut bir sanal ağa entegre edilmesi, hsm aygıtının daha fazla yapılandırma faaliyetleri için ulaşılabilirliğini ve temel kullanılabilirliğini sağlamak için ssh komut satırı aracı kullanılarak doğrulanacaktır. Aşağıdaki komutlar, HSM kaynaklarını ve ilişkili ağ kaynaklarını oluşturmak için bir Kaynak Yöneticisi şablonu kullanır.
 
-### <a name="validating-feature-registration"></a>Özellik kaydı doğrulanıyor
+### <a name="validating-feature-registration"></a>Özellik Kaydını Doğrulama
 
-Yukarıda belirtildiği gibi herhangi bir sağlama etkinliği ayrılmış HSM hizmetini, aboneliğiniz için kayıtlı olmasını gerektiriyor. Doğrulamak için Azure portal cloud shell'de aşağıdaki PowerShell komutunu çalıştırın. 
+Yukarıda belirtildiği gibi, herhangi bir sağlama faaliyeti, Özel HSM hizmetinin aboneliğiniz için kayıtlı olduğunu gerektirir. Bunu doğrulamak için Azure portal bulutu kabuğunda aşağıdaki PowerShell komutunu çalıştırın. 
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-Aşağıdaki komut, HSM adanmış hizmet için gereken ağ özellikleri doğrular.
+Aşağıdaki komut, Özel HSM hizmeti için gereken ağ özelliklerini doğrular.
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
 ```
 
-Herhangi devam etmeden önce her iki komutu (aşağıda gösterildiği gibi) "Kaydedildi" durumuna döndürmeniz gerekir.  Bu hizmet için kaydetmeniz gerekirse, Microsoft hesap temsilcinize başvurun.
+Daha fazla ilerlemeden önce her iki komutda da "Kayıtlı" (aşağıda gösterildiği gibi) durumu döndürülmelidir.  Bu hizmete kaydolmanız gerekiyorsa, Microsoft hesap temsilcinize başvurun.
 
-![Abonelik durumu](media/tutorial-deploy-hsm-powershell/subscription-status.png)
+![abonelik durumu](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
 ### <a name="creating-hsm-resources"></a>HSM kaynakları oluşturma
 
-Bir HSM cihazını bir müşterilerin sanal ağa sağlanır. Bu, bir alt ağ gereksinimi anlamına gelir. Bir ExpressRoute ağ geçidi için sanal ağ ile fiziksel cihazı arasındaki iletişimi etkinleştirmek HSM bağımlılıktır ve son olarak bir sanal makine Gemalto istemci yazılımını kullanarak HSM cihazınıza erişim hakkı gereklidir. Bu kaynaklar, kullanım kolaylığı için karşılık gelen parametre dosyası ile bir şablon dosyasına toplanana. Dosyalar, Microsoft 'a doğrudan HSMrequest@Microsoft.comadresinden iletişim kurarak kullanılabilir.
+Bir HSM aygıtı müşterilerin sanal ağına satılır. Bu, bir alt ağ gereksinimi anlamına gelir. Sanal ağ ve fiziksel aygıt arasındaki iletişimi etkinleştirmek için HSM için bir bağımlılık bir ExpressRoute Ağ Geçidi ve son olarak sanal bir makine Gemalto istemci yazılımı kullanarak HSM aygıtına erişmek için gereklidir. Bu kaynaklar, kullanım kolaylığı için ilgili parametre dosyasıyla birlikte bir şablon dosyasında toplanmıştır. Dosyalar, doğrudan Microsoft'a başvurarak HSMrequest@Microsoft.comkullanılabilir.
 
-Dosyaları oluşturduktan sonra kaynaklar için tercih edilen adlarınızı eklemek için parametre dosyasını düzenlemeniz gerekir. Bu "value" satırları düzenleme anlamına gelir: "".
+Dosyaları aldıktan sonra, kaynaklar için tercih ettiğiniz adları eklemek için parametre dosyasını doldurmanız gerekir. Bu, "değer" ile satırları düzenleme anlamına gelir: "".
 
-- HSM kaynaklarının adları için `namingInfix` ön eki
-- HSM 'ler için kullanılan sanal ağın `ExistingVirtualNetworkName` adı
-- veri merkezi damgası 1 ' deki HSM kaynağının `DedicatedHsmResourceName1` adı
-- veri merkezi damgası 2 ' deki HSM kaynağının `DedicatedHsmResourceName2` adı
-- HSMs için `hsmSubnetRange` alt ağ IP adresi aralığı
-- VNET ağ geçidi için `ERSubnetRange` alt ağ IP adresi aralığı
+- `namingInfix`HSM kaynaklarının adları için önek
+- `ExistingVirtualNetworkName`HSM'ler için kullanılan sanal ağın adı
+- `DedicatedHsmResourceName1`Veri merkezi damgasındaki HSM kaynağının adı 1
+- `DedicatedHsmResourceName2`Datacenter damgasındaki HSM kaynağının adı 2
+- `hsmSubnetRange`HSM'ler için Subnet IP Adresi aralığı
+- `ERSubnetRange`VNET ağ geçidi için subnet IP Adres aralığı
 
-Bu değişiklikler örneği aşağıdaki gibidir:
+Bu değişikliklere bir örnek aşağıdaki gibidir:
 
 ```json
 {
@@ -114,23 +114,23 @@ Bu değişiklikler örneği aşağıdaki gibidir:
 }
 ```
 
-İlişkili Resource Manager şablon dosyası 6 kaynakları bu bilgileri ile oluşturacak:
+İlişkili Kaynak Yöneticisi şablon dosyası, bu bilgileri içeren 6 kaynak oluşturur:
 
-- Belirtilen sanal ağda HSM'ler için bir alt ağ
-- Sanal ağ geçidi için bir alt ağ 
-- HSM cihazlarına sanal AĞA bağlanan bir sanal ağ geçidi
+- Belirtilen VNET'teki HSM'ler için bir alt ağ
+- Sanal ağ ağ geçidi için bir alt ağ 
+- VNET'i HSM aygıtlarına bağlayan sanal ağ ağ geçidi
 - Ağ geçidi için genel bir IP adresi
-- Bir HSM damgasında 1
-- Bir HSM'de damga 2
+- Damga 1'de bir HSM
+- Damga 2'de bir HSM
 
-Parametre değerlerini ayarladıktan sonra dosyaları kullanmak için Azure portalında cloud shell dosya paylaşımına yüklenmesi gerekir. Azure portal, "\>\_" Cloud Shell symbol sağ üst simgesine tıklayın ve bu, ekranın alt kısmını bir komut ortamı haline getirir. Bu seçenekleri BASH şunlardır ve PowerShell ve BASH seçin değilse zaten ayarlanmış.
+Parametre değerleri ayarlandıktan sonra, dosyaların kullanılmak üzere Azure portal bulut bulut uyp dosyası paylaşımına yüklenmesi gerekir. Azure portalında , "\>\_" bulut kabuğu simgesinin sağ üst kısmına tıklayın ve bu da ekranın alt kısmını bir komut ortamı yapar. Bunun için seçenekler BASH ve PowerShell ve zaten ayarlanmış değilse BASH seçmelisiniz.
 
-Komut kabuğu araç çubuğundaki karşıya yükleme/indirme seçeneği vardır ve bu şablonu ve parametre dosyalarını karşıya dosya paylaşımınızı seçmeniz gerekir:
+Komut kabuğuaraç çubuğunda bir yükleme/indirme seçeneği vardır ve şablon ve parametre dosyalarını dosya paylaşımınıza yüklemek için bunu seçmelisiniz:
 
-![Dosya Paylaşımı](media/tutorial-deploy-hsm-powershell/file-share.png)
+![dosya paylaşımı](media/tutorial-deploy-hsm-powershell/file-share.png)
 
-Dosyalar yüklendiğinde bu kaynakları oluşturmaya hazır olursunuz.
-Yeni HSM oluşturmadan önce emin olmanız gerekir bazı önkoşul kaynak yerinde kaynaklardır. İşlem, HSM'ler ve ağ geçidi alt ağı aralıklarına sahip bir sanal ağ olması gerekir. Aşağıdaki komutları ne tür bir sanal ağda oluşturacak bir örnek olarak görev yapar.
+Dosyalar yüklendikten sonra kaynak oluşturmaya hazırsınız.
+Yeni HSM kaynakları oluşturmadan önce, yerinde olduğundan emin olunması gereken bazı ön koşul kaynakları vardır. Bilgi işlem, HSM ve ağ geçidi için alt ağ aralıklarına sahip bir sanal ağınız olmalıdır. Aşağıdaki komutlar, böyle bir sanal ağ oluşturacak ne bir örnek olarak hizmet vermektedir.
 
 ```powershell
 $compute = New-AzVirtualNetworkSubnetConfig `
@@ -173,9 +173,9 @@ New-AzVirtualNetwork `
 ```
 
 >[!NOTE]
->Unutmayın sanal ağ için en önemli yapılandırma olan alt ağ HSM cihazını için temsilciler "Microsoft.HardwareSecurityModules/dedicatedHSMs" için ayarlanmış olması gerekir.  HSM sağlama bu olmadan çalışmaz.
+>Sanal ağ için dikkat edilmesi gereken en önemli yapılandırma, HSM aygıtının alt ağının "Microsoft.HardwareSecurityModules/dedicatedHSMs" olarak ayarlanmış delegasyonları olması gerektiğidir.  HSM sağlama bu olmadan çalışmaz.
 
-Tüm önkoşulların yerine getirildiğinden sonra değerleri kendi benzersiz adlara sahip güncelleştirilen sağlama Resource Manager şablonu kullanmak için aşağıdaki komutu çalıştırın (en az bir kaynak grubu adı):
+Tüm ön koşullar yerine geçtikten sonra, değerleri benzersiz adlarNızla (en azından kaynak grubu adı) güncelleştirdiğinizi sağlamak için Kaynak Yöneticisi şablonunu kullanmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 
@@ -186,15 +186,15 @@ New-AzResourceGroupDeployment -ResourceGroupName myRG `
 
 ```
 
-Bu komutun tamamlanması yaklaşık 20 dakika sürer. "-Verbose" seçeneğini kullanılan emin olmanızı durumunu sürekli olarak görüntülenir.
+Bu komutun tamamlanması yaklaşık 20 dakika sürer. Kullanılan "-ayrıntılı" seçeneği, durumun sürekli olarak görüntülenmesini sağlar.
 
 ![sağlama durumu](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Başarıyla tamamlandığında, "provisioningState tarafından" gösterilen: "Başarılı", mevcut sanal makinenizde oturum açın ve HSM cihazını kullanılabilirliğini sağlamak için SSH kullanın.
+"ProvisioningState" ile gösterildiği nde başarılı bir şekilde tamamlandığında, mevcut sanal makinenizde oturum açabilir ve HSM aygıtının kullanılabilirliğini sağlamak için SSH'yi kullanabilirsiniz.
 
-## <a name="verifying-the-deployment"></a>Dağıtımı doğrulama
+## <a name="verifying-the-deployment"></a>Dağıtımı Doğrulama
 
-Cihazları sağlanmış olduğundan ve cihaz öznitelikleri doğrulamak için aşağıdaki komut kümesini çalıştırın. Kaynak grubu uygun şekilde ayarlanır ve tam olarak parametre dosyasında olduğundan, kaynak adı olduğundan emin olun.
+Aygıtların sağlandığını doğrulamak ve aygıt özniteliklerini görmek için aşağıdaki komut kümesini çalıştırın. Kaynak grubunun uygun şekilde ayarlandığından ve kaynak adının parametre dosyasında tam olarak olduğu gibi olduğundan emin olun.
 
 ```powershell
 
@@ -205,60 +205,52 @@ Get-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupNa
 
 ```
 
-![sağlama durumu](media/tutorial-deploy-hsm-powershell/progress-status2.png)
+![hüküm durumu](media/tutorial-deploy-hsm-powershell/progress-status2.png)
 
-Ayrıca, [Azure Kaynak Gezgini](https://resources.azure.com/)'ni kullanarak kaynakları görebileceksiniz.   Bir kez Gezgini'nde soldaki "abonelikler" genişletin, belirli ayrılmış HSM aboneliğinizin genişletin, "kaynak grupları" genişletin, kullandığınız kaynak grubunu genişletin ve son olarak "Kaynaklar" maddesi'ı seçin.
+Artık [Azure kaynak gezginini](https://resources.azure.com/)kullanarak kaynakları da görebilirsiniz.   Explorer'a girdiğinde, soldaki "abonelikleri" genişletin, Özel HSM için özel aboneliğinizi genişletin, "kaynak gruplarını" genişletin, kullandığınız kaynak grubunu genişletin ve son olarak "kaynaklar" öğesini seçin.
 
-## <a name="testing-the-deployment"></a>Test etme ve dağıtım
+## <a name="testing-the-deployment"></a>DağıtımTest
 
-Test etme ve dağıtım HSM(s) erişebilen bir sanal makineye bağlanmak ve ardından HSM cihaza doğrudan bağlanma bir durumdur. Bu Eylemler, HSM ulaşılabildiğinden onaylar.
-Ssh aracı kullanarak sanal makineye bağlanmak için kullanılır. Komut aşağıdakine benzer olacaktır, ancak bir yönetici adı ve dns adı ile parametresinde belirtilen.
+Dağıtımı sınamak, HSM'ye erişebilen sanal bir makineye bağlanma ve ardından doğrudan HSM aygıtına bağlanma durumudur. Bu eylemler HSM'ye ulaşılabilir olduğunu doğrular.
+Ssh aracı sanal makineye bağlanmak için kullanılır. Komut aşağıdakine benzer, ancak parametrede belirttiğiniz yönetici adı ve dns adı ile.
 
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
-Kullanılacak parametre dosyasından bir paroladır.
-Linux VM 'de oturum açtıktan sonra, Portal 'da bulunan özel IP adresini kullanarak HSM 'de, kaynak \<önek > hsm_vnic oturum açabilirsiniz.
+Kullanılacak parola parametre dosyasından bir paroladır.
+Linux VM'de oturum açtıktan sonra, hsm_vnic \<kaynak öneki için portalda bulunan özel IP adresini kullanarak HSM'ye giriş yapabilirsiniz>.
 
 ```powershell
 
 (Get-AzResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
 
 ```
-IP adresi varsa, aşağıdaki komutu çalıştırın:
+IP adresiniz varsa, aşağıdaki komutu çalıştırın:
 
 `ssh tenantadmin@<ip address of HSM>`
 
-Başarılı olursa için bir parola istenir. Varsayılan parola paroladır. HSM parolanızı değiştirmenizi isteriz kadar güçlü bir parola ayarlayın ve kuruluşunuz tercih parola depolayıp kaybını önlemek için hangi mekanizmasını kullanın.  
+Başarılı olursa, bir parola istenir. Varsayılan parola PASSWORD'tir. HSM sizden parolanızı değiştirmenizi ister, böylece güçlü bir parola belirleyin ve kuruluşunuzun parolayı depolamak ve kaybı önlemek için hangi mekanizmayı tercih edeceğini kullanın.  
 
 >[!IMPORTANT]
->Bu parola kaybederseniz, HSM sıfırlanması gerekir ve anahtarlarınızı kaybetmeden anlamına gelir.
+>Bu parolayı kaybederseniz, HSM'nin sıfırlanması gerekir ve bu da anahtarlarınızı kaybetmek anlamına gelir.
 
-HSM cihazda ssh kullanarak bağlandıktan sonra HSM çalıştığından emin olmak için aşağıdaki komutu çalıştırın.
+SSH kullanarak HSM aygıtına bağlandığınızda, HSM'nin çalışır durumda olduğundan emin olmak için aşağıdaki komutu çalıştırın.
 
 `hsm show`
 
-Çıktı, görüntüyü aşağıda gösterildiği gibi görünmelidir:
+Çıktı aşağıda gösterilen resim gibi görünmelidir:
 
-![sağlama durumu](media/tutorial-deploy-hsm-powershell/output.png)
+![hüküm durumu](media/tutorial-deploy-hsm-powershell/output.png)
 
-Bu noktada, tüm kaynaklar için yüksek oranda kullanılabilir bir, iki HSM dağıtım ve doğrulanmış erişim ve işlemsel durumu ayırmış olmanız. Daha fazla yapılandırma veya test daha fazla iş HSM cihazını içerir. Bunun için HSM başlatıp bölümler oluşturmak için 7 Gemalto Luna ağ HSM 7 Yönetim Kılavuzu bölümdeki yönergeleri izlemelidir. Gemalto müşteri desteği Portalı'nda kayıtlı olan ve bir müşteri kimliği sahip tüm belgeler ve yazılım doğrudan Gemalto indirme için kullanılabilir İstemci tüm gerekli bileşenleri almak için yazılım sürüm 7.2 indirin.
+Bu noktada, yüksek kullanılabilir, iki HSM dağıtımı ve doğrulanmış erişim ve operasyonel durum için tüm kaynakları ayırdınız. Daha fazla yapılandırma veya test HSM aygıtının kendisi ile daha fazla çalışma içerir. Bunun için, HSM'yi başlatmave bölümler oluşturmak için Gemalto Luna Network HSM 7 Yönetim Kılavuzu bölüm 7'deki yönergeleri izlemeniz gerekir. Gemalto Müşteri Destek Portalı'na kaydolduktan ve müşteri kimliğine sahip olduktan sonra tüm dokümantasyon ve yazılımlar doğrudan Gemalto'dan indirilebilir. Gerekli tüm bileşenleri almak için İstemci Yazılımı sürüm 7.2'yi indirin.
 
-## <a name="delete-or-clean-up-resources"></a>Silme veya kaynakları temizleme
+## <a name="delete-or-clean-up-resources"></a>Kaynakları silme veya temizleme
 
-Yalnızca HSM cihazla tamamlandıysa, sonra bir kaynak olarak silinir ve olması ücretsiz havuza geri döner. Bunu yaparken belirgin cihazda olan hassas müşteri verilerinin konusudur. Bir cihazı "sıfırlama" yapmanın en iyi yolu, HSM Yönetici parolasının yanlış 3 kez alınacağını (Not: Bu gereç Yöneticisi değil, gerçek HSM Yöneticisi). Anahtar malzemesini korumanın bir güvenlik önlemi olarak, cihaz, sıfırlama durumunda olana kadar bir Azure kaynağı olarak silinemez.
+Sadece HSM aygıtıile bitirdiyseniz, kaynak olarak silinebilir ve boş havuza döndürülebilir. Bunu yaparken en belirgin endişe cihazda herhangi bir hassas müşteri verileridir. Bir cihazı "sıfırlamanın" en iyi yolu, HSM yönetici parolasını yanlış 3 kez almaktır (not: bu cihaz yöneticisi değil, gerçek HSM yöneticisidir). Anahtar malzemeyi korumak için bir güvenlik önlemi olarak, aygıt sıfırlanmış duruma gelene kadar Azure kaynağı olarak silinemez.
 
 > [!NOTE]
-> herhangi bir Gemalto cihaz yapılandırmasıyla ilgili sorun yaşıyorsanız, [Gemalto müşteri desteği](https://safenet.gemalto.com/technical-support/)'ne başvurmalısınız.
+> Herhangi bir Gemalto cihaz yapılandırması ile ilgili bir sorununuz varsa [Gemalto müşteri desteğine](https://safenet.gemalto.com/technical-support/)başvurmalısınız.
 
-Yalnızca Azure 'daki HSM kaynağını kaldırmak istiyorsanız, "$" değişkenlerini benzersiz parametrelerinizle değiştirerek aşağıdaki komutu kullanabilirsiniz:
-
-```powershel
-
-Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
-
-```
-
-Bu kaynak grubundaki kaynaklar ile tamamladınız, ardından şu komutla tüm kaldırabilirsiniz:
+Azure'daki HSM kaynağını kaldırmak istiyorsanız, "$" değişkenlerini benzersiz parametrelerinizle değiştirmek için aşağıdaki komutu kullanabilirsiniz:
 
 ```powershell
 
@@ -271,10 +263,10 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Öğreticide adımları tamamladıktan sonra özel HSM sağlandığı ve kullanılabilir sanal ağınızda kaynaklardır. Artık bu dağıtımın gerektiği gibi daha fazla kaynak tarafından tercih edilen dağıtım Mimarinizi ile tamamlayıcı konumuna demektir. Dağıtımınızı planlama yardımcı olacak daha fazla bilgi için kavramları belgelere bakın. Bir tasarım ile raf düzeyinde kullanılabilirlik ele alan bir birincil bölgede iki Hsm'leri ve iki ikincil bir bölgeye bölgesel kullanılabilirlik adresleme Hsm'lerde önerilir. Bu öğreticide kullanılan şablon dosyasının kolayca iki HSM dağıtımlar için temel olarak kullanılabilir, ancak gereksinimlerinizi karşılayacak şekilde değiştirilmiş parametrelerini sahip olması gerekir.
+Öğreticideki adımları tamamladıktan sonra, Özel HSM kaynakları sağlanır ve sanal aağınızda kullanılabilir. Artık bu dağıtıma, tercih ettiğiniz dağıtım mimarisinin gerektirdiği şekilde daha fazla kaynakla iltifat edebilecek bir konumdasınız. Dağıtımınızı planlamaya yardımcı olmak hakkında daha fazla bilgi için Kavramlar belgelerine bakın. Raf düzeyinde kullanılabilirliği ele alan birincil bölgede iki HSM'li bir tasarım ve bölgesel kullanılabilirliği ele alan ikincil bir bölgede iki HSM önerilir. Bu öğreticide kullanılan şablon dosyası, iki HSM dağıtımı için kolayca temel olarak kullanılabilir, ancak parametrelerinin gereksinimlerinizi karşılamak için değiştirilmesi gerekir.
 
 * [Yüksek Kullanılabilirlik](high-availability.md)
-* [Fiziksel güvenlik](physical-security.md)
-* [Ağ](networking.md)
+* [Fiziksel Güvenlik](physical-security.md)
+* [Ağ Oluşturma](networking.md)
 * [İzleme](monitoring.md)
 * [Desteklenebilirlik](supportability.md)

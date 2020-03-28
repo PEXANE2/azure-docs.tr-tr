@@ -1,6 +1,6 @@
 ---
-title: İOS için MSAL & macOS öğreticisi-Microsoft Identity platform | Mavisi
-description: İOS ve macOS (Swift) uygulamalarının Microsoft Identity platformunu kullanarak erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin
+title: iOS için MSAL & macOS öğretici - Microsoft kimlik platformu | Azure
+description: iOS ve macOS (Swift) uygulamalarının Microsoft kimlik platformlarını kullanarak erişim belirteçleri gerektiren bir API'yi nasıl çağırabileceğini öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: mmacy
@@ -14,76 +14,76 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: abf083aacbdc643d780a8061b405752f36e27e45
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129945"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Kullanıcıları oturum açın ve iOS veya macOS uygulamasından Microsoft Graph çağırın
+# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Oturum açın ve bir iOS veya macOS uygulamasından Microsoft Graph'ı arayın
 
-Bu öğreticide, bir iOS veya macOS uygulamasını Microsoft Identity platformu ile tümleştirmeyi öğreneceksiniz. Uygulama bir kullanıcıya oturum açacaktır, Microsoft Graph API 'sini çağırmak için bir erişim belirteci alır ve Microsoft Graph API 'sine bir istek yapar.  
+Bu eğitimde, bir iOS veya macOS uygulamasını Microsoft kimlik platformuyla nasıl entegre acağınızı öğreneceksiniz. Uygulama bir kullanıcıda oturum açacak, Microsoft Graph API'yi aramak için bir erişim belirteci alacak ve Microsoft Graph API'ye istekte bulunacaktır.  
 
-Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesapları için oturum açma işlemlerini kabul eder.
+Kılavuzu tamamladığınızda, uygulamanız Azure Active Directory kullanan herhangi bir şirket veya kuruluşun kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) oturum açmalarını ve iş veya okul hesaplarını kabul eder.
 
 >[!NOTE]
-> Microsoft Identity platform 'u yeni kullanmaya başladıysanız, [oturum açma kullanıcıları ile başlamanız ve iOS veya macOS uygulamasından MICROSOFT Graph API 'sini çağırmanız](quickstart-v2-ios.md)önerilir.
+> Microsoft kimlik platformunda yeniyseniz, Oturum Açma kullanıcılarıyla başlamanızı [ve bir iOS veya macOS uygulamasından Microsoft Graph API'yi aramanızı](quickstart-v2-ios.md)öneririz.
 
-## <a name="how-this-tutorial-works"></a>Bu öğreticinin nasıl çalıştığı
+## <a name="how-this-tutorial-works"></a>Bu öğretici nasıl çalışır?
 
 ![Bu öğretici tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
-Bu öğreticideki uygulama, kullanıcıların oturum açmasını ve adına veri almasını sağlayacaktır.  Bu verilere, yetkilendirme gerektiren ve Microsoft Identity platform tarafından korunan korumalı bir API (Bu durumda Microsoft Graph API) aracılığıyla erişilir.
+Bu eğitimdeki uygulama, kullanıcılar oturum açacak ve onların adına veri alacak.  Bu verilere, yetkilendirme gerektiren ve Microsoft kimlik platformu tarafından korunan korumalı api (bu durumda Microsoft Graph API) aracılığıyla erişilir.
 
 Daha ayrıntılı belirtmek gerekirse:
 
-* Uygulamanız kullanıcı tarafından bir tarayıcı veya Microsoft Authenticator aracılığıyla oturum açacaktır.
-* Son Kullanıcı, uygulamanızın istediği izinleri kabul eder.
-* Uygulamanıza Microsoft Graph API 'SI için bir erişim belirteci verilmeyecektir.
-* Erişim belirteci, Web API 'sine HTTP isteğine dahil edilir.
-* Microsoft Graph yanıtını işleyin.
+* Uygulamanız kullanıcıda bir tarayıcı veya Microsoft Authenticator aracılığıyla oturum açacaktır.
+* Son kullanıcı, uygulamanızın istediği izinleri kabul eder.
+* Uygulamanız Microsoft Graph API için bir erişim belirteci verilir.
+* Erişim belirteci, web API'ye http isteğine eklenecektir.
+* Microsoft Graph yanıtını işleme.
 
-Bu örnek, kimlik doğrulamasını uygulamak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanır. MSAL, belirteçleri otomatik olarak yenileyecek, cihazdaki diğer uygulamalar arasında çoklu oturum açma (SSO) sunacaktır ve hesapları yönetir.
+Bu örnek, Kimlik Doğrulama'yı uygulamak için Microsoft Kimlik Doğrulama kitaplığını (MSAL) kullanır. MSAL belirteçleri otomatik olarak yeniler, cihazdaki diğer uygulamalar arasında tek oturum açma (SSO) sağlar ve Hesabı(lar) yönetir.
 
 Bu öğretici hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adımların bu iki platform arasında farklı olduğunu unutmayın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Bu kılavuzda uygulamayı derlemek için XCode sürüm 10. x veya üzeri gereklidir. , [İTunes web sitesinden](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode Indirme URL 'SI")Xcode indirebilirsiniz.
-- Microsoft kimlik doğrulama kitaplığı ([msal. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Bir bağımlılık Yöneticisi kullanabilir veya kitaplığı el ile ekleyebilirsiniz. Aşağıdaki yönergelerde nasıl yapılacağı gösterilmektedir.
+- Uygulamayı bu kılavuzda oluşturmak için XCode sürüm 10.x veya daha büyük olması gerekir. XCode'u [iTunes web sitesinden](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode İndirme URL'si")indirebilirsiniz.
+- Microsoft Kimlik Doğrulama Kitaplığı ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Bağımlılık yöneticisi kullanabilir veya kitaplığı el ile ekleyebilirsiniz. Aşağıdaki talimatlar size nasıl yapılacağını gösterir.
 
-Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi indirmek isterseniz, kodu indirin:
+Bu öğretici yeni bir proje oluşturacaktır. Bunun yerine tamamlanmış öğreticiyi indirmek istiyorsanız, kodu indirin:
 - [iOS örnek kodu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 - [macOS örnek kodu](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
 ## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
-1. Xcode ' u açın ve **Yeni bir Xcode projesi oluştur**' u seçin.
-2. İOS uygulamaları için **ios** > **tek görünüm uygulaması** ' nı seçin ve **İleri ' yi**seçin.
-3. MacOS uygulamaları için **macos** > **Cocoa uygulaması** ' nı seçin ve **İleri ' yi**seçin.
-4. Bir ürün adı belirtin.
-5. **Dili** **Swift** olarak ayarlayın ve ileri ' **yi**seçin.
-6. Uygulamanızı oluşturmak için bir klasör seçin ve **Oluştur**' a tıklayın.
+1. Xcode'u açın ve **yeni bir Xcode projesi oluştur'u**seçin.
+2. iOS uygulamaları için **iOS** > **Tek görünüm Uygulamasını** seçin ve **İleri'yi**seçin.
+3. macOS uygulamaları için **macOS** > **Kakao Uygulamasını** seçin ve **İleri'yi**seçin.
+4. Bir ürün adı sağlayın.
+5. **Dili** **Swift** olarak ayarlayın ve **İleri'yi**seçin.
+6. Uygulamanızı oluşturmak için bir klasör seçin ve **Oluştur'u**tıklatın.
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-1. [Azure portal](https://aka.ms/MobileAppReg)'a gidin
-2. [Uygulama kayıtları dikey penceresini](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) açın ve **+ Yeni kayıt**' ye tıklayın.
-3. Uygulamanız için bir **ad** girin ve yeniden yönlendirme URI 'Sini ayarlamadan **Kaydet**' e tıklayın.
-4. Görüntülenen bölmenin **Yönet** bölümünde **kimlik doğrulaması**' nı seçin.
+1. [Azure portalına](https://aka.ms/MobileAppReg) gidin
+2. Uygulama [kayıtları bıçak](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) açın ve **+Yeni kayıt**tıklayın.
+3. Uygulamanız için bir **Ad** girin ve ardından, Bir Yeniden Yönlendirme URI ayarlamadan **Kaydol'u**tıklatın.
+4. Bölmenin görünen **yönet** bölümünde **Kimlik Doğrulama'yı**seçin.
 
-5. Yeni uygulama kayıt deneyimini açmak için ekranın üst kısmındaki **Yeni deneyimi deneyin** ' e tıklayın ve ardından **+ Yeni kayıt** >  **+ bir platform** > **iOS**ekleyin.
-    - Projenizin paket KIMLIĞINI girin. Kodu indirdiyseniz bu `com.microsoft.identitysample.MSALiOS`. Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
-    - MacOS için iOS deneyimini de kullanmanız gerektiğini unutmayın. 
-6. `Configure` ' a tıklayın ve **iOS yapılandırma** sayfasında görüntülenen **msal yapılandırmasını** kaydederek uygulamanızı daha sonra yapılandırdığınızda girebilmenizi sağlayabilirsiniz.  **Bitti**’ye tıklayın.
+5. Yeni uygulama kaydı deneyimini açmak için ekranın üst **kısmındaki yeni deneyimi deneyin'e** tıklayın ve ardından **+Yeni kayıt** > + Platform > **iOS****ekle'ye**tıklayın.
+    - Projenizin Paket Kimliğini girin. Kodu indirdiyseniz, bu `com.microsoft.identitysample.MSALiOS`. Kendi projenizi oluşturuyorsanız, Projenizi Xcode'da seçin ve **Genel** sekmesini açın. Paket tanımlayıcısı **Kimlik** bölümünde görünür.
+    - macOS için iOS deneyimini de kullanmanız gerektiğini unutmayın. 
+6. uygulamanızı daha sonra yapılandırdığınızda girebilmeniz için **iOS yapılandırma** sayfasında görünen **MSAL Yapılandırmasını** tıklatın `Configure` ve kaydedin.  **Bitti**’ye tıklayın.
 
 ## <a name="add-msal"></a>MSAL Ekle
 
-Uygulamanıza MSAL kitaplığını yüklemek için aşağıdaki yöntemlerle birini seçin:
+Uygulamanızda MSAL kitaplığını yüklemenin aşağıdaki yollarından birini seçin:
 
-### <a name="cocoapods"></a>CocoaPods
+### <a name="cocoapods"></a>KakaoPodlar
 
-1. [Cocoapods](https://cocoapods.org/)kullanıyorsanız, `MSAL` ' yi önce projenizin `.xcodeproj` dosyası ile aynı klasörde `podfile` adlı boş bir dosya oluşturarak yükleyebilirsiniz. Aşağıdakileri `podfile`ekleyin:
+1. [CocoaPods](https://cocoapods.org/)kullanıyorsanız, önce `MSAL` projenizin `.xcodeproj` dosyasıyla `podfile` aynı klasörde adlandırılan boş bir dosya oluşturarak yükleyin. Aşağıdakileri `podfile`ekleyin:
 
    ```
    use_frameworks!
@@ -93,19 +93,19 @@ Uygulamanıza MSAL kitaplığını yüklemek için aşağıdaki yöntemlerle bir
    end
    ```
 
-2. `<your-target-here>`, projenizin adıyla değiştirin.
-3. Bir Terminal penceresinde, MSAL kitaplığını yüklemek için oluşturduğunuz `podfile` içeren klasöre gidin ve `pod install` çalıştırın.
-4. Projeyi Xcode 'da yeniden yüklemek için Xcode 'u kapatın ve `<your project name>.xcworkspace` açın.
+2. Projenizin adıyla değiştirin. `<your-target-here>`
+3. Terminal penceresinde, `podfile` oluşturduğunuz klasöre gidin ve MSAL kitaplığını yüklemek için çalıştırın. `pod install`
+4. Xcode'u `<your project name>.xcworkspace` kapatın ve projeyi Xcode'da yeniden yüklemek için açın.
 
-### <a name="carthage"></a>Carthage
+### <a name="carthage"></a>Kartaca
 
-[Carthage](https://github.com/Carthage/Carthage)kullanıyorsanız, `MSAL` ' yi `Cartfile`ekleyerek yükleyebilirsiniz:
+[Kartaca](https://github.com/Carthage/Carthage)kullanıyorsanız, `MSAL` yükleyin: `Cartfile`
 
 ```
 github "AzureAD/microsoft-authentication-library-for-objc" "master"
 ```
 
-Bir terminal penceresinden, güncelleştirilmiş `Cartfile`aynı dizinde, Carthage 'in projenizdeki bağımlılıkları güncelleştirmesi için aşağıdaki komutu çalıştırın.
+Bir terminal penceresinden, güncelleştirilmiş `Cartfile`olarak aynı dizinde, Kartaca projenizdeki bağımlılıkları güncelleştirmek için aşağıdaki komutu çalıştırın.
 
 iOS:
 
@@ -113,7 +113,7 @@ iOS:
 carthage update --platform iOS
 ```
 
-MacOS
+Macos:
 
 ```bash
 carthage update --platform macOS
@@ -121,19 +121,19 @@ carthage update --platform macOS
 
 ### <a name="manually"></a>El ile
 
-Git alt modülünü de kullanabilir veya uygulamanızda bir çerçeve olarak kullanmak için en son sürümü kullanıma alabilirsiniz.
+Git Alt Modül'üni de kullanabilir veya uygulamanızda çerçeve olarak kullanmak üzere en son sürümü niçin kullanıma alabilirsiniz.
 
 ## <a name="add-your-app-registration"></a>Uygulama kaydınızı ekleyin
 
-Daha sonra, uygulama kaydınızı kodunuza ekleyeceğiz. 
+Ardından, uygulama kaydınızı kodunuza ekleriz. 
 
-İlk olarak, aşağıdaki Import ifadesini `ViewController.swift` ve `AppDelegate.swift` dosyalarının üst kısmına ekleyin:
+İlk olarak, dosyaların ve `ViewController.swift` `AppDelegate.swift` dosyaların üstüne aşağıdaki alma deyimini ekleyin:
 
 ```swift
 import MSAL
 ```
 
-Ardından, `viewDidLoad()`önce `ViewController.swift` aşağıdaki kodu ekleyin:
+Sonra `ViewController.swift` önce aşağıdaki kodu `viewDidLoad()`ekleyin:
 
 ```swift
 let kClientID = "Your_Application_Id_Here"
@@ -147,13 +147,13 @@ var applicationContext : MSALPublicClientApplication?
 var webViewParameters : MSALWebviewParameters?
 ```
 
-Yukarıda değiştirmeniz gereken tek değer, [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id)için `kClientID`atanan değerdir. Bu değer, uygulamayı Azure portal kaydetmek için Bu öğreticinin başındaki adım sırasında kaydettiğiniz MSAL yapılandırma verilerinin bir parçasıdır.
+Yukarıda değiştirmeniz gereken tek `kClientID` [değer, Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id)olarak atanan değerdir. Bu değer, uygulamayı Azure portalına kaydetmek için bu öğreticinin başındaki adımda kaydettiğiniz MSAL Yapılandırma verilerinin bir parçasıdır.
 
-## <a name="for-ios-only-configure-url-schemes"></a>Yalnızca iOS için, URL düzenlerini yapılandırın
+## <a name="for-ios-only-configure-url-schemes"></a>Yalnızca iOS için URL şemalarını yapılandırın
 
-Bu adımda, oturum açtıktan sonra kullanıcının uygulamaya yeniden yönlendirilmesi için `CFBundleURLSchemes` kaydedeceğinizi caksınız. `LSApplicationQueriesSchemes`, uygulamanızın Microsoft Authenticator kullanmasına de olanak tanır.
+Bu adımda, kullanıcının oturum açmadan sonra uygulamaya geri yönlendirilebilmeleri için kaydolursunuz. `CFBundleURLSchemes` Bu arada, `LSApplicationQueriesSchemes` uygulamanızın Microsoft Authenticator'dan yararlanmasına da olanak tanır.
 
-Xcode 'da, kaynak kodu dosyası olarak `Info.plist` açın ve `<dict>` bölümünün içine aşağıdakini ekleyin. `[BUNDLE_ID]`, kodu indirdiğiniz `com.microsoft.identitysample.MSALiOS`Azure portal kullandığınız değerle değiştirin. Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
+Xcode'da `Info.plist` kaynak kodu dosyası olarak açın ve `<dict>` bölümün içine aşağıdakileri ekleyin. Azure `[BUNDLE_ID]` portalında kullandığınız değeri değiştirin, kodu indirdiyseniz `com.microsoft.identitysample.MSALiOS`. Kendi projenizi oluşturuyorsanız, Projenizi Xcode'da seçin ve **Genel** sekmesini açın. Paket tanımlayıcısı **Kimlik** bölümünde görünür.
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -172,16 +172,16 @@ Xcode 'da, kaynak kodu dosyası olarak `Info.plist` açın ve `<dict>` bölümü
 </array>
 ```
 
-## <a name="for-macos-only-configure-app-sandbox"></a>Yalnızca macOS için uygulama korumalı alanını yapılandırın
+## <a name="for-macos-only-configure-app-sandbox"></a>Yalnızca macOS için App Sandbox'ı yapılandırın
 
-1. Xcode proje ayarlarınıza > **yetenekler sekmesine** gidin > **uygulama korumalı alanı**
-2. **Giden bağlantılar (istemci)** onay kutusunu seçin. 
+1. Xcode Proje Ayarlarınıza > **Özellikler sekmesi** > **App Sandbox'ınıza** gidin
+2. **Giden Bağlantılar (İstemci)** onay kutusunu seçin. 
 
-## <a name="create-your-apps-ui"></a>Uygulamanızın Kullanıcı arabirimini oluşturma
+## <a name="create-your-apps-ui"></a>Uygulamanızın UI'ini oluşturma
 
-Şimdi Microsoft Graph API 'sini çağırmak için bir düğme, başka bir oturum açmak için bir kullanıcı arabirimi ve aşağıdaki kodu `ViewController`sınıfına ekleyerek bazı çıktıları görmek için bir metin görünümü oluşturun:
+Şimdi, Microsoft Graph API'yi aramak için bir düğme, oturum dışı kalmak için başka bir düğme ve `ViewController`sınıfa aşağıdaki kodu ekleyerek bazı çıktıları görmek için metin görünümü içeren bir kullanıcı arabirimi oluşturun:
 
-### <a name="ios-ui"></a>iOS Kullanıcı arabirimi
+### <a name="ios-ui"></a>iOS UI
 
 ```swift
 var loggingText: UITextView!
@@ -231,7 +231,7 @@ func initUI() {
     }
 ```
 
-### <a name="macos-ui"></a>macOS Kullanıcı arabirimi
+### <a name="macos-ui"></a>macOS UI
 
 ```swift
 
@@ -282,7 +282,7 @@ func initUI() {
     }
 ```
 
-Sonra, `ViewController` sınıfının içinde, `viewDidLoad()` yöntemini ile değiştirin:
+Ardından, `ViewController` yine sınıfın içinde, `viewDidLoad()` yöntemi aşağıdakilerle değiştirin:
 
 ```swift
     override func viewDidLoad() {
@@ -296,11 +296,11 @@ Sonra, `ViewController` sınıfının içinde, `viewDidLoad()` yöntemini ile de
     }
 ```
 
-## <a name="use-msal"></a>MSAL kullanma
+## <a name="use-msal"></a>MSAL kullanın
 
-### <a name="initialize-msal"></a>MSAL Başlat
+### <a name="initialize-msal"></a>MSAL'ı Başlatma
 
-Aşağıdaki `initMSAL` yöntemini `ViewController` sınıfına ekleyin:
+`ViewController` Sınıfa aşağıdaki `initMSAL` yöntemi ekleyin:
 
 ```swift
     func initMSAL() throws {
@@ -318,7 +318,7 @@ Aşağıdaki `initMSAL` yöntemini `ViewController` sınıfına ekleyin:
     }
 ```
 
-Aşağıdaki `initMSAL` yönteminden sonra `ViewController` sınıfına ekleyin.
+Aşağıdaki `initMSAL` yöntemi sınıfa `ViewController` ekleyin.
 
 ### <a name="ios-code"></a>iOS kodu:
 
@@ -337,9 +337,9 @@ func initWebViewParams() {
     }
 ```
 
-### <a name="for-ios-only-handle-the-sign-in-callback"></a>Yalnızca iOS için, oturum açma geri aramasını işleyin
+### <a name="for-ios-only-handle-the-sign-in-callback"></a>Yalnızca iOS için oturum açma geri aramasını işleme
 
-`AppDelegate.swift` dosyasını açın. Oturum açtıktan sonra geri aramayı işlemek için, `appDelegate` sınıfına aşağıdaki gibi `MSALPublicClientApplication.handleMSALResponse` ekleyin:
+`AppDelegate.swift` dosyasını açın. Oturum açmadan sonra geri aramayı `MSALPublicClientApplication.handleMSALResponse` işlemek `appDelegate` için sınıfa şu şekilde ekleyin:
 
 ```swift
 // Inside AppDelegate...
@@ -350,8 +350,8 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 ```
 
-**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini `SceneDelegate.swift` yerleştirmeniz gerekir.
-Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
+**Xcode 11 kullanıyorsanız,** `SceneDelegate.swift` bunun yerine MSAL geri arama yerleştirmelisiniz.
+Eski iOS ile uyumluluk için hem UISceneDelegate'ı hem de UIApplicationDelegate'i destekliyorsanız, MSAL geri aramanın her iki dosyaya da yerleştirilmesi gerekir.
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -367,17 +367,17 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
     }
 ```
 
-#### <a name="acquire-tokens"></a>Belirteçleri al
+#### <a name="acquire-tokens"></a>Jeton Edinin
 
-Şimdi, uygulamanın kullanıcı arabirimi işleme mantığını uygulayabiliriz ve belirteçleri MSAL üzerinden etkileşimli olarak alabilirsiniz.
+Şimdi, uygulamanın Kullanıcı Arabirimi işleme mantığını uygulayabilir ve msal aracılığıyla etkileşimli olarak jetonları alabilirsiniz.
 
-MSAL belirteçleri almak için iki birincil yöntem sunar: `acquireTokenSilently()` ve `acquireTokenInteractively()`: 
+MSAL belirteçleri almak için iki `acquireTokenSilently()` `acquireTokenInteractively()`birincil yöntem ortaya çıkarır: ve: 
 
-- `acquireTokenSilently()` bir Kullanıcı oturumu açma ve bir hesap var olduğu sürece herhangi bir kullanıcı etkileşimi olmadan belirteçleri almaya çalışır.
+- `acquireTokenSilently()`bir hesap olduğu sürece kullanıcı etkileşimi olmadan bir kullanıcı oturum açma ve belirteçleri almaya çalışır.
 
-- `acquireTokenInteractively()`, Kullanıcı oturum açmaya çalışırken her zaman Kullanıcı ARABIRIMINI gösterir. Etkileşimli bir SSO deneyimi sağlamak için tarayıcıda oturum tanımlama bilgilerini veya Microsoft Authenticator içindeki bir hesabı kullanabilir.
+- `acquireTokenInteractively()`kullanıcıda oturum açmaya çalışırken her zaman Kullanıcı GI'sini gösterir. Etkileşimli bir SSO deneyimi sağlamak için tarayıcıda veya Microsoft kimlik doğrulayıcısındaki bir hesapta oturum tanımlama bilgilerini kullanabilir.
 
-`ViewController` sınıfına aşağıdaki kodu ekleyin:
+`ViewController` Sınıfa aşağıdaki kodu ekleyin:
 
 ```swift
     @objc func callGraphAPI(_ sender: AnyObject) {
@@ -412,16 +412,16 @@ MSAL belirteçleri almak için iki birincil yöntem sunar: `acquireTokenSilently
     }
 ```
 
-#### <a name="get-a-token-interactively"></a>Bir belirteci etkileşimli olarak alın
+#### <a name="get-a-token-interactively"></a>Etkileşimli bir belirteç alın
 
-Aşağıdaki kod, bir `MSALInteractiveTokenParameters` nesnesi oluşturup `acquireToken`çağırarak, ilk kez bir belirteç alır. Daha sonra şu kodu ekleyeceksiniz:
+Aşağıdaki kod, bir `MSALInteractiveTokenParameters` nesne oluşturup çağırarak ilk `acquireToken`kez bir belirteç alır. Sonra kod ekleyeceğiz:
 
 1. Kapsamlarla `MSALInteractiveTokenParameters` oluşturur.
-2. Oluşturulan parametrelerle `acquireToken()` çağırır.
-3. Hataları işler. Daha fazla ayrıntı için [msal for iOS ve macOS hata işleme Kılavuzu](msal-handling-exceptions.md)' na bakın.
-4. Başarılı durumu işler.
+2. Oluşturulan `acquireToken()` parametreleri içeren aramalar.
+3. Hataları işler. Daha fazla ayrıntı [için iOS için MSAL ve macOS hata işleme kılavuzuna](msal-handling-exceptions.md)bakın.
+4. Başarılı durumda işler.
 
-Aşağıdaki kodu `ViewController` sınıfına ekleyin.
+`ViewController` Sınıfa aşağıdaki kodu ekleyin.
 
 ```swift
 func acquireTokenInteractively() {
@@ -458,9 +458,9 @@ func acquireTokenInteractively() {
 ```
 
 
-#### <a name="get-a-token-silently"></a>Belirteci sessizce al
+#### <a name="get-a-token-silently"></a>Sessizce bir belirteç alın
 
-Güncelleştirilmiş bir belirteci sessizce almak için, `ViewController` sınıfına aşağıdaki kodu ekleyin. Bir `MSALSilentTokenParameters` nesnesi oluşturur ve `acquireTokenSilent()`çağırır:
+Güncelleştirmeli bir belirteci sessizce elde etmek `ViewController` için sınıfa aşağıdaki kodu ekleyin. Bir `MSALSilentTokenParameters` nesne oluşturur ve `acquireTokenSilent()`çağırır:
 
 ```swift
     
@@ -496,15 +496,15 @@ Güncelleştirilmiş bir belirteci sessizce almak için, `ViewController` sını
     }
 ```
 
-### <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API 'sini çağırma 
+### <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API'yi arayın 
 
-Belirteciniz olduktan sonra uygulamanız bunu HTTP üstbilgisinde kullanarak Microsoft Graph yetkili bir istek yapabilir:
+Bir belirteç aldıktan sonra, uygulamanız Microsoft Graph'a yetkili bir istekte bulunmak için bu tonu HTTP üstbilgisinde kullanabilir:
 
-| üst bilgi anahtarı    | değer                 |
+| üstbilgi anahtarı    | value                 |
 | ------------- | --------------------- |
-| Yetkilendirme | Taşıyıcı \<erişim-belirteç > |
+| Yetkilendirme | Taşıyıcı \<erişim belirteci> |
 
-`ViewController` sınıfına aşağıdaki kodu ekleyin:
+`ViewController` Sınıfa aşağıdaki kodu ekleyin:
 
 ```swift
     func getContentWithToken() {        
@@ -534,16 +534,16 @@ Belirteciniz olduktan sonra uygulamanız bunu HTTP üstbilgisinde kullanarak Mic
     }
 ```
 
-Microsoft Graph API 'SI hakkında daha fazla bilgi edinmek için bkz. [MICROSOFT Graph API](https://graph.microsoft.com) .
+Microsoft Graph API hakkında daha fazla bilgi edinmek için [Microsoft Graph API'ye](https://graph.microsoft.com) bakın.
 
-### <a name="use-msal-for-sign-out"></a>Oturumu kapatma için MSAL kullanma
+### <a name="use-msal-for-sign-out"></a>Oturum Açma için MSAL'ı kullanın
 
-Ardından, oturum kapatma desteği ekleyin.
+Ardından, oturum açma desteği ekleyin.
 
 > [!Important]
-> MSAL ile oturum açmak, bir kullanıcıyla ilgili tüm bilinen bilgileri uygulamadan kaldırır, ancak kullanıcının cihazında etkin bir oturumu olmaya devam edecektir. Kullanıcı yeniden oturum açmayı denerse, oturum açma kullanıcı arabirimini görebilir, ancak cihaz oturumu hala etkin olduğundan kimlik bilgilerini yeniden girmeniz gerekebilir.
+> MSAL ile oturum alabilme, kullanıcı hakkında bilinen tüm bilgileri uygulamadan kaldırır, ancak kullanıcının aygıtında etkin bir oturumu vardır. Kullanıcı yeniden oturum açmaya çalışırsa oturum açma ui'sini görebilir, ancak aygıt oturumu hala etkin olduğundan kimlik bilgilerini yeniden girmeleri gerekmeyebilir.
 
-Oturum kapatma özelliği eklemek için, `ViewController` sınıfının içine aşağıdaki kodu ekleyin. Bu yöntem tüm hesaplar boyunca geçiş yapar ve bunları kaldırır:
+Oturum açma özelliği eklemek için `ViewController` sınıfın içine aşağıdaki kodu ekleyin. Bu yöntem tüm hesaplar arasında döngüler ve bunları kaldırır:
 
 ```swift 
 @objc func signOut(_ sender: AnyObject) {
@@ -572,19 +572,19 @@ Oturum kapatma özelliği eklemek için, `ViewController` sınıfının içine a
     }
 ```
 
-### <a name="enable-token-caching"></a>Belirteç önbelleğe almayı etkinleştir
+### <a name="enable-token-caching"></a>Belirteç önbelleğe alma etkinleştirme
 
-Varsayılan olarak, MSAL, uygulamanızın belirteçlerini iOS veya macOS anahtarlığınızdan önbelleğe alır. 
+Varsayılan olarak, MSAL uygulamanızın belirteçlerini iOS veya macOS anahtar zincirinde önbelleğe alır. 
 
-Belirteç önbelleğe almayı etkinleştirmek için:
-1. Uygulamanızın düzgün şekilde imzalandığından emin olun
-2. **Anahtarlık paylaşımını etkinleştirmek** > Xcode proje ayarları > **özellikleri sekmesine** gidin
-3. **+** ' a tıklayın ve aşağıdaki **Anahtarlık grupları** girişini girin: 3. a IOS Için, MacOS için `com.microsoft.adalcache` 3. b girin `com.microsoft.identity.universalstorage`
+Belirteç önbelleğe alma etkinleştirmek için:
+1. Uygulamanızın düzgün imzalandığından emin olun
+2. Xcode Proje Ayarlarınıza gidin > **Özellikler sekmesi** > **Anahtar Zinciri Paylaşımını Etkinleştir**
+3. Aşağıdaki **+** **Anahtarlık Grupları** girişini tıklatın ve girin: 3.a iOS için, macOS için 3.b girin `com.microsoft.adalcache``com.microsoft.identity.universalstorage`
 
-### <a name="add-helper-methods"></a>Yardımcı yöntemler ekleme
-Örneği gerçekleştirmek için aşağıdaki yardımcı yöntemleri `ViewController` sınıfına ekleyin.
+### <a name="add-helper-methods"></a>Yardımcı yöntemleri ekleme
+Örneği tamamlamak için `ViewController` sınıfa aşağıdaki yardımcı yöntemleri ekleyin.
 
-### <a name="ios-ui"></a>iOS Kullanıcı arabirimi:
+### <a name="ios-ui"></a>iOS UI:
 
 ``` swift
     
@@ -610,7 +610,7 @@ Belirteç önbelleğe almayı etkinleştirmek için:
     }
 ```
 
-### <a name="macos-ui"></a>macOS Kullanıcı arabirimi:
+### <a name="macos-ui"></a>macOS UI:
 
 ```swift
 func updateSignOutButton(enabled : Bool) {
@@ -639,23 +639,23 @@ func updateSignOutButton(enabled : Bool) {
 
 ### <a name="multi-account-applications"></a>Çoklu hesap uygulamaları
 
-Bu uygulama, tek bir hesap senaryosu için oluşturulmuştur. MSAL ayrıca çoklu hesap senaryolarını destekler, ancak uygulamalardan bazı ek işler gerektirir. Kullanıcıların belirteç gerektiren her eylem için kullanmak istedikleri hesabı seçmesini sağlamak için Kullanıcı arabirimi oluşturmanız gerekir. Alternatif olarak, uygulamanız `getAccounts()` yöntemi aracılığıyla kullanılacak hesabı seçmek için buluşsal yöntem uygulayabilir.
+Bu uygulama tek bir hesap senaryosu için oluşturulmuştur. MSAL ayrıca çok hesaplı senaryoları destekler, ancak uygulamalardan bazı ek çalışma gerektirir. Kullanıcıların belirteçleri gerektiren her eylem için hangi hesabı kullanmak istediklerini seçmelerine yardımcı olmak için Kullanıcı Arabirimi oluşturmanız gerekir. Alternatif olarak, uygulamanız `getAccounts()` yöntem aracılığıyla hangi hesabı kullanacağınızı seçmek için sezgisel bir uygulama uygulayabilir.
 
 ## <a name="test-your-app"></a>Uygulamanızı test etme
 
 ### <a name="run-locally"></a>Yerel olarak çalıştırma
 
-Uygulamayı derleyin ve bir test cihazına veya simülatör 'a dağıtın. Azure AD veya kişisel Microsoft hesapları için oturum açabiliyor ve belirteçleri alabilmesi gerekir.
+Uygulamayı bir test aygıtına veya simülatöre oluşturun ve dağıtın. Azure AD veya kişisel Microsoft hesapları için oturum açabilmeli ve jeton alabilmelisiniz.
 
-Kullanıcı uygulamanızda ilk kez oturum açtığında, bu kullanıcılara istenen izinleri onaylaması için Microsoft kimliği sorulur.  Birçok kullanıcı kabul etme yeteneğine sahip olsa da, bazı Azure AD kiracılar, yöneticilerin tüm kullanıcılar adına onay vermesini gerektiren Kullanıcı onayını devre dışı bırakmış olur. Bu senaryoyu desteklemek için, uygulamanızın kapsamlarını Azure portal kaydedin.
+Bir kullanıcı uygulamanızı ilk kez imzaladığında, istenen izinleri kabul etmeleri için Microsoft kimliği tarafından istenir.  Çoğu kullanıcı izin verebilme yeteneğine sahip olsa da, bazı Azure AD kiracıları, yöneticilerin tüm kullanıcılar adına onay ını gerektiren kullanıcı onayını devre dışı bıraktı. Bu senaryoyu desteklemek için uygulamanızın kapsamlarını Azure portalına kaydedin.
 
-Oturum açtıktan sonra, uygulama Microsoft Graph `/me` uç noktasından döndürülen verileri görüntüler.
+Oturum açmanızdan sonra, uygulama Microsoft Graph `/me` bitiş noktasından döndürülen verileri görüntüler.
 
 ## <a name="get-help"></a>Yardım alın
 
-Bu öğreticiyle veya Microsoft Identity platformu ile ilgili sorun yaşıyorsanız [Yardım ve destek](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) bölümünü ziyaret edin.
+Bu [öğreticiyle](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) veya Microsoft kimlik platformunda sorun yaşıyorsanız Yardım ve desteği ziyaret edin.
 
-Microsoft Identity platformunu geliştirmemize yardımcı olun. Kısa bir iki sorulık anketi tamamlayarak düşüncelerinizi bize söyleyin.
+Microsoft kimlik platformlarını geliştirmemize yardımcı olun. Kısa bir iki soruluk anketi tamamlayarak bize ne düşündüğünüzü söyleyin.
 
 > [!div class="nextstepaction"]
-> [Microsoft Identity platform Anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Microsoft kimlik platformu anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

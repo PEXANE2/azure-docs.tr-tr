@@ -10,67 +10,67 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67188991"
 ---
-1. Tarayıcınızda açın [Jenkins için Azure Market görüntüsü](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
+1. Tarayıcınızda [Jenkins için Azure Marketi görüntüsünü](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)açın.
 
-1. Seçin **alma şimdi**.
+1. **ŞİmDİ AL'ı**seçin.
 
-    ![Jenkins Market görüntüsü için yükleme işlemini başlatmak için artık GIT BT'yi seçin.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-get-it-now.png)
+    ![Jenkins Marketplace görüntüsü için yükleme işlemini başlatmak için ŞİmDİ GIT'i seçin.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-get-it-now.png)
 
-1. Fiyatlandırma ayrıntıları ve koşulları bilgileri gözden geçirdikten sonra seçin **devam**.
+1. Fiyatlandırma ayrıntıları ve terimler bilgilerini inceledikten sonra **Devam et'i**seçin.
 
-    ![Jenkins Market görüntü fiyatlandırması ve koşulları bilgileri.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-pricing-and-terms.png)
+    ![Jenkins Marketplace görüntü fiyatlandırma ve terimler bilgi.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-pricing-and-terms.png)
 
-1. Seçin **Oluştur** Azure portalında Jenkins sunucusunu yapılandırmak için. 
+1. Azure portalındaki Jenkins sunucusunu yapılandırmak için **Oluştur'u** seçin. 
 
-    ![Jenkins Market görüntüsü yükleyin.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-create.png)
+    ![Jenkins Marketplace görüntüsünü yükleyin.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-create.png)
 
-1. İçinde **Temelleri** sekmesinde, aşağıdaki değerleri belirtin:
+1. Temel **bilgiler** sekmesinde aşağıdaki değerleri belirtin:
 
-   - **Adı** -girin `Jenkins`.
-   - **Kullanıcı adı** -Jenkins üzerinde çalıştığı sanal makineye oturum açarken kullanılacak kullanıcı adını girin. Kullanıcı adı [belirli gereksinimleri](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) karşılamalıdır.
-   - **Kimlik doğrulama türü** - seçin **SSH ortak anahtarı**.
-   - **SSH ortak anahtarı** -kopyalama ve yapıştırma RSA ortak anahtarını tek satırlı biçimde (başlayarak `ssh-rsa`) veya çok satırlı PEM biçimi. Ssh-keygen Linux ve macOS veya Windows üzerinde puttygen araçlarını kullanarak SSH anahtarları oluşturabilirsiniz. SSH anahtarları ve Azure hakkında daha fazla bilgi için bkz [azure'da Windows ile SSH anahtarlarını kullanma nasıl](/azure/virtual-machines/linux/ssh-from-windows).
-   - **Abonelik** -Jenkins yüklemek istediğiniz Azure aboneliğini seçin.
-   - **Kaynak grubu** - seçin **Yeni Oluştur**, Jenkins yüklemenizin olun kaynak koleksiyonu için mantıksal kapsayıcı görevi gören bir kaynak grubu için bir ad girin.
-   - **Konum** - seçin **Doğu ABD**.
+   - **Ad** - `Jenkins`Girin .
+   - **Kullanıcı adı** - Jenkins'in üzerinde çalıştığını sanal makinede oturum alırken kullanmak üzere kullanıcı adını girin. Kullanıcı adı [belirli gereksinimleri](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) karşılamalıdır.
+   - **Kimlik doğrulama türü** - **SSH ortak anahtarını**seçin.
+   - **SSH ortak anahtarı** - RsA ortak anahtarını tek satır biçiminde `ssh-rsa`(başlangıç) veya çok satırlı PEM biçiminde kopyalayın ve yapıştırın. Linux ve macOS'ta ssh-keygen veya Windows'da PuTTYGen kullanarak SSH tuşları oluşturabilirsiniz. SSH tuşları ve Azure hakkında daha fazla bilgi için, [Azure'da Windows ile SSH tuşları nasıl kullanılır](/azure/virtual-machines/linux/ssh-from-windows)makalesine bakın.
+   - **Abonelik** - Jenkins'i yüklemek istediğiniz Azure aboneliğini seçin.
+   - **Kaynak grubu** - **Yeni Oluştur'u**seçin ve Jenkins yüklemenizi oluşturan kaynakların toplanması için mantıksal bir kapsayıcı olarak hizmet veren kaynak grubu için bir ad girin.
+   - **Konum** - **Doğu ABD'yi**seçin.
 
-     ![Jenkins için kimlik doğrulama ve kaynak grubu bilgileri temel sekmede girin.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
+     ![Temel sekmesine Jenkins için kimlik doğrulama ve kaynak grubu bilgilerini girin.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
 
-1. Seçin **Tamam** geçmek için **ek ayarlar** sekmesi. 
+1. **Ek Ayarlar** sekmesine geçmek için **Tamam'ı** seçin. 
 
-1. İçinde **ek ayarlar** sekmesinde, aşağıdaki değerleri belirtin:
+1. Ek **Ayarlar** sekmesinde aşağıdaki değerleri belirtin:
 
-   - **Boyutu** -Jenkins sanal makineniz için uygun boyutlandırma seçeneğini belirleyin.
-   - **VM disk türü** - ya da HDD (sabit disk sürücüsü) belirtin veya Jenkins sanal makinesi için hangi depolama disk türüne belirtmek için SSD (katı hal sürücüsü) izin verilir.
-   - **Sanal ağ** -(isteğe bağlı) seçin **sanal ağ** varsayılan ayarlarını değiştirmek için.
-   - **Alt ağlar** - seçin **alt ağlar**bilgileri doğrulayın ve seçin **Tamam**.
-   - **Genel IP adresi** -IP adresi adı varsayılan olarak bir sonek - IP önceki sayfada belirtilen Jenkins adı. Bu varsayılanı değiştirmek için seçeneğini kullanabilirsiniz.
-   - **Etki alanı adı etiketi** -Jenkins sanal makinesi için tam URL değeri belirtin.
-   - **Jenkins yayın türünü** -istenen sürüm türü seçenekleri: `LTS`, `Weekly build`, veya `Azure Verified`. `LTS` Ve `Weekly build` seçenekleri makalesinde açıklanan [Jenkins LTS yayın satırı](https://jenkins.io/download/lts/). `Azure Verified` Seçeneği başvurduğu bir [Jenkins LTS sürümünü](https://jenkins.io/download/lts/) Azure'da çalışmak üzere doğrulandı. 
-   - **JDK türü** -JDK yüklenecek. Zulu test edilmiş, sertifikalı derlemelerini OpenJDK varsayılandır.
+   - **Boyut** - Jenkins sanal makineniz için uygun boyutlandırma seçeneğini seçin.
+   - **VM disk türü** - Jenkins sanal makinesi için hangi depolama disk türüne izin verildiğini belirtmek için HDD (sabit disk sürücüsü) veya SSD (katı hal sürücüsü) belirtin.
+   - **Sanal ağ** - (İsteğe bağlı) Varsayılan ayarları değiştirmek için **Sanal ağı** seçin.
+   - **Alt ağlar** - **Alt ağları**seçin, bilgileri doğrulayın ve **Tamam'ı**seçin.
+   - **Genel IP adresi** - IP adresi, önceki sayfada belirttiğiniz Jenkins adı için varsayılan olarak -IP eki ile birlikte verilir. Bu varsayılanı değiştirme seçeneğini seçebilirsiniz.
+   - **Alan adı etiketi** - Jenkins sanal makinesinin tam nitelikli URL değerini belirtin.
+   - **Jenkins sürüm türü** - Seçeneklerden istenilen `LTS`sürüm `Weekly build`türünü `Azure Verified`seçin: , , veya . Ve `LTS` `Weekly build` seçenekleri makalede açıklanmıştır, [Jenkins LTS Yayın Hattı](https://jenkins.io/download/lts/). Bu `Azure Verified` seçenek, Azure'da çalıştırılan bir [Jenkins LTS sürümüne](https://jenkins.io/download/lts/) başvurur. 
+   - **JDK Tipi** - JDK kurulacak. Varsayılan Zulu test edilir, OpenJDK sertifikalı yapılar.
 
-     ![Ayarlar sekmesinde Jenkins için sanal makine ayarlarını girin.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
+     ![Ayarlar sekmesine Jenkins için sanal makine ayarlarını girin.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
 
-1. Seçin **Tamam** geçmek için **Tümleştirme ayarlarını** sekmesi.
+1. **Tümleştirme Ayarları** sekmesine geçmek için **Tamam'ı** seçin.
 
-1. İçinde **Tümleştirme ayarlarını** sekmesinde, aşağıdaki değerleri belirtin:
+1. **Tümleştirme Ayarları** sekmesinde aşağıdaki değerleri belirtin:
 
-    - **Hizmet sorumlusu** -hizmet sorumlusu, Jenkins ile Azure ile kimlik doğrulaması için bir kimlik bilgisi olarak eklenir. `Auto` Asıl MSI (yönetilen hizmet kimliği) tarafından oluşturulan anlamına gelir. `Manual` Asıl sizin tarafınızdan oluşturulması gerektiğini anlamına gelir. 
-        - **Uygulama Kimliği** ve **gizli** - seçerseniz `Manual` seçeneğini **hizmet sorumlusu** seçeneğini belirtmeniz gerekir `Application ID` ve `Secret` için Hizmet sorumlusu. Zaman [bir hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli), varsayılan rolü Not **katkıda bulunan**, Azure kaynaklarıyla çalışmak için yeterli olduğu.
-    - **Bulut aracıları etkinleştirmek** -için aracıları varsayılan bulut şablonu belirtin burada `ACI` Azure Container Instance için ifade eder ve `VM` sanal makinelere ifade eder. Ayrıca belirtebileceğiniz `No` bulut Aracısını etkinleştirmek istemiyorsanız.
+    - **Hizmet Sorumlusu** - Hizmet sorumlusu, Azure ile kimlik doğrulama için bir kimlik bilgisi olarak Jenkins'e eklenir. `Auto`müdürün MSI (Yönetilen Hizmet Kimliği) tarafından oluşturulacağı anlamına gelir. `Manual`müdürün sizin tarafından yaratılması gerektiği anlamına gelir. 
+        - **Uygulama Kimliği** ve **Gizli** - `Manual` Servis **Müdürü** seçeneğini seçerseniz, servis müdürünüz `Secret` ve hizmet müdürünüzü belirtmeniz `Application ID` gerekir. [Bir hizmet ilkesi oluştururken,](/cli/azure/create-an-azure-service-principal-azure-cli)varsayılan rolün Azure kaynaklarıyla çalışmak için yeterli olan **Katılımcı**olduğunu unutmayın.
+    - **Bulut Aracılarını Etkinleştir** - Azure Kapsayıcı `ACI` Örneği'ne başvuran `VM` ve sanal makinelere atıfta bulunan aracılar için varsayılan bulut şablonuna belirtinin. Ayrıca, bir `No` bulut aracısını etkinleştirmek istemiyorsanız da belirtebilirsiniz.
 
-1. Seçin **Tamam** geçmek için **özeti** sekmesi.
+1. **Özet** sekmesine geçmek için **Tamam'ı** seçin.
 
-1. Zaman **özeti** sekmesini görüntüler, girdiğiniz bilgileri doğrulandı. Gördüğünüzde **doğrulama başarılı** seçin (sekmenin en üstündeki), ileti **Tamam**. 
+1. **Özet** sekmesi görüntülendiğinde, girilen bilgiler doğrulanır. **Doğrulama geçti** iletisini (sekmenin üst kısmında) gördüğünüzde **Tamam'ı**seçin. 
 
-     ![Özet sekmesi, görüntüler ve seçili seçeneklerinizi doğrular.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-summary.png)
+     ![Özet sekmesi seçtiğiniz seçenekleri görüntüler ve doğrular.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-summary.png)
 
-1. Zaman **Oluştur** sekmesini görüntüler, seçin **Oluştur** Jenkins sanal makinesi oluşturmak için. Sunucunuz hazır olduğunda, Azure portalında bir bildirim görüntülenir.
+1. **Oluştur** sekmesi görüntülendiğinde, Jenkins sanal makinesini oluşturmak için **Oluştur'u** seçin. Sunucunuz hazır olduğunda, Azure portalında bir bildirim görüntülenir.
 
-     ![Jenkins hazır bildirimidir.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-notification.png)
+     ![Jenkins bildirime hazır.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-notification.png)

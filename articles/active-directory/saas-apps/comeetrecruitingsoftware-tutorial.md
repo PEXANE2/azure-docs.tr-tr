@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Cokarşılayan Işe alma yazılımıyla Azure Active Directory tümleştirme | Microsoft Docs'
-description: Azure Active Directory ve Cokarımak yazılımı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Comeet Recruiting Software ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Comeet Recruiting Software arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,221 +17,221 @@ ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25a88e3abd7eacc323b5d45fd4fae1304010253b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158556"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Öğretici: Cokarşılayan Işe alma yazılımıyla Azure Active Directory tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Öğretici: Comeet Recruiting Software ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Cobuluşmak yazılımını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Azure AD ile birlikte karşılamaları tümleştirme yazılımlarını tümleştirmek aşağıdaki avantajları sağlar:
+Bu eğitimde, Comeet Recruiting Software ile Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğrenirsiniz.
+Comeet Recruiting Software'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Azure AD 'de, Işe alma yazılımının birlikte Buluşme erişimine sahip bir denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Işe alma yazılımlarını (çoklu oturum açma) birlikte karşılamak için otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Comeet Recruiting Software erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Comeet Recruiting Software 'e (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Cokarşılayan Işe alma yazılımıyla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD entegrasyonunu Comeet Recruiting Software ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Ortak karşılamaları yazılım çoklu oturum açma özellikli abonelik
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* Comeet Recruiting Software tek oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Cokarşılayan Işe alma yazılımı **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Comeet Recruiting Software **SP ve IDP** SSO başlatılan destekler
 
-## <a name="adding-comeet-recruiting-software-from-the-gallery"></a>Galeriden Cokarşılayan Işe alma yazılımı ekleme
+## <a name="adding-comeet-recruiting-software-from-the-gallery"></a>Galeriden Comeet İşe Alma Yazılımı Ekleme
 
-Cokarşılayan Işe alma yazılımının Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize, galerinizden ortak bir Işe alma yazılımı eklemeniz gerekir.
+Comeet Recruiting Software'in Azure AD'ye entegrasyonunu yapılandırmak için, galerideki Comeet Recruiting Software'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden ortak bir Işe alma yazılımı eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden Comeet Recruiting Software eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **birlikte alma yazılım yazılımını**yazın, sonuç panelinden **ortak olarak işe alma yazılımlarını** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusunda, **Comeet Recruiting Software**yazın, sonuç panelinden **Comeet Recruiting Software'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuç listesinde işbirliği yazılımlarını birlikte karşılayın](common/search-new-app.png)
+     ![Comeet İşe Yazılım sonuç listesinde](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre işbirliği yazılımıyla birlikte yapılandırma ve test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, birlikte çalışma Işe alma yazılımının kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı Olarak Comeet Recruiting Software ile Azure AD tek oturum açma işlemini yapılandırın ve test edersiniz.
+Tek oturum açmanın işe yarayacağı nda, bir Azure AD kullanıcısı ile Comeet Recruiting Software'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
 
-Azure AD çoklu oturum açmayı, birlikte bulunan Işe alma yazılımıyla birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Comeet Recruiting Software ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[birlikte bulunan Işe alma yazılımlarını çoklu oturum açmayı yapılandırma](#configure-comeet-recruiting-software-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimi ile bağlantılı bir Işe alma yazılımının birlikte bulunması için bir Britta Simon 'ın karşılığına sahip olması için **[birlikte](#create-comeet-recruiting-software-test-user)**
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Comeet Recruiting Software Single Sign-On](#configure-comeet-recruiting-software-single-sign-on)** 'u yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. Kullanıcının Azure AD temsiline bağlı Comeet Recruiting Software'de Britta Simon'ın bir muadili olması için **[Comeet Recruiting Software test kullanıcısını oluşturun.](#create-comeet-recruiting-software-test-user)**
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açmayı birlikte bulunan Işe alma yazılımıyla birlikte yapılandırmak için aşağıdaki adımları uygulayın:
+Comeet Recruiting Software ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **ortak işe alma yazılım** uygulaması tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. Azure [portalında,](https://portal.azure.com/) **Comeet Recruiting Software** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
+4. Temel **SAML Yapılandırma** sı bölümünde, Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
 
-    ![Ortak karşılamaları yazılım etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Comeet Recruiting Software Domain ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'SI ile güncelleştirin. Bu değerleri almak için [ortak karşılamaları yazılım istemci desteği ekibine](https://support.comeet.co/knowledgebase/adfs-single-sign-on/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ile güncelleştirin ve URL'yi yanıtlayın. Bu değerleri almak için [Comeet Recruiting Software Client destek ekibine](https://support.comeet.co/knowledgebase/adfs-single-sign-on/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Ortak karşılamaları yazılım etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Comeet Recruiting Software Domain ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın: `https://app.comeet.co`
+    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://app.comeet.co`
 
-5. Cokarşılayan Işe alma yazılım uygulaması, SAML onaylamalarını belirli bir biçimde bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+5. Comeet Recruiting Software uygulaması belirli bir biçimde SAML iddiaları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini uygulama tümleştirme sayfasındaki **Kullanıcı Öznitelikleri** bölümünden yönetebilirsiniz. **SAML sayfasıyla Tek Oturum** Açma'da, **Kullanıcı Öznitelikleri** iletişim kutusunu açmak için **Edit** düğmesini tıklatın.
 
     ![image](common/edit-attribute.png)
 
-6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin: 
+6. **Kullanıcı Öznitelikleri** iletişim kutusundaki **Kullanıcı Talepleri** bölümünde, **Edit simgesini** kullanarak talepleri düzenleme veya yukarıdaki resimde gösterildiği gibi SAML belirteç özniteliğini yapılandırmak için **yeni talep ekle** kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin: 
 
-    | Adı |  Kaynak özniteliği|
+    | Adı |  Kaynak Özniteliği|
     | ---------------| --------------- |
-    | NameIdentifier | Kullanıcı. Mail |
-    | comeet_id | User. UserPrincipalName |
+    | nameidentifier | kullanıcı.posta |
+    | comeet_id | user.userprincipalname |
 
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
+    a. **Kullanıcı taleplerini yönet** iletişim kutusunu açmak için yeni **talep ekle'yi** tıklatın.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
+    b. **Ad** metin kutusunda, bu satır için gösterilen öznitelik adını yazın.
 
-    c. **Ad alanını** boş bırakın.
+    c. Ad **alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Kaynak'ı Öznitelik**olarak seçin.
 
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
+    e. Kaynak **öznitelik** listesinden, bu satır için gösterilen öznitelik değerini yazın.
 
-    f. **Tamam 'a** tıklayın
+    f. **Tamam'ı** tıklatın
 
-    g. **Kaydet** düğmesine tıklayın.
+    g. **Kaydet**'e tıklayın.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. Birlikte bulunan **Işbirliği yazılımını ayarlama** bölümünde uygun URL 'leri gereksinimlerinize göre kopyalayın.
+6. **Comeet Recruiting Software'i ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum açma URL 'SI
+    a. Oturum Açma URL’si
 
-    b. Azure AD tanımlayıcısı
+    b. Azure Reklam Tanımlayıcısı
 
-    c. Oturum kapatma URL 'SI
+    c. Giriş URL'si
 
-### <a name="configure-comeet-recruiting-software-single-sign-on"></a>Cokarşılayan Işe alma yazılımlarını çoklu oturum açmayı yapılandırma
+### <a name="configure-comeet-recruiting-software-single-sign-on"></a>Yapılandırma Comeet İşe Yazılım Tek Sign-On
 
-Çoklu oturum açma **yazılım** tarafında tek oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' den uygun kopyalanmış URL 'Leri, [Işe alma yazılım desteği ekibine cokarılamak](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)için göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Comeet Recruiting Software** tarafında tek oturum açma yı yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'lerini Azure portalından [Comeet Recruiting Software destek ekibine](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
+    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma yazılımı için erişim vererek Britta Simon 'u kullanmaya olanak sağlar.
+Bu bölümde, Britta Simon'ın Comeet Recruiting Software'e erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **işbirliği yazılımlarını birlikte karşılayın**' i seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Comeet Recruiting Software'i**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Işbirliği yazılımlarını birlikte karşılayın**' i seçin.
+2. Uygulamalar listesinde **Comeet Recruiting Software'i**seçin.
 
-    ![Uygulamalar listesindeki ortak Işe alma yazılımı bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesinde Comeet İşe Yazılım bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-comeet-recruiting-software-test-user"></a>Cokarşılar Işe alma yazılım test kullanıcısı oluşturma
+### <a name="create-comeet-recruiting-software-test-user"></a>Comeet Recruiting Software test kullanıcı oluşturun
 
-Bu bölümde, Cokarşılayan Işe alma yazılımında Britta Simon adlı bir Kullanıcı oluşturacaksınız. Cokarşılayan işe alma yazılım [destek ekibi](mailto:support@comeet.co) ile çalışarak, kullanıcıları cokarşılayın yazılım platformunda ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Comeet Recruiting Software Britta Simon adlı bir kullanıcı oluşturun. [Comeet Recruiting Software destek ekibiyle](mailto:support@comeet.co) birlikte çalışarak Kullanıcıları Comeet Recruiting Software platformuna ekleyin. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde birlikte bulunan Işe alma yazılım kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ortak Işe alma yazılımında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Comeet Recruiting Software döşemesini tıklattığınızda, Otomatik olarak SSO'yu kurduğunuz Comeet Recruiting Software'de oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,5 +1,5 @@
 ---
-title: Yerel Service Fabric kümesinde Java uygulamasında hata ayıklama
+title: Yerel Hizmet Kumaşı kümesinde bir Java uygulamasını hata ayıklama
 description: Bu öğreticide, yerel kümede çalıştırılan bir Service Fabric Java uygulamasından nasıl hata ayıklama yapılacağını ve günlüklerin alınacağını öğreneceksiniz.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: c664b586260957138249028e4d521c29b411d56d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75465393"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Öğretici: Yerel Service Fabric kümesinde dağıtılan bir Java uygulamasının hatasını ayıklama
@@ -40,13 +40,13 @@ Bu öğreticiye başlamadan önce:
 
 ## <a name="download-the-voting-sample-application"></a>Voting örnek uygulamasını indirme
 
-[Bu öğretici serisinin birinci kısmında](service-fabric-tutorial-create-java-app.md) Voting örnek uygulamasını oluşturmadıysanız, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki komutu çalıştırın.
+[Bu öğretici serinin birinci bölümünde](service-fabric-tutorial-create-java-app.md)Oylama örnek uygulama inşa etmediyseniz, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki komutu çalıştırın.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 ```
 
-Uygulamayı [derleyin ve](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) yerel geliştirme kümesine dağıtın.
+Uygulamayı yerel geliştirme kümesine [oluşturun ve dağıtın.](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster)
 
 ## <a name="debug-java-application-using-eclipse"></a>Eclipse kullanarak Java uygulamasının hatasını ayıklama
 
@@ -56,7 +56,7 @@ Uygulamayı [derleyin ve](service-fabric-tutorial-create-java-app.md#deploy-appl
 
 3. Projeleri İçeri Aktar penceresinde **Kök dizini seçin** seçeneğini belirleyin ve **Oylama** dizinini seçin. Birinci öğretici serisini izlediyseniz **Oylama** dizini, **Eclipse çalışma alanı** dizinindedir.
 
-4. Hatasını ayıklamak istediğiniz hizmetin entryPoint.sh öğesini güncelleştirin; böylece hizmet, uzaktan hata ayıklama parametreleriyle Java işlemini başlatır. Bu öğreticide durum bilgisiz ön ucu kullanılır: *Oylama/VotingApplication/VotingWebPkg/Code/EntryPoint. sh*. Bağlantı noktası 8001, bu örnekte hata ayıklama için ayarlanır.
+4. Hatasını ayıklamak istediğiniz hizmetin entryPoint.sh öğesini güncelleştirin; böylece hizmet, uzaktan hata ayıklama parametreleriyle Java işlemini başlatır. Bu öğretici için vatansız ön uç kullanılır: *Oylama / OylamaApplication / VotingWebPkg / Kod / entryPoint.sh*. Bağlantı noktası 8001 bu örnekte hata ayıklama için ayarlanır.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingWeb.jar
@@ -82,15 +82,15 @@ Uygulamayı [derleyin ve](service-fabric-tutorial-create-java-app.md#deploy-appl
 
 10. Eclipse IDE’de **Çalıştır -> Hata Ayıklama Yapılandırmaları -> Uzak Java Uygulaması** seçeneklerini belirleyin, oluşturduğunuz **Oylama** yapılandırmasına ve sonra **Hata Ayıklama**’ya tıklayın.
 
-11. Web tarayıcınıza gidin ve **localhost: 8080**' e erişin. Bu, kesme noktasına otomatik olarak ulaşacaktır ve Çakışan Küreler **hata ayıklama perspektifini**girer.
+11. Web tarayıcınıza gidin ve **localhost erişin:8080**. Bu otomatik olarak kesme noktasına çarpar ve Eclipse **Hata Ayıklama perspektifine**girer.
 
-Artık aynı adımları, çakışan küreler Service Fabric bir uygulamada hata ayıklamak için uygulayabilirsiniz.
+Şimdi Eclipse herhangi bir Hizmet Kumaş uygulaması hata ayıklamak için bu aynı adımları uygulayabilirsiniz.
 
 ## <a name="redirect-application-logs-to-custom-location"></a>Uygulama günlüklerini özel konuma yeniden yönlendirme
 
 Aşağıdaki adımlarda, varsayılan */var/log/syslog* konumundaki uygulama günlüklerinin özel bir konuma nasıl yeniden yönlendirileceği gösterilmektedir.
 
-1. Şu anda Service Fabric Linux kümelerinde çalışan uygulamalar yalnızca tek bir günlük dosyası çekmeyi destekler. Günlüklerin her zaman */tmp/mysfapp0.0.log*' e gitmesi için bir uygulama ayarlamak üzere, şu konumdaki *Oylama/votingapplication/VotingWebPkg/Code/logging. Properties* dosyasında logging. Properties adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin.
+1. Şu anda Service Fabric Linux kümelerinde çalışan uygulamalar yalnızca tek bir günlük dosyasını almayı desteklemez. Günlüklerin her zaman */tmp/mysfapp0.0.log*adresine gidecek şekilde bir uygulama ayarlamak için, aşağıdaki konum *oylama/OylamaApplication/VotingWebPkg/Code/logging.properties* adresinde niçin logging adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin.
 
     ```
     handlers = java.util.logging.FileHandler
@@ -109,7 +109,7 @@ Aşağıdaki adımlarda, varsayılan */var/log/syslog* konumundaki uygulama gün
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    Aşağıdaki örnek, bir önceki bölümdeki yürütmeye benzer şekilde, hata ayıklayıcı eklenmiş bir örnek yürütmeyi gösterir.
+    Aşağıdaki örnek, önceki bölümdeki yürütmeye benzer şekilde hata ayıklama ekli bir örnek yürütme gösterir.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar

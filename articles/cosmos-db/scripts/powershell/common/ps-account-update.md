@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos hesabını güncelleştirmek için PowerShell betiği
-description: Azure PowerShell betik örneği-Azure Cosmos hesabını güncelleştirme veya bölgeleri değiştirme
+title: Azure Cosmos hesabındavarsayılan tutarlılık düzeyini güncelleştirmek için PowerShell komut dosyası
+description: Azure PowerShell komut dosyası örneği - PowerShell'i kullanarak Azure Cosmos DB hesabında varsayılan tutarlılık düzeyini güncelleştirme
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 075c33b0818aa3ec8b16158f538ae302446ff5f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d3df2e91624f9b5d82d534a1d525fa6866f1a489
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445033"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366082"
 ---
-# <a name="update-an-azure-cosmos-account-or-modify-regions-using-powershell"></a>PowerShell kullanarak bir Azure Cosmos hesabını güncelleştirme veya bölgeleri değiştirme
+# <a name="update-the-regions-on-an-azure-cosmos-db-account-using-powershell"></a>PowerShell'i kullanarak Azure Cosmos DB hesabındaki bölgeleri güncelleştirme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,11 +22,11 @@ ms.locfileid: "75445033"
 ## <a name="sample-script"></a>Örnek betik
 
 > [!NOTE]
-> Aynı işlemdeki bölgeleri değiştiremez ve diğer Cosmos hesabı özelliklerini değiştiremezsiniz. Bunların iki ayrı işlem olarak yapılması gerekir.
+> Aynı işlemdeki bölgeleri ve diğer Cosmos hesap özelliklerini değiştiremezsiniz. Bunlar iki ayrı işlem olarak yapılmalıdır.
 > [!NOTE]
-> Bu örnekte bir SQL (Core) API hesabı kullanılması gösterilmektedir. Bu örneği diğer API 'Ler için kullanmak üzere ilgili özellikleri kopyalayın ve API 'ye özel betiğe uygulayın.
+> Bu örnek, bir SQL API hesabı nın kullanılmasını gösterir. Bu örneği diğer API'ler için kullanmak için, ilgili özellikleri kopyalayın ve API'ye özgü komut dosyanıza uygulayın.
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Add a region to an Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Update an Azure Cosmos DB account")]
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
@@ -42,11 +42,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturun. |
-| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Bir kaynağı güncelleştirin. |
-|**Azure Kaynak grupları**| |
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB Hesaplarını listeler veya belirli bir Cosmos DB Hesabı alır. |
+| [Güncelleme-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Cosmos DB Hesabını güncelleştirin. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

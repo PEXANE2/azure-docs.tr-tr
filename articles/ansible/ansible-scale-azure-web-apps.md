@@ -1,17 +1,17 @@
 ---
-title: Öğretici-Azure App Service kullanarak uygulamaları ölçeklendirin
-description: Azure App Service bir uygulamayı nasıl ölçeklendireceğinizi öğrenin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Azure App Service, Web uygulaması, ölçek, Java
+title: Öğretici - Ansible kullanarak Azure Uygulama Hizmeti'ndeki uygulamaları ölçeklendirin
+description: Azure Uygulama Hizmeti'nde bir uygulamayı nasıl ölçeklendireceklerini öğrenin
+keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, ölçek, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155921"
 ---
-# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Öğretici: Azure App Service uygulamaları kullanarak ölçeklendirin
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Öğretici: Ansible kullanarak Azure Uygulama Hizmeti'ndeki uygulamaları ölçeklendirin
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -21,26 +21,26 @@ ms.locfileid: "74155921"
 
 > [!div class="checklist"]
 >
-> * Mevcut bir App Service planının olguları alın
-> * App Service planını üç çalışan ile S2 'ye kadar ölçeklendirin
+> * Varolan bir Uygulama Hizmeti planının gerçeklerini öğrenin
+> * Uygulama Hizmeti planını üç işçiyle Birlikte S2'ye ölçeklendirin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Azure App Service App** -bir Azure App Service uygulamanız yoksa, [Azure App Service içinde bir uygulamayı yapılandırmak için yapılandırın](ansible-create-configure-azure-web-apps.md).
+- **Azure Uygulama Hizmeti uygulaması** - Azure Uygulama Hizmeti uygulamanız yoksa, [Ansible'ı kullanarak Azure Uygulama Hizmeti'nde bir uygulamayı yapılandırın.](ansible-create-configure-azure-web-apps.md)
 
-## <a name="scale-up-an-app"></a>Bir uygulamayı ölçeklendirme
+## <a name="scale-up-an-app"></a>Uygulamayı ölçeklendir
 
-Ölçeklendirme için iki iş akışı vardır: *ölçeği artırma* ve *genişletme*.
+Ölçeklendirme için iki iş akışı vardır: *ölçeklendirin* ve *ölçeklendirin.*
 
-**Ölçeği artırma:** Ölçeği genişletmek için daha fazla kaynak elde etmek üzere. Bu kaynaklar CPU, bellek, disk alanı, VM 'Ler ve daha fazlasını içerir. Uygulamanın ait olduğu App Service planının fiyatlandırma katmanını değiştirerek bir uygulamayı ölçeklendirebilirsiniz. 
-**Ölçeği genişletme:** Ölçeği genişletmek için uygulamanızı çalıştıran VM örneği sayısını artırın. App Service planı fiyatlandırma katmanınıza bağlı olarak, 20 örneğe kadar ölçeği değiştirebilirsiniz. [Otomatik ölçeklendirme](/azure/azure-monitor/platform/autoscale-get-started) , ön tanımlı kurallara ve zamanlamalara göre örnek sayısını otomatik olarak ölçeklendirmenize olanak tanır.
+**Ölçeklendirin:** Ölçeklendirmek, daha fazla kaynak elde etmek anlamına gelir. Bu kaynaklar CPU, bellek, disk alanı, VM'ler ve daha fazlasını içerir. Uygulamanın ait olduğu Uygulama Hizmeti planının fiyatlandırma katmanını değiştirerek bir uygulamayı ölçeklendirirsiniz. 
+**Ölçeklendirin:** Ölçeklendirmek, uygulamanızı çalıştıran VM örneklerinin sayısını artırmak anlamına gelir. Uygulama Hizmeti planı fiyatlandırma katmanınıza bağlı olarak, 20 örneğe kadar ölçeklendirebilirsiniz. [Otomatik ölçeklendirme,](/azure/azure-monitor/platform/autoscale-get-started) örnek sayısını önceden tanımlanmış kurallara ve zamanlamalara göre otomatik olarak ölçeklendirmenize olanak tanır.
 
-Bu bölümdeki PlayBook kodu aşağıdaki işlemi tanımlar:
+Bu bölümdeki oyun kitabı kodu aşağıdaki işlemi tanımlar:
 
-* Mevcut bir App Service planının olguları alın
-* App Service planını üç çalışan ile S2 'ye güncelleştirme
+* Varolan bir Uygulama Hizmeti planının gerçeklerini öğrenin
+* Uygulama hizmet planını üç işçiyle S2'ye güncelleştirin
 
 Aşağıdaki playbook'u `webapp_scaleup.yml` olarak kaydedin:
 
@@ -80,13 +80,13 @@ Aşağıdaki playbook'u `webapp_scaleup.yml` olarak kaydedin:
       var: facts.appserviceplans[0].sku
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
+Oyun kitabını çalıştırdıktan sonra, aşağıdaki sonuçlara benzer çıktı görürsünüz:
 
 ```Output
 PLAY [localhost] 

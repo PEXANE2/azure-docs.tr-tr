@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 5330c99f4d42f591944ddc5c58ac98bea6387da5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74278159"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Öğretici: Azure CDN önbelleğe alma kurallarını ayarlama
 
 > [!NOTE] 
-> Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Microsoft profillerinin Azure CDN** Için, Verizon profiller **'den Azure CDN Premium** için [standart kurallar altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer Işlevler için **Manage** Portal 'daki [Verizon Premium Rules altyapısını](cdn-rules-engine.md) kullanmanız gerekir.
+> Önbelleğe alma kuralları yalnızca **Akamai profillerinden** Verizon ve Azure **CDN Standard'dan Azure CDN Standardı** için kullanılabilir. **Microsoft profillerinden Azure CDN için,** **Verizon profillerinden Azure CDN Premium** için Standart kurallar [altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer işlevler için **Yönet** portalındaki Verizon Premium [kuralları altyapısını](cdn-rules-engine.md) kullanmanız gerekir.
  
 
 Bu öğreticide, Azure Content Delivery Network (CDN) önbelleğe alma kurallarını kullanarak varsayılan önbellek süre sonu davranışının hem genel olarak hem de URL yolu ve dosya uzantısı gibi özel koşullarla ayarlanması veya değiştirilmesi açıklanmıştır. Azure CDN iki tür önbelleğe alma kuralı sağlar:
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Content Delivery Network (CDN) önbelleğe alma kurallar�
 
 - Özel önbelleğe alma kuralları: Profilinizdeki her uç nokta için bir veya daha fazla özel önbelleğe alma kuralı ayarlayabilirsiniz. Özel önbelleğe alma kuralları ayarlandığında belirli yollar ve dosya uzantılarıyla eşleşir, sırasıyla işlenir ve genel önbelleğe alma kuralını geçersiz kılar. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > - Önbelleğe alma kuralları sayfasını açın.
 > - Genel önbelleğe alma kuralı oluşturun.
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir CDN profili ve en az bir CDN uç noktası oluşturmanız gerekir. Daha fazla bilgi için bkz. [Hızlı Başlangıç: Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md).
 
@@ -79,7 +79,7 @@ Aşağıda gösterilen şekilde bir özel önbelleğe alma kuralı oluşturun:
     
 2. **Önbelleğe alma davranışı** seçeneğini **Geçersiz kıl** olarak ayarlayın ve **Günler** alanına 30 yazın.
        
-    Bu özel önbelleğe alma kuralı, uç noktanızdaki `.jpg` klasöründe bulunan tüm `/images` resim dosyalarında 30 günlük önbellek süresi ayarlar. Kaynak sunucu tarafından gönderilen tüm `Cache-Control` veya `Expires` HTTP üst bilgilerini geçersiz kılar.
+    Bu özel önbelleğe alma kuralı, uç noktanızdaki `/images` klasöründe bulunan tüm `.jpg` resim dosyalarında 30 günlük önbellek süresi ayarlar. Kaynak sunucu tarafından gönderilen tüm `Cache-Control` veya `Expires` HTTP üst bilgilerini geçersiz kılar.
 
     ![Özel önbelleğe alma kuralları](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 

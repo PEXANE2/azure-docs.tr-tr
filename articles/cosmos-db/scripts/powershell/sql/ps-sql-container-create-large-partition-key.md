@@ -1,20 +1,20 @@
 ---
-title: Büyük bölüm anahtarı ile bir Azure Cosmos kapsayıcısı oluşturmak için PowerShell betiği
-description: Azure PowerShell betik örneği-Azure Cosmos hesabında büyük bölüm anahtarı ile bir kapsayıcı oluşturma
+title: Büyük bir bölme anahtarına sahip bir Azure Cosmos DB kapsayıcısı oluşturmak için PowerShell komut dosyası
+description: Azure PowerShell komut dosyası örneği - Azure Cosmos DB hesabında büyük bir bölme anahtarına sahip bir kapsayıcı oluşturma
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: ecc5e7c13d898f89bbd6b542faf69834de26e0e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7746154fe89b655d09345a2de655fa85a0d4cbae
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444977"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365936"
 ---
-# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>PowerShell kullanarak Azure Cosmos hesabında büyük bölüm anahtarı ile bir kapsayıcı oluşturma
+# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-db-account-using-powershell"></a>PowerShell'i kullanarak Azure Cosmos DB hesabında büyük bölme anahtarına sahip bir kapsayıcı oluşturma
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,11 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure kaynakları**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure Kaynak grupları**| |
+|**Azure Cosmos DB**| |
+| [Yeni-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Yeni bir Cosmos DB Hesabı oluşturur. |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Yeni bir cosmos DB SQL Veritabanı oluşturur veya güncelleştirir. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Yeni bir cosmos DB SQL Kapsayıcısı oluşturur veya güncelleştirir. |
+|**Azure Kaynak Grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

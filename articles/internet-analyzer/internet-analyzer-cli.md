@@ -1,6 +1,6 @@
 ---
-title: CLı kullanarak Internet çözümleyici testi oluşturma | Microsoft Docs
-description: Bu makalede, ilk Internet Çözümleyicisi testinizi oluşturmayı öğrenin.
+title: CLI kullanarak Internet Analyzer testi oluşturma | Microsoft Dokümanlar
+description: Bu makalede, ilk Internet Analyzer testioluşturmak için nasıl öğrenin.
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74184276"
 ---
-# <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLı kullanarak Internet çözümleyici testi oluşturma (Önizleme)
+# <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLI kullanarak Internet Analyzer testi oluşturma (Önizleme)
 
-[Azure Portal](internet-analyzer-create-test-portal.md) veya CLI kullanarak Internet çözümleyici kaynağı oluşturmanın iki yolu vardır. Bu bölüm, CLı deneyimimizi kullanarak yeni bir Azure Internet Çözümleyicisi kaynağı oluşturmanıza yardımcı olur. 
+[Azure portalını](internet-analyzer-create-test-portal.md) kullanarak veya CLI'yi kullanarak Bir Internet Çözümleyici kaynağı oluşturmanın iki yolu vardır. Bu bölüm, CLI deneyimimizi kullanarak yeni bir Azure Internet Çözümleyici kaynağı oluşturmanıza yardımcı olur. 
 
 
 > [!IMPORTANT]
@@ -25,63 +25,63 @@ ms.locfileid: "74184276"
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Genel Önizleme Genel kullanım için kullanılabilir; Ancak, veri depolama önizleme sırasında *ABD Batı 2* sınırlıdır.
+Genel önizleme genel olarak kullanılabilir; ancak, veri depolama önizleme sırasında *US West 2* ile sınırlıdır.
 
 ## <a name="object-model"></a>Nesne modeli
-Internet Çözümleyicisi CLı aşağıdaki kaynak türlerini kullanıma sunar:
-* **Testler** -bir test, zaman içinde iki internet uç noktası (A ve B) için Son Kullanıcı performansını karşılaştırır.
-* **Profiller** -testler bir Internet çözümleyici profili altında oluşturulur. Profiller ilgili testlerin gruplandırılmasına izin verir; tek bir profil, bir veya daha fazla test içerebilir.
-* **Önceden yapılandırılmış uç** noktalar-uç noktaları çeşitli yapılandırmalara (bölgeler, hızlandırma teknolojileri vb.) ayarladık. Testlerinizde önceden yapılandırılmış bu uç noktaların herhangi birini kullanabilirsiniz.
-* **Karneler** -bir karne, ölçüm sonuçlarının hızlı ve anlamlı özetlerini sağlar. [Karnelerinizi yorumlama](internet-analyzer-scorecard.md)bölümüne bakın.
-* **Zaman serisi** -bir zaman serisi, bir ölçümün zaman içinde nasıl değişiklik gösterdiğini gösterir.
+Internet Analyzer CLI aşağıdaki kaynak türlerini ortaya çıkarır:
+* **Testler** - Bir test, iki internet uç noktasının (A ve B) zaman içinde son kullanıcı performansını karşılaştırır.
+* **Profiller** - Testler Internet Analyzer profili altında oluşturulur. Profiller, ilgili testlerin gruplandırılmasını sağlar; tek bir profil bir veya daha fazla test içerebilir.
+* **Önceden yapılandırılmış Uç Noktalar** - Çeşitli yapılandırmalarla (bölgeler, hızlanma teknolojileri, vb.) uç noktalar belirledik. Bu önceden yapılandırılmış uç noktalardan herhangi birini testlerinizde kullanabilirsiniz.
+* **Karneler** - Karne, ölçüm sonuçlarının hızlı ve anlamlı özetlerini sağlar. [Karnenizi Yorumlamaya](internet-analyzer-scorecard.md)bakın.
+* **Zaman Serisi** - Zaman serisi, bir metnin zaman içinde nasıl değiştiğini gösterir.
 
-## <a name="profile-and-test-creation"></a>Profil ve test oluşturma
-1. **Önizlemeye katılmak nasıl yaparım?** , [Azure Internet Çözümleyicisi hakkında SSS](internet-analyzer-faq.md)bölümündeki yönergeleri izleyerek Internet Çözümleyicisi önizleme erişimi alın.
-2. [Azure CLI 'Yı yükler](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-3. Bir CLı oturumu başlatmak için `login` komutunu çalıştırın:
+## <a name="profile-and-test-creation"></a>Profil ve Test Oluşturma
+1. [Azure Internet Analyzer SSS'den](internet-analyzer-faq.md)gelen yönergeleri izleyerek Internet Analyzer önizleme erişimi **alın.**
+2. [Azure CLI'yi yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+3. CLI `login` oturumunu başlatmak için komutu çalıştırın:
     ```azurecli-interactive
     az login
     ```
 
-    CLı varsayılan tarayıcınızı açabildiğinden, bunu yapılır ve bir Azure oturum açma sayfası yükler.
-    Aksi takdirde, https://aka.ms/devicelogin bir tarayıcı sayfası açın ve terminalinizde görünen yetkilendirme kodunu girin.
+    CLI varsayılan tarayıcınızı açabilirse, bunu yapar ve bir Azure oturum açma sayfası yükler.
+    Aksi takdirde, terminalinizde görüntülenen yetkilendirme kodunu girin https://aka.ms/devicelogin ve bir tarayıcı sayfası açın.
 
 4. Tarayıcıda hesabınızın kimlik bilgileriyle oturum açın.
 
-5. Internet Çözümleyicisi Genel önizlemesine erişim izni verilen abonelik KIMLIĞINIZI seçin.
+5. Internet Analyzer genel önizlemesine erişim izni verilmiş Olan Abonelik Kimliğinizi seçin.
 
-    Oturum açtıktan sonra, Azure hesabınızla ilişkili Aboneliklerin listesini görürsünüz. `isDefault: true` sahip abonelik bilgileri, oturum açtıktan sonra şu anda etkinleştirilmiş olan aboneliğdir. Başka bir abonelik seçmek için, abone KIMLIĞIYLE [az Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) komutunu kullanın. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Oturum açtıktan sonra Azure hesabınızla ilişkili aboneliklerin listesini görürsünüz. Abonelik bilgileri, `isDefault: true` oturum açtıktan sonra şu anda etkinleştirilen aboneliktir. Başka bir abonelik seçmek için, abonelik kimliğine geçmek için [az hesap kümesi](https://docs.microsoft.com/cli/azure/account#az-account-set) komutunu kullanın. Abonelik seçimi hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
 
     [Azure CLI ile oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) bölümünde ayrıntılı bir şekilde ele alınan etkileşimsiz olarak oturum açma yöntemleri mevcuttur.
 
-6. **[Isteğe bağlı]** Yeni bir Azure Kaynak grubu oluşturun:
+6. **[İsteğe bağlı]** Yeni bir Azure Kaynak Grubu oluşturun:
     ```azurecli-interactive
     az group create --location eastus --name "MyInternetAnalyzerResourceGroup"
     ```
 
-7. Azure CLı Internet Çözümleyicisi uzantısını yükler:
+7. Azure CLI Internet Analyzer Uzantısını yükleyin:
      ```azurecli-interactive
     az extension add --name internet-analyzer
     ```
 
-8. Yeni bir Internet Çözümleyicisi profili oluşturun:
+8. Yeni bir Internet Analyzer profili oluşturun:
     ```azurecli-interactive
     az internet-analyzer profile create --location eastus --resource-group "MyInternetAnalyzerResourceGroup" --name "MyInternetAnalyzerProfile" --enabled-state Enabled
     ```
 
-9. Yeni oluşturulan profilin kullanabildiği tüm önceden yapılandırılmış uç noktaları listeleyin:
+9. Yeni oluşturulan profilde bulunan önceden yapılandırılmış tüm uç noktaları listele:
     ```azurecli-interactive
     az internet-analyzer preconfigured-endpoint list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
     ```
 
-10. Yeni oluşturulan ınternetanalyzer profili altında yeni bir test oluşturun:
+10. Yeni oluşturulan InternetAnalyzer profili altında yeni bir test oluşturun:
     ```azurecli-interactive
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    Yukarıdaki komutu hem `www.contoso.com` hem de `www.microsoft.com` özel yollar altında tek piksellik görüntüyü ([Trans. gif](https://fpc.msedge.net/apc/trans.gif)) barındırmakta olduğunu varsayar. Bir nesne yolu açıkça belirtilmemişse, Internet çözümleyici varsayılan olarak nesne yolu olarak `/apc/trans.gif` kullanır; bu, önceden yapılandırılmış uç noktaların tek piksellik görüntüyü barındırmakta olduğu yerdir. Ayrıca şemanın (https/http) belirtilmesi gerekmez; Internet çözümleyici yalnızca HTTPS uç noktalarını destekler, bu nedenle HTTPS kabul edilir.
+    Yukarıdaki komut, her `www.contoso.com` iki `www.microsoft.com` sinin de özel yollar altında tek pikselli görüntüyü[(trans.gif)](https://fpc.msedge.net/apc/trans.gif)barındırdığını varsayar. Bir nesne yolu açıkça belirtilmemişse, Internet `/apc/trans.gif` Analyzer varsayılan olarak nesne yolu olarak kullanır ve bu da önceden yapılandırılmış uç noktaların tek piksellik görüntüyü barındırdığı yerdir. Ayrıca şema (https/http) belirtilmesi gerekmez unutmayın; Internet Analyzer yalnızca HTTPS uç noktalarını destekler, bu nedenle HTTPS kabul edilir.
 
-11. Yeni test Internet Çözümleyicisi profili altında görünmelidir:
+11. Yeni test Internet Analyzer profili altında görünmelidir:
     ```azurecli-interactive
     az internet-analyzer test list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
     ```
@@ -113,14 +113,14 @@ Internet Çözümleyicisi CLı aşağıdaki kaynak türlerini kullanıma sunar:
     ]
     ````
 
-12. Ölçümleri oluşturmaya başlamak için testin **Scriptfileuri** tarafından Işaret edilen JavaScript dosyasının Web uygulamanıza katıştırılması gerekir. Özel yönergeler [Internet Çözümleyicisi Istemci ekleme](internet-analyzer-embed-client.md) sayfasında bulunabilir.
+12. Ölçüm oluşturmaya başlamak için, testin **komut dosyasıFileUri** tarafından işaret edilen JavaScript dosyasının Web uygulamanıza gömülmüş olması gerekir. Embed [Internet Analyzer Client](internet-analyzer-embed-client.md) sayfasında özel talimatlar bulunabilir.
 
-13. Testin ilerlemesini, "durum" değerini izleyerek izleyebilirsiniz:
+13. "Durum" değerini izleyerek testin ilerlemesini izleyebilirsiniz:
     ```azurecli-interactive
     az internet-analyzer test show --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --name "MyFirstInternetAnalyzerTest"
     ```
 
-14. Testin toplanan sonuçlarını, için zaman serisi veya karne oluşturarak inceleyebilirsiniz:
+14. Testin toplanan sonuçlarını, bunun için zaman serileri veya karneler oluşturarak inceleyebilirsiniz:
     ```azurecli-interactive
     az internet-analyzer show-scorecard --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --name "MyFirstInternetAnalyzerTest" --aggregation-interval "Daily" --end-date-time-utc "2019-10-24T00:00:00"
     ```
@@ -132,6 +132,6 @@ Internet Çözümleyicisi CLı aşağıdaki kaynak türlerini kullanıma sunar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Desteklenen komutların ve kullanım örneklerinin tam listesi için [Internet ÇÖZÜMLEYICISI CLI başvurusuna](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) gözatamazsınız.
-* [Internet ÇÖZÜMLEYICISI SSS](internet-analyzer-faq.md)makalesini okuyun.
-* [Internet Çözümleyicisi istemcisini](internet-analyzer-embed-client.md) katıştırma ve [özel bir uç nokta](internet-analyzer-custom-endpoint.md)oluşturma hakkında daha fazla bilgi edinin. 
+* Desteklenen komutların ve kullanım örneklerinin tam listesi için [Internet Analyzer CLI başvurusuna](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) göz atın.
+* Internet [Analyzer SSS](internet-analyzer-faq.md)okuyun.
+* [Internet Analyzer İstemci'sini](internet-analyzer-embed-client.md) katıştırma ve özel bir [bitiş noktası](internet-analyzer-custom-endpoint.md)oluşturma hakkında daha fazla bilgi edinin. 

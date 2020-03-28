@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dacoulte
 ms.openlocfilehash: 04905dc54c199f5dc0519327ae083676b62ec83e
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79381517"
 ---
-|Adı |Açıklama |Efekt (ler) |Sürüm |GitHub |
+|Adı |Açıklama |Etki(ler) |Sürüm |GitHub |
 |---|---|---|---|---|
-|[Dağıtılmış izlemenin etkinleştirilmediği Azure yay bulut örneklerini denetleyin](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0f2d8593-4667-4932-acca-6a9f187af109) |Azure yay bulutu 'ndaki dağıtılmış izleme araçları, bir uygulamadaki mikro hizmetler arasındaki karmaşık bağlantıları hata ayıklamaya ve izlemeye izin verir. Dağıtılmış izleme araçları etkinleştirilmelidir ve sağlıklı bir durumda olmalıdır. |Denetim, devre dışı |1.0.0-Önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Platform/Spring_DistributedTracing_Audit.json)
+|[Dağıtılmış izlemenin etkinleştirilen olmadığı Azure İlkbahar Bulut örneklerini denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0f2d8593-4667-4932-acca-6a9f187af109) |Azure Bahar Bulutu'ndaki dağıtılmış izleme araçları, bir uygulamadaki mikro hizmetler arasındaki karmaşık bağlantıların hata ayıklanmasına ve izlenmesine olanak tanır. Dağıtılmış izleme araçları etkinleştirilmeli ve sağlıklı bir durumda olmalıdır. |Denetim, Engelli |1.0.0-önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Platform/Spring_DistributedTracing_Audit.json)

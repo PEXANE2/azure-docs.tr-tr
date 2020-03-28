@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure şablonları ile ölçek kümesini otomatik ölçeklendirme
+title: Öğretici - Azure şablonları ile bir ölçek kümesini otomatik ölçeklendirme
 description: CPU talepleri arttıkça ve azaldıkça, sanal makine ölçek kümesini otomatik olarak ölçeklendirmek için Azure Resource Manager şablonlarının nasıl kullanılacağını öğrenin
 author: cynthn
 tags: azure-resource-manager
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9d7e0a99a7ba2c00b2ebe5ea8c77d527765ead67
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f9b60ca31765ac52f4693e4efaac09af2ec2f293
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271425"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062762"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -24,11 +24,11 @@ ms.locfileid: "76271425"
 > * Sanal makine örneklerinde stres testi yapma ve otomatik ölçeklendirme kurallarını tetikleme
 > * Talep düştüğünde geriye doğru otomatik ölçeklendirme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="define-an-autoscale-profile"></a>Otomatik ölçeklendirme profilini tanımlama
@@ -66,13 +66,13 @@ Bu kural için aşağıdaki parametreler kullanılır:
 | Parametre         | Açıklama                                                                                                         | Değer           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | İzlenecek ve ölçek kümesi eylemlerinin uygulanmasında temel alınacak performans ölçümü.                                                   | CPU yüzdesi  |
-| *timeGrain*       | Analiz için ölçümlerin toplanma sıklığı.                                                                   | 1 dakika        |
+| *timeGrain*       | Analiz için ne sıklıkla ölçümlerin toplanacağı.                                                                   | 1 dakika        |
 | *timeAggregation* | Toplanan ölçümlerin analiz için nasıl bir araya getirileceğini tanımlar.                                                | Ortalama         |
-| *timeWindow*      | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 5 dakika       |
+| *zaman Penceresi*      | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 5 dakika       |
 | *operator*        | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür    |
-| *threshold*       | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan değer.                                                      | %70             |
-| *direction*       | Kural geçerli olduğunda ölçek kümesinin ölçeğinin genişletileceğini veya daraltılacağını tanımlar.                                              | Artır        |
-| *type*            | Sanal makine örneği sayısının belirli bir değerle değiştirilmesi gerektiğini belirtir.                                    | Değiştirme Sayısı    |
+| *Eşik*       | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan değer.                                                      | %70             |
+| *Yön*       | Kural geçerli olduğunda ölçek kümesinin ölçeğinin genişletileceğini veya daraltılacağını tanımlar.                                              | Artır        |
+| *Türü*            | Sanal makine örneği sayısının belirli bir değerle değiştirilmesi gerektiğini belirtir.                                    | Değiştirme Sayısı    |
 | *value*           | Kural geçerli olduğunda kaç tane sanal makine örneğinin ölçeğinin genişletileceği veya daraltılacağı.                                             | 3               |
 | *cooldown*        | Otomatik ölçeklendirme eylemlerinin geçerli olması için kural tekrar uygulanmadan önceki bekleme süresi. | 5 dakika       |
 
@@ -136,7 +136,7 @@ Aşağıdaki örnek, ortalama CPU yükü 5 dakikadan uzun bir süre boyunca %30�
 ## <a name="create-an-autoscaling-scale-set"></a>Otomatik ölçeklendirme ölçek kümesi oluşturma
 Şimdi örnek bir şablon kullanarak bir ölçek kümesi oluşturalım ve otomatik ölçeklendirme kuralları uygulayalım. [Tüm şablonu gözden geçirebilir](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json) veya [şablonun *Microsoft.insights/autoscalesettings* kaynak sağlayıcı bölümüne](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220) bakabilirsiniz.
 
-Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -175,13 +175,13 @@ Aşağıdaki örnek çıktıda, yük dengeleyicinin genel IP adresi, örnek adı
 
 Birinci sanal makine örneğinizde SSH oturumu açın. Önceki komutta gösterildiği gibi, `-p` parametresiyle kendi genel IP adresinizi ve bağlantı noktası numaranızı belirtin:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-Oturum açtıktan sonra **stres** yardımcı programını yükleyin. CPU yükü üreten *10* **stres** çalışanı başlatın. Bu çalışanlar *420* saniye çalışır; bu, otomatik ölçeklendirme kurallarının istenen eylemi uygulamasını sağlamak için yeterlidir.
+Oturum açtıktan sonra **stres** yardımcı programını yükleyin. CPU yükü oluşturan *10* **stress** çalışanıyla başlayın. Bu çalışanlar *420* saniye çalışır; bu, otomatik ölçeklendirme kurallarının istenen eylemi uygulamasını sağlamak için yeterlidir.
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -190,26 +190,26 @@ sudo stress --cpu 10 --timeout 420 &
 
 **stress** yardımcı programının CPU yükü oluşturduğunu onaylamak için, **top** yardımcı programını kullanarak etkin sistem yükünü inceleyin:
 
-```azurecli-interactive
+```console
 top
 ```
 
 **top** yardımcı programından çıkın ve sanal makine örneğiyle bağlantınızı kapatın. **stress** yardımcı programı, sanal makine örneğinde çalışmaya devam eder.
 
-```azurecli-interactive
+```console
 Ctrl-c
 exit
 ```
 
 Önceki [az vmss list-instance-connection-info](/cli/azure/vmss) komutunda yer alan bağlantı noktası numarası ile ikinci sanal makine örneğine bağlanın:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
 **stress** yardımcı programını yükleyip çalıştırın ve sonra bu ikinci sanal makine örneğinde on çalışan başlatın.
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -218,7 +218,7 @@ Tekrar **stress**, *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0
 
 İkinci sanal makine örneğiyle bağlantınızı kapatın. **stress** yardımcı programı, sanal makine örneğinde çalışmaya devam eder.
 
-```azurecli-interactive
+```console
 exit
 ```
 
@@ -234,7 +234,7 @@ watch az vmss list-instances \
 
 CPU eşiği karşılandıktan sonra otomatik ölçeklendirme kuralları, ölçek kümesindeki sanal makine örneği sayısını artırır. Aşağıdaki çıkışta, ölçek kümesi ölçeği genişlettiğinde oluşturulan üç sanal makine gösterilir:
 
-```bash
+```output
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
@@ -246,17 +246,17 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  eastus      myScaleSet_6  Creating             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-**stress** yardımcı programı ilk sanal makine örneklerinde durduğunda ortalama CPU yükü normale döner. Bir 5 dakika daha geçtikten sonra otomatik ölçeklendirme kuralları, ölçeği daraltarak sanal makine örneklerinin sayısını azaltır. Ölçeği daraltma eylemleri önce en yüksek kimliğe sahip sanal makine örneklerini kaldırır. Bir ölçek kümesi Kullanılabilirlik Kümeleri veya Kullanılabilirlik Alanları kullandığında, eylemlerdeki ölçek VM örnekleri arasında eşit olarak dağıtılır. Aşağıdaki örnek çıkışta, ölçek kümesi otomatik olarak ölçeği daralttığında tek bir sanal makine örneğinin silindiği gösterilir:
+**stress** yardımcı programı ilk sanal makine örneklerinde durduğunda ortalama CPU yükü normale döner. Bir 5 dakika daha geçtikten sonra otomatik ölçeklendirme kuralları, ölçeği daraltarak sanal makine örneklerinin sayısını azaltır. Ölçeği daraltma eylemleri önce en yüksek kimliğe sahip sanal makine örneklerini kaldırır. Bir ölçek kümesi Kullanılabilirlik Kümeleri veya Kullanılabilirlik Alanları kullandığında, eylemlerdeki ölçek VM örnekleri arasında eşit olarak dağıtılır. Aşağıdaki örnek çıktıda, ölçek kümesi otomatik olarak ölçeği daralttığında tek bir sanal makine örneğinin silindiği gösterilmektedir:
 
-```bash
+```output
            6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-`Ctrl-c` ile *watch* yardımcı programından çıkın. Ölçek kümesi, en az örnek sayısı olan 2 örneğe ulaşılıncaya kadar her 5 dakikada bir ölçeği daraltmaya ve bir sanal makine örneğini kaldırmaya devam eder.
+`Ctrl-c` ile *watch* yardımcı programından çıkın. Ölçek kümesi, minimum 2 örnek sayısına ulaşılıncaya kadar her 5 dakikada bir ölçeği daraltmaya ve bir sanal makine örneğini kaldırmaya devam eder.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Ölçek kümenizi ve ek kaynaklarınızı kaldırmak için [az group delete](/cli/azure/group) komutunu kullanarak kaynak grubunu ve bu kaynak grubunun tüm kaynaklarını silin:
+Ölçek kümenizi ve ek kaynaklarınızı kaldırmak için, az grup silme ile kaynak grubunu ve tüm kaynaklarını [silin:](/cli/azure/group)
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

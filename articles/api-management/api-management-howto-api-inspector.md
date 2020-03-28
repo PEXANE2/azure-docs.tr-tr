@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768545"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>İstek izleme özelliğini kullanarak API’lerinizdeki hataları ayıklama
 
 Bu öğreticide, API’nizdeki hataları ayıklamanıza ve sorunları gidermenize yardımcı olması için istek işlemenin nasıl inceleneceği açıklanmaktadır. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Çağrı izleme
@@ -49,10 +49,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    > [!NOTE]
    > * Ocp-Apim-Subscription-Key otomatik olarak doldurulmazsa, Geliştirici Portalına gidip profil sayfasında anahtarları görüntüleyerek bu değeri alabilirsiniz.
-   > * OCP-apim-Trace HTTP üst bilgisi kullanıldığında bir izleme almak için, abonelik anahtarı için **Izlemeye Izin ver** ayarının etkinleştirilmesi gerekir. **Izlemeye Izin ver** ayarını yapılandırmak için, sol menüdeki **API Management** ' ın altında, **abonelikler**' i seçin.
-   >   API Management abonelikler bölmesinde izlemeye Izin ver](media/api-management-howto-api-inspector/allowtracing.png) ![
+   > * Ocp-Apim-Trace HTTP üstbilgisi kullanıldığında izleme almak için abonelik anahtarının **izleme** izin ayarının etkinleştirilmesi gerekir. İzin ve **resul asyon** ayarını yapılandırmak için, sol menüdeki **API Yönetimi** altında **Abonelikler'i**seçin.
+   >   ![API Yönetim Abonelikleri bölmesinde izleme izni verme](media/api-management-howto-api-inspector/allowtracing.png)
 
-6. API çağrısı yapmak için **Gönder** ' e tıklayın. 
+6. API çağrısı yapmak için **Gönder'i** tıklatın. 
 7. Çağrının tamamlanmasını bekleyin. 
 8. **API konsolu**’nda **İzleme** sekmesine gidin. Ayrıntılı izleme bilgilerine atlamak için aşağıdaki bağlantılardan herhangi birine tıklayın: **gelen**, **arka uç**, **giden**.
 

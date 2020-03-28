@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Wrike ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Wrike arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Wrike ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Wrike arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,189 +17,189 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47af0a43e4d081f50fedf685d46347f0f36233fd
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68825632"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wrike"></a>Öğretici: Wrike ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-wrike"></a>Öğretici: Wrike ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Wrike 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Wrike 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu eğitimde, Wrike'ı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Wrike'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Azure AD 'de Wrike erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla yazma (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Wrike erişimi olan Azure AD'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Wrike 'de (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Wrike ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* Çoklu oturum açma etkin aboneliği yazıldı
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Wrike tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Wrike, **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler
+* Wrike **SP** ve **IDP** sso başlatılan destekler
 
-* Wrike **, tam zamanında** Kullanıcı sağlamayı destekler
+* Wrike **Just In Time** kullanıcı sağlama destekler
 
 ## <a name="adding-wrike-from-the-gallery"></a>Galeriden Wrike ekleme
 
-Azure AD 'de Wrike tümleştirmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize yazma eklemeniz gerekir.
+Wrike'ın Azure AD'ye entegrasyonunu yapılandırmak için galeriden Wrike'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Wrike eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden Wrike eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Wrike**yazın, sonuç panelinden **Wrike** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusunda **Wrike**yazın, sonuç panelinden **Wrike'ı** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-    ![Sonuçlar listesinde Wrike](common/search-new-app.png)
+    ![Wrike sonuç listesinde](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Wrike ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve Wrike içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD oturumaçma işlemini Wrike ile yapılandırıp test esiniz.
+Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile Wrike'daki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD çoklu oturum açma 'yı Wrike ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD oturumlarını Wrike ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. Aynı uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Wrike Single Sign 'ı yapılandırma](#configure-wrike-single-sign-on)** .
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. Kullanıcının Azure AD gösterimine bağlı olan Writta Simon 'ın bir karşılığı olacak şekilde **[Wrike test kullanıcısı oluşturun](#create-wrike-test-user)** .
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[Wrike Tek İşaret-On](#configure-wrike-single-sign-on)** 'u yapılandırır - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Wrike test kullanıcıoluşturun](#create-wrike-test-user)** - Wrike'daki Britta Simon'ın, kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açmayı Wrike ile yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD oturumaçmayı Wrike ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **Wrike** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. Azure [portalında,](https://portal.azure.com/) **Wrike** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız, uygulama zaten Azure ile önceden tümleştirildiği için Kullanıcı herhangi bir adım gerçekleştirmek zorunda değildir.
+4. Temel **SAML Yapılandırma** sıbölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak isterseniz, uygulama azure ile önceden entegre edilmiş olduğundan, kullanıcının herhangi bir adım gerçekleştirmesi gerekmez.
 
-    ![Etki alanı ve URL 'Lerde çoklu oturum açma bilgileri yazıldı](common/preintegrated.png)
+    ![Wrike Etki Alanı ve URL'ler tek oturum açma bilgileri](common/preintegrated.png)
 
-5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Etki alanı ve URL 'Lerde çoklu oturum açma bilgileri yazıldı](common/metadata-upload-additional-signon.png)
+    ![Wrike Etki Alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.wrike.com/login/`
+    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://www.wrike.com/login/`
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. **Wrike ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+7. **Wrike'yi Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-wrike-single-sign-on"></a>Wrike çoklu oturum açmayı yapılandırma
+### <a name="configure-wrike-single-sign-on"></a>Wrike Tek İşaret-On yapıla
 
-**Yazma** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [Wrike destek ekibine](mailto:support@team.wrike.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Wrike** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'lerini Azure portalından [Wrike destek ekibine](mailto:support@team.wrike.com)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. Kullanıcı **adı** alanı `brittasimon@yourcompanydomain.extension`türünde. Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d.           **Oluştur**'a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Wrike 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Britta Simon'ın Wrike'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Wrike**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Wrike'ı**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Wrike**öğesini seçin.
+2. Uygulamalar listesinde **Wrike'ı**seçin.
 
     ![Uygulamalar listesindeki Wrike bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
 ### <a name="create-wrike-test-user"></a>Wrike test kullanıcısı oluşturma
 
-Bu bölümde, Britta Simon adlı bir Kullanıcı Wrike içinde oluşturulmuştur. Wrike, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Wrike 'da zaten mevcut değilse, Wrike 'a erişmeye çalıştığınızda yeni bir tane oluşturulur.
+Bu bölümde, Britta Simon adlı bir kullanıcı Wrike oluşturulur. Wrike, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Wrike'de bir kullanıcı zaten yoksa, Wrike'a erişmeye çalıştığınızda yeni bir kullanıcı oluşturulur.
 
 >[!Note]
 >El ile bir kullanıcı oluşturmanız gerekiyorsa, [Wrike destek ekibine](mailto:support@team.wrike.com)başvurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Wrike kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Wrike 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Wrike karosu tıklattığınızda, SSO'yu kurduğunuz Wrike'de otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

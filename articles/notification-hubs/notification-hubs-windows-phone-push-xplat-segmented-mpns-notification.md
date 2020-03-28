@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs kullanarak belirli Windows phone’lara anında iletme bildirimleri gönderme | Microsoft Docs
+title: Azure Bildirim Hub'larını kullanarak belirli Windows telefonlarına anında iletme bildirimleri gönderme | Microsoft Dokümanlar
 description: Bu öğreticide, uygulama arka ucuna kayıtlı belirli (tümü değil) Windows Phone 8 veya Windows Phone 8.1 cihazlarına anında iletme bildirimleri göndermek için Azure Notification Hubs’ın nasıl kullanılacağını öğrenirsiniz.
 services: notification-hubs
 documentationcenter: windows
@@ -17,41 +17,41 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 88326b07a96dcc8ce7a72f8709a88c2662f48707
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 72ecb5bdb6bb024c5e4422548dd11888c03e4799
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213401"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126934"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli Windows Phone cihazlara anında iletme bildirimleri gönderin
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Öğretici: Azure Bildirim Hub'larını kullanarak belirli Windows Telefonlarına anında iletme bildirimleri gönderme
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 Bu öğreticide, belirli Windows Phone 8 veya Windows Phone 8.1 Scihazlara anında iletme bildirimleri göndermek için Azure Notification Hubs’ın nasıl kullanılacağı gösterilmektedir. Windows Phone 8.1’i (Silverlight olmayan) hedefliyorsanız bu öğreticinin [Windows Evrensel](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) sürümüne bakın.
 
-Bildirim hub’ında bir kayıt oluştururken bir veya daha fazla *etiketi* dahil ederek bu senaryoyu etkinleştirirsiniz. Bir etikete bildirimler gönderildiğinde, etikete kaydolan tüm cihazlar bildirimi alır. Etiketler hakkında daha fazla bilgi için bkz. [Kayıtlardaki etiketler](notification-hubs-tags-segment-push-message.md).
+Bildirim hub’ında bir kayıt oluştururken bir veya daha fazla *etiketi* dahil ederek bu senaryoyu etkinleştirirsiniz. Bir etikete bildirimler gönderildiğinde, etikete kaydolan tüm cihazlar bildirimi alır. Etiketler hakkında daha fazla bilgi [için, kayıtlardaki Etiketler'e](notification-hubs-tags-segment-push-message.md)bakın.
 
 > [!NOTE]
 > Notification Hubs Windows Phone SDK'sı, Windows Anında Bildirim Hizmeti'ni (WNS) Windows Phone 8.1 Silverlight uygulamaları ile kullanmayı desteklemez. WNS’yi (MPNS yerine) Windows Phone 8.1 Silverlight uygulamaları ile kullanmak için REST API’ler kullanan [Notification Hubs - Windows Phone Silverlight öğreticisini] izleyin.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Mobil uygulamaya kategori seçimi ekleme
 > * Etiketlerle bildirimlere kaydolma
 > * Etiketli bildirimler gönderme
-> * Uygulamayı test etme
+> * Uygulamayı test edin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-[Öğreticiyi doldurun: Azure Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md)kullanarak Windows Phone uygulamalara anında iletme bildirimleri gönderin. Bu öğreticide, ilginizi çeken son dakika haberi kategorilerine kaydolabilmeniz ve yalnızca bu kategoriler için anında iletme bildirimleri alabilmeniz için mobil uygulamayı güncelleştirirsiniz.
+[Öğretici: Azure Notification Hubs kullanarak Windows Phone uygulamalarına anında iletme bildirimleri gönderme](notification-hubs-windows-mobile-push-notifications-mpns.md) öğreticisini tamamlayın. Bu öğreticide, ilginizi çeken son dakika haberi kategorilerine kaydolabilmeniz ve yalnızca bu kategoriler için anında iletme bildirimleri alabilmeniz için mobil uygulamayı güncelleştirirsiniz.
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>Mobil uygulamaya kategori seçimi ekleme
 
 İlk adım, mevcut ana sayfanıza kullanıcının kaydolunacak kategorileri seçmesini sağlayan UI öğeleri eklemektir. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
 
-1. Dosyasını açın, `TitlePanel` ve `Grid` adlı`ContentPanel` öğeleri aşağıdaki kodla değiştirin: `MainPage.xaml`
+1. Dosyayı `MainPage.xaml` açın, ardından `Grid` aşağıdaki `TitlePanel` `ContentPanel` kod adlandırılmış öğeleri değiştirin:
 
     ```xml
     <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
@@ -79,7 +79,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
         <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-2. Projeye adlı `Notifications` bir sınıf ekleyin. `public` Değiştirici sınıf tanımına ekleyin. Ardından, aşağıdaki `using` deyimlerini yeni dosyaya ekleyin:
+2. Projeye adlandırılmış `Notifications` bir sınıf ekleyin. `public` Değiştiriciyi sınıf tanımına ekleyin. Ardından, yeni `using` dosyaya aşağıdaki ifadeleri ekleyin:
 
     ```csharp
     using Microsoft.Phone.Notification;
@@ -207,7 +207,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     ```
 
     Bu sınıf, bu cihazın alacağı haber kategorilerini depolamak için yalıtılmış depolamayı kullanır. Ayrıca bir [şablon](notification-hubs-templates-cross-platform-push-messages.md) bildirim kaydı kullanılarak bu kategorilere kaydolma yöntemlerini de içerir.
-4. Proje dosyasında aşağıdaki özelliği `App` sınıfına ekleyin. `App.xaml.cs` `<hub name>` ve `<connection string with listen access>` yer tutucularını, daha önce edindiğiniz bildirim hub'ı adınız ve *DefaultListenSharedAccessSignature* bağlantı dizeniz ile değiştirin.
+4. Proje `App.xaml.cs` dosyasında, `App` sınıfa aşağıdaki özelliği ekleyin. `<hub name>` ve `<connection string with listen access>` yer tutucularını, daha önce edindiğiniz bildirim hub'ı adınız ve *DefaultListenSharedAccessSignature* bağlantı dizeniz ile değiştirin.
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -216,7 +216,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    > [!NOTE]
    > Bir istemci uygulaması ile dağıtılmış kimlik bilgileri genellikle güvenli olmadığından yalnızca istemci uygulamanızla dinleme erişimi için anahtarı dağıtmanız gerekir. Dinleme erişimi, uygulamanızın bildirimlere kaydolmasını sağlar, ancak mevcut kayıtlar değiştirilemez ve bildirimler gönderilemez. Tam erişim anahtarı, güvenli bir arka uç hizmetinde bildirimler göndermek ve mevcut kayıtları değiştirmek için kullanılır.
 
-5. `MainPage.xaml.cs`İçinde, aşağıdaki satırı ekleyin:
+5. `MainPage.xaml.cs`, aşağıdaki satırı ekleyin:
 
     ```csharp
     using Windows.UI.Popups;
@@ -241,7 +241,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     }
     ```
 
-    Bu yöntem, kategorilerin bir listesini oluşturur ve bu `Notifications` sınıfı kullanarak listeyi yerel depoda depolar ve Bildirim Hub 'ınızla ilgili etiketleri kaydeder. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
+    Bu yöntem, bir kategoriler listesi `Notifications` oluşturur ve listeyi yerel depolama alanında depolamak ve ilgili etiketleri bildirim merkezinize kaydetmek için sınıfı kullanır. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
 
 Uygulamalarınız artık bir kategori kümesini cihazdaki yerel depolama alanında depolayabilir ve kullanıcının kategori seçimini her değiştirmesinde bildirim hub’ına kaydolabilir.
 
@@ -252,7 +252,7 @@ Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatm
 > [!NOTE]
 > Microsoft Anında Bildirim Hizmeti (MPNS) tarafından atanan kanal URI’si her zaman değişebileceğinden, bildirim hatalarını önlemek için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
 
-1. App.xaml.cs dosyasını açın ve `async` `Application_Launching` yöntemine değiştiricisini ekleyin ve aşağıdaki kodla [Notification Hubs’ı kullanmaya başlama] bölümünde eklediğiniz Notification Hubs kayıt kodunu değiştirin:
+1. App.xaml.cs dosyasını açın `async` ve değiştiriciyi yönteme `Application_Launching` ekleyin ve Bildirim [Hub'ları ile başlatılacağı] için eklediğiniz Bildirim Hub'ları kayıt kodunu aşağıdaki kodla değiştirin:
 
     ```csharp
     private async void Application_Launching(object sender, LaunchingEventArgs e)
@@ -268,7 +268,7 @@ Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatm
     ```
 
     Bu kod, uygulama her başlatıldığında uygulamanın yerel depolama alanından kategorileri aldığından ve bu kategorilere kayıt isteğinde bulunduğundan emin olur.
-2. MainPage.xaml.cs proje dosyasında, `OnNavigatedTo` yöntemi uygulayan aşağıdaki kodu ekleyin:
+2. proje MainPage.xaml.cs, `OnNavigatedTo` yöntemi uygulayan aşağıdaki kodu ekleyin:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -292,7 +292,7 @@ Uygulama artık tamamlanmıştır ve kullanıcının kategori seçimini her değ
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="test-the-app"></a>Uygulamayı test etme
+## <a name="test-the-app"></a>Uygulamayı test edin
 
 1. Visual Studio’da F5 tuşuna basarak uygulamayı derleyin ve başlatın.
 

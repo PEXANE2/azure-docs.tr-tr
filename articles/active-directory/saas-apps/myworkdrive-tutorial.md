@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: MyWorkDrive ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ile MyWorkDrive arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: MyWorkDrive ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve MyWorkDrive arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,157 +16,157 @@ ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74074079"
 ---
-# <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Öğretici: MyWorkDrive 'ı Azure Active Directory ile tümleştirme
+# <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Öğretici: MyWorkDrive'ı Azure Active Directory ile tümleştirin
 
-Bu öğreticide, MyWorkDrive 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. MyWorkDrive 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, MyWorkDrive'ı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. MyWorkDrive'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de MyWorkDrive erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla MyWorkDrive 'da otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* MyWorkDrive erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla MyWorkDrive'da otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü edinebilirsiniz.
-* MyWorkDrive çoklu oturum açma (SSO) aboneliği etkin.
+* Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü alabilirsiniz.
+* MyWorkDrive tek oturum açma (SSO) aboneliğini etkinleştirildi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. MyWorkDrive **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. MyWorkDrive **SP** ve **IDP** başlatılan SSO destekler
 
 ## <a name="adding-myworkdrive-from-the-gallery"></a>Galeriden MyWorkDrive ekleme
 
-MyWorkDrive 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden MyWorkDrive ' ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+MyWorkDrive'ın Azure AD'ye entegrasyonunu yapılandırmak için, MyWorkDrive'ı galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **myworkdrive** yazın.
-1. Sonuçlar panelinden **Myworkdrive** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **MyWorkDrive** yazın.
+1. Sonuç panelinden **MyWorkDrive'ı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-**Britta Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu MyWorkDrive ile yapılandırın ve test edin. SSO 'nun çalışması için, MyWorkDrive içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu MyWorkDrive ile **Britta Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, MyWorkDrive'daki bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu MyWorkDrive ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu MyWorkDrive ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[MyWorkDrive SSO 'Yu yapılandırın](#configure-myworkdrive-sso)** .
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. Kullanıcının Azure AD gösterimine bağlı olan MyWorkDrive 'da Britta Simon 'un bir karşılığı olacak şekilde **[myworkdrive test kullanıcısı oluşturun](#create-myworkdrive-test-user)** .
-6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+2. **[MyWorkDrive SSO'yu yapılandırır](#configure-myworkdrive-sso)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[MyWorkDrive test kullanıcısını oluşturun](#create-myworkdrive-test-user)** - MyWorkDrive'da britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **myworkdrive** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **MyWorkDrive** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
+1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
+1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** sayfasında, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki alana ait değerleri girin:
+1. Temel **SAML Yapılandırma** sayfasında, **Uygulamayı IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanın değerlerini girin:
 
-    **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
+    **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SERVER.DOMAIN.COM>/Account/Login-saml`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<SERVER.DOMAIN.COM>/Account/Login-saml`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Kendi şirketinizin MyWorkDrive sunucusu ana bilgisayar adını girin: örn.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Yanıtla URL'si ve Oturum Açma URL'si ile güncelleştirin. Kendi şirketinizin MyWorkDrive Server ana bilgisayar adını gir:örn.
     > 
     > Yanıt URL'si: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
     > 
-    > Oturum açma URL 'SI:`https://yourserver.yourdomain.com/Account/Login-saml`
+    > Oturum açma URL'si:`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > Bu değerler için kendi ana bilgisayar adınızı ve SSL sertifikanızı ayarlama konusunda emin değilseniz, [Myworkdrive destek ekibine](mailto:support@myworkdrive.com) başvurun.
+    > Bu değerler için kendi ana bilgisayar adınızı ve SSL sertifikanızı nasıl kurabileceğinizden emin değilseniz [MyWorkDrive destek ekibine](mailto:support@myworkdrive.com) başvurun.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** panonuza kopyalamak için Kopyala düğmesine tıklayın.
+1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** panonuza kopyalamak için kopyala düğmesini tıklatın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-myworkdrive-sso"></a>MyWorkDrive SSO 'yu yapılandırma
+### <a name="configure-myworkdrive-sso"></a>MyWorkDrive SSO'ya yapılandırın
 
-1. MyWorkDrive içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. MyWorkDrive içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
 
-    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
 
-1. Tarayıcıya Uzantı eklendikten sonra, **Setup MyWorkDrive** öğesine tıkladığınızda sizi myworkdrive uygulamasına yönlendirirsiniz. Buradan, MyWorkDrive 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-4 adımlarını otomatikleştirecektir.
+1. Tarayıcıya uzantı ekledikten sonra, **Setup MyWorkDrive'a** tıklayın ve sizi MyWorkDrive uygulamasına yönlendirecektir. Buradan MyWorkDrive'da oturum açabilmek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-4 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-1. MyWorkDrive 'ı el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, bir güvenlik yöneticisi olarak MyWorkDrive ' da oturum açın.
+1. MyWorkDrive'ı el ile kurmak istiyorsanız, farklı bir web tarayıcıpenceresinde Güvenlik Yöneticisi olarak MyWorkDrive'da oturum açın.
 
-1. Yönetim panelindeki MyWorkDrive sunucusunda **kuruluş** ' a tıklayın ve aşağıdaki adımları uygulayın:
+1. Yönetici panelindeki MyWorkDrive Server'da **ENTERPRISE'a** tıklayın ve aşağıdaki adımları gerçekleştirin:
 
     ![Yönetici](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
-    a. **SAML/ADFS SSO**'yu etkinleştirin.
+    a. **SAML/ADFS SSO'ya**etkinle.
 
-    b. **SAML seçin-Azure AD**
+    b. **SAML'yi** seçin - Azure AD
 
-    c. **Azure Uygulama Federasyon meta verileri URL 'si** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL** 'sinin değerini yapıştırın.
+    c. Azure **Uygulama Federasyonu Metadata Url** textbox'ına, Azure portalından kopyalamış olduğunuz **Uygulama Federasyonu Metaveri Url'sinin** değerini yapıştırın.
 
-    d. **Kaydet**’e tıklayın
+    d. **Kaydet'i** tıklatın
 
     > [!NOTE]
-    > Daha fazla bilgi için, [Myworkdrive Azure AD desteği makalesini](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/)inceleyin.
+    > Ek bilgi için [MyWorkDrive Azure AD destek makalesini](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/)inceleyin.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’ tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `BrittaSimon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, MyWorkDrive 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştireceksiniz.
+Bu bölümde, MyWorkDrive'a erişim sağlayarak Britta Simon'ın Azure tek oturum açma işlemini kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Myworkdrive**' ı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **MyWorkDrive'ı**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinden **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-### <a name="create-myworkdrive-test-user"></a>MyWorkDrive test kullanıcısı oluştur
+### <a name="create-myworkdrive-test-user"></a>MyWorkDrive test kullanıcını oluşturma
 
-Bu bölümde, MyWorkDrive 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Myworkdrive platformunda kullanıcıları eklemek için [myworkdrive destek ekibi](mailto:support@myworkdrive.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, MyWorkDrive'da Britta Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları MyWorkDrive platformuna eklemek için [MyWorkDrive destek ekibiyle](mailto:support@myworkdrive.com) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
-### <a name="test-sso"></a>Test SSO 'SU
+### <a name="test-sso"></a>Test SSO
 
-Erişim panelinde MyWorkDrive kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız MyWorkDrive sürücüsünde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki MyWorkDrive döşemesini seçtiğinizde, SSO'yu kurduğunuz MyWorkDrive'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

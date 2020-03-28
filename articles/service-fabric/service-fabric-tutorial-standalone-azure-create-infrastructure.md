@@ -1,21 +1,21 @@
 ---
-title: Azure VM 'lerinde küme için altyapı oluşturma
-description: Bu öğreticide, Azure VM altyapısını bir Service Fabric kümesi çalıştıracak şekilde ayarlamayı öğreneceksiniz.
+title: Azure VM'lerde küme için altyapı oluşturma
+description: Bu eğitimde, Bir Hizmet Kumaşı kümesini çalıştırmak için Azure VM altyapısını nasıl ayarlayabileceğinizi öğrenirsiniz.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614018"
 ---
-# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi barındırmak için Azure VM altyapısı oluşturma
+# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Hizmet Dokusu kümesini barındırmak için Azure VM altyapısı oluşturun
 
-Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, Azure VM 'lerinde barındırılan tek başına bir küme oluşturup üzerine bir uygulama yüklersiniz.
+Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici seride, Azure VM'lerde barındırılan bağımsız bir küme oluşturur ve üzerine bir uygulama yüklersiniz.
 
-Bu öğretici, bir serinin birinci bölümüdür. Bu makalede, tek başına Service Fabric kümenizi barındırmak için gereken Azure VM kaynaklarını üretin. Gelecek makalelerde, Service Fabric tek başına paketini yüklemeniz, kümenize bir örnek uygulama yüklemeniz ve son olarak kümenizi temizlemeniz gerekir.
+Bu öğretici, bir dizinin birinci bölümüdür. Bu makalede, bağımsız Hizmet Kumaşı kümenizi barındırmak için gereken Azure VM kaynaklarını oluşturursunuz. Gelecek makalelerde, Service Fabric tek başına paketini yüklemeniz, kümenize bir örnek uygulama yüklemeniz ve son olarak kümenizi temizlemeniz gerekir.
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
@@ -27,61 +27,61 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Henüz bir hesabınız yoksa, bir hesap oluşturmak için [Azure Portal](https://portal.azure.com) gidin.
+Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Zaten bir hesabınız yoksa, bir hesap oluşturmak için [Azure portalına](https://portal.azure.com) gidin.
 
-## <a name="create-azure-virtual-machine-instances"></a>Azure sanal makine örnekleri oluşturma
+## <a name="create-azure-virtual-machine-instances"></a>Azure Sanal Makine örnekleri oluşturma
 
-1. Azure portal oturum açın ve **sanal makineler** ' i (sanal makineler (klasik) değil) seçin.
+1. Azure portalında oturum açın ve **Sanal makineleri** seçin (Sanal Makineler (klasik değil)).
 
-   ![Azure portal VM][az-console]
+   ![Azure portalı VM][az-console]
 
-2. **Sanal makine oluştur** formunun açılacağı **Ekle** düğmesini seçin.
+2. **Sanal makine** oluştur formunu açacak olan **Ekle** düğmesini seçin.
 
-3. **Temel bilgiler** sekmesinde, istediğiniz aboneliği ve kaynak grubunu seçtiğinizden emin olun (yeni bir kaynak grubu kullanarak önerilir).
+3. Temel **Bilgiler** sekmesinde, istediğiniz abonelik ve kaynak grubunu seçtiğinizden emin olun (yeni bir kaynak grubu kullanmanız önerilir).
 
-4. **Görüntü** türünü **Windows Server 2016 Datacenter**olarak değiştirin. 
+4. **Resim** türünü **Windows Server 2016 Datacenter**olarak değiştirin. 
  
-5. Örnek **boyutunu** **Standart DS2 v2**olarak değiştirin. Bir yönetici **Kullanıcı adı** ve **parola**ayarlayıp ne olduğunu belirterek belirleyin.
+5. Örnek **Boyutunu** **Standart DS2 v2**olarak değiştirin. Yönetici **Kullanıcı Adı** ve **Parola'yı**ayarlayın ve ne olduklarını belirtin.
 
-6. **Gelen bağlantı noktası kurallarını** şimdilik bloke bırakın; Sonraki bölümde bunları yapılandıracağız.
+6. Gelen **Bağlantı Noktası Kuralları** şimdilik engellenmiş olarak bırakın; bir sonraki bölümde bunları yapılandıracağız.
 
-7. **Ağ** sekmesinde, yeni bir **sanal ağ** oluşturun ve adını bir yere göz atın.
+7. **Ağ** sekmesinde, yeni bir **Sanal Ağ** oluşturun ve adını not alın.
 
-8. Ardından, **NIC ağ güvenlik grubunu** **Gelişmiş**olarak ayarlayın. Adını belirterek yeni bir güvenlik grubu oluşturun ve herhangi bir kaynaktan gelen TCP trafiğine izin vermek için aşağıdaki kuralları oluşturun:
+8. Ardından, **NIC ağ güvenlik grubunu** **Gelişmiş**olarak ayarlayın. Adını belirten yeni bir güvenlik grubu oluşturun ve TCP trafiğinin herhangi bir kaynaktan girmesine izin vermek için aşağıdaki kuralları oluşturun:
 
-   ![SF-gelen][sf-inbound]
+   ![sf-gelen][sf-inbound]
 
-   * RDP ve ıCMP için bağlantı noktası `3389`(temel bağlantı).
-   * Service Fabric için bağlantı noktaları `19000-19003`.
-   * Service Fabric için bağlantı noktaları `19080-19081`.
-   * Web tarayıcısı istekleri için bağlantı noktası `8080`.
+   * Port `3389`, RDP ve ICMP (temel bağlantı) için.
+   * Portlar `19000-19003`, Servis Kumaşı için.
+   * Portlar `19080-19081`, Servis Kumaşı için.
+   * Bağlantı `8080`noktası , web tarayıcısı istekleri için.
 
    > [!TIP]
-   > Service Fabric’te sanal makinelerinizi birbirine bağlamak için, altyapınızı barındıran VM’lerin aynı kimlik bilgilerine sahip olması gerekir.  Tutarlı kimlik bilgileri elde etmenin iki yaygın yolu vardır: tümünü aynı etki alanına eklemek veya her sanal makinede aynı yönetici parolasını ayarlamak. Neyse ki, Azure aynı **sanal ağ** üzerindeki tüm sanal makinelerin kolayca bağlanmasına izin verir. bu nedenle, tüm örneklerimizi aynı ağ üzerinde sunduğunuzdan emin olun.
+   > Service Fabric’te sanal makinelerinizi birbirine bağlamak için, altyapınızı barındıran VM’lerin aynı kimlik bilgilerine sahip olması gerekir.  Tutarlı kimlik bilgileri elde etmenin iki yaygın yolu vardır: tümünü aynı etki alanına eklemek veya her sanal makinede aynı yönetici parolasını ayarlamak. Neyse ki, Azure aynı Sanal **ağdaki** tüm sanal makinelerin kolayca bağlanmasına izin verir, bu nedenle tüm örneklerimiz aynı ağda olacağından emin olacağız.
 
-9. Başka bir kural ekleyin. Kaynağı **hizmet etiketi** olarak ayarlayın ve kaynak hizmet etiketini **VirtualNetwork**olarak ayarlayın. Service Fabric, şu bağlantı noktalarının küme içindeki iletişim için açılmasını gerektiriyor: 135137-139, 445, 20.001-20031, 20606-20861.
+9. Başka bir kural ekleyin. Kaynağı **Hizmet Etiketi** olarak ayarlayın ve kaynak hizmet etiketini **VirtualNetwork**olarak ayarlayın. Service Fabric küme içinde iletişim için aşağıdaki bağlantı noktalarının açık olmasını gerektirir: 135,137-139,445,20001-20031,20606-20861.
 
-   ![VNET-gelen][vnet-inbound]
+   ![vnet gelen][vnet-inbound]
 
-10. Diğer seçeneklerin varsayılan durumunda kabul edilebilir. İsterseniz bunları gözden geçirin ve ardından sanal makinenizi başlatın.
+10. Seçeneklerin geri kalanı varsayılan durumda kabul edilebilir. İsterseniz gözden geçirin ve sanal makinenizi başlatın.
 
 ## <a name="creating-more-instances-for-your-service-fabric-cluster"></a>Service Fabric kümeniz için daha fazla örnek oluşturma
 
-Önceki bölümde özetlenen ayarların aynısını bulundurduğunuzdan emin olmak için, iki **sanal makine**başlatın. Özellikle de aynı Yönetici Kullanıcı adını ve parolasını koruyun. **Sanal ağ** ve **NIC ağ güvenlik grubu** yeniden oluşturulmamalıdır; açılır menüden zaten oluşturduğunuz olanları seçin. Her bir örneklerinizin dağıtılması birkaç dakika sürebilir.
+Önceki bölümde özetlenen aynı ayarları korumak için emin olmak, iki **Sanal Makineleri**başlatın. Özellikle, aynı yönetici kullanıcı adı ve parolasını koruyun. **Sanal Ağ** ve NIC ağ **güvenlik grubu** yeniden oluşturulmamalıdır; açılır menüden zaten oluşturduğunuz menüden oluşturduğunuz ları seçin. Her örneğinizin dağıtılması birkaç dakika sürebilir.
 
-## <a name="connect-to-your-instances"></a>Örneklerinizi bağlama
+## <a name="connect-to-your-instances"></a>Örneklerinize bağlanın
 
-1. **Sanal makine** bölümünde örneklerinizin birini seçin.
+1. **Sanal Makine** bölümünden örneklerinden birini seçin.
 
-2. **Genel bakış** sekmesinde *özel* IP adresini göz önünde atın. Ardından **Bağlan**' a tıklayın.
+2. Genel **Bakış** sekmesinde, *özel* IP adresine dikkat edin. Ardından **Bağlan'ı**tıklatın.
 
-3. **RDP** sekmesinde, genel IP adresi ve bağlantı noktası 3389 ' ü kullandığımızda, daha önce daha önce açtığım unutulmamalıdır. RDP dosyasını indirin.
+3. **RDP** sekmesinde, daha önce özel olarak açtığımız genel IP adresini ve bağlantı noktası 3389'u kullandığımızı unutmayın. RDP dosyasını indirin.
  
-4. RDP dosyasını açın ve istendiğinde VM kurulumunda verdiğiniz kullanıcı adını ve parolayı girin.
+4. RDP dosyasını açın ve istendiğinde VM kurulumunda sağladığınız kullanıcı adı ve parolayı girin.
 
-5. Bir örneğe bağlandıktan sonra, uzak kayıt defterinin çalıştığını doğrulamanız, SMB 'yi etkinleştirmeniz ve SMB ve uzak kayıt defteri için gereken bağlantı noktalarını açmanız gerekir.
+5. Bir örneğe bağlandıktan sonra, uzak kayıt defterinin çalıştığını doğrulamanız, SMB'yi etkinleştirmeniz ve Kobİ ve uzak kayıt defteri için gerekli bağlantı noktalarını açmanız gerekir.
 
-   SMB 'yi etkinleştirmek için bu PowerShell komutunuz:
+   SMB'yi etkinleştirmek için PowerShell komutu şudur:
 
    ```powershell
    netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
@@ -93,13 +93,13 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
    New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
-7. Diğer örnekleriniz için bu işlemi tekrarlayın, özel IP adreslerini yeniden de not edin.
+7. Bu işlemi diğer örnekleriniz için yine özel IP adreslerini belirterek yine tekrarlayın.
 
 ## <a name="verify-your-settings"></a>Ayarlarınızı doğrulayın
 
-1. Temel bağlantıyı doğrulamak için, RDP kullanarak VM 'lerden birine bağlanın.
+1. Temel bağlantıyı doğrulamak için RDP kullanarak VM'lerden birine bağlanın.
 
-2. **Komut istemi** 'NI bu VM içinden açın, ardından, bir VM 'den diğerine bağlanmak için ping komutunu kullanın, aşağıdaki IP adresini daha önce Not ETTIĞINIZ özel IP adreslerinden biriyle değiştirin (zaten bağlı olduğunuz VM 'nin IP 'si değil).
+2. **Komut İstem'ini** bu VM'nin içinden açın, ardından ping komutunu kullanarak bir VM'den diğerine bağlanarak aşağıdaki IP adresini daha önce belirttiğiniz özel IP adreslerinden biriyle değiştirin (zaten bağlı olduğunuz VM'nin IP'sini değil).
 
    ```
    ping 172.31.20.163
@@ -116,11 +116,11 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
    Çıktı olarak `Drive Z: is now connected to \\172.31.20.163\c$.` döndürülmelidir.
 
 
-   Artık örneklerinizin Service Fabric için uygun şekilde hazırlandığından emin olun.
+   Şimdi örnekleri düzgün Hizmet Kumaş için hazırlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin birinci bölümünde, üç Azure sanal makine örneğini nasıl başlatacağınız ve Service Fabric yüklemesi için nasıl yapılandırılacağını öğrendiniz:
+Serinin birinci bölümünde, üç Azure VM örneğini başlatmayı ve Service Fabric yüklemesi için yapılandırmayı öğrendiniz:
 
 > [!div class="checklist"]
 > * Azure VM örnekleri kümesi oluşturma

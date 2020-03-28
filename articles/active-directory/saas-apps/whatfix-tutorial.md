@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Whatfix | Microsoft Docs'
-description: Azure Active Directory ve Whatfix arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Whatfix ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Whatfix arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,130 +17,130 @@ ms.date: 05/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3bc061cca3a2c57d2ebccb0fc09f8168c2fad253
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67163958"
 ---
-# <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>Öğretici: Whatfix Azure Active Directory ile tümleştirme
+# <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>Öğretici: Whatfix'i Azure Active Directory ile tümleştir
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Whatfix tümleştirme öğreneceksiniz. Whatfix Azure AD ile tümleştirdiğinizde, şunları yapabilirsiniz:
+Bu eğitimde, Whatfix'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Whatfix'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Whatfix erişimi, Azure AD'de denetler.
-* Otomatik olarak Whatfix için kendi Azure AD hesapları ile oturum açmış olmasını sağlayın.
-* Bir merkezi konumda - Azure portalı hesaplarınızı yönetin.
+* Whatfix'e erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Whatfix'te otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir aboneliğiniz yoksa, bir aylık ücretsiz deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/).
-* Whatfix çoklu oturum açma (SSO) abonelik etkin.
+* Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü alabilirsiniz.
+* Whatfix tek oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD SSO bir test ortamında test edin. Whatfix destekler **SP ve IDP** tarafından başlatılan
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. Whatfix **SP ve IDP** sso başlatılan destekler
 
 ## <a name="adding-whatfix-from-the-gallery"></a>Galeriden Whatfix ekleme
 
-Azure AD'de Whatfix tümleştirmesini yapılandırmak için Whatfix Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Whatfix'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Yönetilen SaaS uygulamaları listenize Whatfix'i eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmeti.
-1. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları**.
-1. Yeni bir uygulama eklemek için seçin **yeni uygulama**.
-1. İçinde **Galeriden Ekle** bölümüne şunu yazın **Whatfix** arama kutusuna.
-1. Seçin **Whatfix** gelen sonuçlar panelinde ve uygulama ekleyin. Uygulama, kiracınıza eklendiği sırada birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Whatfix** yazın.
+1. Sonuç panelinden **Whatfix'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Yapılandırma ve Azure AD SSO kullanarak adlı bir test kullanıcı Whatfix ile test etme **Britta Simon**. Çalışmak SSO için Whatfix içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişki oluşturmanız gerekir.
+Azure AD SSO'nu **Britta Simon**adlı bir test kullanıcısı kullanarak Whatfix ile yapılandırın ve test edin. SSO'nun çalışması için, Whatfix'teki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Yapılandırma ve Azure AD SSO ile Whatfix sınamak için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO'yu Whatfix ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO'yu yapılandırma](#configure-azure-ad-sso)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Whatfix SSO'yu yapılandırarak](#configure-whatfix-sso)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Whatfix test kullanıcısı oluşturma](#create-whatfix-test-user)**  - kullanıcı Azure AD gösterimini bağlı Whatfix Britta simon'un bir karşılığı vardır.
-6. **[Test SSO](#test-sso)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Whatfix SSO'yu yapılandırın.](#configure-whatfix-sso)**
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Whatfix test kullanıcısını oluşturun](#create-whatfix-test-user)** - Kullanıcının Azure AD gösterimine bağlı Whatfix'teki Britta Simon'ın bir örneğine sahip olmak için.
+6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Whatfix** uygulama tümleştirme sayfası, bulma **Yönet** bölümünde ve seçin **çoklu oturum açma**.
-1. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** sayfasında **SAML**.
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında, düzenleme/kalem simgesine tıklayıp **temel SAML yapılandırma** ayarlarını düzenlemek için.
+1. Azure [portalında](https://portal.azure.com/), **Whatfix** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
+1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
+1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. Üzerinde **temel SAML yapılandırma** uygulamada yapılandırmak isterseniz, bölümü **IDP** modunda başlatılan şu alan için değerleri girin:
+1. Temel **SAML Yapılandırma** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanın değerlerini girin:
 
-    1. Tıklayın **ek URL'lerini ayarlayın**.
-    1. İçinde **geçiş durumu** metin kutusuna, belirttiğiniz müşteri girin geçiş durumu URL'si.
+    1. **Ek URL'ler ayarla'yı**tıklatın.
+    1. **Röle Durumu** metin kutusuna, müşteri belirtilen Röle durum URL'sini girin.
     
     > [!NOTE]
-    > İlgili kişi [Whatfix istemci Destek ekibine](https://support.whatfix.com) geçiş durumu URL değeri alınamıyor.
+    > Relay state URL değerini almak için [Whatfix İstemci destek ekibine](https://support.whatfix.com) başvurun.
 
-1. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin **SP** başlatılan modu:
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımları gerçekleştirin:
 
-    İçinde **oturum açma URL'si** metin kutusuna URL'yi yazın:  `https://whatfix.com`
+    Oturum **Açma URL** metin kutusuna URL'yi yazın:`https://whatfix.com`
 
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **SAML imzalama sertifikası** bölümünde, kopyalamak için Kopyala düğmesine **uygulama Federasyon meta verileri URL'sini**.
+1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini**kopyalamak için kopyala düğmesini tıklatın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-whatfix-sso"></a>Whatfix SSO yapılandırma
+### <a name="configure-whatfix-sso"></a>Whatfix SSO'ya Yapılandır
 
-Çoklu oturum açmayı yapılandırma **Whatfix** tarafını göndermek için ihtiyacınız **uygulama Federasyon meta verileri URL'sini** için [Whatfix Destek ekibine](https://support.whatfix.com). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Whatfix** tarafında tek oturum açma yapılandırmak için, **App Federation Metadata Url'sini** [Whatfix destek ekibine](https://support.whatfix.com)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, bir test kullanıcısı Britta Simon adlı Azure portalında oluşturacaksınız.
+Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure Portalı'ndaki sol bölmeden seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. İçinde **kullanıcı** özellikleri, aşağıdaki adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. İçinde **kullanıcı adı** alanına username@companydomain.extension. Örneğin, `BrittaSimon@contoso.com`.
-   1. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `BrittaSimon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Whatfix erişim vererek Britta Simon tıklatmalarını sağlarsınız.
+Bu bölümde, Britta Simon'ın Whatfix'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlayacaksınız.
 
-1. Azure portalında **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
-1. Uygulamalar listesinde **Whatfix**.
-1. Uygulamanın genel bakış sayfasında bulma **Yönet** seçin ve bölüm **kullanıcılar ve gruplar**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Whatfix'i**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Seçin **Kullanıcı Ekle**, ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-    ![Kullanıcı ekleme bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** kullanıcılar listesinden ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. SAML onaylama işlemi herhangi bir rolü değer de beklediğiniz varsa **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin ve ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. İçinde **atama Ekle** iletişim kutusunda, tıklayın **atama** düğmesi.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-### <a name="create-whatfix-test-user"></a>Whatfix test kullanıcısı oluşturma
+### <a name="create-whatfix-test-user"></a>Whatfix testi kullanıcısı oluşturma
 
-Bu bölümde, Britta Simon Whatfix içinde adlı bir kullanıcı oluşturun. Çalışmak [Whatfix Destek ekibine](https://support.whatfix.com) Whatfix platform kullanıcıları eklemek için. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, Whatfix'te Britta Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları Whatfix platformuna eklemek için [Whatfix destek ekibiyle](https://support.whatfix.com) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
 ### <a name="test-sso"></a>Test SSO
 
-Erişim Paneli'nde Whatfix kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama Whatfix için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Whatfix döşemesini seçtiğinizde, SSO'yu kurduğunuz Whatfix'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

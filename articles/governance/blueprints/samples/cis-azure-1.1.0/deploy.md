@@ -1,113 +1,113 @@
 ---
-title: CIS Microsoft Azure temel kıyaslanmaları kıyaslama şeması örneği
-description: CI 'ler, şema yapıt parametresi ayrıntıları dahil olmak üzere kıyaslama şeması örneği olan CIS Microsoft Azure için adımları dağıtın.
+title: BDT Microsoft Azure Temelleri Kıyaslama planı örneğini dağıtma
+description: Plan yapı parametresi ayrıntılarını içeren BDT Microsoft Azure Temelleri Kıyaslama planı örneği için adımları dağıtın.
 ms.date: 10/14/2019
 ms.topic: sample
 ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74544517"
 ---
-# <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneğini dağıtma
+# <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>BDT Microsoft Azure Temelleri Kıyaslama planı örneğini dağıtma
 
-Azure şemaları CIS 'yi Microsoft Azure temelleri şema Sample 'ı dağıtmak için aşağıdaki adımlar gerçekleştirilmelidir:
+Azure Planları BDT Microsoft Azure Temelleri Kıyaslama planı örneğini dağıtmak için aşağıdaki adımların atılması gerekir:
 
 > [!div class="checklist"]
-> - Örnekten yeni bir şema oluştur
-> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
-> - Şema kopyanızı mevcut bir aboneliğe atama
+> - Örnekten yeni bir plan oluşturma
+> - Örnek kopyanızı **Yayımlanmış** olarak işaretleme
+> - Planın kopyasını varolan bir aboneye atama
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free) bir hesap oluşturun.
 
-## <a name="create-blueprint-from-sample"></a>Örnekten şema oluştur
+## <a name="create-blueprint-from-sample"></a>Örnekten plan oluşturma
 
-İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
+İlk olarak, bir başlangıç olarak örnek kullanarak ortamınızda yeni bir plan oluşturarak plan örneği uygulayın.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
 
-1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
+1. Soldaki **Başlat'tan plan** _Oluştur'un_altındaki **Oluştur** düğmesini seçin.
 
-1. _Diğer örnekler_ altında **kıyaslama v 1.1.0** şema örneğini Microsoft Azure CIS 'leri bulun ve **Bu örneği kullan**' ı seçin.
+1. _Diğer Örnekler_ altında **BDT Microsoft Azure Vakıflar Benchmark v1.1.0** plan örneğini bulun ve **bu örneği kullanın'ı**seçin.
 
-1. Şema örneği _hakkında temel bilgileri_ girin:
+1. Plan örneğinin _Temellerini_ girin:
 
-   - Şema **adı**: CIS Microsoft Azure temelleri şeması örneği için bir ad sağlayın.
-   - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
+   - **Plan adı**: BDT Microsoft Azure Temelleri Kıyaslama planı örneğinin kopyası için bir ad sağlayın.
+   - **Tanım yeri**: Elipsleri kullanın ve numunenin kopyasını kaydetmek için yönetim grubunu seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
+1. Sayfanın üst kısmındaki _Eserler_ sekmesini veya **Sonraki: Sayfanın** altındaki Eserler sekmesini seçin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
+1. Plan örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunun daha sonra tanımlayabildiğimiz parametreleri var. Plan örneğini gözden geçirmeyi bitirdiğinizde **Taslağı Kaydet'i** seçin.
 
-## <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
+## <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımla
 
-Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, CIS Microsoft Azure temel alınan kıyaslama önerilerini kullanarak bu değişikliği, CIS ile hizalamadan uzağa taşıyabilir.
+Plan örneğinin kopyası artık ortamınızda oluşturuldu. **Taslak** modunda oluşturulur ve atanıp dağıtılmadan önce **yayımlanmalıdır.** Plan örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik onu BDT Microsoft Azure Temelleri Kıyaslama önerileriyle hizalamadan uzaklaştırabilir.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
+1. Soldaki **Blueprint tanımları** sayfasını seçin. Plan örneğinin kopyasını bulmak ve sonra seçmek için filtreleri kullanın.
 
-1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağ taraftaki yeni sayfada, şema örneğinin kopyası için bir **Sürüm** belirtin. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "CIS 'den yayımlanan Ilk sürüm Microsoft Azure temel kıyaslama kıyaslaması şeması örneği" gibi **değişiklik notları** sağlayın. " Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
+1. Sayfanın üst kısmında **ki planı Yayımla'yı** seçin. Sağdaki yeni sayfada, plan örneğinin kopyası için bir **Sürüm** sağlayın. Bu özellik, daha sonra bir değişiklik yaparsanız için yararlıdır. "BDT Microsoft Azure Temelleri Kıyaslama planı örneğinden yayınlanan ilk sürüm" gibi **Değişiklik notları** sağlayın. Ardından sayfanın altındaki **Yayımla'yı** seçin.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Plan örneğinin kopyası başarıyla **Yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneye atanabilir. Bu adım, plan örneğinin her kopyasını benzersiz hale getirmek için parametrelerin sağlandığı adımdır.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
+1. Soldaki **Blueprint tanımları** sayfasını seçin. Plan örneğinin kopyasını bulmak ve sonra seçmek için filtreleri kullanın.
 
-1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
+1. Plan tanımı sayfasının üst **kısmındaki plan atay'ı** seçin.
 
-1. Şema atamasının parametre değerlerini sağlayın:
+1. Plan ataması için parametre değerlerini sağlayın:
 
    - Temel Bilgiler
 
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
-     - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
-       Gerektiğinde değiştirin veya olduğu gibi bırakın.
-     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
+     - **Abonelikler**: Plan örneğinin kopyasını kaydettiğiniz yönetim grubundaki aboneliklerden birini veya birkaçını seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Atama adı**: Adı, planın adına göre sizin için önceden doldurulur.
+       Gerektiği gibi değiştirin veya olduğu gibi ayrılın.
+     - **Konum**: Oluşturulan yönetilen kimlik için bir bölge seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Blueprint tanımı sürümü**: Plan örneğinin kopyanızın **Yayınlanmış** sürümünü seçin.
 
-   - Kilit ataması
+   - Kilit Ataması
 
-     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
+     Ortamınız için plan kilidi ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
    - Yönetilen Kimlik
 
-     Varsayılan sistem tarafından _atanmış_ yönetilen kimlik seçeneğini bırakın.
+     Varsayılan sistemi yönetilen kimlik _seçeneğiatanmış_ bırakın.
 
-   - Yapıt parametreleri
+   - Yapı parametreleri
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
+     Bu bölümde tanımlanan parametreler, tanımlandığı yapı için geçerlidir. Bu parametreler, planın atanması sırasında tanımlandıkları için [dinamik parametrelerdir.](../../concepts/parameters.md#dynamic-parameters) Tam liste veya yapı parametreleri ve açıklamaları için [Yapı parametreleri tablosuna](#artifact-parameters-table)bakın.
 
-1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım kabaca bir saat sürer. Dağıtımın durumunu denetlemek için, BLUEPRINT atamasını açın.
+1. Tüm parametreler girildikten sonra, sayfanın alt kısmında **Ata'yı** seçin. Plan ataması oluşturulur ve artefakt dağıtımı başlar. Dağıtım yaklaşık bir saat sürer. Dağıtım durumunu denetlemek için plan atamasını açın.
 
 > [!WARNING]
-> Azure şemaları hizmeti ve yerleşik şema örnekleri **ücretsiz olarak ücretsizdir**. Azure kaynakları [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan çalışan kaynakların maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
+> Azure Planları hizmeti ve yerleşik plan örnekleri **ücretsizdir.** Azure kaynakları [ürüne göre fiyatlandırılır.](https://azure.microsoft.com/pricing/) Bu plan örneği tarafından dağıtılan kaynakların çalışma maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
-## <a name="artifact-parameters-table"></a>Yapıt parametreleri tablosu
+## <a name="artifact-parameters-table"></a>Yapı parametreleri tablosu
 
-Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
+Aşağıdaki tablo, plan yapı parametrelerinin bir listesini sağlar:
 
-|Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
+|Artefakt adı|Artefakt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Preview\]: bkz. Microsoft Azure CIS, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmayı destekler|İlke ataması|Ağ Izleyicisi 'nin etkinleştirilmesi gereken bölgelerin listesi|Bir bölge için noktalı virgülle ayrılmış bir liste. Bölgelerin tam bir listesini görmek için Get-AzLocation kullanın. Örn.: eastus; eastus2|
-|\[Preview\]: bkz. Microsoft Azure CIS, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmayı destekler|İlke ataması|Kullanım için onaylanan sanal makine uzantılarının listesi|Bir uzantı için noktalı virgülle ayrılmış bir liste. Sanal makine uzantılarının tam listesini görmek için Get-Azvmextensionımage komutunu kullanın. Örn.: AzureDiskEncryption; Iaasantimalware|
+|\[Önizleme\]: Denetim BDT Microsoft Azure Temelleri Benchmark 1.1.0 önerileri ve belirli destekleyici VM Uzantıları dağıtmak|İlke ataması|Ağ İzleyicisinin etkinleştirilmesi gereken bölgelerin listesi|Yarı kolonayrılmış bölgelerin listesi. Bölgelerin tam listesini görmek için Get-AzLocation'ı kullanın. Örn: eastus; eastus2|
+|\[Önizleme\]: Denetim BDT Microsoft Azure Temelleri Benchmark 1.1.0 önerileri ve belirli destekleyici VM Uzantıları dağıtmak|İlke ataması|Kullanım için onaylanan sanal makine uzantıları listesi|Yarı sütunlu ayrılmış uzantılistesi. Sanal makine uzantılarının tam listesini görmek için Get-AzVMExtensionImage'ı kullanın. Ör. AzureDiskŞifreleme; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık CIS Microsoft Azure temel bilgileri kıyaslama şeması örneğini dağıtma adımlarını gözden geçirdiğinize göre, şema ve denetim eşlemesi hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
+BDT Microsoft Azure Temelleri Kıyaslama planı örneğini dağıtma adımlarını gözden geçirdiğiniz için, plan ve denetim eşleme hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Cıs Microsoft Azure temel kıyaslama kıyaslama şeması-genel bakış](./index.md)
-> [CIS Microsoft Azure temel kıyaslama kıyaslama şeması, baskı denetimi eşleme](./control-mapping.md)
+> [BDT Microsoft Azure Temelleri Kıyaslama planı -](./index.md)
+> [BDT Microsoft Azure Temelleri Kıyaslama planı - Denetim haritalama](./control-mapping.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Plan yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
-- [Mevcut atamaları güncelleştirmeyi](../../how-to/update-existing-assignments.md) öğrenin.
+- Varolan atamaları nasıl [güncelleştirini](../../how-to/update-existing-assignments.md)öğrenin.

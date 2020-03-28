@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: en güncel çalışma ile Azure Active Directory tümleştirme | Microsoft Docs'
-description: Azure Active Directory ve en güncel çalışma arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: FreshDesk ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve FreshDesk arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,274 +17,274 @@ ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227608"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Öğretici: en güncel çalışma ile Azure Active Directory tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Öğretici: FreshDesk ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile en güncel şekilde tümleştirmeyi öğreneceksiniz.
-En güncel çalışma masası 'nı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu eğitimde, FreshDesk'i Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+FreshDesk'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Azure AD 'de, en yenisi olan bir masa 'ya erişimi olan denetleyebilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak (çoklu oturum açma) oturum açmasını sağlayabilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* FreshDesk erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla FreshDesk'te (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini en güncel çalışma ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini FreshDesk ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Tek oturum açma etkin abonelik
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* FreshDesk tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* En güncel çalışma **SP** tarafından başlatılan SSO 'yu destekler
+* **FreshDesk, SP** tarafından başlatılan SSO'ya destek verdi
 
-## <a name="adding-freshdesk-from-the-gallery"></a>Galeriden en güncel çalışma ekleme
+## <a name="adding-freshdesk-from-the-gallery"></a>Galeriden FreshDesk ekleme
 
-En güncel çalışma alanının Azure AD ile tümleştirilmesini yapılandırmak için Galeriden, yönetilen SaaS uygulamaları listenize en güncel çalışma sayfasına eklemeniz gerekir.
+FreshDesk'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Yönetilen SaaS uygulamaları listenize FreshDesk eklemeniz gerekir.
 
-**Galeriden en güncel çalışma eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden FreshDesk eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, en sonra, uygulamayı eklemek için Ekle ' ye tıklayın, sonuç panelinden **yeniden Seç '** i **seçin ve ardından** **Ekle** düğmesine tıklayın.
+4. Arama kutusunda **FreshDesk**yazın, sonuç panelinden **FreshDesk'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuç listesinde en güncel çalışma](common/search-new-app.png)
+     ![Sonuçlar listesinde FreshDesk](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak en güncel şekilde yapılandırır ve test edersiniz.
-Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD tek oturum açma işlemini FreshDesk ile yapılandırıp test esinizsiniz.
+Tek oturum açmanın işe yaraması için, Bir Azure REKLAM kullanıcısı ile FreshDesk'teki ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
 
-Azure AD çoklu oturum açmayı yapılandırma ve test etmek için, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD oturumaçma işlemlerini FreshDesk ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, isteğe bağlı olarak **[Çoklu oturum açmayı yapılandırın](#configure-freshdesk-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcı için Azure AD gösterimine bağlı olan, en güncel bir masa 'daki Britta Simon 'a sahip olmak için, yalnızca bir **[kayıt testi kullanıcısı oluşturun](#create-freshdesk-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. FreshDesk Tek Oturum Açma'yı uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[yapılandırın.](#configure-freshdesk-single-sign-on)**
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[FreshDesk test kullanıcısını oluşturun](#create-freshdesk-test-user)** - FreshDesk'te Britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma 'yı en güncel şekilde yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD oturum açma işlemlerini FreshDesk ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **en sonra, bir uygulama tümleştirmesi** sayfasında, **Çoklu oturum açma**' yı seçin.
+1. Azure [portalında,](https://portal.azure.com/) **FreshDesk** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![En basit çalışma alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
+    ![FreshDesk Domain ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<tenant-name>.freshdesk.com` veya başka bir değer olan herhangi bir değer varsa.
+    a. URL **metin** kutusunda Oturum Aç'ta, aşağıdaki deseni kullanarak bir URL yazın: `https://<tenant-name>.freshdesk.com` veya Freshdesk'in önerdiği herhangi bir değer.
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<tenant-name>.freshdesk.com` veya başka bir değer olan herhangi bir diğer değer için önerilir.
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir `https://<tenant-name>.freshdesk.com` URL yazın: veya Freshdesk'in önerdiği herhangi bir değer.
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, en güncel olan [istemci desteği ekibine](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [FreshDesk Client destek ekibine](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. Bu uygulama, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde buna bir örnek gösterilmektedir. **Benzersiz kullanıcı tanımlayıcısının** varsayılan değeri **User. UserPrincipalName** ' dir, ancak bu, varsayılan olarak, kullanıcının e-posta adresiyle eşleştirilmesini bekler. Bu şekilde, listeden **User. Mail** özniteliğini kullanabilir veya kuruluşunuzun yapılandırmasına göre uygun öznitelik değerini kullanabilirsiniz. 
+5. FreshDesk uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü bunun için bir örnek gösterir. Benzersiz Kullanıcı **Tanımlayıcısı'nın** varsayılan değeri **user.userprincipalname'dir** ancak FreshDesk bunun kullanıcının e-posta adresiyle eşlenmesini bekler. Bunun için listeden **user.mail** özniteliğini kullanabilir veya kuruluş yapılandırmanıza göre uygun öznitelik değerini kullanabilirsiniz. 
 
     ![image](common/edit-attribute.png)
 
-6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin:
+6. **Kullanıcı Öznitelikleri** iletişim kutusundaki **Kullanıcı Talepleri** bölümünde, **Edit simgesini** kullanarak talepleri düzenleme veya yukarıdaki resimde gösterildiği gibi SAML belirteç özniteliğini yapılandırmak için **yeni talep ekle** kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin:
     
-    | Name | Kaynak özniteliği |
+    | Adı | Kaynak Özniteliği |
     | ---------------| --------------- |
-    | Benzersiz kullanıcı tanımlayıcısı | Kullanıcı. Mail |
+    | Benzersiz Kullanıcı Tanımlayıcısı | kullanıcı.posta |
 
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
+    a. **Kullanıcı taleplerini yönet** iletişim kutusunu açmak için yeni **talep ekle'yi** tıklatın.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
+    b. **Ad** metin kutusunda, bu satır için gösterilen öznitelik adını yazın.
 
-    c. **Ad alanını** boş bırakın.
+    c. Ad **alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Kaynak'ı Öznitelik**olarak seçin.
 
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
+    e. Kaynak **öznitelik** listesinden, bu satır için gösterilen öznitelik değerini yazın.
 
-    f. **Tamam 'a** tıklayın
+    f. **Tamam'ı** tıklatın
 
-    g. **Save (Kaydet)** düğmesine tıklayın.
+    g. **Kaydet**'e tıklayın.
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+7. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-8. **Komut istemi** 'ni açın ve aşağıdaki komutları çalıştırın:
+8. **Komut İstem'i** açın ve aşağıdaki komutları çalıştırın:
 
-    a. Komut istemine `certutil.exe -dump FreshDesk.cer` değeri girin.
+    a. Komut `certutil.exe -dump FreshDesk.cer` istemine değer girin.
 
     > [!NOTE]
-    > Burada, Azure portal indirdiğiniz sertifika **. cer** öğesini burada bulabilirsiniz.
+    > Burada **FreshDesk.cer** Azure portalından indirdiğiniz sertifikadır.
 
-    b. **CERT Hash (SHA256)** değerini kopyalayın ve Not defteri 'ne yapıştırın. 
+    b. **Cert Hash(sha256)** değerini kopyalayın ve Not Defterine yapıştırın. 
 
-9. Tek başına **Ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+9. **FreshDesk'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
-    b. Azure AD tanımlayıcısı
+    b. Azure Reklam Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-freshdesk-single-sign-on"></a>İsteğe bağlı olarak çoklu oturum açmayı Yapılandır
+### <a name="configure-freshdesk-single-sign-on"></a>FreshDesk Tek Oturum Açma'yı Yapılandır
 
-1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak iki adımda şirket sitenizde oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Freshdesk şirket sitenize yönetici olarak giriş yapın.
 
-2. **Ayarlar simgesini** seçin ve **güvenlik** bölümünde aşağıdaki adımları gerçekleştirin:
+2. Ayarlar **simgesini** seçin ve **Güvenlik** bölümünde aşağıdaki adımları gerçekleştirin:
 
     ![Çoklu Oturum Açma](./media/freshdesk-tutorial/IC776770.png "Çoklu Oturum Açma")
   
-    a. **Çoklu oturum açma (SSO)** için **Açık**' ı seçin.
+    a. **Tek İşaret Açma (SSO) için,** **Aç'ı**seçin.
 
-    b. **SAML SSO**'yu seçin.
+    b. **SAML SSO'yi**seçin.
 
-    c. **SAML oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    c. **SAML Giriş URL** metin kutusunda, Azure portalından kopyaladığınız **Giriş URL** değerini yapıştırın.
 
-    d. **Oturum kapatma URL 'si** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
+    d. Oturum **Açma URL** metin kutusuna, Azure portalından kopyaladığınız **Logout URL** değerini yapıştırın.
 
-    e. **Güvenlik sertifikası parmak izi** metin kutusunda, daha önce edindiğiniz **CERT Hash (SHA256)** değerini yapıştırın.
+    e. Güvenlik **Sertifikası Parmak İzi** metin kutusuna, daha önce elde ettiğiniz **Cert Hash(sha256)** değerini yapıştırın.
   
-    f. **Save (Kaydet)** düğmesine tıklayın.
+    f. **Kaydet**'e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
+    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak en güncel çalışma alanına erişim izni vererek Britta Simon 'u etkinleştirin.
+Bu bölümde, Britta Simon'ın FreshDesk'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' **ı seçin ve**ardından yeniden Seç ' i seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **FreshDesk'i**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, öğesini yazın ve ardından yeniden **Seç ' i seçin**.
+2. Uygulama listesinde **FreshDesk**yazın ve seçin.
 
-    ![Uygulamalar listesindeki en güncel çalışma bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki FreshDesk bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-freshdesk-test-user"></a>Yalnızca bir test kullanıcısı oluştur
+### <a name="create-freshdesk-test-user"></a>FreshDesk test kullanıcısı oluşturun
 
-Azure AD kullanıcılarının, en güncel şekilde oturum açmasını sağlamak için, bu kullanıcıların, tek yapmanız gerekir.  
-Bu durumda, sağlama işlemi el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının FreshDesk'e giriş yapabilmeleri için FreshDesk'e dahil edilmeleri gerekir.  
+FreshDesk durumunda, sağlama manuel bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Bu **kiracınızda** oturum açın.
+1. **Freshdesk** kiracınıza giriş yapın.
 
-2. Üstteki menüden **yönetici**' ye tıklayın.
+2. Üstteki menüde **Yönetici'yi**tıklatın.
 
-    ![Yöneticileri](./media/freshdesk-tutorial/IC776772.png "Yönetici")
+    ![Yönetici](./media/freshdesk-tutorial/IC776772.png "Yönetici")
 
-3. **Genel ayarlar** sekmesinde **aracılar**' a tıklayın.
+3. Genel **Ayarlar** sekmesinde, **Aracılar'ı**tıklatın.
   
-    ![Aracısını](./media/freshdesk-tutorial/IC776773.png "Aracılar")
+    ![Aracılar](./media/freshdesk-tutorial/IC776773.png "Aracılar")
 
-4. **Yeni Aracı**' e tıklayın.
+4. **Yeni Aracı'yı**tıklatın.
 
-    ![Yeni Aracı](./media/freshdesk-tutorial/IC776774.png "Yeni Aracı")
+    ![Yeni Ajan](./media/freshdesk-tutorial/IC776774.png "Yeni Ajan")
 
-5. Aracı bilgileri iletişim kutusunda, aşağıdaki adımları uygulayın:
+5. Aracı Bilgileri iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    ![Aracı bilgileri](./media/freshdesk-tutorial/IC776775.png "Aracı bilgileri")
+    ![Acente Bilgileri](./media/freshdesk-tutorial/IC776775.png "Acente Bilgileri")
 
-    a. **E-posta** metin kutusuna, sağlamak ISTEDIĞINIZ Azure AD HESABıNıN Azure ad e-posta adresini yazın.
+    a. **E-posta** metin kutusuna, sağlamak istediğiniz Azure REKLAM hesabının Azure AD e-posta adresini yazın.
 
-    b. **Tam ad** metin kutusuna sağlamak ISTEDIĞINIZ Azure AD hesabının adını yazın.
+    b. Tam **Ad** metin kutusuna, sağlamak istediğiniz Azure REKLAM hesabının adını yazın.
 
-    c. **Title** metin kutusuna sağlamak ISTEDIĞINIZ Azure AD hesabının başlığını yazın.
+    c. **Başlık** metin kutusuna, sağlamak istediğiniz Azure REKLAM hesabının başlığını yazın.
 
-    d. **Save (Kaydet)** düğmesine tıklayın.
+    d. **Kaydet**'e tıklayın.
 
     >[!NOTE]
-    >Azure AD hesap tutucusu, hesabı etkinleştirilmeden önce onaylanacak bir bağlantı içeren bir e-posta alır.
+    >Azure AD hesap sahibi, etkinleştirilmeden önce hesabı onaylamak için bir bağlantı içeren bir e-posta alır.
     >
     >[!NOTE]
-    >Farklı bir şekilde Azure AD Kullanıcı hesapları sağlamak için, en güncel kullanıcı hesabı oluşturma araçlarından veya en güncel API tarafından sunulan API 'Leri kullanabilirsiniz.
+    >Azure AD kullanıcı hesaplarını FreshDesk'e sağlamak için Freshdesk tarafından sağlanan diğer Freshdesk kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde, bir daha sonra da, SSO 'yu ayarladığınız otomatik olarak bir şekilde oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki FreshDesk döşemesini tıklattığınızda, SSO'yu kurduğunuz FreshDesk'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

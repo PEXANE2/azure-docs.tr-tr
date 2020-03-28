@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure 'da bir Linux sanal makinesinde ELMP dağıtma
+title: Öğretici - Azure'da bir Linux sanal makinesinde LEMP'yi dağıtın
 description: Bu öğreticide, Azure’daki bir Linux sanal makinesinde LEMP yığını yüklemeyi öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d603dbf2746608f499ba37b4f17b533b64bc941
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034447"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154364"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure’da bir Linux sanal makinesine bir LEMP web sunucusu yükleme
 
-Bu makalede, Azure’daki bir Ubuntu sanal makinesine NGINX web sunucusunun, MySQL ve PHP’nin (LEMP yığını) nasıl dağıtılacağı gösterilmektedir. LEMP yığını, Azure’a da yükleyebileceğiniz popüler [LAMP yığınının](tutorial-lamp-stack.md) bir alternatifidir. LEMP sunucusunu çalışır halde görmek için, isteğe bağlı olarak bir WordPress sitesi yükleyip yapılandırabilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu makalede, Azure’daki bir Ubuntu sanal makinesine NGINX web sunucusunun, MySQL ve PHP’nin (LEMP yığını) nasıl dağıtılacağı gösterilmektedir. LEMP yığını, Azure’a da yükleyebileceğiniz popüler [LAMP yığınının](tutorial-lamp-stack.md) bir alternatifidir. LEMP sunucusunu çalışır halde görmek için, isteğe bağlı olarak bir WordPress sitesi yükleyip yapılandırabilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Ubuntu sanal makinesi oluşturma (LEMP yığınındaki 'L')
@@ -35,9 +35,9 @@ Bu makalede, Azure’daki bir Ubuntu sanal makinesine NGINX web sunucusunun, MyS
 
 Bu kurulum, hızlı testler veya kavram kanıtı içindir.
 
-Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
+Bu öğretici, sürekli olarak en son sürüme güncelleştirilen [Azure Bulut Kabuğu'ndaki](https://docs.microsoft.com/azure/cloud-shell/overview)CLI'yi kullanır. Bulut Kabuğu'nu açmak için, herhangi bir kod bloğunun üstünden **deneyin'i** seçin.
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 
@@ -54,7 +54,7 @@ Paketleri ve diğer bağımlılıkları yüklemeniz istenir. Bu işlem, MySQL il
 ## <a name="verify-installation-and-configuration"></a>Yükleme ve yapılandırmayı doğrulama
 
 
-### <a name="verify-nginx"></a>NGıNX 'i doğrula
+### <a name="verify-nginx"></a>NGINX'i doğrulayın
 
 Aşağıdaki komutla NGINX sürümünü denetleyin:
 ```bash
@@ -66,7 +66,7 @@ NGINX yüklüyken ve sanal makinenizde 80 numaralı bağlantı noktası açıkke
 ![NGINX varsayılan sayfası][3]
 
 
-### <a name="verify-and-secure-mysql"></a>MySQL 'i doğrulama ve güvenli hale getirme
+### <a name="verify-and-secure-mysql"></a>MySQL'i doğrulayın ve güvenli hale
 
 Aşağıdaki komutla MySQL sürümünü denetleyin (ana `V` parametresini not edin):
 
@@ -74,13 +74,13 @@ Aşağıdaki komutla MySQL sürümünü denetleyin (ana `V` parametresini not ed
 mysql -V
 ```
 
-Kök parola ayarlama da dahil olmak üzere MySQL yüklemesinin güvenliğinin sağlanmasına yardımcı olmak için `mysql_secure_installation` betiğini çalıştırın. 
+Kök parola ayarlama da dahil olmak üzere MySQL'in `mysql_secure_installation` yüklenmesini güvence altına almaya yardımcı olmak için komut dosyasını çalıştırın. 
 
 ```bash
 sudo mysql_secure_installation
 ```
 
-İsteğe bağlı olarak parolayı Doğrula eklentisini ayarlayabilirsiniz (önerilir). Ardından, MySQL kök kullanıcısı için bir parola ayarlayın ve ortamınız için kalan güvenlik ayarlarını yapılandırın. Tüm sorulara "Y" (Evet) yanıtını etmenizi öneririz.
+İsteğe bağlı olarak Parola Eklentisini Doğrula (önerilir) ayarlayabilirsiniz. Ardından, MySQL kök kullanıcısı için bir parola ayarlayın ve ortamınız için kalan güvenlik ayarlarını yapılandırın. Tüm sorulara "Y" (evet) yanıtı vermenizi öneririz.
 
 MySQL özelliklerini (MySQL veritabanı oluşturma, kullanıcı ekleme veya yapılandırma ayarlarını değiştirme) denemek istiyorsanız MySQL’de oturum açın. Bu öğreticiyi tamamlamak için bu adım gerekli değildir. 
 
@@ -91,7 +91,7 @@ sudo mysql -u root -p
 
 İşiniz bittiğinde, `\q` yazarak mysql isteminden çıkın.
 
-### <a name="verify-php"></a>PHP 'yi doğrula
+### <a name="verify-php"></a>PHP'yi doğrula
 
 Aşağıdaki komutla PHP sürümünü denetleyin:
 
@@ -107,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-Düzenleyicide, `/etc/nginx/sites-available/default` içeriklerini aşağıdakilerle değiştirin. Ayarların açıklaması için yorumlara bakın. SANAL makinenizin genel IP adresini, *Yourpublicıpaddress*için değiştirin, `fastcgi_pass`PHP sürümünü onaylayın ve kalan ayarları bırakın. Ardından dosyayı kaydedin.
+Düzenleyicide, `/etc/nginx/sites-available/default` içeriklerini aşağıdakilerle değiştirin. Ayarların açıklaması için yorumlara bakın. *PublicIPAddress'inizin*yerine VM'nizin genel IP adresini `fastcgi_pass`değiştirin, PHP sürümünü onaylayın ve kalan ayarları bırakın. Ardından dosyayı kaydedin.
 
 ```
 server {
@@ -170,10 +170,10 @@ Bu öğreticide, Azure’da bir LEMP sunucusu dağıttınız. Şunları öğrend
 > * Yükleme ve yapılandırmayı doğrulama
 > * LEMP yığınına WordPress yükleme
 
-SSL sertifikalarını kullanarak güvenli web sunucularının güvenliğini nasıl sağlayabileceğinizi öğrenmek için sonraki öğreticiye ilerleyin.
+TLS/SSL sertifikaları ile web sunucularının nasıl güvenli hale alınacağı nızı öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [SSL ile web sunucusunun güvenliğini sağlama](tutorial-secure-web-server.md)
+> [TLS ile güvenli web sunucusu](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: apimpm
 ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108399"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Mantıksal Uygulamayı API olarak içeri aktarma
 
-Bu makalede, bir mantıksal uygulamanın API olarak nasıl içeri aktarılacağı ve içeri aktarılan API 'nin nasıl test yapılacağı gösterilir.
+Bu makalede, bir Mantık Uygulaması nın API olarak nasıl içe aktarılabildiğini ve içe aktarılan API'yi nasıl sınandırılabildiğinizi gösterir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -31,33 +31,33 @@ Bu makalede şunları öğreneceksiniz:
 > -   Azure portalında API’yi test etme
 > -   Geliştirici portalında API’yi test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
--   Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
--   Aboneliğinizde bir HTTP uç noktası sunan bir mantıksal uygulama olduğundan emin olun. Daha fazla bilgi için, [http uç noktaları ile iş akışlarını tetikleme](../logic-apps/logic-apps-http-endpoint.md)
+-   Aşağıdaki hızlı başlatmayı tamamlayın: [Azure API Yönetimi örneği oluşturun](get-started-create-service-instance.md)
+-   Aboneliğinizde bir HTTP bitiş noktasını ortaya çıkaran bir Mantık Uygulaması olduğundan emin olun. Daha fazla bilgi [için, HTTP uç noktalarıyla iş akışlarını tetikle](../logic-apps/logic-apps-http-endpoint.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Arka uç API’sini içeri aktarma ve yayımlama
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Arka uç API'sini içeri aktarma ve yayımlama
 
 1. **API YÖNETİMİ** bölümünden **API’ler** öğesini seçin.
 2. **Yeni API ekleyin** listesinden **Mantıksal Uygulama**’yı seçin.
 
     ![Mantıksal uygulama](./media/import-logic-app-as-api/logic-app-api.png)
 
-3. Aboneliğinizde HTTP tetikleyicisiyle Logic Apps listesini görmek için, **Araştır** ' a basın. (HTTP tetikleyicisi olmayan Logic Apps listede görünmeyecektir.)
-4. Uygulamayı seçin. API Management seçilen uygulamayla ilişkili Swagger 'yi bulur, getirir ve içeri aktarır.
-5. API URL'si soneki ekleyin. Sonek, bu belirli API’yi bu API Management örneğinde tanımlayan bir addır. Bu API Management örneğinde benzersiz olmalıdır.
-6. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "_Sınırsız_" ürünü kullanılır. API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
+3. Aboneliğinizde HTTP tetikleyicisi olan Mantık Uygulamaları listesini görmek için **Gözat'a** basın. (HTTP tetikleyicisi olmayan Mantık Uygulamaları'nın listede görünmeyeceğini unutmayın.)
+4. Uygulamayı seçin. API Yönetimi, seçili uygulamayla ilişkili gösteriyi bulur, onu getirir ve içeri iter.
+5. API URL'si soneki ekleyin. Sonek, bu belirli API’yi bu API Management örneğinde tanımlayan bir addır. Bu API Yönetimi örneğinde benzersiz olmalıdır.
+6. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda "_Sınırsız_" ürün kullanılır. API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
 
-    Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. API Management örneğini oluşturduysanız, zaten bir yöneticiyseniz, varsayılan olarak her ürüne abone olursunuz.
+    Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. API Yönetimi örneğini oluşturduysanız, zaten bir yöneticisiniz, bu nedenle varsayılan olarak her ürüne abone siniz.
 
     Varsayılan olarak, her bir API Management örneği iki örnek ürün ile birlikte gelir:
 
     - **Başlangıç**
     - **Sınırsız**
 
-7. **Oluştur**'u seçin.
+7. **Oluştur'u**seçin.
 
 ## <a name="test-the-api-in-the-azure-portal"></a>Azure portalında API’yi test etme
 
@@ -84,4 +84,4 @@ Bu makalede şunları öğreneceksiniz:
 
 > [!div class="nextstepaction"]
 >
-> [Yayınlanmış bir API 'yi dönüştürme ve koruma](transform-api.md)
+> [Yayımlanmış bir api'yi dönüştürün ve koruyun](transform-api.md)

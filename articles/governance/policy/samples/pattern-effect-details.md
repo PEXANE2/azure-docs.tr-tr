@@ -1,34 +1,34 @@
 ---
-title: 'Model: bir ilke tanımının etkileri'
-description: Bu Azure Ilke deseninin farklı etkileri bir ilke tanımının nasıl kullanılacağına ilişkin bir örnek sağlar.
+title: 'Desen: İlke tanımının etkileri'
+description: Bu Azure İlkesi deseni, ilke tanımının farklı efektlerinin nasıl kullanılacağına örnek sağlar.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: b86a24bc0af6c9bdd7b29bb0a931d6c78865218b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 1a9aec50bd328b76271d54f7830c75e0848d3cde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77173006"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372630"
 ---
-# <a name="azure-policy-pattern-effects"></a>Azure Ilke stili: efektler
+# <a name="azure-policy-pattern-effects"></a>Azure İlkesi deseni: efektler
 
-Azure Ilkesinde, hizmetin uyumlu olmayan kaynaklar için nasıl yeniden davranması gerektiğini belirten bir dizi [efekt](../concepts/effects.md) vardır. Bazı etkiler basittir ve diğer bazı özellikler gerektirdiğinden ilke tanımında ek özellik gerektirmez.
+Azure İlkesi, hizmetin uyumlu olmayan kaynaklara nasıl tepki vereceğini belirleyen bir dizi [efekte](../concepts/effects.md) sahiptir. Bazı efektler basittir ve diğerleri birkaç özellik gerektirirken ilke tanımında ek özellikler gerektirmez.
 
-## <a name="sample-1-simple-effect"></a>Örnek 1: basit efekt
+## <a name="sample-1-simple-effect"></a>Örnek 1: Basit etki
 
-Bu ilke tanımı, değerlendirilen kaynakta, **TagName** parametresinde tanımlanan etiketin mevcut olup olmadığını denetler. Etiket henüz yoksa, etiket etiketi **etiketli değeri olan**etiketi eklemek için [değiştirme](../concepts/effects.md#modify) efekti tetiklenir.
+Bu ilke tanımı, parametre etiketinde tanımlanan **etiketin** değerlendirilen kaynakta var olup olmadığını denetler. Etiket henüz yoksa, [değiştirme](../concepts/effects.md#modify) efekti, etiketi parametre **tagValue'deki**değere eklemek için tetiklenir.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json":::
 
 ### <a name="sample-1-explanation"></a>Örnek 1: Açıklama
 
-:::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="30-34":::
+:::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-Bir **değiştirme** etkisi, **roledefinitionıds** ve **işlemlerini**tanımlayan **policyrule. then. Details** bloğunu gerektirir. Bu parametreler, Azure Ilkesine etiketi eklemek ve kaynağı **düzeltmek** ve bu işlemi gerçekleştirmek için hangi rollerin gerekli olduğunu bildirir. Bu örnekte, **işlem** _ekler_ ve bu parametreleri etiketi ve değerini ayarlamak için kullanılır.
+**Bir değişiklik efekti,** **roleDefinitionIds** ve **işlemleri**tanımlayan **ilke Kuralı.then.details** bloğu gerektirir. Bu parametreler, etiketi eklemek ve kaynağı düzeltmek ve gerçekleştirmek için işlemi **değiştirmek** için hangi rollerin gerekli olduğunu Azure Politikası'na bildirir. Bu örnekte, **işlem** _ekle_ ve parametreler etiketi ve değerini ayarlamak için kullanılır.
 
-## <a name="sample-2-complex-effect"></a>Örnek 2: karmaşık efekt
+## <a name="sample-2-complex-effect"></a>Örnek 2: Karmaşık etki
 
-Bu ilke tanımı, **Yayımcı** ve **tür**parametrelerinde tanımlanan bir uzantı yoksa her sanal makineyi denetler. Tanımlı parametrelerle eşleşen bir örnek olup olmadığını görmek üzere sanal makineyle ilgili bir kaynağı denetlemek için [Auditınotexists](../concepts/effects.md#auditifnotexists) kullanır. Bu örnek, **Uzantılar** türünü denetler.
+Bu ilke tanımı, **parametreleryayım** ve **türde**tanımlanan bir uzantı olmadığında her sanal makineyi denetler. Tanımlanan parametrelerle eşleşen bir örneğin var olup olmadığını görmek için sanal makineyle ilgili bir kaynağı [denetlemekIfNotExists](../concepts/effects.md#auditifnotexists) kullanır. Bu örnek, **uzantıları** türünü denetler.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json":::
 
@@ -36,7 +36,7 @@ Bu ilke tanımı, **Yayımcı** ve **tür**parametrelerinde tanımlanan bir uzan
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json" range="45-58":::
 
-Bir **Auditınotexists** efekti, bir **türü** ve aranacak **existenceCondition** tanımlamak için **policyrule. then. Details** bloğunu gerektirir. **ExistenceCondition** , eşleşen bir ilişkili kaynağın mevcut olup olmadığını anlamak için [mantıksal işleçler](../concepts/definition-structure.md#logical-operators)gibi ilke dili öğelerini kullanır. Bu örnekte, her bir [diğer ada](../concepts/definition-structure.md#aliases) karşı denetlenen değerler parametrelerde tanımlanmıştır.
+**AuditIfNotExists** etkisi, hem **bir türü** hem de **varoluş Koşulunu** tanımlamak için **ilkkural.then.details** bloğunu gerektirir. **ExistenceCondition,** eşleşen bir ilgili kaynağın var olup olmadığını belirlemek için [mantıksal işleçler](../concepts/definition-structure.md#logical-operators)gibi ilke dili öğelerini kullanır. Bu örnekte, her diğer [ad](../concepts/definition-structure.md#aliases) aleyhine denetlenen değerler parametrelerde tanımlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

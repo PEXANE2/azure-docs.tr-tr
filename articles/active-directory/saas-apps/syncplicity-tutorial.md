@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: syncplicity ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve syncplicity arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Syncplicity ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Etkin Dizin ve Syncplicity arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,181 +16,181 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233278"
 ---
-# <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Öğretici: syncplicity ile tümleştirin Azure Active Directory
+# <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Öğretici: Syncplicity'yi Azure Etkin Dizini ile tümleştirin
 
-Bu öğreticide, syncplicity 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Syncplicity 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Syncplicity'yi Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Syncplicity'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de syncplicity 'e erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla syncplicity otomatik olarak oturum açmalarına olanak tanıyın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Syncplicity erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Eşitleme ile otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü edinebilirsiniz.
-* Syncplicity çoklu oturum açma (SSO) etkin abonelik.
+* Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü alabilirsiniz.
+* Syncplicity tek oturum açma (SSO) aboneliği ni etkinleştirildi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Syncplicity, **SP** tarafından başlatılan SSO 'yu destekler.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. Syncplisite **SP** başlatılan SSO destekler.
 
-## <a name="adding-syncplicity-from-the-gallery"></a>Galeriden syncplicity ekleme
+## <a name="adding-syncplicity-from-the-gallery"></a>Galeriden Eşitleme Ekleme
 
-Syncplicity tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden syncplicity yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Syncplicity'nin Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Syncplicity eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **syncplicity** yazın.
-1. Sonuçlar panelinden **syncplicity** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Eşitleme** yazın.
+1. Sonuç panelinden **Syncplicity'yi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO'su yapılandırma ve test
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu syncplicity ile yapılandırın ve test edin. SSO 'nun çalışması için, syncplicity içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Syncplicity ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure AD kullanıcısı ile Syncplicity'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu syncplicity ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Syncplicity ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[SYNCPLICITY SSO 'Yu yapılandırın](#configure-syncplicity-sso)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-5. Kullanıcının Azure AD gösterimine bağlı olan syncplicity 'de B. Simon 'ya karşılık gelen bir **[syncplicity test kullanıcısı oluşturun](#create-syncplicity-test-user)** .
-6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+2. **[Syncplicity SSO'yu yapılandırır](#configure-syncplicity-sso)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
+3. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Syncplicity test kullanıcıoluşturun](#create-syncplicity-test-user)** - Kullanıcının Azure AD gösterimine bağlı Syncplicity B.Simon bir meslektaşı olması için.
+6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **syncplicity** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında,](https://portal.azure.com/) **Syncplicity** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
+1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
+1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** sayfasında, aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırma** sayfasında, aşağıdaki alanların değerlerini girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<companyname>.syncplicity.com`
+    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.syncplicity.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<companyname>.syncplicity.com/sp`
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.syncplicity.com/sp`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [syncplicity istemci destek ekibine](https://www.syncplicity.com/contact-us) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Syncplicity İstemci destek ekibine](https://www.syncplicity.com/contact-us) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde Sertifika **'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Syncplicity ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Syncplicity'yi Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-   ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+   ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="configure-syncplicity-sso"></a>Syncplicity SSO 'yu yapılandırma
+### <a name="configure-syncplicity-sso"></a>Syncplicity SSO'ya yapılandır
 
 1. **Syncplicity** kiracınızda oturum açın.
 
-1. Üstteki menüde, **yönetici**' ye tıklayın, **Ayarlar**' ı seçin ve ardından **özel etki alanı ve çoklu oturum açma**' ya tıklayın.
+1. Üstteki **menüde, admin'e**tıklayın, **ayarları**seçin ve ardından Özel etki alanı ve tek **oturum açma'yı**tıklatın.
 
     ![Syncplicity](./media/syncplicity-tutorial/ic769545.png "Syncplicity")
 
-1. **Çoklu oturum açma (SSO)** iletişim sayfasında, aşağıdaki adımları uygulayın:
+1. Tek **Oturum Açma (SSO)** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![\(SSO\) çoklu oturum açma](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![Tek Oturum \(Açma SSO\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
-    a. **Özel etki alanı** metin kutusuna etki alanı adını yazın.
+    a. Özel **Etki Alanı** metin kutusuna etki alanınızın adını yazın.
   
-    b. **Çoklu oturum açma durumu**olarak **etkin** ' i seçin.
+    b. **Tek Oturum Açma Durumu**Olarak **Etkin'i** seçin.
 
-    c. **Varlık kimliği** metin kutusunda, Azure Portal **temel SAML yapılandırmasında** KULLANDıĞıNıZ **tanımlayıcı (varlık kimliği)** değerini yapıştırın.
+    c. Varlık **Kimliği** metin kutusunda, Azure portalındaki **Temel SAML Yapılandırmasında** kullandığınız **Tanımlayıcı (Entity ID)** değerini yapıştırın.
 
-    d. **Oturum açma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL** 'sini yapıştırın.
+    d. Oturum **Açma sayfası URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sini** yapıştırın.
 
-    e. **Oturum kapatma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL** 'sini yapıştırın.
+    e. Oturum **Açma sayfası URL** textbox'ına, Azure portalından kopyalamış olduğunuz **Giriş URL'sini** yapıştırın.
 
-    f. **Kimlik sağlayıcısı sertifikası**' nda **Dosya Seç**' e tıklayın ve ardından Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.
+    f. **Kimlik Sağlayıcı Sertifikası'nda,** **dosyayı seç'i**tıklatın ve ardından Azure portalından indirdiğiniz sertifikayı yükleyin.
 
-    g. **Değişiklikleri Kaydet**' e tıklayın.
+    g. **DEĞIŞIKLIKLERI KAYDET'i**tıklatın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, syncplicity 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Syncplicity'ye erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **syncplicity**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Eşitleme'yi**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-### <a name="create-syncplicity-test-user"></a>Syncplicity test kullanıcısı oluştur
+### <a name="create-syncplicity-test-user"></a>Syncplicity test kullanıcısı oluşturma
 
-Azure AD kullanıcılarının oturum açabilmeleri için syncplicity uygulamasına sağlanması gerekir. Bu bölümde, syncplicity içinde Azure AD Kullanıcı hesaplarının nasıl oluşturulacağı açıklanmaktadır.
+Azure AD kullanıcılarının oturum açabilmesi için Eşitleme uygulamasına dahil edilmeleri gerekir. Bu bölümde, Syncplicity'de Azure AD kullanıcı hesaplarının nasıl oluşturulutamamı açıklanmaktadır.
 
-**Syncplicity 'e bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
+**Bir kullanıcı hesabını Syncplicity'ye sağlamak için aşağıdaki adımları gerçekleştirin:**
 
 1. **Syncplicity** kiracınızda oturum açın (örneğin: `https://company.Syncplicity.com`).
 
-1. **Yönetici** ' ye tıklayın ve **Kullanıcı hesapları** ' nı seçtikten sonra **Kullanıcı Ekle**' ye tıklayın.
+1. **Admin'i** tıklatın ve **kullanıcı hesaplarını** seçin ve ardından **KULLANICI EKLE'yi**tıklatın.
 
-    ![Kullanıcıları yönetme](./media/syncplicity-tutorial/ic769764.png "Kullanıcıları yönetme")
+    ![Kullanıcıları Yönet](./media/syncplicity-tutorial/ic769764.png "Kullanıcıları Yönet")
 
-1. Sağlamak istediğiniz bir Azure AD hesabının **e-posta adreslerini** yazın, **rol**olarak **Kullanıcı** ' yı seçin ve ardından **İleri**' ye tıklayın.
+1. Sağlamak istediğiniz bir Azure REKLAM hesabının **E-posta adreslerini** yazın, **Kullanıcı'yı Rol**olarak seçin ve ardından **NEXT'i**tıklatın. **User**
 
-    ![Hesap bilgileri](./media/syncplicity-tutorial/ic769765.png "Hesap Bilgisi")
+    ![Hesap Bilgileri](./media/syncplicity-tutorial/ic769765.png "Hesap Bilgileri")
 
     > [!NOTE]
     > Azure AD hesap sahibi, hesabı onaylamak ve etkinleştirmek için bir bağlantı içeren bir e-posta alır.
 
-1. Şirketinizde yeni Kullanıcı üyesi olması gereken bir grup seçin ve ardından **İleri**' ye tıklayın.
+1. Şirketinizde yeni kullanıcınızın üyesi olması gereken bir grup seçin ve ardından **NEXT'i**tıklatın.
 
-    ![Grup üyeliği](./media/syncplicity-tutorial/ic769772.png "Grup üyeliği")
+    ![Grup Üyeliği](./media/syncplicity-tutorial/ic769772.png "Grup Üyeliği")
 
     > [!NOTE]
-    > Listede Grup yoksa **İleri**' ye tıklayın.
+    > Listede grup yoksa **NEXT'i**tıklatın.
 
-1. Kullanıcının bilgisayarında syncplicity 'in denetimi altına yerleştirmek istediğiniz klasörleri seçin ve ardından **İleri**' ye tıklayın.
+1. Kullanıcının bilgisayarında Syncplicity denetimi altında yerleştirmek istediğiniz klasörleri seçin ve sonra **NEXT'i**tıklatın.
 
-    ![Syncplicity klasörleri](./media/syncplicity-tutorial/ic769773.png "Syncplicity klasörleri")
+    ![Eşitleme Klasörleri](./media/syncplicity-tutorial/ic769773.png "Eşitleme Klasörleri")
 
 > [!NOTE]
-> Azure AD Kullanıcı hesaplarını sağlamak için syncplicity tarafından sunulan diğer tüm syncplicity Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
+> Azure AD kullanıcı hesaplarını sağlamak için Syncplicity tarafından sağlanan diğer Syncplicity kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
 
-### <a name="test-sso"></a>Test SSO 'SU
+### <a name="test-sso"></a>Test SSO
 
-Erişim panelinde syncplicity kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız syncplicity için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Eşitleme döşemesini seçtiğinizde, SSO'yu kurduğunuz Syncplicity'de otomatik olarak oturum açmış olmanız gerekir. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

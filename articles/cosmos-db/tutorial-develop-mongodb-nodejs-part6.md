@@ -1,5 +1,5 @@
 ---
-title: MongoDB için Azure Cosmos DB API 'SI ile bir angular uygulamasına CRUD işlevleri ekleyin
+title: MongoDB için Azure Cosmos DB'nin API'si ile Açısal bir uygulamaya CRUD işlevleri ekleme
 description: Azure Cosmos DB üzerinde Angular ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturma öğreticisi dizisinin 6. bölümü
 author: johnpapa
 ms.service: cosmos-db
@@ -11,15 +11,15 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441099"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-uygulamaya CRUD işlevleri ekleme
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>MongoDB için Azure Cosmos DB'nin API'si ile Açısal bir uygulama oluşturun - Uygulamaya CRUD işlevleri ekleme
 
-Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir. Öğreticinin 6. bölümünde [5. bölümdeki](tutorial-develop-mongodb-nodejs-part5.md) konular genişletilir ve aşağıdaki görevler yer alır:
+Bu çok parçalı öğretici nasıl Express ve Angular ile Node.js yazılmış yeni bir uygulama oluşturmak ve daha sonra [Cosmos hesabı Cosmos DB's API MongoDB için yapılandırılan](mongodb-introduction.md)bağlanmak için nasıl gösterir. Öğreticinin 6. bölümünde [5. bölümdeki](tutorial-develop-mongodb-nodejs-part5.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
 > [!div class="checklist"]
 > * Hero hizmeti için Post, Put ve Delete işlevleri oluşturma
@@ -86,7 +86,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
 5. Uygulamayı çalıştırarak her şeyin çalıştığından emin olun. Visual Studio Code’da tüm değişikliklerinizi kaydedin, sol taraftaki **Hata ayıkla** düğmesini ![Visual Studio Code’da hata ayıkla simgesi](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) seçin, ardından **Hata Ayıklamayı Başlat** düğmesini ![ Visual Studio Code’da Hata ayıklamayı başlat simgesi](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png) seçin.
 
-6. Şimdi İnternet tarayıcınıza dönün ve çoğu makinede F12 tuşuna basarak açılan Geliştirici Araçları Ağı sekmesini açın. Ağ üzerinden yapılan çağrıları izlemek için [http://localhost:3000](http://localhost:3000) adresine gidin.
+6. Şimdi İnternet tarayıcınıza dönün ve çoğu makinede F12 tuşuna basarak açılan Geliştirici Araçları Ağı sekmesini açın. Ağ [http://localhost:3000](http://localhost:3000) üzerinden yapılan aramaları izlemek için gidin.
 
     ![Chrome’da ağ etkinliğini gösteren ağ sekmesi](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 

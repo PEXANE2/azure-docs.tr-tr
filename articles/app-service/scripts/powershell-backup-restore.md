@@ -1,25 +1,25 @@
 ---
-title: 'PowerShell: bir uygulama yedeklemesini geri yükleme'
-description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulamanın bir yedekten nasıl geri yükleneceğini gösterir.
+title: 'PowerShell: Uygulama yedeklemesi geri yükleme'
+description: Uygulama Hizmeti'nin dağıtımını ve yönetimini otomatikleştirmek için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulamayı yedeklemeden nasıl geri yükleyini gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 026c275ce4bc85ff3f964bfbb175cc01ff611df0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a10a451bff73c081d9b0c95c494acb8b2051bd84
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685763"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057737"
 ---
-# <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web uygulamasını yedekten geri yükleme
+# <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Azure PowerShell'i kullanarak yedeklemeden web uygulamasını geri yükleme
 
-Bu örnek betik, daha önce tamamlanmış bir yedeği var olan bir Web uygulamasından alır ve içeriğini üzerine yazarak geri yükler. 
+Bu örnek komut dosyası, varolan bir web uygulamasından önceden tamamlanmış bir yedeklemeyi alır ve içeriğinin üzerine yazarak geri yüklenir. 
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview) bulunan yönergeleri kullanarak Azure PowerShell’i yükleyin ve ardından Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın. 
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell'i yükleyin ve ardından Azure ile bağlantı oluşturmak için çalıştırın. `Connect-AzAccount` 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -29,7 +29,7 @@ Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview) bulunan y
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme 
 
-Artık Web uygulamasına ihtiyacınız yoksa, kaynak grubunu, Web uygulamasını ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu kullanın.
+Artık web uygulamasına ihtiyacınız yoksa, kaynak grubunu, web uygulamasını ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu kullanın.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroupName -Force
@@ -42,7 +42,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Bir web uygulamasının yedekleme listesini alır. |
-| [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Bir Web uygulamasını daha önce tamamlanmış bir yedekten geri yükler. |
+| [Geri Yükleme-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Önceden tamamlanmış bir yedeklemeden bir web uygulamasını geri yükler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,25 +2,19 @@
 title: Azure CLI Betiği Örneği - Blob kapsayıcısı boyutunu hesaplama | Microsoft Docs
 description: Azure Blob depolama alanındaki bir kapsayıcının boyutunu, kapsayıcıdaki blob’ların boyutunu toplayarak hesaplayın.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83ec8c7b3bf5ba9d23d50d8fa1bce563dc56c135
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245080"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067119"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob depolama kapsayıcısının boyutunu hesaplama
 
@@ -37,7 +31,7 @@ Bu betik, Azure Blob depolama alanındaki bir kapsayıcının boyutunu, kapsayı
 
 [!code-azurecli[main](../../../cli_scripts/storage/calculate-container-size/calculate-container-size.sh?highlight=2-3 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>Dağıtımı temizleme 
+## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
 Kaynak grubunu, kapsayıcıyı ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
 

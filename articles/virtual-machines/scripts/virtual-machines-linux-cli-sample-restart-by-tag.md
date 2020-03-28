@@ -1,5 +1,5 @@
 ---
-title: Azure CLı betik örneği-VM 'Leri yeniden başlatma
+title: Azure CLI Script Örneği - VM'leri Yeniden Başlat
 description: Azure CLI Betik Örneği - VM’leri etikete ve kimliğe göre yeniden başlatma
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 47a6db8d554cd0e6b913e887a4dd3d7bdc438ed0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040244"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066451"
 ---
 # <a name="restart-vms"></a>VM’leri yeniden başlatma
 
@@ -33,13 +33,13 @@ Bu örnekte bazı VM’leri alma ve yeniden başlatmanın birkaç yolu gösteril
 
 Birinci yol, kaynak grubundaki tüm VM’leri yeniden başlatır.
 
-```bash
+```azurecli
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
 İkinci yol ise `az resource list` kullanarak etiketlenmiş VM’leri alır ve VM olan kaynaklarla filtreleyip bu VM’leri yeniden başlatır.
 
-```bash
+```azurecli
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
@@ -77,7 +77,7 @@ Bu betik, kaynak grubundaki tüm VM’leri ve sonra yalnızca etiketli VM'leri y
 
 Betik örneği çalıştırıldıktan sonra kaynak gruplarını, VM’leri ve ilişkili tüm kaynakları kaldırmak için aşağıdaki komut kullanılabilir.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete -n myResourceGroup --no-wait --yes
 ```
 

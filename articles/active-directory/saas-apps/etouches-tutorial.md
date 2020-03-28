@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: edokunlarla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve edokuna arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Aventri ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Aventri arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,178 +11,176 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/06/2019
+ms.date: 03/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0774873370d6006e0a1108c4b01c60274d69f0d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c088bd47b4f5a3a847fd98943614c2d167d18686
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561201"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454508"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-etouches"></a>Öğretici: edokunlarla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aventri"></a>Öğretici: Aventri ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Azure AD ile duyur tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Aventri'yi Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Aventri'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, edokuna erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Aventri erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Aventri'de otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Çoklu oturum açma (SSO) özellikli abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Aventri tek oturum açma (SSO) aboneliği sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* e, **SP** tarafından başlatılan SSO 'yu destekler
-
-
-
+* Aventri **SP** başlatılan SSO destekler
+* Aventri'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan Oturum Denetimi'ni uygulayabilirsiniz. Oturum Denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 
-## <a name="adding-etouches-from-the-gallery"></a>Galeriden eklerden ekleme
+## <a name="adding-aventri-from-the-gallery"></a>Galeriden Aventri ekleme
 
-E-nesnelerin Azure AD 'ye tümleştirilmesini yapılandırmak için galerideki yönetilen SaaS uygulamaları listenize göz duyun eklemeniz gerekir.
+Aventri'nin Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Yönetilen SaaS uygulamaları listenize Aventri'yi eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **eleye** yazın.
-1. Sonuçlar panelinden **edokunı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Aventri** yazın.
+1. Sonuç panelinden **Aventri'yi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-etouches"></a>Edokuna için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-aventri"></a>Aventri için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu edokunmalı yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Aventri ile yapılandırma ve test edin. SSO'nun çalışması için, Bir Azure AD kullanıcısı ile Aventri'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu e-postalarla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Aventri ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[edokunili SSO 'Yu yapılandırın](#configure-etouches-sso)** .
-    1. Kullanıcının Azure AD gösterimine bağlı olan ETIS 'de B. Simon 'a karşılık gelen bir e-ç **[test kullanıcısı oluşturun](#create-etouches-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Aventri SSO'yu yapılandırır](#configure-aventri-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[Aventri test kullanıcısı oluşturun](#create-aventri-test-user)** - Aventri'de B.Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **eleleme** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında](https://portal.azure.com/), **Aventri** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>`
+    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://na-admin.eventscloud.com/saml/accounts/acs/<ACCOUNTID>`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://www.eiseverywhere.com/<instance name>`
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://na-admin.eventscloud.com/saml/accounts/sso/<ACCOUNTID>`
 
     > [!NOTE] 
-    > Bu değerler gerçek değildir. Değeri, Öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin.
+    > Bu değerler gerçek değildir. Değeri, daha sonra öğreticide açıklanan URL ve Tanımlayıcı'daki gerçek İşaret ile güncellersiniz.
 
-1. edokunur uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+1. Aventri uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
     ![image](common/edit-attribute.png)
 
-1. Yukarıdakine ek olarak, edokunme uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdakilere ek olarak, Aventri uygulaması saml yanıtında aşağıda gösterilen birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Ad | Kaynak özniteliği|
+    | Adı | Kaynak Özniteliği|
     | ------------------- | -------------------- |
-    | E-posta | Kullanıcı. Mail | 
+    | Email | kullanıcı.posta | 
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML İmza Sertifikası** bölümünde **SAML ile tek oturum açma'da** **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **Duyur ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Aventri'yi Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, e-postayla erişim sağlayarak Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Aventri'ye erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **edokunı**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar **listesinde, Aventri'yi**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-etouches-sso"></a>Edokunili SSO 'yu yapılandırma
+## <a name="configure-aventri-sso"></a>Aventri SSO'ya yapılandır
 
-1. Uygulamanız için yapılandırılmış SSO 'yu almak için, elanlar uygulamasında aşağıdaki adımları gerçekleştirin: 
+1. SSO'nun uygulamanız için yapılandırılmasını sağlamak için Aventri uygulamasında aşağıdaki adımları gerçekleştirin: 
 
-    ![edokunur yapılandırması](./media/etouches-tutorial/tutorial_etouches_06.png) 
+    ![Aventri yapılandırması](./media/etouches-tutorial/aventri-tutorial-06.png) 
 
-    a. Yönetici haklarını kullanarak **edokuna** uygulamasında oturum açın.
+    a. Yönetici haklarını kullanarak **Aventri** uygulamasında oturum açın.
    
-    b. **SAML** yapılandırmasına gidin.
+    b. **SAML** Yapılandırmasına gidin.
 
-    c. **Genel ayarlar** bölümünde, indirilen sertifikanızı Not defteri 'ndeki Azure Portal açın, içeriği kopyalayın ve IDP meta verileri metin kutusuna yapıştırın. 
+    c. Genel **Ayarlar** bölümünde, azure portalından indirilen sertifikanızı not defterinde açın, içeriği kopyalayın ve ardından IDP meta veri metin kutusuna yapıştırın. 
 
-    d. **Kaydet & kal** düğmesine tıklayın.
+    d. **& Kal düğmesini kaydet** düğmesine tıklayın.
   
-    e. SAML meta verileri bölümünde **meta verileri güncelleştir** düğmesine tıklayın. 
+    e. SAML **Metadata** bölümündeki Meta verileri güncelleştir düğmesini tıklatın. 
 
-    f. Bu, sayfayı açar ve SSO gerçekleştirir. SSO çalışmaya başladıktan sonra Kullanıcı adını ayarlayabilirsiniz.
+    f. Bu sayfayı açar ve SSO gerçekleştirir. SSO çalışmaya başladığında kullanıcı adını ayarlayabilirsiniz.
 
-    g. Kullanıcı adı alanında, aşağıdaki görüntüde gösterildiği gibi **emapostaadı** ' nı seçin. 
+    g. Kullanıcı adı alanında, aşağıdaki resimde gösterildiği gibi **e-posta adresini** seçin. 
 
-    h. **SP VARLıK kimliği** değerini kopyalayın ve Azure Portal ' DEKI **temel SAML yapılandırması** bölümünde yer alan **tanımlayıcı** metin kutusuna yapıştırın.
+    h. **SP varlık kimliği** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırması** bölümünde bulunan **Tanımlayıcı** metin kutusuna yapıştırın.
 
-    i. **SSO URL/ACS** değerini kopyalayın ve Azure Portal ÜZERINDEKI **temel SAML yapılandırması** bölümünde bulunan **oturum açma URL 'si** metin kutusuna yapıştırın.
+    i. **SSO URL/ACS** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırma** bölümünde bulunan Oturum Açma **URL** metin kutusuna yapıştırın.
 
-### <a name="create-etouches-test-user"></a>Edokunili test kullanıcısı oluşturma
+### <a name="create-aventri-test-user"></a>Aventri test kullanıcısı oluşturma
 
-Bu bölümde, etıları 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları edokunme platformunda eklemek için [Edokunla istemci destek ekibi](https://www.etouches.com/event-software/support/customer-support/) ile çalışın.
+Bu bölümde, Aventri'de B.Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları Aventri platformuna eklemek için [Aventri Client destek ekibiyle](mailto:support@aventri.com) birlikte çalışın.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli ' nde göz kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız erişimlerinin otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Aventri karosu tıklattığınızda, SSO'yu kurduğunuz Aventri'de otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile duyulur deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Aventri'yi deneyin](https://aad.portal.azure.com/)
 
+- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: GTNexus SSO sistemi ile tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve GTNexus SSO sistemi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: GTNexus SSO Sistemi ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve GTNexus SSO Sistemi arasında tek oturum açma işlemlerini nasıl yapılandırılabildiğini öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,181 +17,181 @@ ms.date: 01/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 99f9ad340ea3119d9d08eebef3102af8ba2c014e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157929"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Öğretici: GTNexus SSO sistemiyle tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Öğretici: GTNexus SSO Sistemi ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, GTNexus SSO sistemini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-GTNexus SSO sistemini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu eğitimde, GTNexus SSO Sistemini Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+GTNexus SSO Sistemini Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* GTNexus SSO sistemine erişimi olan Azure AD 'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla GTNexus SSO sisteminde (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* GTNexus SSO Sistemi'ne erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla GTNexus SSO Sistemi'nde (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini GTNexus SSO sistemiyle yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini GTNexus SSO Sistemi ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* GTNexus SSO sistemi çoklu oturum açma etkin aboneliği
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* GTNexus SSO Sistemi tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* GTNexus SSO sistemi **IDP** tarafından başlatılan SSO 'yu destekler
+* GTNexus SSO Sistemi **IDP** başlatılan SSO destekler
 
-## <a name="adding-gtnexus-sso-system-from-the-gallery"></a>Galeriden GTNexus SSO sistemi ekleme
+## <a name="adding-gtnexus-sso-system-from-the-gallery"></a>Galeriden GTNexus SSO Sistemi ekleme
 
-GTNexus SSO sisteminin tümleştirmesini Azure AD ile yapılandırmak için, Galeriden GTNexus SSO sistemini, yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+GTNexus SSO Sisteminin Azure AD'ye entegrasyonunu yapılandırmak için, gtnexus SSO Sistemini galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden GTNexus SSO sistemi eklemek için aşağıdaki adımları uygulayın:**
+**GtNexus SSO Sistemini galeriden eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **GTNEXUS SSO sistemi**yazın, sonuç PANELINDEN **GTNexus SSO sistemi** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusunda **GTNexus SSO Sistemi**yazın, sonuç panelinden **GTNexus SSO Sistemini** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuç listesinde GTNexus SSO sistemi](common/search-new-app.png)
+     ![GTNexus SSO Sistemi sonuç listesinde](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre GTNexus SSO SISTEMIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve GTNexus SSO sisteminde ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre GTNexus SSO Sistemi ile Azure AD tek oturum açma işlemini yapılandırın ve test esiniz.
+Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile GTNexus SSO Sistemi'ndeki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD çoklu oturum açma 'yı GTNexus SSO sistemiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD oturumlarını GTNexus SSO Sistemi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[GTNEXUS SSO sistemi çoklu oturum açmayı yapılandırın](#configure-gtnexus-sso-system-single-sign-on)** .
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[GTNEXUS SSO sistem test kullanıcısı oluşturun](#create-gtnexus-sso-system-test-user)** ; GTNexus SSO sisteminde, kullanıcının Azure AD gösterimine bağlı olan Britta Simon 'un bir karşılığı olacak.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[GTNexus SSO Sistemi Tek Oturum Açma](#configure-gtnexus-sso-system-single-sign-on)** -uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[GTNexus SSO Sistem test kullanıcıoluşturun](#create-gtnexus-sso-system-test-user)** - kullanıcının Azure AD gösterimi ile bağlantılı GTNexus SSO Sistemi Britta Simon bir meslektaşı olması.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açmayı GTNexus SSO sistemiyle yapılandırmak için aşağıdaki adımları uygulayın:
+GTNexus SSO Sistemi ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **GTNexus SSO sistem** uygulaması tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. **GTNexus SSO Sistem** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız**varsa, aşağıdaki adımları uygulayın:
+4. Temel **SAML Yapılandırması** bölümünde, **Servis Sağlayıcı meta veri dosyanız**varsa aşağıdaki adımları gerçekleştirin:
 
-    a. Tıklayın **meta veri dosyasını karşıya yükleme**.
+    a. **Meta veri dosyalarını yükle'yi**tıklatın.
 
     ![image](common/upload-metadata.png)
 
-    b. Tıklayarak **klasör logosu** meta veri dosyası seçin ve **karşıya**.
+    b. Meta veri dosyasını seçmek için **klasör logosuna** tıklayın ve **Yükle'yi**tıklatın.
 
     ![image](common/browse-upload-metadata.png)
 
-    c. Meta veri dosyası başarıyla karşıya yüklendikten sonra **tanımlayıcı** ve **yanıt URL** değerleri GTNexus SSO sistem bölümü metin kutusuna otomatik olarak doldurulur.
+    c. Meta veri dosyası başarıyla yüklendikten sonra, **Tanımlayıcı** ve **YanıtURL** değerleri GTNexus SSO Sistemi bölümünde ki textbox'ta otomatik olarak doldurulur:
 
     ![image](common/idp-intiated.png)
 
     > [!Note]
-    > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak almıyorsanız, değerleri gereksinimlerinize göre el ile girin.
+    > **Tanımlayıcı** ve **Yanıt URL** değerleri otomatik olarak yorumlanmıyorsa, gereksiniminize göre değerleri el ile doldurun.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-### <a name="configure-gtnexus-sso-system-single-sign-on"></a>GTNexus SSO sistemi çoklu oturum açmayı yapılandırma
+### <a name="configure-gtnexus-sso-system-single-sign-on"></a>GTNexus SSO Sistemi Tek İşaret-On Yapıl
 
-**GTNEXUS SSO sistem** tarafında çoklu oturum açmayı yapılandırmak Için, **Federasyon meta verileri XML** 'i [GTNexus SSO sistem desteği ekibine](mailto:support@gtnexus.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**GTNexus SSO Sistemi** tarafında tek oturum açma yapılandırmak için **Federasyon Metadata XML'i** [GTNexus SSO Sistem destek ekibine](mailto:support@gtnexus.com)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
+    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, GTNexus SSO sistemine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Britta Simon'ın GTNexus SSO Sistemi'ne erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı SEÇIN ve ardından **GTNexus SSO sistemi**' ni seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **GTNexus SSO Sistemini**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **GTNEXUS SSO sistemi**' ni seçin.
+2. Uygulama listesinde **GTNexus SSO Sistemini**seçin.
 
-    ![Uygulamalar listesindeki GTNexus SSO sistem bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki GTNexus SSO Sistemi bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-gtnexus-sso-system-test-user"></a>GTNexus SSO sistem testi kullanıcısı oluşturma
+### <a name="create-gtnexus-sso-system-test-user"></a>GTNexus SSO Sistem test kullanıcıoluşturma
 
-Bu bölümde, GTNexus SSO sisteminde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları GTNexus SSO sistem platformunda eklemek için [GTNEXUS SSO sistem desteği ekibi](mailto:support@gtnexus.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, GTNexus SSO Sisteminde Britta Simon adında bir kullanıcı oluşturursunuz.  [GTNexus SSO Sistem destek ekibi](mailto:support@gtnexus.com) ile gtnexus SSO Sistemi platformunda kullanıcıları eklemek için çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde GTNexus SSO sistem kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız GTNexus SSO sisteminde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki GTNexus SSO Sistem döşemesini tıklattığınızda, Otomatik olarak SSO'yu kurduğunuz GTNexus SSO Sistemi'nde oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

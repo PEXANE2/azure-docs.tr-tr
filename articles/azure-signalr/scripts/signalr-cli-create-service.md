@@ -1,6 +1,6 @@
 ---
-title: Azure CLı betik örneği-bir SignalR hizmeti oluşturma
-description: Yeni bir kaynak grubunda rastgele bir ada sahip yeni bir Azure SignalR hizmeti oluşturmak için örnek betiği izleyerek bilgi edinin.
+title: Azure CLI Script Örneği - SignalR Hizmeti Oluşturma
+description: Rasgele bir adla yeni bir kaynak grubunda yeni bir Azure SinyalR Hizmeti oluşturmak için örnek komut dosyasını izleyerek öğrenin.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: 45958f020f2e5dbdb0a50f0190aff78568865f74
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158069"
 ---
 # <a name="create-a-signalr-service"></a>SignalR Hizmeti oluşturma 

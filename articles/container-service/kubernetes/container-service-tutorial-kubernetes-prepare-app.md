@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Azure Container Service öğreticisi-uygulama hazırlama
+title: (AmortismanA Uğradı) Azure Konteyner Hizmeti öğreticisi - Uygulama Hazırla
 description: Azure Container Service öğreticisi - Uygulama Hazırlama
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76275422"
 ---
-# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>Kullanım DıŞı Azure Container Service birlikte kullanılacak kapsayıcı görüntüleri oluşturma
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(AmortismanA Uğradı) Azure Kapsayıcı Hizmetiile kullanılacak kapsayıcı resimleri oluşturma
 
 > [!TIP]
-> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes hizmeti (AKS) için uygulama hazırlama](../../aks/tutorial-kubernetes-prepare-app.md).
+> Azure Kubernetes Hizmetini kullanan bu öğreticinin güncelleştirilmiş sürümü [için Bkz. Öğretici: Azure Kubernetes Hizmeti (AKS) için bir uygulama hazırlayın.](../../aks/tutorial-kubernetes-prepare-app.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -38,7 +38,7 @@ Sonraki öğreticilerde, kapsayıcı görüntüsü Azure Container Registry’ye
 
 Bu öğreticide kapsayıcılar, kapsayıcı görüntüleri ve temel docker komutları gibi temel Docker kavramları hakkında bilgi sahibi olduğunuz varsayılmıştır. Gerekirse kapsayıcı temelleri hakkında bilgi için bkz. [Docker ile çalışmaya başlama]( https://docs.docker.com/get-started/). 
 
-Bu öğreticiyi tamamlamak için Docker geliştirme ortamı gerekir. Docker, [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) veya [Linux](https://docs.docker.com/engine/installation/#supported-platforms)’ta Docker’ı kolayca yapılandırmanızı sağlayan paketler sağlar.
+Bu öğreticiyi tamamlamak için Docker geliştirme ortamı gerekir. Docker [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) veya [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker'ı kolayca yapılandırmanızı sağlayan paketler sağlar.
 
 Azure Cloud Shell, bu öğreticideki her adımı tamamlamak için gerekli olan Docker bileşenlerini içermez. Bu yüzden, eksiksiz bir Docker geliştirme ortamı kullanmanızı öneririz.
 

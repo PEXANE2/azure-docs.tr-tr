@@ -1,17 +1,17 @@
 ---
-title: Öğretici-coğrafi olarak çoğaltılan kayıt defterinden dağıtın
-description: Coğrafi olarak çoğaltılan bir Azure Container Registry 'den bir kapsayıcı görüntüsü kullanarak Linux tabanlı bir Web uygulamasını iki farklı Azure bölgesine dağıtın. Üç bölümden oluşan bir serinin ikinci bölümü.
+title: Öğretici - Coğrafi olarak çoğaltılmış kayıt defterinden dağıtma
+description: Linux tabanlı bir web uygulamasını, coğrafi olarak çoğaltılmış bir Azure konteyner kayıt defterinden bir kapsayıcı görüntüsünü kullanarak iki farklı Azure bölgesine dağıtın. Üç bölümden oluşan bir serinin ikinci bölümü.
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74456109"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: coğrafi olarak çoğaltılan bir Azure Container Registry 'den Web uygulaması dağıtma
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi olarak çoğaltılmış bir Azure konteyner kayıt defterinden bir web uygulaması dağıtma
 
 Bu, üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür. [Birinci bölümde](container-registry-tutorial-prepare-registry.md), özel bir coğrafi olarak çoğaltılmış kapsayıcı kayıt defteri oluşturuldu, kaynaktan bir kapsayıcı görüntüsü derlendi ve kayıt defterine gönderildi. Bu makalede, kapsayıcıyı farklı Azure bölgelerinde bulunan iki Web App örneğine dağıtarak coğrafi olarak çoğaltılmış kayıt defterinin ağa yakın özelliğinden yararlanacaksınız. Ardından her bir örnek, kapsayıcı görüntüsünü en yakın kayıt defterinden çeker.
 
@@ -37,24 +37,24 @@ Bu adımda, *Batı ABD* bölgesinde bir Kapsayıcılar için Web App örneği ol
 
 [Azure portalında](https://portal.azure.com) oturum açın ve önceki öğreticide oluşturduğunuz kayıt defterine gidin.
 
-**Depolar** > **acr-helloworld** seçeneğini belirleyin, ardından **Etiketler** bölümünde **v1** etiketine tıklayın ve **Web uygulamasına dağıt**’ı seçin:
+**Depolar** > **acr-helloworld'ü**seçin, ardından **Etiketler'in** altındaki **v1** etiketine sağ tıklayın ve **web uygulamasına dağıt'ı**seçin:
 
 ![Azure portalında uygulama hizmetine dağıtma][deploy-app-portal-01]
 
-"Web uygulamasına dağıt" seçeneği devre dışı bırakılırsa kayıt defteri yönetici kullanıcısını ilk öğreticinin [Kapsayıcı kayıt defteri oluşturma](container-registry-tutorial-prepare-registry.md#create-a-container-registry) bölümünde anlatılan şekilde etkinleştirememiş olabilirsiniz. Yönetici kullanıcısını Azure portalda **Ayarlar** > **Erişim anahtarları** sayfasından etkinleştirebilirsiniz.
+"Web uygulamasına dağıt" seçeneği devre dışı bırakılırsa kayıt defteri yönetici kullanıcısını ilk öğreticinin [Kapsayıcı kayıt defteri oluşturma](container-registry-tutorial-prepare-registry.md#create-a-container-registry) bölümünde anlatılan şekilde etkinleştirememiş olabilirsiniz. Azure portalındaki **Ayarlar** > **Erişim tuşlarında** yönetici kullanıcıyı etkinleştirebilirsiniz.
 
 "Web uygulamasında dağıt"ı seçtikten sonra görüntülenen **Kapsayıcılar için Web App** bölümünde, her bir ayar için aşağıdaki değerleri belirtin:
 
 | Ayar | Değer |
 |---|---|
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-westus` biçimini kullanıyoruz. |
-| **Kaynak Grubu** | **Var olanı kullan** > `myResourceGroup` |
-| **Uygulama hizmeti planı/Konumu** | `plan-westus`Batı ABD**bölgesinde** adlı yeni bir plan oluşturun. |
+| **Kaynak Grubu** | **Varolan kullanımı** > `myResourceGroup` |
+| **Uygulama hizmet planı/Konum** | **Batı ABD** bölgesinde `plan-westus` adlı yeni bir plan oluşturun. |
 | **Görüntü** | `acr-helloworld:v1` |
 | **İşletim sistemi** | Linux |
 
 > [!NOTE]
-> Kapsayıcılı uygulamanızı dağıtmak için yeni bir App Service planı oluşturduğunuzda, uygulamanızı barındırmak için varsayılan bir plan otomatik olarak seçilir. Varsayılan plan, işletim sistemi ayarına bağlıdır.
+> Kapsayıcılaştırılmış uygulamanızı dağıtmak için yeni bir uygulama hizmeti planı oluşturduğunuzda, uygulamanızı barındırmak için otomatik olarak varsayılan bir plan seçilir. Varsayılan plan işletim sistemi ayarına bağlıdır.
 
 **Oluştur**’u seçerek, web uygulamasını *Batı ABD* bölgesine sağlayın.
 
@@ -66,7 +66,7 @@ Dağıtım tamamlandığında, çalıştırılan uygulamanın URL’sine tarayı
 
 Portalda **Uygulama Hizmetleri** seçeneğini belirleyin ve önceki adımda sağladığınız web uygulamasını seçin. Bu örnekte, web uygulaması *uniqueregistryname-westus* olarak adlandırılmıştır.
 
-Çalıştırılan uygulamayı tarayıcınızda görüntülemek için, **App Service** genel bakışının sağ üst kısmında web uygulamasının köprülü URL’sini seçin.
+Tarayıcınızda çalışan uygulamayı görüntülemek için **App Service** genel bakışın sağ üst kısmında web uygulamasının köprü bağlantılı URL'sini seçin.
 
 ![Azure portalında Linux yapılandırmasındaki web uygulaması][deploy-app-portal-04]
 
@@ -81,8 +81,8 @@ Coğrafi olarak çoğaltılmış kapsayıcı kayıt defterinizden Docker görün
 | Ayar | Değer |
 |---|---|
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-eastus` biçimini kullanıyoruz. |
-| **Kaynak Grubu** | **Var olanı kullan** > `myResourceGroup` |
-| **Uygulama hizmeti planı/Konumu** | `plan-eastus`Doğu ABD**bölgesinde** adlı yeni bir plan oluşturun. |
+| **Kaynak Grubu** | **Varolan kullanımı** > `myResourceGroup` |
+| **Uygulama hizmet planı/Konum** | **Doğu ABD** bölgesinde `plan-eastus` adlı yeni bir plan oluşturun. |
 | **Görüntü** | `acr-helloworld:v1` |
 | **İşletim sistemi** | Linux |
 
@@ -96,7 +96,7 @@ Daha önce olduğu gibi, çalıştırılan uygulamanın URL’sine tarayıcını
 
 Portalda **Uygulama Hizmetleri** seçeneğini belirleyin ve önceki adımda sağladığınız web uygulamasını seçin. Bu örnekte, web uygulaması *uniqueregistryname-eastus* olarak adlandırılmıştır.
 
-Çalıştırılan uygulamayı tarayıcınızda görüntülemek için, **App Service** genel bakışının sağ üst kısmında web uygulamasının köprülü URL’sini seçin.
+Tarayıcınızda çalışan uygulamayı görüntülemek için **App Service genel bakışın** sağ üst kısmında web uygulamasının köprü bağlantılı URL'sini seçin.
 
 ![Azure portalında Linux yapılandırmasındaki web uygulaması][deploy-app-portal-07]
 

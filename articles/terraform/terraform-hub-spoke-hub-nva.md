@@ -1,38 +1,38 @@
 ---
-title: Öğretici-Terrayform kullanarak Azure 'da hub sanal ağ gereci oluşturma
-description: Öğretici, diğer tüm ağlar arasında ortak bağlantı noktası görevi gören hub VNet oluşturmayı uygular
+title: Öğretici - Terraform'u kullanarak Azure'da hub sanal ağ cihazı oluşturun
+description: Öğretici, diğer tüm ağlar arasında ortak bir bağlantı noktası görevi gören Hub VNet'in oluşturulmasını uygular
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 28ccb89d237cbe21dd0433da5f7fbb32883f6550
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159255"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da hub sanal ağ gereci oluşturma
+# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Öğretici: Terraform'u kullanarak Azure'da hub sanal ağ cihazı oluşturun
 
-**VPN cihazı** , şirket içi ağa harici bağlantı sağlayan bir cihazdır. VPN cihazı bir donanım aygıtı veya yazılım çözümü olabilir. Windows Server 2012 ' de Yönlendirme ve uzaktan erişim hizmeti (RRAS) yazılım çözümüne bir örnektir. VPN araçları hakkında daha fazla bilgi için bkz. [siteden siteye VPN Gateway bağlantıları IÇIN VPN cihazları hakkında](/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+**VPN aygıtı,** şirket içi ağa harici bağlantı sağlayan bir aygıttır. VPN aygıtı bir donanım aygıtı veya yazılım çözümü olabilir. Yazılım çözümüne örnek olarak, Windows Server 2012'deki Yönlendirme ve Uzaktan Erişim Hizmeti (RRAS) örnek olarak sunulmaktadır. VPN cihazları hakkında daha fazla bilgi için [Siteden Siteye VPN Ağ Geçidi bağlantıları için VPN aygıtları hakkında](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)bilgi alabiliyorum.
 
-Azure, seçebileceğiniz çok çeşitli ağ sanal gereçlerini destekler. Bu öğreticide, Ubuntu görüntüsü kullanılır. Azure 'da desteklenen çok çeşitli cihaz çözümleri hakkında daha fazla bilgi edinmek için bkz. [ağ gereçleri giriş sayfası](https://azure.microsoft.com/solutions/network-appliances/).
+Azure, seçilecek çok çeşitli ağ sanal cihazlarını destekler. Bu öğretici için bir Ubuntu görüntüsü kullanılır. Azure'da desteklenen çok çeşitli aygıt çözümleri hakkında daha fazla bilgi edinmek için [Ağ Cihazları ana sayfasına](https://azure.microsoft.com/solutions/network-appliances/)bakın.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Hub-ışınsal-uç topolojisinde hub VNet 'i uygulamak için HCL (HashiCorp Language) kullanın
-> * Terrayform 'u, Gereç görevi gören hub Network sanal makinesi oluşturmak için kullanın
-> * CustomScript uzantılarını kullanarak rotaları etkinleştirmek için Terrayform kullanma
-> * Terrayform kullanarak hub ve bağlı ağ geçidi yol tabloları oluşturun
+> * Hub VNet'i hub konuşan topolojide uygulamak için HCL'yi (HashiCorp Dili) kullanın
+> * Terraform'u kullanarak cihaz görevi gören Hub Network Sanal Makinesi'ni oluşturun
+> * CustomScript uzantılarını kullanarak yolları etkinleştirmek için Terraform'u kullanma
+> * Hub ve Spoke ağ geçidi rota tabloları oluşturmak için Terraform'u kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. [Azure 'Da Terrayform ile bir hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
-1. [Azure 'Da Terrayform ile şirket içi sanal ağ oluşturun](./terraform-hub-spoke-on-prem.md).
-1. [Azure 'Da Terrayform ile bir hub sanal ağı oluşturun](./terraform-hub-spoke-hub-network.md).
+1. [Azure'da Terraform ile bir hub ve kollu karma ağ topolojisi oluşturun.](./terraform-hub-spoke-introduction.md)
+1. [Azure'da Terraform ile şirket içi sanal ağ oluşturun.](./terraform-hub-spoke-on-prem.md)
+1. [Azure'da Terraform ile bir hub sanal ağı oluşturun.](./terraform-hub-spoke-hub-network.md)
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
-1. [Azure portala](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com)göz atın.
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview)'i açın. Önceden bir ortam seçmediyseniz **Bash** ortamını seçin.
 
@@ -50,11 +50,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-network-appliance"></a>Hub ağ gerecini bildirme
+## <a name="declare-the-hub-network-appliance"></a>Hub ağ cihazını bildirme
 
-Şirket içi sanal ağ bildiren Terrayform yapılandırma dosyasını oluşturun.
+Şirket içinde sanal ağ bildiren Terraform yapılandırma dosyasını oluşturun.
 
-1. Cloud Shell ' de, `hub-nva.tf`adlı yeni bir dosya oluşturun.
+1. Bulut Kabuğu'nda, '' `hub-nva.tf`adlı yeni bir dosya oluşturun.
 
     ```bash
     code hub-nva.tf
@@ -271,4 +271,4 @@ Bu öğretici aşağıdaki görevleri kapsar:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure 'da Terrayform ile bir bağlı bileşen sanal ağı oluşturma](./terraform-hub-spoke-spoke-network.md)
+> [Azure'da Terraform ile konuşlu sanal ağlar oluşturun](./terraform-hub-spoke-spoke-network.md)

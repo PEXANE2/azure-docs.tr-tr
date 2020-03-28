@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Netüse Yönetici Konsolu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Netüse Yönetici Konsolu arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Netskope Administrator Console ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Netskope Administrator Console arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,218 +17,218 @@ ms.date: 10/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dec8f8065114b89dfa7bcaceee3f26855953dde2
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74081871"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Öğretici: Netüse Yönetici Konsolu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Öğretici: Netskope Administrator Console ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Netüse Yönetici Konsolu Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Netüse Yönetici Konsolu 'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Netskope Yönetici Konsolu'nun Azure Etkin Dizini (Azure AD) ile nasıl entegre edileceksiniz öğreneceksiniz. Netskope Yönetici Konsolu'nun Azure AD ile tümleştirildiğinde şunları yapabilirsiniz:
 
-* Azure AD 'de Netüse Yönetici Konsolu erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla, Netüse Yönetici Konsolu için otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Netskope Yönetici Konsolu'na erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Netskope Yönetici Konsolu'nda otomatik olarak oturum açabilmesini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Netüse Yönetici Konsolu çoklu oturum açma (SSO) özellikli abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Netskope Administrator Console tek oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Netüse Yönetici Konsolu **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Netskope Yönetici **KonsolU SP ve IDP** SSO başlatılan destekler
 
-## <a name="adding-netskope-administrator-console-from-the-gallery"></a>Galeriden Netüse Yönetici Konsolu ekleme
+## <a name="adding-netskope-administrator-console-from-the-gallery"></a>Galeriden Netskope Yönetici Konsolu Ekleme
 
-Netüse Yönetici Konsolu tümleştirmesini Azure AD ile yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize Netüse Yönetici Konsolu eklemeniz gerekir.
+Netskope Yönetici Konsolu'nun Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Netskope Yönetici Konsolu'nu yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **netüse Yönetici Konsolu** yazın.
-1. Sonuçlar panelinden **Netüse Yönetici Konsolu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Netskope Yönetici Konsolu** yazın.
+1. Sonuç panelinden **Netskope Yönetici** Konsolu'nu seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-netskope-administrator-console"></a>Netüse Yönetici Konsolu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-netskope-administrator-console"></a>Netskope Yönetici Konsolu için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Netüse Yönetici Konsolu ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Netüse Yönetici Konsolu içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'sunu Netskope Administrator Console ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Netskope Yönetici Konsolu'ndaki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu Netüse Yönetici Konsolu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Netskope Administrator Console ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Netüse yönetıcı konsolu SSO 'Yu yapılandırın](#configure-netskope-administrator-console-sso)** .
-    * Kullanıcının Azure AD gösterimine bağlı olan Netüse Yönetici Konsolu 'de B. Simon 'a sahip olmak için **[netüse Yönetici Konsolu test kullanıcısı oluşturun](#create-netskope-administrator-console-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için **[Netskope Administrator Console SSO'yu yapılandırın.](#configure-netskope-administrator-console-sso)**
+    * **[Netskope Yönetici Konsolu test kullanıcısını oluşturun](#create-netskope-administrator-console-test-user)** - Kullanıcının Azure AD gösterimine bağlı Netskope Yönetici Konsolu'nda B.Simon'ın bir muadili olması için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **netüse Yönetici Konsolu** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **Netskope Yönetici Konsolu** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `Netskope_<OrgKey>`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`Netskope_<OrgKey>`
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<tenant_host_name>/saml/acs`
-
-    > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri öğreticide ilerleyen kısımlarında bulabilirsiniz.
-
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
-
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<tenantname>.goskope.com`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<tenant_host_name>/saml/acs`
 
     > [!NOTE]
-    > Oturum açma URL 'SI değerleri gerçek değil. Oturum açma URL 'SI değerini, gerçek oturum açma URL 'SI ile güncelleştirin. Oturum açma URL 'SI değerini almak için [Netüse Yönetici Konsolu istemci desteği ekibine](mailto:support@netskope.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri daha sonra öğretici de açıklanan alırsınız.
 
-1. Netüse Yönetici Konsolu uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<tenantname>.goskope.com`
+
+    > [!NOTE]
+    > Oturum Açma URL değerleri gerçek değildir. Oturum Açma URL değerini gerçek Oturum Açma URL'si ile güncelleştirin. Oturum açma URL değerini almak için [Netskope Administrator Console Client destek ekibine](mailto:support@netskope.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+
+1. Netskope Administrator Console uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
     ![image](common/default-attributes.png)
 
-1. Daha yukarıya ek olarak, Netüse Yönetici Konsolu uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıda ek olarak, Netskope Administrator Console uygulaması, saml yanıtında aşağıda gösterilen birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Ad |  Kaynak özniteliği|
+    | Adı |  Kaynak Özniteliği|
     | ---------| --------- |
-    | yönetici-rol | Kullanıcı. atandroles |
+    | yönetici rolü | user.assignedroles |
 
     > [!NOTE]
-    > Azure AD 'de rol oluşturmayı öğrenmek için [buraya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) tıklayın.
+    > Azure AD'de nasıl roller oluşturacağınıöğrenmek için [burayı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) tıklatın.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Netüse Yönetici Konsolu ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Netskope Yönetici Konsolu'nu Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’ tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Netüse Yönetici Konsolu erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, Netskope Yönetici Konsolu'na erişim sağlayarak B.Simon'Un Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Netüse Yönetici Konsolu**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Netskope Yönetici Konsolu'nu**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-netskope-administrator-console-sso"></a>Netüse Yönetici Konsolu SSO 'yu yapılandırma
+## <a name="configure-netskope-administrator-console-sso"></a>Netskope Yönetici Konsolu SSO'sunu yapılandır
 
-1. Tarayıcınızda yeni bir sekme açın ve Netüse Yönetici Konsolu şirket sitenizde yönetici olarak oturum açın.
+1. Tarayıcınızda yeni bir sekme açın ve Netskope Administrator Console şirket sitenizde yönetici olarak oturum açın.
 
-1. Sol gezinti bölmesindeki **Ayarlar** sekmesine tıklayın.
+1. Sol daki gezinti bölmesinden **Ayarlar** sekmesine tıklayın.
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Netskope Yönetici Konsol Yapılandırması](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. **Yönetim** sekmesini tıklatın.
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![Netskope Yönetici Konsol Yapılandırması](./media/netskope-cloud-security-tutorial/config-administration.png)
 
-1. **SSO** sekmesi ' ne tıklayın.
+1. **SSO sekmesini** tıklatın.
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![Netskope Yönetici Konsol Yapılandırması](./media/netskope-cloud-security-tutorial/config-sso.png)
 
-1. **Ağ ayarları** bölümünde aşağıdaki adımları uygulayın:
+1. Ağ **Ayarları** bölümünde aşağıdaki adımları gerçekleştirin:
     
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![Netskope Yönetici Konsol Yapılandırması](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
 
-    a. **Onaylama tüketici hizmeti URL 'si** değerini kopyalayın ve Azure Portal **temel SAML YAPıLANDıRMASı** bölümündeki **yanıt URL** metin kutusuna yapıştırın.
+    a. **İddia Tüketici Hizmeti URL** değerini kopyalayın ve Azure portalındaki Temel **SAML Yapılandırması** bölümündeki **Yanıtla URL** textbox'ına yapıştırın.
 
-    b. **Hizmet sağlayıcısı VARLıK kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** metin kutusuna yapıştırın.
+    b. **Hizmet Sağlayıcısı Varlık Kimliği** değerini kopyalayın ve Azure portalındaki Temel **SAML Yapılandırma** sı bölümündeki **Tanımlayıcı** metin kutusuna yapıştırın.
 
-1. **SSO/SLO ayarları** bölümünün altındakı **düzenleme ayarları** ' na tıklayın.
+1. **SSO/SLO Ayarları** bölümündeki **EDIT** AYARLARI'na tıklayın.
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![Netskope Yönetici Konsol Yapılandırması](./media/netskope-cloud-security-tutorial/config-editsettings.png)
 
-1. **Ayarlar** açılan penceresinde, aşağıdaki adımları gerçekleştirin;
+1. **Ayarlar** açılır penceresinde aşağıdaki adımları gerçekleştirin;
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/configuration.png)
+    ![Netskope Yönetici Konsol Yapılandırması](./media/netskope-cloud-security-tutorial/configuration.png)
 
-    a. **SSO 'Yu etkinleştir**' i seçin.
+    a. **SSO'ya Etkin'i**seçin.
 
-    b. **IDP URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    b. **IDP URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL** değerini yapıştırın.
 
-    c. **IDP VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
+    c. **IDP ENTITY ID** textbox'a, Azure portalından kopyalamış olduğunuz **Azure AD Tanımlayıcı** değerini yapıştırın.
 
-    d. İndirilen Base64 kodlamalı sertifikanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve **IDP sertifika** metin kutusuna yapıştırın.
+    d. İndirilen Base64 kodlanmış sertifikanızı not defterinde açın, içeriğini panonuza kopyalayın ve ardından **IDP CERTIFICATE** textbox'a yapıştırın.
 
-    e. **SSO 'Yu etkinleştir**' i seçin.
+    e. **SSO'ya Etkin'i**seçin.
 
-    f. **IDP SLO URL** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
+    f. **IDP SLO URL** textbox'ına Azure portalından kopyaladığınız **Logout URL** değerini yapıştırın.
 
-    g. **Gönder**' e tıklayın.
+    g. **GÖNDER'i**tıklatın.
 
-### <a name="create-netskope-administrator-console-test-user"></a>Netüse Yönetici Konsolu test kullanıcısı oluşturma
+### <a name="create-netskope-administrator-console-test-user"></a>Netskope Yönetici Konsolu test kullanıcıoluşturma
 
-1. Tarayıcınızda yeni bir sekme açın ve Netüse Yönetici Konsolu şirket sitenizde yönetici olarak oturum açın.
+1. Tarayıcınızda yeni bir sekme açın ve Netskope Administrator Console şirket sitenizde yönetici olarak oturum açın.
 
-1. Sol gezinti bölmesindeki **Ayarlar** sekmesine tıklayın.
+1. Sol daki gezinti bölmesinden **Ayarlar** sekmesine tıklayın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Netskope Yönetici Konsolkullanıcı Oluşturma](./media/netskope-cloud-security-tutorial/config-settings.png)
 
-1. **Etkin platform** sekmesi ' ne tıklayın.
+1. **Etkin Platform** sekmesini tıklatın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/user1.png)
+    ![Netskope Yönetici Konsolkullanıcı Oluşturma](./media/netskope-cloud-security-tutorial/user1.png)
 
-1. **Kullanıcılar** sekmesi ' ne tıklayın.
+1. **Kullanıcılar** sekmesini tıklatın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/add-user.png)
+    ![Netskope Yönetici Konsolkullanıcı Oluşturma](./media/netskope-cloud-security-tutorial/add-user.png)
 
-1. **Kullanıcı Ekle**' ye tıklayın.
+1. **KULLANICIEKLE'yi**tıklatın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/user-add.png)
+    ![Netskope Yönetici Konsolkullanıcı Oluşturma](./media/netskope-cloud-security-tutorial/user-add.png)
 
-1. Eklemek istediğiniz kullanıcının e-posta adresini girin ve **Ekle**' ye tıklayın.
+1. Eklemek istediğiniz kullanıcının e-posta adresini girin ve **ADD'yi**tıklatın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/add-user-popup.png)
+    ![Netskope Yönetici Konsolkullanıcı Oluşturma](./media/netskope-cloud-security-tutorial/add-user-popup.png)
 
-## <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Netüse Yönetici Konsolu kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Netüse Yönetici Konsolu otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Netskope Yönetici Konsolu döşemesini tıklattığınızda, SSO'yu kurduğunuz Netskope Yönetici Konsolu'nda otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Netüse Yönetici Konsolu deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Netskope Yönetici Konsolu'nun deneyin](https://aad.portal.azure.com/)

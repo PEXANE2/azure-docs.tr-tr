@@ -1,21 +1,21 @@
 ---
-title: Öğretici-Azure Cosmos DB hesaplarını, anormal kullanarak yapılandırma
-description: Azure Cosmos DB oluşturmak ve yapılandırmak için nasıl kullanılacağını öğrenin
-keywords: Antik, Azure, DevOps, Bash, PlayBook, Cosmo DB, veritabanı
+title: Öğretici - Ansible kullanarak Azure Cosmos DB hesaplarını yapılandırın
+description: Bir Azure Cosmos DB oluşturmak ve yapılandırmak için Ansible'ı nasıl kullanacağınızı öğrenin
+keywords: ansible, azure, devops, bash, oyun kitabı, cosmo db, veritabanı
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156480"
 ---
-# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Öğretici: anormal kullanarak Azure Cosmos DB hesaplarını yapılandırma
+# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Öğretici: Azure Cosmos DB hesaplarını Ansible kullanarak yapılandırın
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure Cosmos DB](/azure/cosmos-db/) , çeşitli veritabanı türlerini destekleyen bir veritabanı hizmetidir. Bu veritabanı türleri belge, anahtar-değer, geniş sütun ve grafik içerir. Anormal kullanarak, ortamınızdaki kaynakların dağıtımını ve yapılandırmasını otomatik hale getirebilirsiniz.
+[Azure Cosmos DB,](/azure/cosmos-db/) çeşitli veritabanı türlerini destekleyen bir veritabanı hizmetidir. Bu veritabanları türleri belge, anahtar değeri, geniş sütun ve grafik içerir. Ansible'ı kullanarak, ortamınızdaki kaynakların dağıtımını ve yapılandırmasını otomatikleştirebilirsiniz.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -25,15 +25,15 @@ ms.locfileid: "74156480"
 > * Hesap anahtarlarını alma
 > * Hesabı Sil
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-random-postfix"></a>Rastgele sonek oluşturma
+## <a name="create-a-random-postfix"></a>Rasgele bir postfix oluşturma
 
-Örnek PlayBook kod parçacığı rastgele bir sonek oluşturur. Sonek Azure Cosmos DB hesap adının bir parçası olarak kullanılır.
+Örnek oyun kitabı snippet rasgele bir postfix oluşturur. Düzeltme, Azure Cosmos DB hesap adının bir parçası olarak kullanılır.
 
 ```yml
   - hosts: localhost
@@ -46,7 +46,7 @@ ms.locfileid: "74156480"
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma 
 
-Örnek PlayBook kod parçacığı, bir Azure Kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+Örnek oyun kitabı snippet bir Azure kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```yml
   - name: Create a resource group
@@ -57,7 +57,7 @@ ms.locfileid: "74156480"
 
 ## <a name="create-virtual-network-and-subnet"></a>Sanal ağ ve alt ağ oluşturma
 
-Aşağıdaki kod Azure Cosmos DB hesabı için bir sanal ağ ve alt ağ oluşturur:
+Aşağıdaki kod, Azure Cosmos DB hesabı için sanal bir ağ ve alt ağ oluşturur:
 
 ```yml
   - name: Create virtual network
@@ -106,11 +106,11 @@ Aşağıdaki kod Cosmos DB hesabını oluşturur:
       enable_automatic_failover: yes
 ```
 
-Hesap oluşturma işleminin tamamlanabilmesi birkaç dakika sürer.
+Hesap oluşturmanın tamamlanması birkaç dakika sürer.
 
-## <a name="retrieve-the-keys"></a>Anahtarları alma
+## <a name="retrieve-the-keys"></a>Anahtarları geri alın
 
-Aşağıdaki kod, uygulamanızda kullanmak için anahtarları getirir.
+Aşağıdaki kod, uygulamanızda kullanılacak anahtarları getirir.
 
 ```yml
   - name: Get Cosmos DB Account facts with keys
@@ -127,7 +127,7 @@ Aşağıdaki kod, uygulamanızda kullanmak için anahtarları getirir.
 
 ## <a name="delete-the-azure-cosmos-db-account"></a>Azure Cosmos DB hesabını silme
 
-Son olarak, son kod parçacığı bir Azure Cosmos DB hesabının nasıl silineceğini gösterir.
+Son olarak, son parçacık bir Azure Cosmos DB hesabının nasıl silinir olduğunu gösterir.
 
 ```yml
   - name: Delete instance of Cosmos DB Account
@@ -137,11 +137,11 @@ Son olarak, son kod parçacığı bir Azure Cosmos DB hesabının nasıl silinec
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Örnek PlayBook 'u alın
+## <a name="get-the-sample-playbook"></a>Örnek oyun kitabını alın
 
-Örnek PlayBook 'un tamamını almanın iki yolu vardır:
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) ve `cosmosdb.yml`kaydedin.
-- `cosmosdb.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+Tam örnek oyun kitabını almanın iki yolu vardır:
+- [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) ve `cosmosdb.yml`'ye kaydedin.
+- Adlandırılmış `cosmosdb.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 ---
@@ -225,15 +225,15 @@ Son olarak, son kod parçacığı bir Azure Cosmos DB hesabının nasıl silinec
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Örnek PlayBook 'u çalıştırma
+## <a name="run-the-sample-playbook"></a>Örnek oyun kitabını çalıştırın
 
-Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için PlayBook 'u çalıştırın.
+Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için oyun kitabını çalıştırın.
 
-PlayBook 'u çalıştırmadan önce aşağıdaki değişiklikleri yapın:
-- `vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
-- ' Cosmosdbaccount_name yalnızca küçük harf karakterler içerdiğinden ve genel olarak benzersiz olduğundan emin olun.
+Oyun kitabını çalıştırmadan önce aşağıdaki değişiklikleri yapın:
+- `vars` Bölümde, yer tutucuyu `{{ resource_group_name }}` kaynak grubunuzun adı ile değiştirin.
+- 'cosmosdbaccount_name yalnızca küçük karakterler içerdiğinden ve genel olarak benzersiz olduğundan emin olun.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cosmosdb.yml
@@ -241,9 +241,9 @@ ansible-playbook cosmosdb.yml
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
+Aşağıdaki kodu aşağıdaki `cleanup.yml`gibi kaydedin:
 
 ```yml
 - hosts: localhost
@@ -257,7 +257,7 @@ Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
         state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml
