@@ -1,7 +1,7 @@
 ---
-title: 'Görüntü sınıflandırma Öğreticisi: modelleri dağıtma'
+title: 'Resim sınıflandırma öğretici: Modelleri dağıtma'
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide, bir Python Jupyter not defterinde scikit-öğrenme ile görüntü sınıflandırma modeli dağıtmak için Azure Machine Learning nasıl kullanılacağı gösterilmektedir. Bu öğretici, iki bölümden oluşan bir serinin ikinci bölümüdür.
+description: İki bölümlük bir serinin ikincisi olan bu öğretici, Python Jupyter dizüstü bilgisayarında scikit-learn içeren bir görüntü sınıflandırma modeli dağıtmak için Azure Machine Learning'in nasıl kullanılacağını gösterir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,53 +10,51 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116497"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159101"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Kapsayıcı Örnekleri'nde görüntü sınıflandırma modelini dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. [Önceki öğreticide](tutorial-train-models-with-aml.md) makine öğrenmesi modellerini eğittiniz ve buluttaki çalışma alanınıza modeli kaydettiniz.  
+Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. [Önceki öğreticide](tutorial-train-models-with-aml.md) makine öğrenmesi modellerini eğittiniz ve buluttaki çalışma alanınıza modeli kaydettiniz.  Artık modeli bir web hizmeti olarak dağıtmaya hazırsınız. Bir web hizmeti bir görüntü, bu durumda bir Docker görüntüdür. Puanlama mantığını ve modelin kendisini kapsüller. 
 
-Artık modeli, [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/)bir Web hizmeti olarak dağıtmaya hazır olursunuz. Bir Web hizmeti, bu durumda bir Docker görüntüsü olan bir görüntüdür. Puanlama mantığını ve modelin kendisini kapsüller. 
-
-Öğreticinin bu bölümünde aşağıdaki görevler için Azure Machine Learning kullanırsınız:
+Öğreticinin bu bölümünde, aşağıdaki görevler için Azure Machine Learning'i kullanırsınız:
 
 > [!div class="checklist"]
 > * Test ortamınızı ayarlayın.
 > * Çalışma alanınızdan modeli alın.
 > * Modeli yerel olarak test edin.
-> * Modeli Container Instances için dağıtın.
+> * Modeli Kapsayıcı Örnekleri'ne dağıtın.
 > * Dağıtılan modeli test edin.
 
-Container Instances, iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes hizmeti kullanmayı düşünün. Daha fazla bilgi için bkz. [dağıtma ve nerede](how-to-deploy-and-where.md).
+Kapsayıcı Örnekleri, iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes Service’i kullanmayı göz önünde bulundurabilirsiniz. Daha fazla bilgi için [nasıl dağıtılanın ve nerede dağıtılanın.](how-to-deploy-and-where.md)
 
 >[!NOTE]
-> Bu makaledeki kod, Azure Machine Learning SDK sürümü 1.0.41 ile test edilmiştir.
+> Bu makaledeki kod Azure Machine Learning SDK sürüm 1.0.41 ile test edilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Not defterini çalıştırmak için, ilk olarak öğreticide model eğitimi ' ni [(1. bölüm) doldurun: görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).   Ardından klonlanan *öğreticiler/Image-Classification-mnist-Data* klasöründe *img-Classification-part2-Deploy. ipynb* Not defterini açın.
+Not defterini çalıştırmak için, önce Öğretici 'deki model eğitimini tamamlayın [(bölüm 1): Bir görüntü sınıflandırma modeli eğitin.](tutorial-train-models-with-aml.md)   Ardından klonlanmış *öğreticileriniz/resim sınıflandırması-mnist-veri* klasörünüzde *img-classification-part2-deploy.ipynb* not defterini açın.
 
-Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızda `matplotlib` ve `scikit-learn` yüklediğinizden emin olun. 
+Bu öğretici, kendi [yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub'da](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) da mevcuttur.  Yüklü `matplotlib` `scikit-learn` ve ortamınızda olduğundan emin olun. 
 
 > [!Important]
-> Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
+> Bu makalenin geri kalanı, not defterinde gördüğünüz le aynı içeriği içerir.  
 >
-> Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin.
-> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
+> Kodu çalıştırırken okumak istiyorsanız hemen Jupyter not defterine geçin.
+> Not defterinde tek bir kod hücresini çalıştırmak için kod hücresini tıklatın ve **Shift+Enter'a**basın. Veya tüm dizüstü bilgisayarı üst araç çubuğundan **Çalıştır'ı** seçerek tüm dizüstü bilgisayarı çalıştırın.
 
-## <a name="start"></a>Ortamı ayarlama
+## <a name="set-up-the-environment"></a><a name="start"></a>Ortamı ayarlama
 
 Başlangıç olarak test ortamını ayarlayın.
 
 ### <a name="import-packages"></a>Paketleri içeri aktarma
 
-Bu öğretici için gereken Python paketlerini içeri aktarın:
+Bu öğretici için gereken Python paketlerini alma:
 
 ```python
 %matplotlib inline
@@ -73,7 +71,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="retrieve-the-model"></a>Modeli alma
 
-Önceki öğreticide çalışma alanınızda bir modeli kaydetmiştiniz. Şimdi bu çalışma alanını yükleyin ve modeli yerel dizininize indirin:
+Önceki öğreticide çalışma alanınızda bir modeli kaydetmiştiniz. Şimdi bu çalışma alanını yükleyin ve modeli yerel dizine indirin:
 
 
 ```python
@@ -94,13 +92,13 @@ os.stat(file_path)
 ## <a name="test-the-model-locally"></a>Modeli yerel olarak test etme
 
 Dağıtmadan önce, modelinizin yerel olarak çalıştığından emin olun:
-* Yük testi verileri.
+* Test verilerini yükleyin.
 * Test verilerini tahmin edin.
 * Karışıklık matrisini inceleyin.
 
 ### <a name="load-test-data"></a>Test verilerini yükleme
 
-Eğitim öğreticisi sırasında oluşturulan **./Data/** dizininden test verilerini yükleyin:
+Eğitim eğitimi sırasında oluşturulan **./data/dizindeki** test verilerini yükleyin:
 
 ```python
 from utils import load_data
@@ -115,7 +113,7 @@ y_test = load_data(os.path.join(
 
 ### <a name="predict-test-data"></a>Test verilerini tahmin etme
 
-Öngörülere ulaşmak için test veri kümesini modele besle:
+Öngörüler almak için test veri kümesini modele aktarın:
 
 ```python
 import pickle
@@ -127,7 +125,7 @@ y_hat = clf.predict(X_test)
 
 ###  <a name="examine-the-confusion-matrix"></a>Karışıklık matrisini inceleme
 
-Test kümesinden kaç örneğin doğru sınıflandırıldığını görmek için karışıklık matrisi oluşturun. Yanlış tahminlere yönelik hatalı sınıflandırılan değere dikkat edin: 
+Test kümesinden kaç örneğin doğru sınıflandırıldığını görmek için karışıklık matrisi oluşturun. Yanlış öngörüler için yanlış sınıflandırılmış değere dikkat edin: 
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -152,7 +150,7 @@ print('Overall accuracy:', np.average(y_hat == y_test))
     Overall accuracy: 0.9204
    
 
-Karışıklık matrisini grafik olarak görüntülemek için `matplotlib` kullanın. Bu grafikte, x ekseni gerçek değerleri gösterir ve y ekseni tahmin edilen değerleri gösterir. Her kılavuzdaki renk hata oranını gösterir. Renk ne kadar açıksa hata oranı da o kadar yüksektir. Örneğin, birçok 5, 3 ' ün yanlış sınıflandırılmakta. Bu nedenle, (5, 3) üzerinde parlak bir ızgara görürsünüz:
+Karışıklık matrisini grafik olarak görüntülemek için `matplotlib` kullanın. Bu grafikte, x ekseni gerçek değerleri, y ekseni ise öngörülen değerleri gösterir. Her ızgaradaki renk hata oranını gösterir. Renk ne kadar açıksa hata oranı da o kadar yüksektir. Örneğin, birçok 5's 3 olarak yanlış sınıflandırılır. Yani (5,3) parlak bir ızgara bakın:
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -179,21 +177,21 @@ plt.show()
 
 ## <a name="deploy-as-a-web-service"></a>Web hizmeti olarak dağıtma
 
-Modeli test ettikten ve sonuçlardan memnun kaldıktan sonra, modeli Container Instances barındırılan bir Web hizmeti olarak dağıtın. 
+Modeli test ettikten ve sonuçlardan memnun olduktan sonra, modeli Kapsayıcı Örnekleri'nde barındırılan bir web hizmeti olarak dağıtın. 
 
-Container Instances için doğru ortamı derlemek için aşağıdaki bileşenleri sağlayın:
-* Modelinin nasıl kullanılacağını gösteren bir Puanlama betiği.
-* Hangi paketlerin yüklenmesi gerektiğini göstermek için bir ortam dosyası.
-* Kapsayıcı örneğini derlemek için bir yapılandırma dosyası.
-* Daha önce eğitilen model.
+Kapsayıcı Örnekleri için doğru ortamı oluşturmak için aşağıdaki bileşenleri sağlayın:
+* Modelin nasıl kullanılacağını gösteren bir puanlama komut dosyası.
+* Hangi paketlerin yüklenmesi gerektiğini gösteren bir ortam dosyası.
+* Kapsayıcı örneğini oluşturmak için bir yapılandırma dosyası.
+* Daha önce eğittin model.
 
 <a name="make-script"></a>
 
 ### <a name="create-scoring-script"></a>Puanlama betiği oluşturma
 
-**Score.py**adlı bir Puanlama betiği oluşturun. Web hizmeti çağrısı, modelinin nasıl kullanılacağını göstermek için bu betiği kullanır.
+**score.py**adlı puanlama komut dosyası oluşturun. Web hizmeti çağrısı, modelin nasıl kullanılacağını göstermek için bu komut dosyasını kullanır.
 
-Puanlama betiğine şu iki gerekli işlevi ekleyin:
+Puanlama komut dosyasına bu iki gerekli işlevi ekleyin:
 * Normalde modeli genel bir nesneye yükleyen `init()` işlevi. Bu işlev, Docker kapsayıcısı başlatıldığında tek bir kez çalıştırılır. 
 
 * `run(input_data)` işlevi, giriş verileri temelinde bir değer tahmin etmek için modeli kullanır. Çalıştırmanın girişleri ve çıkışlarında serileştirme ve seriden çıkarma için normal olarak JSON kullanılır ama başka biçimler de desteklenir.
@@ -227,7 +225,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Ortam dosyası oluşturma
 
-Ardından, betiğin tüm paket bağımlılıklarını belirten **MyENV. yıml**adlı bir ortam dosyası oluşturun. Bu dosya, tüm bu bağımlılıkların Docker görüntüsüne yüklendiğinden emin olmak için kullanılır. Bu modele `scikit-learn` ve `azureml-sdk` gerekir. Tüm özel ortam dosyalarının, bir PIP bağımlılığı olarak > = 1.0.45 ile azureml-varsayılan değeri. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir.
+Sonraki **myenv.yml**adlı bir ortam dosyası oluşturmak , komut dosyasının tüm paket bağımlılıkları belirtir. Bu dosya, tüm bu bağımlılıkların Docker görüntüsüne yüklendiğinden emin olmak için kullanılır. Bu modele `scikit-learn` ve `azureml-sdk` gerekir. Tüm özel ortam dosyaları, verion >= 1,0,45 pip bağımlılığı olarak azureml varsayılanlarını listelemalı. Bu paket, modeli bir web hizmeti olarak barındırmak için gereken işlevselliği içerir.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -239,7 +237,7 @@ myenv.add_pip_package("azureml-defaults")
 with open("myenv.yml", "w") as f:
     f.write(myenv.serialize_to_string())
 ```
-`myenv.yml` dosyanın içeriğini gözden geçirin:
+Dosyanın içeriğini `myenv.yml` gözden geçirin:
 
 ```python
 with open("myenv.yml", "r") as f:
@@ -248,7 +246,7 @@ with open("myenv.yml", "r") as f:
 
 ### <a name="create-a-configuration-file"></a>Yapılandırma dosyası oluşturma
 
-Bir dağıtım yapılandırma dosyası oluşturun. Container Instances Kapsayıcınız için gereken CPU sayısını ve gigabayt miktarını belirtin. Modelinize bağlı olsa da, bir çekirdek ve 1 gigabayt RAM 'in varsayılanı birçok model için yeterlidir. Daha sonra gerekirse, görüntüyü yeniden oluşturmanız ve hizmeti yeniden dağıtmanız gerekir.
+Dağıtım yapılandırma dosyası oluşturun. Konteyner Örnekleri kapsayıcınız için gereken CPU ve gigabayt ram sayısını belirtin. Modelinize bağlı olmasına rağmen, bir çekirdek ve 1 gigabayt RAM varsayılan birçok model için yeterlidir. Daha sonra daha fazlasına ihtiyacınız varsa, görüntüyü yeniden oluşturmanız ve hizmeti yeniden dağıtmanız gerekir.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -260,21 +258,21 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
                                                description='Predict MNIST with sklearn')
 ```
 
-### <a name="deploy-in-container-instances"></a>Container Instances içinde dağıtma
-Dağıtımı tamamlama süresi **yaklaşık yedi ila sekiz dakika**.
+### <a name="deploy-in-container-instances"></a>Konteyner Örneklerinde Dağıtma
+Dağıtımı tamamlamak için tahmini süre **yaklaşık yedi ila sekiz dakikadır.**
 
 Görüntüyü yapılandırın ve dağıtın. Aşağıdaki kod şu adımlardan geçer:
 
-1. Şu dosyaları kullanarak bir görüntü oluşturun:
-   * Puanlama dosyası `score.py`.
-   * Ortam dosyası `myenv.yml`.
+1. Bu dosyaları kullanarak bir görüntü oluşturun:
+   * Puanlama dosyası, `score.py`.
+   * Çevre dosyası, `myenv.yml`.
    * Model dosyası.
 1. Görüntüyü çalışma alanının altına kaydedin. 
-1. Görüntüyü Container Instances kapsayıcısına gönderin.
-1. Görüntüyü kullanarak Container Instances bir kapsayıcı başlatın.
+1. Resmi Kapsayıcı Örnekleri kapsayıcısına gönderin.
+1. Görüntüyü kullanarak Kapsayıcı Örnekleri'nde bir kapsayıcı başlatın.
 1. Web hizmeti HTTP uç noktasını alın.
 
-Kendi ortam dosyanızı tanımlıyorsanız, > = 1.0.45 sürümü ile bir PIP bağımlılığı olarak, azureml-varsayılanlarını listelemenizde lütfen unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir.
+Kendi ortam dosyanızı tanımlıyorsanız, azureml varsayılanlarını >= 1,0,45 sürümüyle pip bağımlılığı olarak listelemeniz gerektiğini lütfen unutmayın. Bu paket, modeli bir web hizmeti olarak barındırmak için gereken işlevselliği içerir.
 
 ```python
 %%time
@@ -294,25 +292,24 @@ service = Model.deploy(workspace=ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-REST istemci çağrılarını kabul eden puanlama web hizmetinin HTTP uç noktasını alın. Bu uç noktayı, Web hizmetini test etmek veya bir uygulamayla bütünleştirmek isteyen herkesle paylaşabilirsiniz: 
+REST istemci çağrılarını kabul eden puanlama web hizmetinin HTTP uç noktasını alın. Bu bitiş noktasını web hizmetini sınamak veya bir uygulamaya entegre etmek isteyen herkesle paylaşabilirsiniz: 
 
 ```python
 print(service.scoring_uri)
 ```
 
+## <a name="test-the-deployed-service"></a>Dağıtılan hizmeti test edin
 
-## <a name="test-the-deployed-service"></a>Dağıtılan hizmeti test etme
-
-Daha önce, tüm test verilerini modelin yerel sürümüyle puanlanır. Artık, dağıtılan modeli test verilerinden alınan 30 görüntüden oluşan rastgele bir örnekle test edebilirsiniz.  
+Daha önce, modelin yerel sürümü ile tüm test verilerini puan. Artık dağıtılan modeli test verilerinden rastgele 30 görüntü örneğiyle test edebilirsiniz.  
 
 Aşağıdaki kod şu adımlardan geçer:
-1. Verileri, Container Instances barındırılan Web hizmetine bir JSON dizisi olarak gönderin. 
+1. Verileri JSON dizisi olarak Kapsayıcı Örnekleri'nde barındırılan web hizmetine gönderin. 
 
-1. Hizmeti çağırmak için SDK'nın `run` API’sini kullanma. Ayrıca, **kıvrımlı**gibi HERHANGI bir http aracını kullanarak ham çağrılar yapabilirsiniz.
+1. Hizmeti çağırmak için SDK'nın `run` API’sini kullanma. Ayrıca **kıvırma**gibi herhangi bir HTTP aracı nı kullanarak ham aramalar yapabilirsiniz.
 
-1. Döndürülen tahminleri yazdırma ve bunları giriş görüntüleriyle birlikte çizme. Kırmızı renkli yazı tipi ve ters görüntü, yanlış sınıflandırılmış örnekleri vurgulamak için kullanılır. 
+1. Döndürülen tahminleri yazdırma ve bunları giriş görüntüleriyle birlikte çizme. Yanlış sınıflandırılan örnekleri vurgulamak için siyah üzerine beyaz kırmızı yazı tipi ve ters görüntü kullanılır. 
 
-Model doğruluğu yüksek olduğundan, yanlış sınıflandırılmış bir örnek görebilmeniz için aşağıdaki kodu birkaç kez çalıştırmanız gerekebilir:
+Model doğruluğu yüksek olduğundan, yanlış sınıflandırılan bir örneği göremeden önce aşağıdaki kodu birkaç kez çalıştırmanız gerekebilir:
 
 ```python
 import json
@@ -347,11 +344,11 @@ for s in sample_indices:
 plt.show()
 ```
 
-Bu sonuç, test görüntülerinin rastgele bir örneğinden oluşur:
+Bu sonuç, test görüntülerinin rastgele bir örneğinden elde edilir:
 
-![Sonuçları gösteren grafik](./media/tutorial-deploy-models-with-aml/results.png)
+![Grafik gösterim sonuçları](./media/tutorial-deploy-models-with-aml/results.png)
 
-Web hizmetini test etmek için ham bir HTTP isteği de gönderebilirsiniz:
+Ayrıca web hizmetini test etmek için ham bir HTTP isteği gönderebilirsiniz:
 
 ```python
 import requests
@@ -376,7 +373,7 @@ print("prediction:", resp.text)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alanını tutmak için bu API çağrısını kullanarak yalnızca Container Instances dağıtımı silebilirsiniz:
+Kaynak grubunu ve diğer öğreticiler ve keşifler için çalışma alanını korumak için, bu API çağrısını kullanarak yalnızca Kapsayıcı Örnekleri dağıtımını silebilirsiniz:
 
 ```python
 service.delete()
@@ -387,8 +384,8 @@ service.delete()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Azure Machine Learning için dağıtım seçenekleri](how-to-deploy-and-where.md)hakkında bilgi edinin.
-+ [Web hizmeti için istemci oluşturma](how-to-consume-web-service.md)hakkında bilgi edinin.
-+  [Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin](how-to-use-parallel-run-step.md) .
-+ Azure Machine Learning modellerinizi [Application Insights](how-to-enable-app-insights.md)izleyin.
-+ [Otomatik algoritma seçim](tutorial-auto-train-models.md) öğreticisini deneyin. 
++ [Azure Machine Learning için](how-to-deploy-and-where.md)tüm dağıtım seçenekleri hakkında bilgi edinin.
++ [Web hizmeti için istemci oluşturmayı](how-to-consume-web-service.md)öğrenin.
++  Büyük miktarlarda veri üzerinde eşzamanlı olarak [öngörülerde bulunun.](how-to-use-parallel-run-step.md)
++ Azure Machine Learning modellerinizi [Uygulama Öngörüleri](how-to-enable-app-insights.md)ile izleyin.
++ [Otomatik algoritma seçim](tutorial-auto-train-models.md) öğretici deneyin. 

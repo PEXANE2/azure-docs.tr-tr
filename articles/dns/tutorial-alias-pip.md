@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure genel IP adresine başvurmak için Azure DNS diğer ad kaydı oluşturma'
+title: 'Öğretici: Azure genel IP adresine başvurmak için bir Azure DNS takma ad kaydı oluşturun'
 description: Bu öğreticide Azure genel IP adresine başvurmak için bir Azure DNS diğer ad kaydını yapılandırma işlemi gösterilmektedir.
 services: dns
 author: rohinkoul
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77149941"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Öğretici: Azure genel IP adresine başvurmak için diğer ad kaydı yapılandırma 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Ağ altyapısı oluşturma.
@@ -25,9 +25,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Diğer ad kaydını test etme.
 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
 Azure DNS’te etki alanınızı barındırma yönergeleri için bkz. [Öğretici: Azure DNS’te etki alanınızı barındırma](dns-delegate-domain-azure-dns.md).
@@ -36,16 +36,16 @@ Bu öğreticide örnek olarak contoso.com etki alanı kullanılmaktadır ancak s
 
 ## <a name="create-the-network-infrastructure"></a>Ağ altyapısını oluşturma
 İlk olarak, web sunucularınızı içine yerleştirmek için bir sanal ağ ve alt ağ oluşturun.
-1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+1. Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
 2. Portalda sol üst köşeden **Kaynak oluştur**'u seçin. Arama kutusuna *kaynak grubu* yazın ve **RG-DNS-Alias-pip** adlı bir kaynak grubu oluşturun.
-3. **Kaynak oluştur** > **Ağ** > **Sanal Ağ**'ı seçin.
+3. Kaynak **Oluştur** > **Sanal** > **ağ'ı**seçin.
 4. **VNet-Server** adlı bir sanal ağ oluşturun. Bunu **RG-DNS-Alias-pip** kaynak grubunun içine yerleştirin ve alt ağı **SN-Web** olarak adlandırın.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Web sunucusu sanal makinesi oluşturma
-1. **Kaynak oluştur** > **Windows Server 2016 VM**'yi seçin.
+1. **Kaynak** > Oluştur**Windows Server 2016 VM'yi**seçin.
 2. Ad için **Web-01** girin ve VM’yi **RG-DNS-Alias-TM** kaynak grubuna yerleştirin. Kullanıcı adı ve parola girip **Tamam**'ı seçin.
 3. **Boyut** için 8 GB RAM'e sahip bir SKU seçin.
-4. **Ayarlar** için **VNet-Servers** sanal ağını ve **SN-Web** alt ağını seçin. Genel gelen bağlantı noktaları için **HTTP** > **HTTPS** > **RDP (3389)** seçin ve ardından **Tamam**'ı seçin.
+4. **Ayarlar** için **VNet-Servers** sanal ağını ve **SN-Web** alt ağını seçin. Ortak gelen bağlantı noktaları için **HTTP** > **HTTPS** > **RDP (3389)** seçeneğini ve ardından **Tamam'ı**seçin.
 5. **Özet** sayfasında **Oluştur**'u seçin.
 
 Bu işlemin tamamlanması birkaç dakika sürer.
@@ -94,4 +94,4 @@ Bu öğreticide oluşturulan kaynaklara ihtiyacınız kalmadığında **RG-DNS-A
 Bu öğreticide Azure genel IP adresine başvurmak için bir diğer ad kaydı oluşturdunuz. Azure DNS ve web uygulamaları hakkında daha fazla bilgi için web uygulaması öğreticileriyle devam edebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Özel etki alanında bir web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)
+> [Özel etki alanında web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Moxtra ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
-description: Azure Active Directory ve Moxtra arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Moxtra ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Moxtra arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,216 +17,216 @@ ms.date: 12/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3e53ba11744b0e78287ffc46c4aac7b99b16b23
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74889644"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Öğretici: Moxtra ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Öğretici: Moxtra ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Moxtra 'ın Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Moxtra 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Moxtra'yı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Moxtra'yı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Moxtra 'a erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla birlikte otomatik olarak oturum açmalarına olanak tanıyın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Moxtra erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Moxtra'da otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Moxtra çoklu oturum açma (SSO) aboneliği etkin.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Moxtra tek oturum açma (SSO) aboneliği ni sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Moxtra, **SP** tarafından başlatılan SSO 'yu destekler
+* Moxtra **SP** başlatılan SSO destekler
 
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir, bu nedenle yalnızca bir örnek bir kiracıda yapılandırılabilir.
 
 ## <a name="adding-moxtra-from-the-gallery"></a>Galeriden Moxtra ekleme
 
-Moxtra 'ın Azure AD ile tümleştirilmesini yapılandırmak için Galeri 'den yönetilen SaaS uygulamaları listenize Moxtra eklemeniz gerekir.
+Moxtra'nın Azure AD'ye entegrasyonunu yapılandırmak için galeriden Moxtra'yı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Moxtra** yazın.
-1. Sonuçlar panelinden **Moxtra** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Moxtra** yazın.
+1. Sonuç panelinden **Moxtra'yı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-moxtra"></a>Moxtra için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-moxtra"></a>Moxtra için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Moxtra Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Moxtra içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'sunu **B.Simon**adlı bir test kullanıcısı kullanarak Moxtra ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile Moxtra'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu Moxtra ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Moxtra ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Moxtra SSO 'Yu yapılandırma](#configure-moxtra-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. **[Moxtra test kullanıcısı oluşturun](#create-moxtra-test-user)** ve bu, kullanıcının Azure AD gösterimine bağlı olan Moxtra 'de B. Simon 'a karşılık gelen bir karşılığı vardır.
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Moxtra SSO'yu yapılandırın](#configure-moxtra-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[Moxtra test kullanıcısını oluşturun](#create-moxtra-test-user)** - Moxtra'da B.Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Moxtra** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında,](https://portal.azure.com/) **Moxtra** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın: `https://www.moxtra.com/service/#login`
+    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://www.moxtra.com/service/#login`
 
-1. Moxtra uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. Moxtra uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir. Kullanıcı Öznitelikleri iletişim kutusunu açmak için **Edit** simgesini tıklatın.
 
     ![image](common/edit-attribute.png)
 
-1. Moxtra uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Kullanıcı öznitelikleri iletişim kutusundaki Kullanıcı talepleri bölümünde aşağıdaki tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
+1. Yukarıdakilere ek olarak, Moxtra uygulaması SAML yanıtında birkaç özniteliğin daha geri geçirilmesini bekler. Kullanıcı Öznitelikleri iletişim kutusundaki Kullanıcı Talepleri bölümünde, aşağıdaki tabloda gösterildiği gibi SAML belirteç özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği|
+    | Adı | Kaynak Özniteliği|
     | ------------------- | -------------------- |    
-    | ad | Kullanıcı. |
-    | soyadı | User. soyadı |
-    | ıdpid    | Azure AD tanımlayıcısını < >
+    | Ad | user.givenname |
+    | Soyadı | user.surname |
+    | idpid    | < Azure AD Tanımlayıcı >
 
     > [!Note]
-    > **Idpid** özniteliği değeri gerçek değil. 5\. adımdaki **Moxtra** bölümünden gerçek değeri alabilirsiniz. 
+    > **Idpid** özniteliğinin değeri gerçek değildir. Gerçek değeri **Kurulum Moxtra** bölümünden adım#8'den alabilirsiniz. 
 
-    1. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
+    1. **Kullanıcı taleplerini yönet** iletişim kutusunu açmak için yeni **talep ekle'yi** tıklatın.
 
-    1. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
+    1. **Ad** metin kutusunda, bu satır için gösterilen öznitelik adını yazın.
 
-    1. **Ad alanını** boş bırakın.
+    1. Ad **alanını** boş bırakın.
 
-    1. **Öznitelik**olarak kaynak seçin.
+    1. **Kaynak'ı Öznitelik**olarak seçin.
 
-    1. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
+    1. Kaynak **öznitelik** listesinden, bu satır için gösterilen öznitelik değerini yazın.
 
-    1. Tıklayın **Tamam**
+    1. **Tamam'ı** tıklatın
 
-    1. **Kaydet** düğmesine tıklayın.
+    1. **Kaydet**'e tıklayın.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Moxtra ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Moxtra'yı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Moxtra 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Moxtra'ya erişim izni vererek Azure tek oturum açma özelliğini kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Moxtra**' ı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Moxtra'yı**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-moxtra-sso"></a>Moxtra SSO 'yu yapılandırma
+## <a name="configure-moxtra-sso"></a>Moxtra SSO'nun yapılandırış
 
-1. Başka bir tarayıcı penceresinde, Moxtra şirket sitenizde yönetici olarak oturum açın.
+1. Başka bir tarayıcı penceresinde, Yönetici olarak Moxtra şirket sitenizde oturum açın.
 
-2. Soldaki araç çubuğunda, **yönetici konsolu > SAML çoklu oturum açma**' ya tıklayın ve ardından **Yeni**' ye tıklayın.
+2. Soldaki araç çubuğunda, **Admin Console > SAML Tek Oturum Açma'yı**tıklatın ve ardından **Yeni'yi**tıklatın.
    
-    ![Çoklu oturum açmayı yapılandırın](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Tek İşaret-On'u Yapılandır](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
-3. **SAML** sayfasında, aşağıdaki adımları uygulayın:
+3. **SAML** sayfasında aşağıdaki adımları gerçekleştirin:
    
-    ![Çoklu oturum açmayı yapılandırın](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Tek İşaret-On'u Yapılandır](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a. **Ad** metin kutusuna yapılandırmanız için bir ad yazın (örneğin: *SAML*). 
+    a. **Ad** metin kutusunda, yapılandırmanız için bir ad yazın (örn. *SAML).* 
   
-    b. **IDP VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın. 
+    b. **IdP Entity ID** textbox'a, Azure portalından kopyalamış olduğunuz **Azure AD Tanımlayıcısı** değerini yapıştırın. 
  
-    c. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın. 
+    c. **Giriş URL** textbox'ına, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin** değerini yapıştırın. 
  
-    d. **Authncontextclassref** metin kutusunda **urn: oasu: adlar: TC: SAML: 2.0: AC: sınıflar: Password**yazın. 
+    d. **AuthnContextClassRef** textbox'ta, **vazo:vaha:adlar:tc:SAML:2.0:ac:classes:Password**. 
  
-    e. **NameID biçimi** metin kutusuna **urn: oassıs: names: TC: SAML: 1.1: NameID-Format: emapostaadı**yazın. 
+    e. **NameID Biçimli** metin kutusunda, **tür vazo:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**. 
  
-    f. Not defteri 'nde Azure portal indirdiğiniz sertifikayı açın, içeriği kopyalayın ve sonra **sertifika** metin kutusuna yapıştırın.    
+    f. Not defterinde Azure portalından indirdiğiniz sertifikayı açın, içeriği kopyalayın ve **ardından Sertifika** metin kutusuna yapıştırın.    
  
-    g. SAML e-posta etki alanı metin kutusuna SAML e-posta etki alanınızı yazın.    
+    g. SAML e-posta etki alanı textbox'ına SAML e-posta etki alanınızı yazın.    
   
     >[!NOTE]
-    >Etki alanını doğrulama adımlarını görmek için**aşağıdaki "i" düğmesine**tıklayın.
+    >Etki alanını doğrulamak için adımları görmek için aşağıdaki "**i**" seçeneğini tıklayın.
 
     h. **Güncelleştir**’e tıklayın.
 
 ### <a name="create-moxtra-test-user"></a>Moxtra test kullanıcısı oluşturma
 
-Bu bölümün amacı, Moxtra içinde B. Simon adlı bir Kullanıcı oluşturmaktır.
+Bu bölümün amacı Moxtra'da B.simon adında bir kullanıcı oluşturmaktır.
 
-**Moxtra 'de B. Simon adlı bir kullanıcı oluşturmak için aşağıdaki adımları uygulayın:**
+**Moxtra'da B.simon adında bir kullanıcı oluşturmak için aşağıdaki adımları gerçekleştirin:**
 
-1. Moxtra şirket sitenizde yönetici olarak oturum açın.
+1. Yönetici olarak Moxtra şirket sitenizde oturum açın.
 
-1. Soldaki araç çubuğunda **yönetici konsolu > Kullanıcı yönetimi**' ne ve ardından **Kullanıcı Ekle**' ye tıklayın.
+1. Soldaki araç çubuğunda, **Yönetici Konsolu > Kullanıcı Yönetimi'ni**tıklatın ve ardından **Kullanıcı Ekle'yi**tıklatın.
    
-    ![Çoklu oturum açmayı yapılandırın](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Tek İşaret-On'u Yapılandır](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
-1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
+1. Kullanıcı **Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
   
-    a. **Ad** metin kutusuna **B**yazın.
+    a. Ad **metin** kutusunda, **B**yazın.
   
     b. **Soyadı** metin kutusuna **Simon**yazın.
   
-    c. **E-posta** metin kutusuna, Azure Portal ile aynı e-posta adresini yazın.
+    c. **E-posta** metin kutusuna, B.simon'ın e-posta adresini Azure portalındakiyle aynı yazın.
   
-    d. **Bölüm** metin kutusuna **dev**yazın.
+    d. **Bölüm** metin kutusuna **Dev**yazın.
   
-    e. **Bölüm** metin **kutusuna yazın.**
+    e. **Bölüm** metin kutusuna **BT**yazın.
   
-    f. **Yönetici**' yi seçin.
+    f. **Yönetici'yi**seçin.
   
-    g. **Ekle**'ye tıklayın.
+    g. **Ekle**’ye tıklayın.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Moxtra kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız Moxtra ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Moxtra karosunu tıklattığınızda, SSO'yu kurduğunuz Moxtra'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Moxtra 'ı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Moxtra'yı deneyin](https://aad.portal.azure.com/)
 

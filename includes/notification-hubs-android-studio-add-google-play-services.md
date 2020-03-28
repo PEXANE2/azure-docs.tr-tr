@@ -9,33 +9,33 @@ ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: cd202c98ed605209f5600965ecdb6c0b4c03c17e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67509120"
 ---
-1. Android Studio'da **Araçları** menüsünü ve ardından **SDK Yöneticisi**. 
-2. Projenizde kullanılan Android SDK'sının hedef sürümü seçin. Ardından **Paket ayrıntılarını göster**. 
+1. Android Studio'da menüdeki **Araçlar'ı** seçin ve ardından **SDK Yöneticisi'ni**seçin. 
+2. Projenizde kullanılan Android SDK'nın hedef sürümünü seçin. Ardından **Paket Ayrıntılarını Göster'i**seçin. 
 
-    ![Android SDK Yöneticisi - select hedef sürümü](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Seçin **Google API'leri**, zaten yüklü değilse.
+    ![Android SDK Manager - hedef sürümü seçin](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Zaten yüklü değilse, **Google API'leri**seçin.
 
-    ![Android SDK Yöneticisi - Google API'leri seçili](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
-4. Geçiş **SDK Tools** sekmesi. Google Play Hizmetleri henüz yüklemediyseniz, seçin **Google Play Hizmetleri** aşağıdaki görüntüde gösterildiği gibi. Ardından **Uygula** yüklemek için. SDK yolunun sonraki bir adım için olduğunu unutmayın.
+    ![Android SDK Yöneticisi - Google API'ler seçildi](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. **SDK Araçları** sekmesine geçin. Google Play Hizmetleri'ni henüz yüklemediyseniz, aşağıdaki resimde gösterildiği gibi **Google Play Hizmetleri'ni** seçin. Ardından yüklemek için **Uygula'yı** seçin. SDK yolunun sonraki bir adım için olduğunu unutmayın.
 
-    ![Android SDK Yöneticisi - seçili olan Google Play Hizmetleri](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
-3. Görürseniz **değişikliği onaylayın** iletişim kutusunda **Tamam**. Bileşen yükleyici istenen bileşenleri yükler. Seçin **son** bileşenler yüklendikten sonra.
-4. Seçin **Tamam** kapatmak için **yeni projeler için ayarları** iletişim kutusu.  
-5. Build.gradle dosyasını açın **uygulama** dizin ve ardından altındaki şu satırı ekleyin `dependencies`. 
+    ![Android SDK Yöneticisi - Google Play Hizmetleri seçildi](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. **Değiştir'i onayla** iletişim kutusunu **görüyorsanız, Tamam'ı**seçin. Bileşen Yükleyici istenen bileşenleri yükler. Bileşenler yüklendikten sonra **Bitir'i** seçin.
+4. **Yeni Projeler için Ayarlar** iletişim kutusunu kapatmak için **Tamam'ı** seçin.  
+5. **uygulama** dizinindeki build.gradle dosyasını açın ve aşağıdaki satırı `dependencies`ekleyin. 
 
     ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
-5. Seçin **Şimdi Eşitle** araç çubuğunda simge.
+5. Araç çubuğunda **Şimdi Eşitle** simgesini seçin.
 
-    ![Gradle ile eşitleme](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
-1. AndroidManifest.xml dosyasını açın ve ardından aşağıdaki etiketine ekleyin *uygulama* etiketi.
+    ![Gradle ile senkronize](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
+1. AndroidManifest.xml dosyasını açın ve *ardından uygulama* etiketine aşağıdaki etiketi ekleyin.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

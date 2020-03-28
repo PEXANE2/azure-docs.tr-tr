@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure Front Door Service için özel etki alanında HTTPS'yi yapılandırma | Microsoft Docs
-description: Bu öğreticide, özel etki alanı için Azure Front Door Service yapılandırmanızda HTTPS’yi nasıl etkinleştirip devre dışı bırakacağınızı öğrenirsiniz.
+title: Öğretici - Azure Ön Kapı için özel bir etki alanında HTTPS'yi yapılandırın | Microsoft Dokümanlar
+description: Bu eğitimde, özel bir etki alanı için Azure Ön Kapı yapılandırmanızda HTTPS'yi etkinleştirmeyi ve devre dışı kmayı öğrenirsiniz.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 40ec859802da2f00154e750ea717da3da0f46568
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512887"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471838"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
 
 Bu öğreticide ön uç konakları bölümü altında Front Door’unuzla ilişkili özel bir etki alanı için HTTPS protokolünün nasıl etkinleştirileceği gösterilir. Özel etki alanınızda HTTPS protokolünü kullanarak (örneğin, https:\//www.contoso.com), hassas veriler internet üzerinden gönderildiğinde bunların TLS/SSL şifrelemesi ile güvenli bir şekilde teslim edilmesini sağlarsınız. Web tarayıcınız HTTPS üzerinden bir web sitesine bağlanırken, web sitesinin güvenlik sertifikasını onaylar ve bu sertifikanın yasal bir sertifika yetkilisi tarafından verildiğini doğrular. Bu işlem güvenlik sağlar ve web uygulamalarınızı saldırılara karşı korur.
 
-Azure Front Door Service, varsayılan olarak Front Door varsayılan konak adında HTTPS’yi destekler. Örneğin, bir Front Door (https:\//contoso.azurefd.net gibi) oluşturursanız, https://contoso.azurefd.net 'e yönelik istekler için HTTPS otomatik olarak etkinleştirilir. Öte yandan, 'www.contoso.com' özel etki alanını ekledikten sonra bu ön uç konağı için HTTPS'yi etkinleştirmeniz gerekecektir.   
+Azure Ön Kapı, varsayılan olarak ön kapı varsayılan ana bilgisayar adında HTTPS'yi destekler. Örneğin, bir Front Door (https:\//contoso.azurefd.net gibi) oluşturursanız, https://contoso.azurefd.net'e yönelik istekler için HTTPS otomatik olarak etkinleştirilir. Öte yandan, 'www.contoso.com' özel etki alanını ekledikten sonra bu ön uç konağı için HTTPS'yi etkinleştirmeniz gerekecektir.   
 
 Özel HTTPS özelliğinin en önemli niteliklerinden bazıları şunlardır:
 
@@ -33,7 +33,7 @@ Azure Front Door Service, varsayılan olarak Front Door varsayılan konak adınd
 
 - Eksiksiz sertifika yönetimi kullanılabilir: Sizin için tüm sertifika tedariki ve yönetimi gerçekleştirilir. Sertifikalar sona ermeden önce otomatik olarak sağlanır ve yenilenir. Bu da sertifika süre sonu nedeniyle hizmette yaşanabilecek kesinti risklerini ortadan kaldırır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > - Özel etki alanınızda HTTPS protokolünü etkinleştirme.
 > - AFD tarafından yönetilen sertifikayı kullanma 
@@ -50,12 +50,12 @@ Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door o
 
 ## <a name="ssl-certificates"></a>SSL sertifikaları
 
-Front Door özel etki alanında içeriği güvenli bir şekilde teslim etmek üzere HTTPS protokolünü etkinleştirmek için SSL sertifikası kullanmanız gerekir. Azure Front Door Service tarafından yönetilen bir sertifika kullanmayı seçebilir ya da kendi sertifikanızı kullanabilirsiniz.
+Front Door özel etki alanında içeriği güvenli bir şekilde teslim etmek üzere HTTPS protokolünü etkinleştirmek için SSL sertifikası kullanmanız gerekir. Azure Ön Kapı tarafından yönetilen bir sertifikayı kullanmayı veya kendi sertifikanızı kullanmayı seçebilirsiniz.
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Seçenek 1 (varsayılan): Front Door tarafından yönetilen bir sertifika kullanın
 
-Azure Front Door Service tarafından yönetilen bir sertifika kullandığınızda HTTPS özelliği sadece birkaç tıklama ile etkinleştirilebilir. Azure Front Door Service, tedarik ve yenileme gibi sertifika yönetimi görevlerini tamamen gerçekleştirir. Özelliği etkinleştirmenizin ardından işlem hemen başlar. Özel etki alanı önceden Front Door’un varsayılan ön uç konağına (`{hostname}.azurefd.net`) eşlendiyse başka bir eylem gerekmez. Front Door, adımları işler ve isteğinizi otomatik olarak tamamlar. Ancak özel etki alanınız başka bir yerde eşlendiyse, etki alanı sahipliğinizi doğrulamak için e-posta kullanmanız gerekir.
+Azure Ön Kapı tarafından yönetilen bir sertifika kullandığınızda, HTTPS özelliği yalnızca birkaç tıklamayla açılabilir. Azure Ön Kapı, satın alma ve yenileme gibi sertifika yönetimi görevlerini tamamen işler. Özelliği etkinleştirmenizin ardından işlem hemen başlar. Özel etki alanı önceden Front Door’un varsayılan ön uç konağına (`{hostname}.azurefd.net`) eşlendiyse başka bir eylem gerekmez. Front Door, adımları işler ve isteğinizi otomatik olarak tamamlar. Ancak özel etki alanınız başka bir yerde eşlendiyse, etki alanı sahipliğinizi doğrulamak için e-posta kullanmanız gerekir.
 
 Özel bir etki alanı üzerinde HTTPS'yi etkinleştirmek için aşağıdaki adımları uygulayın:
 
@@ -72,26 +72,26 @@ Azure Front Door Service tarafından yönetilen bir sertifika kullandığınızd
 
 ### <a name="option-2-use-your-own-certificate"></a>Seçenek 2: Kendi sertifikanızı kullanın
 
-HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanabilirsiniz. Bu işlem, sertifikalarınızı güvenli bir şekilde depolamanıza olanak tanıyan Azure Key Vault ile tümleştirme yoluyla gerçekleştirilir. Azure Front Door Service, sertifikanızı almak için bu güvenli mekanizmayı kullanır ve birkaç ek adım gerektirir. SSL sertifikanızı oluştururken, bunu izin verilen bir sertifika yetkilisiyle (CA) oluşturmanız gerekir. Buna karşılık, izin verilmeyen bir CA kullanırsanız isteğiniz reddedilir. İzin verilen CA'ların listesi için bkz. [Azure Front Door Service'te özel HTTPS'leri etkinleştirmek için izin verilen sertifika yetkilileri](front-door-troubleshoot-allowed-ca.md).
+HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanabilirsiniz. Bu işlem, sertifikalarınızı güvenli bir şekilde depolamanıza olanak tanıyan Azure Key Vault ile tümleştirme yoluyla gerçekleştirilir. Azure Ön Kapı, sertifikanızı almak için bu güvenli mekanizmayı kullanır ve birkaç ek adım gerektirir. SSL sertifikanızı oluştururken, bunu izin verilen bir sertifika yetkilisiyle (CA) oluşturmanız gerekir. Buna karşılık, izin verilmeyen bir CA kullanırsanız isteğiniz reddedilir. İzin verilen CA'ların listesi için, [Azure Ön Kapı'da özel HTTPS etkinleştirmek için İzin Verilen sertifika yetkililerine](front-door-troubleshoot-allowed-ca.md)bakın.
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault hesabınızı ve sertifikanızı hazırlama
  
 1. Azure Key Vault: Özel HTTPS’yi etkinleştirmek istediğiniz Front Door’unuzla aynı abonelik altında çalışan bir Azure Key Vault hesabınız olması gerekir. Azure Key Vault hesabınız yoksa oluşturun.
 
 > [!WARNING]
-> Azure ön kapı hizmeti şu anda yalnızca ön kapı yapılandırmasıyla aynı abonelikteki Key Vault hesaplarını desteklemektedir. Front Door’dan farklı bir abonelik altındaki Key Vault’un seçilmesi hatayla sonuçlanır.
+> Azure Ön Kapı şu anda Yalnızca Ön Kapı yapılandırması ile aynı abonelikteki Key Vault hesaplarını destekler. Front Door’dan farklı bir abonelik altındaki Key Vault’un seçilmesi hatayla sonuçlanır.
 
-2. Azure Key Vault sertifikaları: Zaten bir sertifikanız varsa, bu sertifikayı doğrudan Azure Key Vault hesabınıza yükleyebilir veya doğrudan Azure Key Vault’un tümleştirildiği iş ortağı CA'lardan birinin Azure Key Vault’u üzerinden yeni bir sertifika oluşturabilirsiniz. Sertifikanızı **gizli**değil bir **sertifika** nesnesi olarak karşıya yükleyin.
-
-> [!IMPORTANT]
-> Sertifikayı parola koruması **olmadan** PFX biçiminde karşıya yüklemeniz gerekir.
-
-#### <a name="register-azure-front-door-service"></a>Azure Front Door Service’i kaydetme
-
-Azure Front Door Service hizmet sorumlusunu PowerShell aracılığıyla Azure Active Directory’nize uygulama olarak kaydedin.
+2. Azure Key Vault sertifikaları: Zaten bir sertifikanız varsa, bu sertifikayı doğrudan Azure Key Vault hesabınıza yükleyebilir veya doğrudan Azure Key Vault’un tümleştirildiği iş ortağı CA'lardan birinin Azure Key Vault’u üzerinden yeni bir sertifika oluşturabilirsiniz. Sertifikanızı **gizli**değil, **sertifika** nesnesi olarak yükleyin.
 
 > [!NOTE]
-> Bu eylem, genel yönetici izinleri gerektirir ve her kiracı için yalnızca **bir kez** gerçekleştirilmesi gerekir.
+> Kendi SSL sertifikanız için Front Door, EC şifreleme algoritmalarına sahip sertifikaları desteklemez.
+
+#### <a name="register-azure-front-door"></a>Azure Ön Kapıyı Kaydedin
+
+PowerShell aracılığıyla Azure Active Directory'nizde Azure Ön Kapı'nın hizmet sorumlusunu uygulama olarak kaydedin.
+
+> [!NOTE]
+> Bu eylem, Genel Yönetici izinleri gerektirir ve kiracı başına yalnızca **bir kez** gerçekleştirilmesi gerekir.
 
 1. Gerekirse yerel makinenizdeki PowerShell’de [Azure PowerShell](/powershell/azure/install-az-ps)’i yükleyin.
 
@@ -99,23 +99,23 @@ Azure Front Door Service hizmet sorumlusunu PowerShell aracılığıyla Azure Ac
 
      `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-#### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Anahtar kasanıza Azure Front Door Service erişimi verme
+#### <a name="grant-azure-front-door-access-to-your-key-vault"></a>Azure Ön Kapı erişimini anahtar kasanıza verme
  
-Azure Key Vault hesabınızdaki sertifikalara erişmek için Azure ön kapı hizmeti 'ne izin verin.
+Azure Key Vault hesabınızdaki sertifikalara erişmek için Azure Ön Kapı izni ver.
 
 1. Anahtar kasası hesabınızda AYARLAR bölümünden **Erişim ilkeleri**’ni ve sonra **Yeni ekle**’yi seçip yeni bir ilke oluşturun.
 
-2. **Sorumlu seç** bölümünde **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**'yi arayın ve **Microsoft.Azure.Frontdoor**’u seçin. **Seç**'e tıklayın.
+2. **Sorumlu seç** bölümünde **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**'yi arayın ve **Microsoft.Azure.Frontdoor**’u seçin. **Seç'i**tıklatın.
 
-3. **Gizli izinler**' de, sertifikayı almak Için ön kapıya izin vermek için **Al** ' ı seçin.
+3. **Gizli izinlerde,** Ön Kapı'nın **sertifikayı** almasına izin ver'i seçin.
 
-4. Sertifika **izinleri**' nde, sertifikayı almak Için ön kapıya izin vermek için **Al** ' ı seçin.
+4. **Sertifika izinlerinde,** Ön Kapı'nın sertifikayı almasına izin ver'i **seçin.**
 
-5. **Tamam**’ı seçin. 
+5. **Tamam'ı**seçin. 
 
-    Azure ön kapı hizmeti artık bu Key Vault ve bu Key Vault depolanan sertifikalara erişebilir.
+    Azure Ön Kapı artık bu Anahtar Kasasına ve bu Anahtar Kasası'nda depolanan sertifikalara erişebilir.
  
-#### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>Dağıtım için Azure Front Door Service sertifikası seçme
+#### <a name="select-the-certificate-for-azure-front-door-to-deploy"></a>Dağıtmak için Azure Ön Kapı sertifikasını seçin
  
 1. Portalda Front Door’unuza dönün. 
 
@@ -125,9 +125,9 @@ Azure Key Vault hesabınızdaki sertifikalara erişmek için Azure ön kapı hiz
 
 3. Sertifika yönetimi türü bölümünde **Kendi sertifikamı kullan**’ı seçin. 
 
-4. Azure Front Door Service için, Key Vault hesabı aboneliğinin Front Door ile aynı olması gerekir. Bir anahtar kasası, sertifika (gizli gizi) ve sertifika sürümü seçin.
+4. Azure Ön Kapı, Key Vault hesabının aboneliğinin Ön Kapınızla aynı olması gerekir. Bir anahtar kasası, sertifika (gizli gizi) ve sertifika sürümü seçin.
 
-    Azure Front Door Service şu bilgileri listeler: 
+    Azure Ön Kapı aşağıdaki bilgileri listeler: 
     - Abonelik kimliğiniz için anahtar kasası hesapları. 
     - Seçilen anahtar kasası altındaki sertifikalar (gizli diziler). 
     - Kullanılabilir sertifika sürümleri. 
@@ -147,13 +147,13 @@ Kendi sertifikanızı kullanıyorsanız etki alanı doğrulaması gerekmez.
 
 CNAME kaydınız, *Ad*’ın özel etki alanınız, *Değer*’in ise Front Door’unuzun varsayılan .azurefd.net konak adı olduğu aşağıdaki biçimde olmalıdır:
 
-| Ad            | Tür  | Değer                 |
+| Adı            | Tür  | Değer                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
 CNAME kayıtları hakkında daha fazla bilgi için bkz. [CNAME DNS kaydı oluşturma](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
-CNAME kaydınız doğru biçimdeyse DigiCert, özel etki alanı adınızı otomatik olarak doğrular ve etki alanı adınız için ayrılmış bir sertifika oluşturur. DigitCert size doğrulama e-postası göndermez ve isteğinizi onaylamanız gerekmez. Sertifika bir yıl boyunca geçerlidir ve süresi dolmadan önce autorenewed olacaktır. [Yayılma için bekleme](#wait-for-propagation) adımına geçin. 
+CNAME kaydınız doğru biçimdeyse DigiCert, özel etki alanı adınızı otomatik olarak doğrular ve etki alanı adınız için ayrılmış bir sertifika oluşturur. DigitCert size doğrulama e-postası göndermez ve isteğinizi onaylamanız gerekmez. Sertifika bir yıl için geçerlidir ve süresi dolmadan önce otomatik olarak yenilenir. [Yayılma için bekleme](#wait-for-propagation) adımına geçin. 
 
 Otomatik doğrulama genellikle birkaç dakika sürer. Bir saat içinde etki alanınızı doğrulanmış olarak görmüyorsanız destek bileti açın.
 
@@ -176,7 +176,7 @@ webmaster@&lt;etki-alanı-adınız.com&gt;
 hostmaster@&lt;etki-alanı-adınız.com&gt;  
 postmaster@&lt;.com&gt;  
 
-Birkaç dakika içinde sizden isteği onaylamanızı isteyen, aşağıdaki örneğe benzer bir e-posta alırsınız. Bir istenmeyen posta filtresi kullanıyorsanız, izin verilenler listesine admin@digicert.com ekleyin. E-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
+Birkaç dakika içinde sizden isteği onaylamanızı isteyen, aşağıdaki örneğe benzer bir e-posta alırsınız. Spam filtresi kullanıyorsanız, izin admin@digicert.com verenler listesine ekleyin. E-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
 
 Onay bağlantısına tıkladığınızda, çevrimiçi bir onay formuna yönlendirilirsiniz. Formdaki yönergeleri uygulayın. İki doğrulama seçeneğiniz vardır:
 
@@ -184,7 +184,7 @@ Onay bağlantısına tıkladığınızda, çevrimiçi bir onay formuna yönlendi
 
 - Yalnızca bu istekte kullanılan söz konusu ana bilgisayar adını onaylayabilirsiniz. Sonraki istekler için ek onay gereklidir.
 
-DigiCert onaydan sonra özel etki alanı adınız için sertifika oluşturma işlemlerini tamamlar. Sertifika bir yıl boyunca geçerlidir ve bu süre dolmadan önce autorenewed olacaktır.
+DigiCert onaydan sonra özel etki alanı adınız için sertifika oluşturma işlemlerini tamamlar. Sertifika bir yıl için geçerlidir ve süresi dolmadan önce otomatik olarak yenilenir.
 
 ## <a name="wait-for-propagation"></a>Yayılma için bekleme
 
@@ -224,7 +224,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>HTTPS özelliğini devre dışı bırakma 
 
-1. [Azure portalda](https://portal.azure.com)**Azure Front Door Service** yapılandırmanıza göz atın.
+1. Azure [portalında](https://portal.azure.com)Azure Ön **Kapı** yapılandırmanıza göz atın.
 
 2. Ön uç konakları listesinde HTTPS’yi devre dışı bırakmak istediğiniz özel etki alanına tıklayın.
 
@@ -252,7 +252,7 @@ Aşağıdaki tabloda, HTTPS’yi devre dışı bıraktığınızda oluşan işle
 
 2. *IP tabanlı veya SNI TLS/SSL kullanıyor musunuz?*
 
-    Azure Front Door Service SNI TLS/SSL kullanır.
+    Azure Ön Kapı SNI TLS/SSL kullanır.
 
 3. *DigiCert’ten etki alanı doğrulama e-postası almazsam ne olur?*
 

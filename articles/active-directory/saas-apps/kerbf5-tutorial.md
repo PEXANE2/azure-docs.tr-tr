@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve F5 arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: F5 ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve F5 arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,485 +17,485 @@ ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75431465"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. F5 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, F5'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. F5'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de F5 'e erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla F5 'e otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* F5 erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla F5'te otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-* F5 çoklu oturum açma (SSO) etkin abonelik.
+* F5 tek oturum açma (SSO) özellikli abonelik.
 
-* Ortak çözümü dağıtmak için aşağıdaki lisans gerekir:
-    * F5 BIG-IP® En Iyi demeti (veya)
+* Ortak çözümün dağıtılması için aşağıdaki lisans lar yer almak için aşağıdaki lisanslar yer almak ta bir
+    * F5 BIG-IP® En iyi paket (veya)
 
-    * F5 BIG-IP Access Policy Manager™ (APM) tek başına lisansı
+    * F5 BIG-IP Erişim Politikası Yöneticisi™ (APM) bağımsız lisans
 
-    * F5 BIG-IP Access Policy Manager™ (APM) bir büyük IP F5 BIG-IP® yerel Traffic Manager™ (LTM) eklenti lisansı.
+    * F5 BIG-IP Erişim Politikası Yöneticisi™ (APM) mevcut bir BIG-IP F5 BIG-IP® Yerel Trafik Yöneticisi™ (LTM) üzerinde eklenti lisans.
 
-    * Yukarıdaki lisansın yanı sıra, F5 sistemine de lisans verebilir:
+    * Yukarıdaki lisansa ek olarak, F5 sistemi de lisanslı olabilir:
 
-        * URL kategorisi veritabanını kullanmak için bir URL filtreleme aboneliği
+        * URL kategorisi veritabanını kullanmak için bir URL Filtreleme aboneliği
 
-        * Bilinen saldırganlar ve kötü amaçlı trafiği algılamak ve engellemek için F5 IP Intelligence aboneliği
+        * Bilinen saldırganları ve kötü amaçlı trafiği algılamak ve engellemek için bir F5 IP Intelligence aboneliği
 
-        * Güçlü kimlik doğrulaması için dijital anahtarları korumak ve yönetmek için bir ağ donanımı güvenlik modülü (HSM)
+        * Güçlü kimlik doğrulaması için dijital anahtarları korumak ve yönetmek için bir ağ donanım güvenlik modülü (HSM)
 
-* F5 BIG-IP sistemi APM modülleriyle sağlanır (LTM isteğe bağlıdır)
+* F5 BIG-IP sistemi APM modülleri ile sağlanır (LTM isteğe bağlıdır)
 
-* İsteğe bağlı olsa da, F5 sistemlerini, yüksek kullanılabilirlik (HA) için kayan bir IP adresi ile birlikte etkin bekleme çifti içeren bir [eşitleme/yük devretme cihaz grubunda](https://techdocs.f5.com/content/techdocs/en-us/bigip-14-1-0/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG) dağıtmanız önemle önerilir. Bağlantı toplama Denetim Protokolü (LACP) kullanılarak daha fazla arabirim artıklığı elde edilebilir. LACP, bağlı fiziksel arabirimleri tek bir sanal arabirim (toplama grubu) olarak yönetir ve grup içindeki tüm arabirim başarısızlıklarını algılar.
+* İsteğe bağlı olsa da, F5 sistemlerinin etkin bekleme çiftini içeren bir [eşitleme/başarısız cihaz grubunda](https://techdocs.f5.com/content/techdocs/en-us/bigip-14-1-0/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG) yüksek kullanılabilirlik için kayan bir IP adresiyle (HA) dağıtılması önerilir. Bağlantı Toplama Denetim Protokolü (LACP) kullanılarak daha fazla arabirim artıklığı elde edilebilir. LACP bağlı fiziksel arabirimleri tek bir sanal arabirim (toplam grup) olarak yönetir ve grup içindeki tüm arabirim hatalarını algılar.
 
-* Kerberos uygulamaları için, kısıtlı temsilciye yönelik bir şirket içi AD hizmet hesabı.  AD temsili hesabı oluşturmak için [F5 belgelerine](https://support.f5.com/csp/article/K43063049) bakın.
+* Kerberos uygulamaları için, kısıtlı delegasyon için bir şirket içi AD hizmet hesabı.  BIR AD delegasyonu hesabı oluşturmak için [F5 Belgeleri'ne](https://support.f5.com/csp/article/K43063049) bakın.
 
-## <a name="access-guided-configuration"></a>Kılavuzlu yapılandırmaya erişin
+## <a name="access-guided-configuration"></a>Access güdümlü yapılandırma
 
-* Access Kılavuzlu yapılandırma ', F5 TMOS Version 13.1.0.8 ve üzeri sürümlerde desteklenir. BÜYÜK IP sisteminiz 13.1.0.8 altında bir sürüm çalıştırıyorsa, lütfen **Gelişmiş yapılandırma** bölümüne bakın.
+* Access guided configuration' F5 TMOS sürüm 13.1.0.8 ve üzeri sürümde desteklenir. BIG-IP sisteminiz 13.1.0.8'in altındaki bir sürümü çalıştırıyorsa, lütfen **Gelişmiş yapılandırma** bölümüne bakın.
 
-* Erişim destekli yapılandırma, tamamen yeni ve kolaylaştırılmış bir kullanıcı deneyimi sunar. Bu iş akışı tabanlı mimari, seçilen topolojiye uyarlanmış, sezgisel, yeniden entrant yapılandırma adımları sağlar.
+* Access güdümlü yapılandırma tamamen yeni ve kolaylaştırılmış bir kullanıcı deneyimi sunar. Bu iş akışı tabanlı mimari, seçili topolojiye uygun sezgisel, yeniden giren yapılandırma adımları sağlar.
 
-* Yapılandırmaya devam etmeden önce, [downloads.F5.com](https://login.f5.com/resource/login.jsp?ctx=719748)adresinden en son kullanım örneği paketini indirerek Kılavuzlu yapılandırmayı yükseltin. Yükseltmek için aşağıdaki yordamı izleyin.
+* Yapılandırmaya geçmeden önce, [downloads.f5.com](https://login.f5.com/resource/login.jsp?ctx=719748)en son kullanım örneği paketini indirerek kılavuzlu yapılandırmayı yükseltin. Yükseltmek için aşağıdaki yordamı izleyin.
 
     >[!NOTE]
-    >Aşağıdaki ekran görüntüleri, en son yayınlanan sürüme yöneliktir (AGC sürüm 5,0 ile büyük IP 15,0). Aşağıdaki yapılandırma adımları, 13.1.0.8 ile en son büyük IP sürümüne kadar bu kullanım durumu için geçerlidir.
+    >Aşağıdaki ekran görüntüleri en son yayımlanan sürümü (BIG-IP 15.0 AGC sürümü 5.0 ile) içindir. Aşağıdaki yapılandırma adımları, 13.1.0.8 ile en son BIG-IP sürümü arasında bu kullanım örneği için geçerlidir.
 
-1. F5 BIG-IP Web Kullanıcı arabiriminde, **erişim > > Kılavuzu yapılandırması**' na tıklayın.
+1. F5 BIG-IP Web UI'de **Access >> Guide Configuration'a**tıklayın.
 
-2. **Kılavuzlu yapılandırma** sayfasında, sol üst köşedeki **Kılavuzlu yapılandırmayı Yükselt** ' e tıklayın.
+2. **Kılavuzlu Yapılandırma** sayfasında, sol üst köşedeki **Yükseltme Kılavuzlu Yapılandırma'ya** tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure14.png) 
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure14.png) 
 
-3. Yükseltme Kılavuzu yapılandırma açılan ekranında, indirilen kullanım örneği paketini karşıya yüklemek için **Dosya Seç** ' i seçin ve karşıya yükle **ve yükle** düğmesine tıklayın.
+3. Yükseltme Kılavuzu Yapılandırma pop ekranında, indirilen kullanım örneği paketini yüklemek için **Dosyayı Seç'i** seçin ve **Yükle ve Yükle** düğmesine tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure15.png) 
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure15.png) 
 
-4. Yükseltme tamamlandığında **devam** düğmesine tıklayın.
+4. Yükseltme tamamlandığında, **Devam et** düğmesini tıklatın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure16.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* F5 **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* F5 **SP ve IDP** SSO başlatılan destekler
 * F5 SSO üç farklı şekilde yapılandırılabilir.
 
-- [Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](#configure-f5-single-sign-on-for-kerberos-application)
+- [Kerberos uygulaması için F5 tek oturum açma yı yapılandırma](#configure-f5-single-sign-on-for-kerberos-application)
 
-- [Üst bilgi tabanlı uygulama için F5 çoklu oturum açmayı yapılandırma](headerf5-tutorial.md)
+- [Üstbilgi Tabanlı uygulama için F5 tek oturum açma yı yapılandırma](headerf5-tutorial.md)
 
-- [Gelişmiş Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](advance-kerbf5-tutorial.md)
+- [Gelişmiş Kerberos uygulaması için F5 tek oturum açma yı yapılandırın](advance-kerbf5-tutorial.md)
 
-### <a name="key-authentication-scenarios"></a>Anahtar kimlik doğrulama senaryoları
+### <a name="key-authentication-scenarios"></a>Anahtar Kimlik Doğrulama Senaryoları
 
-Açık KIMLIK Connect, SAML ve WS-Besde gibi modern kimlik doğrulama protokolleri için Azure Active Directory yerel tümleştirme desteğiyle, F5, Azure AD ile hem iç hem de dış erişim için eski tabanlı kimlik doğrulama uygulamalarına yönelik güvenli erişimi genişletir, etkinleştirme Modern senaryolar (ör. parola-daha az erişim) bu uygulamalara. Bu şunlar dahildir:
+Open ID Connect, SAML ve WS-Fed gibi modern kimlik doğrulama protokolleri için Azure Active Directory yerel tümleştirme desteğinin yanı sıra F5, Azure AD ile hem dahili hem de harici erişim için eski tabanlı kimlik doğrulama uygulamaları için güvenli erişimi genişleterek bu uygulamalara modern senaryolar (örn. parolasız erişim). Buna şunlar dahildir:
 
-* Üst bilgi tabanlı kimlik doğrulama uygulamaları
+* Üstbilgi tabanlı kimlik doğrulama uygulamaları
 
 * Kerberos kimlik doğrulama uygulamaları
 
-* Anonim kimlik doğrulaması veya yerleşik kimlik doğrulama uygulamaları
+* Anonim kimlik doğrulama veya dahili kimlik doğrulama uygulamaları
 
-* NTLM kimlik doğrulama uygulamaları (Kullanıcı için çift istemlerle koruma)
+* NTLM kimlik doğrulama uygulamaları (kullanıcı için çift istemli koruma)
 
-* Form tabanlı uygulama (Kullanıcı için çift istemlerle koruma)
+* Form tabanlı Uygulama (kullanıcı için çift istemli koruma)
 
 ## <a name="adding-f5-from-the-gallery"></a>Galeriden F5 ekleme
 
-F5 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeri 'den yönetilen SaaS uygulamaları listenize F5 ' i eklemeniz gerekir.
+F5'in Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize F5 eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **F5** yazın.
-1. Sonuçlar panelinden **F5** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **F5** yazın.
+1. Sonuç panelinden **F5'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu F5 ile yapılandırın ve test edin. SSO 'nun çalışması için, F5 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak F5 ile yapılandırma ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile F5'teki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu F5 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu F5 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[F5 SSO 'Yu yapılandırın](#configure-f5-sso)** .
-    1. F5 'te kullanıcının Azure AD gösterimine bağlı olan B. Simon 'un bir karşılığı olacak şekilde **[F5 test kullanıcısı oluşturun](#create-f5-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[F5 SSO'yu yapılandırın](#configure-f5-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[F5 test kullanıcısını oluşturun](#create-f5-test-user)** - F5'teki B.Simon'ın, kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/) **F5** uygulaması tümleştirme sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında,](https://portal.azure.com/) **F5** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<YourCustomFQDN>.f5.com/`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<YourCustomFQDN>.f5.com/`
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<YourCustomFQDN>.f5.com/`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<YourCustomFQDN>.f5.com/`
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<YourCustomFQDN>.f5.com/`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [F5 istemci destek ekibine](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [F5 İstemci destek ekibine](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** ve **sertifika (base64)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde, **Federation Metadata XML** ve **Sertifikayı (Base64)** bulun ve ardından sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **F5 ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **F5'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın F5'e erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **F5**' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **F5'i**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-1. **Koşullu erişim** ' e tıklayın.
-1. **Yeni ilke**' ye tıklayın.
-1. Artık F5 uygulamanızı CA Ilkesi için bir kaynak olarak görebilir ve çok faktörlü auth, cihaz tabanlı erişim denetimi veya kimlik koruma Ilkesi dahil tüm koşullu erişimi uygulayabilirsiniz.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Koşullu Erişim'e** tıklayın.
+1. Yeni **İlke'ye**tıklayın.
+1. Artık F5 Uygulamanızı CA Politikası için bir kaynak olarak görebilir ve Multifactor Auth, Device tabanlı erişim denetimi veya Kimlik Koruma Politikası dahil olmak üzere koşullu erişimi uygulayabilirsiniz.
 
-## <a name="configure-f5-sso"></a>F5 SSO 'yu Yapılandır
+## <a name="configure-f5-sso"></a>F5 SSO'nun yapılandırılsın
 
-- [Üst bilgi tabanlı uygulama için F5 çoklu oturum açmayı yapılandırma](headerf5-tutorial.md)
+- [Üstbilgi Tabanlı uygulama için F5 tek oturum açma yı yapılandırma](headerf5-tutorial.md)
 
-- [Gelişmiş Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](advance-kerbf5-tutorial.md)
+- [Gelişmiş Kerberos uygulaması için F5 tek oturum açma yı yapılandırın](advance-kerbf5-tutorial.md)
 
-### <a name="configure-f5-single-sign-on-for-kerberos-application"></a>Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma
+### <a name="configure-f5-single-sign-on-for-kerberos-application"></a>Kerberos uygulaması için F5 tek oturum açma yı yapılandırma
 
-### <a name="guided-configuration"></a>Kılavuzlu yapılandırma
+### <a name="guided-configuration"></a>Güdümlü Yapılandırma
 
-1. Yeni bir Web tarayıcı penceresi açın ve F5 (Kerberos) Şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+1. Yeni bir web tarayıcısı penceresi açın ve F5 (Kerberos) şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. Meta veri sertifikasını, kurulum işleminin ilerleyen kısımlarında kullanılacak olan F5 'e aktarmanız gerekir.
+1. Meta veri sertifikasını, kurulum işleminde daha sonra kullanılacak olan F5'e aktarmanız gerekir.
 
-1. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. Bir **sertifika adı** belirtin (daha sonra yapılandırmadan başvurulacak). **Sertifika kaynağında**karşıya yükle ' yı seçin SAML çoklu oturum açmayı yapılandırırken Azure 'dan indirilen sertifikayı belirtin. **İçeri Aktar**’a tıklayın.
+1. Sistem **> Sertifika Yönetimi > Trafik Sertifika Yönetimi > SSL Sertifika Listesi'ne**gidin. Sağ köşeden **Içeri Aktar'ı** seçin. Bir **Sertifika Adı** belirtin (daha sonra config'e başvurulacaktır). Sertifika **Kaynağı'nda,** Yükleme Dosyası'nı seçin, SAML Tek İşaretini yapılandırırken Azure'dan indirilen sertifikayı belirtin. **İçeri Aktar**’a tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure01.png) 
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure01.png) 
 
-1. Ayrıca, **Uygulama ana bilgisayar adı Için SSL sertifikası gerekir. System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. **Içeri aktarma türü** **PKCS 12 (IIS)** olacaktır. **Anahtar adı** belirtin (daha sonra yapılandırmadan başvurulacak) ve pfx dosyasını belirtmeniz gerekir. PFX için **parola** belirtin. **İçeri Aktar**’a tıklayın.
-
-    >[!NOTE]
-    >Uygulama adı `Kerbapp.superdemo.live`örnekte, anahtar adının bir joker karakter sertifikası kullandık `WildCard-SuperDemo.live`
-
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure02.png) 
- 
-1. Azure AD Federasyonu ve uygulama erişimini ayarlamak için destekli deneyim kullanacağız. – F5 BIG-IP **Main** ' e gidin ve **erişim > Kılavuzlu yapılandırma > Federasyon > SAML hizmeti sağlayıcısı**' nı seçin. **İleri** ' ye ve ardından yapılandırmaya başlamak için **İleri** ' ye tıklayın.
-
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure03.png) 
-
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure04.png)
-
-1. Bir **yapılandırma adı**girin. **VARLıK kimliğini** (Azure AD uygulama yapılandırmasında yapılandırdığınız gibi) belirtin. **Ana bilgisayar adını**belirtin. Başvuru için bir **Açıklama** ekleyin. Kalan varsayılan girişleri kabul edin ve ardından **& kaydet**' e tıklayın.
-
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure05.png) 
-
-1. Bu örnekte, 443 numaralı bağlantı noktası ile 192.168.30.200 olarak yeni bir sanal sunucu oluşturacağız. **Hedef adreste**sanal sunucu IP adresini belirtin. Istemci **SSL profilini**seçin, yeni oluştur ' u seçin. Daha önce karşıya yüklenen uygulama sertifikasını (Bu örnekteki joker karakter sertifikası) ve ilişkili anahtarı belirtin ve ardından **& Ileri kaydet**' e tıklayın.
+1. Ayrıca, **Uygulama Hostname için SSL Sertifikası gerekir. Sistem > Sertifika Yönetimi > Trafik Sertifika Yönetimi > SSL Sertifika Listesi'ne gidin.** Sağ köşeden **Içeri Aktar'ı** seçin. **İthalat Türü** **PKCS 12(IIS)** olacaktır. Bir **Anahtar Adı** belirtin (config'de daha sonra başvurulacaktır) ve PFX dosyasını belirtin. PFX için **Parola'yı** belirtin. **İçeri Aktar**’a tıklayın.
 
     >[!NOTE]
-    >Bu örnekte, Iç Web sunucusu 80 numaralı bağlantı noktasında çalışıyor ve bunu 443 ile yayımlamak istiyoruz.
+    >Örnekte uygulama adımız `Kerbapp.superdemo.live`, Bir Joker Sertifikası kullanıyoruz anahtar adımız`WildCard-SuperDemo.live`
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure06.png)
-
-1. **IDP bağlayıcınızı yapılandırmak için yöntem seçin**altında, meta veri ' yi belirtin, Dosya Seç ' e tıklayın ve daha önce Azure AD 'Den Indirilen meta veri xml dosyasını yükleyin SAML ıDP Bağlayıcısı için benzersiz bir **ad** belirtin. Daha önce karşıya yüklenen **meta veri Imzalama sertifikasını** seçin. **İleri & kaydet**' e tıklayın.
-
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure07.png)  
-
-1. **Havuz Seç**altında **Yeni oluştur** ' u (alternatif olarak zaten var olan bir havuz seçin) belirtin. Diğer değerin varsayılan olmasına izin verin. Havuz sunucuları ' nın altında IP **adresi/düğüm adı**altında IP adresini yazın. **Bağlantı noktasını**belirtin. **İleri & kaydet**' e tıklayın.
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure02.png) 
  
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure08.png)
+1. Azure AD Federasyonu ve Uygulama Erişimi'ni kurmak için Rehberli Deneyimi kullanacağız. Git - F5 BIG-IP **Main** ve **Erişim > Güdümlü Yapılandırma > Federasyonu > SAML Servis Sağlayıcısı**seçin. **Yapılandırmayı** başlatmak için **İleri'yi** tıklatın.
 
-1. Çoklu oturum açma ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. **Seçili çoklu oturum açma türü** altında **Kerberos**' u seçin. Username. **SAML. Last. Identity** ' i (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) **Kullanıcı adı kaynak** (Bu değişken). **Gelişmiş ayarı göster**' i seçin. **Kerberos bölgesi** altında etki alanı adını yazın. **Hesap adı/hesap parolası** altında APM temsili hesabı ve parolasını belirtin. **KDC** alanında etki alanı denetleyicisi IP 'sini belirtin. **İleri & kaydet**' e tıklayın.
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure03.png) 
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure09.png)   
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure04.png)
 
-1. Bu kılavuzun amaçları doğrultusunda Endpoint denetimlerini atlayacağız.  Ayrıntılar için F5 belgelerine bakın.  Ekranda **kaydet & ileri ' yi**seçin.
+1. Yapılandırma **Adı**sağlayın. Varlık **Kimliğini** (Azure AD Uygulaması Yapılandırması'nda yapılandırdığınız la aynı) belirtin. Ana **Bilgisayar adını**belirtin. Başvuru için **açıklama** ekleyin. Kalan varsayılan girişleri kabul edin ve seçin ve sonra **Kaydet & Sonraki'ni**tıklatın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure10.png) 
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure05.png) 
 
-1. Varsayılanları kabul edin ve **& Ileri kaydet**' e tıklayın. SAML oturum yönetimi ayarları ile ilgili ayrıntılar için F5 belgelerine başvurun.
+1. Bu örnekte port 443 ile 192.168.30.200 olarak yeni bir Sanal Sunucu oluşturuyoruz. **Hedef Adreste**Sanal Sunucu IP adresini belirtin. İstemci **SSL Profilini**seçin, yeni oluştur'u seçin. Daha önce yüklenmiş uygulama sertifikasını( bu örnekteki joker kart sertifikasını) ve ilişkili anahtarı belirtin ve ardından **Sonraki& kaydet'i**tıklatın.
 
+    >[!NOTE]
+    >Bu örnekte Dahili websunucumuz 80 nolu bağlantı noktasında çalışıyor ve 443 ile yayınlamak istiyoruz.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure11.png) 
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure06.png)
+
+1. **IdP bağlayıcınızı yapılandırmak,** Meta verilerinizi belirtmek, Dosya Yı Seç'i tıklatın ve Azure AD'den daha önce indirilen Metadata XML dosyasını yüklemek için Select yöntemi altında. SAML IDP bağlayıcısı için benzersiz bir **Ad** belirtin. Daha önce yüklenen **Meta veri imzalama sertifikasını** seçin. **Sonraki & Kaydet'i**tıklatın.
+
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure07.png)  
+
+1. **Bir Havuz Seç'in**altında, **Yeni Oluştur'u** belirtin (alternatif olarak zaten var olan bir havuz seçin). Diğer değer varsayılan olsun. Havuz Sunucuları altında IP **Adresi/Düğüm Adı**altında IP Adresi yazın. Bağlantı **Noktasını**belirtin. **Sonraki & Kaydet'i**tıklatın.
  
-1. BÜYÜK IP 'yi yapılandırmak için özet ekranını gözden geçirin ve **Dağıt** ' ı seçin.
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure08.png)
+
+1. Tek Oturum Açma Ayarları **ekranında, Tek Oturum Açma'yı etkinleştir'i**seçin. **Seçilen Tek İşaret-On Türü** altında **Kerberos**seçin. **session.saml.last.Identity** ile **session.saml.last.attr.name.Identity** under **Username Source** (Azure AD'deki talep eşlemesini kullanarak ayarlanan bu değişken) değiştirin. **Gelişmiş Ayarı Göster'i**seçin. **Kerberos Realm** altında Alan Adı yazın. **Hesap Adı/ Hesap Şifresi** altında APM Temsilcilik Hesabı ve Şifresini belirtin. **KDC** Alanında Etki Alanı Denetleyicisi IP'sini belirtin. **Sonraki & Kaydet'i**tıklatın.
+
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure09.png)   
+
+1. Bu kılavuz amacıyla, uç nokta denetimlerini atlarız.  Ayrıntılar için F5 belgelerine bakın.  Ekranda **Kaydet & İleri'yi**seçin.
+
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure10.png) 
+
+1. Varsayılanları kabul edin ve **Sonraki& kaydet'i**tıklatın. SAML oturum yönetimi ayarlarıyla ilgili ayrıntılar için F5 belgelerine başvurun.
+
+
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure11.png) 
  
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure12.png)
+1. Özet ekranını gözden geçirin ve BIG-IP'yi yapılandırmak için **Dağıt'ı** seçin.
+ 
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure12.png)
 
-1. Uygulama yapılandırıldıktan sonra **son**' a tıklayın.
+1. Uygulama yapılandırıldıktan sonra **Finish'e**tıklayın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure13.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure13.png)
 
 ## <a name="advanced-configuration"></a>Gelişmiş Yapılandırma
 
 >[!NOTE]
->Başvuru için [buraya](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) tıklayın
+>Referans için [tıklayınız](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)
 
-### <a name="configuring-an-active-directory-aaa-server"></a>Active Directory AAA sunucusunu yapılandırma
+### <a name="configuring-an-active-directory-aaa-server"></a>Active Directory AAA sunucusuyapılandırma
 
-Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için kullanılacak etki alanı denetleyicilerini ve kimlik bilgilerini belirtmek üzere bir Active Directory AAA sunucusu yapılandırırsınız.
+Access İlke Yöneticisi'nde (APM) bir Active Directory AAA sunucusu, APM'nin kullanıcıların kimliğini doğrulamak için kullanması için etki alanı denetleyicilerini ve kimlik bilgilerini belirtmek için yapılandırırsınız.
 
-1.  Ana sekmede, **> aaa sunucuları > Active Directory erişim ilkesi**' ne tıklayın. Active Directory sunucuları listesi ekranı açılır.
+1.  Ana sekmede, **Etkin Dizin > AAA Sunucuları > Erişim İlkesi'ni**tıklatın. Active Directory Servers listesi ekranı açılır.
 
-2.  **Oluştur**'a tıklayın. Yeni sunucu özellikleri ekranı açılır.
+2.  **Oluştur'u**tıklatın. Yeni Sunucu özellikleri ekranı açılır.
 
-3.  **Ad** alanına, kimlik doğrulama sunucusu için benzersiz bir ad yazın.
+3.  **Ad** alanında, kimlik doğrulama sunucusu için benzersiz bir ad yazın.
 
-4.  **Etki alanı adı** alanına Windows etki alanının adını yazın.
+4.  Etki **Alanı Adı** alanında, Windows etki alanının adını yazın.
 
-5.  **Sunucu bağlantısı** ayarı için şu seçeneklerden birini seçin:
+5.  Sunucu **Bağlantısı** ayarı için aşağıdaki seçeneklerden birini seçin:
 
-    * AAA sunucusu için yüksek kullanılabilirlik ayarlamak üzere **havuzu kullan** ' ı seçin.
+    * AAA sunucusu için yüksek kullanılabilirlik ayarlamak için **Havuzu Kullan'ı** seçin.
 
-    * Tek başına işlevselliği için AAA sunucusu kurmak üzere **doğrudan** ' yi seçin.
+    * Bağımsız işlevsellik için AAA sunucusunu kurmak için **Doğrudan'ı** seçin.
 
-6.  **Doğrudan**öğesini seçtiyseniz, **etki alanı denetleyicisi** alanına bir ad yazın.
+6.  **Direct'i**seçtiyseniz, Etki **Alanı Denetleyicisi** alanına bir ad yazın.
 
-7.  **Havuz**kullan ' ı seçtiyseniz havuzu yapılandırın:
+7.  **Havuzu**Kullan'ı seçtiyseniz, havuzu yapılandırın:
 
-    * **Etki alanı denetleyicisi havuzu adı** alanına bir ad yazın.
+    * **Etki Alanı Denetleyicisi Havuz Adı** alanına bir ad yazın.
 
-    * Havuzdaki **etki alanı denetleyicilerini** , her bırı için IP adresini ve ana bilgisayar adını yazıp **Ekle** düğmesine tıklayarak belirtin.
+    * Her biri için IP adresini ve ana bilgisayar adını yazarak ve **Ekle** düğmesini tıklatarak havuzdaki **Etki Alanı Denetleyicilerini** belirtin.
 
-    * AAA sunucusunun sistem durumunu izlemek için, bir sistem durumu İzleyicisi seçme seçeneğiniz vardır: Bu durumda yalnızca **gateway_icmp** İzleyicisi uygundur; Bunu, **sunucu havuzu İzleyicisi** listesinden seçebilirsiniz.
+    * AAA sunucusunun durumunu izlemek için bir sistem durumu monitörü seçme seçeneğiniz var: bu durumda yalnızca **gateway_icmp** monitör uygundur; **Sunucu Havuzu İzleme** listesinden seçebilirsiniz.
 
-8.  Yönetici **adı** alanında Active Directory yönetim izinlerine sahip bir yönetici için büyük/küçük harfe duyarlı bir ad yazın. APM, AD sorgusu için **yönetici adı** ve **yönetici parolası** alanlarındaki bilgileri kullanır. Anonim sorgular için Active Directory yapılandırıldıysa, yönetici adı sağlamanız gerekmez. Aksi takdirde APM, bir Active Directory sunucusuna bağlamak, Kullanıcı grubu bilgilerini getirmek ve parolayla ilgili işlevselliği desteklemek için Active Directory parola ilkeleri getirmek için yeterli ayrıcalığa sahip bir hesaba ihtiyaç duyuyor. (APM, bir AD sorgu eyleminde kullanıcıdan süre sonundan önce parolayı değiştirmeyi sor seçeneğini belirlerseniz parola ilkelerini almalıdır.) Bu yapılandırmada yönetici hesabı bilgileri sağlamazsanız APM, bilgileri getirmek için Kullanıcı hesabını kullanır. Bu, Kullanıcı hesabının yeterli ayrıcalığı varsa işe yarar.
+8.  Yönetici **Adı** alanında, Active Directory yönetim izinleri olan bir yönetici için büyük/küçük harf duyarlı bir ad yazın. APM, AD Sorgusu için **Yönetici Adı** ve **Yönetici Parolası** alanlarındaki bilgileri kullanır. Etkin Dizin anonim sorgular için yapılandırılırsa, yönetici adı sağlamanız gerekmez. Aksi takdirde, APM'nin Active Directory sunucusuna bağlamak, kullanıcı grubu bilgilerini almak ve parolayla ilgili işlevselliği desteklemek için Active Directory parola ilkelerini getirmek için yeterli ayrıcalığa sahip bir hesaba ihtiyacı vardır. (Örneğin, AD Sorgusu eyleminde son kullanma tarihinden önce parolayı değiştirmek için İstem kullanıcısını seçerseniz, APM parola ilkeleri getirmelidir.) Bu yapılandırmada Yönetici hesap bilgilerini sağlamazsanız, APM bilgileri almak için kullanıcı hesabını kullanır. Kullanıcı hesabı yeterli ayrıcalığa sahipse bu çalışır.
 
-9.  **Yönetici parolası** alanına, etki alanı adıyla ilişkili yönetici parolasını yazın.
+9.  Yönetici **Parolası** alanına, Etki Alanı Adı ile ilişkili yönetici parolasını yazın.
 
-10. **Yönetici parolasını doğrula** alanına, **etki alanı adı** ayarıyla ilişkili yönetici parolasını yeniden yazın.
+10. Yönetici **Parolasını Doğrula** alanında, Etki Alanı **Adı** ayarı ile ilişkili yönetici parolasını yeniden yazın.
 
-11. **Grup önbelleği ömrü** alanına gün sayısını yazın. Varsayılan yaşam süresi 30 gündür.
+11. Grup **Önbellek Ömür Boyu** alanında gün sayısını yazın. Varsayılan ömür 30 gündür.
 
-12. **Parola güvenlik nesnesi önbelleği ömrü** alanına gün sayısını yazın. Varsayılan yaşam süresi 30 gündür.
+12. Parola **Güvenlik Nesnesi Önbelleği Yaşam Boyu** alanına gün sayısını yazın. Varsayılan ömür 30 gündür.
 
-13. **Kerberos ön kimlik doğrulaması şifreleme türü** listesinden bir şifreleme türü seçin. Varsayılan değer **none**' dır. Bir şifreleme türü belirtirseniz, büyük IP sistemi, ilk kimlik doğrulama hizmeti isteği (AS-REQ) paketi içinde Kerberos ön kimlik doğrulaması verileri içerir.
+13. **Kerberos Kimlik Doğrulama Şifreleme Türü** listesinden bir şifreleme türü seçin. Varsayılan **yok.** Bir şifreleme türü belirtirseniz, BIG-IP sistemi ilk kimlik doğrulama hizmeti isteği (AS-REQ) paketinde Kerberos kimlik doğrulama verilerini içerir.
 
-14. **Zaman aşımı** alanına aaa sunucusu için bir zaman aşımı aralığı (saniye cinsinden) yazın. (Bu ayar isteğe bağlıdır.)
+14. Zaman **aralığı** alanında, AAA sunucusu için bir zaman aralığı (saniye cinsinden) yazın. (Bu ayar isteğe bağlıdır.)
 
-15. **Bitti**' ye tıklayın. Yeni sunucu listede görüntülenir. Bu, yeni Active Directory sunucusunu Active Directory sunucuları listesine ekler.
+15. **Bitti'yi**tıklatın. Yeni sunucu listede görüntülenir. Bu, yeni Active Directory sunucusunu Active Directory Servers listesine ekler.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure17.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure17.png)
 
-### <a name="saml-configuration"></a>SAML yapılandırması
+### <a name="saml-configuration"></a>SAML Yapılandırması
 
-1. Meta veri sertifikasını, kurulum işleminin ilerleyen kısımlarında kullanılacak olan F5 'e aktarmanız gerekir. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin.
+1. Meta veri sertifikasını, kurulum işleminde daha sonra kullanılacak olan F5'e aktarmanız gerekir. Sistem **> Sertifika Yönetimi > Trafik Sertifika Yönetimi > SSL Sertifika Listesi'ne**gidin. Sağ köşeden **Içeri Aktar'ı** seçin.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure18.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure18.png)
 
-2. SAML ıDP 'yi ayarlamak için, **Access > federasyon > saml: Service Provider > dış IDP bağlayıcıları**' na gidin ve meta verilerden **> Oluştur**' a tıklayın.
+2. SAML IDP'yi kurmak **için, Access > Federation > SAML: Service Provider > External Idp Connectors'a gidin**ve **Meta verilerden > oluştur'u**tıklatın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure19.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure19.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure20.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure20.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure21.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure21.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure22.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure22.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure23.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure23.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure24.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure24.png)
 
-1. SAML SP 'yi ayarlamak için, **Yerel SP hizmetleri > > federasyon > SAML hizmet sağlayıcısına erişim** ' e gidin ve **Oluştur**' a tıklayın. Aşağıdaki bilgileri tamamlayıp **Tamam**' a tıklayın.
+1. SAML SP'yi ayarlamak için **Access > Federation > SAML Servis Sağlayıcısı'na gidin > Yerel SP Hizmetleri'ni** tıklatın ve **Oluştur'u**tıklatın. Aşağıdaki bilgileri tamamlayın ve **Tamam'ı**tıklatın.
 
-    * Tür adı: KerbApp200SAML
-    * Varlık KIMLIĞI *: https://kerbapp200.superdemo.live
-    * SP adı ayarları
-    * Düzen: https
-    * Ana bilgisayar: kerbapp200. superdemo. canlı
-    * Açıklama: kerbapp200. superdemo. canlı
+    * Tür Adı: KerbApp200SAML
+    * Varlık Kimliği*:https://kerbapp200.superdemo.live
+    * SP Ad Ayarları
+    * Şema: https
+    * Ev sahibi: kerbapp200.superdemo.live
+    * Açıklama: kerbapp200.superdemo.live
 
-     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure25.png)
+     ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure25.png)
 
-     b. SP yapılandırması ' nı seçin, KerbApp200SAML ve **IDP bağlayıcıları bağlama/** kaldırma ' ya tıklayın.
+     b. SP Configuration, KerbApp200SAML'i seçin ve **Bind/UnBind IdP Bağlayıcılarını**tıklatın.
 
-     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure26.png)
+     ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure26.png)
 
-     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure27.png)
+     ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure27.png)
 
-     c. **Yeni satır ekle** ' ye tıklayın ve önceki adımda oluşturulan **dış IDP bağlayıcısını** seçin, **Güncelleştir**' e tıklayın ve ardından **Tamam**' a tıklayın.
+     c. Yeni **Satır Ekle'ye** tıklayın ve önceki adımda oluşturulan **Harici IdP bağlayıcısını** seçin, **Güncelleştir'i**tıklatın ve ardından **Tamam'ı**tıklatın.
 
-     ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure28.png)
+     ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure28.png)
 
-1. Kerberos SSO 'yu yapılandırmak için **erişim > çoklu oturum açma > Kerberos**, bilgileri tam olarak Tamam ' a gidin ve **bitti**' ye tıklayın.
+1. Kerberos SSO yapılandırma için, **Tek Oturum açma > Kerberos > Erişim**gidin, tam bilgi ve **Bitmiş**tıklayın .
 
     >[!Note]
-    > Oluşturulacak ve belirtilecektir Kerberos temsili hesabı gerekir. KCD bölümüne başvurun (değişken başvuruları için eki Inceleyin)
+    > Oluşturulacak ve belirtilecek Kerberos Delegasyon Hesabı'na ihtiyacınız olacaktır. Bkz. KCD Bölümü (Değişken Referanslar Için Ek)
 
-    * **Kullanıcı adı kaynağı**: oturum. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **Kullanıcı Adı Kaynak**: session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
 
-    * **Kullanıcı bölgesi kaynağı**: Session. Logon. Last. Domain
+    * **Kullanıcı Diyarı Kaynak**: session.logon.last.domain
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure29.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure29.png)
 
-1. Erişim profilini yapılandırmak için, erişim **profili > erişim profiline (oturum ilkeleri başına) >** gidin, **Oluştur**' a tıklayın, aşağıdaki bilgileri doldurun ve **bitti**' ye tıklayın.
+1. Access Profilini yapılandırmak için **Access > Profili/İlkeler> Erişim Profiline**gidin , **Oluştur'u**tıklatın, aşağıdaki bilgileri tamamlayın ve **Bitti'yi**tıklatın.
 
-    * Ad: KerbApp200
-    * Profil türü: tümü
-    * Profil kapsamı: profil
-    * Diller: Ingilizce
+    * Adı: KerbApp200
+    * Profil Türü: Tümü
+    * Profil Kapsamı: Profil
+    * Diller: İngilizce
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure30.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure30.png)
 
-1. KerbApp200 adına tıklayın, aşağıdaki bilgileri doldurun ve **Güncelleştir**' e tıklayın.
+1. Adı, KerbApp200 tıklayın, aşağıdaki bilgileri tamamlamak ve **Güncelleme**tıklayın.
 
-    * Etki alanı tanımlama bilgisi: superdemo. canlı
-    * SSO yapılandırması: KerAppSSO_sso
+    * Etki Alanı Çerez: superdemo.live
+    * SSO Yapılandırması: KerAppSSO_sso
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure31.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure31.png)
 
-1. **Erişim ilkesi** ' ne tıklayın ve ardından "KerbApp200" profili Için **erişim ilkesini Düzenle** ' ye tıklayın.
+1. **Access Politikası'nı** tıklatın ve ardından Profil "KerbApp200" için **Erişim İlkesi'ni Edit'i** tıklatın.
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure32.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure32.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure33.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure33.png)
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure34.png)
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure34.png)
 
-    * **Session. Logon. son. usernameUPN Expr {[mcget {Session. SAML. Last. Identity}]}**
+    * **session.logon.last.usernameUPN expr {[mcget {session.saml.last.identity}]}**
 
-    * **Session. ad. lastactualdomain metın superdemo. canlı**
+    * **session.ad.lastactualdomain TEXT superdemo.live**
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure35.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure35.png)
 
-    * **(userPrincipalName =% {Session. Logon. Last. usernameUPN})**
+    * **(userPrincipalName=%{session.logon.last.usernameUPN})**
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure36.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure36.png)
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure37.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure37.png)
 
-    * **Session. Logon. Last. UserName expr {"[mcget {Session. ad. Last. attr. sAMAccountName}]"}**
+    * **session.logon.last.username expr { "[mcget {session.ad.last.attr.sAMAccountName}]]" }**
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure38.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure38.png)
 
-    * **mcget {Session. Logon. Last. UserName}**
-    * **mcget {Session. Logon. Last. Password**
+    * **mcget {session.logon.last.username}**
+    * **mcget {session.logon.last.password**
 
-1. Yeni düğüm eklemek için, **Yerel trafik > düğümler > düğüm listesi ' ne gidin, Oluştur ' a tıklayın**, aşağıdaki bilgileri doldurun ve ardından **bitti**' ye tıklayın.
+1. Yeni Düğüm eklemek için **Yerel Trafik > Düğümleri > Düğüm Listesi'ne gidin, Oluştur'u tıklatın,** aşağıdaki bilgileri tamamlayın ve **ardından Bitti'yi**tıklatın.
 
-    * Ad: KerbApp200
+    * Adı: KerbApp200
     * Açıklama: KerbApp200
     * Adres: 192.168.20.200
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure39.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure39.png)
 
-1. Yeni bir havuz oluşturmak için **Yerel trafik > havuzlar > havuz listesi**' ne gidin, Oluştur ' a tıklayın, aşağıdaki bilgileri doldurun ve **bitti**' ye tıklayın.
+1. Yeni bir Havuz oluşturmak için **Yerel Trafik > Havuzları > Havuz Listesi'ne gidin, Oluştur'u tıklatın,** aşağıdaki bilgileri tamamlayın ve **Bitti'yi**tıklatın.
 
-    * Ad: KerbApp200-Pool
-    * Açıklama: KerbApp200-Pool
-    * Sistem durumu Izleyicileri: http
+    * Adı: KerbApp200-Havuz
+    * Açıklama: KerbApp200-Havuz
+    * Sağlık Monitörleri: http
     * Adres: 192.168.20.200
-    * Hizmet bağlantı noktası: 81
+    * Servis Noktası: 81
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure40.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure40.png)
 
-1. Sanal sunucu oluşturmak için, sanal sunucu **listesi > sanal sunucular > yerel trafiğe gidin > +** , aşağıdaki bilgileri tamamlayıp **bitti**' ye tıklayın.
+1. Sanal Sunucu oluşturmak **için, Yerel Trafik > Sanal Sunucular > Sanal Sunucu Listesi > +** gidin , aşağıdaki bilgileri doldurun ve **Bitti**tıklayın .
 
-    * Ad: KerbApp200
-    * Hedef adres/maske: Ana bilgisayar 192.168.30.200
-    * Hizmet bağlantı noktası: bağlantı noktası 443 HTTPS
-    * Erişim profili: KerbApp200
-    * Önceki adımda oluşturulan erişim profilini belirtin
+    * Adı: KerbApp200
+    * Hedef Adres/Maske: Host 192.168.30.200
+    * Servis Bağlantı Noktası: Bağlantı Noktası 443 HTTPS
+    * Erişim Profili: KerbApp200
+    * Önceki Adımda Oluşturulan Erişim Profilini Belirt
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure41.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure41.png)
 
-        ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure42.png)
+        ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure42.png)
 
-### <a name="setting-up-kerberos-delegation"></a>Kerberos temsilcisini ayarlama 
+### <a name="setting-up-kerberos-delegation"></a>Kerberos Delegasyonunun Kurulması 
 
 >[!NOTE]
->Başvuru için [buraya](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf) tıklayın
+>Referans için [tıklayınız](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf)
 
-*  **1. Adım:** Bir temsili hesabı oluşturun
-
-    **Örnek:**
-    * Etki alanı adı: **superdemo. canlı**
-
-    * Sam hesap adı: **büyük-ipuser**
-
-    * New-ADUser-Name "APM temsili hesabı"-UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live-SamAccountName "Big-ıpuser"-PasswordNeverExpires $true etkin $true-AccountPassword (Read-Host-AsSecureString "Password! 1234")
-
-* **2. Adım:** SPN 'YI ayarla (APM temsili hesabında)
+*  **Adım 1:** Temsilci Hesabı Oluşturma
 
     **Örnek:**
-    * Setspn – A **Host/Big-ipuser. superdemo. canlı** büyük-ipuser
+    * Alan Adı: **superdemo.live**
 
-* **Adım 3:** SPN temsili (App Service hesabı için) F5 temsili hesabı için uygun temsilciyi ayarlayın.
-    Aşağıdaki örnekte, APM temsili hesabı FRP-app1. superdemo için KCD için Yapılandırılıyor. canlı uygulama.
+    * Sam Hesap Adı: **büyük ipuser**
 
-    ![F5 (Kerberos) yapılandırması](./media/kerbf5-tutorial/configure43.png)
+    * Yeni ADUser -Name "APM Delegation Account" host/big-ipuser.superdemo.live@superdemo.live -UserPrincipalName -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
 
-* Yukarıdaki başvuru belgesinde bahsedilen ayrıntıları burada [belirtin.](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)
+* **Adım 2:** SPN'yi ayarlayın (APM Temsilci Hesabı'nda)
 
-### <a name="create-f5-test-user"></a>F5 test kullanıcısı oluştur
+    **Örnek:**
+    * setspn –Bir **host/big-ipuser.superdemo.live** big-ipuser
 
-Bu bölümde, F5 'te B. Simon adlı bir Kullanıcı oluşturacaksınız. F5 platformunda kullanıcıları eklemek için [F5 istemci destek ekibi](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi. 
+* **Adım 3:** SPN Delegasyonu (Uygulama Hizmeti Hesabı için) F5 Temsilciliği Hesabı için uygun Temsilciliği kur.
+    Aşağıdaki örnekte, APM Delegasyonu hesabı FRP-App1.superdemo için KCD için yapılandırıldı. canlı uygulama.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+    ![F5 (Kerberos) konfigürasyonu](./media/kerbf5-tutorial/configure43.png)
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+* Yukarıdaki referans belgede belirtilen ayrıntıları [bu](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)altında sağlayın.
 
-Erişim panelinde F5 kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız F5 'te otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+### <a name="create-f5-test-user"></a>F5 test kullanıcısı oluşturma
+
+Bu bölümde, F5'te B.Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları F5 platformuna eklemek için [F5 İstemci destek ekibiyle](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir. 
+
+## <a name="test-sso"></a>Test SSO 
+
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+
+Erişim Paneli'ndeki F5 döşemesini tıklattığınızda, SSO'yu kurduğunuz F5'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile F5 'i deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile F5'i deneyin](https://aad.portal.azure.com/)
 
-- [Üst bilgi tabanlı uygulama için F5 çoklu oturum açmayı yapılandırma](headerf5-tutorial.md)
+- [Üstbilgi Tabanlı uygulama için F5 tek oturum açma yı yapılandırma](headerf5-tutorial.md)
 
-- [Gelişmiş Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](advance-kerbf5-tutorial.md)
+- [Gelişmiş Kerberos uygulaması için F5 tek oturum açma yı yapılandırın](advance-kerbf5-tutorial.md)
 

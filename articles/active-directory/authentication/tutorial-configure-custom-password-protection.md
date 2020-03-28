@@ -1,6 +1,6 @@
 ---
-title: Özel Azure Active Directory parola koruma listelerini yapılandırma
-description: Bu öğreticide, ortamınızdaki ortak kelimeleri kısıtlamak için Azure Active Directory için özel yasaklanmış parola koruma listelerini nasıl yapılandıracağınızı öğreneceksiniz.
+title: Özel Azure Etkin Dizin parola koruma listelerini yapılandırma
+description: Bu eğitimde, ortamınızdaki yaygın sözcükleri kısıtlamak için Azure Active Directory için özel yasaklı parola koruma listelerini nasıl yapılandırabileceğinizi öğrenirsiniz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,117 +11,117 @@ author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252848"
 ---
-# <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Öğretici: Azure Active Directory parola koruması için özel yasaklanmış parolaları yapılandırma
+# <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Öğretici: Azure Active Directory parola koruması için özel yasaklı parolaları yapılandırma
 
-Kullanıcılar genellikle okul, spor ekibi veya çok büyük kişi gibi yaygın yerel sözcükleri kullanan parolalar oluşturur. Bu parolalar kolayca tahmin edilir ve sözlük tabanlı saldırılara karşı zayıftır. Kuruluşunuzda güçlü parolalar zorlamak için, Azure Active Directory (Azure AD) özel yasaklanmış parola listesi, değerlendirmek ve engellemek için özel dizeler eklemenizi sağlar. Özel yasaklanmış parola listesinde bir eşleşme varsa parola değiştirme isteği başarısız olur.
+Kullanıcılar genellikle okul, spor takımı veya ünlü kişi gibi yaygın yerel sözcükleri kullanan parolalar oluşturur. Bu parolaları tahmin etmek kolaydır ve sözlük tabanlı saldırılara karşı zayıftır. Kuruluşunuzdaki güçlü parolaları zorlamak için Azure Active Directory (Azure AD) özel yasaklı parola listesi, değerlendirmek ve engellemek için belirli dizeler eklemenize izin verebiliyor. Özel yasaklı parola listesinde eşleşme varsa parola değiştirme isteği başarısız olur.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Özel yasaklanmış parolaları etkinleştir
-> * Özel yasaklanmış parola listesine giriş ekleme
-> * Parola değişikliklerini yasaklanmış parolayla sına
+> * Özel yasaklı parolaları etkinleştirme
+> * Özel yasaklı parola listesine giriş ekleme
+> * Yasaklı bir parolayla parola değişikliklerini test edin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
+Bu öğreticiyi tamamlamak için aşağıdaki kaynaklara ve ayrıcalıklara ihtiyacınız vardır:
 
 * En az deneme sürümü lisansı etkinleştirilmiş çalışan bir Azure AD kiracısına erişim.
-    * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+    * Gerekirse, [ücretsiz bir oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
-* Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Bu öğreticide bu hesabı kullanarak bir parola değiştirme olayını test edersiniz.
-    * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../add-users-azure-active-directory.md).
-    * Parola değiştirme işlemini yasaklanmış bir parola kullanarak test etmek için, Azure AD kiracısı [self servis parola sıfırlama için yapılandırılmalıdır](tutorial-enable-sspr.md).
+* *Testuser*gibi bildiğiniz bir parolaya sahip yönetici olmayan bir kullanıcı. Bu öğreticide bu hesabı kullanarak bir parola değiştirme olayını sınarsınız.
+    * Bir kullanıcı oluşturmanız gerekiyorsa, [bkz.](../add-users-azure-active-directory.md)
+    * Parola değiştirme işlemini yasaklı bir parola kullanarak sınamak için Azure AD kiracısının [self servis parola sıfırlama için yapılandırılması](tutorial-enable-sspr.md)gerekir.
 
-## <a name="what-are-banned-password-lists"></a>Yasaklanmış parola listeleri nelerdir?
+## <a name="what-are-banned-password-lists"></a>Yasaklı parola listeleri nelerdir?
 
-Azure AD, genel yasaklanmış parola listesi içerir. Genel yasaklanmış parola listesinin içeriği herhangi bir dış veri kaynağını temel almaz. Bunun yerine, genel yasaklanmış parola listesi, Azure AD güvenlik telemetri ve analizinin devam eden sonuçlarına dayanır. Bir kullanıcı veya yönetici kimlik bilgilerini değiştirmeye veya sıfırlamaya çalıştığında, istenen parola yasaklanmış parolalar listesine göre denetlenir. Genel yasaklanmış parola listesinde bir eşleşme varsa parola değiştirme isteği başarısız olur.
+Azure AD, genel olarak yasaklanmış bir parola listesi içerir. Genel olarak yasaklı parola listesinin içeriği herhangi bir dış veri kaynağına dayanmaz. Bunun yerine, genel yasaklı parola listesi Azure AD güvenlik telemetrisi ve analizinin devam eden sonuçlarına dayanır. Bir kullanıcı veya yönetici kimlik bilgilerini değiştirmeye veya sıfırlamaya çalıştığında, istenen parola yasaklı parolalar listesiyle karşılaştırılır. Genel olarak yasaklı parola listesinde bir eşleşme varsa parola değiştirme isteği başarısız olur.
 
-Parolaların hangi parolalara izin verileceğini sağlamak için özel bir yasaklanmış parola listesi de tanımlayabilirsiniz. Özel yasaklanmış parola listesi, kuruluşunuzda güçlü parolalar zorlamak için genel yasaklanmış parola listesi ile birlikte kullanılır. Aşağıdaki örnekler gibi özel yasaklanmış parola listesine kuruluşa özgü terimler eklenebilir:
+Hangi parolalara izin verildiği nde esneklik sağlamak için, özel yasaklı parola listesi de tanımlayabilirsiniz. Özel yasaklı parola listesi, kuruluşunuzdaki güçlü parolaları zorlamak için genel olarak yasaklanan parola listesiyle birlikte çalışır. Kuruluşa özgü terimler, aşağıdaki örnekler gibi özel yasaklı parola listesine eklenebilir:
 
 * Marka adları
 * Ürün adları
-* Şirket yönetim merkezleri gibi konumlar
-* Şirkete özgü dahili şartlar
-* Belirli bir şirkete anlamı olan kısaltmalar
+* Şirket merkezi gibi konumlar
+* Şirkete özel iç terimler
+* Belirli şirket anlamı olan kısaltmalar
 
-Bir Kullanıcı, genel veya özel yasaklanmış parola listesindeki bir parolayı sıfırlama girişiminde bulunduğunda, aşağıdaki hata iletilerinden birini görürler:
+Bir kullanıcı, genel veya özel yasaklı parola listesinde ki bir şeyin parolasını sıfırlamaya çalıştığında, aşağıdaki hata iletilerinden birini görür:
 
-* *Ne yazık ki parolanız, parolanızın kolayca tahmin edilebilir olmasını sağlayan bir sözcük, tümcecik veya model içerir. Lütfen farklı bir parola ile yeniden deneyin.*
-* *Ne yazık ki, yöneticiniz tarafından engellenmiş sözcükler veya karakterler içerdiğinden bu parolayı kullanamazsınız. Lütfen farklı bir parola ile yeniden deneyin.*
+* *Ne yazık ki, parolanız parolanızı kolayca tahmin edilebilir kılan bir sözcük, tümcecik veya desen içerir. Lütfen farklı bir parola ile yeniden deneyin.*
+* *Ne yazık ki, yöneticiniz tarafından engellenen sözcükler veya karakterler içerdiğinden bu parolayı kullanamazsınız. Lütfen farklı bir parola ile yeniden deneyin.*
 
-Özel yasaklanmış parola listesi en fazla 1000 terim ile sınırlıdır. Büyük Parolaların listesini engellemek için tasarlanmamıştır. Özel yasaklanmış parola listesinin avantajlarından en üst düzeye çıkarmak için, [özel yasaklanmış parola listesi kavramlarını](concept-password-ban-bad.md#custom-banned-password-list) ve [parola değerlendirme algoritmasına genel bakış ' a](concept-password-ban-bad.md#how-are-passwords-evaluated)bakın.
+Özel yasaklı parola listesi en fazla 1000 terimle sınırlıdır. Büyük parola listelerini engellemek için tasarlanmaz. Özel yasaklı parola listesinin avantajlarını en üst düzeye çıkarmak için, [özel yasaklı parola listesi kavramlarını](concept-password-ban-bad.md#custom-banned-password-list) ve parola değerlendirme [algoritmasına genel bakışı](concept-password-ban-bad.md#how-are-passwords-evaluated)gözden geçirin.
 
-## <a name="configure-custom-banned-passwords"></a>Özel yasaklanmış parolaları yapılandırma
+## <a name="configure-custom-banned-passwords"></a>Özel yasaklı parolaları yapılandırma
 
-Özel yasaklanmış parola listesini etkinleştirip bazı girdiler ekleyelim. Özel yasaklanmış parola listesine istediğiniz zaman ek girişler ekleyebilirsiniz.
+Özel yasaklı parola listesini etkinleştirelim ve bazı girişler ekleyelim. Özel yasaklı parola listesine istediğiniz zaman ek girişler ekleyebilirsiniz.
 
-Özel yasaklanmış parola listesini etkinleştirmek ve buna giriş eklemek için aşağıdaki adımları izleyin:
+Özel yasaklı parola listesini etkinleştirmek ve girişeklemek için aşağıdaki adımları tamamlayın:
 
-1. *Genel yönetici* izinlerine sahip bir hesap kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
-1. **Yönet** menü üst bilgisi altında **kimlik doğrulama yöntemleri**' ni ve ardından **parola koruması**' nı seçin.
-1. **Özel listeyi zorla** seçeneğini *Evet*olarak ayarlayın.
-1. **Özel yasaklanmış parola listesine**dizeler ekleyin, her satır için bir dize. Aşağıdaki önemli noktalar ve sınırlamalar özel yasaklanmış parola listesi için geçerlidir:
+1. *Genel yönetici* izinlerine sahip bir hesabı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Azure Active **Directory'yi**arayın ve seçin, ardından sol taraftaki menüden **Güvenlik'i** seçin.
+1. **Yönet** menüsü üstbilginin altında Kimlik **Doğrulama yöntemlerini**seçin, ardından **Parola koruması.**
+1. **Özel listeyi Uygula** seçeneğini *Evet*olarak ayarlayın.
+1. **Özel yasaklı parola listesine**dizeleri ekleyin, satır başına bir dize. Aşağıdaki hususlar ve sınırlamalar özel yasaklı parola listesi için geçerlidir:
 
-    * Özel yasaklanmış parola listesi, en fazla 1000 terim içerebilir.
-    * Özel yasaklanmış parola listesi, büyük/küçük harfe duyarsızdır.
-    * Özel yasaklanmış parola listesi, "o" ve "0" gibi genel karakter değişimini ve "a" ve "@" gibi kabul eder.
-    * En küçük dize uzunluğu dört karakterdir ve en fazla 16 karakter uzunluğunda olur.
+    * Özel yasaklı parola listesi en fazla 1000 terim içerebilir.
+    * Özel yasaklı parola listesi büyük/küçük harf duyarsızdır.
+    * Özel yasaklı parola listesi, "o" ve "0" veya "a" ve "@" gibi yaygın karakter değiştirmesini dikkate alır.
+    * En düşük dize uzunluğu dört karakterdir ve en fazla 16 karakterdir.
 
-    Aşağıdaki örnekte gösterildiği gibi, Ban için kendi özel parolalarınızı belirtin
+    Aşağıdaki örnekte gösterildiği gibi, yasaklamak için kendi özel parolalarınızı belirtin
 
     [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
-1. **Windows Server Active Directory parola korumasını etkinleştir** seçeneğini *Hayır*olarak bırakın.
-1. Özel yasaklanmış parolaları ve girdilerinizi etkinleştirmek için **Kaydet**' i seçin.
+1. Windows Server **Active Directory'de parola korumayı etkinleştir** seçeneğini *Hayır'a*bırakın.
+1. Özel yasaklı parolaları ve girişlerinizi etkinleştirmek için **Kaydet'i**seçin.
 
-Özel yasaklanmış parola listesindeki güncelleştirmelerin uygulanması birkaç saat sürebilir.
+Özel yasaklı parola listesindeki güncelleştirmelerin uygulanması birkaç saat sürebilir.
 
-Karma bir ortamda [Azure AD parola korumasını şirket içi bir ortama da dağıtabilirsiniz](howto-password-ban-bad-on-premises-deploy.md). Hem bulut hem de şirket içi parola değiştirme istekleri için aynı genel ve özel yasaklanmış parola listeleri kullanılır.
+Karma bir ortam için, [Azure AD parola korumasını şirket içi ortama](howto-password-ban-bad-on-premises-deploy.md)da dağıtabilirsiniz. Aynı genel ve özel yasaklı parola listeleri hem bulut hem de ön hazırlık parola değişikliği istekleri için kullanılır.
 
-## <a name="test-custom-banned-password-list"></a>Özel yasaklanmış parola listesini sına
+## <a name="test-custom-banned-password-list"></a>Özel yasaklı parola listesini test edin
 
-Özel yasaklanmış parola listesini eylem bölümünde görmek için, parolayı önceki bölümde eklediğiniz bir varyasyon olarak değiştirmeyi deneyin. Azure AD, parola değişikliğini işlemeye çalıştığında, parola, özel yasaklanmış parola listesindeki bir girdiyle eşleştirilir. Daha sonra kullanıcıya bir hata görüntülenir.
+Özel yasaklı parola listesini iş başında görmek için, parolayı önceki bölümde eklediğiniz bir parolayla değiştirmeyi deneyin. Azure AD parola değişikliğini işlemeye çalıştığında, parola özel yasaklı parola listesindeki bir girişle eşleşir. Daha sonra kullanıcıya bir hata görüntülenir.
 
 > [!NOTE]
-> Bir Kullanıcı Web tabanlı portalda parolasını sıfırlayabilmeniz için, Azure AD kiracısının [self servis parola sıfırlama için yapılandırılması](tutorial-enable-sspr.md)gerekir.
+> Bir kullanıcının parolasını web tabanlı portalda sıfırlayabilmesi için, Azure AD kiracısının [self servis parola sıfırlama için yapılandırılması](tutorial-enable-sspr.md)gerekir.
 
-1. [https://myapps.microsoft.com](https://myapps.microsoft.com)konumundaki **uygulamalarım** sayfasına gidin.
-1. Sağ üst köşede adınızı seçin, sonra açılır menüden **profil** ' i seçin.
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) **'de Uygulamalarım** sayfasına gidin.
+1. Sağ üst köşede adınızı seçin ve açılan menüden **Profil'i** seçin.
 
     ![Profil seçme](media/tutorial-configure-custom-password-protection/myapps-profile.png)
 
-1. **Profil** sayfasında, **Parolayı Değiştir**' i seçin.
-1. **Parolayı Değiştir** sayfasında, mevcut (eski) parolayı girin. Önceki bölümde tanımladığınız özel yasaklanmış parola listesinde yeni bir parola girin ve onaylayın, sonra **Gönder**' i seçin.
-1. Aşağıdaki örnekte gösterildiği gibi, parolayı yönetici tarafından engellendiğini bildiren bir hata iletisi döndürülür:
+1. **Profil** sayfasında **parolayı değiştir'i**seçin.
+1. **Parolayı Değiştir** sayfasında, varolan (eski) parolayı girin. Önceki bölümde tanımladığınız özel yasaklı parola listesinde bulunan yeni bir parola girin ve onaylayın, ardından **Gönder'i**seçin.
+1. Aşağıdaki örnekte gösterildiği gibi, parolanın yönetici tarafından engellendiğini belirten bir hata iletisi döndürülür:
 
-    ![Özel yasaklanmış parola listesinin parçası olan bir parolayı kullanmaya çalıştığınızda görüntülenen hata iletisi](media/tutorial-configure-custom-password-protection/password-change-error.png)
+    ![Özel yasaklı parola listesinin bir parçası olan bir parolayı kullanmaya çalıştığınızda görüntülenen hata iletisi](media/tutorial-configure-custom-password-protection/password-change-error.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticinin bir parçası olarak yapılandırdığınız özel yasaklanmış parola listesini artık kullanmak istemiyorsanız, aşağıdaki adımları izleyin:
+Bu öğreticinin bir parçası olarak yapılandırdığınız özel yasaklı parola listesini artık kullanmak istemiyorsanız, aşağıdaki adımları tamamlayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
-1. **Yönet** menü üst bilgisi altında **kimlik doğrulama yöntemleri**' ni ve ardından **parola koruması**' nı seçin.
-1. **Özel liste Uygula** seçeneğini *Hayır*olarak ayarlayın.
-1. Özel yasaklanmış parola yapılandırmasını güncelleştirmek için **Kaydet**' i seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Azure Active **Directory'yi**arayın ve seçin, ardından sol taraftaki menüden **Güvenlik'i** seçin.
+1. **Yönet** menüsü üstbilginin altında Kimlik **Doğrulama yöntemlerini**seçin, ardından **Parola koruması.**
+1. **Özel listeyi Uygula** seçeneğini *No*olarak ayarlayın.
+1. Özel yasaklı parola yapılandırmasını güncelleştirmek için **Kaydet'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure AD için özel parola koruma listelerini etkinleştirmiş ve yapılandırmış olursunuz. Şunları öğrendiniz:
+Bu eğitimde, Azure AD için özel parola koruma listelerini etkinleştirdiniz ve yapılandırıldınız. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Özel yasaklanmış parolaları etkinleştir
-> * Özel yasaklanmış parola listesine giriş ekleme
-> * Parola değişikliklerini yasaklanmış parolayla sına
+> * Özel yasaklı parolaları etkinleştirme
+> * Özel yasaklı parola listesine giriş ekleme
+> * Yasaklı bir parolayla parola değişikliklerini test edin
 
 > [!div class="nextstepaction"]
-> [Risk tabanlı Azure Multi-Factor Authentication etkinleştirme](tutorial-mfa-applications.md)
+> [Risk tabanlı Azure Multi-Factor Authentication'ı etkinleştirme](tutorial-mfa-applications.md)

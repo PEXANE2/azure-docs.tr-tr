@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure IoT Edge üzerinde sanal cihaz verileri oluşturma-Machine Learning'
-description: Daha sonra makine öğrenimi modelini eğitebilmek için kullanılabilecek sanal cihazlar oluşturun.
+title: "Öğretici: Simüle edilmiş aygıt verileri oluşturma - Azure IoT Edge'de Makine Öğrenimi"
+description: Daha sonra bir makine öğrenme modeli eğitmek için kullanılabilecek simüle telemetri oluşturmak sanal cihazlar oluşturun.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,159 +9,159 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76722401"
 ---
-# <a name="tutorial-generate-simulated-device-data"></a>Öğretici: sanal cihaz verileri oluşturma
+# <a name="tutorial-generate-simulated-device-data"></a>Öğretici: Simüle cihaz verileri oluşturma
 
 > [!NOTE]
-> Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
+> Bu makale, IoT Edge'de Azure Machine Learning'i kullanma yla ilgili bir öğretici için bir serinin parçasıdır. Bu makaleye doğrudan ulaştıysanız, en iyi sonuçlar için serinin [ilk makalesiile](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
 
-Bu makalede, Azure IoT Hub telemetri gönderen bir cihazın benzetimini yapmak için makine öğrenimi eğitim verilerini kullanırız. Bu öğretici, giriş bölümünde belirtildiği gibi, eğitim ve test için bir uçak motoru kümesinden verilerin benzetimini yapmak için [turbofan motor düşme simülasyonu veri kümesini](https://c3.nasa.gov/dashlink/resources/139/) kullanır.
+Bu makalede, Azure IoT Hub'ına telemetri gönderen bir aygıtı simüle etmek için makine öğrenimi eğitim verilerini kullanıyoruz. Girişte belirtildiği gibi, bu öğretici eğitim ve test için uçak motorları bir dizi veri simüle etmek için [Turbofan motor bozulması simülasyon veri seti](https://c3.nasa.gov/dashlink/resources/139/) kullanır.
 
-Deneysel senaryolarımızda şunları biliyoruz:
+Deneysel senaryomuzda şunu biliyoruz:
 
-* Veriler birden fazla çok değişkenli zaman serisinden oluşur.
-* Her veri kümesi, eğitimlere ve test alt kümelerine bölünmüştür.
-* Her bir serinin farklı bir altyapıdan olduğu her zaman.
-* Her motor farklı derecenin ilk giyme ve üretim çeşitlemesi ile başlar.
+* Veriler birden çok değişkenli zaman serilerinden oluşur.
+* Her veri kümesi eğitim ve test alt kümelerine ayrılır.
+* Her zaman serisi farklı bir motordan.
+* Her motor ilk aşınma ve üretim varyasyonfarklı derecelerde başlar.
 
-Bu öğreticide, tek bir veri kümesinin eğitim verisi alt kümesini kullanıyoruz (FD003).
+Bu öğretici için, tek bir veri kümesinin (FD003) eğitim veri alt kümesini kullanırız.
 
-Gerçekte, her altyapının bağımsız bir IoT cihazı olması gerekir. Internet 'e bağlı bir türbofa altyapısı koleksiyonunuz yoksa, bu cihazlar için bir yazılım için tek bir yazılım oluşturacağız.
+Gerçekte, her motor bağımsız bir IoT cihaz olacaktır. Internet'e bağlı turbofan motorları koleksiyonunuz olmadığını varsayarsak, bu cihazlar için bir yazılım stand-in'i oluşturacağız.
 
-Simülatör, IoT Hub C# ile sanal cihazları programlı bir şekilde kaydetmek Için IoT Hub API 'leri kullanan bir programdır. Ardından, her bir cihazın verilerini NASA tarafından sunulan veri alt kümesinden okur ve sanal bir IoT cihazı kullanarak IoT Hub 'ınıza gönderir. Öğreticinin bu kısmına ait tüm kod, deponun Devicebir dizininde bulunabilir.
+Simülatör, sanal aygıtları IoT Hub'a programlı olarak kaydetmek için IoT Hub API'lerini kullanan bir C# programıdır. Daha sonra NASA tarafından sağlanan veri alt kümesinden her cihaz için verileri okumak ve simüle IoT Cihazı kullanarak IoT hub'ınıza gönderin. Öğreticinin bu bölümünün tüm kodlarını deponun DeviceHarness dizininde bulabilirsiniz.
 
-Devicebir projesi, dört sınıftan C# oluşan bir .NET Core projýdýr:
+DeviceHarness projesi, C# ile yazılmış dört sınıftan oluşan bir .NET çekirdek projesidir:
 
-* **Program:** Kullanıcı girişini ve genel koordinasyonu işlemekten sorumlu yürütme için giriş noktası.
-* **Traıningfilemanager:** Seçili veri dosyasını okumaktan ve ayrıştırmaktan sorumludur.
-* **Verisi cycledata:** İleti biçimine dönüştürülen bir dosyadaki tek bir veri satırını temsil eder.
-* **Turbofandevice:** Tek bir cihaza (zaman serisi) karşılık gelen ve verileri IoT Hub iletmek için bir IoT cihazı oluşturmaktan sorumludur.
+* **Program:** Kullanıcı girişi ve genel koordinasyonu işlemekten sorumlu yürütme giriş noktası.
+* **TrainingFileManager:** Seçili veri dosyasını okuma ve ayrıştma sorumlusu.
+* **CycleData:** İleti biçimine dönüştürülen bir dosyadaki tek bir veri satırını temsil eder.
+* **TurbofanCihazı:** Verilerde tek bir aygıta (zaman serisi) karşılık gelen bir IoT Aygıtı oluşturmaktan ve verileri IoT Hub'ına aktarmaktan sorumludur.
 
 Bu makalede açıklanan görevlerin tamamlanması yaklaşık 20 dakika sürer.
 
-Bu adımdaki işe yönelik gerçek hayatta büyük olasılıkla cihaz geliştiricileri ve bulut geliştiricileri tarafından gerçekleştirilmesi olasıdır.
+Bu adımdaki işin gerçek dünya eşdeğeri büyük olasılıkla aygıt geliştiricileri ve bulut geliştiricileri tarafından gerçekleştirilebilir.
 
-## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>Visual Studio Code yapılandırma ve Devicebir proje oluşturma
+## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>Visual Studio Code'u yapılandırın ve DeviceHarness projesini oluşturun
 
-1. Geliştirme sanal makinenize Uzak Masaüstü oturumu açın.
+1. Geliştirme VM'inize uzak bir masaüstü oturumu açın.
 
-1. Visual Studio Code 'da `C:\source\IoTEdgeAndMlSample\DeviceHarness` klasörünü açın.
+1. Visual Studio kodunda `C:\source\IoTEdgeAndMlSample\DeviceHarness` klasörü açın.
 
-1. Bu makinede uzantıları ilk kez kullandığınızdan, bazı uzantılar bağımlılıklarını güncelleştirecek ve yükleyecek. Uzantıyı güncelleştirmeniz istenebilir. Öyleyse, **pencereyi yeniden yükle**' yi seçin.
+1. Bu makinedeki uzantıları ilk kez kullandığınızdan, bazı uzantılar bağımlılıklarını günceller ve yükler. Uzantıyı güncelleştirmeniz istenebilir. Eğer öyleyse, **Pencereyi Yeniden Yükle'yi**seçin.
 
-   Çıkış penceresinde OmniSharp hataları görünürse C# uzantıyı kaldırmanız gerekir.
+   Çıkış penceresinde OmniSharp hataları görünüyorsa, C# uzantısını kaldırmanız gerekir.
 
-1. Device, için gerekli varlıkları eklemeniz istenecektir. Eklemek için **Evet** ' i seçin.
+1. DeviceHarness için gerekli varlıkları eklemeniz istenir. Eklemek için **Evet'i** seçin.
 
    * Bildirimin görünmesi birkaç saniye sürebilir.
-   * Bu bildirimi kaçırdıysanız sağ alt köşedeki zil simgesine göz atın.
+   * Bu bildirimi kaçırdıysanız, sağ alt köşedeki zil simgesine bakın.
 
-   ![VS Code uzantısı açılan kutusu](media/tutorial-machine-learning-edge-03-generate-data/add-required-assets.png)
+   ![VS Kod uzantısı açılır pencere](media/tutorial-machine-learning-edge-03-generate-data/add-required-assets.png)
 
-1. Paket bağımlılıklarını geri yüklemek için **geri yükle** ' yi seçin.
+1. Paket bağımlılıklarını geri yüklemek için **Geri Yükle'yi** seçin.
 
-   ![VS Code geri yükleme istemi](media/tutorial-machine-learning-edge-03-generate-data/restore-package-dependencies.png)
+   ![VS Kodu geri yükleme istemi](media/tutorial-machine-learning-edge-03-generate-data/restore-package-dependencies.png)
 
-   Bu bildirimleri alamazsanız Visual Studio Code kapatın, `C:\source\IoTEdgeAndMlSample\DeviceHarness`bin ve obj dizinlerini silin, Visual Studio Code açın ve Devicebandı klasörünü yeniden açın.
+   Bu bildirimleri alamazsanız, Visual Studio Code'u kapatın, Visual Studio `C:\source\IoTEdgeAndMlSample\DeviceHarness`Code'daki bin ve obj dizinlerini silin, Visual Studio Code'u açın ve DeviceHarness klasörünü yeniden açın.
 
-1. Ortamın bir derlemeyi tetikleyerek, **Ctrl** + **SHIFT** + **B**veya **Terminal** > **derleme görevini Çalıştır**' ı seçerek doğru şekilde ayarlandığını doğrulayın.
+1. Bir yapıyı, **Ctrl** + **Shift** + **B'yi**veya **Terminal** > **Çalıştır Yapı Görevini**tetikleyerek ortamınızın düzgün şekilde ayarladığını doğrulayın.
 
-1. Çalıştırılacak derleme görevini seçmeniz istenir. **Oluştur**' u seçin.
+1. Çalışacak yapı görevini seçmeniz istenir. **Yapı'yı**seçin.
 
-1. Derleme çalışır ve başarılı bir ileti verir.
+1. Yapı çalışır ve bir başarı iletisi çıktırıyor.
 
-   ![Derleme başarılı çıkış iletisi](media/tutorial-machine-learning-edge-03-generate-data/build-success.png)
+   ![Başarılı çıktı iletisi oluşturma](media/tutorial-machine-learning-edge-03-generate-data/build-success.png)
 
-1. Bu derlemeyi varsayılan derleme görevi yap > **varsayılan derleme görevini Yapılandır...** ' yı seçerek ve istemden **Build** ' **i seçerek yapabilirsiniz** .
+1. **Terminal** > **Yapılandırma Varsayılan Yapı Görevi'ni** seçerek ve komut isteminden **Yapı'yı** seçerek bu yapıyı varsayılan yapı görevi yapabilirsiniz.
 
-## <a name="connect-to-iot-hub-and-run-deviceharness"></a>IoT Hub Bağlan ve Devicebir şekilde Çalıştır
+## <a name="connect-to-iot-hub-and-run-deviceharness"></a>IoT Hub'a bağlanın ve DeviceHarness'i çalıştırın
 
-Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma işleminin ilerlemesini izlemek için IoT Hub 'ınıza bağlanın.
+Artık proje oluşturmaya sahip olduğumuza göre, bağlantı dizesine erişmek ve veri oluşturmanın ilerlemesini izlemek için IoT hub'ınıza bağlanın.
 
-### <a name="sign-in-to-azure-in-visual-studio-code"></a>Visual Studio Code 'de Azure 'da oturum açın
+### <a name="sign-in-to-azure-in-visual-studio-code"></a>Visual Studio Code'da Azure'da oturum açma
 
-1. Komut paleti **`Ctrl + Shift + P` veya > ** **komut paleti**' ni açarak Visual Studio Code Azure aboneliğinizde oturum açın.
+1. Komut paletini açarak Visual Studio Kodu'nda `Ctrl + Shift + P` Azure aboneliğinizde oturum açın veya**Komut Paletini** **Görüntüle.** > 
 
-1. **Azure: oturum aç** komutunu arayın.
+1. **Azure'u arayın: Oturum Aç** komutu.
 
-   Bir tarayıcı penceresi açılır ve sizden kimlik bilgilerinizi ister. Bir başarı sayfasına yeniden yönlendirildiğinde, tarayıcıyı kapatabilirsiniz.
+   Bir tarayıcı penceresi açılır ve kimlik bilgileriniz için sizi ister. Bir başarı sayfasına yönlendirildiyseniz, tarayıcıyı kapatabilirsiniz.
 
-### <a name="connect-to-your-iot-hub-and-retrieve-hub-connection-string"></a>IoT Hub 'ınıza bağlanın ve hub bağlantı dizesini alın
+### <a name="connect-to-your-iot-hub-and-retrieve-hub-connection-string"></a>IoT hub'ınıza bağlanın ve hub bağlantı dizesini alın
 
-1. Visual Studio Code Gezgini ' nin alt bölümünde, genişletmek için **Azure IoT Hub** çerçevesini seçin.
+1. Visual Studio Code explorer'ın alt bölümünde, genişletmek için **Azure IoT Hub** çerçevesini seçin.
 
-1. Genişletilmiş çerçevede **IoT Hub Seç**' e tıklayın.
+1. Genişletilmiş çerçevede, **IoT Hub'ı seçin'i**tıklatın.
 
-1. İstendiğinde, Azure aboneliğinizi ve ardından IoT Hub 'ınızı seçin.
+1. İstendiğinde, Azure aboneliğinizi ve ardından IoT hub'ınızı seçin.
 
-1. Daha fazla eylem için **Azure IoT Hub** sağındaki **...** seçeneğine tıklayın. **IoT Hub bağlantı dizesini Kopyala**' yı seçin.
+1. Daha fazla eylem için **Azure IoT Hub'ının** sağındaki **...** seçeneğini tıklatın. **Copy IoT Hub bağlantı dizesi'ni**seçin.
 
-   ![IoT Hub bağlantı dizesini Kopyala](media/tutorial-machine-learning-edge-03-generate-data/copy-hub-connection-string.png)
+   ![Copy IoT Hub bağlantı dizesi](media/tutorial-machine-learning-edge-03-generate-data/copy-hub-connection-string.png)
 
-### <a name="run-the-deviceharness-project"></a>Devicebir projeyi Çalıştır
+### <a name="run-the-deviceharness-project"></a>DeviceHarness projesini çalıştırın
 
-1. Visual Studio Code terminalini açmak için > **terminali** **görüntüle** ' yi seçin.
+1. Visual Studio Code terminalini açmak için **Görünüm** > **Terminali'ni** seçin.
 
-   Bir istem görmüyorsanız, ENTER tuşuna basın.
+   Bir istem görmüyorsanız Enter tuşuna basın.
 
-1. Terminalde `dotnet run` girin.
+1. Terminale `dotnet run` girin.
 
-1. IoT Hub bağlantı dizesi istendiğinde, önceki bölümde kopyaladığınız bağlantı dizesini yapıştırın.
+1. IoT Hub Bağlantı Dizesi için istendiğinde, önceki bölümde kopyalanan bağlantı dizesini yapıştırın.
 
-1. **Azure IoT Hub cihazları** çerçevesinde Yenile düğmesine tıklayın.
+1. Azure **IoT Hub aygıtları** çerçevesiiçinde, yenile düğmesini tıklatın.
 
-   ![IoT Hub cihaz listesini Yenile](media/tutorial-machine-learning-edge-03-generate-data/refresh-hub-device-list.png)
+   ![IoT Hub cihaz listesini yenile](media/tutorial-machine-learning-edge-03-generate-data/refresh-hub-device-list.png)
 
-1. Cihazların IoT Hub eklendiğini ve verilerin bu cihaz aracılığıyla gönderildiğini göstermek için cihazların yeşil renkte görünür olduğunu unutmayın. Cihazlar IoT Hub 'ına ileti gönderdikten sonra bağlantı kesilir ve mavi görünür.
+1. Aygıtların IoT Hub'ına eklendiğini ve verilerin bu aygıt üzerinden gönderildiğini belirtmek için aygıtların yeşil açıkta olduğunu unutmayın. Aygıtlar IoT hub'ına ileti gönderdikten sonra bağlantıyı keser ve mavi görünür.
 
-1. Herhangi bir cihaza sağ tıklayıp **Izlemeyi Başlat yerleşik olay uç noktasını**seçerek hub 'a gönderilen iletileri görüntüleyebilirsiniz. İletiler, Visual Studio Code ' deki çıkış bölmesinde görünür.
+1. Hub'a gönderilen iletileri herhangi bir cihaza sağ tıklayarak ve **Yerleşik Etkinlik Bitiş Noktası'nı Başlat'ı**seçerek görüntüleyebilirsiniz. İletiler Visual Studio Code'daki çıktı bölmesinde gösterecektir.
 
-1. **Azure IoT Hub** çıktı bölmesine tıklayarak izlemeyi durdurun ve **yerleşik olay uç noktasını İzlemeyi Durdur**' u seçin.
+1. **Azure IoT Hub** çıkış bölmesini tıklatarak izlemeyi durdurun ve **Yerleşik Etkinlik Bitiş Noktasını Izlemeyi Durdur'u**seçin.
 
-1. Uygulamanın tamamlanmasını, birkaç dakika sürer.
+1. Uygulamanın tamamlanmasına izin verin, bu da birkaç dakika sürer.
 
-## <a name="check-iot-hub-for-activity"></a>Etkinlik IoT Hub denetle
+## <a name="check-iot-hub-for-activity"></a>Etkinlik için IoT Hub'ı kontrol edin
 
-Devicebandı tarafından gönderilen veriler IoT Hub 'ınıza gitti, burada Azure portal doğrulayabilirsiniz.
+DeviceHarness tarafından gönderilen veriler, Azure portalında doğrulayabildiğiniz IoT hub'ınıza gitti.
 
-1. [Azure Portal](https://portal.azure.com/) açın ve bu öğretici Için oluşturulan IoT Hub 'ına gidin.
+1. Azure [portalını](https://portal.azure.com/) açın ve bu öğretici için oluşturulan IoT hub'ına gidin.
 
-1. Sol bölme menüsünde, **izleme**altında **ölçümler**' i seçin.
+1. Sol bölme menüsünden, **İzleme**altında, **Ölçümler'i**seçin.
 
-1. Grafik tanımı sayfasında, **ölçüm** açılan listesine tıklayın, listeyi aşağı kaydırın ve **Yönlendirme: depolamaya teslim edilen veriler**' i seçin. Grafik, verilerin depoya yönlendirilme durumunu göstermelidir.
+1. Grafik tanım sayfasında, **Metrik** açılır lay'i tıklatın, listeyi aşağı kaydırın ve **Yönlendirme'yi seçin: depolama alanına teslim edilen veriler.** Grafik, verilerin depolamaya yönlendirildiğindeki artışını göstermelidir.
 
-   ![Veri depolamaya teslim edildiğinde grafik ani artış gösterir](media/tutorial-machine-learning-edge-03-generate-data/iot-hub-usage.png)
+   ![Grafik, depolama alanına teslim edilen veriler de artış gösterir](media/tutorial-machine-learning-edge-03-generate-data/iot-hub-usage.png)
 
-## <a name="validate-data-in-azure-storage"></a>Azure depolama 'daki verileri doğrulama
+## <a name="validate-data-in-azure-storage"></a>Azure Depolama'da verileri doğrulama
 
-IoT Hub 'ınıza yeni gönderdiğimiz veriler, önceki makalede oluşturduğumuz depolama kapsayıcısına yönlendirildi. Depolama hesabımızda bulunan verilere göz atalım.
+Az önce IoT hub'ınıza gönderdiğimiz veriler, önceki makalede oluşturduğumuz depolama kapsayıcısına yönlendirildi. Depolama hesabımızdaki verilere bakalım.
 
 1. Azure portalında depolama hesabınıza gidin.
 
-1. Depolama hesabı Gezgininde **Depolama Gezgini (Önizleme)** öğesini seçin.
+1. Depolama hesabı gezgininden **Storage Explorer'ı (önizleme)** seçin.
 
-1. Depolama Gezgini 'nde **BLOB kapsayıcıları** ' nı ve ardından `devicedata`' ı seçin.
+1. Depolama gezgininde **Blob Kapsayıcıları'nı** seçin. `devicedata`
 
-1. İçerik bölmesinde, IoT Hub 'ın adının ardından yıl, ay, gün ve saat temelinde klasöre tıklayın. Verilerin yazıldığı süreyi temsil eden birkaç klasör görürsünüz.
+1. İçerik bölmesinde, IoT hub'ının adını n için klasöre tıklayın ve ardından yıl, ay, gün ve saat' i takip edin. Verilerin yazıldığı dakikaları temsil eden birkaç klasör görürsünüz.
 
-   ![Blob depolamada klasörleri görüntüleme](media/tutorial-machine-learning-edge-03-generate-data/confirm-data-storage-results.png)
+   ![Blob depolamasında klasörleri görüntüleme](media/tutorial-machine-learning-edge-03-generate-data/confirm-data-storage-results.png)
 
-1. **00** ve **01** etiketli veri dosyalarını bölüm ile ilgili olarak bulmak için bu klasörlerden birine tıklayın.
+1. Bölüme karşılık gelen **00** ve **01** etiketli veri dosyalarını bulmak için bu klasörlerden birini tıklatın.
 
-1. Dosyalar [avro](https://avro.apache.org/) biçiminde yazılır. Başka bir tarayıcı sekmesi açmak ve verileri kısmen işlemek için bu dosyalardan birine çift tıklayın. Dosyayı bir programda açmanız istenirse VS Code seçebilirsiniz ve doğru şekilde işlenir.
+1. Dosyalar [Avro](https://avro.apache.org/) formatında yazılmıştır. Başka bir tarayıcı sekmesini açmak ve verileri kısmen işlemek için bu dosyalardan birine çift tıklayın. Bir programda dosyayı açmanız istenirse, VS Kodu'nu seçebilirsiniz ve dosya doğru şekilde işlenir.
 
-1. Şu anda verileri okumaya veya yorumlamaya denemeniz gerekmez; Bunu bir sonraki makalede yapacağız.
+1. Şu anda verileri okumaya veya yorumlamaya gerek yoktur; bir sonraki makalede yapacağız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir .NET Core projesi kullanarak bir sanal IoT cihazı kümesi oluşturup bunları IoT Hub 'larımıza ve bir Azure depolama kapsayıcısından veri gönderecek şekilde kullandık. Bu proje, fiziksel IoT cihazlarının bir IoT Hub veri göndereceği ve seçkin bir depolama alanına yönelik olarak gerçek dünyada bir senaryoya benzetir. Bu veriler, algılayıcı ayarlarını, işlemsel ayarları, hata sinyallerini ve modlarını ve bu şekilde devam eder. Yeterli veri toplandıktan sonra, cihaz için kalan kullanım ömrünü (RUL) tahmin eden modelleri eğitmek üzere bu uygulamayı kullanırız. Bu makine öğrenimi bir sonraki makalede gösterilmektedir.
+Bu makalede, bir dizi sanal IoT aygıtı oluşturmak ve verileri ioT merkezimize ve bir Azure Depolama kapsayıcısına göndermek için bir .NET Core projesi kullandık. Bu proje, fiziksel IoT aygıtlarının bir IoT Hub'ına ve daha sonra da bir depoya veri gönderdiği gerçek bir senaryoyu simüle eder. Bu veriler sensör okumalarını, çalışma ayarlarını, arıza sinyallerini ve modlarını içerir. Yeterli veri toplandıktan sonra, cihaz için kalan yararlı ömrü (RUL) tahmin eden modelleri eğitmek için kullanırız. Bu makine öğrenimini bir sonraki makalede göstereceğiz.
 
-Bir makine öğrenimi modelini verilerle eğitmek için sonraki makaleye geçin.
+Verilerle bir makine öğrenme modeli eğitmek için bir sonraki makaleye devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure Machine Learning modeli eğitme ve dağıtma](tutorial-machine-learning-edge-04-train-model.md)
+> [Bir Azure Machine Learning modelini eğitme ve dağıtma](tutorial-machine-learning-edge-04-train-model.md)

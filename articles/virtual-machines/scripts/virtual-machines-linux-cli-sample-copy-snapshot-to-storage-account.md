@@ -1,6 +1,6 @@
 ---
-title: Bir anlık görüntüyü başka bir bölgedeki bir depolama hesabına kopyalama-CLı örneği
-description: Azure CLI betik örneği - aynı veya farklı bölgedeki bir depolama hesabına VHD olarak anlık görüntü dışarı aktarma/kopyalama.
+title: Anlık görüntübaşka bir bölgedeki depolama hesabına kopyalama - CLI örneği
+description: Azure CLI Script Örneği - Anlık görüntü,vhd olarak aynı veya farklı bölgedeki bir depolama hesabına aktarın/kopyalayın.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -17,13 +17,13 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 01d3b17ab2623570e086b0edea17ff97c8fe8ae8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458530"
 ---
-# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>CLI ile farklı bölgedeki bir depolama hesabına bir anlık görüntü dışarı aktarma/kopyalama
+# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Anlık görüntüyi CLI ile farklı bölgedeki bir depolama hesabına verme/kopyalama
 
 Bu betik farklı bölgedeki bir depolama hesabına yönetilen bir anlık görüntü gönderir. İlk olarak anlık görüntünün SAS URI'sini oluşturur ve sonra onu farklı bölgede bulunan bir depolama hesabına kopyalamak için kullanır. Olağanüstü durum kurtarma amacıyla farklı bölgede bulunan yönetilen disklerinizin yedeğini tutmak için bu betiği kullanın. 
 

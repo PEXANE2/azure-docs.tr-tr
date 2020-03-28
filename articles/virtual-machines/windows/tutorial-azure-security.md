@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure 'da Windows VM 'Leri için Azure Güvenlik Merkezi 'Ni kullanma
+title: Öğretici - Azure'da Windows VM'leri için Azure Güvenlik Merkezi'ni kullanma
 description: Bu öğreticide, Azure’da Windows sanal makinelerinizi korumaya ve güvenliğini sağlamaya yardımcı olmak için Azure Güvenlik Merkezi özelliklerini öğreneceksiniz.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74064947"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Öğretici: Windows sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
@@ -32,7 +32,7 @@ Azure Güvenlik Merkezi, Azure kaynak güvenliği uygulamalarınıza yönelik g�
 > * Yapılandırma durumu sorunlarını görüntüleme ve düzeltme
 > * Algılanan tehditleri gözden geçirme
 
-## <a name="security-center-overview"></a>Güvenlik Merkezine genel bakış
+## <a name="security-center-overview"></a>Güvenlik Merkezi’ne genel bakış
 
 Güvenlik Merkezi, olası sanal makine (VM) yapılandırma sorunlarını ve hedeflenmiş güvenlik tehditlerini algılar. Bunlar arasında, ağ güvenlik grupları olmayan, şifrelenmemiş diskler ve deneme yanılma Uzak Masaüstü Protokolü (RDP) saldırıları içeren sanal makineler yer alır. Güvenlik Merkezi panosunda bilgiler kolay okunabilen graflarda gösterilir.
 
@@ -50,7 +50,7 @@ Sanal makine güvenlik yapılandırmalarına yönelik görünürlük elde edebil
 
 1. Güvenlik Merkezi panosunda **Güvenlik ilkesi**’ne tıklayın ve sonra aboneliğinizi seçin. 
 2. **Veri toplama** için, **Otomatik Sağlama**'da **Açık**'ı seçin.
-3. **Varsayılan çalışma alanı yapılandırmasını** **Güvenlik Merkezi’nin oluşturduğu çalışma alanlarını kullan (varsayılan)** olarak bırakın.
+3. **Varsayılan çalışma alanı yapılandırmasını****Güvenlik Merkezi’nin oluşturduğu çalışma alanlarını kullan (varsayılan)** olarak bırakın.
 4. **Güvenlik Olayları**'nın altında varsayılan **Ortak** seçeneğini koruyun.
 4. Sayfanın üst kısmından **Kaydet**'e tıklayın. 
 
@@ -62,9 +62,9 @@ Güvenlik ilkeleri, Güvenlik Merkezi’nin kendisi için veriler topladığı v
 
 Aboneliğin tümüne bir güvenlik ilkesi oluşturmak için:
 
-1. Güvenlik Merkezi panosunda **Güvenlik ilkesini**, ardından aboneliğinizi seçin.
+1. Güvenlik Merkezi panosunda **Güvenlik ilkesini** seçin ve ardından aboneliğinizi seçin.
 2. **Güvenlik ilkesi** dikey penceresinde **Güvenlik ilkesini** seçin. 
-3. **Güvenlik ilkesi-güvenlik ilkesi** dikey penceresinde, aboneliğe uygulamak istediğiniz ilke öğelerini açın veya kapatın.
+3. Güvenlik **ilkesinde - Güvenlik ilkesi** bıçak, abonelik için uygulamak istediğiniz ilke öğelerini açın veya kapatın.
 4. Ayarlarınızı seçmeyi tamamladığınızda dikey pencerenin en üstünden **Kaydet**'i seçin. 
 
 
@@ -104,15 +104,15 @@ Tüm önerilerin listesini göstermek için:
 
 ## <a name="view-detected-threats"></a>Algılanan tehditleri görüntüleme
 
-Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama özellikleri hakkında ayrıntılı bilgi için bkz. [Güvenlik Merkezi tehditleri nasıl algılar?](../../security-center/security-center-alerts-overview.md#detect-threats).
+Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama yetenekleri hakkında ayrıntılı bilgi için, [Güvenlik Merkezi'nin tehditleri nasıl algıladığını görün?](../../security-center/security-center-alerts-overview.md#detect-threats)
 
-Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu daha yüksek fiyatlandırma katmanına geçtiğinizde **ücretsiz deneme sürümü** kullanılabilir. 
+Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu yüksek fiyatlandırma katmanına taşındığınızda **ücretsiz deneme** sürümü kullanılabilir. 
 
 Fiyatlandırma katmanını değiştirmek için:  
 
 1. Güvenlik Merkezi panosunda **Güvenlik ilkesi**’ne tıklayın ve sonra aboneliğinizi seçin.
 2. **Fiyatlandırma katmanı**'nı seçin.
-3. **Standart**’ı seçin ve ardından dikey pencerenin üstündeki **Kaydet**’i tıklatın.
+3. **Standart**'ı ve dikey pencerenin en üstünden **Kaydet**'i seçin.
 
 
 Fiyatlandırma katmanını değiştirmenizin ardından, güvenlik tehditleri algılandıkça güvenlik uyarıları grafı doldurulmaya başlar.

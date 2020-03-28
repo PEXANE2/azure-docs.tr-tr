@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs kullanarak belirli Android uygulamalarına bildirimler gönderme
+title: Azure Bildirim Hub'larını kullanarak belirli Android uygulamalarına bildirim gönderme
 description: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri göndermeyi öğrenin.
 documentationcenter: android
 services: notification-hubs
@@ -17,21 +17,21 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: b68d77bfdcf3fee0285b3c03ae0c598a3f6875c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531148"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127361"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak belirli Android uygulama kullanıcılarına anında Iletme bildirimi
+# <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Bildirim Hub'ları ve Google Bulut Mesajlaşmasını (amortismana erdirilmiş) kullanarak belirli Android kullanıcılarına anında iletme bildirimi gönderin
 
 > [!WARNING]
-> 10 Nisan 2018 itibariyle, Google Google Cloud Messaging (GCM) kullanım dışıdır. GCM sunucusu ve istemci API 'Leri kullanım dışıdır ve 29 Mayıs 2019 ' den hemen sonra kaldırılacaktır. Daha fazla bilgi için bkz. [GCM ve FCM hakkında sık sorulan sorular](https://developers.google.com/cloud-messaging/faq).
+> Google, 10 Nisan 2018 itibarıyla Google Bulut Mesajlaşma'yı (GCM) amortismana kattı. GCM sunucusu ve istemci API'leri amortismana alınır ve 29 Mayıs 2019'da kaldırılır. Daha fazla bilgi için [GCM ve FCM Sık Sorulan Sorular'a](https://developers.google.com/cloud-messaging/faq)bakın.
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-Bu öğreticide, belirli bir cihazdaki belirli bir uygulama kullanıcısına anında iletme bildirimleri göndermek için Azure Bildirim Hub'larını nasıl kullanacağınız gösterilir. [Uygulama arka ucunuzdan kaydolma](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) başlıklı yönerge makalesinde gösterildiği gibi, istemcilerin kimliğini doğrulamak ve bildirimler oluşturmak için ASP.NET WebAPI arka ucu kullanılır. Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisinde oluşturduğunuz bildirim hub’ını temel alır.
+Bu öğreticide, belirli bir cihazdaki belirli bir uygulama kullanıcısına anında iletme bildirimleri göndermek için Azure Bildirim Hubs’ı nasıl kullanacağınız gösterilmektedir. [Uygulama arka ucunuzdan kaydolma](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) başlıklı yönerge makalesinde gösterildiği gibi, istemcilerin kimliğini doğrulamak ve bildirimler oluşturmak için ASP.NET WebAPI arka ucu kullanılır. Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisinde oluşturduğunuz bildirim hub’ını temel alır.
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -50,7 +50,7 @@ Bu öğreticiyi uygulamadan önce [Öğretici: Azure Notification Hubs ve Google
 
 Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisinde oluşturulan Android uygulamasının güncelleştirilmesidir.
 
-1. `res/layout/activity_main.xml` dosyanızı açın, aşağıdaki içerik tanımlarını değiştirin:
+1. Dosyanızı `res/layout/activity_main.xml` açın, aşağıdaki içerik tanımlarını değiştirin:
 
     Kullanıcı olarak oturum açmak için yeni EditText denetimleri ekler. Ayrıca gönderdiğiniz bildirimlerin parçası olacak kullanıcı adı etiketi için bir alan da eklenir:
 
@@ -141,7 +141,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     />  
     </RelativeLayout>
     ```
-2. `res/values/strings.xml` dosyanızı açın ve `send_button` tanımını `send_button` dizeyi yeniden tanımlayarak aşağıdaki satırlarla değiştirin ve diğer denetimler için dizeler ekleyin:
+2. Dosyanızı `res/values/strings.xml` açın ve `send_button` tanımı, dizeyi yeniden tanımlayan `send_button` ve diğer denetimler için dizeleri ekleyen aşağıdaki satırlarla değiştirin:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -152,10 +152,10 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     <string name="notification_message_tag_hint">Recipient username</string>
     ```
 
-    `main_activity.xml` grafik düzeniniz artık aşağıdaki görüntüye benzer şekilde görünmelidir:
+    Grafik `main_activity.xml` düzeniniz artık aşağıdaki resim gibi görünmelidir:
 
     ![][A1]
-3. `MainActivity` sınıfınız ile aynı pakette `RegisterClient` adlı yeni bir sınıf oluşturun. Yeni sınıf dosyası için aşağıdaki kodu kullanın.
+3. Sınıfınızla `MainActivity` aynı `RegisterClient` pakette adı geçen yeni bir sınıf oluşturun. Yeni sınıf dosyası için aşağıdaki kodu kullanın.
 
     ```java
     import java.io.IOException;
@@ -262,7 +262,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     }
     ```
 
-    Bu bileşen, anında iletme bildirimlerine kaydolmak için uygulama arka ucuyla iletişim kurmada gereken REST çağrılarını uygular. [Uygulama arka ucunuzdan kaydetme](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. **Oturum aç** düğmesine tıkladığınızda yerel depolamada depolanan bir yetkilendirme belirteci kullanır.
+    Bu bileşen, anında iletme bildirimlerine kaydolmak için uygulama arka ucuyla iletişim kurmada gereken REST çağrılarını uygular. [Uygulama arka ucunuzdan kaydetme](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. **Oturum Aç** düğmesini tıklattığınızda yerel depolama alanında depolanan bir yetkilendirme belirteci kullanır.
 4. Sınıfınızda, `NotificationHub` için özel alanınızı kaldırın veya açıklama satırı yapın, ardından `RegisterClient` sınıfı için bir alan ve ASP.NET arka ucunuzun uç noktası için bir dize ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
 
     ```java
@@ -324,7 +324,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Ardından, **oturum açma** düğmesine tıklayıp olay ve anında iletme bildirimleri göndermek için aşağıdaki yöntemleri ekleyin.
+9. Ardından, **Oturum Aç** düğmesini tıklatmak ve anında iletme bildirimleri göndermek için aşağıdaki yöntemleri ekleyin.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -406,7 +406,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     }
     ```
 
-    **Oturum açma** düğmesi için `login` işleyicisi, giriş Kullanıcı adı ve parolası (kimlik doğrulama şemanızın kullandığı belirteci temsil eder) kullanarak temel bir kimlik doğrulama belirteci oluşturur, ardından arka ucunu kayıt için çağırmak üzere `RegisterClient` kullanır.
+    Oturum `login` **Açma** düğmesinin işleyicisi, giriş kullanıcı adı ve parolasını kullanarak temel bir kimlik doğrulama belirteci oluşturur `RegisterClient` (kimlik doğrulama düzeninin kullandığı herhangi bir belirteci temsil eder), ardından kayıt için arka uç çağırmak için kullanır.
 
     `sendPush` yöntemi, kullanıcı etiketine dayalı olarak kullanıcıya güvenli bir bildirim tetiklemek için arka ucu çağırır. `sendPush` tarafından hedeflenen platform bildirim hizmeti, geçirilen `pns` dizesine bağlıdır.
 
@@ -461,7 +461,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
         }
     }
     ```
-12. `build.gradle` dosyasında, `buildTypes` bölümünden sonra `android` bölümüne aşağıdaki satırı ekleyin.
+12. Dosyada, `build.gradle` `android` `buildTypes` bölümden sonraki bölüme aşağıdaki satırı ekleyin.
 
     ```java
     useLibrary 'org.apache.http.legacy'
@@ -472,7 +472,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
 
 1. Android Studio kullanarak bir cihazda veya öykünücüde uygulamayı çalıştırın.
 2. Android uygulamasında bir kullanıcı adı ve parola girin. Her ikisi de aynı dize değerine sahip olmalı ve boşluk veya özel karakterler içermemelidir.
-3. Android uygulamasında **oturum aç**' a tıklayın. **Oturumun açıldığını ve kaydın yapıldığını** bildiren bir bildirim iletisi görüntülenmesini bekleyin. **Bildirim Gönder** düğmesini etkinleştirir.
+3. Android uygulamasında Oturum **Aç'ı**tıklatın. **Oturumun açıldığını ve kaydın yapıldığını** bildiren bir bildirim iletisi görüntülenmesini bekleyin. **Bildirim Gönder** düğmesini etkinleştirir.
 
     ![][A2]
 4. Uygulamayı çalıştırdığınız ve bir kullanıcı kaydettiğiniz tüm platformları etkinleştirmek için iki durumlu düğmelere tıklayın.

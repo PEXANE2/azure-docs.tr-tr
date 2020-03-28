@@ -1,6 +1,6 @@
 ---
-title: CLı betiği-restore Server-MariaDB için Azure veritabanı
-description: Bu örnek Azure CLı betiği, MariaDB sunucusu ve veritabanlarının veritabanları için Azure veritabanı 'nın zaman içinde önceki bir noktaya nasıl geri yükleneceğini gösterir.
+title: CLI komut dosyası - Sunucuyu geri yükleme - MariaDB için Azure Veritabanı
+description: Bu örnek Azure CLI komut dosyası, MariaDB sunucusu ve veritabanları için bir Azure Veritabanını önceki bir noktaya nasıl geri yükleyini gösterir.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -9,14 +9,14 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771737"
 ---
-# <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLı kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı geri yükleme
-Bu örnek CLı betiği, MariaDB sunucusu için tek bir Azure veritabanını zaman içinde önceki bir noktaya geri yükler.
+# <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI'yi kullanarak MariaDB sunucusu için Azure Veritabanını geri yükleme
+Bu örnek CLI komut dosyası, MariaDB sunucusu için tek bir Azure Veritabanını önceki bir noktaya geri yükler.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,10 +36,10 @@ Bu betik, aşağıdaki tabloda ana hatları verilen komutları kullanır:
 | **Komut** | **Notlar** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az MariaDB sunucu oluştur](/cli/azure/mariadb/server#az-mariadb-server-create) | Veritabanlarını barındıran bir MariaDB sunucusu oluşturur. |
-| [az MariaDB sunucu geri yükleme](/cli/azure/mariadb/server#az-mariadb-server-restore) | Bir sunucuyu yedekten geri yükler. |
+| [az mariadb sunucu oluşturmak](/cli/azure/mariadb/server#az-mariadb-server-create) | Veritabanlarını barındıran bir MariaDB sunucusu oluşturur. |
+| [az mariadb sunucu geri yükleme](/cli/azure/mariadb/server#az-mariadb-server-restore) | Bir sunucuyu yedekten geri yükler. |
 | [az group delete](/cli/azure/group#az-group-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure CLI hakkında daha fazla bilgi okuyun: [Azure CLI belgeleri](/cli/azure).
-- Ek betikleri deneyin: [MariaDB Için Azure veritabanı Azure CLI örnekleri](../sample-scripts-azure-cli.md)
+- Ek komut dosyaları deneyin: [MariaDB için Azure Veritabanı için Azure CLI örnekleri](../sample-scripts-azure-cli.md)

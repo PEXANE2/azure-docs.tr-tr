@@ -1,5 +1,5 @@
 ---
-title: Öğretici-PowerShell ile sanal makineleri yönetme
+title: Öğretici - PowerShell ile sanal makineleri yönetin
 description: Bu öğreticide RBAC, ilkeler, kilitler ve etiketler uygulayarak Azure sanal makinelerini yönetmek için Azure PowerShell’i kullanma hakkında bilgi edineceksiniz
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,10 +14,10 @@ ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: fd7e7f14d076a6a9652e902c4dc0ec41665735ee
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75981755"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows sanal makine yönetimi hakkında bilgi edinin
@@ -28,7 +28,7 @@ ms.locfileid: "75981755"
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="understand-scope"></a>Kapsamı anlama
 
@@ -58,7 +58,7 @@ Sanal makine çözümlerini yönetmek için yaygın olarak gereken erişimi sağ
 
 Kullanıcılara rolleri tek tek atamak yerine, benzer eylemlerde bulunması gereken kullanıcılar için bir Azure Active Directory grubu kullanmak genellikle daha kolaydır. Ardından, bu grubu uygun role atayabilirsiniz. Bu makalede sanal makineyi yönetmek için var olan bir grubu kullanın veya portalı kullanarak [bir Azure Active Directory grubu oluşturun](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Yeni bir grup oluşturduktan veya var olan bir grubu bulduktan sonra, Azure Active Directory grubunu kaynak grubu için sanal makine katılımcısı rolüne atamak üzere [New-Azroleatama](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) komutunu kullanın.  
+Yeni bir grup oluşturduktan veya varolan bir grup bulduktan sonra, Azure Etkin Dizin grubunu kaynak grubu için Sanal Makine Katılımcısı rolüne atamak için [Yeni Rol Atama](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) komutunu kullanın.  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -68,7 +68,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-**Asıl \<guıd > dizinde mevcut olmadığı**belirten bir hata alırsanız, yeni grup Azure Active Directory genelinde yayılmaz. Komutu tekrar çalıştırmayı deneyin.
+Ana yol gösterici ** \<> dizinde bulunmadığını**belirten bir hata alırsanız, yeni grup Azure Etkin Dizini boyunca yayılmamıştır. Komutu tekrar çalıştırmayı deneyin.
 
 Genellikle, kullanıcıların dağıtılmış kaynakları yönetmek için atandığından emin olmak üzere *Ağ Katılımcısı* ve *Depolama Hesabı Katılımcısı* için işlemi yinelemeniz gerekir. Bu makalede, söz konusu adımları atlayabilirsiniz.
 
@@ -86,7 +86,7 @@ Mevcut ilke tanımlarını göreceksiniz. İlke türü **Yerleşik** veya **Öze
 * Sanal makineler için SKU'ları sınırlama.
 * Yönetilen diskler kullanmayan sanal makineleri denetleme.
 
-Aşağıdaki örnekte, görünen ada göre üç ilke tanımı alırsınız. Bu tanımları kaynak grubuna atamak için [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) komutunu kullanabilirsiniz. Bazı ilkeler için, izin verilen değerleri belirtmek üzere parametre değerleri sağlayın.
+Aşağıdaki örnekte, görünen ada göre üç ilke tanımı alırsınız. Bu tanımları kaynak grubuna atamak için [Yeni AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) komutunu kullanırsınız. Bazı ilkeler için, izin verilen değerleri belirtmek üzere parametre değerleri sağlayın.
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -140,7 +140,7 @@ Dağıtımınız tamamlandıktan sonra çözüme daha fazla yönetim ayarı uygu
 
 [Kaynak kilitleri](../../azure-resource-manager/management/lock-resources.md), kuruluşunuzdaki kullanıcıların kritik kaynakları yanlışlıkla silmesini veya değiştirmesini önler. Rol tabanlı erişim denetiminin aksine, kaynak kilitleri tüm kullanıcılar ve roller için bir kısıtlama uygular. Kilit düzeyini *CanNotDelete* veya *ReadOnly* olarak ayarlayabilirsiniz.
 
-Sanal makineyi ve ağ güvenlik grubunu kilitlemek için [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) komutunu kullanın:
+Sanal makine ve ağ güvenlik grubunu kilitlemek için [Yeni Kaynak Kilidi](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) komutunu kullanın:
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -168,11 +168,11 @@ Silme işleminin bir kilit nedeniyle tamamlanamadığını belirten bir hata gö
 
 ## <a name="tag-resources"></a>Kaynakları etiketleme
 
-Azure kaynaklarınızı mantıksal olarak kategorilere ayırmak için [etiketler](../../azure-resource-manager/management/tag-resources.md) uygulayabilirsiniz. Her etiket bir ad ve değerden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
+Kategorilere göre mantıksal olarak düzenlemek için [etiketleri](../../azure-resource-manager/management/tag-resources.md) Azure kaynaklarınıza uygularsınız. Her etiket bir ad ve değerden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-Etiketleri bir sanal makineye uygulamak için [set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) komutunu kullanın:
+Etiketleri sanal bir makineye uygulamak için [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) komutunu kullanın:
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -204,7 +204,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kilit kaldırılana kadar kilitli ağ güvenlik grubu silinemez. Kilidi kaldırmak için [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) komutunu kullanın:
+Kilit kaldırılana kadar kilitli ağ güvenlik grubu silinemez. Kilidi kaldırmak için [Kaldır-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) komutunu kullanın:
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -217,7 +217,7 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz.
+Artık gerekmediğinde, kaynak grubunu, VM'i ve ilgili tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
@@ -233,7 +233,7 @@ Bu öğreticide, özel bir VM görüntüsü oluşturdunuz. Şunları öğrendini
 > * Kilitlerle kritik kaynakları koruma
 > * Fatura ve yönetim için kaynakları etiketleme
 
-Bir Linux sanal makinesindeki değişiklikleri belirleme ve paket güncelleştirmelerini yönetme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Değişiklikleri nasıl tanımlayacağımız ve Linux sanal makinesindeki paket güncellemelerini nasıl yöneteceklerini öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Sanal makineleri yönetme](tutorial-config-management.md)

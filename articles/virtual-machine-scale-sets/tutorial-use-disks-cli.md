@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure CLı ile ölçek kümeleri için diskler oluşturma ve kullanma
+title: Öğretici - Azure CLI ile ölçek kümeleri için diskoluşturma ve kullanma
 description: Disk ekleme, hazırlama, listeleme ve ayırma gibi, Azure CLI kullanılarak sanal makine ölçek kümesi ile Yönetilen Diskler oluşturma ve kullanma işlemlerinin nasıl yapılacağını öğrenin.
 author: cynthn
 tags: azure-resource-manager
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278241"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067054"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 Sanal makine ölçek kümeleri, sanal makine örneğinin işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir ölçek kümesi oluştururken ve yönetirken, beklenen iş yüküne uygun disk boyutu ve yapılandırmasını seçmek önemlidir. Bu öğretici, sanal makine disklerinin oluşturulmasını ve yönetilmesini kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -25,11 +25,11 @@ Sanal makine ölçek kümeleri, sanal makine örneğinin işletim sistemini, uyg
 > * Disk performansı
 > * Veri disklerini ekleme ve hazırlama
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 
 ## <a name="default-azure-disks"></a>Varsayılan Azure diskleri
@@ -42,7 +42,7 @@ Bir ölçek kümesi oluşturulduğunda veya ölçeklendirildiğinde, her bir san
 ### <a name="temporary-disk-sizes"></a>Geçici disk boyutları
 | Tür | Ortak boyutlar | En yüksek geçici disk boyutu (GiB) |
 |----|----|----|
-| [Genel amaçlı](../virtual-machines/linux/sizes-general.md) | A, B ve D serisi | 1600 |
+| [Genel amaç](../virtual-machines/linux/sizes-general.md) | A, B ve D serisi | 1600 |
 | [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md) | F serisi | 576 |
 | [Bellek için iyileştirilmiş](../virtual-machines/linux/sizes-memory.md) | D, E, G ve M serisi | 6144 |
 | [Depolama için iyileştirilmiş](../virtual-machines/linux/sizes-storage.md) | L serisi | 5630 |
@@ -51,12 +51,12 @@ Bir ölçek kümesi oluşturulduğunda veya ölçeklendirildiğinde, her bir san
 
 
 ## <a name="azure-data-disks"></a>Azure veri diskleri
-Uygulamalar yüklemeniz ve veri depolamanız gerekirse ek veri diskleri eklenebilir. Dayanıklı ve duyarlı veri depolama gerektiren her koşulda veri diskleri kullanılmalıdır. Her veri diski maksimum 4 TB kapasiteye sahiptir. Sanal makine örneğinin boyutu, kaç veri diskinin eklenebileceğini belirler. Her VM vCPU için iki veri diski eklenebilir.
+Uygulamalar yüklemeniz ve veri depolamanız gerekirse ek veri diskleri eklenebilir. Dayanıklı ve duyarlı veri depolamanın istenildiği her koşulda veri diskleri kullanılmalıdır. Her veri diski maksimum 4 TB kapasiteye sahiptir. Sanal makine örneğinin boyutu, kaç veri diskinin eklenebileceğini belirler. Her VM vCPU için iki veri diski eklenebilir.
 
 ### <a name="max-data-disks-per-vm"></a>VM başına en fazla veri diski
 | Tür | Ortak boyutlar | VM başına en fazla veri diski |
 |----|----|----|
-| [Genel amaçlı](../virtual-machines/linux/sizes-general.md) | A, B ve D serisi | 64 |
+| [Genel amaç](../virtual-machines/linux/sizes-general.md) | A, B ve D serisi | 64 |
 | [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md) | F serisi | 64 |
 | [Bellek için iyileştirilmiş](../virtual-machines/linux/sizes-memory.md) | D, E, G ve M serisi | 64 |
 | [Depolama için iyileştirilmiş](../virtual-machines/linux/sizes-storage.md) | L serisi | 64 |
@@ -71,16 +71,16 @@ Azure iki disk türü sunar.
 Standart Depolama, HDD’ler ile desteklenir ve uygun maliyetli depolama ve yüksek performans sağlar. Standart diskler, uygun maliyetli bir geliştirme ve iş yükü testi için idealdir.
 
 ### <a name="premium-disk"></a>Premium disk
-Premium diskler SSD tabanlı, yüksek performanslı ve düşük gecikme süreli disk ile desteklenir. Üretim iş yüklerini çalıştıran sanal makineler için bu diskler önerilir. Premium Depolama, DS serisi, DSv2 serisi, GS serisi ve FS serisi VM'lerini destekler. Disk boyutu seçilirken boyutun değeri sonraki türe yuvarlanır. Örneğin disk boyutu 128 GB’den azsa disk türü P10’dur. Disk boyutu 129 GB ile 512 GB arasında ise boyut P20’dir. 512 GB’ın üstündeki diskler P30 boyutundadır.
+Premium diskler SSD tabanlı, yüksek performanslı ve düşük gecikme süreli disk ile desteklenir. Üretim iş yüklerini çalıştıran sanal makineler için bu diskler önerilir. Premium Depolama, DS serisi, DSv2 serisi, GS serisi ve FS-serisi VM'lerini destekler. Disk boyutu seçilirken boyutun değeri sonraki türe yuvarlanır. Örneğin disk boyutu 128 GB’den azsa disk türü P10’dur. Disk boyutu 129 GB ile 512 GB arasında ise boyut P20’dir. 512 GB’ın üstündeki diskler P30 boyutundadır.
 
 ### <a name="premium-disk-performance"></a>Premium disk performansı
 |Premium depolama diski türü | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Disk boyutu (yuvarlanmış değer) | 32 GB | 64 GB | 128 GB | 512 GB | 1\.024 GB (1 TB) | 2\.048 GB (2 TB) | 4\.095 GB (4 TB) |
-| Disk başına en fazla IOPS | 120 | 240 | 500 | 2\.300 | 5\.000 | 7\.500 | 7\.500 |
-Disk başına çıkış | 25 MB/sn | 50 MB/sn | 100 MB/s | 150 MB/s | 200 MB/sn | 250 MB/sn | 250 MB/sn |
+| Disk boyutu (yuvarlanmış değer) | 32 GB | 64 GB | 128 GB | 512 GB | 1.024 GB (1 TB) | 2.048 GB (2 TB) | 4.095 GB (4 TB) |
+| Disk başına en fazla IOPS | 120 | 240 | 500 | 2.300 | 5.000 | 7.500 | 7.500 |
+Disk başına aktarım hızı | 25 MB/sn | 50 MB/sn | 100 MB/s | 150 MB/s | 200 MB/sn | 250 MB/sn | 250 MB/sn |
 
-Yukarıdaki tabloda, disk başına maksimum IOPS tanımlanmış olsa da birden çok veri diski bölümlenerek daha yüksek performansa ulaşılabilir. Örneğin bir Standard_GS5 VM’si en fazla 80.000 IOPS’ye ulaşabilir. VM başına IOPS üst sınırı hakkında ayrıntılı bilgi için bkz. [Linux VM türleri](../virtual-machines/linux/sizes.md).
+Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüksek düzeyde performansa birden çok veri diskini bölümleyerek ulaşılabilir. Örneğin bir Standard_GS5 VM’si en fazla 80.000 IOPS’ye ulaşabilir. VM başına IOPS üst sınırı hakkında ayrıntılı bilgi için bkz. [Linux VM türleri](../virtual-machines/linux/sizes.md).
 
 
 ## <a name="create-and-attach-disks"></a>Disk oluşturma ve ekleme
@@ -93,7 +93,7 @@ Bir ölçek kümesi oluştururken veya mevcut bir ölçek kümesi ile diskler ol
 az group create --name myResourceGroup --location eastus
 ```
 
-[az vmss create](/cli/azure/vmss) komutuyla bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, *myScaleSet* adlı bir ölçek kümesini ve yoksa SSH anahtarlarını oluşturur. `--data-disk-sizes-gb` parametresiyle iki disk oluşturulur. İlk diskin boyutu *64* GB, ikinci diskin boyutuysa *128* GB’tır:
+[az vmss create](/cli/azure/vmss) komutuyla bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, *myScaleSet* adlı bir ölçek kümesini ve yoksa SSH anahtarlarını oluşturur. `--data-disk-sizes-gb` parametresiyle iki disk oluşturulur. İlk disk *64* GB boyutunda, ikinci disk ise *128* GB'dır:
 
 ```azurecli-interactive
 az vmss create \
@@ -146,7 +146,7 @@ az vmss list-instance-connection-info \
 
 Aşağıdaki örnekte gösterildiği gibi birinci sanal makine örneğinize bağlanmak için kendi genel IP adresinizi ve bağlantı noktası numaranızı kullanın:
 
-```azurecli-interactive
+```console
 ssh azureuser@52.226.67.166 -p 50001
 ```
 
@@ -190,7 +190,7 @@ Device     Boot Start       End   Sectors  Size Id Type
 /dev/sde1        2048 268435455 268433408  128G 83 Linux
 ```
 
-Aşağıdaki adımları uygulayarak, sanal makine örneğindeki dosya sistemlerini ve bağlama noktalarını inceleyin:
+Aşağıdaki gibi, sanal makine örneğindeki dosya sistemlerini ve bağlama noktalarını inceleyin:
 
 ```bash
 sudo df -h
@@ -198,7 +198,7 @@ sudo df -h
 
 Aşağıdaki örnek çıktı, üç diskin dosya sistemlerinin */datadisks* konumuna düzgün şekilde bağlandığını gösterir:
 
-```bash
+```output
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        30G  1.3G   28G   5% /
 /dev/sdb1        50G   52M   47G   1% /mnt
@@ -270,7 +270,7 @@ Disk boyutu, depolama katmanı ve LUN (Mantıksal Birim Numarası) ile ilgili bi
 ```
 
 
-## <a name="detach-a-disk"></a>Bir diski ayırma
+## <a name="detach-a-disk"></a>Disk ayırma
 Belirli bir disk artık gerekli olmadığında o diski ölçek kümesinden ayırabilirsiniz. Disk, ölçek kümesindeki tüm sanal makine örneklerinden kaldırılır. Ölçek kümesinden bir diski ayırmak için [az vmss disk detach](/cli/azure/vmss/disk) komutunu kullanın ve diskin LUN’unu belirtin. Önceki bölümde [az vmss show](/cli/azure/vmss) komutundan elde edilen çıktıda LUN’lar gösterilir. Aşağıdaki örnek, ölçek kümesinden LUN *2*’yi ayırır:
 
 ```azurecli-interactive

@@ -1,6 +1,6 @@
 ---
-title: Azure CLı kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma
-description: Azure CLı kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırın. İletideki özelliklere bağlı olarak, bir depolama hesabına veya Service Bus kuyruğuna yönlendirin.
+title: Azure CLI'yi kullanarak Azure IoT Hub için ileti yönlendirmesini yapılandırma
+description: Azure CLI'yi kullanarak Azure IoT Hub için ileti yönlendirmesini yapılandırın. İletideki özelliklere bağlı olarak, bir depolama hesabı veya Servis Veri Yolu kuyruğuna yönlendirin.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,36 +10,36 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 056dac7977115f97892d8dbfde0710e00237804e
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78674338"
 ---
-# <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure CLı 'yi kullanma
+# <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmesini yapılandırmak için Azure CLI'yi kullanın
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
 [!INCLUDE [iot-hub-include-routing-create-resources](../../includes/iot-hub-include-routing-create-resources.md)]
 
-## <a name="download-the-script-optional"></a>Betiği karşıdan yükle (isteğe bağlı)
+## <a name="download-the-script-optional"></a>Komut dosyasını indirin (isteğe bağlı)
 
-Bu öğreticinin ikinci bölümünde, IoT Hub iletileri göndermek için bir Visual Studio uygulaması indirip çalıştırırsınız. İndirmenin, Azure Resource Manager şablonu ve parametreler dosyasının yanı sıra Azure CLı ve PowerShell betikleri içeren bir klasör vardır.
+Bu öğreticinin ikinci bölümü için, IoT Hub'a ileti göndermek için bir Visual Studio uygulamasını indirip çalıştırAbilirsiniz. İndirmede Azure Kaynak Yöneticisi şablonu ve parametreler dosyasının yanı sıra Azure CLI ve PowerShell komut dosyalarını içeren bir klasör vardır.
 
-Tamamlanmış betiği görüntülemek istiyorsanız, [Azure IoT C# örnekleri](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)' ni indirin. Master. zip dosyasını ayıklayın. Azure CLı betiği, **iothub_routing_cli. azclı**olarak/iot-hub/Tutorials/Routing/SimulatedDevice/resources/.
+Tamamlanan komut dosyasını görüntülemek istiyorsanız, [Azure IoT C# Örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. Master.zip dosyasının zip'ini açın. Azure CLI komut dosyası /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ as **iothub_routing_cli.azcli'dedir.**
 
-## <a name="use-the-azure-cli-to-create-your-resources"></a>Kaynaklarınızı oluşturmak için Azure CLı 'yi kullanma
+## <a name="use-the-azure-cli-to-create-your-resources"></a>Kaynaklarınızı oluşturmak için Azure CLI'yi kullanın
 
-Aşağıdaki betiği kopyalayıp Cloud Shell yapıştırın ve ENTER tuşuna basın. Betiği tek seferde bir satır çalıştırır. Betiğin bu ilk bölümü, bu öğreticide depolama hesabı, IoT Hub, Service Bus ad alanı ve Service Bus kuyruğu dahil temel kaynakları oluşturur. Öğreticinin geri kalanında ilerlettiğinizde her bir komut bloğunu kopyalayın ve çalıştırmak için Cloud Shell yapıştırın.
+Aşağıdaki komut dosyasını Bulut Kabuğu'na kopyalayıp yapıştırın ve Enter tuşuna basın. Senaryoyu teker teksatır çalıştırAn bir senaryo. Komut dosyasının bu ilk bölümü, depolama hesabı, IoT Hub, Servis Veri Merkezi Ad Alanı ve Hizmet Veri Servisi kuyruğu da dahil olmak üzere bu öğretici için temel kaynakları oluşturur. Öğreticinin geri kalanında, komut dosyasının her bloğunu kopyalayın ve çalıştırmak için Cloud Shell'e yapıştırın.
 
 > [!TIP]
-> Hata ayıklama hakkında ipucu: Bu betik, betiği daha okunabilir hale getirmek için devamlılık simgesini (ters eğik çizgi `\`) kullanır. Betiği çalıştırırken bir sorun yaşıyorsanız Cloud Shell oturumunuzun `bash` çalıştığından ve ters eğik çizgi dışında boşluk olmadığından emin olun.
+> Hata ayıklama hakkında bir ipucu: Bu komut dosyası `\`komut dosyası daha okunabilir hale getirmek için devamı sembolü (backslash) kullanır. Komut dosyasını çalıştırmakta sorun varsa, Bulut Bulut `bash` oturumunuzun çalıştığından ve herhangi bir ters eğik çizgiden sonra boşluk olmadığından emin olun.
 > 
 
-IoT Hub adı ve depolama hesabı adı gibi genel olarak benzersiz olması gereken birkaç kaynak adı vardır. Bunun daha kolay olması için, bu kaynak adlarına *rasgelevalue*adlı rastgele bir alfasayısal değer eklenir. Rasgeledeğeri, komut dosyasının en üstünde bir kez oluşturulur ve komut dosyası boyunca gerektiğinde kaynak adlarına eklenir. Rastgele olmasını istemiyorsanız, bunu boş bir dizeye veya belirli bir değere ayarlayabilirsiniz. 
+IoT Hub adı ve depolama hesabı adı gibi genel olarak benzersiz olması gereken birkaç kaynak adı vardır. Bunu kolaylaştırmak için, bu kaynak adları *randomValue*adı verilen rasgele alfasayısal bir değerle eklenir. RandomValue komut dosyasının en üstünde bir kez oluşturulur ve komut dosyası boyunca gerektiğinde kaynak adlarına eklenir. Rasgele olmasını istemiyorsanız, boş bir dize veya belirli bir değere ayarlayabilirsiniz. 
 
 > [!IMPORTANT]
-> İlk betikte ayarlanan değişkenler de yönlendirme betiği tarafından kullanılır, bu nedenle tüm betiği aynı Cloud Shell oturumunda çalıştırın. Yönlendirmeyi ayarlamak için betiği çalıştırmak üzere yeni bir oturum açarsanız, bazı değişkenlerin değerleri eksik olur.
+> İlk komut dosyasında ayarlanan değişkenler yönlendirme komut dosyası tarafından da kullanılır, bu nedenle tüm komut dosyasını aynı Bulut Bulut suşu oturumunda çalıştırın. Yönlendirmeyi ayarlamak için komut dosyasını çalıştırmak için yeni bir oturum açarsanız, değişkenlerden birkaçı eksik değerler olur.
 >
 
 ```azurecli-interactive
@@ -141,45 +141,45 @@ az iot hub device-identity show --device-id $iotDeviceName \
     --hub-name $iotHubName
 ```
 
-Temel kaynaklar ayarlandığına göre, ileti yönlendirmeyi yapılandırabilirsiniz.
+Temel kaynaklar ayarlıolduğundan, ileti yönlendirmesini yapılandırabilirsiniz.
 
 ## <a name="set-up-message-routing"></a>İleti yönlendirmeyi ayarlama
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Yönlendirme uç noktası oluşturmak için [az IoT Hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create)kullanın. Uç nokta için ileti yolu oluşturmak için [az IoT Hub Route Create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create)kullanın.
+Yönlendirme bitiş noktası oluşturmak için [az iot hub yönlendirme-bitiş noktası oluşturma'yı](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create)kullanın. Bitiş noktası için ileti yolu oluşturmak için [az iot hub rotasını kullanın.](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create)
 
 ### <a name="route-to-a-storage-account"></a>Depolama hesabına yönlendirme
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-İlk olarak, depolama hesabı için uç noktayı ayarlayın ve ardından yolu ayarlayın. 
+Önce depolama hesabının bitiş noktasını ayarlayın, ardından rotayı ayarlayın. 
 
-Bunlar, Cloud Shell oturumunuz dahilinde ayarlanması gereken komut dosyası tarafından kullanılan değişkenlerdir:
+Bulut Bulut oturumunuzda ayarlanabilmesi gereken komut dosyası tarafından kullanılan değişkenler şunlardır:
 
-**StorageConnectionString**: Bu değer, önceki betikte ayarlanan depolama hesabından alınır. Bu, depolama hesabına erişmek için ileti yönlendirme tarafından kullanılır.
+**storageConnectionString**: Bu değer önceki komut dosyasında ayarlanan depolama hesabından alınır. Depolama hesabına erişmek için ileti yönlendirmesi tarafından kullanılır.
 
-  **resourceGroup**: kaynak grubunun iki oluşumu vardır; bunları kaynak grubunuza ayarlayın.
+  **resourceGroup**: Kaynak grubunun iki olayı vardır - bunları kaynak grubunuza ayarlayın.
 
-**Endpoint SubscriptionID**: Bu alan, uç nokta Için Azure SubscriptionID olarak ayarlanır. 
+**endpoint subscriptionID**: Bu alan bitiş noktası için Azure subscriptionID olarak ayarlanır. 
 
-**EndpointType**: Bu alan bitiş noktası türüdür. Bu değer `azurestoragecontainer`, `eventhub`, `servicebusqueue`veya `servicebustopic`olarak ayarlanmalıdır. Burada amacınıza göre `azurestoragecontainer`olarak ayarlayın.
+**endpointType**: Bu alan bitiş noktası türüdür. Bu `azurestoragecontainer`değer , , `eventhub` `servicebusqueue`, `servicebustopic`veya . olarak ayarlanmalıdır. Buradaki amaçlarınız için, `azurestoragecontainer`bunu .
 
-**Iothubname**: Bu alan, yönlendirmeyi yapan hub 'ın adıdır.
+**iotHubName**: Bu alan yönlendirme yapacak hub adıdır.
 
-**ContainerName**: Bu alan, depolama hesabındaki, verilerin yazılacağı kapsayıcının adıdır.
+**containerName**: Bu alan, verilerin yazılacağı depolama hesabındaki kapsayıcının adıdır.
 
-**kodlama**: bu alan `avro` ya da `json`olacaktır. Bu, depolanan verilerin biçimini gösterir.
+**kodlama**: Bu alan `avro` ya `json`da . Bu, depolanan verilerin biçimini gösterir.
 
-**RouteName**: Bu alan, ayarladığınız yolun adıdır. 
+**routeName**: Bu alan, ayarladığınız rotanın adıdır. 
 
-**EndpointName**: Bu alan, uç noktayı tanımlayan addır. 
+**endpointName**: Bu alan bitiş noktasını tanımlayan addır. 
 
-**etkin**: bu alan `true`varsayılan olarak, ileti yolunun oluşturulduktan sonra etkinleştirilmesi gerektiğini gösterir.
+**etkin**: Bu alan, ileti rotasıoluşturulduktan sonra etkinleştirilmesi gerektiğini belirten `true`, varsayılan.
 
-**koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Depolamaya yönlendirilmekte olan iletilerin sorgu koşulu `level="storage"`.
+**koşul**: Bu alan, bu bitiş noktasına gönderilen iletileri filtrelemek için kullanılan sorgudur. Depolamaya yönlendirilen iletilerin sorgu koşulu. `level="storage"`
 
-Bu betiği kopyalayın ve Cloud Shell pencerenize yapıştırın ve çalıştırın.
+Bu komut dosyasını kopyalayın ve Cloud Shell pencerenize yapıştırın ve çalıştırın.
 
 ```azurecli
 ##### ROUTING FOR STORAGE ##### 
@@ -195,7 +195,7 @@ storageConnectionString=$(az storage account show-connection-string \
   --name $storageAccountName --query connectionString -o tsv)
 ```
 
-Sonraki adım, depolama hesabı için yönlendirme uç noktası oluşturmaktır. Ayrıca, sonuçların depolanacağı kapsayıcıyı da belirtirsiniz. Kapsayıcı, depolama hesabı oluşturulduğunda daha önce oluşturulmuştur.
+Bir sonraki adım, depolama hesabı için yönlendirme bitiş noktasını oluşturmaktır. Ayrıca, sonuçların depolanacağı kapsayıcıyı da belirtirsiniz. Kapsayıcı daha önce depolama hesabı oluşturulduğunda oluşturuldu.
 
 ```azurecli
 # Create the routing endpoint for storage.
@@ -211,7 +211,7 @@ az iot hub routing-endpoint create \
   --encoding avro
 ```
 
-Ardından, depolama uç noktası için yol oluşturun. İleti yolu, sorgu belirtimini karşılayan iletilerin nereye gönderileceğini belirtir. 
+Ardından, depolama bitiş noktası için rota oluşturun. İleti rotası, sorgu belirtimini karşılayan iletilerin nereye gönderilen yeri belirler. 
 
 ```azurecli
 # Create the route for the storage endpoint.
@@ -225,9 +225,9 @@ az iot hub route create \
   --condition $condition
 ```
 
-### <a name="route-to-a-service-bus-queue"></a>Service Bus kuyruğuna yönlendirme
+### <a name="route-to-a-service-bus-queue"></a>Servis Veri Yolu kuyruğuna giden yol
 
-Şimdi Service Bus kuyruğu için yönlendirmeyi ayarlayın. Service Bus sırasının bağlantı dizesini almak için, doğru haklara sahip bir yetkilendirme kuralı oluşturmanız gerekir. Aşağıdaki betik, `sbauthrule`adlı Service Bus kuyruğu için bir yetkilendirme kuralı oluşturur ve hakları `Listen Manage Send`olarak ayarlar. Bu yetkilendirme kuralı tanımlandıktan sonra, kuyruğa yönelik bağlantı dizesini almak için kullanabilirsiniz.
+Şimdi Service Bus kuyruğu için yönlendirmeyi ayarlayın. Hizmet Veri Servisi kuyruğunun bağlantı dizesini almak için, doğru hakları tanımlayan bir yetkilendirme kuralı oluşturmanız gerekir. Aşağıdaki komut dosyası, Hizmet Veri Servisi sırasına `sbauthrule`göre bir yetkilendirme `Listen Manage Send`kuralı oluşturur ve '' adlı bir yetkilendirme kuralı oluşturur. Bu yetkilendirme kuralı tanımlandıktan sonra, sıranın bağlantı dizesini almak için kullanabilirsiniz.
 
 ```azurecli
 # Create the authorization rule for the Service Bus queue.
@@ -240,7 +240,7 @@ az servicebus queue authorization-rule create \
   --subscription $subscriptionID
 ```
 
-Şimdi Service Bus kuyruğuna bağlantı dizesini almak için yetkilendirme kuralını kullanın.
+Şimdi Hizmet Veri Servisi sırasına bağlantı dizesini almak için yetkilendirme kuralını kullanın.
 
 ```azurecli
 # Get the Service Bus queue connection string.
@@ -257,17 +257,17 @@ sbqConnectionString=$(az servicebus queue authorization-rule keys list \
 echo "service bus queue connection string = " $sbqConnectionString
 ```
 
-Şimdi Service Bus kuyruğu için yönlendirme uç noktasını ve ileti yolunu ayarlayın. Bunlar, Cloud Shell oturumunuz dahilinde ayarlanması gereken komut dosyası tarafından kullanılan değişkenlerdir:
+Şimdi yönlendirme bitiş noktasını ve Servis Veri Yolu kuyruğu için ileti rotasını ayarlayın. Bulut Bulut oturumunuzda ayarlanabilmesi gereken komut dosyası tarafından kullanılan değişkenler şunlardır:
 
-**EndpointName**: Bu alan, uç noktayı tanımlayan addır. 
+**endpointName**: Bu alan bitiş noktasını tanımlayan addır. 
 
-**EndpointType**: Bu alan bitiş noktası türüdür. Bu değer `azurestoragecontainer`, `eventhub`, `servicebusqueue`veya `servicebustopic`olarak ayarlanmalıdır. Burada amacınıza göre `servicebusqueue`olarak ayarlayın.
+**endpointType**: Bu alan bitiş noktası türüdür. Bu `azurestoragecontainer`değer , , `eventhub` `servicebusqueue`, `servicebustopic`veya . olarak ayarlanmalıdır. Buradaki amaçlarınız için, `servicebusqueue`bunu .
 
-**RouteName**: Bu alan, ayarladığınız yolun adıdır. 
+**routeName**: Bu alan, ayarladığınız rotanın adıdır. 
 
-**koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Service Bus kuyruğuna yönlendirilmekte olan iletilerin sorgu koşulu `level="critical"`.
+**koşul**: Bu alan, bu bitiş noktasına gönderilen iletileri filtrelemek için kullanılan sorgudur. Servis Veri Yolu sırasına yönlendirilen iletilerin sorgu `level="critical"`koşulu.
 
-Yönlendirme uç noktası için Azure CLı ve Service Bus kuyruğu için ileti rotası aşağıda verilmiştir.
+Yönlendirme bitiş noktası için Azure CLI ve Servis Veri Yolu kuyruğu için ileti rotası aşağıda verebistir.
 
 ```azurecli
 endpointName="ContosoSBQueueEndpoint"
@@ -296,13 +296,13 @@ az iot hub route create --name $routeName \
   --condition $condition
   ```
 
-### <a name="view-message-routing-in-the-portal"></a>Portalda ileti yönlendirmeyi görüntüleme
+### <a name="view-message-routing-in-the-portal"></a>İleti yönlendirmesini portalda görüntüleme
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynakları ayarlamış olduğunuza ve ileti rotalarına sahip olduğunuza göre, IoT Hub 'ına ileti gönderme ve farklı hedeflere yönlendirilme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin. 
+Artık kaynakların ayarlı olduğuna ve ileti rotalarının yapılandırıldığına göre, IoT hub'ına ileti göndermeyi öğrenmek ve farklı hedeflere yönlendirilmelerini görmek için bir sonraki öğreticiye ilerleyin. 
 
 > [!div class="nextstepaction"]
-> [Bölüm 2-ileti yönlendirme sonuçlarını görüntüleme](tutorial-routing-view-message-routing-results.md)
+> [Bölüm 2 - İleti yönlendirme sonuçlarını görüntüleyin](tutorial-routing-view-message-routing-results.md)

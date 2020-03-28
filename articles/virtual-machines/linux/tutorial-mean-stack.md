@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure 'da Linux sanal makinesinde ortalama bir yığın oluşturma
+title: Öğretici - Azure'da bir Linux sanal makinesinde ORTALAMA yığını oluşturma
 description: Bu öğreticide, Azure’da bir Linux sanal makinesi üzerinde nasıl MongoDB, Express, AngularJS ve Node.js (MEAN) yığını oluşturulacağını öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034395"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154330"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure’da bir Linux sanal makinesi üzerinde MongoDB, Express, AngularJS ve Node.js (MEAN) yığını oluşturma
 
@@ -34,9 +34,9 @@ Bu öğreticide, Azure’da bir Linux sanal makinesi (VM) üzerinde MongoDB, Exp
 > * AngularJS ile rotalara erişme
 > * Uygulamayı çalıştırma
 
-Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
+Bu öğretici, sürekli olarak en son sürüme güncelleştirilen [Azure Bulut Kabuğu'ndaki](https://docs.microsoft.com/azure/cloud-shell/overview)CLI'yi kullanır. Bulut Kabuğu'nu açmak için, herhangi bir kod bloğunun üstünden **deneyin'i** seçin.
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-linux-vm"></a>Linux VM oluşturma
@@ -220,7 +220,7 @@ sudo apt-get install -y nodejs
 
 [AngularJS](https://angularjs.org), web uygulamalarınızda dinamik görünümler oluşturmaya yönelik bir web çerçevesi sağlar. Bu öğreticide, Express ile web sayfamıza bağlanmak ve kitap veritabanımızda eylemler gerçekleştirmek için AngularJS kullanırız.
 
-1. Dizini *Kitaplar* (`cd ../..`) olarak tekrar değiştirin, sonra *genel* adlı bir klasör oluşturun ve denetleyici yapılandırması tanımlanmış şekilde *script.js* adlı bir dosya ekleyin.
+1. Dizin geri *kitaplar* (`cd ../..`) olarak değiştirin ve sonra *ortak* adlı bir klasör oluşturun ve denetleyici yapılandırması tanımlanan *script.js* adlı bir dosya ekleyin.
 
     ```javascript
     var app = angular.module('myApp', []);
@@ -317,7 +317,7 @@ sudo apt-get install -y nodejs
 
 ##  <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-1. Dizini *Kitaplar* (`cd ..`) olarak tekrar değiştirin ve şu komutu çalıştırarak sunucuyu başlatın:
+1. Dizini *Kitaplara* geri değiştirin (`cd ..`) ve bu komutu çalıştırarak sunucuyu başlatın:
 
     ```bash
     nodejs server.js
@@ -327,7 +327,7 @@ sudo apt-get install -y nodejs
 
     ![Kitap kaydı](media/tutorial-mean/meanstack-init.png)
 
-3. Metin kutularına veri girin ve **Ekle**’ye tıklayın. Örneğin:
+3. Metin kutularına veri girin ve **Ekle**’ye tıklayın. Örnek:
 
     ![Kitap kaydı ekleme](media/tutorial-mean/meanstack-add.png)
 
@@ -349,7 +349,7 @@ Bu öğreticide, Linux sanal makinesi üzerinde MEAN yığınını kullanarak ki
 > * AngularJS ile rotalara erişme
 > * Uygulamayı çalıştırma
 
-SSL sertifikalarını kullanarak güvenli web sunucularının güvenliğini nasıl sağlayabileceğinizi öğrenmek için sonraki öğreticiye ilerleyin.
+TLS sertifikaları ile web sunucularının nasıl güvenli hale alınacağı nızı öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [SSL ile web sunucusunun güvenliğini sağlama](tutorial-secure-web-server.md)
+> [TLS ile güvenli web sunucusu](tutorial-secure-web-server.md)

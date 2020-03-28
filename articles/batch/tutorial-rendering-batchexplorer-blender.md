@@ -8,24 +8,24 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60617682"
 ---
-# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Öğretici: Batch Gezgini'ni kullanarak Blender'ı bir Sahneyi işleme
+# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Öğretici: Batch Explorer'ı kullanarak Blender sahnesi işleme
 
 Bu öğreticide bir Blender tanıtım sahnesinden birden fazla kare işleme adımları gösterilmektedir. Hem istemci hem de işleme VM'lerinde kullanımı ücretsiz olduğundan öğreticide Blender kullanılmıştır ancak işlem Maya veya 3ds Max gibi diğer uygulamalarda da benzer olacaktır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * Azure depolamasına Blender sahnesi yükleme
 > * İşlemeyi gerçekleştirmek için birden fazla düğüme sahip Batch havuzu oluşturma
 > * Birden çok çerçeve işleme
 > * İşlenen kare dosyalarını görüntüleme ve indirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.
 
@@ -90,7 +90,7 @@ Blender uygulamasını içeren Azure Marketplace VM görüntüsünü işleyen Ba
 > [!WARNING]
 > Havuza eklenen VM'lerin maliyetinin Azure aboneliğinize yansıtılacağını unutmayın. Ücretlerin durdurulması için havuzun veya VM'lerin silinmesi gerekir. Ücret alınmasını önlemek için bu öğreticinin sonunda havuzu silin.
 
-Havuz ve VM'lerin durumunu 'Havuzları' görünümü'nde izlenebilir; Aşağıdaki örnek, üç VM'nin tümünü ayrılan iki başlatılmış ve boşta olduğundan, bir hala başlatılıyor gösterir: ![Havuz ısı Haritası](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
+Havuzun ve VM'lerin durumu 'Pools' (Havuzlar) görünümünde izlenebilir. Aşağıdaki örnekte ikisi başlatılmış ve boşta, biri de başlatılıyor olmak üzere ayrılan üç VM gösterilmektedir: ![Havuz ısı haritası](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
 
 ## <a name="create-a-rendering-job"></a>İşleme işi oluşturma
 
@@ -109,25 +109,25 @@ Oluşturulan havuzu kullanarak kare işlemek için bir işleme işi oluşturun:
 
 ![Blender için iş şablonu](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_template.png)
 
-İş, işin ve tüm görevleri oluşturulduktan sonra iş görevleri ile birlikte görüntülenir: ![Proje Görev listesi](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
+İş ve tüm görevleri oluşturulduktan sonra tümü birlikte görüntülenir: ![İş görevlerinin listesi](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
 
 Bir görev havuz VM'sinde ilk kez çalıştırıldığında Blender tarafından erişilebilmesi için sahne dosyalarını depolama dosya grubundan VM'ye kopyalayan bir Batch işi hazırlama görevi çalıştırılır.
 İşleme durumunu görmek için Blender tarafından oluşturulan stdout.txt günlük dosyasını inceleyebilirsiniz.  Bir görevi seçtiğinizde varsayılan olarak 'Task Outputs' (Görev Çıkışları) penceresi görüntülenir ve buradan 'stdout.txt' dosyası seçilip izlenebilir.
 ![stdout dosyası](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_stdout.png)
 
-'Windows blender' havuzu seçtiyseniz, Vm'leri havuzu çalışır durumda görülür: ![Düğümler ile havuz ısı Haritası](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
+'blender-windows' havuzu seçiliyse havuz VM'leri çalışır durumda görünür: ![Çalışan düğümlerle havuz ısı haritası](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
 
 İşlenmiş görüntülerin oluşturulma süresi seçilen VM boyutuna göre farklılık gösterir.  Önceden belirtilen F16 VM kullanılarak karelerin işlenmesi yaklaşık 16 dakika sürmüştür.
 
 ## <a name="view-the-rendering-output"></a>İşleme çıkışını görüntüleme
 
-Çerçeve işleme bittiğinde, bu görevleri tamamlandı olarak gösterilir: ![Görevleri tamamlama](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
+Karelerin işlenmesi tamamlandığında görevlerin durumu tamamlanmış olarak görünür: ![Tamamlanmış görevler](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
 
-İşlenmiş resmin VM'ye ilk yazılır ve 'wd' klasörü seçerek görüntülenebilir: ![Görüntü havuz düğümünün üzerinde işlenen](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
+İşlenen görüntü önce VM'ye yazılır ve 'wd' klasörü seçilerek görüntülenebilir: ![Havuz düğümünde işlenen görüntü](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
 
-İş şablonu ayrıca çıkış karesinin ve günlük dosyalarının iş oluşturulduğunda belirtilen Azure Depolama hesabı dosya grubuna yazıldığını gösterir.  UI 'veri' çıkış dosyalarını ve günlükleri görüntülemek için kullanılabilir; Dosyaları indirmek için de kullanılabilir: ![Resim depolama dosya grubunda işlenen](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
+İş şablonu ayrıca çıkış karesinin ve günlük dosyalarının iş oluşturulduğunda belirtilen Azure Depolama hesabı dosya grubuna yazıldığını gösterir.  'Data' (Veri) arabirimini kullanarak çıkış dosyalarını ve günlüklerini görüntüleyebilir, dosyaları indirebilirsiniz: ![Depolama dosya grubunda işlenen görüntü](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
 
-Tüm görevler tamamlandığında işin tamamlandı olarak işaretlenir: ![İş ve tamamlanan tüm görevleri](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
+Tüm görevler tamamlandığında iş tamamlanıyor olarak işaretlenir: ![İş ve tüm görevler tamamlandı](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

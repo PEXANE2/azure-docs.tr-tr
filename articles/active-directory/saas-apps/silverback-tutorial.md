@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Silverback | Microsoft Docs'
-description: Azure Active Directory ve Silverback arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Silverback ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Silverback arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,229 +16,229 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090906"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Öğretici: Silverback ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Öğretici: Silverback ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Silverback tümleştirme konusunda bilgi edinin.
-Azure AD ile Silverback tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, Silverback'i Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Silverback'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Silverback erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) Silverback için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Silverback erişimi olan Azure AD'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Silverback 'te (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile Silverback yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Silverback ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Abonelik silverback çoklu oturum açma etkin
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* Silverback tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Silverback destekler **SP** tarafından başlatılan
+* Silverback **SP** başlatılan SSO destekler
 
 ## <a name="adding-silverback-from-the-gallery"></a>Galeriden Silverback ekleme
 
-Azure AD'de Silverback tümleştirmesini yapılandırmak için Silverback Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Silverback'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Silverback'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
 **Galeriden Silverback eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Silverback**seçin **Silverback** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusunda **Silverback**yazın, sonuç panelinden **Silverback'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuç listesinde silverback](common/search-new-app.png)
+     ![Sonuçlar listesinde Silverback](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma Silverback adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının Silverback ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Silverback ile yapılandırıp test esiniz.
+Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile Silverback'teki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma Silverback ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD oturumaçmayı Silverback ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Silverback çoklu oturum açmayı yapılandırma](#configure-silverback-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Silverback test kullanıcısı oluşturma](#create-silverback-test-user)**  - kullanıcı Azure AD gösterimini bağlı Silverback Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Silverback Tek Oturum Açma 'yı uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[yapılandırın.](#configure-silverback-single-sign-on)**
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Silverback test kullanıcısını oluşturun](#create-silverback-test-user)** - Kullanıcının Azure AD gösterimine bağlı Silverback'teki Britta Simon'ın bir örneğine sahip olmak için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma ile Silverback yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD oturum açma işlemlerini Silverback ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Silverback** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. **Silverback** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Silverback etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier-reply.png)
+    ![Silverback Domain ve URL'ler tek oturum açma bilgileri](common/sp-identifier-reply.png)
 
-    a. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<YOURSILVERBACKURL>.com/ssp`
+    a. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. İçinde **tanımlayıcı** kutusuna şu biçimi kullanarak bir URL yazın: `<YOURSILVERBACKURL>.com`
+    b. **Tanımlayıcı** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`<YOURSILVERBACKURL>.com`
 
-    c. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek oturum açma URL'si, tanımlayıcı ve yanıt URL'si ile güncelleştirin. İlgili kişi [Silverback istemci Destek ekibine](mailto:helpdesk@matrix42.com) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si, Tanımlayıcı ve Yanıt URL'si ile güncelleştirin. Bu değerleri almak için [Silverback Client destek ekibine](mailto:helpdesk@matrix42.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **SAML imzalama sertifikası** bölümünde, kopyalamak için Kopyala düğmesine **uygulama Federasyon meta verileri URL'sini** ve üzerinde kaydedin, bilgisayar.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-silverback-single-sign-on"></a>Silverback çoklu oturum açmayı yapılandırın
+### <a name="configure-silverback-single-sign-on"></a>Silverback Tek İşaretli Yapıla
 
-1. Farklı bir web tarayıcısında Silverback sunucunuza yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısında, Yönetici olarak Silverback Server'ınıza giriş yapın.
 
-2. Gidin **yönetici** > **kimlik doğrulama sağlayıcısı**.
+2. **Yönetici** > **Kimlik Doğrulama Sağlayıcısı'na**gidin.
 
-3. Üzerinde **kimlik sağlayıcı ayarları** sayfasında, aşağıdaki adımları gerçekleştirin:
+3. Kimlik **Doğrulama Sağlayıcısı Ayarları** sayfasında aşağıdaki adımları gerçekleştirin:
 
     ![Yönetici](./media/silverback-tutorial/tutorial_silverback_admin.png)
 
-    a.  Tıklayarak **URL'den içeri aktar**.
+    a.  **URL'den Içe Aktar'a**tıklayın.
 
-    b.  Kopyalanan meta veri URL'sini yapıştırın ve tıklayın **Tamam**.
+    b.  Kopyalanan Metaveri URL'sini yapıştırın ve **Tamam'ı**tıklatın.
 
-    c.  Doğrulatın **Tamam** sonra da değerleri otomatik olarak doldurulur.
+    c.  **Tamam** ile onaylayın, sonra değerleri otomatik olarak doldurulur.
 
-    d.  Etkinleştirme **oturum açma sayfasında göster**.
+    d.  **Giriş Sayfasında Göster'i**etkinleştirin.
 
-    e.  Etkinleştirme **dinamik kullanıcı oluşturma** Azure AD'ye yetkili kullanıcılar tarafından otomatik olarak eklemek istiyorsanız (isteğe bağlı).
+    e.  Azure AD yetkili kullanıcılara otomatik olarak eklemek istiyorsanız **Dinamik Kullanıcı Oluşturma'yı** etkinleştirin (isteğe bağlı).
 
-    f.  Oluşturma bir **başlık** düğme üzerinde Self Servis portalı için.
+    f.  Self Servis Portalı'ndaki düğme **için** başlık oluşturun.
 
-    g.  Karşıya bir **simgesi** tıklayarak **Dosya Seç**.
+    g.  Dosya Seç'e tıklayarak **Simge** **Yükleyin.**
 
-    h.  Arka plan seçme **renk** düğmesi.
+    h.  Düğmenin arka plan **rengini** seçin.
 
-    i.  **Kaydet**’e tıklayın.
+    i.  **Kaydet**'e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
+    b. Kullanıcı **adı** alanı türünde**brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Silverback erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın Silverback'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Silverback**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Silverback'i**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Silverback**.
+2. Uygulamalar listesinde **Silverback'i**seçin.
 
-    ![Uygulamalar listesinde Silverback bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Silverback bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-silverback-test-user"></a>Silverback test kullanıcısı oluşturma
+### <a name="create-silverback-test-user"></a>Silverback test kullanıcıoluşturma
 
-Silverback için oturum açmak Azure AD kullanıcılarının etkinleştirmek için bunların Silverback sağlanması gerekir. Silverback içinde sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Silverback'te oturum açabilmeleri için Silverback'te oturum açmaları gerekir. Silverback'te, sağlama el ile bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Silverback sunucunuza yönetici olarak oturum açın.
+1. Yönetici olarak Silverback Server'ınıza giriş yapın.
 
-2. Gidin **kullanıcılar** ve **yeni cihaz kullanıcı ekleme**.
+2. **Kullanıcılara** gidin ve **yeni bir aygıt kullanıcısı ekleyin.**
 
-3. Üzerinde **temel** sayfasında, aşağıdaki adımları gerçekleştirin:
+3. **Temel** sayfada aşağıdaki adımları gerçekleştirin:
 
     ![Kullanıcı](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. İçinde **kullanıcıadı** metin kutusunda, gibi kullanıcı adını girin **Britta**.
+    a. **Kullanıcı adı** metin **kutusuna, Britta**gibi kullanıcının adını girin.
 
-    b. İçinde **ad** metin kutusunda, gibi kullanıcı adını girin **Britta**.
+    b. **Ad metin** kutusuna, **Britta**gibi kullanıcının ilk adını girin.
 
-    c. İçinde **Soyadı** metin kutusunda, son kullanıcı gibi adını **Simon**.
+    c. **Soyadı** metin kutusuna, **Simon**gibi kullanıcının soyadını girin.
 
-    d. İçinde **e-posta adresi** metin kutusuna, kullanıcının gibi e-posta girin **Brittasimon@contoso.com** .
+    d. **E-posta Adresi** metin kutusuna, kullanıcının **Brittasimon@contoso.com**e-posta adresini girin.
 
-    e. İçinde **parola** metin kutusunda, parolanızı girin.
+    e. **Parola** metin kutusuna parolanızı girin.
 
-    f. İçinde **parolayı onayla** metin kutusuna, parolayı yeniden girin ve onaylayın.
+    f. **Parolayı Onayla** metin kutusuna, parolanızı yeniden girin ve onaylayın.
 
-    g. **Kaydet**’e tıklayın.
+    g. **Kaydet**'e tıklayın.
 
 > [!NOTE]
-> Her kullanıcı el ile oluşturmak istemiyorsanız, etkinleştirme **dinamik kullanıcı oluşturma** onay kutusunun **yönetici** > **kimlik doğrulama sağlayıcısı**.
+> Her bir kullanıcıyı el ile oluşturmak istemiyorsanız, Dinamik **Kullanım Oluşturma** Onay Kutusunu **Yönetici** > **Kimlik Doğrulama Sağlayıcısı**altında etkinleştirin.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli Silverback kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama Silverback için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Silverback döşemesini tıklattığınızda, SSO'yu kurduğunuz Silverback'te otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -9,14 +9,14 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
 ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75752414"
 ---
-## <a id="addregion"></a>Azure portalını kullanarak genel veritabanı bölgeleri ekleme
-Azure Cosmos DB tüm dünyada [Azure bölgelerinde][azureregions] kullanılabilir. Veritabanı hesabınız için varsayılan tutarlılık düzeyini seçtikten sonra bir veya daha fazla bölgeyi (tercih ettiğiniz varsayılan tutarlılık düzeyine ve genel dağıtım gereksinimlerine bağlı olarak) ilişkilendirebilirsiniz.
+## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>Azure portalını kullanarak genel veritabanı bölgeleri ekleme
+Azure Cosmos DB, dünya çapındaki tüm [Azure bölgelerinde][azureregions] kullanılabilir. Veritabanı hesabınız için varsayılan tutarlılık düzeyini seçtikten sonra bir veya daha fazla bölgeyi (tercih ettiğiniz varsayılan tutarlılık düzeyine ve genel dağıtım gereksinimlerine bağlı olarak) ilişkilendirebilirsiniz.
 
 1. [Azure portalında](https://portal.azure.com/), soldaki çubuktan **Azure Cosmos DB** seçeneğine tıklayın.
 2. **Azure Cosmos DB** sayfasında, değiştirilecek veritabanı hesabını seçin.
@@ -35,7 +35,7 @@ Azure Cosmos DB tüm dünyada [Azure bölgelerinde][azureregions] kullanılabili
 
 Son kullanıcılara düşük gecikme sunmak için, uygulama kullanıcılarının bulunduğu yere karşılık gelen bölgelerde hem uygulamayı hem de Azure Cosmos DB’yi dağıtmanız önerilir.
 
-BCDR için, [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşlenmiş bölgeler][bcdr] makalesinde açıklanan bölge çiftlerini temel alan bölgeler eklemeniz önerilir.
+BCDR için, [İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure Eşlenmiş Bölgeleri][bcdr] makalesinde açıklanan bölge çiftlerine göre bölgeler eklenmesi önerilir.
 
 <!--
 

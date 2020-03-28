@@ -11,10 +11,10 @@ ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: ed593cb3f53878ceb1d4913a9244369ff4600371
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78397572"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
@@ -40,10 +40,10 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 | [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | Azure AD B2C’yi kullanarak bir kullanıcının oturumunu açabilen, MSAL.NET kullanarak bir erişim belirteci alabilen ve bir API’yi çağırabilen ASP.NET Core web uygulaması. |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | OpenID Connect’i kullanarak Express ile Web uygulaması ayarlamanın hızlı ve kolay bir yolunu sağlayan Node.js uygulaması. |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | Azure AD B2C için, Web API’nizin nasıl korunacağını ve passport.js kullanılarak B2C erişim belirteçlerinin nasıl kabul edileceğini gösteren küçük bir node.js Web API’si. |
-| [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Microsoft Identity platform B2C 'yi bir Python web uygulamasıyla tümleştirmeyi gösterir.  |
+| [ms-kimlik-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Microsoft kimlik platformunun B2C'sinin Python web uygulamasıyla nasıl entegre edilebildiğini gösterin.  |
 
 ## <a name="single-page-apps"></a>Tek sayfa uygulamalar
 
 | Örnek | Açıklama |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). MSAL. js kullanılarak Azure AD B2C kimlik doğrulaması gerçekleştirilir. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). Kimlik doğrulama, Azure AD B2C ile MSAL.js kullanılarak yapılır. |

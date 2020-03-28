@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Freedcamp | Microsoft Docs'
-description: Azure Active Directory ve Freedcamp arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Freedcamp ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Freedcamp arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,178 +17,178 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de1ae135df4cd070fe9c6ee322e304caa1e17c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67101906"
 ---
-# <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Öğretici: Freedcamp Azure Active Directory ile tümleştirme
+# <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Öğretici: Freedcamp'ı Azure Active Directory ile tümleştirin
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Freedcamp tümleştirme öğreneceksiniz. Freedcamp Azure AD ile tümleştirdiğinizde, şunları yapabilirsiniz:
+Bu eğitimde, Freedcamp'ı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Freedcamp'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Freedcamp erişimi, Azure AD'de denetler.
-* Otomatik olarak Freedcamp için kendi Azure AD hesapları ile oturum açmış olmasını sağlayın.
-* Bir merkezi konumda - Azure portalı hesaplarınızı yönetin.
+* Freedcamp erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Freedcamp'da otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir aboneliğiniz yoksa, alabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/free/).
-* Freedcamp çoklu oturum açma (SSO) abonelik etkin.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Freedcamp tek oturum açma (SSO) aboneliği sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD SSO bir test ortamında test edin. Freedcamp destekler **SP ve IDP** SSO başlattı.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. Freedcamp **SP destekler ve IDP** SSO başlattı.
 
 ## <a name="adding-freedcamp-from-the-gallery"></a>Galeriden Freedcamp ekleme
 
-Azure AD'de Freedcamp tümleştirmesini yapılandırmak için Freedcamp Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Freedcamp'In Azure AD'ye entegrasyonunu yapılandırmak için, Freedcamp'ı galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmeti.
-1. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları**.
-1. Yeni bir uygulama eklemek için seçin **yeni uygulama**.
-1. İçinde **Galeriden Ekle** bölümüne şunu yazın **Freedcamp** arama kutusuna.
-1. Seçin **Freedcamp** gelen sonuçlar panelinde ve uygulama ekleyin. Uygulama, kiracınıza eklendiği sırada birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Freedcamp** yazın.
+1. Sonuçlar panelinden **Freedcamp'ı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Yapılandırma ve Azure AD SSO kullanarak adlı bir test kullanıcı Freedcamp ile test etme **Britta Simon**. Çalışmak SSO için Freedcamp içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişki oluşturmanız gerekir.
+Azure AD SSO'nu Freedcamp ile **Britta Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Freedcamp'daki bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Yapılandırma ve Azure AD SSO ile Freedcamp sınamak için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO'yu Freedcamp ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO'yu yapılandırma](#configure-azure-ad-sso)**  kullanıcılarınız bu özelliği kullanmak etkinleştirmek için.
-2. **[Freedcamp yapılandırma](#configure-freedcamp)**  uygulama tarafında SSO ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  Britta Simon, Azure AD çoklu oturum açma kullanmak üzere etkinleştirmek için.
-5. **[Freedcamp test kullanıcısı oluşturma](#create-freedcamp-test-user)**  bir karşılığı Britta simon'un kullanıcı Azure AD gösterimini bağlı Freedcamp sağlamak için.
-6. **[Test SSO](#test-sso)**  yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+2. **[Freedcamp'ı](#configure-freedcamp)** uygulama tarafındaki SSO ayarlarını yapılandırmak için yapılandırın.
+3. Britta Simon ile Azure AD tek oturum açma işlemini test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Freedcamp test kullanıcısını,](#create-freedcamp-test-user)** Freedcamp'da kullanıcının Azure AD gösterimine bağlı bir meslektaşına sahip olmak için oluşturun.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Freedcamp** uygulama tümleştirme sayfası, bulma **Yönet** bölümünde ve seçin **çoklu oturum açma**.
-1. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** sayfasında **SAML**.
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında, düzenleme/kalem simgesine tıklayıp **temel SAML yapılandırma** ayarlarını düzenlemek için.
+1. **Freedcamp** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
+1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
+1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. Üzerinde **temel SAML yapılandırma** uygulamada yapılandırmak isterseniz, bölümü **IDP** başlatılan modu, aşağıdaki adımları gerçekleştirin:
+1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
 
-    1. İçinde **tanımlayıcı** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
+    1. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
 
-    2. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
+    2. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
 
-1. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız, aşağıdaki adımı uygulayın **SP** başlatılan modu:
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://<SUBDOMAIN>.freedcamp.com/login`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek tanımlayıcısı, yanıt URL'si ve oturum açma URL'si ile güncelleştirin. Kullanıcılar ayrıca kendi müşteri etki alanına göre URL'si değerleri girin ve mutlaka desenini olmayabilir `freedcamp.com`, bunlar tüm müşteri etki alanı belirli bir değer, kendi uygulama örneği için belirli girebilirsiniz. De başvurabilirsiniz [Freedcamp istemci Destek ekibine](mailto:devops@freedcamp.com) url desenleri hakkında daha fazla bilgi için.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Kullanıcılar kendi müşteri etki alanları yla ilgili olarak url değerlerini de girebilirler `freedcamp.com`ve bu modelin mutlaka bir parçası olmayabilirler , uygulama örneklerine özgü herhangi bir müşteri etki alanına özgü değer girebilirler. Ayrıca url desenleri hakkında daha fazla bilgi için [Freedcamp Müşteri destek ekibi](mailto:devops@freedcamp.com) ile irtibata geçebilirsiniz.
 
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde, bulma **sertifika (Base64)** seçip **indirin** sertifikayı indirin ve bilgisayarınıza kaydedin.
+1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde Sertifika **'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. Üzerinde **Freedcamp kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. **Freedcamp'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-   ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+   ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="configure-freedcamp"></a>Freedcamp yapılandırın
+### <a name="configure-freedcamp"></a>Freedcamp'i yapılandır
 
-1. Yüklemeniz gerekiyor Freedcamp içinde yapılandırmasını otomatik hale getirmenizi **My Apps güvenli oturum açma tarayıcı uzantısı** tıklayarak **uzantıyı yükleme**.
+1. Freedcamp içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
 
-    ![Uygulamaları uzantım](common/install-myappssecure-extension.png)
+    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
 
-2. Uzantı tarayıcıya ekledikten sonra tıklayarak **Kurulum Freedcamp** Freedcamp uygulamaya yönlendirir. Burada, Freedcamp oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı otomatik olarak sizin için uygulamayı yapılandırma ve 3-5 adımlarını otomatik hale getirin.
+2. Tarayıcıya uzantı ekledikten sonra, **Setup Freedcamp'e** tıklayın ve freedcamp uygulamasına yönlendirecektir. Oradan, Freedcamp oturum için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-5 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-3. Freedcamp el ile ayarlamak istiyorsanız, yeni bir web tarayıcı penceresi ve oturum Freedcamp şirketinizin sitesi yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Freedcamp'ı el ile kurmak istiyorsanız, yeni bir web tarayıcısı penceresi açın ve Freedcamp şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Sayfanın sağ üst köşesindeki tıklayarak **profili** gidin **hesabım**.
+4. Sayfanın sağ üst **köşesinde, profili** tıklatın ve ardından **Hesabım'a**gidin.
 
     ![Freedcamp yapılandırma](./media/freedcamp-tutorial/config01.png)
 
-5. Menü çubuğunun sol taraftan tıklayarak **SSO** ve **bilgisayarınızı SSO bağlantıları** sayfasında aşağıdaki adımları gerçekleştirin:
+5. Menü çubuğunun sol tarafından **SSO'ya** ve **SSO bağlantıları sayfanıza** tıklayın aşağıdaki adımları gerçekleştirin:
 
     ![Freedcamp yapılandırma](./media/freedcamp-tutorial/config02.png)
 
-    a. İçinde **başlık** metin kutusunda, bir başlık yazın.
+    a. **Başlık** metin kutusuna başlığı yazın.
 
-    b. İçinde **varlık kimliği** metin kutusu, yapıştırma **Azure AD tanımlayıcısı** Azure portaldan kopyaladığınız değeri.
+    b. Varlık **Kimliği** metin kutusuna, Azure portalından kopyaladığınız **Azure AD Tanımlayıcı** değerini yapıştırın.
 
-    c. İçinde **oturum açma URL'si** metin kutusu, yapıştırma **oturum açma URL'si** Azure portaldan kopyaladığınız değeri.
+    c. Giriş **URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL** değerini yapıştırın.
 
-    d. Base64 olarak kodlanmış sertifika Not Defteri'nde açın, içeriğini kopyalayın ve yapıştırın **sertifika** metin kutusu.
+    d. Base64 kodlanmış sertifikayı not defterinde açın, içeriğini kopyalayın ve **Sertifika** metin kutusuna yapıştırın.
 
-    e. **Gönder**'e tıklayın.
+    e. **Gönder'i**tıklatın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, bir test kullanıcısı Britta Simon adlı Azure portalında oluşturacaksınız.
+Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure Portalı'ndaki sol bölmeden seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. İçinde **kullanıcı** özellikleri, aşağıdaki adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. İçinde **kullanıcı adı** alanına username@companydomain.extension. Örneğin, `BrittaSimon@contoso.com`.
-   1. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `BrittaSimon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Freedcamp erişim vererek Britta Simon tıklatmalarını sağlarsınız.
+Bu bölümde, Britta Simon'ın Freedcamp'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlayacaksınız.
 
-1. Azure portalında **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
-1. Uygulamalar listesinde **Freedcamp**.
-1. Uygulamanın genel bakış sayfasında bulma **Yönet** seçin ve bölüm **kullanıcılar ve gruplar**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Freedcamp'ı**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Seçin **Kullanıcı Ekle**, ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-    ![Kullanıcı ekleme bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** kullanıcılar listesinden ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. SAML onaylama işlemi herhangi bir rolü değer de beklediğiniz varsa **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin ve ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. İçinde **atama Ekle** iletişim kutusunda, tıklayın **atama** düğmesi.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-### <a name="create-freedcamp-test-user"></a>Freedcamp test kullanıcısı oluşturma
+### <a name="create-freedcamp-test-user"></a>Freedcamp test kullanıcıoluşturma
 
-Azure AD kullanıcılarının etkinleştirmek için oturum içinde Freedcamp için bunların Freedcamp sağlanması gerekir. Freedcamp içinde sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Freedcamp'da oturum açmalarını etkinleştirmek için Freedcamp'e dahil edilmeleri gerekir. Freedcamp'de, sağlama el ile bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Farklı bir web tarayıcı penceresinde Freedcamp için bir güvenlik yöneticisi olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Freedcamp'da Güvenlik Yöneticisi olarak oturum açın.
 
-2. Sayfanın üst toright köşesi üzerinde tıklayarak **profili** gidin **yönetme sistem**.
+2. Sayfanın sağ üst **köşesinde, profili** tıklatın ve ardından **Sistemi Yönet'e**gidin.
 
     ![Freedcamp yapılandırma](./media/freedcamp-tutorial/config03.png)
 
-3. Sistemi yönetme sayfanın sağ tarafında aşağıdaki adımları gerçekleştirin:
+3. Sistemi Yönet sayfasının sağ tarafında aşağıdaki adımları gerçekleştirin:
 
     ![Freedcamp yapılandırma](./media/freedcamp-tutorial/config04.png)
 
-    a. Tıklayarak **Ekle veya kullanıcıları davet**.
+    a. Kullanıcı **Ekle'ye tıklayın veya davet edin.**
 
-    b. İçinde **e-posta** metin kutusuna, kullanıcının gibi e-posta girin `Brittasimon@contoso.com`.
+    b. **E-posta** metin kutusuna, kullanıcının `Brittasimon@contoso.com`e-postasını girin.
 
-    c. Tıklayın **kullanıcı ekleme**.
+    c. **Kullanıcı Ekle**'ye tıklayın.
 
 ### <a name="test-sso"></a>Test SSO
 
-Erişim Paneli'nde Freedcamp kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama Freedcamp için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Freedcamp döşemesini seçtiğinizde, SSO'yu kurduğunuz Freedcamp'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

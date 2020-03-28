@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Catch noktasıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve catch noktası arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Catchpoint ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Catchpoint arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,179 +16,179 @@ ms.date: 02/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c56d34a331821ffbc3d0d4f2cf5e9b033f4011ff
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78968477"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-catchpoint"></a>Öğretici: yakalama noktasıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-catchpoint"></a>Öğretici: Catchpoint ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, catch noktasını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Catch noktasını Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Catchpoint'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Catchpoint'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, catch noktasına erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak bir catch noktasına oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Catchpoint erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Catchpoint'te otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Catch noktası çoklu oturum açma (SSO) etkin abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Catchpoint tek oturum açma (SSO) aboneliği ni etkinleştirildi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Catch noktası **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Catch noktası **, tam zamanında** Kullanıcı sağlamasını destekler
-* Catch noktasını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Catchpoint **SP ve IDP** başlatılan SSO destekler
+* Catchpoint **Just In Time** kullanıcı sağlama destekler
+* Catchpoint'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
-## <a name="adding-catchpoint-from-the-gallery"></a>Galeriden catch noktası ekleme
+## <a name="adding-catchpoint-from-the-gallery"></a>Galeriden Catchpoint ekleme
 
-Catch noktasının Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize catch noktası eklemeniz gerekir.
+Catchpoint'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Catchpoint'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **catch Point** yazın.
-1. Sonuçlar panelinden **catch noktası** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Catchpoint** yazın.
+1. Sonuçlar panelinden **Catchpoint'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-catchpoint"></a>Catch noktası için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-catchpoint"></a>Catchpoint için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu catch noktasıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve catch noktasındaki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Catchpoint ile yapılandırın ve test edin. SSO'nun çalışması için, Catchpoint'teki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu yakalama noktasıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Catchpoint ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Catch noktası SSO 'Su yapılandırma](#configure-catchpoint-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * Kullanıcının Azure AD gösterimine bağlı olan catch noktasında B. Simon 'a sahip olmak için **[catch noktası test kullanıcısı oluşturun](#create-catchpoint-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Catchpoint SSO'yu yapılandırır](#configure-catchpoint-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    * **[Catchpoint test kullanıcısını oluşturun](#create-catchpoint-test-user)** - Kullanıcının Azure AD gösterimine bağlı Catchpoint'teki B.Simon'ın bir örneğine sahip olmak için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **catch noktası** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açma kurulumu** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **Catchpoint** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla Kurulum tek oturum açmada,** ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak isterseniz, aşağıdaki alanlar için değerleri girin:
+1. Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusuna URL 'yi yazın: `https://portal.catchpoint.com/SAML2`
+    a. **Tanımlayıcı** metin kutusuna URL'yi yazın:`https://portal.catchpoint.com/SAML2`
 
-    b. **Yanıt URL** 'si metin kutusuna URL 'yi yazın: `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+    b. **Url'yi Yanıtla** metin kutusuna URL'yi yazın:`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın: `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+    Oturum **Açma URL** metin kutusuna URL'yi yazın:`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
 
-1. Catch noktası uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+1. Catchpoint uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdaki ' a ek olarak, catch noktası uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdakilere ek olarak, Catchpoint uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Adı | Kaynak Özniteliği|
     | ------------ | --------- |
-    | ad alanı | Kullanıcı. atanan |
+    | ad alanı | user.assignedrole |
 
     > [!NOTE]
-    > ad alanı talebinin hesap adıyla eşlenmesi gerekir. Bu hesap adı, Azure AD 'de SAML yanıtına geri geçirilecek roller olarak ayarlanmalıdır. Rolleri ayarlamayı öğrenmek için lütfen bu [makaleye](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) bakın
+    > ad alanı talebinin hesap adı ile eşlemesi gerekir. Bu hesap adı, SAML yanıtında geri geçirilecek Azure AD'deki roller olarak düzenlenmelidir. Rolleri nasıl kuracağız öğrenmek için lütfen bu [makaleye](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) bakın
 
-1. **SAML ile çoklu oturum açma kurulumu** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML** ile Kurulum tek oturum açma bölümünde, **SAML İmza Sertifikası** bölümünde **Sertifikayı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Catch noktasını ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Catchpoint'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, catch noktasına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Catchpoint'e erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **catch noktası**' nı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Catchpoint'i**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-catchpoint-sso"></a>Catch noktası SSO 'SU yapılandırma
+## <a name="configure-catchpoint-sso"></a>Catchpoint SSO'da yapılandırın
 
-1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak catch noktası uygulamasında oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Catchpoint uygulamasında yönetici olarak oturum açın.
 
-1. **Ayarlar** simgesine tıklayın ve **SSO kimlik sağlayıcısı**' nı seçin.
+1. **Ayarlar** simgesine tıklayın ve **SSO Kimlik Sağlayıcısı'nı**seçin.
 
-    ![Catch noktası yapılandırması](./media/catchpoint-tutorial/configuration1.png)
+    ![Catchpoint yapılandırması](./media/catchpoint-tutorial/configuration1.png)
 
-1. **Çoklu oturum açma** sayfasında, aşağıdaki adımları uygulayın:
+1. Tek **İşaret Açma** sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![Catch noktası yapılandırması](./media/catchpoint-tutorial/configuration2.png)
+    ![Catchpoint yapılandırması](./media/catchpoint-tutorial/configuration2.png)
 
-    1. **Ad alanı** metin kutusuna geçerli bir ad alanı değeri girin.
+    1. Ad Alanı metin **kutusuna** geçerli bir ad alanı değeri girin.
 
-    1. **Kimlik sağlayıcısı veren** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini girin.
+    1. Kimlik **Sağlayıcı Veren** metin kutusuna, Azure portalından kopyaladığınız **Azure AD Tanımlayıcı** değerini girin.
 
-    1. **Çoklu oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini girin.
+    1. **Url'de Tek İşaret** kutusuna, Azure portalından kopyaladığınız **Giriş URL** değerini girin.
 
-    1. İndirilen **sertifika (base64)** dosyasını Not defteri 'nde açın, sertifika dosyasının içeriğini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
+    1. İndirilen **Sertifika (Base64)** dosyasını Notepad'e açın, sertifika dosyasının içeriğini kopyalayın ve **Sertifika** metin kutusuna yapıştırın.
 
-    1. Ayrıca, **meta verileri karşıya yükle** seçeneğine tıklayarak **Federasyon meta veri XML** 'sini de karşıya yükleyebilirsiniz.
+    1. Ayrıca, **Meta Verileri Yükle** seçeneğini tıklayarak Federasyon **Metadata XML'ini** yükleyebilirsiniz.
 
-    1. **Kaydet** düğmesine tıklayın.
+    1. **Kaydet**'e tıklayın.
 
-### <a name="create-catchpoint-test-user"></a>Catch noktası test kullanıcısı oluştur
+### <a name="create-catchpoint-test-user"></a>Catchpoint test kullanıcısı oluşturma
 
-Bu bölümde, bir catch noktasında Britta Simon adlı bir Kullanıcı oluşturulur. Yakalama noktası, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten catch noktasında yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Catchpoint'te Britta Simon adında bir kullanıcı oluşturulur. Catchpoint, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Catchpoint'te bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde catch noktası kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız catch noktasında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Catchpoint döşemesini tıklattığınızda, SSO'yu kurduğunuz Catchpoint'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 > [!NOTE]
-> Catch noktası uygulamasında oturum açma sayfasından oturum açtığınızda, **catch noktası kimlik bilgilerini**sağladıktan sonra geçerli **ad alanı** değerini **Şirket kimlik bilgileri (SSO)** metin kutusuna girin ve **oturum aç**' a tıklayın.
+> Giriş sayfası üzerinden Catchpoint uygulamasına giriş yaptığınızda, **Catchpoint Kimlik Bilgilerini**sağladıktan **sonra, Şirket Kimlik Bilgileri(SSO)** metin kutusuna geçerli **Ad alanı** değerini girin ve **Giriş'i**tıklatın.
 
-![Catch noktası yapılandırması](./media/catchpoint-tutorial/loginimage.png)
+![Catchpoint yapılandırması](./media/catchpoint-tutorial/loginimage.png)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile catch noktasını deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Catchpoint'i deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

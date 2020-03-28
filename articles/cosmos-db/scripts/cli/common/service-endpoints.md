@@ -1,6 +1,6 @@
 ---
-title: Sanal ağ hizmeti uç noktaları ile bir Azure Cosmos hesabı oluşturma
-description: Sanal ağ hizmeti uç noktaları ile bir Azure Cosmos hesabı oluşturma
+title: Sanal ağ hizmeti uç noktalarıyla bir Azure Cosmos hesabı oluşturma
+description: Sanal ağ hizmeti uç noktalarıyla bir Azure Cosmos hesabı oluşturma
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,24 +8,24 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 9/25/2019
 ms.openlocfilehash: ff700739e2f8c6330ea151dbe489332acea3238c
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71275412"
 ---
-# <a name="create-an-azure-cosmos-account-with-virtual-network-service-endpoints-using-azure-cli"></a>Azure CLı kullanarak sanal ağ hizmet uç noktaları ile bir Azure Cosmos hesabı oluşturma
+# <a name="create-an-azure-cosmos-account-with-virtual-network-service-endpoints-using-azure-cli"></a>Azure CLI'yi kullanarak sanal ağ hizmeti bitiş noktalarıyla bir Azure Cosmos hesabı oluşturun
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.0.73 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu konu Azure CLI sürümünü 2.0.73 veya daha yeni çalıştırdığınızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
-Bu örnek, ön ve arka uç alt ağı olan yeni bir sanal ağ oluşturur ve hizmet uç noktalarını `Microsoft.AzureCosmosDB`etkinleştirilir. Daha sonra bu alt ağın kaynak kimliğini alır ve Azure Cosmos hesabına uygular ve hesap için hizmet uç noktalarını sağlar.
+Bu örnek, ön ve arka uç alt ağı olan yeni bir `Microsoft.AzureCosmosDB`sanal ağ oluşturur ve '' için hizmet bitiş noktaları sağlar. Daha sonra bu alt ağ için kaynak kimliğini alır ve Azure Cosmos hesabına uygular ve hesap için hizmet bitiş noktaları sağlar.
 
 > [!NOTE]
-> Bu örnekte bir SQL (Core) API hesabı kullanılması gösterilmektedir. Bu örneği diğer API 'ler için kullanmak üzere API 'ye `enable-virtual-network` özel `virtual-network-rules` betiğe aşağıdaki komut dosyasına ve parametrelerini uygulayın.
+> Bu örnek, bir SQL (Core) API hesabı nın kullanılmasını gösterir. Bu örneği diğer API'ler `enable-virtual-network` için `virtual-network-rules` kullanmak için, aşağıdaki komut dosyasındaki parametreleri ve parametreleri API'nize özel komut dosyanıza uygulayın.
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/service-endpoints.sh "Create an Azure Cosmos account with service endpoints.")]
 
@@ -44,14 +44,14 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Bir Azure sanal ağı oluşturur. |
+| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Azure sanal ağı oluşturur. |
 | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Azure sanal ağı için bir alt ağ oluşturur. |
-| [az Network VNET subnet Show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show) | Bir Azure sanal ağı için bir alt ağ döndürür. |
+| [az ağ vnet subnet gösterisi](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show) | Azure sanal ağı için bir alt ağ döndürür. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB hesabı oluşturur. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-CLı Azure Cosmos DB hakkında daha fazla bilgi için bkz. [Azure Cosmos DB CLI belgeleri](/cli/azure/cosmosdb).
+Azure Cosmos DB CLI hakkında daha fazla bilgi için [Azure Cosmos DB CLI belgelerine](/cli/azure/cosmosdb)bakın.
 
-Tüm Azure Cosmos DB CLı betiği örnekleri [Azure Cosmos DB CLI GitHub deposunda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.
+Tüm Azure Cosmos DB CLI komut dosyası örnekleri [Azure Cosmos DB CLI GitHub Deposu'nda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Officesi yazılımıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Officesi yazılımı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: OfficeSpace Software ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve OfficeSpace Software arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,182 +17,182 @@ ms.date: 10/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80712c7f59845287006c1699524573c6094498b3
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75561723"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Öğretici: Officesi yazılımıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Öğretici: OfficeSpace Software ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Officesi yazılımını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Azure AD ile Officesi yazılımını tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, OfficeSpace Yazılımlarını Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. OfficeSpace Yazılımlarını Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Officesi yazılımına erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Officesi yazılımına otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* OfficeSpace Yazılımına erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla OfficeSpace Yazılımında otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Officesi yazılımı çoklu oturum açma (SSO) etkin aboneliği.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* OfficeSpace Software tek oturum açma (SSO) aboneliğini etkinleştirildi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Officesi yazılımı **SP** tarafından başlatılan SSO 'yu destekler
-
-
-* Officesi yazılımı **, tam zamanında** Kullanıcı sağlamasını destekler
+* OfficeSpace Software **SP** başlatılan SSO destekler
 
 
-## <a name="adding-officespace-software-from-the-gallery"></a>Galeriden Officesi yazılımı ekleme
-
-Officesi yazılımının Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden Officesi yazılımını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
-
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Officesi yazılımı** yazın.
-1. Sonuçlar panelinden **Officesi yazılımı** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+* OfficeSpace Software **Just In Time** kullanıcı sağlama destekler
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-officespace-software"></a>Officesi yazılımı için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="adding-officespace-software-from-the-gallery"></a>Galeriden OfficeSpace Yazılımı Ekleme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Officesi yazılımıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Officesi yazılımındaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+OfficeSpace Yazılımının Azure AD'ye entegrasyonunu yapılandırmak için, galeriden OfficeSpace Yazılımını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-Azure AD SSO 'yu Officesi yazılımıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **OfficeSpace Yazılımı** yazın.
+1. Sonuç panelinden **OfficeSpace Yazılımı'nı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Officesi yazılım SSO 'Yu yapılandırın](#configure-officespace-software-sso)** .
-    1. Officesi **[yazılım test kullanıcısı oluşturun](#create-officespace-software-test-user)** -Kullanıcı Azure AD gösterimine bağlı olan Officesi yazılımında B. Simon 'a karşılık gelen bir.
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-and-test-azure-ad-single-sign-on-for-officespace-software"></a>OfficeSpace Yazılımı için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak OfficeSpace Yazılımı ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile OfficeSpace Yazılımı'ndaki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/), **Officesi yazılım** uygulaması tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+Azure AD SSO'yu OfficeSpace Yazılımı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[OfficeSpace Software SSO'yu yapılandırın](#configure-officespace-software-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[OfficeSpace Software test kullanıcısını oluşturun](#create-officespace-software-test-user)** - Kullanıcının Azure AD gösterimine bağlı OfficeSpace Yazılımı'nda B.Simon'ın bir muadili olması için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<company name>.officespacesoftware.com/users/sign_in/saml`
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `<company name>.officespacesoftware.com`
+1. **OfficeSpace Software** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+
+1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
+
+    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<company name>.officespacesoftware.com/users/sign_in/saml`
+
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`<company name>.officespacesoftware.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Officesi yazılım istemci destek ekibine](mailto:support@officespacesoftware.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [OfficeSpace Software Client destek ekibine](mailto:support@officespacesoftware.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. Officesi yazılım uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Officesi yazılım uygulaması, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. OfficeSpace Software uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir, **nameidentifier** **user.userprincipalname**ile eşlenir gibi. OfficeSpace Software uygulaması **nameidentifier** **user.mail**ile eşlenen bekliyor, bu yüzden **düzenleme** simgesine tıklayarak öznitelik eşleme düzenlemeniz ve öznitelik eşleme değiştirmek gerekir.
 
     ![image](common/edit-attribute.png)
 
-1. Daha fazlasına ek olarak, Officesi yazılım uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdakilere ek olarak, OfficeSpace Software uygulaması aşağıda gösterilen SAML yanıtı geri geçirilecek birkaç daha fazla öznitelikleri bekliyor. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Ad | Kaynak özniteliği|
+    | Adı | Kaynak Özniteliği|
     | ---------------| --------------- |
-    | e-posta | Kullanıcı. Mail |
+    | e-posta | kullanıcı.posta |
     | ad | user.displayname |
-    | first_name | Kullanıcı. |
-    | last_name | User. soyadı |
+    | Ilk_ad | user.givenname |
+    | last_name | user.surname |
 
-1. **SAML Imzalama sertifikası** bölümünde, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+1. **SAML İmzalama Sertifikası** bölümünde, **SAML İmzalama Sertifikası** iletişim kutusunu açmak için **Edit** düğmesini tıklatın.
 
-    ![SAML Imzalama sertifikasını Düzenle](common/edit-certificate.png)
+    ![SAML İmza Sertifikasını Edin](common/edit-certificate.png)
 
-1. **SAML Imzalama sertifikası** bölümünde, **parmak izi değerini** kopyalayın ve bilgisayarınıza kaydedin.
+1. **SAML İmza Sertifikası** **bölümünde, Parmak İzi Değerini** kopyalayın ve bilgisayarınıza kaydedin.
 
-    ![Parmak Izi değerini Kopyala](common/copy-thumbprint.png)
+    ![Parmak Izi değerini kopyala](common/copy-thumbprint.png)
 
-1. **Officesi yazılımını ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **OfficeSpace Yazılımını Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Officesi yazılımına erişim vererek B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın OfficeSpace Yazılımına erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Officesi yazılımı**' nı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **OfficeSpace Yazılımı'nı**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-### <a name="configure-officespace-software-sso"></a>Officesi yazılım SSO 'yu yapılandırma
+### <a name="configure-officespace-software-sso"></a>OfficeSpace Software SSO'da yapılandırın
 
-1. Farklı bir Web tarayıcısı penceresinde, Officesi yazılım kiracınızda yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, OfficeSpace Software kiracınızda yönetici olarak oturum açın.
 
-2. **Ayarlar** ' a gidin ve **Bağlayıcılar**' a tıklayın.
+2. **Ayarlar'a** gidin ve **Bağlayıcılar'ı**tıklatın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![Uygulama Tarafında Tek Oturum Açma'yı Yapılandır](./media/officespace-tutorial/tutorial_officespace_002.png)
 
-3. **SAML kimlik doğrulaması**' na tıklayın.
+3. **SAML Kimlik Doğrulaması'nı**tıklatın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![Uygulama Tarafında Tek Oturum Açma'yı Yapılandır](./media/officespace-tutorial/tutorial_officespace_003.png)
 
-4. **SAML kimlik doğrulaması** bölümünde aşağıdaki adımları uygulayın:
+4. **SAML Kimlik Doğrulama** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/officespace-tutorial/tutorial_officespace_004.png)
+    ![Uygulama Tarafında Tek Oturum Açma'yı Yapılandır](./media/officespace-tutorial/tutorial_officespace_004.png)
 
-    a. **Logout Provider URL** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
+    a. **Logout sağlayıcısı url** textbox'ına, Azure portalından kopyalamış olduğunuz **Logout URL** değerini yapıştırın.
 
-    b. **İstemci IDP hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    b. **İstemci idp hedef url** textbox'ına, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin** değerini yapıştırın.
 
-    c. Azure portal kopyaladığınız **parmak izi** değerini **istemci IDP sertifikası parmak izi** metin kutusuna yapıştırın. 
+    c. Azure portalından kopyaladığınız **Thumbprint** değerini **İstemci IDP sertifika parmak izi** metin kutusuna yapıştırın. 
 
-    d. **Ayarları Kaydet**' e tıklayın.
+    d. **Ayarları Kaydet'i**tıklatın.
 
-### <a name="create-officespace-software-test-user"></a>Officesi yazılım test kullanıcısı oluşturma
+### <a name="create-officespace-software-test-user"></a>OfficeSpace Software test kullanıcıoluşturma
 
-Bu bölümde, Officesi yazılımında B. Simon adlı bir Kullanıcı oluşturulur. Officesi yazılımı, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı, Officesi yazılımında zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde OfficeSpace Software'de B.Simon adında bir kullanıcı oluşturulur. OfficeSpace Software, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. OfficeSpace Yazılımı'nda bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 > [!NOTE]
-> El ile bir kullanıcı oluşturmanız gerekiyorsa, [Officesi yazılım destek ekibine](mailto:support@officespacesoftware.com)başvurmanız gerekir.
+> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [OfficeSpace Software destek ekibine](mailto:support@officespacesoftware.com)başvurmanız gerekir.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Officesi yazılımı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız officesi yazılımında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki OfficeSpace Yazılım döşemesini tıklattığınızda, SSO'yu kurduğunuz OfficeSpace Yazılımında otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Officesi yazılımlarını deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile OfficeSpace YazılımLarını Deneyin](https://aad.portal.azure.com/)
 

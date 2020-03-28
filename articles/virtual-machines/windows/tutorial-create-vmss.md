@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Windows sanal makine ölçek kümesi oluşturma'
-description: Bir sanal makine ölçek kümesi kullanarak Windows VM 'lerinde yüksek oranda kullanılabilir bir uygulama oluşturmak ve dağıtmak için Azure PowerShell kullanmayı öğrenin
+description: Sanal makine ölçeği kümesini kullanarak Windows Sanal M'lerde yüksek kullanılabilir bir uygulama oluşturmak ve dağıtmak için Azure PowerShell'i nasıl kullanacağınızı öğrenin
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -17,14 +17,14 @@ ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: bf53b2777c5d1e4d774a9f5ee9df119a0deac9d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75464983"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi oluşturma ve Windows üzerinde yüksek oranda kullanılabilir bir uygulama dağıtma
-Bir sanal makine ölçek kümesi, bir özdeş, otomatik ölçeklendirme sanal makineleri kümesini dağıtmanıza ve yönetmenize olanak tanır. Ölçek kümesindeki VM 'lerin sayısını el ile ölçeklendirebilirsiniz. Ayrıca, CPU, bellek talebi veya ağ trafiği gibi kaynak kullanımına göre otomatik ölçeklendirme kuralları tanımlayabilirsiniz. Bu öğreticide, Azure 'da bir sanal makine ölçek kümesi dağıtırsınız ve aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Sanal makine ölçeği kümesi, aynı, otomatik olarak otomatik leştiren bir dizi sanal makineyi dağıtmanızı ve yönetmeniz sağlar. Ölçek kümesindeki VM sayısını el ile ölçeklendirebilirsiniz. CPU, bellek talebi veya ağ trafiği gibi kaynak kullanımını temel alan otomatik ölçeklendirme kuralları da tanımlayabilirsiniz. Bu öğreticide, Azure'da ayarlanmış sanal bir makine ölçeği dağıtıyor ve nasıl iş kurabileceğinizi öğreniyorsunuz:
 
 > [!div class="checklist"]
 > * Ölçeklenecek bir IIS sitesi tanımlamak için Özel Betik Uzantısı kullanma
@@ -37,10 +37,10 @@ Bir sanal makine ölçek kümesi, bir özdeş, otomatik ölçeklendirme sanal ma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="scale-set-overview"></a>Ölçek Kümesine genel bakış
-Bir sanal makine ölçek kümesi, bir özdeş, otomatik ölçeklendirme sanal makineleri kümesini dağıtmanıza ve yönetmenize olanak tanır. Ölçek kümesindeki VM’ler, bir veya daha fazla *yerleştirme grubu* şeklinde mantık hatası ve güncelleme etki alanlarında dağıtılır. Yerleştirme grupları, [kullanılabilirlik kümelerine](tutorial-availability-sets.md)benzer şekilde yapılandırılmış sanal makinelerin gruplarıdır.
+Sanal makine ölçeği kümesi, aynı, otomatik olarak otomatik leştiren bir dizi sanal makineyi dağıtmanızı ve yönetmeniz sağlar. Ölçek kümesindeki VM’ler, bir veya daha fazla *yerleştirme grubu* şeklinde mantık hatası ve güncelleme etki alanlarında dağıtılır. Yerleşim grupları, [kullanılabilirlik kümelerine](tutorial-availability-sets.md)benzer şekilde yapılandırılmış VM gruplarıdır.
 
 VM’ler, ölçek kümesinde gerektiğinde oluşturulur. Ölçek kümesinde VM eklenmesi veya kaldırılması işlemlerinin nasıl ve ne zaman gerçekleştirileceğini denetlemek için otomatik ölçeklendirme kurallarını tanımlanır. Bu kurallar, CPU yükü, bellek kullanımı veya ağ trafiği gibi ölçümlere dayalı olarak tetiklenebilir.
 
@@ -48,7 +48,7 @@ Bir Azure platform görüntüsü kullanılırsa ölçek kümeleri 1.000 adede ka
 
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
-[New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss)ile bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek *myScaleSet* adına sahip olan ve *Windows Server 2016 Datacenter* platform görüntüsünü kullanan bir ölçek kümesi oluşturur. Sanal ağ, genel IP adresi ve yük dengeleyici için Azure ağ kaynakları otomatik olarak oluşturulur. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi yönetici kimlik bilgilerinizi ayarlayabilirsiniz:
+[Yeni AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss)ile sanal bir makine ölçeği kümesi oluşturun. Aşağıdaki örnek *myScaleSet* adına sahip olan ve *Windows Server 2016 Datacenter* platform görüntüsünü kullanan bir ölçek kümesi oluşturur. Sanal ağ, genel IP adresi ve yük dengeleyici için Azure ağ kaynakları otomatik olarak oluşturulur. İstendiğinde, ölçek kümesindeki VM örnekleri için kendi yönetim kimlik bilgilerinizi ayarlayabilirsiniz:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -99,7 +99,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>Uygulamaya giden trafiğe izin verme
 
-Temel Web uygulamasına erişime izin vermek için, [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) ve [New-aznetworksecuritygroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun. Daha fazla bilgi için bkz. [Azure sanal makine ölçek kümeleri Için ağ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
+Temel web uygulamasına erişime izin vermek için, [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) ve [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun. Daha fazla bilgi [için Azure sanal makine ölçek kümeleri için Ağ'a](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)bakın.
 
 ```azurepowershell-interactive
 # Get information about the scale set
@@ -148,7 +148,7 @@ Update-AzVmss `
 ```
 
 ## <a name="test-your-scale-set"></a>Ölçek kümenizi test etme
-Ölçek kümesini eylem bölümünde görmek için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)ile yük dengeleyicinizin genel IP adresini alın. Aşağıdaki örnek, ölçek kümesinin bir parçası olarak oluşturulan *Mypublicıp* için IP adresini görüntüler:
+Ölçeğinizin iş başında olduğunu görmek için [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)ile yük bakiyecinizin genel IP adresini alın. Aşağıdaki örnekte, ölçek kümesinin bir parçası olarak oluşturulan *PublicIP'imin* IP adresi görüntülenir:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -167,7 +167,7 @@ Genel IP adresini bir web tarayıcısına girin. Web uygulaması, yük dengeleyi
 Ölçek kümesinin yaşam döngüsü boyunca bir veya daha fazla yönetim görevi çalıştırmanız gerekebilir. Ayrıca, çeşitli yaşam döngüsü görevlerini otomatikleştiren betikler oluşturmak isteyebilirsiniz. Azure PowerShell tüm bunları hızlıca yapabilmenizi sağlar. Aşağıda birkaç yaygın görev açıklanmaktadır.
 
 ### <a name="view-vms-in-a-scale-set"></a>Ölçek kümesindeki VM’leri görüntüleme
-Bir ölçek kümesindeki sanal makine örneklerinin listesini görüntülemek için [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) komutunu aşağıdaki gibi kullanın:
+Bir ölçek kümesindeki VM örneklerinin listesini görüntülemek için [Get-AzVmssVM'yi](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) aşağıdaki gibi kullanın:
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -175,7 +175,7 @@ Get-AzVmssVM `
   -VMScaleSetName "myScaleSet"
 ```
 
-Aşağıdaki örnek çıkış, ölçek kümesindeki iki sanal makine örneğini gösterir:
+Aşağıdaki örnek çıktı, ölçek kümesindeki iki sanal makine örneğini göstermektedir:
 
 ```powershell
 ResourceGroupName                 Name Location             Sku InstanceID ProvisioningState
@@ -184,7 +184,7 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Belirli bir sanal makine örneği hakkında ek bilgileri görüntülemek için [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)' ye `-InstanceId` parametresini ekleyin. Aşağıdaki örnekte, *1* sanal makine örneğiyle ilgili bilgiler görüntülenir:
+Belirli bir VM örneği hakkında ek `-InstanceId` bilgileri görüntülemek için [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)parametresini ekleyin. Aşağıdaki örnekte, *1* sanal makine örneğiyle ilgili bilgiler görüntülenmektedir:
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -195,7 +195,7 @@ Get-AzVmssVM `
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>VM örneklerinin sayısını artırma veya azaltma
-Ölçek kümesinde Şu anda sahip olduğunuz örneklerin sayısını görmek için, [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) ve *SKU. Capacity*üzerinde sorgu kullanın:
+Şu anda bir ölçek kümesinde bulunan örnek sayısını görmek için [Get-AzVmss'i](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) ve *sku.capacity'deki*sorguyu kullanın:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -203,7 +203,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
   Select -ExpandProperty Sku
 ```
 
-Daha sonra, [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)ile ölçek kümesindeki sanal makinelerin sayısını el ile artırabilir veya azaltabilirsiniz. Aşağıdaki örnek, ölçek kümenizdeki VM'lerin sayısını *3* olarak ayarlar:
+Daha [sonra, Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)ile belirlenen ölçekteki sanal makine sayısını el ile artırabilir veya azaltabilirsiniz. Aşağıdaki örnek, ölçek kümenizdeki VM'lerin sayısını *3* olarak ayarlar:
 
 ```azurepowershell-interactive
 # Get current scale set

@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649559"
 ---
-## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APıM proxy sunucusu, TLS el sıkışmasının SSL sertifikalarıyla nasıl yanıt veriyor
+## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APIM Ara Sunucusunun TLS el sıkışmasında SSL sertifikaları ile yanı verme şekli
 
-### <a name="clients-calling-with-sni-header"></a>SNı üstbilgisiyle çağıran istemciler
-Müşterinin proxy için yapılandırılmış bir veya birden çok özel etki alanı varsa, APıM, özel etki alanlarından (örneğin, contoso.com) ve varsayılan etki alanının yanı sıra (örneğin, apim-service-name.azure-api.net) HTTPS isteklerine yanıt verebilir. Sunucu Adı Belirtme (SNı) üstbilgisindeki bilgilere göre APıM, uygun sunucu sertifikasıyla yanıt verir.
+### <a name="clients-calling-with-sni-header"></a>SNI üstbilgisiyle arayan istemciler
+Müşterinin Proxy için yapılandırılmış bir veya birden çok özel etki alanı varsa, APIM özel etki alanından (örneğin, contoso.com) ve varsayılan etki alanından (örneğin, apim-service-name.azure-api.net) gelen HTTPS isteklerine yanıt verebilir. APIM, Sunucu Adı Göstergesi (SNI) başlığındaki bilgilere dayanarak uygun sunucu sertifikasıyla yanıt verir.
 
-### <a name="clients-calling-without-sni-header"></a>SNı üstbilgisi olmadan çağıran istemciler
-Müşteri, [SNI](https://tools.ietf.org/html/rfc6066#section-3) üstbilgisini göndermediği bir istemci kullanıyorsa, APIM aşağıdaki mantığa göre yanıtlar oluşturur:
+### <a name="clients-calling-without-sni-header"></a>SNI üstbilgisi olmadan arayan istemciler
+Müşteri [SNI](https://tools.ietf.org/html/rfc6066#section-3) üstbilgisini göndermeyen bir istemci kullanıyorsa, APIM aşağıdaki mantığa dayalı yanıtlar oluşturur:
 
-* Hizmetin yalnızca bir özel etki alanı proxy için yapılandırılmış olması durumunda varsayılan sertifika, proxy özel etki alanına verilmiş olan sertifikadır.
-* Hizmet, proxy için birden çok özel etki alanı yapılandırmışsa ( **Geliştirici** ve **Premium** katmanda desteklenir), müşteri hangi sertifikanın varsayılan sertifika olması gerektiğini belirtebilir. Varsayılan sertifikayı ayarlamak için, [defaultsslbinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) özelliği true olarak ayarlanmalıdır ("defaultsslbinding": "true"). Müşteri özelliği ayarlanmamışsa varsayılan sertifika, *. azure-api.net adresinde barındırılan varsayılan ara sunucu etki alanına verilen sertifikadır.
+* Hizmetin Proxy için yapılandırılan tek bir özel etki alanı varsa, Varsayılan Sertifika Proxy özel etki alanına verilen sertifikadır.
+* Hizmet Proxy için birden çok özel etki alanı yapılandıysa **(Geliştirici** ve **Premium** katmanda desteklenen), müşteri varsayılan sertifika nın hangi sertifika olması gerektiğini belirleyebilir. Varsayılan sertifikayı ayarlamak için [varsayılanSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) özelliğinin gerçek olarak ayarlanmalıdır ("defaultSslBinding":"true"). Müşteri özelliği ayarlamazsa, varsayılan sertifika *.azure-api.net'da barındırılan varsayılan Proxy etki alanına verilen sertifikadır.
 
-## <a name="support-for-putpost-request-with-large-payload"></a>Büyük yük ile PUT/POST isteği desteği
+## <a name="support-for-putpost-request-with-large-payload"></a>Büyük yüke sahip PUT/POST isteği desteği
 
-APıM proxy sunucusu, HTTPS 'de istemci tarafı sertifikaları kullanırken büyük Yükle isteği destekler (örneğin, yük > 40 KB). Sunucunun isteğinin donmasını engellemek için, müşteriler proxy ana bilgisayar adı üzerinde ["Negotiateclientcertificate": "true"](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) özelliğini ayarlayabilir. Özelliği true olarak ayarlanırsa, istemci sertifikası, herhangi bir HTTP isteği değişimi öncesinde SSL/TLS bağlantı sırasında istenir. Ayar, **proxy ana bilgisayar adı** düzeyinde geçerli olduğundan, tüm bağlantı istekleri istemci sertifikası ister. Müşteriler, proxy için en fazla 20 özel etki alanı yapılandırabilir (yalnızca **Premium** katmanda desteklenir) ve bu sınırlamaya geçici bir çözüm bulabilirsiniz.
+APIM Proxy sunucusu, HTTPS'de istemci tarafındaki sertifikaları kullanırken isteği büyük taşıma kapasitesiyle destekler (örneğin, taşıma yükü > 40 KB). Sunucunun isteğinin donmasını önlemek için, müşteriler ["negotiateClientCertificate"](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) özelliğini ayarlayabilir: Proxy ana bilgisayar adına "doğru". Özellik gerçek olarak ayarlanmışsa, istemci sertifikası herhangi bir HTTP isteği değişiminden önce SSL/TLS bağlantı saatinde istenir. Ayar **Proxy Hostname** düzeyinde uygulandığından, tüm bağlantı istekleri istemci sertifikasını ister. Müşteriler Proxy için en fazla 20 özel etki alanı yapılandırabilir (yalnızca **Premium** katmanında desteklenebilir) ve bu sınırlamayı geçici olarak ele alabilir.
 

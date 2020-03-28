@@ -11,10 +11,10 @@ ms.workload: Active
 ms.date: 12/08/2019
 ms.author: alehall
 ms.openlocfilehash: fa5568a5af483a61b4e0854cbc7c2ade3b8dc4b1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889141"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Öğretici: Event Hubs kullanarak Azure Databricks’e veri akışı yapma
@@ -25,7 +25,7 @@ Bu öğreticinin sonunda, Twitter’daki "Azure" terimini içeren tweet’leri a
 
 Aşağıdaki şekilde uygulama akışı gösterilmektedir:
 
-![Event Hubs Azure Databricks](./media/databricks-stream-from-eventhubs/databricks-eventhubs-tutorial.png "Event Hubs Azure Databricks")
+![Etkinlik Hub'ları ile Azure Veri Tuğlaları](./media/databricks-stream-from-eventhubs/databricks-eventhubs-tutorial.png "Etkinlik Hub'ları ile Azure Veri Tuğlaları")
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -38,11 +38,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Event Hubs’a tweet’ler gönderme
 > * Event Hubs’tan tweet’leri okuma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
 > [!Note]
-> Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Bu öğretici **Azure Ücretsiz Deneme Aboneliği**kullanılarak gerçekleştirilemez.
+> Ücretsiz bir hesabınız varsa, profilinize gidin ve aboneliğinizi istediğiniz **kadar öde**olarak değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama sınırını kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki VCPU'lar için kota artışı [isteyin.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına ücretsiz Premium Azure Databricks DBUs'a 14 gün süreyle erişim sağlamak için **Deneme (Premium - 14 Gün Ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -56,15 +56,15 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/)oturum açın.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure portalında **Kaynak oluşturun** > **Veri ve Analiz** > **Azure Databricks** seçeneklerini belirleyin.
+1. Azure portalında **kaynak** > Veri Oluştur **+ Analitik** > **Azure Veri Tuğlaları'nı**seçin.
 
-    ![Azure portal databricks](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Azure portal databricks")
+    ![Azure portalında veri tuğlaları](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Azure portalında veri tuğlaları")
 
 3. **Azure Databricks Hizmeti** bölümünde, Databricks çalışma alanı oluşturmak için değerler sağlayın.
 
@@ -84,7 +84,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 4. Hesabın oluşturulması birkaç dakika sürer. Hesap oluşturma sırasında portal sağ tarafta **Azure Databricks için dağıtım gönderiliyor** kutucuğunu gösterir. Kutucuğu görmek için panonuzu sağa kaydırmanız gerekebilir. Ayrıca, ekranın üst kısmında gösterilen bir ilerleme çubuğu vardır. İlerleme durumu için her iki alanı da izleyebilirsiniz.
 
-    ![Databricks dağıtım kutucuğu](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Databricks dağıtım kutucuğu")
+    ![Databricks dağıtım döşemesi](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Databricks dağıtım döşemesi")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks’te Spark kümesi oluşturma
 
@@ -92,19 +92,19 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Küme**’yi seçin.
 
-    ![Azure 'da databricks](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Azure 'da databricks")
+    ![Azure'da Veri Tuğlaları](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Azure'da Veri Tuğlaları")
 
 3. **Yeni küme** sayfasında, bir küme oluşturmak için değerleri girin.
 
-    ![Azure 'da Databricks Spark kümesi oluşturma](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Azure 'da Databricks Spark kümesi oluşturma")
+    ![Azure'da Veri Tuğlaları Kıvılcım kümesi Oluşturma](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Azure'da Veri Tuğlaları Kıvılcım kümesi Oluşturma")
 
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
    * Küme için bir ad girin.
-   * Bu makalede, **6,0** çalışma zamanına sahip bir küme oluşturun.
-   * **\_\_ dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
+   * Bu makale için, **6.0** çalışma süresi olan bir küme oluşturun.
+   * Dakikalar süren inaktivite onay kutusunun **ardından \_ \_ Sonlandırma'yı seçtiğinizden** emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-   Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/pricing/details/databricks/)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
+   Teknik ölçütlerinize ve [bütçenize](https://azure.microsoft.com/pricing/details/databricks/)uygun küme işçi ve sürücü düğümü boyutunu seçin.
 
      **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -112,42 +112,42 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturursunuz. Yönergeleri izleyerek bir Twitter uygulaması oluşturun ve bu öğreticiyi tamamlamak için ihtiyaç duyduğunuz değerleri kaydedin.
 
-1. Bir Web tarayıcısından, [geliştiriciler Için Twitter](https://developer.twitter.com/en/apps)' a gidin ve **uygulama oluştur**' u seçin. Twitter geliştirici hesabı için uygulamanız gerektiğini söyleyen bir ileti görebilirsiniz. Bu işlemi ücretsiz yapın ve uygulamanız onaylandıktan sonra bir onay e-postası görmeniz gerekir. Bir geliştirici hesabının onaylanması birkaç gün sürebilir.
+1. Bir web [tarayıcısından, Geliştiriciler için Twitter'a](https://developer.twitter.com/en/apps)gidin ve uygulama **oluştur'u**seçin. Bir Twitter geliştirici hesabına başvurmanız gerektiğini belirten bir ileti görebilirsiniz. Bunu yapmak için çekinmeyin ve başvurunuz onaylandıktan sonra bir onay e-postası görmelisiniz. Geliştirici hesabının onaylanması birkaç gün sürebilir.
 
-    ![Twitter geliştirici hesabı onayı](./media/databricks-stream-from-eventhubs/databricks-twitter-dev-confirmation.png "Twitter geliştirici hesabı onayı")
+    ![Twitter geliştirici hesap onayı](./media/databricks-stream-from-eventhubs/databricks-twitter-dev-confirmation.png "Twitter geliştirici hesap onayı")
 
 2. **Uygulama oluşturun** sayfasında yeni uygulamaya ilişkin ayrıntıları sağlayın ve **Kendi Twitter uygulamanızı oluşturun**’u seçin.
 
-    ![Twitter uygulaması ayrıntıları](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details.png "Twitter uygulaması ayrıntıları")
+    ![Twitter uygulama detayları](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details.png "Twitter uygulama detayları")
 
-    ![Twitter uygulaması ayrıntıları](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Twitter uygulaması ayrıntıları")
+    ![Twitter uygulama detayları](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Twitter uygulama detayları")
 
-3. Uygulama sayfasında **anahtarlar ve belirteçler** sekmesini seçin ve **Tüketici API anahtarı** ve **Tüketici API 'si gizli anahtarı**için değerleri kopyalayın. Ayrıca, erişim belirteçlerini oluşturmak için erişim belirteci altında **Oluştur** **ve erişim belirteci gizli anahtarı** ' nı seçin. **Erişim Belirteci** ve**Erişim Belirteci Parolası** değerlerini kopyalayın.
+3. Uygulama sayfasında, **Anahtarlar ve Belirteçler** sekmesini seçin ve **Tüketici API Anahtarı** ve Tüketici **API Gizli Anahtarı**değerlerini kopyalayın. Ayrıca, erişim belirteçlerini oluşturmak için **Access Token ve Access Token Secret** altında **Oluştur'u** seçin. **Erişim Belirteci** ve**Erişim Belirteci Parolası** değerlerini kopyalayın.
 
-    ![Twitter uygulaması ayrıntıları](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Twitter uygulaması ayrıntıları")
+    ![Twitter uygulama detayları](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Twitter uygulama detayları")
 
 Twitter uygulaması için aldığınız değerleri kaydedin. Öğreticinin sonraki bölümlerinde bu değerlere ihtiyacınız olacaktır.
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Spark kümesine kitaplıklar ekleme
 
-Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerini kullanırsınız. Azure Event Hubs’a verileri okuyup yazmak için de [Apache Spark Event Hubs bağlayıcısını](https://github.com/Azure/azure-event-hubs-spark) kullanırsınız. Kümenizin bir parçası olarak bu API 'Leri kullanmak için bunları Azure Databricks kitaplık olarak ekleyin ve Spark kümeniz ile ilişkilendirin. Aşağıdaki yönergeler bir kitaplığın nasıl ekleneceğini göstermektedir.
+Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerini kullanırsınız. Azure Event Hubs’a verileri okuyup yazmak için de [Apache Spark Event Hubs bağlayıcısını](https://github.com/Azure/azure-event-hubs-spark) kullanırsınız. Bu API'leri kümenizin bir parçası olarak kullanmak için, bunları Azure Databricks'e kitaplık olarak ekleyin ve Bunları Spark kümenizle ilişkilendirin. Aşağıdaki yönergeler kitaplık eklemeyi gösterir.
 
-1. Azure Databricks çalışma alanında **kümeler**' ı seçin ve var olan Spark kümenizi seçin. Küme menüsünde **Kitaplıklar** ' ı seçin ve **Yeni**' ye tıklayın.
+1. Azure Databricks çalışma alanında **Kümeler'i**seçin ve varolan Spark kümenizi seçin. Küme menüsünde **Kitaplıkları** seçin ve **Yeni Yükle'yi**tıklatın.
 
-   ![Kitaplık Ekle iletişim kutusu](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "Kitaplık ekleme kümeyi bulma")
+   ![Kitaplık iletişim kutusu ekleme](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "Kitaplık bulma kümesi ekle")
 
-   ![Kitaplık Ekle iletişim kutusu](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Kitaplık ekleme yeni yüklemesi")
+   ![Kitaplık iletişim kutusu ekleme](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Kitaplık ekle yeni yükle")
 
-2. Yeni Kitaplık sayfasında, **kaynak** **Seç ' i seçin**. Spark Event Hubs Bağlayıcısı ve Twitter API 'SI için **Şu koordinatları tek tek girin.**
+2. Yeni Kütüphane sayfasında, **Kaynak** için **Maven**seçin. Spark Olay Hub'ları bağlayıcısı ve Twitter API'si için aşağıdaki koordinatları **koordinatlara**ayrı ayrı girin.
 
    * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API’si - `org.twitter4j:twitter4j-core:4.0.7`
 
 3. **Yükle**’yi seçin.
 
-4. Küme menüsünde, her iki kitaplıkların de yüklendiğinden ve doğru şekilde eklendiğinden emin olun.
+4. Küme menüsünde, her iki kitaplıkta da düzgün şekilde yüklendiğinden ve eklendiğinden emin olun.
 
-    ![Kitaplıkları denetle](./media/databricks-stream-from-eventhubs/databricks-add-library-check.png "Kitaplıkları denetle")
+    ![Kitaplıkları denetleme](./media/databricks-stream-from-eventhubs/databricks-add-library-check.png "Kitaplıkları denetleme")
 
 6. Twitter paketi için şu adımları yineleyin, `twitter4j-core:4.0.7`.
 
@@ -160,22 +160,22 @@ Bu bölümde, Databricks çalışma alanında aşağıdaki adlarla iki not defte
 
 1. Sol bölmede **Çalışma Alanı**’nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
 
-    ![Databricks 'te Not defteri oluşturma](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
+    ![Databricks'te not defteri oluşturma](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Databricks'te not defteri oluşturma")
 
 2. **Not Defteri Oluştur** iletişim kutusuna **SendTweetsToEventHub** girin, dil olarak **Scala**’yı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-    ![Databricks 'te Not defteri oluşturma](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
+    ![Databricks'te not defteri oluşturma](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Databricks'te not defteri oluşturma")
 
-    **Oluştur**’u seçin.
+    **Oluştur'u**seçin.
 
 3. **ReadTweetsFromEventHub** not defterini oluşturma adımlarını yineleyin.
 
 ## <a name="send-tweets-to-event-hubs"></a>Event Hubs’a tweet’ler gönderme
 
-**Sendtweetstoeventhub** not defterine aşağıdaki kodu yapıştırın ve yer tutucuları, daha önce oluşturduğunuz Event Hubs ad alanı ve Twitter uygulamanızın değerleriyle değiştirin. Bu not defteri, gerçek zamanlı olarak "Azure" anahtar sözcüğünü içeren tweet’leri Event Hubs’ta akışa alır.
+**SendTweetsToEventHub** not defterine, aşağıdaki kodu yapıştırın ve yer tutucuları daha önce oluşturduğunuz Etkinlik Hub'ları ad alanı ve Twitter uygulamanızın değerleriyle değiştirin. Bu not defteri, gerçek zamanlı olarak "Azure" anahtar sözcüğünü içeren tweet’leri Event Hubs’ta akışa alır.
 
 > [!NOTE]
-> Twitter API 'SI belirli istek kısıtlamalarına ve [kotalara](https://developer.twitter.com/en/docs/basics/rate-limiting.html)sahiptir. Twitter API 'sinde standart fiyat sınırlandırmasını tatmin ediyorsanız, bu örnekte Twitter API 'sini kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, değişken **veri kaynağını** `twitter` yerine `test` olarak ayarlayın ve **TestSource** listesini tercih edilen test girişi ile doldurun.
+> Twitter API belirli istek kısıtlamaları ve [kotaları](https://developer.twitter.com/en/docs/basics/rate-limiting.html)vardır. Twitter API'sinde standart fiyat sınırlaması ile memnun değilseniz, bu örnekte Twitter API'si kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, tercih `test` edilen `twitter` test girişi ile liste **testSource** yerine değişken **dataSource** ayarlayın ve doldurmak.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -406,7 +406,7 @@ Aşağıdaki çıkışı alırsınız:
 
 ![Databricks kümesini durdurma](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Kümeyi oluştururken **etkinlik dakikalarından \_ \_ sonra Sonlandırma** onay kutusunu seçmeniz koşuluyla, kümeyi el ile sonlandırmazsanız otomatik olarak durur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
@@ -420,7 +420,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Event Hubs’a tweet’ler gönderme
 > * Event Hubs’tan tweet’leri okuma
 
-Azure Databricks ve bilişsel [Hizmetler API 'si](../cognitive-services/text-analytics/overview.md)kullanarak akışlı veriler üzerinde yaklaşım Analizi gerçekleştirme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Azure Databricks ve [Bilişsel Hizmetler API'sini](../cognitive-services/text-analytics/overview.md)kullanarak akışlı veriler üzerinde duyarlılık analizi gerçekleştirme hakkında bilgi edinmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
->[Azure Databricks kullanarak akış verileri üzerinde yaklaşım Analizi](databricks-sentiment-analysis-cognitive-services.md)
+>[Azure Databricks kullanarak akış verileri üzerinde yaklaşım analizi](databricks-sentiment-analysis-cognitive-services.md)

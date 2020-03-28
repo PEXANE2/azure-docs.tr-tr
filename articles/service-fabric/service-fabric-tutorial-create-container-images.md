@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Service Fabric kapsayıcı görüntüleri oluşturma
+title: Azure'da Hizmet Kumaşı'nda kapsayıcı resimleri oluşturma
 description: Bu öğreticide, çok kapsayıcılı bir Service Fabric uygulaması için kapsayıcı görüntülerini nasıl oluşturabileceğinizi öğrenirsiniz.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252779"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Öğretici: Linux Service Fabric kümesi üzerinde kapsayıcı görüntüleri oluşturma
@@ -31,7 +31,7 @@ Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Kapsayıcılara Sahip bir Service Fabric Uygulaması Derleme ve Çalıştırma](service-fabric-tutorial-package-containers.md)
 > * [Service Fabric’de yük devretme ve ölçeklendirme nasıl işlenir?](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Service Fabric için ayarlanan Linux geliştirme ortamı. Linux ortamınızı ayarlamak için [buradaki](service-fabric-get-started-linux.md) yönergeleri izleyin.
 * Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
@@ -78,7 +78,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry’yi dağıtma
 
-İlk olarak, Azure hesabınızda oturum açmak için **az Login** komutunu çalıştırın.
+Azure hesabınızda oturum açmak için önce **az giriş** komutunu çalıştırın.
 
 ```azurecli
 az login
@@ -106,9 +106,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 Bu öğreticinin geri kalan aşamalarında, seçtiğiniz kapsayıcı kayıt defteri adı için yer tutucu olarak “acrName” kullanacağız. Lütfen bu değeri not edin.
 
-## <a name="sign-in-to-your-container-registry"></a>Kapsayıcı kayıt defterinizde oturum açın
+## <a name="sign-in-to-your-container-registry"></a>Konteyner kayıt defterinizde oturum açın
 
-Görüntüleri göndermeden önce ACR Örneğinizde oturum açın. İşlemi tamamlamak için **az acr login** komutunu kullanın. Kapsayıcı kayıt defterine oluşturulduğunda verilen benzersiz adı sağlayın.
+Görüntüleri ona itmeden önce ACR örneğinde oturum açın. İşlemi tamamlamak için **az acr login** komutunu kullanın. Kapsayıcı kayıt defterine oluşturulduğunda verilen benzersiz adı sağlayın.
 
 ```azurecli
 az acr login --name <acrName>
@@ -198,7 +198,7 @@ azure-vote-front
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir uygulama GitHub 'dan çekilir ve kapsayıcı görüntüleri oluşturulup bir kayıt defterine gönderildi. Aşağıdaki adımlar tamamlandı:
+Bu eğitimde, github bir uygulama çekildi ve konteyner görüntüleri oluşturuldu ve bir kayıt defterine itildi. Aşağıdaki adımlar tamamlandı:
 
 > [!div class="checklist"]
 > * Uygulama kaynağını GitHub’dan kopyalama

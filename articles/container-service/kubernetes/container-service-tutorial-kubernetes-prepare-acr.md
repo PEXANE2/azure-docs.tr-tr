@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Azure Container Service öğreticisi-ACR hazırlama
+title: (AmortismanA Uğradı) Azure Konteyner Hizmeti öğreticisi - ACR Hazırla
 description: Azure Container Service öğreticisi - ACR Hazırlama
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78399791"
 ---
-# <a name="deprecated-deploy-and-use-azure-container-registry"></a>Kullanım DıŞı Azure Container Registry dağıtma ve kullanma
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(AmortismanA Uğradı) Azure Kapsayıcı Kayıt Defteri'ni dağıtma ve kullanma
 
 > [!TIP]
-> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: dağıtma ve kullanma Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Azure Kubernetes Hizmetini kullanan bu öğreticinin güncelleştirilmiş sürümü için [Bkz. Öğretici: Azure Kapsayıcı Kayıt Defteri'ni dağıtın ve kullanın.](../../aks/tutorial-kubernetes-prepare-acr.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -40,7 +40,7 @@ Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gere
 
 Bir Azure Container Registry dağıtırken önce bir kaynak grubuna ihtiyaç duyarsınız. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-[az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Bu örnekte, `myResourceGroup`bölgesinde `westeurope` adlı bir kaynak grubu oluşturulur.
+[az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Bu örnekte, `westeurope`bölgesinde `myResourceGroup` adlı bir kaynak grubu oluşturulur.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
@@ -95,7 +95,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Etiketledikten sonra, işlemi doğrulamak için [docker images](https://docs.docker.com/engine/reference/commandline/images/) komutunu çalıştırın.
+Etiketlendikten sonra, işlemi doğrulamak için [docker görüntüleri](https://docs.docker.com/engine/reference/commandline/images/) çalıştırın.
 
 ```bash
 docker images

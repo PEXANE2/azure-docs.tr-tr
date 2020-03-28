@@ -1,5 +1,5 @@
 ---
-title: AWS üzerinde bir küme için altyapı oluşturma
+title: AWS'de bir küme için altyapı oluşturma
 description: Bu öğreticide bir Service Fabric kümesi çalıştırmak için AWS altyapısını nasıl ayarlayacağınızı öğreneceksiniz.
 author: dkkapur
 ms.topic: tutorial
@@ -7,24 +7,24 @@ ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75613984"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Bir Service Fabric kümesini barındıracak AWS altyapısı oluşturma
 
 Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, AWS üzerinde barındırılan bir tek başına küme oluşturacak ve içine bir uygulama yükleyeceksiniz.
 
-Bu öğretici, bir serinin birinci bölümüdür. Bu makalede, tek başına Service Fabric kümenizi barındırmak için gerekli AWS kaynaklarını oluşturacaksınız. Gelecek makalelerde, Service Fabric tek başına paketini yüklemeniz, kümenize bir örnek uygulama yüklemeniz ve son olarak kümenizi temizlemeniz gerekir.
+Bu öğretici, bir dizinin birinci bölümüdür. Bu makalede, tek başına Service Fabric kümenizi barındırmak için gerekli AWS kaynaklarını oluşturacaksınız. Gelecek makalelerde, Service Fabric tek başına paketini yüklemeniz, kümenize bir örnek uygulama yüklemeniz ve son olarak kümenizi temizlemeniz gerekir.
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Bir EC2 örnekleri kümesi oluşturma
 > * Güvenlik grubunu değiştirme
-> * Örneklerden birinde oturum açın
+> * Örneklerden birinde oturum açma
 > * Service Fabric örneğini hazırlama
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -33,7 +33,7 @@ Bu öğreticiyi tamamlamak için bir AWS hesabınızın olması gerekir.  Henüz
 
 ## <a name="create-ec2-instances"></a>EC2 örnekleri oluşturma
 
-AWS konsolunda oturum açın > > **EC2 sanal sunucuları** ara kutusuna
+AWS Console'da oturum açın > **EC2'yi** **buluttaki EC2 Sanal Sunucular** > arama kutusuna girin
 
 ![AWS konsol araması][aws-console]
 
@@ -89,7 +89,7 @@ Service Fabric kümenizi kişisel bilgisayarınızdan yönetebilmek için, Servi
 
 Son olarak, dağıtıldığında uygulamayı görebilmeniz için 8080 numaralı bağlantı noktasını açmanız gerekir. **Kural Ekle**’yi ve açılır listeden **Özel TCP Kuralı**’nı seçin, bağlantı noktası aralığına ise her kural için `8080` girin, ardından Kaynak açılır listesini Her Yer olarak değiştirin.
 
-Tüm kurallar artık girilmiştir. **Kaydet**’i seçin.
+Tüm kurallar artık girilmiştir. **Kaydet'i**seçin.
 
 ## <a name="connect-to-an-instance-and-validate-connectivity"></a>Örneğe bağlanma ve bağlantıyı doğrulama
 
@@ -142,7 +142,7 @@ Serinin birinci bölümünde üç EC2 örneğini başlatmayı ve Service Fabric 
 > [!div class="checklist"]
 > * Bir EC2 örnekleri kümesi oluşturma
 > * Güvenlik grubunu değiştirme
-> * Örneklerden birinde oturum açın
+> * Örneklerden birinde oturum açma
 > * Service Fabric örneğini hazırlama
 
 Service Fabric’i kümenizde yapılandırmak için serinin ikinci bölümüne ilerleyin.

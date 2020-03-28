@@ -1,22 +1,22 @@
 ---
-title: 'Model: bir ilke tanımındaki parametreler'
-description: Bu Azure Ilke modelinde parametrelerin bir ilke tanımında nasıl kullanılacağına ilişkin bir örnek verilmiştir.
+title: 'Desen: İlke tanımındaki parametreler'
+description: Bu Azure İlkesi deseni, ilke tanımında parametrelerin nasıl kullanılacağına bir örnek sağlar.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 4921bb216ef67b561bc8986cf48239e6448beafc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77172810"
 ---
-# <a name="azure-policy-pattern-parameters"></a>Azure Ilke stili: parametreler
+# <a name="azure-policy-pattern-parameters"></a>Azure İlkesi deseni: parametreler
 
-Bir ilke tanımı, [parametreleri](../concepts/definition-structure.md#parameters)kullanarak gereken ilke tanımlarının sayısını azaltmak için dinamik hale getirilebilir. Parametresi, ilke ataması sırasında tanımlanmıştır. Parametreler, parametreyi ve nasıl kullanıldığını tanımlayan önceden tanımlı özellikler kümesine sahiptir.
+[Parametreler](../concepts/definition-structure.md#parameters)kullanılarak gereken ilke tanımlarının sayısını azaltmak için dinamik bir ilke tanımı yapılabilir. Parametre ilke ataması sırasında tanımlanır. Parametreler, parametreyi ve nasıl kullanıldığını açıklayan önceden tanımlanmış özellikler kümesine sahiptir.
 
-## <a name="sample-1-string-parameters"></a>Örnek 1: dize parametreleri
+## <a name="sample-1-string-parameters"></a>Örnek 1: String parametreleri
 
-Bu ilke tanımı, ilke atamasının kaynaklar üzerinde ne kadar arama yaptığını ayarlamak için iki parametre, **TagName** ve **tagvalue** kullanır. Bu biçim, ilkenin herhangi bir sayıda etiket adı ve etiket değeri kombinasyonu için kullanılmasına izin verir, ancak yalnızca tek bir ilke tanımını korur.
+Bu ilke tanımı, ilke atamasının kaynaklarda ne aradığını ayarlamak için **tagName** ve **tagValue** olmak üzere iki parametre kullanır. Bu biçim, ilkenin herhangi bir sayıda etiket adı ve etiket değeri birleşimleri için kullanılmasına izin verir, ancak yalnızca tek bir ilke tanımını korur.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json":::
 
@@ -24,15 +24,15 @@ Bu ilke tanımı, ilke atamasının kaynaklar üzerinde ne kadar arama yaptığ�
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json" range="8-13":::
 
-İlke tanımının bu bölümünde, **TagName** parametresi bir _dize_ olarak tanımlanır ve kullanımı için bir açıklama sağlanır.
+İlke tanımının bu bölümünde, **tagName** parametresi bir _dize_ olarak tanımlanır ve kullanımı için bir açıklama sağlanır.
 
-Daha sonra parametresi **Policyrule. If** bloğunda, ilkeyi dinamik hale getirmek için kullanılır. Burada, **TagName**değeri olan bir etiket olan değerlendirilen alanı tanımlamak için kullanılır.
+Parametre daha sonra **ilke kuralında kullanılır.eğer** ilkeyi dinamik yapmak için. Burada, **etiket Adı**değerine sahip bir etiket olan değerlendirilen alanı tanımlamak için kullanılır.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json" range="22-27" highlight="3":::
 
-## <a name="sample-2-array-parameters"></a>Örnek 2: dizi parametreleri
+## <a name="sample-2-array-parameters"></a>Örnek 2: Dizi parametreleri
 
-Bu ilke tanımı, Express Route bağlantı hattı ' nın bant genişliği ayarını onaylanan değerlerden birine yapılandırdığından emin olmak için **listOfBandwidthinMbps**tek bir parametresini kullanır. Eşleşmiyorsa, kaynağa yönelik oluşturma veya güncelleştirme [reddedilir](../concepts/effects.md#deny).
+Bu ilke tanımı, Express Route Circuit kaynağının bant genişliği ayarını onaylanmış değerlerden birine yapılandırıp yapılandırmadığını kontrol etmek için tek bir parametre, **listOfBandwidthinMbps**kullanır. Eşleşmiyorsa, oluşturma veya kaynağa güncelleştirme [reddedilir.](../concepts/effects.md#deny)
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json":::
 
@@ -40,11 +40,11 @@ Bu ilke tanımı, Express Route bağlantı hattı ' nın bant genişliği ayarı
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="6-12":::
 
-İlke tanımının bu bölümünde, **listOfBandwidthinMbps** parametresi bir _dizi_ olarak tanımlanır ve kullanımı için bir açıklama sağlanır. Bir _dizi_olarak eşleşmesi için birden çok değer vardır.
+İlke tanımının bu bölümünde, **listOfBandwidthinMbps** parametresi bir _dizi_ olarak tanımlanır ve kullanımı için bir açıklama sağlanır. Bir _dizi_olarak, eşleşecek birden çok değeri vardır.
 
-Daha sonra parametresi **Policyrule. If** bloğunda kullanılır. Bir _dizi_ parametresi olarak, bir _dizi_
-[koşulunun](../concepts/definition-structure.md#conditions)veya **notın** 'in kullanılması gerekir.
-Burada, tanımlı değerlerden biri olarak **ServiceProvider. bandwidthInMbps** diğer adı kullanılır.
+Parametre daha sonra **rule.if** bloğunda kullanılır. _Dizi_ parametresi olarak, bir _dizi_
+[koşulu](../concepts/definition-structure.md#conditions)'s **veya** **notIn** kullanılmalıdır.
+Burada, tanımlanan değerlerden biri olarak **serviceProvider.bandwidthInMbps** takma karşı kullanılır.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::
 

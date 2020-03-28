@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile devralarak LMS | Microsoft Docs'
-description: Azure Active Directory ve LMS devralarak arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Absorb LMS ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Absorb LMS arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,270 +17,270 @@ ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 936de76d1117c56f5a9dec48b51f33b9afa15351
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107511"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Öğretici: Devralarak LMS ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Öğretici: Absorb LMS ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile devralarak LMS tümleştirme konusunda bilgi edinin.
-Azure AD ile devralarak LMS tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, Absorb LMS'yi Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Absorb LMS'yi Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Devralarak LMS erişimi, Azure AD'de kontrol edebilirsiniz.
-* Azure AD hesaplarına otomatik olarak (çoklu oturum açma) devralarak LMS için oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Emer LMS erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla LMS'yi (Tek Oturum Açma) Absorbe etmek için otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile devralarak LMS yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Absorb LMS ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* LMS tek oturum açma etkin abonelik Al
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* LMS tek oturum açma özellikli aboneliği emer
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* LMS destekler devralarak **IDP** tarafından başlatılan
+* Absorb LMS **IDP'nin** başlattığı SSO'ya destek veriyor
 
-## <a name="adding-absorb-lms-from-the-gallery"></a>Galeriden devralarak LMS ekleme
+## <a name="adding-absorb-lms-from-the-gallery"></a>Galeriden Absorb LMS ekleme
 
-Azure AD'de devralarak LMS tümleştirmesini yapılandırmak için devralarak LMS Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Absorb LMS'nin Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Absorb LMS eklemeniz gerekir.
 
-**Galeriden devralarak LMS eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Absorb LMS eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **devralarak LMS**seçin **devralarak LMS** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusunda, **LmS'i Absorbe**yazın, sonuç panelinden **LMS'yi emer'i** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuçlar listesinde LMS Al](common/search-new-app.png)
+     ![Sonuçlar listesindeLMS'yi absorbe edin](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma adlı bir test kullanıcı tabanlı LMS devralarak test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısı ve LMS devralarak ilgili kullanıcı arasında bir bağlantı ilişki kurulması gerekir.
+Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Absorb LMS ile yapılandırıp test emebilirsiniz.
+Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile Absorb LMS'deki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma devralarak LMS ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD oturumaçmayı Absorb LMS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Devralarak LMS çoklu oturum açmayı yapılandırma](#configure-absorb-lms-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Devralarak LMS test kullanıcısı oluşturma](#create-absorb-lms-test-user)**  - kullanıcı Azure AD gösterimini bağlı devralarak LMS Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[LMS Tek Oturum](#configure-absorb-lms-single-sign-on)** Açma'yı yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Absorb LMS test kullanıcısını oluşturun](#create-absorb-lms-test-user)** - Kullanıcının Azure AD gösterimine bağlı Absorb LMS'deki Britta Simon'ın bir örneğine sahip olmak için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma devralarak LMS ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD oturum açma işlemlerini Absorb LMS ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **devralarak LMS** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. Azure [portalında,](https://portal.azure.com/) **Emer LMS** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için düğmeyi **temel SAML yapılandırma** iletişim.
+4. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** düğmesini tıklatın.
 
-    ![LMS etki alanı ve URL'ler tek oturum açma bilgilerini al](common/idp-intiated.png)
+    ![LMS Etki Alanı ve URL'leri tek oturum açma bilgilerini emer](common/idp-intiated.png)
 
-    Kullanıyorsanız **devralarak 5 - kullanıcı Arabirimi** şu yapılandırmayı kullanın:
+    Absorb 5 **kullanıyorsanız - UI** aşağıdaki yapılandırmayı kullanın:
 
-    a. İçinde **tanımlayıcı** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://company.myabsorb.com/account/saml`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://company.myabsorb.com/account/saml`
 
-    b. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://company.myabsorb.com/account/saml`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://company.myabsorb.com/account/saml`
 
-    Kullanıyorsanız **devralarak 5 - yeni Learner deneyimi** şu yapılandırmayı kullanın:
+    Absorb 5 **kullanıyorsanız - Yeni Öğrenci Deneyimi** aşağıdaki yapılandırmayı kullanın:
 
-    a. İçinde **tanımlayıcı** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
-    b. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek tanımlayıcısı ve yanıt URL'si ile güncelleştirin. İlgili kişi [devralarak LMS istemci Destek ekibine](https://support.absorblms.com/hc/) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [Absorb LMS İstemci destek ekibine](https://support.absorblms.com/hc/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. Varsayılan öznitelikler listesinde aşağıdaki ekran görüntüsünde gösterilmektedir oysa **NameIdentifier** ile eşlenmiş **user.userprincipalname**.
+5. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir, **nameidentifier** **user.userprincipalname**ile eşlenir gibi.
 
     ![image](common/edit-attribute.png)
 
-6. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **Federasyon meta veri XML**  bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. Üzerinde **devralarak LMS kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+7. **LMS'yi Hazm'ı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-absorb-lms-single-sign-on"></a>Yapılandırma LMS çoklu oturum açma Al
+### <a name="configure-absorb-lms-single-sign-on"></a>Configure Absorb LMS Tek İşaret-On
 
-1. Yeni bir web tarayıcısı penceresinde devralarak LMS şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Yeni bir web tarayıcısı penceresinde, yönetici olarak Absorb LMS şirket sitenizde oturum açın.
 
-2. Seçin **hesabı** sağ üst köşedeki düğmesi.
+2. Sağ üstteki **Hesap** düğmesini seçin.
 
-    ![Hesap Ekle düğmesine](./media/absorblms-tutorial/1.png)
+    ![Hesap düğmesi](./media/absorblms-tutorial/1.png)
 
-3. Hesap bölmesinde seçin **Portal ayarları**.
+3. Hesap bölmesinde Portal **Ayarları'nı**seçin.
 
-    ![Portal ayarları bağlantısı](./media/absorblms-tutorial/2.png)
+    ![Portal Ayarları bağlantısı](./media/absorblms-tutorial/2.png)
 
-4. Seçin **SSO ayarlarını Yönet** sekmesi.
+4. **SSO Ayarlarını Yönet** sekmesini seçin.
 
-    ![Kullanıcılar sekmesine](./media/absorblms-tutorial/managesso.png)
+    ![Kullanıcılar sekmesi](./media/absorblms-tutorial/managesso.png)
 
-5. Üzerinde **yönetme çoklu oturum açma ayarları** sayfasında, aşağıdakileri yapın:
+5. Tek **Oturum Açma Ayarlarını Yönet** sayfasında aşağıdakileri yapın:
 
-    ![Çoklu oturum açma Yapılandırması sayfası](./media/absorblms-tutorial/settings.png)
+    ![Tek oturum açma yapılandırma sayfası](./media/absorblms-tutorial/settings.png)
 
-    a. İçinde **adı** metin kutusuna, Azure AD Market SSO gibi bir ad girin.
+    a. **Ad** metin kutusuna Azure AD Marketplace SSO gibi adı girin.
 
-    b. Seçin **SAML** olarak bir **yöntemi**.
+    b. **Yöntem**olarak **SAML'yi** seçin.
 
-    c. Azure portalından indirdiğiniz sertifika Not Defteri'nde açın. Kaldırma **---BEGIN CERTIFICATE---** ve **---END CERTIFICATE---** etiketler. Ardından **anahtar** kutusunda, kalan içeriği yapıştırın.
+    c. Not Defteri'nde, Azure portalından indirdiğiniz sertifikayı açın. **---BEGIN SERTIFIKAsI---** ve **---SON BELGEsI---** etiketlerini kaldırın. Ardından, **Anahtar** kutusuna kalan içeriği yapıştırın.
 
-    d. İçinde **modu** kutusunda **kimlik sağlayıcısı tarafından başlatılan**.
+    d. **Mod** kutusunda, **Başlatılan Kimlik Sağlayıcı'yı**seçin.
 
-    e. İçinde **ID özelliği** kutusunda, Azure AD'de kullanıcı tanımlayıcısı yapılandırdığınız öznitelik seçin. Örneğin, varsa *NameIdentifier* Azure AD'de seçin seçili **Username**.
+    e. Id **Özelliği** kutusunda, Azure AD'de kullanıcı tanımlayıcısı olarak yapılandırdığınız özniteliği seçin. Örneğin, Azure AD'de *nameidentifier seçiliyse,* **Kullanıcı Adı'nı**seçin.
 
-    f. Seçin **Sha256** olarak bir **imza türü**.
+    f. **İmza Türü**olarak **Sha256'yı** seçin.
 
-    g. İçinde **oturum açma URL'si** kutusu, yapıştırma **kullanıcı erişim URL'SİNDEN** uygulamanın gelen **özellikleri** Azure Portalı'nın sayfasında.
+    g. Giriş **URL** kutusuna, Uygulamanın **Azure** portalının Özellikler sayfasından Kullanıcı **Erişimi URL'sini** yapıştırın.
 
-    h. İçinde **oturum kapatma URL'si**, yapıştırın **oturum kapatma URL'si** kopyalama değeri **yapılandırma oturum açma** Azure portal'ın penceresi.
+    h. Oturum **Açma**URL'sinde, Azure portalının **Yapılandırma oturum** açma penceresinden kopyaladığınız Oturum **Açma URL** değerini yapıştırın.
 
-    i. İki durumlu **otomatik olarak yeniden yönlendirme** için **üzerinde**.
+    i. Otomatik **Olarak** **Açık'a**Yönlendirin.
 
-6. Seçin **kaydedin.**
+6. **Kaydet'i seçin.**
 
-    ![Yalnızca izin SSO Oturum Aç/Kapat](./media/absorblms-tutorial/save.png)
+    ![Tek İzin SSO Giriş geçiş](./media/absorblms-tutorial/save.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü `brittasimon\@yourcompanydomain.extension`  
+    b. Kullanıcı **adı** alanı türünde`brittasimon\@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, LMS etkisini azaltmak için erişim izni verdiğinizde, Azure çoklu oturum açma kullanılacak Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın Em'l-EkSS'e erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **devralarak LMS**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **LMS'yi Emer'i**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde yazın ve **devralarak LMS**.
+2. Uygulamalar listesinde, **LMS'yi Absorbe**yazın ve seçin.
 
-    ![Uygulamalar listesinde devralarak LMS bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Absorb LMS bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-absorb-lms-test-user"></a>Devralarak LMS test kullanıcısı oluşturma
+### <a name="create-absorb-lms-test-user"></a>Absorb LMS test kullanıcısını oluşturun
 
-Azure AD kullanıcılarının LMS etkisini azaltmak için oturum açmak bunlar devralarak LMS ayarlanması gerekir. Devralarak LMS söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının LmS'i Absorbe'de oturum açabilmesi için, EmIle LMS'de ayarlanması gerekir. Absorb LMS durumunda, sağlama manuel bir görevdir.
 
-**Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları gerçekleştirin:**
+**Kullanıcı sağlama yapılandırmak için aşağıdaki adımları gerçekleştirin:**
 
-1. Devralarak LMS şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Yönetici olarak Absorb LMS şirket sitenizde oturum açın.
 
-2. İçinde **kullanıcılar** bölmesinde **kullanıcılar**.
+2. **Kullanıcılar** **bölmesinde, Kullanıcılar'ı**seçin.
 
-    ![Kullanıcıları bağlantısı](./media/absorblms-tutorial/absorblms_userssub.png)
+    ![Kullanıcılar bağlantısı](./media/absorblms-tutorial/absorblms_userssub.png)
 
-3. Seçin **kullanıcı** sekmesi.
+3. **Kullanıcı** sekmesini seçin.
 
-    ![Yeni Ekle aşağı açılan listesi](./media/absorblms-tutorial/absorblms_createuser.png)
+    ![Yeni açılır liste ekle](./media/absorblms-tutorial/absorblms_createuser.png)
 
-4. Üzerinde **Kullanıcı Ekle** sayfasında, aşağıdakileri yapın:
+4. Kullanıcı **Ekle** sayfasında aşağıdakileri yapın:
 
     ![Kullanıcı Ekle sayfası](./media/absorblms-tutorial/user.png)
 
-    a. İçinde **ad** ad gibi yazın **Britta**.
+    a. Ad **kutusuna,** **Britta**gibi ilk adı yazın.
 
-    b. İçinde **Soyadı** Soyadı gibi yazın **Simon**.
+    b. **Soyadı** kutusuna, **Simon**gibi soyadını yazın.
 
-    c. İçinde **kullanıcıadı** gibi tam bir ad yazın **Britta Simon**.
+    c. Kullanıcı **adı** **kutusuna Britta Simon**gibi tam bir ad yazın.
 
-    d. İçinde **parola** kutusu, kullanıcı parolayı girin.
+    d. **Parola** kutusuna kullanıcı parolasını yazın.
 
-    e. İçinde **parolayı onayla** kutusuna, parolayı yeniden yazın.
+    e. **Parolayı Onayla** kutusuna, parolayı yeniden yazın.
 
-    f. Ayarlama **etkindir** geç **etkin**.
+    f. **Etkin** geçişini **Active**olarak ayarlayın.
 
-5. Seçin **kaydedin.**
+5. **Kaydet'i seçin.**
 
-    ![Yalnızca izin SSO Oturum Aç/Kapat](./media/absorblms-tutorial/save.png)
+    ![Tek İzin SSO Giriş geçiş](./media/absorblms-tutorial/save.png)
 
     > [!NOTE]
-    > Varsayılan olarak, kullanıcı sağlama SSO etkin değil. Bu özelliği etkinleştirmek müşteri isterse, en fazla belirtildiği gibi ayarlamak sahip oldukları [bu](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning) belgeleri. Ayrıca kullanıcı Provisioing yalnızca kullanılabilir olmadığını unutmayın **devralarak 5 - yeni Learner deneyimi** ile ACS URL -`https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    > Varsayılan olarak, SSO'da Kullanıcı Sağlama etkinleştirmez. Müşteri bu özelliği etkinleştirmek istiyorsa, [bu](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning) belgede belirtildiği gibi ayarlamaları gerekir. Ayrıca, Kullanıcı Provisioing'in yalnızca **Absorb 5 - ACS** URL ile Yeni Öğrenci Deneyimi-`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli devralarak LMS kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama LMS etkisini azaltmak için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Emer LMS döşemesini tıklattığınızda, SSO'yu kurduğunuz Absorb LMS'de otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

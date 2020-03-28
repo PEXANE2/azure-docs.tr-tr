@@ -1,56 +1,56 @@
 ---
-title: Öğretici-Azure işlevine göre kapsayıcı grubunu tetikleme
-description: Azure Container Instances oluşturmayı otomatikleştirmek için HTTP ile tetiklenen, sunucusuz bir PowerShell işlevi oluşturma
+title: Öğretici - Azure işlevine göre kapsayıcı grubunu tetikleme
+description: Azure kapsayıcı örneklerinin oluşturulmasını otomatikleştirmek için HTTP tarafından tetiklenen, sunucusuz bir PowerShell işlevi oluşturun
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
 ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78331034"
 ---
-# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Öğretici: bir kapsayıcı grubu oluşturmak için HTTP ile tetiklenen bir Azure işlevi kullanın
+# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Öğretici: Kapsayıcı grubu oluşturmak için HTTP tarafından tetiklenen bir Azure işlevi kullanın
 
-[Azure işlevleri](../azure-functions/functions-overview.md) , bir http isteği, süreölçer veya bir Azure depolama kuyruğundaki ileti gibi çeşitli olaylara yanıt olarak komut dosyalarını veya kodu çalıştıran sunucusuz bir bilgi işlem hizmetidir.
+[Azure İşlevler,](../azure-functions/functions-overview.md) Azure Depolama kuyruğundaki HTTP isteği, zamanlayıcı veya ileti gibi çeşitli olaylara yanıt olarak komut dosyalarını veya kodu çalıştırabilen sunucusuz bir bilgi işlem hizmetidir.
 
-Bu öğreticide, bir HTTP isteği alan ve bir [kapsayıcı grubunun](container-instances-container-groups.md)dağıtımını tetikleyen bir Azure işlevi oluşturacaksınız. Bu örnekte, Azure Container Instances ' de otomatik olarak kaynak oluşturmak için Azure Işlevleri kullanmanın temelleri gösterilmektedir. Daha karmaşık senaryolar veya diğer olay tetikleyicileri için örneği değiştirin veya genişletin. 
+Bu öğreticide, bir HTTP isteği alan ve bir kapsayıcı [grubunun](container-instances-container-groups.md)dağıtımını tetikleyen bir Azure işlevi oluşturursunuz. Bu örnek, Azure Kapsayıcı Örnekleri'nde otomatik olarak kaynak oluşturmak için Azure İşlevlerini kullanmanın temellerini gösterir. Daha karmaşık senaryolar veya diğer olay tetikleyicileri için örneği değiştirin veya genişletin. 
 
 Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Temel HTTP ile tetiklenen bir PowerShell işlevi oluşturmak için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) ile Visual Studio Code kullanın.
-> * İşlev uygulamasında bir kimliği etkinleştirin ve Azure kaynakları oluşturmak için izin verin.
-> * Tek kapsayıcılı bir kapsayıcı grubunun dağıtımını otomatik hale getirmek için PowerShell işlevini değiştirin ve yeniden yayımlayın.
+> * TEMEL HTTP tetiklenen PowerShell işlevi oluşturmak için [Azure İşlevler uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) ile Visual Studio Kodunu kullanın.
+> * İşlev uygulamasında bir kimlik etkinleştirin ve azure kaynakları oluşturma izni verin.
+> * Tek kapsayıcı kapsayıcı grubunun dağıtımını otomatikleştirmek için PowerShell işlevini değiştirin ve yeniden yayımlayın.
 > * Kapsayıcının HTTP tarafından tetiklenen dağıtımını doğrulayın.
 
 > [!IMPORTANT]
-> Azure Işlevleri için PowerShell Şu anda önizlemededir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Azure İşlevler için PowerShell şu anda önizlemede. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-İşletim sisteminde Azure Işlevleri ile Visual Studio Code yüklemek ve kullanmak için bkz. Önkoşullar için [Azure 'da ilk Işlevinizi oluşturma](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) .
+İşletim sisteminizdeki Azure İşlevleri ile Visual Studio Code'u yüklemek ve kullanmak için ön koşullar için [Azure'daki ilk işlevinizi oluşturun'](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) e bakın.
 
-Bu makaledeki bazı adımlarda Azure CLı kullanılır. Bu adımları tamamlayabilmeniz için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+Bu makaledeki bazı adımlar Azure CLI'yi kullanır. Bu adımları tamamlamak için Azure Bulut Kabuğu'nu veya Azure CLI'nin yerel yüklemesini kullanabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
-## <a name="create-a-basic-powershell-function"></a>Temel PowerShell işlevi oluşturma
+## <a name="create-a-basic-powershell-function"></a>Temel bir PowerShell işlevi oluşturun
 
-HTTP tetikleyici şablonunu kullanarak bir PowerShell işlevi oluşturmak için [Azure 'da Ilk PowerShell işlevinizi oluşturma](../azure-functions/functions-create-first-function-powershell.md) bölümündeki adımları izleyin. Varsayılan Azure işlevi adı **Httptrigger**' i kullanın. Hızlı başlangıçta gösterildiği gibi, işlevi yerel olarak test edin ve projeyi Azure 'da bir işlev uygulamasında yayımlayın. Bu örnek, bir metin dizesi döndüren temel bir HTTP ile tetiklenen işlevdir. Bu makaledeki sonraki adımlarda, işlevi bir kapsayıcı grubu oluşturacak şekilde değiştirirsiniz.
+HTTP Trigger şablonunu kullanarak bir PowerShell işlevi oluşturmak için [Azure'daki ilk PowerShell işlevinizi oluştur'daki](../azure-functions/functions-create-first-function-powershell.md) adımları izleyin. Varsayılan Azure işlev adını kullanın **HttpTrigger**. Hızlı başlatmada gösterildiği gibi, işlevi yerel olarak sınlayın ve projeyi Azure'daki bir işlev uygulamasında yayımlayın. Bu örnek, metin dizesi döndüren temel bir HTTP tetiklenen işlevdir. Bu makalenin sonraki adımlarında, bir kapsayıcı grubu oluşturmak için işlevi değiştirirsiniz.
 
-Bu makalede, projeyi, işlev uygulaması adına (Ayrıca *myfunctionapp*) göre otomatik olarak adlandırılan bir Azure Kaynak grubundaki *myfunctionapp*adını kullanarak yayımladığınızı varsaymaktadır. Daha sonraki adımlarda benzersiz işlev uygulamanızın adını ve kaynak grubu adını değiştirin.
+Bu makalede, işlevi uygulama adına (ayrıca *myfunctionapp)* göre otomatik olarak adlandırılmış bir Azure kaynak grubunda myfunctionapp adını kullanarak projeyi yayımladığınızvarsakabul *edilmiştir.* Daha sonraki adımlarda benzersiz işlev uygulama adınızı ve kaynak grup adınızı değiştirin.
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>İşlev uygulamasında Azure tarafından yönetilen bir kimliği etkinleştirme
 
-Artık işlev uygulamanızda sistem tarafından atanan bir [yönetilen kimliği](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) etkinleştirin. Uygulamayı çalıştıran PowerShell ana bilgisayarı, bu kimlik kullanılarak otomatik olarak kimlik doğrulaması yapabilir, böylece işlevleri, kimliğin erişim izni verilen Azure hizmetleri üzerinde işlem yapmasını sağlar. Bu öğreticide, işlev uygulamasının kaynak grubunda kaynak oluşturmak için yönetilen kimlik izinlerini verirsiniz. 
+Artık işlev uygulamanızda sistem tarafından atanmış yönetilen bir [kimliği](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) etkinleştirin. Uygulamayı çalıştıran PowerShell ana bilgisayar, bu kimliği kullanarak otomatik olarak kimlik doğrulaması yapabilir ve işlevlerin kimliğin erişildiği Azure hizmetlerinde işlem yapmasını sağlar. Bu eğitimde, işlev uygulamasının kaynak grubunda kaynak oluşturmak için yönetilen kimlik izinleri verirsiniz. 
 
-Önce, işlev uygulamasının kaynak grubunun KIMLIĞINI almak ve bir ortam değişkeninde depolamak için [az Group Show][az-group-show] komutunu kullanın. Bu örnek, bir bash kabuğu 'nda komutunu çalıştırdığınız varsayılır.
+Önce işlev uygulamasının kaynak grubunun kimliğini almak ve bir ortam değişkeninde depolamak için [az grup göster][az-group-show] komutunu kullanın. Bu örnek, komutu Bir Bash kabuğunda çalıştırdığınızı varsayar.
 
 ```azurecli
 rgID=$(az group show --name myfunctionapp --query id --output tsv)
 ```
 
-İşlev uygulamasına yerel bir kimlik atamak ve kaynak grubuna katkıda bulunan bir rol atamak için [az functionapp Identity App Assign][az-functionapp-identity-app-assign] ' i çalıştırın. Bu rol, kimliğin kaynak grubunda kapsayıcı grupları gibi ek kaynaklar oluşturmasına izin verir.
+İşlev uygulamasına yerel bir kimlik atamak ve kaynak grubuna katkıda bulunan bir rol atamak için [az functionapp kimlik uygulamasını][az-functionapp-identity-app-assign] çalıştırın. Bu rol, kimliğin kaynak grubundaki kapsayıcı grupları gibi ek kaynaklar oluşturmasına olanak tanır.
 
 ```azurecli
 az functionapp identity assign \
@@ -59,9 +59,9 @@ az functionapp identity assign \
   --role contributor --scope $rgID
 ```
 
-## <a name="modify-httptrigger-function"></a>HttpTrigger işlevini Değiştir
+## <a name="modify-httptrigger-function"></a>HttpTrigger işlevini değiştirin
 
-Bir kapsayıcı grubu oluşturmak için **Httptrigger** işlevinin PowerShell kodunu değiştirin. İşlevin dosya `run.ps1`, aşağıdaki kod bloğunu bulun. Bu kod, işlev URL 'sinde sorgu dizesi olarak geçirilmemişse bir ad değeri görüntüler:
+Bir kapsayıcı grubu oluşturmak için **HttpTrigger** işlevi için PowerShell kodunu değiştirin. İşlev `run.ps1` için dosyada, aşağıdaki kod bloğunu bulun. Bu kod, işlev URL'sinde sorgu dizesi olarak geçirilirse, bir ad değeri görüntüler:
 
 ```powershell
 [...]
@@ -72,7 +72,7 @@ if ($name) {
 [...]
 ```
 
-Bu kodu aşağıdaki örnek blokla değiştirin. Burada, sorgu dizesinde bir ad değeri geçirilirse, [New-AzContainerGroup][new-azcontainergroup] cmdlet 'ini kullanarak bir kapsayıcı grubunu adlandırmak ve oluşturmak için kullanılır. *Myfunctionapp* kaynak grubu adını, işlev uygulamanızın kaynak grubu adıyla değiştirdiğinizden emin olun:
+Bu kodu aşağıdaki örnek blokla değiştirin. Burada, sorgu dizesinde bir ad değeri geçirilirse, [Yeni-AzContainerGroup][new-azcontainergroup] cmdlet'ini kullanarak bir kapsayıcı grubu adlandırmak ve oluşturmak için kullanılır. Kaynak grubu adı *myfunctionapp'ı* işlev uygulamanız için kaynak grubunun adı ile değiştirdiğinizden emin olun:
 
 ```powershell
 [...]
@@ -87,45 +87,45 @@ if ($name) {
 [...]
 ```
 
-Bu örnek, `alpine` görüntüsünü çalıştıran tek bir kapsayıcı örneğinden oluşan bir kapsayıcı grubu oluşturur. Kapsayıcı tek bir `echo` komutu çalıştırır ve sonra sonlanır. Gerçek dünyada bir örnekte, toplu iş çalıştırmak için bir veya daha fazla kapsayıcı grubu oluşturulmasını tetikleyebilirsiniz.
+Bu örnek, `alpine` görüntüyü çalıştıran tek bir kapsayıcı örneğinden oluşan bir kapsayıcı grubu oluşturur. Kapsayıcı tek `echo` bir komutu çalıştırır ve sonra sona erer. Gerçek bir örnekte, toplu iş çalıştırmak için bir veya daha fazla kapsayıcı grubu oluşturulmasını tetikleyebilirsiniz.
  
-## <a name="test-function-app-locally"></a>İşlev uygulamasını yerel olarak test etme
+## <a name="test-function-app-locally"></a>Test fonksiyonu uygulaması yerel
 
-İşlev uygulaması projesini Azure 'a yeniden yayımlayabilmeniz için işlevin düzgün şekilde yerel olarak çalıştığından emin olun. [PowerShell hızlı başlangıç](../azure-functions/functions-create-first-function-powershell.md)bölümünde gösterildiği gibi, PowerShell betiğine bir yerel kesme noktası ve yukarıdaki `Wait-Debugger` bir çağrı ekleyin. Hata ayıklama Kılavuzu için bkz. [PowerShell Azure işlevleri 'nde yerel olarak hata ayıklama](../azure-functions/functions-debug-powershell-local.md).
+İşlev uygulaması projesini Azure'da yeniden yayımlamadan önce işlevin yerel olarak çalıştığından emin olun. [PowerShell quickstart'ta](../azure-functions/functions-create-first-function-powershell.md)gösterildiği gibi, PowerShell komut dosyasına yerel `Wait-Debugger` bir kesme noktası ve üzerine bir çağrı ekleyin. Hata ayıklama kılavuzu için, [hata ayıklama PowerShell Azure Fonksiyonlarını yerel olarak](../azure-functions/functions-debug-powershell-local.md)görün.
 
 
-## <a name="republish-azure-function-app"></a>Azure işlev uygulamasını yeniden yayımlama
+## <a name="republish-azure-function-app"></a>Azure işlev uygulamasını yeniden yayımla
 
-İşlevin yerel bilgisayarınızda düzgün çalıştığını doğruladıktan sonra, projeyi Azure 'da var olan işlev uygulamasına yeniden yayımlamanız zaman alır.
+İşlevin yerel bilgisayarınızda doğru çalıştığını doğruladıktan sonra, projeyi Azure'daki mevcut işlev uygulamasında yeniden yayımlama zamanı dır.
 
 > [!NOTE]
-> İşlevlerinizi Azure 'da yayımlamadan önce `Wait-Debugger` yapılan çağrıları kaldırmayı unutmayın.
+> İşlevlerinizi Azure'da yayımlamadan önce yapılan `Wait-Debugger` çağrıları kaldırmayı unutmayın.
 
-1. Visual Studio Code ' de, komut paleti ' ni açın. Arama yapın ve `Azure Functions: Deploy to function app...`seçin.
-1. Zip ve dağıtım için geçerli çalışma klasörünü seçin.
-1. Aboneliği ve ardından mevcut işlev uygulamasının adını (*myfunctionapp*) seçin. Önceki dağıtımın üzerine yazmak istediğinizi onaylayın.
+1. Visual Studio Code'da Komut Paleti'ni açın. Arama ve `Azure Functions: Deploy to function app...`seçin.
+1. Zip ve dağıtmak için geçerli çalışma klasörünü seçin.
+1. Aboneliği ve ardından varolan işlev uygulamasının *(myfunctionapp)* adını seçin. Önceki dağıtımın üzerine yazmak istediğinizi onaylayın.
 
-İşlev uygulamanız oluşturulduktan sonra bir bildirim görüntülenir ve dağıtım paketi uygulanır. Güncelleştirdiğiniz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin.
+İşlev uygulamanız oluşturulduktan sonra bir bildirim görüntülenir ve dağıtım paketi uygulanır. Güncellediğiniz Azure kaynakları da dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **Çıktıyı** Görüntüle'yi seçin.
 
-## <a name="run-the-function-in-azure"></a>İşlevi Azure 'da çalıştırma
+## <a name="run-the-function-in-azure"></a>İşlevi Azure'da çalıştırın
 
-Dağıtım başarıyla tamamlandıktan sonra işlev URL 'sini alın. Örneğin, **Httptrigger** işlev URL 'sini kopyalamak veya [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function)işlev URL 'Sini almak için Visual Studio Code 'daki **Azure: Functions** alanını kullanın.
+Dağıtım başarıyla tamamlandıktan sonra işlev URL'sini alın. Örneğin, **HttpTrigger** işlev URL'sini kopyalamak veya [Azure portalındaki](../azure-functions/functions-create-first-azure-function.md#test-the-function)işlev URL'sini almak için Visual Studio kodundaki **Azure: İşlevler** alanını kullanın.
 
-İşlev URL 'SI benzersiz bir kod içerir ve şu biçimdedir:
+İşlev URL'si benzersiz bir kod içerir ve formdandır:
 
 ```
 https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==
 ```
 
-### <a name="run-function-without-passing-a-name"></a>İşlevi bir ad geçirmeden Çalıştır
+### <a name="run-function-without-passing-a-name"></a>Bir ad geçmeden işlevi çalıştırma
 
-İlk test olarak, `curl` komutunu çalıştırın ve işlev URL 'sini bir `name` sorgu dizesi eklemeden geçirin. İşlevinizin benzersiz kodunu eklediğinizden emin olun.
+İlk test olarak, `curl` komutu çalıştırın ve bir `name` sorgu dizesini eklemeden işlev URL'sini geçirin. İşlevinizin benzersiz kodunu eklediğinden emin olun.
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
 ```
 
-İşlev 400 durum kodunu ve metin `Please pass a name on the query string or in the request body`döndürür:
+Fonksiyon durum kodu 400 ve `Please pass a name on the query string or in the request body`metin döndürür:
 
 ```
 [...]
@@ -144,15 +144,15 @@ curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF
 Please pass a name on the query string or in the request body.
 ```
 
-### <a name="run-function-and-pass-the-name-of-a-container-group"></a>İşlevi Çalıştır ve bir kapsayıcı grubunun adını geçir
+### <a name="run-function-and-pass-the-name-of-a-container-group"></a>İşlev çalıştırın ve bir kapsayıcı grubunun adını geçirin
 
-Şimdi bir kapsayıcı grubunun adını (*mycontainergroup*) bir sorgu dizesi olarak ekleyerek `curl` komutunu çalıştırın `&name=mycontainergroup`:
+Şimdi bir `curl` kapsayıcı grubunun adını *(mycontainergroup)* sorgu dizesi `&name=mycontainergroup`olarak ekleyerek komutu çalıştırın:
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"
 ```
 
-İşlev 200 durum kodunu döndürür ve kapsayıcı grubunun oluşturulmasını tetikler:
+İşlev durum kodu 200'ü döndürür ve kapsayıcı grubunun oluşturulmasını tetikler:
 
 ```
 [...]
@@ -171,7 +171,7 @@ curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF
 Started container group mycontainergroup
 ```
 
-Kapsayıcının [az Container logs][az-container-logs] komutuyla çalıştığını doğrulayın:
+Kapsayıcının az kapsayıcı [günlükleri][az-container-logs] komutuyla çalıştırdığını doğrulayın:
 
 ```azurecli
 az container logs --resource-group myfunctionapp --name mycontainergroup
@@ -185,7 +185,7 @@ Hello from an Azure container instance triggered by an Azure function
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide oluşturduğunuz kaynakları artık gerekmiyorsa, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [az Group Delete][az-group-delete] komutunu çalıştırabilirsiniz. Bu komut, oluşturduğunuz kapsayıcı kayıt defterinin yanı sıra çalışan kapsayıcıyı ve tüm ilişkili kaynakları siler.
+Bu eğitimde oluşturduğunuz kaynaklardan herhangi biri artık ihtiyacınız yoksa, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [az grubu silme][az-group-delete] komutunu çalıştırabilirsiniz. Bu komut, oluşturduğunuz kapsayıcı kayıt defterinin yanı sıra çalışan kapsayıcıyı ve tüm ilişkili kaynakları siler.
 
 ```azurecli-interactive
 az group delete --name myfunctionapp
@@ -193,17 +193,17 @@ az group delete --name myfunctionapp
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir HTTP isteği alan ve bir kapsayıcı grubunun dağıtımını tetikleyen bir Azure işlevi oluşturdunuz. Şunları öğrendiniz:
+Bu eğitimde, bir HTTP isteği alan ve bir kapsayıcı grubunun dağıtımını tetikleyen bir Azure işlevi oluşturdunuz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Temel HTTP ile tetiklenen bir PowerShell işlevi oluşturmak için Azure Işlevleri Uzantısı ile Visual Studio Code kullanın.
-> * İşlev uygulamasında bir kimliği etkinleştirin ve Azure kaynakları oluşturmak için izin verin.
-> * Tek kapsayıcılı bir kapsayıcı grubunun dağıtımını otomatik hale getirmek için PowerShell işlev kodunu değiştirin.
+> * TEMEL HTTP tetiklenen PowerShell işlevi oluşturmak için Azure İşlevler uzantısı ile Visual Studio Kodunu kullanın.
+> * İşlev uygulamasında bir kimlik etkinleştirin ve azure kaynakları oluşturma izni verin.
+> * Tek kapsayıcı kapsayıcı grubunun dağıtımını otomatikleştirmek için PowerShell işlev kodunu değiştirin.
 > * Kapsayıcının HTTP tarafından tetiklenen dağıtımını doğrulayın.
 
-Kapsayıcılı bir işi başlatma ve izlemeye yönelik ayrıntılı bir örnek için bkz. PowerShell Azure Işlevleri ve Azure Container Instances ve birlikte gelen [kod örneği](https://github.com/anthonychu/functions-powershell-run-aci) [Ile olay temelli sunucusuz kapsayıcılar](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b) .
+Kapsayıcı laştırılmış bir işi başlatmak ve izlemek için ayrıntılı bir örnek için, [PowerShell Azure İşlevlerini ve Azure Kapsayıcı Örneklerini içeren Etkinlik Odaklı Sunucusuz Kapsayıcılar ve](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b) beraberindeki [kod örneğine](https://github.com/anthonychu/functions-powershell-run-aci)bakın.
 
-Azure işlevleri oluşturma ve bir işlevler projesi yayımlama hakkında ayrıntılı yönergeler için bkz. [Azure işlevleri belgeleri](/azure/azure-functions/) . 
+Azure işlevleri oluşturma ve bir işlev projesi yayınlama hakkında ayrıntılı kılavuz için [Azure İşlevleri belgelerine](/azure/azure-functions/) bakın. 
 
 <!-- IMAGES -->
 

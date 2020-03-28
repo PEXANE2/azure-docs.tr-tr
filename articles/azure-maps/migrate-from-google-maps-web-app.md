@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Google Maps 'tan bir Web uygulaması geçirme | Microsoft Azure haritaları"
-description: Bir Web uygulamasını Google Maps 'tan Microsoft Azure Maps 'a geçirme.
+title: "Öğretici: Google Haritalar'dan bir web uygulamasını geçirin | Microsoft Azure Haritaları"
+description: Bir web uygulamasını Google Haritalar'dan Microsoft Azure Haritalar'a nasıl geçirebilirsiniz?
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
@@ -10,84 +10,84 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77914111"
 ---
-# <a name="migrate-a-web-app-from-google-maps"></a>Google Maps 'tan bir Web uygulaması geçirme
+# <a name="migrate-a-web-app-from-google-maps"></a>Google Haritalar'dan bir web uygulamasını geçirme
 
-Google Maps kullanan çoğu Web uygulaması Google Maps v3 JavaScript SDK 'sını kullanıyor. Azure Haritalar Web SDK 'Sı, geçirilecek Azure tabanlı uygun SDK 'dir. Azure Haritalar Web SDK 'Sı, etkileşimli haritaları kendi içerikleriyle ve Imagery ile özelleştirmenizi sağlar. Uygulamanızı hem Web 'de hem de mobil uygulamalarda çalıştırabilirsiniz. Bu denetimde büyük veri kümelerini yüksek performansla oluşturmanızı sağlayan WebGL bileşeni kullanılmaktadır. JavaScript veya TypeScript kullanarak bu SDK ile geliştirin.
+Google Haritalar'ı kullanan çoğu web uygulaması Google Maps V3 JavaScript SDK'yı kullanır. Azure Haritalar Web SDK, geçiş yapmak için uygun Azure tabanlı SDK'dır. Azure Haritalar Web SDK, etkileşimli haritaları kendi içeriğinizle ve görsellerinizle özelleştirmenize olanak tanır. Uygulamanızı hem web'de hem de mobil uygulamalarda çalıştırabilirsiniz. Bu denetimde büyük veri kümelerini yüksek performansla oluşturmanızı sağlayan WebGL bileşeni kullanılmaktadır. JavaScript veya TypeScript kullanarak bu SDK ile geliştirin.
 
-Var olan bir Web uygulamasını geçiriyorsanız, bir açık kaynak eşleme denetim kitaplığı kullanıp kullanmın olup olmadığını kontrol edin. Açık kaynak eşleme denetim kitaplığı örnekleri şunlardır: Cesium, leaflet ve Openkatmanları. Bir açık kaynak eşleme denetim kitaplığı kullandığından ve Azure Maps web SDK 'sını kullanmak istemediğinizde bile uygulamanızı geçirebilirsiniz. Böyle bir durumda, uygulamanızı Azure Maps kutucuk hizmetlerine ([yol kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [uydu kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) bağlayın. Aşağıda, yaygın olarak kullanılan bazı açık kaynaklı harita denetim kitaplıklarında Azure maps kullanma hakkında ayrıntılı bilgi verilmiştir.
+Varolan bir web uygulamasını geçirerek geçirin, açık kaynak kodlu bir harita denetim kitaplığı kullanıp kullanmayacağından emin olanın. Açık kaynak harita denetim kitaplığı örnekleri şunlardır: Sezyum, Broşür ve OpenLayers. Açık kaynak kodlu harita denetim kitaplığı kullansa ve Azure Haritalar Web SDK'sını kullanmak istemeseniz bile uygulamanızı yine de geçirebilirsiniz. Bu durumda, uygulamanızı Azure Haritalar döşeme hizmetlerine[(yol kutucukuydu](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [kutucukları)](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)bağlayın. Azure Haritalar'ın yaygın olarak kullanılan bazı açık kaynak harita denetim kitaplıklarında nasıl kullanılacağı nasıI kullanılacağına ilişkin aşağıdaki noktalar ayrıntılı olarak açıklanmıştır.
 
-- Cesium-Web için 3B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [belgeleri](https://cesiumjs.org/)
-- Leaflet – Web için hafif 2B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [belgeleri](https://leafletjs.com/)
-- Openkatmanlar-Web için projeksiyonları destekleyen bir 2B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [belgeleri](https://openlayers.org/)
+- Sezyum - Web için bir 3D harita kontrolü. [Kod örnek](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Belgeler](https://cesiumjs.org/)
+- Broşür – Web için hafif 2B harita kontrolü. [Kod örnek](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Belgeler](https://leafletjs.com/)
+- OpenLayers - Web için projeksiyonları destekleyen bir 2B harita denetimi. [Kod örnek](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Belgeler](https://openlayers.org/)
 
-## <a name="key-features-support"></a>Anahtar özellikleri desteği
+## <a name="key-features-support"></a>Temel özellikler desteği
 
-Tabloda, Google Maps v3 JavaScript SDK 'sindeki temel API özellikleri ve Azure Maps web SDK 'sında desteklenen API özelliği listelenmiştir.
+Tablo, Google Haritalar V3 JavaScript SDK'daki temel API özelliklerini ve Azure Haritalar Web SDK'sında desteklenen API özelliğini listeler.
 
-| Google Haritalar özelliği     | Azure Maps web SDK desteği |
+| Google Haritalar özelliği     | Azure Haritalar Web SDK desteği |
 |-------------------------|:--------------------------:|
-| İmleçleri                 | ✓                          |
-| İşaretleyici Kümelemesi       | ✓                          |
-| Polylines & çokgenler    | ✓                          |
+| İşaretler                 | ✓                          |
+| İşaretçi kümeleme       | ✓                          |
+| Çokgenler & Çokgenler    | ✓                          |
 | Veri katmanları             | ✓                          |
-| Zemin Yerpaylaşımları         | ✓                          |
+| Zemin Kaplamaları         | ✓                          |
 | Isı haritaları               | ✓                          |
-| Döşeme katmanları             | ✓                          |
-| KML katmanı               | ✓                          |
+| Kiremit Katmanları             | ✓                          |
+| KML Katmanı               | ✓                          |
 | Çizim araçları           | ✓                          |
 | Geocoder hizmeti        | ✓                          |
-| Yönergeler hizmeti      | ✓                          |
-| Uzaklık matrisi hizmeti | ✓                          |
-| Yükseltme hizmeti       | Planlandı                    |
+| Yol tarifi hizmeti      | ✓                          |
+| Mesafe Matrisi hizmeti | ✓                          |
+| Yükseklik hizmeti       | Planlandı                    |
 
-## <a name="notable-differences-in-the-web-sdks"></a>Web SDK 'lerinde önemli farklılıklar
+## <a name="notable-differences-in-the-web-sdks"></a>Web SDK'larında önemli farklar
 
-Aşağıda, Google Maps ve Azure Maps web SDK 'Ları arasındaki bazı önemli farklılıklar aşağıda verilmiştir:
+Aşağıda, Google Haritalar ve Azure Haritalar Web SK'ları arasındaki bazı önemli farklar şunlardır:
 
-- Azure Maps web SDK 'sına erişmek için barındırılan bir uç nokta sağlamaya ek olarak, bir NPM paketi mevcuttur. Web SDK paketini uygulamalara ekleyin. Daha fazla bilgi için bu [belgelere](how-to-use-map-control.md)bakın. Bu paket TypeScript tanımlarını da içerir.
-- Önce Azure haritalar 'da Map sınıfının bir örneğini oluşturmanız gerekir. Harita ile programlı bir şekilde etkileşimde bulunmak için haritalar `ready` veya `load` olayının tetiklenmesi için bekleyin. Bu sipariş, tüm harita kaynaklarının yüklenmiş ve erişilmeye hazırsa emin olmanızı sağlar.
-- Her iki platformda de temel haritalar için benzer bir döşeme sistemi kullanılır. Google Maps 'teki Kutucuklar, Dimension 'da 256 pikseldir; Ancak, Azure haritalar 'daki kutucuklar boyut olarak 512 pikseldir. Azure haritalar 'da Google Maps olarak aynı harita görünümünü almak için, Google Maps 'ın yakınlaştırma düzeyini Azure haritalar 'da bir sayı kadar çıkarın.
-- Google Maps 'daki koordinatlar "enlem, Boylam" olarak adlandırılır, Azure Maps ise "boylam, enlem" kullanır. Azure haritalar biçimi, en fazla GıS platformundan sonra gelen standart `[x, y]`hizalanır.
-- Azure Haritalar Web SDK 'sindeki şekiller GeoJSON şemasına dayalıdır. Yardımcı sınıflar, [ *Atlas. Data* ad alanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest)aracılığıyla sunulur. Ayrıca Atlas de vardır [ *. Şekil*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) sınıfı. Bu sınıfı, verileri bağlanabilir şekilde güncelleştirmeyi ve bakımını kolaylaştırmak için GeoJSON nesnelerini kaydırmak üzere kullanın.
-- Azure haritalarındaki koordinatlar konum nesneleri olarak tanımlanır. Bir koordinat `[longitude,latitude]`biçimde sayı dizisi olarak belirtilir. Ya da yeni Atlas. Data. Position (Boylam, Enlem) kullanılarak belirtilir.
+- Azure Haritalar Web SDK'sına erişmek için barındırılan bir bitiş noktası sağlamanın yanı sıra, bir NPM paketi de mevcuttur. Web SDK paketini uygulamalara gömün. Daha fazla bilgi için bu [belgelere](how-to-use-map-control.md)bakın. Bu paket, TypeScript tanımlarını da içerir.
+- Öncelikle Azure Haritalar'da Harita sınıfının bir örneğini oluşturmanız gerekir. Haritayla programlı olarak etkileşime girmeden önce haritaların `ready` veya `load` etkinliğin ateşlemesini bekleyin. Bu sipariş, tüm harita kaynaklarının yüklenmesini ve erişilmeye hazır olmasını sağlar.
+- Her iki platform da temel haritalar için benzer bir döşeme sistemi kullanır. Google Haritalar'daki karolar 256 piksel boyutundadır; ancak Azure Haritalar'daki kutucuklar 512 piksel boyutundadır. Azure Haritalar'da Google Haritalar ile aynı harita görünümünü elde etmek için, Google Haritalar yakınlaştırma düzeyini Azure Haritalar'da bir numaraya kadar çıkarın.
+- Google Haritalar'daki koordinatlar "enlem, boylam" olarak adlandırılırken, Azure Haritalar "boylam,enlem" kullanır. Azure Haritalar biçimi, çoğu GIS platformu tarafından izlenen standartla `[x, y]`hizalanır.
+- Azure Haritalar Web SDK'daki şekiller GeoJSON şemasına dayanır. Yardımcı sınıflar [ *atlas.data* ad alanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest)üzerinden ortaya çıkarır. Bir de [*atlas var. Şekil*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) sınıfı. GeoJSON nesnelerini sarmak, verilerin bağlanabilir şekilde güncelleştirilip korunmasını kolaylaştırmak için bu sınıfı kullanın.
+- Azure Haritalar'daki koordinatlar Konum nesneleri olarak tanımlanır. Koordinat, biçimdeki `[longitude,latitude]`bir sayı dizisi olarak belirtilir. Veya, yeni atlas.data.Position (boylam, enlem) kullanılarak belirtilir.
     > [!TIP]
-    > Konum sınıfı, "enlem, Boylam" biçiminde olan koordinatları içeri aktarmaya yönelik statik bir yardımcı yönteme sahiptir. [Atlas. Data. Position. fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) yöntemi genellikle Google Maps kodundaki `new google.maps.LatLng` yöntemiyle değiştirilebilir.
-- Haritaya eklenen her bir şekil üzerinde stil bilgilerini belirtmek yerine, Azure Maps stilleri verilerden ayırır. Veriler bir veri kaynağında depolanır ve işleme katmanlarına bağlanır. Azure haritalar kodu, verileri işlemek için veri kaynaklarını kullanır. Bu yaklaşım, gelişmiş performans avantajı sağlar. Ayrıca, birçok katman, iş mantığının katman stili seçeneklerine eklenebileceği veri tabanlı stillendirme desteği sağlar. Bu destek, tek tek şekillerin, şekil içinde tanımlanan özelliklere göre bir katman içinde nasıl işleneceğini değiştirir.
+    > Position sınıfı, "enlem, boylam" biçiminde olan koordinatları almak için statik bir yardımcı yöntemi vardır. [Atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) yöntemi genellikle Google Haritalar `new google.maps.LatLng` kodundaki yöntemle değiştirilebilir.
+- Azure Haritalar, haritaya eklenen her şekil için stil bilgilerini belirtmek yerine stilleri verilerden ayırır. Veriler bir veri kaynaklarında depolanır ve işleme katmanlarına bağlanır. Azure Haritalar kodu verileri işlemek için veri kaynaklarını kullanır. Bu yaklaşım gelişmiş performans avantajı sağlar. Ayrıca, birçok katman, iş mantığının katman stili seçeneklerine eklenebileceği veri tabanlı stili destekler. Bu destek, şekilde tanımlanan özelliklere göre tek tek şekillerin katman içinde nasıl işlenir olduğunu değiştirir.
 
-## <a name="web-sdk-side-by-side-examples"></a>Web SDK yan yana örnekleri
+## <a name="web-sdk-side-by-side-examples"></a>Web SDK yan yana örnekler
 
-Bu koleksiyonda her platform için kod örnekleri bulunur ve her örnek ortak kullanım durumunu içerir. Web uygulamanızı Google Maps v3 JavaScript SDK 'dan Azure Maps web SDK 'sına geçirmenize yardımcı olmak üzere tasarlanmıştır. Web uygulamalarıyla ilgili kod örnekleri JavaScript 'te verilmiştir. Ancak Azure Maps, bir [NPM modülü](how-to-use-map-control.md)aracılığıyla ek bir seçenek olarak TypeScript tanımları da sağlar.
+Bu koleksiyonda her platform için kod örnekleri vardır ve her örnek ortak bir kullanım örneğini kapsar. Web uygulamanızı Google Haritalar V3 JavaScript SDK'dan Azure Haritalar Web SDK'sına geçirmenize yardımcı olmak için tasarlanmıştır. Web uygulamalarıyla ilgili kod örnekleri JavaScript'te verilmiştir. Ancak, Azure Haritalar, [NPM modülü](how-to-use-map-control.md)aracılığıyla ek seçenek olarak TypeScript tanımlarını da sağlar.
 
 ### <a name="load-a-map"></a>Harita yükleme
 
-Her iki SDK da bir eşlemeyi yüklemek için aynı adımlara sahiptir:
+Her iki SDK'nın da harita yüklemek için aynı adımları vardır:
 
-- Map SDK 'sına bir başvuru ekleyin.
-- Sayfanın gövdesine bir `div` etiketi ekleyerek harita için bir yer tutucu görevi görür.
+- Harita SDK'ya bir başvuru ekleyin.
+- Harita `div` için yer tutucu olarak hareket edecek sayfanın gövdesine bir etiket ekleyin.
 - Sayfa yüklendiğinde çağrılan bir JavaScript işlevi oluşturun.
-- Karşılık gelen eşleme sınıfının bir örneğini oluşturun.
+- İlgili harita sınıfının bir örneğini oluşturun.
 
-**Bazı önemli farklılıklar**
+**Bazı önemli farklar**
 
-- Google Maps, API 'nin betik başvurusunda bir hesap anahtarının belirtilmesini gerektirir. Azure haritalar için kimlik doğrulama kimlik bilgileri, Map sınıfının seçenekleri olarak belirtilir. Bu kimlik bilgisi bir abonelik anahtarı veya Azure Active Directory bilgileri olabilir.
-- Google Maps API 'nin betik başvurusunda bir geri çağırma işlevi kabul eder, bu, eşlemeyi yüklemek için bir başlatma işlevi çağırmak için kullanılır. Azure haritalar ile sayfanın OnLoad olayı kullanılmalıdır.
-- Haritanın işlenebileceği `div` öğesine başvurulduğunda, Azure Maps 'daki `Map` sınıfı, yalnızca Google Maps bir `HTMLElement` nesnesi gerektirdiğinde `id` değeri gerektirir.
-- Azure haritalarındaki Koordinatlar, `[longitude, latitude]`biçiminde basit bir sayı dizisi olarak belirtibilen konum nesneleri olarak tanımlanır.
-- Azure haritalar 'daki yakınlaştırma düzeyi, Google Maps 'taki yakınlaştırma düzeyinden bir düzey daha düşüktür. Bu tutarsızlık, iki platformun döşeme sistem boyutlarındaki farkın farkından kaynaklanır.
-- Azure haritalar harita tuvaline hiçbir gezinti denetimi eklemez. Bu nedenle, varsayılan olarak haritada yakınlaştırma düğmeleri ve harita stili düğmeleri yoktur. Ancak harita stili seçici, yakınlaştırma düğmeleri, pusula ya da döndürme denetimi ve bir aralıklı denetim eklemek için denetim seçenekleri mevcuttur.
-- Harita örneğinin `ready` olayını izlemek için Azure Maps 'a bir olay işleyicisi eklenir. Bu olay, eşleme WebGL bağlamını ve gerekli tüm kaynakları yüklemeyi tamamladığında harekete geçmeyecektir. Bu olay işleyicisine haritanın yüklenmesi tamamlandıktan sonra çalıştırmak istediğiniz herhangi bir kodu ekleyin.
+- Google haritalar, API'nin komut dosyası referansında bir hesap anahtarının belirtilmesini gerektirir. Azure Haritalar için kimlik doğrulama kimlik bilgileri, harita sınıfının seçenekleri olarak belirtilir. Bu kimlik bilgisi bir abonelik anahtarı veya Azure Etkin Dizin bilgileri olabilir.
+- Google Haritalar, api'nin komut dosyası referansında, haritayı yüklemek için bir başlatma işlevi çağırmak için kullanılan bir geri arama işlevini kabul eder. Azure Haritalar'da, sayfanın yük olayı kullanılmalıdır.
+- Haritanın `div` oluşturulacağı öğeye başvururken, Azure Haritalar'daki `Map` sınıf yalnızca `id` Google Haritalar'da `HTMLElement` bir nesne gerektirirken değeri gerektirir.
+- Azure Haritalar'daki koordinatlar, biçimdeki `[longitude, latitude]`basit bir sayı dizisi olarak belirtilebilen Konum nesneleri olarak tanımlanır.
+- Azure Haritalar'daki yakınlaştırma düzeyi, Google Haritalar'daki yakınlaştırma düzeyinden bir kat daha düşüktür. Bu tutarsızlık, iki platformun döşeme sisteminin boyutlarındaki farktan kaynaklanmasıdır.
+- Azure Haritalar, harita tuvaline herhangi bir gezinti denetimi eklemez. Bu nedenle, varsayılan olarak, bir haritanın yakınlaştırma düğmeleri ve harita stili düğmeleri yoktur. Ancak, harita stili seçici, yakınlaştırma düğmeleri, pusula veya döndürme kontrolü ve bir adım denetimi eklemek için kontrol seçenekleri vardır.
+- Harita örneğinin `ready` olayını izlemek için Azure Haritalar'a bir olay işleyicisi eklenir. Bu olay, harita WebGL bağlamını ve gerekli tüm kaynakları yüklemeyi bitirdiğinde ateşlenir. Bu olay işleyicisine, harita yüklemeyi tamamladıktan sonra çalıştırmak istediğiniz kodu ekleyin.
 
-Aşağıdaki temel örneklerde, New York üzerinde ortalanmış bir harita yüklemek için Google haritaları kullanılmaktadır. Boylam:-73,985, Enlem: 40,747 ve eşleme, 12 ' nin yakınlaştırma düzeyidir.
+Aşağıdaki temel örnekler, koordinatlarda New York üzerinde ortalanmış bir harita yüklemek için Google Haritalar'ı kullanır. Boylam: -73.985, enlem: 40.747 ve harita 12 zoom düzeyindedir.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Bir konumdan ortalanmış ve yakınlaştırılmış bir Google Map görüntüleme.
+Bir konum üzerinde ortalanmış ve yakınlaştırılmış bir Google Haritası görüntüleyin.
 
 ```html
 <!DOCTYPE html>
@@ -118,15 +118,15 @@ Bir konumdan ortalanmış ve yakınlaştırılmış bir Google Map görüntülem
 </html>
 ```
 
-Bu kodun bir tarayıcıda çalıştırılması, aşağıdaki görüntü gibi görünen bir eşlem görüntüler:
+Bu kodu bir tarayıcıda çalıştırmak, aşağıdaki resme benzeyen bir harita görüntüler:
 
 <center>
 
-Basit Google Maps ![](media/migrate-google-maps-web-app/simple-google-map.png)</center>
+![Basit Google Haritalar](media/migrate-google-maps-web-app/simple-google-map.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Harita stili denetimi ve yakınlaştırma düğmeleriyle birlikte Azure Maps 'ta aynı görünümle bir harita yükleyin.
+Bir harita stili denetimi ve yakınlaştırma düğmeleriyle birlikte Azure Haritalar'da aynı görünüme sahip bir harita yükleyin.
 
 ```html
 <!DOCTYPE html>
@@ -177,49 +177,49 @@ Harita stili denetimi ve yakınlaştırma düğmeleriyle birlikte Azure Maps 'ta
 </html>
 ```
 
-Bu kodun bir tarayıcıda çalıştırılması, aşağıdaki görüntü gibi görünen bir eşlem görüntüler:
+Bu kodu bir tarayıcıda çalıştırmak, aşağıdaki resme benzeyen bir harita görüntüler:
 
 <center>
 
-![basit Azure Maps](media/migrate-google-maps-web-app/simple-azure-maps.png)</center>
+![Basit Azure Haritaları](media/migrate-google-maps-web-app/simple-azure-maps.png)</center>
 
-Bir Web uygulamasında Azure Maps harita denetimini ayarlama ve kullanma hakkında ayrıntılı bilgi edinmek için [buraya](how-to-use-map-control.md)tıklayın.
+Azure Haritalar harita denetiminin nasıl ayarlanıp kullanılacağıyla ilgili ayrıntılı belgeleri [buraya](how-to-use-map-control.md)tıklayarak bir web uygulamasında bulun.
 
 > [!NOTE]
-> Google Maps 'tan farklı olarak, Azure Maps haritanın yüklenmesi için bir başlangıç merkezi ve yakınlaştırma düzeyi gerektirmez. Bu bilgiler eşleme yüklenirken sağlanmazsa, Azure Maps kullanıcının şehrini belirlemeyi dener. Haritayı buraya ortalayın ve yakınlaştırın.
+> Azure Haritalar, Google Haritalar'ın aksine, haritayı yüklemek için başlangıç merkezi ve yakınlaştırma düzeyi gerektirmez. Bu bilgiler haritayı yüklerken sağlanmazsa, Azure haritaları kullanıcının şehrini belirlemeye çalışır. Haritayı oraya merkezip yakınlaştıracak.
 
 **Ek kaynaklar:**
 
-- Azure haritalar, [burada](map-add-controls.md)gösterildiği gibi harita görünümünü döndürme ve ele döndürme için de gezinti denetimleri sağlar.
+- Azure Haritalar, [burada](map-add-controls.md)belgelendikçe harita görünümünü döndürmek ve oluşturmak için navigasyon denetimleri de sağlar.
 
 ### <a name="localizing-the-map"></a>Haritayı yerelleştirme
 
-Hedef kitleniz birden çok ülkede yayıldığında veya farklı dillerde konuşabilçalışıyorsa, yerelleştirme önemlidir.
+Hedef kitleniz birden fazla ülkeye yayılmışsa veya farklı diller konuşuyorsa, yerelleştirme önemlidir.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Google Maps 'ı yerelleştirmek için dil ve bölge parametreleri ekleyin.
+Google Haritalar'ı yerelleştirmek için dil ve bölge parametreleri ekleyin.
 
 ```html
 <script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js?callback=initMap&key=[api_key]& language=[language_code]&region=[region_code]" async defer></script>
 ```
 
-Dilde "fr-FR" olarak ayarlanmış Google Maps örneği aşağıda verilmiştir.
+Burada "fr-FR" olarak ayarlanmış dil ile Google Maps bir örnektir.
 
 <center>
 
-![Google Maps yerelleştirme](media/migrate-google-maps-web-app/google-maps-localization.png)</center>
+![Google Haritalar yerelleştirme](media/migrate-google-maps-web-app/google-maps-localization.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Azure haritalar haritanın dilini ve bölgesel görünümünü ayarlamanın iki farklı yolunu sağlar. İlk seçenek, bu bilgileri Global *Atlas* ad alanına eklemektir. Bu, uygulamanızdaki tüm harita denetim örneklerinin bu ayarlara göre varsayılan olarak oluşmasına neden olur. Aşağıdaki dil, dili Fransızca ("fr-FR") ve bölgesel görünüm olarak "Auto" olarak ayarlar:
+Azure Haritalar, haritanın dilini ve bölgesel görünümünü ayarlamanın iki farklı yolunu sağlar. İlk seçenek, bu bilgileri global *atlas* ad alanına eklemektir. Uygulamanızdaki tüm harita denetimi örneklerinin bu ayarları varsayılan olarak karşılanmasına neden olur. Aşağıdaki dil Fransızca ("fr-FR") ve "otomatik" için bölgesel görünümü ayarlar:
 
 ```javascript
 atlas.setLanguage('fr-FR');
 atlas.setView('auto');
 ```
 
-İkinci seçenek, eşleme yüklenirken bu bilgileri eşleme seçeneklerine iletmektir. Böyle:
+İkinci seçenek, haritayı yüklerken bu bilgileri harita seçeneklerine aktarmaktır. Böyle:
 
 ```javascript
 map = new atlas.Map('myMap', {
@@ -234,26 +234,26 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> Azure haritalar ile aynı sayfada farklı dil ve bölge ayarlarıyla birden çok eşleme örneği yüklemek mümkündür. Bu ayarların, yüklendikten sonra haritada güncelleştirilmesi de mümkündür. 
+> Azure Haritalar ile aynı sayfadaki birden çok harita örneğini farklı dil ve bölge ayarlarıyla yüklemek mümkündür. Bu ayarları yüklendikten sonra haritada da güncelleştirmek mümkündür. 
 
-Azure haritalar 'da [desteklenen dillerin](supported-languages.md) ayrıntılı bir listesini bulun.
+Azure Haritalar'da [desteklenen dillerin](supported-languages.md) ayrıntılı bir listesini bulun.
 
-Aşağıda dil "fr" olarak ayarlanan ve Kullanıcı bölgesinin "fr-FR" olarak ayarlandığı bir Azure Maps örneği verilmiştir.
+Burada, "fr" olarak ayarlanmış dil ve kullanıcı bölgesi "fr-FR" olarak ayarlanmış Azure Haritalar örneği verilmiştir.
 
 <center>
 
-![Azure Maps yerelleştirme](media/migrate-google-maps-web-app/azure-maps-localization.png)</center>
+![Azure Haritalar yerelleştirme](media/migrate-google-maps-web-app/azure-maps-localization.png)</center>
 
-### <a name="setting-the-map-view"></a>Harita görünümü ayarlanıyor
+### <a name="setting-the-map-view"></a>Harita görünümünü ayarlama
 
-Hem Azure hem de Google Maps içindeki dinamik haritalar, programlı olarak yeni coğrafi konumlara taşınabilir. Bunu yapmak için JavaScript 'te uygun işlevleri çağırın. Örneklerde, haritada uydu havadan görüntüleme, Haritayı bir konum üzerine ortalama gösterme ve Google Maps 'ta yakınlaştırma düzeyini 15 olarak değiştirme işlemlerinin nasıl yapılacağı gösterilmektedir. Aşağıdaki konum koordinatları kullanılır: Boylam:-111,0225 ve Enlem: 35,0272.
+Hem Azure hem de Google Haritalar'daki dinamik haritalar programlı olarak yeni coğrafi konumlara taşınabilir. Bunu yapmak için JavaScript'teki uygun işlevleri arayın. Örnekler, haritanın uydu havadan görüntülerini nasıl göstereceğini, haritayı bir konuma nasıl ortalayıp, Google Haritalar'da yakınlaştırma düzeyini 15'e nasıl değiştireceğini gösterir. Aşağıdaki konum koordinatları kullanılır: boylam: -111.0225 ve enlem: 35.0272.
 
 > [!NOTE]
-> Azure haritalar, daha büyük bir 512 piksellik kutucuk kullandığında, Google Maps, boyutlarda 256 piksel olan kutucukları kullanır. Bu nedenle Azure haritalar, Google Maps ile aynı harita alanını yüklemek için daha az sayıda ağ isteği gerektirir. Tile Pyramids 'in harita denetimlerinde çalışma yöntemi nedeniyle, Google Maps 'ta kullanılan yakınlaştırma düzeyini Azure haritalar kullanırken bir sayı ile çıkarmanız gerekir. Bu aritmetik işlem, Azure haritalarındaki daha büyük kutucukların Google Haritalar 'da olduğu gibi aynı harita alanını işlemesini sağlar.
+> Google Haritalar boyutları 256 piksel, Azure Haritalar ise daha büyük bir 512 piksel kutucuk kullanır. Bu nedenle, Azure Haritalar, Google Haritalar ile aynı harita alanını yüklemek için daha az sayıda ağ isteği gerektirir. Harita denetimlerinde kiremit piramitlerinin çalışma şekli nedeniyle, Azure Haritalar'ı kullanırken Google Haritalar'da kullanılan yakınlaştırma düzeyini bir numaraya çıkarmanız gerekir. Bu aritmetik işlem, Azure Haritalar'daki daha büyük döşemelerin Google Haritalar'dakiyle aynı harita alanını işlememesini sağlar,
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-`setOptions` yöntemi kullanarak Google Maps harita denetimini taşıyın. Bu yöntem haritanın merkezini ve yakınlaştırma düzeyini belirtmenize olanak tanır.
+Yöntemi kullanarak Google Haritalar `setOptions` harita denetimini taşıyın. Bu yöntem, haritanın merkezini ve yakınlaştırma düzeyini belirtmenizi sağlar.
 
 ```javascript
 map.setOptions({
@@ -265,11 +265,11 @@ map.setOptions({
 
 <center>
 
-![Google Maps kümesi görünümü](media/migrate-google-maps-web-app/google-maps-set-view.png)</center>
+![Google Haritalar görünümü ayarlı](media/migrate-google-maps-web-app/google-maps-set-view.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Azure haritalar 'da `setCamera` yöntemini kullanarak harita konumunu değiştirin ve `setStyle` yöntemini kullanarak harita stilini değiştirin. Azure haritalar 'daki koordinatlar "boylam, enlem" biçimindedir ve yakınlaştırma düzeyi değeri bir ile çıkarılır.
+Azure Haritalar'da, `setCamera` yöntemi kullanarak harita konumunu ve yöntemi `setStyle` kullanarak harita stilini değiştirin. Azure Haritalar'daki koordinatlar "boylam, enlem" biçimindedir ve zum düzeyi değeri bir kişi tarafından çıkarılır.
 
 ```javascript
 map.setCamera({
@@ -284,28 +284,28 @@ map.setStyle({
 
 <center>
 
-![Azure Maps kümesi görünümü](media/migrate-google-maps-web-app/azure-maps-set-view.jpeg)</center>
+![Azure Haritalar görünümü ayarlı](media/migrate-google-maps-web-app/azure-maps-set-view.jpeg)</center>
 
 **Ek kaynaklar:**
 
-- [Harita stili seçin](choose-map-style.md)
-- [Desteklenen harita stilleri](supported-map-styles.md)
+- [Harita stili seçme](choose-map-style.md)
+- [Desteklenen eşleme stilleri](supported-map-styles.md)
 
-### <a name="adding-a-marker"></a>İşaretleyici ekleme
+### <a name="adding-a-marker"></a>İşaretçi ekleme
 
-Azure haritalar 'da, bir noktada, bu noktada nokta verilerinin işlenebileceği birçok yol vardır:
+Azure Haritalar'da, nokta verilerinin haritada işlenmenin birden çok yolu vardır:
 
-- **HTML işaretçileri** : geleneksel DOM öğelerini kullanarak noktaları işler. HTML Işaretçileri sürüklemeyi destekler.
-- **Sembol katmanı** : noktaları WebGL bağlamı içinde bir simge veya metin ile işler.
-- **Kabarcık katmanı** : noktaları haritada daireler olarak işler. Dairelerin yarıçapı, verilerdeki özelliklere göre ölçeklendirilebilir.
+- **HTML İşaretleyiciler** – Geleneksel DOM öğelerini kullanarak noktaları işler. HTML İşaretçileri sürüklemeyi destekler.
+- **Sembol Katmanı** – WebGL bağlamında noktaları bir simge veya metinle işler.
+- **Kabarcık Katmanı** – Haritada noktaları daireler halinde işler. Dairelerin yarıçapları verilerdeki özelliklere göre ölçeklendirilebilir.
 
-Web GL bağlamı içindeki sembol katmanlarını ve kabarcık katmanlarını işleme. Her iki katman de Haritada büyük küme kümelerini işleyebilir. Bu katmanlar, verilerin bir veri kaynağında depolanmasını gerektirir. `ready` olayı tetiklendikten sonra veri kaynakları ve işleme katmanları haritaya eklenmelidir. HTML Işaretçileri, sayfada DOM öğeleri olarak işlenir ve bir veri kaynağı kullanmaz. Bir sayfada daha fazla DOM öğesi varsa, sayfa ne kadar yavaş olur. Bir haritada birkaç yüz noktasından fazlasını işliyorsa, bunun yerine işleme katmanlarından birini kullanmanız önerilir.
+WebGL bağlamında Sembol katmanlarını ve Kabarcık katmanlarını işle. Her iki katman da haritaüzerinde büyük nokta kümeleri işleyebilir. Bu katmanlar, verilerin bir veri kaynağında depolanmasını gerektirir. `ready` Olay ateşlendikten sonra veri kaynakları ve işleme katmanları haritaya eklenmelidir. HTML İşaretçileri sayfa içinde DOM öğesi olarak işlenir ve veri kaynağı kullanmaz. Bir sayfada ne kadar çok DOM öğesi ne kadar çok olursa, sayfa o kadar yavaş olur. Bir haritada birkaç yüzden fazla nokta işlettiyse, bunun yerine işleme katmanlarından birini kullanmanız önerilir.
 
-Bir etiket olarak bulunan 10 sayısıyla birlikte haritaya bir işaret ekleyelim. Boylam kullanın:-0,2 ve Enlem: 51,5.
+Etiket olarak 10 numaranın yer aldığı haritaya bir işaretçi ekleyelim. Boylam kullanın: -0.2 ve enlem: 51.5.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Google Maps ile `google.maps.Marker` sınıfını kullanarak haritaya işaretçiler ekleyin ve eşlemeyi seçeneklerden biri olarak belirtin.
+Google Haritalar'da, `google.maps.Marker` sınıfı kullanarak haritaya işaretçiler ekleyin ve haritayı seçeneklerden biri olarak belirtin.
 
 ```javascript
 //Create a marker and add it to the map.
@@ -318,11 +318,11 @@ var marker = new google.maps.Marker({
 
 <center>
 
-![Google Maps işaretleyici](media/migrate-google-maps-web-app/google-maps-marker.png)</center>
+![Google Haritalar işareti](media/migrate-google-maps-web-app/google-maps-marker.png)</center>
 
-**Sonra: HTML Işaretçileri kullanarak Azure Maps**
+**Sonra: HTML İşaretçileri kullanarak Azure Haritalar**
 
-Azure haritalar 'da, haritada bir nokta göstermek için HTML işaretçileri kullanın. HTML işaretçileri, yalnızca haritada az sayıda noktayı görüntülemesi gereken uygulamalar için önerilir. Bir HTML işaretleyicisi kullanmak için `atlas.HtmlMarker` sınıfının bir örneğini oluşturun. Metin ve konum seçeneklerini ayarlayın ve `map.markers.add` yöntemi kullanılarak işaretçiyi haritaya ekleyin.
+Azure Haritalar'da, haritada bir noktayı görüntülemek için HTML işaretçileri kullanın. Haritada yalnızca az sayıda nokta görüntülemesi gereken uygulamalar için HTML işaretçileri önerilir. HTML işaretçisi kullanmak için `atlas.HtmlMarker` sınıfın bir örneğini oluşturun. Metin ve konum seçeneklerini ayarlayın ve `map.markers.add` yöntemi kullanarak işaretçiyi eşmeye ekleyin.
 
 ```javascript
 //Create a HTML marker and add it to the map.
@@ -334,11 +334,11 @@ map.markers.add(new atlas.HtmlMarker({
 
 <center>
 
-Azure haritalar HTML işaretçisini ![](media/migrate-google-maps-web-app/azure-maps-html-marker.png)</center>
+![Azure Haritalar HTML işaretçisi](media/migrate-google-maps-web-app/azure-maps-html-marker.png)</center>
 
-**Sonra: bir sembol katmanı kullanarak Azure Maps**
+**Sonra: Sembol Katmanı kullanarak Azure Haritalar**
 
-Bir sembol katmanı için verileri bir veri kaynağına ekleyin. Veri kaynağını katmana iliştirin. Ayrıca, `ready` olay tetiklendikten sonra veri kaynağı ve katman haritaya eklenmelidir. Bir simgenin üzerinde benzersiz bir metin değeri işlemek için metin bilgilerinin, veri noktasının bir özelliği olarak depolanması gerekir. Özelliği katmanın `textField` seçeneğinde başvurulmalıdır. Bu yaklaşım, HTML işaretçilerini kullanmaktan biraz daha çalışır, ancak performansı daha iyi hale gelir.
+Sembol katmanı için verileri bir veri kaynağına ekleyin. Veri kaynağını katmana takın. Ayrıca, `ready` olay ateşlendikten sonra veri kaynağı ve katmanı haritaya eklenmelidir. Bir sembolün üzerinde benzersiz bir metin değeri işlemek için metin bilgilerinin veri noktasının bir özelliği olarak depolanması gerekir. Özellik katman seçeneğinde `textField` başvurulmalıdır. Bu yaklaşım HTML işaretçileri kullanarak biraz daha fazla iş, ancak daha iyi performans.
 
 ```html
 <!DOCTYPE html>
@@ -400,7 +400,7 @@ Bir sembol katmanı için verileri bir veri kaynağına ekleyin. Veri kaynağın
 
 <center>
 
-![Azure Maps sembol katmanını](media/migrate-google-maps-web-app/azure-maps-symbol-layer.png)</center>
+![Azure Haritalar sembol katmanı](media/migrate-google-maps-web-app/azure-maps-symbol-layer.png)</center>
 
 **Ek kaynaklar:**
 
@@ -408,25 +408,25 @@ Bir sembol katmanı için verileri bir veri kaynağına ekleyin. Veri kaynağın
 - [Sembol katmanı ekleme](map-add-pin.md)
 - [Kabarcık katmanı ekleme](map-add-bubble-layer.md)
 - [Küme noktası verileri](clustering-point-data-web-sdk.md)
-- [HTML Işaretçileri Ekle](map-add-custom-html.md)
-- [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+- [HTML İşaretleyicileri Ekle](map-add-custom-html.md)
+- [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)
 - [Sembol katmanı simgesi seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
 - [Sembol katmanı metin seçeneği](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
-- [HTML işaret sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
-- [HTML işaret seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-iot-typescript-latest)
+- [HTML işaretçi sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
+- [HTML işaretleyici seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-iot-typescript-latest)
 
-### <a name="adding-a-custom-marker"></a>Özel işaretleyici ekleme
+### <a name="adding-a-custom-marker"></a>Özel işaretçi ekleme
 
-Bir haritadaki noktaları temsil etmek için özel görüntüler kullanabilirsiniz. Aşağıdaki eşleme, haritada bir noktayı göstermek için özel bir görüntü kullanır. Nokta, Enlem: 51,5 ve Boylam:-0,2 ' de görüntülenir. Tutturucu, işaretin konumunu, raptiye simgesinin noktasının haritada doğru konuma göre hizalanmasını sağlayacak şekilde kaydırır.
+Noktaları haritada temsil etmek için Özel görseller kullanabilirsiniz. Aşağıdaki harita, haritada bir noktayı görüntülemek için özel bir resim kullanır. Nokta enlemde görüntülenir: 51.5 ve boylam: -0.2. Bağlantı işaretçinin konumunu dengeler, böylece retam simgesinin noktası haritadaki doğru konumla hizalanır.
 
 <center>
 
-sarı iğne görüntüsünü ![](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
-YLW\_iğne. png</center>
+![sarı pushpin görüntü](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
+ylw\_pushpin.png</center>
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Görüntüye `url` içeren bir `Icon` nesnesi belirterek özel bir işaretleyici oluşturun. İğne resminin noktasını haritadaki koordinatla hizalamak için bir `anchor` noktası belirtin. Google Maps 'daki tutturucu değeri görüntünün sol üst köşesine göre değişir.
+Görüntünün içini `url` içeren `Icon` bir nesne belirterek özel bir işaretçi oluşturun. Reşat görüntüsünün noktasını haritadaki koordinatla hizalamak için bir `anchor` nokta belirtin. Google Haritalar'daki bağlantı değeri, resmin sol üst köşesine göredir.
 
 ```javascript
 var marker = new google.maps.Marker({
@@ -441,14 +441,14 @@ var marker = new google.maps.Marker({
 
 <center>
 
-![Google Maps özel işaretleyici](media/migrate-google-maps-web-app/google-maps-custom-marker.png)</center>
+![Google Haritalar özel işaretçisi](media/migrate-google-maps-web-app/google-maps-custom-marker.png)</center>
 
-**Sonra: HTML Işaretçileri kullanarak Azure Maps**
+**Sonra: HTML İşaretçileri kullanarak Azure Haritalar**
 
-Bir HTML imini özelleştirmek için, `HTMLElement` `htmlContent` seçeneğine bir HTML `string` veya geçirin. Konum koordinatına göre işaretin göreli konumunu belirtmek için `anchor` seçeneğini kullanın. `anchor` seçeneğine, dokuz tanımlı başvuru noktalarından birini atayın. Bu tanımlı kapılar şunlardır: "Center", "top", "bottom", "left", "Right", "top-left", "top-right", "Bottom-left", "Bottom-right". İçerik varsayılan olarak HTML içeriğinin alt merkezine bağlanır. Google Maps 'tan kod geçirmeyi kolaylaştırmak için, `anchor` "üst-sol" olarak ayarlayın ve ardından Google Maps ' de kullanılan aynı uzaklığa sahip `pixelOffset` seçeneğini kullanın. Azure haritalar 'daki uzaklıklar, Google Maps 'taki uzakların ters yönünde taşınır. Bu nedenle, uzaklıkları eksi bir ile çarpın.
+BIR HTML işaretçisini özelleştirmek `string` `HTMLElement` için `htmlContent` bir HTML'yi veya işaretleyiciseçeneğine geçirin. İşaretçinin konum koordinatına göre göreli konumunu belirtmek için `anchor` seçeneği kullanın. Tanımlanan dokuz başvuru noktasından `anchor` birini seçene atayın. Bu tanımlanan noktalar şunlardır: "merkez", "üst", "alt", "sol", "sağ", "üst-sol", "üst-sağ", "alt-sol", "alt-sağ". İçerik varsayılan olarak html içeriğinin alt merkezine sabitlenir. Kodu Google Haritalar'dan geçirmeyi kolaylaştırmak için, `anchor` kodu "sol üstte" olarak `pixelOffset` ayarlayın ve ardından Google Haritalar'da kullanılan aynı ofset ile seçeneği kullanın. Azure Haritalar'daki uzaklıklar, Google Haritalar'daki uzaklıkların tersi yönde hareket eder. Yani, uzaklıkları eksi bir ile çarpın.
 
 > [!TIP]
-> Microsoft Edge 'de varsayılan sürükleme davranışını devre dışı bırakmak için, istenmeyen bir simge görüntüleyen HTML içeriğine bir stil olarak `pointer-events:none` ekleyin.
+> Microsoft `pointer-events:none` Edge'de istenmeyen bir simge görüntüleyecek varsayılan sürükleme davranışını devre dışı atmak için html içeriğine stil olarak ekleyin.
 
 ```javascript
 map.markers.add(new atlas.HtmlMarker({
@@ -461,11 +461,11 @@ map.markers.add(new atlas.HtmlMarker({
 
 <center>
 
-Azure Maps özel HTML işaretçisini ![](media/migrate-google-maps-web-app/azure-maps-custom-html-marker.png)</center>
+![Azure Haritalar özel HTML işaretçisi](media/migrate-google-maps-web-app/azure-maps-custom-html-marker.png)</center>
 
-**Sonra: bir sembol katmanı kullanarak Azure Maps**
+**Sonra: Sembol Katmanı kullanarak Azure Haritalar**
 
-Azure haritalar 'daki sembol katmanları, özel görüntüleri de destekler. İlk olarak, görüntüyü eşleme kaynaklarına yükleyin ve benzersiz bir KIMLIK ile atayın. Sembol katmanındaki görüntüye başvurun. Görüntüyü haritada doğru noktaya hizalamak için `offset` seçeneğini kullanın. Simgenin konum koordinatlarına göre göreli konumunu belirtmek için `anchor` seçeneğini kullanın. Dokuz tanımlı başvuru noktalarından birini kullanın. Bu noktaları şunlardır: "Center", "top", "bottom", "left", "Right", "top-left", "top-right", "Bottom-left", "Bottom-right". İçerik varsayılan olarak HTML içeriğinin alt merkezine bağlanır. Google Maps 'tan kod geçirmeyi kolaylaştırmak için, `anchor` "üst-sol" olarak ayarlayın ve ardından Google Maps ' de kullanılan aynı uzaklığa sahip `offset` seçeneğini kullanın. Azure haritalar 'daki uzaklıklar, Google Maps 'taki uzakların ters yönünde taşınır. Bu nedenle, uzaklıkları eksi bir ile çarpın.
+Azure Haritalar'daki sembol katmanları özel görüntüleri de destekler. İlk olarak, resmi harita kaynaklarına yükleyin ve benzersiz bir kimlikle atayın. Sembol katmanındaki resme başvurun. Görüntüyü `offset` haritadaki doğru noktaya hizalamak için seçeneği kullanın. Konum `anchor` koordinatlarına göre sembolün göreli konumunu belirtmek için seçeneği kullanın. Tanımlanan dokuz başvuru noktasından birini kullanın. Bu noktalar şunlardır: "merkez", "üst", "alt", "sol", "sağ", "üst-sol", "üst-sağ", "alt-sol", "alt-sol". İçerik varsayılan olarak html içeriğinin alt merkezine sabitlenir. Kodu Google Haritalar'dan geçirmeyi kolaylaştırmak için, `anchor` kodu "sol üstte" olarak `offset` ayarlayın ve ardından Google Haritalar'da kullanılan aynı ofset ile seçeneği kullanın. Azure Haritalar'daki uzaklıklar, Google Haritalar'daki uzaklıkların tersi yönde hareket eder. Yani, uzaklıkları eksi bir ile çarpın.
 
 ```html
 <!DOCTYPE html>
@@ -528,29 +528,29 @@ Azure haritalar 'daki sembol katmanları, özel görüntüleri de destekler. İl
 
 <center>
 
-![Azure Maps özel simge sembol katmanı](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</center>
+![Azure Haritalar özel simge simge katmanı](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</center>
 
 > [!TIP]
-> Gelişmiş özel noktaları işlemek için çoklu işleme katmanlarını birlikte kullanın. Örneğin, farklı renkli daireler üzerinde aynı simgeye sahip birden fazla Pushpin olmasını istediğinizi varsayalım. Her renk kaplama için bir dizi görüntü oluşturmak yerine, kabarcık katmanının üzerine bir sembol katmanı ekleyin. Pushpin 'in aynı veri kaynağına başvurması gerekir. Bu yaklaşım, farklı görüntülerin oluşturulması ve saklanması bakımından daha etkili olacaktır.
+> Gelişmiş özel noktaları işlemek için birden çok görüntüleme katmanını birlikte kullanın. Örneğin, farklı renkli dairelerüzerinde aynı simgeye sahip birden çok tokanız olmasını istediğinizi varsayalım. Her renk kaplaması için bir demet görüntü oluşturmak yerine, kabarcık katmanının üstüne bir sembol katmanı ekleyin. Pırburların aynı veri kaynağına başvurmasını iste. Bu yaklaşım, bir grup farklı görüntü oluşturmak ve korumaktan daha verimli olacaktır.
 
 **Ek kaynaklar:**
 
 - [Veri kaynağı oluşturma](create-data-source-web-sdk.md)
 - [Sembol katmanı ekleme](map-add-pin.md)
-- [HTML Işaretçileri Ekle](map-add-custom-html.md)
-- [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+- [HTML İşaretleyicileri Ekle](map-add-custom-html.md)
+- [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)
 - [Sembol katmanı simgesi seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
 - [Sembol katmanı metin seçeneği](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
-- [HTML işaret sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
-- [HTML işaret seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-iot-typescript-latest)
+- [HTML işaretçi sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
+- [HTML işaretleyici seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-iot-typescript-latest)
 
-### <a name="adding-a-polyline"></a>Çoklu çizgi ekleme
+### <a name="adding-a-polyline"></a>Polyline ekleme
 
-Harita üzerindeki bir çizgiyi veya yolu göstermek için çoklu çizgilerin çizgisini kullanın. Haritada kesikli bir çoklu çizgi oluşturalım.
+Haritada bir satırı veya yolu temsil etmek için çok çizgileri kullanın. Haritada kesik li bir poliline oluşturalım.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Çoklu çizgi sınıfı bir seçenek kümesini kabul eder. Çoklu çizginin `path` seçeneğinde koordinat dizisini geçirin.
+Polyline sınıfı bir seçenek kümesini kabul eder. Polyline `path` seçeneğinde bir dizi koordinat geçirin.
 
 ```javascript
 //Get the center of the map.
@@ -586,11 +586,11 @@ line.setMap(map);
 
 <center>
 
-![Google Maps çoklu çizgi](media/migrate-google-maps-web-app/google-maps-polyline.png)</center>
+![Google Haritalar polyline](media/migrate-google-maps-web-app/google-maps-polyline.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Polylines `LineString` veya `MultiLineString` nesneleri olarak adlandırılır. Bu nesneler bir veri kaynağına eklenebilir ve çizgi katmanı kullanılarak oluşturulabilir. Bir veri kaynağına `LineString` ekleyin, sonra veri kaynağını bir `LineLayer` eklemek için ekleyin.
+Çok çizgiler `LineString` denir `MultiLineString` veya nesneler. Bu nesneler bir veri kaynağına eklenebilir ve bir satır katmanı kullanılarak işlenebilir. Bir `LineString` veri kaynağına ekleyin, sonra veri `LineLayer` kaynağını işlemek için a'ya ekleyin.
 
 ```javascript
 //Get the center of the map.
@@ -617,21 +617,21 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 <center>
 
-![Azure Maps çoklu çizgi](media/migrate-google-maps-web-app/azure-maps-polyline.png)</center>
+![Azure Haritalar polyline](media/migrate-google-maps-web-app/azure-maps-polyline.png)</center>
 
 **Ek kaynaklar:**
 
 - [Haritaya satır ekleme](map-add-line-layer.md)
 - [Çizgi katmanı seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
-- [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+- [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>Çokgen ekleme
 
-Azure haritalar ve Google Maps, çokgenler için benzer destek sağlar. Çokgenler, haritadaki bir alanı temsil etmek için kullanılır. Aşağıdaki örneklerde haritanın orta koordinatına göre bir üçgen oluşturan bir çokgen oluşturma gösterilmektedir.
+Azure Haritalar ve Google Haritalar çokgenler için benzer destek sağlar. Çokgenler haritaüzerinde bir alanı temsil etmek için kullanılır. Aşağıdaki örnekler, haritanın merkez koordinatına dayalı bir üçgen oluşturan bir çokgenin nasıl oluşturulacak olduğunu gösterir.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Çokgen sınıfı bir seçenek kümesini kabul eder. Çokgenin `paths` seçeneğine bir dizi koordinat geçirin.
+Çokgen sınıfı bir dizi seçeneği kabul eder. Çokgen `paths` seçeneğine koordinatlar bir dizi geçirin.
 
 ```javascript
 //Get the center of the map.
@@ -656,11 +656,11 @@ polygon.setMap(map);
 
 <center>
 
-![Google Maps Çokgen](media/migrate-google-maps-web-app/google-maps-polygon.png)</center>
+![Google Haritalar çokgen](media/migrate-google-maps-web-app/google-maps-polygon.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Veri kaynağına bir `Polygon` veya `MultiPolygon` nesneleri ekleyin. Katman kullanarak nesneyi haritada işleme. Çokgen katmanını kullanarak bir çokgen alanını işleme. Ve bir çizgi katmanını kullanarak bir çokgen ana hattını işleme.
+Bir `Polygon` veri `MultiPolygon` kaynağına bir veya nesne ekleyin. Nesneyi katmanlar kullanarak haritada işle. Çokgen tabakası kullanarak çokgenin alanını işleyin. Ve, bir çizgi katmanı kullanarak çokgenin anahatını işleyin.
 
 ```javascript
 //Get the center of the map.
@@ -692,23 +692,23 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 <center>
 
-Azure haritalar Çokgen ![](media/migrate-google-maps-web-app/azure-maps-polygon.png)</center>
+![Azure Haritalar çokgen](media/migrate-google-maps-web-app/azure-maps-polygon.png)</center>
 
 **Ek kaynaklar:**
 
-- [Haritaya Çokgen ekleme](map-add-shape.md)
+- [Haritaya çokgen ekleme](map-add-shape.md)
 - [Haritaya daire ekleme](map-add-shape.md#add-a-circle-to-the-map)
 - [Çokgen katman seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 - [Çizgi katmanı seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
-- [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+- [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)
 
-### <a name="display-an-info-window"></a>Bilgi penceresi görüntüle
+### <a name="display-an-info-window"></a>Bilgi Pencereni Görüntüleme
 
-Bir varlık için ek bilgi, Google Maps 'ta `google.maps.InfoWindow` sınıfı olarak haritada görüntülenebilir. Azure haritalar 'da, bu işlev `atlas.Popup` sınıfı kullanılarak elde edilebilir. Sonraki örneklerde haritaya bir işaretleyici eklenir. İşaretçiye tıklandığında bir bilgi penceresi veya bir açılan pencere görüntülenir.
+Bir varlık için ek bilgiler Haritada `google.maps.InfoWindow` Google Haritalar'da sınıf olarak görüntülenebilir. Azure Haritalar'da bu işlevsellik `atlas.Popup` sınıf kullanılarak elde edilebilir. Sonraki örnekler eşmeye bir işaretçi ekler. İşaretçi tıklatıldığında, bir bilgi penceresi veya açılır pencere görüntülenir.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-`google.maps.InfoWindow` oluşturucusunu kullanarak bir bilgi penceresi örneği oluşturun.
+Oluşturucuyu kullanarak bir bilgi `google.maps.InfoWindow` penceresini anında hazırla.
 
 ```javascript
 //Add a marker in which to display an infowindow for.
@@ -730,11 +730,11 @@ marker.addListener('click', function () {
 
 <center>
 
-![Google Maps açılır](media/migrate-google-maps-web-app/google-maps-popup.png)</center>
+![Google Haritalar açılır pencere](media/migrate-google-maps-web-app/google-maps-popup.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Konum hakkındaki ek bilgileri göstermek için açılan menüyü kullanalım. Açılan menünün `content` seçeneğine bir HTML `string` veya `HTMLElement` nesnesi geçirin. İsterseniz, açılan pencereler herhangi bir şekilden bağımsız şekilde görüntülenebilir. Bu nedenle, açılan pencereler `position` bir değer belirtilmesini gerektirir. `position` değerini belirtin. Bir açılan pencere göstermek için `open` yöntemi çağırın ve açılan pencerenin üzerinde görüntüleneceği `map` geçirin.
+Konum hakkında ek bilgiler görüntülemek için açılır pencereyi kullanalım. Bir HTML `string` `HTMLElement` veya nesneyi açılır pencere `content` seçeneğine geçirin. İsterseniz açılır pencereler herhangi bir şekilde bağımsız olarak görüntülenebilir. Bu nedenle, Pop-up'ların belirtilmesi gereken bir `position` değer gerekir. Değeri `position` belirtin. Açılır pencereyi görüntülemek için `open` yöntemi arayın `map` ve açılır pencerenin görüntüleneceği alanı geçirin.
 
 ```javascript
 //Add a marker to the map in which to display a popup for.
@@ -761,29 +761,29 @@ map.events.add('click', marker, function () {
 
 <center>
 
-Azure haritalar açılan ![](media/migrate-google-maps-web-app/azure-maps-popup.png)</center>
+![Azure Haritalar açılır pencere](media/migrate-google-maps-web-app/azure-maps-popup.png)</center>
 
 > [!NOTE]
-> Seçili katmanı bir işaretleyici yerine haritalar olay koduna geçirerek bir sembol, kabarcık, çizgi veya Çokgen katman ile aynı şeyi yapabilirsiniz.
+> Aynı şeyi bir işaretçi yerine seçilen katmanı haritalar olay koduna geçirerek bir sembol, kabarcık, çizgi veya çokgen katmanıyla da yapabilirsiniz.
 
 **Ek kaynaklar:**
 
-- [Açılan pencere Ekle](map-add-popup.md)
-- [Medya Içeriğiyle açılan pencere](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
-- [Şekillerdeki açılanlar](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
-- [Çoklu PIN ile açılan pencereyi yeniden kullanma](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
-- [Açılır Sınıf](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
-- [Açılan seçenekler](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
+- [Açılır pencere ekleme](map-add-popup.md)
+- [Medya İçeriği ile Pop-Up](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
+- [Şekiller üzerinde Pop-up](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
+- [Birden Çok Pinle Pop-Up'ı Yeniden Kullanma](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
+- [Pop-up sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+- [Pop-up seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
-### <a name="import-a-geojson-file"></a>GeoJSON dosyasını içeri aktar
+### <a name="import-a-geojson-file"></a>GeoJSON dosyayı alma
 
-Google Maps, `google.maps.Data` sınıfı aracılığıyla GeoJSON verilerinin yüklenmesini ve dinamik olarak stillendirilmesini destekler. Bu sınıfın işlevselliği, Azure haritalar 'ın veri odaklı stille çok daha fazlasını hizalar. Ancak, önemli bir farklılık vardır. Google Maps ile bir geri çağırma işlevi belirtirsiniz. Kullanıcı arabirimi iş parçacığında ayrı olarak işlenen her bir özelliğin stillendirilmesini sağlayan iş mantığı. Ancak Azure Maps 'ta katmanlar, veri tabanlı ifadeleri stil seçenekleri olarak belirtmeyi destekler. Bu ifadeler ayrı bir iş parçacığında işleme zamanında işlenir. Azure haritalar yaklaşımı işleme performansını geliştirir. Bu avantaj, daha büyük veri kümelerinin hızla işlenmesi gerektiğinde fark edilir.
+Google Haritalar, GeoJSON verilerinin sınıf `google.maps.Data` aracılığıyla yüklenmesi ve dinamik olarak şekillendirinin destekler. Bu sınıfın işlevselliği, Azure Haritalar'ın veri odaklı stiliyle çok daha uyumludur. Ama arada önemli bir fark var. Google Haritalar ile bir geri arama işlevi belirtirsiniz. Her özelliği şekillendirmek için iş mantığı, UI iş parçacığında ayrı ayrı işlenir. Ancak Azure Haritalar'da katmanlar, veri tabanlı ifadeleri stil seçenekleri olarak belirtmeyi destekler. Bu ifadeler ayrı bir iş parçacığı üzerinde işleme zamanında işlenir. Azure Haritalar yaklaşımı, görüntüleme performansını artırır. Daha büyük veri kümelerinin hızlı bir şekilde işlenmesi gerektiğinde bu avantaj fark edilir.
 
-Aşağıdaki örneklerde, USGS 'nin son yedi gününe ait tüm deprem coğrafi JSON akışı yüklenir. Deprem verileri haritada ölçeklendirilmiş daireler olarak işlenir. Her dairenin rengi ve ölçeği, veri kümesindeki her bir özelliğin `"mag"` özelliğinde depolanan her bir deprem büyüklüğüne bağlıdır. Büyüklük beşten büyük veya buna eşitse daire kırmızı olur. Üç veya daha büyükse, beşten küçükse daire turuncu olur. Üçten küçükse daire yeşil olur. Her dairenin yarıçapı, 0,1 ile çarpıldığı büyüklük üsünü üstel olacaktır.
+Aşağıdaki örnekler USGS son yedi gün içinde tüm depremlerin bir GeoJSON besleme yük. Deprem verileri harita üzerinde ölçeklenmiş daireler olarak işler. Her dairenin rengi ve ölçeği, veri kümesindeki her özelliğin `"mag"` özelliğinde depolanan her depremin büyüklüğüne dayanır. Büyüklük beşten büyük veya eşitse, daire kırmızı olur. Eğer daha büyük veya üçe eşit, ama beşten az ise, daire turuncu olacaktır. Eğer üçten azsa, çember yeşil olur. Her dairenin yarıçapı 0.1 ile çarpılarak büyüklük üstel olacaktır.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-`map.data.setStyle` yönteminde tek bir geri çağırma işlevi belirtin. Geri arama işlevinin içinde her bir özelliğe iş mantığı uygulayın. `map.data.loadGeoJson` yöntemiyle GeoJSON akışını yükleyin.
+Yöntemde tek bir geri `map.data.setStyle` arama işlevi belirtin. Geri arama işlevinin içinde, her özelliğe iş mantığı uygulayın. GeoJSON beslemesini yöntemle yükleyin. `map.data.loadGeoJson`
 
 ```html
 <!DOCTYPE html>
@@ -852,11 +852,11 @@ Aşağıdaki örneklerde, USGS 'nin son yedi gününe ait tüm deprem coğrafi J
 
 <center>
 
-![Google Maps GeoJSON](media/migrate-google-maps-web-app/google-maps-geojson.png)</center>
+![Google Haritalar GeoJSON](media/migrate-google-maps-web-app/google-maps-geojson.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-GeoJSON, Azure Maps 'ta temel veri türüdür. `datasource.importFromUrl` yöntemi kullanarak bir veri kaynağına içeri aktarın. Balon katmanını kullanın. Kabarcık katmanı, bir veri kaynağındaki özelliklerin özelliklerine göre ölçeklendirilen daireleri işlemek için işlevsellik sağlar. Bir geri çağırma işlevi olması yerine, iş mantığı bir ifadeye dönüştürülür ve stil seçeneklerine geçirilir. İfadeler, iş mantığının nasıl çalıştığını tanımlar. İfadeler, başka bir iş parçacığına geçirilebilir ve özellik verilerine göre değerlendirilir. Azure haritalar 'a her biri farklı iş mantığına sahip birden çok veri kaynağı ve katman eklenebilir. Bu özellik, haritada farklı yollarla birden çok veri kümesinin işlenmesine izin verir.
+GeoJSON, Azure Haritalar'daki temel veri türüdür. Yöntemi kullanarak bir veri `datasource.importFromUrl` kaynağına aktarın. Bir kabarcık tabakası kullanın. Kabarcık katmanı, bir veri kaynağındaki özelliklerin özelliklerine göre ölçeklenmiş daireler oluşturma işlevi sağlar. Geri arama işlevi yerine, iş mantığı bir ifadeye dönüştürülür ve stil seçeneklerine aktarılır. İfadeler, iş mantığının nasıl çalıştığını tanımlar. İfadeler başka bir iş parçacığına aktarılabilir ve özellik verilerine göre değerlendirilebilir. Azure Haritalar'a her biri farklı iş mantığına sahip birden çok veri kaynağı ve katmanı eklenebilir. Bu özellik, birden çok veri kümesinin harita üzerinde farklı şekillerde işlenmesine olanak tanır.
 
 ```html
 <!DOCTYPE html>
@@ -933,27 +933,27 @@ GeoJSON, Azure Maps 'ta temel veri türüdür. `datasource.importFromUrl` yönte
 
 <center>
 
-![Azure Maps GeoJSON](media/migrate-google-maps-web-app/azure-maps-geojson.png)</center>
+![Azure Haritalar GeoJSON](media/migrate-google-maps-web-app/azure-maps-geojson.png)</center>
 
 **Ek kaynaklar:**
 
 - [Sembol katmanı ekleme](map-add-pin.md)
 - [Kabarcık katmanı ekleme](map-add-bubble-layer.md)
 - [Küme noktası verileri](clustering-point-data-web-sdk.md)
-- [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+- [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)
 
-### <a name="marker-clustering"></a>İşaretleyici Kümelemesi
+### <a name="marker-clustering"></a>İşaretçi kümeleme
 
-Haritada çok sayıda veri noktasını görselleştirirken, noktaları birbirleriyle çakışabilir. Örtüşme, haritanın karmaşık görünmesini ve eşlemenin okunması ve kullanılması zor hale gelir. Kümeleme noktası verileri, birbirine yakın olan ve bunları haritada tek bir kümelenmiş veri noktası olarak temsil eden veri noktalarını birleştirme işlemidir. Kullanıcı haritada yakınlaştırdıktan sonra, kümeler kendi bireysel veri noktalarıyla kesilir. Küme verileri, Kullanıcı deneyimini ve eşleme performansını artıracak şekilde puntolar.
+Haritada birçok veri noktası görselleştirildiğinde, noktalar birbiriyle çakışabilir. Çakışma, haritanın dağınık görünmesini sağlar ve haritanın okunması ve kullanılması zorlaşır. Nokta verilerini kümeleme, birbirine yakın olan veri noktalarını birleştirme ve bunları haritada tek bir kümelenmiş veri noktası olarak temsil etme işlemidir. Kullanıcı haritaya yakınlaştıkça, kümeler kendi veri noktalarına ayrılır. Kullanıcı deneyimini ve harita performansını geliştirmek için veri noktalarını kümeleyin.
 
-Aşağıdaki örneklerde kod, eski haftadan gelen deprem verilerinin coğrafi JSON akışını yükler ve bunu haritaya ekler. Kümeler ölçekli ve renkli daireler olarak işlenir. Dairelerin ölçeği ve rengi içerdikleri noktaların sayısına bağlıdır.
+Aşağıdaki örneklerde, kod geçen haftadan bir GeoJSON deprem veri beslemesi yükler ve haritaya ekler. Kümeler ölçeklenmiş ve renkli daireler olarak işlenir. Dairelerin ölçeği ve rengi içerdikleri nokta sayısına bağlıdır.
 
 > [!NOTE]
-> Google Maps ve Azure Maps biraz farklı kümeleme algoritmaları kullanır. Bu nedenle, bazen kümelerdeki nokta dağılımı farklılık gösterir.
+> Google Haritalar ve Azure Haritalar biraz farklı kümeleme algoritmaları kullanır. Bu nedenle, bazen kümelerde nokta dağılımı değişir.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Küme işaretçileri için MarkerCluster kitaplığını kullanın. Küme simgeleri, adları adı olarak beş ile bir arasında olan görüntülerle sınırlıdır. Aynı dizinde barındırılır.
+İşaretçileri kümelemek için MarkerCluster kitaplığını kullanın. Küme simgeleri, adolarak 1'den 5'e kadar olan görüntülerle sınırlıdır. Aynı dizinde barındırılan lar.
 
 ```html
 <!DOCTYPE html>
@@ -1010,37 +1010,37 @@ Küme işaretçileri için MarkerCluster kitaplığını kullanın. Küme simgel
 
 <center>
 
-![Google Maps Kümelemesi](media/migrate-google-maps-web-app/google-maps-clustering.png)</center>
+![Google Haritalar kümeleme](media/migrate-google-maps-web-app/google-maps-clustering.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Veri kaynağındaki verileri ekleyin ve yönetin. Veri kaynaklarını ve katmanları bağlayıp verileri işleme. Azure haritalar 'daki `DataSource` sınıfı çeşitli kümeleme seçenekleri sağlar.
+Veri kaynağına veri ekleme ve yönetme. Veri kaynaklarını ve katmanlarını bağlayın ve verileri işle. Azure `DataSource` Haritalar'daki sınıf çeşitli kümeleme seçenekleri sağlar.
 
-- `cluster`: veri kaynağını küme noktası verilerine bildirir.
-- `clusterRadius`-yarıçap, noktaların birlikte kümelemek için piksel cinsinden.
-- `clusterMaxZoom`-kümelemenin gerçekleştiği en yüksek yakınlaştırma düzeyi. Bu düzeyden daha fazla yakınlaştırırsanız, tüm noktaları semboller olarak işlenir.
-- `clusterProperties`-her küme içindeki tüm noktalara karşı ifadeler kullanılarak hesaplanan ve her küme noktasının özelliklerine eklenen özel özellikleri tanımlar.
+- `cluster`– Veri kaynağını işaret verilerini kümele'ye bildirir.
+- `clusterRadius`- Pikselyarıçapı birlikte noktaları kümelemek için.
+- `clusterMaxZoom`- Kümelemenin gerçekleştiği maksimum yakınlaştırma düzeyi. Bu seviyeden daha fazla yakınlaştırırsanız, tüm noktalar sembol olarak işlenir.
+- `clusterProperties`- Her küme içindeki tüm noktalara karşılık ifadeler kullanılarak hesaplanan ve her küme noktasının özelliklerine eklenen özel özellikleri tanımlar.
 
-Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümelenmiş ve kümelenmemiş veri noktaları gönderir. Veri kaynağı yüzlerce binlerce veri noktası kümelemesine sahiptir. Kümelenmiş bir veri noktası aşağıdaki özelliklere sahiptir:
+Kümeleme etkinleştirildiğinde, veri kaynağı işleme için katmanlara kümelenmiş ve kümelenmemiş veri noktaları gönderir. Veri kaynağı yüz binlerce veri noktasını kümeleme yeteneğine sahiptir. Kümelenmiş bir veri noktası aşağıdaki özelliklere sahiptir:
 
 | Özellik adı             | Tür    | Açıklama   |
 |---------------------------|---------|---------------|
-| `cluster`                 | boole | Özelliğin bir kümeyi temsil ettiğini belirtir. |
-| `cluster_id`              | string  | Veri kaynağı `getClusterExpansionZoom`, `getClusterChildren`ve `getClusterLeaves` yöntemlerle kullanılabilecek benzersiz bir KIMLIK. |
-| `point_count`             | number  | Kümenin içerdiği noktaların sayısı.  |
-| `point_count_abbreviated` | string  | Long ise `point_count` değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
+| `cluster`                 | boole | Özellik bir kümeyi temsil edip temsil eder gösterir. |
+| `cluster_id`              | string  | Veri Kaynağı `getClusterExpansionZoom`, `getClusterChildren`ve `getClusterLeaves` yöntemleri ile kullanılabilecek küme için benzersiz bir kimlik. |
+| `point_count`             | number  | Kümenin içerdiği nokta sayısı.  |
+| `point_count_abbreviated` | string  | Uzunsa `point_count` değeri kısaltan bir dize. (örneğin, 4.000 4K olur)  |
 
-`DataSource` sınıfı, `cluster_id`kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir.
+Sınıf, `DataSource` `cluster_id`bir küme hakkında ek bilgilere erişmek için aşağıdaki yardımcı işlevine sahiptir.
 
 | Yöntem | Dönüş türü | Açıklama |
 |--------|-------------|-------------|
-| `getClusterChildren(clusterId: number)` | Promise&lt;dizi&lt;özelliği&lt;geometrisi,&gt; \| şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
-| `getClusterExpansionZoom(clusterId: number)` | Promise&lt;numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |
-| `getClusterLeaves(clusterId: number, limit: number, offset: number)` | Promise&lt;dizi&lt;özelliği&lt;geometrisi,&gt; \| şekil&gt;&gt; | Kümedeki tüm noktaları alır. `limit` noktaların bir alt kümesini döndürecek şekilde ayarlayın ve `offset` için noktaları kullanın. |
+| `getClusterChildren(clusterId: number)` | Söz&lt;&lt;Dizisi&lt;Özellik&gt; \| Geometrisi, herhangi bir Şekil&gt;&gt; | Verilen kümenin alt larını bir sonraki yakınlaştırma düzeyinde alır. Bu çocuklar şekiller ve alt kümelerin bir birleşimi olabilir. Alt kümeler Clustered Properties eşleşen özelliklere sahip özellikler olacaktır. |
+| `getClusterExpansionZoom(clusterId: number)` | Söz&lt;numarası&gt; | Kümenin genişlemeye başlayacağı veya parçalanacağı bir yakınlaştırma düzeyi hesaplar. |
+| `getClusterLeaves(clusterId: number, limit: number, offset: number)` | Söz&lt;&lt;Dizisi&lt;Özellik&gt; \| Geometrisi, herhangi bir Şekil&gt;&gt; | Kümedeki tüm noktaları alır. Noktaların `limit` bir alt kümesini döndürmek için `offset` ayarlayın ve noktaları n için sayfayı kullanın. |
 
-Haritada kümelenmiş verileri işlerken genellikle iki veya daha fazla katman kullanmak en iyisidir. Aşağıdaki örnek üç katman kullanır. Kümelerin boyutuna bağlı olarak ölçeklendirilmiş renkli daireler çizmek için kabarcık katmanı. Küme boyutunu metin olarak işlemek için bir sembol katmanı. Ayrıca, kümelenmemiş noktaları işlemek için ikinci bir sembol katmanını kullanır. Kümelenmiş verileri işlemenin birçok farklı yolu vardır. Daha fazla bilgi için bkz. [küme noktası verileri](clustering-point-data-web-sdk.md) belgeleri.
+Kümelenmiş verileri haritaüzerinde işlerken, genellikle iki veya daha fazla katman kullanmak en iyisidir. Aşağıdaki örnekte üç katman kullanır. Kümelerin boyutuna göre ölçekli renkli daireler çizmek için bir kabarcık katmanı. Küme boyutunu metin olarak işlemek için bir sembol katmanı. Ve, kümelenmemiş noktaları işlemek için ikinci bir sembol katmanı kullanır. Kümelenmiş verileri işlemenin başka birçok yolu vardır. Daha fazla bilgi için [Küme noktası veri](clustering-point-data-web-sdk.md) belgelerine bakın.
 
-Azure haritalar Haritası içindeki `DataSource` sınıfında `importDataFromUrl` işlevini kullanarak GeoJSON verilerini doğrudan içeri aktarın.
+Azure Haritalar haritasının içindeki `importDataFromUrl` sınıftaki `DataSource` işlevi kullanarak GeoJSON verilerini doğrudan içe aktarın.
 
 ```html
 <!DOCTYPE html>
@@ -1138,24 +1138,24 @@ Azure haritalar Haritası içindeki `DataSource` sınıfında `importDataFromUrl
 
 <center>
 
-Azure Maps Kümelemesi ![](media/migrate-google-maps-web-app/azure-maps-clustering.png)</center>
+![Azure Haritalar kümeleme](media/migrate-google-maps-web-app/azure-maps-clustering.png)</center>
 
 **Ek kaynaklar:**
 
 - [Sembol katmanı ekleme](map-add-pin.md)
 - [Kabarcık katmanı ekleme](map-add-bubble-layer.md)
 - [Küme noktası verileri](clustering-point-data-web-sdk.md)
-- [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+- [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>Isı haritası ekleme
 
-Nokta yoğunluğu haritaları olarak da bilinen ısı haritaları, veri görselleştirmesinin bir türüdür. Bunlar, bir aralıktaki renkler kullanılarak verilerin yoğunluğunu göstermek için kullanılırlar. Ayrıca, genellikle bir haritada "etkin noktalar" verilerini göstermek için kullanılır. Isı haritaları, büyük nokta veri kümelerini işlemek için harika bir yoldur.
+Nokta yoğunluğu haritaları olarak da bilinen ısı haritaları, bir veri görselleştirme türüdür. Bir renk aralığı kullanarak verilerin yoğunluğunu temsil etmek için kullanılırlar. Ve genellikle veri "sıcak noktalar" bir harita üzerinde göstermek için kullanılır. Isı haritaları büyük nokta veri kümeleri işlemek için harika bir yoldur.
 
-Aşağıdaki örnekler, tüm deprem bir coğrafi JSON akışını, USGS 'lerden geçen aya yükler ve bunları ağırlıklı bir ısı haritası olarak işler. `"mag"` özelliği ağırlık olarak kullanılır.
+Aşağıdaki örnekler, usgs, son bir ay içinde tüm depremlerin bir GeoJSON besleme yük ve ağırlıklı bir ısı haritası olarak onları hale getirir. Özellik `"mag"` ağırlık olarak kullanılır.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Bir ısı haritası oluşturmak için, API betik URL 'sine `&libraries=visualization` ekleyerek "görselleştirme" kitaplığını yükleyin. Google Maps 'taki ısı haritası katmanı doğrudan GeoJSON verilerini desteklemez. İlk olarak, verileri indirin ve ağırlıklı veri noktaları dizisine dönüştürün:
+Isı eşlemi oluşturmak için, API `&libraries=visualization` komut dosyası URL'sine ekleyerek "görselleştirme" kitaplığını yükleyin. Google Haritalar'daki ısı haritası katmanı GeoJSON verilerini doğrudan desteklemez. İlk olarak, verileri indirin ve ağırlıklı veri noktaları bir dizi dönüştürün:
 
 ```html
 <!DOCTYPE html>
@@ -1220,11 +1220,11 @@ Bir ısı haritası oluşturmak için, API betik URL 'sine `&libraries=visualiza
 
 <center>
 
-Google Maps ısı haritasını ![](media/migrate-google-maps-web-app/google-maps-heatmap.png)</center>
+![Google Haritalar ısı haritası](media/migrate-google-maps-web-app/google-maps-heatmap.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-GeoJSON verilerini bir veri kaynağına yükleyin ve veri kaynağını bir ısı haritası katmanına bağlayın. Ağırlığa yönelik olarak kullanılacak özellik, bir ifade kullanılarak `weight` seçeneğine geçirilebilir. `DataSource` sınıfında `importDataFromUrl` işlevini kullanarak coğrafi JSON verilerini doğrudan Azure Maps 'e aktarın.
+GeoJSON verilerini bir veri kaynağına yükleyin ve veri kaynağını Bir ısı haritası katmanına bağlayın. Ağırlık için kullanılacak özellik bir ifade kullanılarak `weight` seçeneğine geçirilebilir. Sınıfdaki `importDataFromUrl` işlevi kullanarak GeoJSON verilerini doğrudan `DataSource` Azure Haritalar'a aktarın.
 
 ```html
 <!DOCTYPE html>
@@ -1286,24 +1286,24 @@ GeoJSON verilerini bir veri kaynağına yükleyin ve veri kaynağını bir ısı
 
 <center>
 
-Azure haritalar ısı haritasını ![](media/migrate-google-maps-web-app/azure-maps-heatmap.png)</center>
+![Azure Haritalar ısı haritası](media/migrate-google-maps-web-app/azure-maps-heatmap.png)</center>
 
 **Ek kaynaklar:**
 
 - [Isı haritası katmanı ekleme](map-add-heat-map-layer.md)
 - [Isı haritası katman sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.heatmaplayer?view=azure-iot-typescript-latest)
 - [Isı haritası katman seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
-- [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+- [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>Döşeme katmanını kaplama
 
-Azure haritalar 'daki kutucuk katmanları, Google Maps 'ta görüntü Yerpaylaşımları olarak bilinir. Döşeme katmanları, haritalar döşeme sistemiyle birlikte hizalanmış, daha küçük döşeli görüntülerle bölünmüş büyük görüntülerin yer kaplamasını sağlar. Bu yaklaşım, büyük görüntüleri veya büyük veri kümelerini kaplayan yaygın olarak kullanılan bir yaklaşımdır.
+Azure Haritalar'daki döşeme katmanları, Google Haritalar'daki Resim kaplamaları olarak bilinir. Döşeme katmanları, haritalar döşeme sistemiyle uyumlu küçük karo görüntülere ayrılmış büyük görüntüleri kaplamanızı sağlar. Bu yaklaşım, büyük görüntüleri veya büyük veri kümelerini kaplamak için yaygın olarak kullanılan bir yaklaşımdır.
 
-Aşağıdaki örnekler, Iowa çevresel Mesonet of Iowa çevre bir hava durumu radar kutucuk katmanını kaplamış.
+Aşağıdaki örnekler Iowa State Üniversitesi Iowa Çevre Mesonet bir hava radar kiremit tabakası bindirme.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Google Maps 'ta, döşeme katmanları `google.maps.ImageMapType` sınıfı kullanılarak oluşturulabilir.
+Google Haritalar'da, `google.maps.ImageMapType` sınıf kullanılarak döşeme katmanları oluşturulabilir.
 
 ```javascript
 map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
@@ -1317,14 +1317,14 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 
 <center>
 
-![Google Maps kutucuk katmanı](media/migrate-google-maps-web-app/google-maps-tile-layer.png)</center>
+![Google Haritalar döşeme katmanı](media/migrate-google-maps-web-app/google-maps-tile-layer.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Haritaya benzer bir kutucuk katmanını diğer herhangi bir katman gibi ekleyin. X, y, zoom yertutucuları olan bir biçimli URL kullanın; `{x}`, `{y}`, `{z}` kutucuklara nerede erişebileceğini bildirmek için. Azure haritalar kutucuk katmanları `{quadkey}`, `{bbox-epsg-3857}`ve `{subdomain}` yer tutucuları de destekler.
+Haritaya diğer katmanlar gibi benzer bir döşeme katmanı ekleyin. x, y, yakınlaştırma yer tutucularında bulunan biçimlendirilmiş bir URL kullanın; `{x}`, `{y}` `{z}` , katmana fayanslara nerede erişeceğini söylemek için. Azure Haritalar döşeme katmanları `{quadkey}` `{bbox-epsg-3857}`da `{subdomain}` destek , ve yer tutucuları.
 
 > [!TIP]
-> Azure haritalar katmanları, temel harita katmanları dahil olmak üzere diğer katmanların altına kolayca işlenebilirler. Genellikle, daha kolay okunabilmeleri için harita etiketlerinin altında döşeme katmanlarını işlemek tercih edilir. `map.layers.add` yöntemi ikinci bir parametre alır. Bu, aşağıdaki yeni katmanın ekleneceği katmanın kimliğidir. Harita etiketlerinin altına bir kutucuk katmanı eklemek için şu kodu kullanın: `map.layers.add(myTileLayer, "labels");`
+> Azure Haritalar'da katmanlar, temel harita katmanları da dahil olmak üzere diğer katmanların altında kolayca işlenebilir. Genellikle, okunması kolay olacak şekilde harita etiketlerinin altında kiremit katmanları işlemek için tercih edilir. Yöntem, `map.layers.add` yeni katmanı eklemek için katmanın kimliği olan ikinci bir parametre alır. Harita etiketlerinin altına bir döşeme katmanı eklemek için şu kodu kullanın:`map.layers.add(myTileLayer, "labels");`
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -1337,24 +1337,24 @@ map.layers.add(new atlas.layer.TileLayer({
 
 <center>
 
-Azure haritalar kutucuk katmanını ![](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)</center>
+![Azure Haritalar döşeme katmanı](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)</center>
 
 > [!TIP]
-> Kutucuk istekleri, eşlemenin `transformRequest` seçeneği kullanılarak yakalanabilir. Bu, istenirse istekleri değiştirmenize veya üst bilgileri eklemenize olanak tanır.
+> Döşeme istekleri harita `transformRequest` seçeneği kullanılarak yakalanabilir. Bu, istenirse üstbilgileri değiştirmenize veya üstbilgi eklemenize olanak sağlar.
 
 **Ek kaynaklar:**
 
-- [Döşeme katmanları ekleme](map-add-tile-layer.md)
-- [Döşeme katmanı sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
+- [Kutucuk katmanları ekleme](map-add-tile-layer.md)
+- [Kiremit katmanı sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
 - [Döşeme katmanı seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest)
 
 ### <a name="show-traffic"></a>Trafiği gösterme
 
-Trafik verileri hem Azure hem de Google Maps 'ta yer alabilir.
+Trafik verileri hem Azure hem de Google haritalarının üzerine işlenebilir.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Trafik katmanını kullanarak haritadaki trafik verilerini kaplama.
+Trafik katmanını kullanarak haritadaki trafik verilerini yerle bir edin.
 
 ```javascript
 var trafficLayer = new google.maps.TrafficLayer();
@@ -1363,13 +1363,13 @@ trafficLayer.setMap(map);
 
 <center>
 
-Google Maps trafiğini ![](media/migrate-google-maps-web-app/google-maps-traffic.png)</center>
+![Google Haritalar trafiği](media/migrate-google-maps-web-app/google-maps-traffic.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Azure haritalar, trafiği görüntülemek için çeşitli farklı seçenekler sağlar. Yol kapanışları ve kazalardan dolayı gibi trafik olaylarını haritada simgeler olarak görüntüleyin. Harita üzerindeki trafik akışını ve renk kodlu yolların yer kaplamasını sağlama. Renkler, normal beklenen gecikmeye veya mutlak gecikmeye göre, gönderilen hız sınırına göre değiştirilebilir. Azure haritalar 'daki olay verileri her dakikada bir güncelleştirilir ve veri güncelleştirmelerini iki dakikada bir akar.
+Azure Haritalar, trafiği görüntülemek için birkaç farklı seçenek sunar. Yol kapatmalar ve kazalar gibi trafik olaylarını haritada simgeler olarak görüntüleyin. Haritaüzerinde yer kaplama trafik akışı ve renk kodlu yollar. Renkler, normal beklenen gecikmeye veya mutlak gecikmeye göre deftere nakledilen hız sınırına göre değiştirilebilir. Azure Haritalar'daki olay verileri her dakika güncellenir ve akış verileri her iki dakikada bir güncellenir.
 
-`setTraffic` seçenekleri için istenen değerleri atayın.
+Seçenekler için `setTraffic` istenen değerleri atayın.
 
 ```javascript
 map.setTraffic({
@@ -1380,26 +1380,26 @@ map.setTraffic({
 
 <center>
 
-Azure haritalar trafiğini ![](media/migrate-google-maps-web-app/azure-maps-traffic.png)</center>
+![Azure Haritalar trafiği](media/migrate-google-maps-web-app/azure-maps-traffic.png)</center>
 
-Azure haritalar 'daki trafik simgelerinden birine tıklarsanız, açılan pencerede ek bilgiler görüntülenir.
+Azure Haritalar'daki trafik simgelerinden birine tıklarsanız, açılır pencerede ek bilgiler görüntülenir.
 
 <center>
 
-![Azure Maps Trafik olayı](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)</center>
+![Azure Haritalar trafik olayı](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)</center>
 
 **Ek kaynaklar:**
 
 - [Haritada trafiği göster](map-show-traffic.md)
-- [Trafik kaplama seçenekleri](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
+- [Trafik bindirme seçenekleri](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 
-### <a name="add-a-ground-overlay"></a>Zemin kaplama ekleme
+### <a name="add-a-ground-overlay"></a>Zemin kaplaması ekleme
 
-Hem Azure hem de Google Maps, haritada coğrafi olarak başvurulan görüntüleri fazla düzenlemeyi destekler. Coğrafi olarak başvurulan görüntüler, Haritada kaydırma ve yakınlaştırma sırasında taşınır ve ölçeklendirebilir. Google Maps 'ta, coğrafi olarak başvurulan görüntüler, Azure haritalar 'da görüntü katmanları olarak adlandırıldıkları sırada arka üste biçimlendirmeler olarak bilinir. Kat planları oluşturmak, eski haritaları yerleştirmek veya bir DRA 'dan Imagery için harika.
+Hem Azure hem de Google haritaları, haritadaki coğrafi başvurulanmış görüntülerin yerle bir edilmesine destek olur. Coğrafi referanslı görüntüler, haritayı kaydırıp yakınlaştırdıkça hareket ettirin ve ölçeklendirin. Google Haritalar'da, coğrafi referanslı görüntüler yer kaplamaları olarak bilinirken, Azure Haritalar'da görüntü katmanları olarak adlandırılırlar. Onlar bina kat planları için harika, eski haritalar, ya da bir drone görüntüleri örtünme.
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
-Görüntünün haritada bağlanacağı görüntünün URL 'sini ve bir sınırlayıcı kutuyu belirtin. Bu örnek, haritadaki 1922 ' [dan yeni Jersey](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) 'in bir harita görüntüsünü yerdekiler.
+Bindirmek istediğiniz resme URL'yi ve görüntüyü haritaya bağlamak için sınırlayıcı bir kutu belirtin. Bu örnek, [1922'deki Newark New Jersey](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) haritasının haritasını haritaya bindirmektedir.
 
 ```html
 <!DOCTYPE html>
@@ -1442,18 +1442,18 @@ Görüntünün haritada bağlanacağı görüntünün URL 'sini ve bir sınırla
 </html>
 ```
 
-Bu kodun bir tarayıcıda çalıştırılması, aşağıdaki görüntü gibi görünen bir eşlem görüntüler:
+Bu kodu bir tarayıcıda çalıştırmak, aşağıdaki resme benzeyen bir harita görüntüler:
 
 <center>
 
-![Google Maps görüntü kaplama](media/migrate-google-maps-web-app/google-maps-image-overlay.png)</center>
+![Google Haritalar resim kaplaması](media/migrate-google-maps-web-app/google-maps-image-overlay.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Coğrafi olarak başvurulan görüntülerin kaplaması için `atlas.layer.ImageLayer` sınıfını kullanın. Bu sınıf, görüntünün dört köşesi için bir görüntünün URL 'sini ve bir koordinat kümesini gerektirir. Görüntünün aynı etki alanında barındırılması ya da CORs 'nin etkin olması gerekir.
+Coğrafi `atlas.layer.ImageLayer` başvurulan görüntüleri kaplamak için sınıfı kullanın. Bu sınıf, görüntünün URL'si ve görüntünün dört köşesi için bir dizi koordinat gerektirir. Görüntü aynı etki alanında barındırılmalı veya CO'lar etkinleştirilmiş olmalıdır.
 
 > [!TIP]
-> Yalnızca Kuzey, Güney, Doğu, Batı ve döndürme bilgilerine sahipseniz ve görüntünün her bir köşesi için koordinatlar yoksa, statik [`atlas.layer.ImageLayer.getCoordinatesFromEdges`](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest#getcoordinatesfromedges-number--number--number--number--number-) yöntemini kullanabilirsiniz.
+> Yalnızca kuzey, güney, doğu, batı ve dönüş bilgileriniz varsa ve görüntünün her köşesi için koordinatlarınız yoksa, statik [`atlas.layer.ImageLayer.getCoordinatesFromEdges`](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest#getcoordinatesfromedges-number--number--number--number--number-) yöntemi kullanabilirsiniz.
 
 ```html
 <!DOCTYPE html>
@@ -1509,18 +1509,18 @@ Coğrafi olarak başvurulan görüntülerin kaplaması için `atlas.layer.ImageL
 
 <center>
 
-![Azure Maps görüntü kaplama](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)</center>
+![Azure Haritalar görüntü kaplaması](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)</center>
 
 **Ek kaynaklar:**
 
-- [Görüntü kaplama](map-add-image-layer.md)
-- [Görüntü katmanı sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
+- [Resme katman ekleme](map-add-image-layer.md)
+- [Resim katmanı sınıfı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
 
 ## <a name="add-kml-to-the-map"></a>Haritaya KML ekleme
 
-Hem Azure hem de Google Maps, haritada KML, KMZ ve GeoRSS verilerini içeri aktarabilir ve işleyebilir. Azure haritalar Ayrıca GPX, GML, uzamsal CSV dosyaları, GeoJSON, Iyi bilinen metin (WKT), Web eşleme Hizmetleri (WMS), Web eşleme kutucuk Hizmetleri (WMTS) ve web özelliği Hizmetleri (WFS) destekler. Azure haritalar dosyaları yerel olarak belleğe okur ve çoğu durumda çok daha büyük KML dosyaları işleyebilir. 
+Hem Azure hem de Google haritaları Haritaüzerinde KML, KMZ ve GeoRSS verilerini içe aktarabilir ve işleyebilir. Azure Haritalar ayrıca GPX, GML, uzamsal CSV dosyaları, GeoJSON, Tanınmış Metin (WKT), Web Haritalama Hizmetleri (WMS), Web Haritalama Döşeme hizmetleri (WMTS) ve Web Özellik Hizmetlerini (WFS) destekler. Azure Haritalar dosyaları yerel olarak belleğe okur ve çoğu durumda çok daha büyük KML dosyalarını işleyebilir. 
 
-**Önce: Google Maps**
+**Önce: Google Haritalar**
 
 
 ```javascript
@@ -1557,15 +1557,15 @@ Hem Azure hem de Google Maps, haritada KML, KMZ ve GeoRSS verilerini içeri akta
 </html>
 ```
 
-Bu kodun bir tarayıcıda çalıştırılması, aşağıdaki görüntü gibi görünen bir eşlem görüntüler:
+Bu kodu bir tarayıcıda çalıştırmak, aşağıdaki resme benzeyen bir harita görüntüler:
 
 <center>
 
-![Google Maps görüntü kaplama](media/migrate-google-maps-web-app/google-maps-kml.png)</center>
+![Google Haritalar resim kaplaması](media/migrate-google-maps-web-app/google-maps-kml.png)</center>
 
-**Sonrasında: Azure Maps**
+**Sonra: Azure Haritalar**
 
-Azure haritalar 'da GeoJSON, Web SDK 'sında kullanılan ana veri biçimidir, ek uzamsal veri biçimleri de [uzamsal GÇ modülü](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)kullanılarak kolayca tümleştirilebilir. Bu modülde hem okuma hem de yazma uzamsal verileri için işlevler bulunur ve bu uzamsal veri biçimlerinden herhangi birinden verileri kolayca işleyebilen basit bir veri katmanı da vardır. Uzamsal bir veri dosyasındaki verileri okumak için, bir URL 'ye veya ham verileri `atlas.io.read` işlevine dize veya blob olarak geçirin. Bu, dosyadan daha sonra haritaya eklenebilen tüm ayrıştırılmış verileri döndürür. Daha çok daha fazla stil bilgisi içerdiği için KML, en çok uzamsal veri biçiminden biraz daha karmaşıktır. `SpatialDataLayer` sınıfı bu stillerin büyük bölümünü oluşturmayı destekler, ancak özellik verileri yüklenmeden önce simge görüntülerinin haritaya yüklenmesi gerekir ve arka kaplamalar haritaya ayrı olarak eklenir. Bir URL aracılığıyla veri yüklerken, CORs 'yi etkinleştirmiş bir uç noktada barındırılmalıdır veya bir proxy hizmeti okuma işlevine seçenek olarak geçirilmelidir. 
+Azure Haritalar'da GeoJSON, web SDK'da kullanılan ana veri biçimidir, ek uzamsal veri biçimleri [mekansal IO modülü](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)kullanılarak kolayca entegre edilebilir. Bu modül, uzamsal verileri okumak ve yazmak için işlevlere sahiptir ve aynı zamanda bu uzamsal veri biçimlerinin herhangi birinden kolayca veri işleyebilir basit bir veri katmanı içerir. Uzamsal bir veri dosyasındaki verileri okumak için, bir URL'de veya `atlas.io.read` işleve dize veya blob olarak ham veri geçmenız yeterlidir. Bu, dosyadaki daha sonra eşe eklenebilir tüm ayrıştırılmış verileri döndürecektir. KML, çok daha fazla şekillendirme bilgisi içerdiğinden, çoğu uzamsal veri biçiminden biraz daha karmaşıktır. Sınıf `SpatialDataLayer` bu stillerin çoğunluğunu oluşturmayı destekler, ancak simgelerin görüntülerinin özellik verilerini yüklemeden önce haritaya yüklenmesi gerekir ve yer kaplamaları ayrı olarak haritaya katman olarak eklenmeli. Verileri bir URL üzerinden yüklerken, KOD'lar etkin bir bitiş noktasında barındırılmalı veya bir proxy hizmeti okuma işlevine seçenek olarak geçirilmelidir. 
 
 ```javascript
 <!DOCTYPE html>
@@ -1658,96 +1658,96 @@ Azure haritalar 'da GeoJSON, Web SDK 'sında kullanılan ana veri biçimidir, ek
 
 <center>
 
-![Azure Maps görüntü kaplama](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
+![Azure Haritalar görüntü kaplaması](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
 
 **Ek kaynaklar:**
 
-- [Atlas. IO. Read işlevi](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io?view=azure-maps-typescript-latest#read-string---arraybuffer---blob--spatialdatareadoptions-)
+- [atlas.io.oku fonksiyonu](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io?view=azure-maps-typescript-latest#read-string---arraybuffer---blob--spatialdatareadoptions-)
 - [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
-- [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+- [SimpleDataLayerSeçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ## <a name="additional-code-samples"></a>Ek kod örnekleri
 
-Google Maps geçişi ile ilgili bazı ek kod örnekleri aşağıda verilmiştir:
+Google Haritalar geçişiyle ilgili bazı ek kod örnekleri şunlardır:
 
 - [Çizim araçları](map-add-drawing-toolbar.md)
-- [Eşlemeyi Iki parmak kaydırma ile sınırla](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Map%20to%20Two%20Finger%20Panning)
-- [Sınır kaydırma tekerleği yakınlaştırmasını sınırla](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Scroll%20Wheel%20Zoom)
-- [Tam ekran denetimi oluşturma](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Create%20a%20Fullscreen%20Control)
+- [Haritayı İki Parmak Kaydırma ile Sınırla](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Map%20to%20Two%20Finger%20Panning)
+- [Kaydırma Tekerleği Yakınlaştırmayı Sınırla](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Scroll%20Wheel%20Zoom)
+- [Tam Ekran Denetimi Oluşturma](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Create%20a%20Fullscreen%20Control)
 
-**Servislere**
+**Hizmetleri:**
 
-- [Azure haritalar Hizmetleri modülünü kullanma](how-to-use-services-module.md)
+- [Azure Haritalar hizmetleri modüllerini kullanma](how-to-use-services-module.md)
 - [İlgi noktası arama](map-search-location.md)
-- [Bir koordinatdan bilgi edinme (ters coğrafi kod)](map-get-information-from-coordinate.md)
-- [A 'dan B 'ye yönlendirmeler göster](map-route.md)
-- [JQuery Kullanıcı arabirimi ile otomatik öneri ara](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
+- [Koordinattan bilgi alın (ters coğrafi kod)](map-get-information-from-coordinate.md)
+- [A'dan B'ye yönleri gösterme](map-route.md)
+- [JQuery UI ile Otomatik Öner'i ara](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
 
-## <a name="google-maps-v3-to-azure-maps-web-sdk-class-mapping"></a>Google, v3 'yi Azure Maps web SDK sınıf eşlemesi ile eşleştirir
+## <a name="google-maps-v3-to-azure-maps-web-sdk-class-mapping"></a>Google Maps V3 ' den Azure Haritalar Web SDK sınıf eşlemesine
 
-Aşağıdaki ek, Google Maps v3 ve eşdeğer Azure Maps web SDK 'sında yaygın olarak kullanılan sınıfların çapraz bir başvurusunu sağlar.
+Aşağıdaki ek, Google Haritalar V3'te ve eşdeğer Azure Haritalar Web SDK'sında yaygın olarak kullanılan sınıfların çapraz başvurularını sağlar.
 
-### <a name="core-classes"></a>Çekirdek sınıflar
+### <a name="core-classes"></a>Temel Sınıflar
 
 | Google Haritalar   | Azure Haritalar  |
 |---------------|-------------|
 | `google.maps.Map` | [Atlas. Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)  |
-| `google.maps.InfoWindow` | [Atlas. Kutu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)  |
+| `google.maps.InfoWindow` | [Atlas. Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)  |
 | `google.maps.InfoWindowOptions` | [Atlas. PopupOptions](https://docs.microsoft.com/) |
-| `google.maps.LatLng`  | [Atlas. Data. Position](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest)  |
-| `google.maps.LatLngBounds` | [Atlas. Data. BoundingBox](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox?view=azure-iot-typescript-latest) |
-| `google.maps.MapOptions`  | [Atlas. CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions?view=azure-iot-typescript-latest)<br/>[Atlas. CameraBoundsOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions?view=azure-iot-typescript-latest)<br/>[Atlas. ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions?view=azure-iot-typescript-latest)<br/>[Atlas. StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Userınteractionoptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions?view=azure-iot-typescript-latest) |
-| `google.maps.Point`  | [Atlas. Pikselden](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.pixel?view=azure-iot-typescript-latest)   |
+| `google.maps.LatLng`  | [atlas.data.Pozisyon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest)  |
+| `google.maps.LatLngBounds` | [atlas.data.BoundingBox](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox?view=azure-iot-typescript-latest) |
+| `google.maps.MapOptions`  | [Atlas. Kamera Seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions?view=azure-iot-typescript-latest)<br/>[Atlas. CameraBoundsSeçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Servis Seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Stil Seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Kullanıcı EtkileşimSeçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions?view=azure-iot-typescript-latest) |
+| `google.maps.Point`  | [Atlas. Piksel](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.pixel?view=azure-iot-typescript-latest)   |
 
-## <a name="overlay-classes"></a>Sınıf kaplama
+## <a name="overlay-classes"></a>Bindirme Sınıfları
 
 | Google Haritalar  | Azure Haritalar  |
 |--------------|-------------|
-| `google.maps.Marker` | [Atlas. Htmlişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)<br/>[Atlas. Data. Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)  |
-| `google.maps.MarkerOptions`  | [Atlas. HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-iot-typescript-latest)<br/>[Atlas. Layer. SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)<br/>[Atlas. SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)<br/>[Atlas. IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)<br/>[Atlas. TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Layer. BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)<br/>[Atlas. BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest) |
-| `google.maps.Polygon`  | [Atlas. Data. Çokgen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)               |
-| `google.maps.PolygonOptions` |[Atlas. Layer. PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)<br/> [Atlas. PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)<br/> [Atlas. Layer. LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)<br/> [Atlas. LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)|
-| `google.maps.Polyline` | [Atlas. Data. LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest)         |
-| `google.maps.PolylineOptions` | [Atlas. Layer. LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-maps-typescript-latest)<br/>[Atlas. LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-maps-typescript-latest) |
-| `google.maps.Circle`  | Bkz [. haritaya daire ekleme](map-add-shape.md#add-a-circle-to-the-map)                                     |
+| `google.maps.Marker` | [Atlas. HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)<br/>[atlas.data.Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)  |
+| `google.maps.MarkerOptions`  | [Atlas. HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-iot-typescript-latest)<br/>[atlas.layer.SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)<br/>[Atlas. SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)<br/>[Atlas. Simge Seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Textoptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)<br/>[atlas.layer.BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)<br/>[Atlas. BubbleLayerSeçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest) |
+| `google.maps.Polygon`  | [atlas.data.Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)               |
+| `google.maps.PolygonOptions` |[atlas.layer.PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)<br/> [Atlas. ÇokgenLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)<br/> [atlas.layer.LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)<br/> [Atlas. LineLayer Seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)|
+| `google.maps.Polyline` | [atlas.data.LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest)         |
+| `google.maps.PolylineOptions` | [atlas.layer.LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-maps-typescript-latest)<br/>[Atlas. LineLayer Seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-maps-typescript-latest) |
+| `google.maps.Circle`  | Bkz. [Haritaya daire ekleme](map-add-shape.md#add-a-circle-to-the-map)                                     |
 | `google.maps.ImageMapType`  | [Atlas. TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)         |
 | `google.maps.ImageMapTypeOptions` | [Atlas. TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest) |
-| `google.maps.GroundOverlay`  | [Atlas. Layer. ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)<br/>[Atlas. Imagelayeroptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest) |
+| `google.maps.GroundOverlay`  | [atlas.layer.ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)<br/>[Atlas. ImageLayerSeçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest) |
 
-## <a name="service-classes"></a>Hizmet sınıfları
+## <a name="service-classes"></a>Hizmet Sınıfları
 
-Azure Haritalar Web SDK 'Sı, ayrı olarak yüklenebilen bir hizmet modülünü içerir. Bu modül, Azure Maps REST hizmetlerini bir Web API 'siyle sarmalayan ve JavaScript, TypeScript ve Node. js uygulamalarında kullanılabilir.
+Azure Haritalar Web SDK,ayrı olarak yüklenebilen bir hizmet modülü içerir. Bu modül Azure Haritalar REST hizmetlerini bir web API ile sarar ve JavaScript, TypeScript ve Node.js uygulamalarında kullanılabilir.
 
 | Google Haritalar | Azure Haritalar  |
 |-------------|-------------|
-| `google.maps.Geocoder` | [Atlas. Service. SearchUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest)  |
-| `google.maps.GeocoderRequest`  | [Atlas. SearchAddressOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressoptions?view=azure-iot-typescript-latest)<br/>[Atlas. SearchAddressRevrseOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressreverseoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Searchaddresssmarcrossstreetoptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressreversecrossstreetoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Searchaddressstructureınfo](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressstructuredoptions?view=azure-iot-typescript-latest)<br/>[Atlas. SearchAlongRouteOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchalongrouteoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Searchbelirsizlik Zyoptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchfuzzyoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Searchınsidegeometrik Yoptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchinsidegeometryoptions?view=azure-iot-typescript-latest)<br/>[Atlas. Searchyaklaştığında Byoptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchnearbyoptions?view=azure-iot-typescript-latest)<br/>[Atlas. SearchPOIOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchpoioptions?view=azure-iot-typescript-latest)<br/>[Atlas. SearchPOICategoryOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchpoicategoryoptions?view=azure-iot-typescript-latest) |
-| `google.maps.DirectionsService`  | [Atlas. Service. RouteUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest)  |
-| `google.maps.DirectionsRequest`  | [Atlas. Hesaplakaldırma Teroutedirectionsoptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.calculateroutedirectionsoptions?view=azure-iot-typescript-latest) |
-| `google.maps.places.PlacesService` | [Atlas. Service. SearchUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest)  |
+| `google.maps.Geocoder` | [atlas.service.SearchUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest)  |
+| `google.maps.GeocoderRequest`  | [Atlas. Arama Adres Seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressoptions?view=azure-iot-typescript-latest)<br/>[Atlas. AramaAddressRevrseOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressreverseoptions?view=azure-iot-typescript-latest)<br/>[Atlas. AramaAdresiReverseCrossStreetOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressreversecrossstreetoptions?view=azure-iot-typescript-latest)<br/>[Atlas. AramaAdresYapılandırılmış Seçenekler](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressstructuredoptions?view=azure-iot-typescript-latest)<br/>[Atlas. SearchalongRouteOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchalongrouteoptions?view=azure-iot-typescript-latest)<br/>[Atlas. AramaFuzzyOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchfuzzyoptions?view=azure-iot-typescript-latest)<br/>[Atlas. AramaInsideGeometryOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchinsidegeometryoptions?view=azure-iot-typescript-latest)<br/>[Atlas. AraNearbyOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchnearbyoptions?view=azure-iot-typescript-latest)<br/>[Atlas. SearchPOIOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchpoioptions?view=azure-iot-typescript-latest)<br/>[Atlas. SearchPOICategoryOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchpoicategoryoptions?view=azure-iot-typescript-latest) |
+| `google.maps.DirectionsService`  | [atlas.service.RouteUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest)  |
+| `google.maps.DirectionsRequest`  | [Atlas. RotaYönlendirme Seçeneklerini Hesapla](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.calculateroutedirectionsoptions?view=azure-iot-typescript-latest) |
+| `google.maps.places.PlacesService` | [atlas.service.SearchUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest)  |
 
 ## <a name="libraries"></a>Kitaplıklar
 
-Kitaplıklar haritaya ek işlevsellik ekler. Bu kitaplıkların birçoğu Azure haritalar 'ın temel SDK 'larıdır. Bu Google Maps kitaplıklarının yerine kullanılacak bazı eşdeğer sınıflar şunlardır
+Kitaplıklar haritaya ek işlevsellik ekler. Bu kitaplıkların çoğu Azure Haritalar'ın temel SDK'sındadır. İşte bu Google Haritalar kitaplıkları yerine kullanılacak bazı eşdeğer sınıflar
 
 | Google Haritalar           | Azure Haritalar   |
 |-----------------------|--------------|
 | Çizim kitaplığı       | [Çizim araçları modülü](set-drawing-options.md) |
-| Geometri kitaplığı      | [Atlas. matematik](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)   |
+| Geometri kütüphanesi      | [atlas.matematik](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)   |
 | Görselleştirme kitaplığı | [Isı haritası katmanı](map-add-heat-map-layer.md) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Haritalar Web SDK 'Sı hakkında daha fazla bilgi edinin.
+Azure Haritalar Web SDK hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Harita denetimini kullanma](how-to-use-map-control.md)
 
 > [!div class="nextstepaction"]
-> [Hizmetler modülünü kullanma](how-to-use-services-module.md)
+> [Hizmetler modülü nasıl kullanılır?](how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Çizim araçları modülünü kullanma](set-drawing-options.md)
+> [Çizim araçları modülü nasıl kullanılır?](set-drawing-options.md)
 
 > [!div class="nextstepaction"]
 > [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)

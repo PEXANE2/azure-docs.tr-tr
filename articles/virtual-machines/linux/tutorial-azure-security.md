@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure 'da Linux sanal makineleri için Azure Güvenlik Merkezi 'Ni kullanma
+title: Öğretici - Azure'da Linux VM'leri için Azure Güvenlik Merkezi'ni kullanın
 description: Bu öğreticide, Azure’da Linux sanal makinelerinizi korumaya ve güvenliğini sağlamaya yardımcı olmak için Azure Güvenlik Merkezi özelliklerini öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77605530"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
@@ -50,7 +50,7 @@ Sanal makine güvenlik yapılandırmalarına yönelik görünürlük elde edebil
 
 1. Güvenlik Merkezi panosunda **Güvenlik ilkesi**’ne tıklayın ve sonra aboneliğinizi seçin. 
 2. **Veri toplama** için, **Otomatik Sağlama**'da **Açık**'ı seçin.
-3. **Varsayılan çalışma alanı yapılandırmasını** **Güvenlik Merkezi’nin oluşturduğu çalışma alanlarını kullan (varsayılan)** olarak bırakın.
+3. **Varsayılan çalışma alanı yapılandırmasını****Güvenlik Merkezi’nin oluşturduğu çalışma alanlarını kullan (varsayılan)** olarak bırakın.
 4. **Güvenlik Olayları**'nın altında varsayılan **Ortak** seçeneğini koruyun.
 4. Sayfanın üst kısmından **Kaydet**'e tıklayın. 
 
@@ -62,9 +62,9 @@ Güvenlik ilkeleri, Güvenlik Merkezi’nin kendisi için veriler topladığı v
 
 Aboneliğin tümüne bir güvenlik ilkesi oluşturmak için:
 
-1. Güvenlik Merkezi panosunda **Güvenlik ilkesini**, ardından aboneliğinizi seçin.
+1. Güvenlik Merkezi panosunda **Güvenlik ilkesini** seçin ve ardından aboneliğinizi seçin.
 2. **Güvenlik ilkesi** dikey penceresinde **Güvenlik ilkesini** seçin. 
-3. **Güvenlik ilkesi-güvenlik ilkesi** dikey penceresinde, aboneliğe uygulamak istediğiniz ilke öğelerini açın veya kapatın.
+3. Güvenlik **ilkesinde - Güvenlik ilkesi** bıçak, abonelik için uygulamak istediğiniz ilke öğelerini açın veya kapatın.
 4. Ayarlarınızı seçmeyi tamamladığınızda dikey pencerenin en üstünden **Kaydet**'i seçin. 
 
 ![Benzersiz ilke](./media/tutorial-azure-security/unique-policy.png)
@@ -103,9 +103,9 @@ Tüm önerilerin listesini göstermek için:
 
 ## <a name="view-detected-threats"></a>Algılanan tehditleri görüntüleme
 
-Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama özellikleri hakkında ayrıntılı bilgi için bkz. [Güvenlik Merkezi tehditleri nasıl algılar?](../../security-center/security-center-alerts-overview.md#detect-threats).
+Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama yetenekleri hakkında ayrıntılı bilgi için, [Güvenlik Merkezi'nin tehditleri nasıl algıladığını görün?](../../security-center/security-center-alerts-overview.md#detect-threats)
 
-Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu daha yüksek fiyatlandırma katmanına geçtiğinizde **ücretsiz deneme sürümü** kullanılabilir. 
+Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu yüksek fiyatlandırma katmanına taşındığınızda **ücretsiz deneme** sürümü kullanılabilir. 
 
 Fiyatlandırma katmanını değiştirmek için:  
 

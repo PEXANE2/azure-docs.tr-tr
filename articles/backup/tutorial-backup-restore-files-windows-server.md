@@ -1,14 +1,14 @@
 ---
-title: "Öğretici: öğeleri Windows Server 'a kurtarma"
-description: Bu öğreticide, Azure 'dan Windows Server 'a öğe kurtarmak için Microsoft Azure Kurtarma Hizmetleri Agent (MARS) aracısının nasıl kullanılacağını öğrenin.
+title: "Öğretici: Öğeleri Windows Server'a kurtarma"
+description: Bu eğitimde, Öğeleri Azure'dan Windows Server'a kurtarmak için Microsoft Azure Kurtarma Hizmetleri Aracısı 'nı (MARS) nasıl kullanacağınızı öğrenin.
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78672956"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure’dan Windows Server’a dosya kurtarma

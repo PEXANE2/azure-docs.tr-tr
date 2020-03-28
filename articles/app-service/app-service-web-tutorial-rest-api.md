@@ -1,17 +1,17 @@
 ---
-title: 'Öğretici: CORS ile Restuz API barındırma'
-description: Azure App Service’in RESTful API’lerinizi CORS desteğiyle barındırmanıza nasıl yardımcı olduğunu öğrenin. App Service, hem ön uç Web uygulamalarını hem de arka uç API 'Lerini barındırabilir.
+title: 'Öğretici: CORS ile Ev Sahibi RESTful API'
+description: Azure App Service’in RESTful API’lerinizi CORS desteğiyle barındırmanıza nasıl yardımcı olduğunu öğrenin. Uygulama Hizmeti hem ön uç web uygulamalarını hem de arka uç API'lerini barındırabilir.
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/11/2020
-ms.custom: seodec18
-ms.openlocfilehash: 28848d8b676bb5f4182a887f5efdd48c6221041a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: 766b860e6c711107472645d84db50412aaba0e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239703"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046778"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Öğretici: Azure App Service’te CORS ile RESTful API barındırma
 
@@ -28,11 +28,11 @@ Bu öğreticideki adımları MacOS, Linux ve Windows üzerinde izleyebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
-* [Git’i yükleyin](https://git-scm.com/).
+* [Git'i yükleyin.](https://git-scm.com/)
 * [.NET Core'u yükleme](https://www.microsoft.com/net/core/).
 
 ## <a name="create-local-aspnet-core-app"></a>Yerel ASP.NET Core uygulaması oluşturma
@@ -123,13 +123,13 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Azure uygulamasına gidin
+### <a name="browse-to-the-azure-app"></a>Azure uygulamasına göz atın
 
 Tarayıcıda `http://<app_name>.azurewebsites.net/swagger` adresine gidin ve Swagger kullanıcı arabirimiyle çalışın.
 
 ![Azure App Service'te çalışan ASP.NET Core API'si](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
-Dağıtılan API'nizin `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json`swagger.json_dosyasını görmek için_ adresine gidin.
+Dağıtılan API'nizin _swagger.json_ dosyasını görmek için `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` adresine gidin.
 
 Dağıtılan API'nizin çalıştığını görmek için `http://<app_name>.azurewebsites.net/api/todo` adresine gidin.
 
@@ -141,7 +141,7 @@ Ardından, API'niz için App Service'te yerleşik CORS desteğini etkinleştirir
 
 Yerel deponuzda _wwwroot/index.html_ dosyasını açın.
 
-51. satırda, `apiEndpoint` değişkenini dağıtılan API'nizin URL'sine (`http://<app_name>.azurewebsites.net`) ayarlayın. _\<appname>_ değerini App Service'teki uygulamanızın adıyla değiştirin.
+51. satırda, `apiEndpoint` değişkenini dağıtılan API'nizin URL'sine (`http://<app_name>.azurewebsites.net`) ayarlayın. App _ \<Service'de uygulama>_ uygulama adınız ile değiştirin.
 
 Yerel terminal pencerenizde örnek uygulamayı yeniden çalıştırın.
 
@@ -149,7 +149,7 @@ Yerel terminal pencerenizde örnek uygulamayı yeniden çalıştırın.
 dotnet run
 ```
 
-`http://localhost:5000` adresindeki tarayıcı uygulamasına gidin. Tarayıcınızda geliştirici araçları penceresini açın (`Ctrl`+`Shift`Windows için Chrome 'da `i` +ve **konsol** sekmesini inceleyin. Artık `No 'Access-Control-Allow-Origin' header is present on the requested resource`hata iletisini görmeniz gerekir.
+`http://localhost:5000` adresindeki tarayıcı uygulamasına gidin. Tarayıcınızdaki geliştirici araçları penceresini`Ctrl` + `Shift` + `i` açın (Windows için Chrome'da) ve **Konsol** sekmesini inceleyin. Şimdi hata iletisini görmeniz `No 'Access-Control-Allow-Origin' header is present on the requested resource`gerekir.
 
 ![Tarayıcı istemcisinde CORS hatası](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -159,7 +159,7 @@ Tarayıcı uygulaması (`http://localhost:5000`) ile uzak kaynak (`http://<app_n
 
 ### <a name="enable-cors"></a>CORS'yi etkinleştirme 
 
-Cloud Shell'de, [`az resource update`](/cli/azure/resource#az-resource-update) komutunu kullanarak istemcinizin URL'sinde CORS'yi etkinleştirin. _&lt;appname>_ yer tutucusunu değiştirin.
+Bulut Kabuğu'nda, komutu kullanarak cors'u [`az resource update`](/cli/azure/resource#az-resource-update) istemcinizin URL'sine etkinleştirin. Yer _ &lt;tutucu>nın appnamesini_ değiştirin.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
@@ -168,7 +168,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 `properties.cors.allowedOrigins` içinde birden çok istemci URL'si belirtebilirsiniz (`"['URL1','URL2',...]"`). Ayrıca `"['*']"` ile tüm istemci URL'lerini etkinleştirebilirsiniz.
 
 > [!NOTE]
-> Uygulamanız, gönderilecek tanımlama bilgileri veya kimlik doğrulama belirteçleri gibi kimlik bilgilerini gerektiriyorsa, tarayıcıda yanıtta `ACCESS-CONTROL-ALLOW-CREDENTIALS` üst bilgisi gerekebilir. Bunu etkinleştirmek için, App Service CORS yapılandırmasında `true` olarak `properties.cors.supportCredentials` ayarlayın. `allowedOrigins` `'*'`içerdiğinde bu etkinleştirilemez.
+> Uygulamanız çerezler veya kimlik doğrulama belirteçleri gibi kimlik bilgilerini gerektiriyorsa, tarayıcı yanıtta `ACCESS-CONTROL-ALLOW-CREDENTIALS` üstbilgi gerektirebilir. Bunu App Service'de `properties.cors.supportCredentials` etkinleştirmek için `true` CORS config'inize göre ayarlayın. Bu, içerirken `allowedOrigins` `'*'`etkinleştirilemez.
 
 ### <a name="test-cors-again"></a>CORS'yi yeniden test etme
 

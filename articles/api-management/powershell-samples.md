@@ -15,10 +15,10 @@ ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 34526c53757690353ff3756b12ad9f8a5250bb0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75442319"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>API Management için Azure PowerShell örnekleri
@@ -28,7 +28,7 @@ Aşağıdaki tabloda PowerShell'den API Management hizmetiyle çalışmak için 
 | | |
 |-|-|
 |**Sağlama ve yönetme**||
-|[Kullanıcı ekleme](./scripts/powershell-add-user-and-get-subscription-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| API Management'te bir kullanıcı oluşturur ve bir abonelik anahtarı alır.|
+|[Kullanıcı ekle](./scripts/powershell-add-user-and-get-subscription-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| API Management'te bir kullanıcı oluşturur ve bir abonelik anahtarı alır.|
 |[APIM hizmeti oluşturma](./scripts/powershell-create-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Bir Geliştirici SKU API Management Hizmeti oluşturur.|
 |[Hizmeti geri yükleme](./scripts/powershell-backup-restore-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|APIM hizmetini yedekler ve geri yükler.|
 |[APIM hizmetini ölçeklendirme](./scripts/powershell-scale-and-addregion-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|APIM hizmetinden bölgeyi ölçeklendirir ve ekler.|
@@ -37,6 +37,6 @@ Aşağıdaki tabloda PowerShell'den API Management hizmetiyle çalışmak için 
 |[API’yi içeri aktarma](./scripts/powershell-import-api-and-add-to-product.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Bir API’yi içeri aktarır ve bir APIM ürününe ekler.|
 |**Güvenlik**||
 |[Arka ucun güvenliğini sağlama](./scripts/powershell-secure-backend-with-mutual-certificate-authentication.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Karşılıklı sertifika kimlik doğrulaması ile arka ucun güvenliğini sağlar.|
-|**Koruma**||
+|**Koru**||
 |[Hız sınırı ilkesi ayarlama](./scripts/powershell-setup-rate-limit-policy.md?toc=%2fpowershell%2fmodule%2ftoc.json)|İlkeye ürün Düzeyinde hız sınırı uygular. |
 |||

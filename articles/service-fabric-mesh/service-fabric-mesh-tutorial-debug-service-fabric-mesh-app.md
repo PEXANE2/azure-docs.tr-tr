@@ -1,5 +1,5 @@
 ---
-title: Yerel olarak çalışan bir Azure Service Fabric ağı Web uygulamasında hata ayıklama
+title: Yerel olarak çalışan bir Azure Hizmeti Fabric Mesh web uygulamasını hata ayıklama
 description: Bu öğreticide, yerel kümenizde çalışan bir Azure Service Fabric Mesh uygulamasında hata ayıklaması yaparsınız.
 author: dkkapur
 ms.topic: tutorial
@@ -7,17 +7,17 @@ ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75494949"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Öğretici: Yerel geliştirme kümenizde çalışan bir Service Fabric Mesh uygulamasının hatalarını ayıklama
 
 Bir serinin ikinci kısmı olan bu öğreticide, yerel geliştirme kümenizdeki bir Azure Service Fabric Mesh uygulamasında derleme ve hata ayıklama işleminin nasıl yapıldığı gösterilir.
 
-Bu öğreticide şunları öğreneceksiniz:
+Bu öğreticide öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Service Fabric Mesh uygulaması derlediğinizde ne olur?
@@ -37,13 +37,13 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiye başlamadan önce:
 
-* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturabilirsiniz.
+* Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 * [Geliştirme ortamınızı ayarladığınızdan](service-fabric-mesh-howto-setup-developer-environment-sdk.md) ve Service Fabric çalışma zamanı, SDK, Docker ve Visual Studio 2017'yi yüklediğinizden emin olun.
 
 ## <a name="download-the-to-do-sample-application"></a>Yapılacaklar örnek uygulamasını indirme
 
-[Bu öğretici serisinin birinci kısmında](service-fabric-mesh-tutorial-create-dotnetcore.md)yapılacak do örnek uygulamasını oluşturmadıysanız, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki komutu çalıştırın.
+[Bu öğretici serinin birinci bölümünde](service-fabric-mesh-tutorial-create-dotnetcore.md)yapılacaklar örnek uygulamasını oluşturmadıysanız, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki komutu çalıştırın.
 
 ```
 git clone https://github.com/azure-samples/service-fabric-mesh
@@ -67,11 +67,11 @@ Yerel dağıtım bittikten ve Visual Studio uygulamanızı çalıştırdıktan s
 
 ## <a name="debugging-tips"></a>Hata ayıklama ipuçları
 
-[Visual Studio performansını iyileştirme](service-fabric-mesh-howto-optimize-vs.md)bölümündeki yönergeleri izleyerek ilk hata ayıklamanın çalışmasını (F5) çok daha hızlı hale getirin.
+[Görsel Stüdyo'yu Optimize Etme performansındaki](service-fabric-mesh-howto-optimize-vs.md)talimatları izleyerek ilk hata ayıklama çalışmanızı (F5) çok daha hızlı yapın.
 
-Şu anda `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` çağrısının hizmete bağlanamamasına neden olan bir sorun var. Ana bilgisayarınızın IP adresi değiştiğinde bu durumda karşılaşabilirsiniz. Bunu çözmek için:
+Şu anda, aramanın hizmete `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` bağlanmada başarısız olmasına neden olan bir sorun var. Ana bilgisayarınızın IP adresi değiştiğinde bu durumda karşılaşabilirsiniz. Bunu çözmek için:
 
-1. Uygulamayı yerel kümeden kaldırın (Visual Studio'da, **Derleme** > **Çözümü Temizle**).
+1. Uygulamayı yerel kümeden kaldırın (Visual Studio' da**Clean Solution** **Oluşturun).** > 
 2. Service Fabric Yerel Küme Yöneticisi'nde **Yerel Kümeyi Durdur**'u ve ardından **Yerel Kümeyi Başlat**'ı seçin.
 3. Uygulamayı yeniden dağıtın (Visual Studio'da, **F5**).
 
@@ -83,12 +83,12 @@ Uygulama başlatıldığında **404** hatası alırsanız, **service.yaml** içi
 
 ### <a name="debug-in-visual-studio"></a>Visual Studio'da hata ayıklama
 
-Visual Studio 'da bir Service Fabric kafes uygulamasında hata ayıkladığınızda, yerel bir Service Fabric geliştirme kümesi kullanıyorsunuz demektir. Arka uç hizmetinden yapılacaklar öğelerinin nasıl alındığını görmek için OnGet() yönteminde hata ayıklaması yapın.
-1. **Webön uç** projesinde, **dizin. cshtml** > **Index.cshtml.cs** ** > açın** ve **OnGet** yönteminde (17. satır) bir kesme noktası ayarlayın.
-2. **ToDoService** projesinde, **TodoController.cs** öğesini açın ve **Get** yönteminde (15. satır) bir kesme noktası ayarlayın.
+Visual Studio'da bir Service Fabric Mesh uygulamasını hata ayıklarken, yerel bir Service Fabric geliştirme kümesi kullanıyorsunuz. Arka uç hizmetinden yapılacaklar öğelerinin nasıl alındığını görmek için OnGet() yönteminde hata ayıklaması yapın.
+1. **WebFrontEnd** projesinde, **Pages** > **Index.cshtml** > **Index.cshtml.cs** açın ve **OnGet** yönteminde (satır 17) bir kesme noktası ayarlayın.
+2. **ToDoService** projesinde, **TodoController.cs** açın ve **Get** yönteminde (satır 15) bir kesme noktası ayarlayın.
 3. Tarayıcınıza geri dönüp sayfayı yenileyin. Web ön ucu `OnGet()` yönteminde kesme noktasına ulaşırsınız. `backendUrl` değişkenini inceleyerek **service.yaml** dosyasında tanımladığınız ortam değişkenlerinin arka uç hizmetiyle bağlantı kurmak için kullanılan URL'yle nasıl birleştirildiği görebilirsiniz.
 4. `client.GetAsync(backendUrl).GetAwaiter().GetResult())` çağrısından ilerleyin (F10); denetleyicinin `Get()` kesme noktasına ulaşırsınız. Bu yöntemde, yapılacaklar öğesi listesinin bellek içi listeden nasıl alındığını görebilirsiniz.
-5. İşiniz bittiğinde, **SHIFT + F5**tuşlarına basarak Visual Studio 'da projenizin hatalarını ayıklamayı durdurun.
+5. İşinizi **bitirdiğinizde, Shift+F5**tuşuna basarak Visual Studio'da projenizi hata ayıklamayı bırakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

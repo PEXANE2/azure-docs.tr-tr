@@ -1,5 +1,5 @@
 ---
-title: PowerShell 'de bir kümeye uygulama sertifikası ekleme
+title: Powershell'deki bir kümeye uygulama sertifikası ekleme
 description: Azure PowerShell Betiği Örneği - Service Fabric kümesine uygulama sertifikası ekleme.
 services: service-fabric
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 61c22a3949008d61bbe3472f601d2d0dd597a0ac
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77114350"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Service Fabric kümesine uygulama sertifikası ekleme
 
-Bu örnek betik, Key Vault bir sertifikanın nasıl oluşturulacağını ve sonra kümenizin üzerinde çalıştığı sanal makine ölçek kümelerinden birine nasıl dağıtılacağını açıklar. Bu senaryo doğrudan Service Fabric kullanmaz, bunun yerine Key Vault ve sanal makine ölçek kümelerine bağımlıdır.
+Bu örnek komut dosyası, Anahtar Kasa'da bir sertifika oluşturma ve ardından kümenizin üzerinde çalışan sanal makine ölçeği kümelerinden birine nasıl dağıtılanın üzerinden geçer. Bu senaryo Service Fabric'i doğrudan kullanmaz, daha çok Key Vault'a ve sanal makine ölçek kümelerine bağlıdır.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview) bulunan yönergeleri kullanarak Azure PowerShell’i yükleyin ve ardından Azure ile bir bağlantı oluşturmak için `Connect-AzAccount` öğesini çalıştırın. 
 
-## <a name="create-a-certificate-in-key-vault"></a>Key Vault bir sertifika oluşturun
+## <a name="create-a-certificate-in-key-vault"></a>Key Vault'ta sertifika oluşturma
 
 ```powershell
 $VaultName = ""
@@ -40,7 +40,7 @@ $policy = New-AzKeyVaultCertificatePolicy -SubjectName $SubjectName -IssuerName 
 Add-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName -CertificatePolicy $policy
 ```
 
-## <a name="or-upload-an-existing-certificate-into-key-vault"></a>Veya var olan bir sertifikayı Key Vault içine yükleyin
+## <a name="or-upload-an-existing-certificate-into-key-vault"></a>Veya Key Vault'a mevcut bir sertifika yükleme
 
 ```powershell
 $VaultName= ""
@@ -67,7 +67,7 @@ $Secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValu
 
 ```
 
-## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>Sanal Makine Ölçek Kümeleri profilini sertifikayla Güncelleştir
+## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>Sanal makine ölçek kümelerini sertifikayla güncelleştirme profili
 
 ```powershell
 $ResourceGroupName = ""
@@ -84,12 +84,12 @@ $VMSS.virtualmachineprofile.osProfile.secrets[0].vaultCertificates.Add($certConf
 $VMSS = Add-AzVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId (Get-AzKeyVault -VaultName $VaultName).ResourceId  -VaultCertificate $CertConfig
 ```
 
-## <a name="update-the-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini Güncelleştir
+## <a name="update-the-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini güncelleştirme
 ```powershell
 Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMSS -VMScaleSetName $VMSSName
 ```
 
-> Sertifikanın kümenizdeki birden çok düğüm türüne yerleştirilmesini isterseniz, bu betiğin ikinci ve üçüncü bölümlerinin sertifikaya sahip olması gereken her düğüm türü için yinelenmesi gerekir.
+> Sertifikanın kümenizdeki birden çok düğüm türüne yerleştirilmesini istiyorsanız, sertifikaya sahip olması gereken her düğüm türü için bu komut dosyasının ikinci ve üçüncü bölümleri yinelenmelidir.
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
@@ -97,12 +97,12 @@ Bu betik şu komutları kullanır: Tablodaki her komut, komuta özgü belgelere 
 
 | Komut | Notlar |
 |---|---|
-| [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Sertifikayı temsil eden bellek içi bir ilke oluşturur |
-| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| İlkeyi Key Vault dağıtır |
-| [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Bir VM 'de sertifikayı temsil eden bellek içi bir yapılandırma oluşturur |
-| [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
-| [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Sertifikayı, sanal makine ölçek kümesinin bellek içi tanımına ekler |
-| [Güncelleştirme-AzVmss](/powershell/module/az.compute/Update-AzVmss) | Sanal makine ölçek kümesinin yeni tanımını dağıtır |
+| [Yeni-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Sertifikayı temsil eden bir bellek içi ilke oluşturur |
+| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| İlkeyi Key Vault'a dağır |
+| [Yeni-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | VM'de sertifikayı temsil eden bellek içi bir config oluşturur |
+| [Al-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
+| [Ekle-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Sertifikayı sanal makine ölçeği kümesinin bellek içi tanımına ekler |
+| [Güncelleme-AzVmss](/powershell/module/az.compute/Update-AzVmss) | Sanal makine ölçeği kümesinin yeni tanımını dağıtar |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

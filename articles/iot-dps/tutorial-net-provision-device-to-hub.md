@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak cihaz sağlama (.NET)
-description: Bu öğreticide, .NET kullanarak Azure IoT Hub cihaz sağlama hizmeti 'ni (DPS) kullanarak cihazınızı tek bir IoT Hub 'ına nasıl sağlayabileceğiniz gösterilmektedir.
+title: Öğretici - Azure IoT Hub Aygıt Sağlama Hizmeti (.NET) kullanarak sağlama cihazı
+description: Bu öğretici, .NET'i kullanarak Azure IoT Hub Aygıt Sağlama Hizmeti'ni (DPS) kullanarak cihazınızı tek bir IoT hub'ına nasıl sağabileceğinizi gösterir.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976783"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Öğretici: Azure IoT Hub sağlama hizmeti Istemcisini (.NET) kullanarak bir IoT Hub 'ına cihaz kaydetme
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Öğretici: Azure IoT Hub Sağlama Hizmeti İstemcisini (.NET) kullanarak cihazı bir IoT hub'ına kaydedin
 
 Önceki öğreticide, Cihaz Sağlama hizmetine bağlanmak için bir cihazın nasıl ayarlanacağını öğrendiniz. Bu öğreticide, hem **_Tek Kayıt_** hem de **_Kayıt Grupları_** kullanarak cihazınızı tek bir IoT hub’a sağlamak için bu hizmetin nasıl kullanılacağını öğreneceksiniz. Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -25,7 +25,7 @@ ms.locfileid: "74976783"
 > * Cihazı başlatın
 > * Cihaz kayıtlı olduğunu doğrulayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce, [Azure IoT Hub Cihazı Sağlama Hizmeti’ni kullanarak bir cihazı sağlamak üzere ayarlama](./tutorial-set-up-device.md) öğreticisinde açıklandığı gibi cihazınızı ve *Donanım Güvenliği Modülünü* yapılandırdığınızdan emin olun.
 
@@ -61,9 +61,9 @@ Cihaz Sağlama Hizmeti’ne cihazı kaydetmenin iki yolu vardır:
     
 1. Çözüm Gezgini'nde **DeviceProvisioning** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet...** seçeneğine tıklayın.
 
-1. **NuGet Paket Yöneticisi** penceresinde **Göz At**’ı seçin ve **microsoft.azure.devices.provisioning.service** araması yapın. Girişi seçin ve **Yükle**’ye tıklayarak **Microsoft.Azure.Devices.Provisioning.Service** paketini yükleyin ve kullanım koşullarını kabul edin. Bu yordam ile [Azure IoT Cihaz Sağlama Hizmeti SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketi ve bağımlılıkları indirilir, yüklenir ve bu pakete bir başvuru eklenir.
+1. **NuGet Paket Yöneticisi** penceresinde **Göz At**’ı seçin ve **microsoft.azure.devices.provisioning.service** araması yapın. Girişi seçin ve **Yükle**’ye tıklayarak **Microsoft.Azure.Devices.Provisioning.Service** paketini yükleyin ve kullanım koşullarını kabul edin. Bu yordam, [Azure IoT Aygıt Sağlama Hizmeti SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketini ve bağımlılıklarını karşıdan yükler, yükler ve ekler.
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -129,7 +129,7 @@ Cihaz Sağlama Hizmeti’ne cihazı kaydetmenin iki yolu vardır:
     Console.ReadLine();
     ```
         
-1. Visual Studio Çözüm Gezgini çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla...** öğesine tıklayın. **Tek bir başlangıç projesi**' ni seçin ve ardından açılan menüden **devicesağlamasını** proje ' yi seçin.  
+1. Visual Studio Solution Explorer'da, çözümünüzü sağ tıklatın ve ardından **Başlangıç Projeleri Ayarla'yı tıklatın...**. **Tek başlangıç projesini**seçin ve ardından açılan menüde **DeviceProvisioning** projesini seçin.  
 
 1. **DeviceProvisiong** adlı .NET cihaz uygulamasını çalıştırın. Cihaz sağlamasını ayarlaması gerekir: 
 
@@ -146,7 +146,7 @@ Cihaz başarıyla kaydedildiğinde cihazın portalda şu şekilde görüntülend
 
 1. Visual Studio Çözüm Gezgini'nde, yukarıda oluşturduğunuz **DeviceProvisioning** projesini açın. 
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;
@@ -250,4 +250,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Yük dengeli hublar arasında birden çok cihaz sağlamayı öğrenmek için sonraki öğreticiye ilerleyin. 
 
 > [!div class="nextstepaction"]
-> [Yük dengeli IoT hubları arasında cihaz sağlama](./tutorial-provision-multiple-hubs.md)
+> [Yük dengeli IoT Hub'larında cihazları sağlama](./tutorial-provision-multiple-hubs.md)

@@ -1,17 +1,17 @@
 ---
-title: Öğretici-Azure yol tablolarını anormal kullanarak yapılandırma
-description: Anormal kullanarak Azure yol tabloları oluşturmayı, yönetmeyi ve silmeyi öğrenin. Ayrıca yollar oluşturmayı ve silmeyi de öğrenin.
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, ağ, rota, yol tablosu
+title: Öğretici - Ansible kullanarak Azure rota tablolarını yapılandırın
+description: Ansible'ı kullanarak Azure rota tablolarını nasıl oluşturup yöneteceknizi ve sileyin öğrenin. Ayrıca rotaoluşturmayı ve silmeyi de öğrenin.
+keywords: ansible, azure, devops, bash, oyun kitabı, ağ, rota, rota tablosu
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 1f08aebe7e9dcc1c5687f50ac91c7cb8cc8a62eb
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75659806"
 ---
-# <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Öğretici: Azure yol tablolarını anormal kullanarak yapılandırma
+# <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Öğretici: Ansible kullanarak Azure rota tablolarını yapılandırın
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
@@ -21,7 +21,7 @@ Azure, Azure alt ağları, sanal ağlar ve şirket içi ağlar arasındaki trafi
 
 > [!div class="checklist"]
 >
-> Yol tablosu oluşturma bir sanal ağ ve alt ağ oluşturma bir yönlendirme tablosunu alt ağ ile Ilişkilendirme rota tablosunun alt ağ ile Ilişkisini kaldırma rotalar oluşturma ve silme rota tablosunu sorgulama rota tablosunu silme
+> Rota tablosu oluşturma Sanal ağ ve alt ağ ile bir rota tablosunu alt ağdan ilişkilendirin Rota tablosunu bir alt ağdan oluştur ve yolları sil Bir rota tablosunu silme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -30,7 +30,7 @@ Azure, Azure alt ağları, sanal ağlar ve şirket içi ağlar arasındaki trafi
 
 ## <a name="create-a-route-table"></a>Yönlendirme tablosu oluşturma
 
-Bu bölümdeki PlayBook kodu bir yol tablosu oluşturur. Rota tablosu limitleri hakkında daha fazla bilgi için bkz. [Azure Limitleri](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
+Bu bölümdeki oyun kitabı kodu bir rota tablosu oluşturur. Rota tablosu sınırları hakkında bilgi için [Azure sınırlarına](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits)bakın. 
 
 Aşağıdaki playbook'u `route_table_create.yml` olarak kaydedin:
 
@@ -46,7 +46,7 @@ Aşağıdaki playbook'u `route_table_create.yml` olarak kaydedin:
         resource_group: "{{ resource_group }}"
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook route_table_create.yml
@@ -54,25 +54,25 @@ ansible-playbook route_table_create.yml
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Yönlendirme tablosunu bir alt ağ ile ilişkilendirme
 
-Bu bölümdeki PlayBook kodu:
+Bu bölümdeki oyun kitabı kodu:
 
-* Bir sanal ağ oluşturur
+* Sanal ağ oluşturur
 * Sanal ağ içinde bir alt ağ oluşturur
-* Bir yol tablosunu alt ağla ilişkilendirir
+* Bir rota tablosunu alt ağa ilişkilendirir
 
-Yol tabloları, sanal ağlarla ilişkili değildir. Bunun yerine, rota tabloları bir sanal ağın alt ağıyla ilişkilendirilir.
+Rota tabloları sanal ağlarla ilişkili değildir. Bunun yerine, rota tabloları sanal bir ağın alt ağıyla ilişkilidir.
 
-Sanal ağ ve yol tablosu aynı Azure konumunda ve abonelikte birlikte bulunmalıdır.
+Sanal ağ ve rota tablosu aynı Azure konumu nda ve aboneliğinde bir arada bulunmalıdır.
 
-Alt ağlar ve rota tablolarının bire çok ilişkisi vardır. Bir alt ağ, ilişkili yol tablosu veya bir yol tablosu olmadan tanımlanabilir. Yol tabloları None, One veya çok alt ağlarla ilişkilendirilebilir. 
+Alt ağlar ve rota tablolarının bir-çok ilişkisi vardır. Bir alt ağ ilişkili rota tablosu veya bir rota tablosu olmadan tanımlanabilir. Rota tabloları hiçbir, bir veya çok alt ağile ilişkilendirilebilir. 
 
-Alt ağdan gelen trafik şu temel alınarak yönlendirilir:
+Alt ağdan gelen trafik aşağıdakilere göre yönlendirilir:
 
-- rota tablolarında tanımlanan rotalar
-- [Varsayılan yollar](/azure/virtual-network/virtual-networks-udr-overview#default)
-- Şirket içi ağdan yayılan yollar
+- rota tabloları içinde tanımlanan rotalar
+- [varsayılan rotalar](/azure/virtual-network/virtual-networks-udr-overview#default)
+- şirket içi bir ağdan yayılan rotalar
 
-Sanal ağın bir Azure sanal ağ geçidine bağlı olması gerekir. Ağ Geçidi, bir VPN ağ geçidiyle BGP kullanılıyorsa ExpressRoute veya VPN olabilir.
+Sanal ağ bir Azure sanal ağ ağ geçidine bağlı olmalıdır. Ağ geçidi, VPN ağ geçidi olan BGP kullanıyorsa ExpressRoute veya VPN olabilir.
 
 Aşağıdaki playbook'u `route_table_associate.yml` olarak kaydedin:
 
@@ -103,17 +103,17 @@ Aşağıdaki playbook'u `route_table_associate.yml` olarak kaydedin:
         route_table: "{ route_table_name }"
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook route_table_associate.yml
 ```
 
-## <a name="dissociate-a-route-table-from-a-subnet"></a>Bir alt ağdan yol tablosunun ilişkilendirmesini kaldırma
+## <a name="dissociate-a-route-table-from-a-subnet"></a>Bir rota tablosunu alt ağdan ayırma
 
-Bu bölümdeki PlayBook kodu bir alt ağdan yol tablosunun ilişkisini kaldırmaktadır.
+Bu bölümdeki oyun kitabı kodu bir alt ağdan bir rota tablosunu ayırıyor.
 
-Bir alt ağdan yol tablosunu ilişkilendirme sırasında, alt ağın `route_table` `None`olarak ayarlayın. 
+Bir rota tablosunu alt ağdan ayrıştırırken, alt `route_table` ağ `None`için '' için 
 
 Aşağıdaki playbook'u `route_table_dissociate.yml` olarak kaydedin:
 
@@ -132,7 +132,7 @@ Aşağıdaki playbook'u `route_table_dissociate.yml` olarak kaydedin:
         address_prefix_cidr: "10.1.0.0/24"
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook route_table_dissociate.yml
@@ -140,7 +140,7 @@ ansible-playbook route_table_dissociate.yml
 
 ## <a name="create-a-route"></a>Yönlendirme oluşturma
 
-Bu bölümdeki PlayBook kodu, yol tablosundaki bir yoldur. 
+Bu bölümdeki oyun kitabı kodu, bir rota tablosu içindeki bir rotadır. 
 
 Aşağıdaki playbook'u `route_create.yml` olarak kaydedin:
 
@@ -160,20 +160,20 @@ Aşağıdaki playbook'u `route_create.yml` olarak kaydedin:
         route_table_name: "{{ route_table_name }}"
 ```
 
-PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
+Oyun kitabını çalıştırmadan önce aşağıdaki notalara bakın:
 
-* `virtual_network_gateway` `next_hop_type`olarak tanımlanmıştır. Azure 'un yönlendirmeleri nasıl seçtiği hakkında daha fazla bilgi için bkz. [yönlendirmeye genel bakış](/azure/virtual-network/virtual-networks-udr-overview).
-* `address_prefix` `10.1.0.0/16`olarak tanımlanmıştır. Ön ek, yol tablosu içinde çoğaltılamaz.
+* `virtual_network_gateway`olarak `next_hop_type`tanımlanır. Azure'un yolları nasıl seçtiği hakkında daha fazla bilgi için [Yönlendirme'ye genel bakış](/azure/virtual-network/virtual-networks-udr-overview)bilgisine bakın.
+* `address_prefix`olarak `10.1.0.0/16`tanımlanır. Önek rota tablosu içinde çoğaltılamaz.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook route_create.yml
 ```
 
-## <a name="delete-a-route"></a>Bir yolu silme
+## <a name="delete-a-route"></a>Rotayı silme
 
-Bu bölümdeki PlayBook kodu bir rota tablosundan bir yol siler.
+Bu bölümdeki oyun kitabı kodu rota tablosundan bir rotayı siler.
 
 Aşağıdaki playbook'u `route_delete.yml` olarak kaydedin:
 
@@ -192,15 +192,15 @@ Aşağıdaki playbook'u `route_delete.yml` olarak kaydedin:
         state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook route_delete.yml
 ```
 
-## <a name="get-route-table-information"></a>Rota tablosu bilgilerini al
+## <a name="get-route-table-information"></a>Rota tablosu bilgilerini alma
 
-Bu bölümdeki PlayBook kodu, yol tablosu bilgilerini almak için `azure_rm_routetable_facts` anormal modül kullanır.
+Bu bölümdeki oyun kitabı kodu, rota `azure_rm_routetable_facts` tablosu bilgilerini almak için Ansible modüllerini kullanır.
 
 Aşağıdaki playbook'u `route_table_facts.yml` olarak kaydedin:
 
@@ -220,19 +220,19 @@ Aşağıdaki playbook'u `route_table_facts.yml` olarak kaydedin:
          var: query.route_tables[0]
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook route_table_facts.yml
 ```
 
-## <a name="delete-a-route-table"></a>Yol tablosunu silme
+## <a name="delete-a-route-table"></a>Rota tablosunu silme
 
-Bu bölümdeki PlayBook kodu bir yol tablosudur.
+Bu bölümdeki oyun kitabı kodu bir rota tablosu.
 
-Bir yol tablosu silindiğinde, tüm rotaları de silinir.
+Bir rota tablosu silindiğinde, tüm yolları da silinir.
 
-Bir alt ağ ile ilişkili ise yol tablosu silinemez. Yol tablosunu silmeyi denemeden önce [herhangi bir alt ağdan yol tablosunun ilişkilendirmesini](#dissociate-a-route-table-from-a-subnet) kaldırın. 
+Bir alt ağla ilişkiliyse, rota tablosu silinemez. Rota tablosunu silmeye çalışmadan önce [rota tablosunu herhangi bir alt ağdan](#dissociate-a-route-table-from-a-subnet) ayırın. 
 
 Aşağıdaki playbook'u `route_table_delete.yml` olarak kaydedin:
 
@@ -249,7 +249,7 @@ Aşağıdaki playbook'u `route_table_delete.yml` olarak kaydedin:
         state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook route_table_delete.yml

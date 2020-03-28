@@ -1,6 +1,6 @@
 ---
-title: MSAL Android ile paylaşılan cihaz modunu kullanma | Mavisi
-description: Bir Android cihazını paylaşılan modda çalışacak şekilde hazırlama ve Firstline çalışan uygulamasını çalıştırma hakkında bilgi edinin.
+title: MSAL Android ile paylaşılan cihaz modunu kullanma | Azure
+description: Paylaşılan modda çalışacak ve bir firstline worker uygulamasını çalıştıracak bir Android cihazını nasıl hazırlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: mmacy
@@ -16,10 +16,10 @@ ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77086066"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Öğretici: Android uygulamanızda paylaşılan cihaz modunu kullanma
@@ -27,19 +27,19 @@ ms.locfileid: "77086066"
 > [!NOTE]
 > Bu özellik genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
 ## <a name="developer-guide"></a>Geliştirici kılavuzu
 
-Bu kılavuz, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir Android uygulamasında paylaşılan cihaz modunu uygulamaya yönelik Geliştirici Kılavuzu sağlar. MSAL Android uygulamanızla tümleştirme, bir Kullanıcı oturum açma, Microsoft Graph 'i çağırma ve bir kullanıcının oturumunu kapatma hakkında bilgi edinmek için [msal Android öğreticisine](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android) bakın.
+Bu kılavuz, Microsoft Kimlik Doğrulama Kitaplığı (MSAL) kullanarak bir Android uygulamasında paylaşılan aygıt modunu uygulamak için geliştirici kılavuzu sağlar. MSAL'ı Android uygulamanızla nasıl entegre edinacağınızı, bir kullanıcıda oturum açmayı, Microsoft grafiğini nasıl arayacağınızı ve bir kullanıcıyı nasıl oturum unuzu tamamlayacağınızı görmek için [MSAL Android öğreticisine](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android) bakın.
 
 ### <a name="download-the-sample"></a>Örneği indirme
 
-[Örnek uygulamayı](https://github.com/Azure-Samples/ms-identity-android-java/) GitHub ' dan kopyalayın. Örnek, [tek veya çoklu hesap modunda](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)çalışma özelliğine sahiptir.
+Örnek [uygulamayı](https://github.com/Azure-Samples/ms-identity-android-java/) GitHub'dan klonla. Örnek, [tek veya çok hesap modunda](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)çalışma özelliğine sahiptir.
 
-### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>MSAL SDK 'sını yerel Maven deponuza ekleyin
+### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>MSAL SDK'yı yerel Maven deponuza ekleyin
 
-Örnek uygulamayı kullanmıyorsanız, MSAL kitaplığını Build. Gradle dosyanıza bağımlılık olarak ekleyin, örneğin:
+Örnek uygulamayı kullanmıyorsanız, msal kitaplığını build.gradle dosyanızda bir bağımlılık olarak ekleyin:
 
 ```gradle
 dependencies{
@@ -47,15 +47,15 @@ dependencies{
 }
 ```
 
-### <a name="configure-your-app-to-use-shared-device-mode"></a>Uygulamanızı paylaşılan cihaz modunu kullanacak şekilde yapılandırma
+### <a name="configure-your-app-to-use-shared-device-mode"></a>Uygulamanızı paylaşılan aygıt modunu kullanacak şekilde yapılandırın
 
-Yapılandırma dosyanızı ayarlama hakkında daha fazla bilgi için [yapılandırma belgelerine](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) bakın.
+Config dosyanızı ayarlama hakkında daha fazla bilgi için [yapılandırma belgelerine](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) bakın.
 
-MSAL yapılandırma dosyanızda `true` `"shared_device_mode_supported"` ayarlayın.
+MSAL `true` yapılandırma dosyanızda ayarlanın. `"shared_device_mode_supported"`
 
-Birden çok hesap modunu desteklemeyi planlamayabilir. Bu, paylaşılan bir cihaz kullanmıyorsanız ve Kullanıcı uygulamada aynı anda birden fazla hesapla oturum açabilir. Bu durumda, `"account_mode"` `"SINGLE"`olarak ayarlayın. Bu, uygulamanızın `ISingleAccountPublicClientApplication`her zaman almasını ve MSAL tümleştirmesini önemli ölçüde basitleştirmesini sağlar. `"account_mode"` varsayılan değeri `"MULTIPLE"`, bu nedenle `"single account"` modunu kullanıyorsanız yapılandırma dosyasında bu değerin değiştirilmesi önemlidir.
+Birden çok hesap modunu desteklemeyi planlayamayabilirsiniz. Paylaşılan bir aygıtı kullanmıyorsanız ve kullanıcı uygulamada aynı anda birden fazla hesapla oturum açabilirse bu olabilir. Eğer öyleyse, `"account_mode"` `"SINGLE"`ayarlayın. Bu, uygulamanızın her zaman `ISingleAccountPublicClientApplication`alacağını garanti eder ve MSAL entegrasyonunuzu önemli ölçüde kolaylaştırır. Varsayılan `"account_mode"` `"MULTIPLE"`değer, bu nedenle mod kullanıyorsanız `"single account"` config dosyasında bu değeri değiştirmek önemlidir.
 
-Örnek uygulamanın **ana**>**res**>**ham** dizini>**uygulamaya** eklenen auth_config. JSON dosyasına bir örnek aşağıda verilmiştir:
+Örnek uygulamanın **ana**>**main**>**res**>**ham** dizininde yer alan auth_config.json dosyasının bir örneği aşağıda verilmiştir:
 
 ```json
 {
@@ -77,13 +77,13 @@ Birden çok hesap modunu desteklemeyi planlamayabilir. Bu, paylaşılan bir ciha
 }
 ```
 
-### <a name="detect-shared-device-mode"></a>Paylaşılan cihaz modunu Algıla
+### <a name="detect-shared-device-mode"></a>Paylaşılan aygıt modunu algılama
 
-Paylaşılan cihaz modu, Android cihazları birden çok çalışan tarafından paylaşılmak üzere yapılandırmanıza olanak sağlarken, Microsoft kimliği tarafından desteklenen cihaz yönetimini de sağlar. Çalışanlar cihazlarında oturum açabilir ve müşteri bilgilerine hızlıca erişebilir. Bunlar, vardiyası veya göreviyle bitdiklerinde, tek tıklamayla paylaşılan cihazdaki tüm uygulamaların oturumunu açabiliyor ve cihaz bir sonraki çalışanın kullanımına hemen hazır olacaktır.
+Paylaşılan aygıt modu, Android aygıtları birden çok çalışan tarafından paylaşılacak şekilde yapılandırmanıza olanak sağlarken, aygıtın Microsoft Identity destekli yönetimini de sağlar. Çalışanlar cihazlarında oturum açabilir ve müşteri bilgilerine hızlı bir şekilde erişebilir. Vardiyaları veya görevleri tamamlandığında, paylaşılan cihazdaki tüm uygulamaları tek bir tıklamayla oturumdan çıkarabilecekler ve cihaz bir sonraki çalışanın kullanımına hemen hazır olacak.
 
-Paylaşılan cihaz modundaki bir cihazda bir uygulamanın çalışıp çalışmadığını öğrenmek için `isSharedDevice()` kullanın. Uygulamanız, UX 'e göre değişiklik gerekip gerekmediğini öğrenmek için bu bayrağı kullanabilir.
+Bir `isSharedDevice()` uygulamanın paylaşılan aygıt modunda olan bir aygıtta mı çalıştığını belirlemek için kullanın. Uygulamanız, UX'yi buna göre değiştirip değiştirmemesi gerektiğini belirlemek için bu bayrağı kullanabilir.
 
-`isSharedDevice()`nasıl kullanabileceğinizi gösteren bir kod parçacığı aşağıda verilmiştir.  Örnek uygulamadaki `SingleAccountModeFragment` sınıfından olur:
+Burada nasıl kullanabileceğinizi `isSharedDevice()`gösteren bir kod parçacığı.  Örnek uygulamadaki `SingleAccountModeFragment` sınıftan:
 
 ```Java
 deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Shared");
@@ -91,7 +91,7 @@ deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Sh
 
 ### <a name="initialize-the-publicclientapplication-object"></a>PublicClientApplication nesnesini başlatma
 
-MSAL yapılandırma dosyasında `"account_mode":"SINGLE"` ayarlarsanız, döndürülen uygulama nesnesini `ISingleAccountPublicCLientApplication`olarak güvenli bir şekilde çevirebilirsiniz.
+MSAL `"account_mode":"SINGLE"` config dosyasında ayarlarsanız, döndürülen uygulama nesnesini güvenli `ISingleAccountPublicCLientApplication`bir şekilde '' olarak atabilirsiniz.
 
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -112,11 +112,11 @@ PublicClientApplication.create(this.getApplicationCOntext(),
 });  
 ```
 
-### <a name="detect-single-vs-multiple-account-mode"></a>Tek ve birden çok hesap modunu Algıla
+### <a name="detect-single-vs-multiple-account-mode"></a>Tek ve çoklu hesap modunu algılama
 
-Paylaşılan bir cihazda yalnızca Firstline çalışanları için kullanılacak bir uygulama yazıyorsanız, uygulamanızı yalnızca tek hesap modunu destekleyecek şekilde yazmanızı öneririz. Bu, tıp kayıtları uygulamaları, fatura uygulamaları ve çoğu iş kolu uygulaması gibi görev odaklı birçok uygulamayı içerir. Bu, SDK 'nın birçok özelliğinin konamesi gerekmeyeceği için geliştirmeyi basitleştirir.
+Paylaşılan bir cihazda yalnızca firstline çalışanları için kullanılacak bir uygulama yazıyorsanız, uygulamanızı yalnızca tek hesap lı modu desteklemek için yazmanızı öneririz. Buna, tıbbi kayıt uygulamaları, fatura uygulamaları ve çoğu iş yeri uygulaması gibi görev odaklı uygulamaların çoğu dahildir. SDK'nın birçok özelliğinin barındırılması gerekmeyeceğinden, bu durum gelişmenizi kolaylaştıracaktır.
 
-Uygulamanız birden çok hesabı ve paylaşılan cihaz modunu destekliyorsa, bir tür denetimi gerçekleştirmeniz ve aşağıda gösterildiği gibi uygun arabirime dönüştürmeniz gerekir.
+Uygulamanız birden fazla hesabı ve paylaşılan aygıt modunu destekliyorsa, aşağıda gösterildiği gibi bir tür denetimi gerçekleştirmeniz ve uygun arabirime döküm uygulamanız gerekir.
 
 ```java
 private IPublicClientApplication mApplication;
@@ -130,9 +130,9 @@ private IPublicClientApplication mApplication;
         }
 ```
 
-### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>Oturum açan kullanıcıyı al ve cihazda bir kullanıcının değişip değişmediğini belirleme
+### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>Oturum açmış kullanıcıyı alın ve cihazda bir kullanıcının değişip değişmediğini belirleyin
 
-`loadAccount` yöntemi, oturum açmış kullanıcının hesabını alır. `onAccountChanged` yöntemi, oturum açmış kullanıcının değişip değişmediğini belirler ve varsa temizler:
+Yöntem, `loadAccount` oturum açmış kullanıcının hesabını alır. Yöntem, `onAccountChanged` oturum açmış kullanıcının değişip değişmediğini belirler ve eğer öyleyse, temizleyin:
 
 ```java 
 private void loadAccount()
@@ -165,9 +165,9 @@ private void loadAccount()
 }  
 ```
 
-### <a name="globally-sign-in-a-user"></a>Bir kullanıcı için genel olarak oturum açma
+### <a name="globally-sign-in-a-user"></a>Genel olarak oturum aç
 
-Aşağıdaki, bir kullanıcının, kimlik doğrulayıcı uygulamasıyla MSAL kullanan diğer uygulamalara, cihaz genelinde oturum açtığı:
+Aygıt genelinde ki bir kullanıcıda, Authenticator Uygulaması yla MSAL kullanan diğer uygulamalara aşağıdaki işaretler:
 
 ```java
 private void onSignInClicked()
@@ -176,9 +176,9 @@ private void onSignInClicked()
 }
 ```
 
-### <a name="globally-sign-out-a-user"></a>Kullanıcı oturumunu küresel olarak kapatma
+### <a name="globally-sign-out-a-user"></a>Genel olarak bir kullanıcıyı oturum aç
 
-Aşağıdakiler, oturum açmış olan hesabı kaldırır ve önbelleğe alınmış belirteçleri yalnızca uygulamadan değil, aynı zamanda paylaşılan cihaz modundaki cihazdan temizler:
+Aşağıda, oturum açmış hesap kaldırılır ve önbelleğe alınmış belirteçleri yalnızca uygulamadan değil, paylaşılan aygıt modundabulunan cihazdan da temizler:
 
 ```java
 private void onSignOutClicked()
@@ -201,69 +201,69 @@ private void onSignOutClicked()
 
 ## <a name="administrator-guide"></a>Yönetici kılavuzu
 
-Aşağıdaki adımlarda Azure portal uygulamanızı ayarlama ve cihazınızı paylaşılan-cihaz moduna geçirme açıklanır.
+Aşağıdaki adımlar, uygulamanızı Azure portalında ayarlamayı ve cihazınızı paylaşılan aygıt moduna sokmayı açıklar.
 
-### <a name="register-your-application-in-azure-active-directory"></a>Uygulamanızı Azure Active Directory kaydetme
+### <a name="register-your-application-in-azure-active-directory"></a>Uygulamanızı Azure Active Directory'ye kaydedin
 
-İlk olarak, uygulamanızı kuruluş kiracınıza kaydedin. Daha sonra uygulamanızın doğru çalışması için auth_config. json ' de aşağıdaki değerleri sağlayın.
+İlk olarak, başvurunuzu kuruluş kiracınıza kaydedin. Daha sonra uygulamanızın düzgün çalışması için aşağıdaki değerleri auth_config.json olarak sağlayın.
 
-Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [Uygulamanızı kaydetme](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application).
+Bunun nasıl yapılacılaştırılacıyla ilgili bilgi için [başvurunuzu kaydedin.](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application)
 
 > [!NOTE]
-> Uygulamanızı kaydettiğinizde lütfen sol taraftaki hızlı başlangıç kılavuzunu kullanın ve ardından **Android**' i seçin. Bu, size uygulamanız için **paket adı** ve **imza karması** sağlamak istediğiniz bir sayfaya yol açacaktır. Bunlar, uygulama yapılandırmanızın çalışmasını sağlamak için çok önemlidir. Ardından, uygulamanız için kullanabileceğiniz ve auth_config. JSON dosyanıza yapıştırdığınız bir yapılandırma nesnesi alacaksınız.
+> Uygulamanızı kaydettirirken, lütfen sol taraftaki hızlı başlangıç kılavuzunu kullanın ve ardından **Android'i**seçin. Bu, uygulamanız için **Paket Adı** ve **İmza Hash'ı** sağlamanızın isteneceği bir sayfaya yönlendirecektir. Bunlar, uygulama yapılandırmanızın işe yarayacağından emin olmak için çok önemlidir. Daha sonra, uygulamanız için kullanabileceğiniz ve auth_config.json dosyanıza kesip yapıştıracağınız bir yapılandırma nesnesi alırsınız.
 
-![uygulama kayıt ekranı](media/tutorial-v2-shared-device-mode/register-app.png) **Bu değişikliği bana yap** ' ı seçmeniz ve ardından hızlı başlangıç için gereken değerleri Azure Portal belirtmeniz gerekir. Bu işlem tamamlandığında, ihtiyacınız olan tüm yapılandırma dosyalarını oluşturacağız.
+![Uygulama kayıt](media/tutorial-v2-shared-device-mode/register-app.png) ekranı **Bu değişikliği benim için yapın'ı** seçmeli ve ardından Azure portalında hızlı başlatmanın istediği değerleri sağlamalısınız. Bu iş bittiğinde, ihtiyacınız olan tüm yapılandırma dosyalarını oluştururuz.
 
-![Uygulama yapılandırma bilgisi ekranı](media/tutorial-v2-shared-device-mode/config-info.png)
+![App config bilgi ekranı](media/tutorial-v2-shared-device-mode/config-info.png)
 
 ## <a name="set-up-a-tenant"></a>Kiracı ayarlama
 
-Sınama amacıyla kiracınızda şunları ayarlayın: en az iki çalışan, bir bulut cihaz yöneticisi ve bir genel yönetici. Azure portal, kuruluş rollerini değiştirerek bulut cihazı yöneticisini ayarlayın. Azure portal, **bulut cihaz yöneticisi** > **Azure Active Directory** > **Roller ve yöneticiler** ' i seçerek kurumsal rollerinizi erişin. Paylaşılan moda bir cihaz koyabileceğiniz kullanıcıları ekleyin.
+Sınama amacıyla, kiracınızda aşağıdakileri ayarlayın: en az iki çalışan, bir Bulut Aygıt Yöneticisi ve bir Global Administrator. Azure portalında, Kurumsal Rolleri değiştirerek Bulut Aygıt Yöneticisi'ni ayarlayın. Azure portalında, **Azure Etkin Dizin** > Rolleri**ve Yöneticiler** > Bulut**Aygıt Yöneticisi'ni**seçerek Kuruluş Rollerinize erişin. Aygıtı paylaşılan moda koyabilecek kullanıcıları ekleyin.
 
 ## <a name="set-up-an-android-device-in-shared-mode"></a>Paylaşılan modda bir Android cihazı ayarlama
 
-### <a name="download-the-authenticator-app"></a>Authenticator uygulamasını indirin
+### <a name="download-the-authenticator-app"></a>Kimlik Doğrulayıcı Uygulamasını İndirin
 
-Google Play mağazasından Microsoft Authenticator uygulamasını indirin. Uygulamayı zaten yüklediyseniz, en son sürüm olduğundan emin olun.
+Microsoft Authenticator Uygulamasını Google Play mağazasından indirin. Uygulamayı zaten indirdiyseniz, uygulamanın en son sürüm olduğundan emin olun.
 
-### <a name="authenticator-app-settings--registering-the-device-in-the-cloud"></a>Cihaza kimlik doğrulayıcı uygulama ayarları & cihazı buluta kaydetme
+### <a name="authenticator-app-settings--registering-the-device-in-the-cloud"></a>Kimlik doğrulayıcı uygulama ayarları & aygıtı buluta kaydettirme
 
-Authenticator uygulamasını başlatın ve ana hesap sayfasına gidin. **Hesap Ekle** sayfasını gördüğünüzde, cihazı paylaşılan duruma getirmek için hazırsınız demektir.
+Kimlik Doğrulayıcı Uygulamasını başlatın ve ana hesap sayfasına gidin. **Hesap Ekle** sayfasını gördüğünüzde, aygıtın paylaşılamasını yapmaya hazırsınız.
 
-![Kimlik doğrulayıcı hesap ekleme ekranı](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
+![Kimlik doğrulayıcı hesap ekranı eklemek](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
- Sağ menü çubuğunu kullanarak **Ayarlar** bölmesine gidin. **İş & okul hesapları**altında **cihaz kaydı** ' nı seçin.
+ Sağ menü çubuğunu kullanarak **Ayarlar** bölmesine gidin. İş & **Okul hesapları**altında Cihaz **Kaydı'nı** seçin.
  
- ![Kimlik doğrulayıcı hesap ekleme ekranı](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
+ ![Kimlik doğrulayıcı hesap ekranı eklemek](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
- Bu düğmeye tıkladığınızda, cihaz kişilerine erişim yetkisi vermeniz istenir. Bunun nedeni, Android 'in cihazdaki hesap Tümleştirmesidir. **İzin ver**' i seçin.
+ Bu düğmeyi tıklattığınızda, aygıt kişilerine erişim yetkisi vermeniz istenir. Bunun nedeni Android'in cihazdaki hesap tümleştirmesidir. **İzin ver'i**seçin.
 
- ![Kimlik doğrulayıcı hesap ekleme ekranı](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
+ ![Kimlik doğrulayıcı hesap ekranı eklemek](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
 
-Bulut Cihaz Yöneticisi, kurumsal e-postalarını, **paylaşılan bir cihaz olarak girin veya kaydeder**. Ardından **paylaşılan cihaz olarak kaydet** düğmesine tıklayın ve kimlik bilgilerini girin.
+Bulut Aygıt Yöneticisi, kuruluş e-postalarını altında girmeli **veya paylaşılan bir aygıt olarak kaydolmalıdır.** Ardından **paylaşılan aygıt olarak kaydol** düğmesini tıklatın ve kimlik bilgilerini girin.
 
-![kayıt-cihaz ekranı](media/tutorial-v2-shared-device-mode/register-device.png)
+![kayıt cihazı ekranı](media/tutorial-v2-shared-device-mode/register-device.png)
 
-![oturum açma](media/tutorial-v2-shared-device-mode/sign-in.png)
+![sign-in](media/tutorial-v2-shared-device-mode/sign-in.png)
 
-Cihaz artık paylaşılan modda.
+Aygıt artık paylaşılan modda.
 
-![kayıt-cihaz ekranı](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
+![kayıt cihazı ekranı](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
 
- Cihazdaki tüm oturum açma işlemleri ve oturum açma işlemleri genel olacaktır, yani MSAL ve cihazdaki Microsoft Authenticator tümleştirilmiş tüm uygulamalar için geçerlidir. Artık, paylaşılan cihaz modu özelliklerini kullanan cihaza uygulamalar dağıtabilirsiniz.
+ Cihazdaki tüm oturum açma ve oturum açmalar genel olacaktır, bu da cihazdaki MSAL ve Microsoft Authenticator ile entegre edilmiş tüm uygulamalar için geçerli olduğu anlamına gelir. Artık uygulamaları paylaşılan aygıt modu özelliklerini kullanan aygıta dağıtabilirsiniz.
 
-## <a name="view-the-shared-device-in-the-azure-portal"></a>Azure portal paylaşılan cihazı görüntüleme
+## <a name="view-the-shared-device-in-the-azure-portal"></a>Azure portalında paylaşılan aygıtı görüntüleme
 
-Paylaşılan moda bir cihaz yerleştirdikten sonra, kuruluşunuz tarafından bilinir ve kuruluş kiracınızda izlenir. Paylaşılan cihazlarınızı, Azure portal Azure Active Directory dikey penceresinde bulunan **JOIN türüne** bakarak görüntüleyebilirsiniz.
+Bir aygıtı paylaşılan moda koyduktan sonra, aygıtınız tarafından bilinir ve kuruluş kiracınızda izlenir. Azure portalınızın Azure Etkin Dizin bıçak'ındaki **Birleştirme Türü'ne** bakarak paylaşılan cihazlarınızı görüntüleyebilirsiniz.
 
-![Azure portal tüm cihazlar dikey penceresi](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
+![Azure portalındaki tüm aygıtlar bıçak](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
 
 ## <a name="running-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-Örnek uygulama, kuruluşunuzun Graph API çağıramayacak basit bir uygulamadır. n ilk kez çalıştırmak için uygulama, çalışan hesabınızın yeni olduğu için onay istenir.
+Örnek Uygulama, kuruluşunuzun Grafik API'sini arayacak basit bir uygulamadır. n ilk çalıştırma, uygulama çalışan hesabınıza yeni olduğu için onay vermeniz istenir.
 
-![Uygulama yapılandırma bilgisi ekranı](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
+![App config bilgi ekranı](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Android cihazlar Için paylaşılan cihaz modunda](shared-device-mode.md) paylaşılan mod hakkında daha fazla bilgi edinin
+Android cihazlar için [Paylaşılan aygıt modunda](shared-device-mode.md) paylaşılan mod hakkında daha fazla bilgi edinin

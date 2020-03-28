@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: PagerDuty ile Azure Active Directory Tümleştirme | Microsoft Docs'
-description: Azure Active Directory ve PagerDuty arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: PagerDuty ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve PagerDuty arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,237 +16,237 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b7a522aaf35303bbd87e7aafe65b1302f1b98bc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095324"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Öğretici: PagerDuty ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Öğretici: PagerDuty ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile PagerDuty tümleştirme konusunda bilgi edinin.
-PagerDuty Azure AD ile tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, PagerDuty'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+PagerDuty'yi Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* PagerDuty erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) PagerDuty için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* PagerDuty erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla PagerDuty 'de (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesi PagerDuty ile yapılandırma için aşağıdakiler gerekir:
+Azure AD tümleştirmesini PagerDuty ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* PagerDuty çoklu oturum açma abonelik etkin.
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* PagerDuty tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* PagerDuty destekler **SP** tarafından başlatılan
+* PagerDuty **SP** başlatılan SSO destekler
 
-## <a name="adding-pagerduty-from-the-gallery"></a>PagerDuty galeri ekleme
+## <a name="adding-pagerduty-from-the-gallery"></a>Galeriden PagerDuty ekleme
 
-Azure AD'de PagerDuty tümleştirmesini yapılandırmak için PagerDuty Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+PagerDuty'nin Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize PagerDuty eklemeniz gerekir.
 
 **Galeriden PagerDuty eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **PagerDuty**seçin **PagerDuty** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusunda **PagerDuty**yazın, sonuç panelinden **PagerDuty'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
      ![Sonuç listesinde PagerDuty](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma PagerDuty adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısı ve PagerDuty ilgili kullanıcı arasında bir bağlantı ilişki kurulması gerekir.
+Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre PagerDuty ile yapılandırıp test esinizsiniz.
+Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile PagerDuty'deki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma PagerDuty ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD oturum açma işlemlerini PagerDuty ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[PagerDuty çoklu oturum açmayı yapılandırma](#configure-pagerduty-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[PagerDuty test kullanıcısı oluşturma](#create-pagerduty-test-user)**  - kullanıcı Azure AD gösterimini bağlı PagerDuty Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[PagerDuty Tek Oturum Açma](#configure-pagerduty-single-sign-on)** 'yı yapılandırır - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[PagerDuty test kullanıcısını oluşturun](#create-pagerduty-test-user)** - PagerDuty'de Britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma PagerDuty ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+PagerDuty ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **PagerDuty** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. **PagerDuty** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![PagerDuty etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![PagerDuty Domain ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
 
-    a. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<tenant-name>.pagerduty.com`
+    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<tenant-name>.pagerduty.com`
 
-    b. İçinde **tanımlayıcı (varlık kimliği)** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<tenant-name>.pagerduty.com`
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<tenant-name>.pagerduty.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek oturum açma URL ve tanımlayıcıdır ile güncelleştirin. İlgili kişi [PagerDuty istemci Destek ekibine](https://www.pagerduty.com/support/) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [PagerDuty Client destek ekibine](https://www.pagerduty.com/support/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. Üzerinde **PagerDuty kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+6. **PagerDuty'i ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-pagerduty-single-sign-on"></a>PagerDuty tek oturum açmayı yapılandırın
+### <a name="configure-pagerduty-single-sign-on"></a>PagerDuty Tek Oturum Açma'yı Yapılandır
 
-1. Farklı bir web tarayıcı penceresinde Pagerduty şirket sitenize yönetici olarak oturum.
+1. Farklı bir web tarayıcısı penceresinde, Pagerduty şirket sitenize yönetici olarak giriş yapın.
 
-2. Üstteki menüden **hesap ayarları**.
+2. Üstteki menüde Hesap **Ayarları'nı**tıklatın.
 
-    ![Hesap ayarları](./media/pagerduty-tutorial/ic778535.png "hesap ayarları")
+    ![Hesap Ayarları](./media/pagerduty-tutorial/ic778535.png "Hesap Ayarları")
 
-3. Tıklayın **çoklu oturum açma**.
+3. **Tek Oturum Açma'yı**tıklatın.
 
-    ![Çoklu oturum açma](./media/pagerduty-tutorial/ic778536.png "çoklu oturum açma")
+    ![Çoklu oturum açma](./media/pagerduty-tutorial/ic778536.png "Çoklu oturum açma")
 
-4. Üzerinde **etkinleştirme çoklu oturum açma (SSO)** sayfasında, aşağıdaki adımları gerçekleştirin:
+4. Tek **Oturum Açma (SSO) etkinleştir** sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı etkinleştirme](./media/pagerduty-tutorial/ic778537.png "çoklu oturum açmayı etkinleştir")
+    ![Tek oturum açmayı etkinleştirme](./media/pagerduty-tutorial/ic778537.png "Tek oturum açmayı etkinleştirme")
 
-    a. Not Defteri'nde Azure portalından indirilen, base-64 kodlanmış sertifika açın, içeriğini, panoya kopyalayın ve yapıştırın kendisine **X.509 sertifikası** metin kutusu
+    a. Azure portalından indirilen taban-64 kodlu sertifikanızı not defterinde açın, içeriğini panonuza kopyalayın ve **ardından X.509 Sertifika** metin kutusuna yapıştırın
   
-    b. İçinde **oturum açma URL'si** metin kutusu, yapıştırma **oturum açma URL'si** , Azure Portalı'ndan kopyaladığınız.
+    b. Giriş **URL** metin kutusuna, Azure portalından kopyaladığınız **Giriş URL'sini** yapıştırın.
   
-    c. İçinde **oturum kapatma URL'si** metin kutusu, yapıştırma **oturum kapatma URL'si** , Azure Portalı'ndan kopyaladığınız.
+    c. **Logout URL** metin kutusuna, Azure portalından kopyaladığınız **Logout URL'sini** yapıştırın.
 
-    d. Seçin **izin kullanıcı adı/parola ile oturum açma**.
+    d. **Kullanıcı adı/parola girişine izin ver'i**seçin.
 
-    e. Seçin **gerektiren tam kimlik doğrulaması bağlamı karşılaştırma** onay kutusu.
+    e. EXACT kimlik doğrulama bağlamı karşılaştırma onay kutusunu **seve** seçin.
 
-    f. Tıklayın **değişiklikleri kaydetmek**.
+    f. **Değişiklikleri Kaydet**’e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
+    b. Kullanıcı **adı** alanı türünde**brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, PagerDuty için erişim izni verdiğinizde, Azure çoklu oturum açma kullanılacak Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın PagerDuty'e erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **PagerDuty**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve **ardından PagerDuty'i**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **PagerDuty**.
+2. Uygulamalar listesinde **PagerDuty'i**seçin.
 
-    ![Uygulamalar listesinde PagerDuty bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki PagerDuty bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-pagerduty-test-user"></a>PagerDuty test kullanıcısı oluşturma
+### <a name="create-pagerduty-test-user"></a>PagerDuty test kullanıcıoluşturma
 
-PagerDuty için oturum açmak Azure AD kullanıcılarının etkinleştirmek için bunların PagerDuty sağlanması gerekir.  
-PagerDuty söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının PagerDuty'de oturum açabilmeleri için PagerDuty'de oturum açmaları gerekir.  
+PagerDuty durumunda, sağlama manuel bir görevdir.
 
 >[!NOTE]
->Herhangi diğer Pagerduty kullanıcı hesabı oluşturma araçları kullanabilir veya API'leri tarafından Pagerduty sağlamak için Azure Active Directory kullanıcı hesaplarını sağlanan.
+>Azure Active Directory kullanıcı hesaplarını sağlamak için Pagerduty tarafından sağlanan diğer Pagerduty kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Oturum açın, **Pagerduty** Kiracı.
+1. **Pagerduty** kiracınıza giriş yapın.
 
-2. Üstteki menüden **kullanıcılar**.
+2. Üstteki menüde **Kullanıcılar'ı**tıklatın.
 
-3. Tıklayın **kullanıcı ekleme**.
+3. **Kullanıcı Ekle'yi**tıklatın.
    
-    ![Kullanıcı ekleme](./media/pagerduty-tutorial/ic778539.png "kullanıcı ekleme")
+    ![Kullanıcı Ekleme](./media/pagerduty-tutorial/ic778539.png "Kullanıcı Ekle")
 
-4.  Üzerinde **takımınızın davet** iletişim kutusunda, aşağıdaki adımları gerçekleştirin:
+4.  Takım iletişim **günlüğüne davet edin,** aşağıdaki adımları gerçekleştirin:
    
-    ![Takımınız davet](./media/pagerduty-tutorial/ic778540.png "takımınızın davet edin")
+    ![Ekibinizi davet edin](./media/pagerduty-tutorial/ic778540.png "Ekibinizi davet edin")
 
-    a. Tür **ilk ve son adı** gibi kullanıcının **Britta Simon**. 
+    a. **Britta Simon**gibi kullanıcının **Adı ve Soyadını** yazın. 
    
-    b. Girin **e-posta** istediğiniz kullanıcının adresini **brittasimon\@contoso.com**.
+    b. **Brittasimon\@contoso.com**gibi kullanıcının **E-posta** adresini girin.
    
-    c. Tıklayın **Ekle**ve ardından **Davet Gönder**.
+    c. **Ekle'yi**tıklatın ve ardından **Davet Gönder'i**tıklatın.
    
     >[!NOTE]
-    >Eklenen tüm kullanıcılar, bir PagerDuty hesabı oluşturmak için bir davet alırsınız.
+    >Eklenen tüm kullanıcılar a.r.Duty hesabı oluşturmak için davet alır.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli PagerDuty kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama PagerDuty için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki PagerDuty döşemesini tıklattığınızda, SSO'yu kurduğunuz PagerDuty'de otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,7 +1,7 @@
 ---
-title: Örnek Jupyter Not Defterleri
+title: Örnek Jupyter dizüstü bilgisayarlar
 titleSuffix: Azure Machine Learning
-description: SDK için Azure Machine Learning Python 'u araştırmak için örnek jupi not defterlerini bulun ve kullanın.
+description: SDK için Azure Machine Learning Python'u keşfetmek için örnek Jupyter dizüstü bilgisayarları bulun ve kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,51 +12,51 @@ ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78673644"
 ---
-# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupi Not defterleri ile Azure Machine Learning araştırma
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter dizüstü bilgisayarlarla Azure Machine Learning'i keşfedin
 
-[Örnek Azure Machine Learning Not defteri deposu](https://github.com/azure/machinelearningnotebooks) , en son Azure MACHINE LEARNING Python SDK örnekleri içerir. Bu Jupter Not defterleri, SDK 'Yı keşfetmenize ve kendi makine öğrenimi projeleriniz için model olarak sunmanıza yardımcı olacak şekilde tasarlanmıştır.
+[Azure Machine Learning Notebook deposu örneği,](https://github.com/azure/machinelearningnotebooks) en son Azure Machine Learning Python SDK örneklerini içerir. Bu Juypter dizüstü bilgisayarlar, SDK'yı keşfetmenize ve kendi makine öğrenimi projeleriniz için model olarak hizmet vermenize yardımcı olmak üzere tasarlanmıştır.
 
-Bu makalede, aşağıdaki ortamlardan depoya nasıl erişebileceğiniz gösterilmektedir:
+Bu makalede, aşağıdaki ortamlardan depoya nasıl erişilen gösterir:
 
-- [Azure Machine Learning işlem örneği](#notebookvm)
-- [Kendi Not defteri sunucunuzu getir](#byo)
+- [Azure Machine Learning bilgi işlem örneği](#notebookvm)
+- [Kendi dizüstü bilgisayar sunucunuzu getirin](#byo)
 - [Veri Bilimi Sanal Makinesi](#dsvm)
 
 > [!NOTE]
-> Depoyu kopyaladıktan sonra, öğretici ve **kullanım için nasıl yapılır-azureml** klasöründeki ilgili not defterlerindeki **eğitim** not defterlerini bulacaksınız.
+> Depoyu klonladıktan sonra, **öğreticiler** klasöründe öğretici not defterleri ve **kullanıma nasıl sunulur-azureml** klasöründe özel dizüstü bilgisayarlar bulacaksınız.
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneğinde örnekleri al
+## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning bilgi işlem örneğinden örnekler alın
 
-Örnekleri kullanmaya başlamanın en kolay yolu, öğreticiyi tamamlamaya yönelik bir yöntemdir [: Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md). Tamamlandıktan sonra, SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu olacaktır. İndirme veya yükleme gerekli değildir.
+Örneklerle başlamanın en kolay yolu [Öğreticiyi tamamlamaktır: Kurulum ortamı ve çalışma alanı.](tutorial-1st-experiment-sdk-setup.md) Tamamlandıktan sonra, SDK ve örnek deposu ile önceden yüklenmiş özel bir dizüstü bilgisayar sunucusuna sahip olacaksınız. İndirme veya yükleme gerekmez.
 
 <a name="byo"></a>
 
-## <a name="get-samples-on-your-notebook-server"></a>Not defteri sunucunuzda örnekleri alın
+## <a name="get-samples-on-your-notebook-server"></a>Not defteri sunucunuzdan örnekler alın
 
-Yerel geliştirme için kendi Not defteri sunucunuzu getirmek isterseniz, aşağıdaki adımları izleyin:
+Yerel geliştirme için kendi dizüstü bilgisayar sunucunuzu getirmek istiyorsanız aşağıdaki adımları izleyin:
 
 [!INCLUDE [aml-your-server](../../includes/aml-your-server.md)]
 
-Bu yönergeler hızlı başlangıç ve öğretici Not defterleri için gereken temel SDK paketlerini yükler. Diğer örnek Not defterleri, ek bileşenleri yüklemenizi gerektirebilir. Daha fazla bilgi için bkz. [Python için Azure Machine Learning SDK 'Sını yüklemeyin](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+Bu talimatlar, hızlı başlatma ve öğretici dizüstü bilgisayarlar için gerekli olan temel SDK paketlerini yükler. Diğer örnek not defterleri, ek bileşenler yüklemenizi gerektirebilir. Daha fazla bilgi için [Python için Azure Machine Learning SDK'yı yükleyin' e](https://docs.microsoft.com/python/api/overview/azure/ml/install)bakın.
 
 <a name="dsvm"></a>
-## <a name="get-samples-on-dsvm"></a>DSVM 'de örnekleri al
+## <a name="get-samples-on-dsvm"></a>DSVM'den örnek alın
 
-Veri Bilimi Sanal Makinesi (DSVM), özellikle veri bilimi yapmak için oluşturulmuş özelleştirilmiş bir VM görüntüsüdür. [DSVM oluşturursanız](how-to-configure-environment.md#dsvm), SDK ve Not defteri sunucusu yüklenir ve sizin için yapılandırılır. Ancak yine de bir çalışma alanı oluşturmanız ve örnek depoyu kopyalamanız gerekir.
+Veri Bilimi Sanal Makine (DSVM) özel olarak veri bilimi yapmak için oluşturulmuş özelleştirilmiş bir VM görüntüdür. Bir [DSVM oluşturursanız,](how-to-configure-environment.md#dsvm)SDK ve dizüstü bilgisayar sunucusu sizin için yüklenir ve yapılandırılır. Ancak, yine de bir çalışma alanı oluşturmanız ve örnek deposunu klonlamanız gerekir.
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning neler yapabileceğini öğrenmek için [örnek not defterlerini](https://aka.ms/aml-notebooks) bulun veya bu öğreticileri deneyin:
+Azure Machine Learning'in neler yapabileceğini keşfetmek için [örnek not defterlerini](https://aka.ms/aml-notebooks) keşfedin veya şu öğreticileri deneyin:
 
-- [IIST ile görüntü sınıflandırma modeli eğitme ve dağıtma](tutorial-train-models-with-aml.md)
+- [MNIST ile bir görüntü sınıflandırma modeli eğitin ve dağıtın](tutorial-train-models-with-aml.md)
 
-- [NYC TAXI veri kümesiyle bir regresyon modeli eğitmek için veri hazırlama ve otomatik makine öğrenimi kullanma](tutorial-auto-train-models.md)
+- [Verileri hazırlamak ve NYC taksi veri seti ile bir regresyon modeli eğitmek için otomatik makine öğrenme kullanın](tutorial-auto-train-models.md)

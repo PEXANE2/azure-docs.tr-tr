@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Displayr | Microsoft Docs'
-description: Azure Active Directory ve Displayr arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Displayr ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Displayr arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,210 +17,210 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67103982"
 ---
-# <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Öğretici: Displayr Azure Active Directory ile tümleştirme
+# <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Öğretici: Ekrancıyı Azure Etkin Dizini ile tümleştir
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Displayr tümleştirme öğreneceksiniz. Displayr Azure AD ile tümleştirdiğinizde, şunları yapabilirsiniz:
+Bu eğitimde, Displayr'ı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Displayr'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Displayr erişimi, Azure AD'de denetler.
-* Otomatik olarak Displayr için kendi Azure AD hesapları ile oturum açmış olmasını sağlayın.
-* Bir merkezi konumda - Azure portalı hesaplarınızı yönetin.
+* Görüntüleyici'ye erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Displayr'da otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir aboneliğiniz yoksa, alabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/free/).
-* Displayr çoklu oturum açma (SSO) abonelik etkin.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Displayr tek oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD SSO bir test ortamında test edin. Displayr destekler **SP** SSO başlattı.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. **Displayr, SP** tarafından başlatılan SSO'yı destekler.
 
-## <a name="adding-displayr-from-the-gallery"></a>Galeriden Displayr ekleme
+## <a name="adding-displayr-from-the-gallery"></a>Galeriden Görüntüleyici Ekleme
 
-Azure AD'de Displayr tümleştirmesini yapılandırmak için Displayr Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Displayr'ın Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Görüntüleyici eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmeti.
-1. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları**.
-1. Yeni bir uygulama eklemek için seçin **yeni uygulama**.
-1. İçinde **Galeriden Ekle** bölümüne şunu yazın **Displayr** arama kutusuna.
-1. Seçin **Displayr** gelen sonuçlar panelinde ve uygulama ekleyin. Uygulama, kiracınıza eklendiği sırada birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Görüntüleyici** yazın.
+1. Sonuç panelinden **Görüntüleyici'yi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Yapılandırma ve Azure AD SSO kullanarak adlı bir test kullanıcı Displayr ile test etme **Britta Simon**. Çalışmak SSO için Displayr içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişki oluşturmanız gerekir.
+Azure AD SSO'nu **Britta Simon**adlı bir test kullanıcısı kullanarak Displayr ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile Displayr'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Yapılandırma ve Azure AD SSO ile Displayr sınamak için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO'yu Displayr ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO'yu yapılandırma](#configure-azure-ad-sso)**  kullanıcılarınız bu özelliği kullanmak etkinleştirmek için.
-2. **[Displayr yapılandırma](#configure-displayr)**  uygulama tarafında SSO ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  Britta Simon, Azure AD çoklu oturum açma kullanmak üzere etkinleştirmek için.
-5. **[Displayr test kullanıcısı oluşturma](#create-displayr-test-user)**  bir karşılığı Britta simon'un kullanıcı Azure AD gösterimini bağlı Displayr sağlamak için.
-6. **[Test SSO](#test-sso)**  yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+2. Uygulama tarafındaki SSO ayarlarını yapılandırmak için **[Displayr'i yapılandırın.](#configure-displayr)**
+3. Britta Simon ile Azure AD tek oturum açma işlemini test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. Displayr'da Britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için **[Displayr test kullanıcısını oluşturun.](#create-displayr-test-user)**
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Displayr** uygulama tümleştirme sayfası, bulma **Yönet** bölümünde ve seçin **çoklu oturum açma**.
-1. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** sayfasında **SAML**.
-1. Üzerinde **Kurulum çoklu oturum açma SAML ile** sayfasında, düzenleme/kalem simgesine tıklayıp **temel SAML yapılandırma** ayarlarını düzenlemek için.
+1. Azure [portalında,](https://portal.azure.com/) **Ekrancı** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
+1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla Kurulum Tek Oturum** Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımı uygulayın:
+1. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımı gerçekleştirin:
 
-    a. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<YOURDOMAIN>.displayr.com`
+    a. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<YOURDOMAIN>.displayr.com`
 
-    b. İçinde **tanımlayıcı (varlık kimliği)** metin kutusuna şu biçimi kullanarak bir URL yazın:`<YOURDOMAIN>.displayr.com`
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`<YOURDOMAIN>.displayr.com`
 
     >[!NOTE]
-    >Bu değerler gerçek değildir. Bu değerler gerçek oturum açma URL ve tanımlayıcıdır ile güncelleştirin. İlgili kişi [Displayr istemci Destek ekibine](mailto:support@displayr.com) bu değerleri almak için. Azure portalında temel bir SAML yapılandırma bölümünde gösterilen desenleri de başvurabilirsiniz.
+    >Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Displayr İstemci destek ekibine](mailto:support@displayr.com) başvurun. Azure portalındaki Temel SAML Yapılandırması bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. Üzerinde **Kurulum çoklu oturum açma SAML ile** sayfasında **SAML imzalama sertifikası** bölümünde, bulma **sertifika (Base64)** seçip **indirin** sertifikayı indirin ve bilgisayarınıza kaydedin.
+1. **SAML** ile Kurulum Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. Displayr uygulama, özel öznitelik eşlemelerini SAML belirteci öznitelikleri yapılandırmanıza ekleyin gerektiren belirli bir biçimde SAML onaylamalarını bekler. Aşağıdaki ekran görüntüsünde, varsayılan öznitelikler listesinde gösterilmiştir. Tıklayın **Düzenle** kullanıcı öznitelikleri iletişim kutusunu açmak için simge.
+1. Görüntüleyici uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir. Kullanıcı Öznitelikleri iletişim kutusunu açmak için **Edit** simgesini tıklatın.
 
     ![image](common/edit-attribute.png)
 
-1. Yukarıdaki için ayrıca Displayr uygulama SAML yanıtta geçirilecek birkaç daha fazla öznitelik bekliyor. İçinde **kullanıcı öznitelikleri ve talepler** bölümünde **grup talepleri (Önizleme)** iletişim kutusunda, aşağıdaki adımları gerçekleştirin:
+1. Yukarıdakilere ek olarak, Displayr uygulaması SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. **Grup Talepleri (Önizleme)** iletişim kutusundaki **Kullanıcı Öznitelikleri & Talepler** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. Tıklayın **kalem** yanındaki **grupları döndürülen talebi**.
+    a. **Talepte döndürülen Gruplar'ın**yanındaki **kalemi** tıklatın.
 
     ![image](./media/displayr-tutorial/config04.png)
 
     ![image](./media/displayr-tutorial/config05.png)
 
-    b. Seçin **tüm grupları** radyo listeden.
+    b. Radyo listesinden **Tüm Gruplar'ı** seçin.
 
-    c. Seçin **kaynak özniteliği** , **Grup Kimliği**.
+    c. **Grup Kimliğinin**Kaynak **Özniteliği'ni** seçin.
 
-    d. Denetleme **grup talebi adını özelleştirme**.
+    d. **Grup talebinin adını özelleştirin.**
 
-    e. Denetleme **yayma gruplar olarak rol talepleri**.
+    e. **Rol talepleri olarak Emit gruplarını**denetleyin.
 
-    f. **Kaydet**’e tıklayın.
+    f. **Kaydet**'e tıklayın.
 
-1. Üzerinde **Kurulum Displayr** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. Ayar **görüntüleyici** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-   ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+   ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="configure-displayr"></a>Displayr yapılandırın
+### <a name="configure-displayr"></a>Görüntüleyiciyi Yapılandır
 
-1. Yüklemeniz gerekiyor Displayr içinde yapılandırmasını otomatik hale getirmenizi **My Apps güvenli oturum açma tarayıcı uzantısı** tıklayarak **uzantıyı yükleme**.
+1. Displayr içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
 
-    ![Uygulamaları uzantım](common/install-myappssecure-extension.png)
+    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
 
-2. Uzantı tarayıcıya ekledikten sonra tıklayarak **Kurulum Displayr** Displayr uygulamaya yönlendirir. Burada, Displayr oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı otomatik olarak sizin için uygulamayı yapılandırma ve 3-6 adımları otomatik hale getirin.
+2. Tarayıcıya uzantı ekledikten **sonra, Setup Displayr'ı** tıklatın ve sizi Ekrancı uygulamasına yönlendirecektir. Buradan, Görüntüleyici'de oturum açabilmek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-6 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-3. Displayr el ile ayarlamak istiyorsanız, yeni bir web tarayıcı penceresi ve oturum Displayr şirketinizin sitesi yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Ekrancı'yı el ile kurmak istiyorsanız, yeni bir web tarayıcısı penceresi açın ve Ekrancı şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Tıklayarak **ayarları** gidin **hesabı**.
+4. **Ayarlar'a** tıklayın ve **Ardından Hesap'a**gidin.
 
     ![Yapılandırma](./media/displayr-tutorial/config01.png)
 
-5. Geçiş **ayarları** tıklayarak için sayfayı aşağı kaydırın ve üstteki menüden **yapılandırma tek oturum üzerinde (SAML)** .
+5. Üst menüden **Ayarlar'a** geçin ve Yapılandırma **Tek İşaretini Aç (SAML)** tıklatmak için sayfayı aşağı kaydırın.
 
     ![Yapılandırma](./media/displayr-tutorial/config02.png)
 
-6. Üzerinde **tek oturum üzerinde (SAML)** sayfasında, aşağıdaki adımları gerçekleştirin:
+6. Tek **İşaret Açma (SAML)** sayfasında aşağıdaki adımları gerçekleştirin:
 
     ![Yapılandırma](./media/displayr-tutorial/config03.png)
 
-    a. Denetleme **etkinleştirme tek oturum üzerinde (SAML)** kutusu.
+    a. Tek **İşaret Açma (SAML)** kutusunu etkinleştir kutusunu işaretleyin.
 
-    b. Gerçek kopyalama **tanımlayıcısı** değerini **temel SAML yapılandırma** Azure AD'ye bölümüne yapıştırın **veren** metin kutusu.
+    b. Azure AD'nin **Temel SAML Yapılandırması** bölümündeki gerçek **Tanımlayıcı** değerini kopyalayın ve **Veren** metin kutusuna yapıştırın.
 
-    c. İçinde **oturum açma URL'si** metin kutusunda, değerini yapıştırın **oturum açma URL'si**, hangi Azure Portalı'ndan kopyaladığınız.
+    c. Giriş **URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin**değerini yapıştırın.
 
-    d. İçinde **oturum kapatma URL'si** metin kutusunda, değerini yapıştırın **oturum kapatma URL'si**, hangi Azure Portalı'ndan kopyaladığınız.
+    d. Oturum **Açma URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL**değerini yapıştırın.
 
-    e. Sertifika (Base64) Not Defteri'nde açın, içeriğini kopyalayın ve yapıştırın **sertifika** metin kutusu.
+    e. Sertifikayı (Base64) Not Defteri'nde açın, içeriğini kopyalayın ve **Sertifika** metin kutusuna yapıştırın.
 
-    f. **Grup eşlemelerini** isteğe bağlıdır.
+    f. **Grup eşlemeleri** isteğe bağlıdır.
 
-    g. **Kaydet**’e tıklayın.  
+    g. **Kaydet**'e tıklayın.  
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, bir test kullanıcısı Britta Simon adlı Azure portalında oluşturacaksınız.
+Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure Portalı'ndaki sol bölmeden seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. İçinde **kullanıcı** özellikleri, aşağıdaki adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. İçinde **kullanıcı adı** alanına username@companydomain.extension. Örneğin, `BrittaSimon@contoso.com`.
-   1. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `BrittaSimon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Displayr erişim vererek Britta Simon tıklatmalarını sağlarsınız.
+Bu bölümde, Britta Simon'ın Displayr'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlayacaksınız.
 
-1. Azure portalında **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
-1. Uygulamalar listesinde **Displayr**.
-1. Uygulamanın genel bakış sayfasında bulma **Yönet** seçin ve bölüm **kullanıcılar ve gruplar**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Görüntüleyici'yi**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Seçin **Kullanıcı Ekle**, ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-    ![Kullanıcı ekleme bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** kullanıcılar listesinden ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. SAML onaylama işlemi herhangi bir rolü değer de beklediğiniz varsa **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin ve ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. İçinde **atama Ekle** iletişim kutusunda, tıklayın **atama** düğmesi.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-### <a name="create-displayr-test-user"></a>Displayr test kullanıcısı oluşturma
+### <a name="create-displayr-test-user"></a>Displayr test kullanıcıoluşturma
 
-Azure AD kullanıcılarının etkinleştirmek için oturum içinde Displayr için bunların Displayr sağlanması gerekir. Displayr içinde sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Displayr'da oturum açmalarını etkinleştirmek için, görüntüleyenler olarak sağlanmalıdır. Görüntüleyici'de, sağlama el ile bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Yönetici olarak Displayr için oturum açın.
+1. Yönetici olarak Görüntüleyici'de oturum açın.
 
-2. Tıklayarak **ayarları** gidin **hesabı**.
+2. **Ayarlar'a** tıklayın ve **Ardından Hesap'a**gidin.
 
-    ![Displayr yapılandırma](./media/displayr-tutorial/config01.png)
+    ![Görüntüleyici Yapılandırması](./media/displayr-tutorial/config01.png)
 
-3. Geçiş **ayarları** sayfayı aşağı kaydırın ve üstteki menüden kadar **kullanıcılar** bölümünde sonra tıklayın **yeni kullanıcı**.
+3. Üst menüden **Ayarlar'a** geçin ve **Kullanıcılar** bölümüne kadar sayfayı aşağı kaydırın ve **Yeni Kullanıcı'yı**tıklatın.
 
-    ![Displayr yapılandırma](./media/displayr-tutorial/config07.png)
+    ![Görüntüleyici Yapılandırması](./media/displayr-tutorial/config07.png)
 
-4. Üzerinde **yeni kullanıcı** sayfasında, aşağıdaki adımları gerçekleştirin:
+4. Yeni **Kullanıcı** sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![Displayr yapılandırma](./media/displayr-tutorial/config06.png)
+    ![Görüntüleyici Yapılandırması](./media/displayr-tutorial/config06.png)
 
-    a. İçinde **adı** metin kutusunda, gibi kullanıcı adını girin **Brittasimon**.
+    a. **Ad** metin **kutusuna, Brittasimon**gibi kullanıcının adını girin.
 
-    b. İçinde **e-posta** metin kutusuna, kullanıcının gibi e-posta girin `Brittasimon@contoso.com`.
+    b. **E-posta** metin kutusuna, gibi `Brittasimon@contoso.com`kullanıcının e-posta girin.
 
-    c. Uygun seçin **grup üyeliği**.
+    c. Uygun **Grup üyeliğinizi**seçin.
 
-    d. **Kaydet**’e tıklayın.
+    d. **Kaydet**'e tıklayın.
 
 ### <a name="test-sso"></a>Test SSO
 
-Erişim Paneli'nde Displayr kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama Displayr için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Ekrancı döşemesini seçtiğinizde, SSO'yu kurduğunuz Ekrangörüntüsü'nda otomatik olarak oturum açmış olmanız gerekir. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

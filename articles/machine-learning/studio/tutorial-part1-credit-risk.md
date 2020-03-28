@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici 1: kredi riskini tahmin etme'
+title: 'Öğretici 1: Kredi riskini tahmin edin'
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (klasik) ' de kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin bir parçasıdır.  Çalışma alanı oluşturma, verileri yükleme ve deneme oluşturma işlemlerinin nasıl yapılacağını gösterir.
+description: Azure Machine Learning Studio'da (klasik) kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümünü nasıl oluşturacağımı gösteren ayrıntılı bir öğretici. Bu öğretici üç bölümlük öğretici serisinin bir parçasıdır.  Çalışma alanı nın nasıl oluşturulup, veri yüklenir ken ve deneme nasıl oluşturulacaklarını gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi
 author: sdgilley
 ms.author: sgilley
@@ -11,252 +11,252 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79204282"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Öğretici 1: kredi riskini tahmin etme-Azure Machine Learning Studio (klasik)
+# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Öğretici 1: Kredi riskini tahmin edin - Azure Machine Learning Studio (klasik)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde genişletilmiş bir görünüm elde edersiniz. Machine Learning Studio (klasik) içinde basit bir model geliştirirsiniz.  Daha sonra modeli bir Azure Machine Learning Web hizmeti olarak dağıtabilirsiniz.  Bu dağıtılan model yeni verileri kullanarak tahminleri yapabilir. Bu öğretici, **üç bölümden oluşan bir öğretici serisinin bir parçasıdır**.
+Bu eğitimde, tahmine dayalı bir analitik çözüm geliştirme sürecine uzun bir göz atabilirsiniz. Machine Learning Studio (klasik) basit bir model geliştirmek.  Ardından modeli Azure Machine Learning web hizmeti olarak dağıtırsınız.  Bu dağıtılan model, yeni verileri kullanarak öngörülerde bulunabilir. Bu öğretici **üç bölümlük öğretici serisinin bir parçasıdır.**
 
 Bir kişinin kredi başvurusunda verdiği bilgilere dayanarak kredi riskini tahmin etmeniz gerektiğini varsayalım.  
 
-Kredi risk değerlendirmesi karmaşık bir sorundur, ancak bu öğreticide bir bit basitleştirilmesi sağlanır. Bunu, Microsoft Azure Machine Learning Studio (klasik) kullanarak tahmine dayalı analiz çözümü oluşturma hakkında bir örnek olarak kullanacaksınız. Bu çözüm için Azure Machine Learning Studio (klasik) ve bir Machine Learning Web hizmeti kullanacaksınız.  
+Kredi risk değerlendirmesi karmaşık bir sorundur, ancak bu öğretici biraz basitleştirir. Microsoft Azure Machine Learning Studio 'yı (klasik) kullanarak nasıl tahmine dayalı bir analiz çözümü oluşturabileceğinize bir örnek olarak kullanırsınız. Bu çözüm için Azure Machine Learning Studio (klasik) ve Machine Learning web hizmetini kullanırsınız.  
 
-Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski verileriyle karşılaşırsınız.  Daha sonra tahmine dayalı bir model geliştirip eğirsiniz.  Son olarak, modeli bir Web hizmeti olarak dağıtırsınız.
+Bu üç bölümlü eğitimde, herkese açık kredi riski verileriyle başlarsınız.  Daha sonra geliştirmek ve bir tahmin modeli eğitmek.  Son olarak modeli bir web hizmeti olarak dağıtın.
 
-Öğreticinin bu bölümünde şunları yapabilirsiniz: 
+Öğretici bu bölümünde size: 
  
 > [!div class="checklist"]
 > * Machine Learning Studio (klasik) çalışma alanı oluşturma
 > * Var olan verileri yükleme
 > * Deneme oluşturma
 
-Daha sonra bu denemeyi, 2. [bölüm içindeki modelleri eğmek](tutorial-part2-credit-risk-train.md) ve sonra [3. bölüm içinde dağıtmak](tutorial-part3-credit-risk-deploy.md)için kullanabilirsiniz.
+Daha sonra [bu denemeyi, modelleri bölüm 2'de eğitmek](tutorial-part2-credit-risk-train.md) ve sonra bunları bölüm [3'te dağıtmak](tutorial-part3-credit-risk-deploy.md)için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide, Machine Learning Studio (klasik) en az bir kez daha önce kullandığınızı ve makine öğrenimi kavramlarını kavradığınızı varsaymaktadır. Bununla birlikte, bir uzman olduğunuz da varsayılmaz.
+Bu öğretici, Machine Learning Studio 'yı (klasik) en az bir kez daha önce kullandığınızı ve makine öğrenimi kavramlarını anladığınızı varsayar. Bununla birlikte, bir uzman olduğunuz da varsayılmaz.
 
-Daha önce **Azure Machine Learning Studio (klasik)** daha önce kullanmadıysanız, hızlı başlangıç ile başlamak isteyebilirsiniz, [ilk veri bilimi denemenizi Azure Machine Learning Studio (klasik) olarak oluşturun](create-experiment.md). Hızlı başlangıç size Machine Learning Studio (klasik) ' i ilk kez götürür. Öğreticide modülleri sürükleyip denemenize bırakma, birbirine bağlama, denemeyi çalıştırma ve sonuçları görme konularında temel bilgiler verilir.
+Azure Machine Learning **Studio'yu (klasik)** daha önce hiç kullanmadıysanız, hızlı başlangıç la başlamak, [Azure Machine Learning Studio'da (klasik) ilk veri bilimi denemenizi oluşturun.](create-experiment.md) Hızlı başlangıç ilk kez Machine Learning Studio (klasik) ile götürür. Öğreticide modülleri sürükleyip denemenize bırakma, birbirine bağlama, denemeyi çalıştırma ve sonuçları görme konularında temel bilgiler verilir.
 
 
 > [!TIP] 
-> Bu öğreticide geliştirdiğimiz denemenin çalışan bir kopyasını [Azure yapay zeka Galerisi](https://gallery.azure.ai)bulabilirsiniz. **[Öğreticiye gidin-kredi riskini tahmin](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** edin ve deneyinin bir kopyasını Machine Learning Studio (klasik) çalışma alanınıza Indirmek için **Studio 'da aç** ' a tıklayın.
+> Bu öğreticide geliştirdiğiniz denemenin çalışma kopyasını Azure [AI Galerisi'nde](https://gallery.azure.ai)bulabilirsiniz. Tutorial **['a](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** gidin - Kredi riskini tahmin edin ve denemenin bir kopyasını Machine Learning Studio (klasik) çalışma alanına indirmek için **Studio'da Aç'ı** tıklatın.
 > 
 
 
 ## <a name="create-a-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (klasik) çalışma alanı oluşturma
 
-Machine Learning Studio (klasik) kullanmak için bir Microsoft Azure Machine Learning Studio (klasik) çalışma alanınız olması gerekir. Bu çalışma alanı, denemeleri oluşturmak, yönetmek ve yayımlamak için ihtiyacınız olan araçları içerir.  
+Machine Learning Studio'yu (klasik) kullanmak için bir Microsoft Azure Machine Learning Studio (klasik) çalışma alanına sahip olmanız gerekir. Bu çalışma alanı, denemeleri oluşturmak, yönetmek ve yayımlamak için ihtiyacınız olan araçları içerir.  
 
-Bir çalışma alanı oluşturmak için, bkz. [Azure Machine Learning Studio (klasik) çalışma alanı oluşturma ve paylaşma](create-workspace.md).
+Çalışma alanı oluşturmak için [bkz.](create-workspace.md)
 
-Çalışma alanınız oluşturulduktan sonra Machine Learning Studio açın (klasik) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Birden fazla çalışma alanı varsa, araç penceresinin sağ üst köşesindeki çalışma alanını seçebilirsiniz.
+Çalışma alanınız oluşturulduktan sonra Machine Learning Studio'yı (klasik) açın.[https://studio.azureml.net/Home](https://studio.azureml.net/Home) Birden fazla çalışma alanınız varsa, pencerenin sağ üst köşesindeki araç çubuğundaki çalışma alanını seçebilirsiniz.
 
-![Studio 'da çalışma alanı seçme (klasik)](./media/tutorial-part1-credit-risk/open-workspace.png)
+![Studio'da çalışma alanını seçin (klasik)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Çalışma alanının sahibiyseniz, diğer kişileri çalışma alanına davet ederek üzerinde çalışmakta olduğunuz denemeleri paylaşabilirsiniz. Bunu, **Ayarlar** sayfasında Machine Learning Studio (klasik) olarak yapabilirsiniz. Microsoft hesabı veya kuruluş hesabı her bir kullanıcı için yeterlidir.
+> Çalışma alanının sahibiyseniz, başkalarını çalışma alanına davet ederek üzerinde çalıştığınız denemeleri paylaşabilirsiniz. Bunu **AYARLAR** sayfasındamachine Learning Studio 'da (klasik) yapabilirsiniz. Her kullanıcı için Microsoft hesabına veya kuruluş hesabına ihtiyacınız olabilir.
 > 
-> **Ayarlar** sayfasında, **Kullanıcılar**' a ve ardından pencerenin alt kısmındaki **daha fazla kullanıcı davet et** ' e tıklayın.
+> **AYARLAR** **sayfasında, KULLANICILARI**tıklatın, ardından pencerenin altındaki **DAHA FAZLA KULLANICI DAVET** ET'i tıklatın.
 > 
 
-## <a name="upload"></a>Mevcut verileri karşıya yükle
+## <a name="upload-existing-data"></a><a name="upload"></a>Var olan verileri yükleme
 
-Kredi riski için tahmine dayalı bir model geliştirmek için, modeli eğtirecek ve test etmeye yönelik olarak kullanabileceğiniz verilerin olması gerekir. Bu öğreticide, UC Irvine Machine Learning deposundan "UCı Statgünlüğü (Almanya kredi verileri) veri kümesi" ni kullanacaksınız. Buradan bulabilirsiniz:  
+Kredi riski için tahmine dayalı bir model geliştirmek için, modeli eğitmek ve sonra test etmek için kullanabileceğiniz verilere ihtiyacınız vardır. Bu eğitim için UC Irvine Machine Learning deposundan "UCI Statlog (Alman Kredi Verileri) Veri Seti"ni kullanacaksınız. Burada bulabilirsiniz:  
 <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
-**Almanya. Data**adlı dosyayı kullanacaksınız. Bu dosyayı yerel sabit sürücünüze indirin.  
+**german.data**adlı dosyayı kullanacaksınız. Bu dosyayı yerel sabit diskinize indirin.  
 
-**Almanya. Data** veri kümesi, kredi için 1000 son başvura için 20 değişken satırları içerir. Bu 20 değişken, her kredi başvuranı için tanımlayıcı özellikler sağlayan veri kümesinin özellik kümesini ( *özellik vektörü*) temsil eder. Her satırdaki ek bir sütun, başvuranın, düşük kredi riski ve 300 yüksek risk olarak tanımlanan 700 başvuranlarla hesaplanan kredi riskini temsil eder.
+**german.data** kümesi, kredi için 1000 geçmiş başvuru sahibi için 20 değişkenlik satırlar içerir. Bu 20 değişken, her kredi başvuru sahibi için tanımlayıcı özellikler sağlayan veri kümesinin *(özellik vektörü)* kümesini temsil eder. Her satırdaki ek bir sütun, 700 başvuru sahibinin düşük kredi riski ve 300'ün yüksek risk olarak tanımlanmasıyla, başvuranın hesaplanan kredi riskini temsil eder.
 
-UCI Web sitesi, bu veriler için özellik vektörünün özniteliklerinin açıklamasını sağlar. Bu veriler, mali bilgiler, kredi geçmişi, istihdam durumu ve kişisel bilgiler içerir. Her başvuran için, düşük veya yüksek kredi riski olup olmadığını belirten bir ikili derecelendirme verilmiştir. 
+UCI web sitesi, bu veriler için özellik vektörünün özniteliklerinin bir açıklamasını sağlar. Bu veriler finansal bilgileri, kredi geçmişini, istihdam durumunu ve kişisel bilgileri içerir. Her başvuru sahibi için, düşük veya yüksek kredi riski olup olmadığını gösteren bir ikili derecelendirme verilmiştir. 
 
-Bu verileri, tahmine dayalı bir analiz modelini eğitebilmeniz için kullanacaksınız. İşiniz bittiğinde, modelinizin yeni bir kişiye ait bir özellik vektörünü kabul edebilmelidir ve düşük veya yüksek kredi riski olup olmadığını tahmin edebilir.  
+Bu verileri, tahmine dayalı bir analitik model eğitmek için kullanırsınız. İşinizi bitirdiğinizde, modeliniz yeni bir birey için bir özellik vektörünü kabul edebilmeli ve bunların düşük veya yüksek kredi riski olup olmadığını tahmin edebilmelidir.  
 
-İşte ilginç bir twist.
+İşte ilginç bir bükülme.
 
-Bir kişinin kredi riskini yanlış sınıflandırdıysanız, UCI Web sitesindeki veri kümesinin açıklaması BT maliyetlerine değinmektedir.
-Model, aslında düşük kredi riski olan birisi için yüksek kredi riski getirse, model hatalı sınıflandırma yaptı.
+UCI web sitesindeki veri kümesinin açıklaması, bir kişinin kredi riskini yanlış sınıfa alırsan maliyetinin ne olduğundan bahseder.
+Eğer model aslında düşük kredi riski olan biri için yüksek bir kredi riski öngörüyorsa, model yanlış bir sınıflandırma yapmıştır.
 
-Ancak ters sınıflandırma, mali kurum için beş kat daha maliyetlidir: model, aslında yüksek kredi riski olan birisi için düşük bir kredi riski öngörür.
+Ama ters yanlış sınıflandırma beş kat daha fazla finans kurumu için pahalıdır: model aslında yüksek kredi riski olan biri için düşük bir kredi riski öngörüyorsa.
 
-Bu nedenle, bu ikinci tür hatalı sınıflandırmanın maliyeti diğer bir şekilde yanlış sınıflandırmadan beş kat daha yüksek olacak şekilde modelinize eğitme yapmak istiyorsunuz.
+Yani, bu ikinci tür yanlış sınıflandırmanın maliyetinin diğer yolu yanlış sınıflandırmadan beş kat daha yüksek olması için modelinizi eğitmek istiyorsunuz.
 
-Deneme ortamınızdaki modeli eğitmek, yüksek kredi riski olan birini temsil eden girişleri çoğaltarak (beş kez) bunu yapmanın basit bir yoludur. 
+Denemenizdeki modeli eğitirken bunu yapmanın basit bir yolu, yüksek kredi riski olan birini temsil eden girişleri (beş kez) çoğaltmaktır. 
 
-Daha sonra, model aslında yüksek riskli olmaları durumunda birini düşük kredi riski olarak sınıflandırsa, model her yineleme için bir kez olmak üzere beş kez aynı yanlış sınıflandırmayla yapılır. Bu işlem, eğitim sonuçlarında bu hatanın maliyetini artırır.
+Daha sonra, eğer model bir şeyi aslında yüksek risk olduğunda düşük kredi riski olarak yanlış sınıflatırsa, model aynı yanlış sınıflandırmayı her yineleme için beş kez yapar. Bu, eğitim sonuçlarında bu hatanın maliyetini artıracaktır.
 
 
-### <a name="convert-the-dataset-format"></a>Veri kümesi biçimini Dönüştür
+### <a name="convert-the-dataset-format"></a>Veri kümesi biçimini dönüştürme
 
-Özgün veri kümesi boş olarak ayrılmış bir biçim kullanır. Machine Learning Studio (klasik), virgülle ayrılmış değer (CSV) dosyası ile daha iyi çalışarak, boşlukları virgülle değiştirerek veri kümesini dönüştürürsünüz.  
+Özgün veri kümesi boş ayrılmış bir biçim kullanır. Machine Learning Studio (klasik) virgülden ayrılmış bir değer (CSV) dosyasıyla daha iyi çalışır, böylece boşlukları virgülle değiştirerek veri kümesini dönüştürürsünüz.  
 
-Bu verileri dönüştürmenin birçok yolu vardır. Tek yönlü, aşağıdaki Windows PowerShell komutunu kullanmaktır:   
+Bu verileri dönüştürmenin birçok yolu vardır. Bir yolu aşağıdaki Windows PowerShell komutunu kullanarak:   
 
     cat german.data | %{$_ -replace " ",","} | sc german.csv  
 
-Diğer bir yöntem de UNIX SED komutunu kullanmaktır:  
+Başka bir yolu Unix sed komutu kullanarak:  
 
     sed 's/ /,/g' german.data > german.csv  
 
-Her iki durumda da, denemenize kullanabileceğiniz **Almanca. csv** adlı bir dosyada verilerin virgülle ayrılmış bir sürümünü oluşturdunuz.
+Her iki durumda da, denemenizde kullanabileceğiniz **german.csv** adlı bir dosyada verilerin virgülle ayrılmış bir sürümünü oluşturdunuz.
 
-### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Veri kümesini Machine Learning Studio karşıya yükleme (klasik)
+### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Veri kümesini Machine Learning Studio'ya yükleyin (klasik)
 
-Veriler CSV biçimine dönüştürüldükten sonra Machine Learning Studio (klasik) uygulamasına yüklemeniz gerekir. 
+Veriler CSV formatına dönüştürüldükten sonra, verileri Machine Learning Studio'ya (klasik) yüklemeniz gerekir. 
 
-1. Machine Learning Studio (klasik) giriş sayfasını açın ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Machine Learning Studio (klasik) giriş[https://studio.azureml.net](https://studio.azureml.net)sayfasını açın ( ). 
 
-2. Pencerenin sol üst köşesindeki menü ![menü](./media/tutorial-part1-credit-risk/menu.png) tıklayın, **Azure Machine Learning**' ye tıklayın, **Studio**' yı seçin ve oturum açın.
+2. Pencerenin ![sol](./media/tutorial-part1-credit-risk/menu.png) üst köşesindeki menü Menüsü'nü tıklatın, **Azure Machine Learning'i**tıklatın, **Studio'yu**seçin ve oturum açın.
 
-3. Pencerenin alt kısmındaki **+ Yeni** seçeneğine tıklayın.
+3. Pencerenin altındaki **+Yenİ'yi** tıklatın.
 
-4. **Veri kümesi**' ni seçin.
+4. **DATASET'i**seçin.
 
-5. **Yerel dosyadan**seçim yapın.
+5. **YEREL DOSYADAN**seçin.
 
-    ![Yerel dosyadan veri kümesi ekleme](./media/tutorial-part1-credit-risk/add-dataset.png)
+    ![Yerel bir dosyadan veri kümesi ekleme](./media/tutorial-part1-credit-risk/add-dataset.png)
 
-6. **Yeni bir veri kümesini karşıya yükle** iletişim kutusunda, Araştır ' a tıklayın ve oluşturduğunuz **Almanya. csv** dosyasını bulun.
+6. Yeni **bir veri seti yükle** iletişim kutusunda Gözat'ı tıklatın ve oluşturduğunuz **german.csv** dosyasını bulun.
 
-7. Veri kümesi için bir ad girin. Bu öğreticide, "UCI Almanya kredi kartı verileri" ni çağırın.
+7. Veri kümesi için bir ad girin. Bu öğretici için, "UCI Alman Kredi Kartı Verileri" diyoruz.
 
-8. Veri türü için, **üst bilgisi olmayan (. NH. csv) genel CSV dosyası**' nı seçin.
+8. Veri türü için, **üstbilgisiz Genel CSV Dosyası 'nı (.nh.csv)** seçin.
 
-9. İsterseniz bir açıklama ekleyin.
+9. İstersenize açıklama ekleyin.
 
-10. **Tamam** onay işaretine tıklayın.  
+10. **Tamam** onay işaretini tıklatın.  
 
-    ![Veri kümesini karşıya yükle](./media/tutorial-part1-credit-risk/upload-dataset.png)
+    ![Veri kümesini yükleme](./media/tutorial-part1-credit-risk/upload-dataset.png)
 
-Bu, verileri bir deneme içinde kullanabileceğiniz bir veri kümesi modülüne yükler.
+Bu, verileri bir denemede kullanabileceğiniz bir veri kümesi modülüne yükler.
 
-Studio (klasik) penceresinin solundaki **veri kümeleri** sekmesine tıklayarak, Studio 'ya (klasik) yüklediğiniz veri kümelerini yönetebilirsiniz.
+Studio (klasik) penceresinin solundaki DATASETS sekmesini tıklatarak Studio'ya (klasik) yüklediğiniz veri **kümelerini** yönetebilirsiniz.
 
-![Veri Kümelerini Yönet](./media/tutorial-part1-credit-risk/dataset-list.png)
+![Veri kümelerini yönet](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-Diğer veri türlerini bir denemeye aktarma hakkında daha fazla bilgi için bkz. [eğitim verilerinizi Azure Machine Learning Studio Içeri aktarma (klasik)](import-data.md).
+Bir denemeye diğer veri türlerini alma hakkında daha fazla bilgi için eğitim [verilerinizi Azure Machine Learning Studio'ya (klasik) aktarın.](import-data.md)
 
 ## <a name="create-an-experiment"></a>Deneme oluşturma
 
-Bu öğreticideki bir sonraki adım, karşıya yüklediğiniz veri kümesini kullanan Machine Learning Studio (klasik) ' de bir deneme oluşturmaktır.  
+Bu öğreticinin bir sonraki adımı, yüklediğiniz veri kümesini kullanan Machine Learning Studio'da (klasik) bir deneme oluşturmaktır.  
 
-1. Studio 'da (klasik) pencerenin alt kısmındaki **+ Yeni** ' ye tıklayın.
-1. **Denemeler**' i seçin ve ardından "boş deneme" ' ı seçin. 
+1. Studio'da (klasik), pencerenin altındaki **+Yenİ'yi** tıklatın.
+1. **DENEY'i**seçin ve ardından "Boş Deneme"yi seçin. 
 
     ![Yeni bir deneme oluşturma](./media/tutorial-part1-credit-risk/create-new-experiment.png)
 
 
-1. Tuvalin en üstünde varsayılan deneme adını seçin ve anlamlı bir şekilde yeniden adlandırın.
+1. Tuvalin üst kısmındavarsayılan deneme adını seçin ve anlamlı bir şeyle yeniden adlandırın.
 
-    ![Yeniden adlandırma denemesi](./media/tutorial-part1-credit-risk/rename-experiment.png)
+    ![Denemeyi yeniden adlandır](./media/tutorial-part1-credit-risk/rename-experiment.png)
 
    > [!TIP]
-   > **Özellikler** bölmesinde deneme için **Özet** ve **Açıklama** alanlarını doldurmanız iyi bir uygulamadır. Bu özellikler, daha sonra baktığı herkesin hedeflerinizi ve metodolojisini anlayabilmesi için denemeyi belgeleme şansı sağlar.
+   > **Özellikler** bölmesinde denemenin **Özeti** ve **Açıklaması'nı** doldurmak iyi bir uygulamadır. Bu özellikler, denemeyi daha sonra bakan herkesin hedeflerinizi ve metodolojinizi anlamasını sağlamak için denemeyi belgeleme şansı verir.
    > 
-   > ![Deneme özellikleri](./media/tutorial-part1-credit-risk/experiment-properties.png)
+   > ![Deney özellikleri](./media/tutorial-part1-credit-risk/experiment-properties.png)
    > 
 
-1. Deneme tuvalinin solundaki modül paletinde, **kaydedilmiş veri kümeleri**' ni genişletin.
-1. **Veri kümelerim** bölümünde oluşturduğunuz veri kümesini bulun ve tuvale sürükleyin. Ayrıca, paletin üzerindeki **arama** kutusuna adı girerek veri kümesini bulabilirsiniz.  
+1. Deneme tuvalinin solundaki modül paletinde **Kaydedilmiş Veri Kümelerini**genişletin.
+1. **Verilerimin** altında oluşturduğunuz veri kümesini bulun ve tuvale sürükleyin. Paletin üzerindeki **Arama** kutusuna adı girerek de veri kümesini bulabilirsiniz.  
 
-    ![Veri kümesini denemeye ekleme](./media/tutorial-part1-credit-risk/add-dataset-to-experiment.png)
+    ![Denemeye veri kümesi ekleme](./media/tutorial-part1-credit-risk/add-dataset-to-experiment.png)
 
 
 ### <a name="prepare-the-data"></a>Verileri hazırlama
 
-Verilerin ilk 100 satırını ve tüm veri kümesi için bazı istatistiksel bilgileri görüntüleyebilirsiniz: veri kümesinin çıkış bağlantı noktasına (alt kısımdaki küçük daire) tıklayın ve **Görselleştir**' i seçin.  
+Verilerin ilk 100 satırını ve tüm veri kümesi için bazı istatistiksel bilgileri görüntüleyebilirsiniz: Veri kümesinin çıkış bağlantı noktasını (alttaki küçük daire) tıklatın ve **Visualize'ı**seçin.  
 
-Veri dosyası sütun başlıkları ile gelmediği için, Studio (klasik) genel başlıklar sağladı (Sütun1, Col2, *vb.* ). İyi başlıklar bir model oluşturmak için gerekli değildir, ancak deneme sürümündeki verilerle çalışmayı kolaylaştırır. Ayrıca, bu modeli bir Web hizmetinde sonunda yayımladığınızda, başlıklar hizmetin kullanıcısına ait sütunları belirlemesine yardımcı olur.  
+Veri dosyası sütun başlıkları ile gelmediği için Studio (klasik) genel başlıklar (Col1, Col2, *vb) sağlamıştır.* İyi başlıklar bir model oluşturmak için gerekli değildir, ancak denemedeki verilerle çalışmayı kolaylaştırır. Ayrıca, bu modeli bir web hizmetinde yayımladığınızda, başlıklar hizmetin kullanıcısına sütunları tanımlamaya yardımcı olur.  
 
-[Meta veri düzenleme][edit-metadata] modülünü kullanarak sütun başlıkları ekleyebilirsiniz.
+[Meta verileri edit][edit-metadata] modüllerini kullanarak sütun başlıkları ekleyebilirsiniz.
 
-Bir veri kümesiyle ilişkili meta verileri değiştirmek için [meta verileri Düzenle][edit-metadata] modülünü kullanın. Bu durumda, sütun başlıkları için daha kolay adlar sağlamak üzere kullanın. 
+Bir veri kümesiyle ilişkili meta verileri değiştirmek için [Meta Verileri Edit][edit-metadata] modülünü kullanırsınız. Bu durumda, sütun başlıkları için daha kolay adlar sağlamak için kullanabilirsiniz. 
 
-[Meta verileri Düzenle][edit-metadata]' yi kullanmak için, ilk olarak değiştirilecek sütunları (Bu durumda, hepsi) belirlersiniz. Ardından, bu sütunlarda gerçekleştirilecek eylemi belirtirsiniz (Bu durumda, sütun başlıklarını değiştirebilirsiniz.)
+Meta [Verileri Edit'i][edit-metadata]kullanmak için, önce hangi sütunları değiştirin (bu durumda, hepsi) belirtirsiniz. Ardından, bu sütunlarda gerçekleştirilecek eylemi belirtirsiniz (bu durumda sütun başlıklarını değiştirirsiniz.)
 
-1. Modül paletinde, **arama** kutusuna "metadata" yazın. [Düzenleme meta verileri][edit-metadata] modül listesinde görünür.
+1. Modül paletinde **Arama** kutusuna "meta veri" yazın. [Meta Verilerini Edit][edit-metadata] modül listesinde görünür.
 
-1. [Meta verileri Düzenle][edit-metadata] modülünü tuvale sürükleyin ve daha önce eklediğiniz veri kümesinin altına bırakın.
+1. Meta verileri [edit][edit-metadata] modülünü tuvale tıklayıp sürükleyin ve daha önce eklediğiniz veri kümesinin altına bırakın.
 
-1. Veri kümesini [düzenleme meta verilerine][edit-metadata]bağlama: veri kümesinin çıkış bağlantı noktasına (veri kümesinin altındaki küçük daire) tıklayın, [verileri Düzenle][edit-metadata] (modülün en üstündeki küçük daire) giriş bağlantı noktasına sürükleyin, sonra fare düğmesini bırakın. Tuvalde etrafında hareket etseniz bile veri kümesi ve modül bağlı kalır.
+1. Veri kümesini [Meta Verileri Edit'e][edit-metadata]bağlayın: veri kümesinin çıkış bağlantı noktasını (veri kümesinin altındaki küçük daire) tıklatın, [Meta verilerini (modülün][edit-metadata] üst kısmındaki küçük daire) giriş noktasına sürükleyin ve ardından fare düğmesini bırakın. Kanvas üzerinde hareket etseniz bile veri kümesi ve modül bağlı kalır.
  
-    Deneme şimdi şuna benzer görünmelidir:  
+    Deney şimdi şuna benzer:  
 
-    ![Düzenleme meta verileri ekleme](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
+    ![Meta Verileri Edit Ekleme](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
 
-    Kırmızı ünlem işareti, Bu modülün özelliklerini henüz belirlemediğiniz anlamına gelir. Bunu bir sonraki adımda yapacaksınız.
+    Kırmızı ünlem işareti, bu modülün özelliklerini henüz ayarlamadığınızı gösterir. Bundan sonra o işlemi yapacaksınız.
 
     > [!TIP]
-    > Modüle çift tıklayıp metin girerek bir modüle yorum ekleyebilirsiniz. Bu, modülün denemenizde ne işe yaradığını bir bakışta görmenize yardımcı olabilir. Bu durumda, [meta verileri Düzenle][edit-metadata] modülüne çift tıklayın ve "sütun başlıkları ekle" açıklamasını yazın. Metin kutusunu kapatmak için tuvalde başka bir yere tıklayın. Yorumu göstermek için modüldeki aşağı oka tıklayın.
+    > Modüle çift tıklayıp metin girerek bir modüle yorum ekleyebilirsiniz. Bu, modülün denemenizde ne işe yaradığını bir bakışta görmenize yardımcı olabilir. Bu durumda, [Meta veri][edit-metadata] modüllerini çift tıklatın ve yorum "Sütun başlıkları ekle" yazın. Metin kutusunu kapatmak için tuvalin başka bir yerine tıklayın. Yorumu görüntülemek için modüldeki aşağı ok'u tıklatın.
     > 
-    > ![Açıklama eklenmiş meta veri modülünü Düzenle](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
+    > ![Eklenen yorumla Meta veri modüllerini edit](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. [Meta verileri Düzenle][edit-metadata]' yi seçin ve tuvalin sağındaki **Özellikler** bölmesinde, **sütun seçiciyi Başlat**' a tıklayın.
+1. [Meta Verileri Düzenley'i][edit-metadata]seçin ve tuvalin sağındaki **Özellikler** bölmesinde **Sütun Seçicisi Başlat'ı**tıklatın.
 
-1. **Sütunları seçin** iletişim kutusunda, **kullanılabilir sütunlardaki** tüm satırları seçin ve > ' a tıklayarak **Seçili sütunlara**taşıyın.
-   İletişim kutusu şöyle görünmelidir:
+1. **Sütunları Seç** iletişim kutusunda, **Kullanılabilir Sütunlar'daki** tüm satırları seçin ve **seçili sütunlara**taşımak için >'ı tıklatın.
+   İletişim şuna bakmalıdır:
 
-   ![Tüm sütunları seçili olan sütun seçici](./media/tutorial-part1-credit-risk/select-columns.png)
+   ![Tüm sütunların seçildiği Sütun Seçici](./media/tutorial-part1-credit-risk/select-columns.png)
 
 
-1. **Tamam** onay işaretine tıklayın.
+1. **Tamam** onay işaretini tıklatın.
 
-1. **Özellikler** bölmesinde, **Yeni sütun adları** parametresini bulun. Bu alana, veri kümesindeki 21 sütun için, virgülle ve sütun düzeninde ayrılmış adların bir listesini girin. Veri kümesi belgelerindeki sütun adlarını UCI Web sitesinde edinebilir veya kolaylık sağlaması için aşağıdaki listeyi kopyalayabilir ve yapıştırabilirsiniz:  
+1. **Özellikler** bölmesinde, Yeni sütun **adları** parametresini arayın. Bu alanda, virgülle ve sütun sırasına göre ayrılmış veri kümesindeki 21 sütunun ad listesini girin. UCI web sitesindeki veri kümesi belgelerinden sütun adlarını edinebilir veya kolaylık sağlamak için aşağıdaki listeyi kopyalayıp yapıştırabilirsiniz:  
 
    ```   
    Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
    ```
 
-   Özellikler bölmesi şöyle görünür:
+   Özellikler bölmesi şuna benzer:
 
-   ![Meta verileri düzenleme özellikleri](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
+   ![Meta verileri edit özellikleri](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > Sütun başlıklarını doğrulamak istiyorsanız, denemeyi çalıştırın (deneme tuvalinin altında **Çalıştır** ' a tıklayın). Çalışmayı bitirdiğinde ( [meta verileri Düzenle][edit-metadata]' de yeşil bir onay işareti görünür), [meta veri düzenleme][edit-metadata] modülünün çıkış bağlantı noktasına tıklayın ve **Görselleştir**' i seçin. Denemeler aracılığıyla verilerin ilerlemesini görüntülemek için herhangi bir modülün çıktısını aynı şekilde görüntüleyebilirsiniz.
+   > Sütun başlıklarını doğrulamak istiyorsanız, denemeyi çalıştırın (deneme tuvalinin altında **ÇALıŞTıR'ı** tıklatın). Çalışma bittiğinde [(Meta Verilerini Edit'te][edit-metadata]yeşil bir onay işareti görünür), [Meta Verileri Edit][edit-metadata] modülünün çıkış bağlantı noktasını tıklatın ve **Visualize'ı**seçin. Herhangi bir modülün çıktısını, deneme yoluyla verilerin ilerlemesini görüntülemek için aynı şekilde görüntüleyebilirsiniz.
    > 
    > 
 
-### <a name="create-training-and-test-datasets"></a>Eğitim ve test veri kümeleri oluşturma
+### <a name="create-training-and-test-datasets"></a>Eğitim oluşturma ve veri kümelerini test edin
 
-Modeli eğitebilmeniz için bazı veriler gerekir ve bu da bazı verileri test etmek için gereklidir.
-Bu nedenle, deneyinin bir sonraki adımında, veri kümesini iki ayrı veri kümesine bölecektir: bir tane, modelimizi ve test etmeyi deneyin.
+Modeli eğitmek için bazı verilere ve test etmek için de bazı verilere ihtiyacınız var.
+Yani deneyin bir sonraki adımında, veri kümesini iki ayrı veri kümesine bölersiniz: biri modelimizi eğitmek, diğeri de test etmek için.
 
-Bunu yapmak için, [verileri Böl][split] modülünü kullanırsınız.  
+Bunu yapmak için [Veri Bölme][split] modüllerini kullanırsınız.  
 
-1. [Bölünmüş veri][split] modülünü bulun, tuvale sürükleyin ve [meta verileri düzenleme][edit-metadata] modülüne bağlayın.
+1. Verileri [Böl][split] modülünü bulun, tuvale sürükleyin ve Meta veri modülünü [edit][edit-metadata] modülüne bağlayın.
 
-1. Varsayılan olarak, bölme oranı 0,5, **rastgele bölünen** parametresi ayarlanır. Bu, verilerin rastgele bir yarısında [bölünen veri][split] modülünün bir bağlantı noktası üzerinden çıkış olduğu ve diğerinin yarısını oluşturan anlamına gelir. Eğitim ve test verileri arasındaki bölmeyi değiştirmek için, bu parametrelerin yanı sıra **rastgele çekirdek** parametresini de ayarlayabilirsiniz. Bu örnekte, bunları olduğu gibi bırakın.
+1. Varsayılan olarak, bölme oranı 0,5'tir ve **Randomize bölme** parametresi ayarlanır. Bu, verilerin rasgele yarısının [Bölünmüş Veri][split] modülünün bir bağlantı noktasından, yarısının ise diğer bağlantı noktasından çıktı olduğu anlamına gelir. Bu parametreleri ve **Rasgele tohum** parametresini, eğitim ve test verileri arasındaki bölmeyi değiştirmek için ayarlayabilirsiniz. Bu örnekte, onları olduğu gibi bırakırsınız.
    
    > [!TIP]
-   > **İlk çıkış veri kümesindeki satırların Özellik kesri** , verilerin *sol* çıkış bağlantı noktasından ne kadar çıkış olduğunu belirler. Örneğin, oranını 0,7 olarak ayarlarsanız, verilerin %70 ' u sol bağlantı noktasından ve %30 ' a doğru bağlantı noktası üzerinden çıktı.  
+   > İlk **çıktı veri kümesindeki satırların özellik Fraksiyonu,** verilerin ne kadarının *sol* çıktı bağlantı noktasından çıktı olduğunu belirler. Örneğin, oranı 0,7 olarak ayarlarsanız, verilerin %70'i sol bağlantı noktasından, %30'u da sağ bağlantı noktasından çıkar.  
    > 
    > 
 
-1. [Bölünmüş veri][split] modülüne çift tıklayın ve "eğitim/test verileri bölünmüş 50%" açıklamasını girin. 
+1. [Verileri Böl][split] modülünü çift tıklatın ve "Eğitim/test verileri %50 bölündü" yorumunu girin. 
 
-Aynı şekilde [bölünmüş veri][split] modülünün çıkışlarını kullanabilirsiniz, ancak, sınama verileri olarak sol çıktıyı eğitim verileri ve doğru çıkış olarak kullanmayı seçelim.  
+[Split Data][split] modülünün çıktılarını istediğiniz gibi kullanabilirsiniz, ancak sol çıktıyı eğitim verileri olarak, doğru çıktıyı da test verisi olarak kullanmayı seçelim.  
 
-[Önceki adımda](tutorial-part1-credit-risk.md#upload)belirtildiği gibi, yüksek kredi riskini düşük olarak sınıflandırmakta olan maliyet, düşük kredi riskini yüksek bir şekilde yanlış sınıflandırma maliyetinden beş kat daha yüksektir. Bunu hesaba eklemek için, bu maliyet işlevini yansıtan yeni bir veri kümesi oluşturursunuz. Yeni veri kümesinde her bir yüksek riskli örnek beş kez çoğaltılır, ancak her düşük riskli örnek çoğaltılmaz.   
+[Önceki adımda](tutorial-part1-credit-risk.md#upload)belirtildiği gibi, düşük olarak yüksek bir kredi riski yanlış sınıflandırma maliyeti yüksek olarak düşük kredi riski yanlış sınıflandırma maliyeti beş kat daha yüksektir. Bunu hesaba katmak için, bu maliyet işlevini yansıtan yeni bir veri kümesi oluşturursunuz. Yeni veri kümesinde, her yüksek riskli örnek beş kez çoğaltılırken, her düşük riskli örnek çoğaltılamaz.   
 
-Bu çoğaltmayı R Code kullanarak yapabilirsiniz:  
+Bu çoğaltmayı R kodunu kullanarak yapabilirsiniz:  
 
-1. [Execute R betiği][execute-r-script] modülünü bulun ve deneme tuvaline sürükleyin. 
+1. Execute R [Script][execute-r-script] modüllerini bulun ve deneme tuvaline sürükleyin. 
 
-1. [Bölünmüş veri][split] modülünün sol çıkış bağlantı noktasını, [R betiği yürütme][execute-r-script] modülünün ilk giriş bağlantı noktasına ("DataSet1") bağlayın.
+1. [Split Data][split] modülünün sol çıkış bağlantı noktasını Execute [R Script][execute-r-script] modülünün ilk giriş bağlantı noktasına ("Dataset1") bağlayın.
 
-1. [R betik modülünü Yürüt ' e][execute-r-script] çift tıklayın ve "maliyet ayarlamayı ayarla" açıklamasını girin.
+1. Yürüt R [Script][execute-r-script] modüle çift tıklayın ve yorum girin, "Maliyet ayarlaması ayarlayın".
 
-1. **Özellikler** bölmesinde, **R betiği** parametresindeki varsayılan metni silin ve şu betiği girin:
+1. **Özellikler** bölmesinde, **R Script** parametresindeki varsayılan metni silin ve şu komut dosyasını girin:
    
        dataset1 <- maml.mapInputPort(1)
        data.set<-dataset1[dataset1[,21]==1,]
@@ -264,28 +264,28 @@ Bu çoğaltmayı R Code kullanarak yapabilirsiniz:
        for (i in 1:5) data.set<-rbind(data.set,pos)
        maml.mapOutputPort("data.set")
 
-    ![R betiği Yürüt modülünde r betiği](./media/tutorial-part1-credit-risk/execute-r-script.png)
+    ![Execute R Script modülünde R komut dosyası](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
-Eğitim ve test verilerinin aynı maliyet ayarlamasına sahip olması için, [bölünmüş veri][split] modülünün her çıkışı için aynı çoğaltma işlemini yapmanız gerekir. Bunu yapmanın en kolay yolu, yeni oluşturduğunuz ve bunu [bölünmüş veri][split] modülünün diğer çıkış bağlantı noktasına bağlayan [R betik][execute-r-script] modülünü çoğaltarak kullanmaktır.
+Eğitim ve test verilerinin aynı maliyet ayarlamasına sahip olması için [Bölünmüş Veri][split] modülünün her çıktısı için aynı çoğaltma işlemini yapmanız gerekir. Bunu yapmanın en kolay yolu, az önce yaptığınız [Execute R Script][execute-r-script] modülünü çoğaltmak ve Split [Data][split] modülünün diğer çıkış noktasına bağlamaktır.
 
-1. [R betik modülünü Yürüt ' e][execute-r-script] sağ tıklayın ve **Kopyala**' yı seçin.
+1. Yürüt R [Script][execute-r-script] modülünü sağ tıklatın ve **Kopyala'yı**seçin.
 
-1. Deneme tuvaline sağ tıklayıp **Yapıştır**' ı seçin.
+1. Deneme tuvaline sağ tıklayın ve **Yapıştır'ı**seçin.
 
-1. Yeni modülü konuma sürükleyin ve ardından [bölünmüş veri][split] modülünün sağ çıkış bağlantı noktasını bu yeni [Execute R betik][execute-r-script] modülünün ilk giriş bağlantı noktasına bağlayın. 
+1. Yeni modülü konuma sürükleyin ve split [veri][split] modülünün doğru çıkış bağlantı noktasını bu yeni [Execute R Script][execute-r-script] modülünün ilk giriş noktasına bağlayın. 
 
-1. Tuvalin alt kısmındaki **Çalıştır**' a tıklayın. 
+1. Tuvalin altında **Çalıştır'ı**tıklatın. 
 
 > [!TIP]
-> Execute R betiği modülünün kopyası, özgün modülle aynı komut dosyasını içerir. Tuvalde bir modül kopyalayıp yapıştırdığınızda, kopya orijinalin tüm özelliklerini korur.  
+> Execute R Script modülünün kopyası orijinal modülle aynı komut dosyasını içerir. Bir modülü tuvale kopyalayıp yapıştırdığınızda, kopya orijinalin tüm özelliklerini korur.  
 > 
 >
 
-Deneme mız şu şekilde görünür:
+Deneyimiz şimdi şuna benziyor:
 
-![Bölünmüş modül ve R betikleri ekleme](./media/tutorial-part1-credit-risk/experiment.png)
+![Bölme modülü ve R komut dosyaları ekleme](./media/tutorial-part1-credit-risk/experiment.png)
 
-Denemeleri 'de R betikleri kullanma hakkında daha fazla bilgi için, bkz. [denemenizi r Ile genişletme](extend-your-experiment-with-r.md).
+Denemelerinizde R komut dosyalarını kullanma hakkında daha fazla bilgi [için](extend-your-experiment-with-r.md)bkz.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -298,13 +298,13 @@ Bu öğreticide şu adımları tamamladınız:
  
 > [!div class="checklist"]
 > * Machine Learning Studio (klasik) çalışma alanı oluşturma
-> * Varolan verileri çalışma alanına yükle
+> * Varolan verileri çalışma alanına yükleme
 > * Deneme oluşturma
 
-Artık bu verilerin modellerini eğitmek ve değerlendirmek için hazırsınız.
+Artık bu veriler için modelleri eğitmeye ve değerlendirmeye hazırsınız.
 
 > [!div class="nextstepaction"]
-> [Öğretici 2-modelleri eğitme ve değerlendirme](tutorial-part2-credit-risk-train.md)
+> [Öğretici 2 - Modelleri eğitin ve değerlendirin](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/

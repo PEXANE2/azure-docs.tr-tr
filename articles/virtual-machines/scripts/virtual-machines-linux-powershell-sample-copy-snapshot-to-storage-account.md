@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği-farklı bölgedeki bir depolama hesabına VHD olarak anlık görüntü gönderme/kopyalama
-description: Azure PowerShell betik örneği-aynı farklı bölgedeki bir depolama hesabına VHD olarak anlık görüntü gönderme/kopyalama
+title: PowerShell Sample - Anlık görüntüye VHD olarak farklı bölgedeki bir depolama hesabına aktarma/kopyalama
+description: Azure PowerShell Komut Dosyası Örneği - Aynı farklı bölgedeki bir depolama hesabına VHD olarak anlık görüntü aktar/kopyala
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,13 +15,13 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 1f93efb2dd03376110d1368672642d922651c2f6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75463707"
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Yönetilen anlık görüntüleri, PowerShell ile farklı bölgedeki bir depolama hesabına VHD olarak verme/kopyalama
+# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>PowerShell ile farklı bölgedeki bir depolama hesabına VHD olarak yönetilen anlık görüntüleri dışa aktarma/kopyalama
 
 Bu betik farklı bölgedeki bir depolama hesabına yönetilen bir anlık görüntü gönderir. İlk olarak anlık görüntünün SAS URI'sini oluşturur ve sonra onu farklı bölgede bulunan bir depolama hesabına kopyalamak için kullanır. Olağanüstü durum kurtarma amacıyla farklı bölgede bulunan yönetilen disklerinizin yedeğini tutmak için bu betiği kullanın.  
 
@@ -42,7 +42,7 @@ Bu betik bir yönetilen anlık görüntünün SAS URI'sini oluşturmak için aş
 
 | Komut | Notlar |
 |---|---|
-| [Grant-AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Bir depolama hesabına kopyalamak için kullanılan bir anlık görüntü için SAS URI 'SI oluşturur. |
+| [Hibe-AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Depolama hesabına kopyalamak için kullanılan anlık görüntü için SAS URI oluşturur. |
 | [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Hesap adını ve anahtarını kullanarak depolama hesabı bağlamı oluşturur. Bu bağlam depolama hesabında okuma/yazma işlemi gerçekleştirmek için kullanılabilir. |
 | [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Bir anlık görüntüde kullanılan VHD dosyasını bir depolama hesabına kopyalar |
 

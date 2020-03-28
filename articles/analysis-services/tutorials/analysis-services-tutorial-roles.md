@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure Analysis Services rollerini yapılandırma | Microsoft Docs
-description: Azure portal veya SQL Server Management Studio kullanarak Azure Analysis Services Yönetici ve Kullanıcı rollerinin nasıl yapılandırılacağını öğrenin.
+title: Öğretici - Azure Analiz Hizmetleri rollerini yapılandırma | Microsoft Dokümanlar
+description: Azure portalını veya SQL Server Management Studio'yu kullanarak Azure Analiz Hizmetleri yöneticisini ve kullanıcı rollerini nasıl yapılandırabileceğinizi öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273691"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
@@ -27,7 +27,7 @@ ms.locfileid: "78273691"
 
 Azure Analysis Services'de kullanıcı güvenliği hakkında daha fazla bilgi edinmek için bkz: [Kimlik doğrulaması ve kullanıcı izinleri](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Aboneliğinizde bir Azure Active Directory.
 - Aboneliğinizde bir [Azure Analysis Services sunucusu](../analysis-services-create-server.md) oluşturmuş olmanız.
@@ -37,7 +37,7 @@ Azure Analysis Services'de kullanıcı güvenliği hakkında daha fazla bilgi ed
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Portalda](https://portal.azure.com/) oturum açın.
+[Portalda](https://portal.azure.com/)oturum aç.
 
 ## <a name="get-server-name"></a>Sunucu adını alma
 SSMS'den sunucunuza bağlanmak için önce sunucu adını bilmelisiniz. Sunucu adını portaldan alabilirsiniz.
@@ -130,13 +130,13 @@ Bu görevde yeni bir Internet Satış Genel rolü oluşturmak için bir TMSL bet
 ## <a name="verify-your-changes"></a>Değişikliklerinizi doğrulama
 
 1. **Nesne Gezgini**'nde, servername'inize tıklayın, sonra **Yenile**'yi tıklayın ve **F5**'e basın.
-2. **Veritabanları** > **adventureworks** > **Roller**'i genişletin. Önceki görevlerde eklediğiniz kullanıcı hesabının ve yeni rol değişikliklerinin göründüğünü doğrulayın.   
+2. Genişlet **Veritabanları** > **adventureworks** > **Roller**. Önceki görevlerde eklediğiniz kullanıcı hesabının ve yeni rol değişikliklerinin göründüğünü doğrulayın.   
 
     ![Nesne Gezgini'nde doğrulama](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kullanıcı ve grup hesaplarını ve rolleri silin. Bunu yapmak için, kullanıcı hesaplarını kaldırmak üzere **Rol Özellikleri** > **Üyelik**'i kullanın veya role sağ tıklayıp **Sil**'e tıklayın.
+Artık gerekmediğinde, kullanıcı ve grup hesaplarını ve rolleri silin. Bunu yapmak için, kullanıcı hesaplarını kaldırmak için **Role Properties** > **Membership'i** kullanın veya bir rolü sağ tıklatın ve sonra **Sil'i**tıklatın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure 'a genel bir Node. js istemci uygulaması bağlama IoT Central | Microsoft Docs
-description: Bu öğreticide, bir cihaz geliştiricisi olarak bir Node. js istemci uygulaması çalıştıran bir cihaza Azure IoT Central uygulamanıza nasıl bağlanacağı gösterilmektedir. Cihaz yetenek modeli içeri aktararak ve bağlı bir cihazla etkileşime girebilen görünümler ekleyerek bir cihaz şablonu oluşturursunuz
+title: Öğretici - Genel bir Node.js istemci uygulamasını Azure IoT Central'a bağlayın | Microsoft Dokümanlar
+description: Bu öğretici, bir aygıt geliştiricisi olarak, Node.js istemci uygulaması çalıştıran bir aygıtı Azure IoT Merkezi uygulamanıza nasıl bağlayabildiğinizi gösterir. Aygıt yeteneği modelini içe aktararak bir aygıt şablonu oluşturur ve bağlı bir aygıtla etkileşim kurmanıza izin veren görünümler eklersiniz
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/26/2020
@@ -8,122 +8,122 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 1bcfc949eff0639dd1b4a063687e2c198f480ea3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77624546"
 ---
-# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: node. js istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (node. js)
+# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: Bir Düğüm.js istemci sebeb uygulaması oluşturun ve Azure IoT Merkezi uygulamanıza bağlayın (Node.js)
 
-Bu öğreticide, bir cihaz geliştiricisi olarak bir Node. js istemci uygulamasını Azure IoT Central uygulamanıza nasıl bağlayabilmeniz gösterilmektedir. Node. js uygulaması gerçek bir cihazın davranışının benzetimini yapar. IoT Central ' de bir _cihaz şablonu_ oluşturmak için bir ortam algılayıcı cihazı için örnek bir _cihaz yetenek modeli_ kullanın. Cihaz telemetrisini görselleştirmenize, cihaz özelliklerini yönetmenize ve cihazlarınızı denetlemek için komutları kullanmanıza olanak sağlamak üzere cihaz şablonuna görünümler eklersiniz.
+Bu öğretici, bir aygıt geliştiricisi olarak Bir Düğüm.js istemci uygulamasını Azure IoT Merkezi uygulamanıza nasıl bağlayacaklarını gösterir. Düğüm.js uygulaması gerçek bir aygıtın davranışını simüle eder. IoT _Central'da_ bir _aygıt şablonu_ oluşturmak için bir çevre sensörü aygıtı için örnek bir aygıt yeteneği modeli kullanırsınız. Aygıt telemetrisini görselleştirmenize, aygıt özelliklerini yönetmenize ve aygıtlarınızı denetlemek için komutları kullanmanıza izin vermek için aygıt şablonuna görünümler eklersiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Cihaz şablonu oluşturmak için bir cihaz yetenek modeli içeri aktarın.
-> * Varsayılan ve özel görünümleri bir cihaz şablonuna ekleyin.
-> * Bir cihaz şablonu yayımlayın ve IoT Central uygulamanıza gerçek bir cihaz ekleyin.
-> * Node. js Cihaz kodunu oluşturup çalıştırın ve IoT Central uygulamanıza bağlanın.
-> * Cihazın gönderdiği sanal Telemetriyi görüntüleyin.
-> * Cihaz özelliklerini yönetmek için bir görünüm kullanın.
-> * Cihazı denetlemek için komutları çağırın.
+> * Aygıt şablonu oluşturmak için aygıt yeteneği modelini aktarın.
+> * Aygıt şablonuna varsayılan ve özel görünümler ekleyin.
+> * Bir aygıt şablonu yayımlayın ve IoT Central uygulamanıza gerçek bir aygıt ekleyin.
+> * Düğüm.js aygıt kodunu oluşturun ve çalıştırın ve IoT Central uygulamanıza bağlandığına bakın.
+> * Aygıtın gönderdiği simüle edilmiş telemetriyi görüntüleyin.
+> * Aygıt özelliklerini yönetmek için bir görünüm kullanın.
+> * Aygıtı kontrol etmek için komutları arayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
-* \* * Özel uygulama * * şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-* [Node. js](https://nodejs.org/) sürüm 10.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için komut satırında `node --version` çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir. Bu öğreticideki yönergeler, Windows komut isteminde **node** komutunu çalıştırmakta olduğunuzu varsayar. Node. js ' nin çeşitli işletim sistemlerinde kullanılmasını sağlayabilirsiniz.
+* **Özel uygulama **şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
+* [Node.js](https://nodejs.org/) sürüm 10.0.0 veya daha sonra yüklü bir geliştirme makinesi. Sürümünüzü `node --version` kontrol etmek için komut satırında çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir. Bu öğreticideki talimatlar, Windows komut isteminde **düğüm** komutunu çalıştırdığınızı varsayar. Node.js'yi çeşitli işletim sistemlerinde kullanabilirsiniz.
 
 ## <a name="create-a-device-template"></a>Cihaz şablonu oluşturma
 
-Yerel makinenizde `environmental-sensor` adlı bir klasör oluşturun.
+Yerel makinenizde `environmental-sensor` çağrılan bir klasör oluşturun.
 
-[Ortam algılayıcısı yetenek modeli](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) json dosyasını indirin ve `environmental-sensor` klasörüne kaydedin.
+Çevre [sensörü yetenek modeli](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) JSON dosyasını `environmental-sensor` indirin ve klasöre kaydedin.
 
-`{YOUR_COMPANY_NAME_HERE}` iki örneğini indirdiğiniz `EnvironmentalSensorInline.capabilitymodel.json` dosyasında şirket adınızla değiştirmek için bir metin düzenleyicisi kullanın.
+İndirdiğiniz `EnvironmentalSensorInline.capabilitymodel.json` dosyadaki iki örneği şirket `{YOUR_COMPANY_NAME_HERE}` adınız ile değiştirmek için bir metin düzenleyicisi kullanın.
 
-Azure IoT Central uygulamanızda, `EnvironmentalSensorInline.capabilitymodel.json` cihaz yetenek modeli dosyasını içeri aktararak *çevresel algılayıcı* adlı bir cihaz şablonu oluşturun:
+Azure IoT Merkezi uygulamanızda, aygıt *Environmental sensor* yetenek modeli dosyasını `EnvironmentalSensorInline.capabilitymodel.json` içe aktararak Çevre sensörü adı verilen bir aygıt şablonu oluşturun:
 
-![İçeri aktarılan cihaz özelliği modeliyle cihaz şablonu](./media/tutorial-connect-device/device-template.png)
+![İçe aktarılan aygıt yetenek modeline sahip aygıt şablonu](./media/tutorial-connect-device/device-template.png)
 
-Cihaz yetenek modeli iki arabirim içerir: standart **cihaz bilgileri** arabirimi ve özel **çevresel algılayıcı** arabirimi. **Çevresel algılayıcı** arabirimi aşağıdaki özellikleri tanımlar:
+Cihaz özelliği modeli iki arabirim içerir: standart **Aygıt Bilgileri** arabirimi ve özel **Çevre Sensörü** arabirimi. **Çevre Sensörü** arabirimi aşağıdaki yetenekleri tanımlar:
 
 | Tür | Görünen Ad | Açıklama |
 | ---- | ------------ | ----------- |
-| Özellik | Cihaz Durumu     | Cihazın durumu. Çevrimiçi/çevrimdışı iki durum kullanılabilir. |
-| Özellik | Müşteri adı    | Müşterinin Şu anda cihazda çalışan adı. |
-| Özellik | Parlaklık düzeyi | Cihazdaki ışığın parlaklık düzeyi. 1 (yüksek), 2 (orta), 3 (düşük) olarak belirtilebilir. |
+| Özellik | Cihaz Durumu     | Aygıtın durumu. Çevrimiçi/çevrimdışı iki durum mevcuttur. |
+| Özellik | Müşteri Adı    | Aygıtı şu anda çalıştıran müşterinin adı. |
+| Özellik | Parlaklık Düzeyi | Cihazdaki ışığın parlaklık düzeyi. 1 (yüksek), 2 (orta), 3 (düşük) olarak belirtilebilir. |
 | Telemetri | Sıcaklık | Cihazdaki geçerli sıcaklık. |
-| Telemetri | Nem oranı    | Cihazda geçerli nem. |
-| Komut | /          | Belirli bir zaman aralığı için yeniden yanıp sönbaşla. |
-| Komut | turnon         | Cihazdaki ışığı açın. |
-| Komut | kapatma        | Cihazdaki ışığı devre dışı bırakın. |
-| Komut | rundiagnostics | Bu komut bir tanılama çalıştırması başlatır. |
+| Telemetri | Nem oranı    | Cihazdaki geçerli nem. |
+| Komut | Yanıp          | Belirli bir zaman aralığı için LED'i yanıp sönmeye başlayın. |
+| Komut | turnon         | Cihazın LED ışığını açın. |
+| Komut | kapatma        | Cihazın LED ışığını kapatın. |
+| Komut | rundiagnostics | Bu komut bir tanılama çalışması başlatır. |
 
-**Cihaz durumu** özelliğinin IoT Central uygulamanızda nasıl görüntüleneceğini özelleştirmek için cihaz şablonunda **Özelleştir** ' i seçin. **Cihaz durumu** girişini genişletin, **doğru** ad olarak _çevrimiçi_ ve **yanlış ad**olarak _çevrimdışı_ girin. Sonra değişiklikleri kaydedin:
+**IoT** Central uygulamanızda Aygıt Durumu özelliğinin nasıl görüntülenebildiğini özelleştirmek için aygıt şablonunda **Özelleştir'i** seçin. Aygıt **Durumu** girişini genişletin, **Doğru ad** olarak _Çevrimiçi'yi_ ve **False adı**olarak _Çevrimdışı_ girin. Ardından değişiklikleri kaydedin:
 
-![Cihaz şablonunu özelleştirme](media/tutorial-connect-device/customize-template.png)
+![Aygıt şablonu özelleştirme](media/tutorial-connect-device/customize-template.png)
 
-## <a name="create-views"></a>Görünümleri oluşturma
+## <a name="create-views"></a>Görünümler oluşturma
 
-Görünümler, IoT Central uygulamanıza bağlı cihazlarla etkileşime geçmesini sağlar. Örneğin, Telemetriyi görüntüleyen görünümleriniz, özellikleri görüntüleyen görünümler ve yazılabilir ve bulut özelliklerini düzenlemenize olanak sağlayan görünümler bulunabilir. Görünümler bir cihaz şablonunun parçasıdır.
+Görünümler, IoT Central uygulamanıza bağlı aygıtlarla etkileşim kurmanıza izin verir. Örneğin, telemetriyi görüntüleyen görünümler, özellikleri görüntüleyen görünümler ve yazılabilir ve bulut özelliklerini yeniden deletmenize izin veren görünümler olabilir. Görünümler aygıt şablonunun bir parçasıdır.
 
-**Ortam algılayıcı** cihaz şablonunuza bazı varsayılan görünümler eklemek için cihaz şablonunuza gidin, **Görünümler**' i seçin ve **varsayılan görünümleri oluştur** kutucuğunu seçin. **Genel bakış** ve **hakkında** ' ün **Açık**olduğundan emin olun ve ardından **varsayılan pano görünümlerini oluştur**' u seçin. Artık, şablonunuzda tanımlanmış iki varsayılan görünümünüz vardır.
+**Çevre sensörü** aygıt şablonuna bazı varsayılan görünümler eklemek için aygıt şablonunuza gidin, **Görünümler'i**seçin ve **Varsayılan Görünümler oluştur** döşemesini seçin. **Genel Bakış** ve **Hakkında'nın** **Açık**olduğundan emin olun ve ardından varsayılan **pano görünümlerini oluştur'u**seçin. Artık şablonunuzda tanımlanan iki varsayılan görünüm var.
 
-**Çevresel algılayıcı** arabirimi iki yazılabilir Özellik Içerir- **müşteri adı** ve **parlaklık düzeyi**. Bir görünüm oluşturmak için bu özellikleri düzenlemek üzere kullanabilirsiniz:
+**Çevre Sensörü** arabirimi iki yazılabilir özellik içerir - **Müşteri Adı** ve **Parlaklık Düzeyi.** Bir görünüm oluşturmak için, bu özellikleri yeniden kullanmak için kullanabilirsiniz:
 
-1. **Görünümler** ' i seçin ve ardından **cihazı ve bulut verilerini Düzenle** kutucuğunu seçin.
+1. **Görünümler'i** seçin ve ardından **Düzenleme aygıtını ve bulut veri** döşemesini seçin.
 
-1. _Özellikleri_ form adı olarak girin.
+1. _Özellikler'i_ form adı olarak girin.
 
-1. **Parlaklık düzeyini** ve **müşteri adı** özelliklerini seçin. Ardından **Bölüm Ekle**' yi seçin.
+1. Parlaklık **Düzeyi** ve **Müşteri Adı** özelliklerini seçin. Ardından **Ekle bölümünü**seçin.
 
 1. Yaptığınız değişiklikleri kaydedin.
 
-![Özellik düzenlemesini etkinleştirmek için bir görünüm ekleyin](media/tutorial-connect-device/properties-view.png)
+![Özellik düzenlemeyi etkinleştirmek için görünüm ekleme](media/tutorial-connect-device/properties-view.png)
 
 ## <a name="publish-the-template"></a>Şablonu yayımlama
 
-**Ortam algılayıcısı** cihaz şablonunu kullanan IoT Central uygulamanıza bir cihaz eklemeden önce, şablonu yayımlamanız gerekir.
+**Çevre sensörü** aygıtı şablonunu kullanan IoT Central uygulamanıza bir aygıt eklemeden önce şablonu yayımlamanız gerekir.
 
-Cihaz şablonunda **Yayımla**' yı seçin. Yayımlanacak değişiklikleri gösteren panelde **Yayımla**' yı seçin.
+Aygıt şablonunda **Yayımla'yı**seçin. Yayımlanacak değişiklikleri gösteren panelde **Yayımla'yı**seçin.
 
-Şablonun kullanıma hazırsa emin olmak için IoT Central uygulamanızdaki **cihazlar** sayfasına gidin. **Cihazlar** bölümü, uygulamadaki yayınlanan cihazların bir listesini gösterir:
+Şablonun kullanıma hazır olup olmadığını kontrol etmek için, IoT Merkezi uygulamanızdaki **Cihazlar** sayfasına gidin. **Cihazlar** bölümünde, uygulamada yayınlanan aygıtların bir listesi gösterilmektedir:
 
-![Cihazlar sayfasında yayımlanan şablonlar](media/tutorial-connect-device/published-templates.png)
+![Aygıtlar sayfasında yayınlanan şablonlar](media/tutorial-connect-device/published-templates.png)
 
 ## <a name="add-a-real-device"></a>Gerçek cihaz ekleme
 
-Azure IoT Central uygulamanızda, önceki bölümde oluşturduğunuz cihaz şablonuna gerçek bir cihaz ekleyin:
+Azure IoT Merkezi uygulamanızda, önceki bölümde oluşturduğunuz aygıt şablonuna gerçek bir aygıt ekleyin:
 
-1. **Cihazlar** sayfasında, **çevresel algılayıcı** cihaz şablonunu seçin.
+1. **Cihazlar** sayfasında **Çevre sensörü** aygıtı şablonuna tıklayın.
 
-1. **+ Yeni**seçeneğini belirleyin.
+1. Seçin **+ Yeni**.
 
-1. **Benzetimli** 'un **kapalı**olduğundan emin olun. Ardından **Oluştur**’u seçin.
+1. **Benzetimkapalı** olduğundan **Off**emin olun. Ardından **Oluştur**’u seçin.
 
-Cihaz adına tıklayın ve ardından **Bağlan**' ı seçin. Cihaz **bağlantısı** sayfa **kimliği KAPSAMı**, **cihaz kimliği**ve **birincil anahtar**üzerindeki cihaz bağlantı bilgilerini bir yere unutmayın. Cihaz kodunuzu oluştururken bu değerlere ihtiyacınız vardır:
+Aygıt adını tıklatın ve sonra **Bağlan'ı**seçin. **Aygıt Bağlantısı** sayfasındaki aygıt bağlantısı bilgilerini not edin - **kimlik kapsamı,** **Aygıt Kimliği**ve **Birincil anahtar**. Aygıt kodunuzu oluştururken bu değerlere ihtiyacınız vardır:
 
 ![Cihaz bağlantı bilgileri](./media/tutorial-connect-device/device-connection.png)
 
 ### <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
 
-Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir Node. js istemci uygulamasının nasıl oluşturulacağı gösterilmektedir. Bu Node. js uygulaması gerçek bir cihazın davranışının benzetimini yapar.
+Aşağıdaki adımlar, uygulamaya eklediğiniz gerçek aygıtı uygulayan bir Düğüm istemcisi uygulamasını nasıl oluşturacağınızı gösterir. Bu Düğüm.js uygulaması gerçek bir aygıtın davranışını simüle eder.
 
-1. Komut satırı ortamınızda, daha önce oluşturduğunuz `environmental-sensor` klasöre gidin.
+1. Komut satırı ortamınızda, daha `environmental-sensor` önce oluşturduğunuz klasöre gidin.
 
-1. Node. js projenizi başlatmak ve gerekli bağımlılıkları yüklemek için aşağıdaki komutları çalıştırın: `npm init`çalıştırdığınızda tüm varsayılan seçenekleri kabul edin:
+1. Düğüm.js projenizi başlatmave gerekli bağımlılıkları yüklemek için aşağıdaki komutları çalıştırın - çalıştırdığınızda `npm init`tüm varsayılan seçenekleri kabul edin:
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. `environmental-sensor` klasöründe **Environmentalalgılayıcı. js** adlı bir dosya oluşturun.
+1. Klasörde **environmentalSensor.js** adlı `environmental-sensor` bir dosya oluşturun.
 
-1. **Environmentalalgılayıcı. js** dosyasının başlangıcında aşağıdaki `require` deyimlerini ekleyin:
+1. `require` **environmentalSensor.js** dosyasının başında aşağıdaki ifadeleri ekleyin:
 
     ```javascript
     "use strict";
@@ -151,9 +151,9 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir N
     var ledOn = true;
     ```
 
-    `{your Scope ID}`, `{your Device ID}`ve `{your Primary Key}` yer tutucuları, daha önce bir nota yaptığınız değerlerle güncelleştirin. Bu örnekte, `targetTemperature` sıfırdan başlatın, cihazdaki geçerli okumayı veya cihazdan ikizi bir değeri kullanabilirsiniz.
+    Yer tutucuları `{your Scope ID}` `{your Device ID}`ve `{your Primary Key}` daha önce not aldığınız değerlerle güncelleştirin. Bu örnekte, sıfıra başlatmak, `targetTemperature` aygıttan geçerli okuma veya aygıt ikiz bir değer kullanabilirsiniz.
 
-1. Azure IoT Central uygulamanıza telemetri göndermek için, dosyaya aşağıdaki işlevi ekleyin:
+1. Azure IoT Merkezi uygulamanıza telemetri göndermek için dosyaya aşağıdaki işlevi ekleyin:
 
     ```javascript
     // Send device measurements.
@@ -171,7 +171,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir N
     }
     ```
 
-1. Azure IoT Central uygulamanıza cihaz özellikleri göndermek için, dosyanıza aşağıdaki işlevi ekleyin:
+1. Aygıt özelliklerini Azure IoT Merkezi uygulamanıza göndermek için dosyanıza aşağıdaki işlevi ekleyin:
 
     ```javascript
     // Send device reported properties.
@@ -181,7 +181,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir N
     }
     ```
 
-1. Cihazınızın yanıt verdiği yazılabilir özellikleri tanımlamak ve işlemek için aşağıdaki kodu ekleyin:
+1. Cihazınızın yanıtlabildiği yazılabilir özellikleri tanımlamak ve işlemek için aşağıdaki kodu ekleyin:
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -325,43 +325,43 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir N
     });
     ```
 
-## <a name="run-your-nodejs-application"></a>Node. js uygulamanızı çalıştırma
+## <a name="run-your-nodejs-application"></a>Node.js uygulamanızı çalıştırın
 
-Cihaz istemci uygulamasını başlatmak için komut satırı ortamınızda aşağıdaki komutu çalıştırın:
+Aygıt istemcisi uygulamasını başlatmak için komut satırı ortamınızda aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
 node environmentalSensor.js
 ```
 
-Cihazın Azure IoT Central uygulamanıza bağlandığını görebilir ve telemetri göndermeye başlar:
+Aygıtın Azure IoT Merkezi uygulamanıza bağlandığıve telemetri göndermeye başladığı nızı görebilirsiniz:
 
 ![İstemci uygulamasını çalıştırma](media/tutorial-connect-device/run-application.png)
 
-Azure IoT Central uygulamanızda bir operatör olarak şunları yapabilirsiniz:
+Azure IoT Merkezi uygulamanızda bir operatör olarak şunları yapabilirsiniz:
 
-* **Genel bakış** sayfasında cihaz tarafından gönderilen Telemetriyi görüntüleyin:
+* Cihaz tarafından gönderilen telemetriyi **Genel Bakış** sayfasında görüntüleyin:
 
     ![Telemetri görüntüleme](media/tutorial-connect-device/view-telemetry.png)
 
-* **Özellikler** sayfasında yazılabilir özellik değerlerini güncelleştir:
+* **Özellikler** sayfasında yazılabilir özellik değerlerini güncelleştirin:
 
-    ![Güncelleştirme özellikleri](media/tutorial-connect-device/update-properties.png)
+    ![Özellikleri güncelleştirme](media/tutorial-connect-device/update-properties.png)
 
-    ![Güncelleştirme özellikleri cihazı](media/tutorial-connect-device/update-properties-device.png)
+    ![Özellikleri aygıtı güncelleştirme](media/tutorial-connect-device/update-properties-device.png)
 
-* **Komutlar sayfasından komutları** çağırın:
+* **Komutlar** sayfasından komutları arayın:
 
-    ![BLINK komutunu çağır](media/tutorial-connect-device/call-command.png)
+    ![Göz kırpma komutunu arayın](media/tutorial-connect-device/call-command.png)
 
-    ![BLINK komut cihazını çağır](media/tutorial-connect-device/call-command-device.png)
+    ![Blink komut cihazını arayın](media/tutorial-connect-device/call-command-device.png)
 
-* **Hakkında** sayfasında cihaz özelliklerini görüntüleyin:
+* Cihaz özelliklerini **Hakkında** sayfasında görüntüleyin:
 
     ![Özellikleri görüntüle](media/tutorial-connect-device/about-properties.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cihaz yetenek modelleri ve kendi cihaz şablonlarınızı oluşturma hakkında daha fazla bilgi edinmek için nasıl yapılır kılavuzuna ilerleyin:
+Aygıt yeteneği modelleri ve kendi cihaz şablonlarınızı nasıl oluşturup oluşturabilirsiniz hakkında daha fazla bilgi edinmek için nasıl yapılacağınız kılavuzuna devam edin:
 
 > [!div class="nextstepaction"]
-> [Yeni bir IoT cihaz türü tanımla](./howto-set-up-template.md)
+> [Yeni bir IoT aygıt türü tanımlama](./howto-set-up-template.md)

@@ -1,17 +1,17 @@
 ---
-title: Öğretici-modül kayıt defterini kullanarak Terrayform ile Azure VM kümesi oluşturma
-description: Bu öğreticide, Azure 'da bir Windows sanal makine kümesi oluşturmak için Terrayform modüllerini kullanacaksınız
-keywords: Azure DevOps terrayform VM sanal makine kümesi modülü kayıt defteri
+title: Öğretici - Modül Kayıt Defterini Kullanarak Terraform ile Azure VM kümesi oluşturma
+description: Bu eğitimde, Azure'da bir Windows sanal makine kümesi oluşturmak için Terraform modüllerini kullanıyorsunuz
+keywords: masmavi devops terraform vm sanal makine küme modülü kayıt defteri
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 9faeee9bb2f0fb6dc148a3868f6fc0dae3833a2a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945282"
 ---
-# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Öğretici: modül kayıt defterini kullanarak Terrayform ile Azure VM kümesi oluşturma
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Öğretici: Modül Kayıt Defterini kullanarak Terraform ile Azure VM kümesi oluşturun
 
 Bu makalede Terraform [Azure işlem modülü](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2) ile küçük bir VM kümesi oluşturma adımları gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz: 
 
@@ -103,4 +103,4 @@ VM'leri Azure'da sağlamak için `terraform apply` komutunu çalıştırın.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure Terrayform modülleri listesine gözatıp](https://registry.terraform.io/modules/Azure)
+> [Azure Terraform modüllerinin listesine göz atın](https://registry.terraform.io/modules/Azure)

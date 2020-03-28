@@ -1,98 +1,98 @@
 ---
-title: Jenkins ve Azure CLı kullanarak Azure Spring buluta uygulama dağıtma
-description: Azure Spring Cloud Service 'e mikro hizmetler dağıtmak için sürekli tümleştirme ve dağıtım işlem hattında Azure CLı 'yi nasıl kullanacağınızı öğrenin
+title: Jenkins ve Azure CLI kullanarak uygulamaları Azure Spring Cloud’a dağıtma
+description: Azure Yay Bulutu hizmetine mikro hizmetleri dağıtmak için Azure CLI'yi sürekli tümleştirme ve dağıtım boru hattında nasıl kullanacağınızı öğrenin
 ms.topic: tutorial
 ms.date: 01/07/2020
 ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75734981"
 ---
-# <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Öğretici: Jenkins ve Azure CLı kullanarak Azure Spring buluta uygulama dağıtma
+# <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Öğretici: Jenkins ve Azure CLI'yi kullanarak uygulamaları Azure İlkbahar Bulutu'na dağıtın
 
-[Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-overview) , yerleşik hizmet bulma ve yapılandırma yönetimiyle tam olarak yönetilen bir mikro hizmet geliştirmesinde bulunur. Hizmet, Spring Boot tabanlı mikro hizmet uygulamalarının Azure 'a dağıtılmasını kolaylaştırır. Bu öğreticide, Azure Spring Cloud için sürekli tümleştirme ve teslimi (CI/CD) otomatik hale getirmek için Jenkins 'de Azure CLı 'yı nasıl kullanabileceğiniz gösterilmektedir.
+[Azure Yay Bulutu,](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-overview) yerleşik hizmet bulma ve yapılandırma yönetimi yle tamamen yönetilen bir mikro hizmet geliştirmedir. Bu hizmet, Bahar Önyükleme tabanlı mikro hizmet uygulamalarını Azure'a dağıtmayı kolaylaştırır. Bu öğretici, Azure Bahar Bulutu için sürekli tümleştirme ve teslimi (CI/CD) otomatikleştirmek için Jenkins'teki Azure CLI'yi nasıl kullanabileceğinizi gösterir.
 
-Bu öğreticide, şu görevleri tamamlayacaksınız:
+Bu öğreticide, şu görevleri tamamlayasınız:
 
 > [!div class="checklist"]
-> * Bir hizmet örneği sağlayın ve bir Java Spring uygulaması başlatın
-> * Jenkins sunucunuzu hazırlama
-> * Mikro hizmet uygulamalarını derlemek ve dağıtmak için Jenkins ardışık düzeninde Azure CLı 'yı kullanma 
+> * Bir hizmet örneği sağlama ve Java Spring uygulaması başlatma
+> * Jenkins sunucunuzu hazırlayın
+> * Mikro hizmet uygulamalarını oluşturmak ve dağıtmak için Jenkins ardışık bir boru hattında Azure CLI'yi kullanın 
 
-Bu öğreticide, temel Azure Hizmetleri, Azure yay bulutu, Jenkins işlem [hatları](https://jenkins.io/doc/book/pipeline/) ve GitHub ve GitHub hakkında ara bilgi varsayılmaktadır.
+Bu öğretici, temel Azure hizmetleri, Azure Bahar Bulutu, Jenkins boru hatları ve [eklentileri](https://jenkins.io/doc/book/pipeline/) ve GitHub hakkında ara bilgileri varsayar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 >[!Note]
-> Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
+> Azure İlkbahar Bulutu şu anda genel önizleme olarak sunulmaktadır. Genel önizleme teklifleri, müşterilerin resmi yayınlanmalarından önce yeni özelliklerle denemeler e-sayılsa.  Genel önizleme özellikleri ve hizmetleri üretim kullanımı için değildir.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen [SSS'mizi](https://azure.microsoft.com/support/faq/) gözden geçirin veya daha fazla bilgi edinmek için bir [Destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) dosyalayın.
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
-* GitHub hesabı. GitHub hesabınız yoksa başlamadan önce [ücretsiz bir hesap](https://github.com/) oluşturun.
+* GitHub hesabı. GitHub hesabınız yoksa, başlamadan önce ücretsiz bir [hesap](https://github.com/) oluşturun.
 
-* Bir Jenkins ana sunucusu. Zaten bir Jenkins ana hesabınız yoksa, bu [hızlı](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)başlangıçta bulunan adımları izleyerek Azure 'Da [jenkins](https://aka.ms/jenkins-on-azure) dağıtın. Jenkins düğümünde/aracısında aşağıdakiler gereklidir (örneğin,. yapı sunucusu):
+* Bir Jenkins ana sunucusu. Zaten bir Jenkins master'ınuz yoksa, bu [hızlı başlangıçtaki](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)adımları izleyerek [Jenkins'i](https://aka.ms/jenkins-on-azure) Azure'da dağıtın. Jenkins düğümü/aracısı için aşağıdakiler gereklidir (örneğin. build server):
 
     * [Git](https://git-scm.com/)
     * [JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-    * [Maven 3,0 veya üzeri](https://maven.apache.org/download.cgi)
-    * [Azure CLI yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest), sürüm 2.0.67 veya üzeri
+    * [Maven 3.0 veya üzeri](https://maven.apache.org/download.cgi)
+    * [Azure CLI yüklendi,](/cli/azure/install-azure-cli?view=azure-cli-latest)sürüm 2.0.67 veya üstü
 
     >[!TIP]
-    > Git, JDK, az CLı ve Azure plug 'ler gibi araçlar, Azure Marketi [Microsoft Jenkins](https://aka.ms/jenkins-on-azure) çözüm şablonunda varsayılan olarak eklenmiştir.
+    > Git, JDK, Az CLI ve Azure eklentileri gibi araçlar varsayılan olarak Azure Marketi [Microsoft Jenkins](https://aka.ms/jenkins-on-azure) çözüm şablonuna dahildir.
     
-* [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
+* [Azure aboneliği için kaydolun](https://azure.microsoft.com/free/)
  
-## <a name="provision-a-service-instance-and-launch-a-java-spring-application"></a>Bir hizmet örneği sağlayın ve bir Java Spring uygulaması başlatın
+## <a name="provision-a-service-instance-and-launch-a-java-spring-application"></a>Bir hizmet örneği sağlama ve Java Spring uygulaması başlatma
 
-Örnek Microsoft hizmet uygulaması olarak [Piggy ölçümlerini](https://github.com/Azure-Samples/piggymetrics) kullanıyoruz ve [hızlı başlangıç: Azure CLI kullanarak bir Java Spring uygulaması başlatarak](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) hizmet örneğini temin edin ve uygulamaları ayarlayın. Aynı işlemden daha önce gittiğinden sonraki bölüme atlayabilirsiniz. Aksi takdirde, Azure CLı komutları aşağıda verilmiştir. [Hızlı başlangıç: Azure CLI kullanarak bir Java Spring uygulaması başlatarak](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) daha fazla arka plan bilgisi alın bölümüne bakın.
+[Piggy Metrics'i](https://github.com/Azure-Samples/piggymetrics) örnek Microsoft hizmet uygulaması olarak kullanıyoruz ve [Quickstart: Azure CLI'yi kullanarak](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) hizmet örneğini sağlamak ve uygulamaları ayarlamak için aynı adımları uyguluyoruz. Zaten aynı işlemden geçtiyseniz, bir sonraki bölüme atlayabilirsiniz. Aksi takdirde, aşağıdakiazure CLI komutları dahildir. Hızlı Başlangıç: Ek arka plan bilgileri almak için [Azure CLI'yi kullanarak bir Java Spring uygulaması başlatın.](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
 
-Yerel makinenizin Jenkins yapı sunucusuyla aynı önkoşulu karşılaması gerekir. Mikro hizmet uygulamalarını derlemek ve dağıtmak için aşağıdakilerin yüklü olduğundan emin olun:
+Yerel makinenizin Jenkins build sunucusuyla aynı ön koşulu karşılaması gerekir. Mikro hizmet uygulamalarını oluşturmak ve dağıtmak için aşağıdakilerin yüklü olduğundan emin olun:
     * [Git](https://git-scm.com/)
     * [JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-    * [Maven 3,0 veya üzeri](https://maven.apache.org/download.cgi)
-    * [Azure CLI yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest), sürüm 2.0.67 veya üzeri
+    * [Maven 3.0 veya üzeri](https://maven.apache.org/download.cgi)
+    * [Azure CLI yüklendi,](/cli/azure/install-azure-cli?view=azure-cli-latest)sürüm 2.0.67 veya üstü
 
-1. Azure yay bulutu uzantısını yükler:
+1. Azure İlkbahar Bulutu uzantısını yükleyin:
 
     ```Azure CLI
         az extension add --name spring-cloud
     ```
 
-2. Azure yay bulut hizmetinizi içerecek bir kaynak grubu oluşturun:
+2. Azure İlkbahar Bulut hizmetinizi içerecek bir kaynak grubu oluşturun:
 
     ```Azure CLI
         az group create --location eastus --name <resource group name>
     ```
 
-3. Azure Spring Cloud 'ın bir örneğini sağlayın:
+3. Azure Yay Bulutu örneğini sağlama:
 
     ```Azure CLI
         az spring-cloud create -n <service name> -g <resource group name>
     ```
 
-4. [Piggy ölçümleri](https://github.com/Azure-Samples/piggymetrics) deposunu kendi GitHub hesabınıza çatalla. Yerel makinenizde `source-code`adlı bir dizinde depoyu kopyalayın:
+4. Kendi GitHub hesabınıza [Piggy Metrics](https://github.com/Azure-Samples/piggymetrics) repo fork. Yerel makinenizde, reponuzu şu adlı `source-code`bir dizinde klonla:
 
     ```bash
         mkdir source-code
         git clone https://github.com/<your GitHub id>/piggymetrics
     ```
 
-5. Yapılandırma sunucunuzu ayarlayın. GitHub kimliği&gt; doğru değerle &lt;değiştirdiğinizden emin olun.
+5. Yapılandırma sunucunuzu ayarlayın. GitHub kimliğinizi &lt;&gt; doğru değerle değiştirdiğinizden emin olun.
 
     ```Azure CLI
         az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/<your GitHub id>/piggymetrics --label config
     ```
 
-6. Projeyi derleyin:
+6. Projeyi oluşturun:
 
     ```bash
         cd piggymetrics
         mvn clean package -D skipTests
     ```
 
-7. Üç mikro hizmeti oluşturun: **Gateway**, **AUTH-Service**ve **Account-Service**:
+7. Üç mikro hizmet oluşturun: **ağ geçidi,** **auth-service**ve **hesap hizmeti:**
 
     ```Azure CLI
         az spring-cloud app create --n gateway -s <service name> -g <resource group name>
@@ -100,7 +100,7 @@ Yerel makinenizin Jenkins yapı sunucusuyla aynı önkoşulu karşılaması gere
         az spring-cloud app create --n account-service -s <service name> -g <resource group name>
     ```
 
-8. Uygulamaları dağıtma: 
+8. Uygulamaları dağıtın: 
 
     ```Azure CLI
         az spring-cloud app deploy -n gateway -s <service name> -g <resource group name> --jar-path ./gateway/target/gateway.jar
@@ -108,40 +108,40 @@ Yerel makinenizin Jenkins yapı sunucusuyla aynı önkoşulu karşılaması gere
         az spring-cloud app deploy -n auth-service -s <service name> -g <resource group name> --jar-path ./auth-service/target/auth-service.jar
     ```
 
-9. Ağ geçidine genel uç nokta ata:
+9. Ağ geçidine genel bitiş noktası atayın:
 
     ```Azure CLI
         az spring-cloud app update -n gateway -s <service name> -g <resource group name> --is-public true
     ```
 
-10. Uygulamanın çalıştığını doğrulayabilmeniz için, URL 'yi almak üzere ağ geçidi uygulamasını sorgulayın.
+10. Url'yi almak için ağ geçidi uygulamasını sorgulayın, böylece uygulamanın çalıştığını doğrulayabilirsiniz.
 
     ```Azure CLI
     az spring-cloud app show --name gateway | grep url
     ```
     
-    Plımetrimetrik uygulamasını çalıştırmak için önceki komutun sunduğu URL 'ye gidin. 
+    PiggyMetrics uygulamasını çalıştırmak için önceki komutun sağladığı URL'ye gidin. 
 
-## <a name="prepare-jenkins-server"></a>Jenkins sunucusunu hazırlama
+## <a name="prepare-jenkins-server"></a>Jenkins sunucusuhazırlayın
 
-Bu bölümde, Jenkins sunucusunu test için ince olan bir derlemeyi çalıştıracak şekilde hazırlarsınız. Ancak güvenlik nedeniyle, derlemelerinizi çalıştırmak üzere Azure 'da bir aracı çalıştırmak için bir [Azure VM Aracısı](https://plugins.jenkins.io/azure-vm-agents) veya [Azure Kapsayıcı Aracısı](https://plugins.jenkins.io/azure-container-agents) kullanmanız gerekir. Daha fazla bilgi için [ana sunucuda derleme çalıştırmanın güvenlik sonuçları](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master) konulu Jenkins makalesine bakın.
+Bu bölümde, Jenkins sunucusunu bir yapıyı çalıştırmak için hazırlarsınız, bu da test etmek için iyidir. Ancak, güvenlik açısından iması nedeniyle, yapılarınızı çalıştırmak için Azure'da bir aracıyı döndürmek için bir [Azure VM aracısı](https://plugins.jenkins.io/azure-vm-agents) veya [Azure Kapsayıcı aracısı](https://plugins.jenkins.io/azure-container-agents) kullanmanız gerekir. Daha fazla bilgi için [ana sunucuda derleme çalıştırmanın güvenlik sonuçları](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master) konulu Jenkins makalesine bakın.
 
-### <a name="install-plug-ins"></a>Eklentileri yükler
+### <a name="install-plug-ins"></a>Eklentileri yükleme
 
-1. Jenkins sunucunuzda oturum açın. **Eklentileri yönet > Jenkins 'ı Yönet**' i seçin.
-2. **Kullanılabilir** sekmesinde, aşağıdaki eklentileri seçin:
-    * [GitHub tümleştirmesi](https://plugins.jenkins.io/github-pullrequest)
-    * [Azure kimlik bilgisi](https://plugins.jenkins.io/azure-credentials)
+1. Jenkins sunucunuzda oturum açın. **Jenkins'i yönet > Eklentileri Yönet'i**seçin.
+2. **Kullanılabilir** sekmesinde aşağıdaki eklentileri seçin:
+    * [GitHub Entegrasyonu](https://plugins.jenkins.io/github-pullrequest)
+    * [Azure Kimlik Bilgileri](https://plugins.jenkins.io/azure-credentials)
 
-    Bu eklentiler listede görünmezse, zaten yüklü olup olmadığını görmek için **yüklü** sekmesini işaretleyin.
+    Bu eklentiler listede görünmüyorsa, yüklü olup olmadıklarını görmek için **Yüklü** sekmesini kontrol edin.
 
-3. Eklentileri yüklemek için **Şimdi İndir ' i ve yeniden başlattıktan sonra Yükle**' yi seçin.
+3. Eklentileri yüklemek için şimdi **İndir'i seçin ve yeniden başlattıktan sonra yükleyin.**
 
-4. Yüklemeyi gerçekleştirmek için Jenkins sunucunuzu yeniden başlatın.
+4. Yüklemeyi tamamlamak için Jenkins sunucunuzu yeniden başlatın.
 
-### <a name="add-your-azure-service-principal-credential-in-jenkins-credential-store"></a>Azure hizmet sorumlusu kimlik bilgilerinizi Jenkins kimlik bilgileri deposuna ekleyin
+### <a name="add-your-azure-service-principal-credential-in-jenkins-credential-store"></a>Azure Hizmet Sorumlusu kimlik bilgilerinizi Jenkins kimlik bilgisi deposuna ekleyin
 
-1. Azure 'a dağıtmak için bir Azure hizmet sorumlusu gerekir. Daha fazla bilgi için, dağıtma Azure App Service öğreticisindeki [hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) bölümüne bakın. `az ad sp create-for-rbac` çıkışı şuna benzer:
+1. Azure'a dağıtmak için bir Azure Hizmet Sorumlusuna ihtiyacınız var. Daha fazla bilgi için Azure Uygulama Hizmetine Dağıt öğreticisinde [hizmet ana](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) sını oluştur bölümüne bakın. Çıktı `az ad sp create-for-rbac` şuna benzer:
 
     ```
     {
@@ -153,44 +153,44 @@ Bu bölümde, Jenkins sunucusunu test için ince olan bir derlemeyi çalıştır
     }
     ```
 
-2. Jenkins panosunda **Credentials** > **System**'ı (Kimlik Bilgileri > Sistem) seçin. Ardından, **Global credentials(unrestricted)** (Genel kimlik bilgileri (sınırsız)) seçeneğini belirleyin.
+2. Jenkins panosunda **Kimlik Bilgileri** > **Sistemi'ni**seçin. Ardından, **Global credentials(unrestricted)** (Genel kimlik bilgileri (sınırsız)) seçeneğini belirleyin.
 
-3. **Kimlik bilgileri ekle**' yi seçin. 
+3. **Kimlik Bilgileri Ekle'yi**seçin. 
 
-4. **Hizmet sorumlusunu** tür olarak Microsoft Azure seçin.
+4. Tür olarak **Microsoft Azure Hizmet Sorumlusu'nun** seçeneğini belirleyin.
 
-5. Şu değerleri sağlayın: * abonelik KIMLIĞI: Azure abonelik KIMLIĞINIZI kullanın * Istemci KIMLIĞI: Use `appId` * Istemci gizli dizisi: Use `password` * kiracı KIMLIĞI: `tenant` * Azure ortamını kullanın: önceden ayarlanmış bir değer seçin. Örneğin, Azure için **Azure** genel * kimlik: **azure_service_principal**olarak ayarla ' yı kullanın. Bu kodu bu makalenin sonraki bir adımında kullanıyoruz * Açıklama: isteğe bağlı bir alandır. Burada anlamlı bir değer sağlanması önerilir.
+5. Kaynak değerleri: * Abonelik Kimliği: Azure abonelik kimliğinizi `appId` kullanın * `password` İstemci Kimliği: kullanım * İstemci Sırrı: kullanım * Kiracı Kimliği: kullanım `tenant` * Azure Ortamı: önceden ayarlanmış bir değer seçin. Örneğin, Azure Global * ID için **Azure'u** kullanın: **azure_service_principal**olarak ayarlayın. Bu kimliği bu makalenin ilerleyen adımlarında kullanırız * Açıklama: isteğe bağlı bir alandır. Burada anlamlı bir değer sağlamanızı öneririz.
 
-### <a name="install-maven-and-az-cli-spring-cloud-extension"></a>Maven 'i ve az CLı Spring-Cloud uzantısını yükler
+### <a name="install-maven-and-az-cli-spring-cloud-extension"></a>Maven ve Az CLI yay bulutu uzantısını yükleyin
 
-Örnek işlem hattı, hizmet örneğine dağıtmak için Maven 'yi kullanır ve az CLı kullanır. Jenkins yüklendiğinde, *Jenkins*adlı bir yönetici hesabı oluşturur. *Jenkins* kullanıcısının Spring-Cloud uzantısını çalıştırma izni olduğundan emin olun.
+Örnek ardışık yapı oluşturmak için Maven ve hizmet örneğine dağıtmak için Az CLI kullanır. Jenkins yüklendiğinde, *jenkins*adında bir yönetici hesabı oluşturur. Kullanıcı *jenkins'in* yay bulutu uzantısını çalıştırmak için izin verdiğinden emin olun.
 
-1. SSH ile Jenkins ana 'e bağlanın. 
+1. SSH üzerinden Jenkins ustasına bağlanın. 
 
-2. Maven 'i yükler
+2. Maven'i Yükle
 
     ```bash
         sudo apt-get install maven 
     ```
 
-3. Azure CLI yükleyin. Daha fazla bilgi için bkz. [Azure CLI 'Yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure ['Da Jenkins Master](https://aka.ms/jenkins-on-azure)kullanıyorsanız, Azure CLI varsayılan olarak yüklenir.
+3. Azure CLI yükleyin. Daha fazla bilgi için Azure [CLI'yi yükleme'ye](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)bakın. Azure Master'ı [Azure'da](https://aka.ms/jenkins-on-azure)kullanırsanız Azure CLI varsayılan olarak yüklenir.
 
-4. `jenkins` kullanıcısına geç:
+4. Kullanıcıya `jenkins` geçin:
 
     ```bash
         sudo su jenkins
     ```
 
-5. **Yay-bulut** uzantısını ekleyin:
+5. Yay **bulutu** uzantısını ekleyin:
 
     ```bash
         az extension add --name spring-cloud
     ```
 
-## <a name="create-a-jenkinsfile"></a>Jenkinsfile oluşturma
-1. Kendi deponuzda (https://github.com/&lt ; GitHub kimliğiniz&gt; /Pbir ölçümdür), kökte bir **Jenkinsfile** oluşturun.
+## <a name="create-a-jenkinsfile"></a>Jenkinsdosyası oluşturma
+1. Kendi repohttps://github.com/&lt(; github&gt;id / piggymetrics), kök bir **Jenkinsfile** oluşturun.
 
-2. Dosyayı aşağıdaki gibi güncelleştirin. **\<kaynak grubu adı >** ve **\<hizmet adı >** değerlerini değiştirdiğinizden emin olun. Jenkins 'e kimlik bilgisini eklediğinizde farklı bir değer kullanırsanız, **azure_service_principal** doğru kimlikle değiştirin. 
+2. Dosyayı aşağıdaki gibi güncelleştirin. Kaynak grubu adı>ve ** \<** ** \<hizmet adı **>değerlerini değiştirdiğinden emin olun. Jenkins'teki kimlik belgesini eklediyseniz farklı bir değer kullanıyorsanız **azure_service_principal** doğru kimlikle değiştirin. 
 
 ```groovy
     node {
@@ -220,13 +220,13 @@ Bu bölümde, Jenkins sunucusunu test için ince olan bir derlemeyi çalıştır
     }
 ```
 
-3. Değişiklikleri kaydedin ve işleyin.
+3. Değişimi kaydedin ve gerçekleştirin.
 
 ## <a name="create-the-job"></a>İşi oluşturma
 
-1. Jenkins panosunda **Yeni öğe**' ye tıklayın.
+1. Jenkins panosunda **Yeni Öğe'yi**tıklatın.
 
-2. İş için bir ad, *Deploy-POF ölçümleri* sağlayın ve işlem **hattı**seçin. Tamam'a tıklayın.
+2. Bir ad sağlayın, iş için *Dağıtım-PiggyMetrics* ve **Pipeline**seçin. Tamam'a tıklayın.
 
 3. Ardından, **Pipeline** (İşlem hattı) sekmesine tıklayın.
 
@@ -234,37 +234,37 @@ Bu bölümde, Jenkins sunucusunu test için ince olan bir derlemeyi çalıştır
 
 5. **SCM** için **Git**'i seçin.
 
-6. Tüm deponuz için GitHub URL 'sini girin: **https://github.com/&lt ; GitHub kimliğiniz&gt; /ptuıgıt**
+6. Çatallı repo'nuz için GitHub URL'sini girin: ** https://github.com/&lt;GitHub&gt;kimliğiniz /piggymetrics.git**
 
-7. **Dal belirticisinin (' any ' için siyah)** * **/Azure** olduğundan emin olun
+7. Şube **Belirticinin ('any' için siyah)** ***/Azure** olduğundan emin olun
 
-8. **Betik yolunu** **Jenkinsfile** olarak tut
+8. **Komut Dosyası yolunu** **Jenkinsfile** olarak tutun
 
-7. **Kaydet**’e tıklayın
+7. **Kaydet'i** tıklatın
 
-## <a name="validate-and-run-the-job"></a>İşi doğrulama ve çalıştırma
+## <a name="validate-and-run-the-job"></a>İşi doğrulayın ve çalıştırın
 
-İşi çalıştırmadan önce, oturum açma **kimliğini girmek**için oturum açma giriş kutusundaki metni güncelleştirelim.
+İşi çalıştırmadan önce, **giriş kimliğine girmek**için giriş kutusundaki metni güncelleştirelim.
 
-1. Kendi deponuzda, **/Gateway/src/Main/Resources/static/** içinde `index.html` açın
+1. Kendi `index.html` repo'nuzda **,/gateway/src/main/resources/static/**
 
-2. "Oturum açma bilgilerini girin" ifadesini arayın ve "oturum açma KIMLIĞINI gir" olarak güncelleştirin
+2. "Giriş inizi girin" araması yapın ve "giriş Kimliği girin" için güncelleyin
 
     ```HTML
         <input class="frontforms" id="frontloginform" name="username" placeholder="enter login ID" type="text" autocomplete="off"/>
     ```
 
-3. Değişiklikleri Yürüt
+3. Değişiklikleri işleme
 
-4. İşi Jenkins 'te el ile çalıştırın. Jenkins panosunda, iş *dağıtımı-Pmbölçümleri* ' ne tıklayın ve ardından **Şimdi derleyin**.
+4. Jenkins'teki işi elle yürüt. Jenkins panosunda, iş *Dağıt-PiggyMetrics'i* tıklatın ve ardından **Şimdi Oluştur'u oluşturun.**
 
-İş tamamlandıktan sonra, **ağ geçidi** UYGULAMASıNıN genel IP adresine gidin ve uygulamanızın güncelleştirildiğinden emin olun. 
+İş tamamlandıktan sonra ağ **geçidi** uygulamasının genel IP'sine gidin ve uygulamanızın güncelleştirildiğini doğrulayın. 
 
-![Piggy ölçümleri güncelleştirildi](media/tutorial-jenkins-deploy-cli-spring-cloud/piggymetrics.png)
+![Güncellenmiş Piggy Ölçümleri](media/tutorial-jenkins-deploy-cli-spring-cloud/piggymetrics.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin:
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin:
 
 ```bash
 az group delete -y --no-wait -n <resource group name>
@@ -272,9 +272,9 @@ az group delete -y --no-wait -n <resource group name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure yay bulutu için sürekli tümleştirme ve teslimi (CI/CD) otomatik hale getirmek üzere Jenkins 'de Azure CLı 'yi nasıl kullanacağınızı öğrendiniz.
+Bu makalede, Azure Bahar Bulutu için sürekli tümleştirme ve teslimi (CI/CD) otomatikleştirmek için Jenkins'te Azure CLI'yi nasıl kullanacağınızı öğrendiniz.
 
-Azure Jenkins sağlayıcısı hakkında daha fazla bilgi edinmek için bkz. Azure sitesindeki Jenkins.
+Azure Jenkins sağlayıcısı hakkında daha fazla bilgi edinmek için Azure sitesindejenkins'e bakın.
 
 > [!div class="nextstepaction"]
-> [Azure üzerinde Jenkins](/azure/jenkins/)
+> [Azure'da Jenkins](/azure/jenkins/)

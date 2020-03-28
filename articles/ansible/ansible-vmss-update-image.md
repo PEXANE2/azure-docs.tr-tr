@@ -1,53 +1,53 @@
 ---
-title: Öğretici-Azure sanal makine ölçek kümelerinin özel görüntüsünü Anerişilebilir kullanarak güncelleştirme
-description: Azure 'daki sanal makine ölçek kümelerini özel görüntüyle güncelleştirmek için nasıl kullanılacağını öğrenin
+title: Öğretici - Ansible kullanarak Azure sanal makine ölçek kümelerinin özel görüntüsünü güncelleştirin
+description: Azure'daki sanal makine ölçek kümelerini özel görüntüyle güncellemek için Ansible'ı nasıl kullanacağınızı öğrenin
 keywords: ansible, azure, devops, bash, playbook, sanal makine, sanal makine ölçek kümesi, vmss
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: b7d3053c09d2dcb667a4fc407035f4814f786932
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155854"
 ---
-# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Öğretici: anormal kullanarak Azure sanal makine ölçek kümelerinin özel görüntüsünü güncelleştirme
+# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Öğretici: Ansible kullanarak Azure sanal makine ölçek kümelerinin özel görüntüsünü güncelleştirin
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
 
-VM dağıtıldıktan sonra, VM 'yi uygulamanızın ihtiyaç duyacağı yazılımla yapılandırırsınız. Her VM için bu yapılandırma görevini yerine özel bir görüntü oluşturabilirsiniz. Özel görüntü, yüklü herhangi bir yazılımı içeren mevcut bir sanal makinenin anlık görüntüsüdür. [Bir ölçek kümesi yapılandırdığınızda](./ansible-create-configure-vmss.md), bu ölçek kümesinin VM 'leri için kullanılacak görüntüyü belirtirsiniz. Özel bir görüntü kullanarak, her bir sanal makine örneği uygulamanız için aynı şekilde yapılandırılır. Bazen, ölçek kümesinin özel görüntüsünü güncelleştirmeniz gerekebilir. Bu görev, Bu öğreticinin odaklanmaktadır.
+Bir VM dağıtıldıktan sonra, VM'yi uygulamanızın ihtiyaç duyduğu yazılımla yapılandırAbilirsiniz. Her VM için bu yapılandırma görevini yapmak yerine, özel bir görüntü oluşturabilirsiniz. Özel görüntü, yüklü yazılımları içeren varolan bir VM'nin anlık görüntüsüdür. Bir [ölçek kümesini yapılandırdığınızda,](./ansible-create-configure-vmss.md)bu ölçek kümesinin VM'leri için kullanılacak görüntüyü belirtirsiniz. Özel bir resim kullanarak, her VM örneği uygulamanız için aynı şekilde yapılandırılır. Bazen, ölçek setinizin özel görüntüsünü güncelleştirmeniz gerekebilir. Bu görev bu öğreticinin odak noktasıdır.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * HTTPD ile iki VM yapılandırma
-> * Var olan bir VM 'den özel görüntü oluşturma
+> * HTTPD ile iki VM yapılandırın
+> * Varolan bir VM'den özel görüntü oluşturma
 > * Görüntüden ölçek kümesi oluşturma
-> * Özel görüntüyü güncelleştirme
+> * Özel görüntüyü güncelleştirin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="configure-two-vms"></a>İki VM yapılandırma
+## <a name="configure-two-vms"></a>İki VM yapılandır
 
-Bu bölümdeki PlayBook kodu, her ikisinde de HTTPD yüklü iki sanal makine oluşturur. 
+Bu bölümdeki oyun kitabı kodu, her ikisinde de HTTPD yüklü iki sanal makine oluşturur. 
 
-Her VM için `index.html` sayfası bir test dizesi görüntüler:
+Her `index.html` VM için sayfa bir test dizesi görüntüler:
 
-* İlk VM değeri görüntüler `Image A`
-* İkinci VM `Image B` değeri görüntüler
+* İlk VM değeri görüntüler`Image A`
+* İkinci VM değeri görüntüler`Image B`
 
-Bu dize, her VM 'yi farklı yazılımlarla yapılandırmayı taklit etmek için tasarlanmıştır.
+Bu dize, her VM'nin farklı yazılımlarla yapılandırılmayı taklit etmesi içindir.
 
-Örnek PlayBook 'u almanın iki yolu vardır:
+Örnek oyun kitabını almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) ve `create_vms.yml`kaydedin.
-* `create_vms.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+* [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) ve `create_vms.yml`'ye kaydedin.
+* Adlandırılmış `create_vms.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 - name: Create two VMs (A and B) with HTTPS
@@ -163,39 +163,39 @@ Bu dize, her VM 'yi farklı yazılımlarla yapılandırmayı taklit etmek için 
       msg: "Public IP Address B: {{ pip_output.results[1].state.ip_address }}"
 ```
 
-`myrg` kaynak grubu adınızla değiştirerek, `ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Kaynak grup adınızı `ansible-playbook` değiştirerek `myrg` komutu kullanarak oyun kitabını çalıştırın:
 
 ```bash
 ansible-playbook create-vms.yml --extra-vars "resource_group=myrg"
 ```
 
-PlayBook 'un `debug` bölümleri nedeniyle `ansible-playbook` komutu her bir sanal makinenin IP adresini yazdırır. Bu IP adreslerini daha sonra kullanmak üzere kopyalayın.
+Oyun kitabının `debug` bölümleri nedeniyle, `ansible-playbook` komut her VM'nin IP adresini yazdırır. Daha sonra kullanmak üzere bu IP adreslerini kopyalayın.
 
 ![Sanal makine IP adresleri](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
 
-## <a name="connect-to-the-two-vms"></a>İki VM 'ye bağlanma
+## <a name="connect-to-the-two-vms"></a>İki VM'ye bağlanın
 
-Bu bölümde, her bir VM 'ye bağlanırsınız. Önceki bölümde belirtildiği gibi, dizeler `Image A` ve `Image B`, farklı yapılandırmalara sahip iki farklı VM 'ye sahip olacak şekilde taklit ediyor.
+Bu bölümde, her VM'ye bağlanırsınız. Önceki bölümde belirtildiği gibi, dizeleri `Image A` `Image B` ve farklı yapılandırmaları ile iki farklı VMs sahip taklit.
 
-Önceki bölümden IP adreslerini kullanarak her iki VM 'ye bağlanın:
+Önceki bölümdeki IP adreslerini kullanarak her iki VM'ye de bağlanın:
 
-![Sanal makine A 'dan ekran görüntüsü](media/ansible-vmss-update-image/vmss-update-browser-vma.png)
+![Sanal makineden ekran görüntüsü A](media/ansible-vmss-update-image/vmss-update-browser-vma.png)
 
-![B sanal makinesinden ekran görüntüsü](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
+![Sanal makine B ekran görüntüsü](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
 
-## <a name="create-images-from-each-vm"></a>Her VM 'den görüntü oluşturma
+## <a name="create-images-from-each-vm"></a>Her VM'den görüntü oluşturma
 
-Bu noktada, biraz farklı yapılandırmaya (`index.html` dosyaları) sahip iki sanal makine vardır.
+Bu noktada, biraz farklı yapılandırmaları (dosyaları) `index.html` ile iki VMs var.
 
-Bu bölümdeki PlayBook kodu, her VM için özel bir görüntü oluşturur:
+Bu bölümdeki oyun kitabı kodu her VM için özel bir görüntü oluşturur:
 
-* `image_vmforimageA`-ana sayfasında `Image A` görüntüleyen VM için oluşturulan özel görüntü.
-* `image_vmforimageB`-ana sayfasında `Image B` görüntüleyen VM için oluşturulan özel görüntü.
+* `image_vmforimageA`- Ana sayfasında görüntüleyen `Image A` VM için özel görüntü oluşturulur.
+* `image_vmforimageB`- Ana sayfasında görüntüleyen `Image B` VM için özel görüntü oluşturulur.
 
-Örnek PlayBook 'u almanın iki yolu vardır:
+Örnek oyun kitabını almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) ve `capture-images.yml`kaydedin.
-* `capture-images.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+* [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) ve `capture-images.yml`'ye kaydedin.
+* Adlandırılmış `capture-images.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 - name: Capture VM Images
@@ -224,24 +224,24 @@ Bu bölümdeki PlayBook kodu, her VM için özel bir görüntü oluşturur:
       - B
 ```
 
-`myrg` kaynak grubu adınızla değiştirerek, `ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Kaynak grup adınızı `ansible-playbook` değiştirerek `myrg` komutu kullanarak oyun kitabını çalıştırın:
 
 ```bash
 ansible-playbook capture-images.yml --extra-vars "resource_group=myrg"
 ```
 
-## <a name="create-scale-set-using-image-a"></a>Görüntü A kullanarak ölçek kümesi oluşturma
+## <a name="create-scale-set-using-image-a"></a>Resim A'yı kullanarak ölçek kümesi oluşturma
 
-Bu bölümde, aşağıdaki Azure kaynaklarını yapılandırmak için bir PlayBook kullanılır:
+Bu bölümde, bir oyun kitabı aşağıdaki Azure kaynaklarını yapılandırmak için kullanılır:
 
 * Genel IP adresi
 * Yük dengeleyici
-* `image_vmforimageA` başvuran ölçek kümesi
+* Referansları ayarla`image_vmforimageA`
 
-Örnek PlayBook 'u almanın iki yolu vardır:
+Örnek oyun kitabını almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) ve `create-vmss.yml`kaydedin.
-* `create-vmss.yml` adlı yeni bir dosya oluşturun ve şu içerikleri içine kopyalayın: "
+* [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) ve `create-vmss.yml`'ye kaydedin.
+* Adlı `create-vmss.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:"
 
 ```yml
 ---
@@ -307,13 +307,13 @@ Bu bölümde, aşağıdaki Azure kaynaklarını yapılandırmak için bir PlayBo
         msg: "Scale set public IP address: {{ pip_output.state.ip_address }}"
 ```
 
-`myrg` kaynak grubu adınızla değiştirerek, `ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Kaynak grup adınızı `ansible-playbook` değiştirerek `myrg` komutu kullanarak oyun kitabını çalıştırın:
 
 ```bash
 ansible-playbook create-vmss.yml --extra-vars "resource_group=myrg"
 ```
 
-PlayBook 'un `debug` bölümü nedeniyle `ansible-playbook` komutu, ölçek kümesinin IP adresini yazdıracaktır. Bu IP adresini daha sonra kullanmak üzere kopyalayın.
+Oyun kitabının `debug` bölümü nedeniyle, `ansible-playbook` komut ölçek kümesinin IP adresini yazdırır. Daha sonra kullanmak üzere bu IP adresini kopyalayın.
 
 ![Genel IP Adresi](media/ansible-vmss-update-image/vmss-update-vmss-public-ip.png)
 
@@ -321,26 +321,26 @@ PlayBook 'un `debug` bölümü nedeniyle `ansible-playbook` komutu, ölçek küm
 
 Bu bölümde, ölçek kümesine bağlanırsınız. 
 
-Önceki bölümden IP adresini kullanarak ölçek kümesine bağlanın.
+Önceki bölümdeki IP adresini kullanarak ölçek kümesine bağlanın.
 
-Önceki bölümde belirtildiği gibi, dizeler `Image A` ve `Image B`, farklı yapılandırmalara sahip iki farklı VM 'ye sahip olacak şekilde taklit ediyor.
+Önceki bölümde belirtildiği gibi, dizeleri `Image A` `Image B` ve farklı yapılandırmaları ile iki farklı VMs sahip taklit.
 
-Ölçek kümesi, `image_vmforimageA`adlı özel görüntüye başvurur. Ana sayfası `Image A`görüntülenen VM 'den özel görüntü `image_vmforimageA` oluşturuldu.
+Ölçek kümesi, adlı `image_vmforimageA`özel görüntüye başvurur. Özel `image_vmforimageA` görüntü, ana sayfası görüntülenen `Image A`VM'den oluşturuldu.
 
-Sonuç olarak, `Image A`görüntüleyen bir giriş sayfası görürsünüz:
+Sonuç olarak, görüntüleyen `Image A`bir giriş sayfası görürsünüz:
 
-![Ölçek kümesi ilk VM ile ilişkilendirilir.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
+![Ölçek kümesi ilk VM ile ilişkilidir.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
 
-Sonraki bölüme devam ederken tarayıcı pencerenizi açık bırakın.
+Bir sonraki bölüme devam ederken tarayıcı pencerenizi açık bırakın.
 
-## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Ölçek kümesi ve yükseltme örneklerinde özel görüntüyü değiştirme
+## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Ölçek kümesinde özel görüntüyü değiştirme ve yükseltme örnekleri
 
-Bu bölümdeki PlayBook kodu, ölçek kümesinin görüntüsünü `image_vmforimageA` `image_vmforimageB`olarak değiştirir. Ayrıca, ölçek kümesi tarafından dağıtılan tüm geçerli sanal makineler güncelleştirilir.
+Bu bölümdeki oyun kitabı kodu ölçek kümesinin `image_vmforimageA` görüntüsünü `image_vmforimageB`değişir - 'dan . Ayrıca, ölçek kümesi tarafından dağıtılan tüm geçerli sanal makineler güncelleştirilir.
 
-Örnek PlayBook 'u almanın iki yolu vardır:
+Örnek oyun kitabını almanın iki yolu vardır:
 
-* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) ve `update-vmss-image.yml`kaydedin.
-* `update-vmss-image.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+* [Oyun kitabını indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) ve `update-vmss-image.yml`'ye kaydedin.
+* Adlandırılmış `update-vmss-image.yml` yeni bir dosya oluşturun ve aşağıdaki içeriği kopyalayın:
 
 ```yml
 - name: Update scale set image reference
@@ -391,7 +391,7 @@ Bu bölümdeki PlayBook kodu, ölçek kümesinin görüntüsünü `image_vmforim
     with_items: "{{ instances.instances }}"
 ```
 
-`myrg` kaynak grubu adınızla değiştirerek, `ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Kaynak grup adınızı `ansible-playbook` değiştirerek `myrg` komutu kullanarak oyun kitabını çalıştırın:
 
 ```bash
 ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
@@ -399,15 +399,15 @@ ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
 
 Tarayıcıya dönün ve sayfayı yenileyin. 
 
-Sanal makinenin temel alınan özel görüntüsünün güncelleştirildiğini görürsünüz.
+Sanal makinenin altında yatan özel görüntünün güncelleştirdiğini görürsünüz.
 
-![Ölçek kümesi ikinci VM ile ilişkili](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
+![Ölçek kümesi ikinci VM ile ilişkilidir](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
+Aşağıdaki kodu aşağıdaki `cleanup.yml`gibi kaydedin:
 
 ```yml
 - hosts: localhost
@@ -421,7 +421,7 @@ Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
         state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

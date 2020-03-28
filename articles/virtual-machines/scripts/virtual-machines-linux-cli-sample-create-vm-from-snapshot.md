@@ -1,5 +1,5 @@
 ---
-title: Snapshot-CLı örneğinden VM oluşturma
+title: Anlık görüntüden VM oluşturma - CLI Sample
 description: Azure CLI Betik Örneği - Anlık görüntüden VM oluşturma
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -17,10 +17,10 @@ ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: ffc1a735f743796b73c2b58353638dba7ed60985
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458459"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>CLI ile Anlık görüntüden sanal makine oluşturma

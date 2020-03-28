@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Azure Container Service öğreticisi-kümeyi dağıtma
+title: (AmortismanA Uğradı) Azure Kapsayıcı Hizmeti öğreticisi - Cluster Dağı'nı Dağıt
 description: Azure Container Service öğreticisi - Küme Dağıtma
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274000"
 ---
-# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>Kullanım DıŞı Azure Container Service bir Kubernetes kümesi dağıtma
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(AmortismanA Uğradı) Azure Kapsayıcı Hizmetinde Bir Kubernetes kümesini dağıtma
 
 > [!TIP]
-> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes Service (AKS) kümesi dağıtma](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Azure Kubernetes Hizmetini kullanan bu öğreticinin güncelleştirilmiş sürümü için [Bkz. Öğretici: Azure Kubernetes Hizmeti (AKS) kümesini dağıtın.](../../aks/tutorial-kubernetes-deploy-cluster.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -38,7 +38,7 @@ Sonraki öğreticilerde, Azure Vote uygulaması kümeye dağıtılır, ölçekle
 
 Azure Container Service’de [az acs create](/cli/azure/acs#az-acs-create) komutuyla Kubernetes kümesi oluşturun. 
 
-Şu örnek, `myK8sCluster` adlı Kaynak Grubunda `myResourceGroup` adlı bir küme oluşturur. Bu Kaynak Grubu, [bir önceki öğreticide](./container-service-tutorial-kubernetes-prepare-acr.md) oluşturuldu.
+Şu örnek, `myResourceGroup` adlı Kaynak Grubunda `myK8sCluster` adlı bir küme oluşturur. Bu Kaynak Grubu, [bir önceki öğreticide](./container-service-tutorial-kubernetes-prepare-acr.md) oluşturuldu.
 
 ```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 

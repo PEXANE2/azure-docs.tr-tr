@@ -5,43 +5,43 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
 ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67135010"
 ---
-## <a name="create-a-spatial-anchors-resource"></a>Uzamsal bağlayıcılarını kaynak oluştur
+## <a name="create-a-spatial-anchors-resource"></a>Uzamsal Çapalar kaynağı oluşturma
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin.
+<a href="https://portal.azure.com" target="_blank">Azure portalına</a>gidin.
 
-Azure portalında sol gezinti bölmesinde seçin **kaynak Oluştur**.
+Azure portalındaki sol gezinti bölmesinde **kaynak oluştur'u**seçin.
 
-Aramak için arama kutusunu kullanın **uzamsal bağlayıcılarını**.
+**Uzamsal Çapaları**aramak için arama kutusunu kullanın.
 
-   ![Uzamsal yer işaretleri arayın](./media/spatial-anchors-get-started-create-resource/portal-search.png)
+   ![Uzamsal Çapalar Ara](./media/spatial-anchors-get-started-create-resource/portal-search.png)
 
-Seçin **uzamsal bağlayıcılarını**. İletişim kutusunda **Oluştur**.
+**Uzamsal Çapalar'ı**seçin. İletişim kutusunda **Oluştur'u**seçin.
 
-İçinde **uzamsal bağlayıcılarını hesabı** iletişim kutusunda:
+**Uzamsal Çapalar Hesabı** iletişim kutusunda:
 
-- Normal alfanümerik karakterleri kullanarak bir benzersiz kaynak adı girin.
-- Kaynak eklemek için kullanmak istediğiniz aboneliği seçin.
-- Bir kaynak grubu seçerek oluşturun **Yeni Oluştur**. Adlandırın **myResourceGroup** seçip **Tamam**.
+- Normal alfasayısal karakterleri kullanarak benzersiz bir kaynak adı girin.
+- Kaynağı eklemek istediğiniz aboneliği seçin.
+- Yeni Oluştur'u seçerek bir kaynak grubu **oluşturun.** **MyResourceGroup** adını ve **Tamam'ı**seçin.
       [!INCLUDE [resource group intro text](resource-group.md)]
-- Bir konum (bölge), kaynak yerleştirmek seçin.
-- Seçin **yeni** kaynak oluşturmaya başlayın.
+- Kaynağı yerleştirmek için bir konum (bölge) seçin.
+- Kaynağı oluşturmaya başlamak için **Yeni'yi** seçin.
 
    ![Kaynak oluşturma](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-Kaynak oluşturulduktan sonra Azure portalı dağıtımınızı tamamlandığını gösterir. **Kaynağa git**'e tıklayın.
+Kaynak oluşturulduktan sonra Azure Portalı dağıtımınızın tamamladığını gösterir. **Kaynağa git**'e tıklayın.
 
 ![Dağıtım tamamlandı](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
 
-Ardından, kaynak özelliklerini görüntüleyebilirsiniz. Kaynağın kopyalama **hesap kimliği** daha sonra gerekeceği için bir metin düzenleyicisine değeri.
+Ardından, kaynak özelliklerini görüntüleyebilirsiniz. Kaynağın Hesap **Kimliği** değerini bir metin düzenleyicisine kopyalayın, çünkü daha sonra ihtiyacınız olacak.
 
    ![Kaynak özellikleri](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 
-Altında **ayarları**seçin **anahtar**. Kopyalama **birincil anahtar** bir metin düzenleyicisine değeri. Bu değer `Account Key`. Buna daha sonra ihtiyacınız olacak.
+**Ayarlar** **altında, Anahtar'ı**seçin. Birincil **anahtar** değerini bir metin düzenleyicisine kopyalayın. Bu `Account Key`değer. Buna daha sonra ihtiyacınız olacak.
 
    ![Hesap anahtarı](./media/spatial-anchors-get-started-create-resource/view-account-key.png)

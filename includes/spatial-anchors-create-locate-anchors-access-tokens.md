@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
 ms.openlocfilehash: 63725d55e2b2935ec6a899789249259b096865c3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67188066"
 ---
-### <a name="access-tokens"></a>Erişim belirteçleri
+### <a name="access-tokens"></a>Erişim Belirteçleri
 
-Erişim belirteçleri, Azure uzamsal Çıpasıyla kimliğini doğrulamak için daha güçlü bir yöntemdir. Özellikle,, uygulamanızı bir üretim dağıtımı için hazırlayın. Bu yaklaşım özetini istemci uygulamanız ile güvenli bir şekilde doğrulanabilir bir arka uç hizmeti ayarlamaktır. Arka uç Hizmeti Arabirimleri olduğu ve Azure uzamsal bağlantıları güvenli belirteç bir erişim belirteci istemek için hizmeti çalışma zamanı sırasında AAD ile. Bu belirteci sonra istemci uygulamaya teslim ve SDK'yı Azure uzamsal Çıpasıyla kimliğini doğrulamak için kullanılır.
+Erişim Belirteçleri, Azure Uzamsal Bağlantı Larını doğrulamak için daha sağlam bir yöntemdir. Özellikle de uygulamanızı bir üretim dağıtımına hazırlarken. Bu yaklaşımın özeti, istemci uygulamanızın güvenli bir şekilde kimlik doğrulaması yapabileceğiniz bir arka uç hizmeti ayarlamaktır. Arka uç hizmetiniz çalışma zamanında AAD ile ve Bir Erişim Jetonu istemek için Azure Uzamsal Çapalar Güvenli Belirteç Hizmeti ile aralar. Bu belirteç daha sonra istemci uygulamasına teslim edilir ve Azure Uzamsal Çapalar ile kimlik doğrulaması için SDK'da kullanılır.

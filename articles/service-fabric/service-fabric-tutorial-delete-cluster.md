@@ -1,21 +1,21 @@
 ---
-title: Azure 'da bir Service Fabric kümesini silme
+title: Azure'da Hizmet Kumaşı kümesini silme
 description: Bu öğreticide Azure'da barındırılan bir Service Fabric kümesini ve kaynaklarını silmeyi öğreneceksiniz. Kümeyi içeren kaynak grubunu ya da seçerek kaynakları silebilirsiniz.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 802fdfc46344929930b1ffb015b364b4e2360cca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75465373"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Öğretici: Azure'da çalışan bir Service Fabric kümesini kaldırma
 
-Bu öğretici bir serinin beş bölümüdür ve Azure 'da çalışan bir Service Fabric kümesinin nasıl silineceğini gösterir. Bir Service Fabric kümesini tamamen silmek için küme tarafından kullanılan tüm kaynakları da silmeniz gerekir. İki seçeneğiniz vardır: kümenin bulunduğu kaynak grubunu silmek (küme kaynağını ve kaynak grubundaki diğer tüm kaynakları siler) veya özel olarak küme kaynağını ve (kaynak grubundaki diğer kaynakları silmeden) kümenin ilişkili kaynaklarını silmek.
+Bu öğretici, bir serinin beşinci bölümüdür ve Azure'da çalışan bir Hizmet Kumaşı kümesini nasıl sildiğinizi gösterir. Bir Service Fabric kümesini tamamen silmek için küme tarafından kullanılan tüm kaynakları da silmeniz gerekir. İki seçeneğiniz vardır: kümenin bulunduğu kaynak grubunu silmek (küme kaynağını ve kaynak grubundaki diğer tüm kaynakları siler) veya özel olarak küme kaynağını ve (kaynak grubundaki diğer kaynakları silmeden) kümenin ilişkili kaynaklarını silmek.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Bir kaynak grubunu ve tüm kaynaklarını silmek
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
-> * Şablon kullanarak Azure 'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
+> * Şablon kullanarak Azure'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
 > * [Bir kümeyi izleme](service-fabric-tutorial-monitor-cluster.md)
 > * [Bir kümenin ölçeğini daraltma veya genişletme](service-fabric-tutorial-scale-cluster.md)
 > * [Bir kümenin çalışma zamanını yükseltme](service-fabric-tutorial-upgrade-cluster.md)
@@ -37,13 +37,13 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure//install-Az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yı yükler.
-* Azure 'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
+* [Azure Powershell](https://docs.microsoft.com/powershell/azure//install-Az-ps) veya [Azure CLI'yi yükleyin.](/cli/azure/install-azure-cli)
+* Azure'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Service Fabric kümesini içeren kaynak grubunu silme
 Kümeyi ve kullandığı tüm kaynakları silmenin en basit yolu, kaynak grubunun silinmesidir.
 
-Azure 'da oturum açın ve kümeyi kaldırmak istediğiniz abonelik KIMLIĞINI seçin.  Abonelik kimliğinizi, [Azure portalında](https://portal.azure.com) oturum açarak öğrenebilirsiniz. [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet 'ini veya [az Group Delete](/cli/azure/group?view=azure-cli-latest) komutunu kullanarak kaynak grubunu ve tüm küme kaynaklarını silin.
+Azure'da oturum açın ve kümeyi kaldırmak istediğiniz abonelik kimliğini seçin.  Abonelik kimliğinizi, [Azure portalında](https://portal.azure.com) oturum açarak öğrenebilirsiniz. [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet veya az group delete komutunu kullanarak kaynak grubunu ve tüm küme kaynaklarını [silin.](/cli/azure/group?view=azure-cli-latest)
 
 ```powershell
 Connect-AzAccount
@@ -108,5 +108,5 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 Bu öğreticiyi tamamladığınıza göre aşağıdakileri deneyebilirsiniz:
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)'ı kullanarak Service Fabric kümesini inceleme ve yönetme hakkında bilgi edinin.
-* Küme düğümlerinin [Windows işletim sistemine nasıl düzeltme](service-fabric-patch-orchestration-application.md) ekleneceğini öğrenin.
-* Küme olaylarını izlemek için [Windows kümeleri](service-fabric-diagnostics-event-aggregation-wad.md) ve [Kurulum Log Analytics](service-fabric-diagnostics-oms-setup.md) olaylarını nasıl toplayacağınızı ve toplayacağınızı öğrenin.
+* Küme düğümlerinin Windows işletim sistemini nasıl [yamalayabildiğini](service-fabric-patch-orchestration-application.md) öğrenin.
+* Küme olaylarını izlemek için [Windows kümeleri](service-fabric-diagnostics-event-aggregation-wad.md) ve kurulum Log Analytics için etkinlikleri nasıl toplayıp [toplayacaklarını](service-fabric-diagnostics-oms-setup.md) öğrenin.

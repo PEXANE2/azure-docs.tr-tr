@@ -1,6 +1,6 @@
 ---
 title: 'Azure HDInsight: .NET örnekleri'
-description: .NET C# için HDInsight SDK 'sını kullanarak ortak görevler için GitHub 'da .NET örnekleri bulun.
+description: .NET için HDInsight SDK'yı kullanarak sık kullanılan görevler için GitHub'da C# .NET örneklerini bulun.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 12/06/2019
 ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74951573"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: .NET örnekleri
@@ -33,17 +33,17 @@ Bu makalede aşağıdakiler sunulmaktadır:
 
 ## <a name="prerequisite"></a>Önkoşul
 
-[.NET için Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+[.NET için Azure HDInsight SDK'sı](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Küme yönetimi-oluşturma
+## <a name="cluster-management---creation"></a>Küme yönetimi - oluşturma
 
 * [Kafka kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateKafkaClusterSample.cs)
 * [Spark kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateSparkClusterSample.cs)
-* [Azure Data Lake Storage 2. ile Spark kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateHadoopClusterWithAdlsGen2Sample.cs)
-* [Kurumsal Güvenlik Paketi (ESP) ile bir Spark kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateEspClusterSample.cs)
+* [Azure Veri Gölü Depolama Gen2 ile Bir Kıvılcım kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateHadoopClusterWithAdlsGen2Sample.cs)
+* [Kurumsal Güvenlik Paketi (ESP) ile Bir Kıvılcım kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateEspClusterSample.cs)
 
-[HDInsight-DotNet-SDK-Samples](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples) GitHub deposunu kopyalayarak .NET için bu örnekleri alabilirsiniz.
+Bu örnekleri .NET için [hdinsight-dotnet-sdk-örnekleri](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples) GitHub deposunu klonlayarak alabilirsiniz.
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Bu ek SDK işlevselliği için kod parçacıkları, [.net Için HDıNSIGHT SDK başvuru belgelerinde](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)bulunabilir.
+Bu ek SDK işlevselliği için kod parçacıkları [.NET başvuru belgeleri için HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)bulunabilir.

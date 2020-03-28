@@ -1,7 +1,7 @@
 ---
-title: Azure CLı betik örneği-uygulama yapılandırma deposuna aktarma
+title: Azure CLI komut dosyası örneği - Uygulama Yapılandırma deposuna alma
 titleSuffix: Azure App Configuration
-description: Azure CLı betiği kullanma-yapılandırmayı Azure Uygulama yapılandırması 'na aktarma
+description: Azure CLI komut dosyasını kullanma - Yapılandırmayı Azure Uygulama Yapılandırmasına aktarma
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,21 +10,21 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 71d6aafa82f647b9c6164ee9a06b43ed7e9a66af
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523636"
 ---
-# <a name="import-to-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposuna aktarma
+# <a name="import-to-an-azure-app-configuration-store"></a>Azure Uygulama Yapılandırma deposuna aktarma
 
-Bu örnek betik, anahtar-değer ayarlarını bir Azure uygulama yapılandırma deposuna aktarır.
+Bu örnek komut dosyası, bir Azure Uygulama Yapılandırma deposuna anahtar değer ayarlarını içeri aktarım.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2,0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
+Azure CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI sürüm 2.0 veya sonraki sürümlerini çalıştırdığınız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemek veya yükseltmek için [Azure CLI'yi yükleyin'e](/cli/azure/install-azure-cli)bakın.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -39,14 +39,14 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu betik, bir uygulama yapılandırma deposuna aktarmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu komut dosyası, bir Uygulama Yapılandırma deposuna almak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
-| [az appconfig kV import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Bir uygulama yapılandırma deposu kaynağına içeri aktarır. |
+| [az appconfig kv ithalat](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Bir Uygulama Yapılandırma deposu kaynağına aktarım. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
+Azure CLI hakkında daha fazla bilgi için [Azure CLI belgelerine](/cli/azure)bakın.
 
-Ek uygulama yapılandırması CLı betiği örnekleri, [Azure Uygulama YAPıLANDıRMASı CLI örneklerinde](../cli-samples.md)bulunabilir.
+Ek Uygulama Yapılandırması CLI komut dosyası örnekleri [Azure App Configuration CLI örnekleri](../cli-samples.md)bulunabilir.

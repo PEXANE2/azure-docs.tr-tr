@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği kodu ve PowerShell örnekleri-Azure AD
+title: B2B işbirliği kodu ve PowerShell örnekleri - Azure AD
 description: Azure Active Directory B2B işbirliği için kod ve PowerShell örnekleri
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 03a7a9c0c9ed308944b57e7659fefa81178af78b
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77368137"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B işbirliği kodu ve PowerShell örnekleri
@@ -56,7 +56,7 @@ Bu cmdlet, invitations.csv dosyasındaki e-posta adreslerine bir davet gönderir
 - CC’ye iletiler gönderme veya e-posta iletilerini topluca gizleme
 
 ## <a name="code-sample"></a>Kod örneği
-Burada, B2B kullanıcısını davet ettiğiniz kaynağa yönelik kullanım URL’sini almak için “yalnızca uygulama” modunda davet API’sinin nasıl çağrılacağı gösterilmektedir. Hedef, özel bir davet e-postası göndermektir. E-posta bir HTTP istemcisiyle birleştirilebilir, bu sayede Microsoft Graph API 'SI aracılığıyla nasıl göründüğünü ve gönderebileceğinizi özelleştirebilirsiniz.
+Burada, B2B kullanıcısını davet ettiğiniz kaynağa yönelik kullanım URL’sini almak için “yalnızca uygulama” modunda davet API’sinin nasıl çağrılacağı gösterilmektedir. Hedef, özel bir davet e-postası göndermektir. E-posta bir HTTP istemcisi ile oluşturulabilir, böylece nasıl göründüğünü özelleştirebilir ve Microsoft Graph API üzerinden gönderebilirsiniz.
 
 ```csharp
 namespace SampleInviteApp

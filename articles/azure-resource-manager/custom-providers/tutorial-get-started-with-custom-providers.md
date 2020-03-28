@@ -1,49 +1,49 @@
 ---
 title: Özel eylemler ve kaynaklar oluşturma
-description: Bu öğreticide, Azure Resource Manager ' de özel eylemler ve kaynaklar oluşturma konusu ele geçilir. Ayrıca, özel iş akışlarının Azure Resource Manager şablonları, Azure CLı, Azure Ilkesi ve Azure etkinlik günlüğü ile nasıl birlikte çalıştığını gösterir.
+description: Bu öğretici, Azure Kaynak Yöneticisi'nde özel eylemlerin ve kaynakların nasıl oluşturulabildiğini inceler. Ayrıca, Azure Kaynak Yöneticisi Şablonları, Azure CLI, Azure İlkesi ve Azure Etkinlik Günlüğü ile özel iş akışlarının nasıl birlikte çalıştığını da gösterir.
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 45f18727b53b802ba746da41b47fe955543ed9d0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75649900"
 ---
-# <a name="create-custom-actions-and-resources-in-azure"></a>Azure 'da özel eylemler ve kaynaklar oluşturma
+# <a name="create-custom-actions-and-resources-in-azure"></a>Azure'da özel eylemler ve kaynaklar oluşturun
 
-Özel sağlayıcı, Azure ile uç nokta arasında bir sözleşmedir. Özel sağlayıcılar sayesinde, Azure Resource Manager içine yeni API 'Ler ekleyerek Azure 'daki iş akışlarını değiştirebilirsiniz. Bu özel API 'lerle, Kaynak Yöneticisi yeni dağıtım ve yönetim yeteneklerini kullanabilir.
+Özel sağlayıcı, Azure ile bitiş noktası arasındaki bir sözleşmedir. Özel sağlayıcılarla, Azure Kaynak Yöneticisi'ne yeni API'ler ekleyerek Azure'daki iş akışlarını değiştirebilirsiniz. Bu özel API'lerle Kaynak Yöneticisi yeni dağıtım ve yönetim özelliklerini kullanabilir.
 
-Bu öğretici, Azure 'a yeni eylemleri ve kaynakları ekleme ve bunları tümleştirme hakkında basit bir örnektir.
+Bu öğretici, Azure'a yeni eylemler ve kaynakların nasıl eklendirilebildiğini ve bunları nasıl tümleştirileyeceğiniz hakkında basit bir örnekten geçer.
 
-## <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure özel sağlayıcıları için Azure Işlevleri ayarlama
+## <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Özel Sağlayıcıları için Azure İşlevlerini Ayarlama
 
-Bu öğreticiden birinde, bir Azure işlevi uygulamasının özel sağlayıcılarla çalışacak şekilde nasıl ayarlanacağı açıklanmaktadır:
+Bu öğreticinin birinci bölümünde, özel sağlayıcılarla çalışacak bir Azure işlev uygulamasının nasıl ayarlır:
 
-- [Azure özel sağlayıcıları için Azure Işlevleri ayarlama](./tutorial-custom-providers-function-setup.md)
+- [Azure Özel Sağlayıcıları için Azure İşlevlerini Ayarlama](./tutorial-custom-providers-function-setup.md)
 
-Özel sağlayıcılar, herhangi bir genel URL ile çalışabilir.
+Özel sağlayıcılar herhangi bir genel URL ile çalışabilir.
 
-## <a name="author-a-restful-endpoint-for-custom-providers"></a>Özel sağlayıcılar için yeniden bir uç nokta yazar
+## <a name="author-a-restful-endpoint-for-custom-providers"></a>Özel sağlayıcılar için yeniden bir bitiş noktası yazma
 
-Bu öğreticinin ikinci bölümünde, özel sağlayıcılar için bir yeniden deneme uç noktası yazma açıklanmaktadır:
+Bu öğreticinin ikinci bölümü, özel sağlayıcılar için yeniden bir bitiş noktasının nasıl yazılabildiğini açıklar:
 
-- [Özel sağlayıcılar için yeniden bir uç nokta yazma](./tutorial-custom-providers-function-authoring.md)
+- [Özel sağlayıcılar için yeniden bir bitiş noktası yazma](./tutorial-custom-providers-function-authoring.md)
 
 ## <a name="create-and-use-a-custom-provider"></a>Özel bir sağlayıcı oluşturma ve kullanma
 
-Bu öğreticinin üçüncü kısmında özel bir sağlayıcının nasıl oluşturulacağı ve özel eylemleri ve kaynakları nasıl kullanılacağı açıklanmaktadır:
+Bu öğreticinin üçüncü bölümünde, özel bir sağlayıcı nın nasıl oluşturulup özel eylemlerini ve kaynaklarını nasıl kullanacağıaçıklanmaktadır:
 
 - [Özel bir sağlayıcı oluşturma ve kullanma](./tutorial-custom-providers-create.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, özel sağlayıcılar ve bir tane oluşturma hakkında bilgi edindiniz. Sonraki öğreticiye devam etmek için bkz. [öğretici: Azure özel sağlayıcılar Için Azure Işlevleri ayarlama](./tutorial-custom-providers-function-setup.md).
+Bu eğitimde, özel sağlayıcılar ve nasıl bir oluşturmak için öğrendim. Bir sonraki öğreticiye devam etmek [için Bkz. Öğretici: Azure Özel Sağlayıcıları için Azure İşlevlerini ayarlayın.](./tutorial-custom-providers-function-setup.md)
 
-Başvurular veya hızlı başlangıç arıyorsanız, bazı yararlı bağlantılar aşağıda verilmiştir:
+Referanslar veya hızlı bir başlangıç arıyorsanız, bazı yararlı bağlantılar şunlardır:
 
-- [Hızlı başlangıç: Azure özel kaynak sağlayıcısı oluşturma ve özel kaynaklar dağıtma](./create-custom-provider.md)
-- [Nasıl yapılır: Azure REST API özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
-- [Nasıl yapılır: Azure REST API özel kaynak ekleme](./custom-providers-resources-endpoint-how-to.md)
+- [Hızlı başlangıç: Azure özel kaynak sağlayıcısı oluşturun ve özel kaynakları dağıtın](./create-custom-provider.md)
+- [Nasıl yapilir: Azure REST API'sine özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
+- [Nasıl yapilir: Azure REST API'sine özel kaynak ekleme](./custom-providers-resources-endpoint-how-to.md)

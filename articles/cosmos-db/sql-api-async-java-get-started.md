@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: SQL API hesabındaki verileri yönetmek için Azure Cosmos DB zaman uyumsuz Java SDK 'Sı ile bir Java uygulaması derleme"
-description: Bu öğreticide, nasıl depolanacağını ve verilere bir SQL API hesabı içinde Azure Cosmos DB'de Async Java uygulaması kullanarak gösterir.
+title: 'Öğretici: SQL API hesabındaki verileri yönetmek için Azure Cosmos DB Async Java SDK ile bir Java uygulaması oluşturun'
+description: Bu öğretici, Bir Async Java uygulaması kullanarak Azure Cosmos DB'deki bir SQL API hesabındaki verileri nasıl depolayıp erişireceğini gösterir.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,13 +10,13 @@ ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444900"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Öğretici: bir SQL API hesabı depolanan verileri yönetmek için zaman uyumsuz Java SDK'sı ile bir Java uygulaması derleme
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Öğretici: SQL API hesabında depolanan verileri yönetmek için Async Java SDK ile bir Java uygulaması oluşturun
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -25,12 +25,12 @@ ms.locfileid: "75444900"
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
-Geliştirici olarak, NoSQL belge verileri kullanan uygulamalar olabilir. Azure Cosmos DB SQL API hesabı, depolamak ve bu belge verilere erişmek için kullanabilirsiniz. Bu öğreticide, belge veri depolamak ve yönetmek için zaman uyumsuz Java SDK'sı ile bir Java uygulaması oluşturma işlemini göstermektedir. 
+Geliştirici olarak, NoSQL belge verilerini kullanan uygulamalarınız olabilir. Bu belge verilerini depolamak ve bunlara erişmek için Azure Cosmos DB'deki SQL API hesabını kullanabilirsiniz. Bu öğretici, belge verilerini depolamak ve yönetmek için Async Java SDK ile java uygulamasını nasıl oluşturabileceğinizi gösterir. 
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Oluşturma ve bir Azure Cosmos hesabına bağlanma
+> * Azure Cosmos hesabı oluşturma ve bağlanma
 > * Çözümünüzü yapılandırma
 > * Koleksiyon oluşturma
 > * JSON belgeleri oluşturma
@@ -42,11 +42,11 @@ Aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
 * Etkin bir Azure hesabı. Bir aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) için kaydolabilirsiniz. 
 
-* [Git](https://git-scm.com/downloads).
+* [Git.](https://git-scm.com/downloads)
 
 * [Java Development Kit (JDK) 8+](https://aka.ms/azure-jdks).
 
-* [Maven](https://maven.apache.org/download.cgi).
+* [Maven,](https://maven.apache.org/download.cgi)ne kadar.
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı oluşturma
 
@@ -54,9 +54,9 @@ Aşağıdaki adımları kullanarak bir Azure Cosmos hesabı oluşturun:
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>GitHub deposunu kopyalayın
+## <a name="clone-the-github-repository"></a><a id="GitClone"></a>GitHub deposunu klonla
 
-GitHub deposunu kopyalayın [Azure Cosmos DB ve Java ile çalışmaya başlama](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started). Örneğin, yerel bir dizinden örnek projeyi yerel olarak almak için aşağıdaki komutu çalıştırın.
+[Azure Cosmos DB ve Java ile Başlayın](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)için GitHub deposunu klonla. Örneğin, yerel bir dizinden, örnek projeyi yerel olarak almak için aşağıdakileri çalıştırın.
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started.git
@@ -65,7 +65,7 @@ cd azure-cosmos-db-sql-api-async-java-getting-started
 cd azure-cosmosdb-get-started
 ```
 
-Dizin içeren bir `pom.xml` dosyası ve bir `src/main/java/com/microsoft/azure/cosmosdb/sample` Java kaynak kodunu içeren klasörü dahil olmak üzere `Main.java`. Proje belgeleri oluşturmak ve bir koleksiyondaki verileri sorgulama gibi Azure Cosmos DB ile işlemleri gerçekleştirmek için gereken kodu içerir. `pom.xml` Dosya çubuğunda bir bağımlılık içerir [Azure Cosmos DB Java SDK'sı maven'da](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
+Dizin, java `pom.xml` kaynak `src/main/java/com/microsoft/azure/cosmosdb/sample` kodu içeren bir dosya `Main.java`ve klasör içerir. Proje, belge oluşturma ve koleksiyon içindeki verileri sorgulama gibi Azure Cosmos DB ile işlemleri gerçekleştirmek için gereken kodu içerir. Dosya, `pom.xml` [Maven'deki Azure Cosmos DB Java SDK'ya](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)bağımlılık içerir.
 
 ```xml
 <dependency>
@@ -75,11 +75,11 @@ Dizin içeren bir `pom.xml` dosyası ve bir `src/main/java/com/microsoft/azure/c
 </dependency>
 ```
 
-## <a id="Connect"></a>Bir Azure Cosmos hesabına bağlanma
+## <a name="connect-to-an-azure-cosmos-account"></a><a id="Connect"></a>Azure Cosmos hesabına bağlanma
 
-Ardından, uç noktanızı ve birincil ana anahtarınızı almak için tekrar [Azure portala](https://portal.azure.com) gidin. Azure Cosmos DB uç noktası ve birincil anahtar, uygulamanızın nereye bağlanacağını anlaması ve Azure Cosmos DB’nin uygulamanızın bağlantısına güvenmesi için gereklidir. `AccountSettings.java` dosyasında birincil anahtar ve URI değerleri bulunur. 
+Ardından, bitiş noktanızı ve birincil ana anahtarınızı almak için [Azure portalına](https://portal.azure.com) geri dön. Azure Cosmos DB uç noktası ve birincil anahtar, uygulamanızın nereye bağlanacağını anlaması ve Azure Cosmos DB’nin uygulamanızın bağlantısına güvenmesi için gereklidir. `AccountSettings.java` dosyasında birincil anahtar ve URI değerleri bulunur. 
 
-Azure portalında Azure Cosmos hesabınıza gidin ve ardından **anahtarları**. Portaldan URI ve BİRİNCİL ANAHTAR değerlerini kopyalayıp `AccountSettings.java` dosyasına yapıştırın. 
+Azure portalında Azure Cosmos hesabınıza gidin ve ardından **Keys'i**tıklatın. Portaldan URI ve BİRİNCİL ANAHTAR değerlerini kopyalayıp `AccountSettings.java` dosyasına yapıştırın. 
 
 ```java
 public class AccountSettings 
@@ -99,9 +99,9 @@ public class AccountSettings
 
 ![Portaldan anahtarları alma ekran görüntüsü][keys]
 
-## <a name="initialize-the-client-object"></a>İstemci nesnesini başlatır
+## <a name="initialize-the-client-object"></a>İstemci nesnesini başlatma
 
-Konak URI ve birincil anahtar değerlerini "AccountSettings.java" dosyasında tanımlanan kullanarak istemci nesnesini başlatır.
+"AccountSettings.java" dosyasında tanımlanan ana bilgisayar URI ve birincil anahtar değerlerini kullanarak istemci nesnesini başlatma.
 
 ```java
 client = new AsyncDocumentClient.Builder()
@@ -112,9 +112,9 @@ client = new AsyncDocumentClient.Builder()
          .build();
 ```
 
-## <a id="CreateDatabase"></a>Veritabanı oluşturma
+## <a name="create-a-database"></a><a id="CreateDatabase"></a>Veritabanı oluşturma
 
-DocumentClient sınıfının `createDatabaseIfNotExists()` yöntemini kullanarak Azure Cosmos veritabanınızı oluşturun. Veritabanı, koleksiyonlar genelinde bölümlenmiş JSON belgesi depolama alanının mantıksal bir kapsayıcısıdır.
+DocumentClient sınıfının yöntemini `createDatabaseIfNotExists()` kullanarak Azure Cosmos veritabanınızı oluşturun. Veritabanı, koleksiyonlar genelinde bölümlenmiş JSON belgesi depolama alanının mantıksal bir kapsayıcısıdır.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 
@@ -156,9 +156,9 @@ private void createDatabaseIfNotExists() throws Exception
 }
 ```
 
-## <a id="CreateColl"></a>Koleksiyon oluşturma
+## <a name="create-a-collection"></a><a id="CreateColl"></a>Koleksiyon oluşturma
 
-Kullanarak bir koleksiyon oluşturabilirsiniz `createDocumentCollectionIfNotExists()` DocumentClient sınıfının yöntemi. Koleksiyon, JSON belgeleri ve ilişkili JavaScript uygulama mantığının bir kapsayıcısıdır.
+DocumentClient sınıfının yöntemini `createDocumentCollectionIfNotExists()` kullanarak bir koleksiyon oluşturabilirsiniz. Koleksiyon, JSON belgeleri ve ilişkili JavaScript uygulama mantığının bir kapsayıcısıdır.
 
 > [!WARNING]
 > **createCollection**, ayrılmış işleme ile yeni bir koleksiyon oluşturur, bu da ücret ödenmesini gerektirebilir. Daha ayrıntılı bilgi için [fiyatlandırma sayfamızı](https://azure.microsoft.com/pricing/details/cosmos-db/) ziyaret edin.
@@ -200,9 +200,9 @@ private void createDocumentCollectionIfNotExists() throws Exception
     }
 ```
 
-## <a id="CreateDoc"></a>JSON belgeleri oluşturma
+## <a name="create-json-documents"></a><a id="CreateDoc"></a>JSON belgeleri oluşturma
 
-DocumentClient sınıfının createDocument yöntemi kullanarak bir belge oluşturun. Belgeler, kullanıcı tanımlı (rastgele) JSON içerikleridir. Şimdi bir veya daha fazla belge ekleyebiliriz. "Src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" dosya ailesi JSON belgelerini tanımlar. 
+DocumentClient sınıfının createDocument yöntemini kullanarak bir belge oluşturun. Belgeler, kullanıcı tanımlı (rastgele) JSON içerikleridir. Şimdi bir veya daha fazla belge ekleyebiliriz. "src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" dosyası aile JSON belgelerini tanımlar. 
 
 ```java
 public static Family getJohnsonFamilyDocument() {
@@ -220,9 +220,9 @@ public static Family getJohnsonFamilyDocument() {
     }
 ```
 
-## <a id="Query"></a>Azure Cosmos DB kaynaklarını sorgulama
+## <a name="query-azure-cosmos-db-resources"></a><a id="Query"></a>Azure Cosmos DB kaynaklarını sorgula
 
-Azure Cosmos DB, her bir koleksiyonda depolanan JSON belgeleri için zengin sorguların gerçekleştirilmesini destekler. Aşağıdaki örnek kod ile SQL söz dizimini kullanarak Azure Cosmos DB belgeleri sorgulama gösterir `queryDocuments` yöntemi.
+Azure Cosmos DB, her bir koleksiyonda depolanan JSON belgeleri için zengin sorguların gerçekleştirilmesini destekler. Aşağıdaki örnek kod, `queryDocuments` sql sözdizimini kullanarak Azure Cosmos DB'deki belgelerin nasıl sorgulanır yöntemini gösterir.
 
 ```java
 private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch completionLatch) 
@@ -254,9 +254,9 @@ private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch 
 }
 ```
 
-## <a id="Run"></a>Java Konsol uygulamanızı çalıştırın
+## <a name="run-your-java-console-application"></a><a id="Run"></a>Java konsol uygulamanızı çalıştırın
 
-Uygulamayı konsoldan çalıştırmak için proje klasörüne gidin ve Maven kullanarak derleyin:
+Uygulamayı konsoldan çalıştırmak için proje klasörüne gidin ve Maven'i kullanarak derleyin:
 
 ```bash
 mvn package
@@ -268,16 +268,16 @@ mvn package
 mvn exec:java -DACCOUNT_HOST=<YOUR_COSMOS_DB_HOSTNAME> -DACCOUNT_KEY= <YOUR_COSMOS_DB_MASTER_KEY>
 ```
 
-Artık bu NoSQL öğreticisini tamamladınız ve çalışan bir Java konsol uygulaması vardır.
+Şimdi bu NoSQL öğretici tamamladınız ve çalışan bir Java konsol uygulaması var.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyaç duyulan, kaynak grubu, Azure Cosmos hesabı ve tüm ilgili kaynakları silin. Bunu yapmak için select sanal makinenin kaynak grubunu seçin. **Sil**ve ardından silmek için kaynak grubunun adını onaylayın.
+Artık ihtiyaç duyulmadığında, kaynak grubunu, Azure Cosmos hesabını ve ilgili tüm kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin, **Sil'i**seçin ve ardından silmek için kaynak grubunun adını onaylayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Cosmos DB SQL API verileri yönetmek için zaman uyumsuz Java SDK'sı ile bir Java uygulamasının nasıl oluşturulacağını öğrendiniz. Şimdi bir sonraki makaleye geçebilirsiniz:
+Bu eğitimde, Azure Cosmos DB'deki SQL API verilerini yönetmek için Async Java SDK ile java uygulaması oluşturmayı öğrendiniz. Şimdi bir sonraki makaleye geçebilirsiniz:
 
 > [!div class="nextstepaction"]
 > [JavaScript SDK’sı ve Azure Cosmos DB ile bir Node.js konsol uygulaması oluşturma](sql-api-nodejs-get-started.md)

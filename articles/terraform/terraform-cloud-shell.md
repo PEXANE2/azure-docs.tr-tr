@@ -1,32 +1,32 @@
 ---
-title: Öğretici-Teroyform için Azure Cloud Shell yapılandırma
-description: Bu öğreticide, kimlik doğrulama ve şablon yapılandırmasını basitleştirmek için Azure Cloud Shell ile Terrayform kullanırsınız.
-keywords: Azure DevOps terrayform Cloud Shell
+title: Öğretici - Terraform için Azure Bulut Kabuğunu Yapılandır
+description: Bu eğitimde, kimlik doğrulama ve şablon yapılandırmasını basitleştirmek için Azure Cloud Shell ile Terraform'u kullanırsınız.
+keywords: masmavi devops terraform bulut kabuk
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 3a9db1143ba07b549a271d53d610e0a4853467c6
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945344"
 ---
-# <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>Öğretici: Terrayform için Azure Cloud Shell yapılandırma
+# <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>Öğretici: Terraform için Azure Bulut Kabuğunu Yapılandırın
 
-Terkform, macOS, Windows veya Linux 'daki Bash komut satırından iyi çalışmaktadır. [Azure Cloud Shell](/azure/cloud-shell/overview) Bash deneyiminizdeki Teraform yapılandırmalarının çalıştırılması bazı benzersiz avantajlara sahiptir. Bu öğreticide, Cloud Shell kullanarak Azure 'a dağıtım yapan Terrayform betikleri yazma gösterilmektedir.
+Terraform, macOS, Windows veya Linux'taki Bir Bash komut satırından iyi çalışır. Terraform yapılandırmalarınızı [Azure Cloud Shell'in](/azure/cloud-shell/overview) Bash deneyiminde çalıştırmak için bazı benzersiz avantajlar vardır. Bu öğretici, Cloud Shell'i kullanarak Azure'a dağıtılabilen Terraform komut dosyalarının nasıl yazılabildiğini gösterir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="automatic-credential-configuration"></a>Otomatik kimlik bilgisi yapılandırma
 
-Terraform, Cloud Shell'de yüklüdür ve kullanıma hazırdır. Terrayform betikleri, ek bir yapılandırma olmadan altyapıyı yönetmek için Cloud Shell oturum açtığında Azure ile kimlik doğrular. Otomatik kimlik doğrulaması iki el ile işlemi atlar:
-- Active Directory hizmet sorumlusu oluşturma
-- Azure Terrayform sağlayıcısı değişkenlerini yapılandırma
+Terraform, Cloud Shell'de yüklüdür ve kullanıma hazırdır. Terraform komut dosyaları, ek yapılandırma olmadan altyapıyı yönetmek için Cloud Shell'e giriş yaptığında Azure ile kimlik doğrulaması sağlar. Otomatik kimlik doğrulama iki el ile işlemi atlar:
+- Active Directory hizmet ilkesi oluşturma
+- Azure Terraform sağlayıcı değişkenlerini yapılandırma
 
 
 ## <a name="use-modules-and-providers"></a>Modülleri ve sağlayıcıları kullanma
 
-Azure Terrayform modülleri, Azure kaynaklarına erişmek ve bunları değiştirmek için kimlik bilgileri gerektirir. Cloud Shell ' de Terrayform modüllerini kullanmak için aşağıdaki kodu ekleyin:
+Azure Terraform modülleri, Azure kaynaklarına erişmek ve değiştirmek için kimlik bilgileri gerektirir. Cloud Shell'de Terraform modüllerini kullanmak için aşağıdaki kodu ekleyin:
 
 
 ```hcl
@@ -39,16 +39,16 @@ provider "azurerm" {
 }
 ```
 
-Cloud Shell, `terraform` CLı komutlarından herhangi birini kullandığınızda `azurerm` sağlayıcısı için gerekli değerleri ortam değişkenleri aracılığıyla geçirir.
+Bulut Kabuğu, `azurerm` `terraform` CLI komutlarından herhangi birini kullandığınızda çevre değişkenleri aracılığıyla sağlayıcı için gerekli değerleri geçirir.
 
 ## <a name="other-cloud-shell-developer-tools"></a>Diğer Cloud Shell geliştirici araçları
 
-Azure Depolama dosyaları ve kabuk durumları Cloud Shell oturumları arasında kalıcı olur. Dosyaları yerel bilgisayarınızdan Cloud Shell kopyalamak ve karşıya yüklemek için [Azure Depolama Gezgini](/azure/vs-azure-tools-storage-manage-with-storage-explorer) kullanın.
+Azure Depolama dosyaları ve kabuk durumları Cloud Shell oturumları arasında kalıcı olur. Dosyaları yerel bilgisayarınızdan Bulut Kabuğu'na kopyalamak ve yüklemek için [Azure Depolama Gezgini'ni](/azure/vs-azure-tools-storage-manage-with-storage-explorer) kullanın.
 
-Azure CLı Cloud Shell ' de kullanılabilir ve `terraform apply` veya `terraform destroy` bittikten sonra, yapılandırmaların test edilmesi ve işinizi denetlemesi için harika bir araçtır.
+Azure CLI, Cloud Shell'de kullanılabilir ve yapılandırmaları test etmek `terraform apply` ve `terraform destroy` çalışmanızı veya bitişinizden sonra kontrol etmek için harika bir araçtır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Modül kayıt defteri kullanarak küçük bir VM kümesi oluşturma](terraform-create-vm-cluster-module.md)
+> [Modül Kayıt Defterini kullanarak küçük bir VM kümesi oluşturma](terraform-create-vm-cluster-module.md)

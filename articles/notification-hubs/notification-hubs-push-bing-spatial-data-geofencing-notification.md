@@ -1,9 +1,9 @@
 ---
-title: Azure Notification Hubs ve Bing uzamsal verileri kullanarak anında iletme bildirimleri gönderin | Microsoft Docs
+title: Azure Bildirim Hub'ları ve Bing Uzamsal Verileri ile anında iletme bildirimleri gönderme | Microsoft Dokümanlar
 description: Bu öğreticide, Azure Notification Hubs ve Bing Uzamsal Veri ile konum temelli anında iletme bildirimleri göndermeyi öğreneceksiniz.
 services: notification-hubs
 documentationcenter: windows
-keywords: anında iletme bildirimleri, anında iletme bildirimleri
+keywords: push bildirimleri, push bildirimleri
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387491"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127198"
 ---
-# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Öğretici: Azure Notification Hubs ve Bing uzamsal veriler ile konum temelli anında iletme bildirimleri gönderme
+# <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Öğretici: Bildirim Hub'ları ve Bing Uzamsal Verileri yle konum tabanlı anında iletme bildirimleri gönderme
 
 Bu öğreticide, Azure Notification Hubs ve Bing Uzamsal Veri ile konum temelli anında iletme bildirimleri göndermeyi öğreneceksiniz.
 
@@ -37,9 +37,9 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Arka ucu ayarlama
 > * Evrensel Windows Platformu (UWP) uygulamasında anında iletme bildirimlerini test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
+* **Azure aboneliği.** Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir Azure hesabı oluşturun.](https://azure.microsoft.com/free/)
 * [Visual Studio 2015 Güncelleştirme 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) veya üzeri ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)).
 * [Azure SDK](https://azure.microsoft.com/downloads/)'nın en son sürümü.
 * [Bing Haritalar Geliştirme Merkezi hesabı](https://www.bingmapsportal.com/) (ücretsiz bir tane oluşturabilir ve Microsoft hesabınızla ilişkilendirebilirsiniz).
@@ -50,10 +50,10 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 2. Üst gezinti çubuğunda **Veri kaynakları**'nı ve **Veri Kaynaklarını Yönet**'i seçin.
 
     ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
-3. Bir veri kaynağınız yoksa, veri kaynağı oluşturma bağlantısını görürsünüz. **Veri kaynağı olarak yükle**’yi seçin. Ayrıca **Veri kaynakları** > **Veri yükle** menüsünü kullanabilirsiniz.
+3. Bir veri kaynağınız yoksa, veri kaynağı oluşturma bağlantısını görürsünüz. **Veri kaynağı olarak yükle**’yi seçin. **Veri kaynakları** > **Yükleme veri** menüsünü de kullanabilirsiniz.
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Aşağıdaki içeriğe sahip sabit diskinizde bir dosya `NotificationHubsGeofence.pipe` oluşturun: Bu öğreticide, San Francisco kasamasının ön bir alanını gösteren örnek bir kanal tabanlı dosya kullanırsınız:
+4. Aşağıdaki içeriği `NotificationHubsGeofence.pipe` içeren sabit diskinizde bir dosya oluşturun: Bu öğreticide, San Francisco rıhtımının bir alanını çerçeveleyen örnek bir boru tabanlı dosya kullanırsınız:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -66,19 +66,19 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. **Veri kaynağını karşıya yükleyin** sayfasında aşağıdaki eylemleri yapın:
    1. **Veri biçimi** için **kanal**’ı seçin.
-   2. Önceki adımda oluşturduğunuz `NotificationHubGeofence.pipe` dosyasına gidip seçin.
+   2. Önceki adımda `NotificationHubGeofence.pipe` oluşturduğunuz dosyaya göz atın ve seçin.
    3. **Karşıya Yükle** düğmesini seçin.
 
       > [!NOTE]
       > **Sorgu Anahtarı**'ndan farklı olan **Ana Anahtar** için yeni bir anahtar belirtmeniz istenebilir. Pano aracılığıyla yeni bir anahtar oluşturun ve veri kaynağını karşıya yükleme sayfasını yenileyin.
-6. Veri dosyasını karşıya yükledikten sonra, veri kaynağını yayımladığınızdan emin olmanız gerekir. Daha önce yaptığınız gibi **Veri kaynakları** -> **Veri Kaynaklarını Yönet**’i seçin.
+6. Veri dosyasını karşıya yükledikten sonra, veri kaynağını yayımladığınızdan emin olmanız gerekir. **Veri kaynaklarını** -> daha önce yaptığınız gibi**Veri Kaynaklarını Yönet'i** seçin.
 7. Listeden veri kaynağınızı seçin ve **Eylemler** sütunundaki **Yayımla** seçeneğini belirleyin.
 
     ![](./media/notification-hubs-geofence/publish-button.png)
 8. **Yayımlanmış Veri Kaynakları** sekmesine geçin ve veri kaynağınızı listede gördüğünüzü onaylayın.
 
     ![](./media/notification-hubs-geofence/bing-maps-published-data.png)
-9. **Düzenle**’yi seçin. Verilerde sunulan konumları (bir bakışta) göreceksiniz.
+9. **Edit'i**seçin. Verilerde sunulan konumları (bir bakışta) göreceksiniz.
 
     ![](./media/notification-hubs-geofence/bing-maps-data-details.png)
 
@@ -107,7 +107,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
     ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
 
-    Proje oluşturmayı tamamladıktan sonra, uygulamanın kendisi için donanımınız olması gerekir. Şimdi, bölge sınırlama altyapısı için her şeyi ayarlayalım. Bu çözüm için Bing hizmetlerini kullanacağınızdan, belirli konum çerçevelerini sorgulamanıza izin veren bir ortak REST API uç noktası vardır:
+    Proje oluşturmayı tamamladıktan sonra, uygulamanın kendisi için donanımınız olması gerekir. Şimdi jeo-eskrim altyapısı için her şeyi ayarlayalım. Bu çözüm için Bing hizmetlerini kullanacağınızdan, belirli konum çerçevelerini sorgulamanıza izin veren bir ortak REST API uç noktası vardır:
 
     ```text
     http://spatial.virtualearth.net/REST/v1/data/
@@ -119,7 +119,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
    * **Bing Haritalar API'si Anahtarı**: Daha önce Bing Geliştirme Merkezi hesabı oluşturduğunuzda edindiğiniz anahtardır.
 
      Veri kaynağınız hazır olduktan sonra UWP uygulaması üzerinde çalışmaya başlayabilirsiniz.
-2. Uygulamanız için konum hizmetlerini etkinleştirin. `Package.appxmanifest`Çözüm Gezgini **'nde**  dosyasını açın.
+2. Uygulamanız için konum hizmetlerini etkinleştirin. **Çözüm Gezgini**'nde `Package.appxmanifest` dosyasını açın.
 
     ![](./media/notification-hubs-geofence/vs-package-manifest.png)
 3. Açtığınız paket özellikleri sekmesinde **Özellikler** sekmesine geçip **Konum**'u seçin.
@@ -164,8 +164,8 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     }
     ```
 
-    UWP uygulamalarında kullanıcının konumunu alma hakkında daha fazla bilgi için bkz. [Kullanıcının konumunu alma](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
-5. Konum almanın çalışıp çalışmadığını denetlemek için ana sayfanızın kod tarafını açın (`MainPage.xaml.cs`). `Loaded` oluşturucusunda `MainPage` olayı için yeni bir olay işleyicisi oluşturun.
+    UWP uygulamalarında kullanıcının konumunu alma hakkında daha fazla bilgi edinmek için[bkz.](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx)
+5. Konum almanın çalışıp çalışmadığını denetlemek için ana sayfanızın kod tarafını açın (`MainPage.xaml.cs`). `MainPage` oluşturucusunda `Loaded` olayı için yeni bir olay işleyicisi oluşturun.
 
     ```csharp
     public MainPage()
@@ -196,7 +196,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
     ![](./media/notification-hubs-geofence/notification-hubs-location-output.png)
 
-    Artık konum alma özelliğinin çalıştığını bildiğinize göre, bundan sonra kullanmayacağınız için isterseniz Yüklü olay işleyicisini kaldırabilirsiniz.
+    Artık konum ediniminin işe yaradığını biliyorsunuz, artık kullanamayacağınız için isterseniz Loaded olay işleyicisini kaldırabilirsiniz.
 8. Sonraki adım konum değişikliklerini yakalamaktır. `LocationHelper` sınıfında `PositionChanged` için olay işleyicisini ekleyin:
 
     ```csharp
@@ -226,7 +226,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     Proje hedef cihazlara anında iletme bildirimleri göndermek için zaten yapılandırıldı. Bu nedenle yapmanız gereken yalnızca iki şey var: Bildirim hub'ı için doğru bağlantı dizesini belirtin ve sadece kullanıcı bölge sınırı içinde olduğunda bildirim göndermek için sınır kimliği ekleyin.
 
 4. Bağlantı dizesini yapılandırmak için `Models` klasöründe `Notifications.cs` öğesini açın. `NotificationHubClient.CreateClientFromConnectionString` işlevi, [Azure portalından](https://portal.azure.com) alabileceğiniz bildirim hub'ınız hakkındaki bilgileri içermelidir (**Ayarlar**'da, **Erişim İlkeleri** sayfasının içine bakın). Güncelleştirilen yapılandırma dosyasını kaydedin.
-5. Bing Haritalar API'si sonucu için bir model oluşturun. Bunu yapmanın en kolay yolu `Models` klasörünü açıp **Ekle** > **Sınıf**'ı seçmektir. Bunu, `GeofenceBoundary.cs` olarak adlandırın. Bunu yaptıktan sonra, birinci bölümde elde ettiğiniz API yanıtından JSON dosyasını kopyalayın. Visual Studio'da **Düzenle** > **Özel Yapıştır** > **JSON’ı Sınıflar Olarak Yapıştır**’ı kullanın.
+5. Bing Haritalar API'si sonucu için bir model oluşturun. Bunu `Models` yapmanın en kolay yolu klasörü açmak ve**Sınıf** **Ekle'yi** > seçmektir. Bunu, `GeofenceBoundary.cs` olarak adlandırın. Bunu yaptıktan sonra, birinci bölümde elde ettiğiniz API yanıtından JSON dosyasını kopyalayın. Visual Studio'da, Sınıf olarak Yapıştır Özel > **Yapıştır JSON'ı** **edit.** > **Paste Special**
 
     Böylece, nesnenin istendiği gibi tamamen seri durumdan çıkarılacağından emin olursunuz. Elde edilen sınıf kümeniz aşağıdaki sınıfa benzemelidir:
 
@@ -348,15 +348,15 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     ```
 
     > [!NOTE]
-    > `POST_URL` değerini dağıtılmış web uygulamanızın konumuna ayarlayın. Şu an için bunu yerel olarak çalıştırabilirsiniz. Ancak genel bir sürümü dağıtma üzerine çalıştığınızdan, bunu dış sağlayıcı ile barındırmanız gerekir.
-2. Anında iletme bildirimleri için UWP uygulamanızı kaydedin. Visual Studio'da, **Proje** > **Mağaza** > **Uygulamayı mağaza ile ilişkilendir**'i seçin.
+    > `POST_URL` değerini dağıtılmış web uygulamanızın konumuna ayarlayın. Şimdilik, yerel olarak çalıştırmak için tamam, ancak ortak bir sürümünü dağıtma üzerinde çalışırken, harici bir sağlayıcı ile barındırmak gerekir.
+2. Anında iletme bildirimleri için UWP uygulamanızı kaydedin. Visual Studio'da,**mağazayla Project****Store** > Associate uygulamasını **seçin.** > 
 
     ![](./media/notification-hubs-geofence/vs-associate-with-store.png)
 3. Geliştirici hesabınızda oturum açtıktan sonra, mevcut bir uygulamayı seçtiğinizden emin olun veya yeni bir tane oluşturun ve paketi bununla ilişkilendirin.
-4. Geliştirme Merkezi'ne gidin ve oluşturduğunuz uygulamayı açın. **Hizmetler** > **Anında İletme Bildirimleri** > **Live Services sitesi**'ni seçin.
+4. Geliştirme Merkezi'ne gidin ve oluşturduğunuz uygulamayı açın. **Hizmetleri** > **E-itme Bildirimleri** > Canlı Hizmetler**sitesini**seçin.
 
     ![](./media/notification-hubs-geofence/ms-live-services.png)
-5. Sitede, **Uygulama Anahtarı** ve **Paket SID**'sini not edin. Azure portalında her ikisine de ihtiyacınız vardır: Bildirim hub'ınızı açın, **Ayarlar** > **Bildirim Hizmetleri** > **Windows (WNS)** seçeneğini belirleyin ve gerekli alanlara bu bilgileri girin.
+5. Sitede, **Uygulama Anahtarı** ve **Paket SID**'sini not edin. Her ikisine de Azure portalında ihtiyacınız var – bildirim merkezinizi açın, **Ayarlar** > **Bildirim Hizmetleri** > **Windows'unu (WNS)** seçin ve gerekli alanlara bilgileri girin.
 
     ![](./media/notification-hubs-geofence/notification-hubs-wns.png)
 6. **Kaydet**'i seçin.

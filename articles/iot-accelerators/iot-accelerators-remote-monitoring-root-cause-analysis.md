@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77565477"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Öğretici: Bir uyarıda kök neden analizi yürütme
@@ -30,7 +30,7 @@ Bu öğreticide şunları yaptınız:
 > * Kök neden analizi yürütme
 > * Öğrendiklerinize dayanarak yeni bir kural oluşturma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -38,15 +38,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 **Dashboard** (Pano) sayfasında görüntülenecek bağlı cihazları seçmek için filtreleri kullanın. Yalnızca **Truck** (Tır) cihazlarını görüntülemek için filtre açılan menüsünden yerleşik **Trucks** (Tırlar) filtresini seçin:
 
-[![Panoda trucks (tır) filtresi](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
+[![Gösterge panelindeki kamyonlar için filtre](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
 
-Filtre uyguladığınızda, yalnızca filtre koşullarıyla eşleşen cihazlar haritada ve **panoda**telemetri panelinde görüntülenir. **truck-02** dahil olmak üzere, çözüm hızlandırıcısına iki tırın bağlı olduğunu görebilirsiniz.
+Bir filtre uyguladığınızda, yalnızca filtre koşullarına uyan aygıtlar haritada ve **Pano'daki**telemetri panelinde görüntülenir. Çözüm hızlandırıcısına bağlı iki kamyon olduğunu görebilirsiniz, **kamyon-02**de dahil olmak üzere.
 
 ## <a name="view-real-time-telemetry"></a>Gerçek zamanlı telemetri verilerini görüntüleme
 
 Çözüm hızlandırıcısı, **Dashboard** (Pano) sayfasındaki grafiğe gerçek zamanlı telemetri verilerini çizer. Varsayılan olarak grafik, zaman içinde değişiklik gösteren rakım telemetri verilerini göstermektedir:
 
-[![Tır için rakım telemetri verileri çizimi](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-expanded.png#lightbox)
+[![Kamyon irtifa telemetri arsa](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-expanded.png#lightbox)
 
 Tırların sıcaklık telemetri verilerini görüntülemek için **Telemetri paneli**’nde **Sıcaklık** seçeneğine tıklayın. Son 15 dakika boyunca her iki tırın da sıcaklığının nasıl değişiklik gösterdiğini görebilirsiniz. Uyarılar bölmesinde delivery-truck-02 için düşük sıcaklık uyarısının tetiklendiğini de görebilirsiniz.
 
@@ -56,41 +56,41 @@ Tırların sıcaklık telemetri verilerini görüntülemek için **Telemetri pan
 
 Düşük sıcaklık alarmının nedenini belirlemek için, Time Series Insights gezgininde tır telemetri verilerini açın. Panodaki **Time Series Insights’ta Keşfet** bağlantılarından herhangi birine tıklayın:
 
-[![TSI bağlantıları vurgulanmış şekilde RM panosu](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-expanded.png#lightbox)
+[![TSI bağlantıları vurgulanan RM panosu](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-expanded.png#lightbox)
 
 Gezgin başlatıldığında tüm cihazların listelendiğini görürsünüz:
 
-[![TSI Gezgini başlangıç görünümü](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
+[![TSI Explorer ilk görünümü](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
 
-Filtre kutusuna **teslim kamyonu** yazarak cihazları filtreleyin ve sol bölmedeki **Ölçü** olarak **sıcaklık** ' yi seçin:
+Filtre kutusuna **teslim kamyonu** yazarak aygıtları filtreleyin ve sol panelde **Ölçü** olarak **sıcaklığı** seçin:
 
-[![TSI Gezgini tır sıcaklığı](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
+[![TSI Explorer kamyon sıcaklığı](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
-Uzaktan Izleme panosunda gördüğünüz görünümü görürsünüz. Ayrıca, artık uyarının tetiklendiği zaman dilimine yaklaştırılmış olabilirsiniz:
+Uzaktan İzleme panosunda gördüğünüz görünümün aynısını görürsünüz. Ayrıca, artık uyarının içinde tetiklediği zaman çerçevesine daha yakın yakın laştırabilirsiniz:
 
-[![TSI Gezgini yakınlaştırma](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
+[![TSI Explorer yakınlaştırma](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
-Tırlardan gelen diğer telemetri akışlarına da ekleme yapabilirsiniz. Sol üst köşedeki **Ekle** düğmesine tıklayın. Yeni bir bölme görüntülenir:
+Tırlardan gelen diğer telemetri akışlarına da ekleme yapabilirsiniz. Sol üst köşedeki **Ekle** düğmesini tıklatın. Yeni bir bölme görüntülenir:
 
-[![Yeni bölme ile TSI Gezgini](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
+[![Yeni bölmeli TSI Explorer](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
 
-Yeni bölmede, yeni etiketin adını, öncekiyle eşleşecek şekilde **Cihazlar** olarak değiştirin. Bir değere göre yükseklik telemetrisi eklemek için **Ölçü** ve **ıothub-bağlantı-cihaz kimliği** olarak **Böl** **değerini seçin:**
+Yeni bölmede, yeni etiketin adını, öncekiyle eşleşecek şekilde **Cihazlar** olarak değiştirin. Görünümünüze yükseklik telemetrisini eklemek için **Ölçü** **Split By** ve **iothub-connection-device-id** değerini böl olarak **yükseklik** seçin:
 
-[![Sıcaklık ve rakım ile TSI Gezgini](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
+[![Sıcaklık ve yükseklik ile TSI Explorer](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
 
 ## <a name="diagnose-the-alert"></a>Uyarıyı tanılama
 
-Geçerli görünümdeki akışlara baktığınızda, iki structuralks için olan yükseklik profillerinin farklı olduğunu görebilirsiniz. Ayrıca tır yüksek bir rakıma ulaştığında **delivery-truck-02** tırında sıcaklık düşüşü gerçekleşir. Tırlar aynı rotayı izleyecek şekilde zamanlanmış olduğundan bu bulgu sizi şaşırtabilir.
+Geçerli görünümdeki akışlara baktığınızda, iki kamyonun yükseklik profillerinin farklı olduğunu görebilirsiniz. Ayrıca tır yüksek bir rakıma ulaştığında **delivery-truck-02** tırında sıcaklık düşüşü gerçekleşir. Tırlar aynı rotayı izleyecek şekilde zamanlanmış olduğundan bu bulgu sizi şaşırtabilir.
 
 Turların farklı yolculuk yolları izlediğine dair şüphenizi onaylamak için, **Ekle** düğmesini kullanarak yan panele başka bir bölme ekleyin. Yeni bölmede, yeni etiketin adını, öncekiyle eşleşecek şekilde **Cihazlar** olarak değiştirin. Boylam telemetri verilerini görünümünüze eklemek için **Ölçü** olarak **boylam** ve **Bölme ölçütü:** değeri olarak **iothub-connection-device-id** seçeneğini belirleyin. **Boylam** akışları arasındaki farka bakarak tırların farklı yolculuklar yaptığını görebilirsiniz:
 
-[![Sıcaklık, rakım ve boylam ile TSI Gezgini](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-expanded.png#lightbox)
+[![Sıcaklık, yükseklik ve boylam ile TSI Explorer](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-expanded.png#lightbox)
 
 ## <a name="create-a-new-rule"></a>Yeni kural oluşturma
 
-Kamyonun yolları tipik olarak iyileştirilirken, trafik desenlerinin, hava durumunun ve diğer öngörülemeyen olayların gecikmelerden oluşmasına ve en iyi kararlarına göre son dakika rota kararlarını kamyon sürücülerine bırakabileceğini fark etmiş olursunuz. Ancak, varlıkların içindeki varlıklarınızın sıcaklığı kritik olduğundan, uzaktan Izleme çözümünüzde ek bir kural oluşturmanız gerekir. Bu kural, 1 dakikalık bir Aralık üzerindeki ortalama yükseklik 350 fit 'in üzerine gittiğinde bir uyarı almanızı sağlamaktır:
+Kamyon güzergahları genellikle önceden optimize edilmiş olsa da, trafik düzeninin, hava durumunun ve diğer öngörülemeyen olayların gecikmelere neden olabileceğini ve kamyon sürücülerine en iyi kararlarına göre son dakika rota kararlarını bırakabileceğini fark esiniz. Ancak, araç içindeki varlıklarınızın sıcaklığı kritik olduğundan, Uzaktan İzleme çözümünüzde ek bir kural oluşturmalısınız. Bu kural, 1 dakikalık bir aralıktaki ortalama irtifa 350 feet'in üzerine çıkarsa bir uyarı aldığınızdan emin olmaktır:
 
-[![Uzaktan İzleme kuralları sekmesi rakım kuralı ayarlama](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
+[![Uzaktan İzleme kuralları sekmesi yükseklik kuralını belirler](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
 
 Kurallar oluşturma ve kuralları düzenleme hakkında bilgi edinmek için, [cihaz sorunlarını algılama](iot-accelerators-remote-monitoring-automate.md) bölümünde yer alan önceki öğreticiye göz atın.
 

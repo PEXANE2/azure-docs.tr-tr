@@ -1,43 +1,43 @@
 ---
-title: 'Öğretici: Azure Izleyici ile sorun giderme'
-description: Azure Izleyici ve Log Analytics App Service Web uygulamanızı izlemenize nasıl yardımcı olduğunu öğrenin. Azure Izleyici, ortamlarınızı izlemeye yönelik kapsamlı bir çözüm sunarak kullanılabilirliği en üst düzeye çıkarır.
+title: 'Öğretici: Azure Monitör ile Sorun Giderme'
+description: Azure Monitor ve Log Analytics'in Uygulama Hizmeti web uygulamanızı izlemenize nasıl yardımcı olduğunu öğrenin. Azure Monitor, ortamlarınızı izlemek için kapsamlı bir çözüm sunarak kullanılabilirliği en üst düzeye çıkarır.
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 2/28/2020
 ms.openlocfilehash: d543a9364311b2cf5f0258fbf9185d27bb1bfb2f
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78399521"
 ---
-# <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Öğretici: Azure Izleyici ile App Service uygulamasında sorun giderme
+# <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Öğretici: Azure Monitor ile Bir Uygulama Hizmeti uygulamasını sorun giderme
 
 > [!NOTE]
-> Azure Izleyici App Service ile tümleştirme [Önizleme](https://aka.ms/appsvcblog-azmon)aşamasındadır.
+> Uygulama Hizmeti ile Azure Monitör [tümleştirmesi önizlemede.](https://aka.ms/appsvcblog-azmon)
 >
 
-[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) , bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözüm sunarak uygulamalarınızın ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır.
+[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. [Azure Monitor,](https://docs.microsoft.com/azure/azure-monitor/overview) bulut ve şirket içi ortamlarınızdan telemetri toplamak, analiz etmek ve hareket etmek için kapsamlı bir çözüm sunarak uygulamalarınızın ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır.
 
-Bu öğreticide, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)kullanarak bir uygulamayla ilgili sorunları giderme gösterilmektedir. Örnek uygulama, belleği tüketmeye yönelik kodu içerir ve HTTP 500 hatalarına neden olur, böylece Azure Izleyici 'yi kullanarak sorunu tanılayabilir ve giderebilirsiniz.
+Bu öğretici, [Azure Monitor'u](https://docs.microsoft.com/azure/azure-monitor/overview)kullanarak bir uygulamayı nasıl gidereceklerini gösterir. Örnek uygulama, belleği tüketmeye ve HTTP 500 hatalarına neden olacak kodlar içerir, böylece Azure Monitor'u kullanarak sorunu tanılayabilir ve düzeltebilirsiniz.
 
-İşiniz bittiğinde, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)Ile tümleştirilmiş Linux üzerinde App Service üzerinde çalışan bir örnek uygulamanız olacaktır.
+İşi nizi bitirdiğinde, [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)ile entegre edilmiş Linux'ta App Service'de çalışan bir örnek uygulamanız olacaktır.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Azure Izleyici ile bir Web uygulaması yapılandırma
-> * Konsol günlüklerini Log Analytics gönder
-> * Web uygulaması hatalarını tanımlamak ve sorunlarını gidermek için günlük sorgularını kullanma
+> * Azure Monitor ile bir web uygulamasını yapılandırma
+> * Konsol günlüklerini Log Analytics'e gönderme
+> * Web uygulaması hatalarını tanımlamak ve sorun gidermek için Günlük sorgularını kullanma
 
 Bu öğreticideki adımları MacOS, Linux ve Windows üzerinde izleyebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
+Bu öğreticiyi tamamlamak için şunları yapmanız gerekir:
 
 - [Azure aboneliği](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
@@ -45,7 +45,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 ## <a name="create-azure-resources"></a>Azure kaynakları oluşturma
 
-İlk olarak, bu öğreticiyle kullanılacak örnek bir uygulama ayarlamak için birkaç komutu yerel olarak çalıştırırsınız. Komutlar örnek bir uygulamayı kopyalar, Azure kaynakları oluşturur, bir dağıtım kullanıcısı oluşturur ve uygulamayı Azure 'a dağıtır. Dağıtım kullanıcısı oluşturmanın bir parçası olarak sağlanan parola istenir. 
+İlk olarak, bu öğretici ile kullanmak için örnek bir uygulama kurmak için yerel olarak çeşitli komutlar çalıştırın. Komutlar örnek bir uygulamayı klonlar, Azure kaynakları oluşturur, dağıtım kullanıcısı oluşturur ve uygulamayı Azure'a dağıtır. Dağıtım kullanıcısının oluşturulmasının bir parçası olarak sağlanan parola için istenirsiniz. 
 
 ```bash
 git clone https://github.com/Azure-Samples/App-Service-Troubleshoot-Azure-Monitor
@@ -57,30 +57,30 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor-preview"></a>Azure Izleyicisini yapılandırma (Önizleme)
+## <a name="configure-azure-monitor-preview"></a>Azure Monitörünü Yapılandırma (önizleme)
 
-### <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
+### <a name="create-a-log-analytics-workspace"></a>Günlük Analizi Çalışma Alanı Oluşturma
 
-Örnek uygulamayı Azure App Service dağıttığınıza göre, sorun ortaya çıktığında uygulamanın sorunlarını gidermek için izleme özelliğini yapılandıracaksınız. Azure Izleyici, günlük verilerini bir Log Analytics çalışma alanında depolar. Çalışma alanı, veri ve yapılandırma bilgilerini içeren bir kapsayıcıdır.
+Örnek uygulamayı Azure Uygulama Hizmeti'ne dağıttığınız için, sorunlar ortaya çıktığında uygulamayı sorun giderecek izleme özelliğini yapılandıracaksınız. Azure Monitor günlük verilerini bir Log Analytics çalışma alanında depolar. Çalışma alanı, veri ve yapılandırma bilgilerini içeren bir kapsayıcıdır.
 
-Bu adımda, Azure Izleyici 'yi uygulamanızla birlikte yapılandırmak için bir Log Analytics çalışma alanı oluşturursunuz.
+Bu adımda, Azure Monitörünü uygulamanızla yapılandırmak için bir Log Analytics çalışma alanı oluşturursunuz.
 
 ```bash
 az monitor log-analytics workspace create --resource-group myResourceGroup --workspace-name myMonitorWorkspace
 ```
 
 > [!NOTE]
-> [Azure Izleyici Log Analytics için veri alımı ve veri saklama için ödeme yaparsınız.](https://azure.microsoft.com/pricing/details/monitor/)
+> [Azure Monitor Log Analytics için veri alımı ve veri saklama için ödeme yapabilirsiniz.](https://azure.microsoft.com/pricing/details/monitor/)
 >
 
-### <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur
+### <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluşturma
 
-Tanılama ayarları, belirli Azure hizmetleri için Azure Izleyici günlüklerine yönelik ölçümleri, günlük sorguları kullanılarak diğer izleme verileriyle analiz edilmek üzere toplamak için kullanılabilir. Bu öğreticide, Web sunucusunu ve standart çıkış/hata günlüklerini etkinleştirirsiniz. Günlük türlerinin ve açıklamalarının tüm listesi için bkz. [desteklenen günlük türleri](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) .
+Tanılama ayarları, günlük sorgularını kullanarak diğer izleme verileriyle analiz için azure monitör günlüklerinde belirli Azure hizmetlerinin ölçümlerini toplamak için kullanılabilir. Bu öğretici için, web sunucusunu ve standart çıktı/hata günlüklerini etkinleştirin. Günlük türlerinin ve açıklamaların tam listesi için [desteklenen günlük türlerine](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) bakın.
 
-AppServiceConsoleLogs (Standart çıkış/hata) ve AppServiceHTTPLogs (Web sunucusu günlükleri) için Tanılama ayarları oluşturmak üzere aşağıdaki komutları çalıştırın. _\<app-name >_ ve _\<çalışma alanı-adı >_ değerini değerlerinizle değiştirin. 
+AppServiceConsoleLogs (standart çıktı/hata) ve AppServiceHTTPLogs (web sunucusu günlükleri) için tanılama ayarları oluşturmak için aşağıdaki komutları çalıştırın. _ \<Uygulama adı>_ ve _ \<çalışma alanı adı>_ değerlerinizle değiştirin. 
 
 > [!NOTE]
-> `resourceID` ve `workspaceID`ilk iki komut, `az monitor diagnostic-settings create` komutunda kullanılacak değişkenlerdir. Bu komutla ilgili daha fazla bilgi için bkz. [Azure CLI kullanarak tanılama ayarları oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) .
+> İlk iki komut `resourceID` ve `workspaceID`, `az monitor diagnostic-settings create` komutkullanılacak değişkenlerdir. Bu komut hakkında daha fazla bilgi için [Azure CLI kullanarak tanı lama ayarları oluşturma'ya](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) bakın.
 >
 
 ```bash
@@ -97,83 +97,83 @@ az monitor diagnostic-settings create --resource $resourceID \
 
 ```
 
-## <a name="troubleshoot-the-app"></a>Uygulamanın sorunlarını giderme
+## <a name="troubleshoot-the-app"></a>Uygulamayı sorun giderme
 
 `http://<app-name>.azurewebsites.net` adresine gidin.
 
-Örnek uygulama olan ImageConverter, `JPG` eklenen görüntüleri `PNG`dönüştürür. Bu öğreticinin koduna kasıtlı olarak bir hata yerleştirildi. Yeterli görüntü seçerseniz, uygulama görüntü dönüştürme sırasında bir HTTP 500 hatası oluşturur. Bu senaryonun geliştirme aşamasında dikkate alınmadığını düşünün. Hatayı gidermek için Azure Izleyici 'yi kullanacaksınız.
+Örnek uygulama, ImageConverter, 'den `JPG` . `PNG` Bu öğreticinin koduna kasıtlı olarak bir hata yerleştirildi. Yeterli resim seçerseniz, uygulama görüntü dönüştürme sırasında bir HTTP 500 hatası oluşturur. Bu senaryonun geliştirme aşamasında dikkate alınmadığını düşünün. Hatayı gidermek için Azure Monitor'u kullanırsınız.
 
-### <a name="verify-the-app-is-works"></a>Uygulamanın çalıştığını doğrulama
+### <a name="verify-the-app-is-works"></a>Uygulamanın işe yaradığını doğrulayın
 
-Görüntüleri dönüştürmek için `Tools` ' ye tıklayın ve `Convert to PNG`' ı seçin.
+Resimleri dönüştürmek için `Tools` tıklatın `Convert to PNG`ve seçin.
 
-![' Araçlar 'ı tıklatın ve ' PNG 'ye Dönüştür ' seçeneğini belirleyin](./media/tutorial-azure-monitor/sample-monitor-app-tools-menu.png)
+!['Araçlar'ı tıklatın ve 'PNG'ye dönüştür' seçeneğini belirleyin](./media/tutorial-azure-monitor/sample-monitor-app-tools-menu.png)
 
-İlk iki görüntüyü seçin ve `convert`' ye tıklayın. Bu, başarıyla dönüştürülecek.
+İlk iki resmi seçin `convert`ve . Bu başarıyla dönüştürür.
 
 ![İlk iki görüntüyü seçin](./media/tutorial-azure-monitor/sample-monitor-app-convert-two-images.png)
 
-### <a name="break-the-app"></a>Uygulamayı kes
+### <a name="break-the-app"></a>Uygulamayı kır
 
-İki görüntüyü başarıyla dönüştürerek uygulamayı doğruladığınıza göre, ilk beş görüntüyü dönüştürmeyi deneyeceğiz.
+İki görüntüyü başarıyla dönüştürerek uygulamayı doğruladığınıza göre, ilk beş görüntüyü dönüştürmeye çalışacağız.
 
-![İlk beş görüntüyü Dönüştür](./media/tutorial-azure-monitor/sample-monitor-app-convert-five-images.png)
+![İlk beş görüntüyü dönüştürme](./media/tutorial-azure-monitor/sample-monitor-app-convert-five-images.png)
 
-Bu eylem başarısız olur ve geliştirme sırasında sınanmamıştır `HTTP 500` bir hata üretir.
+Bu eylem başarısız `HTTP 500` olur ve geliştirme sırasında sınanmadı bir hata üretir.
 
-![Convert, HTTP 500 hatasına neden olur](./media/tutorial-azure-monitor/sample-monitor-app-http-500.png)
+![Dönüştürme, HTTP 500 hatasına neden olur](./media/tutorial-azure-monitor/sample-monitor-app-http-500.png)
 
-## <a name="use-log-query-to-view-azure-monitor-logs"></a>Azure Izleyici günlüklerini görüntülemek için günlük sorgusu kullanma
+## <a name="use-log-query-to-view-azure-monitor-logs"></a>Azure Monitor günlüklerini görüntülemek için günlük sorgusunun kullanılması
 
-Log Analytics çalışma alanında hangi günlüklerin kullanılabildiğini görelim. 
+Log Analytics çalışma alanında hangi günlüklerin kullanılabilmesini görelim. 
 
-Azure portal çalışma alanınıza erişmek için bu [Log Analytics çalışma alanı bağlantısına](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) tıklayın.
+Azure portalındaki çalışma alanınıza erişmek için bu [Günlük Analizi çalışma alanı bağlantısını](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) tıklatın.
 
-Azure portal, Log Analytics çalışma alanınızı seçin.
+Azure portalında, Günlük Analizi çalışma alanınızı seçin.
 
 ### <a name="log-queries"></a>Günlük sorguları
 
-Günlük sorguları, Azure Izleyici günlüklerinde toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Günlük sorgularını hem AppServiceHTTPLogs hem de AppServiceConsoleLogs içindeki günlükleri tanımlamak için kullanırsınız. Günlük sorguları hakkında daha fazla bilgi için [günlük sorgusuna genel bakış](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) bölümüne bakın.
+Günlük sorguları, Azure Monitör Günlükleri'nde toplanan verilerin değerinden tam olarak yararlanmanıza yardımcı olur. Hem AppServiceHTTPLogs hem de AppServiceConsoleLogs'daki günlükleri tanımlamak için günlük sorgularını kullanırsınız. Günlük sorguları hakkında daha fazla bilgi için [günlük sorgusuna genel bakışa](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) bakın.
 
-### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs 'u günlük sorgusuyla görüntüleme
+### <a name="view-appservicehttplogs-with-log-query"></a>Günlük sorgusuyla AppServiceHTTPLogs'u görüntüleyin
 
-Uygulamaya eriştiğimiz artık, `AppServiceHTTPLogs`bulunan HTTP istekleriyle ilişkili verileri görüntüleyelim.
+Uygulamaya erişmiş olduğumuza göre, http istekleriyle ilişkili verileri `AppServiceHTTPLogs`görüntüleyelim.
 
-1. Sol taraftaki gezinmede `Logs` ' a tıklayın.
+1. Sol `Logs` daki gezinmeden tıklayın.
 
-![Anlytika çalışma günlüklerini günlüğe kaydet](./media/tutorial-azure-monitor/log-analytics-workspace-logs.png)
+![Günlük Anlitics Worksace Günlükleri](./media/tutorial-azure-monitor/log-analytics-workspace-logs.png)
 
-2. `appservice` arayın ve `AppServiceHTTPLogs`çift tıklayın.
+2. Arama `appservice` ve çift `AppServiceHTTPLogs`tıklayın.
 
-![Log Analytics çalışma alanı tabloları](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-tables.png)
+![Günlük analizi Çalışma Alanı Tabloları](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-tables.png)
 
 3. `Run` öğesine tıklayın.
 
-![Log Analytics çalışma alanı App Service HTTP günlükleri](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-http-logs.png)
+![Günlük Analitik Çalışma Alanı Uygulama Hizmeti HTTP Günlükleri](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-http-logs.png)
 
-`AppServiceHTTPLogs` sorgusu, son 24 saat içindeki tüm istekleri döndürür. `ScStatus` sütunu HTTP durumunu içerir. `HTTP 500` hatalarını tanılamak için `ScStatus` 500 ile sınırlayın ve sorguyu aşağıda gösterildiği gibi çalıştırın:
+Sorgu, `AppServiceHTTPLogs` son 24 saat içinde tüm istekleri döndürür. Sütun `ScStatus` HTTP durumunu içerir. Hataları tanılamak `HTTP 500` için, `ScStatus` 500 ile sınırlayın ve sorguyu aşağıda gösterildiği gibi çalıştırın:
 
 ```kusto
 AppServiceHTTPLogs
 | where ScStatus == 500
 ```
 
-### <a name="view-appserviceconsolelogs-with-log-query"></a>AppServiceConsoleLogs 'u günlük sorgusuyla görüntüleme
+### <a name="view-appserviceconsolelogs-with-log-query"></a>Günlük sorgusuyla AppServiceConsoleLogs'u görüntüleyin
 
-Artık HTTP 500s ' i onayladığınıza göre uygulamadan standart çıkış/hatalara göz atalım. Bu Günlükler ' AppServiceConsoleLogs ' içinde bulunur.
+ŞIMDI HTTP 500'leri doğruladıysanız, uygulamadan alınan standart çıktılara/hatalara bir göz atalım. Bu günlükler 'AppServiceConsoleLogs'da bulunur.
 
-(1) yeni bir sorgu oluşturmak için `+` ' a tıklayın. 
+(1) `+` Yeni bir sorgu oluşturmak için tıklatın. 
 
-(2) `AppServiceConsoleLogs` tabloya çift tıklayın ve `Run`' a tıklayın. 
+(2) Tabloya `AppServiceConsoleLogs` çift tıklayın `Run`ve . 
 
-Beş Görüntüyü dönüştürürken sunucu hatalarına neden olduğundan, aşağıda gösterildiği gibi, hata için `ResultDescription` filtreleyerek uygulamanın da hata yazıyor olduğunu görebilirsiniz:
+Beş görüntüyü dönüştürme, sunucu hatalarıyla sonuçladığından, uygulamanın hatalara `ResultDescription` filtre uygulayarak da hata yazıp yazmadığınızı aşağıda göstererek görebilirsiniz:
 
 ```kusto
 AppServiceConsoleLogs |
 where ResultDescription  contains "error" 
 ```
 
-`ResultDescription` sütununda aşağıdaki hatayı görürsünüz:
+`ResultDescription` Sütunda aşağıdaki hatayı görürsünüz:
 
 ```
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
@@ -181,19 +181,19 @@ PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted
 referer: http://<app-name>.azurewebsites.net/
 ```
 
-### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>AppServiceHTTPLogs ve AppServiceConsoleLogs 'a katılarak
+### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>AppServiceHTTPLogs ve AppServiceConsoleLogs katılın
 
-HTTP 500s ve standart hatalarını tanımladığınıza göre, bu iletiler arasında bir bağıntı olup olmadığını onaylamanız gerekir. Daha sonra, `TimeGenerated`zaman damgasına göre tabloları birlikte birleştirebilirsiniz.
+Hem HTTP 500'leri hem de standart hataları tanımladığınıza göre, bu iletiler arasında bir ilişki olup olmadığını doğrulamanız gerekir. Sonra, zaman damgası dayalı tablolar birlikte `TimeGenerated`katılmak.
 
 > [!NOTE]
-> Şunları yapmak için bir sorgu hazırlanmıştır:
+> Sizin için aşağıdakileri yapan bir sorgu hazırlanmıştır:
 >
-> - 500 hata için HTTPLogs filtrelerini filtreler
-> - Konsol günlüklerini sorgular
-> - `TimeGenerated` tabloları birleştirir
+> - Filtreler 500 hata için HTTPLogs
+> - Sorgular konsol günlükleri
+> - Üzerinde tablolara katılır`TimeGenerated`
 >
 
-Şu sorguyu çalıştırın:
+Aşağıdaki sorguyu çalıştırın:
 
 ```kusto
 let myHttp = AppServiceHTTPLogs | where  ScStatus == 500 | project TimeGen=substring(TimeGenerated, 0, 19), CsUriStem, ScStatus;  
@@ -203,7 +203,7 @@ let myConsole = AppServiceConsoleLogs | project TimeGen=substring(TimeGenerated,
 myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, ResultDescription;
 ```
 
-`ResultDescription` sütununda, Web sunucusu hatalarıyla aynı anda aşağıdaki hatayı görürsünüz:
+`ResultDescription` Sütunda, web sunucusu hatalarıyla aynı anda aşağıdaki hatayı görürsünüz:
 
 ```
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
@@ -211,23 +211,23 @@ PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted
 referer: http://<app-name>.azurewebsites.net/
 ```
 
-İleti, belleğin `process.php`20. satırında tükendi. Artık HTTP 500 hatası sırasında uygulamanın bir hata üretmediğini onayladık. Sorunu belirlemek için koda göz atalım.
+İleti, belleğin `process.php`20. Şimdi uygulama nın HTTP 500 hatası sırasında bir hata ürettiğini doğruladınız. Sorunu tanımlamak için koda bir göz atalım.
 
-## <a name="identify-the-error"></a>Hatayı tanımla
+## <a name="identify-the-error"></a>Hatayı belirleme
 
-Yerel dizinde `process.php` açın ve 20. satıra bakın. 
+Yerel dizinde, açın `process.php` ve satır 20 bakmak. 
 
 ```php
 imagepng($imgArray[$x], $filename);
 ```
 
-`$imgArray[$x]`ilk bağımsız değişken, dönüştürmeye ihtiyaç duyan tüm JPGs (bellekteki) tutan bir değişkendir. Ancak, `imagepng` yalnızca görüntünün dönüştürülmesini gerektirir ve tüm görüntüleri değil. Önceden yükleme görüntüleri gerekli değildir ve bellek tükenmesi ile, önde gelen HTTP 500s ' e yol açabilir. Sorunu çözüp çözmediğine bakmak için, daha sonra bu görüntüyü isteğe bağlı olarak yükleyecek şekilde kodu güncelleştirelim. Daha sonra, bellek sorununu gidermek için kodu iyileştirecaksınız.
+İlk bağımsız `$imgArray[$x]`değişken, dönüşüm gerektiren tüm YBM'leri (bellek tespül eden) bir değişkendir. Ancak, `imagepng` yalnızca görüntünün dönüştürülmesi gerekir ve tüm görüntüler değil. Ön yükleme görüntüleri gerekli değildir ve http 500s yol açan bellek yorgunluğuna neden olabilir. Sorunu çözüp çözmedigini görmek için görüntüleri isteğe bağlı yüklemek için kodu güncelleştirelim. Ardından, bellek sorununu gidermek için kodu geliştireceksiniz.
 
-## <a name="fix-the-app"></a>Uygulama düzeltme
+## <a name="fix-the-app"></a>Uygulamayı düzeltme
 
 ### <a name="update-locally-and-redeploy-the-code"></a>Kodu yerel makinede güncelleştirme ve yeniden dağıtma
 
-Bellek tükenmesi 'ni işlemek için `process.php` aşağıdaki değişiklikleri yaparsınız:
+Bellek yorgunluğunu işlemek `process.php` için aşağıdaki değişiklikleri yaparsınız:
 
 ```php
 <?php
@@ -250,17 +250,17 @@ git commit -am "Load images on-demand in process.php"
 git push azure master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Azure uygulamasına gidin
+### <a name="browse-to-the-azure-app"></a>Azure uygulamasına göz atın
 
 `http://<app-name>.azurewebsites.net` adresine gidin. 
 
-Görüntülerin dönüştürülmesi, HTTP 500 hatalarını daha uzun bir şekilde üretmemelidir.
+Görüntüleri dönüştürmek artık HTTP 500 hatalarını oluşturmamalıdır.
 
 ![Azure App Service’te çalışan PHP uygulaması](./media/tutorial-azure-monitor/sample-monitor-app-working.png)
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-Aşağıdaki komutla tanılama ayarını silin:
+Tanılama ayarını aşağıdaki komutla silin:
 
 ```bash
 az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
@@ -268,11 +268,11 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 Öğrendikleriniz:
 
 > [!div class="checklist"]
-> * Azure Izleyici ile bir Web uygulaması yapılandırıldı
-> * Günlükler Log Analytics gönderildi
-> * Web uygulaması hatalarını tanımlamak ve sorunlarını gidermek için kullanılan günlük sorguları
+> * Azure Monitor ile bir web uygulamasını yapılandırıldı
+> * Günlükler Log Analytics'e gönderildi
+> * Web uygulaması hatalarını tanımlamak ve sorun gidermek için kullanılan günlük sorguları
 
-## <a name="nextsteps"></a> Sonraki adımlar
-* [Azure Izleyici ile günlük sorgulama](../../azure-monitor/log-query/log-query-overview.md)
-* [Visual Studio 'da Azure App Service sorunlarını giderme](../troubleshoot-dotnet-visual-studio.md)
-* [HDInsight 'ta uygulama günlüklerini çözümleme](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+## <a name="next-steps"></a><a name="nextsteps"></a>Sonraki adımlar
+* [Azure Monitor ile günlükleri sorgula](../../azure-monitor/log-query/log-query-overview.md)
+* [Visual Studio'da Azure Uygulama Hizmetinde Sorun Giderme](../troubleshoot-dotnet-visual-studio.md)
+* [HDInsight'ta uygulama Günlüklerini analiz edin](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

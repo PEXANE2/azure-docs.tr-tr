@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
 ms.openlocfilehash: a1a3e62646fedd468a02eac7b1a48d0b2d00fd74
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77591991"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Öğretici: Azure Lab Services’teki bir laboratuvarın kullanımını izleme
@@ -32,33 +32,33 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Öğrenci VM'lerini yönetme 
 
 
-## <a name="view-registered-users"></a>Kayıtlı kullanıcıları görüntüle
+## <a name="view-registered-users"></a>Kayıtlı kullanıcıları görüntüleme
 
 1. [Azure Lab Services web sitesine](https://labs.azure.com) gidin. 
 2. **Oturum aç**’ı seçip kimlik bilgilerinizi girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler.
 3. **Laboratuvarlarım** sayfasında kullanımını izlemek istediğiniz laboratuvarı seçin. 
-4. Sol menüdeki veya **Kullanıcılar** kutucuğunda **Kullanıcılar** ' ı seçin. Laboratuvarınıza kayıtlı öğrencileri görürsünüz.  
+4. Sol menüdeki **Kullanıcılar'ı** veya **Kullanıcı** döşemesini seçin. Laboratuvarınıza kayıtlı öğrencileri görürsünüz.  
 
     ![Kayıtlı kullanıcılar](../media/tutorial-track-usage/registered-users.png)
 
-    Laboratuvar için Kullanıcı ekleme ve yönetme hakkında daha fazla bilgi için bkz. [Laboratuvar kullanıcıları ekleme ve yönetme](how-to-configure-student-usage.md).
+    Laboratuvar için kullanıcı ekleme ve yönetme hakkında daha fazla bilgi için [bkz.](how-to-configure-student-usage.md)
 
-## <a name="view-the-usage-of-vms"></a>VM 'lerin kullanımını görüntüleme
+## <a name="view-the-usage-of-vms"></a>VM kullanımını görüntüleme
 
 1. Soldaki menüden **Sanal makineler**'i seçin. 
-2. VM'lerin durumunu ve VM'lerin çalışma süresini gördüğünüzden emin olun. Bir laboratuvar sahibinin bir öğrenci sanal makinesinde harcadığı süre, son sütunda gösterilen kullanım zamanına göre sayılmaz. 
+2. VM'lerin durumunu ve VM'lerin çalışma süresini gördüğünüzden emin olun. Bir laboratuvar sahibinin öğrenci VM'si için harcadığı süre, son sütunda gösterilen kullanım süresiyle ilgili değildir. 
 
     ![VM kullanımı](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Öğrenci VM'lerini yönetme 
-Bu sayfada, **durum** sütunundaki veya araç çubuğundaki denetimleri kullanarak öğrenci VM 'lerini başlatabilir, durdurabilir veya sıfırlayabilirsiniz.
+Bu sayfada, **Durum** sütunundaki veya araç çubuğundaki denetimleri kullanarak öğrenci VM'lerini başlatabilir, durdurabilir veya sıfırlayabilirsiniz.
 
 ![VM eylemleri](../media/tutorial-track-usage/vm-controls.png)
 
-Laboratuvar için sanal makine havuzunu yönetme hakkında daha fazla bilgi için bkz. [sanal makine havuzunu ayarlama ve yönetme](how-to-set-virtual-machine-passwords.md).
+Laboratuvar için sanal makine havuzunu yönetme hakkında daha fazla bilgi için sanal [makine havuzunu ayarlama ve yönetme](how-to-set-virtual-machine-passwords.md)bilgisine bakın.
 
 > [!NOTE]
-> Bir eğitimci bir öğrenci sanal makinesini açtığında öğrencinin kotası etkilenmez. Bir kullanıcı için kota, kullanıcının zamanlanan sınıf süresi dışında kullanabileceği laboratuvar saatleri sayısını belirtir. Kotalar hakkında daha fazla bilgi için bkz. [kullanıcılar için kotaları ayarlama](how-to-configure-student-usage.md?#set-quotas-for-users).
+> Bir eğitimci öğrenci nin VM'sini açarsa, öğrencinin kontenjanı etkilenmez. Kullanıcı kotası, kullanıcının zamanlanan ders saati dışında kullanabileceği laboratuvar saatsayısını belirtir. Kotalar hakkında daha fazla bilgi için, [kullanıcılar için kota ları ayarla'ya](how-to-configure-student-usage.md?#set-quotas-for-users)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sınıf laboratuvarları hakkında daha fazla bilgi edinmek için bkz. [nasıl yapılır kılavuzlarındaki](how-to-manage-lab-accounts.md)makaleler.
+Sınıf laboratuvarları hakkında daha fazla bilgi edinmek için [Nasıl Yap'ın kılavuzları](how-to-manage-lab-accounts.md)altındaki makalelere bakın.

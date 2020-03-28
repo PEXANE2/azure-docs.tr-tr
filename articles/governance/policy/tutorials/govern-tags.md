@@ -1,58 +1,58 @@
 ---
-title: 'Öğretici: etiket yönetimini yönetme'
-description: Bu öğreticide, yeni ve mevcut kaynaklarda bir etiket idare modeli oluşturmak ve zorlamak için Azure Ilkesinin değiştirme efektini kullanırsınız.
+title: 'Öğretici: Etiket yönetimini yönetme'
+description: Bu öğreticide, yeni ve varolan kaynaklar üzerinde bir etiket yönetim modeli oluşturmak ve uygulamak için Azure İlkesini Değiştir efektini kullanırsınız.
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75965994"
 ---
-# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Öğretici: Azure Ilkesiyle etiket yönetimini yönetme
+# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Öğretici: Azure İlkesi ile etiket yönetimini yönetme
 
-[Etiketler](../../../azure-resource-manager/management/tag-resources.md) , Azure kaynaklarınızı bir taksonomi halinde düzenlemenin önemli bir parçasıdır. [Etiket yönetimi için en iyi yöntemleri](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)takip eden Etiketler, Azure ilkesi ile iş ilkelerinizi uygulamak veya [maliyet yönetimi ile maliyetleri izlemek](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)için temel olabilir.
-Etiketlerin nasıl veya neden kullanıldığı önemli değildir. bu etiketleri Azure kaynaklarınıza hızlıca ekleyebilir, değiştirebilir ve kaldırabilirsiniz.
+[Etiketler,](../../../azure-resource-manager/management/tag-resources.md) Azure kaynaklarınızı taksonomi olarak düzenlemenin önemli bir parçasıdır. Etiket [yönetimi için en iyi uygulamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)takip ederken, etiketler iş ilkelerinizi Azure İlkesi ile uygulamak veya Maliyet Yönetimi ile maliyetleri [izlemek](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)için temel oluşturabilir.
+Etiketleri nasıl veya neden kullanırsanız kullanın, Azure kaynaklarınızda bu etiketleri hızla eklemeniz, değiştirmeniz ve kaldırmanız önemlidir.
 
-Azure Ilkesinin [değişiklik](../concepts/effects.md#modify) etkisi, hangi kaynak İdaresi aşamasına bakılmaksızın etiketlerin tasarlanmasına yardımcı olmak için tasarlanmıştır. **Değiştirme** şu durumlarda yardımcı olur:
+Azure İlkesi'nin [Değiştir](../concepts/effects.md#modify) efekti, kaynak yönetiminin hangi aşamasında olursanız olun etiketlerin yönetimine yardımcı olmak üzere tasarlanmıştır. **Değiştir:**
 
-- Buluta yeni başladıysanız ve hiçbir etiket yönetimi yok
-- Etiket yönetimi olmayan binlerce kaynak zaten var
-- Zaten değiştirmeniz gereken bir taksonominin var
+- Bulutta yenisiniz ve etiket yönetimi niz yok
+- Zaten hiçbir etiket yönetimi ile binlerce kaynak var
+- Zaten değiştirilmesi gereken mevcut bir taksonomi var
 
-Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
+Bu öğreticide, aşağıdaki görevleri tamamlayasınız:
 
 > [!div class="checklist"]
-> - İş gereksinimlerinizi belirlemek
-> - Her gereksinimi bir ilke tanımına eşleyin
-> - Etiket ilkelerini bir girişim olarak gruplayın
+> - İş gereksinimlerinizi belirleyin
+> - Her gereksinimi bir ilke tanımıyla eşle
+> - Etiket politikalarını bir girişimde gruplandırma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="identify-requirements"></a>Gereksinimleri tanımla
+## <a name="identify-requirements"></a>Gereksinimleri belirleme
 
-İdare denetimlerinin iyi uygulamaları gibi, gereksinimler iş gereksiniminizden gelmelidir ve teknik denetimler oluşturmadan önce iyi anlaşılmalıdır. Bu senaryo öğreticisinde, şu öğeler iş gereksinimlerimiz:
+Yönetim kontrollerinin iyi bir şekilde uygulanması gibi, gereksinimler de iş gereksinimlerinize gelmeli ve teknik kontroller oluşturmadan önce iyi anlaşılmalıdır. Bu senaryo öğreticisi için, aşağıdaki öğeler iş gereksinimlerimizdir:
 
-- Tüm kaynaklarda gerekli iki etiket: _Costcenter_ ve _env_
-- Tüm kapsayıcılarda ve tek kaynaklarda _Costcenter_ bulunmalıdır
-  - Kaynaklar içindeki kapsayıcılardan devralınır, ancak bağımsız olarak geçersiz kılınabilen
-- _Env_ tüm kapsayıcılarda ve tek tek kaynaklarda bulunmalıdır
-  - Kaynaklar, kapsayıcıyı kapsayıcı adlandırma şemasına göre belirlenir ve geçersiz kılınmayabilir
-  - Bir kapsayıcıdaki tüm kaynaklar aynı ortamın bir parçası
+- Tüm kaynaklarda iki gerekli etiketleri: _CostCenter_ ve _Env_
+- _CostCenter_ tüm kapsayıcılar ve bireysel kaynaklar üzerinde olmalıdır
+  - Kaynaklar içinde oldukları kapsayıcıdan devralır, ancak tek tek geçersiz kılınabilir
+- _Env_ tüm kaplar ve bireysel kaynaklar üzerinde var olmalıdır
+  - Kaynaklar, kapsayıcı adlandırma şemasına göre ortamı belirler ve geçersiz kılınmayabilir
+  - Bir kapsayıcıdaki tüm kaynaklar aynı ortamın parçasıdır
 
 ## <a name="configure-the-costcenter-tag"></a>CostCenter etiketini yapılandırma
 
-Azure Ilkesi tarafından yönetilen bir Azure ortamına özgü şartlar altında, _Costcenter_ etiket gereksinimleri aşağıdakileri çağırır:
+Azure İlkesi tarafından yönetilen bir Azure ortamına özgü olarak, _CostCenter_ etiket gereksinimleri aşağıdakileri çağırır:
 
-- _Costcenter_ etiketini eksik kaynak gruplarını reddetme
-- Eksik olduğunda üst kaynak grubundan _Costcenter_ etiketini eklemek için kaynakları değiştirin
+- _CostCenter_ etiketini eksik kaynak gruplarını reddetme
+- Eksik olduğunda ana kaynak grubundan _CostCenter_ etiketini eklemek için kaynakları değiştirme
 
 ### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>CostCenter etiketini eksik kaynak gruplarını reddetme
 
-Kaynak grubunun _Costcenter_ 'ı kaynak grubunun adı tarafından belirlenemediğinden, kaynak grubunu oluşturmak için istekte tanımlanmış etikete sahip olmalıdır. [Reddetme](../concepts/effects.md#deny) etkisi olan aşağıdaki ilke kuralı, _costcenter_ etiketine sahip olmayan kaynak gruplarının oluşturulmasını veya güncelleştirilmesini engeller:
+Kaynak grubu için _CostCenter_ kaynak grubunun adıyla belirlenemediğinden, kaynak grubu oluşturmak için istekte etiketin tanımlanması gerekir. [Reddet](../concepts/effects.md#deny) efekti ile aşağıdaki ilke _kuralı, CostCenter_ etiketine sahip olmayan kaynak gruplarının oluşturulmasını veya güncelleştirilmesini engeller:
 
 ```json
 "if": {
@@ -72,11 +72,11 @@ Kaynak grubunun _Costcenter_ 'ı kaynak grubunun adı tarafından belirlenemedi�
 ```
 
 > [!NOTE]
-> Bu ilke kuralı bir kaynak grubunu hedeflediğinden, ilke tanımındaki _mod_ ' Indexed ' yerine ' All ' olmalıdır.
+> Bu ilke kuralı bir kaynak grubunu hedefalişe işaret ettiği için, ilke tanımındaki _mod_ 'Dizine Eklenmiş' yerine 'Tümü' olmalıdır.
 
-### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Eksik olduğunda CostCenter etiketini devralacak kaynakları değiştirme
+### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Eksik olduğunda CostCenter etiketini devralmak için kaynakları değiştirme
 
-İkinci _Costcenter_ gereksinimi, eksik olduğunda üst kaynak grubundaki etiketi devralması için tüm kaynaklara yöneliktir. Etiket zaten kaynak üzerinde tanımlanmışsa, üst kaynak grubundan farklı olsa bile, tek başına bırakılması gerekir. Aşağıdaki ilke kuralı [değiştirme](../concepts/effects.md#modify)kullanır:
+İkinci _CostCenter_ gereksinimi, herhangi bir kaynağın etiketi eksik olduğunda ana kaynak grubundan devralmasıdır. Etiket kaynakta zaten tanımlanmışsa, ana kaynak grubundan farklı olsa bile, tek başına bırakılmalıdır. Aşağıdaki ilke kuralı [değiştir'i](../concepts/effects.md#modify)kullanır:
 
 ```json
 "policyRule": {
@@ -100,21 +100,21 @@ Kaynak grubunun _Costcenter_ 'ı kaynak grubunun adı tarafından belirlenemedi�
 }
 ```
 
-Bu ilke kuralı, mevcut [kaynakları düzeltirken etiket](../how-to/remediate-resources.md) değerini değiştirmek Istediğimiz Için **addorreplace** yerine **Add** işlemini kullanır. Ayrıca, üst kaynak grubundan etiket değerini almak için `[resourcegroup()]` şablonu işlevini kullanır.
+Bu ilke kuralı, varolan kaynakları [düzeltirken](../how-to/remediate-resources.md) varsa etiket değerini değiştirmek istemediğimiz için **addOrReplace** yerine **ekle** işlemini kullanır. Ayrıca, ana `[resourcegroup()]` kaynak grubundan etiket değerini almak için şablon işlevini kullanır.
 
 > [!NOTE]
-> Bu ilke kuralı, etiketleri destekleyen kaynakları hedeflediğinden, ilke tanımındaki _mod_ ' dizinli ' olmalıdır. Bu yapılandırma ayrıca bu ilkenin kaynak gruplarını atmasını de sağlar.
+> Bu ilke kuralı etiketleri destekleyen kaynakları hedefleolduğundan, ilke tanımındaki _mod_ 'Dizinlenmiş' olmalıdır. Bu yapılandırma, bu ilkenin kaynak gruplarını atlamasını da sağlar.
 
 ## <a name="configure-the-env-tag"></a>Env etiketini yapılandırma
 
-Azure Ilkesi tarafından yönetilen bir Azure ortamına özgü şartlar altında, _env_ etiketi gereksinimleri aşağıdakileri çağırır:
+Azure İlkesi tarafından yönetilen bir Azure ortamına özgü olarak, _Env_ etiket gereksinimleri aşağıdakileri çağırır:
 
-- Kaynak grubunun adlandırma şemasına bağlı olarak kaynak grubundaki _env_ etiketini değiştirme
-- Kaynak grubundaki tüm kaynaklardaki _env_ etiketini üst kaynak grubuyla aynı olacak şekilde değiştirin
+- Kaynak grubunun adlandırma düzenini temel alan kaynak grubundaki _Env_ etiketini değiştirme
+- Kaynak grubundaki tüm kaynaklardaki _Env_ etiketini ana kaynak grubuyla aynı şekilde değiştirme
 
-### <a name="modify-resource-groups-env-tag-based-on-name"></a>Kaynak gruplarını ad temelinde env etiketini değiştirme
+### <a name="modify-resource-groups-env-tag-based-on-name"></a>Kaynak gruplarını ada göre Env etiketini değiştirme
 
-Azure ortamınızda bulunan her ortam için bir [değiştirme](../concepts/effects.md#modify) ilkesi gerekir. Her biri için değiştirme ilkesi, bu ilke tanımına benzer bir şekilde görünür:
+Azure ortamınızda bulunan her ortam için [Değişiklik](../concepts/effects.md#modify) ilkesi gereklidir. Her biri için Değiştir ilkesi şu ilke tanımına benzer:
 
 ```json
 "policyRule": {
@@ -146,13 +146,13 @@ Azure ortamınızda bulunan her ortam için bir [değiştirme](../concepts/effec
 ```
 
 > [!NOTE]
-> Bu ilke kuralı bir kaynak grubunu hedeflediğinden, ilke tanımındaki _mod_ ' Indexed ' yerine ' All ' olmalıdır.
+> Bu ilke kuralı bir kaynak grubunu hedefalişe işaret ettiği için, ilke tanımındaki _mod_ 'Dizine Eklenmiş' yerine 'Tümü' olmalıdır.
 
-Bu ilke yalnızca `prd-`üretim kaynakları için kullanılan örnek adlandırma düzenine sahip kaynak gruplarıyla eşleşir. Daha karmaşık adlandırma düzenleri, bu örnekte **olduğu gibi** birkaç **eşleşme** koşullarıyla elde edilebilir.
+Bu ilke yalnızca kaynak gruplarını üretim kaynakları `prd-`için kullanılan örnek adlandırma şemasıyla eşleşir. Daha karmaşık adlandırma şeması, bu örnekteki **gibi** tek yerine birkaç **maç** koşuluyla elde edilebilir.
 
-### <a name="modify-resources-to-inherit-the-env-tag"></a>Env etiketini devralacak kaynakları değiştirme
+### <a name="modify-resources-to-inherit-the-env-tag"></a>Env etiketini devralmak için kaynakları değiştirme
 
-İş gereksinimi, tüm kaynakların üst kaynak grubunun yaptığı _env_ etiketine sahip olacak şekilde çağrı yapar. Bu etiket geçersiz kılınamıyor, bu yüzden [değiştirme](../concepts/effects.md#modify) efektiyle **addorreplace** işlemini kullanacağız. Örnek değiştirme ilkesi aşağıdaki kurala benzer şekilde görünür:
+İş gereksinimi, tüm kaynakların ana kaynak grubunun yaptığı _Env_ etiketine sahip olmasını gerektirir. Bu etiket geçersiz kılınamaz, bu nedenle [değiştir](../concepts/effects.md#modify) efektiyle **addOrReplace** işlemini kullanırız. Örnek Değiştir ilkesi aşağıdaki kurala benzer:
 
 ```json
 "policyRule": {
@@ -184,34 +184,34 @@ Bu ilke yalnızca `prd-`üretim kaynakları için kullanılan örnek adlandırma
 ```
 
 > [!NOTE]
-> Bu ilke kuralı, etiketleri destekleyen kaynakları hedeflediğinden, ilke tanımındaki _mod_ ' dizinli ' olmalıdır. Bu yapılandırma ayrıca bu ilkenin kaynak gruplarını atmasını de sağlar.
+> Bu ilke kuralı etiketleri destekleyen kaynakları hedefleolduğundan, ilke tanımındaki _mod_ 'Dizinlenmiş' olmalıdır. Bu yapılandırma, bu ilkenin kaynak gruplarını atlamasını da sağlar.
 
-Bu ilke kuralı, _env_ etiketi için üst kaynak grupları değerine sahip olmayan veya _env_ etiketi eksik olan herhangi bir kaynağı arar. Etiket, kaynak üzerinde zaten var olsa da farklı bir değerle, eşleşen kaynakların _env_ etiketi, üst kaynak grupları değeri olarak ayarlanmıştır.
+Bu ilke kuralı, _Env_ etiketi için ana kaynak grupları değeri olmayan veya _Env_ etiketini eksik olan tüm kaynakları arar. Eşleşen kaynakların _Env_ etiketi, kaynaküzerinde zaten var olsa da farklı bir değere sahip olsa bile, ana kaynak grupları değerine ayarlanmıştır.
 
-## <a name="assign-the-initiative-and-remediate-resources"></a>Girişimi ata ve kaynakları düzelt
+## <a name="assign-the-initiative-and-remediate-resources"></a>Girişimi atama ve kaynakları düzeltme
 
-Yukarıdaki etiket ilkeleri oluşturulduktan sonra, etiket yönetimi için tek bir girişimde birleştirin ve bunları bir yönetim grubuna veya aboneliğine atayın. Girişim ve dahil olan ilkeler, var olan kaynakların uyumluluğunu değerlendirir ve ilke kuralındaki **IF** özelliği ile eşleşen yeni veya güncelleştirilmiş kaynaklar için istekleri değiştirir. Ancak, ilke, mevcut uyumlu olmayan kaynakları tanımlanan etiket değişiklikleriyle otomatik olarak güncelleştirmez.
+Yukarıdaki etiket ilkeleri oluşturulduktan sonra, etiket yönetimi için bunları tek bir girişimde birleştirin ve bunları bir yönetim grubuna veya aboneye atayın. Girişim ve dahil ilkeler daha sonra varolan kaynakların uyumluluğunu değerlendirir ve ilke kuralındaki **if** özelliğiyle eşleşen yeni veya güncelleştirilmiş kaynaklara yönelik istekleri değiştirir. Ancak, ilke, tanımlanmış etiket değişiklikleriyle varolan uyumlu olmayan kaynakları otomatik olarak güncelleştirmez.
 
-[Deployifnotexists](../concepts/effects.md#deployifnotexists) ilkeleri gibi, **değiştirme** ilkesi, var olan uyumlu olmayan kaynakları değiştirmek için düzeltme görevlerini kullanır. Uyumlu olmayan **değişiklik** kaynaklarınızı belirlemek için [kaynakları](../how-to/remediate-resources.md) düzeltme yönergelerini izleyin ve etiketleri tanımlanan taksonominiz için düzeltin.
+[DeployIfNotExists](../concepts/effects.md#deployifnotexists) ilkeleri gibi, **Değiştir** ilkesi varolan uyumlu olmayan kaynakları değiştirmek için düzeltme görevlerini kullanır. Uyumlu olmayan [Kaynaklarınızı](../how-to/remediate-resources.md) **değiştirmek** ve etiketleri tanımlanmış taksonominize göre düzeltmek için kaynakları nasıl düzeltin yönergeleri izleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde, bu öğreticiden kaynaklarla çalışmak, atamaları veya tanımları yukarıda oluşturulan silmek için aşağıdaki adımları kullanın:
+Bu öğreticideki kaynaklarla çalışmayı bitirdiyseniz, yukarıda oluşturulan atamaları veya tanımları silmek için aşağıdaki adımları kullanın:
 
-1. Seçin **tanımları** (veya **atamaları** atamayı silmeye çalışıyorsanız) altında **yazma** Azure İlkesi sayfasının sol tarafında.
+1. Azure İlkesi sayfasının sol tarafında **Yazma** altında **Tanımlar** 'ı (veya bir atamayı silmeye çalışıyorsanız **Atamalar)** seçin.
 
 1. Kaldırmak istediğiniz yeni girişim veya tanımını (ya da atamayı) arayın.
 
 1. Satıra sağ tıklayın ya da tanımın (veya atamanın) sonundaki üç noktayı seçip **Tanımı sil** (veya **Atamayı sil**) öğesini seçin.
 
-## <a name="review"></a>Gözden Geçir
+## <a name="review"></a>Gözden geçirme
 
-Bu öğreticide, aşağıdaki görevler hakkında bilgi edindiniz:
+Bu öğreticide, aşağıdaki görevleri öğrendiniz:
 
 > [!div class="checklist"]
-> - İş gereksinimlerinizi tanımladı
-> - Her gereksinimi bir ilke tanımına eşlendi
-> - Etiket ilkeleri bir girişim olarak gruplandırılır
+> - İş gereksinimlerinizi belirleme
+> - Her gereksinimi bir ilke tanımına göre eşledi
+> - Etiket politikalarını bir girişim olarak gruplandırın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Litmos ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Litmos arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Litmos ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Litmos arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,186 +17,186 @@ ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a935ef6d14b4de67964c555e0ffa610bbe992459
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70171535"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmos"></a>Öğretici: Litmos ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmos"></a>Öğretici: Litmos ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Litmos 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Litmos 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Litmos'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Litmos'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Litmos 'e erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Litmos otomatik olarak oturum açmalarına olanak tanıyın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Litmos erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Litmos'ta otomatik olarak oturum açmalarını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Litmos çoklu oturum açma (SSO) etkin abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Litmos tek oturum açma (SSO) aboneliği ni etkinleştirdi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Litmos, **IDP** tarafından başlatılan SSO 'yu destekler
-* Litmos **, tam zamanında** Kullanıcı sağlamayı destekler
+* Litmos **IDP'nin** başlattığı SSO'ya destek verdi
+* Litmos **Just In Time** kullanıcı sağlama destekler
 
 ## <a name="adding-litmos-from-the-gallery"></a>Galeriden Litmos ekleme
 
-Litmos tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Litmos yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Litmos'un Azure AD'ye entegrasyonunu yapılandırmak için, galerideki Litmos'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Litmos** yazın.
-1. Sonuçlar panelinden **Litmos** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Litmos** yazın.
+1. Sonuçlar panelinden **Litmos'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-litmos"></a>Litmos için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-litmos"></a>Litmos için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Litmos ile yapılandırın ve test edin. SSO 'nun çalışması için, Litmos içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu Litmos ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Litmos'taki bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu Litmos ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Litmos ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[LITMOS SSO 'Yu yapılandırın](#configure-litmos-sso)** .
-    1. Kullanıcının Azure AD gösterimine bağlı olan Litmos 'de B. Simon 'ya karşılık gelen bir **[Litmos test kullanıcısı oluşturun](#create-litmos-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Litmos SSO'yu yapılandırın](#configure-litmos-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[Litmos test kullanıcısını oluşturun](#create-litmos-test-user)** - Kullanıcının Azure AD gösterimine bağlı Litmos'ta B.Simon'ın bir örneğine sahip olmak için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Litmos** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **Litmos** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
+1. **SAML sayfasıyla tek oturum açma'da** aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.litmos.com/account/Login`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.litmos.com/account/Login`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.litmos.com/integration/samllogin`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.litmos.com/integration/samllogin`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin veya bu değerleri almak için [Litmos istemci destek ekibine](https://www.litmos.com/contact-us) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, daha sonra öğreticide açıklanan gerçek Tanımlayıcı ve Yanıt URL'si ile güncelleştirin veya bu değerleri almak için [Litmos İstemci destek ekibine](https://www.litmos.com/contact-us) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Litmos ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Litmos'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Litmos 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Litmos'a erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Litmos**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Litmos'u**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-litmos-sso"></a>Litmos SSO 'yu yapılandırma
+## <a name="configure-litmos-sso"></a>Litmos SSO'nun yapılandırılsın
 
-1. Farklı bir tarayıcı penceresinde, Litmos şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir tarayıcı penceresinde, Litmos şirket sitenize yönetici olarak oturum açın.
 
-2. Sol taraftaki Gezinti çubuğunda **hesaplar**' a tıklayın.
+2. Sol taraftaki gezinti çubuğunda **Hesaplar'ı**tıklatın.
 
-    ![Uygulama tarafındaki hesaplar bölümü][22]
+    ![Uygulama Tarafında Hesaplar Bölümü][22]
 
-3. **Tümleştirmeler** sekmesine tıklayın.
+3. **Tümleştirmeler** sekmesini tıklatın.
 
-    ![Tümleştirme sekmesi][23]
+    ![Tümleştirme Sekmesi][23]
 
-4. **Tümleştirmeler** sekmesinde **3. taraf tümleştirmelere**gidin ve **SAML 2,0** sekmesi ' ne tıklayın.
+4. **Tümleştirmeler** sekmesinde, **SAML 2.0** **3.**
 
-    ![SAML 2,0 bölümü][24]
+    ![SAML 2.0 Bölümü][24]
 
-5. **Litmos IÇIN SAML uç noktası** altındaki değeri kopyalayın: Azure Portal ' deki **Litmos etki alanı ve URL 'Ler** bölümünde bulunan **yanıt URL 'si** metin kutusuna yapıştırın.
+5. **Litmos için SAML bitiş noktası** altındaki değeri kopyalayın: ve Azure portalındaki **Litmos Etki Alanı ve URL'ler** bölümündeki **YanıtLA URL** textbox'ına yapıştırın.
 
-    ![SAML uç noktası][26]
+    ![SAML bitiş noktası][26]
 
 6. **Litmos** uygulamanızda aşağıdaki adımları gerçekleştirin:
 
-    ![Litmos uygulaması][25]
+    ![Litmos Uygulaması][25]
 
-    a. **SAML etkinleştir**' e tıklayın.
+    a. **SAML'yi etkinleştir'i**tıklatın.
 
-    b. Base-64 kodlu sertifikanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve **SAML X. 509.440 sertifika** metin kutusuna yapıştırın.
+    b. Taban-64 kodlanmış sertifikanızı not defterinde açın, içeriğini panonuza kopyalayın ve ardından **SAML X.509 Sertifika** metin kutusuna yapıştırın.
 
-    c. Tıklayın **değişiklikleri kaydetmek**.
+    c. **Değişiklikleri Kaydet**’e tıklayın.
 
-### <a name="create-litmos-test-user"></a>Litmos test kullanıcısı oluştur
+### <a name="create-litmos-test-user"></a>Litmos test kullanıcısı oluşturma
 
-Bu bölümün amacı, Litmos ' de Britta Simon adlı bir Kullanıcı oluşturmaktır. Litmos uygulaması tam zamanında sağlamayı destekler. Bu, erişim paneli kullanılarak uygulamaya erişim denemesi sırasında gerektiğinde bir kullanıcı hesabının otomatik olarak oluşturulduğu anlamına gelir.
+Bu bölümün amacı Litmos Britta Simon adlı bir kullanıcı oluşturmaktır. Litmos uygulaması Just-in-Time sağlama destekler. Bu, Access Paneli'ni kullanarak uygulamaya erişme girişimi sırasında gerekirse bir kullanıcı hesabının otomatik olarak oluşturulduğu anlamına gelir.
 
-**Litmos ' de Britta Simon adlı bir kullanıcı oluşturmak için aşağıdaki adımları uygulayın:**
+**Litmos'ta Britta Simon adında bir kullanıcı oluşturmak için aşağıdaki adımları gerçekleştirin:**
 
-1. Farklı bir tarayıcı penceresinde, Litmos şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir tarayıcı penceresinde, Litmos şirket sitenize yönetici olarak oturum açın.
 
-2. Sol taraftaki Gezinti çubuğunda **hesaplar**' a tıklayın.
+2. Sol taraftaki gezinti çubuğunda **Hesaplar'ı**tıklatın.
 
-    ![Uygulama tarafındaki hesaplar bölümü][22]
+    ![Uygulama Tarafında Ki Hesaplar Bölümü][22]
 
-3. **Tümleştirmeler** sekmesine tıklayın.
+3. **Tümleştirmeler** sekmesini tıklatın.
 
-    ![Tümleştirmeler sekmesi][23]
+    ![Tümleştirmeler Sekmesi][23]
 
-4. **Tümleştirmeler** sekmesinde **3. taraf tümleştirmelere**gidin ve **SAML 2,0** sekmesi ' ne tıklayın.
+4. **Tümleştirmeler** sekmesinde, **SAML 2.0** **3.**
 
     ![SAML 2.0][24]
 
-5. **AutoGenerate kullanıcıları** seçin
+5. **Otomatik Oluşturma Kullanıcıları** Seçin
   
-    ![Kullanıcıları otomatik üret][27]
+    ![Otomatik Kullanıcı Oluşturma][27]
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Litmos kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Litmos için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Litmos döşemesini tıklattığınızda, SSO'yu kurduğunuz Litmos'ta otomatik olarak oturum açmanız gerekir. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Litmos deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Litmos'u deneyin](https://aad.portal.azure.com/)
 
 [21]: ./media/litmos-tutorial/tutorial_litmos_60.png
 [22]: ./media/litmos-tutorial/tutorial_litmos_61.png

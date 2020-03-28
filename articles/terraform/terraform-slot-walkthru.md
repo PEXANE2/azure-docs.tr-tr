@@ -1,23 +1,23 @@
 ---
-title: Öğretici-Terrayform kullanarak Azure dağıtım yuvaları ile altyapı sağlama
-description: Bu öğreticide, Azure sağlayıcı dağıtım yuvaları ile Terrayform kullanacaksınız
-keywords: Azure DevOps terrayform dağıtım Yuvaları
+title: Öğretici - Terraform kullanarak Azure dağıtım yuvaları ile sağlama altyapısı
+description: Bu eğitimde, Azure sağlayıcı dağıtım yuvaları ile Terraform'u kullanıyorsunuz
+keywords: azure devops terraform dağıtım yuvaları
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: ddd4d84ee8bf4ab1e90dd68da185cdd9075fe1e0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78943496"
 ---
-# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Öğretici: Terrayform kullanarak Azure dağıtım yuvaları ile altyapı sağlama
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Öğretici: Terraform kullanarak Azure dağıtım yuvaları ile sağlama altyapısı
 
 [Azure dağıtım yuvalarını](/azure/app-service/deploy-staging-slots) kullanarak uygulamanızın farklı sürümleri arasında geçiş yapabilirsiniz. Bu özellik, bozuk dağıtımlarının etkisini en aza indirmenize yardımcı olur. 
 
-Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım adımları ile dağıtım yuvası kullanımı gösterilmektedir. Uygulamaların biri üretim yuvasında barındırılmaktadır. İkinci uygulama ise bir hazırlama yuvasında barındırılmaktadır. ("Üretim" ve "hazırlama" adları rastgele. Senaryolarınız için uygun olan her şey olabilir.) Dağıtım yuvalarınızı yapılandırdıktan sonra, gerektiğinde iki yuva arasında geçiş yapmak için Terrayform kullanırsınız.
+Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım adımları ile dağıtım yuvası kullanımı gösterilmektedir. Uygulamaların biri üretim yuvasında barındırılmaktadır. İkinci uygulama ise bir hazırlama yuvasında barındırılmaktadır. ("Üretim" ve "evreleme" adları rasgeledir. Onlar ne olursa olsun senaryoiçin uygun olabilir.) Dağıtım yuvalarınızı yapılandırdıktan sonra, gerektiğinde iki yuva arasında değiş tokuş yapmak için Terraform'u kullanırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
@@ -25,7 +25,7 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Terraform planını oluşturma ve uygulama
 
-1. [Azure portala](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com)göz atın.
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview)'i açın. Önceden bir ortam seçmediyseniz **Bash** ortamını seçin.
 
@@ -107,7 +107,7 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
+1. Dosyayı kaydedin (**&lt;Ctrl>S)** ve düzenleyiciden çıkın (**&lt;Ctrl>Q**).
 
 1. Dosyayı oluşturduğunuza göre şimdi içeriğini doğrulayabilirsiniz.
 
@@ -199,9 +199,9 @@ Test projesi deposundan çatal oluşturduktan sonra aşağıdaki adımları izle
 
 1. **Dağıtım seçeneği** sekmesinde **Tamam**'ı seçin.
 
-Bu noktada, üretim yuvasını dağıttık. Hazırlama yuvasını dağıtmak için aşağıdaki değişikliklerle önceki adımları uygulayın:
+Bu noktada, üretim yuvasını dağıttınız. Evreleme yuvasını dağıtmak için önceki adımları aşağıdaki değişikliklerle yapın:
 
-- 3\. adımda **slotAppServiceSlotOne** kaynağını seçin.
+- 3. adımda **slotAppServiceSlotOne** kaynağını seçin.
 
 - 13. adımda master dalı yerine working dalını seçin.
 
@@ -221,15 +221,15 @@ Bu noktada, üretim yuvasını dağıttık. Hazırlama yuvasını dağıtmak iç
 
     ![Uygulamayı oluşturmak için genel bakış sayfasındaki URL'yi seçin](./media/terraform-slot-walkthru/resource-url.png)
 
-1. Seçilen uygulamaya bağlı olarak, aşağıdaki sonuçları görürsünüz:
-    - **Slotappservice** Web uygulaması- **yuva tanıtım uygulaması 1**' ın sayfa başlığına sahip mavi sayfa. 
-    - **Slotappserviceslotone** Web uygulaması-yeşil sayfa, **yuva tanıtım uygulaması 2**sayfa başlığı.
+1. Seçili uygulamaya bağlı olarak, aşağıdaki sonuçları görürsünüz:
+    - **slotAppService** web uygulaması - **Slot Demo App 1**sayfa başlığı ile mavi sayfa . 
+    - **slotAppServiceSlotOne** web uygulaması - **Slot Demo App 2**bir sayfa başlığı ile yeşil sayfa .
 
     ![Uygulamaların önizlemesini yaparak doğru dağıtıldığından emin olun](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>İki dağıtım yuvasını değiştirme
 
-İki dağıtım yuvası değiştirmeyi sınamak için aşağıdaki adımları uygulayın:
+İki dağıtım yuvasını değiştirmeyi test etmek için aşağıdaki adımları yapın:
  
 1. **slotAppService** (mavi sayfalı uygulama) uygulamasını çalıştıran tarayıcı sekmesine geçin. 
 
@@ -268,7 +268,7 @@ Bu noktada, üretim yuvasını dağıttık. Hazırlama yuvasını dağıtmak iç
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
+1. Dosyayı kaydedin (**&lt;Ctrl>S)** ve düzenleyiciden çıkın (**&lt;Ctrl>Q**).
 
 1. Terraform'u başlatın.
 
@@ -288,7 +288,7 @@ Bu noktada, üretim yuvasını dağıttık. Hazırlama yuvasını dağıtmak iç
     terraform apply
     ```
 
-1. Terrampaform yuvaları bulduktan sonra tarayıcıya geri dönün. Sayfayı yenileyin. 
+1. Terraform yuvaları değiştirdikten sonra tarayıcıya dönün. Sayfayı yenileyin. 
 
 **slotAppServiceSlotOne** hazırlama yuvasındaki web uygulaması, üretim yuvasıyla değiştirilmiştir ve yeşil olarak görünür. 
 
@@ -305,4 +305,4 @@ Uygulama değiştirildikten sonra özgün yapılandırmayı görürsünüz.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](/azure/terraform)
+> [Azure'da Terraform'u kullanma hakkında daha fazla bilgi edinin](/azure/terraform)

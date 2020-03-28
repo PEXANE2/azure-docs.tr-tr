@@ -1,57 +1,57 @@
 ---
 title: Azure İşlevleri’ni ayarlama
-description: Bu öğreticide bir Azure işlev uygulaması oluşturma ve Azure özel sağlayıcılarıyla çalışacak şekilde ayarlama işlemi nasıl yapılır?
+description: Bu öğretici, bir Azure işlev uygulamasının nasıl oluşturulup Azure Özel Sağlayıcılarıyla çalışacak şekilde ayarlanın
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75649991"
 ---
-# <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure özel sağlayıcıları için Azure Işlevleri ayarlama
+# <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Özel Sağlayıcıları için Azure İşlevlerini Ayarlama
 
-Özel sağlayıcı, Azure ile uç nokta arasında bir sözleşmedir. Özel sağlayıcılar ile Azure 'da iş akışlarını değiştirebilirsiniz. Bu öğreticide, bir Azure işlevi uygulamasının özel bir sağlayıcı uç noktası olarak çalışacak şekilde nasıl ayarlanacağı gösterilmektedir.
+Özel sağlayıcı, Azure ile bitiş noktası arasındaki bir sözleşmedir. Özel sağlayıcılarla Azure'da iş akışlarını değiştirebilirsiniz. Bu öğretici, özel bir sağlayıcı bitiş noktası olarak çalışacak bir Azure işlev uygulamasının nasıl ayarlanabildiğini gösterir.
 
-## <a name="create-the-azure-function-app"></a>Azure işlevi uygulaması oluşturma
+## <a name="create-the-azure-function-app"></a>Azure işlev uygulamasını oluşturma
 
 > [!NOTE]
-> Bu öğreticide, bir Azure işlev uygulaması kullanan bir basit hizmet uç noktası oluşturacaksınız. Ancak, özel bir sağlayıcı herkese açık olarak erişilebilen herhangi bir uç noktası kullanabilir. Alternatifler Azure Logic Apps, Azure API Management ve Azure App Service Web Apps özelliğini içerir.
+> Bu öğreticide, bir Azure işlev uygulaması kullanan basit bir hizmet bitiş noktası oluşturursunuz. Ancak, özel bir sağlayıcı genel olarak erişilebilen herhangi bir bitiş noktasını kullanabilir. Alternatifler arasında Azure Mantık Uygulamaları, Azure API Yönetimi ve Azure Uygulama Hizmeti'nin Web Uygulamaları özelliği yer almaktadır.
 
-Bu öğreticiyi başlatmak için öncelikle [Azure Portal Ilk Azure işlev uygulamanızı oluşturma](../../azure-functions/functions-create-first-azure-function.md)öğreticisini izlemelisiniz. Bu öğreticide, Azure portal değiştirilebilen bir .NET Core Web kancası işlevi oluşturulur. Bu, aynı zamanda geçerli öğreticinin temelidir.
+Bu öğreticiyi başlatmak için öncelikle Azure [portalındaki ilk Azure işlev uygulamanızı oluşturun öğreticisini](../../azure-functions/functions-create-first-azure-function.md)takip etmelisiniz. Bu öğretici, Azure portalında değiştirilebilen bir .NET çekirdek webhook işlevi oluşturur. Aynı zamanda mevcut öğretici için temelidir.
 
-## <a name="install-azure-table-storage-bindings"></a>Azure Tablo depolama bağlamalarını yükler
+## <a name="install-azure-table-storage-bindings"></a>Azure Tablo depolama bağlamalarını yükleme
 
 Azure Tablo depolama bağlamalarını yüklemek için:
 
-1. HttpTrigger için **tümleştir** sekmesine gidin.
-1. **+ Yeni giriş**' i seçin.
-1. **Azure Tablo depolama**' yı seçin.
-1. Zaten yüklenmemişse Microsoft. Azure. WebJobs. Extensions. Storage uzantısını yükleme.
-1. **Tablo parametresi adı** kutusuna **TableStorage**girin.
-1. **Tablo adı** kutusuna **mycustomresources**yazın.
-1. Güncelleştirilmiş giriş parametresini kaydetmek için **Kaydet** ' i seçin.
+1. HttpTrigger için **Tümleştir** sekmesine gidin.
+1. Seçin **+ Yeni Giriş**.
+1. **Azure Tablo Depolama'yı**seçin.
+1. Microsoft.Azure.WebJobs.Extensions.Storage uzantısını zaten yüklü değilse yükleyin.
+1. Tablo **parametre adı** kutusuna **tabloDepolama'yı**girin.
+1. Tablo **adı** kutusuna, **myCustomResources'ı**girin.
+1. Güncelleştirilmiş giriş parametresini kaydetmek için **Kaydet'i** seçin.
 
-![Özel sağlayıcıya genel bakış tablo bağlamalarını gösterme](./media/create-custom-provider/azure-functions-table-bindings.png)
+![Tablo bağlamalarını gösteren özel sağlayıcıya genel bakış](./media/create-custom-provider/azure-functions-table-bindings.png)
 
-## <a name="update-restful-http-methods"></a>Yeniden takip eden HTTP yöntemlerini güncelleştirme
+## <a name="update-restful-http-methods"></a>RESTful HTTP yöntemlerini güncelleştirin
 
-Azure işlevini, özel sağlayıcı yeniden deneme isteği yöntemlerini içerecek şekilde ayarlamak için:
+Azure işlevini özel sağlayıcı RESTful istek yöntemlerini içerecek şekilde ayarlamak için:
 
-1. HttpTrigger için **tümleştir** sekmesine gidin.
-1. **SEÇILI http metotları**altında **Al**, **Postala**, **Sil**ve **koy**' u seçin.
+1. HttpTrigger için **Tümleştir** sekmesine gidin.
+1. **Seçili HTTP yöntemleri**altında GET **,** **POST**, **DELETE**ve **PUT**' u seçin.
 
 ![HTTP yöntemlerini gösteren özel sağlayıcıya genel bakış](./media/create-custom-provider/azure-functions-http-methods.png)
 
-## <a name="add-azure-resource-manager-nuget-packages"></a>Azure Resource Manager NuGet paketleri Ekle
+## <a name="add-azure-resource-manager-nuget-packages"></a>Azure Kaynak Yöneticisi NuGet paketleri ekleme
 
 > [!NOTE]
-> C# Proje dosyanız proje dizininde yoksa, el ile ekleyebilirsiniz. Ya da Microsoft. Azure. WebJobs. Extensions. Storage uzantısı işlev uygulamasında yüklendikten sonra görüntülenir.
+> C# proje dosyanız proje dizininde eksikse, el ile ekleyebilirsiniz. Veya işlev uygulamasında Microsoft.Azure.WebJobs.Extensions.Storage uzantısı yüklendikten sonra görünür.
 
-Sonra, C# proje dosyasını faydalı NuGet kitaplıklarını içerecek şekilde güncelleştirin. Bu kitaplıklar, özel sağlayıcılardan gelen istekleri ayrıştırmayı kolaylaştırır. [Portaldan uzantı eklemek](../../azure-functions/install-update-binding-extensions-manual.md) ve C# proje dosyasını aşağıdaki paket başvurularını içerecek şekilde güncelleştirmek için adımları izleyin:
+Ardından, C# proje dosyasını yararlı NuGet kitaplıklarını içerecek şekilde güncelleştirin. Bu kitaplıklar, özel sağlayıcılardan gelen istekleri ayrışdırmayı kolaylaştırır. [Portaldan uzantı eklemek](../../azure-functions/install-update-binding-extensions-manual.md) ve C# proje dosyasını aşağıdaki paket başvurularını içerecek şekilde güncelleştirmek için adımları izleyin:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -59,7 +59,7 @@ Sonra, C# proje dosyasını faydalı NuGet kitaplıklarını içerecek şekilde 
 <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.1.*" />
 ```
 
-Aşağıdaki XML öğesi örnek C# bir proje dosyasıdır:
+Aşağıdaki XML öğesi örnek bir C# proje dosyasıdır:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -77,7 +77,7 @@ Aşağıdaki XML öğesi örnek C# bir proje dosyasıdır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Azure işlevi uygulamasını Azure özel sağlayıcı uç noktası olarak çalışacak şekilde ayarlarsınız.
+Bu eğitimde, Azure özel sağlayıcısı bitiş noktası olarak çalışacak bir Azure işlev uygulaması ayarlarsınız.
 
-Yeniden bir özel sağlayıcı uç noktasının nasıl yazıldığını öğrenmek için bkz. [öğretici: yeniden bir özel sağlayıcı uç noktası yazma](./tutorial-custom-providers-function-authoring.md).
+ReSTful özel sağlayıcı bitiş noktası nasıl yazılanın öğrenebilirsiniz, [bkz.](./tutorial-custom-providers-function-authoring.md)
 

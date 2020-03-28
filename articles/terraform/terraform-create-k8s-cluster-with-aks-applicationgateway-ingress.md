@@ -1,48 +1,48 @@
 ---
-title: Öğretici-Azure Kubernetes hizmetinde bir Application Gateway ingcontroller oluşturma
-description: Bu öğreticide, giriş denetleyicisi olarak Application Gateway Azure Kubernetes hizmeti ile bir Kubernetes kümesi oluşturacaksınız
-keywords: Azure DevOps terkform Application Gateway ınress Kubernetes
+title: Öğretici - Azure Kubernetes Hizmetinde Uygulama Ağ Geçidi denetleyicisi oluşturma
+description: Bu eğitimde, Giriş denetleyicisi olarak Uygulama Ağ Geçidi ile Azure Kubernetes Hizmeti ile bir Kubernetes Kümesi oluşturursunuz
+keywords: masmavi devops terraform uygulama ağ geçidi giriş aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 6b48d0acb654f0b0643c0754e53f6bc6ea76bb45
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945313"
 ---
-# <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes hizmetinde bir Application Gateway ingcontroller oluşturma
+# <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes Hizmeti'nde Uygulama Ağ Geçidi denetleyicisi oluşturma
 
-[Azure Kubernetes hizmeti (AKS)](/azure/aks/) , barındırılan Kubernetes ortamınızı yönetir. AKS, kapsayıcı düzenleme uzmanlığı olmadan Kapsayıcılı uygulamaları dağıtmayı ve yönetmeyi hızlı ve kolay hale getirir. AKS Ayrıca, işletimsel ve bakım görevleri için uygulamaları çevrimdışına alma yükünü ortadan kaldırır. AKS 'i kullanarak, kaynakları sağlama, yükseltme ve ölçeklendirme dahil olmak üzere bu görevler isteğe bağlı olarak gerçekleştirilebilir.
+[Azure Kubernetes Service (AKS),](/azure/aks/) barındırılan Kubernetes ortamınızı yönetir. AKS, konteyner düzenleme uzmanlığı olmadan konteyner uygulamalarının hızlı ve kolay bir şekilde dağıtılmasını ve yönetilmesini sağlar. AKS ayrıca, operasyonel ve bakım görevleri için uygulamaları çevrimdışı alma yükünü de ortadan kaldırır. AKS kullanılarak, kaynakların sağlanması, yükseltilmesi ve ölçeklendirilmesi de dahil olmak üzere bu görevler isteğe bağlı olarak gerçekleştirilebilir.
 
-Bir giriş denetleyicisi, Kubernetes Hizmetleri için çeşitli özellikler sağlar. Bu özellikler ters proxy, yapılandırılabilir trafik yönlendirme ve TLS sonlandırmasını içerir. Kubernetes giriş kaynakları, bağımsız bir Kubernetes hizmeti için giriş kurallarını yapılandırmak üzere kullanılır. Giriş denetleyicisi ve giriş kurallarını kullanarak tek bir IP adresi, trafiği bir Kubernetes kümesinde birden çok hizmete yönlendirebilir. Bu işlevlerin tümü Azure [Application Gateway](/azure/Application-Gateway/)tarafından sağlanır ve Azure 'Da Kubernetes için Ideal bir giriş denetleyicisi haline gelir. 
+Giriş denetleyicisi Kubernetes hizmetleri için çeşitli özellikler sağlar. Bu özellikler ters proxy, yapılandırılabilir trafik yönlendirme ve TLS sonlandırma içerir. Kubernetes giriş kaynakları, tek tek Kubernetes hizmetleri için giriş kurallarını yapılandırmak için kullanılır. Tek bir IP adresi, giriş denetleyicisi ve giriş kurallarını kullanarak trafiği Bir Kubernetes kümesindeki birden çok hizmete yönlendirebilir. Tüm bu işlevler Azure [Application Gateway](/azure/Application-Gateway/)tarafından sağlanır ve bu da azure'daki Kubernetes için ideal bir Giriş denetleyicisi dir. 
 
-Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
+Bu öğreticide, aşağıdaki görevleri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Bir [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) kümesi, Application Gateway giriş denetleyicisi olarak, aks 'i kullanarak oluşturun.
-> * Bir Kubernetes kümesi tanımlamak için HCL (HashiCorp Language) kullanın.
-> * Application Gateway kaynak oluşturmak için Terrayform kullanın.
-> * Bir Kubernetes kümesi oluşturmak için Terkform ve AKS ' i kullanın.
-> * Kubectl aracını kullanarak bir Kubernetes kümesinin kullanılabilirliğini test edin.
+> * Giriş Denetleyicisi olarak Uygulama Ağ Geçidi ile AKS kullanarak bir [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) kümesi oluşturun.
+> * Bir Kubernetes kümesini tanımlamak için HCL (HashiCorp Dili) kullanın.
+> * Uygulama Ağ Geçidi kaynağı oluşturmak için Terraform'u kullanın.
+> * Bir Kubernetes kümesi oluşturmak için Terraform ve AKS'yi kullanın.
+> * Bir Kubernetes kümesinin kullanılabilirliğini test etmek için kubectl aracını kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 - **Terraform'u yapılandırma**: [Terraform'u yükleme ve Azure erişimini yapılandırma](terraform-install-configure.md) makalesindeki yönergeleri izleyin
 
-- **Azure Kaynak grubu**: demo için kullanabileceğiniz bir Azure Kaynak grubunuz yoksa, [bir Azure Kaynak grubu oluşturun](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Kaynak grubu adı ve konumunu, bu değerler tanıtımda kullanıldığı için bir yere göz atın.
+- **Azure kaynak grubu**: Demo için kullanabileceğiniz bir Azure kaynak grubunuz yoksa, [bir Azure kaynak grubu oluşturun.](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups) Bu değerler demoda kullanıldığından kaynak grubu adını ve konumunu not alın.
 
-- **Azure hizmet sorumlusu**: **Azure CLI ile Azure hizmet sorumlusu oluşturma** makalesinin [Hizmet sorumlusunu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) bölümündeki yönergeleri izleyin. AppID, displayName ve Password değerlerini göz önünde atın.
+- **Azure hizmet sorumlusu**: [Azure CLI ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) makalesinin **Hizmet sorumlusunu oluşturma** bölümündeki yönergeleri izleyin. appId, displayName ve parola değerlerine dikkat edin.
 
-- **Hizmet sorumlusu nesne kimliğini edinin**: Cloud Shell şu komutu çalıştırın: `az ad sp list --display-name <displayName>`
+- **Hizmet Sorumlusu Nesne Kimliğini Edinin**: Bulut Kabuğu'nda aşağıdaki komutu çalıştırın:`az ad sp list --display-name <displayName>`
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
 İlk adım, bu alıştırmadaki Terraform yapılandırma dosyalarınızı barındıracak olan dizini oluşturmaktır.
 
-1. [Azure portala](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com)göz atın.
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview)'i açın.
 
@@ -89,11 +89,11 @@ Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapıl
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
+1. Dosyayı kaydedin (**&lt;Ctrl>S)** ve düzenleyiciden çıkın (**&lt;Ctrl>Q**).
 
 ## <a name="define-input-variables"></a>Giriş değişkenlerini tanımlama
 
-Bu dağıtım için gerekli tüm değişkenleri listeleyen Terrayform yapılandırma dosyasını oluşturun.
+Bu dağıtım için gereken tüm değişkenleri listeleyen Terraform yapılandırma dosyasını oluşturun.
 
 1. Cloud Shell'de `variables.tf` adlı bir dosya oluşturun.
 
@@ -232,10 +232,10 @@ Bu dağıtım için gerekli tüm değişkenleri listeleyen Terrayform yapıland�
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
+1. Dosyayı kaydedin (**&lt;Ctrl>S)** ve düzenleyiciden çıkın (**&lt;Ctrl>Q**).
 
 ## <a name="define-the-resources"></a>Kaynakları tanımlama 
-Tüm kaynakları oluşturan Terrayform yapılandırma dosyası oluşturun. 
+Tüm kaynakları oluşturan Terraform yapılandırma dosyası oluşturun. 
 
 1. Cloud Shell'de `resources.tf` adlı bir dosya oluşturun.
 
@@ -243,7 +243,7 @@ Tüm kaynakları oluşturan Terrayform yapılandırma dosyası oluşturun.
     code resources.tf
     ```
 
-1. Hesaplanan değişkenlerin yeniden kullanılması için bir Yereller bloğu oluşturmak üzere aşağıdaki kod bloğunu yapıştırın:
+1. Yeniden kullanmak üzere hesaplanan değişkenler için yerel bir blok oluşturmak için aşağıdaki kod bloğunu yapıştırın:
 
     ```hcl
     # # Locals block for hardcoded names. 
@@ -258,7 +258,7 @@ Tüm kaynakları oluşturan Terrayform yapılandırma dosyası oluşturun.
     }
     ```
 
-1. Aşağıdaki kod bloğunu, kaynak grubu için bir veri kaynağı oluşturmak üzere yapıştırın, Yeni Kullanıcı kimliği:
+1. Kaynak grubu, yeni Kullanıcı kimliği için bir veri kaynağı oluşturmak için aşağıdaki kod bloğunu yapıştırın:
 
     ```hcl
     data "azurerm_resource_group" "rg" {
@@ -322,7 +322,7 @@ Tüm kaynakları oluşturan Terrayform yapılandırma dosyası oluşturun.
     }
     ```
 
-1. Application Gateway kaynağı oluşturmak için aşağıdaki kod bloğunu yapıştırın:
+1. Uygulama Ağ Geçidi kaynağı oluşturmak için aşağıdaki kod bloğunu yapıştırın:
 
     ```hcl
     resource "azurerm_application_gateway" "network" {
@@ -422,7 +422,7 @@ Tüm kaynakları oluşturan Terrayform yapılandırma dosyası oluşturun.
     }
     ```
 
-1. Kubernetes kümesi oluşturmak için aşağıdaki kod bloğunu yapıştırın:
+1. Kubernetes kümesini oluşturmak için aşağıdaki kod bloğunu yapıştırın:
 
     ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
@@ -472,17 +472,17 @@ Tüm kaynakları oluşturan Terrayform yapılandırma dosyası oluşturun.
 
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
+1. Dosyayı kaydedin (**&lt;Ctrl>S)** ve düzenleyiciden çıkın (**&lt;Ctrl>Q**).
 
-Bu bölümde sunulan kod, kümenin adını, konumunu ve resource_group_name ayarlar. `dns_prefix` değeri-kümeye erişmek için kullanılan tam etki alanı adının (FQDN) bir parçasını oluşturur.
+Bu bölümde sunulan kod kümenin adını, konumunu ve resource_group_name. Kümeye `dns_prefix` erişmek için kullanılan tam nitelikli alan adı (FQDN) parçasını oluşturan değer ayarlanır.
 
-`linux_profile` kaydı, SSH kullanarak çalışan düğümlerinde oturum açmayı etkinleştiren ayarları yapılandırmanıza olanak tanır.
+Kayıt, `linux_profile` SSH kullanarak alt düğümlere oturum açmayı sağlayan ayarları yapılandırmanızı sağlar.
 
-AKS ile yalnızca çalışan düğümleri için ödeme yaparsınız. `agent_pool_profile` kaydı bu çalışan düğümlerinin ayrıntılarını yapılandırır. `agent_pool_profile record` oluşturulacak çalışan düğümlerinin sayısını ve çalışan düğümlerinin türünü içerir. Daha sonra kümede ölçeği büyütme veya küçültme yapmanız gerekiyorsa, bu kayıttaki `count` değerini değiştirirsiniz.
+AKS ile yalnızca çalışan düğümleri için ödeme yaparsınız. Kayıt, `agent_pool_profile` bu alt düğümlerin ayrıntılarını yapılandırır. Oluşturulacak `agent_pool_profile record` alt düğüm sayısını ve işçi düğümlerinin türünü içerir. Gelecekte kümeyi büyütmeniz veya küçültmeniz gerekiyorsa, bu `count` kayıttaki değeri değiştirirsiniz.
 
 ## <a name="create-a-terraform-output-file"></a>Terraform çıkış dosyası oluşturma
 
-[Terrayform çıkışları](https://www.terraform.io/docs/configuration/outputs.html) , terrampaform planı uygularken kullanıcıya vurgulanmış değerleri tanımlamanızı sağlar ve `terraform output` komutu kullanılarak sorgulanabilir. Bu bölümde [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) ile kümeye erişmenizi sağlayan bir çıkış dosyası oluşturacaksınız.
+[Terraform çıktıları,](https://www.terraform.io/docs/configuration/outputs.html) Terraform bir plan uyguladığında kullanıcıya vurgulanan değerleri tanımlamanıza olanak sağlar `terraform output` ve komutu kullanarak sorgulanabilir. Bu bölümde [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) ile kümeye erişmenizi sağlayan bir çıkış dosyası oluşturacaksınız.
 
 1. Cloud Shell'de `output.tf` adlı bir dosya oluşturun.
 
@@ -530,27 +530,27 @@ AKS ile yalnızca çalışan düğümleri için ödeme yaparsınız. `agent_pool
     }
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
+1. Dosyayı kaydedin (**&lt;Ctrl>S)** ve düzenleyiciden çıkın (**&lt;Ctrl>Q**).
 
-## <a name="configure-azure-storage-to-store-terraform-state"></a>Azure Storage 'ı Terrayform durumunu depolayacak şekilde yapılandırma
+## <a name="configure-azure-storage-to-store-terraform-state"></a>Azure depolama alanını Terraform durumunu depolamak için yapılandırma
 
-Terraform, durumu `terraform.tfstate` dosyasıyla yerel olarak izler. Bu model tek kişilik bir ortamda iyi çalışır. Ancak, daha pratik bir çoklu kişi ortamında, [Azure depolama](/azure/storage/)'yı kullanarak sunucuda durumu izlemeniz gerekir. Bu bölümde, gerekli depolama hesabı bilgilerini almayı ve bir depolama kapsayıcısı oluşturmayı öğreneceksiniz. Terrayform durum bilgileri bu kapsayıcıda depolanır.
+Terraform, durumu `terraform.tfstate` dosyasıyla yerel olarak izler. Bu model tek kişilik bir ortamda iyi çalışır. Ancak, daha pratik çok kişili bir ortamda, [Azure depolama](/azure/storage/)yı kullanarak sunucudaki durumu izlemeniz gerekir. Bu bölümde, gerekli depolama hesabı bilgilerini almayı ve bir depolama kapsayıcısı oluşturmayı öğrenirsiniz. Terraform durum bilgileri daha sonra bu kapta saklanır.
 
-1. Azure portal **Azure hizmetleri**altında **depolama hesapları**' nı seçin. ( **Depolama hesapları** seçeneği ana sayfada görünmüyorsa, **diğer hizmetler** ' i seçin ve ardından bulun ve seçin.)
+1. Azure portalında, **Azure hizmetleri**altında **Depolama hesapları'nı**seçin. (Depolama **hesapları** seçeneği ana sayfada görünmüyorsa, **Daha fazla hizmet** seçin ve ardından bulun ve seçin.)
 
-1. **Depolama hesapları** sayfasında, Terrayform 'un durumu depolamak için gereken depolama hesabının adını seçin. Örneğin Cloud Shell'i ilk açtığınızda oluşturulmuş olan depolama hesabını kullanabilirsiniz.  Cloud Shell tarafından oluşturulan depolama hesabı genellikle `cs` ile başlar ve sonrasında rastgele sayı ve harf dizesi bulunur. 
+1. Depolama **hesapları** sayfasında, Terraform'un durumu depoladığı depolama hesabının adını seçin. Örneğin Cloud Shell'i ilk açtığınızda oluşturulmuş olan depolama hesabını kullanabilirsiniz.  Cloud Shell tarafından oluşturulan depolama hesabı genellikle `cs` ile başlar ve sonrasında rastgele sayı ve harf dizesi bulunur. 
 
-    Daha sonra ihtiyacınız olduğu gibi, seçtiğiniz depolama hesabını bir yere göz atın.
+    Daha sonra ihtiyacınız olduğu için seçtiğiniz depolama hesabını not alın.
 
 1. Depolama hesabı sayfasında **Erişim anahtarları**'nı seçin.
 
     ![Depolama hesabı adı](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
-1. **KEY1** **anahtar** değerini unutmayın. (Anahtarın sağ tarafındaki simgeyi seçtiğinizde değer panoya kopyalanır.)
+1. **key1** **anahtar** değerini not edin. (Anahtarın sağ tarafındaki simgeyi seçtiğinizde değer panoya kopyalanır.)
 
     ![Depolama hesabı erişim anahtarları](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 
-1. Cloud Shell, Azure depolama hesabınızda bir kapsayıcı oluşturun. Yer tutucuları, Azure depolama hesabınız için uygun değerlerle değiştirin.
+1. Cloud Shell'de, Azure depolama hesabınızda bir kapsayıcı oluşturun. Yer tutucuları Azure depolama hesabınız için uygun değerlerle değiştirin.
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
@@ -559,23 +559,23 @@ Terraform, durumu `terraform.tfstate` dosyasıyla yerel olarak izler. Bu model t
 ## <a name="create-the-kubernetes-cluster"></a>Kubernetes kümesi oluşturma
 Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturduğunuz yapılandırma dosyalarında tanımlanan kaynakları oluşturmayı öğreneceksiniz.
 
-1. Cloud Shell ' de Terrayform ' u başlatın. Yer tutucuları, Azure depolama hesabınız için uygun değerlerle değiştirin.
+1. Cloud Shell'de Terraform'u başlangıç olarak ele ala. Yer tutucuları Azure depolama hesabınız için uygun değerlerle değiştirin.
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
   
-    `terraform init` komutu, arka uç ve sağlayıcı eklentisinin başlatılma başarısını görüntüler:
+    Komut, `terraform init` arka uç ve sağlayıcı eklentisini başlatma başarısını görüntüler:
 
     !["terraform init" komutunun sonuçları](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
-1. Cloud Shell, `terraform.tfvars`adlı bir dosya oluşturun:
+1. Bulut Kabuğu'nda: `terraform.tfvars`
 
     ```bash
     code terraform.tfvars
     ```
 
-1. Daha önce oluşturulan aşağıdaki değişkenleri düzenleyiciye yapıştırın. Ortamınızın konum değerini almak için `az account list-locations`kullanın.
+1. Daha önce oluşturulan aşağıdaki değişkenleri editöre yapıştırın. Ortamınızın konum değerini almak için `az account list-locations`.
 
     ```hcl
     resource_group_name = "<Name of the Resource Group already created>"
@@ -590,7 +590,7 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
         
     ```
 
-1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
+1. Dosyayı kaydedin (**&lt;Ctrl>S)** ve düzenleyiciden çıkın (**&lt;Ctrl>Q**).
 
 1. `terraform plan` komutunu çalıştırarak altyapı öğelerini tanımlayan Terraform planını oluşturun. 
 
@@ -598,11 +598,11 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
     terraform plan -out out.plan
     ```
 
-    `terraform plan` komutu, `terraform apply` komutunu çalıştırdığınızda oluşturulan kaynakları görüntüler:
+    Komut, `terraform plan` `terraform apply` komutu çalıştırdığınızda oluşturulan kaynakları görüntüler:
 
     !["terraform plan" komutunun sonuçları](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. Kubernetes kümesini oluşturma planını uygulamak için `terraform apply` komutunu çalıştırın. Bir Kubernetes kümesi oluşturma işlemi birkaç dakika sürebilir ve Cloud Shell oturum zaman aşımına uğramaz. Cloud Shell oturum zaman aşımına uğrarsa öğreticiyi tamamlamanızı sağlamak için "Cloud Shell zaman aşımından kurtarma" bölümündeki adımları izleyebilirsiniz.
+1. Kubernetes kümesini oluşturma planını uygulamak için `terraform apply` komutunu çalıştırın. Bir Kubernetes kümesi oluşturma işlemi birkaç dakika sürebilir ve bulut bulut oturumunun zamanlaması ile sonuçlanır. Bulut Kabuğu oturumu zaman ları dolursa, öğreticiyi tamamlamanızı sağlamak için "Bulut Kabuğu zaman anından kurtarın" bölümündeki adımları izleyebilirsiniz.
 
     ```bash
     terraform apply out.plan
@@ -612,13 +612,13 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
 
     !["terraform apply" komutunun sonuçları](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-apply-complete.png)
 
-1. Azure portal, seçili kaynak grubundaki yeni Kubernetes kümeniz için oluşturulan kaynakları görmek için sol menüdeki **kaynak grupları** ' nı seçin.
+1. Azure portalında, seçili kaynak grubunda yeni Kubernetes kümeniz için oluşturulan kaynakları görmek için sol menüdeki **Kaynak Grupları'nı** seçin.
 
     ![Cloud Shell istemi](./media/terraform-k8s-cluster-appgw-with-tf-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Zaman aşımına uğrayan Cloud Shell oturumunu kurtarma
 
-Cloud Shell oturumu zaman aşımına uğrarsa, kurtarmak için aşağıdaki adımları kullanabilirsiniz:
+Bulut Kabuğu oturumu zaman ları dolursa, kurtarmak için aşağıdaki adımları kullanabilirsiniz:
 
 1. Cloud Shell oturumu başlatın.
 
@@ -659,33 +659,33 @@ Yeni oluşturulan kümeyi doğrulamak için Kubernetes araçlarını kullanabili
 
     ![kubectl aracı, Kubernetes kümenizin durumunu doğrulamanızı sağlar](./media/terraform-k8s-cluster-appgw-with-tf-aks/kubectl-get-nodes.png)
 
-## <a name="install-azure-ad-pod-identity"></a>Azure AD Pod kimliğini yükler
+## <a name="install-azure-ad-pod-identity"></a>Azure AD Pod Kimliğini Yükleme
 
-Azure Active Directory Pod kimliği, [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)belirteç tabanlı erişim sağlar.
+Azure Etkin Dizin Pod Kimliği, [Azure Kaynak Yöneticisi'ne](/azure/azure-resource-manager/resource-group-overview)belirteç tabanlı erişim sağlar.
 
-[Azure AD Pod Identity](https://github.com/Azure/aad-pod-identity) , Kubernetes kümenize aşağıdaki bileşenleri ekler:
+[Azure AD Pod Kimliği,](https://github.com/Azure/aad-pod-identity) Kubernetes kümenize aşağıdaki bileşenleri ekler:
 
-  - Kubernetes [CRD 'ler](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`, `AzureIdentityBinding`
-  - [Yönetilen kimlik denetleyicisi (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) bileşeni
-  - [Düğüm yönetilen kimliği (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) bileşeni
+  - Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`,`AzureIdentityBinding`
+  - [Yönetilen Kimlik Denetleyicisi (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) bileşeni
+  - [Düğüm Yönetilen Kimlik (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) bileşeni
 
-RBAC **etkinse**, KÜMENIZE Azure AD Pod kimliğini yüklemek için şu komutu çalıştırın:
+RBAC **etkinse,** cluster'ınıza Azure AD Pod Kimliği yüklemek için aşağıdaki komutu çalıştırın:
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
 ```
 
-RBAC **devre dışıysa**, KÜMENIZE Azure AD Pod kimliğini yüklemek için şu komutu çalıştırın:
+RBAC **devre dışı bırakılırsa,** cluster'ınıza Azure AD Pod Kimliği yüklemek için aşağıdaki komutu çalıştırın:
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
 ```
 
-## <a name="install-helm"></a>Held 'yi yükler
+## <a name="install-helm"></a>Miğferi Yükle
 
-Bu bölümdeki kod, [Heln](/azure/aks/kubernetes-helm) -Kubernetes paket yöneticisini kullanır-`application-gateway-kubernetes-ingress` paketini yüklemek için:
+Bu bölümdeki `application-gateway-kubernetes-ingress` kod, paketi yüklemek için [Helm](/azure/aks/kubernetes-helm) - Kubernetes paket yöneticisini kullanır:
 
-1. RBAC **etkinse**, Held 'yi yüklemek ve yapılandırmak için aşağıdaki komut kümesini çalıştırın:
+1. RBAC **etkinse,** Miğferi yüklemek ve yapılandırmak için aşağıdaki komut kümesini çalıştırın:
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -693,64 +693,64 @@ Bu bölümdeki kod, [Heln](/azure/aks/kubernetes-helm) -Kubernetes paket yöneti
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-1. RBAC **devre dışıysa**, Held 'yi yüklemek ve yapılandırmak için aşağıdaki komutu çalıştırın:
+1. RBAC **devre dışı bırakılırsa,** Miğferi yüklemek ve yapılandırmak için aşağıdaki komutu çalıştırın:
 
     ```bash
     helm init
     ```
 
-1. AGIC Held deposunu ekleyin:
+1. AGIC Miğfer deposunu ekleyin:
 
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     helm repo update
     ```
 
-## <a name="install-ingress-controller-helm-chart"></a>Giriş denetleyicisi Held grafiğini yükler
+## <a name="install-ingress-controller-helm-chart"></a>Ingress Controller Dümen Grafiği ni yükleyin
 
-1. AGIC 'yi yapılandırmak için `helm-config.yaml` indirin:
+1. AGIC yapılandırmak için indirin: `helm-config.yaml`
 
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```
 
-1. `helm-config.yaml` düzenleyin ve `appgw` ve `armAuth` bölümleri için uygun değerleri girin.
+1. Edin `helm-config.yaml` ve uygun `appgw` değerleri `armAuth` girin ve bölümler.
 
     ```bash
     code helm-config.yaml
     ```
 
-    Değerler aşağıdaki şekilde açıklanmıştır:
+    Değerler aşağıdaki gibi açıklanmıştır:
 
-    - `verbosityLevel`: AGIC günlük altyapısının ayrıntı düzeyini ayarlar. Olası değerler için [günlük düzeylerini](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) görüntüleyin.
-    - `appgw.subscriptionId`: uygulama ağ geçidi için Azure abonelik KIMLIĞI. Örnek: `a123b234-a3b4-557d-b2df-a0bc12de1234`
-    - `appgw.resourceGroup`: uygulama ağ geçidinin oluşturulduğu Azure Kaynak grubunun adı. 
-    - `appgw.name`: Application Gateway adı. Örnek: `applicationgateway1`.
-    - `appgw.shared`: Bu Boole bayrağı `false`için varsayılan olarak ayarlanmalıdır. `true`, [paylaşılan bir uygulama ağ geçidine](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)ihtiyacınız olacak şekilde ayarlayın.
-    - `kubernetes.watchNamespace`: AGIC 'in izlemeniz gereken ad alanını belirtin. Ad alanı, tek bir dize değeri veya ad alanlarının virgülle ayrılmış bir listesi olabilir. Bu değişkenin açıklama olarak bırakılması veya boş ya da boş dize olarak ayarlanması, giriş denetleyicisindeki tüm erişilebilir ad alanlarını gözlemleyerek.
-    - `armAuth.type`: `aadPodIdentity` veya `servicePrincipal`değeri.
-    - `armAuth.identityResourceID`: yönetilen kimliğin kaynak KIMLIĞI.
-    - `armAuth.identityClientId`: kimliğin Istemci KIMLIĞI.
-    - `armAuth.secretJSON`: yalnızca hizmet sorumlusu gizli türü seçildiğinde gereklidir (`armAuth.type` `servicePrincipal`olarak ayarlandığında).
+    - `verbosityLevel`: AGIC günlük altyapısının özkaynak düzeyini ayarlar. Olası değerler için [Günlük Düzeyleri'ne](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) bakın.
+    - `appgw.subscriptionId`: Uygulama Ağ Geçidi için Azure Abonelik Kimliği. Örnek: `a123b234-a3b4-557d-b2df-a0bc12de1234`
+    - `appgw.resourceGroup`: App Ağ Geçidi'nin oluşturulduğu Azure Kaynak Grubu'nun adı. 
+    - `appgw.name`: Uygulama Ağ Geçidinin Adı. Örnek: `applicationgateway1`.
+    - `appgw.shared`: Bu boolean bayrak varsayılan `false`olmalıdır . Paylaşılan `true` Uygulama Ağ [Geçidine](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)ihtiyacınız olması için ayarlayın.
+    - `kubernetes.watchNamespace`: AGIC'in izlemesi gereken isim alanını belirtin. Ad alanı tek bir dize değeri veya virgülle ayrılmış ad alanları listesi olabilir. Bu değişkeni dışarıda bırakmak veya boş veya boş dize lere ayarlamak, erişilebilen tüm ad alanlarını gözlemleyerek Giriş Denetleyicisi'ne neden olur.
+    - `armAuth.type`: Ya bir `aadPodIdentity` `servicePrincipal`değer ya da .
+    - `armAuth.identityResourceID`: Yönetilen kimliğin kaynak kimliği.
+    - `armAuth.identityClientId`: Kimliğin Müşteri Kimliği.
+    - `armAuth.secretJSON`: Yalnızca Servis Müdürü Gizli türü `armAuth.type` seçildiğinde `servicePrincipal`(ayarlandığında) gereklidir.
 
-    Önemli notlar:
-    - `identityResourceID` değeri teraform betiğiyle oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_resource_id)"`.
-    - `identityClientID` değeri teraform betiğiyle oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_client_id)"`.
-    - `<resource-group>` değeri, uygulama ağ geçidinizin kaynak grubudur.
-    - `<identity-name>` değeri oluşturulan kimliğin adıdır.
-    - Belirli bir aboneliğin tüm kimlikleri: `az identity list`kullanılarak listelenebilir.
+    Anahtar notlar:
+    - Değer `identityResourceID` terraform komut dosyasında oluşturulur ve çalıştırılarak `echo "$(terraform output identity_resource_id)"`bulunabilir: .
+    - Değer `identityClientID` terraform komut dosyasında oluşturulur ve çalıştırılarak `echo "$(terraform output identity_client_id)"`bulunabilir: .
+    - Değer, `<resource-group>` Uygulama Ağ Geçidinizin kaynak grubudur.
+    - Değer, `<identity-name>` oluşturulan kimliğin adıdır.
+    - Belirli bir abonelik için tüm kimlikler şu şekilde listelenebilir: `az identity list`.
 
-1. Application Gateway giriş denetleyicisi paketini yükler:
+1. Uygulama Ağ Geçidi giriş denetleyici paketini yükleyin:
 
     ```bash
     helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure
     ```
 
-### <a name="install-a-sample-app"></a>Örnek uygulama yükler
+### <a name="install-a-sample-app"></a>Örnek bir uygulama yükleme
 
-Uygulama ağ geçidi, AKS ve AGIC yüklendikten sonra, [Azure Cloud Shell](https://shell.azure.com/)aracılığıyla örnek bir uygulama yükleyebilirsiniz:
+App Gateway, AKS ve AGIC'i yükledikten sonra [Azure Cloud Shell](https://shell.azure.com/)üzerinden örnek bir uygulama yükleyebilirsiniz:
 
-1. YAML dosyasını indirmek için kıvrımlı komutunu kullanın:
+1. YAML dosyasını indirmek için kıvırma komutunu kullanın:
 
     ```bash
     curl https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/aspnetapp.yaml -o aspnetapp.yaml
@@ -764,9 +764,9 @@ Uygulama ağ geçidi, AKS ve AGIC yüklendikten sonra, [Azure Cloud Shell](https
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin.  
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin.  
 
-Yer tutucusunu uygun değerle değiştirin. Belirtilen kaynak grubundaki tüm kaynaklar silinecek.
+Yer tutucuyu uygun değerle değiştirin. Belirtilen kaynak grubundaki tüm kaynaklar silinir.
 
 ```azurecli
 az group delete -n <resource-group>
@@ -775,4 +775,4 @@ az group delete -n <resource-group>
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Application Gateway giriş denetleyicisi](https://azure.github.io/application-gateway-kubernetes-ingress/)
+> [Application Gateway Giriş Denetleyicisi](https://azure.github.io/application-gateway-kubernetes-ingress/)

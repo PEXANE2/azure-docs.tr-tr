@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services ile video dosyalarını akışa alma - .NET | Microsoft Docs
-description: Bu öğreticinin adımlarını izleyerek yeni bir Azure Media Services hesabı oluşturun, bir dosya kodlayın ve Azure Media Player için akışını yapın.
+description: Yeni bir Azure Medya Hizmetleri hesabı oluşturmak, bir dosyayı kodlamak ve Azure Media Player'a aktarmak için bu öğreticinin adımlarını izleyin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,28 +14,28 @@ ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77191215"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa sunun-.NET
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Öğretici: URL'ye dayalı uzak bir dosyayı kodlayın ve videoyu akışlayın - .NET
 
-Bu öğreticide, Azure Media Services kullanarak çok çeşitli tarayıcılarda ve cihazlarda akış videolarının kodlanması ve başlatılması ne kadar kolay olduğunu gösterir. Azure Blob depolamada bulunan dosyaların yolları, SAS URL’leri veya HTTPS URL’leri kullanılarak girdi içeriği belirtilebilir.
+Bu öğretici, Azure Medya Hizmetleri'ni kullanarak çok çeşitli tarayıcılarda ve cihazlarda video kodlamanın ve video akışı başlatmanın ne kadar kolay olduğunu gösterir. Azure Blob depolamada bulunan dosyaların yolları, SAS URL’leri veya HTTPS URL’leri kullanılarak girdi içeriği belirtilebilir.
 Bu konu başlığındaki örnek, bir HTTPS URL’si aracılığıyla erişilebilir hale getirdiğiniz içerikleri kodlar. AMS v3’ün şu anda HTTPS URL'leri üzerinden yığın halinde aktarım kodlamasını desteklemediğini unutmayın.
 
-Öğreticinin sonuna kadar video akışını sağlayabileceksiniz.  
+Öğreticinin sonunda bir video akışı mümkün olacak.  
 
 ![Videoyu yürütme](./media/stream-files-dotnet-quickstart/final-video.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Visual Studio yüklü değilse, [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)’yi edinebilirsiniz.
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
-- [Azure CLI Ile Access Azure Media Services API 'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
+- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)<br/>Kaynak grubu adı ve Medya Hizmetleri hesap adı için kullandığınız değerleri hatırladığınızdan emin olun.
+- [Azure CLI ile Azure Medya Hizmetleri API'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API'ye erişmek için bunları kullanmanız gerekir.
 
 ## <a name="download-and-configure-the-sample"></a>Örneği indirin ve yapılandırın
 
@@ -47,16 +47,16 @@ Aşağıdaki komutu kullanarak, akış .NET örneğini içeren bir GitHub havuzu
 
 Örnek [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) klasöründe bulunur.
 
-İndirilen projenizde [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) ' yı açın. Değerleri, [API 'lere eriştiğiniz](access-api-cli-how-to.md)kimlik bilgileriyle değiştirin.
+İndirilen projede [appsettings.json'ı](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) açın. Değerleri [API'lara erişen](access-api-cli-how-to.md)kimlik bilgileriyle değiştirin.
 
 Örnek aşağıdaki eylemleri gerçekleştirir:
 
-1. Bir **dönüşüm** oluşturur (ilk olarak, belirtilen dönüştürmenin var olup olmadığını denetler). 
-2. Kodlama **işinin**çıkışı olarak kullanılan bir çıktı **varlığı** oluşturur.
-3. Bir HTTPS URL 'sini temel alan, **işin**girişini oluşturur.
-4. Daha önce oluşturulmuş giriş ve çıktıyı kullanarak kodlama **işini** gönderir.
+1. **Dönüşüm** oluşturur (ilk olarak, belirtilen Dönüşüm var olup olmadığını denetler). 
+2. Kodlama **İş**'in çıktısı olarak kullanılan bir çıktı **Varlık** oluşturur.
+3. Bir HTTPS URL'sini temel alan **İş**girişi oluşturur.
+4. Daha önce oluşturulan giriş ve çıktıyı kullanarak kodlama **Işini** gönderir.
 5. İşin durumunu denetler.
-6. Bir **akış Bulucu**oluşturur.
+6. **Akış Lı Yer Bulucu**oluşturur.
 7. Akış URL'leri oluşturur.
 
 Örnekteki her bir işlevin ne yaptığına dair açıklamalar için kodu inceleyin ve [bu kaynak dosyadaki](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) açıklamalara bakın.
@@ -79,19 +79,19 @@ Bu makalede, akışı test etmek için Azure Media Player kullanılmaktadır.
 > [!NOTE]
 > Oynatıcı bir https sitesinde barındırılıyorsa, "https" URL’sini güncelleştirdiğinizden emin olun.
 
-1. Bir web tarayıcısı açın ve [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) sayfasına gidin.
+1. Bir web tarayıcısı [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)açın ve 'ye gidin.
 2. **URL:** kutusuna, uygulamayı çalıştırdığınızda aldığınız akış URL değerlerinden birini yapıştırın. 
  
-     URL 'yi HLS, Dash veya kesintisiz biçimde yapıştırabilir ve Azure Media Player cihazınızda otomatik olarak kayıttan yürütmek için uygun bir akış protokolüne geçiş yapar.
+     URL'yi HLS, Dash veya Smooth biçiminde yapıştırabilirsiniz ve Azure Media Player cihazınızda otomatik olarak oynatılmak üzere uygun bir akış protokolüne geçer.
 3. **Oynatıcıyı Güncelleştir** düğmesine basın.
 
 Azure Media Player, test için kullanılabilir, ancak üretim ortamında kullanılmamalıdır. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kaynak grubunuzda, bu öğretici için oluşturduğunuz Media Services ve depolama hesapları da dahil olmak üzere herhangi bir kaynağa ihtiyacınız yoksa, kaynak grubunu silin.
+Bu öğretici için oluşturduğunuz Medya Hizmetleri ve depolama hesapları da dahil olmak üzere kaynak grubunuzdaki kaynaklardan herhangi biri ne olursa olsun artık ihtiyacınız yoksa, kaynak grubunu silin.
 
-Aşağıdaki CLı komutunu yürütün:
+Aşağıdaki CLI komutunu uygulayın:
 
 ```azurecli
 az group delete --name amsResourceGroup
@@ -105,7 +105,7 @@ az group delete --name amsResourceGroup
 
 ### <a name="job-error-codes"></a>İş hata kodları
 
-Bkz. [hata kodları](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+[Bkz. Hata kodları.](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 
 ## <a name="multithreading"></a>Çoklu iş parçacığı kullanımı
 

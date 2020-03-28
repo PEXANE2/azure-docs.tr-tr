@@ -1,27 +1,27 @@
 ---
 title: Özel bir sağlayıcı oluşturma ve kullanma
-description: Bu öğreticide, bir Azure özel sağlayıcısı oluşturma ve kullanma işlemlerinin nasıl yapılacağı gösterilmektedir. Azure 'da iş akışlarını değiştirmek için özel sağlayıcılar kullanın.
+description: Bu öğretici, bir Azure Özel Sağlayıcısı'nın nasıl oluşturulup kullanılacağını gösterir. Azure'da iş akışlarını değiştirmek için özel sağlayıcıları kullanın.
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650033"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Özel bir sağlayıcı oluşturma ve kullanma
 
-Özel sağlayıcı, Azure ile uç nokta arasında bir sözleşmedir. Özel sağlayıcılar sayesinde Azure 'da iş akışlarını değiştirebilirsiniz. Bu öğreticide, özel bir sağlayıcı oluşturma işlemi gösterilir. Azure özel sağlayıcıları hakkında bilginiz varsa bkz. [Azure özel kaynak sağlayıcılarına genel bakış](overview.md).
+Özel sağlayıcı, Azure ile bitiş noktası arasındaki bir sözleşmedir. Özel sağlayıcılarla Azure'da iş akışlarını değiştirebilirsiniz. Bu öğretici, özel bir sağlayıcı oluşturma işlemini gösterir. Azure Özel Sağlayıcıları'nı bilmiyorsanız, [Azure Özel Kaynak Sağlayıcıları'na genel bakış bölümüne](overview.md)bakın.
 
-## <a name="create-a-custom-provider"></a>Özel sağlayıcı oluşturma
+## <a name="create-a-custom-provider"></a>Özel bir sağlayıcı oluşturma
 
 > [!NOTE]
-> Bu öğretici, bir uç noktanın nasıl yazılacağını göstermez. Daha iyi bir uç noktalarınız yoksa, geçerli öğreticinin temelini oluşturan, [tekrar eden uç noktalar yazma öğreticisini](./tutorial-custom-providers-function-authoring.md)izleyin.
+> Bu öğretici, bir bitiş noktasının nasıl yazılabildiğini göstermez. Eğer dinlendirici bir bitiş noktanız yoksa, geçerli öğreticinin temeli olan [RESTful uç noktalarının yazlanması](./tutorial-custom-providers-function-authoring.md)yla ilgili öğreticiyi izleyin.
 
-Bir uç nokta oluşturduktan sonra, sağlayıcı ve uç nokta arasında bir sözleşme oluşturmak için özel bir sağlayıcı oluşturabilirsiniz. Özel bir sağlayıcıyla, uç nokta tanımlarının bir listesini belirtebilirsiniz:
+Bir bitiş noktası oluşturduktan sonra, sağlayıcı ve bitiş noktası arasında bir sözleşme oluşturmak için özel bir sağlayıcı oluşturabilirsiniz. Özel bir sağlayıcıyla, uç nokta tanımlarının bir listesini belirtebilirsiniz:
 
 ```JSON
 {
@@ -31,17 +31,17 @@ Bir uç nokta oluşturduktan sonra, sağlayıcı ve uç nokta arasında bir söz
 }
 ```
 
-Özellik | Gereklidir | Açıklama
+Özellik | Gerekli | Açıklama
 ---|---|---
-**Adı** | Evet | Uç nokta tanımının adı. Azure, bu adı API aracılığıyla/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders altında kullanıma sunar<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
-**routingType** | Hayır | Uç nokta sözleşme türü. Değer belirtilmezse, varsayılan olarak "proxy" olur.
-**bkz** | Evet | İsteklerin yönlendirileceği uç nokta. Bu uç nokta, isteğin yanıtını ve tüm yan etkilerini işler.
+**Adı** | Evet | Bitiş noktası tanımının adı. Azure bu adı API aracılığıyla /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders altında ortaya çıkarır<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
+**yönlendirmeTürü** | Hayır | Uç nokta sözleşme türü. Değer belirtilmemişse, varsayılan olarak "Proxy" olarak adlandırılır.
+**Bitiş noktası** | Evet | İstekleri yönlendirmek için bitiş noktası. Bu uç nokta yanıtı ve isteğin herhangi bir yan etkileri işler.
 
-**Uç noktanın** değeri, Azure işlevi uygulamasının tetikleyici URL 'sidir. `<yourapp>`, `<funcname>`ve `<functionkey>` yer tutucuları, oluşturduğunuz işlev uygulamanızın değerleriyle değiştirilmelidir.
+**Bitiş noktasının** değeri, Azure işlev uygulamasının tetikleyici URL'sidir. , `<yourapp>` `<funcname>`, `<functionkey>` ve yer tutucular oluşturulan işlev uygulamanız için değerlerle değiştirilmelidir.
 
 ## <a name="define-custom-actions-and-resources"></a>Özel eylemleri ve kaynakları tanımlama
 
-Özel sağlayıcı, **Eylemler** ve **Resourcetypes** özellikleri kapsamında modellenen uç nokta tanımlarının bir listesini içerir. **Actions** özelliği özel sağlayıcı tarafından kullanıma sunulan özel eylemlerle eşlenir ve **Resourcetypes** özelliği özel kaynaklarıdır. Bu öğreticide, Özel sağlayıcının `myCustomAction` adlı bir **Actions** özelliği ve `myCustomResources`adlı **Resourcetypes** özelliği vardır.
+Özel **sağlayıcı, eylemler** ve **kaynak Türleri** özellikleri altında modellenen uç nokta tanımlarının bir listesini içerir. **Eylemler** özelliği özel sağlayıcı tarafından maruz özel eylemlereşler ve **kaynak Türleri** özelliği özel kaynaklardır. Bu öğreticide, özel sağlayıcı **actions** adlı `myCustomAction` bir eylem özelliği `myCustomResources`ve bir kaynak **Türleri** özelliği adlı vardır.
 
 ```JSON
 {
@@ -68,9 +68,9 @@ Bir uç nokta oluşturduktan sonra, sağlayıcı ve uç nokta arasında bir söz
 ## <a name="deploy-the-custom-provider"></a>Özel sağlayıcıyı dağıtma
 
 > [!NOTE]
-> **Uç nokta** değerlerini, önceki öğreticide oluşturulan işlev UYGULAMASıNDAKI tetikleyici URL 'siyle değiştirmelisiniz.
+> **Bitiş noktası** değerlerini önceki öğreticide oluşturulan işlev uygulamasından tetikleyici URL ile değiştirmeniz gerekir.
 
-Önceki özel sağlayıcıyı bir Azure Resource Manager şablonu kullanarak dağıtabilirsiniz:
+Azure Kaynak Yöneticisi şablonu kullanarak önceki özel sağlayıcıyı dağıtabilirsiniz:
 
 ```JSON
 {
@@ -103,16 +103,16 @@ Bir uç nokta oluşturduktan sonra, sağlayıcı ve uç nokta arasında bir söz
 }
 ```
 
-## <a name="use-custom-actions-and-resources"></a>Özel eylemleri ve kaynakları kullanma
+## <a name="use-custom-actions-and-resources"></a>Özel eylemler ve kaynaklar kullanma
 
-Özel bir sağlayıcı oluşturduktan sonra yeni Azure API 'Lerini kullanabilirsiniz. Aşağıdaki sekmelerde özel bir sağlayıcının nasıl çağrılacağını ve kullanılacağı açıklanmaktadır.
+Özel bir sağlayıcı oluşturduktan sonra, yeni Azure API'lerini kullanabilirsiniz. Aşağıdaki sekmeler, özel bir sağlayıcının nasıl arayacağını ve kullanılacağını açıklar.
 
-### <a name="custom-actions"></a>Özel Eylemler
+### <a name="custom-actions"></a>Özel eylemler
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> `{subscriptionId}` ve `{resourceGroupName}` yer tutucuları, özel sağlayıcıyı dağıttığınız aboneliğin ve kaynak grubuyla değiştirmeniz gerekir.
+> Yer `{subscriptionId}` tutucuları, `{resourceGroupName}` özel sağlayıcıyı dağıttığınız abonelik ve kaynak grubuyla değiştirmeniz gerekir.
 
 ```azurecli-interactive
 az resource invoke-action --action myCustomAction \
@@ -123,26 +123,26 @@ az resource invoke-action --action myCustomAction \
                             }'
 ```
 
-Parametre | Gereklidir | Açıklama
+Parametre | Gerekli | Açıklama
 ---|---|---
-*ön* | Evet | Özel sağlayıcıda tanımlanan eylemin adı
-*ayrılacak* | Evet | Özel sağlayıcının kaynak KIMLIĞI
-*İstek gövdesi* | Hayır | Uç noktaya gönderilecek istek gövdesi
+*Eylem* | Evet | Özel sağlayıcıda tanımlanan eylemin adı
+*Kimlik* | Evet | Özel sağlayıcının kaynak kimliği
+*istek-gövde* | Hayır | Bitiş noktasına gönderilecek istek gövdesi
 
-# <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+# <a name="template"></a>[Şablon](#tab/template)
 
-Hiçbiri.
+Yok.
 
 ---
 
 ### <a name="custom-resources"></a>Özel kaynaklar
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> `{subscriptionId}` ve `{resourceGroupName}` yer tutucuları, özel sağlayıcıyı dağıttığınız aboneliğin ve kaynak grubuyla değiştirmeniz gerekir.
+> Yer `{subscriptionId}` tutucuları, `{resourceGroupName}` özel sağlayıcıyı dağıttığınız abonelik ve kaynak grubuyla değiştirmeniz gerekir.
 
-#### <a name="create-a-custom-resource"></a>Özel bir kaynak oluşturun
+#### <a name="create-a-custom-resource"></a>Özel kaynak oluşturma
 
 ```azurecli-interactive
 az resource create --is-full-object \
@@ -156,11 +156,11 @@ az resource create --is-full-object \
                     }'
 ```
 
-Parametre | Gereklidir | Açıklama
+Parametre | Gerekli | Açıklama
 ---|---|---
-*-Full-Object* | Evet | Özellikler nesnesinin konum, Etiketler, SKU veya plan gibi diğer seçenekleri içerip içermediğini gösterir.
-*id* | Evet | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
-*Özellikleri* | Evet | Uç noktaya gönderilecek istek gövdesi.
+*tam nesne* | Evet | Özellikleri nesne konum, etiketler, SKU veya plan gibi diğer seçenekleri içerip içermediğini gösterir.
+*Kimliği* | Evet | Özel kaynağın kaynak kimliği. Bu kimlik, özel sağlayıcı kaynak kimliğinin bir uzantısıdır.
+*Özellikler* | Evet | Bitiş noktasına gönderilecek istek gövdesi.
 
 #### <a name="delete-a-custom-resource"></a>Özel bir kaynağı silme
 
@@ -168,9 +168,9 @@ Parametre | Gereklidir | Açıklama
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-Parametre | Gereklidir | Açıklama
+Parametre | Gerekli | Açıklama
 ---|---|---
-*id* | Evet | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
+*Kimliği* | Evet | Özel kaynağın kaynak kimliği. Bu kimlik, özel sağlayıcı kaynak kimliğinin bir uzantısıdır.
 
 #### <a name="retrieve-a-custom-resource"></a>Özel bir kaynak alma
 
@@ -178,11 +178,11 @@ Parametre | Gereklidir | Açıklama
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-Parametre | Gereklidir | Açıklama
+Parametre | Gerekli | Açıklama
 ---|---|---
-*id* | Evet | Özel kaynağın kaynak KIMLIĞI. Bu KIMLIK özel sağlayıcı kaynak KIMLIĞININ bir uzantısıdır.
+*Kimliği* | Evet | Özel kaynağın kaynak kimliği. Bu kimlik, özel sağlayıcı kaynak kimliğinin bir uzantısıdır.
 
-# <a name="templatetabtemplate"></a>[Şablon](#tab/template)
+# <a name="template"></a>[Şablon](#tab/template)
 
 Örnek bir Kaynak Yöneticisi şablonu:
 
@@ -204,20 +204,20 @@ Parametre | Gereklidir | Açıklama
 }
 ```
 
-Parametre | Gereklidir | Açıklama
+Parametre | Gerekli | Açıklama
 ---|---|---
-*resourceTypeName* | Evet | Özel sağlayıcıda tanımlanan **Resourcetypes** özelliğinin `name` değeri.
-*resourceProviderName* | Evet | Özel sağlayıcı örneği adı.
-*customResourceName* | Evet | Özel kaynak adı.
+*kaynakTypeName* | Evet | Özel `name` sağlayıcıda tanımlanan **kaynak Türleri** özelliğinin değeri.
+*kaynakProviderName* | Evet | Özel sağlayıcı örnek adı.
+*özelResourceName* | Evet | Özel kaynak adı.
 
 ---
 
 > [!NOTE]
-> Özel sağlayıcıyı dağıtma ve kullanma işini tamamladıktan sonra, Azure işlevi uygulaması da dahil olmak üzere tüm oluşturulan kaynakları temizlemeyi unutmayın.
+> Özel sağlayıcıyı dağıtmayı ve kullanmayı bitirdikten sonra, Azure işlev uygulaması da dahil olmak üzere oluşturulan tüm kaynakları temizlemeyi unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, özel sağlayıcılar hakkında bilgi edindiniz. Daha fazla bilgi için bkz.
+Bu makalede, özel sağlayıcılar hakkında öğrendim. Daha fazla bilgi için bkz.
 
-- [Nasıl yapılır: Azure REST API özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
-- [Nasıl yapılır: Azure REST API özel kaynak ekleme](./custom-providers-resources-endpoint-how-to.md)
+- [Nasıl yapilir: Azure REST API'sine özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
+- [Nasıl yapilir: Azure REST API'sine özel kaynak ekleme](./custom-providers-resources-endpoint-how-to.md)

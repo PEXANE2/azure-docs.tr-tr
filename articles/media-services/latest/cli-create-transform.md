@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: c21a16d043f972042949d6340985774741b3df6a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74888624"
 ---
 # <a name="cli-example-create-a-transform"></a>CLI örneği: Dönüşüm oluşturma
 
 Bu makaledeki Azure CLI betiği, dönüşüm oluşturmayı gösterir. Dönüşümler video veya ses dosyalarınızın işlenmesine yönelik görevlerden oluşan basit bir iş akışı tanımlar (genellikle "tarif" olarak adlandırılır). Zaten istenen ada ve “tarife” sahip bir Dönüşümün olup olmadığını mutlaka kontrol etmelisiniz. Böyle bir tarif varsa bunu yeniden kullanmalısınız.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-[Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).
+[Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 > [!NOTE]
-> [Standardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)için yalnızca özel standart kodlayıcı önceden ayarlanmış JSON dosyası için bir yol belirtebilirsiniz, özel bir dönüşüm örneği [ile](custom-preset-cli-howto.md) kodlamaya bakın.
+> Yalnızca [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)için özel bir Standart Encoder önceden ayarlanmış JSON dosyasına bir yol belirtebilirsiniz, [özel bir dönüştürme](custom-preset-cli-howto.md) örneği ile kodlama bakın.
 >
-> [Builtınstandardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)kullanılırken bir dosya adı geçirilemez.
+> [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)kullanırken bir dosya adını geçiremezsiniz.
 
 ## <a name="example-script"></a>Örnek betik
 
@@ -42,4 +42,4 @@ Bu makaledeki Azure CLI betiği, dönüşüm oluşturmayı gösterir. Dönüşü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[az AMS Transform (CLı)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)
+[az ams dönüşümü (CLI)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)

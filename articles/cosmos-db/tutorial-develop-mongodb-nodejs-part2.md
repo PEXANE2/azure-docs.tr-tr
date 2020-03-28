@@ -1,5 +1,5 @@
 ---
-title: MongoDB için Azure Cosmos DB API 'SI ile Node. js Express uygulaması oluşturma (part2)
+title: MongoDB için Azure Cosmos DB'nin API'si ile Node.js Express uygulamasını oluşturun (Part2)
 description: Azure Cosmos DB üzerinde Angular ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturma öğreticisi dizisinin 2. bölümü.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,15 +11,15 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441142"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Node. js Express uygulaması oluşturma
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>MongoDB için Azure Cosmos DB'nin API'si ile Açısal bir uygulama oluşturun - Node.js Express uygulaması oluşturun
 
-Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
+Bu çok parçalı öğretici nasıl Express ve Angular ile Node.js yazılmış yeni bir uygulama oluşturmak ve daha sonra [Cosmos hesabı Cosmos DB's API MongoDB için yapılandırılan](mongodb-introduction.md)bağlanmak için nasıl gösterir.
 
 Öğreticinin 2. bölümünde [giriş bölümündeki](tutorial-develop-mongodb-nodejs.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
@@ -102,7 +102,7 @@ Bu öğretici için aşağıdakiler de gereklidir:
     * dist klasöründeki her şeyi sunar, bu klasördekiler statik içerik olacaktır
     * Uygulamayı oluşturur ve sunucuda bulunamayan tüm GET istekleri için index.html dosyasını sunar (ayrıntılı bağlantılar için)
     * app.listen ile sunucuyu başlatır
-    * Bağlantı noktasının etkin olduğunu günlüğe kaydetmek için bir ok işlevi kullanır
+    * Bağlantı noktasının canlı olduğunu günlüğe kaydetmek için bir ok işlevi kullanır
     
    ```node
    const express = require('express');

@@ -18,19 +18,19 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71212066"
 ---
-# <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara bildirimler gönderme
+# <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara bildirim gönderme
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, belirli bir cihazdaki belirli bir uygulama kullanıcısına anında iletme bildirimleri göndermek için Azure Notification Hubs’ı nasıl kullanacağınız gösterilmektedir. İstemcilerin kimliğini doğrulamak için bir ASP.NET WebAPI arka ucu kullanılır. Arka uç bir istemci uygulama kullanıcısının kimliğini doğruladığında, bildirimi kaydına otomatik olarak bir etiket ekler. Arka uç, bu etiketi kullanarak belirli bir kullanıcıya bildirimler gönderir.
+Bu öğreticide, belirli bir cihazdaki belirli bir uygulama kullanıcısına anında iletme bildirimleri göndermek için Azure Bildirim Hubs’ı nasıl kullanacağınız gösterilmektedir. İstemcilerin kimliğini doğrulamak için bir ASP.NET WebAPI arka ucu kullanılır. Arka uç bir istemci uygulama kullanıcısının kimliğini doğruladığında, bildirimi kaydına otomatik olarak bir etiket ekler. Arka uç, bu etiketi kullanarak belirli bir kullanıcıya bildirimler gönderir.
 
 > [!NOTE]
 > Bu öğreticinin tamamlanan kodu [GitHub'da](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) bulunabilir.
@@ -46,27 +46,27 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İstemci projesi için kodu güncelleştirme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici, [öğreticide oluşturduğunuz Notification Hub ve Visual Studio projesi üzerinde oluşturulmuştur: Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) öğreticisi kullanarak Evrensel Windows platformu uygulamalarına bildirimler gönderin. Bu nedenle, bu öğreticiye başlamadan önce onu tamamlayın.
+Bu öğretici, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows Platformu uygulamalarına bildirimler gönderme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) öğreticisinde oluşturduğunuz bildirim hub’ını ve Visual Studio projesini temel alır. Bu nedenle, bu öğreticiye başlamadan önce onu tamamlayın.
 
 > [!NOTE]
 > Azure App Service’te arka uç hizmetiniz olarak Mobile Apps kullanıyorsanız, bu öğreticinin [Mobile Apps sürümüne](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) bakın.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-uwp-client"></a>UWP istemcisi için kodu güncelleştirme
+## <a name="update-the-code-for-the-uwp-client"></a>UWP istemcisinin kodunu güncelleştirme
 
-Bu bölümde, [öğretici için tamamladığınız projedeki kodu güncelleştirin: Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) öğreticisi kullanarak Evrensel Windows platformu uygulamalarına bildirimler gönderin. Proje, Windows mağazası ile zaten ilişkilendirilmiş olmalıdır. Ayrıca, bildirim hub'ınızı kullanacak şekilde yapılandırılmış olmalıdır. Bu bölümde, yeni WebAPI arka ucunu çağırmak için kod ekleyecek ve bildirimlere kaydolup bildirim göndermek için kullanacaksınız.
+Bu bölümde, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows Platformu uygulamalarına bildirimler gönderme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) öğreticisi için tamamladığınız projedeki kodu güncelleştireceksiniz. Proje, Windows mağazası ile zaten ilişkilendirilmiş olmalıdır. Ayrıca, bildirim hub'ınızı kullanacak şekilde yapılandırılmış olmalıdır. Bu bölümde, yeni WebAPI arka ucunu çağırmak için kod ekleyecek ve bildirimlere kaydolup bildirim göndermek için kullanacaksınız.
 
-1. Visual Studio 'da [öğretici için oluşturduğunuz çözümü açın: Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)kullanarak Evrensel Windows platformu uygulamalarına bildirimler gönderin.
-2. Çözüm Gezgini, Evrensel Windows Platformu (UWP) projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın.
-3. Sol tarafta, **Araştır**' ı seçin.
+1. Visual Studio’da, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows Platformu uygulamalarına bildirimler gönderme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) öğreticisi için oluşturduğunuz çözümü açın.
+2. Solution Explorer'da, Evrensel Windows Platformu (UWP) projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet'i**tıklatın.
+3. Sol tarafta **Gözat'ı**seçin.
 4. **Arama** kutusuna **Http İstemcisi** yazın.
 5. Sonuçlar listesinde **System.Net.Http** ve sonra **Yükle**’ye tıklayın. Yüklemeyi tamamlayın.
 6. NuGet **Arama** kutusuna **Json.net** yazın. **Newtonsoft.json** paketini yükleyin ve sonra NuGet Paket Yöneticisi penceresini kapatın.
 7. Çözüm Gezgini'nde, **WindowsApp** projesinde bulunan **MainPage.xaml** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
-8. XML kodunda, `<Grid>` bölümünü aşağıdaki kodla değiştirin: `MainPage.xaml` Bu kod, kullanıcının kimliğini doğruladığı Kullanıcı adı ve parola metin kutusunu ekler. Bildirim iletisi ve bildirimi alması gereken Kullanıcı adı etiketi için de metin kutuları ekler:
+8. XML `MainPage.xaml` kodunda, `<Grid>` bölümü aşağıdaki kodla değiştirin: Bu kod, kullanıcının kimlik doğrulaması yaptığı bir kullanıcı adı ve parola textbox ekler. Ayrıca bildirim iletisi için metin kutuları ve bildirim alması gereken kullanıcı adı etiketi ni ekler:
 
     ```xml
     <Grid>
@@ -118,7 +118,7 @@ Bu bölümde, [öğretici için tamamladığınız projedeki kodu güncelleştir
         </StackPanel>
     </Grid>
     ```
-9. Çözüm Gezgini, `MainPage.xaml.cs` **(Windows 8.1)** ve **(Windows Phone 8,1)** projeleri için dosyasını açın. Her iki dosyanın üst kısmına aşağıdaki `using` deyimlerini ekleyin:
+9. Solution Explorer'da(Windows `MainPage.xaml.cs` **8.1)** ve **(Windows Phone 8.1)** projeleri için dosyayı açın. Her iki dosyanın üst kısmına aşağıdaki `using` deyimlerini ekleyin:
 
     ```csharp
     using System.Net.Http;
@@ -128,12 +128,12 @@ Bu bölümde, [öğretici için tamamladığınız projedeki kodu güncelleştir
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-10. **WindowsApp** projesi için içinde `MainPage` `MainPage.xaml.cs` aşağıdaki üyeyi sınıfına ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
+10. **WindowsApp** projesi `MainPage` `MainPage.xaml.cs` için aşağıdaki üyeyi sınıfa ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
-11. Aşağıdaki kodu, `MainPage.xaml.cs` **(Windows 8.1)** ve **(Windows Phone 8,1)** projeleri için içindeki MainPage sınıfına ekleyin.
+11. **(Windows 8.1)** ve `MainPage.xaml.cs` **(Windows Phone 8.1)** projeleri için aşağıdaki kodu MainPage sınıfına ekleyin.
 
     `PushClick` yöntemi, **Anında İletme Bildirimi Gönder** düğmesinin tıklama işleyicisidir. `to_tag` parametresiyle eşleşen bir kullanıcı adı etiketine sahip tüm cihazlarda bir bildirimi tetiklemek için arka ucu çağırır. Bildirim iletisi, istek gövdesinde JSON içeriği olarak gönderilir.
 
@@ -215,14 +215,14 @@ Bu bölümde, [öğretici için tamamladığınız projedeki kodu güncelleştir
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. ' `App.xaml.cs` İ açın ve `OnLaunched()` olay işleyicisinde `InitNotificationsAsync()` çağrısını bulun. `InitNotificationsAsync()` çağrısına açıklama ekleyin veya çağrıyı silin. Düğme işleyicisi, bildirim kayıtlarını başlatır.
+12. Açık `App.xaml.cs` ve `OnLaunched()` olay `InitNotificationsAsync()` işleyicisi için çağrı bulabilirsiniz. `InitNotificationsAsync()` çağrısına açıklama ekleyin veya çağrıyı silin. Düğme işleyicisi, bildirim kayıtlarını başlatır.
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
-13. **WindowsApp** projesine sağ tıklayın, **Ekle**’ye ve sonra **Sınıf**’a tıklayın. Sınıfı adlandırın, ardından sınıfı oluşturmak için Tamam ' a tıklayın. `RegisterClient.cs`
+13. **WindowsApp** projesine sağ tıklayın, **Ekle**’ye ve sonra **Sınıf**’a tıklayın. Sınıfı `RegisterClient.cs`adlandırın, ardından sınıfı oluşturmak için **Tamam'ı** tıklatın.
 
     Bu sınıf, anında iletme bildirimlerine kaydolmak için uygulama arka ucuyla iletişim kurmak üzere gereken REST çağrılarını sarmalar. [Uygulama arka ucunuzdan kaydetme](https://msdn.microsoft.com/library/dn743807.aspx) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. **Oturum aç ve kaydet** düğmesine tıkladığınızda yerel depolama alanında depolanan bir yetkilendirme belirtecini kullanır.
 14. Aşağıdaki `using` deyimlerini RegisterClient.cs dosyasının en üst kısmına ekleyin:

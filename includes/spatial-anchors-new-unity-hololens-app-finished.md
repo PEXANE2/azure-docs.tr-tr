@@ -7,15 +7,15 @@ ms.topic: include
 ms.author: pmorgan
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 96439479ebb007507efdd577e963532d9cdf90d4
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67722955"
 ---
-## <a name="putting-everything-together"></a>Her şeyi bir araya getirilmesi
+## <a name="putting-everything-together"></a>Her şeyi bir araya getirmek
 
-İşte nasıl tam `AzureSpatialAnchorsScript` sınıf dosyası görünmelidir gibi tüm farklı öğeler birlikte yerleştirdiğiniz sonra. Kendi dosyanızı karşı karşılaştırın ve sol farkları gerekecekse nokta için bir başvuru olarak da kullanabilirsiniz.
+Tüm farklı öğeler `AzureSpatialAnchorsScript` bir araya getirildikten sonra tüm sınıf dosyasının nasıl görünmelidir: Kendi dosyanızla karşılaştırmak için başvuru olarak kullanabilirsiniz ve herhangi bir farkınız kalmışsa noktanızı görebilirsiniz.
 
 ```csharp
 using Microsoft.Azure.SpatialAnchors;
@@ -396,7 +396,7 @@ public class AzureSpatialAnchorsScript : MonoBehaviour
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, olduğunuz şunların nasıl yeni bir Unity HoloLens uygulama Azure uzamsal bağlayıcıları kullanma hakkında daha fazla. Yeni bir Android uygulaması Azure uzamsal bağlayıcıları kullanma hakkında daha fazla bilgi edinmek için sonraki öğreticiye devam edin.
+Bu eğitimde, yeni bir Unity HoloLens uygulamasında Azure Uzamsal Çapaları'nı nasıl kullanacağınız hakkında daha fazla bilgi edinebilirsiniz. Yeni bir Android uygulamasında Azure Uzamsal Çapaları nasıl kullanacağınız hakkında daha fazla bilgi edinmek için bir sonraki eğitime devam edin.
 
 > [!div class="nextstepaction"]
-> [Yeni bir Android uygulaması başlatılıyor](/azure/spatial-anchors/tutorials/tutorial-new-android-app)
+> [Yeni bir Android uygulaması başlatma](/azure/spatial-anchors/tutorials/tutorial-new-android-app)

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Igloo yazılım | Microsoft Docs'
-description: Azure Active Directory ve Igloo yazılım arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Igloo Software ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Igloo Software arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,240 +16,240 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100590"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Öğretici: Igloo yazılım ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Öğretici: Igloo Software ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Igloo yazılım tümleştirme konusunda bilgi edinin.
-Azure AD ile Igloo yazılım tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, Igloo Yazılımlarını Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Igloo Yazılımını Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Igloo yazılım erişimi, Azure AD'de kontrol edebilirsiniz.
-* Azure AD hesaplarına otomatik olarak (çoklu oturum açma) Igloo yazılım için oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Igloo Yazılımı'na erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Igloo Yazılımında (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesi Igloo yazılımıyla yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Igloo Software ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Abonelik igloo yazılım çoklu oturum açma etkin
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
+* Igloo Yazılım tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Destekleyen igloo yazılımı **SP** tarafından başlatılan
-* Destekleyen igloo yazılımı **zamanında** kullanıcı sağlama
+* Igloo **Software, SP** tarafından başlatılan SSO'ya destek veriyor
+* Igloo Software **Just In Time** kullanıcı sağlama destekler
 
-## <a name="adding-igloo-software-from-the-gallery"></a>Galeriden Igloo yazılım ekleme
+## <a name="adding-igloo-software-from-the-gallery"></a>Galeriden Igloo Yazılımı Ekleme
 
-Azure AD'de Igloo yazılım tümleştirmesini yapılandırmak için Igloo yazılım Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Igloo Yazılımının Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Igloo Yazılımını eklemeniz gerekir.
 
-**Galeriden Igloo yazılım eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Igloo Yazılımı eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Igloo yazılım**seçin **Igloo yazılım** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusunda, **Igloo Yazılımı**yazın, sonuç panelinden **Igloo Yazılımı'nı** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuç listesinde igloo yazılım](common/search-new-app.png)
+     ![Sonuç listesinde Igloo Yazılım](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma Igloo yazılım adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının Igloo yazılımla ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak Igloo Software ile Azure AD tek oturum açma işlemini yapılandırın ve test edersiniz.
+Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile Igloo Software'deki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma Igloo yazılım ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Igloo Software ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Igloo yazılım çoklu oturum açmayı yapılandırma](#configure-igloo-software-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Igloo yazılım test kullanıcısı oluşturma](#create-igloo-software-test-user)**  - kullanıcı Azure AD gösterimini bağlı Igloo yazılım Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Igloo Software Single Sign-On](#configure-igloo-software-single-sign-on)** 'u yapılandırın.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Igloo Yazılım test kullanıcıoluşturun](#create-igloo-software-test-user)** - kullanıcının Azure AD gösterimi ile bağlantılı Igloo Software Britta Simon bir meslektaşı olması.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma Igloo yazılımıyla yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Igloo Software ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Igloo yazılım** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. Azure [portalında,](https://portal.azure.com/) **Igloo Software** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![İgloo yazılım etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier-reply.png)
+    ![Igloo Yazılım Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier-reply.png)
 
-    a. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<company name>.igloocommmunities.com`
+    a. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<company name>.igloocommmunities.com`
 
-    b. İçinde **tanımlayıcı** kutusuna şu biçimi kullanarak bir URL yazın: `https://<company name>.igloocommmunities.com/saml.digest`
+    b. **Tanımlayıcı** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<company name>.igloocommmunities.com/saml.digest`
 
-    c. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<company name>.igloocommmunities.com/saml.digest`
+    c. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<company name>.igloocommmunities.com/saml.digest`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek oturum açma URL'si, tanımlayıcı ve yanıt URL'si ile güncelleştirin. İlgili kişi [Igloo yazılım istemcisi Destek ekibine](https://www.igloosoftware.com/services/support) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si, Tanımlayıcı ve Yanıt URL'si ile güncelleştirin. Bu değerleri almak için [Igloo Software Client destek ekibine](https://www.igloosoftware.com/services/support) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. Üzerinde **Igloo yazılımını kurma** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+6. **Igloo Yazılımını Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-igloo-software-single-sign-on"></a>Igloo yazılım çoklu oturum açmayı yapılandırın
+### <a name="configure-igloo-software-single-sign-on"></a>Igloo Yazılım Tek Oturum-On yapılandırma
 
-1. Farklı bir web tarayıcı penceresinde Igloo yazılım şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, yönetici olarak Igloo Software şirket sitenizde oturum açın.
 
-2. Git **Denetim Masası**.
+2. **Kontrol Paneline**git.
 
      ![Denetim Masası](./media/igloo-software-tutorial/ic799949.png "Denetim Masası")
 
-3. İçinde **üyelik** sekmesinde **oturum ayarları**.
+3. **Üyelik** sekmesinde, **Oturum Açma Ayarları'nı**tıklatın.
 
-    ![Oturum açma ayarları](./media/igloo-software-tutorial/ic783968.png "oturum açma ayarları")
+    ![Ayarlar'da Oturum Aç](./media/igloo-software-tutorial/ic783968.png "Ayarlar'da Oturum Aç")
 
-4. SAML yapılandırma bölümünde tıklayın **SAML kimlik doğrulamasını yapılandırma**.
+4. SAML Yapılandırma bölümünde, **SAML Kimlik Doğrulamasını Yapılandır'ı**tıklatın.
 
-    ![SAML yapılandırma](./media/igloo-software-tutorial/ic783969.png "SAML yapılandırma")
+    ![SAML Yapılandırması](./media/igloo-software-tutorial/ic783969.png "SAML Yapılandırması")
 
-5. İçinde **genel yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+5. Genel **Yapılandırma** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Genel yapılandırma](./media/igloo-software-tutorial/ic783970.png "genel yapılandırma")
+    ![Genel Yapılandırma](./media/igloo-software-tutorial/ic783970.png "Genel Yapılandırma")
 
-    a. İçinde **bağlantı adı** metin yapılandırmanızı için özel bir ad yazın.
+    a. Bağlantı **Adı** metin kutusunda, yapılandırmanız için özel bir ad yazın.
 
-    b. İçinde **Idp'nin oturum açma URL'si** metin değerini yapıştırın **oturum açma URL'si** , Azure Portalı'ndan kopyaladığınız.
+    b. **IdP Giriş URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin** değerini yapıştırın.
 
-    c. İçinde **IDP oturum kapatma URL'si** metin değerini yapıştırın **oturum kapatma URL'si** , Azure Portalı'ndan kopyaladığınız.
+    c. **IdP Giriş URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL** değerini yapıştırın.
 
-    d. Seçin **oturum kapatma yanıt ve İstek HTTP türü** olarak **POST**.
+    d. **Gİrİş Yanıtı ve Post** olarak HTTP Tipi **Niyaz'ı**seçin.
 
-    e. Açık, **base-64** Defteri'nde kodlanmış sertifika Azure portalından indirilen, içeriğini, panoya kopyalayın ve ardından ona yapıştırın **ortak sertifika** metin.
+    e. Azure portalından indirilen not defterinde **base-64** kodlu sertifikanızı açın, içeriğini panonuza kopyalayın ve ardından **Herkese Açık Sertifika** metin kutusuna yapıştırın.
 
-6. İçinde **yanıt ve kimlik doğrulama Yapılandırması**, aşağıdaki adımları gerçekleştirin:
+6. Yanıt **ve Kimlik Doğrulama Yapılandırmasında**aşağıdaki adımları gerçekleştirin:
 
-    ![Yanıt ve kimlik doğrulama Yapılandırması](./media/igloo-software-tutorial/IC783971.png "yanıt ve kimlik doğrulaması yapılandırması")
+    ![Yanıt ve Kimlik Doğrulama Yapılandırması](./media/igloo-software-tutorial/IC783971.png "Yanıt ve Kimlik Doğrulama Yapılandırması")
   
-    a. Olarak **kimlik sağlayıcısı**seçin **Microsoft ADFS**.
+    a. **Kimlik Sağlayıcı**olarak Microsoft **ADFS'yi**seçin.
 
-    b. Olarak **tanımlayıcı türü**seçin **e-posta adresi**. 
+    b. **Tanımlayıcı Türü**olarak, **E-posta Adresi**seçin. 
 
-    c. İçinde **e-posta özniteliği** metin kutusuna **emailaddress**.
+    c. **E-posta Özniteliği** metin **kutusuna, e-posta adresini**yazın.
 
-    d. İçinde **ad özniteliği** metin kutusuna **givenname**.
+    d. Ad **Özniteliği** textbox'ına, **verilen adı**yazın.
 
-    e. İçinde **son Name özniteliği** metin kutusuna **Soyadı**.
+    e. Soyadı **Öznitelik** **textbox,.**
 
 7. Yapılandırmayı tamamlamak için aşağıdaki adımları gerçekleştirin:
 
-    ![Oturum açma kullanıcı oluşturma](./media/igloo-software-tutorial/IC783972.png "oturum açma kullanıcı oluşturma") 
+    ![Oturum Aç'ta kullanıcı oluşturma](./media/igloo-software-tutorial/IC783972.png "Oturum Aç'ta kullanıcı oluşturma") 
 
-    a. Olarak **oturum açma kullanıcı oluşturma**seçin **oturum açtığında, sitenizde yeni bir kullanıcı oluşturmak**.
+    a. **Oturum Aç'ta Kullanıcı oluşturma**olarak, oturum **açken sitenizde yeni bir kullanıcı oluştur'u**seçin.
 
-    b. Olarak **oturum açma ayarları**seçin **ekranında "Oturum Aç" düğmesi kullanım SAML**.
+    b. **Ayarlar'da Oturum Aç'ta** **"Oturum Aç" ekranında SAML'i kullan düğmesini**seçin.
 
-    c. **Kaydet**’e tıklayın.
+    c. **Kaydet**'e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
+    b. Kullanıcı **adı** alanı türünde**brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma Igloo yazılıma erişim vererek kullanmak Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın Igloo Yazılımına erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Igloo yazılım**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Igloo Yazılımı'nı**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Igloo yazılım**.
+2. Uygulamalar **listesinde, Igloo Software'i**seçin.
 
-    ![Uygulamalar listesinde Igloo yazılım bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Igloo Yazılım bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-igloo-software-test-user"></a>Igloo yazılım test kullanıcısı oluşturma
+### <a name="create-igloo-software-test-user"></a>Igloo Yazılım test kullanıcı oluşturma
 
-Hiçbir eylem öğesini, Igloo yazılım için kullanıcı sağlamayı yapılandırma yoktur.  
+Kullanıcı sağlamayı Igloo Software'e yapılandırmanız için bir eylem öğesi yoktur.  
 
-Atanan kullanıcı Igloo yazılıma erişim panelini kullanarak oturum açmak çalıştığında, Igloo yazılım, kullanıcının mevcut olup olmadığını denetler.  Varsa kullanıcı hesabı kullanılabilir henüz Igloo yazılımı tarafından otomatik olarak oluşturulur.
+Atanmış bir kullanıcı erişim panelini kullanarak Igloo Software'de oturum açmaya çalıştığında, Igloo Software kullanıcının var olup olmadığını denetler.  Henüz kullanılabilir bir kullanıcı hesabı yoksa, otomatik olarak Igloo Software tarafından oluşturulur.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Igloo yazılım kutucuğa tıkladığınızda, otomatik olarak SSO'yu ayarlama Igloo yazılım için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Igloo Yazılım döşemesini tıklattığınızda, Otomatik olarak SSO'yu kurduğunuz Igloo Yazılımı'nda oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

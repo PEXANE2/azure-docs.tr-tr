@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Akamai arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Akamai ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Akamai arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,316 +17,316 @@ ms.date: 11/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 042dd242285081001ca48c9f17e4d42c2294c0ff
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74979598"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Akamai 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Akamai 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Akamai'yi Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Akamai'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Akamai 'e erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Akamai otomatik olarak oturum açmalarına olanak tanıyın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Akamai erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Akamai'de otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Akamai çoklu oturum açma (SSO) etkin abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Akamai tek oturum açma (SSO) aboneliği sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-- Bolluk, ıDP tarafından başlatılan SSO 'yu destekler
+- Bolluk IDP'nin Başlattığı SSO'ya destek verdi
 
 ## <a name="adding-akamai-from-the-gallery"></a>Galeriden Akamai ekleme
 
-Akamai tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Akamai yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Akamai'nin Azure AD'ye entegrasyonunu yapılandırmak için, Akamai'yi galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Akamai** yazın.
-1. Sonuçlar panelinden **Akamai** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, arama **kutusuna Akamai** yazın.
+1. Sonuç panelinden **Akamai'yi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Akamai için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Akamai için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Akamai ile yapılandırın ve test edin. SSO 'nun çalışması için, Akamai içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Akamai ile yapılandırma ve test edin. SSO'nun çalışması için, Bir Azure AD kullanıcısı ile Akamai'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu Akamai ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Akamai ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[AKAMAI SSO 'Yu yapılandırın](#configure-akamai-sso)** .
-    * Kullanıcının Azure AD gösterimine bağlı olan Akamai 'de B. Simon 'ya karşılık gelen bir **[Akamai test kullanıcısı oluşturun](#create-akamai-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Akamai SSO'yu yapılandırın](#configure-akamai-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    * **[Akamai test kullanıcıoluşturun](#create-akamai-test-user)** - Kullanıcının Azure AD gösterimi ile bağlantılı Akamai B.Simon bir meslektaşı olması.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Akamai** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **Akamai** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<Yourapp>.login.go.akamai-access.com/sp/response`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<Yourapp>.login.go.akamai-access.com/sp/response`
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https:// <Yourapp>.login.go.akamai-access.com/sp/response`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https:// <Yourapp>.login.go.akamai-access.com/sp/response`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Akamai istemci destek ekibine](https://www.akamai.com/us/en/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [Akamai Müşteri destek ekibine](https://www.akamai.com/us/en/contact-us/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML İmza Sertifikası** bölümünde **SAML ile tek oturum açma'da** **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **Akamai ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Akamai'yi ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Akamai 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Akamai'ye erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Akamai**' yi seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Akamai'yi**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-akamai-sso"></a>Akamai SSO 'yu yapılandırma
+## <a name="configure-akamai-sso"></a>Akamai SSO'nun yapılandırılsın
 
-### <a name="setting-up-idp"></a>IDP 'yi ayarlama
+### <a name="setting-up-idp"></a>IDP'nin kurulması
 
-1. **Akamai kurumsal uygulama erişimi** konsoluna oturum açma.
-1. **Akamai EAA konsolunda** **kimlik** > kimlik **sağlayıcıları**' nı seçin.
+1. **Akamai Enterprise Application Access** konsolunda oturum açın.
+1. **Akamai EAA konsolunda,** **Kimlik Kimliği** > **Sağlayıcıları**seçin.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure01.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure01.png)
 
-1. **Kimlik sağlayıcısı ekle**' ye tıklayın.
+1. **Kimlik Sağlayıcı Ekle'yi**tıklatın.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure02.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure02.png)
 
-    a. **Benzersiz adı**belirtin.
+    a. Benzersiz **Adı**belirtin.
     
-    b. **Üçüncü taraf SAML** ' yi seçin ve **kimlik sağlayıcısı oluştur ve Yapılandır**' a tıklayın.
+    b. **Üçüncü Taraf SAML'yi** seçin ve **Kimlik Sağlayıcısı Oluştur'u ve Yapılandır'ı**tıklatın.
 
 ### <a name="general-settings"></a>Genel Ayarlar
 
-1. **Kimlik kesme noktası** -(SP temel URL 'Si – Azure AD yapılandırması için kullanılacak) adını belirtin
+1. **Kimlik Engelleme** - (SP temel URL'si-Azure AD Yapılandırması için kullanılacaktır) adını belirtin
 
     > [!NOTE]
-    > Kendi özel etki alanınızı (bir DNS girişi ve bir sertifika gerektirir) seçebilirsiniz. Bu örnekte Akamai etki alanını kullanacağız.
+    > Kendi özel etki alanınız olmasını seçebilirsiniz (DNS girişi ve Sertifika gerektirir). Bu örnekte Akamai Domain'i kullanacağız.
 
-1. **Akamai bulut bölgesi** -uygun bulut bölgesini seçin.
-1. **Sertifika doğrulama** -Akamai belgelerini denetle (isteğe bağlı)
+1. **Akamai Bulut Bölgesi** - Uygun bulut bölgesini seçin.
+1. **Sertifika Doğrulama** - Akamai Belgeleri Kontrol Et (isteğe bağlı)
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure03.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure03.png)
 
-### <a name="authentication-configuration"></a>Kimlik doğrulama yapılandırması
+### <a name="authentication-configuration"></a>Kimlik Doğrulama Yapılandırması
 
-1. URL – kimlik kesme noktası ile aynı URL 'YI belirtin (Bu, kullanıcıların kimlik doğrulamasından sonra yeniden yönlendirileceği yerdir).
-2. Oturum kapatma URL 'SI: oturum kapatma URL 'sini güncelleştirin.
-3. SAML Isteği imzala: varsayılan seçilmemiş.
-4. IDP meta veri dosyası için, uygulamayı Azure AD konsoluna ekleyin.
+1. URL – URL'yi kimlik engellemenizle aynı şekilde belirtin (bu, kullanıcıların kimlik doğrulamadan sonra yeniden yönlendirildiği yerdir).
+2. Oturum Açma URL'si : Oturum açma URL'sini güncelleyin.
+3. SAML İsteği'ni imzalayın: varsayılan olarak işaretlenmemiş.
+4. IDP Meta veri dosyası için Uygulamayı Azure AD Konsoluna ekleyin.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure04.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure04.png)
 
-### <a name="header-based-authentication"></a>Üst bilgi tabanlı kimlik doğrulaması
+### <a name="header-based-authentication"></a>Üstbilgi Tabanlı Kimlik Doğrulama
 
-Akamai üst bilgi tabanlı kimlik doğrulaması
+Akamai Başlık Tabanlı Kimlik Doğrulama
 
-1. **Özel http** formunu uygulama ekleme Sihirbazı ' nı seçin.
+1. Uygulamalar Ekle **Sihirbazı'nı Özel HTTP** formunu seçin.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure05.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure05.png)
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure06.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure06.png)
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure07.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure07.png)
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure08.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulaması
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure09.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure09.png)
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure10.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure10.png)
 
 #### <a name="services"></a>Hizmetler
 
-1. Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
+1. Kaydet ve Kimlik Doğrulamaya Git'i tıklatın.
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure11.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure11.png)
 
 #### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
-1. **MÜŞTERI http üstbilgileri**altında **Customerheader** ve **SAML özniteliğini**belirtin.
+1. Müşteri **HTTP Üstbilgi altında,** **CustomerHeader** ve **SAML Özniteliği**ni belirtin.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure12.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure12.png)
 
-1. **Kaydet ve dağıtıma git** düğmesine tıklayın.
+1. **Kaydet'i tıklatın ve Dağıtım düğmesine gidin.**
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure13.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure13.png)
 
-#### <a name="deploy-the-application"></a>Uygulamayı Dağıtma
+#### <a name="deploy-the-application"></a>Uygulamayı Dağıt
 
-1. **Uygulamayı dağıt** düğmesine tıklayın.
+1. **Uygulamayı Dağıt** düğmesini tıklatın.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure14.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure14.png)
 
 1. Uygulamanın başarıyla dağıtıldığını doğrulayın.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure15.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure15.png)
 
 ### <a name="kerberos-authentication"></a>Kerberos Kimlik Doğrulaması
 
 #### <a name="remote-desktop"></a>Uzak Masaüstü
 
-1. Uygulama ekleme sihirbazından **RDP** ' yi seçin.
+1. ADD Uygulamaları Sihirbazı'ndan **RDP'yi** seçin.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure16.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure16.png)
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure17.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure17.png)
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure18.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure18.png)
 
-1. Buna hizmet edecek bağlayıcıyı belirtin.
+1. Buna hizmet verecek Bağlayıcıyı belirtin.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure19.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulaması
 
-**Kaydet ' e tıklayın ve hizmetler 'e gidin**.
+**Kaydet'i tıklatın ve Hizmetlere gidin.**
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure20.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure20.png)
 
 #### <a name="services"></a>Hizmetler
 
-**Kaydet ' e tıklayın ve Gelişmiş ayarlar**' a gidin.
+**Kaydet'i tıklatın ve Gelişmiş Ayarlar'a gidin.**
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure21.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure21.png)
 
 #### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
-**Kaydet ' e tıklayın ve dağıtıma gidin**.
+**Kaydet'i tıklatın ve Dağıtım'a gidin.**
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure22.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure22.png)
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure23.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure23.png)
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure24.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure24.png)
 
-### <a name="deployment"></a>Kurulum
+### <a name="deployment"></a>Dağıtım
 
 #### <a name="ssh"></a>SSH
 
-1. Uygulama Ekle ' ye gidin, **SSH**' ı seçin.
+1. Uygulama Ekle'ye git , **SSH'yi**seçin.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure25.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure25.png)
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure26.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure26.png)
 
-1. Uygulama kimliğini yapılandırın.
+1. Uygulama Kimliğini Yapılandırın.
 
-    ![Akamai yapılandırma](./media/header-akamai-tutorial/configure27.png)
+    ![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure27.png)
 
-    a. Ad/açıklama belirtin.
+    a. Ad / Açıklama belirtin.
 
-    b. SSH için uygulama sunucusu IP/FQDN ve bağlantı noktası belirtin.
+    b. SSH için Uygulama Sunucusu IP/FQDN ve bağlantı noktasını belirtin.
 
-    c. SSH kullanıcı adını/parolasını belirtin * Check Akamai EAA.
+    c. SSH kullanıcı adını / parolayı *Akamai EAA'yı kontrol edin.
 
     d. Dış ana bilgisayar adını belirtin.
 
-    e. Bağlayıcının konumunu belirtin ve bağlayıcıyı seçin.
+    e. Bağlayıcının Konumunu belirtin ve bağlayıcıyı seçin.
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulaması
 
-Kaydet ' **e tıklayın ve hizmetlere gidin**.
+**Kaydet'e tıklayın ve Hizmetlere gidin.**
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure28.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure28.png)
 
 #### <a name="services"></a>Hizmetler
 
-**Kaydet ' e tıklayın ve Gelişmiş ayarlar**' a gidin.
+**Kaydet'i tıklatın ve Gelişmiş Ayarlar'a gidin.**
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure29.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure29.png)
 
 #### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
-Kaydet ve dağıtıma git 'e tıklayın
+Kaydet'i tıklatın ve Dağıtıma gitmek için
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure30.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure30.png)
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure31.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure31.png)
 
-#### <a name="deployment"></a>Kurulum
+#### <a name="deployment"></a>Dağıtım
 
-**Uygulamayı dağıt**' a tıklayın.
+**Uygulamayı Dağıt'ı**tıklatın.
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure32.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure32.png)
 
-### <a name="kerberos-applications"></a>Kerberos uygulamaları
+### <a name="kerberos-applications"></a>Kerberos Uygulamaları
 
-#### <a name="adding-directory"></a>Dizin ekleniyor
+#### <a name="adding-directory"></a>Dizin Ekleme
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure33.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure33.png)
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure34.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure34.png)
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure35.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure35.png)
 
-![Akamai yapılandırma](./media/header-akamai-tutorial/configure36.png)
+![Akamai'nin Yapılandırılması](./media/header-akamai-tutorial/configure36.png)
 
-### <a name="create-akamai-test-user"></a>Akamai test kullanıcısı oluştur
+### <a name="create-akamai-test-user"></a>Akamai test kullanıcısı oluşturma
 
-Bu bölümde, Akamai içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları Akamai platformunda eklemek için [Akamai istemci desteği ekibi](https://www.akamai.com/us/en/contact-us/) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi. 
+Bu bölümde, Akamai'de B.Simon adında bir kullanıcı oluşturursunuz. Akamai platformunda kullanıcıları eklemek için [Akamai Müşteri destek ekibi](https://www.akamai.com/us/en/contact-us/) ile çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir. 
 
-## <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Akamai kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Akamai için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Akamai karosu tıklattığınızda, SSO'yu kurduğunuz Akamai'de otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Akamai deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Akamai'yi deneyin](https://aad.portal.azure.com/)

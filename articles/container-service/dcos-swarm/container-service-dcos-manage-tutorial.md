@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Azure Container Service öğreticisi-DC/OS 'yi yönetme
+title: (AmortismanA Uğradı) Azure Konteyner Hizmeti öğreticisi - DC/OS'yi yönet
 description: Azure Container Service öğreticisi - DC/OS Yönetme
 author: iainfoulds
 ms.service: container-service
@@ -8,17 +8,17 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402804"
 ---
-# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>Kullanım DıŞı Azure Container Service öğreticisi-DC/OS 'yi yönetme
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(AmortismanA Uğradı) Azure Konteyner Hizmeti öğreticisi - DC/OS'yi yönet
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS, modern ve kapsayıcılı uygulamalar çalıştırmak için dağıtılmış bir platform sunar. Azure Container Service ile üretime hazır bir DC/OS kümesinin dağıtımı basit ve hızlıdır. Bu hızlı başlangıçta, DC/OS kümesi dağıtmak ve temel iş yükünü çalıştırmak için gereken temel adımlar ayrıntılı olarak vardır.
+DC/OS, modern ve kapsayıcılı uygulamalar çalıştırmak için dağıtılmış bir platform sunar. Azure Container Service ile üretime hazır bir DC/OS kümesinin dağıtımı basit ve hızlıdır. Bu hızlı başlangıç, dc/os kümesidağıtmak ve temel iş yükünü çalıştırmak için gereken temel adımları ayrıntılarıyla anlatır.
 
 > [!div class="checklist"]
 > * ACS DC/OS kümesi oluşturma
@@ -276,4 +276,4 @@ Bu öğreticide, aşağıdakiler de dahil olmak üzere temel DC/OS yönetimi gö
 Azure üzerinde DC/OS’de yük dengeleme uygulaması hakkında bilgi edinmek için sonraki öğreticiye ilerleyin. 
 
 > [!div class="nextstepaction"]
-> [Uygulamalarda yük dengeleme gerçekleştirme](container-service-load-balancing.md)
+> [Uygulamalarda yük dengeleme](container-service-load-balancing.md)

@@ -1,46 +1,46 @@
 ---
-title: Öğretici-kaynaklar & özel eylemler
-description: Bu öğreticide, Azure özel sağlayıcısı ile Azure yönetilen uygulamasının nasıl oluşturulacağı açıklanmaktadır.
+title: Öğretici - özel eylemler & kaynakları
+description: Bu öğretici, Azure Özel Sağlayıcısı ile Azure Yönetilen Uygulama'nın nasıl oluşturulacağÝný açıklar.
 ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.openlocfilehash: c3750da6bd76c8cb3908fbdc71ba676f09d77def
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650082"
 ---
-# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma
+# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Öğretici: Özel eylemler ve kaynaklarla yönetilen uygulama oluşturma
 
-Bu öğreticide, özel eylemler ve kaynaklarla kendi yönetilen uygulamanızı oluşturursunuz. Yönetilen uygulama `Overview` sayfasında özel bir eylem içerir, özel kaynak türü, `Table of Content` ayrı bir menü öğesi olarak görüntülenir ve özel kaynak sayfasında özel bir bağlam eylemi olur.
+Bu öğreticide, özel eylemler ve kaynaklarla kendi yönetilen uygulamanızı oluşturursunuz. Yönetilen `Overview` uygulama, sayfada özel bir eylem, ayrı bir menü öğesi olarak `Table of Content` görüntülenen özel bir kaynak türü ve özel kaynak sayfasında özel bir bağlam eylemi içerir.
 
 Bu öğretici aşağıdaki adımları içerir:
 
 > [!div class="checklist"]
-> * Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanım dosyası yaz
-> * [Azure özel sağlayıcısı](../custom-providers/overview.md), Azure depolama hesabı ve Azure işlevi ile dağıtım şablonu yazma
-> * Özel eylemler ve kaynaklarla görünüm tanımı yapıtı yazma
-> * Yönetilen uygulama tanımını dağıtma
+> * Yönetilen bir uygulama örneği oluşturmak için yazar kullanıcı arabirimi tanım dosyası
+> * Azure Özel [Sağlayıcısı, Azure](../custom-providers/overview.md)Depolama Hesabı ve Azure İşlevi ile yazar dağıtım şablonu
+> * Özel eylemler ve kaynaklarla yazar görünümü tanımı artifakı
+> * Yönetilen bir uygulama tanımı dağıtma
 > * Yönetilen uygulamanın bir örneğini dağıtma
-> * Özel eylemler gerçekleştirme ve özel kaynaklar oluşturma
+> * Özel eylemler gerçekleştirin ve özel kaynaklar oluşturun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
+Bu öğreticiyi tamamlamak için şunları bilmeniz gerekir:
 
-* [Yönetilen uygulama tanımı oluşturma ve yayımlama](publish-service-catalog-app.md).
-* [Azure Portal aracılığıyla Service Catalog uygulaması dağıtma](deploy-service-catalog-quickstart.md).
-* [Yönetilen uygulamanız için Azure Portal Kullanıcı arabirimi oluşturma](create-uidefinition-overview.md).
-* [Tanım yapıtı yeteneklerini görüntüleyin](concepts-view-definition.md) .
-* [Azure özel sağlayıcı](../custom-providers/overview.md) özellikleri.
+* Yönetilen [bir uygulama tanımı oluşturma ve yayımlama.](publish-service-catalog-app.md)
+* Azure [portalı üzerinden Hizmet Kataloğu uygulaması](deploy-service-catalog-quickstart.md)nasıl dağıtılır?
+* Yönetilen [uygulamanız için Azure portalı kullanıcı arabirimi](create-uidefinition-overview.md)nasıl oluşturulur?
+* [Tanım yapı özellikleri](concepts-view-definition.md) özelliklerini görüntüleyin.
+* [Azure Özel Sağlayıcı](../custom-providers/overview.md) özellikleri.
 
 ## <a name="user-interface-definition"></a>Kullanıcı arabirimi tanımı
 
-Bu öğreticide, yönetilen bir uygulama oluşturursunuz ve yönetilen kaynak grubu özel sağlayıcı örneği, depolama hesabı ve işlev içerecektir. Bu örnekte kullanılan Azure Işlevi, Eylemler ve kaynaklar için özel sağlayıcı işlemlerini işleyen bir API uygular. Azure depolama hesabı, özel sağlayıcı kaynaklarınız için temel depolama alanı olarak kullanılır.
+Bu öğreticide, yönetilen bir uygulama oluşturursunuz ve yönetilen kaynak grubu özel sağlayıcı örneği, depolama hesabı ve işlev içerir. Bu örnekte kullanılan Azure İşlevi, eylemler ve kaynaklar için özel sağlayıcı işlemlerini işleyen bir API uygular. Azure Depolama Hesabı, özel sağlayıcı kaynaklarınız için temel depolama alanı olarak kullanılır.
 
-Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı `funcname` ve `storagename` giriş öğelerini içerir. Depolama hesabı adı ve işlev adı genel olarak benzersiz olmalıdır. Varsayılan olarak, işlev dosyaları [örnek işlev paketinden](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)dağıtılır, ancak *createuıdefinition. JSON*içindeki bir paket bağlantısı için bir giriş öğesi ekleyerek bunu değiştirebilirsiniz:
+Yönetilen bir uygulama örneği oluşturmak için `funcname` `storagename` kullanıcı arabirimi tanımı içerir ve giriş öğeleri. Depolama hesabı adı ve işlev adı genel olarak benzersiz olmalıdır. Varsayılan fonksiyon dosyaları [örnek işlev paketinden](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)dağıtılır, ancak *createUIDefinition.json*bir paket bağlantısı için bir giriş öğesi ekleyerek değiştirebilirsiniz:
 
 ```json
 {
@@ -73,7 +73,7 @@ Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı `f
 }
 ```
 
-*Createuıdefinition. JSON*içinde çıktı:
+ve *createUIDefinition.json*çıktı :
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -81,13 +81,13 @@ Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı `f
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-Tüm *Createuıdefinition. JSON* örneği, [Başvuru: Kullanıcı arabirimi öğeleri yapıtlarına başvurabilir](reference-createuidefinition-artifact.md).
+Tam *createUIDefinition.json* örnek Referans [bulunabilir: Kullanıcı arabirimi elemanları eserler](reference-createuidefinition-artifact.md).
 
-## <a name="template-with-custom-provider"></a>Özel sağlayıcı içeren şablon
+## <a name="template-with-custom-provider"></a>Özel sağlayıcıile şablon
 
-Özel sağlayıcıyla yönetilen bir uygulama örneği oluşturmak için, **genel** adına sahip özel sağlayıcı kaynağı tanımlamanız ve **maintemplate. JSON**' da **Microsoft. customproviders/resourceproviders** yazmanız gerekir. Bu kaynakta, hizmetinize yönelik kaynak türlerini ve eylemleri tanımlarsınız. Azure Işlevi ve Azure depolama hesabı örnekleri dağıtmak için sırasıyla `Microsoft.Web/sites` ve `Microsoft.Storage/storageAccounts` türündeki kaynakları tanımlayın.
+Özel sağlayıcıyla yönetilen bir uygulama örneği oluşturmak için, ad **genelolan** özel sağlayıcı kaynağını tanımlamanız ve **mainTemplate.json'unuzda** **Microsoft.CustomProviders/resourceProviders** yazın. Bu kaynakta, hizmetinizin kaynak türlerini ve eylemlerini tanımlarsınız. Azure İşlevi ve Azure Depolama Hesabı örneklerini `Microsoft.Storage/storageAccounts` dağıtmak için, sırasıyla tür `Microsoft.Web/sites` kaynaklarını tanımlar.
 
-Bu öğreticide, bir `users` kaynak türü, `ping` özel eylem ve `users` özel bir kaynak bağlamında gerçekleştirilecek özel eylem `users/contextAction` oluşturacaksınız. Her kaynak türü ve eylemi için [Createuıdefinition. JSON](#user-interface-definition)içinde belirtilen ada sahip işleve işaret eden bir uç nokta sağlayın. Kaynak türleri için `Proxy,Cache` olarak **Routingtype** ve eylemler için `Proxy` belirtin:
+`users` Bu öğreticide, `ping` `users/contextAction` `users` özel bir kaynak bağlamında gerçekleştirilecek bir kaynak türü, özel eylem ve özel eylem oluşturursunuz. Her kaynak türü ve eylem için [createUIDefinition.json](#user-interface-definition)sağlanan adı ile işlevi gösteren bir bitiş noktası sağlar. Kaynak türleri ve `Proxy` eylemler `Proxy,Cache` için **yönlendirme Türünü** belirtin:
 
 ```json
 {
@@ -122,18 +122,18 @@ Bu öğreticide, bir `users` kaynak türü, `ping` özel eylem ve `users` özel 
 }
 ```
 
-Tüm *Maintemplate. JSON* örneği, [Başvuru: dağıtım şablonu yapıtında](reference-main-template-artifact.md)bulunabilir.
+*MainTemplate.json* örneğinin tamamı [Başvuru: Dağıtım şablonu artifakı'nda](reference-main-template-artifact.md)bulunabilir.
 
 ## <a name="view-definition-artifact"></a>Tanım yapıtını görüntüleme
 
-Yönetilen uygulamanızda özel eylemleri ve özel kaynakları içeren Kullanıcı arabirimini tanımlamak için **ViewDefinition. JSON** yapıtı yazmak gerekir. Görünüm tanımı yapıtı hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar 'da tanım yapıtı görüntüleme](concepts-view-definition.md).
+Yönetilen uygulamanızda özel eylemler ve özel kaynaklar içeren kullanıcı arabirimi tanımlamak için **viewDefinition.json** artifakı yazmanız gerekir. Görünüm tanımı yapı hakkında daha fazla bilgi için Azure [Yönetilen Uygulamalar'da tanım artifakı](concepts-view-definition.md)görüntüle'ye bakın.
 
 Bu öğreticide şunları tanımlarsınız:
-* Temel metin girişi ile `TestAction` özel bir eylemi temsil eden araç çubuğu düğmesi içeren bir *genel bakış* sayfası.
-* Özel bir kaynak türünü temsil eden bir *Kullanıcılar* sayfası `users`.
-* *Kullanıcılar* sayfasında, `users`türünde özel kaynak bağlamında gerçekleştirilecek özel bir kaynak eylemi `users/contextAction`.
+* Temel *Overview* metin girişiyle özel bir eylemi `TestAction` temsil eden araç çubuğu düğmesi içeren genel bakış sayfası.
+* Özel *Users* bir kaynak türünü `users`temsil eden kullanıcılar sayfası.
+* Kullanıcılar sayfasında, `users/contextAction` *Users* özel bir tür `users`kaynak bağlamında gerçekleştirilecek özel bir kaynak eylemi.
 
-Aşağıdaki örnek, "genel bakış" sayfası için görünüm yapılandırmasını gösterir:
+Aşağıdaki örnekte, bir "Genel Bakış" sayfası için görünüm yapılandırması gösterilmektedir:
 
 ```json
 {
@@ -150,7 +150,7 @@ Aşağıdaki örnek, "genel bakış" sayfası için görünüm yapılandırması
   }
 ```
 
-Aşağıdaki örnekte, "kullanıcılar" kaynakları sayfa yapılandırması özel kaynak eylemiyle birlikte verilmiştir:
+Aşağıdaki örnek, özel kaynak eylemi ile "Kullanıcılar" kaynakları sayfa yapılandırmasını içerir:
 
 ```json
 {
@@ -174,17 +174,17 @@ Aşağıdaki örnekte, "kullanıcılar" kaynakları sayfa yapılandırması öze
   }
 ```
 
-Tüm *ViewDefinition. JSON* örneği, [Başvuru: View definition yapay](reference-view-definition-artifact.md)öğesinde bulunabilir.
+Tam *viewDefinition.json* örneği [Reference: View definition artifakı](reference-view-definition-artifact.md)bulunabilir.
 
 ## <a name="managed-application-definition"></a>Yönetilen uygulama tanımı
 
-Aşağıdaki yönetilen uygulama yapılarını zip arşivine paketleyin ve depolama birimine yükleyin:
+Aşağıdaki yönetilen uygulama yapılarını zip arşivine paketleyin ve depolamaalanına yükleyin:
 
-* Createuıdefinition. JSON
-* mainTemplate. JSON
-* viewDefinition. JSON
+* oluşturmaUiDefinition.json
+* mainTemplate.json
+* viewDefinition.json
 
-Tüm dosyalar kök düzeyinde olmalıdır. Yapıtları olan paket, GitHub Blobu veya Azure depolama hesabı blobu gibi herhangi bir depolama alanında depolanabilir. Uygulama paketini depolama hesabına yüklemek için bir komut dosyası aşağıda verilmiştir: 
+Tüm dosyalar kök düzeyinde olmalıdır. Yapıların bulunduğu paket, GitHub blob veya Azure Depolama Hesabı blob'u gibi herhangi bir depolama alanında depolanabilir. Uygulama paketini depolama hesabına yüklemek için bir komut dosyası aşağıda veda edebilirsiniz: 
 
 ```powershell
 $resourceGroup="appResourcesGroup"
@@ -215,11 +215,11 @@ Set-AzStorageBlobContent `
 $blobUri=(Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx).ICloudBlob.uri.AbsoluteUri
 ```
 
-Aşağıdaki Azure CLı betiğini çalıştırın veya hizmet kataloğu yönetilen uygulama tanımını dağıtmak için Azure portal içindeki adımları izleyin:
+Aşağıda Azure CLI komut dosyasını çalıştırın veya Hizmet Kataloğu yönetilen uygulama tanımını dağıtmak için Azure portalındaki adımları izleyin:
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 resourceGroup="appResourcesGroup"
@@ -244,40 +244,40 @@ az managedapp definition create \
   --package-file-uri "path to your app.zip package"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **yönetilen uygulamalar merkezi**' ni yazın ve seçin.
-2. **Yönetilen uygulamalar merkezi**'Nde **Hizmet kataloğu uygulama tanımı** ' nı seçin ve **Ekle**' ye tıklayın. 
+1. Azure portalında **Tüm hizmetler'i**seçin. Kaynaklar listesinde Yönetilen **Uygulamalar Merkezi**yazın ve seçin.
+2. Yönetilen **Uygulamalar**Merkezi'nde, **Hizmet Kataloğu uygulama tanımını** seçin ve **Ekle'yi**tıklatın. 
     
-    ![Hizmet kataloğu Ekle](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
+    ![Hizmet Kataloğu Ekle](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
 
-3. Hizmet kataloğu tanımı oluşturmak için değerleri girin:
+3. Hizmet Kataloğu tanımı oluşturmak için değerler sağlayın:
 
-    * Hizmet kataloğu tanımı, **görünen ad** ve *Açıklama*(isteğe bağlı) için benzersiz bir **ad** sağlayın.
-    * Uygulama tanımının oluşturulacağı **aboneliği**, **kaynak grubunu**ve **konumu** seçin. ZIP paketi için kullanılan aynı kaynak grubunu kullanabilir veya yeni bir kaynak grubu oluşturabilirsiniz.
-    * Bir **paket dosyası URI 'si**için, önceki adımda oluşturduğunuz zip dosyasının yolunu belirtin.
+    * Hizmet Kataloğu tanımı, **Görüntü Adı** ve *Açıklaması*(isteğe bağlı) için benzersiz bir **Ad** sağlayın.
+    * **Abonelik,** **Kaynak grubu**ve uygulama tanımının oluşturulacağı **konum'u** seçin. Zip paketi için kullanılan aynı kaynak grubunu kullanabilir veya yeni bir kaynak grubu oluşturabilirsiniz.
+    * Paket **Dosya Uri**için, önceki adımda oluşturduğunuz zip dosyasına giden yolu sağlayın.
 
-    ![Değer sağla](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
+    ![Değerler sağlama](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
 
-4. Kimlik doğrulama ve kilit düzeyi bölümüne geldiğinizde, **Yetkilendirme Ekle**' yi seçin.
+4. Kimlik Doğrulama ve Kilit Düzeyi bölümüne ulaştığınızda, **Yetki Ekle'yi**seçin.
 
-    ![Yetkilendirme Ekle](./media/tutorial-create-managed-app-with-custom-provider/add-authorization.png)
+    ![Yetkilendirme ekleme](./media/tutorial-create-managed-app-with-custom-provider/add-authorization.png)
 
-5. Kaynakları yönetmek için bir Azure Active Directory grubu seçin ve **Tamam**' ı seçin.
+5. Kaynakları yönetmek için bir Azure Etkin Dizin grubu seçin ve **Tamam'ı**seçin.
 
-   ![Yetkilendirme grubu Ekle](./media/tutorial-create-managed-app-with-custom-provider/add-auth-group.png)
+   ![Yetkilendirme grubu ekleme](./media/tutorial-create-managed-app-with-custom-provider/add-auth-group.png)
 
-6. Tüm değerleri sağladıysanız **Oluştur**' u seçin.
+6. Tüm değerleri sağladığınızda **Oluştur'u**seçin.
 
-   ![Yönetilen uygulama tanımı oluştur](./media/tutorial-create-managed-app-with-custom-provider/create-service-catalog-definition.png)
+   ![Yönetilen uygulama tanımı oluşturma](./media/tutorial-create-managed-app-with-custom-provider/create-service-catalog-definition.png)
 
 ---
 
 ## <a name="managed-application-instance"></a>Yönetilen uygulama örneği
 
-Yönetilen uygulama tanımı dağıtıldığında aşağıdaki betiği çalıştırın veya yönetilen uygulama örneğinizi özel sağlayıcıyla dağıtmak için Azure portal bölümündeki adımları uygulayın:
+Yönetilen uygulama tanımı dağıtıldığında, yönetilen uygulama örneğini özel sağlayıcıyla dağıtmak için aşağıdaki komut dosyasını çalıştırın veya Azure portalındaki adımları izleyin:
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 appResourcesGroup="appResourcesGroup"
@@ -300,58 +300,58 @@ az managedapp create \
   --parameters "{\"funcname\": {\"value\": \"managedusersappfunction\"}, \"storageName\": {\"value\": \"managedusersappstorage\"}}"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **yönetilen uygulamalar merkezi**' ni yazın ve seçin.
-2. **Yönetilen uygulamalar merkezi**'Nde **Hizmet kataloğu uygulamaları** ' nı seçin ve **Ekle**' ye tıklayın. 
+1. Azure portalında **Tüm hizmetler'i**seçin. Kaynaklar listesinde Yönetilen **Uygulamalar Merkezi**yazın ve seçin.
+2. Yönetilen **Uygulamalar**Merkezi'nde, **Hizmet Kataloğu uygulamalarını** seçin ve **Ekle'yi**tıklatın. 
 
-    ![Yönetilen uygulama ekle](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
+    ![Yönetilen uygulama ekleme](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
 
-3. **Hizmet kataloğu uygulamaları** sayfasında, arama kutusuna hizmet kataloğu tanımı görünen adı yazın. Önceki adımda oluşturulan tanımı seçin ve **Oluştur**' a tıklayın.
+3. Hizmet **Kataloğu uygulamalarında** sayfa türü Hizmet Kataloğu tanım arama kutusunda görüntü adı. Önceki adımda oluşturulan tanımı seçin ve **Oluştur'u**tıklatın.
 
     ![Hizmet kataloğu seçme](./media/tutorial-create-managed-app-with-custom-provider/select-service-catalog-definition.png)
 
-4. Hizmet kataloğu tanımından yönetilen bir uygulama örneği oluşturmak için değerler girin:
+4. Hizmet Kataloğu tanımından yönetilen bir uygulama örneği oluşturmak için değerler sağlayın:
 
-    * Uygulama örneğinin oluşturulacağı **aboneliği**, **kaynak grubunu**ve **konumu** seçin.
-    * Benzersiz bir Azure Işlevi adı ve Azure depolama hesabı adı sağlayın.
+    * **Abonelik,** **Kaynak grubu**ve uygulama örneğinin oluşturulacağı **konum'u** seçin.
+    * Benzersiz bir Azure İşlevi adı ve Azure Depolama Hesabı adı sağlayın.
 
     ![Uygulama ayarları](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
 
-5. Doğrulama geçtiğinde, yönetilen bir uygulamanın örneğini dağıtmak için **Tamam** ' ı tıklatın. 
+5. Doğrulama geçtiğinde, yönetilen bir uygulamaörneğini dağıtmak için **Tamam'ı** tıklatın. 
     
-    ![Yönetilen uygulama dağıtma](./media/tutorial-create-managed-app-with-custom-provider/deploy-managed-application.png)
+    ![Yönetilen uygulamayı dağıtma](./media/tutorial-create-managed-app-with-custom-provider/deploy-managed-application.png)
 
 ---
 
 ## <a name="custom-actions-and-resources"></a>Özel eylemler ve kaynaklar
 
-Hizmet kataloğu uygulama örneği dağıtıldıktan sonra, iki yeni kaynak grubunuz vardır. İlk kaynak grubu `applicationGroup` yönetilen uygulamanın bir örneğini içerir. ikinci kaynak grubu, **özel sağlayıcı**dahil olmak üzere, yönetilen uygulama için kaynakları barındırır `managedResourceGroup`.
+Hizmet kataloğu uygulama örneği dağıtıldıktan sonra iki yeni kaynak grubunuz vardır. İlk kaynak `applicationGroup` grubu yönetilen uygulamanın bir örneğini içerir, ikinci kaynak grubu `managedResourceGroup` **özel sağlayıcı**da dahil olmak üzere yönetilen uygulama için kaynakları tutar.
 
 ![Uygulama kaynak grupları](./media/tutorial-create-managed-app-with-custom-provider/application-resource-groups.png)
 
-Yönetilen uygulama örneğine gidebilir ve "genel bakış" sayfasında **özel eylem** gerçekleştirebilir, "kullanıcılar" sayfasında **Kullanıcılar** özel kaynağı oluşturabilir ve özel kaynak üzerinde **özel bağlam eylemi** çalıştırabilirsiniz.
+Yönetilen uygulama örneğine gidebilir ve "Genel Bakış" sayfasında **özel eylem** gerçekleştirebilir, "Kullanıcılar" sayfasında **kullanıcılara** özel kaynak oluşturabilir ve özel kaynak üzerinde **özel bağlam eylemi** çalıştırabilirsiniz.
 
-* "Genel bakış" sayfasına gidin ve "ping eylemi" düğmesine tıklayın:
+* "Genel Bakış" sayfasına gidin ve "Ping Eylemi" düğmesine tıklayın:
 
-![Özel eylem gerçekleştir](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-action.png)
+![Özel eylem gerçekleştirin](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-action.png)
 
-* "Kullanıcılar" sayfasına gidin ve "Ekle" düğmesine tıklayın. Kaynak oluşturmak ve formu göndermek için giriş girişleri sağlayın:
+* "Kullanıcılar" sayfasına gidin ve "Ekle" düğmesine tıklayın. Kaynak oluşturmak için girişler sağlayın ve formu gönderin:
 
-![Özel kaynak oluştur](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
+![Özel kaynak oluşturma](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
 
-* "Kullanıcılar" sayfasına gidin, bir "kullanıcılar" kaynağı seçin ve "özel bağlam eylemi" ni tıklatın:
+* "Kullanıcılar" sayfasına gidin, bir "kullanıcılar" kaynağı seçin ve "Özel Bağlam Eylemi"ni tıklayın:
 
-![Özel kaynak oluştur](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
+![Özel kaynak oluşturma](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
 
 [!INCLUDE [clean-up-section-portal](../../../includes/clean-up-section-portal.md)]
 
-## <a name="looking-for-help"></a>Yardım aranıyor
+## <a name="looking-for-help"></a>Yardım arıyorum
 
-Azure yönetilen uygulamalar hakkında sorularınız varsa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managedapps)yapmayı deneyin. Benzer bir soru zaten istendi ve yanıtlamış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt almak için etiketi `azure-managedapps` ekleyin!
+Azure Yönetilen Uygulamalar hakkında sorularınız varsa, [Yığın Taşma'da](https://stackoverflow.com/questions/tagged/azure-managedapps)soru sormayı deneyin. Benzer bir soru zaten sorulmuş ve yanıtlanmış olabilir, bu nedenle göndermeden önce ilk kontrol edin. Hızlı yanıt `azure-managedapps` almak için etiketi ekleyin!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yönetilen uygulamanızı Azure Market'te yayımlamak için bkz. [Market'teki Azure tarafından yönetilen uygulamalar](publish-marketplace-app.md).
 
-[Azure özel sağlayıcılar](../custom-providers/overview.md)hakkında daha fazla bilgi edinin.
+[Azure Özel Sağlayıcıları](../custom-providers/overview.md)hakkında daha fazla bilgi edinin.

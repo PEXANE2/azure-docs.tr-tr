@@ -9,37 +9,37 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75450857"
 ---
-1. **Siteleri BAĞLAN** sayfasını açmak Için **VPN sitelerini bağla** ' yı seçin.
+1. **Siteleri** Bağla sayfasını açmak için **VPN Sitelerine Bağlan'ı** seçin.
 
-    ![bağlanabilmeniz](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "bağlanmaya")
+    ![Bağlamak](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "bağlanmaya")
 
-   Aşağıdaki alanları doldurun:
+   Aşağıdaki alanları tamamlayın:
 
-   * Önceden paylaşılan bir anahtar girin. Anahtar girmezseniz, Azure oto sizin için bir tane oluşturur.
-   * Protokol ve IPSec ayarlarını seçin. [Varsayılan/özel IPSec Ayrıntıları] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec) bölümüne bakın.
-   * **Varsayılan yolu yayma**için uygun seçeneği belirleyin. **Etkinleştir** seçeneği, sanal hub 'ın bu bağlantıya öğrenilen bir varsayılan yol yaymasını sağlar. Bu bayrak, yalnızca varsayılan yol sanal WAN hub 'ı hub 'da bir güvenlik duvarı dağıtımının bir sonucu olarak zaten öğrenildiği ya da başka bir bağlı sitede zorlamalı tünelyi etkin olan bir bağlantıya varsayılan yol yaymayı sağlar. Varsayılan yol, sanal WAN hub 'ında değil.
+   * Önceden paylaşılan bir anahtar girin. Bir anahtar girmezseniz, Azure bir anahtarı sizin için otomatik olarak oluşturur.
+   * Protokol ve IPsec ayarlarını seçin. [Varsayılan/özel IPSec ayrıntıları] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
+   * **Yayılma Varsayılan Rotasını Yaymak**için uygun seçeneği seçin. **Etkinleştir** seçeneği, sanal hub'ın bu bağlantıya öğrenilen varsayılan bir rotayı yaymasına olanak tanır. Bu bayrak, varsayılan rotanın yalnızca hub'a bir güvenlik duvarı nın dağıtılması sonucunda Sanal WAN hub'ı tarafından zaten öğrenilmişse veya bağlı başka bir site tünel lendirmeyi etkinleştirilmişse, varsayılan rota nın bağlantıya yayılmasını sağlar. Varsayılan rota Sanal WAN hub'ında kaynaklanmaz.
 
 2. **Bağlan**’ı seçin.
-3. Birkaç dakika içinde, site bağlantının ve bağlantı durumunun gösterilmesi gerekir.
+3. Birkaç dakika içinde, site bağlantı ve bağlantı durumunu gösterir.
 
-   ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![durum](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "durum")
 
-   **Bağlantı durumu:** Bu, VPN sitesini Azure hub 'ının VPN Gateway 'e bağlayan bağlantı için Azure kaynağının durumudur. Bu denetim düzlemi işlemi başarılı olduktan sonra, Azure VPN ağ geçidi ve şirket içi VPN cihazı bağlantı kurmaya devam eder.
+   **Bağlantı Durumu:** Bu, VPN Sitesini Azure hub'ının VPN ağ geçidine bağlayan bağlantı için Azure kaynağının durumudur. Bu kontrol düzlemi işlemi başarılı olduğunda, Azure VPN ağ geçidi ve şirket içi VPN aygıtı bağlantı oluşturmaya devam edecektir.
 
-   **Bağlantı durumu:** Bu, Merkez ve VPN sitesinde Azure 'un VPN ağ geçidi arasındaki gerçek bağlantı (veri yolu) durumudur. Aşağıdaki durumlardan herhangi birini gösterebilir:
+   **Bağlantı Durumu:** Bu, Azure'un hub'daki VPN ağ geçidi ile VPN Sitesi arasındaki gerçek bağlantı (veri yolu) durumudur. Aşağıdaki hallerden herhangi birini gösterebilir:
 
-    * **Bilinmiyor**: Bu durum genellikle arka uç sistemleri başka bir duruma geçişe çalışıyorsa görülür.
-    * **Bağlanılıyor**: Azure VPN Gateway, gerçek ŞIRKET içi VPN sitesine ulaşmaya çalışıyor.
-    * **Bağlandı**: Azure VPN ağ geçidi ve ŞIRKET içi VPN sitesi arasında bağlantı kuruldu.
-    * Bağlantı **kesildi**: herhangi bir nedenle (Şirket Içi veya Azure 'da) bağlantının bağlantısı kesildiğinde bu durum görülür.
-4. Bir hub VPN sitesi içinde şunları da yapabilirsiniz: 
+    * **Bilinmiyor**: Arka uç sistemleri başka bir duruma geçiş için çalışıyorsa, bu durum genellikle görülür.
+    * **Bağlanma**: Azure VPN ağ geçidi, gerçek şirket içi VPN sitesine ulaşmaya çalışıyor.
+    * **Connected**: Azure VPN ağ geçidi ile şirket içi VPN sitesi arasında bağlantı kurulur.
+    * **Bağlantısızlık**: Herhangi bir nedenle (şirket içinde veya Azure'da) bağlantı kesilirse bu durum görülür.
+4. Hub VPN sitesinde ayrıca aşağıdakileri yapabilirsiniz: 
 
-   * VPN bağlantısını düzenleyin veya silin.
-   * Azure portal siteyi silin.
-   * Sitenin yanındaki bağlam (...) menüsünü kullanarak Azure tarafı hakkındaki ayrıntılar için dala özgü bir yapılandırma indirin. Hub 'ınızdaki tüm bağlı siteler için yapılandırmayı indirmek isterseniz, üst menüdeki **VPN yapılandırmasını indir** ' i seçin.
+   * VPN Bağlantısını düzenle veya silin.
+   * Azure portalındaki siteyi silin.
+   * Sitenin yanındaki bağlam (...) menüsünü kullanarak Azure tarafı yla ilgili ayrıntılar için şubeye özgü bir yapılandırma indirin. Hub'ınızdaki tüm bağlı sitelerin yapılandırmasını indirmek istiyorsanız, üst menüden **VPN Config'i İndir'i** seçin.

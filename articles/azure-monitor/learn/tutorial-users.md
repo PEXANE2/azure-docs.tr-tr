@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
 ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77670364"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Müşterilerin uygulamanızı nasıl kullandığını anlamak için Azure Application Insights’ı kullanın
@@ -28,11 +28,11 @@ Azure Application Insights, kullanıcıların uygulamanızla nasıl etkileşim k
 > * Kullanıcıların uygulamanızda nasıl gezindiğini inceleme
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
-- Aşağıdaki iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra:
+- [Visual Studio 2019'u](https://www.visualstudio.com/downloads/) aşağıdaki iş yükleriyle yükleyin:
     - ASP.NET ve web geliştirme
     - Azure geliştirme
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)’ı indirin ve yükleyin.
@@ -41,7 +41,7 @@ Bu öğreticiyi tamamlamak için:
 - Kullanıcının zaman içinde gerçekleştirdiği işlevleri izlemek ve kullanım özelliklerinden tam olarak faydalanmak için [kullanıcı bağlamı](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) gönderin.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+Azure portalına giriş [https://portal.azure.com](https://portal.azure.com)yapın.
 
 ## <a name="get-information-about-your-users"></a>Kullanıcılarınızla ilgili bilgi edinme
 **Kullanıcılar** paneli, kullanıcılarınızla ilgili önemli ayrıntıları farklı şekillerde anlamanıza yardımcı olur. Bu paneli kullanarak kullanıcılarınızın bağlandığı konum, istemcilerin ayrıntıları ve erişim sağlanan uygulama bölümleri gibi bilgileri anlayabilirsiniz. 
@@ -56,11 +56,11 @@ Bu öğreticiyi tamamlamak için:
 
     ![Zaman aralığını değiştirme](media/tutorial-users/TimeRange.png)
 
-4. **Bölme ölçütü** açılan menüsüne tıklayarak grafiğe kullanıcı özelliğine göre bir döküm ekleyin.  **Ülke veya bölge**'yi seçin.  Grafik aynı verileri içerir, ancak her ülke/bölge için Kullanıcı sayısı dökümünü görüntülemenize olanak sağlar.
+4. **Bölme ölçütü** açılan menüsüne tıklayarak grafiğe kullanıcı özelliğine göre bir döküm ekleyin.  **Ülke veya bölge**'yi seçin.  Grafik aynı verileri içerir, ancak her ülke/bölge için kullanıcı sayısının dökümünü görüntülemenize olanak tanır.
 
     ![Ülke veya bölge grafiği](media/tutorial-users/CountryorRegion.png)
 
-5. İmleci grafikteki farklı çubukların üzerine konumlandırın ve her bir ülkenin/bölgenin sayımının yalnızca ilgili çubuğun gösterdiği zaman penceresini yansıttığını unutmayın.
+5. İmleci grafikteki farklı çubuklar üzerinde konumlandırın ve her ülke/bölge için sayım yalnızca o çubuğun temsil ettiği zaman penceresini yansıttığını unutmayın.
 6. Sağ taraftaki kullanıcı verilerinizle analiz gerçekleştiren **İçgörüler** sütununa bakın.  Burada zaman içindeki benzersiz oturum sayısı ve kullanıcı verilerinin önemli bir kısmını oluşturan ortak özellikleri içeren kayıtlar gibi bilgiler sunulur 
 
     ![İçgörüler sütunu](media/tutorial-users/insights.png)
@@ -83,7 +83,7 @@ Bu öğreticiyi tamamlamak için:
     ![Oturum Zaman Çizelgesi](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Benzer kullanıcıları gruplama
-**Kohortu** , benzer özelliklere gruplanmış bir Kullanıcı kümesidir.  Kohortları kullanarak diğer panellerdeki verileri filtreleyebilir ve belirli bir kullanıcı grubunu analiz edebilirsiniz.  Örneğin yalnızca bir satın alma işlemini tamamlamış olan kullanıcıları analiz etmek isteyebilirsiniz.
+**Kohort,** benzer özelliklere göre gruplanmış bir kullanıcı kümesidir.  Kohortları kullanarak diğer panellerdeki verileri filtreleyebilir ve belirli bir kullanıcı grubunu analiz edebilirsiniz.  Örneğin yalnızca bir satın alma işlemini tamamlamış olan kullanıcıları analiz etmek isteyebilirsiniz.
 
 1.  Menüden **Kohortlar**'ı seçin.
 2.  Yeni bir kohort oluşturmak için **Yeni**'ye tıklayın.

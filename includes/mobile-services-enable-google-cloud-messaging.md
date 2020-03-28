@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67188963"
 ---
 1. [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager)’a gidin, Google hesabı kimlik bilgilerinizle giriş yapın. 
@@ -20,7 +20,7 @@ ms.locfileid: "67188963"
    
     ![Yeni proje oluşturma](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. **Proje adı** olarak projeniz için bir ad girin ve **Oluştur**’a tıklayın.
-4. Araç çubuğundaki **Uyarılar** düğmesini seçip listeden projenizi seçin. Projenizin panosunu görürsünüz. Doğrudan Pano'ya bağlanabilir, URL'yi kullanarak da gidebilirsiniz: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
+4. Araç çubuğundaki **Uyarılar** düğmesini seçip listeden projenizi seçin. Projenizin panosunu görürsünüz. Dilerseniz şu URL'yi kullanarak doğrudan panoya da gidebilirsiniz: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 
     ![Uyarılar bölümünden projenizi seçin](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
 5. Panonun **Proje bilgileri** kutucuğundaki **Proje numarası**’nı kaydedin. 
@@ -51,5 +51,5 @@ ms.locfileid: "67188963"
 
     ![API anahtarını kopyalama](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    Azure’un GCM ile kimlik doğrulaması yapmasını ve uygulamanız adına anında iletme bildirimleri göndermesini etkinleştirmek için bu API anahtarını kullanın. Proje panosuna geri gidin, URL'yi kullanın: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
+    Azure’un GCM ile kimlik doğrulaması yapmasını ve uygulamanız adına anında iletme bildirimleri göndermesini etkinleştirmek için bu API anahtarını kullanın. Proje panosuna geri gitmek için şu URL'yi kullanın: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

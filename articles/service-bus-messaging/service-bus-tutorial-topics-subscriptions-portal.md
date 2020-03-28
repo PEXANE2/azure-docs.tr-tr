@@ -1,5 +1,5 @@
 ---
-title: Azure portal ve konuları/abonelikleri kullanarak envanteri güncelleştirme
+title: Azure portalLarını ve konuları/abonelikleri kullanarak envanteri güncelleştirme
 description: Bu öğreticide bir konu başlığı ve abonelikten ileti gönderip almayı ve .NET ile filtre kuralları ekleyip kullanmayı öğreneceksiniz
 services: service-bus-messaging
 author: spelluru
@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76310127"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Öğretici: Azure portalı ve konuları/abonelikleri kullanarak envanter güncelleştirme
 
 Microsoft Azure Service Bus, uygulamalar ve hizmetler arasında bilgi gönderen çok kiracılı bir bulut mesajlaşma hizmetidir. Zaman uyumsuz işlemler esnek ve aracılı mesajlaşmanın yanı sıra ilk giren ilk çıkar (FIFO) yöntemiyle yapılandırılmış mesajlaşma ve yayımlama/abonelik olanakları da sunar. Bu öğretici, bir perakende stok senaryosunda, Azure portal ve .NET kullanan yayımlama/abonelik kanallarıyla Service Bus konu başlıklarını ve abonelikleri kullanmayı göstermektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * Azure portalı kullanarak bir Service Bus konu başlığı ve bunun için bir veya daha fazla abonelik oluşturma
 > * .NET kodu kullanarak konu filtreleri ekleme
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * İletileri gönderme ve bunların beklenen aboneliklere vardığını doğrulama
 > * Aboneliklerden ileti alma
 
-Bu senaryonun bir örneği, birden çok perakende mağazası için stok sınıflama güncelleştirmesidir. Bu senaryoda, her mağaza veya mağaza grubu, sınıflamalarını güncelleştirmeye yönelik iletiler alır. Bu öğretici, bu senaryonun abonelikler ve filtreler kullanılarak uygulanmasını göstermektedir. Öncelikle 3 aboneliği olan bir konu başlığı oluşturacaksınız, bazı kurallar ve filtreler ekleyeceksiniz ve ardından konu başlıkları ve aboneliklerden iletiler gönderip alacaksınız.
+Bu senaryonun bir örneği, birden çok perakende mağazası için stok sınıflama güncelleştirmesidir. Bu senaryoda, her mağaza veya mağaza grubu, sınıflamalarını güncelleştirmeye yönelik iletiler alır. Bu öğretici, bu senaryonun abonelikler ve filtreler kullanılarak uygulanmasını göstermektedir. İlk olarak önce 3 aboneliği olan bir konu başlığı oluşturun, bazı kurallar ve filtreler ekleyin ve ardından konu başlıkları ve aboneliklerden iletiler gönderip alın.
 
 ![konu başlığı](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
 
@@ -53,7 +53,7 @@ Her [konu başlığı aboneliği](service-bus-messaging-overview.md#topics) her 
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Aboneliklerde filtre kuralları oluşturma
 
-Ad alanı ve konu başlıkları/abonelikler sağlandıktan ve gerekli kimlik bilgilerini edindikten sonra, aboneliklerde filtre kuralları oluşturmaya ve ileti gönderip almaya hazır olursunuz. [Bu örnek GitHub klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) kodu inceleyebilirsiniz.
+Ad alanı ve konu başlıkları/abonelikler sağlandıktan ve gerekli kimlik bilgilerini edindikten sonra, aboneliklerde filtre kuralları oluşturmaya ve ileti gönderip almaya hazır olursunuz. [Bu GitHub örnek klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) kodu inceleyebilirsiniz.
 
 ### <a name="send-and-receive-messages"></a>İleti alma ve gönderme
 
@@ -65,9 +65,9 @@ Kodu çalıştırmak için aşağıdakileri yapın:
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Örnek klasörü `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters` gidin.
+2. Örnek `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters` klasörüne gidin.
 
-3. Bu öğreticinin yönetim kimlik bilgilerini alma bölümünde Not defteri 'ne kopyaladığınız bağlantı dizesini edinin. Ayrıca önceki bölümde oluşturduğunuz konu adı da gerekir.
+3. Bu öğreticinin Yönetim kimlik bilgilerini edinme bölümünde Not Defteri'ne kopyaladığınız bağlantı dizesini edinin. Ayrıca önceki bölümde oluşturduğunuz konu adı da gerekir.
 
 4. Komut isteminde aşağıdaki komutu yazın:
 
@@ -104,7 +104,7 @@ Artık gerekli olmadığında, ad alanını ve kuyruğu silin. Bunu yapmak için
 
 ## <a name="understand-the-sample-code"></a>Örnek kodu anlama
 
-Bu bölümde örnek kodun işlevleri hakkında daha fazla ayrıntı bulunmaktadır.
+Bu bölümde, örnek kodun yaptıkları hakkında daha fazla ayrıntı bulunmaktadır.
 
 ### <a name="get-connection-string-and-topic"></a>Bağlantı dizesini ve konu başlığını alma
 
@@ -395,7 +395,7 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
+> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

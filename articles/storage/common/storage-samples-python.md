@@ -1,6 +1,6 @@
 ---
-title: Python kullanarak Azure Storage örnekleri | Microsoft Docs
-description: Azure depolama için örnek kod ve uygulamaları görüntüleyin, indirin ve çalıştırın. Python depolama istemci kitaplıklarını kullanarak Bloblar, kuyruklar, tablolar ve dosyalar için çalışmaya başlama örneklerini bulun.
+title: Python kullanarak Azure Depolama örnekleri | Microsoft Dokümanlar
+description: Azure Depolama için örnek kodu ve uygulamaları görüntüleyin, indirin ve çalıştırın. Python depolama istemci kitaplıklarını kullanarak blobs, kuyruklar, tablolar ve dosyalar için başlangıç örnekleri alma keşfedin.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/13/2020
@@ -8,26 +8,26 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: fc3079d316a252bc5a658017cb6b04fe6ef20c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77485837"
 ---
-# <a name="azure-storage-samples-using-v12-python-client-libraries"></a>V12 Python istemci kitaplıklarını kullanan Azure depolama örnekleri
+# <a name="azure-storage-samples-using-v12-python-client-libraries"></a>v12 Python istemci kitaplıklarını kullanarak Azure Depolama örnekleri
 
-Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara genel bir bakış sağlar. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
+Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların genel görünümünü sağlar. GitHub'da ilgili örnek kodu görüntülemek için bağlantıları tıklatın.
 
 > [!NOTE]
-> Bu örnekler en son Azure Storage .NET V12 kitaplığını kullanır. Eski v 2.1 kodu için bkz. [Azure Storage: GitHub deposunda Python 'Da Azure Storage Ile çalışmaya](https://github.com/Azure-Samples/storage-blob-python-getting-started) başlama.
+> Bu örnekler en son Azure Depolama .NET v12 kitaplığını kullanır. Eski v2.1 kodu için bkz: Azure Depolama: GitHub deposunda [Python'da Azure Depolama ile Başlarken.](https://github.com/Azure-Samples/storage-blob-python-getting-started)
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 :::row:::
    :::column span="":::
-      [Bir bağlantı dizesi kullanarak blob hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L45)
+      [Bağlantı dizesi kullanarak blob servis istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L45)
    :::column-end:::
    :::column span="":::
       [Bağlantı dizesi kullanarak kapsayıcı istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L50)
@@ -38,31 +38,31 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
       [Bağlantı dizesi kullanarak blob istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L56)
    :::column-end:::
    :::column span="":::
-      [Paylaşılan erişim anahtarı kullanarak blob hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L66)
+      [Paylaşılan erişim anahtarını kullanarak blob servis istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L66)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [URL 'den blob istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L75)
+      [URL'den blob istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L75)
    :::column-end:::
    :::column span="":::
-      [Blob istemcisi SAS URL 'SI oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L80)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [ClientSecretCredential kullanarak blob hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L88)
-   :::column-end:::
-   :::column span="":::
-      [SAS belirteci oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L110)
+      [Blob istemcisi SAS URL'si oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L80)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Azure kimliğini kullanarak blob hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L125)
+      [ClientSecretCredential kullanarak blob servis istemcisi oluşturun](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L88)
    :::column-end:::
    :::column span="":::
-      [Blob anlık görüntüsü oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L56)
+      [SAS belirteci oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L110)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Azure Kimliği'ni kullanarak blob servis istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L125)
+   :::column-end:::
+   :::column span="":::
+      [Blob anlık görüntüsü oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L56)
    :::column-end:::
 :::row-end:::
 
@@ -70,39 +70,39 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Blob hizmeti hesap bilgilerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L30)
+      [Blob servis hesap bilgilerini alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L30)
    :::column-end:::
    :::column span="":::
-      [Blob hizmeti özelliklerini ayarla](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L41)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Blob hizmeti özelliklerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L61)
-   :::column-end:::
-   :::column span="":::
-      [Blob hizmeti istatistiklerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L71)
+      [Blob servis özelliklerini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hizmet istemcisi kullanarak kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L82)
+      [Blob servis özelliklerini alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L61)
    :::column-end:::
    :::column span="":::
-      [Kapsayıcıları Listele](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L90)
+      [Blob servis istatistiklerini alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L71)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hizmet istemcisi 'ni kullanarak kapsayıcıyı silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L103)
+      [Servis istemcisi kullanarak kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L82)
    :::column-end:::
    :::column span="":::
-      [Kapsayıcı istemcisini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L117)
+      [Kapsayıcıları listeleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L90)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Servis istemcisi kullanarak kapsayıcıyı silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L103)
+   :::column-end:::
+   :::column span="":::
+      [Konteyner istemcisi alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L117)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Blob istemcisi al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L130)
+      [Blob istemcisi alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L130)
    :::column-end:::
 :::row-end:::
 
@@ -110,58 +110,58 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Hizmetten kapsayıcı istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L35)
+      [Hizmetten kapsayıcı istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L35)
    :::column-end:::
    :::column span="":::
-      [SAS URL 'SI kullanarak kapsayıcı istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L44)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Kapsayıcı istemcisini kullanarak kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L52)
-   :::column-end:::
-   :::column span="":::
-      [Kapsayıcı özelliklerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L56)
+      [SAS URL'yi kullanarak kapsayıcı istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L44)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Kapsayıcı istemcisini kullanarak kapsayıcıyı silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L61)
+      [Kapsayıcı istemcisi kullanarak kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L52)
    :::column-end:::
    :::column span="":::
-      [Kapsayıcıda kira al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L80)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Kapsayıcı meta verilerini ayarla](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L101)
-   :::column-end:::
-   :::column span="":::
-      [Kapsayıcı erişim ilkesini ayarla](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L128)
+      [Kapsayıcı özelliklerini alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Kapsayıcı erişim ilkesini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L141)
+      [Kapsayıcı istemcisi kullanarak kapsayıcıyı silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L61)
    :::column-end:::
    :::column span="":::
-      [SAS belirteci oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L145)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [SAS belirtecini kullanarak kapsayıcı istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L158)
-   :::column-end:::
-   :::column span="":::
-      [Blobu kapsayıcıya yükle](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L182)
+      [Konteyner üzerinde kira elde edin](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L80)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Kapsayıcıdaki Blobları Listele](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L189)
+      [Kapsayıcı meta verilerini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L101)
    :::column-end:::
    :::column span="":::
-      [Blob istemcisi al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L213)
+      [Kapsayıcı erişim ilkesini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L128)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Kapsayıcı erişim ilkesini alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L141)
+   :::column-end:::
+   :::column span="":::
+      [SAS belirteci oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L145)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [SAS belirteci kullanarak kapsayıcı istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L158)
+   :::column-end:::
+   :::column span="":::
+      [Blob'u konteynere yükleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L182)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Konteynerdeki lekeleri listele](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L189)
+   :::column-end:::
+   :::column span="":::
+      [Blob istemcisi alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L213)
    :::column-end:::
 :::row-end:::
 
@@ -169,7 +169,7 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Blob yükle](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L68)
+      [Blobu karşıya yükleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L68)
    :::column-end:::
    :::column span="":::
       [Blob indirme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L74)
@@ -177,41 +177,41 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Blobu Sil](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L80)
+      [Lekeyi silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L80)
    :::column-end:::
    :::column span="":::
-      [Blobu geri al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L100)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Blob özelliklerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L105)
-   :::column-end:::
-   :::column span="":::
-      [Birden çok blob silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L133)
+      [Undelete blob](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L100)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Blob 'u URL 'den Kopyala](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L193)
+      [Blob özelliklerini alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L105)
    :::column-end:::
    :::column span="":::
-      [URL 'den kopyalama blobu durdur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L205)
+      [Birden çok blobsilme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L133)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Blob'u URL'den kopyala](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L193)
+   :::column-end:::
+   :::column span="":::
+      [URL'den kopyalama blob abort](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L205)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Blob üzerinde kira al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L167)
+      [Blob üzerinde kira edinin](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L167)
    :::column-end:::
 :::row-end:::
 
-## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage 2. örnekleri
+## <a name="data-lake-storage-gen2-samples"></a>Data Lake Depolama Gen2 örnekleri
 
-### <a name="data-lake-service"></a>Data Lake hizmeti
+### <a name="data-lake-service"></a>Veri Gölü hizmeti
 
 :::row:::
    :::column span="2":::
-      [Data Lake hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L64)
+      [Veri Gölü hizmet istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L64)
    :::column-end:::
 :::row-end:::
 
@@ -219,10 +219,10 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Dosya sistemi istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L74)
+      [Dosya sistemi istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L74)
    :::column-end:::
    :::column span="":::
-      [Dosya sistemini Sil](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L81)
+      [Dosya sistemini silme](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L81)
    :::column-end:::
 :::row-end:::
 
@@ -230,15 +230,15 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Dizin istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L14)
+      [Dizin istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L14)
    :::column-end:::
    :::column span="":::
-      [Dizin izinlerini al](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L19)
+      [Dizin izinleri alma](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L19)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dizin izinlerini ayarla](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L23)
+      [Dizin izinlerini ayarlama](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L23)
    :::column-end:::
    :::column span="":::
       [Dizini yeniden adlandır](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L19)
@@ -246,10 +246,10 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dizin özelliklerini al](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L25)
+      [Dizin özelliklerini alma](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L25)
    :::column-end:::
    :::column span="":::
-      [Dizini Sil](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L29)
+      [Dizini silme](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L29)
    :::column-end:::
 :::row-end:::
 
@@ -257,44 +257,44 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Dosya istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L13)
+      [Dosya istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L13)
    :::column-end:::
    :::column span="":::
-      [Dosya oluştur](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L45)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Dosya izinlerini al](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L35)
-   :::column-end:::
-   :::column span="":::
-      [Dosya izinlerini ayarla](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L38)
+      [Dosya oluşturma](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L45)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Verileri dosyaya ekle](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L18)
+      [Dosya izinleri alma](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L35)
    :::column-end:::
    :::column span="":::
-      [Dosyadaki verileri oku](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L29)
+      [Dosya izinlerini ayarlama](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L38)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Dosyaya veri ekle](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L18)
+   :::column-end:::
+   :::column span="":::
+      [Dosyadaki verileri okuma](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L29)
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-files-samples"></a>Azure dosyaları örnekleri
+## <a name="azure-files-samples"></a>Azure Dosyaları örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 :::row:::
    :::column span="":::
-      [Bağlantı dizesinden Share Service Client oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L42)
+      [Bağlantı dizesinden paylaşım hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L42)
    :::column-end:::
    :::column span="":::
-      [Hesap ve erişim anahtarından Share Service Client oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L49)
+      [Hesaptan paylaşım hizmeti istemcisi oluşturma ve erişim anahtarı](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [SAS belirteci oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L59)
+      [SAS belirteci oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L59)
    :::column-end:::
 :::row-end:::
 
@@ -302,23 +302,23 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Hizmet özelliklerini ayarla](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L39)
+      [Hizmet özelliklerini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L39)
    :::column-end:::
    :::column span="":::
-      [Hizmet özelliklerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L68)
+      [Hizmet özelliklerini alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L68)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dosya hizmeti istemcisini kullanarak paylaşımlar oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L77)
+      [Dosya hizmeti istemcisi kullanarak paylaşım oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L77)
    :::column-end:::
    :::column span="":::
-      [Dosya hizmeti istemcisini kullanan paylaşımları Listele](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L81)
+      [Dosya hizmeti istemcisi kullanarak paylaşımları listele](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L81)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Dosya hizmeti istemcisini kullanarak paylaşımları silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L91)
+      [Dosya hizmeti istemcisi kullanarak paylaşımları silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L91)
    :::column-end:::
 :::row-end:::
 
@@ -326,34 +326,34 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Bağlantı dizesinden Share Client oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L52)
+      [Bağlantı dizesinden paylaşım istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L52)
    :::column-end:::
    :::column span="":::
-      [Share Client 'ı al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L96)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Dosya paylaşma istemcisini kullanarak paylaşma oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L39)
-   :::column-end:::
-   :::column span="":::
-      [Paylaşma anlık görüntüsü oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L43)
+      [Paylaşım istemcisi alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L96)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dosya paylaşma istemcisini kullanarak paylaşma silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L47)
+      [Dosya paylaşımı istemcisi kullanarak paylaşım oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L39)
    :::column-end:::
    :::column span="":::
-      [Paylaşma kotasını ayarla](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L61)
+      [Paylaşım anlık görüntüsü oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L43)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Paylaşma meta verilerini ayarla](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L66)
+      [Dosya paylaşımı istemcisi kullanarak paylaşımı silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L47)
    :::column-end:::
    :::column span="":::
-      [Paylaşma özelliklerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L47)
+      [Hisse kotası ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L61)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Paylaşım meta verilerini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L66)
+   :::column-end:::
+   :::column span="":::
+      [Paylaşım özelliklerini alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L47)
    :::column-end:::
 :::row-end:::
 
@@ -361,39 +361,39 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Dizin Oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L45)
+      [Dizin oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L45)
    :::column-end:::
    :::column span="":::
-      [Dosyayı dizine yükle](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L49)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Dosyayı dizinden Sil](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L55)
-   :::column-end:::
-   :::column span="":::
-      [Dizini Sil](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L60)
+      [Dosyayı dizine yükleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Alt dizin oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L80)
+      [Dosyayı dizinden silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L55)
    :::column-end:::
    :::column span="":::
-      [Dizinleri ve dosyaları listeleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L96)
+      [Dizini silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L60)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Alt dizini Sil](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L104)
+      [Alt dizin oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L80)
    :::column-end:::
    :::column span="":::
-      [Alt dizin istemcisini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L121)
+      [Liste dizinleri ve dosyaları](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L96)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Alt dizini silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L104)
+   :::column-end:::
+   :::column span="":::
+      [Alt dizin istemcisi alın](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L121)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Dizindeki dosyaları listeleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L87)
+      [Dosyaları dizinde listele](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L87)
    :::column-end:::
 :::row-end:::
 
@@ -401,71 +401,71 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Dosya istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L65)
+      [Dosya istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L65)
    :::column-end:::
    :::column span="":::
-      [Dosya oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L48)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Dosyayı karşıya yükle](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L54)
-   :::column-end:::
-   :::column span="":::
-      [Dosyayı indir](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L60)
+      [Dosya oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L48)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dosyayı Sil](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L67)
+      [Dosya yükleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L54)
    :::column-end:::
    :::column span="":::
-      [URL 'den Dosya Kopyala](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L101)
-   :::column-end:::
-:::row-end:::
-
-## <a name="queue-samples"></a>Kuyruk örnekleri
-
-### <a name="authentication"></a>Kimlik Doğrulaması
-
-:::row:::
-   :::column span="":::
-      [Bağlantı dizesi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L50)
-   :::column-end:::
-   :::column span="":::
-      [Kuyruk hizmeti istemci belirteci oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L69)
+      [Dosyayı indirin](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L60)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Bağlantı dizesinden sıra istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L35)
+      [Dosyayı silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L67)
    :::column-end:::
    :::column span="":::
-      [Sıra istemcisi SAS belirteci oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L61)
+      [DOSYAYı URL'den kopyalama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L101)
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>Kuyruk hizmeti
+## <a name="queue-samples"></a>Sıra örnekleri
+
+### <a name="authentication"></a>Kimlik doğrulaması
 
 :::row:::
    :::column span="":::
-      [Kuyruk hizmeti istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L60)
+      [Bağlantı dizelerini kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L50)
    :::column-end:::
    :::column span="":::
-      [Sıra hizmeti özelliklerini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L35)
+      [Sıra hizmeti istemci belirteci oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L69)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Sıra hizmeti özelliklerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L67)
+      [Bağlantı dizesinden sıra istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L35)
    :::column-end:::
    :::column span="":::
-      [Hizmet istemcisi kullanarak sıra oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L76)
+      [Sıra istemcisi SAS belirteci oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L61)
+   :::column-end:::
+:::row-end:::
+
+### <a name="queue-service"></a>Sıra hizmeti
+
+:::row:::
+   :::column span="":::
+      [Sıra hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L60)
+   :::column-end:::
+   :::column span="":::
+      [Sıra hizmet özelliklerini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L35)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Sıra hizmeti özelliklerini alma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L67)
+   :::column-end:::
+   :::column span="":::
+      [Servis istemcisi kullanarak sıra oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L76)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Hizmet istemcisi 'ni kullanarak kuyruğu silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L94)
+      [Servis istemcisi kullanarak sırayı silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L94)
    :::column-end:::
 :::row-end:::
 
@@ -473,31 +473,31 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [Sıra istemcisi oluştur](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L72)
+      [Sıra istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L72)
    :::column-end:::
    :::column span="":::
-      [Sıra meta verilerini ayarla](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L95)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Sıra özelliklerini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L100)
-   :::column-end:::
-   :::column span="":::
-      [Kuyruk istemcisini kullanarak sıra oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L45)
+      [Sıra meta verilerini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L95)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Kuyruk istemcisi 'ni kullanarak kuyruğu silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L62)
+      [Sıra özelliklerini alma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L100)
    :::column-end:::
    :::column span="":::
-      [Sıraları listeleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L81)
+      [Sıra istemcisi kullanarak sıra oluşturma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L45)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Sıra istemcisi kullanarak sırayı silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L62)
+   :::column-end:::
+   :::column span="":::
+      [Liste kuyrukları](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L81)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Sıra istemcisini al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L103)
+      [Sıra istemcisi alma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L103)
    :::column-end:::
 :::row-end:::
 
@@ -505,15 +505,15 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 
 :::row:::
    :::column span="":::
-      [İleti gönder](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L117)
+      [İleti gönderme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L117)
    :::column-end:::
    :::column span="":::
-      [İletileri al](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L125)
+      [İleti alma](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L125)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [İletiye Gözat](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L197)
+      [Peek iletisi](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L197)
    :::column-end:::
    :::column span="":::
       [Güncelleştirme iletisi](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L222)
@@ -521,32 +521,32 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 :::row-end:::
 :::row:::
    :::column span="":::
-      [İletiyi Sil](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L165)
+      [İletiyi silme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L165)
    :::column-end:::
    :::column span="":::
-      [İletileri temizle](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L173)
+      [İletileri temizleme](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L173)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [İleti erişim ilkesini ayarla](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L47)
+      [İleti erişim ilkesini ayarlama](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L47)
    :::column-end:::
 :::row-end:::
 
 
-## <a name="table-samples-sdk-v21"></a>Tablo örnekleri (SDK v 2.1)
+## <a name="table-samples-sdk-v21"></a>Tablo örnekleri (SDK v2.1)
 
 :::row:::
    :::column span="":::
-      [Tablo oluştur](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46)
+      [Tablo oluşturma](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46)
    :::column-end:::
    :::column span="":::
-      [Varlığı/tabloyu Sil](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L79)
+      [Varlığı/tabloyu silme](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L79)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Varlığı Ekle/Birleştir/Değiştir](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57)
+      [Varlığı ekleme/birleştirme/değiştirme](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57)
    :::column-end:::
    :::column span="":::
       [Sorgu varlıkları](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L62)
@@ -557,40 +557,40 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
       [Sorgu tabloları](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py)
    :::column-end:::
    :::column span="":::
-      [Tablo ACL 'SI/özellikleri](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_advanced_samples.py#L138)
+      [Tablo ACL/özellikleri](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_advanced_samples.py#L138)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Varlığı Güncelleştir](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L68)
+      [Varlığı güncelleştir](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L68)
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Azure Code örnek kitaplıkları
+## <a name="azure-code-sample-libraries"></a>Azure kodu örnek kitaplıkları
 
-Tüm Python örnek kitaplıklarını görüntülemek için şuraya gidin:
+Python örnek kitaplıklarını tam olarak görüntülemek için şu na gidin:
 
-* [Azure Blob kodu örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
-* [Azure Data Lake kodu örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Azure dosyaları kod örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
-* [Azure kuyruk kodu örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+* [Azure blob kod örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+* [Azure Veri Gölü kod örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+* [Azure Dosyaları kod örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
+* [Azure sıra kodu örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
 
-Her kitaplık için GitHub deposuna gözatıp kopyalayabilirsiniz.
+Her kitaplık için GitHub deposuna göz atabilir ve klonlayabilirsiniz.
 
-## <a name="getting-started-guides"></a>Başlarken kılavuzlarını
+## <a name="getting-started-guides"></a>Kılavuzlara başlama
 
-Azure Storage istemci kitaplıklarını yüklemek ve kullanmaya başlamak için yönergeler arıyorsanız aşağıdaki kılavuzlara göz atın.
+Azure Depolama istemci kitaplıklarını nasıl yükleyip başlatacağınız la ilgili yönergeler arıyorsanız aşağıdaki kılavuzlara göz atın.
 
-* [Python 'da Azure Blob hizmetini kullanmaya başlama](../blobs/storage-quickstart-blobs-python.md)
-* [Python 'da Azure kuyruk hizmeti ile çalışmaya başlama](../queues/storage-quickstart-queues-python.md)
-* [Python 'da Azure Tablo hizmeti ile çalışmaya başlama](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Python 'da Azure dosya hizmeti ile çalışmaya başlama](../files/storage-python-how-to-use-file-storage.md)
+* [Python'da Azure Blob Hizmetine Başlarken](../blobs/storage-quickstart-blobs-python.md)
+* [Python'da Azure Kuyruk Hizmetiyle Başlarken](../queues/storage-quickstart-queues-python.md)
+* [Python'da Azure Tablo Hizmetine Başlarken](../../cosmos-db/table-storage-how-to-use-python.md)
+* [Python'da Azure Dosya Hizmetine Başlarken](../files/storage-python-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer dillere yönelik örnekler hakkında bilgi için:
+Diğer dillere ait örnekler hakkında bilgi için:
 
-* .NET: [.NET kullanan Azure depolama örnekleri](storage-samples-dotnet.md)
-* Java: [Java kullanan Azure depolama örnekleri](storage-samples-java.md)
-* JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
-* Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)
+* .NET: [.NET kullanarak Azure Depolama örnekleri](storage-samples-dotnet.md)
+* Java: [Java kullanarak Azure Depolama örnekleri](storage-samples-java.md)
+* JavaScript/Node.js: [JavaScript kullanarak Azure Depolama örnekleri](storage-samples-javascript.md)
+* Diğer tüm diller: [Azure Depolama örnekleri](storage-samples.md)

@@ -1,26 +1,26 @@
 ---
-title: Öğretici-kod işlemede görüntü oluşturma
-description: Bu öğreticide, bir git deposuna kaynak kodu kaydederken buluttaki kapsayıcı görüntüsü yapılarını otomatik olarak tetiklemek üzere bir Azure Container Registry görevinin nasıl yapılandırılacağını öğreneceksiniz.
+title: Öğretici - Kod commit üzerinde görüntü oluşturma
+description: Bu eğitimde, kaynak kodunu git deposuna işlediğinde buluttaki kapsayıcı görüntü yapılarını otomatik olarak tetikleyecek bir Azure Kapsayıcı Kayıt Defteri Görevi'ni nasıl yapılandırabileceğinizi öğrenirsiniz.
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402838"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Öğretici: kaynak kodu kaydederken bulutta kapsayıcı görüntüsü derlemelerini otomatikleştirin
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Öğretici: Kaynak kodu işlerken buluttaki kapsayıcı görüntüsünü otomatikleştirin
 
-[Hızlı bir göreve](container-registry-tutorial-quick-task.md)ek olarak, ACR görevleri, kaynak kodu bir git deposuna kaydederken buluttaki otomatik Docker kapsayıcı görüntüsü derlemelerini destekler. ACR görevleri için desteklenen git bağlamları, genel veya özel GitHub veya Azure depoları içerir.
+Hızlı bir [göreve](container-registry-tutorial-quick-task.md)ek olarak, ACR Görevleri, kaynak kodunu git deposuna adadığınızda buluttaki otomatik Docker kapsayıcı görüntüsünü destekler. ACR Görevleri için desteklenen Git bağlamları, genel veya özel GitHub veya Azure depolarını içerir.
 
 > [!NOTE]
-> Şu anda ACR görevleri GitHub Enterprise depolarındaki COMMIT veya çekme isteği tetikleyicilerini desteklemez.
+> Şu anda, ACR Görevleri GitHub Enterprise depolarında istek tetikleyicilerini ayırmaveya çekme'yi desteklemez.
 
-Bu öğreticide, ACR göreviniz bir git deposuna kaynak kodu kaydederken bir Dockerfile içinde belirtilen tek bir kapsayıcı görüntüsü oluşturur ve gönderir. Kod işlemede birden çok kapsayıcıyı oluşturma, gönderme ve isteğe bağlı olarak test etme adımlarını tanımlamak üzere YAML dosyası kullanan [çok adımlı bir görev](container-registry-tasks-multi-step.md) oluşturmak için bkz. [öğretici: kaynak kodu kaydederken bulutta çok adımlı bir kapsayıcı iş akışını çalıştırma](container-registry-tutorial-multistep-task.md). ACR görevlerine genel bakış için bkz. [ACR görevleri ile işletim sistemi ve çatı düzeltme ekini otomatikleştirme](container-registry-tasks-overview.md)
+Bu öğreticide, kaynak kodunu Git repo'ya adadığınızda, ACR göreviniz Dockerfile'da belirtilen tek bir kapsayıcı görüntüsünü oluşturur ve iter. Kod commit üzerinde birden çok kapsayıcı oluşturmak, itmek ve isteğe bağlı olarak test etmek için adımları tanımlamak için yaml dosyasını kullanan çok [aşamalı bir](container-registry-tutorial-multistep-task.md) [görev](container-registry-tasks-multi-step.md) oluşturmak için bkz. ACR Görevleri'ne genel bakış için, [ACR Görevleri ile Işletim Sistemi ve çerçeve düzeltme bölümüne](container-registry-tasks-overview.md) bakın
 
-Bu öğreticide:
+Bu eğitimde:
 
 > [!div class="checklist"]
 > * Görev oluşturma
@@ -32,7 +32,7 @@ Bu öğreticide, [önceki öğreticide](container-registry-tutorial-quick-task.m
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLı 'yı yerel olarak kullanmak istiyorsanız, [az Login][az-login]Ile Azure CLI sürüm **2.0.46** veya sonraki bir sürümünün yüklü ve oturum açmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek][azure-cli].
+Azure CLI'yi yerel olarak kullanmak istiyorsanız, Azure CLI sürüm **2.0.46** veya daha sonra az [girişi][az-login]ile yüklenmiş ve oturum açmış olmalısınız. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -40,9 +40,9 @@ Azure CLı 'yı yerel olarak kullanmak istiyorsanız, [az Login][az-login]Ile Az
 
 ACR Görevlerinin işleme durumunu okumasını etkinleştirmek ve bir depoda web kancaları oluşturmak için gereken adımları tamamladıktan sonra, depoya işleme yapılması üzerine kapsayıcı görüntüsü derlemesini tetikleyen bir görev oluşturabilirsiniz.
 
-İlk olarak, bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmelisiniz.
+İlk olarak, bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmeniz gerekir.
 
-[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Gömme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -50,7 +50,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Şimdi aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görevi oluşturun:
+Şimdi, aşağıdaki [az acr görev oluşturma][az-acr-task-create] komutunu çalıştırarak görev oluşturun:
 
 ```azurecli-interactive
 az acr task create \
@@ -63,11 +63,11 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Daha önce `az acr build-task` komutuyla önizleme sırasında görevler oluşturduysanız, bu görevlerin [az ACR Task][az-acr-task] komutu kullanılarak yeniden oluşturulması gerekir.
+> Önizlemede daha önce `az acr build-task` komutuyla görev oluşturduysanız [az acr task][az-acr-task] komutuyla bu görevleri yeniden oluşturmanız gerekebilir.
 
-Bu görev, *ile belirtilen depodaki*ana`--context` dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. Depo kökünden `--file` tarafından belirtilen Dockerfile, görüntüyü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
+Bu görev, `--context` ile belirtilen depodaki *ana* dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. Depo `--file` kökünden belirtilen Dockerfile görüntü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
 
-Başarılı bir [az ACR görev oluştur][az-acr-task-create] komutunun çıktısı aşağıdakine benzer:
+Başarılı bir [az acr task create][az-acr-task-create] komutundaki çıktı aşağıdakilere benzer:
 
 ```output
 {
@@ -128,7 +128,7 @@ Başarılı bir [az ACR görev oluştur][az-acr-task-create] komutunun çıktıs
 
 ## <a name="test-the-build-task"></a>Derleme görevini test etme
 
-Artık derlemenizi tanımlayan bir göreviniz var. Derleme ardışık düzenini test etmek için [az ACR Task Run][az-acr-task-run] komutunu yürüterek bir derlemeyi el ile tetikleyin:
+Artık derlemenizi tanımlayan bir göreviniz var. Derleme işlem hattını test etmek için, [az acr task run][az-acr-task-run] komutunu yürüterek el ile bir derleme tetikleyin:
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -206,7 +206,7 @@ Run ID: da2 was successful after 27s
 
 Görevi el ile çalıştırarak test ettikten sonra, bir kaynak kodu değişikliği ile otomatik olarak tetikleyin.
 
-İlk olarak, [deponun][sample-repo]yerel kopyasını içeren dizinde olduğunuzdan emin olun:
+İlk olarak, [depo][sample-repo] yerel kopyanızı içeren dizinde olduğunuzdan emin olun:
 
 ```console
 cd acr-build-helloworld-node
@@ -247,7 +247,7 @@ Run ID: da4 was successful after 38s
 
 ## <a name="list-builds"></a>Derlemeleri listeleme
 
-Kayıt defteriniz için ACR görevlerinin tamamladığı görev çalıştırmalarının listesini görmek için [az ACR Task List-çalıştırmaları][az-acr-task-list-runs] komutunu çalıştırın:
+[az acr task list-runs][az-acr-task-list-runs] komutunu çalıştırarak ACR Görevlerinin kayıt defteriniz için tamamladığı çalıştırmaları listeleyebilirsiniz:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table

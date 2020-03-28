@@ -1,6 +1,6 @@
 ---
-title: Yönetilen disk anlık görüntüsünü bir abonelik-CLı örneğine kopyalama
-description: Azure CLı betik örneği-bir yönetilen diskin anlık görüntüsünü CLı ile aynı veya farklı aboneliğe kopyalama (veya taşıma)
+title: Yönetilen disk anlık görüntüsünü aboneye kopyalama - CLI Sample
+description: Azure CLI Script Örneği - Yönetilen bir diskin anlık görüntüsünü CLI ile aynı veya farklı aboneliğe kopyalama (veya taşıma)
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -17,19 +17,19 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 19c791cf1f394f5aab6ad2fcd7f98c4b30497286
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458540"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>CLI ile bir yönetilen diskin anlık görüntüsünü aynı veya farklı aboneliğe kopyalama
 
-Bu betik bir yönetilen diskin anlık görüntüsünü aynı veya farklı bir aboneliğe kopyalar. Aşağıdaki senaryolar için bu betiği kullanın:
+Bu betik bir yönetilen diskin anlık görüntüsünü aynı veya farklı bir aboneliğe kopyalar. Aşağıdaki senaryolar için bu komut dosyasını kullanın:
 
-1. Maliyetinizi azaltmak için Premium depolamada (Premium_LRS) bir anlık görüntüyü standart depolamaya (Standard_LRS veya Standard_ZRS) geçirin.
-1. ZRS depolamanın daha yüksek güvenilirliğine faydalanmak için yerel olarak yedekli depolama alanından (Premium_LRS, Standard_LRS) bir anlık görüntüyü bölge yedekli depolama alanına (Standard_ZRS) geçirin.
-1. Daha uzun bekletme için bir anlık görüntüyü aynı bölgedeki farklı bir aboneliğe taşıyın.
+1. Maliyetinizi azaltmak için Premium depolama alanında (Premium_LRS) standart depolama alanına (Standard_LRS veya Standard_ZRS) anlık görüntü geçirin.
+1. ZRS depolamasının daha yüksek güvenilirliğinden yararlanmak için yerel olarak yedekdepolamadan (Premium_LRS, Standard_LRS) bölge yedekdepolamasına (Standard_ZRS) anlık görüntü geçirin.
+1. Daha uzun bekletme için anlık görüntünün aynı bölgedeki farklı abonelmeye taşınması.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

@@ -1,243 +1,243 @@
 ---
-title: HIPAA HiTRUST şema örnek denetimleri
-description: HIPAA itrust şema örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
+title: HIPAA HITRUST plan örnek kontrolleri
+description: HIPAA HITRUST plan örneklerinin kontrol eşlemi. Her denetim, değerlendirmeye yardımcı olan bir veya daha fazla Azure İlkesiyle eşlenir.
 ms.date: 11/26/2019
 ms.topic: sample
 ms.openlocfilehash: c6680055cfe41a2f893d46cba797783913d880ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75472313"
 ---
-# <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>HIPAA zrust şema örneğinin denetim eşlemesi
+# <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>HIPAA HITRUST plan örneğinin kontrol eşlemi
 
-Aşağıdaki makalede, Azure şemaları HIPAA, bluebaskı örneği, HIPAA ile HIPAA denetimleri için nasıl eşlenir. Denetimler hakkında daha fazla bilgi için bkz. [HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+Aşağıdaki makalede, Azure Planları HIPAA HITRUST planı örnek haritalarının HIPAA HITRUST denetimleri için nasıl açıklanmaktadır. Denetimler hakkında daha fazla bilgi için [HIPAA HITRUST'a](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)bakın.
 
-Aşağıdaki eşlemeler **HIPAA ZRUST** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından **\[önizleme\]bulun ve seçin: HIPAA HITRUST denetimleri denetim** yerleşik ilke girişimi.
+Aşağıdaki eşlemeler **HIPAA HITRUST** denetimleri içindir. Doğrudan belirli bir denetim eşleleme sine atlamak için sağdaki gezinmeyi kullanın. Eşlenen denetimlerin çoğu bir Azure [İlkesi](../../../policy/overview.md) girişimiyle uygulanır. Girişimin tamamını incelemek için Azure portalında **İlke'yi** açın ve **Tanımlar** sayfasını seçin. Ardından Önizleme'yi ** \[bulun\]ve seçin: Audit HIPAA HITRUST denetimleri** yerleşik ilke girişimi.
 
 > [!IMPORTANT]
-> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/HIPAA-HITRUST/control-mapping.md)bakın.
+> Aşağıdaki her denetim bir veya daha fazla [Azure İlkesi](../../../policy/overview.md) tanımıyla ilişkilidir. Bu ilkeler, denetime [uygunluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; ancak, genellikle bir denetim ve bir veya daha fazla ilke arasında 1:1 veya tam bir eşleşme yoktur. Bu nedenle, Azure İlkesinde **Uyumlu olmak** yalnızca ilkelerin kendileri için başvurur; bu, bir denetimin tüm gereksinimlerine tam olarak uymanızı sağlamaz. Ayrıca, uyumluluk standardı şu anda herhangi bir Azure İlkesi tanımı tarafından ele alınmayan denetimleri içerir. Bu nedenle, Azure İlkesi'ndeki uyumluluk, genel uyumluluk durumunuza yalnızca kısmi bir görünümdür. Bu uyumluluk planı örneği için denetimler ve Azure İlkesi tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub Commit History'ye](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/HIPAA-HITRUST/control-mapping.md)bakın.
 
-## <a name="control-against-malicious-code"></a>Kötü amaçlı koda karşı denetim
+## <a name="control-against-malicious-code"></a>Kötü Amaçlı Koda Karşı Denetim
 
-Bu şema, Azure Güvenlik Merkezi 'nde sanal makinelerde eksik uç nokta koruması için izleme yapan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve Windows sanal makinelerinde Microsoft kötü amaçlı yazılımdan koruma çözümünü zorlayarak, kötü amaçlı kod koruma dahil olmak üzere Endpoint Protection 'ı yönetmenize yardımcı olur.
+Bu plan, Azure Güvenlik Merkezi'ndeki sanal makinelerde eksik uç nokta korumasını izleyen ve Windows sanal makinelerde Microsoft kötü amaçlı yazılımdan koruma çözümünü uygulayan [Azure İlkesi](../../../policy/overview.md) tanımları atayarak kötü amaçlı kod koruması da dahil olmak üzere uç nokta korumayı yönetmenize yardımcı olur.
 
-- Windows Server için varsayılan Microsoft IaaS kötü amaçlı yazılımdan koruma uzantısını dağıt
-- Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir
+- Windows sunucusu için varsayılan Microsoft IaaS Kötü Amaçlı Yazılımdan Koruma uzantısını dağıtma
+- Toplu iş hesaplarındaki tanılama günlükleri etkinleştirilmeli
 - Makinelerinize sistem güncelleştirmeleri yüklenmelidir
 
 
-## <a name="management-of-removable-media"></a>Çıkarılabilir medya yönetimi
+## <a name="management-of-removable-media"></a>Çıkarılabilir Medya Yönetimi
 
-Veri sınıflandırma düzeyine bağlı olarak, medyayı kullanımdan önce (dizüstü bilgisayarlar dahil) kaydeder, bu ortam kullanımı için makul kısıtlamalar koyar ve aşağıdakiler için uygun bir fiziksel ve mantıksal koruma düzeyi (şifreleme dahil) sağlar. düzgün şekilde yok edilene veya ayıklanmış olana kadar kapsanan bilgileri içeren medya.
+Kuruluş, veri sınıflandırma düzeyine bağlı olarak, kullanımdan önce medyayı (dizüstü bilgisayarlar dahil) kaydeder, bu ortamın nasıl kullanılacağına ilişkin makul kısıtlamalar koyar ve uygun düzeyde fiziksel ve mantıksal koruma (şifreleme dahil) sağlar. düzgün bir şekilde yok edilene veya dezenfekte edilene kadar kapalı bilgiler içeren ortamlar.
 
-- Data Lake Store hesaplarında şifreleme gerektir
-- SQL yönetilen örnek TDE koruyucusu kendi anahtarınızla şifrelenmelidir
-- Sanal makinelere disk şifrelemesi uygulanmalıdır
-- SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
-
-
-## <a name="information-exchange-policies-and-procedures"></a>Bilgi değişimi Ilkeleri ve yordamları
-
-Bulut hizmeti sağlayıcıları, birlikte çalışabilirlik sağlamaya yardımcı olmak için sektör tarafından tanınan bir sanallaştırma platformu ve standart sanallaştırma biçimleri (örn., Open Virtualization Format, OVF) kullanır ve kullanımda olan ve tüm hiper yöneticilerine yapılan özel değişiklikleri belgelemiştir. çözümle ilgili sanallaştırma kancaları, müşteri incelemesi için kullanılabilir.
-
-- Belirtilen uygulamaların yüklü olmadığı Windows sanal makinelerini denetlemek için önkoşulları dağıtın
-
-## <a name="control-of-operational-software"></a>Işletimsel yazılımın denetimi 
-
-Kuruluş, bilgi sisteminde sunucular, iş istasyonları ve dizüstü bilgisayarlar dahil olmak üzere yetkisiz yazılımları tanımlar, bilgi sisteminde bilinen yetkisiz yazılımların yürütülmesini önlemek için bir izin verme ve özel durum engelleme ilkesi kullanır ve yetkisiz yazılımların listesini gözden geçirir ve yılda değil, yıllık olarak güncelleştirir.
-
-- \[önizleme\] "güvenlik seçenekleri-denetim" içinde Windows VM yapılandırmalarından denetim sonuçlarını gösterme
-- \[önizleme\] Windows VM yapılandırmalarından denetim sonuçlarını "Sistem Denetim Ilkeleri-hesap yönetimi" içinde göster
-
-## <a name="change-control-procedures"></a>Denetim yordamlarını değiştirme
-
-Tüm sanal makine görüntülerinin bütünlüğü, sanal makine görüntülerine yapılan değişiklikler için bir uyarı kaydederek ve bir uyarı oluşturarak ve/veya müşteri (örneğin, portallar veya uyarılar) bir değişiklik veya taşıma sonuçları ve görüntünün bütünlüğünden sonraki doğrulanmasıyla ilgili bir uyarı kaydederek her zaman bir kez daha kırmızı hale getirilir.
-
-- \[önizleme\] ' sistem denetim Ilkeleri-ayrıntılı Izleme ' içindeki Windows VM yapılandırmasından denetim sonuçlarını gösterme
-
-## <a name="inventory-of-assets"></a>Varlıkların envanteri 
-
-Bir varlık ve hizmet envanteri tutulur
-
-- Arama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir.
-- "güvenlik seçenekleri-Microsoft ağ sunucusu" 'ndaki Windows VM yapılandırmalarının denetimine yönelik \[önizleme\] dağıtım gereksinimleri
-- "Yönetim Şablonları-ağ" içindeki Windows VM yapılandırmalarının denetimine yönelik \[önizleme\] dağıtım gereksinimleri
-
-## <a name="control-of-technical-vulnerabilities"></a>Teknik güvenlik açıklarının denetimi 
-
-Tüm sistem ve ağ bileşenleri için sağlamlaştırılmış bir yapılandırma standardı vardır.
-
-- Olağanüstü durum kurtarma yapılandırması olmadan sanal makineleri denetleme
-- SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- Güvenlik açığı bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
-
-## <a name="segregation-in-networks"></a>Ağlarda ayrım yapma
-
-Kuruluşun güvenlik ağ geçitleri (ör. güvenlik duvarları) güvenlik ilkelerini uygular ve etki alanları arasındaki trafiği filtrelemek, yetkisiz erişimi engellemek ve iç kablolu, iç kablosuz ve dış arasında ayrımı sürdürmek için kullanılır ağ kesimleri (ör. Internet), DMZs dahil ve etki alanlarının her biri için erişim denetimi ilkelerini uygular.
-
-- Güvenlik Izleme aracısının otomatik sağlaması
-- Sanal ağlar oluşturulduğunda Ağ İzleyicisi dağıt
-
-## <a name="input-data-validation"></a>Giriş verileri doğrulaması
-
-Herkese yönelik tüm Web uygulamaları için uygulama düzeyi güvenlik duvarları trafiği denetlemek için uygulanır. Web tabanlı olmayan genel kullanıma yönelik uygulamalar için kuruluş, uygulama türüne özgü bir ağ tabanlı güvenlik duvarı uygulamıştır. Herkese açık uygulamanın trafiği şifrelenirse, cihaz şifrelemenin arkasında yer alır veya analizden önce trafiğin şifresini çözmezler.
-
-- \[önizleme\] "Windows Güvenlik Duvarı Özellikleri" içindeki Windows VM yapılandırmasından denetim sonuçlarını gösterme
+- Data Lake Store hesaplarında şifreleme gerektirme
+- SQL yönetilen örnek TDE koruyucukendi anahtarı ile şifrelenmelidir
+- Disk şifreleme sanal makinelerde uygulanmalıdır
+- SQL veritabanlarında Saydam Veri Şifrelemesi etkinleştirilmelidir
 
 
-## <a name="network-connection-control"></a>Ağ bağlantısı denetimi
+## <a name="information-exchange-policies-and-procedures"></a>Bilgi Alışverişi Politikaları ve Prosedürleri
 
-Ağ trafiği, kuruluşun erişim denetimi ilkesine ve her bir ağ erişim noktası ya da dış iletişim hizmeti 'nin yönetilen arabirimine yönelik güvenlik duvarı ve ağla ilgili diğer kısıtlamalar doğrultusunda denetlenir.
+Bulut hizmeti sağlayıcıları, birlikte çalışabilirliği sağlamaya yardımcı olmak için endüstri tarafından tanınan bir sanallaştırma platformu ve standart sanallaştırma biçimleri (örneğin, Açık Sanallaştırma Biçimi, OVF) kullanır ve kullanımdaki herhangi bir hipervizörde yapılan özel değişiklikleri belgelemiştir ve tüm çözüme özel sanallaştırma kancaları müşteri incelemesi için kullanılabilir.
 
-- Internet 'e yönelik uç noktalar üzerinden erişim kısıtlı olmalıdır
-- SQL yönetilen örnek TDE koruyucusu kendi anahtarınızla şifrelenmelidir
-- API Apps için uzaktan hata ayıklama kapatılmalıdır
+- Belirtilen uygulamaları yüklü olmayan Windows VM'lerini denetlemek için ön koşulları dağıtma
 
-## <a name="network-controls"></a>Ağ denetimleri
+## <a name="control-of-operational-software"></a>Operasyonel Yazılımın Kontrolü 
 
-Kuruluş, fiziksel sunucuları, uygulamaları veya verileri sanallaştırılmış sunuculara geçirirken güvenli ve şifreli iletişim kanalları kullanır.
+Kuruluş, sunucular, iş istasyonları ve dizüstü bilgisayarlar da dahil olmak üzere bilgi sisteminde ki yetkisiz yazılımları tanımlar, bilgi sisteminde bilinen yetkisiz yazılımların yürütülmesini yasaklamak için her şeye izin veren, istisnai bir politika uygular ve yetkisiz yazılım listesini periyodik olarak ancak yıllık olarak en az olarak inceler ve günceller.
 
-- Disk şifrelemesi VM 'Lere uygulanmalıdır
-- SQL Server TDE koruyucusu kendi anahtarınızla şifrelenmelidir
-- \[önizleme\] "güvenlik seçenekleri-ağ erişimi" içindeki Windows VM yapılandırmalarının denetim sonuçlarını gösterme
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
-- \[önizleme\] "Windows Güvenlik Duvarı Özellikleri" içindeki Windows VM yapılandırması 'ndaki denetimlerin sonuçlarını gösterme
-- Tanılama ayarlarını ağ güvenlik gruplarından dağıt
-- Internet 'e yönelik uç noktalar üzerinden erişim kısıtlı olmalıdır
+- \[Önizleme\] "Güvenlik Seçenekleri-Denetim" içinde Windows VM yapılandırmalarından denetim sonuçlarını göster
+- \[Önizleme\] "Sistem Denetim İlkeleri- Hesap Yönetimi"nde Windows VM yapılandırmalarından gelen denetim sonuçlarını göster
 
-## <a name="sensitive-system-isolation"></a>Hassas sistem yalıtımı
+## <a name="change-control-procedures"></a>Denetim Prosedürlerini Değiştir
 
-Paylaşılan sistem kaynakları (örneğin, Yazmaçları, ana bellek, ikincil depolama) sisteme, diğer sistemlere/uygulamalara/kullanıcılara açıklanmadan korunur ve kullanıcılar bilinçli olarak veya istemeden bilgilere yeniden erişebilir.
+Tüm sanal makine görüntülerinin bütünlüğü, sanal makine görüntülerinde yapılan değişiklikler için her zaman bir uyarı oluşturarak ve işletme sahibinin(ler) ve/veya müşteri(ler) elektronik yöntemlerle (örn. portallar veya uyarılar) bir değişikliğin veya hareketin sonuçlarını ve görüntünün bütünlüğünün sonraki doğrulaması yoluyla sağlanır.
 
-- Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
+- \[Önizleme\] Windows VM yapılandırmasından gelen denetim sonuçlarını 'Sistem Denetim İlkeleri -Ayrıntılı İzleme' adlı yapıda göster
 
-## <a name="security-of-network-services"></a>Ağ hizmetlerinin güvenliği
+## <a name="inventory-of-assets"></a>Varlıkların Envanteri 
 
-Bir ağ hizmeti sağlayıcısı/Yöneticisi tarafından sunulan kabul edilen hizmetler, güvenli bir şekilde sağlandıklarından emin olmak için resmi olarak yönetilir ve izlenir.
+Varlıkların ve hizmetlerin envanteri korunur
 
-- Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
+- Arama hizmetlerinde tanılama günlükleri etkinleştirilmelidir.
+- \["Güvenlik Seçenekleri- Microsoft Network Server"da Windows VM yapılandırmalarını denetlemek için dağıtma gereksinimlerini önizleme\]
+- \["Yönetimşablonları- Ağ"da Windows VM yapılandırmalarını denetlemek için dağıtma gereksinimlerini önizleme\]
 
-## <a name="network-routing-control"></a>Ağ yönlendirme denetimi
+## <a name="control-of-technical-vulnerabilities"></a>Teknik Güvenlik Açıklarının Kontrolü 
 
-Yönlendirme denetimleri, iç ve dış ağlar (örneğin, Internet ve üçüncü taraf ağları) arasında kullanılan güvenlik ağ geçitleri (ör. güvenlik duvarları) aracılığıyla uygulanır.
+Tüm sistem ve ağ bileşenleri için sertleştirilmiş bir yapılandırma standardı vardır.
 
-- Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
+- Olağanüstü durum kurtarma yapılandırması yapılmadan Sanal Makineleri Denetleme
+- SQL yönetilen örneklerinizde güvenlik açığı değerlendirmesi etkinleştirilmelidir
+- Güvenlik Açığı, Güvenlik Açığı Değerlendirmesi çözümü yle düzeltilmelidir
 
-## <a name="information-exchange-policies-and-procedures"></a>Bilgi değişimi Ilkeleri ve yordamları
+## <a name="segregation-in-networks"></a>Ağlarda Ayrımcılık
 
-Kuruluş, şirket tarafından denetlenen taşınabilir depolama ortamının kullanımını, dış bilgi sistemlerindeki yetkili kişiler tarafından sınırlandırır.
+Kuruluşun güvenlik ağ geçitleri (örn. güvenlik duvarları) güvenlik ilkeleri uygular ve etki alanları arasındaki trafiği filtreleyecek, yetkisiz erişimi engelleyecek şekilde yapılandırılır ve dahili kablolu, dahili kablosuz ve harici bağlantı ayrımını korumak için kullanılır DMZ'ler de dahil olmak üzere ağ segmentleri (örneğin, Internet) ve etki alanlarının her biri için erişim denetimi ilkelerini uygulayın.
 
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- Güvenlik İzleme aracısının Otomatik Olarak Sağlanması
+- Sanal ağlar oluşturulduğunda ağ izleyicisini dağıtma
+
+## <a name="input-data-validation"></a>Giriş Veri Doğrulama
+
+Kamuya açık web uygulamaları için, trafiği denetlemek için uygulama düzeyinde güvenlik duvarları uygulanır. Web tabanlı olmayan genel kullanıma dönük uygulamalar için kuruluş, uygulama türüne özgü ağ tabanlı bir güvenlik duvarı uygulamıştır. Genel kullanıma açık uygulamaya yönelik trafik şifrelenirse, aygıt şifrelemenin arkasında oturur veya çözümlemeden önce trafiğin şifresini çözebiliyor.
+
+- \[Önizleme\] "Windows Güvenlik Duvarı Özellikleri"nde Windows VM yapılandırmasından gelen denetim sonuçlarını göster
+
+
+## <a name="network-connection-control"></a>Ağ Bağlantı Kontrolü
+
+Ağ trafiği, her ağ erişim noktası veya harici telekomünikasyon hizmetinin yönetilen arabirimi için güvenlik duvarı ve ağla ilgili diğer kısıtlamalar aracılığıyla kuruluşun erişim kontrol ilkesine uygun olarak denetlenir.
+
+- Internet'e bakan uç noktalarüzerinden erişim kısıtlanmalıdır
+- SQL yönetilen örnek TDE koruyucukendi anahtarı ile şifrelenmelidir
+- API uygulamaları için uzaktan hata ayıklama kapatılmalıdır
+
+## <a name="network-controls"></a>Ağ Denetimleri
+
+Kuruluş, fiziksel sunucuları, uygulamaları veya verileri sanallaştırılmış sunuculara aktarırken güvenli ve şifreli iletişim kanallarını kullanır.
+
+- VM'lerde disk şifreleme uygulanmalıdır
+- SQL server TDE koruyucusu kendi anahtarınızla şifrelenmelidir
+- \[Önizleme\] "Güvenlik Seçenekleri- Ağ Erişimi"nde Windows VM yapılandırmalarından gelen denetim sonuçlarını göster
+- Depolama hesaplarına sınırsız ağ erişimini denetleme
+- \[Önizleme\] "Windows Güvenlik Duvarı Özellikleri"nde Windows VM Yapılandırmasından gelen denetim sonuçlarını göster
+- Ağ Güvenlik Gruplarından Tanılama ayarlarını dağıtma
+- Internet'e bakan uç noktalarüzerinden erişim kısıtlanmalıdır
+
+## <a name="sensitive-system-isolation"></a>Hassas Sistem Yalıtımı
+
+Paylaşılan sistem kaynakları (örn. kayıtlar, ana bellek, ikincil depolama) sisteme geri salınır, diğer sistemlere/uygulamalara/kullanıcılara ifşa olmaktan korunur ve kullanıcılar bilgi kalıntılarına kasıtlı veya kasıtsız olarak erişemez.
+
+- Sanal Makineler yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir
+
+## <a name="security-of-network-services"></a>Ağ Hizmetlerinin Güvenliği
+
+Bir ağ servis sağlayıcısı/yöneticisi tarafından sağlanan kabul edilen hizmetler, güvenli bir şekilde sağlandığından emin olmak için resmi olarak yönetilir ve izlenir.
+
+- Sanal Makineler yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir
+
+## <a name="network-routing-control"></a>Ağ Yönlendirme Kontrolü
+
+Yönlendirme denetimleri, iç ve dış ağlar (örn. Internet ve üçüncü taraf ağları) arasında kullanılan güvenlik ağ geçitleri (örn. güvenlik duvarları) aracılığıyla uygulanır.
+
+- Sanal Makinelerde Uyarlanabilir Uygulama Denetimleri etkinleştirilmelidir
+
+## <a name="information-exchange-policies-and-procedures"></a>Bilgi Alışverişi Politikaları ve Prosedürleri
+
+Kuruluş, dış bilgi sistemlerinde yetkili kişiler tarafından organizasyon kontrollü taşınabilir depolama ortamının kullanımını sınırlar.
+
+- Depolama hesaplarına sınırsız ağ erişimini denetleme
 - Web uygulamaları için uzaktan hata ayıklama kapatılmalıdır
-- API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- APi Uygulamasına yalnızca HTTPS üzerinden erişilebilmeli
 
-## <a name="electronic-messaging"></a>Elektronik mesajlaşma
+## <a name="electronic-messaging"></a>Elektronik Mesajlaşma
 
-Onaylar, anlık mesajlaşma veya dosya paylaşımı dahil olmak üzere dış genel hizmetler kullanılmadan önce alınır.
+Onaylar, anlık ileti veya dosya paylaşımı da dahil olmak üzere harici kamu hizmetlerini kullanmadan önce alınır.
 
-- \[önizleme\] parola dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını gösterme
+- \[Önizleme\] 0644 olarak ayarlanmış parola dosyası izinleri olmayan Linux VM'lerden gelen denetim sonuçlarını göster
 
-## <a name="on-line-transactions"></a>Satır içi Işlemler
+## <a name="on-line-transactions"></a>On-Line İşlemler
 
-Kuruluş, işlem içinde yer alan tarafların her biri ile elektronik imzaların kullanımı arasında şifreleme kullanımını gerektirir. Kuruluş, işlem ayrıntılarının depolamanın, herkese açık olarak erişilebilen tüm ortamların dışında konumlandırılmasını sağlar (ör. kuruluşun intraneti üzerinde bulunan bir depolama platformunda) ve Internet 'ten doğrudan erişilebilen bir depolama ortamında korunmaz. (örneğin, dijital imzaları ve/veya dijital sertifikaları verme ve sürdürme amacıyla), güvenlik, uçtan uca sertifika/imza yönetiminin tamamında tümleşiktir ve katıştırılır işle.
+Kuruluş, işlemde yer alan tarafların her biri tarafından elektronik imzalar arasında şifreleme kullanımını ve elektronik imzaların kullanılmasını gerektirir. Kuruluş, işlem ayrıntılarının kamuya açık ortamların dışında (örneğin, kuruluşun intranetinde bulunan bir depolama platformunda) ve Internet'ten doğrudan erişilebilen bir depolama ortamında tutulmamasını ve maruz kalmamasını sağlar.Güvenilir bir yetkilinin kullanıldığı yerde (örn. dijital imza ve/veya dijital imza ların verilmesi ve saklanması amacıyla), güvenlik tüm uçtan uca sertifika/yönetim boyunca entegre edilmiştir ve Işlem.
 
-- Disk şifrelemesi VM 'Lere uygulanmalıdır
-- \[önizleme\] güvenilen kökte belirtilen sertifikaları içermeyen Windows VM 'lerinden denetim sonuçlarını gösterme
+- VM'lerde disk şifreleme uygulanmalıdır
+- \[Önizleme,\] belirtilen sertifikaları güvenilir kökte içermeyen Windows VM'lerinden gelen denetim sonuçlarını göster
 
 ## <a name="password-management"></a>Parola Yönetimi
 
-Parolalar, tüm sistem bileşenlerinde iletim ve depolama sırasında şifrelenir.
+Parolalar tüm sistem bileşenlerinde iletim ve depolama sırasında şifrelenir.
 
-- \[önizleme\] parola karmaşıklığı ayarı etkinleştirilmemiş Windows VM 'lerinden denetim sonuçlarını gösterme
+- \[Önizleme\] Parola karmaşıklığı ayarını etkinleştirmeyen windows VM'lerinden denetim sonuçlarını göster
 
-## <a name="user-authentication-for-external-connections"></a>Dış bağlantılar için Kullanıcı kimlik doğrulaması
+## <a name="user-authentication-for-external-connections"></a>Harici Bağlantılar için Kullanıcı Kimlik Doğrulaması
 
-Kuruluşlar ağına yönelik tüm dış bağlantılar için çok faktörlü, radius veya Kerberos (ayrıcalıklı erişim için) ve CHAP (çevirmeli yöntemlere yönelik kimlik bilgilerini şifreleme) gibi güçlü kimlik doğrulama yöntemleri uygulanır.
-
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
-- Tam zamanında ağ erişim denetimi VM 'Lere uygulanmalıdır
-
-## <a name="user-identification-and-authentication"></a>Kullanıcı kimliği ve kimlik doğrulaması
-
-Ayrıcalıklı işlevleri (örn. Sistem Yönetimi) gerçekleştiren kullanıcılar, bu ayrıcalıklı işlevleri gerçekleştirirken ayrı hesaplar kullanır. Multi-Factor Authentication yöntemleri kuruluş ilkesine uygun olarak kullanılır (örneğin, uzaktan ağ erişimi için).
+Çok faktörlü, Yarıçap veya Kerberos (ayrıcalıklı erişim için) ve CHAP (çevirmeli bağlantı yöntemleri için kimlik bilgilerinin şifrelemesi için) gibi güçlü kimlik doğrulama yöntemleri, kuruluşlar ağına yapılan tüm dış bağlantılar için uygulanır.
 
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
-- Tam zamanında ağ erişim denetimi VM 'Lere uygulanmalıdır
+- Just In Time ağ erişim kontrolü VM'lerde uygulanmalıdır
 
-## <a name="privilege-management"></a>Ayrıcalık yönetimi
+## <a name="user-identification-and-authentication"></a>Kullanıcı Kimliği ve Kimlik Doğrulama
 
-Sanallaştırılmış sistemleri barındıran sistemler için yönetim işlevlerine veya yönetim konsollarına erişim, en az ayrıcalık ilkesine ve teknik denetimler aracılığıyla desteklenlerine bağlı olarak personelle kısıtlıdır.
+Ayrıcalıklı işlevleri gerçekleştiren kullanıcılar (örneğin, sistem yönetimi) bu ayrıcalıklı işlevleri gerçekleştirirken ayrı hesaplar kullanır. Çok faktörlü kimlik doğrulama yöntemleri, kuruluş ilkesine (örn. uzak ağ erişimi için) uygun olarak kullanılır.
 
-- Tam zamanında ağ erişim denetimi VM 'Lere uygulanmalıdır
-- \[Preview\] rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır
+- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Just In Time ağ erişim kontrolü VM'lerde uygulanmalıdır
 
-## <a name="review-of-user-access-rights"></a>Kullanıcı erişim haklarının incelenmesi
+## <a name="privilege-management"></a>Ayrıcalık Yönetimi
+
+Sanallaştırılmış sistemlere ev sahipliği yapan sistemler için yönetim işlevlerine veya yönetim konsollarına erişim, en az ayrıcalık ilkesine dayalı olarak personelle sınırlıdır ve teknik kontroller yoluyla desteklenir.
+
+- Just In Time ağ erişim kontrolü VM'lerde uygulanmalıdır
+- \[Önizleme\] Rolü Tabanlı Erişim Kontrolü (RBAC) Kubernetes hizmetlerinde kullanılmalıdır
+
+## <a name="review-of-user-access-rights"></a>Kullanıcı Erişim Haklarının Gözden Geçirilmesi
 
 Kuruluş, bilgi varlıklarının yetkili kullanıcılarının belgelenmiş bir listesini tutar.
 
-- \[önizleme\] "güvenlik seçenekleri-hesaplar" daki Windows VM yapılandırmalarının denetim sonuçlarını gösterme
+- \[Önizleme\] "Güvenlik Seçenekleri- Hesaplar"daki Windows VM yapılandırmalarından gelen denetim sonuçlarını göster
 
-## <a name="remote-diagnostic-and-configuration-port-protection"></a>Uzaktan tanılama ve yapılandırma bağlantı noktası koruması
+## <a name="remote-diagnostic-and-configuration-port-protection"></a>Uzaktan Tanılama ve Yapılandırma Bağlantı Noktası Koruması
 
-Bir bilgisayarda veya ağ sistemlerinde yüklü olan bağlantı noktaları, hizmetler ve benzer uygulamalar, özellikle de iş işlevselliği için gerekli değildir, devre dışıdır veya kaldırılır.
+İş işlevselliği için özel olarak gerekli olmayan bilgisayar veya ağ sistemlerine yüklenen bağlantı noktaları, hizmetler ve benzeri uygulamalar devre dışı bırakılır veya kaldırılır.
 
-- Sanal makinelerinizde yönetim bağlantı noktaları kapatılmalıdır
-- Sanal makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıklarına yönelik ölçek kümeleri düzeltilmelidir
+- Yönetim bağlantı noktaları sanal makinelerinizde kapatılmalıdır
+- Sanal makineler ölçek kümelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 
-## <a name="audit-logging"></a>Denetim günlüğü
+## <a name="audit-logging"></a>Denetim Günlüğü
 
-Gönderilen ve alınan ileti günlükleri, iletinin tarihi, saati, kaynağı ve hedefi de dahil olmak üzere saklanır, ancak içeriğini değil. Sistem etkin durumdayken denetim her zaman kullanılabilir ve önemli olayları, başarı/başarısız veri erişimi, sistem güvenlik yapılandırması değişiklikleri, ayrıcalıklı veya yardımcı program kullanımı, tüm alarmlar (örneğin, A/V ve KIMLIKLER), kimlik ve kimlik doğrulama mekanizmalarının etkinleştirilmesi ve devre dışı bırakılması, sistem düzeyindeki nesnelerin oluşturulması ve silinmesi.
+Gönderilen ve alınan iletilerin günlükleri, iletinin tarihi, saati, kaynağı ve hedefi dahil olmak üzere tutulur, ancak içeriğini içermez. Sistem etkinken ve önemli olayları, başarı/başarısız veri erişimini, sistem güvenliği yapılandırma değişikliklerini, ayrıcalıklı veya yardımcı program kullanımını, yükseltilen alarmları, koruma sistemlerinin aktivasyonunu ve devre dışı bırakılmasını (örn. A/V ve IDS), tanımlama ve kimlik doğrulama mekanizmalarının aktivasyonu ve devre dışı bırakılması ve sistem düzeyindeki nesnelerin oluşturulması ve silinmesini izlerken denetim her zaman kullanılabilir.
 
-- Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir
-- Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir
+- Event Hub'daki tanılama günlükleri etkinleştirilmeli
+- Sanal makine ölçek kümelerinde sistem güncellemeleri yüklenmelidir
 
-## <a name="monitoring-system-use"></a>İzleme sistem kullanımı
+## <a name="monitoring-system-use"></a>İzleme Sistemi Kullanımı
 
-Kuruluşun ortamında dağıtılan otomatikleştirilmiş sistemler, önemli olayları ve anormal etkinlikleri izlemek ve sistem günlüklerini analiz etmek için kullanılır. bunun sonuçları düzenli olarak gözden geçirilir. İzleme, devre dışı bırakılmış hesaplara erişim girişimleri ve sistem uyarıları ya da arızalar dahil ayrıcalıklı işlemler, yetkili erişim veya yetkisiz erişim girişimleri içerir.
+Kuruluşun ortamında dağıtılan otomatik sistemler, önemli olayları ve anormal etkinlikleri izlemek ve sonuçları düzenli olarak gözden geçirilen sistem günlüklerini analiz etmek için kullanılır. İzleme, devre dışı bırakılmış hesaplara erişim girişimleri ve sistem uyarıları veya hataları da dahil olmak üzere ayrıcalıklı işlemleri, yetkili erişimi veya yetkisiz erişim girişimlerini içerir.
 
-- Sanal makine ölçek kümelerindeki tanılama günlükleri etkinleştirilmelidir
+- Sanal Makine ölçek kümelerinde tanılama günlükleri etkinleştirilmelidir
 
-## <a name="segregation-of-duties"></a>Görevlerin ayrımı
+## <a name="segregation-of-duties"></a>Görevlerin Ayrılması
 
-Görevlerin ayrımı, bilgi ve sistemlerin yetkisiz veya istenmeden değiştirilmesi riskini sınırlamak için kullanılır. Tek bir kişi yetkilendirme veya algılama olmadan bilgi sistemlerine erişemez, bunları değiştirebilir veya kullanamaz. Denetimleri yönetme ve erişim denetimlerinden sorumlu olan kişiler, her kullanıcının rolüne ve sorumluluklarına göre gerekli olan en düşük gerekliliktir ve bu kişiler, bu denetimlerle ilgili denetim işlevlerine erişemez.
-
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
-
-## <a name="administrator-and-operator-logs"></a>Yönetici ve operatör günlükleri
-
-Kuruluş, yönetici etkinliklerini denetlemek için doğru günlük kaydının etkinleştirilmesini sağlar; ve sistem yöneticisi ve işletmen günlüklerini düzenli olarak inceler.
+Görev ayrılığı, bilgi ve sistemlerin yetkisiz veya kasıtsız olarak değiştirilmesi riskini sınırlamak için kullanılır. Hiçbir kişi yetkilendirme veya algılama olmadan bilgi sistemlerine erişemez, değiştiremez veya kullanamaz. Denetimleri yönetmek ve erişimden sorumlu kişilerin erişimi, her kullanıcının rolü ve sorumluluklarına bağlı olarak gereken minimum la sınırlıdır ve bu kişiler bu denetimlerle ilgili denetim işlevlerine erişemez.
 
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 
-## <a name="identification-of-risks-related-to-external-parties"></a>Dış taraflarla Ilgili risklerin tanımlanması
+## <a name="administrator-and-operator-logs"></a>Yönetici ve Operatör Günlükleri
+
+Kuruluş, yönetici etkinliklerini denetlemek için uygun günlüğe kaydetmenin etkin olmasını sağlar; ve sistem yöneticisi ve operatör günlüklerini düzenli olarak inceler.
+
+- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+
+## <a name="identification-of-risks-related-to-external-parties"></a>Dış Taraflarla İlgili Risklerin Belirlenmesi
 
 Kuruluş ve dış taraflar arasındaki uzaktan erişim bağlantıları şifrelenir
 
-- Disk şifrelemesi sanal makinelere uygulanmalıdır
+- Disk şifreleme Sanal makinelerde uygulanmalıdır
 
-## <a name="business-continuity-and-risk-assessment"></a>İş sürekliliği ve risk değerlendirmesi
+## <a name="business-continuity-and-risk-assessment"></a>İş Sürekliliği ve Risk Değerlendirmesi
 
-Kuruluş, kritik iş süreçlerini tanımlar ve iş sürekliliği 'nin bilgi güvenliği yönetimi gereksinimlerini, işlemler, ekip, malzemeler, taşıma gibi bu yönleriyle ilgili diğer sürekliliği gereksinimleriyle tümleştirir. ve tesislerini.
+Kuruluş, kritik iş süreçlerini belirler ve iş sürekliliğinin bilgi güvenliği yönetimi gereksinimlerini operasyonlar, personel, malzeme, ulaşım gibi diğer süreklilik gereksinimleriyle bütünleştirir. ve tesisler.
 
-- \[önizleme\] "güvenlik seçenekleri-Kurtarma Konsolu" 'ndaki Windows VM yapılandırmasından denetim sonuçlarını gösterme
+- \[Önizleme\] "Güvenlik Seçenekleri- Kurtarma Konsolu"nda Windows VM yapılandırmasından gelen denetim sonuçlarını göster
 
 > [!NOTE]
-> Belirli Azure Ilke tanımlarının kullanılabilirliği, Azure Kamu ve diğer ulusal bulutlarda farklılık gösterebilir. 
+> Azure İlkesi tanımlarının kullanılabilirliği Azure Kamu ve diğer ulusal bulutlarda farklılık gösterebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HIPAA HiTRUST şema örneğinin denetim eşlemesini gözden geçirdiniz. Daha sonra, genel bakış ve bu örneği dağıtma hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
+HIPAA HITRUST plan örneğinin kontrol eşlemi gözden geçirdiniz. Ardından, genel bakış ve bu örneğin nasıl dağıtılacak hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="next step action"]
-> [HIPAA HiTRUST şema-genel bakış](./control-mapping.md)
-> [HIPAA HiTRUST şema-Deploy adımları](./deploy.md)
+> [HIPAA HITRUST planı - Genel Bakış](./control-mapping.md)
+> [HIPAA HITRUST planı - Dağıtım adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Plan yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
-- [Mevcut atamaları güncelleştirmeyi](../../how-to/update-existing-assignments.md) öğrenin.
+- Varolan atamaları nasıl [güncelleştirini](../../how-to/update-existing-assignments.md)öğrenin.

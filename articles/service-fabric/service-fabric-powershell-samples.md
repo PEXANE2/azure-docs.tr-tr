@@ -1,17 +1,17 @@
 ---
 title: Azure PowerShell Örnekleri - Service Fabric
-description: PowerShell kullanarak Azure Service Fabric kümeleri, uygulamaları ve hizmetleri oluşturma ve yönetme hakkında bilgi edinin.
+description: Powershell'i kullanarak Azure Hizmet Dokusu kümelerinin, uygulamalarının ve hizmetlerinin oluşturulması ve yönetimi hakkında bilgi edinin.
 ms.topic: sample
 ms.date: 11/29/2018
 ms.custom: mvc
 ms.openlocfilehash: f9ba1b4833b3aff13284a68c23f398ea47ef2ae2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75645659"
 ---
-# <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell örnekleri
+# <a name="azure-service-fabric-powershell-samples"></a>Azure Servis Kumaş PowerShell örnekleri
 
 Aşağıdaki tablo, Service Fabric kümelerini, uygulamalarını ve hizmetlerini oluşturup yöneten PowerShell betiği örneklerinin bağlantılarını içerir.
 
@@ -22,7 +22,7 @@ Aşağıdaki tablo, Service Fabric kümelerini, uygulamalarını ve hizmetlerini
 | **Küme oluşturma** ||
 | [Küme oluşturma (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Bir Azure Service Fabric kümesi oluşturur. |
 | **Kümeyi, düğümleri ve altyapıyı yönetme** ||
-| [Uygulama sertifikası ekleme](./scripts/service-fabric-powershell-add-application-certificate.md)| Key Vault için bir x509 sertifikası oluşturur ve bunu kümenizdeki bir sanal makine ölçek kümesine dağıtır. |
+| [Uygulama sertifikası ekleme](./scripts/service-fabric-powershell-add-application-certificate.md)| Key Vault için bir X509 sertifikası oluşturur ve kümenizde ayarlanan sanal makine ölçeğine dağıtır. |
 | [Küme sanal makinelerinde RDP bağlantı noktası aralığını güncelleştirme](./scripts/service-fabric-powershell-change-rdp-port-range.md)|Dağıtılan bir kümedeki küme düğümü sanal makinelerinde RDP bağlantı noktası aralığını değiştirir.|
 | [Küme düğümü sanal makineleri için yönetici kullanıcı adını ve parolasını güncelleştirme](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) | Küme düğümü sanal makineleri için yönetici kullanıcı adını ve parolasını güncelleştirir. |
 | [Yük dengeleyicide bağlantı noktası açma](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | Belirli bir bağlantı noktasında gelen trafiğe izin vermek için Azure yük dengeleyicide bir uygulama bağlantı noktasını açın. |
@@ -30,4 +30,4 @@ Aşağıdaki tablo, Service Fabric kümelerini, uygulamalarını ve hizmetlerini
 | **Uygulamaları yönetme** ||
 | [Uygulama dağıtma](./scripts/service-fabric-powershell-deploy-application.md)| Kümeye bir uygulama dağıtın.|
 | [Uygulamayı yükseltme](./scripts/service-fabric-powershell-upgrade-application.md)| Uygulamayı yükseltin.|
-| [Uygulamayı kaldırma](./scripts/service-fabric-powershell-remove-application.md)| Bir kümeden uygulamayı kaldırın.|
+| [Uygulamayı kaldırma](./scripts/service-fabric-powershell-remove-application.md)| Kümeden bir uygulama kaldırın.|
