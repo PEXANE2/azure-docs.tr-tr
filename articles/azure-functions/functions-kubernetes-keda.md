@@ -1,63 +1,63 @@
 ---
-title: KEDA ile Kubernetes üzerinde Azure Işlevleri
-description: Kubernetes 'te Azure Işlevlerinin nasıl çalıştırılacağını, KEDA, Kubernetes tabanlı olay temelli otomatik ölçeklendirmeyi kullanarak bulutta veya şirket içinde nasıl çalıştıracağınızı anlayın.
+title: KEDA ile Kubernetes'te Azure Fonksiyonları
+description: Kubernetes tabanlı olay odaklı otomatik ölçekleme KEDA'yı kullanarak Bulut'ta veya şirket içinde Azure İşlerini Kubernetes'te nasıl çalıştırlayacağınızda anlayın.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
 ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301684"
 ---
-# <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA ile Kubernetes üzerinde Azure Işlevleri
+# <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA ile Kubernetes'te Azure Fonksiyonları
 
-Azure Işlevleri çalışma zamanı, nerede ve nasıl istediğinizi barındırmak için esneklik sağlar.  [Keda](https://keda.sh) (Kubernetes tabanlı olay temelli otomatik ölçeklendirme), Kubernetes 'te olay odaklı ölçek sağlamak Için Azure işlevleri çalışma zamanı ve araçları ile sorunsuz bir şekilde çiftler sağlar.
+Azure İşlevler çalışma süresi, nerede ve nasıl istediğinizi barındırma da esneklik sağlar.  [KEDA](https://keda.sh) (Kubernetes tabanlı Event Driven Autoscaling), Kubernetes'te etkinlik odaklı ölçek sağlamak için Azure İşlevler çalışma zamanı ve araçla sorunsuz bir şekilde eşleşerek çalışır.
 
 ## <a name="how-kubernetes-based-functions-work"></a>Kubernetes tabanlı işlevler nasıl çalışır?
 
-Azure Işlevleri hizmeti iki temel bileşenden oluşur: çalışma zamanı ve ölçek denetleyicisi.  Işlevler çalışma zamanı, kodunuzu çalıştırır ve yürütür.  Çalışma zamanı, işlev yürütmelerinin tetiklenmesi, günlüğe kaydı ve yönetilmesi ile ilgili mantığı içerir.  Azure Işlevleri çalışma zamanı *her yerde*çalıştırılabilir.  Diğer bileşen bir ölçek denetleyicisidir.  Ölçek denetleyicisi, işlevinizi hedefleyen olayların oranını izler ve uygulamanızı çalıştıran örnek sayısını etkin bir şekilde ölçeklendirir.  Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](functions-scale.md).
+Azure İşlevler hizmeti iki temel bileşenden oluşur: çalışma zamanı ve ölçek denetleyicisi.  İşlevler çalışma süresi kodunuzu çalıştırıp yürütür.  Çalışma süresi, işlev yürütmelerini nasıl tetikleyip günlüğe kaydedin ve yönetecekmantık içerir.  Azure İşlevler çalışma zamanı *her yerde*çalıştırılabilir.  Diğer bileşen bir ölçek denetleyicisidir.  Ölçek denetleyicisi, işlevinizi hedefleyen olayların oranını izler ve uygulamanızı çalıştıran örnek sayısını proaktif olarak ölçeklendirin.  Daha fazla bilgi edinmek için Azure [İşlevlerini ölçeklendirme ve barındırma](functions-scale.md)'ya bakın.
 
-Kubernetes tabanlı Işlevler, bir [Docker kapsayıcısında](functions-create-function-linux-custom-image.md) , Keda ile olay odaklı ölçeklendirmeyle işlevleri çalışma zamanı sağlar.  KEDA, 0 örneğe (hiçbir olay gerçekleşmesiz) ve *n* örneklerine kadar ölçeklendirebilir. Bu, Kubernetes otomatik (yatay Pod otomatik Scaler) için özel ölçümler ortaya çıkaran bunu yapar.  Bir Kubernetes kümesinde, Işlev kapsayıcılarını KEDA kullanarak, sunucusuz işlev yeteneklerini çoğaltabilirsiniz.  Bu işlevler, sunucusuz altyapı için [Azure Kubernetes Hizmetleri (AKS) sanal düğümleri](../aks/virtual-nodes-cli.md) özelliği kullanılarak da dağıtılabilir.
+Kubernetes tabanlı Fonksiyonlar, Bir [Docker kapsayıcısındaki](functions-create-function-linux-custom-image.md) işlevleri keda üzerinden olay odaklı ölçekleme ile çalıştırır.  KEDA 0 örneğine (olay oluşmadığında) ve *n* örneklerine ölçeklendirilebilir. Bunu, Kubernetes otomatik ölçekleyicisi (Yatay Pod Autoscaler) için özel ölçümleri ortaya çıkararak yapar.  KEDA ile Fonksiyonlar kapsayıcıları kullanarak herhangi bir Kubernetes kümesinde sunucusuz işlev yetenekleri çoğaltmak mümkün kılar.  Bu işlevler, sunucusuz altyapı için [Azure Kubernetes Hizmetleri (AKS) sanal düğümler](../aks/virtual-nodes-cli.md) özelliği kullanılarak da dağıtılabilir.
 
-## <a name="managing-keda-and-functions-in-kubernetes"></a>Kubernetes 'te KEDA ve işlevleri yönetme
+## <a name="managing-keda-and-functions-in-kubernetes"></a>KeDA ve işlevlerini Kubernetes'te yönetme
 
-Kubernetes kümenizdeki Işlevleri çalıştırmak için KEDA bileşenini yüklemelisiniz. Bu bileşeni, [Azure Functions Core Tools](functions-run-local.md)kullanarak yükleyebilirsiniz.
+Kubernetes kümenizde İşlevler çalıştırmak için KEDA bileşenini yüklemeniz gerekir. Bu bileşeni Azure [İşlevler Temel Araçları'nı](functions-run-local.md)kullanarak yükleyebilirsiniz.
 
-### <a name="installing-with-helm"></a>Held ile yükleme
+### <a name="installing-with-helm"></a>Helm ile yükleme
 
-Helm dahil olmak üzere herhangi bir Kubernetes kümesine KEDA yüklemenin çeşitli yolları vardır.  Dağıtım seçenekleri [Keda sitesinde](https://keda.sh/deploy/)belgelenmiştir.
+Helm dahil herhangi bir Kubernetes küme KEDA yüklemek için çeşitli yollar vardır.  Dağıtım seçenekleri [KEDA sitesinde](https://keda.sh/deploy/)belgelenmiştir.
 
-## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes 'e işlev uygulaması dağıtma
+## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes'e bir işlev uygulaması dağıtma
 
-Herhangi bir işlev uygulamasını KEDA çalıştıran bir Kubernetes kümesine dağıtabilirsiniz.  İşlevleriniz bir Docker kapsayıcısında çalıştığından, projenizin bir `Dockerfile`olması gerekir.  Henüz bir tane yoksa, Işlevler projenizin kökünde aşağıdaki komutu çalıştırarak bir Dockerfile ekleyebilirsiniz:
+Keda çalıştıran bir Kubernetes kümesine herhangi bir işlev uygulaması dağıtabilirsiniz.  Fonksiyonlarınız Docker kapsayıcısında çalıştığı için, `Dockerfile`projenizin bir .  Zaten yoksa, İşlevler projenizin kökünde aşağıdaki komutu çalıştırarak bir Dockerfile ekleyebilirsiniz:
 
 ```cli
 func init --docker-only
 ```
 
-Bir görüntü oluşturmak ve işlevlerinizi Kubernetes 'e dağıtmak için aşağıdaki komutu çalıştırın:
+Bir görüntü oluşturmak ve işlevlerinizi Kubernetes'e dağıtmak için aşağıdaki komutu çalıştırın:
 
 > [!NOTE]
-> Temel araçlar, görüntüyü derlemek ve yayımlamak için Docker CLı özelliğinden yararlanır. Docker 'ın zaten yüklü olduğundan ve `docker login`hesabınıza bağlı olduğundan emin olun.
+> Core Tools, görüntüyü oluşturmak ve yayınlamak için docker CLI'den yararlanır. Docker'ın zaten yüklü olduğundan ve hesabınıza `docker login`'' ile bağlı olduğundan emin olun.
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> `<name-of-function-deployment>`, işlev uygulamanızın adıyla değiştirin.
+> İşlev uygulamanızın adı ile değiştirin. `<name-of-function-deployment>`
 
-Bu bir Kubernetes `Deployment` kaynağı, bir `ScaledObject` kaynağı ve `Secrets`, `local.settings.json` dosyasından içeri aktarılan ortam değişkenlerini içeren bir şekilde oluşturur.
+`Deployment` Bu, dosyanızdan `ScaledObject` `local.settings.json` alınan ortam değişkenlerini içeren `Secrets`bir Kubernetes kaynağı, bir kaynak ve , oluşturur.
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>Özel bir kayıt defterinden işlev uygulaması dağıtma
 
-Yukarıdaki akış, özel kayıt defterleri için de kullanılır.  Kapsayıcı görüntünüzü özel bir kayıt defterinden çekeediyorsanız, `func kubernetes deploy`çalıştırırken özel kayıt defteri kimlik bilgilerini tutan Kubernetes gizliliğine başvuran `--pull-secret` bayrağını ekleyin.
+Yukarıdaki akış özel kayıtlar için de çalışır.  Kapsayıcı resminizi özel bir kayıt defterinden çekiyorsanız, çalışırken `--pull-secret` `func kubernetes deploy`özel kayıt defteri kimlik bilgilerini tutan Kubernetes gizli defterine başvuran bayrağı ekleyin.
 
-## <a name="removing-a-function-app-from-kubernetes"></a>Kubernetes 'ten bir işlev uygulamasını kaldırma
+## <a name="removing-a-function-app-from-kubernetes"></a>Bir işlev uygulamasını Kubernetes'ten kaldırma
 
-Dağıttıktan sonra, ilişkili `Deployment``ScaledObject`, oluşturulan `Secrets` kaldırarak bir işlevi kaldırabilirsiniz.
+Dağıttıktan sonra, `Deployment` `ScaledObject` `Secrets` oluşturulan bir ilişkili , , kaldırarak bir işlevi kaldırabilirsiniz.
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>
@@ -65,27 +65,27 @@ kubectl delete ScaledObject <name-of-function-deployment>
 kubectl delete secret <name-of-function-deployment>
 ```
 
-## <a name="uninstalling-keda-from-kubernetes"></a>Kubernetes 'ten KEDA kaldırma
+## <a name="uninstalling-keda-from-kubernetes"></a>KEDA'yı Kubernetes'ten Kaldırma
 
-KEDA 'yı kaldırma adımları [Keda sitesinde](https://keda.sh/deploy/)belgelenmiştir.
+KEDA'yı kaldırmak için atılan adımlar [KEDA sitesinde](https://keda.sh/deploy/)belgelenmiştir.
 
-## <a name="supported-triggers-in-keda"></a>KEDA 'da desteklenen Tetikleyiciler
+## <a name="supported-triggers-in-keda"></a>KEDA'da desteklenen tetikleyiciler
 
-KEDA, aşağıdaki Azure Işlev Tetikleyicileri için destek içerir:
+KEDA aşağıdaki Azure İşi tetikleyicileri için destek vardır:
 
-* [Azure depolama kuyrukları](functions-bindings-storage-queue.md)
-* [Azure Service Bus kuyrukları](functions-bindings-service-bus.md)
-* [Azure olay/IoT Hub 'Ları](functions-bindings-event-hubs.md)
+* [Azure Depolama Kuyrukları](functions-bindings-storage-queue.md)
+* [Azure Servis Veri Hizmetleri Kuyrukları](functions-bindings-service-bus.md)
+* [Azure Etkinliği / IoT Hub'ları](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
-* [Oybbitmq kuyruğu](https://github.com/azure/azure-functions-rabbitmq-extension)
+* [RabbitMQ Sırası](https://github.com/azure/azure-functions-rabbitmq-extension)
 
-### <a name="http-trigger-support"></a>HTTP tetikleyicisi desteği
+### <a name="http-trigger-support"></a>HTTP Trigger desteği
 
-HTTP Tetikleyicileri sunan Azure Işlevlerini kullanabilirsiniz, ancak KEDA bunları doğrudan yönetemez.  [Http Azure işlevlerini 1 ' den *n* örneğe ölçeklendirmek](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)için Keda Prometheus tetikleyicisinden yararlanabilirsiniz.
+HTTP tetikleyicilerini ortaya çıkaran Azure Işlevlerini kullanabilirsiniz, ancak KEDA bunları doğrudan yönetmez.  [HTTP Azure Fonksiyonlarını 1'den *n'ye* ölçeklendirmek](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)için KEDA prometheus tetikleyicisinden yararlanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Özel görüntü kullanarak bir işlev oluşturma](functions-create-function-linux-custom-image.md)
+* [Özel bir görüntü kullanarak işlev oluşturma](functions-create-function-linux-custom-image.md)
 * [Azure İşlevleri’ni yerel olarak kodlama ve test etme](functions-develop-local.md)
-* [Azure Işlevi tüketim planı nasıl çalışır?](functions-scale.md)
+* [Azure İşlev Tüketimi planı nasıl çalışır?](functions-scale.md)

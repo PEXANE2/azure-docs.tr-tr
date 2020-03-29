@@ -1,7 +1,7 @@
 ---
-title: Örnek API yönetimi ilkesi-istek bağlamı bilgilerini arka uç hizmetine gönder
+title: Örnek API yönetim ilkesi - Arka uç hizmetine istek bağlamı bilgileri gönderin
 titleSuffix: Azure API Management
-description: Azure API Management ilkesi örneği-istek bağlamı bilgilerinin arka uç hizmetine nasıl gönderileceğini gösterir.
+description: Azure API yönetim ilkesi örneği - İstek bağlam bilgilerinin arka uç hizmetine nasıl gönderilebildiğini gösterir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 8cef989ca7ce8ee649c4f4aeb579c43bf8a8d6ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442415"
 ---
-# <a name="send-request-context-information-to-the-backend-service"></a>İstek bağlamı bilgilerini arka uç hizmetine gönder
+# <a name="send-request-context-information-to-the-backend-service"></a>Arka uç hizmetine istek bağlamı bilgilerini gönderme
 
-Bu makalede, istek bağlamı bilgilerinin arka uç hizmetine nasıl gönderileceğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, arka uç hizmetine istek bağlam ı bilgilerinin nasıl gönderilen gösteriş gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. İlke kodunu ayarlamak veya ayarlamak için, Ayarla'da açıklanan adımları izleyin [veya bir ilkeyi ayarlayın.](../set-edit-policies.md) Diğer örnekleri görmek için [ilke örneklerine](../policy-samples.md)bakın.
 
 ## <a name="policy"></a>İlke
 
-Kodu **gelen** bloğa yapıştırın.
+Kodu **gelen** bloğa yapıştır.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Send request context information to the backend service.policy.xml)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-APıM ilkeleri hakkında daha fazla bilgi edinin:
+APIM politikaları hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
 + [İlke örnekleri](../policy-samples.md)

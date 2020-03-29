@@ -1,6 +1,6 @@
 ---
-title: Azure Tablo depolama tasarımında ilişki modelleme | Microsoft Docs
-description: Tablo depolama çözümünüzü tasarlarken modelleme sürecini anlayın.
+title: Azure Tablo depolama tasarımında ilişkileri modelleme | Microsoft Dokümanlar
+description: Tablo depolama çözümünüzü tasarlarken modelleme işlemini anlayın.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,56 +9,56 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457569"
 ---
 # <a name="modeling-relationships"></a>İlişkileri modelleme
-Bu makalede, Azure Tablo depolama çözümlerinizi tasarlamanıza yardımcı olacak modelleme süreci ele alınmaktadır.
+Bu makalede, Azure Tablo depolama çözümlerinizi tasarlamanıza yardımcı olacak modelleme işlemi açıklanmaktadır.
 
-Etki alanı modellerini oluşturma karmaşık sistemlerin tasarımında önemli bir adımdır. Genellikle, varlıklar ve iş etki alanını anlamak ve sisteminizin tasarımına bildirmek için bir yol olarak arasındaki ilişkileri tanımlamak için modelleme işlemi kullanın. Bu bölüm, nasıl, bazı yaygın ilişki türleri tasarımı için tablo hizmeti için etki alanı modelleri bulunan çevirebilir üzerinde odaklanır. İlişkisel bir veritabanı tasarlarken kullanılan farklı bir fiziksel NoSQL tabanlı veri modeli için bir mantıksal veri modelinden eşleme işlemidir. İlişkisel veritabanları tasarım yedeklilik – ve nasıl uygulanması veritabanı işleyişi soyutlayan bir bildirim temelli sorgulanırken özelliği en aza indirmek için en iyi duruma getirilmiş veri normalleştirme işlemi genellikle varsayar.  
+Etki alanı modelleri oluşturmak karmaşık sistemlerin tasarımında önemli bir adımdır. Genellikle, varlıkları ve aralarındaki ilişkileri iş alanını anlamanın ve sisteminizin tasarımını bilgilendirmenin bir yolu olarak tanımlamak için modelleme işlemini kullanırsınız. Bu bölümde, etki alanı modellerinde bulunan ortak ilişki türlerinden bazılarını Tablo hizmeti için tasarımlara nasıl çevirebileceğiniz üzerinde duruluyor. Mantıksal bir veri modelinden fiziksel NoSQL tabanlı veri modeline eşleme işlemi, ilişkisel bir veritabanı tasarlarken kullanılandan farklıdır. İlişkisel veritabanları tasarımı genellikle artıklığı en aza indirmek için optimize edilmiş bir veri normalleştirme işlemi ve veritabanının nasıl çalıştığını özetleyen bir bildirimsel sorgulama özelliği varsayar.  
 
-## <a name="one-to-many-relationships"></a>Bire çok ilişkileri
-İş etki alanı nesneler arasındaki bire çok ilişkileri ortaya sık: Örneğin, bir departmandaki çalışanların çoğu vardır. Tablo hizmetinde her Artıları ve eksileri belirli senaryoya ilgili olabilecek ile bire çok ilişkileri uygulamak için birkaç yolu vardır.  
+## <a name="one-to-many-relationships"></a>Bir-çok ilişkileri
+İş alanı nesneleri arasında bir-çok ilişkisi sık sık oluşur: örneğin, bir bölümün çok çalışanı vardır. Tablo hizmetinde, belirli senaryoyla ilgili olabilecek artıları ve eksileri olan bir-çok ilişkileri uygulamanın çeşitli yolları vardır.  
 
-On binlerce Departmanlar ve çalışan varlıkların her departman çok sayıda çalışan ve her çalışana belirli bir bölümle ilişkili olarak sahip olduğu büyük bir Uluslararası Şirket örneği göz önünde bulundurun. Ayrı bir departman ve bunlar gibi çalışan varlıkları depolamak için bir yaklaşım şöyledir:  
+Her bölümün çok sayıda çalışanı ve her çalışanının belirli bir departmanla ilişkili olduğu on binlerce departman ve çalışan varlığı olan çok uluslu büyük bir şirket örneğini düşünün. Bir yaklaşım, ayrı departman ve çalışan varlıklarını şu şekilde depolamaktır:  
 
 
-![Ayrı departmanı ve çalışan varlıklarını depolayın](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
+![Ayrı departman ve çalışan varlıklarını depolama](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
 
-Bu örnek, temel türleri arasında örtük bir-çok ilişkisi gösterir **PartitionKey** değeri. Her departmandaki çalışanların çoğu olabilir.  
+Bu örnek, **PartitionKey** değerini temel alan türler arasında örtülü bir-çok ilişkisi gösterir. Her bölümün birçok çalışanı olabilir.  
 
-Bu örnek ayrıca departmanı varlık ve ilgili çalışan varlıkları aynı bölümde gösterir. Farklı bölümleri, tablolar veya hatta depolama hesapları farklı varlık türleri için kullanılacak seçebilirsiniz.  
+Bu örnek, aynı bölümde bir departman varlığı ve ilgili çalışan varlıklarını da gösterir. Farklı varlık türleri için farklı bölümler, tablolar ve hatta depolama hesapları kullanmayı seçebilirsiniz.  
 
-Verileri normalleştirilmişlikten çıkarmak ve yalnızca aşağıdaki örnekte gösterildiği gibi normalleştirilmişlikten çıkarılmış departman verilerine sahip çalışan varlıklar depolamak için alternatif bir yoludur. Bunu yapmak için her çalışanın departmanındaki güncelleştirmeye gerek duyduğunuz olduğundan Bölüm Yöneticisi'nin ayrıntılar değişiklik yapabilmek için bir gereksinimi varsa bu belirli bir senaryoda en iyi normalleştirilmişlikten çıkarılmış bu yaklaşım olmayabilir.  
+Alternatif bir yaklaşım, verilerinizi normalden arındırmak ve aşağıdaki örnekte gösterildiği gibi yalnızca normalize edilmiş departman verileriyle yalnızca çalışan varlıklarını depolamaktır. Bu özel senaryoda, bir departman yöneticisinin ayrıntılarını değiştirebilme gereksiniminiz varsa, bu normaldışı yaklaşım en iyisi olmayabilir, çünkü bunu yapmak için departmandaki her çalışanı güncelleştirmeniz gerekir.  
 
-![Çalışan varlık](media/storage-table-design-guide/storage-table-design-IMAGE02.png)
+![Çalışan varlığı](media/storage-table-design-guide/storage-table-design-IMAGE02.png)
 
-Daha fazla bilgi için [normalleştirilmişlikten çıkarma deseni](table-storage-design-patterns.md#denormalization-pattern) bu kılavuzun sonraki.  
+Daha fazla bilgi için, daha sonra bu kılavuzda [Denormalization deseni](table-storage-design-patterns.md#denormalization-pattern) bakın.  
 
-Aşağıdaki tabloda, Artıları ve eksileri her çalışan ve bir-çok ilişkisi departmanı varlıkları depolamak için yukarıda açıklanan yaklaşımlardan biri özetlenmektedir. Ne sıklıkta çeşitli işlemler gerçekleştirmek beklediğiniz düşünmelisiniz: Bu işlem yalnızca sık meydana gelirse, pahalı bir işlem içeren bir tasarım için kabul edilebilir olabilir.  
+Aşağıdaki tablo, bir-çok ilişkisi olan çalışan ve departman varlıklarını depolamak için yukarıda özetlenen yaklaşımların her birinin artılarını ve eksilerini özetleyilmiştir. Ayrıca, çeşitli işlemleri gerçekleştirmeyi ne sıklıkta beklediğiniz de göz önünde bulundurmalısınız: bu işlem yalnızca seyrek gerçekleşirse pahalı bir işlem içeren bir tasarıma sahip olmak kabul edilebilir olabilir.  
 
 <table>
 <tr>
 <th>Yaklaşım</th>
-<th>Uzmanları</th>
+<th>Artıları</th>
 <th>Simgeler</th>
 </tr>
 <tr>
-<td>Ayrı varlık türleri, aynı bölüme, aynı tabloya</td>
+<td>Ayrı varlık türleri, aynı bölüm, aynı tablo</td>
 <td>
 <ul>
-<li>Tek bir işlemle bir departman varlık güncelleştirebilirsiniz.</li>
-<li>Bir EGT departmanı varlığı değiştirmek için bir gereksinimi varsa tutarlılık sağlamak için kullanabileceğiniz olduğunda, güncelleştirme/ekleme/silme çalışan varlık. Örneğin, bir departman çalışan sayısı her departman için korur.</li>
+<li>Bir departman varlığını tek bir işlemle güncelleştirebilirsiniz.</li>
+<li>Bir çalışan varlığını güncellediğinizde/eklediğinizde/sildiğinizde bir departman varlığını değiştirme gereksiniminiz varsa tutarlılığı korumak için Bir EGT kullanabilirsiniz. Örneğin, her departman için bir departman çalışan sayısı tutarsanız.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Hem çalışan hem de bazı istemci etkinlikleri için bir bölüm varlık almanız gerekebilir.</li>
-<li>Depolama işlemleri aynı bölümde gerçekleşir. Yüksek işlem birimleri, bir etkin nokta bu neden olabilir.</li>
-<li>Bir çalışan bir EGT kullanarak yeni bir bölüme taşınamıyor.</li>
+<li>Bazı istemci etkinlikleri için hem çalışan hem de departman varlığını almanız gerekebilir.</li>
+<li>Depolama işlemleri aynı bölümde gerçekleşir. Yüksek işlem birimlerinde bu bir etkin nokta neden olabilir.</li>
+<li>EGT kullanarak bir çalışanı yeni bir departmana taşıyamazsınız.</li>
 </ul>
 </td>
 </tr>
@@ -66,63 +66,63 @@ Aşağıdaki tabloda, Artıları ve eksileri her çalışan ve bir-çok ilişkis
 <td>Ayrı varlık türleri, farklı bölümler veya tablolar veya depolama hesapları</td>
 <td>
 <ul>
-<li>Bir departman veya çalışan bir varlıktan tek bir işlemle güncelleştirebilirsiniz.</li>
-<li>Yüksek işlem hacmi, bu yükü daha fazla bölümler arasında yaymak yardımcı olabilir.</li>
+<li>Bir departman varlığını veya çalışan tüzel kişiliğini tek bir işlemle güncelleştirebilirsiniz.</li>
+<li>Yüksek işlem birimlerinde, bu yükün daha fazla bölüme yayılmasına yardımcı olabilir.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Hem çalışan hem de bazı istemci etkinlikleri için bir bölüm varlık almanız gerekebilir.</li>
-<li>Tutarlılık sağlamak için EGTs kullanılamaz olduğunda, güncelleştirme/ekleme/silme bir çalışan ve güncelleştirme bir bölüm. Örneğin, bir çalışan sayısı departmanı varlıklardaki güncelleştiriliyor.</li>
-<li>Bir çalışan bir EGT kullanarak yeni bir bölüme taşınamıyor.</li>
+<li>Bazı istemci etkinlikleri için hem çalışan hem de departman varlığını almanız gerekebilir.</li>
+<li>Bir çalışanı güncellediğinizde/eklediğinizde/sildiğinizde ve bir bölümü güncellediğinizde tutarlılığı korumak için EGT'leri kullanamazsınız. Örneğin, bir departman varlığındaki çalışan sayısını güncelleştirme.</li>
+<li>EGT kullanarak bir çalışanı yeni bir departmana taşıyamazsınız.</li>
 </ul>
 </td>
 </tr>
 <tr>
-<td>Tek varlık türüne normalleştirmeyi geri alın</td>
+<td>Tek varlık türüne normalleştirme</td>
 <td>
 <ul>
-<li>Tek bir istekle gereken tüm bilgileri alabilirsiniz.</li>
+<li>Tek bir istekle ihtiyacınız olan tüm bilgileri alabilirsiniz.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Bölüm bilgileri (Bu, bir departmandaki tüm çalışanlar güncelleştirmenizi gerektirir) güncelleştirmeniz gerekiyorsa tutarlılık sağlamak pahalı olabilir.</li>
+<li>Departman bilgilerini güncelleştirmeniz gerekiyorsa tutarlılığı korumak pahalıya mal olabilir (bu, bir departmandaki tüm çalışanları güncelleştirmenizi gerektirir).</li>
 </ul>
 </td>
 </tr>
 </table>
 
-Nasıl Bu seçenekler ve Artıları ve eksileri hangisinin en önemli, belirli bir uygulama senaryolarınız bağlıdır arasında seçin. Örneğin, ne sıklıkta, departman varlıkları değiştirmeyin; Tüm çalışan sorguları ek departman bilgi gerekiyor; ölçeklenebilirlik sınırları, bölüm veya depolama hesabınız için ne kadar yakın misiniz?  
+Bu seçenekler arasında nasıl seçim yaptığınız ve artıları ve eksileri en önemli olan, belirli uygulama senaryolarınıza bağlıdır. Örneğin, departman varlıklarını ne sıklıkta değiştirdiğiniz; tüm çalışan sorgularınızın ek departman bilgilerine ihtiyacı var; bölümlerinizdeki veya depolama hesabınızdaki ölçeklenebilirlik sınırlarına ne kadar yakınsınız?  
 
 ## <a name="one-to-one-relationships"></a>Bire bir ilişkiler
-Etki alanı modelleri varlıklar arasında bire bir ilişkiler içerebilir. Tablo hizmetinde bire bir ilişki uygulamak gerekiyorsa, her ikisinin de almanız gerektiğinde, iki ilişkili varlık bağlama da seçmeniz gerekir. Bu bağlantıyı bağlantı biçiminde depolayarak örtük, anahtar değerlerinin bir kurala göre veya açık olabilir **PartitionKey** ve **RowKey** her varlık kendi ilgili varlık için değerler. İlgili varlıkları aynı bölümde olup saklamalısınız bir açıklaması için konudaki [bire çok ilişkileri](#one-to-many-relationships).  
+Etki alanı modelleri, varlıklar arasında bire bir ilişkiler içerebilir. Tablo hizmetinde bire bir ilişki uygulamanız gerekiyorsa, her ikisini de almanız gerektiğinde ilgili iki varlığı nasıl bağlayacaklarını da seçmeniz gerekir. Bu bağlantı, anahtar değerlerdeki bir kurala dayalı olarak örtülü olabilir veya her varlıktaki **PartitionKey** ve **RowKey** değerleri biçiminde bir bağlantıyı ilgili varlığına depolayarak açık olabilir. İlgili varlıkları aynı bölümde depolamanız gerekip gerekmediği ne tartışmaya yönelik bir tartışma için, [birden çok'a ilişki](#one-to-many-relationships)bölümüne bakın.  
 
-Tablo hizmetinde bire bir ilişkiler uygulamak için yol açabilecek bir uygulama konuları vardır:  
+Tablo hizmetinde bire bir ilişkileri uygulamanıza yol açabilecek uygulama konuları da vardır:  
 
-* Büyük varlıklar işleme (daha fazla bilgi için [büyük varlıklar deseni](table-storage-design-patterns.md#large-entities-pattern)).  
-* Erişim denetimleri uygulama (daha fazla bilgi için bkz. paylaşılan erişim Imzaları ile erişimi denetleme).  
+* Büyük varlıkları işleme (daha fazla bilgi için [bkz. Büyük Varlıklar Deseni).](table-storage-design-patterns.md#large-entities-pattern)  
+* Erişim denetimleri uygulama (daha fazla bilgi için bkz: Paylaşılan Erişim İmzalarıyla erişimi denetleme).  
 
-## <a name="join-in-the-client"></a>İstemci katılın
-Tablo hizmetinde ilişkileri modellemek için yol olsa da, tablo hizmeti kullanarak iki ana nedeni ölçeklenebilirlik ve performans olduğunu unutmayın. Performans ve ölçeklenebilirlik çözümünüzün tehlikeye çok ilişkileri modelleme fark ederseniz, tablo tasarımınızla tüm veri ilişkileri oluşturmak gerekli olup olmadığını kendiniz istemeniz gerekir. Tasarımınızı basitleştirmek ve istemci uygulamanızı gerekli tüm birleştirmeler gerçekleştirme izin verirseniz, çözümünüzün performansını ve ölçeklenebilirliğini artırmak mümkün olabilir.  
+## <a name="join-in-the-client"></a>İstemciye katılın
+Tablo hizmetinde ilişkileri modellemenin yolları olsa da, Tablo hizmetini kullanmanın iki önemli nedeninin ölçeklenebilirlik ve performans olduğunu unutmamalısınız. Çözümünüzün performansını ve ölçeklenebilirliğini tehlikeye sosan birçok ilişkiyi modellediğinizi fark ederseniz, tablo tasarımınızda tüm veri ilişkilerini oluşturmanın gerekli olup olmadığını kendinize sormalısınız. İstemci uygulamanızın gerekli birleştirmeleri gerçekleştirmesine izin ederseniz, tasarımı basitleştirebilir ve çözümünüzün ölçeklenebilirliğini ve performansını geliştirebilirsiniz.  
 
-Örneğin, genellikle değiştirmez veriler içeren küçük tablolar varsa, daha sonra bu verileri bir kez alabilir ve istemcide önbellek. Bu, aynı verileri almak için yinelenen gidiş-dönüş önleyebilirsiniz. Bu kılavuzda baktığımız örneklerde, küçük bir kuruluştaki bölüm kümesinin küçük olması büyük olasılıkla, istemci uygulamasının bir kez indirebileceğiniz veriler ve veri arama olarak önbelleğe almak için iyi bir aday hale getirilmesi olasıdır.  
+Örneğin, sık sık değişmeyen veriler içeren küçük tablolarınız varsa, bu verileri bir kez alabilir ve istemciüzerinde önbelleğe alabilirsiniz. Bu, aynı verileri almak için tekrarlanan gidiş dönüşleri önleyebilir. Bu kılavuzda baktığımız örneklerde, küçük bir kuruluştaki departmanlar kümesinin küçük olması ve seyrek olarak değişmesi, istemci uygulamasının bir kez indirebileceği ve verileri ararken önbelleğe alınabileceği veriler için iyi bir aday haline getirilebilir.  
 
 ## <a name="inheritance-relationships"></a>Kalıtım ilişkileri
-İstemci uygulamanız bir dizi iş varlığı temsil eden bir devralma ilişkisi parçasını sınıfı kullanıyorsa, bu varlıkların tablo hizmetindeki kolayca kalıcı hale getirebilirsiniz. Örneğin, aşağıdaki istemci uygulamanızda tanımlanan sınıflar kümesini olabilir. burada **kişi** bir Özet sınıf.
+İstemci uygulamanız, iş varlıklarını temsil etmek için devralma ilişkisinin bir parçasını oluşturan bir sınıf kümesi kullanıyorsa, tablo hizmetinde bu varlıkları kolayca devam edebilirsiniz. Örneğin, Müşteri uygulamanızda **Kişi'nin** soyut bir sınıf olduğu aşağıdaki sınıflar kümesi tanımlanabilir.
 
-![Soyut kişi sınıfı](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
+![Soyut Kişi sınıfı](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
 
-Bu görünüm bu gibi varlıkları kullanarak tek bir kişi tablosunu kullanarak tablo hizmetindeki iki somut sınıfların örneklerini kalıcı hale getirebilirsiniz:  
+Tablo hizmetindeki iki somut sınıfın örneklerini, aşağıdaki gibi görünen varlıkları kullanarak tek bir Kişi tablosunu kullanarak devam edebilirsiniz:  
 
 ![Kişi tablosu](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-İstemci kodunda aynı tabloda birden fazla varlık türüyle çalışma hakkında daha fazla bilgi için bu kılavuzun ilerleyen kısımlarında bulunan heterojen varlık türleriyle çalışma bölümüne bakın. Bu varlık türünde istemci kodu anlamayı örnekleri sağlar.  
+İstemci kodunda aynı tabloda birden çok varlık türüyle çalışma hakkında daha fazla bilgi için, daha sonra bu kılavuzda heterojen varlık türleri ile çalışma bölümüne bakın. Bu, istemci kodundaki varlık türünü nasıl tanıyacağınıza ilgili örnekler sağlar.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Tablo tasarım desenleri](table-storage-design-patterns.md)
-- [Sorgulama tasarımı](table-storage-design-for-query.md)
+- [Tablo tasarımı desenleri](table-storage-design-patterns.md)
+- [Sorgulama için tasarım](table-storage-design-for-query.md)
 - [Tablo verilerini şifreleme](table-storage-design-encrypt-data.md)
 - [Veri değişikliği için tasarım](table-storage-design-for-modification.md)

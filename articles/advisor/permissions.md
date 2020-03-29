@@ -1,53 +1,53 @@
 ---
-title: Azure Danışmanı izinleri
-description: Danışman izinleri ve bunların abonelikleri yapılandırma veya önerileri erteleme veya kapatma yeteneğinizi nasıl engelleyebilecekleri.
+title: Azure Danışmanı'nda izinler
+description: Danışman izinleri ve abonelikleri yapılandırma veya önerileri erteleme veya reddetme yeteneğinizi nasıl engelleyebilecekleri.
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422312"
 ---
-# <a name="permissions-in-azure-advisor"></a>Azure Danışmanı izinleri
+# <a name="permissions-in-azure-advisor"></a>Azure Danışmanı'nda izinler
 
-Azure Danışmanı, Azure kaynaklarınızın ve aboneliklerinizin kullanımını ve yapılandırmasını temel alan öneriler sağlar. Danışman, önerilere ve danışman özelliklerine erişiminizi yönetmek için [rol tabanlı Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) tarafından sunulan [yerleşik rolleri](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) kullanır. 
+Azure Danışmanı, Azure kaynaklarınızın ve aboneliklerinizin kullanımına ve yapılandırmasını temel alan öneriler sunar. Danışman, önerilere ve Danışman özelliklerine erişiminizi yönetmek için [Role Tabanlı Erişim Denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) tarafından sağlanan yerleşik [rolleri](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) kullanır. 
 
-## <a name="roles-and-their-access"></a>Roller ve erişimleri
+## <a name="roles-and-their-access"></a>Roller ve erişim
 
-Aşağıdaki tabloda, Advisor içindeki roller ve erişim tanımları tanımlanmaktadır:
+Aşağıdaki tablo, Advisor içindeki rolleri ve erişimlerini tanımlar:
 
-| **Rol** | **Önerileri görüntüle** | **Kuralları Düzenle** | **Abonelik yapılandırmasını düzenle** | **Kaynak grubu yapılandırmasını düzenle**| **Önerileri kapat ve ertele**|
+| **Rol** | **Önerileri görüntüleme** | **Kuralları edin** | **Abonelik yapılandırması düzenleme** | **Kaynak grubu yapılandırması düzenleme**| **Önerileri reddetme ve erteleme**|
 |---|:---:|:---:|:---:|:---:|:---:|
-|Abonelik sahibi|**X**|**X**|**X**|**X**|**X**|
+|Abonelik Sahibi|**X**|**X**|**X**|**X**|**X**|
 |Abonelik Katılımcısı|**X**|**X**|**X**|**X**|**X**|
-|Abonelik okuyucusu|**X**|--|--|--|--|
-|Kaynak grubu sahibi|**X**|--|--|**X**|**X**|
-|Kaynak grubu Katılımcısı|**X**|--|--|**X**|**X**|
-|Kaynak grubu okuyucusu|**X**|--|--|--|--|
-|Kaynak sahibi|**X**|--|--|--|**X**|
-|Kaynak Katılımcısı|**X**|--|--|--|**X**|
-|Kaynak okuyucu|**X**|--|--|--|--|
+|Abonelik Okuyucu|**X**|--|--|--|--|
+|Kaynak grubu Sahibi|**X**|--|--|**X**|**X**|
+|Kaynak grubu Katılımcı|**X**|--|--|**X**|**X**|
+|Kaynak grubu Okuyucu|**X**|--|--|--|--|
+|Kaynak Sahibi|**X**|--|--|--|**X**|
+|Kaynak Katkıda Bulunan|**X**|--|--|--|**X**|
+|Kaynak Okuyucu|**X**|--|--|--|--|
 
 > [!NOTE]
-> Görüntüleme önerilerine erişim, önerinin etkilenen kaynağına erişime bağımlıdır.
+> Görüntüleme önerilerine erişim, önerinin etkilenen kaynağına erişiminize bağlıdır.
 
 ## <a name="permissions-and-unavailable-actions"></a>İzinler ve kullanılamayan eylemler
 
-Uygun izinlerin bulunmaması, Advisor 'daki eylemleri gerçekleştirme yeteneğinizi engelleyebilir. Yaygın olarak karşılaşılan bazı sorunlar aşağıda verilmiştir.
+Uygun izinlerin olmaması, Advisor'da eylem gerçekleştirme yeteneğinizi engelleyebilir. Aşağıda bazı sık karşılaşılan sorunlar vardır.
 
-### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>Abonelikler veya kaynak grupları yapılandırılamıyor
+### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>Abonelikleri veya kaynak gruplarını yapılandıramıyor
 
-Danışman 'de abonelikleri veya kaynak gruplarını yapılandırmaya çalıştığınızda, dahil etme veya hariç tutma seçeneğinin devre dışı bırakıldığını görebilirsiniz. Bu durum, söz konusu kaynak grubu veya abonelik için yeterli izinlere sahip değilsiniz anlamına gelir. Bu sorunu çözmek için, [Kullanıcı erişimi verme](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)hakkında bilgi edinin.
+Danışman'da abonelikleri veya kaynak gruplarını yapılandırmaya çalıştığınızda, ekleme veya hariç tutma seçeneğinin devre dışı bırakıldığını görebilirsiniz. Bu durum, bu kaynak grubu veya abonelik için yeterli izin düzeyine sahip olmadığını gösterir. Bu sorunu gidermek için, bir kullanıcıya nasıl [erişim veriş verişeceğinizi](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)öğrenin.
 
-### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>Öneri ertelenemiyor veya kapatılamıyor
+### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>Bir öneriyi erteleyemiyor veya görevden alamıyor
 
-Bir öneriyi ertelemeyi denerken bir hata alırsanız, yeterli izne sahip olmayabilirsiniz. Ertelediğinizden veya disemin olduğunuz önerinin etkilenen kaynağına en az katkıda bulunan erişiminiz olduğundan emin olun. Bu sorunu çözmek için, [Kullanıcı erişimi verme](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)hakkında bilgi edinin.
+Bir öneriyi ertelemeye veya reddetmeye çalışırken bir hata alırsanız, yeterli izniniz olmayabilir. Ertelediğiniz veya iptal ettiğiniz tavsiyenin etkilenen kaynağına en az katkıda bulunana erişebildiğinizden emin olun. Bu sorunu gidermek için, bir kullanıcıya nasıl [erişim veriş verişeceğinizi](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Advisor 'ın Kullanıcı izinlerini denetlemek için RBAC kullanma ve genel sorunları çözme konusunda genel bakış sunulmaktadır. Advisor hakkında daha fazla bilgi edinmek için bkz.:
+Bu makalede, Danışmanın kullanıcı izinlerini denetlemek için RBAC'ı nasıl kullandığı ve sık karşılaşılan sorunları nasıl çözeceği hakkında genel bir bakış vermiştir. Danışman hakkında daha fazla bilgi edinmek için bkz:
 
-- [Azure Advisor nedir?](https://docs.microsoft.com/azure/advisor/advisor-overview)
-- [Azure Advisor 'ı kullanmaya başlama](https://docs.microsoft.com/azure/advisor/advisor-get-started)
+- [Azure Danışmanı nedir?](https://docs.microsoft.com/azure/advisor/advisor-overview)
+- [Azure Advisor’ı kullanmaya başlama](https://docs.microsoft.com/azure/advisor/advisor-get-started)

@@ -1,5 +1,5 @@
 ---
-title: Azure DNS temsilciye genel bakış
+title: Azure DNS delegasyonuna genel bakış
 description: Etki alanı temsilcisi seçiminin nasıl değiştirileceğini ve etki alanı barındırma sağlamak üzere Azure DNS ad sunucularının nasıl kullanılacağını anlayın.
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939045"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS ile DNS bölgelerinin temsilciliği
@@ -22,13 +22,13 @@ Azure DNS, bir DNS bölgesi barındırmanızı ve Azure'de bir etki alanı için
 
 ### <a name="domains-and-zones"></a>Etki alanları ve bölgeler
 
-Etki Alanı Adı Sistemi, bir etki alanları hiyerarşisidir. Hiyerarşi, adı yalnızca " **.** " olan "kök" etki alanından başlar.  Bunun altında "com", "net", "org", "uk" veya "jp" gibi en üst düzey etki alanları bulunur.  Bu üst düzey etki alanlarının altında ‘org.uk’ veya ‘co.jp’ gibi ikinci düzey etki alanları bulunur.  Etki alanları bu hiyerarşi sıralamasıyla devam eder. DNS hiyerarşisindeki etki alanları, ayrı DNS bölgeleri kullanılarak barındırılır. Bu bölgeler global olarak dağıtılır ve dünya genelindeki DNS ad sunucuları tarafından barındırılır.
+Etki Alanı Adı Sistemi, bir etki alanları hiyerarşisidir. Hiyerarşi, adı basitçe '**.**'olan 'kök' etki alanından başlar.  Bunun altında "com", "net", "org", "uk" veya "jp" gibi en üst düzey etki alanları bulunur.  Bu üst düzey etki alanlarının altında ‘org.uk’ veya ‘co.jp’ gibi ikinci düzey etki alanları bulunur.  Etki alanları bu hiyerarşi sıralamasıyla devam eder. DNS hiyerarşisindeki etki alanları, ayrı DNS bölgeleri kullanılarak barındırılır. Bu bölgeler global olarak dağıtılır ve dünya genelindeki DNS ad sunucuları tarafından barındırılır.
 
-**DNS bölgesi** - Etki alanı, Etki Alanı Adı Sistemi'nde yer alan "contoso.com" gibi benzersiz bir addır. DNS bölgesi, belirli bir etki alanının DNS kayıtlarını barındırmak için kullanılır. Örneğin ‘contoso.com’ etki alanı, ‘mail.contoso.com’ (bir posta sunucusu için) ve ‘ www.contoso.com’ (bir web sitesi için) gibi birden fazla DNS kaydını içerebilir.
+**DNS bölgesi** - Etki alanı, Etki Alanı Adı Sistemi'nde yer alan "contoso.com" gibi benzersiz bir addır. DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Örneğin ‘contoso.com’ etki alanı, ‘mail.contoso.com’ (bir posta sunucusu için) ve ‘www.contoso.com’ (bir web sitesi için) gibi birden fazla DNS kaydını içerebilir.
 
 **Etki alanı kayıt şirketi** - Etki alanı kayıt şirketi, İnternet etki alanı adlarını sağlayabilen bir şirkettir. Bu şirketler kullanmak istediğiniz İnternet etki alanının kullanılabilir olup olmadığını doğrular ve bu etki alanını satın almanızı sağlar. Etki alanı adı kaydedildikten sonra, etki alanı adının yasal sahibi olursunuz. Bir İnternet etki alanına zaten sahipseniz Azure DNS'ye devretmek için geçerli etki alanı kayıt şirketini kullanırsınız.
 
-Acann etki alanı kayıt şirketlerinde hakkında daha fazla bilgi için bkz. [ICANN-Acalacaklandırılan kayıt şirketlerinde](https://www.icann.org/registrar-reports/accredited-list.html).
+Akredite etki alanı kayıt şirketleri hakkında daha fazla bilgi için [ICANN-Akredite Kayıt Şirketleri'ne](https://www.icann.org/registrar-reports/accredited-list.html)bakın.
 
 ### <a name="resolution-and-delegation"></a>Çözümleme ve temsilci seçme
 
@@ -54,13 +54,13 @@ Aşağıdaki resimde örnek bir DNS sorgusu gösterilir. Contoso.net ve partners
 1. İstemci, yerel DNS sunucusundan `www.partners.contoso.net` ister.
 2. Yerel DNS sunucusunda kayıt yoktur, dolayısıyla kendi kök ad sunucusundan istekte bulunur.
 3. Kök ad sunucusunda kayıt yoktur, ama `.net` ad sunucusunun adresini bilir ve bu adresi DNS sunucusuna sağlar
-4. Yerel DNS sunucusu, isteği `.net` ad sunucusuna gönderir.
-5. `.net` ad sunucusu kaydına sahip değil, ancak `contoso.net` ad sunucusunun adresini tanıyor. Bu durumda, Azure DNS ' de barındırılan DNS bölgesi için ad sunucusunun adresiyle yanıt verir.
-6. Yerel DNS sunucusu, isteği Azure DNS barındırılan `contoso.net` bölgenin ad sunucusuna gönderir.
-7. `contoso.net` bölge, kayıt içermez, ancak ad sunucusu `partners.contoso.net` bilir ve adresle yanıt verir. Bu durumda, Azure DNS barındırılan bir DNS bölgesidir.
-8. Yerel DNS sunucusu, isteği `partners.contoso.net` bölgenin ad sunucusuna gönderir.
-9. `partners.contoso.net` bölgenin bir kaydı vardır ve IP adresiyle yanıt verir.
-10. Yerel DNS sunucusu, istemciye IP adresini sağlar
+4. Yerel DNS sunucusu isteği ad `.net` sunucusuna gönderir.
+5. Ad `.net` sunucusu nda kayıt yoktur, ancak `contoso.net` ad sunucusunun adresini bilir. Bu durumda, Azure DNS'de barındırılan DNS bölgesinin ad sunucusunun adresiyle yanıt verir.
+6. Yerel DNS sunucusu, isteği Azure DNS'de barındırılan `contoso.net` bölgenin ad sunucusuna gönderir.
+7. Bölge `contoso.net` kaydı yok, ancak ad sunucusunu `partners.contoso.net` biliyor ve adresle yanıt veriyor. Bu durumda, Azure DNS'de barındırılan bir DNS bölgesidir.
+8. Yerel DNS sunucusu isteği bölge ad sunucusuna `partners.contoso.net` gönderir.
+9. Bölge `partners.contoso.net` A kaydına sahiptir ve IP adresiyle yanıt verir.
+10. Yerel DNS sunucusu istemciye IP adresi sağlar
 11. İstemci `www.partners.contoso.net` web sitesine bağlanır.
 
 Her temsilci seçimi aslında NS kayıtlarının iki kopyasını içerir, bunlardan biri üst bölgede bulunup alt bölgeyi işaret ederken diğeri de alt bölgede yer alır. "Contoso.net" bölgesi, "contoso.net"e ait NS kayıtlarını içerir ("net"teki NS kayıtlarına ek olarak). Bu kayıtlar yetkili NS kayıtları olarak adlandırılır ve alt bölgenin tepesinde durur.

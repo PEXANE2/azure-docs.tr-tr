@@ -1,6 +1,6 @@
 ---
-title: Öbek kullanarak büyük iletileri işleme
-description: Azure Logic Apps ile oluşturduğunuz otomatikleştirilmiş görevler ve iş akışlarında parçalama kullanarak büyük ileti boyutlarını nasıl işleyeceğinizi öğrenin
+title: Büyük iletileri yığın kullanarak işleme
+description: Azure Logic Apps ile oluşturduğunuz otomatik görevlerde ve iş akışlarında yığın kullanarak büyük ileti boyutlarını nasıl işleyeceğinizi öğrenin
 services: logic-apps
 ms.suite: integration
 author: shae-hurst
@@ -8,84 +8,84 @@ ms.author: shhurst
 ms.topic: article
 ms.date: 12/03/2019
 ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456560"
 ---
-# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
+# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Mantıksal Uygulamaları'nda yığınla büyük iletileri işleme
 
-İletileri işlerken Logic Apps ileti içeriğini en büyük boyuta sınırlandırır. Bu sınır, büyük iletileri depolayarak ve işleyerek oluşturulan ek yükün azaltılmasına yardımcı olur. Bu sınırdan daha büyük iletileri işlemek için Logic Apps, büyük bir iletiyi daha küçük iletilere *öbekedebilir* . Bu şekilde, belirli koşullar altında Logic Apps kullanarak büyük dosyaları aktarmaya devam edebilirsiniz. Bağlayıcılar veya HTTP üzerinden diğer hizmetlerle iletişim kurarken Logic Apps, *yalnızca* parçalar halinde büyük iletileri kullanabilir. Bu durum, bağlayıcıların öbek oluşturma 'yı desteklemesi veya Logic Apps ile bu hizmetler arasında temel alınan HTTP ileti alışverişi için parçalama kullanması gerekir.
+İletileri işlerken, Logic Apps ileti içeriğini maksimum boyuta sınırlar. Bu sınır, büyük iletilerin depolanması ve işlenmesiyle oluşturulan ek yükün azaltılmasına yardımcı olur. Bu sınırdan daha büyük iletileri işlemek için, Logic Apps büyük bir iletiyi daha küçük iletilere *ayırabilir.* Bu şekilde, belirli koşullar altında Logic Apps'ı kullanarak büyük dosyaları aktarabilirsiniz. Diğer hizmetlerle bağlayıcılar veya HTTP aracılığıyla iletişim kurarken, Logic Apps büyük iletileri *yalnızca* parçalar halinde tüketebilir. Bu durum, bağlayıcıların da ötme yi desteklemesi veya Mantık Uygulamaları ile bu hizmetler arasındaki temel HTTP ileti alışverişinin yığınlama yı kullanması gerektiği anlamına gelir.
 
-Bu makalede, sınırdan daha büyük iletileri işleyen eylemler için nasıl öbek ayarlayabileceğiniz gösterilmektedir. Mantıksal uygulama Tetikleyicileri, birden fazla iletiyi değiş tokuş eden daha fazla ek yük nedeniyle parçalama desteği vermez. 
+Bu makalede, sınırdan daha büyük iletileri işleme eylemleri için yığın ayarlama nasıl gösterilmektedir. Logic App tetikleyicileri, birden çok ileti alışverişinin artan yükü nedeniyle yığınlamayı desteklemez. 
 
-## <a name="what-makes-messages-large"></a>"Büyük" iletileri ne yapar?
+## <a name="what-makes-messages-large"></a>İletileri "büyük" yapan nedir?
 
-İletiler, bu iletileri işleyen hizmete göre "büyük". Büyük iletilerde tam boyut sınırı Logic Apps ve bağlayıcılar arasında farklılık gösterir. Hem Logic Apps hem de bağlayıcılar, öbekli olması gereken büyük iletileri doğrudan tüketmez. Logic Apps ileti boyutu sınırı için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md).
-Her bağlayıcının ileti boyutu sınırı için, [bağlayıcının ilgili teknik ayrıntılarına](../connectors/apis-list.md)bakın.
+İletiler, bu iletileri işleyen hizmete göre "büyüktür". Büyük iletiler üzerindeki tam boyut sınırı Logic Apps ve bağlayıcılar arasında farklılık gösterir. Hem Logic Apps hem de bağlayıcılar, parçalanmış olması gereken büyük iletileri doğrudan tüketemez. Logic Apps ileti boyutu sınırı [için, Logic Apps sınırları ve yapılandırmabakın.](../logic-apps/logic-apps-limits-and-config.md)
+Her bağlayıcının ileti boyutu sınırı için [bağlayıcının özel teknik ayrıntılarına](../connectors/apis-list.md)bakın.
 
-### <a name="chunked-message-handling-for-logic-apps"></a>Logic Apps için öbekli ileti işleme
+### <a name="chunked-message-handling-for-logic-apps"></a>Logic Apps için yığınlı ileti işleme
 
-Logic Apps, ileti boyutu sınırından daha büyük olan öbekli iletilerden gelen çıktıları doğrudan kullanamaz. Yalnızca parçalama desteği olan eylemler, bu çıkışlara ait ileti içeriğine erişebilir. Bu nedenle, büyük iletileri işleyen bir *eylemin şu ölçütlere* uyması gerekir:
+Logic Apps, ileti boyutu sınırından daha büyük yığınlı iletilerden çıkan çıktıları doğrudan kullanamaz. Yalnızca ötmeyi destekleyen eylemler bu çıktılardaki ileti içeriğine erişebilir. Bu nedenle, büyük iletileri işleyen bir eylem aşağıdaki *ölçütleri karşılamalıdır:*
 
-* Bu eylem bir bağlayıcıya ait olduğunda yerel olarak parçalama desteği. 
-* Bu eylemin çalışma zamanı yapılandırmasında öbek oluşturma desteği etkin. 
+* Bu eylem bir bağlayıcıya ait olduğunda yerel olarak yığınlamayı destekler. 
+* Bu eylemin çalışma zamanı yapılandırmasında yığın desteği etkinleştirin. 
 
-Aksi takdirde, büyük içerik çıktısına erişmeye çalıştığınızda bir çalışma zamanı hatası alırsınız. Parçalama özelliğini etkinleştirmek için bkz. [Parçalama desteğini ayarlama](#set-up-chunking).
+Aksi takdirde, büyük içerik çıktısına erişmeye çalıştığınızda çalışma zamanı hatası alırsınız. Ösyerek etkinleştirmek için [bkz.](#set-up-chunking)
 
-### <a name="chunked-message-handling-for-connectors"></a>Bağlayıcılar için öbekli ileti işleme
+### <a name="chunked-message-handling-for-connectors"></a>Bağlayıcılar için yığınlı ileti işleme
 
-Logic Apps ile iletişim kuran hizmetler kendi ileti boyutu sınırlarına sahip olabilir. Bu sınırlar genellikle Logic Apps sınırından daha küçüktür. Örneğin, bir bağlayıcının parçalama desteklediğini varsayarsak, bağlayıcı 30 MB 'lık bir iletiyi büyük olarak kabul edebilir, Logic Apps. Bu bağlayıcının sınırına uymak için, Logic Apps 30 MB 'tan daha büyük bir iletiyi daha küçük parçalara böler.
+Logic Apps ile iletişim yapan hizmetlerin kendi ileti boyutu sınırları olabilir. Bu sınırlar genellikle Logic Apps sınırından daha küçüktür. Örneğin, bir bağlayıcının ötmeyi desteklediğini varsayarsak, bağlayıcı 30 MB'lık bir iletiyi büyük olarak kabul edebilirken, Logic Apps bunu yapmaz. Bu bağlayıcının sınırına uymak için, Logic Apps 30 MB'dan büyük iletileri daha küçük parçalara böler.
 
-Parçalama desteği sunan bağlayıcılar için, temel alınan Parçalama Protokolü son kullanıcılara görünmez. Ancak, tüm bağlayıcılar öbek oluşturmayı desteklemez, bu nedenle bu bağlayıcılar, gelen iletiler bağlayıcıların boyut sınırlarını aştığında çalışma zamanı hataları oluşturur.
+Östeneleri destekleyen bağlayıcılar için, temel öbeklenme protokolü son kullanıcılar tarafından görünmez. Ancak, tüm bağlayıcılar ötme'yi desteklemez, bu nedenle gelen iletiler bağlayıcıların boyut sınırlarını aştığında bu bağlayıcılar çalışma zamanı hataları oluşturur.
 
 > [!NOTE]
-> Öbek kullanan eylemler için, tetikleyici gövdesini geçiremiyor veya bu eylemlerde `@triggerBody()?['Content']` gibi ifadeler kullanamıyoruz. Bunun yerine, metin veya JSON dosya içeriği için, [ **oluşturma** eylemini](../logic-apps/logic-apps-perform-data-operations.md#compose-action) kullanmayı deneyebilir veya bu içeriği işlemek için [bir değişken oluşturabilirsiniz](../logic-apps/logic-apps-create-variables-store-values.md) . Tetikleyici gövdesi, medya dosyaları gibi diğer içerik türlerini içeriyorsa, bu içeriği işlemek için diğer adımları gerçekleştirmeniz gerekir.
+> Yığın lama kullanan eylemler için tetikleyici gövdeyi geçemez veya bu `@triggerBody()?['Content']` eylemlerdeki gibi ifadeleri kullanamazsınız. Bunun yerine, metin veya JSON dosya içeriği [ **için, Eylem Oluştur'u** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action) kullanmayı deneyebilir veya bu içeriği işlemek için [bir değişken oluşturabilirsiniz.](../logic-apps/logic-apps-create-variables-store-values.md) Tetikleyici gövde, ortam dosyaları gibi diğer içerik türleri içeriyorsa, bu içeriği işlemek için başka adımlar gerçekleştirmeniz gerekir.
 
 <a name="set-up-chunking"></a>
 
-## <a name="set-up-chunking-over-http"></a>HTTP üzerinden parçalama ayarlama
+## <a name="set-up-chunking-over-http"></a>HTTP üzerinde yığın ayarlama
 
-Genel HTTP senaryolarında, mantıksal uygulamanızın ve bir uç noktanın büyük iletileri alışverişi yapabilmesi için HTTP üzerinden büyük içerik indirmeleri ve karşıya yüklemeleri bölebilirsiniz. Ancak, iletilerin Logic Apps beklediği şekilde öbek iletileri olması gerekir. 
+Genel HTTP senaryolarında, mantık uygulamanızın ve bitiş noktanızın büyük iletialışverişinde bulunabilmesi için büyük içerik indirmelerini ve yüklemelerini HTTP üzerinden bölebilirsiniz. Ancak, iletileri Logic Apps'ın beklediği şekilde ötmelisiniz. 
 
-Bir uç nokta indirme veya karşıya yükleme için parçalama etkinleştirmişse, mantıksal uygulamanızdaki HTTP eylemleri otomatik olarak büyük iletileri öbektir. Aksi takdirde, uç noktada parçalama desteği ayarlamanız gerekir. Uç nokta veya bağlayıcınızı bilmiyorsanız veya denetmezseniz, parçalama ayarlama seçeneğiniz olmayabilir.
+Bir bitiş noktası indirmeler veya yüklemeler için ötme özelliği etkinleştirdiyse, mantık uygulamanızdaki HTTP eylemleri büyük iletileri otomatik olarak öper. Aksi takdirde, bitiş noktasında yığın desteği ayarlamanız gerekir. Bitiş noktasının veya bağlayıcının sahibi değil seniz veya denetiminiz yoksa, yığınlama ayarlama seçeneğiniz olmayabilir.
 
-Ayrıca, bir HTTP eylemi zaten parçalama etkinleştirmezse, eylemin `runTimeConfiguration` özelliğinde de parçalama ayarlamanız gerekir. Bu özelliği, doğrudan kod görünümü düzenleyicisinde, daha sonra açıklandığı şekilde veya Logic Apps tasarımcısında, burada açıklandığı gibi, eylem içinde ayarlayabilirsiniz:
+Ayrıca, bir HTTP eylemi zaten ötme özelliğini etkinleştirmiyorsa, eylemin `runTimeConfiguration` özelliğinde yığın ayarlamanız gerekir. Bu özelliği, doğrudan daha sonra açıklandığı şekilde kod görünümü düzenleyicisinde veya burada açıklandığı gibi Logic Apps Tasarımcısı'nda eylem içinde ayarlayabilirsiniz:
 
-1. HTTP eyleminin sağ üst köşesinde üç nokta düğmesini ( **...** ) ve ardından **Ayarlar**' ı seçin.
+1. HTTP eyleminin sağ üst köşesinde, elips düğmesini seçin (**...**), ve ardından **Ayarlar'ı**seçin.
 
-   ![Eylemde, Ayarlar menüsünü açın](./media/logic-apps-handle-large-messages/http-settings.png)
+   ![Eylemde ayarlar menüsünü açın](./media/logic-apps-handle-large-messages/http-settings.png)
 
-2. **Içerik aktarımı**altında, **öbek kümesine izin ver** ' i **Açık**olarak ayarlayın.
+2. **İçerik Aktarımı**altında, **"İzin Ver"i** **A'ya**ayarlayın.
 
-   ![Parçalama 'yi aç](./media/logic-apps-handle-large-messages/set-up-chunking.png)
+   ![Yığınlamayı açma](./media/logic-apps-handle-large-messages/set-up-chunking.png)
 
-3. Yüklemeler veya karşıya yüklemeler için parçalama ayarlamaya devam etmek için aşağıdaki bölümlerle devam edin.
+3. İndirme ler veya yüklemeler için yığın ayarlamaya devam etmek için aşağıdaki bölümlerle devam edin.
 
 <a name="download-chunks"></a>
 
-## <a name="download-content-in-chunks"></a>Öbeklerdeki içeriği indirme
+## <a name="download-content-in-chunks"></a>İçeriği parçalar halinde indirin
 
-Bir HTTP GET isteği aracılığıyla indirilen birçok uç nokta, öbeklere otomatik olarak büyük iletiler gönderir. HTTP üzerinden bir uç noktadan öbekli iletileri indirmek için, uç noktanın kısmi içerik isteklerini veya *öbekli İndirmeleri*desteklemesi gerekir. Mantıksal uygulamanız içerik indirmek için bir uç noktaya HTTP GET isteği gönderdiğinde ve uç nokta bir "206" durum kodu ile yanıt verirse, yanıt öbekli içerik içerir. Logic Apps, bir uç noktanın kısmi istekleri destekleyip desteklemediğini denetleyemiyorum. Ancak, mantıksal uygulamanız ilk "206" yanıtını aldığında, mantıksal uygulamanız tüm içeriği indirmek için otomatik olarak birden çok istek gönderir.
+Birçok uç nokta, http GET isteği aracılığıyla indirildiğinde otomatik olarak büyük iletileri parçalar halinde gönderir. Öbeklenmiş iletileri HTTP üzerinden bir bitiş noktasından indirmek için, bitiş noktasının kısmi içerik isteklerini veya *yığınla indirilenleri*desteklemesi gerekir. Mantık uygulamanız içeriği indirmek için bir bitiş noktasına BIR HTTP GET isteği gönderdiğinde ve bitiş noktası "206" durum koduyla yanıt verdiğinde, yanıt tıkanmış içerik içerir. Logic Apps, bitiş noktasının kısmi istekleri destekleyip desteklemediğini denetemez. Ancak, mantık uygulamanız ilk "206" yanıtını aldığında, mantık uygulamanız tüm içeriği indirmek için otomatik olarak birden çok istek gönderir.
 
-Bir uç noktanın kısmi içeriği destekleyemeyeceğini denetlemek için bir HEAD isteği gönderin. Bu istek, yanıtın `Accept-Ranges` üst bilgisini içerip içermediğini belirlemenize yardımcı olur. Bu şekilde, uç nokta, öbekli İndirmeleri destekliyorsa ancak öbekli içerik göndermezse, HTTP GET talebinizdeki `Range` üst bilgisini ayarlayarak bu seçeneği *önerebilirsiniz* . 
+Bir bitiş noktasının kısmi içeriği destekleyip desteklemeyeceğini kontrol etmek için HEAD isteği gönderin. Bu istek, yanıtın `Accept-Ranges` üstbilgi içinde olup olmadığını belirlemenize yardım eder. Bu şekilde, bitiş noktası ödenmiş indirmeleri destekliyor sa da ödenmiyorsa, `Range` http GET isteğinizdeki üstbilgiyi ayarlayarak bu seçeneği *önerebilirsiniz.* 
 
-Bu adımlar, bir uç noktadan mantıksal uygulamanıza öbekli içerik indirmek için kullanılan Logic Apps ayrıntılı süreci anlatmaktadır:
+Bu adımlar, Logic Apps'ın tıklım tıklım daki içeriği bir bitiş noktasından mantık uygulamanıza indirmek için kullandığı ayrıntılı işlemi açıklar:
 
-1. Mantıksal uygulamanız uç noktaya bir HTTP GET isteği gönderir.
+1. Mantık uygulamanız bitiş noktasına bir HTTP GET isteği gönderir.
 
-   İstek üst bilgisi isteğe bağlı olarak, içerik öbekleri istemek için bir bayt aralığını açıklayan bir `Range` alanı içerebilir.
+   İstek üstbilgisi isteğe `Range` bağlı olarak içerik parçaları istemek için bir bayt aralığını açıklayan bir alan içerebilir.
 
-2. Uç nokta, "206" durum kodu ve bir HTTP ileti gövdesi ile yanıt verir.
+2. Bitiş noktası "206" durum kodu ve bir HTTP ileti gövdesi ile yanıt verir.
 
-    Bu öbekteki içerik hakkındaki ayrıntılar yanıtın `Content-Range` üst bilgisinde görünür ve bu, öbek için başlangıç ve bitiş bilgilerini ve parçalama öncesinde tüm içeriğin toplam boyutunu belirlemenize Logic Apps yardımcı olan bilgiler de dahildir.
+    Bu yığındaki içerikle ilgili ayrıntılar, `Content-Range` Logic Apps'ın öbek için başlangıç ve bitişi belirlemelerine yardımcı olan bilgiler ve parçalamadan önce tüm içeriğin toplam boyutunu da içeren yanıtın üstbilgisinde görünür.
 
-3. Mantıksal uygulamanız, izleme HTTP GET isteklerini otomatik olarak gönderir.
+3. Mantık uygulamanız otomatik olarak takip http GET isteklerini gönderir.
 
-    Mantıksal uygulamanız, tüm içerik alınana kadar izleme Al istekleri gönderir.
+    Mantık uygulamanız, tüm içerik alınana kadar takip GET istekleri gönderir.
 
-Örneğin, bu eylem tanımı `Range` üst bilgisini ayarlayan bir HTTP GET isteği gösterir. Üstbilgi, uç noktanın öbekli içerikle yanıt vermesini *önerir* :
+Örneğin, bu eylem tanımı, `Range` üstbilgi ayarlayan bir HTTP GET isteği gösterir. Üstbilgi, bitiş noktasının tıklım tıklım içerikle yanıt vermesi gerektiğini *önerir:*
 
 ```json
 "getAction": {
@@ -101,54 +101,54 @@ Bu adımlar, bir uç noktadan mantıksal uygulamanıza öbekli içerik indirmek 
 }
 ```
 
-GET isteği, "Range" üst bilgisini "byte = 0-1023" olarak ayarlar ve bu da bayt aralığıdır. Uç nokta, kısmi içerik isteklerini destekliyorsa, uç nokta istenen aralıktaki bir içerik öbeğiyle yanıt verir. Uç nokta temelinde, "Aralık" başlık alanı için tam biçim farklı olabilir.
+GET isteği "Aralık" üstbilgisini bayt aralığı olan "bayt=0-1023" olarak ayarlar. Bitiş noktası kısmi içerik isteklerini destekliyorsa, bitiş noktası istenen aralıktan bir içerik parçasıyla yanıt verir. Bitiş noktasına bağlı olarak, "Aralık" üstbilgi alanının tam biçimi farklı olabilir.
 
 <a name="upload-chunks"></a>
 
-## <a name="upload-content-in-chunks"></a>Öbeklere içerik yükleme
+## <a name="upload-content-in-chunks"></a>İçeriği parçalar halinde yükleme
 
-Bir HTTP eyleminden öbekli içerik yüklemek için eylemin `runtimeConfiguration` özelliği aracılığıyla öbek desteğini etkinleştirmiş olması gerekir. Bu ayar eyleme öbek protokolünü başlatma izni verir. Mantıksal uygulamanız daha sonra bir ilk GÖNDERI gönderebilir veya hedef uç noktaya ileti YERLEŞTIREBILIR. Uç nokta, önerilen bir öbek boyutuyla yanıt verdikten sonra mantıksal uygulamanız, içerik öbeklerini içeren HTTP PATCH istekleri göndererek takip eder.
+Bir HTTP eyleminden yığınlı içerik yüklemek için, eylemin eylemin `runtimeConfiguration` özelliği üzerinden yığın desteğietkin leştirilmiş olması gerekir. Bu ayar, eylemin yığınlama protokolünü başlatmasına izin verir. Mantık uygulamanız daha sonra hedef bitiş noktasına bir ilk POST veya PUT iletisi gönderebilir. Bitiş noktası önerilen bir yığın boyutuyla yanıt verdikten sonra, mantık uygulamanız içerik parçalarını içeren HTTP PATCH isteklerini göndererek takip eder.
 
-Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yüklemek için kullanılan ayrıntılı işlem Logic Apps açıklanmıştır:
+Bu adımlar, Logic Apps'ın mantıksal uygulamanızdan bir bitiş noktasına yığınlı içeriği yüklemek için kullandığı ayrıntılı işlemi açıklar:
 
-1. Mantıksal uygulamanız, boş bir ileti gövdesine sahip bir ilk HTTP POST veya PUT isteği gönderir. İstek üst bilgisi, mantıksal uygulamanızın parçalara yüklemek istediği içerikle ilgili şu bilgileri içerir:
+1. Mantık uygulamanız boş bir ileti gövdesi ile ilk HTTP POST veya PUT isteği gönderir. İstek üstbilgisi, mantık uygulamanızın yığınlar halinde yüklemek istediği içerikle ilgili şu bilgileri içerir:
 
-   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
+   | Logic Apps üstbilgi alanı isteme | Değer | Tür | Açıklama |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
-   | **x-MS-Content-Length** | <*Content-length*> | Tamsayı | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
+   | **x-ms-transfer modu** | Yığın | Dize | İçeriğin parçalar halinde yüklendiğini gösterir |
+   | **x-ms-içerik uzunluğu** | <*içerik uzunluğu*> | Tamsayı | Parçalamadan önce baytlarda tüm içerik boyutu |
    ||||
 
-2. Uç nokta, "200" başarı durum kodu ve bu isteğe bağlı bilgiler ile yanıt verir:
+2. Bitiş noktası "200" başarı durum kodu ve bu isteğe bağlı bilgilerle yanıt verir:
 
-   | Uç nokta yanıt üst bilgisi alanı | Tür | Gereklidir | Açıklama |
+   | Uç nokta yanıt üstbilgi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
-   | **Konum** | Dize | Evet | HTTP PATCH iletilerinin gönderileceği URL konumu |
+   | **x-ms-ösyğboyutu** | Tamsayı | Hayır | Baytlarda önerilen parça boyutu |
+   | **Konum** | Dize | Evet | HTTP PATCH iletilerinin gönderilen URL konumu |
    ||||
 
-3. Mantıksal uygulamanız, bu bilgileri içeren, izleme HTTP PATCH iletileri oluşturur ve gönderir:
+3. Mantık uygulamanız her biri bu bilgileri içeren http PATCH iletileri oluşturur ve gönderir:
 
-   * X-ms- **Content-Length** tüm içerik toplama işlemi ardışık olarak karşıya yüklenene kadar **x-MS-öbek boyutunda** veya bazı dahili olarak hesaplanan boyut tabanlı bir içerik öbeği
+   * **X-ms-içerik uzunluğuna** tekabün toplamı olan tüm içerik sırayla yüklenene kadar **x-ms-chunk boyutuna** veya dahili olarak hesaplanan bir boyuta dayalı bir içerik yığını
 
-   * Bu üst bilgi, her bir düzeltme eki iletisinde gönderilen içerik öbeği hakkındaki ayrıntıları:
+   * Her PATCH iletisinde gönderilen içerik öbek hakkında bu üstbilgi ayrıntıları:
 
-     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
+     | Logic Apps üstbilgi alanı isteme | Değer | Tür | Açıklama |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu dahil olmak üzere geçerli içerik öbeği için bayt aralığı, örneğin: "bytes = 0-1023/10100" |
-     | **Content-Type** | <*Content-type*> | Dize | Öbekli içerik türü |
-     | **İçerik uzunluğu** | <*Content-length*> | Dize | Geçerli öbekteki bayt cinsinden boyut uzunluğu |
+     | **İçerik Aralığı** | <*Aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu da dahil olmak üzere geçerli içerik yığınının bayt aralığı, örneğin: "bayt=0-1023/10100" |
+     | **İçerik Türü** | <*içerik türü*> | Dize | Parçalanan içeriğin türü |
+     | **İçerik Uzunluğu** | <*içerik uzunluğu*> | Dize | Geçerli parçanın baytlarındaki boyutun uzunluğu |
      |||||
 
-4. Her bir düzeltme eki isteğinden sonra, uç nokta, "200" durum kodu ve aşağıdaki yanıt üst bilgileri ile yanıt vererek her bir öbek için alındı bilgisini onaylar:
+4. Her PATCH isteğinden sonra, bitiş noktası "200" durum kodu ve aşağıdaki yanıt üstbilgileri yle yanıt vererek her bir öbek için makbuzonaylar:
 
-   | Uç nokta yanıt üst bilgisi alanı | Tür | Gereklidir | Açıklama |
+   | Uç nokta yanıt üstbilgi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **Aralık** | Dize | Evet | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
-   | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
+   | **Aralığı** | Dize | Evet | Uç noktaya kadar alınan içerik için bayt aralığı, örneğin: "bayt=0-1023" |   
+   | **x-ms-ösyğboyutu** | Tamsayı | Hayır | Baytlarda önerilen parça boyutu |
    ||||
 
-Örneğin, bu eylem tanımı, bir uç noktaya öbekli içerik yüklemek için bir HTTP POST isteği gösterir. Eylemin `runTimeConfiguration` özelliğinde `contentTransfer` özelliği `chunked``transferMode` olarak ayarlanır:
+Örneğin, bu eylem tanımı, ödenerek içeriği bitiş noktasına yüklemek için bir HTTP POST isteğini gösterir. Eylemin `runTimeConfiguration` özelliğinde, `contentTransfer` özellik aşağıdakileri `transferMode` `chunked`ayarlar:
 
 ```json
 "postAction": {

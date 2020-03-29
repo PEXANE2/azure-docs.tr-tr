@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory portalındaki hata kodları | Microsoft Docs
+title: Azure Active Directory portalındaki hata kodları | Microsoft Dokümanlar
 description: Oturum açma etkinlik raporu hata kodları başvurusu.
 services: active-directory
 documentationcenter: ''
@@ -18,21 +18,21 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b4e21a23ebc455653b4d5b22ac18023b533728c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190475"
 ---
-# <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
+# <a name="sign-in-activity-report-error-codes"></a>Oturum açma faaliyet raporu hata kodları 
 
-[Kullanıcı oturum açma işlemleri raporu](concept-sign-ins.md)tarafından verilen bilgiler ile, şu gibi soruların yanıtlarını bulabilirsiniz:
+Kullanıcı oturum açma [raporu](concept-sign-ins.md)tarafından sağlanan bilgilerle, aşağıdaki gibi soruların yanıtlarını bulabilirsiniz:
 
-- Uygulamamda kim oturum açtı?
-- Hangi uygulamalara oturum açıldı?
-- Hangi oturum açma işlemleri başarısız oldu ve neden?
+- Başvuruma kim imza attı?
+- Hangi başvurular adadan imzalandı?
+- Hangi oturum açmalar başarısız oldu ve neden?
 
-Bir oturum açma başarısız olduğunda, hataya karşılık gelen bir hata kodu görürsünüz. [Bir hata kodu için açıklama bulun](https://login.microsoftonline.com/error).
+Oturum açma başarısız olduğunda, hataya karşılık gelen bir hata kodu görürsünüz. [Bir hata kodu için açıklamayı bulun.](https://login.microsoftonline.com/error)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: SAP Business Warehouse 'dan veri yükleme
-description: SAP Business Warehouse 'dan veri kopyalamak için Azure Data Factory kullanma (siyah beyaz)
+title: SAP İş Ambarından yük verileri
+description: SAP İş Ambarı'ndan (BW) veri kopyalamak için Azure Veri Fabrikası'nı kullanın
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -12,171 +12,171 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
 ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440179"
 ---
-# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
+# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak SAP İş Ambarı'ndaki verileri kopyalama
 
-Bu makalede, Azure Data Factory kullanarak SAP Business Warehouse 'tan (bant genişliği) veri kopyalamak için Azure Data Lake Storage 2. hub 'a nasıl kullanılacağı gösterilmektedir. Verileri [desteklenen diğer havuz veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)kopyalamak için benzer bir işlem kullanabilirsiniz.
+Bu makalede, SAP İş Ambarı'ndan (BW) Open Hub üzerinden Azure Veri Gölü Depolama Gen2'ye verileri kopyalamak için Azure Veri Fabrikası'nın nasıl kullanılacağı gösterilmektedir. Verileri diğer [desteklenen lavabo veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)kopyalamak için benzer bir işlem kullanabilirsiniz.
 
 > [!TIP]
-> Açık Hub tümleştirmesi ve değişim ayıklama akışı SAP BW dahil SAP BW verileri kopyalama hakkında genel bilgi için, bkz. [Azure Data Factory kullanarak SAP Business Warehouse 'Tan açık hub aracılığıyla veri kopyalama](connector-sap-business-warehouse-open-hub.md).
+> SAP BW Open Hub tümleştirmesi ve delta çıkarma akışı da dahil olmak üzere SAP BW'den veri kopyalama hakkında genel bilgi için, [Azure Veri Fabrikası'nı kullanarak OPEN Hub üzerinden SAP İş Ambarı'ndan veri kopyalama'ya](connector-sap-business-warehouse-open-hub.md)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- **Azure Data Factory**: yoksa [bir veri fabrikası oluşturmak](quickstart-create-data-factory-portal.md#create-a-data-factory)için adımları izleyin.
+- **Azure Veri Fabrikası**: Varsa, [bir veri fabrikası oluşturmak](quickstart-create-data-factory-portal.md#create-a-data-factory)için aşağıdaki adımları izleyin.
 
-- **Hedef türü "veritabanı tablosu" olan açık Merkez hedefi (OHD) SAP BW**: OHD oluşturmak için veya OHD 'nizin Data Factory tümleştirme için doğru yapılandırılıp yapılandırılmadığını kontrol etmek için, bu makalenin [SAP BW açık hub hedefi yapılandırması](#sap-bw-open-hub-destination-configurations) bölümüne bakın.
+- **HEDEF türü "Veritabanı Tablosu" ile SAP BW Açık Hub Hedefi (OHD):** Bir OHD oluşturmak veya OHD'nizin Veri Fabrikası tümleştirmesi için doğru şekilde yapılandırıldığından kontrol etmek için bu makalenin [SAP BW Open Hub Hedef yapılandırmaları](#sap-bw-open-hub-destination-configurations) bölümüne bakın.
 
-- **SAP BW Kullanıcı aşağıdaki izinlere ihtiyaç duyuyor**:
+- **SAP BW kullanıcısının aşağıdaki izinlere ihtiyacı vardır:**
 
-  - Uzak Işlev çağrıları (RFC) ve SAP BW için yetkilendirme.
-  - **S_SDSAUTH** yetkilendirme nesnesinin "yürütme" etkinliğinin izinleri.
+  - Uzaktan İşlev Aramaları (RFC) ve SAP BW için yetkilendirme.
+  - **S_SDSAUTH** yetkilendirme nesnesinin "Yürüt" etkinliğine izinler.
 
-- **Sap .net bağlayıcı 3,0 ile [Şirket Içinde barındırılan bir tümleştirme çalışma zamanı (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime)** . Aşağıdaki kurulum adımlarını izleyin:
+- **SAP .NET konektörü 3.0 ile [kendi kendine barındırılan tümleştirme çalışma süresi (IR).](concepts-integration-runtime.md#self-hosted-integration-runtime) ** Aşağıdaki kurulum adımlarını izleyin:
 
-  1. Şirket içinde barındırılan tümleştirme çalışma zamanı, sürüm 3,13 veya üstünü yükleyip kaydettirin. (Bu işlem bu makalenin ilerleyen kısımlarında açıklanmaktadır.)
+  1. Kendi kendine barındırılan tümleştirme çalışma saatini, sürüm 3.13 veya sonraki sürümlerini yükleyin ve kaydedin. (Bu işlem daha sonra bu makalede açıklanmıştır.)
 
-  2. [64-BIT SAP BAĞLAYıCıSıNı SAP web sitesinden Microsoft .NET 3,0 için](https://support.sap.com/en/product/connectors/msnet.html) indirin ve şirket IÇINDE barındırılan IR ile aynı bilgisayara yükleyin. Yükleme sırasında, aşağıdaki görüntüde gösterildiği gibi **Isteğe bağlı kurulum adımları** ILETIŞIM kutusunda **GAC 'ye derleme yükleme** ' yi seçtiğinizden emin olun:
+  2. Microsoft [.NET 3.0 için 64 bit SAP Bağlayıcısını](https://support.sap.com/en/product/connectors/msnet.html) SAP'nin web sitesinden indirin ve kendi barındırdığı IR ile aynı bilgisayara yükleyin. Yükleme sırasında, aşağıdaki resimde görüldüğü **gibi, İsteğe bağlı kurulum adımları** iletişim kutusunda **GAC'ye Derlemeleri Yükle'yi** seçtiğinizden emin olun:
 
-     ![SAP .NET bağlayıcısını ayarlama iletişim kutusu](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+     ![SAP .NET Bağlayıcı iletişim kutusunu ayarlama](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>SAP BW açık hub 'dan tam bir kopya yapın
+## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>SAP BW Open Hub'dan tam kopya yapın
 
-Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini ayrı bir sekmede açmak için **yazar & İzleyicisi** ' ni seçin.
+Azure portalında veri fabrikanıza gidin. Veri Fabrikası Kullanıcı Çağrı Lerini ayrı bir sekmede açmak için **Yazar & Monitör'ü** seçin.
 
-1. **Başlarken** sayfasında, veri kopyalama aracını açmak için **veri kopyalama** ' yi seçin.
+1. **Başlatalım** sayfasında, Verileri **Kopyala** aracını açmak için Verileri Kopyala'yı seçin.
 
-2. **Özellikler** sayfasında, bir **görev adı**belirtin ve ardından **İleri**' yi seçin.
+2. **Özellikler** sayfasında bir **Görev adı**belirtin ve sonra **İleri'yi**seçin.
 
-3. **Kaynak veri deposu** sayfasında **+ Yeni bağlantı oluştur**' u seçin. Bağlayıcı galerisinden **Hub SAP BW açın** ve ardından **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna **SAP** yazabilirsiniz.
+3. Kaynak **veri deposu** sayfasında **+Yeni bağlantı oluştur'u**seçin. Bağlayıcı galerisinden **SAP BW Aç Hub'ı** seçin ve ardından **Devam et'i**seçin. Bağlayıcılara filtre uygulayacak şekilde arama kutusuna **SAP** yazabilirsiniz.
 
-4. **SAP BW hub bağlantısını seçin** sayfasında, yeni bir bağlantı oluşturmak için aşağıdaki adımları izleyin.
+4. SAP **BW Açık Hub bağlantı** sayfasında, yeni bir bağlantı oluşturmak için aşağıdaki adımları izleyin.
 
-   ![Hub-bağlantılı hizmet sayfası oluştur SAP BW açın](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
+   ![SAP BW Aç Hub'a bağlı hizmet sayfası oluşturma](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
 
-   1. **Tümleştirme çalışma zamanı aracılığıyla Bağlan** listesinden, mevcut bir şirket IÇINDE barındırılan IR seçin. Ya da henüz yoksa bir tane oluşturun.
+   1. **Tümleştirme çalışma zamanı** listesinden Bağlan'dan, varolan kendi barındırılan bir IR'yi seçin. Veya henüz bir tane yoksa bir tane oluşturmayı seçin.
 
-      Şirket içinde barındırılan yeni bir IR oluşturmak için **+ Yeni**' yi seçin ve ardından **Şirket içinde barındırılan**' ı seçin. Bir **ad**girin ve ardından **İleri**' yi seçin. Geçerli bilgisayara yüklemek için **Hızlı Kurulum** ' u seçin veya sunulan **el ile kurulum** adımlarını izleyin.
+      Kendi kendine barındırılan yeni bir IR oluşturmak için **+Yeni'yi**seçin ve ardından **Kendi kendine barındırılan Ip'yi**seçin. Bir **Ad**girin ve sonra **İleri'yi**seçin. Geçerli bilgisayara yüklemek için **Express kurulumünü** seçin veya sağlanan **El ile kurulum** adımlarını izleyin.
 
-      [Önkoşullar](#prerequisites)bölümünde belirtildiği gibi, şirket IÇINDE barındırılan IR 'nin çalıştığı bilgisayarda 3,0 MICROSOFT .net Için SAP bağlayıcısının yüklü olduğundan emin olun.
+      [Önkoşullar'da](#prerequisites)belirtildiği gibi, Microsoft .NET 3.0 için SAP Bağlayıcısı'nın kendi barındırılan IR'nin çalıştığı aynı bilgisayarda yüklü olduğundan emin olun.
 
-   2. SAP BW **sunucu adını**, **sistem numarasını**, **Istemci kimliğini,** **dili** ( **en**dışında), **Kullanıcı adını**ve **parolayı**girin.
+   2. SAP BW **Sunucu adı,** **Sistem numarası,** **İstemci Kimliği,** **Dil** **(EN**dışında ise), **Kullanıcı adı**ve **Şifre'yi**doldurun.
 
-   3. Ayarları doğrulamak için **Bağlantıyı Sına** ' yı seçin ve ardından **son**' u seçin.
+   3. Ayarları doğrulamak için **Test bağlantısını** seçin ve ardından **Bitir'i**seçin.
 
-   4. Yeni bir bağlantı oluşturulur. **İleri**’yi seçin.
+   4. Yeni bir bağlantı oluşturulur. **Sonraki'ni**seçin.
 
-5. **Açık hub hedeflerini seçin** sayfasında, SAP BW kullanılabilen açık hub hedeflerine gözatamazsınız. Verileri kopyalamak için OHD 'yi seçin ve ardından **İleri**' yi seçin.
+5. Hub **Hedeflerini Seç** sayfasında SAP BW'nizde bulunan Açık Hub Hedefleri'ne göz atın. Verileri kopyalamak için OHD'yi seçin ve sonra **İleri'yi**seçin.
 
-   ![SAP BW açık hub hedef tablosu seçin](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
+   ![SAP BW Açık Hub Hedef tablosunu seçin](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
 
-6. Gerekiyorsa bir filtre belirtin. OHD 'niz yalnızca tek bir istek KIMLIĞIYLE tek bir veri aktarım işlemi (DTP) yürütmeden veri içeriyorsa veya DTP 'nizin tamamlantığınızdan ve verileri kopyalamak istediğinizden emin değilseniz, **son Isteği hariç tut** onay kutusunu temizleyin.
+6. İhtiyacınız varsa bir filtre belirtin. OHD'niz yalnızca tek bir istek kimliğiyle tek bir veri aktarım işleminden (DTP) veri içeriyorsa veya DTP'nizin bittiğinden eminseniz ve verileri kopyalamak istiyorsanız, **Son İstek'i Hariç Tut** onay kutusunu temizleyin.
 
-   Bu ayarlar hakkında daha fazla bilgi edinmek için bu makaledeki [SAP BW hub hedef yapılandırması](#sap-bw-open-hub-destination-configurations) ' nı açın. Hangi verilerin döndürüleceğini çift denetlemek için **Doğrula** ' yı seçin. Sonra **İleri**’yi seçin.
+   Bu makalenin SAP [BW Open Hub Hedef yapılandırmaları](#sap-bw-open-hub-destination-configurations) bölümünde bu ayarlar hakkında daha fazla bilgi edinin. Hangi verilerin döndürüleceğini iki kez denetlemek için **Onu doğrula'yı** seçin. Ardından **İleri'yi**seçin.
 
-   ![SAP BW açık hub filtresini yapılandırma](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
+   ![SAP BW Open Hub filtresini yapılandırın](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. **Hedef veri deposu** sayfasında **+ yeni bağlantı oluştur** > ' ı seçin **Azure Data Lake Storage 2.** **devam** > .
+7. Hedef **veri deposu** sayfasında **+Yeni bağlantı** > oluştur**Azure Veri Gölü Depolama Gen2** > **Devam'ı**seçin.
 
-8. **Azure Data Lake Storage bağlantı belirle** sayfasında, bağlantı oluşturmak için aşağıdaki adımları izleyin.
+8. Azure **Veri Gölü Depolama bağlantı** sayfası belirtin, bağlantı oluşturmak için aşağıdaki adımları izleyin.
 
-   ![ADLS 2. bağlı hizmet sayfası oluşturma](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
+   ![ADLS Gen2 bağlantılı hizmet sayfası oluşturma](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
-   1. **Ad** açılır listesinden Data Lake Storage 2. özellikli hesabınızı seçin.
-   2. **Son**'u seçerek bağlantıyı oluşturun. Sonra **İleri**’yi seçin.
+   1. **Ad** açılır listesinden Veri Gölü Depolama Gen2 özellikli hesabınızı seçin.
+   2. **Son**'u seçerek bağlantıyı oluşturun. Ardından **İleri'yi**seçin.
 
-9. **Çıktı dosyasını veya klasörünü seçin** sayfasında, çıkış klasörü adı olarak **copyfromopenhub** yazın. Sonra **İleri**’yi seçin.
+9. Çıktı **dosyasını veya klasörünü seç** sayfasında, çıktı klasörü adı olarak **copyfromopenhub** girin. Ardından **İleri'yi**seçin.
 
-   ![Çıkış klasörü seçin sayfası](media/load-sap-bw-data/choose-output-folder.png)
+   ![Çıktı klasörü sayfasını seçin](media/load-sap-bw-data/choose-output-folder.png)
 
-10. **Dosya biçimi ayarı** sayfasında, varsayılan ayarları kullanmak için **İleri** ' yi seçin.
+10. Dosya **biçimi ayarı** sayfasında, varsayılan ayarları kullanmak için **İleri'yi** seçin.
 
-    ![Havuz biçim sayfasını belirtin](media/load-sap-bw-data/specify-sink-format.png)
+    ![Lavabo biçimi sayfasını belirtin](media/load-sap-bw-data/specify-sink-format.png)
 
-11. **Ayarlar** sayfasında, **performans ayarları**' nı genişletin. Paralel olarak SAP BW yükleme için 5 gibi **kopya paralellik derecesi** için bir değer girin. Sonra **İleri**’yi seçin.
+11. **Ayarlar** sayfasında Performans **ayarlarını**genişletin. SAP BW'den paralel olarak yüklemek için 5 gibi **kopya paralellik derecesi** için bir değer girin. Ardından **İleri'yi**seçin.
 
     ![Kopyalama ayarlarını yapılandırma](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. **Özet** sayfasında, ayarları inceleyin. Sonra **İleri**’yi seçin.
+12. **Özet** sayfasında, ayarları inceleyin. Ardından **İleri'yi**seçin.
 
-13. **Dağıtım** sayfasında, işlem hattını Izlemek için **izleyici** ' yi seçin.
+13. **Dağıtım** sayfasında, ardışık izlemeyi izlemek için **Monitör'ü** seçin.
 
     ![Dağıtım sayfası](media/load-sap-bw-data/deployment.png)
 
-14. Sayfanın sol tarafındaki **izleyici** sekmesinin otomatik olarak seçili olduğuna dikkat edin. Eylemler sütunu, etkinlik çalıştırma ayrıntılarını görüntüleme ve **işlem** hattını yeniden çalıştırma bağlantılarını içerir.
+14. Sayfanın sol tarafındaki **Monitör** sekmesinin otomatik olarak seçildiğine dikkat edin. **Eylemler** sütunu, etkinlik tarafından işletilen ayrıntıları görüntülemek ve ardışık hattı yeniden çalıştırmak için bağlantılar içerir.
 
-    ![Ardışık düzen izleme görünümü](media/load-sap-bw-data/pipeline-monitoring.png)
+    ![Boru hattı izleme görünümü](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. Işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki **etkinlik çalıştırmalarını görüntüle** ' yi seçin. İşlem hattında yalnızca bir etkinlik (kopyalama etkinliği) olduğundan tek bir girdi görürsünüz. İşlem hattı-çalıştırmalar görünümüne geri dönmek için üstteki işlem **hatları** bağlantısını seçin. Listeyi yenilemek için **Yenile**’yi seçin.
+15. Ardışık işlem hattı çalıştırımıyla ilişkili etkinlik çalışanlarını görüntülemek **için, Eylemler** sütununda **Etkinlik Çalıştırmalarını Görüntüle'yi** seçin. İşlem hattında yalnızca bir etkinlik (kopyalama etkinliği) olduğundan tek bir girdi görürsünüz. Ardışık hatlar çalıştırılanın görünümüne geri dönmek için en üstteki **Ardışık Hatlar** bağlantısını seçin. Listeyi yenilemek için **Yenile**’yi seçin.
 
-    ![Etkinlik-izleme ekranı](media/load-sap-bw-data/activity-monitoring.png)
+    ![Etkinlik izleme ekranı](media/load-sap-bw-data/activity-monitoring.png)
 
-16. Her kopyalama etkinliğinin yürütme ayrıntılarını izlemek için, etkinlik izleme görünümündeki **Eylemler** ' in altında bir gözlük simgesi olan **Ayrıntılar** bağlantısını seçin. Kullanılabilir ayrıntılar, kaynaktan havuza, veri işleme, yürütme adımları ve süre ve kullanılan yapılandırmalara kopyalanmış veri hacmini içerir.
+16. Her kopyalama etkinliğinin yürütme ayrıntılarını izlemek için, etkinlik izleme görünümündeki **Eylemler'in** altındaki gözlük simgesi olan **Ayrıntılar** bağlantısını seçin. Kullanılabilir ayrıntılar, kaynaktan lavaboya kopyalanan veri hacmini, veri veri verisini, yürütme adımlarını ve süresini ve kullanılan yapılandırmaları içerir.
 
     ![Etkinlik izleme ayrıntıları](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. **En yüksek Istek kimliğini**görüntülemek için, etkinlik izleme görünümüne geri dönün ve **Eylemler**bölümünden **Çıkış** ' ı seçin.
+17. **Maksimum İstek Kimliğini**görüntülemek için etkinlik izleme görünümüne geri dön ve **Eylemler**altında **Çıktı'yı** seçin.
 
-    ![Etkinlik çıkış ekranı](media/load-sap-bw-data/activity-output.png)
+    ![Etkinlik çıktı ekranı](media/load-sap-bw-data/activity-output.png)
 
-    ![Etkinlik çıkışı Ayrıntıları görünümü](media/load-sap-bw-data/activity-output-details.png)
+    ![Etkinlik çıktısı ayrıntıları görünümü](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="incremental-copy-from-sap-bw-open-hub"></a>SAP BW açık hub 'dan artımlı kopyalama
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>SAP BW Open Hub'dan artımlı kopya
 
 > [!TIP]
-> Data Factory ' de SAP BW açık hub bağlayıcısını SAP BW nasıl kopyalar SAP BW için bkz. [Açık hub Bağlayıcısı Delta ayıklama akışı](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) . Bu makale, temel bağlayıcı yapılandırmasını anlamanıza da yardımcı olabilir.
+> Veri Fabrikası'ndaki SAP BW Open Hub konnektörünü SAP BW'den artan verileri nasıl kopyalayabildiğini öğrenmek için [SAP BW Open Hub konektör delta çıkarma akışına](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) bakın. Bu makale, temel bağlayıcı yapılandırması anlamanıza da yardımcı olabilir.
 
-Şimdi, SAP BW açık hub 'dan artımlı kopya yapılandırmaya devam edelim.
+Şimdi, SAP BW Open Hub'Dan artımlı kopya yapılandırmaya devam edelim.
 
-Artımlı kopya, **Istek kimliğini**temel alan bir "yüksek filigran" mekanizması kullanır. Bu KIMLIK, DTP tarafından açık hub hedefi SAP BW otomatik olarak oluşturulur. Aşağıdaki diyagramda bu iş akışı gösterilmektedir:
+Artımlı **kopya, istek kimliğine**dayalı bir "yüksek filigran" mekanizması kullanır. Bu kimlik, SAP BW Open Hub Hedef'te DTP tarafından otomatik olarak oluşturulur. Aşağıdaki diyagram bu iş akışını gösterir:
 
-![Artımlı kopya iş akışı akış grafiği](media/load-sap-bw-data/incremental-copy-workflow.png)
+![Artımlı kopyalama iş akışı akış şeması](media/load-sap-bw-data/incremental-copy-workflow.png)
 
-Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için şablondan Işlem **hattı oluştur** ' u seçin.
+Veri fabrikasında **Başlatalım** sayfasında, yerleşik şablonu kullanmak için **şablondan veri aktarını oluştur'u** seçin.
 
-1. **SAP BW Azure Data Lake Storage 2. şablonuna kadar artımlı kopyayı** bulmak ve seçmek için **SAP BW** arayın. Bu şablon, verileri Azure Data Lake Storage 2. kopyalar. Diğer havuz türlerine kopyalamak için benzer bir iş akışı kullanabilirsiniz.
+1. **SAP BW'den Azure Veri Gölü Depolama Gen2 şablonuna kadar Artımlı kopyayı** bulmak ve seçmek için **SAP BW'yi** arayın. Bu şablon, verileri Azure Veri Gölü Depolama Gen2'de kopyalar. Diğer lavabo türlerine kopyalamak için benzer bir iş akışı kullanabilirsiniz.
 
-2. Şablonun ana sayfasında, aşağıdaki üç bağlantıyı seçin veya oluşturun ve ardından pencerenin sağ alt köşesinde **Bu şablonu kullan** ' ı seçin.
+2. Şablonun ana sayfasında, aşağıdaki üç bağlantıyı seçin veya oluşturun ve ardından pencerenin sağ alt köşesinde **bu şablonu kullan'ı** seçin.
 
-   - **Azure Blob depolama**: Bu kılavuzda, *en fazla kopyalanmış istek kimliği*olan üst sınırı depolamak için Azure Blob depolamayı kullanırız.
-   - **Açık Hub SAP BW**: Bu, verilerin kopyalanacağı kaynaktır. Ayrıntılı yapılandırma için önceki tam kopyalama talimatından bakın.
-   - **Azure Data Lake Storage 2.** : Bu, verilerin kopyalanacağı havuzdır. Ayrıntılı yapılandırma için önceki tam kopyalama talimatından bakın.
+   - **Azure Blob depolama**: Bu izbinde, *en yüksek kopyalanan istek kimliği*olan yüksek filigranı depolamak için Azure Blob depolama alanını kullanıyoruz.
+   - **SAP BW Open Hub**: Bu kaynaktan veri kopyalamak tır. Ayrıntılı yapılandırma için önceki tam kopya gözden geçirme denetimine bakın.
+   - **Azure Veri Gölü Depolama Gen2**: Bu, verileri kopyalamak için lavabodur. Ayrıntılı yapılandırma için önceki tam kopya gözden geçirme denetimine bakın.
 
-   ![SAP BW şablondan artımlı kopyalama](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
+   ![SAP BW şablonundan artımlı kopya](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
 
-3. Bu şablon, aşağıdaki üç etkinliğe sahip bir işlem hattı oluşturur ve bunları başarılı olarak zincirleme hale getirir: *arama*, *veri kopyalama*ve *Web*.
+3. Bu şablon, aşağıdaki üç etkinlikle bir ardışık hatlar oluşturur ve bunları başarı üzerine zincirleme yapar: *Arama,* *Verileri Kopyala*ve *Web*.
 
-   İşlem hattı **parametreleri** sekmesine gidin. Sağlamanız gereken tüm konfigürasyonları görürsünüz.
+   Boru hattı **Parametreleri** sekmesine gidin. Sağlamanız gereken tüm yapılandırmaları görürsünüz.
 
    ![SAP BW yapılandırmasından artımlı kopya](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
 
-   - **Sapopenhubdestinationname**: verileri kopyalamak Için Açık hub tablosu adını belirtin.
+   - **SAPOpenHubDestinationName**: Verileri kopyalamak için Hub'ı Aç tablo adını belirtin.
 
-   - **Data_Destination_Container**: verileri kopyalamak için hedef Azure Data Lake Storage 2. kapsayıcısını belirtin. Kapsayıcı yoksa Data Factory kopyalama etkinliği yürütme sırasında bir tane oluşturur.
+   - **Data_Destination_Container**: Verileri kopyalamak için hedef Azure Veri Gölü Depolama Gen2 kapsayıcısını belirtin. Kapsayıcı yoksa, Veri Fabrikası kopyalama etkinliği yürütme sırasında bir tane oluşturur.
   
-   - **Data_Destination_Directory**: verileri kopyalamak için Azure Data Lake Storage 2. kapsayıcısı altında klasör yolunu belirtin. Yol yoksa Data Factory kopyalama etkinliği yürütme sırasında bir yol oluşturur.
+   - **Data_Destination_Directory**: Verileri kopyalamak için Azure Veri Gölü Depolama Gen2 kapsayıcısının altındaki klasör yolunu belirtin. Yol yoksa, Veri Fabrikası kopyalama etkinliği yürütme sırasında bir yol oluşturur.
   
-   - **Highsulu Markblobcontainer**: üst eşik değerini depolamak için kapsayıcıyı belirtin.
+   - **HighWatermarkBlobContainer**: Yüksek filigran değerini depolamak için kabı belirtin.
 
-   - **Highsulu Markblobdirectory**: üst-eşik değerini depolamak için kapsayıcı altında klasör yolunu belirtin.
+   - **HighWatermarkBlobDirectory**: Yüksek filigran değerini depolamak için kapsayıcının altındaki klasör yolunu belirtin.
 
-   - **Highsulu markblobname**: `requestIdCache.txt`gibi yüksek eşik değerini depolamak için blob adını belirtin. BLOB depolama alanında, karşılık gelen Highsulu Markblobcontainer + Highsulu Markblobdirectory + Highsulu Markblobname ( *Container/Path/requestIdCache. txt*) yoluna gidin. 0 içerikli bir blob oluşturun.
+   - **HighWatermarkBlobName**: Yüksek filigran değerini depolamak için `requestIdCache.txt`blob adını belirtin. Blob depolama, HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, konteyner */ yol / requestIdCache.txt*gibi karşılık gelen yolu gidin. İçerik 0 ile bir leke oluşturun.
 
       ![Blob içeriği](media/load-sap-bw-data/blob.png)
 
-   - **Logicappurl**: Bu şablonda, blob depolamada yüksek filigrandaki değeri ayarlamak için Azure Logic Apps çağırmak üzere webactivity kullanırız. Ya da, Azure SQL veritabanı 'nı depolamak için kullanabilirsiniz. Değeri güncelleştirmek için saklı yordam etkinliğini kullanın.
+   - **LogicAppURL**: Bu şablonda, Blob depolamasındaki yüksek filigran değerini ayarlamak için Azure Logic Apps'ı aramak için WebActivity'i kullanıyoruz. Veya depolamak için Azure SQL Veritabanı'nı kullanabilirsiniz. Değeri güncelleştirmek için depolanmış yordam etkinliği kullanın.
 
-      Aşağıdaki görüntüde gösterildiği gibi öncelikle bir mantıksal uygulama oluşturmanız gerekir. Ardından, **http post URL 'sini**yapıştırın.
+      Aşağıdaki resimde görüldüğü gibi, önce bir mantık uygulaması oluşturmanız gerekir. Ardından, **HTTP POST URL'ye**yapıştırın.
 
-      ![Mantıksal uygulama yapılandırması](media/load-sap-bw-data/logic-app-config.png)
+      ![Mantık Uygulaması yapılandırması](media/load-sap-bw-data/logic-app-config.png)
 
-      1. Azure portalına gidin. Yeni bir **Logic Apps** hizmeti seçin. **Logic Apps tasarımcısına**gitmek Için **+ boş mantıksal uygulama** ' yı seçin.
+      1. Azure portalına gidin. Yeni bir **Logic Apps** hizmeti seçin. **Logic Apps Designer'a**gitmek için **+Boş Mantık Uygulaması'nı** seçin.
 
-      2. **BIR http isteği alındığında**bir tetikleyicisi oluşturun. HTTP istek gövdesini aşağıdaki gibi belirtin:
+      2. Bir HTTP **isteği ne zaman alınır**tetikleyicisi oluşturun. HTTP istek gövdesini aşağıdaki gibi belirtin:
 
          ```json
          {
@@ -189,90 +189,90 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
          }
          ```
 
-      3. **BLOB oluştur** eylemi ekleyin. **Klasör yolu** ve **BLOB adı**Için, daha önce *highsulu Markblobcontainer + highsulu Markblobdirectory* ve *highsulu markblobname*içinde yapılandırdığınız aynı değerleri kullanın.
+      3. **Blob** oluşturma eylemi ekleyin. **Klasör yolu** ve **Blob adı için,** daha önce *HighWatermarkBlobContainer+HighWatermarkBlobDirectory* ve *HighWatermarkBlobName'de*yapılandırdığınız değerleri kullanın.
 
-      4. **Kaydet**’i seçin. Daha sonra, Data Factory işlem hattında kullanılacak **http post URL 'sinin** değerini kopyalayın.
+      4. **Kaydet'i**seçin. Ardından, Veri Fabrikası ardışık alanında kullanmak üzere **HTTP POST URL** değerini kopyalayın.
 
-4. Data Factory işlem hattı parametrelerini sağlamadıktan sonra, yapılandırmayı doğrulamak üzere bir çalıştırma çağırmak için **hata ayıkla** > **son** ' u seçin. Ya da tüm değişiklikleri yayımlamak için **Yayımla** ' yı seçin ve ardından bir çalıştırmayı yürütmek Için **tetikleyici Ekle** ' yi seçin.
+4. Veri Fabrikası ardışık hatlar parametrelerini sağladıktan sonra, yapılandırmayı doğrulamak için bir çalıştırma yı çağırmak için **Hata Ayıklama** > **Bitiş'i** seçin. Veya, tüm değişiklikleri yayımlamak için **Yayımla'yı** seçin ve ardından çalıştırmayı yürütmek için **tetikleyici ekle'yi** seçin.
 
-## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW açık hub hedefi yapılandırması
+## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW Açık Hub Hedef yapılandırmaları
 
-Bu bölümde, verileri kopyalamak için Data Factory SAP BW açık hub bağlayıcısını kullanmak üzere SAP BW tarafının yapılandırması tanıtılmıştır.
+Bu bölümde, verileri kopyalamak için Veri Fabrikası'ndaki SAP BW Open Hub bağlayıcısını kullanmak için SAP BW tarafının yapılandırması tanıtılmaktadır.
 
-### <a name="configure-delta-extraction-in-sap-bw"></a>SAP BW 'da Delta ayıklamayı yapılandırma
+### <a name="configure-delta-extraction-in-sap-bw"></a>SAP BW'de delta ekstraksiyonu yapılandırın
 
-Hem geçmiş kopyasına hem de artımlı kopyaya ya da yalnızca artımlı kopyaya ihtiyacınız varsa, SAP BW Delta ayıklamayı yapılandırın.
+Hem geçmiş kopyaya hem de artımlı kopyaya veya yalnızca artımlı kopyaya ihtiyacınız varsa, DELTA ekstraksiyonu SAP BW'de yapılandırın.
 
-1. Açık hub hedefini oluşturun. Gerekli dönüştürme ve veri aktarımı işlemini otomatik olarak oluşturan OHD 'nin SAP Işlem RSA1 oluşturabilirsiniz. Aşağıdaki ayarları kullanın:
+1. Açık Hub Hedefini oluşturun. Gerekli dönüştürme ve veri aktarım işlemini otomatik olarak oluşturan SAP İşlem RSA1'de OHD'yi oluşturabilirsiniz. Aşağıdaki ayarları kullanın:
 
-   - **ObjectType**: herhangi bir nesne türünü kullanabilirsiniz. Burada, bir örnek olarak **InfoCube** kullanıyoruz.
-   - **Hedef türü**: **veritabanı tablosu**seçin.
-   - **Tablonun anahtarı**: **Teknik anahtar**seçin.
-   - **Ayıklama**: **verileri tut ve tabloya kayıt Ekle '** yi seçin.
+   - **ObjectType**: Herhangi bir nesne türünü kullanabilirsiniz. Burada, bir örnek olarak **InfoCube** kullanın.
+   - **Hedef Türü**: **Veritabanı Tablosunu**Seçin.
+   - **Tablonun Anahtarı**: **Teknik Anahtarı**seçin.
+   - **Ekstraksiyon**: **Verileri Tut'u seçin ve Tabloya Kayıt Ekle'yi**seçin.
 
-   ![SAP BW OHD Delta ayıklama iletişim kutusu oluşturma](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
+   ![SAP BW OHD delta çıkarma iletişim kutusu oluşturma](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
 
-   ![SAP BW OHD delta2 ayıklama iletişim kutusu oluşturma](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
+   ![SAP BW OHD delta2 çıkarma iletişim kutusu oluşturma](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
 
-   DTP için paralel çalışan SAP iş işlemlerinin sayısını artırabilirsiniz:
+   DTP için paralel çalışan SAP iş süreçlerinin sayısını artırabilirsiniz:
 
-   ![oluşturma-SAP-siyah beyaz-OHD-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![oluşturmak-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
-2. İşlem zincirlerine DTP 'yi zamanlayın.
+2. DTP'yi işlem zincirlerinde zamanlayın.
 
-   Bir küpe yönelik Delta DTP yalnızca gerekli satırlar sıkıştırılmamışsa işe yarar. Açık hub tablosuna DTP 'den önce siyah beyaz küp sıkıştırması 'nın çalışmadığından emin olun. Bunu yapmanın en kolay yolu, DTP 'yi mevcut işlem zincirleriyle tümleştirmeniz olur. Aşağıdaki örnekte, DTP (OHD 'ye), *Ayarla* (toplu toplama) ve *daraltma* (küp sıkıştırma) adımları arasında işlem zincirine eklenir.
+   Küp için delta DTP yalnızca gerekli satırlar sıkıştırılmamışsa çalışır. BW küp sıkıştırmanın DTP'den önce Aç Hub tablosuna çalışmadığından emin olun. Bunu yapmanın en kolay yolu, DTP'yi mevcut işlem zincirlerinize entegre etmektir. Aşağıdaki örnekte, DTP (OHD'ye) *Ayarla* (toplam toplama) ve *Daralt* (küp sıkıştırma) adımları arasındaki işlem zincirine eklenir.
 
-   ![SAP BW işlem zinciri akış grafiği oluştur](media/load-sap-bw-data/create-sap-bw-process-chain.png)
+   ![SAP BW proses zinciri akış şeması oluşturma](media/load-sap-bw-data/create-sap-bw-process-chain.png)
 
-### <a name="configure-full-extraction-in-sap-bw"></a>SAP BW 'de tam ayıklama yapılandırma
+### <a name="configure-full-extraction-in-sap-bw"></a>SAP BW'de tam çıkarma yapılandırma
 
-Delta ayıklamanın yanı sıra, aynı SAP BW ınfoprovider ' ı tümüyle ayıklamasını isteyebilirsiniz. Bu genellikle tam kopya yapmak, artımlı olmamak veya [değişim ayıklamayı](#resync-delta-extraction)yeniden kullanmak istediğinizde geçerlidir.
+Delta çıkarma ek olarak, aynı SAP BW InfoProvider tam bir çıkarma isteyebilirsiniz. Bu genellikle tam kopyalama yapmak ancak artımlı değil yapmak istiyorsanız veya [delta çıkarma yeniden senkronize](#resync-delta-extraction)etmek istiyorsanız geçerlidir.
 
-Aynı OHD için birden fazla DTP olamaz. Bu nedenle, Delta Ayıklamadan önce ek bir OHD oluşturmanız gerekir.
+Aynı OHD için birden fazla DTP olamaz. Bu nedenle, delta çıkarma önce ek bir OHD oluşturmanız gerekir.
 
 ![SAP BW OHD tam oluşturma](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
 
-Tam yük OHD için, Delta ayıklama için farklı seçenekler seçin:
+Tam yük OHD için delta ekstraksiyonundan farklı seçenekler seçin:
 
-- OHD 'de: **verileri silmek ve kayıt eklemek**için **ayıklama** seçeneğini ayarlayın. Aksi takdirde, bir bant genişliği işlem zincirinde DTP 'yi tekrarlamanız sırasında veriler birçok kez ayıklanır.
+- OHD'de: **Verileri Silmek ve Kayıtları Eklemek**için **Çıkarma** seçeneğini ayarlayın. Aksi takdirde, dtp'yi bir BW işlem zincirinde tekrarladiğinizde veriler birçok kez ayıklanır.
 
-- DTP: **ayıklama modunu** **tam**olarak ayarlayın. Bu görüntüde gösterildiği gibi, OHD oluşturulduktan sonra otomatik olarak oluşturulan DTP 'nin **Delta** değerinden hemen **tam** olarak değiştirilmesi gerekir:
+- DTP'de: **Çıkarma Modunu** **Tam**olarak ayarlayın. Bu resimde görüldüğü gibi, OHD oluşturulduktan hemen sonra otomatik olarak oluşturulan DTP'yi **Delta'dan** **Full'a** değiştirmeniz gerekir:
 
-   !["Tam" ayıklama için yapılandırılmış SAP BW OHD iletişim kutusu oluştur](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
+   !["Tam" çıkarma için yapılandırılan SAP BW OHD iletişim kutusu oluşturma](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
 
-- Bant genişliği açık hub Bağlayıcısı Data Factory: **son Isteği hariç tut**' ı kapatın. Aksi takdirde, hiçbir şey ayıklanmaz.
+- Veri Fabrikası'nın BW Açık Hub bağlayıcısında: **Son isteği hariç**tut.'u kapatın. Aksi takdirde, hiçbir şey ayıklanır.
 
-Genellikle tam DTP 'yi el ile çalıştırırsınız. Ya da, tam DTP için bir işlem zinciri oluşturabilirsiniz. Genellikle, var olan işlem zincirlerinden bağımsız olan ayrı bir zincirdir. Her iki durumda da, *ayıklamayı başlatmak için Data Factory copy komutunu kullanarak DTP 'nin tamamlandı olduğundan emin olun*. Aksi takdirde, yalnızca kısmi veriler kopyalanacaktır.
+Genellikle tam DTP'yi el ile çalıştırın. Veya, tam DTP için bir işlem zinciri oluşturabilirsiniz. Genellikle mevcut işlem zincirlerinizden bağımsız ayrı bir zincirdir. Her iki durumda da, *Veri Fabrikası kopyasını kullanarak çıkarma başlatmadan önce DTP'nin tamamlandığından emin olun.* Aksi takdirde, yalnızca kısmi veriler kopyalanır.
 
-### <a name="run-delta-extraction-the-first-time"></a>İlk kez Delta ayıklamayı Çalıştır
+### <a name="run-delta-extraction-the-first-time"></a>Delta çıkarma ilk kez çalıştırın
 
-İlk Delta ayıklama teknik açıdan tam bir *ayıklamadır*. Varsayılan olarak SAP BW açık hub Bağlayıcısı, verileri kopyalarken son isteği dışlar. İlk Delta ayıklanması için, sonraki bir DTP, tabloda ayrı bir istek KIMLIĞI olan Delta verileri üretene kadar Data Factory kopyalama etkinliği tarafından hiçbir veri ayıklanmaz. Bu senaryoyu önlemenin iki yolu vardır:
+İlk delta çıkarma teknik olarak tam bir *çıkarmadır.* Varsayılan olarak, SAP BW Open Hub bağlayıcısı verileri kopyaladığında son isteği hariç tutar. İlk delta çıkarma işlemi için, sonraki Bir DTP ayrı bir istek kimliği ile tabloda delta veri üretene kadar Veri Fabrikası kopyalama etkinliği tarafından hiçbir veri ayıklanır. Bu senaryoyu önlemenin iki yolu vardır:
 
-- İlk Delta ayıklama için **son Isteği hariç tut** seçeneğini devre dışı bırakın. İlk Delta ayıklanmasını ilk kez başlamadan önce ilk Delta DTP 'nin bitmiştir.
--  Sonraki bölümde açıklandığı gibi, Delta ayıklamayı yeniden eşitleme yordamını kullanın.
+- İlk delta çıkarma için **Son İstek Dışıat** seçeneğini kapatın. Delta çıkarma işlemine başlamadan önce ilk delta DTP'nin bittiğine emin olun.
+-  Bir sonraki bölümde açıklandığı gibi delta çıkarma yeniden senkronize etmek için yordamı kullanın.
 
-### <a name="resync-delta-extraction"></a>Delta ayıklamayı yeniden eşitleme
+### <a name="resync-delta-extraction"></a>Resync delta çıkarma
 
-Aşağıdaki senaryolar SAP BW küplerindeki verileri değiştirir ancak Delta DTP tarafından değerlendirilmez:
+Aşağıdaki senaryolar SAP BW küplerinde verileri değiştirir, ancak delta DTP tarafından dikkate alınmaz:
 
-- Seçmeli silmeyi SAP BW (herhangi bir filtre koşulunu kullanarak satır)
-- SAP BW isteği silme (hatalı istekler)
+- SAP BW seçici silme (herhangi bir filtre koşulu kullanılarak satırlar)
+- SAP BW istek silme (hatalı isteklerin)
 
-SAP açık hub hedefi, Data-Mart denetimli bir veri hedefi değildir (2015 sürümünden bu yana tüm SAP BW destek paketlerinde). Bu nedenle, OHD 'deki verileri değiştirmeden bir küpten verileri silebilirsiniz. Sonra küpün verilerini Data Factory yeniden eşitlemeniz gerekir:
+SAP Open Hub Hedefi veri mart kontrollü bir veri hedefi değildir (2015'ten beri tüm SAP BW destek paketlerinde). Bu nedenle, OHD'deki verileri değiştirmeden verileri bir küpten silebilirsiniz. Daha sonra küpün verilerini Veri Fabrikası ile yeniden eşitlemelisiniz:
 
-1. Data Factory (SAP 'de tam DTP kullanarak) tam ayıklama çalıştırın.
-2. Delta DTP 'si için açık hub tablosundaki tüm satırları silin.
-3. Değişim DTP 'nin durumunu **getirildi**olarak ayarlayın.
+1. Veri Fabrikası'nda tam bir çıkarma çalıştırın (SAP'de tam bir DTP kullanarak).
+2. Delta DTP için Aç Hub tablosundaki tüm satırları silin.
+3. Delta DTP'nin durumunu **Fetched**olarak ayarlayın.
 
-Bundan sonra, sonraki Delta DTPs ve Data Factory Delta dışlamaları beklenen şekilde çalışır.
+Bundan sonra, sonraki tüm delta DTP'ler ve Veri Fabrikası delta ekstraksiyonları beklendiği gibi çalışır.
 
-Delta DTP 'nin durumunu **getirildi**olarak ayarlamak için, Delta DTP 'yi el ile çalıştırmak için aşağıdaki seçeneği kullanabilirsiniz:
+Delta DTP'nin durumunu **Fetched**olarak ayarlamak için delta DTP'yi el ile çalıştırmak için aşağıdaki seçeneği kullanabilirsiniz:
 
     *No Data Transfer; Delta Status in Source: Fetched*
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SAP BW Open hub Bağlayıcısı desteği hakkında bilgi edinin:
+SAP BW Open Hub konektör desteği hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
->[SAP Business Warehouse açık Merkez Bağlayıcısı](connector-sap-business-warehouse-open-hub.md)
+>[SAP İş Ambarı Açık Hub konektörü](connector-sap-business-warehouse-open-hub.md)

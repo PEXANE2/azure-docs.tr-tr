@@ -1,7 +1,7 @@
 ---
-title: Özel ilkeler için genel talep dönüştürme örnekleri
+title: Özel ilkeler için genel talepler dönüşüm örnekleri
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için genel talep dönüştürme örnekleri.
+description: Azure Active Directory B2C'nin Kimlik Deneyimi Çerçevesi (IEF) şeması için genel talepler dönüşüm örnekleri.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,28 +12,28 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188554"
 ---
-# <a name="general-claims-transformations"></a>Genel talep dönüştürmeleri
+# <a name="general-claims-transformations"></a>Genel talep dönüşümleri
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çerçevesi şemasının genel talep dönüştürmelerinin kullanılmasına yönelik örnekler sağlanmaktadır. Daha fazla bilgi için bkz. [Claimstransformations](claimstransformations.md).
+Bu makalede, Azure Etkin Dizin B2C'de (Azure AD B2C) Kimlik Deneyimi Çerçevesi şemasının genel talep dönüşümlerini kullanmak için örnekler verilmektedir. Daha fazla bilgi için [Bkz.](claimstransformations.md)
 
 ## <a name="copyclaim"></a>CopyClaim
 
-Bir talebin değerini başka bir değere kopyalayın. Her iki talep da aynı türden olmalıdır.
+Bir talebin başka sına kopya değeri. Her iki iddia da aynı türden olmalıdır.
 
-| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| ınputclaim | ınputclaim | String, int | Kopyalanacak talep türü. |
-| OutputClaim | OutputClaim | String, int | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| Girişİddia | inputClaim | dize, int | Kopyalanacak talep türü. |
+| ÇıktılarTalep | outputClaim | dize, int | Bu Talep Dönüşümünden sonra üretilen ClaimType çağrıldı. |
 
-Bir dize veya sayısal talepten bir değeri başka bir talebe kopyalamak için bu talep dönüşümünü kullanın. Aşağıdaki örnekte, Externatamail talep değeri e-posta talebine kopyalanır.
+Bir dize veya sayısal talepten başka bir iddiaya bir değer kopyalamak için bu talep dönüştürmesini kullanın. Aşağıdaki örnek, e-posta talebi için harici E-posta talep değerini kopyalar.
 
 ```XML
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
@@ -49,20 +49,20 @@ Bir dize veya sayısal talepten bir değeri başka bir talebe kopyalamak için b
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputclaim**: bob@contoso.com
-- Çıkış talepleri:
-    - **Outputclaim**: bob@contoso.com
+    - **inputClaim**:bob@contoso.com
+- Çıktı talepleri:
+    - **outputClaim**:bob@contoso.com
 
-## <a name="doesclaimexist"></a>Yok edilebilir
+## <a name="doesclaimexist"></a>DoesClaimExist
 
-**Inputclaim** 'nin var olup olmadığını denetler ve **outputclaim** 'yi true veya false olarak ayarlayın.
+**GirişClaim'in** var olup olmadığını denetler ve **çıktıyı** buna göre doğru veya yanlış olarak ayarlar.
 
-| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| ınputclaim | ınputclaim |Herhangi biri | Varlığının doğrulanması gereken giriş talebi. |
-| OutputClaim | OutputClaim | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| Girişİddia | inputClaim |Herhangi biri | Varlığı doğrulanması gereken giriş iddiası. |
+| ÇıktılarTalep | outputClaim | boole | Bu Talep Dönüşümünden sonra üretilen ClaimType çağrıldı. |
 
-Bir talebin mevcut olup olmadığını veya herhangi bir değer içerip içerdiğini denetlemek için bu talep dönüşümünü kullanın. Dönüş değeri, talebin mevcut olup olmadığını gösteren bir Boole değeridir. Aşağıdaki örnek, e-posta adresinin mevcut olup olmadığını denetler.
+Bir talep var mı yoksa herhangi bir değer içeriyor mu denetlemek için bu talep dönüştürmesini kullanın. İade değeri, talebin var olup olmadığını gösteren bir boolean'dir. Aşağıdaki örnek e-posta adresi olup olmadığını denetler.
 
 ```XML
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
@@ -78,20 +78,20 @@ Bir talebin mevcut olup olmadığını veya herhangi bir değer içerip içerdi�
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **ınputclaim**: someone@contoso.com
-- Çıkış talepleri:
-  - **Outputclaim**: true
+  - **inputClaim**:someone@contoso.com
+- Çıktı talepleri:
+  - **outputClaim**: true
 
 ## <a name="hash"></a>Karma
 
-Anahtar ve gizli anahtar kullanarak, sağlanmış düz metni karma olarak kullanın. Kullanılan karma algoritması SHA-256 ' dir.
+Hash tuz ve bir sır kullanarak sağlanan düz metin. Kullanılan karma algoritma SHA-256'dır.
 
-| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| ınputclaim | düz metin | string | Şifrelenecek giriş talebi |
-| ınputclaim | değerinin | string | Anahtar parametresi. `CreateRandomString` talep dönüşümü kullanarak rastgele bir değer oluşturabilirsiniz. |
-| InputParameter | randomizerSecret | string | Mevcut bir Azure AD B2C **ilkesi anahtarına**işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Add (Ekle)** seçeneğini belirleyin. **Seçenekler**Için **el ile**' yi seçin. Bir ad belirtin ( *B2C_1A_* ön ek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı**için **imza**' yı seçin. **Oluştur**’u seçin. |
-| OutputClaim | yla | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. `plaintext` ınputclaim 'de yapılandırılan talep. |
+| Girişİddia | düz metin | string | Şifrelenecek giriş iddiası |
+| Girişİddia | Tuz | string | Tuz parametresi. Talep dönüştürmeyi kullanarak `CreateRandomString` rasgele bir değer oluşturabilirsiniz. |
+| ınputparameter | randomizerSecret | string | Varolan bir Azure AD B2C **ilkesi anahtarına**işaret eden bir nokta. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **Kimlik Deneyimi Çerçevesi'ni**seçin. Kiracınızda bulunan anahtarları görüntülemek için **İlke anahtarlarını** seçin. **Ekle'yi**seçin. **Seçenekler** **için, El Kitabı'nı**seçin. Bir ad sağlayın *(B2C_1A_* önek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, 1234567890 gibi kullanmak istediğiniz herhangi bir sırrı girin. **Anahtar kullanımı**için **İmza'yı**seçin. **Oluştur'u**seçin. |
+| ÇıktılarTalep | hash | string | Bu talep dönüşümünden sonra üretilen ClaimType çağrıldı. Talep girişClaim yapılandırıldı. `plaintext` |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -111,8 +111,8 @@ Anahtar ve gizli anahtar kullanarak, sağlanmış düz metni karma olarak kullan
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **düz metin**: MyPass@word1
-  - **anahtar**: 487624568
+  - **düz metin**:MyPass@word1
+  - **tuz**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
-- Çıkış talepleri:
-  - **Outputclaim**: cdmnb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U =
+- Çıktı talepleri:
+  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=

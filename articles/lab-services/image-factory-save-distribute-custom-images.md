@@ -1,6 +1,6 @@
 ---
-title: Görüntüleri Azure DevTest Labs kaydetme ve dağıtma | Microsoft Docs
-description: Bu makale, Azure DevTest Labs ' de zaten oluşturulmuş sanal makinelerden (VM 'Ler) özel görüntüler kaydetme adımlarını sağlar.
+title: Azure DevTest Labs'da görüntüleri kaydetme ve dağıtma | Microsoft Dokümanlar
+description: Bu makalede, Azure DevTest Labs'da zaten oluşturulmuş sanal makinelerden (VM) özel görüntüler kaydetme adımları sunulur.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,52 +13,52 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759440"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Özel görüntüleri birden çok laboratuvara kaydetme ve dağıtma
-Bu makale, önceden oluşturulmuş sanal makinelerden (VM 'Ler) özel görüntüleri kaydetme adımlarını sağlar. Ayrıca, bu özel görüntülerin kuruluştaki diğer DevTest Labs 'e nasıl dağıtılacağını da ele alır.
+Bu makalede, zaten oluşturulan sanal makinelerden (VM) özel görüntüleri kaydetmek için adımlar verir. Ayrıca, bu özel görüntülerin kuruluştaki diğer DevTest Laboratuvarlarına nasıl dağıtılabildiğini de kapsar.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Şu öğeler zaten yerinde olmalıdır:
+Aşağıdaki öğeler zaten yerinde olmalıdır:
 
-- Azure DevTest Labs görüntü fabrikası için laboratuvar.
-- Görüntü fabrikasını otomatikleştirmek için kullanılan bir Azure DevOps projesi.
-- Betikleri ve yapılandırmayı içeren kaynak kodu konumu (örneğimizde, önceki adımda bahsedilen DevOps projesinde).
-- Azure PowerShell görevlerini yönetmek için derleme tanımı.
+- Azure DevTest Labs'daki Görüntü Fabrikası için bir laboratuvar.
+- Görüntü fabrikasını otomatikleştirmek için kullanılan bir Azure DevOps Projesi.
+- Komut dosyalarını ve yapılandırmayı içeren kaynak kodu konumu (örneğimizde, önceki adımda bahsedilen aynı DevOps Projesi'nde).
+- Azure Powershell görevlerini düzenlemek için tanım oluşturun.
 
-Gerekirse, bu öğeleri oluşturmak veya ayarlamak için [Azure DevOps 'dan görüntü fabrikası çalıştırma](image-factory-set-up-devops-lab.md) ' daki adımları izleyin. 
+Gerekirse, bu öğeleri oluşturmak veya kurmak için [Azure DevOps'tan bir görüntü fabrikasını çalıştır'daki](image-factory-set-up-devops-lab.md) adımları izleyin. 
 
-## <a name="save-vms-as-generalized-vhds"></a>VM 'Leri Genelleştirilmiş VHD 'Ler olarak kaydetme
-Mevcut VM 'Leri Genelleştirilmiş VHD 'Ler olarak kaydedin.  Mevcut VM 'Leri Genelleştirilmiş VHD 'Ler olarak kaydetmek için örnek bir PowerShell betiği vardır. Bunu kullanmak için, önce aşağıdaki görüntüde gösterildiği gibi, derleme tanımına başka bir **Azure PowerShell** görevi ekleyin:
+## <a name="save-vms-as-generalized-vhds"></a>Genelleştirilmiş VHD'ler olarak VM'leri kaydetme
+Varolan VM'leri genelleştirilmiş VHD'ler olarak kaydedin.  Genelleştirilmiş VHD'ler olarak varolan VM'leri kaydetmek için örnek bir PowerShell komut dosyası vardır. Kullanmak için önce, aşağıdaki resimde gösterildiği gibi yapı tanımına başka bir **Azure Powershell** görevi ekleyin:
 
-![Azure PowerShell adımı ekle](./media/save-distribute-custom-images/powershell-step.png)
+![Azure PowerShell adımı ekleme](./media/save-distribute-custom-images/powershell-step.png)
 
-Listede yeni görev olduktan sonra, aşağıdaki görüntüde gösterildiği gibi tüm ayrıntıları doldurabilmeniz için öğeyi seçin: 
+Listede yeni bir görev aldıktan sonra, aşağıdaki resimde gösterildiği gibi tüm ayrıntıları doldurabilmemiz için öğeyi seçin: 
 
 ![PowerShell ayarları](./media/save-distribute-custom-images/powershell-settings.png)
 
 
-## <a name="generalized-vs-specialized-custom-images"></a>Genelleştirilmiş ve özelleştirilmiş özel görüntüler
-[Azure Portal](https://portal.azure.com), bir sanal makineden özel bir görüntü oluştururken, Genelleştirilmiş veya özel bir özel görüntü oluşturmayı seçebilirsiniz.
+## <a name="generalized-vs-specialized-custom-images"></a>Genelleştirilmiş vs özel özel görüntüler
+Azure [portalında,](https://portal.azure.com)sanal bir makineden özel bir görüntü oluştururken, genelleştirilmiş veya özel bir özel görüntüye sahip olmayı seçebilirsiniz.
 
-- **Özelleştirilmiş özel görüntü:** Sysprep/deprovision makinede çalıştırılmadı. Bu, görüntünün var olan sanal makinede (bir anlık görüntü) işletim sistemi diskinin tam bir kopyası olduğu anlamına gelir.  Bu özel görüntüden yeni bir makine oluşturduğumuz aynı dosyalar, uygulamalar, Kullanıcı hesapları, bilgisayar adı vb. hepsi de mevcuttur.
-- **Genelleştirilmiş özel görüntü:** Sysprep/deprovision makinede çalıştırıldı.  Bu işlem çalıştığında, Kullanıcı hesaplarını kaldırır, bilgisayar adını kaldırır, Kullanıcı kayıt defteri kovanlarını ve başka bir sanal makine oluşturulurken özelleştirilebilecek şekilde görüntüyü genelleştirerek, bu şekilde resmi kullanıma sunmaktır.  Bir sanal makineyi genelleştirdiğinizde (Sysprep çalıştırarak), işlem geçerli sanal makineyi yok eder; artık işlevsel olmayacaktır.
+- **Özel özel görüntü:** Sysprep / Deprovision makineüzerinde çalıştırmak değildi. Bu görüntü varolan sanal makine (bir anlık görüntü) üzerinde IŞLETIM Sistemi Disk tam bir kopyası olduğu anlamına gelir.  Bu özel görüntüden yeni bir makine oluşturduğumuzda, aynı dosyalar, uygulamalar, kullanıcı hesapları, bilgisayar adı ve benzeri, hepsi mevcuttur.
+- **Genelleştirilmiş Özel Görüntü:** Sysprep/Deprovision makinede çalıştırıldı.  Bu işlem çalıştığında, kullanıcı hesaplarını kaldırır, bilgisayar adını kaldırır, kullanıcı kayıt defteri kovanları, vb dışarı şeritler, böylece başka bir sanal makine oluştururken özelleştirilebilir görüntü genelleme amacı ile.  Sanal bir makineyi genellediğinizde (sysprep çalıştırarak), işlem geçerli sanal makineyi yok eder – artık işlevsel olmayacaktır.
 
-Görüntü fabrikasındaki özel görüntüleri yaslama betiği, önceki adımda oluşturulan tüm sanal makineler için VHD 'leri kaydeder (Azure 'da kaynak üzerindeki bir etikete göre tanımlanır).
+Resim Fabrikası'nda özel görüntüler yakalama komut dosyası, önceki adımda oluşturulan (Azure'daki kaynağa dayalı olarak tanımlanan) sanal makineler için VHD'leri kaydeder.
 
-## <a name="update-configuration-for-distributing-images"></a>Görüntü dağıtmak için yapılandırmayı güncelleştirme
-İşlemdeki bir sonraki adım, görüntü fabrikası laboratuvarından özel görüntüleri, ihtiyaç duyulan diğer laboratuvarlara göndermek olacaktır. Bu işlemin temel bölümü **Labs. JSON** yapılandırma dosyasıdır. Bu dosyayı görüntü fabrikasında bulunan **yapılandırma** klasöründe bulabilirsiniz.
+## <a name="update-configuration-for-distributing-images"></a>Görüntüleri dağıtmak için yapılandırmayı güncelleştirme
+Bu süreçteki bir sonraki adım, özel görüntüleri görüntü fabrikası laboratuvarından ihtiyaç duyan diğer laboratuvarlara itmektir. Bu işlemin temel parçası **labs.json** yapılandırma dosyasıdır. Bu dosyayı görüntü fabrikasında bulunan **Yapılandırma** klasöründe bulabilirsiniz.
 
-Labs. JSON yapılandırma dosyasında listelenen iki önemli nokta vardır:
+Labs.json yapılandırma dosyasında listelenen iki önemli şey vardır:
 
-- Abonelik KIMLIĞINI ve laboratuvar adını kullanarak belirli bir hedef Laboratuvarı benzersiz bir şekilde tanımlar.
-- Yapılandırma köküne göreli yollar olarak laboratuvara itilmesi gereken belirli görüntü kümesi. Tüm klasörü (söz konusu klasördeki tüm görüntüleri almak için) de belirtebilirsiniz.
+- Abonelik kimliğini ve laboratuvar adını kullanarak belirli bir hedef laboratuarını benzersiz bir şekilde tanımlama.
+- Yapılandırma köküne göreli yollar olarak laboratuvara itilmesi gereken belirli görüntü kümesi. Klasörün tamamını (bu klasördeki tüm görüntüleri almak için) de belirtebilirsiniz.
 
-Aşağıda, iki laboratuvarda listelenen örnek Labs. JSON dosyası verilmiştir. Bu durumda, görüntüleri iki farklı laboratuvara dağıtmaktan olursunuz.
+Burada listelenen iki laboratuvarları ile örnek labs.json dosyasıdır. Bu durumda, görüntüleri iki farklı laboratuvara dağıtıyorsunuz.
 
 ```json
 {
@@ -83,16 +83,16 @@ Aşağıda, iki laboratuvarda listelenen örnek Labs. JSON dosyası verilmiştir
 ```
 
 ## <a name="create-a-build-task"></a>Derleme görevi oluşturma
-Bu makalede daha önce gördüğünüz adımların aynısını kullanarak, derleme tanımınıza ek bir **Azure PowerShell** derleme görevi ekleyin. Aşağıdaki görüntüde gösterildiği gibi ayrıntıları girin: 
+Bu makalede daha önce gördüğünüz adımları kullanarak, yapı tanımına ek bir **Azure Powershell** oluşturma görevi ekleyin. Aşağıdaki resimde gösterildiği gibi ayrıntıları doldurun: 
 
-![Görüntüleri dağıtmak için görev oluştur](./media/save-distribute-custom-images/second-build-task-powershell.png)
+![Görüntüleri dağıtmak için görev oluşturma](./media/save-distribute-custom-images/second-build-task-powershell.png)
 
-Parametreler şunlardır: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
+Parametreler şunlardır:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
 
-Bu görev, görüntü fabrikasında bulunan özel görüntüleri alır ve bunları Labs. json dosyasında tanımlanan tüm laboratuvarlara gönderir.
+Bu görev, görüntü fabrikasında bulunan özel görüntüleri alır ve Labs.json dosyasında tanımlanan herhangi bir laboratuvara iter.
 
-## <a name="queue-the-build"></a>Derlemeyi kuyruğa al
-Dağıtım Derleme görevi tamamlandıktan sonra her şeyin çalıştığından emin olmak için yeni bir derleme kuyruğa alın. Derleme başarıyla tamamlandıktan sonra, yeni özel görüntüler, Labs. JSON yapılandırma dosyasına girilen hedef laboratuvarda görünür.
+## <a name="queue-the-build"></a>Yapıyı sıraya tonla
+Dağıtım oluşturma görevi tamamlandıktan sonra, her şeyin çalıştığından emin olmak için yeni bir yapı oluşturun sıraya girin. Yapı başarıyla tamamlandıktan sonra, yeni özel görüntüler Labs.json yapılandırma dosyasına girilen hedef laboratuarında gösterilecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Serinin sonraki makalesinde, görüntü fabrikasını bir bekletme ilkesi ve temizleme adımları ile güncelleştirin: [bekletme Ilkesi ayarlama ve Temizleme betiklerini çalıştırma](image-factory-set-retention-policy-cleanup.md).
+Serinin bir sonraki makalesinde, resim fabrikasını bekletme ilkesi ve temizleme adımlarıyla güncelleştirirsiniz: [Bekletme ilkesini ayarlayın ve temizleme komut dosyalarını çalıştırın.](image-factory-set-retention-policy-cleanup.md)

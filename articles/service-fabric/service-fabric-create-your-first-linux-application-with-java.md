@@ -1,13 +1,13 @@
 ---
-title: Linux 'ta Azure Service Fabric güvenilir aktör Java uygulaması oluşturma
+title: Linux'ta Azure Hizmet Kumaşı güvenilir aktörler Java uygulaması oluşturun
 description: Beş dakika içinde Java Service Fabric reliable actors uygulaması oluşturmayı ve dağıtmayı öğrenin.
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458172"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux üzerinde ilk Java Service Fabric Reliable Actors uygulamanızı oluşturma
@@ -208,18 +208,18 @@ Uygulama dağıtıldığında bir tarayıcı açın ve [http://localhost:19080/E
 Ardından, **Uygulamalar** düğümünü genişletin ve geçerli olarak uygulamanızın türü için bir giriş ve bu türün ilk örneği için başka bir giriş olduğuna dikkat edin.
 
 > [!IMPORTANT]
-> Uygulamayı Azure 'da güvenli bir Linux kümesine dağıtmak için, Service Fabric çalışma zamanı ile uygulamanızı doğrulamak üzere bir sertifika yapılandırmanız gerekir. Bunun yapılması, Reliable Actors hizmetlerinizin temel alınan Service Fabric çalışma zamanı API 'Leriyle iletişim kurmasını sağlar. Daha fazla bilgi edinmek için bkz. [Reliable Services uygulamasını Linux kümelerinde çalışacak şekilde yapılandırma](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Uygulamayı Azure'da güvenli bir Linux kümesine dağıtmak için, uygulamanızı Hizmet Kumaşı çalışma süresiyle doğrulamak için bir sertifika yapılandırmanız gerekir. Bunu yapmak, Güvenilir Aktörler hizmetlerinizin temel Hizmet Dokusu çalışma zamanı API'leri ile iletişim kurmasını sağlar. Daha fazla bilgi için bkz: [Linux kümelerinde çalışacak güvenilir hizmetler uygulamasını yapılandırın.](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Test istemcisini başlatma ve yük devre gerçekleştirme
 Aktörler kendi başına hiçbir şey yapmaz; başka bir hizmet veya istemcinin aktörlere ileti göndermesini gerektirir. Actor şablonu, actor hizmetiyle etkileşim kurmak üzere kullanabileceğiniz basit bir test betiği içerir.
 
 > [!Note]
-> Test istemcisi, aktör hizmeti ile aynı kümede çalışması gereken aktörlerle iletişim kurmak için ActorProxy sınıfını kullanır veya aynı IP adresi alanını paylaşır.  Test istemcisini, yerel geliştirme kümesiyle aynı bilgisayarda çalıştırabilirsiniz.  Ancak, uzak bir kümedeki aktörlerle iletişim kurmak için, aktörlerle harici iletişimi işleyen kümeye bir ağ geçidi dağıtmanız gerekir.
+> Test istemcisi, aktör hizmetiyle aynı küme içinde çalışması veya aynı IP adresi alanını paylaşması gereken aktörlerle iletişim kurmak için ActorProxy sınıfını kullanır.  Test istemcisini yerel geliştirme kümesiyle aynı bilgisayarda çalıştırabilirsiniz.  Ancak uzak bir kümedeki aktörlerle iletişim kurmak için kümeye aktörlerle dış iletişimi işleyen bir ağ geçidi dağıtmanız gerekir.
 
 1. Actor hizmetinin çıktısını görmek için izleme yardımcı programını kullanarak betiği çalıştırın.  Test betiği bir sayacın değerini yükseltmek için aktörde `setCountAsync()` yöntemine; yeni sayaç değerini edinmek içinse aktörde `getCountAsync()` yöntemine çağrı yapar ve bu değeri konsolda görüntüler.
 
-   MAC OS X söz konusu olduğunda, aşağıdaki ek komutları çalıştırarak HelloWorldTestClient klasörünü kapsayıcının içindeki bazı konumlara kopyalamanız gerekir.    
+   MAC OS X durumunda, aşağıdaki ek komutları çalıştırarak HelloWorldTestClient klasörünü kapsayıcının içindeki bazı konuma kopyalamanız gerekir.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -232,7 +232,7 @@ Aktörler kendi başına hiçbir şey yapmaz; başka bir hizmet veya istemcinin 
     watch -n 1 ./testclient.sh
     ```
 
-2. Service Fabric Explorer’da actor hizmetinin birincil çoğaltmasını barındıran düğümü bulun. Aşağıdaki ekran görüntüsünde düğüm 3’tür. Birincil hizmet çoğaltması okuma ve yazma işlemlerini işler.  Daha sonra hizmet durumundaki değişiklikler, aşağıdaki ekran görüntüsünde 0 ve 1 düğümlerinde çalışan ikincil çoğaltmalara çoğaltılır.
+2. Service Fabric Explorer’da actor hizmetinin birincil çoğaltmasını barındıran düğümü bulun. Aşağıdaki ekran görüntüsünde düğüm 3’tür. Birincil hizmet çoğaltması okuma ve yazma işlemlerini işler.  Hizmet durumundaki değişiklikler daha sonra aşağıdaki ekran görüntüsünde 0 ve 1 düğümlerinde çalışan ikincil yinelemelere çoğaltılır.
 
     ![Service Fabric Explorer’da birincil çoğaltmayı bulma][sfx-primary]
 
@@ -292,8 +292,8 @@ Uygulamanız için Service Fabric Reliable Services desteği.
   }
   ```
 
-### <a name="others"></a>Diğerleri
-#### <a name="transport"></a>Ulaşım
+### <a name="others"></a>Diğer
+#### <a name="transport"></a>Aktarım
 
 Service Fabric Java uygulaması için Aktarım katmanı desteği. Aktarım katmanında özellikle programlamadığınız sürece bu bağımlılığı Güvenilir Aktör veya Hizmet uygulamalarınız için özellikle eklemeniz gerekmez.
 

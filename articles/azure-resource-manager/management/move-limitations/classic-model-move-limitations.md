@@ -1,49 +1,49 @@
 ---
-title: Klasik Azure dağıtım kaynaklarını taşıma
-description: Klasik dağıtım kaynaklarını yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
+title: Azure Klasik dağıtım kaynaklarını taşıma
+description: Klasik dağıtım kaynaklarını yeni bir kaynak grubuna veya aboneye taşımak için Azure Kaynak Yöneticisi'ni kullanın.
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 78b9769a31fa0c96c12e18d05cb9c484aa52a1d5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485292"
 ---
 # <a name="move-guidance-for-classic-deployment-model-resources"></a>Klasik dağıtım modeli kaynakları için kılavuzu taşıma
 
-Klasik model aracılığıyla dağıtılan kaynakları taşıma adımları, kaynakları bir abonelik içinde veya yeni bir aboneliğe taşısanız göre farklılık gösterir.
+Klasik modelde dağıtılan kaynakları taşıma adımları, kaynakları abonelik içinde mi yoksa yeni bir aboneye mi taşıyorsanız farklı olarak değişir.
 
-## <a name="move-in-the-same-subscription"></a>Aynı abonelikte taşı
+## <a name="move-in-the-same-subscription"></a>Aynı abonelikte taşıma
 
-Aynı abonelik içindeki başka bir kaynak grubu için bir kaynak grubundan kaynakları taşırken aşağıdaki kısıtlamalar uygulanır:
+Kaynakları aynı abonelik içinde bir kaynak grubundan başka bir kaynak grubuna taşımakta aşağıdaki kısıtlamalar uygulanır:
 
-* Sanal ağlar (Klasik) taşınamaz.
-* Sanal makineler (Klasik) bulut hizmeti ile taşınmalıdır.
-* Bulut hizmeti, tüm sanal makineleri taşıma içerdiğinde yalnızca taşınabilir.
-* Bir kerede yalnızca bir bulut hizmeti taşınabilir.
-* Bir kerede yalnızca bir depolama hesabı (Klasik) taşınabilir.
-* Depolama hesabı (Klasik), bir sanal makine veya Bulut hizmeti ile aynı işlemde taşınamaz.
+* Sanal ağlar (klasik) hareket ettirilemiyor.
+* Sanal makineler (klasik) bulut hizmeti ile taşınmalıdır.
+* Bulut hizmeti yalnızca taşıma tüm sanal makinelerini içerdiğinde taşınabilir.
+* Aynı anda yalnızca bir bulut hizmeti taşınabilir.
+* Aynı anda yalnızca bir depolama hesabı (klasik) taşınabilir.
+* Depolama hesabı (klasik) sanal bir makine veya bulut hizmetiyle aynı işlemde taşıılamaz.
 
-Klasik kaynakları aynı abonelik içindeki yeni bir kaynak grubuna taşımak için Portal, Azure PowerShell, Azure CLı veya REST API aracılığıyla [Standart taşıma işlemlerini](../move-resource-group-and-subscription.md) kullanın. Resource Manager kaynaklarını taşımak için kullandığınız gibi işlemlerin aynısını kullanın.
+Klasik kaynakları aynı abonelik içinde yeni bir kaynak grubuna taşımak için portal, Azure PowerShell, Azure CLI veya REST API'de [standart taşıma işlemlerini](../move-resource-group-and-subscription.md) kullanın. Kaynak Yöneticisi kaynaklarını taşımak için kullandığınız işlemleri kullanırsınız.
 
-## <a name="move-across-subscriptions"></a>Abonelikler arasında geçiş
+## <a name="move-across-subscriptions"></a>Abonelikler arasında taşıma
 
-Kaynakları yeni bir aboneliğe taşınmasını, aşağıdaki kısıtlamalar uygulanır:
+Kaynakları yeni bir aboneye taşımak ta aşağıdaki kısıtlamalar geçerlidir:
 
-* Abonelikteki tüm Klasik kaynaklar aynı işlem içinde taşınmalıdır.
-* Hedef aboneliğin klasik başka bir kaynağı olmamalıdır.
-* Taşıma, yalnızca klasik taşıma için ayrı bir REST API aracılığıyla istenebilir. Klasik kaynakları için yeni bir abonelik taşırken standart Resource Manager'a taşıma komutlar çalışmaz.
+* Abonelikteki tüm klasik kaynakların aynı işlemde taşınması gerekir.
+* Hedef aboneliğin başka klasik kaynakları olmamalıdır.
+* Hareket yalnızca klasik hareketler için ayrı bir REST API ile istenebilir. Standart Kaynak Yöneticisi taşıma komutları, klasik kaynakları yeni bir aboneye taşırken çalışmaz.
 
-Klasik kaynakları için yeni bir aboneliği taşımak, Klasik kaynakları için özel REST işlemlerini kullanın. REST 'i kullanmak için aşağıdaki adımları uygulayın:
+Klasik kaynakları yeni bir aboneye taşımak için, klasik kaynaklara özgü REST işlemlerini kullanın. REST'i kullanmak için aşağıdaki adımları yapın:
 
-1. Kaynak abonelik bir çapraz abonelik taşıma katılabilir, kontrol edin. Aşağıdaki işlemi kullanın:
+1. Kaynak aboneliğin çapraz abonelik hareketine katılıp katılamayacağını kontrol edin. Aşağıdaki işlemi kullanın:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     İstek gövdesinde şunları içerir:
+     İstek gövdesinde şunlar yer almaktadır:
 
    ```json
    {
@@ -51,7 +51,7 @@ Klasik kaynakları için yeni bir aboneliği taşımak, Klasik kaynakları için
    }
    ```
 
-     Doğrulama işleminde yanıta aşağıdaki biçimdedir:
+     Doğrulama işlemi için yanıt aşağıdaki biçimdedir:
 
    ```json
    {
@@ -63,13 +63,13 @@ Klasik kaynakları için yeni bir aboneliği taşımak, Klasik kaynakları için
    }
    ```
 
-1. Hedef abonelik bir çapraz abonelik taşıma katılabilir, kontrol edin. Aşağıdaki işlemi kullanın:
+1. Hedef aboneliğin çapraz abonelik hareketine katılıp katılamayacağını kontrol edin. Aşağıdaki işlemi kullanın:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     İstek gövdesinde şunları içerir:
+     İstek gövdesinde şunlar yer almaktadır:
 
    ```json
    {
@@ -77,14 +77,14 @@ Klasik kaynakları için yeni bir aboneliği taşımak, Klasik kaynakları için
    }
    ```
 
-     Kaynak abonelik doğrulama ile aynı biçimde yanıttır.
-1. Her iki abonelik doğrulama testlerini geçerse, tüm Klasik kaynaklar bir abonelikten şu işlemi başka bir aboneliğe Taşı:
+     Yanıt, kaynak abonelik doğrulamayla aynı biçimdedir.
+1. Her iki abonelik de doğrulamayı geçerse, aşağıdaki işlemle tüm klasik kaynakları bir abonelikten başka bir aboneye taşıyın:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
    ```
 
-    İstek gövdesinde şunları içerir:
+    İstek gövdesinde şunlar yer almaktadır:
 
    ```json
    {
@@ -92,10 +92,10 @@ Klasik kaynakları için yeni bir aboneliği taşımak, Klasik kaynakları için
    }
    ```
 
-İşlemi birkaç dakika çalışabilir.
+İşlem birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Klasik kaynakları taşırken sorun yaşarsanız [desteğe](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)başvurun.
+Klasik kaynakları taşımakta sorun yaşıyorsanız [Destek'e](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)başvurun.
 
-Kaynakları taşıma komutları için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../move-resource-group-and-subscription.md).
+Komutların kaynakları taşıması [için](../move-resource-group-and-subscription.md)bkz.

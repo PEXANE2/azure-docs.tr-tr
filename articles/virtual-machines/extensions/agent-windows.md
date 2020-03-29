@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makine aracısına genel bakış
-description: Azure sanal makine aracısına genel bakış
+title: Azure Sanal Makine Aracısı Genel Bakış
+description: Azure Sanal Makine Aracısı Genel Bakış
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: mimckitt
@@ -15,29 +15,29 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
 ms.openlocfilehash: 3d9c178201ab0c22ed4eab9cf65f7d48e59e1359
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246121"
 ---
-# <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
-Microsoft Azure sanal makine Aracısı (VM Aracısı), Azure yapı denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM aracısının Azure sanal makine uzantıları 'nı etkinleştirmek ve yürütmek için birincil bir rolü vardır. VM uzantıları, yazılım yükleme ve yapılandırma gibi VM 'nin dağıtım sonrası yapılandırmasını etkinleştirir. VM uzantıları, bir VM 'nin yönetici parolasını sıfırlama gibi kurtarma özelliklerini de etkinleştirir. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.
+# <a name="azure-virtual-machine-agent-overview"></a>Azure Sanal Makine Aracısı'na genel bakış
+Microsoft Azure Sanal Makine Aracısı (VM Agent), Azure Kumaş Denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM Aracısı, Azure sanal makine uzantılarını etkinleştirme ve yürütmede birincil role sahiptir. VM Uzantıları, yazılım yükleme ve yapılandırma gibi VM'nin dağıtım sonrası yapılandırmasını sağlar. VM uzantıları, vm'nin yönetim parolasını sıfırlama gibi kurtarma özelliklerini de sağlar. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.
 
-Bu makalede, Azure sanal makine aracısının yüklenmesi ve algılanması ayrıntılı olarak anlatılmaktadır.
+Bu makalede, Azure Sanal Makine Aracısı'nın yüklenmesi ve algılanması ayrıntılı olarak anlatılıyor.
 
-## <a name="install-the-vm-agent"></a>VM aracısını yükler
+## <a name="install-the-vm-agent"></a>VM Aracısını Yükleyin
 
-### <a name="azure-marketplace-image"></a>Azure Market görüntüsü
+### <a name="azure-marketplace-image"></a>Azure Marketi görüntüsü
 
-Azure VM Aracısı, Azure Marketi görüntüsünden dağıtılan tüm Windows VM 'leri için varsayılan olarak yüklenir. Portal, PowerShell, komut satırı arabirimi veya bir Azure Resource Manager şablonundan bir Azure Market görüntüsü dağıttığınızda, Azure VM Aracısı da yüklenir.
+Azure VM Aracısı varsayılan olarak Azure Marketi görüntüden dağıtılan herhangi bir Windows VM'ye yüklenir. Portaldan, PowerShell'den, Komut Satırı Arabiriminden veya Azure Kaynak Yöneticisi şablonundan bir Azure Marketi görüntüsü dağıttığınızda, Azure VM Aracısı da yüklenir.
 
-Windows Konuk Aracısı paketi iki kısma ayrılmıştır:
+Windows Konuk Aracı Paketi iki bölüme ayrılmıştır:
 
-- Sağlama Aracısı (PA)
-- Windows Konuk Aracısı (WinGA)
+- Provizyon Aracısı (PA)
+- Windows Konuk Aracı (WinGA)
 
-Bir VM 'yi önyüklemek için VM 'de PA yüklü olmalıdır, ancak WinGA 'nin yüklenmesi gerekmez. VM dağıtım zamanında, WinGA 'yi yüklememeyi seçebilirsiniz. Aşağıdaki örnek, bir Azure Resource Manager şablonuyla *Provisionvmagent* seçeneğinin nasıl kullanılacağını gösterir:
+VM önyükleme için PA VM yüklü olması gerekir, ancak WinGA yüklü olması gerekmez. VM dağıtım zamanında WinGA'yı yüklememe seçeneğini belirleyebilirsiniz. Aşağıdaki örnekte, Azure Kaynak Yöneticisi şablonuyla *provisionVmAgent* seçeneğinin nasıl seçilen gösterilmektedir:
 
 ```json
 "resources": [{
@@ -56,35 +56,35 @@ Bir VM 'yi önyüklemek için VM 'de PA yüklü olmalıdır, ancak WinGA 'nin y�
 }
 ```
 
-Yüklü aracılar yoksa, Azure Backup veya Azure güvenliği gibi bazı Azure hizmetlerini kullanamazsınız. Bu hizmetler için bir uzantı yüklenmesi gerekir. WinGA olmadan bir VM dağıttıysanız, daha sonra aracının en son sürümünü yükleyebilirsiniz.
+Aracılar yüklü değilse, Azure Yedekleme veya Azure Güvenliği gibi bazı Azure hizmetlerini kullanamazsınız. Bu hizmetlerin yüklenmesi için bir uzantı gerekir. WinGA olmadan bir VM dağıttıysanız, aracının en son sürümünü daha sonra yükleyebilirsiniz.
 
 ### <a name="manual-installation"></a>El ile yükleme
-Windows VM Aracısı bir Windows Installer paketiyle el ile yüklenebilir. Azure 'a dağıtılan özel bir VM görüntüsü oluşturduğunuzda el ile yükleme gerekli olabilir. Windows VM aracısını el ile yüklemek için [VM Aracısı yükleyicisini indirin](https://go.microsoft.com/fwlink/?LinkID=394789). VM Aracısı Windows Server 2008 R2 ve üzeri sürümlerde desteklenir.
+Windows VM aracısı, Windows yükleyici paketiyle el ile yüklenebilir. Azure'a dağıtılan özel bir VM görüntüsü oluşturduğunuzda el ile yükleme gerekebilir. Windows VM Aracısını el ile yüklemek için [VM Agent yükleyicisini indirin.](https://go.microsoft.com/fwlink/?LinkID=394789) VM Aracısı Windows Server 2008 R2 ve daha sonra desteklenir.
 
 > [!NOTE]
-> VMAgent 'ı, ProvisionVMAgent Enable olmadan görüntüden dağıtılan bir VM 'ye el ile yükledikten sonra AllowExtensionOperations seçeneğinin güncelleştirilmesi önemlidir.
+> ProvisionVMAgent etkinleştirilmeden görüntüden dağıtılan bir VM VM vm vm el ile yükledikten sonra AllowExtensionOperations seçeneğini güncelleştirmek önemlidir.
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true
 $vm | Update-AzVM
 ```
 
-### <a name="prerequisites"></a>Önkoşullar
-- Windows VM aracısının, .NET Framework 4,0 ile en az Windows Server 2008 R2 (64-bit) çalıştırması gerekir. Bkz. [Azure 'da sanal makine aracıları Için en düşük sürüm desteği](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+### <a name="prerequisites"></a>Ön koşullar
+- Windows VM Aracısı'nın .Net Framework 4.0 ile çalışması için en az Windows Server 2008 R2 (64 bit) gerekir. [Azure'da sanal makine aracıları için minimum sürüm desteğine](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) bakın
 
-- VM 'nizin 168.63.129.16 IP adresine erişimi olduğundan emin olun. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+- VM'nizin IP adresi 168.63.129.16'ya erişebilmesini sağlayın. Daha fazla bilgi için ip [adresi nedir 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)bakın.
 
-## <a name="detect-the-vm-agent"></a>VM aracısını Algıla
+## <a name="detect-the-vm-agent"></a>VM Aracısını algılama
 
 ### <a name="powershell"></a>PowerShell
 
-Azure Resource Manager PowerShell modülü, Azure VM 'Leri hakkında bilgi almak için kullanılabilir. Azure VM aracısının sağlama durumu gibi bir VM hakkındaki bilgileri görmek için [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)' yi kullanın:
+Azure Kaynak Yöneticisi PowerShell modülü, Azure VM'leri hakkında bilgi almak için kullanılabilir. Azure VM Aracısı'nın sağlama durumu gibi bir VM hakkındaki bilgileri görmek için [Get-AzVM'yi](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)kullanın:
 
 ```powershell
 Get-AzVM
 ```
 
-Aşağıdaki sıkıştırılmış örnek çıktıda, *Osprofile*içinde iç Içe geçmiş *Provisionvmagent* özelliği gösterilmektedir. Bu özellik VM aracısının VM 'ye dağıtılıp dağıtılmadığını anlamak için kullanılabilir:
+Aşağıdaki yoğunlaştırılmış örnek çıktı, *OSProfile'ın*içinde iç içe olan *ProvisionVMAgent* özelliğini gösterir. Bu özellik, VM aracısının VM'ye dağıtılmış olup olmadığını belirlemek için kullanılabilir:
 
 ```powershell
 OSProfile                  :
@@ -95,7 +95,7 @@ OSProfile                  :
     EnableAutomaticUpdates : True
 ```
 
-Aşağıdaki betik, VM adlarının kısa bir listesini ve VM aracısının durumunu döndürmek için kullanılabilir:
+Aşağıdaki komut dosyası, VM adlarının kısa bir listesini ve VM Aracısı'nın durumunu döndürmek için kullanılabilir:
 
 ```powershell
 $vms = Get-AzVM
@@ -106,16 +106,16 @@ foreach ($vm in $vms) {
 }
 ```
 
-### <a name="manual-detection"></a>El ile algılama
+### <a name="manual-detection"></a>Manuel Algılama
 
-Bir Windows VM 'de oturum açıldığında, çalışan işlemlerin incelenmesi için Görev Yöneticisi kullanılabilir. Azure VM aracısını denetlemek için, Görev Yöneticisi 'ni açın, *Ayrıntılar* sekmesine tıklayın ve bir Işlem adı **WindowsAzureGuestAgent. exe**' yi arayın. Bu işlemin varlığı, VM aracısının yüklü olduğunu gösterir.
+Bir Windows VM'de oturum açtığınızda, Görev Yöneticisi çalışan işlemleri incelemek için kullanılabilir. Azure VM Aracısını denetlemek için Görev Yöneticisi'ni açın, *Ayrıntılar* sekmesini tıklatın ve **windowsAzureGuestAgent.exe**bir işlem adı arayın. Bu işlemin varlığı VM aracısının yüklü olduğunu gösterir.
 
 
-## <a name="upgrade-the-vm-agent"></a>VM aracısını yükseltme
-Windows için Azure VM Aracısı otomatik olarak yükseltilir. Yeni VM 'Ler Azure 'a dağıtıldığında, sanal makine sağlama zamanında en son VM aracısını alırlar. Özel VM görüntülerinin görüntü oluşturma zamanına yeni VM aracısını içerecek şekilde el ile güncelleştirilmeleri gerekir.
+## <a name="upgrade-the-vm-agent"></a>VM Aracısını Yükselt
+Windows için Azure VM Aracısı otomatik olarak yükseltilir. Yeni VM'ler Azure'a dağıtılınca, VM sağlama zamanında en son VM aracısını alırlar. Özel VM görüntüleri, görüntü oluşturma zamanında yeni VM aracısını içerecek şekilde el ile güncelleştirilmelidir.
 
-## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows Konuk Aracısı otomatik Günlükler koleksiyonu
-Windows Konuk Aracısı, bazı günlükleri otomatik olarak toplamak için bir özelliğe sahiptir. Bu özellik, CollectGuestLogs. exe işlemi tarafından denetleyici 'dir. Hem PaaS Cloud Services hem de IaaS sanal makineleri ve hedefi &, bir VM 'den bazı tanılama günlüklerini otomatik olarak toplamaktır ve bu nedenle çevrimdışı analizler için kullanılabilirler. Toplanan Günlükler olay günlüklerdir, işletim sistemi günlükleri, Azure günlükleri ve bazı kayıt defteri anahtarlarıdır. VM 'nin konağa aktarılan bir ZIP dosyası üretir. Bu ZIP dosyası daha sonra mühendislik ekiplerine ve destek uzmanlarına bakarak VM 'ye sahip olan müşterinin isteğiyle ilgili sorunları araştırmak için göz ardı edilebilir.
+## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows Guest Agent Otomatik Günlükler Koleksiyonu
+Windows Guest Agent'ın bazı günlükleri otomatik olarak toplamak için bir özelliği vardır. Bu özellik CollectGuestLogs.exe işlemi tarafından denetlenir. Hem PaaS Bulut Hizmetleri hem de IaaS Sanal Makineler için vardır ve amacı, bir VM'den bazı tanılama günlüklerini hızlı bir şekilde toplamak & , böylece çevrimdışı analiz için kullanılabilirler. Toplanan günlükler Olay Günlükleri, İşletim Sistemi Günlükleri, Azure Günlükleri ve bazı kayıt defteri anahtarlarıdır. VM'nin Ana Bilgisayar'ına aktarılan bir ZIP dosyası üretir. Bu ZIP dosyası daha sonra Mühendislik Ekipleri ve Destek uzmanları tarafından VM sahibi müşterinin isteği üzerine sorunları araştırmak için bakılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-VM uzantıları hakkında daha fazla bilgi için bkz. [Azure sanal makine uzantılarına ve özelliklerine genel bakış](overview.md).
+VM uzantıları hakkında daha fazla bilgi için [Azure sanal makine uzantılarına ve özelliklere genel bakış](overview.md)alabakın.

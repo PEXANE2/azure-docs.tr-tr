@@ -1,6 +1,6 @@
 ---
-title: Amazon S3 'ten Azure Data Lake Storage 2. veri geçirme
-description: Bir bölüm listesini, Azure Data Factory ile AWS S3 üzerinde depolamak için bir dış denetim tablosu kullanarak Amazon S3 'tan verileri geçirmek üzere bir çözüm şablonu kullanmayı öğrenin.
+title: Verileri Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye geçirin
+description: Azure Veri Fabrikası ile AWS S3'te bir bölüm listesini depolamak için harici bir denetim tablosu kullanarak Amazon S3'ten veri geçirmek için bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,67 +12,67 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927321"
 ---
-# <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 'ten Azure Data Lake Storage 2. veri geçirme
+# <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Verileri Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye geçirin
 
-Azure Data Lake Storage 2., Amazon S3 ' den ' den yüzlerce milyonlarca dosyadan oluşan verileri petabaytlarca geçirmek için şablonları kullanın. 
+Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye yüz milyonlarca dosyadan oluşan petabaytlarca veriyi geçirmek için şablonları kullanın. 
 
  > [!NOTE]
- > AWS S3 'ten Azure 'a (örneğin, 10 TB 'den az) küçük veri hacmi kopyalamak istiyorsanız, [Azure Data Factory veri kopyalama aracının](copy-data-tool.md)kullanımı daha verimli ve kolaydır. Bu makalede açıklanan şablon, ihtiyacınız olan miktardan daha fazla.
+ > AWS S3'ten Azure'a küçük veri hacmini kopyalamak istiyorsanız (örneğin, 10 TB'den az), [Azure Veri Fabrikası Kopyalama Veri aracını](copy-data-tool.md)kullanmak daha verimli ve kolaydır. Bu makalede açıklanan şablon, gereksinim duyduğunuzşablondan daha fazladır.
 
 ## <a name="about-the-solution-templates"></a>Çözüm şablonları hakkında
 
-Veri bölümü, özellikle 10 TB 'den fazla veri geçirirken önerilir. Verileri bölümlemek için ' önek ' ayarından yararlanarak Amazon S3 adlı klasörleri ve dosyaları adlandırın ve ardından her ADF kopyalama işi aynı anda bir bölüm kopyalayabilir. Daha iyi üretilen iş için birden çok ADF kopyalama işini eşzamanlı olarak çalıştırabilirsiniz.
+Veri bölme, özellikle 10 TB'den fazla veri aktarırken önerilir. Verileri bölmek için, Amazon S3'teki klasör leri ve dosyaları ada göre filtrelemek için 'önek' ayarını uygulayın ve ardından her ADF kopyalama işi aynı anda bir bölümü kopyalayabilir. Daha iyi iş elde etmek için aynı anda birden çok ADF kopyalama işi çalıştırabilirsiniz.
 
-Veri geçişi normal olarak bir kerelik geçmiş veri geçişi gerektirir ve değişiklikleri düzenli olarak AWS S3 'ten Azure 'a eşitlemektir. Aşağıdaki iki şablon, bir şablonun bir kerelik geçmiş veri geçişini kapsamasının yanı sıra başka bir şablon da AWS S3 'teki değişiklikleri Azure 'a eşitlemeyi içerir.
+Veri geçişi normalde bir kerelik geçmiş veri geçişi nin yanı sıra AWS S3'ten Azure'a değişiklikleri düzenli olarak eşitleme gerektirir. Aşağıda, bir şablonun bir kerelik geçmiş veri geçişini, diğer şablonun ise AWS S3'ten Azure'a değişiklikleri eşitlemeyi kapsadığı iki şablon vardır.
 
-### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablon için, veri Amazon S3 ' dan geçmiş verileri Azure Data Lake Storage 2. geçirme
+### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablonun geçmiş verileri Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye aktarması için
 
-Bu şablon (*şablon adı: AWS S3 'ten gelen geçmiş verileri Azure Data Lake Storage 2.* ), Azure SQL veritabanı 'nda bir dış denetim tablosunda bir bölüm listesi yazmış olduğunuzu varsayar. Bu nedenle, dış denetim tablosundan bölüm listesini almak için bir *arama* etkinliği kullanır, her bölüm üzerinde yineleme yapar ve her ADF kopyalama işi aynı anda bir bölüm kopyalayacaktır. Herhangi bir kopyalama işi tamamlandıktan sonra, denetim tablosundaki her bir bölümü kopyalama durumunu güncelleştirmek için *saklı yordam* etkinliğini kullanır.
+Bu şablon *(şablon adı: Geçmiş verileri AWS S3'ten Azure Veri Gölü Depolama Gen2'sine geçir)* Azure SQL Veritabanı'ndaki bir dış denetim tablosuna bir bölüm listesi yazdığınızı varsayar. Bu nedenle, dış denetim tablosundan bölüm listesini almak, her bölüm üzerinde yinelemek ve her ADF kopya işi bir defada bir bölümü kopyalamak için bir *Arama* etkinliği kullanır. Herhangi bir kopyalama işi tamamlandıktan sonra, denetim tablosundaki her bölümü kopyalama durumunu güncelleştirmek için *Depolanan Yordam* etkinliğini kullanır.
 
 Şablon beş etkinlik içerir:
-- **Arama** , bir dış denetim tablosundan Azure Data Lake Storage 2. kopyalanmamış bölümleri alır. Tablo adı *s3_partition_control_table* ve tablodaki verileri yüklemek için yapılan sorgu *"başarılı sorarızası = 0" Iken s3_partition_control_table PartitionPrefix ' i seçin*.
-- **ForEach** , *arama* etkinliğinden bölüm listesini alır ve her bölümü *triggercopy* etkinliğine yineler. *BatchCount* öğesini eşzamanlı olarak bırden çok ADF kopyalama işi çalıştıracak şekilde ayarlayabilirsiniz. Bu şablonda 2 ' ye ayarlandık.
-- **Executepipeline** *CopyFolderPartitionFromS3* işlem hattını yürütür. Her kopyalama işinin bir bölümü kopyalamasını sağlamak için başka bir işlem hattı oluşturduğumuz nedeni, bu belirli bir bölümü AWS S3 ' dan yeniden yüklemek için başarısız kopyalama işini yeniden çalıştırmayı kolay hale getirmek olacaktır. Diğer bölümleri yükleyen diğer tüm kopyalama işleri etkilenmeyecektir.
-- Her bölümü AWS S3 öğesinden Azure Data Lake Storage 2. **kopyalayın** .
-- **Sqlserverstoredprocedure** denetim tablosundaki her bir bölümü kopyalama durumunu güncelleştirir.
+- **Arama,** Azure Veri Gölü Depolama Gen2'ye kopyalanmamış bölümleri harici bir denetim tablosundan alır. Tablo adı *s3_partition_control_table* ve tablodan veri yüklemek için sorgu *"SELECT PartitionPrefix FROM s3_partition_control_table WHERE SuccessOrFailure = 0"*.
+- **ForEach,** *Arama* etkinliğinden bölüm listesini alır ve her bölümü *TriggerCopy* etkinliğine yineler. *BatchCount'yi* aynı anda birden çok ADF kopya işi çalıştıracak şekilde ayarlayabilirsiniz. Bu şablonda 2 tane belirledik.
+- **ExecutePipeline** *CopyFolderPartitionFromS3* ardışık yürütme. Her kopya işi bir bölüm kopyalamak için başka bir ardışık kaynak oluşturmamızın nedeni, bu belirli bölümü AWS S3'ten yeniden yüklemek için başarısız kopya işini yeniden çalıştırmanızı kolaylaştıracak olmasıdır. Diğer bölümleri yükleyen diğer tüm kopyalama işleri etkilenmez.
+- AWS S3'ten Azure Veri Gölü Depolama Gen2'ye kadar her bölümü **kopyalayın.**
+- **SqlServerStoredProcedure** denetim tablosunda her bölümü kopyalama durumunu güncelleştirin.
 
 Şablon iki parametre içerir:
-- **AWS_S3_bucketName** , AWS S3 üzerinde verileri geçirmek istediğiniz yer alan demet adıdır. AWS S3 üzerindeki birden çok demetten verileri geçirmek istiyorsanız, her bölüm için demet adını depolamak üzere dış denetim tablonuza bir sütun ekleyebilirsiniz ve ayrıca işlem hattınızı, bu sütundan verileri uygun şekilde almak için güncelleştirebilirsiniz.
-- **Azure_Storage_fileSystem** , verileri geçirmek Istediğiniz Azure Data Lake Storage 2. dosya sistemi adıdır.
+- **AWS_S3_bucketName,** verileri geçirmek istediğiniz AWS S3'teki kova adınızdır. AWS S3'teki birden çok kovadan veri geçirmek istiyorsanız, her bölüm için kova adını depolamak için dış denetim tablonuza bir sütun daha ekleyebilir ve bu sütundan verileri almak için ardışık adınızı güncelleştirebilirsiniz.
+- **Azure_Storage_fileSystem,** verileri aktarmak istediğiniz Azure Veri Gölü Depolama Gen2'deki dosyaSistem adınızdır.
 
-### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablonun değiştirilen dosyaları yalnızca Amazon S3 konumundan Azure Data Lake Storage 2. kopyalaması için
+### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablonun yalnızca Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye kopyalanması için
 
-Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta verileri kopyalama*), yeni veya güncelleştirilmiş dosyaları yalnızca AWS S3 'ten Azure 'a kopyalamak için her bir dosyanın LastModifiedTime kullanır. Dosya veya klasörlerinizin AWS S3 (örneğin,/yyyy/mm/dd/File.exe) üzerindeki dosya veya klasör adının bir parçası olarak timeslice bilgileri ile bölümlenmiş olması durumunda, artımlı yeni dosya yüklemeye yönelik daha ayrıntılı bir yaklaşım edinmek için bu [öğreticiye](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) gidebilirsiniz. Bu şablon, Azure SQL veritabanı 'nda bir dış denetim tablosunda bir bölüm listesi yazmış olduğunuzu varsayar. Bu nedenle, dış denetim tablosundan bölüm listesini almak için bir *arama* etkinliği kullanır, her bölüm üzerinde yineleme yapar ve her ADF kopyalama işi aynı anda bir bölüm kopyalayacaktır. Her bir kopyalama işi dosyaları AWS S3 'ten kopyalamaya başladığında, yalnızca yeni veya güncelleştirilmiş dosyaları tanımlamak ve kopyalamak için LastModifiedTime özelliğini kullanır. Herhangi bir kopyalama işi tamamlandıktan sonra, denetim tablosundaki her bir bölümü kopyalama durumunu güncelleştirmek için *saklı yordam* etkinliğini kullanır.
+Bu şablon *(şablon adı: AWS S3'ten Azure Veri Gölü Depolama Gen2'ye*kadar olan verileri kopyala ) yalnızca AWS S3'ten Azure'a kadar yeni veya güncelleştirilmiş dosyaları kopyalamak için her dosyanın LastModifiedTime'ını kullanır. Dosya veya klasörleriniz, AWS S3'teki dosya veya klasör adının bir parçası olarak zaman dilimi bilgileriyle zaten zaman dilimi bilgileriyle bölümlenmişse (örneğin, /yyyy/mm/dd/file.csv), yeni dosyaları kademeli olarak yüklemek için daha performant bir yaklaşım elde etmek için bu [öğreticiye](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) gidebilirsiniz. Bu şablon, Azure SQL Veritabanı'ndaki bir dış denetim tablosuna bir bölüm listesi yazdığınızı varsayar. Bu nedenle, dış denetim tablosundan bölüm listesini almak, her bölüm üzerinde yinelemek ve her ADF kopya işi bir defada bir bölümü kopyalamak için bir *Arama* etkinliği kullanır. Her kopyalama işi Dosyaları AWS S3'ten kopyalamaya başladığında, yalnızca yeni veya güncelleştirilen dosyaları tanımlamak ve kopyalamak için LastModifiedTime özelliğine güvenir. Herhangi bir kopyalama işi tamamlandıktan sonra, denetim tablosundaki her bölümü kopyalama durumunu güncelleştirmek için *Depolanan Yordam* etkinliğini kullanır.
 
 Şablon yedi etkinlik içerir:
-- **Arama** , bir dış denetim tablosundan bölümleri alır. Tablo adı *s3_partition_delta_control_table* ve tablodaki verileri yüklemeye yönelik sorgu *"S3_partition_delta_control_table 'Den farklı PartitionPrefix Seç"* dir.
-- **ForEach** , *arama* etkinliğinden bölüm listesini alır ve her bölümü *triggerdeltacopy* etkinliğine yineler. *BatchCount* öğesini eşzamanlı olarak bırden çok ADF kopyalama işi çalıştıracak şekilde ayarlayabilirsiniz. Bu şablonda 2 ' ye ayarlandık.
-- **Executepipeline** *DeltaCopyFolderPartitionFromS3* işlem hattını yürütür. Her kopyalama işinin bir bölümü kopyalamasını sağlamak için başka bir işlem hattı oluşturduğumuz nedeni, bu belirli bir bölümü AWS S3 ' dan yeniden yüklemek için başarısız kopyalama işini yeniden çalıştırmayı kolay hale getirmek olacaktır. Diğer bölümleri yükleyen diğer tüm kopyalama işleri etkilenmeyecektir.
-- **Arama** , yeni veya güncelleştirilmiş dosyaların LastModifiedTime aracılığıyla tanımlanması için dış denetim tablosundan son kopyalama işi çalışma süresini alır. Tablo adı *s3_partition_delta_control_table* ve tablodaki verileri yüklemeye yönelik sorgu *"Select Max (jobruntime) for S3_partition_delta_control_table WHERE PartitionPrefix = ' @ {Pipeline (). Parameters. prefixStr} ' ve başarılı sorfailure = 1" olarak değiştirildi*.
-- Yeni veya değiştirilmiş dosyaları yalnızca AWS S3 ' dan Azure Data Lake Storage 2. ' ye **kopyalayın** . *Modifieddatetimestart* 'ın özelliği, son kopyalama işi çalışma zamanına ayarlanır. *Modifieddatetimeend* 'in özelliği geçerli kopyalama işi çalışma zamanına ayarlanır. Saatin UTC saat dilimine uygulandığını unutmayın.
-- **Sqlserverstoredprocedure** başarılı olduğunda, denetim tablosundaki her bir bölümü kopyalama ve çalışma süresini kopyalama durumunu güncelleştirir. Başarımahatası sütunu 1 olarak ayarlanır.
-- **Sqlserverstoredprocedure** , başarısız olduğunda denetim tablosundaki her bir bölümü kopyalama ve çalışma süresini kopyalama durumunu güncelleştirir. Başarımahatası sütunu 0 olarak ayarlanır.
+- **Arama,** bölümleri harici bir denetim tablosundan alır. Tablo adı *s3_partition_delta_control_table* ve tablodan veri yüklemek için sorgu *"s3_partition_delta_control_table farklı BölümPrefix seçin"*.
+- **ForEach,** *Arama* etkinliğinden bölüm listesini alır ve her bölümü *TriggerDeltaCopy* etkinliğine yineler. *BatchCount'yi* aynı anda birden çok ADF kopya işi çalıştıracak şekilde ayarlayabilirsiniz. Bu şablonda 2 tane belirledik.
+- **ExecutePipeline** *DeltaCopyFolderPartitionFromS3* ardışık uygular. Her kopya işi bir bölüm kopyalamak için başka bir ardışık kaynak oluşturmamızın nedeni, bu belirli bölümü AWS S3'ten yeniden yüklemek için başarısız kopya işini yeniden çalıştırmanızı kolaylaştıracak olmasıdır. Diğer bölümleri yükleyen diğer tüm kopyalama işleri etkilenmez.
+- **Arama,** yeni veya güncelleştirilmiş dosyaların LastModifiedTime üzerinden tanımlanabilmesi için dış denetim tablosundan son kopya iş çalıştırma süresini alır. Tablo adı *s3_partition_delta_control_table* ve tablodan veri yüklemek için sorgu *"select max (JobRunTime) s3_partition_delta_control_table'den LastModifiedTime olarak BölümPrefix = '@{pipeline().parameters.prefixStr}' ve SuccessOrFailure = 1"* dir.
+- Yalnızca AWS S3'ten Azure Veri Gölü Depolama Gen2'ye kadar her bölüm için yeni veya değiştirilmiş dosyaları **kopyalayın.** *modifiedDatetimeStart* özelliği son kopya iş çalışma süresi ayarlanır. *modifiedDatetimeEnd* özelliği geçerli kopyalama iş çalışma süresi ayarlanır. Saatin UTC saat dilimine uygulandığını unutmayın.
+- **SqlServerStoredProcedure,** başarılı olduğunda denetim tablosunda her bölümü kopyalama ve kopyalama çalışma süresini güncelleştirme. SuccessOrFailure sütunu 1 olarak ayarlanır.
+- **SqlServerStoredProcedure,** başarısız olduğunda denetim tablosunda her bölümü kopyalama ve kopyalama çalışma süresini güncelleştirme. SuccessOrFailure sütunu 0 olarak ayarlanır.
 
 Şablon iki parametre içerir:
-- **AWS_S3_bucketName** , AWS S3 üzerinde verileri geçirmek istediğiniz yer alan demet adıdır. AWS S3 üzerindeki birden çok demetten verileri geçirmek istiyorsanız, her bölüm için demet adını depolamak üzere dış denetim tablonuza bir sütun ekleyebilirsiniz ve ayrıca işlem hattınızı, bu sütundan verileri uygun şekilde almak için güncelleştirebilirsiniz.
-- **Azure_Storage_fileSystem** , verileri geçirmek Istediğiniz Azure Data Lake Storage 2. dosya sistemi adıdır.
+- **AWS_S3_bucketName,** verileri geçirmek istediğiniz AWS S3'teki kova adınızdır. AWS S3'teki birden çok kovadan veri geçirmek istiyorsanız, her bölüm için kova adını depolamak için dış denetim tablonuza bir sütun daha ekleyebilir ve bu sütundan verileri almak için ardışık adınızı güncelleştirebilirsiniz.
+- **Azure_Storage_fileSystem,** verileri aktarmak istediğiniz Azure Veri Gölü Depolama Gen2'deki dosyaSistem adınızdır.
 
-## <a name="how-to-use-these-two-solution-templates"></a>Bu iki çözüm şablonunu kullanma
+## <a name="how-to-use-these-two-solution-templates"></a>Bu iki çözüm şablonu nasıl kullanılır?
 
-### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablon için, veri Amazon S3 ' dan geçmiş verileri Azure Data Lake Storage 2. geçirme 
+### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablonun geçmiş verileri Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye aktarması için 
 
-1. AWS S3 bölüm listesini depolamak için Azure SQL veritabanı 'nda bir denetim tablosu oluşturun. 
+1. AWS S3'ün bölüm listesini depolamak için Azure SQL Veritabanı'nda bir denetim tablosu oluşturun. 
 
     > [!NOTE]
-    > Tablo adı s3_partition_control_table.
-    > Denetim tablosunun şeması, PartitionPrefix ve Başarımaarızası ' dir; burada PartitionPrefix, Amazon S3 içindeki klasör ve dosyaları filtrelemek için S3 ' de önek ayarıdır ve bu bölümde her bölümün kopyalanma durumu vardır: 0 anlamına gelir. Azure 'a kopyalanmadı ve 1, bu bölümün Azure 'a başarıyla kopyalandığı anlamına gelir.
-    > Denetim tablosunda tanımlanmış 5 bölüm vardır ve her bölüm kopyalamanın varsayılan durumu 0 ' dır.
+    > Masa adı s3_partition_control_table.
+    > Denetim tablosunun şeması PartitionPrefix ve SuccessOrFailure, PartitionPrefix S3'te Amazon S3'teki klasör ve dosyaları ada göre filtrelemek için önek ayarı dır ve SuccessOrFailure her bölümü kopyalama durumudur: 0 bu bölümün sahip olduğu anlamına gelir Azure'a kopyalanmamıştır ve 1 bu bölümün Azure'a başarıyla kopyalandığı anlamına gelir.
+    > Denetim tablosunda tanımlanan 5 bölüm vardır ve her bölümü kopyalamanın varsayılan durumu 0'dır.
 
     ```sql
     CREATE TABLE [dbo].[s3_partition_control_table](
@@ -89,10 +89,10 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
     ('e', 0);
     ```
 
-2. Denetim tablosu için aynı Azure SQL veritabanında bir saklı yordam oluşturun. 
+2. Denetim tablosu için aynı Azure SQL Veritabanında Saklı Yordam oluşturun. 
 
     > [!NOTE]
-    > Saklı yordamın adı sp_update_partition_success. ADF işlem hattınızda SqlServerStoredProcedure etkinliği tarafından çağrılır.
+    > Depolanan Yordamın adı sp_update_partition_success. ADF ardışık ardışık alanınızdaki SqlServerStoredProcedure etkinliği tarafından çağrılacaktır.
 
     ```sql
     CREATE PROCEDURE [dbo].[sp_update_partition_success] @PartPrefix varchar(255)
@@ -105,35 +105,35 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
     GO
     ```
 
-3. **AWS S3 'ten geçmiş verileri Azure Data Lake Storage 2.** şablonuna gidin. Veri kaynağı deposu olarak AWS S3 ve hedef depo olarak Azure Data Lake Storage 2. dış denetim tablonuza yönelik bağlantıları girin. Dış denetim tablosunun ve saklı yordamın aynı bağlantıya başvurduğuna dikkat edin.
+3. **AWS S3'ten Azure Veri Gölü Depolama Gen2 şablonuna geçmiş verileri geçir'e** gidin. Dış denetim tablonuza bağlantıları, veri kaynağı deposu olarak AWS S3'ü ve hedef depo olarak Azure Veri Gölü Depolama Gen2'yi giriş yapın. Dış denetim tablosu ve depolanan yordamın aynı bağlantıya atıfta bulunduğuna dikkat edin.
 
     ![Yeni bağlantı oluşturma](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
-4. **Bu şablonu kullan**'ı seçin.
+4. **Bu şablonu kullan'ı**seçin.
 
     ![Bu şablonu kullan](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
-5. Aşağıdaki örnekte gösterildiği gibi 2 işlem hattı ve 3 veri kümesi oluşturulduğunu görürsünüz:
+5. Aşağıdaki örnekte gösterildiği gibi, 2 ardışık hatlar ve 3 veri kümesi oluşturulduğunu görürsünüz:
 
-    ![İşlem hattını gözden geçirme](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    ![Boru hattını gözden geçirin](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
+6. **Hata Ayıklama'yı**seçin, **Parametreleri**girin ve ardından **Bitir'i**seçin.
 
-    ![\* * Hata Ayıkla * * öğesine tıklayın](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![**Hata Ayıklama** seçeneğini tıklatın](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. Aşağıdaki örneğe benzer sonuçlar görürsünüz:
 
     ![Sonucu gözden geçirin](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
-### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablonun değiştirilen dosyaları yalnızca Amazon S3 konumundan Azure Data Lake Storage 2. kopyalaması için
+### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablonun yalnızca Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye kopyalanması için
 
-1. AWS S3 bölüm listesini depolamak için Azure SQL veritabanı 'nda bir denetim tablosu oluşturun. 
+1. AWS S3'ün bölüm listesini depolamak için Azure SQL Veritabanı'nda bir denetim tablosu oluşturun. 
 
     > [!NOTE]
     > Tablo adı s3_partition_delta_control_table.
-    > Denetim tablosunun şeması PartitionPrefix, JobRunTime ve Başarımaarızası olur; burada PartitionPrefix, Amazon S3 içindeki klasör ve dosyaları filtrelemek için, iş çalışma zamanı, kopyalama işlerinin çalıştırıldığı zaman tarih saat değeridir ve başarılı Sorarızası Her bölüm kopyalama durumu: 0, bu bölüm Azure 'a kopyalanmamış ve 1, bu bölümün Azure 'a başarıyla kopyalandığı anlamına gelir.
-    > Denetim tablosu 'nda tanımlanmış 5 bölüm vardır. JobRunTime için varsayılan değer, bir kerelik geçmiş veri geçişinin başladığı zaman olabilir. ADF kopyalama etkinliği, bu tarihten sonra son değiştirilen AWS S3 üzerindeki dosyaları kopyalayacaktır. Her bölüm kopyalamanın varsayılan durumu 1 ' dir.
+    > Denetim tablosunun şeması PartitionPrefix, JobRunTime ve SuccessOrFailure, PartitionPrefix S3'teki klasör leri ve dosyaları ada göre filtrelemek için önek ayarıdır, JobRunTime kopyalama işleri çalıştırıldığında tarih saati değeridir ve SuccessOrFailure her bölümü kopyalama durumu: 0, bu bölümün Azure'a kopyalanmadığı anlamına gelir ve 1 bu bölümün Azure'a başarıyla kopyalandığı anlamına gelir.
+    > Denetim tablosunda tanımlanan 5 bölüm vardır. JobRunTime için varsayılan değer, tek seferlik geçmiş veri geçişinin başladığı zaman olabilir. ADF kopyalama etkinliği, bu tarihten sonra en son değiştirilen AWS S3'teki dosyaları kopyalar. Her bölümü kopyalamanın varsayılan durumu 1'dir.
 
     ```sql
     CREATE TABLE [dbo].[s3_partition_delta_control_table](
@@ -151,10 +151,10 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
     ('e','1/1/2019 12:00:00 AM',1);
     ```
 
-2. Denetim tablosu için aynı Azure SQL veritabanında bir saklı yordam oluşturun. 
+2. Denetim tablosu için aynı Azure SQL Veritabanında Saklı Yordam oluşturun. 
 
     > [!NOTE]
-    > Saklı yordamın adı sp_insert_partition_JobRunTime_success. ADF işlem hattınızda SqlServerStoredProcedure etkinliği tarafından çağrılır.
+    > Depolanan Yordam'ın adı sp_insert_partition_JobRunTime_success. ADF ardışık ardışık alanınızdaki SqlServerStoredProcedure etkinliği tarafından çağrılacaktır.
 
     ```sql
         CREATE PROCEDURE [dbo].[sp_insert_partition_JobRunTime_success] @PartPrefix varchar(255), @JobRunTime datetime, @SuccessOrFailure bit
@@ -168,31 +168,31 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
     ```
 
 
-3. **AWS S3 'ten Azure Data Lake Storage 2. şablonuna olan Delta verilerini kopyalama** bölümüne gidin. Veri kaynağı deposu olarak AWS S3 ve hedef depo olarak Azure Data Lake Storage 2. dış denetim tablonuza yönelik bağlantıları girin. Dış denetim tablosunun ve saklı yordamın aynı bağlantıya başvurduğuna dikkat edin.
+3. **AWS S3'ten Azure Veri Gölü Depolama Gen2 şablonuna kadar kopyala delta verisine** gidin. Dış denetim tablonuza bağlantıları, veri kaynağı deposu olarak AWS S3'ü ve hedef depo olarak Azure Veri Gölü Depolama Gen2'yi giriş yapın. Dış denetim tablosu ve depolanan yordamın aynı bağlantıya atıfta bulunduğuna dikkat edin.
 
     ![Yeni bağlantı oluşturma](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
-4. **Bu şablonu kullan**'ı seçin.
+4. **Bu şablonu kullan'ı**seçin.
 
     ![Bu şablonu kullan](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
-5. Aşağıdaki örnekte gösterildiği gibi 2 işlem hattı ve 3 veri kümesi oluşturulduğunu görürsünüz:
+5. Aşağıdaki örnekte gösterildiği gibi, 2 ardışık hatlar ve 3 veri kümesi oluşturulduğunu görürsünüz:
 
-    ![İşlem hattını gözden geçirme](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
+    ![Boru hattını gözden geçirin](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
+6. **Hata Ayıklama'yı**seçin, **Parametreleri**girin ve ardından **Bitir'i**seçin.
 
-    ![\* * Hata Ayıkla * * öğesine tıklayın](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
+    ![**Hata Ayıklama** seçeneğini tıklatın](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 
 7. Aşağıdaki örneğe benzer sonuçlar görürsünüz:
 
     ![Sonucu gözden geçirin](media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png)
 
-8. Ayrıca Denetim tablosundan sonuçları bir sorgu *"select * from s3_partition_delta_control_table"* olarak denetleyebilir, aşağıdaki örneğe benzer bir çıktı görürsünüz:
+8. Ayrıca bir sorgu *"select * from s3_partition_delta_control_table"* ile kontrol edebilirsiniz, aşağıdaki örneğe benzer çıktı göreceksiniz:
 
     ![Sonucu gözden geçirin](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md)
+- [Birden çok kapsayıcıdan dosyaları kopyalama](solution-template-copy-files-multiple-containers.md)
 - [Dosyaları taşıma](solution-template-move-files.md)

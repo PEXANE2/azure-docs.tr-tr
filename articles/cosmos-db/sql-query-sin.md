@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde SIN
-description: Azure Cosmos DB SQL sistem işlevi hakkında bilgi edinin.
+description: Azure Cosmos DB'de SQL sistem fonksiyonu SIN hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 25e7cf66fdd55a0b641c35443e38b0a67cbe365d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303112"
 ---
 # <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB)
- Radyan cinsinden belirtilen ifade trigonometrik belirtilen bir açının sinüsünü döndürür.  
+ Belirtilen açının trigonometrik sinüsünü radyanlarda, belirtilen ifadede verir.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,13 +28,13 @@ SIN(<numeric_expr>)
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Sayısal bir ifade döndürür.  
+  Sayısal bir ifade verir.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, belirtilen açının `SIN` hesaplar.  
+  Aşağıdaki örnek, belirtilen `SIN` açıyı hesaplar.  
   
 ```sql
 SELECT SIN(45.175643) AS sin  
@@ -48,10 +48,10 @@ SELECT SIN(45.175643) AS sin
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: Zaman uyumsuz mesajlaşma Service Bus | Microsoft Docs
-description: Kuyruklar, konular ve aboneliklerle bir mağaza ve ileriye yönelik bir mekanizma aracılığıyla Azure Service Bus nasıl destekleyeceğinizi öğrenin.
+title: Servis Otobüsü asynchronous mesajlaşma | Microsoft Dokümanlar
+description: Azure Hizmet Veri Yolu'nun kuyruklar, konular ve aboneliklerle birlikte bir mağaza ve iletme mekanizması aracılığıyla eşzamanlılığı nasıl desteklediğini öğrenin.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,57 +15,57 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76761041"
 ---
-# <a name="asynchronous-messaging-patterns-and-high-availability"></a>Zaman uyumsuz mesajlaşma modelleri ve yüksek kullanılabilirlik
+# <a name="asynchronous-messaging-patterns-and-high-availability"></a>Eşzamanlı mesajlaşma desenleri ve yüksek kullanılabilirlik
 
-Zaman uyumsuz mesajlaşma birçok farklı yolla uygulanabilir. Kuyruklar, konular ve abonelikler sayesinde, Azure Service Bus bir mağaza ve ileriye doğru mekanizma aracılığıyla zaman eşitlemesini destekler. Normal (zaman uyumlu) işleminde, sıralara ve konulara iletiler gönderir ve kuyruklar ve aboneliklerden iletiler alırsınız. Yazdığınız uygulamalar, her zaman kullanılabilir olan bu varlıklara bağlıdır. Çeşitli koşullar nedeniyle varlık durumu değiştiğinde, çoğu ihtiyacı karşılayabilen daha düşük bir yetenek varlığı sağlamak için bir yol gerekir.
+Asynchronous mesajlaşma farklı şekillerde çeşitli şekillerde uygulanabilir. Kuyruklar, konular ve aboneliklerle Azure Servis Veri Servisi, mağaza ve iletme mekanizması aracılığıyla eşzamanlılığı destekler. Normal (senkron) işlemde, kuyruklara ve konulara ileti gönderir ve kuyruklardan ve aboneliklerden iletiler alırsınız. Yazdığınız uygulamalar, bu varlıkların her zaman kullanılabilir olmasına bağlıdır. Varlık sağlığı değiştiğinde, çeşitli koşullar nedeniyle, çoğu gereksinimi karşılayabilecek azaltılmış bir yetenek varlığı sağlamanın bir yolunu bulabilmeniz gerekir.
 
-Uygulamalar genellikle zaman uyumsuz mesajlaşma düzenlerini kullanarak bir dizi iletişim senaryosunu etkinleştirir. Hizmetin çalışmıyor olsa bile, istemcilerin hizmetlere ileti gönderebileceği uygulamalar oluşturabilirsiniz. Bir kuyruk, iletişimin ani bir kısmını yaşayan uygulamalar için arabellek iletişimleri için bir yer sağlayarak yükün sağlanmasına yardımcı olabilir. Son olarak, birden çok makineye ileti dağıtmak için basit ancak etkin bir yük dengeleyici edinebilirsiniz.
+Uygulamalar genellikle bir dizi iletişim senaryosu etkinleştirmek için eşzamanlı ileti desenleri kullanır. Hizmet çalışmasa bile istemcilerin hizmetlere ileti gönderebileceği uygulamalar oluşturabilirsiniz. İletişim patlamaları yaşayan uygulamalar için, bir kuyruk iletişimara için bir yer sağlayarak yükü seviyedüzeyi yardımcı olabilir. Son olarak, iletileri birden çok makineye dağıtmak için basit ama etkili bir yük dengeleyicisi alabilirsiniz.
 
-Bu varlıkların herhangi birinin kullanılabilirliğini sürdürmek için, bu varlıkların dayanıklı bir mesajlaşma sistemi için kullanılamaz şekilde görünebileceği birçok farklı yolu göz önünde bulundurun. Genellikle, aşağıdaki farklı yollarla yazdığımız uygulamalar için varlık kullanılamaz hale geldiğini görüyoruz:
+Bu varlıklardan herhangi birinin kullanılabilirliğini korumak için, bu varlıkların dayanıklı bir ileti sistemi için kullanılamamasıiçin çeşitli yollar düşünün. Genel olarak konuşursak, varlığın aşağıdaki farklı şekillerde yazdığımız uygulamalariçin kullanılamaz hale geldiğini görürsünüz:
 
-* Mesajlar gönderilemiyor.
+* İleti gönderilemiş.
 * İleti alınamıyor.
-* Varlıklar yönetimedi (varlık oluşturma, alma, güncelleştirme veya silme).
-* Hizmetle iletişim kurulamıyor.
+* Varlıkları yönetemiyor (varlıkları oluştur, al, güncelleştir veya sil).
+* Servise başvuramıyor.
 
-Bu hatalardan her biri için, bir uygulamanın, daha düşük bir özellik düzeyinde iş gerçekleştirmeye devam etmesine olanak tanıyan farklı hata modları vardır. Örneğin, iletileri gönderebilen ancak almamayan bir sistem yine de müşterilerden sipariş alabilir, ancak bu siparişleri işleyemez. Bu konu, gerçekleşebileceği olası sorunları ve bu sorunların nasıl azaltıldığı hakkında ele alınmaktadır. Service Bus, kabul etmeniz gereken bir dizi azaltmayı sunmuştur ve bu konuda Ayrıca bu katılım azaltmaları kullanımını düzenleyen kurallar ele alınmaktadır.
+Bu hataların her biri için, bir uygulamanın azaltılmış yetenek düzeyinde çalışmayı gerçekleştirmeye devam etmesini sağlayan farklı hata modları vardır. Örneğin, ileti gönderebilen ancak almayan bir sistem müşterilerden sipariş almaya devam edebilir, ancak bu siparişleri işleyemez. Bu konu, oluşabilecek olası sorunları ve bu sorunların nasıl azaltılıcı olduğunu tartışır. Service Bus, tercih etmeniz gereken bir dizi azaltıcı etken ilerlemiştir ve bu konu, bu tercih edilen azaltmaların kullanımına ilişkin kuralları da tartışır.
 
-## <a name="reliability-in-service-bus"></a>Service Bus güvenilirlik
-İleti ve varlık sorunlarını ele almanın birkaç yolu vardır ve bu azaltıcı etkenlerin uygun kullanımını düzenleyen yönergeler vardır. Yönergeleri anlamak için öncelikle Service Bus başarısız olduğunu anlamanız gerekir. Azure sistemlerinin tasarımı nedeniyle, tüm bu sorunlar kısa süreli olarak eğilimlidir. Yüksek düzeyde, kullanılamaın farklı nedenleri şu şekilde görünür:
+## <a name="reliability-in-service-bus"></a>Servis Otobüsünde Güvenilirlik
+İleti ve varlık sorunlarını işlemenin çeşitli yolları vardır ve bu azaltıcı etkenlerin uygun kullanımını düzenleyen yönergeler vardır. Yönergeleri anlamak için öncelikle Servis Veri Servisi'nde nelerin başarısız olabileceğini anlamanız gerekir. Azure sistemlerinin tasarımı nedeniyle, bu sorunların tümü kısa ömürlü olma eğilimindedir. Yüksek düzeyde, farklı kullanılabilirlik nedenleri aşağıdaki gibi görünür:
 
-* Service Bus bağlı bir dış sistemden azaltma. Depolama ve işlem kaynaklarıyla etkileşimi, kısıtlama oluşur.
-* Service Bus bağımlı olan bir sistem için sorun. Örneğin, belirli bir depolama bölümünde sorunlar oluşabilir.
-* Tek alt sistemde Service Bus hatası. Bu durumda, bir işlem düğümü tutarsız duruma alabilir ve kendisini yeniden başlatması gerekir, bu da diğer düğümlere yük dengelemeye hizmet verdiği tüm varlıklara neden olur. Bu işlem, kısa bir süre yavaş ileti işlemeye neden olabilir.
-* Bir Azure veri merkezi içinde Service Bus hatası. Bu, sistemin birçok dakika veya birkaç saat boyunca ulaşılamaz olduğu bir "yıkıcı hatası" olur.
+* Servis Veri Servisi'nin bağlı olduğu harici bir sistemden azaltma. Azaltma depolama ve bilgi işlem kaynakları ile etkileşimler oluşur.
+* Servis Veri Servisi'nin bağlı olduğu bir sistem için sorun. Örneğin, depolama alanının belirli bir bölümü sorunlarla karşılaşabilir.
+* Servis Veri Servisi'nin tek bir alt sistemde arızası. Bu durumda, bir bilgi işlem düğümü tutarsız bir duruma gelebilir ve kendisini yeniden başlatarak hizmet sunduğu tüm varlıkların diğer düğümlere bakiye yüklemesine neden olabilir. Bu da kısa bir süre yavaş ileti işlemeye neden olabilir.
+* Bir Azure veri merkezi içinde Hizmet Veri Servisi'nin başarısızlığı. Bu, sistemin birkaç dakika veya birkaç saat boyunca erişilebildiği bir "felaket hatası"dır.
 
 > [!NOTE]
-> **Depolama** terimi hem Azure Storage hem de SQL Azure anlamına gelebilir.
+> Depolama **terimi** hem Azure Depolama hem de SQL Azure anlamına gelebilir.
 > 
 > 
 
-Service Bus, bu sorunlar için bir dizi azaltmaları içerir. Aşağıdaki bölümlerde her bir sorun ve ilgili azaltmaları ele alınmaktadır.
+Servis Veri Servisi, bu sorunlar için bir dizi azaltıcı etken içerir. Aşağıdaki bölümlerde her sorun ve ilgili azaltıcı etkenler tartışılır.
 
 ### <a name="throttling"></a>Azaltma
-Service Bus, azaltma, birlikte çalışmayan ileti hızı yönetimine izin vermez. Her bireysel Service Bus düğümü birçok varlık barındırır. Bu varlıkların her biri, sistem üzerinde CPU, bellek, depolama ve diğer modellerle ilgili talepler sağlar. Bu modellerden herhangi biri, tanımlanan eşikleri aşan kullanımı algıladığında, Service Bus belirli bir isteği reddedebilirler. Çağıran bir [Serverbusi özel durumu][ServerBusyException] alır ve 10 saniye sonra yeniden dener.
+Service Bus ile azaltma, işbirliğine dayalı ileti oranı yönetimi sağlar. Her bir Servis Otobüsü düğümü birçok tüzel kişilikbarındırmaktadır. Bu varlıkların her biri, CPU, bellek, depolama ve diğer yönleri açısından sistem üzerinde talepte bulunuyor. Bu uçlardan herhangi biri tanımlanan eşikleri aşan kullanımı algıladığında, Servis Veri Servisi belirli bir isteği reddedebilir. Arayan bir [ServerBusyException][ServerBusyException] alır ve 10 saniye sonra yeniden çalışır.
 
-Risk azaltma olarak, kodun hatayı okuması ve iletiyi en az 10 saniye için yeniden deneme süresini durdurmalıdır. Hata müşteri uygulamasının parçaları arasında gerçekleşediğinden, her parçanın yeniden deneme mantığını bağımsız olarak yürütmesi beklenmektedir. Kod, bir kuyruk veya konu üzerinde bölümlemeyi etkinleştirerek daraltameme olasılığını azaltabilir.
+Azaltma olarak, kod hatayı okumalı ve iletinin yeniden denemelerini en az 10 saniye süreyle durdurmalıdır. Hata müşteri uygulamasının parçaları arasında gerçekleşebileceğinden, her parçanın yeniden deneme mantığını bağımsız olarak yürütmesi beklenir. Kod, bir kuyruk veya konu üzerinde bölümleme etkinleştirerek daraltılma olasılığını azaltabilir.
 
 ### <a name="issue-for-an-azure-dependency"></a>Azure bağımlılığı sorunu
-Azure 'daki diğer bileşenlere bazen hizmet sorunları olabilir. Örneğin, Service Bus tarafından kullanılan bir sistem yükseltildiğinde, bu sistem geçici olarak daha az yetenek yaşayabilir. Bu tür sorunları geçici olarak çözmek için Service Bus düzenli olarak araştırır ve azaltmaları uygular. Bu azaltmaları yan etkileri görüntülenir. Örneğin, depolamada geçici sorunları işlemek için, Service Bus ileti gönderme işlemlerinin sürekli olarak çalışmasına izin veren bir sistem uygular. Risk azaltma doğası gereği, gönderilen bir ileti etkilenen kuyrukta veya abonelikte görünmesi ve bir alma işlemi için hazırlanabileceği 15 dakikaya kadar sürebilir. Genellikle, çoğu varlık bu sorunla karşılaşmaz. Ancak, Azure 'daki Service Bus varlıkların sayısı verildiğinde, bu hafifletme bazı durumlarda Service Bus müşterilerinin küçük bir alt kümesi için gerekir.
+Azure'daki diğer bileşenlerde zaman zaman hizmet sorunları olabilir. Örneğin, Servis Veri Kurumu'nun kullandığı bir sistem yükseltilirken, bu sistem geçici olarak azaltılmış özelliklerle karşılaşabilir. Bu tür sorunları aşmak için Servis Veri Servisi, azaltıcı etkenleri düzenli olarak araştırır ve uygular. Bu hafifletmelerin yan etkileri görünür. Örneğin, depolamayla ilgili geçici sorunları işlemek için, Hizmet Veri Birimi ileti gönderme işlemlerinin tutarlı bir şekilde çalışmasını sağlayan bir sistem uygular. Azaltmanın doğası gereği, gönderilen iletinin etkilenen sırada veya abonelikte görünmesi ve bir alma işlemi için hazır olması 15 dakika kadar sürebilir. Genel olarak konuşursak, çoğu varlık bu sorunla karşılaşmayacak. Ancak, Azure'daki Hizmet Veri Veri Mes'deki varlıkların sayısı göz önüne alındığında, bu azaltma bazen Hizmet Veri Ç'leri müşterilerinin küçük bir alt kümesi için gereklidir.
 
-### <a name="service-bus-failure-on-a-single-subsystem"></a>Tek bir alt sistemde hata Service Bus
-Herhangi bir uygulamayla, koşullar Service Bus iç bileşeninin tutarsız hale gelmesine neden olabilir. Service Bus bunu algıladığında, ne olduğunu tanılamaya yardımcı olmak için uygulamadan veri toplar. Veriler toplandıktan sonra, uygulamayı tutarlı bir duruma döndürme girişiminde yeniden başlatılır. Bu işlem oldukça hızlı gerçekleşir ve bir varlığın birkaç dakikaya kadar kullanılamaz şekilde görünmesine neden olur, ancak tipik aşağı doğru süreler çok daha kısadır.
+### <a name="service-bus-failure-on-a-single-subsystem"></a>Tek bir alt sistemde Servis Veri Servisi hatası
+Herhangi bir uygulamada, koşullar Servis Veri Servisi'nin dahili bir bileşeninin tutarsız olmasına neden olabilir. Servis Veri Servisi bunu algıladığında, ne olduğunu tanılamada yardımcı olmak için uygulamadan veri toplar. Veriler toplandıktan sonra, uygulama tutarlı bir duruma döndürmek amacıyla yeniden başlatılır. Bu işlem oldukça hızlı bir şekilde gerçekleşir ve tipik çalışma süreleri çok daha kısa olsa da, bir varlığın birkaç dakikaya kadar kullanılamıyor gibi görünmesine neden olur.
 
-Bu durumlarda, istemci uygulama bir [System. TimeoutException][System.TimeoutException] veya [messagingexception][MessagingException] özel durumu oluşturur. Service Bus, bu soruna yönelik otomatik istemci yeniden deneme mantığı biçiminde bir azaltma işlemi içerir. Yeniden deneme süresi tükendikten ve ileti teslim edilmeden, [kesintileri ve olağanüstü durumları işleme][handling outages and disasters]makalesinde bahsedilen diğer kullanımı inceleyebilirsiniz.
+Bu gibi durumlarda, istemci uygulaması bir [System.TimeoutException][System.TimeoutException] veya [MessagingException exception][MessagingException] oluşturur. Service Bus, otomatik istemci yeniden deneme mantığı biçiminde bu sorun için bir azaltma içerir. Yeniden deneme süresi bittikten ve ileti teslim edilmedikten sonra, [kesintileri ve felaketleri işleme][handling outages and disasters]ile ilgili makalede belirtilen diğer kullanarak keşfedebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık Service Bus zaman uyumsuz mesajlaşma hakkında temel bilgileri öğrendiğinize göre, [kesintileri ve olağanüstü durumları işleme][handling outages and disasters]hakkında daha fazla bilgi edinin.
+Şimdi Servis Veri Servisi'nde eşzamanlı mesajlaşmanın temellerini öğrendiğinize göre, [kesintileri ve felaketleri ele alma][handling outages and disasters]hakkında daha fazla ayrıntı okuyun.
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx

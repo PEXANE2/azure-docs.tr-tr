@@ -9,45 +9,45 @@ ms.date: 06/20/2019
 ms.author: crdun
 ms.custom: include file
 ms.openlocfilehash: 72a69359d412a7560472fbb73ec525ab5d4a4fce
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67325804"
 ---
-1. [Azure Portal] oturum açın.
+1. [Azure portalında]oturum açın.
 
-2. **Kaynak oluştur**’a tıklayın.
+2. **Kaynak Oluştur'u**tıklatın.
 
-3. Arama kutusuna **Web uygulaması**.
+3. Arama kutusuna **Web Uygulaması**yazın.
     
-4. Sonuç listesinden **Web uygulaması** marketten.
+4. Sonuç listesinde, Market'ten **Web Uygulaması'nı** seçin.
 
-5. Seçin, **abonelik** ve **kaynak grubu** (mevcut bir kaynak grubunu seçin _veya_ (uygulamanızla aynı adı kullanarak) yeni bir tane oluşturun).
+5. **Abonelik** ve **Kaynak Grubunuzu** seçin (varolan bir kaynak grubu seçin _veya_ yeni bir tane oluşturun (uygulamanızla aynı adı kullanarak)).
 
-6. Benzersiz bir seçin **adı** web uygulamanızın.
+6. Web uygulamanızın benzersiz bir **adı** seçin.
 
-7. Varsayılan seçin **Yayımla** olarak seçeneğini **kod**.
+7. **Varsayılan Kod**olarak **Yayımla** seçeneğini seçin.
 
-8. İçinde **çalışma zamanı yığını**, altında bir sürüm seçmek gereken **ASP.NET** veya **düğüm**. Bir .NET arka ucu oluşturuyorsanız ASP.NET altında bir sürüm seçin. Aksi takdirde göre düğüm uygulama hedefliyorsanız, sürüm birini düğümünü seçin.
+8. **Runtime yığınında,** **ASP.NET** veya **Düğüm**altında bir sürüm seçmeniz gerekir. Bir .NET arka uç oluşturuyorsanız, ASP.NET altında bir sürüm seçin. Aksi takdirde Düğüm tabanlı bir uygulamayı hedefliyorsanız, Düğüm'den sürümden birini seçin.
 
-9. Sağa seçin **işletim sistemi**, Linux veya Windows. 
+9. Linux veya Windows gibi doğru **İşletim Sistemini**seçin. 
 
-10. Seçin **bölge** dağıtılması için bu uygulamanın istediğiniz. 
+10. Bu uygulamanın dağıtılmasını istediğiniz **Bölgeyi** seçin. 
 
-11. Uygun seçin **App Service planı** ve isabet **gözden geçir ve Oluştur**. 
+11. Uygun **Uygulama Hizmet Planı'nı** seçin ve Gözden Geçir'e **vurun ve oluşturun.** 
 
-12. **Kaynak Grubu** altında mevcut bir kaynak grubunu seçin _ya da_ yeni bir tane oluşturun (uygulamanızla aynı adı kullanarak).
+12. **Kaynak Grubu**altında, varolan bir kaynak grubu seçin _veya_ yeni bir tane oluşturun (uygulamanızla aynı adı kullanarak).
 
-13. **Oluştur**’a tıklayın. Devam etmeden önce hizmetin sorunsuz dağıtılması için birkaç dakika bekleyin. Durum güncelleştirmeleri için portal üst bilgisindeki Bildirimler (zil) simgesini izleyin.
+13. **Oluştur'u**tıklatın. Devam etmeden önce hizmetin sorunsuz dağıtılması için birkaç dakika bekleyin. Durum güncelleştirmeleri için portal üst bilgisindeki Bildirimler (zil) simgesini izleyin.
 
-14. Dağıtım tamamlandıktan sonra tıklayarak **dağıtım ayrıntıları** kaynak türünde,'a tıklayın ve bölüm **Microsoft.Web/sites**. Bu App Service Web oluşturduğunuz uygulamasına gider. 
+14. Dağıtım tamamlandıktan **sonra, Dağıtım ayrıntıları** bölümüne tıklayın ve ardından **Microsoft.Web/site**türü kaynağına tıklayın. Sizi az önce oluşturduğunuz App Service Web App'e yönlendirecektir. 
 
-15. Tıklayarak **yapılandırma** altındaki dikey penceresinde **ayarları** ve **uygulama ayarları**, tıklayarak **yeni uygulama ayarı** düğmesi.
+15. **Ayarlar'ın** altındaki **Yapılandırma** bıçağına ve **Uygulama ayarlarında** **Yeni uygulama ayar** düğmesine tıklayın.
 
-16. İçinde **Ekle/Düzenle uygulama ayarı** want **adı** olarak **MobileAppsManagement_EXTENSION_VERSION** olarak değer **son** ve Tamam'a tıklıyorum.
+16. **Ekle/Yap uygulama ayar** sayfasında, **Ad'ı MobileAppsManagement_EXTENSION_VERSION** olarak ve Değer'i **en son** olarak girin ve Tamam'a basın. **Name**
 
-Bu yeni App Service Web uygulaması bir mobil uygulama olarak oluşturulan kullanmaya hazırsınız.
+Bu yeni oluşturulan App Service Web uygulamasını Mobil uygulama olarak kullanmaya hazırsınız.
 
 <!-- URLs. -->
-[Azure portal]: https://portal.azure.com/
+[Azure portalında]: https://portal.azure.com/

@@ -1,61 +1,61 @@
 ---
 title: Güvenlik denetimleri
-description: Azure Resource Manager hizmetini değerlendirmek için yerleşik güvenlik denetimlerinin denetim listesi.
+description: Azure Kaynak Yöneticisi hizmetini değerlendirmek için yerleşik güvenlik denetimlerinin bir denetim listesi.
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: d0a0625153e428a0d261e52d40b31ef5142eddfd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485630"
 ---
-# <a name="security-controls-for-azure-resource-manager"></a>Azure Resource Manager için güvenlik denetimleri
+# <a name="security-controls-for-azure-resource-manager"></a>Azure Kaynak Yöneticisi için güvenlik denetimleri
 
-Bu makalede, Azure Resource Manager yerleşik olarak bulunan güvenlik denetimleri Belgelenebilir.
+Bu makalede, Azure Kaynak Yöneticisi'nde yerleşik güvenlik denetimleri belgeleilmiştir.
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
-## <a name="data-protection"></a>Veri koruması
+## <a name="data-protection"></a>Veri koruma
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | HTTPS/TLS. |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Yok | Azure Resource Manager hiçbir müşteri içeriği depolar, yalnızca denetim verileri. |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Evet | |
-| Şifrelenmiş API çağrıları| Evet | |
+| Sunucu tarafında şifreleme istirahat: Microsoft tarafından yönetilen anahtarlar | Evet |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifreleme, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | HTTPS/TLS. |
+| Sunucu tarafında şifreleme istirahat: müşteri tarafından yönetilen anahtarlar (BYOK) | Yok | Azure Kaynak Yöneticisi müşteri içeriği depolar, yalnızca verileri kontrol edin. |
+| Sütun düzeyi şifreleme (Azure Veri Hizmetleri)| Evet | |
+| API şifreli aramalar| Evet | |
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet uç noktası desteği| Hayır | |
-| VNet ekleme desteği| Evet | |
+| Hizmet bitiş noktası desteği| Hayır | |
+| VNet enjeksiyon desteği| Evet | |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Hayır |  |
-| Zorlamalı tünel desteği| Hayır |  |
+| Zorunlu tünel desteği| Hayır |  |
 
-## <a name="monitoring--logging"></a>& Günlüğü izleme
+## <a name="monitoring--logging"></a>İzleme & günlüğe kaydetme
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Hayır | |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Etkinlik günlükleri, kaynaklarınız üzerinde gerçekleştirilen tüm yazma işlemlerini (PUT, POST, SILME) kullanıma sunar; bkz. [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüleme](view-activity-logs.md). |
+| Azure izleme desteği (Log analitiği, Uygulama öngörüleri, vb.)| Hayır | |
+| Kontrol ve yönetim düzlemi günlüğü ve denetimi| Evet | Etkinlik günlükleri, kaynaklarınızda gerçekleştirilen tüm yazma işlemlerini (PUT, POST, DELETE) ortaya çıkarır; kaynaklardaki [eylemleri denetlemek için etkinlik günlüklerini görüntüleyin.](view-activity-logs.md) |
 | Veri düzlemi günlüğü ve denetimi| Yok | |
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | [Azure Active Directory](/azure/active-directory) tabanlı.|
+| Kimlik doğrulaması| Evet | [Azure Etkin Dizini](/azure/active-directory) tabanlı.|
 | Yetkilendirme| Evet | |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet |  |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü, vb.)| Evet |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- [Azure hizmetlerinde yerleşik güvenlik denetimleri](../../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

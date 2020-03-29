@@ -1,7 +1,7 @@
 ---
-title: OWıN tabanlı Web API 'Lerini b2clogin.com 'e geçirme
+title: OWIN tabanlı web API'lerini b2clogin.com'a geçirin
 titleSuffix: Azure AD B2C
-description: Uygulamalarınızı b2clogin.com 'e geçirirken birden çok belirteç verenler tarafından verilen belirteçleri desteklemek için bir .NET Web API 'sini nasıl etkinleştirebileceğinizi öğrenin.
+description: Uygulamalarınızı b2clogin.com geçirerken birden çok belirteç veren tarafından verilen belirteçleri desteklemek için bir .NET web API'sini nasıl etkinleştirdiğinizi öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,49 +12,49 @@ ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78184103"
 ---
-# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWıN tabanlı bir Web API 'sini b2clogin.com 'e geçirme
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>b2clogin.com için OWIN tabanlı bir web API'sini geçirin
 
-Bu makalede, [.net Için açık Web arabirimi (OWıN)](http://owin.org/)uygulayan Web API 'lerinde birden çok belirteç verenler desteğini etkinleştirme tekniği açıklanmaktadır. Birden çok belirteç uç noktasını desteklemek, Azure Active Directory B2C (Azure AD B2C) API 'Lerini ve uygulamalarını *login.microsoftonline.com* ' den *b2clogin.com*' ye geçirirken yararlıdır.
+Bu makalede, [.NET (OWIN) için Açık Web Arabirimi](http://owin.org/)uygulayan web API'lerinde birden çok belirteç verenler için destek etkinleştirmek için bir teknik açıklanmaktadır. Azure Etkin Dizin B2C (Azure AD B2C) API'lerini ve uygulamalarını *login.microsoftonline.com'dan* *b2clogin.com'ye*geçirdiğinizde birden çok belirteç uç noktasını desteklemek yararlıdır.
 
-Hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçleri kabul etmek için API 'nize destek ekleyerek, API 'den login.microsoftonline.com tarafından verilen belirteçler desteğini kaldırmadan önce Web uygulamalarınızı aşamalı bir şekilde geçirebilirsiniz.
+Hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçleri kabul etmek için API'nize destek ekleyerek, API'den login.microsoftonline.com verilen belirteçler için desteği kaldırmadan önce web uygulamalarınızı aşamalı bir şekilde geçirebilirsiniz.
 
-Aşağıdaki bölümler, [Microsoft OWIN][katana] ara yazılım bileşenleri (Katana) kullanan BIR Web API 'sinde birden çok veren 'in nasıl etkinleşeceği hakkında bir örnek sunar. Kod örnekleri Microsoft OWıN ara yazılımı 'na özgü olsa da, genel teknik diğer OWIN kitaplıkları için geçerli olmalıdır.
+Aşağıdaki bölümler, [Microsoft OWIN][katana] ara yazılım bileşenlerini (Katana) kullanan bir web API'sında birden çok verenin nasıl etkinleştirilenene ilişkin bir örnek sunar. Kod örnekleri Microsoft OWIN ara yazılımına özgü olsa da, genel teknik diğer OWIN kitaplıkları için geçerli olmalıdır.
 
 > [!NOTE]
-> Bu makale, şu anda dağıtılmış olan API 'Leri ve `login.microsoftonline.com` başvuruda bulunan ve önerilen `b2clogin.com` uç noktasına geçiş yapmak isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir. Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
+> Bu makale, şu anda dağıtılan API'leri ve başvuruyapan `login.microsoftonline.com` uygulamaları olan ve önerilen `b2clogin.com` bitiş noktasına geçiş yapmak isteyen Azure AD B2C müşterileri için tasarlanmıştır. Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) yönlendirilmiş olarak kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımlarla devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
+Bu makaledeki adımlara devam etmeden önce aşağıdaki Azure AD B2C kaynaklarına ihtiyacınız var:
 
-* Kiracınızda oluşturulan [Kullanıcı akışları](tutorial-create-user-flows.md) veya [özel ilkeler](custom-policy-get-started.md)
+* [Kiracınızda](tutorial-create-user-flows.md) oluşturulan kullanıcı akışları veya [özel ilkeler](custom-policy-get-started.md)
 
-## <a name="get-token-issuer-endpoints"></a>Belirteç Verenin uç noktalarını al
+## <a name="get-token-issuer-endpoints"></a>Belirteç veren uç noktalarını alın
 
-İlk olarak, API 'niz içinde desteklemek istediğiniz her veren için belirteç verenin uç noktası URI 'Lerini almanız gerekir. Azure AD B2C kiracınız tarafından desteklenen *b2clogin.com* ve *login.microsoftonline.com* uç noktalarını almak için Azure Portal aşağıdaki yordamı kullanın.
+Öncelikle API'nizde desteklemek istediğiniz her ihraççı için belirteç veren uç noktası URIs'lerini almanız gerekir. Azure AD B2C kiracınız tarafından desteklenen *b2clogin.com* ve *login.microsoftonline.com* uç noktalarını almak için Azure portalında aşağıdaki yordamı kullanın.
 
-Mevcut Kullanıcı akışlarınızdan birini seçerek başlayın:
+Varolan kullanıcı akışlarından birini seçerek başlayın:
 
-1. [Azure portal](https://portal.azure.com) Azure AD B2C kiracınıza gidin
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin
-1. Mevcut bir ilkeyi seçin (örneğin *B2C_1_signupsignin1*) ve ardından **Kullanıcı akışını Çalıştır** ' ı seçin.
-1. Sayfanın üst kısmındaki **Kullanıcı akış başlığını Çalıştır** bölümünde, bu kullanıcı akışı Için OpenID Connect bulma uç noktasına gitmek üzere köprüyü seçin.
+1. [Azure portalında](https://portal.azure.com) Azure AD B2C kiracınıza gidin
+1. **İlkeler** **altında, Kullanıcı akışlarını (ilkeler)** seçin
+1. Varolan bir ilke seçin, örneğin *B2C_1_signupsignin1,* ardından **Kullanıcı akışını çalıştır'ı** seçin
+1. Sayfanın üst kısmına yakın **Çalıştır kullanıcı akışı** başlığı altında, kullanıcı akışı için OpenID Connect bulma bitiş noktasına gitmek için köprüseçeneğini seçin.
 
-    ![Azure portal Şimdi Çalıştır sayfasında iyi bilinen URI Köprüsü](media/multi-token-endpoints/portal-01-policy-link.png)
+    ![Azure portalının Çalıştır şimdi sayfasında tanınmış URI köprü](media/multi-token-endpoints/portal-01-policy-link.png)
 
-1. Tarayıcınızda açılan sayfada `issuer` değerini kaydedin, örneğin:
+1. Tarayıcınızda açılan sayfada, örneğin değeri `issuer` kaydedin:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-1. **Etki alanı seç** açılan öğesini kullanarak diğer etki alanını seçin, sonra önceki iki adımı bir kez daha gerçekleştirin ve `issuer` değerini kaydedin.
+1. Diğer **etki alanını** seçmek için etki alanını seç'i kullanın, ardından önceki `issuer` iki adımı bir kez daha gerçekleştirin ve değerini kaydedin.
 
-Artık şuna benzer iki Uri kayıtlı olmalıdır:
+Şimdi benzer iki URI kaydedilmiş olmalıdır:
 
 ```
 https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/
@@ -63,36 +63,36 @@ https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/
 
 ### <a name="custom-policies"></a>Özel ilkeler
 
-Kullanıcı akışları yerine özel ilkeleriniz varsa, veren URI 'Leri almak için benzer bir işlem kullanabilirsiniz.
+Kullanıcı akışları yerine özel ilkeleriniz varsa, veren IU'ları almak için benzer bir işlem kullanabilirsiniz.
 
 1. Azure AD B2C kiracınıza gidin
-1. **Kimlik deneyimi çerçevesini** seçin
-1. Bağlı olan taraf ilkelerinizin birini seçin (örneğin, *B2C_1A_signup_signin* )
-1. Bir etki alanı seçmek için **etki alanı seç** açılan listesini kullanın, örneğin *yourtenant.b2clogin.com*
-1. **OpenID Connect bulma uç noktası** altında görünen köprüyü seçin
-1. `issuer` değerini Kaydet
+1. **Kimlik Deneyimi Çerçevesi** Seçin
+1. Güvenen parti ilkelerinizden birini seçin( örneğin, *B2C_1A_signup_signin*
+1. Bir **etki alanı** seçmek için etki alanı açılır ayinini *seçinyourtenant.b2clogin.com*
+1. OpenID Connect bulma bitiş noktası altında görüntülenen **köprüözelliğini** seçin
+1. `issuer` Değeri kaydetme
 1. Diğer etki alanı için 4-6 adımlarını gerçekleştirin, örneğin *login.microsoftonline.com*
 
 ## <a name="get-the-sample-code"></a>Örnek kodunu alma
 
-Her iki Token Endpoint URI 'si olduğuna göre, her iki uç noktanın de geçerli verenler olduğunu belirtmek için kodunuzu güncelleştirmeniz gerekir. Örnek olarak, örnek uygulamayı indirin veya kopyalayın, ardından örneği her iki bitiş noktasını da geçerli verenler olarak destekleyecek şekilde güncelleştirin.
+Artık her iki belirteç uç noktası URIs'iniz olduğuna göre, her iki uç noktanın da geçerli verenler olduğunu belirtmek için kodunuzu güncelleştirmeniz gerekir. Örnek üzerinden yürümek için örnek uygulamayı karşıdan yükleyin veya klonlayın, ardından her iki uç noktayı da geçerli verenler olarak desteklemek için örneği güncelleştirin.
 
-Arşivi indirin: [Active-Directory-B2C-DotNet-WebApp-and-WebApi-Master. zip][sample-archive]
+Arşivi [indirin: active-directory-b2c-dotnet-webapp-and-webapi-master.zip][sample-archive]
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-## <a name="enable-multiple-issuers-in-web-api"></a>Web API 'de birden çok veren etkinleştirme
+## <a name="enable-multiple-issuers-in-web-api"></a>Web API'sinde birden çok vereni etkinleştirme
 
-Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu belirtmek için kodu güncelleştirin.
+Bu bölümde, her iki belirteç veren uç noktalarının geçerli olduğunu belirtmek için kodu güncelleştirebilirsiniz.
 
-1. Visual Studio 'da **B2C-WebAPI-DotNet. sln** çözümünü açın
-1. **Taskservice** projesinde, *\\taskservice App_Start\\* * Startup.auth.cs** * dosyasını düzenleyicide açın
-1. Aşağıdaki `using` yönergesini dosyanın en üstüne ekleyin:
+1. Visual Studio'da **B2C-WebAPI-DotNet.sln** çözümlerini açın
+1. **TaskService** projesinde, düzenleyicinizde *TaskService\\\\App_Start **Startup.Auth.cs*** dosyasını açın
+1. Dosyanın `using` üst bölümüne aşağıdaki yönergeyi ekleyin:
 
     `using System.Collections.Generic;`
-1. [`ValidIssuers`][validissuers] özelliğini [`TokenValidationParameters`][tokenvalidationparameters] tanımına ekleyin ve önceki bölümde kaydettiğiniz URI 'leri belirtin:
+1. [`ValidIssuers`][validissuers] Özelliği [`TokenValidationParameters`][tokenvalidationparameters] tanıma ekleyin ve önceki bölümde kaydettiğiniz her iki ÜR'leri belirtin:
 
     ```csharp
     TokenValidationParameters tvps = new TokenValidationParameters
@@ -107,7 +107,7 @@ Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu
     };
     ```
 
-`TokenValidationParameters`, MSAL.NET tarafından sağlanır ve *Startup.auth.cs*içindeki kodun sonraki bölümünde owın ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
+`TokenValidationParameters`MSAL.NET tarafından sağlanır ve *Startup.Auth.cs*kodun bir sonraki bölümünde OWIN ara yazılım tarafından tüketilir. Birden çok geçerli veren belirtildiğinde, OWIN uygulama ardışık adı her iki belirteç uç noktasının da geçerli verenler olduğunu niçin onayladığının farkında dır.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -117,15 +117,15 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 });
 ```
 
-Daha önce belirtildiği gibi, diğer OWIN kitaplıkları genellikle birden çok veren desteklemek için benzer bir özellik sağlar. Her kitaplık için örneklerin sağlanması bu makalenin kapsamı dışındadır, ancak çoğu kitaplık için benzer bir teknik kullanabilirsiniz.
+Daha önce de belirtildiği gibi, diğer OWIN kitaplıkları genellikle birden çok ihraççıyı desteklemek için benzer bir tesis sağlar. Her kitaplık için örnek sağlamak bu makalenin kapsamı dışında olsa da, çoğu kitaplık için benzer bir teknik kullanabilirsiniz.
 
-## <a name="switch-endpoints-in-web-app"></a>Web uygulamasındaki uç noktaları değiştirme
+## <a name="switch-endpoints-in-web-app"></a>Web uygulamasında uç noktaları değiştirme
 
-Artık Web API 'niz tarafından desteklenen URI 'Ler sayesinde, Web uygulamanızı b2clogin.com uç noktasından belirteçleri alması için güncelleştirmeniz gerekir.
+Artık web API'nız tarafından desteklenen her iki URI ile, artık web uygulamanızı güncellemeniz gerekir, böylece b2clogin.com uç noktasından belirteçleri alır.
 
-Örneğin, **taskwebapp** projesinin *taskwebapp\\* * Web. config** * dosyasındaki `ida:AadInstance` değerini değiştirerek, örnek Web uygulamasını yeni uç noktayı kullanacak şekilde yapılandırabilirsiniz.
+Örneğin, *TaskWebApp\\**Web.config ** taskwebapp*projesinin **TaskWebApp** `ida:AadInstance` değerini değiştirerek örnek web uygulamasını yeni bitiş noktasını kullanacak şekilde yapılandırabilirsiniz.
 
-TaskWebApp 'in *Web. config* dosyasındaki `ida:AadInstance` değerini, `login.microsoftonline.com`yerine `{your-b2c-tenant-name}.b2clogin.com` başvuruda bulunan şekilde değiştirin.
+TaskWebApp'ın `ida:AadInstance` *Web.config'indeki* değeri değiştirin, böylece `{your-b2c-tenant-name}.b2clogin.com` başvuru yerine `login.microsoftonline.com`.
 
 Önce:
 
@@ -134,20 +134,20 @@ TaskWebApp 'in *Web. config* dosyasındaki `ida:AadInstance` değerini, `login.m
 <add key="ida:AadInstance" value="https://login.microsoftonline.com/tfp/{0}/{1}" />
 ```
 
-Sonra (`{your-b2c-tenant}`, B2C kiracınızın adıyla değiştirin):
+Sonra (B2C kiracınızın adı ile değiştirin): `{your-b2c-tenant}`
 
 ```xml
 <!-- New value -->
 <add key="ida:AadInstance" value="https://{your-b2c-tenant}.b2clogin.com/tfp/{0}/{1}" />
 ```
 
-Uç nokta dizeleri Web uygulamasının yürütülmesi sırasında oluşturulduğunda, b2clogin.com tabanlı uç noktalar belirteçleri istediğinde kullanılır.
+Uç nokta dizeleri web uygulamasının yürütülmesi sırasında oluşturulduğunda, belirteçleri istediğinde b2clogin.com tabanlı uç noktalar kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, birden çok veren uç noktasından belirteçleri kabul etmek için Microsoft OWıN ara yazılımı (Katana) uygulayan bir Web API 'SI yapılandırma yöntemi sunulmuştur. Fark edebilirsiniz, ancak bu projeleri kendi kiracınızda derlemek ve çalıştırmak istiyorsanız, değiştirilmesi gereken hem TaskService hem de TaskWebApp projelerinin *Web. config* dosyalarında bulunan birkaç başka dize vardır. Projeleri eylemde görmek istiyorsanız uygun şekilde değiştirmek için hoş geldiniz, ancak bunu yaparak tam bir adım adım bu makalenin kapsamı dışındadır.
+Bu makalede, birden çok veren uç noktalarından belirteçleri kabul etmek için Microsoft OWIN ara ware (Katana) uygulayan bir web API yapılandırma yöntemi sunulmuştur. Fark edebileceğiniz gibi, *web.Config* dosyalarında hem TaskService hem de TaskWebApp projelerinin bu projeleri kendi kiracınıza karşı oluşturmak ve çalıştırmak istiyorsanız değiştirilmesi gereken birkaç dizeleri vardır. Projeleri iş başında görmek istiyorsanız, projeleri uygun şekilde değiştirebilirsiniz, ancak bu nedenle bu makalenin kapsamı dışında dır.
 
-Azure AD B2C tarafından yayılan farklı güvenlik belirteçleri türleri hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C belirteçlere genel bakış](tokens-overview.md).
+Azure AD B2C tarafından yayılan farklı güvenlik belirteçleri türleri hakkında daha fazla bilgi için Azure [Etkin Dizin B2C'deki belirteçlere genel bakış](tokens-overview.md)bölümüne bakın.
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta ölçekte akış
-description: Azure HDInsight 'ta ölçeklenebilir Apache kümeleriyle veri akışını kullanma.
+title: Azure HDInsight'ta ölçekte akış
+description: Azure HDInsight'ta ölçeklenebilir Apache kümeleriyle veri akışı nasıl kullanılır?
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,61 +9,61 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435388"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight’ta ölçeğe göre akış
 
-Gerçek zamanlı büyük veri çözümleri, hareket halindeki veriler üzerinde çalışır. Genellikle, bu veriler en fazla varış zamanında değerlidir. Gelen veri akışı bu anda işlenebileceğinden daha büyük olursa, kaynakları daraltmanız gerekebilir. Alternatif olarak, bir HDInsight kümesi, isteğe bağlı düğümler ekleyerek akış çözümünüzü karşılayacak şekilde ölçeklenebilir.
+Gerçek zamanlı büyük veri çözümleri hareket halindeki veriler üzerinde hareket eder. Tipik olarak, bu veriler varış zamanında en değerli sidir. Gelen veri akışı o anda işlenebilecekden daha büyük olursa, kaynakları azaltmanız gerekebilir. Alternatif olarak, bir HDInsight kümesi isteğe bağlı düğümler ekleyerek akış çözümünüzü karşılayacak şekilde ölçeklenebilir.
 
-Bir akış uygulamasında, bir veya daha fazla veri kaynağı, yararlı bilgileri bırakmadan hızlı bir şekilde atılması gereken olayları (bazen milyonlarca saniyede milyonlarca) oluşturuyor. Gelen olaylar, [Apache Kafka](kafka/apache-kafka-introduction.md) veya [Event Hubs](https://azure.microsoft.com/services/event-hubs/)gibi bir hizmet tarafından *olay Kuyruklama*olarak da adlandırılan *akış ara belleği*ile işlenir. Olayları topladıktan sonra, [Apache Storm](storm/apache-storm-overview.md) veya [Apache Spark akışı](spark/apache-spark-streaming-overview.md)gibi *akış işleme* katmanında gerçek zamanlı bir analiz sistemi kullanarak verileri çözümleyebilirsiniz. İşlenen veriler, [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)gibi uzun süreli depolama sistemlerinde depolanabilir ve [Power BI](https://powerbi.microsoft.com), Tableau veya özel bir Web sayfası gibi bir iş zekası panosunda gerçek zamanlı olarak görüntülenebilir.
+Bir akış uygulamasında, bir veya daha fazla veri kaynağı yararlı bilgiler bırakmadan hızlı bir şekilde yutulması gereken olaylar (bazen saniyede milyonlarca) oluşturur. Gelen olaylar, [Apache Kafka](kafka/apache-kafka-introduction.md) veya Event *event queuing* [Hub'ları](https://azure.microsoft.com/services/event-hubs/)gibi bir hizmet tarafından *akış arabelleği*ile işlenir . Olayları topladıktan sonra, [apache Storm](storm/apache-storm-overview.md) veya [Apache Spark Streaming](spark/apache-spark-streaming-overview.md)gibi *akış işleme* katmanı içindeki gerçek zamanlı bir analiz sistemini kullanarak verileri analiz edebilirsiniz. İşlenen veriler [Azure Veri Gölü Depolama](https://azure.microsoft.com/services/storage/data-lake-storage/)gibi uzun süreli depolama sistemlerinde depolanabilir ve Power [BI,](https://powerbi.microsoft.com)Tableau veya özel bir web sayfası gibi bir iş zekası panosunda gerçek zamanlı olarak görüntülenebilir.
 
-![Azure HDInsight akış desenleri](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Azure HDInsight Akış Desenleri](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-Apache Kafka, yüksek performanslı, düşük gecikmeli bir ileti sıraya alma hizmeti sağlar ve artık Apache 'nin açık kaynak yazılım (OSS) paketinin bir parçasıdır. Kafka, bir yayımlama ve abone olma mesajlaşma modeli kullanır ve bölümlenmiş verilerin akışlarını dağıtılmış, çoğaltılan bir kümede güvenli bir şekilde depolar. Kafka, üretilen iş arttıkça doğrusal olarak ölçeği ölçeklendirir.
+Apache Kafka yüksek iş letim, düşük gecikmeli ileti kuyruk hizmeti sunmaktadır ve şu anda Açık Kaynak Yazılım (OSS) Apache paketinin bir parçasıdır. Kafka bir yayımlama ve abone mesajlaşma modeli kullanır ve bölümlenmiş veri akışlarını dağıtılmış, çoğaltılmış bir kümede güvenli bir şekilde saklar. Kafka, iş buzun arttıkça doğrusal olarak ölçeklendirilir.
 
-Daha fazla bilgi için bkz. [HDInsight 'ta Apache Kafka tanıtımı](kafka/apache-kafka-introduction.md).
+Daha fazla bilgi için [HDInsight'ta Apache Kafka tanıtımı](kafka/apache-kafka-introduction.md)na bakın.
 
 ## <a name="apache-storm"></a>Apache Storm
 
-Apache Storm, Hadoop ile gerçek zamanlı olarak veri akışlarını işlemek için optimize edilmiş, dağıtılmış, hataya dayanıklı ve açık kaynaklı bir hesaplama sistemidir. Gelen bir olay için çekirdek veri birimi, sabit bir anahtar/değer çiftleri kümesi olan bir kayıt kümesidir. Bu tanımlama gruplarının sınırsız bir sırası, Spout 'tan gelen bir akış oluşturur. Spout bir akış veri kaynağını (örneğin, Kafka) sarmalanmış ve tanımlama gruplarını yayar. Bir fırtınası topolojisi, bu akışlarda dönüşümlerdeki bir dizidir.
+Apache Storm, Hadoop ile gerçek zamanlı veri akışlarını işlemek için optimize edilmiş dağıtılmış, hataya dayanıklı, açık kaynak kodlu bir hesaplama sistemidir. Gelen bir olayın temel veri birimi, anahtar/değer çiftlerinden oluşan değişmez bir küme olan bir Tuple'dır. Bu Tuples sınırsız bir dizi bir Spout gelen bir Akış oluşturur. Spout bir akış veri kaynağını (Kafka gibi) sarar ve Tuples'ı yayır. Fırtına Topolojisi bu derelerde bir dizi dönüşümdür.
 
-Daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Storm nedir?](storm/apache-storm-overview.md).
+Daha fazla bilgi için Azure [HDInsight'ta Apache Storm nedir?](storm/apache-storm-overview.md)
 
-## <a name="spark-streaming"></a>Spark akışı
+## <a name="spark-streaming"></a>Kıvılcım Akışı
 
-Spark akışı, toplu işleme için kullandığınız kodu yeniden kullanmanıza olanak tanıyan Spark uzantısıdır. Aynı uygulamadaki hem Batch hem de etkileşimli sorguları birleştirebilirsiniz. Bu durumda, Spark akışı, durum bilgisi olarak bir kez işleme semantiğini sağlar. [Kafka DIRECT API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)'siyle birlikte kullanıldığında, tüm Kafka verilerinin tek bir kez Spark akışı tarafından alındığından emin olmanızı sağlayan, uçtan uca tam olarak bir kez garanti elde etmek mümkündür. Spark akışının güçlerinden biri hataya dayanıklı yeteneklerdir ve küme içinde birden çok düğüm kullanılırken, hatalı düğümleri hızlı bir şekilde kurtarıyor.
+Kıvılcım Akışı, toplu iş işleme için kullandığınız kodu yeniden kullanmanıza olanak tanıyan Spark'ın bir uzantısıdır. Aynı uygulamada hem toplu iş hem de etkileşimli sorguları birleştirebilirsiniz. Fırtına aksine, Spark Streaming tam olarak bir kez işleme semantik stateful sağlar. Tüm Kafka verilerinin Spark Streaming tarafından tam olarak bir kez alınmasını sağlayan [Kafka Direct API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)ile birlikte kullanıldığında, tam olarak bir kez garanti elde etmek mümkündür. Spark Streaming'in güçlü yanlarından biri, küme içinde birden fazla düğüm kullanıldığında hatalı düğümleri hızla geri kazanabilme özelliğidir.
 
-Daha fazla bilgi için bkz. [Apache Spark akışı nedir?](hdinsight-spark-streaming-overview.md).
+Daha fazla bilgi için [Bkz. Apache Spark Streaming nedir?](hdinsight-spark-streaming-overview.md)
 
-## <a name="scaling-a-cluster"></a>Küme ölçekleme
+## <a name="scaling-a-cluster"></a>Kümeyi ölçekleme
 
-Oluşturma sırasında kümenizdeki düğüm sayısını belirtebilseniz de, iş yüküyle eşleşmesi için kümeyi büyütmek ya da küçültmek isteyebilirsiniz. Tüm HDInsight kümeleri [kümedeki düğümlerin sayısını değiştirmenize](hdinsight-administer-use-portal-linux.md#scale-clusters)izin verir. Tüm veriler Azure depolama 'da veya Data Lake Storage depolandığından, Spark kümeleri veri kaybı olmadan bırakılabilir.
+Oluşturma sırasında kümenizdeki düğüm sayısını belirtebiliyor olsanız da, kümeyi iş yüküyle eşleşecek şekilde büyütmek veya küçültmek isteyebilirsiniz. Tüm HDInsight kümeleri [kümedeki düğüm sayısını değiştirmenize](hdinsight-administer-use-portal-linux.md#scale-clusters)olanak sağlar. Tüm veriler Azure Depolama veya Veri Gölü Depolama'da depolanırken, kıvılcım kümeleri veri kaybı olmadan bırakılabilir.
 
-Teknoloji kullanmanın avantajları vardır. Örneğin, Kafka bir olay arabelleğe alma teknolojisidir, bu nedenle çok fazla GÇ kullanımı ve çok fazla işlem gücü gerektirmez. Buna karşılık, Spark akışı gibi akış işlemcileri, daha güçlü VM 'Ler gerektiren işlem yoğunluklu bir işlemdir. Bu teknolojilerin farklı kümelere ayrılmasıyla, VM 'Leri en iyi şekilde kullanarak bunları bağımsız olarak ölçeklendirebilirsiniz.
+Ayrıştırma teknolojilerinin avantajları vardır. Örneğin, Kafka bir olay tamponlama teknolojisi, bu yüzden çok IO yoğun ve çok işlem gücü gerekmez. Buna karşılık, Spark Streaming gibi akış işlemcileri daha güçlü VM'ler gerektiren bilgi işlem yoğundur. Bu teknolojilerin farklı kümelere ayrılmasını sağlayarak, VM'leri en iyi şekilde kullanırken bunları bağımsız olarak ölçeklendirebilirsiniz.
 
-### <a name="scale-the-stream-buffering-layer"></a>Akış arabelleğe alma katmanını ölçeklendirme
+### <a name="scale-the-stream-buffering-layer"></a>Akış arabelleğe alma katmanını ölçeklendirin
 
-Akış arabelleğe alma teknolojileri Event Hubs ve Kafka her ikisi de bu bölümlerden okunan bölümleri ve müşterileri kullanır. Giriş aktarım hızını ölçeklendirmek için bölüm sayısının ölçeğini ölçekleme gerekir ve bölüm eklemek de artan paralellik sağlar. Event Hubs, bölüm sayısı dağıtımdan sonra değiştirilemez, bu nedenle hedef ölçeklendirmeye göz önünde bulundurularak başlamak önemlidir. Kafka ile, Kafka verileri işlerken bile [bölüm eklemek](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)mümkündür. Kafka, `kafka-reassign-partitions.sh`bölümleri yeniden atamak için bir araç sağlar. HDInsight, `rebalance_rackaware.py`bir [bölüm çoğaltma yeniden dengeleme aracı](https://github.com/hdinsight/hdinsight-kafka-tools)sağlar. Bu yeniden dengeleme Aracı, her çoğaltmanın ayrı bir hata etki alanında ve güncelleştirme etki alanında olması, Kafka raf bilincinde ve hata toleransı artırdığından bu şekilde `kafka-reassign-partitions.sh` aracını çağırır.
+Akış arabelleğe alma teknolojileri Olay Hub'ları ve Kafka hem bölümleri kullanır, hem de tüketiciler bu bölümlerden okur. Giriş çıktısını ölçekleme, bölüm sayısını ölçekleme gerektirir ve bölümler eklemek artan paralellik sağlar. Olay Hub'larında, dağıtımdan sonra bölüm sayısı değiştirilemez, bu nedenle hedef ölçeği göz önünde bulundurarak başlamak önemlidir. Kafka ile, Kafka verileri işlerken bile [bölüm eklemek](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)mümkündür. Kafka, bölümleri yeniden atamak için `kafka-reassign-partitions.sh`bir araç sağlar. HDInsight bir bölüm çoğaltma yeniden `rebalance_rackaware.py`dengeleme [aracı](https://github.com/hdinsight/hdinsight-kafka-tools)sağlar, . Bu yeniden dengeleme aracı, aracı her yinelemenin ayrı bir hata etki alanında olduğu ve etki alanını güncelleştirerek Kafka rafın farkında ve hata toleransını artıracak şekilde çağırır. `kafka-reassign-partitions.sh`
 
-### <a name="scale-the-stream-processing-layer"></a>Akış işleme katmanını ölçeklendirme
+### <a name="scale-the-stream-processing-layer"></a>Akış işleme katmanını ölçeklendirin
 
-Hem Apache Storm hem de Spark akışı, veriler işlenirken bile, kümelerine çalışan düğümlerin eklenmesini destekler.
+Hem Apache Storm hem de Spark Streaming, veriler işlenirken bile kümelerine işçi düğümleri eklemeyi destekler.
 
-Ölçeklendirme fırtınası aracılığıyla eklenen yeni düğümlerden yararlanmak için küme boyutu artırılmadan önce başlatılan tüm fırtınası topolojilerini yeniden dengelemeniz gerekir. Bu yeniden dengeleme, fırtınası Web Kullanıcı arabirimi veya CLı 'sı kullanılarak yapılabilir. Daha fazla bilgi için [Apache Storm belgelerine](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)bakın.
+Ölçekleme Fırtınası ile eklenen yeni düğümlerden yararlanmak için, küme boyutu artırılmadan önce başlayan fırtına topolojilerini yeniden dengelemeniz gerekir. Bu yeniden dengeleme Storm web UI veya CLI kullanılarak yapılabilir. Daha fazla bilgi için [Apache Storm belgelerine](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)bakın.
 
-Apache Spark, uygulama gereksinimlerine bağlı olarak, ortamını yapılandırmak için üç temel parametre kullanır: `spark.executor.instances`, `spark.executor.cores`ve `spark.executor.memory`. *Yürütücü* , Spark uygulaması için başlatılan bir işlemdir. Bir yürütücü çalışan düğümünde çalışır ve uygulamanın görevlerinin çalıştırılmasından sorumludur. Her küme için varsayılan yürütme sayısı ve yürütücü boyutları, çalışan düğümlerinin sayısı ve çalışan düğüm boyutu temel alınarak hesaplanır. Bu numaralar, her küme baş düğümündeki `spark-defaults.conf`dosyasında depolanır.
+Apache Spark, uygulama gereksinimlerine bağlı olarak ortamını yapılandırmak `spark.executor.cores`için `spark.executor.memory`üç temel parametre kullanır: `spark.executor.instances`, , ve . *Yürütücü,* Bir Kıvılcım uygulaması için başlatılan bir işlemdir. Bir uygulayıcı işçi düğümü üzerinde çalışır ve uygulamanın görevlerini yürütmekten sorumludur. Varsayılan uygulayıcı sayısı ve her küme için uygulayıcı boyutları, alt düğüm sayısı ve alt düğüm boyutuna göre hesaplanır. Bu sayılar her küme `spark-defaults.conf`kafası düğümünde dosyada depolanır.
 
-Bu üç parametre küme düzeyinde yapılandırılabilir, küme üzerinde çalışan tüm uygulamalar için de belirlenebilir ve her bir uygulama için de belirtilebilir. Daha fazla bilgi için bkz. [Apache Spark kümeleri için kaynakları yönetme](spark/apache-spark-resource-manager.md).
+Bu üç parametre küme düzeyinde, küme üzerinde çalışan tüm uygulamalar için yapılandırılabilir ve her bir uygulama için de belirtilebilir. Daha fazla bilgi için Bkz. [Apache Spark kümeleri için kaynakları yönetme.](spark/apache-spark-resource-manager.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure HDInsight 'ta Apache Storm topolojisi oluşturma ve izleme](storm/apache-storm-quickstart.md)
+* [Azure HDInsight'ta Bir Apache Storm topolojisi oluşturun ve izleyin](storm/apache-storm-quickstart.md)
 * [HDInsight üzerinde Apache Storm için örnek topolojiler](storm/apache-storm-example-topology.md)
-* [HDInsight üzerinde Apache Spark giriş](spark/apache-spark-overview.md)
-* [HDInsight üzerinde Apache Kafka kullanmaya başlama](kafka/apache-kafka-get-started.md)
+* [HDInsight'ta Apache Spark'a Giriş](spark/apache-spark-overview.md)
+* [HDInsight üzerinde Apache Kafka'yı kullanmaya başlama](kafka/apache-kafka-get-started.md)

@@ -1,75 +1,75 @@
 ---
-title: OMS güncelleştirme dağıtımlarınızı Azure 'a geçirme
-description: Bu makalede, mevcut OMS güncelleştirme dağıtımlarınızın Azure 'a nasıl geçirileceği açıklanır.
+title: OMS Update Dağıtımlarınızı Azure'a geçirin
+description: Bu makalede, varolan OMS Update dağıtımlarınızı Azure'a nasıl geçirebilirsiniz
 services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75417774"
 ---
-# <a name="migrate-your-oms-update-deployments-to-azure"></a>OMS güncelleştirme dağıtımlarınızı Azure 'a geçirme
+# <a name="migrate-your-oms-update-deployments-to-azure"></a>OMS Update Dağıtımlarınızı Azure'a geçirin
 
-Operations Management Suite (OMS) portalı [kullanım dışı](../azure-monitor/platform/oms-portal-transition.md)bırakılıyor. Güncelleştirme Yönetimi için OMS portalında bulunan tüm işlevler Azure portal kullanılabilir. Bu makale, Azure portal geçiş yapmak için ihtiyacınız olan bilgileri sağlar.
+Operasyon Yönetimi Paketi (OMS) portalı [amortismana sokulmaktadır.](../azure-monitor/platform/oms-portal-transition.md) Güncelleştirme Yönetimi için OMS portalında bulunan tüm işlevler Azure portalında kullanılabilir. Bu makalede, Azure portalına geçiş yapmak için ihtiyacınız olan bilgiler sağlanmaktadır.
 
 ## <a name="key-information"></a>Önemli bilgiler
 
-* Mevcut dağıtımlar çalışmaya devam edecektir. Dağıtımı Azure 'da yeniden oluşturduktan sonra, OMS 'den eski dağıtımınızı silebilirsiniz.
-* OMS 'de bulunan tüm mevcut özellikler Azure 'da bulunur, Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için bkz. [güncelleştirme yönetimi genel bakış](automation-update-management.md).
+* Varolan dağıtımlar çalışmaya devam eder. Azure'da dağıtımı yeniden oluşturduktan sonra, eski dağıtımınızı OMS'den silebilirsiniz.
+* OMS'da sahip olduğunuz tüm mevcut özellikler, Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için Azure'da kullanılabilir, [bkz.](automation-update-management.md)
 
 ## <a name="access-the-azure-portal"></a>Azure Portalına erişme
 
-OMS çalışma alanınızda **Azure 'Da aç**' a tıklayın. Bu, OMS 'nin kullandığı Log Analytics çalışma alanına gider.
+OMS çalışma alanınızdan **Azure'da Aç'ı**tıklatın. Bu, OMS'nin kullandığı Günlük Analizi çalışma alanına yönlendirilir.
 
-![Azure-OMS portalında aç](media/migrate-oms-update-deployments/link-to-azure-portal.png)
+![Azure'da açık - OMS portalı](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
-Azure portal **Otomasyon hesabı** ' na tıklayın.
+Azure portalında **Otomasyon Hesabı'nı** tıklatın
 
 ![Azure İzleyici günlükleri](media/migrate-oms-update-deployments/log-analytics.png)
 
-Otomasyon hesabınızda, Güncelleştirme Yönetimi açmak için **güncelleştirme yönetimi** ' ye tıklayın.
+Otomasyon Hesabınızda, Güncelleştirme Yönetimi'ni açmak için **Yönetim'i Güncelleştir'i** tıklatın.
 
 ![Güncelleştirme Yönetimi](media/migrate-oms-update-deployments/azure-automation.png)
 
-Gelecekte Azure portal, **tüm hizmetler**' ın altında **Otomasyon hesapları** ' nı **seçin, uygun**Otomasyon hesabını seçebilir ve **güncelleştirme yönetimi**' a tıklayabilirsiniz.
+Gelecekte doğrudan Azure portalına gidebilirsiniz, **Tüm hizmetler**altında, **Yönetim Araçları**altında **Otomasyon Hesapları'nı** seçin, uygun Otomasyon Hesabı'nı seçin ve **Yönetim'i Güncelleştir'i**tıklatın.
 
-## <a name="recreate-existing-deployments"></a>Mevcut dağıtımları yeniden oluştur
+## <a name="recreate-existing-deployments"></a>Varolan dağıtımları yeniden oluşturma
 
-OMS portalında oluşturulan tüm güncelleştirme dağıtımları, var olan güncelleştirme dağıtımıyla aynı ada sahip bir bilgisayar grubu olarak da bilinen [kayıtlı bir aramaya](../azure-monitor/platform/computer-groups.md) sahiptir. Kayıtlı arama, güncelleştirme dağıtımında zamanlanan makinelerin listesini içerir.
+OMS portalında oluşturulan tüm güncelleştirme dağıtımlarında, var olan güncelleştirme dağıtımıyla aynı ada sahip bilgisayar grubu olarak da bilinen kayıtlı bir [arama](../azure-monitor/platform/computer-groups.md) bulunur. Kaydedilen arama, güncelleştirme dağıtımında zamanlanan makinelerin listesini içerir.
 
 ![Güncelleştirme Yönetimi](media/migrate-oms-update-deployments/oms-deployment.png)
 
-Kayıtlı olan bu aramayı kullanmak için şu adımları izleyin:
+Bu varolan kaydedilmiş aramayı kullanmak için aşağıdaki adımları izleyin:
 
-Yeni bir güncelleştirme dağıtımı oluşturmak için Azure portal gidin, kullanılan Otomasyon hesabını seçin ve **güncelleştirme yönetimi**' a tıklayın. **Güncelleştirme dağıtımı zamanla**' ya tıklayın.
+Yeni bir güncelleştirme dağıtımı oluşturmak için Azure portalına gidin, kullanılan Otomasyon Hesabı'nı seçin ve **Yönetim'i Güncelleştir'i**tıklatın. **Dağıtımı Zamanla güncelleştir'i**tıklatın.
 
-![Güncelleştirme Dağıtımı zamanlama](media/migrate-oms-update-deployments/schedule-update-deployment.png)
+![Güncelleştirmeyi zamanlama dağıtımı](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-**Yeni güncelleştirme dağıtım** bölmesi açılır. Aşağıdaki tabloda açıklanan özellikler için değerler girin ve ardından **Oluştur**' a tıklayın:
+**Yeni Güncelleştirme Dağıtım** bölmesi açılır. Aşağıdaki tabloda açıklanan özellikler için değerleri girin ve sonra **Oluştur'u**tıklatın:
 
-Makinelerin güncelleştirilmesi için, mevcut OMS dağıtımı tarafından kullanılan kayıtlı aramayı seçin.
+Makinelerin güncelleştirilmesi için, varolan OMS dağıtımı tarafından kullanılan kayıtlı aramayı seçin.
 
 | Özellik | Açıklama |
 | --- | --- |
-|Ad |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
-|İşletim Sistemi| **Linux** veya **Windows**'u seçin.|
-|Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select Machine seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md) |
-|Güncelleştirme sınıflandırmaları|İhtiyaç duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin. CentOS bu kutuyu desteklemiyor.|
-|Hariç tutulacak güncelleştirmeler|Dışlanacak güncelleştirmeleri girin. Windows için **KB öneki olmadan KB makalesini** girin. Linux için, paket adını girin veya bir joker karakter kullanın.  |
-|Zamanlama ayarları|Başlatılacak saati seçin ve sonra yinelenme için **bir kez** veya tekrardan birini seçin. | 
-| Bakım penceresi |Güncelleştirmeler için ayarlanan dakika sayısı. Değer 30 dakikadan az veya 6 saatten uzun olamaz. |
-| Yeniden başlatma denetimi| Yeniden başlatmaları nasıl ele alınacağını belirler.</br>Kullanılabilen seçenekler:</br>Gerekirse yeniden başlat (Varsayılan)</br>Her zaman yeniden başlat</br>Hiçbir zaman yeniden başlatma</br>Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|
+|Adı |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
+|İşletim Sistemi| **Linux** veya **Windows'u**seçin.|
+|Güncelleştirilen makineler |Kaydedilen arama, Alınan grup veya açılan makineden Makine'yi seçin ve tek tek makineleri seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Monitor günlüklerinde bilgisayar grupları oluşturmanın farklı yöntemleri hakkında bilgi edinmek için [Azure Monitor günlüklerinde Bilgisayar gruplarına](../azure-monitor/platform/computer-groups.md) bakın |
+|Update classifications|İhtiyacınız olan tüm güncelleştirme sınıflandırmalarını seçin. CentOS bunu kutunun dışında desteklemez.|
+|Hariç tutmak için güncelleştirmeler|Hariç tutmak için güncelleştirmeleri girin. Windows için KB **öneki** olmadan KB makalesini girin. Linux için paket adını girin veya joker karakter kullanın.  |
+|Zamanlama ayarları|Başlangıç saatini seçin ve ardından yineleme için **Bir kez** veya **Yinelenen'i** seçin. | 
+| Bakım penceresi |Güncelleştirmeler için ayarlanan dakika sayısı. Değer 30 dakikadan az veya 6 saatten fazla olamaz. |
+| Yeniden başlatma denetimi| Yeniden başlatmaların nasıl işleneceğini belirler.</br>Kullanılabilen seçenekler:</br>Gerekirse yeniden başlat (Varsayılan)</br>Her zaman yeniden başlat</br>Hiçbir zaman yeniden başlatma</br>Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|
 
-Yeni oluşturulan güncelleştirme dağıtımının durumunu görüntülemek için **Zamanlanmış güncelleştirme dağıtımları** ' na tıklayın.
+Yeni oluşturulan güncelleştirme dağıtımının durumunu görüntülemek için **Zamanlanmış güncelleştirme dağıtımlarını** tıklatın.
 
 ![yeni güncelleştirme dağıtımı](media/migrate-oms-update-deployments/new-update-deployment.png)
 
-Daha önce belirtildiği gibi, yeni dağıtımlarınız Azure portal aracılığıyla yapılandırıldıktan sonra, mevcut dağıtımlar OMS portalından kaldırılabilir.
+Daha önce de belirtildiği gibi, yeni dağıtımlarınız Azure portalı üzerinden yapılandırıldıktan sonra, varolan dağıtımlar OMS portalından kaldırılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'da Güncelleştirme Yönetimi hakkında daha fazla bilgi için bkz. [güncelleştirme yönetimi](automation-update-management.md)
+Azure'da Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için [bkz.](automation-update-management.md)

@@ -1,6 +1,6 @@
 ---
-title: MariaDB için Azure veritabanı 'ndan veri kopyalama
-description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak MariaDB için Azure veritabanı 'ndan desteklenen havuz veri depolarına nasıl veri kopyalanacağını öğrenin.
+title: MariaDB için Azure Veritabanı'ndan veri kopyalama
+description: Bir Azure Veri Fabrikası ardışık alanında bir kopyalama etkinliği kullanarak desteklenen lavabo veri depolarına MariaDB için Azure Veritabanı'ndaki verileri nasıl kopyalayatılayılamayı öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,42 +12,42 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 20e84b584fa4d654500efc47786fa8db0cd9c238
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440797"
 ---
-# <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Azure Data Factory kullanarak MariaDB için Azure veritabanı 'ndan veri kopyalama 
+# <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak MariaDB için Azure Veritabanı'ndan veri kopyalama 
 
-Bu makalede, MariaDB için Azure veritabanı 'ndan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, MariaDB için Azure Veritabanı'ndaki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-MariaDB Bağlayıcısı için Azure veritabanı aşağıdaki etkinlikler için desteklenir:
+MariaDB bağlayıcısı için bu Azure Veritabanı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
 - [Arama etkinliği](control-flow-lookup-activity.md)
  
-MariaDB için Azure veritabanı 'ndan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+MariaDB için Azure Veritabanı'ndan desteklenen herhangi bir lavabo veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücü el ile yüklemeniz gerekmez.
+Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, MariaDB Bağlayıcısı için Azure veritabanı 'na özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler, MariaDB bağlayıcısı için Azure Veritabanı'na özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sağlar.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler desteklenir:
+MariaDB bağlantılı hizmet için Azure Veritabanı için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **AzureMariaDB** olarak ayarlanmalıdır | Evet |
-| connectionString | MariaDB için Azure veritabanı 'na bağlanmak için bir bağlantı dizesi. Bu dosyayı Azure portal > MariaDB-> bağlantı dizeleri için Azure veritabanınız-> ADO.NET One adresinden bulabilirsiniz. <br/> Ayrıca, Azure Key Vault parola yerleştirebilir ve `pwd` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| type | Tür özelliği şu şekilde ayarlanmalıdır: **AzureMariaDB** | Evet |
+| Connectionstring | MariaDB için Azure Veritabanı'na bağlanmak için bir bağlantı dizesi. Bunu, ADO.NET > mariaDB -> Bağlantı dizeleri için Azure Veritabanınızı > Azure portalından bulabilirsiniz. <br/> Parolayı Azure Key Vault'a koyabilir `pwd` ve yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Azure Key Vault [makalesinde](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren aşağıdaki örneklere ve Mağaza kimlik bilgilerine bakın. | Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 
 **Örnek:**
 
@@ -67,7 +67,7 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
 }
 ```
 
-**Örnek: Azure Key Vault parola depola**
+**Örnek: parolayı Azure Key Vault'ta depolama**
 
 ```json
 {
@@ -95,14 +95,14 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, MariaDB veri kümesi için Azure veritabanı tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, MariaDB veri kümesi için Azure Veritabanı tarafından desteklenen özelliklerin bir listesi yer almaktadır.
 
-MariaDB için Azure veritabanı 'ndan veri kopyalamak için aşağıdaki özellikler desteklenir:
+MariaDB için Azure Veritabanı'ndaki verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **AzureMariaDBTable** olarak ayarlanmalıdır | Evet |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **AzureMariaDBTable** | Evet |
+| tableName | Masanın adı. | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
 
 **Örnek**
 
@@ -123,16 +123,16 @@ MariaDB için Azure veritabanı 'ndan veri kopyalamak için aşağıdaki özelli
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, MariaDB kaynağı için Azure veritabanı tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, MariaDB kaynağı için Azure Veritabanı tarafından desteklenen özelliklerin bir listesi bulunmaktadır.
 
-### <a name="azure-database-for-mariadb-as-source"></a>MariaDB için Azure veritabanı kaynak olarak
+### <a name="azure-database-for-mariadb-as-source"></a>Kaynak olarak MariaDB için Azure Veritabanı
 
-MariaDB için Azure veritabanı 'ndan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
+MariaDB için Azure Veritabanı'ndaki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölümünde aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **AzureMariaDBSource** olarak ayarlanmalıdır | Evet |
-| sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
+| type | Kopyalama etkinlik kaynağının tür özelliği şu şekilde ayarlanmalıdır: **AzureMariaDBSource** | Evet |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
 
 **Örnek:**
 
@@ -165,9 +165,9 @@ MariaDB için Azure veritabanı 'ndan veri kopyalamak için, etkinlik **kaynağ�
     }
 ]
 ```
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.

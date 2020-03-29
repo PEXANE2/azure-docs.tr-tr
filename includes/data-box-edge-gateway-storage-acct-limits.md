@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: alkohli
 ms.openlocfilehash: a3928ac4caca5247dcacc639698a7a7bb49826a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75469126"
 ---
-Depolama hesabına kopyalanmış verilerin boyutuna ilişkin sınırlar aşağıda verilmiştir. Karşıya yüklediğiniz verilerin bu sınırlara uyduğundan emin olun. Bu limitlerle ilgili en güncel bilgiler için bkz. blob depolama ve [Azure dosyaları ölçeklenebilirlik ve performans hedefleri](../articles/storage/files/storage-files-scale-targets.md) [için ölçeklenebilirlik ve performans hedefleri](../articles/storage/blobs/scalability-targets.md) .
+Aşağıda, depolama hesabına kopyalanan verilerin boyutuna ilişkin sınırlar ve bu sınırlar ve bu veriler ve bu veriler ve bu sınırlar ve bu veriler ve bu veriler aşağıda veda edilebilgilidir. Yüklediğiniz verilerin bu sınırlara uydur olduğundan emin olun. Bu sınırlar la ilgili en güncel bilgiler [için Blob depolama ve](../articles/storage/blobs/scalability-targets.md) Azure [Dosyaları ölçeklenebilirliği](../articles/storage/files/storage-files-scale-targets.md)ve performans hedefleri için ölçeklenebilirlik ve performans hedeflerine bakın.
 
-| Azure depolama hesabına kopyalanmış verilerin boyutu                      | Varsayılan Sınır          |
+| Azure depolama hesabına kopyalanan verilerin boyutu                      | Varsayılan Sınır          |
 |---------------------------------------------------------------------|------------------------|
-| Blok Blobu ve Sayfa Blobu                                            | depolama hesabı başına 500 TB|
+| Blob ve sayfa blob blok                                            | Depolama hesabı başına 500 TB|

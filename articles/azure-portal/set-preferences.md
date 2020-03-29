@@ -1,8 +1,8 @@
 ---
-title: Azure portal tercihlerinizi ayarlayın | Microsoft Docs
-description: Kendi tercihlerinizi karşılamak için Azure portal varsayılan ayarlarını değiştirebilirsiniz. Etkin olmayan oturum zaman aşımı, varsayılan görünüm, menü modu, karşıtlık, tema, bildirimler ve dil ve bölge biçimlerini içeren ayarlar
+title: Azure portal tercihlerinizi ayarlayın | Microsoft Dokümanlar
+description: Azure portalı varsayılan ayarlarını kendi tercihlerinizi karşılamak için değiştirebilirsiniz. Ayarlar etkin olmayan oturum zaman sonu, varsayılan görünüm, menü modu, kontrast, tema, bildirimler ve dil ve bölgesel biçimleri içerir
 services: azure-portal
-keywords: ayarlar, zaman aşımı, dil, bölgesel
+keywords: ayarlar, zaman sonu, dil, bölgesel
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
@@ -10,116 +10,116 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310688"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Azure portalı tercihlerinizi ayarlama
 
-Kendi tercihlerinizi karşılamak için Azure portal varsayılan ayarlarını değiştirebilirsiniz. Aşağıda listelenen ayarların her biri değiştirilebilir:
+Azure portalının varsayılan ayarlarını kendi tercihlerinizi karşılamak için değiştirebilirsiniz. Aşağıda listelenen ayarların her biri değiştirilebilir:
 
-* [Etkin olmayan oturum zaman aşımı](#change-the-idle-duration-for-inactive-sign-out)
+* [Etkin olmayan oturum zaman ayarı](#change-the-idle-duration-for-inactive-sign-out)
 * [Varsayılan görünüm](#choose-your-default-view)
 * [Portal menü modu](#choose-a-portal-menu-mode)
-* [Renk ve yüksek karşıtlık teması](#choose-a-theme)
+* [Renk ve yüksek kontrast teması](#choose-a-theme)
 * [Açılır bildirimler](#enable-or-disable-pop-up-notifications)
 * [Dil ve bölgesel biçim](#change-language-and-regional-settings)
 
-## <a name="change-general-portal-settings"></a>Genel Portal ayarlarını değiştir
+## <a name="change-general-portal-settings"></a>Genel portal ayarlarını değiştirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Genel sayfa üstbilgisindeki **ayarları** seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+2. Genel sayfa üstbilgisinden **Ayarlar'ı** seçin.
 
-    ![Ayarlar vurgulanmış olarak genel sayfa üst bilgi simgelerini gösteren ekran görüntüsü](./media/set-preferences/header-settings.png)
+    ![Ayarları vurgulanmış olan genel sayfa üstbilgi simgelerini gösteren ekran görüntüsü](./media/set-preferences/header-settings.png)
 
-### <a name="change-the-idle-duration-for-inactive-sign-out"></a>Etkin olmayan oturum kapatma için boşta kalma süresini değiştirme
+### <a name="change-the-idle-duration-for-inactive-sign-out"></a>Etkin olmayan oturum açma süresini değiştirme
 
-İşlem yapılmayan zaman aşımı ayarı, iş istasyonunuzun güvenliğini unutursanız kaynakları yetkisiz erişimden korumanıza yardımcı olur. Bir süredir boşta kaldıktan sonra, Azure portal oturumunuz oturumunuzu otomatik olarak açtınız.
+İş istasyonunuzu güvenli hale almayı unutursanız, hareketsizzaman ayarı kaynakları yetkisiz erişimden korumaya yardımcı olur. Bir süre boşta kaldıktan sonra Azure portal oturumunuzotomatik olarak oturumunuza dahil oluyorsunuz.
 
-**Devre dışı bırakıldığında Oturumumu**Kapat ' ın altındaki açılır seçimi seçin. Boşta kalırsa Azure portal oturumunuz kapatıldıktan sonraki süreyi seçin.
+Etkin olmadığında Beni **Kaydet'in**altındaki açılır açılır dosyayı seçin. Boştaysanız Azure portal oturumuzun oturumunun tamamlandığı süreyi seçin.
 
-   ![Etkin olmayan zaman aşımı ayarları vurgulanmış şekilde Portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/inactive-signout-user.png)
+   ![Etkin olmayan zaman sonu ayarları vurgulanmış portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/inactive-signout-user.png)
 
-Değişiklik otomatik olarak kaydedilir. Boşta değilseniz, Azure portal oturumunuz, ayarladığınız süreden sonra oturumunuzu açacaktır.
+Değişiklik otomatik olarak kaydedilir. Boştaysanız, Azure portal oturumunuz belirlediğiniz süre den sonra oturumu tamamlar.
 
-Bu ayar, dizin düzeyinde bir yönetici tarafından en fazla boş kalma süresi zorlamak için de yapılabilir. Bir yönetici dizin düzeyinde bir zaman aşımı ayarı yapmışsa, devre dışı bırakılmış oturum kapatma sürenize yine de ayarlama yapabilirsiniz. Dizin düzeyinde ayarlandıklardan daha az bir zaman ayarı seçin.
+Bu ayar, en fazla boşta kalma süresini zorlamak için dizin düzeyindeki bir yönetici tarafından da yapılabilir. Bir yönetici dizin düzeyinde bir zaman aşım ayarı yapmışsa, yine de kendi etkin olmayan oturum açma sürenizi ayarlayabilirsiniz. Dizin düzeyinde ayarlanandan daha az bir saat ayarı seçin.
 
-Yöneticiniz, etkin olmama zaman aşımı ilkesini etkinleştirmişse **Dizin eylemsizlik zaman aşımı ilkesi onay kutusunu geçersiz kıl** seçeneğini belirleyin. İlke ayarından daha az bir zaman aralığı ayarlayın.
+Yöneticiniz bir etkinlik dışı zaman ödeme ilkesi **etkinleştirmişse, dizin inaktivite zaman aşmasını** denetleme yi seçin. İlke ayarından daha az bir zaman aralığı ayarlayın.
 
-   ![Portal ayarlarını geçersiz kılma ile gösteren ekran görüntüsü dizin eylemsizlik zaman aşımı ilkesi ayarını vurguladı](./media/set-preferences/inactive-signout-override.png)
+   ![Vurgulanan dizin etkinlik zaman sonu ilkesi ayarını geçersiz kılacak portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/inactive-signout-override.png)
 
 
 > [!NOTE]
-> Yönetici değilseniz ve Azure portal tüm kullanıcıları için etkin olmayan bir zaman aşımı ayarını zorlamak istiyorsanız, bkz [. Azure Portal kullanıcıları için Dizin düzeyi eylemsizlik zaman aşımını ayarlama](admin-timeout.md)
+> Yöneticiyseniz ve Azure portalının tüm kullanıcıları için etkin olmayan bir zaman dilimi ayarını uygulamak istiyorsanız, [Azure portalı kullanıcıları için dizin düzeyinde etkinlik zaman arasını ayarlama](admin-timeout.md) bölümüne bakın
 >
 
 ### <a name="choose-your-default-view"></a>Varsayılan görünümünüzü seçin 
 
-Azure portal oturum açtığınızda varsayılan olarak açılan sayfayı değiştirebilirsiniz.
+Oturum açtığınızda Azure portalında varsayılan olarak açılan sayfayı değiştirebilirsiniz.
 
    ![Varsayılan görünüm vurgulanmış Azure portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/default-view.png)
 
-Varsayılan Görünüm ayarı, oturum açtığınızda hangi Azure portal görünümünün gösterildiğini denetler. Azure Home 'ı varsayılan olarak veya Pano görünümünde açmayı seçebilirsiniz.
+Oturum açken azure portal görünümünün gösterildiği varsayılan görünüm ayarı denetler. Varsayılan olarak Azure Home'u veya Pano görünümünü açmayı seçebilirsiniz.
 
-* **Ana sayfa** özelleştirilemiyor.  Popüler Azure hizmetlerinin kısayollarını görüntüler ve en son kullandığınız kaynakları listeler. Ayrıca, Microsoft Learn ve Azure yol haritası gibi kaynaklara yönelik faydalı bağlantılar sunuyoruz.
-* Panolar, yalnızca sizin için tasarlanmış bir çalışma alanı oluşturmak üzere özelleştirilebilir. Örneğin, proje, görev veya rol odaklı bir pano oluşturabilirsiniz. **Pano**' yı seçerseniz, varsayılan görünümlerinizin en son kullanılan panoya gitmesi gerekir.
+* **Ev** özelleştirici olamaz.  Popüler Azure hizmetlerinin kısayollarını görüntüler ve en son kullandığınız kaynakları listeler. Ayrıca, Microsoft Learn ve Azure yol haritası gibi kaynaklara yararlı bağlantılar da savuruyoruz.
+* Panolar, sadece sizin için tasarlanmış bir çalışma alanı oluşturmak için özelleştirilebilir. Örneğin, proje, görev veya rol odaklı bir pano oluşturabilirsiniz. **Pano'yı**seçerseniz, varsayılan görünümünüz en son kullanılan panonuza gider.
 
-### <a name="choose-a-portal-menu-mode"></a>Bir portal menü modu seçin
+### <a name="choose-a-portal-menu-mode"></a>Portal menü modu seçin
 
-Portal menüsünün varsayılan modu, Portal menüsünün sayfada ne kadar alan kapladiğini denetler.
+Portal menüsünün varsayılan modu, portal menüsünün sayfada ne kadar yer kaplar olduğunu denetler.
 
-* Portal menüsü **açılır** modda olduğunda, bu, ihtiyacınız olana kadar gizlenir. Menüyü açmak veya kapatmak için menü simgesini seçin.
-* Portal menüsü için **yerleşik** mod ' u seçerseniz, her zaman görünür olur. Daha fazla çalışma alanı sağlamak için menüyü daraltabilirsiniz. 
+* Portal menüsü **uçuş** modundayken, ihtiyacınız olana kadar gizlenir. Menüyü açmak veya kapatmak için menü simgesini seçin.
+* Portal menüsü için **sabitlenmiş** modu seçerseniz, her zaman görünür. Daha fazla çalışma alanı sağlamak için menüyü daraltabilirsiniz. 
 
 ### <a name="choose-a-theme"></a>Tema seç
 
-Seçtiğiniz tema, Azure portal görüntülenen arka plan ve yazı tipi renklerini etkiler. Önceden ayarlanmış dört renk teması arasından birini seçebilirsiniz. Sizi en iyi şekilde karşılayacak temayı bulmak için her bir küçük resmi seçin.
+Seçtiğiniz tema, Azure portalında görünen arka plan ve yazı tipi renklerini etkiler. Önceden ayarlanmış dört renk temalı temadan birini seçebilirsiniz. Size en uygun temayı bulmak için her küçük resmi seçin.
 
-   ![Temalar vurgulanmış Azure portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/theme.png)
+   ![Vurgulanan temalarla Azure portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/theme.png)
 
-Bunun yerine yüksek karşıtlıklı temalardan birini seçebilirsiniz. Yüksek karşıtlık ayarları, görme engelli kullanıcılar için Azure portal okumayı daha kolay hale getirir ve diğer tüm tema seçimlerini geçersiz kılar. Daha fazla bilgi için bkz. [yüksek karşıtlığı açma veya temayı değiştirme](azure-portal-change-theme-high-contrast.md).
+Bunun yerine yüksek kontrastlı temalardan birini seçebilirsiniz. Yüksek kontrast ayarları, Azure portalının görme engelli kullanıcılar için okunmasını kolaylaştırır ve diğer tüm tema seçimlerini geçersiz kılar. Daha fazla bilgi için bkz: [Yüksek karşıtlığı aç veya teonu değiştir.](azure-portal-change-theme-high-contrast.md)
 
-### <a name="enable-or-disable-pop-up-notifications"></a>Açılır bildirimleri etkinleştirme veya devre dışı bırakma
+### <a name="enable-or-disable-pop-up-notifications"></a>Açılır pencere bildirimlerini etkinleştirme veya devre dışı etme
 
-Bildirimler, geçerli oturumunuzla ilgili sistem iletilerdir. Bunlar, yeni oluşturduğunuz kaynaklar kullanılabilir hale geldiğinde geçerli kredi bakiyeniz gibi bilgiler sağlar veya Son eyleminizi (örneğin,) onaylayın. Açılır bildirimler açıldığında, iletiler ekranın üst köşesinde kısaca görüntülenir. 
+Bildirimler, geçerli oturumunuzla ilgili sistem iletileridir. Oluşturduğunuz kaynaklar kullanılabilir olduğunda mevcut kredi bakiyeniz gibi bilgiler sağlar veya örneğin son eyleminizi onaylar. Açılır bildirimler açık olduğunda, iletiler kısa bir süre için ekranınızın üst köşesinde görüntülenir. 
 
-Açılır bildirimleri etkinleştirmek veya devre dışı bırakmak için **açılır bildirimleri etkinleştir** onay kutusunu seçin veya kaldırın.
+Açılır pencerelerbildirimlerini etkinleştirmek veya devre dışı kalmak **için, açılan bildirimleri etkinleştir** onay kutusunu seçin veya seçin.
 
    ![Açılır bildirimler vurgulanmış Azure portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/popup-notifications.png)
 
-Geçerli oturumunuz sırasında alınan tüm bildirimleri okumak için genel üst bilgiden **Bildirimler** ' i seçin.
+Geçerli oturumunuz sırasında alınan tüm bildirimleri okumak için genel üstbilgiden **Bildirimler'i** seçin.
 
-   ![Bildirimleri vurgulanan Azure portal genel üstbilgiyi gösteren ekran görüntüsü](./media/set-preferences/read-notifications.png)
+   ![Vurgulanan bildirimlerle Azure portalı genel üstbilgigösteren ekran görüntüsü](./media/set-preferences/read-notifications.png)
 
-Önceki oturumlardaki bildirimleri okumak istiyorsanız, etkinlik günlüğündeki olayları arayın. Daha fazla bilgi edinmek için bkz. [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view).
+Önceki oturumlardan gelen bildirimleri okumak istiyorsanız, Etkinlik günlüğündeki olayları arayın. Daha fazla bilgi edinmek için [Azure Etkinliği günlük etkinliklerini görüntüle ve alın.](/azure/azure-monitor/platform/activity-log-view)
 
-### <a name="settings-under-useful-links"></a>Yararlı bağlantılar altındaki ayarlar
+### <a name="settings-under-useful-links"></a>Yararlı bağlantılar altında ayarlar
 
-Azure portal ayarlarında değişiklik yaptıysanız ve bunları atmak istiyorsanız **varsayılan ayarları geri yükle**' yi seçin. Portal ayarlarında yaptığınız tüm değişiklikler kaybedilir. Bu seçenek Pano özelleştirmelerini etkilemez.
+Azure portal ayarlarında değişiklik yaptıysanız ve bunları atmak istiyorsanız, **varsayılan ayarları geri yükle'yi**seçin. Portal ayarlarında yaptığınız tüm değişiklikler kaybolur. Bu seçenek pano özelleştirmelerini etkilemez.
 
-**Tüm ayarları dışarı aktarma** veya **tüm ayarları ve özel panoları silme**hakkında daha fazla bilgi için bkz. [Kullanıcı ayarlarını dışa aktarma veya silme](azure-portal-export-delete-settings.md).
+Tüm ayarları **Dışa Aktar** veya **Tüm ayarları ve özel panoları sil**hakkında daha fazla bilgi için kullanıcı [ayarlarını dışa](azure-portal-export-delete-settings.md)aktar veya silmek için bkz.
 
-## <a name="change-language-and-regional-settings"></a>Dil ve bölge ayarlarını değiştirme
+## <a name="change-language-and-regional-settings"></a>Dil ve bölgesel ayarları değiştirme
 
-Azure portal metnin nasıl göründüğünü denetleyen iki ayar vardır. **Dil** ayarı, Azure Portal metin için gördüğünüz dili denetler. **Bölgesel biçim** tarihler, saat, sayılar ve para biriminin gösterilme biçimini denetler.
+Azure portalındaki metnin nasıl görününden denetleyen iki ayar vardır. **Dil** ayarı, Azure portalında metin için gördüğünüz dili denetler. **Bölgesel biçim,** tarihlerin, zamanın, sayıların ve para biriminin gösterilme biçimini denetler.
 
-Azure portal kullanılan dili değiştirmek için, açılan listeyi kullanarak kullanılabilir diller listesinden seçin.
+Azure portalında kullanılan dili değiştirmek için, kullanılabilir diller listesinden seçim yapmak için açılır açılır bölümü kullanın.
 
-Bölgesel biçim seçimi yalnızca seçtiğiniz dilin bölgesel seçeneklerini görüntüleyecek şekilde değişir. Bu otomatik seçimi değiştirmek için, açılan eklentiyi kullanarak istediğiniz bölgesel biçimi seçin.
+Bölgesel biçim seçimi, yalnızca seçtiğiniz dil için bölgesel seçenekleri görüntülemek için değişir. Bu otomatik seçimi değiştirmek için, istediğiniz bölgesel biçimi seçmek için açılır açılır ı kullanın.
 
-Örneğin, diliniz olarak Ingilizce seçeneğini belirleyip bölgesel biçim olarak Birleşik Devletler ' yi seçerseniz para birimi ABD Doları cinsinden gösterilir. Dil olarak Ingilizce ' yi ve ardından bölgesel biçim olarak Avrupa ' yı seçerseniz para birimi Euro olarak gösterilir.
+Örneğin, diliniz olarak İngilizce'yi seçerseniz ve ardından bölgesel biçim olarak ABD'yi seçerseniz, para birimi ABD doları cinsinden gösterilir. Dil olarak İngilizce'yi seçerseniz ve bölgesel biçim olarak Avrupa'yı seçerseniz, para birimi euro cinsinden gösterilir.
 
-Dilinizi ve bölgesel biçim ayarlarınızı güncelleştirmek için **Uygula** ' yı seçin.
+Dil ve bölgesel biçim ayarlarınızı güncellemek için **Uygula'yı** seçin.
 
    ![Dil ve bölgesel biçim ayarlarını gösteren ekran görüntüsü](./media/set-preferences/language.png)
 
 >[!NOTE]
->Bu dil ve bölgesel ayarlar yalnızca Azure portal etkiler. Yeni bir sekmede veya pencerede açık olan belge bağlantıları, görüntülenecek dili belirlemekte tarayıcınızın dil ayarlarını kullanacaktır.
+>Bu dil ve bölgesel ayarlar yalnızca Azure portalını etkiler. Yeni bir sekme veya pencerede açılan dokümantasyon bağlantıları, görüntülenecek dili belirlemek için tarayıcınızın dil ayarlarını kullanır.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel panolar oluşturma ve paylaşma](azure-portal-dashboards.md)
-* [Azure portal nasıl yapılır video serisi](azure-portal-video-series.md)
+* [Özel panoları oluşturma ve paylaşma](azure-portal-dashboards.md)
+* [Azure portalı nasıl yapılır video serisi](azure-portal-video-series.md)

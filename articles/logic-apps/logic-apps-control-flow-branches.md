@@ -1,77 +1,77 @@
 ---
-title: İş akışlarında eylemler için paralel dallar oluşturun veya ekleyin
-description: Azure Logic Apps içinde bağımsız iş akışı eylemleri için paralel çalışan dallar oluşturmayı veya birleştirmeyi öğrenin
+title: İş akışlarındaki eylemler için paralel dallar oluşturma veya birleştirme
+description: Azure Logic Apps'ta bağımsız iş akışı eylemleri için paralel çalışan dallar oluşturma veya birleştirme hakkında bilgi edinin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453425"
 ---
-# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemleri için paralel dallar oluşturun veya ekleyin
+# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps'ta iş akışı eylemleri için paralel dallar oluşturma veya birleştirme
 
-Varsayılan olarak, mantıksal uygulama iş akışlarındaki eylemleriniz sırayla çalışır. Aynı anda bağımsız eylemler gerçekleştirmek için [paralel dallar](#parallel-branches)oluşturabilir ve ardından [Bu dalları](#join-branches) daha sonra akışınız içinde birleştirebilirsiniz. 
+Varsayılan olarak, mantık uygulaması iş akışlarındaki eylemleriniz sırayla çalışır. Bağımsız eylemleri aynı anda gerçekleştirmek için [paralel dallar](#parallel-branches)oluşturabilir ve daha sonra akışınızda [bu dalları birleştirebilirsiniz.](#join-branches) 
 
 > [!TIP] 
-> Bir diziyi alan ve her dizi öğesi için bir iş akışı çalıştırmak istediğiniz bir Tetikleyiciniz varsa, bu diziyi [ **spton** tetikleyici özelliğiyle](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *toplu* olarak silebilirsiniz.
+> Bir dizi alan bir tetikleyiciniz varsa ve her dizi öğesi için bir iş akışı çalıştırmak istiyorsanız, bu diziyi [ **SplitOn** tetikleyici özelliğiyle](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *ayırabilirsiniz.*
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
+* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
 
 <a name="parallel-branches"></a>
 
-## <a name="add-parallel-branch"></a>Paralel dal Ekle
+## <a name="add-parallel-branch"></a>Paralel dal ekleme
 
-Bağımsız adımları aynı anda çalıştırmak için, var olan bir adımın yanına paralel dallar ekleyebilirsiniz. 
+Bağımsız adımları aynı anda çalıştırmak için, varolan bir adımın yanına paralel dallar ekleyebilirsiniz. 
 
-![Adımları paralel olarak çalıştır](media/logic-apps-control-flow-branches/parallel.png)
+![Adımları paralel olarak çalıştırma](media/logic-apps-control-flow-branches/parallel.png)
 
-Mantıksal uygulamanız, iş akışına devam etmeden önce tüm dalların bitmesini bekler. Paralel dallar yalnızca `runAfter` özellik değerleri tamamlanan üst adımın durumuyla eşleşiyorsa çalışır. Örneğin, hem `branchAction1` hem de `branchAction2` yalnızca `parentAction` `Succeeded` durumuyla tamamlandığında çalıştırılacak şekilde ayarlanır.
+Mantık uygulamanız, iş akışına devam etmeden önce tüm dalların tamamlanmasını bekler. Paralel dallar `runAfter` yalnızca özellik değerleri tamamlanan üst adımın durumuyla eşleştiğinde çalışır. Örneğin, her `branchAction1` `branchAction2` ikisi de ve yalnızca `parentAction` durum `Succeeded` ile tamamlandığında çalışacak şekilde ayarlanır.
 
 > [!NOTE]
-> Başlamadan önce mantıksal uygulamanızda, paralel dallar ekleyebileceğiniz bir adım zaten olmalıdır.
+> Başlamadan önce, mantık uygulamanızın zaten paralel dallar ekleyebileceğiniz bir adım alabilmeleri gerekir.
 
-1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a>mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. Azure <a href="https://portal.azure.com" target="_blank">portalında</a>mantık uygulamanızı Logic App Designer'da açın.
 
-1. İşaretçinizi, paralel dallar eklemek istediğiniz adımın üzerindeki oka taşıyın. Görüntülenen **artı** işaretini ( **+** ) seçin ve sonra **paralel dal Ekle**' yi seçin. 
+1. İşaretçini, paralel dallar eklemek istediğiniz adımın üzerindeki okun üzerine taşıyın. Görünen **artı** işaretini (**+**) seçin ve sonra paralel dal **ekle'yi**seçin. 
 
-   ![Paralel dal Ekle](media/logic-apps-control-flow-branches/add-parallel-branch.png)
+   ![Paralel dal ekleme](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
-1. Arama kutusunda istediğiniz eylemi bulun ve seçin.
+1. Arama kutusunda, istediğiniz eylemi bulun ve seçin.
 
    ![İstediğiniz eylemi bulun ve seçin](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
-   Seçtiğiniz eylem artık paralel dalda görüntülenir, örneğin:
+   Seçtiğiniz eylem şimdi paralel dalda görünür, örneğin:
 
    ![İstediğiniz eylemi bulun ve seçin](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. Şimdi, her bir paralel dalda istediğiniz adımları ekleyin. Bir dala başka bir eylem eklemek için, işaretçinizi sıralı bir eylem eklemek istediğiniz eylemin altına taşıyın. Görüntülenen **artı** ( **+** ) işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+1. Şimdi, her paralel dalda, istediğiniz adımları ekleyin. Bir dala başka bir eylem eklemek için, işaretçinizin sıralı eylem eklemek istediğiniz eylemin altına taşıyın. Görünen **artı** **+**( ) işaretini seçin ve ardından **eylem ekle'yi**seçin.
 
    ![Paralel dala sıralı eylem ekleme](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
-1. Arama kutusunda istediğiniz eylemi bulun ve seçin.
+1. Arama kutusunda, istediğiniz eylemi bulun ve seçin.
 
-   ![Sıralı eylem bulma ve seçme](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![Ardışık eylemi bulma ve seçme](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
-   Seçtiğiniz eylem şu anda geçerli dalı içinde görünür, örneğin:
+   Seçili eyleminiz artık geçerli dalda görünür, örneğin:
 
-   ![Sıralı eylem bulma ve seçme](media/logic-apps-control-flow-branches/added-sequential-action.png)
+   ![Ardışık eylemi bulma ve seçme](media/logic-apps-control-flow-branches/added-sequential-action.png)
 
-Dalları birlikte yeniden birleştirmek için, [paralel dallarınıza katın](#join-branches). 
+Dalları tekrar birleştirmek için [paralel dallarıbirleştirin.](#join-branches) 
 
 <a name="parallel-json"></a>
 
 ## <a name="parallel-branch-definition-json"></a>Paralel dal tanımı (JSON)
 
-Kod görünümünde çalışıyorsanız, paralel yapıyı mantıksal uygulamanızın JSON tanımında tanımlayabilir, örneğin:
+Kod görünümünde çalışıyorsanız, mantık uygulamanızın JSON tanımındaki paralel yapıyı tanımlayabilirsiniz, örneğin:
 
 ``` json
 {
@@ -109,31 +109,31 @@ Kod görünümünde çalışıyorsanız, paralel yapıyı mantıksal uygulamanı
 
 <a name="join-branches"></a>
 
-## <a name="join-parallel-branches"></a>Paralel dalları birleştirin
+## <a name="join-parallel-branches"></a>Paralel dalları birleştirme
 
-Paralel dalları birlikte birleştirmek için, tüm dallar altındaki en alta bir adım eklemeniz yeterlidir. Bu adım, tüm paralel dallar çalışmaya başladıktan sonra çalışır.
+Paralel dalları birleştirmek için, tüm dalların altına bir adım eklemeniz gerekiyor. Bu adım, tüm paralel dalları çalışan bittikten sonra çalışır.
 
-![Paralel dalları birleştirin](media/logic-apps-control-flow-branches/join.png)
+![Paralel dalları birleştirme](media/logic-apps-control-flow-branches/join.png)
 
-1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı bulun ve açın. 
+1. Azure [portalında](https://portal.azure.com)Mantık Uygulama Tasarımcısı'nda mantık uygulamanızı bulun ve açın. 
 
-1. Katmak istediğiniz paralel dallar altında **yeni adım**' ı seçin. 
+1. Katılmak istediğiniz paralel dalların altında **Yeni adımı**seçin. 
 
-   ![Birleşime adım Ekle](media/logic-apps-control-flow-branches/add-join-step.png)
+   ![Katılmak için adım ekleme](media/logic-apps-control-flow-branches/add-join-step.png)
 
 1. Arama kutusunda, dalları birleştiren adım olarak istediğiniz eylemi bulun ve seçin.
 
-   ![Paralel dalları birleştiren eylemi bulun ve seçin](media/logic-apps-control-flow-branches/join-steps.png)
+   ![Paralel dalları birleştiren eylemi bulma ve seçme](media/logic-apps-control-flow-branches/join-steps.png)
 
-   Paralel dallarınız artık birleştirilir.
+   Paralel dallarınız artık birleştirildi.
 
-   ![Birleştirilmiş dallar](media/logic-apps-control-flow-branches/joined-branches.png)
+   ![Birleştirilmiş şubeler](media/logic-apps-control-flow-branches/joined-branches.png)
 
 <a name="join-json"></a>
 
-## <a name="join-definition-json"></a>JOIN tanımı (JSON)
+## <a name="join-definition-json"></a>Birleştirme tanımı (JSON)
 
-Kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın JSON tanımında JOIN yapısını tanımlayabilirsiniz, örneğin:
+Kod görünümünde çalışıyorsanız, mantık uygulamanızın JSON tanımında birleştirme yapısını tanımlayabilirsiniz, örneğin:
 
 ``` json
 {
@@ -184,11 +184,11 @@ Kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın
 ## <a name="get-support"></a>Destek alın
 
 * Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
-* Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
+* Özellikler ve öneriler göndermek veya oy kullanmak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir koşula göre adımları çalıştırın (koşullu deyimler)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Farklı değerlere göre adımları Çalıştır (Switch deyimleri)](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Çalıştır ve Yinele adımları (döngüler)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Gruplanmış eylem durumu (kapsamlar) temelinde adımları Çalıştır](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Koşula dayalı adımları çalıştırma (koşullu ifadeler)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Farklı değerlere dayalı adımları çalıştırma (geçiş deyimleri)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Adımları çalıştırma ve yineleme (döngüler)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Gruplanmış eylem durumuna (kapsamlara) göre adımları çalıştırma](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

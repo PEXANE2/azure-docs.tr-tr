@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: rohink
 ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939131"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Uç noktaları ekleme, devre dışı bırakma, etkinleştirme veya silme
@@ -40,7 +40,7 @@ Aynı zamanda bir Traffic Manager profilinin parçası olan tekil uç noktaları
     4. **Hedef kaynak** için, **Kaynaklar dikey penceresi**’ndeki aynı abonelikte yer alan kaynakları listelemek için **Seç...** seçicisine tıklayın. Gösterilen **Kaynak** dikey penceresinde, birinci uç nokta olarak eklemek istediğiniz hizmeti seçin.
     5. **Öncelik** için **1** seçin. Bu durum, sağlıksız olması durumunda tüm trafiğin bu uç noktaya gitmesiyle sonuçlanır.
     6. **Devre dışı olarak ekle** seçeneğini işaretsiz bırakın.
-    7. **Tamam**’a tıklayın.
+    7. **Tamam'ı** tıklatın
 6.  Sonraki Azure uç noktasını eklemek için 4. ve 5. adımları tekrarlayın. Uç noktayı eklerken **Öncelik** değerinin **2** olarak ayarlandığından emin olun.
 7.  Her iki uç noktanın eklenmesi tamamlandığında, **Çevrimiçi** izleme durumuyla birlikte **Traffic Manager profili** dikey penceresinde gösterilir.
 
@@ -52,7 +52,7 @@ Aynı zamanda bir Traffic Manager profilinin parçası olan tekil uç noktaları
 1. Bir tarayıcıdan [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portalın arama çubuğunda, değiştirmek istediğiniz **Traffic Manager profili** adını arayın ve ardından gösterilen sonuçlardaki Traffic Manager profiline tıklayın.
 3. **Ayarlar** bölümündeki **Traffic Manager profili** dikey penceresinde **Uç noktalar** öğesine tıklayın. 
-4. Devre dışı bırakmak istediğiniz uç noktaya tıklayın.
+4. Devre dışı kalmak istediğiniz bitiş noktasını tıklatın.
 5. **Uç Nokta** dikey penceresinde, uç nokta durumunu **Devre Dışı** olarak değiştirip **Kaydet**’e tıklayın.
 6. İstemciler, Yaşam Süresi (TTL) boyunca uç noktaya trafik göndermeye devam eder. Traffic Manager profilinin Yapılandırma sayfasında TTL'yi değiştirebilirsiniz.
 
@@ -61,7 +61,7 @@ Aynı zamanda bir Traffic Manager profilinin parçası olan tekil uç noktaları
 1. Bir tarayıcıdan [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portalın arama çubuğunda, değiştirmek istediğiniz **Traffic Manager profili** adını arayın ve ardından gösterilen sonuçlardaki Traffic Manager profiline tıklayın.
 3. **Ayarlar** bölümündeki **Traffic Manager profili** dikey penceresinde **Uç noktalar** öğesine tıklayın. 
-4. Etkinleştirmek istediğiniz uç noktaya tıklayın.
+4. Etkinleştirmek istediğiniz bitiş noktasını tıklatın.
 5. **Uç Nokta** dikey penceresinde, uç nokta durumunu **Etkin** olarak değiştirip **Kaydet**’e tıklayın.
 6. İstemciler, Yaşam Süresi (TTL) boyunca uç noktaya trafik göndermeye devam eder. Traffic Manager profilinin Yapılandırma sayfasında TTL'yi değiştirebilirsiniz.
 
@@ -70,15 +70,15 @@ Aynı zamanda bir Traffic Manager profilinin parçası olan tekil uç noktaları
 1. Bir tarayıcıdan [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portalın arama çubuğunda, değiştirmek istediğiniz **Traffic Manager profili** adını arayın ve ardından gösterilen sonuçlardaki Traffic Manager profiline tıklayın.
 3. **Ayarlar** bölümündeki **Traffic Manager profili** dikey penceresinde **Uç noktalar** öğesine tıklayın. 
-4. Silmek istediğiniz uç noktaya tıklayın.
-5. **Uç nokta** dikey penceresinde **Sil** ' e tıklayın.
+4. Silmek istediğiniz bitiş noktasını tıklatın.
+5. **Endpoint** bıçakta Sil'i **tıklatın**
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Traffic Manager profillerini yönetme](traffic-manager-manage-profiles.md)
+* [Trafik Yöneticisi profillerini yönetme](traffic-manager-manage-profiles.md)
 * [Yönlendirme yöntemlerini yapılandırma](traffic-manager-configure-routing-method.md)
-* [Düzeyi düşürülmüş Traffic Manager durumu için sorun giderme](traffic-manager-troubleshooting-degraded.md)
+* [Traffic Manager düşürülmüş durumu için sorun giderme](traffic-manager-troubleshooting-degraded.md)
 * [Traffic Manager için performans konuları](traffic-manager-performance-considerations.md)
 * [Traffic Manager üzerindeki işlemler (REST API Başvurusu)](https://go.microsoft.com/fwlink/p/?LinkID=313584)
 

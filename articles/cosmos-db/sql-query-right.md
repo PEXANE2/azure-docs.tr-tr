@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde sağ
-description: Azure Cosmos DB 'de SQL sistem işlevi hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde SAĞ
+description: Azure Cosmos DB'de SQL sistem fonksiyonu HAKKıNDA BİLGİ EDİn.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302160"
 ---
 # <a name="right-azure-cosmos-db"></a>SAĞ (Azure Cosmos DB)
- Belirtilen sayıda karakteri içeren bir dize sağ bölümünü döndürür.  
+ Belirtilen karakter sayısıyla bir dizesağ kısmını döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,18 +26,18 @@ RIGHT(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr*  
-   , Öğesinden karakter Ayıklanacak dize ifadesidir.  
+   Karakterleri ayıklamak için dize ifadesidir.  
   
 *num_expr*  
-   , Karakter sayısını belirten sayısal bir ifadedir.  
+   Karakter sayısını belirten sayısal bir ifadedir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir dize ifadesi döndürür.  
+  Dize ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, çeşitli uzunluğu değerleri için "abc" sağ bölümünü döndürür.  
+  Aşağıdaki örnek, çeşitli uzunluk değerleri için "abc"nin sağ kısmını döndürür.  
   
 ```sql
 SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2 
@@ -51,10 +51,10 @@ SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

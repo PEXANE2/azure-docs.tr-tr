@@ -1,54 +1,54 @@
 ---
-title: Windows Server için Azure Service Fabric tek başına paketi
-description: Açıklama ve Windows Server için Azure Service Fabric tek başına paketin içeriği.
+title: Windows Server için Azure Hizmet Kumaş Tek Başına Paketi
+description: Windows Server için Azure Hizmet Kumaş Standalone paketinin açıklaması ve içeriği.
 author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451840"
 ---
-# <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server için Service Fabric tek başına paketin içeriği
-İçinde [indirilen](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric tek başına paketinin aşağıdaki dosyaları göreceksiniz:
+# <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server için Hizmet Kumaş Bağımsız paketinin içeriği
+[İndirilen](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric Standalone paketinde aşağıdaki dosyaları bulabilirsiniz:
 
 | **Dosya adı** | **Kısa açıklama** |
 | --- | --- |
-| CreateServiceFabricCluster.ps1 |İçinde ClusterConfig.json ayarlarla kümeyi oluşturur bir PowerShell Betiği. |
-| RemoveServiceFabricCluster.ps1 |İçinde ClusterConfig.json ayarları kullanarak bir küme kaldıran bir PowerShell Betiği. |
-| AddNode.ps1 |Varolan bir düğüm eklemek için bir PowerShell Betiği, geçerli makine bir kümede dağıtılan. |
-| RemoveNode.ps1 |Varolan bir düğüm kaldırmak için bir PowerShell Betiği, geçerli makine bir kümeden dağıtıldı. |
-| CleanFabric.ps1 |Tek başına Service Fabric yükleme geçerli makine kapalı temizlemek için bir PowerShell Betiği. Kendi ilişkili uninstallers kullanarak önceki MSI yüklemeleri kaldırılması gerekir. |
-| TestConfiguration.ps1 |Altyapı Cluster.json belirtildiği gibi analiz etmek için bir PowerShell Betiği. |
-| DownloadServiceFabricRuntimePackage.ps1 |Burada dağıtma makine internet'e bağlı olmayan senaryolar için bir bant dışı en son çalışma zamanı paketini yüklemek için kullanılan bir PowerShell Betiği. |
-| DeploymentComponentsAutoextractor.exe |Tek başına paketin betikler tarafından kullanılan dağıtım bileşenlerini içeren kendi kendine ayıklanan arşiv. |
-| EULA_ENU.txt |Microsoft Azure Service Fabric tek başına Windows Server paketi kullanımı için lisans koşulları. Yapabilecekleriniz [EULA'yı bir kopyasını indirin](https://go.microsoft.com/fwlink/?LinkID=733084) şimdi. |
-| Readme.txt |Sürüm Notları ve temel yükleme yönergeleri bağlantısı. Bu belgedeki yönergeleri bir alt kümesidir. |
-| ThirdPartyNotice.rtf |Paketteki üçüncü taraf yazılım bildirimi. |
-| Tools\Microsoft.Azure.ServiceFabric.windowsserver.SupportPackage.zip |Toplama ve izleme günlükleri Microsoft'a destek amaçla yükleme için isteğe bağlı olarak çalıştır StandaloneLogCollector.exe. |
-| Tools\ServiceFabricUpdateService.zip |Otomatik kod yükseltmeyi internet erişimi yoksa kümeleri için etkinleştirmek için kullanılan araç. Daha fazla ayrıntı bulunabilir [burada](service-fabric-cluster-upgrade-windows-server.md)|
+| CreateServiceFabricCluster.ps1 |ClusterConfig.json'daki ayarları kullanarak kümeyi oluşturan bir PowerShell komut dosyası. |
+| RemoveServiceFabricCluster.ps1 |ClusterConfig.json'daki ayarları kullanarak bir kümeyi kaldıran bir PowerShell komut dosyası. |
+| AddNode.ps1 |Geçerli makinede varolan bir kümeye düğüm eklemek için bir PowerShell komut dosyası. |
+| RemoveNode.ps1 |Geçerli makineden varolan bir kümeden bir düğümü kaldırmak için bir PowerShell komut dosyası. |
+| CleanFabric.ps1 |Geçerli makineden bağımsız servis kumaşı kurulumunu temizlemek için bir PowerShell komut dosyası. Önceki MSI yüklemeleri kendi ilişkili kaldırıcıları kullanılarak kaldırılmalıdır. |
+| TestConfiguration.ps1 |Cluster.json'da belirtildiği gibi altyapıyı analiz etmek için bir PowerShell komut dosyası. |
+| DownloadServiceFabricRuntimePackage.ps1 |Dağıtım makinesinin internete bağlı olmadığı senaryolar için en son çalışma zamanı paketini bantdışına indirmek için kullanılan bir PowerShell komut dosyası. |
+| DağıtımComponentsAutoextractor.exe |Bağımsız paket komut dosyaları tarafından kullanılan Dağıtım Bileşenlerini içeren kendi kendini ayıklayan arşiv. |
+| EULA_ENU.txt |Microsoft Azure Service Fabric bağımsız Windows Server paketinin kullanımına ilişkin lisans koşulları. [EULA'nın bir kopyasını](https://go.microsoft.com/fwlink/?LinkID=733084) şimdi indirebilirsiniz. |
+| Benioku.txt |Sürüm notlarına ve temel yükleme yönergelerine bağlantı. Bu belgedeki yönergelerin bir alt kümesidir. |
+| ÜçüncüPartyNotice.rtf |Pakette bulunan üçüncü taraf yazılımbildirimi. |
+| Araçlar\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe destek amacıyla Microsoft'a izleme günlükleri toplamak ve yüklemek için isteğe bağlı olarak çalıştırılır. |
+| Araçlar\ServiceFabricUpdateService.zip |Internet erişimi olmayan kümeler için otomatik kod yükseltmesini etkinleştirmek için kullanılan bir araç. Daha fazla bilgi burada [bulabilirsiniz](service-fabric-cluster-upgrade-windows-server.md)|
 
-**Şablonlar** 
+**Şablon** 
 
 | **Dosya adı** | **Kısa açıklama** |
 | --- | --- |
-| ClusterConfig.Unsecure.DevCluster.json |Kümedeki her düğüm için bilgileri dahil olmak üzere güvenli olmayan, üç düğümlü tek makineli (veya sanal makine) geliştirme kümesi için ayarları içeren bir küme yapılandırması örnek dosyası. |
-| ClusterConfig.Unsecure.MultiMachine.json |Kümedeki her makine için bilgileri dahil olmak üzere bir güvenli, çok makineli (veya sanal makine) küme ayarlarını içeren bir küme yapılandırması örnek dosyası. |
-| ClusterConfig.Windows.DevCluster.json |Bilgi için kümedeki her düğüme dahil olmak üzere bir güvenli, üç düğümlü tek makineli (veya sanal makine) geliştirme kümesi, tüm ayarlarını içeren bir küme yapılandırma örnek dosyası. Küme kullanarak güvenli hale [Windows kimlikleri](https://msdn.microsoft.com/library/ff649396.aspx). |
-| ClusterConfig.Windows.MultiMachine.json |Güvenli kümesinde bulunan her makine için bilgiler dahil olmak üzere, Windows güvenliğini kullanarak güvenli, çok makineli (veya sanal makine) küme için tüm ayarları içeren bir küme yapılandırma örnek dosyası. Küme kullanarak güvenli hale [Windows kimlikleri](https://msdn.microsoft.com/library/ff649396.aspx). |
-| ClusterConfig.x509.DevCluster.json |Kümedeki her düğüm için bilgileri dahil olmak üzere bir güvenli, üç düğümlü tek makineli (veya sanal makine) geliştirme kümesi, tüm ayarlarını içeren bir küme yapılandırma örnek dosyası. Küme x509 kullanarak güvenli hale sertifikaları. |
-| ClusterConfig.x509.MultiMachine.json |Güvenli kümedeki her düğüm için bilgileri dahil olmak üzere güvenli, çok makineli (veya sanal makine) küme için tüm ayarları içeren bir küme yapılandırması örnek dosyası. Küme x509 kullanarak güvenli hale sertifikaları. |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |Güvenli kümedeki her düğüm için bilgileri dahil olmak üzere güvenli, çok makineli (veya sanal makine) küme için tüm ayarları içeren bir küme yapılandırması örnek dosyası. Küme kullanarak güvenli hale [Grup yönetilen hizmet hesapları](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
+| ClusterConfig.Unsecure.DevCluster.json |Kümedeki her düğüm için bilgiler de dahil olmak üzere, güvenli olmayan, üç düğümlü, tek makineli (veya sanal makine) geliştirme kümesinin ayarlarını içeren küme yapılandırma örnek dosyası. |
+| ClusterConfig.Unsecure.MultiMachine.json |Kümedeki her makinenin bilgilerini içeren, güvenli olmayan, çok makineli (veya sanal makine) kümenin ayarlarını içeren küme yapılandırma örnek dosyası. |
+| ClusterConfig.Windows.DevCluster.json |Kümedeki her düğüm için bilgiler de dahil olmak üzere güvenli, üç düğümlü, tek makineli (veya sanal makine) geliştirme kümesinin tüm ayarlarını içeren küme yapılandırma örnek dosyası. Küme, Windows kimlikleri kullanılarak güvenli hale [alınmıştır.](https://msdn.microsoft.com/library/ff649396.aspx) |
+| ClusterConfig.Windows.MultiMachine.json |Güvenli kümedeki her makinenin bilgileri de dahil olmak üzere, Windows güvenliğini kullanan güvenli, çok makineli (veya sanal makine) kümenin tüm ayarlarını içeren küme yapılandırma örnek dosyası. Küme, Windows kimlikleri kullanılarak güvenli hale [alınmıştır.](https://msdn.microsoft.com/library/ff649396.aspx) |
+| ClusterConfig.x509.DevCluster.json |Kümedeki her düğüm için bilgiler de dahil olmak üzere güvenli, üç düğümlü, tek makineli (veya sanal makine) geliştirme kümesinin tüm ayarlarını içeren küme yapılandırma örnek dosyası. Küme x509 sertifikaları kullanılarak güvenlidir. |
+| ClusterConfig.x509.MultiMachine.json |Güvenli kümedeki her düğüm için bilgiler de dahil olmak üzere, güvenli, çok makineli (veya sanal makine) kümeiçin tüm ayarları içeren bir küme yapılandırma örnek dosyası. Küme x509 sertifikaları kullanılarak güvenlidir. |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |Güvenli kümedeki her düğüm için bilgiler de dahil olmak üzere, güvenli, çok makineli (veya sanal makine) kümeiçin tüm ayarları içeren bir küme yapılandırma örnek dosyası. Küme, [Grup Yönetilen Hizmet Hesapları](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)kullanılarak güvenli hale alınmıştır. |
 
-## <a name="cluster-configuration-samples"></a>Küme yapılandırma örnekleri
-Küme yapılandırması şablonlarının en son sürümlerine GitHub sayfasında bulunabilir: [tek başına küme yapılandırma örnekleri](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+## <a name="cluster-configuration-samples"></a>Küme Yapılandırma Örnekleri
+Küme yapılandırma şablonlarının en son sürümleri GitHub sayfasında bulunabilir: [Bağımsız Küme Yapılandırma Örnekleri.](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-## <a name="independent-runtime-package"></a>Bağımsız çalışma zamanı paketi
-En son çalışma zamanı paketi Küme dağıtımı sırasında otomatik olarak indirilir [indirme bağlantısı - Service Fabric çalışma zamanı - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).
+## <a name="independent-runtime-package"></a>Bağımsız Çalışma Zamanı Paketi
+En son çalışma zamanı [paketi, Indirme Linki - Service Fabric Runtime - Windows Server'dan](https://go.microsoft.com/fwlink/?linkid=839354)küme dağıtımı sırasında otomatik olarak indirilir.
 
 ## <a name="related"></a>İlgili
-* [Tek başına Azure Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)
-* [Service Fabric kümesi güvenlik senaryoları](service-fabric-windows-cluster-windows-security.md)
+* [Bağımsız bir Azure Hizmet Kumaşı kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)
+* [Hizmet Kumaş küme güvenlik senaryoları](service-fabric-windows-cluster-windows-security.md)

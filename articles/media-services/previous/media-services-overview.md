@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services’a genel bakış | Microsoft Docs
-description: Microsoft Azure Media Services, geliştiricilerin ölçeklenebilir medya yönetimi ve teslimi uygulamaları oluşturmalarına olanak tanıyan genişletilebilir bir bulut tabanlı platformdur. Bu makale Azure Media Services bir genel bakış sunar.
+description: Microsoft Azure Media Services, geliştiricilerin ölçeklenebilir medya yönetimi ve teslimi uygulamaları oluşturmalarına olanak tanıyan genişletilebilir bir bulut tabanlı platformdur. Bu makalede, Azure Medya Hizmetleri'ne genel bir bakış verebisi yer almaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197513"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services’a genel bakış 
 
-> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Media Services sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Medya Hizmetleri sürümünü seçin:"]
 > * [Sürüm 3](../latest/media-services-overview.md)
 > * [Sürüm 2](media-services-overview.md)
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 
 Microsoft Azure Media Services (AMS), geliştiricilerin ölçeklenebilir medya yönetimi ve teslimi uygulamaları oluşturmalarına olanak tanıyan genişletilebilir bir bulut tabanlı platformdur. Media Services, çeşitli istemcilere (TV, PC ve mobil cihazlar gibi) isteğe bağlı olarak veya canlı akış halinde teslim amacıyla video ve ses içeriklerini güvenli bir şekilde yüklemenizi, depolamanızı, kodlamanızı ve paketlemenizi sağlayan REST API'lerini temel alır.
 
@@ -36,22 +36,22 @@ Yalnızca Media Services’i kullanarak uçtan uca iş akışları oluşturabili
 
 ## <a name="compliance-privacy-and-security"></a>Uyumluluk, Gizlilik ve Güvenlik
 
-Önemli bir anımsatıcı olarak, Azure Media Services kullanmanız için geçerli olan yasaların tümüne uymanız gerekir ve Media Services veya herhangi bir Azure hizmetini diğerlerinin haklarını ihlal eden veya başkalarına zararlı olabilecek bir biçimde kullanamazsınız.
+Önemli bir hatırlatma olarak, Azure Medya Hizmetlerini kullanımınızda geçerli tüm yasalara uymanız gerekir ve Medya Hizmetlerini veya herhangi bir Azure hizmetini başkalarının haklarını ihlal eden veya başkalarına zarar verebilecek şekilde kullanamazsınız.
 
-Media Services herhangi bir videoyu/görüntüyü karşıya yüklemeden önce, video/görüntüdeki tüm gerekli haklara (varsa), verilerin Media Services ve Azure 'da kullanım, işleme ve depolama için gerekli olduğu durumlar dahil olmak üzere videoyu/görüntüsünü kullanmak için uygun haklara sahip olmanız gerekir. Bazı daireler, koleksiyon için özel yasal gereksinimler (örneğin, biyometrik veriler gibi belirli veri kategorilerinin çevrimiçi olarak işlenmesi ve depolanması) uygulayabilir. Media Services ve Azure 'u özel yasal gereksinimlere yönelik herhangi bir veri konusunun işleme ve depolama alanı için kullanmadan önce, sizin için geçerli olabilecek her türlü meşru gereksinimlerle uyumluluğa sahip olduğunuzdan emin olmanız gerekir.
+Medya Hizmetlerine herhangi bir video/resim yüklemeden önce, video/görüntüyü kullanmadan önce, yasaların gerektirdiği durumlarda, video/görüntüdeki bireylerin (varsa) verilerinin Medya Hizmetleri ve Azure'da kullanımı, işlenmesi ve depolanması için gerekli tüm izinler de dahil olmak üzere, videoyu/görüntüyü kullanmak için gereken tüm haklara sahip olmalısınız. Bazı yargı bölgeleri, biyometrik veriler gibi belirli veri kategorilerinin toplanması, çevrimiçi işlenmesi ve depolanması için özel yasal gereklilikler uygulayabilir. Özel yasal gerekliliklere tabi tüm verilerin işlenmesi ve saklanması için Medya Hizmetleri ve Azure'u kullanmadan önce, sizin için geçerli olabilecek bu tür yasal gerekliliklere uygunluğu sağlamalısınız.
 
-Media Services uyumluluk, gizlilik ve güvenlik hakkında bilgi edinmek için lütfen Microsoft [Güven Merkezi](https://www.microsoft.com/trust-center/?rtc=1)' ni ziyaret edin. Microsoft 'un gizlilik yükümlülüklerinde, verilerinizi silme dahil olmak üzere veri işleme ve bekletme uygulamaları için lütfen Microsoft 'un [Gizlilik bildirimi](https://privacy.microsoft.com/PrivacyStatement), [çevrimiçi hizmet koşulları](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") ve [veri işleme eki](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") gözden geçirin. Media Services kullanarak, OST, DPA ve gizlilik bildirimiyle bağlanmayı kabul etmiş olursunuz.
+Medya Hizmetlerinde uyumluluk, gizlilik ve güvenlik hakkında bilgi edinmek için lütfen Microsoft [Güven Merkezi'ni](https://www.microsoft.com/trust-center/?rtc=1)ziyaret edin. Microsoft'un gizlilik yükümlülükleri, verilerinizin nasıl silindigini içeren veri işleme ve saklama uygulamaları için lütfen Microsoft' un [Gizlilik Bildirimini,](https://privacy.microsoft.com/PrivacyStatement) [Çevrimiçi Hizmetler Koşulları'nı](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") ve [Veri İşleme Eki 'ni](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") inceleyin. Medya Hizmetlerini kullanarak, OST, DPA ve Gizlilik Bildirimi'ne bağlı olmayı kabul edeyim.
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Media Services’i kullanmaya başlamak için aşağıdakilerin bulunması gerekir:
 
-* Bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. Ayrıntılar için bkz. [Azure Ücretsiz Deneme](https://azure.microsoft.com).
+* Bir Azure hesabı. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com).
 * Bir Azure Media Services hesabı. Daha fazla bilgi için bkz. [Hesap Oluşturma](media-services-portal-create-account.md).
 * (İsteğe bağlı) Geliştirme ortamı ayarlayın. Geliştirme ortamınız için .NET veya REST API’yi seçin. Daha fazla bilgi için bkz. [Ortam Ayarlama](media-services-dotnet-how-to-use.md).
 
     Ayrıca, [AMS API’ye programlama aracılığıyla nasıl bağlanılacağını öğrenin](media-services-use-aad-auth-to-access-ams-api.md).
-* Standart veya premium akış uç noktası başlatılmış durumda.  Daha fazla bilgi için bkz. [Akış uç noktalarını yönetme](media-services-portal-manage-streaming-endpoints.md)
+* Standart veya premium akış uç noktası başlatılmış durumda.  Daha fazla bilgi için [bkz: Akış uç noktalarını yönetme](media-services-portal-manage-streaming-endpoints.md)
 
 ## <a name="sdks-and-tools"></a>SDK’lar ve araçlar
 
@@ -59,15 +59,15 @@ Media Services çözümleri oluşturmak için şunları kullanabilirsiniz:
 
 * [Media Services REST API'si](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Kullanılabilir istemci SDK'larından biri:
-    * .NET için Azure Media Services SDK
+    * .NET için Azure Medya Hizmetleri SDK
     
         * [NuGet paketi](https://www.nuget.org/packages/windowsazure.mediaservices/)
-        * [GitHub Kaynak kodu](https://github.com/Azure/azure-sdk-for-media-services)
+        * [GitHub kaynak kodu](https://github.com/Azure/azure-sdk-for-media-services)
     * [Java için Azure SDK](https://github.com/Azure/azure-sdk-for-java),
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
     * [Node.js için Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Bu, Microsoft dışı bir Node.js SDK sürümüdür. Bir topluluğun gözetimi altındadır ve şu anda AMS API'lerinin %100’ünü kapsamamaktadır).
 * Mevcut araçlar:
-    * [Azure portalındaki](https://portal.azure.com/)
+    * [Azure portalında](https://portal.azure.com/)
     * [Azure-Media-Services-Gezgini](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Gezgini (AMSE), Windows için bir Winforms/C# uygulamasıdır)
 
 > [!NOTE]

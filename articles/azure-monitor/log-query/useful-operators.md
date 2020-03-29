@@ -1,42 +1,42 @@
 ---
-title: Azure Izleyici günlük sorgularındaki yararlı işleçler | Microsoft Docs
-description: Azure Izleyici günlük sorgularında farklı senaryolar için kullanılacak ortak işlevler.
+title: Azure Monitor günlük sorgularında yararlı operatörler | Microsoft Dokümanlar
+description: Azure Monitor günlük sorgularında farklı senaryolar için kullanılacak yaygın işlevler.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: ff63b9b7027e99c70971230936ed98186c2208e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75397718"
 ---
-# <a name="useful-operators-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularında yararlı işleçler
+# <a name="useful-operators-in-azure-monitor-log-queries"></a>Azure Monitor günlük sorgularında yararlı operatörler
 
-Aşağıdaki tabloda, Azure Izleyici günlük sorgularında farklı senaryolar için kullanabileceğiniz bazı genel işlevler verilmiştir.
+Aşağıdaki tablo, Azure Monitor günlük sorgularında farklı senaryolar için kullanılacak bazı ortak işlevler sağlar.
 
 ## <a name="useful-operators"></a>Yararlı işleçler
 
-Kategori                                |İlgili analiz Işlevi
+Kategori                                |İlgili Analitik Fonksiyonu
 ----------------------------------------|----------------------------------------
-Seçim ve sütun diğer adları            |`project`, `project-away`, `extend`
+Seçim ve Sütun takma adları            |`project`, `project-away`, `extend`
 Geçici tablolar ve sabitler          |`let scalar_alias_name = …;` <br> `let table_alias_name =  …  …  … ;`| 
-Karşılaştırma ve dize Işleçleri         |`startswith`, `!startswith`, `has`, `!has` <br> `contains`, `!contains`, `containscs` <br> `hasprefix`, `!hasprefix`, `hassuffix`, `!hassuffix`, `in`, `!in` <br> `matches regex` <br> `==`, `=~`, `!=`, `!~`
+Karşılaştırma ve String Operatörleri         |`startswith`, `!startswith`, `has`, `!has` <br> `contains`, `!contains`, `containscs` <br> `hasprefix`, `!hasprefix`, `hassuffix`, `!hassuffix`, `in`, `!in` <br> `matches regex` <br> `==`, `=~`, `!=`, `!~`
 Ortak dize işlevleri                 |`strcat()`, `replace()`, `tolower()`, `toupper()`, `substring()`, `strlen()`
-Ortak matematik işlevleri                   |`sqrt()`, `abs()` <br> `exp()`, `exp2()`, `exp10()`, `log()`, `log2()`, `log10()`, `pow()` <br> `gamma()`, `gammaln()`
-Metin ayrıştırma                            |`extract()`, `extractjson()`, `parse`, `split()`
-Çıktıyı sınırlandırma                         |`take`, `limit`, `top`, `sample`
+Ortak matematik fonksiyonları                   |`sqrt()`, `abs()` <br> `exp()`, `exp2()`, `exp10()`, `log()`, `log2()`, `log10()`, `pow()` <br> `gamma()`, `gammaln()`
+Metni ayrışdırma                            |`extract()`, `extractjson()`, `parse`, `split()`
+Çıktıyı sınırlama                         |`take`, `limit`, `top`, `sample`
 Tarih işlevleri                          |`now()`, `ago()` <br> `datetime()`, `datepart()`, `timespan` <br> `startofday()`, `startofweek()`, `startofmonth()`, `startofyear()` <br> `endofday()`, `endofweek()`, `endofmonth()`, `endofyear()` <br> `dayofweek()`, `dayofmonth()`, `dayofyear()` <br> `getmonth()`, `getyear()`, `weekofyear()`, `monthofyear()`
 Gruplandırma ve toplama                |`summarize by` <br> `max()`, `min()`, `count()`, `dcount()`, `avg()`, `sum()` <br> `stddev()`, `countif()`, `dcountif()`, `argmax()`, `argmin()` <br> `percentiles()`, `percentile_array()`
-Birleşimler ve birleşimler                        |`join kind=leftouter`, `inner`, `rightouter`, `fullouter`, `leftanti` <br> `union`
-Sıralama, sıralama                             |`sort`, `order` 
+Birleştirmeler ve Sendikalar                        |`join kind=leftouter`, `inner`, `rightouter`, `fullouter`, `leftanti` <br> `union`
+Sıralama, sipariş                             |`sort`, `order` 
 Dinamik nesne (JSON ve dizi)         |`parsejson()` <br> `makeset()`, `makelist()` <br> `split()`, `arraylength()` <br> `zip()`, `pack()`
 Mantıksal işleçler                       |`and`, `or`, `iff(condition, value_t, value_f)` <br> `binary_and()`, `binary_or()`, `binary_not()`, `binary_xor()`
-Makine öğrenme                        |`evaluate autocluster`, `basket`, `diffpatterns`, `extractcolumns`
+Makine öğrenimi                        |`evaluate autocluster`, `basket`, `diffpatterns`, `extractcolumns`
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure izleyici 'de yazma günlüğü sorgularıyla](get-started-queries.md)bir derste ilerleyin.
+- [Azure Monitor'da yazma günlüğü sorguları](get-started-queries.md)hakkında bir ders ten geç.

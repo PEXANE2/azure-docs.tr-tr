@@ -9,22 +9,22 @@ ms.date: 05/21/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: bae66078a1bcb1d80f0798b1d501598fa785fb80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66241223"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 
-## <a name="get-the-managed-image"></a>Yönetilen bir görüntü al
+## <a name="get-the-managed-image"></a>Yönetilen görüntüyü elde edin
 
-Kullanarak bir kaynak grubu mevcut görüntülerin listesini görebilirsiniz [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Görüntü adı ve hangi kaynak grubunda öğrendikten sonra olduğundan, kullanabileceğiniz `Get-AzImage` yeniden görüntü nesnesini alın ve daha sonra kullanmak üzere bir değişkende depolayın. Bu örnek adlı bir görüntü alır *Myımage* "myResourceGroup" kaynak grubu ve bir değişkene atar *$managedImage*. 
+[Get-AzImage'ı](https://docs.microsoft.com/powershell/module/az.compute/get-azimage)kullanarak kaynak grubunda bulunan resimlerin listesini görebilirsiniz. Görüntü adını ve hangi kaynak grubunda olduğunu bildiğinizde, `Get-AzImage` görüntü nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *myImage* adlı bir görüntü alır ve *$managedImage*değişkenine atar. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -32,11 +32,11 @@ $managedImage = Get-AzImage `
    -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-an-image-gallery"></a>Bir görüntü Galerisi oluşturma 
+## <a name="create-an-image-gallery"></a>Resim galerisi oluşturma 
 
-Bir görüntü Galerisine görüntü paylaşımına etkinleştirmek için kullanılan birincil kaynaktır. Galeri adı için izin verilen karakterler büyük veya küçük harf, rakam, nokta ve dönemleri olur. Galeri adı kısa çizgi içeremez. Galeri adları, abonelik içinde benzersiz olmalıdır. 
+Resim galerisi, görüntü paylaşımını etkinleştirmek için kullanılan birincil kaynaktır. Galeri adı için izin verilen karakterler büyük veya küçük harfler, basamaklar, noktalar ve dönemlerdir. Galeri adı tire içeremez. Galeri adları aboneliğinizde benzersiz olmalıdır. 
 
-Kullanarak bir görüntü Galerisi oluşturma [yeni AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Aşağıdaki örnekte adlı bir galeridir oluşturur *myGallery* içinde *myGalleryRG* kaynak grubu.
+[New-AzGallery'yi](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery)kullanarak bir resim galerisi oluşturun. Aşağıdaki örnek, *myGalleryRG* kaynak grubunda *myGallery* adlı bir galeri oluşturur.
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -49,11 +49,11 @@ $gallery = New-AzGallery `
    -Description 'Shared Image Gallery for my organization'  
 ```
    
-## <a name="create-an-image-definition"></a>Bir görüntü tanımı oluşturun 
+## <a name="create-an-image-definition"></a>Görüntü tanımı oluşturma 
 
-Resimler için mantıksal bir gruplandırmasını görüntü tanımları oluşturun. Bunlar, bunların içinde oluşturulan görüntü sürümleri hakkında bilgi yönetmek için kullanılır. Görüntü tanımı adları büyük veya küçük harf, rakam, nokta, kısa çizgi ve dönemleri meydana gelebilir. Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+Görüntü tanımları görüntüler için mantıksal bir gruplandırma oluşturur. Bunlar, içlerinde oluşturulan görüntü sürümleri hakkındaki bilgileri yönetmek için kullanılır. Resim tanım adları büyük veya küçük harflerden, basamaklardan, noktalardan, tirelerden ve dönemlerden oluşur. Görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için [Resim tanımlarına](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)bakın.
 
-Kullanarak görüntü tanımı oluşturabilir [yeni AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). Bu örnekte, Galeri görüntüsü adlı *myGalleryImage*.
+[New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak resim tanımı oluşturun. Bu örnekte, galeri resmi *myGalleryImage*olarak adlandırılır.
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -69,13 +69,13 @@ $galleryImage = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-an-image-version"></a>Görüntü sürümü oluşturma
+## <a name="create-an-image-version"></a>Resim sürümü oluşturma
 
-Görüntü sürümü kullanarak bir yönetilen görüntüsünü oluşturma [yeni AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+[New-AzGalleryImageVersion'u](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak yönetilen bir görüntüden görüntü sürümü oluşturun. 
 
-Görüntü sürümü için izin verilen karakter, sayı ve dönemleri ' dir. Sayı 32-bit tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
+Görüntü sürümü için izin verilen karakterler sayılar ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Yama*.
 
-Bu örnekte, görüntü sürümü olan *1.0.0* ve her ikisi de çoğaltılır *Batı Orta ABD* ve *Orta Güney ABD* veri merkezleri. Çoğaltma için hedef bölgeler seçerken, ayrıca eklemek zorunda olmadığını unutmayın *kaynak* çoğaltma için hedef bölgede.
+Bu örnekte, görüntü sürümü *1.0.0'dır* ve hem *Batı Orta ABD* hem de Güney Orta *ABD* veri merkezlerine çoğaltılır. Çoğaltma için hedef bölgeleri seçerken, *kaynak* bölgeyi çoğaltma hedefi olarak da eklemeniz gerektiğini unutmayın.
 
 
 ```azurepowershell-interactive
@@ -94,22 +94,22 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Uygulamanın, biz ilerleme durumunu izleyebilmek bir işi oluşturduk şekilde görüntünün hedef bölgeler tümüne biraz sürebilir. İşinin ilerleme durumunu görmek için şunu yazın `$job.State`.
+Görüntüyü tüm hedef bölgelere kopyalamak biraz zaman alabilir, bu yüzden ilerlemeyi izleyebilmemiz için bir iş yarattık. İşin ilerlemesini görmek için `$job.State`yazın.
 
 ```azurepowershell-interactive
 $job.State
 ```
 
 > [!NOTE]
-> Görüntü sürümü yerleşik ve başka bir görüntü sürümünü oluşturmak için aynı yönetilen görüntüsünü kullanabilmeniz için önce çoğaltılmış tamamen tamamlanmasını beklemeniz gerekir. 
+> Başka bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için önce görüntü sürümünün tamamen oluşturulmasını ve çoğaltılmasını beklemeniz gerekir. 
 >
-> Görüntü sürümünüzde da depolayabilirsiniz [bölgesel olarak yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) ekleyerek `-StorageAccountType Standard_ZRS` oluşturduğunuzda görüntü sürümü.
+> Ayrıca, resim sürümünü oluştururken ekleyerek `-StorageAccountType Standard_ZRS` resim sürümünüzü Bölge [Yedekli Depolama'da](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) da saklayabilirsiniz.
 >
 
 
-## <a name="share-the-gallery"></a>Galeri paylaşın
+## <a name="share-the-gallery"></a>Galeriyi paylaşın
 
-Görüntü Galerisi düzeyinde erişim paylaştığınız öneririz. Bir e-posta adresi kullanın ve [Get-AzADUser](/powershell/module/az.resources/get-azaduser) kullanıcının nesne kimliği alır ve ardından kullanmak için cmdlet [yeni AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) Galerisine onlara erişim vermelisiniz. Örnek e-posta Değiştir alinne_montes@contoso.com Bu örnekte, kendi bilgilerinizle.
+Görüntü galerisi düzeyinde erişimi paylaşmanızı öneririz. Kullanıcı için nesne kimliğini almak için bir e-posta adresi ve [Get-AzADUser](/powershell/module/az.resources/get-azaduser) cmdlet kullanın, ardından galeriye erişim sağlamak için [New-AzRoleAssignment'ı](/powershell/module/Az.Resources/New-AzRoleAssignment) kullanın. Bu alinne_montes@contoso.com örnekteki örnek e-postayı kendi bilgilerinizle değiştirin.
 
 ```azurepowershell-interactive
 # Get the object ID for the user
