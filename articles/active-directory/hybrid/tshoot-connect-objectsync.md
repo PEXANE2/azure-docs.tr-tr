@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Nesne eşitleme sorunlarını giderme | Microsoft Docs'
-description: Bu konu ile sorun giderme görevini kullanarak nesne eşitleme sorunlarını gidermek için adımları sağlar.
+title: 'Azure AD Connect: Sorun giderme nesne senkronizasyonu | Microsoft Dokümanlar'
+description: Bu konu, sorun giderme görevini kullanarak nesne eşitleme ile sorunları gidermek için nasıl adımlar sağlar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,90 +16,90 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64919112"
 ---
-# <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile nesne eşitleme sorunlarını giderme
-Bu makalede, sorun giderme görevini kullanarak nesne eşitleme sorunlarını giderme için adımları sağlar. Azure Active Directory (Azure AD) Connect sorun giderme nasıl çalıştığını görmek için izleme [bu kısa video](https://aka.ms/AADCTSVideo).
+# <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitleme ile nesne eşitleme sorunlarını giderme
+Bu makalede, sorun giderme görevi kullanarak nesne eşitleme ile sorun giderme sorunları için adımlar sağlar. Azure Active Directory (Azure AD) Connect'te sorun giderme nin nasıl çalıştığını görmek için [bu kısa videoyu](https://aka.ms/AADCTSVideo)izleyin.
 
-## <a name="troubleshooting-task"></a>Görev sorunlarını giderme
-Azure AD için dağıtım 1.1.749.0 sürümü ile bağlantı kurulamadı veya sonraki nesne eşitleme sorunları gidermek için Sihirbazı'nda sorun giderme görevini kullanın. Önceki sürümler için lütfen açıklandığı gibi manuel olarak sorun giderme [burada](tshoot-connect-object-not-syncing.md).
+## <a name="troubleshooting-task"></a>Sorun giderme görevi
+Azure AD Connect dağıtımınız sürüm 1.1.749.0 veya üzeri ise nesne eşitleme sorunlarını gidermek için sihirbazdaki sorun giderme görevini kullanın. Önceki sürümler için lütfen [burada](tshoot-connect-object-not-syncing.md)açıklandığı gibi el ile sorun giderin.
 
-### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Sihirbazı'nda sorun giderme görevini Çalıştır
-Sihirbazı'nda sorun giderme görevini çalıştırmak için aşağıdaki adımları gerçekleştirin:
+### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Sihirbazdaki sorun giderme görevini çalıştırma
+Sihirbazda sorun giderme görevini çalıştırmak için aşağıdaki adımları gerçekleştirin:
 
-1.  Yeni bir Windows PowerShell oturumunda, Azure AD Connect sunucunuzda olan çalıştırma yönetici seçeneğini açın.
-2.  Çalıştırma `Set-ExecutionPolicy RemoteSigned` veya `Set-ExecutionPolicy Unrestricted`.
-3.  Azure AD Connect Sihirbazı'nı başlatın.
-4.  Ek Görevler sayfasına gidin, sorun giderme seçin ve İleri'ye tıklayın.
-5.  Sorun giderme sayfasında, sorun giderme menü PowerShell'de başlamak için Başlat'ı tıklatın.
-6.  Ana menüde, nesne eşitleme sorunlarını giderme seçin.
-![Nesne eşitleme sorunlarını giderme](media/tshoot-connect-objectsync/objsynch11.png)
+1.  Azure AD Connect sunucunuzda Yönetici olarak Çalıştır seçeneğiyle yeni bir Windows PowerShell oturumu açın.
+2.  Çalıştır `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`ya da .
+3.  Azure AD Bağlantısı sihirbazını başlatın.
+4.  Ek Görevler sayfasına gidin, Sorun Gider'i seçin ve İleri'yi tıklatın.
+5.  Sorun Giderme sayfasında, PowerShell'deki sorun giderme menüsünü başlatmak için Başlat'ı tıklatın.
+6.  Ana menüde Sorun Giderme Nesneeşitlemesi'ni seçin.
+![Sorun giderme nesne eşitleme](media/tshoot-connect-objectsync/objsynch11.png)
 
-### <a name="troubleshooting-input-parameters"></a>Sorun giderme giriş parametreleri
-Aşağıdaki giriş parametreleri tarafından sorun giderme görevini gerekir:
-1.  **Nesnesinin ayırt edici ad** – Bu, sorun giderme gerektiren nesnesinin ayırt edici ad
-2.  **AD Bağlayıcısı adı** – yukarıdaki nesnesi bulunduğu AD ormanı adıdır.
-3.  Azure AD kiracısı genel yönetici kimlik ![genel yönetici kimlik bilgileri](media/tshoot-connect-objectsync/objsynch1.png)
+### <a name="troubleshooting-input-parameters"></a>Sorun Giderme Giriş Parametreleri
+Sorun giderme görevi tarafından aşağıdaki giriş parametreleri gereklidir:
+1.  **Nesne Ayırt Edici Ad** – Bu, sorun giderme gerektiren nesnenin ayırt edici adıdır
+2.  **AD Bağlayıcı Adı** – Yukarıdaki nesnenin bulunduğu AD ormanının adıdır.
+3.  Azure AD kiracı ![genel yönetici kimlik bilgileri genel yönetici kimlik bilgileri](media/tshoot-connect-objectsync/objsynch1.png)
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>Sorun giderme görevini sonuçlarını anlama
-Sorun giderme görevini aşağıdaki denetimleri gerçekleştirir:
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Sorun giderme görevinin sonuçlarını anlama
+Sorun giderme görevi aşağıdaki denetimleri gerçekleştirir:
 
-1.  Nesne Azure Active Directory'ye eşitlenen tümüyse UPN uyuşmazlığı
-2.  Nesne etki alanı filtreleme nedeniyle filtre uygulanmış olup olmadığını denetleyin
-3.  Nesnenin son OU filtreleme için filtre uygulanmış olup olmadığını denetleyin
-4.  Bağlı bir posta kutusu nedeniyle nesne eşitleme engellenip engellenmediğini kontrol edin
-5. Nesne eşitlenmesi çalıştırmaması dinamik dağıtım grubu olup olmadığını denetleyin
+1.  Nesne Azure Etkin Dizini ile eşitlenirse UPN uyumsuzluğu algılama
+2.  Etki alanı filtreleme nedeniyle nesnenin filtre uygulanıp uygulanmayana değdiğini denetleme
+3.  OU filtreleme nedeniyle nesnenin filtre uygulanıp uygulanmayanmasını denetleme
+4.  Bağlı bir posta kutusu nedeniyle nesne eşitlemesi engellendiğini denetleme
+5. Nesnenin senkronize olmaması gereken dinamik dağıtım grubu olup olmadığını denetleme
 
-Bu bölümün geri kalanında, görev tarafından döndürülen belirli sonuçları açıklar. Her durumda, görev, sorunu çözmek için önerilen eylemleri tarafından izlenen analizini sağlar.
+Bu bölümün geri kalanı, görev tarafından döndürülen belirli sonuçları açıklar. Her durumda, görev sorunu çözmek için önerilen eylemleri izleyen bir çözüm sağlar.
 
-## <a name="detect-upn-mismatch-if-object-is-synced-to-azure-active-directory"></a>Nesne Azure Active Directory'ye eşitlenen tümüyse UPN uyuşmazlığı
-### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>UPN soneki, Azure AD Kiracınız ile doğrulanmadı
-Zaman UserPrincipalName (UPN) / alternatif oturum açma Kimliğini soneki ile Azure AD Kiracısı doğrulanmamış ve ardından Azure Active Directory UPN soneki varsayılan etki alanı adı "onmicrosoft.com" ile değiştirir.
+## <a name="detect-upn-mismatch-if-object-is-synced-to-azure-active-directory"></a>Nesne Azure Etkin Dizini ile eşitlenirse UPN eşleşmesini algılama
+### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>UPN Soneki Azure AD Kiracıile DOĞRULANMAZ
+UserPrincipalName (UPN)/Alternatif Giriş Kimliği soneki Azure AD Kiracısı ile doğrulanmadığında, Azure Etkin Dizin, UPN soneklerini varsayılan etki alanı adı "onmicrosoft.com" ile değiştirir.
 
-![Azure AD UPN yerini alır.](media/tshoot-connect-objectsync/objsynch2.png)
+![Azure AD UPN'nin yerini alır](media/tshoot-connect-objectsync/objsynch2.png)
 
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>UPN soneki bir Federasyon etki alanından başka bir Federasyon etki alanı değiştirme
-Azure Active Directory eşitleme UserPrincipalName (UPN) izin verme / alternatif oturum açma Kimliğini soneki değişiklik bir Federasyon etki alanından başka bir Federasyon etki alanı. Bu Azure AD Kiracısı ile doğrulanır ve kimlik doğrulaması türü olarak federe sahip etki alanları için geçerlidir.
+### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>UPN Soneki'nin bir federe etki alanından başka bir federe etki alanına değiştirilmesi
+Azure Active Directory, UserPrincipalName (UPN)/Alternatif Oturum Açma Kimliği sonekinin bir federe etki alanından başka bir federe etki alanına eşitlenmesine izin vermez. Bu, Azure AD Kiracısı ile doğrulanan ve Kimlik Doğrulama Türüne Federe olarak sahip olan etki alanları için geçerlidir.
 
-![Bir Federasyon etki alanından diğerine hiçbir UPN eşitlemesi](media/tshoot-connect-objectsync/objsynch3.png) 
+![Federe bir etki alanından diğerine UPN senkronizasyonu yok](media/tshoot-connect-objectsync/objsynch3.png) 
 
-### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Azure AD Kiracı DirSync özelliğini 'SynchronizeUpnForManagedUsers' devre dışı bırakıldı
-Azure AD Kiracısı DirSync özelliğini 'SynchronizeUpnForManagedUsers' devre dışı bırakıldığında, Azure Active Directory eşitleme güncelleştirmeleri UserPrincipalName/alternatif oturum açma kimliği için lisanslı kullanıcı hesapları ile yönetilen kimlik doğrulaması için izin vermez.
+### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Azure AD Kiracı DirSync Özelliği 'SynchronizeUpnForManagedUsers' devre dışı bırakılır
+Azure AD KiracıSı DirSync Özelliği 'SynchronizeUpnForManagedUsers' devre dışı bırakıldığında, Azure Active Directory yönetilen kimlik doğrulaması olan lisanslı kullanıcı hesapları için UserPrincipalName/Alternatif Giriş Kimliği'nde eşitleme güncelleştirmesine izin vermez.
 
 ![SynchronizeUpnForManagedUsers](media/tshoot-connect-objectsync/objsynch4.png)
 
-## <a name="object-is-filtered-due-to-domain-filtering"></a>Etki alanı filtreleme nedeniyle nesne filtrelenmiştir.
-### <a name="domain-is-not-configured-to-sync"></a>Etki alanı yapılandırılmadı eşitlemek için
-Nesne, yapılandırılmamış bir etki alanı nedeniyle kapsamı dışındadır. Ait olduğu etki alanı filtrelenmiş aşağıdaki örnekte, nesne eşitlenmemiş kapsamdır eşitleme.
+## <a name="object-is-filtered-due-to-domain-filtering"></a>Nesne etki alanı filtreleme nedeniyle filtrelenir
+### <a name="domain-is-not-configured-to-sync"></a>Etki alanı eşitlemek için yapılandırılmamıştır
+Etki alanı nın yapılandırılmamalarından nesne kapsam dışındadır. Aşağıdaki örnekte, nesne eşitleme kapsamı dışında dır, çünkü ait olduğu etki alanı eşitlemeden filtrelenir.
 
-![Etki alanı yapılandırılmadı eşitlemek için](media/tshoot-connect-objectsync/objsynch5.png)
+![Etki alanı eşitlemek için yapılandırılmamıştır](media/tshoot-connect-objectsync/objsynch5.png)
 
-### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Etki alanı için yapılandırılmış eşitleme ancak çalıştırma profillerini çalıştırma adımları eksik
-Etki alanı eksik olduğundan nesne kapsam dışına profilleri/çalıştırma adımları çalıştırılır. Ait olduğu etki alanı çalıştırma adımları tam çalıştırma profili içeri aktarma için eksik olarak aşağıdaki örnekte, nesne eşitlenmemiş kapsamdır.
-![çalıştırma profillerini eksik](media/tshoot-connect-objectsync/objsynch6.png)
+### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Etki alanı eşitlemek için yapılandırıldı, ancak çalışma profilleri/çalıştır adımları eksik
+Etki alanı çalışma profilleri/çalıştır adımları eksik olduğundan nesne kapsam dışındadır. Aşağıdaki örnekte, ait olduğu etki alanı Tam Alma çalıştır profili için çalışma adımları eksik olduğundan nesne eşitkapsamı dışındadır.
+![eksik çalışma profilleri](media/tshoot-connect-objectsync/objsynch6.png)
 
-## <a name="object-is-filtered-due-to-ou-filtering"></a>Nesnenin son OU filtreleme için filtrelenmiştir.
-OU filtreleme yapılandırması nedeniyle eşitlenmedi kapsam nesnedir. Aşağıdaki örnekte, nesne OU'ya ait NoSync, DC = bvtadwbackdc, DC = com.  Bu OU'ya eşitleme kapsamında yer almaz.</br>
+## <a name="object-is-filtered-due-to-ou-filtering"></a>Nesne OU filtreleme nedeniyle filtrelenir
+OU filtreleme yapılandırması nedeniyle nesne eşitleme kapsamı dışındadır. Aşağıdaki örnekte, nesne OU=NoSync,DC=bvtadwbackdc,DC=com'a aittir.  Bu OU eşitleme kapsamına dahil edilmez.</br>
 
-![KURULUŞ BİRİMİ](./media/tshoot-connect-objectsync/objsynch7.png)
+![OU](./media/tshoot-connect-objectsync/objsynch7.png)
 
-## <a name="linked-mailbox-issue"></a>Bağlı posta kutusu sorunu
-Bağlı bir posta kutusu, başka bir hesap güvenilen ormanda bulunan harici bir yönetici hesabı ile ilişkili olduğu varsayılır. Bu tür dış ana hesap var. sonra Azure AD Connect kullanıcı eşitlenmeyecek hesabı Azure AD kiracısı için Exchange ormanında bağlı posta kutusu karşılık gelir.</br>
-![Bağlı posta kutusu](./media/tshoot-connect-objectsync/objsynch12.png)
+## <a name="linked-mailbox-issue"></a>Bağlantılı Posta Kutusu sorunu
+Bağlı bir posta kutusunun, başka bir güvenilen hesap ormanında bulunan harici bir ana hesapla ilişkilendirilmesi gerekir. Böyle bir dış ana hesap yoksa, Azure AD Connect kullanıcı hesabını eşitlemez, Exchange ormanındaki bağlı posta kutusuna karşılık gelen kullanıcı hesabını Azure AD kiracısıyla karşılar.</br>
+![Bağlantılı Posta Kutusu](./media/tshoot-connect-objectsync/objsynch12.png)
 
-## <a name="dynamic-distribution-group-issue"></a>Dinamik dağıtım grubu sorun
-Şirket içi çeşitli farklılıkları nedeniyle Active Directory ve Azure Active Directory, Azure AD Connect eşitleme dinamik dağıtım grupları Azure AD kiracısı için.
+## <a name="dynamic-distribution-group-issue"></a>Dinamik Dağıtım Grubu sorunu
+Şirket içi Active Directory ve Azure Etkin Dizin arasındaki çeşitli farklar nedeniyle Azure AD Connect dinamik dağıtım gruplarını Azure AD kiracısına eşitlemez.
 
-![Dinamik dağıtım grubu](./media/tshoot-connect-objectsync/objsynch13.png)
+![Dinamik Dağıtım Grubu](./media/tshoot-connect-objectsync/objsynch13.png)
 
-## <a name="html-report"></a>HTML raporu
-Nesne çözümlemenin yanı sıra, sorun giderme görevini de bilinen nesnesi hakkında her şeyi içeren bir HTML raporu oluşturur. Bu HTML raporu yapmak için destek ekibi ile paylaşılabilen daha fazla sorun giderme adımı gerekirse.
+## <a name="html-report"></a>HTML Raporu
+Sorun giderme görevi, nesneyi çözümlemenin yanı sıra nesne hakkında her şeyi bilen bir HTML raporu da oluşturur. Bu HTML raporu, gerekirse daha fazla sorun giderme yapmak için destek ekibiyle paylaşılabilir.
 
-![HTML raporu](media/tshoot-connect-objectsync/objsynch8.png)
+![HTML Raporu](media/tshoot-connect-objectsync/objsynch8.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

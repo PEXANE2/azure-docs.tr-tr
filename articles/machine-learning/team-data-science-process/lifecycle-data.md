@@ -1,6 +1,6 @@
 ---
-title: Veri edinme ve anlama Team Data Science Process
-description: Hedefleri, görevleri ve teslim edilebilirleri veri alımı ve veri bilimi projelerinizi anlama aşaması
+title: Ekip Veri Bilimi Sürecinin Veri Toplama ve Anlayışı
+description: Veri bilimi projelerinizin veri toplama ve anlama aşaması için hedefler, görevler ve teslim edilebilir ler
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,74 +12,74 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720512"
 ---
-# <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Veri edinme ve anlama aşamasına Team Data Science Process
+# <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Ekip Veri Bilimi Sürecinin Veri Toplama ve Anlama Aşaması
 
-Bu makalede, hedeflerinizi, görevleri ve teslim edilebilirleri veri edinme ve anlama aşama Team Data Science işlem (TDSP) ile ilişkili özetlenmektedir. Bu işlem, veri bilimi projelerinizi yapısı için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü projeleri genellikle genellikle yinelemeli olarak yürütme, önemli aşamalar açıklanmaktadır:
+Bu makalede, Ekip Veri Bilimi Süreci'nin (TDSP) veri toplama ve anlama aşamasıyla ilişkili hedefler, görevler ve teslim edilebilirler sıralanmıştır. Bu işlem, veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, projelerin genellikle yineleyici olarak yürüttüğü başlıca aşamaları özetler:
 
-   1. **İş anlama**
-   2. **Veri alma ve anlama**
-   3. **Oluşturmanın**
+   1. **Kurumsal yaklaşım**
+   2. **Veri edinme ve anlama**
+   3. **Modelleme**
    4. **Dağıtım**
    5. **Müşteri kabulü**
 
-TDSP yaşam döngüsü görsel bir temsilini şu şekildedir: 
+TDSP yaşam döngüsünün görsel bir gösterimi aşağıdavelvettir: 
 
 ![TDSP yaşam döngüsü](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-## <a name="goals"></a>Hedefleri
-* Hedef değişkenlere ilişkilerini anladım temiz, yüksek kaliteli veri kümesi üretir. Modeli hazır olacak şekilde veri kümesi uygun analytics ortamında bulun.
-* Bir çözüm mimarisini yenilenir ve verileri düzenli olarak puanlar veri işlem hattı geliştirin.
+## <a name="goals"></a>Hedefler
+* Hedef değişkenlerle ilişkisi anlaşılan temiz, yüksek kaliteli bir veri kümesi üretin. Modelolmaya hazır olmak için veri kümesini uygun analiz ortamında bulun.
+* Verileri düzenli olarak yenileyen ve puanlayan veri ardışık yapısının çözüm mimarisini geliştirin.
 
-## <a name="how-to-do-it"></a>Nasıl yapılır
-Bu aşamada yönelik üç ana görev vardır:
+## <a name="how-to-do-it"></a>Nasıl yapılacağını
+Bu aşamada ele üç ana görev vardır:
 
-   * **Verileri** hedef analitik ortama alma.
-   * Veri kalitesinin soruyu yanıtlamak için yeterli olup olmadığını öğrenmek için **verileri araştırın** . 
-   * Yeni veya düzenli olarak yenilenen verileri öğrenmek için **bir veri işlem hattı ayarlayın** .
+   * Verileri hedef analitik ortama **doğru yutun.**
+   * Veri kalitesinin soruyu yanıtlamak için yeterli olup olmadığını belirlemek için **verileri keşfedin.** 
+   * Yeni veya düzenli olarak yenilenen verileri elde etmek için **bir veri ardışık düzenemi ayarlayın.**
 
-### <a name="ingest-the-data"></a>Veri alma
-Verileri eğitim ve tahmin gibi analiz işlemlerini çalıştırdığınız hedef konumlara kaynak konumları taşıma işlemini ayarlayın. Verilerin çeşitli Azure veri hizmetleriyle nasıl taşınacağı hakkında teknik ayrıntılar ve seçenekler için bkz. [analiz için depolama ortamlarına veri yükleme](ingest-data.md). 
+### <a name="ingest-the-data"></a>Verileri yutma
+Verileri kaynak konumlardan eğitim ve öngörüler gibi analitik işlemleri çalıştırdığınız hedef konumlara taşımak için işlemi ayarlayın. Çeşitli Azure veri hizmetleriyle verilerin nasıl taşınırak ile ilgili teknik ayrıntılar ve seçenekler [için, verileri analitik için depolama ortamlarına](ingest-data.md)yükleyin'e bakın. 
 
 ### <a name="explore-the-data"></a>Verileri keşfetme
-Modellerinizi eğitmek önce verileri ses bir anlayış geliştirmek gerekir. Gerçek veri kümeleri genellikle gürültülü, değerleri eksik veya diğer tutarsızlıklar barındırmasını. Veri özetleme ve görselleştirme, veri kalitesini denetlemek ve modelleme için hazır hale gelmeden önce veriyi işlemek gereken bilgileri sağlamak için kullanabilirsiniz. Bu işlem genellikle yinelemelidir.
+Modellerinizi eğitmeden önce, verilerin sağlam bir şekilde anlaşılması nı geliştirmeniz gerekir. Gerçek dünya veri kümeleri genellikle gürültülüdür, eksik değerlerdir veya bir dizi başka tutarsızlıkları da vardır. Verilerinizin kalitesini denetlemek ve verileri modellemeye hazır olmadan önce işlemek için gereken bilgileri sağlamak için veri özetleme ve görselleştirmeyi kullanabilirsiniz. Bu işlem genellikle yinelemeli.
 
-TDSP, verileri görselleştirmeye ve veri özeti raporlarının hazırlanmasına yardımcı olmak için [ıdear](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils)adlı otomatik bir yardımcı program sağlar. İlk veri kodlama ile etkileşimli olarak ilk veri anlama geliştirmenize yardımcı olmak için keşfetmek için IDEAR ile başlamanızı öneririz. Ardından veri keşfi ve görselleştirme için özel kod yazabilirsiniz. Verileri temizleme hakkında yönergeler için bkz. [Gelişmiş makine öğrenimi için veri hazırlama görevleri](prepare-data.md).  
+TDSP, verileri görselleştirmeye ve veri özet raporları hazırlamaya yardımcı olmak için [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils)adı verilen otomatik bir yardımcı program sağlar. İlk olarak iDEAR ile başlayıp, ilk veri anlayışını kodlama olmadan etkileşimli olarak geliştirmeye yardımcı olmak için keşfetmenizi öneririz. Daha sonra veri arama ve görselleştirme için özel kod yazabilirsiniz. Verilerin temizlenmesiyle ilgili rehberlik için gelişmiş [makine öğrenimi için veri hazırlamak için Görevler'e](prepare-data.md)bakın.  
 
-Temizlenen veri kalitesi yaptıktan sonra sonraki verileri belirlidir desenleri daha iyi anlamak için adımdır. Bu veri analizi, hedef için uygun bir tahmine dayalı model seçmenize ve geliştirmenize yardımcı olur. Bulgu verileri ne kadar iyi bağlı hedef için bakın. Ardından sonraki modelleme adımlarla ileri taşımak için yeterli veri olup olmadığını belirler. Yeniden, bu işlem genellikle yinelemelidir. Başlangıçta önceki aşamada tanımlanan veri kümesi genişletmek için daha doğru ya da daha fazla ilgili verileri içeren yeni veri kaynaklarını bulmak gerekebilir. 
+Temizlenen verilerin kalitesinden memnun olduktan sonra, bir sonraki adım, verilerin doğasında olan desenleri daha iyi anlamaktır. Bu veri çözümlemesi, hedefiniz için uygun bir tahmin modeli seçmenize ve geliştirmenize yardımcı olur. Verilerin hedefe ne kadar iyi bağlanabildiğini kanıtolarak arayın. Ardından, sonraki modelleme adımlarıyla ilerlemek için yeterli veri olup olmadığını belirleyin. Yine, bu işlem genellikle yinelemeli. Başlangıçta önceki aşamada tanımlanan veri kümesini artırmak için daha doğru veya daha alakalı verilere sahip yeni veri kaynakları bulmanız gerekebilir. 
 
-### <a name="set-up-a-data-pipeline"></a>Bir veri işlem hattı ayarlayın
-İlk alımı ve veri temizleme ek olarak, genellikle yeni verilerinizi puanlamada veya verileri düzenli aralıklarla sürekli öğrenme sürecinin parçası olarak yenilemek için bir işlem ayarlamanız gerekir. Puanlama, bir veri işlem hattı veya iş akışı ile tamamlanabilir. [Şirket içi SQL Server örneğinden verileri Azure SQL veritabanı 'na Azure Data Factory makale Ile taşıma](move-sql-azure-adf.md) , [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)ile işlem hattının nasıl ayarlanacağı hakkında bir örnek sağlar. 
+### <a name="set-up-a-data-pipeline"></a>Veri ardışık bir iş tonu ayarlama
+Verilerin ilk alımı ve temizlenmesine ek olarak, genellikle devam eden bir öğrenme sürecinin bir parçası olarak yeni veriler elde etmek veya verileri düzenli olarak yenilemek için bir işlem ayarlamanız gerekir. Puanlama bir veri ardışık alanı veya iş akışı ile tamamlanabilir. Verileri [şirket içi BIR SQL Server örneğinden Azure Veri Fabrikası makalesiyle Azure SQL Veritabanına taşıma,](move-sql-azure-adf.md) Azure Veri [Fabrikası](https://azure.microsoft.com/services/data-factory/)ile bir ardışık yapı nın nasıl ayarlanacak larına ilişkin bir örnek verir. 
 
-Bu aşamada, veri işlem hattı bir çözüm mimarisini geliştirin. İşlem hattı ile veri bilimi proje sonraki aşaması paralel geliştirme. İş gereksinimlerinize ve bu çözümün tümleştirildiği mevcut sistemlerinizin kısıtlamalarına bağlı olarak, işlem hattı aşağıdaki seçeneklerden biri olabilir: 
+Bu aşamada, veri ardışık bir çözüm mimarisi geliştirmek. Veri bilimi projesinin bir sonraki aşamasına paralel olarak boru hattını geliştirebilirsiniz. İş gereksinimlerinize ve bu çözümün entegre edildiği mevcut sistemlerinizin kısıtlamalarına bağlı olarak, boru hattı aşağıdaki seçeneklerden biri olabilir: 
 
-   * Toplu işleme dayalı
-   * Akış ve gerçek zamanlı 
-   * Karma 
+   * Toplu iş tabanlı
+   * Akış veya gerçek zamanlı 
+   * Bir melez 
 
 ## <a name="artifacts"></a>Yapıtlar
-Aşağıda, bu aşamada teslim edilebilirleri verilmiştir:
+Bu aşamada teslim edilebilir ler şunlardır:
 
-   * [Veri kalitesi raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Bu rapor, veri özetlerini, her öznitelik ve hedef, değişken derecelendirmesi ve daha fazlasını içeren ilişkileri içerir. TDSP 'nin bir parçası olarak sunulan [ıdear](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) Aracı, bu raporu bir CSV dosyası veya ilişkisel tablo gibi tablosal veri kümesi üzerinde hızlı bir şekilde oluşturabilir. 
-   * **Çözüm mimarisi**: çözüm mimarisi, bir model oluşturduktan sonra yeni verilerde Puanlama veya tahmin çalıştırmak için kullandığınız veri işlem hattının bir diyagramı veya açıklaması olabilir. Ayrıca, yeni verileri temel alan, modeli yeniden eğitme için işlem hattı içerir. TDSP dizin yapısı şablonunu kullandığınızda belgeyi [Proje](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) dizininde depolayın.
-   * **Kontrol noktası kararı**: tam özellik Mühendisliği ve model oluşturmaya başlamadan önce, beklenen değerin, söz konusu değeri uygulamaya devam etmek için yeterli olup olmadığını tespit etmek üzere projeyi yeniden değerlendirmeye başlayabilirsiniz. Örneğin, devam etmek için daha fazla veri toplayabilir veya verileri soruyu yanıtlamak için mevcut olmadığından, projeyi iptal gerek hazır hale getirebilir.
+   * [Veri kalitesi raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Bu rapor veri özetlerini, her öznitelik ve hedef arasındaki ilişkileri, değişken sıralamasını ve daha fazlasını içerir. TDSP'nin bir parçası olarak sağlanan [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) aracı, bu raporu CSV dosyası veya ilişkisel tablo gibi herhangi bir tabloveri kümesinde hızlı bir şekilde oluşturabilir. 
+   * **Çözüm mimarisi**: Çözüm mimarisi, bir model yaptıktan sonra yeni veriler üzerinde puanlama veya öngörüler çalıştırmak için kullandığınız veri ardışık sisteminizin diyagramı veya açıklaması olabilir. Ayrıca, yeni verilere dayanarak modelinizi yeniden eğitmek için boru hattını da içerir. TDSP dizin yapısı şablonu kullandığınızda belgeyi [Proje](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) dizininde depolayın.
+   * **Checkpoint kararı**: Tam özellikli mühendislik ve model oluşturmaya başlamadan önce, projeyi yeniden değerlendirerek beklenen değerin devam etmek için yeterli olup olmadığını belirleyebilirsiniz. Örneğin, devam etmeye hazır olabilirsiniz, daha fazla veri toplamanız veya soruyu yanıtlamak için veriler bulunmadığından projeyi terk etmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-TDSP yaşam döngüsü içinde her adım için bağlantılar şunlardır:
+TDSP'nin yaşam döngüsündeki her adıma bağlantılar aşağıda vereb
 
-   1. [İş anlama](lifecycle-business-understanding.md)
-   2. [Veri alma ve anlama](lifecycle-data.md)
-   3. [Oluşturmanın](lifecycle-modeling.md)
+   1. [Kurumsal yaklaşım](lifecycle-business-understanding.md)
+   2. [Veri edinme ve anlama](lifecycle-data.md)
+   3. [Modelleme](lifecycle-modeling.md)
    4. [Dağıtım](lifecycle-deployment.md)
    5. [Müşteri kabulü](lifecycle-acceptance.md)
 
-Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir. 
+Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenme ler sağlarız. [Örnek walkthroughs](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları içeren senaryoların bir listesini sağlar. İzler, bulut, şirket içi araçlar ve hizmetlerin akıllı bir uygulama oluşturmak için iş akışı veya ardışık ardışık yollarla nasıl birleştirilebildiğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data).
+Azure Machine Learning Studio kullanan TDSP'lerde adımların nasıl yürütüldüne ilgili örnekler [için](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data)bkz.

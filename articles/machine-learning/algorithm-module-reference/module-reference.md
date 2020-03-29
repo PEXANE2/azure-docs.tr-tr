@@ -1,6 +1,6 @@
 ---
 title: Algoritma ve modül başvurusu
-description: Azure Machine Learning tasarımcısında kullanılabilen modüller hakkında bilgi edinin (Önizleme)
+description: Azure Machine Learning tasarımcısında bulunan modüller hakkında bilgi edinin (önizleme)
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,60 +9,61 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c24c7ce1d47a4734d79d7e17e9fb4b3a2d4d70e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673365"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064154"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer için algoritma & modül başvurusu (Önizleme)
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı için algoritma & modül başvurusu (önizleme)
 
-Bu başvuru içeriği, Azure Machine Learning tasarımcısında bulunan her makine öğrenimi algoritması ve modülleriyle ilgili teknik arka plan sağlar (Önizleme).
+Bu referans içeriği, Azure Machine Learning tasarımcısında (önizleme) kullanılabilen makine öğrenimi algoritmalarının ve modüllerinin her birinin teknik arka planını sağlar.
 
-Her modül, gerekli girişler verildiğinde bağımsız olarak çalışabilen ve makine öğrenimi görevi gerçekleştiren bir kod kümesini temsil eder. Bir modül belirli bir algoritma içerebilir veya eksik değer değiştirme veya istatistiksel analiz gibi makine öğrenimi için önemli bir görev gerçekleştirebilir.
+Her modül, gerekli girdiler göz önüne alındığında, bağımsız olarak çalıştırılabilen ve makine öğrenimi görevini gerçekleştirebilen bir kod kümesini temsil eder. Bir modül belirli bir algoritma içerebilir veya eksik değer değiştirme veya istatistiksel çözümleme gibi makine öğreniminde önemli olan bir görevi gerçekleştirebilir.
 
-Algoritma seçme konusunda yardım için bkz. 
-* [Algoritmaları seçme](../how-to-select-algorithms.md)
-* [Azure Machine Learning algoritması bir sayfa](../algorithm-cheat-sheet.md)
+Algoritma seçiminde yardım için bkz. 
+* [Algoritma seçme](../how-to-select-algorithms.md)
+* [Azure Machine Learning Algoritma Hile Sayfası](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md)
 
 > [!TIP]
-> Tasarımcıda herhangi bir işlem hattında, belirli bir modülle ilgili bilgi edinebilirsiniz. Modülünü seçin ve ardından **hızlı yardım** bölmesinde **daha fazla yardım** bağlantısını seçin.
+> Tasarımcıherhangi bir boru hattı, belirli bir modül hakkında bilgi alabilirsiniz. Modülü seçin ve **ardından Hızlı Yardım** bölmesinde daha fazla **yardım** bağlantısını seçin.
 
 ## <a name="data-preparation-modules"></a>Veri hazırlama modülleri
 
 
 | İşlev | Açıklama | Modül |
 | --- |--- | --- |
-| Veri girişi ve çıkışı | Verileri bulut kaynaklarından ardışık düzene taşıyın. Sonuçları veya ara verilerinizi Azure depolama 'ya, bir SQL veritabanına veya Hive 'ye, işlem hattı çalıştırırken veya işlem hatları arasında veri alışverişi yapmak için bulut depolama alanını kullanarak yazın.  | [Verileri el Ile girin](enter-data-manually.md) <br/> [Verileri dışarı aktar](export-data.md) <br/> [Verileri içeri aktar](import-data.md) |
-| Veri dönüştürme | Makine öğrenimi için benzersiz olan, verileri normalleştirime veya binme, Boyut azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi işlemler.| [Sütun Ekle](add-columns.md) <br/> [Satır Ekle](add-rows.md) <br/> [Matematik Işlemini Uygula](apply-math-operation.md) <br/> [SQL dönüşümünü Uygula](apply-sql-transformation.md) <br/> [Eksik verileri temizle](clean-missing-data.md) <br/> [Klip değerleri](clip-values.md) <br/> [CSV 'ye Dönüştür](convert-to-csv.md) <br/> [Veri kümesine Dönüştür](convert-to-dataset.md) <br/> [Gösterge değerlerine Dönüştür](convert-to-indicator-values.md) <br/> [Meta verileri Düzenle](edit-metadata.md) <br/> [Verileri birleştirin](join-data.md) <br/> [Verileri Normalleştir](normalize-data.md) <br/> [Bölüm ve örnek](partition-and-sample.md)  <br/> [Yinelenen satırları kaldır](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun dönüştürmeyi Seç](select-columns-transform.md) <br/> [Veri kümesindeki sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Böl](split-data.md) |
-| Özellik seçimi | Analitik model oluştururken kullanılacak ilgili, yararlı özelliklerin bir alt kümesini seçin. | [Filtre tabanlı özellik seçimi](filter-based-feature-selection.md) <br/> [Permütasyon özelliği önem derecesi](permutation-feature-importance.md) |
-| İstatistiksel İşlevler | Veri bilimi ile ilgili çok çeşitli istatistiksel yöntemler sağlar. | [Verileri özetleme](summarize-data.md)|
+| Veri girişi ve çıkışı | Bulut kaynaklarından gelen verileri boru hattınıza taşıyın. Sonuçlarınızı veya ara verilerinizi bir ardışık işlem sırasında Sql Depolama, SQL veritabanı veya Hive'a yazın veya ardışık hatlar arasında veri alışverişi yapmak için bulut depolamayı kullanın.  | [Verileri El ile Girme](enter-data-manually.md) <br/> [İhracat Verileri](export-data.md) <br/> [Veri İthalat](import-data.md) |
+| Veri dönüştürme | Verileri normalleştirme veya binning, boyutlandırma azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi makine öğrenimine özgü veriler üzerindeki işlemler.| [Sütun Ekleme](add-columns.md) <br/> [Satır Ekleme](add-rows.md) <br/> [Matematik İşlemi Uygulama](apply-math-operation.md) <br/> [SQL Dönüşümü Uygulama](apply-sql-transformation.md) <br/> [Eksik Verileri Temizleme](clean-missing-data.md) <br/> [Değerleri Kırpma](clip-values.md) <br/> [CSV’ye dönüştürme](convert-to-csv.md) <br/> [Veri kümesine dönüştürme](convert-to-dataset.md) <br/> [Gösterge Değerlerine dönüştürme](convert-to-indicator-values.md) <br/> [Meta Verileri Düzenleme](edit-metadata.md) <br/> [Verileri birleştirme](join-data.md) <br/> [Verileri Normalleştirme](normalize-data.md) <br/> [Bölüm ve Örnek](partition-and-sample.md)  <br/> [Yinelenen Satırları Kaldırma](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun Dönüştürmeyi Seçme](select-columns-transform.md) <br/> [Veri kümesindeki Sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Bölme](split-data.md) |
+| Özellik Seçimi | Analitik bir model oluşturmak için kullanmak üzere alakalı, yararlı özelliklerin bir alt kümesini seçin. | [Filtre Tabanlı Özellik Seçimi](filter-based-feature-selection.md) <br/> [Permütasyon Özelliği Önem Derecesi](permutation-feature-importance.md) |
+| İstatistiksel İşlevler | Veri bilimi ile ilgili çok çeşitli istatistiksel yöntemler sağlayın. | [Verileri Özetleme](summarize-data.md)|
 
 ## <a name="machine-learning-algorithms"></a>Makine öğrenmesi algoritmaları
 
 | İşlev | Açıklama | Modül |
 | --- |--- | --- |
-| Regresyon | Bir değer tahmin edin. | [Artırılmış karar ağacı gerileme](boosted-decision-tree-regression.md) <br/> [Karar ormanı gerileme](decision-forest-regression.md) <br/> [Doğrusal regresyon](linear-regression.md)  <br/> [Sinir ağ gerileme](neural-network-regression.md)  <br/> |
-| Kümeleme | Verileri birlikte gruplandırın.| [K-kümelemenin anlamı](k-means-clustering.md)
-| Sınıflandırma | Bir sınıfı tahmin edin.  İkili (iki sınıf) veya birden çok sınıf algoritmalarından birini seçin.| [Birden çok sınıf tarafından artırılmış karar ağacı](multiclass-boosted-decision-tree.md) <br/> [Birden çok Lass karar ormanı](multiclass-decision-forest.md) <br/> [Birden çok Lass Lojistik gerileme](multiclass-logistic-regression.md)  <br/> [Birden çok Lass sinir ağı](multiclass-neural-network.md) <br/> [Tek bir ve birden çok Lass](one-vs-all-multiclass.md) <br/> [İki sınıflı ortalama Perceptron](two-class-averaged-perceptron.md) <br/>  [İki sınıf önceden artırılmış karar ağacı](two-class-boosted-decision-tree.md)  <br/> [İki sınıf karar ormanı](two-class-decision-forest.md) <br/>  [İki sınıf Lojistik gerileme](two-class-logistic-regression.md) <br/> [İki sınıf sinir ağı](two-class-neural-network.md) <br/> [İki sınıf desteği vektör makinesi](two-class-support-vector-machine.md) | 
+| Regresyon | Bir değer tahmin edin. | [Artırmalı Karar Ağacı Regresyonu](boosted-decision-tree-regression.md) <br/> [Karar Ormanı Regresyonu](decision-forest-regression.md) <br/> [Çizgisel Regresyon](linear-regression.md)  <br/> [Sinir Ağı Regresyonu](neural-network-regression.md)  <br/> |
+| Kümeleme | Verileri bir araya getirin.| [K Ortalamaları Kümeleme](k-means-clustering.md)
+| Sınıflandırma | Bir sınıf tahmin et.  İkili (iki sınıflı) veya çok sınıflı algoritmalar arasından seçim yapın.| [Çok Sınıflı Artırmalı Karar Ağacı](multiclass-boosted-decision-tree.md) <br/> [Çok Sınıflı Karar Ormanı](multiclass-decision-forest.md) <br/> [Çok Sınıflı Lojistik Regresyon](multiclass-logistic-regression.md)  <br/> [Çok Sınıflı Sinir Ağı](multiclass-neural-network.md) <br/> [Bir vs Tüm Multiclass](one-vs-all-multiclass.md) <br/> [İki Sınıflı Ortalaması Alınmış Perceptron](two-class-averaged-perceptron.md) <br/>  [İki Sınıf Artırılmış Karar Ağacı](two-class-boosted-decision-tree.md)  <br/> [İki Sınıflı Karar Ormanı](two-class-decision-forest.md) <br/>  [Çift Sınıflı Lojistik Regresyon](two-class-logistic-regression.md) <br/> [İki Sınıflı Sinir Ağı](two-class-neural-network.md) <br/> [İki Sınıflı Destek Vektör Makinesi](two-class-support-vector-machine.md) | 
 
-## <a name="modules-for-building-and-evaluating-models"></a>Model oluşturma ve değerlendirme için modüller
+## <a name="modules-for-building-and-evaluating-models"></a>Modelleri oluşturmak ve değerlendirmek için modüller
 
 | İşlev | Açıklama | Modül |
 | --- |--- | --- |
-| Model eğitimi | Algoritmayı kullanarak verileri çalıştırın. |  [Kümeleme modelini eğitme](train-clustering-model.md) <br/> [Modeli eğitme](train-model.md)  <br/> [Model hiper parametrelerini ayarla](tune-model-hyperparameters.md) |
-| Model Puanlama ve değerlendirme | Eğitilen modelin doğruluğunu ölçün. | [Dönüştürmeyi Uygula](apply-transformation.md) <br/> [Kümelere veri atama](assign-data-to-clusters.md) <br/> [Çapraz doğrulama modeli](cross-validate-model.md) <br/> [Modeli değerlendir](evaluate-model.md) <br/> [Puan modeli](score-model.md) |
-| Python dili | Kod yazıp bir modüle katıştırın ve Python 'u işlem hattınızla tümleştirin. | [Python modeli oluşturma](create-python-model.md) <br/> [Python betiğini Yürüt](execute-python-script.md) |
-| R dili | Kod yazın ve bir modüle ekleyin ve bunu işlem hattınızla birlikte tümleştirin. | [R betiğini Yürüt](execute-r-script.md) |
-| Metin Analizi | Yapılandırılmış ve yapılandırılmamış metinle çalışmak için özelleştirilmiş hesaplama araçları sağlar. | [Metinden N gram özelliklerini Ayıkla](extract-n-gram-features-from-text.md) <br/> [Özellik karma](feature-hashing.md) <br/> [Ön işleme metni](preprocess-text.md) |
-| Öneri | Öneri modelleri oluşturun. | [Öneren değerlendir](evaluate-recommender.md) <br/> [Skor SVD öneren](score-svd-recommender.md) <br/> [SVD öneren eğitme](train-SVD-recommender.md) |
+| Model eğitimi | Algoritma aracılığıyla veri çalıştırın. |  [Kümeleme Modeli Eğitme](train-clustering-model.md) <br/> [Model Eğitme](train-model.md)  <br/> [Model Hiper Parametrelerini Ayarlama](tune-model-hyperparameters.md) |
+| Model Puanlama ve Değerlendirme | Eğitimli modelin doğruluğunu ölçün. | [Dönüşüm Uygulama](apply-transformation.md) <br/> [Kümelere Veri Atama](assign-data-to-clusters.md) <br/> [Modeli Çapraz Doğrulama](cross-validate-model.md) <br/> [Modeli Değerlendirme](evaluate-model.md) <br/> [Modeli Puanlama](score-model.md) |
+| Python dili | Python'u ardınıza entegre etmek için kod yazın ve bir modüle gömün. | [Python Modeli Oluşturma](create-python-model.md) <br/> [Python Betiği Yürütme](execute-python-script.md) |
+| R dili | Kod yazın ve R'yi ardınızla tümleştirmek için bir modüle gömün. | [R Betiği yürütme](execute-r-script.md) |
+| Metin Analizi | Hem yapılandırılmış hem de yapılandırılmamış metinle çalışmak için özel hesaplama araçları sağlayın. | [Metinden N-Gram Özelliklerini Ayıklama](extract-n-gram-features-from-text.md) <br/> [Özellik Karma](feature-hashing.md) <br/> [Metni Ön İşleme](preprocess-text.md) <br/> [Gizli Dirichlet Tahsisi](latent-dirichlet-allocation.md) |
+| Öneri | Öneri modelleri oluşturun. | [Önereni Değerlendirme](evaluate-recommender.md) <br/> [SVD Önerenini Puanlama](score-svd-recommender.md) <br/> [SVD Önerenini Eğitme](train-SVD-recommender.md) |
+| Anomali Algılama | Anomali algılama modelleri oluşturun. | [PCA Tabanlı Anomali Algılama](pca-based-anomaly-detection.md) <br/> [Tren Anomali Algılama Modeli](train-anomaly-detection-model.md) |
 
 
 ## <a name="error-messages"></a>Hata iletileri
 
-Azure Machine Learning tasarımcısında modüller kullanarak karşılaşabileceğiniz [hata iletileri ve özel durum kodları](designer-error-codes.md) hakkında bilgi edinin.
+Azure Machine Learning tasarımcısındaki modülleri kullanarak karşılaşabileceğiniz [hata iletileri ve özel durum kodları](designer-error-codes.md) hakkında bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: otomatik fiyatları tahmin etmek için Tasarımcıda bir model oluşturun](../tutorial-designer-automobile-price-train-score.md)
+* [Öğretici: Otomobil fiyatlarını tahmin etmek için tasarımcı bir model oluşturun](../tutorial-designer-automobile-price-train-score.md)

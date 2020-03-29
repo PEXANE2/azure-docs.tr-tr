@@ -1,21 +1,21 @@
 ---
-title: Azure Veri Kataloğu 'nda desteklenen veri kaynakları
-description: Bu makalede, Azure Veri Kataloğu için şu anda desteklenen veri kaynaklarının belirtimleri listelenmektedir.
+title: Azure Veri Kataloğu'nda desteklenen veri kaynakları
+description: Bu makalede, Azure Veri Kataloğu için şu anda desteklenen veri kaynaklarının özellikleri listelenmiştir.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898159"
 ---
-# <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda desteklenen veri kaynakları
+# <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu'nda desteklenen veri kaynakları
 
-Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da doğrudan Azure Veri Kataloğu web portalına el ile girerek yayımlayabilirsiniz. Aşağıdaki tablo, bugün Katalog tarafından desteklenen tüm veri kaynaklarını ve her biri için yayımlama yeteneklerini özetler. Ayrıca, her bir veri kaynağının Portal "açık" deneyimimizden başlatabileceği dış veri araçları da listelenmiştir. İkinci tablo, her veri kaynağı bağlantısı özelliğinin daha teknik bir belirtimini içerir.
+Meta verileri genel bir API veya tıklama kaydı aracı kullanarak veya bilgileri doğrudan Azure Veri Kataloğu web portalına el ile girerek yayımlayabilirsiniz. Aşağıdaki tablo, bugün katalog tarafından desteklenen tüm veri kaynaklarını ve her biri için yayımlama yeteneklerini özetleyilmiştir. Ayrıca, her veri kaynağının portalımızdan başlatabileceği "açık" deneyimdeki dış veri araçları da listelenmiştir. İkinci tablo, her veri kaynağı bağlantı özelliğinin daha teknik bir belirtimini içerir.
 
 ## <a name="list-of-supported-data-sources"></a>Desteklenen veri kaynaklarının listesi
 
@@ -23,13 +23,13 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
     <tr>
        <td><b>Veri kaynağı nesnesi</b></td>
        <td><b>API</b></td>
-       <td><b>El ile giriş</b></td>
-       <td><b>Kayıt Aracı</b></td>
-       <td><b>Açık Araçlar</b></td>
+       <td><b>Manuel giriş</b></td>
+       <td><b>Kayıt aracı</b></td>
+       <td><b>Açık araçlar</b></td>
        <td><b>Notlar</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store Directory (yalnızca Gen 1)</td>
+      <td>Azure Veri Gölü Deposu dizini (Yalnızca Gen 1)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -37,7 +37,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store dosyası (yalnızca Gen 1)</td>
+      <td>Azure Veri Gölü Deposu dosyası (Yalnızca Gen 1)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -53,7 +53,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>Azure depolama dizini</td>
+      <td>Azure Depolama dizini</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -61,7 +61,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>Azure depolama tablosu</td>
+      <td>Azure Depolama tablosu</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -71,7 +71,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       </td>
     </tr>
     <tr>
-      <td>Bir dizin</td>
+      <td>HDFS dizini</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -79,7 +79,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>Dosyası</td>
+      <td>HDFS dosyası</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -87,7 +87,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>Hive tablosu</td>
+      <td>Kovan masası</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -95,7 +95,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>Hive görünümü</td>
+      <td>Kovan görünümü</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -107,7 +107,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop</td>
+      <td>Excel, Güç BI Masaüstü</td>
       <td></td>
     </tr>
     <tr>
@@ -115,24 +115,24 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop</td>
+      <td>Excel, Güç BI Masaüstü</td>
       <td></td>
     </tr>
     <tr>
-      <td>Oracle Database tablosu</td>
+      <td>Oracle Veritabanı tablosu</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop</td>
-      <td>Oracle 10 ve üzeri sürümler.</td>
+      <td>Excel, Güç BI Masaüstü</td>
+      <td>Oracle 10 ve sonraki sürümler.</td>
     </tr>
     <tr>
-      <td>Oracle Database görünümü</td>
+      <td>Oracle Veritabanı görünümü</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop</td>
-      <td>Oracle 10 ve üzeri sürümler.</td>
+      <td>Excel, Güç BI Masaüstü</td>
+      <td>Oracle 10 ve sonraki sürümler.</td>
     </tr>
     <tr>
       <td>Diğer (genel varlık)</td>
@@ -143,52 +143,52 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL veri ambarı tablosu</td>
+      <td>Azure SQL Veri Ambarı tablosu</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop SQL Server veri araçları</td>
+      <td>Excel, Power BI Masaüstü, SQL Server veri araçları</td>
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL veri ambarı görünümü</td>
+      <td>Azure SQL Veri Ambarı görünümü</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop SQL Server veri araçları</td>
+      <td>Excel, Power BI Masaüstü, SQL Server veri araçları</td>
       <td></td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services boyutu</td>
+      <td>SQL Server Analiz Hizmetleri boyutu</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 ve sonraki sürümler.</td>
+      <td>Excel, Güç BI Masaüstü</td>
+      <td>SQL Server 2008 ve sonraki sürümleri.</td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services KPI</td>
+      <td>SQL Server Analiz Hizmetleri KPI</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 ve sonraki sürümler.</td>
+      <td>Excel, Güç BI Masaüstü</td>
+      <td>SQL Server 2008 ve sonraki sürümleri.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services ölçümü</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 ve sonraki sürümler.</td>
+      <td>Excel, Güç BI Masaüstü</td>
+      <td>SQL Server 2008 ve sonraki sürümleri.</td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services tablosu</td>
+      <td>SQL Server Analiz Hizmetleri tablosu</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 ve sonraki sürümler.</td>
+      <td>Excel, Güç BI Masaüstü</td>
+      <td>SQL Server 2008 ve sonraki sürümleri.</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services raporu</td>
@@ -196,23 +196,23 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td>✓</td>
       <td>✓</td>
       <td>Tarayıcı</td>
-      <td>Yalnızca yerel mod sunucuları. SharePoint modu desteklenmez. Yalnızca SQL Server 2008 ve sonraki sürümler</td>
+      <td>Yalnızca yerel mod sunucuları. SharePoint modu desteklenmez. SQL Server 2008 ve sonraki sürümler yalnızca</td>
     </tr>
     <tr>
       <td>SQL Server tablosu</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop SQL Server veri araçları</td>
-      <td>SQL Server 2008 ve sonraki sürümler.</td>
+      <td>Excel, Power BI Masaüstü, SQL Server veri araçları</td>
+      <td>SQL Server 2008 ve sonraki sürümleri.</td>
     </tr>
     <tr>
       <td>SQL Server görünümü</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop SQL Server veri araçları</td>
-      <td>SQL Server 2008 ve sonraki sürümler.</td>
+      <td>Excel, Power BI Masaüstü, SQL Server veri araçları</td>
+      <td>SQL Server 2008 ve sonraki sürümleri.</td>
     </tr>
     <tr>
       <td>Teradata tablosu</td>
@@ -236,7 +236,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Yalnızca Ingilizce olarak kullanılabilir. Ölçüler desteklenmez.</td>
+      <td>Sadece İngilizce çalışır. Önlemler desteklenmiş.</td>
     </tr>
     <tr>
       <td>SAP HANA görünümü</td>
@@ -295,7 +295,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>HTTP uç noktası</td>
+      <td>HTTP bitiş noktası</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -319,7 +319,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>OData işlevi</td>
+      <td>OData fonksiyonu</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -372,7 +372,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Yalnızca Azure DocumentDB ve Azure Cosmos DB 'deki SQL API koleksiyonlarından eski koleksiyonlar uyumludur. Daha yeni Cosmos DB API 'Leri henüz desteklenmiyor. Veri kaynağı listesinde Azure DocumentDB ' yi seçin.</td>
+      <td>Yalnızca Azure Cosmos DB'deki Azure DocumentDB ve SQL API koleksiyonlarından eski koleksiyonlar uyumludur. Yeni Cosmos DB API'leri henüz desteklenmedi. Veri Kaynağı listesinde Azure DocumentDB'yi seçin.</td>
     </tr>
     <tr>
       <td>Genel ODBC tablosu</td>
@@ -391,7 +391,7 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
       <td></td>
     </tr>
     <tr>
-      <td>Cassandra tablosu</td>
+      <td>Cassandra tablo</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -440,12 +440,12 @@ Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da
     </tr>
 </table>
 
-Desteklenen belirli bir veri kaynağını görmek isterseniz, [Azure geri bildirim forumlarında veri kataloğuna](https://feedback.azure.com/forums/906052-data-catalog)giderek bunu önerin (veya zaten önerildiyse desteğiniz sesinizi).
+Belirli bir veri kaynağının desteklendiğini görmek istiyorsanız, [Azure Geri Bildirim Forumlarında Veri Kataloğu'na](https://feedback.azure.com/forums/906052-data-catalog)giderek bunu önerin (veya zaten önerilmişse desteğinizi dile verin).
 
 
 ## <a name="data-source-reference-specification"></a>Veri kaynağı başvuru belirtimi
 > [!NOTE]
-> Aşağıdaki tabloda yer alan **DSL yapısı** sütunu, yalnızca Azure Veri Kataloğu tarafından kullanılan "adres" özellik paketi için bağlantı özelliklerini listeler. Diğer bir deyişle, "adres" özellik paketi, Azure Veri Kataloğu 'nun devam ettiği, ancak kullanmayan veri kaynağının diğer bağlantı özelliklerini içerebilir.
+> Aşağıdaki tablodaki **DSL yapı** sütununda yalnızca Azure Veri Kataloğu tarafından kullanılan "adres" özellik çantasının bağlantı özellikleri listelenir. Diğer bir deyişle, "adres" özellik çantası, Azure Veri Kataloğu'nun devam ettiği ancak kullanmadığı veri kaynağının diğer bağlantı özelliklerini içerebilir.
 
 <table>
     <tr>

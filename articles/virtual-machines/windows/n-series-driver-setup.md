@@ -1,6 +1,6 @@
 ---
 title: Windows için Azure N serisi GPU sürücü kurulumu
-description: Azure 'da Windows Server veya Windows çalıştıran N serisi VM 'Ler için NVıDıA GPU sürücülerini ayarlama
+description: Azure'da Windows Server veya Windows çalıştıran N serisi VM'ler için NVIDIA GPU sürücüleri nasıl ayarlanır?
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -15,61 +15,61 @@ ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 631266f983886e3ca34d609b425f8a71b808b39f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919405"
 ---
-# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler 
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM'lere NVIDIA GPU sürücülerini yükleme 
 
-Windows çalıştıran Azure N serisi VM 'lerin GPU Özellikleri avantajlarından yararlanmak için NVıDıA GPU sürücüleri yüklenmelidir. [NVıDıA GPU sürücü uzantısı](../extensions/hpccompute-gpu-windows.md) , bir N serisi VM 'ye uygun NVIDIA CUDA veya kılavuz sürücülerini yükleme. Azure portal veya Azure PowerShell veya Azure Resource Manager şablonları gibi araçları kullanarak uzantıyı yükler veya yönetir. Desteklenen işletim sistemleri ve dağıtım adımları için [NVıDıA GPU sürücü uzantısı belgelerine](../extensions/hpccompute-gpu-windows.md) bakın.
+Windows çalıştıran Azure N serisi VM'lerin GPU özelliklerinden yararlanmak için NVIDIA GPU sürücülerinin yüklenmesi gerekir. [NVIDIA GPU Sürücü Uzantısı,](../extensions/hpccompute-gpu-windows.md) n serisi VM'ye uygun NVIDIA CUDA veya GRID sürücülerini yükler. Azure portalını veya Azure PowerShell veya Azure Kaynak Yöneticisi şablonları gibi araçları kullanarak uzantıyı yükleyin veya yönetin. Desteklenen işletim sistemleri ve dağıtım adımları için [NVIDIA GPU Sürücü Uzantısı belgelerine](../extensions/hpccompute-gpu-windows.md) bakın.
 
-GPU sürücülerini el ile yüklemeyi seçerseniz, bu makale desteklenen işletim sistemleri, sürücüler ve yükleme ve doğrulama adımları sağlar. [Linux sanal makineleri](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)için el ile sürücü kurulum bilgileri de mevcuttur.
+GPU sürücülerini el ile yüklemeyi seçerseniz, bu makalede desteklenen işletim sistemleri, sürücüler ve yükleme ve doğrulama adımları sağlanır. Manuel sürücü kurulum bilgileri [Linux VM'ler](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)için de kullanılabilir.
 
-Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU WINDOWS VM boyutları](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için [GPU Windows VM boyutlarına](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bakın. 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
 ## <a name="driver-installation"></a>Sürücü yükleme
 
-1. Her N serisi sanal makineye uzak masaüstü ile bağlanın.
+1. Uzak Masaüstü'ne bağlı olarak her N serisi VM'ye bağlanın.
 
 2. Windows işletim sisteminiz için desteklenen sürücüyü indirin, ayıklayın ve yükleyin.
 
-Bir VM 'de KıLAVUZ sürücüsü yüklemesinden sonra yeniden başlatma gerekir. CUDA sürücü yüklemesinden sonra yeniden başlatma gerekmez.
+GRID sürücüsüvm'e yüklendikten sonra yeniden başlatma gerekir. CUDA sürücü yüklemesi nden sonra yeniden başlatma gerekmez.
 
 ## <a name="verify-driver-installation"></a>Sürücü yüklemeyi doğrulama
 
-Lütfen NVIDIA Denetim Masası 'nın yalnızca KıLAVUZ sürücüsü yüklemesiyle erişilebilir olduğunu unutmayın. CUDA sürücülerini yüklediyseniz, NVIDIA Denetim Masası görünür olmayacaktır.
+Nvidia Control paneline sadece GRID sürücü yüklemesi ile erişilebildiğine dikkat ediniz. CUDA sürücüleri yüklediyseniz, Nvidia kontrol paneli görünmez.
 
-Aygıt Yöneticisi ' de sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki örnek, bir Azure NC VM üzerinde Tesla K80 kartının başarıyla yapılandırılmasını gösterir.
+Aygıt Yöneticisi'nde sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki örnek, Tesla K80 kartının Azure NC VM üzerinde başarılı bir şekilde yapılandırışını gösterir.
 
-![GPU sürücüsü özellikleri](./media/n-series-driver-setup/GPU_driver_properties.png)
+![GPU sürücü özellikleri](./media/n-series-driver-setup/GPU_driver_properties.png)
 
-GPU cihaz durumunu sorgulamak için, sürücüyle birlikte yüklenen [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) komut satırı yardımcı programını çalıştırın.
+GPU aygıt durumunu sorgulamak için sürücüyle birlikte yüklenen [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) komut satırı yardımcı programını çalıştırın.
 
-1. Bir komut istemi açın ve **C:\Program Files\nvıdıa Corporation\NVSMI** dizinine geçin.
+1. Komut istemini açın ve **C:\Program Files\NVIDIA Corporation\NVSMI** dizinini değiştirin.
 
-2. `nvidia-smi` öğesini çalıştırın. Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. VM 'de Şu anda bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** , **%0** gösterir. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
+2. `nvidia-smi` öğesini çalıştırın. Sürücü yüklüyse, aşağıdakine benzer çıktı görürsünüz. VM'de şu anda bir GPU iş yükü çalıştırıyorsanız **GPU-Util** **%0** gösterir. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
 
-![NVıDıA cihaz durumu](./media/n-series-driver-setup/smi.png)  
+![NVIDIA cihaz durumu](./media/n-series-driver-setup/smi.png)  
 
 ## <a name="rdma-network-connectivity"></a>RDMA ağ bağlantısı
 
-RDMA ağ bağlantısı, NC24r gibi, aynı Kullanılabilirlik kümesinde veya bir sanal makine ölçek kümesindeki tek bir yerleştirme grubunda dağıtılan gibi, RDMA özellikli N serisi VM 'lerde etkinleştirilebilir. RDMA bağlantısı sağlayan Windows ağ cihazı sürücülerini yüklemek için HpcVmDrivers uzantısının eklenmesi gerekir. VM uzantısını RDMA özellikli N serisi bir VM 'ye eklemek için Azure Resource Manager [Azure PowerShell](/powershell/azure/overview) cmdlet 'lerini kullanın.
+RDMA ağ bağlantısı, aynı kullanılabilirlik kümesinde dağıtılan NC24r gibi RDMA özellikli N serisi VM'lerde veya sanal makine ölçeği nde tek bir yerleşim grubunda etkinleştirilebilir. RDMA bağlantısını etkinleştiren Windows ağ aygıtı sürücülerini yüklemek için HpcVmDrivers uzantısı eklenmelidir. RDMA özellikli N serisi VM'ye VM uzantısını eklemek için Azure Kaynak Yöneticisi için [Azure PowerShell](/powershell/azure/overview) cmdlets kullanın.
 
-Batı ABD bölgesinde myVM adlı mevcut bir RDMA özellikli VM 'ye en son sürüm 1,1 HpcVMDrivers uzantısını yüklemek için:
+Batı ABD bölgesinde myVM adlı mevcut BIR RDMA özellikli VM en son sürümü 1.1 HpcVMDrivers uzantısı yüklemek için:
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Daha fazla bilgi için bkz. [Windows Için sanal makine uzantıları ve özellikleri](extensions-features.md).
+  Daha fazla bilgi için [Windows için Sanal makine uzantıları ve özellikleri ne](extensions-features.md)bakın.
 
-RDMA ağı, [MICROSOFT MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) veya Intel MPI 5. x ile çalışan uygulamalar Için Ileti geçirme arabirimi (MPI) trafiğini destekler. 
+RDMA ağı, [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) veya Intel MPI 5.x ile çalışan uygulamalar için İleti Geçme Arabirimi (MPI) trafiğini destekler. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* NVıDıA Tesla GPU 'Lar için GPU hızlandırmalı uygulamalar oluşturmaya yönelik geliştiriciler ayrıca en son [CUDA araç setini](https://developer.nvidia.com/cuda-downloads)indirebilir ve yükleyebilir. Daha fazla bilgi için bkz. [CUDA Yükleme Kılavuzu](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+* Geliştiriciler NVIDIA Tesla GPU için GPU hızlandırılmış uygulamalar bina da indirebilir ve en son [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)yükleyebilirsiniz. Daha fazla bilgi için [CUDA Yükleme Kılavuzu'na](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi)bakın.
 
 

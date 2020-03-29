@@ -1,6 +1,6 @@
 ---
-title: Koşullu erişim ilkesindeki bulut uygulamaları veya eylemleri-Azure Active Directory
-description: Azure AD koşullu erişim ilkesinde bulut uygulamaları veya eylemleri nelerdir?
+title: Koşullu Erişim ilkesindeki bulut uygulamaları veya eylemleri - Azure Active Directory
+description: Azure AD Koşullu Erişim ilkesindeki bulut uygulamaları veya eylemleri nelerdir?
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,46 +12,46 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671941"
 ---
-# <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
+# <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu Erişim: Bulut uygulamaları veya eylemleri
 
-Bulut uygulamaları veya eylemleri, koşullu erişim ilkesindeki önemli sinyaldir. Koşullu erişim ilkeleri, yöneticilerin belirli uygulamalara veya eylemlere denetim atamasını sağlar.
+Bulut uygulamaları veya eylemleri, Koşullu Erişim ilkesinde önemli bir sinyaldir. Koşullu Erişim ilkeleri, yöneticilerin denetimleri belirli uygulamalara veya eylemlere atamasına olanak sağlar.
 
-- Yöneticiler, yerleşik Microsoft uygulamaları ve Galeri, Galeri olmayan uygulamalar ve [uygulama proxy 'si](../manage-apps/what-is-application-proxy.md)aracılığıyla yayınlanan uygulamalar dahil olmak üzere [Azure AD ile tümleştirilmiş](../manage-apps/what-is-application-management.md) uygulamalar içeren uygulamalar listesinden seçim yapabilir.
-- Yöneticiler, bir bulut uygulamasına göre değil, bir Kullanıcı eyleminde ilke tanımlamaya seçim gösterebilir. Desteklenen tek eylem güvenlik bilgilerini (Önizleme) kaydettirir ve bu, [Birleşik güvenlik bilgileri kayıt deneyimi](../authentication/howto-registration-mfa-sspr-combined.md)etrafında denetimleri zorlamak Için koşullu erişime izin verir.
+- Yöneticiler, yerleşik Microsoft uygulamalarını ve galeri, galeri olmayan uygulamalar ve [Application Proxy](../manage-apps/what-is-application-proxy.md)aracılığıyla yayınlanan uygulamalar dahil olmak üzere azure [AD tümleşik uygulamalarını](../manage-apps/what-is-application-management.md) içeren uygulamalar listesinden seçim yapabilir.
+- Yöneticiler, bir bulut uygulamasına değil, kullanıcı eylemine dayalı ilke tanımlamayı seçebilir. Desteklenen tek eylem, Koşullu Erişim'in [birleştirilmiş güvenlik bilgileri kayıt deneyimi](../authentication/howto-registration-mfa-sspr-combined.md)etrafında denetimler uygulamasına izin veren Kayıt güvenlik bilgileridir (önizleme).
 
-![Koşullu erişim ilkesi tanımlama ve bulut uygulamaları belirtme](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
+![Koşullu Erişim ilkesini tanımlayın ve bulut uygulamalarını belirtin](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft bulut uygulamaları
 
-Mevcut Microsoft bulut uygulamalarının birçoğu, arasından seçim yapmak için kullanabileceğiniz uygulamalar listesine dahildir. 
+Varolan Microsoft bulut uygulamalarının çoğu, aralarından seçim yapabileceğiniz uygulamalar listesine dahildir. 
 
-Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim ilkesi atayabilir. Office 365 (Önizleme) ve Microsoft Azure yönetimi gibi bazı uygulamalar birden çok ilgili alt uygulama veya hizmet içerir. Aşağıdaki liste ayrıntılı değildir ve değişikliğe tabidir.
+Yöneticiler, Microsoft'un aşağıdaki bulut uygulamalarına koşullu erişim ilkesi atayabilir. Office 365 (önizleme) ve Microsoft Azure Yönetimi gibi bazı uygulamalar, birden çok ilişkili alt uygulama veya hizmeti içerir. Aşağıdaki liste kapsamlı değildir ve değiştirilebilir.
 
-- [Office 365 (Önizleme)](#office-365-preview)
+- [Office 365 (önizleme)](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
-- [Azure SQL veritabanı ve veri ambarı](../../sql-database/sql-database-conditional-access.md)
+- [Azure SQL Veritabanı ve Veri Ambarı](../../sql-database/sql-database-conditional-access.md)
 - Dynamics CRM Online
 - Microsoft Application Insights Analytics
-- [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
-- [Microsoft Azure yönetimi](#microsoft-azure-management)
-- Microsoft Azure abonelik yönetimi
+- [Microsoft Azure Bilgi Koruması](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- [Microsoft Azure Yönetimi](#microsoft-azure-management)
+- Microsoft Azure Abonelik Yönetimi
 - Microsoft Cloud App Security
-- Microsoft ticaret araçları Access Control portalı
-- Microsoft ticaret araçları kimlik doğrulama hizmeti
+- Microsoft Ticaret Araçları Erişim Kontrol Portalı
+- Microsoft Ticaret Araçları Kimlik Doğrulama Hizmeti
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- [Kayıt Microsoft Intune](/intune/enrollment/multi-factor-authentication)
-- Microsoft Planner
+- [Microsoft Intune Kaydı](/intune/enrollment/multi-factor-authentication)
+- Microsoft Planlayıcısı
 - Microsoft PowerApps
-- Bing 'de Microsoft Search
+- Bing'de Microsoft Arama
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -59,23 +59,23 @@ Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim
 - Office 365 SharePoint Online
 - Office 365 Yammer
 - Office Delve
-- Office Sway
+- Ofis Sway
 - Outlook Groups
-- Power BI hizmeti
+- Power BI Hizmeti
 - Project Online
 - Skype Kurumsal Çevrimiçi Sürüm
-- Sanal özel ağ (VPN)
+- Sanal Özel Ağ (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 (Önizleme)
+### <a name="office-365-preview"></a>Office 365 (önizleme)
 
-Office 365, Exchange, SharePoint ve Microsoft ekipleri gibi bulut tabanlı üretkenlik ve işbirliği hizmetleri sağlar. Office 365 Bulut Hizmetleri, sorunsuz ve işbirliğine dayalı deneyimler sağlamak için derin bir tümleştirilmiştir. Bu tümleştirme, Microsoft ekipleri gibi bazı uygulamaların SharePoint veya Exchange gibi diğer kullanıcılara bağımlılıkları olduğundan, ilke oluştururken karışıklıklara neden olabilir.
+Office 365, Exchange, SharePoint ve Microsoft Teams gibi bulut tabanlı üretkenlik ve işbirliği hizmetleri sağlar. Office 365 bulut hizmetleri, sorunsuz ve işbirliğine dayalı deneyimler sağlamak için derinden entegre edilmiştir. Microsoft Teams gibi bazı uygulamaların SharePoint veya Exchange gibi diğer uygulamalara bağımlı olduğu için bu tümleştirme, ilke oluştururken karışıklığa neden olabilir.
 
-Office 365 (Önizleme) uygulaması bu hizmetleri tek seferde hedeflemesini mümkün kılar. Ayrı bulut uygulamalarını hedeflemek yerine yeni Office 365 (Önizleme) uygulamasını kullanmanızı öneririz. Bu uygulama grubunun hedeflenmesi, tutarsız ilkeler ve bağımlılıklar nedeniyle ortaya çıkabilecek sorunlardan kaçınmaya yardımcı olur.
+Office 365 (önizleme) uygulaması, bu hizmetleri aynı anda hedeflemeyi mümkün kılar. Tek tek bulut uygulamalarını hedeflemek yerine yeni Office 365 (önizleme) uygulamasını kullanmanızı öneririz. Bu uygulama grubunu hedeflemek, tutarsız ilkeler ve bağımlılıklar nedeniyle ortaya çıkabilecek sorunları önlemeye yardımcı olur.
 
-Yöneticiler, Office 365 (Önizleme) uygulamasını dahil etmek ve seçtikleri belirli uygulamaları hariç tutmak istiyorsanız belirli uygulamaları ilkeden dışlamalarını seçebilirler.
+Yöneticiler, Office 365 (önizleme) uygulamasını ekleyerek ve ilkede seçtikleri belirli uygulamaları hariç tutarak, isterlerse belirli uygulamaları politikadan hariç tutmayı seçebilirler.
 
-Office 365 (Önizleme) istemci uygulamasında bulunan önemli uygulamalar:
+Office 365 (önizleme) istemci uygulamasında yer alan önemli uygulamalar:
 
    - Microsoft Flow
    - Microsoft Forms
@@ -92,39 +92,39 @@ Office 365 (Önizleme) istemci uygulamasında bulunan önemli uygulamalar:
    - OneDrive
    - PowerApps
    - Skype Kurumsal Çevrimiçi Sürüm
-   - Tuval
+   - Sway
 
-### <a name="microsoft-azure-management"></a>Microsoft Azure yönetimi
+### <a name="microsoft-azure-management"></a>Microsoft Azure Yönetimi
 
-Microsoft Azure yönetim uygulaması birden çok temel hizmet içerir. 
+Microsoft Azure Yönetimi uygulaması, birden çok temel hizmet içerir. 
 
-   - Azure portalı
-   - Azure Resource Manager sağlayıcı
-   - Klasik dağıtım modeli API 'Leri
+   - Azure portalında
+   - Azure Kaynak Yöneticisi sağlayıcısı
+   - Klasik dağıtım modeli API'leri
    - Azure PowerShell
-   - Visual Studio abonelikleri Yönetici portalı
+   - Visual Studio abonelikleri yönetici portalı
    - Azure DevOps
-   - Azure Data Factory portalı
+   - Azure Veri Fabrikası portalı
 
 > [!NOTE]
-> Microsoft Azure yönetim uygulaması, Azure Resource Manager API 'sini çağıran Azure PowerShell için geçerlidir. Microsoft Graph çağıran Azure AD PowerShell için de geçerlidir.
+> Microsoft Azure Yönetimi uygulaması, Azure Kaynak Yöneticisi API'sini çağıran Azure PowerShell için geçerlidir. Microsoft Graph adını veren Azure AD PowerShell için geçerli değildir.
 
 ## <a name="other-applications"></a>Diğer uygulamalar
 
-Yöneticiler, Microsoft uygulamalarına ek olarak, koşullu erişim ilkelerine herhangi bir Azure AD kayıtlı uygulaması ekleyebilir. Bu uygulamalar şunları içerebilir: 
+Yöneticiler, Microsoft uygulamalarına ek olarak, Koşullu Erişim ilkelerine Azure AD kayıtlı herhangi bir uygulama ekleyebilir. Bu uygulamalar şunları içerebilir: 
 
-- [Azure AD uygulama ara sunucusu](../manage-apps/what-is-application-proxy.md) aracılığıyla yayımlanan uygulamalar
+- Azure AD [Application Proxy](../manage-apps/what-is-application-proxy.md) aracılığıyla yayınlanan uygulamalar
 - [Galeriden eklenen uygulamalar](../manage-apps/add-application-portal.md)
-- [Galeride bulunmayan özel uygulamalar](../manage-apps/add-non-gallery-app.md)
-- [Uygulama teslim denetleyicileri ve ağları aracılığıyla yayınlanan eski uygulamalar](../manage-apps/secure-hybrid-access.md)
+- [Galeride olmayan özel uygulamalar](../manage-apps/add-non-gallery-app.md)
+- [Uygulama dağıtım denetleyicileri ve ağlar aracılığıyla yayınlanan eski uygulamalar](../manage-apps/secure-hybrid-access.md)
 
 ## <a name="user-actions"></a>Kullanıcı eylemleri
 
-Kullanıcı eylemleri, bir kullanıcı tarafından gerçekleştirilebilecek görevlerdir. Şu anda desteklenen tek eylem, güvenlik bilgilerini kaydetmek için, Birleşik kayıt girişimi için etkinleştirilen kullanıcılar için koşullu erişim ilkesinin zorlanmasını sağlayan **güvenlik bilgilerini (Önizleme) kaydeder**. Daha fazla bilgi, [Birleşik güvenlik bilgileri kaydı (Önizleme)](../authentication/concept-registration-mfa-sspr-combined.md)makalesinde bulunabilir.
+Kullanıcı eylemleri, kullanıcı tarafından gerçekleştirilebilecek görevlerdir. Şu anda desteklenen tek eylem, koşullu erişim ilkesinin, birleşik kayıt için etkinleştirilen kullanıcıların güvenlik bilgilerini kaydetmeye çalışması durumunda uygulanmasına olanak tanıyan **Kayıt güvenlik bilgileridir (önizleme).** Daha fazla bilgi makalede bulunabilir, [Kombine güvenlik bilgi kaydı (önizleme)](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Koşullu erişim: koşullar](concept-conditional-access-conditions.md)
+- [Koşullu Erişim: Koşullar](concept-conditional-access-conditions.md)
 
-- [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
-- [İstemci uygulaması bağımlılıkları](service-dependencies.md)
+- [Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+- [İstemci uygulama bağımlılıkları](service-dependencies.md)

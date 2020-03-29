@@ -1,6 +1,6 @@
 ---
-title: Azure VM 'de Uzak Masaüstü bağlantısı genellikle kesiliyor | Microsoft Docs
-description: Azure VM 'de Uzak Masaüstü bağlantısı ile ilgili sık gerçekleştirilen bağlantıları nasıl giderebileceğinizi öğrenin.
+title: Azure VM|'nde Uzak Masaüstü sık sık keser| Microsoft Dokümanlar
+description: Azure VM'de Uzak Masaüstü'nün sık sık kopukluklarını nasıl gidereceklerini öğrenin.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,103 +13,103 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918232"
 ---
-# <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 'de Uzak Masaüstü bağlantısı genellikle kesiliyor
+# <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM ile Uzak Masaüstü bağlantısı sık sık kesiliyor
 
-Bu makalede, Azure sanal makinesine (VM) Uzak Masaüstü Protokolü RDP aracılığıyla sık gerçekleştirilen bağlantıların nasıl giderileceği açıklanmaktadır.
+Bu makalede, Uzak Masaüstü Protokolü RDP aracılığıyla bir Azure sanal makine (VM) için sık sık kopuklukları nasıl giderebilirsiniz açıklanmaktadır.
 
 
 ## <a name="symptom"></a>Belirti
 
-Oturumlarınız sırasında aralıklı RDP bağlantısı sorunları ortaya çıkabilir. İlk olarak VM 'ye bağlanabilir, ancak ardından bağlantı düşer.
+Oturumlarınız sırasında aralıklı RDP bağlantısı sorunlarıyla karşı karşıya kaldığınız zaman. Başlangıçta VM'ye bağlanabilirsiniz, ancak sonra bağlantı düşer.
 
 ## <a name="cause"></a>Nedeni
 
-RDP dinleyicisi yanlış yapılandırıldıysanız bu sorun oluşabilir. Genellikle, bu sorun özel bir görüntü kullanan bir VM 'de oluşur.
+RDP Dinleyicisi yanlış yapılandırılırsa bu sorun oluşabilir. Genellikle, bu sorun özel bir görüntü kullanan bir VM oluşur.
 
 ## <a name="solution"></a>Çözüm
 
-Bu adımları izlemeden önce, etkilenen VM 'nin [işletim sistemi diskinin bir yedek olarak anlık görüntüsünü alın](../windows/snapshot-copy-managed-disk.md) . 
+Bu adımları izlemeden önce, etkilenen [VM'nin işletim sistemi diskinin](../windows/snapshot-copy-managed-disk.md) bir anlık görüntüsünü yedek olarak alın. 
 
-Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek seri denetimi kullanın veya [VM 'yi çevrimdışı onarın](#repair-the-vm-offline) .
+Bu sorunu gidermek için, VM'nin işletim sistemi diskini kurtarma VM'ine ekleyerek Seri denetimini kullanın veya [VM çevrimdışı onarın.](#repair-the-vm-offline)
 
-### <a name="serial-control"></a>Seri denetim
+### <a name="serial-control"></a>Seri kontrol
 
-1. [Seri konsoluna bağlanın ve cmd örneğini açın](./serial-console-windows.md). Ardından, RDP yapılandırmasını sıfırlamak için aşağıdaki komutları çalıştırın. VM 'niz üzerinde seri konsol etkinleştirilmemişse, bir sonraki adıma gidin.
-2. RDP güvenlik katmanını 0 olarak düşürün. Bu ayarda, sunucu ve istemci arasındaki iletişimler yerel RDP şifrelemesini kullanır.
+1. Seri [Konsola bağlanın ve CMD örneğini açın.](./serial-console-windows.md) Ardından, RDP yapılandırmalarını sıfırlamak için aşağıdaki komutları çalıştırın. VM'nizde Seri Konsol etkinleştirilemezse, bir sonraki adıma geçin.
+2. RDP Güvenlik Katmanını 0'a indirin. Bu ayarda, sunucu ve istemci arasındaki iletişim yerel RDP şifrelemesini kullanır.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
-3. Eski RDP istemcilerinin bağlanmasına izin vermek için şifreleme düzeyini en düşük ayara düşürün.
+3. Eski RDP istemcilerinin bağlanmasına izin vermek için şifreleme düzeyini en aza indirin.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
-4. İstemci bilgisayarın kullanıcı yapılandırmasını yüklemek için RDP 'yi ayarlayın.
+4. İstemci bilgisayarın kullanıcı yapılandırmasını yüklemek için RDP'yi ayarlayın.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
-5. RDP etkin tut denetimini etkinleştirin:
+5. RDP Canlı Tutma denetimini etkinleştirin:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'KeepAliveTimeout' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveEnable' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveInterval' /t REG_DWORD /d 1 /f
-6. RDP yeniden bağlanma denetimini ayarlayın:
+6. RDP Yeniden Bağlanma denetimini ayarlayın:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritReconnectSame' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fReconnectSame' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'fDisableAutoReconnect' /t REG_DWORD /d 0 /f
-7. RDP oturum saati denetimini ayarlama:
+7. RDP Oturum Süresi denetimini ayarlayın:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
-8. RDP bağlantı kesme saati denetimini ayarlayın: 
+8. RDP Bağlantı Dansı Süresi denetimini ayarlayın: 
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxDisconnectionTime' /t REG_DWORD /d 0 /f
-9. RDP bağlantı saati denetimini ayarlama:
+9. RDP Bağlantı Süresi denetimini ayarlayın:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-10. RDP oturum boşta kalma süresi denetimini ayarlayın:
+10. RDP Oturum Boşta Zaman denetimini ayarlayın:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxIdleTime' /t REG_DWORD /d 0 /f
-11. "En fazla eşzamanlı bağlantı sayısını sınırla" denetimini ayarlayın:
+11. "Maksimum eşzamanlı bağlantıları sınırlandır" denetimini ayarlayın:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d 4294967295 /f
 
-12. VM 'yi yeniden başlatın ve RDP kullanarak bu sunucuya bağlanmayı yeniden deneyin.
+12. VM'yi yeniden başlatın ve RDP kullanarak ona yeniden bağlanmayı deneyin.
 
-### <a name="repair-the-vm-offline"></a>VM'yi çevrimdışı onarın
+### <a name="repair-the-vm-offline"></a>VM'yi çevrimdışı onar
 
-1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
-2. İşletim sistemi diski kurtarma VM 'sine eklendikten sonra, diskin Disk Yönetimi konsolunda **çevrimiçi** olarak işaretlendiğinden emin olun. Ekli işletim sistemi diski için atanan sürücü harfini unutmayın.
-3. Eklediğiniz işletim sistemi diskinde, **\Windows\System32\Config** klasörüne gidin. Geri almanın gerekli olması durumunda bu klasördeki tüm dosyaları yedek olarak kopyalayın.
-4. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın.
-5. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüsünde **dosya** > **Hive yükle**' yi seçin:
-6. Eklediğiniz işletim sistemi diskinde **\Windows\system32\config\system** klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir. Ardından **HKEY_LOCAL_MACHINE** anahtarı altında **\windows\system32\config\software** yazılım kovanını yükleyin. Hive yazılımının adı için **Brokensoftware**' i girin. 
-7. Yükseltilmiş bir komut Istemi penceresi açın (**yönetici olarak çalıştır**) ve kalan adımlarda RDP yapılandırmalarının sıfırlanması için komutları çalıştırın. 
-8. Sunucu ve istemci arasındaki iletişimin yerel RDP şifrelemesini kullanması için RDP güvenlik katmanını 0 olarak düşürün:
+1. [Os diskini kurtarma VM'sine takın.](../windows/troubleshoot-recovery-disks-portal.md)
+2. İşletim VM'sine işletim sistemi diski bağlandıktan sonra, diskin Disk Yönetimi konsolunda **Çevrimiçi** olarak işaretlendiğini unutmayın. Ekli işletim sistemi diskine atanan sürücü mektubuna dikkat edin.
+3. Eklediğiniz işletim sistemi diskinde **\windows\system32\config** klasörüne gidin. Geri alma gerekirse, bu klasördeki tüm dosyaları yedek olarak kopyalayın.
+4. Kayıt Defteri Düzenleyicisi'ni başlatın (regedit.exe).
+5. **HKEY_LOCAL_MACHINE** tuşunu seçin. Menüde **Dosya** > **Yük Kovanı'nı**seçin:
+6. Eklediğiniz işletim sistemi diskindeki **\windows\system32\config\SYSTEM** klasörüne göz atın. Kovanın adı için **BROKENSYSTEM'i**girin. Yeni kayıt kovanı **HKEY_LOCAL_MACHINE** anahtarının altında görüntülenir. Sonra yazılım kovan **\windows\system32\config\SOFTWARE** **HKEY_LOCAL_MACHINE** anahtarı altında yükleyin. Kovan yazılımının adı için **BROKENSOFTWARE'i**girin. 
+7. Yükseltilmiş komut istemi penceresini açın **(Yönetici olarak çalıştırın)** ve RDP yapılandırmalarını sıfırlamak için kalan adımlarda komutları çalıştırın. 
+8. Sunucu ve istemci arasındaki iletişimin yerel RDP Şifrelemesini kullanması için RDP Güvenlik Katmanı'nı 0'a düşürün:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
-9. Eski RDP istemcilerinin bağlanmasına izin vermek için şifreleme düzeyini en düşük ayara düşürün:
+9. Eski RDP istemcilerinin bağlanmasına izin vermek için şifreleme düzeyini en aza indirin:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
-10. İstemci makinenin Kullanıcı yapılandırmasını yüklemek için RDP 'yi ayarlayın.
+10. İstemci makinesinin kullanıcı yapılandırmasını yüklemek için RDP'yi ayarlayın.
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
-11. RDP etkin tut denetimini etkinleştirin:
+11. RDP Canlı Tutma denetimini etkinleştirin:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'KeepAliveTimeout' /t REG_DWORD /d 1 /f 
         
@@ -118,7 +118,7 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveEnable' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveInterval' /t REG_DWORD /d 1 /f
-12. RDP yeniden bağlanma denetimini ayarlayın:
+12. RDP Yeniden Bağlanma denetimini ayarlayın:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritReconnectSame' /t REG_DWORD /d 0 /f 
         
@@ -130,12 +130,12 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
 
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'fDisableAutoReconnect' /t REG_DWORD /d 0 /f
 
-13. RDP oturum saati denetimini ayarlama:
+13. RDP Oturum Süresi denetimini ayarlayın:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
-14. RDP bağlantı kesme saati denetimini ayarlayın:
+14. RDP Bağlantı Dansı Süresi denetimini ayarlayın:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f 
 
@@ -144,24 +144,24 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxDisconnectionTime' /t REG_DWORD /d 0 /f
-15. RDP bağlantı saati denetimini ayarlama:
+15. RDP Bağlantı Süresi denetimini ayarlayın:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. RDP oturum boşta kalma süresi denetimini ayarla: REG ADD "Hklm\brokensystem\controlset001\control\terminalserver\winstations\rdp-TCP"/v ' Finheritmaxboştazamanı '/t REG_DWORD/d 1/f 
+16. RDP Oturum Boşta Zaman denetimini ayarlayın: REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
-17. "En fazla eşzamanlı bağlantı sayısını sınırla" denetimini ayarlayın:
+17. "Maksimum eşzamanlı bağlantıları sınırlandır" denetimini ayarlayın:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
-18. VM 'yi yeniden başlatın ve RDP kullanarak bu sunucuya bağlanmayı yeniden deneyin.
+18. VM'yi yeniden başlatın ve RDP kullanarak ona yeniden bağlanmayı deneyin.
 
 ## <a name="need-help"></a>Yardıma mı ihtiyacınız var? 
 Desteğe başvurun. Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

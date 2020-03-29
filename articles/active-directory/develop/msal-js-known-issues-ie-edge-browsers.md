@@ -1,7 +1,7 @@
 ---
-title: Internet Explorer & Microsoft Edge 'deki sorunlar (MSAL. js) | Mavisi
+title: Microsoft Edge (MSAL.js) & Internet Explorer sorunları | Azure
 titleSuffix: Microsoft identity platform
-description: Internet Explorer ve Microsoft Edge tarayıcılarıyla JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı 'nı kullanırken oluşan sorunları öğrenin.
+description: Internet Explorer ve Microsoft Edge tarayıcılarıyla JavaScript için Microsoft Kimlik Doğrulama Kitaplığını (MSAL.js) kullanırken sorunları öğrenin.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,58 +14,58 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5ae2dee68ec0da8e8a00d4f01583461462bc196c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696104"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında (MSAL. js) bilinen sorunlar
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında bilinen sorunlar (MSAL.js)
 
-## <a name="issues-due-to-security-zones"></a>Güvenlik bölgeleri nedeniyle oluşan sorunlar
-IE ve Microsoft Edge 'de kimlik doğrulamasıyla ilgili birçok sorun raporu sunuyoruz ( *Microsoft Edge tarayıcı sürümü 40.15063.0.0 ' e*güncelliyoruz). Bunları izliyor ve Microsoft Edge ekibinin bilgilendirilmesi yaptık. Microsoft Edge bir çözünürlükte çalışırken, sık karşılaşılan sorunların ve uygulanabilecek olası geçici çözümlerin açıklaması aşağıda verilmiştir.
+## <a name="issues-due-to-security-zones"></a>Güvenlik bölgeleri nedeniyle sorunlar
+IE ve Microsoft Edge'de kimlik doğrulamayla ilgili birden çok sorun bildirmiştik *(Microsoft Edge tarayıcı sürümünün 40.15063.0.0*olarak güncellenmelerinden bu yana). Bunları takip ediyoruz ve Microsoft Edge ekibini bilgilendirdik. Microsoft Edge bir çözüm üzerinde çalışırken, sık sık oluşan sorunların ve uygulanabilecek olası geçici çözümlerin açıklaması aşağıda verilmiştir.
 
 ### <a name="cause"></a>Nedeni
-Bu sorunların büyük bir kısmının nedeni aşağıdaki gibidir. Oturum depolama ve yerel depolama, Microsoft Edge tarayıcısında güvenlik bölgelerine göre bölümlendirilir. Microsoft Edge 'in bu sürümünde, uygulama bölgeler arasında yeniden yönlendirildiğinde, oturum depolama ve yerel depolama temizlenir. Özellikle, oturum depolama, normal tarayıcı gezinmede temizlenir ve hem oturum hem de yerel depolama, tarayıcının InPrivate modunda temizlenir. MSAL. js, oturum depolama alanındaki belirli durumları kaydeder ve kimlik doğrulama akışları sırasında bu durumu denetlemeye dayanır. Oturum depolama alanı kaldırıldığında, bu durum kaybedilir ve bu nedenle bozuk deneyimler oluşur.
+Bu sorunların çoğu için nedeni aşağıdaki gibidir. Oturum depolama ve yerel depolama Microsoft Edge tarayıcısında güvenlik bölgeleri tarafından bölümlenir. Microsoft Edge'in bu özel sürümünde, uygulama bölgelere yönlendirildiğinde, oturum depolama alanı ve yerel depolama temizlenir. Özellikle, oturum depolama normal tarayıcı navigasyon temizlenir ve hem oturum ve yerel depolama tarayıcının InPrivate modunda temizlenir. MSAL.js oturum depolamasında belirli durumu kaydeder ve kimlik doğrulama akışları sırasında bu durumu denetlemeye dayanır. Oturum depolama temizlendiğinde, bu durum kaybolur ve bu nedenle kırık deneyimler sonuçlanır.
 
 ### <a name="issues"></a>Sorunlar
 
-- **Kimlik doğrulama sırasında sonsuz yeniden yönlendirme döngüleri ve sayfa yeniden yükler**. Kullanıcılar Microsoft Edge 'de uygulamada oturum açtıklarında, AAD oturum açma sayfasından geri yönlendirilir ve yinelenen sayfa yeniden yüklemeye neden olan sonsuz bir yeniden yönlendirme döngüsünde takılırlar. Bu, genellikle oturum depolama alanındaki bir `invalid_state` hatası ile birlikte sunulur.
+- **Kimlik doğrulama sırasında sonsuz yönlendirme döngüleri ve sayfa yeniden yükler.** Kullanıcılar Microsoft Edge'deki uygulamada oturum açtıklarında, AAD oturum açma sayfasından geri yönlendirilir ler ve tekrarlanan sayfa yeniden yüklemeleri ile sonuçlanan sonsuz bir yönlendirme döngüsüne takılıp kalırlar. Bu genellikle oturum depolama `invalid_state` bir hata eşlik ediyor.
 
-- **Sonsuz belirteci alma döngüleri ve AADSTS50058 hatası**. Microsoft Edge üzerinde çalışan bir uygulama bir kaynak için belirteç almaya çalıştığında, uygulama, ağ izinizdeki AAD 'den aşağıdaki hata ile birlikte, belirteç alma çağrısının sonsuz bir döngüsüne takılmış olabilir:
+- **Sonsuz edinme belirteç döngüleri ve AADSTS50058 hatası.** Microsoft Edge'de çalışan bir uygulama bir kaynak için belirteç elde etmeye çalıştığında, uygulama, ağınızdaAAD'den gelen aşağıdaki hatayla birlikte edinme belirteci çağrısının sonsuz bir döngüsüne takılabilir:
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- Açılan **pencere, kimlik doğrulaması Için açılan pencere aracılığıyla oturum açma kullanılırken kapanmaz veya takılmaz**. Microsoft Edge veya IE (InPrivate) üzerinde açılan pencere aracılığıyla kimlik doğrulaması yaparken, kimlik bilgilerini girdikten ve oturum açtıktan sonra, güvenlik bölgelerinde birden çok etki alanı gezinmede yer alıyorsa, MSAL. js tanıtıcıyı açılan pencere.  
+- **Pop-up penceresi kapanmaz veya kimlik doğrulaması için Popup üzerinden giriş kullanırken takılıp kalır.** Microsoft Edge veya IE(InPrivate)'daki açılır pencereden kimlik bilgileri girerken ve oturum açtıktan sonra, gezintiye güvenlik bölgeleri arasında birden çok etki alanı dahilse, açılır pencere kapanmaz, çünkü MSAL.js tutamacı nı kaybeder açılır pencere.  
 
-### <a name="update-fix-available-in-msaljs-023"></a>Güncelleştirme: MSAL. js 0.2.3 'de çözüm kullanılabilir
-Kimlik doğrulama yönlendirme döngüsü sorunları için düzeltmeler [msal. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)içinde yayımlanmıştır. Bu düzeltmeden faydalanmak için MSAL. js yapılandırmasında bayrak `storeAuthStateInCookie` etkinleştirin. Bu bayrak varsayılan olarak false değerine ayarlanır.
+### <a name="update-fix-available-in-msaljs-023"></a>Güncelleme: Düzeltme MSAL.js 0.2.3 mevcuttur
+Kimlik doğrulama yönlendirme döngü sorunları için [düzeltmeler MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)serbest bırakıldı. Bu düzeltmeden yararlanmak için MSAL.js config'deki bayrağı `storeAuthStateInCookie` etkinleştirin. Varsayılan olarak bu bayrak false olarak ayarlanır.
 
-`storeAuthStateInCookie` bayrağı etkinleştirildiğinde, MSAL. js, kimlik doğrulama akışlarının doğrulanması için gereken istek durumunu depolamak üzere tarayıcı tanımlama bilgilerini kullanır.
+`storeAuthStateInCookie` Bayrak etkinleştirildiğinde, MSAL.js auth akışlarının doğrulanması için gerekli istek durumunu depolamak için tarayıcı çerezlerini kullanır.
 
 > [!NOTE]
-> Bu düzelme henüz msal-angular ve msal-AngularJS sarmalayıcıları için kullanılamaz. Bu düzeltilme, açılan pencereler ile ilgili sorunu gidermez.
+> Bu düzeltme henüz msal-açısal ve msal-açılar sarmalayıcılar için mevcut değildir. Bu düzeltme, Pop-up pencereleriyle ilgili sorunu gidermez.
 
-Aşağıdaki geçici çözümleri kullanın.
+Aşağıdaki geçici işleri kullanın.
 
-#### <a name="other-workarounds"></a>Diğer geçici çözümler
-Sorununuzun yalnızca Microsoft Edge tarayıcısının belirli bir sürümünde gerçekleştiğini ve bu geçici çözümleri benimseerek diğer tarayıcılarda çalışıp çalışmadığını test ettiğinizden emin olun.  
-1. Bu sorunları çözmek için ilk adım olarak, uygulama etki alanının ve kimlik doğrulama akışının yeniden yönlendirmelerine dahil olan tüm diğer sitelerin, tarayıcının güvenlik ayarlarında güvenilen siteler olarak eklendiğinden emin olun, böylece aynı güvenlik bölgesine ait olmaları gerekir.
-Bunu yapmak için aşağıdaki adımları izleyin:
-    - **Internet Explorer** 'ı açın ve sağ üst köşedeki **Ayarlar** ' a (dişli simgesi) tıklayın
-    - **Internet seçeneklerini** belirleyin
+#### <a name="other-workarounds"></a>Diğer geçici geçici işler
+Sorununuzun yalnızca Microsoft Edge tarayıcısının belirli sürümünde oluştuğunu ve bu geçici çözümlerini benimsemeden önce diğer tarayıcılarda çalıştığını test edin.  
+1. Bu sorunları aşmak için ilk adım olarak, uygulama etki alanı nın ve kimlik doğrulama akışının yeniden yönlendirilmesinde yer alan diğer sitelerin tarayıcının güvenlik ayarlarında güvenilir siteler olarak eklenmelerini ve böylece aynı güvenlik bölgesine ait olmalarını sağlayın.
+Bunu yapmak için şu adımları uygulayın:
+    - **Internet Explorer'ı** açın ve sağ üst köşedeki **ayarlara** (vites simgesi) tıklayın
+    - **Internet Seçeneklerini** Seçin
     - **Güvenlik** sekmesini seçin
-    - **Güvenilen siteler** seçeneğinin altında, **siteler** düğmesine tıklayın ve açılan iletişim kutusuna URL 'leri ekleyin.
+    - Güvenilir **Siteler** seçeneğinin altında, **siteler** düğmesine tıklayın ve açılan iletişim kutusuna URL'leri ekleyin.
 
-2. Daha önce belirtildiği gibi, normal gezinme sırasında yalnızca oturum depolama alanı temizlendiğinden, bunun yerine MSAL. js ' yi yerel depolamayı kullanacak şekilde yapılandırabilirsiniz. Bu, MSAL başlatılırken `cacheLocation` config parametresi olarak ayarlanabilir.
+2. Daha önce de belirtildiği gibi, normal navigasyon sırasında yalnızca oturum depolama temizlenir, bunun yerine yerel depolama kullanmak için MSAL.js yapılandırabilirsiniz. Bu, MSAL'ı başlatma sırasında `cacheLocation` config parametresi olarak ayarlanabilir.
 
-Not, bu, hem oturum hem de yerel depolama olmadığından, InPrivate Gözatma sorununu çözmeyecektir.
+Hem oturum hem de yerel depolama temizlendiğinden, bu durum InPrivate tarama sorununu çözmez.
 
-## <a name="issues-due-to-popup-blockers"></a>Açılır engelleyiciler nedeniyle oluşan sorunlar
+## <a name="issues-due-to-popup-blockers"></a>Açılır pencere engelleyicileri nedeniyle sorunlar
 
-IE veya Microsoft Edge 'de açılan pencereler engellendiğinde, örneğin çok faktörlü kimlik doğrulaması sırasında ikinci bir açılan pencere oluştuğunda oluşan durumlar vardır. Tarayıcıda, açılan pencerede bir kez veya her zaman izin vermek için bir uyarı alırsınız. İzin vermeyi seçerseniz tarayıcı açılır pencereyi otomatik olarak açar ve bunun için bir `null` tutamacı döndürür. Sonuç olarak, kitaplığın pencere için bir tutamacı yoktur ve açılır pencereyi kapatmak için bir yol yoktur. Aynı sorun, otomatik olarak bir açılan pencere açmadığından açılanları izin vermenizi isterse Chrome 'da gerçekleşmez.
+Açılır pencerelerin IE veya Microsoft Edge'de engellendiğinde, örneğin çok faktörlü kimlik doğrulama sırasında ikinci bir açılır pencere oluştuğunda durumlar vardır. Bir kez veya her zaman açılır pencere için izin vermek için tarayıcıda bir uyarı alırsınız. İzin vermeyi seçerseniz, tarayıcı açılır pencereyi otomatik olarak `null` açar ve bunun için bir tutamacı döndürür. Sonuç olarak, kitaplık pencere için bir tutamak yok ve açılır pencereyi kapatmak için bir yol yoktur. Açılır pencereyi otomatik olarak açmadığından, açılır pencerelere izin vermenizi istediğinde aynı sorun Chrome'da da olmaz.
 
-Geçici bir **çözüm**olarak, geliştiricilerin bu sorundan kaçınmak üzere uygulamalarını kullanmaya başlamadan önce IE ve Microsoft Edge 'de açılan pencerelere izin vermesi gerekir.
+Geçici **çözüm**olarak, geliştiricilerin bu sorunu önlemek için uygulamalarını kullanmaya başlamadan önce IE ve Microsoft Edge'deki açılır pencerelere izin vermeleri gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Internet Explorer 'DA msal. js kullanma](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.
+[Internet Explorer'da MSAL.js kullanma](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.

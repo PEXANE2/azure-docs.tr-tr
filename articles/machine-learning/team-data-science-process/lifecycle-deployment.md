@@ -1,6 +1,6 @@
 ---
-title: Team Data Science Process yaşam döngüsü dağıtım aşaması
-description: Hedefleri, görevleri ve teslim edilebilirler için veri bilimi projelerinizi dağıtım aşaması
+title: Ekip Veri Bilimi Süreci yaşam döngüsünün dağıtım aşaması
+description: Veri bilimi projelerinizin dağıtım aşaması için hedefler, görevler ve teslim edilebilir ler
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,63 +12,63 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720495"
 ---
-# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process yaşam döngüsü dağıtım aşaması
+# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Ekip Veri Bilimi Süreci yaşam döngüsünün dağıtım aşaması
 
-Bu makalede, hedeflerinizi, görevleri ve teslim edilebilirler ile Team Data Science işlem (TDSP) dağıtımı ilişkili özetlenmektedir. Bu işlem, veri bilimi projelerinizi yapısı için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü projeleri genellikle genellikle yinelemeli olarak yürütme, önemli aşamalar açıklanmaktadır:
+Bu makalede, Ekip Veri Bilimi Süreci (TDSP) dağıtımıyla ilişkili hedefler, görevler ve teslim edilebilir ler sıralanmıştır. Bu işlem, veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, projelerin genellikle yineleyici olarak yürüttüğü başlıca aşamaları özetler:
 
-   1. **İş anlama**
-   2. **Veri alma ve anlama**
-   3. **Oluşturmanın**
+   1. **Kurumsal yaklaşım**
+   2. **Veri edinme ve anlama**
+   3. **Modelleme**
    4. **Dağıtım**
    5. **Müşteri kabulü**
 
-TDSP yaşam döngüsü görsel bir temsilini şu şekildedir: 
+TDSP yaşam döngüsünün görsel bir gösterimi aşağıdavelvettir: 
 
 ![TDSP yaşam döngüsü](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Hedef
-Bir üretim ya da üretim ortamına benzer son kullanıcı onay için bir işlem hattıyla veri modelleri dağıtın. 
+Son kullanıcı kabulü için veri aktarıcısına sahip modelleri üretim veya üretim benzeri bir ortama dağıtın. 
 
-## <a name="how-to-do-it"></a>Nasıl yapılır
-Bu aşamada ele ana görev:
+## <a name="how-to-do-it"></a>Nasıl yapılacağını
+Bu aşamada ele alınacak ana görev:
 
-**Modeli**çalıştırın: model ve işlem hattını, uygulama tüketimi için bir üretime veya üretime benzer bir ortama dağıtın.
+**Modeli operasyonel hale getirmek**: Modeli ve boru hattını uygulama tüketimi için üretim veya üretim benzeri bir ortama dağıtın.
 
 ### <a name="operationalize-a-model"></a>Bir modeli kullanıma hazır hale getirme
-Bir dizi iyi gerçekleştirilip modelleri oluşturduktan sonra bunları kullanmak, diğer uygulamalar için çalışır hale getirebilirsiniz. İş gereksinimlerine bağlı olarak, Öngörüler, gerçek zamanlı olarak veya toplu olarak yapılır. Modelleri dağıtmak için bunları açık bir API arabirimi ile kullanıma gerekir. Arabirim modelinin çeşitli uygulamalardan gibi kolayca kullanılabilmesini sağlar:
+İyi performans gösteren bir dizi modele sahip olduktan sonra, bunları diğer uygulamaların tüketebileceği şekilde işlevsel hale getirebilirsiniz. İş gereksinimlerine bağlı olarak, tahminler gerçek zamanlı olarak veya toplu olarak yapılır. Modelleri dağıtmak için, açık bir API arabirimi ile bunları ortaya çıkarırsınız. Arabirim, modelin aşağıdakiler gibi çeşitli uygulamalardan kolayca tüketilmesini sağlar:
 
-   * Çevrimiçi Web siteleri
+   * Çevrimiçi web siteleri
    * Elektronik tablolar 
    * Panolar
-   * Satır iş kolu uygulamaları 
+   * İş yeri uygulamaları 
    * Arka uç uygulamaları 
 
-Azure Machine Learning Web hizmeti ile model işlemleştirme örnekleri için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md). Telemetri ve üretim modeli ve dağıttığınız veri işlem hattını izleme oluşturmak için en iyi bir uygulamadır. Bu yöntem, raporlama ve sorun giderme sonraki sistem durumu ile yardımcı olur.  
+Azure Machine Learning web hizmetiyle model operasyonelleştirme örnekleri [için](../studio/deploy-a-machine-learning-web-service.md)bkz. Telemetri oluşturmak ve dağıtım yaptığınız veri ardışık yapısına izleme yapmak en iyi yöntemdir. Bu uygulama sonraki sistem durumu raporlama ve sorun giderme ile yardımcı olur.  
 
 ## <a name="artifacts"></a>Yapıtlar
 
-* Sistem durumunu ve anahtar ölçümlerin gösteren bir durum Panosu
-* Dağıtım ayrıntıları son modelleme raporla
-* Nihai çözüm mimarisi belge
+* Sistem durumunu ve temel ölçümleri görüntüleyen bir durum panosu
+* Dağıtım ayrıntılarını içeren son modelleme raporu
+* Nihai çözüm mimarisi belgesi
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-TDSP yaşam döngüsü içinde her adım için bağlantılar şunlardır:
+TDSP'nin yaşam döngüsündeki her adıma bağlantılar aşağıda vereb
 
-   1. [İş anlama](lifecycle-business-understanding.md)
-   2. [Veri alma ve anlama](lifecycle-data.md)
-   3. [Oluşturmanın](lifecycle-modeling.md)
+   1. [Kurumsal yaklaşım](lifecycle-business-understanding.md)
+   2. [Veri Toplama ve Anlama](lifecycle-data.md)
+   3. [Modelleme](lifecycle-modeling.md)
    4. [Dağıtım](lifecycle-deployment.md)
    5. [Müşteri kabulü](lifecycle-acceptance.md)
 
-Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir. 
+Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenme ler sağlarız. [Örnek walkthroughs](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları içeren senaryoların bir listesini sağlar. İzler, bulut, şirket içi araçlar ve hizmetlerin akıllı bir uygulama oluşturmak için iş akışı veya ardışık ardışık yollarla nasıl birleştirilebildiğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Azure Machine Learning Studio kullanan TDSP'lerde adımların nasıl yürütüldüne ilgili örnekler [için](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bkz.

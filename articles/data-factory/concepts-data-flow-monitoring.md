@@ -1,6 +1,6 @@
 ---
-title: Veri akışı görsel Izleme eşleme
-description: Azure Data Factory veri akışlarını görsel olarak izleme
+title: Haritalama veri akışı Görsel İzleme
+description: Azure Veri Fabrikası Veri Akışları görsel olarak nasıl izlenir?
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,55 +9,55 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 93d92286fa9eecbc64229059274cc8f9ed99e21e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928273"
 ---
-# <a name="monitor-data-flows"></a>Veri akışlarını izleme
+# <a name="monitor-data-flows"></a>Veri Akışlarını İzle
 
 
 
-Veri akışınızı oluşturma ve hata ayıklamayı tamamladıktan sonra, veri akışınızı bir işlem hattı bağlamı içindeki bir zamanlamaya göre yürütülecek şekilde zamanlamak isteyeceksiniz. Azure Data Factory işlem hattını Tetikleyicileri kullanarak zamanlayabilirsiniz. Ya da işlem hattı bağlamında veri akışınızı test etmek için tek çalıştırma yürütme yürütmek üzere Azure Data Factory işlem hattı Oluşturucusisinden şimdi Tetikle seçeneğini kullanabilirsiniz.
+Veri akışınızı oluşturmayı ve hata ayıklamaişlemini tamamladıktan sonra, veri akışınızı bir ardışık alan bağlamında bir zamanlamada yürütmek üzere zamanlamak isteyeceksiniz. Tetikler'i kullanarak azure veri fabrikasından ardışık zamanlayabilirsiniz. Veya veri akışınızı boru hattı bağlamında sınamak için tek bir yürütme yürütmek için Azure Veri Fabrikası Boru Hattı Oluşturucusu'ndan Tetikle Şimdi seçeneğini kullanabilirsiniz.
 
-İşlem hattınızı yürüttüğünüzde, işlem hattını ve veri akışı etkinliği dahil olmak üzere işlem hattında bulunan tüm etkinlikleri izleyebilirsiniz. Sol taraftaki Azure Data Factory UI panelinde bulunan izleyici simgesine tıklayın. Aşağıdakine benzer bir ekran görürsünüz. Vurgulanan simgeler, veri akışı etkinliği dahil olmak üzere işlem hattındaki etkinliklerin ayrıntılarına gitmenizi sağlar.
+Ardışık hattınızı çalıştırdığınızda, veri akışınız etkinliği de dahil olmak üzere ardışık ardışık ardışık ardışık alanda bulunan tüm etkinlikleri izleyebilirsiniz. Sol daki Azure Veri Fabrikası Kullanıcı Birası panelindeki monitör simgesine tıklayın. Aşağıdakine benzer bir ekran göreceksiniz. Vurgulanan simgeler, Veri Akışı etkinliği de dahil olmak üzere ardışık ardışık alandaki etkinlikleri ayrıntılı olarak ele almanızı sağlar.
 
 ![Veri Akışını İzleme](media/data-flow/mon001.png "Veri Akışını İzleme")
 
-Bu düzeyde istatistikler, çalışma süreleri ve durumu da dahil olmak üzere görüntülenir. Etkinlik düzeyindeki çalışma KIMLIĞI, işlem hattı düzeyinde çalıştırma KIMLIĞININ farklıdır. Önceki düzeydeki çalıştırma KIMLIĞI işlem hattı içindir. Duygunluğa tıklamak, veri akışı yürütmeyle ilgili ayrıntılı bilgiler verir.
+Çalışma süreleri ve durumu da dahil olmak üzere bu düzeyde istatistikleri göreceksiniz. Etkinlik düzeyindeki Run Kimliği, çalıştır kimliğinin ardışık hat lar düzeyinde olması yla farklıdır. Önceki düzeydeki Run Kimliği boru hattı içindir. Gözlük tıklattığınızda veri akışı yürütme hakkında derin ayrıntılar verecektir.
 
 ![Veri Akışını İzleme](media/data-flow/mon002.png "Veri Akışını İzleme")
 
-Grafik düğüm izleme görünümünde olduğunuzda, veri akışı grafınızı yalnızca Basitleştirilmiş bir görünüm sürümü görürsünüz.
+Grafik düğüm izleme görünümünde olduğunuzda, veri akışı grafiğinizin yalnızca basitleştirilmiş bir görünüm sürümünü görürsünüz.
 
 ![Veri Akışını İzleme](media/data-flow/mon003.png "Veri Akışını İzleme")
 
-## <a name="view-data-flow-execution-plans"></a>Veri akışı yürütme planlarını görüntüleme
+## <a name="view-data-flow-execution-plans"></a>Veri Akışı Yürütme Planlarını Görüntüle
 
-Veri akışınız Spark 'ta yürütüldüğünde, Azure Data Factory veri akışınızı tamamen temel alarak en iyi kod yollarını belirler. Ek olarak, yürütme yolları farklı genişleme düğümlerinde ve veri bölümlerinde de gerçekleşebilir. Bu nedenle, izleme grafiği, dönüştürmelerinizin yürütme yolunu dikkate alarak akışınızın tasarımını temsil eder. Ayrı düğümlere tıkladığınızda, kümede birlikte yürütülen kodu temsil eden "gruplandırmaları" görürsünüz. Gördüğünüz zamanlamalar ve sayımlar, tasarımınızda bireysel adımlara karşılık bu grupları temsil eder.
-
-![Veri Akışını İzleme](media/data-flow/mon004.png "Veri Akışını İzleme")
-
-* İzleme penceresindeki açık alana tıkladığınızda, alt bölmedeki istatistikler her bir havuz için zamanlama ve satır sayılarını ve dönüştürme kökenini için havuz verilerine işaret eden dönüşümleri görüntüler.
-
-* Tek tek dönüştürmeleri seçtiğinizde, sağ bölmede bölüm istatistiklerini, sütun sayılarını, çarpıklığı (bölümler arasında dağıtılan veriler ne kadar eşit olduğu) ve basıklık (nasıl çıkmanız gerekirse) gösteren ek geri bildirim alırsınız.
-
-* Düğüm görünümündeki havuza tıkladığınızda, kökenini sütununu görürsünüz. Her sütun, veri akışınız genelinde havuza akacak şekilde birikmiş üç farklı yöntem vardır. Bunlar:
-
-  * Hesaplandı: sütunu, Koşullu işleme için veya veri akışındaki bir ifade dahilinde kullanın, ancak bunu havuza girmeyin
-  * Türetilmiş: sütun, akışta oluşturduğunuz yeni bir sütundur, yani kaynakta yer almıyor
-  * Eşlendi: kaynak, kaynaktan geldiğini ve bir havuz alanıyla eşlemenizi sağlar
-  * Veri akışı durumu: yürütmenin geçerli durumu
-  * Küme başlangıç zamanı: veri akışı yürütmenizle ilgili JıT Spark işlem ortamının elde edilecek süre miktarı
-  * Dönüşüm sayısı: akışınızda kaç dönüştürme adımı yürütüldüğü
-  
-![Veri Akışını İzleme](media/data-flow/monitornew.png "Veri akışı Izleme yeni")  
-  
-## <a name="monitor-icons"></a>Simgeleri izle
-
-Bu simge, dönüştürme verilerinin kümede zaten önbelleğe alındığı anlamına gelir; bu nedenle zamanlamalar ve yürütme yolu şu hesaba alınır:
+Veri Akışınız Spark'ta yürütüldüğünde, Azure Veri Fabrikası veri akışınızın tamamını temel alan en iyi kod yollarını belirler. Ayrıca, yürütme yolları farklı ölçekçıkış düğümleri ve veri bölümleri oluşabilir. Bu nedenle, izleme grafiği dönüşümlerinizin yürütme yolunu dikkate alarak akışınızın tasarımını temsil eder. Tek tek düğümleri tıklattığınızda, kümede birlikte yürütülen kodu temsil eden "gruplandırmalar" görürsünüz. Gördüğünüz zamanlamalar ve sayımlar, tasarımınızdaki tek tek adımların aksine bu grupları temsil eder.
 
 ![Veri Akışını İzleme](media/data-flow/mon004.png "Veri Akışını İzleme")
 
-Ayrıca, dönüşümde yeşil daire simgeleri görürsünüz. Bunlar, verilerin akan havuz sayısını temsil eder.
+* İzleme penceresindeki açık alana tıkladığınızda, alt bölmedeki istatistikler her Lavabo için zamanlama ve satır sayımlarını ve dönüşüm soyundan gelen lavabo verilerine yol açan dönüşümleri görüntüler.
+
+* Bireysel dönüşümleri seçtiğinizde, sağ panelde bölüm istatistikleri, sütun sayıları, çarpıklık (bölümler arasında dağıtılan veriler ne kadar eşittir) ve kurtosis (veri ne kadar dikenli) gösteren ek geri bildirim alırsınız.
+
+* Düğüm görünümünde Lavabo'ya tıkladığınızda sütun soylarını görürsünüz. Lavaboya inmek için veri akışınız boyunca sütunların biriktiğinüç farklı yöntem vardır. Bunlar:
+
+  * Hesaplanan: Sütunu koşullu işleme için veya veri akışınızdaki bir ifade içinde kullanırsınız, ancak onu Lavaboya koymayın
+  * Türetilmiş: Sütun, akışınızda oluşturduğunuz yeni bir sütundur, yani Kaynak'ta bulunmaz
+  * Eşlenen: Sütun kaynaktan kaynaklanan ve bir lavabo alanı için eşleme vardır
+  * Veri akışı durumu: Yürütmenizin geçerli durumu
+  * Küme başlatma süresi: Veri akışı yürütmeniz için JIT Spark bilgi işlem ortamını elde etmek için gereken süre
+  * Dönüşüm sayısı: Akışınızda kaç dönüşüm adımı yürütülüyor
+  
+![Veri Akışını İzleme](media/data-flow/monitornew.png "Veri Akışı İzleme Yeni")  
+  
+## <a name="monitor-icons"></a>Monitör Simgeleri
+
+Bu simge, dönüştürme verilerinin kümeüzerinde zaten önbelleğe alınmış olduğu anlamına gelir, bu nedenle zamanlamalar ve yürütme yolu bunu dikkate almıştır:
+
+![Veri Akışını İzleme](media/data-flow/mon004.png "Veri Akışını İzleme")
+
+Dönüşümde yeşil daire simgeleri de göreceksiniz. Bunlar, verilerin aktığı lavabo sayısının sayısını temsil eder.

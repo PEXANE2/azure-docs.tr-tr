@@ -1,6 +1,6 @@
 ---
-title: Bir SQL Server sanal makinesinde - Team Data Science Process verilerini keşfedin
-description: Azure 'da SQL Server bir sanal makinede bulunan ve Python ya da SQL kullanarak verileri bulun + işleme ve özellik oluşturun.
+title: SQL Server sanal makinesindeki verileri keşfedin - Ekip Veri Bilimi Süreci
+description: Azure'daki bir SQL Server sanal makinesinde Python veya SQL kullanarak + verileri inceleyin ve özellikler oluşturun.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,90 +12,90 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718489"
 ---
-# <a name="heading"></a>Azure 'da SQL Server sanal makinesindeki verileri işleme
-Bu belge verileri araştırmak ve bir SQL Server VM'si, azure'da depolanan verilerin özelliklerini oluşturma konusunu kapsar. Bu hedef, SQL kullanılarak veya Python gibi bir programlama dili kullanılarak veri denetimi tarafından tamamlanabilir.
+# <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Azure üzerindeki SQL Server Sanal Makinesi verilerini işleme
+Bu belge, Azure'daki bir SQL Server VM'de depolanan veriler için verilerin nasıl keşfedilen ve özellikler oluşturacağı hakkında bilgi kapsar. Bu hedef, SQL kullanarak veya Python gibi bir programlama dili kullanılarak veri çekişmesi ile tamamlanabilir.
 
 > [!NOTE]
-> Bu belgede örnek SQL deyimlerinde veri SQL Server'da olduğunu varsayalım. Aksi takdirde, verilerinizi SQL Server'a taşıma hakkında bilgi edinmek için bulut veri bilimi işlemi eşlemesi bakın.
+> Bu belgedeki örnek SQL deyimleri verilerin SQL Server'da olduğunu varsayar. Değilse, verilerinizi SQL Server'a nasıl taşıyarak taşıyabildiğini öğrenmek için bulut veri bilimi işlem haritasına bakın.
 > 
 > 
 
-## <a name="SQL"></a>SQL kullanma
-Biz, SQL kullanarak bu bölümdeki aşağıdaki veri wrangling görevler açıklanmıştır:
+## <a name="using-sql"></a><a name="SQL"></a>SQL kullanma
+Bu bölümde SQL kullanarak aşağıdaki veri çekişme görevlerini açıklıyoruz:
 
-1. [Veri araştırması](#sql-dataexploration)
-2. [Özellik oluşturma](#sql-featuregen)
+1. [Veri Arama](#sql-dataexploration)
+2. [Özellik Oluşturma](#sql-featuregen)
 
-### <a name="sql-dataexploration"></a>Veri araştırması
-SQL Server veri depolarında keşfetmek için kullanılan SQL betiklerini birkaç örnek aşağıda verilmiştir.
+### <a name="data-exploration"></a><a name="sql-dataexploration"></a>Veri Arama
+Burada, SQL Server'daki veri depolarını keşfetmek için kullanılabilecek birkaç örnek SQL komut dosyası verebilirsiniz.
 
 > [!NOTE]
-> Pratik bir örnek için, [NYC TAXI veri kümesini](https://www.andresmh.com/nyctaxitrips/) kullanabilir ve [IPython Not defteri 'ni kullanarak ıpnb başlıklı NYC veri denetimi](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) öğesine başvurabilirsiniz ve bir uçtan uca izlenecek yol SQL Server.
+> Pratik bir örnek için, [NYC Taksi veri kümesini](https://www.andresmh.com/nyctaxitrips/) kullanabilir ve uçtan uca bir geçiş için [IPython Notebook ve SQL Server'ı kullanarak NYC Veri çekişmesi](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) başlıklı IPNB'ye bakabilirsiniz.
 > 
 > 
 
-1. Gün başına gözlemler sayısını alın
+1. Günlük gözlem sayısını alın
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. Kategorik bir sütundaki düzeylerini Al
+2. Düzeyleri kategorik bir sütunda alma
    
     `select  distinct <column_name> from <databasename>`
-3. Kategorik iki sütunu birlikte düzey sayısını Al 
+3. İki kategorik sütunun birleşimiyle düzey sayısını alma 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Sayısal sütunlara dağıtımı Al
+4. Sayısal sütunlar için dağıtımı alın
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
-### <a name="sql-featuregen"></a>Özellik oluşturma
-Bu bölümde, biz özellikleri SQL kullanarak oluşturma yolları açıklanmaktadır:  
+### <a name="feature-generation"></a><a name="sql-featuregen"></a>Özellik Oluşturma
+Bu bölümde, SQL kullanarak özellikler oluşturma yollarını açıklıyoruz:  
 
-1. [Sayı tabanlı özellik oluşturma](#sql-countfeature)
-2. [Özellik oluşturmayı atma](#sql-binningfeature)
-3. [Tek bir sütundan özellikler kullanıma alınıyor](#sql-featurerollout)
+1. [Count tabanlı Özellik Oluşturma](#sql-countfeature)
+2. [Binning Özellik Oluşturma](#sql-binningfeature)
+3. [Özellikleri tek bir sütundan çıkarma](#sql-featurerollout)
 
 > [!NOTE]
-> Ek özellikler oluşturduktan sonra bunları mevcut tabloya sütun olarak ekleyin veya özgün tabloyla birleştirilen birincil anahtar ve ek özellikler ile yeni bir tablo oluşturabilirsiniz. 
+> Ek özellikler oluşturduktan sonra, bunları varolan tabloya sütun olarak ekleyebilir veya özgün tabloyla birleştirilebilen ek özellikler ve birincil anahtariçeren yeni bir tablo oluşturabilirsiniz. 
 > 
 > 
 
-### <a name="sql-countfeature"></a>Sayı tabanlı özellik oluşturma
-Aşağıdaki örnekler sayısı özellikleri oluşturmanın iki yolu gösterir. İlk yöntem koşullu toplamı ve ikinci yöntem 'where' yan tümcesi kullanır. Bu sonuçlar, özgün verilerle birlikte Count özelliklerinin olması için özgün tabloyla (birincil anahtar sütunları kullanılarak) eklenebilir.
+### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>Count tabanlı Özellik Oluşturma
+Aşağıdaki örnekler, sayım özellikleri oluşturmanın iki yolunu göstermektedir. İlk yöntem koşullu toplamı kullanır ve ikinci yöntem 'nerede' yan tümcesini kullanır. Bu sonuçlar daha sonra özgün verilerin yanında sayım özelliklerine sahip olmak için özgün tabloyla (birincil anahtar sütunları kullanarak) birleştirilmiş olabilir.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>Özellik oluşturmayı atma
-Aşağıdaki örnek, bunun yerine bir özelliği olarak kullanılabilir bir sayısal sütun göre gruplama (beş depo kullanarak) binned özellikleri oluşturma adımları anlatılmaktadır:
+### <a name="binning-feature-generation"></a><a name="sql-binningfeature"></a>Binning Özellik Oluşturma
+Aşağıdaki örnek, bunun yerine özellik olarak kullanılabilecek bir sayısal sütunu binning (beş kutu kullanarak) ile binned özellikleri oluşturmak için nasıl gösterir:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Tek bir sütundan özellikler kullanıma alınıyor
-Bu bölümde ek özellikler oluşturmak için bir tablodaki tek bir sütun kullanıma sunma gösterilmektedir. Örnek özellikleri oluşturmak çalıştığınız tablosunda bir enlem veya boylam sütunu olduğunu varsayar.
+### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>Özellikleri tek bir sütundan çıkarma
+Bu bölümde, ek özellikler oluşturmak için tabloda tek bir sütunun nasıl dağıtılanacağı gösterilmiştir. Örnek, tabloda özellikler oluşturmaya çalıştığınız bir enlem veya boylam sütunu olduğunu varsayar.
 
-Latitude/Boylam konum verilerine ilişkin kısa bir açıklama aşağıda verilmiştir. StackOverflow, [Latitude ve Boylam 'in doğruluğunu nasıl ölçecek?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Bu kılavuz, konumu bir veya daha fazla özellik olarak dahil etmeden önce anlaşılması yararlı olur:
+Burada enlem / boylam konum verileri (stackoverflow nasıl [enlem ve boylam doğruluğunu ölçmek için](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)kaynak) kısa bir astar nedir? Bu kılavuz, konumu bir veya daha fazla özellik olarak dahil etmeden önce anlamak için yararlıdır:
 
-* Oturum bize biz Kuzey olup veya Güney, Doğu veya Batı dünyayı gösterir.
-* Sıfır olmayan bir yüz basamağın yuvarlanacağını belirtir bize boylam, enlem değil kullandığımız!
-* Onlarca basamaklı bir konuma yaklaşık 1.000 kilometre sağlar. Bize ne Kıta veya üzerinde duyuyoruz Okyanusu hakkında yararlı bilgiler sağlıyor.
-* Birimleri basamak (bir ondalık derece) 111 kilometre (60 Deniz mili, yaklaşık 69 mil) bir konum sağlar. Bu, size kabaca hangi eyalet, ülke veya bölge hakkında bilgi verebilir.
-* En fazla 11.1 km ilk ondalık yerdir: komşu büyük Şehir'dan büyük bir şehir konumunu ayırt edebilir.
-* En fazla 1.1 km ikinci ondalık yerdir: sonraki bir village ayırabilirsiniz.
-* Üçüncü ondalık en fazla 110 m: büyük Tarım alan veya Kurumsal kampüs tanımlayabilirsiniz yerdir.
-* Dördüncü ondalık en fazla 11 m: olan bir paket tanımanıza yerdir. Tipik doğruluğunu düzeltilemeyen bir GPS birim için hiçbir engelleme ile karşılaştırılabilir.
-* Beşinci ondalık en fazla 1.1 m: ağaçları birbirinden ayıran yerdir. Bu düzey ticari GPS birimleri ile tutarlılık yalnızca fark düzeltme ile gerçekleştirilebilir.
-* Altıncı ondalık en fazla 0.11 m: Bu yapıları ortamlarını, tasarlamak için ayrıntılı olarak yerleştirmek için yollar oluşturma kullanabileceğiniz yerdir. Hareketleri glaciers rivers ve izlemek için birden fazla yeterince iyi olmalıdır. Bu, GPS, differentially düzeltilmiş GPS gibi painstaking ölçülerle yararlanarak gerçekleştirilebilir.
+* İşaret bize dünyada kuzey mi, güney mi, doğu mu, batı mı olduğunu söylüyor.
+* Sıfır olmayan yüzlerce rakam bize boylam kullandığımızı söylüyor, enlem değil!
+* Onluk basamak yaklaşık 1.000 kilometrelik bir konum verir. Hangi kıtada veya okyanusta olduğumuz hakkında bize yararlı bilgiler verir.
+* Birim basamak (bir ondalık derece) 111 kilometre (60 deniz mili, yaklaşık 69 mil) kadar bir konum verir. Kabaca hangi eyalette, ülkede veya bölgede olduğunuzu söyleyebilir.
+* İlk ondalık basamak 11,1 km'ye kadar değer: büyük bir şehrin konumunu komşu büyük bir şehirden ayırt edebilir.
+* İkinci ondalık basamak 1,1 km'ye kadar değer: bir köyü diğerinden ayırabilir.
+* Üçüncü ondalık basamak 110 m'ye kadar değer: büyük bir tarım alanı veya kurumsal kampüs belirleyebilir.
+* Dördüncü ondalık basamak 11 m'ye kadar değer: bir parsel araziyi belirleyebilir. Hiçbir girişim olmadan düzeltilmemiş bir GPS ünitesinin tipik doğruluğu ile karşılaştırılabilir.
+* Beşinci ondalık basamak 1,1 m'ye kadar değer: ağaçları birbirinden ayırır. Ticari GPS üniteleri ile bu seviyeye doğruluk sadece diferansiyel düzeltme ile elde edilebilir.
+* Altıncı ondalık basamak 0,11 m'ye kadar değer: Bunu yapıları ayrıntılı olarak ortaya koymak, manzara tasarlamak, yollar inşa etmek için kullanabilirsiniz. Buzulların ve nehirlerin hareketlerini izlemek için fazlasıyla iyi olmalı. Bu, farklı olarak düzeltilmiş GPS gibi GPS ile özenli önlemler alınarak elde edilebilir.
 
-Konum bilgileri özellikleri tespit gibi bölge, konum ve Şehir bilgilerini ayrılması olabilir. Ayrıca, bölge/bölge bilgilerini almak için [noktaya göre konum bul](https://msdn.microsoft.com/library/ff701710.aspx) ' da bulunan Bing Haritalar API 'si gıbı bir REST uç noktasını çağırabilirsiniz.
+Konum bilgileri, bölge, konum ve şehir bilgilerini birbirinden ayırarak aşağıdaki gibi kullanılabilir. Bölge/bölge bilgilerini almak için [Konum Bul'da](https://msdn.microsoft.com/library/ff701710.aspx) bulunan Bing Maps API gibi bir DINLENME bitiş noktasını da arayabilirsiniz.
 
     select 
         <location_columnname>
@@ -108,36 +108,36 @@ Konum bilgileri özellikleri tespit gibi bölge, konum ve Şehir bilgilerini ayr
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-Bu konum tabanlı özellikleri, daha fazla ek sayısı özellikleri daha önce açıklandığı gibi oluşturmak için kullanılabilir. 
+Bu konum tabanlı özellikler, daha önce açıklandığı gibi ek sayı özellikleri oluşturmak için daha fazla kullanılabilir. 
 
 > [!TIP]
-> İstediğiniz dilde kullanarak kayıtları program aracılığıyla ekleyebilirsiniz. Yazma verimliliğini artırmak için verileri parçalara eklemeniz gerekebilir (pyodbc kullanarak bunun nasıl yapılacağı hakkında bir örnek için bkz. [Python Ile SqlServer 'e erişmek Için HelloWorld örneği](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Diğer bir seçenek de [bcp yardımcı programını](https://msdn.microsoft.com/library/ms162802.aspx)kullanarak veritabanına veri eklemedir.
+> Seçtiğiniz dili kullanarak kayıtları programlı olarak ekleyebilirsiniz. Yazma verimliliğini artırmak için verileri yığınlara eklemeniz gerekebilir (pyodbc kullanarak bunu nasıl yapacağınız gibi bir örnek [için, python ile SQLServer'a erişmek için HelloWorld örneğine](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)bakın). Başka bir alternatif [BCP yardımcı programı](https://msdn.microsoft.com/library/ms162802.aspx)kullanarak veritabanına veri eklemektir.
 > 
 > 
 
-### <a name="sql-aml"></a>Azure Machine Learning bağlanılıyor
-Yeni oluşturulan özellik bir sütun olarak var olan bir tabloya eklenebilir veya yeni bir tablo içinde saklanan ve machine learning için özgün tablo ile birleştirilmiş. Aşağıda gösterildiği gibi, Azure Machine Learning [veri Içeri aktarma][import-data] modülü kullanılarak önceden oluşturulmuş veya erişilebilir olan özellikler kullanılabilir:
+### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Azure Machine Learning'e bağlanma
+Yeni oluşturulan özellik, varolan bir tabloya sütun olarak eklenebilir veya yeni bir tabloda depolanabilir ve makine öğrenimi için özgün tabloyla birleştirilir. Azure Machine Learning'de Aşağıda gösterildiği gibi [Veri Alma][import-data] modülü kullanılarak, özellikler zaten oluşturulmuşsa oluşturulabilir veya erişilebilir:
 
 ![azureml okuyucular][1] 
 
-## <a name="python"></a>Python gibi bir programlama dilini kullanma
-Veri [bilimi ortamınızda Azure blob verilerini işleme](data-blob.md)bölümünde belgelendiği gibi verileri araştırmak SQL Server ve verileri Incelemek için Python 'u kullanma, Python kullanarak Azure Blob 'daki verileri işlemeye benzer. Daha fazla işleme için veritabanından verileri bir Pandas veri çerçevesine yükleyin. Biz veritabanına bağlanma ve bu bölümde veri çerçevesi veri yükleme işleminin belgeleyin.
+## <a name="using-a-programming-language-like-python"></a><a name="python"></a>Python gibi bir programlama dilini kullanma
+Veriler SQL Server'da yken verileri keşfetmek ve özellikler oluşturmak için Python'u kullanmak, [veri bilimi ortamınızda İşlem Azure Blob verilerinde](data-blob.md)belgelenen Python'u kullanarak Azure blob'daki verileri işlemeye benzer. Daha fazla işleme için veritabanındaki verileri pandalar veri çerçevesine yükleyin. Veritabanına bağlanma ve verileri bu bölümdeki veri çerçevesine yükleme işlemini belgeliyoruz.
 
-Aşağıdaki bağlantı dizesi biçimi python'dan pyodbc (Değiştir servername, dbname, kullanıcı adı ve parola, belirli değerleri içeren) kullanarak bir SQL Server veritabanına bağlanmak için kullanılabilir:
+Aşağıdaki bağlantı dize biçimi pyodbc kullanarak Python'dan bir SQL Server veritabanına bağlanmak için kullanılabilir (sunucu adı, dbname, kullanıcı adı ve parolayı belirli değerlerle değiştirin):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 'daki [Pandas kitaplığı](https://pandas.pydata.org/) , Python programlamasına yönelik veri işleme için zengin veri yapıları ve veri çözümleme araçları sağlar. Aşağıdaki kod, sonuçları bir SQL Server veritabanından bir Pandas veri çerçevesine döndürülen okur:
+Python'daki [Pandalar kitaplığı,](https://pandas.pydata.org/) Python programlaması için veri işleme için zengin bir veri yapıları kümesi ve veri çözümleme araçları sağlar. Aşağıdaki kod, SQL Server veritabanından Pandas veri çerçevesine döndürülen sonuçları okur:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Artık, [veri bilimi ortamınızda Azure blob verilerini işleme](data-blob.md)makalesinde bahsedilen Pandas veri çerçevesiyle birlikte çalışabilirsiniz.
+Artık veri bilimi ortamınızda Azure [Blob verilerini işleyebilir makalesinde](data-blob.md)kapsandığınız pandalar veri çerçevesi ile çalışabilirsiniz.
 
-## <a name="azure-data-science-in-action-example"></a>Eylem örnekte Azure veri bilimi
-Genel bir veri kümesi kullanan Azure veri bilimi Işleminin uçtan uca bir anlatım örneği için bkz. [Azure Data Science Process ın Action](sql-walkthrough.md).
+## <a name="azure-data-science-in-action-example"></a>Azure Veri Bilimi Eylem Örneği
+Genel bir veri kümesi ni kullanarak Azure Veri Bilimi [Süreci'nin](sql-walkthrough.md)uçtan uca bir geçiş örneği için bkz.
 
 [1]: ./media/sql-server-virtual-machine/reader_db_featurizedinput.png
 

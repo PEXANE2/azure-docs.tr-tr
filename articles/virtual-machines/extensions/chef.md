@@ -1,6 +1,6 @@
 ---
-title: Azure VM 'Leri için Chef uzantısı
-description: Chef Istemcisini bir sanal makineye Chef VM uzantısını kullanarak dağıtın.
+title: Azure VM'ler için şef uzantısı
+description: Chef VM Uzantısı'nı kullanarak Chef Client'ı sanal bir makineye dağıtın.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76544727"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux ve Windows için Chef VM Uzantısı
 
-Chef Software, Linux ve Windows için fiziksel ve sanal sunucu yapılandırmalarının yönetilmesine olanak sağlayan bir DevOps otomasyon platformu sunar. Chef VM uzantısı, sanal makinelerde Chef sağlayan bir uzantıdır.
+Chef Software, Linux ve Windows için fiziksel ve sanal sunucu yapılandırmalarının yönetilmesine olanak sağlayan bir DevOps otomasyon platformu sunar. Chef VM Extension, Chef'in sanal makinelerde olmasını sağlayan bir uzantıdır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Chef VM uzantısı, Azure 'da [desteklenen tüm uzantı](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) sistemlerinde desteklenir.
+Chef VM Uzantısı, Azure'daki tüm [Uzantı Destekli Işletim Sistemi'nde](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) desteklenir.
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-Chef VM uzantısı, içerik teslim ağından (CDN) Chef Istemci yükünü almak için hedef sanal makinenin internet 'e bağlanmasını gerektirir.  
+Chef VM Uzantısı, chef client yükünü içerik dağıtım ağından (CDN) almak için hedef sanal makinenin internete bağlanmasını gerektirir.  
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az Chef sunucu URL 'SI, doğrulama Istemci adı ve Chef sunucusu için doğrulama anahtarı gerektirir; Bu değerler, [Chef otomatikleştir](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) veya tek başına [Chef sunucusu](https://downloads.chef.io/chef-server)yüklediğinizde indirilen starter-kit. zip dosyasındaki `knife.rb` dosyasında bulunabilir. Doğrulama anahtarı gizli veriler olarak değerlendirilmelidir, ancak bu, yalnızca hedef sanal makinede şifresi çözülebilecek olan **Protectedsettings** öğesi altında yapılandırılmalıdır.
+Aşağıdaki JSON Chef VM Extension için şema gösterir. Uzantı, en azından Chef Server URL'sini, Doğrulama İstemci Adı'nı ve Chef Server için Doğrulama Anahtarını gerektirir; bu `knife.rb` [değerler, Chef Automate'i](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) veya bağımsız bir Chef [Server'ı](https://downloads.chef.io/chef-server)yüklediğinizde indirilen starter-kit.zip dosyasındaki dosyada bulunabilir. Doğrulama anahtarı hassas veri olarak ele alınması gerektiğinden, **protectedSettings** öğesi altında yapılandırılmalıdır, yani yalnızca hedef sanal makinede şifresi çözülecektir.
 
 ```json
 {
@@ -65,28 +65,28 @@ Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az C
 }  
 ```
 
-### <a name="core-property-values"></a>Çekirdek özellik değerleri
+### <a name="core-property-values"></a>Temel özellik değerleri
 
-| Ad | Değer / örnek | Veri Türü
+| Adı | Değer / Örnek | Veri Türü
 | ---- | ---- | ----
-| apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.13` | string (double) |
+| apiVersion | `2017-12-01` | dize (tarih) |
+| yayımcı | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | string |
+| typeHandlerVersion | `1210.13` | dize (çift) |
 
 ### <a name="settings"></a>Ayarlar
 
-| Ad | Değer / örnek | Veri Türü | Gerekli mi?
+| Adı | Değer / Örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ----
-| ayarlar/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | E |
+| ayarlar/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | dize (url) | E |
 | ayarlar/bootstrap_options/validation_client_name | `myorg-validator` | string | E |
-| settings/runlist | `recipe[mycookbook::default]` | string | E |
+| ayarlar/runlist | `recipe[mycookbook::default]` | string | E |
 
 ### <a name="protected-settings"></a>Korumalı ayarlar
 
-| Ad | Örnek | Veri Türü | Gerekli mi?
+| Adı | Örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | E |
+| protectedAyarlar/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | E |
 
 <!--
 ### Linux-specific settings
@@ -102,15 +102,15 @@ Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az C
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Şablonlar bir veya daha fazla sanal makineyi dağıtmak, Chef Istemcisini yüklemek, Chef sunucusuna bağlanmak ve [çalışma listesi](https://docs.chef.io/run_lists.html) tarafından tanımlandığı şekilde sunucuda ilk yapılandırmayı gerçekleştirmek için kullanılabilir
+Azure VM uzantıları Azure Kaynak Yöneticisi şablonlarıyla dağıtılabilir. Şablonlar, bir veya daha fazla sanal makinedağıtmak, Chef Client'ı yüklemek, Chef Server'a bağlanmak ve [Sunucudaki](https://docs.chef.io/run_lists.html) ilk yapılandırmayı Run listesinde tanımlandığı şekilde gerçekleştirmek için kullanılabilir
 
-Chef VM uzantısını içeren örnek bir Kaynak Yöneticisi şablonu [Azure hızlı başlangıç galerisinde](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)bulunabilir.
+Chef VM Uzantısı'nı içeren örnek bir Kaynak Yöneticisi şablonu [Azure hızlı başlatma galerisinde](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)bulunabilir.
 
-Sanal makine uzantısı için JSON yapılandırma içinde sanal makine kaynağı iç içe geçmiş veya kök veya bir Resource Manager JSON şablonunu üst düzey yerleştirilir. Kaynak adı ve türü değeri JSON yapılandırma yerleşimini etkiler. Daha fazla bilgi için [ayarlamak için alt kaynakları ad ve tür](../../azure-resource-manager/resource-manager-template-child-resource.md).
+Sanal makine uzantısı için JSON yapılandırması sanal makine kaynağının içine yerleştirilebilir veya Kaynak Yöneticisi JSON şablonunun köküne veya üst seviyesine yerleştirilebilir. JSON yapılandırmasının yerleşimi kaynak adı ve türünün değerini etkiler. Daha fazla bilgi için [bkz.](../../azure-resource-manager/resource-manager-template-child-resource.md)
 
-## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
+## <a name="azure-cli-deployment"></a>Azure CLI dağıtımı
 
-Azure CLı, Chef VM uzantısını mevcut bir VM 'ye dağıtmak için kullanılabilir. **Validation_key** , doğrulama anahtarınızın içeriğiyle değiştirin (bu dosya `.pem` uzantısı olarak).  **Validation_client_name**, **chef_server_url** ve **Run_list** yerine bu değerleri, başlangıç seinizdeki `knife.rb` dosyasından değiştirin.
+Azure CLI, Chef VM Uzantısı'nı varolan bir VM'ye dağıtmak için kullanılabilir. **validation_key** doğrulama anahtarınızın içeriğiyle değiştirin `.pem` (bu dosya uzantı olarak).  Başlangıç Kiti'nizdeki **run_list** `knife.rb` dosyadaki bu değerlerle **validation_client_name,** **chef_server_url** ve run_list değiştirin.
 
 ```azurecli
 az vm extension set \
@@ -124,13 +124,13 @@ az vm extension set \
 
 ## <a name="troubleshooting-and-support"></a>Sorun giderme ve destek
 
-Uzantı dağıtım durumuyla ilgili veriler, Azure portalından ve Azure CLI kullanılarak alınabilir. Belirli bir VM'nin için uzantıları dağıtım durumunu görmek için Azure CLI kullanarak aşağıdaki komutu çalıştırın.
+Uzantı lı dağıtımların durumuyla ilgili veriler Azure portalından ve Azure CLI kullanılarak alınabilir. Belirli bir VM uzantılarının dağıtım durumunu görmek için Azure CLI'yi kullanarak aşağıdaki komutu çalıştırın.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myExistingVM -o table
 ```
 
-Uzantı yürütme çıkış aşağıdaki dosyasına kaydedilir:
+Uzantı yürütme çıktısı aşağıdaki dosyaya kaydedilir:
 
 ### <a name="linux"></a>Linux
 
@@ -146,15 +146,15 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 ### <a name="error-codes-and-their-meanings"></a>Hata kodları ve anlamları
 
-| Hata Kodu | Anlamı | Olası eylemi |
+| Hata Kodu | Anlamı | Olası Eylem |
 | :---: | --- | --- |
-| 51 | Bu uzantı, sanal makinenin işletim sisteminde desteklenmiyor | |
+| 51 | Bu uzantı VM'nin işletim sisteminde desteklenmez | |
 
-Ek sorun giderme bilgileri [Chef VM Uzantısı Benioku](https://github.com/chef-partners/azure-chef-extension)dosyasında bulunabilir.
+Ek sorun giderme bilgileri [Chef VM Extension readme](https://github.com/chef-partners/azure-chef-extension)bulunabilir.
 
 > [!NOTE]
-> Chef ile doğrudan ilgili başka herhangi bir şey için [Chef desteğiyle](https://www.chef.io/support/)iletişim kurun.
+> Doğrudan Chef ile ilgili başka bir şey için [Chef Support](https://www.chef.io/support/)ile iletişime geçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/forums/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve destek al'ı seçin. Azure Desteği'ni kullanma hakkında daha fazla bilgi için [Microsoft Azure destek SSS'sini](https://azure.microsoft.com/support/faq/)okuyun.

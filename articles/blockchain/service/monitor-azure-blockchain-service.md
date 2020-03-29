@@ -1,63 +1,63 @@
 ---
-title: Azure blok zinciri hizmetini izleme (ABS)
-description: Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme
+title: Azure Blockchain Hizmetini İzleme (ABS)
+description: Azure Monitor üzerinden Azure Blockchain Hizmetini İzleme
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
 ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293258"
 ---
-# <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme  
+# <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Monitor aracılığıyla Azure Blockchain Hizmetini Izleyin  
 
-Müşteriler, Azure blok zinciri hizmeti 'nde (ABS) üretim sınıfı blok zinciri senaryolarını çalıştırırken, kaynakların kullanılabilirlik, performans ve işlemler için izlenmesi kritik hale gelir. Bu makalede, Azure blok zinciri hizmeti tarafından oluşturulan izleme verileri ve bir hizmetin, üretim sınıfı ortamlarını yönetmek üzere analiz ve uyarı vermek üzere Azure Izleyici 'nin çeşitli özelliklerini ve tümleştirmelerini nasıl kullanabileceği açıklanmaktadır.  
+Müşteriler Azure Blockchain Hizmeti'nde (ABS) üretim sınıfı blockchain senaryoları çalıştırdırken, kullanılabilirlik, performans ve işlemler için kaynakları izlemek kritik öneme gelir. Bu makalede, Azure Blockchain Hizmeti tarafından oluşturulan izleme verileri ve üretim sınıfı ortamlarını yönetmek için Azure Monitor'un çeşitli özelliklerini ve tümleştirmelerini analiz etmek ve uyarmak için nasıl kullanabileceği açıklanmaktadır.  
 
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
 
-Azure blok zinciri hizmeti, Azure 'da tam bir yığın izleme hizmeti olan Azure Izleyici 'yi kullanarak izleme verileri oluşturur. Bu, Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sağlar. Azure Izleyici hakkında daha fazla bilgi için bkz. Azure [izleyici Ile Azure kaynaklarını izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource).
+Azure Blockchain Hizmeti, Azure kaynaklarınızı izlemek için eksiksiz bir özellik kümesi sağlayan Azure'da tam bir yığın izleme hizmeti olan Azure Monitor'u kullanarak izleme verileri oluşturur. Azure Monitor hakkında daha fazla bilgi için Azure [Monitor ile Azure kaynaklarını izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)'ye bakın.
  
 
-Aşağıdaki bölümler, Azure blok zinciri hizmetinden toplanan belirli verileri açıklayarak ve veri toplamayı yapılandırmaya ve bu verileri Azure araçları ile çözümlemeye yönelik örnekler sunarak bu makaleyi oluşturur.
+Aşağıdaki bölümler, Azure Blockchain Hizmeti'nden toplanan belirli verileri açıklayarak ve veri toplamayı yapılandırmak ve bu verileri Azure araçlarıyla çözümleme için örnekler sağlayarak bu makaleye dayanmaktadır.
 
-## <a name="monitor-data-collected-from-azure-blockchain-service"></a>Azure blok zinciri hizmeti 'nden toplanan verileri izleme  
+## <a name="monitor-data-collected-from-azure-blockchain-service"></a>Azure Blockchain Hizmeti'nden toplanan verileri izleme  
 
-Azure blok zinciri hizmeti, Azure kaynaklarından gelen [verileri izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data) bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure blok zinciri hizmeti tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure blok zinciri hizmeti veri başvurusunu izleme](#monitor-azure-blockchain-service-data-reference) .
+Azure Blockchain Hizmeti, Azure kaynaklarından gelen [verileri izlemede](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data) açıklanan diğer Azure kaynaklarıyla aynı tür izleme verilerini toplar. Azure Blockchain Hizmeti tarafından oluşturulan günlüklerin ve ölçümlerin ayrıntılı bir başvurusu için [Azure Blockchain Hizmeti veri referansını izleyin'](#monitor-azure-blockchain-service-data-reference) e bakın.
 
-Her Azure blok zinciri hizmeti üye kaynağı için Azure portal genel bakış sayfası, işlenen istekler ve işlenen bloklar dahil olmak üzere işlemlerin kısa bir görünümünü içerir. Bu verilerden bazıları otomatik olarak toplanır ve Azure blok zinciri hizmeti üye kaynağını oluşturduktan sonra ek yapılandırma ile ek veri toplamayı etkinleştirebilmeniz durumunda analiz için kullanılabilir.
+Her Azure Blockchain Hizmeti üyesi kaynağı için Azure portalındaki genel bakış sayfası, işlenen ve işlenen bloklar da dahil olmak üzere işlemlerin kısa bir görünümünü içerir. Bu verilerin bir kısmı otomatik olarak toplanır ve Azure Blockchain Hizmeti üye kaynağını oluşturduktan sonra analiz edilebilecek, ek yapılandırma yla ek veri toplamayı etkinleştirebilirsiniz.
 
 ## <a name="diagnostic-settings"></a>Tanılama ayarları  
 
-Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmaya yönelik ayrıntılı süreç için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) konusuna bakın.
+Platform ölçümleri ve Etkinlik günlüğü otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Monitor'un dışına iletmek için bir tanılama ayarı oluşturmanız gerekir. Azure portalı, CLI veya PowerShell'i kullanarak bir tanıa ayar oluşturmak için ayrıntılı işlem için [Azure'da platform günlükleri ve ölçümleri toplamak için tanılama ayarını oluştur'a](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) bakın.
 
-Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanacağını belirlersiniz. Azure blok zinciri hizmeti kategorileri aşağıda listelenmiştir.
+Tanılama ayarı oluşturduğunuzda, hangi günlük kategorilerinin toplandığını belirtirsiniz. Azure Blockchain Hizmeti kategorileri aşağıda listelenmiştir.
 
-**Blok zinciri proxy günlükleri** – NGNX proxy günlüklerini izlemek istiyorsanız kategoriyi seçin. Tüm müşteri işlemi ayrıntıları denetim ve hata ayıklama amacıyla kullanılabilir.  
+**Blockchain proxy günlükleri** – NGNIX proxy günlüklerini izlemek istiyorsanız kategoriyi seçin. Tüm müşteri hareket ayrıntıları denetim ve hata ayıklama amacıyla kullanılabilir.  
 
-**Blok zinciri uygulama günlükleri** – yönetilen hizmet tarafından barındırılan blok zinciri uygulamasının günlüklerini almak için kategoriyi seçin. Örneğin, bir ABS-Quorum üyesi için bu Günlükler, Çekirdekte olan Günlükler olacaktır.  
+**Blockchain uygulama günlükleri** – Yönetilen hizmettarafından barındırılan blockchain uygulamasının günlüklerini almak için kategoriyi seçin. Örneğin, bir ABS-Quorum üyesi için bu günlükler Quorum'un kendisinden gelen günlükler olacaktır.  
 
-**Ölçüm istekleri**: Azure ölçümlerinde otomatik olarak toplanan tanılama ayarındaki hedeflere Azure Cosmos DB ölçüm verileri toplama seçeneğini belirleyin. Her iki veri türünü birlikte analiz etmek ve ölçüm verilerini Azure Izleyici dışında göndermek için kaynak günlükleriyle ölçüm verileri toplayın.
+**Metrik istekler**: Azure Cosmos DB'den Azure Ölçümleri'nde otomatik olarak toplanan tanı ayarındaki hedeflere metrik veri toplama seçeneğini seçin. Her iki veri türüni birlikte analiz etmek ve azure verilerini Azure Monitor'un dışına göndermek için kaynak günlükleriyle metrik veriler toplayın.
 
-## <a name="analyze-metric-data"></a>Ölçüm verilerini çözümleme  
+## <a name="analyze-metric-data"></a>Metrik verileri analiz edin  
 
-Azure blok zinciri hizmeti için ölçümleri Ölçüm Gezgini ile analiz edebilir, ABS kaynak dikey penceresinde Izleme bölümü altında ölçümler sekmesine gidebilirsiniz. Aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) kullanmaya başlama. Azure blok zinciri hizmeti 'nin tüm ölçümleri, Azure blok zinciri hizmeti standart ölçümleri ad alanıdır.
+Azure Blockchain Hizmeti ölçümlerini Metrics explorer ile analiz edebilir, ABS kaynak bıçağındaki İzleme bölümü altında Ölçümler sekmesine gidebilirsiniz. Aracı kullanma yla ilgili ayrıntılar için [Azure Ölçümleri Gezgini ile başlarken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) bkz. Azure Blockchain Hizmeti için tam ölçümler ad alanı Azure Blockchain Service standart ölçümlerinde yer alıyor.
 
-Bir filtre eklerken veya ölçümleri bölerek **düğüm** boyutunu kullanarak, temel olarak işlem düğümleri başına ölçüm DEĞERLERI ve ABS üyesinin Doğrulayıcı düğümlerini sağlar.
+Bir filtre eklerken veya abs üyesinin işlem düğümleri ve doğrulayıcı düğümleri başına metrik değerler sağlayan ölçümleri bölerken **düğüm** boyutunu kullanabilirsiniz.
 
 ## <a name="analyze-log-data"></a>Günlük verilerini analiz etme
 
-Azure blok zinciri hizmeti üyelerinizi izlemenize yardımcı olması için günlük araması çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorguları çalışmak [yeni dil](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Azure Blockchain Hizmeti üyelerinizi izlemenize yardımcı olmak için Günlük arama çubuğuna girebileceğiniz bazı sorgular aşağıda verebilirsiniz. Bu sorgular [yeni dil](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)ile çalışır.
 
-Blok zinciri uygulama günlüklerinde hata koşullarını sorgulamak için aşağıdaki sorguyu kullanın:
+Blockchain uygulama günlüklerinde hata koşullarını sorgulamak için aşağıdaki sorguyu kullanın:
 
 ```
 BlockchainApplicationLog | where BlockchainMessage contains "ERROR" or BlockchainMessage contains "fatal"
 
 ```
 
-Blok zinciri ara sunucu günlüklerindeki hata koşullarını sorgulamak için aşağıdaki sorguyu kullanın  
+Blockchain proxy günlüklerinde hata koşullarını sorgulamak için aşağıdaki sorguyu  
 
 
 ```
@@ -66,107 +66,107 @@ BlockchainProxyLog
 | limit 500
 
 ```
-Sorguyu belirli bir zaman aralığı için filtrelemek üzere Azure günlüklerinde bulunan zaman filtrelerini kullanabilirsiniz.
+Sorguyu belirli bir zaman aralığı için filtrelemek için Azure günlüklerinde bulunan zaman filtrelerini kullanabilirsiniz.
 
-## <a name="monitor-azure-blockchain-service-data-reference"></a>Azure blok zinciri hizmeti veri başvurusunu izleme  
+## <a name="monitor-azure-blockchain-service-data-reference"></a>Azure Blockchain Hizmeti veri başvurularını izleme  
 
-Bu makalede, Azure blok zinciri hizmeti 'nin performansını ve kullanılabilirliğini çözümlemek üzere toplanan günlük ve ölçüm verilerine yönelik bir başvuru sağlanmaktadır.  
+Bu makalede, Azure Blockchain Hizmetinin performansını ve kullanılabilirliğini analiz etmek için toplanan günlük ve metrik verilerin bir başvurusu verilmektedir.  
 
 ### <a name="resource-logs"></a>Kaynak günlükleri
 
-Tüm kaynak günlükleri, blok zinciri hizmetine özgü birkaç benzersiz özellik ile en üst düzey ortak bir şemayı paylaşır. [En üst düzey kaynak günlükleri şeması](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema)makalesine başvurabilirsiniz, Azure blok zinciri hizmetine özgü özelliklerin ayrıntılarına aşağıda kapsanacak  
+Tüm kaynak günlükleri, blockchain hizmetine özgü birkaç benzersiz özelliklere sahip üst düzey ortak bir şemayı paylaşır. Makaleye bakabilirsiniz [Üst düzey kaynak günlükleri şeması,](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema)Azure Blockchain Hizmeti belirli özellikleri ayrıntıları aşağıda kapsanan  
 
-Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da toplandıklarında Azure blok zinciri ara sunucu günlüklerinin özellikleri listelenmektedir.  
+Aşağıdaki tabloda, Azure Monitor Günlükleri veya Azure Depolama'da toplandığında Azure Blockchain proxy günlüklerinin özellikleri listelenir.  
 
 
 | Özellik adı  | Açıklama |
 |:---|:---|
-| time | Tarih ve saat (UTC) işlemi oluştuğunda. |
-| RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.  |
-| category  |Azure blok zinciri hizmeti için, olası değerler **proxylogs** ve **applicationlogs**' lardır. |
-| operationName  | Bu olayla temsil edilen işlemin adı.   |
-| Günlük düzeyi  | Varsayılan olarak, Azure blok zinciri hizmeti **bilgilendirme** günlüğü düzeyine izin vermez.   |
-| NodeLocation  | Blok zinciri üyesinin dağıtıldığı Azure bölgesi.  |
-| BlockchainNodeName  | İşlemin gerçekleştirileceği Azure blok zinciri hizmeti üyesinin düğümünün adı.   |
-| Etmi yöntemi  | Temel alınan blok zinciri protokolü tarafından çağrılan yöntem, çekirdekte eth_sendTransactions, eth_getBlockByNumber vb. olabilir.  |
-| Aracı  | Web tarayıcısı Mozilla, Microsoft Edge vb. gibi bir kullanıcı adına davranan Kullanıcı Aracısı. Değer örnekleri şunlardır: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
+| time | İşlemin gerçekleştiği tarih ve saat (UTC). |
+| Resourceıd  | Günlüklerin etkin olduğu Azure Blockchain Hizmeti kaynağı.  |
+| category  |Azure Blockchain Hizmeti için, mümkün olan değerler Proxy günlükleri ve **Applicationlogs'tır.** **Proxylogs** |
+| operationName  | Bu olaytarafından temsil edilen işlemin adı.   |
+| Günlük düzeyi  | Varsayılan olarak, Azure Blockchain Hizmeti **Bilgi günlüğü** düzeyini sağlar.   |
+| DüğümKonum  | Blockchain üyesinin dağıtıldığı Azure bölgesi.  |
+| BlockchainNodeName  | İşlemin gerçekleştirildiği Azure Blockchain Service üyesinin düğümünün adı.   |
+| EthMethod  | Altta yatan blockchain protokolü tarafından çağrılan yöntem, Quorum'da eth_sendTransactions, eth_getBlockByNumber vb. olabilir.  |
+| Aracı  | Web tarayıcısı Mozilla, Edge vb. gibi bir kullanıcı adına hareket eden kullanıcı aracısı Değerlere örnek olarak şunlar verilebilir: "Mozilla/5.0 (Linux x64) node.js/8.16.0 v8/6.2.414.77"  |
 | Kod   | HTTP hata kodları. Genellikle 4XX ve 5XX hata koşullarıdır.  |
 | NodeHost  | Düğümün DNS adı.   |
-| RequestMethodName | HTTP yöntemi çağrıldı, buradaki olası değerler üye Oluştur, var olan üyenin ayrıntılarını alma, silme üyesi için SILME, üyeyi güncelleştirmek için Düzeltme Eki.   |
-| BlockchainMemberName  | Kullanıcı tarafından sunulan Azure blok zinciri hizmeti üye adı.  |
-| Konsorsiyum | Kullanıcı tarafından sağlandığı şekilde konsorsiyumun adı.   |
-| Remote  | İsteğin geldiği istemcinin IP 'si.  |
-| RequestSize  | İsteğin bayt cinsinden boyutu.  |
-| RequestTime  | İstek süresi (milisaniye).|
+| İstekMeMeAd | HTTP yöntemi olarak adlandırılan, olası değerler burada üye oluşturmak için PUT, mevcut üye nin ayrıntılarını almak için GET, üye silmek için DELETE, üye güncellemek için YAMA.   |
+| BlockchainÜyeAdı  | Kullanıcı tarafından sağlanan Azure Blockchain Hizmeti üye adı.  |
+| Konsorsiyum | Kullanıcı tarafından sağlanan konsorsiyumun adı.   |
+| Remote  | İsteğin geldiği istemcinin IP'si.  |
+| İstek Boyutu  | Baytlarda yapılan isteğin boyutu.  |
+| İstek Süresi  | İsteğin milisaniye cinsinden süresi.|
 
 
 
 
-Aşağıdaki tabloda, Azure blok zinciri uygulama günlüklerinin özellikleri listelenmektedir.
+Aşağıdaki tabloda Azure Blockchain uygulama günlüklerinin özellikleri listelenir.
 
 
 | Özellik adı  | Açıklama |
 |:---|:---|
-| time | Tarih ve saat (UTC) işlemi oluştuğunda. |
-| RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.|
-| category  |Azure blok zinciri hizmeti için, mümkün olan değer **proxylogs** ve **applicationlogs**' lardır.  |
-| operationName  | Bu olayla temsil edilen işlemin adı.   |
-| Günlük düzeyi  | Varsayılan olarak, Azure blok zinciri hizmeti **bilgilendirme** günlüğü düzeyine izin vermez.   |
-| NodeLocation  | Blok zinciri üyesinin dağıtıldığı Azure bölgesi.  |
-| BlockchainNodeName  | İşlemin gerçekleştirileceği Azure blok zinciri hizmeti üyesinin düğümünün adı.   |
-| BlockchainMessage    | Bu alan, veri düz günlükleri olan blok zinciri uygulama günlüğünü içerecektir. ABS-Quorum için, bu çekirdek günlüklerine sahip olur. Bu, bilgi, hata, uyarı ve yürütülen eylem hakkında daha fazla bilgi veren bir dize olan günlük girdisi türü hakkında bilgi içerir.   |
-| Değerine    | Azure blok zinciri hizmeti 'nin bölgeye özgü kiracısı. Bu alanın biçimi https://westlake-rp-prod.<region>. cloudapp.azure.com WHERE bölgesi, dağıtılan üyenin Azure bölgesini belirtir.       |
-| SourceSystem   | Bu durumda **Azure**olan Günlükler, sistem tarafından doldurulur.    |
+| time | İşlemin gerçekleştiği tarih ve saat (UTC). |
+| Resourceıd  | Günlüklerin etkin olduğu Azure Blockchain Hizmeti kaynağı.|
+| category  |Azure Blockchain Hizmeti için, olası değer **Proxy günlükleri** ve **Applicationlogs**vardır.  |
+| operationName  | Bu olaytarafından temsil edilen işlemin adı.   |
+| Günlük düzeyi  | Varsayılan olarak, Azure Blockchain Hizmeti **Bilgi günlüğü** düzeyini sağlar.   |
+| DüğümKonum  | Blockchain üyesinin dağıtıldığı Azure bölgesi.  |
+| BlockchainNodeName  | İşlemin gerçekleştirildiği Azure Blockchain Service üyesinin düğümünün adı.   |
+| BlockchainMessage    | Bu alan, veri düz günlükleri olan Blockchain uygulama günlüğü içerecektir. ABS-Quorum için, bu Quorum günlükleri olurdu. Bu bilgi, hata, uyarı ve yürütülen eylem hakkında daha fazla bilgi veren bir dize ne tür günlük girişi hakkında bilgi vardır.   |
+| Kiracı Kimliği    | Azure Blockchain Hizmeti'nin bölgeye özgü kiracısı. Bu alanın biçimi https://westlake-rp-prod. <region>.cloudapp.azure.com, dağıtılan üyenin Azure bölgesini belirttiği yerdir.       |
+| SourceSystem   | Sistem günlükleri doldurur, bu durumda **Azure'dur.**    |
 
 
 
 ### <a name="metrics"></a>Ölçümler
 
-Aşağıdaki tablolarda, Azure blok zinciri hizmeti için toplanan platform ölçümleri listelenmektedir. Tüm ölçümler, **Azure blok zinciri hizmeti** standart ölçümleri ad alanında depolanır.
+Aşağıdaki tablolarda Azure Blockchain Hizmeti için toplanan platform ölçümleri listelenir. Tüm ölçümler ad alanı Azure **Blockchain Service** standart ölçümlerinde depolanır.
 
-Azure Izleyici tarafından desteklenen tüm ölçümlerin (Azure blok zinciri hizmeti dahil) listesi için bkz. [Azure izleyici desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+Azure Monitor desteklenen tüm ölçümlerin (Azure Blockchain Hizmeti dahil) listesi için Bkz. [Azure Monitor desteklenen ölçümler.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)
 
-### <a name="blockchain-metrics"></a>Blok zinciri ölçümleri
+### <a name="blockchain-metrics"></a>Blockchain ölçümleri
 
-Aşağıdaki tablo, Azure blok zinciri hizmeti üye kaynağı için toplanan blok zinciri ölçümlerinin listesini belirtir.
+Aşağıdaki tabloda Azure Blockchain Hizmeti üye kaynağı için toplanan Blockchain ölçümleri listesi belirtilmiştir.
 
 
-| Metrik adı | Birim  |  Toplama türü| Açıklama   |
+| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
 |---|---|---|---|
-| Bekleyen Işlemler   | Count  |  Average | Mined bekleniyor işlem sayısı.   |
-| İşlenen bloklar   | Count  | Toplam  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
-|İşlenen Işlemler    | Count  | Toplam  | Bir blokta işlenen işlem sayısı.    |
-|Kuyruğa alınmış Işlemler    |  Count | Average  | Hemen küçük olmayan işlem sayısı. Bunun nedeni, sıra dışı geldiği ve gelecekte bir önceki işlemin gelmesini beklediği için olabilir. Ya da iki işlem yalnızca bir kez (nonce) ve aynı gaz değeri ile aynı olabilir, bu nedenle ikinci diğeri küçük olamaz.   |
+| Bekleyen İşlemler   | Sayı  |  Ortalama | İndir edilmeyi bekleyen hareket sayısı.   |
+| İşlenmiş Bloklar   | Sayı  | Toplam  |  Her zaman aralığında işlenen blok sayısı. Şu anda blok boyutu 5 saniye, dolayısıyla bir dakika içinde her düğüm 5 dakika içinde 12 blok ve 60 blok işleyecek.   |
+|İşlenen İşlemler    | Sayı  | Toplam  | Bir blokta işlenen hareket sayısı.    |
+|Sıraya Ait İşlemler    |  Sayı | Ortalama  | Hemen alınamayan hareket sayısı. Çünkü onlar sıradışı geldi ve gelecekteki bir önceki işlem gelmesi için bekliyor olabilir. Veya, iki işlem sadece bir kez (nonce) ve aynı gaz değeri kullanılan aynı numaraya sahip olabilir, bu nedenle ikinci bir mayınlı olamaz.   |
 
-### <a name="connection-metrics"></a>Bağlantı ölçümü  
+### <a name="connection-metrics"></a>Bağlantı ölçümleri  
 
-Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan farklı bağlantı ölçümleri listelenmektedir. Bunlar NGıNX ara sunucu ölçümleridir.
+Aşağıdaki tabloda Azure Blockchain Hizmeti üye kaynağı için toplanan farklı bağlantı ölçümleri listelenir. Bunlar NGINX proxy ölçümleridir.
 
 
-| Metrik adı | Birim  |  Toplama türü| Açıklama |
+| Ölçüm adı | Birim  |  Toplama türü| Açıklama |
 |---|---|---|---|
-| Kabul edilen bağlantılar   | Count  |  Toplam | Kabul edilen istemci bağlantılarının toplam sayısı.   |
-| Etkin bağlantılar  | Count  | Average  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
-|İşlenmiş bağlantılar    | Count  | Toplam  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
-|İşlenmiş Istekler     |  Count | Toplam  | İstemci isteklerinin toplam sayısı.  |
+| Kabul Edilen Bağlantılar   | Sayı  |  Toplam | Kabul edilen istemci bağlantılarının toplam sayısı.   |
+| Etkin Bağlantılar  | Sayı  | Ortalama  |  Bekleyen bağlantılar da dahil olmak üzere etkin istemci bağlantılarının geçerli sayısı.    |
+|İşlenen Bağlantılar    | Sayı  | Toplam  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
+|Ele Alınması İstekleri     |  Sayı | Toplam  | Toplam istemci isteği sayısı.  |
 
 
 ### <a name="performance-metrics"></a>Performans Ölçümleri
 
-Aşağıdaki tabloda, Azure blok zinciri üye kaynağı düğümlerinin her biri için toplanan performans ölçümleri listelenmektedir.  
+Aşağıdaki tabloda, Azure Blockchain üye kaynağının düğümlerinin her biri için toplanan performans ölçümleri listelenir.  
 
 
-| Metrik adı | Birim  |  Toplama türü| Açıklama   |
+| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
 |---|---|---|---|
-| CPU kullanım yüzdesi   | Yüzde  |  Maks | CPU kullanımının yüzdesi.     |
-| GÇ okuma baytları   | Kilobayt   | Toplam  |  Blok zinciri üye kaynağının tüm düğümlerinde GÇ okuma baytlarının toplamı.      |
-|GÇ Yazma baytları     | Kilobayt   | Toplam  | GÇ toplamı blok zinciri üye kaynağının tüm düğümlerinde baytları yazar.     |
-|Bellek sınırı       |  Gigabayt   | Average    | Düğüm başına blok zinciri işlemi için kullanılabilir maksimum bellek. |
-|Bellek Kullanımı     | Gigabayt  |  Average | Tüm düğümlerde ortalama kullanılan bellek miktarı.  |
-| Bellek kullanım yüzdesi     | Yüzde   | Average  |  Tüm düğümlerde ortalama kullanılan bellek yüzdesi.       |
-|Depolama alanı kullanımı      | Gigabayt   | Average  | Tüm düğümlerde ortalama kullanılan GB depolama alanı.       |
+| CPU Kullanım yüzdesi   | Yüzde  |  Maks | CPU kullanım yüzdesi.     |
+| IO Okuma Baytları   | Kilobayt   | Toplam  |  IO toplamı blockchain üye kaynağının tüm düğümleri arasında bayt okuyun.      |
+|IO Bayt yaz     | Kilobayt   | Toplam  | IO toplamı blockchain üye kaynağının tüm düğümleri arasında bayt yazar.     |
+|Bellek Sınırı       |  Gigabayt   | Ortalama    | Düğüm başına blockchain işlemi için maksimum bellek kullanılabilir. |
+|Bellek Kullanımı     | Gigabayt  |  Ortalama | Kullanılan bellek miktarı tüm düğümler arasında ortalama.  |
+| Bellek Kullanım Yüzdesi     | Yüzde   | Ortalama  |  Kullanılan belleğin yüzdesi tüm düğümler arasında ortalama.       |
+|Depolama Kullanımı      | Gigabayt   | Ortalama  | Kullanılan GB depolama alanı tüm düğümler arasında ortalama olarak kullanılır.       |
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Blok zinciri verilerini Azure Event Grid yakalamak ve dönüştürmek için [veri Yöneticisi blok zinciri](https://docs.microsoft.com/azure/blockchain/service/data-manager) hakkında daha fazla bilgi edinin.
+Blockchain verilerini yakalamak ve Azure Olay Ağıtı'na dönüştürmek için [Blockchain Data Manager](https://docs.microsoft.com/azure/blockchain/service/data-manager) hakkında daha fazla bilgi edinin.

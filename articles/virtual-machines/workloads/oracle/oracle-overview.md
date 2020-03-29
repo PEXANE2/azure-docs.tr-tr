@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Oracle çözümleri | Microsoft Docs
-description: Tamamen Azure altyapısında çalışan veya Oracle bulut altyapısı (OCı) ile platformlar arası bağlantı kullanma dahil olmak üzere Microsoft Azure ' de Oracle uygulamalarını ve çözümlerini dağıtmaya yönelik seçenekler hakkında bilgi edinin.
+title: Microsoft Azure'da Oracle çözümleri | Microsoft Dokümanlar
+description: Tamamen Azure altyapısında çalışmak veya Oracle Cloud Infrastructure (OCI) ile bulutlar arası bağlantı kullanmak da dahil olmak üzere Oracle Applications'ı ve çözümlerini Microsoft Azure'da dağıtma seçenekleri hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -14,82 +14,82 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806618"
 ---
-# <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
+# <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure'da Oracle Uygulamalarına ve çözümlerine genel bakış
 
-Bu makalede, Azure altyapısını kullanarak Oracle çözümlerini çalıştırmaya yönelik yetenekler açıklanır. Ayrıca bkz. Azure Marketi 'nde kullanılabilir [Oracle VM görüntülerine](oracle-vm-solutions.md) yönelik ayrıntılı tanıtımları ve [Oracle bulut altyapısı (OCI) ile Azure bağlantısı](oracle-oci-overview.md)için Önizleme özelliği.
+Bu makalede, Azure altyapısını kullanarak Oracle çözümlerini çalıştırmak için yetenekler tanıtıştır. Azure Marketi'nde mevcut [Oracle VM görüntülerinin](oracle-vm-solutions.md) ayrıntılı tanıtımlarına ve [Azure'u Oracle Cloud Infrastructure (OCI) ile birbirine bağlama](oracle-oci-overview.md)önizleme özelliğine de bakın.
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure altyapısında Oracle veritabanları
 
-Azure Marketi 'nde bulunan Oracle Linux görüntülerde Oracle Database kullanarak Oracle veritabanlarını Azure altyapısında çalıştırın:
+Azure Marketi'nde bulunan Oracle Linux görüntülerinde Oracle Veritabanı'nı kullanarak Azure altyapısında Oracle veritabanlarını çalıştırın:
 
-* Oracle Database 12,1, 12,2 ve 18,3 Enterprise Edition 
+* Oracle Veritabanı 12.1, 12.2 ve 18.3 Enterprise Edition 
 
-* Oracle Database 12,1, 12,2 ve 18,3 Standard Edition 
+* Oracle Veritabanı 12.1, 12.2 ve 18.3 Standart Sürüm 
 
-Ayrıca, Azure 'da bulunan Oracle Linux olmayan bir görüntüde Oracle Database kurulumunu ve şirket içi ortamınızdan özel bir görüntü yüklemeyi tercih ettiğiniz özel bir görüntüye dayandırın.
+Oracle Veritabanı'nı Azure'da bulunan Oracle Linux olmayan bir görüntüye kurmayı, bir çözümü Azure'da sıfırdan oluşturduğunuz özel bir görüntüye dayandırmayı veya şirket içi ortamınızdan özel bir resim yüklemeyi de seçebilirsiniz.
 
-İsteğe bağlı olarak birden çok bağlı disk ile yapılandırın ve Oracle otomatik depolama yönetimi (ASM) yükleyerek veritabanı performansını geliştirebilirsiniz.
+İsteğe bağlı olarak birden çok bağlı diskle yapılandırın ve Oracle Otomatik Depolama Yönetimi'ni (ASM) yükleyerek veritabanı performansını artırın.
 
-## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux ve WebLogic Server 'daki uygulamalar
+## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux ve WebLogic Server uygulamaları
 
-Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çalıştırın. Aşağıdaki görüntüler Azure Marketi 'nde mevcuttur:
+Desteklenen Oracle işletim sistemlerinde Azure'da kurumsal uygulamalar çalıştırın. Aşağıdaki resimler Azure Marketi'nde kullanılabilir:
 
 * Oracle WebLogic Server 12.1.2
 
-* Kırılabilir kurumsal çekirdek (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 ve 7,6 ile Oracle Linux 
+* Unbreakable Enterprise Çekirdek (UEK) 6.8, 6.9, 6.10, 7.3, 7.4, 7.5 ve 7.6 ile Oracle Linux 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma seçenekleri
 
-* Şirket içinde yüksek kullanılabilirlik için [kullanılabilirlik alanları](../../../availability-zones/az-overview.md) ile [birlikte, Azure](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) altyapısına yönelik fsfo, parçalı veya [altın kapıyla](https://www.oracle.com/middleware/technologies/goldengate.html) birlikte [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), [Active Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)'ı yapılandırın. Ayrıca, bu konfigürasyonları, ek kullanılabilirlik ve olağanüstü durum kurtarma için birden çok Azure bölgesinde da ayarlayabilirsiniz.
+* Oracle [Data Guard,](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956) [Active Data Guard ile FSFO,](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html) [Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) veya [Golden Gate'i](https://www.oracle.com/middleware/technologies/goldengate.html) Azure altyapısında, bölge içinde yüksek kullanılabilirlik için [Kullanılabilirlik Bölgeleri](../../../availability-zones/az-overview.md) ile birlikte yapılandırın. Daha fazla kullanılabilirlik ve olağanüstü durum kurtarma için bu yapılandırmaları birden çok Azure bölgesinde de ayarlayabilirsiniz.
 
-* Azure 'da ve şirket içi veya fiziksel sunucularınızdaki Oracle Linux sanal makinelerinize yönelik olağanüstü durum kurtarmayı düzenlemek ve yönetmek için [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) kullanın. 
+* Azure'daki Oracle Linux VM'leriniz ve şirket içi veya fiziksel sunucularınız için olağanüstü durum kurtarmayı düzenlemek ve yönetmek için [Azure Site Kurtarma'yı](../../../site-recovery/site-recovery-overview.md) kullanın. 
 
-* Azure [VMware çözümünü](https://docs.azure.cloudsimple.com/oracle-rac/) veya [Flashgrid ufuk kümesini](https://www.flashgrid.io/oracle-rac-in-azure/)kullanarak Azure 'Da Oracle gerçek uygulama kümelerini (RAC) etkinleştirin.
+* [Azure VMWare Solution](https://docs.azure.cloudsimple.com/oracle-rac/) veya [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)kullanarak Azure'da Oracle Gerçek Uygulama Kümelerini (RAC) etkinleştirin.
 
-## <a name="backup-oracle-workloads"></a>Oracle Iş yüklerini yedekleme
+## <a name="backup-oracle-workloads"></a>Yedekleme Oracle İş Yükleri
 
-* [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) kullanarak Oracle VM 'lerinizi yedekleme
+* [Azure Yedekleme'yi](https://docs.microsoft.com/azure/backup/backup-overview) kullanarak Oracle VM'lerinizi yedekle
 
-* Oracle Database Oracle RMAN kullanarak yedekleyin ve isteğe bağlı olarak [Azure Blob sigortası](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) kullanarak [yüksek oranda Redudant bir Azure Blob depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-redundancy) takın ve ek dayanıklılık için RMAN yedeklemelerinizi bu depoya yazın.
+* Oracle RMAN'ı kullanarak Oracle Veritabanınızı yedekleyin ve isteğe bağlı olarak [Azure Blob Fuse'u](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) kullanarak [yüksek oranda yenibir Azure Blob Depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-redundancy) açın ve daha fazla esneklik için RMAN yedeklemelerinizi bu hesaba yazın.
 
-## <a name="integration-of-azure-with-oci-preview"></a>OCı ile Azure tümleştirmesi (Önizleme)
+## <a name="integration-of-azure-with-oci-preview"></a>Azure ile OCI'nin entegrasyonu (önizleme)
 
-Oracle bulut altyapısında (OCı) arka uç veritabanlarına bağlı olan Azure altyapısında Oracle uygulamaları çalıştırın. Bu çözüm aşağıdaki özellikleri kullanır: 
+Oracle Cloud Infrastructure (OCI) arka uç veritabanlarına bağlı Olan Azure altyapısında Oracle Applications çalıştırın. Bu çözüm aşağıdaki yetenekleri kullanır: 
 
-* **Platformlar arası ağ** -uygulama ve veritabanı katmanı arasında yüksek bant genişliğine sahip, özel ve düşük gecikme süreli bağlantılar oluşturmak Için Azure ExpressRoute ve Oracle FastConnect arasında bulunan doğrudan Interconnect 'i kullanın.
-* **Tümleşik kimlik** -çözümler için tek bir kimlik kaynağı oluşturmak üzere Azure AD ile Oracle IDCs arasında federasyon kimliği ayarlayın. OCı ve Azure arasında kaynakları yönetmek için çoklu oturum açmayı etkinleştirin.
+* **Çapraz bulut ağı** - Uygulama ve veritabanı katmanı arasında yüksek bant genişliği, özel ve düşük gecikme süresi bağlantıları kurmak için Azure ExpressRoute ve Oracle FastConnect arasında kullanılabilen doğrudan ara bağlantıyı kullanın.
+* **Tümleşik kimlik** - Çözümler için tek bir kimlik kaynağı oluşturmak için Azure AD ve Oracle IDCS arasında federe kimlik ayarlayın. OCI ve Azure'daki kaynakları yönetmek için tek oturum açma'yı etkinleştirin.
 
-### <a name="deploy-oracle-applications-on-azure"></a>Azure 'da Oracle uygulamaları dağıtma
+### <a name="deploy-oracle-applications-on-azure"></a>Oracle Uygulamalarını Azure'da dağıtma
 
-Azure altyapısını ayarlamak için Teraform şablonlarını kullanın ve platformlar arası yapılandırmada çalışmak üzere doğrulanan ve desteklenen Oracle uygulamalarını yükler:
+Azure altyapısını ayarlamak ve bulutlar arası yapılandırmada çalışacak şekilde doğrulanmış ve desteklenen Oracle Uygulamalarını yüklemek için Terraform şablonlarını kullanın:
 
-* E-Iş paketi
-* JD edi EnterpriseOne
-* PeopleSoft
-* Oracle perakende uygulamaları
-* Oracle Hyperion finans yönetimi
+* E-İş Paketi
+* JD Edwards EnterpriseOne
+* Peoplesoft
+* Oracle Perakende uygulamaları
+* Oracle Hyperion Finansal Yönetimi
 
-Ayrıca, Azure 'da OCı ve diğer Azure hizmetleriyle bağlantı sağlayan özel uygulamalar dağıtın.
+Ayrıca, Azure'da OCI ve diğer Azure hizmetlerine bağlanan özel uygulamaları da dağıtın.
 
-### <a name="set-up-oracle-databases-in-oci"></a>OCı 'da Oracle veritabanlarını ayarlama
+### <a name="set-up-oracle-databases-in-oci"></a>OCI'de Oracle veritabanlarını ayarlama
 
-Azure 'da çalışan Oracle uygulamalarıyla birlikte Oracle Database Cloud Services (özerk veritabanı, RAC, sınavı verileri, DBaaS, tek düğüm) kullanın. [OCI veritabanı seçenekleri](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)hakkında daha fazla bilgi edinin. 
+Azure'da çalışan Oracle Applications ile birlikte Oracle Veritabanı Bulut Hizmetleri'ni (Özerk Veritabanı, RAC, Exadata, DBaaS, Tek Düğüm) kullanın. [OCI veritabanı seçenekleri](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)hakkında daha fazla bilgi edinin. 
  
 
 ## <a name="licensing"></a>Lisanslama
 
-Oracle uygulamalarının Azure 'da dağıtılması, "kendi lisansını getir" modelini temel alır. Oracle yazılımını kullanmak için doğru lisansa sahip olduğunuz ve Oracle ile geçerli bir destek sözleşmenizin olduğu varsayılır. Oracle 'ın Şirket içinden Azure 'a lisans taşınabilirlik garantisi vardır. Bkz. Oracle-Azure [SSS](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html).
+Oracle Applications'ın Azure'da dağıtımı bir "kendi lisansınızı getirin" modeline dayanır. Oracle yazılımlarını kullanmak için uygun lisansa sahip olduğunuz ve Oracle ile geçerli bir destek anlaşmanız olduğu varsayılır. Oracle, şirket içi azure'a lisans hareketliliğini garanti etmiştir. Oracle-Azure [SSS'ye](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure altyapısına [Oracle VM görüntülerini](oracle-vm-solutions.md) dağıtma hakkında daha fazla bilgi edinin.
+* [Oracle VM görüntülerini](oracle-vm-solutions.md) Azure altyapısında dağıtma hakkında daha fazla bilgi edinin.
 
-* [OCI Ile Azure bağlantısı](oracle-oci-overview.md)oluşturma hakkında daha fazla bilgi edinin.
+* Azure ile [OCI arasında](oracle-oci-overview.md)bağlantı kurma hakkında daha fazla bilgi edinin.
 
-* Ignite 2019 [' den Oracle 'ın Azure 'a genel bakış oturumuna](https://myignite.techcommunity.microsoft.com/sessions/82915) göz atın. 
+* Ignite 2019'daki [Azure genel bakış oturumuna](https://myignite.techcommunity.microsoft.com/sessions/82915) göz atın. 

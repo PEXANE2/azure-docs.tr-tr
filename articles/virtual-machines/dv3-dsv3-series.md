@@ -1,6 +1,6 @@
 ---
-title: Dv3 ve Dsv3 serisi-Azure sanal makineleri
-description: Dv3 ve Dsv3 serisi VM 'Ler için Özellikler.
+title: Dv3 ve Dsv3 serisi - Azure Sanal Makineler
+description: Dv3 ve Dsv3 serisi VM'ler için teknik özellikler.
 services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
@@ -8,37 +8,37 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164415"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 ve Dsv3 serisi
 
-Dv3 serisi Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya bir hiper iş parçacıklı yapılandırmadaki Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve en genel için daha iyi bir değer teklifi sağlar Amaç iş yükleri. Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlanırken, bellek (~ 3,5 GiB/vCPU 'dan 4 GiB/vCPU 'ya) genişletildi. Dv3 serisi artık D/dv2-Series ' in yüksek bellek sanal makine boyutlarına sahiptir; bunlar bellek için iyileştirilmiş [Ev3 ve Esv3-serisine](ev3-esv3-series.md)taşınmıştır.
+Dv3 serisi Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) veya Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) işlemciler üzerinde çalışır, en genel için daha iyi bir değer teklifi sağlayan amaç iş yükleri. Bellek genişletildi (~3.5 GiB/vCPU'dan 4 GiB/vCPU'ya) disk ve ağ sınırları ise hiperiş parçacığına geçmek için çekirdek bazında ayarlandı. Dv3 serisi artık D/Dv2 serisi yüksek bellek VM boyutlarına sahip, bu bellek optimize [Ev3 ve Esv3 serisi](ev3-esv3-series.md)taşındı .
 
-Örnek D Serisi Kullanım örnekleri arasında kurumsal düzeyde uygulamalar, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz vardır.
+Örnek D serisi kullanım örnekleri, kurumsal dereceli uygulamaları, ilişkisel veritabanlarını, bellek içi önbelleğe alma ve analizleri içerir.
 
 ## <a name="dv3-series"></a>Dv3 serisi
 
-Dv3 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv3 serisi boyutları, üretim iş yüklerinin çoğu için uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
+Dv3 serisi boyutları Intel Turbo Boost Technology 2.0 ile Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) veya Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) işlemcilerinde çalışır. Dv3 serisi boyutları, üretim iş yüklerinin çoğu için uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
 
 Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium depolama disklerini kullanmak için Dsv3 boyutlarını kullanın. Dsv3 boyutları için fiyatlandırma ve faturalandırma oranları Dv3 serisi ile aynıdır.
 
-Dv3 serisi VM 'Ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
+Dv3 serisi VM'ler Intel® Hiper-Threading Teknolojisine sahiptir.
 
 ACU: 160-190
 
-Premium Depolama: desteklenmiyor
+Premium Depolama: Desteklenmiyor
 
-Premium depolama önbelleği: desteklenmiyor
+Premium Depolama önbelleğe alma: Desteklenmiyor
 
-Dinamik Geçiş: destekleniyor
+Canlı Geçiş: Desteklenen
 
-Güncelleştirmeleri koruyan bellek: desteklenir
+Bellek Koruma Güncelleştirmeleri: Desteklenen
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | En fazla NIC/ağ bant genişliği |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum geçici depolama iş boku: IOPS/Okuma MBps/Yazma MBps | Max NIC'ler/Ağ bant genişliği |
 |---|---|---|---|---|---|---|
 | Standard_D2_v3  | 2  | 8   | 50   | 4  | 3000/46/23     | 2/1000  |
 | Standard_D4_v3  | 4  | 16  | 100  | 8  | 6000/93/46     | 2/2000  |
@@ -50,21 +50,21 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 ## <a name="dsv3-series"></a>Dsv3 serisi
 
-Dsv3 serisi boyutlar Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel 2,0 Turbo 2.1® E5-2673 v3 2,4 GHz (Haswell) işlemcilerinde çalışır ve Premium depolama kullanır. Dsv3 serisi boyutları, üretim iş yüklerinin çoğu için uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
+Dsv3 serisi boyutları Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) veya Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) işlemcileri intel Turbo Boost Technology 2.0 ile çalışır ve premium depolama kullanır. Dsv3 serisi boyutları, üretim iş yüklerinin çoğu için uygun bir vCPU, bellek ve geçici depolama kombinasyonu sunar.
 
-Dsv3 serisi VM 'Ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
+Dsv3 serisi VM'ler Intel® Hiper İş Parçacığı Teknolojisine sahiptir.
 
 ACU: 160-190
 
-Premium Depolama: desteklenir
+Premium Depolama: Desteklenen
 
-Premium depolama önbelleği: desteklenir
+Premium Depolama önbelleğe alma: Desteklenen
 
-Dinamik Geçiş: destekleniyor
+Canlı Geçiş: Desteklenen
 
-Güncelleştirmeleri koruyan bellek: desteklenir
+Bellek Koruma Güncelleştirmeleri: Desteklenen
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama işliği: IOPS/MBps (GiB'de önbellek boyutu) | Maksimum cached disk işçıktısı: IOPS/MBps | Max NIC'ler/Beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2s_v3  | 2  | 8   | 16  | 4  | 4000/32 (50)       | 3200/48    | 2/1000  |
 | Standard_D4s_v3  | 4  | 16  | 32  | 8  | 8000/64 (100)      | 6400/96    | 2/2000  |
@@ -78,7 +78,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaçlı](sizes-general.md)
+- [Genel amaç](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
@@ -87,4 +87,4 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
+Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.

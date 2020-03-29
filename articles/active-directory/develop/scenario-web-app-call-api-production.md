@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran bir Web uygulamasını üretime taşıma-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini çağıran bir Web uygulamasına üretime geçme hakkında bilgi edinin.
+title: Web API'lerini çağıran bir web uygulaması üretimine geçin - Microsoft kimlik platformu | Azure
+description: Web API'leri çağıran bir web uygulaması nın üretimine nasıl geçeceğinızı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,30 +15,30 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: b1307df8f6dfb0457719b13c9e5cd0bf28660caa
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758963"
 ---
-# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran bir Web uygulaması: üretime taşı
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Web API'lerini çağıran bir web uygulaması: Üretime geç
 
-Artık, Web API 'Lerini çağırmak için bir belirteç edinmeyi öğrenmiş olduğunuza göre, üretime nasıl geçeceğinizi öğrenin.
+Artık web API'lerini aramak için nasıl bir belirteç elde edilsin, üretime nasıl geçeceğinizi öğrenin.
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-ASP.NET Core Web uygulamaları için tam ve aşamalı öğreticiyi deneyerek daha fazla bilgi edinin. Öğretici:
+ASP.NET Core web uygulamaları için tam, ilerici öğreticiyi deneyerek daha fazla bilgi edinin. Öğretici:
 
-- İçindeki kullanıcıların birden çok seyirci veya ulusal bulutlarda veya sosyal kimlikler kullanarak nasıl imzalanarak gösterir.
-- Microsoft Graph çağırır.
-- Birkaç Microsoft API 'Sini çağırır.
+- Kullanıcıların birden çok hedef kitlede veya ulusal bulutlarda veya sosyal kimlikler kullanarak nasıl oturum açılabildiğini gösterir.
+- Microsoft Graph'ı arar.
+- Birkaç Microsoft API'si çağırır.
 - Artımlı onayı işler.
-- Kendi Web API 'nizi çağırır.
+- Kendi web API'nizi çağırır.
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web uygulaması öğreticisi](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+> [ASP.NET Core web uygulaması eğitimi](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

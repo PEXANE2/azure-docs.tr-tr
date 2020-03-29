@@ -1,68 +1,68 @@
 ---
-title: Bölgeler arasında güvenli dağıtım-Azure Dağıtım Yöneticisi
-description: Azure Deployment Manager ile pek çok bölge üzerinde bir hizmet dağıtmayı açıklar. Bu, tüm bölgelere sunulmadan önce dağıtımınızı kararlılığını doğrulamak için güvenli dağıtım uygulamalarını gösterir.
+title: Bölgeler arasında güvenli dağıtım - Azure Dağıtım Yöneticisi
+description: Azure Dağıtım Yöneticisi ile bir hizmetin birçok bölgeye nasıl dağıtılangerektiğini açıklar. Tüm bölgelere gönderilmeden önce dağıtımınızın kararlılığını doğrulamak için güvenli dağıtım uygulamalarını gösterir.
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76152536"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Dağıtım Yöneticisi ile güvenli dağıtım uygulamalarını etkinleştirme (Genel Önizleme)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Dağıtım Yöneticisi (Genel önizleme) ile güvenli dağıtım uygulamalarını etkinleştirin
 
-Birçok bölgede hizmetinizi dağıtmadan ve her bölgede beklendiği gibi çalıştığından emin olmak için Azure Deployment Manager hizmetinin aşamalı bir sunum koordine etmek için kullanabilirsiniz. Tüm Azure dağıtımı için yaptığınız gibi kaynakları hizmetinizde tanımladığınız [Resource Manager şablonları](template-syntax.md). Şablonları oluşturduktan sonra Dağıtım Yöneticisi hizmetiniz için topoloji ve nasıl, alınması açıklamak için kullanın.
+Hizmetinizi birçok bölgeye dağıtmak ve her bölgede beklendiği gibi çalışmasını sağlamak için, hizmetin aşamalı bir ürün dağıtımını koordine etmek için Azure Dağıtım Yöneticisi'ni kullanabilirsiniz. Herhangi bir Azure dağıtımında olduğu gibi, [Kaynak Yöneticisi şablonlarında](template-syntax.md)hizmetinizin kaynaklarını tanımlarsınız. Şablonları oluşturduktan sonra, hizmetinizin topolojisini ve nasıl kullanıma sunulması gerektiğini açıklamak için Dağıtım Yöneticisi'ni kullanırsınız.
 
-Dağıtım Yöneticisi Kaynak Yöneticisi'nin bir özelliktir. Bu, dağıtım sırasında yeteneklerinizi genişletir. Karmaşık bir servis olduğunda Dağıtım Yöneticisi'ni kullanın, çeşitli bölgelere dağıtılması gerekiyor. Hizmetinizi aşamalı kullanıma sunarak, tüm bölgelere dağıtılmadan önce olası sorunları bulabilirsiniz. Aşamalı dağıtım, ek güvenlik önlemleri gerekmiyorsa, standart kullanma [dağıtım seçenekleri](deploy-portal.md) için Resource Manager. Dağıtım Yöneticisi, sürekli tümleştirme ve sürekli teslim (CI/CD) teklifleri gibi Resource Manager dağıtımlarını destekleyen tüm mevcut üçüncü taraf araçları sorunsuzca tümleştirilir.
+Deployment Manager, Kaynak Yöneticisi'nin bir özelliğidir. Dağıtım sırasında yeteneklerinizi genişletir. Birkaç bölgeye dağıtılması gereken karmaşık bir hizmetinolduğunda Dağıtım Yöneticisi'ni kullanın. Hizmetinizi aşamalı kullanıma sunarak, tüm bölgelere dağıtılmadan önce olası sorunları bulabilirsiniz. Aşamalı bir kullanıma yönelik ek önlemlere ihtiyacınız yoksa, Kaynak Yöneticisi için standart [dağıtım seçeneklerini](deploy-portal.md) kullanın. Deployment Manager, sürekli tümleştirme ve sürekli teslim (CI/CD) teklifleri gibi Kaynak Yöneticisi dağıtımlarını destekleyen tüm mevcut üçüncü taraf araçlarıyla sorunsuz bir şekilde tümleştirir.
 
-Azure Dağıtım Yöneticisi önizlemededir. [Geri bildirim](https://aka.ms/admfeedback)sağlayarak özelliği geliştirmemize yardımcı olun.
+Azure Dağıtım Yöneticisi önizlemede. [Geri bildirim](https://aka.ms/admfeedback)sağlayarak özelliği geliştirmemize yardımcı olun.
 
-Deployment Manager'ı kullanmak için dört dosyaları oluşturmak gerekir:
+Deployment Manager'ı kullanmak için dört dosya oluşturmanız gerekir:
 
 * Topoloji şablonu
-* Dağıtım şablonu
+* Kullanıma alma şablonu
 * Topoloji için parametre dosyası
-* Piyasaya çıkma için parametre dosyası
+* Kullanıma alma için parametre dosyası
 
-Topoloji şablon, dağıtım şablonu dağıtmadan önce dağıtın.
+Kullanıma alma şablonuna dağıtmadan önce topoloji şablonuna dağıtın.
 
 Ek kaynaklar:
 
-- [Azure Dağıtım Yöneticisi REST API başvurusu](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Öğretici: Azure Dağıtım Yöneticisi kaynak yöneticisi şablonlarıyla kullanın](./deployment-manager-tutorial.md).
-- [Öğretici: Azure dağıtım Yöneticisi 'da sistem durumu denetimi kullanın](./deployment-manager-tutorial-health-check.md).
-- [Azure dağıtım Yöneticisi örneği](https://github.com/Azure-Samples/adm-quickstart).
+- [Azure Dağıtım Yöneticisi REST API başvurusu.](https://docs.microsoft.com/rest/api/deploymentmanager/)
+- [Öğretici: Kaynak Yöneticisi şablonlarıyla Azure Dağıtım Yöneticisi'ni kullanın.](./deployment-manager-tutorial.md)
+- [Öğretici: Azure Dağıtım Yöneticisi'nde sistem durumu denetimini kullanın.](./deployment-manager-tutorial-health-check.md)
+- [Azure Dağıtım Yöneticisi örneği.](https://github.com/Azure-Samples/adm-quickstart)
 
 ## <a name="identity-and-access"></a>Kimlik ve erişim
 
-Dağıtım Yöneticisi ile bir [yönetilen kullanıcı tarafından atanan kimliği](../../active-directory/managed-identities-azure-resources/overview.md) dağıtım eylemleri gerçekleştirir. Bu kimlik, dağıtımınıza başlamadan önce oluşturun. Bu abonelik için hizmet dağıtıyorsanız ve dağıtımı tamamlamak için yeterli izne erişiminiz olmalıdır. Rolleri verilen eylemler hakkında daha fazla bilgi için bkz: [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md).
+Deployment Manager [ile, kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md) dağıtım eylemlerini gerçekleştirir. Dağıtımınızı başlatmadan önce bu kimliği oluşturursunuz. Hizmeti dağıttığınız aboneye erişimi ve dağıtımı tamamlamak için yeterli izni olmalıdır. Roller aracılığıyla verilen eylemler hakkında bilgi için [Azure kaynakları için Yerleşik rollere](../../role-based-access-control/built-in-roles.md)bakın.
 
-Kimliğin dağıtım ile aynı konumda bulunması gerekir.
+Kimlik, kullanıma sunulması ile aynı konumda olmalıdır.
 
 ## <a name="topology-template"></a>Topoloji şablonu
 
-Topoloji şablonu hizmetinizin ve nerede dağıtacağınızı oluşturan Azure kaynaklarını açıklar. Aşağıdaki görüntüde bir örnek hizmeti için topoloji gösterilmektedir:
+Topoloji şablonu, hizmetinizi oluşturan Azure kaynaklarını ve bunları nerede dağıtacağınız açıklanır. Aşağıdaki resim, örnek bir hizmet için topolojiyi gösterir:
 
-![Hizmet topoloji bir hiyerarşiden hizmetlerine hizmet birimleri](./media/deployment-manager-overview/service-topology.png)
+![Hizmet topolojisinden hizmetlere ve hizmet birimlerine hiyerarşi](./media/deployment-manager-overview/service-topology.png)
 
-Topoloji şablon aşağıdaki kaynakları içermektedir:
+Topoloji şablonu aşağıdaki kaynakları içerir:
 
-* Yapıt kaynağı - Resource Manager şablonlarını ve parametre depolandığı
-* Hizmet topolojisi - yapıt kaynağına işaret eder
-  * Hizmetler - konum ve Azure abonelik kimliği belirtir
-    * Hizmet birimi - kaynak grubu, dağıtım modu ve şablonu ve parametre dosyasının yolu belirtir
+* Yapı kaynağı - Kaynak Yöneticisi şablonlarınızın ve parametrelerinizin depolandığı
+* Hizmet topolojisi - artifakı kaynağına işaret
+  * Hizmetler - konum ve Azure abonelik kimliğini belirtir
+    * Hizmet birimleri - kaynak grubu, dağıtım modu ve şablon ve parametre dosyasına giden yolu belirtir
 
-Her düzeyde neler olduğunu anlamak için sağladığınız hangi değerleri görmek yararlıdır.
+Her düzeyde neler olduğunu anlamak için, hangi değerleri sağladığınızı görmek yararlıdır.
 
-![Her düzey değerleri](./media/deployment-manager-overview/topology-values.png)
+![Her düzey için değerler](./media/deployment-manager-overview/topology-values.png)
 
-### <a name="artifact-source-for-templates"></a>Yapıt kaynağı için şablonlar
+### <a name="artifact-source-for-templates"></a>Şablonlar için yapı kaynağı
 
-Topoloji şablonunda, şablon ve parametre dosyalarının bulunduğu bir yapıt kaynağı oluşturun. Yapıt kaynağı dağıtım için dosyaları çekmek için bir yoldur. Başka bir yapıt kaynağı için ikili dosyaları bu makalenin sonraki bölümlerinde görürsünüz.
+Topoloji şablonunuzda, şablonları ve parametrelerdosyalarını tutan bir yapı kaynağı oluşturursunuz. Yapı kaynağı dağıtım için dosyaları çekmenin bir yoludur. Bu makalede daha sonra ikili ler için başka bir eser kaynağı görürsünüz.
 
-Aşağıdaki örnek, genel yapıt kaynağı biçimini gösterir.
+Aşağıdaki örnek, yapı kaynağının genel biçimini gösterir.
 
 ```json
 {
@@ -83,11 +83,11 @@ Aşağıdaki örnek, genel yapıt kaynağı biçimini gösterir.
 }
 ```
 
-Daha fazla bilgi için [artifactSources şablon başvurusu](/azure/templates/Microsoft.DeploymentManager/artifactSources).
+Daha fazla bilgi için [bkz: artifactSources şablonu başvurusu.](/azure/templates/Microsoft.DeploymentManager/artifactSources)
 
 ### <a name="service-topology"></a>Hizmet topolojisi
 
-Aşağıdaki örnek, service topolojisi kaynak genel biçimini gösterir. Şablonlarını ve parametre dosyalarını tutan yapıt kaynağının kaynak kimliği sağlayın. Hizmet topoloji tüm hizmet kaynakları içerir. Yapıt kaynağının kullanılabilir olduğundan emin olmak için üzerinde hizmet topolojiye bağlıdır.
+Aşağıdaki örnekte, hizmet topolojisi kaynağının genel biçimi gösterilmektedir. Şablonları ve parametre dosyalarını tutan yapı kaynağının kaynak kimliğini sağlarsınız. Hizmet topolojisi tüm hizmet kaynaklarını içerir. Yapı kaynağının kullanılabilir olduğundan emin olmak için, hizmet topolojisi buna bağlıdır.
 
 ```json
 {
@@ -110,11 +110,11 @@ Aşağıdaki örnek, service topolojisi kaynak genel biçimini gösterir. Şablo
 }
 ```
 
-Daha fazla bilgi için [serviceTopologies şablon başvurusu](/azure/templates/Microsoft.DeploymentManager/serviceTopologies).
+Daha fazla bilgi için [serviceTopologies şablonu başvurusuna](/azure/templates/Microsoft.DeploymentManager/serviceTopologies)bakın.
 
 ### <a name="services"></a>Hizmetler
 
-Aşağıdaki örnek, hizmetler kaynağın genel biçimini gösterir. Her hizmet içinde hizmeti dağıtmak için kullanılacak konumu ve Azure abonelik kimliği sağlayın. Birkaç bölgeye dağıtmak için her bölge için bir hizmet tanımlar. Hizmet hizmet topolojiye bağlıdır.
+Aşağıdaki örnekte, hizmet kaynağının genel biçimi gösterilmektedir. Her hizmette, hizmetinizi dağıtmak için kullanılacak konum ve Azure abonelik kimliği sağlarsınız. Birkaç bölgeye dağıtmak için her bölge için bir hizmet tanımlarsınız. Hizmet servis topolojisi bağlıdır.
 
 ```json
 {
@@ -138,11 +138,11 @@ Aşağıdaki örnek, hizmetler kaynağın genel biçimini gösterir. Her hizmet 
 }
 ```
 
-Daha fazla bilgi için [şablon başvurusu Hizmetleri](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services).
+Daha fazla bilgi için [hizmetler şablonu başvurusuna](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services)bakın.
 
 ### <a name="service-units"></a>Hizmet Birimleri
 
-Aşağıdaki örnek, hizmet birimi kaynağı genel biçimini gösterir. Kaynak grubunu, belirttiğiniz her hizmet birimi [dağıtım modu](deployment-modes.md) dağıtım ve şablonu ve parametre dosyasının yolu için kullanılacak. Şablon ve parametreleri için göreli bir yol belirtirseniz, yolun tamamı yapıt kaynağı kök klasöründeki oluşturulur. Şablon ve parametreleri için mutlak bir yol belirtebilirsiniz, ancak sürümlerinizi sürümüne bir kolayca özelliğini kaybedersiniz. Hizmet Birimi hizmete bağlıdır.
+Aşağıdaki örnekte, hizmet birimleri kaynağının genel biçimi gösterilmektedir. Her hizmet biriminde kaynak grubunu, dağıtım için kullanılacak [dağıtım modunu](deployment-modes.md) ve şablon ve parametre dosyasına giden yolu belirtirsiniz. Şablon ve parametreler için göreli bir yol belirtirseniz, tam yol yapılı rekler kaynağındaki kök klasöründen oluşturulur. Şablon ve parametreler için mutlak bir yol belirtebilirsiniz, ancak sürümlerinizi kolayca sürümleme yeteneğini kaybedersiniz. Servis birimi hizmete bağlıdır.
 
 ```json
 {
@@ -167,35 +167,35 @@ Aşağıdaki örnek, hizmet birimi kaynağı genel biçimini gösterir. Kaynak g
 }
 ```
 
-Her şablon, tek bir adımda dağıtmak istediğiniz kaynaklar içermelidir. Örneğin, bir hizmet birimi dağıtan tüm kaynakların hizmetinizin ön uç için bir şablon olabilir.
+Her şablon, dağıtmak istediğiniz ilgili kaynakları bir adımda içermelidir. Örneğin, bir hizmet biriminde hizmetin ön ucu için tüm kaynakları dağıtan bir şablon olabilir.
 
-Daha fazla bilgi için [serviceUnits şablon başvurusu](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits).
+Daha fazla bilgi için [serviceUnits şablon ubaşvurusuna](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits)bakın.
 
-## <a name="rollout-template"></a>Dağıtım şablonu
+## <a name="rollout-template"></a>Kullanıma alma şablonu
 
-Dağıtım şablonu, hizmeti dağıtırken atılması gereken adımları açıklar. Hizmet topoloji kullanın ve hizmet birimi dağıtmak için sırasını tanımlamak için belirttiğiniz. Bu dağıtım için ikili dosyaları depolamak için bir yapıt kaynağı içerir. Piyasaya çıkma şablonunuzda aşağıdaki hiyerarşi tanımlayın:
+Kullanıma alma şablonu, hizmetinizi dağıtırken atılacak adımları açıklar. Kullanılacak hizmet topolojisini belirtir ve hizmet birimlerini dağıtma sırasını tanımlarsınız. Dağıtım için ikili leri depolamak için bir yapı kaynağı içerir. Kullanıma alma şablonunuzda aşağıdaki hiyerarşiyi tanımlarsınız:
 
-* Yapıt kaynağı
+* Artefakt kaynağı
 * Adım
-* Kullanıma sunma
+* Rollout
   * Adım grupları
-    * Dağıtım işlemlerini
+    * Dağıtım işlemleri
 
-Aşağıdaki görüntüde, dağıtım şablonu hiyerarşisini gösterir:
+Aşağıdaki resim, kullanıma alma şablonunun hiyerarşisini gösterir:
 
-![Piyasaya çıkma bir hiyerarşiden adımları](./media/deployment-manager-overview/Rollout.png)
+![Kullanıma sunulmasından adımlara hiyerarşi](./media/deployment-manager-overview/Rollout.png)
 
-Her dağıtım, birçok adımı grupları olabilir. Her adım grubunun service topolojisi hizmet biriminde işaret eden bir dağıtım işlem vardır.
+Her kullanıma birçok adım grubu olabilir. Her adım grubunda, hizmet topolojisindeki bir servis birimine işaret eden bir dağıtım işlemi vardır.
 
-### <a name="artifact-source-for-binaries"></a>Yapıt kaynağı için ikili dosyaları
+### <a name="artifact-source-for-binaries"></a>İkili için eser kaynağı
 
-Dağıtım şablonu ve hizmeti dağıtmak için ihtiyacınız ikililer için yapıt kaynağı oluşturun. Bu yapıt kaynağı benzer [şablonları için yapıt kaynağı](#artifact-source-for-templates)dışında betikler, web sayfaları, derlenmiş kod veya hizmetiniz tarafından gereken diğer dosyaları içerir.
+Kullanıma alma şablonunda, hizmete dağıtmanız gereken ikililer için bir yapı kaynağı oluşturursunuz. Bu yapı kaynağı, komut dosyalarını, web sayfalarını, derlenmiş kodu veya hizmetinizin gerektirdiği diğer dosyaları içerse bile, [şablonlar için yapı kaynağına](#artifact-source-for-templates)benzer.
 
 ### <a name="steps"></a>Adımlar
 
-Önce veya sonra dağıtım işlemi gerçekleştirmek için bir adım tanımlayabilirsiniz. Şu anda yalnızca `wait` adımı ve ' healthCheck ' adımı kullanılabilir.
+Dağıtım işleminden önce veya sonra gerçekleştirmek için bir adım tanımlayabilirsiniz. Şu anda `wait` yalnızca adım ve 'healthCheck' adımı mevcuttur.
 
-Devam etmeden önce dağıtım bekleme adım duraklatır. Hizmetiniz bir sonraki hizmet birimi dağıtmadan önce beklendiği gibi çalıştığını doğrulamak sağlar. Aşağıdaki örnek, bir bekleme adımı genel biçimi gösterir.
+Bekleme adımı devam etmeden önce dağıtımı duraklatıyor. Bir sonraki hizmet birimini dağıtmadan önce hizmetinizin beklendiği gibi çalıştığını doğrulamanızı sağlar. Aşağıdaki örnek, bekleme adımının genel biçimini gösterir.
 
 ```json
 {
@@ -212,19 +212,19 @@ Devam etmeden önce dağıtım bekleme adım duraklatır. Hizmetiniz bir sonraki
 },
 ```
 
-Süresi özelliği kullanan [ISO 8601 standardına](https://en.wikipedia.org/wiki/ISO_8601#Durations). Yukarıdaki örnekte, bir dakikalık bekleme belirtir.
+Özellik, [ISO 8601 standardını](https://en.wikipedia.org/wiki/ISO_8601#Durations)kullanır. Önceki örnekte bir dakikalık bekleme belirtilmesi yer alıyor.
 
-Sistem durumu denetimi adımı hakkında daha fazla bilgi için bkz. [Azure 'da sistem durumu tümleştirmesi dağıtımı dağıtım Yöneticisi](./deployment-manager-health-check.md) ve [öğretici: Azure dağıtım Yöneticisi 'da sistem durumu denetimi kullanma](./deployment-manager-tutorial-health-check.md).
+Sistem durumu denetimi adımı hakkında daha fazla bilgi için [bkz.](./deployment-manager-health-check.md) [Tutorial: Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)
 
-Daha fazla bilgi için [adımları şablon başvurusu](/azure/templates/Microsoft.DeploymentManager/steps).
+Daha fazla bilgi için [adımlar şablonu başvurusuna](/azure/templates/Microsoft.DeploymentManager/steps)bakın.
 
 ### <a name="rollouts"></a>Piyasaya çıkarmalar
 
-Yapıt kaynağının kullanılabilir olduğundan emin olmak için piyasaya çıkma üzerinde bağlıdır. Dağıtım adımları grupları dağıtılan her hizmet birimi tanımlar. Dağıtımdan önce veya sonra yapılacak işlemler tanımlayabilirsiniz. Örneğin, hizmet birimi dağıtıldıktan sonra dağıtımın bekleyin belirtebilirsiniz. Adım grupları sırasını tanımlayabilirsiniz.
+Yapı kaynağının kullanılabilir olduğundan emin olmak için, kullanıma sunulması buna bağlıdır. Kullanıma alma, dağıtılan her hizmet birimi için adım gruplarını tanımlar. Dağıtımdan önce veya sonra yapılacak eylemleri tanımlayabilirsiniz. Örneğin, hizmet birimi dağıtıldıktan sonra dağıtım beklemesini belirtebilirsiniz. Adım gruplarının sırasını tanımlayabilirsiniz.
 
-Kimlik nesneyi belirtir [yönetilen kullanıcı tarafından atanan kimliği](#identity-and-access) , dağıtım eylemleri gerçekleştirir.
+Kimlik nesnesi, dağıtım eylemlerini gerçekleştiren [kullanıcı tarafından atanan yönetilen kimliği](#identity-and-access) belirtir.
 
-Aşağıdaki örnek, genel biçim dağıtımı gösterir.
+Aşağıdaki örnek, kullanıma genel biçimini gösterir.
 
 ```json
 {
@@ -260,19 +260,19 @@ Aşağıdaki örnek, genel biçim dağıtımı gösterir.
 }
 ```
 
-Daha fazla bilgi için [piyasaya çıkarma şablon başvurusu](/azure/templates/Microsoft.DeploymentManager/rollouts).
+Daha fazla bilgi için [rollouts şablonu başvurusuna](/azure/templates/Microsoft.DeploymentManager/rollouts)bakın.
 
 ## <a name="parameter-file"></a>Parametre dosyası
 
-İki parametre dosyası oluşturun. Bir parametre dosyası service topolojisi dağıtırken kullanılır ve diğer ürün dağıtımı için kullanılır. Bazı değerler emin olmanız gerekir, her iki parametre dosyaları aynı vardır.
+İki parametre dosyası oluşturursunuz. Bir parametre dosyası, hizmet topolojisi dağıtılırken kullanılır ve diğeri kullanıma sunma dağıtımı için kullanılır. Her iki parametre dosyasında da aynı olduğundan emin olmanız gereken bazı değerler vardır.
 
 ## <a name="containerroot-variable"></a>containerRoot değişkeni
 
-Tutulan dağıtımlarda, her yeni sürümle yapıtlarınızı yolunu değiştirir. İlk kez yolun bir dağıtım çalıştırdığınızda olabilir `https://<base-uri-blob-container>/binaries/1.0.0.0`. İkinci kez olabilir `https://<base-uri-blob-container>/binaries/1.0.0.1`. Dağıtım Yöneticisi'ni kullanarak geçerli dağıtım için doğru kök yolunu alma basitleştirir `$containerRoot` değişkeni. Bu değer, her sürümü ile değiştirir ve dağıtımdan önce bilinen değil.
+Sürümlü dağıtımlarla, yapılarınızın yolu her yeni sürümle birlikte değişir. Bir dağıtımı ilk çalıştırdığınızda yol `https://<base-uri-blob-container>/binaries/1.0.0.0`. İkinci sefer olabilir. `https://<base-uri-blob-container>/binaries/1.0.0.1` Deployment Manager `$containerRoot` değişkeni kullanarak geçerli dağıtım için doğru kök yolu elde kolaylaştırır. Bu değer her sürümle değişir ve dağıtımdan önce bilinmemektedir.
 
-Kullanım `$containerRoot` Azure kaynakları dağıtmak şablonu parametre dosyasında değişken. Dağıtım sırasında bu değişken, piyasaya çıkma gerçek değerlerle değiştirilir.
+Azure `$containerRoot` kaynaklarını dağıtmak için şablon için parametre dosyasındaki değişkeni kullanın. Dağıtım sırasında, bu değişken kullanıma alınan gerçek değerlerle değiştirilir.
 
-Örneğin, dağıtım sırasında ikili yapıtlar için yapıt kaynağı oluşturun.
+Örneğin, ürün lansmanı sırasında ikili yapılar için bir yapı kaynağı oluşturursunuz.
 
 ```json
 {
@@ -294,9 +294,9 @@ Kullanım `$containerRoot` Azure kaynakları dağıtmak şablonu parametre dosya
 },
 ```
 
-Bildirim `artifactRoot` ve `sasUri` özellikleri. Yapıt kök gibi bir değere ayarlanabilir `binaries/1.0.0.0`. SAS URI'sini erişim için bir SAS belirteci ile depolama kapsayıcınızda URI'dir. Dağıtım Yöneticisi, değeri otomatik olarak oluşturur `$containerRoot` değişkeni. Bu değerleri biçimde birleştirir `<container>/<artifactRoot>`.
+Dikkat `artifactRoot` edin ve `sasUri` özellikleri. Artefakt kökü gibi `binaries/1.0.0.0`bir değere ayarlanabilir. SAS URI, erişim için bir SAS belirteci ile depolama kabına URI'dir. Deployment Manager `$containerRoot` değişkenin değerini otomatik olarak kurar. Bu değerleri biçimde `<container>/<artifactRoot>`birleştirir.
 
-Şablonu ve parametre dosyanız tutulan ikili dosyaları almak için doğru yolunu bilmeniz gerekir. Örneğin, bir web uygulaması için dosyaları dağıtmak için $containerRoot değişkenle şu parametre dosyası oluşturun. İki ters eğik çizgi kullanmanız gerekir (`\\`) yolu için ilk bir kaçış karakteri olduğundan.
+Şablon ve parametre dosyanızın sürümlü ikilileri almak için doğru yolu bilmesi gerekir. Örneğin, bir web uygulaması için dosyaları dağıtmak için, $containerRoot değişkeni ile aşağıdaki parametre dosyasını oluşturun. İlk bir kaçış karakteri`\\`olduğu için yol için iki backslashes ( ) kullanmanız gerekir.
 
 ```json
 {
@@ -310,7 +310,7 @@ Bildirim `artifactRoot` ve `sasUri` özellikleri. Yapıt kök gibi bir değere a
 }
 ```
 
-Ardından, bu parametre, şablonunuzda kullanın:
+Ardından, şablonunuzdaki bu parametreyi kullanın:
 
 ```json
 {
@@ -330,13 +330,13 @@ Ardından, bu parametre, şablonunuzda kullanın:
 }
 ```
 
-Yeni klasör oluşturma ve bu kök dizininde amaçlıyoruz geçirerek tutulan dağıtımları yönetin. Yolun kaynakları dağıtan şablonla aracılığıyla akar.
+Sürümdeki dağıtımları, yeni klasörler oluşturarak ve kullanıma sunulması sırasında bu kökten geçerek yönetirsiniz. Yol, kaynakları dağıtan şablona akar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Deployment Manager hakkında bilgi edindiniz. Deployment Manager ile dağıtma hakkında bilgi edinmek için sonraki makaleye geçin.
+Bu makalede, Dağıtım Yöneticisi'ni öğrendiniz. Dağıtım Yöneticisi ile nasıl dağıtılacağınızı öğrenmek için bir sonraki makaleye devam edin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Dağıtım Yöneticisi'ni kullanın Resource Manager şablonları ile](./deployment-manager-tutorial.md)
+> [Öğretici: Kaynak Yöneticisi şablonlarıyla Azure Dağıtım Yöneticisi'ni kullanma](./deployment-manager-tutorial.md)
 >
-> [Hızlı başlangıç: Azure Dağıtım Yöneticisi yalnızca birkaç dakika içinde deneyin](https://github.com/Azure-Samples/adm-quickstart)
+> [Hızlı başlangıç: Azure Dağıtım Yöneticisi'ni sadece birkaç dakika içinde deneyin](https://github.com/Azure-Samples/adm-quickstart)

@@ -1,6 +1,6 @@
 ---
-title: Azure veri Gezgini'ne kafka'dan veri alma
-description: Bu makalede, Azure kafka'dan Veri Gezgini içinde (yükle) veri alma öğrenin.
+title: Kafka'dan Azure Veri Gezgini'ne veri alma
+description: Bu makalede, Kafka'dan Azure Veri Gezgini'ne nasıl veri öttürecek (yüklenir) öğrenirsiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,35 +8,35 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497278"
 ---
-# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Azure veri Gezgini'ne kafka'dan veri alma
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Kafka'dan Azure Veri Gezgini'ne veri alma
  
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Kafka'dan alma (veriler yükleniyor) olanağı sağlar. Kafka güvenilir bir şekilde sistemleri veya uygulamalar arasında veri taşıma gerçek zamanlı akış verisi işlem hatları oluşturmayı sağlayan bir dağıtılmış akış platformudur.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Data Explorer Kafka'dan alım (veri yükleme) sunar. Kafka, verileri sistemler veya uygulamalar arasında güvenilir bir şekilde hareket ettiren gerçek zamanlı akış veri boru hatlarının oluşturulmasına olanak tanıyan dağıtılmış bir akış platformudur.
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
  
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun. 
  
-* [Bir test kümesi ile veritabanı](create-cluster-database-portal.md).
+* [Bir test kümesi ve veritabanı.](create-cluster-database-portal.md)
  
-* [Örnek bir uygulama](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) veri üretir ve Kafka için gönderir.
+* Veri üreten ve Kafka'ya gönderen örnek bir [uygulama.](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) örnek uygulamayı çalıştırın.
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) örnek uygulamayı çalıştırmak için.
  
-## <a name="kafka-connector-setup"></a>Kafka bağlayıcı Kurulumu
+## <a name="kafka-connector-setup"></a>Kafka konektör kurulumu
 
-Kafka bağlanmak için ölçeklenebilir ve güvenilir Apache Kafka ve diğer sistemler arasında veri akışını bir araçtır. Büyük veri koleksiyonlarını içine ve dışına Kafka taşıma bağlayıcılar hızlıca tanımlamak basit sağlar. Kafka ADX havuz Kafka'dan bağlayıcı olarak görev yapar.
+Kafka Connect, Apache Kafka ve diğer sistemler arasında ölçeklenebilir ve güvenilir veri akışı için bir araçtır. Kafka'ya ve Kafka'nın dışına büyük veri koleksiyonlarını hareket ettiren konektörleri hızlı bir şekilde tanımlamayı kolaylaştırır. ADX Kafka Lavabo Kafka konektörü olarak hizmet vermektedir.
  
 ### <a name="bundle"></a>Paket
 
-Kafka yükleyebilirsiniz bir `.jar` özel bağlayıcı olarak davranan bir eklenti olarak. Örneğin üretmek için bir `.jar`, biz kodu yerel olarak kopyalayın ve Maven kullanarak oluşturun. 
+Kafka özel `.jar` bir konektör olarak hareket edecek bir eklenti olarak bir yük olabilir. Böyle bir `.jar`üretmek için, biz yerel kodu klonlamak ve Maven kullanarak inşa edecektir. 
 
-#### <a name="clone"></a>Kopyala
+#### <a name="clone"></a>Kopyalama
 
 ```bash
 git clone git://github.com:Azure/kafka-sink-azure-kusto.git
@@ -45,13 +45,13 @@ cd ./kafka-sink-azure-kusto/kafka/
 
 #### <a name="build"></a>Oluşturma
 
-Yerel olarak oluşturmak için Maven ile derleme bir `.jar` bağımlılıkları ile tamamlandı.
+Bağımlılıklarla birlikte eksiksiz bir `.jar` ürün üretmek için Maven ile yerel olarak oluşturun.
 
-* JDK > 1.8 = [indirin](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Maven [indirin](https://maven.apache.org/install.html)
+* JDK >= 1.8 [indir](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Maven [indir](https://maven.apache.org/install.html)
  
 
-Kök dizin içinde *havuz azure kusto kafka*çalıştırın:
+Kök dizini *kafka-sink-azure-kusto*içinde , çalıştırın:
 
 ```bash
 mvn clean compile assembly:single
@@ -59,10 +59,10 @@ mvn clean compile assembly:single
 
 ### <a name="deploy"></a>Dağıtma 
 
-Kafka eklentisini yükleyin. Docker'ı kullanarak bir dağıtım örneği şu yolda bulunabilir: [havuz azure kusto kafka](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
+Kafka'ya yük eklentisi. Docker kullanarak bir dağıtım örneği [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy) bulunabilir
  
 
-Ayrıntılı belgeler üzerinde Kafka bağlayıcılar ve bunları dağıtma altında bulunabilir [Kafka bağlanma](https://kafka.apache.org/documentation/#connect) 
+Kafka konektörleri ve nasıl dağıtılabilenlerle ilgili detaylı dokümantasyona [Kafka Connect'te](https://kafka.apache.org/documentation/#connect) bulunabilir. 
 
 ### <a name="example-configuration"></a>Örnek yapılandırma 
  
@@ -83,11 +83,11 @@ kusto.sink.tempdir=/var/tmp/
 kusto.sink.flush_size=1000
 ```
  
-## <a name="create-a-target-table-in-adx"></a>İçinde ADX hedef tablo oluşturma
+## <a name="create-a-target-table-in-adx"></a>ADX'te hedef tablo oluşturma
  
-İçinde ADX Kafka veri göndermek bir tablo oluşturun. Tablo kümeyi oluşturmak ve veritabanı sağlanan içinde **önkoşulları**.
+ADX'te Kafka'nın veri gönderebileceği bir tablo oluşturun. **Önkoşullar'da**verilen küme ve veritabanında tablooluşturun.
  
-1. Azure portalında, seçin ve küme gidin **sorgu**.
+1. Azure portalında kümenize gidin ve **Sorgula'yı**seçin.
  
     ![Sorgu uygulama bağlantısı](media/ingest-data-event-hub/query-explorer-link.png)
  
@@ -110,11 +110,11 @@ kusto.sink.flush_size=1000
 
 ## <a name="generate-sample-data"></a>Örnek veri oluşturma
 
-Kafka kümesi için ADX bağlıysa, kullanın [örnek uygulaması](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) verileri oluşturmak için indirilen.
+Kafka kümesi ADX'e bağlı olduğuna göre, veri oluşturmak için indirdiğiniz [örnek uygulamayı](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) kullanın.
 
-### <a name="clone"></a>Kopyala
+### <a name="clone"></a>Kopyalama
 
-Örnek uygulamayı yerel olarak kopyalayın:
+Örnek uygulamayı yerel olarak klonla:
 
 ```cmd
 git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
@@ -125,19 +125,19 @@ cd ./azure-kusto-samples-dotnet/kafka/
 
 1. Örnek uygulama çözümünü Visual Studio'da açın.
 
-1. İçinde `Program.cs` dosyası, güncelleştirme `connectionString` Kafka bağlantı dizenizi için sabit.
+1. Dosyada, `Program.cs` sabiti `connectionString` Kafka bağlantı dizenize güncelleştirin.
 
     ```csharp    
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. Uygulamayı derleyin ve çalıştırın. Uygulama için Kafka kümesinin iletileri gönderir ve 10 saniyede durumunu yazdırır.
+1. Uygulamayı derleyin ve çalıştırın. Uygulama Kafka kümesine mesaj gönderir ve durumunu her 10 saniyede bir yazdırır.
 
-1. Uygulamayı birkaç ileti gönderdikten sonra sonraki adıma geçin.
+1. Uygulama birkaç mesaj gönderdikten sonra bir sonraki adıma geçin.
  
-## <a name="query-and-review-the-data"></a>Sorgulamak ve verileri gözden geçirin
+## <a name="query-and-review-the-data"></a>Verileri sorgula ve gözden geçirin
 
-1. Emin olmak için alımı sırasında hata oluştu:
+1. Yutma sırasında hata oluşmadığından emin olmak için:
 
     ```Kusto
     .show ingestion failures
@@ -150,16 +150,16 @@ cd ./azure-kusto-samples-dotnet/kafka/
     | count
     ```
 
-1. İleti içeriğini görmek için:
+1. İletilerin içeriğini görmek için:
  
     ```Kusto
     TestTable
     ```
  
-    Sonuç kümesi, aşağıdaki gibi görünmelidir:
+    Sonuç kümesi aşağıdaki gibi görünmelidir:
  
     ![İleti sonuç kümesi](media/ingest-data-event-hub/message-result-set.png)
  
 ## <a name="next-steps"></a>Sonraki adımlar
  
-* [Azure veri Gezgini'nde verileri Sorgulama](web-query-data.md)
+* [Azure Veri Gezgini'nde verileri sorgula](web-query-data.md)

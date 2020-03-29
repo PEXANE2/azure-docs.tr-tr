@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs Service Fabric küme ortamı oluşturma
-description: Kendi içinde Service Fabric kümeyle ortam oluşturmayı ve zamanlamaları kullanarak kümeyi başlatıp durdurmayı öğrenin.
+title: Azure DevTest Labs'da Hizmet Dokusu küme ortamı oluşturma
+description: Bağımsız hizmet kumaş ı kümesiyle bir ortam oluşturmayı ve zamanlamaları kullanarak kümeyi nasıl başlatıp durdurarak durdurun.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: EMaher
@@ -15,120 +15,120 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: enewman
 ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170332"
 ---
-# <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Azure DevTest Labs içinde kendi içinde Service Fabric kümeyle bir ortam oluşturun
-Bu makalede, Azure DevTest Labs içinde kendi içinde Service Fabric kümeyle ortam oluşturma hakkında bilgi sağlanır. 
+# <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Azure DevTest Labs'da bağımsız Hizmet Kumaşı kümesiyle bir ortam oluşturun
+Bu makalede, Azure DevTest Labs'da bağımsız hizmet kumaş ı kümesi bulunan bir ortamın nasıl oluşturulacaaçık olduğu hakkında bilgi verilmektedir. 
 
 ## <a name="overview"></a>Genel Bakış
-DevTest Labs, Azure Kaynak Yönetimi şablonları tarafından tanımlanan, kendi kendine dahil edilen test ortamları oluşturabilir. Bu ortamlar, sanal makineler gibi IaaS kaynaklarını ve Service Fabric gibi PaaS kaynaklarını içerir. DevTest Labs, sanal makineleri denetlemek için komutlar sunarak bir ortamdaki sanal makineleri yönetmenizi sağlar. Bu komutlar bir zamanlamaya göre bir sanal makineyi başlatma veya durdurma olanağı sağlar. Benzer şekilde, DevTest Labs de bir ortamdaki Service Fabric kümelerini yönetmenize yardımcı olabilir. Bir ortamda el ile veya bir zamanlama aracılığıyla Service Fabric kümesi başlatabilir veya durdurabilirsiniz.
+DevTest Labs, Azure Kaynak Yönetimi şablonları tarafından tanımlandığı şekilde bağımsız test ortamları oluşturabilir. Bu ortamlar, sanal makineler gibi hem IaaS kaynaklarını hem de Service Fabric gibi PaaS kaynaklarını içerir. DevTest Labs, sanal makineleri kontrol etmek için komutlar sağlayarak bir ortamda sanal makineleri yönetmenize olanak tanır. Bu komutlar, sanal bir makineyi zamanlamada başlatma veya durdurma olanağı verir. Benzer şekilde, DevTest Labs da bir ortamda Servis Kumaş kümeleri yönetmenize yardımcı olabilir. Bir Hizmet Kumaşı kümesini el ile veya zamanlama yoluyla bir ortamda başlatabilir veya durdurabilirsiniz.
 
 ## <a name="create-a-service-fabric-cluster"></a>Service Fabric kümesi oluşturma
-Service Fabric kümeler, DevTest Labs içindeki ortamlar kullanılarak oluşturulur. Her ortam, bir git deposundaki bir Azure Resource Manager şablonu tarafından tanımlanır. DevTest Labs için [genel git deposu](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) , [Servicefabric-cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) klasöründe bir Service Fabric kümesi oluşturmak için Kaynak Yöneticisi şablonunu içerir. 
+Service Fabric kümeleri DevTest Labs ortamları kullanılarak oluşturulur. Her ortam, Git deposundaki bir Azure Kaynak Yöneticisi şablonu tarafından tanımlanır. DevTest Labs için [ortak Git deposu,](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) [ServiceFabric-Cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) klasöründe bir Hizmet Dokusu kümesi oluşturmak için Kaynak Yöneticisi şablonu içerir. 
 
-1. İlk olarak, aşağıdaki makaledeki yönergeleri kullanarak Azure DevTest Labs bir laboratuvar oluşturun: [Laboratuvar oluşturma](devtest-lab-create-lab.md). **Genel ortamlar** seçeneğinin varsayılan olarak **Açık** olduğunu unutmayın. 
-2. Aşağıdaki adımları izleyerek Service Fabric sağlayıcının aboneliğiniz için kayıtlı olduğunu doğrulayın:
-    1. Sol gezinti menüsünde **abonelikler** ' i seçin ve **aboneliğinizi** seçin
-    2. **Abonelik** sayfasında, Sol menüdeki **Ayarlar** bölümünde **kaynak sağlayıcıları** ' nı seçin. 
-    3. **Microsoft. ServiecFabric** kayıtlı değilse **Kaydet**' i seçin. 
-3. Laboratuvarınızın **DevTest Lab** sayfasında, araç çubuğunda **+ Ekle** ' yi seçin. 
+1. İlk olarak, aşağıdaki makaledeki yönergeleri kullanarak Azure DevTest Labs'da bir laboratuvar oluşturun: [Bir laboratuvar oluşturun.](devtest-lab-create-lab.md) **Genel ortamlar** seçeneğinin varsayılan olarak **Açık** olduğuna dikkat edin. 
+2. Service Fabric sağlayıcısının aşağıdaki adımları izleyerek aboneliğiniz için kayıtlı olduğunu doğrulayın:
+    1. Sol navigasyon menüsünden **Abonelikleri** seçin ve **Aboneliğinizi** seçin
+    2. **Abonelik** sayfasında, sol menüdeki **Ayarlar** **bölümündekaynak sağlayıcılarını** seçin. 
+    3. **Microsoft.ServiecFabric** kayıtlı **değilse, Kaydol'u**seçin. 
+3. Laboratuvarınızın **DevTest Lab** sayfasında araç çubuğuna **+ Ekle'yi** seçin. 
     
-    ![Araç çubuğuna düğme Ekle](./media/create-environment-service-fabric-cluster/add-button.png)
-3. **Temel seçin** sayfasında, listeden **Service Fabric laboratuvar kümesi** ' ni seçin. 
+    ![Araç çubuğuna düğme ekleme](./media/create-environment-service-fabric-cluster/add-button.png)
+3. Bir temel sayfa **seçin,** listede **Service Fabric Lab Cluster'ı** seçin. 
 
-    ![Listeden Service Fabric laboratuvar kümesi seçin](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
-4. **Ayarları Yapılandır** sayfasında, aşağıdaki adımları uygulayın: 
-    1. Küme **ortamınız**için bir **ad** belirtin. Bu, Azure 'daki Service Fabric kümesinin oluşturulacağı kaynak grubunun adıdır. 
+    ![Listede Servis Kumaş ı Lab Cluster'ı seçin](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
+4. Yapı **ayarları** sayfasında aşağıdaki adımları yapın: 
+    1. Küme **ortamınız**için bir **ad** belirtin. Bu, Hizmet Kumaşı kümesinin oluşturulacağının Azure'daki kaynak grubunun adıdır. 
     2. Küme sanal makineleri için **işletim sistemini (OS)** seçin. Varsayılan değer: **Windows**.
-    3. Kümenin **Yöneticisi** için bir ad belirtin. 
+    3. Küme için **yönetici** için bir ad belirtin. 
     4. Yönetici için bir **parola** belirtin. 
-    5. **Sertifika**için sertifika bilgilerinizi Base64 olarak kodlanmış bir dize olarak girin. Bir sertifika oluşturmak için aşağıdaki adımları uygulayın:
-        1. **Create-ClusterCertificate. ps1** dosyasını [Git deposundan](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster)indirin. Alternatif olarak, depoyu makinenizde klonlayın. 
+    5. **Sertifika**için, sertifika bilgilerinizi Base64 kodlanmış dize olarak girin. Sertifika oluşturmak için aşağıdaki adımları yapın:
+        1. [Git deposundan](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) **Create-ClusterCertificate.ps1** dosyasını indirin. Alternatif olarak, makinenizdeki depoyu klonla. 
         2. **PowerShell**’i başlatın. 
-        3. Komut `.\Create-ClusterCertificate.ps1`kullanarak **ps1** dosyasını çalıştırın. Not defteri 'nde açılan bir metin dosyası, bu sayfadaki sertifikayla ilgili alanları doldurmanız için gereken bilgileri görürsünüz. . 
-    6. **Sertifika için parolayı**girin.
+        3. **ps1** dosyasını komutu `.\Create-ClusterCertificate.ps1`kullanarak çalıştırın. Not defterinde, bu sayfadaki sertifikayla ilgili alanları doldurmanız gereken bilgileri içeren bir metin dosyasının açıldığını görürsünüz. . 
+    6. **Sertifikanın parolasını**girin.
     7. Sertifikanızın **parmak izini** belirtin.
-    8. **Ayarları Yapılandır** sayfasında **Ekle** ' yi seçin. 
+    8. **Yapılandırılan Ayarlar** sayfasında **Ekle'yi** seçin. 
 
-        ![Küme ayarlarını yapılandır](./media/create-environment-service-fabric-cluster/configure-settings.png)
-5. Küme oluşturulduktan sonra, önceki adımda belirttiğiniz ortam adına sahip bir kaynak grubu görürsünüz. Genişlettikten sonra Service Fabric kümeyi görürsünüz. Kaynak grubunun durumu **oluşturma**sırasında takılırsa, araç çubuğunda **Yenile** ' yi seçin. **Service Fabric küme** ortamı, Linux veya Windows üzerinde 5 düğümlü 1-NodeType kümesi oluşturur.
+        ![Küme ayarlarını yapılandırma](./media/create-environment-service-fabric-cluster/configure-settings.png)
+5. Küme oluşturulduktan sonra, önceki adımda sağladığınız ortamın adını içeren bir kaynak grubu görürsünüz. Genişlediğinizde, içinde Service Fabric kümesini görürsünüz. Kaynak grubunun durumu **Oluşturma'da**sıkışmışsa, araç çubuğunda **Yenile'yi** seçin. **Service Fabric küme** ortamı, Linux veya Windows'da 5 düğümlü 1 düğümlü bir küme oluşturur.
 
-    Aşağıdaki örnekte, **hayal fabricclusterrg** , Service Fabric kümesi için özel olarak oluşturulan kaynak grubunun adıdır. Laboratuvar ortamlarının oluşturuldukları kaynak grubu içinde kendi kendine dahil olduğunu unutmamak önemlidir. Bu, ortamı tanımlayan, yalnızca yeni oluşturulan kaynak grubu içindeki kaynaklara veya [Laboratuvar tarafından kullanılmak üzere yapılandırılmış sanal ağlara](devtest-lab-configure-vnet.md)erişebilecek olan şablona yol gösterir. Yukarıdaki bu örnek, aynı kaynak grubundaki tüm gerekli kaynakları oluşturur.
+    Aşağıdaki örnekte, **mysfabricclusterrg,** Service Fabric kümesi için özel olarak oluşturulan kaynak grubunun adıdır. Laboratuvar ortamlarının oluşturuldukları kaynak grubunda kendi kendine yeten bir ortam olduğunu unutmayın. Bu, yalnızca yeni oluşturulan kaynak grubundaki kaynaklara veya laboratuvar tarafından [kullanılmak üzere yapılandırılan sanal ağlardaki](devtest-lab-configure-vnet.md)kaynaklara erişebilen ortamı tanımlayan şablon anlamına gelir. Yukarıdaki örnek, aynı kaynak grubunda gerekli tüm kaynakları oluşturur.
 
     ![Küme oluşturuldu](./media/create-environment-service-fabric-cluster/cluster-created.png)
 
 ## <a name="start-or-stop-the-cluster"></a>Kümeyi başlatma veya durdurma
-Kümeyi DevTest Labs sayfasından veya DevTest Labs tarafından sunulan Service Fabric kümesi sayfasından başlatabilir veya durdurabilirsiniz. 
+Kümeyi DevTest Lab sayfasının kendisinden veya DevTest Labs tarafından sağlanan Service Fabric Cluster sayfasından başlatabilir veya durdurabilirsiniz. 
 
 ### <a name="from-the-devtest-lab-page"></a>DevTest Lab sayfasından
-Laboratuvar için DevTest Lab sayfasında kümeyi başlatabilir veya durdurabilirsiniz. 
+Laboratuvarınız için DevTest Lab sayfasında kümeyi başlatabilir veya durdurabilirsiniz. 
 
-1. Aşağıdaki görüntüde gösterildiği gibi Service Fabric kümesi için **üç nokta (...)** seçin: 
+1. Service Fabric kümesi için aşağıdaki resimde gösterildiği gibi **üç nokta (...)** seçin: 
 
     ![Küme için başlatma ve durdurma komutları](./media/create-environment-service-fabric-cluster/start-stop-on-devtest-lab-page.png)
 
-2. Kümeyi **başlatmak** ve **durdurmak** için bağlam menüsünde iki komut görürsünüz. Start komutu kümedeki tüm düğümleri başlatır. Durdur komutu bir kümedeki tüm düğümleri durdurur. Bir küme durdurulduktan sonra, Service Fabric kümesi hazır bir durumda kalır, ancak Başlat komutu laboratuvardaki kümede yeniden oluşturuluncaya kadar hiçbir düğüm kullanılamaz.
+2. Kümeyi **başlatmak** ve **durdurmak** için bağlam menüsünde iki komut görürsünüz. Başlangıç komutu kümedeki tüm düğümleri başlatır. Durdurma komutu kümedeki tüm düğümleri durdurur. Bir küme durdurulduktan sonra, Hizmet Kumaşı kümesinin kendisi hazır durumda kalır, ancak başlat komutu laboratuardaki küme üzerinde yeniden verilene kadar düğümler kullanılabilir.
 
-    Bir test ortamında Service Fabric kümesi kullanırken dikkat etmeniz gereken bazı noktalar vardır. Düğümler yeniden başlatıldıktan sonra Service Fabric kümesinin tamamen yeniden doldurulması biraz zaman alabilir. Başlangıçtan itibaren verilerin başlatılmasını sağlamak için, verilerin sanal makineye bağlı bir yönetilen diske kaydedilmesi gerekir. Ekli yönetilen disk kullanılırken performans açısından etkileri vardır; bu nedenle yalnızca test ortamları için önerilir. Veri depolama için kullanılan disk yedeklenmez, küme üzerinde durdur komutu verildiğinde veriler kaybolur.
+    Bir test ortamında Hizmet Kumaşı kümesi kullanırken dikkat edilmesi gereken birkaç nokta vardır. Düğümler yeniden başlatıldıktan sonra Service Fabric kümesinin tamamen yeniden sudalması biraz zaman alabilir. Verileri kapatmadan başlangıç olarak tutmak için, verilerin sanal makineye bağlı yönetilen bir diske kaydedilmesi gerekir. Ekli yönetilen bir disk kullanırken performans etkileri vardır, bu nedenle yalnızca test ortamları için önerilir. Veri depolama için kullanılan disk geri verilmezse, kümeüzerinde durdurma komutu verildiğinde veriler kaybolur.
 
-### <a name="from-the-service-fabric-cluster-page"></a>Service Fabric kümesi sayfasından 
-Kümeyi başlatmak veya durdurmak için başka bir yol vardır. 
+### <a name="from-the-service-fabric-cluster-page"></a>Service Fabric Cluster sayfasından 
+Kümeyi başlatmanın veya durdurmanın başka bir yolu daha vardır. 
 
-1. DevTest Lab sayfasındaki ağaç görünümünde Service Fabric kümenizi seçin. 
+1. DevTest Lab sayfasındaki ağaç görünümünde Hizmet Kumaşı kümenizi seçin. 
 
     ![Kümenizi seçin](./media/create-environment-service-fabric-cluster/select-cluster.png)
 
-2. Küme için **Service Fabric kümesi** sayfasında, kümeyi başlatmak veya durdurmak için araç çubuğundaki komutları görürsünüz. 
+2. Kümenin **Hizmet Kumaş Kümesi** sayfasında, kümeyi başlatmak veya durdurmak için araç çubuğunda komutlar görürsünüz. 
 
-    ![Service Fabric kümesi sayfasında komutları Başlat veya Durdur](./media/create-environment-service-fabric-cluster/start-stop-on-cluster-page.png)
+    ![Hizmet Kumaş Kümesi sayfasındaki komutları başlatma veya durdurma](./media/create-environment-service-fabric-cluster/start-stop-on-cluster-page.png)
 
-## <a name="configure-auto-startup-and-auto-shutdown-schedule"></a>Otomatik başlatma ve otomatik kapatılma zamanlamasını yapılandırma
-Service Fabric kümeler, bir zamanlamaya göre de başlatılabilir veya durdurulabilir. Bu deneyim, laboratuvardaki sanal makinelere yönelik deneyimle benzerdir. Para tasarrufu sağlamak için, varsayılan olarak, bir laboratuvarda oluşturulan her küme otomatik olarak laboratuvar [kapanması ilkesi](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy)tarafından tanımlanan saatte kapanır. Kümenin kapatılıp kapatılmayacağını belirterek veya kümenin kapatıldığı saati belirterek geçersiz kılabilirsiniz. 
+## <a name="configure-auto-startup-and-auto-shutdown-schedule"></a>Otomatik başlatma ve otomatik kapatma zamanlamasını yapılandırma
+Hizmet Kumaş kümeleri de başlatılabilir veya bir zamanlama üzerinde durdurulabilir. Bu deneyim, bir laboratuvardaki sanal makineler deneyimine benzer. Paradan tasarruf etmek için varsayılan olarak, laboratuvarda oluşturulan her küme, laboratuvar [kapatma ilkesi](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy)tarafından tanımlanan anda otomatik olarak kapanır. Kümenin kapatılması gerekip gerekmediğini belirterek veya kümenin kapatılma saatini belirterek geçersiz kılınabilirsiniz. 
 
-![Otomatik başlatma ve otomatik kapanmaya yönelik mevcut zamanlamalar](./media/create-environment-service-fabric-cluster/existing-schedules.png)
+![Otomatik başlatma ve otomatik kapatma için varolan zamanlamalar](./media/create-environment-service-fabric-cluster/existing-schedules.png)
 
-### <a name="opt-in-to-the-auto-start-schedule"></a>Otomatik başlatma zamanlamasını kabul et
-Başlatma zamanlamasını kabul etmek için aşağıdaki adımları uygulayın:
+### <a name="opt-in-to-the-auto-start-schedule"></a>Otomatik başlatma zamanlamasına katılma
+Başlangıç zamanlamasını tercih etmek için aşağıdaki adımları yapın:
 
-1. Sol taraftaki menüden **otomatik başlatma** seçeneğini belirleyin
-2. **Bu Service Fabric kümesinin otomatik başlatma için zamanlanmasını Izin ver**Için **Açık '** ı seçin. Bu sayfa yalnızca laboratuvar sahibinin kullanıcıların sanal makinelerini veya Service Fabric kümelerini otomatik olarak otomatik olarak açmasına izin verdiği durumlarda etkinleştirilir.
+1. Sol menüde **Otomatik başlat'ı** seçin
+2. **Bu hizmet kumaş kümesinin otomatik başlatma için zamanlanmasına izin ver'i**seçin. **On** Bu sayfa yalnızca laboratuvar sahibi kullanıcıların sanal makinelerini veya Service Fabric kümelerini otomatik olarak başlatmalarına izin verdiyse etkinleştirilir.
 3. Araç çubuğunda **Kaydet**’i seçin. 
 
     ![Otomatik yıldız sayfası](./media/create-environment-service-fabric-cluster/set-auto-start-settings.png)
 
-### <a name="configure-auto-shutdown-settings"></a>Otomatik kapanmaya yönelik ayarları Yapılandır 
-Kapatılacak ayarları değiştirmek için aşağıdaki adımları uygulayın:
+### <a name="configure-auto-shutdown-settings"></a>Otomatik kapatma ayarlarını yapılandırma 
+Kapatma ayarlarını değiştirmek için aşağıdaki adımları yapın:
 
-1. Sol menüde **otomatik olarak kapatmalar** ' yı seçin. 
-2. Bu sayfada, **etkin**' i seçerek otomatik kapatmayı **devre** dışı bırakabilirsiniz. 
-3. **'** In **etkin**' i seçtiyseniz, şu adımları izleyin:
-    1. Kapatılma **zamanını** belirtin.
-    2. Saat için saat **dilimini** belirtin. 
-    3. DevTest Labs 'in otomatik kapatmadan önce **bildirim** göndermesini isteyip istemediğinizi belirtin. 
-    4. Bildirim seçeneği için **Evet** ' i seçtiyseniz, bildirim göndermek Için **Web kancası URL 'sini** ve/veya **e-posta adresini** belirtin. 
+1. Sol menüde **Otomatik kapatma'yı** seçin. 
+2. Bu sayfada, **Etkin**için **Kapalı'yı** seçerek otomatik kapatmayı devre dışı bırakabilirsiniz. 
+3. **Etkin**için **On'u** seçtiyseniz aşağıdaki adımları izleyin:
+    1. Kapatma **saatini** belirtin.
+    2. Saatin **saat dilimini** belirtin. 
+    3. DevTest Labs'ın otomatik kapanmadan önce **bildirim** göndermesini isteyip istemediğinizi belirtin. 
+    4. Bildirim seçeneği için **Evet'i** seçtiyseniz, bildirim göndermek için **Webhook URL'sini** ve/veya **e-posta adresini** belirtin. 
     5. Araç çubuğunda **Kaydet**’i seçin.
 
         ![Otomatik kapatma sayfası](./media/create-environment-service-fabric-cluster/auto-shutdown-settings.png)
 
-## <a name="to-view-nodes-in-the-service-fabric-cluster"></a>Service Fabric kümesindeki düğümleri görüntülemek için
-Daha önce adımlarda gördüğünüz Service Fabric kümesi sayfası DevTest Labs sayfasına özgüdür. Bu, kümedeki düğümleri göstermez. Küme hakkında daha fazla bilgi görmek için şu adımları izleyin:
+## <a name="to-view-nodes-in-the-service-fabric-cluster"></a>Hizmet Kumaşı kümesindeki düğümleri görüntülemek için
+Daha önceki adımlarda gördüğünüz Hizmet Kumaşı küme sayfası DevTest Labs sayfasına özgüdür. Kümedeki düğümleri göstermez. Küme hakkında daha fazla bilgi görmek için aşağıdaki adımları izleyin:
 
-1. Laboratuvarınızın **DevTest Lab** sayfasında, **sanal makinelerim** bölümünde ağaç görünümünde **kaynak grubunu** seçin.
+1. Laboratuvarınızın **DevTest Laboratuvarı** sayfasında, **sanal makinelerim** bölümündeki ağaç görünümündeki **kaynak grubunu** seçin.
 
     ![Kaynak grubu seçin](./media/create-environment-service-fabric-cluster/select-resource-group.png)
-2. **Kaynak grubu** sayfasında, kaynak grubundaki tüm kaynakları bir listede görürsünüz. Listeden **Service Fabric kümenizi** seçin. 
+2. Kaynak **Grubu** sayfasında, kaynak grubundaki tüm kaynakları bir listede görürsünüz. Listeden **Hizmet Kumaşı kümenizi** seçin. 
 
-    ![Listeden kümenizi seçin](./media/create-environment-service-fabric-cluster/select-cluster-resource-group-page.png)
-3. Kümeniz için **Service Fabric kümesi** sayfasını görürsünüz. Bu, Service Fabric sağladığı sayfasıdır. Düğümler, düğüm türleri vb. gibi kümelerle ilgili tüm bilgileri görürsünüz.
+    ![Listede kümenizi seçin](./media/create-environment-service-fabric-cluster/select-cluster-resource-group-page.png)
+3. Kümeniz için **Hizmet Kumaş Kümesi** sayfasını görürsünüz. Bu, Hizmet Kumaşı'nın sağladığı sayfadır. Düğümler, düğüm türleri, vb. gibi kümeler hakkındaki tüm bilgileri görürsünüz.
 
-    ![Service Fabric kümesi giriş sayfası](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
+    ![Servis Kumaş Kümesi giriş sayfası](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ortamlar hakkındaki ayrıntılar için aşağıdaki makalelere bakın: 
+Ortamlar hakkında ayrıntılar için aşağıdaki makalelere bakın: 
 
 - [Azure Resource Manager şablonları ile çoklu VM ortamları ve PaaS kaynakları oluşturma](devtest-lab-create-environment-from-arm.md)
-- [Azure DevTest Labs ortak ortamları yapılandırma ve kullanma](devtest-lab-configure-use-public-environments.md)
+- [Azure DevTest Labs'da ortak ortamları yapılandırma ve kullanma](devtest-lab-configure-use-public-environments.md)

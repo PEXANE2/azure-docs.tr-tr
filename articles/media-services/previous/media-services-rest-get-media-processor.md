@@ -1,6 +1,6 @@
 ---
-title: REST kullanarak medya Işlemcisi örneği alma | Microsoft Docs
-description: Azure Media Services için medya içeriğini kodlamak, dönüştürmek, şifrelemek veya şifresini çözmek için bir medya işlemcisi bileşeni oluşturmayı öğrenin.
+title: REST kullanarak Medya İşlemci örneği nasıl alınır | Microsoft Dokümanlar
+description: Azure Medya Hizmetleri için medya içeriğini kodlamak, biçimlendirmek, şifrelemek veya şifresini çözmek için medya işlemcisi bileşenini nasıl oluşturabileceğinizi öğrenin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 3d7b3922c9bb7eb79cd6436ba1b265714678fcc8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774898"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Medya Işlemcisi örneği alma
+# <a name="how-to-get-a-media-processor-instance"></a>Medya İşlemcisi örneği nasıl alınır?
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
-> * [REST](media-services-rest-get-media-processor.md)
+> * [Geri kalanı](media-services-rest-get-media-processor.md)
 > 
 > 
 
 ## <a name="overview"></a>Genel Bakış
-Medya Işlemcileri kodlama, biçim dönüştürme, şifreleme veya medya içeriğini çözme gibi belirli bir video veya ses işleme görevini işleyen bir bileşendir. Media Services gönderilen tüm görevler, video veya ses içeriğini kodlamak, şifrelemek veya dönüştürmek için bir medya işlemcisi gerektirir. 
+Medya İşlemcileri, medya içeriğini kodlama, biçim dönüştürme, şifreleme veya şifre çözme gibi belirli bir video veya ses işleme görevini işleyen bir bileşendir. Medya Hizmetleri'ne gönderilen tüm görevler, video veya ses içeriğini kodlamak, şifrelemek veya dönüştürmek için bir ortam işlemcisi gerektirir. 
 
-## <a name="azure-media-processors"></a>Azure Medya işlemcileri 
+## <a name="azure-media-processors"></a>Azure ortam işlemcileri 
 
-Aşağıdaki konuda medya işlemcilerin listesi verilmiştir:
+Aşağıdaki konu, ortam işlemcilerinin listesini sağlar:
 
-* [Medya işlemcilerini kodlama](scenarios-and-availability.md#encoding-media-processors)
-* [Analytics medya işlemcileri](scenarios-and-availability.md#analytics-media-processors)
+* [Kodlama medya işleyicileri](scenarios-and-availability.md#encoding-media-processors)
+* [Analiz medya işlemcileri](scenarios-and-availability.md#analytics-media-processors)
 
 >[!NOTE]
->Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
+>Medya Hizmetleri'ndeki varlıklara erişirken, HTTP isteklerinizde belirli üstbilgi alanları ve değerleri belirlemeniz gerekir. Daha fazla bilgi için Medya [Hizmetleri REST API Geliştirme kurulumu'na](media-services-rest-how-to-use.md)bakın.
 
-## <a name="connect-to-media-services"></a>Medya Hizmetleri'yle bağlantı kurma
+## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
 
-AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
+AMS API'sine nasıl bağlanabileceğiniz hakkında bilgi için Azure [AD kimlik doğrulaması yla Azure Medya Hizmetleri API'sine eriş'e](media-services-use-aad-auth-to-access-ams-api.md)bakın. 
 
 
-## <a name="get-a-media-processor"></a>Medya işlemcisi al
+## <a name="get-a-media-processor"></a>Ortam işlemcisi alın
 
-Aşağıdaki REST çağrısı, bir medya işlemcisi örneğinin ada göre nasıl alınacağını gösterir (Bu durumda, **Media Encoder Standard**). 
+Aşağıdaki REST çağrısı, bir medya işlemciörneğinin ada göre nasıl alındığını gösterir (bu durumda, **Media Encoder Standard).** 
 
 İstek:
 
@@ -84,9 +84,9 @@ Yanıt:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Bir medya işlemcisi örneğinin nasıl alınacağını öğrenmiş olduğunuza göre, bir varlığı kodlamak için Media Encoder Standard nasıl kullanacağınızı gösteren [bir varlık kodlama](media-services-rest-get-started.md) makalesine gidin.
+Artık bir ortam işlemci örneğini nasıl elde edebilirsiniz bildiğinize göre, bir varlığı kodlamak için Media Encoder Standardını nasıl kullanacağınızı gösteren [Bir Varlık](media-services-rest-get-started.md) makalesini Nasıl Kodlarsınız'a gidin.
 

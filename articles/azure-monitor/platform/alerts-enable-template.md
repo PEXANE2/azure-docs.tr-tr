@@ -1,35 +1,35 @@
 ---
-title: Azure 'da Kaynak Yöneticisi şablonuyla klasik bir ölçüm uyarısı oluşturma
-description: E-posta veya Web kancası ile bildirim almak üzere klasik bir ölçüm uyarısı oluşturmak için Kaynak Yöneticisi şablonunu nasıl kullanacağınızı öğrenin.
+title: Kaynak Yöneticisi şablonuyla Azure'da klasik bir metrik uyarı oluşturma
+description: E-posta veya webhook ile bildirim almak için klasik bir metrik uyarı oluşturmak için Kaynak Yöneticisi şablonu nasıl kullanacağınızı öğrenin.
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
 ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037233"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu ile klasik ölçüm uyarısı oluşturma
 > [!WARNING]
 > 
-> Bu makalede Kaynak Yöneticisi şablonları kullanılarak **Klasik ölçüm uyarıları** oluşturulması açıklanmaktadır. Klasik uyarılar Ağustos 2019 ' de kullanımdan kaldırılmıştır ve 2020 Haziran 'da tam kullanım dışı olarak ayarlanmıştır. Yeni klasik uyarılar Genel Azure oluşturamazsınız. Azure 'un bazı bölgesel sürümlerinde seçeneği hala olabilir, ancak bunun yerine şablonları kullanarak [daha yeni ölçüm uyarıları](../../azure-monitor/platform/alerts-metric-near-real-time.md) oluşturmanızı öneririz. [Bu makalede](alerts-metric-create-templates.md) ayrıntılar sağlanmaktadır.
+> Bu makalede, Kaynak Yöneticisi **şablonlarını** kullanarak klasik metrik uyarılar oluşturulması açıklanmaktadır. Klasik uyarılar Ağustos 2019'da kullanımdan kaldırıldı ve Haziran 2020'de tamamen küçümsecek şekilde ayarlandı. Azure'da yeni klasik uyarılar oluşturamazsınız. Azure'un bazı bölgesel sürümleri hala bu seçeneç olabilir, ancak bunun yerine mümkünse şablonları kullanarak [daha yeni metrik uyarılar](../../azure-monitor/platform/alerts-metric-near-real-time.md) oluşturmanızı öneririz. [Bu makalede](alerts-metric-create-templates.md) ayrıntıları sağlar.
 >
 
-Bu makalede, Azure klasik ölçüm uyarılarını yapılandırmak için bir [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Bu, tüm kaynakların doğru şekilde izlendiğinden emin olmak için kaynaklardaki uyarıları otomatik olarak ayarlamanıza olanak sağlar.
+Bu makalede, Azure klasik metrik uyarılarını yapılandırmak için Azure [Kaynak Yöneticisi şablonu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Bu, tüm kaynakların doğru şekilde izlenmesini sağlamak için oluşturulduklarında kaynaklarınızda otomatik olarak uyarılar ayarlamanızı sağlar.
 
 Temel adımlar aşağıdaki gibidir:
 
-1. Uyarının nasıl oluşturulacağını açıklayan bir JSON dosyası olarak şablon oluşturun.
-2. [Herhangi bir dağıtım yöntemini kullanarak şablonu dağıtın](../../azure-resource-manager/templates/deploy-powershell.md).
+1. Uyarının nasıl oluşturulabildiğini açıklayan bir JSON dosyası olarak şablon oluşturun.
+2. [Herhangi bir dağıtım yöntemini kullanarak şablonu dağıtın.](../../azure-resource-manager/templates/deploy-powershell.md)
 
-Aşağıda, tek başına bir uyarı için önce bir Kaynak Yöneticisi şablonu oluşturmayı ve sonra başka bir kaynağın oluşturulması sırasında bir uyarının nasıl oluşturulacağını anladık.
+Aşağıda, önce bir uyarı için önce bir Kaynak Yöneticisi şablonunun, ardından başka bir kaynağın oluşturulması sırasında bir uyarının nasıl oluşturulabileceğimizi açıklıyoruz.
 
-## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Klasik ölçüm uyarısı için Kaynak Yöneticisi şablonu
-Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.Insights/alertRules` türünde bir kaynak oluşturun ve ilgili tüm özellikleri doldurmanız gerekir. Aşağıda, bir uyarı kuralı oluşturan bir şablon verilmiştir.
+## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Klasik bir metrik uyarı için Kaynak Yöneticisi şablonu
+Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, bir tür `Microsoft.Insights/alertRules` kaynağı oluşturmak ve ilgili tüm özellikleri doldurun. Aşağıda bir uyarı kuralı oluşturan bir şablon yer almaktadır.
 
 ```json
 {
@@ -176,10 +176,10 @@ Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.
 }
 ```
 
-Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada bulunabilir](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Bir uyarı kuralı için şema ve özellikleri bir açıklama [burada mevcuttur.](https://msdn.microsoft.com/library/azure/dn933805.aspx)
 
-## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Klasik ölçüm uyarısı olan bir kaynak için Kaynak Yöneticisi şablonu
-Kaynak Yöneticisi şablonundaki bir uyarı, genellikle bir kaynak oluştururken uyarı oluştururken kullanışlıdır. Örneğin, bir sanal makineyi her dağıttığınızda "CPU% > 80" kuralının ayarlanmış olmasını sağlamak isteyebilirsiniz. Bunu yapmak için, uyarı kuralını VM şablonunuz için kaynak dizisine bir kaynak olarak eklersiniz ve `dependsOn` özelliğini VM kaynak KIMLIĞI ' ne kullanarak bir bağımlılık eklersiniz. Aşağıda, bir Windows sanal makinesi oluşturan ve CPU kullanımı %80 üzerinde kaldığında abonelik yöneticilerine bildirimde bulunan bir uyarı ekleyen bir tam örnek verilmiştir.
+## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Klasik metrik uyarıiçeren bir kaynak için Kaynak Yöneticisi şablonu
+Kaynak Yöneticisi şablonundaki bir uyarı, kaynak oluştururken genellikle bir uyarı oluştururken kullanışlıdır. Örneğin, sanal makine dağıttyaptığınızda "CPU % > 80" kuralının ayarlandığından emin olmak isteyebilirsiniz. Bunu yapmak için, VM şablonunuz için kaynak dizisinde bir kaynak olarak uyarı `dependsOn` kuralını ekler ve özelliği vm kaynak kimliğine kullanarak bir bağımlılık eklersiniz. Burada bir Windows VM oluşturur ve CPU kullanımı% 80'in üzerine çıktığında abonelik yöneticileri bildiren bir uyarı ekler tam bir örnek.
 
 ```json
 {
@@ -400,6 +400,6 @@ Kaynak Yöneticisi şablonundaki bir uyarı, genellikle bir kaynak oluştururken
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Uyarılar hakkında daha fazla bilgi edinin](alerts-overview.md)
-* Kaynak Yöneticisi şablonunuza [Tanılama ayarları ekleme](../../azure-monitor/platform/diagnostic-settings-template.md)
-* JSON sözdizimi ve özellikleri için bkz. [Microsoft. Insights/alertrules](/azure/templates/microsoft.insights/alertrules) şablon başvurusu.
+* Kaynak Yöneticisi şablonunuza [Tanılama Ayarları ekleme](../../azure-monitor/platform/diagnostic-settings-template.md)
+* JSON sözdizimi ve özellikleri için [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) şablon ubaşvurusu'na bakın.
 

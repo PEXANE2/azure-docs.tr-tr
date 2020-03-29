@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386196"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Bir Node.js uygulaması derleme ve Azure Cloud Service’e dağıtma
@@ -35,7 +35,7 @@ Uygulama basit bir "hello world" uygulamasıdır:
 > [!NOTE]
 > Bu öğretici Windows gerektiren Azure PowerShell’i kullanır.
 
-* [Azure PowerShell]'i yükleyip yapılandırın.
+* [Azure Powershell'i]yükleyin ve yapılandırın.
 * [.NET 2.7 için Azure SDK’sını] indirip yükleyin. Yükleme kurulumunda şunları seçin:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -49,7 +49,7 @@ Temel Node.js iskelesiyle birlikte yeni bir Azure Cloud Service projesi oluştur
 
         New-AzureServiceProject helloworld
 
-    ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
+    ![New-AzureService helloworld komutunun sonucu][The result of the New-AzureService helloworld command]
 
     **New-AzureServiceProject** cmdlet’i bir Node.js uygulamasını Cloud Service’te yayımlamaya yönelik basit bir yapı oluşturur. Azure’da yayımlamak için gerekli yapılandırma dosyalarını içerir. Cmdlet ayrıca çalışma dizininizi hizmetin diziniyle değiştirir.
 
@@ -120,7 +120,7 @@ Yayımlama başarılı olduktan sonra aşağıdakine benzer bir yanıt görürs�
 
 Dağıtım tamamlandıktan sonra bir tarayıcı penceresi açın ve bulut hizmetine gidin.
 
-![A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.][A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]
+![Hello world sayfasını gösteren bir tarayıcı penceresi; URL sayfanın Azure’da barındırıldığını gösterir.][A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]
 
 Uygulamanız artık Azure üzerinde çalışıyor.
 
@@ -161,7 +161,7 @@ Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi].
 
 [Azure Websites, Cloud Services ve Virtual Machines karşılaştırması]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [basit bir web uygulaması kullanmayı]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Azure Powershell]: /powershell/azureps-cmdlets-docs
 [.NET 2.7 için Azure SDK’sını]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [PowerShell’i bağlayın]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

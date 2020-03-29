@@ -1,7 +1,7 @@
 ---
 title: Video Indexer nedir?
 titleSuffix: Azure Media Services
-description: Bu makale, Azure Media Services Video Indexer hizmetine genel bir bakış sunar.
+description: Bu makalede, Azure Medya Hizmetleri Video Dizinleyici hizmetine genel bir bakış sunulmaktadır.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,111 +11,111 @@ ms.topic: article
 ms.date: 02/02/2020
 ms.author: juliako
 ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163599"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer nedir?
 
-Video Indexer (VI), Azure Media Services AI çözümüdür ve Azure bilişsel hizmetler markasının bir parçasıdır. Video Indexer, birden fazla kanala (ses, Vocal, görsel) göre makine öğrenimi modellerini kullanarak derin içgörüler (veri çözümleme veya kodlama becerileri gerektirmez) ayıklayabilme olanağı sağlar. Modelleri daha fazla özelleştirebilir ve eğitebilirsiniz. Hizmet derin arama imkanı sunar, işlem maliyetlerini azaltır, yeni para kullanımı fırsatlarını azaltır ve büyük video arşivleri üzerinde yeni kullanıcı deneyimleri oluşturur (düşük girişli engelleri olan).
+Video Indexer (VI), Azure Medya Hizmetleri AI çözümüdür ve Azure Bilişsel Hizmetler markasının bir parçasıdır. Video Indexer birden fazla kanal (ses, vokal, görsel) dayalı makine öğrenme modelleri kullanarak derin anlayışlar (veri analizi veya kodlama becerileri gerek kalmadan) ayıklamak için yeteneği sağlar. Modelleri daha da özelleştirebilir ve eğitebilirsiniz. Bu hizmet, derin arama sağlar, işletme maliyetlerini azaltır, yeni para kazanma fırsatları sağlar ve büyük video arşivlerinde (düşük giriş engelleri yle) yeni kullanıcı deneyimleri oluşturur.
 
-Video Indexer öngörüleri çıkarmaya başlamak için bir hesap oluşturmanız ve videoları yüklemeniz gerekir. Videolarınızı Video Indexer yüklediğinizde, farklı AI modellerini çalıştırarak hem görselleri hem de sesi analiz edersiniz. Video Indexer, video, AI modelleri tarafından ayıklanan Öngörüler ile analiz edilir.
+Video Indexer ile öngörüler ayıklamaya başlamak için bir hesap oluşturmanız ve video yüklemeniz gerekir. Video Indexer'a videolarınızı yüklediğinizde, farklı AI modelleri çalıştırarak hem görselliği hem de sesi analiz eder. Video Indexer videonuzu analiz ettikçe, AI modelleri tarafından çıkarılan öngörüler.
 
-Aşağıdaki diyagram, Video Indexer arka uçta nasıl çalıştığına ilişkin teknik bir açıklama değildir.
+Aşağıdaki diyagram, Video Indexer'ın arka uçta nasıl çalıştığına ilişkin teknik bir açıklama değil, bir çizimdir.
 
-![Azure Media Services Video Indexer akış diyagramı](./media/video-indexer-overview/model-chart.png)
+![Azure Medya Hizmetleri Video Dizinleyici akış diyagramı](./media/video-indexer-overview/model-chart.png)
 
 
 ## <a name="compliance-privacy-and-security"></a>Uyumluluk, Gizlilik ve Güvenlik
 
-Önemli bir anımsatıcı olarak, Video Indexer kullanmanız için geçerli olan yasaların tümüne uymanız gerekir ve Video Indexer veya herhangi bir Azure hizmetini diğerlerinin haklarını ihlal eden veya başkalarına zararlı olabilecek bir biçimde kullanamazsınız.
+Önemli bir hatırlatma olarak, Video Dizinleyici'yi kullanımınızda geçerli tüm yasalara uymanız gerekir ve Video Dizinleyici'yi veya herhangi bir Azure hizmetini başkalarının haklarını ihlal eden veya başkaları için zararlı olabilecek bir şekilde kullanamazsınız.
 
-Video Indexer herhangi bir videoyu/görüntüyü karşıya yüklemeden önce, video/görüntüdeki tüm gerekli haklara (varsa), verilerin Video Indexer ve Azure 'da kullanım, işleme ve depolama için gerekli olduğu durumlar dahil olmak üzere videoyu/görüntüsünü kullanmak için uygun haklara sahip olmanız gerekir. Bazı daireler, koleksiyon için özel yasal gereksinimler (örneğin, biyometrik veriler gibi belirli veri kategorilerinin çevrimiçi olarak işlenmesi ve depolanması) uygulayabilir. Video Indexer ve Azure 'u özel yasal gereksinimlere yönelik herhangi bir veri konusunun işleme ve depolama alanı için kullanmadan önce, sizin için geçerli olabilecek her türlü meşru gereksinimlerle uyumluluğa sahip olduğunuzdan emin olmanız gerekir.
+Video Dizinleyici'ye herhangi bir video/resim yüklemeden önce, video/görüntüyü kullanmadan önce, yasaların gerektirdiği durumlarda, video/görüntüdeki bireylerin (varsa) verilerinin Video Dizinleyici ve Azure'da kullanımı, işlenmesi ve depolanması için gerekli tüm izinler de dahil olmak üzere, videoyu/görüntüyü kullanmak için gereken tüm haklara sahip olmalısınız. Bazı yargı bölgeleri, biyometrik veriler gibi belirli veri kategorilerinin toplanması, çevrimiçi işlenmesi ve depolanması için özel yasal gereklilikler uygulayabilir. Özel yasal gerekliliklere tabi tüm verilerin işlenmesi ve saklanması için Video Indexer ve Azure'u kullanmadan önce, sizin için geçerli olabilecek bu tür yasal gerekliliklere uygunluğu sağlamalısınız.
 
-Video Indexer uyumluluk, gizlilik ve güvenlik hakkında bilgi edinmek için lütfen Microsoft [Güven Merkezi](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)' ni ziyaret edin. Microsoft 'un gizlilik yükümlülüklerinde, verilerinizi silme dahil olmak üzere veri işleme ve bekletme uygulamaları için lütfen Microsoft 'un [Gizlilik bildirimi](https://privacy.microsoft.com/PrivacyStatement), [çevrimiçi hizmet koşulları](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") ve [veri işleme eki](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") gözden geçirin. Video Indexer kullanarak, OST, DPA ve gizlilik bildirimiyle bağlanmayı kabul etmiş olursunuz.
+Video Dizinleyici'de uyumluluk, gizlilik ve güvenlik hakkında bilgi edinmek için lütfen Microsoft [Güven Merkezi'ni](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)ziyaret edin. Microsoft'un gizlilik yükümlülükleri, verilerinizin nasıl silindigini içeren veri işleme ve saklama uygulamaları için lütfen Microsoft' un [Gizlilik Bildirimini,](https://privacy.microsoft.com/PrivacyStatement) [Çevrimiçi Hizmetler Koşulları'nı](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") ve [Veri İşleme Eki 'ni](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") inceleyin. Video Indexer'ı kullanarak, OST, DPA ve Gizlilik Bildirimi'ne bağlı olmayı kabul edeyim.
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Video Indexer ile ne yapabilirim?
 
-Video Indexer içgörüler aşağıdakiler arasında birçok senaryoya uygulanabilir:
+Video Indexer'ın öngörüleri birçok senaryoya uygulanabilir:
 
-* *Derin arama*: video kitaplığı genelinde arama deneyimini geliştirmek için videodan ayıklanan öngörüleri kullanın. Örneğin, konuşulan sözcüklerin ve yüzlerin dizininin oluşturulması, bir kişinin belirli kelimeleri veya iki kişinin birlikte görüldüğü bir videoda dakika bulmayla ilgili arama deneyimini etkinleştirebilir. Videolardan bu tür Öngörüler temelinde arama, haber kurumları, eğitim kurum, yayımcılar, eğlence içerik sahipleri, kurumsal LOB uygulamaları ve genel olarak, kullanıcıların aramaları gereken bir video kitaplığı olan herhangi bir sektör için geçerlidir.
-* *İçerik oluşturma*: İçeriğinizden çıkaran öngörülere göre, daha fazla bilgi video Indexer edinin, Re, sosyal medya içeriğini veya haberleri vurgulayın. Kişiler ve etiket görünümleri için ana kareler, sahneler işaretçileri ve zaman damgaları oluşturma işlemini çok daha yumuşak ve daha kolay hale getirir ve oluşturmakta olduğunuz içerik için ihtiyacınız olan videonun bölümlerine almanızı sağlar.
-* *Erişilebilirlik*: içeriğinizi Engelli kişiler için kullanılabilir hale getirmek isteyip istemediğinizi veya içeriğinizi farklı diller kullanılarak farklı bölgelere dağıtmak istiyorsanız, video Indexer tarafından sağlanan döküm ve çeviriyi birden çok dilde kullanabilirsiniz.
-* Paraya *getirme: video Indexer*videoların değerini artırmaya yardımcı olabilir. Örneğin, ad gelirini (haber medyası, sosyal medya vb.) kullanan sektörler, ayıklanan öngörüleri ad sunucusuna ek sinyaller olarak kullanarak, ilgili reklamları sunabilir.
-* *İçerik denetleme*: kullanıcılarınızın uygunsuz içeriklerden güvenli kalmasını sağlamak ve yayımladığınız içeriğin kuruluşunuzun değerleriyle eşleştiğinden emin olmak için metin ve görsel içerik denetleme modellerini kullanın. Belirli videoları otomatik olarak bloke edebilir veya içeriğinizi içerik hakkında uyarır.
-* *Öneriler*: video öngörüleri, kullanıcılara ilgili video dakikanızı ayırarak kullanıcı etkileşimini geliştirmek için kullanılabilir. Her videoyu ek meta verilerle etiketleyerek, kullanıcılara en uygun Videoları ve bunların ihtiyaçlarını karşılayacak şekilde videonun parçalarını vurgulamanız önerilir.
+* *Derin arama*: Video kitaplığındaki arama deneyimini geliştirmek için videodan çıkarılan bilgileri kullanın. Örneğin, konuşulan sözcükleri ve yüzleri dizine ekleyerek, bir kişinin belirli sözcükleri konuştuğu veya iki kişinin birlikte görüldüğü bir videoda anları bulma nın arama deneyimini etkinleştirebilirsiniz. Videolardan elde edilen bu tür öngörülere dayalı arama, haber ajansları, eğitim enstitüleri, yayıncılar, eğlence içerik sahipleri, kurumsal LOB uygulamaları ve genel olarak kullanıcıların karşı araması gereken bir video kitaplığı olan tüm sektör için geçerlidir.
+* *İçerik oluşturma*: Video Indexer'ın içeriğinizden çıkardığı kavrayışlara dayalı olarak fragmanlar oluşturun, makaraları, sosyal medya içeriğini veya haber kliplerini vurgulayın. Anahtar kareler, sahne işaretçileri ve kişiler ve etiket görünümleri için zaman damgaları oluşturma işlemini çok daha düzgün ve kolay hale getirir ve oluşturduğunuz içerik için videonun gereken bölümlerine ulaşabilmenizi sağlar.
+* *Erişilebilirlik*: İçeriğinizi engelli kişiler için kullanılabilir hale getirmek veya içeriğinizin farklı diller kullanarak farklı bölgelere dağıtılmasını istiyorsanız, video dizinleyici tarafından sağlanan transkripsiyon ve çeviriyi birden çok dilde kullanabilirsiniz.
+* *Para kazanma*: Video Indexer videoların değerini artırmaya yardımcı olabilir. Örneğin, reklam gelirine (haber medyası, sosyal medya vb.) güvenen sektörler, çıkarılan istatistikleri reklam sunucusuna ek sinyaller olarak kullanarak alakalı reklamlar sunabilir.
+* *İçerik Moderasyonu*: Kullanıcılarınızın uygunsuz içerikten korunmasını sağlamak ve yayınladığınız içeriğin kuruluşunuzun değerleriyle eşleştiğini doğrulamak için metinsel ve görsel içerik moderasyon modellerini kullanın. Belirli videoları otomatik olarak engelleyebilir veya kullanıcılarınızı içerik hakkında uyarabilirsiniz.
+* *Öneriler*: Video istatistikleri, kullanıcılara alakalı video anlarını vurgulayarak kullanıcı etkileşimini geliştirmek için kullanılabilir. Her videoyu ek meta verilerle etiketleyerek, kullanıcılara en alakalı videoları önerebilir ve videonun gereksinimlerini karşılayacak bölümlerini vurgulayabilirsiniz.
 
 ## <a name="features"></a>Özellikler
 
-Aşağıdaki listede video ve ses modellerini Video Indexer kullanarak videolarınızdan alabileceğiniz Öngörüler gösterilmektedir:
+Aşağıdaki liste, Video Indexer video ve ses modellerini kullanarak videolarınızdan alabileceğiniz öngörüleri gösterir:
 
-### <a name="video-insights"></a>Video öngörüleri
+### <a name="video-insights"></a>Video istatistikleri
 
 * **Yüz algılama**: Videoda görünen yüzleri algılar ve gruplandırır.
-* **Ünlüklik kimliği**: video Indexer dünya genelindeki dünya liderleri, aktörler, kadın, atlet, araştırmacılar, iş ve teknik liderler gibi 1.000.000 ünlükler üzerinden otomatik olarak tanımlar. Bu ünlüler hakkındaki veriler ayrıca çeşitli web sitelerinde (ıMDB, Vikipler, vb.) bulunabilir.
-* **Hesap tabanlı yüz tanıma**: Video Indexer belirli bir hesap için bir model eğitir. Daha sonra eğitilen modele göre videodaki yüzeyleri tanır. Daha fazla bilgi için, [video Indexer Web sitesinden kişi modelini özelleştirme](customize-person-model-with-website.md) ve [video Indexer API 'Si ile bir kişi modelini özelleştirme](customize-person-model-with-api.md)bölümüne bakın.
-* **Yüzler Için küçük resim ayıklama** ("en iyi yüz"): her bir yüzey grubundaki en iyi yakalanan yüzeyi (kalite, boyut ve en yüksek konuma göre) otomatik olarak tanımlar ve bunu bir görüntü varlığı olarak ayıklar.
-* **Görsel metin tanıma** (OCR): videoda görsel olarak görüntülenen metni ayıklar.
+* **Ünlü kimliği**: Video Indexer, dünya liderleri, aktörler, aktrisler, sporcular, araştırmacılar, iş dünyası ve teknoloji liderleri gibi 1 milyondan fazla ünlüyü otomatik olarak tanımlar. Bu ünlüler hakkında veriler de çeşitli web sitelerinde bulunabilir (IMDB, Vikipedi, vb).
+* **Hesap tabanlı yüz tanıma**: Video Indexer belirli bir hesap için bir model eğitir. Daha sonra videodaki yüzleri eğitimli modele göre tanır. Daha fazla bilgi için, [Video Indexer web sitesinden bir Kişi modelini özelleştir](customize-person-model-with-website.md) ve [Video Dizinleyici API ile Bir Kişi modelini özelleştirin.](customize-person-model-with-api.md)
+* **Yüzler için küçük resim ekstraksiyonu** ("en iyi yüz"): Her yüz grubunda yakalanan en iyi yüzü otomatik olarak tanımlar (kalite, boyut ve ön konuma göre) ve bir görüntü varlığı olarak ayıklar.
+* **Görsel metin tanıma** (OCR): Videoda görsel olarak görüntülenen metni ayıklar.
 * **Görsel içerik moderasyonu**: Yetişkinlere yönelik ve/veya müstehcen görselleri algılar.
 * **Etiket belirleme**: Görüntülenen görsel nesneleri ve eylemleri belirler.
-* **Sahne segmentleri**: görsel ipuçları temelinde videoda bir sahnenin ne zaman değişiklik olduğunu belirler. Bir sahne, tek bir olay gösterir ve bu, anlam ile ilgili olan bir dizi ardışık görünüm tarafından oluşur.
-* **Görüntü algılama**: görsel ipuçları temelinde videoda bir çekneye ne zaman değişiklik olduğunu belirler. Bir görüntü, aynı hareket resmi kamerasından alınan bir çerçeve dizisidir. Daha fazla bilgi için bkz. [sahneler, görüntüleri ve ana kareler](scenes-shots-keyframes.md).
+* **Sahne segmentasyonu**: Görsel ipuçlarına göre videodaki bir sahnenin ne zaman değiştiğini belirler. Bir sahne tek bir olayı betimler ve bir dizi ardışık çekimden oluşur, bunlar anlamsal olarak ilişkilidir.
+* **Çekim algılama**: Görsel ipuçlarına göre videoda bir çekimin ne zaman değiştiğini belirler. Çekim, aynı sinema kamerasından alınan bir dizi karedir. Daha fazla bilgi için [Sahneler, çekimler ve anahtar kareler](scenes-shots-keyframes.md)hakkında bilgi alabiliyorum.
 * **Siyah kare algılama**: Videoda yer alan siyah kareleri belirler.
 * **Ana kare ayıklama**: Videodaki kararlı ana kareleri algılar.
-* **Jenerik**KREDISI: TV programları ve filminin sonunda, hareketli kredilerin başlangıcını ve bitişini tanımlar.
-* **Animasyonlu karakter algılama** (Önizleme): bilişsel [Hizmetler özel vizyonu](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)ile tümleştirme aracılığıyla animasyonlu içerikte karakterlerin algılanması, gruplandırılması ve tanınması. Daha fazla bilgi için bkz. [animasyonlu karakter algılama](animated-characters-recognition.md).
-* **Düzenleme görüntüsü türü algılama**: görüntülerini türlerine göre etiketleme (geniş görüntü, orta görüntü, yakın, büyük bir kapanış, iki görüntü, birden fazla kişi, dış mekve inkapıda vb.). Daha fazla bilgi için bkz. [düzenleme görüntüsü türü algılama](scenes-shots-keyframes.md#editorial-shot-type-detection).
+* **Rolling credits**: TV şovları ve filmlerin sonunda ki haddeleme jeneriğinin başlangıcını ve sonunu tanımlar.
+* **Animasyonlu karakter algılama** (önizleme): Algılama, gruplandırma ve Bilişsel Hizmetler [özel vizyonu](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)ile entegrasyon yoluyla animasyonlu içerik karakterlerin tanınması. Daha fazla bilgi için [Animasyonkarakter algılama'ya](animated-characters-recognition.md)bakın.
+* **Editoryal çekim türü algılama**: Kendi türüne göre etiketleme çekimleri (geniş çekim, orta çekim, yakın çekim, aşırı yakın çekim, iki atış, birden fazla kişi, açık ve kapalı vb. gibi). Daha fazla bilgi [için, Editoryal çekim türü algılama](scenes-shots-keyframes.md#editorial-shot-type-detection)bakın.
 
-### <a name="audio-insights"></a>Audio Insights
+### <a name="audio-insights"></a>Ses öngörüleri
 
-* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Portekizce (Brezilya). Dil güvenle tanımlanamıyorsa, Video Indexer konuşulan dilin Ingilizce olduğunu varsayar. Daha fazla bilgi için bkz. [dil tanımlama modeli](language-identification-model.md).
-* **Çok dilli konuşma tanımlama ve** döküm (Önizleme): ses 'tan farklı kesimlerde konuşulan dili otomatik olarak tanımlar. Bu, oluşturulacak medya dosyasının her bir segmentini gönderir ve ardından geri alma işlemi ile Birleşik bir dökümü yeniden birleştirir. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
-* **Ses dökümü**: konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunur.
+* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Brezilya Portekizcesi bulunmaktadır. Dil güvenle tanımlanamazsa, Video Indexer konuşulan dilin İngilizce olduğunu varsayar. Daha fazla bilgi için [Dil tanımlama modeline](language-identification-model.md)bakın.
+* **Çok dilli konuşma tanımlama ve transkripsiyon** (önizleme): Sesten farklı segmentlerde konuşulan dili otomatik olarak tanımlar. Medya dosyasının her bir bölümünü yazıya geçirilmeye gönderir ve transkripsiyonla tek bir leştirilmiş transkripsiyonla birleştirir. Daha fazla bilgi için, [çoklu dil içeriğini otomatik olarak tanımlayın ve yazıya döktü.](multi-language-identification-transcription.md)
+* **Ses transkripsiyonu**: Konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Çince (Basitleştirilmiş), Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunmaktadır.
 * **Açıklamalı altyazı**: Üç biçimde açıklamalı altyazı oluşturur: VTT, TTML, SRT.
-* **İki kanal işleme**: otomatik olarak ayrı dökümü algılar ve tek bir zaman çizelgesine birleştirir.
-* **Gürültü azaltma**: telefon sesini veya gürültülü kayıtları (Skype filtreleri temelinde) temizler.
-* **Transcript özelleştirmesi** (CRA): sektöre özgü döküm oluşturmak için özel konuşmayı metin modellerine kadar kullanın. Daha fazla bilgi için bkz. [video Indexer Web sitesinden dil modelini özelleştirme](customize-language-model-with-website.md) ve [video Indexer API 'leriyle bir dil modelini özelleştirme](customize-language-model-with-api.md).
-* **Konuşmacı numaralandırması**: hangi konuşmacının hangi sözcüklere ve ne zaman bağlı olduğunu eşleştirir ve anlamıştır.
-* **Konuşmacı İstatistikleri: konuşmacının**konuşma oranları için istatistikler sağlar.
+* **İki kanal işleme**: Otomatik ayrı transkript algılar ve tek zaman çizelgesi ile birleştirir.
+* **Gürültü azaltma**: Telefon ses veya gürültülü kayıtları temizler (Skype filtrelerine dayalı).
+* **Transkript özelleştirme** (CRIS): Sektöre özel transkriptler oluşturmak için metin modellerine özel konuşma trenler. Daha fazla bilgi [için, Video Indexer web sitesinden bir Dil modelini özelleştir](customize-language-model-with-website.md) ve [Video Dizinleyici API'leriyle bir Dil modelini özelleştirin.](customize-language-model-with-api.md)
+* **Hoparlör numaralandırma**: Hangi konuşmacının hangi kelimeleri ve ne zaman konuştuğunu haritalar ve anlar.
+* **Konuşmacı istatistikleri**: Konuşmacıların konuşma oranları için istatistikler sağlar.
 * **Metinsel içerik moderasyonu**: Ses transkriptlerindeki müstehcen metinleri algılar.
-* **Ses efektleri**: parmaklar, konuşma ve sessizlik gibi ses efektlerini tanımlar.
-* **Duygu algılama**: konuşmayı (söylemekte olan) ve ses tonısına (nasıl söylenir) göre tanımlar. Duygu tanıma, Joy, sadyeti, Anger veya korku olabilir.
+* **Ses efektleri**: El çırpma, konuşma ve sessizlik gibi ses efektlerini tanımlar.
+* **Duygu algılama**: Konuşmaları (söylenenlere) ve ses tonalitesine (nasıl söylenir) dayalı duyguları tanımlar. Duygu sevinç, üzüntü, öfke, ya da korku olabilir.
 * **Çeviri**: Ses transkriptinin 54 farklı dile çevirisini oluşturur.
 
-### <a name="audio-and-video-insights-multi-channels"></a>Ses ve video öngörüleri (çoklu kanallar)
+### <a name="audio-and-video-insights-multi-channels"></a>Ses ve video öngörüleri (çok kanallı)
 
-Bir kanal tarafından Dizin oluşturulduğunda, bu modellerin kısmi sonucu kullanılabilir olacaktır.
+Bir kanal tarafından dizine eksinre, bu modeller için kısmi sonuç kullanılabilir olacaktır.
 
-* **Anahtar sözcük ayıklama**: konuşma ve görsel metinden anahtar sözcükleri ayıklar.
-* **Adlandırılmış varlıkların ayıklanması**: marka, konum ve kişileri, doğal dil işleme (NLP) aracılığıyla konuşma ve görsel metinden ayıklar.
-* **Konu çıkarımı**: Transkriptlerdeki ana konuların çıkarımını yapar. 2\. düzey ıPTC taksonomi dahil edilir.
+* **Anahtar kelimeler çıkarma**: Konuşma ve görsel metinden anahtar kelimeleri ayıklar.
+* **Adlandırılmış varlıklar çıkarma**: Doğal dil işleme (NLP) aracılığıyla konuşmaları ve görsel metinlerden markaları, konumları ve kişileri ayıklar.
+* **Konu çıkarımı**: Transkriptlerdeki ana konuların çıkarımını yapar. 2. düzey IPTC taksonomi dahildir.
 * **Yapıtlar**: Modellerin her biri için "daha üst düzeyde ayrıntıya sahip" zengin bir yapıt kümesini ayıklar.
 * **Yaklaşım analizi**: Konuşmalardaki ve görsel metinlerdeki olumlu, olumsuz ve nötr yaklaşımları belirler.
 
-## <a name="how-can-i-get-started-with-video-indexer"></a>Video Indexer nasıl başlamalıyım?
+## <a name="how-can-i-get-started-with-video-indexer"></a>Video Indexer ile nasıl başlarım?
 
-Video Indexer özelliklerine üç yolla erişebilirsiniz:
+Video Dizinleyici özelliklerine üç şekilde erişebilirsiniz:
 
-* Video Indexer Portal: ürünü değerlendirmenize, hesabı yönetmenize ve modelleri özelleştirmenize olanak tanıyan kullanımı kolay bir çözümdür.
+* Video Indexer portalı: Ürünü değerlendirmenize, hesabı yönetmenize ve modelleri özelleştirmenize olanak tanıyan kullanımı kolay bir çözümdür.
 
-    Portal hakkında daha fazla bilgi için bkz. [video Indexer Web sitesi ile çalışmaya başlama](video-indexer-get-started.md).  
+    Portal hakkında daha fazla bilgi için Bkz. [Video Indexer web sitesi ile başlayın.](video-indexer-get-started.md)  
 
-* API Tümleştirmesi: Tüm Video Indexer özellikleri, çözümü Uygulamalarınız ve altyapınızla tümleştirmenize olanak tanıyan bir REST API üzerinden kullanılabilir.
+* API entegrasyonu: Video Indexer'ın tüm yetenekleri, çözümü uygulamalarınız ve altyapınıza entegre etmenizi sağlayan BIR REST API'si aracılığıyla kullanılabilir.
 
-    Geliştirici olarak başlamak için bkz. [Use Video Indexer REST API](video-indexer-use-apis.md).
+    Geliştirici olarak başlamak için [Video Indexer REST API'yi kullanın'a](video-indexer-use-apis.md)bakın.
 
-* Katıştırılabilir pencere öğesi: Video Indexer öngörüleri, oynatıcı ve düzenleyici deneyimlerini uygulamanıza eklemenizi sağlar.
+* Katıştırılabilir widget: Video Indexer istatistiklerini, oynatıcıyı ve düzenleyici deneyimlerini uygulamanıza gömmenizi sağlar.
 
-    Daha fazla bilgi için bkz. [uygulamanıza görsel pencere öğeleri ekleme](video-indexer-embed-widgets.md).
+    Daha fazla bilgi için [başvurunuzdaki Embed görsel widget'ları'na](video-indexer-embed-widgets.md)bakın.
 
-Web sitesini kullanıyorsanız, Öngörüler meta veriler olarak eklenir ve portalda görünür. API 'Leri kullanıyorsanız, Öngörüler bir JSON dosyası olarak kullanılabilir.
+Web sitesini kullanıyorsanız, öngörüler meta veri olarak eklenir ve portalda görünür. API'ler kullanıyorsanız, öngörüler JSON dosyası olarak kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Video Indexer hizmetini kullanmaya başlamaya hazırsınız. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Video Indexer Web sitesini](video-indexer-get-started.md)kullanmaya başlayın.
-- [Video Indexer REST API ile Içerik işleyin](video-indexer-use-apis.md).
-- [Uygulamanıza görsel pencere öğeleri ekleyin](video-indexer-embed-widgets.md).
+- [Video Indexer web sitesi ile başlayın.](video-indexer-get-started.md)
+- [Video Indexer REST API ile işleme içeriği.](video-indexer-use-apis.md)
+- [Uygulamanıza görsel widget'lar gömün.](video-indexer-embed-widgets.md)

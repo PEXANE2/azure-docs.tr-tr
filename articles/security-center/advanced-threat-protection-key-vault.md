@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault için tehdit koruması
-description: Bu makalede, Azure Güvenlik Merkezi 'nde Azure Key Vault için Gelişmiş tehdit koruması ayarlama açıklanmaktadır
+title: Azure Anahtar Kasası için tehdit koruması
+description: Bu makalede, Azure Güvenlik Merkezi'nde Azure Anahtar Kasası için gelişmiş tehdit korumasının nasıl ayarlır
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77914815"
 ---
-# <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault için tehdit koruması (Önizleme)
+# <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Anahtar Kasası için tehdit koruması (önizleme)
 
-Azure Key Vault için Gelişmiş tehdit koruması, ek bir güvenlik zekası katmanı sağlar. Bu araç Key Vault hesaplara erişmeye veya açıktan yararlanmaya yönelik olabilecek zararlı girişimleri algılar. Azure Güvenlik Merkezi 'nde yerel Gelişmiş tehdit korumasını kullanarak tehditleri güvenlik uzmanı olmadan ve ek güvenlik izleme sistemleri öğrenmeksizin ele alabilirsiniz.
+Azure Key Vault için gelişmiş tehdit koruması ek bir güvenlik zekası katmanı sağlar. Bu araç, Key Vault hesaplarına erişmek veya bunlardan yararlanmak için zararlı olabilecek girişimleri algılar. Azure Güvenlik Merkezi'ndeki yerel gelişmiş tehdit korumasını kullanarak, güvenlik uzmanı olmadan ve ek güvenlik izleme sistemleri öğrenmeden tehditleri ele alabilirsiniz.
 
-Güvenlik Merkezi anormal etkinlik algıladığında uyarıları görüntüler. Ayrıca, şüpheli etkinliğin ayrıntılarını ve belirlenen tehditleri araştırıp düzeltme önerilerini içeren abonelik yöneticisine e-posta gönderir.
+Güvenlik Merkezi anormal etkinliği algıladığında, uyarılar görüntüler. Ayrıca, abonelik yöneticisine şüpheli etkinliğin ayrıntılarını ve tanımlanan tehditleri nasıl araştırıp düzelteceklerine ilişkin önerileri içeren e-postalar da e-postada bulunur.
 
-## <a name="configuring-threat-protection-from-security-center"></a>Güvenlik Merkezi 'nden tehdit korumasını yapılandırma
+## <a name="configuring-threat-protection-from-security-center"></a>Güvenlik Merkezi'nden tehdit koruması nın yapılandırılması
 
-Varsayılan olarak, güvenlik merkezi 'nin standart fiyatlandırma katmanına abone olduğunuzda, tüm Key Vault hesaplarınız için Gelişmiş tehdit koruması etkindir. Daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md).
+Varsayılan olarak, Güvenlik Merkezi'nin standart fiyatlandırma katmanına abone olduğunuzda tüm Key Vault hesaplarınız için gelişmiş tehdit koruması etkinleştirilir. Daha fazla bilgi için [Fiyatlandırma'ya](security-center-pricing.md)bakın.
 
-Belirli bir aboneliğin korumasını etkinleştirmek veya devre dışı bırakmak için:
+Belirli bir abonelik için korumayı etkinleştirmek veya devre dışı kaltın:
 
-1. Güvenlik Merkezi 'nin sol bölmesinde, **fiyatlandırma & ayarları**' nı seçin.
+1. Güvenlik Merkezi'ndeki sol bölmeden **Fiyatlandırma & ayarlarını**seçin.
 
-1. Tehdit korumasını etkinleştirmek veya devre dışı bırakmak istediğiniz depolama hesaplarına sahip aboneliği seçin.
+1. Tehdit koruması sağlamak veya devre dışı kalmak istediğiniz depolama hesaplarıyla aboneliği seçin.
 
 1. **Fiyatlandırma katmanı**'nı seçin.
 
-1. **Fiyatlandırma katmanını kaynak türüne göre seçin** grubunda, **Anahtar kasaları** satırını bulun ve **etkin** veya **devre dışı**seçeneğini belirleyin.
+1. Kaynak türü grubuna **göre fiyatlandırma katmanını seç,** **Anahtar Kasaları** satırını bulun ve **Etkin** veya **Devre Dışı'yı**seçin.
 
-    [Azure Güvenlik Merkezi 'nde Key Vault için Gelişmiş tehdit korumasını etkinleştirme veya devre dışı bırakma ![](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
+    [![Azure Güvenlik Merkezi'nde Key Vault için gelişmiş tehdit koruması etkinleştirme veya devre dışı bırakma](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet'i**seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Key Vault için Gelişmiş tehdit koruması 'nı etkinleştirmeyi ve devre dışı bırakmayı öğrendiniz. 
+Bu makalede, Azure Anahtar Kasası için gelişmiş tehdit korumasını etkinleştirmeyi ve devre dışı kaltın'ı öğrendiniz. 
 
-İlgili malzemeler için aşağıdaki makalelere bakın:
+İlgili materyaller için aşağıdaki makalelere bakın:
 
-- [Azure Güvenlik Merkezi 'Nde tehdit koruması](threat-protection.md)--Bu makalede, Azure Güvenlik Merkezi 'nde güvenlik uyarılarının kaynakları açıklanmaktadır.
-- [Güvenlik uyarılarını Key Vault](alerts-reference.md#alerts-azurekv)--tüm Azure Güvenlik Merkezi uyarıları için başvuru tablosunun Key Vault bölümü
+- [Azure Güvenlik Merkezi'nde tehdit koruması](threat-protection.md)-- Bu makalede, Azure Güvenlik Merkezi'ndeki güvenlik uyarılarının kaynakları açıklanmaktadır.
+- [Key Vault güvenlik uyarıları](alerts-reference.md#alerts-azurekv)-- Tüm Azure Güvenlik Merkezi uyarıları için başvuru tablosunun Anahtar Kasası bölümü

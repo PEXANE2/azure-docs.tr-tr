@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect eşitleme hizmeti yöneticisi işlemleri | Microsoft Docs
-description: İçin Azure AD Connect Eşitleme Hizmeti Yöneticisi'nde işlemleri sekmesini anlayın.
+title: Azure AD Bağlama Senkronizasyon Servis Yöneticisi İşlemleri | Microsoft Dokümanlar
+description: Azure AD Connect için Eşitleme Hizmet Yöneticisi'ndeki İşlemler sekmesini anlayın.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,36 +18,36 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381422"
 ---
-# <a name="using-the-sync-service-manager-operations-tab"></a>Eşitleme Hizmeti Yöneticisi'ni işlemleri sekmesini kullanarak
+# <a name="using-the-sync-service-manager-operations-tab"></a>Eşitleme Hizmeti Yöneticisi İşlemleri sekmesini kullanma
 
-![Eşitleme Hizmeti Yöneticisi](./media/how-to-connect-sync-service-manager-ui-operations/operations.png)
+![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-operations/operations.png)
 
-En son işlem sonuçlardan işlemleri sekmesini gösterir. Bu sekme, anlama ve sorunlarını giderme anahtardır.
+İşlemler sekmesi, en son işlemlerin sonuçlarını gösterir. Bu sekme, sorunları anlamak ve sorun gidermenin anahtarıdır.
 
-## <a name="understand-the-information-visible-in-the-operations-tab"></a>' Nin İşlemler sekmesinde görünen bilgileri anlama
-Üst kısmında kronolojik sırayla tüm çalıştırmalar gösterir. Varsayılan olarak, son yedi gün saklar bilgilerini işlemleri günlüğe, ancak bu ayar değiştirilebilir [Zamanlayıcı](how-to-connect-sync-feature-scheduler.md). Başarı durumunu göstermez her çalıştırma için görünmesini istediğiniz. Başlıklarını tıklatarak sıralama değiştirebilirsiniz.
+## <a name="understand-the-information-visible-in-the-operations-tab"></a>İşlemler sekmesinde görünen bilgileri anlama
+Üst yarısında tüm kronolojik sırada çalışır gösterir. Varsayılan olarak, işlem günlüğü son yedi gün hakkında bilgi tutar, ancak bu ayar [zamanlayıcı](how-to-connect-sync-feature-scheduler.md)ile değiştirilebilir. Başarı durumunu göstermeyen herhangi bir çalıştırmayı aramak istiyorsunuz. Üstbilgi tıklayarak sıralama değiştirebilirsiniz.
 
-**Durumu** sütun en önemli bilgiler, bir çalıştırma için en önemli bir sorun gösterir. Araştırmak için öncelik sırasına göre en yaygın durumlar hızlı bir özeti aşağıda verilmiştir (burada * birden çok olası hata dizeleri belirtmek).
+**Durum** sütunu en önemli bilgilerdir ve bir çalışma için en ciddi sorunu gösterir. Burada araştırmak için öncelik sırasına göre en yaygın durumların hızlı bir özeti (burada * birkaç olası hata dizeleri gösterir).
 
-| Durum | Yorum |
+| Durum | Açıklama |
 | --- | --- |
-| durduruldu-\* |Çalıştırma işlemi tamamlanamadı. Örneğin, uzak sistem kapalı ve bağlantı kurulamıyor. |
-| durduruldu-hata-sınırı |5\. 000'den fazla hataları vardır. Çalıştırma, çok sayıda hata nedeniyle otomatik olarak durduruldu. |
-| Tamamlanan -\*-hata |Çalıştırma tamamlandı, ancak araştırılması gereken hataları (az 5.000) vardır. |
-| Tamamlanan -\*-uyarılar |Çalıştırması tamamlandı, ancak bazı veriler beklenen durumda değil. Hatalar varsa, daha sonra bu ileti genellikle yalnızca bir belirtisidir. Hataları da giderdik kadar uyarıları araştırmanız gereken değil. |
+| durdu-\* |Çalışma tamamlayamadı. Örneğin, uzak sistem çöktüyse ve bağlantı kurulamıyorsa. |
+| durmuş hata sınırı |5.000'den fazla hata var. Çok sayıda hata nedeniyle çalıştırma otomatik olarak durduruldu. |
+| tamamlanmış-\*-hatalar |Çalışma tamamlandı, ancak araştırılması gereken hatalar (5.000'den az) vardır. |
+| tamamlanmış\*uyarılar |Çalışma tamamlandı, ancak bazı veriler beklenen durumda değil. Hatalarınız varsa, bu ileti genellikle yalnızca bir belirtidir. Hataları ele alana kadar uyarıları araştırmamalısınız. |
 | başarılı |Sorun yok. |
 
-Bir satırı seçin, çalıştırılan ayrıntılarını göstermek için alt güncelleştirir. En solda alt, liste söze sahip olabileceğiniz **adım #** . Burada her etki alanı adımı tarafından temsil edilen ormanınızdaki birden çok etki alanı varsa, bu liste yalnızca görünür. Etki alanı adı başlığı altında bulunabilir **bölüm**. Altında **eşitleme istatistikleri**, işlenen değişikliklerin sayısı hakkında daha fazla bilgi bulabilirsiniz. Değiştirilmiş nesneleri listesini almak için bağlantıları tıklatabilirsiniz. Hatalarla nesneniz varsa, bu hataları görünür **eşitleme hatalarını**.
+Bir satır seçtiğinizde, bu çalıştırmanın ayrıntılarını göstermek için alt güncelleştirmeler. En solunda **Adım #** yazan bir listen olabilir. Bu liste yalnızca ormanınızda her etki alanının bir adımla temsil edildiği birden çok etki alanınız varsa görünür. Etki alanı adı **Bölüm**başlığı altında bulunabilir. **Eşitleme İstatistikleri**altında, işlenen değişikliklerin sayısı hakkında daha fazla bilgi bulabilirsiniz. Değiştirilen nesnelerin listesini almak için bağlantıları tıklatabilirsiniz. Hataları olan nesnelerinizin varsa, bu hatalar **Eşitleme Hataları**altında gösteriş gösterir.
 
-Daha fazla bilgi için [not synchronızıng bir nesneyle ilgili sorunları giderme](tshoot-connect-object-not-syncing.md)
+Daha fazla bilgi için, [eşitleme olmayan bir nesneyi giderme](tshoot-connect-object-not-syncing.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi edinin [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md) yapılandırma.
+Azure AD [Connect eşitleme](how-to-connect-sync-whatis.md) yapılandırması hakkında daha fazla bilgi edinin.
 
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

@@ -1,6 +1,6 @@
 ---
-title: Spark - Team Data Science Process ile veri keşfi ve modelleme
-description: Azure üzerinde Spark MLlib Araç Seti veri keşfi ve modelleme özellikleri gösterir.
+title: Spark ile veri arama ve modelleme - Ekip Veri Bilimi Süreci
+description: Azure'daki Spark MLlib araç setinin veri arama ve modelleme özelliklerini sergiler.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,65 +12,65 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 208f176ca942fb382ff2ed81d872602f7229b0a4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718642"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark ile veri keşfi ve modelleme
 
-Bu kılavuzda HDInsight Spark veri araştırma yapmak için kullanır ve ikili sınıflandırma ve regresyon görevleri NYC örneği üzerinde modelleme seyahat taksi 2013 dataset masrafları.  Veri [bilimi işlemi](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), Işleme ve Azure Blob 'ları için verileri ve modelleri depolamak üzere bir HDInsight Spark kümesi kullanarak uçtan uca adım adım yol gösterir. İşlem inceler ve bir Azure Storage Blobundan getirildi verileri görselleştiren ve ardından Tahmine dayalı modeller oluşturmak için verileri hazırlar. Bu ikili sınıflandırma ve regresyon modelleme görevleri gerçekleştirmek için Spark MLlib araç setini kullanarak derleme modelleridir.
+Bu izim, NYC taksi yolculuğu ve ücret 2013 veri kümesinin bir örneğinde veri arama ve ikili sınıflandırma ve regresyon modelleme görevleri yapmak için HDInsight Spark kullanır.  Verileri ve modelleri depolamak için işlemek için HDInsight Spark kümesi ve Azure lekeleri kullanarak [Veri Bilimi Süreci'nin](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)(uçtan uca) adımlarında size yol sunar. İşlem, Azure Depolama Blob'undan getirilen verileri inceler ve görselleştirir ve verileri tahmine dayalı modeller oluşturmak için hazırlar. Bu modeller ikili sınıflandırma ve regresyon modelleme görevleri yapmak için Spark MLlib araç seti kullanılarak oluşturulur.
 
-* **İkili sınıflandırma** görevi, seyahat için bir tıp ödenip ödenmediğini tahmin etmeye yöneliktir. 
-* **Gerileme** görevi, diğer ipucu özelliklerine göre ipucu miktarını tahmin etmek için kullanılır. 
+* **İkili sınıflandırma** görevi, yolculuk için bir bahşiş ödenip ödenmediğini tahmin etmektir. 
+* **Regresyon** görevi, diğer uç özelliklerine göre uç miktarını tahmin etmektir. 
 
-Mantıksal ve doğrusal regresyon, rastgele ormanları ve gradyan artırmalı ağaçları kullandığımız modelleri şunlardır:
+Kullandığımız modeller arasında lojistik ve doğrusal regresyon, rastgele ormanlar ve degrade artırılmış ağaçlar yer almaktadır:
 
-* [SGD Ile doğrusal regresyon](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) , bir Stochastik gradyan (SGD) yöntemi kullanan ve en iyi duruma getirme ve özellik ölçekleme için, ücretli ipucu tutarlarını tahmin eden bir doğrusal regresyon modelidir. 
-* [LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) veya "logıt" regresyon ile lojistik regresyon, bağımlı değişken veri sınıflandırması yapmak için kategorik olduğunda kullanılabilecek bir gerileme modelidir. LBFGS yarı-Newton iyileştirme algoritması, sınırlı bir bilgisayarın bellek miktarını Broyden – Fletcher – Goldfarb – Shanno (BFGS) algoritması benzeyen ve machine learning'de yaygın olarak kullanılan bir ' dir.
-* [Rastgele ormanlar](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) karar ağaçlarının Kümelemeler.  Bunlar overfitting riskini azaltmak için birçok karar ağaçları birleştirin. Rastgele ormanları regresyon ve sınıflandırma için kullanılır ve kategorik özellikleri işleyebilir ve çok sınıflı sınıflandırma ayarı genişletilebilir. Bunlar, özellik ölçeklendirme gerektirmez ve sapmalar yakalamak ve etkileşimleri özellik olanağına sahip olursunuz. Rastgele ormanları en başarılı makine öğrenimi için sınıflandırma ve regresyon modellerini biridir.
-* [Degrade artırılmış ağaçlar](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS), karar ağaçları Kümelemeler. GBTS, bir kayıp işlevini en aza indirmek için karar ağaçlarını tekrarlayarak eğitme. GBTS, gerileme ve sınıflandırma için kullanılır ve kategorik özellikleri işleyebilir, özellik ölçeklendirmesini gerektirmez ve bu, özyinelemesiz ve özellik etkileşimlerini yakalayabilir. Bir sınıflandırma veya çoklu sınıflar ayarında de kullanılabilir.
+* [SGD ile doğrusal regresyon,](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) stokstik Gradyan İniş (SGD) yöntemini kullanan ve ödenen ihbar tutarlarını tahmin etmek için optimizasyon ve özellik ölçeklendirmesi için doğrusal bir regresyon modelidir. 
+* LBFGS veya "logit" regresyon [ile lojistik regresyon,](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) bağımlı değişken veri sınıflandırmayapmak için kategorik olduğunda kullanılabilecek bir regresyon modelidir. LBFGS, sınırlı miktarda bilgisayar belleği kullanarak Broyden-Fletcher-Goldfarb-Shanno (BFGS) algoritmasını oluşturan ve makine öğreniminde yaygın olarak kullanılan yarı-Newton optimizasyon algoritmasıdır.
+* [Rastgele ormanlar](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) karar ağaçlarının topluluklarıdır.  Aşırı uyum riskini azaltmak için birçok karar ağacını birleştirirler. Rasgele ormanlar regresyon ve sınıflandırma için kullanılır ve kategorik özellikleri işleyebilir ve çok sınıflı sınıflandırma ayarına genişletilebilir. Özellik ölçekleme gerektirmezler ve doğrusal olmayanları ve özellik etkileşimlerini yakalayabilirler. Rastgele ormanlar sınıflandırma ve regresyon için en başarılı makine öğrenme modellerinden biridir.
+* [Gradyan artırılmış ağaçlar](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) karar ağaçlarıtoplulukları vardır. GBTS tren karar ağaçları yinelemeli bir kayıp fonksiyonu en aza indirmek için. GBTS regresyon ve sınıflandırma için kullanılır ve kategorik özellikleri işleyebilir, özellik ölçekleme gerektirmez ve doğrusal olmayan ve özellik etkileşimleri yakalamak edebiliyoruz. Ayrıca çok sınıflı sınıflandırma ayarında da kullanılabilirler.
 
-Modelleme adımları ayrıca her türü modeli eğitmek ve değerlendirmek nasıl gösteren kod içerir. Python kodu çözüm ve ilgili çizimleri göstermek için kullanıldı.   
+Modelleme adımları, her model türünü nasıl eğiteceklerini, değerlendireceklerini ve kaydedinnasıl kaydedilen kodlar da içerir. Python, çözümü kodlamak ve ilgili çizimleri göstermek için kullanılmıştır.   
 
 > [!NOTE]
-> Spark MLlib Araç Seti büyük veri kümelerinde çalışmak üzere tasarlanmış olsa da, nispeten küçük bir örnek (yaklaşık 30 Mb 170 bin satır, yaklaşık %0,1 özgün NYC veri kümesini kullanarak), burada kolaylık sağlamak için kullanılır. Burada verilen alıştırma 2 çalışan düğümü ile bir HDInsight kümesi üzerinde verimli bir şekilde (yaklaşık 10 dakika içinde) çalıştırır. Aynı kodla küçük değişiklikler, daha büyük veri kümeleri, verileri bellek içinde önbelleğe alma ve küme boyutunu değiştirmek için uygun değişiklikleri ile işlemek için kullanılabilir.
+> Spark MLlib araç seti büyük veri kümeleri üzerinde çalışmak üzere tasarlanmış olsa da, nispeten küçük bir örnek (~ 30 Mb 170K satırlar kullanarak, orijinal NYC veri kümesinin yaklaşık% 0.1) burada kolaylık sağlamak için kullanılır. Burada verilen alıştırma, 2 işçi düğümü olan bir HDInsight kümesinde verimli bir şekilde (yaklaşık 10 dakika içinde) çalışır. Aynı kod, küçük değişikliklerle, bellekteki verileri önbelleğe almak ve küme boyutunu değiştirmek için uygun değişikliklerle daha büyük veri kümelerini işlemek için kullanılabilir.
 > 
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
-Bir Azure hesabı ve Spark 1.6 (veya Spark 2.0) ihtiyacınız Bu izlenecek yolu tamamlamak için HDInsight kümesi. Bu gereksinimleri nasıl karşılacağınız hakkında yönergeler için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md) . Bu konu ayrıca açıklamasını burada kullanılan NYC 2013 taksi verileri ve Spark kümesinde Jupyter not defteri gelen kodu çalıştırmak yönergeler içerir. 
+## <a name="prerequisites"></a>Ön koşullar
+Bu gözden geçirmeyi tamamlamak için bir Azure hesabı ve Bir Spark 1.6 (veya Spark 2.0) HDInsight kümesine ihtiyacınız vardır. Bu gereksinimlerin nasıl karşılanağacağına ilişkin talimatlar için [Azure HDInsight'ta Kıvılcım'ı kullanarak Veri Bilimine Genel Bakış'a](spark-overview.md) bakın. Bu konu aynı zamanda burada kullanılan NYC 2013 Taksi verilerinin bir açıklamasını ve Kıvılcım kümesindeki bir Jupyter dizüstü bilgisayardan kodun nasıl yürütüleceklerine ilişkin talimatları içerir. 
 
-## <a name="spark-clusters-and-notebooks"></a>Spark kümeleri ve Not Defterleri
-Bu izlenecek yolda, kurulum adımları ve kod kullanarak bir HDInsight Spark 1.6 için sağlanır. Ancak Jupyter not defterleri, kümeler, HDInsight Spark 1.6 hem de Spark 2.0 için sağlanır. Not defterlerinin ve bunlara bağlantıların açıklaması, bunları içeren GitHub deposu için [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) içinde verilmiştir. Ayrıca, kodu buraya bağlı not defterlerinde geneldir ve herhangi bir Spark kümesi üzerinde çalışması gerekir. HDInsight Spark kullanmıyorsanız, küme kurulum ve yönetim adımları ne burada gösterilenden biraz farklı olabilir. Kolaylık olması için Jupyter not defterlerini Spark 1.6'ı (Jupyter Notebook sunucusu pySpark Çekirdeği'nde çalışacak şekilde) ve (Jupyter Notebook sunucusu pySpark3 çekirdek içinde çalışacak şekilde) Spark 2.0 için bağlantılar şunlardır:
+## <a name="spark-clusters-and-notebooks"></a>Kümeleri ve dizüstü bilgisayarları kıvılcım
+HDInsight Spark 1.6'yı kullanmak için bu geçiş te kurulum adımları ve kod sağlanır. Ancak Jupyter dizüstü bilgisayarlar hem HDInsight Spark 1.6 hem de Spark 2.0 kümeleri için sağlanır. Bunları içeren GitHub deposunun [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) dizüstü bilgisayarların ve onlara bağlantılar bir açıklama sağlanır. Ayrıca, burada ve bağlantılı not defterlerinde kod geneldir ve herhangi bir Kıvılcım kümesi üzerinde çalışması gerekir. HDInsight Spark kullanmıyorsanız, küme kurulumu ve yönetim adımları burada gösterilenden biraz farklı olabilir. Kolaylık sağlamak için, burada Spark 1.6 (Jupyter Notebook sunucusunun pySpark çekirdeğinde çalıştırılacak) ve Spark 2.0 (Jupyter Notebook sunucusunun pySpark3 çekirdeğinde çalıştırılacak) için Jupyter dizüstü bilgisayarlara bağlantılar:
 
-### <a name="spark-16-notebooks"></a>Spark 1.6 Not Defterleri
+### <a name="spark-16-notebooks"></a>Kıvılcım 1.6 dizüstü bilgisayarlar
 
-[Pyspark-Machine-Learning-Data-Science-Spark-Data-araştırmayla-Modellendirme. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): birçok farklı algoritmayla veri keşif, modelleme ve Puanlama gerçekleştirme hakkında bilgi sağlar.
+[pySpark-machine-learning-data-science-kıvılcım-veri-keşif-modelleme-modelleme.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): Birkaç farklı algoritma ile veri arama, modelleme ve puanlama nın nasıl yapılabilen bilgiler sağlar.
 
-### <a name="spark-20-notebooks"></a>Spark 2.0 Not Defterleri
-Spark 2.0 kümesi kullanarak uygulanan regresyon ve sınıflandırma ayrı not defterlerinde görevleridir ve farklı bir veri kümesi sınıflandırma not defteri kullanır:
+### <a name="spark-20-notebooks"></a>Kıvılcım 2.0 dizüstü bilgisayarlar
+Spark 2.0 kümesi kullanılarak uygulanan regresyon ve sınıflandırma görevleri ayrı not defterlerindedir ve sınıflandırma defteri farklı bir veri kümesi kullanır:
 
-- [Spark 2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-araştırması-Modellendirme. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Bu dosya, Spark 2,0 kümelerinde, [burada](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)açıklanan NYC Taxi seyahat ve tarifeli havayolu veri kümesini kullanarak veri keşif, modelleme ve Puanlama gerçekleştirme hakkında bilgi sağlar. Bu not defteri hızla Spark 2.0 için sağladık Kodu Keşfetme için iyi bir başlangıç noktası olabilir. Daha ayrıntılı bir not defteri NYC taksi verileri analiz eder, bu listedeki sonraki not bakın. Bu not defterlerini karşılaştıran bu listenin altındaki notlara bakın. 
-- [Spark 2.0-pySpark3_NYC_Taxi_Tip_Regression. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Bu dosya, [burada](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)açıklanan NYC TAXI seyahat ve tarifeli havayolu veri kümesini kullanarak veri denetimi (Spark SQL ve dataframe işlemleri), araştırma, modelleme ve Puanlama gerçekleştirme işlemini gösterir.
-- [Spark 2.0-pySpark3_Airline_Departure_Delay_Classification. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Bu dosya, 2011 ve 2012 ' den iyi bilinen Airline ile veri kümesini kullanarak veri denetimi (Spark SQL ve dataframe işlemleri), araştırma, modelleme ve Puanlama gerçekleştirme işlemini gösterir. Hava yolu veri kümesini modellemeye başlamadan önce Havaalanı hava durumu verileriyle tümleştirdik (örneğin, wınvs hızı, sıcaklık, yükseklik vb.), bu hava durumu özellikleri modele dahil edilebilir.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Bu [dosya,](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)nyc Taksi gezisi ve ücret veri seti kullanarak Spark 2.0 kümelerinde veri arama, modelleme ve puanlama nasıl yapılacılacılıcı bilgi sağlayıyor. Bu not defteri, Spark 2.0 için sağladığımız kodu hızlı bir şekilde keşfetmek için iyi bir başlangıç noktası olabilir. Daha ayrıntılı bir not defteri NYC Taksi verilerini analiz etmek için bu listedeki bir sonraki not defterine bakın. Bu not defterlerini karşılaştıran bu listeyi izleyen notlara bakın. 
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Bu [dosya, burada](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)açıklanan NYC Taksi gezisi ve ücret veri seti kullanarak veri çekişmesi (Spark SQL ve dataframe işlemleri), keşif, modelleme ve puanlama nasıl yapılacağını gösterir.
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Bu dosya, 2011 ve 2012 yılları arasında bilinen Havayolu Zamanında Kalkış veri setini kullanarak veri çekişmesinin (Spark SQL ve dataframe işlemleri), arama, modelleme ve puanlamanın nasıl gerçekleştirilip gerçekleştirilebildiğini göstermektedir. Modellemeden önce havayolu veri kümesini havaalanı hava durumu verileriyle (örneğin, rüzgar hızı, sıcaklık, irtifa vb.) entegre ettik, böylece bu hava durumu özellikleri modele dahil edilebilir.
 
 <!-- -->
 
 > [!NOTE]
-> Havayolu veri kümesini sınıflandırma algoritmalarının kullanımını daha iyi anlamak için Spark 2.0 not defterleri için eklendi. Aşağıdaki bağlantıları kalkış veri kümesi ve hava durumu dataset zamanında Havayolu hakkında bilgi için bkz.
+> Havayolu veri kümesi, sınıflandırma algoritmalarının kullanımını daha iyi göstermek için Spark 2.0 dizüstü bilgisayarlarına eklendi. Havayolu zamanında kalkış veri seti ve hava durumu veri seti hakkında bilgi için aşağıdaki bağlantılara bakın:
 > 
-> - Airline açık zamanlı ayrılma verileri: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - Havayolu zamanında kalkış verileri:[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Havaalanı hava durumu verileri: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
+> - Havaalanı hava durumu verileri:[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-> Spark 2.0 not defterleri ile ilgili NYC taksi ve Havayolu uçuş gecikme veri kümeleri, 10 dakika veya (HDI kümenizin boyutuna bağlı olarak) çalıştırmak için daha fazla sürebilir. Yukarıdaki listede yer alan ilk not defteri, veri araştırma, görselleştirme ve ML modeli eğitiminin, aşağı örneklendiği NYC veri kümesiyle çalıştırılması daha az zaman alan bir not defterinde birçok yönünü gösterir. TAXI ve tarifeli havayolu dosyalarının önceden katıldığını: [Spark 2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-keşfetme ation-Modellendirme. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) bu not defteri, tamamlanması çok daha kısa sürer (2-3 dakika) ve Spark 2,0 için sağladığımız kodu hızlı bir şekilde keşfetmek için iyi bir başlangıç noktası olabilir. 
+> NYC taksi ve havayolu uçuş gecikme veri setleri Spark 2.0 dizüstü bilgisayarlar çalıştırmak için 10 dakika veya daha fazla sürebilir (HDI kümenin boyutuna bağlı olarak). Yukarıdaki listedeki ilk not defteri aşağı örneklenmiş NYC veri seti ile çalıştırmak için daha az zaman alır bir dizüstü bilgisayar veri arama, görselleştirme ve ML modeli eğitimi birçok yönünü gösterir, hangi taksi ve ücret dosyaları önceden katıldı: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Bu dizüstü bitirmek için çok daha kısa bir zaman alır (2-3 dakika) ve hızlı bir şekilde Spark 2.0 için sağladığıkodu keşfetmek için iyi bir başlangıç noktası olabilir. 
 
 <!-- -->
 
@@ -79,17 +79,17 @@ Spark 2.0 kümesi kullanarak uygulanan regresyon ve sınıflandırma ayrı not d
 <!-- -->
 
 > [!NOTE]
-> Spark 1.6 kullanımıyla ilgili aşağıdaki açıklamaları. Spark 2.0 sürümleri için lütfen açıklanmış ve yukarıdaki bağlı not defterlerini kullanma. 
+> Aşağıdaki açıklamalar Spark 1.6 ile ilgilidir. Spark 2.0 sürümleri için lütfen yukarıda açıklanan ve bağlanan dizüstü bilgisayarları kullanın. 
 
 <!-- -->
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Kurulum: depolama konumları, kitaplıklar ve önceden oluşturulmuş Spark bağlamı
-Spark, okuma ve yazma (WASB olarak da bilinir) Azure Storage Blobuna kuramıyor. Depolanan mevcut verilerinizi şekilde var. Spark ile yeniden WASB içinde depolanan sonuçları işlenebilir.
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Kurulum: depolama konumları, kitaplıklar ve önceden ayarlanmış Spark bağlamı
+Spark, Azure Depolama Blob'una (WASB olarak da bilinir) okuma ve yazma yapabiliyor. Böylece, orada depolanan mevcut verilerinizden herhangi biri Spark kullanılarak işlenebilir ve sonuçlar WASB'da yeniden depolanabilir.
 
-WASB içinde modelleri veya dosyaları kaydetmek için yolun düzgün bir şekilde belirtilmesi gerekiyor. Spark kümesine eklenen varsayılan kapsayıcı ile başlayan bir yol kullanılarak başvurulabilir: "wasb: / / /". Diğer konumlara tarafından başvurulan "wasb: / /".
+Modelleri veya dosyaları WASB'ye kaydetmek için yolun düzgün bir şekilde belirtilmesi gerekir. Kıvılcım kümesine bağlı varsayılan kapsayıcı ile başlayan bir yol kullanılarak başvurulabilir: "wasb:///". Diğer konumlar "wasb://" ile başvurulan.
 
-### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Dizin yolları depolama konumları WASB ayarlayın
-Aşağıdaki kod örneği, okunacak verileri ve model çıktısını kaydedildiği modeli depolama dizini için yol konumunu belirtir:
+### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>WASB'deki depolama konumları için dizin yollarını ayarlama
+Aşağıdaki kod örneği, okunacak verilerin konumunu ve model çıktısının kaydedildiği model depolama dizininin yolunu belirtir:
 
     # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
 
@@ -101,8 +101,8 @@ Aşağıdaki kod örneği, okunacak verileri ve model çıktısını kaydedildi�
     modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 
 
-### <a name="import-libraries"></a>Kitaplıkları içeri aktarma
-Ayarlama, ayrıca gerekli kitaplıkları alma gerektirir. Spark bağlamını ayarlayın ve gerekli kitaplıkları aşağıdaki kod ile içeri aktarma:
+### <a name="import-libraries"></a>İthalat kitaplıkları
+Kurulum da gerekli kitaplıkları alma gerektirir. Kıvılcım bağlamını ayarlayın ve gerekli kitaplıkları aşağıdaki kodla içe aktarın:
 
     # IMPORT LIBRARIES
     import pyspark
@@ -120,29 +120,29 @@ Ayarlama, ayrıca gerekli kitaplıkları alma gerektirir. Spark bağlamını aya
     import datetime
 
 
-### <a name="preset-spark-context-and-pyspark-magics"></a>Spark bağlamını ve PySpark işlevlerini hazır
-Jupyter not defterleri ile sağlanan PySpark çekirdekleri, önceden ayarlanmış bir bağlam yoktur. Bu nedenle bir Spark kümesi gerekmez veya açıkça, uygulama ile çalışmaya başlamadan önce Hive bağlamları geliştirme. Bu içerikler varsayılan olarak sizin için kullanılabilir. Şu bağlamlarda şunlardır:
+### <a name="preset-spark-context-and-pyspark-magics"></a>Önceden ayarlanmış Kıvılcım bağlamı ve PySpark büyüleri
+Jupyter dizüstü bilgisayarlarla sağlanan PySpark çekirdekleri önceden ayarlanmış bir içeriğe sahiptir. Bu nedenle, geliştirmekte olduğunuz uygulamayla çalışmaya başlamadan önce Kıvılcım veya Hive bağlamlarını açıkça ayarlamanız gerekmez. Bu bağlamlar varsayılan olarak sizin için kullanılabilir. Bu bağlamlar şunlardır:
 
-* SC - Spark 
+* sc - Kıvılcım için 
 * sqlContext - Hive için
 
-PySpark çekirdeği bazı önceden tanımlanmış "işlevlerini" ile çağırabileceğiniz özel komutlar olduğu sağlar %%. Bu kod örneklerinde kullanılan iki tür komutlar vardır.
+PySpark çekirdeği, %%ile arayaabileceğiniz özel komutlar olan bazı önceden tanımlanmış "büyüler" sağlar. Bu kod örneklerinde kullanılan bu tür iki komut vardır.
 
-* **%% Yerel** Sonraki satırlardaki kodun yerel olarak yürütüleceğini belirtir. Kod, geçerli Python kodu olmalıdır.
-* **%% SQL-o \<değişken adı >** SqlContext 'e karşı bir Hive sorgusu yürütür. -O parametreye geçirilmişse, sorgu sonucu kalıcı hale getirilir %% Pandas DataFrame olarak yerel Python bağlamı.
+* **%yerel** Sonraki satırlarda kod yerel olarak yürütülecek olduğunu belirtir. Kod geçerli Python kodu olmalıdır.
+* **%%sql -o \<değişken adı>** sqlContext'a karşı bir Hive sorgusu yürütür. -o parametresi geçirilirse, sorgunun sonucu Pandas DataFrame olarak %yerel Python bağlamında devam eder.
 
-Jupyter Notebook çekirdekler ve önceden tanımlanmış "mıknatık" hakkında daha fazla bilgi için bkz. [HDInsight 'ta HDInsight Spark Linux kümeleri içeren Jupyter Not defterleri için sunulan çekirdekler](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Jupyter dizüstü bilgisayar çekirdekleri ve önceden tanımlanmış "büyüler" hakkında daha fazla bilgi için, [HDInsight'ta HDInsight Spark Linux kümelerine sahip Jupyter dizüstü bilgisayarlar için kullanılabilir Çekirdekler'e](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)bakın.
 
-## <a name="data-ingestion-from-public-blob"></a>Ortak blob veri alma
-Veri bilimi işlemi ilk adımında kaynaklardan Analiz edilecek verileri alma, nerede olduğu veri keşfi ve modelleme ortamınıza yer alıyor. Spark Bu izlenecek yolda ortamıdır. Bu bölüm, bir görev dizisini tamamlamak için kodu içerir:
+## <a name="data-ingestion-from-public-blob"></a>Genel blob veri alma
+Veri bilimi sürecinin ilk adımı, veri arama ve modelleme ortamınızın bulunduğu kaynaklardan analiz edilecek verileri yutmaktır. Bu geçitte ortam Kıvılcım' dır. Bu bölümde, bir dizi görevi tamamlamak için kod içerir:
 
-* model alınacak veri örnek alma
-* Giriş veri kümesinde (.tsv dosyası olarak depolanır) okuyun
-* biçimlendirme ve verileri temizleme
-* oluşturma ve nesneleri (Rdd veya veri çerçevelerini) bellek içinde önbelleğe alma
-* SQL bağlamında bir geçici tablo olarak kaydedin.
+* örneklenecek veri örneğini yutmak
+* giriş veri setinde okuyun (.tsv dosyası olarak depolanır)
+* verileri biçimlendirmeve temizleme
+* bellekte nesneler (RDD'ler veya veri çerçeveleri) oluşturma ve önbelleğe
+* SQL bağlamında geçici tablo olarak kaydedin.
 
-Veri alımı için kod aşağıdaki gibidir.
+Burada veri alma için koddur.
 
     # INGEST DATA
 
@@ -202,22 +202,22 @@ Veri alımı için kod aşağıdaki gibidir.
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-Hücre yürütülmesi için geçen süre: 51.72 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 51.72 saniye
 
-## <a name="data-exploration--visualization"></a>Veri keşfi ve görselleştirme
-Verileri Spark yönetilmeye başladıktan sonra veri bilimi işlemi sonraki adımda, veri keşfi ve görselleştirme aracılığıyla daha iyi anlayabilmek sağlamaktır. Bu bölümde, SQL sorgularını kullanarak taksi verileri incelemek ve görsel denetim için olası özellikleri ve hedef değişkenler çizim. Özellikle, yolcular sayıları taksi gelişlerin, ipucu miktarları sıklığını ve ipuçları, ödeme tutarı ve türüne göre nasıl değişiklik sıklığını gösterir.
+## <a name="data-exploration--visualization"></a>Veri arama & görselleştirme
+Veriler Kıvılcım'a getirildikten sonra, veri bilimi sürecindeki bir sonraki adım, keşif ve görselleştirme yoluyla verilerin daha iyi anlaşılmasıdır. Bu bölümde, SQL sorgularını kullanarak taksi verilerini inceler ve görsel inceleme için hedef değişkenleri ve olası özellikleri çizeriz. Özellikle, taksi yolculuklarında yolcu sayısının sıklığını, bahşiş tutarlarının sıklığını ve bahşişlerin ödeme miktarına ve türüne göre nasıl değiştiğini çizeriz.
 
-### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Histogram yolcular sayısı frekansların taksi gelişlerin örneğinde Çiz
-Bu kod ve sonraki kod parçacıkları örnek ve verileri çizmek için yerel Sihirli sorgulamak için SQL Sihri kullanın.
+### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Taksi gezileri örneğinde yolcu sayısı frekanslarının bir histogramını çizin
+Bu kod ve sonraki parçacıklar, verileri çizmek için örneği ve yerel sihri sorgulamak için SQL büyüsünü kullanır.
 
-* **SQL Magic (`%%sql`)** HDInsight PySpark çekirdeği, sqlContext 'e karşı kolay satır içi HiveQL sorgularını destekler. (-O deðiþken_adý) bağımsız değişkeni bir Pandas DataFrame Jupyter sunucuda olarak SQL sorgusunun çıktısını sürdürür. Bu ayar, çıktıyı yerel modda kullanılabilir hale getirir.
-* **`%%local` Magic** , HDInsight kümesinin baş düğümüne olan jupyıter sunucusunda yerel olarak kod çalıştırmak için kullanılır. Genellikle, `%%sql` Magic with-o parametresiyle birlikte `%%local` Magic kullanırsınız. -O parametresi yerel SQL sorgusunun çıktılarını kalıcı hale getirme ve ardından %% yerel Sihirli yerel olarak karşı ve yerel olarak kalıcı çıkış SQL sorguları çalıştırmak için kod parçacığı bir sonraki kümesini tetikleme
+* **SQL magic`%%sql`( )** HDInsight PySpark çekirdeği sqlContext'a karşı kolay sıralı HiveQL sorgularını destekler. (-o VARIABLE_NAME) bağımsız değişkeni, Jupyter sunucusunda Pandas DataFrame olarak SQL sorgusunun çıktısını devam eder. Bu ayar, çıktıyı yerel modda kullanılabilir hale getirir.
+* ** `%%local` Sihirli** HDInsight kümesinin headnode jupyter sunucu, yerel kodu çalıştırmak için kullanılır. Tipik olarak, `%%local` -o parametresi ile `%%sql` büyü ile birlikte büyü kullanın. -o parametresi SQL sorgusunun çıktısını yerel olarak sürdürür ve ardından %%yerel büyü, yerel olarak kalıcı olan SQL sorgularının çıktısına karşı yerel olarak çalışacak bir sonraki kod parçacığı kümesini tetikler
 
-Çıktı, kodu çalıştırdıktan sonra otomatik olarak görselleştirilir.
+Kodu çalıştırdıktan sonra çıktı otomatik olarak görüntülenir.
 
-Bu sorgu gelişlerin yolcular sayısına göre alır. 
+Bu sorgu, yolcu sayısına göre yolculukları alır. 
 
     # PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
@@ -228,10 +228,10 @@ Bu sorgu gelişlerin yolcular sayısına göre alır.
     WHERE passenger_count > 0 and passenger_count < 7 
     GROUP BY passenger_count 
 
-Bu kod, sorgu çıktısı, yerel bir veri çerçevesi oluşturur ve verileri çizer. `%%local` Magic, Matplotlib ile çizim için kullanılabilecek bir yerel veri çerçevesi, `sqlResults`oluşturur. 
+Bu kod, sorgu çıktısından yerel bir veri çerçevesi oluşturur ve verileri çizer. Sihirli `%%local` matplotlib ile çizim `sqlResults`için kullanılabilecek yerel bir veri çerçevesi oluşturur. 
 
 > [!NOTE]
-> Bu PySpark Sihirli Bu izlenecek yolda birden çok kez kullanıldı. Veri miktarı büyükse, bir veri sığabilecek çerçeve yerel bellekte oluşturmaya yönelik örnek.
+> Bu PySpark büyüsü bu geçitte birçok kez kullanılır. Veri miktarı büyükse, yerel belleğe sığabilecek bir veri çerçevesi oluşturmak için örnek lemeniz gerekir.
 > 
 > 
 
@@ -244,7 +244,7 @@ Bu kod, sorgu çıktısı, yerel bir veri çerçevesi oluşturur ve verileri çi
     # CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
     sqlResults
 
-Kodu yolcular sayımlarla gelişlerin çizmek için
+Burada yolcu sayısına göre geziler komplo kodudur
 
     # PLOT PASSENGER NUMBER VS. TRIP COUNTS
     %%local
@@ -259,14 +259,14 @@ Kodu yolcular sayımlarla gelişlerin çizmek için
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-![Seyahat sıklığı yolcular sayısına göre](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
+![Yolcu sayısına göre seyahat sıklığı](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-Not defterindeki **tür** menü düğmelerini kullanarak birkaç farklı görselleştirme türü (tablo, pasta, satır, alan veya çubuk) arasından seçim yapabilirsiniz. Çubuğu çizim burada gösterilir.
+Not defterindeki **Tür** menü düğmelerini kullanarak birkaç farklı görsel türü (Tablo, Pasta, Çizgi, Alan veya Çubuk) arasından seçim yapabilirsiniz. Bar arsa burada gösterilir.
 
-### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>İpucu miktarları ve ipucu tutarı yolcular sayısı ve taksi tutarları ile nasıl değişeceğini bir histogram gösterir.
-Örnek veriler için bir SQL sorgusunu kullanın.
+### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>İpucu miktarlarının bir histogramını ve bahşiş miktarının yolcu sayısına ve ücret miktarlarına göre nasıl değiştiğine dair bir plan çizin.
+Verileri örneklemek için bir SQL sorgusu kullanın.
 
     #PLOT HISTOGRAM OF TIP AMOUNTS AND VARIATION BY PASSENGER COUNT AND PAYMENT TYPE
 
@@ -283,7 +283,7 @@ Not defterindeki **tür** menü düğmelerini kullanarak birkaç farklı görsel
     AND tip_amount < 25
 
 
-Bu kodu hücreyi, verileri üç çizimleri oluşturmak için SQL sorgusu kullanır.
+Bu kod hücresi, verileri üç çizim oluşturmak için SQL sorgusunu kullanır.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
     %%local
@@ -313,26 +313,26 @@ Bu kodu hücreyi, verileri üç çizimleri oluşturmak için SQL sorgusu kullan�
     plt.show()
 
 
-**ÇıKTıLARıN** 
+**Çıkış:** 
 
-![İpucu tutar dağıtımı](./media/spark-data-exploration-modeling/tip-amount-distribution.png)
+![İpucu miktarı dağılımı](./media/spark-data-exploration-modeling/tip-amount-distribution.png)
 
-![İpucu miktarda yolcular sayısı](./media/spark-data-exploration-modeling/tip-amount-by-passenger-count.png)
+![Yolcu sayısına göre bahşiş miktarı](./media/spark-data-exploration-modeling/tip-amount-by-passenger-count.png)
 
-![Taksi miktar tutarı İpucu](./media/spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
+![Ücret tutarına göre bahşiş tutarı](./media/spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Özellik Mühendisliği, dönüştürme ve veri hazırlığı modelleme
-Bu bölümde açıklanmaktadır ve ML model kullanmak için veri hazırlamak için kullanılan yordamları için kodu sağlar. Bu, aşağıdaki görevlerin nasıl yapılacağını gösterir:
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Özellik mühendisliği, dönüşüm ve modelleme için veri hazırlama
+Bu bölümde, ML modellemesinde kullanılmak üzere veri hazırlamak için kullanılan yordamlar için kod açıklanır ve sağlar. Aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
-* Yeni bir özellik olarak gruplama saat trafiği zaman demetlerin içine oluşturun.
-* Dizin ve kategorik özellikleri kodlayın
-* ML işlevleri giriş etiketli noktası nesneleri oluşturma
-* Verilerin rastgele bir alt örneklemesi oluşturun ve bunu eğitim ve test kümelerine ayırın
-* Ölçeklendirme özelliği
-* Bellekte önbelleğe nesneler
+* Trafik zaman kovalarına saatleri aşılayarak yeni bir özellik oluşturun
+* Kategorik özellikleri dizine dizin ve kodlama
+* ML işlevlerine giriş için etiketli nokta nesneleri oluşturma
+* Verilerin rasgele bir alt örneklemesini oluşturun ve bunu eğitim ve test kümelerine bölün
+* Özellik ölçeklendirme
+* Bellekteki önbellek nesneleri
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Yeni bir özellik olarak gruplama saat trafiği zaman demetlerin içine oluşturun.
-Bu kod, yeni bir özellik olarak gruplama saat trafiği zaman demetlerin içine oluşturma ve sonuçta elde edilen veri çerçevesi bellekte önbelleğe alınacağını gösterir. Dayanıklı Dağıtılmış veri kümesi (Rdd) ve veri çerçevelerini sürekli olarak kullanıldığı yerlerde, önbelleğe alma için geliştirilmiş yürütme sürelerini yol açar. Buna göre biz Rdd ve veri çerçevelerini izlenecek yol çeşitli aşamalarında önbelleğe alır. 
+### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Trafik zaman kovalarına saatleri aşılayarak yeni bir özellik oluşturun
+Bu kod, trafik zaman kovalarına saat lerini bağlayarak yeni bir özelliğin nasıl oluşturulacağını ve ardından bellekte ortaya çıkan veri çerçevesinin nasıl önbelleğe alınacağını gösterir. Esnek Dağıtılmış Veri kümelerinin (RDD'ler) ve veri çerçevelerinin tekrar tekrar kullanıldığı durumlarda, önbelleğe alma, yürütme sürelerinin iyileştirilmesine yol açar. Buna göre, IZBIsin çeşitli aşamalarında RDD'leri ve veri çerçevelerini önbelleğe alıyoruz. 
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -353,17 +353,17 @@ Bu kod, yeni bir özellik olarak gruplama saat trafiği zaman demetlerin içine 
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**ÇıKTıLARıN** 
+**Çıkış:** 
 
 126050
 
-### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Dizin ve kodlama işlevleri modelleme içine girişi için kategorik özellikleri
-Bu bölümde, dizin veya kodlama giriş modelleme işlevleri için kategorik özellikleri gösterilmektedir. Modelleme ve tahmin MLlib işlevlerini dizine veya kullanılmadan önce kodlanmış için kategorik girdi verilerini özelliklerle gerektirir. Modeline bağlı olarak, dizin veya onları farklı şekillerde kodlama yapmanız gerekir:  
+### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Modelleme işlevlerine giriş için kategorik özellikleri dizine dizine ve kodlamaya
+Bu bölümde, modelleme işlevlerine giriş için kategorik özelliklerin nasıl dizine girilen veya kodlanılan gösteriliyor. MLlib'in modelleme ve tahmin işlevleri, kullanılmadan önce kategorik giriş verilerine sahip özelliklerin dizine eklenmesini veya kodlanmasını gerektirir. Modele bağlı olarak, bunları farklı şekillerde dizine almanız veya kodlamanız gerekir:  
 
-* **Ağaç tabanlı modelleme** , kategorilerin sayısal değerler olarak kodlanmasını gerektirir (örneğin, üç kategoriye sahip bir özellik 0, 1, 2 ile kodlanabilir). Bu algoritma MLlib 'in [Stringındexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) işlevi tarafından sağlanır. Bu işlev bir dize sütunu etiketi frekans tarafından sıralanan etiket dizinleri içeren bir sütun için bir etiket kodlar. Giriş ve veri işleme için sayısal değerlerle dizine olsa da, bunları uygun şekilde kategori olarak ele almanız için ağaç tabanlı algoritmalar belirtilebilir. 
-* **Lojistik ve doğrusal regresyon modelleri** , örneğin üç kategoriye sahip bir özellik, bir gözlem kategorisine bağlı olarak her biri 0 veya 1 içeren üç özellik sütununa genişletilebilen tek yönlü bir kodlama gerektirir. MLlib, tek yönlü kodlama yapmak için [Onehotencoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) işlevi sağlar. Bu Kodlayıcı etiket dizinleri içeren bir sütun ikili vektörler, en fazla bir değerle tek bir-bir sütunu eşlenir. Bu kodlama beklediğiniz gibi kategorik özellikleri uygulanacak Lojistik regresyon, sayısal değerli özellikler algoritmalar sağlar.
+* **Ağaç tabanlı modelleme,** kategorilerin sayısal değerler olarak kodlanmasını gerektirir (örneğin, üç kategorili bir özellik 0, 1, 2 ile kodlanabilir). Bu algoritma MLlib [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) işlevi tarafından sağlanır. Bu işlev, etiket frekansları tarafından sıralanan etiket dizinleri sütununa bir etiket dizesini kodlar. Giriş ve veri işleme için sayısal değerlerle dizine eklenmiş olsa da, ağaç tabanlı algoritmalar bunları kategoriler olarak uygun şekilde işlemek için belirtilebilir. 
+* **Lojistik ve Doğrusal Regresyon modelleri,** örneğin üç kategoriden oluşan bir özelliğin, bir gözlem kategorisine bağlı olarak 0 veya 1 içeren üç özellik sütununa genişletilebildiği tek sıcak kodlama gerektirir. MLlib [onehotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) işlevini tek sıcak kodlama yapmak için sağlar. Bu kodlayıcı, etiket endekslerinden oluşan bir sütunu en fazla tek bir değeri olan ikili vektörlerden oluşan bir sütunla eşler. Bu kodlama, lojistik regresyon gibi sayısal değerli özelliklerin kategorik özelliklere uygulanmasını bekleyen algoritmaların uygulanmasını sağlar.
 
-Dizin ve kategorik özellikleri kodlamak için kod aşağıdaki gibidir:
+Kategorik özellikleri dizine ekleyip kodlamak için kod aşağıda verilmiştir:
 
     # INDEX AND ENCODE CATEGORICAL FEATURES
 
@@ -406,16 +406,16 @@ Dizin ve kategorik özellikleri kodlamak için kod aşağıdaki gibidir:
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-Hücre yürütülmesi için geçen süre: 1.28 saniye
+Hücrenin üzerinde yürütmek için alınan süre: 1.28 saniye
 
-### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>ML işlevleri giriş etiketli noktası nesneleri oluşturma
-Bu bölüm etiketli noktası veri türü olarak kategorik metin verileri ve eğitme ve test MLlib Lojistik regresyon ve diğer sınıflandırma modelleri için kullanılabilir, böylece kodlayamadığı gösteren kod içerir. Etiketli noktası, dayanıklı Dağıtılmış veri kümeleri (RDD) girdi verisi olarak MLlib ML algoritmaları çoğu için gerekli olan bir şekilde biçimlendirilmiş nesneleridir. [Etiketli nokta](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) , bir etiket/Yanıtla ilişkili olan, yoğun veya seyrek olan yerel bir vektörüdür.  
+### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>ML işlevlerine giriş için etiketli nokta nesneleri oluşturma
+Bu bölümde, kategorik metin verilerinin etiketli bir nokta veri türü olarak nasıl dizine alınabileceğini gösteren ve MLlib lojistik regresyon ve diğer sınıflandırma modellerini eğitmek ve test etmek için kullanılabilecek şekilde kodlamak için kodlama kodlama kodlama içerir. Etiketli nokta nesneleri, MLlib'deki ML algoritmalarının çoğu tarafından giriş verisi olarak gerekli olan bir şekilde biçimlendirilmiş Esnek Dağıtılmış Veri kümeleridir (RDD). [Etiketli nokta,](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) bir etiket/yanıtla ilişkili, yoğun veya seyrek olan yerel bir vektördür.  
 
-Bu bölüm, kategorik metin verilerinin [etiketlenmiş bir nokta](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) veri türü olarak nasıl dizine alınacağını ve bunu, mllib Lojistik gerileme ve diğer sınıflandırma modellerini eğitmek ve test etmek için kullanılabilmesi için kodlamak üzere kodlanacak kodu içerir. Etiketli noktası, dayanıklı Dağıtılmış veri kümeleri (RDD) bir etiket (hedef/yanıt değişken) ve özellik vektör nesneleridir. Bu biçim, MLlib birçok ML algoritmaları tarafından giriş olarak gereklidir.
+Bu bölümde, kategorik metin verilerinin [etiketli bir nokta](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) veri türü olarak nasıl dizine alınabileceğini gösteren ve MLlib lojistik regresyon ve diğer sınıflandırma modellerini eğitmek ve test etmek için kullanılabilecek şekilde kodlamak için kodlama kodlama kodlama içerir. Etiketli nokta nesneleri, bir etiket (hedef/yanıt değişkeni) ve özellik vektöründen oluşan Esnek Dağıtılmış Veri kümeleridir (RDD). Bu biçim, MLlib'deki birçok ML algoritması tarafından girdi olarak gereklidir.
 
-Aşağıda, dizin ve ikili sınıflandırma özellikleri metin kodlama için kodu verilmiştir.
+Burada, ikili sınıflandırma için metin özelliklerini dizinve kodlama kodu verilmiştir.
 
     # FUNCTIONS FOR BINARY CLASSIFICATION
 
@@ -441,7 +441,7 @@ Aşağıda, dizin ve ikili sınıflandırma özellikleri metin kodlama için kod
         return  labPt
 
 
-Kodlanacak ve kategorik metin özellikleri doğrusal regresyon çözümleme için dizin kod aşağıdaki gibidir.
+Burada doğrusal regresyon analizi için kategorik metin özelliklerini kodlamak ve dizine kodlamak için kod.
 
     # FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
@@ -464,8 +464,8 @@ Kodlanacak ve kategorik metin özellikleri doğrusal regresyon çözümleme içi
         return  labPt
 
 
-### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Verilerin rastgele bir alt örneklemesi oluşturun ve bunu eğitim ve test kümelerine ayırın
-Bu kod, rastgele bir örnekleme (% 25 burada kullanılır) veri oluşturur. Bu örnekte veri kümesinin boyutu nedeniyle gerekli olmamasına karşın, gerektiğinde kendi sorunu için kullanma bilmesi nasıl, burada örnek oluşturabilirsiniz gösterir. Örnekler büyükse, örnekleme eğitim modelleriyle önemli ölçüde tasarruf edebilir. Sonraki biz örnek bir eğitim bölümü (burada %75) ve test bölümü (% 25 oranında burada) sınıflandırma ve regresyon modelleme bölün.
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Verilerin rasgele bir alt örneklemesini oluşturun ve bunu eğitim ve test kümelerine bölün
+Bu kod verilerin rasgele bir örneklemesini oluşturur (%25 burada kullanılır). Veri kümesinin boyutu nedeniyle bu örnek için gerekli olmasa da, gerektiğinde kendi sorununuz için nasıl kullanacağınızı bilmeniz için burada nasıl örnek verebileceğinizi gösteririz. Numuneler büyük olduğunda, örnekleme modelleri eğitirken önemli ölçüde zaman kazandırabilir. Daha sonra numuneyi sınıflandırma ve regresyon modellemesinde kullanmak üzere bir eğitim bölümüne (%75 burada) ve bir test kısmına (%25 burada) böldük.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -501,19 +501,19 @@ Bu kod, rastgele bir örnekleme (% 25 burada kullanılır) veri oluşturur. Bu �
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-Hücrenin yürütülmesi için geçen süre: 0,24 saniye
+Hücrenin üzerinde yürütmek için alınan süre: 0.24 saniye
 
-### <a name="feature-scaling"></a>Ölçeklendirme özelliği
-Veri normalleştirme da bilinen özellik ölçeklendirme, yaygın olarak yapılan değerlerle özellikleri olan belirli bir aşırı ağırlık, hedef işlevi oluşturmasını sağlar. Özellik ölçeklendirme kodu, özellikleri birim varyansı ölçeklendirmek için [Standardscaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) kullanır. Doğrusal regresyon ile Stokastik gradyan düşüşü (SGD), diğer makine öğrenimi modellerini regularized gerilemeleri veya destek vektör makineler (SVM) gibi çok çeşitli eğitim için popüler bir algoritma kullanmak için MLlib tarafından sağlanır.
+### <a name="feature-scaling"></a>Özellik ölçeklendirme
+Veri normalleştirme olarak da bilinen özellik ölçekleme, yaygın olarak dağıtılan değerlere sahip özelliklere nesnel işlevde aşırı tartMa verilmemesini sağlar. Özellik ölçeklendirme kodu, özellikleri birim varyansı ölçeklendirmek için [StandardScaler'ı](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) kullanır. Düzenli regresyon veya destek vektör makineleri (SVM) gibi diğer makine öğrenme modellerinin geniş bir yelpazede eğitim için popüler bir algoritma olan Stochastic Gradyan İniş (SGD) ile doğrusal regresyonda kullanılmak üzere MLlib tarafından sağlanmaktadır.
 
 > [!NOTE]
-> Ölçeklendirme özelliğini hassas olmasını LinearRegressionWithSGD algoritması bulduk.
+> LinearRegressionWithSGD algoritmasının özellik ölçeklendirmesine karşı hassas olduğunu bulduk.
 > 
 > 
 
-Ölçek değişkenlere regularized doğrusal SGD algoritması ile kullanmak için kod aşağıdaki gibidir.
+Burada düzenli doğrusal SGD algoritması ile kullanılmak üzere değişkenleri ölçeklendirmek için koddur.
 
     # FEATURE SCALING
 
@@ -544,12 +544,12 @@ Veri normalleştirme da bilinen özellik ölçeklendirme, yaygın olarak yapıla
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-Hücre yürütülmesi için geçen süre: 13.17 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 13.17 saniye
 
-### <a name="cache-objects-in-memory"></a>Bellekte önbelleğe nesneler
-Eğitim ve ML algoritmaları test için geçen süre, nesneleri özellikleri ölçeği ve Sınıflandırma, regresyon, kullanılan giriş veri çerçevesi önbelleğe alarak azaltılabilir.
+### <a name="cache-objects-in-memory"></a>Bellekteki önbellek nesneleri
+ML algoritmalarının eğitimi ve test edilmesi için geçen süre, sınıflandırma, regresyon ve ölçeklenmiş özellikler için kullanılan giriş veri çerçevesi nesnelerinin önbelleğe alınmasıyla azaltılabilir.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -575,27 +575,27 @@ Eğitim ve ML algoritmaları test için geçen süre, nesneleri özellikleri öl
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**ÇıKTıLARıN** 
+**Çıkış:** 
 
-Hücrenin yürütülmesi için geçen süre: 0,15 saniye
+Hücrenin üzerinde yürütmek için alınan süre: 0.15 saniye
 
-## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>İpucu ile ikili sınıflandırma modellerini Ücretli olup olmadığını tahmin edin
-Bu bölüm, ipucu, taksi yolculuğu için ücretli olup olmadığını tahmin etmek için ikili sınıflandırma görevini nasıl üç kullanım modelleri gösterir. Sunulan modeller şunlardır:
+## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Bir ipucunun ikili sınıflandırma modelleri ile ödenip ödenmediğini tahmin etme
+Bu bölümde, bir taksi gezisi için bir ipucunun ödenip ödenmediğini tahmin etme amaçlı ikili sınıflandırma görevi için üç modelin nasıl kullanılacağı gösterilmektedir. Sunulan modeller şunlardır:
 
-* Regularized Lojistik regresyon 
+* Düzenli lojistik regresyon 
 * Rastgele orman modeli
-* Gradyan artırırken ağaçları
+* Degrade Artırma Ağaçları
 
-Her model kod bölümünde oluşturmaya adımlarına ayrılmıştır: 
+Her model yapı kodu bölümü adımlara ayrılır: 
 
-1. Tek bir parametre kümesiyle **eğitim verilerini modelleyin**
-2. Ölçümlerle bir test veri kümesindeki **model değerlendirmesi**
-3. Gelecekteki tüketim için modeli blob 'a **kaydetme**
+1. **Bir** parametre kümesi ile model eğitim verileri
+2. Ölçümlerle test veri setinde **model değerlendirmesi**
+3. Gelecekteki tüketim için blob'da **tasarruf modeli**
 
-### <a name="classification-using-logistic-regression"></a>Sınıflandırma Lojistik regresyon kullanma
-Bu bölümdeki kod, NYC taksi seyahat ve tarifeli havayolu veri kümesindeki bir yolculuğa yönelik bir tıp ödenip ödenmediğini tahmin eden [lbfgs](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) ile bir lojistik regresyon modelinin nasıl eğeceği, değerlendirilmesi ve kaydedileceği gösterilmektedir.
+### <a name="classification-using-logistic-regression"></a>Lojistik regresyon kullanarak sınıflandırma
+Bu bölümdeki kod, [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) ile bir ucun NYC taksi gezisi ve ücret veri setinde bir seyahat için ödenip ödenmediğini öngören lojistik regresyon modelini nasıl eğitecek, değerlendirecek ve kaydedeceğiz.
 
-**CV ve hiper parametre kullanımını kullanarak lojistik regresyon modelini eğitme**
+**CV ve hiperparametre süpürme kullanarak lojistik regresyon modeli tren**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -628,15 +628,15 @@ Bu bölümdeki kod, NYC taksi seyahat ve tarifeli havayolu veri kümesindeki bir
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**ÇıKTıLARıN** 
+**Çıkış:** 
 
-Katsayılar: [0.0082065285375-0.0223675576104,-0.0183812028036, - 3.48124578069e - 05,-0.00247646947233,-0.00165897881503 0.0675394837328,-0.111823113101,-0.324609912762,-0.204549780032,-1.36499216354, 0.591088507921, - 0.664263411392-1.00439726852, 3.46567827545,-3.51025855172,-0.0471341112232,-0.043521833294, 0.000243375810385, 0.054518719222]
+Katsayılar: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.481245780699e-05, -0.0024646947233, -0.00165897881503, 0,06753948333, -0.06753948333, -0,111823113101, -0,324609912762, -0,204549780032, -1,36499216354, 0,591088507921, - 0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
-Intercept:-0.0111216486893
+Kesişme: -0.0111216486893
 
-Hücre yürütülmesi için geçen süre: 14.43 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 14.43 saniye
 
-**Standart ölçümler ile ikili sınıflandırma modelini değerlendirin**
+**İkili sınıflandırma modelini standart ölçümlerle değerlendirme**
 
     #EVALUATE LOGISTIC REGRESSION MODEL WITH LBFGS
 
@@ -682,32 +682,32 @@ Hücre yürütülmesi için geçen süre: 14.43 saniye
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**ÇıKTıLARıN** 
+**Çıkış:** 
 
-Çekme isteği alanında 0.985297691373 =
+PR altındaki alan = 0.985297691373
 
-ROC alanında 0.983714670256 =
+ROC altındaki alan = 0.983714670256
 
-Özet istatistikleri
+Özet İstatistikler
 
-Duyarlık 0.984304060189 =
+Hassasiyet = 0.984304060189
 
-Geri çağırma 0.984304060189 =
+Geri Çağırma = 0.984304060189
 
-F1 Puan 0.984304060189 =
+F1 Puanı = 0.984304060189
 
-Hücre yürütülmesi için geçen süre: 57.61 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 57.61 saniye
 
-**ROC eğrisini çiz.**
+**ROC eğrisini çizin.**
 
-*PredictionAndLabelsDF* , önceki hücrede *tmp_results*tablo olarak kaydedilir. *tmp_results* , çizim Için SQLResults veri çerçevesinde sorgu ve çıkış sonuçları yapmak için kullanılabilir. Kod aşağıdaki gibidir.
+*TahminAndLabelsDF* bir tablo olarak kaydedilir, *tmp_results*, önceki hücrede. *tmp_results* çizim için sqlResults veri çerçevesiiçine sorgular ve çıkış sonuçları yapmak için kullanılabilir. İşte kod.
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
 
-Aşağıda, tahminlerde bulunabilir ve ROC eğrisi çizmek için kodu verilmiştir.
+Burada tahminler yapmak ve ROC-eğrisi arsa kodudur.
 
     # MAKE PREDICTIONS AND PLOT ROC-CURVE
 
@@ -735,12 +735,12 @@ Aşağıda, tahminlerde bulunabilir ve ROC eğrisi çizmek için kodu verilmişt
     plt.show()
 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
 ![Lojistik regresyon ROC curve.png](./media/spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
-### <a name="random-forest-classification"></a>Rastgele orman sınıflandırma
-Bu bölümdeki kod eğitmek, değerlendirin ve ipucu NYC taksi seyahat ve taksi veri kümesinde bir gidiş dönüş için ücretli olup olmadığını tahmin eden bir rastgele orman modeli kaydetme işlemi gösterilmektedir.
+### <a name="random-forest-classification"></a>Rastgele orman sınıflandırması
+Bu bölümdeki kod, NYC taksi gezisi ve ücret veri setinde bir bahşişin ödenip ödenmediğini tahmin eden rastgele bir orman modelini nasıl eğitecek, değerlendirecek ve kaydedilemeyeceğini gösterir.
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING RANDOM FOREST
 
@@ -785,14 +785,14 @@ Bu bölümdeki kod eğitmek, değerlendirin ve ipucu NYC taksi seyahat ve taksi 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-ROC alanında 0.985297691373 =
+ROC altındaki alan = 0.985297691373
 
-Hücre yürütülmesi için geçen süre: 31.09 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 31.09 saniye
 
-### <a name="gradient-boosting-trees-classification"></a>Gradyan artırırken ağaçları sınıflandırma
-Bu bölümdeki kod Eğitimi, değerlendirmek ve bir ipucu NYC taksi Seyahatteki bir gidiş dönüş için ücretli olup olmadığını tahmin eden bir gradyan artırırken ağaçları modeli kaydedin ve veri kümesi masrafları gösterilmektedir.
+### <a name="gradient-boosting-trees-classification"></a>Degrade artırma ağaçları sınıflandırması
+Bu bölümdeki kod, NYC taksi gezisi ve ücret veri setinde bir bahşiş in bir yolculuk için ödenip ödenmediğini öngören bir degrade artırıcı ağaç modelini nasıl eğitecek, değerlendirecek ve kaydedilemeyeceğini gösterir.
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING GRADIENT BOOSTING TREES
 
@@ -831,30 +831,30 @@ Bu bölümdeki kod Eğitimi, değerlendirmek ve bir ipucu NYC taksi Seyahatteki 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-ROC alanında 0.985297691373 =
+ROC altındaki alan = 0.985297691373
 
-Hücre yürütülmesi için geçen süre: 19.76 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 19.76 saniye
 
-## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>Regresyon modelleri ile taksi gelişlerin ipucu tutarlarının tahmin edin
-Bu bölüm, nasıl diğer ipucu özelliklerini temel alarak bir taksi seyahat için gerileme görevini bahşiş miktarını tahmin etmek için üç model kullanmak Ücretli gösterir. Sunulan modeller şunlardır:
+## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>Regresyon modelleri ile taksi yolculukları için bahşiş miktarlarını tahmin etme
+Bu bölümde, diğer uç özelliklerine göre bir taksi gezisi için ödenen bahşiş miktarını tahmin etme regresyon görevi için üç modelin nasıl kullanılacağı gösterilmektedir. Sunulan modeller şunlardır:
 
-* Regularized doğrusal regresyon
+* Düzenli lineer regresyon
 * Rastgele orman
-* Gradyan artırırken ağaçları
+* Degrade Artırma Ağaçları
 
-Bu modeller giriş açıklandığı gibi. Her model kod bölümünde oluşturmaya adımlarına ayrılmıştır: 
+Bu modeller girişte tanımlanmıştır. Her model yapı kodu bölümü adımlara ayrılır: 
 
-1. Tek bir parametre kümesiyle **eğitim verilerini modelleyin**
-2. Ölçümlerle bir test veri kümesindeki **model değerlendirmesi**
-3. Gelecekteki tüketim için modeli blob 'a **kaydetme**
+1. **Bir** parametre kümesi ile model eğitim verileri
+2. Ölçümlerle test veri setinde **model değerlendirmesi**
+3. Gelecekteki tüketim için blob'da **tasarruf modeli**
 
 ### <a name="linear-regression-with-sgd"></a>SGD ile doğrusal regresyon
-Bu bölümdeki kod ölçeği özellikleri iyileştirme için stokastik aşama (SGD) kullanan bir doğrusal regresyon eğitmek için nasıl kullanılacağını ve nasıl Puanlama, değerlendirin ve Azure Blob Storage (WASB) modeli kaydedin gösterir.
+Bu bölümdeki kod, en iyi duruma getirmek için stokastik gradyan iniş (SGD) kullanan doğrusal bir regresyon için ölçeklenmiş özelliklerin nasıl kullanılacağını ve azure Blob Depolama 'da (WASB) modelin nasıl puanlandığını, değerlendirildiğini ve kaydedildiğini gösterir.
 
 > [!TIP]
-> Deneyimimizde, yakınsama LinearRegressionWithSGD modelleri ile ilgili sorunlar olabilir ve parametreleri değiştirildi/geçerli bir model dikkatli bir şekilde almak için en iyi duruma getirilmiş olmanız gerekir. Değişkenler önemli ölçüde ölçeklendirme yakınsamalı yardımcı olur. 
+> Deneyimlerimize göre, LinearRegressionWithSGD modellerinin yakınsaması ile ilgili sorunlar olabilir ve parametrelerin geçerli bir model elde etmek için dikkatle değiştirilmesi/optimize edilmesi gerekmektedir. Değişkenlerin ölçekleme önemli ölçüde yakınsama ile yardımcı olur. 
 > 
 > 
 
@@ -897,20 +897,20 @@ Bu bölümdeki kod ölçeği özellikleri iyileştirme için stokastik aşama (S
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-Katsayılar: [0.00457675809917-0.0226314167349,-0.0191910355236, 0.246793409578, 0.312047890459, 0.359634405999, 0.00928692253981,-0.000987181489428,-0.0888306617845, 0.0569376211553, 0.115519551711, 0.149250164995,- 0.00990211159703-0.00637410344522, 0.545083566179,-0.536756072402, 0.0105762393099,-0.0130117577055, 0.0129304737772,-0.00171065945959]
+Katsayılar: [0.004576758099917, -0.02263141673499, -0.0191910355236, 0.246793409578, 0.312047890459, 0.00928692253981, -0.0009871814889428, -0.088306617845, 0.056937621553, 0,115519551711, 0,149250164995, - 0.00990211159703, -0.00637410344522, 0.545083566179, -0.536756072402, 0.0105762393099, -0.0130117577055, 0.0129304737772, -0.00171065945959]
 
-Intercept: 0.853872718283
+Kesişme: 0.853872718283
 
-RMSE 1.24190115863 =
+RMSE = 1.24190115863
 
-R sqr 0.608017146081 =
+R-sqr = 0,608017146081
 
-Hücre yürütülmesi için geçen süre: 58.42 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 58.42 saniye
 
-### <a name="random-forest-regression"></a>Rasgele orman regresyon
-Bu bölümdeki kod Eğitimi, değerlendirmek ve NYC taksi seyahat verilerini ipucunu tutarındaki tahmin eden bir rastgele orman gerileme kaydetme işlemi gösterilmektedir.
+### <a name="random-forest-regression"></a>Rastgele Orman regresyonu
+Bu bölümdeki kod, NYC taksi yolculuğu verileri için bahşiş miktarını öngören rasgele bir orman regresyonu nasıl eğitilir, değerlendirecek ve kaydedilen gösterir.
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
 
@@ -953,18 +953,18 @@ Bu bölümdeki kod Eğitimi, değerlendirmek ve NYC taksi seyahat verilerini ipu
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-RMSE 0.891209218139 =
+RMSE = 0.891209218139
 
-R sqr 0.759661334921 =
+R-sqr = 0.7596661334921
 
-Hücre yürütülmesi için geçen süre: 49.21 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 49.21 saniye
 
-### <a name="gradient-boosting-trees-regression"></a>Gradyan artırırken ağaçları regresyon
-Bu bölümdeki kod NYC taksi seyahat verilerini ipucunu tutarındaki tahmin eden bir gradyan artırırken ağaçları modeli kaydedin eğitme ve değerlendirme işlemi gösterilmektedir.
+### <a name="gradient-boosting-trees-regression"></a>Degrade arttırıcı ağaçlar regresyon
+Bu bölümdeki kod, NYC taksi yolculuğu verileri için bahşiş miktarını öngören bir degrade artırıcı ağaç modelini nasıl eğitecek, değerlendirecek ve kaydedilen gösterir.
 
-**Eğitme ve değerlendirme**
+**Tren ve değerlendirmek**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1004,17 +1004,17 @@ Bu bölümdeki kod NYC taksi seyahat verilerini ipucunu tutarındaki tahmin eden
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-RMSE 0.908473148639 =
+RMSE = 0.908473148639
 
-R sqr 0.753835096681 =
+R-sqr = 0.753835096681
 
-Hücre yürütülmesi için geçen süre: 34.52 saniye
+Hücre nin üzerinde yürütmek için alınan süre: 34.52 saniye
 
-**ZF**
+**Arsa**
 
-*tmp_results* , önceki hücrede Hive tablosu olarak kaydedilir. Tablodaki sonuçlar, çizim için *SQLResults* veri çerçevesinin çıktılarından oluşur. Kod aşağıdaki gibidir
+*tmp_results* önceki hücrede hive tablosu olarak kaydedilir. Tablodan elde edilen sonuçlar, çizim için *sqlResults* veri çerçevesine çıkar. İşte kod
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1022,7 +1022,7 @@ Hücre yürütülmesi için geçen süre: 34.52 saniye
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
-Jupyter sunucu kullanarak verilerini çizmek için kod aşağıdaki gibidir.
+Burada Jupyter sunucu kullanarak veri çizmek için koddur.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -1040,12 +1040,12 @@ Jupyter sunucu kullanarak verilerini çizmek için kod aşağıdaki gibidir.
     plt.show(ax)
 
 
-**ÇıKTıLARıN**
+**Çıkış:**
 
-![Gerçek-vs-öngörülen-ipucu-tutarları](./media/spark-data-exploration-modeling/actual-vs-predicted-tips.png)
+![Gerçek-vs-öngörülen uç-tutarlar](./media/spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="clean-up-objects-from-memory"></a>Bellek nesneleri Temizle
-Bellekte önbelleğe alınan nesneleri silmek için `unpersist()` kullanın.
+## <a name="clean-up-objects-from-memory"></a>Nesneleri bellekten temizleme
+Bellekte önbelleğe alınmış nesneleri silmek için kullanın. `unpersist()`
 
     # REMOVE ORIGINAL DFs
     taxi_df_train_cleaned.unpersist()
@@ -1068,8 +1068,8 @@ Bellekte önbelleğe alınan nesneleri silmek için `unpersist()` kullanın.
     oneHotTESTregScaled.unpersist()
 
 
-## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>Kayıt depolama konumları için kullanım ve puanlama modelleri
-[Spark tarafından oluşturulan makine öğrenimi modellerini puan ve değerlendirme](spark-model-consumption.md) bölümünde açıklanan bağımsız bir veri kümesini tüketmek ve değerlendirmek için, burada oluşturulan kaydedilmiş modelleri içeren bu dosya adlarını, tüketim Jupyter not defterine kopyalamanız ve yapıştırmanız gerekir. Aşağıda, ihtiyacınız olan model dosyalara olan yolları yazdırmak için kodu verilmiştir.
+## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>Tüketim ve puanlama için modellerin depolama konumlarını kaydetme
+Skor'da açıklanan bağımsız bir veri kümesini tüketmek ve puanlamak [ve Spark yapımı makine öğrenimi modelleri](spark-model-consumption.md) konusunu değerlendirmek için, burada oluşturulan kaydedilmiş modelleri içeren bu dosya adlarını Consumption Jupyter not defterine kopyalamanız ve yapıştırmanız gerekir. İhtiyacınız olan dosyaları modelleme yollarını yazdırmak için kod aşağıda veda edinebilirsiniz.
 
     # MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1080,9 +1080,9 @@ Bellekte önbelleğe alınan nesneleri silmek için `unpersist()` kullanın.
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**ÇıKTıLARıN**
+**Çıkış**
 
-logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
+lojistikRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
 
 linearRegFileLoc = modelDir + "LinearRegressionWithSGD_2016-05-0317_05_21.577773"
 
@@ -1095,9 +1095,9 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
 ## <a name="whats-next"></a>Sırada ne var?
-Spark MlLib ile oluşturduğunuz regresyon ve sınıflandırma modelleri, Puanlama ve bu modellerin değerlendirmesi hakkında bilgi edinmek hazır olursunuz. Gelişmiş Veri keşfi ve modelleme not defteri çapraz doğrulama, hyper-Süpürme saldırısı yapılabilir, parametresini dahil eden derin türlerine geçiyor ve değerlendirme model. 
+Artık Spark MlLib ile regresyon ve sınıflandırma modelleri oluşturduğunuza göre, bu modelleri nasıl puanladığınızı ve değerlendireceklerinizi öğrenmeye hazırsınız. Gelişmiş veri arama ve modelleme dizüstü bilgisayar çapraz doğrulama, hiper-parametre süpürme ve model değerlendirme dahil olmak üzere daha derin dalış. 
 
-**Model tüketimi:** Bu konuda oluşturulan sınıflandırma ve regresyon modellerini Puanlama ve değerlendirme hakkında bilgi edinmek için bkz. [Spark tarafından oluşturulan Machine Learning modellerini Puanlama ve değerlendirme](spark-model-consumption.md).
+**Model tüketimi:** Bu konuda oluşturulan sınıflandırma ve regresyon modellerini nasıl puanlandırıp değerlendireceklerini öğrenmek [için, Puan'a bakın ve Kıvılcım yapımı makine öğrenme modellerini değerlendirin.](spark-model-consumption.md)
 
-**Çapraz doğrulama ve hiper parametre**kullanımı: modellerin çapraz doğrulama ve hiper parametre tatkiyle nasıl eğitilmesine ilişkin [Spark ile gelişmiş veri araştırması ve modellemeye](spark-advanced-data-exploration-modeling.md) bakın
+**Çapraz doğrulama ve hiperparametre süpürme**: [Spark ile](spark-advanced-data-exploration-modeling.md) modellerin çapraz doğrulama ve hiper-parametre süpürme kullanılarak nasıl eğitilene ilişkin gelişmiş veri keşfi ve modellemesi
 

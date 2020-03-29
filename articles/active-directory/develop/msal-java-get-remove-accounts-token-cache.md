@@ -1,7 +1,7 @@
 ---
-title: Belirteç önbelleğinden hesapları al & Kaldır (MSAL4j) | Mavisi
+title: Hesapları belirteç önbelleğinden (MSAL4j) kaldırmak & alın | Azure
 titleSuffix: Microsoft identity platform
-description: Java için Microsoft kimlik doğrulama kitaplığı 'nı kullanarak, belirteç önbelleğinde hesapları görüntülemeyi ve kaldırmayı öğrenin.
+description: Java için Microsoft Kimlik Doğrulama Kitaplığı'nı kullanarak hesapları belirteç önbelleğinden nasıl görüntüleyip kaldıracağınızı öğrenin.
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -14,19 +14,19 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.openlocfilehash: 2b138678b186cc41b76254658ad604c2da2d76c1
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696206"
 ---
-# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Java için MSAL kullanarak belirteç önbelleğinden hesap alma ve kaldırma
+# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Java için MSAL'ı kullanarak hesapları belirteç önbelleğinden alın ve kaldırın
 
-Java için MSAL, varsayılan olarak bellek içi belirteç önbelleği sağlar. Bellek içi belirteç önbelleği, uygulama örneğinin süresini sürer.
+Java için MSAL varsayılan olarak bellek içi belirteç önbelleği sağlar. Bellek içi belirteç önbelleği uygulama örneğinin süresine dayanır.
 
-## <a name="see-which-accounts-are-in-the-cache"></a>Hangi hesapların önbellekte olduğunu görün
+## <a name="see-which-accounts-are-in-the-cache"></a>Önbellekte hangi hesapların olduğunu görme
 
-Aşağıdaki örnekte gösterildiği gibi `PublicClientApplication.getAccounts()` çağırarak hangi hesapların önbellekte olduğunu kontrol edebilirsiniz:
+Aşağıdaki örnekte gösterildiği gibi arayarak `PublicClientApplication.getAccounts()` önbellekte hangi hesapların olduğunu kontrol edebilirsiniz:
 
 ```java
 PublicClientApplication pca = new PublicClientApplication.Builder(
@@ -37,9 +37,9 @@ PublicClientApplication pca = new PublicClientApplication.Builder(
 Set<IAccount> accounts = pca.getAccounts().join();
 ```
 
-## <a name="remove-accounts-from-the-cache"></a>Hesapları önbellekten kaldır
+## <a name="remove-accounts-from-the-cache"></a>Hesapları önbellekten kaldırma
 
-Bir hesabı önbellekten kaldırmak için, kaldırılması gereken hesabı bulun ve aşağıdaki örnekte gösterildiği gibi `PublicClientApplicatoin.removeAccount()` çağırın:
+Bir hesabı önbellekten kaldırmak için kaldırılması gereken hesabı bulun `PublicClientApplicatoin.removeAccount()` ve aşağıdaki örnekte gösterildiği gibi arayın:
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();
@@ -51,6 +51,6 @@ IAccount accountToBeRemoved = accounts.stream().filter(
 pca.removeAccount(accountToBeRemoved).join();
 ```
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-Java için MSAL kullanıyorsanız, [Java IÇIN msal Içindeki özel belirteç önbelleği serileştirme](msal-java-token-cache-serialization.md)hakkında bilgi edinin.
+Java için MSAL kullanıyorsanız, [Java için MSAL'da Özel belirteç önbelleği serileştirme](msal-java-token-cache-serialization.md)si hakkında bilgi edinin.

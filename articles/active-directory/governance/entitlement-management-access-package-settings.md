@@ -1,6 +1,6 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde erişim paketi istemek için bağlantı paylaşma-Azure Active Directory
-description: Azure Active Directory yetkilendirme yönetimi 'nde erişim paketi istemek için bağlantı paylaşmayı öğrenin.
+title: Azure AD yetkilendirme yönetiminde erişim paketi istemek için bağlantıyı paylaşın - Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetiminde bir erişim paketi istemek için bağlantıyı nasıl paylaşılacın gerektiğini öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,37 +17,37 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea90032b1f0cfe598ffdb3d35448a996f3111036
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968757"
 ---
-# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim paketi istemek için bağlantıyı paylaşma
+# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi istemek için bağlantıyı paylaşma
 
-Dizininizdeki çoğu kullanıcı erişim portalı 'nda oturum açabilir ve istedikleri erişim paketleri listesini otomatik olarak görebilir. Ancak, henüz dizininizden olmayan dış iş ortağı kullanıcıları için, onlara bir erişim paketi istemek üzere kullanabilecekleri bir bağlantı göndermeniz gerekecektir. 
+Dizininizdeki çoğu kullanıcı Erişimim portalında oturum açabilir ve isteyebilecekleri erişim paketlerinin listesini otomatik olarak görebilir. Ancak, henüz dizininizde olmayan harici iş ortağı kullanıcılar için, onlara bir erişim paketi istemek için kullanabilecekleri bir bağlantı göndermeniz gerekir. 
 
-Erişim paketinin kataloğu [dış kullanıcılar için etkinleştirildiğinden](entitlement-management-catalog-create.md) ve [Dış kullanıcının dizini için bir ilkeniz](entitlement-management-access-package-request-policy.md)varsa, dış Kullanıcı erişim paketi istemek için erişim portalı bağlantısını kullanabilir.
+Erişim paketinin kataloğu [harici kullanıcılar için etkinleştirildiğinden](entitlement-management-catalog-create.md) ve harici [kullanıcıdizini için](entitlement-management-access-package-request-policy.md)bir politikanız olduğu sürece, harici kullanıcı erişim paketini istemek için Erişim portalım bağlantısını kullanabilir.
 
 ## <a name="share-link-to-request-an-access-package"></a>Erişim paketi istemek için bağlantıyı paylaşma
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi, Katalog sahibi veya Access paket yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
 
-1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
+1. Sol menüde, **Access paketlerini** tıklatın ve ardından erişim paketini açın.
 
-1. Genel Bakış sayfasında, **erişim portalı My bağlantısını**kopyalayın.
+1. Genel Bakış sayfasında, **Erişim portalım bağlantısını**kopyalayın.
 
-    ![Erişim paketine genel bakış-erişim portalı bağlantısı](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Erişim paketine genel bakış - Erişim portalı bağlantım](./media/entitlement-management-shared/my-access-portal-link.png)
 
-    Bir iç iş ortağına gönderirken erişim portalı 'nın tamamını kopyalamanız önemlidir. Bu, iş ortağının, kendi isteklerini yapmak için dizininizin portalına erişmesini sağlar. Bağlantı `myaccess`başlar, bir dizin ipucu içerir ve bir erişim paketi KIMLIĞIYLE biter.  (ABD kamu için, erişim portalı bağlantımda bulunan etki alanı `myaccess.microsoft.us`olacaktır.)
+    Bir iç iş ortağına gönderirken Tüm Erişim portalıbağlantımı kopyalamanız önemlidir. Bu, ortağın istekte bulunmak için dizininizin portalına erişmesini sağlar. Bağlantı, `myaccess`bir dizin ipucu içerir ve bir erişim paketi kimliği ile sona erer.  (ABD Hükümeti için, Erişim portalıbağlantımdaki `myaccess.microsoft.us`etki alanı olacaktır.)
 
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
-1. Dış iş ortağınıza e-posta gönderin veya bağlantıyı gönderin. Erişim paketini istemek için bağlantısını kullanıcılarla paylaşabilir.
+1. Bağlantıyı harici iş ortağınıza e-posta ile gönderin veya gönderin. Erişim paketini istemek için bağlantıyı kullanıcılarıyla paylaşabilirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Erişim paketine erişim isteme](entitlement-management-request-access.md)
+- [Erişim paketine erişim isteği](entitlement-management-request-access.md)
 - [Erişim isteklerini onaylama veya reddetme](entitlement-management-request-approve.md)

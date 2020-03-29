@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory ile Azure Veri Gezgini tümleştirmesi
-description: Bu konuda, kopyalama, arama ve komut etkinliklerini kullanmak için Azure Veri Gezgini Azure Data Factory ile tümleştirin
+title: Azure Veri Fabrikası ile Azure Veri Gezgini entegrasyonu
+description: Bu konuda, kopyalama, arama ve komut etkinliklerini kullanmak için Azure Veri Gezgini'ni Azure Veri Fabrikası'na entegre edin
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,176 +9,176 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293632"
 ---
-# <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Veri Gezgini Azure Data Factory ile tümleştirme
+# <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Veri Gezgini'ni Azure Veri Fabrikasıile tümleştir
 
-[Azure Data Factory](/azure/data-factory/) (ADF), farklı veri depolarını tümleştirmenize ve veriler üzerinde etkinlikler gerçekleştirmenize olanak tanıyan bulut tabanlı bir veri tümleştirme hizmetidir. ADF, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanır. Azure Veri Gezgini, Azure Data Factory [desteklenen veri depolarından](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) biridir. 
+[Azure Veri Fabrikası](/azure/data-factory/) (ADF), farklı veri depolarını tümleştirmenize ve veriler üzerinde etkinlikler gerçekleştirmenize olanak tanıyan bulut tabanlı bir veri tümleştirme hizmetidir. ADF, veri hareketi ve veri dönüşümlerini düzenlemek ve otomatikleştirmek için veri tabanlı iş akışları oluşturmanıza olanak tanır. Azure Veri Gezgini, Azure Veri Fabrikası'ndaki [desteklenen veri depolarından](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) biridir. 
 
-## <a name="azure-data-factory-activities-for-azure-data-explorer"></a>Azure Veri Gezgini Azure Data Factory etkinlikleri
+## <a name="azure-data-factory-activities-for-azure-data-explorer"></a>Azure Veri Gezgini için Azure Veri Fabrikası etkinlikleri
 
-Azure Veri Gezgini kullanıcıları için Azure Data Factory ile çeşitli tümleştirmeler sunulmaktadır:
+Azure Veri Fabrikası ile çeşitli tümleştirmeler Azure Veri Gezgini kullanıcıları için kullanılabilir:
 
 ### <a name="copy-activity"></a>Kopyalama etkinliği
  
-Veri depoları arasında veri aktarmak için kopyalama etkinliği Azure Data Factory kullanılır. Azure Veri Gezgini, verilerin Azure Veri Gezgini desteklenen herhangi bir veri deposuna kopyalandığı bir kaynak olarak desteklenir ve verilerin desteklenen herhangi bir veri deposundan Azure Veri Gezgini 'e kopyalandığı bir havuz olur. Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure Veri Gezgini veri kopyalama](/azure/data-factory/connector-azure-data-explorer). ayrıntılı bir adım adım için bkz. [Azure Data Factory verileri Azure Veri Gezgini 'a yükleme](data-factory-load-data.md).
-Azure Veri Gezgini Azure IR (Integration Runtime) tarafından desteklenir, veriler Azure 'da kopyalanırken ve şirket içinde ya da bir Azure sanal ağı gibi erişim denetimi olan bir ağda veri depolarından veri kopyalarken kullanılan, şirket içinde barındırılan IR. Daha fazla bilgi için bkz. [kullanılacak IR](/azure/data-factory/concepts-integration-runtime#determining-which-ir-to-use)
+Azure Veri Fabrikası Kopyalama etkinliği, veri depoları arasında veri aktarmak için kullanılır. Azure Veri Gezgini, verilerin Azure Veri Gezgini'nden desteklenen herhangi bir veri deposuna ve desteklenen herhangi bir veri deposundan Azure Veri Gezgini'ne kopyalandığı bir lavabo olarak desteklenir. Daha fazla bilgi için Azure [Veri Fabrikası'nı kullanarak Azure Veri Gezgini'ne veya Azure Veri Gezgini'nden kopya verilerine](/azure/data-factory/connector-azure-data-explorer)bakın. ve Azure [Veri Fabrikası'ndan Azure Veri Gezgini'ne yük verilerini](data-factory-load-data.md)ayrıntılı bir şekilde görmek için.
+Azure Veri Gezgini, veriler Azure içinde kopyalandığında kullanılan Azure IR (Tümleştirme Çalışma Süresi) tarafından desteklenir ve verileri şirket içinde veya Azure Sanal Ağı gibi erişim denetimine sahip bir ağa şirket içinde veya ağda kopyalarken kendi kendine barındırılan IR tarafından desteklenir. Daha fazla bilgi [için hangi IR'yi kullanacağına](/azure/data-factory/concepts-integration-runtime#determining-which-ir-to-use) bakın
  
 > [!TIP]
-> Kopyalama etkinliğini kullanırken ve **bağlı hizmet** ya da **veri kümesi**oluştururken, eski veri deposu **kusto**değil, veri deposu **Azure Veri Gezgini (kusto)** öğesini seçin.  
+> Kopyalama etkinliğini kullanırken ve bir **Bağlantılı Hizmet** veya **Dataset**oluştururken, eski veri deposu **Kusto'yu**değil, veri deposu Azure Veri Gezgini'ni **(Kusto)** seçin.  
 
 ### <a name="lookup-activity"></a>Arama etkinliği
  
-Arama etkinliği, Azure Veri Gezgini sorguları yürütmek için kullanılır. Sorgunun sonucu, arama etkinliğinin çıktısı olarak döndürülür ve [ADF arama belgelerinde](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity)açıklandığı şekilde işlem hattının bir sonraki etkinliğinde kullanılabilir.  
-5\.000 satırı ve 2 MB yanıt boyutu sınırına ek olarak, etkinliğin ayrıca 1 saatlik bir sorgu zaman aşımı sınırı vardır.
+Arama etkinliği, Azure Veri Gezgini'ndeki sorguları yürütmek için kullanılır. Sorgunun sonucu, Arama etkinliğinin çıktısı olarak döndürülür ve [ADF Arama belgelerinde](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity)açıklandığı gibi ardışık ardışık ardışık taki bir sonraki etkinlikte kullanılabilir.  
+5.000 satır ve 2 MB'lık yanıt boyutu sınırına ek olarak, etkinlik aynı zamanda 1 saatlik bir sorgu zaman önceliği sınırına da sahiptir.
 
 ### <a name="command-activity"></a>Komut etkinliği
 
-Komut etkinliği, Azure Veri Gezgini [Denetim komutlarının](/azure/kusto/concepts/#control-commands)yürütülmesine izin verir. Sorguların aksine, denetim komutları büyük olasılıkla verileri veya meta verileri değiştirebilir. Denetim komutlarının bazıları, verileri Azure Veri Gezgini 'a almak, `.ingest`veya `.set-or-append`gibi komutları kullanarak Azure Veri Gezgini ve `.export`gibi komutları kullanarak verileri dış veri depolarına kopyalamak için hedeflenmiştir.
-Komut etkinliğine ilişkin ayrıntılı bir yol için bkz. [Azure Veri Gezgini denetim komutlarını çalıştırmak için Azure Data Factory komut etkinliğini kullanma](data-factory-command-activity.md).  Verileri kopyalamak için bir denetim komutu kullanmak, kopyalama etkinliğinden daha hızlı ve ucuz seçeneği de olabilir. Komut etkinliğinin kopyalama etkinliğine göre ne zaman kullanılacağını belirlemek için, bkz. [veri kopyalanırken kopyalama ve komut etkinlikleri arasında seçim](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data)yapın.
+Komut etkinliği, Azure Veri Gezgini [denetim komutlarının](/azure/kusto/concepts/#control-commands)yürütülmesine izin verir. Sorguların aksine, denetim komutları verileri veya meta verileri değiştirebilir. Bazı denetim komutları, Azure Veri Gezgini gibi `.ingest`komutları kullanarak Verileri `.set-or-append`Azure Veri Gezgini'ne yutmayı veya Azure Veri `.export`Gezgini'nden harici veri depolarına kopyalamayı hedefliyor.
+Komut etkinliğinin ayrıntılı bir şekilde gözden geçirimi için Azure [Veri Gezgini denetim komutlarını çalıştırmak için Azure Veri Fabrikası komut etkinliğini kullanın'](data-factory-command-activity.md)a bakın.  Verileri kopyalamak için bir denetim komutu kullanmak, bazen Kopyalama etkinliğinden daha hızlı ve daha ucuz bir seçenek olabilir. Komut etkinliğinin Kopyala etkinliğine karşı ne zaman kullanılacağını belirlemek için, [verileri kopyalarken Kopyala ve Komut etkinlikleri arasında seçim](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data)e bakın.
 
-### <a name="copy-in-bulk-from-a-database-template"></a>Veritabanı şablonundan toplu olarak Kopyala
+### <a name="copy-in-bulk-from-a-database-template"></a>Veritabanı şablonundan toplu olarak kopyalama
 
-[Bir veritabanından Azure Veri Gezgini Azure Data Factory şablonu kullanılarak toplu kopyalama](data-factory-template.md) , önceden tanımlanmış bir Azure Data Factory işlem hattı olur. Şablon, daha hızlı veri kopyalama için veritabanı başına veya tablo başına çok sayıda işlem hattı oluşturmak için kullanılır. 
+[Azure Veri Fabrikası şablonu kullanılarak veritabanından Azure Veri Gezgini'ne toplu](data-factory-template.md) olarak Kopyala, önceden tanımlanmış bir Azure Veri Fabrikası ardışık hattıdır. Şablon, daha hızlı veri kopyalama için veritabanı veya tablo başına birçok ardışık iş aktarım oluşturmak için kullanılır. 
 
 ### <a name="mapping-data-flows"></a>Veri akışlarını eşleme 
 
-[Azure Data Factory eşleme veri akışları](/azure/data-factory/concepts-data-flow-overview) , veri mühendislerinin kod yazmadan grafik veri dönüştürme mantığı geliştirmesini sağlayan görsel olarak tasarlanan veri dönüştürmelerdir. Veri akışı oluşturmak ve Azure Veri Gezgini veri almak için aşağıdaki yöntemi kullanın:
+[Azure Veri Fabrikası haritalama veri akışları,](/azure/data-factory/concepts-data-flow-overview) veri mühendislerinin kod yazmadan grafikveri dönüştürme mantığı geliştirmelerine olanak tanıyan görsel olarak tasarlanmış veri dönüşümleridir. Bir veri akışı oluşturmak ve Azure Veri Gezgini'ne veri almak için aşağıdaki yöntemi kullanın:
 
-1. [Eşleme veri akışı](/azure/data-factory/data-flow-create)oluşturun.
-1. [Verileri Azure Blob 'A aktarın](/azure/data-factory/data-flow-sink). 
-1. Verileri Azure Veri Gezgini almak için [Event Grid](/azure/data-explorer/ingest-data-event-grid) veya [ADF kopyalama etkinliği](/azure/data-explorer/data-factory-load-data) tanımlayın.
+1. [Eşleme veri akışını](/azure/data-factory/data-flow-create)oluşturun.
+1. [Verileri Azure Blob'a dışa aktarın.](/azure/data-factory/data-flow-sink) 
+1. Verileri Azure Veri [Gezgini'ne](/azure/data-explorer/ingest-data-event-grid) almak için Olay Ağıt veya [ADF kopyalama etkinliğini](/azure/data-explorer/data-factory-load-data) tanımlayın.
 
-## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Veri kopyalama sırasında Kopyala ve Azure Veri Gezgini komut etkinlikleri arasında seçim yapın 
+## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Verileri kopyalarken Kopyala ve Azure Veri Gezgini Komutu etkinlikleri arasında seçim 
 
-Bu bölüm, veri kopyalama gereksinimleriniz için doğru etkinliği seçerken size yardımcı olur.
+Bu bölüm, veri kopyalama gereksinimleriniz için doğru etkinliği seçmenize yardımcı olacaktır.
 
-Veya Azure Veri Gezgini veri kopyalarken, Azure Data Factory iki kullanılabilir seçenek vardır:
-* Kopyalama etkinliği.
-* Azure Veri Gezgini 'da veri aktarımı yapan denetim komutlarından birini çalıştıran Azure Veri Gezgini komut etkinliği. 
+Azure Veri Gezgini'nden veya Azure Veri Gezgini'nden veri kopyalanırken, Azure Veri Fabrikası'nda iki kullanılabilir seçenek vardır:
+* Etkinliği kopyalayın.
+* Azure Veri Gezgini'nde veri aktarımı yapan denetim komutlarından birini yürüten Azure Veri Gezgini Komutu etkinliği. 
 
-### <a name="copy-data-from-azure-data-explorer"></a>Azure Veri Gezgini veri kopyalama
+### <a name="copy-data-from-azure-data-explorer"></a>Azure Veri Gezgini'nden veri kopyalama
   
-Kopyalama etkinliğini veya [`.export`](/azure/kusto/management/data-export/) komutunu kullanarak Azure Veri Gezgini 'tan veri kopyalayabilirsiniz. `.export` komutu bir sorgu yürütür ve sonra sorgunun sonuçlarını dışarı aktarır. 
+Kopyalama etkinliğini veya komutu [`.export`](/azure/kusto/management/data-export/) kullanarak Azure Veri Gezgini'nden verileri kopyalayabilirsiniz. Komut `.export` bir sorgu yürütür ve sonra sorgu sonuçlarını dışa dışa böler. 
 
-Kopyalama etkinliğinin ve Azure Veri Gezgini verileri kopyalamak için `.export` komutunun karşılaştırması için aşağıdaki tabloya bakın.
+Azure Veri Gezgini'nden veri kopyalama `.export` küçlükünün kopyala etkinliği ve komutunun karşılaştırılması için aşağıdaki tabloya bakın.
 
-| | Kopyalama etkinliği | . export komutu |
+| | Kopyalama etkinliği | .export komutu |
 |---|---|---|
-| **Akış açıklaması** | ADF kusto üzerinde bir sorgu yürütür, sonucu işler ve hedef veri deposuna gönderir. <br>(**ADX > ADF > havuz veri deposu**) | ADF, komutu yürüten ve verileri doğrudan hedef veri deposuna gönderen Azure Veri Gezgini `.export` bir denetim komutu gönderir. <br>(**ADX > havuz veri deposu**) |
-| **Desteklenen hedef veri depoları** | Desteklenen çok çeşitli [veri depoları](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2, Azure blob, SQL veritabanı |
-| **Performans** | Merkez | <ul><li>Dağıtılmış (varsayılan), birden çok düğümden eşzamanlı olarak veri dışarı aktarılıyor</li><li>Daha hızlı ve SMM etkin.</li></ul> |
-| **Sunucu limitleri** | [Sorgu sınırları](/azure/kusto/concepts/querylimits) Genişletilebilir/devre dışı olabilir. Varsayılan olarak, ADF sorguları şunları içerir: <ul><li>500.000 kayıt veya 64 MB boyut limiti.</li><li>10 dakikalık zaman sınırı.</li><li>`noTruncation` false olarak ayarlandı.</li></ul> | Varsayılan olarak, sorgu sınırlarını genişletir veya devre dışı bırakır: <ul><li>Boyut sınırları devre dışı bırakıldı.</li><li>Sunucu zaman aşımı, 1 saate genişletilir.</li><li>`MaxMemoryConsumptionPerIterator` ve `MaxMemoryConsumptionPerQueryPerNode` en fazla (5 GB, TotalPhysicalMemory/2) olarak genişletilir.</li></ul>
+| **Akış açıklaması** | ADF, Kusto'da bir sorgu yürütür, sonucu işler ve hedef veri deposuna gönderir. <br>(**ADX > ADF > lavabo veri deposu**) | ADF, `.export` komutu çalıştıran ve verileri doğrudan hedef veri deposuna gönderen Azure Veri Gezgini'ne bir denetim komutu gönderir. <br>(**ADX > lavabo veri deposu**) |
+| **Desteklenen hedef veri depoları** | Çok çeşitli [desteklenen veri depoları](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2, Azure Blob, SQL Veritabanı |
+| **Performans** | Merkezi | <ul><li>Dağıtılmış (varsayılan), aynı anda birden çok düğümden veri dışa aktarma</li><li>Daha hızlı ve COGS verimli.</li></ul> |
+| **Sunucu sınırları** | [Sorgu sınırları](/azure/kusto/concepts/querylimits) genişletilebilir/devre dışı bırakılır. Varsayılan olarak, ADF sorguları şunları içerir: <ul><li>500.000 kayıt veya 64 MB boyut sınırı.</li><li>10 dakikalık zaman sınırı.</li><li>`noTruncation`yanlış olarak ayarlanır.</li></ul> | Varsayılan olarak, sorgu sınırlarını genişletir veya devre dışı kılabilir: <ul><li>Boyut sınırları devre dışı bırakılır.</li><li>Sunucu zaman dilimi 1 saate uzatılır.</li><li>`MaxMemoryConsumptionPerIterator`ve `MaxMemoryConsumptionPerQueryPerNode` maksimum (5 GB, TotalPhysicalMemory/2) uzatılır.</li></ul>
 
 > [!TIP]
-> Kopyalama hedefi `.export` komutu tarafından desteklenen veri depolarından biri ise ve kopyalama etkinliği özelliklerinin hiçbiri gereksinimlerinize göre önemli değilse, `.export` komutunu seçin.
+> Kopyalama hedefiniz `.export` komut tarafından desteklenen veri depolarından biriyse ve Copy etkinlik özelliklerinden hiçbiri gereksinimleriniz `.export` için çok önemli değilse, komutu seçin.
 
-### <a name="copying-data-to-azure-data-explorer"></a>Azure Veri Gezgini veri kopyalama
+### <a name="copying-data-to-azure-data-explorer"></a>Azure Veri Gezgini'ne veri kopyalama
 
-Veri kopyalama (`.set-or-append`, `.set-or-replace`, `.set`, `.replace)`ve [depolama 'dan](/azure/kusto/management/data-ingestion/ingest-from-storage) alma (`.ingest`[) gibi kopyalama](/azure/kusto/management/data-ingestion/ingest-from-query) etkinliği veya alma komutlarını kullanarak verileri Azure Veri Gezgini kopyalayabilirsiniz. 
+Verileri Azure Veri Gezgini'ne kopyalayabilir, kopyalama etkinliği veya [sorgudan](/azure/kusto/management/data-ingestion/ingest-from-query) yutma `.set` `.replace)`(`.set-or-append`, , `.set-or-replace`,`.ingest`, ve [depolamadan yutma](/azure/kusto/management/data-ingestion/ingest-from-storage) ( ) gibi yutma komutlarını kullanarak. 
 
-Kopyalama etkinliğinin karşılaştırması için aşağıdaki tabloya ve Azure Veri Gezgini veri kopyalamaya yönelik giriş komutlarına bakın.
+Kopyalama etkinliğinin karşılaştırılması ve verileri Azure Veri Gezgini'ne kopyalamak için yutma komutları için aşağıdaki tabloya bakın.
 
-| | Kopyalama etkinliği | Sorgudan al<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Depolama alanından alma <br> `.ingest` |
+| | Kopyalama etkinliği | Sorgudan alma<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Depolamadan yutma <br> `.ingest` |
 |---|---|---|---|
-| **Akış açıklaması** | ADF, kaynak veri deposundan verileri alır, tablo biçimine dönüştürür ve gerekli şema eşleme değişiklikleri yapar. ADF daha sonra verileri Azure bloblarına yükler, parçalara ayırır, sonra bunları ADX tablosuna almak için Blobları indirir. <br> (**Kaynak veri deposu > ADF > Azure Blob 'ları > ADX**) | Bu komutlar bir sorgu veya `.show` komutu yürütebilir ve sorgunun sonuçlarını bir tabloya (**adx > ADX**) alabilir. | Bu komut, verileri bir veya daha fazla bulut depolama yapıtlarından "çekerek" bir tabloya dönüştürür. |
-| **Desteklenen kaynak veri depoları** |  [çeşitli seçenekler](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure blob, SQL (sql_request eklentisi kullanılarak), Cosmos (cosmosdb_sql_request eklentisini kullanarak) ve HTTP veya Python API 'Leri sağlayan diğer tüm veri depolarını kullanın. | Dosya sistemi, Azure Blob depolama, ADLS Gen 1, ADLS Gen 2 |
-| **Performans** | Yük Dengeleme, yeniden denemeler ve hata işleme sağlayarak küçük boyut alımı sağlayan ve yüksek kullanılabilirlik sağlayan alma işlemleri kuyruğa alınır ve yönetilir. | <ul><li>Bu komutlar, yüksek hacimli verileri içeri aktarma için tasarlanmamıştır.</li><li>Beklenen ve Cheaper olarak çalışarak. Ancak, üretim senaryolarında ve trafik oranları ve veri boyutları büyükse kopyalama etkinliğini kullanın.</li></ul> |
-| **Sunucu limitleri** | <ul><li>Boyut sınırı yok.</li><li>En fazla zaman aşımı sınırı: alınan blob başına 1 saat. |<ul><li>Sorgu bölümünde yalnızca bir boyut sınırı vardır ve bu, `noTruncation=true`belirtilerek atlanabilir.</li><li>En fazla zaman aşımı sınırı: 1 saat.</li></ul> | <ul><li>Boyut sınırı yok.</li><li>En fazla zaman aşımı sınırı: 1 saat.</li></ul>|
+| **Akış açıklaması** | ADF verileri kaynak veri deposundan alır, bir tabular biçime dönüştürür ve gerekli şema eşleme değişikliklerini yapar. ADF daha sonra verileri Azure blobs'a yükler, parçalara böler ve sonra damlaları ADX tablosuna yutmak için indirir. <br> (**Kaynak veri deposu > ADF > Azure lekeleri > ADX**) | Bu komutlar bir sorgu `.show` yutabilir veya bir komut uyguluyor ve sorgu sonuçlarını tabloya **(ADX > ADX)** alabilir. | Bu komut, bir veya daha fazla bulut depolama yapılarından verileri "çekerek" verileri tabloya sindirir. |
+| **Desteklenen kaynak veri depoları** |  [çeşitli seçenekler](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (sql_request eklentisini kullanarak), Cosmos (cosmosdb_sql_request eklentisini kullanarak) ve HTTP veya Python API'leri sağlayan diğer veri depoları. | Filesystem, Azure Blob Depolama, ADLS Gen 1, ADLS Gen 2 |
+| **Performans** | Yutmalar sıraya alınır ve yönetilir, bu da küçük boyutlu alımlar sağlar ve yük dengeleme, yeniden denemeler ve hata işleme sağlayarak yüksek kullanılabilirlik sağlar. | <ul><li>Bu komutlar yüksek hacimli veri alma için tasarlanmadı.</li><li>Beklendiği gibi ve daha ucuz çalışır. Ancak üretim senaryoları ve trafik hızları ve veri boyutları büyük olduğunda Kopyalama etkinliğini kullanın.</li></ul> |
+| **Sunucu Sınırları** | <ul><li>Boyut sınırı yok.</li><li>Maksimum zaman sınırı: Yutulan blob başına 1 saat. |<ul><li>Sorgu bölümünde yalnızca bir boyut sınırı vardır ve bu sınır `noTruncation=true`belirterek atlanabilir.</li><li>Maksimum zaman sınırı: 1 saat.</li></ul> | <ul><li>Boyut sınırı yok.</li><li>Maksimum zaman sınırı: 1 saat.</li></ul>|
 
 > [!TIP]
-> * ADF 'den Azure 'a veri kopyalarken Veri Gezgini `ingest from query` komutlarını kullanın.  
-> * Büyük veri kümeleri (> 1 GB) için kopyalama etkinliğini kullanın.  
+> * ADF'den Azure Veri Gezgini'ne `ingest from query` veri kopyalarken komutları kullanın.  
+> * Büyük veri kümeleri (>1GB) için Kopyalama etkinliğini kullanın.  
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Aşağıdaki tabloda Azure Data Factory ile tümleştirmede çeşitli adımlar için gerekli izinler listelenmektedir.
+Aşağıdaki tabloda, Azure Veri Fabrikası ile tümleştirmede çeşitli adımlar için gerekli izinler listelanmaktadır.
 
-| Adım | İşlem | En düşük izin düzeyi | Notlar |
+| Adım | İşlem | Minimum izin düzeyi | Notlar |
 |---|---|---|---|
-| **Bağlı hizmet oluşturma** | Veritabanı gezintisi | *veritabanı Görüntüleyicisi* <br>ADF kullanan oturum açmış kullanıcının veritabanı meta verilerini okuma yetkisi olmalıdır. | Kullanıcı, veritabanı adını el ile sağlayabilir. |
-| | Bağlantıyı Sına | *veritabanı İzleyicisi* veya *tablo* alımı <br>Hizmet sorumlusu, veritabanı düzeyinde `.show` komutları veya tablo düzeyi alımı yürütme yetkisine sahip olmalıdır. | <ul><li>TestConnection, veritabanına değil, kümeyle olan bağlantıyı doğrular. Veritabanı mevcut olmasa bile başarılı olabilir.</li><li>Tablo Yöneticisi izinleri yeterli değildir.</li></ul>|
-| **Veri kümesi oluşturma** | Tablo gezintisi | *Veritabanı izleyicisi* <br>ADF kullanan oturum açmış kullanıcının veritabanı düzeyinde `.show` komutlarını yürütmesi için yetkilendirilmiş olması gerekir. | Kullanıcı, tablo adını el ile sağlayabilir.|
-| **Veri kümesi** veya **kopyalama etkinliği** oluşturma | Veri önizleme | *veritabanı Görüntüleyicisi* <br>Hizmet sorumlusu, veritabanı meta verilerini okumak için yetkilendirilmiş olmalıdır. | | 
-|   | Şemayı içeri aktar | *veritabanı Görüntüleyicisi* <br>Hizmet sorumlusu, veritabanı meta verilerini okumak için yetkilendirilmiş olmalıdır. | ADX tablosal tablolu kopyalamanın kaynağı olduğunda, Kullanıcı şemayı açıkça içeri aktarmasa da ADF otomatik olarak şemayı içeri aktarır. |
-| **Havuz olarak ADX** | Ada göre sütun eşlemesi oluşturma | *Veritabanı izleyicisi* <br>Hizmet sorumlusu, veritabanı düzeyinde `.show` komutlarının yürütülmesi için yetkilendirilmiş olmalıdır. | <ul><li>Tüm zorunlu işlemler *tablo*alımı ile birlikte çalışacaktır.</li><li> Bazı isteğe bağlı işlemler başarısız olabilir.</li></ul> |
-|   | <ul><li>Tabloda CSV eşlemesi oluşturma</li><li>Eşlemeyi bırak</li></ul>| *tablo* alımı veya *veritabanı yöneticisi* <br>Hizmet sorumlusu bir tabloda değişiklik yapmak için yetkilendirilmiş olmalıdır. | |
-|   | Veriyi çekme | *tablo* alımı veya *veritabanı yöneticisi* <br>Hizmet sorumlusu bir tabloda değişiklik yapmak için yetkilendirilmiş olmalıdır. | | 
-| **Kaynak olarak ADX** | Sorguyu Yürüt | *veritabanı Görüntüleyicisi* <br>Hizmet sorumlusu, veritabanı meta verilerini okumak için yetkilendirilmiş olmalıdır. | |
+| **Bağlantılı Hizmet Oluşturma** | Veritabanı gezintisi | *veritabanı görüntüleyici* <br>ADF kullanan oturum açmış kullanıcı veritabanı meta verilerini okumaya yetkili olmalıdır. | Kullanıcı veritabanı adını el ile sağlayabilir. |
+| | Bağlantıyı Sına | *veritabanı monitörü* veya *tablo yutucu* <br>Hizmet sorumlusu veritabanı düzeyi komutlarını `.show` veya tablo düzeyi alımını yürütmeye yetkili olmalıdır. | <ul><li>TestConnection veritabanına değil kümeye olan bağlantıyı doğrular. Veritabanı yok olsa bile başarılı olabilir.</li><li>Tablo yöneticisi izinleri yeterli değildir.</li></ul>|
+| **Veri Kümesi Oluşturma** | Tablo gezintisi | *veritabanı monitörü* <br>ADF kullanarak oturum açmış kullanıcı, veritabanı düzeyi `.show` komutları yürütmek için yetkili olmalıdır. | Kullanıcı tablo adını el ile sağlayabilir.|
+| **Veri Kümesi** veya **Kopyalama Etkinliği** Oluşturma | Verileri önizleme | *veritabanı görüntüleyici* <br>Hizmet sorumlusu veritabanı meta verilerini okuma yetkisine verilmelidir. | | 
+|   | İthalat şeması | *veritabanı görüntüleyici* <br>Hizmet sorumlusu veritabanı meta verilerini okuma yetkisine verilmelidir. | ADX bir tabular-to-tabular kopya kaynağı olduğunda, ADF otomatik olarak şema alacak, kullanıcı açıkça şema almamış olsa bile. |
+| **Lavabo olarak ADX** | Ad sütun eşleme oluşturma | *veritabanı monitörü* <br>Hizmet sorumlusu veritabanı düzeyi `.show` komutlarını yürütmeye yetkili olmalıdır. | <ul><li>Tüm zorunlu işlemler *tablo yutucu*ile çalışacaktır.</li><li> Bazı isteğe bağlı işlemler başarısız olabilir.</li></ul> |
+|   | <ul><li>Tabloda CSV eşleme oluşturma</li><li>Haritayı bırak</li></ul>| *tablo yutucu* veya *veritabanı yöneticisi* <br>Servis müdürü, bir tabloda değişiklik yapmaya yetkili olmalıdır. | |
+|   | Veriyi çekme | *tablo yutucu* veya *veritabanı yöneticisi* <br>Servis müdürü, bir tabloda değişiklik yapmaya yetkili olmalıdır. | | 
+| **Kaynak olarak ADX** | Sorguyı yürüt | *veritabanı görüntüleyici* <br>Hizmet sorumlusu veritabanı meta verilerini okuma yetkisine verilmelidir. | |
 | **Kusto komutu** | | Her komutun izin düzeyine göre. |
 
 ## <a name="performance"></a>Performans 
 
-Azure Veri Gezgini kaynak ise ve bir sorgu içeren arama, kopyalama veya komut etkinliğini kullanıyorsanız, bu performans bilgileri için [sorgu en iyi uygulamaları](/azure/kusto/query/best-practices) ve [kopyalama etkinliği için ADF belgeleri](/azure/data-factory/copy-activity-performance)bölümüne bakın.
+Azure Veri Gezgini kaynaksa ve sorgu içeren Arama, kopyalama veya komut etkinliğini kullanıyorsanız, performans bilgileri için [sorgu en iyi uygulamaları](/azure/kusto/query/best-practices) ve kopyalama etkinliği için [ADF belgelerine](/azure/data-factory/copy-activity-performance)bakın.
   
-Bu bölüm, Azure Veri Gezgini havuz olan kopyalama etkinliğinin kullanımını ele alınmaktadır. Azure Veri Gezgini havuzu için tahmini verimlilik 11-13 MB/sn 'dir. Aşağıdaki tabloda, Azure Veri Gezgini havuzunun performansını etkileyen parametrelerin ayrıntıları verilmiştir.
+Bu bölüm, Azure Veri Gezgini'nin lavabo olduğu kopyalama etkinliğinin kullanımını ele alır. Azure Veri Gezgini lavabosu için tahmini veri veri girişi 11-13 MBps'dir. Aşağıdaki tabloda Azure Veri Gezgini lavabonun performansını etkileyen parametreler ayrıntılı olarak anlatılır.
 
 | Parametre | Notlar |
 |---|---|
-| **Bileşenler coğrafi yakınlık** | Tüm bileşenleri aynı bölgeye Yerleştir:<ul><li>Kaynak ve havuz veri depoları.</li><li>ADF tümleştirme çalışma zamanı.</li><li>ADX kümeniz.</li></ul>En azından tümleştirme çalışma zamanının ADX kümeniz ile aynı bölgede olduğundan emin olun. |
-| **DIUs sayısı** | ADF tarafından kullanılan her 4 DIUs için 1 VM. <br>DIUs 'in artırılması, yalnızca kaynağınız birden çok dosya içeren dosya tabanlı bir depo ise yardımcı olur. Böylece her VM, paralel olarak farklı bir dosya işler. Bu nedenle, tek bir büyük dosyayı kopyalamak birden çok küçük dosyayı kopyalamaya kıyasla daha yüksek bir gecikme süresine sahip olur.|
-|**ADX kümenizin miktarı ve SKU 'SU** | Büyük sayıda ADX düğümü, alma işlemi süresini artırır.|
-| **Paralellik** | Bir veritabanından çok büyük miktarda veri kopyalamak için verilerinizi bölümleyip her bölümü paralel olarak kopyalayan bir ForEach Döngüsü kullanın veya [veritabanından Azure Veri Gezgini şablonu ' na toplu kopyalama](data-factory-template.md)kullanın. Note: kopyalama etkinliğinde **paralellik derecesi** > **Ayarlar** ADX ile ilgili değildir. |
-| **Veri işleme karmaşıklığı** | Gecikme, kaynak dosya biçimine, sütun eşlemesine ve sıkıştırmaya göre farklılık gösterir.|
-| **Tümleştirme çalışma zamanı 'nı çalıştıran VM** | <ul><li>Azure kopyası için, ADF VM 'Ler ve makine SKU 'Ları değiştirilemez.</li><li> Şirket içi Azure kopyalama için, şirket içinde barındırılan IR 'yi barındıran VM 'nin yeterince güçlü olduğunu saptayın.</li></ul>|
+| **Bileşenlercoğrafi yakınlık** | Tüm bileşenleri aynı bölgeye yerleştirin:<ul><li>kaynak ve lavabo veri depoları.</li><li>ADF tümleştirme çalışma zamanı.</li><li>ADX kümeniz.</li></ul>En azından tümleştirme çalışma sürenizin ADX kümenizle aynı bölgede olduğundan emin olun. |
+| **DIUs sayısı** | ADF tarafından kullanılan her 4 DIUs için 1 VM. <br>DIUs'ları artırmak, yalnızca kaynağınız birden çok dosyaiçeren dosya tabanlı bir depoysa yardımcı olur. Her VM daha sonra paralel olarak farklı bir dosya işleyecektir. Bu nedenle, tek bir büyük dosyakopyalama birden çok küçük dosyaları kopyalamadaha yüksek bir gecikme alanı olacaktır.|
+|**ADX kümenizin miktarı ve SKU'su** | Yüksek sayıda ADX düğümü yutma işlemini hızlandırır.|
+| **Parallelism** | Bir veritabanından çok büyük miktarda veri kopyalamak için verilerinizi bölümleyin ve ardından her bölümü paralel olarak kopyalayan veya [Veritabanından Azure Veri Gezgini Şablonuna Toplu Kopya'yı](data-factory-template.md)kullanan bir ForEach döngüsü kullanın. Not: **Settings** > Kopyalama etkinliğindeki**Paralellik** Ayarları Derecesi ADX ile ilgili değildir. |
+| **Veri işleme karmaşıklığı** | Gecikme sonu kaynak dosya biçimine, sütun eşlemeye ve sıkıştırmaya göre değişir.|
+| **Entegrasyon çalışma sürenizi çalıştıran VM** | <ul><li>Azure kopyaiçin ADF VM'ler ve makine SDO'ları değiştirilemez.</li><li> Azure kopyasına yönelik ön hazırlık için, kendi barındırılan IR'nizi barındıran VM'nin yeterince güçlü olduğunu belirleyin.</li></ul>|
 
-## <a name="tips-and-common-pitfalls"></a>İpuçları ve genel olarak
+## <a name="tips-and-common-pitfalls"></a>İpuçları ve yaygın tuzaklar
 
 ### <a name="monitor-activity-progress"></a>Etkinlik ilerlemesini izleme
 
-* Etkinlik ilerlemesini izlerken, *okunan* veriler ikili dosya boyutuna göre *hesaplandığı için veri* *okuma özelliğinden çok* daha büyük olabilir, çünkü *yazılan* veriler, veri serileştirilip sıkıştırması açıldıktan sonra bellek içi boyuta göre hesaplanır.
+* Etkinlik ilerlemesini izlerken, *Veri okuma* özelliği ikili dosya boyutuna göre hesaplanırken, *yazılan veriler* veriler seri dışı hale getirilip dekompresyondan arındırıldıktan sonra bellek boyutuna göre hesaplanırken, *Veri yazılı* özelliği Veri *okuma* özelliğinden çok daha büyük olabilir.
 
-* Etkinlik ilerlemesini izlerken, verilerin Azure Veri Gezgini havuzuna yazıldığını görebilirsiniz. Azure Veri Gezgini tablosunu sorgularken verilerin ulaştığını görürsünüz. Bunun nedeni, Azure Veri Gezgini kopyalanırken iki aşamada oluşur. 
-    * İlk aşama kaynak verileri okur, 900 MB parçalara ayırır ve her bir öbeği bir Azure Blobuna yükler. İlk aşama ADF etkinlik ilerleme görünümü tarafından görülür. 
-    * İkinci aşama, tüm veriler Azure Bloblarına yüklendiğinde başlar. Azure Veri Gezgini altyapısı düğümleri blob 'ları indirir ve verilerin havuz tablosuna alınması. Veriler daha sonra Azure Veri Gezgini tablonuzda görülür.
+* Etkinlik ilerlemesini izlerken, verilerin Azure Veri Gezgini lavabosuna yazıldığını görebilirsiniz. Azure Veri Gezgini tablosunu sorgularken, verilerin gelmediğini görürsünüz. Bunun nedeni, Azure Veri Gezgini'ne kopyalama yaparken iki aşama olmasıdır. 
+    * İlk aşama kaynak verileri okur, 900 MB'lık parçalara böler ve her bir öbek bir Azure Blob'una yükler. İlk aşama ADF etkinlik ilerleme görünümü tarafından görülür. 
+    * Tüm veriler Azure Blobs'a yüklendikten sonra ikinci aşama başlar. Azure Veri Gezgini motor düğümleri lekeleri indirin ve verileri lavabo tablosuna sindirir. Veriler daha sonra Azure Veri Gezgini tablonuzda görülür.
 
-### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Hatalı kaçış nedeniyle CSV dosyalarını alma hatası
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Uygun olmayan kaçış nedeniyle CSV dosyalarının alınmaması
 
 Azure Veri Gezgini, CSV dosyalarının [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt)ile hizalanmasını bekler.
-Bekliyor:
-* Kaçış gerektiren karakterler ("ve yeni satırlar) içeren alanlar, boşluk olmadan bir **"** karakteriyle başlamalı ve bitmelidir. **"** Bir Double **"** karakteri ( **""** ) kullanılarak alan *içindeki* tüm karakterler kaçışdır. Örneğin, "Merhaba" "" _Dünya ""_ ", tek bir kayıt Içeren ve _Hello," World "_ içerikli tek bir sütuna veya alana sahıp olan geçerli bir CSV dosyasıdır.
-* Dosyadaki tüm kayıtlar aynı sayıda sütun ve alan içermelidir.
+Bu bekliyor:
+* Kaçan karakterler içeren alanlar (" ve yeni satırlar gibi) boşluk olmadan **"** karakterle başlayıp bitmelidir. Alan *içindeki* tüm **"** karakterler çift **"** karakter (**""** kullanılarak kaçılır. Örneğin, _"Merhaba, ""Dünya""_ geçerli bir CSV dosyasıdır ve tek bir kaydı olan ve _Hello, "World"_ içeriğine sahip tek bir sütuna veya alana sahip bir Dosyadır.
+* Dosyadaki tüm kayıtlar aynı sayıda sütun ve alana sahip olmalıdır.
 
-Azure Data Factory ters eğik çizgi (kaçış) karakterine izin verir. Azure Data Factory kullanarak bir ters eğik çizgi karakteri içeren bir CSV dosyası oluşturursanız, dosyanın Azure Veri Gezgini alımı başarısız olur.
+Azure Veri Fabrikası, ters eğik çizgi (kaçış) karakterine izin verir. Azure Veri Fabrikası'nı kullanarak ters eğik çizgi karakterli bir CSV dosyası oluşturursanız, dosyanın Azure Veri Gezgini'ne aktarılması başarısız olur.
 
 #### <a name="example"></a>Örnek
 
-Şu metin değerleri: Merhaba, "Dünya"<br/>
+Aşağıdaki metin değerleri: Merhaba, "Dünya"<br/>
 ABC DEF<br/>
-"ABC\D" EF<br/>
+"ABC\D"EF<br/>
 "ABC DEF<br/>
 
-Uygun bir CSV dosyasında şu şekilde görünmelidir: "Merhaba," "Dünya" ""<br/>
+Uygun bir CSV dosyasında aşağıdaki gibi görünmelidir: "Merhaba, ""Dünya""<br/>
 "ABC DEF"<br/>
-"" "ABC DEF"<br/>
-"" "ABC\D" "EF"<br/>
+"""ABC DEF"<br/>
+"""ABC\D""EF"<br/>
 
-Varsayılan kaçış karakterini (ters eğik çizgi) kullanarak, aşağıdaki CSV Azure Veri Gezgini ile çalışmaz: "Hello, \"World\""<br/>
+Varsayılan kaçış karakterini (ters eğik çizgi) kullanarak, aşağıdaki CSV Azure Veri \"\"Gezgini ile çalışmaz: "Hello, World "<br/>
 "ABC DEF"<br/>
 "\"ABC DEF"<br/>
 "\"ABC\D\"EF"<br/>
 
 ### <a name="nested-json-objects"></a>İç içe JSON nesneleri
 
-Bir JSON dosyasını Azure Veri Gezgini kopyalanırken şunları unutmayın:
-* Diziler desteklenmiyor.
-* JSON yapınız nesne veri türleri içeriyorsa, Azure Data Factory nesnenin alt öğelerini düzleştirebilir ve her bir alt öğeyi Azure Veri Gezgini tablonuzda farklı bir sütuna eşlemeye çalışır. Tüm nesne öğesinin Azure Veri Gezgini tek bir sütunla eşleştirilmesini istiyorsanız:
-    * Tüm JSON satırını Azure Veri Gezgini tek bir dinamik sütuna alma.
-    * Azure Data Factory JSON düzenleyicisini kullanarak işlem hattı tanımını el ile düzenleyin. **Eşlemelerde**
-       * Her bir alt öğe için oluşturulmuş birden çok eşlemeyi kaldırın ve nesne türünü tablo sütununuza eşleyen tek bir eşleme ekleyin.
-       * Kapanış köşeli ayracından sonra bir virgül ekleyin ve ardından şunu ekleyin:<br/>
+Bir JSON dosyasını Azure Veri Gezgini'ne kopyalarken şunları unutmayın:
+* Diziler desteklenmez.
+* JSON yapınız nesne veri türleri içeriyorsa, Azure Veri Fabrikası nesnenin alt öğelerini düzleştirmek ve her alt öğeyi Azure Veri Gezgini tablonuzdaki farklı bir sütunla eşlemeye çalışır. Nesne öğenin tamamının Azure Veri Gezgini'nde tek bir sütuna eşlenebilmesini istiyorsanız:
+    * Tüm JSON satırını Azure Veri Gezgini'nde tek bir dinamik sütuna sindirin.
+    * Azure Veri Fabrikası'nın JSON düzenleyicisini kullanarak boru hattı tanımını el ile düzenleme. **Haritalamada**
+       * Her alt öğe için oluşturulan birden çok eşlemeyi kaldırın ve nesne yazınızı tablo sütununuzla eşleyen tek bir eşleme ekleyin.
+       * Kapanış kare sveslesonra, ardından bir virgül ekleyin:<br/>
        `"mapComplexValuesToString": true`.
 
-### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>Azure 'a kopyalarken AdditionalProperties 'i belirtin Veri Gezgini
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>Azure Veri Gezgini'ne kopyalarken Ek Özellikler belirtin
 
 > [!NOTE]
 > Bu özellik şu anda JSON yükünü el ile düzenleyerek kullanılabilir. 
 
-Kopyalama etkinliğinin "havuz" bölümünün altına şu şekilde tek bir satır ekleyin:
+Kopyalama etkinliğinin "lavabo" bölümünün altına aşağıdaki gibi tek bir satır ekleyin:
 
 ```json
 "sink": {
@@ -187,7 +187,7 @@ Kopyalama etkinliğinin "havuz" bölümünün altına şu şekilde tek bir satı
 },
 ```
 
-Değerin kaçışı karmaşık olabilir. Aşağıdaki kod parçacığını başvuru olarak kullanın:
+Değerden kaçmak zor olabilir. Başvuru olarak aşağıdaki kod parçacıklarını kullanın:
 
 ```csharp
 static void Main(string[] args)
@@ -213,9 +213,9 @@ Yazdırılan değer:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Factory kullanarak verileri Azure Veri Gezgini kopyalama](data-factory-load-data.md)hakkında bilgi edinin.
-* [Veritabanından Azure Veri Gezgini toplu kopyalama için Azure Data Factory şablonu](data-factory-template.md)kullanma hakkında bilgi edinin.
-* [Azure Veri Gezgini denetim komutlarını çalıştırmak için Azure Data Factory komut etkinliğini](data-factory-command-activity.md)kullanma hakkında bilgi edinin.
+* [Azure Veri Fabrikası'nı kullanarak verileri Azure Veri Gezgini'ne](data-factory-load-data.md)kopyalamayı öğrenin.
+* [Veritabanından Azure Veri Gezgini'ne toplu kopya için Azure Veri Fabrikası şablonu](data-factory-template.md)kullanma hakkında bilgi edinin.
+* [Azure Veri Gezgini denetim komutlarını çalıştırmak için Azure Veri Fabrikası komut etkinliğini kullanma](data-factory-command-activity.md)hakkında bilgi edinin.
 * Veri sorgulama için [Azure Veri Gezgini sorguları](/azure/data-explorer/web-query-data) hakkında bilgi edinin.
 
 

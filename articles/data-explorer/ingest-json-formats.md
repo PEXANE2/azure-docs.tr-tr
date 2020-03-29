@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini JSON biçimli verileri alma
-description: JSON biçimli verileri Azure Veri Gezgini 'a alma hakkında bilgi edinin.
+title: JSON biçimlendirilmiş verileri Azure Veri Gezgini'ne alma
+description: JSON biçimlendirilmiş verileri Azure Veri Gezgini'ne nasıl sindirebilirsiniz hakkında bilgi edinin.
 author: orspod
 ms.author: orspodek
 ms.reviewer: kerend
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772345"
 ---
-# <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Azure Veri Gezgini 'de JSON biçimli örnek verileri alma
+# <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>JSON biçimlendirilmiş örnek verileri Azure Veri Gezgini'ne alma
 
-Bu makalede, JSON biçimli verileri bir Azure Veri Gezgini veritabanına alma işlemi gösterilmektedir. Ham ve eşlenmiş JSON 'ın basit örnekleri ile başlayacaksınız, çok çizgili JSON 'a devam eder ve daha sonra diziler ve sözlükler içeren daha karmaşık JSON şemaları oluşur.  Örnekler, kusto sorgu dili (KQL), C#veya Python kullanarak JSON biçimli verileri geri almaya yönelik işlemi ayrıntılandırır. Kusto sorgu dili `ingest` denetim komutları doğrudan motor uç noktasına yürütülür. Üretim senaryolarında, alım, istemci kitaplıkları veya veri bağlantıları kullanılarak Veri Yönetimi hizmetine yürütülür. [Azure Veri Gezgini Python kitaplığını kullanarak](/azure/data-explorer/python-ingest-data) verileri alma ve bu istemci kitaplıklarına veri alma hakkında bir adım adım yönergeler için [Azure Veri Gezgini .NET Standard SDK 'sını kullanarak](/azure/data-explorer/net-standard-ingest-data) verileri alma hakkında bilgi edinin.
+Bu makalede, JSON biçimlendirilmiş verileri Azure Veri Gezgini veritabanına nasıl sindirilen gösterilmektedir. Ham ve eşlenmiş JSON basit örnekler ile başlayacağız, çok çizgili JSON devam ve sonra dizileri ve sözlükler içeren daha karmaşık JSON şema mücadele.  Örnekler, Kusto sorgu dili (KQL), C#veya Python kullanarak JSON biçimlendirilmiş verileri sindirme işlemini ayrıntılarıyla açıklar. Kusto sorgu `ingest` dil denetim komutları doğrudan motor bitiş noktasına çalıştırılır. Üretim senaryolarında, istemci kitaplıkları veya veri bağlantıları kullanılarak Veri Yönetimi hizmetine aktar edilir. Bu istemci kitaplıkları ile veri yutma ile ilgili bir geçiş için [Azure Veri Gezgini .NET Standart SDK kullanarak](/azure/data-explorer/net-standard-ingest-data) Azure Veri Gezgini Python kitaplığı ve Veri Yutma kullanarak veri yutma [yıkın.](/azure/data-explorer/python-ingest-data)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -25,16 +25,16 @@ Bu makalede, JSON biçimli verileri bir Azure Veri Gezgini veritabanına alma i�
 ## <a name="the-json-format"></a>JSON biçimi
 
 Azure Veri Gezgini iki JSON dosya biçimini destekler:
-* `json`: satıra ayrılan JSON. Giriş verilerinde bulunan her satırda tam olarak bir JSON kaydı vardır.
-* `multijson`: çok çizgili JSON. Ayrıştırıcı, satır ayırıcıları yoksayar ve önceki konumdan geçerli bir JSON sonuna bir kayıt okur.
+* `json`: Hat ayrılmış JSON. Giriş verilerindeki her satırın tam olarak bir JSON kaydı vardır.
+* `multijson`: Çok çizgili JSON. Ayrıştırıcı satır ayırıcılarını yoksa ve önceki konumdan geçerli bir JSON'un sonuna kadar bir kayıt okur.
 
-### <a name="ingest-and-map-json-formatted-data"></a>JSON biçimli verileri alma ve eşleme
+### <a name="ingest-and-map-json-formatted-data"></a>JSON biçimlendirilmiş verileri yutma ve haritalandırma
 
-JSON biçimli verilerin alımı, [alımı özelliğini](/azure/kusto/management/data-ingestion/index#ingestion-properties)kullanarak *biçimi* belirtmenizi gerektirir. JSON verilerinin alımı, bir JSON kaynak girişini hedef sütunuyla eşleyen [eşleme](/azure/kusto/management/mappings)gerektirir. Verileri içeri aktardığınızda, önceden tanımlı `jsonMappingReference` alma özelliğini kullanın veya `jsonMapping`alımı özelliğini belirtin. Bu makale, alma işlemi için kullanılan tabloda önceden tanımlanmış olan `jsonMappingReference` alımı özelliğini kullanır. Aşağıdaki örneklerde, JSON kayıtlarını tek sütunlu bir tabloya ham veri olarak kaydederek başlayacağız. Daha sonra, eşlenen sütununa her bir özelliği almak için eşlemeyi kullanacağız. 
+JSON biçimlendirilmiş verilerin yutulması, [yutma özelliğini](/azure/kusto/management/data-ingestion/index#ingestion-properties)kullanarak *biçimi* belirtmenizi gerektirir. JSON verilerinin alınması, json kaynak girişini hedef sütununa eşleyen [eşleme](/azure/kusto/management/mappings)gerektirir. Verileri sindirirken, önceden tanımlanmış `jsonMappingReference` yutma özelliğini `jsonMapping`kullanın veya yutma özelliğini belirtin. Bu makalede, `jsonMappingReference` yutma için kullanılan tabloda önceden tanımlanmış olan yutma özelliği kullanılacaktır. Aşağıdaki örneklerde, JSON kayıtlarını ham veri olarak tek bir sütun tablosuna silerek başlayacağız. Daha sonra eşlenen sütuna her özelliği yutmak için eşleme kullanacağız. 
 
 ### <a name="simple-json-example"></a>Basit JSON örneği
 
-Aşağıdaki örnek, düz bir yapıda basit bir JSON örneğidir. Veriler, çeşitli cihazlar tarafından toplanan sıcaklık ve nem bilgilerine sahiptir. Her kayıt bir KIMLIK ve zaman damgasıyla işaretlenir.
+Aşağıdaki örnek, düz bir yapıya sahip basit bir JSON'dur. Veriler, çeşitli cihazlar tarafından toplanan sıcaklık ve nem bilgilerine sahiptir. Her kayıt bir kimlik ve zaman damgası ile işaretlenir.
 
 ```json
 {
@@ -46,47 +46,47 @@ Aşağıdaki örnek, düz bir yapıda basit bir JSON örneğidir. Veriler, çeş
 }
 ```
 
-## <a name="ingest-raw-json-records"></a>Alma ham JSON kayıtları 
+## <a name="ingest-raw-json-records"></a>Ham JSON kayıtlarını yutma 
 
-Bu örnekte, JSON kayıtlarını tek sütunlu bir tabloya ham veri olarak alırsınız. Veri işleme, sorguları kullanma ve güncelleştirme ilkesi verileri alındıktan sonra yapılır.
+Bu örnekte, JSON kayıtlarını ham veri olarak tek bir sütun tablosuna sindirirsiniz. Veri işleme, sorguları kullanarak ve güncelleştirme ilkesi veriler yutulur sonra yapılır.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-Ham JSON biçimindeki verileri almak için kusto sorgu dilini kullanın.
+Ham JSON biçiminde veri yutmak için Kusto sorgu dilini kullanın.
 
-1. [https://dataexplorer.azure.com](https://dataexplorer.azure.com) adresinde oturum açın.
+1. Oturum [https://dataexplorer.azure.com](https://dataexplorer.azure.com)aç.
 
 1. **Küme ekle**'yi seçin.
 
-1. **Küme Ekle** iletişim kutusunda, `https://<ClusterName>.<Region>.kusto.windows.net/`form URL 'nizi girin ve ardından **Ekle**' yi seçin.
+1. Küme **Ekle** iletişim kutusuna, küme URL'nizi `https://<ClusterName>.<Region>.kusto.windows.net/`forma girin , sonra **Ekle'yi**seçin.
 
-1. Aşağıdaki komutu yapıştırın ve tabloyu oluşturmak için **Çalıştır** ' ı seçin.
+1. Aşağıdaki komuta yapıştırın ve tabloyu oluşturmak için **Çalıştır'ı** seçin.
 
     ```Kusto
     .create table RawEvents (Event: dynamic)
     ```
 
-    Bu sorgu, [dinamik](/azure/kusto/query/scalar-data-types/dynamic) veri türünde tek bir `Event` sütunu olan bir tablo oluşturur.
+    Bu sorgu, [dinamik](/azure/kusto/query/scalar-data-types/dynamic) bir `Event` veri türünde tek bir sütuniçeren bir tablo oluşturur.
 
-1. JSON eşlemesini oluşturun.
+1. JSON eşlemi oluşturun.
 
     ```Kusto
     .create table RawEvents ingestion json mapping 'RawEventMapping' '[{"column":"Event","path":"$"}]'
     ```
 
-    Bu komut bir eşleme oluşturur ve `$` JSON kök yolunu `Event` sütunuyla eşler.
+    Bu komut bir eşleme oluşturur ve Sütuna `Event` JSON kök yolunu `$` eşler.
 
-1. Verileri `RawEvents` tablosuna alma.
+1. Verileri tabloya `RawEvents` doğru yutun.
 
     ```Kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-Ham C# JSON biçimindeki verileri almak için kullanın.
+Ham JSON formatında veri yutmak için C# kullanın.
 
-1. `RawEvents` tablosunu oluşturun.
+1. Tabloyu `RawEvents` oluşturun.
 
     ```C#
     var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -113,7 +113,7 @@ Ham C# JSON biçimindeki verileri almak için kullanın.
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. JSON eşlemesini oluşturun.
+1. JSON eşlemi oluşturun.
     
     ```C#
     var tableMapping = "RawEventMapping";
@@ -128,9 +128,9 @@ Ham C# JSON biçimindeki verileri almak için kullanın.
 
     kustoClient.ExecuteControlCommand(command);
     ```
-    Bu komut bir eşleme oluşturur ve `$` JSON kök yolunu `Event` sütunuyla eşler.
+    Bu komut bir eşleme oluşturur ve Sütuna `Event` JSON kök yolunu `$` eşler.
 
-1. Verileri `RawEvents` tablosuna alma.
+1. Verileri tabloya `RawEvents` doğru yutun.
 
     ```C#
     var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -157,13 +157,13 @@ Ham C# JSON biçimindeki verileri almak için kullanın.
     ```
 
 > [!NOTE]
-> Veriler, [toplu işleme ilkesine](/azure/kusto/concepts/batchingpolicy)göre toplanır ve birkaç dakika gecikme süresine neden olur.
+> Veriler toplu işleme [ilkesine](/azure/kusto/concepts/batchingpolicy)göre toplanır ve birkaç dakikalık bir gecikmeyle sonuçlanır.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Verileri ham JSON biçiminde almak için Python kullanın.
+Verileri ham JSON biçiminde yutmak için Python'u kullanın.
 
-1. `RawEvents` tablosunu oluşturun.
+1. Tabloyu `RawEvents` oluşturun.
 
     ```Python
     KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
@@ -176,7 +176,7 @@ Verileri ham JSON biçiminde almak için Python kullanın.
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. JSON eşlemesini oluşturun.
+1. JSON eşlemi oluşturun.
 
     ```Python
     MAPPING = "RawEventMapping"
@@ -185,7 +185,7 @@ Verileri ham JSON biçiminde almak için Python kullanın.
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Verileri `RawEvents` tablosuna alma.
+1. Verileri tabloya `RawEvents` doğru yutun.
 
     ```Python
     INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
@@ -200,41 +200,41 @@ Verileri ham JSON biçiminde almak için Python kullanın.
     ```
 
     > [!NOTE]
-    > Veriler, [toplu işleme ilkesine](/azure/kusto/concepts/batchingpolicy)göre toplanır ve birkaç dakika gecikme süresine neden olur.
+    > Veriler toplu işleme [ilkesine](/azure/kusto/concepts/batchingpolicy)göre toplanır ve birkaç dakikalık bir gecikmeyle sonuçlanır.
 
 ---
 
-## <a name="ingest-mapped-json-records"></a>Eşlenen JSON kayıtlarını alma
+## <a name="ingest-mapped-json-records"></a>JSON kayıtlarının eşlenemelerini yutma
 
-Bu örnekte, JSON kayıtları verilerini alırsınız. Her JSON özelliği, tablodaki tek bir sütunla eşleştirilir. 
+Bu örnekte, JSON kayıtları verilerini sindirirsiniz. Her JSON özelliği tablodaki tek bir sütuna eşlenir. 
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-1. JSON giriş verilerinde benzer bir şemaya sahip yeni bir tablo oluşturun. Aşağıdaki tüm örnekler ve alma komutları için bu tabloyu kullanacağız. 
+1. JSON giriş verilerine benzer bir şemaya sahip yeni bir tablo oluşturun. Bu tabloyu aşağıdaki örneklerin tümü için kullanacağız ve komutları yutacağız. 
 
     ```Kusto
     .create table Events (Time: datetime, Device: string, MessageId: string, Temperature: double, Humidity: double)
     ```
 
-1. JSON eşlemesini oluşturun.
+1. JSON eşlemi oluşturun.
 
     ```Kusto
     .create table Events ingestion json mapping 'FlatEventMapping' '[{"column":"Time","path":"$.timestamp"},{"column":"Device","path":"$.deviceId"},{"column":"MessageId","path":"$.messageId"},{"column":"Temperature","path":"$.temperature"},{"column":"Humidity","path":"$.humidity"}]'
     ```
 
-    Bu eşlemede, tablo şeması tarafından tanımlandığı gibi, `timestamp` girdileri `datetime` veri türleri olarak `Time` sütuna alınır.
+    Tablo şemasıtarafından tanımlandığı gibi bu eşlemede, `timestamp` girişler veri türleri `Time` `datetime` olarak sütuna yutulacaktır.
 
-1. Verileri `Events` tablosuna alma.
+1. Verileri tabloya `Events` doğru yutun.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=FlatEventMapping)
     ```
 
-    ' Simple. json ' dosyasında birkaç satır ayrılmış JSON kaydı vardır. Biçim `json`ve Al komutunda kullanılan eşleme, oluşturduğunuz `FlatEventMapping`.
+    'Simple.json' dosyasında birkaç satır ayrılmış JSON kaydı var. Biçimi `json`ve yutulkomutu kullanılan eşleme `FlatEventMapping` oluşturduğunuz.
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. JSON giriş verilerinde benzer bir şemaya sahip yeni bir tablo oluşturun. Aşağıdaki tüm örnekler ve alma komutları için bu tabloyu kullanacağız. 
+1. JSON giriş verilerine benzer bir şemaya sahip yeni bir tablo oluşturun. Bu tabloyu aşağıdaki örneklerin tümü için kullanacağız ve komutları yutacağız. 
 
     ```C#
     var table = "Events";
@@ -253,7 +253,7 @@ Bu örnekte, JSON kayıtları verilerini alırsınız. Her JSON özelliği, tabl
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. JSON eşlemesini oluşturun.
+1. JSON eşlemi oluşturun.
 
     ```C#
     var tableMapping = "FlatEventMapping";
@@ -273,9 +273,9 @@ Bu örnekte, JSON kayıtları verilerini alırsınız. Her JSON özelliği, tabl
     kustoClient.ExecuteControlCommand(command);
     ```
 
-    Bu eşlemede, tablo şeması tarafından tanımlandığı gibi, `timestamp` girdileri `datetime` veri türleri olarak `Time` sütuna alınır.    
+    Tablo şemasıtarafından tanımlandığı gibi bu eşlemede, `timestamp` girişler veri türleri `Time` `datetime` olarak sütuna yutulacaktır.    
 
-1. Verileri `Events` tablosuna alma.
+1. Verileri tabloya `Events` doğru yutun.
 
     ```C#
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -289,11 +289,11 @@ Bu örnekte, JSON kayıtları verilerini alırsınız. Her JSON özelliği, tabl
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-    ' Simple. json ' dosyasında birkaç satır ayrılmış JSON kaydı vardır. Biçim `json`ve Al komutunda kullanılan eşleme, oluşturduğunuz `FlatEventMapping`.
+    'Simple.json' dosyasında birkaç satır ayrılmış JSON kaydı var. Biçimi `json`ve yutulkomutu kullanılan eşleme `FlatEventMapping` oluşturduğunuz.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. JSON giriş verilerinde benzer bir şemaya sahip yeni bir tablo oluşturun. Aşağıdaki tüm örnekler ve alma komutları için bu tabloyu kullanacağız. 
+1. JSON giriş verilerine benzer bir şemaya sahip yeni bir tablo oluşturun. Bu tabloyu aşağıdaki örneklerin tümü için kullanacağız ve komutları yutacağız. 
 
     ```Python
     TABLE = "RawEvents"
@@ -302,7 +302,7 @@ Bu örnekte, JSON kayıtları verilerini alırsınız. Her JSON özelliği, tabl
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. JSON eşlemesini oluşturun.
+1. JSON eşlemi oluşturun.
 
     ```Python
     MAPPING = "FlatEventMapping"
@@ -311,7 +311,7 @@ Bu örnekte, JSON kayıtları verilerini alırsınız. Her JSON özelliği, tabl
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Verileri `Events` tablosuna alma.
+1. Verileri tabloya `Events` doğru yutun.
 
     ```Python
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D'
@@ -322,24 +322,24 @@ Bu örnekte, JSON kayıtları verilerini alırsınız. Her JSON özelliği, tabl
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-    ' Simple. json ' dosyasında birkaç satır ayrılmış JSON kaydı vardır. Biçim `json`ve Al komutunda kullanılan eşleme, oluşturduğunuz `FlatEventMapping`.    
+    'Simple.json' dosyasıjson kayıtları ayrılmış birkaç satır vardır. Biçimi `json`ve yutulkomutu kullanılan eşleme `FlatEventMapping` oluşturduğunuz.    
 ---
 
-## <a name="ingest-multi-lined-json-records"></a>Çok çizgili JSON kayıtlarını alma
+## <a name="ingest-multi-lined-json-records"></a>Çok çizgili JSON kayıtlarını yutma
 
-Bu örnekte, çok çizgili JSON kayıtlarını alırsınız. Her JSON özelliği, tablodaki tek bir sütunla eşleştirilir. ' Multilined. json ' dosyasında birkaç girintili JSON kaydı vardır. Biçim `multijson`, altyapıya JSON yapısına göre kayıtları okumasını söyler.
+Bu örnekte, çok çizgili JSON kayıtlarını sindirirsiniz. Her JSON özelliği tablodaki tek bir sütuna eşlenir. Dosya 'multilined.json' birkaç girinilmiş JSON kayıtları vardır. Biçim, `multijson` motora JSON yapısına göre kayıtları okumasını söyler.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-Verileri `Events` tablosuna alma.
+Verileri tabloya `Events` doğru yutun.
 
 ```Kusto
 .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-Verileri `Events` tablosuna alma.
+Verileri tabloya `Events` doğru yutun.
 
 ```C#
 var tableMapping = "FlatEventMapping";
@@ -354,9 +354,9 @@ var properties =
 ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Verileri `Events` tablosuna alma.
+Verileri tabloya `Events` doğru yutun.
 
 ```Python
 MAPPING = "FlatEventMapping"
@@ -369,9 +369,9 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ---
 
-## <a name="ingest-json-records-containing-arrays"></a>Dizileri içeren JSON kayıtları alma
+## <a name="ingest-json-records-containing-arrays"></a>Diziler içeren JSON kayıtlarını yutma
 
-Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bir [güncelleştirme ilkesi](/azure/kusto/management/update-policy)tarafından yapılır. JSON, bir ara tabloya göre yapılır. Bir güncelleştirme ilkesi `RawEvents` tabloda önceden tanımlanmış bir işlevi çalıştırır ve sonuçları hedef tabloya geri alır. Aşağıdaki yapıyla verileri alacak:
+Dizi veri türleri sıralı bir değer koleksiyonu. JSON dizisinin yutulması bir [güncelleştirme ilkesi](/azure/kusto/management/update-policy)tarafından yapılır. JSON bir ara tablo yaslanır. Güncelleştirme `RawEvents` ilkesi, sonuçları hedef tabloya yeniden ekleyerek tabloda önceden tanımlanmış bir işlev çalıştırılır. Verileri aşağıdaki yapıyla birlikte alacağız:
 
 ```json
 {
@@ -395,9 +395,9 @@ Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bi
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-1. Koleksiyondaki her değerin `mv-expand` işlecini kullanarak ayrı bir satır alması için `records` koleksiyonunu genişleten bir `update policy` işlevi oluşturun. Tablo `RawEvents` kaynak tablo olarak ve hedef tablo olarak `Events` kullanacağız.
+1. Koleksiyondaki `update policy` her değerin `records` `mv-expand` işleci kullanarak ayrı bir satır alması için koleksiyonu genişleten bir işlev oluşturun. Tabloyu `RawEvents` kaynak tablo ve `Events` hedef tablo olarak kullanacağız.
 
     ```Kusto
     .create function EventRecordsExpand() {
@@ -412,33 +412,33 @@ Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bi
     }
     ```
 
-1. İşlevin aldığı şemanın hedef tablonun şemasıyla eşleşmesi gerekir. Şemayı gözden geçirmek için `getschema` işlecini kullanın.
+1. İşlev tarafından alınan şema, hedef tablonun şeasını eşleştirmelidir. Şemayı incelemek için işleci kullanın. `getschema`
 
     ```Kusto
     EventRecordsExpand() | getschema
     ```
 
-1. Güncelleştirme ilkesini hedef tabloya ekleyin. Bu ilke, sorgu `RawEvents` ara tablodaki yeni verileri otomatik olarak çalıştırır ve sonuçları `Events` tablosuna alır. Ara tabloyu kalıcı hale getirmeyi önlemek için sıfır bekletme ilkesi tanımlayın.
+1. Güncelleştirme ilkesini hedef tabloya ekleyin. Bu ilke, ara tabloda `RawEvents` yeni alınan herhangi bir veri üzerinde sorguyu `Events` otomatik olarak çalıştıracak ve sonuçları tabloya yutacaktır. Ara tablonun kalıcı olmasını önlemek için sıfır bekletme ilkesi tanımlayın.
 
     ```Kusto
     .alter table Events policy update @'[{"Source": "RawEvents", "Query": "EventRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
-1. Verileri `RawEvents` tablosuna alma.
+1. Verileri tabloya `RawEvents` doğru yutun.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
-1. `Events` tablosundaki verileri gözden geçirin.
+1. Tablodaki verileri `Events` gözden geçirin.
 
     ```Kusto
     Events
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Koleksiyondaki her değerin `mv-expand` işlecini kullanarak ayrı bir satır alması için `records` koleksiyonunu genişleten bir güncelleştirme işlevi oluşturun. Tablo `RawEvents` kaynak tablo olarak ve hedef tablo olarak `Events` kullanacağız.   
+1. Koleksiyondaki her değerin `records` `mv-expand` işleci kullanarak ayrı bir satır alması için koleksiyonu genişleten bir güncelleştirme işlevi oluşturun. Tabloyu `RawEvents` kaynak tablo ve `Events` hedef tablo olarak kullanacağız.   
 
     ```C#
     var command =
@@ -461,9 +461,9 @@ Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bi
     ```
 
     > [!NOTE]
-    > İşlevin aldığı şemanın hedef tablonun şemasıyla eşleşmesi gerekir.
+    > İşlev tarafından alınan şema, hedef tablonun şeasını eşleştirmelidir.
 
-1. Güncelleştirme ilkesini hedef tabloya ekleyin. Bu ilke, sorguyu `RawEvents` ara tablodaki yeni verileri otomatik olarak çalıştırır ve sonuçlarını `Events` tablosuna alır. Ara tabloyu kalıcı hale getirmeyi önlemek için sıfır bekletme ilkesi tanımlayın.
+1. Güncelleştirme ilkesini hedef tabloya ekleyin. Bu ilke, ara tabloda `RawEvents` yeni alınan herhangi bir veri üzerinde sorguyu `Events` otomatik olarak çalıştıracak ve sonuçlarını tabloya yutacaktır. Ara tablonun kalıcı olmasını önlemek için sıfır bekletme ilkesi tanımlayın.
 
     ```C#
     var command =
@@ -472,7 +472,7 @@ Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bi
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. Verileri `RawEvents` tablosuna alma.
+1. Verileri tabloya `RawEvents` doğru yutun.
 
     ```C#
     var table = "RawEvents";
@@ -488,11 +488,11 @@ Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bi
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
     
-1. `Events` tablosundaki verileri gözden geçirin.
+1. Tablodaki verileri `Events` gözden geçirin.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Koleksiyondaki her değerin `mv-expand` işlecini kullanarak ayrı bir satır alması için `records` koleksiyonunu genişleten bir güncelleştirme işlevi oluşturun. Tablo `RawEvents` kaynak tablo olarak ve hedef tablo olarak `Events` kullanacağız.   
+1. Koleksiyondaki her değerin `records` `mv-expand` işleci kullanarak ayrı bir satır alması için koleksiyonu genişleten bir güncelleştirme işlevi oluşturun. Tabloyu `RawEvents` kaynak tablo ve `Events` hedef tablo olarak kullanacağız.   
 
     ```Python
     CREATE_FUNCTION_COMMAND = 
@@ -511,9 +511,9 @@ Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bi
     ```
 
     > [!NOTE]
-    > İşlevin aldığı şemanın, hedef tablonun şemasıyla eşleşmesi vardır.
+    > İşlev tarafından alınan şema, hedef tablonun şeasını eşleştirmek zorundadır.
 
-1. Güncelleştirme ilkesini hedef tabloya ekleyin. Bu ilke, sorguyu `RawEvents` ara tablodaki yeni verileri otomatik olarak çalıştırır ve sonuçlarını `Events` tablosuna alır. Ara tabloyu kalıcı hale getirmeyi önlemek için sıfır bekletme ilkesi tanımlayın.
+1. Güncelleştirme ilkesini hedef tabloya ekleyin. Bu ilke, ara tabloda `RawEvents` yeni alınan herhangi bir veri üzerinde sorguyu `Events` otomatik olarak çalıştıracak ve sonuçlarını tabloya yutacaktır. Ara tablonun kalıcı olmasını önlemek için sıfır bekletme ilkesi tanımlayın.
 
     ```Python
     CREATE_UPDATE_POLICY_COMMAND = 
@@ -522,7 +522,7 @@ Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bi
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Verileri `RawEvents` tablosuna alma.
+1. Verileri tabloya `RawEvents` doğru yutun.
 
     ```Python
     TABLE = "RawEvents"
@@ -534,13 +534,13 @@ Dizi veri türleri sıralı değerler koleksiyonudur. JSON dizisinin alımı, bi
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-1. `Events` tablosundaki verileri gözden geçirin.
+1. Tablodaki verileri `Events` gözden geçirin.
 
 ---    
 
-## <a name="ingest-json-records-containing-dictionaries"></a>Sözlükleri içeren JSON kayıtları alma
+## <a name="ingest-json-records-containing-dictionaries"></a>Sözlükler içeren JSON kayıtlarını yutma
 
-Sözlük yapılandırılmış JSON anahtar-değer çiftleri içeriyor. JSON kayıtları, `JsonPath`mantıksal ifade kullanan eşleme eşlemesini ihlal ediyor. Verileri aşağıdaki yapıyla alabilirsiniz:
+Sözlük yapılı JSON anahtar değeri çiftleri içerir. Json kayıtları, mantıksal ifade kullanılarak `JsonPath`yutma eşlemelerinden geçer. Aşağıdaki yapıyla veri yutabilirsiniz:
 
 ```json
 {
@@ -570,23 +570,23 @@ Sözlük yapılandırılmış JSON anahtar-değer çiftleri içeriyor. JSON kay�
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-1. JSON eşlemesi oluşturun.
+1. Bir JSON eşleme oluşturun.
 
     ```Kusto
     .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","path":"$.event[?(@.Key == 'timestamp')]"},{"column":"Device","path":"$.event[?(@.Key == 'deviceId')]"},{"column":"MessageId","path":"$.event[?(@.Key == 'messageId')]"},{"column":"Temperature","path":"$.event[?(@.Key == 'temperature')]"},{"column":"Humidity","path":"$.event[?(@.Key == 'humidity')]"}]'
     ```
 
-1. Verileri `Events` tablosuna alma.
+1. Verileri tabloya `Events` doğru yutun.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. JSON eşlemesi oluşturun.
+1. Bir JSON eşleme oluşturun.
 
     ```C#
     var tableName = "Events";
@@ -607,7 +607,7 @@ Sözlük yapılandırılmış JSON anahtar-değer çiftleri içeriyor. JSON kay�
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. Verileri `Events` tablosuna alma.
+1. Verileri tabloya `Events` doğru yutun.
 
     ```C#
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -621,9 +621,9 @@ Sözlük yapılandırılmış JSON anahtar-değer çiftleri içeriyor. JSON kay�
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. JSON eşlemesi oluşturun.
+1. Bir JSON eşleme oluşturun.
 
     ```Python
     MAPPING = "KeyValueEventMapping"
@@ -632,7 +632,7 @@ Sözlük yapılandırılmış JSON anahtar-değer çiftleri içeriyor. JSON kay�
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Verileri `Events` tablosuna alma.
+1. Verileri tabloya `Events` doğru yutun.
 
      ```Python
     MAPPING = "KeyValueEventMapping"
@@ -647,5 +647,5 @@ Sözlük yapılandırılmış JSON anahtar-değer çiftleri içeriyor. JSON kay�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veri alımı genel bakış](ingest-data-overview.md)
+* [Veri almaya genel bakış](ingest-data-overview.md)
 * [Sorgu yazma](write-queries.md)

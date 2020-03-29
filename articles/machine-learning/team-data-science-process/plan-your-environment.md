@@ -1,6 +1,6 @@
 ---
-title: Senaryoları belirleyip analiz işlemini planlayın-Team Data Science Işlemi | Azure Machine Learning
-description: Senaryolar ve Gelişmiş analiz verileri işlemeyi planlama birtakım önemli sorular dikkate alarak belirleyin.
+title: Senaryoları belirleyin ve analiz sürecini planlayın - Ekip Veri Bilimi Süreci | Azure Makine Öğrenimi
+description: Senaryoları belirleyin ve bir dizi önemli soruyu göz önünde bulundurarak gelişmiş analitik veri işleme planını planlayın.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,78 +12,78 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76710318"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Senaryoları tanımlama ve gelişmiş analiz verileri işlemeyi planlama
 
-Bir veri kümesinde gelişmiş analiz işleme gerçekleştirebilen bir ortam oluşturmak için hangi kaynaklar gereklidir? Bu makalede, senaryolarınızla ilgili görevleri ve kaynakları belirlemenize yardımcı olabilecek bir dizi soru önerisinde bulunulur.
+Bir veri setinde gelişmiş analitik işleme gerçekleştirebilen bir ortam oluşturmanız için hangi kaynaklar gereklidir? Bu makalede, senaryonuzla ilgili görevleri ve kaynakları belirlemenize yardımcı olabilecek bir dizi soru önermektedir.
 
-Tahmine dayalı analizler için üst düzey adımların sırası hakkında bilgi edinmek için bkz. [Team Data Science süreci nedir (TDSP)](overview.md). Her adım, belirli senaryolarınızla ilgili görevler için belirli kaynaklar gerektirir.
+Tahmine dayalı analitik için üst düzey adımların sırası hakkında bilgi edinmek [için, Ekip Veri Bilimi Süreci (TDSP) nedir bölümüne](overview.md)bakın. Her adım, belirli senaryonuzla ilgili görevler için belirli kaynaklar gerektirir.
 
-Senaryonuzu tanımlamak için aşağıdaki alanlardaki önemli soruları yanıtlayın:
+Senaryonuzu tanımlamak için aşağıdaki alanlardaki temel soruları yanıtlayın:
 
-* veri lojistik
+* veri lojistiği
 * veri özellikleri
-* veri kümesi kalitesi
+* dataset kalitesi
 * tercih edilen araçlar ve diller
 
-## <a name="logistic-questions-data-locations-and-movement"></a>Lojistik sorular: veri konumları ve taşıma
+## <a name="logistic-questions-data-locations-and-movement"></a>Lojistik sorular: veri konumları ve hareket
 
-Lojistik soruları aşağıdaki öğeleri kapsar:
+Lojistik sorular aşağıdaki öğeleri kapsamaktadır:
 
 * veri kaynağı konumu
-* Azure 'da hedef hedef
-* zamanlama, miktar ve dahil edilen kaynaklar dahil olmak üzere verileri taşıma gereksinimleri
+* Azure'da hedef hedef
+* ilgili zamanlama, tutar ve kaynaklar da dahil olmak üzere verilerin taşınması için gereklilikler
 
-Analiz işlemi sırasında verileri birkaç kez taşımanız gerekebilir. Azure'da ve Machine Learning Studio'ya yerel veri depolama bazı forma taşıma yaygın bir senaryodur.
+Analiz işlemi sırasında verileri birkaç kez taşımanız gerekebilir. Yaygın bir senaryo, yerel verileri Azure'da bir tür depolama alanına, ardından da Machine Learning Studio'ya taşımaktır.
 
 ### <a name="what-is-your-data-source"></a>Veri kaynağınız nedir?
 
 Verileriniz yerel mi yoksa bulutta mı? Olası konumlar şunlardır:
 
-* genel kullanıma açık bir HTTP adresi
-* Yerel veya ağ dosya konumu
+* kamuya açık bir HTTP adresi
+* yerel veya ağ dosyası konumu
 * bir SQL Server veritabanı
-* Azure depolama kapsayıcısı
+* bir Azure Depolama kapsayıcısı
 
 ### <a name="what-is-the-azure-destination"></a>Azure hedefi nedir?
 
-Verilerinizin işlenmek veya modellemesi için nerede olması gerekir? 
+İşleme veya modelleme için verilerinizin nerede olması gerekiyor? 
 
 * Azure Blob Depolama
-* SQL Azure veritabanı
+* SQL Azure veritabanları
 * Azure VM’lerde SQL Server
-* HDInsight (Hadoop azure'da) ya da Hive tabloları
+* HDInsight (Azure'da Hadoop) veya Hive tabloları
 * Azure Machine Learning
-* Takılamaz Azure sanal sabit diskleri
+* Monte edilebilir Azure sanal sabit diskler
 
-### <a name="how-are-you-going-to-move-the-data"></a>Verileri nasıl taşıyacağınız?
+### <a name="how-are-you-going-to-move-the-data"></a>Verileri nasıl taşıyacaksın?
 
-Çeşitli farklı depolama ve işleme ortamlarına veri almak veya bunları yüklemek için yordamlar ve kaynaklar için, bkz.:
+Çeşitli depolama ve işleme ortamlarına veri yutmak veya yüklemek için prosedürler ve kaynaklar için bkz:
 
 * [Analiz için depolama ortamlarına veri yükleme](ingest-data.md)
-* [Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarın](../studio/import-data.md)
+* [Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio'ya (klasik) aktarın](../studio/import-data.md)
 
-### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Verilerin düzenli bir zamanlamaya göre taşınması veya geçiş sırasında değiştirilmesi gerekiyor mu?
+### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Verilerin düzenli bir zamanlamaya taşınması mı gerekiyor yoksa geçiş sırasında mı değiştirilsin?
 
-Verilerin sürekli geçirilmesi gerektiğinde Azure Data Factory (ADF) kullanmayı düşünün. ADF şu şekilde yararlı olabilir:
+Verilerin sürekli olarak aktarılması gerektiğinde Azure Veri Fabrikası'nı (ADF) kullanmayı düşünün. ADF şu lar için yararlı olabilir:
 
 * hem şirket içi hem de bulut kaynaklarını içeren karma bir senaryo
-* geçiş sırasında verilerin işlenen, değiştirildiği veya iş mantığı tarafından değiştirildiği bir senaryo
+* verilerin geçirildiği sırada iş mantığıyla işletildiği, değiştirildiği veya değiştirildiği bir senaryo
 
-Daha fazla bilgi için bkz. Şirket [ıçı SQL Server 'dan Azure Data Factory SQL Azure için verileri taşıma](move-sql-azure-adf.md).
+Daha fazla bilgi için [bkz.](move-sql-azure-adf.md)
 
-### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Verilerin ne kadarını Azure 'a taşınacak?
+### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Verilerin ne kadarı Azure'a taşınacak?
 
-Büyük veri kümeleri belirli ortamların depolama kapasitesini aşabilir. Bir örnek için, sonraki bölümde Machine Learning Studio (klasik) için boyut sınırları tartışmalarına bakın. Bu gibi durumlarda, analiz sırasında verilerin bir örneğini kullanabilirsiniz. Çeşitli Azure ortamlarında bir veri kümesinin nasıl azaltılabilen hakkında daha fazla bilgi için, bkz. [takım veri bilimi Işlemindeki örnek veriler](sample-data.md).
+Büyük veri kümeleri belirli ortamların depolama kapasitesini aşabilir. Örneğin, bir sonraki bölümde Machine Learning Studio (klasik) için boyut sınırları tartışmasına bakın. Bu gibi durumlarda, çözümleme sırasında verilerin bir örneğini kullanabilirsiniz. Çeşitli Azure ortamlarında bir veri kümesini nasıl alttan örnekleyene ilişkin ayrıntılar [için, Ekip Veri Bilimi Sürecindeörnek verilere](sample-data.md)bakın.
 
-## <a name="data-characteristics-questions-type-format-and-size"></a>Veri özellikleri soruları: türü, biçimi ve boyutu
+## <a name="data-characteristics-questions-type-format-and-size"></a>Veri özellikleri soruları: tür, biçim ve boyut
 
-Bu sorular, depolama ve işleme ortamlarınızı planlamaya yönelik bir anahtarlardır. Veri türü için uygun senaryoyu seçmenize ve tüm kısıtlamaları anlamanıza yardımcı olur.
+Bu sorular depolama ve işleme ortamlarınızı planlamanın anahtarıdır. Bunlar, veri türünüz için uygun senaryoyu seçmenize ve kısıtlamaları anlamanıza yardımcı olur.
 
 ### <a name="what-are-the-data-types"></a>Veri türleri nelerdir?
 
@@ -94,71 +94,71 @@ Bu sorular, depolama ve işleme ortamlarınızı planlamaya yönelik bir anahtar
 
 ### <a name="how-is-your-data-formatted"></a>Verileriniz nasıl biçimlendirilir?
 
-* Virgülle ayrılmış (CSV) veya (TSV) düz dosyaları sekmeyle ayrılmış
+* Virgülle ayrılmış (CSV) veya sekme ayrılmış (TSV) düz dosyalar
 * Sıkıştırılmış veya sıkıştırılmamış
-* Azure BLOB'ları
-* Hadoop Hive tabloları
+* Masmavi lekeler
+* Hadoop Kovan tabloları
 * SQL Server tabloları
 
 ### <a name="how-large-is-your-data"></a>Verileriniz ne kadar büyük?
 
-* Küçük: en az 2 GB
-* Orta: 2 GB ve boyutu 10 GB'tan büyük
-* Büyük: 10 GB değerinden fazla
+* Küçük: 2 GB'dan az
+* Orta: 2 GB'dan büyük ve 10 GB'dan az
+* Büyük: 10 GB'dan büyük
 
-Örnek olarak Azure Machine Learning Studio (klasik) ortamı alın:
+Azure Machine Learning Studio (klasik) ortamını ele alalım:
 
-* Azure Machine Learning Studio tarafından desteklenen veri biçimlerinin ve türlerinin bir listesi için bkz. [veri biçimleri ve veri türleri destekleniyor](../studio/import-data.md#supported-data-formats-and-data-types) bölümü.
-* Analiz işleminde kullanılan diğer Azure hizmetlerinin sınırlamaları hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Azure Machine Learning Studio tarafından desteklenen veri biçimleri nin ve türlerinin listesi için [bkz.](../studio/import-data.md#supported-data-formats-and-data-types)
+* Analiz sürecinde kullanılan diğer Azure hizmetlerinin sınırlamaları hakkında bilgi için [Azure Abonelik ve Hizmet Sınırları, Kotalar ve Kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md)bölümüne bakın.
 
-## <a name="data-quality-questions-exploration-and-pre-processing"></a>Veri Kalitesi soruları: inceleme ve ön işleme
+## <a name="data-quality-questions-exploration-and-pre-processing"></a>Veri kalitesi soruları: keşif ve ön işleme
 
-### <a name="what-do-you-know-about-your-data"></a>Verileriniz hakkında ne bilmeniz gerekir?
+### <a name="what-do-you-know-about-your-data"></a>Verileriniz hakkında ne biliyorsunuz?
 
-Verileriniz hakkındaki temel özellikleri anlayın:
+Verilerinizle ilgili temel özellikleri anlayın:
 
 * Hangi desenleri veya eğilimleri sergiler
-* Ne kadar aykırı Özellikler
+* Ne aykırı var
 * Kaç değer eksik
 
 Bu adım size yardımcı olmak için önemlidir:
 
-* Ne kadar ön işleme gerekli olduğunu belirleme
-* En uygun özellikleri veya analiz türünü öneren hipotezleri formül oluştur
-* Ek veri toplama için planları formül oluştur
+* Ön işlemenin ne kadar gerekli olduğunu belirleme
+* En uygun özellikleri veya analiz türünü öneren hipotezleri formüle edin
+* Ek veri toplama planlarını formüle edin
 
-Veri incelemesi için faydalı teknikler, açıklayıcı istatistik hesaplama ve görselleştirme çizimleri içerir. Çeşitli Azure ortamlarında veri kümesini keşfetmeye ilişkin ayrıntılar için bkz. [Team Data Science işleminde verileri araştırma](explore-data.md).
+Veri denetimi için yararlı teknikler açıklayıcı istatistik hesaplama ve görselleştirme çizimleri içerir. Çeşitli Azure ortamlarında bir veri kümesini nasıl keşfedebilirsiniz hakkında ayrıntılı bilgi için, [Ekip Veri Bilimi Sürecindeki Verileri Keşfedin bölümüne](explore-data.md)bakın.
 
-### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Veriler ön işleme veya temizleme gerektiriyor mu?
+### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Veriler ön işleme veya temizleme gerektirir mi?
 
-Makine öğrenimi için veri kümesini etkin bir şekilde kullanabilmeniz için önce verilerinizi önceden işleyin ve temizlemeniz gerekebilir. Ham veriler genellikle gürültülü ve güvenilmez olur. Eksik değerler olabilir. Modelleme için bu verileri kullanarak, yanıltıcı sonuçlara neden olabilir. Bir açıklama için bkz. [Gelişmiş makine öğrenimi için veri hazırlama görevleri](prepare-data.md).
+Makine öğrenimi için veri kümesini etkili bir şekilde kullanabilmeniz için verilerinizi önceden işlemeniz ve temizlemeniz gerekebilir. Ham veriler genellikle gürültülü ve güvenilmezdir. Eksik değerler olabilir. Bu tür verileri modelleme kullanabilirsiniz yanıltıcı sonuçlar doğurabilir. Açıklama için, [gelişmiş makine öğrenimi için veri hazırlamak için Görevler'e](prepare-data.md)bakın.
 
-## <a name="tools-and-languages-questions"></a>Araçları ve dilleri ile ilgili sorular
+## <a name="tools-and-languages-questions"></a>Araçlar ve diller soruları
 
-Diller, geliştirme ortamları ve araçlar için birçok seçenek vardır. Gereksinimlerinize ve tercihlerinize dikkat edin.
+Diller, geliştirme ortamları ve araçlar için birçok seçenek vardır. İhtiyaçlarınızın ve tercihlerinizin farkında olun.
 
-### <a name="what-languages-do-you-prefer-to-use-for-analysis"></a>Analiz için hangi dilleri kullanacağınızı tercih ediyorsunuz?
+### <a name="what-languages-do-you-prefer-to-use-for-analysis"></a>Analiz için hangi dilleri kullanmayı tercih edersiniz?
 
 * R
 * Python
 * SQL
 
-### <a name="what-tools-should-you-use-for-data-analysis"></a>Veri analizi için hangi araçları kullanmanız gerekir?
+### <a name="what-tools-should-you-use-for-data-analysis"></a>Veri analizi için hangi araçları kullanmalısınız?
 
-* [Microsoft Azure PowerShell](/powershell/azure/overview) -Azure kaynaklarınızı bir betik dilinde yönetmek için kullanılan bir betik dili
+* [Microsoft Azure Powershell](/powershell/azure/overview) - Azure kaynaklarınızı komut dosyası dilinde yönetmek için kullanılan bir komut dosyası dili
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
-* [Devrimanalytics](https://www.microsoft.com/sql-server/machinelearningserver)
+* [Devrim Analizi](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Visual Studio için Python Araçları](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Jupyter not defterleri](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 
-## <a name="identify-your-advanced-analytics-scenario"></a>Gelişmiş analiz senaryonuzu tanımlama
+## <a name="identify-your-advanced-analytics-scenario"></a>Gelişmiş analitik senaryonuzu belirleyin
 
-Önceki bölümde verilen soruları yanıtladıktan sonra, hangi senaryonun büyük/küçük harflere en uygun olduğunu tespit etmeye hazırsınızdır. Örnek senaryolar Azure Machine Learning gelişmiş analizler [Için senaryolar](plan-sample-scenarios.md)bölümünde özetlenmiştir.
+Önceki bölümdeki soruları yanıtladıktan sonra, hangi senaryonun durumunuza en uygun olduğunu belirlemeye hazırsınız. Örnek senaryolar Azure [Machine Learning'de gelişmiş analitik senaryolarında](plan-sample-scenarios.md)özetlenmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Team Data Science Işlemi (TDSP) nedir?](overview.md)
+> [Team Data Science Process (TDSP) nedir?](overview.md)

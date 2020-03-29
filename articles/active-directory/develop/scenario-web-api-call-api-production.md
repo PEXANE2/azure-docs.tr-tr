@@ -1,6 +1,6 @@
 ---
-title: Web API 'sini çağıran Web API 'Lerini üretime taşıma-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini üretime çağıran bir Web API 'sini nasıl taşıyacağınızı öğrenin.
+title: Web API'yi üretime çağıran web API'sini üretime taşıyın - Microsoft kimlik platformu | Azure
+description: Web API'lerini üretime çağıran bir web API'sini nasıl taşıyacağım hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 474f771f007666179295f4502108acee88d1dc33
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701731"
 ---
-# <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran bir Web API 'SI: üretime taşı
+# <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Web API'lerini çağıran bir web API'sı: Üretime geç
 
-Web API 'Lerini çağırmak için bir belirteç aldıktan sonra, uygulamanızı üretime taşıyabilirsiniz.
+Web API'lerini aramak için bir belirteç edindikten sonra, uygulamanızı üretime taşıyabilirsiniz.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-Web API 'inizden Web API 'Lerini çağırma hakkında temel bilgileri öğrenmiş olduğunuza göre, Web API 'Lerini çağıran korumalı bir Web API 'SI oluşturmak için kullanılan kodu açıklayan aşağıdaki öğreticiyle ilgileniyor olabilirsiniz.
+Artık kendi web API'nizden web API'lerini aramanın temellerini bildiğinize göre, web API'lerini çağıran korumalı bir web API'sı oluşturmak için kullanılan kodu açıklayan aşağıdaki öğretici ilginizi çekebilir.
 
 | Örnek | Platform | Açıklama |
 |--------|----------|-------------|
-| [Active-Directory-aspnetcore-WebApi-öğretici-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2,2 Web API, Masaüstü (WPF) | ASP.NET Core 2,2 Web API çağrısı, Microsoft Identity platform (v 2.0) kullanarak bir WPF uygulamasından çağırdığınız Microsoft Graph. |
+| [aktif-dizin-aspnetcore-webapi-öğretici-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2.2 Web API, Masaüstü (WPF) | ASP.NET Core 2.2 Web API'si, WPF uygulamasından Microsoft kimlik platformu (v2.0) kullanarak çağırdığınız Microsoft Graph'ı çağırır. |

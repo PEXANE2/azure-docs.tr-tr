@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Cassandra API'SİNİN spark'tan Upsert verileri
-description: Bu makalede ayrıntıları Spark upsert tablolarına, Azure Cosmos DB Cassandra API'SİNİN nasıl
+title: Verileri Spark'tan Azure Cosmos DB Cassandra API'ye ekleme
+description: Bu makalede, Spark'tan Azure Cosmos DB Cassandra API'deki tablolara nasıl ekolunulur ayrıntıları
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60893432"
 ---
-# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Azure Cosmos DB Cassandra API'SİNİN spark'tan Upsert verileri
+# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Verileri Spark'tan Azure Cosmos DB Cassandra API'ye ekleme
 
-Bu makalede Spark upsert verilerini Azure Cosmos DB Cassandra API'SİNİN nasıl.
+Bu makalede, Spark'tan Azure Cosmos DB Cassandra API'sine veri nasıl ekilir anlatılmaktadır.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API configuration
+## <a name="cassandra-api-configuration"></a>Cassandra API yapılandırması
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="dataframe-api"></a>API veri çerçevesi
+## <a name="dataframe-api"></a>Veri çerçevesi API'si
 
-### <a name="create-a-dataframe"></a>Bir dataframe oluşturun 
+### <a name="create-a-dataframe"></a>Veri çerçevesi oluşturma 
 
 ```scala
 // (1) Update: Changing author name to include prefix of "Sir"
@@ -85,12 +85,12 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 
 ## <a name="rdd-api"></a>RDD API
 > [!NOTE]
-> Upsert RDD API'sinden oluşturma işlemi aynı 
+> RDD API'den yükseltme oluşturma işlemiyle aynıdır 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB Cassandra API'SİNİN tablolarında depolanan veriler üzerinde başka işlemler gerçekleştirmek için aşağıdaki makalelere devam edin:
+Azure Cosmos DB Cassandra API tablolarında depolanan verilerle ilgili diğer işlemleri gerçekleştirmek için aşağıdaki makalelere devam edin:
  
-* [Silme işlemleri](cassandra-spark-delete-ops.md)
+* [İşlemleri silme](cassandra-spark-delete-ops.md)
 * [Toplama işlemleri](cassandra-spark-aggregation-ops.md)
 * [Tablo kopyalama işlemleri](cassandra-spark-table-copy-ops.md)

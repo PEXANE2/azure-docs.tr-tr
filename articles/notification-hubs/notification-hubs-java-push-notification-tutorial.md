@@ -1,6 +1,6 @@
 ---
-title: Java ile Azure Notification Hubs kullanma
-description: Azure Notification Hubs 'yi bir Java arka ucundan nasıl kullanacağınızı öğrenin.
+title: Java ile Azure Bildirim Hub'ları nasıl kullanılır?
+description: Azure Bildirim Hub'larını Java arka ucundan nasıl kullanacağınızı öğrenin.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,53 +17,53 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263872"
 ---
-# <a name="how-to-use-notification-hubs-from-java"></a>Java 'dan Notification Hubs kullanma
+# <a name="how-to-use-notification-hubs-from-java"></a>Java'dan Bildirim Hub'ları nasıl kullanılır?
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Bu konuda, yeni tam olarak desteklenen resmi Azure Notification Hub Java SDK 'sının temel özellikleri açıklanmaktadır.
-Bu proje açık kaynaklı bir projem ve [Java SDK]'sindeki SDK kodunun tamamını görüntüleyebilirsiniz.
+Bu konu, tam olarak desteklenen yeni resmi Azure Bildirim Hub Java SDK'nın temel özelliklerini açıklar.
+Bu proje açık kaynak kodlu bir projedir ve [Java SDK'da]tüm SDK kodunu görüntüleyebilirsiniz.
 
-Genel olarak, bir Java/PHP/Python/Ruby arka ucundan tüm Notification Hubs özelliklerine, MSDN konusunda [NOTIFICATION HUBS REST API 'lerinde](https://msdn.microsoft.com/library/dn223264.aspx)açıklandığı gibi Bildirim Hub 'ı Rest arabirimini kullanarak erişebilirsiniz. Bu Java SDK 'Sı, Java 'daki bu REST arabirimleri üzerinde ince bir sarmalayıcı sağlar.
+Genel olarak, MSDN konu [Bildirim Hub'larında](https://msdn.microsoft.com/library/dn223264.aspx)açıklandığı gibi Bildirim Hub REST arabirimini kullanarak Java/PHP/Python/Ruby arka ucundan tüm Bildirim Hub'ları özelliklerine erişebilirsiniz. Bu Java SDK Java bu REST arayüzleri üzerinde ince bir sarıcı sağlar.
 
-SDK Şu anda şunları destekler:
+SDK şu anda şunları desteklemektedir:
 
-* Notification Hubs CRUD
+* Bildirim Hub'larında CRUD
 * Kayıtlarda CRUD
-* Yükleme yönetimi
-* İçeri/dışarı aktarma kayıtları
-* Normal gönderir
-* Zamanlanan gönderimler
-* Java NGÇ aracılığıyla zaman uyumsuz işlemler
-* Desteklenen platformlar: APNS (iOS), FCM (Android), WNS (Windows Mağazası uygulamaları), MPNS (Windows Phone), ADM (Amazon Ille Fire), Baidu (Google hizmetleri olmadan Android)
+* Kurulum Yönetimi
+* İthalat/İhracat Kayıtları
+* Düzenli Göndermeler
+* Zamanlanmış Gönder
+* Java NIO ile async işlemleri
+* Desteklenen platformlar: APNS (iOS), FCM (Android), WNS (Windows Mağazası uygulamaları), MPNS(Windows Phone), ADM (Amazon Kindle Fire), Baidu (Google hizmetleri olmadan Android)
 
-## <a name="sdk-usage"></a>SDK kullanımı
+## <a name="sdk-usage"></a>SDK Kullanımı
 
 ### <a name="compile-and-build"></a>Derleme ve oluşturma
 
-[Maven] kullanma
+[Maven] kullanın
 
 Oluşturmak için:
 
     mvn package
 
-## <a name="code"></a>Kodlayın
+## <a name="code"></a>Kod
 
-### <a name="notification-hub-cruds"></a>Notification Hub 'ı CRUDs
+### <a name="notification-hub-cruds"></a>Bildirim Hub CRUDs
 
-**NamespaceManager oluşturma:**
+**Bir NamespaceManager oluşturun:**
 
     ```java
     NamespaceManager namespaceManager = new NamespaceManager("connection string")
     ```
 
-**Bildirim Hub 'ı oluştur:**
+**Bildirim Merkezi Oluştur:**
 
     ```java
     NotificationHubDescription hub = new NotificationHubDescription("hubname");
@@ -71,26 +71,26 @@ Oluşturmak için:
     hub = namespaceManager.createNotificationHub(hub);
     ```
 
- VEYA
+ OR
 
     ```java
     hub = new NotificationHub("connection string", "hubname");
     ```
 
-**Bildirim Hub 'ı al:**
+**Bildirim Hub'ı Alın:**
 
     ```java
     hub = namespaceManager.getNotificationHub("hubname");
     ```
 
-**Bildirim Hub 'ını güncelleştir:**
+**Bildirim Merkezini Güncelleştir:**
 
     ```java
     hub.setMpnsCredential(new MpnsCredential("mpnscert", "mpnskey"));
     hub = namespaceManager.updateNotificationHub(hub);
     ```
 
-**Bildirim Hub 'ını Sil:**
+**Bildirim Hub'ı Sil:**
 
     ```java
     namespaceManager.deleteNotificationHub("hubname");
@@ -98,13 +98,13 @@ Oluşturmak için:
 
 ### <a name="registration-cruds"></a>Kayıt CRUDs
 
-**Bir Bildirim Hub 'ı istemcisi oluşturun:**
+**Bildirim Merkezi istemcisi oluşturma:**
 
     ```java
     hub = new NotificationHub("connection string", "hubname");
     ```
 
-**Windows kaydı oluştur:**
+**Windows kaydı oluşturma:**
 
     ```java
     WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
@@ -113,7 +113,7 @@ Oluşturmak için:
     hub.createRegistration(reg);
     ```
 
-**İOS kaydı oluşturma:**
+**iOS kaydı oluşturma:**
 
     ```java
     AppleRegistration reg = new AppleRegistration(DEVICETOKEN);
@@ -122,9 +122,9 @@ Oluşturmak için:
     hub.createRegistration(reg);
     ```
 
-Benzer şekilde, Android (FCM), Windows Phone (MPNS) ve MPR Le Fire (ADM) için kayıtlar oluşturabilirsiniz.
+Benzer şekilde Android (FCM), Windows Phone (MPNS) ve Kindle Fire (ADM) için de kayıtlar oluşturabilirsiniz.
 
-**Şablon kaydı oluştur:**
+**Şablon kayıtları oluşturun:**
 
     ```java
     WindowsTemplateRegistration reg = new WindowsTemplateRegistration(new URI(CHANNELURI), WNSBODYTEMPLATE);
@@ -132,9 +132,9 @@ Benzer şekilde, Android (FCM), Windows Phone (MPNS) ve MPR Le Fire (ADM) için 
     hub.createRegistration(reg);
     ```
 
-**Kayıt KIMLIĞI oluştur + upsert model kullanarak kayıt oluşturma:**
+**Kayıt kimliği oluşturma + yukarı desen kullanarak kayıt oluşturma:**
 
-Kayıt kimliklerini cihazda depoluyorsanız kayıp yanıtları nedeniyle yinelenenleri kaldırır:
+Kayıt adlarını aygıtta depolarken kaybolan yanıtlar nedeniyle yinelenenleri kaldırır:
 
     ```java
     String id = hub.createRegistrationId();
@@ -142,13 +142,13 @@ Kayıt kimliklerini cihazda depoluyorsanız kayıp yanıtları nedeniyle yinelen
     hub.upsertRegistration(reg);
     ```
 
-**Kayıtları güncelleştir:**
+**Kayıtları güncelleştirin:**
 
     ```java
     hub.updateRegistration(reg);
     ```
 
-**Kayıtları Sil:**
+**Kayıtları silme:**
 
     ```java
     hub.deleteRegistration(regid);
@@ -156,48 +156,48 @@ Kayıt kimliklerini cihazda depoluyorsanız kayıp yanıtları nedeniyle yinelen
 
 **Sorgu kayıtları:**
 
-* **Tek kayıt al:**
+* **Tek kayıt alın:**
 
     ```java
     hub.getRegistration(regid);
     ```
 
-* **Hub 'daki tüm kayıtları al:**
+* **Tüm kayıtları hub'dan alın:**
 
     ```java
     hub.getRegistrations();
     ```
 
-* **Etikete sahip kayıtları al:**
+* **Etiketli kayıtları alın:**
 
     ```java
     hub.getRegistrationsByTag("myTag");
     ```
 
-* **Kanala göre kayıtları al:**
+* **Kanala göre kayıt alın:**
 
     ```java
     hub.getRegistrationsByChannel("devicetoken");
     ```
 
-Tüm koleksiyon sorguları $top ve devamlılık belirteçlerini destekler.
+Tüm koleksiyon sorguları $top ve devam belirteçlerini destekler.
 
-### <a name="installation-api-usage"></a>Yükleme API 'SI kullanımı
+### <a name="installation-api-usage"></a>Kurulum API kullanımı
 
-Yükleme API 'SI, kayıt yönetimi için alternatif bir mekanizmadır. Çok sayıda kaydı sürdürmek yerine, önemsiz olmayan ve kolayca yanlışlıkla veya yeterince yeterli bir şekilde gerçekleştirilebilecek, tek bir yükleme nesnesi kullanmak mümkündür.
+Yükleme API kayıt yönetimi için alternatif bir mekanizmadır. Önemsiz olmayan ve kolayca yanlış veya verimsiz olarak yapılabilen birden çok kaydı korumak yerine, artık tek bir Yükleme nesnesi kullanmak mümkündür.
 
-Yükleme, ihtiyacınız olan her şeyi içerir: gönderim kanalı (cihaz belirteci), Etiketler, şablonlar, ikincil kutucuklar (WNS ve APNS için). KIMLIĞI artık almak için hizmeti çağırmanız gerekmez. yalnızca GUID veya başka bir tanımlayıcı oluşturun, cihazı cihazda tutun ve anında iletme kanalı (cihaz belirteci) ile birlikte arka uca gönderin.
+Yükleme ihtiyacınız olan her şeyi içerir: push channel (aygıt belirteci), etiketler, şablonlar, ikincil kutucuklar (WNS ve APNS için). Artık kimlik almak için hizmeti aramanız gerekmez - sadece GUID veya başka bir tanımlayıcı oluşturun, aygıtın üzerinde tutun ve itme kanalıyla (aygıt belirteci) arka uca gönderin.
 
-Arka uçta yalnızca `CreateOrUpdateInstallation`; için tek bir çağrı yapmanız gerekir. tam ıdempotent, bu nedenle gerekirse yeniden deneyin.
+Arka uçta, yalnızca tek bir arama `CreateOrUpdateInstallation`yapmalısınız; tamamen idempotent, bu yüzden gerekirse yeniden denemek için çekinmeyin.
 
-Amazon Ille Fire için örnek olarak:
+Amazon Kindle Yangın için örnek olarak:
 
     ```java
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
     ```
 
-Güncelleştirmek istiyorsanız:
+Güncellemek isterseniz:
 
     ```java
     installation.addTag("foo");
@@ -206,7 +206,7 @@ Güncelleştirmek istiyorsanız:
     hub.createOrUpdateInstallation(installation);
     ```
 
-Gelişmiş senaryolar için, yükleme nesnesinin yalnızca belirli özelliklerini değiştirmeye izin veren kısmi güncelleştirme özelliğini kullanın. Kısmi güncelleştirme, yükleme nesnesine karşı çalıştırabileceğiniz JSON Patch işlemlerinin bir alt kümesidir.
+Gelişmiş senaryolar için, yükleme nesnesinin yalnızca belirli özelliklerini değiştirmeye olanak tanıyan kısmi güncelleştirme özelliğini kullanın. Kısmi güncelleştirme, Yükleme nesnesi karşı çalıştırabileceğiniz JSON Yama işlemlerinin alt kümesidir.
 
     ```java
     PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
@@ -221,16 +221,16 @@ Yüklemeyi Sil:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`ve `Delete` sonunda `Get`ile tutarlıdır. İsteğiniz işlem, çağrı sırasında yalnızca sistem kuyruğuna gider ve arka planda yürütülür. Get, ana çalışma zamanı senaryosu için tasarlanmamıştır, ancak hata ayıklama ve sorun giderme amacıyla, hizmet tarafından sıkı bir şekilde kısıtlanmıştır.
+`CreateOrUpdate`, `Patch`, `Delete` ve sonunda `Get`tutarlı . İstediğiniz işlem, arama sırasında sistem kuyruğuna gider ve arka planda yürütülür. Get ana çalışma zamanı senaryosu için değil, yalnızca hata ayıklama ve sorun giderme amacıyla tasarlanmıştır, hizmet tarafından sıkı bir şekilde daraltılır.
 
-Yüklemeler için gönderme akışı, kayıtlar için ile aynıdır. Belirli bir yüklemeye yönelik bildirimi hedeflemek için-yalnızca "ınstalstıd: {istenen-id}" etiketini kullanın. Bu durumda, kod şu şekilde olur:
+Yüklemeler için gönderme akışı Kayıtlar için aynıdır. Belirli Yükleme'ye bildirim hedeflemek için "InstallationId:{desired-id} etiketini kullanmanız gerekir. Bu durumda, kod:
 
     ```java
     Notification n = Notification.createWindowsNotification("WNS body");
     hub.sendNotification(n, "InstallationId:{installation-id}");
     ```
 
-Birçok şablondan biri için:
+Birkaç şablondan biri için:
 
     ```java
     Map<String, String> prop =  new HashMap<String, String>();
@@ -239,11 +239,11 @@ Birçok şablondan biri için:
     hub.sendNotification(n, "InstallationId:{installation-id} && tag-for-template1");
     ```
 
-### <a name="schedule-notifications-available-for-standard-tier"></a>Zamanlama bildirimleri (Standart katmanda kullanılabilir)
+### <a name="schedule-notifications-available-for-standard-tier"></a>Zamanlama Bildirimleri (STANDART Katman için kullanılabilir)
 
-Normal gönderme ile aynı, ancak bildirimin ne zaman teslim edilmesi gerektiğini belirten bir ek parametre olan scheduledTime ile aynıdır. Hizmet, şu anda + 5 dakika ile 7 gün arasında herhangi bir noktayı kabul eder.
+Düzenli göndermek gibi ama bir ek parametre ile aynı - scheduledTime, hangi bildirim teslim edilmelidir diyor. Hizmet şimdi + 5 dakika ve şimdi + 7 gün arasında zaman herhangi bir nokta kabul eder.
 
-**Bir Windows yerel bildirimi zamanlayın:**
+**Bir Windows yerel bildirimi zamanlama:**
 
     ```java
     Calendar c = Calendar.getInstance();
@@ -252,11 +252,11 @@ Normal gönderme ile aynı, ancak bildirimin ne zaman teslim edilmesi gerektiği
     hub.scheduleNotification(n, c.getTime());
     ```
 
-### <a name="importexport-available-for-standard-tier"></a>İçeri/dışarı aktarma (Standart katmanda kullanılabilir)
+### <a name="importexport-available-for-standard-tier"></a>İthalat/İhracat (STANDART Katman için kullanılabilir)
 
-Kayıtlara karşı toplu işlem yapmanız gerekebilir. Genellikle, etiketleri güncelleştirmek için başka bir sistemle veya çok büyük bir düzeltmeyle tümleştirme içindir. Binlerce kayıt varsa get/update akışını kullanmanızı önermiyoruz. Sistemin Içeri/dışarı aktarma özelliği senaryoyu kapsayacak şekilde tasarlanmıştır. Depolama hesabınızın altındaki bir blob kapsayıcısına, çıkış için gelen verilerin ve konumun bir kaynağı olarak erişim sağlayacaksınız.
+Kayıtlara karşı toplu işlem yapmanız gerekebilir. Genellikle başka bir sistem veya etiketleri güncellemek için büyük bir düzeltme ile entegrasyon içindir. Binlerce kayıt söz konusuysa, Get/Update akışını kullanmanızı önermiyoruz. Sistemin Alma/Dışa Aktarma özelliği senaryoyu kapsayacak şekilde tasarlanmıştır. Gelen veri kaynağı ve çıktı için konum kaynağı olarak depolama hesabınızın altındaki bir blob kapsayıcısına erişim sağlarsınız.
 
-**Dışarı aktarma işi gönder:**
+**Bir dışa aktarma işi gönderin:**
 
     ```java
     NotificationHubJob job = new NotificationHubJob();
@@ -265,7 +265,7 @@ Kayıtlara karşı toplu işlem yapmanız gerekebilir. Genellikle, etiketleri g�
     job = hub.submitNotificationHubJob(job);
     ```
 
-**İçeri aktarma işi gönder:**
+**Bir alma işi gönderme:**
 
     ```java
     NotificationHubJob job = new NotificationHubJob();
@@ -275,7 +275,7 @@ Kayıtlara karşı toplu işlem yapmanız gerekebilir. Genellikle, etiketleri g�
     job = hub.submitNotificationHubJob(job);
     ```
 
-**Bir iş tamamlanana kadar bekleyin:**
+**Bir iş bitene kadar bekleyin:**
 
     ```java
     while(true){
@@ -286,21 +286,21 @@ Kayıtlara karşı toplu işlem yapmanız gerekebilir. Genellikle, etiketleri g�
     }
     ```
 
-**Tüm işleri al:**
+**Tüm işleri alın:**
 
     ```java
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
     ```
 
-**SAS imzası olan URI:**
+**SAS imzalı URI:**
 
- Bu URL, bir blob dosyasının veya blob kapsayıcısının URL 'si artı izin ve sona erme saati ile hesabın SAS anahtarı kullanılarak yapılan tüm bu işlerin imzası gibi bir dizi parametrenin URL 'sidir. Azure Storage Java SDK 'Sı, bu URI 'lerin oluşturulması dahil zengin özelliklere sahiptir. Basit alternatif olarak, imzalama algoritmasının temel ve kompakt uygulamasına sahip `ImportExportE2E` test sınıfına (GitHub konumundan) göz atın.
+ Bu URL, bir blob dosyası veya blob kapsayıcısının URL'si ve izinler ve son kullanma süresi gibi bir dizi parametrenin yanı sıra hesabın SAS tuşu kullanılarak yapılan tüm bu şeylerin imzasıdır. Azure Depolama Java SDK, bu URL'lerin oluşturulması da dahil olmak üzere zengin özelliklere sahiptir. Basit bir alternatif olarak, `ImportExportE2E` imzalama algoritmasının temel ve kompakt uygulamasına sahip test sınıfına (GitHub konumundan) bir göz atın.
 
-### <a name="send-notifications"></a>Bildirim gönder
+### <a name="send-notifications"></a>Bildirim Gönder
 
-Bildirim nesnesi yalnızca üst bilgileri olan bir gövdedir, bazı yardımcı yöntemler yerel ve şablon bildirimleri nesnelerini oluşturmaya yardımcı olur.
+Bildirim nesnesi yalnızca üstbilgiiçeren bir gövdedir, bazı yardımcı program yöntemleri yerel ve şablon bildirimleri nesnelerinin oluşturulmasına yardımcı olur.
 
-* **Windows Mağazası ve Windows Phone 8,1 (Silverlight olmayan)**
+* **Windows Mağazası ve Windows Phone 8.1 (Silverlight olmayan)**
 
     ```java
     String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
@@ -324,7 +324,7 @@ Bildirim nesnesi yalnızca üst bilgileri olan bir gövdedir, bazı yardımcı y
     hub.sendNotification(n);
     ```
 
-* **Windows Phone 8,0 ve 8,1 Silverlight**
+* **Windows Phone 8.0 ve 8.1 Silverlight**
 
     ```java
     String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -337,7 +337,7 @@ Bildirim nesnesi yalnızca üst bilgileri olan bir gövdedir, bazı yardımcı y
     hub.sendNotification(n);
     ```
 
-* **Lütfen yangın ateş**
+* **Kindle Yangın**
 
     ```java
     String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
@@ -345,7 +345,7 @@ Bildirim nesnesi yalnızca üst bilgileri olan bir gövdedir, bazı yardımcı y
     hub.sendNotification(n);
     ```
 
-* **Etiketlere gönder**
+* **Etiketlere Gönder**
   
     ```java
     Set<String> tags = new HashSet<String>();
@@ -354,7 +354,7 @@ Bildirim nesnesi yalnızca üst bilgileri olan bir gövdedir, bazı yardımcı y
     hub.sendNotification(n, tags);
     ```
 
-* **Etiket ifadesine gönder**
+* **Etiket ifadesini gönder**
 
     ```java
     hub.sendNotification(n, "foo && ! bar");
@@ -370,25 +370,25 @@ Bildirim nesnesi yalnızca üst bilgileri olan bir gövdedir, bazı yardımcı y
     hub.sendNotification(n);
     ```
 
-Java kodunuzun çalıştırılması artık hedef cihazınızda bir bildirim oluşturacak.
+Java kodunuzu çalıştırmak artık hedef aygıtınızda görünen bir bildirim oluşturmalıdır.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a><a name="next-steps"></a>Sonraki Adımlar
 
-Bu konu, Notification Hubs için basit bir Java REST istemcisi oluşturmayı göstermiştir. Burada yapabilecekleriniz:
+Bu konu, Bildirim Hub'ları için basit bir Java REST istemcisi oluşturmanızı gösterdi. Burada yapabilecekleriniz:
 
-* Tüm SDK kodunu içeren tam [Java SDK]indirin.
-* Örneklerle yürütün:
-  * [Notification Hubs kullanmaya başlayın]
-  * [Son haberleri gönder]
-  * [Yerelleştirilmiş son haberleri gönder]
-  * [Kimliği doğrulanmış kullanıcılara bildirimler gönderme]
-  * [Kimliği doğrulanmış kullanıcılara platformlar arası bildirimler gönderme]
+* Tüm SDK kodunu içeren tam [Java SDK'yı]indirin.
+* Örneklerle oynayın:
+  * [Bildirim Hub'larıyla Başlayın]
+  * [Son dakika haberleri gönder]
+  * [Yerelleştirilmiş son dakika haberleri gönder]
+  * [Kimlik doğrulaması yapılan kullanıcılara bildirim gönderme]
+  * [Kimlik doğrulaması yapılan kullanıcılara platform ötesi bildirimler gönderme]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
-[Notification Hubs kullanmaya başlayın]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Son haberleri gönder]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Yerelleştirilmiş son haberleri gönder]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
-[Kimliği doğrulanmış kullanıcılara bildirimler gönderme]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Kimliği doğrulanmış kullanıcılara platformlar arası bildirimler gönderme]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Bildirim Hub'larıyla Başlayın]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Son dakika haberleri gönder]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Yerelleştirilmiş son dakika haberleri gönder]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
+[Kimlik doğrulaması yapılan kullanıcılara bildirim gönderme]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Kimlik doğrulaması yapılan kullanıcılara platform ötesi bildirimler gönderme]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Maven]: https://maven.apache.org/

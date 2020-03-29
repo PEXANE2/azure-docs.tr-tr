@@ -1,35 +1,35 @@
 ---
-title: AKS üzerinde Azure Dev Spaces etkinleştirme & istemci tarafı araçları 'nı yükler
+title: İstemci tarafındaki araçları yüklemek & AKS'de Azure Geliştirme Boşluklarını etkinleştirin
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: AKS kümesinde Azure Dev Spaces etkinleştirmeyi ve istemci tarafı araçları yüklemeyi öğrenin.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
+description: AkS kümesinde Azure Geliştirme Alanları'nı nasıl etkinleştirdiğinizi ve istemci tarafındaki araçları nasıl yükleyin.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s
 ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898943"
 ---
-# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AKS kümesinde Azure Dev Spaces etkinleştirme ve istemci tarafı araçları 'nı yüklemeye
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AkS kümesinde Azure Dev Spaces'i etkinleştirin ve istemci tarafındaki araçları yükleyin
 
-Bu makalede, bir AKS kümesinde Azure Dev Spaces etkinleştirmenin yanı sıra istemci tarafı araçları yüklemek için kullanabileceğiniz çeşitli yollar gösterilmektedir.
+Bu makalede, bir AKS kümesinde Azure Dev Spaces'i etkinleştirmenin yanı sıra istemci tarafındaki araçları yüklemenin çeşitli yollarını gösterilmektedir.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>CLı kullanarak Azure Dev Spaces etkinleştirme veya kaldırma
+## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>CLI'yi kullanarak Azure Dev Boşluklarını etkinleştirme veya kaldırma
 
-CLı kullanarak dev alanlarını etkinleştirebilmeniz için şunlar gerekir:
+CLI'yi kullanarak Dev Spaces'i etkinleştirmeden önce şunları yapmanız gerekir:
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap][az-portal-create-account] oluşturabilirsiniz.
-* [Azure CLI yüklendi][install-cli].
-* [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-cli] .
+* [Azure CLI yüklendi.][install-cli]
+* Desteklenen bir [bölgede][supported-regions]bir [AKS kümesi.][create-aks-cli]
 
-AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın.
+AKS `use-dev-spaces` kümenizde Dev Spaces'i etkinleştirmek ve istemleri izlemek için komutu kullanın.
 
 ```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
-Yukarıdaki komut, *Myresourcegroup* grubundaki *Myakscluster* kümesinde dev alanları sunar ve *varsayılan* bir dev alanı oluşturur.
+Yukarıdaki komut *myRESOURCEGroup* grubunda *myAKSCluster* kümesinde Dev Spaces sağlar ve *varsayılan* bir dev alanı oluşturur.
 
 ```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
@@ -47,9 +47,9 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-`use-dev-spaces` komutu aynı zamanda Azure Dev Spaces CLı 'yi de yüklüyor.
+Komut, `use-dev-spaces` Azure Dev Spaces CLI'yi de yükler.
 
-AKS kümenizdeki Azure Dev Spaces kaldırmak için `azds remove` komutunu kullanın. Örnek:
+AkS kümenizden Azure Dev Alanları'nı `azds remove` kaldırmak için komutu kullanın. Örnek:
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -58,41 +58,41 @@ Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that tar
 Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
 ```
 
-Yukarıdaki komut *Myresourcegroup*Içindeki *myaks* kümesinden Azure dev Spaces kaldırır. Azure Dev Spaces ile oluşturduğunuz herhangi bir ad alanı, iş yükleriyle birlikte kalacaktır, ancak bu ad alanlarındaki yeni iş yükleri Azure Dev Spaces birlikte görünmez. Ayrıca, Azure Dev Spaces ile işaretlenmiş mevcut tüm yığınları yeniden başlatırsanız, hatalar görebilirsiniz. Bu FID 'ler Azure Dev Spaces araçları olmadan yeniden dağıtılmalıdır. Azure Dev Spaces kümenizdeki tamamen kaldırmak için, Azure Dev Spaces etkinleştirildiği tüm ad alanlarındaki tüm kümelerinizi silin.
+Yukarıdaki komut, *MyResourceGroup'taki* *MyAKS* kümesinden Azure Dev Alanları'nı kaldırır. Azure Geliştirme Alanları ile oluşturduğunuz tüm ad alanları iş yükleriyle birlikte kalır, ancak bu ad alanlarındaki yeni iş yükleri Azure Dev Alanları ile birlikte kullanılmaz. Ayrıca, Azure Dev Spaces ile enstrümante olan varolan bölmeleri yeniden başlatırsanız, hatalar görebilirsiniz. Bu bölmeler Azure Dev Spaces aracı olmadan yeniden dağıtılmalıdır. Azure Dev Alanları'nı kümenizden tamamen kaldırmak için, Azure Dev Spaces'in etkin olduğu tüm ad alanlarındaki tüm bölmeleri silin.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>Azure portal kullanarak Azure Dev Spaces etkinleştirme veya kaldırma
+## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>Azure portalını kullanarak Azure Geliştirme Alanlarını etkinleştirme veya kaldırma
 
-Azure portal kullanarak dev alanlarını etkinleştirebilmeniz için önce şunları yapmanız gerekir:
+Azure portalını kullanarak Dev Spaces'i etkinleştirmeden önce şunları yapmanız gerekir:
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap][az-portal-create-account] oluşturabilirsiniz.
-* [Desteklenen bir bölgedeki][supported-regions] [aks kümesi][create-aks-portal] .
+* Desteklenen bir [bölgede][supported-regions]bir [AKS kümesi.][create-aks-portal]
 
-Azure Dev Spaces Azure portal kullanarak etkinleştirmek için:
-1. [Azure Portal][az-portal] oturum açın.
+Azure portalını kullanarak Azure Geliştirme Alanları'nı etkinleştirmek için:
+1. [Azure portalında][az-portal]oturum açın.
 1. AKS kümenize gidin.
-1. *Geliştirme alanları* menü öğesini seçin.
-1. Değişiklik *geliştirme alanlarını* *Evet* olarak etkinleştirin ve *Kaydet*' e tıklayın.
+1. Dev *Spaces* menü öğesini seçin.
+1. *Dev Boşlukları* *Evet'e* Etkinleştir'i değiştirin ve *Kaydet'i*tıklatın.
 
-![Azure portal dev alanlarını etkinleştirme](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
+![Azure portalında Dev Boşlukları etkinleştirme](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-Azure portal kullanarak Azure Dev Spaces etkinleştirilmesi Azure Dev Spaces için herhangi bir istemci tarafı **Aracı yüklemez.**
+Azure portalını kullanarak Azure Dev Spaces'i etkinleştirmek, Azure Dev Spaces için istemci tarafındaki araçlar **yüklemez.**
 
-AKS kümenizdeki Azure Dev Spaces kaldırmak için, *dev SPACES* 'ı *Hayır* olarak etkinleştirin ve *Kaydet*' e tıklayın. Azure Dev Spaces ile oluşturduğunuz herhangi bir ad alanı, iş yükleriyle birlikte kalacaktır, ancak bu ad alanlarındaki yeni iş yükleri Azure Dev Spaces birlikte görünmez. Ayrıca, Azure Dev Spaces ile işaretlenmiş mevcut tüm yığınları yeniden başlatırsanız, hatalar görebilirsiniz. Bu FID 'ler Azure Dev Spaces araçları olmadan yeniden dağıtılmalıdır. Azure Dev Spaces kümenizdeki tamamen kaldırmak için, Azure Dev Spaces etkinleştirildiği tüm ad alanlarındaki tüm kümelerinizi silin.
+AKS kümenizden Azure Dev Alanları'nı kaldırmak *için, Dev Alanları Hayır'a etkinleştir'i* değiştirin ve *Kaydet'i*tıklatın. *No* Azure Geliştirme Alanları ile oluşturduğunuz tüm ad alanları iş yükleriyle birlikte kalır, ancak bu ad alanlarındaki yeni iş yükleri Azure Dev Alanları ile birlikte kullanılmaz. Ayrıca, Azure Dev Spaces ile enstrümante olan varolan bölmeleri yeniden başlatırsanız, hatalar görebilirsiniz. Bu bölmeler Azure Dev Spaces aracı olmadan yeniden dağıtılmalıdır. Azure Dev Alanları'nı kümenizden tamamen kaldırmak için, Azure Dev Spaces'in etkin olduğu tüm ad alanlarındaki tüm bölmeleri silin.
 
-## <a name="install-the-client-side-tools"></a>İstemci tarafı araçları 'nı yükler
+## <a name="install-the-client-side-tools"></a>İstemci tarafındaki araçları yükleme
 
-Yerel makinenizden bir AKS kümesindeki dev Spaces ile etkileşim kurmak için Azure Dev Spaces istemci tarafı araçlarını kullanabilirsiniz. İstemci tarafı araçları yüklemek için çeşitli yollar vardır:
+Azure Dev Spaces istemci tarafındaki araçları kullanarak yerel makinenizden bir AKS kümesindeki dev boşluklarla etkileşimkurabilirsiniz. İstemci tarafı araçlarını yüklemenin birkaç yolu vardır:
 
-* [Visual Studio Code][vscode], [Azure dev Spaces uzantısını][vscode-extension]yükler.
-* [Visual Studio 2019][visual-studio]' de Azure geliştirme iş yükünü yükledikten sonra.
-* Visual Studio 2017 ' de Web geliştirme iş yükünü ve [Kubernetes için Visual Studio Araçları][visual-studio-k8s-tools]yüklemesini yapın.
-* [Windows][cli-win], [Mac][cli-mac]veya [Linux][cli-linux] CLI 'yı indirip yükleyin.
+* [Visual Studio Code'da][vscode]Azure Dev [Spaces uzantısını][vscode-extension]yükleyin.
+* [Visual Studio 2019'da][visual-studio]Azure Geliştirme iş yükünü yükleyin.
+* Visual Studio 2017'de, [Kubernetes için][visual-studio-k8s-tools]Web Geliştirme iş yükünü ve Visual Studio Araçlarını yükleyin.
+* [Windows,][cli-win] [Mac][cli-mac]veya [Linux][cli-linux] CLI'yi indirin ve kurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
+Azure Geliştirme Alanları'nın birden çok kapsayıcıda daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda farklı sürümlerle veya kod dallarıyla çalışarak ortak geliştirmeyi nasıl basitleştirebileceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 'de takım geliştirme][team-development-qs]
+> [Azure Geliştirme Alanlarında ekip geliştirme][team-development-qs]
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster

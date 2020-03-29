@@ -1,28 +1,28 @@
 ---
-title: Dayanıklı İşlevler dış olayları işleme-Azure
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda dış olayları nasıl işleyeceğinizi öğrenin.
+title: Dayanıklı İşlevlerde dış olayları işleme - Azure
+description: Azure İşlevler için Dayanıklı İşlevler uzantısındaki dış olayları nasıl işleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262971"
 ---
-# <a name="handling-external-events-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler dış olayları işleme (Azure Işlevleri)
+# <a name="handling-external-events-in-durable-functions-azure-functions"></a>Dayanıklı İşlevlerde dış olayları işleme (Azure İşlevleri)
 
-Orchestrator işlevlerinin dış olayları bekleme ve dinleme yeteneği vardır. Bu [dayanıklı işlevler](durable-functions-overview.md) özelliği, genellikle insan etkileşimini veya diğer dış Tetikleyicileri işlemek için yararlıdır.
+Orkestratör işlevleri dış olayları bekleme ve dinleme yeteneğine sahiptir. [Dayanıklı İşlevler'in](durable-functions-overview.md) bu özelliği genellikle insan etkileşimini veya diğer dış tetikleyicileri işlemek için yararlıdır.
 
 > [!NOTE]
-> Dış olaylar tek yönlü zaman uyumsuz işlemlerdir. Bu istemciler, olayı gönderen istemcinin Orchestrator işlevinden zaman uyumlu bir yanıt ihtiyacı olduğu durumlar için uygun değildir.
+> Dış olaylar tek yönlü eşzamanlı işlemlerdir. Bunlar, olayı gönderen istemcinin orkestratör işlevinden eşzamanlı yanıt alması gereken durumlar için uygun değildir.
 
-## <a name="wait-for-events"></a>Olayları bekle
+## <a name="wait-for-events"></a>Etkinlikleri bekleyin
 
-[Orchestration tetikleyicisi bağlamasının](durable-functions-bindings.md#orchestration-trigger) `WaitForExternalEvent` (.net) ve `waitForExternalEvent` (JavaScript) yöntemleri bir Orchestrator işlevinin bir dış olayı zaman uyumsuz olarak bekleyip dinlemesine olanak tanır. Dinleme Orchestrator işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
+`WaitForExternalEvent` (.NET) ve `waitForExternalEvent` (JavaScript) [düzenleme tetikleme bağlama](durable-functions-bindings.md#orchestration-trigger) yöntemleri, bir orkestratör işlevinin harici bir olayı eş senkronize bir şekilde beklemesini ve dinlemesini sağlar. Dinleme orkestratörü işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -42,9 +42,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -61,11 +61,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Yukarıdaki örnek, belirli bir olayı dinler ve alındığında işlem gerçekleştirir.
+Önceki örnek belirli bir tek olayı dinler ve alındığı zaman harekete geçer.
 
-Aşağıdaki örnekte olduğu gibi birden çok olayı aynı anda dinleyebilir. Bu, olası üç olay bildiriminin birini bekler.
+Aşağıdaki örnekte olduğu gibi, üç olası olay bildiriminden birini bekleyen birden çok olayı aynı anda dinleyebilirsiniz.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
@@ -93,9 +93,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -118,9 +118,9 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Önceki örnek, birden çok olayı dinler. *Tüm* olayları beklemek da mümkündür.
+Önceki örnek, birden çok olaydan *herhangi* birini dinler. *Tüm* olayları beklemek de mümkündür.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -141,11 +141,11 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki kod Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-.NET sürümünde, olay yükü beklenen tür `T`dönüştürülemiyorsa, bir özel durum oluşturulur.
+.NET'te, olay yükü beklenen türe `T`dönüştürülemiyorsa, bir özel durum atılır.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -166,18 +166,18 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-`WaitForExternalEvent` bazı girişler için süresiz olarak bekler.  İşlev uygulaması beklerken güvenli bir şekilde kaldırılabilir. Bu düzenleme örneğine bir olay ulaştığında, başlatılabilmesi uyandırılır otomatik olarak oluşturulur ve olayı anında işler.
+`WaitForExternalEvent`bazı giriş için süresiz olarak bekler.  İşlev uygulaması beklerken güvenli bir şekilde boşaltılabilir. Bu orkestrasyon örneği için bir olay geldiğinde, otomatik olarak uyandırılır ve olayı hemen işler.
 
 > [!NOTE]
-> İşlev uygulamanız tüketim planını kullanıyorsa, bir Orchestrator işlevi `WaitForExternalEvent` (.NET) veya `waitForExternalEvent` (JavaScript) 'den bir görevi beklerken, ne kadar bekleyeceğini bağımsız olarak hiçbir faturalandırma ücreti tahakkuk etmez.
+> İşlev uygulamanız Tüketim Planı'nı kullanıyorsa, ne kadar beklerse beklemesin, `WaitForExternalEvent` (.NET) veya `waitForExternalEvent` (JavaScript) bir orkestratör işlevi görev beklerken faturalandırma ücreti alınmaz.
 
 ## <a name="send-events"></a>Olayları gönderme
 
-[Orchestration Client bağlamasının](durable-functions-bindings.md#orchestration-client) `RaiseEventAsync` (.net) veya `raiseEvent` (JavaScript) yöntemi, `WaitForExternalEvent` (.net) veya `waitForExternalEvent` (JavaScript) için beklediği olayları gönderir.  `RaiseEventAsync` yöntemi, *EventName* ve *eventdata* parametrelerini parametre olarak alır. Olay verileri JSON ile seri hale getirilebilir olmalıdır.
+`RaiseEventAsync` (.NET) veya `raiseEvent` (JavaScript) [düzenleme istemcisi bağlama](durable-functions-bindings.md#orchestration-client) yöntemi `WaitForExternalEvent` (.NET) `waitForExternalEvent` veya (JavaScript) beklediği olayları gönderir.  Yöntem, `RaiseEventAsync` *eventName* ve *eventData'yı* parametre olarak alır. Olay verileri JSON serileştirilebilir olmalıdır.
 
-Aşağıda, bir Orchestrator işlev örneğine "onay" olayı gönderen örnek bir Queue-tetiklenen işlev verilmiştir. Orchestration örnek KIMLIĞI kuyruk iletisinin gövdesinden gelir.
+Aşağıda, bir orkestratör işlev örneğine "Onay" olayı gönderen örnek bir sıra tetiklenmiş işlev verilmiştir. Düzenleme örneği kimliği sıra iletisinin gövdesinden gelir.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -190,9 +190,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `DurableClient` özniteliği yerine `OrchestrationClient` özniteliğini kullanmanız gerekir ve `IDurableOrchestrationClient`yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -205,10 +205,10 @@ module.exports = async function(context, instanceId) {
 
 ---
 
-Dahili olarak, `RaiseEventAsync` (.NET) veya `raiseEvent` (JavaScript), bekleyen Orchestrator işlevi tarafından çekilen bir iletiyi sıraya alır. Örnek, belirtilen *olay adında* beklemmediyse, olay iletisi bir bellek içi kuyruğa eklenir. Düzenleme örneği daha sonra bu *olay adını* dinlemeye başlarsa, olay iletileri için sırayı denetler.
+Dahili `RaiseEventAsync` olarak, (.NET) veya `raiseEvent` (JavaScript) bekleyen orkestratör işlevi tarafından alınan bir ileti nin sırasını alır. Örnek belirtilen *olay adı* üzerinde beklemiyorsa, olay iletisi bellek içi sıraya eklenir. Düzenleme örneği daha sonra bu olay adını dinlemeye *başlarsa,* olay iletileri için sırayı denetler.
 
 > [!NOTE]
-> Belirtilen *örnek kimliğine*sahip bir düzenleme örneği yoksa, olay iletisi atılır.
+> Belirtilen *örnek kimliği*yle bir düzenleme örneği yoksa, olay iletisi atılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921513"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Güvenlik Merkezi ve Azure Sanal Makineler
@@ -42,12 +42,12 @@ Güvenlik Merkezi, Azure VM’lerinizi korumaya yardımcı olmasına ek olarak C
 > 
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure Güvenlik Merkezi’ni kullanmaya başlamak için aşağıdakileri bilmeniz ve göz önünde bulundurmanız gerekir:
 
 * Bir Microsoft Azure aboneliğiniz olmalıdır. Güvenlik Merkezi’nin ücretsiz ve standart katmanları hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi Fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).
 * Güvenlik Merkezi için benimsediğiniz seçeneği planlayın ve planlama ile çalışma konuları hakkında daha fazla bilgi için [Azure Güvenlik Merkezi planlama ve işlemler kılavuzuna](security-center-planning-and-operations-guide.md) bakın.
-* Desteklenen işletim sistemleri hakkında bilgi için bkz. [Azure Güvenlik Merkezi sık sorulan sorular (SSS)](faq-vms.md). 
+* Desteklenen işletim sistemleri yle ilgili bilgi için Azure [Güvenlik Merkezi'ne sık sık soru sorulan sorular (SSS)](faq-vms.md)bölümüne bakın. 
 
 ## <a name="set-security-policy"></a>Güvenlik ilkesi ayarlama
 Azure Güvenlik Merkezi’nin yapılandırdığınız güvenlik ilkesini temel alarak oluşturulan öneriler ve uyarılar sağlamak üzere gereken bilgileri toplayabilmesi için veri toplama özelliği etkinleştirilmelidir. Aşağıdaki çizimde **Veri toplama** özelliği **Açık** olarak görülmektedir.
@@ -97,5 +97,5 @@ Uyarıyı tetikleyen olay(lar) ve saldırıyı düzeltmek için (varsa) hangi ad
 Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
 * [Azure Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama](tutorial-security-policy.md) -- Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
-* [SSS-Sanal makineler](faq-vms.md) -hizmeti kullanma hakkında sık sorulan soruları bulun.
+* [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını yönetme ve yanıtla](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını nasıl yönetip yanıtlaştak yapılacağını öğrenin.
+* [SSS - Sanal Makineler](faq-vms.md) -- Hizmeti kullanma yla ilgili sık sorulan soruları bulun.

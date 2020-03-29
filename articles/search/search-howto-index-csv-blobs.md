@@ -1,7 +1,7 @@
 ---
-title: CSV Blobları üzerinde arama
+title: CSV lekeleri üzerinde arama yapın
 titleSuffix: Azure Cognitive Search
-description: DelimitedText ayrıştırma modunu kullanarak CSV 'yi Azure Blob depolamadan ayıklayın ve içeri aktarın.
+description: Sınırlı Metin ayrıştma modunu kullanarak Azure Blob depolamadan CSV ayıklayın ve içe aktarın.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,27 +10,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122330"
 ---
-# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama ile aynı Demitedmetin ayrıştırma modunu ve BLOB Dizin oluşturucularını kullanarak CSV bloblarını dizin oluşturma
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da sınırlı Metin ayrıştma modunu ve Blob dizinleyicilerini kullanarak CSV bloblarını dizinleme
 
-Varsayılan olarak, [Azure bilişsel arama blob Indexer](search-howto-indexing-azure-blob-storage.md) , ayrılmış metin bloblarını tek bir metin öbeği olarak ayrıştırır. Ancak, CSV verileri içeren bloblarla, genellikle blobdaki her satırı ayrı bir belge olarak değerlendirmek istersiniz. Örneğin, aşağıdaki sınırlandırılmış metin verildiğinde, her biri "ID", "Dateyayınlanan" ve "Tags" alanlarını içeren iki belgeye ayrıştırın: 
+Varsayılan olarak, [Azure Bilişsel Arama blob dizinleyici](search-howto-indexing-azure-blob-storage.md) tek bir metin yığını olarak sınırlı metin lekeleri parses. Ancak, CSV verileri içeren lekelerle, genellikle blob'daki her satırı ayrı bir belge olarak ele almak istersiniz. Örneğin, aşağıdaki sınırlı metin göz önüne alındığında, her biri "id", "datePublished" ve "tags" alanlarını içeren iki belgeye ayrıştırmak isteyebilirsiniz: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-Bu makalede, `delimitedText` ayrıştırma modunu ayarlayarak CSV bloblarını bir Azure Bilişsel Arama blob Dizinleyicisi ile ayrıştırmayı öğreneceksiniz. 
+Bu makalede, ayrıştırma modunu `delimitedText` ayarlayarak Azure Bilişsel Arama blob dizinleyicisi ile CSV lekeleri ayrıştırma öğreneceksiniz. 
 
 > [!NOTE]
-> Birden çok arama belgesini bir Azure blobundan çıkarmak için [bire çok dizin oluşturma](search-howto-index-one-to-many-blobs.md) içindeki Dizin Oluşturucu yapılandırma önerilerini izleyin.
+> Bir Azure blob'undan birden çok arama belgesi çıkarmak için [birden çok](search-howto-index-one-to-many-blobs.md) dizin oluşturmada dizin leyici yapılandırma önerilerini izleyin.
 
-## <a name="setting-up-csv-indexing"></a>CSV dizinlemeyi ayarlama
-CSV bloblarını indekslemek için, bir Dizin Oluşturucu [oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-indexer) isteğinde `delimitedText` ayrıştırma moduyla bir Dizin Oluşturucu tanımı oluşturun veya güncelleştirin:
+## <a name="setting-up-csv-indexing"></a>CSV dizin oluşturma
+CSV blobs dizine dizin, oluşturmak `delimitedText` [dizinleyici](https://docs.microsoft.com/rest/api/searchservice/create-indexer) isteği üzerinde ayrıştırma modu ile bir dizinleyici tanımı oluşturmak veya güncelleştirmek için:
 
     {
       "name" : "my-csv-indexer",
@@ -38,27 +38,27 @@ CSV bloblarını indekslemek için, bir Dizin Oluşturucu [oluşturma](https://d
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-`firstLineContainsHeaders`, her Blobun ilk (boş olmayan) satırın üstbilgiler içerdiğini belirtir.
-Blob 'lar bir başlangıç üst bilgisi satırı içermiyorsa, üst bilgiler Dizin Oluşturucu yapılandırmasında belirtilmelidir: 
+`firstLineContainsHeaders`her blob'un ilk (boş olmayan) satırının üstbilgi içerdiğini gösterir.
+Blobs bir başlangıç üstbilgi satırı içermiyorsa, üstbilgi dizinleyici yapılandırmasında belirtilmelidir: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-`delimitedTextDelimiter` yapılandırma ayarını kullanarak sınırlayıcı karakteri özelleştirebilirsiniz. Örneğin:
+Yapılandırma ayarını `delimitedTextDelimiter` kullanarak sınır layıcı karakteri özelleştirebilirsiniz. Örnek:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> Şu anda yalnızca UTF-8 kodlaması desteklenir. Diğer kodlamalar için desteğe ihtiyacınız varsa [UserVoice](https://feedback.azure.com/forums/263029-azure-search)üzerinde oy verin.
+> Şu anda yalnızca UTF-8 kodlaması desteklenir. Diğer kodlamalar için desteğe ihtiyacınız varsa, [UserVoice'ta](https://feedback.azure.com/forums/263029-azure-search)oy verin.
 
 > [!IMPORTANT]
-> Ayrılmış metin ayrıştırma modunu kullandığınızda Azure Bilişsel Arama, veri kaynağınızdaki tüm Blobların CSV olacağını varsayar. Aynı veri kaynağında CSV ve CSV olmayan Blobların bir karışımını desteketmeniz gerekiyorsa lütfen [UserVoice](https://feedback.azure.com/forums/263029-azure-search)üzerinde oy verin.
+> Sınırlı metin ayrıştırma modunu kullandığınızda, Azure Bilişsel Arama, veri kaynağınızdaki tüm lekelerin CSV olacağını varsayar. Aynı veri kaynağında CSV ve CSV olmayan blobs bir karışımını desteklemek gerekiyorsa, [UserVoice](https://feedback.azure.com/forums/263029-azure-search)bunun için oy lütfen.
 > 
 > 
 
-## <a name="request-examples"></a>İstek örnekleri
-Tümünü bir araya getirmek, tüm yük örnekleri aşağıda verilmiştir. 
+## <a name="request-examples"></a>Örnekler iste
+Tüm bunları bir araya getirerek, işte tam yük örnekleri. 
 
-DataSource 
+Datasource: 
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -71,7 +71,7 @@ DataSource
         "container" : { "name" : "my-container", "query" : "<optional, my-folder>" }
     }   
 
-Dizinleyic
+Dizinleyici:
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -84,6 +84,6 @@ Dizinleyic
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Bilişsel Arama daha iyi hale getirmemize yardımcı olun
-Geliştirmeler için özellik istekleriniz veya fikirler varsa, bu girişi [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)üzerinde belirtin.
+## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Bilişsel Arama'yı daha iyi hale getirmemize yardımcı olun
+Geliştirmeler için özellik istekleriniz veya fikirleriniz varsa, [UserVoice'a](https://feedback.azure.com/forums/263029-azure-search/)girişinizi sağlayın.
 

@@ -1,7 +1,7 @@
 ---
-title: Örnek API yönetimi ilkesi-günlüğe kaydetme için Stackbelirt hataları gönderme
+title: Örnek API yönetim ilkesi - Günlük için Stackify'ye hata gönder
 titleSuffix: Azure API Management
-description: Azure API Management ilkesi örneği-günlüğe kaydetme için Stackbelirt 'e hata göndermek üzere bir hata günlüğü ilkesinin nasıl ekleneceğini gösterir.
+description: Azure API yönetim ilkesi örneği - Günlük günlüğe kaydetme için Stackify'ye hata göndermek için hata günlüğe kaydetme ilkesinin nasıl ekleyeceğini gösterir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 6662761df005211729dffb16282b8e0a8e2a8444
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442451"
 ---
-# <a name="send-errors-to-stackify-for-logging"></a>Günlüğe kaydetme için Stackbelirt hatalarını gönderme
+# <a name="send-errors-to-stackify-for-logging"></a>Günlük için Stackify'ye hata gönderme
 
-Bu makalede, günlüğe kaydetme için Stackbelirt hata günlüğü ilkesinin nasıl ekleneceğini gösteren bir Azure API Management Policy örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, günlük günlüğe kaydetmek için Stackify'ye hata göndermek için hata günlüğe kaydetme ilkesinin nasıl ekleniştiğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. İlke kodunu ayarlamak veya ayarlamak için, Ayarla'da açıklanan adımları izleyin [veya bir ilkeyi ayarlayın.](../set-edit-policies.md) Diğer örnekleri görmek için [ilke örneklerine](../policy-samples.md)bakın.
 
 ## <a name="policy"></a>İlke
 
-Kodu, **hata üzerindeki** bloğa yapıştırın.
+Kodu **hata bloğuna** yapıştırın.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Log errors to Stackify.policy.xml)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-APıM ilkeleri hakkında daha fazla bilgi edinin:
+APIM politikaları hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
 + [İlke örnekleri](../policy-samples.md)

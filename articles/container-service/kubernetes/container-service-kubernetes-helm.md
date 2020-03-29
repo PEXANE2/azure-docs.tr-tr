@@ -1,6 +1,6 @@
 ---
-title: Kullanım DıŞı Azure Kubernetes 'te Held ile kapsayıcılar dağıtma
-description: Azure Container Service ' deki bir Kubernetes kümesinde kapsayıcılar dağıtmak için helk paketleme aracını kullanın
+title: (AmortismanA Uğradı) Azure Kubernetes'te Helm ile kapsayıcıları dağıtma
+description: Azure Konteyner Hizmeti'nde bir Kubernetes kümesine kapsayıcıdağıtmak için Miğfer paketleme aracını kullanın
 author: sauryadas
 ms.service: container-service
 ms.topic: conceptual
@@ -8,100 +8,100 @@ ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76271093"
 ---
-# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Kullanım DıŞı Bir Kubernetes kümesinde kapsayıcılar dağıtmak için Held kullanma
+# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(AmortismanA Uğradı) Bir Kubernetes kümesine kapsayıcıdağıtmak için Helm'i kullanın
 
 > [!TIP]
-> Azure Kubernetes hizmetini kullanan Bu makalenin güncelleştirilmiş sürümü için bkz. [Azure Kubernetes Service (AKS) Ile Held ile uygulama yüklemesi](../../aks/kubernetes-helm.md).
+> Azure Kubernetes Hizmetini kullanan bu makalenin güncelleştirilmiş sürümü için [bkz.](../../aks/kubernetes-helm.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-[Helk](https://github.com/kubernetes/helm/) , Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynaklı paketleme aracıdır. Apt-get ve yum gibi Linux paket yöneticilerine benzer şekilde, Helm, önceden yapılandırılmış Kubernetes kaynakları paketleri olan Kubernetes grafiklerini yönetmek için kullanılır. Bu makalede, Azure Container Service ' de dağıtılan bir Kubernetes kümesinde Held ile nasıl çalışılacağı gösterilmektedir.
+[Helm,](https://github.com/kubernetes/helm/) Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynak paketleme aracıdır. Apt-get ve Yum gibi Linux paket yöneticilerine benzer şekilde Helm, önceden yapılandırılmış Kubernetes kaynaklarının paketleri olan Kubernetes grafiklerini yönetmek için kullanılır. Bu makalede, Azure Kapsayıcı Hizmeti'nde dağıtılan bir Kubernetes kümesinde Helm ile nasıl çalışacağınızı gösterilmektedir.
 
-Held 'nin iki bileşeni vardır: 
-* **Held CLI** , makinenizde yerel olarak veya bulutta çalışan bir istemcdir  
+Dümenin iki bileşeni vardır: 
+* **Helm CLI,** makinenizde yerel olarak veya bulutta çalışan bir istemcidir  
 
-* **Tiller** , Kubernetes kümesinde çalışan ve Kubernetes uygulamalarınızın yaşam döngüsünü yöneten bir sunucusudur 
+* **Tiller,** Kubernetes kümesinde çalışan ve Kubernetes uygulamalarınızın yaşam döngüsünü yöneten bir sunucudur 
  
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Container Service [bir Kubernetes kümesi oluşturma](container-service-kubernetes-walkthrough.md)
+* Azure Kapsayıcı Hizmeti'nde [Kubernetes kümesi oluşturma](container-service-kubernetes-walkthrough.md)
 
-* Yerel bir bilgisayarda [`kubectl`yükleyip yapılandırma](../container-service-connect.md)
+* Yerel bir bilgisayara [yükleme ve yapılandırma `kubectl` ](../container-service-connect.md)
 
-* Yerel bilgisayara [Held 'Yi yükler](https://github.com/kubernetes/helm/blob/master/docs/install.md)
+* [Yerel](https://github.com/kubernetes/helm/blob/master/docs/install.md) bir bilgisayara Helm yükleme
 
-## <a name="helm-basics"></a>Hela temelleri 
+## <a name="helm-basics"></a>Dümen temelleri 
 
-Tiller yüklediğiniz ve uygulamalarınızı dağıttığınız Kubernetes kümesi hakkındaki bilgileri görüntülemek için, aşağıdaki komutu yazın:
+Tiller'ı yüklediğiniz ve uygulamalarınızı dağıtdığınız Kubernetes kümesi hakkındaki bilgileri görüntülemek için aşağıdaki komutu yazın:
 
 ```bash
 kubectl cluster-info 
 ```
-![kubectl kümesi-bilgi](./media/container-service-kubernetes-helm/clusterinfo.png)
+![kubectl küme-bilgi](./media/container-service-kubernetes-helm/clusterinfo.png)
  
-Helk 'yı yükledikten sonra aşağıdaki komutu yazarak Kubernetes kümenize Tiller 'yi yükleme:
+Helm'i yükledikten sonra, aşağıdaki komutu yazarak Kubernetes kümenize Tiller'ı yükleyin:
 
 ```bash
 helm init --upgrade
 ```
-Başarıyla tamamlandığında aşağıdakine benzer bir çıktı görürsünüz:
+Başarılı bir şekilde tamamlandığında, aşağıdaki gibi çıktı görürsünüz:
 
-![Tiller yüklemesi](./media/container-service-kubernetes-helm/tiller-install.png)
+![Çapa makinesi kurulumu](./media/container-service-kubernetes-helm/tiller-install.png)
  
  
  
  
-Depodaki kullanılabilir tüm HELI grafiklerini görüntülemek için aşağıdaki komutu yazın:
+Depoda bulunan tüm Miğfer grafiklerini görüntülemek için aşağıdaki komutu yazın:
 
 ```bash 
 helm search 
 ```
 
-Aşağıdakine benzer bir çıktı görürsünüz:
+Aşağıdaki gibi çıktı görüyorsunuz:
 
-![Held arama](./media/container-service-kubernetes-helm/helm-search.png)
+![Miğfer arama](./media/container-service-kubernetes-helm/helm-search.png)
  
-En son sürümleri almak üzere grafikleri güncelleştirmek için şunu yazın:
+En son sürümleri almak için grafikleri güncelleştirmek için şunları yazın:
 
 ```bash 
 helm repo update 
 ```
-## <a name="deploy-an-nginx-ingress-controller-chart"></a>NGINX giriş denetleyicisi grafiği dağıtma 
+## <a name="deploy-an-nginx-ingress-controller-chart"></a>Nginx giriş denetleyici grafiğini dağıtma 
  
-NGINX giriş denetleyicisi grafiğini dağıtmak için tek bir komut yazın:
+Nginx giriş denetleyici grafiği dağıtmak için tek bir komut yazın:
 
 ```bash
 helm install stable/nginx-ingress 
 ```
-![Giriş denetleyicisini dağıtma](./media/container-service-kubernetes-helm/nginx-ingress.png)
+![Giriş denetleyicisi dağıtma](./media/container-service-kubernetes-helm/nginx-ingress.png)
 
-Kümede çalışan tüm hizmetleri görüntülemek için `kubectl get svc` yazarsanız, giriş denetleyicisine bir IP adresinin atandığını görürsünüz. (Atama devam ederken `<pending>`görürsünüz. Tamamlanmak üzere birkaç dakika sürer.) 
+Kümede `kubectl get svc` çalışan tüm hizmetleri görüntülemek için yazarsanız, giriş denetleyicisine bir IP adresi atandığını görürsünüz. (Atama devam ederken, görüyorsunuz `<pending>`. Tamamlanması birkaç dakika sürer.) 
 
-IP adresi atandıktan sonra, NGINX arka ucunun çalıştığını görmek için dış IP adresinin değerine gidin. 
+IP adresi atandıktan sonra, Nginx arka ucunun çalıştığını görmek için harici IP adresinin değerine gidin. 
  
 ![Giriş IP adresi](./media/container-service-kubernetes-helm/ingress-ip-address.png)
 
 
-Kümenizde yüklü olan grafiklerin listesini görmek için şunu yazın:
+Kümenizde yüklü grafiklerin listesini görmek için yazın:
 
 ```bash
 helm list 
 ```
 
-Komutu `helm ls`için kısaltabilirsiniz.
+Komutu `helm ls`'nun kısaltması.
  
  
  
  
-## <a name="deploy-a-mariadb-chart-and-client"></a>MariaDB grafiğini ve istemcisini dağıtma
+## <a name="deploy-a-mariadb-chart-and-client"></a>MariaDB grafiği ve istemcisi dağıtma
 
-Şimdi veritabanına bağlanmak için bir MariaDB grafiği ve MariaDB istemcisini dağıtın.
+Şimdi veritabanına bağlanmak için bir MariaDB grafiği ve bir MariaDB istemcisi dağıtın.
 
 MariaDB grafiğini dağıtmak için aşağıdaki komutu yazın:
 
@@ -109,34 +109,34 @@ MariaDB grafiğini dağıtmak için aşağıdaki komutu yazın:
 helm install --name v1 stable/mariadb
 ```
 
-Burada `--name` yayınlar için kullanılan bir etikettir.
+sürümler için kullanılan bir etiket nerededir. `--name`
 
 > [!TIP]
-> Dağıtım başarısız olursa, `helm repo update` çalıştırıp yeniden deneyin.
+> Dağıtım başarısız olursa, `helm repo update` çalıştırın ve yeniden deneyin.
 >
  
  
-Kümenize dağıtılan tüm grafikleri görüntülemek için şunu yazın:
+Kümenizde dağıtılan tüm grafikleri görüntülemek için şunları yazın:
 
 ```bash 
 helm list
 ```
  
-Kümenizde çalışan tüm dağıtımları görüntülemek için şunu yazın:
+Kümenizde çalışan tüm dağıtımları görüntülemek için şunları yazın:
 
 ```bash
 kubectl get deployments 
 ``` 
  
  
-Son olarak, istemciye erişmek üzere Pod çalıştırmak için şunu yazın:
+Son olarak, istemciye erişmek için bir bölme çalıştırmak için şunları yazın:
 
 ```bash
 kubectl run v1-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- bash  
 ``` 
  
  
-İstemciye bağlanmak için aşağıdaki komutu yazın ve `v1-mariadb`, dağıtımınızın adıyla değiştirin:
+İstemciye bağlanmak için, dağıtımınızın `v1-mariadb` adı ile değiştirerek aşağıdaki komutu yazın:
 
 ```bash
 sudo mysql –h v1-mariadb
@@ -149,5 +149,5 @@ Artık veritabanları, tablolar vb. oluşturmak için standart SQL komutlarını
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kubernetes grafiklerini yönetme hakkında daha fazla bilgi için [helk belgelerine](https://github.com/kubernetes/helm/blob/master/docs/index.md)bakın. 
+* Kubernetes grafiklerini yönetme hakkında daha fazla bilgi için [Helm belgelerine](https://github.com/kubernetes/helm/blob/master/docs/index.md)bakın. 
 

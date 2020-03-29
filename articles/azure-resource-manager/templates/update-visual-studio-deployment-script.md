@@ -1,36 +1,36 @@
 ---
-title: Visual Studio 'nun şablon dağıtım betiğini az PowerShell kullanacak şekilde Güncelleştir
-description: Azurerd 'den az PowerShell 'e Visual Studio şablon dağıtım betiğini güncelleştirme
+title: Az PowerShell'i kullanmak için Visual Studio'nun şablon dağıtım komut dosyasını güncelleştirin
+description: Visual Studio şablon dağıtım komut dosyasını AzureRM'den Az PowerShell'e güncelleştirme
 author: cweining
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: cweining
 ms.openlocfilehash: 357e0289f3237ed32b0801280316225ba5530282
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963878"
 ---
-# <a name="update-visual-studio-template-deployment-script-to-use-az-powershell-module"></a>Visual Studio şablon dağıtım betiğini az PowerShell modülünü kullanacak şekilde Güncelleştir
+# <a name="update-visual-studio-template-deployment-script-to-use-az-powershell-module"></a>Az PowerShell modüllerini kullanmak için Visual Studio şablon dağıtım komut dosyasını güncelleştirin
 
-Visual Studio 16,4, şablon dağıtım betiğinde az PowerShell modülünün kullanılmasını destekler. Ancak, Visual Studio bu modülü otomatik olarak yüklemez. Az modülünü kullanmak için dört adım gerçekleştirmeniz gerekir:
+Visual Studio 16.4 şablon dağıtım komut dosyasında Az PowerShell modüllerini kullanmayı destekler. Ancak Visual Studio bu modülü otomatik olarak yüklemez. Az modülünü kullanmak için dört adım atmalısınız:
 
-1. [Azurerd modülünü kaldır](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module)
-1. [Install az Module](/powershell/azure/install-az-ps)
-1. Visual Studio 'Yu 16,4 olarak güncelleştirme
-1. Projenizdeki dağıtım betiğini güncelleştirin.
+1. [AzureRM modüllerini kaldırma](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module)
+1. [Az modül yükleme](/powershell/azure/install-az-ps)
+1. Visual Studio'yı 16.4'e güncelleştirin
+1. Projenizdeki dağıtım komut dosyasını güncelleştirin.
 
-## <a name="update-visual-studio-to-164"></a>Visual Studio 'Yu 16,4 olarak güncelleştirme
+## <a name="update-visual-studio-to-164"></a>Visual Studio'yı 16.4'e güncelleştirin
 
-Visual Studio yüklemenizi 16,4 veya sonraki bir sürüme güncelleştirin. Yükseltme sırasında Azure PowerShell bileşenin işaretli olmadığından emin olun. Galeri aracılığıyla az Module yükletiğinden Azurere modülünü yeniden yüklemek istemezsiniz.
+Visual Studio yüklemenizi sürüm 16.4 veya sonraki sürümle güncelleyin. Yükseltme sırasında Azure PowerShell bileşeninin kontrol olmadığından emin olun. Az modüllerini galeri üzerinden yüklediğiniz için AzureRM modüllerini yeniden yüklemek istemezsiniz.
 
-Zaten 16,4 sürümüne yükselttiyseniz ve Azure PowerShell bileşen denetlendiyse, Visual Studio Yükleyicisi çalıştırarak kaldırabilirsiniz. Azure Iş yükünde veya tek tek bileşenler sayfasında Azure PowerShell bileşeni seçmeyin.
+Zaten 16.4'e yükselttiyseniz ve Azure PowerShell bileşeni denetlendiyse, Visual Studio Installer'ı çalıştırarak kaldırabilirsiniz. Azure İş Yükü'nde veya tek tek bileşenler sayfasında Azure PowerShell bileşenini seçmeyin.
 
-## <a name="update-the-deployment-script-in-your-project"></a>Projenizdeki dağıtım betiğini güncelleştirme
+## <a name="update-the-deployment-script-in-your-project"></a>Projenizdeki dağıtım komut dosyasını güncelleştirme
 
-' Azurerd ' dizesinin tüm oluşumlarını dağıtım betiğinizdeki ' az ' ile değiştirin. Değişiklikleri görmek için bu [GİST](https://gist.github.com/cweining/d2da2479418ea403499c4306dcf4f619) 'teki düzeltmelere başvurabilirsiniz. Betikleri az modüle yükseltme hakkında daha fazla bilgi için bkz. [Azurerd 'Den az ' a geçiş Azure PowerShell](/powershell/azure/migrate-from-azurerm-to-az).
+'AzureRm' dizesinin tüm oluşumlarını dağıtım komut dosyanızda 'Az' ile değiştirin. Değişiklikleri görmek için bu [alt](https://gist.github.com/cweining/d2da2479418ea403499c4306dcf4f619) taki revizyonlara başvurabilirsiniz. Komut dosyalarını Az modülüne yükseltme hakkında daha fazla bilgi için [azure'u Azure PowerShell'den Az'a geçirin.](/powershell/azure/migrate-from-azurerm-to-az)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Visual Studio projesini kullanma hakkında bilgi edinmek için bkz. [Visual Studio aracılığıyla Azure Kaynak grubu projeleri oluşturma ve dağıtma](create-visual-studio-deployment-project.md).
+Visual Studio projesini kullanma hakkında bilgi edinmek için [Visual Studio aracılığıyla Azure kaynak grubu projeleri oluşturma ve dağıtma](create-visual-studio-deployment-project.md)hakkında bilgi edinin.

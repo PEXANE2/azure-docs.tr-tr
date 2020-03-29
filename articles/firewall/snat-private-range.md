@@ -1,53 +1,53 @@
 ---
 title: Azure Güvenlik Duvarı SNAT özel IP adresi aralıkları
-description: IP adresi özel aralıklarını, güvenlik duvarının bu IP adreslerine gelen trafiği SNAT olmayacak şekilde yapılandırabilirsiniz.
+description: Güvenlik duvarının bu IP adreslerine SNAT trafiği yapmaması için IP adresi özel aralıklarını yapılandırabilirsiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 03/20/2020
 ms.author: victorh
-ms.openlocfilehash: b190d07ceadea43ca572f5eb5be3eeeafa616971
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444465"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064804"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Güvenlik Duvarı SNAT özel IP adresi aralıkları
 
-Hedef IP adresi, [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına özel bir IP adresi aralığında olduğunda Azure GÜVENLIK duvarı SNAT değildir. 
+Azure Güvenlik Duvarı, hedef IP adresi [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına özel bir IP adresi aralığında olduğunda Ağ kurallarıyla SNAT yapmaz. Uygulama kuralları her zaman hedef IP adresi ne olursa olsun saydam bir [proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) kullanılarak uygulanır.
 
-Kuruluşunuz özel ağlar için genel bir IP adresi aralığı kullanıyorsa, Azure Güvenlik Duvarı, trafiği AzureFirewallSubnet içindeki güvenlik duvarı özel IP adreslerinden birine karşı bir şekilde SNAT olarak kullanır. Ancak, Azure Güvenlik duvarını genel IP adresi **aralığınızı SNAT olarak** yapılandırmak için yapılandırabilirsiniz.
+Kuruluşunuz özel ağlar için genel bir IP adresi aralığı kullanıyorsa, Azure Güvenlik Duvarı trafiği AzureFirewallSubnet'teki güvenlik duvarı özel IP adreslerinden birine gider. Ancak, Azure Güvenlik Duvarı'nı ortak IP adres aralığınızı SNAT **olarak değil** olarak yapılandırabilirsiniz.
 
 ## <a name="configure-snat-private-ip-address-ranges"></a>SNAT özel IP adresi aralıklarını yapılandırma
 
-Güvenlik duvarının SNAT olmayacak bir IP adresi aralığı belirtmek için Azure PowerShell kullanabilirsiniz.
+Güvenlik duvarının SNAT'a girmeyeceği bir IP adresi aralığı nı belirtmek için Azure PowerShell'i kullanabilirsiniz.
 
 ### <a name="new-firewall"></a>Yeni güvenlik duvarı
 
-Yeni bir güvenlik duvarı için Azure PowerShell komutu şu şekilde olur:
+Yeni bir güvenlik duvarı için Azure PowerShell komutu şu şekildedir:
 
 `New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
 
 > [!NOTE]
-> IANAPrivateRanges, diğer aralıklar buna eklenirken Azure Güvenlik duvarında geçerli varsayılan değerlere genişletilir.
+> IANAPrivateRanges, Azure Güvenlik Duvarı'ndaki geçerli varsayılan lara genişletilirken, diğer aralıklar da eklenir.
 
-Daha fazla bilgi için bkz. [New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0).
+Daha fazla bilgi için [New-AzFirewall'a](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0)bakın.
 
-### <a name="existing-firewall"></a>Mevcut güvenlik duvarı
+### <a name="existing-firewall"></a>Varolan güvenlik duvarı
 
-Mevcut bir güvenlik duvarını yapılandırmak için aşağıdaki Azure PowerShell komutları kullanın:
+Varolan bir güvenlik duvarını yapılandırmak için aşağıdaki Azure PowerShell komutlarını kullanın:
 
 ```azurepowershell
 $azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
-$azfw.PrivateRange = @(“IANAPrivateRanges”,“IPRange1”, “IPRange2”)
+$azfw.PrivateRange = @("IANAPrivateRanges","IPRange1", "IPRange2")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ### <a name="templates"></a>Şablonlar
 
-`additionalProperties` bölümüne aşağıdakileri ekleyebilirsiniz:
+`additionalProperties` Bölüme aşağıdakileri ekleyebilirsiniz:
 
 ```
 "additionalProperties": {
@@ -57,4 +57,4 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Güvenlik duvarını dağıtmayı ve yapılandırmayı](tutorial-firewall-deploy-portal.md)öğrenin.
+- [Azure Güvenlik Duvarı'nı nasıl dağıtıp yapılandırılamayı](tutorial-firewall-deploy-portal.md)öğrenin.

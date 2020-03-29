@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 'de SAML belirteci şifrelemesi
-description: Azure Active Directory SAML belirteci şifrelemesini yapılandırmayı öğrenin.
+title: Azure Etkin Dizini'nde SAML belirteç şifrelemesi
+description: Azure Active Directory SAML belirteç şifrelemesini nasıl yapılandıracağız öğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,85 +17,85 @@ ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79365875"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Nasıl yapılır: Azure AD SAML belirteci şifrelemesini yapılandırma
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Nasıl yapIlir: Azure AD SAML belirteç şifrelemesini yapılandırma
 
 > [!NOTE]
-> Belirteç şifreleme bir Azure Active Directory (Azure AD) Premium özelliğidir. Azure AD sürümleri, Özellikler ve fiyatlandırma hakkında daha fazla bilgi edinmek için bkz. [Azure AD fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
+> Belirteç şifrelemesi, Azure Etkin Dizin (Azure AD) premium özelliğidir. Azure REKLAM sürümleri, özellikleri ve fiyatlandırması hakkında daha fazla bilgi edinmek için [Azure REKLAM fiyatlandırması'na](https://azure.microsoft.com/pricing/details/active-directory/)bakın.
 
-SAML belirteci şifrelemesi, şifrelenmiş SAML onaylamaları tarafından desteklenen bir uygulamayla kullanılmasına izin vermez. Bir uygulama için yapılandırıldığında Azure AD, Azure AD 'de depolanan bir sertifikadan alınan ortak anahtarı kullanarak bu uygulama için yaydığı SAML onaylamalarını şifreler. Uygulamanın, oturum açan kullanıcı için kimlik doğrulama kanıtı olarak kullanılmadan önce belirtecin şifresini çözmek için eşleşen özel anahtarı kullanması gerekir.
+SAML belirteç şifrelemesi, şifrelenmiş SAML iddialarının kullanılmasını destekleyen bir uygulamayla sağlar. Azure AD, bir uygulama için yapılandırıldığında, Azure AD'de depolanan bir sertifikadan elde edilen ortak anahtarı kullanarak bu uygulama için yayılan SAML iddialarını şifreler. Uygulama, oturum açmış kullanıcı için kimlik doğrulama kanıtı olarak kullanılabilmeden önce belirteci şifresini çözmek için eşleşen özel anahtarı kullanmalıdır.
 
-Azure AD ile uygulama arasındaki SAML onaylamalarını şifrelemek, belirtecin içeriğinin yakalanmadığı ve kişisel veya kurumsal verilerin tehlikeye girdiği ek güvence sağlar.
+Azure AD ile uygulama arasındaki SAML iddialarının şifrelenmesi, belirteç içeriğinin ele geçirilemeyecine ve kişisel veya kurumsal verilerin tehlikeye atılamayacağına dair ek güvence sağlar.
 
-Belirteç şifrelemesi olmadan bile, Azure AD SAML belirteçleri hiçbir şekilde ağda hiçbir şekilde hiçbir şekilde geçirilmez. Azure AD,, ıDP, tarayıcı ve uygulama arasındaki iletişimin şifreli bağlantıları yerine gelmesi için, belirteç isteği/yanıt değişimlerinin şifreli HTTPS/TLS kanalları üzerinde gerçekleşmesini gerektirir. Ek sertifikaları yönetme yüküyle karşılaştırıldığında, durumunuz için belirteç şifreleme değerini göz önünde bulundurun.   
+Belirteç şifrelemesi olmasa bile, Azure AD SAML belirteçleri ağda hiçbir zaman net olarak geçirilir. Azure AD, IDP, tarayıcı ve uygulama arasındaki iletişimin şifreli bağlantılar üzerinden gerçekleşmesi için jeton isteği/yanıt alışverişinin şifreli HTTPS/TLS kanalları üzerinden gerçekleşmesini gerektirir. Ek sertifikaları yönetmenin genel yüküyle karşılaştırıldığında durumunuz için belirteç şifrelemesinin değerini göz önünde bulundurun.   
 
-Belirteç şifrelemesini yapılandırmak için, uygulamayı temsil eden Azure AD Uygulama nesnesine ortak anahtarı içeren bir X. 509.440 sertifika dosyası yüklemeniz gerekir. X. 509.952 sertifikasını almak için, uygulamayı uygulamanın kendisinden indirebilir veya uygulama satıcısının şifreleme anahtarları sağladığı veya uygulamanın özel bir anahtar sağlamanızı beklediği durumlarda uygulama satıcısından elde edebilirsiniz. şifreleme araçları kullanılarak oluşturulan özel anahtar bölümü, uygulamanın anahtar deposuna ve eşleşen ortak anahtar sertifikasına Azure AD 'ye yüklenir.
+Belirteç şifrelemesini yapılandırmak için, uygulamayı temsil eden Azure AD uygulama nesnesinin ortak anahtarını içeren bir X.509 sertifika dosyası yüklemeniz gerekir. X.509 sertifikasını almak için, uygulamanın kendisinden indirebilir veya uygulama satıcısının şifreleme anahtarları sağladığı durumlarda veya uygulamanın özel bir anahtar sağlamanızı beklediği durumlarda uygulama satıcısından alabilirsiniz, şifreleme araçları kullanılarak oluşturulan, uygulamanın anahtar deposuna yüklenen özel anahtar kısmı ve Azure AD'ye yüklenen eşleşen ortak anahtar sertifikası.
 
-Azure AD, SAML onaylama verilerini şifrelemek için AES-256 kullanır.
+Azure AD, SAML iddia verilerini şifrelemek için AES-256 kullanır.
 
-## <a name="configure-saml-token-encryption"></a>SAML belirteci şifrelemesini yapılandırma
+## <a name="configure-saml-token-encryption"></a>SAML belirteç şifrelemesini yapılandırma
 
-SAML belirteci şifrelemesini yapılandırmak için aşağıdaki adımları izleyin:
+SAML belirteç şifrelemesini yapılandırmak için aşağıdaki adımları izleyin:
 
-1. Uygulamada yapılandırılmış özel anahtarla eşleşen bir ortak anahtar sertifikası alın.
+1. Uygulamada yapılandırılan özel bir anahtarla eşleşen ortak anahtar sertifikası alın.
 
-    Şifreleme için kullanılacak asimetrik bir anahtar çifti oluşturun. Ya da uygulama şifreleme için kullanmak üzere bir ortak anahtar sağlarsa, X. 509.440 sertifikasını indirmek için uygulamanın yönergelerini izleyin.
+    Şifreleme için kullanılacak asimetrik bir anahtar çifti oluşturun. Veya, uygulama şifreleme için kullanılacak ortak bir anahtar sağlıyorsa, X.509 sertifikasını indirmek için uygulamanın yönergelerini izleyin.
 
-    Ortak anahtar,. cer biçimindeki bir X. 509.440 sertifika dosyasında depolanmalıdır.
+    Ortak anahtar X.509 sertifika dosyasında .cer biçiminde depolanmalıdır.
 
-    Uygulama örneğiniz için oluşturduğunuz bir anahtarı kullanıyorsa, uygulamanın Azure AD kiracınızdaki belirteçlerin şifresini çözmek için kullanacağı özel anahtarı yüklemek üzere uygulamanız tarafından belirtilen yönergeleri izleyin.
+    Uygulama, örneğiniz için oluşturduğunuz bir anahtar kullanıyorsa, uygulamanın Azure AD kiracınızdaki belirteçleri çözmek için kullanacağı özel anahtarı yüklemek için uygulamanız tarafından sağlanan yönergeleri izleyin.
 
-1. Sertifikayı Azure AD 'de uygulama yapılandırmasına ekleyin.
+1. Azure AD'deki uygulama yapılandırmasına sertifikaekleyin.
 
-### <a name="to-configure-token-encryption-in-the-azure-portal"></a>Azure portal belirteç şifrelemesini yapılandırmak için
+### <a name="to-configure-token-encryption-in-the-azure-portal"></a>Azure portalında belirteç şifrelemesini yapılandırmak için
 
-Ortak sertifikayı, Azure portal içindeki uygulama yapılandırmanıza ekleyebilirsiniz.
+Azure portalında uygulama yapılandırmanıza ortak sertifikayı ekleyebilirsiniz.
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com)gidin.
 
-1. **Azure Active Directory > Enterprise Applications** dikey penceresine gidin ve belirteç şifrelemesini yapılandırmak istediğiniz uygulamayı seçin.
+1. **Azure Active Directory > Enterprise uygulamalarına** gidin ve ardından belirteç şifrelemesini yapılandırmak istediğiniz uygulamayı seçin.
 
-1. Uygulamanın sayfasında, **belirteç şifrelemesi**' ni seçin.
+1. Uygulamanın sayfasında **Belirteç şifrelemesini**seçin.
 
-    ![Azure portal belirteç şifreleme seçeneği](./media/howto-saml-token-encryption/token-encryption-option-small.png)
+    ![Azure portalında belirteç şifreleme seçeneği](./media/howto-saml-token-encryption/token-encryption-option-small.png)
 
     > [!NOTE]
-    > **Belirteç şifreleme** seçeneği yalnızca, uygulama galerisinden veya Galeri dışı bir uygulamadan Azure Portal **Kurumsal uygulamalar** dikey penceresinden ayarlanmış SAML uygulamalarında kullanılabilir. Diğer uygulamalar için bu menü seçeneği devre dışıdır. Azure portal **uygulama kayıtları** deneyimi aracılığıyla kaydedilen uygulamalarda, uygulama bildirimini kullanarak, Microsoft Graph veya POWERSHELL aracılığıyla SAML belirteçleri için şifrelemeyi yapılandırabilirsiniz.
+    > **Belirteç şifreleme** seçeneği yalnızca Azure portalındaki **Kurumsal uygulamalar** bıçak'ından ayarlanan SAML uygulamaları için, Uygulama Galerisi'nden veya Galeri Dışı uygulamadan kullanılabilir. Diğer uygulamalar için bu menü seçeneği devre dışı bırakılır. Azure portalındaki **Uygulama kayıtları** deneyimi üzerinden kaydedilmiş uygulamalar için, uygulama bildirimini kullanarak, Microsoft Graph aracılığıyla veya PowerShell aracılığıyla SAML belirteçleri için şifreleme yi yapılandırabilirsiniz.
 
-1. **Belirteç şifreleme** sayfasında, ortak X. 509.440 sertifikanızı içeren. cer dosyasını içeri aktarmak Için **sertifikayı içeri aktar** ' ı seçin.
+1. **Belirteç şifreleme** sayfasında, ortak X.509 sertifikanızı içeren .cer dosyasını almak için **Sertifikayı İçe Aktar'ı** seçin.
 
-    ![X. 509.440 sertifikasını içeren. cer dosyasını içeri aktarma](./media/howto-saml-token-encryption/import-certificate-small.png)
+    ![X.509 sertifikasını içeren .cer dosyasını alma](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. Sertifika içeri aktarıldıktan sonra ve özel anahtar uygulama tarafında kullanılmak üzere yapılandırıldıktan sonra, parmak izi durumunun yanındaki **...** öğesini seçerek şifrelemeyi etkinleştirin ve açılan menüdeki seçeneklerden **belirteç şifrelemeyi etkinleştir** ' i seçin.
+1. Sertifika alındıktan ve özel anahtar uygulama tarafında kullanılmak üzere yapılandırıldıktan sonra, parmak izi durumunun yanındaki **...** seçeneğini seçerek şifrelemeyi etkinleştirin ve ardından açılır menüdeki seçeneklerden **belirteç şifrelemesini etkinleştir'i** seçin.
 
-1. Belirteç şifreleme sertifikasının etkinleştirilmesini onaylamak için **Evet** ' i seçin.
+1. Belirteç şifreleme sertifikasının etkinleştirmesini onaylamak için **Evet'i** seçin.
 
-1. Uygulama için uygulanan SAML onaylarınızın şifrelendiğinden emin olun.
+1. Uygulama için yayılan SAML iddialarının şifrelenmiş olduğunu doğrulayın.
 
-### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Azure portal belirteç şifrelemesini devre dışı bırakmak için
+### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Azure portalında belirteç şifrelemesini devre dışı bırakmak için
 
-1. Azure portal **Azure Active Directory Kurumsal uygulamalar >** ' e gıdın ve SAML belirteci Şifrelemesi etkin olan uygulamayı seçin.
+1. Azure portalında Azure **Active Directory > Enterprise uygulamalarına**gidin ve ardından SAML belirteç şifrelemesi etkinleştirilmiş uygulamayı seçin.
 
-1. Uygulamanın sayfasında, **belirteç şifrelemesi**' ni seçin, sertifikayı bulun ve ardından açılan menüyü göstermek için **...** seçeneğini belirleyin.
+1. Uygulamanın sayfasında, **Token şifrelemesini**seçin, sertifikayı bulun ve ardından açılan menüyü göstermek için **...** seçeneğini seçin.
 
-1. **Belirteç şifrelemesini devre dışı bırak**' ı seçin.
+1. **Belirteç şifrelemesini Devre Dışı Bırak'ı**seçin.
 
-## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>Graph API, PowerShell veya uygulama bildirimi kullanarak SAML belirteci şifrelemesini yapılandırma
+## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>Grafik API, PowerShell veya uygulama bildirimini kullanarak SAML belirteç şifrelemesini yapılandırma
 
-Şifreleme sertifikaları, Azure AD 'de uygulama nesnesinde `encrypt` kullanım etiketiyle depolanır. Birden çok şifreleme sertifikası yapılandırabilirsiniz ve belirteçleri şifrelemek için etkin olan bir öznitelik `tokenEncryptionKeyID` özniteliği tarafından tanımlanır.
+Şifreleme sertifikaları, `encrypt` kullanım etiketiyle Azure AD'deki uygulama nesnesinde depolanır. Birden çok şifreleme sertifikası yapılandırabilirsiniz ve belirteçleri şifrelemek için etkin `tokenEncryptionKeyID` olan özellik tarafından tanımlanır.
 
-Microsoft Graph API veya PowerShell kullanarak belirteç şifrelemesini yapılandırmak için uygulamanın nesne KIMLIĞINE ihtiyacınız olacaktır. Bu değeri programlı bir şekilde veya Azure portal uygulamanın **Özellikler** sayfasına gıdıp **nesne kimliği** değerini belirterek bulabilirsiniz.
+Microsoft Graph API veya PowerShell kullanarak belirteç şifrelemesini yapılandırmak için uygulamanın nesne kimliğine ihtiyacınız vardır. Bu değeri programlı olarak veya Azure portalında uygulamanın **Özellikler** sayfasına giderek **nesne kimliği** değerini belirterek bulabilirsiniz.
 
-Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığınızda, keyId için kullanmak üzere bir GUID oluşturmalısınız.
+Grafik, PowerShell veya uygulama bildirimini kullanarak bir tuş Keşetial yapılandırdığınızda, keyId için kullanmak üzere bir GUID oluşturmanız gerekir.
 
 ### <a name="to-configure-token-encryption-using-microsoft-graph"></a>Microsoft Graph kullanarak belirteç şifrelemesini yapılandırmak için
 
-1. Şifreleme için uygulamanın `keyCredentials` bir X. 509.440 sertifikasıyla güncelleştirin. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir.
+1. Şifreleme için X.509 sertifikası ile uygulamanın güncelleştirmesi. `keyCredentials` Aşağıdaki örnekte, bunun nasıl yapılacağını gösterilmektedir.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid>
@@ -111,7 +111,7 @@ Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığ
     }
     ```
 
-1. Belirteçleri şifrelemek için etkin olan şifreleme sertifikasını belirler. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir.
+1. Belirteçleri şifrelemek için etkin olan şifreleme sertifikasını tanımlayın. Aşağıdaki örnekte, bunun nasıl yapılacağını gösterilmektedir.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid> 
@@ -125,7 +125,7 @@ Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığ
 
 1. Kiracınıza bağlanmak için en son Azure AD PowerShell modülünü kullanın.
 
-1. **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** komutunu kullanarak belirteç şifreleme ayarlarını ayarlayın.
+1. **[Ayar-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** komutunu kullanarak belirteç şifreleme ayarlarını ayarlayın.
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
@@ -141,15 +141,15 @@ Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığ
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Uygulama bildirimini kullanarak belirteç şifrelemesini yapılandırmak için
 
-1. Azure portal **Azure Active Directory > uygulama kayıtları**sayfasına gidin.
+1. Azure portalından Azure **Active Directory > Uygulama kayıtlarına**gidin.
 
-1. Tüm uygulamaları görüntülemek için açılan listeden **tüm uygulamalar** ' ı seçin ve ardından yapılandırmak istediğiniz kurumsal uygulamayı seçin.
+1. Tüm uygulamaları göstermek için açılır dosyadaki **tüm uygulamaları** seçin ve ardından yapılandırmak istediğiniz kurumsal uygulamayı seçin.
 
-1. Uygulamanın sayfasında, [uygulama bildirimini](../develop/reference-app-manifest.md)düzenlemek için **bildirim** ' ı seçin.
+1. Uygulamanın sayfasında, [uygulama bildirimini](../develop/reference-app-manifest.md)sağlamak için **Bildirim'i** seçin.
 
-1. `tokenEncryptionKeyId` özniteliği için değeri ayarlayın.
+1. `tokenEncryptionKeyId` Öznitelik için değeri ayarlayın.
 
-    Aşağıdaki örnek, iki şifreleme sertifikası ile yapılandırılmış bir uygulama bildirimini ve Tokenencryptotionkeyıd ' yi kullanarak etkin bir tane olarak seçili olanı gösterir.
+    Aşağıdaki örnekte, iki şifreleme sertifikasıyla yapılandırılan bir uygulama bildirimi ve tokenEnryptionKeyId'i kullanarak etkin olarak seçilen ikinci uygulama bildirimi gösterilmektedir.
 
     ```json
     { 
@@ -220,5 +220,5 @@ Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD 'nın SAML protokolünü nasıl kullandığını](../develop/active-directory-saml-protocol-reference.md) öğrenin
-* [Azure AD 'de SAML belirteçlerinin](../develop/reference-saml-tokens.md) biçimini, güvenlik özelliklerini ve içeriğini öğrenin
+* Azure [AD'nin SAML protokolünü nasıl kullandığını](../develop/active-directory-saml-protocol-reference.md) öğrenin
+* [Azure AD'de SAML belirteçlerinin](../develop/reference-saml-tokens.md) biçimini, güvenlik özelliklerini ve içeriğini öğrenin

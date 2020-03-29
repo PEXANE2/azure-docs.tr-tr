@@ -1,6 +1,6 @@
 ---
-title: Bir masaüstü uygulamasından Web API 'Lerini çağırma-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmayı öğrenin
+title: Bir masaüstü uygulamasından web API'lerini arayın - Microsoft kimlik platformu | Azure
+description: Web API'leri çağıran bir masaüstü uygulaması oluşturmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702173"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Lerini çağıran masaüstü uygulaması: Web API 'SI çağırma
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API'lerini çağıran masaüstü uygulaması: Web API'sını arayın
 
-Artık bir belirteciniz olduğuna göre, korumalı bir Web API 'SI çağırabilirsiniz.
+Artık bir belirteç var, korumalı web API arayabilirsiniz.
 
 ## <a name="call-a-web-api"></a>Web API çağrısı
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 <!--
 More includes will come later for Python and Java
 -->
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 endpoint = "url to the API"
@@ -44,7 +44,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -63,11 +63,11 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[Macos](#tab/macOS)
 
-## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL içinde bir Web API 'SI çağırma
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>iOS ve macOS için MSAL'da web API'sını arayın
 
-Belirteçleri elde etmek için yöntemler bir `MSALResult` nesnesi döndürür. `MSALResult`, bir Web API 'sini çağırmak için kullanılabilecek bir `accessToken` özelliğini kullanıma sunar. Korumalı Web API 'sine erişmek için çağrıyı yapmadan önce HTTP yetkilendirme üstbilgisine bir erişim belirteci ekleyin.
+Belirteçleri elde etme `MSALResult` yöntemleri bir nesneyi döndürer. `MSALResult`web API'sını çağırmak için kullanılabilecek bir `accessToken` özelliği ortaya çıkarır. Korumalı web API'sine erişmek için arama yapmadan önce HTTP yetkilendirme üstbilgisine bir erişim belirteci ekleyin.
 
 Amaç-C:
 
@@ -83,7 +83,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -95,9 +95,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Çeşitli API 'Leri çağırma: artımlı izin ve koşullu erişim
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Birkaç API arayın: Artımlı onay ve koşullu erişim
 
-Aynı kullanıcı için çeşitli API 'Leri çağırmak için, ilk API için bir belirteç aldıktan sonra `AcquireTokenSilent`çağırın. Diğer API 'Ler için çoğu zaman sessizce bir belirteç alacaksınız.
+Aynı kullanıcı için birkaç API çağırmak için, ilk API için `AcquireTokenSilent`bir belirteç aldıktan sonra, arayın. Çoğu zaman diğer API'ler için bir belirteç alırsınız.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -107,10 +107,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Şu durumlarda etkileşim gerekir:
+Etkileşim şu zaman gereklidir:
 
-- Kullanıcı ilk API 'ye onay verdi, ancak şimdi daha fazla kapsam için onay gerektirir. Bu tür bir onay, artımlı izin olarak bilinir.
-- İlk API, çok faktörlü kimlik doğrulaması gerektirmez, ancak bir sonraki tane.
+- Kullanıcı ilk API için izin verdi, ancak şimdi daha fazla kapsam için onay alması gerekiyor. Bu tür bir rıza, artımlı rıza olarak bilinir.
+- İlk API çok faktörlü kimlik doğrulaması gerektirmedi, ama bir sonraki yok.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -133,4 +133,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşı](scenario-desktop-production.md)
+> [Üretime taşıma](scenario-desktop-production.md)

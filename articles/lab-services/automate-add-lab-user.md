@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs laboratuvar kullanıcısı eklemeyi otomatikleştirin | Microsoft Docs
-description: Bu makalede, Azure Resource Manager şablonları, PowerShell ve CLı kullanarak Azure DevTest Labs bir laboratuvara Kullanıcı ekleme işlemini nasıl otomatikleştirebileceğiniz gösterilmektedir.
+title: Azure DevTest Labs'da laboratuvar kullanıcıeklemeyi otomatikleştirin | Microsoft Dokümanlar
+description: Bu makalede, Azure Kaynak Yöneticisi şablonları, PowerShell ve CLI kullanarak Azure DevTest Labs'daki bir laboratuvara kullanıcı eklemeyi otomatikleştirin.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,23 +13,23 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718148"
 ---
-# <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda laboratuvar kullanıcısı eklemeyi otomatikleştirin
-Azure DevTest Labs, Azure portal kullanarak hızlı bir şekilde self servis geliştirme ve test ortamları oluşturmanıza olanak sağlar. Ancak, birden fazla ekip ve çeşitli DevTest Labs örneği varsa, oluşturma işlemini otomatik hale getirmek zamandan tasarruf edebilir. [Azure Resource Manager şablonlar](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) , otomatik bir biçimde laboratuvar, laboratuar VM 'leri, özel görüntüler, formüller oluşturmanıza ve Kullanıcı eklemenize olanak tanır. Bu makale özellikle bir DevTest Labs örneğine kullanıcı eklemeye odaklanır.
+# <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs'daki bir laboratuvara laboratuvar kullanıcıeklemeyi otomatikleştirme
+Azure DevTest Labs, Azure portalını kullanarak self servis geliştirme test ortamlarını hızla oluşturmanıza olanak tanır. Ancak, birkaç takım ve birkaç DevTest Labs örnekleri varsa, oluşturma işlemini otomatikleştirmek zaman kazandırabilir. [Azure Kaynak Yöneticisi şablonları,](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) laboratuvarlar, laboratuvar VM'leri, özel resimler, formüller oluşturmanıza ve kullanıcıları otomatik bir şekilde eklemenize olanak tanır. Bu makale, özellikle bir DevTest Labs örneğine kullanıcı eklemeye odaklanır.
 
-Bir laboratuvara Kullanıcı eklemek için, kullanıcıyı laboratuvar için **DevTest Labs Kullanıcı** rolüne eklersiniz. Bu makalede, aşağıdaki yollarla bir kullanıcıyı laboratuvara ekleme işlemini nasıl otomatikleştirebileceğiniz gösterilmektedir:
+Bir kullanıcıyı laboratuvara eklemek için, kullanıcıyı laboratuvar için **DevTest Labs Kullanıcı** rolüne eklersiniz. Bu makalede, aşağıdaki yollardan birini kullanarak bir laboratuvara kullanıcı eklemeyi otomatikleştirin:
 
 - Azure Resource Manager şablonları
 - Azure PowerShell cmdlet’leri 
-- Azure CLı.
+- Azure CLI.
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
-Aşağıdaki örnek Kaynak Yöneticisi şablonu, bir laboratuvarın **DevTest Labs Kullanıcı** rolüne eklenecek bir kullanıcı belirtir. 
+Aşağıdaki örnek Kaynak Yöneticisi şablonu, bir laboratuvarın **DevTest Labs Kullanıcı** rolüne eklenecek bir kullanıcıyı belirtir. 
 
 ```json
 {
@@ -85,55 +85,55 @@ Aşağıdaki örnek Kaynak Yöneticisi şablonu, bir laboratuvarın **DevTest La
 
 ```
 
-Rolü Laboratuvarı oluşturan aynı şablona atarken, rol atama kaynağı ve laboratuvar arasına bir bağımlılık eklemeyi unutmayın. Daha fazla bilgi için bkz. [Azure Resource Manager şablonları makalesinde bağımlılıkları tanımlama](../azure-resource-manager/templates/define-resource-dependency.md) .
+Rolü, laboratuarı oluşturan aynı şablonda atadıysanız, rol atama kaynağı ile laboratuar arasında bir bağımlılık eklemeyi unutmayın. Daha fazla bilgi için Azure [Kaynak Yöneticisi Şablonları makalesinde bağımlılıkları tanımlama makalesine](../azure-resource-manager/templates/define-resource-dependency.md) bakın.
 
-### <a name="role-assignment-resource-information"></a>Rol atama kaynak bilgileri
-Rol atama kaynağının türü ve adı belirtmesi gerekir.
+### <a name="role-assignment-resource-information"></a>Rol Atama Kaynak Bilgileri
+Rol atama kaynağının türü ve adını belirtmesi gerekir.
 
-İlk olarak, kaynak türü kaynak grubu için olduğu gibi `Microsoft.Authorization/roleAssignments` değildir.  Bunun yerine, kaynak türü `{provider-namespace}/{resource-type}/providers/roleAssignments`desenler izler. Bu durumda, kaynak türü `Microsoft.DevTestLab/labs/providers/roleAssignments`olacaktır.
+Unutulmaması gereken ilk şey, kaynak için tür `Microsoft.Authorization/roleAssignments` bir kaynak grubu için olduğu gibi değildir.  Bunun yerine, kaynak türü `{provider-namespace}/{resource-type}/providers/roleAssignments`deseni izler. Bu durumda, kaynak türü `Microsoft.DevTestLab/labs/providers/roleAssignments`.
 
-Rol atama adının kendisinin genel olarak benzersiz olması gerekir.  Atamanın adı `{labName}/Microsoft.Authorization/{newGuid}`modelini kullanır. `newGuid`, şablon için bir parametre değeridir. Rol atama adının benzersiz olmasını sağlar. GUID 'Leri oluşturmaya yönelik şablon işlevleri olmadığından, herhangi bir GUID Oluşturucu aracı kullanarak kendiniz bir GUID oluşturmanız gerekir.  
+Rol atama adı kendisi küresel benzersiz olması gerekir.  Atamanın adı deseni `{labName}/Microsoft.Authorization/{newGuid}`kullanır. Şablon `newGuid` için bir parametre değeridir. Rol atama adının benzersiz olmasını sağlar. GUID'ler oluşturmak için hiçbir şablon işlevleri olduğundan, herhangi bir GUID jeneratör aracı kullanarak kendiniz bir GUID oluşturmanız gerekir.  
 
-Şablonda, rol atamasının adı `fullDevTestLabUserRoleName` değişkeni tarafından tanımlanır. Şablondaki tam satır:
+Şablonda, rol atamasının adı `fullDevTestLabUserRoleName` değişken tarafından tanımlanır. Şablondan tam satır:
 
 ```json
 "fullDevTestLabUserRoleName": "[concat(parameters('labName'), '/Microsoft.Authorization/', parameters('roleAssignmentGuid'))]"
 ```
 
 
-### <a name="role-assignment-resource-properties"></a>Rol atama kaynağı özellikleri
-Rol atamasının kendisi üç özelliği tanımlar. `roleDefinitionId`, `principalId`ve `scope`gerekir.
+### <a name="role-assignment-resource-properties"></a>Rol Atama Kaynak Özellikleri
+Rol ataması kendisi üç özelliği tanımlar. İhtiyacı `roleDefinitionId`var. `principalId` `scope`
 
-### <a name="role-definition"></a>Rol tanımı
-Rol tanımı KIMLIĞI, mevcut rol tanımının dize tanımlayıcısıdır. Rol KIMLIĞI `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`formundadır. 
+### <a name="role-definition"></a>Rol Tanımı
+Rol tanımı kimliği, varolan rol tanımının dize tanımlayıcısIdır. Rol kimliği şeklindedir. `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}` 
 
-Abonelik KIMLIĞI `subscription().subscriptionId` şablonu işlevi kullanılarak elde edilir.  
+Abonelik kimliği şablon işlevi `subscription().subscriptionId` kullanılarak elde edilir.  
 
-`DevTest Labs User` yerleşik rolünün rol tanımını almanız gerekir. [DevTest Labs Kullanıcı](../role-based-access-control/built-in-roles.md#devtest-labs-user) rolü için GUID 'yi almak üzere REST API veya [Get-azroledefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) cmdlet 'ini kullanarak [rol atamalarını](/rest/api/authorization/roleassignments) kullanabilirsiniz.
+Yerleşik rol için rol tanımını `DevTest Labs User` almanız gerekir. [DevTest Labs Kullanıcı](../role-based-access-control/built-in-roles.md#devtest-labs-user) rolü için GUID almak için, [Rol Atamaları REST API](/rest/api/authorization/roleassignments) veya [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) cmdlet kullanabilirsiniz.
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
 ```
 
-Rol KIMLIĞI, değişkenler bölümünde ve `devTestLabUserRoleId`adlı olarak tanımlanır. Şablonda, rol KIMLIĞI şu şekilde ayarlanır: 111111111-0000-0000-11111111111111111. 
+Rol kimliği değişkenler bölümünde tanımlanır ve `devTestLabUserRoleId`. Şablonda, rol kimliği ayarlanır: 11111111111-0000-1111111111111111. 
 
 ```json
 "devTestLabUserRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/111111111-0000-0000-11111111111111111')]",
 ```
 
-### <a name="principal-id"></a>Asıl KIMLIK
-Asıl KIMLIK, laboratuvara laboratuvar kullanıcısı olarak eklemek istediğiniz Active Directory Kullanıcı, Grup veya hizmet sorumlusunun nesne KIMLIĞIDIR. Şablon, `ObjectId` bir parametre olarak kullanır.
+### <a name="principal-id"></a>Asıl Kimlik
+Asıl kimlik, laboratuvar kullanıcısı olarak eklemek istediğiniz Active Directory kullanıcısının, grubunun veya hizmet yöneticisinin nesne kimliğidir. Şablon parametre `ObjectId` olarak kullanır.
 
-ObjectID 'yi [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup veya [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell cmdlet 'lerini kullanarak edinebilirsiniz. Bu cmdlet 'ler, gereken nesne KIMLIĞI olan bir ID özelliğine sahip Active Directory nesnelerinin tek veya bir listesini döndürür. Aşağıdaki örnek, bir şirketteki tek bir kullanıcının nesne KIMLIĞINI nasıl alınacağını gösterir.
+ObjectId'yi [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup veya [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell cmdlets' i kullanarak alabilirsiniz. Bu cmdlets, ihtiyacınız olan nesne kimliği olan bir kimlik özelliğine sahip Etkin Dizin nesnelerinin tek bir veya listesini döndürer. Aşağıdaki örnek, bir şirketteki tek bir kullanıcının nesne kimliğini nasıl alacağınızı gösterir.
 
 ```powershell
 $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 ```
 
-[Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)ve [Get-msolserviceprincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)dahil Azure Active Directory PowerShell cmdlet 'lerini de kullanabilirsiniz.
+[Ayrıca Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)ve [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)gibi Azure Active Directory PowerShell cmdlets'i de kullanabilirsiniz.
 
 ### <a name="scope"></a>Kapsam
-Kapsam, rol atamasının uygulanacağı kaynağı veya kaynak grubunu belirtir. Kaynaklar için kapsam şu biçimdedir: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`. Şablon, `resource-group-name` parçasını dolduracak şekilde `subscription-id` bölümünü ve `resourceGroup().name` şablonu işlevini dolduracak `subscription().subscriptionId` işlevini kullanır. Bu işlevlerin kullanılması, rol atadığınız laboratuvarın geçerli abonelikte ve şablon dağıtımının yapıldığı aynı kaynak grubunda mevcut olması gerektiği anlamına gelir. Son bölüm `resource-name`, laboratuvarın adıdır. Bu değer, bu örnekteki şablon parametresi aracılığıyla alınır. 
+Kapsam, rol atamasının uygulanması gereken kaynak veya kaynak grubunu belirtir. Kaynaklar için kapsam şu şekildedir: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`. `subscription().subscriptionId` Şablon, parçayı `subscription-id` doldurmak için işlevi `resourceGroup().name` ve `resource-group-name` parçayı doldurmak için şablon işlevini kullanır. Bu işlevleri kullanmak, bir rol atadığınız laboratuvarın geçerli abonelikte ve şablon dağıtımının yapıldığı aynı kaynak grubunda bulunması gerektiği anlamına gelir. Son bölüm, `resource-name`laboratuvarın adı. Bu değer, bu örnekte şablon parametresi üzerinden alınır. 
 
 Şablondaki rol kapsamı: 
 
@@ -142,7 +142,7 @@ Kapsam, rol atamasının uygulanacağı kaynağı veya kaynak grubunu belirtir. 
 ```
 
 ### <a name="deploying-the-template"></a>Şablon dağıtma
-İlk olarak, Kaynak Yöneticisi şablonundaki parametrelerin değerlerini geçiren bir parametre dosyası (örneğin: azuredeploy. Parameters. JSON) oluşturun. 
+İlk olarak, Kaynak Yöneticisi şablonundaki parametreleriçin değerleri geçen bir parametre dosyası (örneğin: azuredeploy.parameters.json) oluşturun. 
 
 ```json
 {
@@ -162,37 +162,37 @@ Kapsam, rol atamasının uygulanacağı kaynağı veya kaynak grubunu belirtir. 
 }
 ```
 
-Ardından, Kaynak Yöneticisi şablonunu dağıtmak için [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) PowerShell cmdlet 'ini kullanın. Aşağıdaki örnek komut, bir Kullanıcı, Grup veya hizmet sorumlusunu bir laboratuvar için DevTest Labs kullanıcı rolüne atar.
+Ardından, Kaynak Yöneticisi şablonuna dağıtmak için [Yeni AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) PowerShell cmdlet'ini kullanın. Aşağıdaki örnek komut, bir laboratuvar için DevTest Labs Kullanıcı rolüne bir kişi, grup veya bir hizmet müdürü atar.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
 ```
 
-Grup dağıtım adı ve rol atama GUID 'inin benzersiz olması gerektiğini unutmayın. Benzersiz olmayan bir GUID ile bir kaynak ataması dağıtmayı denerseniz, `RoleAssignmentUpdateNotPermitted` bir hata alırsınız.
+Grup dağıtım adı ve rol atamaGUID benzersiz olması gerektiğini unutmayın. Benzersiz olmayan bir GUID ile bir kaynak ataması dağıtmaya çalışırsanız, bir `RoleAssignmentUpdateNotPermitted` hata alırsınız.
 
-Laboratuvar için DevTest Labs kullanıcı rolüne birkaç Active Directory nesnesi eklemek için şablonu kullanmayı planlıyorsanız, PowerShell komutınızda dinamik nesneleri kullanmayı düşünün. Aşağıdaki örnek, kaynak grubu dağıtım adı ve rol atama GUID 'sini dinamik olarak belirtmek için [New-Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) cmdlet 'ini kullanır.
+Şablonu, laboratuvarınız için DevTest Labs Kullanıcı rolüne birkaç Active Directory nesnesi eklemek için birkaç kez kullanmayı planlıyorsanız, PowerShell komutunuzda dinamik nesneler kullanmayı düşünün. Aşağıdaki örnekte, kaynak grubu dağıtım adını ve rol atamaGUID'i dinamik olarak belirtmek için [Yeni Kılavuz](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) cmdlet kullanır.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
-Giriş bölümünde anlatıldığı gibi, laboratuvar için **DevTest Labs Kullanıcı** rolüne bir kullanıcı eklemek için yeni bir Azure rol ataması oluşturursunuz. PowerShell 'de, [New-Azurermroleatama](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) cmdlet 'ini kullanarak bunu yapabilirsiniz. Bu cmdlet 'in esneklik için izin verilen birçok isteğe bağlı parametresi vardır. `ObjectId`, `SigninName`veya `ServicePrincipalName`, izin verilen nesne olarak belirlenebilir.  
+Girişbölümünde anlatıldığı gibi, laboratuvar için **DevTest Labs Kullanıcı** rolüne bir kullanıcı eklemek için yeni bir Azure rol ataması oluşturursunuz. PowerShell'de, Bunu Yeni [AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) cmdlet'ini kullanarak yaparsınız. Bu cmdlet esneklik sağlamak için birçok isteğe bağlı parametrelere sahiptir. `ObjectId`, `SigninName`, `ServicePrincipalName` veya izin verilen nesne olarak belirtilebilir.  
 
-Aşağıda, belirtilen laboratuvardaki DevTest Labs kullanıcı rolüne bir Kullanıcı ekleyen örnek bir Azure PowerShell komutu verilmiştir.
+Burada, belirtilen laboratuvardaki DevTest Labs Kullanıcı rolüne bir kullanıcı ekleyen bir örnek Azure PowerShell komutu verem.
 
 ```powershell
 New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinitionName 'DevTest Labs User' -ResourceName '<Lab Name>' -ResourceGroupName '<Resource Group Name>' -ResourceType 'Microsoft.DevTestLab/labs'
 ```
 
-İzinlerin verildiği kaynağı belirtmek için `ResourceName`, `ResourceType`, `ResourceGroup` veya `scope` parametresi ile birlikte belirtilebilir. Hangi parametre bileşimleri kullanılırsa, cmdlet 'e Active Directory nesnesini (Kullanıcı, Grup veya hizmet sorumlusu), kapsamı (kaynak grubu veya kaynağı) ve rol tanımını benzersiz şekilde tanımlamak için yeterli bilgi sağlayın.
+İzinlerin verildiği kaynağı belirtmek `ResourceName`için , `ResourceType` `ResourceGroup` yani parametrenin `scope` bir birleşimi ile belirtilebilir. Parametrelerin birleşimi ne olursa olsun, cmdlet'e Active Directory nesnesini (kullanıcı, grup veya hizmet anasını), kapsamı (kaynak grubu veya kaynak) ve rol tanımını benzersiz olarak tanımlamak için yeterli bilgi sağlayın.
 
-## <a name="use-azure-command-line-interface-cli"></a>Azure komut satırı arabirimini (CLı) kullanma
-Azure CLı 'de laboratuvara bir laboratuvar kullanıcısı eklemek `az role assignment create` komutu kullanılarak yapılır. Azure CLı cmdlet 'leri hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak Azure kaynaklarına erişimi yönetme](../role-based-access-control/role-assignments-cli.md).
+## <a name="use-azure-command-line-interface-cli"></a>Azure Komut Satırı Arabirimi (CLI) kullanın
+Azure CLI'de, laboratuvara laboratuvar kullanıcısı eklemek `az role assignment create` komutu kullanarak yapılır. Azure CLI cmdlets hakkında daha fazla bilgi için Bkz. [RBAC ve Azure CLI kullanarak Azure kaynaklarına erişimi yönet.](../role-based-access-control/role-assignments-cli.md)
 
-Erişim izni verilen nesne `objectId`, `signInName`, `spn` parametreleriyle belirtilebilir. Nesnenin erişim izni verildiği laboratuvar `scope` URL 'si veya `resource-name`, `resource-type`ve `resource-group` parametrelerinin bir birleşimi ile tanımlanabilir.
+Erişim hakkı verilen nesne `objectId`, , `signInName` `spn` parametrelertarafından belirtilebilir. Nesneye erişim izni `scope` verilen laboratuvar, url veya `resource-name`, ve `resource-type` `resource-group` parametrelerin bir kombinasyonu ile tanımlanabilir.
 
-Aşağıdaki Azure CLı örneği, belirtilen laboratuvar için DevTest Labs kullanıcı rolüne nasıl bir kişi ekleneceğini gösterir.  
+Aşağıdaki Azure CLI örneği, belirtilen Laboratuvar için DevTest Labs Kullanıcı rolüne bir kişiyi nasıl ekleyeceğinizgöster.  
 
 ```azurecli
 az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
@@ -201,7 +201,7 @@ az role assignment create --roleName "DevTest Labs User" --signInName <email@com
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- [Azure CLı kullanarak DevTest Labs ile sanal makineler oluşturma ve yönetme](devtest-lab-vmcli.md)
-- [Azure PowerShell kullanarak DevTest Labs ile sanal makine oluşturma](devtest-lab-vm-powershell.md)
-- [Azure DevTest Labs sanal makineleri başlatmak ve durdurmak için komut satırı araçlarını kullanma](use-command-line-start-stop-virtual-machines.md)
+- [Azure CLI'yi kullanarak DevTest Labs ile sanal makineler oluşturun ve yönetin](devtest-lab-vmcli.md)
+- [Azure PowerShell'i kullanarak DevTest Labs ile sanal bir makine oluşturun](devtest-lab-vm-powershell.md)
+- [Azure DevTest Labs sanal makinelerini başlatmak ve durdurmak için komut satırı araçlarını kullanın](use-command-line-start-stop-virtual-machines.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Yeniden Dash ile Azure Veri Gezgini görselleştirme
-description: Bu makalede, Azure Veri Gezgini 'daki verileri Redash yerel Bağlayıcısı ile görselleştirmeyi öğreneceksiniz.
+title: Azure Veri Gezgini'ni Redash ile görselleştirin
+description: Bu makalede, Redash yerel bağlayıcısıyla Azure Veri Gezgini'ndeki verileri nasıl görselleştirdiğinizi öğreneceksiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,90 +8,90 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773951"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Azure Veri Gezgini verileri yeniden tireyle görselleştirin
+# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Redash'te Azure Veri Gezgini'nden verileri görselleştirin
 
-[Redash](https://redash.io/) , veri kaynaklarınızı bağlar ve sorgular, verileri görselleştirmek ve eşlerle paylaşmak için panolar oluşturur. Bu makalede, Azure Veri Gezgini 'i yeniden Dash için bir veri kaynağı olarak ayarlamayı ve sonra verileri görselleştirmeyi öğreneceksiniz.
+[Redash,](https://redash.io/) veri kaynaklarınızı bağlar ve sorgular, verileri görselleştirmek ve eşlerle paylaşmak için panolar oluşturur. Bu makalede, Azure Veri Gezgini'ni Redash için bir veri kaynağı olarak nasıl ayarlayabileceğinizi ve ardından verileri görselleştirdiğinizi öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-1. [Küme ve veritabanı oluşturma](create-cluster-database-portal.md).
-1. [Azure Veri Gezgini 'de örnek verileri içe](ingest-sample-data.md)alma bölümünde açıklandığı gibi verileri alma. Daha fazla alma seçeneği için bkz. alma [genel bakış](ingest-data-overview.md).
+1. [Küme ve veritabanı oluşturun.](create-cluster-database-portal.md)
+1. Örnek verileri Azure [Veri Gezgini'ne sindirirken](ingest-sample-data.md)açıklandığı gibi verileri alın. Daha fazla yutma seçeneği için, [yutma genel bakış](ingest-data-overview.md)bakın.
 
 [!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
-## <a name="create-azure-data-explorer-connector-in-redash"></a>Yeniden Dash 'de Azure Veri Gezgini Bağlayıcısı oluşturma 
+## <a name="create-azure-data-explorer-connector-in-redash"></a>Redash'te Azure Veri Gezgini Bağlayıcısı Oluşturma 
 
-1. [Yeniden Dash](https://www.redash.io/)için oturum açın. Hesap **oluşturmak için başlayın** ' ı seçin.
-1. **Haydi başlayalım**' ın altında **bir veri kaynağı bağla**' yı seçin.
+1. [Redash'e](https://www.redash.io/)kaydol. Hesap oluşturmak için **Başlat'ı** seçin.
+1. **Başlayalım**altında , Bir **Veri Kaynağı Bağla'yı**seçin.
 
-    ![Veri kaynağını bağlama](media/redash/connect-data-source.png)
+    ![Bir veri kaynağını bağlayın](media/redash/connect-data-source.png)
 
-1. **Yeni veri kaynağı oluştur** penceresinde **Azure Veri Gezgini (kusto)** öğesini seçin ve ardından **Oluştur**' u seçin. 
+1. **Yeni Veri Kaynağı Oluştur** penceresinde Azure Veri **Gezgini 'ni (Kusto)** seçin ve ardından **Oluştur'u**seçin. 
 
     ![Azure Veri Gezgini veri kaynağını seçin](media/redash/select-adx-data-source.png)
 
-1. **Azure Veri Gezgini (kusto)** penceresinde, aşağıdaki formu doldurun ve **Oluştur**' u seçin.
+1. **Azure Veri Gezgini (Kusto)** penceresinde, aşağıdaki formu doldurun ve **Oluştur'u**seçin.
 
-    ![Azure Veri Gezgini (kusto) ayarları penceresi](media/redash/adx-settings-window.png)
+    ![Azure Veri Gezgini (Kusto) ayarları penceresi](media/redash/adx-settings-window.png)
 
-1. **Ayarlar** penceresinde, **Azure Veri Gezgini (kusto)** veri kaynağı bağlantınızı test etmek Için **Kaydet** ve **Bağlantıyı Sına** ' yı seçin.
+1. **Ayarlar** penceresinde, **Azure Veri Gezgini (Kusto)** veri kaynağı bağlantınızı test etmek için Bağlantıyı **Kaydet** ve **Test Et'i** seçin.
 
-## <a name="create-queries-in-redash"></a>Redash 'te sorgu oluşturma
+## <a name="create-queries-in-redash"></a>Redash'te sorgu oluşturma
 
-1. Redash 'in sol tarafında > **sorgu** **Oluştur** ' u seçin. **Yeni sorgu** ' ya tıklayın ve sorguyu yeniden adlandırın.
+1. Redash'in sol üst kısmında**Sorgu** **Oluştur'u** > seçin. Yeni **Sorgu'yu** tıklatın ve sorguyu yeniden adlandırın.
 
-    ![Sorgu oluştur](media/redash/create-query.png)
+    ![Sorgu oluşturma](media/redash/create-query.png)
 
-1. Sorgunuzu üst düzen bölmesine yazın ve **Kaydet** ve **Yürüt**' ü seçin. Daha sonra kullanmak üzere sorguyu yayımlamak için **Yayımla** ' yı seçin.
+1. Sorgunuzu üst düzenleme bölmesine yazın ve **Kaydet** ve Yürüt'ün'u seçin. **Execute** Sorgunun ileride yayımlanmasını sağlamak için **Yayımla'yı** seçin.
 
-    ![Sorguyu Kaydet ve Yürüt](media/redash/save-and-execute-query.png)
+    ![Sorguyı kaydetme ve yürütme](media/redash/save-and-execute-query.png)
 
-    Sol bölmede, açılan menüden veri kaynağı bağlantı adı 'nı (akışımızda**GitHub Bağlayıcısı** ) ve seçili veritabanındaki tabloları görebilirsiniz. 
+    Sol bölmede, açılan menüde veri kaynağı bağlantı adını (akışımızdaki**Github bağlayıcısı)** ve seçili veritabanındaki tabloları görebilirsiniz. 
 
-1. Sorgu sonuçlarını alt Ortadaki bölmede görüntüleyin. **Yeni görselleştirme** düğmesini seçerek sorgu ile birlikte çalışmak için bir görselleştirme oluşturun.
+1. Sorgu sonuçlarını alt merkezi bölmede görüntüleyin. **Yeni Görselleştirme** düğmesini seçerek sorguyu yapmak için bir görselleştirme oluşturun.
 
     ![Yeni görselleştirme](media/redash/new-visualization.png)
 
-1. Görselleştirme ekranında, **görselleştirme türünü** ve **X sütunu** ve **Y sütunu**gibi ilgili alanları seçin. Görselleştirmeyi **kaydedin** .
+1. Görselleştirme ekranında, **Görselleştirme Türünü** ve **X Sütunu** ve Y **Sütunu**gibi ilgili alanları seçin. Görselleştirmeyi **kaydedin.**
 
-    ![Görselleştirme yapılandırma ve kaydetme](media/redash/configure-visualization.png)
+    ![Görselleştirmeyi yapılandırma ve kaydetme](media/redash/configure-visualization.png)
 
 ### <a name="create-a-query-using-a-parameter"></a>Parametre kullanarak sorgu oluşturma
 
-1. Yeni bir sorgu oluşturmak için > **sorgusu** **oluşturun** . {{}} küme ayraçları kullanarak buna bir parametre ekleyin. **Parametre Ekle** penceresini açmak için **{{}}** öğesini seçin. Ayrıca, mevcut bir parametrenin özniteliklerini değiştirmek ve **< parameter_name >** penceresini açmak için *Ayarlar simgesini* de seçebilirsiniz. 
+1. **Create** > Yeni bir sorgu oluşturmak için**Sorgu'u** oluşturun. { }{}kıvırcık parantezkullanarak bir parametre ekleyin. **Parametre Ekle** penceresini açmak için **{}{ }'u** seçin. Ayrıca, varolan bir parametrenin özniteliklerini değiştirmek ve **<parameter_name>** penceresini açmak için ayarlar *simgesini* de seçebilirsiniz. 
 
-    ![parametre Ekle](media/redash/insert-parameter.png)
+    ![parametre ekle](media/redash/insert-parameter.png)
 
-1. Parametrinizi adlandırın. **Tür**seçin: açılan menüden **sorgu tabanlı açılan liste** . **Tamam**’ı seçin
+1. Parametrenizi adlandırın. **Tür :** Açılan menüden Sorgu Tabanlı **Açılır Liste'yi** seçin. **Tamam'ı** seçin
 
-    ![Sorgu tabanlı açılan liste](media/redash/query-based-dropdown-list.png)
+    ![sorgu tabanlı açılır liste](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > Sorgu birden çok değer kullanıyor, bu nedenle `| where Type in ((split('{{Type}}', ',')))`aşağıdaki sözdizimini eklemeniz gerekir. Daha fazla bilgi için bkz. [işleci](/azure/kusto/query/inoperator). Bu, [redash uygulamasında birden çok sorgu parametresi seçeneklerine](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io) neden olur
+    > Sorgu birden çok değer kullanır, bu nedenle `| where Type in ((split('{{Type}}', ',')))`aşağıdaki sözdizimini eklemeniz gerekir. Daha fazla bilgi için [operatöre](/azure/kusto/query/inoperator)bakın. Bu, [redash uygulamasında birden çok sorgu parametresi seçeneğiyle](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io) sonuçlanır
 
-## <a name="create-a-dashboard-in-redash"></a>Yeniden Dash içinde pano oluşturma
+## <a name="create-a-dashboard-in-redash"></a>Redash'te pano oluşturma
 
-1. Panonuzu oluşturmak için > **Pano** **oluşturun** . Alternatif olarak, var olan panoyu, **panoları** seçin > listeden bir pano seçin.
+1. Panonuzu oluşturmak için**Pano** **Oluşturun.** >  Alternatif olarak, varolan panoyu, **Panolar** > listeden bir pano seçin.
 
-    ![Pano Oluştur](media/redash/create-dashboard.png)
+    ![Pano oluşturma](media/redash/create-dashboard.png)
 
-1. **Yeni Pano** penceresinde panonuzu adlandırın ve **Kaydet**' i seçin. **< Dashboard_name >** penceresinde, yeni pencere öğesi oluşturmak Için pencere **öğesi Ekle** ' yi seçin. 
+1. **Yeni Pano** penceresinde, panonuzu adlandırın ve **Kaydet'i**seçin. >penceresinde **Dashboard_name<,** yeni bir widget oluşturmak için **Widget Ekle'yi** seçin. 
 
-1. **Pencere öğesi Ekle** penceresinde sorgu adı ' nı, **görselleştirme**ve **Parametreler**' i seçin. **Panoya Ekle** ' yi seçin
+1. **Widget Ekle** penceresinde sorgu adını, **Görselleştirmeyi ve** **Parametreleri**seçin. **Panoya Ekle'yi** seçin
 
-   ![Görselleştirmeler seçin ve panoya ekleyin](media/redash/add-widget-window.png)
+   ![Görselleştirmeleri seçin ve panoya ekleyin](media/redash/add-widget-window.png)
 
-1. Pano oluşturmayı tamamladıktan sonra **Düzenle** ' yi seçin.
+1. Pano oluşturmayı tamamlamak için **Bitti Düzenlemesi'ni** seçin.
 
-1.  Pano düzenleme modunda, daha önce tanımlanan **tür** parametresini kullanmak Için **Pano düzeyi filtrelerini kullan** ' ı seçin.
+1.  Pano edit modunda, önceden tanımlanan **Tür** parametresini kullanmak için **Pano Düzeyi Filtrelerini Kullan'ı** seçin.
 
-    ![Pano oluşturmayı tamamen doldurun](media/redash/complete-dashboard.png)
+    ![Pano oluşturmayı tamamlayın](media/redash/complete-dashboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

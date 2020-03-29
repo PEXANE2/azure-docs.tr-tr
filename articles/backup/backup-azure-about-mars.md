@@ -1,66 +1,66 @@
 ---
-title: MARS Aracısı hakkında
-description: MARS aracısının yedekleme senaryolarını nasıl desteklediğini öğrenin
+title: MARS Ajanı Hakkında
+description: MARS Aracısı'nın yedekleme senaryolarını nasıl desteklediğini öğrenin
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673287"
 ---
-# <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı hakkında
+# <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) aracısı hakkında
 
-Bu makalede, Azure Backup hizmetinin dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı nasıl kullandığı açıklanır.
+Bu makalede, Azure Yedekleme hizmetinin dosyaları, klasörleri ve birim durumunu şirket içi bir bilgisayardan Azure'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını nasıl kullandığı açıklanmaktadır.
 
-MARS Aracısı aşağıdaki yedekleme senaryolarını destekler:
+MARS aracısı aşağıdaki yedekleme senaryolarını destekler:
 
 ![MARS yedekleme senaryoları](./media/backup-try-azure-backup-in-10-mins/backup-scenarios.png)
 
-- **Dosyalar ve klasörler**: Windows dosya ve klasörlerini seçmeli olarak koruyun.
-- **Birim düzeyi**: makinenizin bir Windows biriminin tamamını koruyun.
-- **Sistem düzeyi**: tüm Windows sistem durumunu koruyun.
+- **Dosya ve Klasörler**: Windows dosya ve klasörlerini seçerek koruyun.
+- **Ses Düzeyi**: Makinenizin tüm Windows hacmini koruyun.
+- **Sistem Düzeyi**: Tüm Windows sistem durumunu koruyun.
 
-MARS Aracısı aşağıdaki geri yükleme senaryolarını destekler:
+MARS aracısı aşağıdaki geri yükleme senaryolarını destekler:
 
 ![MARS kurtarma senaryoları](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
 
-- **Aynı sunucu**: yedeklemenin ilk olarak oluşturulduğu sunucu.
-  - **Dosyalar ve klasörler**: geri yüklemek istediğiniz tek tek dosyaları ve klasörleri seçin.
-  - **Birim düzeyi**: geri yüklemek istediğiniz birim ve kurtarma noktasını seçin ve aynı konuma veya aynı makinede alternatif bir konuma geri yükleyin.  Mevcut dosyaların bir kopyasını oluşturun, varolan dosyaların üzerine yazın veya var olan dosyaları kurtarmayı atlayın.
-  - **Sistem düzeyi**: belirtilen konumdaki aynı makineye geri yüklemek için sistem durumu ve kurtarma noktasını seçin.
+- **Aynı Sunucu**: Yedeklemenin ilk oluşturulduğu sunucu.
+  - **Dosya ve Klasörler**: Geri yüklemek istediğiniz tek tek dosya ve klasörleri seçin.
+  - **Ses Düzeyi**: Geri yüklemek istediğiniz ses ve kurtarma noktasını seçin ve ardından aynı konuma veya aynı makinede alternatif bir konuma geri yükleyin.  Varolan dosyaların bir kopyasını oluşturun, varolan dosyaların üzerine yazın veya varolan dosyaları kurtarmayı atlayın.
+  - **Sistem Düzeyi**: Belirli bir konumda aynı makineye geri yüklemek için sistem durumunu ve kurtarma noktasını seçin.
 
-- **Alternatif sunucu**: yedeklemenin alındığı sunucudan başka bir sunucu.
-  - **Dosyalar ve klasörler**: kurtarma noktasını bir hedef makineye geri yüklemek istediğiniz tek tek dosyaları ve klasörleri seçin.
-  - **Birim düzeyi**: başka bir konuma geri yüklemek istediğiniz birimi ve kurtarma noktasını seçin. Mevcut dosyaların bir kopyasını oluşturun, varolan dosyaların üzerine yazın veya var olan dosyaları kurtarmayı atlayın.
-  - **Sistem düzeyi**: alternatif bir makineye sistem durumu dosyası olarak geri yüklemek için sistem durumu ve kurtarma noktasını seçin.
+- **Alternatif Sunucu**: Yedeklemenin alındığı sunucu dışında bir sunucu.
+  - **Dosya ve Klasörler**: Bir hedef makineye geri yüklemek istediğiniz kurtarma noktası tek tek dosya ve klasörleri seçin.
+  - **Birim Düzeyi**: Başka bir konuma geri yüklemek istediğiniz birim ve kurtarma noktasını seçin. Varolan dosyaların bir kopyasını oluşturun, varolan dosyaların üzerine yazın veya varolan dosyaları kurtarmayı atlayın.
+  - **Sistem Düzeyi**: Sistem Durumu dosyası olarak alternatif bir makineye geri yüklemek için sistem durumunu ve kurtarma noktasını seçin.
 
 ## <a name="backup-process"></a>Yedekleme işlemi
 
-1. Azure portal, bir [Kurtarma Hizmetleri Kasası](install-mars-agent.md#create-a-recovery-services-vault)oluşturun ve yedekleme hedeflerinden dosyalar, klasörler ve sistem durumu ' nu seçin.
-2. [Kurtarma Hizmetleri Kasası kimlik bilgilerini ve Aracı yükleyicisini](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) şirket içi bir makineye indirin.
+1. Azure portalından, Bir [Kurtarma Hizmetleri kasası](install-mars-agent.md#create-a-recovery-services-vault)oluşturun ve Yedekleme hedeflerinden dosyaları, klasörleri ve sistem durumunu seçin.
+2. [Kurtarma Hizmetleri kasa kimlik bilgilerini ve aracı yükleyicisini](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) şirket içi makineye indirin.
 
-    Yedekleme seçeneğini belirleyip şirket içi makineyi korumak için dosyalar, klasörler ve sistem durumu ' nu seçin ve ardından MARS aracısını indirin.
+    Yedekleme seçeneğini seçerek şirket içi makineyi korumak için dosyaları, klasörleri ve sistem durumunu seçin ve ardından MARS aracısını indirin.
 
-3. Altyapıyı hazırlama:
+3. Altyapıyı hazırlayın:
 
-    a. [Aracıyı yüklemek](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)için yükleyiciyi çalıştırın.
+    a. Aracıyı yüklemek için [yükleyiciyi çalıştırın.](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)
 
-    b. Makineyi kurtarma hizmetleri kasasına kaydetmek için, indirilen kasa kimlik bilgilerinizi kullanın.
-4. İstemcideki Aracı konsolundan [yedeklemeyi yapılandırın](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy). Korumaya başlamak için yedekleme verilerinizin bekletme ilkesini belirtin.
+    b. Makineyi Kurtarma Hizmetleri kasasına kaydetmek için indirilen kasa kimlik bilgilerinizi kullanın.
+4. İstemci üzerindeki aracı konsolundan [yedeklemeyi yapılandırın.](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) Yedekleme verilerinizin saklama ilkesini korumaya başlamak için belirtin.
 
-![Azure Backup aracı diyagramı](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+![Azure Yedekleme aracı diyagramı](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
 ### <a name="additional-scenarios"></a>İlave senaryolar
 
-- **Azure sanal makineler 'de belirli dosya ve klasörleri**yedekleme: Azure sanal makinelerini (VM) yedeklemeye yönelik BIRINCIL Yöntem VM 'de bir Azure Backup uzantısı kullanmaktır. Uzantı tüm VM 'yi yedekler. Bir VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, Azure VM 'lerine MARS Aracısı 'nı yükleyebilirsiniz. Daha fazla bilgi için bkz. [mimari: yerleşik Azure VM yedeklemesi](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
+- **Azure sanal makineleri içindeki belirli dosya ve klasörleri yedekleme**: Azure sanal makinelerini (VM' ler) yedeklemenin birincil yöntemi, VM'de Bir Azure Yedekleme uzantısı kullanmaktır. Uzantı tüm VM'yi yedekler. VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, MARS aracısını Azure VM'lerine yükleyebilirsiniz. Daha fazla bilgi için [bkz: Mimari: Yerleşik Azure VM](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup)Yedeklemesi.
 
-- **Çevrimdışı dengeli dağıtım**: Azure 'a verilerin ilk tam yedeklemeleri genellikle büyük miktarda veriyi aktarır ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca Delta veya artımlı, veri miktarını aktarır. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup *çevrimdışı dağıtım*sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir. Daha fazla bilgi için bkz. [Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup](offline-backup-azure-data-box.md).
+- **Çevrimdışı tohumlama**: Verilerin Azure'a ilk tam yedeklemeleri genellikle büyük miktarda veri aktarımı sağlar ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca delta veya artımlı veri miktarını aktarıyor. Azure Yedekleme ilk yedeklemeleri sıkıştırır. Azure Yedekleme, *çevrimdışı tohumlama*işlemi sayesinde sıkıştırılmış ilk yedekleme verilerini Azure'a çevrimdışı yüklemek için diskler kullanabilir. Daha fazla bilgi için Azure [Veri Kutusu'ni kullanarak Azure Yedekleme çevrimdışı yedekleme'ye](offline-backup-azure-data-box.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[MARS Aracısı destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
+[MARS aracısı destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
 
-[MARS Aracısı SSS](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)
+[MARS aracısı SSS](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)

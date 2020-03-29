@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services ilkeleri akış | Microsoft Docs
-description: Bu makalede, akış ilkeleri nelerdir ve Azure Media Services tarafından nasıl kullanıldıkları bir açıklama sağlar.
+title: Azure Medya Hizmetlerinde Akış İlkeleri | Microsoft Dokümanlar
+description: Bu makalede, Akış İlkeleri'nin ne olduğu ve Azure Medya Hizmetleri tarafından nasıl kullanıldığı hakkında bir açıklama yapılır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66392919"
 ---
 # <a name="streaming-policies"></a>Akış İlkeleri
 
-Azure Media Services v3 içinde [akış ilkeleri](https://docs.microsoft.com/rest/api/media/streamingpolicies) , akış protokolleri ve şifreleme seçeneklerini tanımlamanıza olanak sağlar, [akış bulucuları](streaming-locators-concept.md). Media Services v3, böylece bunları doğrudan deneme veya üretim için kullanabileceğiniz bazı önceden tanımlanmış akış ilkeleri sağlar. 
+Azure Media Services v3'te [Akış İlkeleri,](https://docs.microsoft.com/rest/api/media/streamingpolicies) [Akış Konum belirleyicileriniz](streaming-locators-concept.md)için akış protokolleri ve şifreleme seçeneklerini tanımlamanıza olanak tanır. Medya Hizmetleri v3, bunları doğrudan deneme veya üretim için kullanabilmeniz için bazı önceden tanımlanmış Akış İlkeleri sağlar. 
 
-Şu anda kullanılabilir akış ilkeleri önceden tanımlanmış:<br/>
+Şu anda kullanılabilir önceden tanımlanmış Akış İlkeleri:<br/>
 * 'Predefined_DownloadOnly'
 * 'Predefined_ClearStreamingOnly'
 * 'Predefined_DownloadAndClearStreaming'
@@ -30,11 +30,11 @@ Azure Media Services v3 içinde [akış ilkeleri](https://docs.microsoft.com/res
 * 'Predefined_MultiDrmCencStreaming' 
 * 'Predefined_MultiDrmStreaming'
 
-Aşağıdaki "karar ağacı" senaryonuz için önceden tanımlanmış bir akış ilkesini seçmenize yardımcı olur.
+Aşağıdaki "Karar ağacı" senaryonuz için önceden tanımlanmış bir Akış İlkesi seçmenize yardımcı olur.
 
 > [!IMPORTANT]
-> * Özelliklerini **akış ilkeleri** DateTime türü her zaman UTC biçiminde olan.
-> * Medya hizmeti hesabınız için sınırlı sayıda ilkeleri tasarlayın ve aynı seçeneklere gerektiğinde bunları yeniden için akış Bulucular gerekir. Daha fazla bilgi için [kotaları ve sınırlamaları](limits-quotas-constraints.md).
+> * Datetime türündeki **Akış İlkeleri'nin** özellikleri her zaman UTC biçimindedir.
+> * Medya Hizmeti hesabınız için sınırlı bir dizi ilke tasarlamalı ve aynı seçenekler gerektiğinde Akış Lı Konum belirleyicileriniz için yeniden kullanmalısınız. Daha fazla bilgi için [Kotalar ve sınırlamalar](limits-quotas-constraints.md)bölümüne bakın.
 
 ## <a name="decision-tree"></a>Karar ağacı
 
@@ -42,13 +42,13 @@ Resmi tam boyutlu görüntülemek için tıklayın.
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-İçeriğinizi şifreleme oluşturmak gerekirse bir [içerik anahtarı ilke](content-key-policy-concept.md), **içerik anahtarı ilke** Temizle akış veya yükleme için gerekli değildir. 
+İçeriğinizi şifrelerseniz, bir [İçerik Anahtarı İlkesi](content-key-policy-concept.md)oluşturmanız gerekir, net akış veya indirme için **İçerik Anahtarı İlkesi** gerekmez. 
 
-(Örneğin, farklı protokollere belirtmek istiyorsanız bir özel anahtar dağıtımı hizmetiyle kullanmanız gerekir veya bir Temizle ses kaydı kullanmak ihtiyacınız varsa) özel gereksinimleriniz varsa [oluşturma](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) akış özel bir ilke. 
+Özel gereksinimleriniz varsa (örneğin, farklı protokoller belirtmek istiyorsanız, özel bir anahtar teslim hizmeti kullanmanız veya net bir ses parçası kullanmanız gerekiyorsa), özel bir Akış İlkesi [oluşturabilirsiniz.](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) 
 
-## <a name="get-a-streaming-policy-definition"></a>Bir akış ilke tanımı Al  
+## <a name="get-a-streaming-policy-definition"></a>Akış İlkesi tanımı alın  
 
-Akış bir ilke tanımı'nı görmek istiyorsanız, kullanın [alma](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) ve ilke adı belirtin. Örneğin:
+Akış İlkesi tanımını görmek [istiyorsanız, Al'ı](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) kullanın ve ilke adını belirtin. Örnek:
 
 ### <a name="rest"></a>REST
 
@@ -79,12 +79,12 @@ Yanıt:
 }
 ```
 
-## <a name="filtering-ordering-paging"></a>Filtreleme, sıralama, sayfalama
+## <a name="filtering-ordering-paging"></a>Filtreleme, sipariş etme, sayfalama
 
-Bkz: [filtreleme, sıralama, Media Services varlıklarının sayfalandırma](entities-overview.md).
+Bkz. [Medya Hizmetleri varlıklarınıfiltreleme, sipariş etme, sayfalama.](entities-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Bir dosyayı akışa alma](stream-files-dotnet-quickstart.md)
-* [AES-128 dinamik şifreleme ve anahtar teslim hizmetini kullanma](protect-with-aes128.md)
-* [DRM dinamik şifreleme ve lisans teslimat hizmeti kullanın](protect-with-drm.md)
+* [AES-128 dinamik şifreleme ve anahtar dağıtım hizmetini kullanma](protect-with-aes128.md)
+* [DRM dinamik şifreleme ve lisans teslim hizmetini kullanma](protect-with-drm.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Agent olmadan yerel Windows parolasını sıfırlama | Microsoft Docs
-description: Azure Konuk Aracısı yüklü olmadığında veya bir VM 'de çalışmadığı zaman yerel bir Windows Kullanıcı hesabının parolasını sıfırlama
+title: Azure aracısı olmadan yerel bir Windows parolası sıfırlama | Microsoft Dokümanlar
+description: Azure konuk aracı sıyüklenmediğinde veya bir VM'de çalışmıyorsa yerel bir Windows kullanıcı hesabının parolasını sıfırlama
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -14,43 +14,43 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: becbf88aeda164f7d916cbc1f1ace89262cc1a3f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921632"
 ---
-# <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure VM için yerel Windows parolasını çevrimdışına sıfırlama
-Azure 'da bir sanal makinenin yerel Windows parolasını [Azure Portal veya](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Azure Konuk aracısının yüklü olduğu Azure PowerShell ' i kullanarak sıfırlayabilirsiniz. Bu yöntem, bir Azure VM için parola sıfırlamanın birincil yoludur. Azure Konuk Aracısı yanıt vermeyen veya özel bir görüntü yükledikten sonra yüklenemediğinden sorunlarla karşılaşırsanız, bir Windows parolasını el ile sıfırlayabilirsiniz. Bu makalede, kaynak işletim sistemi sanal diskini başka bir sanal makineye ekleyerek yerel hesap parolasının nasıl sıfırlanacağı açıklanır. Bu makalede açıklanan adımlar Windows etki alanı denetleyicileri için geçerlidir. 
+# <a name="reset-local-windows-password-for-azure-vm-offline"></a>Çevrimdışı Azure VM için yerel Windows parolasını sıfırlama
+Azure konuk aracısının yüklenmesi koşuluyla [Azure portalı veya Azure PowerShell'i](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kullanarak Azure'daki bir VM'nin yerel Windows parolasını sıfırlayabilirsiniz. Bu yöntem, Bir Azure VM için parolasıfırlamanın birincil yoludur. Azure konuk aracısının yanıt vermemesiyle ilgili sorunlarla karşılaşırsanız veya özel bir resim yükledikten sonra yüklemezseniz, windows parolasını el ile sıfırlayabilirsiniz. Bu makalede, kaynak işletim sistemi sanal diskini başka bir VM'ye ekleyerek yerel hesap parolasını nasıl sıfırlaylayacağız ayrıntıları. Bu makalede açıklanan adımlar Windows etki alanı denetleyicileri için geçerli değildir. 
 
 > [!WARNING]
-> Bu işlemi yalnızca son çare olarak kullanın. [Azure Portal veya önce Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kullanarak bir parolayı sıfırlamayı deneyin.
+> Bu işlemi yalnızca son çare olarak kullanın. Önce [Azure portalını veya Azure PowerShell'i](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kullanarak parolayı sıfırlamayı deneyin.
 
 ## <a name="overview-of-the-process"></a>İşleme genel bakış
-Azure Konuk aracısına erişim olmadığında Azure 'da bir Windows sanal makinesi için yerel parola sıfırlama işlemi gerçekleştirmeye yönelik temel adımlar aşağıdaki gibidir:
+Azure konuk aracısına erişim olmadığında Azure'da bir Windows VM için yerel parola sıfırlama gerçekleştirmenin temel adımları aşağıdaki gibidir:
 
-1. Etkilenen VM 'yi durdurun.
-1. VM 'nin işletim sistemi diski için bir anlık görüntü oluşturun.
+1. Etkilenen VM'yi durdurun.
+1. VM işletim sistemi diski için anlık görüntü oluşturun.
 1. Anlık görüntüden işletim sistemi diskinin bir kopyasını oluşturun.
-1. Kopyalanmış işletim sistemi diskini başka bir Windows sanal makinesine ekleyip bağlayın ve ardından diskte bazı yapılandırma dosyaları oluşturun. Dosyalar, parolayı sıfırlamanıza yardımcı olur.
-1. Kopyalanmış işletim sistemi diskini sorun giderme VM 'sinden çıkarın ve ayırın.
-1. Etkilenen VM 'nin işletim sistemi diskini değiştirin.
+1. Kopyalanan işletim sistemi diskini başka bir Windows VM'ye takın ve bağlayın, ardından diskte bazı config dosyaları oluşturun. Dosyalar parolayı sıfırlamanıza yardımcı olur.
+1. Kopyalanan işletim sistemi diskini sorun giderme VM'den sökün ve ayırın.
+1. Os diskini etkilenen VM ile değiştirin.
 
 ## <a name="detailed-steps-for-the-vm-with-resource-manager-deployment"></a>Kaynak Yöneticisi dağıtımı ile VM için ayrıntılı adımlar
 
 > [!NOTE]
-> Adımlar Windows etki alanı denetleyicileri için geçerlidir. Yalnızca tek başına sunucuda veya bir etki alanının üyesi olan bir sunucuda çalışmaktadır.
+> Adımlar Windows etki alanı denetleyicileri için geçerli değildir. Yalnızca bağımsız sunucuda veya etki alanının üyesi olan bir sunucuda çalışır.
 
-Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kullanarak her zaman bir parolayı sıfırlamayı deneyin. Başlamadan önce VM 'nizin yedeğine sahip olduğunuzdan emin olun.
+Aşağıdaki adımları denemeden önce azure [portalını veya Azure PowerShell'i](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kullanarak parolayı her zaman sıfırlamayı deneyin. Başlamadan önce VM'nizin yedeğinin olduğundan emin olun.
 
-1. Etkilenen VM 'nin işletim sistemi diski için bir anlık görüntü alın, anlık görüntüden bir disk oluşturun ve ardından diski bir sorun giderme VM 'sine bağlayın. Daha fazla bilgi için, [Azure Portal kullanarak işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek WINDOWS VM sorunlarını giderme](troubleshoot-recovery-disks-portal-windows.md)bölümüne bakın.
-2. Uzak Masaüstü kullanarak sorun giderme sanal makinesine bağlanın.
-3. Kaynak VM 'nin sürücüsünde `\Windows\System32\GroupPolicy` `gpt.ini` oluşturun (GPT. ini varsa, GPT. ini. bak olarak yeniden adlandırın):
+1. Etkilenen VM işletim sistemi diski için anlık görüntü alın, anlık görüntüden bir disk oluşturun ve ardından diski sorun giderme VM'sine takın. Daha fazla bilgi için, [Azure portalını kullanarak işletim sistemi diskini kurtarma VM'ine ekleyerek Windows VM Sorun Giderme'ye](troubleshoot-recovery-disks-portal-windows.md)bakın.
+2. Uzak Masaüstü'nü kullanarak sorun giderme VM'ine bağlanın.
+3. `gpt.ini` Kaynak `\Windows\System32\GroupPolicy` VM sürücü (gpt.ini varsa, gpt.ini.bak yeniden ad:
    
    > [!WARNING]
-   > Sorun giderme sanal makinesi için işletim sistemi sürücüsü olan C:\Windows ' da aşağıdaki dosyaları yanlışlıkla oluşturduğunuzdan emin olun. Kaynak VM 'niz için bir veri diski olarak bağlı olan işletim sistemi sürücüsünde aşağıdaki dosyaları oluşturun.
+   > Sorun giderme VM için işletim sistemi sürücüsü C:\Windows'da aşağıdaki dosyaları yanlışlıkla oluşturmadığınızdan emin olun. Veri diski olarak iliştirilmiş kaynak VM'niz için işletim sistemi sürücüsünde aşağıdaki dosyaları oluşturun.
    
-   * Aşağıdaki satırları oluşturduğunuz `gpt.ini` dosyasına ekleyin:
+   * Oluşturduğunuz dosyaya `gpt.ini` aşağıdaki satırları ekleyin:
      
      ```
      [General]
@@ -59,11 +59,11 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](res
      Version=1
      ```
      
-     ![GPT. ini oluştur](./media/reset-local-password-without-agent/create-gpt-ini.png)
+     ![gpt.ini oluştur](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
-4. `\Windows\System32\GroupPolicy\Machines\Scripts\``scripts.ini` oluşturun. Gizli klasörlerin gösterildiğinden emin olun. Gerekirse, `Machine` veya `Scripts` klasörlerini oluşturun.
+4. `scripts.ini` 'de `\Windows\System32\GroupPolicy\Machines\Scripts\`oluşturun. Gizli klasörlerin gösterildiğinden emin olun. Gerekirse, veya `Machine` `Scripts` klasörleri oluşturun.
    
-   * Aşağıdaki satırları oluşturduğunuz `scripts.ini` dosyasına ekleyin:
+   * Oluşturduğunuz dosyayı `scripts.ini` aşağıdaki satırları ekleyin:
      
      ```
      [Startup]
@@ -71,9 +71,9 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](res
      0Parameters=
      ```
      
-     ![Scripts. ini oluşturma](./media/reset-local-password-without-agent/create-scripts-ini.png)
+     ![Komut dosyaları oluşturma.ini](./media/reset-local-password-without-agent/create-scripts-ini.png)
 
-5. Aşağıdaki içeriklerle `\Windows\System32` `FixAzureVM.cmd` oluşturun, `<username>` ve `<newpassword>` kendi değerlerinizle değiştirin:
+5. Aşağıdaki `FixAzureVM.cmd` `\Windows\System32` içeriklerle, değiştirerek `<username>` ve `<newpassword>` kendi değerlerinizle oluşturun:
    
     ```
     net user <username> <newpassword> /add
@@ -81,80 +81,80 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](res
     net localgroup "remote desktop users" <username> /add
     ```
 
-    ![Create FixAzureVM.cmd](./media/reset-local-password-without-agent/create-fixazure-cmd.png)
+    ![FixAzureVM.cmd oluştur](./media/reset-local-password-without-agent/create-fixazure-cmd.png)
    
-    Yeni parolayı tanımlarken VM 'niz için yapılandırılmış parola karmaşıklığı gereksinimlerini karşılamanız gerekir.
+    Yeni parolayı tanımlarken VM'niz için yapılandırılan parola karmaşıklığı gereksinimlerini karşılamanız gerekir.
 
-6. Azure portal, diski sorun giderme VM 'sinden ayırın.
+6. Azure portalında, diski sorun giderme VM'sinden ayırın.
 
-7. [ETKILENEN VM için işletim sistemi diskini değiştirin](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm).
+7. [Etkilenen VM için işletim sistemi diskini değiştirin.](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)
 
-8. Yeni VM çalışmaya başladıktan sonra, `FixAzureVM.cmd` betikte belirttiğiniz yeni parolayla uzak masaüstü 'Nü kullanarak VM 'ye bağlanın.
+8. Yeni VM çalışmaya başladıktan sonra, komut dosyasında belirttiğiniz yeni parolayla Uzak Masaüstü'nü kullanarak VM'ye `FixAzureVM.cmd` bağlanın.
 
-9. Uzak oturumınızdan yeni VM 'ye kadar, ortamı temizlemek için aşağıdaki dosyaları kaldırın:
+9. Uzak oturumunuzdan yeni VM'ye, ortamı temizlemek için aşağıdaki dosyaları kaldırın:
     
-    * %Windir%\System32 adresinden
-      * remove FixAzureVM.cmd
-    * %Windir%\system32\groupilkemachıne\ KomutDosyaları
-      * Scripts. ini dosyasını Kaldır
-    * %Windir%\System32\GroupPolicy öğesinden
-      * GPT. ini dosyasını kaldırın (GPT. ini daha önce vardı ve GPT. ini. bak olarak yeniden adlandırdıysanız,. bak dosyasını tekrar GPT. ini olarak yeniden adlandırın)
+    * Kaynak: %windir%\System32
+      * FixAzureVM.cmd kaldırmak
+    * %windir%\System32\GroupPolicy\Machine\Scripts gönderen
+      * komut dosyalarını kaldırın.ini
+    * Kaynak : %windir%\System32\GroupPolicy
+      * gpt.ini kaldırın (gpt.ini daha önce varsa ve gpt.ini.bak olarak yeniden adlandırıldıysanız, .bak dosyasını gpt.ini olarak yeniden adlandırın)
 
 ## <a name="detailed-steps-for-classic-vm"></a>Klasik VM için ayrıntılı adımlar
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 > [!NOTE]
-> Adımlar Windows etki alanı denetleyicileri için geçerlidir. Yalnızca tek başına sunucuda veya bir etki alanının üyesi olan bir sunucuda çalışmaktadır.
+> Adımlar Windows etki alanı denetleyicileri için geçerli değildir. Yalnızca bağımsız sunucuda veya etki alanının üyesi olan bir sunucuda çalışır.
 
-Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) kullanarak her zaman bir parolayı sıfırlamayı deneyin. Başlamadan önce VM 'nizin yedeğine sahip olduğunuzdan emin olun. 
+Aşağıdaki adımları denemeden önce azure [portalını veya Azure PowerShell'i](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) kullanarak parolayı her zaman sıfırlamayı deneyin. Başlamadan önce VM'nizin yedeğinin olduğundan emin olun. 
 
-1. Azure portal etkilenen sanal makineyi silin. VM 'nin silinmesi yalnızca meta verileri, Azure 'daki VM 'nin başvurusunu siler. Sanal diskler, VM silindiğinde tutulur:
+1. Azure portalında etkilenen VM'yi silin. VM'yi silmek yalnızca Azure içindeki VM'nin başvurusu olan meta verileri siler. Sanal diskler VM silindiğinde korunur:
    
-   * Azure portal VM 'yi seçip *Sil*' e tıklayın:
+   * Azure portalında VM'yi seçin ve *sonra Sil'i*tıklatın:
      
-     ![Mevcut VM 'yi Sil](./media/reset-local-password-without-agent/delete-vm-classic.png)
+     ![Varolan VM'yi silme](./media/reset-local-password-without-agent/delete-vm-classic.png)
 
-2. Kaynak VM 'nin işletim sistemi diskini sorun giderme VM 'sine bağlayın. Sorun giderme sanal makinesi, kaynak VM 'nin işletim sistemi diski (örneğin, `West US`) ile aynı bölgede olmalıdır:
+2. Kaynak VM'nin işletim sistemi diskini sorun giderme VM'sine takın. Sorun giderme VM kaynak VM's OS disk (gibi) `West US`aynı bölgede olmalıdır:
    
-   1. Azure portal sorun giderme sanal makinesini seçin. Mevcut * | * *Ekle*' ye tıklayın.
+   1. Azure portalındaki sorun giderme VM'sini seçin. *Diskler* | *Ekle'yi*tıklatın varolan :
      
-      ![Mevcut diski Ekle](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
+      ![Varolan diski ekleme](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
      
-   2. *VHD dosyası* ' nı seçin ve ardından kaynak sanal makineyi içeren depolama hesabını seçin:
+   2. *VHD Dosya'yı* seçin ve ardından kaynak VM'nizi içeren depolama hesabını seçin:
      
       ![Depolama hesabı seçme](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
      
-   3. *Klasik depolama hesaplarını göster*işaretli kutuyu işaretleyin ve ardından kaynak kapsayıcısını seçin. Kaynak kapsayıcısı genellikle *VHD*'ler:
+   3. İşaretli kutuyu *işaretli işaretli olarak işaretleyin Klasik depolama hesaplarını göster,* ardından kaynak kapsayıcıyı seçin. Kaynak kapsayıcı genellikle *vhds:*
      
-      ![Depolama kapsayıcısını seçin](./media/reset-local-password-without-agent/disks-select-container-classic.png)
+      ![Depolama kabını seçin](./media/reset-local-password-without-agent/disks-select-container-classic.png)
 
-      ![Depolama kapsayıcısını seçin](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
+      ![Depolama kabını seçin](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
      
-   4. İliştirilecek işletim sistemi VHD 'sini seçin. İşlemi gerçekleştirmek için *Seç* ' e tıklayın:
+   4. Eklemek için OS vhd'yi seçin. İşlemi tamamlamak için *Seç'i* tıklatın:
      
-      ![Kaynak sanal disk seçin](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
+      ![Kaynak sanal diski seçin](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
 
-   5. Diski eklemek için Tamam 'a tıklayın
+   5. Diski takmak için Tamam'ı tıklatın
 
-      ![Mevcut diski Ekle](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
+      ![Varolan diski ekleme](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
 
-3. Uzak Masaüstü kullanarak sorun giderme sanal makinesine bağlanın ve kaynak VM 'nin işletim sistemi diskinin görünür olduğundan emin olun:
+3. Uzak Masaüstü'nü kullanarak sorun giderme VM'ine bağlanın ve kaynak VM'nin işletim sistemi diskinin görünür olduğundan emin olun:
 
-   1. Azure portal sorun giderme sanal makinesini seçip *Bağlan*' a tıklayın.
+   1. Azure portalında sorun giderme VM'sini seçin ve *Bağlan'ı*tıklatın.
 
-   2. İndirilen RDP dosyasını açın. Sorun giderme sanal makinesinin Kullanıcı adını ve parolasını girin.
+   2. İndirilen RDP dosyasını açın. Sorun giderme VM'nin kullanıcı adını ve parolasını girin.
 
-   3. Dosya Gezgini 'nde, eklediğiniz veri diskini bulun. Kaynak VM 'nin VHD 'SI, sorun giderme sanal makinesine bağlı tek veri diskdeyse, bu, F: sürücüsü olmalıdır:
+   3. Dosya Gezgini'nde, iliştirdiğiniz veri diskini arayın. Kaynak VM'nin VHD'si sorun giderme VM'ine bağlı tek veri diskiyse, F: sürücü olmalıdır:
      
       ![Bağlı veri diskini görüntüleme](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
 
-4. Kaynak VM 'nin sürücüsünde `\Windows\System32\GroupPolicy` `gpt.ini` oluşturun (`gpt.ini` varsa, `gpt.ini.bak`olarak yeniden adlandırın):
+4. `gpt.ini` Kaynak `\Windows\System32\GroupPolicy` VM sürücüsü (varsa, `gpt.ini` yeniden `gpt.ini.bak`adlandırmak) oluşturun:
    
    > [!WARNING]
-   > `C:\Windows`, sorun giderme sanal makinesi için işletim sistemi sürücüsü olan aşağıdaki dosyaları yanlışlıkla oluşturmadığından emin olun. Kaynak VM 'niz için bir veri diski olarak bağlı olan işletim sistemi sürücüsünde aşağıdaki dosyaları oluşturun.
+   > Sorun giderme VM için işletim `C:\Windows`sistemi sürücüsünde yanlışlıkla aşağıdaki dosyaları oluşturmadığınızdan emin olun. Veri diski olarak iliştirilmiş kaynak VM'niz için işletim sistemi sürücüsünde aşağıdaki dosyaları oluşturun.
    
-   * Aşağıdaki satırları oluşturduğunuz `gpt.ini` dosyasına ekleyin:
+   * Oluşturduğunuz dosyaya `gpt.ini` aşağıdaki satırları ekleyin:
      
      ```
      [General]
@@ -163,11 +163,11 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](htt
      Version=1
      ```
      
-     ![GPT. ini oluştur](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     ![gpt.ini oluştur](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
-5. `\Windows\System32\GroupPolicy\Machines\Scripts\``scripts.ini` oluşturun. Gizli klasörlerin gösterildiğinden emin olun. Gerekirse, `Machine` veya `Scripts` klasörlerini oluşturun.
+5. `scripts.ini` 'de `\Windows\System32\GroupPolicy\Machines\Scripts\`oluşturun. Gizli klasörlerin gösterildiğinden emin olun. Gerekirse, veya `Machine` `Scripts` klasörleri oluşturun.
    
-   * Aşağıdaki satırları oluşturduğunuz `scripts.ini` dosyasına ekleyin:
+   * Oluşturduğunuz dosyayı `scripts.ini` aşağıdaki satırları ekleyin:
 
      ```
      [Startup]
@@ -175,9 +175,9 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](htt
      0Parameters=
      ```
      
-     ![Scripts. ini oluşturma](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
+     ![Komut dosyaları oluşturma.ini](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
 
-6. Aşağıdaki içeriklerle `\Windows\System32` `FixAzureVM.cmd` oluşturun, `<username>` ve `<newpassword>` kendi değerlerinizle değiştirin:
+6. Aşağıdaki `FixAzureVM.cmd` `\Windows\System32` içeriklerle, değiştirerek `<username>` ve `<newpassword>` kendi değerlerinizle oluşturun:
    
     ```
     net user <username> <newpassword> /add
@@ -185,21 +185,21 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](htt
     net localgroup "remote desktop users" <username> /add
     ```
 
-    ![Create FixAzureVM.cmd](./media/reset-local-password-without-agent/create-fixazure-cmd-classic.png)
+    ![FixAzureVM.cmd oluştur](./media/reset-local-password-without-agent/create-fixazure-cmd-classic.png)
    
-    Yeni parolayı tanımlarken VM 'niz için yapılandırılmış parola karmaşıklığı gereksinimlerini karşılamanız gerekir.
+    Yeni parolayı tanımlarken VM'niz için yapılandırılan parola karmaşıklığı gereksinimlerini karşılamanız gerekir.
 
-7. Azure portal, diski sorun giderme VM 'sinden ayırın:
+7. Azure portalında, diski sorun giderme VM'sinden ayırın:
    
-   1. Azure portal sorun giderme sanal makinesini seçin, *diskler*' e tıklayın.
+   1. Azure portalında sorun giderme VM'sini seçin, *Diskler'i*tıklatın.
    
-   2. 2\. adımda eklenen veri diskini seçin, **Ayır**' a ve ardından **Tamam**' a tıklayın.
+   2. Adım 2'de bağlı olan veri diskini seçin, **Ayır'ı**tıklatın, ardından **Tamam'ı**tıklatın.
 
-     ![Diski kullanımdan çıkar](./media/reset-local-password-without-agent/data-disks-classic.png)
+     ![Diski ayırma](./media/reset-local-password-without-agent/data-disks-classic.png)
      
-     ![Diski kullanımdan çıkar](./media/reset-local-password-without-agent/detach-disk-classic.png)
+     ![Diski ayırma](./media/reset-local-password-without-agent/detach-disk-classic.png)
 
-8. Kaynak VM 'nin işletim sistemi diskinden bir VM oluşturun:
+8. Kaynak VM'nin işletim sistemi diskinden bir VM oluşturun:
    
      ![Şablondan VM oluşturma](./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png)
 
@@ -207,18 +207,18 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](htt
 
      ![Şablondan VM oluşturma](./media/reset-local-password-without-agent/create-vm-classic.png)
 
-## <a name="complete-the-create-virtual-machine-experience"></a>Sanal makine oluşturma deneyimini doldurun
+## <a name="complete-the-create-virtual-machine-experience"></a>Sanal makine oluştur deneyimini tamamlayın
 
-1. Yeni VM çalışmaya başladıktan sonra, `FixAzureVM.cmd` betikte belirttiğiniz yeni parolayla uzak masaüstü 'Nü kullanarak VM 'ye bağlanın.
+1. Yeni VM çalışmaya başladıktan sonra, komut dosyasında belirttiğiniz yeni parolayla Uzak Masaüstü'nü kullanarak VM'ye `FixAzureVM.cmd` bağlanın.
 
-2. Uzak oturumınızdan yeni VM 'ye kadar, ortamı temizlemek için aşağıdaki dosyaları kaldırın:
+2. Uzak oturumunuzdan yeni VM'ye, ortamı temizlemek için aşağıdaki dosyaları kaldırın:
     
-    * `%windir%\System32` 'den
-      * `FixAzureVM.cmd` kaldır
-    * `%windir%\System32\GroupPolicy\Machine\Scripts` 'den
-      * `scripts.ini` kaldır
-    * `%windir%\System32\GroupPolicy` 'den
-      * `gpt.ini` kaldırın (`gpt.ini` daha önce varsa ve `gpt.ini.bak`olarak yeniden adlandırdıysanız `.bak` dosyayı yeniden `gpt.ini`olarak yeniden adlandırın)
+    * Kaynak`%windir%\System32`
+      * Kaldırmak`FixAzureVM.cmd`
+    * Kaynak`%windir%\System32\GroupPolicy\Machine\Scripts`
+      * Kaldırmak`scripts.ini`
+    * Kaynak`%windir%\System32\GroupPolicy`
+      * kaldır `gpt.ini` `gpt.ini` (daha önce varsa ve dosyayı `gpt.ini.bak`yeniden `.bak` `gpt.ini`adlandırdıysanız, dosyayı yeniden adlandırın)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Hala uzak masaüstü 'Nü kullanarak bağlanamıyorsanız, [RDP sorun giderme kılavuzu](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)' na bakın. [AYRıNTıLı RDP sorun giderme kılavuzu](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , belirli adımlar yerine sorun giderme yöntemlerine bakar. Ayrıca, uygulamalı yardım için [bir Azure destek isteği açabilirsiniz](https://azure.microsoft.com/support/options/) .
+Uzak Masaüstü'nü kullanarak hala bağlanamıyorsanız, [RDP sorun giderme kılavuzuna](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bakın. [Ayrıntılı RDP sorun giderme kılavuzu,](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) belirli adımlar yerine sorun giderme yöntemlerini inceliyor. Uygulamalı yardım için [bir Azure destek isteği](https://azure.microsoft.com/support/options/) de açabilirsiniz.

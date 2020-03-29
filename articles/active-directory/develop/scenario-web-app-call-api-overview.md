@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran bir Web uygulaması oluşturma-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (genel bakış)
+title: Web API'leri çağıran bir web uygulaması oluşturma - Microsoft kimlik platformu | Azure
+description: Web API'lerini çağıran bir web uygulaması oluşturmayı öğrenin (genel bakış)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,47 +15,47 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d121d6c198cb0d92cd098a40096e2f2300f65537
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758998"
 ---
-# <a name="scenario-a-web-app-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran bir Web uygulaması
+# <a name="scenario-a-web-app-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran bir web uygulaması
 
-Microsoft Identity platformunda kullanıcıları imzalayan ve ardından oturum açmış kullanıcı adına Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin.
+Kullanıcıları Microsoft kimlik platformuna kaydeden ve oturum açmış kullanıcı adına web API'lerini çağıran bir web uygulaması oluşturmayı öğrenin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-Bu senaryo, aşağıdaki senaryodan zaten geçmiş olduğunu varsayar:
+Bu senaryo, aşağıdaki senaryoyu zaten geçtiğinizvarsa varsayıyor:
 
 > [!div class="nextstepaction"]
 > [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md)
 
 ## <a name="overview"></a>Genel Bakış
 
-' Deki kullanıcıları imzalamak ve oturum açmış kullanıcı adına bir Web API 'SI çağırmak için Web uygulamanıza kimlik doğrulaması eklersiniz.
+Oturum açabilmek ve oturum açan kullanıcı adına bir web API'sını arayabilmek için web uygulamanıza kimlik doğrulaması eklersiniz.
 
 ![Web API'lerini çağıran web uygulaması](./media/scenario-webapp/web-app.svg)
 
-Web API 'Lerini çağıran Web uygulamaları gizli istemci uygulamalardır.
-Bu nedenle, Azure Active Directory (Azure AD) ile bir gizli dizi (uygulama parolası veya sertifika) kaydettikleri budur. Bu gizli dizi, bir belirteç almak için Azure AD çağrısı sırasında geçirilir.
+Web API'lerini arayan web uygulamaları gizli istemci uygulamalarıdır.
+Bu nedenle Azure Active Directory (Azure AD) ile gizli (uygulama parolası veya sertifika) kaydederler. Bu sır, bir belirteç almak için Azure AD'ye yapılan çağrı sırasında iletilir.
 
-## <a name="specifics"></a>Özelliklerini
+## <a name="specifics"></a>Özellikleri
 
 > [!NOTE]
-> Web uygulamasına oturum açma ekleme, Web uygulamasının kendi kendine korunmasını sağlar. Bu koruma, Microsoft kimlik doğrulama kitaplığı (MSAL) değil, *Ara yazılım* kitaplıkları kullanılarak elde edilir. Yukarıdaki senaryo, [kullanıcılar tarafından oturum açan Web uygulaması](scenario-web-app-sign-user-overview.md), bu konu ele alınmıştır.
+> Bir web uygulamasına oturum açma eklemek, web uygulamasının kendisini korumakla ilgilidir. Bu koruma, Microsoft Kimlik Doğrulama Kitaplığı (MSAL) değil, *ara yazılım* kitaplıkları kullanılarak elde edilir. Önceki senaryo, [Web uygulaması bu konuda kullanıcılarda işaretler,](scenario-web-app-sign-user-overview.md)bu konuyu kapsamaktadır.
 >
-> Bu senaryo, bir Web uygulamasından Web API 'Lerinin nasıl çağrılacağını ele alır. Bu Web API 'Leri için erişim belirteçleri almalısınız. Bu belirteçleri almak için, MSAL kitaplıklarını kullanarak bu belirteçleri elde edin.
+> Bu senaryo, bir web uygulamasından web API'leri nasıl çağrılmasını kapsar. Bu web API'leri için erişim belirteçleri almalısınız. Bu belirteçleri elde etmek için, bu belirteçleri elde etmek için MSAL kitaplıklarını kullanırsınız.
 
-Bu senaryoya yönelik geliştirme, bu özel görevleri içerir:
+Bu senaryo için geliştirme şu özel görevleri içerir:
 
-- [Uygulama kaydı](scenario-web-app-call-api-app-registration.md)SıRASıNDA Azure AD ile paylaşılacak bir yanıt URI 'si, gizli anahtar veya sertifika sağlamanız gerekir. Uygulamanızı çeşitli konumlara dağıtırsanız, bu bilgileri her konum için sağlarsınız.
-- [Uygulama yapılandırması](scenario-web-app-call-api-app-configuration.md) , uygulama kaydı SıRASıNDA Azure AD ile paylaşılan istemci kimlik bilgilerini sağlamalıdır.
+- [Uygulama kaydı](scenario-web-app-call-api-app-registration.md)sırasında, Azure AD ile paylaşılmak üzere bir yanıt URI, gizli veya sertifika sağlamanız gerekir. Uygulamanızı çeşitli konumlara dağıtırsanız, bu bilgileri her konum için sağlarsınız.
+- [Uygulama yapılandırması,](scenario-web-app-call-api-app-configuration.md) uygulama kaydı sırasında Azure AD ile paylaşılan istemci kimlik bilgilerini sağlamalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Web API 'Leri çağıran bir Web uygulaması: uygulama kaydı](scenario-web-app-call-api-app-registration.md)
+> [Web API'lerini çağıran bir web uygulaması: Uygulama kaydı](scenario-web-app-call-api-app-registration.md)
