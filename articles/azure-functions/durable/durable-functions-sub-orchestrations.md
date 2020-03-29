@@ -1,28 +1,28 @@
 ---
-title: Dayanıklı İşlevler için alt düzenlemeler-Azure
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki genişletmelerin nasıl çağrılacağını çağırma.
+title: Dayanıklı Işlevler için alt orkestrasyonlar - Azure
+description: Azure İşlevler için Dayanıklı İşlevler uzantısındaki orkestrasyonlardan orkestrasyon çağırma.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76261526"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler alt düzenlemeler (Azure Işlevleri)
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevlerde Alt Orkestrasyonlar (Azure İşlevleri)
 
-Orchestrator işlevleri, etkinlik işlevlerini çağırmanın yanı sıra diğer Orchestrator işlevlerini de çağırabilir. Örneğin, daha küçük bir Orchestrator işlevleri kitaplığından daha büyük bir düzenleme oluşturabilirsiniz. Alternatif olarak, bir Orchestrator işlevinin birden fazla örneğini paralel olarak çalıştırabilirsiniz.
+Etkinlik işlevlerini çağırmanın yanı sıra, orkestratör işlevleri diğer orkestratör işlevlerini de çağırabilir. Örneğin, daha küçük orkestratör işlevlerinden oluşan bir kitaplıktan daha büyük bir orkestrasyon oluşturabilirsiniz. Veya bir orkestratör işlevinin birden çok örneğini paralel olarak çalıştırabilirsiniz.
 
-Orchestrator işlevi, .NET 'teki `CallSubOrchestratorAsync` veya `CallSubOrchestratorWithRetryAsync` yöntemlerini veya JavaScript 'teki `callSubOrchestrator` ya da `callSubOrchestratorWithRetry` yöntemlerini kullanarak başka bir Orchestrator işlevini çağırabilir. [& Dengeleme makalesindeki hata işleme](durable-functions-error-handling.md#automatic-retry-on-failure) otomatik yeniden deneme hakkında daha fazla bilgi içerir.
+`CallSubOrchestratorAsync` Bir orkestratör işlevi ,NET'teki `CallSubOrchestratorWithRetryAsync` `callSubOrchestrator` veya JavaScript'teki `callSubOrchestratorWithRetry` veya yöntemleri kullanarak başka bir orchestrator işlevini çağırabilir. [Hata İşleme & Telafisi](durable-functions-error-handling.md#automatic-retry-on-failure) makalesi, otomatik yeniden deneme hakkında daha fazla bilgiye sahiptir.
 
-Alt Orchestrator işlevleri, çağıranın perspektifinden yalnızca etkinlik işlevleri gibi davranır. Bunlar bir değer döndürebilir, bir özel durum oluşturabilir ve üst Orchestrator işlevi tarafından beklelenebilir. 
+Alt orkestratör işlevleri, arayanın bakış açısından etkinlik işlevleri gibi çalışır. Bir değer döndürebilir, bir özel durum atabilir ve ana orchestrator işlevi tarafından beklenebilir. 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki örnekte, sağlanması gereken birden çok cihaz olduğu IoT ("Nesnelerin İnterneti") senaryosu gösterilmektedir. Aşağıdaki işlev her bir cihaz için yürütülmesi gereken sağlama iş akışını temsil eder:
+Aşağıdaki örnekte, sağlanması gereken birden çok aygıt olan bir IoT ("Nesnelerin İnterneti") senaryosu gösterilebilir. Aşağıdaki işlev, her aygıt için yürütülmesi gereken sağlama iş akışını temsil eder:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -66,11 +66,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Bu Orchestrator işlevi, tek seferlik cihaz sağlama için olduğu gibi kullanılabilir veya daha büyük bir düzenleme parçası olabilir. İkinci durumda, üst Orchestrator işlevi `CallSubOrchestratorAsync` (.NET) veya `callSubOrchestrator` (JavaScript) API 'sini kullanarak `DeviceProvisioningOrchestration` örneklerini zamanlayabilir.
+Bu orkestratör işlevi, tek seferlik aygıt sağlama için olduğu gibi kullanılabilir veya daha büyük bir orkestrasyonun parçası olabilir. İkinci durumda, ana orchestrator işlevi `DeviceProvisioningOrchestration` `CallSubOrchestratorAsync` (.NET) veya `callSubOrchestrator` (JavaScript) API kullanarak örnekleri zamanlayabilirsiniz.
 
-Birden çok Orchestrator işlevinin paralel olarak nasıl çalıştırılacağını gösteren bir örnek aşağıda verilmiştir.
+Burada, birden çok orkestratör işlevinin paralel olarak nasıl çalıştırılabildiğini gösteren bir örnek verilmiştir.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -94,9 +94,9 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -123,9 +123,9 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!NOTE]
-> Alt düzenlemeler, üst düzenleme ile aynı işlev uygulamasında tanımlanmalıdır. Başka bir işlev uygulamasındaki düzenlemeleri çağırmanız ve beklemeniz gerekiyorsa, HTTP API 'Leri için yerleşik desteği ve HTTP 202 yoklaması tüketici modelini kullanmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [http özellikleri](durable-functions-http-features.md) konusu.
+> Alt orkestrasyonlar, ana orkestrasyonla aynı işlev uygulamasında tanımlanmalıdır. Başka bir işlev uygulamasında ki orkestrasyonları aramanız ve beklemeniz gerekiyorsa, HTTP API'leri ve HTTP 202 yoklama tüketici deseni için yerleşik desteği kullanmayı düşünün. Daha fazla bilgi için [HTTP Özellikler](durable-functions-http-features.md) konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Özel bir düzenleme durumu ayarlamayı öğrenin](durable-functions-custom-orchestration-status.md)
+> [Özel bir orkestrasyon durumunu ayarlamayı öğrenin](durable-functions-custom-orchestration-status.md)

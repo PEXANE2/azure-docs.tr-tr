@@ -1,6 +1,6 @@
 ---
-title: Bir hatadan sonra görevleri yeniden deneme
-description: Hataları denetleyip yeniden deneyin.
+title: Hatadan sonra görevleri yeniden deneme
+description: Hataları denetleyin ve yeniden deneyin.
 services: batch
 documentationcenter: .net
 author: LauraBrenner
@@ -16,33 +16,33 @@ ms.date: 02/15/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 94ed936e619461a2dbf7ec837c2d80e21c01c88e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920000"
 ---
-# <a name="detecting-and-handling-batch-service-errors"></a>Batch hizmeti hatalarını algılama ve işleme
+# <a name="detecting-and-handling-batch-service-errors"></a>Toplu servis hatalarını algılama ve işleme
 
-REST hizmeti API 'SI ile çalışırken hataları denetlemeyi unutmamak önemlidir. Toplu işler çalıştırılırken hata oluşması yaygın değildir.
+Bir REST hizmeti API ile çalışırken hataları kontrol etmeyi unutmayın önemlidir. Toplu iş çalışırken hataların oluşması sık rastlanan bir durum değildir.
 
 ## <a name="common-errors"></a>Sık karşılaşılan hatalar 
 
-- Ağ sorunları-toplu Işe erişilemeyen isteklerdir veya Batch yanıtı istemciye zamanında ulaşamamıştır.
-- İç sunucu hataları-Bunlar standart 5xx durum kodu HTTP yanıtdır.
-- Daraltma, yeniden deneme üst bilgisi ile 429 veya 503 durum kodu HTTP yanıtları gibi hatalara neden olabilir.
-- 4xx hatası, AlreadyExists ve InvalidOperation gibi hataları içerir. Bu, kaynağın durum geçişi için doğru durumda olmadığı anlamına gelir.
+- Ağ hataları - bunlar Toplu İşleme'ye hiç ulaşmamış veya Toplu İşlem yanıtı istemciye zamanında ulaşmamış isteklerdir.
+- Dahili sunucu hataları - bu standart 5xx durum kodu HTTP yanıt vardır.
+- Azaltma, Yeniden Deneme üstbilgisiyle 429 veya 503 durum kodu HTTP yanıtları gibi hatalara neden olabilir.
+- AlreadyExists ve Geçersiz Çalışma gibi hataları içeren 4xx hataları. Bu, kaynağın durum geçişi için doğru durumda olmadığı anlamına gelir.
 
-Çeşitli hata kodu türleri ve belirli hata kodları hakkında ayrıntılı bilgi için bkz. [Batch durumu ve hata kodları](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes).
+Çeşitli hata kodları ve belirli hata kodları hakkında ayrıntılı bilgi için [Toplu İşlem Durumu ve Hata Kodları'na](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)bakın.
 
-## <a name="when-to-retry"></a>Ne zaman yeniden deneneceğini
+## <a name="when-to-retry"></a>Ne zaman yeniden denemelisin
 
-Bir hata oluşursa Batch API 'Leri size bildirir. Hepsi yeniden denenebilirler ve hepsi bu amaçla küresel bir yeniden deneme işleyicisi içerir. Bu yerleşik mekanizmayı kullanmak en iyisidir.
+Toplu İşlem API'ler bir hata olduğunda sizi bilgilendirecektir. Hepsi yeniden denenebilir ve hepsi bu amaç için küresel bir yeniden deneme işleyicisi içerir. Bu yerleşik mekanizmayı kullanmak en iyisidir.
 
-Bir hatadan sonra yeniden denemeden önce bir bit (denemeler arasında birkaç saniye) beklemeniz gerekir. Çok sık veya çok hızlı yeniden deneme yaparsanız, yeniden deneme işleyicisi azalacaktır.
+Bir hatadan sonra, yeniden denemeden önce biraz (yeniden denemeler arasında birkaç saniye) beklemeniz gerekir. Çok sık veya çok hızlı bir şekilde yeniden denerseniz, yeniden deneme işleyicisi gazla çalışır.
 
 ### <a name="for-more-information"></a>Daha fazla bilgi edinmek için  
 
-API başvuru bilgilerine yönelik [Batch API 'leri ve araçlar](batch-apis-tools.md) bağlantıları. .NET API, örneğin, gerekli yeniden deneme ilkesinin belirtilmesi gereken bir [Retrypolicyprovider sınıfına]( https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet) sahiptir. 
+[Toplu API'ler ve araçlar](batch-apis-tools.md) API başvuru bilgilerine bağlantılar. Örneğin .NET API'de, gerekli yeniden deneme ilkesinin belirtilmesi gereken bir [RetryPolicyProvider sınıfı]( https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet) vardır. 
 
-Her API ve varsayılan yeniden deneme ilkeleri hakkında ayrıntılı bilgi için [Batch durumu ve hata kodlarını](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)okuyun.
+Her API ve varsayılan yeniden deneme ilkeleri hakkında ayrıntılı bilgi için [Toplu İşlem Durumu ve Hata Kodları'nı](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)okuyun.

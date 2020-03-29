@@ -1,6 +1,6 @@
 ---
-title: Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma | Microsoft Docs
-description: Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenizi ve kapalı açıklamalı alt yazı ve anahtar sözcükler için tam metin dökümü oluşturmanıza olanak sağlar. Bu konuda, Media Indexer 2 Preview kullanımı gösterilmektedir.
+title: Azure Media Indexer 2 Önizlemesi ile Medya Dosyalarını Dizine Ekleme | Microsoft Dokümanlar
+description: Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenize ve kapalı altyazı ve anahtar kelimeler için tam metin transkript oluşturmanıza olanak tanır. Bu konu, Media Indexer 2 Preview'un nasıl kullanılacağını gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,46 +15,46 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
 ms.openlocfilehash: c24218dc116803ca0e0a1f166b7b54b24fc4d5ef
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163803"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma
+# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 Önizlemesi ile Medya Dosyalarını Dizine Ekleme
 
 > [!NOTE]
-> **Azure Media Indexer 2** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
+> **Azure Media Indexer 2** medya işlemcisi kullanımdan kaldırılacak. Emeklilik tarihleri için bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için azure [media indexer ve Azure Media Indexer 2'den Azure Media Services Video Indexer'a geçir'e](migrate-indexer-v1-v2.md)bakın.
 
-**Azure Media Indexer 2 Preview** medya IŞLEMCISI (MP), medya dosyalarını ve içeriği aranabilir yapmanızı ve kapalı açıklamalı altyazı parçaları oluşturmanızı sağlar. Önceki [Azure Media Indexer](media-services-index-content.md)sürümüyle karşılaştırıldığında, **Azure Media Indexer 2 önizlemesi** daha hızlı Dizin oluşturma gerçekleştirir ve daha geniş bir dil desteği sunar. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Mandarin, Basitleştirilmiş), Portekizce, Arapça, Rusça ve Japonca bulunur.
+**Azure Media Indexer 2 Önizleme** ortam işlemcisi (MP), medya dosyalarını ve içeriğini aranabilir hale getirmenin yanı sıra kapalı altyazı parçaları oluşturmanıza olanak tanır. [Azure Media Indexer'ın](media-services-index-content.md)önceki sürümüyle karşılaştırıldığında, **Azure Media Indexer 2 Preview** daha hızlı dizin oluşturma gerçekleştirir ve daha geniş dil desteği sunar. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Çince (Mandarin, Basitleştirilmiş), Portekizce, Arapça, Rusça ve Japonca bulunmaktadır.
 
-**Azure Media Indexer 2 Preview** MP, şu anda önizleme aşamasındadır.
+**Azure Media Indexer 2 Preview** MP şu anda Önizleme'de.
 
-Bu makalede **Azure Media Indexer 2 Preview**ile dizin oluşturma işlerinin nasıl oluşturulacağı gösterilmektedir.
+Bu makalede, **Azure Media Indexer 2 Preview**ile dizin oluşturma işlerinin nasıl oluşturulacak olduğu gösterilmektedir.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Aşağıdaki noktalar geçerlidir:
+Aşağıdaki noktalara dikkat edilmelidir:
  
-* Dizin Oluşturucu 2, Azure Çin 21Vianet ve Azure Kamu 'da desteklenmez.
-* İçerik dizin oluştururken, çok temiz konuşmaya sahip medya dosyalarını (arka plan müziği, gürültü, efekt veya mikrofon hisleri olmadan) kullandığınızdan emin olun. Uygun içeriğe örnek olarak şunlar verilebilir: kayıtlı toplantılar, seminerler veya sunular. Şu içerikler dizin oluşturmak için uygun olmayabilir: Filmler, TV programları, karışık ses ve ses efektleriyle herhangi bir şey, arka plan gürültüsü olan kötü kaydedilmiş içerik (hisler).
+* Indexer 2, Azure China 21Vianet ve Azure Kamu'da desteklenmez.
+* İçeriği dizine ekrirken, çok net bir konuşma olan medya dosyalarını kullandığınızdan emin olun (arka plan müziği, gürültü, efektler veya mikrofon okumaları olmadan). Uygun içeriğe örnek olarak şunlar verilebilir: kaydedilmiş toplantılar, konferanslar veya sunular. Aşağıdaki içerik dizin oluşturma için uygun olmayabilir: filmler, TV şovları, karışık ses ve ses efektleri olan her şey, arka plan gürültüsü (tıs) ile kötü kaydedilmiş içerik.
  
-## <a name="input-and-output-files"></a>Giriş ve çıkış dosyaları
-### <a name="input-files"></a>Giriş dosyaları
+## <a name="input-and-output-files"></a>Giriş ve çıktı dosyaları
+### <a name="input-files"></a>Dosya girişi
 Ses veya video dosyaları
 
 ### <a name="output-files"></a>Çıkış dosyaları
-Bir dizin oluşturma işi, aşağıdaki biçimlerde kapalı açıklamalı altyazı dosyaları oluşturabilir:  
+Dizin oluşturma işi aşağıdaki biçimlerde kapalı altyazı dosyaları oluşturabilir:  
 
 * **TTML**
 * **WebVTT**
 
-Bu biçimlerdeki kapalı açıklamalı altyazı (CC) dosyaları, ses ve video dosyalarını işitme engelli kişiler için erişilebilir hale getirmek için kullanılabilir.
+Bu biçimlerde kapalı altyazı (CC) dosyaları işitme engelli kişiler için ses ve video dosyalarını erişilebilir hale getirmek için kullanılabilir.
 
 ## <a name="task-configuration-preset"></a>Görev yapılandırması (önceden ayarlanmış)
-**Azure Media Indexer 2 Preview**ile bir dizin oluşturma görevi oluştururken, bir yapılandırma ön ayarı belirtmeniz gerekir.
+**Azure Media Indexer 2 Preview**ile bir dizin oluşturma görevi oluştururken, bir yapılandırma ön kümesi belirtmeniz gerekir.
 
-Aşağıdaki JSON, kullanılabilir parametreleri ayarlar.
+Aşağıdaki JSON kullanılabilir parametreleri ayarlar.
 
 ```json
     {
@@ -73,31 +73,31 @@ Aşağıdaki JSON, kullanılabilir parametreleri ayarlar.
 ```
 
 ## <a name="supported-languages"></a>Desteklenen diller
-Azure Media Indexer 2 Preview, aşağıdaki diller için konuşmayı metne (görev yapılandırmasında dil adını belirtirken aşağıda gösterildiği gibi, parantez içinde 4 karakterlik kod kullanın) destekler:
+Azure Media Indexer 2 Preview, aşağıdaki diller için konuşma metnini destekler (görev yapılandırmasında dil adını belirtirken, parantez içinde aşağıda gösterildiği gibi 4 karakterli kod kullanın):
 
-* İngilizce [EnUs]
-* İspanyolca [EsEs]
-* Çince (Mandarin, Basitleştirilmiş) [ZhCn]
+* İngilizce [Enus]
+* İspanyolca [Eses]
+* Çince (Mandalina, Basitleştirilmiş) [ZhCn]
 * Fransızca [FrFr]
-* Almanca [DeDe]
-* İtalyanca [ItIt]
+* Almanca [Dede]
+* İtalyanca [Itit]
 * Portekizce [PtBr]
-* Arapça (Mısır) [ArEg]
+* Arapça (Mısırlı) [ArEg]
 * Japonca [JaJp]
 * Rusça [RuRu]
-* İngiliz Ingilizcesi [EnGb]
+* İngiliz İngilizcesi [Engb]
 * İspanyolca (Meksika) [EsMx] 
 
 ## <a name="supported-file-types"></a>Desteklenen dosya türleri
 
-Desteklenen dosya türleri hakkında daha fazla bilgi için [Desteklenen codec bileşenleri/biçimler](media-services-media-encoder-standard-formats.md#input-containerfile-formats) bölümüne bakın.
+Desteklenen dosya türleri hakkında bilgi için [desteklenen codec/formatlar](media-services-media-encoder-standard-formats.md#input-containerfile-formats) bölümüne bakın.
 
 ## <a name="net-sample-code"></a>.NET örnek kodu
 
-Aşağıdaki program, aşağıdakilerin nasıl yapılacağını göstermektedir:
+Aşağıdaki program nasıl yapılacağını gösterir:
 
-1. Bir varlık oluşturun ve kıymete bir medya dosyası yükleyin.
-2. Aşağıdaki JSON ön ayarını içeren bir yapılandırma dosyasını temel alan bir dizin oluşturma göreviyle iş oluşturun:
+1. Bir varlık oluşturun ve bir medya dosyasını varlığa yükleyin.
+2. Aşağıdaki json ön ayarını içeren bir yapılandırma dosyasını temel alan bir dizin oluşturma görevi içeren bir iş oluşturun:
 
     ```json
             {
@@ -115,7 +115,7 @@ Aşağıdaki program, aşağıdakilerin nasıl yapılacağını göstermektedir:
             }
     ```
     
-3. Çıkış dosyalarını indirin. 
+3. Çıktı dosyalarını indirin. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
@@ -291,14 +291,14 @@ namespace IndexContent
 }
 ```
 
-## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar
-[Azure Media Services Analytics genel bakışı](media-services-analytics-overview.md)
+[Azure Medya Hizmetleri Analizine Genel Bakış](media-services-analytics-overview.md)
 
-[Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Medya Analizi demoları](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

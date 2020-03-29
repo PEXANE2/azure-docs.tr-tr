@@ -1,6 +1,6 @@
 ---
-title: Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken karşılaşılan sorunları giderme
-description: Cosmos DB için Azure Işlevleri tetikleyicisi kullanılırken yaygın sorunlar, geçici çözümler ve Tanılama adımları
+title: Cosmos DB için Azure Fonksiyonlarını kullanırken sorun giderme sorunları
+description: Cosmos DB için Azure Fonksiyonlar tetikleyicisini kullanırken sık karşılaşılan sorunlar, geçici çözüm ve tanılama adımları
 author: ealsur
 ms.service: cosmos-db
 ms.date: 03/13/2020
@@ -8,118 +8,118 @@ ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79365517"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Fonksiyonlarını tetiklerken sorunları tanılama ve sorun giderme
 
-Bu makalede, [Cosmos DB Için Azure işlevleri tetikleyicisi](change-feed-functions.md)kullandığınızda yaygın sorunlar, geçici çözümler ve Tanılama adımları ele alınmaktadır.
+Bu makalede, [Cosmos DB için Azure İşlevler tetikleyicisi](change-feed-functions.md)kullandığınızda sık karşılaşılan sorunlar, geçici çözüm ve tanılama adımları ele alındı.
 
 ## <a name="dependencies"></a>Bağımlılıklar
 
-Cosmos DB için Azure Işlevleri tetiklemesi ve bağlamaları, temel Azure Işlevleri çalışma zamanı üzerinden uzantı paketlerine bağlıdır. Düzeltmeler ve karşılaşabileceğiniz olası sorunları gidermeye yönelik yeni özellikler dahil olabileceğinden, her zaman bu paketleri güncel tutun:
+Cosmos DB için Azure İşlevleri tetikleyicisi ve bağlamaları, Temel Azure İşlevleri çalışma süresi üzerindeki uzantı paketlerine bağlıdır. Karşılaşabileceğiniz olası sorunları giderebilecek düzeltmeler ve yeni özellikler içerebileceğiiçin bu paketleri her zaman güncel tutun:
 
-* Azure Işlevleri v2 için bkz. [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
-* Azure Işlevleri v1 için bkz. [Microsoft. Azure. WebJobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+* Azure İşlevler V2 için [Bkz. Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
+* Azure İşlevler V1 için [Bkz. Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
 
-Bu makale, açıkça belirtilmediği takdirde, her zaman çalışma zamanına her bahsedildiğinde Azure Işlevleri v2 'ye başvuracaktır.
+Bu makalede, çalışma zamanı açıkça belirtilmediği sürece her zaman Azure İşlevler V2'ye atıfta bulunulacaktır.
 
-## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Azure Cosmos DB SDK 'Yı bağımsız olarak kullanın
+## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Azure Cosmos DB SDK'yı bağımsız olarak tüketin
 
-Uzantı paketinin temel işlevselliği, Cosmos DB için Azure Işlevleri tetikleyicisi ve bağlamaları için destek sağlamaktır. Ayrıca, tetikleyici ve bağlamaları kullanmadan Azure Cosmos DB programlı bir şekilde etkileşim kurmak istiyorsanız yararlı olacak [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md)' yı da içerir.
+Uzantı paketinin temel işlevi, Azure İşlevleri tetikleyicisi ve Cosmos DB için bağlamadesteği sağlamaktır. Ayrıca, tetikleyici ve bağlamaları kullanmadan Azure Cosmos DB ile programlı olarak etkileşimde kalmak istiyorsanız yararlı olan [Azure Cosmos DB .NET SDK'yı](sql-api-sdk-dotnet-core.md)da içerir.
 
-Azure Cosmos DB SDK 'yı kullanmak istiyorsanız, projenize başka bir NuGet paket başvurusu eklemediğinizden emin olun. Bunun yerine, **SDK başvurusunun Azure işlevleri ' uzantı paketi aracılığıyla çözümlenmesine izin verin**. Azure Cosmos DB SDK 'sını tetikleyiciden ve bağlamalardan ayrı kullanın
+Azure Cosmos DB SDK'yı kullanmak istiyorsanız, projenize başka bir NuGet paketi başvurusu eklemediğinizden emin olun. Bunun yerine, **SDK başvurusunun Azure İşlevlerinin Uzantı paketi aracılığıyla çözülmesine izin verin.** Azure Cosmos DB SDK'yı tetikleyici den ve bağlamalardan ayrı olarak tüketin
 
-Ayrıca, [Azure Cosmos DB SDK istemcisinin](./sql-api-sdk-dotnet-core.md)kendi örneğinizi el ile oluşturuyorsanız, tek [bir desenli yaklaşım kullanarak](../azure-functions/manage-connections.md#documentclient-code-example-c)istemcinin yalnızca bir örneğine sahip olma örüntüsünün izlenmesi gerekir. Bu işlem, işlemlerinizin olası yuva sorunlarından kaçınacaktır.
+Ayrıca, [Azure Cosmos DB SDK istemcisinin](./sql-api-sdk-dotnet-core.md)kendi örneğini el ile oluşturuyorsanız, [Singleton desen yaklaşımını kullanarak](../azure-functions/manage-connections.md#documentclient-code-example-c)istemcinin yalnızca bir örneğine sahip olma desenini izlemeniz gerekir. Bu işlem, operasyonlarınızdaki olası soket sorunlarını önler.
 
-## <a name="common-scenarios-and-workarounds"></a>Yaygın senaryolar ve geçici çözümler
+## <a name="common-scenarios-and-workarounds"></a>Sık karşılaşılan senaryolar ve geçici çözüm
 
-### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Azure Işlevi hata iletisi koleksiyonu yok hatasıyla başarısız oluyor
+### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Azure İşlevi hata iletisi toplama yok ile başarısız olur
 
-Azure Işlevi şu hata iletisiyle başarısız oldu "' koleksiyon-adı ' (veritabanındaki ' veritabanı-adı ') veya ' Collection2-Name ' kira koleksiyonu (' Veritabanı2-Name ' veritabanında) Her iki koleksiyon da dinleyici başlamadan önce mevcut olmalıdır. Kira koleksiyonunu otomatik olarak oluşturmak için ' CreateLeaseCollectionIfNotExists ' değerini ' true ' olarak ayarlayın.
+Azure İşlevi hata iletisi ile başarısız olur "Ya kaynak koleksiyonu 'toplama adı' (veritabanı 'veritabanı adı') veya kira koleksiyonu 'collection2-name' (veritabanı 'database2-name') yok. Dinleyici başlamadan önce her iki koleksiyon da bulunmalıdır. Kira koleksiyonunu otomatik olarak oluşturmak için 'CreateLeaseCollectionIfNotExists'u 'true' olarak ayarlayın."
 
-Bu, tetikleyicinin çalışması için gereken Azure Cosmos kapsayıcılarının bir veya her ikisinin mevcut olmadığı ya da Azure Işlevi için ulaşılamaz olmadığı anlamına gelir. Hatanın kendisi, yapılandırmanıza bağlı olarak **hangi Azure Cosmos veritabanı ve kapsayıcısının hangi tetikleyici olduğunu bildirir** .
+Bu, tetikleyicinin çalışması için gereken Azure Cosmos kapsayıcılarından birinin veya her ikisinin bulunmadığı veya Azure İşlevi'ne erişilemeyecek anlamına gelir. Hatanın kendisi, yapılandırmanıza bağlı olarak **hangi Azure Cosmos veritabanının ve kapsayıcısının tetikleyici olduğunu söyleyecektir.**
 
-1. `ConnectionStringSetting` özniteliğini ve **Azure işlev uygulaması mevcut bir ayara başvurmuş**olduğunu doğrulayın. Bu öznitelikteki değer bağlantı dizesinin kendisi olmaması gerekir, ancak yapılandırma ayarının adı.
-2. `databaseName` ve `collectionName` Azure Cosmos hesabınızda mevcut olduğunu doğrulayın. Otomatik değer değişimi kullanıyorsanız (`%settingName%` desenleri kullanarak), ayarın adının Azure İşlev Uygulaması bulunduğundan emin olun.
-3. `LeaseCollectionName/leaseCollectionName`belirtmezseniz, varsayılan değer "kiralamalar" dır. Bu kapsayıcının var olduğunu doğrulayın. İsteğe bağlı olarak, Tetikleyicinizdeki `CreateLeaseCollectionIfNotExists` özniteliğini otomatik olarak oluşturmak için `true` olarak ayarlayabilirsiniz.
-4. Azure Işlevini engellemediğini öğrenmek için [Azure Cosmos hesabınızın güvenlik duvarı yapılandırmasını](how-to-configure-firewall.md) doğrulayın.
+1. Özniteliği `ConnectionStringSetting` doğrulayın ve **Azure İşlev Uygulamanızda bulunan bir ayara başvuruyor.** Bu öznitelikteki değer Bağlantı Dizesinin kendisi değil, Yapılandırma Ayarı'nın adı olmalıdır.
+2. Azure Cosmos hesabınızda bulunduğunu `databaseName` ve `collectionName` var olduğunu doğrulayın. Otomatik değer değiştirme (desenleri `%settingName%` kullanarak) kullanıyorsanız, Azure İşlev Uygulamanızda ayarın adının bulunduğundan emin olun.
+3. Bir `LeaseCollectionName/leaseCollectionName`, varsayılan "kiralama" belirtmezseniz. Bu tür kapsayıcının var olduğunu doğrulayın. İsteğe bağlı olarak, tetikleyicinizdeki `CreateLeaseCollectionIfNotExists` özniteliği otomatik olarak oluşturacak şekilde `true` ayarlayabilirsiniz.
+4. Azure İşlevi'ni engellemediğini görmek için [Azure Cosmos hesabınızın Güvenlik Duvarı yapılandırmasını](how-to-configure-firewall.md) doğrulayın.
 
-### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Azure Işlevi "paylaşılan verimlilik koleksiyonu bir bölüm anahtarına sahip olmalıdır" ile başlayamaz
+### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Azure İşlevi "Paylaşılan iş ortası toplamanın bir bölüm anahtarı olmalı" ile başlayamazsa
 
-Azure Cosmos DB uzantısının önceki sürümleri, [paylaşılan bir üretilen iş veritabanı](./set-throughput.md#set-throughput-on-a-database)içinde oluşturulan bir kira kapsayıcısını kullanmayı desteklemiyor. Bu sorunu çözmek için [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) uzantısını en son sürümü almak için güncelleştirin.
+Azure Cosmos DB Uzantısı'nın önceki [sürümleri, paylaşılan](./set-throughput.md#set-throughput-on-a-database)bir iş veri tabanında oluşturulan bir kiralama kapsayıcısı kullanmayı desteklemedi. Bu sorunu gidermek için, en son sürümü almak için [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) uzantısını güncelleyin.
 
-### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Azure Işlevi, "Bu işlem için PartitionKey sağlanmalıdır."
+### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Azure İşlevi "Bu işlem için PartitionKey sağlanmalıdır" ile başlayamaz.
 
-Bu hata, şu anda eski [uzantı bağımlılığıyla](#dependencies)bölümlenmiş bir kira koleksiyonu kullandığınız anlamına gelir. Kullanılabilir en son sürüme yükseltin. Şu anda Azure Işlevleri v1 üzerinde çalıştırıyorsanız, Azure Işlevleri v2 'ye yükseltmeniz gerekir.
+Bu hata, şu anda eski bir [uzantı bağımlılığı](#dependencies)ile bölümlenmiş bir kira koleksiyonu kullanıyorsanız anlamına gelir. Kullanılabilir en son sürüme yükseltin. Şu anda Azure İşlevleri V1 üzerinde çalışıyorsanız, Azure İşlevler V2'ye yükseltmeniz gerekir.
 
-### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure Işlevi, "bölümlenmiş ise, Bölüm anahtarının kimliğe eşit olması gerekir." kira koleksiyonu ile başlayamaz.
+### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure İşlevi "Kira koleksiyonu, bölümlenmişse, id'e eşit bölüm anahtarına sahip olmalıdır" ile başlayamaz.
 
-Bu hata, geçerli kiralamalar kapsayıcının bölümlenmesi anlamına gelir, ancak bölüm anahtarı yolu `/id`değildir. Bu sorunu çözmek için, kiralamalar kapsayıcısını bölüm anahtarı olarak `/id` yeniden oluşturmanız gerekir.
+Bu hata, geçerli kira kapsayıcınızın bölümlenmiş olduğu, ancak `/id`bölüm anahtarı yolunun . Bu sorunu gidermek için, bölme anahtarı `/id` olarak kira kapsayıcısını yeniden oluşturmanız gerekir.
 
-### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>"Değer null olamaz. Tetikleyici çalıştırmayı denediğinizde, Azure işlevleriniz içindeki parametre adı: o "
+### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>"Değer null olamaz. Parametre adı: Tetikleyiciyi Çalıştırmayı denediğinizde Azure İşlevlerinizgünlüklerinizde o"
 
-Bu sorun, Azure portal kullanıyorsanız ve tetikleyiciyi kullanan bir Azure Işlevi incelenirken ekranda **Çalıştır** düğmesini seçmeyi denerseniz görüntülenir. Tetiklemenin başlamak için çalıştırması gerekmez, Azure Işlevi dağıtıldığında otomatik olarak başlatılır. Azure portal Azure Işlevinin günlük akışını denetlemek istiyorsanız, izlenen kapsayıcınıza gitmeniz ve yeni öğeler eklemeniz yeterlidir. tetikleyiciyi otomatik olarak görürsünüz.
+Bu sorun, Azure portalını kullanıyorsanız ve tetikleyiciyi kullanan bir Azure Işlevini incelerken ekrandaki **Çalıştır** düğmesini seçmeye çalışıyorsanız görünür. Tetikleyici, başlamak için Çalıştır'ı seçmeniz gerekmez, Azure İşlevi dağıtıldığında otomatik olarak başlar. Azure portalında Azure İşlevi'nin günlük akışını denetlemek, izlenen kapsayıcınıza gidin ve bazı yeni öğeler eklemek isterseniz, Tetikleyici'nin çalıştırAn tetikleyicisini otomatik olarak görürsünüz.
 
-### <a name="my-changes-take-too-long-to-be-received"></a>Değişikliklerimin alınması çok uzun sürecek
+### <a name="my-changes-take-too-long-to-be-received"></a>Değişikliklerimin alınması çok uzun sürüyor
 
-Bu senaryoda birden çok neden olabilir ve bunların tümü denetlenmelidir:
+Bu senaryonun birden çok nedeni olabilir ve bunların tümü denetlenmelidir:
 
 1. Azure İşleviniz Azure Cosmos hesabınızla aynı bölgeye mi dağıtıldı? En iyi ağ gecikme süresi için hem Azure İşlevinin hem de Azure Cosmos hesabınızın aynı Azure bölgesinde birlikte bulunması gerekir.
 2. Azure Cosmos kapsayıcınızda gerçekleşen değişiklikler sürekli mi yoksa aralıklı mı?
-Aralıklıysa, değişikliklerin depolanması ile Azure İşlevinin bunları alması arasında biraz gecikme olabilir. Bunun nedeni dahili olarak tetikleyici Azure Cosmos kapsayıcınızda değişiklikleri denetleyip hiç okunmayı bekleyen değişiklik olmadığını bulduğunda, yeni değişiklikler için denetleme yapmadan önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) uykuya geçer (yüksek RU tüketimini önlemek için). Bu uyku süresini tetikleyicinizin `FeedPollDelay/feedPollDelay`yapılandırmasındaki[](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
-3. Azure Cosmos Kapsayıcınız [hız sınırlı](./request-units.md)olabilir.
-4. Özel bir tercih edilen bağlantı sırası tanımlamak üzere Azure bölgelerinin virgülle ayrılmış bir listesini belirtmek için tetikleyicinizdeki `PreferredLocations` özniteliğini kullanabilirsiniz.
+Aralıklıysa, değişikliklerin depolanması ile Azure İşlevinin bunları alması arasında biraz gecikme olabilir. Bunun nedeni dahili olarak tetikleyici Azure Cosmos kapsayıcınızda değişiklikleri denetleyip hiç okunmayı bekleyen değişiklik olmadığını bulduğunda, yeni değişiklikler için denetleme yapmadan önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) uykuya geçer (yüksek RU tüketimini önlemek için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)`FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
+3. Azure Cosmos kapsayıcınız [hız sınırlı](./request-units.md)olabilir.
+4. Özel tercih `PreferredLocations` edilen bağlantı sırasını tanımlamak için virgülle ayrılmış Azure bölgelerinin listesini belirtmek için tetikleyicinizdeki özniteliği kullanabilirsiniz.
 
-### <a name="some-changes-are-repeated-in-my-trigger"></a>Tetikleyicimde bazı değişiklikler yineleniyor
+### <a name="some-changes-are-repeated-in-my-trigger"></a>Tetikleyicimde bazı değişiklikler yinelenir
 
-Bir "değişiklik" kavramı belge üzerinde bir işlemdir. Aynı belge için olayların alındığı en yaygın senaryolar şunlardır:
-* Hesap nihai tutarlılığı kullanıyor. Değişiklik akışı nihai tutarlılık düzeyinde kullanılırken, sonraki değişiklik akışı okuma işlemleri arasında (bir okuma işleminin son olayı, sonraki ilk olarak görüntülenir) içinde yinelenen olaylar olabilir.
-* Belge güncelleştiriliyor. Değişiklik akışı aynı belgeler için birden çok işlem içerebilir, bu belge güncelleştirmeleri alıyorsa, birden çok olay (her güncelleştirme için bir adet) alabilir. Aynı belge için farklı işlemler arasında ayrım yapmanın kolay bir yolu, [her bir değişikliğin `_lsn` özelliğini](change-feed.md#change-feed-and-_etag-_lsn-or-_ts)izlemedir. Bunlar eşleşmiyorsa, bunlar aynı belge üzerinde farklı değişikliklerdir.
-* Yalnızca `id`tarafından belge tanımmıyorsanız, bir belgenin benzersiz tanımlayıcısının `id` ve bölüm anahtarı olduğunu unutmayın (aynı `id` ancak farklı bölüm anahtarına sahip iki belge olabilir).
+"Değişiklik" kavramı, belge üzerinde yapılan bir işlemdir. Aynı belgeiçin olayların alındığı en yaygın senaryolar şunlardır:
+* Hesap Nihai tutarlılık kullanıyor. Değişiklik akışını Nihai tutarlılık düzeyinde tüketirken, sonraki değişiklik akışı okuma işlemleri arasında yinelenen olaylar olabilir (bir okuma işleminin son olayı bir sonrakiilk olay olarak görünür).
+* Belge güncelleştiriliyor. Değişiklik Akışı aynı belgeler için birden çok işlem içerebilir, bu belge güncelleştirme alıyorsa, birden çok olay alabilir (her güncelleştirme için bir tane). Aynı belge için farklı işlemler arasında ayırt etmek `_lsn` için kolay bir yolu [her değişiklik için özelliği](change-feed.md#change-feed-and-_etag-_lsn-or-_ts)izlemektir. Eşleşmezlerse, bunlar aynı belge üzerinde farklı değişikliklerdir.
+* Belgeleri sadece olarak `id`tanımlıyorsanız, bir belgenin `id` benzersiz tanımlayıcısının ve bölüm anahtarı olduğunu unutmayın (aynı `id` ancak farklı bölüm anahtarına sahip iki belge olabilir).
 
-### <a name="some-changes-are-missing-in-my-trigger"></a>Tetikleyicimde bazı değişiklikler yok
+### <a name="some-changes-are-missing-in-my-trigger"></a>Tetikleyicimde bazı değişiklikler eksik
 
-Azure Cosmos kapsayıcıda gerçekleşen bazı değişikliklerin Azure Işlevi tarafından çekilmediğini fark ederseniz, gerçekleşmesi gereken bir ilk araştırma adımı vardır.
+Azure Cosmos kapsayıcınızda gerçekleşen bazı değişikliklerin Azure İşlevi tarafından alınmadığını fark ederseniz, gerçekleşmesi gereken bir ilk araştırma adımı vardır.
 
-Azure Işleviniz değişiklikleri aldığında, genellikle bunları işler ve isteğe bağlı olarak başka bir hedefe gönderebilirsiniz. Eksik değişiklikleri araştırırken, hedef üzerinde değil, alma noktasında (Azure Işlevi başladığında) **hangi değişikliklerin alındığını ölçdiğinizden** emin olun.
+Azure İşleviniz değişiklikleri aldığında, genellikle bunları işler ve isteğe bağlı olarak sonucu başka bir hedefe gönderebilir. Eksik değişiklikleri araştırırken, hangi **değişikliklerin hedefte** değil, yutma noktasında (Azure İşlevi başladığında) alındığını ölçtüğünden emin olun.
 
-Hedefte bazı değişiklikler eksikse, bu, değişiklikler alındıktan sonra Azure Işlev yürütmesi sırasında bazı hatalar meydana geliyor olabilir.
+Hedefte bazı değişiklikler eksikse, bu, değişiklikler alındıktan sonra Azure İşlevi yürütmesi sırasında bazı hatalar meydana geldiğini anlamına gelebilir.
 
-Bu senaryoda, en iyi işlem, kodunuzda `try/catch` blokları eklemek, belirli bir öğe alt kümesi için herhangi bir hatayı tespit etmek ve bunları buna göre işlemek (daha fazla analiz veya yeniden denemek için başka bir depolamaya göndermek için). 
+Bu senaryoda, en iyi eylem `try/catch` yolu, kodunuzda ve değişiklikleri işleyen döngülerin içine bloklar eklemek, belirli bir öğe alt kümesi için herhangi bir hata algılamak ve bunları buna göre işlemektir (daha fazla analiz veya yeniden deneme için başka bir depolama alanına göndermek). 
 
 > [!NOTE]
-> Azure Işlevleri Cosmos DB için tetikleyerek, kod yürütmeyle ilgili işlenmeyen bir özel durum oluşursa, varsayılan olarak bir grup değişikliği yeniden denenmez. Bu, değişikliklerin hedefe ulaşamamasının nedeni, bunları İşleyemeyeceğiniz anlamına gelir.
+> Cosmos DB için Azure İşlevleri tetikleyicisi, kod yürütmeniz sırasında işlenmemiş bir özel durum oluştuğunda varsayılan olarak bir toplu değişiklik grubunu denemeyecektir. Bu, değişikliklerin hedefe ulaşmamasının nedeninin, bunları işlemekoyamadığınız anlamına gelir.
 
-Tetikleyicinizin tümünde bazı değişiklikler alınmadığından, en yaygın senaryo, **çalışan başka bir Azure işlevi**olduğundan emin olur. Bu, Azure 'da dağıtılan başka bir Azure Işlevi veya bir geliştirici makinesinde yerel olarak **aynı yapılandırmaya** (aynı izlenen ve kira kapsayıcıları) sahip olan bir Azure işlevi olabilir ve bu Azure Işlevi, Azure işlevinizin işlemesini beklediğiniz değişikliklerin bir alt kümesini çalmaya çalışır.
+Bazı değişikliklerin tetikleyiciniz tarafından hiç alınmadığını fark ederseniz, en yaygın senaryo **başka bir Azure İşlevi'nin çalışıyor**olmasıdır. Azure'da dağıtılan başka bir Azure İşlevi veya bir geliştiricinin makinesinde yerel olarak çalışan ve **tam olarak aynı yapılandırmaya** (aynı izlenen ve kira kapsayıcıları) çalışan bir Azure İşlevi olabilir ve bu Azure İşlevi, Azure İşlevinizin işlemesini beklediğiniz değişikliklerin bir alt kümesini çalıyor olabilir.
 
-Ayrıca, kaç Azure İşlev Uygulaması örneğinin çalıştığını biliyorsanız senaryo doğrulanabilir. Kira kapsayıcınızı inceleyebilir ve içindeki kira öğelerinin sayısını saydıysanız, içindeki `Owner` özelliğinin farklı değerleri, İşlev Uygulaması örneklerinin sayısına eşit olmalıdır. Bilinen Azure İşlev Uygulaması örneklerinden daha fazla sahip varsa, bu ek sahipler değişikliklerin "çalmasını" olduğu anlamına gelir.
+Ayrıca, kaç tane Azure İşi Uygulaması örneği çalıştırdığınızı biliyorsanız, senaryo doğrulanabilir. Kira kabınızı inceler ve içindeki kira maddelerinin sayısını sayarsanız, bu alandaki `Owner` özelliğin farklı değerleri İşlev Uygulamanızın örnek sayısına eşit olmalıdır. Bilinen Azure İşlevi Uygulaması örneklerinden daha fazla sahip varsa, bu ek sahiplerin değişiklikleri "çalan" kişiler olduğu anlamına gelir.
 
-Bu durumu çözmek için kolay bir yol, yeni/farklı bir değere sahip işlevinizde `LeaseCollectionPrefix/leaseCollectionPrefix` uygulamak ya da başka bir kira kapsayıcıyla test etmek.
+Bu durumu aşmanın kolay bir yolu, `LeaseCollectionPrefix/leaseCollectionPrefix` Yeni/farklı bir değerle İşlevinize bir uygulama veya alternatif olarak yeni bir kiralama kapsayıcısıyla test etmektir.
 
-### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>Kapsayıcımda bulunan tüm öğelerin başlangıçtan itibaren yeniden başlatılması ve yeniden işlenmesi gerekiyor 
-Bir kapsayıcıdaki tüm öğeleri başlangıçtan yeniden işlemek için:
+### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>En başından itibaren kabımdaki tüm öğeleri yeniden başlatmanız ve yeniden işlemem gerekiyor 
+Bir kaptaki tüm öğeleri baştan yeniden işlemek için:
 1. Şu anda çalışıyorsa Azure işlevinizi durdurun. 
-1. Kira koleksiyonundaki belgeleri silin (veya boş olması için kira koleksiyonunu silip yeniden oluşturun)
-1. İşlevinizdeki [Startfromstarted](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) cosmosdbtrigger özniteliğini doğru olarak ayarlayın. 
-1. Azure işlevini yeniden başlatın. Şimdi, başlangıçtan itibaren tüm değişiklikleri okur ve işler. 
+1. Kira koleksiyonundaki belgeleri silme (veya boş olması için kira koleksiyonunu silmek ve yeniden oluşturmak)
+1. İşlevinizdeki [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger özniteliğini doğru olarak ayarlayın. 
+1. Azure işlevini yeniden başlatın. Şimdi tüm değişiklikleri baştan okuyacak ve işleyecek. 
 
-[Startfromstart](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) 'ı true olarak ayarlamak, Azure işlevine geçerli saat yerine koleksiyonun geçmişinden başlayarak okuma işlemi başlatmasını bildirir. Bu yalnızca, zaten oluşturulan kiralamalar (yani, kiralamalar koleksiyonundaki belgeler) olmadığında işe yarar. Zaten oluşturulan kiralamalar varsa, bu özelliğin true olarak ayarlanması etkisizdir; Bu senaryoda, bir işlev durdurulduğunda ve yeniden başlatıldığında, kiralamalar koleksiyonunda tanımlandığı gibi son denetim noktasından okumaya başlar. Baştan sonra yeniden işlemek için yukarıdaki 1-4 adımları izleyin.  
+[Başlangıç Başlangıç'ı](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) doğru ayarlamak, Azure işlevine geçerli saat yerine koleksiyonun geçmişinin başlangıcından itibaren değişiklikleri okumaya başlamasını söyler. Bu yalnızca zaten oluşturulmuş kiralamalar olmadığında (diğer bir deyişle, kiralama koleksiyonundaki belgeler) çalışır. Zaten oluşturulmuş kiralar olduğunda bu özelliğin doğru ayarlanması hiçbir etkisi yoktur; Bu senaryoda, bir işlev durdurulup yeniden başlatıldığında, kiralama koleksiyonunda tanımlandığı gibi son denetim noktasından okumaya başlar. Baştan yeniden işlemek için yukarıdaki adımları 1-4 izleyin.  
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bağlama yalnızca IReadOnlyList\<Document > veya JArray ile yapılabilir
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bağlama yalnızca IReadOnlyList\<Belge> veya JArray ile yapılabilir
 
-Bu hata, Azure Işlevleri projeniz (veya başvurulan herhangi bir proje), [Azure işlevleri Cosmos DB uzantısı](./troubleshoot-changefeed-functions.md#dependencies)tarafından sağlanenden farklı bir SÜRÜMLE Azure Cosmos DB SDK 'ya el ile NuGet başvurusu içeriyorsa meydana gelir.
+Bu hata, Azure İşlevler projeniz (veya başvurulan herhangi bir proje) [Azure İşleçleri Cosmos DB Uzantısı](./troubleshoot-changefeed-functions.md#dependencies)tarafından sağlanandan farklı bir sürümle Azure Cosmos DB SDK'ya manuel NuGet başvurusu içeriyorsa ortaya çıkar.
 
-Bu durumu geçici olarak çözmek için eklenen el ile NuGet başvurusunu kaldırın ve Azure Cosmos DB SDK başvurusunun Azure Işlevleri Cosmos DB Uzantı paketi aracılığıyla çözümlendiğine izin verin.
+Bu durumu çözmek için eklenen manuel NuGet başvurusunu kaldırın ve Azure Cosmos DB SDK başvurusunun Azure İşlemi Cosmos DB Uzantısı paketi aracılığıyla çözülmesine izin verin.
 
-### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Değişikliklerin algılanması için Azure Işlevinin yoklama aralığı değiştiriliyor
+### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Algılama değişiklikleri için Azure İşlevinin yoklama aralığını değiştirme
 
-Daha önce [değişikliklerinizin alınması çok uzun sürme](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)için, Azure işlevi yeni değişiklikler denetlenmeden önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) için uykuya geçecek (yüksek ru tüketimine engel olmak için). Bu uyku süresini tetikleyicinizin `FeedPollDelay/feedPollDelay`yapılandırmasındaki[](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
+Değişikliklerim için daha önce açıklandığı [gibi, değişikliklerin alınması çok uzun sürer,](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)Azure işlevi yeni değişiklikleri kontrol etmeden önce (yüksek RU tüketimini önlemek için) yapılandırılabilir bir süre (varsayılan olarak 5 saniye) uyku moduna geçecektir. Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)`FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Işlevleriniz için izlemeyi etkinleştirme](../azure-functions/functions-monitoring.md)
-* [Azure Cosmos DB .NET SDK sorunlarını giderme](./troubleshoot-dot-net-sdk.md)
+* [Azure İşlevleriniz için izlemeyi etkinleştirme](../azure-functions/functions-monitoring.md)
+* [Azure Cosmos DB .NET SDK Sorun Giderme](./troubleshoot-dot-net-sdk.md)

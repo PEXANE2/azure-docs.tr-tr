@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services REST ile kodlama yaparken bir videoyu alt kırpın
-description: Bu konu, REST kullanarak Azure Media Services kodlama sırasında bir videonun nasıl alt kırpılacağını açıklamaktadır
+title: Azure Media Services REST ile kodlama yaparken bir videonun alt klibi
+description: Bu konu, REST kullanarak Azure Medya Hizmetleri ile kodlama yaparken bir videonun nasıl alt klip kesilen nasıl açıklanır
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,40 +14,40 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
 ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514332"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Media Services REST ile kodlarken bir videoyu alt kırpın
+# <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Medya Hizmetleri ile kodlama yaparken bir videonun alt klibi - REST
 
-Bir [işi](https://docs.microsoft.com/rest/api/media/jobs)kullanarak kodlarken videoyu kırpabilir veya alt kırpabilirsiniz. Bu işlev, [Builtınstandardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ön ayarları veya [Standardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) önayarları kullanılarak oluşturulan [dönüşümlerle](https://docs.microsoft.com/rest/api/media/transforms) birlikte kullanılır. 
+Bir [İş'i](https://docs.microsoft.com/rest/api/media/jobs)kullanarak kodlarken videoyu kırpabilir veya alt kesebilirsiniz. Bu [işlevsellik, BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) hazır ayarları veya [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) hazır ayarları kullanılarak oluşturulan herhangi bir [Transform](https://docs.microsoft.com/rest/api/media/transforms) ile çalışır. 
 
-Bu konudaki REST örneği, bir kodlama işi gönderdiği için videoyu kırpan bir iş oluşturur. 
+Bu konudaki REST örneği, bir kodlama işi gönderirken videoyu kırpan bir iş oluşturur. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu konu başlığı altında açıklanan adımları tamamlamak için için gerekenler:
+Bu konuda açıklanan adımları tamamlamak için şunları yapmak zorundasınız:
 
-- [Azure Media Services hesabı oluşturun](create-account-cli-how-to.md).
-- [Azure Media Services REST API çağrıları için Postman yapılandırma](media-rest-apis-with-postman.md).
+- [Bir Azure Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
+- [Azure Medya Hizmetleri REST API çağrıları için Postacı yapılandırın.](media-rest-apis-with-postman.md)
     
-    [Azure AD belirtecini al](media-rest-apis-with-postman.md#get-azure-ad-token)konusunun son adımını izlediğinizden emin olun. 
-- Bir dönüşüm ve çıkış varlıkları oluşturun. [URL 'ye bağlı olarak uzak bir dosya kodlamak ve VIDEO Rest](stream-files-tutorial-with-rest.md) öğreticisini akışa almak Için bir dönüştürme ve çıkış varlıkları oluşturmayı görebilirsiniz.
-- [Kodlama kavramı](encoding-concept.md) konusunu gözden geçirin.
+    [Azure AD Belirteci'ni alın'](media-rest-apis-with-postman.md#get-azure-ad-token)ın son adımını takip edin. 
+- Dönüşüm ve çıktı Varlıkları oluşturun. URL'ye dayalı uzak bir dosyayı encode'da Dönüşüm ve çıktı Varlıkları'nın nasıl oluşturulabileceğini ve [videoyu nasıl yayınlayabileceğinizi](stream-files-tutorial-with-rest.md) görebilirsiniz - REST öğretici.
+- Kodlama kavramı konusunu gözden [geçirin.](encoding-concept.md)
 
-## <a name="create-a-subclipping-job"></a>Bir alt kırpma işi oluşturun
+## <a name="create-a-subclipping-job"></a>Alt kupür işi oluşturma
 
-1. İndirdiğiniz Postman koleksiyonunda **dönüşümler ve işler** ' i seçin -> **alt kırpması ile iş oluşturun**.
+1. İndirdiğiniz Postacı koleksiyonunda, Alt Kırpma ile **Dönüşümler ve işler** -> **Create Job'u**seçin.
     
-    **PUT** isteği şöyle görünür:
+    **PUT** isteği aşağıdaki gibi görünür:
     
     ```
     https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
     ```
-1. "TransformName" ortam değişkeninin değerini, dönüşüm adınızla güncelleştirin. 
-1. **Gövde** sekmesini seçin ve "mbir Putasset" değerini çıkış varlık adınızla güncelleştirin.
+1. Dönüşüm adınız ile "transformName" ortam değişkeninin değerini güncelleştirin. 
+1. **Gövde** sekmesini seçin ve çıktı Varlık adınız ile "myOutputAsset"i güncelleştirin.
 
     ```
     {
@@ -82,8 +82,8 @@ Bu konu başlığı altında açıklanan adımları tamamlamak için için gerek
     ```
 1. **Gönder**’e basın.
 
-    Oluşturulan ve gönderilen iş ve işin durumu hakkında bilgi içeren **yanıtı** görürsünüz. 
+    Oluşturulan ve gönderilen iş ve işin durumu hakkında bilgi içeren **Yanıt'ı** görürsünüz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Özel dönüşümle kodlama](custom-preset-rest-howto.md) 
+[Özel bir dönüştürme ile kodlama](custom-preset-rest-howto.md) 

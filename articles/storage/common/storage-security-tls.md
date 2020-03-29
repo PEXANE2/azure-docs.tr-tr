@@ -1,7 +1,7 @@
 ---
-title: .NET ile güvenli TLS 'yi etkinleştirme
+title: .NET ile güvenli TLS'yi etkinleştirin
 titleSuffix: Azure Storage
-description: Azure depolama için .NET istemci kitaplığı 'nı kullanarak TLS 1,2 ' i etkinleştirmeyi öğrenin.
+description: Azure Depolama için .NET istemci kitaplığını kullanarak TLS 1.2'yi nasıl etkinleştireceklerini öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,25 +11,25 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371811"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Depolama istemcisi için güvenli TLS'yi etkinleştirme
 
-Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir. Güvenlik açığı bulunan SSL 1,0, 2,0 ve 3,0. RFC tarafından yasaklanmış olmaları gerekir. TLS 1,0, güvenli olmayan blok şifresi (DES CBC ve RC2 CBC) ve akış şifresi (RC4) kullanımı için güvenli hale gelir. PCI Council Ayrıca daha yüksek TLS sürümlerine geçiş için önerilir. Daha fazla ayrıntı için [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)görebilirsiniz.
+Aktarım Katmanı Güvenliği (TLS) ve Güvenli Soket katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir. SSL 1.0, 2.0 ve 3.0'ın savunmasız olduğu tespit edilmiştir. RFC tarafından yasaklandılar. TLS 1.0 güvensiz Blok şifresi (DES CBC ve RC2 CBC) ve Stream şifresi (RC4) kullanmak için güvensiz hale gelir. PCI konseyi de daha yüksek TLS sürümlerine geçiş önerdi. Daha fazla bilgi [için, Taşıma Katmanı Güvenliği 'ni (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)görebilirsiniz.
 
-Azure Storage, 2015 sonrasında SSL 3,0 ' i durdurdu ve genel HTTPs uç noktalarında TLS 1,2 kullandığından, TLS 1,0 ve TLS 1,1 yine de geriye dönük uyumluluk için desteklenmektedir.
+Azure Depolama, 2015 yılından bu yana SSL 3.0'ı durdurdu ve ortak HTTP uç noktalarında TLS 1.2 kullanıyor, ancak TLS 1.0 ve TLS 1.1 geriye dönük uyumluluk için hala desteklenmeye devam ediyor.
 
-Azure depolama 'ya güvenli ve uyumlu bir bağlantı sağlamak için, Azure depolama hizmetini çalıştırmak üzere istek göndermeden önce istemci tarafında TLS 1,2 veya daha yeni bir sürümü etkinleştirmeniz gerekir.
+Azure Depolama'ya güvenli ve uyumlu bağlantı sağlamak için, Azure Depolama hizmetini çalıştırmak için istekler göndermeden önce istemci tarafında TLS 1.2 veya daha yeni sürümü etkinleştirmeniz gerekir.
 
-## <a name="enable-tls-12-in-net-client"></a>.NET istemcisinde TLS 1,2 'yi etkinleştirme
+## <a name="enable-tls-12-in-net-client"></a>.NET istemcisinde TLS 1.2'yi etkinleştirme
 
-İstemcisinin TLS 1,2 anlaşmasına sahip olması için, işletim sisteminin ve .NET Framework sürümünün her ikisi de TLS 1,2 ' i desteklemelidir. [TLS 1,2 desteğiyle ilgili](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)daha fazla ayrıntı görüntüleyin.
+Müşterinin TLS 1.2 ile pazarlık edebilmek için, işletim sistemi ve .NET Framework sürümünün TLS 1.2'yi desteklemesi gerekir. [TLS 1.2 için Destek'te](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)daha fazla ayrıntıya bakın.
 
-Aşağıdaki örnekte, .NET istemcisinde TLS 1,2 nasıl etkinleştirileceği gösterilmektedir.
+Aşağıdaki örnekte TLS 1.2'nin .NET istemcinizde nasıl etkinleştirilen olduğu gösterilmektedir.
 
 ```csharp
 
@@ -48,11 +48,11 @@ Aşağıdaki örnekte, .NET istemcisinde TLS 1,2 nasıl etkinleştirileceği gö
 
 ```
 
-## <a name="enable-tls-12-in-powershell-client"></a>PowerShell istemcisinde TLS 1,2 'yi etkinleştirme
+## <a name="enable-tls-12-in-powershell-client"></a>PowerShell istemcisinde TLS 1.2'yi etkinleştirme
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)] 
 
-Aşağıdaki örnek, PowerShell istemcinizdeki TLS 1,2 ' i nasıl etkinleştireceğinizi göstermektedir.
+Aşağıdaki örnek, PowerShell istemcinizde TLS 1.2'yi nasıl etkinleştirilen gösterir.
 
 ```powershell
 # Enable TLS 1.2 before connecting to Azure Storage
@@ -69,16 +69,16 @@ $listOfContainers = Get-AzStorageContainer -Context $ctx -Prefix $prefix
 $listOfContainers
 ```
 
-## <a name="verify-tls-12-connection"></a>TLS 1,2 bağlantısını doğrulama
+## <a name="verify-tls-12-connection"></a>TLS 1.2 bağlantısını doğrulayın
 
-Fiddler 'i kullanarak TLS 1,2 'in gerçekten kullanıldığını doğrulayabilirsiniz. İstemci ağ trafiği yakalamaya başlamak için Fiddler 'ı açın ve ardından yukarıdaki örneği yürütün. Daha sonra, örneğin, bağlantının yaptığı bağlantıda TLS sürümünü bulabilirsiniz.
+TLS 1.2'nin gerçekten kullanIlip kullanılmadığını doğrulamak için Fiddler'ı kullanabilirsiniz. İstemci ağ trafiğini yakalamaya başlamak için Fiddler'ı açın ve ardından örnek üzerinde çalıştırın. Ardından TLS sürümünü, örneğin yaptığı bağlantıda bulabilirsiniz.
 
-Aşağıdaki ekran görüntüsü, doğrulama için bir örnektir.
+Aşağıdaki ekran görüntüsü doğrulama için bir örnektir.
 
-![Fiddler 'da TLS sürümünün doğrulanması ekran görüntüsü](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
+![Fiddler'da TLS sürümünü doğrulama ekran görüntüsü](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
-* [TLS üzerinde PCI uyumluluğu](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
-* [Java istemcisinde TLS 'yi etkinleştirme](https://www.java.com/en/configure_crypto.html)
+* [TLS'de PCI uyumluluğu](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
+* [Java istemcisinde TLS'yi etkinleştirme](https://www.java.com/en/configure_crypto.html)

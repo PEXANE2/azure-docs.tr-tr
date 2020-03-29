@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde kapsayıcı önerileri | Microsoft Docs
-description: Bu belgede, kapsayıcılarınızın korunmasına yardımcı olacak Azure Güvenlik Merkezi önerileri açıklanmaktadır.
+title: Azure Güvenlik Merkezi'nde konteyner önerileri | Microsoft Dokümanlar
+description: Bu belge, kapsayıcılarınızın korunmasına nasıl yardımcı olunailgili Azure Güvenlik Merkezi önerilerini açıklar.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,48 +14,48 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
 ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912371"
 ---
-# <a name="understand-azure-security-center-container-recommendations"></a>Azure Güvenlik Merkezi kapsayıcısı önerilerini anlama
+# <a name="understand-azure-security-center-container-recommendations"></a>Azure Güvenlik Merkezi'ndeki kapsayıcı önerilerini anlama
 
-Tek bir uygulamalarınızı üretimde iş açısından kritik, Kapsayıcılı bulutta yerel uygulamalar çalıştıracak şekilde geçirdiğinizde, kolay ve hızlı dağıtım ve güncelleştirme dahil olmak üzere kapsayıcıların özelliklerinden yararlanabilirsiniz. Dağıtılan kapsayıcıların sayısı artmaya devam ettiğinden, kapsayıcılarınızın güvenlik durumuna ilişkin görünürlük sağlamak ve tehditlere karşı korumaya yardımcı olmak için güvenlik çözümlerinin yerinde olması gerekir.
+Üretimde görev açısından kritik, kapsayıcı bulut yerel uygulamaları çalıştırmak için monolith uygulamalarınızı geçirerken, kolay ve hızlı dağıtım ve güncelleştirme dahil olmak üzere kapsayıcıların özelliklerinden yararlanabilirsiniz. Dağıtılan konteyner lerin sayısı artmaya devam ettikçe, konteynerlerinizin güvenlik durumuna görünürlük sağlamak ve onları tehditlerden korumaya yardımcı olmak için güvenlik çözümlerinin yerinde olması gerekir.
 
-Azure Güvenlik Merkezi, kapsayıcılarınızın güvenliğini sağlamanıza yardımcı olmak için aşağıdaki özellikleri sağlar:
+Azure Güvenlik Merkezi, kapsayıcılarınızı korumanıza yardımcı olmak için aşağıdaki özellikleri sağlar:
 
-- **IaaS Linux makinelerinde barındırılan kapsayıcıların görünürlüğü**<br>Azure Güvenlik Merkezi 'nde kapsayıcılar sekmesi, Docker ile dağıtılan tüm sanal makineleri görüntüler. Güvenlik Merkezi, bir sanal makinede güvenlik sorunlarını araştırırken, Docker sürümü ve konakta çalışan görüntülerin sayısı gibi, makinedeki kapsayıcılarla ilgili ek bilgiler sağlar.
+- **IaaS Linux makinelerinde barındırılan konteynerlere görünürlük**<br>Azure Güvenlik Merkezi'nde Kapsayıcılar sekmesi, Docker ile dağıtılan tüm sanal makineleri görüntüler. Güvenlik Merkezi, sanal bir makinedeki güvenlik sorunlarını incelerken, docker sürümü ve ana bilgisayarda çalışan görüntü sayısı gibi makinedeki kapsayıcılarla ilgili ek bilgiler sağlar.
 
-    ![kapsayıcı sekmesi](./media/security-center-container-recommendations/docker-recommendation.png)
+    ![konteyner sekmesi](./media/security-center-container-recommendations/docker-recommendation.png)
 
 
-- **Docker için CIS kıyaslaması tabanlı güvenlik önerileri**<br>Güvenlik Merkezi, Docker yapılandırmalarınızı tarar ve değerlendirilen başarısız kuralların listesini sunarak hatalı yapılandırmalar konusunda görünürlük sağlar. Güvenlik Merkezi, bu sorunları hızlı bir şekilde çözmenize ve zamandan tasarruf etmenize yardımcı olacak yönergeler sağlar. Güvenlik Merkezi, Docker yapılandırmalarını sürekli değerlendirir ve son durumlar hakkında bilgi verir.
+- **Docker için BDT kıyaslama dayalı güvenlik önerileri**<br>Güvenlik Merkezi, Docker yapılandırmalarınızı tarar ve değerlendirilen başarısız kuralların listesini sunarak hatalı yapılandırmalar konusunda görünürlük sağlar. Güvenlik Merkezi, bu sorunları hızlı bir şekilde çözmenize ve zamandan tasarruf etmenizi sağlamak için yönergeler sağlar. Güvenlik Merkezi, Docker yapılandırmalarını sürekli değerlendirir ve son durumlar hakkında bilgi verir.
 
-    ![kapsayıcı sekmesi](./media/security-center-container-recommendations/container-cis-benchmark.png)
+    ![konteyner sekmesi](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Gerçek zamanlı kapsayıcı tehdit koruması**<br> Güvenlik Merkezi, AuditD bileşeniyle Linux makinelerde yer alan kapsayıcılarınız için gerçek zamanlı tehdit koruması sağlar. Uyarılar, konakta ayrıcalıklı bir kapsayıcı oluşturma, bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucusu veya şifre Miners kullanımı gibi birçok şüpheli Docker etkinliğini belirler. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
+- **Gerçek zamanlı konteyner tehdit koruması**<br> Security Center, AuditD bileşeni ne sahip Linux makinelerindeki konteynerleriniz için gerçek zamanlı tehdit koruması sağlar. Uyarılar, ana bilgisayarda ayrıcalıklı bir kapsayıcı oluşturulması, Docker konteynerinin içinde çalışan Secure Shell (SSH) sunucusunun bir göstergesi veya kripto madencilerin kullanımı gibi birkaç şüpheli Docker faaliyetini tanımlar. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
 
-    ![kapsayıcı sekmesi](./media/security-center-container-recommendations/docker-threat-detection.png)
+    ![konteyner sekmesi](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>Öneriler
-IaaS Linux makinelerinde barındırılan mevcut kapsayıcıları ve Docker yapılandırmalarının güvenlik değerlendirmesini anlamanıza yardımcı olması için aşağıdaki tabloları kullanın.
+IaaS Linux makinelerinde barındırılan kullanılabilir kapsayıcıları ve Docker yapılandırmalarının güvenlik değerlendirmesini anlamanıza yardımcı olmak için aşağıdaki tabloları referans olarak kullanın.
 
 | Öneri | Açıklama | Düzeltme |
 | --- | --- | --- |
-|Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltin |En iyi yapılandırma uygulamalarına göre kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltin.| Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltmek için:<br>1. başarısız kuralların listesini gözden geçirin.<br>2. belirtilen yönergelere göre her bir kuralı onarın.|
+|Konteyner güvenlik yapılandırmalarında düzeltici güvenlik açıkları |Yapılandırma en iyi uygulamaları temel alan kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltin.| Kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltmek için:<br>1. Başarısız kuralların listesini gözden geçirin.<br>2. Belirtilen talimatlara göre her kuralı düzeltin.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Diğer Azure kaynak türü için geçerli öneriler hakkında daha fazla bilgi için aşağıdakilere bakın:
+Diğer Azure kaynak türleri için geçerli olan öneriler hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
 
 * [Azure Güvenlik Merkezi'nde kimliği ve erişimi izleme](security-center-identity-access.md)
 * [Azure Güvenlik Merkezi'nde ağınızı koruma](security-center-network-recommendations.md)
-* [Azure Güvenlik Merkezi 'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)
+* [Azure SQL hizmetinizi Azure Güvenlik Merkezi'nde koruma](security-center-sql-service-recommendations.md)
 
 Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
 * [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
 * [Azure Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama](tutorial-security-policy.md) -- Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını yönetme ve yanıtla](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını nasıl yönetip yanıtlaştak yapılacağını öğrenin.

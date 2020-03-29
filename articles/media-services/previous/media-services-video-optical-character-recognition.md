@@ -1,6 +1,6 @@
 ---
-title: Azure Media Analytics OCR ile metni dijital olarak boyutlandır | Microsoft Docs
-description: Azure Media Analytics OCR (optik karakter tanıma), video dosyalarındaki metin içeriğini düzenlenebilir, aranabilir dijital metinlere dönüştürmenize olanak sağlar.  Bu sayede, medyanızın video sinyalinden anlamlı meta verilerin ayıklanmasını otomatik hale getirebilirsiniz.
+title: Azure Media Analytics OCR ile metni dijitalleştirin | Microsoft Dokümanlar
+description: Azure Media Analytics OCR (optik karakter tanıma), video dosyalarındaki metin içeriğini düzenlenebilir, aranabilir dijital metne dönüştürmenizi sağlar.  Bu, medyanızın video sinyalinden anlamlı meta verilerin çıkarılmasını otomatikleştirmenize olanak tanır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,46 +15,46 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918351"
 ---
-# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Video dosyalarındaki metin içeriğini dijital metne dönüştürmek için Azure Media Analytics kullanın  
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Video dosyalarındaki metin içeriğini dijital metne dönüştürmek için Azure Media Analytics'i kullanma  
 
 > [!NOTE]
-> **Azure MEDIA OCR** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihi için, [eski bileşenler](legacy-components.md) konusuna bakın.
+> **Azure Media OCR** ortam işlemcisi kullanımdan kaldırılacak. Emeklilik tarihi [için, eski bileşenler](legacy-components.md) konusuna bakın.
 
 ## <a name="overview"></a>Genel Bakış
-Video dosyalarınızda metin içeriğini ayıklamanız ve düzenlenebilir, aranabilir bir dijital metin oluşturmanız gerekiyorsa Azure Media Analytics OCR (optik karakter tanıma) kullanmanız gerekir. Bu Azure Medya Işlemcisi, video dosyalarınızda metin içeriğini algılar ve kullanım için metin dosyaları oluşturur. OCR, medyanızın video sinyalinden anlamlı meta verilerin ayıklanmasını otomatik hale getirmenizi sağlar.
+Video dosyalarınızdan metin içeriği çıkarmanız ve düzenlenebilir, aranabilir bir dijital metin oluşturmanız gerekiyorsa, Azure Media Analytics OCR (optik karakter tanıma) kullanmanız gerekir. Bu Azure Medya İşlemcisi, video dosyalarınızdaki metin içeriğini algılar ve kullanımınız için metin dosyaları oluşturur. OCR, medyanızın video sinyalinden anlamlı meta verilerin çıkarılmasını otomatikleştirmenizi sağlar.
 
-Bir arama altyapısıyla birlikte kullanıldığında, medyanıza metin ile kolayca dizin oluşturabilir ve içeriğinizin bulunabilirliğini geliştirebilirsiniz. Bu, bir slayt gösterisi sunusunun video kaydı veya ekran yakalama gibi yüksek düzeyde metin videosunda son derece yararlıdır. Azure OCR medya Işlemcisi dijital metin için iyileştirilmiştir.
+Bir arama motoruyla birlikte kullanıldığında, medyanızı kolayca metin le dizine ekleyebilir ve içeriğinizin bulunabilirliğini artırabilirsiniz. Bu, bir slayt gösterisi sunumunun video kaydı veya ekran yakalama gibi son derece metinsel videoda son derece yararlıdır. Azure OCR Medya İşlemcisi dijital metin için optimize edilebistir.
 
-**Azure MEDIA OCR** medya işlemcisi Şu anda önizleme aşamasındadır.
+**Azure Media OCR** medya işlemcisi şu anda Önizleme'de.
 
-Bu makalede, **Azure MEDIA OCR** hakkında ayrıntılar verilmektedir ve .net IÇIN Media Services SDK ile nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi ve örnek için [Bu bloga](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)bakın.
+Bu makalede, **Azure Media OCR** hakkında ayrıntılı bilgi verilmiştir ve .NET için Medya Hizmetleri SDK ile nasıl kullanılacağını gösterir. Daha fazla bilgi ve örnekler için [bu bloga](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)bakın.
 
 ## <a name="ocr-input-files"></a>OCR giriş dosyaları
-Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
+Video dosyaları. Şu anda, aşağıdaki biçimleri desteklenir: MP4, MOV ve WMV.
 
 ## <a name="task-configuration"></a>Görev yapılandırması
-Görev yapılandırması (ön ayar). **Azure MEDIA OCR**ile bir görev oluştururken JSON veya XML kullanarak bir yapılandırma ön ayarı belirtmeniz gerekir. 
+Görev yapılandırması (önceden ayarlanmış). **Azure Media OCR**ile bir görev oluştururken, JSON veya XML kullanarak bir yapılandırma ön ayarbelirtmelisiniz. 
 
 >[!NOTE]
->OCR altyapısı yalnızca yükseklik/genişlik içinde geçerli bir giriş olarak en az 40 32000 piksel olan bir görüntü bölgesi alır.
+>OCR altyapısı, her iki yükseklik/genişlikte de geçerli bir giriş olarak yalnızca en az 40 piksel ile maksimum 32.000 piksel arasında bir görüntü bölgesi alır.
 >
 
 ### <a name="attribute-descriptions"></a>Öznitelik açıklamaları
 | Öznitelik adı | Açıklama |
 | --- | --- |
-|AdvancedOutput| AdvancedOutput değerini true olarak ayarlarsanız, JSON çıktısı her bir sözcüğe ait konumsal verileri (tümceciklere ve bölgelere ek olarak) içerir. Bu ayrıntıları görmek istemiyorsanız, bayrağını false olarak ayarlayın. Varsayılan değer false'tur. Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)bakın.|
-| Dil |(isteğe bağlı) aranacak metnin dilini açıklar. Aşağıdakilerden biri: otomatik algıla (varsayılan), Arapça, Chinesebasitleştirilmiş, Chinesetradi, Çekçe Danca, Felemenkçe, Ingilizce, Fince, Fransızca, Almanca, Yunanca, Macarca, Italyanca, Japonca, Korece, Norveççe, Lehçe, Portekizce, Rumence, Rusça, SerbianCyrillic, SerbianLatin, Slovakça, Ispanyolca, Isveççe, Türkçe. |
-| TextOrientation |(isteğe bağlı) aranacak metnin yönünü açıklar.  "Sol", tüm harflerin sol tarafına doğru işaret ettiği anlamına gelir.  Varsayılan metin (bir kitapta bulunılabilecek gibi), "yukarı" yönelimli olarak adlandırılır.  Aşağıdakilerden biri: otomatik algıla (varsayılan), yukarı, sağ, aşağı, sol. |
-| TimeInterval |(isteğe bağlı) örnekleme oranını açıklar.  Varsayılan değer her 1/2 saniyedir.<br/>JSON biçimi – HH: mm: ss. SSS (varsayılan 00:00:00.500)<br/>XML biçimi – W3C XSD Duration temel (varsayılan PT 0,5) |
-| Detectregion |seçim Metin algılayan bir görüntü çerçevesi içindeki bölgeleri belirten bir DetectRegion nesneleri dizisi.<br/>Bir DetectRegion nesnesi aşağıdaki dört tamsayı değerden oluşur:<br/>Sol kenar boşluğundan sol-piksel<br/>Üst-kenar boşluğundan üst-piksel<br/>Width – bölgenin piksel cinsinden genişliği<br/>Yükseklik – bölgenin piksel cinsinden yüksekliği |
+|Gelişmiş Çıktı| AdvancedOutput'ü doğru ayarlarsanız, JSON çıktısı her bir sözcük için konumsal veriler içerir (tümceciklere ve bölgelere ek olarak). Bu ayrıntıları görmek istemiyorsanız, bayrağı false olarak ayarlayın. Varsayılan değer false'tur. Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)bakın.|
+| Dil |(isteğe bağlı) bakmak için metin dilini açıklar. Aşağıdakilerden biri: AutoDetect (varsayılan), Arapça, ÇinceBasitleştirilmiş, ÇinceGeleneksel, Çek Calısa, Felemenkçe, İngilizce, Fince, Fransızca, Almanca, Yunanca, Macarca, İtalyanca, Japonca, Korece, Norveççe, Lehçe, Portekizce, Romence, Rusça, SırpKiril, Sırplatince, Slovakça, İspanyolca, İsveççe, Türkçe. |
+| Metin Yönlendirme |(isteğe bağlı) bakmak için metnin yönünü açıklar.  "Sol" tüm harflerin üst sola doğru işaret anlamına gelir.  Varsayılan metin (bir kitapta bulunabilecek şekilde) "Yukarı" yönelimli olarak adlandırılabilir.  Aşağıdakilerden biri: AutoDetect (varsayılan), Yukarı, Sağ, Aşağı, Sol. |
+| Zaman Aralığı |(isteğe bağlı) örnekleme hızını açıklar.  Varsayılan her 1/2 saniyede birdir.<br/>JSON formatı - HH:mm:ss. SSS (varsayılan 00:00:00.500)<br/>XML formatı – W3C XSD süresi ilkel (varsayılan PT0.5) |
+| Algılama Bölgeleri |(isteğe bağlı) Metni algılamak için video çerçevesi içindeki bölgeleri belirten Bir dizi DetectRegion nesnesi.<br/>DetectRegion nesnesi aşağıdaki dört tamsayı değerden oluşur:<br/>Sol – sol kenar boşluğundan piksel<br/>Üst – üst kenar boşluğundan pikseller<br/>Genişlik – piksellerde bölgenin genişliği<br/>Yükseklik – piksel lerde bölgenin yüksekliği |
 
-#### <a name="json-preset-example"></a>JSON önceden ayarlanmış örneği
+#### <a name="json-preset-example"></a>JSON önceden ayarlanmış örnek
 
 ```json
     {
@@ -77,7 +77,7 @@ Görev yapılandırması (ön ayar). **Azure MEDIA OCR**ile bir görev oluşturu
     }
 ```
 
-#### <a name="xml-preset-example"></a>XML önceden ayarlanmış örneği
+#### <a name="xml-preset-example"></a>XML önceden ayarlanmış örnek
 
 ```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
@@ -100,33 +100,33 @@ Görev yapılandırması (ön ayar). **Azure MEDIA OCR**ile bir görev oluşturu
 ```
 
 ## <a name="ocr-output-files"></a>OCR çıktı dosyaları
-OCR medya işlemcisinin çıktısı bir JSON dosyasıdır.
+OCR ortam işlemcisinin çıktısı bir JSON dosyasıdır.
 
 ### <a name="elements-of-the-output-json-file"></a>Çıktı JSON dosyasının öğeleri
-Video OCR çıktısı, videonuzda bulunan karakterlere göre zamana göre kesimli veriler sağlar.  Çözümlemek istediğiniz sözcüklerin tam olarak odaklanmak için dil veya yönlendirme gibi öznitelikleri kullanabilirsiniz. 
+Video OCR çıkışı, videonuzda bulunan karakterler hakkında zaman segmentli veriler sağlar.  Dil veya oryantasyon gibi öznitelikleri tam olarak çözümlemek le ilgilendiğiniz sözcükleri öğrenmek için kullanabilirsiniz. 
 
 Çıktı aşağıdaki öznitelikleri içerir:
 
 | Öğe | Açıklama |
 | --- | --- |
-| Timescale |Videonun saniye başına "ticks" |
-| Uzaklık |Tarih damgalarının zaman kayması. Video API 'Lerinin 1,0 sürümünde bu her zaman 0 olur. |
-| Framerate |Videonun saniye başına kareleri |
-| Genişlik |Videonun piksel cinsinden genişliği |
-| Yükseklik |Videonun piksel cinsinden yüksekliği |
-| Fragments |meta verilerin öbekli olduğu, zaman tabanlı video öbeklerinin dizisi |
-| start |"ticks" içindeki bir parçanın başlangıç saati |
-| duration |"ticks" içindeki bir parçanın uzunluğu |
-| interval |verilen parça içindeki her bir olayın aralığı |
+| Timescale |Videonun saniyesi için "kene" |
+| Uzaklık |zaman damgaları için zaman mahsup. Video API'lerinin sürüm 1.0'ında bu her zaman 0 olacaktır. |
+| Framerate |Videonun saniye kareleri |
+| genişlik |piksellerde video genişliği |
+| yükseklik |piksel lerde videoyüksekliği |
+| Fragments |meta verilerin parçalandığı zaman tabanlı video parçaları dizisi |
+| start |"keneler" içinde bir parçanın başlangıç saati |
+| süre |"kene" parçasının uzunluğu |
+| interval |verilen parça içindeki her olayın aralığı |
 | etkinlikler |bölgeleri içeren dizi |
-| bölgesinde kullanılamıyor |algılanan kelimeleri veya tümceleri temsil eden nesne |
-| language |bölge içinde algılanan metnin dili |
-| mesinden |bölge içinde algılanan metnin yönü |
-| Satırları |bölge içinde algılanan metin satır dizisi |
+| region |algılanan sözcükleri veya tümcecikleri temsil eden nesne |
+| language |bir bölge içinde algılanan metnin dili |
+| Yönlendirme |bir bölge içinde algılanan metnin yönlendirmesi |
+| satırlar |bir bölge içinde algılanan metin satırları dizisi |
 | metin |gerçek metin |
 
-### <a name="json-output-example"></a>JSON çıkış örneği
-Aşağıdaki çıktı örneği, genel video bilgilerini ve çeşitli video parçalarını içerir. Her video parçasında, dil ve metin yönü ile OCR MP tarafından algılanan her bölge bulunur. Bu bölge, bu bölgedeki metnin her sözcük satırını, çizginin metnini, satırın konumunu ve her sözcük bilgisini (Word içeriği, konumu ve güveni) da içerir. Aşağıda bir örnek verilmiştir ve bazı açıklamaları satır içi yerleştirdim.
+### <a name="json-output-example"></a>JSON çıktı örneği
+Aşağıdaki çıktı örneği genel video bilgilerini ve birkaç video parçasını içerir. Her video parçasında, OCR MP tarafından dil ve metin yönlendirmesi ile algılanan her bölgeyi içerir. Bölge ayrıca bu bölgedeki her sözcük satırını satır metni, satırın konumu ve bu satırdaki her sözcük bilgisi (sözcük içeriği, konum ve güven) içerir. Aşağıdaki bir örnektir ve ben satır satırbazı yorumlar koymak.
 
 ```json
     {
@@ -185,10 +185,10 @@ Aşağıdaki çıktı örneği, genel video bilgilerini ve çeşitli video parç
 
 ## <a name="net-sample-code"></a>.NET örnek kodu
 
-Aşağıdaki program, aşağıdakilerin nasıl yapılacağını göstermektedir:
+Aşağıdaki program nasıl yapılacağını gösterir:
 
-1. Bir varlık oluşturun ve kıymete bir medya dosyası yükleyin.
-2. OCR yapılandırması/önceden ayarlanmış dosya içeren bir iş oluşturun.
+1. Bir varlık oluşturun ve bir medya dosyasını varlığa yükleyin.
+2. OCR yapılandırma/önceden ayarlanmış dosya içeren bir iş oluşturun.
 3. Çıktı JSON dosyalarını indirin. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
@@ -366,12 +366,12 @@ namespace OCR
 }
 ```
 
-## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar
-[Azure Media Services Analytics genel bakışı](media-services-analytics-overview.md)
+[Azure Medya Hizmetleri Analizine Genel Bakış](media-services-analytics-overview.md)
 

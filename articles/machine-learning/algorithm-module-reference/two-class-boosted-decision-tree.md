@@ -1,7 +1,7 @@
 ---
-title: 'İki sınıf tarafından artırılmış karar ağacı: modül başvurusu'
+title: 'İki Sınıf Artırılmış Karar Ağacı: Modül Başvurusu'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ' de Iki sınıf önceden artırılmış karar ağacı modülünü kullanarak, önceden artırılmış karar ağaçları algoritmasına dayalı bir makine öğrenimi modeli oluşturmayı öğrenin.
+description: Artırılmış karar ağaçları algoritmasını temel alan bir makine öğrenme modeli oluşturmak için Azure Machine Learning'deki İki Sınıf Artırılmış Karar Ağacı modüllerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,69 +10,69 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920748"
 ---
-# <a name="two-class-boosted-decision-tree-module"></a>İki sınıf önceden artırılmış karar ağacı modülü
+# <a name="two-class-boosted-decision-tree-module"></a>İki Sınıf Artırılmış Karar Ağacı modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-Bu modülü, bir makine öğrenimi modeli oluşturmak için, artırılmış karar ağaçları algoritmasına dayalı olarak kullanın. 
+Artırılmış karar ağaçları algoritmasını temel alan bir makine öğrenme modeli oluşturmak için bu modülü kullanın. 
 
-Artırılmış bir karar ağacı, ikinci ağacın ilk ağacın hatalarını düzelttiğinde, üçüncü ağaç birinci ve ikinci ağaçların hatalarını düzelttiğinde ve benzeri bir öğrenme yöntemidir.  Tahmine dayalı olarak, tahminleri bir araya getiren tüm ağaçları temel alır.
+Artırılmış karar ağacı, ikinci ağacın ilk ağacın hatalarını düzeltdiği, üçüncü ağacın birinci ve ikinci ağaçların hatalarını düzeltdiği ve benzeri bir topluluk öğrenme yöntemidir.  Tahminler, öngörüyü yapan ağaçların tüm topluluğuna dayanır.
   
-Genellikle, düzgün şekilde yapılandırıldığında, çok çeşitli makine öğrenimi görevlerinde en iyi performansa sahip olmanın en kolay yöntemi olan, artırılmış karar ağaçları vardır. Bununla birlikte, bunlar aynı zamanda daha fazla bellek yoğun öğrenipden biridir ve geçerli uygulama bellekte her şeyi barındırır. Bu nedenle, artırılmış bir karar ağacı modeli, bazı doğrusal öğrenipalların işleyebileceği büyük veri kümelerini işleyemeyebilir.
+Genellikle, düzgün yapılandırıldığında, artırılmış karar ağaçları, çok çeşitli makine öğrenimi görevlerinde en iyi performansı elde etmek için en kolay yöntemlerdir. Ancak, onlar da daha fazla bellek yoğun öğrenenler biridir ve geçerli uygulama bellekte her şeyi tutar. Bu nedenle, öne çıkan bir karar ağacı modeli, bazı doğrusal öğrencilerin işleyebileceği büyük veri kümelerini işleyebilir.
 
 ## <a name="how-to-configure"></a>Yapılandırma
 
-Bu modül, eğitimli olmayan bir sınıflandırma modeli oluşturur. Sınıflandırma denetimli bir öğrenme yöntemi olduğundan, modeli eğitebilmeniz için tüm satırlar için bir değer içeren *etiketli bir veri kümesine* ihtiyacınız vardır.
+Bu modül eğitimsiz bir sınıflandırma modeli oluşturur. Sınıflandırma, modeli eğitmek için denetlenen bir öğrenme yöntemi olduğundan, tüm satırlar için değeri olan bir etiket sütunu içeren etiketli bir *veri kümesine* ihtiyacınız vardır.
 
-Bu tür modeli [eğitme modeli](././train-model.md)kullanarak eğitebilirsiniz. 
+[Tren Modeli](././train-model.md)kullanarak bu model bu tür eğitebilirsiniz. 
 
-1.  Azure Machine Learning ' de, işlem hattınızda, çalıştırılabilir **karar ağacı** modülünü ekleyin.
+1.  Azure Machine Learning'de, **Artırılmış Karar Ağacı** modüllerini ardınıza ekleyin.
   
-2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.
+2.  **Eğitmen modu oluştur** seçeneğini ayarlayarak modelin nasıl eğitilmek istediğini belirtin.
   
-    + **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
+    + **Tek Parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız, bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
   
-    + **Parametre aralığı**: en iyi parametrelerden emin değilseniz, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanarak en iyi parametreleri bulabilirsiniz. Birkaç değer aralığı sağlarsınız ve en iyi sonucu üreten değerlerin birleşimini öğrenmek için eğitmen ayarların birden fazla birleşimine yinelenir.
+    + **Parametre Aralığı**: En iyi parametrelerden emin [değilseniz, Tune Model Hiperparametreler](tune-model-hyperparameters.md) modüllerini kullanarak en uygun parametreleri bulabilirsiniz. Bazı değerler aralığı sağlarsınız ve eğitmen, en iyi sonucu üreten değerlerin birleşimini belirlemek için ayarların birden çok birleşimini yineler.
   
-3.  **Ağaç başına en fazla yaprakları**için, herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) belirtin.
+3.  **Ağaç başına maksimum yaprak sayısı**için, herhangi bir ağaçta oluşturulabilecek maksimum terminal düğüm sayısını (yaprak) belirtin.
   
-     Bu değeri artırarak ağacın boyutunu artırabilir ve daha fazla anlayışın ve daha uzun eğitim süresi riskinden daha iyi bir duyarlık elde edersiniz.
+     Bu değeri artırarak, ağacın boyutunu potansiyel olarak artırır ve aşırı uyum ve daha uzun eğitim süresi riskine göre daha iyi hassasiyet elde edersiniz.
   
-4.  **Yaprak düğüm başına minimum örnek sayısı**için, bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken durum sayısını belirtin.  
+4.  **Yaprak düğümü başına en az sayıda örnek**için, bir ağaçta herhangi bir terminal düğümü (yaprak) oluşturmak için gereken servis talebi sayısını belirtin.  
   
-     Bu değeri artırarak, yeni kurallar oluşturma eşiğini artırırsınız. Örneğin, varsayılan 1 değeri ile tek bir durum bile yeni bir kuralın oluşturulmasına neden olabilir. Değeri 5 ' e artırırsanız eğitim verilerinin aynı koşulları karşılayan en az beş durum içermesi gerekir.
+     Bu değeri artırarak, yeni kurallar oluşturmak için eşiği artırırsınız. Örneğin, varsayılan değeri 1 olan tek bir büyük/küçük harf bile yeni bir kuralın oluşturulmasına neden olabilir. Değeri 5'e yükselterseniz, eğitim verilerinin aynı koşulları karşılayan en az beş servis alayı içermesi gerekir.
   
 5.  **Öğrenme oranı**için, öğrenirken adım boyutunu tanımlayan 0 ile 1 arasında bir sayı yazın.  
   
-     Öğrenme oranı, öğrenimi en iyi çözüm üzerinde ne kadar hızlı veya yavaş söylebileceğinizi belirler. Adım boyutu çok büyükse en iyi çözümü fazla gerçekleştirebilirsiniz. Adım boyutu çok küçükse, eğitimin en iyi çözüm üzerinde yakınsama işlemi daha uzun sürer.
+     Öğrenme hızı, öğrencinin en uygun çözümüzerinde ne kadar hızlı veya yavaş bir araya gelerek birleştiğini belirler. Adım boyutu çok büyükse, en uygun çözümü aşabilirsiniz. Adım boyutu çok küçükse, eğitimin en iyi çözümüzerinde yakınsaması daha uzun sürer.
   
-6.  **Oluşturulan ağaç sayısı**için, ensede birleştirmek üzere oluşturulacak karar ağacının toplam sayısını belirtin. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
+6.  **İnşa edilen ağaç sayısı**için, toplulukiçinde oluşturulacak toplam karar ağacı sayısını belirtin. Daha fazla karar ağaçları oluşturarak, potansiyel olarak daha iyi kapsama alabilirsiniz, ancak eğitim süresi artacaktır.
   
-     Bu değer aynı zamanda eğitilen modeli görselleştirirken gösterilecek ağaç sayısını da denetler. tek bir ağacı görmek veya yazdırmak istiyorsanız, değeri 1 olarak ayarlayın. Ancak bunu yaptığınızda, yalnızca bir ağaç oluşturulur (ilk parametre kümesini içeren ağaç) ve başka yineleme gerçekleştirilmez.
+     Bu değer, eğitilen modeli görselleştirerken görüntülenen ağaç sayısını da denetler. Tek bir ağacı görmek veya yazdırmak istiyorsanız, değeri 1 olarak ayarlayın. Ancak, bunu yaptığınızda, yalnızca bir ağaç (ilk parametreler kümesine sahip ağaç) üretilir ve başka yineleme yapılmaz.
   
-7.  **Rastgele sayı çekirdek**için isteğe bağlı olarak rastgele çekirdek değeri olarak kullanılacak negatif olmayan bir tamsayı yazın. Bir çekirdek belirtmek, aynı verilere ve parametrelere sahip olan çalışmalarda reproducibility sağlar.  
+7.  **Rasgele sayı tohumu**için isteğe bağlı olarak rasgele tohum değeri olarak kullanmak için negatif olmayan bir tamsayı yazın. Tohum belirtmek, aynı veri ve parametrelere sahip çalıştırmalar arasında tekrarlanabilirlik sağlar.  
   
-     Rastgele çekirdek varsayılan olarak 0 olarak ayarlanır; Bu, başlangıçtaki çekirdek değerinin sistem saatinden elde ettiği anlamına gelir.  Rastgele bir çekirdek kullanan art arda çalıştırılan çalıştırmalar farklı sonuçlara sahip olabilir.
+     Rasgele tohum varsayılan olarak 0 olarak ayarlanır, bu da ilk tohum değerinin sistem saatinden elde edildiği anlamına gelir.  Rasgele bir tohum kullanarak ardışık çalışır farklı sonuçlar olabilir.
   
 
-9. Modeli eğitme.
+9. Modeli eğitin.
   
-    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](./train-model.md) modülünü bağlayın.  
+    + Tek **Parametre** **için oluştur eğitmen modunu** ayarlarsanız, etiketli bir veri kümesini ve [Tren Modeli](./train-model.md) modülünü bağlayın.  
    
 ## <a name="results"></a>Sonuçlar
 
 Eğitim tamamlandıktan sonra:
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
++ Eğitilen modelin anlık görüntüsünü kaydetmek **için, Tren modeli** modülünün sağ panelindeki **Çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **Kayıt veri kümesi** simgesini seçin.
 
-+ Puanlama için modeli kullanmak üzere, bir işlem hattına **puan modeli** modülünü ekleyin.
++ Puanlama için modeli kullanmak **için, Puan Modeli** modüllerini bir ardışık yapıya ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

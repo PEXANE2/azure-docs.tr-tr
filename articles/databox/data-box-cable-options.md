@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920646"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box cihazınız için kablolama seçenekleri
@@ -54,7 +54,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 - Bağlamak istediğiniz her bir 10 GbE destekli veri bağlantı noktası için bir 10 GbE SFP+ Twinax bakır kablo.
 - [Desteklenen işletim sistemini](data-box-system-requirements.md#supported-operating-systems-for-clients) çalıştıran bir veya daha fazla veri kaynağı.
 
-### <a name="option-1---initial-setup-via-server"></a>1\. Seçenek: Başlangıç kurulumunu sunucu üzerinden gerçekleştirme
+### <a name="option-1---initial-setup-via-server"></a>1. Seçenek: Başlangıç kurulumunu sunucu üzerinden gerçekleştirme
 
 Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleştirin.
 
@@ -70,11 +70,11 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 3. Cihazın yerel web kullanıcı arabirimine erişmek için şu adrese gidin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
 4. Yapılandırdığınız veri bağlantı noktalarına statik IP atayın.
 
-### <a name="option-2---initial-setup-via-separate-computer"></a>2\. Seçenek: Başlangıç kurulumunu ayrı bir bilgisayar üzerinden gerçekleştirme
+### <a name="option-2---initial-setup-via-separate-computer"></a>2. Seçenek: Başlangıç kurulumunu ayrı bir bilgisayar üzerinden gerçekleştirme
 
 Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleştirin.
 
-1. Yapılandırma için ayrı bilgisayardan, doğrudan MGMT bağlantı noktasına bir RJ45 Ethernet kablosu kullanın.
+1. Yapılandırma için ayrı bilgisayardan doğrudan MGMT bağlantı noktasına bir RJ45 Ethernet kablosu kullanın.
 2. DATA 3 için bir RJ45 veya DATA 1 ya da DATA 2 için SFP+ kabloları kullanarak sunucuya bağlantı yapın. Yüksek performans için 10 GbE destekli DATA 1 veya DATA 2 bağlantı noktalarını kullanmanızı öneririz. Veri bağlantı noktalarını verilerin bulunduğu sunucuya 10 GbE anahtar üzerinden bağlayın.
 3. Kullanmakta olduğunuz dizüstü bilgisayardaki Ethernet bağdaştırıcısını şu ayarlarla yapılandırın:
 

@@ -1,6 +1,6 @@
 ---
-title: Azure'da - Team Data Science Process'i SQL Server verileri örneklendirme
-description: Örnek verileri SQL veya Python programlama dili kullanarak azure'da SQL Server'da depolanan ve sonra Azure Machine Learning ile taşıyın.
+title: Azure'da SQL Server'da Örnek Veriler - Takım Veri Bilimi Süreci
+description: SQL veya Python programlama dilini kullanarak Azure'da SQL Server'da depolanan verileri örnekleyin ve ardından Azure Machine Learning'e taşıyın.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,81 +12,81 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76717650"
 ---
-# <a name="heading"></a>Azure 'da SQL Server örnek veriler
+# <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Azure’da SQL Server’daki örnek veriler
 
-Bu makalede, SQL veya Python programlama dili kullanarak Azure SQL Server'da depolanan verileri örnek kullanmayı gösterir. Ayrıca bir dosyaya kaydetme, bir Azure blobuna yüklemeyi ve ardından Azure Machine Learning Studio'ya okuma tarafından Azure Machine Learning içine örneklenen verileri taşıma işlemini de gösterir.
+Bu makalede, SQL veya Python programlama dilini kullanarak Azure'da SQL Server'da depolanan verilerin nasıl örneklenir. Ayrıca, örneklenmiş verileri bir dosyaya kaydederek, Azure blob'una yükleyerek ve ardından Azure Machine Learning Studio'ya okuyarak Azure Machine Learning'e nasıl taşıyarak nasıl taşıyılabildiğini de gösterir.
 
-Python örneklemesi [pyodbc](https://code.google.com/p/pyodbc/) ODBC kitaplığını kullanarak örnekleme yapmak için Azure 'daki SQL Server ve [Pandas](https://pandas.pydata.org/) kitaplığı 'na bağlanır.
+Python örneklemesi, örnekleme yapmak için Azure'daki SQL Server'a ve [Pandalar](https://pandas.pydata.org/) kitaplığına bağlanmak için [pyodbc](https://code.google.com/p/pyodbc/) ODBC kitaplığını kullanır.
 
 > [!NOTE]
-> Örnek SQL kodunu bu belgedeki verileri azure'da bir SQL Server'da olduğunu varsayar. Aksi takdirde, verilerinizi Azure 'da SQL Server taşımaya ilişkin yönergeler için [Azure 'da SQL Server verileri taşıma](move-sql-server-virtual-machine.md) makalesine başvurun.
+> Bu belgedeki örnek SQL kodu, verilerin Azure'daki bir SQL Server'da olduğunu varsayar. Değilse, verilerinizi Azure'da SQL Server'a nasıl taşıyacağınıza ilişkin talimatlar için [verilerinizi Azure'daki SQL Server'a taşıyın](move-sql-server-virtual-machine.md) makalesine bakın.
 > 
 > 
 
-**Verileriniz neden örnekleyebilirsiniz?**
-Veri kümesini analiz etmek için planlama büyükse, genellikle aşağı örnek veriler için daha küçük ancak temsilcisi ve daha kolay yönetilebilir bir boyutunu azaltmak için iyi bir fikir olduğunu. Örnekleme, veri anlama, araştırma ve özellik mühendisliğini kolaylaştırır. [Ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) rolü, veri işleme işlevlerinin ve makine öğrenimi modellerinin hızlı prototipini etkinleştirmektir.
+**Neden verilerinizi örneklediniz?**
+Çözümlemayı planladığınız veri kümesi büyükse, verileri daha küçük ancak temsili ve daha yönetilebilir boyuta düşürmek için verileri alttan örneklemek genellikle iyi bir fikirdir. Örnekleme, veri anlaşılmasını, keşfini ve özellik mühendisliğini kolaylaştırır. Ekip Veri [Bilimi Süreci (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) rolü veri işleme fonksiyonları ve makine öğrenme modelleri hızlı prototipleme sağlamaktır.
 
-Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımdır.
+Bu örnekleme [görevi, Ekip Veri Bilimi Süreci'nin (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımıdır.
 
-## <a name="SQL"></a>SQL kullanma
-Bu bölümde veritabanındaki verilere yönelik basit rastgele örnekleme gerçekleştirmek için SQL kullanarak çeşitli yöntemler açıklanmaktadır. Veri boyutu ve onun dağıtım göre bir yöntem seçin.
+## <a name="using-sql"></a><a name="SQL"></a>SQL kullanma
+Bu bölümde, veritabanındaki verilere karşı basit rasgele örnekleme gerçekleştirmek için SQL kullanarak çeşitli yöntemler açıklanmaktadır. Veri boyutunuza ve dağıtımına göre bir yöntem seçin.
 
-Aşağıdaki iki öğe, örnekleme işlemini gerçekleştirmek için SQL Server `newid` nasıl kullanacağınızı gösterir. Seçtiğiniz yöntem, örneğin, örnek (Aşağıdaki örnek kodda pk_id, bir otomatik olarak oluşturulan birincil anahtar olarak kabul edilir) ne kadar rastgele olmasını istediğinize bağlıdır.
+Aşağıdaki iki öğe, örneklemeyi gerçekleştirmek için SQL Server'da nasıl kullanılacağını `newid` gösterir. Seçtiğiniz yöntem, örneğin ne kadar rasgele olmasını istediğinize bağlıdır (aşağıdaki örnek koddaki pk_id otomatik olarak oluşturulmuş birincil anahtar olarak kabul edilir).
 
-1. Daha az katı rastgele örnek
+1. Daha az katı rasgele örneklem
    
         select  * from <table_name> where <primary_key> in 
         (select top 10 percent <primary_key> from <table_name> order by newid())
-2. Daha fazla rastgele örnek 
+2. Daha rasgele örneklem 
    
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Tablesample verileri de örnekleme için kullanılabilir. Bu seçenek, veri boyutunuz büyükse (farklı sayfalardaki verilerin bağıntılı olmadığı varsayıldığında) ve sorgunun makul bir süre içinde tamamlanacağı daha iyi bir yaklaşım olabilir.
+Tablo örneği, verileri örneklemek için de kullanılabilir. Veri boyutunuz büyükse (farklı sayfalardaki verilerin ilişkili olmadığını varsayarsak) ve sorgunun makul bir süre içinde tamamlanması gerekiyorsa, bu seçenek daha iyi bir yaklaşım olabilir.
 
     SELECT *
     FROM <table_name> 
     TABLESAMPLE (10 PERCENT)
 
 > [!NOTE]
-> Keşfedin ve yeni bir tablo depolayarak örneklenen bu verilerden Özellikleri Oluştur
+> Bu örneklenmiş verileri yeni bir tabloda depolayarak keşfedebilir ve oluşturabilirsiniz
 > 
 > 
 
-### <a name="sql-aml"></a>Azure Machine Learning bağlanılıyor
-[Verileri Içeri aktarma][import-data] modülünde Azure Machine Learning yukarıdaki örnek sorguları doğrudan kullanarak, verileri anında örnekleyebilirsiniz ve bir Azure Machine Learning denemesine taşıyabilirsiniz. Örnek verileri okumak için okuyucu modülünü kullanmanın ekran görüntüsü burada gösterilmektedir:
+### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Azure Machine Learning'e bağlanma
+Azure Machine Learning [Import Data][import-data] modülündeki yukarıdaki örnek sorguları doğrudan kullanarak anında verileri alttaki verileri örnekleyebilir ve azure machine learning deneyine dahil edebilirsiniz. Örneklenmiş verileri okumak için okuyucu modülünün kullanılmasının ekran görüntüsü burada gösterilmiştir:
 
-![Okuyucu sql][1]
+![okuyucu sql][1]
 
-## <a name="python"></a>Python programlama dilini kullanma
-Bu bölümde, Python 'da bir SQL Server veritabanına ODBC bağlantısı kurmak için [pyodbc kitaplığı](https://code.google.com/p/pyodbc/) kullanılması gösterilmektedir. Veritabanı bağlantı dizesi şu şekildedir: (ServerName, dbname, username ve Password öğesini yapılandırmanızla değiştirin):
+## <a name="using-the-python-programming-language"></a><a name="python"></a>Python programlama dilini kullanma
+Bu bölümde Python'da bir SQL sunucu veritabanına ODBC bağlantısı kurmak için [pyodbc kitaplığı](https://code.google.com/p/pyodbc/) kullanılmıştır. Veritabanı bağlantı dizesi aşağıdaki gibidir: (sunucu adı, dbname, kullanıcı adı ve parolayı yapılandırmanızla değiştirin):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 'daki [Pandas](https://pandas.pydata.org/) kitaplığı, Python programlamasına yönelik veri işleme için zengin veri yapıları ve veri çözümleme araçları sağlar. Aşağıdaki kod, Azure SQL veritabanındaki bir tablodaki verilerin% 0,1 örneğini bir Pandas verilerine okur:
+Python'daki [Pandalar](https://pandas.pydata.org/) kitaplığı, Python programlaması için veri işleme için zengin bir veri yapıları kümesi ve veri çözümleme araçları sağlar. Aşağıdaki kod, Azure SQL Veritabanı'ndaki bir tablodaki verilerin %0,1'lik bir örneğini Pandas verilerine göre okur:
 
     import pandas as pd
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
 
-Artık, örneklenen verileri Pandas veri çerçevesi ile çalışabilirsiniz. 
+Artık Pandalar veri çerçevesinde örneklenmiş verilerle çalışabilirsiniz. 
 
-### <a name="python-aml"></a>Azure Machine Learning bağlanılıyor
-Aşağıdaki örnek kod, alt örneklenen verileri bir dosyaya kaydedin ve uygulamayı bir Azure blobuna yüklemek için kullanabilirsiniz. Blob 'daki veriler, [verileri Içeri aktarma][import-data] modülünü kullanarak doğrudan bir Azure Machine Learning denemesine okunabilir. Adımlar aşağıdaki gibidir: 
+### <a name="connecting-to-azure-machine-learning"></a><a name="python-aml"></a>Azure Machine Learning'e bağlanma
+Aşağıda örneklenmiş verileri bir dosyaya kaydetmek ve azure blob'una yüklemek için aşağıdaki örnek kodu kullanabilirsiniz. Blob'daki [veriler, İçe Aktarma Verileri][import-data] modüllü olarak doğrudan bir Azure Machine Learning Experiment'e okunabilir. Adımlar şu şekildedir: 
 
-1. Pandas veri çerçevesi yerel bir dosyaya yazma
+1. Pandalar veri çerçevesini yerel bir dosyaya yazma
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Azure blobuna yerel dosya karşıya yükleme
+2. Azure blob'una yerel dosya yükleme
    
         from azure.storage import BlobService
         import tables
@@ -107,12 +107,12 @@ Aşağıdaki örnek kod, alt örneklenen verileri bir dosyaya kaydedin ve uygula
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Aşağıdaki ekranda gösterildiği gibi Azure Machine Learning [veri alma][import-data] modülünü kullanarak Azure Blob 'dan verileri okuyun:
+3. Azure Machine Learning [Alma Verisi][import-data] modüllerini kullanarak Azure blob'undaki verileri aşağıdaki ekran kapmada gösterildiği gibi okuyun:
 
-![Okuyucu blob][2]
+![okuyucu blob][2]
 
-## <a name="the-team-data-science-process-in-action-example"></a>Team Data Science Process eylem örnekte
-Ortak veri kümesi kullanan bir ekip veri bilimi Işlemi örneğini görmek için, bkz. [Team Data Science Process ın Action: using SQL Server](sql-walkthrough.md).
+## <a name="the-team-data-science-process-in-action-example"></a>Takım Veri Bilimi Süreci Eylem örneği
+Ortak bir veri kümesi kullanarak Takım Veri Bilimi İşlemi örneği üzerinden yürümek için, [Takım Veri Bilimi İşlemi Eylem: SQL Server kullanarak](sql-walkthrough.md)bakın.
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

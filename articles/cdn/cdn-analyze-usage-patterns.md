@@ -1,6 +1,6 @@
 ---
-title: Çekirdek Verizon raporları | Microsoft Docs
-description: 'Aşağıdaki raporlar kullanarak, CDN kullanım biçimlerini görüntüleyebilirsiniz: Bant genişliğini, aktarılan veriler, isabetleri, önbellek durumları, isabetli önbellek okuması oranı, IPv4/IPv6 veri aktarılır.'
+title: Verizon Gelen Çekirdek Raporlar | Microsoft Dokümanlar
+description: "Aşağıdaki raporları kullanarak CDN'nizin kullanım desenlerini görüntüleyebilirsiniz: Bant Genişliği, Veri Aktarımı, Hits, Önbellek Durumları, Önbellek Isabet Oranı, IPV4/IPV6 Veri Aktarımı."
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,122 +15,122 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594153"
 ---
-# <a name="core-reports-from-verizon"></a>Verizon'dan alınan çekirdek raporlar
+# <a name="core-reports-from-verizon"></a>Verizon Gelen Çekirdek Raporlar
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Verizon profillerini yönet portal Verizon'dan alınan çekirdek raporlar kullanarak, aşağıdaki raporları ile CDN için kullanım düzenlerini görüntüleyebilirsiniz:
+Verizon profilleri için Yönet portalı üzerinden Verizon Çekirdek Raporları kullanarak, aşağıdaki raporlar ile CDN için kullanım desenleri görüntüleyebilirsiniz:
 
 * Bant genişliği
-* Aktarılan veriler
-* İsabet sayısı
-* Önbellek durumları
-* İsabetli Önbellek okuması oranı
-* IPv4/IPv6 aktarılan veriler
+* Aktarılan Veriler
+* İsabetler
+* Önbellek Durumları
+* Önbellek Isabet Oranı
+* IPV4/IPV6 Veri Aktarıldı
 
-## <a name="accessing-verizon-core-reports"></a>Verizon çekirdek raporlar erişme
-1. CDN profili dikey penceresinden tıklayın **Yönet** düğmesi.
+## <a name="accessing-verizon-core-reports"></a>Verizon Core Raporlara Erişim
+1. CDN profil bıçağından **Yönet** düğmesini tıklatın.
    
     ![CDN profili Yönet düğmesi](./media/cdn-reports/cdn-manage-btn.png)
    
-    CDN yönetim portalına açılır.
-2. Üzerine **Analytics** sekmesine ve ardından üzerine **alınan çekirdek raporlar** açılır öğesi. Bir rapor menüsünde tıklayın.
+    CDN yönetim portalı açılır.
+2. **Analytics** sekmesinin üzerine binin, ardından **Core Reports** uçuşunun üzerinde gezinin. Menüdeki bir rapora tıklayın.
    
-    ![CDN yönetim portalına - alınan çekirdek Raporlar menüsü](./media/cdn-reports/cdn-core-reports.png)
+    ![CDN yönetim portalı - Çekirdek Raporlar menüsü](./media/cdn-reports/cdn-core-reports.png)
 
-3. Her bir rapor için bir tarih aralığındaki seçin **tarih aralığı** listesi. Bir önceden tanımlanmış tarih aralığı gibi seçebilirsiniz **Bugün** veya **bu hafta**, veya seçebilirsiniz **özel** ve el ile Takvim simgelere tıklayarak bir tarih aralığı girin. 
+3. Her rapor **için, Tarih Aralığı** listesinden bir tarih aralığı seçin. **Bugün** veya **Bu Hafta**gibi önceden tanımlanmış bir tarih aralığı seçebilir veya Takvim simgelerini tıklatarak **Özel'i** seçip bir tarih aralığını el ile girebilirsiniz. 
 
-4. Bir tarih aralığı seçtikten sonra tıklayın **Git** raporu oluşturmak için. 
+4. Bir tarih aralığı seçtikten sonra, raporu oluşturmak için **Git'i** tıklatın. 
 
-4. Verileri Excel biçiminde dışarı aktarmak istiyorsanız, Excel simgesini tıklayın **Git** düğmesi.
+4. Verileri Excel biçiminde dışa aktarmak istiyorsanız, **Git** düğmesinin üzerindeki Excel simgesini tıklatın.
 
 ## <a name="bandwidth"></a>Bant genişliği
-Bant genişliği rapor, belirli süre boyunca, MB/sn cinsinden HTTP ve HTTPS için CDN bant genişliği kullanımını gösteren bir grafik ve veri tablosu oluşur. Tüm POP boyunca veya belirli POP için bant genişliği kullanımını görüntüleyebilirsiniz. Bu rapor ani trafik değişiklikleri ve dağıtım için POP görüntülemenize olanak sağlar.
+Bant genişliği raporu, Http ve HTTPS için belirli bir zaman diliminde, Mbps'de CDN bant genişliği kullanımını gösteren bir grafik ve veri tablosundan oluşur. Bant genişliği kullanımını tüm POP'lar arasında veya belirli bir POP için görüntüleyebilirsiniz. Bu rapor, trap'ların trafik artışlarını ve dağıtımını görüntülemenizi sağlar.
 
-Gelen **kenar düğümleri** listesinden **tüm kenar düğümleri** tüm düğümleri gelen trafiği görmek veya belirli bir bölge seçin.
+Kenar **Düğümleri** listesinden, tüm düğümlerden trafiği görmek veya belirli bir bölge seçmek için **Tüm Kenar Düğümleri'ni** seçin.
 
-Rapor, beş dakikada bir güncelleştirilir.
+Rapor her beş dakikada bir güncellenir.
 
 ![Bant genişliği raporu](./media/cdn-reports/cdn-bandwidth.png)
 
 ## <a name="data-transferred"></a>Aktarılan veriler
-Bu rapor, belirli süre boyunca, GB cinsinden HTTP ve HTTPS için CDN trafik kullanımını gösteren bir grafik ve veri tablosu oluşur. Belirli POP için veya tüm POP'ları arasındaki trafiği kullanım görüntüleyebilirsiniz. Bu rapor ani trafik değişiklikleri ve dağıtım arasında POP görüntülemenize olanak sağlar.
+Bu rapor, BELIRLI bir zaman diliminde HTTP ve HTTPS için GB'deki CDN trafik kullanımını gösteren bir grafik ve veri tablosundan oluşur. Tüm POP'lar veya belirli bir POP için trafik kullanımını görüntüleyebilirsiniz. Bu rapor, traplar arasında trafik artışlarını ve dağıtımını görüntülemenizi sağlar.
 
-Gelen **kenar düğümleri** listesinden **tüm kenar düğümleri** tüm düğümleri gelen trafiği görmek veya belirli bir bölge seçin.
+Kenar **Düğümleri** listesinden, tüm düğümlerden trafiği görmek veya belirli bir bölge seçmek için **Tüm Kenar Düğümleri'ni** seçin.
 
-Rapor, beş dakikada bir güncelleştirilir.
+Rapor her beş dakikada bir güncellenir.
 
-![Rapor aktarılan veriler](./media/cdn-reports/cdn-data-transferred.png)
+![Aktarılan veri raporu](./media/cdn-reports/cdn-data-transferred.png)
 
-## <a name="hits-status-codes"></a>İsabet sayısı (durum kodları)
-Bu rapor isteği durum kodları, içerik dağıtımını açıklar. İçerik için her istek HTTP durum kodu oluşturur. Durum kodu istek uç POP işlenme açıklar. Örneğin, bir hata oluştuğunu 4xx durum kodları gösterir ancak istek başarıyla bir istemciye sunulduğu 2xx durum kodu gösterir. HTTP durum kodları hakkında daha fazla bilgi için bkz. [listesi HTTP durum kodları](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
+## <a name="hits-status-codes"></a>Isabetler (durum kodları)
+Bu rapor, içeriğiniz için istek durum kodlarının dağılımını açıklar. İçerik için her istek bir HTTP durum kodu oluşturur. Durum kodu, kenar Lı POP'ların isteği nasıl ele adedinde olduğunu açıklar. Örneğin, 2xx durum kodu isteğin bir istemciye başarıyla sunulduğunu gösterirken, 4xx durum kodu bir hata oluştuğunu gösterir. HTTP durum kodları hakkında daha fazla bilgi [için, http durum kodları listesine](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)bakın.
 
-![İsabet sayısı raporu](./media/cdn-reports/cdn-hits.png)
+![Hits raporu](./media/cdn-reports/cdn-hits.png)
 
 ## <a name="cache-statuses"></a>Önbellek durumları
-Bu rapor, Önbelleği İsabetli ve İsabetsiz Önbellek okuma sayısı istemci istekleri için dağıtımını açıklar. En hızlı performansı Önbelleği İsabetli Okuma sonuçlandığından İsabetsiz Önbellek okuma sayısı ve süresi dolmuş önbellek isabet en aza indirerek veri teslim hızını en iyi duruma getirebilirsiniz. 
+Bu rapor, istemci istekleri için önbellek isabetleri ve önbellek özleri dağıtımını açıklar. Önbellek isabetlerinden en hızlı performans sonuçları elde ettiğinden, önbellek eksikliklerini ve süresi dolmuş önbellek isabetlerini en aza indirerek veri teslim hızlarını en iyi duruma getirebilirsiniz. 
 
-İsabetsiz önbellek okuma sayısı azaltmak için aşağıdaki kullanımını en aza indirmek için kaynak sunucunuza yapılandırın: 
- * `no-cache` Yanıt Üstbilgileri
- * Sorgu dizesi, kesinlikle gerekli sürece önbelleğe alma  
- * Olmayan önbelleğe kaydedilemeyen yanıt kodları
+Önbellek özlemenlerini azaltmak için, aşağıdakilerin kullanımını en aza indirecek şekilde başlangıç sunucunuzu yapılandırın: 
+ * `no-cache`yanıt üstbilgi
+ * Sorgu dize önbelleğe alma, kesinlikle gerekli olmadıkça  
+ * Önbellek dışı yanıt kodları
 
-Süresi dolmuş önbellek isabet azaltmak için bir varlığın ayarlamak `max-age` kaynak sunucu isteklerinin sayısını en aza indirmek için uzun bir süre için.
+Süresi dolmuş önbellek isabetlerini azaltmak `max-age` için, kaynağı sunucudaki istek sayısını en aza indirmek için bir varlığınkini uzun bir süreye ayarlayın.
 
 ![Önbellek durumları raporu](./media/cdn-reports/cdn-cache-statuses.png)
 
 ### <a name="main-cache-statuses-include"></a>Ana önbellek durumları şunlardır:
-* TCP_HIT: Edge sunucudan hizmet. Nesne önbellekte olduğu ve onun max-age aştı değil.
-* TCP_MISS: Kaynak sunucudan hizmet. Nesne önbellekte değil ve kaynağa geri yanıt:.
-* TCP_EXPIRED _MISS: Kaynağı yeniden doğrulanırken sonra kaynak sunucudan hizmet. Nesne önbellekte oldu, ancak kendi max-age aşmıştı. Kaynaktan yeni bir yanıt değiştiriliyor önbellek nesnesi içinde bir yeniden doğrulanırken başlangıç sonuçlandı.
-* TCP_EXPIRED _HIT: Kaynağı yeniden doğrulanırken sonra Edge'den sunulur. Nesne önbellekte oldu, ancak kendi max-age aşmıştı. Bir kaynak sunucuya yeniden doğrulanırken değiştirilmemiş önbellek nesnesinde sonuçlandı.
+* TCP_HIT: Kenar sunucusundan servis edilir. Nesne önbellekteydi ve maksimum yaşını aşmadı.
+* TCP_MISS: Origin sunucusundan servis edilir. Nesne önbellekte değildi ve yanıt kaynağına geri döndü.
+* TCP_EXPIRED _MISS: Orijinle yeniden validasyondan sonra origin sunucusundan servis edilir. Nesne önbellekteydi, ancak maksimum yaşını aşmıştı. Kaynakla yeniden doğrulama, önbellek nesnesinin kaynaktan gelen yeni bir yanıtla değiştirilmesiyle sonuçlandı.
+* TCP_EXPIRED _HIT: Menşei ile revalidation sonra Edge servis edilir. Nesne önbellekteydi, ancak maksimum yaşını aşmıştı. Kaynak sunucusuyla yeniden doğrulama, önbellek nesnesinin değiştirilmeden sonuçlanmasına neden oldu.
 
-### <a name="full-list-of-cache-statuses"></a>Önbellek durumları tam listesi
-* TCP_HIT - istek istemci için doğrudan POP sunulduğunda, bu durum bildirilir. İstemcinin en yakın POP önbelleğe alınır ve geçerli yaşam süresi (TTL) sahip bir varlık hemen POP sunulur. TTL şu yanıt üst bilgilerini tarafından belirlenir:
+### <a name="full-list-of-cache-statuses"></a>Önbellek durumlarının tam listesi
+* TCP_HIT - Bir istek doğrudan POP'tan istemciye sunulduğunda bu durum bildirilir. Bir varlık, istemciye en yakın POP'ta önbelleğe alınıp geçerli bir zamana (TTL) sahip olduğunda hemen bir POP'tan sunulur. TTL aşağıdaki yanıt başlıkları tarafından belirlenir:
   
-  * Cache-Control: s-maxage
-  * Cache-Control: Maksimum yaş
-  * Süre sonu
-* TCP_MISS: Bu durum, istenen varlık önbelleğe alınmış bir sürümü üzerinde istemcinin en yakın POP bulunamadı gösterir. Varlık, kaynak sunucuyu veya bir kaynak kalkan sunucu istenmektedir. Bir varlık, kaynak sunucu veya kaynak kalkan sunucu döndürürse, istemciye sunulan ve hem istemci hem de uç sunucusunu önbelleğe alınır. Aksi takdirde, olmayan-200 durum kodu (örneğin, 403 Yasak veya 404 bulunamadı) döndürülür.
-* TCP_EXPIRED_HIT: Süresi dolmuş bir TTL ile bir varlığı hedefleyen bir isteğin doğrudan POP istemciye sunulduğu bu durum raporlanır. Örneğin, varlık max-age ne zaman sona erdi. 
+  * Önbellek Kontrolü: s-maxage
+  * Önbellek Kontrolü: maksimum yaş
+  * Süre Sonu
+* TCP_MISS: Bu durum, istenen varlığın önbelleğe alınmış bir sürümünün istemciye en yakın POP'ta bulunmadığını gösterir. Varlık, bir başlangıç sunucusundan veya bir başlangıç kalkanı sunucusundan istenir. Kaynak sunucusu veya kaynak kalkanı sunucusu bir varlığı döndürürse, istemciye sunulur ve hem istemcide hem de kenar sunucusunda önbelleğe alınır. Aksi takdirde, 200 olmayan bir durum kodu (örneğin, 403 Yasak veya 404 Bulunamadı) döndürülür.
+* TCP_EXPIRED_HIT: Süresi dolmuş TTL'si olan bir kıymeti hedefleyen bir istek doğrudan POP'tan istemciye sunulduğunda bu durum bildirilir. Örneğin, varlığın maksimum yaşının süresi dolduğunda. 
   
-   Süresi dolmuş bir isteği, genellikle kaynak sunucuya yeniden doğrulama istekte sonuçlanır. Varlık daha yeni bir sürümü yok TCP_EXPIRED_HIT durumu oluşmasına kaynak sunucu belirtmeniz gerekir. Bu durum genellikle bir varlığın Cache-Control ve Expires üst bilgileri güncelleştirmede sonuçlanır.
-* TCP_EXPIRED_MISS: Bu durum, süresi dolmuş bir önbelleğe alınan varlık daha yeni bir sürümü için istemci POP sunulduğunda bildirilir. Önbelleğe alınan bir varlık için TTL'nin süresi Bu durum oluşur (örneğin, süresi doldu, max-age) ve kaynak sunucu, varlık daha yeni bir sürümünü döndürür. Varlık bu yeni sürümü, önbelleğe alınmış sürümün yerine istemciye hizmet verir. Ayrıca, bu uç sunucu ve istemci önbelleğe alınır.
-* CONFIG_NOCACHE: Bu durum, müşteriye özgü yapılandırma uç POP varlık önbelleğe alınmasını önledi olduğunu gösterir.
-* HİÇBİRİ - bu durum, bir önbellek içerik güncellik denetimi gerçekleştirilmemiş gösterir.
-* TCP_CLIENT_REFRESH_MISS: Bir edge POP yeni bir sürümü eski bir varlık kaynak sunucudan almak için bir tarayıcı gibi bir HTTP istemci zorlar, bu durum raporlanır. Varsayılan olarak, sunucular, uç sunucularda kaynak sunucudan varlık yeni bir sürümünü almak için zorlama gelen HTTP istemci engeller.
-* TCP_PARTIAL_HIT: Bu durum, bir bayt aralığı isteği kısmen önbelleğe alınmış bir varlık için isabet sonuçlandığında bildirilir. İstenen bayt aralığı, istemciye POP hemen sunulur.
-* UNCACHEABLE: Bu durum, bir varlık ayarlandığında bildirilir `Cache-Control` ve `Expires` üst bilgileri gösterir, POP veya HTTP istemcisi tarafından önbelleğe alınması gerektiğini değil. Bu tür istekleri kaynak sunucudan sunulur.
+   Süresi dolan bir istek genellikle kaynak sunucuya bir yeniden doğrulama isteğiyle sonuçlanır. TCP_EXPIRED_HIT durumunun oluşması için kaynak sunucunun varlığın daha yeni bir sürümünün bulunmadığını göstermesi gerekir. Bu durum genellikle varlığın Önbellek Denetimi'nin güncelleştirmesi ile sonuçlanır ve üstbilgileri sona erer.
+* TCP_EXPIRED_MISS: Süresi dolmuş önbelleğe alınmış bir varlığın daha yeni bir sürümü POP'tan istemciye sunulduğunda bu durum bildirilir. Bu durum, önbelleğe alınmış bir varlığın TTL'sinin süresi dolduğunda (örneğin, süresi dolmuş maksimum yaş) ve kaynak sunucusu bu varlığın daha yeni bir sürümünü döndürdüğünde oluşur. Varlığın bu yeni sürümü önbelleğe alınmış sürüm yerine istemciye sunulur. Ayrıca, kenar sunucusunda ve istemcide önbelleğe alınır.
+* CONFIG_NOCACHE: Bu durum, müşteriye özgü bir yapılandırmanın POP kenarının varlığın önbelleğe alınmasını engellediğini gösterir.
+* YOK - Bu durum, önbellek içeriği tazelik denetiminin yapılmadığını gösterir.
+* TCP_CLIENT_REFRESH_MISS: Bu durum, tarayıcı gibi bir HTTP istemcisi bir kenar POP'u başlangıç sunucusundan eski bir varlığın yeni bir sürümünü almaya zorladığında bildirilir. Varsayılan olarak, sunucular bir HTTP istemcisinin kenar sunucularını kaynağı sunucudan varlığın yeni bir sürümünü almaya zorlanmasını engeller.
+* TCP_PARTIAL_HIT: Bir bayt aralığı isteği kısmen önbelleğe alınmış bir varlık için bir isabetle sonuçlandığında bu durum bildirilir. İstenen bayt aralığı hemen POP'tan istemciye sunulur.
+* ÖNSEMEZ: Bu durum, bir `Cache-Control` varlığın `Expires` ve üstbilginin bir POP'ta veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini belirttiği nde bildirilir. Bu tür istekler kaynak sunucudan sunulur.
 
-## <a name="cache-hit-ratio"></a>İsabetli Önbellek okuması oranı
-Bu rapor, doğrudan önbellekten sunulduğunu önbelleğe alınmış istekler yüzdesini gösterir.
+## <a name="cache-hit-ratio"></a>Önbellek Isabet Oranı
+Bu rapor, önbellekten doğrudan sunulan önbelleğe alınmış isteklerin yüzdesini gösterir.
 
-Raporu aşağıdaki bilgileri sağlar:
+Rapor aşağıdaki ayrıntıları sağlar:
 
-* Talep edilen içeriği, istemciye en yakın POP önbelleğe alınmadı.
-* İstek, doğrudan ağımız edge'den sunulduğu.
-* İstek kaynak sunucu ile yeniden doğrulama gerekli değil.
+* İstenen içerik, istekte bulundurucuya en yakın POP'ta önbelleğe alındı.
+* İstek doğrudan ağımızın kenarından sunuldu.
+* İstek, kaynak sunucusuyla yeniden doğrulama gerektirmedi.
 
-Rapor içermez:
+Rapor şunları içermez:
 
-* Ülke/filtreleme seçeneklerini bölge nedeniyle reddedildi istekler.
-* Bunlar değil konumlandırılmalıdır başlıklarını belirtmek varlıklar için istekler. Örneğin, `Cache-Control: private`, `Cache-Control: no-cache`, veya `Pragma: no-cache` üstbilgileri bir varlık önbelleğe alınmasını engellemek.
-* Kısmen önbelleğe alınmış içeriği için bayt aralığı isteklerini.
+* Ülke/bölge filtreleme seçenekleri nedeniyle reddedilen istekler.
+* Üstbilgileri önbelleğe alınmaması gerektiğini gösteren varlıklar için istekler. Örneğin, `Cache-Control: private`, `Cache-Control: no-cache`, `Pragma: no-cache` veya üstbilgi bir varlığın önbelleğe alınmasını engeller.
+* Kısmen önbelleğe alınmış içerik için bayt aralığı istekleri.
 
-Formülü aşağıdaki gibidir: (TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
+Formül: (TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
 
-![İsabetli Önbellek okuması oranı raporu](./media/cdn-reports/cdn-cache-hit-ratio.png)
+![Önbellek isabet oranı raporu](./media/cdn-reports/cdn-cache-hit-ratio.png)
 
-## <a name="ipv4ipv6-data-transferred"></a>IPv4/IPv6 aktarılan veriler
-Bu rapor, IPv4 ve IPv6 trafiği kullanım dağıtımı gösterir.
+## <a name="ipv4ipv6-data-transferred"></a>IPV4/IPV6 Aktarılan Veriler
+Bu rapor, IPV4 vs IPV6'daki trafik kullanım dağılımını gösterir.
 
-![IPv4/IPv6 aktarılan veriler](./media/cdn-reports/cdn-ipv4-ipv6.png)
+![IPV4/IPV6 Aktarılan Veriler](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Raporlar yalnızca son 18 ay içinde oluşturulabilir.

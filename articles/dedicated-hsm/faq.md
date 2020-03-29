@@ -1,11 +1,11 @@
 ---
-title: Sık sorulan sorular - Azure ayrılmış HSM | Microsoft Docs
-description: Sık sorulan sorular Azure ayrılmış HSM üzerinde farklı konuları kapsayan
+title: Sık sorulan sorular - Azure Özel HSM | Microsoft Dokümanlar
+description: Azure Özel HSM'de farklı konuları kapsayan sık sorulan sorular
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
 tags: azure-resource-manager
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,58 +13,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 947dc6eb8060d2d229ee7984f719cb837e638490
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045921"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064920"
 ---
 # <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
 
-Microsoft Azure ayrılmış HSM hakkında sık sorulan sorulara yanıtlar bulun.
+Microsoft Azure Özel HSM ile ilgili sık sorulan soruların yanıtlarını bulun.
 
-## <a name="the-basics"></a>Temel bilgileri
+## <a name="the-basics"></a>Temeller
 
-### <a name="q-what-is-a-hardware-security-module-hsm"></a>S: bir donanım güvenlik modülü (HSM) nedir?
+### <a name="q-what-is-a-hardware-security-module-hsm"></a>S: Donanım güvenlik modülü (HSM) nedir?
 
-Bir donanım güvenlik modülü (HSM) korunmasına ve şifreleme anahtarlarını yönetmek için kullanılan fiziksel bir bilgi işlem cihazıdır. Hsm'lerde depolanan anahtarları şifreleme işlemleri için kullanılabilir. Anahtar malzemesi kurcalamaya karşı korumalı, değiştirmeye donanım modülleri güvenli bir şekilde kalır. HSM yalnızca izin kimliği doğrulanmış ve yetkili anahtar kullanma için uygulamaları. Anahtar malzemeleri asla HSM koruma sınırlarından ayrılmaz.
+Donanım Güvenlik Modülü (HSM), şifreleme anahtarlarını korumak ve yönetmek için kullanılan fiziksel bir bilgi işlem aygıtıdır. HSM'lerde depolanan anahtarlar şifreleme işlemleri için kullanılabilir. Anahtar malzeme kurcalamaya dayanıklı, kurcalamaya açık donanım modüllerinde güvenle kalır. HSM yalnızca kimlik doğrulaması ve yetkili uygulamaların anahtarları kullanmasına izin verir. Anahtar malzeme HSM koruma sınırını asla terk eder.
 
-### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>S: Azure adanmış HSM teklifi nedir?
+### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>S: Azure Özel HSM teklifi nedir?
 
-Azure ayrılmış HSM doğrudan bir müşterinin sanal ağa bağlı bir Azure veri merkezlerinde bulunan Hsm'lerde sağlayan bir bulut tabanlı bir hizmettir. Bu HSM'ler, adanmış ağ Gereçleri (Gemalto'nın SafeNet ağ HSM 7 modeli A790) sahiptir. Doğrudan bir müşterilerin özel IP adresi alanına dağıtılan ve Microsoft HSM'ler şifreleme işlevselliği için herhangi bir erişimi yok. Yalnızca müşteri bu cihazlar üzerinde tam yönetimsel ve şifreleme denetime sahiptir. Cihaz yönetimi için müşterilerin sorumluluğundadır ve doğrudan cihazlarından tam etkinlik günlüklerini alabilirsiniz. Ayrılmış Hsm'lerin 140-2 Düzey 3, HIPAA, PCI-DSS ve eIDAS ve diğer birçok gibi FIPS uyumluluk/yasal gereksinimleri karşılamak müşterilerin yardımcı olur.
+Azure Özel HSM, azure veri merkezlerinde barındırılan ve müşterinin sanal ağına doğrudan bağlanan HSM'ler sağlayan bulut tabanlı bir hizmettir. Bu HSM'ler özel ağ cihazlarıdır (Gemalto'nun SafeNet Network HSM 7 Model A790). Bunlar doğrudan müşterinin özel IP adresi alanına dağıtılır ve Microsoft'un HSM'lerin şifreleme işlevlerine erişimi yoktur. Yalnızca müşteri bu aygıtlar üzerinde tam yönetimsel ve şifreleme denetimine sahiptir. Müşteriler cihazın yönetiminden sorumludur ve tam etkinlik günlüklerini doğrudan aygıtlarından alabilir. Özel HSM'ler, müşterilerin FIPS 140-2 Düzey 3, HIPAA, PCI-DSS ve eIDAS gibi uyumluluk/mevzuat gerekliliklerini karşılamalarına yardımcı olur.
 
-### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>S: adanmış HSM için hangi donanım kullanılıyor?
+### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>S: Özel HSM için hangi donanım kullanılır?
 
-Microsoft, Azure ayrılmış HSM hizmetini sunmak için Gemalto ile işbirliği yaptı. Kullanılan belirli cihaz [SafeNet Luna ağ HSM 7 model A790 '](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)dir. Bu cihaz yalnızca FIPS 140-2 Düzey 3'ü doğrulanmış bellenim sağlar, ancak ayrıca düşük gecikme süreli, yüksek performanslı ve yüksek kapasiteli 10 bölümleri aracılığıyla sunar. 
+Microsoft, Azure Özel HSM hizmetini sunmak için Gemalto ile ortaklık yaptı. Kullanılan özel cihaz [SafeNet Luna Network HSM 7 Model A790.](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) Bu cihaz sadece FIPS 140-2 Düzey 3 doğrulanmış firmware sağlar, ama aynı zamanda düşük gecikme, yüksek performans ve 10 bölüm üzerinden yüksek kapasite sunuyor. 
 
-### <a name="q-what-is-an-hsm-used-for"></a>S: ne için HSM kullanılır?
+### <a name="q-what-is-an-hsm-used-for"></a>S: HSM ne için kullanılır?
 
-HSM’ler SSL (güvenli yuva katmanı) gibi şifreleme işlevleri, verileri şifreleme, PKI (ortak anahtar altyapısı), DRM (dijital hak yönetimi) ve belgeleri imzalama amacıyla kullanılır.
+HSM'ler, SSL (güvenli soket katmanı), şifreleme verileri, PKI (ortak anahtar altyapısı), DRM (dijital haklar yönetimi) ve belgeleri imzalama gibi şifreleme işlevleri için kullanılan şifreleme anahtarlarını depolamak için kullanılır.
 
-### <a name="q-how-does-dedicated-hsm-work"></a>S: ayrılmış HSM nasıl çalışır?
+### <a name="q-how-does-dedicated-hsm-work"></a>S: Özel HSM nasıl çalışır?
 
-Müşteriler, PowerShell veya komut satırı arabirimi kullanarak belirli bölgelerde HSM'ler sağlayabilirsiniz. Müşteri, HSM bağlı ve bir kez sağladınız hangi sanal ağ Hsm'leri atanmış IP adresleri müşterinin özel IP adres alanı içinde belirtilen alt ağda kullanılabilir olacağını belirtir. Ardından müşteriler HSM'ler Gereci Yönetim için SSH kullanarak bağlanabilirsiniz ve yönetim, HSM istemci bağlantıları kurmak HSM'ler başlatmak, bölümleri oluşturmak, tanımlamak ve gibi bölüm Müdürü, şifreleme Sorumlu Başkan ve şifreleme kullanıcı rolleri atayın. Daha sonra müşteri uygulamalarından şifreleme işlemleri gerçekleştirmesi için HSM istemci araçları/SDK/yazılım sağlanan Gemalto kullanır.
+Müşteriler PowerShell veya komut satırı arabirimini kullanarak belirli bölgelerde HSM'ler sağlayabilir. Müşteri, HSM'lerin hangi sanal ağa bağlanacağını belirtir ve hsm'ler sağlandıktan sonra müşterinin özel IP adres alanında atanan IP adreslerinde belirlenen alt ağda kullanılabilir olacaktır. Daha sonra müşteriler cihaz yönetimi ve yönetimi için SSH kullanarak HSM'lere bağlanabilir, HSM istemci bağlantılarını kurabilir, HSM'leri açabilir, bölümler oluşturabilir, bölümleyebilir, tanımlayabilir ve bölüm sorumlusu, kripto sorumlusu ve kripto kullanıcısı gibi rolleri atayabilir. Daha sonra müşteri, uygulamalarından şifreleme işlemleri gerçekleştirmek için Gemalto'yu hsm istemci araçları/SDK/yazılım sağladı.
 
-### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>S: hangi yazılım ile ayrılmış HSM hizmetini sağlanır?
+### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>S: Özel HSM hizmetiyle hangi yazılım sağlanır?
 
-Gemalto kez Microsoft tarafından sağlanan HSM cihaz için tüm yazılım sağlar. Yazılım, [Gemalto müşteri destek portalında](https://supportportal.gemalto.com/csm/)kullanılabilir. Ayrılmış HSM hizmetini kullanan müşteriler Gemalto desteklemek ve erişim ve ilgili yazılım indirilmesini sağlayan bir müşteri kimliği için kayıtlı olması gereklidir. Desteklenen istemci yazılımı, FIPS 140-2 düzey 3 ile doğrulanan bellenim sürümü 7.0.3 ile uyumlu olan sürüm 7,2 ' dir. 
+Gemalto, HSM aygıtı için tüm yazılımları bir kez Microsoft tarafından sağlanan sağlar. Yazılım [Gemalto müşteri destek portalı](https://supportportal.gemalto.com/csm/)mevcuttur. Özel HSM hizmetini kullanan müşterilerin Gemalto desteği için kaydolması ve ilgili yazılımlara erişim ve indirme olanağı sağlayan bir Müşteri Kimliğine sahip olması gerekir. Desteklenen istemci yazılımı, FIPS 140-2 Düzey 3 onaylı firmware sürümü 7.0.3 ile uyumlu sürüm 7.2'dir. 
 
-### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>S: Azure adanmış HSM, parola tabanlı ve uygulanmış tabanlı kimlik doğrulaması sunuyor mu?
+### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>S: Azure Özel HSM Parola tabanlı ve PED tabanlı kimlik doğrulaması sunuyor mu?
 
-Azure ayrılmış HSM, şu anda yalnızca parola tabanlı kimlik doğrulama ile HSM 'ler sağlar.
+Şu anda Azure Özel HSM, HSM'lere yalnızca parola tabanlı kimlik doğrulama sağlar.
 
-### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>S: Azure adanmış HSM ana bilgisayar, HSMs benim için mi?
+### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>S: Azure Özel HSM benim için HSM'lerimi barındıracak mı?
 
-Microsoft, özel HSM hizmeti aracılığıyla yalnızca Gemalto SafeNet Luna ağ HSM 'sini sunar ve müşterinin sağladığı cihazları barındıramaz.
+Microsoft, Gemalto SafeNet Luna Network HSM'yi yalnızca Özel HSM hizmeti aracılığıyla sunar ve müşteri tarafından sağlanan hiçbir cihazı barındıramaz.
 
-### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>S: Azure adanmış HSM destek ödemesi (PIN/EFT) özellikleri mi?
+### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>S: Azure Özel HSM ödeme (PIN/EFT) özelliklerini destekliyor mu?
 
-Azure ayrılmış HSM hizmeti, SafeNet Luna ağ HSM 7 (model A790) cihazlarını kullanır. Bu cihazlar, ödeme HSM 'ye özgü işlevselliği (PIN veya EFT gibi) veya sertifikaları desteklemez. Azure ayrılmış HSM hizmeti 'nin gelecekte ödeme HSM 'leri desteklemesini istiyorsanız, Microsoft hesap temsilcinizle ilgili geri bildirimleri geçirin.
+Azure Özel HSM hizmeti, SafeNet Luna Network HSM 7 (Model A790) aygıtlarını kullanır. Bu aygıtlar ödeme HSM'ye özgü işlevselliği (PIN veya EFT gibi) veya sertifikaları desteklemez. Azure Özel HSM hizmetinin gelecekte ödeme HSM'lerini desteklemesini istiyorsanız, geri bildirimi Microsoft Hesap Temsilcinize iletin.
 
-### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>S: hangi Azure bölgeleri için adanmış HSM kullanılabilir?
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>S: Özel HSM hangi Azure bölgelerinde kullanılabilir?
 
-En geç 2019 itibarıyla, adanmış HSM aşağıda listelenen 14 bölgede kullanılabilir. Daha fazla bölge planlanmaktadır ve Microsoft hesap temsilciniz aracılığıyla tartışılmış olabilir.
+Mart 2019 sonu itibariyle, Özel HSM aşağıda listelenen 14 bölgede mevcuttur. Diğer bölgeler planlanır ve Microsoft Hesap Temsilciniz aracılığıyla tartışılabilir.
 
 * Doğu ABD
 * Doğu ABD 2
@@ -85,221 +85,221 @@ En geç 2019 itibarıyla, adanmış HSM aşağıda listelenen 14 bölgede kullan
 * Doğu Avustralya
 * Güneydoğu Avustralya
 
-## <a name="interoperability"></a>Birlikte çalışabilirlik
+## <a name="interoperability"></a>Birlikte Çalışabilirlik
 
-### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>S: Uygulamam için adanmış bir HSM nasıl bağlanıyor?
+### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>S: Uygulamam Özel Bir HSM'ye nasıl bağlanır?
 
-HSM istemci araçları/SDK/yazılım sağlanan Gemalto uygulamalarınızdan şifreleme işlemleri gerçekleştirmek için kullanın. Yazılım, [Gemalto müşteri destek portalında](https://supportportal.gemalto.com/csm/)kullanılabilir. Ayrılmış HSM hizmetini kullanan müşteriler Gemalto desteklemek ve erişim ve ilgili yazılım indirilmesini sağlayan bir müşteri kimliği için kayıtlı olması gereklidir.
+Uygulamalarınızdan şifreleme işlemleri gerçekleştirmek için Gemalto'yu hsm istemci araçları/SDK/yazılım sağladınız. Yazılım [Gemalto müşteri destek portalı](https://supportportal.gemalto.com/csm/)mevcuttur. Özel HSM hizmetini kullanan müşterilerin Gemalto desteği için kaydolması ve ilgili yazılımlara erişim ve indirme olanağı sağlayan bir Müşteri Kimliğine sahip olması gerekir.
 
-### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>Bir uygulama için ayrılmış HSM farklı bir VNET içinde veya bölgeler bağlanabilir miyim?
+### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>S: Bir uygulama özel HSM'ye bölgeler içinde veya dışında farklı bir VNET'ten bağlanabilir mi?
 
-Evet, sanal ağlar arasında bağlantı kurmak için bir bölge içinde [VNET eşlemesi](../virtual-network/virtual-network-peering-overview.md) kullanmanız gerekir. Bölgeler arası bağlantı için [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanmanız gerekir.
+Evet, sanal ağlar arasında bağlantı kurmak için bir bölge içinde [VNET bakışlarını](../virtual-network/virtual-network-peering-overview.md) kullanmanız gerekir. Bölgeler arası bağlantı için VPN [Ağ Geçidi'ni](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanmanız gerekir.
 
-### <a name="q-can-i-synchronize-dedicated-hsm-with-on-premises-hsms"></a>Ayrılmış HSM ile şirket içi HSM'ler eşitleme miyim?
+### <a name="q-can-i-synchronize-dedicated-hsm-with-on-premises-hsms"></a>S: Özel HSM'yi şirket içi HSM'lerle senkronize edebilir miyim?
 
-Evet, şirket içi HSM'ler ayrılmış HSM ile eşitleyebilirsiniz. [Noktadan noktaya VPN veya Noktadan siteye](../vpn-gateway/vpn-gateway-about-vpngateways.md) bağlantı, şirket içi ağınızla bağlantı kurmak için kullanılabilir.
+Evet, şirket içi HSM'leri Özel HSM ile eşitleyebilirsiniz. [Noktadan noktaya VPN veya noktadan siteye](../vpn-gateway/vpn-gateway-about-vpngateways.md) bağlantı, şirket içi ağınızla bağlantı kurmak için kullanılabilir.
 
-### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>Ben ayrılmış HSM içinde depolanan anahtarları kullanarak diğer Azure Hizmetleri tarafından kullanılan verileri şifrelemek miyim?
+### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>S: Özel HSM'de depolanan anahtarları kullanarak diğer Azure hizmetleri tarafından kullanılan verileri şifreleyebilir miyim?
 
-Hayır. Azure ayrılmış HSM'ler yalnızca, sanal ağ içinde erişilebilir.
+Hayır. Azure Özel HSM'lere yalnızca sanal ağınızın içinden erişilebilir.
 
-### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Mevcut bir şirket içi HSM'NİZDEN anahtarları ayrılmış HSM'NİZDE içeri aktarmak oluşturabilir miyim?
+### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>S: Anahtarları mevcut bir şirket içi HSM'den Özel HSM'ye aktarabilir miyim?
 
-Evet, şirket içi Gemalto SafeNet HSM'ler varsa. Birden fazla yöntem vardır. Gemalto HSM belgelerine başvurun.
+Evet, tesis bünyesinde Gemalto SafeNet HSM'ler varsa. Birden çok yöntem vardır. Gemalto HSM belgelerine bakın.
 
-### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>S: hangi işletim sistemleri, ayrılmış HSM istemci yazılımı tarafından destekleniyor mu?
+### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>S: Hangi işletim sistemleri Özel HSM istemci yazılımı tarafından desteklenir?
 
 * Windows, Linux, Solaris, AIX, HP-UX, FreeBSD
-* Sanal: VMware, Xen, KVM hyperv
+* Sanal: VMware, hyperv, Xen, KVM
 
-### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>S: birden çok bölümdeki verileri birden çok Hsm'niz ile yüksek kullanılabilirlik yapılandırması oluşturmak için istemci uygulamamın nasıl yapılandırabilirim?
+### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>S: Birden çok HSM'den birden fazla bölüm içeren yüksek kullanılabilirlik yapılandırması oluşturmak için istemci uygulamamı nasıl yapılandırıyorum?
 
-Yüksek kullanılabilirlik sağlamak için her HSM bölümleri kullanmak için HSM istemci uygulaması yapılandırması'kurmak gerekir. Gemalto HSM istemci yazılımı belgelerine bakın.
+Yüksek kullanılabilirliğe sahip olmak için, her HSM'den bölümleri kullanmak için HSM istemci uygulama yapılandırmanızı ayarlamanız gerekir. Gemalto HSM istemci yazılım belgelerine bakın.
 
-### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>S: hangi kimlik doğrulama mekanizmaları, adanmış bir HSM tarafından destekleniyor mu?
+### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>S: Özel HSM tarafından hangi kimlik doğrulama mekanizmaları desteklenir?
 
-Azure ayrılmış HSM SafeNet ağ HSM 7 cihazları (A790 model) kullanır ve parola tabanlı kimlik doğrulamasını destekler.
+Azure Özel HSM, SafeNet Network HSM 7 cihazlarını (A790 modeli) kullanır ve parola tabanlı kimlik doğrulamasını destekler.
 
-### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>S: hangi SDK'ları, API'leri, istemci yazılımı ile ayrılmış HSM kullanmak kullanılabilir mi?
+### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>S: Özel HSM ile hangi SDK'lar, API'ler, istemci yazılımları kullanılabilir?
 
-PKCS #11, Java (JCA/JCE), Microsoft CAPI ve CNG, OpenSSL
+PKCS#11, Java (JCA/JCE), Microsoft CAPI ve CNG, OpenSSL
 
-### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>İçeri aktarma/5/6 Luna hsm'lerinizdeki anahtarları Azure ayrılmış HSM'ler için geçirebilirim miyim?
+### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>S: Luna 5/6 HSM'lerden Azure Özel HSM'lere anahtarları alabilir/aktarabilir miyim?
 
 Evet. Gemalto geçiş kılavuzuna bakın. 
 
-## <a name="using-your-hsm"></a>HSM kullanma
+## <a name="using-your-hsm"></a>HSM'nizi kullanma
 
-### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>S: Azure anahtar kasası veya Azure ayrılmış HSM kullanıp kullanmayacağınızı nasıl karar verebilirim?
+### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>S: Azure Key Vault'u mu yoksa Azure Özel HSM'yi mi kullanacağıma nasıl karar veririm?
 
-Azure ayrılmış HSM HSM'ler kullanan Azure şirket içi uygulamaları geçirme kuruluşlar için uygun bir seçenektir. Ayrılmış Hsm'lerin çok az değişiklikle bir uygulamayı geçirmek için bir seçenek sunar. Bir Azure VM veya Web uygulamasıyla çalışan uygulama kodu şifreleme işlemleri gerçekleştirilir, ayrılmış HSM kullanabilirler. Genel olarak, yazılım HSM'ler anahtarsız SSL, ADCS (Active Directory Sertifika Hizmetleri), uygulama ağ geçidi veya traffic manager gibi ayrılması, HSM anahtar deposu kullanabilirsiniz gibi destekleyen Iaas (hizmet olarak altyapı) modelleri çalışan verdiği veya benzer PKI araçları, Araçlar/uygulamaları belge imzalama, kod imzalama veya bir EKM (Genişletilebilir anahtar yönetimi) sağlayıcısını kullanarak bir hsm'de ana anahtar ile TDE (saydam veritabanı şifrelemesi) ile yapılandırılmış SQL Server (Iaas) için kullanılır. Azure Key Vault "geliştirilen içinde-buluta" uygulamalar için veya şifreleme PaaS (hizmet olarak platform) tarafından Müşteri verilerinin nerede işlenen rest senaryoları veya Office 365 müşteri anahtarı, Azure Information Protection gibi SaaS (hizmet olarak yazılım) senaryoları için uygundur , Azure Disk şifrelemesi, Azure Data Lake Store şifrelemesi müşteri tarafından yönetilen anahtar, Azure depolama şifreleme ile müşteri ile yönetilen anahtar ve müşteri ile Azure SQL yönetilen anahtar.
+Azure Özel HSM, Azure'da HSM kullanan şirket içi uygulamalara geçiş yapan işletmeler için uygun seçimdir. Özel HSM'ler, en az değişiklikle bir uygulamayı geçirme seçeneği sunar. Bir Azure VM veya Web App'te çalışan uygulama kodunda şifreleme işlemleri gerçekleştirilirse, Özel HSM'yi kullanabilirler. Genel olarak, IaaS (hizmet olarak altyapı) modellerinde çalışan shrink-wrapped yazılım, Anahtarsız SSL için Uygulama ağ geçidi veya trafik yöneticisi gibi HSM'leri anahtarsız SSL, ADCS (Active Directory Certificate Services) veya belge imzalama, kod imzalama veya bir EKM (genişletilebilir anahtar yönetimi) sağlayıcısı nı kullanarak HSM'de ana anahtarla Yapılan TDE (şeffaf veritabanı şifrelemesi) ile yapılandırılan SQL Server (IaaS) için kullanılan benzer PKI araçları, araçları/uygulamaları gibi önembelgesi HSM'yi önemli bir mağaza olarak destekleyen Lerm'i kullanabilir. Azure Key Vault, "bulutta doğan" uygulamalar veya müşteri verilerinin PaaS (hizmet olarak platform) veya Office 365 Müşteri Anahtarı, Azure Bilgi Koruması gibi SaaS (hizmet olarak yazılım) senaryoları tarafından işlendiği dinlenme senaryolarında şifreleme için uygundur , Azure Disk Şifreleme, müşteri tarafından yönetilen anahtarla Azure Veri Gölü Deposu şifrelemesi, müşteri yönetilen anahtarla Azure Depolama şifrelemesi ve müşteri yönetilen anahtarla Azure SQL.
 
-### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>S: hangi kullanım senaryolarını en iyi Azure ayrılmış HSM uygun?
+### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>S: Hangi kullanım senaryoları Azure Özel HSM'ye en uygun?
 
-Azure ayrılmış HSM geçiş senaryoları için çok uygundur. HSM'ler zaten kullanmakta olduğunuz şirket içi uygulamaları azure'a taşıyorsanız anlamına gelir. Bu uygulama için çok az değişiklikle Azure'a geçirmek için düşük uyuşmazlıkları seçeneği sağlar. Azure VM veya Web uygulaması çalışan uygulama kodu şifreleme işlemleri gerçekleştirilir, ayrılmış HSM kullanılabilir. Genel olarak, anahtar deposu ayırmanız HSM, gibi kullanabileceğiniz gibi HSM'ler destekleyen Iaas (hizmet olarak altyapı) modellerinde çalışan yazılımı verdiği:
+Azure Özel HSM geçiş senaryoları için en uygundur. Bu, şirket içi uygulamaları Zaten HSM kullanmakta olan Azure'a geçirerek gerçeklediğiniz anlamına gelir. Bu, uygulamada en az değişiklikle Azure'a geçiş yapmak için düşük sürtünme seçeneği sağlar. Azure VM veya Web App'te çalışan uygulama kodunda şifreleme işlemleri gerçekleştirilirse, Özel HSM kullanılabilir. Genel olarak, Önemli bir mağaza olarak HSM'leri destekleyen IaaS (hizmet olarak altyapı) modellerinde çalışan küçültülmüş yazılım, aşağıdakiler gibi Adanmış HSM'yi kullanabilir:
 
-* Uygulama ağ geçidi veya traffic Manager'a anahtarsız SSL
-* ADCS (Active Directory Sertifika Hizmetleri)
+* Anahtarsız SSL için uygulama ağ geçidi veya trafik yöneticisi
+* ADCS (Aktif Dizin Sertifika Hizmetleri)
 * Benzer PKI araçları
-* Belge imzalama için kullanılan araçları/uygulamalar
+* Belge imzalama için kullanılan araçlar/uygulamalar
 * Kod imzalama
-* Bir EKM (Genişletilebilir anahtar yönetimi) sağlayıcısını kullanarak bir hsm'de ana anahtar ile TDE (saydam veritabanı şifrelemesi) ile yapılandırılmış SQL Server (Iaas)
+* SQL Server (IaaS), EKM (genişletilebilir anahtar yönetimi) sağlayıcısı kullanılarak HSM'de ana anahtarla TDE (saydam veritabanı şifrelemesi) ile yapılandırıldı
 
-### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>S: ayrılmış HSM kullanılabilir Office 365 müşteri anahtarı, Azure Information Protection, Azure Data Lake Store, Disk şifrelemesi, Azure depolama şifrelemesi, Azure SQL TDE'nin ile?
+### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>S: Özel HSM, Office 365 Müşteri Anahtarı, Azure Bilgi Koruması, Azure Veri Gölü Deposu, Disk Şifreleme, Azure Depolama şifrelemesi, Azure SQL TDE ile kullanılabilir mi?
 
-Hayır. Ayrılmış HSM erişilemiyor vermez böylece doğrudan bir müşterinin özel IP adres alanına diğer Microsoft ya da Azure Hizmetleri tarafından sağlanır.
+Hayır. Özel HSM, diğer Azure veya Microsoft hizmetleri tarafından erişilememesi için doğrudan müşterinin özel IP Adresi alanına verilir.
 
-## <a name="administration-access-and-control"></a>Yönetim ve erişim denetimi
+## <a name="administration-access-and-control"></a>Yönetim, erişim ve kontrol
 
-### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>S: müşteri, ayrılmış HSM'ler ile HSM'ler üzerinde tam özel denetim elde mu?
+### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>S: Müşteri Özel HSM'ler ile HSM'ler üzerinde tam özel kontrole sahip mi?
 
-Evet. Her bir HSM Gereci tam olarak tek bir müşteriye ayrılmış ve başka hiç kimse kez sağlanan yönetimsel denetim sahibi ve Yönetici Parola değiştirildi vardır.
+Evet. Her HSM cihazı tamamen tek bir müşteriye adamıştır ve bir kez verilen ve yönetici parolası değiştirildikten sonra başka hiç kimse yönetim denetimine sahip değildir.
 
-### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>S: hangi erişim düzeyini Microsoft benim HSM'ye var mı?
+### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>S: Microsoft'un HSM'me ne kadar erişim düzeyi var?
 
-Microsoft, HSM herhangi bir yönetici veya şifreleme denetime sahip değil. Microsoft izleme düzeyi sıcaklık ve bileşen sistem durumu gibi temel telemetri almak için seri bağlantı noktası bağlantısı aracılığıyla erişimi yok. Bu sistem durumu sorunlarının proaktif bildirim sağlamak Microsoft sağlar. Gerekirse, müşteri bu hesabı devre dışı bırakabilir.
+Microsoft'un HSM üzerinde herhangi bir yönetimsel veya şifreleme denetimi yoktur. Microsoft sıcaklık ve bileşen durumu gibi temel telemetri almak için seri bağlantı noktası bağlantısı üzerinden monitör düzeyi erişimi var. Bu, Microsoft'un sistem durumu sorunları hakkında proaktif bildirim sağlamasına olanak tanır. Gerekirse, müşteri bu hesabı devre dışı kılabilir.
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>S: Microsoft 'un kullandığı "TenantAdmin" hesabı nedir, bu yönetici kullanıcının SafeNet HSMs üzerinde "Yönetici" olması için kullandım mı?
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>S: Microsoft'un kullandığı "tenantadmin" hesabı nedir, yönetici kullanıcının SafeNet HSM'lerde "yönetici" olmasına alışkınım?
 
-HSM cihazı, normal varsayılan parolasıyla birlikte varsayılan bir yönetici kullanıcıyla birlikte gönderilir. Microsoft, tüm cihazlar müşteriler tarafından sağlanmayı bekleyen bir havuzda olduğu sürece varsayılan parolaların kullanımda olmasını istemedi. Bu, katı güvenlik gereksinimlerimizi karşılamıyor. Bu nedenle, sağlama zamanında atılan güçlü bir parola ayarlayacağız. Ayrıca, sağlama sırasında "TenantAdmin" adlı yönetici rolünde yeni bir Kullanıcı oluşturacağız. Bu Kullanıcı varsayılan parolaya sahiptir ve müşteriler, ilk kez yeni sağlanan cihaza oturum açarken bunu ilk eylem olarak değiştirir. Bu işlem, yüksek derecede güvenlik sağlar ve müşterilerimiz için tek yönetici denetimi taahhüdünü korur. Bir müşteri bu hesabı kullanmayı tercih ediyorsa Yönetici Kullanıcı parolasını sıfırlamak için "TenantAdmin" kullanıcısının kullanılabileceğini not edilmelidir. 
+HSM aygıtı, her zamanki varsayılan parolasıyla varsayılan bir yönetici kullanıcısıyla birlikte iletilir. Microsoft, herhangi bir aygıt müşteriler tarafından sağlanmayı bekleyen bir havuzdayken varsayılan parolaların kullanılmasını istemedi. Bu bizim katı güvenlik gerekliliklerini karşılamaz. Bu nedenle, sağlama zamanında atılan güçlü bir parola belirleriz. Ayrıca, sağlama zamanında biz "tenantadmin" olarak adlandırılan yönetici rolü yeni bir kullanıcı oluşturun. Bu kullanıcı varsayılan parolaya sahiptir ve müşteriler bunu yeni sağlanan aygıta ilk günlüğe giriş yaptığında ilk eylem olarak değiştirir. Bu süreç yüksek güvenlik dereceleri sağlar ve müşterilerimiz için tek yönetim kontrolü sözümüzü korur. Bir müşteri bu hesabı kullanmayı tercih ederse, "kiracı yönetici" kullanıcısının yönetici kullanıcı parolasını sıfırlamak için kullanılabileceğini belirtmek gerekir. 
 
-### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Microsoft veya Microsoft'tan herhangi my ayrılmış HSM Microsoft erişim anahtarlarını miyim?
+### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>S: Microsoft veya Microsoft'taki herhangi biri Özel HSM'mdeki microsoft erişim anahtarlarına erişebilir mi?
 
-Hayır. Microsoft, müşteri ayrılmış HSM ayrılan depolanan anahtarları için herhangi bir erişimi yok.
+Hayır. Microsoft'un müşteriye tahsis edilen Özel HSM'de depolanan anahtarlara erişimi yoktur.
 
-### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>Yazılım/bana ayrılmış HSM'ler bellenimini yükseltme oluşturabilir miyim?
+### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>S: Bana tahsis edilen HSM'lerde yazılım/firmware yükseltebilir miyim?
 
-En iyi destek almak için Microsoft yazılım / HSM bellenimini yükseltme önerir. Ancak, müşteri belirli özellikleri farklı üretici yazılımı sürümlerini gerekli olduğunda yazılım/bellenimi yükseltmek dahil olmak üzere tam yönetimsel denetime sahip. Değişiklik yapmadan önce, bunun, örneğin FIPS tarafından doğrulanan durumu etkilediği için olası anlaşılması gerekir. 
+En iyi desteği almak için Microsoft, HSM'deki yazılım/yazılım yazılımlarını yükseltmemenizi şiddetle önerir. Ancak, müşteri, farklı firmware sürümlerinden belirli özellikler gerekiyorsa, yazılım/firmware yükseltme de dahil olmak üzere tam yönetim kontrolüne sahiptir. Değişiklik yapmadan önce, etkileri, örneğin FIPS doğrulanmış durumu etkileyebileceğinden anlaşılmalıdır. 
 
-### <a name="q-how-do-i-manage-dedicated-hsm"></a>S: ayrılmış HSM nasıl yönetebilirim?
+### <a name="q-how-do-i-manage-dedicated-hsm"></a>S: Özel HSM'yi nasıl yönetirim?
 
-Bunları erişerek, ayrılmış HSM'ler yönetebilirsiniz SSH kullanarak.
+Özel HSM'lere SSH kullanarak erişerek yönetebilirsiniz.
 
-### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>S: ayrılmış HSM bölümlerinde nasıl yönetebilirim?
+### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>S: Özel HSM'deki bölümleri nasıl yönetirim?
 
-Gemalto HSM istemci yazılımı, bölümler ve HSM'ler yönetmek için kullanılır.
+Gemalto HSM istemci yazılımı HSM'leri ve bölümleri yönetmek için kullanılır.
 
-### <a name="q-how-do-i-monitor-my-hsm"></a>S: my HSM nasıl izleyebilirim?
+### <a name="q-how-do-i-monitor-my-hsm"></a>S: HSM'mi nasıl izleyebilirim?
 
-Bir müşteri, HSM etkinlik günlükleri syslog ve SNMP aracılığıyla tam erişime sahip olur. Bir müşteri HSM'ler olayları ve günlükleri almak için bir syslog sunucunuza veya SNMP sunucusu ayarlamak gerekir.
+Bir müşteri syslog ve SNMP üzerinden HSM etkinlik günlüklerine tam erişime sahiptir. Bir müşterinin HSM'lerden günlükleri veya olayları almak için bir syslog sunucusu veya SNMP sunucusu ayarlaması gerekir.
 
-### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>Tüm HSM işlemlerinin tam erişim günlüğüne ayrılmış HSM'den elde miyim?
+### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>S: Özel HSM'den tüm HSM işlemlerinin tam erişim kaydını alabilir miyim?
 
-Evet. Bir syslog sunucusuna HSM Gereci günlüklerini gönderebilirsiniz
+Evet. HSM cihazından günlükleri bir syslog sunucusuna gönderebilirsiniz
 
 ## <a name="high-availability"></a>Yüksek kullanılabilirlik
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>S: aynı bölgede veya birden çok bölgede yüksek kullanılabilirlik yapılandırmak mümkün mü?
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>S: Aynı bölgede veya birden çok bölgede yüksek kullanılabilirlik yapılandırmak mümkün mü?
 
-Evet. Yüksek kullanılabilirlik yapılandırma ve Kurulum Gemalto tarafından sağlanan HSM istemci yazılımının gerçekleştirilir. Aynı VNET 'ten veya aynı bölgedeki veya bölgedeki diğer VNET 'lerden ya da siteler arası veya noktadan noktaya VPN kullanarak bir VNET 'e bağlı olan şirket içi HSM 'ler aynı yüksek kullanılabilirliğe sahip yapılandırmaya eklenebilir. Bunun, yalnızca anahtar malzemesini eşitlediği ve roller gibi belirli yapılandırma öğeleri olmadığı unutulmamalıdır.
+Evet. Gemalto tarafından sağlanan HSM istemci yazılımında yüksek kullanılabilirlik yapılandırması ve kurulum gerçekleştirilir. Aynı bölgedeki veya bölgeler arasında aynı VNET'lerden veya diğer VNET'lerden veya siteden siteye veya noktadan noktaya VPN kullanarak VNET'e bağlı şirket içi HSM'lerden gelen HSM'ler aynı yüksek kullanılabilirlik yapılandırmasına eklenebilir. Bunun yalnızca önemli malzemeyi eşitlediğini ve roller gibi belirli yapılandırma öğelerini eşitlemediğini belirtmek gerekir.
 
-### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>S: şirket içi ağınızdan Azure ayrılmış HSM ile yüksek kullanılabilirlik grubuna HSM 'ler ekleyebilir miyim?
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>S: Şirket içi ağımdan HSM'leri Azure Özel HSM ile yüksek kullanılabilirlik grubuna ekleyebilir miyim?
 
-Evet. Bunlar, SafeNet Luna ağ HSM 7 için yüksek kullanılabilirlik gereksinimleri karşılaması gerekir.
+Evet. SafeNet Luna Network HSM 7 için yüksek kullanılabilirlik gereksinimlerini karşılamaları gerekir.
 
-### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>S: Azure ayrılmış HSM ile şirket içi ağlardan bir yüksek kullanılabilirlik grubuna Luna 5/6 HSMs ekleyebilir miyim?
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>S: Luna 5/6 HSM'leri şirket içi ağlardan Azure Özel HSM ile yüksek kullanılabilirlik grubuna ekleyebilir miyim?
 
 Hayır.
 
-### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>S: kaç HSM'ler tek bir uygulamadan diğerine aynı yüksek kullanılabilirlik yapılandırması için ekleyebilirim?
+### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>S: Tek bir uygulamadan aynı yüksek kullanılabilirlik yapılandırmasına kaç HSM ekleyebilirim?
 
-bir HA grubunun 16 üyesi, çok iyi sonuçlarla, tam kısıtlama içeren bir testle sahiptir.
+Bir HA grubunun 16 üyesi, mükemmel sonuçlar la birlikte tam gaz testine sahip.
 
 ## <a name="support"></a>Destek
 
-### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>S: ayrılmış HSM hizmeti için SLA'sı nedir?
+### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>S: Özel HSM hizmeti için SLA nedir?
 
-Adanmış HSM hizmeti için belirli bir çalışma süresi garantisi sağlanmamıştır. Microsoft ağ aygıtına düzeyi erişim sağlayacak ve bu nedenle standart Azure ağ SLA'lar uygulayın.
+Özel HSM hizmeti için belirli bir çalışma süresi garantisi sağlanmaz. Microsoft, aygıta ağ düzeyinde erişim sağlar ve bu nedenle standart Azure ağ SLA'ları geçerlidir.
 
-### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>S: nasıl HSM'ler Azure ayrılmış HSM korumalı içinde kullanılır?
+### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>S: Azure Özel HSM'de HSM'ler nasıl korunur?
 
-Azure veri merkezleri, fiziksel ve yordam kapsamlı güvenlik denetimleri vardır. Buna ek olarak, ayrılmış HSM'ler bir veri merkezinin daha kısıtlı erişim alanında barındırılır. Bu alanlar, ek fiziksel erişim denetimi ve ek güvenlik için video kamera gözetim vardır.
+Azure veri merkezlerikapsamlı fiziksel ve yordamsal güvenlik denetimleri ne sahiptir. Buna ek olarak Özel HSM'ler veri merkezinin daha sınırlı erişim alanında barındırılır. Bu alanlarda ek güvenlik için ek fiziksel erişim kontrolleri ve video kamera gözetimi var.
 
-### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>Hatırlayamazsam bir güvenlik ihlali veya olay oynama donanım ise ne olur?
+### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>S: Bir güvenlik ihlali veya donanım tahrifatı olayı olduğunda ne olur?
 
-Ayrılmış HSM hizmetini SafeNet ağ HSM 7 cihazları kullanır. Bu gereçler, fiziksel ve mantıksal değiştirme algılama destekler. HSM'ler otomatik olarak zeroized bir kurcalamaya olay olursa.
+Özel HSM hizmeti SafeNet Network HSM 7 cihazlarını kullanır. Bu cihazlar fiziksel ve mantıksal kurcalama algılamayı destekler. Bir kurcalama olayı olursa HSM'ler otomatik olarak sıfırlanır.
 
-### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>S: my ayrılmış HSM'ler anahtarlarında hata veya kötü amaçlı saldırı nedeniyle kaybolmamasını nasıl emin olabilirim?
+### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>S: Özel HSM'lerimdeki anahtarların hata veya kötü amaçlı bir içeriden saldırı nedeniyle kaybolmadığından nasıl emin olabilirim?
 
-HSM'ler normal düzenli yedeklemesi için olağanüstü durum kurtarma gerçekleştirmek için bir şirket içi HSM yedekleme cihazı kullanmak için önerilir. Eşler arası veya siteden siteye VPN bağlantısı için bir HSM yedekleme cihazı bağlı bir şirket içi iş istasyonu kullanmanız gerekecektir.
+Olağanüstü durum kurtarma için HSM'lerin düzenli periyodik yedeklemesini gerçekleştirmek için şirket içi HSM yedekleme aygıtı kullanılması önerilir. Bir HSM yedekleme aygıtına bağlı şirket içi iş istasyonuna eşler arası veya siteden siteye VPN bağlantısı kullanmanız gerekir.
 
-### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>S: ayrılmış HSM için destek ne elde ederim?
+### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>S: Özel HSM için nasıl destek alabilirim?
 
-Destek, hem Microsoft hem de Gemalto tarafından sağlanır.  Donanımla veya ağ erişimiyle ilgili bir sorununuz varsa Microsoft ile bir destek talebi yükseltin ve HSM yapılandırması, yazılım ve uygulama geliştirme ile ilgili bir sorununuz varsa, Gemalto ile bir destek isteği yükseltir. Belirlenmeyen bir sorununuz varsa, Microsoft ile bir destek isteği oluşturup daha sonra Gemalto Için gereken bir sorun olabilir. 
+Destek hem Microsoft hem de Gemalto tarafından sağlanır.  Donanım veya ağ erişimiyle ilgili bir sorununuz varsa, Microsoft'a bir destek isteği getirin ve HSM yapılandırması, yazılım ve uygulama geliştirme yle ilgili bir sorununuz varsa Gemalto ile bir destek isteği yükseltin. Belirsiz bir sorununuzun varsa, Microsoft ile bir destek isteği getirin ve gemalto gerektiği gibi meşgul olabilir. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>S: Nasıl yaparım? istemci yazılımı, belgeleri ve SafeNet Luna 7 HSM için tümleştirme yönergelerine erişin mi?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>S: SafeNet Luna 7 HSM için istemci yazılımını, dokümantasyonunu ve entegrasyon kılavuzuna erişimi nasıl edebilirim?
 
-Hizmete kaydolduktan sonra, Gemalto müşteri destek portalı 'nda kayda izin veren bir müşteri KIMLIĞI sağlanacaktır. Bu, tüm yazılım ve belgelere erişimi etkinleştirir ve doğrudan Gemalto ile destek isteklerini etkinleştirir.
+Hizmete kaydolduktan sonra, Gemalto müşteri destek portalına kayıt yapılmasına olanak tanıyan bir Gemalto Müşteri Kimliği sağlanacaktır. Bu, tüm yazılım ve belgelere erişimin yanı sıra destek isteklerini doğrudan Gemalto ile etkinleştirme olanağı sağlayacaktır.
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>S: varsa yükseltme/düzeltme eki uygulama işletim sistemi/üretici yazılımı için sorumlu Gemalto tarafından bulunan bir güvenlik açığı ve bir düzeltme eki yayımlanır?
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>S: Bir güvenlik açığı bulunursa ve Gemalto tarafından bir yama serbest bırakılırsa, işletim sistemi/Firmware'in yükseltilmesi/yamalanmasından kim sorumludur?
 
-Microsoft, müşterilere ayrılmış HSM'ler için bağlantı özelliği yok. Müşteriler, yükseltme ve bunların HSM'ler düzeltme eki gerekir.
+Microsoft'un müşterilere tahsis edilen HSM'lere bağlanma yeteneği yoktur. Müşteriler HSM'lerini yükseltmeli ve yamalıdır.
 
-### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>S: HSM 'umu yeniden başlatmalıyım ne yapmalıyım?
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>S: HSM'mi yeniden başlatmam gerekirse ne olur?
 
-HSM 'nin bir komut satırı yeniden başlatma seçeneği vardır, ancak yeniden başlatma askıda kalma sorunları zaman zaman yaşanıyor ve bu nedenle, cihazın fiziksel olarak yeniden başlatılmasını sağlamak için Microsoft ile bir destek isteği yükseltmenize en güvenli hale getirtiğimiz için önerilir. 
+HSM'nin komut satırı yeniden başlatma seçeneği vardır, ancak, aralıklı olarak yeniden başlatma sorunları yaşıyoruz ve bu nedenle aygıtın fiziksel olarak yeniden başlatılması için Microsoft ile bir destek isteği yükseltmeniz en güvenli yeniden başlatma önerilir. 
 
-## <a name="cryptography-and-standards"></a>Şifreleme ve standartları
+## <a name="cryptography-and-standards"></a>Kriptografi ve standartlar
 
-### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>S: ayrılmış HSM'de en önemli verilerimi için şifreleme anahtarları depolamak güvenli mi?
+### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>S: En önemli verilerim için şifreleme anahtarlarını Özel HSM'de depolamak güvenli midir?
 
-Evet, özel HSM kullanın FIPS 140-2 Düzey 3 hsm'leri SafeNet ağ HSM 7 cihazları sağlar. 
+Evet, ÖZEL HSM hükümleri FIPS 140-2 Düzey 3 onaylı HSM kullanan SafeNet Network HSM 7 cihazları. 
 
-### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>S: hangi şifreleme anahtarlarını ve algoritmaları ayrılmış HSM tarafından destekleniyor mu?
+### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>S: Hangi şifreleme anahtarları ve algoritmaları Özel HSM tarafından desteklenir?
 
-Ayrılmış HSM hizmetini hazırlar SafeNet ağ HSM 7 cihazları. Çok çeşitli şifreleme anahtar türleri ve algoritmaları dahil olmak üzere destekledikleri: tam Suite B desteği
+Özel HSM servis hükümleri SafeNet Network HSM 7 cihazları. Bunlar dahil olmak üzere çok çeşitli şifreleme anahtar türlerini ve algoritmalarını destekler: Full Suite B desteği
 
 * Asimetrik:
   * RSA
-  * DSA
+  * Dsa
   * Diffie-Hellman
   * Eliptik Eğri
-  * Şifreleme (ECDSA, ECDH, Ed25519, ECIES) ile kullanıcı tanımlı adlandırılmış ve Brainpool Eğriler, KCDSA
+  * Kriptografi (ECDSA, ECDH, Ed25519, ECIES) adlı, kullanıcı tanımlı ve Brainpool eğrileri ile, KCDSA
 * Simetrik:
   * AES-GCM
   * Üçlü DES
   * DES
-  * ARIA, ÇEKİRDEK
+  * ARIA, TOHUM
   * RC2
   * RC4
   * RC5
   * CAST
-  * Karma/ileti özeti/HMAC: SHA-1, SHA-2, SM3
-  * Anahtar türetme: SP800 108 sayacı modu
-  * Anahtar kaydırma: SP800-38F
-  * Rastgele sayı oluşturma: FIPS 140-2 ile BSI DRG.4 uymak DRBG (SP 800-90 CTRL modu) onaylandı.
+  * Karma/Mesaj Özeti/HMAC: SHA-1, SHA-2, SM3
+  * Anahtar Türetme: SP800-108 Sayaç Modu
+  * Anahtar Sarma: SP800-38F
+  * Rastgele Sayı Üretimi: FIPS 140-2 onaylı DRBG (SP 800-90 TO modu), BSI DRG.4 ile uyumlu
 
-### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>S: olan ayrılmış HSM 140-2 Düzey 3 doğrulanmış FIPS?
+### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>S: Özel HSM FIPS 140-2 Düzey 3 doğrulandı mı?
 
-Evet. Ayrılmış HSM hizmetini kullanım FIPS 140-2 Düzey 3 hsm'leri SafeNet ağ HSM 7 cihazları sağlar.
+Evet. Özel HSM hizmet hükümleri FIPS 140-2 Düzey 3 onaylı HSM kullanan SafeNet Network HSM 7 cihazları.
 
-### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>S: ne yapmam gerek miyim çalışan ayrılmış HSM FIPS emin olmak için modu 140-2 Düzey 3 doğrulandı?
+### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>S: FIPS 140-2 Düzey 3 doğrulanmış modda Özel HSM çalıştırdığımdan emin olmak için ne yapmalıyım?
 
-Ayrılmış HSM hizmetini SafeNet Luna ağ HSM 7 cihazları sağlar. Bu gereçler kullanma FIPS 140-2 Düzey 3 hsm'leri. Ayrıca dağıtılan varsayılan yapılandırma, işletim sistemi ve üretici yazılımı FIPS doğrulanmasına sahiptir. FIPS 140-2 Düzey 3 uyumluluk için herhangi bir eylemde bulunmanız gerekmez.
+Özel HSM hizmet hükümleri SafeNet Luna Network HSM 7 aletleri. Bu cihazlar FIPS 140-2 Düzey 3 onaylı HSM'leri kullanır. Varsayılan dağıtılan yapılandırma, işletim sistemi ve firmware de FIPS doğrulanır. FIPS 140-2 Düzey 3 uyumluluğu için herhangi bir işlem yapmanız gerekmez.
 
-### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>S: bir HSM, bir HSM 'nin sağlanması ne zaman sağlandıysa, tüm anahtar malzemeler silinir mi?
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>S: Bir müşteri, bir HSM'nin tüm anahtar malzemenin yok edilmesini nasıl sağlar?
 
-Sağlama kaldırmayı istemeden önce bir müşteri Gemalto sağlanan HSM istemci araçlarını kullanarak HSM zeroized gerekir.
+Deprovisioning istemeden önce, bir müşteri Gemalto sağlanan HSM istemci araçlarını kullanarak HSM sıfırlanmış olmalıdır.
 
 ## <a name="performance-and-scale"></a>Performans ve ölçeklendirme
 
-### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>S: kaç şifreleme işlemleri HSM ayrılmış ile saniyede destekleniyor mu?
+### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>S: Özel HSM ile saniyede kaç şifreleme işlemi desteklenir?
 
-Ayrılmış HSM hükümlerine SafeNet ağ HSM 7 cihazları (model A790). Bazı işlemler için en yüksek performansı bir özeti aşağıda verilmiştir: 
+Özel HSM hükümleri SafeNet Network HSM 7 aletleri (Model A790). Aşağıda, bazı işlemler için maksimum performansın bir özeti verem: 
 
-* RSA 2048: saniye başına 10.000 işlem
-* ECC P256: 20.000 işlem / saniye
-* AES-GCM: 17,000 saniye başına işlem
+* RSA-2048: Saniyede 10.000 işlem
+* ECC P256: Saniyede 20.000 işlem
+* AES-GCM: Saniyede 17.000 işlem
 
-### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>S: kaç bölümleri ayrılmış HSM'de oluşturulabilir mi?
+### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>S: Özel HSM'de kaç bölüm oluşturulabilir?
 
-Kullanılan SafeNet Luna HSM 7 modeli A790, hizmet maliyetinde 10 bölüm için bir lisans içerir. Cihazda 100 bölümden oluşan bir sınır bulunur ve bu sınıra kadar bölüm eklemek ek lisanslama maliyetlerine neden olur ve cihazda yeni bir lisans dosyası yüklemesi gerektirir.
+SafeNet Luna HSM 7 modeli A790 kullanılan hizmet maliyeti 10 bölüm için bir lisans içerir. Aygıtın 100 bölüm sınırı vardır ve bu sınıra kadar bölümler eklemek ek lisans maliyetlerine neden olur ve aygıta yeni bir lisans dosyası nın yüklenmesini gerektirir.
 
-### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>S: kaç anahtarları ayrılmış HSM'de desteklenir?
+### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>S: Özel HSM'de kaç anahtar desteklenebilir?
 
-Maksimum anahtar sayısı, kullanılabilir belleğin bir işlevidir. A790 'in kullanımdaki SafeNet Luna 7 modeli, 32 MB belleğe sahiptir. Asimetrik anahtarlar kullanılıyorsa, aşağıdaki sayılar da anahtar çiftlerine uygulanabilir.
+En fazla anahtar sayısı, kullanılabilir belleğin bir işlevidir. SafeNet Luna 7 modeli A790 32MB belleğe sahiptir. Aşağıdaki sayılar, asimetrik tuşlar kullanıyorsanız anahtar çiftleri için de geçerlidir.
 
-* RSA 2048 - 19,000
-* ECC P256 - 91,000
+* RSA-2048 - 19.000
+* ECC-P256 - 91.000
 
-Kapasite, şablon anahtar oluşturma ve bölüm sayısı belirli bir anahtar özniteliklere bağlı olarak değişir.
+Kapasite, anahtar oluşturma şablonunda ve bölüm sayısına göre belirli anahtar özniteliklerine bağlı olarak değişir.

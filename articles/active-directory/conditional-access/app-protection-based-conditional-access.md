@@ -1,6 +1,6 @@
 ---
-title: Koşullu erişim ile uygulama koruma ilkeleri-Azure Active Directory
-description: Azure Active Directory ' de koşullu erişim ile Cloud App erişimi için uygulama koruma ilkesi yapmayı isteme hakkında bilgi edinin.
+title: Koşullu Erişimli Uygulama Koruma politikaları - Azure Active Directory
+description: Azure Active Directory'de Koşullu Erişim ile bulut uygulaması erişimi için uygulama koruma ilkesini nasıl gerekli kulaşıldırabilirsiniz öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,135 +12,135 @@ manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080074"
 ---
-# <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için uygulama koruma ilkesi ve onaylanan istemci uygulaması gerektirme
+# <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Nasıl yapilir: Koşullu Erişim ile bulut uygulamasıerişimi için uygulama koruma ilkesini ve onaylı bir istemci uygulaması na ihtiyaç duyma
 
-Kullanıcılar mobil cihazlarını kişisel ve iş görevleri için düzenli olarak kullanır. Personelin üretken olduğundan emin olmaya devam ederken kuruluşlar, güvensiz olabilecek uygulamalardan veri kaybını da engellemek istiyor. Koşullu erişim sayesinde kuruluşlar, onaylanmış (modern kimlik doğrulama özellikli) istemci uygulamalarına erişimi, Intune uygulama koruma ilkeleri uygulanmış şekilde kısıtlayabilir.
+İnsanlar mobil cihazlarını hem kişisel hem de iş görevleri için düzenli olarak kullanırlar. Kuruluşların verimli olmasını sağlarken, kuruluşlar da güvenli olmayan uygulamalardan kaynaklanan veri kaybını önlemek ister. Koşullu Erişim ile kuruluşlar, kendilerine uygulanan Intune uygulama koruma ilkeleriyle onaylı (modern kimlik doğrulama özelliğine sahip) istemci uygulamalarına erişimi kısıtlayabilir.
 
-Bu makalede, Office 365, Exchange Online ve SharePoint Online gibi kaynaklar için koşullu erişim ilkelerini yapılandırmak üzere iki senaryo sunulmaktadır.
+Bu makalede, Office 365, Exchange Online ve SharePoint Online gibi kaynaklar için Koşullu Erişim ilkelerini yapılandırmak için iki senaryo sunmaktadır.
 
-- [Senaryo 1: Office 365 uygulamaları, uygulama koruma ilkeleriyle onaylanan uygulamalar gerektirir](#scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies)
-- [Senaryo 2: Exchange Online ve SharePoint Online için onaylanan bir istemci uygulaması ve uygulama koruma ilkesi gerekir](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy)
+- [Senaryo 1: Office 365 uygulamaları, uygulama koruma ilkelerine sahip onaylanmış uygulamalar gerektirir](#scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies)
+- [Senaryo 2: Exchange Online ve SharePoint Online onaylı bir istemci uygulaması ve uygulama koruma ilkesi gerektirir](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy)
 
-Koşullu erişim 'de, bu istemci uygulamalarının bir uygulama koruma ilkesiyle korunması bilinmektedir. Uygulama koruma ilkeleri hakkında daha fazla bilgi için, [Uygulama koruma ilkelerine genel bakış](/intune/apps/app-protection-policy)
+Koşullu Erişim'de, bu istemci uygulamalarının bir uygulama koruma ilkesiyle korunduğu bilinmektedir. Uygulama koruma politikaları hakkında daha fazla bilgi makalede bulunabilir, [Uygulama koruma politikaları genel bakış](/intune/apps/app-protection-policy)
 
-Uygun istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md).
+Uygun istemci uygulamalarının listesi için [Uygulama koruma ilkesi gereksinimine](concept-conditional-access-grant.md)bakın.
 
 > [!NOTE]
->    OR yan tümcesi, kullanıcıların **Uygulama koruma Ilkesini iste** veya **onaylanmış istemci uygulama** izni denetimleri gerektiren uygulamaları kullanmalarını sağlamak için ilke içinde kullanılır. **Uygulama koruma Ilkesi gerektir** denetimini destekleyen uygulamalar hakkında daha fazla bilgi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md).
+>    Veya yan tümce, kullanıcıların **uygulama koruma ilkesini etkinleştirme** veya onaylı **istemci uygulaması** hibe denetimleri gerektiren uygulamaları kullanabilmeleri için ilke içinde kullanılır. Hangi uygulamaların Uygulama koruma **ilkesi** hibe denetimini desteklediği hakkında daha fazla bilgi için [Uygulama koruma ilkesi gereksinimine](concept-conditional-access-grant.md)bakın.
 
-## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Senaryo 1: Office 365 uygulamaları, uygulama koruma ilkeleriyle onaylanan uygulamalar gerektirir
+## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Senaryo 1: Office 365 uygulamaları, uygulama koruma ilkelerine sahip onaylanmış uygulamalar gerektirir
 
-Contoso, bu senaryoda, Office 365 kaynaklarına yönelik tüm mobil erişimin, erişim almadan önce bir uygulama koruma ilkesi tarafından korunan Outlook Mobile, OneDrive ve Microsoft ekipleri gibi onaylanan istemci uygulamaları kullanması gerektiğini kararmıştır. Tüm kullanıcıları Azure AD kimlik bilgileriyle oturum açın ve bunlara Azure AD Premium P1 veya P2 ve Microsoft Intune içeren lisanslar atanır.
+Bu senaryoda Contoso, Office 365 kaynaklarına tüm mobil erişimin erişim almadan önce outlook mobil, OneDrive ve Microsoft Teams gibi onaylı istemci uygulamalarını kullanmasına karar verdi. Tüm kullanıcıları azure AD kimlik bilgileriyle oturum açtı ve azure AD Premium P1 veya P2 ve Microsoft Intune gibi lisanslara sahip.
 
-Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmasını gerektirmek için aşağıdaki adımları tamamlamalıdır.
+Kuruluşların, mobil cihazlarda onaylı bir istemci uygulamasının kullanılmasını gerektirmesi için aşağıdaki adımları tamamlamaları gerekir.
 
-**1. Adım: Office 365 için bir Azure AD koşullu erişim ilkesi yapılandırma**
+**Adım 1: Office 365 için Azure AD Koşullu Erişim ilkesini yapılandırma**
 
-1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
-1. **Yeni ilke**' yi seçin.
-1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
-   1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
+1. **Azure portalında** global yönetici, güvenlik yöneticisi veya Koşullu Erişim yöneticisi olarak oturum açın.
+1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
+1. **Yeni ilke**yi seçin.
+1. Poliçenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmalarını öneririz.
+1. **Atamalar**altında, **Kullanıcıları ve grupları** seçin
+   1. **Ekle**, tüm **kullanıcıları** veya bu politikayı uygulamak istediğiniz belirli Kullanıcıları **ve grupları** seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** altında **dahil** > , **Office 365 (Önizleme)** öğesini seçin.
-1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
-   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Android** ve **iOS**dahil edin.
-1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
-   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **modern kimlik doğrulama istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **izin**' nın altında, aşağıdaki seçenekleri belirleyin:
-   - **Onaylanan istemci uygulaması gerektir**
-   - **Uygulama koruma ilkesi gerektir (Önizleme)**
-   - **Seçili denetimlerden birini gerektir**
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
+1. **Bulut uygulamaları veya eylemleri** > altında**Ekle**, **Office 365 (önizleme)** seçin.
+1. **Koşullar**altında, **Aygıt platformlarını**seçin.
+   1. **Yapılandırmayı** **Evet**olarak ayarlayın.
+   1. **Android** ve **iOS'u**ekleyin.
+1. **Koşullar** **altında, İstemci uygulamalarını seçin (önizleme)**.
+   1. **Yapılandırmayı** **Evet**olarak ayarlayın.
+   1. **Mobil uygulamaları ve masaüstü istemcilerini ve** Modern kimlik doğrulama **istemcilerini**seçin.
+1. **Access denetimleri** > altında**Hibe,** aşağıdaki seçenekleri seçin:
+   - **Onaylı istemci uygulaması gerektirir**
+   - **Uygulama koruma ilkesi (önizleme) gerektirir**
+   - **Seçili denetimlerden birini gerektirir**
+1. Ayarlarınızı onaylayın ve Etkinleştir **ilkesini** **A'ya**ayarlayın.
+1. İlkenizin oluşturulması ve etkin olması için **Oluştur'u** seçin.
 
-**2. Adım: ActiveSync (EAS) ile Exchange Online için bir Azure AD koşullu erişim ilkesi yapılandırma**
+**Adım 2: ActiveSync (EAS) ile Exchange Online için Azure AD Koşullu Erişim ilkesini yapılandırma**
 
-Bu adımdaki koşullu erişim ilkesi için aşağıdaki bileşenleri yapılandırın:
+Bu adımdaki Koşullu Erişim ilkesi için aşağıdaki bileşenleri yapılandırın:
 
-1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
-1. **Yeni ilke**' yi seçin.
-1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
-   1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
+1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
+1. **Yeni ilke**yi seçin.
+1. Poliçenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmalarını öneririz.
+1. **Atamalar**altında, **Kullanıcıları ve grupları** seçin
+   1. **Ekle**, tüm **kullanıcıları** veya bu politikayı uygulamak istediğiniz belirli Kullanıcıları **ve grupları** seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** **altında > ,** **Office 365 Exchange Online**' ı seçin.
-1. **Koşullar**altında:
-   1. **İstemci uygulamaları (Önizleme)** :
-      1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-      1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **izin**ver ' ın altında, **erişim ver**' i seçin, **Uygulama koruma ilkesi gerektir**' **i seçin ve**
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
+1. **Bulut uygulamaları veya eylemleri** > altında**Ekle**, **Office 365 Exchange Online'ı**seçin.
+1. **Koşullar**Altında:
+   1. **İstemci uygulamaları (önizleme)**:
+      1. **Yapılandırmayı** **Evet**olarak ayarlayın.
+      1. **Mobil uygulamaları ve masaüstü istemcilerini** ve Exchange **ActiveSync istemcilerini**seçin.
+1. **Access denetimleri** > altında**Hibe**, **Erişim Ver**seçin , uygulama koruma **ilkesi gerektirir**ve **Seçin'i**seçin.
+1. Ayarlarınızı onaylayın ve Etkinleştir **ilkesini** **A'ya**ayarlayın.
+1. İlkenizin oluşturulması ve etkin olması için **Oluştur'u** seçin.
 
-**3. Adım: iOS ve Android istemci uygulamaları için Intune uygulama koruma ilkesini yapılandırma**
+**Adım 3: iOS ve Android istemci uygulamaları için Intune uygulama koruma politikasını yapılandırın**
 
-Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [Uygulama koruma ilkeleri oluşturma ve atama](/intune/apps/app-protection-policies)makalesindeki makaleyi gözden geçirin. 
+Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [uygulama koruma ilkeleri oluşturma ve atama](/intune/apps/app-protection-policies)başlıklı makaleyi gözden geçirin. 
 
-## <a name="scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy"></a>Senaryo 2: Exchange Online ve SharePoint Online için onaylanan bir istemci uygulaması ve uygulama koruma ilkesi gerekir
+## <a name="scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy"></a>Senaryo 2: Exchange Online ve SharePoint Online onaylı bir istemci uygulaması ve uygulama koruma ilkesi gerektirir
 
-Bu senaryoda, contoso, kullanıcıların erişim almadan önce bir uygulama koruma ilkesi tarafından korunan onaylanan bir istemci uygulamasını kullandıkları sürece kullanıcılara yalnızca mobil cihazlarda e-posta ve SharePoint verilerine erişebilmeye karar verdi. Tüm kullanıcıları Azure AD kimlik bilgileriyle oturum açın ve bunlara Azure AD Premium P1 veya P2 ve Microsoft Intune içeren lisanslar atanır.
+Bu senaryoda Contoso, kullanıcıların yalnızca erişim almadan önce bir uygulama koruma ilkesi tarafından korunan Outlook mobil gibi onaylanmış bir istemci uygulamasını kullandıkları sürece mobil cihazlardaki e-posta ve SharePoint verilerine erişebileceğine karar verilmiştir. Tüm kullanıcıları azure AD kimlik bilgileriyle oturum açtı ve azure AD Premium P1 veya P2 ve Microsoft Intune gibi lisanslara sahip.
 
-Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange ActiveSync istemcilerinde kullanılmasını gerektirmek için aşağıdaki üç adımı tamamlamalıdır.
+Kuruluşların, mobil cihazlarda ve Exchange ActiveSync istemcilerinde onaylanmış bir istemci uygulamasının kullanılmasını gerektirmek için aşağıdaki üç adımı tamamlamaları gerekir.
 
-**1. Adım: Exchange Online ve SharePoint Online 'a erişirken onaylanan istemci uygulaması ve uygulama koruma İlkesi kullanımını gerektiren Android ve iOS tabanlı modern kimlik doğrulama istemcileri için Ilke.**
+**Adım 1: Exchange Online ve SharePoint Online'a erişirken onaylanmış bir istemci uygulaması ve uygulama koruma politikasının kullanılmasını gerektiren Android ve iOS tabanlı modern kimlik doğrulama istemcileri için politika.**
 
-1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
-1. **Yeni ilke**' yi seçin.
-1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
-   1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
+1. **Azure portalında** global yönetici, güvenlik yöneticisi veya Koşullu Erişim yöneticisi olarak oturum açın.
+1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
+1. **Yeni ilke**yi seçin.
+1. Poliçenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmalarını öneririz.
+1. **Atamalar**altında, **Kullanıcıları ve grupları** seçin
+   1. **Ekle**, tüm **kullanıcıları** veya bu politikayı uygulamak istediğiniz belirli Kullanıcıları **ve grupları** seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** altında > **ekleyin**, **Office 365 Exchange Online** ve **Office 365 SharePoint Online**' ı seçin.
-1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
-   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Android** ve **iOS**dahil edin.
-1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
-   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **modern kimlik doğrulama istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **izin**' nın altında, aşağıdaki seçenekleri belirleyin:
-   - **Onaylanan istemci uygulaması gerektir**
-   - **Uygulama koruma ilkesi gerektir (Önizleme)**
-   - **Seçili denetimlerden birini gerektir**
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
+1. **Bulut uygulamaları veya eylemleri** > **altında,** Office 365 Exchange Online ve Office **365** **SharePoint Online'ı**seçin.
+1. **Koşullar**altında, **Aygıt platformlarını**seçin.
+   1. **Yapılandırmayı** **Evet**olarak ayarlayın.
+   1. **Android** ve **iOS'u**ekleyin.
+1. **Koşullar** **altında, İstemci uygulamalarını seçin (önizleme)**.
+   1. **Yapılandırmayı** **Evet**olarak ayarlayın.
+   1. **Mobil uygulamaları ve masaüstü istemcilerini ve** Modern kimlik doğrulama **istemcilerini**seçin.
+1. **Access denetimleri** > altında**Hibe,** aşağıdaki seçenekleri seçin:
+   - **Onaylı istemci uygulaması gerektirir**
+   - **Uygulama koruma ilkesi (önizleme) gerektirir**
+   - **Seçili denetimlerden birini gerektirir**
+1. Ayarlarınızı onaylayın ve Etkinleştir **ilkesini** **A'ya**ayarlayın.
+1. İlkenizin oluşturulması ve etkin olması için **Oluştur'u** seçin.
 
-**2. Adım: onaylanmış bir istemci uygulamasının kullanılmasını gerektiren Exchange ActiveSync istemcileri için Ilke.**
+**Adım 2: Onaylı bir istemci uygulamasının kullanılmasını gerektiren Exchange ActiveSync istemcileri için ilke.**
 
-1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
-1. **Yeni ilke**' yi seçin.
-1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
-   1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
+1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
+1. **Yeni ilke**yi seçin.
+1. Poliçenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmalarını öneririz.
+1. **Atamalar**altında, **Kullanıcıları ve grupları** seçin
+   1. **Ekle**, tüm **kullanıcıları** veya bu politikayı uygulamak istediğiniz belirli Kullanıcıları **ve grupları** seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** **altında > ,** **Office 365 Exchange Online**' ı seçin.
-1. **Koşullar**altında:
-   1. **İstemci uygulamaları (Önizleme)** :
-      1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-      1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **izin**ver ' ın altında, **erişim ver**' i seçin, **Uygulama koruma ilkesi gerektir**' **i seçin ve**
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
+1. **Bulut uygulamaları veya eylemleri** > altında**Ekle**, **Office 365 Exchange Online'ı**seçin.
+1. **Koşullar**Altında:
+   1. **İstemci uygulamaları (önizleme)**:
+      1. **Yapılandırmayı** **Evet**olarak ayarlayın.
+      1. **Mobil uygulamaları ve masaüstü istemcilerini** ve Exchange **ActiveSync istemcilerini**seçin.
+1. **Access denetimleri** > altında**Hibe**, **Erişim Ver**seçin , uygulama koruma **ilkesi gerektirir**ve **Seçin'i**seçin.
+1. Ayarlarınızı onaylayın ve Etkinleştir **ilkesini** **A'ya**ayarlayın.
+1. İlkenizin oluşturulması ve etkin olması için **Oluştur'u** seçin.
 
-**3. Adım: iOS ve Android istemci uygulamaları için Intune uygulama koruma ilkesini yapılandırma.**
+**Adım 3: iOS ve Android istemci uygulamaları için Intune uygulama koruma ilkesini yapılandırın.**
 
-Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [Uygulama koruma ilkeleri oluşturma ve atama](/intune/apps/app-protection-policies)makalesindeki makaleyi gözden geçirin. 
+Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [uygulama koruma ilkeleri oluşturma ve atama](/intune/apps/app-protection-policies)başlıklı makaleyi gözden geçirin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu erişim nedir?](overview.md)
+[Koşullu Erişim Nedir?](overview.md)
 
 [Koşullu erişim bileşenleri](concept-conditional-access-policies.md)
 
-[Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)
+[Sık kullanılan Koşullu Erişim İlkeleri](concept-conditional-access-policy-common.md)
 

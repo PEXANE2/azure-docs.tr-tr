@@ -1,40 +1,40 @@
 ---
-title: Azure Cosmos DB hesabınız için bir IP güvenlik duvarı yapılandırın
-description: Azure Cosmos hesaplarında güvenlik duvarı desteği için IP erişim denetim ilkelerini yapılandırmayı öğrenin.
+title: Azure Cosmos DB hesabınız için bir IP güvenlik duvarı yapılandırma
+description: Azure Cosmos hesaplarında güvenlik duvarı desteği için IP erişim denetimi ilkelerini nasıl yapılandırılamayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78162953"
 ---
-# <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB 'de IP güvenlik duvarını yapılandırma
+# <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB'de IP güvenlik duvarını yapılandırma
 
-IP güvenlik duvarlarını kullanarak Azure Cosmos DB hesabınızda depolanan verilerin güvenliğini sağlayabilirsiniz. Azure Cosmos DB, gelen güvenlik duvarı desteği için IP tabanlı erişim denetimlerini destekler. Aşağıdaki yollarla Azure Cosmos DB hesapta bir IP güvenlik duvarı belirleyebilirsiniz:
+IP güvenlik duvarlarını kullanarak Azure Cosmos DB hesabınızda depolanan verileri güvenli hale alabilirsiniz. Azure Cosmos DB, gelen güvenlik duvarı desteği için IP tabanlı erişim denetimlerini destekler. Aşağıdaki yollardan birini kullanarak Azure Cosmos DB hesabında bir IP güvenlik duvarı ayarlayabilirsiniz:
 
 * Azure portalından
 * Azure Resource Manager şablonu kullanarak bildirimli olarak
-* **İpRangeFilter** özelliğini GÜNCELLEŞTIREREK Azure clı veya Azure PowerShell aracılığıyla programlama yoluyla
+* **ipRangeFilter** özelliğini güncelleyerek Azure CLI veya Azure PowerShell üzerinden programlanabilir şekilde
 
-## <a id="configure-ip-policy"></a>Azure portal kullanarak bir IP güvenlik duvarı yapılandırma
+## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a>Azure portalını kullanarak bir IP güvenlik duvarı yapılandırma
 
-Azure portal IP erişim denetimi ilkesini ayarlamak için, Azure Cosmos DB hesabı sayfasına gidin ve gezinti menüsünde **güvenlik duvarı ve sanal ağlar** ' ı seçin. Değerden **erişime Izin ver** ' i **Seçili ağlara**değiştirin ve ardından **Kaydet**' i seçin.
+Azure portalındaki IP erişim denetim ilkesini ayarlamak için Azure Cosmos DB hesap sayfasına gidin ve gezinti menüsünde **Güvenlik Duvarı ve sanal ağları** seçin. **Erişime değerden** **Seçili ağlara**geçiş izni ver ve ardından **Kaydet'i**seçin.
 
-![Azure portal güvenlik duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü](./media/how-to-configure-firewall/azure-portal-firewall.png)
+![Azure portalında Güvenlik Duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü](./media/how-to-configure-firewall/azure-portal-firewall.png)
 
-IP erişim denetimi açıldığında, Azure portal IP adresleri, IP adresi aralıkları ve anahtarlar belirtme olanağı sağlar. Anahtarlar, diğer Azure hizmetlerine ve Azure portal erişimi etkinleştirir. Aşağıdaki bölümlerde bu anahtarlarla ilgili ayrıntılar verilmektedir.
+IP erişim denetimi açık olduğunda, Azure portalı IP adreslerini, IP adres aralıklarını ve anahtarlarını belirtme olanağı sağlar. Anahtarlar, diğer Azure hizmetlerine ve Azure portalına erişimi sağlar. Aşağıdaki bölümlerde bu anahtarlar hakkında ayrıntılı bilgi verilmiştir.
 
 > [!NOTE]
-> Azure Cosmos DB hesabınız için bir IP erişim denetimi ilkesini etkinleştirdikten sonra, izin verilen IP adresi aralıkları dışındaki makinelerden gelen Azure Cosmos DB hesabınıza yapılan tüm istekler reddedilir. Access Control 'un bütünlüğünü sağlamak için portaldan Azure Cosmos DB kaynaklarına göz atma de engellenir.
+> Azure Cosmos DB hesabınız için bir IP erişim kontrol ilkesini etkinleştirdikten sonra, izin verilen IP adresi aralıkları listesidışındaki makinelerden Azure Cosmos DB hesabınıza gelen tüm istekler reddedilir. Portaldan Azure Cosmos DB kaynaklarına göz atmak da erişim denetiminin bütünlüğünü sağlamak için engellenir.
 
-### <a name="allow-requests-from-the-azure-portal"></a>Azure portal isteklere izin ver
+### <a name="allow-requests-from-the-azure-portal"></a>Azure portalından isteklere izin verme
 
-Bir IP erişim denetimi ilkesini programlı bir şekilde etkinleştirdiğinizde, erişimi sürdürmek için Azure portal IP adresini **ipRangeFilter** özelliğine eklemeniz gerekir. Portal IP adresleri şunlardır:
+Bir IP erişim denetim ilkesini programlı bir şekilde etkinleştirdiğinizde, erişimi korumak için Azure portalının IP adresini **ipRangeFilter** özelliğine eklemeniz gerekir. Portal IP adresleri şunlardır:
 
 |Bölge|IP adresi|
 |------|----------|
@@ -43,58 +43,58 @@ Bir IP erişim denetimi ilkesini programlı bir şekilde etkinleştirdiğinizde,
 |US Gov|52.244.48.71|
 |Diğer tüm bölgeler|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
-Aşağıdaki ekran görüntüsünde gösterildiği gibi, **Azure Portal erişime Izin ver** seçeneğini belirleyerek Azure Portal erişim isteklerini etkinleştirebilirsiniz:
+Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure **portalından erişime izin ver** seçeneğini seçerek Azure portalına erişim isteği etkinleştirebilirsiniz:
 
-![Azure portal erişimin nasıl etkinleştirileceğini gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-azure-portal.png)
+![Azure portal erişimini nasıl etkinleştireceklerini gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-azure-portal.png)
 
-### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Küresel Azure veri merkezlerinden veya Azure 'daki diğer kaynaklardan gelen isteklere izin ver
+### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Azure içinde küresel Azure veri merkezlerinden veya başka kaynaklardan gelen isteklere izin verme
 
-Azure Cosmos DB hesabınıza statik IP (örneğin, Azure Stream Analytics ve Azure Işlevleri) sağlamayan hizmetlerden eriştiğinizde, erişimi kısıtlamak için IP güvenlik duvarını kullanmaya devam edebilirsiniz. Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure **veri merkezleri içinden bağlantıları kabul et** seçeneğini belirleyerek Azure 'daki diğer kaynaklardan erişimi etkinleştirebilirsiniz:
+Azure Cosmos DB hesabınıza statik IP sağlamayan hizmetlerden (örneğin, Azure Akış Analizi ve Azure İşlevleri) eriştiyseniz, erişimi sınırlamak için IP güvenlik duvarını kullanmaya devam edebilirsiniz. Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure **veri merkezleri içinden bağlantıları Kabul** et seçeneğini seçerek Azure'daki diğer kaynaklardan erişimi etkinleştirebilirsiniz:
 
-![Azure portal güvenlik duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-azure-services.png)
+![Azure portalında Güvenlik Duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-azure-services.png)
 
-Bu seçeneği etkinleştirdiğinizde, IP adresi `0.0.0.0` izin verilen IP adresleri listesine eklenir. `0.0.0.0` IP adresi, istekleri Azure veri merkezi IP aralığından Azure Cosmos DB hesabınıza kısıtlar. Bu ayar Azure Cosmos DB hesabınıza başka hiçbir IP aralığından erişime izin vermez.
+Bu seçeneği etkinleştirdiğinizde, IP `0.0.0.0` adresi izin verilen IP adresleri listesine eklenir. IP `0.0.0.0` adresi, Azure veri merkezi IP aralığından Azure Cosmos DB hesabınızdaki istekleri kısıtlar. Bu ayar Azure Cosmos DB hesabınıza başka hiçbir IP aralığından erişime izin vermez.
 
 > [!NOTE]
-> Bu seçenek, Azure 'da dağıtılan diğer müşterilerin aboneliklerinden gelen istekler dahil olmak üzere güvenlik duvarını Azure 'daki tüm isteklere izin verecek şekilde yapılandırır. Bu seçenek tarafından izin verilen IP 'lerin listesi geniştir, bu nedenle bir güvenlik duvarı ilkesinin verimliliğini kısıtlar. Bu seçeneği yalnızca istekleriniz sanal ağlardaki statik IP 'lerden veya alt ağlardan kaynaklanmıyorsanız kullanın. Azure portal Azure 'da dağıtıldığından, bu seçeneğin belirlenmesi otomatik olarak Azure portal erişimine izin verir.
+> Bu seçenek, güvenlik duvarını Azure'da dağıtılan diğer müşterilerin abonelikleri de dahil olmak üzere Azure'dan gelen tüm isteklere izin verecek şekilde yapılandırır. Bu seçeneğin izin verdiği IP'lerin listesi geniştir, bu nedenle güvenlik duvarı ilkesinin etkinliğini sınırlar. Bu seçeneği yalnızca istekleriniz sanal ağlardaki statik IP'lerden veya alt ağlardan kaynaklanmıyorsa kullanın. Azure portalı Azure'da dağıtıldığı için bu seçeneğin seçilmesi Azure portalından otomatik olarak erişime izin verir.
 
-### <a name="requests-from-your-current-ip"></a>Geçerli IP 'nizden gelen istekler
+### <a name="requests-from-your-current-ip"></a>Geçerli IP'nizden gelen istekler
 
-Azure portal geliştirmeyi basitleştirmek için, istemci makinenizin IP 'sini belirlemenize ve izin verilenler listesine eklemenize yardımcı olur. Makinenizi çalıştıran uygulamalar daha sonra Azure Cosmos DB hesabınıza erişebilir.
+Azure portalı, geliştirmeyi kolaylaştırmak için istemci makinenizin IP'sini belirlemenize ve izin verilen listeye eklemenize yardımcı olur. Makinenizi çalıştıran uygulamalar daha sonra Azure Cosmos DB hesabınıza erişebilir.
 
-Portal, istemci IP adresini otomatik olarak algılar. Makinenizin istemci IP adresi veya ağ geçidinizin IP adresi olabilir. İş yüklerinizi üretime almadan önce bu IP adresini kaldırdığınızdan emin olun.
+Portal istemci IP adresini otomatik olarak algılar. Makinenizin istemci IP adresi veya ağ ağ geçidinizin IP adresi olabilir. İş yüklerinizi üretime götürmeden önce bu IP adresini kaldırdığınızdan emin olun.
 
-Geçerli IP 'nizi IP listesine eklemek için **GEÇERLI IP 'Yi Ekle**' yi seçin. Daha sonra **Kaydet**’e tıklayın.
+Geçerli IP'nizi IP listesine eklemek için **geçerli IP'mi ekle'yi**seçin. Ardından **Kaydet'i**seçin.
 
-![Geçerli IP için güvenlik duvarı ayarlarının nasıl yapılandırılacağını gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-current-ip.png)
+![Geçerli IP için güvenlik duvarı ayarlarını nasıl yapılandırılabildiğini gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-current-ip.png)
 
-### <a name="requests-from-cloud-services"></a>Bulut hizmetlerinden gelen istekler
+### <a name="requests-from-cloud-services"></a>Bulut hizmetlerinden gelen talepler
 
-Azure 'da bulut Hizmetleri, Azure Cosmos DB kullanarak orta katman hizmet mantığını barındırmak için ortak bir yoldur. Bulut hizmetinden Azure Cosmos DB hesabınıza erişimi etkinleştirmek için, [IP erişim denetimi ilkesini yapılandırarak](#configure-ip-policy), bulut HIZMETININ genel ıp adresini Azure Cosmos DB hesabınızla ilişkilendirilen ızın verilen IP adresleri listesine eklemeniz gerekir. Bu, bulut hizmetlerinin tüm rol örneklerinin Azure Cosmos DB hesabınıza erişmesini sağlar.
+Azure'da bulut hizmetleri, Azure Cosmos DB'yi kullanarak orta katman hizmet mantığına ev sahipliği yapmanın yaygın bir yoludur. Azure Cosmos DB hesabınıza bir bulut hizmetinden erişimi etkinleştirmek için, [IP erişim kontrol ilkesini yapılandırarak](#configure-ip-policy)Bulut hizmetinin genel IP adresini Azure Cosmos DB hesabınızla ilişkili IP adresleri listesine eklemeniz gerekir. Bu, bulut hizmetlerinin tüm rol örneklerinin Azure Cosmos DB hesabınıza erişmesini sağlar.
 
-Aşağıdaki ekran görüntüsünde gösterildiği gibi, Azure portal bulut hizmetlerinizin IP adreslerini alabilirsiniz:
+Bulut hizmetlerinizin IP adreslerini Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure portalından alabilirsiniz:
 
-![Azure portal gösterilen bir bulut hizmeti için genel IP adresini gösteren ekran görüntüsü](./media/how-to-configure-firewall/public-ip-addresses.png)
+![Azure portalında görüntülenen bir bulut hizmetinin genel IP adresini gösteren ekran görüntüsü](./media/how-to-configure-firewall/public-ip-addresses.png)
 
-Rol örnekleri ekleyerek bulut hizmetinizi ölçeklendirirseniz, aynı bulut hizmetinin bir parçası olduklarından, bu yeni örnekler otomatik olarak Azure Cosmos DB hesaba erişebilir.
+Rol örnekleri ekleyerek bulut hizmetinizi ölçeklendirdiğinizde, bu yeni örnekler aynı bulut hizmetinin bir parçası oldukları için Azure Cosmos DB hesabına otomatik olarak erişebilir.
 
 ### <a name="requests-from-virtual-machines"></a>Sanal makinelerden gelen istekler
 
-Azure Cosmos DB kullanarak orta katmanlı Hizmetleri barındırmak için [sanal makineleri](https://azure.microsoft.com/services/virtual-machines/) veya [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de kullanabilirsiniz. Cosmos DB hesabınızı sanal makinelerden erişime izin verecek şekilde yapılandırmak için, [IP erişim denetimi ilkesini yapılandırarak](#configure-ip-policy)Azure Cosmos DB hesabınız için ızın verilen IP adreslerinden biri olarak sanal makinenin ve/veya sanal makine ölçek KÜMESININ genel IP adresini yapılandırmanız gerekir.
+Azure Cosmos DB'yi kullanarak orta katman hizmetlerine ev sahipliği yapmak için [sanal makineleri](https://azure.microsoft.com/services/virtual-machines/) veya sanal makine [ölçeği kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de kullanabilirsiniz. Cosmos DB hesabınızı sanal makinelerden erişime izin sağlayacak şekilde yapılandırmak için, SANAL MAKINE'nin genel IP adresini ve/veya sanal makine [ölçeğini, IP erişim kontrol ilkesini yapılandırarak](#configure-ip-policy)Azure Cosmos DB hesabınız için izin verilen IP adreslerinden biri olarak yapılandırmanız gerekir.
 
-Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure portal sanal makinelerin IP adreslerini alabilirsiniz:
+Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure portalında sanal makinelerin IP adreslerini alabilirsiniz:
 
-![Azure portal gösterilen bir sanal makinenin genel IP adresini gösteren ekran görüntüsü](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
+![Azure portalında görüntülenen sanal bir makinenin genel IP adresini gösteren ekran görüntüsü](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
 
-Gruba sanal makine örnekleri eklediğinizde Azure Cosmos DB hesabınıza otomatik olarak erişim elde edersiniz.
+Gruba sanal makine örnekleri eklediğinizde, Azure Cosmos DB hesabınıza otomatik olarak erişirler.
 
-### <a name="requests-from-the-internet"></a>İnternet 'ten gelen istekler
+### <a name="requests-from-the-internet"></a>İnternetten gelen talepler
 
-Azure Cosmos DB hesabınıza Internet 'teki bir bilgisayardan eriştiğinizde, hesabın istemci IP adresi veya IP adresi aralığı, hesabınız için izin verilen IP adresleri listesine eklenmelidir.
+Azure Cosmos DB hesabınıza internet üzerindeki bir bilgisayardan eriştikte, makinenin istemci IP adresi veya IP adresi aralığı, hesabınız için izin verilen IP adresleri listesine eklenmelidir.
 
-## <a id="configure-ip-firewall-arm"></a>Kaynak Yöneticisi şablonu kullanarak bir IP güvenlik duvarı yapılandırma
+## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Kaynak Yöneticisi şablonu kullanarak IP güvenlik duvarını yapılandırma
 
-Azure Cosmos DB hesabınıza erişim denetimini yapılandırmak için, Kaynak Yöneticisi şablonunun izin verilen IP aralıkları listesi ile **ipRangeFilter** özniteliğini belirttiğinden emin olun. IP güvenlik duvarını zaten dağıtılmış bir Cosmos hesabına yapılandırıyorsanız, `locations` dizisinin Şu anda dağıtılmış olan ile eşleştiğinden emin olun. `locations` dizisini ve diğer özellikleri eşzamanlı olarak değiştiremezsiniz. Azure Cosmos DB için Azure Resource Manager şablonlarının daha fazla bilgi ve örnekleri için bkz. [Azure Resource Manager şablonları Azure Cosmos DB](resource-manager-samples.md)
+Azure Cosmos DB hesabınıza erişim denetimini yapılandırmak için, Kaynak Yöneticisi şablonunun **ipRangeFilter** özniteliğini izin verilen IP aralıklarının bir listesiyle belirttiğinden emin olun. IP Güvenlik Duvarı'nı zaten dağıtılmış bir Cosmos `locations` hesabına yapılandırıyorsanız, dizinin şu anda dağıtılan hesapla eşleştiğinden emin olun. Diziyi ve diğer `locations` özellikleri aynı anda değiştiremezsiniz. Azure Cosmos DB için daha fazla bilgi ve Azure Kaynak Yöneticisi şablonları örnekleri için [bkz.](resource-manager-samples.md)
 
 ```json
 {
@@ -113,9 +113,9 @@ Azure Cosmos DB hesabınıza erişim denetimini yapılandırmak için, Kaynak Y�
 }
 ```
 
-## <a id="configure-ip-firewall-cli"></a>Azure CLı kullanarak bir IP erişim denetim ilkesi yapılandırma
+## <a name="configure-an-ip-access-control-policy-by-using-the-azure-cli"></a><a id="configure-ip-firewall-cli"></a>Azure CLI'yi kullanarak BIR IP erişim denetim ilkesini yapılandırma
 
-Aşağıdaki komut, IP erişim denetimi ile bir Azure Cosmos DB hesabının nasıl oluşturulacağını gösterir:
+Aşağıdaki komut, IP erişim denetimine sahip bir Azure Cosmos DB hesabının nasıl oluşturulur unu gösterir:
 
 ```azurecli-interactive
 # Create a Cosmos DB account with default values and IP Firewall enabled
@@ -132,9 +132,9 @@ az cosmosdb create \
     --ip-range-filter $ipRangeFilter
 ```
 
-## <a id="configure-ip-firewall-ps"></a>PowerShell kullanarak bir IP erişim denetim ilkesi yapılandırma
+## <a name="configure-an-ip-access-control-policy-by-using-powershell"></a><a id="configure-ip-firewall-ps"></a>PowerShell'i kullanarak IP erişim denetim ilkesini yapılandırma
 
-Aşağıdaki betik, IP erişim denetimi ile bir Azure Cosmos DB hesabının nasıl oluşturulacağını gösterir:
+Aşağıdaki komut dosyası, IP erişim denetimine sahip bir Azure Cosmos DB hesabının nasıl oluşturulabildiğini gösterir:
 
 ```azurepowershell-interactive
 # Create a Cosmos DB account with default values and IP Firewall enabled
@@ -159,29 +159,29 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-## <a id="troubleshoot-ip-firewall"></a>IP erişim denetimi ilkesiyle ilgili sorunları giderme
+## <a name="troubleshoot-issues-with-an-ip-access-control-policy"></a><a id="troubleshoot-ip-firewall"></a>IP erişim denetim ilkesiyle sorunları giderme
 
-Aşağıdaki seçenekleri kullanarak bir IP erişim denetimi ilkesiyle ilgili sorunları çözebilirsiniz:
+Aşağıdaki seçenekleri kullanarak BIR IP erişim denetim ilkesi yle ilgili sorunları giderebilirsiniz:
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
-Azure Cosmos DB hesabınız için bir IP erişim denetimi ilkesi etkinleştirerek, hesabınıza verilen IP adresi aralıkları listesinin dışındaki tüm istekleri engellenir. Kapsayıcılara göz atma ve belge sorgulama gibi portal veri düzlemi işlemlerini etkinleştirmek için, portalda **güvenlik duvarı** bölmesini kullanarak Azure Portal erişime açıkça izin vermeniz gerekir.
+Azure Cosmos DB hesabınız için bir IP erişim denetim ilkesi etkinleştirerek, izin verilen IP adres aralıkları listesidışındaki makinelerden hesabınıza yönelik tüm istekleri engellersiniz. Kapsayıcılara göz atma ve belgeleri sorgulama gibi portal veri düzlemi işlemlerini etkinleştirmek için, portaldaki **Güvenlik Duvarı** bölmesini kullanarak Azure portalıerişimine açıkça izin vermeniz gerekir.
 
 ### <a name="sdks"></a>SDK’lar
 
-İzin verilenler listesinde olmayan makinelerden SDK 'Ları kullanarak Azure Cosmos DB kaynaklarına eriştiğinizde, ek ayrıntı olmadan genel **403 yasaklanmış** bir yanıt döndürülür. Hesabınız için izin verilen IP listesini doğrulayın ve Azure Cosmos DB hesabınıza doğru ilke yapılandırmasının uygulandığından emin olun.
+Azure Cosmos DB kaynaklarına izin verilenler listesinde olmayan makinelerden SDK'lar kullanarak eriştiyseniz, genel bir **403 Forbidden** yanıtı ek ayrıntı olmadan döndürülür. Hesabınız için izin verilen IP listesini doğrulayın ve Azure Cosmos DB hesabınıza doğru ilke yapılandırmasının uygulandığından emin olun.
 
-### <a name="source-ips-in-blocked-requests"></a>Engellenen isteklerde kaynak IP 'Leri
+### <a name="source-ips-in-blocked-requests"></a>Engellenen isteklerde Kaynak IP'ler
 
-Azure Cosmos DB hesabınızda tanılama günlüğünü etkinleştirin. Bu Günlükler her isteği ve yanıtı gösterir. Güvenlik Duvarı ile ilgili iletiler 403 dönüş koduyla günlüğe kaydedilir. Bu iletileri filtreleyerek, engellenen isteklerin kaynak IP 'lerini görebilirsiniz. Bkz. [Azure Cosmos DB tanılama günlüğü](logging.md).
+Azure Cosmos DB hesabınızda tanısal günlüğe kaydetmeyi etkinleştirin. Bu günlükler her isteği ve yanıtı gösterir. Güvenlik duvarıyla ilgili iletiler 403 iade koduyla günlüğe kaydedilir. Bu iletileri filtreleyerek, engellenen isteklerin kaynak IP'lerini görebilirsiniz. Bkz. [Azure Cosmos DB tanılama günlüğü.](logging.md)
 
-### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Azure Cosmos DB etkin için bir hizmet uç noktası olan bir alt ağdan gelen istekler
+### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Azure Cosmos DB için hizmet bitiş noktası etkin leştirilmiş bir alt ağdan gelen istekler
 
-Azure Cosmos DB etkin için bir hizmet uç noktası olan bir sanal ağ alt ağından gelen istekler, sanal ağ ve alt ağ kimliğini Azure Cosmos DB hesaplara gönderir. Bu istekler, kaynağın genel IP 'si içermez, bu nedenle IP filtreleri bunları reddeder. Sanal ağlardaki belirli alt ağlardan erişime izin vermek için, [Azure Cosmos DB hesabınız için sanal ağ ve alt ağ tabanlı erişimin nasıl yapılandırılacağı konusunda](how-to-configure-vnet-service-endpoint.md)özetlenen bir erişim denetim listesi ekleyin. Güvenlik Duvarı kurallarının uygulanması 15 dakika kadar sürebilir.
+Azure Cosmos DB için hizmet bitiş noktası etkin olan sanal ağdaki bir alt ağdan gelen istekler, sanal ağı ve alt ağ kimliğini Azure Cosmos DB hesaplarına gönderir. Bu istekler kaynağın genel IP'si yoktur, bu nedenle IP filtreleri bunları reddeder. Sanal ağlardaki belirli alt ağlardan erişime izin vermek [için, Azure Cosmos DB hesabınız için sanal ağı ve alt ağ tabanlı erişimi yapılandırma da](how-to-configure-vnet-service-endpoint.md)özetlenen bir erişim denetim listesi ekleyin. Güvenlik duvarı kurallarının uygulanması 15 dakika kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB hesabınız için bir sanal ağ hizmeti uç noktası yapılandırmak için aşağıdaki makalelere bakın:
+Azure Cosmos DB hesabınız için sanal ağ hizmeti bitiş noktasını yapılandırmak için aşağıdaki makalelere bakın:
 
 * [Azure Cosmos DB hesabınız için sanal ağ ve alt ağ erişim denetimi](vnet-service-endpoint.md)
-* [Azure Cosmos DB hesabınız için sanal ağ ve alt ağ tabanlı erişimi yapılandırın](how-to-configure-vnet-service-endpoint.md)
+* [Azure Cosmos DB hesabınız için sanal ağı ve alt ağ tabanlı erişimi yapılandırın](how-to-configure-vnet-service-endpoint.md)

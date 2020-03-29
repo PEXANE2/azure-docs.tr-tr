@@ -1,56 +1,57 @@
 ---
-title: Pusula kullanarak Azure Cosmos DB bağlanma
-description: Azure Cosmos DB verileri depolamak ve yönetmek için MongoDB pusula 'i kullanmayı öğrenin.
+title: Pusula'yı kullanarak Azure Cosmos DB'ye bağlanın
+description: Azure Cosmos DB'de verileri depolamak ve yönetmek için MongoDB Compass'ı nasıl kullanacağınızı öğrenin.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 03/20/2020
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: 0924476a81027e2979616036cd828593e320a3fe
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 5a3ec79b27231f781b5e4104922993de38c7fe4f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898176"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063667"
 ---
-# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sine bağlanmak için MongoDB pusula kullanma 
+# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB'nin API'sine bağlanmak için MongoDB Compass'ı kullanın
 
-Bu öğreticide, Cosmos DB veri depolarken ve/veya yönetirken [MongoDB pusula](https://www.mongodb.com/products/compass) kullanımı gösterilmektedir. Bu izlenecek yol için Azure Cosmos DB MongoDB API 'sini kullanıyoruz. Bilmediğiniz kişiler için, pusula MongoDB için bir GUI 'dir. Genellikle verilerinizi görselleştirmek, geçici sorguları çalıştırmak ve verilerinizi yönetmek için kullanılır. 
+Bu öğretici, Cosmos DB'de veri depolarken ve/veya yönetirken [MongoDB Compass'ın](https://www.mongodb.com/products/compass) nasıl kullanılacağını göstermektedir. Bu geçiş için Azure Cosmos DB'nin MongoDB api'sini kullanıyoruz. O sizin yabancı için, Pusula MongoDB için bir GUI olduğunu. Genellikle verilerinizi görselleştirmek, geçici sorgular çalıştırmak ve verilerinizi yönetmek için kullanılır.
 
-Cosmos DB, Microsoft 'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve her şey belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulayabilirsiniz.
+Cosmos DB, Microsoft'un dünya çapında dağıtılan çok modelli veritabanı hizmetidir. Cosmos DB'nin çekirdeğindeki küresel dağıtım ve yatay ölçek özelliklerinden yararlanan belge, anahtar/değer ve grafik veritabanlarını hızla oluşturabilir ve sorgulayabilirsiniz.
 
+## <a name="pre-requisites"></a>Ön koşullar
 
-## <a name="pre-requisites"></a>Ön koşullar 
-Robo 3T kullanarak Cosmos DB hesabınıza bağlanmak için şunları yapmanız gerekir:
+Robo 3T'yi kullanarak Cosmos DB hesabınıza bağlanmak için şunları yapmanız gerekir:
 
-* [Pusula](https://www.mongodb.com/download-center/compass?jmp=hero) indirme ve yükleme
-* Cosmos DB [bağlantı dizesi](connect-mongodb-account.md) bilgilerinizi içermelidir
+* [Compass'ı](https://www.mongodb.com/download-center/compass?jmp=hero) indirin ve kurun
+* Cosmos DB [bağlantı dize](connect-mongodb-account.md) bilgilerinize sahip
 
-## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>MongoDB için Cosmos DB API 'sine bağlanma 
-Cosmos DB hesabınızı pusula 'e bağlamak için aşağıdaki adımları izleyebilirsiniz:
+## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>MongoDB için Cosmos DB'nin API'sine bağlanın
 
-1. Azure Cosmos DB API MongoDB ile yapılandırılan Cosmos hesabınız için [buradaki](connect-mongodb-account.md)yönergeleri kullanarak bağlantı bilgilerini alın.
+Cosmos DB hesabınızı Pusula'ya bağlamak için aşağıdaki adımları izleyebilirsiniz:
 
-    ![Bağlantı dizesi dikey penceresinin ekran görüntüsü](./media/mongodb-compass/mongodb-compass-connection.png)
+1. Azure Cosmos DB'nin API MongoDB ile yapılandırılan Cosmos hesabınıza ait bağlantı bilgilerini [buradaki](connect-mongodb-account.md)yönergeleri kullanarak alın.
 
-2. Cosmos DB içindeki **birincil/ikincil bağlantı dizeniz** yanında **Panoya Kopyala** yazılı düğmeye tıklayın. Bu düğmeye tıkladığınızda tüm bağlantı dizeniz panonuza kopyalanır. 
+    ![Bağlantı string blade ekran görüntüsü](./media/mongodb-compass/mongodb-compass-connection.png)
 
-    ![Panoya kopyala düğmesinin ekran görüntüsü](./media/mongodb-compass/mongodb-connection-copy.png)
+2. Cosmos DB'deki **Birincil/İkincil bağlantı dizenizin** yanındaki **panoya kopyala** yazan düğmeye tıklayın. Bu düğmeyi tıklattığınızda, tüm bağlantı dizenizi panonuza kopyalar.
 
-3. Masaüstünüzde/makinenizde pusula ' i açın ve **Bağlan** ' a ve ardından **Bağlan... öğesine**tıklayın. 
+    ![Pano düğmesine kopyanın ekran görüntüsü](./media/mongodb-compass/mongodb-connection-copy.png)
 
-4. Pusula, panodaki bir bağlantı dizesini otomatik olarak algılar ve bağlanmak için kullanmak isteyip istemediğinizi sorar. Aşağıdaki ekran görüntüsünde gösterildiği gibi **Evet** ' e tıklayın.
+3. Masaüstünüzde/makinenizde Pusula'yı açın ve **Bağlan'a** tıklayın ve sonra **Bağlan...**.
 
-    ![Bağlanmak için pusula isteminin ekran görüntüsü](./media/mongodb-compass/mongodb-compass-detect.png)
+4. Pusula panodaki bir bağlantı dizesini otomatik olarak algılar ve bağlanmak için kullanmak isteyip istemediğinizi sormak ister. Aşağıdaki ekran görüntüsünde gösterildiği gibi **Evet'e** tıklayın.
 
-5. Yukarıdaki adımda **Evet 'e** tıklandıktan sonra bağlantı dizesindeki ayrıntılarınız otomatik olarak doldurulur. Boş bırakılmış olduğundan emin olmak için **çoğaltma kümesi adı** alanında otomatik olarak doldurulmuş değeri kaldırın. 
+    ![Bağlanmak için Pusula isteminin ekran görüntüsü](./media/mongodb-compass/mongodb-compass-detect.png)
 
-    ![Bağlanmak için pusula isteminin ekran görüntüsü](./media/mongodb-compass/mongodb-compass-replica.png)
+5. Yukarıdaki adımda **Evet'i** tıklattığınızda, bağlantı dizesinden bilgileriniz otomatik olarak doldurulur. Boş bırakıldığından emin olmak için **Yineleme Kümesi Adı** alanında otomatik olarak doldurulan değeri kaldırın.
 
-6. Sayfanın alt kısmındaki **Bağlan** ' a tıklayın. Cosmos DB hesabınız ve veritabanları artık MongoDB pusula içinde görünür olmalıdır.
+    ![Bağlanmak için Pusula isteminin ekran görüntüsü](./media/mongodb-compass/mongodb-compass-replica.png)
+
+6. Sayfanın altındaki **Bağlan'ı** tıklatın. Cosmos DB hesabınız ve veritabanlarınız artık MongoDB Compass içinde görünür olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Studio 3T](mongodb-mongochef.md) 'ı Azure Cosmos DB MongoDB IÇIN API 'si ile nasıl kullanacağınızı öğrenin.
-- MongoDB için Azure Cosmos DB API 'siyle MongoDB [örneklerini](mongodb-samples.md) gezin.
+- Azure Cosmos DB'nin MongoDB için API'si ile [Studio 3T'yi](mongodb-mongochef.md) nasıl kullanacağınızı öğrenin.
+- Azure Cosmos DB'nin MongoDB için API'si ile MongoDB [örneklerini](mongodb-samples.md) keşfedin.

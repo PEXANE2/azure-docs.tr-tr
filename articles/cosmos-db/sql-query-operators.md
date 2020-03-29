@@ -1,94 +1,109 @@
 ---
-title: Azure Cosmos DB için SQL sorgu işleçleri
+title: Azure Cosmos DB için SQL sorgu operatörleri
 description: Azure Cosmos DB tarafından desteklenen eşitlik, karşılaştırma ve mantıksal işleçler gibi SQL işleçleri hakkında bilgi edinin.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: f3efe4bee749f0d3132206ca68a33a60f0e16b81
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/19/2020
+ms.author: tisande
+ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870947"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063566"
 ---
-# <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB işleçler
+# <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB'deki operatörler
 
-Bu makalede Azure Cosmos DB tarafından desteklenen çeşitli işleçler ayrıntılı olarak açıklanır.
+Bu makalede, Azure Cosmos DB tarafından desteklenen çeşitli işleçler ayrıntıları.
 
-## <a name="equality-and-comparison-operators"></a>Eşitlik ve karşılaştırma Işleçleri
+## <a name="equality-and-comparison-operators"></a>Eşitlik ve Karşılaştırma Operatörleri
 
-Aşağıdaki tabloda, her iki JSON türünden SQL API eşitlik karşılaştırmaları sonucunu gösterir.
+Aşağıdaki tablo, SQL API'de iki JSON türü arasındaki eşitlik karşılaştırmalarının sonucunu gösterir.
 
-| **OP** | **Tanımsız** | **Null** | **Boole değeri** | **Sayı** | **dize** | **Nesne** | **Dizi** |
+| **Op** | **Tanımsız** | **Null** | **Boole** | **Numarası** | **Dize** | **Nesne** | **Dizi** |
 |---|---|---|---|---|---|---|---|
-| **Tanımsız** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Null** | Undefined | **Tamam** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boole değeri** | Undefined | Undefined | **Tamam** | Undefined | Undefined | Undefined | Undefined |
-| **Sayı** | Undefined | Undefined | Undefined | **Tamam** | Undefined | Undefined | Undefined |
-| **dize** | Undefined | Undefined | Undefined | Undefined | **Tamam** | Undefined | Undefined |
-| **Nesne** | Undefined | Undefined | Undefined | Undefined | Undefined | **Tamam** | Undefined |
-| **Dizi** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Tamam** |
+| **Tanımsız** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız |
+| **Null** | Tanımsız | **Tamam** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız |
+| **Boole** | Tanımsız | Tanımsız | **Tamam** | Tanımsız | Tanımsız | Tanımsız | Tanımsız |
+| **Numarası** | Tanımsız | Tanımsız | Tanımsız | **Tamam** | Tanımsız | Tanımsız | Tanımsız |
+| **Dize** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | **Tamam** | Tanımsız | Tanımsız |
+| **Nesne** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | **Tamam** | Tanımsız |
+| **Dizi** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | **Tamam** |
 
-`>`, `>=`, `!=`, `<`ve `<=`gibi karşılaştırma işleçleri için, türler arasında veya iki nesne veya dizi arasında karşılaştırma `Undefined`üretir.  
+Türler arasında `>`veya `>=` `!=`iki `<`nesne `<=`veya dizi arasında karşılaştırma gibi karşılaştırma `Undefined`işleçleri için üretir.  
 
-Skaler ifadenin sonucu `Undefined`, `Undefined` `true`eşit olmadığı için öğe sonuca dahil değildir.
+Skaler ifadenin sonucu `Undefined`ise, öğe eşit `Undefined` `true`olmadığından, sonuca dahil değildir.
 
-## <a name="logical-and-or-and-not-operators"></a>Mantıksal (AND, OR ve NOT) işleçleri
+## <a name="logical-and-or-and-not-operators"></a>Mantıksal (VE, VEYA ve Değİl) işleçleri
 
-Mantıksal işleçler Boole değerleri üzerinde çalışır. Aşağıdaki tablolarda bu işleçler için mantıksal Truth tabloları gösterilmektedir:
+Mantıksal işleçler Boolean değerleri üzerinde çalışır. Aşağıdaki tablolar bu işleçler için mantıksal doğruluk tablolarını gösterir:
 
-**OR işleci**
+**VEYA operatörü**
 
-| VEYA | Doğru | Yanlış | Undefined |
+`true` Koşullardan biri `true`.
+
+|  | **True** | **False** | **Tanımsız** |
 | --- | --- | --- | --- |
-| Doğru |Doğru |Doğru |Doğru |
-| Yanlış |Doğru |Yanlış |Undefined |
-| Undefined |Doğru |Undefined |Undefined |
+| **True** |True |True |True |
+| **False** |True |False |Tanımsız |
+| **Tanımsız** |True |Tanımsız |Tanımsız |
 
-**AND işleci**
+**VE operatörü**
 
-| VE | Doğru | Yanlış | Undefined |
+Her `true` iki ifade `true`de .
+
+|  | **True** | **False** | **Tanımsız** |
 | --- | --- | --- | --- |
-| Doğru |Doğru |Yanlış |Undefined |
-| Yanlış |Yanlış |Yanlış |Yanlış |
-| Undefined |Undefined |Yanlış |Undefined |
+| **True** |True |False |Tanımsız |
+| **False** |False |False |False |
+| **Tanımsız** |Tanımsız |False |Tanımsız |
 
-**NOT işleci**
+**NOT operatörü**
 
-| DEĞİL |  |
+Herhangi bir Boolean ifadesinin değerini tersine çevirir.
+
+|  | **Değil** |
 | --- | --- |
-| Doğru |Yanlış |
-| Yanlış |Doğru |
-| Undefined |Undefined |
+| **True** |False |
+| **False** |True |
+| **Tanımsız** |Tanımsız |
 
+**İşleç Önceliği**
+
+Mantıksal işleçler `OR`, `AND`ve `NOT` öncelik düzeyi aşağıda gösterilmiştir:
+
+| **Işleç** | **Öncelik** |
+| --- | --- |
+| **Değil** |1 |
+| **Ve** |2 |
+| **Veya** |3 |
 
 ## <a name="-operator"></a>* işleci
 
-\* Özel işleci, tüm öğeyi olduğu gibi projeler. Kullanıldığında yansıtılan tek alan olması gerekir. `SELECT * FROM Families f` gibi bir sorgu geçerli, ancak `SELECT VALUE * FROM Families f` ve `SELECT *, f.id FROM Families f` geçerli değil.
+Özel işleç * tüm öğeyi olduğu gibi projeler. Kullanıldığında, yansıtılan tek alan olmalıdır. Benzer `SELECT * FROM Families f` bir sorgu geçerlidir, ancak `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` geçerli değildir.
 
-## <a name="-and--operators"></a>? ve?? işleçler
+## <a name="-and--operators"></a>? Ve?? işleçler
 
-C# Ve JavaScript gibi programlama dillerinde olduğu gibi, Koşullu ifadeler oluşturmak için üçlü (?) ve birleşim (??) işleçlerini kullanabilirsiniz. 
+C# ve JavaScript gibi programlama dillerinde olduğu gibi koşullu ifadeler oluşturmak için Ternary (?) ve Coalesce (??) işleçlerini kullanabilirsiniz.
 
-Kullanabilirsiniz. anında yeni JSON özellikleri oluşturmaya yönelik operatör. Örneğin, aşağıdaki sorgu, sınıf düzeylerini `elementary` veya `other`sınıflandırır:
+Bunu kullanabilir misin? operatör anında yeni JSON özellikleri inşa etmek. Örneğin, aşağıdaki sorgu sınıf düzeylerini `elementary` veya `other`aşağıdakileri sınıflar:
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
      FROM Families.children[0] c
 ```
 
-Ayrıca, çağrılarını iç içe geçirebilirsiniz. işlecini, aşağıdaki sorguda olduğu gibi: 
+Ayrıca aramaları yuva olabilir? işleci, aşağıdaki sorguda olduğu gibi: 
 
 ```sql
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high") AS gradeLevel
     FROM Families.children[0] c
 ```
 
-Diğer sorgu işleçleri gibi? başvurulan Özellikler eksikse veya karşılaştırılan türler farklıysa işleç öğeleri dışlar.
+Diğer sorgu işleçleri gibi, ? başvurulan özellikler eksikse veya karşılaştırılan türler farklıysa, işleç öğeleri hariç tutar.
 
-??? yarı yapılandırılmış veya karma tür verilere göre sorgulama yaparken bir öğedeki özelliği etkin bir şekilde denetlemek için işleç. Örneğin, aşağıdaki sorgu varsa `lastName` döndürür veya `lastName` yoksa `surname`.
+Kullanın ?? yarı yapılandırılmış veya karma türdeki verilere karşı sorgu yaparken bir maddedeki bir özelliği etkin bir şekilde denetlemek için işleç. Örneğin, varsa veya `lastName` `surname` `lastName` yoksa aşağıdaki sorgu döndürür.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -98,5 +113,5 @@ Diğer sorgu işleçleri gibi? başvurulan Özellikler eksikse veya karşılaşt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [anahtar sözcükler](sql-query-keywords.md)
+- [Anahtar Sözcükler](sql-query-keywords.md)
 - [SELECT yan tümcesi](sql-query-select.md)

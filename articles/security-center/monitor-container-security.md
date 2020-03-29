@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde kapsayıcılarınızın güvenliğini izleme
-description: Azure Güvenlik Merkezi 'nden kapsayıcılarınızın güvenlik duruşunu nasıl denetleyeceğinizi öğrenin
+title: Azure Güvenlik Merkezi'nde kapsayıcılarınızın güvenliğini izleme
+description: Azure Güvenlik Merkezi'nden kapsayıcılarınızın güvenlik duruşunu nasıl kontrol edebilirsiniz öğrenin
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,138 +9,138 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
 ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919541"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>Kapsayıcılarınızın güvenliğini izleme
+# <a name="monitoring-the-security-of-your-containers"></a>Konteynerlerinizin güvenliğini izleme
 
-Bu sayfada, kavramlar bölümümüzde [kapsayıcı güvenlik makalesinde](container-security.md) açıklanan kapsayıcı güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır.
+Bu sayfa, kavramlar bölümünde Kapsayıcı Güvenlik [makalesinde](container-security.md) açıklanan kapsayıcı güvenlik özelliklerinin nasıl kullanılacağını açıklamaktadır.
 
-Azure Güvenlik Merkezi, kapsayıcı güvenliğinin aşağıdaki üç yönlerini ele almaktadır:
+Azure Güvenlik Merkezi, kapsayıcı güvenliğinin aşağıdaki üç yönünü kapsar:
 
-- **Güvenlik açığı yönetimi** -Güvenlik Merkezi 'nin standart Fiyatlandırma Katmanı (bkz. [fiyatlandırma](/azure/security-center/security-center-pricing)) kullanıyorsanız, her yeni görüntü gönderildiğinde ARM tabanlı Azure Container Registry tarayabilirsiniz. Tarayıcı (Qualys tarafından desteklenir), bulguları Güvenlik Merkezi önerileri olarak sunar.
-    Ayrıntılı yönergeler için bkz. aşağıdaki [güvenlik açıkları için kapsayıcı kayıt defterlerinden tarama](#scanning-your-arm-based-container-registries-for-vulnerabilities) .
+- **Güvenlik Açığı yönetimi** - Güvenlik Merkezi'nin standart fiyatlandırma katmanındaysanız [(fiyatlandırmaya](/azure/security-center/security-center-pricing)bakın), yeni bir resim her itildiğinde ARM tabanlı Azure Konteyner Kayıt Defterinizi tekleyebilirsiniz. Tarayıcı (Qualys tarafından desteklenmektedir) Güvenlik Merkezi önerileri olarak bulgular sunar.
+    Ayrıntılı talimatlar için, aşağıdaki [güvenlik açıkları için konteyner kayıt defterlerinizi tarama ya](#scanning-your-arm-based-container-registries-for-vulnerabilities) da
 
-- **Kapsayıcılarınızın Docker konaklarını sağlamlaştırma** -Güvenlik Merkezi, IaaS Linux sanal makinelerinde veya Docker çalıştıran diğer Linux makinelerde barındırılan yönetilmeyen kapsayıcıları bulur ve kapsayıcıların yapılandırmalarının Internet GÜVENLIĞI (CIS) Docker kıyaslaması için merkezi ile sürekli olarak karşılaştırılmasını ister. Güvenlik Merkezi, kapsayıcılarınız denetimlerden herhangi birini karşılamadığı takdirde sizi uyarır. Güvenlik risklerine yönelik sürekli izleme, yapılandırma hataları nedeniyle herhangi bir güvenlik programının önemli bir bileşenidir. 
-    Ayrıntılı yönergeler için bkz. [kapsayıcılarınızın Docker konaklarını artırma](#hardening-your-containers-docker-hosts) .
+- **Konteynerlerinizin Docker ana bilgisayarlarını sertleştirme** - Security Center, Docker çalıştıran IaaS Linux VM'lerde veya diğer Linux makinelerinde barındırılan yönetilmeyen konteynerleri bulur ve konteynerlerin yapılandırmalarını Sürekli Olarak Internet Security (CIS) Docker Benchmark Merkezi ile karşılaştırır. Güvenlik Merkezi, kapsayıcılarınız denetimlerin hiçbirini karşılamazsa sizi uyarır. Yanlış yapılandırmalar nedeniyle güvenlik riskleri için sürekli izleme herhangi bir güvenlik programının önemli bir bileşenidir. 
+    Ayrıntılı talimatlar için, [aşağıdaki konteynerlerin Docker ana bilgisayarlarını sertleştirme](#hardening-your-containers-docker-hosts) ye bakın.
 
-- **Azure Kubernetes hizmet kümelerinizi sağlamlaştırma** -Güvenlik Merkezi, Azure Kubernetes hizmet kümelerinizin yapılandırmasında güvenlik açıkları bulduğunda öneriler sağlar. Görünebilen belirli önerilerin ayrıntıları için bkz. [Kubernetes hizmet önerileri](recommendations-reference.md#recs-containers).
+- **Azure Kubernetes Hizmet kümelerinizi sertleştirme** - Güvenlik Merkezi, Azure Kubernetes Hizmet kümelerinizin yapılandırmasında güvenlik açıkları bulduğunda öneriler sağlar. Görünebilecek özel önerilerin ayrıntıları için [Kubernetes Hizmet önerilerine](recommendations-reference.md#recs-containers)bakın.
 
-- **Çalışma zamanı koruması** -Güvenlik Merkezi 'nin standart fiyatlandırma katmanında çalışıyorsanız, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması alacaksınız. Güvenlik Merkezi, ana bilgisayar ve AKS kümesi düzeyinde şüpheli etkinlikler için uyarı oluşturur. Görünebilen ilgili güvenlik uyarılarının ayrıntıları için uyarılar başvuru tablosunun [Azure Kubernetes hizmet kümeleri](alerts-reference.md#alerts-akscluster) ve [kapsayıcılar için uyarılar-konak düzeyi](alerts-reference.md#alerts-containerhost) bölümlerine bakın.
+- **Çalışma zamanı koruması** - Güvenlik Merkezi'nin standart fiyatlandırma katmanındaysanız, konteynerleştirilmiş ortamlarınız için gerçek zamanlı tehdit koruması elde elabilirsiniz. Güvenlik Merkezi, ana bilgisayar ve AKS küme düzeyindeki şüpheli etkinlikler için uyarılar oluşturur. Görünebilecek ilgili güvenlik uyarılarının ayrıntıları için, [Azure Kubernetes Hizmet kümeleri için Uyarılar](alerts-reference.md#alerts-akscluster) ve [kapsayıcılar için Uyarılar -uyarılar](alerts-reference.md#alerts-containerhost) başvuru tablosunun üst düzey bölümlerine ev sahipliği yapan) bakın.
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Güvenlik açıkları için ARM tabanlı kapsayıcı kayıt defterlerinden tarama 
+## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>ARM tabanlı konteyner kayıt defterlerinizi güvenlik açıkları için tarama 
 
-1. Azure Container Registry görüntülerinizin güvenlik açığı taramasını etkinleştirmek için:
+1. Azure Konteyner Kayıt Defteri resimlerinizin güvenlik açığı taramalarını etkinleştirmek için:
 
-    1. Azure Güvenlik Merkezi 'nin standart fiyatlandırma katmanında olduğunuzdan emin olun.
+    1. Azure Güvenlik Merkezi'nin standart fiyatlandırma katmanında olduğunuzdan emin olun.
 
-    1. **Fiyatlandırma & ayarları** sayfasında, aboneliğiniz için Isteğe bağlı kapsayıcı kayıt defterleri grubunu etkinleştirin: kapsayıcı kayıt defterleri paketini etkinleştirmek ![](media/monitor-container-security/enabling-container-registries-bundle.png)
+    1. Fiyatlandırma **& ayarları** sayfasından aboneliğiniz için isteğe bağlı ![Konteyner Kayıt Defterleri paketini etkinleştirin: Konteyner Kayıt Defterleri paketini etkinleştirme](media/monitor-container-security/enabling-container-registries-bundle.png)
 
-        Güvenlik Merkezi artık kayıt defterine gönderilen görüntüleri taramaya hazırdır. 
+        Güvenlik Merkezi artık kayıt defterine itilen görüntüleri talmaya hazır. 
 
         >[!NOTE]
-        >Bu özellik görüntü başına ücretlendirilir.
+        >Bu özellik görüntü başına yüklenir.
 
 
-1. Bir görüntünün taramasını tetiklemek için, Kayıt defterinize gönderin. 
+1. Görüntünün teşbini tetiklemek için, resmin kayıt defterine itin. 
 
-    Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra), güvenlik merkezi önerilerinde bulguları kullanılabilir.
+    Taramalar tamamlandığında (genellikle yaklaşık 10 dakika sonra), bulgular Güvenlik Merkezi önerilerinde kullanılabilir.
     
 
-1. Bulguları görüntülemek için **öneriler** sayfasına gidin. Sorun bulunursa aşağıdaki öneriyi görürsünüz:
+1. Bulguları görüntülemek için **Öneriler** sayfasına gidin. Sorunlar bulunduysa, aşağıdaki öneriyi görürsünüz:
 
-    ![Sorunları düzeltme önerisi ](media/monitor-container-security/acr-finding.png)
+    ![Sorunları düzeltmek için öneri ](media/monitor-container-security/acr-finding.png)
 
 
 1. Öneriyi seçin. 
-    Öneri ayrıntıları sayfası ek bilgilerle açılır. Bu bilgiler, güvenlik açığı bulunan görüntüler ("etkilenen kaynaklar") ve düzeltme adımlarını içeren kayıt defterlerinin listesini içerir. 
+    Tavsiye ayrıntıları sayfası ek bilgilerle açılır. Bu bilgiler, güvenlik açığı olan görüntülerin ("Etkilenen kaynaklar") ve düzeltme adımlarını içeren kayıt defterlerinin listesini içerir. 
 
-1. Güvenlik açığı bulunan depolara sahip olan depolar içindeki depoları görmek için belirli bir kayıt defteri seçin.
+1. İçinde hassas depoları olan depoları görmek için belirli bir kayıt defteri seçin.
 
     ![Kayıt defteri seçin](media/monitor-container-security/acr-finding-select-registry.png)
 
-    Kayıt defteri ayrıntıları sayfası, etkilenen depoların listesiyle birlikte açılır.
+    Kayıt defteri ayrıntıları sayfası, etkilenen depoların listesiyle açılır.
 
-1. Güvenlik açığı bulunan görüntülere sahip olan depolar içindeki depoları görmek için belirli bir depoyu seçin.
+1. İçinde savunmasız görüntüler bulunan depoları görmek için belirli bir depo seçin.
 
-    ![Bir depo seçin](media/monitor-container-security/acr-finding-select-repository.png)
+    ![Depo seçme](media/monitor-container-security/acr-finding-select-repository.png)
 
-    Depo ayrıntıları sayfası açılır. Bu, güvenlik açığı bulunan görüntüleri bulgularda önem derecesi değerlendirmesi ile birlikte listeler.
+    Depo ayrıntıları sayfası açılır. Bu bulguların şiddeti bir değerlendirme ile birlikte savunmasız görüntüleri listeler.
 
-1. Güvenlik açıklarını görmek için belirli bir görüntü seçin.
+1. Güvenlik açıklarını görmek için belirli bir resim seçin.
 
-    ![Görüntü Seç](media/monitor-container-security/acr-finding-select-image.png)
+    ![Görüntüleri seçin](media/monitor-container-security/acr-finding-select-image.png)
 
-    Seçili görüntü için bulguları listesi açılır.
+    Seçili görüntüiçin bulgular listesi açılır.
 
-    ![Bulguları listesi](media/monitor-container-security/acr-findings.png)
+    ![Bulgular listesi](media/monitor-container-security/acr-findings.png)
 
-1. Bulma hakkında daha fazla bilgi edinmek için bulma ' yı seçin. 
+1. Bir bulgu hakkında daha fazla bilgi edinmek için bulguyu seçin. 
 
-    Bulguları ayrıntıları bölmesi açılır.
+    Bulgular ayrıntıları bölmesi açılır.
 
-    [![bulguları Ayrıntılar bölmesi](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
+    [![Bulgular ayrıntıları bölmesi](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
 
-    Bu bölme, sorunun ayrıntılı bir açıklamasını ve tehditleri azaltmaya yardımcı olmak için dış kaynakların bağlantılarını içerir.
+    Bu bölme, sorunun ayrıntılı bir açıklamasını ve tehditleri azaltmaya yardımcı olmak için dış kaynaklara bağlantılar içerir.
 
 1. Bu bölmenin düzeltme bölümündeki adımları izleyin.
 
-1. Güvenlik sorununu düzeltmek için gereken adımları tamamladığınızda, kayıt defterinizin görüntüsünü değiştirin:
+1. Güvenlik sorununu düzeltmek için gereken adımları attığınızda, kayıt defterinizdeki resmi değiştirin:
 
-    1. Güncelleştirilmiş görüntüyü gönderin. Bu, bir taramayı tetikler. 
+    1. Güncelleştirilmiş görüntüyü itin. Bu bir tazyik tetikler. 
     
-    1. Öneri "Azure Container Registry görüntülerde güvenlik açıkları düzeltilmelidir" önerisi için öneriler sayfasını kontrol edin. 
+    1. "Azure Konteyner Kayıt Defteri resimlerindeki güvenlik açıkları düzeltilmeli" önerisi için öneriler sayfasını kontrol edin. 
     
-        Öneri hala görünüyorsa ve yaptığınız görüntü, güvenlik açığı bulunan görüntüler listesinde görünmeye devam ediyorsa, düzeltme adımlarını yeniden kontrol edin.
+        Öneri hala görünüyorsa ve işlediğiniz resim hala savunmasız görüntüler listesinde görünüyorsa, düzeltme adımlarını yeniden denetleyin.
 
-    1. Güncelleştirilmiş görüntünün itildiği, tarandığı ve artık öneri içinde görünmediğinden emin olduğunuzda, "eski" savunmasız görüntüyü Kayıt defterinizden silin.
+    1. Güncelleştirilmiş görüntünün itildiğinden, tarandığından ve artık öneride görünmediğinden emin olduğunuzda, "eski" savunmasız görüntüyü kayıt defterinizden silin.
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>Kapsayıcılarınızın Docker konaklarını sağlamlaştırma
+## <a name="hardening-your-containers-docker-hosts"></a>Konteynerlerinizin Docker ev sahiplerini sertleştirme
 
-Güvenlik Merkezi, Docker konaklarınızın yapılandırmasını sürekli izler ve sektör standartlarını yansıtan güvenlik önerileri oluşturur.
+Güvenlik Merkezi, Docker ana bilgisayarlarınızın yapılandırmasını sürekli olarak izler ve endüstri standartlarını yansıtan güvenlik önerileri oluşturur.
 
-Azure Güvenlik Merkezi 'nin kapsayıcılarınızın Docker konaklarına yönelik güvenlik önerilerini görüntülemek için:
+Azure Güvenlik Merkezi'nin kapsayıcılarınızın Docker ana bilgisayarları için güvenlik önerilerini görüntülemek için:
 
-1. Güvenlik Merkezi gezinti çubuğundan, **işlem & uygulamalar** ' ı açın ve **kapsayıcılar** sekmesini seçin.
+1. Güvenlik Merkezi gezinti çubuğundan, **Uygulamaları & İşlem'i** açın ve **Kapsayıcılar** sekmesini seçin.
 
-1. İsteğe bağlı olarak, kapsayıcı kaynaklarının listesini kapsayıcı Konakları konaklarına filtreleyin.
+1. İsteğe bağlı olarak, kapsayıcı kaynaklarınızın listesini kapsayıcı ana bilgisayarlarına süzün.
 
     ![Kapsayıcı kaynakları filtresi](media/monitor-container-security/container-resources-filter.png)
 
-1. Kapsayıcı ana makinelerinizin listesinden daha fazla araştırmak için bir tane seçin.
+1. Konteyner ana bilgisayar makineleriniz listesinden, daha fazla araştırmak için birini seçin.
 
-    ![Kapsayıcı ana bilgisayar önerileri](media/monitor-container-security/container-resources-filtered-to-hosts.png)
+    ![Konteyner ana bilgisayar önerileri](media/monitor-container-security/container-resources-filtered-to-hosts.png)
 
-    **Kapsayıcı ana bilgisayar bilgileri sayfası** , konağın ayrıntıları ve öneriler listesi ile açılır.
+    **Kapsayıcı ana bilgisayar bilgileri sayfası,** ana bilgisayar ayrıntıları ve öneriler listesiyle açılır.
 
-1. Öneriler listesinden daha fazla araştırma yapmak için bir öneri seçin.
+1. Öneriler listesinden, daha fazla araştırmak için bir öneri seçin.
 
-    ![Kapsayıcı konak önerisi listesi](media/monitor-container-security/container-host-rec.png)
+    ![Konteyner ana bilgisayar öneri listesi](media/monitor-container-security/container-host-rec.png)
 
-1. İsteğe bağlı olarak, açıklama, bilgi, tehditler ve düzeltme adımlarını okuyun. 
+1. İsteğe bağlı olarak, açıklama, bilgi, tehdit ve düzeltme adımlarını okuyun. 
 
-1. Sayfanın alt kısmındaki **eylem al** ' ı seçin.
+1. Sayfanın altındaki **Eyleme Al'ı** seçin.
 
-    [![eylem Al düğmesi](media/monitor-container-security/host-security-take-action-button.png)](media/monitor-container-security/host-security-take-action.png#lightbox)
+    [![Eylem düğmesini ele al](media/monitor-container-security/host-security-take-action-button.png)](media/monitor-container-security/host-security-take-action.png#lightbox)
 
-    Log Analytics, çalıştırmaya hazırlamış özel bir işlemle açılır. Varsayılan özel sorgu, sorunları çözmenize yardımcı olacak yönergeler ile birlikte, değerlendirilen tüm başarısız kuralların bir listesini içerir.
+    Log Analytics, çalışmaya hazır özel bir işlemle açılır. Varsayılan özel sorgu, sorunları çözmenize yardımcı olacak yönergelerle birlikte değerlendirilen tüm başarısız kuralların bir listesini içerir.
 
     [![Log Analytics eylemi](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. Sorgu parametrelerini ince ayar ve konağa hazırlandığından emin olduğunuzda **Çalıştır** ' ı seçin. 
+1. Sorgu parametrelerini değiştirin ve ana bilgisayarınız için hazır olduğundan emin olduğunuzda **Çalıştır'ı** seçin. 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede Güvenlik Merkezi 'nin kapsayıcı güvenlik özelliklerini kullanmayı öğrendiniz. 
+Bu makalede, Güvenlik Merkezi'nin kapsayıcı güvenlik özelliklerini nasıl kullanacağınızı öğrendiniz. 
 
-Diğer ilgili malzemeler için aşağıdaki sayfalara bakın: 
+Diğer ilgili materyaller için aşağıdaki sayfalara bakın: 
 
-- [Kapsayıcılar için Güvenlik Merkezi önerileri](recommendations-reference.md#recs-containers)
-- [AKS kümesi düzeyi için uyarılar](alerts-reference.md#alerts-akscluster)
-- [Kapsayıcı ana bilgisayar düzeyi uyarıları](alerts-reference.md#alerts-containerhost)
+- [Konteynerler için Güvenlik Merkezi önerileri](recommendations-reference.md#recs-containers)
+- [AKS küme düzeyi için uyarılar](alerts-reference.md#alerts-akscluster)
+- [Kapsayıcı ana bilgisayar düzeyi için uyarılar](alerts-reference.md#alerts-containerhost)

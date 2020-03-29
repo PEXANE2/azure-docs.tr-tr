@@ -1,6 +1,6 @@
 ---
-title: Bir havuza sanal dosya sistemi bağlama-Azure Batch | Microsoft Docs
-description: Bir Batch havuzunda sanal dosya sistemi bağlama hakkında bilgi edinin.
+title: Sanal dosya sistemini havuza monte edin - Azure Toplu İş | Microsoft Dokümanlar
+description: Toplu Iş havuzuna sanal dosya sistemini nasıl monte ediniz öğrenin.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -12,55 +12,55 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
 ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919014"
 ---
-# <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Bir Batch havuzunda sanal dosya sistemi bağlama
+# <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Toplu iş havuzuna sanal dosya sistemi takma
 
-Azure Batch artık Batch havuzlarınızdaki Windows veya Linux işlem düğümlerinde bulut depolama veya harici bir dosya sistemi bağlamayı desteklemektedir. Bir işlem düğümü bir havuza katıldığında, sanal dosya sistemi bağlanır ve bu düğümde yerel bir sürücü olarak değerlendirilir. Azure dosyaları, Azure Blob depolama, ağ dosya sistemi (NFS) gibi bir [avere vFXT önbelleği](../avere-vfxt/avere-vfxt-overview.md)veya ortak Internet dosya SISTEMI (CIFS) gibi dosya sistemlerini bağlayabilirsiniz.
+Azure Toplu İşlem artık Toplu Toplu havuzlarınızda Windows veya Linux işlem düğümlerinde bulut depolama veya harici bir dosya sistemi montajını destekler. Bir işlem düğümü bir havuza katıldığında, sanal dosya sistemi monte edilir ve bu düğümüzerinde yerel bir sürücü olarak kabul edilir. Azure Dosyaları, Azure Blob depolama, Ağ Dosya Sistemi (NFS) gibi [Avere vFXT önbelleği](../avere-vfxt/avere-vfxt-overview.md)veya Ortak Internet Dosya Sistemi (CIFS) gibi dosya sistemleri monte edebilirsiniz.
 
-Bu makalede, [.net Için Batch Yönetim Kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet)'nı kullanarak bir işlem düğümleri havuzuna bir sanal dosya sistemi bağlama hakkında bilgi edineceksiniz.
+Bu makalede, [.NET için Toplu Yönetim Kitaplığı'nı](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet)kullanarak bir bilgi işlem düğümleri havuzuna sanal dosya sistemi nasıl monte edileceksiniz.
 
 > [!NOTE]
-> Bir sanal dosya sistemi bağlama, 2019-08-19 tarihinde veya sonrasında oluşturulan Batch havuzlarında desteklenir. 2019-08-19 ' den önce oluşturulan toplu iş havuzları bu özelliği desteklemez.
+> Sanal dosya sistemi montajı, 2019-08-19 tarihinde veya sonrasında oluşturulan Toplu Havuzlarda desteklenir. 2019-08-19'dan önce oluşturulan toplu havuzlar bu özelliği desteklemez.
 > 
-> Dosya sistemlerini bir işlem düğümüne bağlamak için API 'Ler [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) kitaplığı 'nın bir parçasıdır.
+> Bir işlem düğümüne dosya sistemleri montaj için API'ler [Toplu .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) kitaplığı bir parçasıdır.
 
-## <a name="benefits-of-mounting-on-a-pool"></a>Bir havuza bağlama avantajları
+## <a name="benefits-of-mounting-on-a-pool"></a>Havuza monte nin faydaları
 
-Dosya sistemini havuza bağlama, görevlerin büyük bir veri kümesinden kendi verilerini almasına izin vermek yerine, görevlerin gerekli verilere erişmesi daha kolay ve daha verimli hale gelir.
+Görevlerin büyük bir veri kümesinden kendi verilerini almasına izin vermek yerine, dosya sistemini havuza monte etmek, görevlerin gerekli verilere erişmesi için daha kolay ve verimli hale getirir.
 
-Bir filmi işleme gibi ortak bir veri kümesine erişmesi gereken birden çok görevle bir senaryo düşünün. Her görev, sahne dosyalarından bir seferde bir veya daha fazla kare oluşturur. Sahne dosyalarını içeren bir sürücü bağlayarak, işlem düğümlerinin paylaşılan verilere erişmesi daha kolay olur. Ayrıca, temel alınan dosya sistemi, verilere eşzamanlı olarak erişen işlem düğümlerinin sayısı için gereken performans ve ölçeğe (aktarım hızı ve ıOPS) göre bağımsız olarak seçilebilir ve ölçeklenebilir. Örneğin, [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) tarafından dağıtılan bir bellek içi önbellek, binlerce eşzamanlı işleme düğümü olan büyük hareket resmi ölçeğini desteklemek için kullanılabilir ve şirket içinde bulunan kaynak verilere erişim sağlayabilir. Alternatif olarak, bulut tabanlı blob depolamada zaten bulunan veriler için, [blobsigortası](../storage/blobs/storage-how-to-mount-container-linux.md) bu verileri yerel bir dosya sistemi olarak bağlamak için kullanılabilir. Blobsigortası yalnızca Linux düğümlerinde kullanılabilir, ancak [Azure dosyaları](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) benzer bir iş akışı sağlar ve hem Windows hem de Linux 'ta kullanılabilir.
+Film oluşturma gibi ortak bir veri kümesine erişim gerektiren birden çok görev içeren bir senaryo düşünün. Her görev, sahne dosyalarından aynı anda bir veya daha fazla kare işler. Sahne dosyalarını içeren bir sürücü takarak, bilgi düğümlerinin paylaşılan verilere erişmesi daha kolaydır. Ayrıca, temel dosya sistemi, verilere aynı anda erişen bilgi işlem düğümlerinin sayısının gerektirdiği performans ve ölçek (iş ve IOPS) temel alınarak bağımsız olarak seçilebilir ve ölçeklenebilir. Örneğin, bellek içi dağıtılmış bir [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) önbelleği, şirket içinde bulunan kaynak verilere erişerek binlerce eşzamanlı render düğümüyle büyük sinema ölçeğindeki işlemi desteklemek için kullanılabilir. Alternatif olarak, bulut tabanlı Blob depolamasında zaten bulunan veriler [için, blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) bu verileri yerel bir dosya sistemi olarak monte etmek için kullanılabilir. Blobfuse yalnızca Linux düğümlerinde kullanılabilir, ancak [Azure Files](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) benzer bir iş akışı sağlar ve hem Windows hem de Linux'ta kullanılabilir.
 
-## <a name="mount-a-virtual-file-system-on-a-pool"></a>Bir havuza sanal dosya sistemi bağlama  
+## <a name="mount-a-virtual-file-system-on-a-pool"></a>Sanal dosya sistemini havuza monte edin  
 
-Bir havuza sanal dosya sistemi bağlamak, dosya sisteminin havuzdaki her işlem düğümü için kullanılabilir olmasını sağlar. Dosya sistemi, bir işlem düğümü bir havuza katıldığında veya düğüm yeniden başlatıldığında ya da yeniden görüntülendiğinde yapılandırılır.
+Sanal bir dosya sistemini havuza monte etmek, dosya sistemini havuzdaki her işlem düğümü için kullanılabilir hale getirir. Dosya sistemi, bir bilgi işlem düğümü bir havuza katıldığında veya düğüm yeniden başlatıldığında veya yeniden görüntülendiğinde yapılandırılır.
 
-Bir havuza dosya sistemi bağlamak için bir `MountConfiguration` nesnesi oluşturun. Sanal dosya sisteminize uygun olan nesneyi seçin: `AzureBlobFileSystemConfiguration`, `AzureFileShareConfiguration`, `NfsMountConfiguration`veya `CifsMountConfiguration`.
+Bir dosya sistemini havuza monte `MountConfiguration` etmek için bir nesne oluşturun. Sanal dosya sisteminize uyan nesneyi `AzureFileShareConfiguration` `NfsMountConfiguration`seçin: `CifsMountConfiguration` `AzureBlobFileSystemConfiguration`, , veya .
 
-Tüm bağlama yapılandırma nesneleri için aşağıdaki temel Parametreler gereklidir. Bazı bağlama yapılandırmalarında, kullanılan dosya sistemine özgü parametreler bulunur ve bunlar kod örneklerinde daha ayrıntılı olarak ele alınmıştır.
+Tüm montaj yapılandırma nesneleri aşağıdaki temel parametrelere ihtiyaç duyar. Bazı montaj yapılandırmalarında, kod örneklerinde daha ayrıntılı olarak açıklanan kullanılan dosya sistemine özgü parametreler vardır.
 
-- **Hesap adı veya kaynak**: sanal bir dosya paylaşımının bağlanması için depolama hesabının veya kaynağının adına sahip olmanız gerekir.
-- **Göreli bağlama yolu veya kaynağı**: işlem düğümüne bağlı dosya sisteminin konumu, düğüm üzerinde `AZ_BATCH_NODE_MOUNTS_DIR`aracılığıyla erişilebilen standart `fsmounts` dizinine göre. Tam konum, düğümde kullanılan işletim sistemine bağlı olarak değişir. Örneğin, bir Ubuntu düğümündeki fiziksel konum `mnt\batch\tasks\fsmounts`ve `mnt\resources\batch\tasks\fsmounts`eşlendiği bir CentOS düğümünde eşlenir.
-- **Bağlama seçenekleri veya blobsigortası seçenekleri**: Bu seçenekler bir dosya sistemi bağlamak için belirli parametreleri anlatmaktadır.
+- **Hesap adı veya kaynak**: Sanal bir dosya paylaşımı yapmak için depolama hesabının veya kaynağının adını almanız gerekir.
+- **Bağıl montaj yolu veya Kaynak**: Dosya sisteminin işlem düğümüne monte `fsmounts` edilen konumu, düğüm üzerinden `AZ_BATCH_NODE_MOUNTS_DIR`erişilebilen standart dizine göre. Tam konumu düğüm üzerinde kullanılan işletim sistemine bağlı olarak değişir. Örneğin, bir Ubuntu düğümündeki fiziksel konum eşlenir `mnt\batch\tasks\fsmounts`ve bir CentOS düğümünde `mnt\resources\batch\tasks\fsmounts`eşlenir.
+- **Montaj seçenekleri veya blobfuse seçenekleri**: Bu seçenekler, bir dosya sistemi montajı için belirli parametreleri açıklar.
 
-`MountConfiguration` nesnesi oluşturulduktan sonra, havuzu oluştururken nesneyi `MountConfigurationList` özelliğine atayın. Dosya sistemi, bir düğüm bir havuza katıldığında veya düğüm yeniden başlatıldığında ya da yeniden oluşturulduğunda bağlanır.
+`MountConfiguration` Nesne oluşturulduktan sonra, havuzu oluştururken `MountConfigurationList` nesneyi özelliğe atayın. Dosya sistemi, düğüm bir havuza katıldığında veya düğüm yeniden başlatıldığında veya yeniden görüntülendiğinde monte edilir.
 
-Dosya sistemi bağlandığında, bağlı dosya sistemlerinin yanı sıra sorun giderme ve hata ayıklama için yararlı olan günlük dosyalarını işaret eden bir ortam değişkeni `AZ_BATCH_NODE_MOUNTS_DIR` oluşturulur. Günlük dosyaları, [bağlama hatalarını Tanıla](#diagnose-mount-errors) bölümünde daha ayrıntılı olarak açıklanmıştır.  
+Dosya sistemi monte edildiğinde, takılı `AZ_BATCH_NODE_MOUNTS_DIR` dosya sistemlerinin yanı sıra sorun giderme ve hata ayıklama için yararlı olan günlük dosyalarının konumunu gösteren bir ortam değişkeni oluşturulur. Günlük dosyaları, [montaj hatalarını tanıla](#diagnose-mount-errors) bölümünde daha ayrıntılı olarak açıklanmıştır.  
 
 > [!IMPORTANT]
-> Bir havuzdaki en fazla bağlı dosya sistemi sayısı 10 ' dur. Ayrıntılar ve diğer sınırlar için bkz. [Batch hizmeti kotaları ve sınırları](batch-quota-limit.md#other-limits) .
+> Bir havuzda monte edilmiş dosya sistemlerinin maksimum sayısı 10'dur. Ayrıntılar ve diğer sınırlar için [Toplu hizmet kotalarına ve sınırlarına](batch-quota-limit.md#other-limits) bakın.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki kod örnekleri, çeşitli dosya paylaşımlarının işlem düğümleri havuzuna bağlanmasını göstermektedir.
+Aşağıdaki kod örnekleri, çeşitli dosya paylaşımlarının bir işlem düğümü havuzuna montajını gösterir.
 
-### <a name="azure-files-share"></a>Azure dosya paylaşma
+### <a name="azure-files-share"></a>Azure Dosyaları paylaşımı
 
-Azure dosyaları, standart Azure bulut dosya sistemi sunumudur. Bağlama yapılandırma kodu örneğindeki parametrelerden herhangi birini alma hakkında daha fazla bilgi edinmek için bkz. [Azure dosyaları paylaşma kullanma](../storage/files/storage-how-to-use-files-windows.md).
+Azure Files, standart Azure bulut dosya sistemi teklifidir. Montaj yapılandırma kodu örneğindeki parametrelerden herhangi birini nasıl alacağınız hakkında daha fazla bilgi edinmek için [bkz.](../storage/files/storage-how-to-use-files-windows.md)
 
 ```csharp
 new PoolAddParameter
@@ -83,11 +83,11 @@ new PoolAddParameter
 }
 ```
 
-### <a name="azure-blob-file-system"></a>Azure blob dosya sistemi
+### <a name="azure-blob-file-system"></a>Azure Blob dosya sistemi
 
-Diğer bir seçenek de [blobsigortası](../storage/blobs/storage-how-to-mount-container-linux.md)aracılığıyla Azure Blob depolama kullanmaktır. BLOB dosya sistemi bağlama, depolama hesabınız için bir `AccountKey` veya `SasKey` gerektirir. Bu anahtarları alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md)veya [paylaşılan ERIŞIM imzaları (SAS) kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Blobsigortası kullanma hakkında daha fazla bilgi için bkz. blobsigortası [sorun GIDERME SSS](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ). Blobsigortası bağlı dizinine varsayılan erişim sağlamak için, görevi **yönetici**olarak çalıştırın. Blobsigortası, dizini Kullanıcı alanında takar ve havuz oluşturulduğunda kök olarak bağlanır. Linux 'ta tüm **yönetici** görevleri köküdür. SIGORTASı modülü için tüm seçenekler, [Sigorta başvurusu sayfasında](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)açıklanmaktadır.
+Başka bir seçenek [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)üzerinden Azure Blob depolama kullanmaktır. Blob dosya sistemi takmak için depolama hesabınız için bir `AccountKey` veya `SasKey` ihtiyaç fazlası gerektirir. Bu anahtarları alma hakkında bilgi için bkz: [Depolama hesabı erişim anahtarlarını yönet](../storage/common/storage-account-keys-manage.md)veya paylaşılan erişim [imzalarını (SAS) kullanma.](../storage/common/storage-dotnet-shared-access-signature-part-1.md) Blobfuse kullanma hakkında daha fazla bilgi için, blobfuse [Sorun Giderme SSS](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)bakın. Blobfuse monte dizin varsayılan erişim elde etmek için, bir **Yönetici**olarak görev çalıştırın. Blobfuse, dizini kullanıcı alanına bağlar ve havuz oluşturmada kök olarak monte edilir. Linux'ta tüm **Yönetici** görevleri kökvardır. FUSE modülü için tüm seçenekler [FUSE başvuru sayfasında](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)açıklanmıştır.
 
-Sorun giderme kılavuzuna ek olarak, blobsigortası deposundaki GitHub sorunları geçerli blobsigortası sorunlarını ve çözümlerini denetlemek için faydalı bir yoldur. Daha fazla bilgi için bkz. [blobsigortası sorunları](https://github.com/Azure/azure-storage-fuse/issues).
+Sorun giderme kılavuzuna ek olarak, blobfuse deposundaki GitHub sorunları, geçerli blobfuse sorunlarını ve çözümlerini denetlemenin yararlı bir yoludur. Daha fazla bilgi [için, blobfuse sorunları](https://github.com/Azure/azure-storage-fuse/issues)bakın.
 
 ```csharp
 new PoolAddParameter
@@ -111,9 +111,9 @@ new PoolAddParameter
 }
 ```
 
-### <a name="network-file-system"></a>Ağ dosya sistemi
+### <a name="network-file-system"></a>Ağ Dosya Sistemi
 
-Ağ dosya sistemleri (NFS), geleneksel dosya sistemlerine Azure Batch düğümlere kolayca erişilmesine izin veren havuz düğümlerine de bağlanabilir. Bu, bulutta dağıtılan tek bir NFS sunucusu ya da bir sanal ağ üzerinden erişilen şirket içi NFS sunucusu olabilir. Alternatif olarak, şirket içi depolamaya sorunsuz bağlantı sağlayan [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) tarafından dağıtılan ve bulut tabanlı işlem düğümlerine yüksek performans ve ölçek sunan, bellek içi dağıtılmış önbellek çözümünün avantajlarından yararlanın.
+Ağ Dosya Sistemleri (NFS), geleneksel dosya sistemlerine Azure Toplu Düğümleri tarafından kolayca erişilebilmesine olanak tanıyan havuz düğümlerine de monte edilebilir. Bu, bulutta dağıtılan tek bir NFS sunucusu veya sanal ağ üzerinden erişilen şirket içi Bir NFS sunucusu olabilir. Alternatif olarak, şirket içi depolamaya kesintisiz bağlantı sağlayan, verileri isteğe bağlı olarak önbelleğine okumayı sağlayan ve bulut tabanlı bilgi işlem düğümlerine yüksek performans ve ölçek sağlayan [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) dağıtılmış bellek içi önbellek çözümünden yararlanın.
 
 ```csharp
 new PoolAddParameter
@@ -134,9 +134,9 @@ new PoolAddParameter
 }
 ```
 
-### <a name="common-internet-file-system"></a>Ortak Internet dosya sistemi
+### <a name="common-internet-file-system"></a>Ortak İnternet Dosya Sistemi
 
-Ortak Internet dosya sistemleri (CIFS), geleneksel dosya sistemlerine Azure Batch düğümlere kolayca erişilmesine izin veren havuz düğümlerine de bağlanabilir. CIFS, ağ sunucusu dosyaları ve hizmetleri istemek için açık ve platformlar arası bir mekanizma sağlayan dosya paylaşım protokolüdür. CIFS, Microsoft 'un Internet ve intranet dosya paylaşımı için sunucu Ileti bloğu (SMB) protokolünün gelişmiş sürümünü temel alır ve Windows düğümlerine dış dosya sistemlerini bağlamak için kullanılır. SMB hakkında daha fazla bilgi edinmek için bkz. [dosya sunucusu ve SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+Ortak Internet Dosya Sistemleri (CIFS), geleneksel dosya sistemlerine Azure Toplu Düğümler tarafından kolayca erişilebilmesine olanak tanıyan havuz düğümlerine de monte edilebilir. CIFS, ağ sunucusu dosyaları ve hizmetleri istemek için açık ve çapraz platform mekanizması sağlayan bir dosya paylaşım protokolüdür. CIFS, Microsoft'un Internet ve intranet dosya paylaşımı için geliştirdiği Sunucu İleti Bloğu (SMB) protokolünün gelişmiş sürümüne dayanır ve Windows düğümlerine harici dosya sistemleri monte etmek için kullanılır. Kobİ hakkında daha fazla bilgi edinmek için [Dosya Sunucusu ve SMB'ye](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview)bakın.
 
 ```csharp
 new PoolAddParameter
@@ -159,33 +159,33 @@ new PoolAddParameter
 }
 ```
 
-## <a name="diagnose-mount-errors"></a>Bağlama hatalarını tanılama
+## <a name="diagnose-mount-errors"></a>Montaj hatalarını tanılama
 
-Bağlama yapılandırması başarısız olursa, havuzdaki işlem düğümü başarısız olur ve düğüm durumu kullanılamaz hale gelir. Bağlama yapılandırma hatasını tanılamak için, hata hakkındaki ayrıntılar için [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) özelliğini inceleyin.
+Bir montaj yapılandırması başarısız olursa, havuzdaki işlem düğümü başarısız olur ve düğüm durumu kullanılamaz hale gelir. Montaj yapılandırma hatasını tanılamak [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) için, hatayla ilgili ayrıntılar için özelliği denetleyin.
 
-Hata ayıklama için günlük dosyalarını almak için [OutputFiles](batch-task-output-files.md) kullanarak `*.log` dosyalarını karşıya yükleyin. `*.log` dosyalar, `AZ_BATCH_NODE_MOUNTS_DIR` konumundaki dosya sistemi bağlaması hakkında bilgiler içerir. Bağlama günlük dosyaları her bağlama için `<type>-<mountDirOrDrive>.log` biçimindedir. Örneğin, `test` adlı bir bağlama dizinindeki `cifs` bağlama, `cifs-test.log`adlı bir bağlama günlük dosyasına sahip olur.
+Hata ayıklama için günlük dosyalarını almak için, `*.log` dosyaları yüklemek için [OutputFiles'ı](batch-task-output-files.md) kullanın. `AZ_BATCH_NODE_MOUNTS_DIR` Dosyalar, `*.log` konumdaki dosya sistemi montajı hakkında bilgi içerir. Montaj günlüğü dosyaları biçimine sahiptir: `<type>-<mountDirOrDrive>.log` her montaj için. Örneğin, adlı `cifs` `test` bir montaj dizininde bir montaj, adlı `cifs-test.log`bir montaj günlüğü dosyası na sahip olacaktır: .
 
-## <a name="supported-skus"></a>Desteklenen SKU 'Lar
+## <a name="supported-skus"></a>Desteklenen SK'ler
 
-| Yayımcı | Sunduğu | SKU | Azure dosya paylaşma | Blobsigortası | NFS bağlama | CIFS bağlama |
+| Yayımcı | Sunduğu | SKU | Azure Dosyaları Paylaş | Blobfuse | NFS yuvası | CIFS montaj |
 |---|---|---|---|---|---|---|
-| toplu iş | işleme-centos73 | işleme | :heavy_check_mark: <br>Note: CentOS 7,7 ile uyumlu</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canonical | UbuntuServer | 16,04-LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| credativ | Debian | 8| :heavy_check_mark: | sayı | :heavy_check_mark: | :heavy_check_mark: |
-| credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Note: CentOS 7,4 ile uyumludur. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-Azure-Batch | CentOS-kapsayıcı | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-Azure-Batch | CentOS-kapsayıcı-RDMA | 7.4 | :heavy_check_mark: <br>Note: A_8 veya 9 depolamayı destekler</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-Azure-Batch | Ubuntu-Server-Container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-dsvm | Linux-Data-Science-VM-Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS-HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7,6 | sayı | sayı | sayı | sayı |
-| Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | sayı | sayı | sayı |
+| toplu iş | render-centos73 | Işleme | :heavy_check_mark: <br>Not: CentOS 7.7 ile uyumlu</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Canonical | UbuntuServer | 16.04-LTS, 18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-reklamlar | linux-veri-bilim-vm | linuxdsvm | :heavy_check_mark: <br>Not: CentOS 7.4 ile uyumludur. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-toplu iş | centos-konteyner | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-toplu iş | centos-konteyner-rdma | 7.4 | :heavy_check_mark: <br>Not: A_8 veya 9 depolama alanını destekler</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-toplu iş | ubuntu-server-konteyner | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS-HPC | 7.4, 7.3, 7.1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Oracle | Oracle-Linux | 7.6 | :x: | :x: | :x: | :x: |
+| Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | :x: | :x: | :x: |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows](../storage/files/storage-how-to-use-files-windows.md) veya [Linux](../storage/files/storage-how-to-use-files-linux.md)ile Azure dosyaları paylaşımının bağlanması hakkında daha fazla bilgi edinin.
-- [Blobsigortası](https://github.com/Azure/azure-storage-fuse) sanal dosya sistemlerini kullanma ve bağlama hakkında bilgi edinin.
-- NFS ve uygulamaları hakkında bilgi edinmek için bkz. [ağ dosya sistemine genel bakış](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) .
-- CIFS hakkında daha fazla bilgi için bkz. [MICROSOFT SMB protokolü ve CIFS protokolüne genel bakış](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) .
+- [Windows](../storage/files/storage-how-to-use-files-windows.md) veya [Linux](../storage/files/storage-how-to-use-files-linux.md)ile Azure Dosyaları paylaşımını ekleme hakkında daha fazla bilgi edinin.
+- [Blobfuse](https://github.com/Azure/azure-storage-fuse) sanal dosya sistemlerini kullanma ve montaj hakkında bilgi edinin.
+- NFS ve uygulamaları hakkında bilgi edinmek için [Ağ Dosya Sistemi'ne genel bakışa](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) bakın.
+- CIFS hakkında daha fazla bilgi edinmek için [Microsoft SMB protokolü ve CIFS protokolüne genel bakışa](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) bakın.

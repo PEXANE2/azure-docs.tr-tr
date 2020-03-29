@@ -1,29 +1,29 @@
 ---
 title: Büyük veri kümeleriyle çalışma
-description: Azure Kaynak Grafında çalışırken büyük veri kümelerinde kayıtları alma, biçimlendirme, sayfa ve atlamayı anlayın.
-ms.date: 10/18/2019
+description: Azure Kaynak Grafiği ile çalışırken büyük veri kümelerinde kayıtları nasıl alacağı, biçimlendirme, sayfa ve atlama konusunda anlayın.
+ms.date: 03/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: be15a6234935627ca748276e6330c50c3ee5a775
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79259805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064735"
 ---
-# <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
+# <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure kaynak veri kümeleriyle çalışma
 
-Azure Kaynak Grafiği, Azure ortamınızdaki kaynaklarla çalışmak ve bunlarla ilgili bilgi almak için tasarlanmıştır. Kaynak Grafiği, binlerce kaydı sorgularken bile bu verilerin hızlı bir şekilde alınmasını sağlar. Kaynak grafiğinde bu büyük veri kümeleriyle çalışmak için çeşitli seçenekler bulunur.
+Azure Kaynak Grafiği, Azure ortamınızdaki kaynaklarla çalışmak ve kaynaklar hakkında bilgi almak için tasarlanmıştır. Kaynak Grafiği, binlerce kaydı sorgularken bile bu verileri hızlı bir şekilde elde etme lerini sağlar. Kaynak Grafiği'nin bu büyük veri kümeleriyle çalışmak için birkaç seçeneği vardır.
 
-Yüksek bir sıklıkta sorgularla çalışmaya ilişkin yönergeler için bkz. [Kısıtlanmış istekler Için rehberlik](./guidance-for-throttled-requests.md).
+Yüksek frekanstaki sorgularla çalışma kılavuzu [için, daraltılmış istekler için Kılavuz'a](./guidance-for-throttled-requests.md)bakın.
 
 ## <a name="data-set-result-size"></a>Veri kümesi sonuç boyutu
 
-Varsayılan olarak, kaynak Graph tüm sorgular yalnızca **100** kayıt döndürüyor şekilde kısıtlar. Bu denetim, büyük veri kümelerine yol açacak istemeden yapılan sorgulardan hem kullanıcıyı hem de hizmeti korur. Bu olay çoğu zaman bir müşteri, kaynakları belirli ihtiyaçlarına uygun şekilde bulmak ve filtrelemek için sorguları deneydiğinde oluşur. Bu denetim, sonuçları sınırlamak için [üst](/azure/kusto/query/topoperator) veya Azure Veri Gezgini Dil işleçlerini [sınırlandırtan](/azure/kusto/query/limitoperator) farklıdır.
+Varsayılan olarak, Kaynak Grafiği herhangi bir sorguyalnızca **100** kayıt döndürerek sınırlar. Bu denetim, hem kullanıcıyı hem de hizmeti büyük veri kümelerine neden olacak istenmeyen sorgulara karşı korur. Bu olay genellikle, bir müşteri kendi özel ihtiyaçlarına uygun şekilde kaynakları bulmak ve filtrelemek için sorguları deneme olarak olur. Bu denetim, sonuçları sınırlamak için [üst](/azure/kusto/query/topoperator) veya [sınırAzure](/azure/kusto/query/limitoperator) Veri Gezgini dil operatörleri kullanarak farklıdır.
 
 > [!NOTE]
-> **İlk**kullanıldığında, sonuçları `asc` veya `desc`en az bir sütuna göre sıralamak önerilir. Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
+> **İlk**kullanırken, en az bir sütun `asc` veya `desc`. Sıralama yapılmadan, döndürülen sonuçlar rasgeledir ve yinelenebilir değildir.
 
-Varsayılan sınır, kaynak Graph ile etkileşimde bulunmak için tüm yöntemler aracılığıyla geçersiz kılınabilir. Aşağıdaki örneklerde veri kümesi boyut sınırının _200_olarak nasıl değiştirileceği gösterilmektedir:
+Varsayılan sınır, Kaynak Grafiği ile etkileşim tüm yöntemlerle geçersiz kılınabilir. Aşağıdaki örnekler, veri kümesi boyut sınırının _200_ile nasıl değiştirilebildiğini gösterir:
 
 ```azurecli-interactive
 az graph query -q "Resources | project name | order by name asc" --first 200 --output table
@@ -33,20 +33,20 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-[REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources), Denetim **$top** ve **queryrequestoptions**'ın bir parçasıdır.
+REST [API'de,](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)denetim **$top** ve **QueryRequestOptions'un**bir parçasıdır.
 
-_En kısıtlayıcı_ olan denetim kazanacaktır. Örneğin, sorgunuz **top** veya **limit** işleçlerini kullanıyorsa ve **ilk**olarak daha fazla kayıt ile sonuçlanacaksa, döndürülen en fazla kayıt sayısı **birincisine**eşittir. Benzer şekilde, **top** veya **limit** **birinciden**küçükse, döndürülen kayıt kümesi **top** veya **limit**tarafından yapılandırılan daha küçük bir değer olacaktır.
+_En kısıtlayıcı_ denetim kazanacak. Örneğin, sorgunuz **üst** veya **sınır** işleçleri kullanıyorsa ve **İlk'ten**daha fazla kayıtla sonuçlanırsa, döndürülen en büyük kayıtlar **İlk'e**eşit olur. Aynı şekilde, **üst** veya **limit** **İlk'ten**küçükse, döndürülen kayıt kümesi **üst** veya **sınırtarafından**yapılandırılan daha küçük değer olacaktır.
 
-**Önce** Şu anda izin verilen en fazla _5000_değeri vardır.
+**İlk** şu anda _5000_maksimum izin değeri vardır.
 
-## <a name="skipping-records"></a>Kayıtlar atlanıyor
+## <a name="skipping-records"></a>Kayıtları atlama
 
-Büyük veri kümeleriyle çalışma için sonraki seçenek, **atlama** denetimidir. Bu denetim, sorgunuzun sonuçları döndürmeden önce tanımlanan kayıt sayısını atlamasını veya atlamasını sağlar. **Skip** , sonuçları, sonuç kümesinin ortasında bir yerde bir yere alacağınız anlamlı bir şekilde sıralayan sorgular için yararlıdır. Gereken sonuçlar döndürülen veri kümesinin sonunda ise, farklı bir sıralama yapılandırması kullanmak ve bunun yerine veri kümesinin en üstünden sonuçları almak daha etkilidir.
+Büyük veri kümeleriyle çalışmak için bir sonraki seçenek **Atla** denetimidir. Bu denetim, sorgunuzun sonuçları döndürmeden önce tanımlanan kayıt sayısını atlamasına veya atlamasına olanak tanır. **Atlama,** sonucukümesinin ortasında bir yerde kayıtlara ulaşmak için amacın anlamlı bir şekilde sonuç veren sorgular için yararlıdır. Gerekli sonuçlar döndürülen veri kümesinin sonundaysa, farklı bir sıralama yapılandırması kullanmak ve sonuçları veri kümesinin üstünden almak daha verimliolur.
 
 > [!NOTE]
-> **Atla**kullanırken, sonuçları `asc` veya `desc`en az bir sütuna göre sıralamak önerilir. Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
+> **Skip**kullanırken, sonuçları en az bir sütunla `asc` veya `desc`. Sıralama yapılmadan, döndürülen sonuçlar rasgeledir ve yinelenebilir değildir.
 
-Aşağıdaki örneklerde, bir sorgunun neden olacağı ilk _10_ kaydın nasıl atlanacağını, bunun yerine 11. kayıt ile döndürülen sonuç kümesini başlatmak gösterilmektedir:
+Aşağıdaki örnekler, bir sorgunun neden olacağı ilk _10_ kaydı nasıl atlayacağını, bunun yerine 11.
 
 ```azurecli-interactive
 az graph query -q "Resources | project name | order by name asc" --skip 10 --output table
@@ -56,16 +56,16 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-[REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources), Denetim **$Skip** ve **queryrequestoptions**'ın bir parçasıdır.
+REST [API'de,](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)denetim **$skip** ve **QueryRequestOptions'un**bir parçasıdır.
 
 ## <a name="paging-results"></a>Disk belleği sonuçları
 
-Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek gerektiğinde veya bir sonuç kümesi, döndürülen en fazla _1000_ kayıt değerini aşacağından, sayfalama kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **queryresponse** , bir sonuç kümesinin parçalanmış olduğunu belirten değerler sağlar: **resultkesildi** ve **$skipToken**.
-**Resultkesildi** , yanıtta ek kayıtlar döndürülmediğinde tüketiciyi bildiren bir Boole değeridir. **Count** özelliği **totalRecords** özelliğinden daha az olduğunda bu durum da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt olduğunu tanımlar.
+İşleme için daha küçük kayıt kümelerine ayarlanmış bir sonucu kırmak gerektiğinde veya bir sonuç kümesi izin verilen _maksimum 1000_ kayıt değerini aşacağı için, sayfalama yı kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse,** bir sonuç kümesinin ayrıldığını belirtmek için değerler sağlar: **sonuçTruncated** ve **$skipToken.**
+**sonuçTruncated** yanıt döndürülen ek kayıtlar varsa tüketici bilgilendirir bir boolean değeridir. Bu durum, **sayım** özelliği **totalRecords** özelliğinden daha az olduğunda da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt tanımlar.
 
-**Resultkesilme** **değeri true**olduğunda **$skipToken** özelliği yanıtta ayarlanır. Bu değer, sorguyla eşleşen bir sonraki kayıt kümesini almak için aynı sorgu ve abonelik değerleriyle birlikte kullanılır.
+ **sonuçTruncated,** sayfalama devre dışı bırakıldığında veya `id` sütun olmadığı için mümkün olmadığında veya sorgu nun istendiğinden daha az kaynak olduğunda **doğrudur.** **Sonuç Truncated** **doğru**olduğunda, **$skipToken** özelliği ayarlanmaz.
 
-Aşağıdaki örneklerde, ilk 3000 kaydın nasıl atlanması ve bu kayıtlar Azure CLı ile atlandıktan sonra **ilk** 1000 kayıtlarının nasıl **döndürüleceği** ve Azure PowerShell gösterilmektedir:
+Aşağıdaki örnekler, azure CLI ve Azure PowerShell ile bu kayıtlar atlandıktan sonra ilk 3000 kaydı nasıl **atlayış** ve **ilk** 1000 kaydı niçin döndüreceğimi gösterir:
 
 ```azurecli-interactive
 az graph query -q "Resources | project id, name | order by id asc" --first 1000 --skip 3000
@@ -76,21 +76,21 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 ```
 
 > [!IMPORTANT]
-> Sayfalama 'un çalışması için sorgunun **ID** alanını **projesi** gerekir. Sorguda eksik ise, yanıt **$skipToken**içermez.
+> Pagination çalışması için sorgu **id** alanını **yansıtmalıdır.** Sorguda eksikse, yanıt **$skipToken**içermez.
 
-Bir örnek için, REST API belgeleri içindeki [Sonraki sayfa sorgusuna](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) bakın.
+Örneğin, REST API dokümanlarında [Sonraki sayfa sorgusuna](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) bakın.
 
-## <a name="formatting-results"></a>Biçimlendirme sonuçları
+## <a name="formatting-results"></a>Sonuçları biçimlendirme
 
-Kaynak Grafiği sorgusunun sonuçları iki biçimde, _tablo_ ve _objectarray_olarak sağlanır. Biçim, istek seçeneklerinin bir parçası olarak **RESULTFORMAT** parametresi ile yapılandırılır. _Tablo_ biçimi, **RESULTFORMAT**için varsayılan değerdir.
+Kaynak Grafiği sorgusunun sonuçları _Tablo_ ve _ObjectArray_olmak üzere iki biçimde sağlanır. Biçim, istek seçeneklerinin bir parçası olarak **sonuçFormat** parametresi ile yapılandırılır. _Tablo_ **biçimi, resultFormat**için varsayılan değerdir.
 
-Azure CLı sonuçları JSON 'da varsayılan olarak sağlanır. Azure PowerShell sonuçları, varsayılan olarak bir **PSCustomObject** ' dir, ancak `ConvertTo-Json` cmdlet 'i kullanılarak hızlı BIR şekilde JSON 'a dönüştürülebilirler. Diğer SDK 'lar için, sorgu sonuçları _Objectarray_ biçiminin çıktısı olacak şekilde yapılandırılabilir.
+Azure CLI sonuçları varsayılan olarak JSON'da sağlanır. Azure PowerShell'deki sonuçlar varsayılan olarak **bir PSCustomObject'tir,** ancak `ConvertTo-Json` cmdlet kullanılarak hızla JSON'a dönüştürülebilir. Diğer SDK'lar için sorgu sonuçları _ObjectArray_ biçiminde nisbi olarak yapılandırılabilir.
 
-### <a name="format---table"></a>Biçim-Tablo
+### <a name="format---table"></a>Biçim - Tablo
 
-Varsayılan biçim, _tablo_, sorgu tarafından döndürülen özelliklerin sütun tasarımını ve satır değerlerini vurgulamak için tasarlanan bir JSON biçiminde sonuçları döndürür. Bu biçim, yapılandırılmış bir tabloda veya bir elektronik tabloda, ilk olarak tanımlanan sütunları ve sonra bu sütunlara hizalanmış verileri temsil eden her bir satır için tanımlanan verilere benzer.
+Varsayılan biçim, _Tablo,_ sorgu tarafından döndürülen özelliklerin sütun tasarımı ve satır değerlerini vurgulamak için tasarlanmış bir JSON biçiminde sonuçları döndürür. Bu biçim, önce tanımlanan sütunlar ve daha sonra bu sütunlara hizalanmış verileri temsil eden her satırla yapılandırılmış bir tabloda veya elektronik tabloda tanımlanan verilere yakından benzer.
 
-_Tablo_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiştir:
+Burada _Tablo_ biçimlendirme ile bir sorgu sonucu nun bir örneği:
 
 ```json
 {
@@ -128,11 +128,11 @@ _Tablo_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiştir:
 }
 ```
 
-### <a name="format---objectarray"></a>Format-ObjectArray
+### <a name="format---objectarray"></a>Biçim - ObjectArray
 
-_Objectarray_ BIÇIMI sonuçları JSON biçiminde de döndürür. Ancak, bu tasarım, sütun ve satır verilerinin dizi gruplarında eşleştiği JSON 'da ortak olan anahtar/değer çifti ilişkisine hizalanır.
+_ObjectArray_ biçimi de json biçiminde sonuç döndürür. Ancak, bu tasarım, sütun ve satır verilerinin dizi gruplarında eşleştiği JSON'da ortak olan anahtar/değer çifti ilişkisine hizalanır.
 
-_Objectarray_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiştir:
+Burada _ObjectArray_ biçimlendirme ile bir sorgu sonucu nun bir örneği:
 
 ```json
 {
@@ -149,7 +149,7 @@ _Objectarray_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiş
 }
 ```
 
-İşte, _Objectarray_ biçimini kullanmak Için **RESULTFORMAT** ayarlamanın bazı örnekleri şunlardır:
+_ObjectArray_ biçimini kullanmak için **sonuçBiçimini** ayarlamasına bazı örnekler aşağıda verilmiştir:
 
 ```csharp
 var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
@@ -166,6 +166,6 @@ response = client.resources(request)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Başlangıç sorgularında](../samples/starter.md)kullanılan dil.
-- Gelişmiş [sorgularda](../samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.
-- [Kaynakları araştırma](explore-resources.md)hakkında daha fazla bilgi edinin.
+- [Başlangıç sorgularında](../samples/starter.md)kullanılan dile bakın.
+- [Gelişmiş sorgularda](../samples/advanced.md)gelişmiş kullanımlara bakın.
+- Kaynakları nasıl [keşfedebilirsiniz](explore-resources.md)hakkında daha fazla bilgi edinin.

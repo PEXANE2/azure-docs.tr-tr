@@ -1,6 +1,6 @@
 ---
-title: Verizon'a özgü HTTP üst bilgilerini Azure CDN kurallar altyapısı için | Microsoft Docs
-description: Bu makalede, Azure CDN ile kurallar altyapısı Verizon'a özgü HTTP üst bilgilerini kullanmayı açıklar.
+title: Azure CDN kuralları altyapısı için Verizon'a özel HTTP başlıkları | Microsoft Dokümanlar
+description: Bu makalede, Azure CDN kuralları altyapısıyla Verizon'a özgü HTTP üstbilginin nasıl kullanılacağı açıklanmaktadır.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,69 +15,69 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
 ms.openlocfilehash: a5881bea578f2791f8dc0d6e760fd15c6f47e435
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593256"
 ---
-# <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN kurallar altyapısı Verizon'a özgü HTTP üstbilgileri
+# <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN kuralları altyapısı için Verizon'a özgü HTTP başlıkları
 
-İçin **verizon'dan Azure CDN Premium** ürünleri, bir HTTP isteği, kaynak sunucunun bulunma noktası (POP) sunucusu ekleyebilirsiniz bir veya daha fazla ayrılmış üstbilgileri (veya proxy özel üst bilgiler) istemci isteğinde POP'a gönderilir. Bu üst alınan üstbilgileri iletme standart ek bilgilerdir. Standart istek üst bilgileri hakkında daha fazla bilgi için bkz. [isteği alanları](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields).
+**Verizon ürünlerinden Azure CDN Premium** için, başlangıç sunucusuna bir HTTP isteği gönderildiğinde, durum noktası (POP) sunucusu, istemci isteğine bir veya daha fazla ayrılmış üstbilgi (veya proxy özel üstbilgi) ekleyebilir. Bu üstbilgi, alınan standart iletme üstbilgilerine ek olarak verilir. Standart istek üstbilgileri hakkında bilgi için [İstek alanlarına](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)bakın.
 
-Bu ayrılmış üstbilgileri biri Azure CDN (Content Delivery Network) POP isteğinde kaynak sunucuya eklenmesini önlemek istiyorsanız, bir kural oluşturmanız gerekir [Proxy özel üst bilgileri özelliği](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) kurallar altyapısı. Bu kuralda üstbilgileri üstbilgi alanında varsayılan listesinden kaldırmak istediğiniz üstbilgi hariç tutun. Etkinleştirdiyseniz [önbellek yanıt üst bilgileri hata ayıklama özelliği](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers), gerekli eklediğinizden emin olun `X-EC-Debug` üstbilgileri. 
+Bu ayrılmış üstbilgilerden birinin kaynak sunucuya Azure CDN (İçerik Dağıtım Ağı) POP isteğine eklenmesini önlemek istiyorsanız, kurallar altyapısındaki [Proxy Özel Üstbilgi özelliğine](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) sahip bir kural oluşturmanız gerekir. Bu kuralda, üstbilgi alanında üstbilgi alanında varsayılan listesinden kaldırmak istediğiniz üstbilgi hariç. [Hata Ayıklama Önbellek Yanıtı Üstbilgi özelliğini](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)etkinleştirdiyseniz, `X-EC-Debug` gerekli üstbilgi eklemeyi unutmayın. 
 
-Örneğin, kaldırmak için `Via` üst bilgi, kuralın üstbilgi alanı, aşağıdaki listede yer alan üst bilgileri içermelidir: *X-iletilen-için X-iletilen-Proto, X-ana bilgisayar, X-Midgress X ağ geçidi listesini, X-EC-Name, ana bilgisayar*. 
+Örneğin, `Via` üstbilgi kaldırmak için, kuralın üstbilgi alanı aşağıdaki üstbilgi listesini içermelidir: *X-Forwarded-For, X-Forwarded-Proto, X-Host, X-Midgress, X-Gateway-List, X-EC-Name, Host*. 
 
-![Proxy özel üst bilgileri kuralı](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
+![Proxy Özel Başlıklar kuralı](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
-Aşağıdaki tabloda, Verizon CDN POP ' isteğindeki ekleyen üstbilgileri açıklanmaktadır:
+Aşağıdaki tabloda, verizon CDN POP tarafından istek içinde eklenebilir üstbilgi açıklanır:
 
-İstek üstbilgisi | Açıklama | Örnek
+İstek üst bilgisi | Açıklama | Örnek
 ---------------|-------------|--------
-[aracılığıyla](#via-request-header) | Bu proxy POP sunucu tanımlayan bir kaynak sunucuya gönderilen istek. | HTTP/1.1 ECS (dca/1A2B)
-X-iletilen-için | İstek sahibinin IP adresini gösterir.| 10.10.10.10
-X iletilen Proto | İsteğin protokol gösterir. | http
-X-Host | İsteğin ana bilgisayar adını belirtir. | CDN.mydomain.com
-X-Midgress | İstek proxy ek bir CDN sunucu olup olmadığını gösterir. Örneğin, POP Sunucusu kaynağı kalkan sunucu veya POP server ADN ağ geçidi sunucusu. <br />Yalnızca midgress trafiği gerçekleştiğinde bu üst bilgi isteği eklendi. Bu durumda, üst bilgi isteği ek bir CDN sunucu proxy olduğunu belirtmek için 1 olarak ayarlanır.| 1\.
-[Ana Bilgisayar](#host-request-header) | Konak ve istenen içeriğin bulunduğu bağlantı noktasını tanımlar. | Marketing.mydomain.com:80
-[X-Gateway-List](#x-gateway-list-request-header) | ADN: Bir müşteri kaynağa atanmış ADN ağ geçidi sunucusu yük devretme listesini tanımlar. <br />Kaynak koruma: Bir müşteri kaynağa atanmış kaynak kalkan sunucuları kümesini gösterir. | `icn1,hhp1,hnd1`
-X-EC - _&lt;adı&gt;_ | İle başlar ve istek üstbilgileri *X-EC* (örneğin, X-EC-etiketi, [X-EC-Debug](cdn-http-debug-headers.md)) CDN tarafından kullanım için ayrılmıştır.| waf üretim
+[Via](#via-request-header) | İsteği bir başlangıç sunucusuna yakınlayan POP sunucusunu tanımlar. | HTTP/1.1 ECS (dca/1A2B)
+X-Forwarded-For | İsteklinin IP adresini gösterir.| 10.10.10.10
+X-İlli-Proto | İsteğin protokolünü gösterir. | http
+X-Host | İsteğin ana bilgisayar adını gösterir. | cdn.mydomain.com
+X-Midgress | İsteğin ek bir CDN sunucusu aracılığıyla yakınlanıp yakınlanmadığını gösterir. Örneğin, pop sunucusundan orijinli kalkan sunucusuna veya POP sunucusundan ADN'ye ağ geçidi sunucusu. <br />Bu üstbilgi, yalnızca orta daki trafik gerçekleştiğinde isteğe eklenir. Bu durumda, üstbilgi isteği ek bir CDN sunucusu aracılığıyla yakınolduğunu belirtmek için 1 olarak ayarlanır.| 1
+[Konak](#host-request-header) | İstenen içeriğin bulunabileceği ana bilgisayarı ve bağlantı noktasını tanımlar. | marketing.mydomain.com:80
+[X-Ağ Geçidi Listesi](#x-gateway-list-request-header) | ADN: Müşteri kaynağına atanan ADN Ağ Geçidi sunucularının başarısız listesini tanımlar. <br />Kaynak kalkanı: Müşteri menşeine atanan kaynak kalkanı sunucularının kümesini gösterir. | `icn1,hhp1,hnd1`
+X-EC_&lt;adı&gt;_ | *X-EC* ile başlayan istek üstaylıkları (örneğin, X-EC-Tag, [X-EC-Hata Ayıklama)](cdn-http-debug-headers.md)CDN tarafından kullanılmak üzere ayrılmıştır.| waf-üretim
 
-## <a name="via-request-header"></a>İstek üstbilgisi
-Bir biçime `Via` üstbilgisi tanımlar POP sunucu isteği aşağıdaki sözdizimi tarafından belirtilir:
+## <a name="via-request-header"></a>İstek üstbilgisi aracılığıyla
+İstek üstbilgisinin `Via` bir POP sunucusunu tanımladığı biçim aşağıdaki sözdizimi tarafından belirtilir:
 
 `Via: Protocol from Platform (POP/ID)` 
 
-Sözdiziminde kullanılan terimler şu şekilde tanımlanır:
-- Protokol: İstek için proxy kullanılan protokol (örneğin, HTTP/1.1) sürümü gösterir. 
+Sözdiziminde kullanılan terimler aşağıdaki gibi tanımlanır:
+- Protokol: İsteğin proxy'si için kullanılan protokolün sürümünü (örneğin, HTTP/1.1) gösterir. 
 
-- Platform: İçerik istendi platform gösterir. Aşağıdaki kodu, bu alan için geçerlidir: 
+- Platform: İçeriğin istendiği platformu gösterir. Aşağıdaki kodlar bu alan için geçerlidir: 
 
     Kod | Platform
     -----|---------
-    ECAcc | HTTP büyük
-    ECS   | HTTP küçük
-    ECD   | Uygulama teslim ağı (ADN)
+    ECAcc | HTTP Büyük
+    Ecs   | HTTP Küçük
+    Eçg   | Uygulama dağıtım ağı (ADN)
 
-- POP: Gösterir [POP](cdn-pop-abbreviations.md) , işlenen istek. 
+- POP: İsteği işleyen [POP'u](cdn-pop-abbreviations.md) gösterir. 
 
-- KİMLİĞİ: Yalnızca iç kullanım içindir.
+- ID: Yalnızca dahili kullanım için.
 
-### <a name="example-via-request-header"></a>Örnek aracılığıyla istek üstbilgisi
+### <a name="example-via-request-header"></a>Örnek İstek üstbilgisi üzerinden
 
 `Via: HTTP/1.1 ECD (dca/1A2B)`
 
-## <a name="host-request-header"></a>Konak istek üstbilgisi
-POP sunucuları üzerine yazar `Host` aşağıdaki koşulların her ikisinin de doğru olduğunda üst bilgi:
-- İstenen içerik için kaynak, bir müşteri kaynak sunucusudur.
-- Karşılık gelen müşteri kaynağın HTTP ana bilgisayar üstbilgisi seçeneği boş değil.
+## <a name="host-request-header"></a>Ana bilgisayar istek üstbilgisi
+Pop sunucuları, aşağıdaki `Host` koşulların her ikisi de doğru olduğunda üstbilginin üzerine yazar:
+- İstenen içeriğin kaynağı bir müşteri kökenli sunucudur.
+- İlgili müşteri menşeliNIN HTTP Ana Bilgisayar Üstbilgi seçeneği boş değildir.
 
-`Host` İstek üst bilgisi, HTTP ana bilgisayar üstbilgisi seçeneği tanımlanan değerini yansıtmak üzere yazılır.
-Ardından, boş olarak müşteri kaynağın HTTP ana bilgisayar üstbilgisi seçenek ayarlanırsa `Host` istek sahibi tarafından gönderilen istek üst bilgisi, müşterinin kaynak sunucuya iletilir.
+İstek `Host` üstbilgisi, HTTP Ana Bilgisayar Üstbilgisi seçeneğinde tanımlanan değeri yansıtacak şekilde üzerine yazılır.
+Müşteri menşeliNIN HTTP Ana Bilgisayar Üstbilgi seçeneği `Host` boş olarak ayarlanmışsa, istek sahibi tarafından gönderilen istek üstbilgisi müşterinin başlangıç sunucusuna iletilir.
 
-## <a name="x-gateway-list-request-header"></a>X ağ geçidi listesini istek üstbilgisi
-POP sunucu ekleme/üzerine yazar ' aşağıdaki koşullardan biri karşılandığında X ağ geçidi listesini istek üst bilgisi:
-- İstek ADN platforma işaret eder.
-- İstek kaynak kalkan özelliği tarafından korunan bir müşteri kaynak sunucuya iletilir.
+## <a name="x-gateway-list-request-header"></a>X-Ağ Geçidi Listesi istek üstbilgisi
+Bir POP sunucusu, aşağıdaki koşullardan biri karşılandığında 'X-Gateway-List istek üstbilgisini ekler/üzerine yazar:
+- İstek ADN platformuna işaret ediyor.
+- İstek, Origin Shield özelliği tarafından korunan bir müşteri kökenli sunucuya iletilir.
 

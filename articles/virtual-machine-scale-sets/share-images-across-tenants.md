@@ -1,6 +1,6 @@
 ---
-title: Azure 'daki kiracılar genelinde Galeri görüntülerini paylaşma
-description: Paylaşılan görüntü galerileri kullanarak Azure kiracılarının tamamında VM görüntülerini paylaşmayı öğrenin.
+title: Azure'da galeri resimlerini kiracılar arasında paylaşın
+description: Paylaşılan Resim Galerileri'ni kullanarak VM görüntülerini Azure kiracıları arasında nasıl paylaşılamayın gerektiğini öğrenin.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276333"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure kiracılar genelinde Galeri VM görüntülerini paylaşma
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Galeri VM görüntülerini Azure kiracıları arasında paylaşın
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
-## <a name="create-a-scale-set-using-azure-cli"></a>Azure CLı kullanarak ölçek kümesi oluşturma
+## <a name="create-a-scale-set-using-azure-cli"></a>Azure CLI kullanarak ölçek kümesi oluşturma
 
-AppID, uygulama anahtarı ve kiracı 1 KIMLIĞI kullanarak kiracı 1 için hizmet sorumlusu 'nda oturum açın. Gerekirse kiracı kimliklerini almak için `az account show --query "tenantId"` kullanabilirsiniz.
+AppID, uygulama anahtarı ve kiracı kimliği 1'i kullanarak kiracı 1 için hizmet ilkesini oturum açın. Gerekirse kiracı `az account show --query "tenantId"` nın doğrulanmış larını almak için kullanabilirsiniz.
 
 ```azurecli-interactive
 az account clear
@@ -30,14 +30,14 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 1 ID>
 az account get-access-token 
 ```
  
-AppID, uygulama anahtarı ve kiracı 2 ' nin KIMLIĞINI kullanarak kiracı 2 için hizmet sorumlusu 'nda oturum açın:
+AppID,uygulama anahtarı ve kiracı kimliği 2'yi kullanarak kiracı 2 için hizmet ilkesini oturum açın:
 
 ```azurecli-interactive
 az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>'
 az account get-access-token
 ```
 
-Ölçek kümesini oluşturun. Örnekteki bilgileri kendi ile değiştirin.
+Ölçek kümesini oluşturun. Örnekteki bilgileri kendi bilginizle değiştirin.
 
 ```azurecli-interactive
 az vmss create \
@@ -50,4 +50,4 @@ az vmss create \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Herhangi bir sorunla karşılaşırsanız [paylaşılan görüntü galerilerine sorun giderebilirsiniz](troubleshooting-shared-images.md).
+Herhangi bir sorunla karşınıza çıkarsa, [paylaşılan resim galerilerini sorun giderebilirsiniz.](troubleshooting-shared-images.md)

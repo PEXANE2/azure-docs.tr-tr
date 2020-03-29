@@ -1,6 +1,6 @@
 ---
-title: Güncelleştirme Yönetimi eklemek için Azure Resource Manager şablonları kullanın | Microsoft Docs
-description: Azure Resource Manager şablonu kullanarak Azure Otomasyonu Güncelleştirme Yönetimi çözümünü ekleyebilirsiniz.
+title: Yerleşik Güncelleştirme Yönetimi için Azure Kaynak Yöneticisi şablonlarını kullanma | Microsoft Dokümanlar
+description: Azure Otomasyon Güncelleştirme Yönetimi çözümünde bir Azure Kaynak Yöneticisi şablonu kullanabilirsiniz.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
@@ -8,61 +8,61 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/27/2020
 ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77925806"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi çözümü ekleme
+# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Yerleşik Güncelleştirme Yönetimi çözümü
 
-Kaynak grubunuzda Azure Otomasyonu Güncelleştirme Yönetimi çözümünü etkinleştirmek için [Azure Resource Manager şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu makale, aşağıdakileri otomatikleştiren örnek bir şablon sağlar:
+Kaynak grubunuzdaki Azure Otomasyon Güncelleştirme Yönetimi çözümünüzü etkinleştirmek için [Azure Kaynak Yöneticisi şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu makalede, aşağıdakileri otomatikleştiren bir örnek şablon uymaktadır:
 
-* Azure Izleyici Log Analytics çalışma alanı oluşturma.
-* Azure Otomasyonu hesabı oluşturma.
-* Zaten bağlı değilse, Otomasyon hesabını Log Analytics çalışma alanına bağlar.
-* Azure Otomasyonu Güncelleştirme Yönetimi çözümünü ekleme
+* Azure Monitörü Log Analytics çalışma alanı oluşturulması.
+* Azure Otomasyon hesabı oluşturma.
+* Otomasyon hesabını, zaten bağlı değilse, Log Analytics çalışma alanına bağlar.
+* Azure Otomasyon Güncelleme Yönetimi çözümünde yerleşik
 
-Şablon bir veya daha fazla Azure veya Azure dışı VM 'yi eklemeyi otomatik hale getirir.
+Şablon, bir veya daha fazla Azure veya Azure olmayan VM'lerin biniş kısmını otomatikleştirmez.
 
-Aboneliğinizde desteklenen bir bölgede dağıtılan bir Log Analytics çalışma alanı ve Otomasyon hesabı zaten varsa, bunlar bağlanmaz ve bu şablonu kullanarak, çalışma alanında Güncelleştirme Yönetimi çözümü dağıtılmamışsa, başarıyla oluşturulur bağlantı ve Güncelleştirme Yönetimi çözümünü dağıtır. 
+Aboneliğinizde desteklenen bir bölgede zaten bir Log Analytics çalışma alanı ve Otomasyon hesabınız varsa, bunlar bağlı değildir ve çalışma alanı güncelleştirme yönetimi çözümünüzü zaten dağıtmamışsa, bu şablonu kullanarak başarılı bir şekilde oluşturulur bağlantı ve Güncelleştirme Yönetimi çözümdağıdağı. 
 
 ## <a name="api-versions"></a>API sürümleri
 
-Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listelenmektedir.
+Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listeleneb.r.a.
 
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
-| Çalışma alanı | çalışma alanları | 2017-03-15-Önizleme |
+| Çalışma alanı | çalışma alanı | 2017-03-15-önizleme |
 | Otomasyon hesabı | automation | 2015-10-31 | 
-| Çözüm | çözümler | 2015-11-01-Önizleme |
+| Çözüm | çözümler | 2015-11-01-önizleme |
 
 ## <a name="before-using-the-template"></a>Şablonu kullanmadan önce
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale Azure PowerShell az modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir. Azure PowerShell, dağıtım [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
+PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure PowerShell Az modülü gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir. Azure PowerShell ile dağıtım, [Yeni-AzResourceGroupDeployment'ı](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.1.0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı ile bu dağıtım [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
+CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI sürüm 2.1.0 veya sonraki sürümlerini çalıştırdığınız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLI ile bu dağıtım [az grup dağıtımı oluşturma yı](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
 
-JSON şablonu şunları isteyecek şekilde yapılandırılır:
+JSON şablonu, aşağıdakiler için sizden istenmesi için yapılandırılmıştır:
 
 * Çalışma alanının adı
-* Çalışma alanının oluşturulacağı bölge
+* Çalışma alanını oluşturacak bölge
 * Otomasyon hesabının adı
-* Hesabın oluşturulacağı bölge
+* Hesap oluşturmak için bölge
 
-JSON şablonu, ortamınızda standart bir yapılandırma olarak kullanılacak diğer parametreler için varsayılan bir değer belirtir. Şablonu kuruluşunuzda paylaşılan erişim için bir Azure depolama hesabında saklayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md).
+JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek diğer parametreler için varsayılan bir değer belirtir. Kuruluşunuzdaki paylaşılan erişim için şablonu bir Azure depolama hesabında depolayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıt'a](../azure-resource-manager/templates/deploy-cli.md)bakın.
 
 Şablondaki aşağıdaki parametreler, Log Analytics çalışma alanı için varsayılan bir değerle ayarlanır:
 
-* SKU - Nisan 2018 fiyatlandırma modelinde yayımlanan yeni GB başına fiyatlandırma katmanı varsayılan olarak
-* veri saklama-varsayılan olarak otuz gün
+* sku - Nisan 2018 fiyatlandırma modelinde yayımlanan yeni GB Başına fiyatlandırma katmanı için varsayılan
+* veri saklama - varsayılan otuz gün
 
 >[!WARNING]
->Yeni Nisan 2018 fiyatlandırma modelini kabul eden bir abonelikte Log Analytics çalışma alanı oluşturuyor veya yapılandırıyorsanız, geçerli Log Analytics fiyatlandırma katmanı yalnızca **PerGB2018**olur.
+>Yeni Nisan 2018 fiyatlandırma modeline dahil olan bir abonelikte Log Analytics çalışma alanı oluşturmak veya yapılandırmak ise, tek geçerli Log Analytics fiyatlandırma katmanı **PerGB2018'dir.**
 >
 
 >[!NOTE]
->Bu şablonu kullanmadan önce, erişim denetim modu, fiyatlandırma katmanı, bekletme ve kapasite ayırma düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) gözden geçirin. Azure Izleyici günlükleri ile yeni bir çalışma alanı dağıtmadıysanız, erişim denetimi hakkında bilgi edinmek ve kuruluşunuz için önerdiğimiz tasarım uygulama stratejilerini anlamak için [çalışma alanı tasarım](../azure-monitor/platform/design-logs-deployment.md) kılavuzunu gözden geçirmeniz gerekir.
+>Bu şablonu kullanmadan önce, erişim denetim modu, fiyatlandırma katmanı, bekletme ve kapasite rezervasyon düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) gözden geçirin. Azure Monitor günlüklerinde yeniyseniz ve daha önce bir çalışma alanı dağıtmadıysanız, erişim denetimi hakkında bilgi edinmek için [çalışma alanı tasarım](../azure-monitor/platform/design-logs-deployment.md) kılavuzunu ve kuruluşunuz için önerdiğimiz tasarım uygulama stratejilerinin anlaşılmasını gözden geçirmelisiniz.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
@@ -231,13 +231,13 @@ JSON şablonu, ortamınızda standart bir yapılandırma olarak kullanılacak di
     }
     ```
 
-2. Gereksinimlerinizi karşılayacak şekilde şablonunu düzenleyin.
+2. Gereksinimlerinizi karşılamak için şablonu edin.
 
-3. Bu dosyayı bir yerel klasöre deployUMSolutiontemplate. JSON olarak kaydedin.
+3. Bu dosyayı deployUMSolutiontemplate.json olarak yerel bir klasöre kaydedin.
 
-4. Bu şablonu dağıtmaya hazırsınız. PowerShell veya Azure CLı kullanabilirsiniz. Bir çalışma alanı ve Otomasyon hesabı adı istendiğinde, tüm Azure abonelikleri genelinde genel olarak benzersiz bir ad sağlayın.
+4. Bu şablonu dağıtmaya hazırsınız. PowerShell veya Azure CLI'yi kullanabilirsiniz. Bir çalışma alanı ve Otomasyon hesap adı istendiğinde, tüm Azure aboneliklerinde genel olarak benzersiz bir ad sağlayın.
 
-    **PowerShell**
+    **Powershell**
 
     ```powershell
     New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployUMSolutiontemplate.json
@@ -249,16 +249,16 @@ JSON şablonu, ortamınızda standart bir yapılandırma olarak kullanılacak di
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployUMSolutiontemplate.json
     ```
 
-    Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonuç içeren aşağıdakine benzer bir ileti görürsünüz:
+    Dağıtımın tamamlanması birkaç dakika sürebilir. Bittiğinde, sonucu içeren aşağıdakine benzer bir ileti görürsünüz:
 
-    ![Dağıtım tamamlandığında örnek sonucu](media/automation-update-management-deploy-template/template-output.png)
+    ![Dağıtım tamamlandığında örnek sonuç](media/automation-update-management-deploy-template/template-output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güncelleştirme Yönetimi çözümü dağıttığınıza göre, VM 'Leri yönetim için etkinleştirebilir, güncelleştirme değerlendirmelerini gözden geçirebilir ve güncelleştirmeleri uyumluluğa getirecek şekilde dağıtabilirsiniz.
+Artık Güncelleştirme Yönetimi çözümlerini dağıttığınız için, yönetim için VM'leri etkinleştirebilir, güncelleştirme değerlendirmelerini gözden geçirebilir ve güncelleştirmeleri uyumlu hale getirmek için güncelleştirmeleri dağıtabilirsiniz.
 
-- Azure [Otomasyonu hesabınızdan](automation-onboard-solutions-from-automation-account.md) bir veya daha fazla Azure makinesi Için ve Azure dışı makineler için el ile.
+- Azure [Otomasyon uyupunuzdan](automation-onboard-solutions-from-automation-account.md) bir veya daha fazla Azure makinesi ve Azure olmayan makineler için el ile.
 
-- Tek bir Azure VM için Azure portal sanal makine sayfasından. Bu senaryo, [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM 'leri için kullanılabilir.
+- Azure portalındaki sanal makine sayfasından tek bir Azure VM için. Bu senaryo [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM'leri için kullanılabilir.
 
-- [Birden çok Azure VM](manage-update-multi.md) Için Azure Portal **sanal makineler** sayfasında bunları seçerek. 
+- Azure portalındaki **Sanal makineler** sayfasından seçerek birden çok [Azure VM'si](manage-update-multi.md) için. 

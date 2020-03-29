@@ -1,7 +1,7 @@
 ---
-title: MSAL. js ve ADAL. js arasındaki farklar | Mavisi
+title: MSAL.js ve ADAL.js arasındaki farklar | Azure
 titleSuffix: Microsoft identity platform
-description: JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı ve JavaScript (ADAL. js) için Azure AD kimlik doğrulama kitaplığı ve hangisinin kullanılacağını seçme arasındaki farklar hakkında bilgi edinin.
+description: JavaScript için Microsoft Kimlik Doğrulama Kitaplığı (MSAL.js) ile JavaScript için Azure AD Kimlik Doğrulama Kitaplığı (ADAL.js) arasındaki farklar ve hangisini kullanacağınızı seçme arasındaki farklar hakkında bilgi edinin.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,54 +14,54 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696427"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS ve ADAL JS arasındaki farklar
 
-JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı ve JavaScript için Azure AD kimlik doğrulama kitaplığı (ADAL. js), Azure AD varlıklarının kimliğini doğrulamak ve Azure AD 'de belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici, ADAL kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak üzere geliştiriciler için Azure AD (v 1.0) ile çalıştık. Artık, MSAL. js ' yi kullanarak Microsoft Identity platform (v 2.0) aracılığıyla daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
+Hem JavaScript için Microsoft Kimlik Doğrulama Kitaplığı (MSAL.js) hem de JavaScript için Azure AD Kimlik Doğrulama Kitaplığı (ADAL.js) Azure AD varlıklarının kimliğini doğrulamak ve Azure AD'den belirteçleri istemek için kullanılır. Şimdiye kadar çoğu geliştirici, ADAL kullanarak belirteçler isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak için geliştiriciler için Azure AD ile (v1.0) çalışmıştır. Artık MSAL.js'yi kullanarak, Microsoft kimlik platformu (v2.0) aracılığıyla daha geniş bir Microsoft kimlik kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve Azure AD B2C aracılığıyla sosyal ve yerel hesaplar) kimliğini doğrulayabilirsiniz.
 
-Bu makalede JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı ve JavaScript (ADAL. js) için Azure AD kimlik doğrulama kitaplığı arasından seçim yapabileceğiniz ve iki kitaplığı karşılaştıran açıklanır.
+Bu makalede, JavaScript için Microsoft Kimlik Doğrulama Kitaplığı (MSAL.js) ile JavaScript için Azure AD Kimlik Doğrulama Kitaplığı (ADAL.js) arasında nasıl seçim yapılacağı anlatılıyor ve iki kitaplığı karşılaştırıyor.
 
-## <a name="choosing-between-adaljs-and-msaljs"></a>ADAL. js ve MSAL. js arasında seçim yapma
+## <a name="choosing-between-adaljs-and-msaljs"></a>ADAL.js ve MSAL.js arasında seçim
 
-Çoğu durumda, Microsoft kimlik doğrulama kitaplıklarının en son nesli olan Microsoft Identity platform ve MSAL. js ' yi kullanmak istersiniz. MSAL. js kullanarak, Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile uygulamanızda oturum açan kullanıcılar için belirteçler elde edersiniz.
+Çoğu durumda, Microsoft kimlik doğrulama kitaplıklarının en son nesli olan Microsoft kimlik platformu ve MSAL.js'yi kullanmak istersiniz. MSAL.js'yi kullanarak, Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile uygulamanızda oturum açan kullanıcılar için belirteçler edinirsiniz.
 
-Zaten v 1.0 uç noktası (ve ADAL. js) hakkında bilginiz varsa, [v 2.0 uç noktası ile Ilgili ne kadar farklı olduğunu](active-directory-v2-compare.md)okumak isteyebilirsiniz.
+Zaten v1.0 bitiş noktası (ve ADAL.js) aşina iseniz, [v2.0 bitiş noktası hakkında farklı ne](active-directory-v2-compare.md)okumak isteyebilirsiniz? .
 
-Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)sürümleriyle oturum açması GEREKIYORSA, adal. js ' yi yine de kullanmanız gerekir.
+Ancak, uygulamanızın [Active Directory Federation Services 'in (ADFS)](/windows-server/identity/active-directory-federation-services)önceki sürümlerine sahip kullanıcılarda oturum açması gerekiyorsa, Yine de ADAL.js kullanmanız gerekir.
 
-## <a name="key-differences-in-authentication-with-msaljs"></a>MSAL. js ile kimlik doğrulamasında önemli farklılıklar
+## <a name="key-differences-in-authentication-with-msaljs"></a>MSAL.js ile kimlik doğrulamada temel farklar
 
-### <a name="core-api"></a>Çekirdek API 'SI
+### <a name="core-api"></a>Çekirdek API
 
-* ADAL. js, bir yetkili URL 'SI aracılığıyla uygulamanızın yetkilendirme sunucusuna veya kimlik sağlayıcısına bağlantısının bir örneğinin temsili olarak [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) kullanır. Aksine, MSAL. js API 'SI, Kullanıcı Aracısı istemci uygulaması (istemci kodunun bir Web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü bir genel istemci uygulaması formu) etrafında tasarlanmıştır. Bu, bir uygulamanın yetkilendirme sunucusu ile kimlik doğrulama bağlamı örneğini temsil etmesi için `UserAgentApplication` sınıfını sağlar. Daha ayrıntılı bilgi için bkz. [msal. js kullanarak başlatma](msal-js-initializing-client-applications.md).
+* ADAL.js, uygulamanızın yetki sunucusuna veya kimlik sağlayıcısına bir yetkili URL aracılığıyla bağlantısının bir örneğinin temsili olarak [AuthenticationContext'ı](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) kullanır. Aksine, MSAL.js API kullanıcı aracısı istemci uygulaması (istemci kodu bir web tarayıcısı gibi bir kullanıcı aracısı yürütülür kamu istemci uygulaması biçimi) etrafında tasarlanmıştır. `UserAgentApplication` Sınıfın yetkilendirme sunucusuyla birlikte uygulamanın kimlik doğrulama bağlamının bir örneğini temsil etmesini sağlar. Daha fazla bilgi için [MSAL.js kullanarak Initialize'e](msal-js-initializing-client-applications.md)bakın.
 
-* ADAL. js ' de, belirteçleri alma yöntemleri `AuthenticationContext`bir tek bir yetkiliyle ilişkilendirilir. MSAL. js ' de, belirteç alma istekleri `UserAgentApplication`ayarlandıklardan farklı yetki değerleri alabilir. Bu, MSAL. js ' nin aynı uygulamadaki birden fazla kiracı ve Kullanıcı hesabı için belirteçleri ayrı olarak almasına ve önbelleğe almasına olanak tanır.
+* ADAL.js'de, belirteçleri edinme yöntemleri, belirteçleri `AuthenticationContext`ile ' de belirlenen tek bir yetki ile ilişkilidir. MSAL.js'de, edinme belirteci istekleri, `UserAgentApplication`'de ayarlanandan farklı yetki değerleri alabilir. Bu, MSAL.js'nin aynı uygulamada birden çok kiracı ve kullanıcı hesabı için ayrı ayrı belirteçler edinmesine ve önbelleğe almasına olanak tanır.
 
-* Kullanıcılardan, ADAL. js ' de `acquireToken` adlandırılmasını istemeden belirteçleri elde etmek ve yenilemek için yöntemi. MSAL. js ' de bu yöntemin bu işlevselliğe daha açıklayıcı olması için `acquireTokenSilent` olarak adlandırılmıştır.
+* Kullanıcılara sormadan sessizce belirteçleri edinme `acquireToken` ve yenileme yöntemi ADAL.js'de adlandırılır. MSAL.js'de bu yöntem, bu işlevselliğin daha açıklayıcı olması için adlandırılır. `acquireTokenSilent`
 
-### <a name="authority-value-common"></a>Yetkili değeri `common`
+### <a name="authority-value-common"></a>Yetki değeri`common`
 
-V 1.0 'da, `https://login.microsoftonline.com/common` yetkilisi 'nin kullanılması, kullanıcıların herhangi bir Azure AD hesabıyla oturum açmalarına olanak tanır (herhangi bir kuruluş için).
+v1.0'da, `https://login.microsoftonline.com/common` yetkiyi kullanmak kullanıcıların herhangi bir Azure REKLAM hesabıyla (herhangi bir kuruluş için) oturum açmalarına olanak tanır.
 
-V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, kullanıcıların herhangi bir Azure AD kuruluş hesabıyla veya bir Microsoft kişisel hesabıyla (MSA) oturum açmalarına olanak tanır. Oturum açmayı yalnızca Azure AD hesaplarında kısıtlamak için (ADAL. js ile aynı davranış), `https://login.microsoftonline.com/organizations`kullanmanız gerekir. Ayrıntılar için, [msal. js kullanarak başlatma](msal-js-initializing-client-applications.md)içindeki `authority` config seçeneğine bakın.
+V2.0'da, `https://login.microsoftonline.com/common` yetkiyi kullanarak, kullanıcıların herhangi bir Azure REKLAM kuruluş hesabı veya Microsoft kişisel hesabı (MSA) ile oturum açmalarına olanak tanır. Oturum açma oturumaçmayı yalnızca Azure AD hesaplarıyla sınırlamak için (ADAL.js ile aynı davranış) . `https://login.microsoftonline.com/organizations` Ayrıntılar için, `authority` [MSAL.js kullanarak Initialize](msal-js-initializing-client-applications.md)config seçeneğine bakın.
 
-### <a name="scopes-for-acquiring-tokens"></a>Belirteçleri almak için kapsamlar
-* Belirteçleri almak için kimlik doğrulama isteklerinde kaynak parametresi yerine kapsam
+### <a name="scopes-for-acquiring-tokens"></a>Belirteçleri edinme kapsamları
+* Belirteçleri elde etmek için kimlik doğrulama isteklerinde kaynak parametresi yerine kapsam
 
-    v 2.0 protokolü isteklerde kaynak yerine kapsamları kullanır. Diğer bir deyişle, uygulamanızın MS Graph gibi bir kaynak için izinleri olan belirteçleri istemesi gerektiğinde, kitaplık yöntemlerine geçirilen değerlerin farkı aşağıdaki gibidir:
+    v2.0 protokolü isteklerde kaynak yerine kapsamları kullanır. Başka bir deyişle, uygulamanızın MS Graph gibi bir kaynak için izinleri olan belirteçleri istemesi gerektiğinde, kitaplık yöntemlerine geçirilen değerler arasındaki fark aşağıdaki gibidir:
 
-    v 1.0: kaynak = https\://graph.microsoft.com
+    v1.0: kaynak\:= https //graph.microsoft.com
 
-    v 2.0: kapsam = https\://graph.microsoft.com/User.Read
+    v2.0: kapsam\:= https //graph.microsoft.com/User.Read
 
-    Şu biçimdeki API URI 'sini kullanarak tüm kaynak API 'leri için kapsamlar isteyebilirsiniz: Appıduri/Scope örneğin: https:\//mytenant.onmicrosoft.com/myapi/api.read
+    Bu formatta API URI kullanarak herhangi bir kaynak API için kapsam isteyebilirsiniz: appidURI/scopeÖrneğin: https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    Yalnızca MS Graph API için `user.read` bir kapsam değeri https:\//graph.microsoft.com/User.Read eşlenir ve birbirlerinin yerine kullanılabilir.
+    Yalnızca MS Graph API için, `user.read` https:\//graph.microsoft.com/User.Read için bir kapsam değeri eşlemleri ve birbirinin yerine kullanılabilir.
 
     ```javascript
     var request = {
@@ -71,9 +71,9 @@ V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, ku
     acquireTokenPopup(request);   
     ```
 
-* Artımlı izin için dinamik kapsamlar.
+* Artımlı onay için dinamik kapsamlar.
 
-    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örneğin:
+    v1.0 kullanarak uygulama yaparken, kullanıcının oturum açma sırasında onay alması için uygulamanın gerektirdiği tüm izinleri (statik kapsamlar) kaydetmeniz gerekir. v2.0'da, izinleri istediğiniz anda istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlara artımlı onay sağlamasına olanak tanır. Bu nedenle, başlangıçta yalnızca kullanıcının uygulamanızda oturum açmasını istiyorsanız ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma yeteneğine ihtiyacınız varsa, daha sonra satın alma Token yöntemleritakvimtakviminin kapsamını isteyebilir ve kullanıcının onayını alabilirsiniz. Örnek:
 
     ```javascript
     var request = {
@@ -83,9 +83,9 @@ V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, ku
     acquireTokenPopup(request);   
     ```
 
-* V 1.0 API 'Leri için kapsamlar
+* V1.0 API'leri için kapsamlar
 
-    MSAL. js kullanarak V 1.0 API 'Leri için belirteçler alırken API 'de kayıtlı tüm statik kapsamları, API 'nin uygulama KIMLIĞI URI 'sine kapsam olarak `.default` ekleyerek isteyebilirsiniz. Örneğin:
+    MSAL.js kullanarak V1.0 API'leri için belirteçler alırken, KAPSAM OLARAK API'nin App Id URI'sine ekleyerek `.default` API'de kayıtlı tüm statik kapsamları isteyebilirsiniz. Örnek:
 
     ```javascript
     var request = {
@@ -96,4 +96,4 @@ V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, ku
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için [v 1.0 ve v 2.0 karşılaştırması](active-directory-v2-compare.md)bölümüne bakın.
+Daha fazla bilgi için [v1.0 ve v2.0 karşılaştırmasına](active-directory-v2-compare.md)bakın.
