@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics için bir CI/CD işlem hattı ayarlama
-description: Sürekli tümleştirme ve sürekli dağıtım için Azure Data Lake Analytics ayarlama konusunda bilgi edinin.
+title: Azure Veri Gölü Analitiği için BIR CI/CD ardışık nokta nasıl ayarlanır?
+description: Azure Veri Gölü Analitiği için sürekli tümleştirme ve sürekli dağıtım ayarlamayı öğrenin.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60333885"
 ---
-# <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için bir CI/CD işlem hattı ayarlama  
+# <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Veri Gölü Analitiği için BIR CI/CD ardışık nokta nasıl ayarlanır?  
 
-Bu makalede, bir sürekli tümleştirme ve dağıtım (CI/CD) işlem hattı U-SQL işleri ve U-SQL veritabanları için ayarlama konusunda bilgi edinin.  
+Bu makalede, U-SQL işleri ve U-SQL veritabanları için sürekli bir tümleştirme ve dağıtım (CI/CD) ardışık birimi kurmayı öğrenirsiniz.  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="use-cicd-for-u-sql-jobs"></a>U-SQL işleri için CI/CD kullanma
+## <a name="use-cicd-for-u-sql-jobs"></a>U-SQL işleri için CI/CD'yi kullanma
 
-Visual Studio için Azure Data Lake araçları, U-SQL betikleri düzenlemenize yardımcı olur U-SQL projesi türü sağlar. U-SQL kodunuzu yönetmek için U-SQL projesi kullanarak daha fazla CI/CD senaryoları kolaylaştırır.
+Visual Studio için Azure Veri Gölü Araçları, U-SQL komut dosyalarını düzenlemenize yardımcı olan U-SQL proje türünü sağlar. U-SQL kodunuzu yönetmek için U-SQL projesini kullanmak, daha fazla CI/CD senaryosunu kolaylaştırır.
 
-## <a name="build-a-u-sql-project"></a>U-SQL projesi oluşturmak
+## <a name="build-a-u-sql-project"></a>U-SQL projesi oluşturma
 
-U-SQL projesi kılan Microsoft Build Engine (MSBuild) ile ilgili parametreler geçirerek oluşturulabilir. U-SQL projesi için bir yapı işlemi ayarlamak için bu makaledeki adımları izleyin.
+Bir U-SQL projesi, ilgili parametreleri geçirerek Microsoft Build Engine (MSBuild) ile oluşturulabilir. U-SQL projesi için bir yapı işlemi ayarlamak için bu makaledeki adımları izleyin.
 
 ### <a name="project-migration"></a>Proje geçişi
 
-U-SQL projesi için bir derleme görevi ayarlama önce U-SQL projesi en son sürümüne sahip olduğunuzdan emin olun. U-SQL projesi dosya Düzenleyicisi'nde açın ve bunlar sahip olduğunuzu doğrulayın öğeleri al:
+Bir U-SQL projesi için bir yapı görevi ayarlamadan önce, U-SQL projesinin en son sürümüne sahip olduğundan emin olun. Düzenleyicinizde U-SQL proje dosyasını açın ve bu alma öğelerine sahip olduğunuzu doğrulayın:
 
 ```   
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
@@ -41,16 +41,16 @@ U-SQL projesi için bir derleme görevi ayarlama önce U-SQL projesi en son sür
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
 ``` 
 
-Aksi durumda, projeyi geçirmek için iki seçeneğiniz vardır:
+Değilse, projeyi geçirmek için iki seçeneğiniz var:
 
-- 1\. seçenek: Eski içeri aktarma öğesi önceki adlarıyla değiştirin.
-- 2\. seçenek: Eski proje, Visual Studio için Azure Data Lake Araçları ' açın. 2\.3.3000.0 yeni bir sürümü kullanın. Eski proje şablonu, en son sürüme otomatik olarak yükseltilecektir. 2\.3.3000.0 yeni sürümleri ile oluşturulan yeni projeler yeni şablonu kullanın.
+- Seçenek 1: Eski alma öğesini bir öncekine değiştirin.
+- Seçenek 2: Visual Studio için Azure Veri Gölü Araçları'nda eski projeyi açın. 2.3.3000.0'dan daha yeni bir sürüm kullanın. Eski proje şablonu otomatik olarak en yeni sürüme yükseltilir. 2.3.3000.0'dan daha yeni sürümlerle oluşturulan yeni projeler yeni şablonu kullanır.
 
-### <a name="get-nuget"></a>Get NuGet
+### <a name="get-nuget"></a>NuGet alın
 
-MSBuild, U-SQL projeleri için yerleşik destek sağlamaz. Bu destek almak için çözümünüze için bir başvuru eklemeniz gerekir [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) gerekli dil hizmeti ekleyen bir NuGet paketi.
+MSBuild, U-SQL projeleri için yerleşik destek sağlamaz. Bu desteği almak için, gerekli dil hizmetini ekleyen [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet paketine çözümünüz için bir başvuru eklemeniz gerekir.
 
-NuGet paket başvurusu eklemek için Visual Studio Çözüm Gezgini'nde çözüme sağ tıklayıp seçin **NuGet paketlerini Yönet**. Adlı bir dosya ekleyebilirsiniz `packages.config` Çözüm klasörü ve aşağıdaki içeriği içine put:
+NuGet paketi referansını eklemek için Visual Studio Solution Explorer'da çözüme sağ tıklayın ve **NuGet Paketlerini Yönet'i**seçin. Veya çözüm klasörüne `packages.config` çağrılan bir dosya ekleyebilir ve içine aşağıdaki içerikleri koyabilirsiniz:
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -59,73 +59,73 @@ NuGet paket başvurusu eklemek için Visual Studio Çözüm Gezgini'nde çözüm
 </packages>
 ``` 
 
-### <a name="manage-u-sql-database-references"></a>U-SQL veritabanı başvuruları yönetme
+### <a name="manage-u-sql-database-references"></a>U-SQL veritabanı başvurularını yönetme
 
-U-SQL betiklerini bir U-SQL projesi U-SQL veritabanı nesneleri için sorgu ifadeleri olabilir. Bu durumda, U-SQL projesi oluşturmadan önce nesnelerin tanımı içeren karşılık gelen U-SQL veritabanı projeye başvurması gerekir. Örnek bir U-SQL tablo sorgulamak veya bir derleme başvurusu olur. 
+U-SQL projesindeki U-SQL komut dosyaları, U-SQL veritabanı nesneleri için sorgu deyimleri olabilir. Bu durumda, U-SQL projesini oluşturmadan önce nesnelerin tanımını içeren ilgili U-SQL veritabanı projesine başvurmanız gerekir. Bir U-SQL tablosunu sorgularken veya bir derlemeye başvuruyaptığınızda bir örnektir. 
 
-Daha fazla bilgi edinin [U-SQL veritabanı projesi](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+[U-SQL veritabanı projesi](data-lake-analytics-data-lake-tools-develop-usql-database.md)hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
->BIRAKMA deyimi yanlışlıkla silme sorunu neden olabilir. BIRAKMA deyimi etkinleştirmek için MSBuild bağımsız değişkenleri açıkça belirtmeniz gerekir. **AllowDropStatement** derleme ve bırakma gibi veri olmayan ilgili bırak işlemi etkinleştirecek tablo değerli işlev. **AllowDataDropStatement** etkinleştirecek bırakma işlemi, bırakma table ve schema bırakma gibi ilgili verileri. AllowDropStatement AllowDataDropStatement kullanmadan önce etkinleştirmeniz gerekir.
+>DROP deyimi kaza silme sorununa neden olabilir. DROP deyimini etkinleştirmek için MSBuild bağımsız değişkenlerini açıkça belirtmeniz gerekir. **AllowDropStatement,** damla derleme ve damla tablo değeri işlevi gibi veri ile ilgili olmayan DROP işlemini sağlar. **AllowDataDropStatement,** damla tablosu ve damla şeması gibi veri ile ilgili DROP işlemini sağlar. AllowDataDropStatement'ı kullanmadan önce İzin DamlaBildirimi'ni etkinleştirmeniz gerekir.
 >
 
-### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>MSBuild komut satırı ile bir U-SQL projesi oluşturmak
+### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>MSBuild komut satırı ile bir U-SQL projesi oluşturma
 
-Önce projeyi geçirmek ve NuGet paketini alın. Sonra U-SQL projesi oluşturmak için aşağıdaki ek bağımsız değişkenler standart MSBuild komut satırında çağırın: 
+Önce projeyi geçirin ve NuGet paketini alın. Ardından, U-SQL projenizi oluşturmak için aşağıdaki ek bağımsız değişkenlerle standart MSBuild komut satırını arayın: 
 
 ``` 
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
-Bağımsız değişken tanımı ve değerler aşağıdaki gibidir:
+Bağımsız değişkentanımı ve değerleri aşağıdaki gibidir:
 
-* **USQLSDKPath =\<U-SQL Nuget paketini > \build\runtime**. Bu parametre, U-SQL dil hizmeti için NuGet paketinin yükleme yolu belirtir.
-* **USQLTargetType birleştirme ya da SyntaxCheck =** :
-    * **Birleştirme**. Birleştirme modu arka plan kod dosyaları derler. Örnekler **.cs**, **.py**, ve **.r** dosyaları. Bu satır içleri U-SQL betiğini elde edilen kullanıcı tanımlı kod kitaplığa. Örnekler bir dll ikili, Python veya R kodu.
-    * **SyntaxCheck**. SyntaxCheck modu, arka plan kod dosyaları ilk U-SQL betiği ile birleştirir. Sonra kodunuzu doğrulamak için U-SQL betiği derler.
-* **DataRoot =\<DataRoot yolu >** . DataRoot yalnızca SyntaxCheck modu için gereklidir. Betik SyntaxCheck moduyla oluşturduğunda, MSBuild betiğindeki veritabanı nesnelere başvurular denetler. Yapılandırmadan önce başvurulan derleme makinenin DataRoot klasörü U-SQL veritabanında nesneleri içeren bir eşleşen yerel ortamı ayarlayın. Bu veritabanı bağımlılıklar da yönetebilirsiniz [bir U-SQL veritabanı projesine başvurma](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild, veritabanı nesne başvuruları, dosyaları değil yalnızca denetler.
-* **EnableDeployment = true** veya **false**. EnableDeployment, derleme işlemi sırasında başvurulan U-SQL veritabanı dağıtmak için izin verip vermediğini belirtir. U-SQL veritabanı projesi başvuru ve veritabanı nesnelerini U-SQL betiğinizde kullanmak, bu parametre kümesine **true**.
+* **USQLSDKPath=\<U-SQL Nuget paketi>\build\runtime**. Bu parametre, U-SQL dil hizmeti için NuGet paketinin yükleme yolunu ifade eder.
+* **USQLTargetType=Birleştirme veya SözdizimiDenetimi**:
+    * **Birleştirme**. Birleştirme modu, dosyaların arkasındaki kodları derler. Örnekler **.cs**, **.py**ve **.r** dosyalarıdır. U-SQL komut dosyasına, ortaya çıkan kullanıcı tanımlı kod kitaplığını satır içine satır içine. Örnekler dll ikili, Python veya R kodu.
+    * **SözdizimiÇek**. SyntaxCheck modu önce kod arkasındaki dosyaları U-SQL komut dosyasında birleştirir. Ardından kodunuzu doğrulamak için U-SQL komut dosyasını derler.
+* **DataRoot=\<DataRoot yolu>. ** DataRoot yalnızca Sözdizimi Denetimi modu için gereklidir. Sözdizimi Denetimi moduile komut dosyası oluşturduğunda, MSBuild komut dosyasındaki veritabanı nesnelerine yapılan başvuruları denetler. Oluşturmadan önce, yapı makinesinin DataRoot klasöründe U-SQL veritabanından başvurulan nesneleri içeren eşleşen bir yerel ortam ayarlayın. Ayrıca, [bir U-SQL veritabanı projesine başvurarak](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)bu veritabanı bağımlılıklarını yönetebilirsiniz. MSBuild dosyaları değil, yalnızca veritabanı nesne stobaşvurularını denetler.
+* **EnableDeployment=doğru** veya **yanlış**. EnableDeployment, yapı işlemi sırasında başvurulan U-SQL veritabanlarını dağıtmasına izin verilip verilmediğini gösterir. Bir U-SQL veritabanı projesine başvurur ve U-SQL komut dosyanızdaki veritabanı nesnelerini tüketirseniz, bu parametreyi **doğru**olarak ayarlayın.
 
-### <a name="continuous-integration-through-azure-pipelines"></a>Azure işlem hatları aracılığıyla sürekli tümleştirme
+### <a name="continuous-integration-through-azure-pipelines"></a>Azure Pipelines ile sürekli tümleştirme
 
-Komut satırında ek olarak, Azure işlem hatları, U-SQL projesi oluşturmak için de Visual Studio derleme veya bir MSBuild görevi kullanabilirsiniz. Bir derleme işlem hattı ayarlayın için derleme işlem hattı, iki görevi eklediğinizden emin olun: NuGet geri yükleme görevi ve bir MSBuild görevi.
+Komut satırına ek olarak, Azure Pipelines'da U-SQL projeleri oluşturmak için Visual Studio Build veya MSBuild görevini de kullanabilirsiniz. Yapı ardışık düzeni kurmak için yapı ardışık yapısına iki görev eklediğinizden emin olun: NuGet geri yükleme görevi ve MSBuild görevi.
 
 ![U-SQL projesi için MSBuild görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
-1.  İçeren çözüm başvurulan NuGet paketini almak için NuGet geri yükleme görev eklemek `Azure.DataLake.USQL.SDK`, böylece MSBuild U-SQL dil hedefleri bulabilirsiniz. Ayarlama **Gelişmiş** > **hedef dizin** için `$(Build.SourcesDirectory)/packages` MSBuild bağımsız değişkenleri örnek 2. adımda doğrudan kullanmak istiyorsanız.
+1.  MSBuild'in U-SQL dil hedeflerini bulabilmeleri için `Azure.DataLake.USQL.SDK`çözüme başvurulan NuGet paketini almak için Bir NuGet geri yükleme görevi ekleyin. MSBuild bağımsız değişkenörneğini doğrudan adım 2'de kullanmak `$(Build.SourcesDirectory)/packages` istiyorsanız **Gelişmiş** > **Hedef dizini** olarak ayarlayın.
 
-    ![U-SQL projesi için NuGet geri yükleme görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+    ![NuBir U-SQL projesi için geri yükleme görevi alın](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  MSBuild bağımsız değişkenleri aşağıdaki örnekte gösterildiği gibi Visual Studio derleme araçları ya da bir MSBuild görevi ayarlayın. Veya Azure işlem hatları derleme işlem hattı, bu bağımsız değişkenleri tanımlayabilirsiniz.
+2.  Aşağıdaki örnekte gösterildiği gibi Visual Studio oluşturma araçlarında veya MSBuild görevinde MSBuild bağımsız değişkenlerini ayarlayın. Veya Azure Ardışık Hatları yapı ardışık yapısında bu bağımsız değişkenler için değişkenler tanımlayabilirsiniz.
 
-    ![U-SQL projesi için CI/CD MSBuild değişkenleri tanımlayın](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
+    ![U-SQL projesi için CI/CD MSBuild değişkenlerini tanımlama](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
     ```
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
-### <a name="u-sql-project-build-output"></a>U-SQL projesi yapı çıkış
+### <a name="u-sql-project-build-output"></a>U-SQL proje oluşturma çıktısı
 
-Bir derlemeyi çalıştırdıktan sonra tüm betiklerde U-SQL projesi oluşturulur ve çıktı olarak adlandırılan bir zip dosyasına `USQLProjectName.usqlpack`. Klasör yapısı, projenizdeki sıkıştırılmış oluşturma çıktısında tutulur.
+Bir yapıyı çalıştırdıktan sonra, U-SQL projesindeki tüm komut dosyaları `USQLProjectName.usqlpack`oluşturulur ve bir zip dosyasına çıkar. Projenizdeki klasör yapısı sıkıştırılmış yapı çıktısında tutulur.
 
 > [!NOTE]
 >
-> Her bir U-SQL komut dosyası için arka plan kod dosyaları, betik derleme çıkışı için bir satır içi deyimi olarak birleştirilir.
+> Her U-SQL komut dosyası için kod arkası dosyaları komut dosyası oluşturma çıktısına satır içi deyimi olarak birleştirilir.
 >
 
-## <a name="test-u-sql-scripts"></a>U-SQL betikleri test
+## <a name="test-u-sql-scripts"></a>U-SQL betiklerini test etme
 
-Azure Data Lake, U-SQL betikleri ve C# UDO'su/UDAG/UDF için test projeleri sağlar:
-* Bilgi edinmek için nasıl [U-SQL betikleri ve genişletilmiş C# kodu için test çalışmalarını Ekle](data-lake-analytics-cicd-test.md#test-u-sql-scripts).
-* Bilgi edinmek için nasıl [Azure işlem hatlarında test çalışmaları](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops).
+Azure Veri Gölü, U-SQL komut dosyaları ve C# UDO/UDAG/UDF için test projeleri sağlar:
+* [U-SQL komut dosyaları ve genişletilmiş C# kodu için test örnekleri](data-lake-analytics-cicd-test.md#test-u-sql-scripts)nin nasıl ekleyeceğinizi öğrenin.
+* [Azure Ardışık Durumlarda test denemelerini nasıl çalıştırılayacağınızı](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops)öğrenin.
 
-## <a name="deploy-a-u-sql-job"></a>U-SQL işi dağıtma
+## <a name="deploy-a-u-sql-job"></a>U-SQL işini dağıtma
 
-Kod derleme ve test sürecinde doğruladıktan sonra U-SQL işleri bir Azure PowerShell görev aracılığıyla Azure işlem hatlarını doğrudan gönderebilirsiniz. Azure Data Lake Store veya Azure Blob depolama alanına da betiği dağıtabilirsiniz ve [Azure Data Factory zamanlanmış işlerinizi](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics).
+Yapı ve test işlemi yle kodu doğruladıktan sonra, Bir Azure PowerShell görevi aracılığıyla U-SQL işlerini doğrudan Azure Pipelines'dan gönderebilirsiniz. Ayrıca komut dosyasını Azure Veri Gölü Deposu'na veya Azure Blob depolamasına dağıtabilir ve [zamanlanan işleri Azure Veri Fabrikası üzerinden çalıştırabilirsiniz.](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
 
-### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>Azure işlem hatları ile U-SQL işlerini gönderme
+### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>Azure Pipelines aracılığıyla U-SQL işlerini gönderme
 
-U-SQL projesi bir zip dosyası adlı derleme çıkışı **USQLProjectName.usqlpack**. Zip dosyasını projeye tüm bir U-SQL betikleri içerir. Kullanabileceğiniz [Azure PowerShell görev](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) , işlem hattı aşağıdaki örnek PowerShell Betiği ile U-SQL işlerini Azure işlem hatlarını doğrudan göndermek için.
+U-SQL projesinin yapı çıktısı **USQLProjectName.usqlpack**adlı bir zip dosyasıdır. Zip dosyası projedeki tüm U-SQL komut dosyalarını içerir. U-SQL işlerini doğrudan Azure Pipelines'dan göndermek için aşağıdaki örnek PowerShell komut dosyasıyla Pipelines'daki [Azure PowerShell görevini](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) kullanabilirsiniz.
 
 ```powershell
 <#
@@ -230,11 +230,11 @@ Function Main()
 Main
 ```
 
-### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>U-SQL işlerini Azure Data Factory aracılığıyla dağıtma
+### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>Azure Veri Fabrikası aracılığıyla U-SQL işlerini dağıtma
 
-U-SQL işlerini Azure işlem hatlarını doğrudan gönderebilirsiniz. Veya Azure Data Lake Store veya Azure Blob Depolama için oluşturulan komut dosyalarını karşıya yükleyebilirsiniz ve [Azure Data Factory zamanlanmış işlerinizi](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics).
+U-SQL işlerini doğrudan Azure Pipelines'dan gönderebilirsiniz. Veya yapılı komut dosyalarını Azure Veri Gölü Deposu'na veya Azure Blob depolama alanına yükleyebilir ve [zamanlanan işleri Azure Veri Fabrikası üzerinden çalıştırabilirsiniz.](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
 
-Kullanım [Azure PowerShell görev](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) Azure U-SQL betikleri bir Azure Data Lake Store hesabına yüklemek için işlem hatları ile aşağıdaki örnek PowerShell Betiği olarak:
+U-SQL komut dosyalarını Azure Veri Gölü Deposu hesabına yüklemek için aşağıdaki örnek PowerShell komut dosyasıyla Azure Veri Hatları'ndaki [Azure PowerShell görevini](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) kullanın:
 
 ```powershell
 <#
@@ -294,15 +294,15 @@ UploadResources
 
 ## <a name="cicd-for-a-u-sql-database"></a>U-SQL veritabanı için CI/CD
 
-Visual Studio için Azure Data Lake araçları, geliştirme, yönetme ve U-SQL veritabanları dağıtma yardımcı olan U-SQL veritabanı proje şablonları sağlar. Daha fazla bilgi edinin bir [U-SQL veritabanı projesi](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+Visual Studio için Azure Veri Gölü Araçları, U-SQL veritabanlarını geliştirmenize, yönetmenize ve dağıtmanıza yardımcı olan U-SQL veritabanı proje şablonları sağlar. [U-SQL veritabanı projesi](data-lake-analytics-data-lake-tools-develop-usql-database.md)hakkında daha fazla bilgi edinin.
 
-## <a name="build-u-sql-database-project"></a>U-SQL veritabanı projesi derleme
+## <a name="build-u-sql-database-project"></a>U-SQL veritabanı projesi oluşturma
 
-### <a name="get-the-nuget-package"></a>NuGet paketini alma
+### <a name="get-the-nuget-package"></a>NuGet paketini alın
 
-MSBuild, U-SQL veritabanı projeleri için yerleşik destek sağlamaz. Bu özelliği almak için çözümünüz için bir başvuru eklemeniz gerekir [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) gerekli dil hizmeti ekleyen bir NuGet paketi.
+MSBuild, U-SQL veritabanı projeleri için yerleşik destek sağlamaz. Bu özelliği elde etmek için, gerekli dil hizmetini ekleyen [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet paketine çözümünüz için bir başvuru eklemeniz gerekir.
 
-NuGet paket başvurusu eklemek için Visual Studio Çözüm Gezgini'nde çözüme sağ tıklayın. Seçin **NuGet paketlerini Yönet**. Öğesini arayın ve NuGet paketini yükleyin. Adlı bir dosya ekleyebilirsiniz **packages.config** Çözüm klasörü ve aşağıdaki içeriği içine put:
+NuGet paketi referansını eklemek için Visual Studio Solution Explorer'da çözüme sağ tıklayın. **NuGet Paketlerini Yönet'i**seçin. Ardından NuGet paketini arayın ve yükleyin. Veya çözüm klasörüne **packages.config** adlı bir dosya ekleyebilir ve içine aşağıdaki içerikleri koyabilirsiniz:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -311,59 +311,59 @@ NuGet paket başvurusu eklemek için Visual Studio Çözüm Gezgini'nde çözüm
 </packages>
 ```
 
-### <a name="build-u-sql-a-database-project-with-the-msbuild-command-line"></a>U-SQL veritabanı projesi MSBuild komut satırı ile derleme
+### <a name="build-u-sql-a-database-project-with-the-msbuild-command-line"></a>MSBuild komut satırı ile U-SQL veritabanı projesi oluşturma
 
-U-SQL veritabanı projenizi oluşturmak için standart MSBuild komut satırını arayın ve U-SQL SDK'sı NuGet paketi başvurusu ek bağımsız değişken olarak geçirin. Aşağıdaki örneğe bakın: 
+U-SQL veritabanı projenizi oluşturmak için standart MSBuild komut satırını arayın ve Ek bir bağımsız değişken olarak U-SQL SDK NuGet paket başvuruhattını geçin. Aşağıdaki örneğe bakın: 
 
 ```
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
 ```
 
-Bağımsız değişken `USQLSDKPath=<U-SQL Nuget package>\build\runtime` U-SQL dil hizmeti için NuGet paketinin yükleme yolu gösterir.
+Bağımsız `USQLSDKPath=<U-SQL Nuget package>\build\runtime` değişken, U-SQL dil hizmeti için NuGet paketinin yükleme yolunu ifade eder.
 
-### <a name="continuous-integration-with-azure-pipelines"></a>Azure işlem hatları ile sürekli tümleştirme
+### <a name="continuous-integration-with-azure-pipelines"></a>Azure Pipelines ile sürekli tümleştirme
 
-Komut satırında ek olarak, Azure işlem hatları, U-SQL veritabanı projeleri derlemek için Visual Studio derleme veya bir MSBuild görevi kullanabilirsiniz. Yapı görev oluşturmak için derleme işlem hattı, iki görevi eklediğinizden emin olun: NuGet geri yükleme görevi ve bir MSBuild görevi.
+Komut satırına ek olarak, Azure Ardışık Hatları'nda U-SQL veritabanı projeleri oluşturmak için Visual Studio Build veya MSBuild görevini kullanabilirsiniz. Bir yapı görevi ayarlamak için yapı ardışık yapısına iki görev eklediğinizden emin olun: NuGet geri yükleme görevi ve MSBuild görevi.
 
-   ![U-SQL projesi için CI/CD MSBuild görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
+   ![Bir U-SQL projesi için CI/CD MSBuild görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
 
-1. İçeren çözüm başvurulan NuGet paketini almak için NuGet geri yükleme görev eklemek `Azure.DataLake.USQL.SDK`, böylece MSBuild U-SQL dil hedefleri bulabilirsiniz. Ayarlama **Gelişmiş** > **hedef dizin** için `$(Build.SourcesDirectory)/packages` MSBuild bağımsız değişkenleri örnek 2. adımda doğrudan kullanmak istiyorsanız.
+1. MSBuild'in U-SQL dil hedeflerini bulabilmeleri için `Azure.DataLake.USQL.SDK`çözüme başvurulan NuGet paketini almak için Bir NuGet geri yükleme görevi ekleyin. MSBuild bağımsız değişkenörneğini doğrudan adım 2'de kullanmak `$(Build.SourcesDirectory)/packages` istiyorsanız **Gelişmiş** > **Hedef dizini** olarak ayarlayın.
 
-   ![U-SQL projesi için CI/CD NuGet görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+   ![CI/CD NuU-SQL projesi için görev alın](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2. MSBuild bağımsız değişkenleri aşağıdaki örnekte gösterildiği gibi Visual Studio derleme araçları ya da bir MSBuild görevi ayarlayın. Veya Azure işlem hatları derleme işlem hattı, bu bağımsız değişkenleri tanımlayabilirsiniz.
+2. Aşağıdaki örnekte gösterildiği gibi Visual Studio oluşturma araçlarında veya MSBuild görevinde MSBuild bağımsız değişkenlerini ayarlayın. Veya Azure Ardışık Hatları yapı ardışık yapısında bu bağımsız değişkenler için değişkenler tanımlayabilirsiniz.
 
-   ![U-SQL veritabanı projesi için CI/CD MSBuild değişkenleri tanımlayın](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
+   ![U-SQL veritabanı projesi için CI/CD MSBuild değişkenlerini tanımlama](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
    ```
    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
    ```
  
-### <a name="u-sql-database-project-build-output"></a>U-SQL veritabanı projesi derleme çıkışı
+### <a name="u-sql-database-project-build-output"></a>U-SQL veritabanı proje oluşturma çıktısı
 
-U-SQL veritabanı projesi sonekiyle adlı bir U-SQL veritabanı dağıtım paketi için çıkış derleme `.usqldbpack`. `.usqldbpack` Tek bir U-SQL betiği bir DDL klasördeki tüm DDL deyimleri içeren bir zip dosyası bir pakettir. Tüm içeren **.dll** ve ek dosyaları geçici bir klasörde derleme.
+U-SQL veritabanı projesinin yapı çıktısı, sonek `.usqldbpack`ile birlikte bir U-SQL veritabanı dağıtım paketidir. Paket, `.usqldbpack` ddl klasöründeki tek bir U-SQL komut dosyasındaki tüm DDL ifadelerini içeren bir zip dosyasıdır. Geçici bir klasörde derleme için tüm **.dll'leri** ve ek dosyaları içerir.
 
-## <a name="test-table-valued-functions-and-stored-procedures"></a>Test tablo değerli işlevler ve saklı yordamlar
+## <a name="test-table-valued-functions-and-stored-procedures"></a>Test tablosu değerli fonksiyonlar ve depolanan yordamlar
 
-Tablo değerli işlevler ve saklı yordamlar için test çalışmalarını doğrudan ekleme şu anda desteklenmemektedir. Geçici bir çözüm olarak, bu işlevler ve için test durumlarını yazmak ve U-SQL betiklerini içeren bir U-SQL projesi oluşturabilirsiniz. Tablo değerli işlevler ve U-SQL veritabanı projede tanımlanan saklı yordamlar için test çalışmaları ayarlamak için aşağıdaki adımları uygulayın:
+Tablo değerindeki işlevler ve depolanan yordamlar için test çalışmaları ekleme şu anda desteklenmemektedir. Geçici çözüm olarak, bu işlevleri arayan ve onlar için test örnekleri yazan U-SQL komut dosyaları içeren bir U-SQL projesi oluşturabilirsiniz. U-SQL veritabanı projesinde tanımlanan tablo değerli işlevler ve saklı yordamlar için test çalışmaları ayarlamak için aşağıdaki adımları uygulayın:
 
-1.  Test amacıyla bir U-SQL projesi oluşturun ve saklı yordamlar ve tablo değerli işlevler çağırma U-SQL betikleri yazma.
-2.  U-SQL projesi için veritabanı başvurusu ekleyin. Tablo değerli işlev ve saklı yordam tanımında almak için DDL deyimi içeren veritabanı projesine başvurmanız gerekir. Daha fazla bilgi edinin [veritabanı başvuruları](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
-3.  Tablo değerli işlevler ve saklı yordamları çağıran bir U-SQL betikleri için test çalışmaları ekleyin. Bilgi edinmek için nasıl [U-SQL betikleri için test çalışmalarını Ekle](data-lake-analytics-cicd-test.md#test-u-sql-scripts).
+1.  Test amacıyla bir U-SQL projesi oluşturun ve tablo değeri olan işlevleri ve depolanmış yordamları çağıran U-SQL komut dosyaları yazın.
+2.  U-SQL projesine bir veritabanı başvurusu ekleyin. Tablo değerindeki işlevi ve depolanmış yordam tanımını almak için DDL deyimini içeren veritabanı projesine başvurmanız gerekir. [Veritabanı başvuruları](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)hakkında daha fazla bilgi edinin.
+3.  Tablo değeri olan işlevleri ve depolanmış yordamları arayan U-SQL komut dosyaları için test örnekleri ekleyin. [U-SQL komut dosyaları için test örnekleri](data-lake-analytics-cicd-test.md#test-u-sql-scripts)nin nasıl ekleyeceğinizi öğrenin.
 
-## <a name="deploy-u-sql-database-through-azure-pipelines"></a>Azure işlem hatları ile U-SQL veritabanı dağıtma
+## <a name="deploy-u-sql-database-through-azure-pipelines"></a>Azure Pipelines aracılığıyla U-SQL veritabanını dağıtma
 
-`PackageDeploymentTool.exe` komut satırı arabirimi, U-SQL veritabanı dağıtım paketleri, dağıtmak ve programlama sağlar **.usqldbpack**. SDK'sı dahil [U-SQL SDK'sı NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)konumunda bulunan **build/runtime/PackageDeploymentTool.exe**. Kullanarak `PackageDeploymentTool.exe`, U-SQL veritabanları Azure Data Lake Analytics ve yerel hesaplar için dağıtabilirsiniz.
+`PackageDeploymentTool.exe`U-SQL veritabanı dağıtım paketleri, **.usqldbpack**dağıtmaya yardımcı programlama ve komut satırı arabirimleri sağlar. SDK, **build/runtime/PackageDeploymentTool.exe**adresinde bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir. U-SQL `PackageDeploymentTool.exe`veritabanlarını hem Azure Veri Gölü Analitiği'ne hem de yerel hesaplara dağıtabilirsiniz.
 
 > [!NOTE]
 >
-> U-SQL veritabanı dağıtımı şu anda beklemede PowerShell komut satırı desteğiyle ve Azure işlem hatları bırakma görevi desteği.
+> PowerShell komut satırı desteği ve Azure Pipelines sürümünde U-SQL veritabanı dağıtımı için görev desteği şu anda beklemede.
 >
 
-Bir veritabanı dağıtım görevi Azure işlem hatları ayarlamak için aşağıdaki adımları uygulayın:
+Azure Ardışık Hatları'nda bir veritabanı dağıtım görevi ayarlamak için aşağıdaki adımları izleyin:
 
-1. Bir yapı içinde bir PowerShell Betiği görev ekleyin veya yayın işlem ve aşağıdaki PowerShell betiğini yürütün. Bu görev için Azure SDK'sı bağımlılıkları almak için yardımcı `PackageDeploymentTool.exe` ve `PackageDeploymentTool.exe`. Ayarlayabileceğiniz **- AzureSDK** ve **- DBDeploymentTool** belirli klasörlere dağıtım aracı ve bağımlılıklarını yüklemek için parametreleri. Geçirmek **- AzureSDK** yolu `PackageDeploymentTool.exe` olarak **- AzureSDKPath** parametre 2. adımda. 
+1. Yapı veya sürüm ardışık yapısına bir PowerShell Script görevi ekleyin ve aşağıdaki PowerShell komut dosyasını çalıştırın. Bu görev, Azure SDK `PackageDeploymentTool.exe` bağımlılıklarını `PackageDeploymentTool.exe`ve . Bağımlılıkları ve dağıtım aracını belirli klasörlere yüklemek için **-AzureSDK** ve **-DBDeploymentTool** parametrelerini ayarlayabilirsiniz. **-AzureSDK** yolunu adım `PackageDeploymentTool.exe` 2'de **-AzureSDKPath** parametresi olarak geçirin. 
 
     ```powershell
     <#
@@ -424,27 +424,27 @@ Bir veritabanı dağıtım görevi Azure işlem hatları ayarlamak için aşağ�
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. Ekleme bir **komut satırı görevi** bir derleme veya yayın işlem hattı ve dolgu çağırarak betiğinde `PackageDeploymentTool.exe`. `PackageDeploymentTool.exe` bulunduğu altında tanımlanmış **$DBDeploymentTool** klasör. Örnek komut aşağıdaki gibidir: 
+2. Yapı veya sürüm ardışık yapısına **komut satırı görevi** ekleyin `PackageDeploymentTool.exe`ve arayarak komut dosyasını doldurun. `PackageDeploymentTool.exe`tanımlanan **$DBDeploymentTool** klasörün altında yer alır. Örnek komut dosyası aşağıdaki gibidir: 
 
-    * Yerel olarak bir U-SQL veritabanı dağıtın:
+    * Bir U-SQL veritabanını yerel olarak dağıtın:
 
         ```
         PackageDeploymentTool.exe deploylocal -Package <package path> -Database <database name> -DataRoot <data root path>
         ```
 
-    * Etkileşimli kimlik doğrulaması modu için bir Azure Data Lake Analytics hesabı bir U-SQL veritabanı dağıtmak için kullanın:
+    * Bir U-SQL veritabanını Azure Veri Gölü Analizi hesabına dağıtmak için etkileşimli kimlik doğrulama modunu kullanın:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
         ```
 
-    * Kullanım **secrete** kimlik doğrulaması için bir Azure Data Lake Analytics hesabı bir U-SQL veritabanı dağıtmak için:
+    * Bir U-SQL veritabanını Azure Veri Gölü Analizi hesabına dağıtmak için **gizli** kimlik doğrulaması kullanın:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
         ```
 
-    * Kullanım **certFile** kimlik doğrulaması için bir Azure Data Lake Analytics hesabı bir U-SQL veritabanı dağıtmak için:
+    * Bir U-SQL veritabanını Azure Veri Gölü Analizi hesabına dağıtmak için **certFile** kimlik doğrulamasını kullanın:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
@@ -452,39 +452,39 @@ Bir veritabanı dağıtım görevi Azure işlem hatları ayarlamak için aşağ�
 
 ### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>PackageDeploymentTool.exe parametre açıklamaları
 
-#### <a name="common-parameters"></a>Ortak parametreleri
+#### <a name="common-parameters"></a>Ortak parametreler
 
 | Parametre | Açıklama | Varsayılan Değer | Gerekli |
 |---------|-----------|-------------|--------|
-|Paket|Dağıtılacak U-SQL veritabanı dağıtım paketi yolu.|Null|true|
-|Database|Dağıtılan ya da oluşturulan veritabanı adı.|ana|false|
-|Günlük dosyası|Günlük dosyasının yolu. Varsayılan olarak standart çıkış (konsol).|Null|false|
-|LogLevel|Günlük düzeyi: Ayrıntılı, Normal, uyarı veya hata.|LogLevel.Normal|false|
+|Paket|Dağıtılacak U-SQL veritabanı dağıtım paketinin yolu.|null|true|
+|Database|Dağıtılacak veya oluşturulacak veritabanı adı.|ana|yanlış|
+|Logfile|Günlüğe kaydetme için dosyanın yolu. Varsayılan olarak standart çıkış (konsol).|null|yanlış|
+|LogLevel|Günlük düzeyi: Verbose, Normal, Uyarı veya Hata.|LogLevel.Normal|yanlış|
 
-#### <a name="parameter-for-local-deployment"></a>Parametresi için yerel dağıtımı
-
-|Parametre|Açıklama|Varsayılan Değer|Gerekli|
-|---------|-----------|-------------|--------|
-|DataRoot|Yerel veri kök klasörünün yolu.|Null|true|
-
-#### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics dağıtımı için parametreleri
+#### <a name="parameter-for-local-deployment"></a>Yerel dağıtım için parametre
 
 |Parametre|Açıklama|Varsayılan Değer|Gerekli|
 |---------|-----------|-------------|--------|
-|Hesap|Hesap adına göre dağıtmak için Azure Data Lake Analytics hesabını belirtir.|Null|true|
-|ResourceGroup|Azure Data Lake Analytics hesabı için Azure kaynak grubu adı.|Null|true|
-|SubscriptionId|Azure Data Lake Analytics hesabı için Azure abonelik kimliği.|Null|true|
-|Kiracı|Kiracı adı, Azure Active Directory (Azure AD) etki alanı adıdır. Azure portalında abonelik yönetimi sayfasındaki bulun.|Null|true|
-|AzureSDKPath|Azure SDK'sı bağımlı derlemelerin aranacağı yol.|Null|true|
-|Etkileşimli|Gerekmediğini etkileşimli mod kimlik doğrulaması için kullanılacak.|false|false|
-|ClientId|Azure AD uygulama kimliği etkileşimli olmayan kimlik doğrulaması için gereklidir.|Null|Etkileşimli olmayan kimlik doğrulaması için gereklidir.|
-|Secrete|Secrete veya etkileşimli olmayan kimlik doğrulaması için parola. Yalnızca güvenilen ve güvenli ortamında kullanılmalıdır.|Null|Kullanım SecreteFile yoksa etkileşimli olmayan kimlik doğrulaması için gereklidir.|
-|SecreteFile|Dosyayı secrete veya etkileşimli olmayan kimlik doğrulaması için parola kaydeder. Yalnızca geçerli kullanıcı tarafından okunabilen sakladığınızdan emin olun.|Null|Kullanım Secrete yoksa etkileşimli olmayan kimlik doğrulaması için gereklidir.|
-|CertFile|Dosya X.509 Sertifika etkileşimli olmayan kimlik doğrulama için kaydeder. Varsayılan istemci kullanmaktır secrete kimlik doğrulaması.|Null|false|
-| JobPrefix | U-SQL DDL işin veritabanı dağıtımı için önek. | Deploy_ + DateTime.Now | false |
+|DataRoot|Yerel veri kökü klasörünün yolu.|null|true|
+
+#### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Veri Gölü Analizi dağıtımı için parametreler
+
+|Parametre|Açıklama|Varsayılan Değer|Gerekli|
+|---------|-----------|-------------|--------|
+|Hesap|Hangi Azure Veri Gölü Analizi hesabının hesap adına dağıtılacayacağını belirtir.|null|true|
+|ResourceGroup|Azure Veri Gölü Analizi hesabının Azure kaynak grubu adı.|null|true|
+|SubscriptionId|Azure Veri Gölü Analizi hesabı için Azure abonelik kimliği.|null|true|
+|Kiracı|Kiracı adı Azure Etkin Dizin (Azure AD) etki alanı adıdır. Azure portalındaki abonelik yönetimi sayfasında bulabilirsiniz.|null|true|
+|AzureSDKPath|Azure SDK'da bağımlı derlemelerde arama yolu.|null|true|
+|Etkileşimli|Kimlik doğrulama için etkileşimli modu kullanıp kullanmamak.|yanlış|yanlış|
+|ClientId|Etkileşimli olmayan kimlik doğrulaması için gereken Azure AD uygulama kimliği.|null|Etkileşimli olmayan kimlik doğrulaması için gereklidir.|
+|Salgıladıkları|Etkileşimli olmayan kimlik doğrulamasının salgılanması veya parolası. Yalnızca güvenilir ve güvenli bir ortamda kullanılmalıdır.|null|Etkileşimli olmayan kimlik doğrulaması için gerekli veya SecreteFile'ı başka bir şekilde kullanın.|
+|SecreteFile|Dosya, etkileşimli olmayan kimlik doğrulama için salgıyı veya parolayı kaydeder. Yalnızca geçerli kullanıcı tarafından okunabilir tuttuğundan emin olun.|null|Etkileşimli olmayan kimlik doğrulaması için gerekli veya Secrete'ı başka bir şekilde kullanın.|
+|Certfile|Dosya, etkileşimli olmayan kimlik doğrulama için X.509 sertifikasını kaydeder. Varsayılan istemci salgılanması kullanmaktır.|null|yanlış|
+| İş Öneki | U-SQL DDL işinin veritabanı dağıtımı için öneki. | Deploy_ + DateTime.Now | yanlış |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Data Lake Analytics kodunuzu test etmek nasıl](data-lake-analytics-cicd-test.md).
-- [U-SQL betiğini yerel makinenizde çalıştırma](data-lake-analytics-data-lake-tools-local-run.md).
-- [U-SQL veritabanı geliştirme için U-SQL veritabanı proje kullanmak](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+- [Azure Veri Gölü Analizi kodunuzu nasıl test emilir?](data-lake-analytics-cicd-test.md)
+- [Yerel makinenizde U-SQL komut dosyası çalıştırın.](data-lake-analytics-data-lake-tools-local-run.md)
+- [U-SQL veritabanını geliştirmek için U-SQL veritabanı projesini kullanın.](data-lake-analytics-data-lake-tools-develop-usql-database.md)

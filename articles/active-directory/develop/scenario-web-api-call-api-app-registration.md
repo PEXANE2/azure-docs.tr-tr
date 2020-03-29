@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran bir Web API 'sini kaydetme-Microsoft Identity platform | Mavisi
-description: Aşağı akış Web API 'Lerini (uygulama kaydı) çağıran bir Web API 'SI oluşturmayı öğrenin.
+title: Web API'larını çağıran bir web API'sı kaydolun - Microsoft kimlik platformu | Azure
+description: Akış aşağı web API'lerini (uygulama kaydı) çağıran bir web API'sini nasıl oluştururduğa öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,25 +15,25 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: bafd71f34602535bb6193a8d8114a1182e4e8f40
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701799"
 ---
-# <a name="a-web-api-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran bir Web API 'SI: uygulama kaydı
+# <a name="a-web-api-that-calls-web-apis-app-registration"></a>Web API'lerini çağıran bir web API'sı: Uygulama kaydı
 
-Aşağı akış Web API 'Lerini çağıran bir Web API 'si, korumalı bir Web API 'SI ile aynı kayda sahiptir. Bu nedenle, [korumalı Web API 'si: uygulama kaydı](scenario-protected-web-api-app-registration.md)'ndaki yönergeleri izlemeniz gerekir.
+Alt akış web API'lerini çağıran bir web API'sı, korunan web API'si ile aynı kayda sahiptir. Bu nedenle, Korumalı web API yönergelerini izlemeniz [gerekir: Uygulama kaydı.](scenario-protected-web-api-app-registration.md)
 
-Web uygulaması artık Web API 'Lerini çağırdığı için gizli bir istemci uygulaması haline gelir. Ek kayıt bilgileri de gereklidir: uygulamanın, Microsoft Identity platformu ile gizli dizileri (istemci kimlik bilgileri) paylaşması gerekir.
+Web uygulaması artık web API'lerini aradığı için, gizli bir istemci uygulaması haline gelir. Bu nedenle ek kayıt bilgileri gereklidir: uygulamanın sırları (istemci kimlik bilgileri) Microsoft kimlik platformuyla paylaşması gerekir.
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="api-permissions"></a>API izinleri
 
-Web Apps, taşıyıcı belirtecinin alındığı Kullanıcı adına API 'Leri çağırır. Web uygulamalarının temsilci izinleri istemesi gerekir. Daha fazla bilgi için bkz. [Web API 'lerine erişim Izinleri ekleme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+Web uygulamaları, taşıyıcı belirteci alınan kullanıcılar adına API'leri arar. Web uygulamalarının temsilci izni istemesi gerekir. Daha fazla bilgi için [bkz.](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Web API 'Leri çağıran bir Web API 'SI: kod yapılandırması](scenario-web-api-call-api-app-configuration.md)
+> [Web API'lerini çağıran bir web API'sı: Kod yapılandırması](scenario-web-api-call-api-app-configuration.md)

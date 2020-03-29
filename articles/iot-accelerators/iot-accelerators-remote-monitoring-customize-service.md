@@ -1,6 +1,6 @@
 ---
-title: Bir hizmetin Uzaktan izleme çözümü için kullanıcı Arabirimi - Azure | Microsoft Docs
-description: Bu makalede Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimi yeni bir hizmet eklemek gösterilmektedir.
+title: Uzaktan İzleme çözümüne hizmet ekleme Kullanıcı Arabirimi - Azure | Microsoft Dokümanlar
+description: Bu makalede, Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne nasıl yeni bir hizmet ekleyeceğiniz gösterilmektedir.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,81 +9,81 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447055"
 ---
-# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine özel hizmet ekleme
+# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir hizmet ekleme
 
-Bu makalede Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimi yeni bir hizmet eklemek gösterilmektedir. Bu makalede açıklanır:
+Bu makalede, Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne nasıl yeni bir hizmet ekleyeceğiniz gösterilmektedir. Makalede şöyle anlatılmaktadır:
 
-- Yerel geliştirme ortamı hazırlamayı öğrenin.
-- Yeni bir hizmet web kullanıcı Arabirimi ekleme.
+- Yerel bir kalkınma ortamı nasıl hazırlanır.
+- Web Web Arama Hizmeti'ne yeni bir hizmet ekleme.
 
-Bu makaledeki örnek hizmeti verileri için bir kılavuz sağlayan [özel kılavuz Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine eklemek](iot-accelerators-remote-monitoring-customize-grid.md) nasıl yapılır makalesi nasıl ekleneceğini gösterir.
+Bu makaledeki örnek hizmet, Uzaktan İzleme [çözüm hızlandırıcı web Ara](iot-accelerators-remote-monitoring-customize-grid.md) Birimi'ne özel bir ızgara eklemenin nasıl ekleniş yapılacağını gösterdiği bir ızgara için veri sağlar.
 
-React uygulamada, bir hizmet genellikle bir arka uç hizmetiyle etkileşim kurar. Uzaktan izleme çözüm Hızlandırıcısını örneklerde, mikro hizmetler IOT hub Yöneticisi ve yapılandırma ile etkileşim hizmetleri içerir.
+Tepki uygulamasında, bir hizmet genellikle arka uç hizmetiyle etkileşime girer. Uzaktan İzleme çözüm hızlandırıcısındaki örnekler arasında IoT hub yöneticisi ve yapılandırma mikro hizmetleriyle etkileşim edebilen hizmetler yer almaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Nasıl yapılır bu kılavuzdaki adımları tamamlamak için aşağıdaki yazılımların yerel geliştirme makinenizde yüklü gerekir:
+Bu nasıl yap'la ilgili kılavuzdaki adımları tamamlamak için, yerel geliştirme makinenize aşağıdaki yazılımın yüklenmesi gerekir:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Bölümündeki adımları tamamlamanız [Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine özel sayfa ekleme](iot-accelerators-remote-monitoring-customize-page.md) devam etmeden önce nasıl yapılır makalesi.
+Devam etmeden önce [Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi makalesine özel bir sayfa ekle](iot-accelerators-remote-monitoring-customize-page.md) adımlarını tamamlamanız gerekir.
 
 ## <a name="add-a-service"></a>Hizmet ekleme
 
-Web kullanıcı Arabirimine bir hizmet eklemek, hizmeti tanımlayan kaynak dosyaları ekleyin ve web kullanıcı Arabirimi yeni hizmet haberdar olmak için bazı mevcut dosyaları değiştirmek gerekir.
+Web Ara Birimi'ne bir hizmet eklemek için, hizmeti tanımlayan kaynak dosyaları eklemeniz ve web UI'nin yeni hizmetten haberdar olmasını sağlamak için varolan bazı dosyaları değiştirmeniz gerekir.
 
-### <a name="add-the-new-files-that-define-the-service"></a>Hizmeti tanımlayan yeni dosyalar Ekle
+### <a name="add-the-new-files-that-define-the-service"></a>Hizmeti tanımlayan yeni dosyaları ekleme
 
-Başlamak, için **gözden geçirme/src/Hizmetleri** klasörü, basit bir hizmet tanımlama dosyaları içerir:
+Başlamak **için, src/walkthrough/services** klasörü basit bir hizmeti tanımlayan dosyaları içerir:
 
-**exampleService.js**
+**örnekService.js**
 
 [!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
 
-Hizmetleri nasıl uygulandığı hakkında daha fazla bilgi için bkz: [giriş reaktif programlama, eksik kılavuzluğa odaklanmamı](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
+Hizmetlerin nasıl uygulandığı hakkında daha fazla bilgi edinmek [için, kaçırdığınız Reaktif Programlamaya giriş](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)etüt'e bakın.
 
-**model/exampleModels.js**
+**model/örnekModels.js**
 
 [!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
 
-Kopyalama **exampleService.js** için **src/Hizmetler** klasörü ve kopyalama **exampleModels.js** için **Hizmetleri/src/modelleri** klasör.
+**ÖrnekService.js'yi** **src/services** klasörüne kopyalayın ve **örnekModels.js'i** **src/services/models** klasörüne kopyalayın.
 
-Güncelleştirme **index.js** dosyası **src/Hizmetler** yeni hizmet klasörü:
+Yeni hizmeti dışa aktarmak için **src/services** klasöründeki **index.js** dosyasını güncelleştirin:
 
 ```js
 export * from './exampleService';
 ```
 
-Güncelleştirme **index.js** dosyası **Hizmetleri/src/modelleri** yeni modeli klasörü:
+Yeni modeli dışa aktarmak için **src/services/models** klasöründeki **index.js** dosyasını güncelleştirin:
 
 ```js
 export * from './exampleModels';
 ```
 
-### <a name="set-up-the-calls-to-the-service-from-the-store"></a>Hizmete çağrı deposu ayarlama
+### <a name="set-up-the-calls-to-the-service-from-the-store"></a>Mağazadan servise yapılan aramaları ayarlama
 
-Başlamak, için **src/gözden geçirme/deposu/genişletin** örnek Azaltıcı klasör içerir:
+Başlamak için **src/walkthrough/store/reducers** klasöründe örnek bir azaltıcı bulunur:
 
-**exampleReducer.js**
+**örnekReducer.js**
 
 [!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
 
-Kopyalama **exampleReducer.js** için **mağazası/src/genişletin** klasör.
+Kopya **örneğiReducer.js** **src/store/reducers** klasörüne.
 
-Azaltıcı hakkında daha fazla bilgi edinmek ve **Epic'ler**, bkz: [observable redux](https://redux-observable.js.org/).
+Redüktör ve **Destanlar**hakkında daha fazla bilgi edinmek için [redux-gözlemlenebilir](https://redux-observable.js.org/)bakın.
 
-### <a name="configure-the-middleware"></a>Ara yazılımını yapılandırma
+### <a name="configure-the-middleware"></a>Ara yazılımı yapılandırma
 
-İçin Azaltıcı ara yazılımını yapılandırma ekleyin **rootReducer.js** dosyası **src/deposu** klasörü:
+Middleware yapılandırmak için, **src/store** klasöründeki **rootReducer.js** dosyasına azaltıcıyı ekleyin:
 
 ```js
 import { reducer as exampleReducer } from './reducers/exampleReducer';
@@ -97,7 +97,7 @@ const rootReducer = combineReducers({
 });
 ```
 
-Epic'ler ekleme **rootEpics.js** dosyası **src/deposu** klasörü:
+**src/store** klasöründeki **rootEpics.js** dosyasına destanları ekleyin:
 
 ```js
 import { epics as exampleEpics } from './reducers/exampleReducer';
@@ -114,8 +114,8 @@ const epics = [
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, ekleme ya da Hizmetleri Web kullanıcı Arabiriminde, Uzaktan izleme çözüm Hızlandırıcısını özelleştirme yardımcı olacak kaynaklar hakkında bilgi edindiniz.
+Bu makalede, Uzaktan İzleme çözüm hızlandırıcısında web Kullanıcı Arabirimi'nde hizmet eklemenize veya özelleştirmenize yardımcı olacak kaynakları öğrendiniz.
 
-Bir hizmet tanımladığınız artık sonraki adım olarak [özel kılavuz Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine eklemek](iot-accelerators-remote-monitoring-customize-grid.md) hizmet tarafından döndürülen verileri görüntüler.
+Şimdi bir hizmet tanımlamış, bir sonraki adım, hizmet tarafından döndürülen verileri görüntüleyen [Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir ızgara eklemektir.](iot-accelerators-remote-monitoring-customize-grid.md)
 
-Uzaktan izleme çözüm Hızlandırıcısını hakkında daha fazla kavramsal bilgi için bkz. [Uzaktan izleme mimarisi](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Uzaktan İzleme çözüm hızlandırıcısı hakkında daha fazla kavramsal bilgi için uzaktan [izleme mimarisine](iot-accelerators-remote-monitoring-sample-walkthrough.md)bakın.

@@ -1,6 +1,6 @@
 ---
-title: Cloud Services roller için iletişim | Microsoft Docs
-description: Cloud Services rol örneklerinde, diğer rol örnekleri arasında veya aralarında iletişim kuran bu noktalar için tanımlı uç noktalar (http, https, TCP, UDP) bulunabilir.
+title: Bulut Hizmetlerinde Roller için İletişim | Microsoft Dokümanlar
+description: Bulut Hizmetleri'ndeki rol örnekleri, bunlar için dış la veya diğer rol örnekleri arasında iletişim sağlayan uç noktalara (http, https, tcp, udp) tanımlanabilir.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: tagore
 ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386349"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Azure 'da rol örnekleri için iletişimi etkinleştirme
-Bulut hizmeti rolleri, iç ve dış bağlantılarla iletişim kurar. İç bağlantılara **iç uç noktalar**çağrıldığında dış bağlantılara **giriş uç noktaları** denir. Bu konuda, uç noktalar oluşturmak için [hizmet tanımının](cloud-services-model-and-package.md#csdef) nasıl değiştirileceği açıklanmaktadır.
+# <a name="enable-communication-for-role-instances-in-azure"></a>Azure'daki rol örnekleri için iletişimi etkinleştirme
+Bulut hizmeti rolleri iç ve dış bağlantılar aracılığıyla iletişim kurar. Dış **bağlantılara giriş uç noktaları,** iç bağlantılara ise **dahili uç noktalar**denir. Bu konu, uç noktalar oluşturmak için [hizmet tanımının](cloud-services-model-and-package.md#csdef) nasıl değiştirilebildiğini açıklar.
 
-## <a name="input-endpoint"></a>Giriş uç noktası
-Giriş uç noktası, dışarıdaki bir bağlantı noktasını kullanıma sunmak istediğinizde kullanılır. Uç nokta için hem dış hem de iç bağlantı noktası için geçerli olan protokol türünü ve uç noktası bağlantı noktasını belirtirsiniz. İsterseniz, uç nokta için [localport](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) özniteliğiyle farklı bir iç bağlantı noktası belirtebilirsiniz.
+## <a name="input-endpoint"></a>Giriş bitiş noktası
+Giriş bitiş noktası, bir bağlantı noktasını dışa çekmek istediğinizde kullanılır. Protokol türünü ve bitiş noktasının bağlantı noktasını belirtirsiniz ve bitiş noktası için hem iç hem de iç bağlantı noktaları için geçerlidir. İsterseniz, [yerel Port](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) özniteliği ile bitiş noktası için farklı bir iç bağlantı noktası belirtebilirsiniz.
 
-Giriş uç noktası şu protokolleri kullanabilir: **http, https, TCP, UDP**.
+Giriş bitiş noktası aşağıdaki protokolleri kullanabilirsiniz: **http, https, tcp, udp**.
 
-Bir giriş uç noktası oluşturmak için **ınputendpoint** alt öğesini bir Web veya çalışan rolünün **endpoints** öğesine ekleyin.
+Bir giriş bitiş noktası oluşturmak için, **InputEndpoint** alt öğesini bir web veya alt rolün **Uç Noktaları** öğesine ekleyin.
 
 ```xml
 <Endpoints>
@@ -32,12 +32,12 @@ Bir giriş uç noktası oluşturmak için **ınputendpoint** alt öğesini bir W
 </Endpoints> 
 ```
 
-## <a name="instance-input-endpoint"></a>Örnek giriş uç noktası
-Örnek giriş uç noktaları, giriş uç noktalarına benzerdir, ancak yük dengeleyicide bağlantı noktası iletmeyi kullanarak her bir rol örneği için genel kullanıma yönelik belirli bağlantı noktalarını eşlemenizi sağlar. Tek bir genel kullanıma yönelik bağlantı noktası veya bağlantı noktası aralığı belirtebilirsiniz.
+## <a name="instance-input-endpoint"></a>Örnek giriş bitiş noktası
+Örnek giriş uç noktaları giriş uç noktalarına benzer, ancak yük bakiyesi üzerinde bağlantı noktası iletme kullanarak her bir rol örneği için belirli genel bağlantı noktalarını eşlemenize olanak tanır. Tek bir ortak bağlantı noktası veya çeşitli bağlantı noktaları belirtebilirsiniz.
 
-Örnek giriş uç noktası yalnızca protokol olarak **TCP** veya **UDP** kullanabilir.
+Örnek giriş bitiş noktası yalnızca protokol olarak **tcp** veya **udp** kullanabilirsiniz.
 
-Örnek giriş uç noktası oluşturmak için, bir Web ya da çalışan rolünün **endpoints** öğesine **ınstanceınputendpoint** alt öğesini ekleyin.
+Bir örnek giriş bitiş noktası oluşturmak için, bir web veya alt rol Uç **Noktaları** öğesine **InstanceInputEndpoint** alt öğesini ekleyin.
 
 ```xml
 <Endpoints>
@@ -49,12 +49,12 @@ Bir giriş uç noktası oluşturmak için **ınputendpoint** alt öğesini bir W
 </Endpoints>
 ```
 
-## <a name="internal-endpoint"></a>İç uç nokta
-İç uç noktalar, örnek-örnek iletişimi için kullanılabilir. Bağlantı noktası isteğe bağlıdır ve atlanırsa, uç noktaya dinamik bir bağlantı noktası atanır. Bir bağlantı noktası aralığı kullanılabilir. Rol başına beş iç uç nokta sınırı vardır.
+## <a name="internal-endpoint"></a>Dahili uç nokta
+Örneğin den e-sonuç iletişimi için dahili uç noktalar kullanılabilir. Bağlantı noktası isteğe bağlıdır ve atlanırsa, bitiş noktasına dinamik bir bağlantı noktası atanır. Bağlantı noktası aralığı kullanılabilir. Rol başına beş dahili uç nokta sınırı vardır.
 
-İç uç nokta şu protokolleri kullanabilir: **http, TCP, UDP, any**.
+Dahili uç nokta aşağıdaki protokolleri kullanabilirsiniz: **http, tcp, udp, herhangi bir**.
 
-İç giriş uç noktası oluşturmak için, **InternalEndpoint** alt öğesini bir Web veya çalışan rolünün **endpoints** öğesine ekleyin.
+Dahili bir giriş bitiş noktası oluşturmak **için, InternalEndpoint** alt öğesini bir web veya alt rolün **Uç Noktaları** öğesine ekleyin.
 
 ```xml
 <Endpoints>
@@ -62,7 +62,7 @@ Bir giriş uç noktası oluşturmak için **ınputendpoint** alt öğesini bir W
 </Endpoints> 
 ```
 
-Bir bağlantı noktası aralığı da kullanabilirsiniz.
+Bağlantı noktası aralığını da kullanabilirsiniz.
 
 ```xml
 <Endpoints>
@@ -73,8 +73,8 @@ Bir bağlantı noktası aralığı da kullanabilirsiniz.
 ```
 
 
-## <a name="worker-roles-vs-web-roles"></a>Çalışan rolleri ve Web rolleri karşılaştırması
-Hem çalışan hem de Web rolleriyle çalışırken uç noktalarla bir küçük farklılık vardır. Web rolü, **http** protokolünü kullanan en az bir giriş uç noktası içermelidir.
+## <a name="worker-roles-vs-web-roles"></a>İşçi rolleri ve Web rolleri
+Hem çalışan hem de web rolleri ile çalışırken uç noktaları ile küçük bir fark vardır. Web **rolünün, HTTP** protokolünü kullanarak en az tek bir giriş bitiş noktası olmalıdır.
 
 ```xml
 <Endpoints>
@@ -83,32 +83,32 @@ Hem çalışan hem de Web rolleriyle çalışırken uç noktalarla bir küçük 
 </Endpoints>
 ```
 
-## <a name="using-the-net-sdk-to-access-an-endpoint"></a>.NET SDK kullanarak bir uç noktaya erişme
-Azure yönetilen Kitaplığı, çalışma zamanında iletişim kuracak rol örnekleri için yöntemler sağlar. Rol örneği içinde çalışan koddan, diğer rol örneklerinin ve bunların uç noktalarının varlığı ve geçerli rol örneğiyle ilgili bilgiler hakkında bilgi alabilirsiniz.
+## <a name="using-the-net-sdk-to-access-an-endpoint"></a>Bir bitiş noktasına erişmek için .NET SDK'yı kullanma
+Azure Yönetilen Kitaplığı, rol örneklerinin çalışma zamanında iletişim kurması için yöntemler sağlar. Bir rol örneği içinde çalışan koddan, diğer rol örneklerinin varlığı ve uç noktalarıhakkında bilgi nin yanı sıra geçerli rol örneği hakkında bilgi alabilirsiniz.
 
 > [!NOTE]
-> Yalnızca bulut hizmetinizde çalışan ve en az bir iç uç nokta tanımlayan rol örnekleri hakkında bilgi alabilirsiniz. Farklı bir hizmette çalışan rol örnekleri hakkında veri edinemezsiniz.
+> Yalnızca bulut hizmetinizde çalışan ve en az bir dahili bitiş noktası tanımlayan rol örnekleri hakkında bilgi alabilirsiniz. Farklı bir hizmette çalışan rol örnekleri hakkında veri elde edemezsiniz.
 > 
 > 
 
-Bir rolün örneklerini almak için [örnekler](/previous-versions/azure/reference/ee741904(v=azure.100)) özelliğini kullanabilirsiniz. Önce geçerli rol örneğine bir başvuru döndürmek için [Currentropaınstance](/previous-versions/azure/reference/ee741907(v=azure.100)) öğesini kullanın ve ardından role bir başvuru döndürmek için [rol](/previous-versions/azure/reference/ee741918(v=azure.100)) özelliğini kullanın.
+Bir rolün örneklerini almak için [Örnekler](/previous-versions/azure/reference/ee741904(v=azure.100)) özelliğini kullanabilirsiniz. Önce geçerli rol örneğine bir başvuru döndürmek için [CurrentRoleInstance'ı](/previous-versions/azure/reference/ee741907(v=azure.100)) kullanın, sonra rolün kendisine bir başvuru döndürmek için [Rol](/previous-versions/azure/reference/ee741918(v=azure.100)) özelliğini kullanın.
 
-.NET SDK aracılığıyla programlı bir rol örneğine bağlandığınızda, uç nokta bilgilerine erişmek oldukça kolaydır. Örneğin, belirli bir rol ortamına zaten bağlandıktan sonra, belirli bir uç noktanın bağlantı noktasını şu kodla alabilirsiniz:
+.NET SDK aracılığıyla bir rol örneğine programlı olarak bağlandığınızda, bitiş noktası bilgilerine erişmek nispeten kolaydır. Örneğin, belirli bir rol ortamına zaten bağlandıktan sonra, bu kodla belirli bir bitiş noktasının bağlantı noktasını alabilirsiniz:
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-**Örnekler** özelliği, **roleınstance** nesnelerinin bir koleksiyonunu döndürür. Bu koleksiyon her zaman geçerli örneği içerir. Rol bir iç uç nokta tanımlamıyorsa, koleksiyon geçerli örneği içerir ancak diğer örnekleri içermez. Rol için hiçbir iç uç noktanın tanımlanmadığı durumda, koleksiyondaki rol örneklerinin sayısı her zaman 1 olur. Rol bir iç uç nokta tanımlıyorsa, örnekleri çalışma zamanında keşfedilir ve koleksiyondaki örneklerin sayısı, hizmet yapılandırma dosyasındaki rol için belirtilen örnek sayısına karşılık gelir.
+**Örnekler** özelliği **RoleInstance** nesnelerinin bir koleksiyonunu döndürür. Bu koleksiyon her zaman geçerli örneği içerir. Rol bir iç uç nokta tanımlamazsa, koleksiyon geçerli örneği içerir, ancak başka örnek içermez. Rol için dahili uç nokta nın tanımlanmadığı durumlarda, koleksiyondaki rol örneklerinin sayısı her zaman 1 olacaktır. Rol bir iç uç nokta tanımlıyorsa, örnekleri çalışma zamanında kullanılabilir ve koleksiyondaki örnek sayısı hizmet yapılandırma dosyasındaki rol için belirtilen örnek sayısına karşılık gelir.
 
 > [!NOTE]
-> Azure yönetilen Kitaplığı, diğer rol örneklerinin sistem durumunu belirlemek için bir yol sunmaz, ancak hizmetiniz bu işlevselliğe ihtiyaç duyuyorsa bu durum değerlendirmelerini kendiniz de uygulayabilirsiniz. Rol örnekleri çalıştırma hakkında bilgi edinmek için [Azure tanılama](cloud-services-dotnet-diagnostics.md) kullanabilirsiniz.
+> Azure Yönetilen Kitaplığı diğer rol örneklerinin sistem durumunu belirlemenin bir aracı sağlamaz, ancak hizmetinizin bu işlevselliğe ihtiyacı varsa bu tür sistem durumu değerlendirmelerini kendiniz uygulayabilirsiniz. Rol örneklerini çalıştırma hakkında bilgi almak için [Azure Tanılama'yı](cloud-services-dotnet-diagnostics.md) kullanabilirsiniz.
 > 
 > 
 
-Bir rol örneğindeki iç uç noktanın bağlantı noktası numarasını öğrenmek için, [ınstanceendpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) özelliğini kullanarak uç nokta adlarını ve bunlara KARŞıLıK gelen IP adreslerini ve bağlantı noktalarını Içeren bir sözlük nesnesi döndürebilirsiniz. [IPEndPoint](/previous-versions/azure/reference/ee741919(v=azure.100)) özelliği, belirtilen uç nokta için IP adresini ve bağlantı noktasını döndürür. **Publicıpendpoint** özelliği, yük dengeli bir uç nokta için bağlantı noktasını döndürür. **Publicıpendpoint** özelliğinin IP adresi bölümü kullanılmıyor.
+Bir rol örneğinde dahili uç nokta nın bağlantı noktası numarasını belirlemek için, son nokta adlarını ve bunların karşılık gelen IP adreslerini ve bağlantı noktalarını içeren bir Sözlük nesnesini döndürmek için [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) özelliğini kullanabilirsiniz. [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) özelliği, ip adresini ve bağlantı noktasını belirli bir bitiş noktası için döndürür. **PublicIPEndpoint** özelliği, yük dengeli bir bitiş noktası için bağlantı noktasını döndürür. **PublicIPEndpoint** özelliğinin IP adresi bölümü kullanılmaz.
 
-Rol örneklerini tekrardan yineleyen bir örnek aşağıda verilmiştir.
+Aşağıda, rol örneklerini yineleyen bir örnek verilmiştir.
 
 ```csharp
 foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Instances)
@@ -121,10 +121,10 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-Hizmet tanımı aracılığıyla kullanıma sunulan uç noktayı alan ve bağlantıları dinlemeye başlayan bir çalışan rolü örneği aşağıda verilmiştir.
+Burada, hizmet tanımı aracılığıyla bitiş noktasını ortaya çıkaran ve bağlantıları dinlemeye başlayan bir alt rol örneği verilmiştir.
 
 > [!WARNING]
-> Bu kod, yalnızca dağıtılan bir hizmet için çalışır. Azure Işlem öykünücüsünde çalışırken, doğrudan bağlantı noktası uç noktaları (**ınstanceınputendpoint** öğeleri) oluşturan hizmet yapılandırma öğeleri yok sayılır.
+> Bu kod yalnızca dağıtılmış bir hizmet için çalışır. Azure İşlem Emülatörü'nde çalışırken, doğrudan bağlantı noktası uç noktaları **(InstanceInputEndpoint** öğeleri) oluşturan hizmet yapılandırma öğeleri yoksayılır.
 > 
 > 
 
@@ -213,11 +213,11 @@ namespace WorkerRole1
 ```
 
 ## <a name="network-traffic-rules-to-control-role-communication"></a>Rol iletişimini denetlemek için ağ trafiği kuralları
-İç uç noktaları tanımladıktan sonra, rol örneklerinin birbirleriyle nasıl iletişim kurabildiğini denetlemek için ağ trafiği kuralları (oluşturduğunuz uç noktalara göre) ekleyebilirsiniz. Aşağıdaki diyagramda, rol iletişimini denetlemek için bazı yaygın senaryolar gösterilmektedir:
+Dahili uç noktaları tanımladıktan sonra, rol örneklerinin birbiriyle nasıl iletişim kurabileceğini denetlemek için ağ trafiği kuralları (oluşturduğunuz uç noktaları temel alınarak) ekleyebilirsiniz. Aşağıdaki diyagram, rol iletişimini denetlemek için bazı yaygın senaryoları gösterir:
 
-![Ağ trafiği kuralları senaryoları](./media/cloud-services-enable-communication-role-instances/scenarios.png "Ağ Trafik Kuralı Senaryoları")
+![Ağ Trafik Kuralları Senaryoları](./media/cloud-services-enable-communication-role-instances/scenarios.png "Ağ Trafik Kuralları Senaryoları")
 
-Aşağıdaki kod örneğinde, önceki diyagramda gösterilen roller için rol tanımları gösterilmektedir. Her rol tanımı, tanımlı en az bir iç uç nokta içerir:
+Aşağıdaki kod örneği, önceki diyagramda gösterilen rollerin rol tanımlarını gösterir. Her rol tanımı tanımlanan en az bir dahili uç nokta içerir:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -249,14 +249,14 @@ Aşağıdaki kod örneğinde, önceki diyagramda gösterilen roller için rol ta
 ```
 
 > [!NOTE]
-> Roller arasındaki iletişimin kısıtlaması, hem sabit hem de otomatik olarak atanan bağlantı noktalarının iç uç noktalarında gerçekleşebilir.
+> Roller arasındaki iletişimin kısıtlanması, hem sabit hem de otomatik olarak atanan bağlantı noktalarının dahili uç noktalarıyla oluşabilir.
 > 
 > 
 
-Varsayılan olarak, bir iç uç nokta tanımlandıktan sonra, iletişim herhangi bir rolden herhangi bir kısıtlama olmadan bir rolün iç uç noktasına akabilir. İletişimi kısıtlamak için, hizmet tanımı dosyasındaki **ServiceDefinition** öğesine bir **NetworkTrafficRules** öğesi eklemeniz gerekir.
+Varsayılan olarak, dahili bir uç nokta tanımlandıktan sonra, iletişim herhangi bir kısıtlama olmaksızın herhangi bir rolden bir rolün iç uç noktasına akabilir. İletişimi kısıtlamak için, hizmet tanımı dosyasındaki **ServiceDefinition** öğesine bir **NetworkTrafficRules** öğesi eklemeniz gerekir.
 
 ### <a name="scenario-1"></a>Senaryo 1
-Yalnızca **WebRole1** ile **WorkerRole1**arasında ağ trafiğine izin verir.
+Yalnızca **WebRole1'den WorkerRole1'e** ağ trafiğine izin verin. **WorkerRole1**
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -275,7 +275,7 @@ Yalnızca **WebRole1** ile **WorkerRole1**arasında ağ trafiğine izin verir.
 ```
 
 ### <a name="scenario-2"></a>Senaryo 2
-Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole2**arasındaki ağ trafiğine izin verir.
+Yalnızca **WebRole1'den** **İşçiRolü1** ve **WorkerRole2'ye**ağ trafiğine izin verir.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -293,8 +293,8 @@ Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole2**arasındaki ağ tra
 </ServiceDefinition>
 ```
 
-### <a name="scenario-3"></a>Senaryo 3
-Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ **trafiğine izin verir.**
+### <a name="scenario-3"></a>3. Senaryo
+Yalnızca **WebRole1'den** **İşçiRolü1'e**ve **WorkerRole1'den** **İşçiRolü2'ye**ağ trafiğine izin verir.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -322,8 +322,8 @@ Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ **t
 </ServiceDefinition>
 ```
 
-### <a name="scenario-4"></a>Senaryo 4
-Yalnızca **WebRole1** ile **WorkerRole1**, **WebRole1** , **WorkerRole2**ve **WorkerRole1** arasında ağ **trafiğine izin verir.**
+### <a name="scenario-4"></a>4. Senaryo
+Yalnızca **WebRole1'den** **İşçiRolü1'e,** **WebRole1'den** **İşçiRolü2'ye**ve **WorkerRole1'den** **İşçiRolü2'ye**ağ trafiğine izin verir.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -363,10 +363,10 @@ Yalnızca **WebRole1** ile **WorkerRole1**, **WebRole1** , **WorkerRole2**ve **W
 </ServiceDefinition>
 ```
 
-Yukarıda kullanılan öğelere yönelik bir XML şeması başvurusu [burada](/previous-versions/azure/reference/gg557551(v=azure.100))bulunabilir.
+Yukarıda kullanılan öğeler için bir XML şema referans [burada](/previous-versions/azure/reference/gg557551(v=azure.100))bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bulut hizmeti [modeli](cloud-services-model-and-package.md)hakkında daha fazla bilgi edinin.
+Bulut Hizmeti [modeli](cloud-services-model-and-package.md)hakkında daha fazla bilgi edinin.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Bildirim temelli sağlama anlama | Microsoft Docs'
-description: Azure AD CONNECT'te bildirim temelli sağlama yapılandırma modeli açıklar.
+title: 'Azure AD Connect: Bildirimsel Sağlamayı Anlama | Microsoft Dokümanlar'
+description: Azure AD Connect'teki bildirimsel sağlama yapılandırma modelini açıklar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,151 +17,151 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60246273"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect eşitleme: Bildirim Temelli Sağlamayı Anlama
-Bu konuda, Azure AD CONNECT'te yapılandırma modeli açıklanmaktadır. Bildirim temelli sağlama modeli adı verilir ve bir yapılandırma değişikliği kolayca yapmanızı sağlar. Bu konuda açıklanan pek çok gelişmiş ve çoğu müşteri senaryoları için gerekli değildir.
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect eşitlemi: Bildirimsel Sağlama'yı Anlama
+Bu konu, Azure AD Connect'teki yapılandırma modelini açıklar. Model Bildirimsel Sağlama denir ve kolaylıkla bir yapılandırma değişikliği yapmanızı sağlar. Bu konuda açıklanan birçok şey gelişmiştir ve çoğu müşteri senaryosu için gerekli değildir.
 
 ## <a name="overview"></a>Genel Bakış
-Bildirim temelli sağlama nesneleri bir kaynak bağlı dizinden gelen işlem ve nasıl öznitelikleri ve nesne bir kaynaktan bir hedefe dönüştürülmesi gereken belirler. Bir nesneyi eşitleme hattında işlenir ve işlem hattı gelen ve giden kurallar için aynıdır. Bir gelen kuralı bir bağlayıcı alanından için meta veri deposu ve bir giden kuralı meta veri deposu için bir bağlayıcı alanı.
+Bildirimsel sağlama, kaynağa bağlı bir dizinden gelen nesneleri işliyor ve nesnenin ve özniteliklerin kaynaktan hedefe nasıl dönüştürülmesi gerektiğini belirler. Nesne eşitleme ardışık bir şekilde işlenir ve ardışık işlem, gelen ve giden kurallar için aynıdır. Gelen kural bir bağlayıcı alanından metaverse ve giden kural metaverse bir bağlayıcı alanı içindir.
 
-![Eşitleme işlem hattı](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![Eşitleme ardışık](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
-İşlem hattı, birkaç farklı modüller içerir. Her biri, bir kavram, nesne eşitleme sorumludur.
+Boru hattının birkaç farklı modülü vardır. Her biri nesne senkronizasyonunda bir kavramdan sorumludur.
 
-![Eşitleme işlem hattı](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![Eşitleme ardışık](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
-* Kaynak, kaynak nesnesi
-* [Kapsam](#scope), kapsam içinde olan tüm eşitleme kuralları bulur
-* [Birleştirme](#join), bağlayıcı alanı ve meta veri deposu arasındaki ilişki belirler
-* Dönüştürme, öznitelikleri nasıl dönüştürdüğünü hesaplar ve flow
-* [Öncelik](#precedence), öznitelik Katkıları çakışan çözümler
-* Hedef, hedef nesne
+* Kaynak, Kaynak nesne
+* [Kapsam](#scope), Kapsamda bulunan tüm eşitleme kurallarını bulur
+* [Birleştirme](#join), bağlayıcı boşluk ve metaverse arasındaki ilişkiyi belirler
+* Dönüştürme, özniteliklerin nasıl dönüştürülmesi ve akış la ilgili hesaplar
+* [Öncelik](#precedence), Çakışan öznitelik katkılarını çözer
+* Hedef, Hedef nesne
 
-## <a name="scope"></a>`Scope`
-Kapsam modülü, bir nesne değerlendirmek ve kapsam içindedir ve işleme dahil edilmesi gereken kurallar belirler. Nesne öznitelikleri değerlerine bağlı olarak, farklı eşitleme kuralları, kapsam içinde yer değerlendirilir. Örneğin, devre dışı bir kullanıcı Exchange posta kutusu ile daha etkin bir kullanıcı bir posta kutusu ile farklı kurallara sahip.  
-![`Scope`](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+## <a name="scope"></a>Kapsam
+Kapsam modülü bir nesneyi değerlendiriyor ve kapsamda olan ve işleme dahil edilmesi gereken kuralları belirler. Nesnedeki özniteliklere bağlı olarak, farklı eşitleme kuralları kapsamda olmak üzere değerlendirilir. Örneğin, Exchange posta kutusu olmayan engelli bir kullanıcının, posta kutusu olan etkin bir kullanıcıdan farklı kuralları vardır.  
+![Kapsam](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
-Kapsam grupları ve yan tümce tanımlanır. Yan tümceleri içinde bir grubudur. Mantıksal AND bir gruptaki tüm koşullar arasında kullanılır. Örneğin, (departman BT ve ülke = Danimarka =). Mantıksal OR grupları arasında kullanılır.
+Kapsam gruplar ve yan tümceler olarak tanımlanır. Yan tümceler bir grubun içinde. Mantıksal VE bir gruptaki tüm yan tümceler arasında kullanılır. Örneğin, (bölüm =IT AND ülke = Danimarka). Gruplar arasında mantıksal bir OR kullanılır.
 
-![`Scope`](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
-Bu resimdeki kapsamı olarak okunmalıdır (departman BT ve ülke = = Danimarka) veya (ülke İsveç =). Grup 1 veya 2 grup true, sonra kuralın değerlendirildiği taktirde kapsamdadır.
+![Kapsam](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+Bu resimdeki kapsam (department = IT AND country = Danimarka) VEYA (ülke=İsveç) olarak okunmalıdır. Grup 1 veya grup 2 doğru değerlendirilirse, kural kapsam içindedir.
 
-Kapsam Modülü aşağıdaki işlemleri destekler.
+Kapsam modülü aşağıdaki işlemleri destekler.
 
 | İşlem | Açıklama |
 | --- | --- |
-| EŞİTTİR, EŞİT DEĞİLDİR |Öznitelik değerine eşit bir değer ise döndüren bir dize karşılaştırma. Birden çok değerli öznitelikler için ISIN ve ISNOTIN bakın. |
-| LESSTHAN, LESSTHAN_OR_EQUAL |Değer döndüren bir dize karşılaştırma küçüktür öznitelik değeri. |
-| İÇEREN NOTCONTAINS |Değer yere içindeki değeri öznitelikte bulunamazsa döndüren bir dize karşılaştırma. |
-| STARTSWITH, NOTSTARTSWITH |Öznitelik değerinin başına değer ise döndüren bir dize karşılaştırma. |
-| ENDSWITH, NOTENDSWITH |Öznitelik değerinin son değer ise döndüren bir dize karşılaştırma. |
-| GREATERTHAN, GREATERTHAN_OR_EQUAL |Büyük öznitelik değerinin bir değerse değerlendiren bir dize karşılaştırma. |
-| ISNULL, ISNOTNULL |Öznitelik yoksa değerlendirir nesnesi. Öznitelik mevcut ve bu nedenle null değilse, kuralı kapsamları dahilinde olması. |
-| ISIN, ISNOTIN |İçinde tanımlı öznitelik değeri varsa değerlendirir. Bu işlem eşittir ve eşit değildir birden çok değerli çeşididir. Öznitelik birden çok değerli bir öznitelik olduğu varsayılır ve değeri herhangi bir öznitelik değeri bulunabilir, kural kapsamda olur. |
-| ISBITSET, ISNOTBITSET |Belirli bir biti ayarlanmışsa değerlendirir. Örneğin, bir kullanıcı etkin veya devre dışı olduğunu görmek için userAccountControl bitler değerlendirmek için kullanılabilir. |
-| ISMEMBEROF, ISNOTMEMBEROF |Bağlayıcı alanında bir gruba bir DN değeri içermelidir. Belirtilen grubun bir üyesiyse, kural kapsamdadır. |
+| EŞIT, EŞIT OLMAYAN |Değer öznitelikteki değere eşitse değerlendiren bir dize karşılaştırın. Çok değerli öznitelikler için ISIN ve ISNOTIN'e bakın. |
+| AZ, LESSTHAN_OR_EQUAL |Değer öznitelikteki değerden daha az sayılsa bile değerlendiren bir dize karşılaştırın. |
+| Içerir, IÇERMEZ |Öznitelikte değerin içinde bir yerde bulunabiliyorsa değerlendiren bir dize karşılaştırılır. |
+| ILE BAŞLAR, NOTSTARTSWITH |Öznitelikteki değerin başında olup olmadığını değerlendiren bir dize karşılaştırın. |
+| ENDSWITH, NOTENDS WITH |Öznitelikteki değerin sonunda değer olup olmadığını değerlendiren bir dize karşılaştırın. |
+| GREATERTHAN, GREATERTHAN_OR_EQUAL |Değer öznitelikteki değerden daha büyükse değerlendiren bir dize karşılaştırın. |
+| ISNULL, ISNOTNULL |Öznitelik nesnede yoksa değerlendirir. Öznitelik mevcut değilse ve bu nedenle null, o zaman kural kapsamı içindedir. |
+| ISIN, ISNOTIN |Tanımlanan öznitelikte değer in ipi varsa değerlendirir. Bu işlem EQUAL ve NOTEQUAL'ın çok değerli varyasyonudur. Öznitelik çok değerli bir öznitelik olması gerekiyordu ve değer öznitelik değerlerinden herhangi birinde bulunabilir, o zaman kural kapsamı içindedir. |
+| ISBITSET, ISNOTBITSET |Belirli bir bit in ayarlı olup olmadığını değerlendirir. Örneğin, kullanıcının etkin veya devre dışı bırakıldığını görmek için userAccountControl'deki bitleri değerlendirmek için kullanılabilir. |
+| ISMEMBEROF, ISNOTMEMBEROF |Değer, bağlayıcı alanındaki bir gruba bir DN içermelidir. Nesne belirtilen grubun bir üyesiyse, kural kapsamdadır. |
 
-## <a name="join"></a>Katıl
-Eşitleme işlem hattının birleştirme modülü, hedef kaynak nesnesi ve bir nesne arasındaki ilişkiyi bulmak için sorumludur. Bir gelen kuralı üzerinde bu ilişkiyi bir bağlayıcı alanında meta veri deposunda bir nesneye bir ilişki bulma bir nesne olabilir.  
-![Mv ile cs arasında katılın](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
-Başka bir bağlayıcı tarafından oluşturulan zaten meta veri deposu, bir nesne ise, değeriyle ilişkilendirilip ilişkilendirilmeyeceğini görmek için hedeftir. Örneğin, bir hesap-kaynak ormanda kullanıcı hesap ormandan kullanıcıyla kaynak ormandaki alanına eklenmelidir.
+## <a name="join"></a>Birleştir
+Eşitleme ardışık ardışık modülü, kaynaktaki nesne ile hedefteki bir nesne arasındaki ilişkiyi bulmaktan sorumludur. Gelen bir kuralda, bu ilişki, bağlayıcı boşluktaki bir nesne nin metaverse'deki bir nesneyle ilişkisini bulması olacaktır.  
+![cs ve mv arasında birleştirme](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
+Amaç, metaverse zaten başka bir Bağlayıcı tarafından oluşturulan bir nesne olup olmadığını görmekiçin, bu ile ilişkili olmalıdır. Örneğin, bir hesap kaynağı ormanında, hesap ormanındaki kullanıcı, kaynak ormanındaki kullanıcıyla birleştirilmesi gerekir.
 
-Birleşimler, bağlayıcı alanı nesnelerini birlikte aynı meta veri deposu nesnesine katılmak için çoğunlukla gelen kuralları kullanılır.
+Birleştirmeler çoğunlukla gelen kurallarda, bağlayıcı alan nesnelerini aynı metaverse nesneyle birleştirmek için kullanılır.
 
-Birleşimler, bir veya daha fazla grup olarak tanımlanır. Bir grup yan tümceleri vardır. Mantıksal AND bir gruptaki tüm koşullar arasında kullanılır. Mantıksal OR grupları arasında kullanılır. Grupları, yukarıdan aşağıya sırasında işlenir. Bir grup hedef nesne ile tam olarak bir eşleşme karşılaştı, başka bir birleştirme kuralları değerlendirmeye alınır. Sıfır veya bir nesne bulunandan daha fazla işleme kuralları sonraki grubuna devam eder. Bu nedenle, kuralları en açık ilk sırasına göre oluşturulur ve daha uçtaki benzer olmalıdır.  
-![Tanımı katılın](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
-Bu resmi birleşimlerde üstten alta işlenir. İlk eşitleme işlem hattı EmployeeID bir eşleşme olup olmadığını görür. Aksi durumda, ikinci kuralı hesap adı nesneler birbirine birleştirmek için kullanılabilir olmadığını görür. Bu bir eşleşme ya da değilse, üçüncü ve son bir daha benzer eşleştirme kullanıcı adını kullanarak kuralıdır.
+Birleştirmeler bir veya daha fazla grup olarak tanımlanır. Bir grubun içinde yan tümceler vardır. Mantıksal VE bir gruptaki tüm yan tümceler arasında kullanılır. Gruplar arasında mantıksal bir OR kullanılır. Gruplar yukarıdan aşağıya doğru sırayla işlenir. Bir grup hedefteki bir nesneyle tam olarak bir eşleşme bulduğunda, başka birleştirme kuralları değerlendirilmez. Sıfır veya birden fazla nesne bulunursa, işleme sonraki kural grubuna devam edilir. Bu nedenle, kurallar sonunda en açık ilk ve daha bulanık sırasına göre oluşturulmalıdır.  
+![Tanıma katılma](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
+Bu resimdeki birleştirmeler yukarıdan aşağıya doğru işlenir. Önce eşitleme ardışık düzeni employeeID üzerinde bir eşleşme olup olmadığını görür. Değilse, ikinci kural hesap adının nesneleri biraraya getirmek için kullanılıp kullanılamayacağıgörür. Bu da bir eşleşme değilse, üçüncü ve son kural kullanıcı nın adını kullanarak daha bulanık bir eşleşmedir.
 
-Tüm birleştirme kuralları değerlendirilir ve tam olarak bir eşleşme varsa **bağlantı türü** üzerinde **açıklama** sayfa kullanılır. Bu seçenek ayarlanırsa **sağlama**, hedef yeni bir nesne oluşturulur.  
-![Sağlama veya birleştirme](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+Tüm birleştirme kuralları değerlendirildiyse ve tam olarak bir eşleşme yoksa, **Açıklama** sayfasındaki **Bağlantı Türü** kullanılır. Bu seçenek **Provision**olarak ayarlanmışsa, hedefte yeni bir nesne oluşturulur.  
+![Sağlama veya katılma](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
-Bir nesne, yalnızca birleştirme kuralları ile bir tek eşitleme kuralı kapsamında olmalıdır. Varsa birden çok eşitleme kuralı birleştirme tanımlandığı bir hata oluşur. Öncelik, birleştirme çakışmaları çözümlemek için kullanılmaz. Bir nesne ile aynı gelen/giden yönde akmasına izin öznitelikleri için kapsamda bir birleşim kuralına sahip olmalıdır. Hem gelen hem de aynı nesneye giden akış öznitelikleri gerekiyorsa, hem bir gelen hem de bir birleşim ile giden eşitleme kuralı olması gerekir.
+Bir nesnenin kapsamda birleştirme kuralları olan tek bir eşitleme kuralı olmalıdır. Birleştirme tanımlandığı birden çok eşitleme kuralı varsa, bir hata oluşur. Öncelik, birleştirme çakışmalarını çözmek için kullanılmaz. Özniteliklerin aynı gelen/giden yönde akması için bir nesnenin kapsamda bir birleştirme kuralı olması gerekir. Aynı nesneye hem gelen hem de giden öznitelikleri akması gerekiyorsa, birleştirme ile hem gelen hem de giden eşitleme kuralına sahip olmanız gerekir.
 
-Bir nesne için bir hedef bağlayıcı alanı sağlamak çalıştığında, giden birleşim özel davranışa sahiptir. DN özniteliği, önce bir ters birleştirme denemek için kullanılır. Nesneleri varsa zaten bir nesneyi hedef bağlayıcı alanında DN aynı ile birleştirilir.
+Giden birleştirme, hedef bağlayıcı alana bir nesne sağlamaya çalıştığında özel bir davranışa sahiptir. DN özniteliği ilk önce bir ters birleştirme denemek için kullanılır. Hedef bağlayıcı alanında aynı DN'ye sahip bir nesne varsa, nesneler birleştirilir.
 
-Birleştirme modülü, yalnızca zaman yeni bir eşitleme kuralı kapsamına olduğunda değerlendirilir. Bir nesne katıldı, katılım ölçütleri artık memnun olsanız bile, ayrılma değil. Bir nesne çıkma istiyorsanız, nesneler birleştirilen eşitleme kuralı kapsam dışına gitmeniz gerekir.
+Birleştirme modülü yalnızca yeni bir eşitleme kuralı kapsamına girdiğinde değerlendirilir. Bir nesne birleştiğinde, birleştirme ölçütleri artık tatmin olmasa bile ayrılmaz. Bir nesneye katılmak istiyorsanız, nesneleri birleştiren eşitleme kuralı kapsam dışına çıkmalıdır.
 
-### <a name="metaverse-delete"></a>Meta veri deposu Sil
-Bir meta veri deposu nesnesi kapsamlı bir eşitleme kuralı olduğu kadar uzun kalır **bağlantı türü** kümesine **sağlama** veya **StickyJoin**. Yeni bir nesne için meta veri sağlamak için bir bağlayıcı alamadığında ancak bunu katıldı bir StickyJoin kullanılır, meta veri deposu nesne silinmeden önce kaynak silinmesi gerekir.
+### <a name="metaverse-delete"></a>Metaverse silme
+Bir metaverse **nesne, Provision** veya **StickyJoin**için ayarlanmış **Bağlantı Türü** ile kapsamda bir eşitleme kuralı olduğu sürece kalır. StickyJoin, bir Bağlayıcı'nın metaverse'e yeni bir nesne sağlamasına izin verilmediğinde kullanılır, ancak birleştiğinde metaverse nesnesi silinmeden önce kaynakta silinmesi gerekir.
 
-Bir meta veri deposu nesnesi silindiğinde, bir giden eşitleme kuralı ile ilişkilendirilmiş tüm nesneleri için işaretlenmiş **sağlama** bir silme için işaretlenmiş.
+Bir metaverse nesne sildiğinde, **hükmü** için işaretlenmiş giden eşitleme kuralı ile ilişkili tüm nesneler bir silme için işaretlenir.
 
 ## <a name="transformations"></a>Dönüşümler
-Dönüştürmeleri nasıl öznitelikleri kaynaktan hedefe akışını tanımlamak için kullanılır. Akışınız aşağıdakilerden biri olabilir **akış türleri**: Doğrudan, sabit veya ifade. Akışları bir öznitelik değeri olarak doğrudan bir akış-ek hiçbir dönüştürme ile olan. Sabit değer belirtilen değere ayarlar. Bir ifade dönüşümü nasıl olması ifade etmek için bildirim temelli sağlama ifade dili kullanır. İfade dili ayrıntılarını bulunabilir [bildirim temelli sağlama ifade dili anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) konu.
+Dönüşümler, özniteliklerin kaynaktan hedefe nasıl akması gerektiğini tanımlamak için kullanılır. Akışlar aşağıdaki **akış türlerinden**birine sahip olabilir: Doğrudan, Sabit veya İfade. Doğrudan akış, ek dönüşümler ile bir öznitelik değeri olarak akar. Sabit değer belirtilen değeri ayarlar. Bir ifade, dönüşümün nasıl olması gerektiğini ifade etmek için bildirimsel sağlama ifadesini kullanır. İfade dilinin [ayrıntılarını, ifade dili](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) konusunu anlama da bulunabilir.
 
-![Sağlama veya birleştirme](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
+![Sağlama veya katılma](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
-**Kez Uygula** onay kutusu, nesne ilk oluşturulduğunda özniteliği yalnızca ayarlanmış olduğunu tanımlar. Örneğin, bu yapılandırma, yeni bir kullanıcı nesnesi için bir başlangıç parolası ayarlamak için kullanılabilir.
+**Uygula** onay kutusu, özniteliğin yalnızca nesne ilk oluşturulduğunda ayarlandığını tanımlar. Örneğin, bu yapılandırma yeni bir kullanıcı nesnesi için ilk parolayı ayarlamak için kullanılabilir.
 
-### <a name="merging-attribute-values"></a>Öznitelik değerleri birleştirme
-Öznitelik akışları birden çok değerli öznitelikler birkaç farklı bağlayıcılardan birleştirilip birleştirilmeyeceğini belirleyen bir ayar yoktur. Varsayılan değer **güncelleştirme**, en yüksek önceliğe sahip eşitleme kuralı win gösterir.
+### <a name="merging-attribute-values"></a>Öznitelik değerlerini birleştirme
+Öznitelik akışlarında, çok değerli özniteliklerin birkaç farklı Bağlayıcıdan birleştirilmesi gerekip gerekmeden önce belirlenip birleştirilmemesi gerektiğini belirlemek için bir ayar vardır. Varsayılan değer, **Update**en yüksek önceliğe sahip eşitleme kuralının kazanması gerektiğini belirten Güncelleştirme'dir.
 
-![Birleştirme türleri](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![Birleştirme Türleri](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
-Ayrıca **birleştirme** ve **MergeCaseInsensitive**. Bu seçenekler, değerleri farklı kaynaklardan birleştirmeyi sağlar. Örneğin, birkaç farklı ormanlardaki üyesi veya proxyAddresses özniteliği birleştirmek için kullanılabilir. Bu seçeneği kullandığınızda, bir nesne için kapsamdaki tüm eşitleme kuralları aynı birleştirme türü kullanmanız gerekir. Tanımlanamaz **güncelleştirme** bir Bağlayıcıdan ve **birleştirme** başka bir. Denerseniz, bir hata alırsınız.
+**Birleştirme** ve **BirleştirmeCaseInsensitive**de vardır. Bu seçenekler, farklı kaynaklardan gelen değerleri birleştirmenize olanak sağlar. Örneğin, üye veya proxyAdres özniteliğini birkaç farklı ormandan birleştirmek için kullanılabilir. Bu seçeneği kullandığınızda, bir nesne için kapsamdaki tüm eşitleme kurallarının aynı birleştirme türünü kullanması gerekir. Bir Bağlayıcıdan **Güncelleştirme** ve diğerinden **Birleştirme'yi** tanımlayamazsınız. Denerseniz, bir hata alırsınız.
 
-Arasındaki fark **birleştirme** ve **MergeCaseInsensitive** yinelenen öznitelik değerleri işlemek nasıl. Eşitleme altyapısı, yinelenen değerler alan hedef özniteliğe eklenmiyor emin olur. İle **MergeCaseInsensitive**, yinelenen değerleri yalnızca bir fark dışında bulunması yapmayacağınız durumunda. Örneğin, her ikisi de görmelisiniz değil "SMTP:bob@contoso.com"ve"smtp:bob@contoso.com" Hedef öznitelik. **Birleştirme** yalnızca tam değerlerini ve birden çok değer arama yalnızca bulunduğu bir fark çalışması mevcut olabilir.
+**Birleştirme** ve **BirleştirmeCaseInsensitive** arasındaki fark, yinelenen öznitelik değerlerinin nasıl işlenir olduğudur. Eşitleme altyapısı, yinelenen değerlerin hedef özniteliğine eklenmemesini sağlar. **MergeCaseInsensitive**ile, yalnızca büyük bir fark ile yinelenen değerler mevcut olmayacaktır. Örneğin, hedef özyeğinde " veSMTP:bob@contoso.com"smtp:bob@contoso.comher ikisini de görmemelisiniz. **Birleştirme** yalnızca yalnızca bir durum farkı nın mevcut olabileceği tam değerlere ve birden çok değere bakıyor.
 
-Seçenek **değiştirin** aynı **güncelleştirme**, ancak bu kullanılmaz.
+**Değiştir** seçeneği **Güncelleştirme**ile aynıdır, ancak kullanılmaz.
 
-### <a name="control-the-attribute-flow-process"></a>Öznitelik akış işlemini denetleme
-Birden çok gelen eşitleme kuralı aynı meta veri deposu özniteliği için'katkıda bulunmak için yapılandırıldığında, öncelik, KAZANANI belirlemek için kullanılır. En yüksek önceliğe (düşük sayısal değer) ile eşitleme kuralı değeri katkıda zordur. Aynı giden kuralları için gerçekleşir. Eşitleme en yüksek öncelik WINS kural ve bağlı dizinin değer katkıda.
+### <a name="control-the-attribute-flow-process"></a>Öznitelik akış sürecini denetleme
+Birden çok gelen eşitleme kuralları aynı metaverse özniteliğe katkıda bulunmak üzere yapılandırılırsa, kazananı belirlemek için öncelik kullanılır. En yüksek önceliğe (en düşük sayısal değere) sahip eşitleme kuralı değere katkıda bulunacaktır. Aynı giden kurallar için de geçerlidir. En yüksek önceliğe sahip eşitleme kuralı kazanır ve bağlı dizine değer katar.
 
-Bazı durumlarda, bir değer katkıda yerine eşitleme kuralı diğer kuralları nasıl hareket etmesi gerektiğini belirlemeniz gerekir. Bu durumda kullanılan bazı özel değişmez değerleri vardır.
+Bazı durumlarda, bir değer katkıda bulunmak yerine, eşitleme kuralı diğer kuralların nasıl olması gerektiğini belirlemelidir. Bu dava için kullanılan bazı özel edebi vardır.
 
-Gelen eşitleme kuralları, değişmez değer için **NULL** akışı katkıda bulunmak için hiçbir değer olduğunu belirtmek için kullanılabilir. Daha düşük önceliğe sahip başka bir kural, bir değer katkıda bulunabilir. Hiçbir kural katkıda bulunan bir değer, meta veri deposu özniteliği sonra kaldırılır. Bir giden kuralı için **NULL** tüm eşitleme kuralları işlendikten sonra değer bağlantılı dizinde kaldırılır sonra son değerdir.
+Gelen Eşitleme Kuralları için, akış katkıda bulunmak için hiçbir değeri olduğunu belirtmek için gerçek **NULL** kullanılabilir. Daha düşük önceliğe sahip başka bir kural bir değer ekleyebilirsiniz. Hiçbir kural bir değer katkıda bulundu, o zaman metaverse özniteliği kaldırılır. Giden bir kural için, tüm eşitleme kuralları işlendikten sonra **NULL** son değerse, değer bağlı dizinde kaldırılır.
 
-Değişmez değer **AuthoritativeNull** benzer **NULL** ancak farkla hiçbir daha düşük bir öncelik kuralları bir değer katkıda bulunabilir.
+Literal **AuthoritativeNull** **NULL** benzer ama hiçbir düşük öncelik kuralları bir değer katkıda bulunabilir farkı ile.
 
-Bir öznitelik akışı de kullanabilirsiniz **IgnoreThisFlow**. Katkıda bulunmak için bir şey yok gösteren anlamda NULL olarak benzer. Bunu zaten var olan bir değer hedef kaldırmaz farktır. Öznitelik akışı var. olmamıştı gibidir.
+Bir öznitelik akışı da **IgnoreThisFlow**kullanabilirsiniz. Bu katkıda bulunacak bir şey olmadığını gösterir anlamında NULL benzer. Fark, hedefte zaten varolan bir değeri kaldırmamasıdır. Bu öznitelik akışı orada hiç olmamıştı gibi.
 
 Örnek aşağıda verilmiştir:
 
-İçinde *Out AD - kullanıcı Exchange karma* aşağıdaki akış bulunabilir:  
+*Out to AD - User Exchange hibritinde* aşağıdaki akış bulunabilir:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
-Şu ifade olarak okunmalıdır: Azure AD'den AD özniteliği Azure AD'de kullanıcı posta kutusu bulunuyorsa, ardından akış. Aksi durumda, Active Directory dön herhangi bir şey geçmez. Bu durumda, mevcut değerin AD'de tutacak.
+Bu ifade şu şekilde okunmalıdır: Kullanıcı posta kutusu Azure AD'de bulunuyorsa, özniteliği Azure AD'den AD'ye aktın. Değilse, Active Directory'ye hiçbir şey akmayın. Bu durumda, VAROlan DEĞERI AD'de tutar.
 
-### <a name="importedvalue"></a>ImportedValue
-' % S'işlevi ImportedValue diğer işlevler farklı olduğu öznitelik adı köşeli ayraç yerine tırnak işaretleri içine alınması gerekir:  
+### <a name="importedvalue"></a>İthal Değer
+Öznitelik adı kare ayraçyerine tırnak içinde eklenmelidir gerekir bu yana ImportedValue işlevi diğer tüm işlevlerden farklıdır:  
 `ImportedValue("proxyAddresses")`.
 
-Eşitleme sırasında genellikle bir öznitelik ("üst") tower, dışarı aktarma sırasında bir hata alındı veya henüz dışarı taşınmadığından bile beklenen değer kullanır. Bir gelen eşitleme henüz bağlı bir dizin sonunda ulaşıldığında edilmemiş öznitelik, ulaştığını varsayar. Bazı durumlarda yalnızca bağlı dizin ("hologramı ve delta tower içe") tarafından onaylanan bir değer eşitlemek önemlidir.
+Genellikle eşitleme sırasında bir öznitelik, henüz dışa aktarılmamış veya dışa aktarma sırasında bir hata alınmış olsa bile beklenen değeri kullanır ("kulenin üst kısmı"). Gelen eşitleme, henüz bağlı bir dizine ulaşmamış bir özniteliğin sonunda bu özneye ulaştığını varsayar. Bazı durumlarda, yalnızca bağlı dizin ("hologram ve delta alma kulesi") tarafından onaylanan bir değeri eşitlemek önemlidir.
 
-Bu işlev örneği kutusu giden eşitleme kuralı içinde bulunabilir *içinde ad – kullanıcı ortak Exchange'e*. Değer başarıyla dışarı aktarıldı onaylanmıştır, karma Exchange'de Exchange tarafından çevrimiçi katma değer yalnızca eşitlenmesi gerektiğini:  
+Bu işlevin bir örneği, ad'dan kutudan çıkan Eşitleme Kuralı'nda bulunabilir *– Exchange'den Kullanıcı Ortak.* Hybrid Exchange'de, Exchange tarafından çevrimiçi olarak eklenen değer, yalnızca değerin başarıyla dışa aktarıldığı doğrulandığında eşitlenmelidir:  
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
-## <a name="precedence"></a>Öncellik
-Birçok eşitleme kuralı aynı öznitelik değeri hedef katkıda çalıştığınızda, KAZANANI belirlemek için öncelik değeri kullanılır. Öznitelik, bir çakışma katkıda bulunmak için en düşük sayısal değer olan en yüksek önceliğe sahip kural geçiyor.
+## <a name="precedence"></a>Önceliği
+Birkaç eşitleme kuralı hedefe aynı öznitelik değeri ne zaman katkıda bulunmaya çalışırsa, öncelik değeri kazananı belirlemek için kullanılır. En yüksek önceliğe, en düşük sayısal değere sahip kural, bir çakışma özniteliğine katkıda bulunacaktır.
 
-![Birleştirme türleri](./media/concept-azure-ad-connect-sync-declarative-provisioning/precedence1.png)  
+![Birleştirme Türleri](./media/concept-azure-ad-connect-sync-declarative-provisioning/precedence1.png)  
 
-Bu sıralama küçük bir alt nesne için daha kesin bir öznitelik akışları tanımlamak için kullanılabilir. Örneğin, out-,-kutusu-kuralları etkinleştirilmiş bir hesaptan öznitelikleri sağlayın (**kullanıcı AccountEnabled**) diğer hesaplardan önceliğe sahip olur.
+Bu sıralama, nesnelerin küçük bir alt kümesi için daha kesin öznitelik akışları tanımlamak için kullanılabilir. Örneğin, kutu dışı kurallar, etkin bir hesaptaki özniteliklerin **(Kullanıcı Hesabı Etkin)** diğer hesaplardan önceolduğundan emin olun.
 
-Öncelik arasında bağlayıcıları tanımlanabilir. Bağlayıcılar ile daha iyi veri değerleri ilk katkıda bulunmak için izin verir.
+Öncelik Bağlayıcılar arasında tanımlanabilir. Bu, daha iyi veriye sahip Bağlayıcıların önce değerlere katkıda bulunmasını sağlar.
 
-### <a name="multiple-objects-from-the-same-connector-space"></a>Aynı bağlayıcı alanında birden fazla nesneleri
-Aynı meta veri deposu nesnesine katılmış aynı bağlayıcı alanında birden fazla nesneniz varsa, öncelik ayarlanmalıdır. Birden çok nesnenin aynı eşitleme kuralı kapsamında olup, eşitleme altyapısı önceliği belirlemek mümkün değildir. Hangi kaynak nesnesi meta veri değerine katkıda bulunmalıdır, belirsiz. Kaynak öznitelikleri aynı değere sahip olsa bile bu yapılandırma belirsiz olarak bildirilir.  
-![Birden fazla nesne için aynı mv nesne katıldı](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+### <a name="multiple-objects-from-the-same-connector-space"></a>Aynı bağlayıcı alanından birden çok nesne
+Aynı bağlayıcı alanda aynı metaverse nesneye birleştirilmiş birden fazla nesne varsa, öncelik ayarlanmalıdır. Birkaç nesne aynı eşitleme kuralı kapsamında ise, eşitleme altyapısı önceliği belirlemek mümkün değildir. Hangi kaynak nesnenin metaverse değeri katkıda bulunması gerektiği belirsizdir. Kaynaktaki öznitelikler aynı değere sahip olsa bile, bu yapılandırma belirsiz olarak bildirilir.  
+![Aynı mv nesnesine birden çok nesne katıldı](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
-Bu senaryo için kapsam içinde kaynak nesneleri farklı eşitleme kuralları böylece kapsam eşitleme kuralları değiştirmeniz gerekir. Farklı öncelik tanımlamanıza olanak sağlar.  
-![Birden fazla nesne için aynı mv nesne katıldı](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
+Bu senaryo için, kaynak nesnelerin kapsamda farklı eşitleme kuralları olması için eşitleme kurallarının kapsamını değiştirmeniz gerekir. Bu, farklı bir öncelik tanımlamanızı sağlar.  
+![Aynı mv nesnesine birden çok nesne katıldı](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* İfade dili, hakkında daha fazla bilgiyi [bildirim temelli sağlama ifadelerini anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
-* Bkz: nasıl bildirim temelli sağlama olan kullanılan kullanıma hazır olarak [varsayılan yapılandırmayı anlama](concept-azure-ad-connect-sync-default-configuration.md).
-* İçinde bildirim temelli sağlama kullanarak pratik değişiklik yapılacağını görmek [Varsayılan yapılandırmada bir değişiklik yapmak nasıl](how-to-connect-sync-change-the-configuration.md).
-* Kullanıcıları ve kişileri birlikte nasıl çalıştığını okumaya devam [kullanıcıları ve kişileri anlama](concept-azure-ad-connect-sync-user-and-contacts.md).
+* [Bildirimsel Hüküm Veren İfadeleri Anlama'da](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)ifade dili hakkında daha fazla bilgi edinin.
+* [Varsayılan yapılandırmayı anlamada](concept-azure-ad-connect-sync-default-configuration.md)bildirimsel sağlamanın kullanıma hazır olarak nasıl kullanıldığını görün.
+* [Varsayılan yapılandırmada değişiklik yapma](how-to-connect-sync-change-the-configuration.md)konusunda bildirimsel hükmü kullanarak pratik bir değişiklik yapma şekline bakın.
+* Kullanıcıları ve [Kişileri Anlama'da](concept-azure-ad-connect-sync-user-and-contacts.md)kullanıcıların ve kişilerin birlikte nasıl çalıştığını okumaya devam edin.
 
 **Genel bakış konuları**
 
-* [Azure AD Connect eşitlemesi: Anlama ve eşitleme özelleştirme](how-to-connect-sync-whatis.md)
+* [Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)
 
 **Başvuru konuları**
 
-* [Azure AD Connect eşitlemesi: İşlevler başvurusu](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect eşitlemi: İşlevler Başvurusu](reference-connect-sync-functions-reference.md)

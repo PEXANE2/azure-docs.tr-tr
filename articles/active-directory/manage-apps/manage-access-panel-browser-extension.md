@@ -1,6 +1,6 @@
 ---
-title: Azure erişim paneli uzantısını IE için sorun giderme | Microsoft Docs
-description: Internet Explorer eklenti için uygulamalarım portalında dağıtmak için Grup İlkesi kullanma
+title: IE için Azure Erişim Masası Uzantısı | Microsoft Dokümanlar
+description: Uygulamalarım portalı için Internet Explorer eklentisini dağıtmak için grup ilkesini kullanma.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,71 +17,71 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67723912"
 ---
-# <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Erişim paneli uzantısını Internet Explorer için sorun giderme
+# <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer için Access Panel Uzantısısorun giderme
 
-Bu makalede aşağıdaki sorunları gidermenize yardımcı olur:
+Bu makale, aşağıdaki sorunları gidermenize yardımcı olur:
 
-* Internet Explorer'ı kullanırken uygulamalarınızı uygulamalarım portalından erişemez.
-* Yazılımı yüklemiş olduğunuz olsa da "Yazılım Yükle" iletisi görüntülenir.
+* Internet Explorer'ı kullanırken Uygulamalarım portalı üzerinden uygulamalarınız sayesinde erişemiyorsunuz.
+* Yazılımı yüklemiş olsanız bile "Yazılım Yükle" iletisini görürsünüz.
 
-Bir yönetici değilseniz bkz [Grup İlkesi'ni kullanarak Internet Explorer için erişim paneli uzantısını dağıtma](deploy-access-panel-browser-extension.md).
+Yöneticiyseniz, [Grup İlkesi'ni kullanarak Internet Explorer için Erişim Masası Uzantısını nasıl dağıtabileceğinize](deploy-access-panel-browser-extension.md)bakın.
 
-## <a name="run-the-diagnostic-tool"></a>Tanılama aracını çalıştırın
+## <a name="run-the-diagnostic-tool"></a>Tanılama aracını çalıştırma
 
-İndiriliyor ve erişim paneli Tanı Aracı'nı çalıştırarak erişim paneli uzantısını yükleme sorunları tanılayabilirsiniz. 
+Access Paneli tanı lama aracını indirip çalıştırarak Access Panel Uzantısı ile ilgili yükleme sorunlarını tanılayabilirsiniz. 
 
-İndirin ve Tanılama Aracı yüklemek için:
+Tanılama aracını indirmek ve yüklemek için:
 
-1. [Tanılama Aracı indirmek için bu bağlantıyı seçin.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
-1. Dosyasını açın ve içeriği bilgisayarınıza ayıklayın.
-1. Aracı çalıştırmak için adlı dosyaya sağ tıklayın *AccessPanelExtensionDiagnosticTool.js* seçip **birlikte Aç** > **Microsoft Windows tabanlı komut dosyası ana bilgisayarı** .
+1. [Tanılama aracını indirmek için bu bağlantıyı seçin.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
+1. Dosyayı açın ve içeriğini bilgisayarınıza ayıklayın.
+1. Aracı çalıştırmak için *AccessPanelExtensionDiagnosticTool.js* adlı dosyayı sağ tıklatın ve**Microsoft Windows Tabanlı Komut Dosyası Ana Bilgisayarı**ile >  **Aç'ı**seçin.
 
-    ![Birlikte Aç > Microsoft Windows tabanlı komut dosyası ana bilgisayarı](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
+    ![Microsoft Windows Tabanlı Komut Dosyası Ana Bilgisayar > ile açık](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 
-1. Görüntülenen ve seçin Tanılama sonuçları gözden **Evet** sorunlarını düzeltmek için. **Denetleme sonuçları** uzantı işe yaramazsa yapmanız gerekenler hakkında bilgi içeren iletişim kutusu görüntülenir.  
-1. İleti okumak ve seçin **Tamam**.
+1. Görünen tanılama sonuçlarını gözden geçirin ve sorunları gidermek için **Evet'i** seçin. **Sonuçları Denetle** iletişim kutusu, uzantı işe yaramazsa ne yapacağına ilişkin bilgilerle birlikte görüntülenir.  
+1. İletiyi okuyun ve **Tamam'ı**seçin.
 
-## <a name="check-that-the-access-panel-extension-is-enabled"></a>Erişim paneli uzantısını etkin olup olmadığını denetleyin
+## <a name="check-that-the-access-panel-extension-is-enabled"></a>Access Panel Uzantısı'nın etkin olup olmadığını denetleyin
 
-Erişim paneli uzantısını Internet Explorer'da etkinleştirdikten doğrulamak için:
+Internet Explorer'da Erişim Masası Uzantısı'nı etkinleştirdiğinizi doğrulamak için:
 
-1. Internet Explorer'da seçin **dişli simgesini** penceresini seçin ve sağ üst köşedeki **Internet Seçenekleri**.
-1. Git **programlar** sekmenize **eklentileri yönetme**.
-1. Seçin **erişim paneli uzantısını** içinde **Microsoft Corporation** seçin ve bölüm **etkinleştirme**.
-1. Değişiklikleri Kaydet, tüm Internet Explorer tarayıcı pencerelerini kapatmak için açık olması gerekir. Değişiklik, Internet Explorer bir sonraki açışınızda etkinleşir.
+1. Internet Explorer'da, pencerenin sağ üst köşesindeki **Dişli simgesini** seçin ve **Internet seçeneklerini**seçin.
+1. **Programlar** sekmesine gidin ve **eklentileri yönet'i**seçin.
+1. **Microsoft Corporation** bölümünde Access **Panel Uzantısı'nı** seçin ve **Etkinleştir'i**seçin.
+1. Değişiklikleri kaydetmek için, açık olan tüm Internet Explorer tarayıcı pencerelerini kapatın. Değişiklik, Internet Explorer'ı bir sonraki açtığınızda etkili olur.
 
-## <a name="enable-extensions-for-inprivate-browsing"></a>InPrivate Gözatma uzantılarını etkinleştir
+## <a name="enable-extensions-for-inprivate-browsing"></a>Özel Tarama için uzantıları etkinleştirme
 
-InPrivate Gözatma için uzantıları etkinleştirmek için:
+InPrivate Tarama uzantılarını etkinleştirmek için:
 
-1. Internet Explorer'da seçin **dişli simgesini** penceresini seçin ve sağ üst köşedeki **Internet Seçenekleri**.
-1. Git **gizlilik** doğrulayın ve sekme **devre dışı araç çubukları ve uzantıları InPrivate Gözatma başladığında** onay kutusunu temizleyin.
-1. Değişiklikleri Kaydet, tüm Internet Explorer tarayıcı pencerelerini kapatmak için açık olması gerekir. Değişiklik, Internet Explorer bir sonraki açışınızda etkinleşir.
+1. Internet Explorer'da, pencerenin sağ üst köşesindeki **Dişli simgesini** seçin ve **Internet seçeneklerini**seçin.
+1. **Gizlilik** sekmesine gidin ve **Özel Tarama başlatıldığında araç çubuklarını ve uzantılarını devre dışı** bırak onaykutusunun temiz olduğunu doğrulayın.
+1. Değişiklikleri kaydetmek için, açık olan tüm Internet Explorer tarayıcı pencerelerini kapatın. Değişiklik, Internet Explorer'ı bir sonraki açtığınızda etkili olur.
 
-## <a name="uninstall-the-access-panel-extension"></a>Erişim paneli uzantısını kaldırma
+## <a name="uninstall-the-access-panel-extension"></a>Erişim Masası Uzantısını Kaldır
 
-Erişim paneli uzantısını bilgisayarınızdan kaldırmak için:
+Access Panel Uzantısını bilgisayarınızdan kaldırmak için:
 
-1. Denetim Masası'ndaki arama *kaldırma*.
-1. Arama sonuçlarında seçin **program Kaldır**.
+1. Denetim Masası'nda, *kaldır'ı*arayın.
+1. Arama sonuçlarında, **programı kaldır'ı**seçin.
 
-    ![Denetim Masası'ndan kaldırma programı seçeneği seçin](./media/manage-access-panel-browser-extension/uninstall-program-control-panel.png)
+    ![Denetim Paneli'nden programı kaldır seçeneğini seçin](./media/manage-access-panel-browser-extension/uninstall-program-control-panel.png)
 
-1. Listesinden **erişim paneli uzantısını** seçip **kaldırma**.
+1. Listeden Access **Panel Uzantısı'nı** seçin ve **Kaldır'ı**seçin.
 
-    ![Erişim paneli uzantısını kaldırma](./media/manage-access-panel-browser-extension/uninstall-access-panel-extension.png)
+    ![Erişim Masası Uzantısını Kaldır](./media/manage-access-panel-browser-extension/uninstall-access-panel-extension.png)
 
-1. Daha sonra yeniden sorun çözümlenmiş olup olmadığını görmek için uzantıyı yüklemek deneyebilirsiniz.
+1. Daha sonra sorunun çözülüp çözülmediolmadığını görmek için uzantıyı yeniden yüklemeyi deneyebilirsiniz.
 
-Uzantıyı kaldırma sorun yaşarsanız, ayrıca kullanarak kaldırabilirsiniz [Microsoft düzeltin,](https://go.microsoft.com/?linkid=9779673) aracı.
+Uzantıyı kaldırma sorunlarıyla karşınıza çıkarsa, Microsoft [Fix It](https://go.microsoft.com/?linkid=9779673) aracını kullanarak da kaldırabilirsiniz.
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 
-* [Uygulama erişimi ve Azure Active Directory ile çoklu oturum açma](what-is-single-sign-on.md)
-* [Grup İlkesi'ni kullanarak Internet Explorer için erişim paneli uzantısını dağıtma](deploy-access-panel-browser-extension.md)
+* [Azure Active Directory ile uygulama erişimi ve tek oturum açma](what-is-single-sign-on.md)
+* [Grup İlkesi'ni kullanarak Internet Explorer için Access Panel Uzantısı nasıl dağıtılır?](deploy-access-panel-browser-extension.md)

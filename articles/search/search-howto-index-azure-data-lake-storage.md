@@ -1,7 +1,7 @@
 ---
-title: Azure Data Lake Storage 2. üzerinde ara (Önizleme)
+title: Azure Veri Gölü Depolama Gen2 üzerinden arama (önizleme)
 titleSuffix: Azure Cognitive Search
-description: Azure Data Lake Storage 2. içerik ve meta verileri nasıl dizinleyeceğinizi öğrenin. Bu özellik şu anda genel önizlemede
+description: Azure Veri Gölü Depolama Gen2'de içeriği ve meta verileri nasıl dizine ekleyip dizinleri nizi dizine ekinler gösterin. Bu özellik şu anda genel önizlemede
 manager: nitinme
 author: markheff
 ms.author: maheff
@@ -10,47 +10,47 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905650"
 ---
-# <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. belgeleri dizine ekleme
+# <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2'de belgeleri dizine alma
 
 > [!IMPORTANT] 
-> Azure Data Lake Storage 2. desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)doldurarak önizlemelere erişim isteğinde bulabilirsiniz. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
+> Azure Veri Gölü Depolama Gen2 desteği şu anda genel önizlemede. Önizleme işlevi hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın. [Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)doldurarak önizlemelere erişim isteğinde bulunabilirsiniz. [REST API sürümü 2019-05-06-Önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 
-Bir Azure depolama hesabı ayarlarken, [hiyerarşik ad alanını](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)etkinleştirme seçeneğiniz vardır. Bu, bir hesaptaki içerik koleksiyonunun bir Dizin hiyerarşisinde ve iç içe yerleştirilmiş alt dizinlerde düzenlenmesine olanak sağlar. Hiyerarşik ad alanını etkinleştirerek [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)etkinleştirirsiniz.
+Bir Azure depolama hesabı [ayarlarken, hiyerarşik ad alanını](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)etkinleştirme seçeneğiniz vardır. Bu, bir hesaptaki içerik koleksiyonunun dizinler ve iç içe geçen alt dizinler hiyerarşisi içinde düzenlenmesine olanak tanır. Hiyerarşik ad alanını etkinleştirerek [Azure Veri Gölü Depolama Gen2'yi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)etkinleştirebilirsiniz.
 
-Bu makalede, Azure Data Lake Storage 2. olan belgeleri dizine almaya nasıl başlacağınız açıklanır.
+Bu makalede, Azure Veri Gölü Depolama Gen2'de bulunan dizin oluşturma belgeleriyle nasıl başlanırsınız.
 
-## <a name="set-up-azure-data-lake-storage-gen2-indexer"></a>Azure Data Lake Storage 2. Dizin oluşturucuyu ayarlama
+## <a name="set-up-azure-data-lake-storage-gen2-indexer"></a>Azure Veri Gölü Depolama Gen2 dizinleyicisi ayarlama
 
-Data Lake Storage 2. içeriği indekslemek için gerçekleştirmeniz gereken birkaç adım vardır.
+Veri Gölü Depolama Gen2'deki içeriği dizine dizine almak için tamamlamanız gereken birkaç adım vardır.
 
-### <a name="step-1-sign-up-for-the-preview"></a>1\. Adım: önizleme için kaydolun
+### <a name="step-1-sign-up-for-the-preview"></a>Adım 1: Önizleme için kaydolun
 
-[Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)doldurarak Data Lake Storage 2. Dizin Oluşturucu önizlemesine kaydolun. Önizlemeye kabul edildikten sonra bir onay e-postası alacaksınız.
+[Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)doldurarak Veri Gölü Depolama Gen2 dizinleyici önizlemesine kaydolun. Önizlemeye kabul edildikten sonra bir onay e-postası alacaksınız.
 
-### <a name="step-2-follow-the-azure-blob-storage-indexing-setup-steps"></a>2\. Adım: Azure Blob depolama dizini oluşturma kurulum adımlarını Izleyin
+### <a name="step-2-follow-the-azure-blob-storage-indexing-setup-steps"></a>Adım 2: Azure Blob depolama dizin kurulumu adımlarını izleyin
 
-Önizlemenin kayıt işleminin başarılı olduğunu belirten bir onay aldıktan sonra, dizin oluşturma işlem hattını oluşturmaya hazırsınız demektir.
+Önizleme kaydenizin başarılı olduğuna dair onay aldıktan sonra, dizin oluşturma ardışık hattını oluşturmaya hazırsınız.
 
-Data Lake Storage 2. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md)kullanarak içerik ve meta verileri dizinleyebilir. Şu anda portal veya .NET SDK desteği yok.
+[REST API sürümü 2019-05-06-Preview'u](search-api-preview.md)kullanarak Veri Gölü Depolama Gen2'deki içeriği ve meta verileri dizine ekebilirsiniz. Şu anda portal veya .NET SDK desteği yok.
 
-Data Lake Storage 2. içerik dizini oluşturma, Azure Blob depolamada dizin oluşturma içeriğiyle aynıdır. Data Lake Storage 2. veri kaynağını, dizini ve Dizin oluşturucuyu ayarlamayı öğrenmek için Azure [bilişsel arama Ile Azure Blob depolamada belgelerin nasıl dizinlebileceğini](search-howto-indexing-azure-blob-storage.md)inceleyin. BLOB depolama makalesinde hangi belge biçimlerinin desteklendiği, hangi blob meta veri özelliklerinin ayıklandığı, artımlı dizin oluşturma ve daha fazlası hakkında bilgiler de sağlanmaktadır. Bu bilgiler Data Lake Storage 2. için aynı olacaktır.
+Veri Gölü Depolama Gen2'deki içeriği dizine alma, Azure Blob depolamasındaki içeriği dizine eksine yle aynıdır. Veri Gölü Depolama Gen2 veri kaynağının, dizininin ve dizinleyicinin nasıl ayarlayacağıhakkında bilgi almak için Azure [Bilişsel Arama ile Azure Blob Depolama'daki belgeleri nasıl dizine ekleyip](search-howto-indexing-azure-blob-storage.md)dizine aktarın. Blob depolama makalesi ayrıca hangi belge biçimlerinin desteklendirilip desteklendirildigi, hangi blob meta veri özelliklerinin ayıklandırılan, artımlı dizin oluşturma ve daha fazlası hakkında bilgi sağlar. Bu bilgiler Data Lake Storage Gen2 için de geçerli olacaktır.
 
 ## <a name="access-control"></a>Erişim denetimi
 
-Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir [erişim denetimi modeli](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) uygular. Data Lake Storage 2. içerik dizinlenirken, Azure Bilişsel Arama, içerikten RBAC ve ACL bilgilerini ayıklamaz. Sonuç olarak, bu bilgiler Azure Bilişsel Arama dizinine dahil edilmez.
+Azure Veri Gölü Depolama Gen2, hem Azure rol tabanlı erişim denetimini (RBAC) hem de POSIX benzeri erişim denetim listelerini (AçS) destekleyen bir [erişim denetimi modeli](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) uygular. Azure Bilişsel Arama, Veri Gölü Depolama Gen2'den içeriği dizine ekstre ederken, rbac ve ACL bilgilerini içerikten çıkarmaz. Sonuç olarak, bu bilgiler Azure Bilişsel Arama dizininize dahil edilmez.
 
-Dizindeki her belge üzerinde erişim denetimini korumak önemli ise, [güvenlik kırpması](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)uygulamak için uygulama geliştiricisinin üzerine gelir.
+Dizindeki her belgede erişim denetiminin sürdürülmesi önemliyse, [güvenlik kırpma](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)uygulaması uygulama geliştiricisine bağlıdır.
 
-## <a name="change-detection"></a>Değişiklik algılama
+## <a name="change-detection"></a>Algılamayı Değiştir
 
-Data Lake Storage 2. Indexer değişiklik algılamayı destekler. Bu, dizin oluşturucunun yalnızca blob 'un `LastModified` zaman damgasıyla belirlendiği şekilde değiştirilen Blobları yeniden dizinleyen anlamına gelir.
+Veri Gölü Depolama Gen2 dizinleyicisi değişiklik algılamasını destekler. Bu, dizinleyici çalıştırdığında yalnızca blob `LastModified` zaman damgası tarafından belirlenen değiştirilen lekeleri yeniden dizineleri anlamına gelir.
 
 > [!NOTE] 
-> Data Lake Storage 2. dizinlerin yeniden adlandırılmasına izin verir. Bir dizin yeniden adlandırıldığında, bu dizindeki Blobların zaman damgaları güncellenmez. Sonuç olarak, Dizin Oluşturucu bu Blobları yeniden kullanmaz. Artık yeni URL 'Leri olduğundan dizin yeniden adlandırıldıktan sonra bir dizin içindeki Blobların yeniden dizinlenmesini istiyorsanız, dizin oluşturucunun, gelecekteki bir çalıştırma sırasında yeniden dizin haline gelebilmesi için dizindeki tüm Blobların `LastModified` zaman damgasını güncelleştirmeniz gerekir.
+> Data Lake Storage Gen2 dizinlerin yeniden adlandırılmasını sağlar. Bir dizin, o dizindeki lekelerin zaman damgaları yeniden adlandırıldığında güncelleştirilmez. Sonuç olarak, dizinleyici bu lekeleri yeniden dizine almaz. Artık yeni URL'leri olduğundan dizin yeniden adlandırıldıktan sonra dizin yeniden dizine alınması için dizindeki lekelerin yeniden dizine alınması gerekiyorsa, dizinleyicinin gelecekteki bir çalışma sırasında bunları yeniden dizine ekleyebilir şekilde dizindeki tüm lekelerin `LastModified` zaman damgasını güncelleştirmeniz gerekir.

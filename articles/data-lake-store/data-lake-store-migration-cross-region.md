@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake depolama Gen1 bölgeler arası geçiş | Microsoft Docs
-description: Azure Data Lake depolama Gen1 için bölgeler arası geçiş hakkında bilgi edinin.
+title: Azure Veri Gölü Depolama Gen1 bölgeler arası geçiş | Microsoft Dokümanlar
+description: Azure Veri Gölü Depolama Gen1 için bölgeler arası geçiş hakkında bilgi edinin.
 services: data-lake-store
 documentationcenter: ''
 author: swums
@@ -13,42 +13,42 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60518446"
 ---
-# <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Azure Data Lake depolama Gen1 bölgeler arasında geçirme
+# <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Azure Veri Gölü Depolama Gen1'i bölgeler e göre geçirin
 
-Azure Data Lake depolama Gen1 yeni bölgelerde kullanıma sunulduğunda, yeni bölge yararlanmak için tek seferlik bir geçiş yapmayı seçebilirsiniz. Planlama ve Geçişi tamamlamak dikkate almanız gerekenler öğrenin.
+Azure Veri Gölü Depolama Gen1 yeni bölgelerde kullanıma sunulduğunda, yeni bölgeden yararlanmak için tek seferlik geçiş yapmayı seçebilirsiniz. Geçişi planlarken ve tamamlarken neleri göz önünde bulundurmanız gerektiğini öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Bir Azure aboneliği**. Daha fazla bilgi için [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/pricing/free-trial/).
-* **Bir Data Lake depolama Gen1 hesabını iki farklı bölgede**. Daha fazla bilgi için [Azure Data Lake depolama Gen1 ile çalışmaya başlama](data-lake-store-get-started-portal.md).
-* **Azure veri fabrikası**. Daha fazla bilgi için bkz. [Azure Data Factory'ye giriş](../data-factory/introduction.md).
+* **Azure aboneliği**. Daha fazla bilgi için [bkz.](https://azure.microsoft.com/pricing/free-trial/)
+* **İki farklı bölgede bir Veri Gölü Depolama Gen1 hesabı.** Daha fazla bilgi için bkz: [Azure Veri Gölü Depolama Gen1 ile başlayın.](data-lake-store-get-started-portal.md)
+* **Azure Veri Fabrikası**. Daha fazla bilgi için bkz. [Azure Data Factory'ye giriş](../data-factory/introduction.md).
 
 
 ## <a name="migration-considerations"></a>Geçiş sırasında dikkat edilmesi gerekenler
 
-İlk olarak yazar, okuyan veya Data Lake depolama Gen1 verileri işleyen uygulamanız için en iyi geçiş stratejisini tanımlayın. Bir strateji seçtiğinizde, uygulamanızın kullanılabilirlik gereksinimlerini ve geçiş sırasında oluşan kapalı kalma süresi göz önünde bulundurun. Örneğin, "lift-and-shift" bulut geçişi modelini kullanmak için en kolay yaklaşım olabilir. Tüm verilerinizi kopyalanır sırada yeni bir bölgeye Bu yaklaşımda, uygulamanın mevcut bölgenizde duraklatın. Kopyalama işlemi tamamlandığında, uygulamanız yeni bölgedeki sürdürme ve eski Data Lake depolama Gen1 hesabı silin. Geçiş sırasında kapalı kalma süresi gereklidir.
+İlk olarak, Veri Gölü Depolama Gen1'de veri yazan, okuyan veya işleyen uygulamanız için en iyi şekilde çalışan geçiş stratejisini belirleyin. Bir strateji seçtiğinizde, uygulamanızın kullanılabilirlik gereksinimlerini ve geçiş sırasında oluşan kapalı kalma süresini göz önünde bulundurun. Örneğin, en basit yaklaşımınız "kaldır ve kaydır" bulut geçiş modelini kullanmak olabilir. Bu yaklaşımda, tüm verileriniz yeni bölgeye kopyalanırken varolan bölgenizdeki uygulamayı duraklatılırsınız. Kopyalama işlemi tamamlandığında, başvurunuzu yeni bölgede devam ettirir ve ardından eski Veri Gölü Depolama Gen1 hesabını silersiniz. Geçiş sırasında kapalı kalma süresi gereklidir.
 
-Kapalı kalma süresini azaltmak için hemen yeni bölgedeki yeni veri alma başlayabilir. Gereken en düşük verileri varsa, yeni bölgede çalıştırın. Yeni bölge yeni Data Lake depolama Gen1 hesabında var olan Data Lake depolama Gen1 hesaptan eski veri kopyalamak arka planda devam edin. Bu yaklaşımı kullanarak, yeni bölge az kapalı kalma süresiyle geçiş yapabilirsiniz. Eski tüm verilerin kopyalandığından, eski Data Lake depolama Gen1 hesabı silebilirsiniz.
+Kapalı kalma süresini azaltmak için, yeni bölgede hemen yeni veriler almaya başlayabilirsiniz. Gereken minimum veriye sahip olduğunuzda, uygulamanızı yeni bölgede çalıştırın. Arka planda, eski verileri mevcut Veri Gölü Depolama Gen1 hesabındaki yeni bölgedeki yeni Veri Gölü Depolama Gen1 hesabına kopyalamaya devam edin. Bu yaklaşımı kullanarak, çok az kapalı kalma süresi ile yeni bölgeye geçiş yapabilirsiniz. Tüm eski veriler kopyalandığında, eski Veri Gölü Depolama Gen1 hesabını silin.
 
-Geçişinizi planlarken dikkate alınması gereken diğer önemli ayrıntıları verilmiştir:
+Geçişinizi planlarken göz önünde bulundurulması gereken diğer önemli ayrıntılar şunlardır:
 
-* **Veri hacmi**. Geçiş için gereken kaynakları ve saat (gigabayt olarak, dosyalar ve klasörler vb. sayısı) içindeki veri hacmi etkiler.
+* **Veri hacmi**. Veri hacmi (gigabaytlarda, dosya ve klasör sayısı vb.) geçiş için gereken zamanı ve kaynakları etkiler.
 
-* **Data Lake depolama Gen1 hesap adı**. Yeni hesap adını yeni bölgedeki genel olarak benzersiz olmalıdır. Örneğin, Doğu ABD 2, eski Data Lake depolama Gen1 hesabının adını contosoeastus2.azuredatalakestore.net olabilir. Yeni Data Lake depolama Gen1 hesabınızda Kuzey AB contosonortheu.azuredatalakestore.net adını verebilirsiniz.
+* **Veri Gölü Depolama Gen1 hesap adı**. Yeni bölgedeki yeni hesap adı genel olarak benzersiz olmalıdır. Örneğin, Doğu ABD 2'deki eski Data Lake Storage Gen1 hesabınızın adı contosoeastus2.azuredatalakestore.net olabilir. Kuzey AB'deki yeni Veri Gölü Depolama Gen1 hesabınızı contosonortheu.azuredatalakestore.net.
 
-* **Araçlar**. Kullanmanızı öneririz [Azure Data Factory kopyalama etkinliği](../data-factory/connector-azure-data-lake-store.md) Data Lake depolama Gen1 dosyaları kopyalamak için. Data Factory veri taşıma yüksek performansı ve güvenilirliği ile destekler. Data Factory yalnızca klasör hiyerarşisini ve dosyaların içeriğini kopyalar göz önünde bulundurun. Eski hesap yeni bir hesap için kullandığınız tüm erişim denetim listeleri (ACL'ler) el ile uygulamanız gerekir. Performans hedefleri için best-case senaryoları da dahil olmak üzere daha fazla bilgi için bkz. [kopyalama etkinliği performansı ve ayarlama Kılavuzu](../data-factory/copy-activity-performance.md). Daha hızlı bir şekilde kopyalanan verileri istediğiniz ek bulut verisi taşıma birimlerini kullanmanız gerekebilir. AdlCopy gibi diğer bazı araçları bölgeler arasında veri kopyalamayı desteklemez.  
+* **Araçlar**. Veri Gölü Depolama Gen1 dosyalarını kopyalamak için [Azure Veri Fabrikası Kopyalama Etkinliği'ni](../data-factory/connector-azure-data-lake-store.md) kullanmanızı öneririz. Veri Fabrikası yüksek performans ve güvenilirlikle veri hareketini destekler. Veri Fabrikası'nın yalnızca klasör hiyerarşisini ve dosyaların içeriğini kopyaladığını unutmayın. Eski hesapta kullandığınız erişim denetim listelerini (ALA'lar) yeni hesaba el ile uygulamanız gerekir. En iyi durum senaryoları için performans hedefleri de dahil olmak üzere daha fazla bilgi için [Kopyalama Etkinliği performansı ve ayarı kılavuzuna](../data-factory/copy-activity-performance.md)bakın. Verilerin daha hızlı kopyalanmasını istiyorsanız, ek Bulut Veri Hareketi Birimleri kullanmanız gerekebilir. AdlCopy gibi diğer bazı araçlar, bölgeler arasında veri kopyalamayı desteklemez.  
 
-* **Bant genişliği ücretleri**. [Bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) bir Azure bölgesinin dışına aktarılan veriler için geçerlidir.
+* **Bant genişliği ücretleri**. Veriler Azure bölgesinden aktarıldığından [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) uygulanır.
 
-* **Verilerinizi ACL'lerin**. Yeni bölgede dosya ve klasörler için ACL'ler uygulayarak güvenli hale getirin. Daha fazla bilgi için [Azure Data Lake depolama Gen1 depolanan verilerin güvenliğini sağlama](data-lake-store-secure-data.md). Geçiş, ACL'ler ayarlamak ve güncelleştirmek için kullanmanızı öneririz. Geçerli ayarlarınızı benzer ayarları kullanmak isteyebilirsiniz. Azure portalını kullanarak herhangi bir dosyaya uygulanan ACL'leri görüntüleyebileceğiniz [PowerShell cmdlet'leri](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission), ya da SDK'ları.  
+* **Verilerinizdeki AKRALLAR**. Dosya ve klasörlere ALA'lar uygulayarak yeni bölgedeki verilerinizi güvence altına alanın. Daha fazla bilgi için bkz: [Azure Veri Gölü Depolama Gen1'de depolanan verilerin güvenliğini sağlama](data-lake-store-secure-data.md). ALA'larınızı güncelleştirmek ve ayarlamak için geçişi kullanmanızı öneririz. Geçerli ayarlarınıza benzer ayarları kullanmak isteyebilirsiniz. Azure portalını, [PowerShell cmdlets'i](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission)veya SDK'ları kullanarak herhangi bir dosyaya uygulanan ACM'leri görüntüleyebilirsiniz.  
 
-* **Analiz Hizmetleri konumunu**. En iyi performans için Azure Data Lake Analytics veya Azure HDInsight gibi analiz hizmetlerinizi verilerinizi aynı bölgede olması gerekir.  
+* **Analitik hizmetlerinin konumu.** En iyi performans için, Azure Veri Gölü Analitiği veya Azure HDInsight gibi analitik hizmetleriniz verilerinizle aynı bölgede olmalıdır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Data Lake depolama Gen1 genel bakış](data-lake-store-overview.md)
+* [Azure Veri Gölü Depolama Gen1'e Genel Bakış](data-lake-store-overview.md)

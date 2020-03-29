@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran Web API 'SI-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini çağıran bir Web API 'SI oluşturmayı öğrenin.
+title: Web API'ları çağıran Web API'sı - Microsoft kimlik platformu | Azure
+description: Web API'lerini çağıran bir web API'sini nasıl oluşturan öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76833388"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API 'Leri çağıran bir Web API 'si: API çağırma
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API'lerini çağıran bir web API'si: API'yi arayın
 
-Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz. Bunu, Web API 'nizin denetleyicisinden yapabilirsiniz.
+Bir belirteç aldıktan sonra, korumalı web API'sini arayabilirsiniz. Bunu web API'nizin denetleyicisinden yaparsınız.
 
 ## <a name="controller-code"></a>Denetleyici kodu
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Aşağıdaki kod, [Web API 'lerini çağıran bir Web API](scenario-web-api-call-api-acquire-token.md)'sinde gösterilen örnek kodu devam ettirir: uygulama Için belirteç alma. Kod, API denetleyicilerinin eylemleri içinde çağrılır. *ToDoList*adlı bir aşağı akış API 'si çağırır.
+Aşağıdaki kod, web API'lerini çağıran bir web API'sinde gösterilen örnek kodu devam [eder: Uygulama için bir belirteç edinin.](scenario-web-api-call-api-acquire-token.md) Kod, API denetleyicilerinin eylemlerinde çağrılır. Bu *todolist*adlı bir downstream API çağırır.
 
-Belirteci aldıktan sonra, aşağı akış API 'sini çağırmak için bunu bir taşıyıcı belirteç olarak kullanın.
+Belirteci aldıktan sonra, akış aşağı API'yi aramak için taşıyıcı belirteci olarak kullanın.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -59,11 +59,11 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki kod, [Web API 'lerini çağıran bir Web API](scenario-web-api-call-api-acquire-token.md)'sinde gösterilen örnek kodu devam ettirir: uygulama Için belirteç alma. Kod, API denetleyicilerinin eylemleri içinde çağrılır. Aşağı akış API MS grafiğini çağırır.
+Aşağıdaki kod, web API'lerini çağıran bir web API'sinde gösterilen örnek kodu devam [eder: Uygulama için bir belirteç edinin.](scenario-web-api-call-api-acquire-token.md) Kod, API denetleyicilerinin eylemlerinde çağrılır. Bu downstream API MS Graph çağırır.
 
-Belirteci aldıktan sonra, aşağı akış API 'sini çağırmak için bunu bir taşıyıcı belirteç olarak kullanın.
+Belirteci aldıktan sonra, akış aşağı API'yi aramak için taşıyıcı belirteci olarak kullanın.
 
 ```Java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
@@ -83,12 +83,12 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
-Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
+# <a name="python"></a>[Python](#tab/python)
+MSAL Python ile bu akışı gösteren bir örnek henüz mevcut değildir.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Web API 'Lerini çağıran bir Web API 'SI: üretime taşı](scenario-web-api-call-api-production.md)
+> [Web API'lerini çağıran bir web API'sı: Üretime geç](scenario-web-api-call-api-production.md)

@@ -1,6 +1,6 @@
 ---
-title: Event Grid bulut Azure Event Grid IoT Edge için Edge olaylarını ilet | Microsoft Docs
-description: Edge olaylarını Event Grid buluta ilet
+title: İleri kenar olayları Event Grid bulutu - Azure Event Grid IoT Edge | Microsoft Dokümanlar
+description: İleri kenar olayları Event Grid bulutuna
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,41 +10,41 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844726"
 ---
-# <a name="tutorial-forward-events-to-event-grid-cloud"></a>Öğretici: olayları Event Grid buluta Iletme
+# <a name="tutorial-forward-events-to-event-grid-cloud"></a>Öğretici: Olayları Olay Izgara bulutuna iletme
 
-Bu makalede, Edge olaylarını Azure bulutundaki Event Grid iletmek için gereken tüm adımlar açıklanmaktadır. Bunu aşağıdaki nedenlerle yapmak isteyebilirsiniz:
+Bu makale, kenar olaylarını Azure bulutundaki Olay Izgara'ya iletmek için gereken tüm adımları gözden geçirir. Aşağıdaki nedenlerle yapmak isteyebilirsiniz:
 
-* Bulutta Edge olaylarına tepki verin.
-* Olayları bulutta Event Grid iletmek ve Azure Event Hubs ya da Azure depolama kuyruklarını kullanarak olayları bulutta işlemeden önce arabelleğe almak için kullanın.
+* Buluttaki kenar olaylarına tepki ver.
+* Olayları bulutta Olay Kılavuzu'na iletin ve olayları bulutta işlemeden önce arabellek sağlamak için Azure Olay Hub'larını veya Azure Depolama kuyruklarını kullanın.
 
- Bu öğreticiyi tamamlayabilmeniz için [Edge](concepts.md) ve [Azure](../concepts.md)'da Event Grid kavramlarının anlaşılmasına ihtiyacınız vardır. Ek hedef türleri için bkz. [olay işleyicileri](event-handlers.md). 
+ Bu öğreticiyi tamamlamak için, [kenardaki](concepts.md) Olay Izgara kavramlarını ve [Azure'u](../concepts.md)anlamanız gerekir. Ek hedef türleri için [olay işleyicilerine](event-handlers.md)bakın. 
 
 ## <a name="prerequisites"></a>Ön koşullar 
-Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
+Bu öğreticiyi tamamlamak için şunları yapmanız gerekir:
 
-* **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
-* **Azure IoT Hub ve IoT Edge cihazı** -henüz yoksa [Linux](../../iot-edge/quickstart-linux.md) veya [Windows cihazlarında](../../iot-edge/quickstart.md) Hızlı Başlangıç bölümündeki adımları izleyin.
+* **Azure aboneliği** - Zaten hesabınız yoksa ücretsiz bir [hesap](https://azure.microsoft.com/free) oluşturun. 
+* **Azure IoT Hub ve IoT Edge aygıtı** - Linux [veya](../../iot-edge/quickstart-linux.md) [Windows aygıtlarınız](../../iot-edge/quickstart.md) yoksa hızlı başlatma adımlarını izleyin.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
-## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Bulutta olay Kılavuzu konusu ve abonelik oluşturma
+## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Bulutta olay ızgarası konusu ve abonelik oluşturma
 
-[Bu öğreticiyi](../custom-event-quickstart-portal.md)izleyerek bulutta bir olay Kılavuzu konusu ve abonelik oluşturun. Öğreticide daha sonra kullanacağınız yeni oluşturulan konunun `topicURL`, `sasKey`ve `topicName` unutmayın.
+[Bu öğreticiyi](../custom-event-quickstart-portal.md)izleyerek bulutta bir olay ızgarası konusu ve abonelik oluşturun. Not `topicURL`aşağı `sasKey`, `topicName` ve daha sonra öğretici kullanacağınız yeni oluşturulan konu.
 
-Örneğin, Batı ABD `testegcloudtopic` adlı bir konu oluşturduysanız, değerler şöyle görünür:
+Örneğin, Batı ABD'de `testegcloudtopic` adlı bir konu oluşturduysanız, değerler aşağıdaki gibi görünür:
 
-* **Topicurl**: `https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **TopicName**: `testegcloudtopic`
-* **Saskey**: konunun **AccessKey** altında bulunabilir. **KEY1**kullanın.
+* **KonuUrl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
+* **Konu Adı**:`testegcloudtopic`
+* **SasKey**: Konunun **AccessKey** altında kullanılabilir. **Tuşkullanın1**.
 
-## <a name="create-event-grid-topic-at-the-edge"></a>Kenarda olay kılavuzu oluşturma konusu
+## <a name="create-event-grid-topic-at-the-edge"></a>Kenarda olay ızgarası konusu oluşturma
 
-1. Aşağıdaki içeriğe sahip Topic3. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle topic3.json oluşturun. Yük le ilgili ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
         {
@@ -54,12 +54,12 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
           }
         }
     ```
-1. Konuyu oluşturmak için aşağıdaki komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
+1. Konuyu oluşturmak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
-1. Konunun başarıyla oluşturulduğunu doğrulamak için şu komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
+1. Konunun başarıyla oluşturulduğunu doğrulamak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
@@ -81,11 +81,11 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
         ]
    ```
   
-## <a name="create-event-grid-subscription-at-the-edge"></a>Kenarda Event Grid abonelik oluşturma
+## <a name="create-event-grid-subscription-at-the-edge"></a>Kenarda Olay Izgara aboneliği oluşturma
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Aşağıdaki içeriğe sahip subscription3. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içerikle subscription3.json oluşturun. Yük le ilgili ayrıntılar için [API belgelerimize](api.md) bakın.
 
    ```json
         {
@@ -103,7 +103,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
    ```
 
    >[!NOTE]
-   > **EndpointUrl** , bulutta Event Grid konusunun URL 'sini belirtir. **Saskey** Event Grid bulut konusunun anahtarına başvurur. **TopicName** içindeki değer tüm giden olayları Event Grid için damgalamak üzere kullanılacaktır. Bu, bir Event Grid etki alanı konusuna naklederken yararlı olabilir. Event Grid etki alanı konusu hakkında daha fazla bilgi için bkz. [olay etki alanları](../event-domains.md)
+   > **EndpointUrl,** Buluttaki Olay Izgara konu URL'sini belirtir. **sasKey** Olay Grid bulut konunun anahtarı anlamına gelir. **TopicName'deki** değer, Tüm Giden Olayları Olay Izgarası'na damgalamak için kullanılır. Bu, Olay Izgara etki alanı konusuna deftere naklederken yararlı olabilir. Olay Izgara etki alanı konusu hakkında daha fazla bilgi için [Olay etki alanları](../event-domains.md)
 
     Örneğin,
   
@@ -122,13 +122,13 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
         }
     ```
 
-2. Aboneliği oluşturmak için aşağıdaki komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
+2. Aboneliği oluşturmak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
 
      ```sh
      curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
      ```
 
-3. Aboneliğin başarıyla oluşturulduğunu doğrulamak için şu komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
+3. Aboneliğin başarıyla oluşturulduğunu doğrulamak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
@@ -155,9 +155,9 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
         }
     ```
 
-## <a name="publish-an-event-at-the-edge"></a>Bir olayı kenarda yayımlayın
+## <a name="publish-an-event-at-the-edge"></a>Bir etkinliği kenarda yayınlama
 
-1. Aşağıdaki içeriğe sahip event3. JSON oluşturun. Yük hakkındaki ayrıntılar için bkz. [API belgeleri](api.md) .
+1. Aşağıdaki içerikle event3.json oluşturun. Yük le ilgili ayrıntılar için [API belgelerine](api.md) bakın.
 
     ```json
         [
@@ -181,9 +181,9 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-edge-event-in-cloud"></a>Bulutta kenar olayını doğrulama
+## <a name="verify-edge-event-in-cloud"></a>Kenar olayını bulutta doğrulama
 
-Bulut konusu tarafından sunulan olayları görüntüleme hakkında daha fazla bilgi için [öğreticiye](../custom-event-quickstart-portal.md)bakın.
+Bulut konusu tarafından sunulan olayları görüntüleme hakkında bilgi için [öğreticiye](../custom-event-quickstart-portal.md)bakın.
 
 ## <a name="cleanup-resources"></a>Kaynakları temizleme
 
@@ -193,13 +193,13 @@ Bulut konusu tarafından sunulan olayları görüntüleme hakkında daha fazla b
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
 
-* Bulutta (Azure Event Grid) oluşturulan konu ve abonelikleri de silin.
+* Bulutta oluşturulan konuyu ve abonelikleri de silin (Azure Olay Idamı)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, kenarda bir olay yayımladınız ve Azure bulutu 'nda Event Grid iletilir. Artık, bulutta Event Grid iletmek için temel adımları öğrenmiş olduğunuza göre:
+Bu eğitimde, kenarda bir etkinlik yayınladınız ve Azure bulutundaki Olay Izgara'sına iletildiniz. Artık bulutta Event Grid'e ilerlemeniz için gereken temel adımları bildiğinize göre:
 
-* IoT Edge Azure Event Grid kullanmayla ilgili sorunları gidermek için bkz. [sorun giderme kılavuzu](troubleshoot.md).
-* Bu [öğreticiyi](forward-events-iothub.md) Izleyerek olayları ıothub 'e iletin
-* Bu [öğreticiyi](pub-sub-events-webhook-cloud.md) izleyerek etkinlikleri bulutta Web kancasına iletin
-* [Kenarda konuları ve abonelikleri izleyin](monitor-topics-subscriptions.md)
+* IoT Edge'de Azure Olay Kılavuzu'nu kullanmayla ilgili sorunları gidermek için [Sorun Giderme kılavuzuna](troubleshoot.md)bakın.
+* Bu [öğreticiyi](forward-events-iothub.md) izleyerek olayları IoTHub'a iletin
+* Bu öğreticiyi izleyerek olayları bulutta [Webhook'a](pub-sub-events-webhook-cloud.md) iletme
+* [Konuları ve abonelikleri kenarda izleme](monitor-topics-subscriptions.md)

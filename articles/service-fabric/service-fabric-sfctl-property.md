@@ -1,125 +1,125 @@
 ---
-title: Azure Service Fabric CLı-sfctl özelliği
-description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Özellikleri depolamak ve sorgulamak için komutların bir listesini içerir.
+title: Azure Servis Kumaş CLI- sfctl özelliği
+description: Azure Service Fabric komut satırı arabirimi sfctl hakkında bilgi edinin. Özellikleri depolamak ve sorgulamak için komutların listesini içerir.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905821"
 ---
 # <a name="sfctl-property"></a>sfctl property
-Service Fabric adları altında mağaza ve sorgu özellikleri.
+Hizmet Kumaşı adları altında özellikleri depolayın ve sorgulayın.
 
 ## <a name="commands"></a>Komutlar
 
 |Komut|Açıklama|
 | --- | --- |
-| delete | Belirtilen Service Fabric özelliğini siler. |
-| Al | Belirtilen Service Fabric özelliğini alır. |
-| list | Verilen bir ad altındaki tüm Service Fabric özellikleriyle ilgili bilgileri alır. |
-| konur | Service Fabric özelliği oluşturur veya güncelleştirir. |
+| delete | Belirtilen Hizmet Kumaşı özelliğini siler. |
+| get | Belirtilen Service Fabric özelliğini alır. |
+| list | Belirli bir ad altında tüm Service Fabric özellikleri hakkında bilgi alır. |
+| Koymak | Bir Service Fabric özelliği oluşturur veya güncelleştirir. |
 
-## <a name="sfctl-property-delete"></a>sfctl özelliği silme
-Belirtilen Service Fabric özelliğini siler.
+## <a name="sfctl-property-delete"></a>sfctl özellik silme
+Belirtilen Hizmet Kumaşı özelliğini siler.
 
-Verilen bir ad altında belirtilen Service Fabric özelliğini siler. Bir özelliğin silinebilmesi için önce oluşturulması gerekir.
+Belirtilen Hizmet Kumaşı özelliğini belirli bir ad altında siler. Bir özelliğin silinemeden önce oluşturulması gerekir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --ad-kimliği [gerekli] | ' Fabric\:' URI düzeni olmadan Service Fabric adı. |
-| --Özellik-adı [gerekli] | Alınacak özelliğin adını belirtir. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --isim-id [Gerekli] | Hizmet Kumaş adı, 'kumaş'\:URI düzeni olmadan. |
+| --özellik adı [Gerekli] | Almak için özelliğin adını belirtir. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-property-get"></a>sfctl özelliği al
+## <a name="sfctl-property-get"></a>sfctl özellik olsun
 Belirtilen Service Fabric özelliğini alır.
 
-Verilen bir ad altında belirtilen Service Fabric özelliğini alır. Bu, her zaman hem değeri hem de meta verileri döndürür.
+Belirtilen Service Fabric özelliğini belirli bir ad altında alır. Bu her zaman hem değer hem de meta veri döndürecektir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --ad-kimliği [gerekli] | ' Fabric\:' URI düzeni olmadan Service Fabric adı. |
-| --Özellik-adı [gerekli] | Alınacak özelliğin adını belirtir. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --isim-id [Gerekli] | Hizmet Kumaş adı, 'kumaş'\:URI düzeni olmadan. |
+| --özellik adı [Gerekli] | Almak için özelliğin adını belirtir. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
 ## <a name="sfctl-property-list"></a>sfctl özellik listesi
-Verilen bir ad altındaki tüm Service Fabric özellikleriyle ilgili bilgileri alır.
+Belirli bir ad altında tüm Service Fabric özellikleri hakkında bilgi alır.
 
-Bir Service Fabric ad, özel bilgileri depolayan bir veya daha fazla adlandırılmış özelliğe sahip olabilir. Bu işlem, bu özelliklerle ilgili bilgileri disk belleğine alınmış bir listede alır. Bilgiler, özelliklerin her biri hakkında ad, değer ve meta veriler içerir.
-
-### <a name="arguments"></a>Bağımsız Değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --ad-kimliği [gerekli] | ' Fabric\:' URI düzeni olmadan Service Fabric adı. |
-| --Devamlılık-belirteç | Devam belirteci parametresi, sonraki sonuç kümesini almak için kullanılır. Boş olmayan bir değere sahip devamlılık belirteci, sistemin sonuçları tek bir yanıta sığmıyor olduğunda API 'nin yanıtına dahil edilir. Bu değer sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa devamlılık belirteci bir değer içermez. Bu parametrenin değeri, URL kodlamalı olmamalıdır. |
-| --Include-Values | Döndürülen özelliklerin değerlerinin eklenip eklenmeyeceğini belirtmeye izin verir. Değerlerin meta verilerle döndürülmesi gerekiyorsa true; Yalnızca özellik meta verilerini döndürmek için false. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
-
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
-
-## <a name="sfctl-property-put"></a>sfctl özelliği koy
-Service Fabric özelliği oluşturur veya güncelleştirir.
-
-Verilen bir ad altında belirtilen Service Fabric özelliğini oluşturur veya güncelleştirir.
+Hizmet Kumaşı adında özel bilgiler depolayan bir veya daha fazla adlandırılmış özellik olabilir. Bu işlem, bu özellikler le ilgili bilgileri sayfalı bir listede alır. Bilgiler, özelliklerin her biri hakkında ad, değer ve meta verileri içerir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --ad-kimliği [gerekli] | ' Fabric\:' URI düzeni olmadan Service Fabric adı. |
-| --Özellik-adı [gerekli] | Service Fabric özelliğinin adı. |
-| --değer [gerekli] | Service Fabric özellik değerini açıklar. Bu bir JSON dizesidir. <br><br> JSON dizesinde iki alan, verilerin ' Kind ' değeri ve değerin ' Data ' olarak girilen değeri. ' Kind ' değeri, JSON dizesinde görüntülenecek ilk öğe olmalıdır ve ' binary ', ' Int64 ', ' Double ', ' String ' veya ' Guid ' değerleri olabilir. Değer, verilen türlere serileştirilmelidir. Hem ' Kind ' hem de ' Data ' değerleri dize olarak sağlanmalıdır. |
-| --Özel kimliği-tür | Özelliğin özel tür KIMLIĞI. Bu özelliği kullanarak, Kullanıcı özelliğin değerinin türünü etiketleyebilir. |
-| --timeout-t | Varsayılan\: 60. |
+| --isim-id [Gerekli] | Hizmet Kumaş adı, 'kumaş'\:URI düzeni olmadan. |
+| --devam-belirteç | Devamı belirteç parametresi sonraki sonuç kümesini elde etmek için kullanılır. Sistemden elde edilen sonuçlar tek bir yanıta sığmıyorsa, BOŞ olmayan bir değere sahip bir devam belirteci API'nın yanıtına dahil edilir. Bu değer bir sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa, devam belirteci bir değer içermez. Bu parametrenin değeri URL kodlanmış olmamalıdır. |
+| --dahil-değerler | Döndürülen özelliklerin değerlerinin dahil edilip edilemeyeceğini belirtmeyi sağlar. Değerler meta verilerle döndürülecekse doğru; Yalnızca özellik meta verilerini döndürmek için yanlış. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+
+## <a name="sfctl-property-put"></a>sfctl özellik koymak
+Bir Service Fabric özelliği oluşturur veya güncelleştirir.
+
+Belirtilen Service Fabric özelliğini belirli bir ad altında oluşturur veya güncelleştirir.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --isim-id [Gerekli] | Hizmet Kumaş adı, 'kumaş'\:URI düzeni olmadan. |
+| --özellik adı [Gerekli] | Service Fabric özelliğinin adı. |
+| --değer [Gerekli] | Hizmet Kumaşı özellik değerini açıklar. Bu bir JSON ipi. <br><br> json dizesi, verilerin 'Türü' ve verilerin 'Veri' olarak girilen değeri olmak üzere iki alana sahiptir. 'Tür' değeri JSON dizesi'nde görünen ilk öğe olmalıdır ve 'İkili', 'Int64', 'Double', 'String' veya 'Guid' değerleri olabilir. Değer, verilen türlere serileştirilebilen olmalıdır. Hem 'Tür' hem de 'Veri' değerleri dizeleri olarak sağlanmalıdır. |
+| --özel id türü | Tesisin özel tip kimliği. Bu özelliği kullanarak, kullanıcı özelliğinin değeri türünü etiketlemek mümkün. |
+| --zaman ayarı -t | Varsayılan\: 60. |
+
+### <a name="global-arguments"></a>Küresel Argümanlar
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- Servis Kumaş ı CLI'yi [ayarlayın.](service-fabric-cli.md)
+- [Örnek komut dosyalarını](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI'yi nasıl kullanacağınızı öğrenin.

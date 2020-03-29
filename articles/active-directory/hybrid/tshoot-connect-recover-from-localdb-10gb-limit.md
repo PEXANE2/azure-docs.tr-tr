@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: 10 GB sınırı sorunundan Localdb'den kurtarma | Microsoft Docs"
-description: Bu konu, Azure AD Connect eşitleme hizmeti LocalDB 10 GB karşılaştığında kurtarmak açıklar sorunu sınırlayın.
+title: 'Azure AD Connect: LocalDB 10GB limit sorunundan nasıl kurtarılabilen | Microsoft Dokümanlar'
+description: Bu konu, LocalDB 10GB sınır sorunuyla karşılaştığında Azure AD Connect Eşitleme Hizmeti'nin nasıl kurtarılabildiğini açıklar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,91 +17,91 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60386933"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: LocalDB 10 GB sınırından kurtarma
-Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Azure AD Connect ile yüklenen varsayılan SQL Server 2012 Express LocalDB’yi kullanabileceğiniz gibi, kendi tam SQL’nizi de kullanabilirsiniz. SQL Server Express 10 GB boyut sınırını uygular. LocalDB’yi kullanırken bu sınıra ulaşıldığında, Azure AD Connect Eşitleme Hizmeti artık düzgün başlatılamaz veya eşitleme yapamaz. Bu makalede, Kurtarma adımları sağlar.
+Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Azure AD Connect ile yüklenen varsayılan SQL Server 2012 Express LocalDB’yi kullanabileceğiniz gibi, kendi tam SQL’nizi de kullanabilirsiniz. SQL Server Express 10 GB boyut sınırını uygular. LocalDB’yi kullanırken bu sınıra ulaşıldığında, Azure AD Connect Eşitleme Hizmeti artık düzgün başlatılamaz veya eşitleme yapamaz. Bu makalede kurtarma adımları sağlar.
 
 ## <a name="symptoms"></a>Belirtiler
-İki ortak belirtileri vardır:
+İki yaygın belirti vardır:
 
-* Azure AD Connect eşitleme hizmeti **çalıştıran** eşitleme başarısız olduğunda *"durduruldu-veritabanı-disk dolu"* hata.
+* Azure AD Connect Eşitleme Hizmeti **çalışıyor,** ancak *"durduruldu-veritabanı-disk dolu"* hatasıyla eşitleme de başarısız oluyor.
 
-* Azure AD Connect eşitleme hizmeti **başlatılamadı çünkü**. Hizmeti başlatmak denediğinizde, olay 6323 ve hata iletisi ile başarısız *"SQL sunucusu disk alanı yetersiz olduğundan sunucu bir hatayla karşılaştı."*
+* Azure AD Connect Eşitleme Hizmeti **başlatılamıyor.** Hizmeti başlatmayı denediğinizde, 6323 olayı ve hata iletisi "SQL Server disk alanı dışında olduğu için *sunucu bir hatayla karşılaştı."*
 
 ## <a name="short-term-recovery-steps"></a>Kısa vadeli kurtarma adımları
-Bu bölümde, Azure AD Connect eşitleme işlemi devam ettirmek hizmeti için gerekli veritabanı alanını geri kazanarak adımları sağlar. Adımları içerir:
-1. [Eşitleme hizmeti durumunu belirleme](#determine-the-synchronization-service-status)
-2. [Veritabanı Daralt](#shrink-the-database)
-3. [Geçmiş verileri çalıştırmak Sil](#delete-run-history-data)
-4. [Çalıştırma geçmişi verilerini saklama süresini kısaltın](#shorten-retention-period-for-run-history-data)
+Bu bölümde, Azure AD Connect Eşitleme Hizmeti'nin çalışmaya devam etmesi için gereken DB alanını geri almak için adımlar sağlanmaktadır. Adımlar şunlardır:
+1. [Eşitleme Hizmeti durumunu belirleme](#determine-the-synchronization-service-status)
+2. [Veritabanını küçültme](#shrink-the-database)
+3. [Çalışma geçmişi verilerini silme](#delete-run-history-data)
+4. [Çalışma geçmişi verileri için bekletme süresini kısaltma](#shorten-retention-period-for-run-history-data)
 
-### <a name="determine-the-synchronization-service-status"></a>Eşitleme hizmeti durumunu belirleme
-İlk olarak, eşitleme hizmeti olmadığını hala çalışıp çalışmadığını belirleyin:
+### <a name="determine-the-synchronization-service-status"></a>Eşitleme Hizmeti durumunu belirleme
+İlk olarak, Eşitleme Hizmeti'nin hala çalışıp çalışmadığını belirleyin:
 
-1. Azure AD Connect sunucunuza yönetici olarak oturum açın.
+1. Azure AD Connect sunucunuzda yönetici olarak oturum açın.
 
-2. Git **Hizmet Denetimi Yöneticisi**.
+2. Servis **Kontrol Yöneticisi'ne**gidin.
 
-3. Durumunu **Microsoft Azure AD eşitleme**.
+3. Microsoft Azure **AD Eşitleme**durumunu denetleyin.
 
 
-4. Çalışıyorsa, durdurmaz ya hizmeti yeniden başlatın. Atla [veritabanını küçültmek](#shrink-the-database) adım ve Git [silme çalıştırma geçmişini](#delete-run-history-data) adım.
+4. Çalışıyorsa, hizmeti durdurmayın veya yeniden başlatmayın. [Veritabanı adımını küçült'ün](#shrink-the-database) ve [geçmiş verilerini sil'e](#delete-run-history-data) gidin.
 
-5. Çalışmıyorsa, hizmeti başlatmayı deneyin. Hizmet başarıyla başlatılırsa, atlama [veritabanını küçültmek](#shrink-the-database) adım ve Git [silme çalıştırma geçmişini](#delete-run-history-data) adım. Aksi takdirde devam [veritabanını küçültmek](#shrink-the-database) adım.
+5. Çalışmıyorsa, hizmeti başlatmayı deneyin. Hizmet başarıyla başlarsa, [veritabanı adımını küçült'ün](#shrink-the-database) u yedin ve [geçmiş verilerini sil'e](#delete-run-history-data) gidin. Aksi takdirde, [veritabanı adımını küçültmeye devam edin.](#shrink-the-database)
 
-### <a name="shrink-the-database"></a>Veritabanı Daralt
-Eşitleme hizmeti başlatmak için yeterli DB yer kazanmak için küçültme işlemini kullanın. Bu, veritabanında boşluk kaldırarak DB alanını boşaltır. Bu adım, alan her zaman kurtarabilirsiniz garanti mümkün olan en iyi aynıdır. Küçültme işlemi hakkında daha fazla bilgi edinmek için bu makaleyi okuyun [bir veritabanını küçültmek](https://msdn.microsoft.com/library/ms189035.aspx).
+### <a name="shrink-the-database"></a>Veritabanını küçültme
+Eşitleme Hizmetini başlatmak için yeterli DB alanı boşaltmak için Shrink işlemini kullanın. Veritabanındaki beyaz boşlukları kaldırarak DB alanını boşaltır. Her zaman yer kurtarabileceğiniz garanti edilmez gibi bu adım en iyi çabadır. Shrink işlemi hakkında daha fazla bilgi edinmek için bu makaleyi okuyun [Bir veritabanını küçültün.](https://msdn.microsoft.com/library/ms189035.aspx)
 
 > [!IMPORTANT]
-> Eşitleme hizmetini çalıştırmak için size bu adımı atlayın. SQL DB, artan parçalanma nedeniyle kötü performansa neden olabileceğinden daraltmak için önerilmez.
+> Eşitleme Hizmetini çalıştırabiliyorsanız bu adımı atlayın. Artan parçalanma nedeniyle düşük performansa yol açabileceğinden, SQL DB'nin küçültilmesi önerilmez.
 
-Azure AD Connect için oluşturduğunuz veritabanına adıdır **ADSync**. Küçültme işlemi gerçekleştirmek için sysadmin veya veritabanı DBO'su olarak oturum açmalısınız. Azure AD Connect yüklemesi sırasında aşağıdaki hesapları sysadmin hakları bahşedilir:
+Azure AD Connect için oluşturulan veritabanının adı **ADSync'dir.** Shrink işlemini gerçekleştirmek için veritabanının sysadmin veya DBO olarak oturum açmanız gerekir. Azure AD Connect yüklemesi sırasında aşağıdaki hesaplara sysadmin hakları verilir:
 * Yerel Yöneticiler
-* Azure AD Connect yüklemesi çalıştırmak için kullanılan kullanıcı hesabı.
-* Azure AD Connect eşitleme hizmeti işletim bağlamı olarak kullanılan eşitleme hizmeti hesabı.
-* Yükleme sırasında oluşturulan ADSyncAdmins yerel grup.
+* Azure AD Connect yüklemesini çalıştırmak için kullanılan kullanıcı hesabı.
+* Azure AD Connect Senkronizasyon Hizmeti'nin işletim bağlamı olarak kullanılan Eşitleme Hizmeti hesabı.
+* Yükleme sırasında oluşturulan yerel grup ADSyncAdmins.
 
-1. Geri kopyalayarak veritabanını **ADSync.mdf** ve **ADSync_log.ldf** altında bulunan dosyaları `%ProgramFiles%\Microsoft Azure AD Sync\Data` güvenli bir konuma.
+1. Altında `%ProgramFiles%\Microsoft Azure AD Sync\Data` bulunan **ADSync.mdf** ve **ADSync_log.ldf** dosyalarını güvenli bir konuma kopyalayarak veritabanını yedekleyin.
 
 2. Yeni bir PowerShell oturumu başlatın.
 
-3. Klasörüne gidin `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`.
+3. Klasöre `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`gidin.
 
-4. Başlangıç **sqlcmd** komutu çalıştırarak yardımcı programı `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`, kimlik bilgisi bir sysadmin veya veritabanı DBO kullanarak.
+4. Bir sysadmin veya `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`veritabanı DBO kimlik kullanarak komutu çalıştırarak **sqlcmd** yardımcı programı başlatın.
 
-5. Sqlcmd komut isteminde bir veritabanı daraltmak için (1 >), girin `DBCC Shrinkdatabase(ADSync,1);`çizgidir `GO` sonraki satırdaki.
+5. Veritabanını küçültmek için, sqlcmd komut istemi `DBCC Shrinkdatabase(ADSync,1);`(1 `GO`>) girin, sonraki satırda takip.
 
-6. İşlem başarılı olursa, eşitleme hizmeti yeniden başlatmayı deneyin. Eşitleme hizmeti başlatabiliyorsanız, Git [silme çalıştırma geçmişini](#delete-run-history-data) adım. Aksi durumda, desteğe başvurun.
+6. İşlem başarılı olursa, Eşitleme Hizmetini yeniden başlatmayı deneyin. Eşitleme Hizmetini başlatabilirseniz, geçmiş [verilerini sil'e](#delete-run-history-data) gidin. Değilse, Destek'e başvurun.
 
-### <a name="delete-run-history-data"></a>Geçmiş verileri çalıştırmak Sil
-Varsayılan olarak, Azure AD Connect için çalıştırma geçmişi verilerini yedi gün değerinde yukarı korur. Bu adımda, size Azure AD Connect eşitleme hizmeti yeniden eşitlemeyi başlayabilmesi veritabanı alanını geri kazanarak çalıştırma geçmişi verilerini silin.
+### <a name="delete-run-history-data"></a>Çalışma geçmişi verilerini silme
+Varsayılan olarak, Azure AD Connect yedi güne kadar çalışan geçmiş verilerini korur. Bu adımda, Azure AD Connect Eşitleme Hizmeti'nin yeniden eşitlenmeye başlayabilmesi için DB alanını geri almak için çalışan geçmiş verilerini siliyoruz.
 
-1. Başlangıç **Eşitleme Hizmeti Yöneticisi** → Başlangıç eşitleme hizmetine giderek.
+1. START → Eşitleme Hizmeti'ne giderek **Eşitleme Hizmet Yöneticisi'ni** başlatın.
 
-2. Git **işlemleri** sekmesi.
+2. **İşlemler** sekmesine gidin.
 
-3. Altında **eylemleri**seçin **Temizle çalıştırmaları**...
+3. **Eylemler**altında, **Açık Çalışır'ı**seçin ...
 
-4. Ya da tercih edebilirsiniz **tüm çalıştırmalar Temizle** veya **Temizle çalıştıran önce... \<tarih >** seçeneği. İki günden eski olan geçmiş verileri çalıştırmak temizleyerek Başlat önerilir. DB boyutu sorunu çalıştırmaya devam ederseniz, ardından **tüm çalıştırmalar Temizle** seçeneği.
+4. **Tüm çalıştırmaları temizle'yi** veya daha önce **çalıştır'ı temizle'yi seçebilirsiniz... tarih \<>** seçenek. İki günden eski olan çalışma geçmişi verilerini temizleyerek başlamanız önerilir. DB boyutu sorunuyla karşınıza devam ederseniz, **tüm çalıştırmaları temizle** seçeneğini belirleyin.
 
-### <a name="shorten-retention-period-for-run-history-data"></a>Çalıştırma geçmişi verilerini saklama süresini kısaltın
-Bu adım, birden çok eşitleme döngülerinizin sonra 10 GB sınırına sorunu çalıştıran olasılığını azaltmaktır.
+### <a name="shorten-retention-period-for-run-history-data"></a>Çalışma geçmişi verileri için bekletme süresini kısaltma
+Bu adım, birden çok eşitleme döngüsünden sonra 10 GB'lık sınır sorununa girme olasılığını azaltmaktır.
 
 1. Yeni bir PowerShell oturumu açın.
 
-2. Çalıştırma `Get-ADSyncScheduler` ve geçerli saklama süresinin belirtir PurgeRunHistoryInterval özelliğini not edin.
+2. Geçerli `Get-ADSyncScheduler` bekletme süresini belirten PurgeRunHistoryInterval özelliğini çalıştırın ve not alın.
 
-3. Çalıştırma `Set-ADSyncScheduler -PurgeRunHistoryInterval 2.00:00:00` iki güne ilişkin saklama süresini ayarlamak için. Saklama dönemi uygun şekilde ayarlayın.
+3. Bekletme süresini iki güne ayarlamak için çalıştırın. `Set-ADSyncScheduler -PurgeRunHistoryInterval 2.00:00:00` Bekletme süresini uygun şekilde ayarlayın.
 
-## <a name="long-term-solution--migrate-to-full-sql"></a>Uzun süreli çözüm – tam SQL'e geçirme
-Genel olarak, sorunu 10 GB veritabanı boyutu artık şirket içi Active Directory'nizi Azure ad eşitleme Azure AD Connect için yeterli olduğunu gösterir. SQL server'ın tam sürümünü kullanmaya geçmeniz özellikle önerilir. Mevcut Azure AD Connect dağıtımının LocalDB’sini doğrudan tüm SQL sürümünün veritabanıyla değiştiremezsiniz. Bunun yerine, tam SQL sürümü içeren yeni bir Azure AD Connect sunucusu dağıtmanız gerekir. Yeni Azure AD Connect sunucusunun (SQL DB ile), mevcut Azure AD Connect sunucusunun (LocalDB ile) yanında hazırlık sunucusu olarak dağıtıldığı durumlarda, Swing geçişi yapmanız önerilir. 
+## <a name="long-term-solution--migrate-to-full-sql"></a>Uzun vadeli çözüm – Tam SQL'e geçir
+Genel olarak sorun, 10 GB veritabanı boyutunun artık Azure AD Connect'in şirket içi Active Directory'nizi Azure AD ile senkronize etmesi için yeterli olmadığını gösterir. SQL sunucusunun tam sürümünü kullanmaya geçmeniz önerilir. Mevcut Azure AD Connect dağıtımının LocalDB’sini doğrudan tüm SQL sürümünün veritabanıyla değiştiremezsiniz. Bunun yerine, tam SQL sürümü içeren yeni bir Azure AD Connect sunucusu dağıtmanız gerekir. Yeni Azure AD Connect sunucusunun (SQL DB ile), mevcut Azure AD Connect sunucusunun (LocalDB ile) yanında hazırlık sunucusu olarak dağıtıldığı durumlarda, Swing geçişi yapmanız önerilir. 
 * Azure AD Connect ile uzak SQL’i yapılandırma yönergeleri için, [Azure AD Connect özel yüklemesi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom) makalesine bakın.
-* Azure AD Connect yükseltmesinde Swing geçişi için, [Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration) makalesine bakın.
+* Azure AD Connect yükseltmesinde Swing geçişi için, [Azure AD Connect: Önceki bir sürümden en son sürümü yükseltme](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration) makalesine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

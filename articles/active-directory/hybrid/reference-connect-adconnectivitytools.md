@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADConnectivityTools PowerShell başvurusu | Microsoft Docs'
-description: Bu belge ADConnectivityTools.psm1 PowerShell modülü için başvuru bilgileri sağlar.
+title: 'Azure AD Connect: ADConnectivityTools PowerShell Başvuru | Microsoft Dokümanlar'
+description: Bu belge ADConnectivityTools.psm1 PowerShell modülü için referans bilgileri sağlar.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,21 +11,21 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66473792"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  ADConnectivityTools PowerShell başvurusu
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools PowerShell Başvurusu
 
-Aşağıdaki belgeler Azure AD Connect ile birlikte sağlanan ADConnectivityTools.psm1 PowerShell modülü için başvuru bilgileri sağlar.
+Aşağıdaki belgeler, Azure AD Connect ile birlikte verilen ADConnectivityTools.psm1 PowerShell Modülü için referans bilgileri sağlar.
 
-## <a name="confirm-dnsconnectivity"></a>DnsConnectivity onaylayın
+## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
 ### <a name="synopsis"></a>ÖZET
 
-Yerel Dns sorunları algılar.
+Yerel Dns sorunlarını algılar.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -35,8 +35,8 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 
 ### <a name="description"></a>AÇIKLAMA
 
-Yerel Dns bağlantı testleri çalıştırır.
-Active Directory Bağlayıcısı'nı yapılandırmak için kullanıcı bunlar bağlanmaya de etki alanı denetleyicileri bu ormana ilişkili olduğu gibi bir orman için her iki ad ÇözümlemesiEş olması gerekir.
+Yerel Dns bağlantı testleri çalıştırıyor.
+Active Directory bağlayıcısını yapılandırmak için, kullanıcının bağlanmaya çalıştığı orman için hem de bu ormanla ilişkili etki alanı denetleyicilerinde hem ad çözümlü olması gerekir.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -56,7 +56,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 
 #### <a name="-forest"></a>-Orman
 
-Karşı test etmek için orman adını belirtir.
+Karşı test etmek için ormanın adını belirtir.
 
 ```yml
 Type: String
@@ -70,9 +70,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC'leri
+#### <a name="-dcs"></a>-DC'ler
 
-Sınanacak DC'leri belirtin.
+Karşı sınamak için DC'ler belirtin.
 
 ```yml
 Type: Array
@@ -88,8 +88,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Bu tanılama sonucu bir PSObject biçiminde döndürür.
-Bu aracı el ile etkileşim sırasında gerekli değildir.
+Bu tanının sonucunu PSObject şeklinde döndürür.
+Bu araçla manuel etkileşim sırasında gerekli değildir.
 
 ```yml
 Type: SwitchParameter
@@ -106,13 +106,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="confirm-forestexists"></a>ForestExists onaylayın
+## <a name="confirm-forestexists"></a>Onayla-OrmanVar
 
 ### <a name="synopsis"></a>ÖZET
 
-Belirtilen orman olup olmadığını belirler.
+Belirtilen bir ormanın var olup olmadığını belirler.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -122,7 +122,7 @@ Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 
 ### <a name="description"></a>AÇIKLAMA
 
-Bir orman ile ilişkili IP adresleri için bir DNS sunucusunu sorgular.
+Bir ormanla ilişkili IP adresleri için bir DNS sunucusunu sorgular.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -136,7 +136,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 #### <a name="-forest"></a>-Orman
 
-Karşı test etmek için orman adını belirtir.
+Karşı test etmek için ormanın adını belirtir.
 
 ```yml
 Type: String
@@ -153,13 +153,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="confirm-functionallevel"></a>FunctionalLevel onaylayın
+## <a name="confirm-functionallevel"></a>Onayla-İşlevsel Düzey
 
 ### <a name="synopsis"></a>ÖZET
 
-AD ormanı işlev düzeyi doğrular.
+AD orman işlevsel düzeyini doğrular.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -177,8 +177,8 @@ Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCrede
 
 ### <a name="description"></a>AÇIKLAMA
 
-AD ormanı işlev düzeyi eşit veya birden çok belirli bir MinAdForestVersion (WindowsServer2003) olduğunu doğrular.
-Hesabı (etki alanı\kullanıcı adı) ve parolası istenebilir.
+AD ormanı işlev düzeyinin belirli bir MinAdForestVersion'a (WindowsServer2003) eşit veya daha fazla olduğunu doğrular.
+Hesap (Domain\Username) ve Şifre istenebilir.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -205,7 +205,7 @@ Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCre
 #### <a name="-forest"></a>-Orman
 
 Hedef orman.
-Şu anda oturum açmış kullanıcının orman varsayılan değerdir.
+Varsayılan değer, şu anda oturum açmış olan kullanıcının Ormanı'dır.
 
 ```yml
 Type: String
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 
 #### <a name="-forestfqdn"></a>-ForestFQDN
 
-Hedef ForestFQDN nesnesi.
+ForestFQDN nesnesi hedef.
 
 ```yml
 Type: Forest
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-İşlevi, bilgisayarda oturum açmış kullanıcının kimlik bilgilerini değil kullanıcıdan istekte bulunan özel kimlik bilgilerini kullanır.
+İşlev, kullanıcıdan özel kimlik bilgileri istemek yerine, şu anda bilgisayarda günlüğe kaydedilmiş olan kullanıcının kimlik bilgilerini kullanır.
 
 ```yml
 Type: SwitchParameter
@@ -254,13 +254,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="confirm-networkconnectivity"></a>NetworkConnectivity onaylayın
+## <a name="confirm-networkconnectivity"></a>Onayla-AğBağlantısı
 
 ### <a name="synopsis"></a>ÖZET
 
-Yerel ağ bağlantısı sorunları algılar.
+Yerel ağ bağlantısı sorunlarını algılar.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -270,10 +270,10 @@ Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObje
 
 ### <a name="description"></a>AÇIKLAMA
 
-Yerel ağ bağlantısı testleri çalıştırır.
+Yerel ağ bağlantısı testlerini çalıştırın.
 
-Yerel ağ testler için AAD Connect bu testi şu anda tümleştirilmiş neden olan bağlantı noktası 53'ün (DNS), 88 (Kerberos) ve 389 çoğu kuruluş, DNS, DC'leri üzerinde çalıştırın. (LDAP) adlı etki alanı denetleyicilerinde ile iletişim kurabildiğini olması gerekir.
-Başka bir DNS sunucusu belirtilirse, bağlantı noktası 53 atlanmalıdır.
+Yerel ağ testleri için AAD Connect, 53 (DNS), 88 (Kerberos) ve 389 (LDAP) bağlantı noktalarında ki adlandırılmış etki alanı denetleyicileriyle iletişim kurabilmeli ve çoğu kuruluş DC'lerinde DNS çalıştırabilir ve bu nedenle bu test şu anda tümleşik tir.
+Başka bir DNS sunucusu belirtilmişse Bağlantı Noktası 53 atlanmalıdır.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -291,9 +291,9 @@ Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbos
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-dcs"></a>-DC'leri
+#### <a name="-dcs"></a>-DC'ler
 
-Sınanacak DC'leri belirtin.
+Karşı sınamak için DC'ler belirtin.
 
 ```yml
 Type: Array
@@ -309,8 +309,8 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Kullanıcının AD Site tarafından sağlanan DNS hizmetleri kullanmıyorsa / denetimi bağlantı noktası 53 atlamak oturum açma DC sonra isteyebilirsiniz.
-Kullanıcı hala _.ldap._tcp çözümleyebilmesi gerekir. \<forestfqdn\> sırada başarılı olması Active Directory Bağlayıcısı yapılandırması.
+Kullanıcı AD Sitesi / Logon DC tarafından sağlanan DNS hizmetlerini kullanmıyorsa, bağlantı noktası 53'ü denetlemeyi atlamak isteyebilir.
+Kullanıcı hala _.ldap._tcp çözmek gerekir. \<Active Directory\> Connector yapılandırmasının başarılı olması için forestfqdn.
 
 ```yml
 Type: SwitchParameter
@@ -326,8 +326,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Bu tanılama sonucu bir PSObject biçiminde döndürür.
-Bu aracı el ile etkileşim sırasında gerekli değildir.
+Bu tanının sonucunu PSObject şeklinde döndürür.
+Bu araçla manuel etkileşim sırasında gerekli değildir.
 
 ```yml
 Type: SwitchParameter
@@ -344,13 +344,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="confirm-targetsarereachable"></a>TargetsAreReachable onaylayın
+## <a name="confirm-targetsarereachable"></a>Onayla-HedeflerUlaşılabilir
 
 ### <a name="synopsis"></a>ÖZET
 
-Belirtilen orman ve onun ilişkili etki alanı denetleyicileri erişilebilir olup olmadığını belirler.
+Belirli bir ormana ve ilişkili Etki Alanı Denetleyicilerine erişilip erişilemeyilebildiğini belirler.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -360,7 +360,7 @@ Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters
 
 ### <a name="description"></a>AÇIKLAMA
 
-Çalıştırmaları "ping testleri (olup bir bilgisayar, ağ ve/veya internet üzerinden bir hedef bilgisayara ulaşabilirsiniz)"
+"Ping" testlerini çalıştırıyor (bir bilgisayarın hedef bilgisayara ağ ve/veya internet üzerinden erişip ulaşamayacağı)
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -380,7 +380,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 #### <a name="-forest"></a>-Orman
 
-Karşı test etmek için orman adını belirtir.
+Karşı test etmek için ormanın adını belirtir.
 
 ```yml
 Type: String
@@ -394,9 +394,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC'leri
+#### <a name="-dcs"></a>-DC'ler
 
-Sınanacak DC'leri belirtin.
+Karşı sınamak için DC'ler belirtin.
 
 ```yml
 Type: Array
@@ -413,13 +413,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="confirm-validdomains"></a>ValidDomains onaylayın
+## <a name="confirm-validdomains"></a>Onayla-Geçerli Etki Alanları
 
 ### <a name="synopsis"></a>ÖZET
 
-Elde edilen orman FQDN'si etki alanlarında erişilebilir olduğunu doğrulayın
+Elde edilen Orman FQDN'deki etki alanlarının ulaşılabilir olduğunu doğrulayın
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -437,8 +437,8 @@ Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredenti
 
 ### <a name="description"></a>AÇIKLAMA
 
-Tüm etki alanlarının elde edilen orman FQDN'si DomainGuid ve DomainDN almaya çalışırken tarafından erişilebilir olduğunu doğrulayın.
-Hesabı (etki alanı\kullanıcı adı) ve parolası istenebilir.
+Alan Adı Guid ve DomainDN'i almaya çalışarak, elde edilen Orman FQDN'deki tüm etki alanlarının erişilebildiğini doğrulayın.
+Hesap (Domain\Username) ve Şifre istenebilir.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -480,7 +480,7 @@ Accept wildcard characters: False
 
 #### <a name="-forestfqdn"></a>-ForestFQDN
 
-Hedef ForestFQDN nesnesi.
+ForestFQDN nesnesi hedef.
 
 ```yml
 Type: Forest
@@ -496,7 +496,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-İşlevi, bilgisayarda oturum açmış kullanıcının kimlik bilgilerini değil kullanıcıdan istekte bulunan özel kimlik bilgilerini kullanır.
+İşlev, kullanıcıdan özel kimlik bilgileri istemek yerine, şu anda bilgisayarda günlüğe kaydedilmiş olan kullanıcının kimlik bilgilerini kullanır.
 
 ```yml
 Type: SwitchParameter
@@ -513,13 +513,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="confirm-validenterpriseadmincredentials"></a>ValidEnterpriseAdminCredentials onaylayın
+## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>ÖZET
 
-Bir kullanıcının kuruluş yöneticisi kimlik bilgilerine sahip olup olmadığını doğrular.
+Bir kullanıcının Enterprise Admin kimlik bilgileri varsa doğrular.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -529,8 +529,8 @@ Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredential
 
 ### <a name="description"></a>AÇIKLAMA
 
-Sağlanan kuruluş yöneticisi kimlik bilgilerini kullanıcının arar.
-Hesabı (etki alanı\kullanıcı adı) ve parolası istenebilir.
+Sağlanan kullanıcının Enterprise Admin kimlik bilgileri varsa arar.
+Hesap (Domain\Username) ve Şifre istenebilir.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -550,7 +550,7 @@ Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-İşlevi, bilgisayarda oturum açmış kullanıcının kimlik bilgilerini değil kullanıcıdan istekte bulunan özel kimlik bilgilerini kullanır.
+İşlev, kullanıcıdan özel kimlik bilgileri istemek yerine, şu anda bilgisayarda günlüğe kaydedilmiş olan kullanıcının kimlik bilgilerini kullanır.
 
 ```yml
 Type: SwitchParameter
@@ -567,13 +567,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
+## <a name="get-domainfqdndata"></a>DomainFQDNData
 
 ### <a name="synopsis"></a>ÖZET
 
-Bir hesap ve parola birleşimini dışında bir DomainFQDN alır.
+Bir hesap ve parola kombinasyonundan bir DomainFQDN alır.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -584,9 +584,9 @@ Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUs
 
 ### <a name="description"></a>AÇIKLAMA
 
-Sağlanan kimlik bilgileri dışında bir domainFQDN nesnesi almayı dener.
-DomainFQDN DomainFQDNName veya RootDomainName, kullanıcının seçimine bağlı olarak döndürülecek geçerli ise.
-Hesabı (etki alanı\kullanıcı adı) ve parolası istenebilir.
+Sağlanan kimlik bilgileri dışında bir etki alanıFQDN nesnesi elde etmeye çalışır.
+Etki alanıFQDN geçerliyse, kullanıcının seçimine bağlı olarak bir DomainFQDNName veya RootDomainName döndürülür.
+Hesap (Domain\Username) ve Şifre istenebilir.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -606,8 +606,8 @@ Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInU
 
 #### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
-Tür alınır veri istenen.
-Şu anda "DomainFQDNName" veya "RootDomainName" sınırlı.
+Alınacak istenilen veri türü.
+Şu anda "DomainFQDNName" veya "RootDomainName" ile sınırlıdır.
 
 ```yml
 Type: String
@@ -623,7 +623,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-İşlevi, bilgisayarda oturum açmış kullanıcının kimlik bilgilerini değil kullanıcıdan istekte bulunan özel kimlik bilgilerini kullanır.
+İşlev, kullanıcıdan özel kimlik bilgileri istemek yerine, şu anda bilgisayarda günlüğe kaydedilmiş olan kullanıcının kimlik bilgilerini kullanır.
 
 ```yml
 Type: SwitchParameter
@@ -637,9 +637,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-returnexceptiononerror"></a>-ReturnExceptionOnError
+#### <a name="-returnexceptiononerror"></a>-İadeÖzel Hatası
 
-Başlangıç NetworkConnectivityDiagnosisTools işlevi tarafından kullanılan yardımcı parametresi
+Start-NetworkConnectivityDiagnosisTools fonksiyonu tarafından kullanılan yardımcı parametre
 
 ```yml
 Type: SwitchParameter
@@ -656,13 +656,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="get-forestfqdn"></a>Get-ForestFQDN
+## <a name="get-forestfqdn"></a>Al-ForestFQDN
 
 ### <a name="synopsis"></a>ÖZET
 
-Bir hesap ve parola birleşimini dışında bir ForestFQDN alır.
+Bir hesap ve parola kombinasyonundan forestFQDN alır.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -672,8 +672,8 @@ Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<C
 
 ### <a name="description"></a>AÇIKLAMA
 
-Sağlanan kimlik bilgileri dışında bir ForestFQDN almayı dener.
-Hesabı (etki alanı\kullanıcı adı) ve parolası istenebilir.
+Sağlanan kimlik bilgilerinin dışında bir ForestFQDN elde etmeye çalışır.
+Hesap (Domain\Username) ve Şifre istenebilir.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -693,7 +693,7 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCreden
 
 #### <a name="-forest"></a>-Orman
 
-Hedef orman. Şu anda oturum açmış kullanıcının etki alanı varsayılan değerdir.
+Hedef orman. Varsayılan değer, şu anda oturum açmış olan kullanıcının Etki Alanıdır.
 
 ```yml
 Type: String
@@ -709,7 +709,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-İşlevi, bilgisayarda oturum açmış kullanıcının kimlik bilgilerini değil kullanıcıdan istekte bulunan özel kimlik bilgilerini kullanır.
+İşlev, kullanıcıdan özel kimlik bilgileri istemek yerine, şu anda bilgisayarda günlüğe kaydedilmiş olan kullanıcının kimlik bilgilerini kullanır.
 
 ```yml
 Type: SwitchParameter
@@ -726,13 +726,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="start-connectivityvalidation"></a>Başlangıç ConnectivityValidation
+## <a name="start-connectivityvalidation"></a>Başlangıç-Bağlantı Doğrulama
 
 ### <a name="synopsis"></a>ÖZET
 
-Main işlevi.
+Ana fonksiyon.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -743,7 +743,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
 
 ### <a name="description"></a>AÇIKLAMA
 
-Çalıştırmaları AD kimlik doğrulama kullanılabilir mekanizmaları geçerlidir.
+AD kimlik bilgilerinin geçerli olduğunu doğrulayan tüm kullanılabilir mekanizmaları çalıştırın.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -773,9 +773,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-Özel yüklemeler için: Kullanıcı "Yeni AD hesap oluştur" AADConnect'ın Sihirbazı'nın AD ormanı hesabını penceresinde seçerseniz, $True bayrak.
-Kullanıcı "Var olan AD hesabını kullan" seçeneğini belirlediyseniz $False.
-Express yüklemeleri için: Bu değişkenin değerini $True Express yüklemeleri için olmalıdır.
+Özel yüklemeler için: Kullanıcı AADConnect sihirbazının AD Orman Hesabı penceresinde "Yeni AD hesabı oluştur" sözcüünü seçtiyse $True bayrak.
+kullanıcı "Varolan AD hesabını kullan" ifadesini seçip seçmedi $False.
+Ekspres yüklemeler için: Bu değişkenin değeri Express yüklemeleri için $True olmalıdır.
 
 ```yml
 Type: Boolean
@@ -791,7 +791,7 @@ Accept wildcard characters: False
 
 #### <a name="-username"></a>-UserName
 
-Kullanıcının kimlik bilgileri istendiğinde kullanıcı adı alanı önceden doldurur parametresi.
+Kullanıcı kimlik bilgileri istendiğinde Kullanıcı adı alanını önceden dolduran parametre.
 
 ```yml
 Type: String
@@ -808,13 +808,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="start-networkconnectivitydiagnosistools"></a>Başlangıç NetworkConnectivityDiagnosisTools
+## <a name="start-networkconnectivitydiagnosistools"></a>Başlangıç-AğConnectivityDiagnosisTools
 
 ### <a name="synopsis"></a>ÖZET
 
-Main işlevi için ağ bağlantısını test eder.
+Ağ bağlantısı testleri için ana işlev.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -826,7 +826,7 @@ Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSC
 
 ### <a name="description"></a>AÇIKLAMA
 
-Yerel ağ bağlantısı testleri çalıştırır.
+Yerel ağ bağlantısı testlerini çalıştırın.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -846,7 +846,7 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TES
 
 #### <a name="-forest"></a>-Orman
 
-Sınanacak orman adı belirtir.
+Karşı test etmek için orman adını belirtir.
 
 ```yml
 Type: String
@@ -860,10 +860,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-credentials"></a>-Credentials
+#### <a name="-credentials"></a>-Kimlik bilgileri
 
-Kullanıcı adı ve bir testi çalıştıran kullanıcının parolası.
-Azure AD Connect Sihirbazı'nı çalıştırmak için gerekli olan aynı izin düzeyini gerektirir.
+Testi çalıştıran kullanıcının kullanıcı adı ve parolası.
+Azure AD Bağlantı Sihirbazı'nı çalıştırmak için gereken izin düzeyinin aynıolmasını gerektirir.
 
 ```yml
 Type: PSCredential
@@ -879,7 +879,7 @@ Accept wildcard characters: False
 
 #### <a name="-logfilelocation"></a>-LogFileLocation
 
-Belirtir bir, bu işlevin çıktısı içeren bir günlük dosyasının konumu.
+Bu işlevin çıktısını içerecek bir günlük dosyasının konumunu belirtir.
 
 ```yml
 Type: String
@@ -893,9 +893,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC'leri
+#### <a name="-dcs"></a>-DC'ler
 
-Sınanacak DC'leri belirtin.
+Karşı sınamak için DC'ler belirtin.
 
 ```yml
 Type: Array
@@ -909,9 +909,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-displayinformativemessage"></a>-DisplayInformativeMessage
+#### <a name="-displayinformativemessage"></a>-Görüntülü BilgilendiriciMesaj
 
-Bu işlevin amacı hakkında bir ileti görüntüleme sağlayan bayrak.
+Bu işlevin amacı hakkında bir ileti nin görüntülenmesine izin veren bayrak.
 
 ```yml
 Type: SwitchParameter
@@ -927,8 +927,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Bu tanılama sonucu bir PSObject biçiminde döndürür.
-Bu aracı el ile etkileşim sırasında belirtmek gerekli değil.
+Bu tanının sonucunu PSObject şeklinde döndürür.
+Bu araçla manuel etkileşim sırasında belirtmeniz gerekmez.
 
 ```yml
 Type: SwitchParameter
@@ -942,10 +942,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-validcredentials"></a>-ValidCredentials
+#### <a name="-validcredentials"></a>-Geçerli Kimlik Bilgileri
 
-Kullanıcı kimlik bilgileri geçerli olup olmadığını gösterir.
-Bu aracı el ile etkileşim sırasında belirtmek gerekli değil.
+Kullanıcının yazdığı kimlik bilgilerinin geçerli olup olmadığını gösterir.
+Bu araçla manuel etkileşim sırasında belirtmeniz gerekmez.
 
 ```yml
 Type: SwitchParameter
@@ -962,4 +962,4 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .

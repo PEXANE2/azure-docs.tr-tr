@@ -1,6 +1,6 @@
 ---
-title: StorSimple sanal dizisi güncelleştirme 1.1 sürüm notları | Microsoft Docs
-description: StorSimple sanal güncelleştirme 1.1 çalıştıran dizisi için kritik açık sorunlar ve çözümleri açıklanmaktadır.
+title: StorSimple Virtual Array Update 1.1 sürüm notları| Microsoft Dokümanlar
+description: Güncelleştirme 1.1 çalıştıran StorSimple Virtual Array için kritik açık sorunları ve çözümleri açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,80 +15,80 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60789646"
 ---
-# <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple sanal dizisi güncelleştirme 1.1 sürüm notları
+# <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple Virtual Array Update 1.1 sürüm notları
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki sürüm notları, kritik açık sorunlar ve çözümlenen sorunlar için Microsoft Azure StorSimple Virtual Array güncelleştirme belirleyin.
+Aşağıdaki sürüm notları, Microsoft Azure StorBasit Sanal Dizi güncelleştirmeleri için kritik açık sorunları ve çözülmüş sorunları tanımlar.
 
-Sürüm Notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar bulundukça eklenir. StorSimple Virtual Array'iniz dağıtmadan önce bu sürüm notlarında yer alan bilgileri dikkatle gözden geçirin.
+Sürüm notları sürekli olarak güncelleştirilir ve geçici çözüm gerektiren kritik sorunlar keşfedildikçe eklenir. StorSimple Virtual Array'inizi dağıtmadan önce, sürüm notlarında yer alan bilgileri dikkatle inceleyin.
 
-Güncelleştirme 1.1 yazılım sürümüne karşılık gelen **10.0.10307.0**.
+Güncelleme 1.1 yazılım sürümü **10.0.10307.0**karşılık gelir.
 
 > [!IMPORTANT]
-> - Güncelleştirmeler kesintiye uğratan bir durumdur ve Cihazınızı yeniden başlatın. Cihaz g/ç ediyor, kapalı kalma süresi artmasına neden olur. Güncelleştirmeyi uygulamak nasıl hakkında ayrıntılı yönergeler için Git [güncelleştirme 1.1 yükleyin](storsimple-virtual-array-install-update-11.md).
+> - Güncelleştirmeler kesintiye uğrar ve cihazınızı yeniden başlatın. G/Ç devam ediyorsa, aygıt kapalı kalma süresine neden olur. Güncelleştirmenin nasıl uygulanacağı yla ilgili ayrıntılı talimatlar için [Güncelleştirme 1.1'i yükleyin.](storsimple-virtual-array-install-update-11.md)
 >
-> - Cihazınızı güncelleştirme 1.0 çalışıyorsa güncelleştirme 1.1 Azure portalı üzerinden kullanılabilir.
+> - Güncelleme 1.1, yalnızca aygıtınız 1.0 Güncelle'yi çalıştırıyorsa Azure portalı üzerinden kullanılabilir.
 
-## <a name="whats-new-in-update-11"></a>' De güncelleştirme 1.1 yenilikler nelerdir?
+## <a name="whats-new-in-update-11"></a>Güncelleme 1.1'deki yenilikler
 
-Bu güncelleştirme aşağıdaki geliştirme ve hata düzeltmeleri içerir:
+Bu güncelleştirme, aşağıdaki geliştirme ve hata düzeltmeleri içerir:
 
- - **Yedekleme hataları** -bulut hataları ve yüksek CPU tüketimi için dayanıklılık artırarak geliştirildi.
- - **Günlüğe kaydetme** -cihaz desteği oturumunda olduğunda ayrıntılı günlüğe kaydetme modunu için değişiklikler yapıldı.
+ - **Yedekleme hataları** - bulut hatalarına ve yüksek CPU tüketimine karşı dayanıklılığı artırarak iyileştirilmiştir.
+ - **Günlüğe kaydetme** - Aygıt Destek oturumundayken ayrıntılı mod günlüğe kaydetmede değişiklikler yapıldı.
 
 
-## <a name="issues-fixed-in-update-11"></a>' De güncelleştirme 1.1 giderilen sorunlar
+## <a name="issues-fixed-in-update-11"></a>Güncelleştirme 1.1'de düzeltilen sorunlar
 
-Aşağıdaki tabloda, bu sürümde giderilen sorunlar özetini sağlar.
+Aşağıdaki tablo, bu sürümde düzeltilen sorunların bir özetini sağlar.
 
 | Hayır. | Özellik | Sorun |
 | --- | --- | --- |
-| 1 |Yedeklemeler| Bu sürüm, yedekleme hataları bulut hataları ve yüksek CPU kullanımına karşı dayanıklılık artırarak iyileştirdik değişiklikleri içerir.|
-| 2 |Günlüğe kaydetme| Bu sürüm cihaz desteği oturumunda ayrıntılı modda çalışırken değişiklik günlüğü içerir.|
+| 1 |Yedeklemeler| Bu sürüm, bulut hatalarına ve yüksek CPU kullanımına karşı dayanıklılığı artırarak yedekleme hatalarını iyileştiren değişiklikler içerir.|
+| 2 |Günlüğe Kaydetme| Bu sürüm, aygıt ayrıntılı modda Destek oturumundayken günlüğe kaydetmede değişiklikler içerir.|
 
 
-## <a name="known-issues-in-update-11"></a>Güncelleştirme 1. 1 bilinen sorunlar
+## <a name="known-issues-in-update-11"></a>Güncelleştirme 1.1'de bilinen sorunlar
 
-Aşağıdaki tabloda StorSimple sanal dizisi için bilinen sorunların bir Özet sağlar ve önceki sürümlerden yayın belirtildiği sorunları içerir.
+Aşağıdaki tablo, StorSimple Virtual Array için bilinen sorunların bir özetini sağlar ve önceki sürümlerden belirtilen sorunları içerir.
 
-| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamaları |
+| Hayır. | Özellik | Sorun | Geçici çözüm/yorumlar |
 | --- | --- | --- | --- |
-| **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal diziler için desteklenen genel kullanılabilirlik sürümü güncelleştirilemiyor. |Bu sanal diziler için bir olağanüstü durum kurtarma (DR) iş akışı kullanarak genel kullanım sürümünde yük devretti gerekir. |
-| **2.** |Sağlanan veri diski |Bir veri diskinin belirli bir belirtilen boyutta bir kez sağladığınız ve karşılık gelen StorSimple sanal dizisi oluşturulan gerekir değil genişletin veya veri diski küçültmeye. Cihaz yerel katmanlarda tüm verilerin kaybıyla sonuçları yapmak çalışıyor. | |
-| **3.** |Grup İlkesi |Bir cihaz etki alanına katılmış olduğunda, bir Grup İlkesi uygulama cihaz işlemi olumsuz yönde etkileyebilir. |Sanal diziniz kendi kuruluş birimi (OU) için Active Directory olduğundan ve hiçbir Grup İlkesi nesneleri (GPO) uygulanmış emin olun. |
-| **4.** |Yerel web kullanıcı Arabirimi |Internet Explorer (IE ESC) Artırılmış güvenlik özellikleri etkinleştirilirse, bazı sorun giderme veya bakım gibi yerel web kullanıcı Arabirimi sayfalarını düzgün çalışmayabilir. Bu sayfa düğmelerini de çalışmayabilir. |Internet Explorer Gelişmiş güvenlik özelliklerini devre dışı bırakın. |
-| **5.** |Yerel web kullanıcı Arabirimi |Bir Hyper-V sanal makine, GB/sn ağ arabirimlerinin de kullanıcı Arabirimi olarak 10 görüntülenen web arabirimleri. |Bir yansıma Hyper-V, davranıştır. Hyper-V, sanal ağ bağdaştırıcıları için 10 GB/sn her zaman gösterilir. |
-| **6.** |Katmanlı birimler veya paylaşımlar |Katmanlı birimlerin desteklenmiyor StorSimple ile çalışan uygulamalar için kilitleme bayt aralığı. Bayt aralığı kilitleme etkinse, StorSimple katmanlama çalışmaz. |Önerilen ölçüleri içerir: <br></br>Bayt aralığı uygulama mantığınızın kilitleme devre dışı bırakın.<br></br>Bu uygulama için verileri yerel olarak sabitlenmiş birim katmanlı birimlerin yerine koymak seçin.<br></br>*Uyarı*: Geri yükleme tamamlamadan önce kullanarak yerel olarak sabitlenmiş birimler ve bayt aralığı kilitleme etkin olduğunda, yerel olarak sabitlenmiş birimin çevrimiçi olabilir. Bir geri yükleme devam ediyor, bu gibi durumlarda, daha sonra tamamlamak geri yüklemek için beklemeniz gerekir. |
-| **7.** |Katmanlı paylaşımları |Büyük dosyaları ile çalışma, yavaş bir katmanın ölçeğini sonuçlanabilir. |Büyük dosyalarla çalışırken, en büyük dosya paylaşım boyutunun %3 küçükse öneririz. |
-| **8.** |Kapasite paylaşımlar için kullanılan |Görebileceğiniz paylaşımında veri olduğunda tüketim paylaşın. Kullanılan kapasite paylaşımları için meta veriler içeren bu tüketim olmasıdır. | |
-| **9.** |Olağanüstü durum kurtarma |Yalnızca dosya sunucusu aynı etki, kaynak cihaz için olağanüstü durum kurtarma gerçekleştirebilirsiniz. Olağanüstü durum kurtarma için başka bir etki alanındaki bir hedef cihaz, bu sürümde desteklenmiyor. |Bu, bir sonraki sürümde uygulanır. Daha fazla bilgi için Git [StorSimple Virtual Array'iniz için yük devretme ve olağanüstü durum kurtarma](storsimple-virtual-array-failover-dr.md) |
-| **10.** |Azure PowerShell |StorSimple sanal dizilerine, bu sürüm Azure PowerShell aracılığıyla yönetilemez. |Tüm sanal cihazların yönetimini Azure portalı ve yerel web UI yapılmalıdır. |
-| **11.** |Parola değiştirme |Sanal dizi cihaz konsolu yalnızca en girişi kabul-bize klavye biçimi. | |
-| **12.** |CHAP |CHAP kimlik oluşturulduktan sonra kaldırılamaz. Ayrıca, CHAP kimlik bilgilerini değiştirirseniz, birimlerin çevrimdışına alın ve değişikliğin etkili olması çevrimiçi bunları getirmek gerekir. |Bu sorun, bir sonraki sürümde değinilmiştir. |
-| **13.** |iSCSI sunucusu |'Depolama görüntülenen bir iSCSI birimi için kullanılan' StorSimple cihaz Yöneticisi hizmeti ve iSCSI konağının farklı olabilir. |İSCSI ana bilgisayar dosya sistemi görünüme sahiptir.<br></br>Cihaz, birim maksimum boyutta olduğunda ayrılan blokları görür. |
-| **14.** |Dosya sunucusu |Bir klasördeki bir dosyaya bir alternatif veri Stream (ilişkili REKLAM) varsa, REKLAM değil yedeklenen veya olağanüstü durum kurtarma, kopyalama ve öğe düzeyinde Kurtarma ile geri. | |
+| **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal diziler desteklenen genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal diziler, olağanüstü durum kurtarma (DR) iş akışı kullanılarak Genel Kullanılabilirlik sürümü için başarısız olunmalıdır. |
+| **2.** |Sağlanan veri diski |Belirli bir boyutta bir veri diski oluşturduktan ve ilgili StorSimple Sanal Dizisini oluşturduktan sonra, veri diskini genişletmemeniz veya küçültmemeniz gerekir. Yapmaya çalışmak, aygıtın yerel katmanlarındaki tüm verilerin kaybolmasına neden olabilir. | |
+| **3.** |Grup ilkesi |Bir aygıt etki alanına katıldığında, grup ilkesi uygulamak aygıt çalışmasını olumsuz etkileyebilir. |Sanal dizinizin Active Directory için kendi kuruluş biriminde (OU) olduğundan ve buna grup ilkesi nesnesi (GPO) uygulanmadığından emin olun. |
+| **4.** |Yerel web Web UI |Internet Explorer'da (IE ESC) gelişmiş güvenlik özellikleri etkinse, Sorun Giderme veya Bakım gibi bazı yerel web ui sayfaları düzgün çalışmayabilir. Bu sayfalardaki düğmeler de çalışmayabilir. |Internet Explorer'daki gelişmiş güvenlik özelliklerini kapatın. |
+| **5.** |Yerel web Web UI |Hyper-V sanal makinede, web arabirimi ndeki ağ arabirimleri 10 Gbps arabirimi olarak görüntülenir. |Bu davranış Hyper-V'nin bir yansımasıdır. Hyper-V her zaman sanal ağ bağdaştırıcıları için 10 Gbps gösterir. |
+| **6.** |Katmanlı hacimler veya hisseler |StorSimple katmanlı birimleriyle çalışan uygulamalar için bayt aralığı kilitleme desteklenmez. Bayt aralığı kilitleme etkinse, StorSimple katmanlama çalışmaz. |Önerilen önlemler şunlardır: <br></br>Uygulama mantığınızda bayt aralığı kilitlemeyi kapatın.<br></br>Katmanlı birimlerin aksine, bu uygulama için verileri yerel olarak sabitlenmiş birimlere koymayı seçin.<br></br>*Uyarı*: Yerel olarak sabitlenmiş hacimler ve bayt aralığı kilitleme etkinleştirildiğinde, yerel olarak sabitlenmiş birim, geri yükleme tamamlanmadan önce bile çevrimiçi olabilir. Bu gibi durumlarda, geri yükleme devam ediyorsa, geri yüklemenin tamamlanmasını beklemeniz gerekir. |
+| **7.** |Katmanlı hisseler |Büyük dosyalarla çalışmak, yavaş katman dışına çıkmasına neden olabilir. |Büyük dosyalarla çalışırken, en büyük dosyanın paylaşım boyutunun %3'ünden daha küçük olduğunu öneririz. |
+| **8.** |Hisseler için kullanılan kapasite |Payla ilgili veri olmadığında hisse tüketimini görebilirsiniz. Bu tüketim, hisseler için kullanılan kapasitenin meta verileri içermesinden dir. | |
+| **9.** |Olağanüstü durum kurtarma |Bir dosya sunucusunun olağanüstü durum kurtarma durumunu yalnızca kaynak aygıtla aynı etki alanına gerçekleştirebilirsiniz. Bu sürümde, başka bir etki alanında hedef aygıta olağanüstü durum kurtarma desteklenmez. |Bu daha sonraki bir sürümde uygulanır. Daha fazla bilgi [için, StorSimple Virtual Array için Failover ve olağanüstü durum kurtarma](storsimple-virtual-array-failover-dr.md) gidin |
+| **10.** |Azure PowerShell |StorSimple Sanal Diziler bu sürümde Azure PowerShell üzerinden yönetilemez. |Sanal cihazların tüm yönetimi Azure portalı ve yerel web web ui üzerinden yapılmalıdır. |
+| **11.** |Parola değiştirme |Sanal dizi aygıt konsolu yalnızca en-us klavye formatında giriş kabul eder. | |
+| **12.** |CHAP |Oluşturulduktan sonra CHAP kimlik bilgileri kaldırılamaz. Ayrıca, CHAP kimlik bilgilerini değiştirirseniz, birimleri çevrimdışı duruma getirmeniz ve değişikliğin etkili olması için bunları çevrimiçi duruma getirmeniz gerekir. |Bu sorun daha sonraki bir sürümde ele alınmıştır. |
+| **13.** |iSCSI sunucusu |iSCSI birimi için görüntülenen 'Kullanılmış depolama' StorSimple Device Manager hizmetinde ve iSCSI ana bilgisayarda farklı olabilir. |iSCSI ana bilgisayarı dosya sistemi görünümüne sahiptir.<br></br>Aygıt, birim maksimum boyuttayken ayrılan blokları görür. |
+| **14.** |Dosya sunucusu |Klasördeki bir dosyada onunla ilişkili alternatif veri akışı (ADS) varsa, ADS olağanüstü durum kurtarma, klonlama ve Öğe Düzeyi Kurtarma yoluyla yedeklenmez veya geri yüklenmez. | |
 | **15.** |Dosya sunucusu |Sembolik bağlantılar desteklenmez. | |
-| **16.** |Dosya sunucusu |Tarafından Windows şifreleme dosya sistemi (üzerinden kopyaladığınızda EFS) korumalı veya desteklenmeyen bir yapılandırma StorSimple sanal dizisi dosya sunucusu sonucu üzerinde depolanan dosyalar.  | |
-| **17.** |Güncelleştirmeler |Hata görürseniz kod: 2359302 (onaltılık 0x240006) yerel UI aracılığıyla bir düzeltme yüklenmeye çalışılırken sonra bu düzeltmenin zaten Cihazınızda yüklenmiş olup olmadığını gösterir.   | |
-| **18.** |Güncelleştirmeler |Sanal diziniz güncelleştirme 1'i yüklemek için yerel web kullanıcı arabirimini kullanıyorsanız, güncelleştirme 0.6 çalıştırdığınız emin olmanız gerekir. Güncelleştirme 0.6 daha düşük bir sürümünü çalıştırıyorsanız, güncelleştirme 0.6 önce yüklemeniz ve ardından güncelleştirme 1 uygulayın. Bir güncelleştirme öncesi 0,6 sürümünden doğrudan güncelleştirme 1.0 yüklerseniz, bazı güncelleştirmeler eksik ve izleme grafiklerini çalışmaz.   | |
+| **16.** |Dosya sunucusu |StorSimple Virtual Array dosya sunucusunda kopyalandığında veya depolandığında Windows Şifreleme Dosya Sistemi (EFS) tarafından korunan dosyalar, desteklenmeyen bir yapılandırmayla sonuçlanır.  | |
+| **17.** |Güncelleştirmeler |Hata kodu görürseniz: 2359302 (hex 0x240006) yerel ui üzerinden bir düzeltme yüklemeye çalışırken, bu düzeltmenin cihazınıza zaten yüklenmiş olduğu anlamına gelir.   | |
+| **18.** |Güncelleştirmeler |Sanal dizinizde Güncelleştirme 1'i yüklemek için yerel web kullanıcı arama aylığını kullanıyorsanız, Güncelleştirme 0.6'yı çalıştırdığınızdan emin olmalısınız. Güncelleştirme 0.6'dan daha düşük bir sürüm çalıştırıyorsanız, önce 0.6'yı yüklemeniz ve ardından Güncelleştirme 1'i uygulamanız gerekir. Güncelleştirme 1.0'ı doğrudan güncelleştirme öncesi 0.6 sürümünden yüklerseniz, bazı güncelleştirmeleri kaçırırsınız ve izleme grafikleri çalışmaz.   | |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[1.1 güncelleştirmesini](storsimple-virtual-array-install-update-11.md) StorSimple Virtual Array'iniz üzerinde.
+StorSimple Virtual Array'inize [Güncelleme 1.1'i yükleyin.](storsimple-virtual-array-install-update-11.md)
 
 ## <a name="references"></a>Başvurular
-Eski bir sürüm notu için mi arıyorsunuz? Şuraya gidin:
-* [StorSimple Virtual Array güncelleştirme 1.0 sürüm notları](storsimple-virtual-array-update-1-release-notes.md)
-* [StorSimple sanal dizisi güncelleştirme 0.6 sürüm notları](storsimple-virtual-array-update-06-release-notes.md)
-* [StorSimple sanal dizisi güncelleştirme 0.5 sürüm notları](storsimple-virtual-array-update-05-release-notes.md)
-* [StorSimple sanal dizisi güncelleştirme 0,4 sürüm notları](storsimple-virtual-array-update-04-release-notes.md)
-* [StorSimple sanal dizisi güncelleştirme 0.3 sürüm notları](storsimple-ova-update-03-release-notes.md)
-* [StorSimple sanal dizisi güncelleştirme 0.1 ve 0.2 sürüm notları](storsimple-ova-update-01-release-notes.md)
-* [StorSimple sanal dizisi genel kullanılabilirlik sürüm notları](storsimple-ova-pp-release-notes.md)
+Eski bir sürüm notu mu arıyorsunuz? Şuraya gidin:
+* [StorSimple Sanal Dizi Güncelleme 1.0 Sürüm Notları](storsimple-virtual-array-update-1-release-notes.md)
+* [StorSimple Sanal Dizi Güncelleme 0.6 Sürüm Notları](storsimple-virtual-array-update-06-release-notes.md)
+* [StorSimple Sanal Dizi Güncelleme 0.5 Sürüm Notları](storsimple-virtual-array-update-05-release-notes.md)
+* [StorSimple Sanal Dizi Güncelleme 0.4 Sürüm Notları](storsimple-virtual-array-update-04-release-notes.md)
+* [StorSimple Sanal Dizi Güncelleme 0.3 Sürüm Notları](storsimple-ova-update-03-release-notes.md)
+* [StorSimple Virtual Array Update 0.1 ve 0.2 Sürüm Notları](storsimple-ova-update-01-release-notes.md)
+* [StorSimple Virtual Array Genel Kullanılabilirlik Sürüm Notları](storsimple-ova-pp-release-notes.md)

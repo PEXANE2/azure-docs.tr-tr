@@ -1,65 +1,65 @@
 ---
-title: Android üzerinde kimlik doğrulaması ekleme
-description: Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcılarıyla Android uygulamanızın kullanıcılarının kimliğini doğrulamak için Azure App Service nasıl kullanacağınızı öğrenin.
+title: Android'de kimlik doğrulama ekleme
+description: Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcılarıyla Android uygulamanızın kullanıcılarını doğrulamak için Azure Uygulama Hizmetini nasıl kullanacağınızı öğrenin.
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 705ebb5809840155e6bbf3f8eef091eb95f63e63
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461649"
 ---
-# <a name="add-authentication-to-your-android-app"></a>Android uygulamanıza kimlik doğrulaması ekleme
+# <a name="add-authentication-to-your-android-app"></a>Android uygulamanıza kimlik doğrulama ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 ## <a name="summary"></a>Özet
-Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak Android 'de ToDoList hızlı başlangıç projesine kimlik doğrulaması eklersiniz. Bu öğretici, ilk olarak gerçekleştirmeniz gereken Mobile Apps öğreticiye [Mobile Apps kullanmaya başlayın] ' i temel alır.
+Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak Android'deki todolist quickstart projesine kimlik doğrulama eklersiniz. Bu öğretici, önce tamamlamanız gereken [Mobil Uygulamalar öğreticisini] başlatın'a dayanmaktadır.
 
-## <a name="register"></a>Uygulamanızı kimlik doğrulaması için kaydetme ve Azure App Service yapılandırma
+## <a name="register-your-app-for-authentication-and-configure-azure-app-service"></a><a name="register"></a>Uygulamanızı kimlik doğrulama için kaydedin ve Azure Uygulama Hizmetini yapılandırın
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Uygulamanızı Izin verilen dış yönlendirme URL 'Lerine ekleyin
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>Uygulamanızı İzin Verilen Harici Yönlendirme URL'lerine ekleyin
 
-Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımlamanızı gerektirir. Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza yeniden yönlendirilmesini sağlar. Bu öğreticide, üzerinde URL şeması _uygulamamız_ kullanırız. Ancak, seçtiğiniz herhangi bir URL şemasını kullanabilirsiniz. Bu, mobil uygulamanız için benzersiz olmalıdır. Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
+Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL düzeni tanımlamanızı gerektirir. Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza geri yönlendirmesine olanak tanır. Bu öğreticide, URL şeması _ekadını_ sonuna kadar kullanırız. Ancak, seçtiğiniz herhangi bir URL düzenini kullanabilirsiniz. Mobil uygulamanıza özgü olmalıdır. Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
 
-1. [Azure portalında]App Service seçin.
+1. Azure [portalında]Uygulama Hizmetinizi seçin.
 
-2. **Kimlik doğrulama/yetkilendirme** menü seçeneğine tıklayın.
+2. Kimlik **Doğrulama / Yetkilendirme** menüsü seçeneğini tıklatın.
 
-3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`appname://easyauth.callback`girin.  Bu dizedeki _appname_ , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
+3. İzin **Verilen Harici Yönlendirme URL'lerine**girin. `appname://easyauth.callback`  Bu dizedeki _ad,_ mobil uygulamanızın URL Düzeni'dir.  Bir protokol için normal URL belirtimini izlemeli (yalnızca harfleri ve sayıları kullanın ve harfle başlamalıdır).  Mobil uygulama kodunuzu URL Düzeni ile birkaç yerde ayarlamanız gerektiğinden, seçtiğiniz dizeye not alabilirsiniz.
 
-4. **Tamam** düğmesine tıklayın.
+4. **Tamam**'a tıklayın.
 
-5. **Kaydet** düğmesine tıklayın.
+5. **Kaydet**'e tıklayın.
 
-## <a name="permissions"></a>Kimliği doğrulanmış kullanıcılar için izinleri kısıtla
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>İzinleri kimlik doğrulaması verilen kullanıcılarla sınırlama
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* Android Studio ' de, [Mobile Apps kullanmaya başlayın]öğreticisiyle tamamladığınız projeyi açın. **Çalıştır** menüsünde, **uygulamayı çalıştır**' a tıklayın ve durum kodu 401 (yetkisiz) olan işlenmemiş bir özel durumun uygulama başladıktan sonra yapıldığını doğrulayın.
+* Android Studio'da, [mobil uygulamalarla başlayın]öğretici ile tamamladığınız projeyi açın. **Çalıştır** menüsünden **Çalıştır uygulamasını**tıklatın ve uygulama başladıktan sonra 401 (Yetkisiz) durum kodu içeren işlenmemiş bir özel durum ortaya çıkar.
 
-     Bu özel durum, uygulamanın kimliği doğrulanmamış bir kullanıcı olarak arka uca erişmeye çalıştığı, ancak *TodoItem* tablosunun artık kimlik doğrulaması gerektirdiğinden meydana gelir.
+     Bu özel durum, uygulamanın kimliği doğrulanmamış bir kullanıcı olarak arka uca erişmeye çalıştığından, ancak *TodoItem* tablosu artık kimlik doğrulaması gerektirdiğinden olur.
 
-Daha sonra, Mobile Apps arka uçta kaynakları isteyerek önce kullanıcıların kimliğini doğrulamak üzere uygulamayı güncelleşolursunuz.
+Ardından, Uygulamayı Mobile Apps'tan kaynak istemeden önce kullanıcıların kimliğini doğrulamak için güncellersiniz.
 
-## <a name="add-authentication-to-the-app"></a>Uygulamaya kimlik doğrulaması ekleme
+## <a name="add-authentication-to-the-app"></a>Uygulamaya kimlik doğrulama ekleme
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
 
 
-## <a name="cache-tokens"></a>İstemcide önbellek kimlik doğrulaması belirteçleri
+## <a name="cache-authentication-tokens-on-the-client"></a><a name="cache-tokens"></a>İstemci üzerinde önbellek kimlik doğrulama belirteçleri
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu temel kimlik doğrulama öğreticisini tamamladığınıza göre, aşağıdaki öğreticilerden birine devam etmeyi göz önünde bulundurun:
+Şimdi bu temel kimlik doğrulama öğretici tamamladı, aşağıdaki öğreticiler birine devam düşünün:
 
-* [Android uygulamanıza anında iletme bildirimleri ekleyin](app-service-mobile-android-get-started-push.md).
-  Mobile Apps arka uca, anında iletme bildirimleri göndermek için Azure Notification Hub 'larını kullanmak üzere nasıl yapılandıracağınızı öğrenin.
-* [Android uygulamanız için çevrimdışı eşitlemeyi etkinleştirin](app-service-mobile-android-get-started-offline-data.md).
-  Mobile Apps arka ucu kullanarak uygulamanıza çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme sayesinde, kullanıcılar bir mobil uygulamayla etkileşime geçerek, ağ bağlantısı olmasa bile veri&mdash;görüntüleme, ekleme veya değiştirme&mdash;.
+* [Android uygulamanıza anında iletme bildirimleri ekleyin.](app-service-mobile-android-get-started-push.md)
+  Anında iletme bildirimleri göndermek için Azure bildirim hub'larını kullanmak için Mobil Uygulamalarınızı arka uçta nasıl yapılandıracaklarınızı öğrenin.
+* [Android uygulamanız için çevrimdışı eşitleme'yi etkinleştirin.](app-service-mobile-android-get-started-offline-data.md)
+  Mobil Uygulamalar arka uçunu kullanarak uygulamanıza çevrimdışı desteği nasıl ekleyeceğinizi öğrenin. Çevrimdışı eşitleme yle, kullanıcılar ağ&mdash;bağlantısı olmasa bile bir&mdash;mobil uygulamayı görüntüleme, ekleme veya değiştirme ile etkileşimkurabilir.
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register
@@ -71,5 +71,5 @@ Bu temel kimlik doğrulama öğreticisini tamamladığınıza göre, aşağıdak
 
 
 <!-- URLs. -->
-[Mobile Apps kullanmaya başlayın]: app-service-mobile-android-get-started.md
+[Mobil Uygulamalarla başlayın]: app-service-mobile-android-get-started.md
 [Azure portalında]: https://portal.azure.com/

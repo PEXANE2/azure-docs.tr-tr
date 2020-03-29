@@ -1,37 +1,37 @@
 ---
-title: Azure Cosmos hesapları için IP Güvenlik Duvarı
-description: Güvenlik Duvarı desteği için IP erişim denetim ilkeleri kullanarak Azure Cosmos DB verileri güvenli hale getirmeyi öğrenin.
+title: Azure Cosmos hesapları için IP güvenlik duvarı
+description: Güvenlik duvarı desteği için IP erişim denetim ilkelerini kullanarak Azure Cosmos DB verilerini nasıl güvene aldığınızı öğrenin.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.openlocfilehash: 9398eb4038afcd17788e750fcb5c27c76e9f3f44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66241073"
 ---
-# <a name="ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB'de IP Güvenlik Duvarı
+# <a name="ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB'de IP güvenlik duvarı
 
-Hesabınızda depolanan verilerin güvenliğini sağlamak için Azure Cosmos DB kullanan bir tanımlayıcı karma tabanlı ileti kimlik doğrulama kodu (HMAC) gizli tabanlı yetkilendirme modeli destekler. Ayrıca, Azure Cosmos DB için gelen güvenlik duvarı desteği IP tabanlı erişim denetimlerini destekler. Bu model, geleneksel veritabanı sistemi güvenlik duvarı kurallarına benzer ve ek bir güvenlik hesabınıza düzeyi sağlar. Güvenlik duvarları ile erişilebilir yalnızca onaylanmış bir makine kümesinden ve/veya Bulut Hizmetleri için Azure Cosmos hesabınıza yapılandırabilirsiniz. Bu onaylı kümelerinden makineleri ve Hizmetleri Azure Cosmos veritabanında saklanan verilere erişim hala geçerli bir yetkilendirme belirteciyle sunmak çağıranın gerektirir.
+Azure Cosmos DB, hesabınızda depolanan verileri güvenli hale getirmek için, güçlü bir Karma tabanlı İleti Kimlik Doğrulama Kodu (HMAC) kullanan gizli tabanlı yetkilendirme modelini destekler. Ayrıca, Azure Cosmos DB gelen güvenlik duvarı desteği için IP tabanlı erişim denetimlerini destekler. Bu model, geleneksel veritabanı sisteminin güvenlik duvarı kurallarına benzer ve hesabınıza ek bir güvenlik düzeyi sağlar. Güvenlik duvarlarıyla Azure Cosmos hesabınızı yalnızca onaylanmış bir makine ve/veya bulut hizmeti kümesinden erişebilecek şekilde yapılandırabilirsiniz. Azure Cosmos veritabanınızda depolanan bu onaylı makine ve hizmet kümelerinden depolanan verilere erişim, arayanın geçerli bir yetkilendirme belirteci sunmasını gerektirir.
 
-## <a id="ip-access-control-overview"></a>IP erişim denetimine genel bakış
+## <a name="ip-access-control-overview"></a><a id="ip-access-control-overview"></a>IP erişim kontrolüne genel bakış
 
-Varsayılan olarak, Azure Cosmos hesabınız isteği bir geçerli bir yetkilendirme belirteciyle birlikte sunulduğu sürece, internet'ten erişilebilir. IP ilke tabanlı erişim denetimini yapılandırmak için kullanıcının IP adresi veya IP adresi aralığı CIDR (sınıfsız etki alanları arası yönlendirme) formunda, istemci IP'leri, belirli bir Azure Cosmos hesabına erişmesi için izin verilen listesi olarak dahil edilecek dizi sağlamanız gerekir. Bu yapılandırma uygulandıktan sonra bu izin verilen liste dışındaki makinelerden gelen tüm istekler 403 (Yasak) yanıt alırsınız. IP Güvenlik Duvarı'nı kullanırken, Azure portalı hesabınıza erişmesine izin vermeniz önerilir. Erişim, hesabınız için Azure portalında görünmesi ölçümleri almak için de Veri Gezgini kullanımına olanak tanımak için gereklidir. İzin vererek, hesabınıza erişmek için Azure portalına ek olarak, Veri Gezgini'ni kullanarak, ayrıca güvenlik duvarı kuralları geçerli IP adresinizi eklemek için Güvenlik Duvarı ayarlarını güncelleştirmeniz gerekir. Güvenlik Duvarı değişikliklerinin yayılması 15 dakika sürebileceğini unutmayın. 
+Varsayılan olarak, isteğe geçerli bir yetkilendirme belirteci eşlik ettiği sürece Azure Cosmos hesabınıza Internet'ten erişilebilir. IP ilkesi tabanlı erişim denetimini yapılandırmak için, kullanıcının belirli bir Azure Cosmos hesabına erişmek için istemci IP'lerin izin verilen listesi olarak eklenecek CIDR (Sınıfsız Etki Alanları Arası Yönlendirme) formundaki IP adresleri kümesini veya IP adresi aralıklarını sağlaması gerekir. Bu yapılandırma uygulandıktan sonra, izin verilen listenin dışındaki makinelerden gelen istekler 403 (Yasak) yanıt alır. IP güvenlik duvarını kullanırken, Azure portalının hesabınıza erişmesine izin vermeniz önerilir. Azure portalında görünen hesabınız için veri gezgini kullanımına izin vermenin yanı sıra ölçümleri almak için erişim gereklidir. Veri gezgini kullanırken, Azure portalının hesabınıza erişmesine izin vermenin yanı sıra, geçerli IP adresinizi güvenlik duvarı kurallarına eklemek için güvenlik duvarı ayarlarınızı da güncelleştirmeniz gerekir. Güvenlik duvarı değişikliklerinin yayılması 15 dakika kadar sürebilir. 
 
-IP tabanlı güvenlik duvarı, alt ağ ve VNET erişim denetimiyle birleştirebilirsiniz. Bunları birleştirerek genel bir IP herhangi bir kaynağı ve/veya sanal ağ içindeki belirli bir alt ağdan erişimi sınırlayabilirsiniz. Alt ağ ve VNET tabanlı erişim denetimi kullanma hakkında daha fazla bilgi için [erişim Azure Cosmos DB kaynaklarını sanal ağlardan](vnet-service-endpoint.md).
+IP tabanlı güvenlik duvarını alt ağ ve VNET erişim denetimiyle birleştirebilirsiniz. Bunları birleştirerek, ortak IP'si olan herhangi bir kaynağa ve/veya VNET içindeki belirli bir alt ağdan erişimi sınırlandırabilirsiniz. Alt ağ ve VNET tabanlı erişim denetimi kullanma hakkında daha fazla bilgi edinmek için [sanal ağlardaki Access Azure Cosmos DB kaynaklarına](vnet-service-endpoint.md)bakın.
 
-Özetlemek gerekirse, yetkilendirme belirteci her zaman bir Azure Cosmos hesaba erişmek için gereklidir. IP Güvenlik Duvarı ve sanal ağ erişim denetimi listesi (ACL) ayarlanmadınız, Azure Cosmos hesabı yetkilendirme belirteci ile erişim sağlanabilir. IP Güvenlik Duvarı'nı veya sanal ağ ACL'leri ya da hem Azure Cosmos hesapta ayarlandıktan sonra belirttiğiniz kaynaklardan (ve yetkilendirme belirtecini) kaynaklanan yalnızca istekleri geçerli yanıtlar alın. 
+Özetlemek gerekirse, bir Azure Cosmos hesabına erişmek için her zaman yetkilendirme belirteci gereklidir. IP güvenlik duvarı ve VNET Erişim Denetim Listesi (ALA'lar) ayarlanmazsa, yetkilendirme belirteciyle Azure Cosmos hesabına erişilebilir. IP güvenlik duvarı veya VNET ALA'ları veya her ikisi de Azure Cosmos hesabında ayarlandıktan sonra, yalnızca belirttiğiniz kaynaklardan (ve yetkilendirme belirteciyle) gelen istekler geçerli yanıtlar alır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından aşağıdaki belgeleri kullanarak hesabınız için IP Güvenlik Duvarı'nı veya sanal ağ hizmet uç noktası yapılandırabilirsiniz:
+Ardından, aşağıdaki dokümanları kullanarak hesabınız için IP güvenlik duvarı veya VNET hizmet bitiş noktasını yapılandırabilirsiniz:
 
-* [Azure Cosmos hesabınız için IP Güvenlik Duvarı yapılandırma](how-to-configure-firewall.md)
-* [Erişim Azure Cosmos DB kaynaklarını sanal ağlardan](vnet-service-endpoint.md)
-* [Sanal ağ hizmet uç noktaları Azure Cosmos hesabınız için yapılandırma](how-to-configure-vnet-service-endpoint.md)
+* [Azure Cosmos hesabınız için IP güvenlik duvarı nasıl yapılandırılabilen](how-to-configure-firewall.md)
+* [Azure Cosmos DB kaynaklarına sanal ağlardan erişin](vnet-service-endpoint.md)
+* [Azure Cosmos hesabınız için sanal ağ hizmeti bitiş noktası nasıl yapılandırılabilen](how-to-configure-vnet-service-endpoint.md)
 
 
 

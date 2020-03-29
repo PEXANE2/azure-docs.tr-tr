@@ -1,6 +1,6 @@
 ---
-title: SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect'i yükleme | Microsoft Docs
-description: Bu konuda, bir güncelleştirme yüklemesi için yalnızca SQL dbo izinleri olan bir hesap kullanarak sağlayan Azure AD Connect açıklanmaktadır.
+title: SQL temsilci yönetici izinlerini kullanarak Azure AD Connect'i yükleme | Microsoft Dokümanlar
+description: Bu konu, Yalnızca SQL dbo izinleri olan bir hesabı kullanarak yüklemeye olanak tanıyan Azure AD Connect güncelleştirmesini açıklar.
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,51 +17,51 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60243533"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect'i yükleme
-En son Azure AD Connect derleme önce SQL, gerekli yapılandırmaları dağıtırken yönetim temsilcisi seçme desteklenmiyor.  Azure AD Connect'i yüklemek isteyen kullanıcılar, SQL Server'da Sistem Yöneticisi (SA) izinlerine sahip gerekmiyor.
+En son Azure AD Connect yapısından önce, SQL gerektiren yapılandırmaları dağıtırken yönetim delegasyonu desteklenmedi.  Azure AD Connect'i yüklemek isteyen kullanıcıların SQL sunucusunda sunucu yöneticisi (SA) izinlerine sahip olması gerekir.
 
-Azure AD Connect'in en son sürümüyle bant dışı SQL Yöneticisi tarafından gerçekleştirilen ve ardından veritabanı sahibi haklarıyla Azure AD Connect Yöneticisi tarafından yüklenen veritabanı sağlama, artık.
+Azure AD Connect'in en son sürümüyle, veritabanının sağlanması artık SQL yöneticisi tarafından bant dışında gerçekleştirilebilir ve daha sonra veritabanı sahibi haklarıyla Azure AD Connect yöneticisi tarafından yüklenebilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-Bu özelliği kullanmak için birden fazla hareketli parça vardır ve her biri farklı bir yönetici, kuruluşunuzdaki gerektirebilir gerekir.  Bireysel rolleri ve Azure AD Connect ile bu özelliği dağıtmak, ilgili görevlerini, aşağıdaki tabloda özetlenmiştir.
+Bu özelliği kullanmak için, birkaç hareketli parça olduğunu ve her birinin kuruluşunuzda farklı bir yönetici içerebileceğini fark etmeniz gerekir.  Aşağıdaki tablo, azure AD Connect'i bu özellik ile dağıtmadaki bireysel rolleri ve ilgili görevlerini özetley.
 
 |Rol|Açıklama|
 |-----|-----|
-|Etki alanı veya orman AD Yöneticisi|Eşitleme hizmeti çalıştırmak için Azure AD Connect tarafından kullanılan etki alanı düzeyinde hizmet hesabı oluşturur.  Hizmet hesapları hakkında daha fazla bilgi için bkz. [hesapları ve izinleri](reference-connect-accounts-permissions.md).
-|SQL yönetici|Ad eşitleme veritabanını oluşturur ve oturum açma + dbo verir erişim için Azure AD Connect yönetici ve etki alanına/ormana yönetici tarafından oluşturulan hizmet hesabı|
-Azure AD Connect Yöneticisi|Azure AD Connect yükler ve özel bir yükleme sırasında hizmet hesabı belirtir.
+|Etki alanı veya Orman AD yöneticisi|Eşitleme hizmetini çalıştırmak için Azure AD Connect tarafından kullanılan etki alanı düzeyinde hizmet hesabı oluşturur.  Hizmet hesapları hakkında daha fazla bilgi [için, Bkz. Hesaplar ve izinler.](reference-connect-accounts-permissions.md)
+|SQL yöneticisi|ADSync veritabanını oluşturur ve Azure AD Connect yöneticisine ve etki alanı/orman yöneticisi tarafından oluşturulan hizmet hesabına giriş + dbo erişimi sağlar.|
+Azure AD Connect yöneticisi|Azure AD Connect'i yükler ve özel yükleme sırasında servis hesabını belirtir.
 
-## <a name="steps-for-installing-azure-ad-connect-using-sql-delegated-permissions"></a>SQL kullanarak Azure AD Connect'i yüklemek için adımları temsilci izinleri
-Bant dışı veritabanını sağlamak ve veritabanı sahibi izinleriyle Azure AD Connect'i yüklemek için aşağıdaki adımları kullanın.
+## <a name="steps-for-installing-azure-ad-connect-using-sql-delegated-permissions"></a>SQL temsilci izinlerini kullanarak Azure AD Connect'i yükleme adımları
+Veritabanını bant dışında sağlamak ve Azure AD Connect'i veritabanı sahibi izinleriyle yüklemek için aşağıdaki adımları kullanın.
 
 >[!NOTE]
->Gerekli olmamasına rağmen olduğu **kesinlikle önerilir** latin1_general_cı_as harmanlama veritabanı oluşturulurken seçilir.
+>Gerekmese de, veritabanı oluşturulurken Latin1_General_CI_AS harmanlamanın seçilmesi **önerilir.**
 
 
-1. SQL ile bir büyük/küçük harfe duyarlı olmayan harmanlama sırası ad eşitleme veritabanını oluşturmak yöneticisinin **(latin1_general_cı_as)** .  Veritabanı adlandırılmalıdır **ADSync**.  Azure AD Connect yüklendikten sonra kurtarma modeli, uyumluluk düzeyi ve içerik türü için doğru değerleri güncelleştirilir.  Aksi takdirde harmanlama sırası SQL Yöneticisi tarafından doğru şekilde ayarlanması gerekir ancak Azure AD Connect yüklemesini engeller.  SA, kurtarılır silmeniz ve veritabanı oluşturmanız gerekir.
+1. SQL Administrator'un ADSync veritabanını duyarsız harmanlama sırası **(Latin1_General_CI_AS)** ile oluşturmasını sorun.  Veritabanı **ADSync**olarak adlandırılmalıdır.  Kurtarma modeli, uyumluluk düzeyi ve kapsama türü, Azure AD Connect yüklendiğinde doğru değerlere güncelleştirilir.  Ancak harmanlama sırasının SQL yöneticisi tarafından doğru şekilde ayarlanması gerekir, aksi takdirde Azure AD Connect yüklemeyi engeller.  SA kurtarmak için silmek ve veritabanını yeniden gerekir.
  
    ![Harmanlama](./media/how-to-connect-install-sql-delegation/sql4.png)
-2. Azure AD Connect Yöneticisi ve etki alanı hizmet hesabı aşağıdaki izinleri verin:
+2. Azure AD Connect yöneticisine ve etki alanı hizmeti hesabına aşağıdaki izinleri ver:
    - SQL Oturum Açma 
-   - **Veritabanı Owner(dbo)** hakları.
+   - **veritabanı sahibi (dbo)** hakları.
  
    ![İzinler](./media/how-to-connect-install-sql-delegation/sql3a.png)
 
    >[!NOTE]
-   >Azure AD Connect ile iç içe geçmiş üyelikler oturumları desteklemez.  Başka bir deyişle, Azure AD Connect yönetici hesabı ve etki alanı hizmet hesabı dbo hakları bahşedilir bir oturum açma bağlanmalıdır.  Yalnızca dbo haklarına sahip bir oturum açma için atanmış bir gruba üye olamaz.
+   >Azure AD Connect iç içe üyelikle girişleri desteklemez.  Bu, Azure AD Connect yönetici hesabınızın ve etki alanı hizmet hesabınızın dbo haklarına sahip bir girişe bağlanması gerektiği anlamına gelir.  Sadece dbo hakları ile bir giriş atanmış bir grubun üyesi olamaz.
 
-3. Azure AD Connect yükleme sırasında kullanılacak SQL sunucusunu ve örnek adı gösteren Azure AD Connect Yöneticisi için bir e-posta gönderin.
+3. Azure AD Connect'i yüklerken kullanılması gereken SQL sunucusu nu ve örnek adını belirten Bir e-postayı Azure AD Connect yöneticisine gönderin.
 
 ## <a name="additional-information"></a>Ek bilgiler
-Veritabanı oluşturulduktan sonra Azure AD Connect Yöneticisi yükleyebilir ve şirket içi eşitleme sırasında kolaylık yapılandırın.
+Veritabanı sağlandıktan sonra, Azure AD Connect yöneticisi şirket içi eşitlemeişlemlerini kendi kolaylıklarına göre yükleyebilir ve yapılandırabilir.
 
-SQL yönetici ADSync veritabanı önceki bir Azure AD Connect yedeklemeden geri olması durumunda, yeni Azure AD Connect sunucusu, var olan bir veritabanını kullanarak yüklemek gerekir. Mevcut bir veritabanı ile Azure AD Connect yükleme hakkında daha fazla bilgi için bkz. [var olan bir ad eşitleme veritabanını kullanarak Azure AD Connect'i yükleme](how-to-connect-install-existing-database.md).
+SQL Administrator'un önceki bir Azure AD Connect yedeklemesinden ADSync veritabanını geri yüklemesi durumunda, varolan bir veritabanını kullanarak yeni Azure AD Connect sunucusunu yüklemeniz gerekir. Varolan bir veritabanıyla Azure AD Connect'i yükleme hakkında daha fazla bilgi için, [varolan bir ADSync veritabanını kullanarak Azure AD Connect'i yükle'ye](how-to-connect-install-existing-database.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Hızlı ayarları kullanarak Azure AD Connect ile çalışmaya başlama](how-to-connect-install-express.md)

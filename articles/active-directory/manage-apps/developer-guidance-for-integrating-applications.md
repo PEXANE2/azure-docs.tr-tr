@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory'yi kullanmak için uygulamanızı kaydetme | Microsoft Docs
-description: BT uzmanı için yazılan, uygulamaları Azure Active Directory ile tümleştirme için bu makaleyi kılavuz bilgiler verilmektedir.
+title: Azure Active Directory | Microsoft Dokümanlar
+description: BT Pro için yazılmış olan bu makalede, Azure uygulamalarını Active Directory ile tümleştirmek için yönergeler sağlanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -14,66 +14,66 @@ ms.author: mimart
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba54f8042c20a00f8d559ddce28e007a93afaace
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108294"
 ---
-# <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory için satır iş kolu uygulamaları geliştirme
-Bu kılavuz, satır iş kolu (LoB) uygulamaları için Azure Active Directory (AD) geliştirmeye genel bakış sağlar. Hedef kitlesi, Active Directory/Office 365 genel yöneticileri olur.
+# <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory için iş yeri uygulamaları geliştirin
+Bu kılavuz, Azure Etkin Dizin (AD) için iş çizgisi (LoB) uygulamaları geliştirmeye genel bir bakış sağlar. Amaçlanan hedef kitle Active Directory/Office 365 global yöneticilerdir.
 
 ## <a name="overview"></a>Genel Bakış
-Azure AD ile tümleştirilmiş uygulamalar oluşturmak, kuruluş çoklu oturum açmayı Office 365 ile kullanıcılara sağlar. Uygulamaya sahip olunması, üzerinde uygulama için kimlik doğrulama İlkesi denetim Azure AD'ye sağlar. Koşullu erişim ve çok faktörlü kimlik doğrulaması (MFA) bakın ile uygulamaları koruma hakkında daha fazla bilgi için [yapılandırma erişim kuralları](../conditional-access/app-based-mfa.md).
+Azure AD ile tümleşik uygulamalar oluşturmak, kuruluşunuzdaki kullanıcılara Office 365 ile tek oturum açma olanağı sağlar. Uygulamanın Azure AD'de olması, uygulamanın kimlik doğrulama ilkesi üzerinde denetim sağlar. Koşullu Erişim ve çok faktörlü kimlik doğrulamasına (MFA) sahip uygulamaların nasıl korunup korunabildiğini öğrenmek için [erişim kurallarını yapılandırmaya](../conditional-access/app-based-mfa.md)bakın.
 
-Azure Active Directory'yi kullanmak için uygulamanızı kaydedin. Uygulama kaydetme, geliştiricilerinizin Azure AD kullanıcıların kimliğini doğrulama ve kullanıcı kaynaklarını e-posta, Takvim ve belgeler gibi erişim istemek için kullanabileceği anlamına gelir.
+Azure Active Directory'yi kullanmak için uygulamanızı kaydedin. Uygulamayı kaydetmek, geliştiricilerinizin kullanıcıların kimliğini doğrulamak için Azure AD'yi kullanabileceği ve e-posta, takvim ve belgeler gibi kullanıcı kaynaklarına erişim isteyebileceği anlamına gelir.
 
-Aksi takdirde olarak bilinen, bir uygulama dizininize (Konukları değil) herhangi bir üyesi kaydedebilirsiniz *uygulama nesnesi oluşturma*.
+Dizininizin herhangi bir üyesi (misafirler değil) bir *uygulama nesnesi oluşturma*olarak bilinen bir uygulamayı kaydedebilir.
 
-Uygulama kaydetme, herhangi bir kullanıcı aşağıdakileri sağlar:
+Bir uygulamayı kaydetmek, herhangi bir kullanıcının aşağıdakileri yapmasına olanak tanır:
 
-* Azure AD tanır, uygulama için bir kimlik almak
-* Bir veya daha fazla gizli dizileri/uygulama için AD kendi kimliğini doğrulamak için kullanabileceğiniz anahtarları alma
-* Marka özel ad, logo, vb. ile Azure portalında uygulama.
-* Azure AD yetkilendirme özellikleri kendi, uygulamanıza dahil olmak üzere:
+* Azure AD'nin tanıdığı uygulamaları için bir kimlik alın
+* Uygulamanın kendisini AD'ye doğrulamak için kullanabileceği bir veya daha fazla sırlar/anahtarlar alın
+* Uygulamayı Azure portalında özel bir ad, logo vb. ile markalaştırın.
+* Azure AD yetkilendirme özelliklerini uygulama özelliklerine şunları dahil olmak üzere uygulamalarını uygulayın:
 
   * Rol Tabanlı Erişim Denetimi (RBAC)
-  * OAuth yetkilendirme sunucusu olarak Azure Active Directory (uygulama tarafından kullanıma sunulan bir API güvenliğini sağlama)
-* Gerekli izinleri uygulama işlevi için gerekli dahil olmak üzere beklenen gibi tanımlayın:
+  * OAuth yetkilendirme sunucusu olarak Azure Active Directory (uygulama tarafından açığa çıkarılan bir API'yi emniyete alın)
+* Aşağıdakiler de dahil olmak üzere, uygulamanın beklendiği gibi çalışması için gerekli izinleri bildirin:
 
-     - Uygulama izinleri (yalnızca genel Yöneticiler). Örneğin: Bir Azure kaynak, kaynak grubuna veya aboneliğe göre başka bir Azure AD uygulama veya rol üyeliğine rol üyeliği
-     - Temsilci izinleri (herhangi bir kullanıcı). Örneğin: Azure AD oturum açma ve okuma profili
+     - Uygulama izinleri (yalnızca genel yöneticiler). Örneğin: Azure Kaynak, Kaynak Grubu veya Abonelik'e göre başka bir Azure REKLAM uygulamasında veya rol üyeliğinde rol üyeliği
+     - Yetkin izinler (herhangi bir kullanıcı). Örneğin: Azure AD, Oturum Açma ve Okuma Profili
 
 > [!NOTE]
-> Varsayılan olarak, herhangi bir üyenin, bir uygulama kaydedebilirsiniz. Belirli üyeleri için uygulamaları kaydetmek için izinleri kısıtla öğrenmek için bkz. [uygulamaları Azure AD'ye nasıl eklenir](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Varsayılan olarak, herhangi bir üye bir uygulamayı kaydedebilir. Uygulamaları belirli üyelere kaydetme izinlerini nasıl kısıtlarız öğrenmek için, [uygulamaların Azure AD'ye nasıl eklenmelerine](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)bakın.
 >
 >
 
-Genel Yöneticisi olarak geliştiriciler uygulamalarını üretim için hazır olun yardımcı olması için yapmanız gerekenler şu şekildedir:
+İşte siz, küresel yönetici, geliştiricilerin uygulamalarını üretime hazır hale getirmelerine yardımcı olmak için yapmanız gerekenler:
 
-* (Erişim ilkesi/MFA) erişim kurallarını yapılandırma
-* Kullanıcı atamasını gerektirir ve kullanıcılara atamak için uygulamayı yapılandırma
-* Varsayılan kullanıcı onayı deneyimi Gizle
+* Erişim kurallarını yapılandırma (erişim ilkesi/MFA)
+* Uygulamayı kullanıcı ataması gerektirecek şekilde yapılandırın ve kullanıcıları atayın
+* Varsayılan kullanıcı onayı deneyimini bastırma
 
 ## <a name="configure-access-rules"></a>Erişim kurallarını yapılandırma
-SaaS uygulamalarınız için uygulama başına erişim kurallarını yapılandırın. Örneğin, mfa'yı gerekli veya yalnızca güvenilen ağlarda kullanıcılar erişime izin vermek. Ayrıntılar için bu belgede kullanılabilir [yapılandırma erişim kuralları](../conditional-access/app-based-mfa.md).
+Uygulama başına erişim kurallarını SaaS uygulamalarınızda yapılandırın. Örneğin, MFA gerektirebilir veya yalnızca güvenilen ağlardaki kullanıcılara erişime izin verebilirsiniz. Bunun [ayrıntıları, erişim kurallarını yapılandırma](../conditional-access/app-based-mfa.md)belgesinde mevcuttur.
 
-## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Kullanıcı atamasını gerektirir ve kullanıcılara atamak için uygulamayı yapılandırma
-Varsayılan olarak, kullanıcılar atanmadan uygulamalarına erişebilir. Ancak, uygulama rolleri sunarsa ya da uygulamanın bir kullanıcının erişim panelinde görünmesini istiyorsanız kullanıcı atamasını istemeniz gerekir.
+## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Uygulamayı kullanıcı ataması gerektirecek şekilde yapılandırın ve kullanıcıları atayın
+Varsayılan olarak, kullanıcılar atanmadan uygulamalara erişebilir. Ancak, uygulama rolleri ortaya çıkarırsa veya uygulamanın kullanıcının erişim panelinde görünmesini istiyorsanız, kullanıcı ataması gerekir.
 
-Bir Azure AD Premium veya Enterprise Mobility Suite (EMS) abonesi iseniz, grupları kullanarak kesinlikle öneririz. Grupları uygulamaya atama temsilci grubun sahibine sürekli erişim yönetimi sağlar. Grubu oluşturun veya sorumlu kişi, Grup Yönetimi özelliğini kullanarak bir grup oluşturmak için kuruluşunuzda isteyin.
+Azure AD Premium veya Enterprise Mobility Suite (EMS) abonesiyseniz, grupları kullanmanızı şiddetle öneririz. Uygulamaya grup atama, devam eden erişim yönetimini grubun sahibine devretmenizi sağlar. Grubu oluşturabilir veya kuruluşunuzdaki sorumlu tarafa grup yönetim tesisinizi kullanarak grubu oluşturmasını isteyebilirsiniz.
 
-[Kullanıcıları ve grupları uygulamaya atama](methods-for-assigning-users-and-groups.md)  
+[Kullanıcıları ve grupları bir uygulamaya atama](methods-for-assigning-users-and-groups.md)  
 
 
-## <a name="suppress-user-consent"></a>Kullanıcı onayı Gizle
-Varsayılan olarak, her bir kullanıcı oturum açmak için bir onay deneyiminde geçer. Bir uygulama izni vermek isteyen onayı deneyimi disconcerting kullanıcılar bu kararların ile bilginiz olabilir.
+## <a name="suppress-user-consent"></a>Kullanıcı onayLarını bastırma
+Varsayılan olarak, her kullanıcı oturum açma izni deneyimiyaşar. Kullanıcılardan bir uygulamaya izin vermelerini isteyen onay deneyimi, bu tür kararlar almaya yabancı olan kullanıcılar için rahatsız edici olabilir.
 
-Güvendiğiniz uygulamalar için kuruluşunuz adına uygulamayı tümleştirip tarafından kullanıcı deneyimini kolaylaştırabilirsiniz.
+Güvendiğiniz uygulamalariçin, kuruluşunuz adına uygulamayı onaylayarak kullanıcı deneyimini basitleştirebilirsiniz.
 
-Kullanıcı onayı hakkında daha fazla bilgi ve onay Azure'da deneyimi için bkz: [uygulamaları Azure Active Directory ile tümleştirme](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+Azure'daki kullanıcı onayı ve onay deneyimi hakkında daha fazla bilgi [için](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)bkz.
 
-## <a name="related-articles"></a>İlgili makaleler
-* [Azure AD uygulama ara sunucusu ile şirket içi uygulamalara güvenli uzaktan erişim'i etkinleştir](application-proxy.md)
+## <a name="related-articles"></a>İlgili Makaleler
+* [Azure AD Application Proxy ile şirket içi uygulamalara güvenli uzaktan erişim sağlama](application-proxy.md)
 * [Azure AD ile uygulamalara erişimi yönetme](what-is-access-management.md)
 

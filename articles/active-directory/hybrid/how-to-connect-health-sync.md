@@ -17,14 +17,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897215"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect eşitlemesini Azure AD Connect Health ile izleme
-Aşağıdaki belgeler Azure AD Connect Health ile Azure AD Connect’in (Eşitleme) izlenmesine özgüdür.  Azure Connect Health ile AD FS'yi izleme hakkında bilgi almak için bkz. [Azure AD Connect Health'i AD FS ile kullanma](how-to-connect-health-adfs.md). Ek olarak, Active Directory Etki Alanı Hizmetleri’ni Azure AD Connect Health ile izleme hakkında bilgi için bkz. [AD DS ile Azure AD Connect Health Kullanma](how-to-connect-health-adds.md).
+Aşağıdaki belgeler Azure AD Connect Health ile Azure AD Connect’in (Eşitleme) izlenmesine özgüdür.  Azure Connect Health ile AD FS'yi izleme hakkında bilgi almak için bkz. [Azure AD Connect Health'i AD FS ile kullanma](how-to-connect-health-adfs.md). Ayrıca, Azure AD Connect Health ile Active Directory Etki Alanı Hizmetlerini izleme hakkında bilgi için Bkz. Azure AD Bağlantı Durumu'nun Kullanımı [AD DS ile Birlikte Genel Sağlık'ı kullanma](how-to-connect-health-adds.md).
 
 ![Eşitleme için Azure AD Connect Health](./media/how-to-connect-health-sync/syncsnapshot.png)
 
@@ -64,13 +64,13 @@ Bu özellik, değerlendirilen ve Azure AD'ye aktarılan değişiklik sayısını
 
 ![Eşitleme Gecikme Süresi](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report"></a>Nesne düzeyinde eşitleme hata raporu
+## <a name="object-level-synchronization-error-report"></a>Nesne Düzeyi Eşitleme Hata Raporu
 Bu özellik, kimlik verileri Azure AD Connect kullanılarak Windows Server AD ile Azure AD arasında eşitlenirken oluşabilecek eşitleme hataları hakkında bir rapor sağlar.
 
 * Rapor, eşitleme istemcisi tarafından kaydedilen hataları kapsar (Azure AD Connect 1.1.281.0 veya üzeri)
 * Eşitleme altyapısındaki son eşitleme işlemi sırasında oluşan hataları içerir. (Azure AD Bağlayıcısı üzerinde “dışarı aktarma”.)
 * Raporun en son verileri içermesi için eşitlemeye yönelik Azure AD Connect Health aracısının gerekli uç noktalara giden bağlantısının olması gerekir.
-* Rapor, eşitleme için Azure AD Connect Health Aracısı tarafından karşıya yüklenen veriler kullanılarak **her 30 dakikada bir güncelleştirilir** . Aşağıdaki temel özellikleri sağlar
+* Rapor, eşitlenmek için Azure AD Connect Health aracısı tarafından yüklenen veriler kullanılarak **her 30 dakikada bir güncelleştirilir.** Aşağıdaki temel yetenekleri sağlar
 
   * Hataların kategorilere ayrılması
   * Kategoriye göre hatalı nesnelerin listesi
@@ -117,7 +117,7 @@ Kullanıcı Kaynak Bağlantısı güncelleştirmesiyle ilgili yinelenen öznitel
 * [Eşitleme sırasında karşılaşılan Hataları giderme](tshoot-connect-sync-errors.md)
 * [Yinelenen Öznitelik Dayanıklılığı](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Azure AD Connect Health Aracısı Yüklemesi](how-to-connect-health-agent-install.md)
+* [Azure AD Connect Sağlık Aracısı Yükleme](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health İşlemleri](how-to-connect-health-operations.md)
 * [Azure AD Connect Health'i AD FS ile Kullanma](how-to-connect-health-adfs.md)
 * [Azure AD Connect Health'i AD DS ile Kullanma](how-to-connect-health-adds.md)

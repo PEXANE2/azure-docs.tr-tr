@@ -1,138 +1,138 @@
 ---
-title: Ana bilgisayar işlem, Azure sanal makinelerine taşıma
-description: IBM Z14 uygulamalarını geçirebilmeniz için Azure işlem kaynakları favorably ile ana bilgisayar kapasitesini karşılaştırın.
+title: Ana bilgisayar bilgiişlemini Azure Sanal Makineleri'ne taşıyın
+description: Azure bilgi işlem kaynakları, IBM z14 uygulamalarını geçirebilmeniz ve modernize edebilmeniz için ana bilgisayar kapasitesiyle olumlu bir karşılaştırma sağlar.
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76288940"
 ---
-# <a name="move-mainframe-compute-to-azure"></a>Anabilgisayar işlem hareketini Azure 'a taşıma
+# <a name="move-mainframe-compute-to-azure"></a>Ana bilgisayar işlem işlem'ini Azure'a taşıma
 
-Ana bilgisayarlar yüksek güvenilirlik ve kullanılabilirlik için bir saygınlığa sahiptir ve birçok kurumun güvenilir omurgası olmaya devam eder. Genellikle, neredeyse sınırsız ölçeklenebilirlik ve bilgi işlem gücü de vardır. Ancak bazı kuruluşlar, kullanılabilir en büyük ana bilgisayarları yeteneklerini artmıştır. Bu şekilde bu şekilde karşılaşırsanız Azure, çeviklik, erişim ve altyapı tasarrufları sunar.
+Ana bilgisayarlar yüksek güvenilirlik ve kullanılabilirlik için bir üne sahiptir ve birçok işletmenin güvenilir omurgası olmaya devam etmektedir. Genellikle neredeyse sınırsız ölçeklenebilirlik ve bilgi işlem gücüne sahip oldukları düşünülmektedir. Ancak, bazı işletmeler mevcut en büyük ana bilgisayarların kapasitesini aştı. Bu sizin gibi yse, Azure çeviklik, erişim ve altyapı tasarrufu sunar.
 
-Microsoft Azure ana bilgisayar iş yüklerini çalıştırmak için, ana bilgisayarınızın işlem yeteneklerinin Azure ile nasıl karşılaştırılacağını bilmeniz gerekir. Bir IBM Z14 ana bilgisayarı (Bu yazarken en güncel model) temelinde, bu makalede Azure 'da nasıl karşılaştırılabilir sonuçlar elde edersiniz.
+Microsoft Azure'da ana bilgisayar iş yüklerini çalıştırmak için ana bilgisayarınızın işlem yeteneklerinin Azure ile nasıl karşılaştırılacağını bilmeniz gerekir. IBM z14 ana bilgisayarına (bu yazının en güncel modeli) dayanan bu makale, Azure'da nasıl karşılaştırılabilir sonuçlar elde abileceğinizi anlatır.
 
-Başlamak için ortamları yan yana değerlendirin. Aşağıdaki şekilde, bir ana bilgisayar ortamı, uygulamaları çalıştırmak için bir Azure barındırma ortamına göre karşılaştırılmaktadır.
+Başlamak için ortamları yan yana düşünün. Aşağıdaki şekilde, uygulamaları çalıştırmak için bir ana bilgisayar ortamını Azure barındırma ortamıyla karşılaştırın.
 
-![Azure hizmetleri ve öykünme ortamları, karşılaştırılabilir destek sunar ve geçiş kolaylaştırır](media/mainframe-compute-azure.png)
+![Azure hizmetleri ve öykünme ortamları karşılaştırılabilir destek sunar ve geçişi kolaylaştırır](media/mainframe-compute-azure.png)
 
-Ana bilgisayarlar 'ın gücü genellikle binlerce kullanıcı için milyonlarca güncelleştirmeyi işleyen çevrimiçi işlem işleme (OLTP) sistemleri için kullanılır. Bu uygulamalar genellikle işlem işleme, ekran işleme ve form girişi için yazılım kullanır. Bir müşteri bilgileri denetim sistemi (CICS), bilgi yönetimi sistemi (ıMS) veya Işlem arabirimi paketi (tıp) kullanabilirler.
+Ana bilgisayarların gücü genellikle binlerce kullanıcı için milyonlarca güncelleştirmeyi işleyen çevrimiçi işlem işleme (OLTP) sistemleri için kullanılır. Bu uygulamalar genellikle işlem işleme, ekran işleme ve form girişi için yazılım kullanır. Müşteri Bilgi Kontrol Sistemi (CICS), Bilgi Yönetim Sistemi (IMS) veya İşlem Arabirimi Paketi (TIP) kullanabilirler.
 
-Şekilde gösterildiği gibi, Azure 'da bir TPM öykünücüsü CICS ve ıMS iş yüklerini işleyebilir. Azure üzerinde toplu bir sistem öykünücüsü, Iş denetimi dili (JCL) rolünü gerçekleştirir. Ana bilgisayar verileri Azure SQL veritabanı gibi Azure veritabanlarına geçirilir. Azure hizmetleri veya Azure sanal makinelerinde barındırılan diğer yazılımlar sistem yönetimi için kullanılabilir.
+Şekildeki de görüldüğü gibi, Azure'daki bir TPM emülatörü CICS ve IMS iş yüklerini işleyebilir. Azure'daki bir toplu iş sistemi emülatörü İş Denetimi Dili (JCL) rolünü gerçekleştirir. Ana bilgisayar verileri Azure SQL Veritabanı gibi Azure veritabanlarına taşınır. Azure hizmetleri veya Azure Sanal Makineleri'nde barındırılan diğer yazılımlar sistem yönetimi için kullanılabilir.
 
-## <a name="mainframe-compute-at-a-glance"></a>Tek bakışta anabilgisayar işlem
+## <a name="mainframe-compute-at-a-glance"></a>Bir bakışta ana bilgisayar hesaplama
 
-Z14 ana bilgisayarı, işlemciler en fazla dört *çekmece*halinde düzenlenir. *Çekmece* yalnızca bir işlemci ve yonga kümesi kümesidir. Her çekmecede altı etkin Merkezi işlemci (CP) yongaları olabilir ve her bir CP 10 sistem denetleyicisi (SC) yongasıdır. Intel x86 terminolojisinde, çekmece başına altı yuva, yuva başına 10 çekirdek ve dört çekmece vardır. Bu mimari, Z14 için en fazla 24 yuva ve 240 çekirdek, en yüksek değer sağlar.
+Z14 ana bilgisayarında işlemciler en fazla dört *çekmecehalinde*düzenlenir. *Çekmece* sadece işlemci ler ve yonga setleri kümesidir. Her çekmecede altı aktif merkezi işlemci (CP) yongası olabilir ve her CP'de 10 sistem denetleyici (SC) yongası bulunur. Intel x86 terminolojisinde çekmece başına altı yuva, soket başına 10 çekirdek ve dört çekmece vardır. Bu mimari, bir z14 için en fazla 24 yuva ve 240 çekirdek li kaba eşdeğeri sağlar.
 
-Fast Z14 CP 5,2 GHz saat hızına sahiptir. Genellikle, bir Z14, kutudaki tüm CPs ile birlikte dağıtılır. Gerektiğinde etkinleştirilirler. Müşteri, gerçek kullanıma rağmen ayda en az dört saatlik işlem süresi için ücretlendirilir.
+Hızlı z14 CP 5.2 GHz saat hızına sahiptir. Genellikle, bir z14 kutusunda tüm CP'ler ile teslim edilir. Gerektiği gibi aktif hale getirilmişler. Bir müşteri, gerçek kullanıma rağmen ayda en az dört saatlik işlem süresi için ücretlendirilir.
 
-Ana bilgisayar işlemcisi aşağıdaki türlerden biri olarak yapılandırılabilir:
+Bir ana bilgisayar işlemcisi aşağıdaki türlerden biri olarak yapılandırılabilir:
 
-- Genel Amaçlı (GP) işlemcisi
-- Sistem z tümleşik bilgi Işlemcisi (Ziıp)
-- Linux (ıTıL) işlemcisi için tümleşik tesis
-- Sistem yardımı Işlemcisi (SAP)
-- Tümleşik Kuptesis (ICF) işlemcisi
+- Genel Amaçlı (GP) işlemci
+- Sistem z Entegre Bilgi İşlemci (zIIP)
+- Linux (IFL) işlemci için Entegre Tesis
+- Sistem Yardımcı İşlemci (SAP)
+- Entegre Kaplin Tesisi (ICF) işlemci
 
-## <a name="scaling-mainframe-compute-up-and-out"></a>Ana bilgisayar işlem ölçeğini genişletme
+## <a name="scaling-mainframe-compute-up-and-out"></a>Ana bilgisayar hesaplamasını ölçekleme
 
-IBM ana bilgisayarları 240 çekirdeğe kadar ölçeklendirme (tek bir sistem için geçerli Z14 boyutu) olanağı sunar. Ayrıca IBM ana bilgisayarları, Kupı (CF) adlı bir özellik ile ölçeklenebilir. CF birden çok anabilgisayar sisteminin aynı anda aynı verilere erişmesine izin verir. Ana bilgisayar Paralel Sysplex teknolojisi, CF kullanarak ana bilgisayar işlemcilerini kümeler halinde gruplandırır. Bu kılavuz yazıldığında, Paralel Sysplex özelliği, her biri 64 işlemcili 32 gruplandırmaları destekler. İşlem kapasitesini ölçeklendirmek için, en fazla 2.048 işlemci bu şekilde gruplandırılabilir.
+IBM ana bilgisayarları 240 çekiye kadar ölçeklendirme olanağı sunar (tek bir sistem için geçerli z14 boyutu). Ayrıca, IBM ana bilgisayarları Kaplin Tesisi (CF) adı verilen bir özellik üzerinden ölçeklenebilir. CF, birden fazla ana bilgisayar sisteminin aynı anda aynı verilere erişmesine izin verir. Ana bilgisayar Paralel Sysplex teknolojisi, CF'yi kullanarak ana bilgisayar işlemcilerini kümeler halinde gruplabir araya getirir. Bu kılavuz yazıldığında, Paralel Sysplex özelliği her biri 64 işlemciden oluşan 32 gruplandırmayı destekleydi. İşlem kapasitesini ölçeklendirmek için bu şekilde en fazla 2.048 işlemci gruplandırılabilir.
 
-Bir CF, işlem kümelerinin doğrudan erişimli veri paylaşmasına izin verir. Bilgi, önbellek bilgileri ve paylaşılan veri kaynakları listesini kilitlemek için kullanılır. Bir veya daha fazla CFs kullanan Paralel Sysplex, "paylaşılan her şey" genişleme işlem kümesi olarak düşünülebilir. Bu özellikler hakkında daha fazla bilgi için IBM Web sitesindeki [IBM Z üzerinde Parallel sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources) konusuna bakın.
+CF, bilgi işlem kümelerinin verileri doğrudan erişimle paylaşmasına olanak tanır. Bilgileri kilitlemek, önbellek bilgileri ve paylaşılan veri kaynakları nın listesini kilitlemek için kullanılır. Bir veya daha fazla C'yi kullanan Paralel Sysplex, "paylaşılan her şeyi" ölçeklendirme işlem kümesi olarak düşünülebilir. Bu özellikler hakkında daha fazla bilgi için IBM [Z'deki Paralel Sysplex'e](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources) ibm web sitesinden bakın.
 
-Uygulamalar, bu özellikleri hem genişleme performansı hem de yüksek kullanılabilirlik sağlamak için kullanabilir. CICS with CF ile Parallel sysplex kullanma hakkında daha fazla bilgi için, [IBM CICS ve Kupı hizmetini indirin: temel bilgiler](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf) .
+Uygulamalar, hem ölçeklendirme performansı hem de yüksek kullanılabilirlik sağlamak için bu özellikleri kullanabilir. CICS'nin PARALEL Sysplex'i CF ile nasıl kullanabileceği hakkında bilgi için [IBM CICS ve Kaplin Tesisi: Beyond the Basics](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf) redbook'u indirin.
 
-## <a name="azure-compute-at-a-glance"></a>Tek bakışta Azure işlem
+## <a name="azure-compute-at-a-glance"></a>Bir bakışta Azure hesaplama
 
-Bazı kullanıcılar, Intel tabanlı sunucuların ana bilgisayarlar kadar güçlü olduğunu yanlışlıkla düşündüler. Ancak, yeni çekirdek yoğun, Intel tabanlı sistemlerin, ana bilgisayar ile çok fazla işlem kapasitesi vardır. Bu bölümde, bilgi işlem ve depolama için Azure hizmet olarak altyapı (IaaS) seçenekleri açıklanmaktadır. Azure hizmet olarak platform (PaaS) seçenekleri de sunar, ancak bu makale, benzer ana bilgisayar kapasitesini sağlayan IaaS seçeneklerine odaklanır.
+Bazı insanlar yanlışlıkla Intel tabanlı sunucuların ana bilgisayarlar kadar güçlü olmadığını düşünüyor. Ancak, yeni çekirdek yoğun, Intel tabanlı sistemler ana bilgisayarlar kadar bilgi işlem kapasitesine sahiptir. Bu bölümde, bilgi işlem ve depolama için hizmet olarak Azure altyapısı (IaaS) seçenekleri açıklanmaktadır. Azure hizmet olarak platform (PaaS) seçenekleri de sağlar, ancak bu makale, karşılaştırılabilir ana bilgisayar kapasitesi sağlayan IaaS seçeneklerine odaklanır.
 
-Azure sanal makineleri, bir dizi boyut ve türde işlem gücü sağlar. Azure 'da bir sanal CPU (vCPU) kabaca ana bilgisayar üzerindeki bir çekirdeğe karşılık gelir.
+Azure Sanal Makineler, çeşitli boyutlarda ve türlerde bilgi işlem gücü sağlar. Azure'da, sanal cpu (vCPU) kabaca bir ana bilgisayardaki bir çeki eşittir.
 
-Şu anda Azure sanal makine boyutlarının aralığı, 1 ile 128 vCPU arasında yer almaktadır. Sanal makine (VM) türleri, belirli iş yükleri için iyileştirilmiştir. Örneğin, aşağıdaki listede sanal makine türleri (Bu yazma itibariyle geçerli) ve önerilen kullanımları gösterilmektedir:
+Şu anda, Azure Sanal Makine boyutları aralığı 1 ile 128 vCPUs arasında dır. Sanal makine (VM) türleri belirli iş yükleri için optimize edilebiyi amaçlar. Örneğin, aşağıdaki liste VM türlerini (bu yazıitibariyle geçerli) ve önerilen kullanımlarını gösterir:
 
-| Boyut     | Tür ve açıklama                                                                 |
+| Boyut     | Türü ve açıklaması                                                                 |
 |----------|--------------------------------------------------------------------------------------|
-| D Serisi | 64 vCPU ile genel amaçlı ve en fazla 3,5 GHz saat hızı                           |
-| E Serisi | 64 vCPU ile iyileştirilmiş bellek                                                 |
-| F Serisi | 64 vCPU ve 3.7 GHz saat hızında en iyi duruma getirilmiş işlem                       |
-| H serisi | Yüksek performanslı bilgi işlem (HPC) uygulamaları için iyileştirildi                          |
-| L Serisi | NoSQL gibi veritabanları tarafından desteklenen yüksek performanslı uygulamalar için en iyi duruma getirilmiş depolama |
-| M Serisi | 128 vCPU 'ya kadar en büyük işlem ve bellek için iyileştirilmiş VM 'Ler                        |
+| D Serisi | 64 vCPU ve 3,5 GHz'e kadar saat hızına sahip genel amaç                           |
+| E-Serisi | 64 vCPUs'a kadar en iyi şekilde optimize edilmiş bellek                                                 |
+| F Serisi | 64 vCPUs'a ve 3..7 GHz saat hızına kadar optimize edilmiş işlem                       |
+| H Serisi | Yüksek performanslı bilgi işlem (HPC) uygulamaları için optimize edile                          |
+| L Serisi | NoSQL gibi veritabanları tarafından desteklenen yüksek iş elde uygulamaları için optimize edilmiş depolama |
+| M Serisi | 128 vCPUs'a kadar en büyük bilgi işlem ve bellek optimize edilmiş VM'ler                        |
 
-Kullanılabilir VM 'Ler hakkında daha fazla bilgi için bkz. [sanal makine serisi](https://azure.microsoft.com/pricing/details/virtual-machines/series/).
+Kullanılabilir Sanal Makineler hakkında ayrıntılı bilgi için [Virtual Machine serisine](https://azure.microsoft.com/pricing/details/virtual-machines/series/)bakın.
 
-Bir Z14 ana bilgisayar en fazla 240 çekirdeğe sahip olabilir. Ancak, Z14 ana bilgisayarları neredeyse her türlü çekirdeği tek bir uygulama veya iş yükü için kullanmaz. Bunun yerine, bir ana bilgisayar iş yüklerini mantıksal bölümlere (LPARs) ayırır ve LPARs derecelendirmelere sahiptir: MIPS (saniyede milyonlarca yönerge) veya MSU (milyon hizmet birimi). Azure 'da bir anabilgisayar iş yükünü çalıştırmak için gereken sanal makine boyutu belirlenirken, MIPS (veya MSU) derecelendirmesinde etken yapın.
+Bir z14 ana bilgisayarında 240 çekimetreye kadar sahip olabilir. Ancak, z14 ana bilgisayarları hemen hemen hiçbir zaman tek bir uygulama veya iş yükü için tüm çekirdekleri kullanmaz. Bunun yerine, bir ana bilgisayar iş yüklerini mantıksal bölümlere (LVR) ayırır ve LVR'lerin derecelendirmeleri vardır—MIPS (Milyonlarca Saniyeyle Talimat) veya MSU (Milyon Hizmet Birimi). Azure'da bir ana bilgisayar iş yükünü çalıştırmak için gereken karşılaştırılabilir VM boyutunu belirlerken, MIPS (veya MSU) derecelendirmesini faktöre edin.
 
-Genel tahminler aşağıda verilmiştir:
+Genel tahminler şunlardır:
 
 -   vCPU başına 150 MIPS
 
--   işlemci başına 1.000 MIPS
+-   İşlemci başına 1.000 MIPS
 
-Bir LNOMINAL içindeki belirli bir iş yükü için doğru VM boyutunu anlamak için, önce iş yükünün sanal makinesini iyileştirin. Ardından gereken vCPU sayısını saptayın. Bir koruyucu tahmin, vCPU başına 150 MIPS 'dir. Bu tahmine göre, örneğin, 16 vCPU içeren bir F serisi VM, 2.400 MIPS ile bir LNOMINAL 'ten gelen bir IBM DB2 iş yükünü kolayca destekleyebilir.
+Bir LPAR'da belirli bir iş yükü için doğru VM boyutunu belirlemek için, önce vm'yi iş yükü için optimize edin. Daha sonra gerekli vCPUs sayısını belirleyin. Konservatif bir tahmin vCPU başına 150 MIPS'dir. Bu tahmine dayanarak, örneğin, 16 vCPUs'lu bir F serisi VM, 2.400 MIPS'li bir LPAR'dan gelen IBM Db2 iş yükünü kolayca destekleyebilir.
 
-## <a name="azure-compute-scale-up"></a>Azure işlem ölçeği artırma
+## <a name="azure-compute-scale-up"></a>Azure işlem ölçeği
 
-D serisi VM 'Ler 128 vCPU kadar ölçeklendirebilir (Bu makalenin yazıldığı sırada). VCPU başına 150 MIPS 'nin klasik tahminini kullanarak, d serisi VM yaklaşık 19.000 MIPS öğesine karşılık gelir. Bir ana bilgisayar için MIPS 'yi tahmin etmek için genel kural, işlemci başına 1.000 MIPS ' dir. Bir Z14 ana bilgisayar, en fazla 24 işlemciye sahip olabilir ve tek bir anabilgisayar sistemi için yaklaşık 24.000 MIPS sağlayabilir.
+M serisi VM'ler 128 vCPUs'a kadar ölçeklenebilir (bu makalenin yazıldığı tarihte). VCPU başına 150 MIPS konservatif tahmin kullanarak, M-serisi VM yaklaşık 19.000 MIPS eşittir. Bir ana bilgisayar için MIPS tahmin etmek için genel kural işlemci başına 1.000 MIPS olduğunu. Bir z14 ana bilgisayar 24 işlemciye kadar olabilir ve tek bir ana bilgisayar sistemi için yaklaşık 24.000 MIPS sağlayabilir.
 
-En büyük tek Z14 ana bilgisayar, Azure 'da kullanılabilir olan en büyük VM 'den yaklaşık 5.000 MIPS 'ye sahiptir. Ancak, iş yüklerinin nasıl dağıtıldığını karşılaştırmak önemlidir. Bir anabilgisayar sisteminde hem bir uygulama hem de ilişkisel veritabanı varsa, bunlar genellikle her biri kendi LPAR olan fiziksel ana bilgisayara dağıtılır. Azure 'daki aynı çözüm, genellikle uygulama için bir VM ve veritabanı için ayrı, uygun şekilde boyutlu bir VM kullanılarak dağıtılır.
+En büyük tek z14 ana bilgisayarında Azure'daki en büyük VM'den yaklaşık 5.000 MIPS daha fazladır. Ancak iş yüklerinin nasıl dağıtılanolduğunu karşılaştırmak önemlidir. Bir ana bilgisayar sisteminin hem bir uygulaması hem de ilişkisel veritabanı varsa, genellikle her biri kendi LPAR'ında aynı fiziksel ana bilgisayarda dağıtılır. Azure'da aynı çözüm genellikle uygulama için bir VM ve veritabanı için ayrı, uygun boyutta bir VM kullanılarak dağıtılır.
 
-Örneğin, bir M64 vCPU sistemi uygulamayı destekliyorsa ve veritabanı için bir M96 vCPU kullanılıyorsa, aşağıdaki şekilde gösterildiği gibi yaklaşık 150 vCPU gerekir — veya 24.000 MIPS hakkında.
+Örneğin, bir M64 vCPU sistemi uygulamayı destekliyorsa ve veritabanı için bir M96 vCPU kullanılıyorsa, aşağıdaki şekilde yaklaşık 150 vCP'ye veya yaklaşık 24.000 MIPS'ye ihtiyaç duyulur.
 
-![24.000 MIPS iş yükü dağıtımlarını karşılaştırma](media/mainframe-compute-mips.png)
+![24.000 MIPS'nin iş yükü dağıtımlarını karşılaştırma](media/mainframe-compute-mips.png)
 
-Bu yaklaşım, LPARs 'Leri ayrı VM 'lere geçirkullanmaktır. Daha sonra Azure, tek bir anabilgisayar sisteminde dağıtılan çoğu uygulama için gereken boyuta kadar kolayca ölçeklendiriyor.
+Yaklaşım, LGT'leri tek tek VM'lere geçirmektir. Ardından Azure, tek bir ana bilgisayar sisteminde dağıtılan çoğu uygulama için gereken boyuta kolayca ölçeklenir.
 
-## <a name="azure-compute-scale-out"></a>Azure işlem ölçeğini genişletme
+## <a name="azure-compute-scale-out"></a>Azure işlem ölçeği
 
-Azure tabanlı bir çözümün avantajlarından biri, ölçeği genişletme olanağıdır. Ölçeklendirme, bir uygulama için neredeyse sınırsız işlem kapasitesi sağlar. Azure, işlem gücünü genişletmek için birden çok yöntemi destekler:
+Azure tabanlı bir çözümün avantajlarından biri ölçeklendirme yeteneğidir. Ölçekleme, neredeyse sınırsız bilgi işlem kapasitesini bir uygulama için kullanılabilir hale getirir. Azure, bilgi işlem gücünü ölçeklendirmek için birden çok yöntemi destekler:
 
-- **Bir küme genelinde yük dengeleme.** Bu senaryoda, bir uygulama bir kümedeki birden çok VM arasında iş yükünü yaymak için bir [yük dengeleyici](/azure/load-balancer/load-balancer-overview) veya Resource Manager kullanabilir. Daha fazla işlem kapasitesi gerekiyorsa, kümeye ek VM 'Ler eklenir.
+- **Küme üzerinde yük dengelemesi.** Bu senaryoda, bir uygulama bir kümedeki birden çok VM arasında iş yükünü yaymak için bir [yük dengeleyici](/azure/load-balancer/load-balancer-overview) si veya kaynak yöneticisi kullanabilir. Daha fazla işlem kapasitesi gerekiyorsa, kümeye ek VM'ler eklenir.
 
-- **Sanal Makine Ölçek Kümeleri.** Bu patlama senaryosunda, bir uygulama VM kullanımına göre ek [işlem kaynaklarına](/azure/virtual-machine-scale-sets/overview) ölçeklendirebilir. Talep geldiğinde, bir ölçek kümesindeki sanal makinelerin sayısı da, işlem gücünün verimli bir şekilde kullanılması için de kullanılabilir.
+- **Sanal makine ölçek setleri.** Bu seri çekim senaryosunda, bir uygulama VM kullanımına dayalı ek [bilgi işlem kaynaklarına](/azure/virtual-machine-scale-sets/overview) ölçeklenebilir. Talep düştüğünde, bir ölçek kümesindeki VM sayısı da düşerek bilgi işlem gücünün verimli kullanılmasını sağlar.
 
-- **PaaS Ölçeklendirmesi.** Azure PaaS teklifleri, işlem kaynaklarını ölçeklendirir. Örneğin, [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) , işlem kaynaklarını, istek hacminde artımlardan buluşmak üzere ayırır.
+- **PaaS ölçekleme.** Azure PaaS teklifleri hesaplama kaynaklarını ölçeklendirin. Örneğin, [Azure Hizmet Kumaşı,](/azure/service-fabric/service-fabric-overview) istek hacmindeki artışları karşılamak için bilgi işlem kaynaklarını ayırır.
 
-- **Kubernetes kümeleri.** Azure 'daki uygulamalar, belirtilen kaynaklar için işlem hizmetleri için [Kubernetes kümelerini](/azure/aks/concepts-clusters-workloads) kullanabilir. Azure Kubernetes hizmeti (AKS), Azure 'da Kubernetes düğümlerini, havuzlarını ve kümelerini düzenleyen bir yönetilen hizmettir.
+- **Kubernetes kümeleri.** Azure'daki uygulamalar, belirtilen kaynaklar için bilgi işlem hizmetleri için [Kubernetes kümelerini](/azure/aks/concepts-clusters-workloads) kullanabilir. Azure Kubernetes Service (AKS), Azure'da Kubernetes düğümlerini, havuzlarını ve kümelerini düzenleyen yönetilen bir hizmettir.
 
-İşlem kaynaklarını ölçeklendirmeye yönelik doğru yöntemi seçmek için, Azure ve ana bilgisayarlar 'ın nasıl farklı olduğunu anlamak önemlidir. Bu anahtar, verileri işlem kaynakları tarafından paylaşılır (veya ise). Azure 'da veriler (varsayılan olarak) genellikle birden çok VM tarafından paylaşılmaz. Genişleme işlem kümesinde birden çok VM için veri paylaşımı gerekliyse, paylaşılan verilerin bu işlevselliği destekleyen bir kaynakta bulunması gerekir. Azure 'da, veri paylaşımı aşağıdaki bölümde açıklandığı gibi depolama ile ilgilidir.
+Bilgi işlem kaynaklarını ölçeklemek için doğru yöntemi seçmek için Azure ve ana bilgisayarların nasıl farklılık gösterir olduğunu anlamak önemlidir. Önemli olan, verilerin bilgi işlem kaynakları tarafından nasıl veya nasıl paylaşılabilen olduğudur. Azure'da veriler (varsayılan olarak) genellikle birden çok Sanal Bilgisayar tarafından paylaşılmaz. Veri paylaşımı, ölçeklendirilen bir bilgi işlem kümesindeki birden çok VM tarafından gerekliyse, paylaşılan verilerin bu işlevselliği destekleyen bir kaynakta olması gerekir. Azure'da, aşağıdaki bölümde belirtildiği gibi veri paylaşımı depolamayı içerir.
 
-## <a name="azure-compute-optimization"></a>Azure işlem iyileştirmesi
+## <a name="azure-compute-optimization"></a>Azure hesaplama optimizasyonu
 
-Her bir Azure mimarisinde işlem katmanını iyileştirebilirsiniz. Her ortam için en uygun sanal makine ve özellik türlerini kullanın. Aşağıdaki şekilde, DB2 kullanan bir CICS uygulamasını desteklemek üzere VM 'Leri Azure 'da dağıtmaya yönelik olası bir model gösterilmektedir. Birincil sitede, üretim, üretim öncesi ve test sanal makineleri yüksek kullanılabilirliğe sahip olarak dağıtılır. İkincil site yedekleme ve olağanüstü durum kurtarma içindir.
+Azure mimarisinde her işlem katmanını en iyi duruma getirebilirsiniz. Her ortam için en uygun VM türünü ve özelliklerini kullanın. Aşağıdaki şekilde, Db2 kullanan bir CICS uygulamasını desteklemek için Azure'da VM'leri dağıtmak için bir potansiyel deseni gösterilmektedir. Birincil sitede, üretim, üretim öncesi ve test VM'leri yüksek kullanılabilirlik ile dağıtılır. İkincil site yedekleme ve olağanüstü durum kurtarma içindir.
 
-Her katman, uygun olağanüstü durum kurtarma hizmetleri de sağlayabilir. Örneğin, üretim ve veritabanı VM 'Leri, geliştirme ve test VM 'Leri soğuk kurtarmayı destekleirken, dinamik veya sıcak bir kurtarma gerektirebilir.
+Her katman uygun olağanüstü durum kurtarma hizmetleri de sağlayabilir. Örneğin, üretim ve veritabanı VM'leri sıcak veya sıcak bir kurtarma gerektirirken, geliştirme ve test VM'leri soğuk bir kurtarmayı destekler.
 
-![Olağanüstü durum kurtarmayı destekleyen yüksek oranda kullanılabilir dağıtım](media/mainframe-compute-dr.png)
+![Olağanüstü durum kurtarmayı destekleyen yüksek kullanılabilir dağıtım](media/mainframe-compute-dr.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ana bilgisayar geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure sanal makinelerinde Ana bilgisayar yeniden barındırma](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
-- [Ana bilgisayar depolama alanını Azure 'a taşıma](mainframe-storage-Azure.md)
+- [Azure Sanal Makinelerde Ana Bilgisayar yeniden barındırma](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Ana bilgisayar depolama alanını Azure'a taşıma](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM kaynakları
 
-- [IBM Z üzerinde Parallel Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS ve kuponu: temel bilgilerin ötesinde](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [DB2 pureScale özelliği yüklemesi için gerekli kullanıcıları oluşturma](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [Db2icrt-örnek Oluştur komutu](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [DB2 Porescale kümelenmiş veritabanı çözümü](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
-- [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
+- [IBM Z'de Paralel Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [IBM CICS ve Kaplin Tesisi: Temellerin Ötesinde](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [Db2 pureScale Özellik yüklemesi için gerekli kullanıcı oluşturma](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [Db2icrt - Örnek komutu oluşturma](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [Db2 pureScale Kümelenmiş Veritabanı Çözümü](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [IBM Veri Stüdyosu](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
-### <a name="azure-government"></a>Azure Devlet Kurumları
+### <a name="azure-government"></a>Azure Kamu
 
-- [Anabilgisayar uygulamaları için Microsoft Azure Kamu Bulutu](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
-- [Microsoft ve Fedrampa](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
+- [Ana bilgisayar uygulamaları için Microsoft Azure Genel bulutu](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft ve FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
 ### <a name="more-migration-resources"></a>Daha fazla geçiş kaynağı
 
-- [Azure sanal veri merkezi yükselt ve kaydırma Kılavuzu](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS Iscsı](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [Azure Sanal Veri Merkezi Kaldırma ve Kaydırma Kılavuzu](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

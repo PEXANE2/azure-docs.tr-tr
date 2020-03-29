@@ -1,6 +1,6 @@
 ---
-title: Genel Bakış - Azure Batch işleme
-description: Giriş işleme ve Azure Batch işleme özelliklerine genel bakış için Azure'ı kullanma
+title: Genel bakış oluşturma - Azure Toplu İş
+description: İşleme için Azure'u kullanma nın tanıtımı ve Azure Toplu İşlem oluşturma özelliklerine genel bakış
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,98 +8,98 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60774038"
 ---
 # <a name="rendering-using-azure"></a>Azure ile işleme
 
-İşleme, 3B modelleri almak ve bunları 2B görüntülere dönüştürme işlemidir. 3B Sahne dosyaları yazılan uygulamalardaki gibi Autodesk 3ds Max, Autodesk Maya ve Blender'ı.  Autodesk Maya ve Autodesk Arnold, Chaos Group V-Ray ve Blender döngüleri gibi işleme uygulamalarını 2B görüntüleri oluşturur.  Bazen tek bir görüntü Sahne dosyaları oluşturulur. Ancak, model ve birden çok görüntülerin ve animasyon birleştirip sonra yaygındır.
+Render, 3B modelleri alıp 2B görüntülere dönüştürme işlemidir. 3D sahne dosyaları Autodesk 3ds Max, Autodesk Maya ve Blender gibi uygulamalarda yazılmaktadır.  Autodesk Maya, Autodesk Arnold, Chaos Group V-Ray ve Blender Cycles gibi render uygulamaları 2B görüntüler üretir.  Bazen sahne dosyalarından tek görüntüler oluşturulur. Ancak, birden çok görüntüyü modellemek ve işlemek ve bunları bir animasyonda birleştirmek yaygındır.
 
-İşleme iş yükü, medya ve eğlence sektöründe (VFX) özel efekt için yoğun olarak kullanılır. İşleme, reklam, perakende, Petrol ve gaz ve üretim gibi diğer birçok sektörle da kullanılıyor.
+Render iş yükü, Medya ve Eğlence endüstrisinde özel efektler (VFX) için yoğun olarak kullanılır. İşleme reklamcılık, perakende, petrol ve doğalgaz ve üretim gibi diğer birçok sektörde de kullanılır.
 
-İşlem bakımından yoğun işleme işlemidir; üretmek için birçok çerçeve/görüntülerinden olabilir ve her bir görüntü oluşturmak için saatler sürebilir.  İşleme, bu nedenle birçok işleme paralel olarak çalıştırmak için Azure ve Azure Batch yararlanabilen bir mükemmel toplu işleme iş yüküne sahiptir.
+İşleme süreci hesaplama açısından yoğundur; üretmek için birçok kare /görüntü olabilir ve her görüntünün işlenmesi saatler sürebilir.  Bu nedenle oluşturma, birçok işlemeyi paralel olarak çalıştırmak için Azure ve Azure Toplu İş birliğini kaldırabilen mükemmel bir toplu iş yüküdür.
 
-## <a name="why-use-azure-for-rendering"></a>Neden Azure, işleme için kullanılır?
+## <a name="why-use-azure-for-rendering"></a>Neden oluşturma için Azure'u kullanıyor?
 
-Çeşitli nedenlerle işleme mükemmel bir şekilde Azure ve Azure Batch için uygun bir iş yüküne sahiptir:
+Birçok nedenden dolayı, oluşturma, Azure ve Azure Toplu İş için mükemmel bir şekilde uygun bir iş yüküdür:
 
-* İşleme işleri birden fazla sanal makine kullanarak işlemi paralel olarak çalıştırılabilir birçok parçalara ayrılabilir:
-  * Birçok çerçeve animasyonları oluşur ve her karede paralel olarak işlenebilir.  Her kare, daha hızlı tüm çerçeveleri ve animasyon üretilen işlemine daha fazla VM.
-  * Bazı işleme yazılımı, kutucukları veya dilimleri gibi birden çok parçalara bölünür tek bir çerçeve sağlar.  Her parça ayrı olarak işlenen sonra parçaların tamamladığınızda son görüntüye birleştirilmiş.  Daha fazla kullanılabilir VM'ler, daha hızlı bir çerçeve işlenebilir.
-* Proje oluşturma, devasa ölçek gerektirebilir:
-  * Tek tek çerçeveleri, karmaşık ve saatlerce, hatta Gelişmiş donanım üzerinde işlemek için gerekli; animasyonları binlerce çerçevelerinin yüzlerce oluşabilir.  İşlem büyük bir miktarını, yüksek kaliteli animasyonları makul bir süre içinde işlemek için gereklidir.  Bazı durumlarda, 100.000 çekirdek binlerce çerçevelerinin paralel işlemek için kullanılır.
-* İşleme projeler, proje tabanlıdır ve değişen miktarda işlem gerektirir:
-  * Gerekli olduğunda işlem ve depolama kapasitesini ayırmak, ölçeklendirme yukarı veya aşağı doğru göre yük bir proje ve proje bittiğinde kaldırın.
-  * Ayrılmış kapasitesi için ödeme, ancak hiçbir yük projeler arasında olduğu gibi zaman için ödeme yapmayın.
-  * Beklenmeyen değişiklikleri nedeniyle ani artışlar için değiştirebileceğiniz; beklenmeyen bir projedeki geç ve bu değişiklikler varsa daha yüksek ölçek, sıkı bir zamanlamaya göre işlenmesi gerekir.
-* Uygulama, iş yükü ve zaman dilimi göre donanımı geniş arasından seçim yapabilirsiniz:
-  * Donanım geniş ayrılmış ve yönetilen Azure Batch ile kullanılabilir.
-  * Proje bağlı olarak, en iyi fiyat/performans veya en iyi genel performansı için gereksinim olabilir.  Farklı görünümler ve/veya işleme uygulamaları farklı bellek gereksinimleri vardır.  Bazı işleme uygulaması, en iyi performansı veya belirli özellikleri için GPU yararlanabilirsiniz. 
-* Düşük öncelikli VM'ler, maliyetleri düşürün:
-  * Düşük öncelikli VM'ler, normal isteğe bağlı Vm'lere göre büyük bir indirim için kullanılabilir ve bazı proje türleri için uygundur.
-  * Düşük öncelikli VM'ler, bunlar çok sayıda gereksinimleri için gereksinimini karşılamak için nasıl kullanılacağını üzerinde esneklik Batch ile Azure Batch ile ayrılabilir.  Batch havuzları, VM türlerinin bir karışımını herhangi bir zamanda değiştirmek mümkün olan onunla hem adanmış hem de düşük öncelikli sanal makinelerin oluşabilir.
+* İş oluşturma işleri, birden çok VM kullanılarak paralel olarak çalıştırılabilen birçok parçaya ayrılabilir:
+  * Animasyonlar birçok kareden oluşur ve her kare paralel olarak işlenebilir.  Her kareyi işlemek için ne kadar çok VM kullanılabilirse, tüm kareler ve animasyon o kadar hızlı üretilebilir.
+  * Bazı işleme yazılımları, tek çerçevelerin kutucuklar veya dilimler gibi birden çok parçaya ayrılmasını sağlar.  Her parça ayrı ayrı işlenebilir, sonra tüm parçalar tamamlandığında son görüntüye birleştirilebilir.  Ne kadar çok VM kullanılabilirse, bir çerçeve o kadar hızlı işlenebilir.
+* Proje oluşturma büyük ölçekli gerektirebilir:
+  * Tek tek çerçeveler karmaşık olabilir ve üst düzey donanımda bile işlemek için saatlerce zaman gerektirebilir; animasyonlar yüz binlerce çerçeveden oluşabilir.  Yüksek kaliteli animasyonları makul bir süre içinde işlemek için çok büyük miktarda işlem gerekir.  Bazı durumlarda, 100.000'den fazla çekirdek paralel olarak binlerce kare işlemek için kullanılmıştır.
+* Renderprojeleri proje tabanlıdır ve farklı miktarda işlem gerektirir:
+  * Gerektiğinde işlem ve depolama kapasitesini ayırın, proje sırasında ki yüke göre yukarı veya aşağı ölçeklendirin ve proje tamamlandığında kaldırın.
+  * Tahsis edildiğinde kapasite için ödeme yapmayın, ancak projeler arasında olduğu gibi yük olmadığında ödemeyin.
+  * Beklenmeyen değişiklikler nedeniyle patlamalar için hitap; bir projede beklenmeyen değişiklikler varsa ve bu değişikliklerin sıkı bir zamanlamayla işlenmesi gerekiyorsa daha yüksek ölçeklendirin.
+* Uygulamaya, iş yüküne ve zaman aralığına göre çok çeşitli donanımlar arasından seçim yapın:
+  * Azure'da Toplu Iş ile ayrılabilen ve yönetilebilen çok çeşitli donanımlar vardır.
+  * Projeye bağlı olarak, gereksinim en iyi fiyat/performans veya en iyi genel performans olabilir.  Farklı sahneler ve/veya render uygulamaları farklı bellek gereksinimlerine sahip olacaktır.  Bazı işleme uygulamaları en iyi performans veya belirli özellikler için GPU'lerden yararlanabilir. 
+* Düşük öncelikli VM'ler maliyetleri düşürür:
+  * Düşük öncelikli VM'ler, düzenli isteğe bağlı VM'lere kıyasla büyük bir indirim için kullanılabilir ve bazı iş tipleri için uygundur.
+  * Düşük öncelikli VM'ler Azure Toplu İş bölümü tarafından tahsis edilebilir ve Toplu Iş, geniş bir gereksinim kümesini karşılamak için nasıl kullanıldıkları konusunda esneklik sağlar.  Toplu havuzlar, vm türlerinin karışımını her zaman değiştirmek mümkün olduğundan, hem özel hem de düşük öncelikli VM'lerden oluşabilir.
 
-## <a name="options-for-rendering-on-azure"></a>Azure üzerinde işleme seçenekleri
+## <a name="options-for-rendering-on-azure"></a>Azure'da oluşturma seçenekleri
 
-İşleme iş yükleri için kullanılabilecek çeşitli Azure özellikleri vardır.  Hangi özellikleri kullanmak için tüm mevcut ortamlarına ve gereksinimlerine bağlıdır.
+İş yüklerini işlemek için kullanılabilecek çeşitli Azure özellikleri vardır.  Hangi yeteneklerin kullanılacağı, varolan ortama ve gereksinimlere bağlıdır.
 
-### <a name="existing-on-premises-rendering-environment-using-a-render-management-application"></a>Varolan bir işleme yönetim uygulaması kullanarak işleme ortamı şirket
+### <a name="existing-on-premises-rendering-environment-using-a-render-management-application"></a>Render yönetimi uygulamasını kullanarak şirket içi işleme ortamının mevcut
 
-Var olmasını grubu PipelineFX Qube, Royal işlemek veya Thinkbox son tarihi gibi işleme yönetim uygulaması tarafından yönetilen bir mevcut şirket içi işleme için en yaygın bir durumdur.  Şirket içi işleme grubunu kapasiteyi Azure Vm'leri genişletmek için zorunludur.
+En yaygın durum, PipelineFX Qube, Royal Render veya Thinkbox Deadline gibi bir render yönetimi uygulaması tarafından yönetilen mevcut bir şirket içi render çiftliği nin olmasıdır.  Gereksinim, Azure VM'leri kullanarak şirket içi render farm kapasitesini genişletmektir.
 
-Kullanılabilir Azure destek ekleyen eklentiler vermiyoruz ya da işleme yönetim yazılımı ya da Azure desteği yerleşik olarak bulunur. Desteklenen hakkında daha fazla bilgi işlemek için yöneticileri ve etkin işlevselliği, makaleye bakın [kullanarak işleme yöneticileri](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers).
+Render yönetim yazılımı nda yerleşik Azure desteği vardır veya Azure desteği ekleyen eklentiler kullanıma sunabiliriz. Desteklenen render yöneticileri ve işlevselliği etkin hakkında daha fazla bilgi [için, render yöneticilerinin kullanımı](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers)yla ilgili makaleye bakın.
 
 ### <a name="custom-rendering-workflow"></a>Özel işleme iş akışı
 
-Sanal makineler için mevcut bir işleme çiftliği genişletmek zorunludur.  Azure Batch havuzları, VM, çok sayıda ayırabilirsiniz izin kullanılabilir ve dinamik olarak otomatik tam fiyatlı Vm'lerle ölçeklendirilmiş için düşük öncelikli VM'ler ve popüler işleme uygulamaları için Kullandıkça Öde lisansı sağlayın.
+Gereksinim, VM'lerin varolan bir işleme çİftliğini genişletmesidir.  Azure Toplu Toplu Toplu Havuzlar çok sayıda VM tahsis edebilir, düşük öncelikli VM'lerin tam fiyatlı VM'lerle otomatik olarak kullanılmasına ve dinamik olarak otomatik ölçeklendirmesine izin verebilir ve popüler işleme uygulamaları için kullanım için ödemeli lisans lama sağlayabilir.
 
-### <a name="no-existing-render-farm"></a>Var olan bir işleme grubunu
+### <a name="no-existing-render-farm"></a>Varolan render çiftliği yok
 
-İstemci iş istasyonları, işleme gerçekleştiriyor olabileceğini, ancak işleme iş yükü artırır ve yalnızca iş istasyonu kapasite kullanmak için çok uzun sürüyor.  Azure Batch, hem tahsis işleme grubu işlem isteğe bağlı hem de Azure işleme çiftliği işleme işlerini zamanlamak için kullanılabilir.
+İstemci iş istasyonları işleme yapıyor olabilir, ancak render iş yükü artıyor ve yalnızca iş istasyonu kapasitesini kullanmak çok uzun sürüyor.  Azure Toplu İş, hem işleme çiftlik bilgisayarını isteğe bağlı olarak ayırmak hem de render işlerini Azure render çiftliğine planlamak için kullanılabilir.
 
-## <a name="azure-batch-rendering-capabilities"></a>Azure Batch işleme özellikleri
+## <a name="azure-batch-rendering-capabilities"></a>Azure Toplu İşlem oluşturma özellikleri
 
-Azure Batch, paralel iş yüklerini Azure'da çalışmasına izin verir.  Bu, oluşturulmasını ve yönetimini, çok sayıda uygulamaları yüklü ve çalıştıran sanal makineler sağlar.  Kapsamlı iş zamanlama sıraya alma VM'ler için uygulama izleme, görevlerin atanmasını sağlamak, bu uygulamaların örnekleri çalıştırmak ve benzeri için özellikleri de sağlar.
+Azure Toplu İşlem, paralel iş yüklerinin Azure'da çalıştırılmasına izin verir.  Uygulamaların yüklendiği ve çalıştırıldığı çok sayıda VM oluşturulmasını ve yönetilmesini sağlar.  Ayrıca, bu uygulamaların örneklerini çalıştırmak için kapsamlı iş zamanlama yetenekleri sağlayarak, görevlerin VM'lere atanmasını, sıraya alınır, uygulama izleme ve benzeri konularda bilgi sağlar.
 
-Azure Batch, birçok iş yükleri için kullanılır, ancak aşağıdaki özellikleri, özellikle daha kolay ve daha hızlı işleme iş yüklerini çalıştırmak yapmak kullanılabilir.
+Azure Toplu İşlem birçok iş yükü için kullanılır, ancak iş yüklerini çalıştırmayı özellikle daha kolay ve hızlı hale getirmek için aşağıdaki özellikler kullanılabilir.
 
-* Önceden yüklenmiş grafik ve işleme uygulamalarıyla VM görüntüleri:
-  * Azure Market VM görüntülerini kullanılabilir içeren popüler grafik ve işleme uygulamaları, uygulamaları kendiniz yükleyin veya yüklü uygulamalar ile kendi özel görüntülerinizi oluşturmak için gereğinden kurtulursunuz. 
-* Kullanım başına ödeme işleme uygulamaları için lisans:
-  * Uygulamalar tarafından önler, bilgi işlem için sanal makineleri, ödeme ek dakika, lisans satın alın ve olabilecek uygulamalar için bir lisans sunucusu yapılandırmak zorunda için ödeme yapmayı seçebilirsiniz.  Kullanım için ödeme yapmak da değil sabit sayıda lisansları olduğu için değişen ve beklenmeyen yük gereksinimini karşılamak mümkün olduğunu gösterir.
-  * Önceden yüklenmiş uygulamalara kendi lisansları olan ve olmayan lisans kullanım başına ödeme kullanmak mümkündür. Bunu yapmak için genellikle şirket içi veya Azure tabanlı yüklemeniz sunucu lisansı ve lisans sunucusuna işleme havuzu için bir Azure sanal ağı kullanın.
-* Eklentileri istemci tasarım ve modelleme uygulamalarının için:
-  * Eklentilere izin ver doğrudan istemci uygulamasından Azure Batch kullanmaya son kullanıcılar, Autodesk Maya havuzları oluşturmak bunları etkinleştirmek, iş göndermek ve yapmak gibi daha fazla kullanımını işlem kapasitesini daha hızlı işleme gerçekleştirmek için.
-* Tümleşmesi işleme:
-  * Azure Batch işleme Yönetim uygulamaları tümleştirilmiştir veya eklentiler, Azure Batch tümleştirmesi sağlamak kullanılabilir.
+* Önceden yüklenmiş grafiklere ve işleme uygulamalarına sahip VM görüntüleri:
+  * Azure Marketplace VM görüntüleri, uygulamaları kendiniz yükleme veya yüklü uygulamalarla kendi özel resimlerinizi oluşturma gereksinimini önleyerek popüler grafikler ve oluşturma uygulamaları içeren kullanılabilir. 
+* Uygulamaları işlemek için kullanım başına ödeme li lisanslama:
+  * Lisans satın almak ve uygulamalar için bir lisans sunucusu yapılandırmak zorunda kalmamak için bilgi işlem VM'ler için ödeme ek olarak, dakika ile uygulamalar için ödeme seçebilirsiniz.  Kullanım için ödeme yapmak, sabit sayıda lisans olmadığı için değişen ve beklenmeyen yükleri karşılamak da mümkündür.
+  * Önceden yüklenmiş uygulamaları kendi lisanslarınızla kullanmak ve kullanım başına ödeme lisansını kullanmamak da mümkündür. Bunu yapmak için genellikle şirket içi veya Azure tabanlı bir lisans sunucusu yükler ve işleme havuzunu lisans sunucusuna bağlamak için bir Azure sanal ağı kullanırsınız.
+* İstemci tasarımı ve modelleme uygulamaları için eklentiler:
+  * Eklentiler, son kullanıcıların Otomatik Desk Maya gibi doğrudan istemci uygulamasından Azure Toplu İşlemini kullanmasına olanak sağlayarak havuz oluşturmalarına, iş göndermelerine ve daha hızlı işlemeler gerçekleştirmek için daha fazla bilgi işlem kapasitesinden yararlanabilmelerini sağlar.
+* Render yöneticisi tümleştirmesi:
+  * Azure Toplu İş, render yönetimi uygulamalarına entegre edilmiştir veya Azure Toplu Tümleştirme'yi sağlamak için eklentiler kullanılabilir.
 
-Her biri de Azure Batch işleme için geçerli Azure Batch'i nasıl kullanacağınızı birkaç yolu vardır.
+Azure Toplu İş'i kullanmanın birkaç yolu vardır ve bunların tümü Azure Toplu İş oluşturma için de geçerlidir.
 
 * API'ler:
-  * Kod kullanarak yazma [REST](https://docs.microsoft.com/rest/api/batchservice), [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch), [Python](https://docs.microsoft.com/python/api/overview/azure/batch), [Java](https://docs.microsoft.com/java/api/overview/azure/batch), veya desteklenen diğer API'ler.  Geliştiriciler tümleştirilebilir Azure Batch özelliklerine kendi mevcut uygulamalarınız veya iş akışı, ister bulutta veya şirket tabanlı.  Örneğin, [Autodesk Maya eklentisi](https://github.com/Azure/azure-batch-maya) oluşturma ve havuzları yönetme, işleri ve görevleri gönderme ve durumu izleme Batch çağırmak için Batch Python API kullanır.
+  * [REST,](https://docs.microsoft.com/rest/api/batchservice) [.NET,](https://docs.microsoft.com/dotnet/api/overview/azure/batch) [Python,](https://docs.microsoft.com/python/api/overview/azure/batch) [Java](https://docs.microsoft.com/java/api/overview/azure/batch)veya diğer desteklenen API'leri kullanarak kod yazın.  Geliştiriciler, ister bulut ister şirket içi tabanlı olsun, Azure Toplu İşlem özelliklerini mevcut uygulamalarına veya iş akışlarına entegre edebilir.  Örneğin, [Autodesk Maya eklentisi](https://github.com/Azure/azure-batch-maya) Toplu İş çağırmak, havuzları oluşturma ve yönetmek, iş ve görevler gönderme ve izleme durumunu izlemek için Toplu Python API kullanır.
 * Komut satırı araçları:
-  * [Azure komut satırı](https://docs.microsoft.com/cli/azure/) veya [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) betik Batch kullanmak için kullanılabilir.
-  * Özellikle, Batch CLI şablon destek havuzları oluşturmak ve göndermek kolaylaşır.
-* Kullanıcı arabirimleri:
-  * [Batch Explorer](https://github.com/Azure/BatchExplorer) de Batch hesapları, izlenen ve yönetilecek sağlayan bir platformlar arası istemci araçtır, ancak Azure portalı kullanıcı arabirimini kıyasla bazı daha zengin özellikler sunar.  Havuz ve proje şablonları kümesi koşuluyla desteklenen her uygulama için uygun olan ve kolayca havuzları oluşturmak ve göndermek için kullanılabilir.
-  * Azure portalında, yönetmek ve Azure Batch izlemek için kullanılabilir.
-* İstemci uygulama eklentinin:
-  * Eklentileri kullanılabilir doğrudan istemci tasarım içinde kullanılmak üzere Batch işleme ve modelleme uygulamalarının verin. Eklentileri, çoğunlukla geçerli 3B modeli hakkında bağlamsal bilgiler Batch Gezgini uygulamasıyla çağırın.
-  * Aşağıdaki eklentileri kullanılabilir:
-    * [Maya için Azure Batch](https://github.com/Azure/azure-batch-maya)
-    * [3DS Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
-    * [Blender'ı](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+  * [Azure komut satırı](https://docs.microsoft.com/cli/azure/) veya Azure [PowerShell](https://docs.microsoft.com/powershell/azure/overview) Toplu Iş komut dosyası kullanmak için kullanılabilir.
+  * Özellikle, Toplu CLI şablon desteği havuz oluşturmayı ve iş göndermeyi çok daha kolaylaştırır.
+* Uıs:
+  * [Toplu İşlem Gezgini,](https://github.com/Azure/BatchExplorer) Toplu İşlem hesaplarının yönetilmesine ve izlenmesine olanak tanıyan, ancak Azure portalı kullanıcı arabirimi yle karşılaştırıldığında bazı daha zengin özellikler sağlayan bir çapraz platform istemci aracıdır.  Desteklenen her uygulama için özel olarak tasarlanmış ve kolayca havuz oluşturmak ve iş göndermek için kullanılabilecek bir havuz ve iş şablonları kümesi sağlanır.
+  * Azure portalı, Azure Toplu İş'i yönetmek ve izlemek için kullanılabilir.
+* İstemci uygulama eklentileri:
+  * Toplu İşleme'nin doğrudan istemci tasarım ve modelleme uygulamaları içinde kullanılmasına olanak tanıyan eklentiler mevcuttur. Eklentiler esas olarak geçerli 3B model hakkında bağlamsal bilgilerle Toplu Gezgin uygulamasını çağırır.
+  * Aşağıdaki eklentiler mevcuttur:
+    * [Maya için Azure Toplu İş](https://github.com/Azure/azure-batch-maya)
+    * [3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
+    * [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 
-## <a name="getting-started-with-azure-batch-rendering"></a>Azure Batch işleme ile çalışmaya başlama
+## <a name="getting-started-with-azure-batch-rendering"></a>Azure Toplu İşlem oluşturma yla başlarken
 
-Azure Batch işleme denemek için aşağıdaki tanıtım öğreticilerine bakın:
+Azure Toplu İşlem oluşturmayı denemek için aşağıdaki giriş öğreticilerine bakın:
 
-* [Blender'ı bir Sahneyi işleme için Batch Gezgini'ni kullanma](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [Autodesk 3ds Max sahnesini işlemek için Batch CLI kullanma](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Blender sahnesini işlemek için Toplu Gezgin'i kullanma](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Autodesk 3ds Max sahnesini işlemek için Toplu CLI'yi kullanın](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşleme uygulamaları ve Azure Market VM görüntülerini dahil sürümleri listesini belirlemek [bu makalede](https://docs.microsoft.com/azure/batch/batch-rendering-applications).
+[Bu makalede,](https://docs.microsoft.com/azure/batch/batch-rendering-applications)Azure Marketi VM görüntülerinde yer alan işleme uygulamalarının ve sürümlerinin listesini belirleyin.

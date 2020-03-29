@@ -1,6 +1,6 @@
 ---
-title: Karma kimlik tasarımı - veri koruma gereksinimlerini Azure | Microsoft Docs
-description: Karma kimlik çözümünüzü planlarken, işletmeniz ve en iyi şekilde bu gereksinimleri karşılamak hangi seçenekler kullanılabilir veri koruma gereksinimlerini belirleyin.
+title: Karma kimlik tasarımı - veri koruma gereksinimleri Azure | Microsoft Dokümanlar
+description: Karma kimlik çözümünüzü planlarken, işletmeniz için veri koruma gereksinimlerini ve bu gereksinimleri en iyi şekilde karşılamak için hangi seçeneklerin kullanılabildiği nizi belirleyin.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,74 +18,74 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64918786"
 ---
-# <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Aracılığıyla güçlü kimlik çözümü veri güvenliği iyileştirmeyi planlama
-Verilerini korumanın ilk adımı, bu verilere kimlerin erişebileceğini belirlemektir. Ayrıca, kimlik doğrulama ve yetkilendirme özellikleri sağlamak için sisteminizi ile tümleştirebileceğiniz bir kimlik çözümü olması gerekir. Kimlik doğrulama ve Yetkilendirme genellikle birbiriyle karıştırılabilecek ve rollerine yanlış. Gerçekte, aşağıdaki çizimde gösterildiği gibi farklı, bunlar:
+# <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Güçlü bir kimlik çözümü yle veri güvenliğini artırma planı
+Verileri korumanın ilk adımı, bu verilere kimlerin erişebileceğini belirlemektir. Ayrıca, kimlik doğrulama ve yetkilendirme özellikleri sağlamak için sisteminizle tümleştirebilen bir kimlik çözümüne sahip olmanız gerekir. Kimlik doğrulama ve yetkilendirme genellikle birbiriyle karıştırılır ve rolleri yanlış anlaşılır. Gerçekte, aşağıdaki şekilde gösterildiği gibi, farklı:
 
 ![mobil cihaz yaşam döngüsü](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
 
-**Mobil cihaz Yönetimi yaşam döngüsünün aşamaları**
+**Mobil cihaz yönetimi yaşam döngüsünün aşamaları**
 
-Karma kimlik çözümünüzü planlarken bu gereksinimleri işletmenize ve en iyi hangi seçenekler kullanılabilir veri koruma gereksinimlerini karşılamak anlamanız gerekir.
+Karma kimlik çözümünüzü planlarken, işletmeniz için veri koruma gereksinimlerini ve bu gereksinimleri en iyi şekilde yerine getirmek için hangi seçeneklerin kullanılabildiği nizi anlamanız gerekir.
 
 > [!NOTE]
-> Veri güvenliği için planlama tamamladıktan sonra gözden [çok faktörlü kimlik doğrulaması gereklilikleri](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md) çok faktörlü kimlik doğrulaması gereksinimleri ile ilgili yaptığınız seçimleri, değildi emin olmak için tarafından kararların, etkilenen Bu bölümde yapılan.
+> Veri güvenliği planlamasını tamamladıktan sonra, çok faktörlü kimlik doğrulama gereksinimleriyle ilgili seçimlerinizin bu bölümde ki kararlardan etkilenmediğinden emin olmak için [çok faktörlü kimlik doğrulama gereksinimlerini](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md) belirleyin'i gözden geçirin.
 > 
 > 
 
 ## <a name="determine-data-protection-requirements"></a>Veri koruma gereksinimlerini belirleme
-Mobility yaşı, çoğu şirketin ortak bir hedefe sahip: üretkenliği artırmak için mobil cihazlarından, şirket içi veya uzaktan her yerde üretken olması kullanıcıları etkinleştirin. Bu tür gereksinimlerin şirketler aynı zamanda şirket verilerinin korunmasına ve kullanıcı gizliliğini korumak için azaltılması gereken tehditleri sayısı hakkında endişe olacaktır. Her şirketin farklı gereksinimleri bu bağlamda olabilir; Şirket hangi sektörden göre hareket değişir farklı uyumluluk kuralları, farklı tasarım kararlarına yol açacaktır. 
+Mobilite çağında, çoğu şirketin ortak bir amacı vardır: üretkenliği artırmak için kullanıcılarının mobil cihazlarında, şirket içinde yken veya herhangi bir yerden uzaktan üretken olmalarını sağlamak. Bu tür gereksinimlere sahip şirketler, şirketin verilerini güvende tutmak ve kullanıcının gizliliğini korumak için azaltılması gereken tehditlerin sayısı konusunda da endişe duyacaklardır. Her şirketin bu konuda farklı gereksinimleri olabilir; şirketin hangi sektöre göre hareket ettiğine göre değişen farklı uyumluluk kuralları farklı tasarım kararlarına yol açacaktır. 
 
-Ancak, sektörden bağımsız olarak doğrulanan ve incelediniz gereken bazı güvenlik unsur vardır.
+Ancak, ne olursa olsun sanayi, araştırılması ve doğrulanması gereken bazı güvenlik yönleri vardır.
 
 ## <a name="data-protection-paths"></a>Veri koruma yolları
-![Veri koruma yolları](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
+![veri koruma yolları](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
 
 **Veri koruma yolları**
 
-Yukarıdaki diyagramda, veri erişmeden önce doğrulanması için birinci kimlik bileşen olacaktır. Ancak, bu veriler farklı durumlarda erişilmiş olan süre boyunca olabilir. Bu diyagramdaki her bir sayının hangi veri zaman içinde belirli bir noktada bulunabilir yolu temsil eder. Bu sayı, aşağıda açıklanmıştır:
+Yukarıdaki diyagramda, verilere erişilmeden önce doğrulanan ilk kimlik bileşeni olacaktır. Ancak, bu veriler erişilen süre boyunca farklı durumlarda olabilir. Bu diyagramdaki her sayı, verilerin belirli bir zamanda bulunabileceği bir yolu temsil eder. Bu sayılar aşağıda açıklanmıştır:
 
-1. Cihaz düzeyinde veri koruma.
+1. Aygıt düzeyinde veri koruması.
 2. Aktarım sırasında veri koruması.
-3. Rest şirket içi sırada, veri koruma.
-4. Bulutta sırada bekleyen verilerin korunması.
+3. Şirket içinde dinlenirken veri koruması.
+4. Bulutta dinlenirken veri koruması.
 
-Karma kimlik çözümü hem şirket içi yararlanarak özellikli olduğunu gereklidir ve bulut Kimlik Yönetimi kaynaklarına erişim izni veri önce kullanıcıyı tanımlamak için. Karma kimlik çözümünüzü planlarken, aşağıdaki soruları kuruluşunuzun gereksinimlerine göre yanıtlandığından emin olun:
+Karma kimlik çözümünün, verilere erişim izni vermeden önce kullanıcıyı tanımlamak için hem şirket içi hem de bulut kimlik yönetimi kaynaklarından yararlanabilmesi gerekir. Karma kimlik çözümünüzü planlarken, aşağıdaki soruların kuruluşunuzun gereksinimlerine göre yanıtlandığından emin olun:
 
-## <a name="data-protection-at-rest"></a>Bekleyen verilerin korunması konusunda
-Verilerin (cihaz, Bulut veya şirket içi) bekleme durumunda olduğu bağımsız olarak, bir değerlendirme, bu konuda, kuruluşunuzun gereksinimlerini anlamak için önemlidir. Bu alan için aşağıdaki soruları isteniyor emin olun:
+## <a name="data-protection-at-rest"></a>Istirahatte veri koruması
+Verilerin nerede olduğuna bakılmaksızın (aygıt, bulut veya şirket içinde), kuruluşun bu konudaki ihtiyaçlarını anlamak için bir değerlendirme yapmak önemlidir. Bu alan için, aşağıdaki soruların sorulduğundan emin olun:
 
-* Şirketiniz, bekleyen verileri koruma gerekiyor mu?
-  * Yanıt Evet ise, karma kimlik çözümü geçerli şirket içi altyapınızla tümleştirmeyi sağlayabilir mi?
-  * Yanıt Evet ise, karma kimlik çözümü buluttaki iş yüklerinizi ile tümleştirebilir mi?
-* Bulut Kimlik Yönetimi kullanıcının kimlik bilgilerini ve bulutta depolanan diğer verileri korumaya mi?
+* Şirketinizin verileri istirahatte koruması gerekiyor mu?
+  * Evet ise, karma kimlik çözümü mevcut şirket içi altyapınızla entegre edilebilir mi?
+  * Evet ise, karma kimlik çözümü bulutta bulunan iş yüklerinizle tümleştirilebilir mi?
+* Bulut kimlik yönetimi, kullanıcının kimlik bilgilerini ve bulutta depolanan diğer verileri koruyabilir mi?
 
-## <a name="data-protection-in-transit"></a>Aktarımdaki verileri koruma
-Veya cihaz ile bulut cihaz hem de veri merkezi arasında Taşınmakta olan veriler korunmalıdır. Ancak, aktarım sırasında aktarılan mutlaka bulut hizmetinizi dışında bir bileşeni ile bir iletişim işlem gelmez; Ayrıca, dahili olarak hareket arasında iki sanal ağ gibi. Bu alan için aşağıdaki soruları isteniyor emin olun:
+## <a name="data-protection-in-transit"></a>Aktarımsırasında veri koruması
+Aygıt ile veri merkezi arasında veya aygıt ile bulut arasında aktarım halindeki veriler korunmalıdır. Ancak, toplu taşıma, bulut hizmetinizin dışında bir bileşene sahip bir iletişim süreci anlamına gelmez; iki sanal ağ arasında olduğu gibi dahili olarak da hareket eder. Bu alan için, aşağıdaki soruların sorulduğundan emin olun:
 
-* Şirketinizin, Aktarımdaki verileri korumak gerekiyor mu?
-  * Yanıt Evet ise, karma kimlik çözümü gibi SSL/TLS güvenli denetimler ile tümleştirebilir mi?
-* Bulut kimlik yönetimi ve dizin deposu (içinde ve veri merkezleri arasında) içinde imzalı trafiği tutmak mu?
+* Şirketinizin aktarım sırasındaki verileri koruması gerekiyor mu?
+  * Evet ise, hibrit kimlik çözümü SSL/TLS gibi güvenli denetimlerle entegre edilebilir mi?
+* Bulut kimlik yönetimi trafiği dizin deposuna ve içinde (veri merkezleri içinde ve arasında) imzalı olarak tutar mı?
 
 ## <a name="compliance"></a>Uyumluluk
-Düzenlemeler, yasalara ve yasal uyumluluk gereksinimlerini şirket ait sektör göre değişir. Şirketler yüksek düzenlenen sektörde uyumluluk sorunlarıyla ilgili kimlik yönetimi endişelere gerekir. Düzenlemelere (SOX) Sarbanes Oxley, sağlık sigortası taşınabilirlik ve Sorumluluk Yasası (HIPAA), gerekli kılan Gramm-Leach-Bliley Yasası (GLBA) ve ödeme kartı sektör veri güvenliği standardı (PCI DSS) gibi kimlik ve erişim ile ilgili katı. Bir veya daha fazla bu yönetmelikler gereksinimlerini karşılar temel yetenekleri, şirketin benimseyeceği karma kimlik çözümü olması gerekir. Bu alan için aşağıdaki soruları isteniyor emin olun:
+Yönetmelikler, yasalar ve mevzuata uygunluk gereklilikleri şirketinizin ait olduğu sektöre göre değişir. Yüksek düzenlemeye tabi sektörlerdeki şirketler, uyumluluk sorunlarıyla ilgili kimlik yönetimi sorunlarını ele almalıdır. Sarbanes-Oxley (SOX), Sağlık Sigortası Taşınabilirlik ve Sorumluluk Yasası (HIPAA), Gramm-Leach-Bliley Yasası (GLBA) ve Ödeme Kartı Endüstrisi Veri Güvenliği Standardı (PCI DSS) gibi düzenlemeler kimlik ve erişim konusunda katıdır. Şirketinizin benimseyeceği karma kimlik çözümü, bu düzenlemelerden bir veya daha fazlasının gereksinimlerini karşılayacak temel yeteneklere sahip olmalıdır. Bu alan için, aşağıdaki soruların sorulduğundan emin olun:
 
-* Karma kimlik çözümü, işletmeniz için yasal gereksinimlerle uyumlu mu?
-* Karma kimlik çözümünü mu 
-* özelliklerinde, şirketinizin uyumlu yasal düzenleme gereksinimleri etkinleştirilsin mi? 
+* Karma kimlik çözümü işletmeniz için düzenleyici gerekliliklere uygun mudur?
+* Karma kimlik çözümü yerleşik mi 
+* şirketinizin mevzuat gerekliliklerine uygun olmasını sağlayacak yeteneklere sahip misiniz? 
 
 > [!NOTE]
-> Her yanıtı Not ve yanıtın arkasındaki mantığı anladığınızdan emin olun. [Veri koruma stratejisini tanımlayın](plan-hybrid-identity-design-considerations-data-protection-strategy.md) her seçeneğin olumlu/olumsuz değerlendirilir ve seçeneklerin geçilir.  En iyi seçeneği işletmenizi uygun seçersiniz bu soruları yanıtladığınızda gerekir.
+> Her yanıtı not almayı unutmayın ve yanıtın arkasındaki mantığı anladığınızdan emin olun. [Veri Koruma Stratejisini Tanımla,](plan-hybrid-identity-design-considerations-data-protection-strategy.md) mevcut seçeneklerin ve her seçeneğin avantajlarının/dezavantajlarının üzerinden geçecektir.  Bu soruları yanıtlayarak, işletme ihtiyaçlarınıza en uygun seçeneği seçecektir.
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
- [İçerik Yönetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
+ [İçerik yönetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 [Tasarım konularına genel bakış](plan-hybrid-identity-design-considerations-overview.md)

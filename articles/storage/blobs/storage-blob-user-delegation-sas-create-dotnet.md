@@ -1,7 +1,7 @@
 ---
-title: Bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak için .NET kullanın
+title: Bir kapsayıcı veya blob için bir kullanıcı delegasyonu SAS oluşturmak için .NET'i kullanın
 titleSuffix: Azure Storage
-description: Azure depolama için .NET istemci kitaplığı 'nı kullanarak Azure Active Directory kimlik bilgileriyle Kullanıcı temsili SAS oluşturmayı öğrenin.
+description: Azure Depolama için .NET istemci kitaplığını kullanarak Azure Active Directory kimlik bilgileriyle bir kullanıcı delegasyonu SAS nasıl oluşturabilirsiniz öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,31 +11,31 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371845"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için bir kullanıcı delegasyonu SAS oluşturma
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Bu makalede, .NET için Azure depolama istemci kitaplığı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak üzere Azure Active Directory (Azure AD) kimlik bilgilerinin nasıl kullanılacağı gösterilmektedir.
+Bu makalede, .NET için Azure Depolama istemci kitaplığı ile bir kapsayıcı veya blob için bir kullanıcı delegasyonu SAS oluşturmak için Azure Active Directory (Azure AD) kimlik bilgilerini nasıl kullanılacağı nı gösterir.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>Verilere erişmek için RBAC rolleri atama
+## <a name="assign-rbac-roles-for-access-to-data"></a>Verilere erişim için RBAC rollerini atama
 
-Bir Azure AD güvenlik sorumlusu blob verilerine erişmeyi denediğinde, bu güvenlik sorumlusunun kaynak için izinleri olması gerekir. Güvenlik sorumlusunun Azure 'da yönetilen bir kimlik veya geliştirme ortamında kod çalıştıran bir Azure AD Kullanıcı hesabı olup olmadığı, güvenlik sorumlusu Azure Storage 'daki blob verilerine erişim izni veren bir RBAC rolü atanmalıdır. RBAC aracılığıyla izin atama hakkında daha fazla bilgi için, [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)konusundaki **ERIŞIM hakları Için RBAC rolleri atama** başlıklı bölüme bakın.
+Bir Azure REKLAM güvenlik ilkesi blob verilerine erişmeye çalıştığında, bu güvenlik ilkesinin kaynak için izinleri olmalıdır. Güvenlik ilkesi ister Azure'da yönetilen bir kimlik olsun ister geliştirme ortamında kod çalıştıran bir Azure AD kullanıcı hesabı olsun, güvenlik ilkesine Azure Depolama'daki blob verilerine erişim sağlayan bir RBAC rolü atanmalıdır. RBAC üzerinden izin atama hakkında daha fazla bilgi için, Azure Etkin [Dizini'ni kullanarak Azure blob'larına ve kuyruklarına erişim yetkisindeki](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights) **erişim hakları için RBAC rolleri ata** başlıklı bölüme bakın.
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Azure depolama 'dan Azure kimlik istemci kitaplığı ile kimlik doğrulama hakkında daha fazla bilgi edinmek için bkz. Azure **kimlik kitaplığıyla kimlik doğrulama** başlıklı Bölüm [Azure Active Directory ve Azure kaynakları için Yönetilen kimlikler ile blob 'lara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
+Azure Depolama'dan Azure Identity istemci kitaplığıyla kimlik doğrulama hakkında daha fazla bilgi edinmek [için, Azure Etkin Dizini ve Azure Kaynakları için yönetilen kimliklerle blob'lara ve kuyruklara erişimi Yetkilendirme'de](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library) **Azure Kimlik kitaplığıyla Kimlik Doğrulama** başlıklı bölüme bakın.
 
 ## <a name="add-using-directives"></a>Using yönergeleri ekleme
 
-Azure kimlik ve Azure depolama istemci kitaplıklarını kullanmak için aşağıdaki `using` yönergelerini kodunuza ekleyin.
+Azure Kimliği `using` ve Azure Depolama istemci kitaplıklarını kullanmak için kodunuza aşağıdaki yönergeleri ekleyin.
 
 ```csharp
 using System;
@@ -48,11 +48,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="get-an-authenticated-token-credential"></a>Kimliği doğrulanmış belirteç kimlik bilgisi al
+## <a name="get-an-authenticated-token-credential"></a>Kimlik doğrulaması belirteç kimlik bilgisi alma
 
-Kodunuzun Azure depolama 'ya istekleri yetkilendirmek için kullanabileceği bir belirteç kimlik bilgisi almak için, [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) sınıfının bir örneğini oluşturun.
+Kodunuzu Azure Depolama'ya istekleri yetkilendirmek için kullanabileceği bir belirteç kimlik bilgisi almak için [Varsayılan Azure Credential](/dotnet/api/azure.identity.defaultazurecredential) sınıfının bir örneğini oluşturun.
 
-Aşağıdaki kod parçacığı kimliği doğrulanmış belirteç kimlik bilgisinin nasıl alınacağını ve BLOB depolaması için bir hizmet istemcisi oluşturmak için nasıl kullanılacağını gösterir:
+Aşağıdaki kod snippet nasıl kimlik doğrulaması belirteç kimlik almak ve Blob depolama için bir hizmet istemcisi oluşturmak için kullanabilirsiniz gösterir:
 
 ```csharp
 // Construct the blob endpoint from the account name.
@@ -63,18 +63,18 @@ BlobServiceClient blobClient = new BlobServiceClient(new Uri(blobEndpoint),
                                                      new DefaultAzureCredential());
 ```
 
-## <a name="get-the-user-delegation-key"></a>Kullanıcı temsili anahtarını al
+## <a name="get-the-user-delegation-key"></a>Kullanıcı delegasyonu anahtarını alın
 
-Her SAS bir anahtarla imzalanır. Bir Kullanıcı temsili SAS oluşturmak için, önce SAS imzalamak için kullanılan bir Kullanıcı temsili anahtarı istemeniz gerekir. Kullanıcı temsili anahtarı, Azure AD kimlik bilgilerinizi temel aldığından, bir hizmet SAS 'sini veya bir hesap SAS 'sini imzalamak için kullanılan hesap anahtarına benzer. İstemci bir OAuth 2,0 belirteci kullanarak bir Kullanıcı temsili anahtarı istediğinde, Azure depolama Kullanıcı adına Kullanıcı temsili anahtarını döndürür.
+Her SAS bir anahtar la imzalanır. Bir kullanıcı delegasyonu SAS oluşturmak için önce bir kullanıcı delegasyonu anahtarı istemeniz gerekir, daha sonra SAS imzalamak için kullanılır. Kullanıcı delegasyonu anahtarı, Azure REKLAM kimlik bilgilerinize dayanması dışında bir hizmet SAS'ı veya hesap SAS'ı imzalamak için kullanılan hesap anahtarına benzer. Bir istemci OAuth 2.0 belirteci kullanarak bir kullanıcı delegasyonu anahtarı istediğinde, Azure Depolama kullanıcı temsilciliği anahtarını kullanıcı adına döndürür.
 
-Kullanıcı temsilciliğini aldıktan sonra, anahtarın ömrü boyunca herhangi bir sayıda kullanıcı temsili paylaşılan erişim imzası oluşturmak için bu anahtarı kullanabilirsiniz. Kullanıcı temsili anahtarı, bunu elde etmek için kullanılan OAuth 2,0 belirtecinden bağımsızdır, bu nedenle anahtar hala geçerli olduğu sürece belirtecin yenilenmesi gerekmez. Anahtarın 7 güne kadar bir dönem için geçerli olduğunu belirtebilirsiniz.
+Kullanıcı delegasyonu anahtarına sahip olduktan sonra, bu anahtarı n için anahtar ömrü boyunca herhangi bir sayıda kullanıcı delegasyonu paylaşılan erişim imzaları oluşturmak için kullanabilirsiniz. Kullanıcı delegasyonu anahtarı, onu elde etmek için kullanılan OAuth 2.0 belirtecinden bağımsızdır, bu nedenle anahtar hala geçerli olduğu sürece belirteci yenilemek gerekmez. Anahtarın 7 güne kadar geçerli olduğunu belirtebilirsiniz.
 
-Kullanıcı temsili anahtarını istemek için aşağıdaki yöntemlerden birini kullanın:
+Kullanıcı temsilciliği anahtarını istemek için aşağıdaki yöntemlerden birini kullanın:
 
 - [GetUserDelegationKey](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkey)
 - [GetUserDelegationKeyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkeyasync)
 
-Aşağıdaki kod parçacığı, Kullanıcı temsili anahtarını alır ve özelliklerini Yazar:
+Aşağıdaki kod snippet kullanıcı delegasyonu anahtarı alır ve özelliklerini yazar:
 
 ```csharp
 // Get a user delegation key for the Blob service that's valid for seven days.
@@ -94,7 +94,7 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 
 ## <a name="create-the-sas-token"></a>SAS belirteci oluşturma
 
-Aşağıdaki kod parçacığı, yeni bir [Blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) oluşturma ve Kullanıcı temsili SAS için parametreler sağlama gösterilmektedir. Kod parçacığı daha sonra SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırır. Son olarak, kod kaynak adresi ve SAS belirteci dahil olmak üzere tüm URI 'yi oluşturur.
+Aşağıdaki kod snippet yeni bir [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) oluşturmak ve kullanıcı delegasyonu SAS için parametreleri sağlar gösterir. Snippet sonra SAS belirteç dizealmak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırır. Son olarak, kod kaynak adresi ve SAS belirteci de dahil olmak üzere tam URI oluşturur.
 
 ```csharp
 // Create a SAS token that's valid for one hour.
@@ -123,9 +123,9 @@ UriBuilder fullUri = new UriBuilder()
 };
 ```
 
-## <a name="example-get-a-user-delegation-sas"></a>Örnek: Kullanıcı temsilciliğini al SAS
+## <a name="example-get-a-user-delegation-sas"></a>Örnek: Bir kullanıcı delegasyonu SAS alın
 
-Aşağıdaki örnek yöntemi, güvenlik sorumlusunun kimliğini doğrulamak ve Kullanıcı temsili SAS oluşturmak için tüm kodu gösterir:
+Aşağıdaki örnek yöntem, güvenlik ilkesinin kimliğini doğrulamak ve kullanıcı delegasyonu SAS oluşturmak için tam kodu gösterir:
 
 ```csharp
 async static Task<Uri> GetUserDelegationSasBlob(string accountName, string containerName, string blobName)
@@ -183,9 +183,9 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 }
 ```
 
-## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Örnek: Kullanıcı temsilciliğini içeren bir blobu okuma
+## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Örnek: SAS kullanıcı delegasyonu yla bir leke okuyun
 
-Aşağıdaki örnek, bir önceki örnekte oluşturulan kullanıcı temsili SAS 'ı sanal bir istemci uygulamasından sınar. SAS geçerliyse, istemci uygulama Blobun içeriğini okuyabilir. SAS geçersizse, örneğin süresi dolmuşsa Azure Storage 403 (yasak) hata kodunu döndürür.
+Aşağıdaki örnek, simüle edilmiş bir istemci uygulamasından önceki örnekte oluşturulan kullanıcı delegasyonu SAS'ı sınar. SAS geçerliyse, istemci uygulaması lekenin içeriğini okuyabilir. SAS geçersizse (örneğin süresi dolmuşsa, Azure Depolama hata kodu 403'ü (Yasak) döndürür.
 
 ```csharp
 private static async Task ReadBlobWithSasAsync(Uri sasUri)
@@ -237,6 +237,6 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md)
-- [Kullanıcı temsilciyi anahtar işlemi al](/rest/api/storageservices/get-user-delegation-key)
-- [Kullanıcı temsilciliğini oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas)
+- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni verme](../common/storage-sas-overview.md)
+- [Kullanıcı Delegasyonu Anahtarı işlemi alın](/rest/api/storageservices/get-user-delegation-key)
+- [Bir kullanıcı delegasyonu SAS (REST API) oluşturma](/rest/api/storageservices/create-user-delegation-sas)

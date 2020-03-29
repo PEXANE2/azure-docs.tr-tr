@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell ile bir Windows sorun giderme sanal makinesi kullanma | Microsoft Docs
-description: Azure PowerShell kullanarak işletim sistemi diskini bir kurtarma VM 'sine bağlayarak Azure 'da Windows VM sorunlarını nasıl giderebileceğinizi öğrenin
+title: Azure PowerShell ile Windows sorun giderme VM'i kullanma | Microsoft Dokümanlar
+description: Azure PowerShell kullanarak işletim sistemi diskini kurtarma VM'ine bağlayarak Azure'daki Windows VM sorunlarını nasıl gidereceklerini öğrenin
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,67 +13,67 @@ ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
 ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75374141"
 ---
-# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Azure PowerShell kullanarak işletim sistemi diskini bir kurtarma VM 'sine ekleyerek bir Windows sanal makinesi sorunlarını giderme
-Azure 'daki Windows sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, diskin kendisinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini önleyen başarısız bir uygulama güncelleştirmesidir. Bu makalede, tüm hataları gidermek için diski başka bir Windows VM 'ye bağlamak üzere Azure PowerShell kullanma ve ardından özgün VM 'nizi onarma işlemlerinin nasıl yapılacağı açıklanır. 
+# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Azure PowerShell kullanarak işletim sistemi diskini kurtarma VM'ine takarak Windows VM sorun giderme
+Azure'daki Windows sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, diskin kendisinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Yaygın bir örnek, VM'nin başarılı bir şekilde önyükleme yapabilmesini engelleyen başarısız bir uygulama güncelleştirmesi olacaktır. Bu makalede, diski başka bir Windows VM'ye bağlamak ve ardından orijinal VM'nizi onarmak için Azure PowerShell'in nasıl kullanılacağı ayrıntılı olarak açıklanmaktadır. 
 
 > [!Important]
-> Bu makaledeki betikler yalnızca [yönetilen disk](../windows/managed-disks-overview.md)kullanan VM 'ler için geçerlidir. 
+> Bu makaledeki komut dosyaları yalnızca [Yönetilen Disk'i](../windows/managed-disks-overview.md)kullanan VM'ler için geçerlidir. 
 
  
 
 ## <a name="recovery-process-overview"></a>Kurtarma işlemine genel bakış
-Artık, bir VM 'nin işletim sistemi diskini değiştirmek için Azure PowerShell kullanabilirsiniz. Artık VM 'yi silip yeniden oluşturma gereksinimi yoktur.
+Artık Bir VM için işletim sistemi diskini değiştirmek için Azure PowerShell'i kullanabiliriz. Artık VM'yi silip yeniden oluşturmamıza gerek yok.
 
 Sorun giderme işlemi aşağıdaki gibidir:
 
-1. Etkilenen VM 'yi durdurun.
-2. VM 'nin işletim sistemi diskinden bir anlık görüntü oluşturun.
-3. İşletim sistemi diski anlık görüntüsünden bir disk oluşturun.
-4. Diski bir kurtarma VM 'sine veri diski olarak ekleyin.
-5. Kurtarma sanal makinesine bağlanın. Kopyalanan işletim sistemi diskindeki sorunları gidermek için dosyaları düzenleyin veya herhangi bir araç çalıştırın.
-6. Diski Kurtarma VM 'sinden çıkarın ve ayırın.
+1. Etkilenen VM'yi durdurun.
+2. VM'nin işletim sistemi diskinden anlık görüntü oluşturun.
+3. İşletim sistemi disk anlık görüntüsünden bir disk oluşturun.
+4. Diski kurtarma VM'sine veri diski olarak takın.
+5. Kurtarma VM'ine bağlanın. Dosyaları edin veya kopyalanan işletim sistemi diskindeki sorunları gidermek için herhangi bir araç çalıştırın.
+6. Kurtarma VM'den sökme ve diski ayırma.
 7. Etkilenen VM için işletim sistemi diskini değiştirin.
 
-VM onarım komutlarını, 1, 2, 3, 4, 6 ve 7. adımları otomatik hale getirmek için kullanabilirsiniz. Daha fazla belge ve yönergeler için bkz. [Azure sanal makine onarım komutlarını kullanarak Windows VM 'Yi onarma](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+1, 2, 3, 4, 6 ve 7 adımlarını otomatikleştirmek için VM onarım komutlarını kullanabilirsiniz. Daha fazla belge ve yönerge için Azure [Sanal Makine onarım komutlarını kullanarak Windows VM'sini onar'a](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bakın.
 
-[En son Azure PowerShell](/powershell/azure/overview) yüklü olduğundan ve aboneliğinizde oturum açtığınızdan emin olun:
+En [son Azure PowerShell'inaboneliğinize](/powershell/azure/overview) yüklediğinizden ve oturum açtığınızdan emin olun:
 
 ```powershell
 Connect-AzAccount
 ```
 
-Aşağıdaki örneklerde parametre adlarını kendi değerlerinizle değiştirin. 
+Aşağıdaki örneklerde, parametre adlarını kendi değerlerinizle değiştirin. 
 
 ## <a name="determine-boot-issues"></a>Önyükleme sorunlarını belirleme
-Önyükleme sorunlarını gidermenize yardımcı olması için, Azure 'da sanal makinenizin ekran görüntüsünü görüntüleyebilirsiniz. Bu ekran görüntüsü, bir VM 'nin neden önyükleme başarısız olduğunu belirlemenize yardımcı olabilir. Aşağıdaki örnek, `myResourceGroup`adlı kaynak grubundaki `myVM` adlı Windows sanal makinesinin ekran görüntüsünü alır:
+Önyükleme sorunlarını gidermeye yardımcı olmak için Azure'daki VM'nizin ekran görüntüsünü görüntüleyebilirsiniz. Bu ekran görüntüsü, VM'nin neden önyükleme de başarısız olduğunu belirlemenize yardımcı olabilir. Aşağıdaki örnek, windows vm `myVM` adlı `myResourceGroup`kaynak grubundan ekran görüntüsünü alır:
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
     -Name myVM -Windows -LocalPath C:\Users\ops\
 ```
 
-VM 'nin neden önyükleme başarısız olduğunu anlamak için ekran görüntüsünü gözden geçirin. Belirtilen tüm hata iletilerini veya hata kodlarını dikkate alın.
+VM'nin neden önyükleme de başarısız olduğunu belirlemek için ekran görüntüsünü gözden geçirin. Sağlanan belirli hata iletilerini veya hata kodlarını not edin.
 
 ## <a name="stop-the-vm"></a>VM’yi durdurma
 
-Aşağıdaki örnek, `myResourceGroup`adlı kaynak grubundan `myVM` adlı VM 'yi durduruyor:
+Aşağıdaki örnek, adlı kaynak `myVM` grubundan adlı `myResourceGroup`VM'yi durdurur:
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Sonraki adıma geçmeden önce VM 'nin silme işlemini tamamlamasını bekleyin.
+Bir sonraki adıma işlemeden önce VM'nin silme işlemini tamamlamasını bekleyin.
 
 
-## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>VM 'nin işletim sistemi diskinden anlık görüntü oluşturma
+## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>VM'nin işletim sistemi diskinden anlık görüntü oluşturma
 
-Aşağıdaki örnek, ' myVM ' adlı VM 'nin işletim sistemi diskinden `mySnapshot` adlı bir anlık görüntü oluşturur. 
+Aşağıdaki örnekte, VM'nin işletim sistemi diskinden 'myVM' adlı adla `mySnapshot` bir anlık görüntü oluşturulur. 
 
 ```powershell
 $resourceGroupName = 'myResourceGroup' 
@@ -99,11 +99,11 @@ New-AzSnapshot `
    -ResourceGroupName $resourceGroupName 
 ```
 
-Anlık görüntü, bir VHD 'nin tam ve salt okunurdur kopyasıdır. Bir sanal makineye bağlanamaz. Bir sonraki adımda, bu anlık görüntüden bir disk oluşturacağız.
+Anlık görüntü, bir VHD'nin tam, salt okunur kopyasıdır. VM'ye bağlanamaz. Bir sonraki adımda, bu anlık görüntüden bir disk oluşturacağız.
 
 ## <a name="create-a-disk-from-the-snapshot"></a>Anlık görüntüden disk oluşturma
 
-Bu betik, `mysnapshot`adlı anlık görüntüden `newOSDisk` adlı yönetilen bir disk oluşturur.  
+Bu komut dosyası, adlı `newOSDisk` `mysnapshot`anlık görüntüden adı olan yönetilen bir disk oluşturur.  
 
 ```powershell
 #Set the context to the subscription Id where Managed Disk will be created
@@ -140,14 +140,14 @@ $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -Cr
  
 New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
 ```
-Artık özgün işletim sistemi diskinin bir kopyasına sahipsiniz. Sorun giderme amacıyla bu diski başka bir Windows sanal makinesine bağlayabilirsiniz.
+Şimdi orijinal işletim sistemi diskinin bir kopyası var. Sorun giderme amacıyla bu diski başka bir Windows VM'ye monte edebilirsiniz.
 
-## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Sorunu gidermek için diski başka bir Windows VM 'ye iliştirme
+## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Sorun giderme için diski başka bir Windows VM'ye takın
 
-Şimdi özgün işletim sistemi diskinin kopyasını bir veri diski olarak bir VM 'ye ekleyeceğiz. Bu işlem, yapılandırma hatalarını düzeltmenize veya diskteki ek uygulama ya da sistem günlük dosyalarını incelemenizi sağlar. Aşağıdaki örnek, `newOSDisk` adlı diski `RecoveryVM`adlı sanal makineye iliştirir.
+Şimdi orijinal işletim sistemi diskinin kopyasını veri diski olarak VM'ye iliştiriyoruz. Bu işlem, yapılandırma hatalarını düzeltmenize veya diskteki ek uygulama veya sistem günlüğü dosyalarını gözden geçirmenize olanak tanır. Aşağıdaki örnek, VM `newOSDisk` adlı `RecoveryVM`diske iliştiriler.
 
 > [!NOTE]
-> Diski eklemek için, özgün işletim sistemi diskinin ve kurtarma sanal makinesinin kopyasının aynı konumda olması gerekir.
+> Diski takmak için özgün işletim sistemi diskinin ve kurtarma VM'sinin kopyası aynı konumda olmalıdır.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -163,22 +163,22 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Kurtarma VM 'sine bağlanma ve ekli diskteki sorunları çözme
+## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Kurtarma VM'sine bağlanın ve ekli diskteki sorunları giderin
 
-1. Uygun kimlik bilgilerini kullanarak kurtarma VM 'nize RDP. Aşağıdaki örnek, `myResourceGroup`adlı kaynak grubunda `RecoveryVM` adlı VM için RDP bağlantı dosyasını indirir ve `C:\Users\ops\Documents`"
+1. RdP kurtarma VM için uygun kimlik bilgilerini kullanarak. Aşağıdaki örnek, adlı `RecoveryVM` `myResourceGroup`kaynak grubunda adı geçen VM için RDP bağlantı dosyasını indirir ve " `C:\Users\ops\Documents`
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
         -LocalPath "C:\Users\ops\Documents\myVMRecovery.rdp"
     ```
 
-2. Veri diski otomatik olarak algılanmalı ve bağlanmalıdır. Aşağıdaki gibi, sürücü harfini öğrenmek için eklenen birimlerin listesini görüntüleyin:
+2. Veri diski otomatik olarak algılanmalı ve iliştirilmelidir. Sürücü harfini belirlemek için ekli birimlerin listesini aşağıdaki gibi görüntüleyin:
 
     ```powershell
     Get-Disk
     ```
 
-    Aşağıdaki örnek çıktıda disk **2**diske bağlı disk gösterilmektedir. (Sürücü harfini görüntülemek için `Get-Volume` de kullanabilirsiniz):
+    Aşağıdaki örnek çıktı, diske bağlı **diski gösterir 2.** (Sürücü harfini `Get-Volume` görüntülemek için de kullanabilirsiniz):
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -189,18 +189,18 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
     2        newOSDisk                                  Healthy             Online       127 GB MBR
     ```
 
-Özgün işletim sistemi diskinin kopyası bağlandıktan sonra, gereken tüm bakım ve sorun giderme adımlarını gerçekleştirebilirsiniz. Sorunları giderdikten sonra aşağıdaki adımlarla devam edin.
+Özgün işletim sistemi diskinin kopyası monte edilip sonra, gerektiğinde tüm bakım ve sorun giderme adımlarını gerçekleştirebilirsiniz. Sorunları giderdikten sonra aşağıdaki adımlarla devam edin.
 
-## <a name="unmount-and-detach-original-os-disk"></a>Özgün işletim sistemi diskinin bağlantısını kaldır ve ayır
-Hatalarınız çözümlendikten sonra, var olan diski kurtarma sanal makinenizin bağlantısını çıkarırın. Diski Kurtarma VM 'sine ekleme kiralamasının serbest bırakılması bitinceye kadar diskinizi başka bir VM ile kullanamazsınız.
+## <a name="unmount-and-detach-original-os-disk"></a>Özgün işletim sistemi diskini sökme ve ayırma
+Hatalarınız çözüldükten sonra, varolan diski kurtarma VM'nizden söküp ayırabilirsiniz. Kurtarma VM'sine diskililin kirası serbest bırakılmadan diskinizi başka bir VM ile kullanamazsınız.
 
-1. RDP oturumunuzla, kurtarma sanal makinenizin veri diskini çıkarın. Önceki `Get-Disk` cmdlet 'inden disk numarası gereklidir. Sonra, diski çevrimdışı olarak ayarlamak için `Set-Disk` kullanın:
+1. RDP oturumunuz içinden, kurtarma VM'nizdeki veri diskini boşaltın. Bir önceki `Get-Disk` cmdletten disk numarası na ihtiyacınız var. Ardından, `Set-Disk` diski çevrimdışı olarak ayarlamak için kullanın:
 
     ```powershell
     Set-Disk -Number 2 -IsOffline $True
     ```
 
-    Diskin artık `Get-Disk` yeniden çevrimdışı olarak ayarlandığını onaylayın. Aşağıdaki örnek çıktı, diskin artık çevrimdışı olarak ayarlandığını göstermektedir:
+    Diskin yeniden kullanarak `Get-Disk` çevrimdışı olarak ayarlı olduğunu doğrulayın. Aşağıdaki örnek çıktı, diskin artık çevrimdışı olarak ayarlanır:
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -211,7 +211,7 @@ Hatalarınız çözümlendikten sonra, var olan diski kurtarma sanal makinenizin
     2        Msft Virtu...                                  Healthy             Offline      127 GB MBR
     ```
 
-2. RDP oturumunuzla çıkış yapın. Azure PowerShell oturumunuzda, `newOSDisk` adlı diski ' RecoveryVM ' adlı sanal makineden kaldırın.
+2. RDP oturumunuzdan çıkın. Azure PowerShell oturumunuzdan, 'RecoveryVM' adlı VM'den adı geçen `newOSDisk` diski kaldırın.
 
     ```powershell
     $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "RecoveryVM"
@@ -221,9 +221,9 @@ Hatalarınız çözümlendikten sonra, var olan diski kurtarma sanal makinenizin
 
 ## <a name="change-the-os-disk-for-the-affected-vm"></a>Etkilenen VM için işletim sistemi diskini değiştirme
 
-İşletim sistemi disklerini değiştirmek için Azure PowerShell kullanabilirsiniz. VM 'yi silip yeniden oluşturmanız gerekmez.
+İşletim sistemi disklerini değiştirmek için Azure PowerShell'i kullanabilirsiniz. VM'yi silmek ve yeniden oluşturmak zorunda değilsiniz.
 
-Bu örnek, `myVM` adlı sanal makineyi durdurmakta ve `newOSDisk` adlı diski yeni işletim sistemi diski olarak atar. 
+Bu örnek, VM `myVM` adlı durur ve `newOSDisk` yeni işletim sistemi diski olarak adlandırılan disk atar. 
 
 ```powershell
 # Get the VM 
@@ -245,9 +245,9 @@ Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type
 Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 ```
 
-## <a name="verify-and-enable-boot-diagnostics"></a>Önyükleme tanılamayı doğrulama ve etkinleştirme
+## <a name="verify-and-enable-boot-diagnostics"></a>Önyükleme tanılamasını doğrulayın ve etkinleştirin
 
-Aşağıdaki örnek, `myResourceGroup`adlı kaynak grubundaki `myVMDeployed` adlı sanal makinede tanılama uzantısını sunar:
+Aşağıdaki örnek, adlı `myVMDeployed` `myResourceGroup`kaynak grubunda adı geçen VM'deki tanı uzantısını sağlar:
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
@@ -256,6 +256,6 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sanal makinenize bağlanırken sorun yaşıyorsanız bkz. [Azure VM 'ye YÖNELIK RDP bağlantılarında sorun giderme](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). VM 'niz üzerinde çalışan uygulamalara erişme sorunları için bkz. [WINDOWS VM 'de uygulama bağlantı sorunlarını giderme](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+VM'nize bağlanmada sorun yaşıyorsanız, [bir Azure VM'ye bağlı SORUN Giderme RDP bağlantılarına](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bakın. VM'nizde çalışan uygulamalara erişimle ilgili sorunlar için [Windows VM'deki Sorun Giderme uygulaması bağlantısı sorunlarına](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bakın.
 
-Kaynak Yöneticisi kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
+Kaynak Yöneticisi'ni kullanma hakkında daha fazla bilgi için [Azure Kaynak Yöneticisi'ne genel bakış](../../azure-resource-manager/management/overview.md)bilgisine bakın.

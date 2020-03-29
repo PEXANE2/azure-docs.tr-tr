@@ -1,6 +1,6 @@
 ---
-title: Azure 'da bir sanal sabit sürücünün anlık görüntüsünü oluşturma
-description: Bir Azure sanal makinesinin yedekleme veya sorun giderme sorunları için kullanılacak bir kopyasını oluşturmayı öğrenin.
+title: Azure'da sanal bir sabit diskin anlık görüntüsünü oluşturma
+description: Yedekleme veya sorun giderme sorunları için kullanmak üzere Azure VM'nin bir kopyasını nasıl oluşturup oluşturabilirsiniz öğrenin.
 documentationcenter: ''
 author: roygara
 manager: twooley
@@ -15,38 +15,38 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: bc74a3eea1f99de6080788d6f3fddcac823092dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75370910"
 ---
 # <a name="create-a-snapshot"></a>Anlık görüntü oluşturma
 
-Anlık görüntü, bir sanal sabit sürücünün (VHD) tam, salt okunurdur bir kopyasıdır. Yedekleme olarak kullanmak veya sanal makine (VM) sorunlarını gidermek için bir işletim sistemi veya veri diski VHD 'sinin anlık görüntüsünü alabilirsiniz.
+Anlık görüntü, sanal bir sabit diskin (VHD) tam, salt okunur kopyasıdır. Yedekleme olarak kullanmak için bir işletim sistemi veya veri diski VHD'nin anlık görüntüsünü alabilir veya sanal makine (VM) sorunlarını giderebilirsiniz.
 
-Yeni bir VM oluşturmak için anlık görüntüyü kullanacaksanız, devam eden işlemlerin tümünü temizlemek için anlık görüntüyü almadan önce VM 'yi düzgün bir şekilde kapatmanız önerilir.
+Anlık görüntüyeni bir VM oluşturmak için kullanacaksanız, devam eden işlemleri temizlemek için anlık görüntü almadan önce VM'yi temiz bir şekilde kapatmanızı öneririz.
 
-## <a name="use-the-azure-portal"></a>Azure Portal’ı kullanma 
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
 
-Anlık görüntü oluşturmak için aşağıdaki adımları izleyin: 
-1.  [Azure Portal](https://portal.azure.com) **kaynak oluştur**' u seçin.
-2. **Anlık görüntü**arayın ve seçin.
-3. **Anlık görüntü** penceresinde **Oluştur**' u seçin. **Anlık görüntü oluştur** penceresi görüntülenir.
-4. Anlık görüntü için bir **ad** girin.
-5. Mevcut bir kaynak grubunu seçin veya yeni bir [kaynak grubu](../../azure-resource-manager/management/overview.md#resource-groups) adı girin. 
+Anlık görüntü oluşturmak için aşağıdaki adımları tamamlayın: 
+1.  Azure [portalında](https://portal.azure.com) **kaynak oluştur'u**seçin.
+2. **Anlık Görüntü'nü**arayın ve seçin.
+3. Anlık **Görüntü** penceresinde **Oluştur'u**seçin. **Anlık görüntü oluştur** penceresi görüntülenir.
+4. Anlık görüntü için bir **Ad** girin.
+5. Varolan bir [Kaynak grubu](../../azure-resource-manager/management/overview.md#resource-groups) seçin veya yeni bir grubun adını girin. 
 6. Azure veri merkezi **Konumu** seçin.  
-7. **Kaynak disk**için, anlık görüntü yapılacak yönetilen diski seçin.
-8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Anlık görüntünün yüksek performanslı bir diskte depolanması gerekmiyorsa **Standard_HDD**' yi seçin.
-9. **Oluştur**’u seçin.
+7. **Kaynak disk**için, anlık görüntü için yönetilen diski seçin.
+8. Anlık görüntüdepolamak için kullanılacak **Hesap türünü** seçin. Anlık görüntünün yüksek performanslı bir diskte depolanması gerekmediği sürece **Standard_HDD**seçin.
+9. **Oluştur'u**seçin.
 
-## <a name="use-powershell"></a>PowerShell'i kullanma
+## <a name="use-powershell"></a>PowerShell kullanma
 
-Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görüntü yapılandırmasının nasıl oluşturulacağı gösterilmektedir. Ardından [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) cmdlet 'ini kullanarak diskin anlık görüntüsünü alabilirsiniz. 
+Aşağıdaki adımlar, VHD diskinin nasıl kopyalanılsüreceğini ve anlık görüntü yapılandırmasını nasıl oluşturup oluşturup oluşturup oluşturup oluşturup oluşturup oluşturabilirsiniz. Daha sonra [Yeni-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) cmdlet kullanarak diskin anlık görüntüsünü alabilirsiniz. 
 
  
 
-1. Bazı parametreleri ayarla: 
+1. Bazı parametrelerayarlayın: 
 
    ```azurepowershell-interactive
    $resourceGroupName = 'myResourceGroup' 
@@ -55,7 +55,7 @@ Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görünt�
    $snapshotName = 'mySnapshot'  
    ```
 
-2. VM 'yi al:
+2. VM'yi alın:
 
    ```azurepowershell-interactive
    $vm = get-azvm `
@@ -63,7 +63,7 @@ Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görünt�
    -Name $vmName
    ```
 
-3. Anlık görüntü yapılandırmasını oluşturun. Bu örnekte, anlık görüntü işletim sistemi diski olur:
+3. Anlık görüntü yapılandırmasını oluşturun. Bu örnekte, anlık görüntü işletim sistemi diskinin:
 
    ```azurepowershell-interactive
    $snapshot =  New-AzSnapshotConfig 
@@ -73,9 +73,9 @@ Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görünt�
    ```
    
    > [!NOTE]
-   > Anlık görüntüsünü bölge dayanıklı depolamada depolamak isterseniz, [kullanılabilirlik alanlarını](../../availability-zones/az-overview.md) destekleyen bir bölgede oluşturun ve `-SkuName Standard_ZRS` parametresini ekleyin.   
+   > Anlık görüntünüzün bölgeye dayanıklı depolama alanında depolanmasını istiyorsanız, [anlık durumu](../../availability-zones/az-overview.md) destekleyen `-SkuName Standard_ZRS` ve parametreyi içeren bir bölgede oluşturun.   
    
-4. Anlık görüntüyü al:
+4. Anlık görüntü alın:
 
    ```azurepowershell-interactive
    New-AzSnapshot 
@@ -87,4 +87,4 @@ Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görünt�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir anlık görüntüden yönetilen disk oluşturarak ve ardından yeni yönetilen diski işletim sistemi diski olarak ekleyerek bir anlık görüntüden sanal makine oluşturun. Daha fazla bilgi için, [PowerShell ile anlık GÖRÜNTÜDEN VM oluşturma](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)' daki örneğe bakın.
+Anlık görüntüden yönetilen bir disk oluşturup yeni yönetilen diski işletim sistemi diski olarak ekleyerek anlık görüntüden sanal bir makine oluşturun. Daha fazla bilgi için [PowerShell ile anlık görüntüden VM oluştur'daki](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)örneğe bakın.

@@ -1,6 +1,6 @@
 ---
-title: Karma kimlik tasarımı - dizin eşitleme gereksinimleri Azure | Microsoft Docs
-description: Hangi gereksinimlerin tüm kullanıcılar arasında eşitlemek için gerekli olan tanımlamak içinde ve bulutta Kurumsal on =.
+title: Karma kimlik tasarımı - dizin eşitleme gereksinimleri Azure | Microsoft Dokümanlar
+description: Kuruluş için çevrimiçi şirket ve bulut arasındaki tüm kullanıcıları eşitlemek için hangi gereksinimlerin gerekli olduğunu belirleyin.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,57 +18,57 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381170"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Dizin eşitleme gereksinimlerini belirleme
-Eşitleme, kullanıcıların bulutta, şirket içi kimliğine dayalı bir kimlik tüm sağlamakla ilgilidir. Kimlik doğrulama veya Federasyon kimlik doğrulaması için eşitlenmiş hesabı kullanacakları olsun veya olmasın, kullanıcıların bulutta bir kimlik sağlamak yine de gerekir.  Bu kimlik bakımı yapılan ve düzenli aralıklarla güncelleştirilen gerekecektir.  Güncelleştirmeleri, parola değişiklikleri için başlık değişikliklerden birçok biçimde olabilir.  
+Eşitleme, kullanıcılara şirket içi kimliklerine dayalı olarak bulutta bir kimlik sağlamakla ilgilidir. Kimlik doğrulama veya federe kimlik doğrulama için senkronize hesabı kullanıp kullanmayacakları, kullanıcıların bulutta bir kimliğe sahip olmaları gerekir.  Bu kimliğin düzenli olarak korunması ve güncellenmesi gerekir.  Güncelleştirmeler, başlık değişikliklerinden parola değişikliklerine kadar birçok biçim alabilir.  
 
-Kuruluşlar şirket içi kimlik çözümü ve kullanıcı gereksinimleri değerlendirerek başlatın. Bu değerlendirme nasıl kullanıcı kimliklerini oluşturulur ve bulutta saklanır teknik gereksinimleri tanımlamak önemlidir.  Kuruluşların çoğu, şirket içi Active Directory, ve bu kullanıcılar tarafından şirket içi dizin, ancak bazı durumlarda bu durum olmayacaktır, eşitlenecektir.  
+Kuruluşları şirket içi kimlik çözümleme ve kullanıcı gereksinimlerini değerlendirerek başlayın. Bu değerlendirme, kullanıcı kimliklerinin bulutta nasıl oluşturulacağı ve korunacağı yla ilgili teknik gereksinimleri tanımlamak için önemlidir.  Kuruluşların çoğunluğu için Active Directory şirket içidir ve kullanıcıların senkronize edilerek eşitleedecekleri şirket içi dizini olacaktır, ancak bazı durumlarda durum böyle olmayacaktır.  
 
-Aşağıdaki soruları yanıtlamak emin olun:
+Aşağıdaki soruları yanıtladıklısa mutlaka:
 
-* Bir AD ormanında, birden çok veya hiçbiri var mı?
+* Bir AD orman, birden fazla veya hiç var mı?
   
-  * Nasıl birden çok Azure AD dizini için eşitleme?
+  * Kaç Azure REKLAM dizininle eşitleceksiniz?
     
-    1. Filtreleme kullanıyorsunuz?
-    2. Birden çok Azure AD Connect sunucuları planlı var mı?
-* Eşitleme şu anda izniniz aracı şirket içi?
+    1. Filtreleme mi kullanıyorsunuz?
+    2. Birden fazla Azure AD Connect sunucunuz var mı?
+* Şu anda şirket içinde bir senkronizasyon aracınız var mı?
   
-  * Kullanıcıların kimliklerinin sanal bir dizin/tümleştirme varsa Evet ise, kullanıcılarınızın mu?
-* Herhangi diğer dizin (örneğin LDAP dizini, ik veritabanını, vb.) eşitlemek istediğiniz şirket içinde var mı?
-  * Tüm GALSync çıkarıyor saldıracak mı?
-  * UPN, kuruluşunuzdaki geçerli durumu nedir? 
-  * Kullanıcıların kimlik doğrulaması için farklı bir dizin var mı?
+  * Evet ise, kullanıcılarınız kimliklerin sanal bir dizin /entegrasyonu varsa, kullanıcılarınız mı?
+* Senkronize etmek istediğiniz başka bir dizin (örneğin LDAP Dizini, İk veritabanı, vb.) var mı?
+  * GalSync yapacak mısın?
+  * Kuruluşunuzdaki UPN'lerin geçerli durumu nedir? 
+  * Kullanıcıların karşı kimlik doğrulaması yaptığı farklı bir dizin var mı?
   * Şirketiniz Microsoft Exchange kullanıyor mu?
-    * Exchange karma dağıtımı kilitlenmelerinden planlıyor musunuz?
+    * Melez bir değişim dağıtımı yapmayı mı planlıyorlar?
 
-Eşitleme gereksinimleriniz hakkında fikir olduğuna göre bu gereksinimleri karşılamak için doğru bir araçtır belirlemeniz gerekir.  Microsoft, dizin tümleştirme ve eşitleme gerçekleştirmek için çeşitli araçlar sağlar.  Bkz: [karma kimlik dizini tümleştirme araçları karşılaştırması tablo](plan-hybrid-identity-design-considerations-tools-comparison.md) daha fazla bilgi için. 
+Artık eşitleme gereksinimleriniz hakkında bir fikriniz olduğuna göre, bu gereksinimleri karşılamak için hangi aracın doğru aracı olduğunu belirlemeniz gerekir.  Microsoft dizin tümleştirme ve eşitleme gerçekleştirmek için çeşitli araçlar sağlar.  Daha fazla bilgi için [Karma Kimlik dizin tümleştirme araçları karşılaştırma tablosuna](plan-hybrid-identity-design-considerations-tools-comparison.md) bakın. 
 
-Eşitleme gereksinimlerinizi ve bu durum, şirketiniz için yerine getirmiş olacaksınız aracı edindikten sonra bu dizin hizmetleri kullanan uygulamalar değerlendirilecek gerekir. Bu değerlendirme bu uygulamaları bulutta tümleştirmek için teknik gereksinimlerini tanımlamak önemlidir. Aşağıdaki soruları yanıtlamak emin olun:
+Artık senkronizasyon gereksinimlerinize ve şirketiniz için bunu gerçekleştirecek araca sahip olduğunuza göre, bu dizin hizmetlerini kullanan uygulamaları değerlendirmeniz gerekir. Bu değerlendirme, bu uygulamaları buluta entegre etmek için teknik gereksinimleri tanımlamak için önemlidir. Aşağıdaki soruları yanıtladıklısa mutlaka:
 
-* Bu uygulamaların buluta taşınması ve dizinini?
-* Bu uygulamalar başarıyla kullanabilmesi için buluta eşitlenmesi gereken özel öznitelikleri vardır?
-* Bu uygulamaların bulut kimlik doğrulaması yararlanmak için yeniden yazılması gerekiyor mu?
-* Bu uygulamalar, kullanıcıların bulut kimliği kullanarak bunları erişirken şirket içi Canlı devam edecek mi?
+* Bu uygulamalar buluta taşınacak ve dizini kullanacak mı?
+* Bu uygulamaların bunları başarıyla kullanabilmesi için buluta eşitedilmesi gereken özel özellikler var mı?
+* Bulut auth yararlanmak için bu uygulamaların yeniden yazılması gerekir mi?
+* Kullanıcılar bulut kimliğini kullanarak bu uygulamalara erişirken bu uygulamalar şirket içinde yaşamaya devam edecek mi?
 
-Ayrıca güvenlik gereksinimleri ve kısıtlamaları dizin eşitlemesini belirlemek gerekir. Bu değerlendirme oluşturmak ve bulutta kullanıcı kimlikleri sürdürmek için gerekli gereksinimleri listesini almak önemlidir. Aşağıdaki soruları yanıtlamak emin olun:
+Ayrıca güvenlik gereksinimleri ve kısıtlamalar dizin eşitleme belirlemeniz gerekir. Bu değerlendirme, kullanıcının kimliklerini bulutta oluşturmak ve korumak için gereken gereksinimlerin bir listesini almak için önemlidir. Aşağıdaki soruları yanıtladıklısa mutlaka:
 
-* Eşitleme sunucusu konumlandırılacağı?
-* Bu, etki alanına katılmış olacak mı?
-* Sunucu bir DMZ gibi bir güvenlik duvarının arkasındaki kısıtlı bir ağ üzerinde yer alır?
-  * Eşitlemeyi desteklemek için gerekli güvenlik duvarı bağlantı noktalarını açmak olacak mı?
-* Eşitleme sunucusu için bir olağanüstü durum kurtarma planı var mı?
-* Bir hesap ile eşitleme yapmak istediğiniz tüm ormanlar için doğru izinlere sahip gerekiyor?
-  * Şirketiniz, bu soru için yanıt bilmez, ' % s'bölümü "Parola Eşitleme için izinler" makalesinde gözden geçirin [Azure Active Directory Sync hizmetini yükleme](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) ve bir hesap zaten yüklü olup olmadığını belirleme Bu izinlere sahip olan veya oluşturmanız gerekir.
-* Varsa aktarılacaksa orman eşitleme eşitleme sunucusu almak için her bir orman mi?
+* Eşitleme sunucusu nerede bulunacak?
+* Etki alanı birleştirilir mi?
+* Sunucu, DMZ gibi bir güvenlik duvarının arkasındaki kısıtlı bir ağda mı bulunacak?
+  * Eşitlemayı desteklemek için gerekli güvenlik duvarı bağlantı noktalarını açabilecek misiniz?
+* Senkronizasyon sunucusu için bir olağanüstü durum kurtarma planınız var mı?
+* Senkronize etmek istediğiniz tüm ormanlar için doğru izinlere sahip bir hesabınız var mı?
+  * Şirketiniz bu sorunun cevabını bilmiyorsa, [makaledeki](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) "Parola eşitleme izinleri" bölümünü inceleyin ve bu izinlere sahip bir hesabınız olup olmadığını veya bir hesap oluşturmanız gerekip gerekmediğini belirleyin.
+* Mutli-forest eşitleme varsa eşitleme sunucusu her ormana ulaşmak mümkün?
 
 > [!NOTE]
-> Her yanıtı Not ve yanıtın arkasındaki mantığı anladığınızdan emin olun. [Olay yanıtı gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-incident-response-requirements.md) seçeneklerin geçilir. En iyi seçeneği işletmenizi uygun seçersiniz bu soruları yanıtladığınızda gerekir.
+> Her yanıtı not almayı unutmayın ve yanıtın arkasındaki mantığı anladığınızdan emin olun. [Olay yanıt gereksinimlerini belirleyin,](plan-hybrid-identity-design-considerations-incident-response-requirements.md) kullanılabilir seçeneklerin üzerinden geçer. Bu soruları yanıtlayarak, işletme ihtiyaçlarınıza en uygun seçeneği seçecektir.
 > 
 > 
 

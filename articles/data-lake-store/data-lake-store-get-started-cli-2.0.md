@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake depolama Gen1 ile çalışmaya başlamak için Azure CLI'yı kullanın | Microsoft Docs
-description: Bir Data Lake depolama Gen1 hesabı oluşturmak ve temel işlemleri gerçekleştirmek için Azure CLI kullanma
+title: Azure Veri Gölü Depolama Gen1 | Microsoft Dokümanlar
+description: Veri Gölü Depolama Gen1 hesabı oluşturmak ve temel işlemleri gerçekleştirmek için Azure CLI'yi kullanın
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -11,38 +11,38 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60885355"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure Data Lake Azure CLI kullanarak Store ile çalışmaya başlama
+# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure CLI'yi kullanarak Azure Veri Gölü Deposu'na başlayın
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
-> * [PowerShell](data-lake-store-get-started-powershell.md)
+> * [Powershell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 > 
 
-Hesabı, silme, bir Azure Data Lake depolama Gen1 hesabı oluşturmak ve klasör oluşturma karşıya yükleme ve veri dosyalarını indirir temel işlemleri gerçekleştirmek için Azure CLI kullanma hakkında bilgi edinin. Data Lake depolama Gen1 hakkında daha fazla bilgi için bkz: [genel bakış Data Lake depolama Gen1](data-lake-store-overview.md).
+Azure Veri Gölü Depolama Gen1 hesabı oluşturmak ve klasör oluşturma, veri dosyalarını yükleme ve indirme, hesabınızı silme vb. gibi temel işlemleri gerçekleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Veri Gölü Depolama Gen1 hakkında daha fazla bilgi için, [Veri Gölü Depolama Gen1 Genel Bakış](data-lake-store-overview.md)bakın.
 
-Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. MacOS, Linux ve Windows’da kullanılabilir. Daha fazla bilgi için [genel bakış, Azure CLI](https://docs.microsoft.com/cli/azure). Ayrıca bakabilirsiniz [Azure Data Lake depolama Gen1 CLI başvuru](https://docs.microsoft.com/cli/azure/dls) komutlar ve söz dizimi tam listesi için.
+Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. MacOS, Linux ve Windows’da kullanılabilir. Daha fazla bilgi için Azure [CLI'ye Genel Bakış](https://docs.microsoft.com/cli/azure)bölümüne bakın. Komutların ve sözdiziminin tam listesi için [Azure Veri Gölü Depolama Gen1 CLI başvurusuna](https://docs.microsoft.com/cli/azure/dls) da bakabilirsiniz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki işlemleri yapmış olmanız gerekir:
 
-* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure CLI** -bkz [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) yönergeler için.
+* **Azure CLI** - Yönergeler için [Azure CLI'yi yükle'ye](https://docs.microsoft.com/cli/azure/install-azure-cli) bakın.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
-Bu makalede, Data Lake depolama son kullanıcı olarak oturum burada Gen1 ile basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake depolama hesabı ve dosya sistemi sonra oturum açmış olan kullanıcının erişim düzeyi tarafından yönetilir Gen1 için erişim düzeyi. Ancak, diğer yaklaşımlar da Data Lake depolama Gen1 ile kimlik doğrulaması için olan vardır **son kullanıcı kimlik doğrulaması** veya **hizmetten hizmete kimlik doğrulaması**. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md) bölümlerine göz atın.
+Bu makalede, son kullanıcı kullanıcısı olarak oturum açtığınızda Veri Gölü Depolama Gen1 ile daha basit bir kimlik doğrulama yaklaşımı kullanılır. Veri Gölü Depolama Gen1 hesabına ve dosya sistemine erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, **son kullanıcı kimlik doğrulaması** veya **hizmete hizmet**kimlik doğrulaması olan Data Lake Storage Gen1 ile kimlik doğrulaması yapmak için başka yaklaşımlar da vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md) bölümlerine göz atın.
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın
@@ -53,7 +53,7 @@ Bu makalede, Data Lake depolama son kullanıcı olarak oturum burada Gen1 ile ba
     az login
     ```
 
-    Sonraki adımda kullanmak üzere bir kod alırsınız. Bir web tarayıcısı kullanarak https://aka.ms/devicelogin ve kimlik doğrulaması için kodu girin. Kimlik bilgilerinizi kullanarak oturum açmanız istenir.
+    Sonraki adımda kullanmak üzere bir kod alırsınız. https://aka.ms/devicelogin sayfasını açmak için bir web tarayıcısı kullanın ve kimlik doğrulaması yapmak için kodu girin. Kimlik bilgilerinizi kullanarak oturum açmanız istenir.
 
 2. Oturum açtığınızda, pencerede hesabınızla ilişkili tüm Azure abonelikleri listelenir. Belirli bir aboneliği kullanmak için aşağıdaki komutu kullanın.
    
@@ -61,7 +61,7 @@ Bu makalede, Data Lake depolama son kullanıcı olarak oturum burada Gen1 ile ba
     az account set --subscription <subscription id> 
     ```
 
-## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Azure Data Lake depolama Gen1 hesap oluşturma
+## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Azure Veri Gölü Depolama Gen1 hesabı oluşturma
 
 1. Yeni bir kaynak grubu oluşturun. Aşağıdaki komut içinde kullanmak istediğiniz parametre değerlerini sağlayın. Konum adı boşluk içeriyorsa adı tırnak işaretleri içine alın. Örneğin, "Doğu ABD 2". 
    
@@ -69,28 +69,28 @@ Bu makalede, Data Lake depolama son kullanıcı olarak oturum burada Gen1 ile ba
     az group create --location "East US 2" --name myresourcegroup
     ```
 
-2. Data Lake depolama Gen1 hesabı oluşturun.
+2. Veri Gölü Depolama Gen1 hesabını oluşturun.
    
     ```azurecli
     az dls account create --account mydatalakestoragegen1 --resource-group myresourcegroup
     ```
 
-## <a name="create-folders-in-a-data-lake-storage-gen1-account"></a>Bir Data Lake depolama Gen1 hesabında klasör oluşturma
+## <a name="create-folders-in-a-data-lake-storage-gen1-account"></a>Veri Gölü Depolama Gen1 hesabında klasör oluşturma
 
-Veri depolamak ve yönetmek için Azure Data Lake depolama Gen1 hesabınızın altında klasör oluşturabilirsiniz. Adlı bir klasör oluşturmak için aşağıdaki komutu kullanın **mynewfolder** Data Lake depolama Gen1 hesabının kökü.
+Verileri yönetmek ve depolamak için Azure Veri Gölü Depolama Gen1 hesabınızın altında klasörler oluşturabilirsiniz. Veri Gölü Depolama Gen1 hesabının kökünde **mynewfolder** adlı bir klasör oluşturmak için aşağıdaki komutu kullanın.
 
 ```azurecli
 az dls fs create --account mydatalakestoragegen1 --path /mynewfolder --folder
 ```
 
 > [!NOTE]
-> `--folder` parametresi, komutun bir klasör oluşturmasını sağlar. Bu parametre yoksa, komut, Data Lake depolama Gen1 hesabının kökünde mynewfolder adlı boş bir dosya oluşturur.
+> `--folder` parametresi, komutun bir klasör oluşturmasını sağlar. Bu parametre yoksa, komut Veri Gölü Depolama Gen1 hesabının kökünde mynewfolder adlı boş bir dosya oluşturur.
 > 
 >
 
-## <a name="upload-data-to-a-data-lake-storage-gen1-account"></a>Bir Data Lake depolama Gen1 hesabına veri yükleme
+## <a name="upload-data-to-a-data-lake-storage-gen1-account"></a>Veri Gölü Depolama Gen1 hesabına veri yükleme
 
-Data Lake depolama Gen1 doğrudan kök düzeyinde veya hesap içinde oluşturduğunuz bir klasöre verileri karşıya yükleyebilirsiniz. Aşağıdaki kod parçacıkları, birtakım örnek verilerin önceki bölümde oluşturduğunuz klasöre (**mynewfolder**) nasıl yükleneceğini göstermektedir.
+Verileri doğrudan kök düzeyinden veya hesap içinde oluşturduğunuz bir klasöre Veri Gölü Depolama Gen1'e yükleyebilirsiniz. Aşağıdaki kod parçacıkları, birtakım örnek verilerin önceki bölümde oluşturduğunuz klasöre (**mynewfolder**) nasıl yükleneceğini göstermektedir.
 
 Karşıya yüklenecek örnek veri arıyorsanız [Azure Data Lake Git Deposu](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)'ndan **Ambulance Data** klasörünü alabilirsiniz. Dosyayı indirin ve bilgisayarınızda C:\sampledata\ gibi yerel bir dizinde depolayın.
 
@@ -104,9 +104,9 @@ az dls fs upload --account mydatalakestoragegen1 --source-path "C:\SampleData\Am
 >
 
 
-## <a name="list-files-in-a-data-lake-storage-gen1-account"></a>Bir Data Lake depolama Gen1 hesabındaki dosyaları Listele
+## <a name="list-files-in-a-data-lake-storage-gen1-account"></a>Veri Gölü Depolama Gen1 hesabındaki dosyaları listele
 
-Bir Data Lake depolama Gen1 hesabındaki dosyaları listelemek için aşağıdaki komutu kullanın.
+Veri Gölü Depolama Gen1 hesabındaki dosyaları listelemek için aşağıdaki komutu kullanın.
 
 ```azurecli
 az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
@@ -132,15 +132,15 @@ Bunun çıktısının aşağıdakine benzer olması gerekir:
         }
     ]
 
-## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>Yeniden adlandırma, indirme ve Data Lake depolama Gen1 hesabından verilerini sil 
+## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>Veri Gölü Depolama Gen1 hesabındaki verileri yeniden adlandırma, indirme ve silme 
 
-* **Bir dosyayı yeniden adlandırmak için** aşağıdaki komutu kullanın:
+* **Bir dosyayı yeniden adlandırmak için**aşağıdaki komutu kullanın:
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
-* **Bir dosyayı indirmek için** aşağıdaki komutu kullanın. Belirttiğiniz hedef yolun önceden var olduğundan emin olun.
+* **Bir dosyayı indirmek için**aşağıdaki komutu kullanın. Belirttiğiniz hedef yolun önceden var olduğundan emin olun.
   
     ```azurecli     
     az dls fs download --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
@@ -151,7 +151,7 @@ Bunun çıktısının aşağıdakine benzer olması gerekir:
     > 
     >
 
-* **Bir dosyayı silmek için** aşağıdaki komutu kullanın:
+* **Bir dosyayı silmek için**aşağıdaki komutu kullanın:
   
     ```azurecli
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv
@@ -163,9 +163,9 @@ Bunun çıktısının aşağıdakine benzer olması gerekir:
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder --recurse
     ```
 
-## <a name="work-with-permissions-and-acls-for-a-data-lake-storage-gen1-account"></a>Bir Data Lake depolama Gen1 hesabı için izin ve ACL'ler ile çalışma
+## <a name="work-with-permissions-and-acls-for-a-data-lake-storage-gen1-account"></a>Veri Gölü Depolama Gen1 hesabı için izinler ve ALA'larla çalışma
 
-Bu bölümde ACL'leri ve izinleri Azure CLI kullanarak yönetme hakkında bilgi edinin. Azure Data Lake depolama Gen1 ACL'leri nasıl uygulandığı hakkında ayrıntılı bilgi için bkz: [erişim denetimi, Azure Data Lake depolama Gen1](data-lake-store-access-control.md).
+Bu bölümde Azure CLI'yi kullanarak ACD'leri ve izinleri nasıl yönetisiniz hakkında bilgi edinin. ALA'ların Azure Veri Gölü Depolama Gen1'de nasıl uygulandığı hakkında ayrıntılı bir tartışma için, [Azure Veri Gölü Depolama Gen1'de Erişim denetimine](data-lake-store-access-control.md)bakın.
 
 * **Bir dosya veya klasörün sahibini güncelleştirmek için** aşağıdaki komutu kullanın:
 
@@ -223,8 +223,8 @@ Bu bölümde ACL'leri ve izinleri Azure CLI kullanarak yönetme hakkında bilgi 
     az dls fs access remove-all --account mydatalakestoragegen1 --path /mynewfolder
     ```
     
-## <a name="delete-a-data-lake-storage-gen1-account"></a>Bir Data Lake depolama Gen1 hesabını Sil
-Bir Data Lake depolama Gen1 hesabını silmek için aşağıdaki komutu kullanın.
+## <a name="delete-a-data-lake-storage-gen1-account"></a>Veri Gölü Depolama Gen1 hesabını silme
+Bir Veri Gölü Depolama Gen1 hesabını silmek için aşağıdaki komutu kullanın.
 
 ```azurecli
 az dls account delete --account mydatalakestoragegen1
@@ -233,7 +233,7 @@ az dls account delete --account mydatalakestoragegen1
 İstendiğinde, hesabı silmek için **Y** yazın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Büyük veri gereksinimleri için Azure Data Lake depolama Gen1 kullanın](data-lake-store-data-scenarios.md) 
+* [Büyük veri gereksinimleri için Azure Veri Gölü Depolama Gen1'i kullanma](data-lake-store-data-scenarios.md) 
 * [Data Lake Storage Gen1'de verilerin güvenliğini sağlama](data-lake-store-secure-data.md)
-* [Azure Data Lake Analytics'i Data Lake depolama Gen1 ile kullanma](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Azure HDInsight ile Data Lake depolama Gen1 kullanın](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Veri Gölü Depolama Gen1 ile Azure Veri Gölü Analizini Kullanma](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Veri Gölü Depolama Gen1 ile Azure HDInsight'ı kullanın](data-lake-store-hdinsight-hadoop-use-portal.md)

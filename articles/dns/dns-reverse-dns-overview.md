@@ -1,6 +1,6 @@
 ---
-title: Azure 'da ters DNS 'ye genel bakış-Azure DNS
-description: Bu öğrenme yolunda, ters DNS 'in nasıl çalıştığını ve Azure 'da nasıl kullanılabileceğini öğrenmeye başlayın
+title: Azure'da ters DNS'ye genel bakış - Azure DNS
+description: Bu öğrenme yolunda, Ters DNS'nin nasıl çalıştığını ve Azure'da nasıl kullanılabileceğini öğrenmeye başlayın
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -13,54 +13,54 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76932308"
 ---
-# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Azure 'da ters DNS ve desteğe genel bakış
+# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Azure'da ters DNS ve desteğe genel bakış
 
-Bu makalede, ters DNS 'in nasıl çalıştığı ve Azure 'da desteklenen ters DNS senaryolarıyla genel bir bakış sunulmaktadır.
+Bu makalede, ters DNS'nin nasıl çalıştığına ve Azure'da desteklenen ters DNS senaryolarına genel bir bakış sunulur.
 
 ## <a name="what-is-reverse-dns"></a>Ters DNS nedir?
 
-Geleneksel DNS kayıtları bir DNS adından (' www.contoso.com ' gibi) bir IP adresine (64.4.6.100 gibi) bir eşlemeyi etkinleştirir.  Ters DNS, bir IP adresinin (64.4.6.100) bir ada (' www.contoso.com ') çevrilmesini sağlar.
+Geleneksel DNS kayıtları, Bir DNS adından ('www.contoso.com' gibi) bir IP adresine (64.4.6.100 gibi) eşleme sağlar.  Ters DNS, bir IP adresinin (64.4.6.100) bir ada ('www.contoso.com') geri çevrilmesini sağlar.
 
-Ters DNS kayıtları çeşitli durumlarda kullanılır. Örneğin, ters DNS kayıtları, e-posta iletisi göndereni doğrulanırken çok sayıda e-posta gönderici ortamında yaygın olarak kullanılır.  Alıcı posta sunucusu, gönderen sunucunun IP adresinin ters DNS kaydını alır ve bu konağın, kaynak etki alanından e-posta gönderme yetkisine sahip olup olmadığını doğrular. 
+Ters DNS kayıtları çeşitli durumlarda kullanılır. Örneğin, ters DNS kayıtları, bir e-posta iletisinin gönderenini doğrulayarak e-posta spam'ıyla mücadelede yaygın olarak kullanılır.  Alıcı posta sunucusu gönderen sunucunun IP adresinin ters DNS kaydını alır ve bu ana bilgisayara kaynak etki alanından e-posta göndermeye yetkili olup olmadığını doğrular. 
 
-## <a name="how-reverse-dns-works"></a>Ters DNS 'in nasıl çalıştığı
+## <a name="how-reverse-dns-works"></a>Ters DNS nasıl çalışır?
 
-Ters DNS kayıtları, ' ARPA ' bölgeleri olarak bilinen özel DNS bölgelerinde barındırılır.  Bu bölgeler, ' contoso.com ' gibi normal hiyerarşi barındırma etki alanları ile paralel olarak ayrı bir DNS hiyerarşisi oluşturur.
+Ters DNS kayıtları , 'ARPA' bölgeleri olarak bilinen özel DNS bölgelerinde barındırılır.  Bu bölgeler, 'contoso.com' gibi etki alanlarını barındıran normal hiyerarşiye paralel olarak ayrı bir DNS hiyerarşisi oluşturur.
 
-Örneğin, ' www.contoso.com ' DNS kaydı, ' contoso.com ' bölgesinde ' www ' adına sahip bir DNS ' A ' kaydı kullanılarak uygulanır.  Bu bir kayıt, ilgili IP adresine işaret eder, bu durumda 64.4.6.100.  Ters arama, ' 6.4.64.in-addr. arpa ' bölgesinde ' 100 ' adlı bir ' PTR ' kaydı kullanılarak ayrı olarak uygulanır (IP adreslerinin ARPA bölgelerinde tersine çevrildiğini unutmayın.)  Bu PTR kaydı, doğru şekilde yapılandırıldıysa, ' www.contoso.com ' adına işaret eder.
+Örneğin, 'www.contoso.com' dns kaydı , 'contoso.com' bölgesinde 'www' adı olan bir DNS 'A' kaydı kullanılarak uygulanır.  Bu A kaydı, bu durumda 64.4.6.100 ilgili IP adresine işaret edilir.  Ters arama, '6.4.64.in-addr.arpa' bölgesinde '100' adlı bir 'PTR' kaydı kullanılarak ayrı ayrı uygulanır (IP adreslerinin ARPA bölgelerinde tersine çevrildiğini unutmayın.)  Bu PTR kaydı, doğru yapılandırılmışsa, 'www.contoso.com' adına işaret edilir.
 
-Bir kuruluşa bir IP adres bloğu atandığında, bunlara karşılık gelen ARPA bölgesini yönetme hakkı elde edilir. Azure tarafından kullanılan IP adresi bloklarına karşılık gelen ARPA bölgeleri Microsoft tarafından barındırılır ve yönetilir. ISS 'niz sizin için kendi IP adresleriniz için ARPA bölgesini barındırabilir veya Azure DNS gibi istediğiniz bir DNS hizmetinde ARPA bölgesini barındırmanıza izin verebilir.
+Bir kuruluşa bir IP adresi bloğu atandığında, ilgili ARPA bölgesini yönetme hakkını da kazanır. Azure tarafından kullanılan IP adres bloklarıyla karşılık gelen ARPA bölgeleri Microsoft tarafından barındırılır ve yönetilir. ISS'niz ARPA bölgesini sizin için kendi IP adresleriniz için barındırabilir veya ARPA bölgesini Azure DNS gibi seçtiğiniz bir DNS hizmetinde barındırmanıza izin verebilir.
 
 > [!NOTE]
-> İleri DNS aramaları ve ters DNS aramaları ayrı, paralel DNS hiyerarşilerinde uygulanır. ' Www.contoso.com ' için ters arama, karşılık gelen IP adresi bloğunun ARPA bölgesinde barındırıldığından, ' contoso.com ' bölgesinde **barındırılmaz** . Ayrı bölgeler IPv4 ve IPv6 adres blokları için kullanılır.
+> İleri DNS aramaları ve ters DNS aramaları ayrı, paralel DNS hiyerarşilerinde uygulanır. 'www.contoso.com' için ters arama bölge 'contoso.com' **barındırılan değil,** daha ziyade ilgili IP adresi bloğu için ARPA bölgesinde barındırılan. IPv4 ve IPv6 adres blokları için ayrı bölgeler kullanılır.
 
 ### <a name="ipv4"></a>IPv4
 
-IPv4 geriye doğru arama bölgesinin adı şu biçimde olmalıdır: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+IPv4 ters arama bölgesinin adı aşağıdaki biçimde `<IPv4 network prefix in reverse order>.in-addr.arpa`olmalıdır: .
 
-Örneğin, 192.0.2.0/24 ön ekine sahip IP 'Leri olan konaklar için kayıtları barındırmak üzere bir ters bölge oluştururken bölge adı, adresin Ağ önekini yalıtarak (192.0.2) ve ardından sırayı ters çevirerek (2.0.192) ve sonek `.in-addr.arpa`eklenerek oluşturulur.
+Örneğin, 192.0.2.0/24 önekinde bulunan IP'leri barındıracak kayıtları barındıracak bir ters bölge oluştururken, adresin ağ öneki (192.0.2) yalıtılarak ve sırayı (2,0.192) tersine çevirerek ve sonek `.in-addr.arpa`eklenerek bölge adı oluşturulur.
 
-|Alt ağ sınıfı|Ağ ön eki  |Ters ağ ön eki  |Standart sonek  |Ters bölge adı |
+|Subnet sınıfı|Ağ öneki  |Ters ağ öneki  |Standart sonek  |Ters bölge adı |
 |-------|----------------|------------|-----------------|---------------------------|
-|Sınıf A|203.0.0.0/8     | 203        | . in-addr. arpa   | `203.in-addr.arpa`        |
-|B sınıfı|198.51.0.0/16   | 51.198     | . in-addr. arpa   | `51.198.in-addr.arpa`     |
-|C sınıfı|192.0.2.0/24    | 2.0.192    | . in-addr. arpa   | `2.0.192.in-addr.arpa`    |
+|A sınıfı|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
+|B sınıfı|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
+|C sınıfı|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
 
-### <a name="classless-ipv4-delegation"></a>Sınıfsız IPv4 temsili
+### <a name="classless-ipv4-delegation"></a>Sınıfsız IPv4 delegasyonu
 
-Bazı durumlarda, bir kuruluşa ayrılan IP aralığı, bir sınıf C (/24) aralığından daha küçüktür. Bu durumda, IP aralığı `.in-addr.arpa` bölgesi hiyerarşisindeki bir bölge sınırına düşmez ve bu nedenle alt bölge olarak temsil edilemez.
+Bazı durumlarda, bir kuruluşa ayrılan IP aralığı C (/24) sınıfı aralığından daha küçüktür. Bu durumda, IP aralığı `.in-addr.arpa` bölge hiyerarşisi içinde bir bölge sınırına düşmez ve bu nedenle alt bölge olarak devredilemez.
 
-Bunun yerine, ayrı bir ters arama (PTR) kayıtlarının denetimini ayrılmış bir DNS bölgesine aktarmak için farklı bir mekanizma kullanılır. Bu mekanizma her IP aralığı için bir alt bölge devreder ve sonra aralıktaki her IP adresini CNAME kayıtlarını kullanarak bu alt bölgeye ayrı ayrı eşler.
+Bunun yerine, tek tek ters arama (PTR) kayıtlarının denetimini özel bir DNS bölgesine aktarmak için farklı bir mekanizma kullanılır. Bu mekanizma, her IP aralığı için bir alt bölge delegesi, ardından aralıktaki her IP adresini CNAME kayıtlarını kullanarak bu alt bölgeye ayrı ayrı eşler.
 
-Örneğin, bir kuruluşa ISS tarafından 192.0.2.128/26 IP aralığı verildiğini varsayalım. Bu, 192.0.2.128 ile 192.0.2.191 arasında IP adresini temsil 64 eder. Bu aralığın ters DNS 'i aşağıdaki gibi uygulanır:
-- Kuruluş, 128-26.2.0.192.in-addr. arpa adlı bir geriye doğru arama bölgesi oluşturur. ' 128-26 ' öneki, C Sınıfı (/24) aralığında kuruluşa atanan ağ kesimini temsil eder.
-- ISS, yukarıdaki bölge için DNS temsilcisini C sınıfı üst bölgesinden ayarlamak üzere NS kayıtları oluşturur. Ayrıca, üst (sınıf C) geriye doğru arama bölgesinde CNAME kayıtları oluşturur, IP aralığındaki her IP adresini kuruluş tarafından oluşturulan yeni bölgeye eşleyerek.
+Örneğin, bir kuruluşa ISS tarafından 192.0.2.128/26 IP aralığının verildiğini varsayalım. Bu, 192.0.2.128 ile 192.0.2.191 arasında 64 IP adresini temsil eder. Bu aralık için ters DNS aşağıdaki gibi uygulanır:
+- Kuruluş, 128-26.2.0.192.in-addr.arpa adı verilen ters arama bölgesi oluşturur. '128-26' öneki, C (/24) sınıfı aralığında kuruluşa atanan ağ kesimini temsil eder.
+- ISS, C sınıfı üst bölgeden yukarıdaki bölge için DNS delegasyonuna ayariçin NS kayıtları oluşturur. Ayrıca, IP aralığındaki her IP adresini kuruluş tarafından oluşturulan yeni bölgeyle eşleyerek üst (C sınıfı) ters arama bölgesinde CNAME kayıtları oluşturur:
 
 ```
 $ORIGIN 2.0.192.in-addr.arpa
@@ -73,7 +73,7 @@ $ORIGIN 2.0.192.in-addr.arpa
 131       CNAME    131.128-26.2.0.192.in-addr.arpa
 ; etc
 ```
-- Ardından kuruluş, alt bölgelerinde tek tek PTR kayıtlarını yönetir.
+- Kuruluş daha sonra alt bölge içinde tek tek PTR kayıtlarını yönetir.
 
 ```
 $ORIGIN 128-26.2.0.192.in-addr.arpa
@@ -83,35 +83,35 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 131      PTR    partners.contoso.com
 ; etc
 ```
-' 129.2.0.192.in-addr. arpa ' adlı bir PTR kaydı için ' 192.0.2.129 ' IP adresi için ters arama. Bu sorgu, üst bölgedeki CNAME aracılığıyla alt bölgedeki PTR kaydına çözümlenir.
+'129.2.0.192.in-addr.arpa' adlı bir PTR kaydı için IP adresi '192.0.2.129' sorguları için ters arama. Bu sorgu, alt bölgesindeki PTR kaydına üst bölgesindeki CNAME üzerinden çözülür.
 
 ### <a name="ipv6"></a>IPv6
 
-IPv6 geriye doğru arama bölgesinin adı şu biçimde olmalıdır: `<IPv6 network prefix in reverse order>.ip6.arpa`
+IPv6 ters arama bölgesinin adı aşağıdaki formda olmalıdır:`<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Örneğin,. 2001: db8:1000: abdc::/64 ön ekine sahip konaklar için kayıtları barındırmak üzere bir ters bölge oluştururken, bölgenin ağ ön ekini yalıtarak bölge adı oluşturulur (2001: db8: abdc::). Daha sonra, IPv6 adresi önekini kısaltmak için kullanılmışsa, [sıfır sıkıştırmayı](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)kaldırmak için IPv6 ağ önekini genişletin (2001:0db8: abdc: 0000::). Ters çevrilen ağ önekini oluşturmak için (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) ve sonek `.ip6.arpa`eklemek için, ön ek içindeki her bir onaltılık sayı arasındaki sınırlayıcı olarak bir dönem kullanarak sırayı tersine çevirin.
+Örneğin, . 2001:db8:1000:abdc::/64 önekindeki IP'li ana bilgisayarlar için kayıtları barındıracak bir ters bölge oluştururken, adresin ağ öneki (2001:db8:abdc::)) yalıtılarak bölge adı oluşturulur. Daha sonra iPv6 adresi öneki (2001:0db8:abdc:0000::) kısaltmak için kullanılan [sıfır sıkıştırma](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)kaldırmak için IPv6 ağ öneki genişletin. Ters ağ öneki (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) oluşturmak ve soneki `.ip6.arpa`eklemek için önekiher hexadecimal sayı arasında delimiter olarak bir dönem kullanarak, sırayı tersine çevirin.
 
 
-|Ağ ön eki  |Genişletilmiş ve ters çevrilmiş ağ ön eki |Standart sonek |Ters bölge adı  |
+|Ağ öneki  |Genişletilmiş ve ters çevrilmiş ağ öneki |Standart sonek |Ters bölge adı  |
 |---------|---------|---------|---------|
-|2001:db8:abdc::/64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | . ip6. arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
-|2001: db8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | . ip6. arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
+|2001:db8:abdc::/64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | .ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
+|2001:db8:1000:9102::/64    | 2.0.1.9.0.0.0.0.1.8.b.d.0.1.0.0.2        | .ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
 ## <a name="azure-support-for-reverse-dns"></a>Ters DNS için Azure desteği
 
 Azure, ters DNS ile ilgili iki ayrı senaryoyu destekler:
 
-**IP adresi blobuna karşılık gelen geriye doğru arama bölgesini barındırma.**
-Azure DNS, [geriye doğru arama Bölgelerinizi barındırmak ve hem IPv4 hem de IPv6 için her ters DNS araması IÇIN PTR kayıtlarını yönetmek](dns-reverse-dns-hosting.md)üzere kullanılabilir.  Ters arama (ARPA) bölgesi oluşturma, temsilciyi ayarlama ve PTR kayıtlarını yapılandırma işlemi, normal DNS bölgeleriyle aynıdır.  Tek fark, temsilcinin DNS kaydediciniz yerine ISS 'niz aracılığıyla yapılandırılması ve yalnızca PTR kayıt türünün kullanılması gerekir.
+**IP adresi bloğuna karşılık gelen ters arama bölgesini barındırma.**
+Azure DNS, hem IPv4 hem de IPv6 [için ters arama bölgelerinizi barındırmak ve her ters DNS araması için PTR kayıtlarını yönetmek](dns-reverse-dns-hosting.md)için kullanılabilir.  Ters arama (ARPA) bölgesi oluşturma, delegasyonu ayarlama ve PTR kayıtlarını yapılandırma işlemi normal DNS bölgeleri için aynıdır.  Tek fark, delegasyonun DNS kayıt şirketiniz yerine ISS'niz aracılığıyla yapılandırılması ve yalnızca PTR kayıt türünün kullanılmasıdır.
 
-**Azure hizmetinize atanan IP adresi için ters DNS kaydını yapılandırın.** Azure [, Azure hizmetinize AYRıLAN IP adresleri için ters aramayı yapılandırmanızı](dns-reverse-dns-for-azure-services.md)sağlar.  Bu ters arama, Azure tarafından ilgili ARPA bölgesinde bir PTR kaydı olarak yapılandırılır.  Azure tarafından kullanılan tüm IP aralıklarına karşılık gelen bu ARPA bölgeleri Microsoft tarafından barındırılır
+**Azure hizmetinize atanan IP adresi için ters DNS kaydını yapılandırın.** Azure, Azure [hizmetinize tahsis edilen IP adreslerinin ters aramasını yapılandırmanızı](dns-reverse-dns-for-azure-services.md)sağlar.  Bu ters arama, Azure tarafından ilgili ARPA bölgesinde PTR kaydı olarak yapılandırılır.  Azure tarafından kullanılan tüm IP aralıklarına karşılık gelen bu ARPA bölgeleri Microsoft tarafından barındırılır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ters DNS hakkında daha fazla bilgi için bkz. [Vikipde ters DNS araması](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Ters DNS hakkında daha fazla bilgi [için, Vikipedi'de ters DNS arama](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)bakın.
 <br>
-[Azure DNS 'de ISS tarafından atanan IP aralığınızı geriye doğru arama bölgesini nasıl barındıracağınızı](dns-reverse-dns-for-azure-services.md)öğrenin.
+[Azure DNS'de ISS'ye atanmış IP aralığınızın ters arama bölgesini nasıl barındırışla düzenleyeceklerinizi](dns-reverse-dns-for-azure-services.md)öğrenin.
 <br>
-[Azure hizmetlerinize yönelik ters DNS kayıtlarını yönetmeyi](dns-reverse-dns-for-azure-services.md)öğrenin.
+[Azure hizmetleriniz için ters DNS kayıtlarını nasıl yöneteceğinizi](dns-reverse-dns-for-azure-services.md)öğrenin.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Klasik CLI - Azure Application Gateway oluşturma
-description: Resource Manager'da Azure Klasik CLI kullanarak bir uygulama ağ geçidi oluşturmayı öğrenin
+title: Azure Uygulama Ağ Geçidi Oluşturma - Azure klasik CLI
+description: Kaynak Yöneticisi'nde Azure klasik CLI'yi kullanarak Uygulama Ağ Geçidi oluşturmayı öğrenin
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095991"
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI kullanarak bir uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI'yi kullanarak bir uygulama ağ geçidi oluşturma
 
-Azure Application Gateway, bir katman 7 yük dengeleyicidir. Bulutta veya şirket içinde olmalarından bağımsız olarak, farklı sunucular arasında yük devretme ile HTTP istekleri için performans amaçlı yönlendirme sağlar. Application gateway şu uygulama teslim özelliklerine sahiptir: HTTP Yük Dengeleme, tanımlama bilgilerine dayalı oturum benzeşimi ve Güvenli Yuva Katmanı (SSL) boşaltma, özel sistem durumu araştırmaları ve çoklu site desteği.
+Azure Application Gateway, bir katman 7 yük dengeleyicidir. Bulutta veya şirket içinde olmalarından bağımsız olarak, farklı sunucular arasında yük devretme ile HTTP istekleri için performans amaçlı yönlendirme sağlar. Uygulama ağ geçidi aşağıdaki uygulama teslim özelliklerine sahiptir: HTTP yük dengeleme, çerez tabanlı oturum yakınlığı ve Secure Sockets Layer (SSL) boşaltma, özel sistem sondaları ve çoklu site desteği.
 
-## <a name="prerequisite-install-the-azure-cli"></a>Önkoşul: Azure CLI'yı yükleme
+## <a name="prerequisite-install-the-azure-cli"></a>Ön koşul: Azure CLI'yi yükleyin
 
-Bu makaledeki adımları gerçekleştirmek için yapmanız [Azure CLI'yı yükleme](../xplat-cli-install.md) ve gerekiyorsa [Azure'da oturum](/cli/azure/authenticate-azure-cli). 
+Bu makaledeki adımları gerçekleştirmek için [Azure CLI'yi yüklemeniz](../xplat-cli-install.md) ve [Azure'da oturum açmanız](/cli/azure/authenticate-azure-cli)gerekir. 
 
 > [!NOTE]
-> Bir Azure hesabınız yoksa, bir gerekir. [Buradaki ücretsiz deneme sürümüyle](../active-directory/fundamentals/sign-up-organization.md) kaydolun.
+> Azure hesabınız yoksa, hesabınız gerekir. [Buradaki ücretsiz deneme sürümüyle](../active-directory/fundamentals/sign-up-organization.md) kaydolun.
 
 ## <a name="scenario"></a>Senaryo
 
-Bu senaryoda, Azure portalını kullanarak bir uygulama ağ geçidi oluşturma konusunda bilgi edinin.
+Bu senaryoda, Azure portalını kullanarak bir uygulama ağ geçidi oluşturmayı öğrenirsiniz.
 
-Bu senaryo olur:
+Bu senaryo şunları yapacaktır:
 
-* Orta uygulama ağ geçidi ile iki örnek oluşturun.
-* Ayrılmış 10.0.0.0/16 CIDR bloğu ile ContosoVNET adlı bir sanal ağ oluşturun.
-* CIDR bloğu 10.0.0.0/28 kullanan subnet01 adlı bir alt ağ oluşturun.
+* İki örnekli orta uygulama ağ geçidi oluşturun.
+* 10.0.0.0/16'lık ayrılmış CIDR bloğuyla ContosoVNET adında bir sanal ağ oluşturun.
+* CIDR bloğu olarak 10.0.0.0/28 kullanan subnet01 adlı bir alt ağ oluşturun.
 
 > [!NOTE]
-> Ek yapılandırma özel durumu dahil olmak üzere uygulama ağ geçidinin araştırmaları, arka uç havuzu adresleri ve ek kurallar uygulama ağ geçidi yapılandırıldıktan sonra ve ilk dağıtım sırasında değil yapılandırılır.
+> Özel sistem durumu sondaları, arka uç havuzu adresleri ve uygulama ağ geçidi ilk dağıtım sırasında değil, yapılandırıldıktan sonra ek kurallar da dahil olmak üzere uygulama ağ geçidinin ek yapılandırması yapılandırılır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure Application Gateway, kendi alt ağına gerektirir. Bir sanal ağ oluştururken, birden çok alt ağ için yeterli adres alanı bırakın emin olun. Bir alt ağ için bir uygulama ağ geçidi dağıttığınızda, yalnızca ek uygulama ağ geçidi alt ağa eklenmesi olanağına sahip olursunuz.
+Azure Application Gateway kendi alt netini gerektirir. Sanal ağ oluştururken, birden çok alt ağa sahip olmak için yeterli adres alanı bıraktığından emin olun. Bir alt ağa uygulama ağ geçidi dağıttıktan sonra, alt ağa yalnızca ek uygulama ağ geçitleri eklenebilir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Açık **Microsoft Azure komut istemi**ve oturum açın.
+Microsoft **Azure Komut İstemi'ni**açın ve oturum açın.
 
 ```azurecli-interactive
 az login
 ```
 
-Yukarıdaki örnekte yazın sonra bir kod sağlanır. Gidin https://aka.ms/devicelogin bir tarayıcıda oturum açma işlemine devam etmek için.
+Önceki örneği yazdıktan sonra, bir kod sağlanır. Oturum https://aka.ms/devicelogin açma işlemine devam etmek için tarayıcıda gidin.
 
-![cmd gösteren cihaz oturum açma][1]
+![cmd gösteren cihaz girişi][1]
 
-Tarayıcıda aldığınız kodu girin. Bir oturum açma sayfasına yönlendirilirsiniz.
+Tarayıcıya, aldığınız kodu girin. Oturum açma sayfasına yönlendirilirsiniz.
 
-![kodu girmek için tarayıcı][2]
+![kod girmek için tarayıcı][2]
 
-Kod girildikten sonra oturumunuz, üzerinde bir senaryoyla devam etmek için tarayıcınızı kapatın.
+Kod girildikten sonra oturum açmış olduğunuz da, senaryoya devam etmek için tarayıcıyı kapatın.
 
-![başarıyla oturum açıldı][3]
+![başarılı bir şekilde oturum][3]
 
-## <a name="switch-to-resource-manager-mode"></a>Resource Manager moduna geçin
+## <a name="switch-to-resource-manager-mode"></a>Kaynak Yöneticisi Moduna Geç
 
 ```azurecli-interactive
 azure config mode arm
@@ -70,7 +70,7 @@ azure config mode arm
 
 ## <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 
-Uygulama ağ geçidi oluşturmadan önce uygulama ağ geçidi içerecek bir kaynak grubu oluşturulur. Aşağıda, komut gösterilmektedir.
+Uygulama ağ geçidini oluşturmadan önce, uygulama ağ geçidini içerecek bir kaynak grubu oluşturulur. Aşağıda, komut gösterilmektedir.
 
 ```azurecli-interactive
 azure group create \
@@ -80,7 +80,7 @@ azure group create \
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-Kaynak grubu oluşturulduktan sonra uygulama ağ geçidi için bir sanal ağ oluşturulur.  Aşağıdaki örnekte, yukarıdaki senaryo notları tanımlanan 10.0.0.0/16 adres alanı oluştu.
+Kaynak grubu oluşturulduktan sonra, uygulama ağ geçidi için sanal bir ağ oluşturulur.  Aşağıdaki örnekte, adres alanı önceki senaryo notlarında tanımlandığı gibi 10.0.0.0/16 olarak tanımlanmıştır.
 
 ```azurecli-interactive
 azure network vnet create \
@@ -92,7 +92,7 @@ azure network vnet create \
 
 ## <a name="create-a-subnet"></a>Alt ağ oluşturma
 
-Sanal ağ oluşturulduktan sonra uygulama ağ geçidi için bir alt ağ eklenir.  Uygulama ağ geçidiyle aynı sanal ağda barındırılan bir web uygulaması ile uygulama ağ geçidini kullanmayı planlıyorsanız, başka bir alt ağ için yeterli alan bırakın emin olun.
+Sanal ağ oluşturulduktan sonra, uygulama ağ geçidi için bir alt ağ eklenir.  Uygulama ağ geçidiyle aynı sanal ağda barındırılan bir web uygulamasıyla uygulama ağ geçidi kullanmayı planlıyorsanız, başka bir alt ağ için yeterli alan bıraktığından emin olun.
 
 ```azurecli-interactive
 azure network vnet subnet create \
@@ -104,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Sanal ağ ve alt ağ oluşturulduktan sonra uygulama ağ geçidi için ön koşullar tamamlandı. Ayrıca daha önce dışarı aktarılan .pfx sertifika ve sertifika için parola için aşağıdaki adım gereklidir: Arka uç için kullanılan IP adresleri, arka uç sunucusu için IP adresleridir. Bu değerler, sanal ağ özel IP'ler, genel IP'ler veya, arka uç sunucuları için tam etki alanı adları olabilir.
+Sanal ağ ve alt ağ oluşturulduktan sonra, uygulama ağ geçidi nin ön koşulları tamamlanır. Ayrıca, daha önce dışa aktarılan .pfx sertifikası ve sertifikanın şifresi aşağıdaki adım için gereklidir: Arka uç için kullanılan IP adresleri arka uç sunucunuzun IP adresleridir. Bu değerler, sanal ağdaki özel IP'ler, genel ip'ler veya arka uç sunucularınız için tam nitelikli alan adları olabilir.
 
 ```azurecli-interactive
 azure network application-gateway create \
@@ -126,16 +126,16 @@ azure network application-gateway create \
 ```
 
 > [!NOTE]
-> Aşağıdaki komutu çalıştırarak oluşturma sırasında sağlanan parametrelerin listesi için: **azure ağı application-gateway create--yardımcı**.
+> Oluşturma sırasında sağlanabilecek parametrelerin listesi için aşağıdaki komutu çalıştırın: **azure ağ uygulaması ağ geçidi oluşturma --yardım**.
 
-Bu örnekte, dinleyici, arka uç havuzu, arka uç http ayarları ve kuralları için varsayılan ayarlarla temel uygulama ağ geçidi oluşturur. Bu ayarlar, sağlama başarılı olduktan sonra dağıtımınız uyacak şekilde değiştirebilirsiniz.
-Web uygulamanız oluşturulduktan sonra önceki adımlarda, arka uç havuzu ile tanımlanan zaten varsa, Yük Dengeleme başlar.
+Bu örnek, dinleyici, arka uç havuzu, arka uç http ayarları ve kuralları için varsayılan ayarları içeren temel bir uygulama ağ geçidi oluşturur. Sağlama başarılı olduğunda bu ayarları dağıtımınıza uyacak şekilde değiştirebilirsiniz.
+Web uygulamanız önceden belirtilen adımlarda arka uç havuzuyla tanımlandıysa, oluşturulduktan sonra yük dengeleme başlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ziyaret ederek özel sistem durumu araştırmaları oluşturma konusunda bilgi edinin [özel durum araştırması oluşturun](application-gateway-create-probe-portal.md)
+[Özel bir sistem durumu sondası oluştur'u](application-gateway-create-probe-portal.md) ziyaret ederek özel sistem sondaları oluşturmayı öğrenin
 
-SSL boşaltma yapılandırmak ve ziyaret ederek maliyetli SSL şifre çözme web sunucularınızın kapalı olması öğrenin [SSL yük boşaltma yapılandırın](application-gateway-ssl-arm.md)
+SSL Boşaltma'yı nasıl yapılandıracağınızı ve [SSL Boşaltmayı Yapılandırma'yı](application-gateway-ssl-arm.md) ziyaret ederek web sunucularınızdaki pahalı SSL şifre çözmeyi nasıl kaldıracağınızı öğrenin
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: Sürekli tümleştirme & sürekli dağıtım Azure IoT Edge
-description: Sürekli tümleştirme ve sürekli dağıtım - Azure IOT Edge ile Azure DevOps, Azure işlem hatlarını ayarlama
+title: Sürekli tümleştirme & sürekli dağıtım - Azure IoT Edge
+description: Sürekli tümleştirme ve sürekli dağıtım ayarlama - Azure DevOps ile Azure IoT Edge, Azure Boru Hatları
 author: shizn
 manager: philmea
 ms.author: xshi
@@ -9,221 +9,221 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4b99e83a8e71b13183c76321c7076b85a212f021
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76510983"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Sürekli tümleştirme ve sürekli dağıtım için Azure IOT Edge
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge'e sürekli tümleştirme ve sürekli dağıtım
 
-Azure Pipelines içindeki yerleşik Azure IoT Edge görevlerle DevOps 'u Azure IoT Edge uygulamalarınızla kolayca benimseyebilirsiniz. Bu makalede, Azure IoT Edge uygulamalarını hızla ve verimli bir şekilde oluşturmak, test etmek ve dağıtmak için Azure Pipelines sürekli tümleştirme ve sürekli dağıtım özelliklerini nasıl kullanabileceğiniz gösterilmektedir.
+Azure Boru Hatları'ndaki yerleşik Azure IoT Edge görevleriyle DevOps'leri Azure IoT Edge uygulamalarınızla kolayca benimseyebilirsiniz. Bu makalede, Uygulamaları Azure IoT Edge'inize hızlı ve verimli bir şekilde oluşturmak, sınamak ve dağıtmak için Azure Pipelines'ın sürekli tümleştirme ve sürekli dağıtım özelliklerini nasıl kullanabileceğiniz gösterilebilir.
 
-![Geliştirme ve üretim için diyagram - CI ve CD dallar](./media/how-to-ci-cd/cd.png)
+![Diyagram - GELIŞTIRME ve üretim için CI ve CD şubeleri](./media/how-to-ci-cd/cd.png)
 
-Bu makalede, IoT Edge çözümünüz için iki işlem hattı oluşturmak üzere Azure Pipelines için yerleşik Azure IoT Edge görevlerinin nasıl kullanılacağını öğrenirsiniz. Azure IoT Edge görevlerinde dört eylem kullanılabilir.
+Bu makalede, IoT Edge çözümünüz için iki ardışık işlem hattı oluşturmak için Azure Ardışık Hatları için yerleşik Azure IoT Edge görevlerini nasıl kullanacağınızı öğreneceksiniz. Azure IoT Edge görevlerinde kullanılabilecek dört eylem vardır.
 
-* **Azure IoT Edge derleme modülü görüntüleri** , IoT Edge çözüm kodunuzu alır ve kapsayıcı görüntülerini oluşturur.
-* **Azure IoT Edge-gönderim modülü görüntüleri** , modül görüntülerini belirttiğiniz kapsayıcı kayıt defterine gönderir.
-* **Azure IoT Edge-dağıtım bildirimi oluşturma** bir Deployment. Template. json dosyasını ve değişkenlerini alır, ardından son IoT Edge dağıtım bildirim dosyasını oluşturur.
-* **Azure IoT Edge-IoT Edge cihazlara dağıtım** , tek/birden çok IoT Edge cihazlarına IoT Edge dağıtımları oluşturulmasına yardımcı olur.
+* **Azure IoT Edge - Yapı Modülü görüntüleri,** IoT Edge çözüm kodunuzu alır ve kapsayıcı görüntülerini oluşturur.
+* **Azure IoT Edge - Push Module görüntüleri** modül görüntülerini belirttiğiniz konteyner kayıt defterine iter.
+* **Azure IoT Edge - Deployment Manifest oluştur** dağıtım.template.json dosyasını ve değişkenleri alır, ardından son IoT Edge dağıtım bildirimi dosyasını oluşturur.
+* **Azure IoT Edge - IoT Edge aygıtlarına dağıtma,** tek/birden çok IoT Edge aygıtında IoT Edge dağıtımları oluşturulmasına yardımcı olur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bir Azure Repos deposu. Bir tane yoksa, [projenizde yeni bir git deposu oluşturabilirsiniz](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav).
-* IoT Edge bir çözüm kaydedilir ve deponuza gönderilir. Bu makaleyi test etmek için yeni bir örnek çözüm oluşturmak istiyorsanız, [Visual Studio Code 'de modül geliştirme ve hata ayıklama](how-to-vs-code-develop-module.md) veya [Visual Studio 'da modülleri geliştirme ve hata C# ](how-to-visual-studio-develop-csharp-module.md)ayıklama işlemleri bölümündeki adımları uygulayın.
+* Azure Deposu deposu. Hesabınız yoksa, [projenizde yeni bir Git repo'su oluşturabilirsiniz.](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav)
+* Bir IoT Edge çözümü taahhüt ve deponuza itti. Bu makaleyi test etmek için yeni bir örnek çözüm oluşturmak istiyorsanız, [Visual Studio Code'daki Geliştirme ve hata ayıklama modülleri](how-to-vs-code-develop-module.md) adımlarını izleyin veya [Visual Studio'da C# modüllerini geliştirin ve hata ayıklayın.](how-to-visual-studio-develop-csharp-module.md)
 
-   Bu makalede, her türlü Visual Studio Code veya Visual Studio 'da IoT Edge şablonları tarafından oluşturulan çözüm klasörüdür. Devam etmeden önce bu kodu oluşturmanız, göndermeniz, dağıtmanız veya hata ayıklamanıza gerek yoktur. Bu süreçlerini Azure Pipelines göre ayarlarsınız.
+   Bu makale için tek ihtiyacınız olan Visual Studio Code veya Visual Studio'daki IoT Edge şablonları tarafından oluşturulan çözüm klasörüdür. Devam etmeden önce bu kodu oluşturmanız, itmeniz, dağıtmanız veya hata ayıklamanız gerekmez. Bu işlemleri Azure Pipelines'da ayarlarsınız.
 
-   Yeni bir çözüm oluşturuyorsanız, deponuzu önce yerel olarak kopyalayın. Ardından, çözümü oluşturduğunuzda doğrudan depo klasöründe oluşturmayı seçebilirsiniz. Yeni dosyaları oradan kolayca kaydedebilir ve gönderebilirsiniz.
+   Yeni bir çözüm oluşturuyorsanız, önce deponuzu yerel olarak kopyalayın. Ardından, çözümü oluşturduğunuzda, çözümü doğrudan depo klasöründe oluşturmayı seçebilirsiniz. Yeni dosyaları kolayca işleyebilir ve itebilirsiniz.
 
-* Modül görüntülerini ititebileceğiniz bir kapsayıcı kayıt defteri. [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) veya bir üçüncü taraf kayıt defteri kullanabilirsiniz.
-* Ayrı test ve üretim dağıtım aşamalarını test etmek için en az IoT Edge cihazları olan etkin bir [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) . [Linux](quickstart-linux.md) veya [Windows](quickstart.md) üzerinde IoT Edge bir cihaz oluşturmak için hızlı başlangıç makalelerini takip edebilirsiniz
+* Modül görüntülerini itebileceğiniz bir konteyner kayıt defteri. [Azure Kapsayıcı Kayıt Defteri'ni](https://docs.microsoft.com/azure/container-registry/) veya bir üçüncü taraf kayıt defterini kullanabilirsiniz.
+* Ayrı test ve üretim dağıtım aşamalarını test etmek için en az IoT Edge aygıtları içeren etkin bir [IoT](../iot-hub/iot-hub-create-through-portal.md) hub'ı. [Linux](quickstart-linux.md) veya [Windows'da](quickstart.md) bir IoT Edge aygıtı oluşturmak için hızlı başlangıç makalelerini takip edebilirsiniz
 
-Azure Repos kullanma hakkında daha fazla bilgi için bkz. [Visual Studio ile kodunuzu paylaşma ve Azure Repos](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
+Azure Repos'u kullanma hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
 
 ## <a name="configure-continuous-integration"></a>Sürekli tümleştirme yapılandırması
 
-Bu bölümde, yeni bir yapı işlem hattı oluşturacaksınız. Örnek IoT Edge çözümünde yapılan değişiklikleri iade ettiğinizde ve Derleme günlüklerini yayımladığınızda, işlem hattını otomatik olarak çalışacak şekilde yapılandırın.
+Bu bölümde, yeni bir yapı ardışık alanı oluşturursunuz. Örnek IoT Edge çözümünde yapılan değişiklikleri iade ettiğinizde ardışık yapıyı otomatik olarak çalışacak şekilde yapılandırın ve yapı günlükleri yayımlayın.
 
 >[!NOTE]
->Bu makale, Azure DevOps görsel tasarımcısını kullanır. Bu bölümdeki adımları izlemeden önce, yeni YAML ardışık düzen oluşturma deneyiminin önizleme özelliğini devre dışı bırakın.
+>Bu makalede, Azure DevOps görsel tasarımcısı kullanır. Bu bölümdeki adımları izlemeden önce, yeni YAML ardışık hat lar oluşturma deneyimi için önizleme özelliğini kapatın.
 >
->1. Azure DevOps 'da profil simgenizi seçip **Önizleme özellikleri**' ni seçin.
->2. **Yenı YAML ardışık düzen oluşturma deneyimini** devre dışı bırakın.
+>1. Azure DevOps'de profil simgenizi seçin ve **ardından Öngösterim özelliklerini**seçin.
+>2. **Yeni YAML boru hattı oluşturma deneyimini** kapatın.
 >
->Daha fazla bilgi için bkz. [derleme işlem hattı oluşturma](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline).
+>Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline)
 
-1. Azure DevOps kuruluşunuzda oturum açın (**https:\//dev.Azure.com/{Your Organization}/** ) ve IoT Edge çözüm deponuzu içeren projeyi açın.
+1. Azure DevOps kuruluşunuzda oturum açın **(https:\//dev.azure.com/{kuruluşunuz}/**) ve IoT Edge çözüm deponuzu içeren projeyi açın.
 
-   Bu makalede, **ıotedgerepo**adlı bir depo oluşturduk. Bu depo, **filtermodule**adlı bir modülün koduna sahip **IoTEdgeSolution** içerir.
+   Bu makale için, **IoTEdgeRepo**adlı bir depo oluşturduk. Bu depo, **filtre modülü**adlı bir modülün koduna sahip **IoTEdgeSolution'ı** içerir.
 
    ![DevOps projenizi açın](./media/how-to-ci-cd/init-project.png)
 
-2. Projenizdeki Azure Pipelines gidin. **Derlemeler** sekmesini açın ve yeni işlem **hattı**' nı seçin. Ya da zaten derleme işlem hatları varsa, **Yeni** düğmesini seçin. Ardından **Yeni derleme işlem hattı**' nı seçin.
+2. Projenizde Azure Ardışık Hatları'na gidin. **Yapılar** sekmesini açın ve **Yeni ardışık hatlar'ı**seçin. Veya yapı ardışık hatlarınız zaten varsa **Yeni** düğmesini seçin. Sonra **Yeni yapı boru hattı**seçin.
 
     ![Yeni derleme işlem hattı oluşturma](./media/how-to-ci-cd/add-new-build.png)
 
-3. İşlem hattınızı oluşturmak için istemleri izleyin.
+3. Ardışık hattınızı oluşturmak için istemleri izleyin.
 
-   1. Yeni derleme işlem hattının kaynak bilgilerini sağlayın. Kaynak olarak **Git Azure Repos** seçin, sonra IoT Edge çözüm kodunuzun bulunduğu projeyi, depoyu ve dalı seçin. Sonra **devam**' ı seçin.
+   1. Yeni yapı ardınız için kaynak bilgilerini sağlayın. Kaynak olarak **Azure Depogit'i** seçin ve ardından IoT Edge çözüm kodunun bulunduğu projeyi, depoyu ve dala seçin. Ardından Devam **et'i**seçin.
 
-      ![İşlem hattı kaynağınızı seçin](./media/how-to-ci-cd/pipeline-source.png)
+      ![Boru hattı kaynağınızı seçin](./media/how-to-ci-cd/pipeline-source.png)
 
-   2. Şablon yerine **boş işi** seçin.
+   2. Şablon yerine **Boş iş'i** seçin.
 
-      ![Boş bir işlemle başlangıç](./media/how-to-ci-cd/start-with-empty.png)
+      ![Boş bir işlemle başlayın](./media/how-to-ci-cd/start-with-empty.png)
 
-4. Ardışık düzen oluşturulduktan sonra işlem hattı düzenleyicisine yönlendirilirsiniz. İşlem hattı tanımınızda, hedef platformunuza bağlı olarak doğru aracı havuzunu seçin:
+4. Ardışık işlem yerinizi oluşturduktan sonra, boru hattı düzenleyicisine götürülürnüz. Boru hattı açıklamanızda, hedef platformunuzu temel alan doğru aracı havuzunu seçin:
 
-   * Linux kapsayıcıları için platform amd64, modülleri oluşturmak istiyorsanız seçin **barındırılan Ubuntu 1604**
+   * Linux konteynerleri için amd64 platformunda modüllerinizi oluşturmak istiyorsanız, **Hosted Ubuntu 1604'ü** seçin
 
-   * Modüllerinizi Windows 1809 kapsayıcıları için platform AMD64 'de derlemek isterseniz, [Windows üzerinde şirket içinde barındırılan aracıyı ayarlamanız](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)gerekir.
+   * Modüllerinizi Windows 1809 kapsayıcıları için amd64 platformunda oluşturmak istiyorsanız, [Windows'da kendi kendine barındırılan aracıyı kurmanız](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)gerekir.
 
-   * Modüllerinizi Linux kapsayıcıları için platform arm32v7 veya arm64 ' de derlemek isterseniz, [Linux üzerinde şirket içinde barındırılan aracıyı ayarlamanız](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)gerekir.
+   * Linux konteynerleri için platform arm32v7 veya arm64 modüllerinizi oluşturmak istiyorsanız, [Linux'ta kendi kendine barındırılan bir temsilci kurmanız](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)gerekir.
 
-     ![Derleme aracı havuzu yapılandırma](./media/how-to-ci-cd/configure-env.png)
+     ![Yapı aracı havuzuyapıla](./media/how-to-ci-cd/configure-env.png)
 
-5. İşlem hattınız, **Aracı işi 1**adlı bir iş ile önceden yapılandırılmış olarak gelir. İşe üç görev eklemek için artı işaretini ( **+** ) seçin: iki kez **Azure IoT Edge** , dosyaları bir kez **kopyalayın** ve **derleme yapılarını** bir kez yayımlayın. ( **Ekle** düğmesini görmek için her görevin adının üzerine gelin.)
+5. Boru hattınız **Ajan iş 1**adlı bir iş ile önceden yapılandırılmış geliyor. İşe üç görev**+** eklemek için artı işaretini ( ) seçin: **Azure IoT Edge** iki kez, Dosyaları bir kez **Kopyala** ve Yapı Yapı Larını bir kez **Yayımla.** (Ekle düğmesini görmek için her görevin adının üzerine takla **at.)**
 
    ![Azure IoT Edge görev ekle](./media/how-to-ci-cd/add-iot-edge-task.png)
 
-   Dört görev eklendiğinde, aracı işiniz aşağıdaki örneğe benzer şekilde görünür:
+   Dört görev de eklendiğinde, Aracı işin aşağıdaki örnek gibi görünür:
 
-   ![Derleme ardışık düzeninde üç görev](./media/how-to-ci-cd/add-tasks.png)
+   ![Yapı ardışık alanında üç görev](./media/how-to-ci-cd/add-tasks.png)
 
-6. Düzenlemek için ilk **Azure IoT Edge** görevi seçin. Bu görev, Çözümdeki tüm modülleri belirttiğiniz hedef platforma göre oluşturur.
+6. Bunu sağlamak için ilk **Azure IoT Edge** görevini seçin. Bu görev, belirttiğiniz hedef platformu ile çözümdeki tüm modülleri oluşturur.
 
-   * **Görünen ad**: varsayılan **Azure IoT Edge derleme modülü görüntülerini**kabul edin.
-   * **Eylem**: varsayılan **derleme modülü görüntülerini**kabul edin.
-   * **. Template. JSON dosyası**: üç noktayı ( **...** ) seçin ve IoT Edge çözümünüzü içeren depodaki **Deployment. Template. JSON** dosyasına gidin.
-   * **Varsayılan platform**: hedef IoT Edge cihazınıza göre modülleriniz için uygun platformu seçin.
-   * **Çıkış değişkenleri**: çıkış değişkenleri, Deployment. JSON dosyanızın üretilebileceği dosya yolunu yapılandırmak için kullanabileceğiniz bir başvuru adı içerir. Başvuru adını **kenar**benzeri bir şeye ayarlayın.
+   * **Ekran adı**: Varsayılan **Azure IoT Edge - Modül görüntüleri oluşturmayı**kabul edin.
+   * **Eylem**: Varsayılan **Yapı modülü görüntülerini**kabul edin.
+   * **.template.json dosyası**: Elipsis 'i (**...**) seçin ve IoT Edge çözümünüzü içeren depodaki **deployment.template.json** dosyasına gidin.
+   * **Varsayılan platform**: Hedef IoT Edge cihazınızı temel alan modülleriniz için uygun platformu seçin.
+   * **Çıktı değişkenleri**: Çıktı değişkenleri, deployment.json dosyanızın oluşturulacağı dosya yolunu yapılandırmak için kullanabileceğiniz bir başvuru adı içerir. Referans adını **kenar**gibi unutulmaz bir şeye ayarlayın.
 
-7. Düzenlemek için ikinci **Azure IoT Edge** görevi seçin. Bu görev, tüm modül görüntülerini seçtiğiniz kapsayıcı kayıt defterine iter.
+7. Bunu sağlamak için ikinci **Azure IoT Edge** görevini seçin. Bu görev, tüm modül görüntülerini seçtiğiniz kapsayıcı kayıt defterine iter.
 
-   * **Görünen ad**: eylem alanı değiştiğinde görünen ad otomatik olarak güncelleştirilir.
-   * **Eylem**: **anında iletme modülü görüntülerini**seçmek için açılan listeyi kullanın.
-   * **Kapsayıcı kayıt defteri türü**: modül görüntülerinizi depolamak için kullandığınız kapsayıcı kayıt defteri türünü seçin. Seçtiğiniz kayıt defteri türüne bağlı olarak, form değişir. **Azure Container Registry**öğesini seçerseniz, Azure aboneliğini ve kapsayıcı kayıt defterinizin adını seçmek için açılan listeleri kullanın. **Genel Container Registry**seçerseniz, **Yeni** ' yi seçerek bir kayıt defteri hizmet bağlantısı oluşturun.
-   * **. Template. JSON dosyası**: üç noktayı ( **...** ) seçin ve IoT Edge çözümünüzü içeren depodaki **Deployment. Template. JSON** dosyasına gidin.
-   * **Varsayılan platform**: oluşturulan modül görüntüleriniz ile aynı platformu seçin.
+   * **Ekran adı**: Eylem alanı değiştiğinde görüntü adı otomatik olarak güncelleştirilir.
+   * **Eylem**: **Push modül görüntülerini**seçmek için açılır listeyi kullanın.
+   * **Konteyner kayıt türü**: Modül resimlerinizi depolamak için kullandığınız konteyner kayıt defteri türünü seçin. Seçtiğiniz kayıt türüne bağlı olarak, form değişir. **Azure Kapsayıcı Kayıt Defteri'ni**seçerseniz, Azure aboneliğini ve konteyner kayıt defterinizin adını seçmek için açılır listelerini kullanın. **Genel Kapsayıcı Kayıt Defteri'ni**seçerseniz, kayıt defteri hizmeti bağlantısı oluşturmak için **Yeni'yi** seçin.
+   * **.template.json dosyası**: Elipsis 'i (**...**) seçin ve IoT Edge çözümünüzü içeren depodaki **deployment.template.json** dosyasına gidin.
+   * **Varsayılan platform**: Yerleşik modül görüntüleriyle aynı platformu seçin.
 
-   Modül görüntüleri barındırmak için birden çok kapsayıcı kayıt defterleri varsa, bu görev yinelenen, farklı bir kapsayıcı kayıt defteri seçin ve kullanmak gereken **atlama modul** bu olmayan görüntüleri atlamak için Gelişmiş ayarları belirli kayıt defteri.
+   Modül görüntülerinizi barındırmak için birden çok kapsayıcı kayıt defteriniz varsa, bu görevi yinelemeniz, farklı konteyner kayıt defterini seçmeniz ve bu özel kayıt defterine uygun olmayan görüntüleri atlamak için gelişmiş ayarlarda **Bypass modülünü(ler)** kullanmanız gerekir.
 
-8. Düzenlemek için **dosyaları Kopyala** görevini seçin. Dosyaları yapıt hazırlama dizinine kopyalamak için bu görevi kullanın.
+8. Bunu sağlamak için **Dosyaları Kopyala** görevini seçin. Yapı düzenleme dizinine dosyaları kopyalamak için bu görevi kullanın.
 
-   * **Görünen ad**: dosyaları kopyala: bırakma klasörü.
-   * **İçerikler**: Bu bölüme iki satır koyun `deployment.template.json` ve `**/module.json`. Bu iki dosya türü IoT Edge dağıtım bildirimi oluşturmak için girişlerdir. Yapıt hazırlama klasörüne kopyalanması ve yayın işlem hattı için yayımlanmaları gerekir.
-   * **Hedef klasör**: değişkeni `$(Build.ArtifactStagingDirectory)`koyun. Açıklama hakkında bilgi edinmek için bkz. [derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
+   * **Ekran adı**: Dosyaları kopyala: Bırak klasörü.
+   * **İçindekiler**: Bu bölüme iki satır koyun `deployment.template.json` ve `**/module.json`. Bu iki dosya türü, IoT Edge dağıtım bildirimini oluşturmak için girişlerdir. Yapı hazırlama klasörüne kopyalanıp serbest bırakma ardışık alanı için yayımlanmalıdır.
+   * **Hedef Klasör**: `$(Build.ArtifactStagingDirectory)`Değişkeni koyun. Açıklama hakkında bilgi edinmek için [değişkenoluştur'a](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) bakın.
 
-9. Düzenlemek için **derleme yapıtları Yayımla** görevini seçin. Yolun serbest bırakma işlem hattına yayınlanabilmesi için göreve yapıt hazırlama dizini yolu sağlayın.
+9. Yapı **Yapı Oluşturma** görevini, onu yeniden oluşturmak için seçin. Yolun ardışık düzeneak yayımlamak için yayımlanabilmesi için göreve yapı düzenleme dizini yolunu sağlayın.
 
-   * **Görünen ad**: yayımlama yapıtı: bırak.
-   * **Yayımlanacak yol**: değişkeni `$(Build.ArtifactStagingDirectory)`koyun. Açıklama hakkında bilgi edinmek için bkz. [derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
-   * **Yapıt adı**: Drop.
-   * **Yapıt yayımlama konumu**: Azure Pipelines.
+   * **Görüntü adı**: Artefakt Yayımla: bırak.
+   * **Yayımlanacak Yol**: `$(Build.ArtifactStagingDirectory)`Değişkeni koyun. Açıklama hakkında bilgi edinmek için [değişkenoluştur'a](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) bakın.
+   * **Eser adı**: damla.
+   * **Artefakt yayımlama yeri**: Azure Pipelines.
 
-10. **Tetikleyiciler** sekmesini açın ve **sürekli tümleştirmeyi etkinleştirmek**için kutuyu işaretleyin. Kodunuzu içeren dal dahil olduğundan emin olun.
+10. **Tetikleyiciler** sekmesini açın ve **sürekli tümleştirmeyi etkinleştirmek**için kutuyu işaretleyin. Kodunuzu içeren dakarın dahil olduğundan emin olun.
 
-    ![Sürekli Tümleştirme tetikleyici Aç](./media/how-to-ci-cd/configure-trigger.png)
+    ![Sürekli tümleştirme tetikleyicisi açma](./media/how-to-ci-cd/configure-trigger.png)
 
-11. Yeni derleme işlem hattını **Kaydet** düğmesi ile kaydedin.
+11. Kaydet düğmesiyle yeni yapı ardışık hattını **kaydedin.**
 
-Bu işlem hattı, artık yeni kodu depoya gönderdiğinizde otomatik olarak çalışacak şekilde yapılandırılmıştır. İşlem hattı yapıtlarını yayımlayan son görev, bir yayın işlem hattını tetikler. Yayın işlem hattını derlemek için sonraki bölüme geçin.
+Bu ardışık işlem, artık repo'nuza yeni kod itdiğinizde otomatik olarak çalışacak şekilde yapılandırıldı. Son görev, ardışık yapıtlarını yayımlama, bir sürüm ardışık tetikler. Sürüm ardışık hattını oluşturmak için bir sonraki bölüme devam edin.
 
 ## <a name="configure-continuous-deployment"></a>Sürekli dağıtımı yapılandırma
 
-Bu bölümde, derleme işlem hatlarınız yapıtlar olduğunda otomatik olarak çalışacak şekilde yapılandırılmış bir yayın işlem hattı oluşturun ve Azure Pipelines dağıtım günlüklerini gösterir.
+Bu bölümde, yapı ardınız yapıları nız yapılınca otomatik olarak çalışacak şekilde yapılandırılan bir sürüm ardışık alanı oluşturursunuz ve bu işlem Azure Ardışık Hatları'nda dağıtım günlüklerini gösterir.
 
-Yeni bir işlem hattı oluşturun ve yeni bir aşama ekleyin
+Yeni bir ardışık hat lar oluşturun ve yeni bir aşama ekleyin
 
-1. İçinde **yayınlar** sekmesini, **+ yeni işlem hattı**. Ya da yayın işlem hatlarınız zaten varsa **+ Yeni** düğmesini seçin ve **+ Yeni yayın işlem hattı**' nı seçin.  
+1. Serbest **Bırakmalar** sekmesinde **+ Yeni ardışık hattı**seçin. Veya, zaten sürüm ardışık hatları varsa, **+ Yeni** düğmesini seçin ve + Yeni **sürüm ardışık seçin.**  
 
-    ![Yayın işlem hattı ekleyin](./media/how-to-ci-cd/add-release-pipeline.png)
+    ![Sürüm ardışık hattı ekleme](./media/how-to-ci-cd/add-release-pipeline.png)
 
-2. Bir şablon seçmek isteyip istemediğiniz sorulduğunda **boş bir işle**başlatmayı seçin.
+2. Bir şablon seçmek istendiğinde, Boş bir **iş**ile başlamayı seçin.
 
-    ![Boş bir işlemle Başlat](./media/how-to-ci-cd/start-with-empty-job.png)
+    ![Boş bir işle başlayın](./media/how-to-ci-cd/start-with-empty-job.png)
 
-3. Yeni yayın ardışık düzeni, **1. aşama**adlı bir aşama ile başlatılır. 1\. aşamayı **dev** olarak yeniden adlandırın ve test ortamı olarak değerlendirin. Genellikle, sürekli dağıtım işlem hatları **dev**, **hazırlık** ve **Üretim**dahil olmak üzere birden çok aşamaya sahiptir. DevOps uygulamanıza göre daha fazla bilgi oluşturabilirsiniz. Yeniden adlandırıldıktan sonra aşama ayrıntıları penceresini kapatın.
+3. Yeni sürüm ardışık **hattınız, Aşama 1**olarak adlandırılan bir aşamayla başharflere daldı. Aşama 1'i bir test ortamı olarak **yeniden** adlandırın ve bir test ortamı olarak ele alayın. Genellikle, sürekli dağıtım boru hatları **dev,** evreleme ve **prod**dahil olmak üzere birden çok aşamaya **sahiptir.** DevOps uygulamanıza göre daha fazlasını oluşturabilirsiniz. Yeniden adlandırıldıktan sonra sahne ayrıntıları penceresini kapatın.
 
-4. Yayını derleme işlem hattı tarafından yayınlanan yapı yapıtlarına bağlayın. Tıklayın **Ekle** yapıtları alanında.
+4. Sürümü yapı ardışık tarafından yayımlanan yapı yapı larına bağla. Yapıtlar alanına **Ekle'yi** tıklatın.
 
-   ![Yapıt Ekle](./media/how-to-ci-cd/add-artifacts.png)  
+   ![Yapıtları ekleme](./media/how-to-ci-cd/add-artifacts.png)  
 
-5. **Yapıt Ekle sayfasında**, kaynak türü **Oluştur**' u seçin. Ardından, oluşturduğunuz projeyi ve derleme işlem hattını seçin. Ardından **Ekle**'yi seçin.
+5. **Yapı sayfası ekle'de**kaynak türü **Oluştur'u**seçin. Ardından, projeyi ve oluşturduğunuz yapı ardışık hattını seçin. Ardından **Ekle'yi**seçin.
 
-   ![Bir derleme yapıtı Ekle](./media/how-to-ci-cd/add-an-artifact.png)
+   ![Derleme yapıtı ekleme](./media/how-to-ci-cd/add-an-artifact.png)
 
-6. Yapıt tetikleyicilerini açın ve sürekli dağıtım tetikleyicisini etkinleştirmek için geçiş seçeneğini belirleyin. Şimdi yeni bir derleme kullanılabilir olduğunda yeni bir yayın oluşturulacaktır.
+6. Yapı tetikleyicilerini açın ve sürekli dağıtım tetikleyicisini etkinleştirmek için geçiş seçeneğini belirleyin. Şimdi, yeni bir yapı kullanılabilir her zaman yeni bir sürüm oluşturulur.
 
-   ![Sürekli dağıtım tetikleyicisi yapılandırın](./media/how-to-ci-cd/add-a-trigger.png)
+   ![Sürekli dağıtım tetikleyicisi yapılandırma](./media/how-to-ci-cd/add-a-trigger.png)
 
-7. **Geliştirme** aşaması bir iş ve sıfır görev ile önceden yapılandırılmıştır. İşlem hattı menüsünde **Görevler** ' i ve ardından **geliştirme** aşamasını seçin.  Bu aşamadaki görevleri yapılandırmak için işi ve görev sayısını seçin.
+7. **Dev** aşaması bir iş ve sıfır görevlerle önceden yapılandırılmıştır. Ardışık iş tonu menüsünden **Görevler'i** seçin ve ardından **geliştirme** aşamasını seçin.  Bu aşamada görevleri yapılandırmak için iş ve görev sayısını seçin.
 
-    ![Geliştirme görevlerini yapılandırma](./media/how-to-ci-cd/view-stage-tasks.png)
+    ![Dev görevlerini yapılandırma](./media/how-to-ci-cd/view-stage-tasks.png)
 
-8. **Geliştirme** aşamasında, varsayılan bir **Aracı işi**görmeniz gerekir. Aracı işiyle ilgili ayrıntıları yapılandırabilirsiniz, ancak dağıtım görevi platformun duyarsız olduğundan, **Aracı havuzunda** (veya kendi tarafından yönetilen diğer ARACıLARDAN **barındırılan VS2017** veya **barındırılan Ubuntu 1604** ) kullanabilirsiniz.
+8. **Dev** aşamasında, varsayılan bir **Aracı işi**görmeniz gerekir. Aracı işi yle ilgili ayrıntıları yapılandırabilirsiniz, ancak dağıtım görevi platform duyarsızolduğundan, **Etkinlis havuzunda** (veya sizin yönettiğiniz başka bir aracıyı) **Barındırılan VS2017** veya **Barındırılan Ubuntu 1604'ü** kullanabilirsiniz.
 
-9. İki görev eklemek için artı işaretini ( **+** ) seçin. **Azure IoT Edge** iki kez arayın ve ekleyin.
+9. İki görev eklemek**+** için artı işaretini ( ) seçin. **Azure IoT Edge'i** iki kez arayın ve ekleyin.
 
-    ![Geliştirme için görev ekleme](./media/how-to-ci-cd/add-task-qa.png)
+    ![Dev için görev ekleme](./media/how-to-ci-cd/add-task-qa.png)
 
 10. İlk **Azure IoT Edge** görevini seçin ve aşağıdaki değerlerle yapılandırın:
 
-    * **Görünen ad**: eylem alanı değiştiğinde görünen ad otomatik olarak güncelleştirilir.
-    * **Eylem**: **dağıtım bildirimini oluştur**' u seçmek için açılan listeyi kullanın. Eylem değerini değiştirmek için görev görünen adının eşleşmesi de güncelleştirilir.
-    * **. Template. JSON dosyası**: yolu `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`yerleştirin. Yol, derleme ardışık düzeninde yayımlanır.
-    * **Varsayılan platform**: modül görüntülerini oluştururken aynı değeri seçin.
-    * **Çıkış yolu**: yolu `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`koyun. Bu yol, son IoT Edge dağıtım bildirimi dosyasıdır.
+    * **Ekran adı**: Eylem alanı değiştiğinde görüntü adı otomatik olarak güncelleştirilir.
+    * **Eylem**: **Dağıtım bildirimi oluştur'u**seçmek için açılır listeyi kullanın. Eylem değerini değiştirmek, görev görüntüleme adını eşleşecek şekilde de güncelleştirir.
+    * **.template.json dosyası**: `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`Yolu koyun. Yol yapı ardışık hattından yayımlanır.
+    * **Varsayılan platform**: Modül görüntülerini yaparken aynı değeri seçin.
+    * **Çıkış yolu**: `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`Yolu koyun. Bu yol son IoT Edge dağıtım bildirimi dosyasıdır.
 
-    Bu yapılandırma `deployment.template.json` dosyasındaki modül görüntüsü URL 'Lerinin değiştirilmesini sağlar. **Dağıtım oluşturma bildirimi** ayrıca değişkenlerin `deployment.template.json` dosyasında tanımladığınız tam değerle değiştirilmesini de sağlar. VS/VS Code 'de, gerçek değeri bir `.env` dosyasında belirtirsiniz. Azure Pipelines, serbest bırakma işlem hattı değişkenleri sekmesinde değeri ayarlarsınız. değişkenler sekmesine geçin ve adı ve değeri aşağıdaki şekilde yapılandırın.
+    Bu yapılandırmalar, dosyadaki modül görüntü `deployment.template.json` URL'lerinin değiştirilmesine yardımcı olur. **Dağıtım Oluştur bildirimi,** değişkenlerin dosyada tanımladığınız tam `deployment.template.json` değerle değiştirilmesine de yardımcı olur. VS/VS Kodu'nda, bir `.env` dosyadaki gerçek değeri belirtirsiniz. Azure Ardışık Kodlar'da, Sürüm Ardışık Ardışık Birim Değişkenler sekmesinde değeri ayarlarsınız. Değişkenler sekmesine taşıyın ve Ad ve Değeri aşağıdaki şekilde yapılandırın.
 
-    * **ACR_ADDRESS**: Azure Container Registry adresiniz.
-    * **ACR_PASSWORD**: Azure Container Registry parolanız.
-    * **ACR_USER**: Azure Container Registry Kullanıcı adı.
+    * **ACR_ADDRESS**: Azure Konteyner Kayıt Defteri adresiniz.
+    * **ACR_PASSWORD**: Azure Konteyner Kayıt Defteri şifreniz.
+    * **ACR_USER**: Azure Konteyner Kayıt Defteri kullanıcı adınız.
 
-    Projenizde başka değişkenlere sahipseniz, bu sekmede adı ve değeri belirtebilirsiniz. **Oluşturma dağıtım bildirimi** yalnızca değişkenleri `${VARIABLE}` Flavor olarak algılayabilir, bunu `*.template.json` dosyalarınızda kullandığınızdan emin olun.
+    Projenizde başka değişkenler varsa, bu sekmede adı ve değeri belirtebilirsiniz. **Dağıtım Oluştur bildirimi** yalnızca değişkenlerin `${VARIABLE}` tadında olduğunu tanıyabilir ve bunu `*.template.json` dosyalarınızda kullandığınızdan emin olun.
 
-    ![Yayın işlem hattı için değişkenleri yapılandırma](./media/how-to-ci-cd/configure-variables.png)
+    ![Sürüm ardışık hattı için değişkenleri yapılandırma](./media/how-to-ci-cd/configure-variables.png)
 
-11. İkinci **Azure IoT Edge** görevi seçin ve aşağıdaki değerlerle yapılandırın:
+11. İkinci **Azure IoT Edge** görevini seçin ve aşağıdaki değerlerle yapılandırın:
 
-    * **Görünen ad**: eylem alanı değiştiğinde görünen ad otomatik olarak güncelleştirilir.
-    * **Eylem**: **IoT Edge cihazlara dağıt**' ı seçmek için açılan listeyi kullanın. Eylem değerini değiştirmek için görev görünen adının eşleşmesi de güncelleştirilir.
-    * **Azure aboneliği**: IoT Hub içeren aboneliği seçin.
-    * **IoT Hub adı**: IoT Hub 'ınızı seçin.
-    * **Tek/birden çok cihaz seçin**: yayın işlem hattının bir cihaza veya birden çok cihaza dağıtılmasını isteyip istemediğinizi seçin.
-      * Tek bir cihaza dağıtıyorsanız **IoT Edge CIHAZ kimliğini**girin.
-      * Birden çok cihaza dağıtıyorsanız, cihaz **hedefi koşulunu**belirtin. Hedef koşul, IoT Hub bir IoT Edge cihazları kümesiyle eşleşecek bir filtredir. Cihaz etiketleri koşul olarak kullanmak istiyorsanız, karşılık gelen etiketleri cihazlarınızı IOT Hub ile cihaz ikizi güncelleştirmeniz gerekiyor. Gelişmiş ayarlarda **IoT Edge DAĞıTıM kimliğini** ve **Dağıtım önceliğini IoT Edge** güncelleştirin. Birden çok cihaz için dağıtım oluşturma hakkında daha fazla bilgi için bkz. [IoT Edge otomatik dağıtımları anlama](module-deployment-monitoring.md).
-    * Gelişmiş ayarlar ' ı genişletin, **IoT Edge DAĞıTıM kimliği**' ni seçin, değişkeni `$(System.TeamProject)-$(Release.EnvironmentName)`koyun. Bu, proje ve sürüm adını IoT Edge dağıtım KIMLIĞINIZLE eşler.
+    * **Ekran adı**: Eylem alanı değiştiğinde görüntü adı otomatik olarak güncelleştirilir.
+    * **Eylem**: **IoT Edge aygıtlarına Dağıt'ı**seçmek için açılır listeyi kullanın. Eylem değerini değiştirmek, görev görüntüleme adını eşleşecek şekilde de güncelleştirir.
+    * **Azure aboneliği**: IoT Hub'ınızı içeren aboneliği seçin.
+    * **IoT Hub adı : IoT**hub'ınızı seçin.
+    * **Tek/çoklu aygıt seçin**: Sürüm ardışık hattının tek bir aygıta mı yoksa birden çok aygıta mı dağıtılmasını istediğinizi seçin.
+      * Tek bir aygıta dağıtıyorsanız, **IoT Edge aygıt kimliğini**girin.
+      * Birden çok aygıta dağıtım yapıyorsunuz, aygıt **hedef koşulunu**belirtin. Hedef koşul, IoT Hub'daki bir dizi IoT Edge aygıtıyla eşleşen bir filtredir. Durum olarak Aygıt Etiketleri'ni kullanmak istiyorsanız, ilgili aygıtlarınızı Güncelleştirmeniz Gerekir EtiketlerI IoT Hub aygıtı ikizi ile. Gelişmiş ayarlarda **IoT Edge dağıtım kimliğini** ve **IoT Edge dağıtım önceliğini** güncelleştirin. Birden çok aygıt için dağıtım oluşturma hakkında daha fazla bilgi için Bkz. [IoT Edge otomatik dağıtımları anlayın.](module-deployment-monitoring.md)
+    * Gelişmiş Ayarları genişletin, **IoT Edge**dağıtım `$(System.TeamProject)-$(Release.EnvironmentName)`kimliği seçin, değişkeni koyun. Bu, proje ve sürüm adını IoT Edge dağıtım kimliğinizle eşler.
 
-12. Yeni sürüm ardışık düzeninde yaptığınız değişiklikleri kaydetmek için **Kaydet** ' i seçin. Menüden işlem **hattı** ' nı seçerek işlem hattı görünümüne dönün.
+12. Değişikliklerinizi yeni sürüm ardışık hattına kaydetmek için **Kaydet'i** seçin. Menüden **Pipeline'ı** seçerek ardışık hatlar görünümüne dönün.
 
-## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IOT Edge CI/CD ile yapı doğrulayın ve yayın işlem hatları
+## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD'yi yapı ve sürüm boru hatlarıyla doğrulayın
 
-Bir derleme işi tetiklemek için kaynak kodu deposu için bir işleme için gönderim veya el ile tetiklersiniz. Bu bölümde, onun çalıştığını test etmek için CI/CD işlem hattını el ile tetiklersiniz. Sonra dağıtımın başarılı olduğunu doğrulayın.
+Bir yapı işini tetiklemek için, bir commit to kaynak kodu deposuna itebilir veya el ile tetikleyebilirsiniz. Bu bölümde, çalıştığını sınamak için CI/CD ardışık hattını el ile tetiklersiniz. Ardından, dağıtımın başarılı olduğunu doğrulayın.
 
-1. Bu makalenin başlangıcında oluşturduğunuz derleme ardışık düzenine gidin.
+1. Bu makalenin başında oluşturduğunuz yapı ardışık bölümüne gidin.
 
-2. Aşağıdaki ekran görüntüsünde olduğu gibi, **kuyruk** düğmesini seçerek yapı işlem hattınızda derleme işini tetikleyebilirsiniz.
+2. Aşağıdaki ekran görüntüsünde olduğu gibi **Sıra** düğmesini seçerek yapı ardışık ardışık sisteminizde bir yapı işini tetikleyebilirsiniz.
 
-    ![El ile tetikleme](./media/how-to-ci-cd/manual-trigger.png)
+    ![Manuel tetikleme](./media/how-to-ci-cd/manual-trigger.png)
 
-3. İlerleme durumunu izlemek için derleme işini seçin. Derleme işlem hattı başarıyla tamamlanırsa, **geliştirme** aşamasına bir yayın tetikler.
+3. İlerlemesini izlemek için yapı işini seçin. Yapı ardışık hattı başarıyla tamamlanırsa, **geliştirme** aşamasına bir sürümü tetikler.
 
-    ![Derleme günlükleri](./media/how-to-ci-cd/build-logs.png)
+    ![Günlükler oluşturma](./media/how-to-ci-cd/build-logs.png)
 
-4. Başarılı **geliştirme** sürümü, IoT Edge cihazlarını hedeflemek için IoT Edge dağıtımı oluşturur.
+4. Başarılı **dev** sürümü, IoT Edge aygıtlarını hedeflemek için IoT Edge dağıtımı oluşturur.
 
-    ![Geliştirme sürümü](./media/how-to-ci-cd/pending-approval.png)
+    ![Dev'e bırakın](./media/how-to-ci-cd/pending-approval.png)
 
-5. Yayın günlüklerini görmek için **geliştirme** aşaması ' na tıklayın.
+5. Sürüm günlüklerini görmek için **geliştirme** aşamasını tıklatın.
 
     ![Yayın günlükleri](./media/how-to-ci-cd/release-logs.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [IoT Edge Için Azure DevOps projesinde](how-to-devops-project.md) DevOps en iyi uygulamaları örneği IoT Edge
-* IOT Edge dağıtımı anlamak [IOT Edge dağıtımlarını anlama tek tek cihazlarda veya uygun ölçekte](module-deployment-monitoring.md)
-* Oluşturmak, güncelleştirmek veya bir dağıtımda silmek için adımlarında yol [dağıtma ve izleme uygun ölçekte IOT Edge modülleri](how-to-deploy-monitor.md).
+* IoT Edge Edge [için Azure DevOps Projesi'nde IoT](how-to-devops-project.md) Edge DevOps en iyi uygulamalar örneği
+* Tek cihazlar için veya [ölçekte IoT Edge dağıtımlarını anlamada IoT](module-deployment-monitoring.md) Edge dağıtımını anlama
+* Dağıtım'da bir dağıtım oluşturmak, güncelleştirmek veya silmek [ve IoT Edge modüllerini ölçekte izlemek](how-to-deploy-monitor.md)için adımları gözden geçirin.

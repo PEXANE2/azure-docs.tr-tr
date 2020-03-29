@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'i kullanarak popüler senaryolar
-description: Bu makale, kuruluşunuzda Hizmeti'ni kullanmaya başlamak için Azure DevTest Labs ve iki genel yolu kullanmak için birincil senaryolar sağlar.
+title: Azure DevTest Labs'ı kullanmak için popüler senaryolar
+description: Bu makalede, Azure DevTest Labs'ı kullanmak için birincil senaryolar ve kuruluşunuzdaki hizmeti kullanmaya başlamak için iki genel yol sağlanmaktadır.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,76 +14,76 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60773817"
 ---
-# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Azure DevTest Labs'i kullanarak popüler senaryolar
-DevTest Labs kuruluş gereksinimlerine bağlı olarak, farklı gereksinimlerini karşılayacak şekilde yapılandırılabilir.  Bu makalede, yaygın senaryolar açıklanmaktadır. Her senaryo, bu senaryoları uygulamak için kullanılacak DevTest Labs ve kaynakları kullanarak duruma avantajları kapsar.  
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Azure DevTest Labs'ı kullanmak için popüler senaryolar
+Bir işletmenin ihtiyaçlarına bağlı olarak, DevTest Labs farklı gereksinimleri karşılayacak şekilde yapılandırılabilir.  Bu makalede, popüler senaryolar anlatılmaktadır. Her senaryo, DevTest Labs'ı ve bu senaryoları uygulamak için kullanılacak kaynakları kullanarak getirilen avantajları kapsar.  
 
-- Geliştirici Masaüstleri
+- Geliştirici masaüstü bilgisayarlar
 - Test ortamları
-- Eğitim oturumları, uygulamalı laboratuvarlar ve sonları gerçekleştirilen HACK
-- Korumalı araştırmalar
+- Eğitim seansları, uygulamalı laboratuvarlar ve hackathons
+- Kumlu soruşturmalar
 - Sınıf laboratuvarları
 
-## <a name="developer-desktops"></a>Geliştirici Masaüstleri
-Geliştiriciler genellikle farklı projeler için geliştirme makineler için farklı gereksinimlere sahiptir. DevTest Labs ile geliştiriciler, en yaygın senaryolara uygun şekilde yapılandırılmış bir isteğe bağlı sanal makinelere erişebilir. DevTest Labs aşağıdaki avantajları sağlar:
+## <a name="developer-desktops"></a>Geliştirici masaüstü bilgisayarlar
+Geliştiriciler genellikle farklı projeler için geliştirme makineleri için farklı gereksinimleri vardır. DevTest Labs ile geliştiriciler, en yaygın senaryolarına uyacak şekilde yapılandırılan isteğe bağlı sanal makinelere erişebilirler. DevTest Labs aşağıdaki avantajları sağlar:
 
-- Kuruluşlar, takımlar arasında tutarlılık sağlamaya genel geliştirme makineler sağlayabilir.
-- Geliştiricilerin hızlı bir şekilde geliştirme makinelerinde isteğe bağlı sağlayın veya [var olan önceden yapılandırılmış bir makine talep](devtest-lab-add-claimable-vm.md).
-- Geliştiriciler, abonelik düzeyinde izinleri gerek kalmadan kaynakları Self Servis bir şekilde sağlayabilirsiniz.
-- BT veya yöneticileri [ağ topolojisi önceden tanımlı](devtest-lab-configure-vnet.md) ve geliştiricilerin doğrudan kullanabilir, basit ve sezgisel bir şekilde özel erişime gerek kalmadan.
-- Geliştiriciler için kolayca [özelleştirme](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) geliştirme makineleri gerektiğinde.
-- Yöneticiler, sağlayarak maliyetleri denetleyebilirsiniz:
-    - Geliştiriciler [daha fazla VM alınamıyor](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user) geliştirme için ihtiyaç duydukları daha
-    - [Vm'leri kapatmak](devtest-lab-set-lab-policy.md#set-auto-shutdown) kullanılmadığı zaman
-    - Yalnızca [sanal makine örneği boyutlarını kümesini sağlayan](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) belirli Laboratuvarları için
-    - [Maliyet hedefleri ve bildirimleri yönetme](devtest-lab-configure-cost-management.md) her Laboratuvar için.
+- Kuruluşlar, ekipler arasında tutarlılık sağlayan ortak geliştirme makineleri sağlayabilir.
+- Geliştiriciler, geliştirme makinelerini talep üzerine hızlı bir şekilde sağlayabilir veya [önceden yapılandırılmış mevcut bir makineyi talep](devtest-lab-add-claimable-vm.md)edebilir.
+- Geliştiriciler, abonelik düzeyinde izinlere gerek kalmadan kaynakları self servis bir şekilde sağlayabilir.
+- BT veya yöneticiler [ağ topolojisini önceden tanımlayabilir](devtest-lab-configure-vnet.md) ve geliştiriciler herhangi bir özel erişim gerektirmeden doğrudan basit ve sezgisel bir şekilde kullanabilirler.
+- Geliştiriciler gerektiğinde geliştirme makinelerini kolayca [özelleştirebilirler.](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm)
+- Yöneticiler maliyetleri şu şekilde kontrol edebilirler:
+    - Geliştiriciler geliştirme için ihtiyaç duyduklarından [daha fazla VM alamaz](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user)
+    - [VM'ler](devtest-lab-set-lab-policy.md#set-auto-shutdown) kullanılmadığında kapatılır
+    - Yalnızca belirli laboratuvarlar için [VM örnek boyutlarının bir alt kümesine izin](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes)
+    - Her laboratuvar için [maliyet hedeflerini ve bildirimlerini yönetme.](devtest-lab-configure-cost-management.md)
 
-Daha fazla bilgi için bkz: [kullanımı Azure DevTest Labs geliştiriciler için](devtest-lab-developer-lab.md). 
+Daha fazla okuma için geliştiriciler [için Azure DevTest Laboratuvarlarını Kullanın'a](devtest-lab-developer-lab.md)bakın. 
 
 ## <a name="test-environments"></a>Test ortamları
-Oluşturma ve test ortamları yönetme kuruluş çapında önemli miktarda çaba gerektirebilir. DevTest Labs ile test ortamlarını kolayca oluşturulan, güncelleştirilmiş, yinelenen veya. Bu, ekiplerin gerektiğinde tam olarak yapılandırılmış bir ortam erişim sağlar. Bu senaryoda, DevTest Labs, aşağıdaki avantajları sağlar:
+Bir kuruluş genelinde test ortamları oluşturmak ve yönetmek önemli bir çaba gerektirebilir. DevTest Labs ile test ortamları kolayca oluşturulabilir, güncellenebilir veya çoğaltılabilir. Ekiplerin ihtiyaç duyulduğunda tam olarak yapılandırılmış bir ortama erişmesine olanak tanır. Bu senaryoda, DevTest Labs aşağıdaki avantajları sağlar:
 
-- Kuruluşlar, takımlar arasında tutarlılık sağlamaya genel test ortamları sağlayabilirsiniz.
-- Test ediciler, hızlı bir şekilde yeniden kullanılabilir şablonları kullanarak Windows ve Linux ortamları sağlayarak kendi uygulama en son sürümünü test edebilirsiniz.
-- Yöneticiler, DevOps senaryolarını etkinleştirmek için Azure DevOps lab bağlanabilir
-- Laboratuvar sahibi, sağlayarak maliyetleri denetleyebilirsiniz:
-    - [Ortamlarda Vm'leri kapatmak](devtest-lab-set-lab-policy.md#set-auto-shutdown) kullanılmadığı zaman
-    - Yalnızca [bir alt kümesi için sanal makine örneği boyutlarını izin vererek](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes) belirli Laboratuvarları
-    - [Maliyet hedefleri ve bildirimleri yönetme](devtest-lab-configure-cost-management.md) her Laboratuvar için.
+- Kuruluşlar, ekipler arasında tutarlılık sağlayan ortak test ortamları sağlayabilir.
+- Test edenler, yeniden kullanılabilir şablonlar kullanarak Windows ve Linux ortamlarını hızla sağlayarak uygulamalarının en son sürümünü sınayabilirler.
+- Yöneticiler, DevOps senaryolarını etkinleştirmek için laboratuarı Azure DevOps'lere bağlayabilir
+- Laboratuvar Sahipleri, şunları sağlayarak maliyetleri kontrol edebilir:
+    - [Ortamlardaki VM'ler](devtest-lab-set-lab-policy.md#set-auto-shutdown) kullanılmadığında kapatılır
+    - Yalnızca belirli [laboratuvarlar için VM örnek boyutlarının bir alt kümesine izin](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes)
+    - Her laboratuvar için [maliyet hedeflerini ve bildirimlerini yönetme.](devtest-lab-configure-cost-management.md)
 
-Daha fazla bilgi için [kullanımı Azure DevTest Labs sanal makine ve PaaS için test ortamlarını](devtest-lab-test-env.md).
+Daha fazla bilgi için [vm ve PaaS test ortamları için Azure DevTest Laboratuvarlarını Kullanın'a](devtest-lab-test-env.md)bakın.
 
-## <a name="sandboxed-investigations"></a>Korumalı araştırmalar
-Geliştiriciler genellikle farklı teknolojiler veya altyapı tasarımı araştırın. DevTest Labs ile oluşturulan tüm ortamları, varsayılan olarak, kendi kaynak grubunda oluşturulur. DevTest Labs kullanıcısı bu kaynaklara yalnızca okuma erişimi alır. Ancak, daha fazla denetime ihtiyaç duyan geliştiriciler için laboratuvar genelinde bir ayar vermek için güncelleştirilebilir [katkıda bulunan haklarına](https://azure.microsoft.com/updates/azure-devtest-labs-view-and-set-access-rights-to-an-environment-rg/) oluşturdukları her ortam için kaynak DevTest Labs kullanıcı.  DevTest Labs ile geliştiriciler, otomatik olarak oluşturdukları laboratuvar ortamları katkıda bulunan izni verilebilir.  Bu senaryo, geliştiricilerin ekleyin ve/veya kendi geliştirme ve test ortamları için ihtiyaç duydukları gibi Azure kaynaklarını değiştirme olanak tanır. [Kaynağı ile maliyet](devtest-lab-configure-cost-management.md#view-cost-by-resource) sayfası maliyet verileri araştırmak için kullanılan her bir ortamın izlemek Laboratuvar sahibini sağlar.
+## <a name="sandboxed-investigations"></a>Kumlu soruşturmalar
+Geliştiriciler genellikle farklı teknolojileri veya altyapı tasarımını araştırır. Varsayılan olarak, DevTest Labs ile oluşturulan tüm ortamlar kendi kaynak grubunda oluşturulur. DevTest Labs kullanıcısı yalnızca bu kaynaklara okuma erişimi sağlar. Ancak, daha fazla denetime ihtiyaç duyan geliştiriciler için, oluşturdukları her ortam için kaynak olan DevTest Labs kullanıcısına [katkıda bulunan lara haklar](https://azure.microsoft.com/updates/azure-devtest-labs-view-and-set-access-rights-to-an-environment-rg/) vermek için laboratuvar çapında bir ayar güncellenebilir.  DevTest Labs ile geliştiricilere laboratuvarda oluşturdukları ortamlara otomatik olarak katkıda bulunma izni verilebilir.  Bu senaryo, geliştiricilerin geliştirme veya test ortamları için ihtiyaç duydukları azure kaynaklarını eklemelerine ve/veya değiştirmelerine olanak tanır. Kaynak sayfasına [göre maliyet,](devtest-lab-configure-cost-management.md#view-cost-by-resource) Laboratuvar Sahiplerinin soruşturmalar için kullanılan her ortamın maliyetini izlemesine olanak tanır.
 
-Daha fazla bilgi için [ortam bir kaynak grubuna erişim hakları ayarlama](https://aka.ms/dtl-sandbox).
+Daha fazla bilgi için [bkz.](https://aka.ms/dtl-sandbox)
 
-## <a name="trainings-hands-on-labs-and-hackathons"></a>Eğitimleri, uygulamalı laboratuvarlar ve sonları gerçekleştirilen HACK 
-Azure DevTest labs'deki bir laboratuvara atölyeler, eğitimleri, uygulamalı laboratuvarlar, ya da sonları gerçekleştirilen HACK geçici etkinlikler için harika bir kapsayıcı görevi görür.  Hizmet, burada her Yardımcısı Eğitim özdeş ve yalıtılmış ortamlar oluşturmak için kullanabileceğiniz özel şablonları sağlayabilir Laboratuvar oluşturmanıza olanak sağlar. Bu senaryoda, DevTest Labs, aşağıdaki avantajları sağlar:
+## <a name="trainings-hands-on-labs-and-hackathons"></a>Eğitimler, uygulamalı laboratuvarlar ve hackathons 
+Azure DevTest Labs'daki bir laboratuvar, atölye çalışmaları, uygulamalı laboratuvarlar, eğitimler veya hackathon'lar gibi geçici etkinlikler için harika bir kapsayıcı görevi görür.  Hizmet, her kursiyerin eğitim için aynı ve yalıtılmış ortamlar oluşturmak için kullanabileceği özel şablonlar sağlayabileceğiniz bir laboratuvar oluşturmanıza olanak tanır. Bu senaryoda, DevTest Labs aşağıdaki avantajları sağlar:
 
-- [İlkeleri](devtest-lab-set-lab-policy.md) yardımıyla, yalnızca ihtiyaç duydukları sanal makineler gibi kaynakların sayısını get emin olun.
-- Önceden yapılandırılmış ve oluşturulan makinelerdir [talep](devtest-lab-add-claimable-vm.md) tek eylem Yardımcısı ile.
-- Labs erişerek yardımıyla ile paylaşılır [Laboratuvar için URL](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab).
-- [Sona erme tarihleri](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs) artık gerekmeyen sonra makineleri silinir sanal makinelerde emin olun.
-- Kolay [Laboratuvar Sil](devtest-lab-delete-lab-vm.md#delete-a-lab) ve tüm [ilgili kaynakları](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) eğitim olduğunda üzerinden.
+- [İlkeler,](devtest-lab-set-lab-policy.md) kursiyerlerin yalnızca sanal makineler gibi ihtiyaç duydukları kaynak sayısını elde edilmesini sağlar.
+- Önceden yapılandırılmış ve oluşturulan makineler, kursiyerden tek bir eylemle [talep](devtest-lab-add-claimable-vm.md) edilir.
+- [Laboratuvarlar, laboratuvar URL'sine](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab)erişerek kursiyerler ile paylaşılır.
+- Sanal makinelerdeki [son kullanma tarihleri,](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs) artık ihtiyaç duyulmadıktan sonra makinelerin silinmesini sağlar.
+- Eğitim bittiğinde bir laboratuarı ve [ilgili](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) tüm kaynakları [silmek](devtest-lab-delete-lab-vm.md#delete-a-lab) kolaydır.
 
-Daha fazla bilgi için [kullanımı Azure DevTest Labs eğitim](devtest-lab-training-lab.md).  
+Daha fazla bilgi için eğitim [için Azure DevTest Laboratuvarlarını Kullanın'a](devtest-lab-training-lab.md)bakın.  
 
-## <a name="proof-of-concept-vs-scaled-deployment"></a>Kavram kanıtı ölçeklendirilmiş dağıtım karşılaştırması
-DevTest Labs'i keşfedin almaya karar verdiğinizde, İleri iki genel yolu vardır: Kavram kanıtı kavramı vs ölçeklendirilmiş dağıtım.  
+## <a name="proof-of-concept-vs-scaled-deployment"></a>Kavram ve ölçekli dağıtım kanıtı
+DevTest Labs'ı keşfetmeye karar verdikten sonra, ileriye dönük iki genel yol vardır: Kavram ve Ölçeklenmiş Dağıtım Kanıtı.  
 
-A **dağıtım ölçeği** gözden geçirme ve yüzlerce veya binlerce geliştiricinin sahip tüm kuruluş için DevTest Labs dağıtma amacına sahip planlama hafta/ay oluşur.
+**Ölçeklenmiş bir dağıtım,** DevTest Labs'ı yüzlerce veya binlerce geliştiricisi olan tüm kuruluşa dağıtmak amacıyla haftalarca/aylarca gözden geçirme ve planlamadan oluşur.
 
-A **kavram kanıtı** dağıtım kuruluş değeri oluşturmak için bir ucuna çaba yerine tek bir takımın odaklanır. Ölçeklendirilmiş dağıtımını düşünme daha cazip olabilir, ancak bir yaklaşım seçeneği kavram kanıtı çok sık başarısız eğilimindedir. Bu nedenle, küçük başlayın, ilk ekibinden öğrenin, iki ila üç ek takımlar aynı yaklaşımı yineleyin ve elde edilen bilgilere dayanan bir ölçeklendirilmiş dağıtım planlama, öneririz. Başarılı bir kavram kanıtı için bir veya iki takımlar seçin ve (geliştirme ortamı vs test ortamları) kendi senaryoları tanımlama, kendi geçerli kullanım örnekleri belge ve DevTest Labs dağıtmak, öneririz.
+**Kavram dağıtımının kanıtı,** tek bir ekibin kuruluş değeri oluşturmak için yoğunbir çabasına odaklanır. Ölçeklenmiş bir dağıtım düşünmek cazip olsa da, yaklaşım kavram seçeneğinin kanıtından daha sık başarısız olma eğilimindedir. Bu nedenle, küçük başlatmanızı, ilk takımdan öğrenmenizi, aynı yaklaşımı iki veya üç ek ekiple yinelemenizi ve sonra kazanılan bilgilere dayalı ölçekli bir dağıtım planlamanızı öneririz. Başarılı bir kavram kanıtı için, bir veya iki takım seçmenizi ve senaryolarını (geliştirme ortamı vs test ortamları) belirlemenizi, geçerli kullanım durumlarını belgelemenizi ve DevTest Laboratuvarlarını dağıtmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makaleleri okuyun:
+Aşağıdaki makaleleri okuyun:
 
 - [DevTest Labs kavramları](devtest-lab-concepts.md)
-- [DevTest Labs SSS](devtest-lab-faq.md)
+- [Devtest Labs SSS](devtest-lab-faq.md)
 

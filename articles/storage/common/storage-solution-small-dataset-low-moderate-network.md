@@ -1,6 +1,6 @@
 ---
-title: Orta ağ bant genişliği için Azure veri aktarımı düşük ile küçük veri kümeleri için Seçenekler | Microsoft Docs
-description: Ortamınızda Orta ağ bant genişliği düşük olması ve küçük veri kümeleri aktarmayı planlıyorsanız, veri aktarımı için bir Azure çözümü belirleyin öğrenin.
+title: Düşük ve orta ağ bant genişliğine sahip küçük veri kümeleri için Azure veri aktarım seçenekleri| Microsoft Dokümanlar
+description: Ortamınızda düşük ve orta ağ bant genişliğine sahipseniz ve küçük veri kümeleri aktarmayı planlıyorsanız, veri aktarımı için bir Azure çözümünüzü nasıl seçeceğinizi öğrenin.
 services: storage
 author: alkohli
 ms.service: storage
@@ -9,60 +9,60 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60397286"
 ---
-# <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Orta ağ bant genişliği düşük ile küçük veri kümeleri için veri aktarımı
+# <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Bant genişliği düşük veya orta olduğunda küçük veri kümeleri için veri aktarımı
  
-Bu makalede, ortamınızda Orta ağ bant genişliği düşük olduğunda ve küçük veri kümeleri aktarmak planlama çözümleri veri aktarımı için genel bir bakış sağlar. Makalede de önerilen veri aktarımı seçenekleri ve bu senaryo için ilgili önemli özellik matrisi açıklanır.
+Bu makalede, ortamınızda düşük ve orta ağ bant genişliği varsa ve küçük veri kümeleri aktarmayı planlıyorsanız veri aktarım çözümlerine genel bir bakış sağlar. Makalede ayrıca önerilen veri aktarım seçenekleri ve bu senaryo için ilgili anahtar yetenek matrisi açıklanmaktadır.
 
-Kullanılabilir veri aktarımı seçeneklerini tümü bir genel bakış anlamak için Git [bir Azure veri aktarım çözümü seçme](storage-choose-data-transfer-solution.md).
+Kullanılabilir tüm veri aktarım seçeneklerine genel bir bakış anlamak için [Azure veri aktarım çözümünün seçin'e](storage-choose-data-transfer-solution.md)gidin.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Küçük veri kümeleri için birkaç TB'a GB sırasına göre veri boyutları bakın. Orta ağ bant genişliği düşük 45 MB/sn (veri merkezinde T3 bağlantı) ile 1 GB/sn anlamına gelir.
+Küçük veri kümeleri, gb sırasına göre veri boyutlarını birkaç TB'ye yönlendirir. Düşük ve orta ağ bant genişliği, 45 Mbps (veri merkezinde T3 bağlantısı) ile 1 Gbps anlamına gelir.
 
-- Yalnızca birkaç dosyalarının aktardığınız ve veri aktarımı otomatik hale getirmek gerekmez, grafik arabirimi araçları göz önünde bulundurun.
-- Sistem Yönetimi ile rahatça kullanabiliyorsanız, komut satırı veya program/komut dosyası oluşturma araçları göz önünde bulundurun.
+- Yalnızca bir avuç dosya aktarıyorsanız ve veri aktarımını otomatikleştirmeniz gerekmiyorsa, grafik arabirimine sahip araçları göz önünde bulundurun.
+- Sistem yönetimi konusunda rahatsanız, komut satırı veya programlı/komut dosyası araçlarını düşünün.
 
-## <a name="recommended-options"></a>Önerilen seçenekleri
+## <a name="recommended-options"></a>Önerilen seçenekler
 
-Bu senaryoda, önerilen seçenek vardır:
+Bu senaryoda önerilen seçenekler şunlardır:
 
-- **Grafik arabirimi Araçları** Azure Depolama Gezgini ve Azure portalında Azure depolama gibi. Bunlar, verilerinizi görüntüleyin ve hızlı bir şekilde birkaç dosya aktarmak için kolay bir yol sağlar.
+- Azure portalında Azure Depolama Gezgini ve Azure Depolama gibi **grafik arabirim araçları.** Bunlar, verilerinizi görüntülemek ve birkaç dosyayı hızlı bir şekilde aktarmak için kolay bir yol sağlar.
 
-    - **Azure Depolama Gezgini** -bu platformlar arası aracı, Azure depolama hesaplarınızın içeriğini yönetmenize olanak tanır. Yükleme, indirme ve bloblar, dosyalar, kuyruklar, tablolar ve Azure Cosmos DB varlıklarını yönetmenize olanak tanır. Blob Depolama ile blobları ve klasörleri yönetmek yanı sıra karşıya yüklemek ve blobları depolama hesapları arasında veya yerel dosya sistemi ve Blob Depolama arasında indirmek için kullanın.
-    - **Azure portalında** - Azure portalında Azure depolama dosyaları keşfetmek için web tabanlı bir arabirim sağlar ve karşıya yeni dosya teker teker. Komut dosyalarınızı hızla Keşfetmenin veya yenilerini birkaç yüklenecek ya da herhangi bir aracı yüklemek istemiyorsanız bu iyi bir seçenektir.
+    - **Azure Depolama Gezgini** - Bu çapraz platform aracı, Azure depolama hesaplarınızın içeriğini yönetmenize olanak tanır. Blob'ları, dosyaları, kuyrukları, tabloları ve Azure Cosmos DB varlıklarını yüklemenize, indirmenize ve yönetmenize olanak tanır. Blob'ları ve klasörleri yönetmek için Blob depolama ile kullanın, ayrıca yerel dosya sisteminiz ile Blob depolama nız arasında veya depolama hesapları arasında blob'ları yükleyin ve indirin.
+    - **Azure portalı** - Azure portalındaki Azure Depolama, dosyaları keşfetmek ve yeni dosyaları teker teker yüklemek için web tabanlı bir arayüz sağlar. Dosyalarınızı hızlı bir şekilde keşfetmek veya yalnızca bir avuç yeniaraç yüklemek için herhangi bir araç veya sorun komutları yüklemek istemiyorsanız, bu iyi bir seçenektir.
 
-- **Betik/programlı Araçları** AzCopy/PowerShell/Azure CLI ve Azure depolama REST API'leri gibi.
+- AzCopy/PowerShell/Azure CLI ve Azure Depolama REST API'leri gibi **komut dosyası oluşturma/programlı araçlar.**
 
-    - **AzCopy** - kolayca ve dosyaları, Azure bloblarından veri kopyalamak için bu komut satırı aracını kullanın ve tablo depolama ile en iyi performans. AzCopy, eşzamanlılık ve paralellik ve kopyalama işlemleri kesintiye olduğunda sürdürebilme destekler.
-    - **Azure PowerShell** - sistem yönetimi ile deneyimli kullanıcılar için Azure Storage modülünde Azure PowerShell'de veri aktarımı.
-    - **Azure CLI** -Azure hizmetlerini yönetmek ve Azure Depolama'ya veri yüklemek için bu platformlar arası aracı kullanın.
-    - **Azure depolama REST API'ler/SDK'lar** – bir uygulama oluştururken, Azure depolama REST API'ler/SDK'lar karşı uygulama geliştirmek ve birden çok dilde sunulan Azure istemci kitaplıkları kullanın.
+    - **AzCopy** - Azure Blobs, Files ve Table depolama alanına en iyi performansla verileri kolayca kopyalamak için bu komut satırı aracını kullanın. AzCopy eşzamanlılık ve paralellik ve kesildiğinde kopyalama işlemlerine devam etme yeteneğini destekler.
+    - **Azure PowerShell** - Sistem yönetiminden memnun olan kullanıcılar için veri aktarmak için Azure PowerShell'deki Azure Depolama modüllerini kullanın.
+    - **Azure CLI** - Azure hizmetlerini yönetmek ve Verileri Azure Depolama'ya yüklemek için bu çapraz platform aracını kullanın.
+    - **Azure Depolama REST API'leri/SDK'ları** – Bir uygulama geliştirirken, uygulamayı Azure Depolama REST API'lerine/SDK'larına karşı geliştirebilir ve birden çok dilde sunulan Azure istemci kitaplıklarını kullanabilirsiniz.
 
 
-## <a name="comparison-of-key-capabilities"></a>Önemli özellikleri karşılaştırma
+## <a name="comparison-of-key-capabilities"></a>Anahtar özelliklerin karşılaştırılması
 
-Aşağıdaki tabloda temel işlevleri farklılıkları özetlemektedir.
+Aşağıdaki tabloda anahtar yetenekleri farklılıkları özetlenebilir.
 
-| Özellik | Azure Depolama Gezgini | Azure portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure depolama REST API veya SDK'ları |
+| Özellik | Azure Storage Gezgini | Azure portalında | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Depolama REST API'leri veya SDK'ları |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
-| Kullanılabilirlik | İndirme ve yükleme <br>Tek başına aracı | Azure portalında Web tabanlı araştırma araçları | Komut satırı aracı |.NET, Java, Python, JavaScript, C++, Go, Ruby ve PHP'ye programlanabilir arabirimleri |
+| Kullanılabilirlik | İndirme ve yükleme <br>Bağımsız araç | Azure portalında Web tabanlı arama araçları | Komut satırı aracı |.NET, Java, Python, JavaScript, C++, Go, Ruby ve PHP'de programlanabilir arayüzler |
 | Grafik arabirimi | Evet | Evet | Hayır | Hayır |
 | Desteklenen platformlar | Windows, Mac, Linux | Web tabanlı |Windows, Mac, Linux |Tüm platformlar |
-| BLOB Depolama işlemlerine izin<br>BLOB'ları ve klasörleri | Karşıya Yükle<br>İndirme<br>Yönetme | Karşıya Yükle<br>İndirme<br>Yönetme |Karşıya Yükle<br>İndirme<br>Yönetme | Evet, özelleştirilebilir |
-| İzin verilen Data Lake Gen1 depolama<br>dosyalar ve klasörler için işlemler | Karşıya Yükle<br>İndirme<br>Yönetme | Hayır |Karşıya Yükle<br>İndirme<br>Yönetme                   | Hayır |
-| Dosya depolama işlemlerine izin<br>dosyalar ve dizinler için | Karşıya Yükle<br>İndirme<br>Yönetme | Karşıya Yükle<br>İndirme<br>Yönetme   |Karşıya Yükle<br>İndirme<br>Yönetme | Evet, özelleştirilebilir |
-| Tablo depolama işlemlerine izin<br>tablolar için |Yönetme | Hayır |AzCopy v7 tablo desteği |Evet, özelleştirilebilir|
-| İzin verilen kuyruk depolama | Yönetme | Hayır  |Hayır | Evet, özelleştirilebilir.|
+| İzin verilen Blob depolama işlemleri<br>blobs ve klasörler için | Karşıya Yükle<br>İndirme<br>Yönetme | Karşıya Yükle<br>İndirme<br>Yönetme |Karşıya Yükle<br>İndirme<br>Yönetme | Evet, özelleştirilebilir |
+| İzin Verilen Veri Gölü Gen1 depolama<br>dosya ve klasörler için işlemler | Karşıya Yükle<br>İndirme<br>Yönetme | Hayır |Karşıya Yükle<br>İndirme<br>Yönetme                   | Hayır |
+| İzin verilen Dosya depolama işlemleri<br>dosyalar ve dizinler için | Karşıya Yükle<br>İndirme<br>Yönetme | Karşıya Yükle<br>İndirme<br>Yönetme   |Karşıya Yükle<br>İndirme<br>Yönetme | Evet, özelleştirilebilir |
+| İzin verilen Tablo depolama işlemleri<br>tablolar için |Yönetme | Hayır |AzCopy v7'de tablo desteği |Evet, özelleştirilebilir|
+| İzin verilen Sıra depolama | Yönetme | Hayır  |Hayır | Evet, özelleştirilebilir|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bilgi edinmek için nasıl [Azure Depolama Gezgini ile veri aktarma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
+- [Azure Depolama Gezgini ile nasıl veri](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)aktarılamayı öğrenin.
 - [AzCopy ile verileri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 

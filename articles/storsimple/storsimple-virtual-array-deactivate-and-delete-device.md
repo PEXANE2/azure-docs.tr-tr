@@ -1,6 +1,6 @@
 ---
-title: Devre dışı bırakın ve bir Microsoft Azure StorSimple Virtual Array delete | Microsoft Docs
-description: StorSimple cihaz hizmetinden önce devre dışı bırakma ve silme kaldırmayı açıklar.
+title: Microsoft Azure StorBasit Sanal Diziyi devre dışı bırakma ve silme | Microsoft Dokümanlar
+description: StorSimple aygıtının önce devre dışı bırakılarak ve sonra silerek hizmetten nasıl kaldırılış yapılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,80 +15,80 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60580637"
 ---
-# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Devre dışı bırakma ve StorSimple sanal dizisi Sil
+# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Sanal Dizisini devre dışı bırakma ve silme
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple sanal dizisi devre dışı bıraktığınızda, karşılık gelen StorSimple cihaz Yöneticisi hizmeti ile cihaz arasındaki bağlantıyı kes. Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
+Bir StorSimple Virtual Array'i devre dışı bıraktığınızda, aygıt la ilgili StorSimple Device Manager hizmeti arasındaki bağlantıyı koparAbilirsiniz. Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
-* Bir cihazı devre dışı 
-* Devre dışı bırakılmış bir cihaz silme
+* Aygıtı devre dışı bırakma 
+* Devre dışı bırakılmış bir aygıtı silme
 
-Bu makaledeki bilgiler, yalnızca StorSimple sanal diziler için geçerlidir. Nasıl yapılır 8000 serisi hakkında daha fazla bilgi için Git [bir cihazı silmek veya devre dışı bırakma](storsimple-deactivate-and-delete-device.md).
+Bu makaledeki bilgiler yalnızca StorSimple Virtual Arrays için geçerlidir. 8000 serisi hakkında bilgi için, bir aygıtı nasıl [devre dışı bırakıp silerken](storsimple-deactivate-and-delete-device.md)eve gidin.
 
-## <a name="when-to-deactivate"></a>Devre dışı bırakmak ne zaman?
+## <a name="when-to-deactivate"></a>Ne zaman devre dışı bırakılalı?
 
-Devre dışı bırakma işlemi, kalıcı bir işlemdir ve geri alınamaz. StorSimple cihaz Yöneticisi hizmetine yeniden devre dışı bırakılmış bir cihaz kaydedilemiyor. Devre dışı bırakma ve silme StorSimple sanal dizisi aşağıdaki senaryolarda gerekebilir:
+Devre dışı bırakma kalıcı bir işlemdir ve geri alınamaz. Devre dışı bırakılmış bir aygıtı Tekrar StorSimple Device Manager hizmetine kaydedemezsiniz. Aşağıdaki senaryolarda bir StorSimple Sanal Dizisini devre dışı bırakmanız ve silmeniz gerekebilir:
 
-* **Planlı yük devretme** : Cihazınız çevrimiçi olduktan ve Cihazınızda yük devretme gerçekleştirme planlayın. Daha büyük bir cihazın yükseltileceği planlıyorsanız, Cihazınızda yük devretme gerçekleştirme gerekebilir. Veri sahipliği aktarılır ve yük devretme işlemi tamamlandıktan sonra kaynak cihaz otomatik olarak silinir.
-* **Planlanmamış yük devretme** : Cihazınız çevrimdışıysa ve cihazın yükü başarısız gerekmez. Bu senaryo, aşağı birincil Cihazınızı veri merkezinde bir kesinti olduğunda ve bir olağanüstü durum sırasında ortaya çıkabilir. İkincil bir cihaz için cihaz yük devretme planlayın. Veri sahipliği aktarılır ve yük devretme işlemi tamamlandıktan sonra kaynak cihaz otomatik olarak silinir.
-* **Yetkisini** : Cihaz kullanımdan istiyorsunuz. Bu, ilk cihaz devre dışı bırakın ve ardından silin gerektirir. Bir cihazı devre dışı bıraktığınızda, yerel olarak depolanan tüm veriler artık erişemez. Yalnızca erişmek ve bulutta depolanan verileri kurtarın. Cihaz verilerini devre dışı bırakıldıktan sonra devam etmeyi planlıyorsanız, bir cihazın devre dışı bırakmadan önce tüm verilerinizi bir bulut anlık görüntüsünü almanız gerekir. Bu bulut anlık görüntüsü, daha sonraki bir aşamada tüm verileri kurtarmanıza olanak tanır.
+* **Planlı arıza :** Cihazınız çevrimiçi ve cihazınız üzerinde başarısız olmayı planlıyorsunuz. Daha büyük bir cihaza yükseltme yapmayı planlıyorsanız, cihazınız üzerinde başarısız olmanız gerekebilir. Veri sahipliği aktarıldıktan ve hata tamamlandıktan sonra kaynak aygıt otomatik olarak silinir.
+* **Planlanmamış arıza :** Cihazınız çevrimdışıve aygıt üzerinde başarısız olmanız gerekir. Bu senaryo, veri merkezinde bir kesinti olduğunda ve birincil aygıtınız çöktüğinde bir felaket sırasında oluşabilir. İkincil bir aygıta aygıtın üzerinde başarısız olmayı planlıyorsunuz. Veri sahipliği aktarıldıktan ve hata tamamlandıktan sonra kaynak aygıt otomatik olarak silinir.
+* **Kullanımdan Kaldırma** : Aygıtı devre dışı bırakmak istiyorsunuz. Bu, önce aygıtı devre dışı bırakmanızı ve sonra silmenizi gerektirir. Bir aygıtı devre dışı bıraktığınızda, artık yerel olarak depolanan verilere erişemezsiniz. Yalnızca bulutta depolanan verilere erişebilir ve kurtarabilirsiniz. Devre dışı bırakma dan sonra aygıt verilerini tutmayı planlıyorsanız, aygıtı devre dışı bırakmadan önce tüm verilerinizin bulut anlık görüntüsünü almanız gerekir. Bu bulut anlık görüntüsü, tüm verileri daha sonraki bir aşamada kurtarmanızı sağlar.
 
-## <a name="deactivate-a-device"></a>Bir cihazı devre dışı
+## <a name="deactivate-a-device"></a>Aygıtı devre dışı bırakma
 
 Cihazınızı devre dışı bırakmak için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-deactivate-the-device"></a>Cihaz devre dışı bırakmak için
+#### <a name="to-deactivate-the-device"></a>Aygıtı devre dışı bırakmak için
 
-1. Hizmetiniz, Git **Yönetim > cihazlar**. İçinde **cihazları** dikey penceresinde tıklayın ve devre dışı bırakmak istediğiniz cihazı seçin.
+1. Hizmetinizde, Yönetim **> Cihazları'na**gidin. **Cihazlar** bıçağında, devre dışı bırakmak istediğiniz cihazı tıklatın ve seçin.
    
-    ![Cihazı devre dışı bırakmak için seçin](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. İçinde **cihaz Panosu** dikey penceresinde tıklayın **... Daha fazla** ve listesinden **devre dışı bırak**.
+    ![Devre dışı bırakmak için cihazı seçin](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
+2. **Cihazınızın pano** bıçağında... ** Daha fazla** ve listeden **Devre dışı bırak'ı**seçin.
    
-    ![Click devre dışı bırak](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
-3. İçinde **devre dışı bırak** dikey penceresinde, cihaz adını yazın ve ardından **devre dışı bırak**. 
+    ![Devre dışı bırak'ı tıklatın](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
+3. Devre **Dışı Bırak** çubuğunda, aygıt adını yazın ve sonra **Devre dışı bırak'ı**tıklatın. 
    
-    ![Onayla devre dışı bırak](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
+    ![Devre dışı bırak'ı onaylayın](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
     Devre dışı bırakma işlemi başlar ve tamamlanması birkaç dakika sürer.
    
-    ![Devam eden devre dışı bırak](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
-4. Devre dışı bırakıldıktan sonra cihazların listesini yeniler.
+    ![Devam ediyor devre dışı bırakma](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
+4. Devre dışı bırakmadan sonra aygıtların listesi yenilenir.
    
-    ![Tam devre dışı bırak](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
+    ![Tamamlandı](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
    
-    Artık bu cihazı silebilirsiniz.
+    Artık bu aygıtı silebilirsiniz.
 
 ## <a name="delete-the-device"></a>Cihazı silme
 
-Bir cihazı silmek için önce etkinliği var. Bir cihazı silme hizmete bağlı cihazlar listesinden kaldırır. Hizmeti, cihazın silindiğini artık yönetebilirsiniz. Cihazla ilişkili verileri, ancak bulutta kalır. Bu veriler daha sonra ücretleri tabidir.
+Aygıtısilmek için önce bir aygıtın devre dışı bırakılması gerekir. Aygıtı silerse, aygıtı hizmete bağlı aygıtlar listesinden kaldırır. Hizmet daha sonra silinen aygıtı artık yönetemez. Ancak aygıtla ilişkili veriler bulutta kalır. Bu veriler daha sonra ücret tahakkuk eder.
 
-Cihazı silmek için aşağıdaki adımları gerçekleştirin.
+Aygıtı silmek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-delete-the-device"></a>Cihazı silmek için
 
-1. Git, StorSimple cihaz Yöneticisi'nde **Yönetim > cihazlar**. İçinde **cihazları** dikey penceresinde silmek istediğiniz devre dışı bırakılmış bir cihaz seçin.
-2. İçinde **cihaz Panosu** dikey penceresinde tıklayın **... Daha fazla** ve ardından **Sil**.
+1. StorSimple Aygıt Yöneticinizde, **Yönetim > Cihazları'na**gidin. **Cihazlar** bıçağında, silmek istediğiniz devre dışı bırakılmış bir aygıt seçin.
+2. Cihaz **pano** bıçağında, **... Daha fazla** ve sonra **Sil'i**tıklatın.
    
    ![Silmek için cihazı seçin](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. İçinde **Sil** dikey penceresinde, adını, Cihazınızı silme işlemini onaylayın ve ardından **Sil**. Cihaz silme cihazla ilgili bulut verilerinin silinmesine neden olmaz. 
+3. **Sil** bıçağına, silme işlemini onaylamak için cihazınızın adını yazın ve sonra **Sil'i**tıklatın. Aygıtın silinmesi, aygıtla ilişkili bulut verilerini silmez. 
    
    ![Silmeyi onayla](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
 4. Silme işlemi başlar ve tamamlanması birkaç dakika sürer.
    
-   ![Silme sürüyor](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete6.png)
+   ![Silme devam ediyor](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete6.png)
    
-    Cihaz silindikten sonra güncelleştirilen cihaz listesini görüntüleyebilirsiniz.
+    Aygıt silindikten sonra güncelleştirilmiş aygıt listesini görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Yük devretme hakkında daha fazla bilgi için Git [StorSimple Virtual Array'iniz yük devretme ve olağanüstü durum kurtarma](storsimple-virtual-array-failover-dr.md).
+* Nasıl başarısız olduğu hakkında bilgi için, [Failover ve StorSimple Sanal Dizi olağanüstü kurtarma](storsimple-virtual-array-failover-dr.md)gidin.
 
-* StorSimple cihaz Yöneticisi hizmetini kullanma hakkında daha fazla bilgi için şuraya gidin [StorSimple Virtual Array'iniz yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-virtual-array-manager-service-administration.md). 
+* StorSimple Device Manager hizmetini nasıl kullanacağınız hakkında daha fazla bilgi edinmek için [StorSimple Virtual Array'inizi yönetmek için StorSimple Device Manager hizmetini kullanın.](storsimple-virtual-array-manager-service-administration.md) 
 

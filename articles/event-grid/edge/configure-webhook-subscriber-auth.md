@@ -1,5 +1,5 @@
 ---
-title: Web kancası abonesi kimlik doğrulamasını Yapılandırma-Azure Event Grid IoT Edge | Microsoft Docs
+title: Webhook abone kimlik doğrulamasını yapılandırma - Azure Event Grid IoT Edge | Microsoft Dokümanlar
 description: Web kancası abone kimlik doğrulamasını yapılandırma
 author: VidyaKukke
 manager: rajarv
@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841739"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>Web kancası abone kimlik doğrulamasını yapılandırma
 
-Bu kılavuzda, bir Event Grid modülü için olası Web kancası abone yapılandırmalarının örnekleri verilmiştir. Varsayılan olarak, Web kancası aboneleri için yalnızca HTTPS uç noktaları kabul edilir. Abone, kendinden imzalı bir sertifika sunduğunda Event Grid modülü reddeder.
+Bu kılavuz, bir Olay Izgara modülü için olası webhook abone yapılandırmaları örnekleri verir. Varsayılan olarak, webhook aboneleri için yalnızca HTTPS uç noktaları kabul edilir. Abone kendi imzalı bir sertifika sunarsa Olay Izgara modülü reddeder.
 
-## <a name="allow-only-https-subscriber"></a>Yalnızca HTTPS abonesi izin ver
+## <a name="allow-only-https-subscriber"></a>Yalnızca HTTPS abonesi ne kadar izin ver
 
 ```json
  {
@@ -32,7 +32,7 @@ Bu kılavuzda, bir Event Grid modülü için olası Web kancası abone yapıland
 }
  ```
 
-## <a name="allow-https-subscriber-with-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika ile HTTPS abonesi izin ver
+## <a name="allow-https-subscriber-with-self-signed-certificate"></a>Https aboneye kendi imzalı sertifikasına izin verme
 
 ```json
  {
@@ -45,9 +45,9 @@ Bu kılavuzda, bir Event Grid modülü için olası Web kancası abone yapıland
  ```
 
 >[!NOTE]
->Genellikle otomatik olarak imzalanan sertifikaları kullanırken, özelliği `outbound__webhook__allowUnknownCA` yalnızca test ortamlarında `true` olarak ayarlayın. Üretim iş yükleri için, bunların **false**olarak ayarlanması önerilir.
+>Genellikle kendi `outbound__webhook__allowUnknownCA` `true` imzalı sertifikalar kullanabileceğiniz şekilde özelliği yalnızca test ortamlarında ayarla. Üretim iş yükleri için bunların **yanlış**olarak ayarlanmasını öneririz.
 
-## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>HTTPS abonesi izin ver ancak sertifika doğrulamayı atla
+## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>HTTPS abonesi izin ver ama sertifika doğrulama atlamak
 
 ```json
  {
@@ -60,9 +60,9 @@ Bu kılavuzda, bir Event Grid modülü için olası Web kancası abone yapıland
  ```
 
 >[!NOTE]
->Kimliği doğrulanabilmesi gereken bir sertifika sunmadığından, özellik `outbound__webhook__skipServerCertValidation` yalnızca test ortamlarında `true` olarak ayarlayın. Üretim iş yükleri için, bunların **false** olarak ayarlanması önerilir
+>Kimliği doğrulaması gereken bir sertifika sunmuyor olsanız da özelliği `outbound__webhook__skipServerCertValidation` `true` yalnızca test ortamlarına ayarlayın. Üretim iş yükleri için, bunların **yanlış** olarak ayarlanmasını öneririz
 
-## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>Otomatik olarak imzalanan sertifikalarla hem HTTP hem de HTTPS 'ye izin ver
+## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>Kendi imzalı sertifikalarla hem HTTP hem de HTTPS'ye izin verin
 
 ```json
  {
@@ -75,4 +75,4 @@ Bu kılavuzda, bir Event Grid modülü için olası Web kancası abone yapıland
  ```
 
 >[!NOTE]
->Önce bir HTTP abonesi getirmek isteyebileceğiniz gibi, özelliği `outbound__webhook__httpsOnly` yalnızca test ortamlarında `false` olarak ayarlayın. Üretim iş yükleri için, bunların **true** olarak ayarlanması önerilir
+>Önce bir `outbound__webhook__httpsOnly` `false` HTTP abonesi getirmek isteyebileceğin şekilde özelliği yalnızca test ortamlarına ayarlayın. Üretim iş yükleri için bunların **doğru** şekilde ayarlanmalarını öneririz

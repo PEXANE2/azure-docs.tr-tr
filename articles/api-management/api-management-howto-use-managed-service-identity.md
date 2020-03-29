@@ -1,6 +1,6 @@
 ---
-title: Azure API Management Yönetilen kimlikler kullanma | Microsoft Docs
-description: API Management ' de yönetilen kimlikler kullanmayı öğrenin
+title: Azure API Yönetimi'nde yönetilen kimlikleri kullanma | Microsoft Dokümanlar
+description: API Yönetimi'nde yönetilen kimlikleri nasıl kullanacağınızı öğrenin
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,31 +12,31 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
 ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249639"
 ---
-# <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management Yönetilen kimlikler kullanma
+# <a name="use-managed-identities-in-azure-api-management"></a>Azure API Yönetimi'nde yönetilen kimlikleri kullanma
 
-Bu makalede, bir API Management hizmet örneği için yönetilen kimlik oluşturma ve diğer kaynaklara erişme hakkında yönergeler verilmektedir. Azure Active Directory tarafından oluşturulan yönetilen bir kimlik (Azure AD), API Management örneğinizin Azure Key Vault gibi diğer Azure AD korumalı kaynaklarına kolayca ve güvenli bir şekilde erişmesini sağlar. Bu kimlik Azure tarafından yönetilir ve tüm gizli dizileri sağlamanıza veya döndürmenize gerek yoktur. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
+Bu makalede, bir API Yönetimi hizmet örneği için yönetilen bir kimlik oluşturma ve diğer kaynaklara nasıl erişileceği gösterilmektedir. Azure Etkin Dizini (Azure AD) tarafından oluşturulan yönetilen bir kimlik, API Yönetimi örneğinizin Azure Anahtar Kasası gibi Azure AD korumalı diğer kaynaklara kolayca ve güvenli bir şekilde erişmesine olanak tanır. Bu kimlik Azure tarafından yönetilir ve herhangi bir sırrı sağlamanızı veya döndürmenizi gerektirmez. Yönetilen kimlikler hakkında daha fazla bilgi için Azure [kaynakları için yönetilen kimliklerin ne olduğunu](../active-directory/managed-identities-azure-resources/overview.md)görün.
 
-## <a name="create-a-managed-identity-for-an-api-management-instance"></a>API Management örneği için yönetilen kimlik oluşturma
+## <a name="create-a-managed-identity-for-an-api-management-instance"></a>API Yönetimi örneği için yönetilen bir kimlik oluşturma
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir API Management örneği oluşturup sonra özelliği etkinleştirmeniz gerekir.
+Portalda yönetilen bir kimlik ayarlamak için, önce normal olarak bir API Yönetimi örneği oluşturur ve ardından özelliği etkinleştirin.
 
-1. Portalda genellikle yaptığınız gibi bir API Management örneği oluşturun. Portalda bu sayfaya gidin.
+1. Normalde yaptığınız gibi portalda bir API Yönetimi örneği oluşturun. Portalda ona gidin.
 2. **Yönetilen hizmet kimliklerini**seçin.
-3. Azure Active Directory için kayıt anahtarına kaydolun. Kaydet’e tıklayın.
+3. Azure Active Directory ile Kayıt'ı Açık'a çevirin. Kaydet’e tıklayın.
 
-![MSI 'yi etkinleştirme](./media/api-management-msi/enable-msi.png)
+![MSI’yi etkinleştirme](./media/api-management-msi/enable-msi.png)
 
-### <a name="using-the-azure-resource-manager-template"></a>Azure Resource Manager şablonunu kullanma
+### <a name="using-the-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanma
 
-Kaynak tanımına aşağıdaki özelliği ekleyerek bir kimlik ile API Management örneği oluşturabilirsiniz:
+Kaynak tanımına aşağıdaki özelliği ekleyerek kimliği olan bir API Yönetimi örneği oluşturabilirsiniz:
 
 ```json
 "identity" : {
@@ -44,9 +44,9 @@ Kaynak tanımına aşağıdaki özelliği ekleyerek bir kimlik ile API Managemen
 }
 ```
 
-Bu, Azure 'ın API Management örneğiniz için kimlik oluşturmasını ve yönetmesini söyler.
+Bu, Azure'a API Yönetimi örneğinizin kimliğini oluşturmasını ve yönetmesini söyler.
 
-Örneğin, Azure Resource Manager bir şablon aşağıdaki gibi görünebilir:
+Örneğin, tam bir Azure Kaynak Yöneticisi şablonu aşağıdaki gibi görünebilir:
 
 ```json
 {
@@ -75,16 +75,16 @@ Bu, Azure 'ın API Management örneğiniz için kimlik oluşturmasını ve yöne
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>Diğer kaynaklara erişmek için yönetilen hizmet kimliğini kullanma
 
 > [!NOTE]
-> Şu anda yönetilen kimlikler, API Management özel etki alanı adları için Azure Key Vault sertifika almak için kullanılabilir. Yakında daha fazla senaryo desteklenecek.
+> Şu anda, yönetilen kimlikler API Yönetimi özel etki alanı adları için Azure Key Vault'tan sertifika almak için kullanılabilir. Yakında daha fazla senaryo desteklenecek.
 >
 >
 
 
-### <a name="obtain-a-certificate-from-azure-key-vault"></a>Azure Key Vault bir sertifika alın
+### <a name="obtain-a-certificate-from-azure-key-vault"></a>Azure Key Vault'tan sertifika alma
 
-#### <a name="prerequisites"></a>Önkoşullar
-1. Pfx sertifikasını içeren Key Vault aynı Azure aboneliğinde ve API Management hizmetiyle aynı kaynak grubunda olmalıdır. Bu, Azure Resource Manager şablonunun bir gereksinimidir.
-2. Gizli dizi Içerik türü *Application/x-PKCS12*olmalıdır. Sertifikayı karşıya yüklemek için aşağıdaki betiği kullanabilirsiniz:
+#### <a name="prerequisites"></a>Ön koşullar
+1. pfx sertifikasını içeren Anahtar Kasa, aynı Azure aboneliğinde ve API Yönetimi hizmetiyle aynı Kaynak Grubunda olmalıdır. Bu, Azure Kaynak Yöneticisi şablonunun bir gereksinimidir.
+2. Sırrın İçerik Türü *uygulama/x-pkcs12*olmalıdır. Sertifikayı yüklemek için aşağıdaki komut dosyasını kullanabilirsiniz:
 
 ```powershell
 $pfxFilePath = "PFX_CERTIFICATE_FILE_PATH" # Change this path 
@@ -101,13 +101,13 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 ```
 
 > [!Important]
-> Sertifikanın nesne sürümü sağlanmazsa, API Management Key Vault karşıya yüklendikten sonra sertifikanın otomatik olarak yeni sürümünü elde eder.
+> Sertifikanın nesne sürümü sağlanmazsa, API Yönetimi, Anahtar Kasası'na yüklendikten sonra sertifikanın yeni sürümünü otomatik olarak alır.
 
-Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager şablonu gösterilmektedir:
+Aşağıdaki örnekte, aşağıdaki adımları içeren bir Azure Kaynak Yöneticisi şablonu gösterilmektedir:
 
-1. Yönetilen kimliğe sahip bir API Management örneği oluşturun.
-2. Bir Azure Key Vault örneğinin erişim ilkelerini güncelleştirin ve API Management örneğinin bundan gizli dizileri almasına izin verin.
-3. Key Vault örneğinden bir sertifika aracılığıyla özel bir etki alanı adı ayarlayarak API Management örneğini güncelleştirin.
+1. Yönetilen bir kimliğe sahip bir API Yönetimi örneği oluşturun.
+2. Azure Anahtar Kasası örneğinin erişim ilkelerini güncelleştirin ve API Yönetimi örneğinin bu örnekten sır elde etmesine izin verin.
+3. Anahtar Kasa örneğinden bir sertifika aracılığıyla özel bir etki alanı adı ayarlayarak API Yönetimi örneğini güncelleştirin.
 
 ```json
 {
@@ -233,8 +233,8 @@ Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi edinin:
+Azure kaynakları için yönetilen kimlikler hakkında daha fazla bilgi edinin:
 
-* [Azure kaynakları için Yönetilen kimlikler nelerdir?](../active-directory/managed-identities-azure-resources/overview.md)
-* [Azure Resource Manager şablonları](https://github.com/Azure/azure-quickstart-templates)
-* [İlkede yönetilen kimlikle kimlik doğrulama](./api-management-authentication-policies.md#ManagedIdentity)
+* [Azure kaynakları için yönetilen kimlikler nedir](../active-directory/managed-identities-azure-resources/overview.md)
+* [Azure Kaynak Yöneticisi şablonları](https://github.com/Azure/azure-quickstart-templates)
+* [İlkede yönetilen bir kimlikle kimlik doğrulama](./api-management-authentication-policies.md#ManagedIdentity)

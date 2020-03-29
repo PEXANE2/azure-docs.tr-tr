@@ -1,6 +1,6 @@
 ---
-title: İleti teslimini izleme Azure Event Grid
-description: Bu makalede, Azure Event Grid iletilerinin teslim durumunu görmek için Azure portal nasıl kullanılacağı açıklanır.
+title: Azure Olay Ağı ileti teslimini izleyin
+description: Bu makalede, Azure Olay Izgara iletilerinin teslim durumunu görmek için Azure portalının nasıl kullanılacağı açıklanmaktadır.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,81 +9,81 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722144"
 ---
-# <a name="monitor-event-grid-message-delivery"></a>İleti teslimini izleme Event Grid 
+# <a name="monitor-event-grid-message-delivery"></a>Olay Izgara ileti teslimini izleyin 
 
-Bu makalede, olay teslimlerin durumunu görmek için Portal 'ın nasıl kullanılacağı açıklanır.
+Bu makalede, olay teslimatlarının durumunu görmek için portalın nasıl kullanılacağı açıklanmaktadır.
 
-Event Grid dayanıklı teslim sağlar. Her bir abonelik için her iletiyi en az bir kez sunar. Olaylar, her aboneliğin kayıtlı Web kancasına hemen gönderilir. Web kancası ilk teslim girişiminin 60 saniye içinde bir olayın alındığını kabul etmezse, olayın yeniden denenmesini Event Grid.
+Olay Izgara dayanıklı teslimat sağlar. Her abonelik için her iletiyi en az bir kez iletin. Olaylar hemen her aboneliğin kayıtlı webhook gönderilir. Bir webhook ilk teslimat denemesinden sonraki 60 saniye içinde bir olayın alındığını kabul etmezse, Olay Izgarası etkinliğin teslimini yeniden dener.
 
-Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
+Olay teslimi ve yeniden denemeleri hakkında bilgi için, [Olay Grid ileti teslimi ve yeniden deneme.](delivery-and-retry.md)
 
-## <a name="delivery-metrics"></a>Teslim ölçümleri
+## <a name="delivery-metrics"></a>Teslimat ölçümleri
 
-Portal, olay iletilerinin teslim durumunun ölçümlerini görüntüler.
+Portal, olay iletileri sunma durumuna yönelik ölçümleri görüntüler.
 
 Konular için ölçümler şunlardır:
 
-* **Yayımlama başarılı**: olay konuya başarıyla gönderildi ve 2xx yanıtıyla işlendi.
-* **Yayımlama başarısız oldu**: konuya gönderilen olay, ancak bir hata koduyla reddedildi.
-* **Eşleşmeyen**: olay, konuya başarıyla yayımlandı, ancak olay aboneliğiyle eşleşmedi. Olay bırakıldı.
+* **Yayımla Başarılı**: Olay başarıyla konuya gönderildi ve 2xx yanıtı ile işlenir.
+* **Yayımlama Başarısız**: Konuya gönderilen ancak bir hata koduyla reddedilen olay.
+* **Eşleşmeyen**: Konuya başarıyla yayınlanan ancak bir etkinlik aboneliğiyle eşleşmeyen olay. Olay iptal edildi.
 
 Abonelikler için ölçümler şunlardır:
 
-* **Teslim başarılı**: etkinlik, aboneliğin uç noktasına başarıyla teslim edildi ve 2xx yanıtı aldı.
-* **Teslim başarısız oldu**: aboneliğin uç noktasına gönderilen olay, ancak 4xx veya 5xx yanıtı aldı.
-* **Vadesi geçen olaylar**: olay teslim edilmemiş ve tüm yeniden deneme girişimleri gönderildi. Olay bırakıldı.
-* **Eşleşen olaylar**: konudaki olay, olay aboneliği tarafından eşleşti.
+* **Teslim Başarılı**: Etkinlik başarıyla aboneliğin bitiş noktasına teslim edildi ve 2xx yanıt aldı.
+* **Teslim Başarısız :** Olay aboneliğin bitiş noktasına gönderildi, ancak 4xx veya 5xx yanıtı aldı.
+* **Süresi Dolan Olaylar**: Olay teslim edilmedi ve tüm yeniden deneme girişimleri gönderildi. Olay iptal edildi.
+* **Eşleşen Olaylar**: Konuyla ilgili olay, etkinlik aboneliği ile eşleşti.
 
-## <a name="event-subscription-status"></a>Olay aboneliği durumu
+## <a name="event-subscription-status"></a>Olay abonelik durumu
 
-Bir olay aboneliğine yönelik ölçümleri görmek için, abonelik türüne göre veya belirli bir kaynak için abonelikler ile arama yapabilirsiniz.
+Bir etkinlik aboneliğinin ölçümlerini görmek için abonelik türüne veya belirli bir kaynağın aboneliklerine göre arama yapabilirsiniz.
 
-Olay aboneliği türüne göre arama yapmak için **tüm hizmetler**' i seçin.
+Olay abonelik türüne göre arama yapmak için **Tüm hizmetler'i**seçin.
 
 ![Tüm hizmetleri seçin](./media/monitor-event-delivery/all-services.png)
 
-**Olay Kılavuzu** araması yapın ve kullanılabilir seçeneklerden **abonelikler Event Grid** seçin.
+Etkinlik **ızgarasını** arayın ve kullanılabilir seçeneklerden **Olay Izgara Abonelikleri'ni** seçin.
 
-![Olay abonelikleri ara](./media/monitor-event-delivery/search-and-select.png)
+![Etkinlik aboneliklerini ara](./media/monitor-event-delivery/search-and-select.png)
 
-Olay türüne, aboneliğe ve konuma göre filtreleyin. Görüntülenecek abonelik için **ölçümleri** seçin.
+Olay türüne, aboneye ve konuma göre filtre uygulayın. Görüntülemek için abonelik için **Ölçümler'i** seçin.
 
-![Olay aboneliklerini filtrele](./media/monitor-event-delivery/filter-events.png)
+![Etkinlik aboneliklerini filtreleme](./media/monitor-event-delivery/filter-events.png)
 
-Olay konusu ve abonelik için ölçümleri görüntüleyin.
+Etkinlik konusu ve abonelik ölçümlerini görüntüleyin.
 
-![Olay ölçümlerini görüntüle](./media/monitor-event-delivery/subscription-metrics.png)
+![Olay ölçümlerini görüntüleme](./media/monitor-event-delivery/subscription-metrics.png)
 
-Belirli bir kaynakla ilgili ölçümleri bulmak için bu kaynağı seçin. Ardından, **Olaylar**' ı seçin.
+Belirli bir kaynağın ölçümlerini bulmak için bu kaynağı seçin. Ardından, **Etkinlikler'i**seçin.
 
-![Bir kaynak için olayları seçin](./media/monitor-event-delivery/select-events.png)
+![Kaynak için olayları seçme](./media/monitor-event-delivery/select-events.png)
 
-Bu kaynakla ilgili abonelikler için ölçümleri görürsünüz.
+Bu kaynağın aboneliklerinin ölçümlerini görürsünüz.
 
 ## <a name="custom-event-status"></a>Özel olay durumu
 
-Özel bir konu yayımladıysanız, onun ölçümlerini görüntüleyebilirsiniz. Konunun kaynak grubunu seçin ve konuyu seçin.
+Özel bir konu yayımladıysanız, bunun ölçümlerini görüntüleyebilirsiniz. Konu için kaynak grubunu seçin ve konuyu seçin.
 
 ![Özel konu seçme](./media/monitor-event-delivery/select-custom-topic.png)
 
-Özel olay konusu için ölçümleri görüntüleyin.
+Özel etkinlik konusuiçin ölçümleri görüntüleyin.
 
-![Olay ölçümlerini görüntüle](./media/monitor-event-delivery/custom-topic-metrics.png)
+![Olay ölçümlerini görüntüleme](./media/monitor-event-delivery/custom-topic-metrics.png)
 
 ## <a name="set-alerts"></a>Uyarı ayarlama
 
-Özel konular ve olay etki alanları için konu başlığı ve etki alanı düzeyi ölçümlerinde uyarılar ayarlayabilirsiniz. İçin genel bakış dikey penceresinde, uyarı kurallarını görüntülemek, yönetmek ve oluşturmak için sol taraftaki kaynak menüsünde **Uyarılar** ' ı seçin. [Azure Izleyici uyarıları hakkında daha fazla bilgi edinin](../azure-monitor/platform/alerts-overview.md)
+Özel Konular ve Olay Etki Alanları için konu ve etki alanı düzeyi ölçümleri hakkında uyarılar ayarlayabilirsiniz. Genel bakış bıçağında, uyarı kurallarını görüntülemek, yönetmek ve oluşturmak için soldaki **Uyarılar'ı** seçin kaynak menüsüvardı. [Azure Monitör Uyarıları hakkında daha fazla bilgi edinin](../azure-monitor/platform/alerts-overview.md)
 
-![Olay ölçümlerini görüntüle](./media/monitor-event-delivery/select-alerts.png)
+![Olay ölçümlerini görüntüleme](./media/monitor-event-delivery/select-alerts.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
+* Olay teslimi ve yeniden denemeleri hakkında bilgi için, [Olay Grid ileti teslimi ve yeniden deneme.](delivery-and-retry.md)
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).
+* Olay Ağıt'ı kullanmaya hızla başlamak için [Azure Olay Ağıtı ile özel etkinlikler oluştur ve yönlendir'e](custom-event-quickstart.md)bakın.

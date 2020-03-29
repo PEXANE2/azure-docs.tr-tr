@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Yükleme türünü seçin. | Microsoft Docs'
-description: Bu konuda, Azure AD Connect için kullanılacak yükleme türünü seç konusunda yol göstermektedir
+title: 'Azure AD Connect: Yükleme türünü seçin | Microsoft Dokümanlar'
+description: Bu konu, Azure AD Connect için kullanılacak yükleme türünü seçme konusunda size yol
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,62 +17,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60348289"
 ---
-# <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect için kullanılacak yükleme türünü seçin
-Azure AD Connect yeni yükleme için iki yükleme türü vardır: Hızlı ve özelleştirilmiş. Bu konu, yükleme sırasında kullanmak için hangi seçeneği karar vermenize yardımcı olur.
+# <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect için hangi yükleme türünün kullanılacağını seçme
+Azure AD Connect'in yeni yükleme için iki yükleme türü vardır: Express ve özelleştirilmiş. Bu konu, yükleme sırasında hangi seçeneği kullanacağınıza karar vermenize yardımcı olur.
 
 ## <a name="express"></a>Express
-Hızlı, en yaygın kullanılan bir seçenektir ve yaklaşık % 90'ını tarafından tüm yeni yüklemeleri kullanılır. En yaygın müşteri senaryoları için uygun bir yapılandırma sağlamak için tasarlanmıştır.
+Express en yaygın seçenektir ve tüm yeni kurulumların yaklaşık %90'ı tarafından kullanılır. En yaygın müşteri senaryoları için çalışan bir yapılandırma sağlamak üzere tasarlanmıştır.
 
-Bunu varsayılır:
+Bu varsayar:
 
-- Şirket içi ormanı tek bir Active Directory var.
-- Yükleme için kullanabileceğiniz bir Kurumsal Yönetici hesabınızın olması.
-- Şirket içi Active Directory'nizde 100. 000'den az nesneler var.
+- Şirket içinde tek bir Active Directory ormanın var.
+- Yükleme için kullanabileceğiniz bir kurumsal yönetici hesabınız var.
+- Şirket içi Active Directory'nizde 100.000'den az nesne var.
 
-Şunlara sahip olursunuz:
+Şunları elde elabilirsiniz:
 
-- [Parola Karması eşitleme](how-to-connect-password-hash-synchronization.md) şirket içinden Azure ad çoklu oturum açma için.
-- Eşitleyen bir yapılandırma [kullanıcılar, gruplar, kişiler ve Windows 10 bilgisayarlar](concept-azure-ad-connect-sync-default-configuration.md).
-- Tüm etki alanları ve tüm OU'larda uygun tüm nesnelerin eşitleme.
-- [Otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) kullanılabilir en son sürüme her zaman kullandığınızdan emin olmak için etkinleştirilir.
+- Tek oturum açma için şirket içi azure AD'ye parola [karma eşitleme.](how-to-connect-password-hash-synchronization.md)
+- [Kullanıcıları, grupları, kişileri ve Windows 10 bilgisayarlarını](concept-azure-ad-connect-sync-default-configuration.md)eşitleyen bir yapılandırma.
+- Tüm etki alanlarında ve tüm OUs'larda tüm uygun nesnelerin senkronizasyonu.
+- [Kullanılabilir](how-to-connect-install-automatic-upgrade.md) en son sürümü her zaman kullandığınızdan emin olmak için otomatik yükseltme etkinleştirilir.
 
-Seçenekler burada Express kullanmaya devam edebilirsiniz:
+Express'i kullanmaya devam edebileceğiniz seçenekler:
 
-- Tüm OU'larda eşitlenecek istemiyorsanız hala Express ve kullanabilirsiniz son sayfasında seçimini kaldır **...eşitleme işlemini** *. Yükleme Sihirbazı'nı yeniden çalıştırın ve alanındaki OU'ları değiştirmek [yapılandırma seçenekleri](how-to-connect-installation-wizard.md#customize-synchronization-options) ve zamanlanmış eşitlemeyi etkinleştirin.
-- Bir Azure AD Premium, parola geri yazma gibi özellikleri etkinleştirmek istiyorsunuz. Önce ilk yükleme almak için express gidin. Yükleme Sihirbazı'nı yeniden çalıştırın ve değiştirme [yapılandırma seçenekleri](how-to-connect-installation-wizard.md#customize-synchronization-options).
+- Tüm OS'leri eşitlemek istemiyorsanız, Express'i kullanmaya devam edebilirsiniz ve son sayfada seç **Eşitleme işlemini başlat...***. Ardından yükleme sihirbazını yeniden çalıştırın ve [yapılandırma seçeneklerindeki](how-to-connect-installation-wizard.md#customize-synchronization-options) OS'leri değiştirin ve zamanlanmış eşitlemeyi etkinleştirin.
+- Azure AD Premium'daki Parola yazma gibi özelliklerden birini etkinleştirmek istiyorsunuz. İlk yüklemenin tamamlanması için express'ten geçin. Ardından yükleme sihirbazını yeniden çalıştırın ve [yapılandırma seçeneklerini](how-to-connect-installation-wizard.md#customize-synchronization-options)değiştirin.
 
 ## <a name="custom"></a>Özel
-Özelleştirilmiş yolu express daha çok daha fazla seçenek verir. Burada express için önceki bölümde açıklanan yapılandırma, kuruluşunuz için temsili olmadığı tüm durumlarda kullanılmalıdır.
+Özelleştirilmiş yol, ekspresten çok daha fazla seçenek sunar. Express için önceki bölümde açıklanan yapılandırmanın kuruluşunuz için temsil olmadığı tüm durumlarda kullanılmalıdır.
 
 Şu durumlarda kullanın:
 
-- Active Directory içinde bir kuruluş yöneticisi hesabı için erişiminiz yok.
-- Birden fazla ormanınız veya birden fazla orman gelecekte eşitlemek planlama.
-- Connect sunucusundan ulaşılabilir değil, ormanınızdaki etki alanınız.
-- Kullanıcı oturum açma için Federasyon veya geçişli kimlik doğrulaması kullanmayı planlayın.
-- 100. 000'den fazla nesneniz ve tam SQL Server'ı kullanmanız gerekir.
-- Grup tabanlı filtreleme ve yalnızca etki alanı veya OU tabanlı filtreleme kullanmayı planlayın.
+- Active Directory'deki bir kurumsal yönetici hesabına erişiminiz yok.
+- Birden fazla ormanın var veya gelecekte birden fazla ormanı senkronize etmeyi planlıyorsun.
+- Ormanınızda Connect sunucusundan erişilemeyecek etki alanları vardır.
+- Kullanıcı oturum açma için federasyon veya geçiş kimlik doğrulaması kullanmayı planlıyorsunuz.
+- 100.000'den fazla nesneniz var ve tam bir SQL Server kullanmanız gerekir.
+- Grup tabanlı filtreleme kullanmayı planlıyorsunuz ve yalnızca etki alanı veya OU tabanlı filtreleme kullanmayı planlıyorsunuz.
 
 ## <a name="upgrade-from-dirsync"></a>DirSync'ten yükseltme
-Şu anda DirSync kullanıyorsanız, adımları takip edin [Dirsync'ten yükseltme](how-to-dirsync-upgrade-get-started.md) yapılandırmanızda yükseltmek için. İki farklı yükseltme seçenekleri şunlardır:
+Şu anda DirSync kullanıyorsanız, varolan yapılandırmanızı yükseltmek için [DirSync'den Yükseltme](how-to-dirsync-upgrade-get-started.md) adımlarını izleyin. İki farklı yükseltme seçeneği vardır:
 
-- Sunucuya Bağlan'ı yüklemek için yerinde yükseltme.
-- Mevcut bir DirSync sunucunuz hala çalışır durumdayken Connect'i yeni bir sunucuya yüklemek için paralel dağıtım.
+- Connect'i aynı sunucuya yüklemek için yerinde yükseltme.
+- Varolan DirSync sunucusu hala çalışır durumdayken Connect'i yeni bir sunucuya yüklemek için paralel dağıtım.
 
-## <a name="upgrade-from-azure-ad-sync"></a>Azure AD eşitleme'den yükseltme
-Azure AD eşitleme şu anda kullanmakta olduğunuz sonra izleyebilirsiniz [aynı adımları](how-to-upgrade-previous-version.md) Connect sürümünden yeni bir yükseltme yaptığınızda olarak. İki farklı yükseltme seçenekleri şunlardır:
+## <a name="upgrade-from-azure-ad-sync"></a>Azure AD Eşitleme'den yükseltme
+Şu anda Azure AD Eşitlemesi kullanıyorsanız, bir Connect sürümünden daha yenisine yükselttiğiniz adımlarla [aynı adımları](how-to-upgrade-previous-version.md) izleyebilirsiniz. İki farklı yükseltme seçeneği vardır:
 
-- Sunucuya Bağlan'ı yüklemek için yerinde yükseltme.
-- Swing geçişi sırasında mevcut Connect'i yeni bir sunucuya yüklemek için Azure AD eşitleme sunucusu hala çalışıyor.
+- Connect'i aynı sunucuya yüklemek için yerinde yükseltme.
+- Varolan Azure AD Sync sunucusu hala çalışır durumdayken Connect'i yeni bir sunucuya yüklemek için geçiş geçiş.
 
-## <a name="migrate-from-fim2010-or-mim2016"></a>Fım2010 veya mım2016 geçirme
-Şu anda Forefront Identity Manager 2010 veya Microsoft Identity Manager 2016 ile Azure AD bağlayıcısını kullanıyorsanız, tek seçeneğiniz bir geçiş olduğunu. İçinde açıklanan adımları izleyin [swing geçişi](how-to-upgrade-previous-version.md#swing-migration). Aşağıdaki adımlarda, Azure AD eşitleme'nin herhangi bir Bahsetme fım2010/mım2016 ile değiştirin.
+## <a name="migrate-from-fim2010-or-mim2016"></a>FIM2010 veya MIM2016'dan geçiş
+Şu anda Azure AD Bağlayıcısı ile Forefront Identity Manager 2010 veya Microsoft Identity Manager 2016 kullanıyorsanız, tek seçeneğiniz geçiştir. [Salıncak geçişinde](how-to-upgrade-previous-version.md#swing-migration)açıklanan adımları izleyin. Adımlarda, Azure AD Sync'inherhangi bir şekilde bahsedilmesi yle FIM2010/MIM2016'yı değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kullanmak için seçtiğiniz seçeneğine bağlı olarak, makale ayrıntılı adımları bulmak için sol taraftaki içindekiler tablosunu kullanın.
+Kullanmayı seçtiğiniz seçene bağlı olarak, ayrıntılı adımlarla makalenizi bulmak için soldaki içerik tablosunu kullanın.

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADSyncTools PowerShell başvurusu | Microsoft Docs'
-description: Bu belge ADSyncTools.psm1 PowerShell modülü için başvuru bilgileri sağlar.
+title: 'Azure AD Connect: ADSyncTools PowerShell Başvuru | Microsoft Dokümanlar'
+description: Bu belge ADSyncTools.psm1 PowerShell modülü için referans bilgileri sağlar.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,19 +11,19 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60454668"
 ---
-# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:  ADSyncTools PowerShell başvurusu
-Aşağıdaki belgeler Azure AD Connect ile birlikte sağlanan ADSyncTools.psm1 PowerShell modülü için başvuru bilgileri sağlar.
+# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: ADSyncTools PowerShell Başvurusu
+Aşağıdaki belgeler, Azure AD Connect ile birlikte verilen ADSyncTools.psm1 PowerShell Modülü için başvuru bilgilerini sağlar.
 
-## <a name="clear-adsynctoolsconsistencyguid"></a>ADSyncToolsConsistencyGuid Temizle
+## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>ÖZET
-MS-Ds-consistencyguid içinde AD kullanıcıdan Temizle
+MS-Ds-ConsistencyGuid'i AD Kullanıcısından Temizle
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -32,7 +32,7 @@ Clear-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Hedef AD kullanıcı için mS-Ds-ConsistencyGuid değeri Temizle
+Hedef AD kullanıcısı için mS-Ds-ConsistencyGuid değerini temizleyin
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -49,7 +49,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-user"></a>-User
-Hedef kullanıcı kümesi için ad
+AD'de Hedef Kullanıcı yı ayarlamak için
 
 ```yaml
 Type: Object
@@ -65,12 +65,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="confirm-adsynctoolsadmoduleloaded"></a>ADSyncToolsADModuleLoaded onaylayın
+## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>ÖZET
-{{İçinde doğrulanır dolgu}}
+{{Özet'i doldurun}}
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -79,7 +79,7 @@ Confirm-ADSyncToolsADModuleLoaded
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-{{Bir açıklama girin}}
+{{Açıklamayı doldurun}}
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -88,12 +88,12 @@ Confirm-ADSyncToolsADModuleLoaded
 PS C:\> {{ Add example code here }}
 ```
 
-{{Örnek açıklamayı buraya ekleyin}}
+{{ Örnek açıklama ekleyin buraya }}
 
 ## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
 
 ### <a name="synopsis"></a>ÖZET
-{{İçinde doğrulanır dolgu}}
+{{Özet'i doldurun}}
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -103,7 +103,7 @@ Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <S
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-{{Bir açıklama girin}}
+{{Açıklamayı doldurun}}
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -112,12 +112,12 @@ Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <S
 PS C:\> {{ Add example code here }}
 ```
 
-{{Örnek açıklamayı buraya ekleyin}}
+{{ Örnek açıklama ekleyin buraya }}
 
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-database"></a>-Veritabanı
-{{Veritabanı açıklamasını doldurun}}
+{{Veritabanı Açıklamasını Doldur}}
 
 ```yaml
 Type: String
@@ -131,8 +131,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-instance"></a>-Örneği
-{{Örneği açıklaması dolgu}}
+#### <a name="-instance"></a>-Örnek
+{{Fill Instance Description}}
 
 ```yaml
 Type: String
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-password"></a>-Password
-{{Parola açıklamasını doldurun}}
+{{Parola Açıklamasını Doldur}}
 
 ```yaml
 Type: String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-server"></a>-Server
-{{Sunucusu açıklaması dolgu}}
+{{Sunucu Açıklamasını Doldur}}
 
 ```yaml
 Type: String
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-username"></a>-UserName
-{{Kullanıcıadı açıklamasını doldurun}}
+{{Kullanıcı Adı Açıklamasını Doldur}}
 
 ```yaml
 Type: String
@@ -193,12 +193,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="export-adsynctoolsconsistencyguidmigration"></a>Dışarı aktarma ADSyncToolsConsistencyGuidMigration
+## <a name="export-adsynctoolsconsistencyguidmigration"></a>Dışa Aktarma-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>ÖZET
-Consistencyguid içinde raporu dışarı aktarın
+İhracat TutarlılığıGuid Raporu
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -208,7 +208,7 @@ Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipal
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Bir içeri aktarma CSV dosyasından içeri aktarma ADSyncToolsImmutableIdMigration göre consistencyguid içinde bir rapor oluşturur
+Alma-ADSyncToolsImmutableIdMigration bir alma CSV dosyasına dayalı bir TutarlılıkGuid raporu oluşturur
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -225,7 +225,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-alternativeloginid"></a>-AlternativeLoginId
-Alternatif oturum açma kimliği (posta) kullanın
+Alternatif Giriş Kimliği (posta) kullanın
 
 ```yaml
 Type: SwitchParameter
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-userprincipalname"></a>-UserPrincipalName
-userPrincipalName
+UserPrincipalName
 
 ```yaml
 Type: String
@@ -254,8 +254,8 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-#### <a name="-immutableidguid"></a>-ImmutableIdGUID
-ImmutableIdGUID
+#### <a name="-immutableidguid"></a>-DeğişmezIdGUID
+DeğişmezIdGUID
 
 ```yaml
 Type: String
@@ -269,8 +269,8 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-#### <a name="-output"></a>-Çıkış
-CSV ve günlük dosyaları için çıkış dosyası adı
+#### <a name="-output"></a>-Çıktı
+CSV ve LOG dosyaları için çıktı dosya adı
 
 ```yaml
 Type: String
@@ -286,12 +286,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
 ### <a name="synopsis"></a>ÖZET
-{{İçinde doğrulanır dolgu}}
+{{Özet'i doldurun}}
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -300,7 +300,7 @@ Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-{{Bir açıklama girin}}
+{{Açıklamayı doldurun}}
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -309,12 +309,12 @@ Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{Örnek açıklamayı buraya ekleyin}}
+{{ Örnek açıklama ekleyin buraya }}
 
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-hostname"></a>-hostName
-{{Ana bilgisayar adı, açıklamayı doldurun}}
+{{Doldur hostName Açıklama}}
 
 ```yaml
 Type: String
@@ -340,7 +340,7 @@ Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Bir AD nesne yapılacak döndürür: Çoklu orman desteği
+Yapılacak bir AD nesnesini döndürür: Çoklu orman desteği
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -357,7 +357,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-user"></a>-User
-Hedef kullanıcı consistencyguid içinde ayarlamak için ad
+Tutarlılık Guid ayarlamak için AD Hedef Kullanıcı
 
 ```yaml
 Type: Object
@@ -373,12 +373,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>ÖZET
-MS-Ds-consistencyguid içinde AD kullanıcıdan Al
+AD Kullanıcısından mS-Ds-ConsistencyGuid alın
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -387,7 +387,7 @@ Get-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-MS-Ds-ConsistencyGuid özniteliği hedef AD kullanıcının GUID biçiminde bulunan değeri döndürür
+GUID biçiminde hedef AD kullanıcısının mS-Ds-ConsistencyGuid özniteliğindeki değeri verir
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -404,7 +404,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-user"></a>-User
-Hedef kullanıcı kümesi için ad
+AD'de Hedef Kullanıcı yı ayarlamak için
 
 ```yaml
 Type: Object
@@ -420,12 +420,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
 ### <a name="synopsis"></a>ÖZET
-ObjectGUID AD kullanıcıdan Al
+OBJECTGuid'i AD Kullanıcısından Alın
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -434,7 +434,7 @@ Get-ADSyncToolsObjectGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-ObjectGUID özniteliği GUID biçiminde hedef AD kullanıcının bulunan değeri döndürür
+Guid biçiminde hedef AD kullanıcısının ObjectGUID özniteliğindeki değeri verir
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -451,7 +451,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-user"></a>-User
-Hedef kullanıcı kümesi için ad
+AD'de Hedef Kullanıcı yı ayarlamak için
 
 ```yaml
 Type: Object
@@ -467,12 +467,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>ÖZET
-Get AAD Connect çalıştırma geçmişi
+AAD Connect Run Geçmişi'ni alın
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -481,7 +481,7 @@ Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-AAD Connect çalıştırma geçmişi XML biçiminde döndüren bir işlev
+AAD Connect Run Geçmişini XML biçiminde döndüren işlev
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -497,8 +497,8 @@ Get-ADSyncToolsRunHistory -Days 1
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-days"></a>-Gün
-{{Gün dolgu açıklama}}
+#### <a name="-days"></a>-Gün Sayısı
+{{Fill Gün Açıklaması}}
 
 ```yaml
 Type: Int32
@@ -514,12 +514,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
+## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchor Değiştirildi
 
 ### <a name="synopsis"></a>ÖZET
-Kullanıcılar değiştirilmiş SourceAnchor hatalarla Al
+SourceAnchor değiştirilen hataları olan kullanıcıları alın
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -528,7 +528,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-AAD Connect çalıştırma geçmişi sorguları işlev ve hata raporlama tüm kullanıcıları dışarı aktarır: "SourceAnchor özniteliği değişti."
+İşlev sorguları AAD Connect Run History ve Hata bildiren tüm kullanıcılar dışa aktarım: "SourceAnchor özniteliği değişti."
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -537,9 +537,9 @@ AAD Connect çalıştırma geçmişi sorguları işlev ve hata raporlama tüm ku
 #Required Parameters
 ```
 
-$sourcePath = Read-Host - komut istemi "girin, günlük dosyası yolu dosya adıyla" #"\<Source_Path\>" $outputPath = Read-Host-Prompt ", çıkış girin dosya adına sahip bir dosya yolu" #"\<Out_Path\>"
+$sourcePath = Read-Host -Prompt "Dosya adı ile günlük\<\>dosya yolunuzu girin" #" Source_Path " $outputPath = Oku-Host -Prompt "Dosya adı ile dosya dışına yol girin" #"\<Out_Path\>"
  
- Get-ADSyncToolsUsersSourceAnchorChanged - sourcePath $sourcePath - outputPath $outputPath
+ Get-ADSyncToolsUsersSourceAnchorChanged -sourcePath $sourcePath -outputPath $outputPath
 
 #### <a name="example-2"></a>ÖRNEK 2
 ```
@@ -549,7 +549,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-sourcepath"></a>-sourcePath
-{{SourcePath açıklamasını doldurun}}
+{{Fill sourcePath Description}}
 
 ```yaml
 Type: Object
@@ -564,7 +564,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-outputpath"></a>-outputPath
-{{OutputPath açıklamasını doldurun}}
+{{Fill outputPath Description}}
 
 ```yaml
 Type: Object
@@ -580,12 +580,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="import-adsynctoolsimmutableidmigration"></a>İçeri aktarma ADSyncToolsImmutableIdMigration
+## <a name="import-adsynctoolsimmutableidmigration"></a>İthalat-ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>ÖZET
-AAD'den Immutableıd alma
+AAD'den İthalat DeğişmezID
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -595,7 +595,7 @@ Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFrom
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Tüm Azure AD Synchronızed kullanıcılarla GUID biçiminde gereksinimleri Immutableıd değerini içeren bir dosya oluşturur: MSOnline PowerShell Modülü
+GUID biçim Gereksinimlerinde Değişmez ID değerini içeren tüm Azure AD Senkronize kullanıcılarıyla bir dosya oluşturur: MSOnline PowerShell Modülü
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -611,8 +611,8 @@ Another example of how to use this cmdlet
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-output"></a>-Çıkış
-Çıkış CSV dosyası
+#### <a name="-output"></a>-Çıktı
+Çıktı CSV dosyası
 
 ```yaml
 Type: String
@@ -627,7 +627,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-includesyncusersfromrecyclebin"></a>-IncludeSyncUsersFromRecycleBin
-Eşitleneceğini kullanıcıları Azure ad geri dönüşüm kutusu
+Azure AD Geri Dönüşüm Kutusu'ndan Senkronize Kullanıcıları Alın
 
 ```yaml
 Type: SwitchParameter
@@ -643,13 +643,13 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 
 ## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
 
 ### <a name="synopsis"></a>ÖZET
-{{İçinde doğrulanır dolgu}}
+{{Özet'i doldurun}}
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -658,7 +658,7 @@ Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] 
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-{{Bir açıklama girin}}
+{{Açıklamayı doldurun}}
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -667,12 +667,12 @@ Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] 
 PS C:\> {{ Add example code here }}
 ```
 
-{{Örnek açıklamayı buraya ekleyin}}
+{{ Örnek açıklama ekleyin buraya }}
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-query"></a>-Sorgu
-{{Sorgu açıklamasını doldurun}}
+#### <a name="-query"></a>-Sorgula
+{{Sorgu Açıklamasını Doldur}}
 
 ```yaml
 Type: String
@@ -687,7 +687,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-sqlconnection"></a>-SqlConnection
-{{Fill SqlConnection Description}}
+{{SqlConnection Açıklamalarını Doldur}}
 
 ```yaml
 Type: SqlConnection
@@ -703,12 +703,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
+## <a name="remove-adsynctoolsexpiredcertificates"></a>Kaldır-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>ÖZET
-Süresi dolmuş sertifikaları UserCertificate özniteliğinden kaldırmak için komut dosyası
+Süresi Dolan Sertifikaları UserCertificate Özniteliğinden Kaldırmak Için Komut Dosyası
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -718,10 +718,10 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Bu betik, nesne sınıfı (kullanıcı/bilgisayar) göre filtrelenmiş bir Active Directory etki alanınızdaki - kuruluş birimi hedef tüm nesneleri alır ve UserCertificate özniteliğinde mevcut tüm süresi dolan sertifikaları siler.
-Varsayılan olarak (BackupOnly modu), yalnızca yedekleyecektir süresi dolan sertifikaları bir dosyaya ve herhangi bir değişiklik AD'de yapın.
--BackupOnly $false kullandığınız sonra bu nesneleri UserCertificate özniteliğinde mevcut tüm süresi sertifika kopyalanan sonra AD kaldırılacak. dosya için.
-Her sertifika için ayrı bir dosya adı yedeklenir: ObjectClass_ObjectGUID_CertThumprint.cer komut dosyası, ayrıca ya da geçersiz veya süresi dolmuş gerçekleştirilen gerçek eylem dahil olmak üzere olan sertifikalar ile tüm kullanıcıları gösteren CSV biçiminde (dışarı aktarılan/atlandı/silinen) bir günlük dosyası oluşturulur.
+Bu komut dosyası, Object Class (Kullanıcı/Bilgisayar) tarafından filtrelenen Active Directory etki alanınızdaki hedef Kuruluş Birimi'nden tüm nesneleri alır ve UserCertificate özniteliğinde bulunan süresi dolmuş tüm sertifikaları siler.
+Varsayılan olarak (BackupOnly modu) yalnızca süresi dolmuş sertifikaları bir dosyaya yedekler ve AD'de herhangi bir değişiklik yapmaz.
+-BackupOnly $false kullanırsanız, bu nesneler için UserCertificate özniteliği nde bulunan süresi dolmuş herhangi bir Sertifika, dosyaya kopyalandıktan sonra AD'den kaldırılır.
+Her sertifika ayrılmış bir dosya adına yedeklenir: ObjectClass_ObjectGUID_CertThumprint.cer Komut dosyası, gerçek eylem (Atlanan/Dışa Aktarılan/Silinen) dahil olmak üzere geçerli veya süresi dolmuş sertifikalara sahip tüm kullanıcıları gösteren CSV formatında bir günlük dosyası da oluşturur.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -730,19 +730,19 @@ Her sertifika için ayrı bir dosya adı yedeklenir: ObjectClass_ObjectGUID_Cert
 Check all users in target OU - Expired Certificates will be copied to separated files and no certificates will be removed
 ```
 
-Remove-ADSyncToolsExpiredCertificates-{TargetOU "OU Kullanıcılar, OU = Corp, DC = Contoso, DC = com" - ObjectClass kullanıcı
+Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Kullanıcılar,OU=Corp,DC=Contoso,DC=com" -ObjectClass kullanıcısı
 
 #### <a name="example-2"></a>ÖRNEK 2
 ```
 Delete Expired Certs from all Computer objects in target OU - Expired Certificates will be copied to files and removed from AD
 ```
 
-Remove-ADSyncToolsExpiredCertificates-{TargetOU "OU = bilgisayarlar, OU = Corp, DC = Contoso, DC = com" - ObjectClass bilgisayar - BackupOnly $false
+Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Computers,OU=Corp,DC=Contoso,DC=com" -ObjectClass bilgisayar -BackupOnly$false
 
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-targetou"></a>-TargetOU
-Arama için AD nesnelerini OU hedefine
+HEDEF OU AD nesneleri için aramak için
 
 ```yaml
 Type: String
@@ -757,7 +757,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-backuponly"></a>-BackupOnly
-AD'den BackupOnly sertifikalarını silmez
+BackupOnly AD herhangi bir sertifika silmek olmaz
 
 ```yaml
 Type: Boolean
@@ -772,7 +772,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-objectclass"></a>-ObjectClass
-Nesne sınıfı filtresi
+Nesne Sınıfı filtresi
 
 ```yaml
 Type: String
@@ -788,9 +788,9 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="repair-adsynctoolsautoupgradestate"></a>Onarım ADSyncToolsAutoUpgradeState
+## <a name="repair-adsynctoolsautoupgradestate"></a>Onarım-ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>ÖZET
 Kısa açıklama
@@ -816,10 +816,10 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
+## <a name="resolve-adsynchostaddress"></a>Çözüm-ADSyncHostAddress
 
 ### <a name="synopsis"></a>ÖZET
-{{İçinde doğrulanır dolgu}}
+{{Özet'i doldurun}}
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -828,7 +828,7 @@ Resolve-ADSyncHostAddress [[-hostName] <String>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-{{Bir açıklama girin}}
+{{Açıklamayı doldurun}}
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -837,12 +837,12 @@ Resolve-ADSyncHostAddress [[-hostName] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{Örnek açıklamayı buraya ekleyin}}
+{{ Örnek açıklama ekleyin buraya }}
 
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-hostname"></a>-hostName
-{{Ana bilgisayar adı, açıklamayı doldurun}}
+{{Doldur hostName Açıklama}}
 
 ```yaml
 Type: String
@@ -856,10 +856,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="restore-adsynctoolsexpiredcertificates"></a>Geri yükleme-ADSyncToolsExpiredCertificates
+## <a name="restore-adsynctoolsexpiredcertificates"></a>Geri Yükleme-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>ÖZET
-(YAPMAK İÇİN) AD, UserCertificate özniteliğinin yol açtığı alınan sertifika dosyası geri yükler.
+(YapılacakLAR) Ad UserCertificate özniteliğini sertifika dosyasından geri yükler
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -885,7 +885,7 @@ Another example of how to use this cmdlet
 ## <a name="set-adsynctoolsconsistencyguid"></a>Set-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>ÖZET
-MS-Ds-consistencyguid içinde AD Kullanıcı Ayarla
+MS-Ds-ConsistencyGuid'i AD Kullanıcısında Ayarlama
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -894,7 +894,7 @@ Set-ADSyncToolsConsistencyGuid [-User] <Object> [-Value] <Object> [<CommonParame
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-MS-Ds-ConsistencyGuid özniteliği ' % s'hedef AD kullanıcısı için bir değer kümesindeki
+Hedef AD kullanıcısı için mS-Ds-ConsistencyGuid özniteliğinde bir değer ayarlama
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -911,7 +911,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-user"></a>-User
-Hedef kullanıcı consistencyguid içinde ayarlamak için ad
+Tutarlılık Guid ayarlamak için AD Hedef Kullanıcı
 
 ```yaml
 Type: Object
@@ -926,7 +926,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-value"></a>-Değer
-Immutableıd (bayt dizisi, GUID, GUID veya Base64 dize)
+Değişmez (Bayt dizisi, GUID, GUID dizesi veya Base64 dizesi)
 
 ```yaml
 Type: Object
@@ -942,12 +942,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
 ### <a name="synopsis"></a>ÖZET
-{{İçinde doğrulanır dolgu}}
+{{Özet'i doldurun}}
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -956,7 +956,7 @@ Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-{{Bir açıklama girin}}
+{{Açıklamayı doldurun}}
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -965,12 +965,12 @@ Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{Örnek açıklamayı buraya ekleyin}}
+{{ Örnek açıklama ekleyin buraya }}
 
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-hostname"></a>-hostName
-{{Ana bilgisayar adı, açıklamayı doldurun}}
+{{Doldur hostName Açıklama}}
 
 ```yaml
 Type: String
@@ -985,7 +985,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-port"></a>-bağlantı noktası
-{{Bağlantı noktası açıklamasını doldurun}}
+{{Dolgu bağlantı noktası Açıklaması}}
 
 ```yaml
 Type: String
@@ -999,10 +999,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="trace-adsynctoolsadimport"></a>İzleme ADSyncToolsADImport
+## <a name="trace-adsynctoolsadimport"></a>İzleme-ADSyncToolsADImport
 
 ### <a name="synopsis"></a>ÖZET
-Bir izleme dosyasından ve AD alma adımı oluşturur
+Bir izleme dosyası ve AD Alma Adımı oluşturur
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -1012,7 +1012,7 @@ Trace-ADSyncToolsADImport [[-ADConnectorXML] <String>] [[-dc] <String>] [[-rootD
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-İzlemeleri AAD Connect AD içeri aktarma tüm ldap sorguları bir verilen AD Filigran denetim noktasından (bölüm tanımlama bilgisi) çalıştırın. Bir izleme dosyası '.\ADimportTrace_yyyyMMddHHmmss.log' üzerinde geçerli bir klasör oluşturur.
+Belirli bir AD filigran denetim noktasından (bölüm çerezi) AAD Connect AD Alma çalışmasının tüm ldap sorgularını izler. Geçerli klasörde '.\ADimportTrace_yyyyMMddHHmmss.log' izleme dosyası oluşturur.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -1029,7 +1029,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-adconnectorxml"></a>-ADConnectorXML
-{{ADConnectorXML açıklamasını doldurun}}
+{{DOLGU ADConnectorXML Açıklama}}
 
 ```yaml
 Type: String
@@ -1044,7 +1044,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-dc"></a>-dc
-XML dosyasının AD bağlayıcı dışarı aktarma
+AD Bağlayıcısı Dışa Aktarma XML dosyası
 
 ```yaml
 Type: String
@@ -1059,7 +1059,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-rootdn"></a>-rootDN
-Hedef etki alanı denetleyicisi
+Hedef Etki Alanı Denetleyicisi
 
 ```yaml
 Type: String
@@ -1073,8 +1073,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-filter"></a>-Filtre
-Orman kök DN
+#### <a name="-filter"></a>-filtre
+Orman Kökü DN
 
 ```yaml
 Type: String
@@ -1088,8 +1088,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipcredentials"></a>-SkipCredentials
-İzleme için AD nesne türlerini \> * = tüm nesne türleri
+#### <a name="-skipcredentials"></a>-Atlama Kimlik Bilgileri
+İzlemek \> için AD nesnesi türleri * = tüm nesne türleri
 
 ```yaml
 Type: SwitchParameter
@@ -1104,8 +1104,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adwatermark"></a>-ADwatermark
-Etki alanı yöneticisi olarak zaten çalışıyorsa AD kimlik bilgilerini sağlamaya gerek yoktur.
-Filigran, XML yerine, el ile giriş dosyası örn $ADwatermark "TVNEUwMAAAAXyK9ir1zSAQAAAAAAAAAA(...)" =
+Etki Alanı Yöneticisi olarak çalışıyorsanız, AD kimlik bilgilerini sağlamaya gerek yoktur.
+Filigran Manuel giriş, xml dosyası yerine örneğin $ADwatermark = "TVNEUwMAAAAXyK9ir1zSAAAAAAAAAAAAAA(...)"
 
 ```yaml
 Type: String
@@ -1121,9 +1121,9 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="trace-adsynctoolsldapquery"></a>İzleme ADSyncToolsLdapQuery
+## <a name="trace-adsynctoolsldapquery"></a>İz-ADSyncToolsLdapQuery
 
 ### <a name="synopsis"></a>ÖZET
 Kısa açıklama
@@ -1152,8 +1152,8 @@ Another example of how to use this cmdlet
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-context"></a>-İçerik
-Param1 Yardım açıklaması
+#### <a name="-context"></a>-Bağlam
+Param1 yardım açıklaması
 
 ```yaml
 Type: String
@@ -1168,7 +1168,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-server"></a>-Server
-Param2 Yardım açıklaması
+Param2 yardım açıklaması
 
 ```yaml
 Type: String
@@ -1183,7 +1183,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-port"></a>-Bağlantı noktası
-Param2 Yardım açıklaması
+Param2 yardım açıklaması
 
 ```yaml
 Type: Int32
@@ -1197,8 +1197,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-filter"></a>-Filter
-Param2 Yardım açıklaması
+#### <a name="-filter"></a>-Filtre
+Param2 yardım açıklaması
 
 ```yaml
 Type: String
@@ -1214,12 +1214,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
+## <a name="update-adsynctoolsconsistencyguidmigration"></a>Güncelleme-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>ÖZET
-Güncelleştirmeleri kullanıcılarla yeni consistencyguid içinde (Immutableıd)
+Kullanıcıları yeni ConsistencyGuid (ImmutableId) ile güncelleştirir
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -1229,7 +1229,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Kullanıcılar WhatIf anahtarı Not consistencyguid içinde rapor bu işlevi destekleyen alınan yeni consistencyguid içinde (Immutableıd) değeriyle güncelleştirir: Consistencyguid içinde rapor ile sekmesindeki ayırıcı alınması gerekir
+TutarlılıkGuid (ImmutableId) değerindeki kullanıcıları güncellerTutarlılıkGuid Raporu'ndan alınan bu işlev WhatIf anahtarını destekler Not: TutarlılıkGuid Raporu Sekme Demiliter ile içe aktarılmalıdır
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -1245,8 +1245,8 @@ Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsCons
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-distinguishedname"></a>-DistinguishedName
-DistinguishedName
+#### <a name="-distinguishedname"></a>-Seçkin Name
+Seçkin Ad
 
 ```yaml
 Type: String
@@ -1260,8 +1260,8 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-#### <a name="-immutableidguid"></a>-ImmutableIdGUID
-ImmutableIdGUID
+#### <a name="-immutableidguid"></a>-DeğişmezIdGUID
+DeğişmezIdGUID
 
 ```yaml
 Type: String
@@ -1290,8 +1290,8 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-#### <a name="-output"></a>-Çıkış
-Günlük dosyaları için çıkış dosyası adı
+#### <a name="-output"></a>-Çıktı
+LOG dosyaları için çıktı dosya adı
 
 ```yaml
 Type: String
@@ -1321,8 +1321,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -1338,4 +1338,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .

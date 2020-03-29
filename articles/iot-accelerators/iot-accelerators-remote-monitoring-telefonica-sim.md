@@ -1,6 +1,6 @@
 ---
-title: Uzaktan izleme çözümünde - Azure SIM verilerini tümleştirme | Microsoft Docs
-description: Bu makalede Uzaktan izleme çözümüne Telefónica SIM verilerini tümleştirme açıklar.
+title: SIM verilerini Uzaktan İzleme Çözümüne entegre etme - Azure| Microsoft Dokümanlar
+description: Bu makalede, Uzaktan İzleme çözümüne Telefónica SIM verilerinin nasıl entegre edilebildiğini açıklanmaktadır.
 author: hegate
 manager: ''
 ms.author: hegate
@@ -9,55 +9,55 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61442248"
 ---
-# <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Uzaktan izleme çözümünde SIM verilerini tümleştirme
+# <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM verilerini Uzaktan İzleme çözümüne entegre etme
 
-IOT cihazları genellikle her yerden veri akışları göndererek izin veren bir SIM kart kullanarak buluta bağlayın. İşleçleri de IOT SIM tarafından sağlanan verileri aracılığıyla cihaz durumunu takip edebilmeniz, Azure IOT Uzaktan izleme çözüm IOT yönetilen bağlantı veri tümleştirmesini sağlar.
+IoT aygıtları genellikle buluta her yerden veri akışı göndermelerine olanak tanıyan bir SIM kart kullanarak bağlanır. Azure IoT Uzaktan İzleme çözümü, ioT Yönetilen Bağlantı verilerinin tümleştirilmesine olanak sağlayarak operatörlerin IoT SIM tarafından sağlanan veriler aracılığıyla cihazın durumunu da izleyebilirsiniz.
 
-Uzaktan izleme Telefónica IOT bağlantısı ile tümleştirmesi dışında IOT bağlantı platformu kullanan müşteriler kendi cihazı, çözümlerine SIMs bağlantı verileri eşitleme sunar. Diğer IOT bağlantı sağlayıcıları GitHub aracılığıyla desteklemek için bu çözüm Genişletilebilir [depo](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
+Uzaktan İzleme, Telefónica IoT Bağlantısı ile kutu dışı entegrasyon sağlayarak, IoT Bağlantı Platformu'nu kullanan müşterilerin cihaz SIM bağlantı verilerini çözümleriyle senkronize etmelerine olanak tanır. Bu çözüm, GitHub [deposu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)aracılığıyla diğer IoT Bağlantı sağlayıcılarını desteklemek için genişletilebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
-* Uzaktan izleme çözümüne Telefónica IOT SIM verilerini tümleştirme
+* Telefónica IoT SIM verilerini Uzaktan İzleme çözümüne entegre etme
 * Gerçek zamanlı telemetri verilerini görüntüleme
 * SIM verilerini görüntüleme
 
-## <a name="telefnica-iot-integration-setup"></a>Telefónica IOT tümleştirme Kurulumu
+## <a name="telefnica-iot-integration-setup"></a>Telefónica IoT entegrasyon kurulumu
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Bu ek Uzaktan izleme özelliği şu anda Önizleme aşamasındadır. Azure Uzaktan izleme çözümüne bağlantı verilerinizi eşitlemek için bu adımları izleyin:
+Bu ek Uzaktan İzleme özelliği şu anda önizlemededir. Bağlantı verilerinizi Azure Uzaktan İzleme Çözümü ile senkronize etmek için aşağıdaki adımları izleyin:
 
-1. Bir istek dolgu [Telefónica'nın site](https://iot.telefonica.com/contact), seçeneğini **Azure Uzaktan izleme**, kişi verilerinizi de dahil olmak üzere.
-2. Hesabınızı Telefónica etkinleştirir.
-3. Telefónica istemci henüz olmamak ve istiyorsanız bunu veya diğer IOT bağlantı hazır bulut Hizmetleri, ziyaret [Telefónica'nın site](https://iot.telefonica.com/) ve seçeneğini **bağlantı**.
+1. [Telefónica'nın sitesindebir](https://iot.telefonica.com/contact)isteği doldurun , kişi verileriniz de dahil olmak üzere **Azure Uzaktan İzleme**seçeneğini seçin.
+2. Telefónica hesabınızı etkinleştirir.
+3. Henüz bir Telefónica istemcisi değilseniz ve bu veya diğer IoT Bağlantı Bulut Hazır hizmetlerinin keyfini çıkarmak istiyorsanız, [Telefónica sitesini](https://iot.telefonica.com/) ziyaret edin ve **Bağlantı**seçeneğini seçin.
 
-### <a name="telefnica-sim-setup"></a>Telefónica SIM Kurulumu
-Cihaz kimliği ilişkisi Telefónica SIM & Azure İkizi Telefónica IOT SIM "diğer" özelliği temel alır. 
+### <a name="telefnica-sim-setup"></a>Telefónica SIM kurulumu
+Telefónica SIM & Azure Twin aygıt kimliği ilişkisi Telefónica IoT SIM "takma ad" özelliğine dayanır. 
 
-Gidin [Telefónica IOT bağlantı platformu portalı](https://m2m-movistar-es.telefonica.com/) > SIM Stok >, SIM seçin ve her SIM "diğer" istenen İkizi Deviceıd'nizi ile güncelleştirin. Bu görevi, toplu iş modunda yapılabilir (Telefónica IOT bağlantı platformu için kullanıcı kılavuzlarına bakın).
+[Telefónica IoT Bağlantı Platformu Portalı>](https://m2m-movistar-es.telefonica.com/) sim envanter > SIM seçin ve istediğiniz Twin deviceID ile her SIM "takma" güncelleyin gidin. Bu görev toplu modda da yapılabilir (Telefónica IoT Bağlantı Platformu kullanım kılavuzlarına bakın).
 
-Bu görevi, toplu iş modunda yapılabilir (Telefónica IOT bağlantı platformu için kullanıcı kılavuzlarına bakın)
+Bu görev toplu modda da yapılabilir (Telefónica IoT Bağlantı Platformu kullanım kılavuzlarına bakın)
 
-![Telefónica güncelleştirme](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
+![Telefónica Güncelleme](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
 
-Cihazınızı Uzaktan izleme bağlanmak için bu öğreticileri kullanarak izleyebilirsiniz [C](iot-accelerators-connecting-devices-linux.md) veya [düğüm](iot-accelerators-connecting-devices-node.md). 
+Cihazınızı Uzaktan İzleme'ye bağlamak [için, C](iot-accelerators-connecting-devices-linux.md) veya [Düğüm](iot-accelerators-connecting-devices-node.md)kullanarak bu eğitimleri takip edebilirsiniz. 
 
-## <a name="view-device-telemetry-and-sim-properties"></a>Cihaz telemetrisini görüntüleme ve SIM özellikleri
+## <a name="view-device-telemetry-and-sim-properties"></a>Aygıt telemetrisini ve SIM Özelliklerini görüntüleme
 
-Telefónica hesabınızın düzgün yapılandırıldığından ve Cihazınızı bağlı sonra cihaz ayrıntıları ve SIM verilerini görüntüleyebilirsiniz.
+Telefónica hesabınız düzgün bir şekilde yapılandırıldıktan ve cihazınız bağlandıktan sonra cihaz ayrıntılarını ve SIM verilerini görüntüleyebilirsiniz.
 
 Aşağıdaki bağlantı parametreleri yayımlanır:
 
 * ICCID
 * IP
 * Ağ varlığı
-* SIM durumu
+* SIM Durumu
 * Ağ tabanlı konum
 * Tüketilen veri trafiği
 
@@ -65,9 +65,9 @@ Aşağıdaki bağlantı parametreleri yayımlanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IOT Uzaktan izleme SIM verilerini tümleştirme nasıl bir genel bakış olduğuna göre Çözüm Hızlandırıcıları için önerilen sonraki adımlar şunlardır:
+SIM Verilerini Azure IoT Uzaktan İzleme'ye nasıl entegre ettiğinize dair genel bir bakışa sahip olduğunuza göre, çözüm hızlandırıcıları için aşağıdaki sonraki adımlar önerilir:
 
-* [Azure IOT Uzaktan izleme çözümü çalıştırma](quickstart-remote-monitoring-deploy.md)
+* [Azure IoT Uzaktan İzleme çözümünü çalıştırın](quickstart-remote-monitoring-deploy.md)
 * [Gelişmiş izleme gerçekleştirme](iot-accelerators-remote-monitoring-monitor.md)
 * [Cihazlarınızı yönetme](iot-accelerators-remote-monitoring-manage.md)
 * [Cihaz sorunlarını giderme](iot-accelerators-remote-monitoring-maintain.md)

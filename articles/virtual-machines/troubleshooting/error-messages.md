@@ -1,6 +1,6 @@
 ---
-title: Azure 'da ortak VM hata kodları | Microsoft Docs
-description: Azure 'da sanal makineler sağlarken ve yönetirken karşılaşılan bazı yaygın hata kodlarından bazılarını anlayın
+title: Azure'da yaygın VM hata kodları | Microsoft Dokümanlar
+description: Azure'da sanal makineleri sağlamave yönetmede karşılaşılan yaygın hata kodlarından bazılarını anlayın
 services: virtual-machines
 documentationcenter: ''
 author: xujing-ms
@@ -13,21 +13,21 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76543027"
 ---
-# <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure 'da sanal makineleri yönetirken yaygın hata iletilerini anlama
+# <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure'da sanal makineleri yönetirken sık karşılaşılan hata iletilerini anlama
 
-Bu makalede, Azure 'da sanal makineler (VM) oluştururken veya yönetirken karşılaşabileceğiniz en yaygın hata kodlarından ve iletilerden bazıları açıklanmaktadır.
+Bu makalede, Azure'da sanal makineler (VM' ler) oluştururken veya yönetirken karşılaşabileceğiniz en yaygın hata kodlarından ve iletilerinden bazıları açıklanmaktadır.
 
 >[!NOTE]
-> Bu sayfada geri bildirimde bulunmak veya #azerrormessage etiketiyle [Azure geri bildirimleri](https://feedback.azure.com/forums/216843-virtual-machines) aracılığıyla yorumlarınızı bırakabilirsiniz.
+> Bu sayfaya geri bildirim için veya [Azure geri bildirimi](https://feedback.azure.com/forums/216843-virtual-machines) aracılığıyla #azerrormessage etiketiyle yorum bırakabilirsiniz.
 
-## <a name="error-response-format"></a>Hata yanıtı biçimi 
-Azure VM 'Leri hata yanıtı için aşağıdaki JSON biçimini kullanır:
+## <a name="error-response-format"></a>Hata Yanıt Biçimi 
+Azure VM'ler hata yanıtı için aşağıdaki JSON biçimini kullanır:
 
 ```json
 {
@@ -45,175 +45,175 @@ Azure VM 'Leri hata yanıtı için aşağıdaki JSON biçimini kullanır:
 }
 ```
 
-Bir hata yanıtı her zaman bir durum kodu ve bir hata nesnesi içerir. Her hata nesnesi her zaman bir hata kodu ve ileti içerir. VM bir şablonla oluşturulduysa, hata nesnesi bir iç hata kodları ve ileti düzeyi içeren bir ayrıntılar bölümü de içerir. Normalde, hata iletisinin en iç düzeyi kök hatadır.
+Hata yanıtı her zaman bir durum kodu ve bir hata nesnesi içerir. Her hata nesnesi her zaman bir hata kodu ve bir ileti içerir. VM bir şablonla oluşturulursa, hata nesnesi ayrıca hata kodları ve iletinin iç düzeyini içeren bir ayrıntı bölümü de içerir. Normalde, hata iletisinin en iç düzeyi kök hatasıdır.
 
 
-## <a name="common-virtual-machine-management-errors"></a>Ortak sanal makine yönetimi hataları
+## <a name="common-virtual-machine-management-errors"></a>Yaygın sanal makine yönetimi hataları
 
-Bu bölümde, VM 'Leri yönetirken karşılaşabileceğiniz yaygın hata iletileri listelenmektedir:
+Bu bölümde, VM'leri yönetirken karşılaşabileceğiniz yaygın hata iletileri listelenebilir:
 
 |  Hata Kodu  |  Hata İletisi  |  
 |  :------| :-------------|  
-|  AcquireDiskLeaseFailed  |  URI {1}ile blob kullanılarak '{0}' diski oluşturulurken kira elde edilemedi. Blob zaten kullanımda.  |  
-|  AllocationFailed  |  Ayırma başarısız oldu. Lütfen VM boyutunu veya VM sayısını azaltmayı deneyin, daha sonra yeniden deneyin veya farklı bir kullanılabilirlik kümesine veya farklı Azure konumuna dağıtım yapmayı deneyin.  |  
-|  AllocationFailed  |  VM ayırması bir iç hata nedeniyle başarısız oldu. Lütfen daha sonra yeniden deneyin veya farklı bir konuma dağıtımı deneyin.  |
-|  ArtifactNotFound  |  Yayımcı '{0}' ve türü '{1}' olan VM Uzantısı '{2}' konumunda bulunamadı.  |
-|  ArtifactNotFound  |  Uzantı deposunda '{0}' yayımcısına, '{1}' türüne ve '{2}' tür işleyicisi sürümüne sahip uzantı bulunamadı.  |
-|  ArtifactVersionNotFound  |  Yapıt deposunda, istenen '{0}' sürümünü karşılayan bir sürüm bulunamadı.  |
-|  ArtifactVersionNotFound  |  Yapıt deposunda, Yayımcı '{1}' ve türü '{2}' olan VM uzantısı için istenen '{0}' sürümünü karşılayan bir sürüm bulunamadı.  |
-|  Attachdiskwhilebeingayrıldı  |  Disk şu anda ayrılmakta olduğundan '{0}' veri diski '{1}' sanal makinesine iliştirilemiyor. Lütfen disk tamamen ayrılana kadar bekleyip yeniden deneyin.  |
-|  Işlemindeki hatalı istek  |  Hizalanmış ' kullanılabilirlik kümeleri bu bölgede henüz desteklenmiyor.  |
-|  Işlemindeki hatalı istek  |  Yönetilmeyen kullanılabilirlik kümesine veya blob tabanlı disklere sahip VM 'nin yönetilen kullanılabilirlik kümesine eklenmesi için yönetilen disklere sahip bir VM 'nin eklenmesi desteklenmez. Yönetilen disklere sahip bir VM eklemek için lütfen ' Managed ' özelliği ayarlanmış bir kullanılabilirlik kümesi oluşturun.  |
-|  Işlemindeki hatalı istek  |  Yönetilen diskler bu bölgede desteklenmez.  |
-|  Işlemindeki hatalı istek  |  '{0}' işletim sistemi türü için işleyici başına birden çok VMExtensions desteklenmiyor. '{2}' işleyicisine sahip '{1}' Vmexgerilim, girişte zaten eklenmiş veya belirtilmiş.  |
-|  Işlemindeki hatalı istek  |  Yönetilen disklerle '{1}' kaynağında '{0}' işlemi desteklenmiyor.  |
-|  Certificateımproperlybiçimlendirildi  |  Gizli dizi {0} alınan JSON gösterimi, düzgün şekilde biçimlendirilen bir PFX dosyası olmayan bir veri alanına sahip veya belirtilen parola PFX dosyasının doğru şekilde şifresini çözemedi.  |
-|  Certificateımproperlybiçimlendirildi  |  {0} alınan veriler JSON 'a seri hale getirilemez.  |
-|  Çakışma  |  Yalnızca bir VM oluşturulurken veya VM serbest bırakıldığında disk yeniden boyutlandırılmasına izin verilir.  |
-|  Conflictinguserınput  |  '{1}' sanal makinesi zaten sahip olduğundan '{0}' diski iliştirilemiyor.  |
-|  Conflictinguserınput  |  Kaynak ve hedef kaynak grupları aynıdır.  |
-|  Conflictinguserınput  |  Disk {0} için kaynak ve hedef depolama hesapları farklı.  |
-|  ContainerAlreadyOnLease  |  Blob 'u URI {0}tutan depolama kapsayıcısı üzerinde zaten bir kira var.  |
-|  CrossSubscriptionMoveWithKeyVaultResources  |  Kaynakları taşıma isteği, istekteki bir veya daha fazla {0}s tarafından başvurulan Anahtar Kasası kaynaklarını içerir. Bu, şu anda çapraz abonelik taşıması içinde desteklenmez. Anahtar Kasası kaynak kimlikleri için lütfen hata ayrıntılarını kontrol edin.  |
-|  Diagnosticsoperationınternalerror  |  VM {0}tanılama profili işlenirken bir iç hata oluştu.  |
-|  Diskblobalreadınusebyanotherdisk  |  Blob {0}, '{1}' VM 'sine ait başka bir disk tarafından zaten kullanılıyor. Disk başvuru bilgileri için blob meta verilerini inceleyebilirsiniz.  |
-|  DiskBlobNotFound  |  '{1}' diski için URI {0} VHD blobu bulunamıyor.  |
-|  DiskBlobNotFound  |  URI {0}VHD blobu bulunamıyor.  |
-|  DiskEncryptionKeySecretMissingTags  |  {0} gizli dizi {1} etiketlere sahip değil. Lütfen gizli sürümü güncelleştirin, gerekli etiketleri ekleyin ve yeniden deneyin.  |
-|  DiskEncryptionKeySecretUnwrapFailed  |  Anahtar {1} kullanarak gizli {0} değerinin sarmalaması geri alınamadı.  |
-|  DiskImageNotReady  |  Disk görüntüsü {0} {1} durumunda. Görüntü hazırlanıyor, lütfen yeniden deneyin.  |
-|  DiskPreparationError  |  VM diskleri hazırlanırken bir veya daha fazla hata oluştu. Ayrıntılar için bkz. disk örneği görünümü.  |
-|  DiskProcessingError  |  VM, başarısız disklerde başka diskler içerdiğinden disk işleme durduruldu.  |
-|  Imageblobnotfound  |  '{1}' diski için URI {0} VHD blobu bulunamıyor.  |
-|  Imageblobnotfound  |  URI {0}VHD blobu bulunamıyor.  |
-|  IncorrectDiskBlobType  |  Disk blob 'ları yalnızca Sayfa Blobu türünde olabilir. '{1}' diski için blob {0}, Blok Blobu türünde.  |
-|  IncorrectDiskBlobType  |  Disk blob 'ları yalnızca Sayfa Blobu türünde olabilir. Blob {0} '{1}' türünde.  |
-|  IncorrectImageBlobType  |  Disk blob 'ları yalnızca Sayfa Blobu türünde olabilir. '{1}' diski için blob {0}, Blok Blobu türünde.  |
-|  IncorrectImageBlobType  |  Disk blob 'ları yalnızca Sayfa Blobu türünde olabilir. Blob {0} '{1}' türünde.  |
-|  Internaloperationerror  |  {0}depolama hesabı çözümlenemedi. Lütfen işlem kaynağıyla aynı konumdaki depolama kaynak sağlayıcısı üzerinden oluşturulduğundan emin olun.  |
-|  Internaloperationerror  |  görevleri arayan {0} hedef başarısız oldu.  |
-|  Internaloperationerror  |  '{0}' VM 'sinin ağ profili doğrulanırken hata oluştu.  |
-|  Invalidaccounttype  |  AccountType {0} geçersiz.  |
-|  Geçersiz parametre  |  {0} parametresi değeri geçersiz.  |
-|  Geçersiz parametre  |  Belirtilen yönetici parolasına izin verilmiyor.  |
-|  Geçersiz parametre  |  "Sağlanan parola {0}{1} karakter uzunluğunda olmalı ve aşağıdakiler için en az {2} parola karmaşıklığı gereksinimi karşılamalıdır: <ol><li> Büyük harfli bir karakter içerir</li><li>Küçük harfli bir karakter içerir</li><li>Sayısal bir basamak içerir</li><li>Özel bir karakter içerir.</li></ol>  |
-|  Geçersiz parametre  |  Belirtilen yönetici kullanıcı adına izin verilmiyor.  |
-|  Geçersiz parametre  |  VM bir platform veya Kullanıcı görüntüsünden oluşturulduysa, var olan bir işletim sistemi diski iliştirilemez.  |
-|  Geçersiz parametre  |  {0} kapsayıcı adı geçersiz. Kapsayıcı adları 3-63 karakter uzunluğunda olmalı ve yalnızca küçük harfli alfasayısal karakterler ve kısa çizgi içerebilir. Kısa çizgi öncesinde ve sonra alfasayısal bir karakter gelmelidir.  |
-|  Geçersiz parametre  |  URL {1} {0} kapsayıcı adı geçersiz. Kapsayıcı adları 3-63 karakter uzunluğunda olmalı ve yalnızca küçük harfli alfasayısal karakterler ve kısa çizgi içerebilir. Kısa çizgi öncesinde ve sonra alfasayısal bir karakter gelmelidir.  |
-|  Geçersiz parametre  |  URL 'deki blob adı {0} eğik çizgi içeriyor. Bu, şu anda diskler için desteklenmez.  |
-|  Geçersiz parametre  |  URI {0} doğru blob URI 'SI olarak görünmüyor.  |
-|  Geçersiz parametre  |  '{0}' adlı bir disk zaten aynı LUN 'U kullanıyor: {1}.  |
-|  Geçersiz parametre  |  '{0}' adlı bir disk zaten var.  |
-|  Geçersiz parametre  |  Belirtilen görüntü başvurusunda zaten tanımlı olan bir disk için Kullanıcı görüntüsü geçersiz kılmaları belirtilemez.  |
-|  Geçersiz parametre  |  '{0}' adlı bir disk zaten aynı VHD URL 'sini {1}kullanıyor.  |
-|  Geçersiz parametre  |  Belirtilen hata etki alanı sayısı {0} {2}için {1} aralığına denk gelmelidir.  |
-|  Geçersiz parametre  |  {0} lisans türü geçersiz. Geçerli lisans türleri şunlardır: Windows_Client veya Windows_Server, büyük/küçük harfe duyarlı.  |
-|  Geçersiz parametre  |  Linux ana bilgisayar adı {0} karakterden uzun olamaz veya şu karakterleri içeremez: {1}.  |
-|  Geçersiz parametre  |  Linux sağlama aracısındaki bilinen bir sorun nedeniyle, SSH ortak anahtarları için hedef yol şu anda varsayılan değeriyle sınırlıdır {0}.  |
-|  Geçersiz parametre  |  LUN {0} bir disk zaten var.  |
-|  Geçersiz parametre  |  İsteğin abonelik {0}, yönetilen disk kimliğinde bulunan abonelikle {1} eşleşmelidir.  |
-|  Geçersiz parametre  |  OSProfile içindeki özel verilerin Base64 kodlaması ve en fazla {0} karakter uzunluğunda olması gerekir.  |
-|  Geçersiz parametre  |  URL {0} blob adı '{1}' uzantısıyla bitmelidir.  |
-|  Geçersiz parametre  |  {0}', geçerli bir yakalanan VHD blob adı ön eki değil. Geçerli bir önek, Regex '{1}' ile eşleşiyor.  |
-|  Geçersiz parametre  |  VM Aracısı sağlanmadıysa sanal makinenize sertifikalar eklenemiyor.  |
-|  Geçersiz parametre  |  LUN {0} bir disk zaten var.  |
-|  Geçersiz parametre  |  İstenen boyut {0}, kullanılabilirlik kümesinin Şu anda ayrıldığı kümede kullanılamadığından VM oluşturulamıyor. Kullanılabilir Boyutlar: {1}. https://aka.ms/azure-resizevm adresindeki VM yeniden boyutlandırma stratejisi hakkında daha fazla bilgi edinin.  |
-|  Geçersiz parametre  |  İstenen VM boyutu {0} geçerli bölgede kullanılamıyor. Geçerli bölgede bulunan Boyutlar: {1}. https://aka.ms/azure-regions adresindeki her bölgede kullanılabilir VM boyutları hakkında daha fazla bilgi edinin.  |
-|  Geçersiz parametre  |  İstenen VM boyutu {0} geçerli bölgede kullanılamıyor. https://aka.ms/azure-regions adresindeki her bölgede kullanılabilir VM boyutları hakkında daha fazla bilgi edinin.  |
-|  Geçersiz parametre  |  Windows Yönetici Kullanıcı adı {0} karakterden uzun olamaz, nokta (.) ile bitemez veya şu karakterleri içeremez: {1}.  |
-|  Geçersiz parametre  |  Windows bilgisayar adı {0} karakterden uzun olamaz, tamamen rakamlardan oluşamaz veya şu karakterleri içeremez: {1}.  |
-|  Missingmovedependentkaynakları  |  Kaynakları taşıma isteği tüm bağımlı kaynakları içermez. Lütfen eksik kaynak kimlikleri için hata ayrıntılarını denetleyin.  |
-|  Moveresourceshaveınvalidstate  |  Kaynakları taşıma isteği, geçersiz depolama hesaplarıyla ilişkili VM 'Leri içerir. Lütfen bu kaynak kimliklerinin ayrıntılarını ve başvurulan depolama hesabı adlarını denetleyin.  |
-|  MoveResourcesHavePendingOperations  |  Kaynakları taşıma isteği, bir işlemin beklediği kaynakları içerir. Lütfen bu kaynak kimliklerinin ayrıntılarını kontrol edin. Bekleyen işlemler tamamlandıktan sonra işleminizi yeniden deneyin.  |
-|  MoveResourcesNotFound  |  Kaynakları taşıma isteği bulunamayan kaynakları içerir. Lütfen bu kaynak kimliklerinin ayrıntılarını kontrol edin.  |
-|  Networkingınternaloperationerror  |  Bilinmeyen ağ ayırma hatası.  |
-|  Networkingınternaloperationerror  |  Bilinmeyen ağ ayırma hatası  |
-|  Networkingınternaloperationerror  |  VM 'nin ağ profilini işlerken bir iç hata oluştu.  |
-|  NotFound  |  Kullanılabilirlik kümesi {0} bulunamıyor.  |
-|  NotFound  |  İstekte belirtilen '{0}' kaynak sanal makinesi bu Azure konumunda yok.  |
-|  NotFound  |  Kimliği {0} olan kiracı bulunamadı.  |
-|  NotFound  |  {0} resim bulunamıyor.  |
-|  NotSupported  |  Lisans türü {0}, ancak görüntü blobu {1} şirket içinde değil.  |
-|  OperationNotAllowed  |  Kullanılabilirlik kümesi {0} silinemiyor. Bir kullanılabilirlik kümesini silmeden önce lütfen herhangi bir VM içermediğinden emin olun.  |
-|  OperationNotAllowed  |  Kullanılabilirlik kümesi SKU 'SU ' hizalı ' değerinden ' klasik ' öğesine değiştirilmesine izin verilmez.  |
-|  OperationNotAllowed  |  VM çalışmadığı zaman VM 'deki uzantılar değiştirilemez.  |
-|  OperationNotAllowed  |  Yakalama eylemi yalnızca blob tabanlı disklere sahip bir sanal makinede desteklenir. Yönetilen bir sanal makineden bir görüntü oluşturmak için lütfen ' görüntü ' kaynak API 'Lerini kullanın.  |
-|  OperationNotAllowed  |  Görüntü başarıyla oluşturuluncaya kadar, kaynak {0} görüntüden oluşturulamıyor {1}.  |
-|  OperationNotAllowed  |  VM ayrıldığında encryptionSettings güncelleştirmelerine izin verilmiyor, lütfen VM serbest bırakıldıktan sonra yeniden deneyin  |
-|  OperationNotAllowed  |  Blob tabanlı diskler içeren bir VM 'ye yönetilen disk eklenmesi desteklenmez.  |
-|  OperationNotAllowed  |  Bu boyuttaki bir VM 'ye bağlı olmasına izin verilen en fazla veri diski sayısı {0}.  |
-|  OperationNotAllowed  |  Yönetilen disklerle VM 'ye blob tabanlı bir disk eklenmesi desteklenmez.  |
-|  OperationNotAllowed  |  '{0}' işlemine '{1}' görüntüsü silinmek üzere işaretlendiğinden bu görüntüde izin verilmiyor. Yalnızca silme işlemini yeniden deneyebilir (veya devam eden bir işlemin tamamlanmasını bekleyebilirsiniz).  |
-|  OperationNotAllowed  |  VM Genelleştirilmiş olduğundan '{1}' sanal makinesinde '{0}' işlemine izin verilmiyor.  |
-|  OperationNotAllowed  |  '{1}' geri yükleme noktası koleksiyonu silinmek üzere işaretlendiğinden '{0}' işlemine izin verilmiyor.  |
-|  OperationNotAllowed  |  '{0}' işlemine silinmek üzere işaretlendiğinden '{1}' VM uzantısında izin verilmiyor. Yalnızca silme işlemini yeniden deneyebilir (veya devam eden bir işlemin tamamlanmasını bekleyebilirsiniz).  |
-|  OperationNotAllowed  |  '{1}' sanal makineleri '{2}' görüntüsü kullanılarak sağlanmakta olduğundan '{0}' işlemine izin verilmiyor.  |
-|  OperationNotAllowed  |  '{1}' sanal makine ölçek kümesi şu anda '{2}' görüntüsünü kullandığından '{0}' işlemine izin verilmiyor.  |
-|  OperationNotAllowed  |  VM silinmek üzere işaretlendiğinden, '{1}' sanal makinesinde '{0}' işlemine izin verilmiyor. Yalnızca silme işlemini yeniden deneyebilir (veya devam eden bir işlemin tamamlanmasını bekleyebilirsiniz).  |
-|  OperationNotAllowed  |  VM serbest bırakılmış veya serbest bırakılmış olarak işaretlenmiş olduğundan '{1}' sanal makinesinde '{0}' işlemine izin verilmiyor.  |
-|  OperationNotAllowed  |  VM 'nin çalıştığından, '{1}' sanal makinesinde '{0}' işlemine izin verilmiyor. Lütfen VM 'yi konuk işletim sisteminin içinden kapattığınız durumda açık bir şekilde kapatın.  |
-|  OperationNotAllowed  |  VM serbest bırakılmadığından, '{1}' sanal makinesinde '{0}' işlemine izin verilmiyor.  |
-|  OperationNotAllowed  |  VM 'nin başarısız durumda '{2}' uzantısı olduğundan '{1}' sanal makinesinde '{0}' işlemine izin verilmiyor.  |
-|  OperationNotAllowed  |  Devam eden başka bir işlem olduğundan, '{1}' sanal makinesinde '{0}' işlemine izin verilmiyor.  |
-|  OperationNotAllowed  |  '{0}' işlemi, '{1}' sanal makinesinin genelleştirilmesi gerektiriyor.  |
-|  OperationNotAllowed  |  İşlem için VM 'nin çalışıyor olması gerekir (veya çalıştırılacak şekilde ayarlanır).  |
-|  OperationNotAllowed  |  Görüntüde karşılık gelen disk {1}boyutundan daha küçük olan {0}GB boyutundaki disk, buna izin verilmez.  |
-|  OperationNotAllowed  |  '{0}' işleyicisinin VM Ölçek kümesi uzantıları yalnızca VM Ölçek kümesi oluşturma sırasında eklenebilir.  |
-|  OperationNotAllowed  |  '{0}' işleyicisinin VM Ölçek kümesi uzantıları yalnızca VM Ölçek kümesi silme sırasında silinebilir.  |
-|  OperationNotAllowed  |  '{0}' VM 'si zaten yönetilen diskler kullanıyor.  |
-|  OperationNotAllowed  |  '{0}' VM 'si '{1}' ' klasik ' kullanılabilirlik kümesine aittir. Lütfen kullanılabilirlik kümesini ' hizalı ' SKU 'SU kullanacak şekilde güncelleştirin ve sonra dönüştürmeyi yeniden deneyin.  |
-|  OperationNotAllowed  |  Görüntüden oluşturulan VM 'de blob tabanlı diskler olamaz. Tüm disklerin yönetilen diskler olması gerekir.  |
-|  OperationNotAllowed  |  VM Genelleştirilmiş olmadığından yakalama işlemi tamamlanamıyor.  |
-|  OperationNotAllowed  |  VM diskleri yönetilen disklere dönüştürülemediğinden, '{0}' VM 'sinde yönetim işlemlerine izin verilmiyor.  |
-|  OperationNotAllowed  |  Devam eden bir işlem, sanal makine {0} güç durumunu {1}olarak değiştiriyor. Lütfen bir süre sonra {2} işlemi gerçekleştirin.  |
-|  OperationNotAllowed  |  VM eklenemiyor veya güncelleştirilemiyor. İstenen VM boyutu {0} var olan ayırma biriminde kullanılamıyor olabilir. https://aka.ms/azure-resizevm adresindeki VM yeniden boyutlandırma stratejisi hakkında daha fazla bilgi edinin.  |
-|  OperationNotAllowed  |  İstenen boyut {0}, kullanılabilirlik kümesinin Şu anda ayrıldığı kümede kullanılamadığından VM yeniden boyutlandırılamıyor. Kullanılabilir Boyutlar: {1}. https://aka.ms/azure-resizevm adresindeki VM yeniden boyutlandırma stratejisi hakkında daha fazla bilgi edinin.  |
-|  OperationNotAllowed  |  İstenen boyut {0} VM 'nin şu anda ayrıldığı kümede kullanılamadığından VM yeniden boyutlandırılamıyor. VM 'nizi yeniden boyutlandırmak {1} için lütfen serbest bırakın (Bu işlem Azure portal durdurulur) ve yeniden boyutlandırma işlemini yeniden deneyin. https://aka.ms/azure-resizevm adresindeki VM yeniden boyutlandırma stratejisi hakkında daha fazla bilgi edinin.  |
-|  OSProvisioningClientError  |  Konuk işletim sistemi şu anda sağlanmakta olduğundan, '{0}' sanal makinesi için işletim sistemi sağlama başarısız oldu.  |
-|  OSProvisioningClientError  |  '{0}' sanal makinesi için işletim sistemi sağlama başarısız oldu. Hata ayrıntıları: {1} görüntünün düzgün hazırlanmış (Genelleştirilmiş) olduğundan emin olun. <ul><li>Windows için yönergeler: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH ana bilgisayar anahtarı oluşturulamadı. Hata ayrıntıları: {0}. Bu sorunu gidermek için, Linux aracısının düzgün ayarlanıp ayarlanmadığını doğrulayın. <ul><li>Şu adreste bulunan yönergeleri denetleyebilirsiniz: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
-|  OSProvisioningClientError  |  VM için belirtilen Kullanıcı adı bu Linux dağıtımı için geçersiz. Hata ayrıntıları: {0}.  |
-|  Osprovisioningınternalerror  |  Bir iç hata nedeniyle '{0}' VM 'si için işletim sistemi sağlama başarısız oldu.  |
-|  Osprovisioningtime,  |  '{0}' VM 'si için işletim sistemi sağlama, ayrılan sürede tamamlanmadı. VM sağlamayı başarıyla bitirirebilir. Lütfen sağlama durumunu daha sonra denetleyin.  |
-|  Osprovisioningtime,  |  '{0}' VM 'si için işletim sistemi sağlama, ayrılan sürede tamamlanmadı. VM sağlamayı başarıyla bitirirebilir. Lütfen sağlama durumunu daha sonra denetleyin. Ayrıca, görüntünün düzgün hazırlanmış (Genelleştirilmiş) olduğundan emin olun.   <ul><li>Windows için yönergeler: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux için yönergeler: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  Osprovisioningtime,  |  '{0}' VM 'si için işletim sistemi sağlama, ayrılan sürede tamamlanmadı. Ancak, VM Konuk Aracısı çalışıyor olarak algılandı. Bu, Konuk işletim sisteminin bir VM görüntüsü (CreateOption = FromImage) olarak kullanılmak üzere düzgün şekilde hazırlandığını önerir. Bu sorunu çözmek için, VHD 'yi CreateOption = Attach ile birlikte kullanın veya görüntü olarak kullanmak üzere doğru şekilde hazırlayın:   <ul><li>Windows için yönergeler: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux için yönergeler: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  EdinmeDiskLeaseFailed  |  URI {1}ile blob kullanarak{0}disk ' ' oluştururken kira elde etmek için başarısız oldu. Blob zaten kullanımda.  |  
+|  Tahsisat Başarısız Oldu  |  Ayırma başarısız oldu. Lütfen VM boyutunu veya VM sayısını azaltmayı deneyin, daha sonra yeniden deneyin veya farklı bir Kullanılabilirlik Kümesi'ne veya farklı Azure konumuna dağıtmayı deneyin.  |  
+|  Tahsisat Başarısız Oldu  |  VM ayırma bir iç hata nedeniyle başarısız oldu. Lütfen daha sonra yeniden deneyin veya farklı bir konuma dağıtmayı deneyin.  |
+|  Eser Bulunamadı  |  Yayımcı ' '{0}ve type{1}' ' ' '{2}ile VM uzantısı ' ' konumunda bulunamadı.  |
+|  Eser Bulunamadı  |  Uzantılı{0}uzantı '{1}', type '{2}' ve type işleyici sürümü ' ' uzantısı deposunda bulunamadı.  |
+|  ArtefaktSürümBulunamadı  |  Talep edilen sürümü tatmin eden yapı deposunda hiçbir sürüm{0}bulunamadı.  |
+|  ArtefaktSürümBulunamadı  |  ' ve ' type{0}{1}{2}' ile VM uzantısı için istenen sürümü ' ' tatmin eden yapı deposunda hiçbir sürüm bulunamadı.  |
+|  AttachDiskWhileBeingDetached  |  Disk şu anda ayrıştırıldığı için VM '{0}{1}e ' veri diski ' ' ekleyemez. Lütfen disk tamamen kopana kadar bekleyin ve sonra yeniden deneyin.  |
+|  BadRequest  |  Aligned' Kullanılabilirlik Kümeleri henüz bu bölgede desteklenmedi.  |
+|  BadRequest  |  Yönetilen disklerle yönetilen disklerle vm eklenmesi yönetilen Kullanılabilirlik Kümesi'ne veya blob tabanlı disklere sahip bir VM'nin yönetilen Kullanılabilirlik Kümesi'ne eklenmesi desteklenmez. Lütfen, yönetilen diskleri olan bir VM eklemek için 'yönetilen' özellik kümesini içeren bir Kullanılabilirlik Kümesi oluşturun.  |
+|  BadRequest  |  Yönetilen Diskler bu bölgede desteklenmez.  |
+|  BadRequest  |  İşleyici başına birden çok VMExtensions os{0}türü ' için desteklenmeyen. VMExtension{1}' ' ile{2}işleyici ' ' zaten girdide eklenen veya belirtilen.  |
+|  BadRequest  |  ''{0}işlemi Yönetilen disklerle{1}Kaynak ' ' üzerinde desteklenmez.  |
+|  Sertifika Yanlış Biçimlendirilmiş  |  Alınan sırrın JSON gösterimi {0} düzgün biçimlendirilmiş pfx dosyası olmayan bir veri alanına sahiptir veya sağlanan parola PFX dosyasını doğru şekilde çözmüyor.  |
+|  Sertifika Yanlış Biçimlendirilmiş  |  Alınan veriler {0} JSON'a aktarılamaz.  |
+|  Çakışma  |  Disk yeniden boyutlandırmaya yalnızca VM oluşturulurken veya VM tahsis edildiğinde izin verilir.  |
+|  ÇakışanUserInput  |  Disk{0}' ' ' ' disk zaten VM{1}' 'aağasahip olduğu için eklenemez.  |
+|  ÇakışanUserInput  |  Kaynak ve hedef kaynak grupları aynıdır.  |
+|  ÇakışanUserInput  |  Diskin {0} kaynak ve hedef depolama hesapları farklıdır.  |
+|  KonteynerAlreadyOnLease  |  Uri {0}ile blob tutan depolama konteyner için de kira sırada kira sırada bir kira sürülü  |
+|  CrossSubscriptionMoveWithKeyVaultResources  |  Kaynakları Taşı isteği, istekte bir veya daha {0}fazla s tarafından başvurulan KeyVault kaynaklarını içerir. Bu, şu anda Cross aboneliği Taşı'nda desteklenmez. Lütfen KeyVault kaynak kimlikleri için hata ayrıntılarını kontrol edin.  |
+|  DiagnosticsOperationInternalError  |  VM {0}tanılama profili işlenirken bir iç hata oluştu.  |
+|  DiskBlobAlreadyInUseByAnotherDisk  |  Blob {0} zaten VM '{1}'a ait başka bir disk tarafından kullanılmaktadır. Disk başvuru bilgileri için blob meta verilerini inceleyebilirsiniz.  |
+|  DiskBlobNotFound  |  Disk için URI {0} ile VHD blob bulamıyor '{1}.  |
+|  DiskBlobNotFound  |  URI {0}ile VHD blob bulamıyor.  |
+|  DiskEncryptionKeySecretMissingEtiketler  |  {0}Gizli nin etiketleri {1} yok. Lütfen gizli sürümü güncelleyin, gerekli etiketleri ekleyin ve yeniden deneyin.  |
+|  DiskEncryptionKeySecretUnwrapFailed  |  Anahtar {1} kullanarak {0} gizli değerin açılamaması başarısız oldu.  |
+|  DiskImageNotReady  |  Disk {0} görüntüsü {1} durumda. Lütfen görüntü hazır olduğunda yeniden deneyin.  |
+|  Disk Hazırlama Hatası  |  VM diskleri hazırlanırken bir veya daha fazla hata oluştu. Ayrıntılar için disk örneği görünümüne bakın.  |
+|  DiskProcessingError  |  VM başarısız disklerde diğer diskler olduğu gibi disk işleme durduruldu.  |
+|  ResimBlobNotFound  |  Disk için URI {0} ile VHD blob bulamıyor '{1}.  |
+|  ResimBlobNotFound  |  URI {0}ile VHD blob bulamıyor.  |
+|  YanlışDiskBlobType  |  Disk lekeleri yalnızca tür sayfa blob olabilir. Blob {0} for{1}disk ' ' türü blok blob'dur.  |
+|  YanlışDiskBlobType  |  Disk lekeleri yalnızca tür sayfa blob olabilir. Blob {0} tip '{1}'.  |
+|  YanlışGörüntüBlobType  |  Disk lekeleri yalnızca tür sayfa blob olabilir. Blob {0} for{1}disk ' ' türü blok blob'dur.  |
+|  YanlışGörüntüBlobType  |  Disk lekeleri yalnızca tür sayfa blob olabilir. Blob {0} tip '{1}'.  |
+|  InternalOperationError  |  Depolama hesabı {0}çözemedi. Lütfen bilgi işlem kaynağıyla aynı konumda Depolama Kaynak Sağlayıcısı aracılığıyla oluşturulduğundan emin olun.  |
+|  InternalOperationError  |  {0}hedef arayan görevler başarısız oldu.  |
+|  InternalOperationError  |  Hata VM{0}' in ağ profilini doğrulama oluştu.  |
+|  Geçersiz Hesap Türü  |  AccountType {0} geçersizdir.  |
+|  GeçersizParametre  |  Parametrenin {0} değeri geçersizdir.  |
+|  GeçersizParametre  |  Belirtilen Yönetici parolasına izin verilmez.  |
+|  GeçersizParametre  |  "Sağlanan parola arasında {0}olmalıdır{1} - karakterler uzun ve {2} aşağıdaki parola karmaşıklığı gereksinimleri en az karşılamak gerekir: <ol><li> Büyük harfli bir karakter içerir</li><li>Küçük bir karakter içerir</li><li>Sayısal basamak içerir</li><li>Özel bir karakter içerir.</li></ol>  |
+|  GeçersizParametre  |  Belirtilen Yönetici Kullanıcı Adı'na izin verilmez.  |
+|  GeçersizParametre  |  VM bir platformdan veya kullanıcı görüntüsünden oluşturulmuşsa varolan bir işletim sistemi diski eklenemez.  |
+|  GeçersizParametre  |  Kapsayıcı {0} adı geçersizdir. Kapsayıcı adları uzunluğu 3-63 karakter olmalıdır ve yalnızca küçük harf alfasayısal karakterler ve tire içerebilir. Tire önce ve alfasayısal bir karakter takip edilmelidir.  |
+|  GeçersizParametre  |  URL'deki {0} {1} kapsayıcı adı geçersizdir. Kapsayıcı adları uzunluğu 3-63 karakter olmalıdır ve yalnızca küçük harf alfasayısal karakterler ve tire içerebilir. Tire önce ve alfasayısal bir karakter takip edilmelidir.  |
+|  GeçersizParametre  |  URL'deki {0} blob adı bir eğik çizgi içerir. Bu, şu anda diskler için desteklenmez.  |
+|  GeçersizParametre  |  URI {0} doğru blob URI olarak görünmüyor.  |
+|  GeçersizParametre  |  ' '{0}adlı bir disk zaten {1}aynı LUN kullanır: .  |
+|  GeçersizParametre  |  ' '{0}adlı bir disk zaten var.  |
+|  GeçersizParametre  |  Belirtilen görüntü başvurusunda zaten tanımlanmış bir disk için kullanıcı görüntüsünü geçersiz kılar belirtemez.  |
+|  GeçersizParametre  |  ' '{0}adlı bir disk zaten {1}aynı VHD URL'sini kullanır.  |
+|  GeçersizParametre  |  Belirtilen hata etki {0} alanı sayısı {1} aralıkta düşmesi {2}gerekir.  |
+|  GeçersizParametre  |  Lisans türü {0} geçersizdir. Geçerli lisans türleri şunlardır: Windows_Client veya Windows_Server, servis talebine duyarlıdır.  |
+|  GeçersizParametre  |  Linux ana bilgisayar {0} adı uzunluk karakterleri geçemez veya {1}aşağıdaki karakterleri içeremez: .  |
+|  GeçersizParametre  |  Ssh ortak anahtarları için hedef yolu şu {0} anda Linux sağlama aracısında bilinen bir sorun nedeniyle varsayılan değeri ile sınırlıdır.  |
+|  GeçersizParametre  |  LUN'da {0} bir disk zaten var.  |
+|  GeçersizParametre  |  İsteğin aboneliği, {0} yönetilen {1} disk kimliğinde bulunan abonelikle eşleşmelidir.  |
+|  GeçersizParametre  |  OSProfile'daki özel veriler Base64 kodlamasında ve maksimum {0} karakter uzunluğuna sahip olmalıdır.  |
+|  GeçersizParametre  |  URL'deki {0} Blob adı{1}' ' uzantısı ile bitmelidir.  |
+|  GeçersizParametre  |  {0}' geçerli bir yakalanan VHD blob adı öneki değildir. Geçerli bir önek regex ' 'eşleşir.{1}  |
+|  GeçersizParametre  |  VM aracısı sağlanmıyorsa, Sertifikalar VM'nize eklenemez.  |
+|  GeçersizParametre  |  LUN'da {0} bir disk zaten var.  |
+|  GeçersizParametre  |  İstenen boyut, {0} kullanılabilirlik kümesinin şu anda tahsis edildiği kümede kullanılamadığı için VM oluşturulamıyor. Kullanılabilir boyutlar şunlardır: {1}. VM yeniden boyutlandırma stratejisi https://aka.ms/azure-resizevmhakkında daha fazla bilgi edinin.  |
+|  GeçersizParametre  |  İstenen VM {0} boyutu geçerli bölgede kullanılamıyor. Geçerli bölgede bulunan boyutlar şunlardır: {1}. Her bölgedeki mevcut VM boyutları hakkında daha https://aka.ms/azure-regionsfazla bilgi edinin.  |
+|  GeçersizParametre  |  İstenen VM {0} boyutu geçerli bölgede kullanılamıyor. Her bölgedeki mevcut VM boyutları hakkında daha https://aka.ms/azure-regionsfazla bilgi edinin.  |
+|  GeçersizParametre  |  Windows admin kullanıcı adı {0} karakter den fazla uzun olamaz, bir dönem (.) {1}ile sona erer veya aşağıdaki karakterleri içeremez: .  |
+|  GeçersizParametre  |  Windows bilgisayar adı uzun {0} karakterlerden fazla olamaz, tamamen sayısal olamaz veya {1}aşağıdaki karakterleri içeremez: .  |
+|  EksikTaşıma Bağımlı Kaynaklar  |  Taşıma kaynakları isteği tüm bağımlı kaynakları içermez. Lütfen eksik kaynak kimlikleri için hata ayrıntılarını kontrol edin.  |
+|  MoveResourcesHaveInvalidState  |  Kaynakları Taşı isteği, geçersiz depolama hesaplarıyla ilişkili VM'ler içerir. Lütfen bu kaynak kimlikleri ve başvurulan depolama hesabı adlarının ayrıntılarını kontrol edin.  |
+|  MoveResourcesHavependingOperations  |  Taşıma kaynakları isteği, bir işlemin beklemede olduğu kaynakları içerir. Lütfen bu kaynak kimlikleri için ayrıntıları kontrol edin. Bekleyen işlemler tamamlandıktan sonra operasyonunuzu yeniden deneyin.  |
+|  Taşınan KaynaklarBulunamadı  |  Taşıma kaynakları isteği bulunamayan kaynakları içerir. Lütfen bu kaynak kimlikleri için ayrıntıları kontrol edin.  |
+|  AğInternalOperationError  |  Bilinmeyen ağ ayırma hatası.  |
+|  AğInternalOperationError  |  Bilinmeyen ağ ayırma hatası  |
+|  AğInternalOperationError  |  VM'nin işleme ağ profilinde bir iç hata oluştu.  |
+|  NotFound  |  Kullanılabilirlik {0} Kümesi bulunamıyor.  |
+|  NotFound  |  Kaynak Sanal{0}Makine ' ' belirtilen istek bu Azure konumunda bulunmamaktadır.  |
+|  NotFound  |  Kimliği {0} bulunamayan kiracı.  |
+|  NotFound  |  Görüntü {0} bulunamıyor.  |
+|  Notsupported  |  Lisans {0}türü, ancak görüntü blob {1} şirket içinde değil.  |
+|  İşleme İzin Verilmedi  |  Kullanılabilirlik {0} Kümesi silinemez. Kullanılabilirlik Kümesini silmeden önce lütfen VM içermediğinden emin olun.  |
+|  İşleme İzin Verilmedi  |  Kullanılabilirlik kümesiSKU'nun 'Hizalanmış'dan 'Klasik'e değiştirilmesine izin verilmez.  |
+|  İşleme İzin Verilmedi  |  VM çalışmıyorsa VM uzantılarını değiştiremezsiniz.  |
+|  İşleme İzin Verilmedi  |  Yakalama eylemi yalnızca blob tabanlı disklere sahip sanal makinede desteklenir. Yönetilen bir Sanal Makine'den görüntü oluşturmak için lütfen 'Resim' kaynak API'lerini kullanın.  |
+|  İşleme İzin Verilmedi  |  Kaynak, {0} Görüntü başarıyla {1} oluşturulana kadar Görüntü'den oluşturulamaz.  |
+|  İşleme İzin Verilmedi  |  Şifreleme Ayarlarında güncellemeler VM tahsis edildiğinde izin verilmez, Lütfen VM ayrıldıktan sonra yeniden deneyin  |
+|  İşleme İzin Verilmedi  |  Blob tabanlı diskler ile vm yönetilen bir disk eklenmesi desteklenmez.  |
+|  İşleme İzin Verilmedi  |  Bu boyuttaki bir VM'ye eklenmesine izin verilen maksimum {0}veri diski sayısı.  |
+|  İşleme İzin Verilmedi  |  Yönetilen disklerle VM'ye blob tabanlı bir disk eklenmesi desteklenmez.  |
+|  İşleme İzin Verilmedi  |  Görüntü{0}silinmek için işaretli{1}olduğundan Görüntü ' ' nde ' ' işlemine izin verilmez. Yalnızca Silme işlemini yeniden deneyebilirsiniz (veya devam eden bir işlemin tamamlanmasını bekleyebilirsiniz).  |
+|  İşleme İzin Verilmedi  |  VM{0}genelleştirilediğinden VM{1}' de ' ' işlemine izin verilmez.  |
+|  İşleme İzin Verilmedi  |  {0}Geri yükleme noktası koleksiyonu '{1}olarak ' işlemine izin verilmez' silinmek için işaretlenir.  |
+|  İşleme İzin Verilmedi  |  İşlem{0}' ' ' ' vm uzantısı '{1}' ' ' silme için işaretli olduğundan izin verilmez. Yalnızca Silme işlemini yeniden deneyebilirsiniz (veya devam eden bir işlemin tamamlanmasını bekleyebilirsiniz).  |
+|  İşleme İzin Verilmedi  |  Sanal{0}Makineler{1}' ' Resmi{2}' kullanılarak sağlandığı için ' ' işlemine izin verilmemektedir.  |
+|  İşleme İzin Verilmedi  |  Sanal{0}Makine ScaleSet '{1}' ' şu anda Görüntü{2}' 'yi kullandığından' işlemine izin verilmemektedir.  |
+|  İşleme İzin Verilmedi  |  {0}VM silinmek için işaretli{1}olduğundan VM ' de ' işlemine izin verilmez. Yalnızca Silme işlemini yeniden deneyebilirsiniz (veya devam eden bir işlemin tamamlanmasını bekleyebilirsiniz).  |
+|  İşleme İzin Verilmedi  |  {0}VM'nin ayrılması veya ayrılması{1}için işaretli olması nedeniyle VM ' de işlem ' ' ne izin verilmez.  |
+|  İşleme İzin Verilmedi  |  VM{0}çalışırken VM '{1}' de işlem etüt edilmiyor. VM'yi konuk işletim sisteminin içinden kapatmanız durumunda lütfen açık bir şekilde kapatın.  |
+|  İşleme İzin Verilmedi  |  {0}VM'nin ayrılması olmadığı için{1}VM ' de operasyona izin verilmez.  |
+|  İşleme İzin Verilmedi  |  VM'de{0}{1}' ' ' ' ' '{2}işlemine izin verilmez, çünkü VM'nin uzantısı ' ' başarısız durumdadır.  |
+|  İşleme İzin Verilmedi  |  Başka{0}bir işlem devam ettiği{1}için VM ' de ' işlemine izin verilmez.  |
+|  İşleme İzin Verilmedi  |  ' '{0}' işlemi,{1}Sanal Makine ' nin Genelleştirilmesini gerektirir.  |
+|  İşleme İzin Verilmedi  |  İşlem, VM'nin çalışmasını (veya çalışacak şekilde ayarlansın) gerektirir.  |
+|  İşleme İzin Verilmedi  |  Resim'deki {0}ilgili diskin GB {1}boyutundan daha küçük olan GB boyutuna sahip diske izin verilmez.  |
+|  İşleme İzin Verilmedi  |  VM Ölçeği Kümesi işleyici{0}' ' uzantıları yalnızca VM Ölçek Kümesi oluşturma sırasında eklenebilir.  |
+|  İşleme İzin Verilmedi  |  VM Ölçeği Ayar uzantıları işleyici ' ' '{0}yalnızca VM Ölçeği Kümesi silme sırasında silinebilir.  |
+|  İşleme İzin Verilmedi  |  VM{0}' ' zaten yönetilen diskler kullanıyor.  |
+|  İşleme İzin Verilmedi  |  VM{0}' ' 'Klasik' kullanılabilirlik{1}seti ' 'ait. Lütfen 'Hizalanmış' SKU'yu kullanmak ve ardından Dönüşüm'ü yeniden denemek için kullanılabilirlik ayarını güncelleyin.  |
+|  İşleme İzin Verilmedi  |  Image'dan oluşturulan VM'de blob tabanlı diskler olamaz. Tüm diskler diskyönetilmelidir.  |
+|  İşleme İzin Verilmedi  |  VM genelleştirilmediği için yakalama işlemi tamamlanamaz.  |
+|  İşleme İzin Verilmedi  |  VM diskleri{0}yönetilen disklere dönüştürüldüğü için VM ' ' üzerindeki yönetim işlemlerine izin verilmez.  |
+|  İşleme İzin Verilmedi  |  Devam eden bir işlem Sanal {0} Makine'nin güç durumunu {1}. Lütfen bir {2} süre sonra operasyon gerçekleştirin.  |
+|  İşleme İzin Verilmedi  |  VM eklenemiyor veya güncelleştiremiyor. İstenen VM {0} boyutu varolan ayırma biriminde kullanılamayabilir. VM yeniden boyutlandırma stratejisi https://aka.ms/azure-resizevmhakkında daha fazla bilgi edinin.  |
+|  İşleme İzin Verilmedi  |  İstenen boyut, {0} kullanılabilirlik kümesinin şu anda tahsis edildiği kümede kullanılamadığı için VM yeniden boyutlandırılamıyor. Kullanılabilir boyutlar şunlardır: {1}. VM yeniden boyutlandırma stratejisi https://aka.ms/azure-resizevmhakkında daha fazla bilgi edinin.  |
+|  İşleme İzin Verilmedi  |  İstenen boyut {0} VM'nin şu anda tahsis edildiği kümede kullanılamadığından VM yeniden boyutlandırılamıyor. Lütfen (bu Azure {1} portalındaki Çalışmayı Durdur) ve yeniden boyutlandırma işlemini yeniden denemek için VM'nizi yeniden boyutlandırmak için. VM yeniden boyutlandırma stratejisi https://aka.ms/azure-resizevmhakkında daha fazla bilgi edinin.  |
+|  OSProvisioningClientError  |  Konuk işletim sistemi şu{0}anda sağlandığı için İşletim Sistemi Sağlama VM ' ' için başarısız oldu.  |
+|  OSProvisioningClientError  |  VM ' '{0}için işletim sistemi sağlama başarısız oldu. Hata ayrıntıları: {1} Görüntünün düzgün şekilde hazırlandığından (genelleştirilmiş) olduğundan emin olun. <ul><li>Windows için talimatlar:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  SSH ana bilgisayar anahtar üretimi başarısız oldu. Hata ayrıntıları: {0}. Bu sorunu gidermek için Linux aracısı düzgün ayarlanmış olup olmadığını doğrulayın. <ul><li>Talimatları aşağıdaki noktadan kontrol edebilirsiniz:https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  OSProvisioningClientError  |  VM için belirtilen kullanıcı adı bu Linux dağıtımı için geçersizdir. Hata ayrıntıları: {0}.  |
+|  OSProvisioningInternalError  |  İşletim Sistemi Sağlama,{0}bir iç hata nedeniyle VM ' ' için başarısız oldu.  |
+|  OSProvisioningTimedOut  |  VM ' '{0}için İşletim Sistemi Sağlama, ayrılan süre içinde bitiremedi. VM yine de sağlamayı başarıyla tamamlayabilir. Lütfen daha sonra sağlama durumunu kontrol edin.  |
+|  OSProvisioningTimedOut  |  VM ' '{0}için İşletim Sistemi Sağlama, ayrılan süre içinde bitiremedi. VM yine de sağlamayı başarıyla tamamlayabilir. Lütfen daha sonra sağlama durumunu kontrol edin. Ayrıca, görüntünün düzgün bir şekilde hazırlandığından (genelleştirilmiş) olduğundan emin olun.   <ul><li>Windows için talimatlar:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux için talimatlar:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  VM ' '{0}için İşletim Sistemi Sağlama, ayrılan süre içinde bitiremedi. Ancak, VM konuk aracı çalışırken algılandı. Bu, konuk işletim sistemi'nin VM görüntüsü olarak (CreateOption=FromImage ile) düzgün bir şekilde kullanılmak üzere hazırlanmadığını gösterir. Bu sorunu gidermek için, CreateOption=Attach'ta olduğu gibi VHD'yi kullanın veya görüntü olarak kullanmak üzere düzgün bir şekilde hazırlayın:   <ul><li>Windows için talimatlar:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux için talimatlar:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  Gerekli VM boyutu şu anda seçili konumda kullanılamıyor.  |
-|  ResourceUpdateBlockedOnPlatformUpdate  |  Devam eden platform güncelleştirmesi nedeniyle kaynak şu anda güncelleştirilemiyor. Lütfen daha sonra tekrar deneyin.  |
-|  Storageaccountsınırlamanın  |  '{0}' depolama hesabı, disk oluşturmak için gerekli olan sayfa bloblarını desteklemiyor.  |
-|  Storageaccountsınırlamanın  |  '{0}' depolama hesabı, ayrılmış kotasını aştı.  |
-|  Storageaccountlocationuyuşmazlığıdır  |  {0}depolama hesabı çözümlenemedi. Lütfen işlem kaynağıyla aynı konumdaki depolama kaynak sağlayıcısı üzerinden oluşturulduğundan emin olun.  |
-|  StorageAccountNotFound  |  {0} depolama hesabı bulunamadı. Depolama hesabının silinmediğinden ve VM ile aynı Azure konumuna ait olduğundan emin olun.  |
-|  Storageaccountnottanınmış  |  Lütfen depolama kaynak sağlayıcısı tarafından yönetilen bir depolama hesabı kullanın. {0} kullanımı desteklenmez.  |
-|  Storageaccountoperationınternalerror  |  {0}depolama hesabına erişilirken iç hata oluştu.  |
-|  Storageaccountsubscriptionuyuşmazlığı  |  {0} depolama hesabı {1}aboneliğe ait değil.  |
-|  StorageAccountTooBusy  |  '{0}' depolama hesabı şu anda çok meşgul. Başka bir hesap kullanmayı düşünün.  |
-|  StorageAccountTypeNotSupported  |  Disk {0} bir BLOB depolama hesabı olan {1} kullanır. Lütfen genel amaçlı depolama hesabı ile yeniden deneyin.  |
-|  StorageAccountTypeNotSupported  |  Depolama hesabı {0} {1} türüdür. Önyükleme tanılaması {2} depolama hesabı türlerini destekler.  <ul><li>Bu hata, önyükleme tanılaması için Premium depolama hesabı kullanırsanız oluşur. Daha fazla bilgi için bkz. [önyükleme tanılamayı kullanma](boot-diagnostics.md). </li></ul> |
-|  SubscriptionNotAuthorizedForImage  |  Abonelik yetkili değil.  |
-|  TargetDiskBlobAlreadyExists var  |  Blob {0} zaten var. Lütfen yeni boş bir '{1}' veri diski oluşturmak için farklı bir blob URI 'SI sağlayın.  |
-|  TargetDiskBlobAlreadyExists var  |  Hedef görüntü blobu {0} zaten varolduğundan ve VHD bloblarının üzerine yazılacak bayrak ayarlanmadığından yakalama işlemi devam edemiyor. Blobu silin ya da bayrağı VHD bloblarının üzerine yazacak şekilde ayarlayın ve yeniden deneyin.  |
-|  TargetDiskBlobAlreadyExists var  |  Hedef görüntü blobu {0} üzerinde etkin bir kiralama olduğundan yakalama işlemi devam edemiyor.   |
-|  TargetDiskBlobAlreadyExists var  |  Blob {0} zaten var. Lütfen '{1}' diski için hedef olarak farklı bir blob URI 'SI sağlayın.  |
-|  TooManyVMRedeploymentRequests  |  VM '{0}' veya bu VM ile aynı Kullanılabilirlik kümesindeki VM 'Ler için çok fazla yeniden dağıtım isteği alındı. Lütfen daha sonra yeniden deneyin.  |
-|  Vhdsizegeçersiz  |  Blob {2} ile '{1}' diski için {0} belirtilen disk boyutu değeri geçersiz. Disk boyutu {3} ile {4}arasında olmalıdır.  |
-|  VMAgentStatusCommunicationError  |  VM '{0}' VM Aracısı veya uzantıları için durum bildirmedi. Lütfen VM 'nin çalışan bir VM aracısına sahip olduğunu ve Azure depolama 'ya giden bağlantılar kurabildiğini doğrulayın.  |
-|  Vmartifactrepositoryınternalerror  |  VM yapıt ayrıntılarını almak için yapıt deposu ile iletişim kurulurken bir hata oluştu.  |
-|  Vmartifactrepositoryınternalerror  |  Yapıt deposundan VM yapıt verileri alınırken bir iç hata oluştu.  |
-|  Vmextensionhandlernongeçişli Enterror  |  '{0}' işleyicisi, '{1}' VM uzantısı için '{2}' Terminal hata kodu ve '{3}' hata iletisiyle ilgili bir hata bildirdi.  |
-|  Vmextensionmanagementınternalerror  |  '{0}' sanal makine uzantısı işlenirken iç hata oluştu.  |
-|  Vmextensionmanagementınternalerror  |  VM uzantıları hazırlanırken birden çok hata oluştu. Ayrıntılar için bkz. VM uzantı örneği görünümü.  |
-|  VMExtensionProvisioningError  |  VM, '{0}' uzantısını işlerken bir hata bildirdi. Hata iletisi: "{1}".  |
-|  VMExtensionProvisioningError  |  VM 'de birden çok VM Uzantısı sağlanamadı. Ayrıntılar için lütfen VM uzantısı örnek görünümüne bakın.  |
-|  VMExtensionProvisioningTimeout  |  '{0}' VM uzantısının sağlanması zaman aşımına uğradı. Uzantı yüklemesi çok uzun sürüyor veya uzantı durumu elde edilemedi.  |
-|  Vmmarketplaceınvalidınput  |  Market olmayan bir görüntüden sanal makine oluşturmak için plan bilgileri gerekmez, lütfen istekteki plan bilgilerini kaldırın. İşletim sistemi diski adı {0}.  |
-|  Vmmarketplaceınvalidınput  |  Satın alma bilgileri eşleşmiyor. Market görüntüsünden dağıtım yapılamıyor. İşletim sistemi diski adı {0}.  |
-|  Vmmarketplaceınvalidınput  |  Market görüntüsünden bir sanal makine oluşturmak istekte plan bilgileri gerektirir. İşletim sistemi diski adı {0}.  |
-|  VMNotFound  |  '{0}' VM 'si bulunamıyor.  |
-|  VMRedeploymentFailed  |  VM '{0}' yeniden dağıtımı bir iç hata nedeniyle başarısız oldu. Lütfen daha sonra yeniden deneyin.  |
-|  Vmredeploymenttimeın  |  '{0}' VM 'sinin yeniden dağıtımı ayrılan sürede bitmedi. Bir süre içinde başarıyla bitebilirler. Aksi takdirde, isteği yeniden deneyebilirsiniz.  |
-|  Vmstarttimepr  |  '{0}' VM 'si ayrılan süre içinde başlatılmadı. VM hala başarıyla başlayabilir. Lütfen daha sonra güç durumunu kontrol edin.  |
+|  KaynakUpdateBlockedOnPlatformUpdate  |  Devam eden platform güncelleştirmesi nedeniyle kaynak şu anda güncelleştirilemez. Lütfen daha sonra tekrar deneyin.  |
+|  Depolama Hesap Sınırlaması  |  Depolama hesabı{0}' ' ' disk oluşturmak için gerekli olan sayfa blobs desteklemez.  |
+|  Depolama Hesap Sınırlaması  |  Depolama hesabı{0}' ' ' tahsis edilen kotayı aştı.  |
+|  DepolamaHesapLocationMismatch  |  Depolama hesabı {0}çözemedi. Lütfen bilgi işlem kaynağıyla aynı konumda Depolama Kaynak Sağlayıcısı aracılığıyla oluşturulduğundan emin olun.  |
+|  DepoHesabı Bulunamadı  |  Depolama {0} hesabı bulunamadı. Depolama hesabının silinmediğinden ve VM ile aynı Azure konumuna ait olduğundan emin olun.  |
+|  StorageAccount Tanınmadı  |  Lütfen Depolama Kaynak Sağlayıcısı tarafından yönetilen bir depolama hesabı kullanın. {0} Kullanımı desteklenmez.  |
+|  StorageAccountOperationInternalError  |  Depolama hesabına {0}erişirken iç hata oluştu.  |
+|  DepolamaHesabıAbonelikMismatch  |  Depolama {0} hesabı aboneye {1}ait değildir.  |
+|  Depolama HesabıÇok Meşgul  |  Depolama hesabı{0}' ' ' şu anda çok meşgul. Başka bir hesap kullanmayı düşünün.  |
+|  StorageAccountTypeNotSupported  |  {0} Disk, {1} Blob depolama hesabı olan bir hesap kullanır. Lütfen Genel amaçlı depolama hesabı ile yeniden deneyin.  |
+|  StorageAccountTypeNotSupported  |  Depolama {0} hesabı {1} türüdür. Önyükleme Tanılama depolama hesabı türlerini destekler. {2}  <ul><li>Bu hata, Önyükleme tanılama için premium depolama hesabı kullanırsanız oluşur. Daha fazla bilgi için [önyükleme tanılamanasıl kullanılır](boot-diagnostics.md)bakın. </li></ul> |
+|  AbonelikNotAuthorizedForImage  |  Abonelik yetkili değildir.  |
+|  TargetDiskBlobZatenVar  |  Blob {0} zaten var. Yeni bir boş veri diski{1}' 'oluşturmak için farklı bir blob URI sağlayın.  |
+|  TargetDiskBlobZatenVar  |  Hedef görüntü blob {0} zaten var ve VHD lekeleri üzerine yazmak için bayrak ayarlanmadığından yakalama işlemi devam edemez. Ya blob silmek veya VHD lekeleri üzerine yazmak ve yeniden denemek için bayrağı ayarlayın.  |
+|  TargetDiskBlobZatenVar  |  Hedef görüntü blob {0} üzerinde etkin bir kira olduğundan yakalama işlemi devam edemez.   |
+|  TargetDiskBlobZatenVar  |  Blob {0} zaten var. Lütfen disk ' 'için{1}hedef olarak farklı bir blob URI sağlayın.  |
+|  TooManyVMRedeploymentRequests  |  VM '{0}veya bu VM ile aynı kullanılabilirlik kümesindeki VM'ler için çok fazla yeniden dağıtım isteği alındı. Lütfen daha sonra tekrar deneyin.  |
+|  VHDSizeGeçersiz  |  Blob {2} ile disk {0} '{1}' için belirtilen disk boyutu değeri geçersizdir. Disk boyutu arasında {3} {4}ve .  |
+|  VMAgentStatusCommunicationError  |  VM{0}' ' VM aracısı veya uzantıları için durum bildirilmemiştir. Lütfen VM'nin çalışan bir VM aracısı olduğunu ve Azure depolama alanına giden bağlantılar kurabileceğini doğrulayın.  |
+|  VMArtifactRepositoryInternalError  |  VM artifakı ayrıntılarını almak için yapı deposuyla iletişim kurarken bir hata oluştu.  |
+|  VMArtifactRepositoryInternalError  |  Yapı deposundan VM artifakı verileri alırken bir iç hata oluştu.  |
+|  VMExtensionHandlerNonTransientError  |  Handler{0}' ' ' terminal hata{1}kodu ' '{2}ve hata iletisi ile VM Extension ' ' için hata bildirdi: ' '{3}'  |
+|  VMExtensionManagementInternalError  |  VM uzantısı{0}' 'işlenirken iç hata oluştu.  |
+|  VMExtensionManagementInternalError  |  VM uzantıları hazırlanırken birden çok hata oluştu. Ayrıntılar için VM uzantı örnek görünümüne bakın.  |
+|  VMExtensionProvisioningError  |  VM uzantısı ' 'işlenirken{0}bir hata bildirdi. Hata iletisi: "{1}".  |
+|  VMExtensionProvisioningError  |  Birden çok VM uzantıları VM üzerinde sağlanamadı. Ayrıntılar için lütfen VM uzantıörneği görünümüne bakın.  |
+|  VMExtensionProvisioningTimeout  |  VM uzantısı '{0}' sağlanması zaman doldu. Uzantı yüklemesi çok uzun sürebilir veya uzantı durumu elde edilemedi.  |
+|  VMMarketplaceInvalidInput  |  Pazar Yeri olmayan bir görüntüden sanal bir makine oluşturmak Plan bilgisigerektirmez, lütfen istekteki Plan bilgilerini kaldırın. İşletim {0}sistemi disk adı .  |
+|  VMMarketplaceInvalidInput  |  Satınalma bilgileri eşleşmez. Market görüntüsünden dağıtılamıyor. İşletim {0}sistemi disk adı .  |
+|  VMMarketplaceInvalidInput  |  Market görüntüsünden sanal bir makine oluşturmak, istekteki Plan bilgilerini gerektirir. İşletim {0}sistemi disk adı .  |
+|  VMNotFound  |  VM '{0}' ' bulunamadı.  |
+|  VMRedeploymentFailed  |  VM{0}' ' ' yeniden dağıtım bir iç hata nedeniyle başarısız oldu. Lütfen daha sonra tekrar deneyin.  |
+|  VMRedeploymentTimedOut  |  VM ' '{0}nin yeniden dağıtılması ayrılan sürede sona ermedi. Bir süre içinde başarılı bir şekilde bitirebilir. Aksi takdirde, isteği yeniden deneyebilirsiniz.  |
+|  VMStartTimedOut  |  VM{0}' ' ' için ayrılan süre içinde başlamadı. VM hala başarılı bir şekilde başlayabilir. Lütfen daha sonra güç durumunu kontrol edin.  |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayına dosya. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+Daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.

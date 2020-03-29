@@ -1,6 +1,6 @@
 ---
-title: H264 Çoklu bit hızı 720p Media Encoder Standard hazır - Azure | Microsoft Docs
-description: Konusuna genel bir fikir veren **H264 Çoklu bit hızı 720p** görev hazır.
+title: H264 Çoklu Bitrate 720p Media Encoder Standart hazır - Azure| Microsoft Dokümanlar
+description: Konu **H264 Çoklu Bitrate 720p** görev ön ayarını genel bir bakış verir.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 47fe4494ad37566f7849b5b123cfb77323d3edd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463642"
 ---
 # <a name="h264-multiple-bitrate-720p"></a>H264 Multiple Bitrate 720p
-`Media Encoder Standard` kodlama işi oluştururken kullanabileceğiniz hazır kodlama kümesi tanımlar. Kullanabilir bir `preset name` hangi biçimine medya dosyanızı kodlamak istediğiniz belirtmek için. Veya kendi JSON veya XML tabanlı hazır (UTF-8 veya UTF-16 kodlamasını kullanıyor. oluşturabilirsiniz Ardından kodlayıcıya hazır özel geçirmeniz gerekir. Bu tarafından desteklenen tüm hazır adlarının listesi için `Media Encoder Standard` Kodlayıcı bkz [Media Encoder Standard için görev ön ayarları](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama ön ayarları kümesini tanımlar. A'yı, `preset name` medya dosyanızı kodlamak istediğiniz biçimi belirtmek için de kullanabilirsiniz. Veya kendi JSON veya XML tabanlı hazır ayarlarınızı (UTF-8 veya UTF-16 kodlaması kullanarak) oluşturabilirsiniz. Daha sonra özel ön ayarını kodlayıcıya geçirirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi [için, Ortam Kodlayıcı Standardı için Görev Hazır Ayarları'na](media-services-mes-presets-overview.md)bakın.  
   
- Bu konu başlığı altında gösterilir `H264 Multiple Bitrate 720p` XML ve JSON biçiminde hazır.  
+ Bu `H264 Multiple Bitrate 720p` konu, XML ve JSON biçiminde önceden ayarlanmışı gösterir.  
   
- Bu önceden ayarlanmış 400 KB/sn ve stereo AAC ses 3400 KB/sn arasında değişen 6 GOP hizalı MP4 dosyaları kümesini oluşturur. Profili hakkında ayrıntılı bilgi için örnekleme hızını, vb. Bu bit hızı, hazır, XML veya JSON aşağıda tanımlanan inceleyin. Bu hazır anlamına gelir ve geçerli değerler her hangi bir öğenin her öğe için açıklamalar için bkz [Media Encoder Standard şeması](media-services-mes-schema.md) konu.  
+ Bu ön ayar, 3400 kbps ile 400 kbps arasında değişen 6 GOP uyumlu MP4 dosyası ve stereo AAC ses kümesi üretir. Bu önceden ayarlanmış profil, bitrate, örnekleme hızı vb. hakkında ayrıntılı bilgi için aşağıda tanımlanan XML veya JSON'u inceleyin. Bu hazır ayarlardaki her öğenin ne anlama geldiğini ve her öğe için geçerli değerleri açıklamaları için [Media Encoder Standart şeması](media-services-mes-schema.md) konusuna bakın.  
   
 > [!NOTE]
->  Değiştirirken `Width` ve `Height` katmanları arasında değerleri en boy oranını tutarlı kalmasından emin olun. Örneğin: 1920 x 1080, 1280 x 720, 1080 x 576 640 x 360. En boy oranlarına bir karışımını gibi kullanmamalısınız: 1280 x 720, 720 x 480, 640 x 360.  
+>  Katmanlar arasında `Width` `Height` ve değerleri değiştirirken, en boy oranının tutarlı kaldığından emin olun. Örneğin: 1920x1080, 1280x720, 1080x576, 640x360. 1280x720, 720x480, 640x360 gibi en boy oranlarının bir karışımını kullanmamalısınız.  
   
  XML  
   

@@ -1,6 +1,6 @@
 ---
-title: API kimlik doğrulamasını anlama-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS kullanarak API 'lerle bağlantı kurmak ve bunları doğrulamak hakkında bilgi edinin.
+title: API kimlik doğrulamasını anlama - Azure Digital Twins | Microsoft Dokümanlar
+description: Azure Digital Twins'i kullanarak API'lere nasıl bağlanıp kimlik doğrulaması yapacaklarını öğrenin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,50 +9,50 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: d950d41186d578702343645875dd7c565002d5a5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513017"
 ---
-# <a name="connect-to-and-authenticate-with-apis"></a>API 'lerle bağlantı kurmak ve kimlik doğrulamak
+# <a name="connect-to-and-authenticate-with-apis"></a>API'lere bağlanma ve kimlik doğrulaması
 
-Azure dijital TWINS, kullanıcıların kimliğini doğrulamak ve uygulamaları korumak için Azure Active Directory (Azure AD) kullanır. Azure AD, çeşitli modern mimarilerin kimlik doğrulamasını destekler. Bunların hepsi, OAuth 2,0 veya OpenID Connect sektör standardı protokollerine dayanır. Ayrıca, geliştiriciler tek kiracılı ve iş kolu (LOB) uygulamaları oluşturmak için Azure AD 'yi kullanabilir. Geliştiriciler, [çok kiracılı uygulamalar](how-to-multitenant-applications.md)geliştirmek IÇIN Azure AD 'yi de kullanabilir.
+Azure Digital Twins, kullanıcıların kimliğini doğrulamak ve uygulamaları korumak için Azure Active Directory (Azure AD) kullanır. Azure AD, çeşitli modern mimariler için kimlik doğrulamayı destekler. Bunların hepsi endüstri standardı protokolleri OAuth 2.0 veya OpenID Connect dayanmaktadır. Ayrıca, geliştiriciler tek kiracılı ve iş çizgisi (LOB) uygulamaları oluşturmak için Azure AD'yi kullanabilir. Geliştiriciler ayrıca [çok kiracılı uygulamalar](how-to-multitenant-applications.md)geliştirmek için Azure AD'yi de kullanabilir.
 
-Azure AD 'ye genel bakış için, adım adım kılavuzlar, kavramlar ve hızlı başlangıçların [temelleri sayfasını](https://docs.microsoft.com/azure/active-directory/fundamentals/) ziyaret edin.
+Azure AD'ye genel bir bakış için, adım adım kılavuzlar, kavramlar ve hızlı başlangıçlar için [temel ler sayfasını](https://docs.microsoft.com/azure/active-directory/fundamentals/) ziyaret edin.
 
 > [!TIP]
-> Azure dijital TWINS örnek uygulamasını ayarlamak ve çalıştırmak için [öğreticiyi](tutorial-facilities-setup.md) izleyin.
+> Azure Digital Twins örnek uygulamasını ayarlamak ve çalıştırmak için [Öğretici'yi](tutorial-facilities-setup.md) izleyin.
 
-Bir uygulama veya hizmeti Azure AD ile tümleştirmek için geliştiricilerin önce uygulamayı Azure AD'ye kaydetmesi gerekir. Ayrıntılı yönergeler ve ekran görüntüleri için [Bu hızlı](../active-directory/develop/quickstart-register-app.md)başlangıcı okuyun.
+Bir uygulama veya hizmeti Azure AD ile tümleştirmek için geliştiricilerin önce uygulamayı Azure AD'ye kaydetmesi gerekir. Ayrıntılı talimatlar ve ekran görüntüleri için [bu quickstart'ı](../active-directory/develop/quickstart-register-app.md)okuyun.
 
-Azure AD tarafından [beş birincil uygulama senaryosu](../active-directory/develop/v2-app-types.md) desteklenir:
+[Beş birincil uygulama senaryosu](../active-directory/develop/v2-app-types.md) Azure AD tarafından desteklenir:
 
-* Tek sayfalı uygulama (SPA): kullanıcının Azure AD tarafından güvenliği sağlanmış tek sayfalı bir uygulamada oturum açması gerekir.
-* Web uygulamasına Web tarayıcısı: bir kullanıcının Azure AD tarafından güvenliği sağlanmış bir Web uygulamasında oturum açması gerekir.
-* Yerel uygulama Web API 'sine: bir telefonda, tablette veya BILGISAYAR üzerinde çalışan yerel bir uygulamanın, Azure AD tarafından güvenliği sağlanmış bir Web API 'sinden kaynak alması için bir kullanıcının kimliğini doğrulaması gerekir.
-* Web uygulaması Web API 'SI: bir Web uygulamasının Azure AD ile güvenliği sağlanmış bir Web API 'sinden kaynak alması gerekir.
-* Web API 'sine yönelik Daemon veya sunucu uygulaması: Web Kullanıcı arabirimi olmayan bir arka plan uygulaması veya bir sunucu uygulaması, Azure AD tarafından güvenliği sağlanmış bir Web API 'sinden kaynak almaya ihtiyaç duyuyor.
+* Tek sayfalı uygulama (SPA): Bir kullanıcının Azure AD tarafından güvenli tek sayfalı bir uygulamada oturum açması gerekir.
+* Web tarayıcısı ve web uygulaması: Bir kullanıcının Azure AD tarafından güvenli bir web uygulamasında oturum açması gerekir.
+* Web API'ye yerel uygulama: Telefonda, tablette veya bilgisayarda çalışan yerel bir uygulamanın, Azure AD tarafından güvenli bir web API'sinden kaynak elde etmek için kullanıcının kimliğini doğrulaması gerekir.
+* Web api'sine web uygulaması: Bir web uygulamasının Azure AD tarafından güvenli bir web API'sinden kaynak alması gerekir.
+* Web API'sine daemon veya sunucu uygulaması: Bir daemon uygulaması veya web kullanıcı arabirimi olmayan bir sunucu uygulamasının Azure AD tarafından güvenli bir web API'sinden kaynak alması gerekir.
 
 > [!IMPORTANT]
-> Azure dijital TWINS aşağıdaki kimlik doğrulama kitaplıklarının her ikisini de destekler:
-> * Daha yeni [Microsoft kimlik doğrulama kitaplığı (msal)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-> * [Azure Active Directory kimlik doğrulama kitaplığı (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
+> Azure Digital Twins, aşağıdaki kimlik doğrulama kitaplıklarının her ikisini de destekler:
+> * Daha yeni [Microsoft Kimlik Doğrulama Kitaplığı (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Azure Etkin Dizin Kimlik Doğrulama Kitaplığı (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
-## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Orta katman Web API 'sinden dijital TWINS çağırma
+## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Orta katmanlı web API'sinden Dijital İkizler'i arayın
 
-Geliştiriciler dijital TWINS çözümlerini mimarilerlerse, genellikle bir orta katman uygulaması veya API 'SI oluşturur. Uygulama veya API daha sonra dijital TWINS API 'sini aşağı akış olarak çağırır. Bu standart Web çözüm mimarisini desteklemek için, kullanıcıların önce şunları yaptığınızdan emin olun:
+Geliştiriciler Digital Twins çözümlerini mimar ettiklerinde, genellikle bir orta katman uygulaması veya API oluştururlar. Uygulama veya API daha sonra Digital Twins API'yi aşağı akım olarak adlandırır. Bu standart web çözüm mimarisini desteklemek için, önce kullanıcıların şularını
 
-1. Orta katman uygulamasıyla kimlik doğrulama
+1. Orta katman uygulamasıyla kimlik doğrulaması
 
-1. Kimlik doğrulaması sırasında bir OAuth 2,0 adına belirteç alındı
+1. Kimlik doğrulama sırasında Bir OAuth 2.0 Adına-Token elde edilir
 
-1. Elde edilen belirteç daha sonra kimlik doğrulaması için veya şirket içi akış kullanarak daha fazla aşağı akış olan API 'Leri çağırmak için kullanılır
+1. Edinilen belirteç, Daha sonra On-Behalf-Of akışını kullanarak daha aşağıda olan API'leri doğrulamak veya aramak için kullanılır
 
-Şirket adına akışı düzenleme hakkında yönergeler için, [OAuth 2,0 adına sahip akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)okuyun. Ayrıca, [bir aşağı akış Web API 'Sini çağırarak](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)kod örneklerini görüntüleyebilirsiniz.
+Akış adına nasıl düzenleneneciyi anlatan talimatlar için [OAuth 2.0 On-Behalf-Of akışını](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)okuyun. Ayrıca, [bir downstream web API'yi arama](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)da kod örneklerini görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OAuth 2,0 örtük verme akışını kullanarak Azure dijital TWINS yapılandırmak ve test etmek için [Postman yapılandırma](./how-to-configure-postman.md)makalesini okuyun.
+OAuth 2.0 örtülü hibe akışını kullanarak Azure Digital Twins'i yapılandırmak ve test etmek için [Postacıyı Yapılandırma'yı](./how-to-configure-postman.md)okuyun.
 
-Azure dijital TWINS güvenliği hakkında daha fazla bilgi edinmek için [rol atamaları oluşturma ve yönetme](./security-create-manage-role-assignments.md)konusunu okuyun.
+Azure Digital Twins güvenliği hakkında bilgi edinmek için [rol atamaları oluştur ve yönet'](./security-create-manage-role-assignments.md)i okuyun.

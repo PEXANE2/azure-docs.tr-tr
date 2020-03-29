@@ -1,23 +1,23 @@
 ---
-title: Azure Service Fabric uygulamalarını ve hizmetlerini açıklama
-description: Service Fabric uygulamaları ve hizmetleri anlatmak için bildirimlerin nasıl kullanıldığını açıklar.
+title: Azure Hizmet Kumaşı uygulamalarını ve hizmetlerini tanımlama
+description: Hizmet Kumaşı uygulamalarını ve hizmetlerini tanımlamak için bildirimlerin nasıl kullanıldığını açıklar.
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75349974"
 ---
-# <a name="service-fabric-application-and-service-manifests"></a>Uygulama ve hizmet bildirimlerini Service Fabric
-Bu makalede, Service Fabric uygulamalarının ve hizmetlerin ApplicationManifest. xml ve ServiceManifest. xml dosyaları kullanılarak nasıl tanımlandığı ve sürümü oluşturulduğu açıklanmaktadır.  Daha ayrıntılı örnekler için bkz. [uygulama ve hizmet bildirimi örnekleri](service-fabric-manifest-examples.md).  Bu bildirim dosyaları için XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
+# <a name="service-fabric-application-and-service-manifests"></a>Hizmet Kumaş uygulama ve hizmet bildirimleri
+Bu makalede, Service Fabric uygulamalarının ve hizmetlerinin ApplicationManifest.xml ve ServiceManifest.xml dosyaları kullanılarak nasıl tanımlandığı ve sürüldüğü açıklanmaktadır.  Daha ayrıntılı örnekler için [uygulama ve hizmet bildirimi örneklerine](service-fabric-manifest-examples.md)bakın.  Bu manifesto dosyaları için XML şema [ServiceFabricServiceModel.xsd şema belgelerde](service-fabric-service-model-schema.md)belgelenmiştir.
 
 > [!WARNING]
-> Manifest XML dosya şeması alt öğelerin doğru sıralamasını zorlar.  Kısmi bir geçici çözüm olarak, Service Fabric bildirimlerini yazarken veya değiştirirken Visual Studio 'da "C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd" dosyasını açın. Bu, alt öğelerin sıralamasını kontrol etmeniz ve ıntellı bir fikir sağlar.
+> Manifest XML dosyası şeması, alt öğelerin doğru sıralanmasına neden olur.  Kısmi bir geçici çözüm olarak, Visual Studio'da Hizmet Kumaşı bildirimlerinden herhangi birini yazarken veya değiştirirken "C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd" adresini açın. Bu, alt öğelerin sırasını kontrol etmek için izin verir ve intelli-anlamda sağlar.
 
-## <a name="describe-a-service-in-servicemanifestxml"></a>ServiceManifest. xml ' de bir hizmeti açıkla
-Hizmet bildirimi, hizmet türünü ve sürümü bildirimli olarak tanımlar. Hizmet türü, sistem durumu özellikleri, Yük Dengeleme ölçümleri, hizmet ikili dosyaları ve yapılandırma dosyaları gibi hizmet meta verilerini belirtir.  Başka bir yöntem de, bir veya daha fazla hizmet türünü desteklemek üzere bir hizmet paketi oluşturan kod, yapılandırma ve veri paketlerini açıklar. Bir hizmet bildirimi, bağımsız olarak sürümlü birden çok kod, yapılandırma ve veri paketleri içerebilir. Aşağıda, [Oylama örnek uygulamasının](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) ASP.NET Core Web ön uç hizmeti için bir hizmet bildirimi verilmiştir (ve [daha ayrıntılı örnekler](service-fabric-manifest-examples.md)aşağıda verilmiştir):
+## <a name="describe-a-service-in-servicemanifestxml"></a>ServiceManifest.xml'de bir hizmeti açıklayın
+Hizmet bildirimi bildirimsel olarak hizmet türünü ve sürümünü tanımlar. Hizmet türü, sistem durumu özellikleri, yük dengeleme ölçümleri, hizmet ikilileri ve yapılandırma dosyaları gibi hizmet meta verilerini belirtir.  Başka bir şekilde, bir veya daha fazla hizmet türünü desteklemek için bir hizmet paketi oluşturan kodu, yapılandırmayı ve veri paketlerini açıklar. Bir hizmet bildirimi, bağımsız olarak sürülebilen birden çok kod, yapılandırma ve veri paketi içerebilir. Burada [Oylama örnek uygulamanın](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) ASP.NET Core web ön uç hizmeti için bir hizmet manifestosu (ve burada bazı [daha ayrıntılı örnekler:](service-fabric-manifest-examples.md)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -57,24 +57,24 @@ Hizmet bildirimi, hizmet türünü ve sürümü bildirimli olarak tanımlar. Hiz
 </ServiceManifest>
 ```
 
-**Sürüm** öznitelikleri yapılandırılmamış dizelerdir ve sistem tarafından ayrıştırılmaz. Sürüm öznitelikleri, her bileşenin yükseltme için sürümü için kullanılır.
+**Sürüm** öznitelikleri yapılandırılmamış dizeleri ve sistem tarafından ayrıştırılmış değildir. Sürüm öznitelikleri yükseltmeleri için her bileşeni sürüm için kullanılır.
 
-**ServiceType** , bu bildirimde **codepackages** tarafından desteklenen hizmet türlerini bildirir. Bu hizmet türlerinden birine karşı bir hizmet örneği oluşturulduğunda, bu bildirimde belirtilen tüm kod paketleri giriş noktaları çalıştırılarak etkinleştirilir. Elde edilen işlemlerin, çalışma zamanında desteklenen hizmet türlerini kaydetmesi beklenmektedir. Hizmet türleri, kod paketi düzeyi değil, bildirim düzeyinde belirtilir. Bu nedenle, birden çok kod paketi olduğunda, her sistem, belirtilen hizmet türlerinden birini her ararken etkinleştirilir.
+**ServiceTypes,** bu bildirimde hangi hizmet türlerinin **CodePackages** tarafından desteklenedildiğini bildirir. Bir hizmet bu hizmet türlerinden birine karşı anında olduğunda, bu bildirimde beyan edilen tüm kod paketleri giriş noktaları çalıştırılarak etkinleştirilir. Elde edilen işlemlerin, desteklenen hizmet türlerini çalışma zamanında kaydetmesi beklenir. Hizmet türleri, kod paketi düzeyinde değil, bildirim düzeyinde bildirilir. Bu nedenle, birden çok kod paketi olduğunda, sistem bildirilen hizmet türlerinden herhangi birini aradığında bunların tümü etkinleştirilir.
 
-**Giriş noktası** tarafından belirtilen yürütülebilir dosya genellikle uzun süre çalışan hizmet ana bilgisayarı. **Setupentrypoint** , diğer herhangi bir giriş noktasından önce Service Fabric (genellikle *LocalSystem* hesabı) ile aynı kimlik bilgileriyle çalışan ayrıcalıklı bir giriş noktasıdır.  Ayrı bir kurulum giriş noktasının varlığı, hizmet ana bilgisayarını uzun süreler boyunca yüksek ayrıcalıklarla çalıştırmak zorunda kalmaktan kaçınır. **Giriş noktası** tarafından belirtilen yürütülebilir dosya, **setupentrypoint** başarıyla çıktıktan sonra çalıştırılır. İşlem sonlandırıldığında veya kilitlenirse, sonuçta elde edilen işlem izlenir ve yeniden başlatılır ( **Setupentrypoint**ile yeniden başlar).  
+**EntryPoint** tarafından belirtilen yürütülebilir genellikle uzun süren hizmet ana bilgisayardır. **SetupEntryPoint,** başka bir giriş noktasından önce Hizmet Kumaşı (genellikle *LocalSystem* hesabı) ile aynı kimlik bilgileriyle çalışan ayrıcalıklı bir giriş noktasıdır.  Ayrı bir kurulum giriş noktasının varlığı, hizmet ana bilgisayarını uzun süreler boyunca yüksek ayrıcalıklarla çalıştırmak zorunda kalmamayı önler. **EntryPoint** tarafından belirtilen yürütülebilir **kurulumEntryPoint** çıktıktan sonra başarıyla çalıştırılır. İşlem sona ererse veya çökerse, ortaya çıkan işlem izlenir ve yeniden başlatılır **(SetupEntryPoint**ile yeniden başlar).  
 
-**Setupentrypoint** kullanmaya yönelik tipik senaryolar, hizmet başlamadan önce bir yürütülebilir dosya çalıştırdığınızda veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirdiğinizde yapılır. Örneğin:
+**SetupEntryPoint'i** kullanmak için tipik senaryolar, hizmet başlamadan önce yürütülebilir bir çalıştırmayı çalıştırdığınız veya yüksek ayrıcalıklara sahip bir işlem gerçekleştirdiğiniz senaryolardır. Örnek:
 
-* Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Bu, yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin, NPM. exe ' nin bir Node. js uygulamasını dağıtmak için yapılandırılmış bazı ortam değişkenlerine ihtiyacı vardır.
+* Hizmetin çalıştırılması gereken ortam değişkenlerini ayarlama ve başlatma. Bu yalnızca Service Fabric programlama modelleri aracılığıyla yazılmış yürütülebilir lerle sınırlı değildir. Örneğin, npm.exe bir düğüm.js uygulaması dağıtmak için yapılandırılan bazı ortam değişkenleri gerekir.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.
 
-SetupEntryPoint yapılandırma hakkında daha fazla bilgi için bkz [. bir hizmet kurulumu giriş noktası için Ilkeyi yapılandırma](service-fabric-application-runas-security.md)
+SetupEntryPoint'in nasıl yapılandırılabildiğini hakkında daha fazla bilgi için [bkz.](service-fabric-application-runas-security.md)
 
-**EnvironmentVariables** (önceki örnekte ayarlı değil), bu kod paketi için ayarlanan ortam değişkenlerinin bir listesini sağlar. Farklı hizmet örnekleri için farklı değerler sağlamak üzere `ApplicationManifest.xml` ortam değişkenleri geçersiz kılınabilir. 
+**EnvironmentVariables** (önceki örnekte ayarlanmaz) bu kod paketi için ayarlanan ortam değişkenlerinin bir listesini sağlar. Ortam değişkenleri, farklı hizmet `ApplicationManifest.xml` örnekleri için farklı değerler sağlamak için geçersiz kılınabilir. 
 
-**DataPackage** (önceki örnekte ayarlı değil), çalışma zamanında işlem tarafından tüketilen rastgele statik verileri içeren **Name** özniteliğiyle adlandırılan bir klasörü bildirir.
+**DataPackage** (önceki örnekte ayarlanmaz) çalışma zamanında işlem tarafından tüketilecek rasgele statik veriler içeren **Ad** özniteliği tarafından adlandırılan bir klasör bildirir.
 
-**Configpackage** , bir *Settings. xml* dosyası içeren **Name** özniteliğiyle adlandırılan bir klasörü bildirir. Ayarlar dosyası, Kullanıcı tanımlı, anahtar-değer çifti ayarlarının, işlemin çalışma zamanında geri okuduğu bölümler içerir. Yükseltme sırasında, yalnızca **Configpackage** **sürümü** değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Örnek bir *Settings. xml* dosyası aşağıda verilmiştir:
+**ConfigPackage,** **Ad** özniteliği tarafından adlandırılan ve *Ayarlar.xml* dosyası içeren bir klasör bildirir. Ayarlar dosyası, işlemin çalışma zamanında tekrar okuduğu kullanıcı tanımlı, anahtar değeri çifti ayarlarının bölümlerini içerir. Yükseltme sırasında, yalnızca **ConfigPackage** **sürümü** değişmişse, çalıştırma işlemi yeniden başlatılamaz. Bunun yerine, geri arama, yapılandırma ayarlarının dinamik olarak yeniden yüklenebilmeleri için işlemin değiştiğini gösterir. Burada örnek *settings.xml* dosyası:
 
 ```xml
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -85,11 +85,11 @@ SetupEntryPoint yapılandırma hakkında daha fazla bilgi için bkz [. bir hizme
 </Settings>
 ```
 
-Service Fabric hizmeti **uç noktası** bir Service Fabric kaynağına örnektir. Bir Service Fabric kaynak, derlenen kod değiştirilmeden bildirilemez/değiştirilebilir. Hizmet bildiriminde belirtilen Service Fabric kaynaklarına erişim uygulama bildiriminde **SecurityGroup** aracılığıyla denetlenebilir. Hizmet bildiriminde bir uç nokta kaynağı tanımlandığında Service Fabric, bir bağlantı noktası açıkça belirtilmediğinde, ayrılmış uygulama bağlantı noktası aralığından bağlantı noktaları atar. [Uç nokta kaynaklarını belirtme veya geçersiz kılma](service-fabric-service-manifest-resources.md)hakkında daha fazla bilgi edinin.
+Service Fabric Service **Endpoint,** Hizmet Kumaşı Kaynağının bir örneğidir. Bir Hizmet Kumaş Kaynağı derlenen kodu değiştirmeden beyan edilebilir/değiştirilebilir. Hizmet bildiriminde belirtilen Hizmet Dokusu Kaynaklarına erişim, uygulama bildirimindeki **SecurityGroup** aracılığıyla denetlenebilir. Hizmet bildiriminde bir Bitiş Noktası Kaynağı tanımlandığında, hizmet dokusu, bağlantı noktası açıkça belirtilmediğinde ayrılmış uygulama bağlantı noktası aralığından bağlantı noktaları atar. [Uç nokta kaynaklarını belirtme veya geçersiz kılma](service-fabric-service-manifest-resources.md)hakkında daha fazla bilgi edinin.
 
  
 > [!WARNING]
-> Tasarım statik bağlantı noktaları, kümele bildiriminde belirtilen uygulama bağlantı noktası aralığıyla çakışmamalıdır. Statik bir bağlantı noktası belirtirseniz, uygulamayı uygulama bağlantı noktası aralığı dışında atarsanız, bağlantı noktası çakışmalarına neden olur. Sürüm 6.5 CU2 UYGULAMAZSANıZ, bu tür bir çakışmayı tespit ettiğimiz ancak dağıtımın sevk edilen 6,5 davranışı ile eşitlenmiş halde devam etmesine izin veren bir **sistem durumu uyarısı** vereceğiz. Ancak, uygulama dağıtımını bir sonraki Ana sürümlerden önleyebiliriz.
+> Tasarım gereği statik bağlantı noktaları ClusterManifest'te belirtilen uygulama bağlantı noktası aralığıyla çakışmamalıdır. Statik bir bağlantı noktası belirtirseniz, uygulama bağlantı noktası aralığının dışına atarsanız, aksi takdirde bağlantı noktası çakışmaları neden olur. Sürüm 6.5CU2 ile böyle bir çakışma tespit ettiğimizde bir **Sağlık Uyarısı** yayınlayacağız, ancak dağıtımın sevk edilen 6,5 davranışıyla senkronize olarak devam etmesine izin veririz. Ancak, uygulama dağıtımını sonraki büyük sürümlerden engelleyebiliriz.
 >
 
 <!--
@@ -101,10 +101,10 @@ For more information about other features supported by service manifests, refer 
 *TODO: Configuration overrides
 -->
 
-## <a name="describe-an-application-in-applicationmanifestxml"></a>ApplicationManifest. xml dosyasında bir uygulamayı açıkla
-Uygulama bildiriminde, uygulama türü ve sürümü bildirimli olarak açıklanmaktadır. Kararlı adlar, bölümleme şeması, örnek sayısı/çoğaltma faktörü, güvenlik/yalıtım ilkesi, yerleştirme kısıtlamaları, yapılandırma geçersiz kılmaları ve bileşen hizmet türleri gibi hizmet oluşturma meta verilerini belirtir. Uygulamanın yerleştirildiği Yük Dengeleme etki alanları da açıklanır.
+## <a name="describe-an-application-in-applicationmanifestxml"></a>ApplicationManifest.xml'de bir uygulamayı açıklayın
+Uygulama bildirimi bildirimsel olarak uygulama türü ve sürümünü açıklar. Kararlı adlar, bölümleme düzeni, örnek sayısı/çoğaltma faktörü, güvenlik/yalıtım ilkesi, yerleşim kısıtlamaları, yapılandırma geçersiz kılmaları ve kurucu hizmet türleri gibi hizmet bileşimi meta verilerini belirtir. Uygulamanın yerleştirildiği yük dengeleme etki alanları da açıklanmıştır.
 
-Bu nedenle, uygulama bildirimi uygulama düzeyindeki öğeleri açıklar ve bir uygulama türü oluşturmak için bir veya daha fazla hizmet bildirimine başvurur. Burada, [Oylama örnek uygulaması](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) için uygulama bildirimi verilmiştir (ve [daha ayrıntılı örnekler](service-fabric-manifest-examples.md)aşağıda verilmiştir):
+Bu nedenle, bir uygulama bildirimi uygulama düzeyindeöğeleri açıklar ve bir veya daha fazla hizmet bildirimi bir uygulama türü oluşturmak için başvurur. İşte [Oylama örnek uygulama](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) için uygulama bildirimi (ve burada bazı daha ayrıntılı [örnekler:](service-fabric-manifest-examples.md)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -147,25 +147,25 @@ Bu nedenle, uygulama bildirimi uygulama düzeyindeki öğeleri açıklar ve bir 
 </ApplicationManifest>
 ```
 
-Hizmet bildirimleri gibi, **Sürüm** öznitelikleri yapılandırılmamış dizelerdir ve sistem tarafından ayrıştırılmaz. Sürüm öznitelikleri, her bir bileşeni yükseltmeler için sürüm için de kullanılır.
+Hizmet bildirimleri gibi, **Sürüm** öznitelikleri yapılandırılmamış dizeleri ve sistem tarafından ayrıştırılmış değildir. Sürüm öznitelikleri, yükseltmeler için her bileşeni sürümlemek için de kullanılır.
 
-**Parametreler** , uygulama bildirimi boyunca kullanılan parametreleri tanımlar. Uygulama örneği oluşturulduğunda ve uygulama veya hizmet yapılandırma ayarlarını geçersiz kılabildiğinden, bu parametrelerin değerleri sağlanabilir.  Varsayılan parametre değeri, uygulama örneği oluşturma sırasında değer değiştirilmez kullanılır. Ayrı ortamlar için farklı uygulama ve hizmet parametrelerinin nasıl korunmasını öğrenmek için bkz. [birden çok ortam için uygulama parametrelerini yönetme](service-fabric-manage-multiple-environment-app-configuration.md).
+**Parametreler,** uygulama bildirimi boyunca kullanılan parametreleri tanımlar. Bu parametrelerin değerleri, uygulama anında kullanıma hazır olduğunda sağlanabilir ve uygulama veya hizmet yapılandırma ayarlarını geçersiz kılabilir.  Uygulama anında değer değiştirilmezse varsayılan parametre değeri kullanılır. Tek tek ortamlar için farklı uygulama ve hizmet parametrelerini nasıl koruyacağınızı öğrenmek [için, birden çok ortam için uygulama parametrelerini yönetme'ye](service-fabric-manage-multiple-environment-app-configuration.md)bakın.
 
-**Servicemanifestımport** bu uygulama türünü oluşturan hizmet bildirimlerine başvurular içeriyor. Bir uygulama bildirimi birden fazla hizmet bildirimi içeri aktarmaları içerebilir, her biri bağımsız olarak sürümlenebilir. İçeri aktarılan hizmet bildirimleri bu uygulama türü içinde geçerli olan hizmet türlerini belirlenir. Servicemanifestımport içinde, ServiceManifest. XML dosyalarındaki Settings. xml ve ortam değişkenlerinin yapılandırma değerlerini geçersiz kılarsınız. Son nokta bağlama, güvenlik ve erişim ve paket paylaşımı, içeri aktarılan hizmet bildirimlerinde ayarlanabilir.  Daha fazla bilgi için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](service-fabric-application-runas-security.md).
+**ServiceManifestImport,** bu uygulama türünü oluşturan hizmet bildirimlerine başvurular içerir. Bir uygulama bildirimi birden çok hizmet bildirimi içeriak içerebilir ve her biri bağımsız olarak sürülebilir. İçe aktarılan hizmet bildirimleri, bu uygulama türünde hangi hizmet türlerinin geçerli olduğunu belirler. ServiceManifestImport içinde, ServiceManifest.xml dosyalarındaki Ayarlar.xml ve ortam değişkenlerindeki yapılandırma değerlerini geçersiz kılarsınız. Son nokta bağlama, güvenlik ve erişim ve paket paylaşımı için **ilkeler** (önceki örnekte ayarlanmaz) ve paket paylaşımı içe aktarılan hizmet bildirimlerinde ayarlanabilir.  Daha fazla bilgi için, [uygulamanız için güvenlik ilkelerini yapılandır'a](service-fabric-application-runas-security.md)bakın.
 
-**DefaultServices** , bu uygulama türüne karşı her uygulama oluşturulduğunda otomatik olarak oluşturulan hizmet örneklerini bildirir. Varsayılan hizmetler, yalnızca bir kolaydır ve oluşturulduktan sonra her bakımdan normal hizmetler gibi davranır. Bunlar, uygulama örneğindeki diğer hizmetlerle birlikte yükseltilecektir ve de kaldırılabilir. Bir uygulama bildiriminde birden çok varsayılan hizmet bulunabilir.
+**DefaultServices,** bir uygulama bu uygulama türüne karşı anında oluşturulduğunda otomatik olarak oluşturulan hizmet örneklerini bildirir. Varsayılan hizmetler sadece bir kolaylık tır ve oluşturulduktan sonra her açıdan normal hizmetler gibi olur. Bunlar, uygulama örneğindeki diğer hizmetlerle birlikte yükseltilir ve kaldırılabilir. Bir uygulama bildirimi birden çok varsayılan hizmet içerebilir.
 
-**Sertifikalar** (önceki örnekte ayarlı değil), [https uç noktalarını kurmak](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) veya [uygulama bildiriminde gizli dizileri şifrelemek](service-fabric-application-secret-management.md)için kullanılan sertifikaları bildirir.
+**Sertifikalar** (önceki örnekte ayarlanmaz) https uç [noktalarını ayarlamak](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) veya [uygulama bildirimindeki sırları şifrelemek](service-fabric-application-secret-management.md)için kullanılan sertifikaları bildirir.
 
-**Yerleştirme kısıtlamaları** , hizmetlerin nerede çalışacağını tanımlayan deyimlerdir. Bu deyimler bir veya daha fazla düğüm özelliği için seçtiğiniz ayrı hizmetlere iliştirilir. Daha fazla bilgi için bkz. [yerleştirme kısıtlamaları ve Node özelliği sözdizimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
+**Yerleşim Kısıtlamaları,** hizmetlerin nerede çalışması gerektiğini tanımlayan ifadelerdir. Bu ifadeler, bir veya daha fazla düğüm özelliği için seçtiğiniz tek tek hizmetlere eklenir. Daha fazla bilgi için [Bkz. Yerleşim kısıtlamaları ve düğüm özelliği sözdizimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
 
-**İlkeler** (önceki örnekte ayarlı değil), uygulamaların Service Fabric çalışma zamanına erişimi olup olmadığı dahil olmak üzere, uygulama düzeyinde ayarlanacak günlük toplama, [varsayılan farklı çalıştır](service-fabric-application-runas-security.md), [sağlık](service-fabric-health-introduction.md#health-policies)ve [güvenlik erişim](service-fabric-application-runas-security.md) ilkelerini açıklar.
+**İlkeler** (önceki örnekte ayarlanmaz) günlük koleksiyonunu, [varsayılan run-as,](service-fabric-application-runas-security.md) [sağlık](service-fabric-health-introduction.md#health-policies)ve hizmet(ler) Hizmet Kumaşı çalışma süresine erişimi olup olmadığını da dahil olmak üzere uygulama düzeyinde ayarlanması gereken [güvenlik erişim](service-fabric-application-runas-security.md) ilkelerini açıklar.
 
 > [!NOTE] 
-> Varsayılan olarak, Service Fabric uygulamalar, uygulamaya özgü istekleri kabul eden bir uç nokta biçiminde Service Fabric çalışma zamanına ve yapı ve uygulamaya özgü dosyaları içeren konaktaki dosya yollarına işaret eden ortam değişkenlerine erişebilir . Uygulama güvenilmeyen kod barındırınca bu erişimi devre dışı bırakmayı düşünün (örneğin, provenance bilinmiyor veya uygulama sahibinin yürütülmesi güvenli olmadığı bilen kod). Daha fazla bilgi için lütfen [Service Fabric en iyi güvenlik uygulamaları](service-fabric-best-practices-security.md#platform-isolation)bölümüne bakın. 
+> Varsayılan olarak, Service Fabric uygulamaları, uygulamaya özgü istekleri kabul eden bir uç nokta ve Kumaş ve uygulamaya özgü dosyalar içeren ana bilgisayardaki dosya yollarını işaret eden ortam değişkenleri şeklinde Hizmet Kumaşı çalışma süresine erişebilir . Uygulama güvenilmeyen kodu barındırdığında (yani sahibi nin kimliği bilinmeyen veya uygulama sahibinin yürütülmesi için güvenli olmadığını bildiği kod) bu erişimi devre dışı bırakmayı düşünün. Daha fazla bilgi için, [Service Fabric güvenlik en iyi uygulamaları](service-fabric-best-practices-security.md#platform-isolation)bakın. 
 >
 
-**Sorumlular** (önceki örnekte ayarlı değil) [Hizmetleri ve hizmet kaynaklarını güvenli hale](service-fabric-application-runas-security.md)getirmek için gereken güvenlik sorumlularını (Kullanıcı veya gruplar) anlatmaktadır.  Sorumlular **ilkeler** bölümlerinde başvurulur.
+**İlkeler** (önceki örnekte ayarlanmaz) hizmetleri çalıştırmak ve hizmet kaynaklarını [güvenli](service-fabric-application-runas-security.md)hale getirmek için gereken güvenlik ilkelerini (kullanıcılar veya gruplar) açıklar.  İlkeler **bölümlerinde** ilkelere başvurulmaktadır.
 
 
 
@@ -181,12 +181,12 @@ For more information about other features supported by application manifests, re
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Bir uygulamayı paketleyin](service-fabric-package-apps.md) ve dağıtıma hazırlamak için hazırlayın.
-- [Uygulamaları dağıtın ve kaldırın](service-fabric-deploy-remove-applications.md).
-- [Parametreleri ve ortam değişkenlerini farklı uygulama örnekleri Için yapılandırın](service-fabric-manage-multiple-environment-app-configuration.md).
-- [Uygulamanız için güvenlik Ilkelerini yapılandırın](service-fabric-application-runas-security.md).
-- [Https uç noktalarını ayarlayın](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service).
-- [Uygulama bildiriminde gizli dizileri şifreleyin](service-fabric-application-secret-management.md)
+- [Bir uygulamayı paketle](service-fabric-package-apps.md) ve dağıtmaya hazır hale getirin.
+- [Uygulamaları dağıtın ve kaldırın.](service-fabric-deploy-remove-applications.md)
+- [Parametreleri ve ortam değişkenlerini farklı uygulama örnekleri için yapılandırın.](service-fabric-manage-multiple-environment-app-configuration.md)
+- [Uygulamanız için güvenlik ilkelerini yapılandırın.](service-fabric-application-runas-security.md)
+- [Kurulum HTTPS uç noktaları](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service).
+- [Uygulama bildirimindeki sırları şifreleme](service-fabric-application-secret-management.md)
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png

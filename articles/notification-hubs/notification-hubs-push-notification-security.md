@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs güvenlik modeli
-description: Azure Notification Hubs için güvenlik modeli hakkında bilgi edinin.
+title: Bildirim Hub'ları güvenlik modeli
+description: Azure Bildirim Hub'larının güvenlik modeli hakkında bilgi edinin.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -17,68 +17,68 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263770"
 ---
-# <a name="notification-hubs-security"></a>Notification Hubs güvenliği
+# <a name="notification-hubs-security"></a>Bildirim Hub'ları güvenliği
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu konuda Azure Notification Hubs 'in güvenlik modeli açıklanmaktadır.
+Bu konu, Azure Bildirim Hub'larının güvenlik modelini açıklar.
 
-## <a name="shared-access-signature-security"></a>Paylaşılan erişim Imzası güvenliği
+## <a name="shared-access-signature-security"></a>Paylaşılan Erişim İmzagüvenliği
 
-Notification Hubs, *paylaşılan erişim imzası* (SAS) adlı bir varlık düzeyinde güvenlik şeması uygular. Her kural, [güvenlik taleplerinden](#security-claims)daha sonra açıklandığı gibi bir ad, anahtar değer (paylaşılan gizlilik) ve bir haklar kümesi içerir. 
+Bildirim Hub'ları *Paylaşılan Erişim İmzası* (SAS) adı verilen varlık düzeyinde bir güvenlik düzeni uygular. Her kural, [güvenlik taleplerinde](#security-claims)daha sonra açıklandığı gibi bir ad, önemli bir değer (paylaşılan gizli) ve bir dizi hak içerir. 
 
-Bir hub oluştururken, otomatik olarak iki kural oluşturulur: bir **dinleme** haklarıyla (istemci uygulamanın kullandığı) ve biri **Tüm** haklara sahip (uygulamanın arka ucu tarafından kullanılır):
+Bir hub oluşturulurken, otomatik olarak iki kural oluşturulur: biri **Dinleme** haklarına sahip (istemci uygulamasının kullandığı) ve diğeri **tüm** haklara sahip (uygulamanın arka ucunun kullandığı):
 
-- **Defaultlistensharedaccesssignature**: yalnızca **dinleme** izni verir.
-- **Defaultfullsharedaccesssignature**: **dinleme**, **yönetme**ve **gönderme** izinleri verir. Bu ilke yalnızca uygulamanızın arka ucunda kullanılacaktır. Bunu istemci uygulamalarında kullanmayın; yalnızca **dinleme** erişimiyle bir ilke kullanın. Yeni bir SAS belirteciyle yeni bir özel erişim ilkesi oluşturmak için, bu makalede daha sonra [erişim ilkeleri Için SAS belirteçleri](#sas-tokens-for-access-policies) bölümüne bakın.
+- **DefaultListenSharedAccessSignature**: yalnızca **dinleme** izni verir.
+- **DefaultFullSharedAccessSignature**: **dinleme,** **yönetme**ve izin **gönder'** i verir. Bu ilke yalnızca uygulama arka uçunuzda kullanılacaktır. İstemci uygulamalarında kullanmayın; yalnızca **Dinle** erişimine sahip bir ilke kullanın. Yeni bir SAS belirteciyle yeni bir özel erişim ilkesi oluşturmak için, bu makalenin ilerleyen saatlerinde [erişim ilkeleri için SAS belirteçlerine](#sas-tokens-for-access-policies) bakın.
 
-İstemci uygulamalarından kayıt yönetimi gerçekleştirirken, bildirimler aracılığıyla gönderilen bilgiler hassas değilse (örneğin, hava durumu güncelleştirmeleri), bir Bildirim Hub 'ına erişmenin yaygın bir yolu, kuralın anahtar değerini istemci uygulamasına yalnızca dinleme erişimine vermektir. kuralın anahtar değerine, uygulama arka ucuna tam erişim vermek için.
+Müşteri uygulamalarından kayıt yönetimi gerçekleştirirken, bildirimler yoluyla gönderilen bilgiler hassas değilse (örneğin, hava durumu güncellemeleri), bildirim hub'ına erişmenin yaygın bir yolu, istemci uygulamasına yalnızca Dinle kuralının anahtar değerini vermektir, ve uygulama arka sonuna kuralın anahtar değerini tam erişim vermek için.
 
-Uygulamalar anahtar değerini Windows Mağazası istemci uygulamalarına katıştırmamalıdır; Bunun yerine, istemci uygulamasını başlangıçta uygulama arka ucuna al.
+Uygulamalar Windows Mağazası istemci uygulamalarına anahtar değerini katıştırmamalıdır; bunun yerine, istemci uygulamasının başlangıçta uygulama arka ucundan geri almasına izin verebin.
 
-**Dinleme** erişimi olan anahtar, bir istemci uygulamanın herhangi bir etikete kaydolmaya izin verir. Uygulamanızın kayıtları belirli istemcilerle kısıtlanması gerekiyorsa (örneğin, Etiketler Kullanıcı kimliklerini temsil ediyorsa), uygulamanızın arka ucunuzun kayıtları gerçekleştirmesi gerekir. Daha fazla bilgi için bkz. [kayıt yönetimi](notification-hubs-push-notification-registration-management.md). Bu şekilde, istemci uygulamanın Notification Hubs doğrudan erişimine sahip olamayacağını unutmayın.
+**Listen** erişimine sahip anahtar, istemci uygulamasının herhangi bir etiket için kaydolmasını sağlar. Uygulamanızın kayıtları belirli istemcilerle belirli etiketlerle sınırlaması gerekiyorsa (örneğin, etiketler kullanıcı adlarını temsil ettiğinde), uygulama arka uçunuzun kayıtları gerçekleştirmesi gerekir. Daha fazla bilgi için [Kayıt yönetimine](notification-hubs-push-notification-registration-management.md)bakın. Bu şekilde, istemci uygulamasının Bildirim Hub'larına doğrudan erişimi olmayacağını unutmayın.
 
 ## <a name="security-claims"></a>Güvenlik talepleri
 
-Diğer varlıklara benzer şekilde, Bildirim Hub 'ı işlemlerine üç güvenlik talebi için izin verilir: **dinle**, **Gönder**ve **Yönet**.
+Diğer varlıklara benzer şekilde, Bildirim Hub işlemlerine üç güvenlik talebi için izin verilir: **Dinle,** **Gönder**ve **Yönet.**
 
 | İste   | Açıklama                                          | İzin verilen işlemler |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Dinle  | Tek kayıt oluşturma/güncelleştirme, okuma ve silme | Kayıt oluştur/güncelleştir<br><br>Kaydı oku<br><br>Bir tanıtıcı için tüm kayıtları okuma<br><br>Kaydı Sil |
-| Gönder    | Bildirim Hub 'ına ileti gönderme                | İleti gönder |
-| Yönetin  | Notification Hubs CRUDs (PNS kimlik bilgilerini güncelleştirme ve güvenlik anahtarları dahil) ve etiketlere göre kayıtları okuma |Hub oluşturma/güncelleştirme/okuma/silme<br><br>Kayıtları etikete göre oku |
+| Dinle  | Tek kayıtları Oluşturma/Güncelleme, Okuma ve Silme | Kayıt oluşturma/güncelleme<br><br>Kaydı okuma<br><br>Bir tutamaç için tüm kayıtları okuyun<br><br>Kaydı silme |
+| Gönder    | Bildirim Hub'ına ileti gönderme                | İleti gönder |
+| Yönetme  | Bildirim Hub'larında (PNS kimlik bilgilerini ve güvenlik anahtarlarını güncellemek dahil) ve etiketlere göre kayıtları okuma |Hub oluşturma/güncelleme/Okuma/Silme<br><br>Kayıtları etikete göre okuma |
 
-Notification Hubs, doğrudan Hub üzerinde yapılandırılmış paylaşılan anahtarlarla oluşturulan SAS belirteçlerini kabul eder.
+Bildirim Hub'ları, doğrudan hub üzerinde yapılandırılan paylaşılan anahtarlarla oluşturulan SAS belirteçlerini kabul eder.
 
-Birden fazla ad alanına bildirim göndermek mümkün değildir. Ad alanları Notification Hubs için mantıksal kapsayıcılardır ve bildirim göndermeye dahil değildir.
+Birden fazla ad alanına bildirim göndermek mümkün değildir. Ad alanları Bildirim Hub'ları için mantıksal kapsayıcılardır ve bildirim göndermede yer almayan lardır.
 
-Ad alanı düzeyindeki işlemler için ad alanı düzeyinde erişim ilkelerini (kimlik bilgileri) kullanın; Örneğin: hub 'ları listeleme, hub oluşturma veya silme, vb. Yalnızca hub düzeyi erişim ilkeleri size bildirim göndermenizi sağlar.
+Ad alanı düzeyindeki işlemler için ad alanı düzeyinde erişim ilkelerini (kimlik bilgilerini) kullanın; örneğin: hub'ları listeleme, hub oluşturma veya silme, vb. Yalnızca hub düzeyindeki erişim ilkeleri bildirim göndermenize izin veriyor.
 
 ### <a name="sas-tokens-for-access-policies"></a>Erişim ilkeleri için SAS belirteçleri
 
-Yeni bir güvenlik talebi oluşturmak veya mevcut SAS anahtarlarını görüntülemek için aşağıdakileri yapın:
+Yeni bir güvenlik talebi oluşturmak veya varolan SAS anahtarlarını görüntülemek için aşağıdakileri yapın:
 
 1. Azure Portal’da oturum açın.
 2. **Tüm kaynaklar**’ı seçin.
-3. Talep oluşturmak istediğiniz Bildirim Hub 'ının adını seçin veya SAS anahtarını görüntüleyin.
-4. Sol taraftaki menüde **erişim ilkeleri**' ni seçin.
-5. Yeni bir güvenlik talebi oluşturmak için **Yeni ilke** ' yi seçin. İlkeye bir ad verin ve vermek istediğiniz izinleri seçin. Sonra **Tamam**’ı seçin.
-6. Tam bağlantı dizesi (yeni SAS anahtarı dahil), erişim Ilkeleri penceresinde görüntülenir. Daha sonra kullanmak üzere bu dizeyi panoya kopyalayabilirsiniz.
+3. Talep oluşturmak veya SAS anahtarını görüntülemek istediğiniz Bildirim Merkezi'nin adını seçin.
+4. Sol menüde **Erişim İlkeleri'ni**seçin.
+5. Yeni bir güvenlik talebi oluşturmak için **Yeni İlke'yi** seçin. İlkeye bir ad verin ve vermek istediğiniz izinleri seçin. Sonra **Tamam**’ı seçin.
+6. Erişim İlkeleri penceresinde tam bağlantı dizesi (yeni SAS anahtarı dahil) görüntülenir. Bu dizeyi daha sonra kullanmak üzere panoya kopyalayabilirsiniz.
 
-SAS anahtarını belirli bir ilkeden ayıklamak için, istediğiniz SAS anahtarını içeren ilkenin yanındaki **Kopyala** düğmesini seçin. Bu değeri geçici bir konuma yapıştırın, sonra bağlantı dizesinin SAS anahtar kısmını kopyalayın. Bu örnek, **mytestnamespace1**adlı bir Notification Hubs ad alanı ve **policy2**adlı bir ilke kullanır. SAS anahtarı, bir dizenin sonundaki, **Sharedaccesskey**tarafından belirtilen değerdir:
+SAS anahtarını belirli bir ilkeden ayıklamak için, istediğiniz SAS anahtarını içeren ilkeğin yanındaki **Kopyala** düğmesini seçin. Bu değeri geçici bir konuma yapıştırın ve ardından bağlantı dizesinin SAS anahtar bölümünü kopyalayın. Bu örnek, **mytestnamespace1**adlı bir Bildirim Hub'ları ad alanı ve **ilke 2**adlı bir ilke kullanır. SAS tuşu, **SharedAccessKey**tarafından belirtilen dize sonuna yakın değerdir:
 
 ```shell
 Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>
 ```
 
-![SAS anahtarları al](media/notification-hubs-push-notification-security/access1.png)
+![SAS tuşlarını alın](media/notification-hubs-push-notification-security/access1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Notification Hubs genel bakış](notification-hubs-push-notification-overview.md)
+- [Bildirim Hub'larına genel bakış](notification-hubs-push-notification-overview.md)

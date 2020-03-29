@@ -1,22 +1,22 @@
 ---
-title: Aktör türü serileştirme üzerinde Reliable Actors notları
-description: Service Fabric Reliable Actors durumlarını ve arabirimlerini tanımlamak için kullanılabilecek, seri hale getirilebilir sınıfları tanımlamaya yönelik temel gereksinimleri açıklar
+title: Güvenilir Aktörler aktör türü serileştirme üzerine notlar
+description: Service Fabric Reliable Actors durumlarını ve arabirimlerini tanımlamak için kullanılabilecek serileştirilebilir sınıfları tanımlamak için temel gereksinimleri tartışır
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75349298"
 ---
-# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Service Fabric Reliable Actors türü serileştirme notları
-Tüm yöntemlerin bağımsız değişkenleri, bir aktör arabirimindeki her bir yöntem tarafından döndürülen görevlerin sonuç türleri ve aktörün durum Yöneticisi 'nde depolanan nesneler, [seri hale getirilebilir veri sözleşmesi](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)olmalıdır. Bu, [aktör olay arabirimlerinde](service-fabric-reliable-actors-events.md)tanımlanan yöntemlerin bağımsız değişkenleri için de geçerlidir. (Aktör olay arabirimi yöntemleri her zaman void döndürür.)
+# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Hizmet Kumaş Güvenilir Aktörler türü serileştirme üzerine notlar
+Tüm yöntemlerin bağımsız değişkenleri, aktör arabiriminde her yöntem tarafından döndürülen görevlerin sonuç türleri ve bir aktörün durum yöneticisinde depolanan nesneler [veri sözleşmesi serializable](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)olmalıdır. Bu, [aktör olay arabirimlerinde](service-fabric-reliable-actors-events.md)tanımlanan yöntemlerin bağımsız değişkenleri için de geçerlidir. (Aktör olay arabirimi yöntemleri her zaman geçersiz döner.)
 
 ## <a name="custom-data-types"></a>Özel veri türleri
-Bu örnekte, aşağıdaki aktör arabirimi `VoicemailBox`adlı özel bir veri türü döndüren bir yöntemi tanımlar:
+Bu örnekte, aşağıdaki aktör arabirimi, özel `VoicemailBox`bir veri türü döndüren bir yöntem tanımlar:
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -32,7 +32,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-Arabirim, bir `VoicemailBox` nesnesini depolamak için durum Yöneticisi 'ni kullanan bir aktör tarafından uygulanır:
+Arabirim, bir nesneyi depolamak için durum `VoicemailBox` yöneticisini kullanan bir aktör tarafından uygulanır:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -68,12 +68,12 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-Bu örnekte, `VoicemailBox` nesnesi şu durumlarda serileştirilir:
+Bu örnekte, `VoicemailBox` nesne aşağıdaki durumlarda seri hale getirilir:
 
-* Nesne bir aktör örneği ve bir çağıran arasında iletilir.
-* Nesne, disk üzerinde kalıcı olduğu ve diğer düğümlere çoğaltılan durum yöneticisine kaydedilir.
+* Nesne bir aktör örneği ve arayan arasında aktarılır.
+* Nesne, diske kalıcı olduğu ve diğer düğümlere çoğaltıldığı durum yöneticisine kaydedilir.
 
-Güvenilir aktör çerçevesi, DataContract serileştirme kullanır. Bu nedenle, özel veri nesneleri ve üyeleri sırasıyla **DataContract** ve **DataMember** öznitelikleriyle açıklanmalıdır.
+Güvenilir Aktör çerçevesi DataContract serileştirmekullanır. Bu nedenle, özel veri nesneleri ve üyeleri sırasıyla **DataContract** ve **DataMember** öznitelikleri ile açıklamalı olmalıdır.
 
 ```csharp
 [DataContract]
@@ -138,8 +138,8 @@ public class VoicemailBox implements Serializable
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md)
-* [Aktör zamanlayıcılar ve anımsatıcıları](service-fabric-reliable-actors-timers-reminders.md)
-* [Aktör olayları](service-fabric-reliable-actors-events.md)
-* [Aktör yeniden girişi](service-fabric-reliable-actors-reentrancy.md)
-* [Aktör çok biçimlilik ve nesne odaklı tasarım desenleri](service-fabric-reliable-actors-polymorphism.md)
+* [Aktör zamanlayıcıları ve anımsatıcılar](service-fabric-reliable-actors-timers-reminders.md)
+* [Aktör etkinlikleri](service-fabric-reliable-actors-events.md)
+* [Aktör reentrancy](service-fabric-reliable-actors-reentrancy.md)
+* [Aktör polimorfizmi ve nesne yönelimli tasarım desenleri](service-fabric-reliable-actors-polymorphism.md)
 * [Aktör tanılama ve performans izleme](service-fabric-reliable-actors-diagnostics.md)

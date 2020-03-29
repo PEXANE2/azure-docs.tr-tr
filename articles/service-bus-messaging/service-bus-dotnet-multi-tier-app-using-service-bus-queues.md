@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60403426"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus kuyruklarını kullanan çok katmanlı .NET uygulaması
@@ -33,7 +33,7 @@ Visual Studio ve .NET için ücretsiz Azure SDK kullanarak Microsoft Azure'a yö
 
 Bu öğreticide, Azure bulut hizmetinde çok katmanlı bir uygulama derleyip çalıştıracaksınız. Ön uç, bir ASP.NET MVC web rolüdür. Arka uç ise Service Bus kuyruğu kullanan bir çalışan rolüdür. Aynı çok katmanlı uygulamayı, bulut hizmeti yerine bir Azure web sitesine dağıtılan web projesi özelliğine sahip ön uçla da oluşturabilirsiniz. Ayrıca, [.NET bulut/şirket içi karma uygulama](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) öğreticisine de başvurabilirsiniz.
 
-Aşağıdaki ekran görüntüsünde tamamlanan uygulama gösterilir.
+Aşağıdaki ekran görüntüsü tamamlanan uygulamayı gösterir.
 
 ![][0]
 
@@ -58,7 +58,7 @@ Aşağıdaki bölümlerde, bu mimariyi uygulayan kod ele alınır.
 
 ## <a name="create-a-namespace"></a>Ad alanı oluşturma
 
-İlk adım oluşturmaktır bir *ad alanı*ve bir [paylaşılan erişim imzası (SAS)](service-bus-sas.md) bu ad alanı için anahtar. Ad alanı, Service Bus tarafından kullanıma sunulan her uygulama için bir uygulama sınırı sağlar. Bir ad alanı oluşturulduğunda sistem tarafından bir SAS anahtarı oluşturulur. Ad alanı adı ve SAS anahtarı birleşimi ile Service Bus hizmetinin bir uygulamaya erişim kimliğini doğrulayan kimlik bilgisi sağlanır.
+İlk adım, bir *ad alanı*oluşturmak ve bu ad alanı için paylaşılan [erişim imzası (SAS)](service-bus-sas.md) anahtarı elde etmektir. Ad alanı, Service Bus tarafından kullanıma sunulan her uygulama için bir uygulama sınırı sağlar. Bir ad alanı oluşturulduğunda sistem tarafından bir SAS anahtarı oluşturulur. Ad alanı adı ve SAS anahtarı birleşimi ile Service Bus hizmetinin bir uygulamaya erişim kimliğini doğrulayan kimlik bilgisi sağlanır.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -72,13 +72,13 @@ Daha sonra, Service Bus kuyruğuna öğe gönderen ve kuyruk hakkındaki durum b
 1. Yönetici ayrıcalıklarıyla Visual Studio'yu başlatın: **Visual Studio** programının simgesine sağ tıklayın ve ardından **Yönetici olarak çalıştır**'a tıklayın. Bu makalenin sonraki bölümlerinde ele alınan Azure işlem öykünücüsü, Visual Studio'nun yönetici ayrıcalıklarıyla başlatılmasını gerektirir.
    
    Visual Studio'da, **Dosya** menüsündeki **Yeni** seçeneğine ve ardından **Proje**'ye tıklayın.
-2. **Yüklü Şablonlar**'da **Visual C#** kısmında **Bulut** seçeneğine ve ardından **Azure Bulut Hizmeti**'ne tıklayın. Projeyi **MultiTierApp** olarak adlandırın. Daha sonra, **Tamam**'a tıklayın.
+2. **Yüklü Şablonlar**'da **Visual C#** kısmında **Bulut** seçeneğine ve ardından **Azure Bulut Hizmeti**'ne tıklayın. Projeyi **MultiTierApp** olarak adlandırın. Ardından **Tamam**'a tıklayın.
    
    ![][9]
 3. **Roller** bölmesinde **ASP.NET Web Rolü**'ne çift tıklayın.
    
    ![][10]
-4. **Azure Bulut Hizmeti çözümü** kısmında **WebRole1** öğesinin üzerine gelin, kurşun kalem simgesine tıklayın ve web rolünü **FrontendWebRole** olarak yeniden adlandırın. Daha sonra, **Tamam**'a tıklayın. ("Frontend" öğesini "FrontEnd" olarak değil de küçük 'e' ile yazdığınızdan emin olun.)
+4. **Azure Bulut Hizmeti çözümü** kısmında **WebRole1** öğesinin üzerine gelin, kurşun kalem simgesine tıklayın ve web rolünü **FrontendWebRole** olarak yeniden adlandırın. Ardından **Tamam**'a tıklayın. ("Frontend" öğesini "FrontEnd" olarak değil de küçük 'e' ile yazdığınızdan emin olun.)
    
    ![][11]
 5. **Yeni ASP.NET Projesi** iletişim kutusundaki **Bir şablon seçin** listesinde **MVC**'ye tıklayın.
@@ -177,7 +177,7 @@ Bu bölümde, uygulamanızın görüntülediği çeşitli sayfalar oluşturursun
 6. Görünüm oluşturmanız için bir iletişim kutusu belirir. **Şablon** listesinde **Oluştur** seçeneğini belirleyin. **Model sınıfı** listesinde **OnlineOrder** sınıfını seçin.
    
    ![][15]
-7. **Ekle**'yi tıklatın.
+7. **Ekle**’ye tıklayın.
 8. Şimdi, uygulamanızın görüntülenen adını değiştirin. **Çözüm Gezgini**'nde, **Views\Shared\\_Layout.cshtml** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
 9. **My ASP.NET Application** uygulamasının tüm örneklerini **Northwind Traders Products** olarak değiştirin.
 10. **Home**, **About** ve **Contact** bağlantılarını kaldırın. Vurgulanmış kodu silme:

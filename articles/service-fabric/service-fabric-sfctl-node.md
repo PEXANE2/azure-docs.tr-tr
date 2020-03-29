@@ -1,369 +1,369 @@
 ---
-title: Azure Service Fabric CLı-sfctl düğümü
-description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Küme düğümlerini yönetmek için komutların bir listesini içerir.
+title: Azure Servis Kumaş CLI- sfctl düğüm
+description: Azure Service Fabric komut satırı arabirimi sfctl hakkında bilgi edinin. Küme düğümlerini yönetmek için bir komut listesi içerir.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905886"
 ---
 # <a name="sfctl-node"></a>sfctl node
-Bir küme oluşturan düğümleri yönetin.
+Küme oluşturan düğümleri yönetin.
 
 ## <a name="commands"></a>Komutlar
 
 |Komut|Açıklama|
 | --- | --- |
-| Add-Configuration-Parameter-geçersiz kılmalar | Belirtilen düğümdeki yapılandırma geçersiz kılma listesini ekler. |
-| dıı | Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın. |
-| etkinleştirebilir | Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirin. |
-| Get-Configuration-geçersiz kılmalar | Belirtilen düğümdeki yapılandırma geçersiz kılmalarının listesini alır. |
-| sağlık | Service Fabric düğümünün sistem durumunu alır. |
-| info | Service Fabric kümesindeki belirli bir düğüm hakkındaki bilgileri alır. |
+| add-configuration-parametre-overrides | Belirtilen düğümüzerinde yapılandırma geçersiz kılar listesini ekler. |
+| Devre dışı bırakmak | Belirtilen devre dışı bırakma amacıyla Hizmet Kumaşı küme düğümünü devre dışı bırakın. |
+| seçin | Şu anda devre dışı bırakılan Hizmet Kumaşı küme düğümünü etkinleştirin. |
+| get-configuration-overrides | Belirtilen düğümdeki yapılandırma geçersiz kılma listesini alır. |
+| Sağlık | Service Fabric düğümünün sağlığını alır. |
+| bilgiler | Service Fabric kümesindeki belirli bir düğüm hakkındaki bilgileri alır. |
 | list | Service Fabric kümesindeki düğümlerin listesini alır. |
-| yükleme | Service Fabric düğümünün yükleme bilgilerini alır. |
-| Remove-Configuration-geçersiz kılmalar | Belirtilen düğümdeki yapılandırma geçersiz kılmalarını kaldırır. |
-| durumu Kaldır | Bir düğümdeki kalıcı durumun kalıcı olarak kaldırıldığını veya kaybediltiğini Service Fabric bildirir. |
-| report-health | Service Fabric düğümünde bir sistem durumu raporu gönderir. |
-| restart | Service Fabric küme düğümünü yeniden başlatır. |
-| geçiş | Bir küme düğümünü başlatır veya sonlandırır. |
-| geçiş-durum | StartNodeTransition kullanılarak başlatılan bir işlemin ilerleme durumunu alır. |
+| yükleme | Servis Kumaş düğümünün yük bilgilerini alır. |
+| kaldırma yapılandırma-geçersiz kılar | Belirtilen düğümdeki yapılandırma geçersiz kılmalarını kaldırır. |
+| kaldırma durumu | Hizmet Kumaşı'na, bir düğümüzerinde kalıcı durum kalıcı olarak kaldırıldığını veya kaybolduğunu bildirer. |
+| rapor-sağlık | Hizmet Kumaş düğümü hakkında bir sağlık raporu gönderir. |
+| restart | Service Fabric küme düğümlerini yeniden başlatır. |
+| Geçiş | Küme düğümlerini başlatır veya durdurur. |
+| geçiş durumu | StartNodeTransition kullanarak başlatılan bir işlemin ilerlemesini alır. |
 
-## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl düğüm ekleme-yapılandırma-parametresi-geçersiz kılmalar
-Belirtilen düğümdeki yapılandırma geçersiz kılma listesini ekler.
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl düğüm ekle-yapılandırma-parametre-overrides
+Belirtilen düğümüzerinde yapılandırma geçersiz kılar listesini ekler.
 
-Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının eklenmesine izin verir.
+Bu api, belirtilen düğümüzerinde varolan tüm yapılandırma geçersiz kılmaları eklemeye olanak sağlar.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --config-Parameter-override-List [gerekli] | Yapılandırma geçersiz kılma listesi ekleme açıklaması. |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --zorla | Belirtilen düğümlerde yapılandırma geçersiz kılmalarını eklemeyi zorla. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --config-parametre-geçersiz kılma-listesi [Gerekli] | Yapılandırma geçersiz kılmalistesi eklemek için açıklama. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --kuvvet | Zorlama yapılandırma ekleme belirtilen düğümler üzerinde geçersiz kılar. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
 ## <a name="sfctl-node-disable"></a>sfctl düğümü devre dışı
-Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın.
+Belirtilen devre dışı bırakma amacıyla Hizmet Kumaşı küme düğümünü devre dışı bırakın.
 
-Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın. Devre dışı bırakma işlemi devam ederken, devre dışı bırakma amacı artırılabilir, ancak azalmayabilir (örneğin, duraklatma amacı ile devre dışı bırakılmış bir düğüm, yeniden başlatma ile daha fazla şekilde devre dışı bırakılabilir, ancak başka bir şekilde kullanılamaz. Düğüm devre dışı bırakıldıktan sonra düğümleri etkinleştir işlemi kullanılarak düğümler yeniden etkinleştirilebilir. Devre dışı bırakma işlemi tamamlanmazsa, devre dışı bırakma işlemi iptal edilir. Devre dışı bırakılan ve geri yüklenen bir düğüm, hizmetler söz konusu düğüme yerleştirilmesinden önce yeniden etkinleştirilmeleri gerekir.
-
-### <a name="arguments"></a>Bağımsız Değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --devre dışı bırakma-amaç | Düğümü devre dışı bırakma amacını veya nedenini açıklar. Olası değerler aşağıda verilmiştir. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
-
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
-
-## <a name="sfctl-node-enable"></a>sfctl düğümü etkinleştir
-Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirin.
-
-Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirir. Etkinleştirildikten sonra, düğüm yeni çoğaltmaları yerleştirmek için uygun bir hedef olur ve düğümde kalan devre dışı bırakılmış çoğaltmalar yeniden etkinleştirilir.
+Belirtilen devre dışı bırakma amacıyla Hizmet Kumaşı küme düğümünü devre dışı bırakın. Devre dışı bırakma devam ettikten sonra devre dışı bırakma niyeti artırılabilir, ancak azaltılamaz (örneğin, Duraklatma amacıyla devre dışı bırakılan bir düğüm Yeniden Başlat ile daha da devre dışı bırakılabilir, ancak tam tersi değil. Düğümler devre dışı bırakıldıktan sonra herhangi bir zamanda bir düğüm işlemini etkinleştir kullanılarak yeniden etkinleştirilebilir. Devre dışı bırakma tamamlanmazsa, bu devre dışı bırakma iptal eder. Devre dışı bırakılırken inen ve geri gelen bir düğümün, hizmetler düğüme yerleştirilmeden önce yeniden etkinleştirilmesi gerekir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --devre dışı bırakma-niyet | Düğümü devre dışı etme niyetini veya nedenini açıklar. Olası değerler takip ediyor. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-node-get-configuration-overrides"></a>sfctl düğümü Get-Configuration-geçersiz kılmalar
-Belirtilen düğümdeki yapılandırma geçersiz kılmalarının listesini alır.
+## <a name="sfctl-node-enable"></a>sfctl düğüm etkinleştirmek
+Şu anda devre dışı bırakılan Hizmet Kumaşı küme düğümünü etkinleştirin.
 
-Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının alınmasını sağlar.
+Şu anda devre dışı bırakılan Hizmet Kumaşı küme düğümünü etkinleştirir. Etkinleştirildiğinde, düğüm yeni yinelemeler yerleştirmek için yeniden uygun bir hedef haline gelir ve düğümde kalan devre dışı bırakılan yinelemeler yeniden etkinleştirilir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-node-health"></a>sfctl düğüm durumu
-Service Fabric düğümünün sistem durumunu alır.
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl düğüm get-configuration-overrides
+Belirtilen düğümdeki yapılandırma geçersiz kılma listesini alır.
 
-Service Fabric düğümünün sistem durumunu alır. Düğümde bildirilen sistem durumu olaylarının koleksiyonunu sistem durumuna göre filtrelemek için EventsHealthStateFilter ' i kullanın. Ada göre belirttiğiniz düğüm sistem durumu deposunda yoksa, bu bir hata döndürür.
+Bu api, belirtilen düğümdeki tüm varolan yapılandırma geçersiz kılmalarını sağlar.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --Events-Sistem durumu-durum-filtre | Sistem durumu temelinde döndürülen HealthEvent nesnelerinin toplanmasını filtrelemeye izin verir. Bu parametre için olası değerler aşağıdaki sistem durumlarından birine ait tamsayı değerini içerir. Yalnızca filtreyle eşleşen olaylar döndürülür. Tüm olaylar, toplanan sistem durumunu değerlendirmek için kullanılır. Belirtilmezse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bit düzeyinde ' OR ' işleci kullanılarak elde edilen bu değerlerin bir birleşimi olabilir. Örneğin, girilen değer 6 ise, HealthState değeri (2) ve uyarı (4) olan tüm olaylar döndürülür.  <br> -Varsayılan-varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> -None-hiçbir HealthState değerle eşleşmeyen filtre. Belirli bir durum koleksiyonuna sonuç döndürmek için kullanılır. Değer 1 ' dir.  <br> -Ok-HealthState değer ile girişle eşleşen filtre. Değer 2 ' dir.  <br> -Warning-değerle HealthState değer uyarısıyla eşleşen filtre. Değer 4 ' dir.  <br> -Error-bir değerle HealthState değer hatası ile eşleşen filtre. Değer 8 ' dir.  <br> -Bir HealthState değer ile girişle eşleşen All filtresi. Değer 65535 ' dir. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-node-info"></a>sfctl düğüm bilgisi
+## <a name="sfctl-node-health"></a>sfctl düğüm sağlık
+Service Fabric düğümünün sağlığını alır.
+
+Service Fabric düğümünün sağlığını alır. Sistem durumu durumuna bağlı olarak düğümde bildirilen sistem durumu olaylarının toplanmasını filtrelemek için EventsHealthStateFilter'i kullanın. Ada göre belirttiğiniz düğüm sistem durumu deposunda yoksa, bu bir hata döndürür.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --olaylar-sağlık-durum-filtre | HealthEvent nesnelerinin toplanmasının sistem durumu durumuna göre filtrelemesine olanak tanır. Bu parametre için olası değerler, aşağıdaki sistem durumu durumlarından birinin tamsayı değerini içerir. Yalnızca filtreyle eşleşen olaylar döndürülür. Tüm olaylar toplu sağlık durumunu değerlendirmek için kullanılır. Belirtilmemişse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bitwise 'VEYA' işleci kullanılarak elde edilen bu değerlerin bir birleşimi olabilir. Örneğin, sağlanan değer 6 ise, Ok (2) ve Warning (4) HealthState değerine sahip tüm olaylar döndürülür.  <br> - Varsayılan - Varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> - Yok - Herhangi bir HealthState değeriyle eşleşmeyen filtre. Belirli bir durum koleksiyonunda sonuç vermek için kullanılır. Değeri 1'dir.  <br> - Tamam - HealthState değeri Ok ile giriş eşleşen filtre. Değeri 2'dir.  <br> - Uyarı - HealthState değer Uyarısı ile girdi eşleşen filtre. Değeri 4'dür.  <br> - Hata - HealthState değer Hatası ile giriş eşleşen filtre. Değeri 8'dir.  <br> - Tümü - Herhangi bir HealthState değeriyle girişle eşleşen filtre. Değeri 65535' tir. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+
+### <a name="global-arguments"></a>Küresel Argümanlar
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+
+## <a name="sfctl-node-info"></a>sfctl düğüm bilgi
 Service Fabric kümesindeki belirli bir düğüm hakkındaki bilgileri alır.
 
-Yanıt, ad, durum, KIMLIK, sistem durumu, çalışma süresi ve düğüm hakkında diğer ayrıntıları içerir.
+Yanıt, ad, durum, kimlik, sistem durumu, çalışma süresi ve düğümle ilgili diğer ayrıntıları içerir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
 ## <a name="sfctl-node-list"></a>sfctl düğüm listesi
 Service Fabric kümesindeki düğümlerin listesini alır.
 
-Yanıt, ad, durum, KIMLIK, sistem durumu, çalışma süresi ve düğümlerle ilgili diğer ayrıntıları içerir.
+Yanıt, ad, durum, kimlik, sistem durumu, çalışma süresi ve düğümlerle ilgili diğer ayrıntıları içerir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Devamlılık-belirteç | Devam belirteci parametresi, sonraki sonuç kümesini almak için kullanılır. Boş olmayan bir değere sahip devamlılık belirteci, sistemin sonuçları tek bir yanıta sığmıyor olduğunda API 'nin yanıtına dahil edilir. Bu değer sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa devamlılık belirteci bir değer içermez. Bu parametrenin değeri, URL kodlamalı olmamalıdır. |
-| --en fazla sonuç | Disk belleği sorgularının bir parçası olarak döndürülecek en fazla sonuç sayısı. Bu parametre döndürülen sonuç sayısı üzerinde üst sınırı tanımlar. Döndürülen sonuçlar, yapılandırmada tanımlanan en fazla ileti boyutu kısıtlamalarına göre iletiye sığmıyor durumunda belirtilen en fazla sonuçtan daha az olabilir. Bu parametre sıfırsa veya belirtilmemişse, disk belleğine alınan sorgu, dönüş iletisine sığan mümkün olduğunca fazla sonuç içerir. |
-| --Node-durum-filtre | Düğüm durumuna göre düğümlerin filtrelemesine izin verir. Yalnızca belirtilen filtre değeriyle eşleşen düğümler döndürülür. Filtre değeri aşağıdakilerden biri olabilir.  Varsayılan\: varsayılan. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --devam-belirteç | Devamı belirteç parametresi sonraki sonuç kümesini elde etmek için kullanılır. Sistemden elde edilen sonuçlar tek bir yanıta sığmıyorsa, BOŞ olmayan bir değere sahip bir devam belirteci API'nın yanıtına dahil edilir. Bu değer bir sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa, devam belirteci bir değer içermez. Bu parametrenin değeri URL kodlanmış olmamalıdır. |
+| --max-sonuçlar | Sayfalı sorguların bir parçası olarak döndürülecek en fazla sonuç sayısı. Bu parametre, döndürülen sonuç sayısındaki üst sınırı tanımlar. Döndürülen sonuçlar, yapılandırmada tanımlanan maksimum ileti boyutu kısıtlamalarına göre iletiye sığmazsa, belirtilen maksimum sonuçlardan daha az olabilir. Bu parametre sıfır veya belirtilmemişse, sayfalı sorgu, iade iletisindeki sığan mümkün olduğunca çok sonuç içerir. |
+| --düğüm durumu-filtresi | Düğüm Durumu'na göre düğümlerin filtrelemesine izin verir. Yalnızca belirtilen filtre değeriyle eşleşen düğümler döndürülür. Filtre değeri aşağıdakilerden biri olabilir.  Varsayılan\: varsayılan değer. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
 ## <a name="sfctl-node-load"></a>sfctl düğüm yükü
-Service Fabric düğümünün yükleme bilgilerini alır.
+Servis Kumaş düğümünün yük bilgilerini alır.
 
-Yük veya kapasite tanımlı tüm ölçümler için bir Service Fabric düğümünün yükleme bilgilerini alır.
+Tanımlanan yük veya kapasiteye sahip tüm ölçümler için Hizmet Kumaş düğümünün yük bilgilerini alır.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl düğüm kaldırma-yapılandırma-geçersiz kılmalar
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl düğüm kaldırma-yapılandırma-overrides
 Belirtilen düğümdeki yapılandırma geçersiz kılmalarını kaldırır.
 
-Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının kaldırılmasına izin verir.
+Bu api, belirtilen düğümdeki varolan tüm yapılandırma geçersiz kılmalarının kaldırılmasına olanak tanır.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-node-remove-state"></a>sfctl düğüm kaldırma-durum
-Bir düğümdeki kalıcı durumun kalıcı olarak kaldırıldığını veya kaybediltiğini Service Fabric bildirir.
+## <a name="sfctl-node-remove-state"></a>sfctl düğüm kaldırma durumu
+Hizmet Kumaşı'na, bir düğümüzerinde kalıcı durum kalıcı olarak kaldırıldığını veya kaybolduğunu bildirer.
 
-Bu, düğümün kalıcı durumunu kurtarmanın mümkün olmadığı anlamına gelir. Bu genellikle bir sabit diskin temizlenmesi veya bir sabit diskin kilitlenmesi durumunda meydana gelir. Bu işlemin başarılı olması için düğüm aşağı doğru olmalıdır. Bu işlem, bu düğümdeki çoğaltmaların artık mevcut olmadığını ve bu çoğaltmaların geri dönmesi için Service Fabric durması gerektiğini Service Fabric sağlar. Düğümdeki durum kaldırılmadığı ve düğüm durumu bozulmadan geri dönebileceği takdirde bu cmdlet 'i çalıştırmayın. Service Fabric 6,5 ' den başlayarak çekirdek düğümleri için bu API 'yi kullanmak üzere, çekirdek düğümleri normal (çekirdek olmayan) düğümlere değiştirip düğüm durumunu kaldırmak için bu API 'yi çağırın. Küme Azure 'da çalışıyorsa, çekirdek düğüm kapatıldıktan sonra, Service Fabric otomatik olarak çekirdek olmayan bir düğümle değiştirmeye çalışacaktır. Bunu yapmak için, birincil düğüm türündeki çekirdek olmayan düğümlerin sayısının aşağı çekirdek düğümlerin sayısından küçük olmadığından emin olun. Gerekirse, bunu elde etmek için birincil düğüm türüne daha fazla düğüm ekleyin. Tek başına kümede, aşağı çekirdek düğümünün durumunun bozulmadan geri gelmesi beklenmiyorsa, lütfen düğümü kümeden kaldırın, bkz. https\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
+Bu, bu düğümün kalıcı durumunu kurtarmak mümkün olmadığı anlamına gelir. Bu genellikle bir sabit disk temiz silinmişse veya sabit disk çatlarsa gerçekleşir. Bu işlemin başarılı olaması için düğümün aşağı olması gerekir. Bu işlem, Service Fabric'e bu düğümdeki yinelemelerin artık var olmadığını ve Hizmet Kumaşı'nın bu yinelemelerin geri gelmesini beklemeyi bırakması gerektiğini bilmesini sağlar. Düğümüzerindeki durum kaldırılmadıysa ve düğüm sağlam bir şekilde geri gelebiliyorsa bu cmdlet'i çalıştırmayın. Service Fabric 6.5'ten başlayarak, bu API'yi tohum düğümleri için kullanmak için lütfen tohum düğümlerini normal (tohumsuz) düğümlere çevirin ve ardından düğüm durumunu kaldırmak için bu API'yi çağırın. Küme Azure'da çalışıyorsa, tohum düğümü düştükten sonra Service Fabric onu otomatik olarak tohum olmayan bir düğümolarak değiştirmeye çalışır. Bunu gerçekleştirmek için, birincil düğüm türündeki tohumsuz düğüm sayısının Aşağı tohum düğümlerinin sayısından az olmadığından emin olun. Gerekirse, bunu başarmak için birincil düğüm türüne daha fazla düğüm ekleyin. Bağımsız küme için, Down tohum düğümünün sağlam bir şekilde geri gelmesi beklenmiyorsa, lütfen düğümü\:kümeden çıkarın, https //docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes bakın.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-node-report-health"></a>sfctl düğüm raporu-sistem durumu
-Service Fabric düğümünde bir sistem durumu raporu gönderir.
+## <a name="sfctl-node-report-health"></a>sfctl düğüm raporu-sağlık
+Hizmet Kumaş düğümü hakkında bir sağlık raporu gönderir.
 
-Belirtilen Service Fabric düğümünün sistem durumunu raporlar. Rapor, sistem durumu raporunun ve rapor alındığı özelliğin kaynağı hakkında bilgi içermelidir. Rapor, sistem durumu deposuna ileten bir Service Fabric ağ geçidi düğümüne gönderilir. Rapor, ağ geçidi tarafından kabul edilebilir, ancak ek doğrulamadan sonra sistem durumu deposu tarafından reddedildi. Örneğin, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle sistem durumu deposu raporu reddedebilir. Raporun sistem durumu deposuna uygulanıp uygulanmadığını görmek için raporun HealthEvents bölümünde göründüğünü kontrol edin.
+Belirtilen Hizmet Kumaş düğümünün sağlık durumunu bildirir. Rapor, sağlık raporunun kaynağı ve raporlandığı özellik hakkındaki bilgileri içermelidir. Rapor, sağlık deposuna ileten Bir Hizmet Kumaşı ağ geçidi düğümüne gönderilir. Rapor ağ geçidi tarafından kabul edilebilir, ancak ek doğrulama sonra sağlık deposu tarafından reddedilir. Örneğin, sistem durumu deposu, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle raporu reddedebilir. Raporun sağlık deposunda uygulanıp uygulanmadığını görmek için raporun HealthEvents bölümünde görünüp görünmediğini denetleyin.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Health-Property [gerekli] | Sistem durumu bilgilerinin özelliği. <br><br> Bir varlık, farklı özellikler için sistem durumu raporlarına sahip olabilir. Özelliği, rapor tetikleyen durum koşulunu kategorilere ayırmak için Raporlayıcı esnekliğine izin veren sabit bir sabit listesi olmayan bir dizedir. Örneğin, SourceId "Localizçi" olan bir Raporlayıcı, bir düğümdeki kullanılabilir diskin durumunu izleyebilir, bu nedenle söz konusu düğümdeki "AvailableDisk" özelliğini bildirebilirler. Aynı Reporter, düğüm bağlantısını izleyip aynı düğümde bir özelliği "bağlantı" bildirebilirler. Sistem durumu deposunda, bu raporlar belirtilen düğüm için ayrı sistem durumu olayları olarak kabul edilir. SourceID ile birlikte, özelliği sistem durumu bilgilerini benzersiz şekilde tanımlar. |
-| --sistem durumu-durumu [gerekli] | Olası değerler arasında\: ' geçersiz ', ' Tamam ', ' uyarı ', ' Error ', ' Unknown ' verilebilir. |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --kaynak-kimliği [gerekli] | Sistem durumu bilgilerini oluşturan istemci/izleme/sistem bileşenini tanımlayan kaynak adı. |
-| --Açıklama | Sistem durumu bilgilerinin açıklaması. <br><br> Bu, raporla ilgili okunabilir bilgileri eklemek için kullanılan serbest metni temsil eder. Açıklama için en fazla dize uzunluğu 4096 karakterdir. Belirtilen dize daha uzunsa otomatik olarak kesilir. Kesilmişse, açıklamanın son karakterleri "[kesildi]" işaretçisini ve toplam dize boyutu 4096 karakterdir. İşaretin varlığı, kesilmesinin gerçekleştiği kullanıcılara işaret eden anlamına gelir. Kesilmişse, açıklamanın özgün dizeden 4096 karakterden daha az olduğunu unutmayın. |
-| --hemen | Raporun hemen gönderilmesi gerekip gerekmediğini belirten bir bayrak. <br><br> Bir sistem durumu raporu, sistem durumu deposuna ileten bir Service Fabric ağ geçidi uygulamasına gönderilir. Immediate değeri true olarak ayarlanırsa, HTTP ağ geçidi uygulamasının kullandığı doku istemci ayarlarından bağımsız olarak, rapor HTTP ağ geçidinden sistem durumu deposuna anında gönderilir. Bu, mümkün olan en kısa sürede gönderilmesi gereken kritik raporlar için kullanışlıdır. Zamanlama ve diğer koşullara bağlı olarak, raporun gönderilmesi yine de başarısız olabilir, örneğin, HTTP ağ geçidi kapalıysa veya ileti ağ geçidine ulaşmazsa. Anında false değeri ayarlandıysa, rapor HTTP ağ geçidindeki sistem durumu istemci ayarlarına bağlı olarak gönderilir. Bu nedenle, Healthreportsendınterval yapılandırmasına göre toplu hale gelir. Durum istemcisinin sistem durumu raporlama iletilerini sistem durumu rapor işleme ile en iyi hale getirmesine izin verdiğinden, bu önerilen ayardır. Varsayılan olarak, raporlar anında gönderilmez. |
-| ----süre sonu | Raporun süresi dolmuşsa sistem durumu deposundan kaldırılıp kaldırılmadığını belirten değer. <br><br> True olarak ayarlanırsa, rapor süresi dolduktan sonra sistem durumu deposundan kaldırılır. False olarak ayarlanırsa rapor, süre dolduğunda hata olarak değerlendirilir. Bu özelliğin değeri varsayılan olarak false 'tur. İstemciler düzenli olarak rapor edildiğinde Removewhenererererfalse (varsayılan) olarak ayarlanmalıdır. Bu şekilde, Raporlayıcı sorunları (örn. kilitlenme) ve raporleyemiyorum, sistem durumu raporunun süresi dolarsa varlık hata olarak değerlendirilir. Bu, varlığı hata sağlık durumunda olduğu şekilde işaretler. |
-| --sıra-sayısı | Bu sistem durumu raporunun sayısal bir dize olarak sıra numarası. <br><br> Rapor sıra numarası, eski raporları algılamak için sistem durumu deposu tarafından kullanılır. Belirtilmemişse, bir rapor eklendiğinde sistem durumu istemcisi tarafından otomatik olarak bir sıra numarası oluşturulur. |
-| --timeout-t | Varsayılan\: 60. |
-| --TTL | Bu sistem durumu raporunun geçerli olduğu süre. Bu alan, süreyi belirtmek için ıSO8601 biçimini kullanır. <br><br> İstemciler düzenli olarak raporladığında, en yüksek sıklıkta raporlar göndermelidir. İstemciler geçişe rapor alıyorsa, süresi sonsuz olarak ayarlayabilir. Yaşam süresi dolduğunda, sistem durumu bilgilerini içeren sistem durumu olayı sistem durumu deposundan kaldırılır, Removewhenexpires true ise ya da Removewhenexpires false olduğunda hata durumunda değerlendirilir. Belirtilmemişse, yaşam süresi varsayılan olarak sonsuz değer olur. |
+| --sağlık-özellik [Gerekli] | Sağlık bilgilerinin özelliği. <br><br> Bir varlık, farklı özellikler için sistem durumu raporları olabilir. Özellik, muhabirin raporu tetikleyen durum durumunu kategorilere ayırmaesnekliğine izin vermek için sabit bir numaralandırma değil, bir dizedir. Örneğin, SourceId "LocalWatchdog" olan bir muhabir, kullanılabilir diskin bir düğümüzerindeki durumunu izleyebilir, böylece bu düğümdeki "AvailableDisk" özelliğini bildirebilir. Aynı muhabir düğüm bağlantısını izleyebilir, böylece aynı düğümüzerinde bir özellik "Bağlantı" bildirebilir. Sağlık deposunda, bu raporlar belirtilen düğüm için ayrı sağlık olayları olarak kabul edilir. Kaynak Kimliği ile birlikte, özellik benzersiz sağlık bilgilerini tanımlar. |
+| --sağlık durumu [Gerekli] | Olası değerler\: arasında 'Geçersiz', 'Tamam', 'Uyarı', 'Hata', 'Bilinmiyor' sayılabilir. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --kaynak-id [Gerekli] | Sistem bilgilerini oluşturan istemci/izleme örgütü/sistem bileşenini tanımlayan kaynak adı. |
+| --açıklama | Sağlık bilgilerinin açıklaması. <br><br> Rapor hakkında insan tarafından okunabilir bilgiler eklemek için kullanılan ücretsiz metni temsil eder. Açıklama için maksimum dize uzunluğu 4096 karakterdir. Sağlanan dize daha uzunsa, otomatik olarak kesilir. Kesildiğinde, açıklamanın son karakterleri "[Kesildi]" işareti ni içerir ve toplam dize boyutu 4096 karakterdir. İşaretçinin varlığı kullanıcılara kesilme nin oluştuğunu gösterir. Kesildiğinde, açıklamanın özgün dizedeki 4096 karakterden az olduğunu unutmayın. |
+| --hemen | Raporun hemen gönderilmesi gerekip gerekmediğini belirten bir bayrak. <br><br> Sağlık raporu, sağlık deposuna ileten Bir Hizmet Dokusu ağ geçidi Uygulamasına gönderilir. Hemen doğru ayarlanırsa, rapor HTTP Ağ Geçidi Uygulaması'nın kullandığı kumaş istemci ayarlarına bakılmaksızın hemen HTTP Ağ Geçidi'nden sağlık deposuna gönderilir. Bu, en kısa sürede gönderilmesi gereken kritik raporlar için yararlıdır. Zamanlamaya ve diğer koşullara bağlı olarak, örneğin HTTP Ağ Geçidi kapalıysa veya ileti Ağ Geçidi'ne ulaşamazsa, rapor göndermek yine de başarısız olabilir. Anında yanlış olarak ayarlanırsa, rapor HTTP Ağ Geçidi'ndeki sağlık istemcisi ayarlarına göre gönderilir. Bu nedenle, HealthReportSendInterval yapılandırmasına göre toplu olarak düzenlenecektir. Bu, sistem durumu istemcisinin sağlık deposuna gelen sağlık raporlama iletilerini ve sistem durumu raporu işlemeyi optimize etmesine olanak sağladığından önerilen ayardır. Varsayılan olarak, raporlar hemen gönderilmez. |
+| --kaldırma-ne zaman-süresi doldu | Raporun süresi dolduğunda sistem durumu deposundan kaldırılıp kaldırılmadığını gösteren değer. <br><br> Doğru olarak ayarlanırsa, rapor süresi dolduktan sonra sistem durumu deposundan kaldırılır. Yanlış olarak ayarlanmışsa, süresi dolduğunda rapor bir hata olarak kabul edilir. Bu özelliğin değeri varsayılan olarak yanlıştır. İstemciler düzenli aralıklarla rapor verdiğinde, RemoveWhenExpired false (varsayılan) olarak ayarlanmalıdır. Bu şekilde, muhabirin sorunları (örn. kilitlenme) vardır ve rapor edemez, sağlık raporu sona erdiğinde varlık hata olarak değerlendirilir. Bu, varlığı Hata durumu durumunda olarak gösterir. |
+| --sıra numarası | Sayısal dize olarak bu sistem durumu raporunun sıra numarası. <br><br> Rapor sıra numarası, eski raporları algılamak için sistem durumu deposu tarafından kullanılır. Belirtilmemişse, rapor eklendiğinde bir sıra numarası sistem durumu istemcisi tarafından otomatik olarak oluşturulur. |
+| --zaman ayarı -t | Varsayılan\: 60. |
+| --ttl | Bu sağlık raporunun geçerli olduğu süre. Bu alan, süreyi belirtmek için ISO8601 biçimini kullanır. <br><br> İstemciler düzenli olarak rapor verdiğinde, yaşamak için zamandan daha yüksek sıklıkta raporlar göndermelidir. İstemciler geçiş hakkında rapor verirlerse, zamanı sonsuz alete ayarlayabilirler. Yaşam süresi dolduğunda, sağlık bilgilerini içeren sağlık olayı, RemoveWhenExpired doğruysa, sağlık deposundan kaldırılır veya hata yla değerlendirilir, RemoveWhenExpired false ise. Belirtilmemişse, sonsuz değerde varsayılan olarak yaşama zamanı. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
-## <a name="sfctl-node-restart"></a>sfctl düğümünü yeniden başlatma
-Service Fabric küme düğümünü yeniden başlatır.
+## <a name="sfctl-node-restart"></a>sfctl düğüm yeniden başlatma
+Service Fabric küme düğümlerini yeniden başlatır.
 
-Zaten başlatılmış bir Service Fabric küme düğümünü yeniden başlatır.
+Zaten başlamış olan Hizmet Kumaş ı sküme düğümlerini yeniden başlatır.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --Create-Fabric-dump | Doku düğümü işleminin dökümünü oluşturmak için true değerini belirtin. Bu, büyük/küçük harfe duyarlıdır.  Varsayılan\: false. |
-| --düğüm-örnek kimliği | Hedef düğümün örnek KIMLIĞI. Örnek KIMLIĞI belirtilmişse, düğüm yalnızca düğümün geçerli örneğiyle eşleşiyorsa yeniden başlatılır. "0" varsayılan değeri herhangi bir örnek KIMLIĞIYLE eşleşir. Örnek KIMLIĞI, düğüm al sorgusu kullanılarak elde edilebilir.  Varsayılan\: 0 ' dır. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --create-fabric-dump | Kumaş düğümü işleminin dökümesini oluşturmak için True'yu belirtin. Bu büyük/küçük harf duyarlı.  Varsayılan\: False. |
+| --düğüm-instance-id | Hedef düğümün örnek kimliği. Örnek kimlik belirtilirse, düğüm yalnızca düğümün geçerli örneğiyle eşleşirse yeniden başlatılır. Varsayılan "0" değeri herhangi bir örnek kimliğiyle eşleşir. Örnek kimlik get node sorgusu kullanılarak elde edilebilir.  Varsayılan\: 0. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
 ## <a name="sfctl-node-transition"></a>sfctl düğüm geçişi
-Bir küme düğümünü başlatır veya sonlandırır.
+Küme düğümlerini başlatır veya durdurur.
 
-Bir küme düğümünü başlatır veya sonlandırır.  Küme düğümü, işletim sistemi örneğinin kendisi değil, bir işlemdir.  Bir düğümü başlatmak için Nodegeçişli Tiontype parametresi için "Start" geçirin. Bir düğümü durdurmak için Nodegeçişli Tiontype parametresi için "Durdur" geçirin. Bu API işlemi başlatır-API geri döndüğünde düğümü henüz geçirmeyi bitirmemiş olabilir. İşlemin ilerlemesini almak için aynı operationId ile Getnodeınlationprogress çağrısı yapın.
-
-### <a name="arguments"></a>Bağımsız Değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --Node-Instance-id [gerekli] | Hedef düğümün düğüm örnek KIMLIĞI. Bu, Getnodeınfo API aracılığıyla belirlenebilir. |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --Node-geçiş-tür [gerekli] | Gerçekleştirilecek geçişin türünü gösterir.  Nodegeçişli Tiontype. Start, durdurulmuş bir düğüm başlatacak. Nodegeçişli Tiontype. Stop, çalışır olan bir düğümü durdurur. |
-| --işlem kimliği [gerekli] | Bu API 'nin bir çağrısını tanımlayan GUID.  Bu, karşılık gelen GetProgress API 'sine geçirilir. |
-| --DURATION-saniye cinsinden [gerekli] | Düğümün durdurulduğu süre (saniye cinsinden).  En küçük değer 600, üst sınır 14400 ' dir.  Bu sürenin süresi dolduktan sonra, düğüm otomatik olarak geri alınacaktır. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
-
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
-
-## <a name="sfctl-node-transition-status"></a>sfctl düğüm geçişi-durum
-StartNodeTransition kullanılarak başlatılan bir işlemin ilerleme durumunu alır.
-
-Belirtilen operationId kullanarak StartNodeTransition ile başlatılan bir işlemin ilerlemesini alır.
+Küme düğümlerini başlatır veya durdurur.  Küme düğümü, işletim sistemi örneğinin kendisi değil, bir işlemdir.  Düğüm başlatmak için, NodeTransitionType parametresi için "Başlat" geçişini geçirin. Düğümü durdurmak için, NodeTransitionType parametresi için "Dur" geçişini. Bu API işlemi başlatır - API düğümü döndürdüğünde geçiş işlemi henüz tamamlanamış olabilir. Operasyonun ilerlemesini almak için getnodeTransitionProgress'i aynı OperationId ile arayın.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Node-Name [gerekli] | Düğümün adı. |
-| --işlem kimliği [gerekli] | Bu API 'nin bir çağrısını tanımlayan GUID.  Bu, karşılık gelen GetProgress API 'sine geçirilir. |
-| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --düğüm-instance-id [Gerekli] | Hedef düğümün düğüm örnek kimliği. Bu GetNodeInfo API ile belirlenebilir. |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --düğüm geçiş türü [Gerekli] | Gerçekleştirecek geçiş türünü gösterir.  NodeTransitionType.Start durdurulan bir düğüm başlatacak. NodeTransitionType.Stop kadar bir düğüm durdurur. |
+| --operation-id [Gerekli] | Bu API'nin çağrısını tanımlayan bir GUID.  Bu, ilgili GetProgress API'sine aktarılır. |
+| --stop-duration-in-seconds [Gerekli] | Düğümün durdurulması için saniyeler içinde süre.  Minimum değer 600, en büyük değer 14400'dür.  Bu süre dolduktan sonra düğüm otomatik olarak geri gelir. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenler
+### <a name="global-arguments"></a>Küresel Argümanlar
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
-| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
-| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+
+## <a name="sfctl-node-transition-status"></a>sfctl düğüm geçiş durumu
+StartNodeTransition kullanarak başlatılan bir işlemin ilerlemesini alır.
+
+Sağlanan OperationId'i kullanarak StartNodeTransition ile başlatılan bir işlemin ilerlemesini alır.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --düğüm adı [Gerekli] | Düğümün adı. |
+| --operation-id [Gerekli] | Bu API'nin çağrısını tanımlayan bir GUID.  Bu, ilgili GetProgress API'sine aktarılır. |
+| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+
+### <a name="global-arguments"></a>Küresel Argümanlar
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
+| --yardım -h | Bu yardım iletisi ve çıkış göster. |
+| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
+| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
+| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- Servis Kumaşı CLI'yi [kur.](service-fabric-cli.md)
+- [Örnek komut dosyalarını](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI'yi nasıl kullanacağınızı öğrenin.

@@ -1,6 +1,6 @@
 ---
-title: Azure API Management'te özel önbelleğe alma
-description: Azure API Management'ta anahtara göre öğeleri önbelleğe alınacağını öğrenin
+title: Azure API Management'ta özel önbelleğe alma
+description: Azure API Yönetimi'nde öğeleri anahtarla nasıl önbelleğe alınacağını öğrenin
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60780830"
 ---
-# <a name="custom-caching-in-azure-api-management"></a>Azure API Management'te özel önbelleğe alma
-Azure API Management hizmeti için yerleşik desteği vardır [HTTP yanıt önbelleğe alma](api-management-howto-cache.md) kaynak URL anahtar olarak kullanma. Anahtarı kullanarak istek üst bilgileri tarafından değiştirilebilir `vary-by` özellikleri. Tüm HTTP yanıtlarını (diğer adıyla gösterimleri) önbelleğe alma işlemi için yararlıdır, ancak bazen yalnızca önbelleğe gösterimi bir kısmını yararlı olur. Yeni [önbellek arama değeri](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) ve [önbellek deposu değeri](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) ilkeleri ilke tanımları içindeki verileri rastgele parçalarını depolanıp olanağı sağlar. Bu özellik ayrıca değeri daha önce sunulan ekler [gönderme isteği](/azure/api-management/api-management-advanced-policies#SendRequest) ilke çünkü artık dış hizmetlerden yanıtları önbelleğe alabilir.
+# <a name="custom-caching-in-azure-api-management"></a>Azure API Management'ta özel önbelleğe alma
+Azure API Yönetimi hizmeti, kaynak URL'yi anahtar olarak kullanarak [HTTP yanıtı önbelleğe alma](api-management-howto-cache.md) için yerleşik destek ekibe sahiptir. Anahtar özellikleri kullanarak istek üstbilgi `vary-by` tarafından değiştirilebilir. Bu, tüm HTTP yanıtlarının (aka gösterimleri) önbelleğe almak için yararlıdır, ancak bazen yalnızca bir gösterimin bir kısmını önbelleğe almak yararlıdır. Yeni [önbellek arama değeri](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) ve [önbellek deposu değeri](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) ilkeleri, ilke tanımları içinden rasgele veri parçalarını depolama ve alma olanağı sağlar. Bu yetenek, artık dış hizmetlerden gelen yanıtları önbelleğe alabileceğinizden, daha önce tanıtılan [gönder isteği](/azure/api-management/api-management-advanced-policies#SendRequest) ilkesine de değer katar.
 
 ## <a name="architecture"></a>Mimari
-API Management hizmeti kullanan bir kiracı başına paylaşılan veri önbelleği, ölçeği birden çok birimi olarak hala aynı erişim elde etmeniz, verileri önbelleğe. Ancak, çok bölgeli dağıtımlar ile çalışırken, her bölge içinde bağımsız önbellekleri vardır. Önbellek yalnızca kaynağı bilgi parçasının olduğu bir veri deposu olarak davranmaya olmayan önemlidir. Yaptık ve çok bölgeli dağıtım yararlanmak daha sonra karar, müşterilerin yolculuk kullanıcılarla önbelleğe alınan verilerdeki erişimlerini kaybedebilir.
+API Yönetimi hizmeti, birden çok birime ölçeklendirdiğiniz gibi aynı önbelleğe alınmış verilere erişmeye devam edebilmeniz için paylaşılan kiracı başına paylaşılan bir veri önbelleği kullanır. Ancak, çok bölgeli bir dağıtımla çalışırken, her bölgede bağımsız önbellekler vardır. Önbelleği, bazı bilgilerin tek kaynağının olduğu bir veri deposu olarak ele alınmamak önemlidir. Bunu yaptıysanız ve daha sonra çok bölgeli dağıtımdan yararlanmaya karar verdiyseniz, seyahat eden kullanıcılara sahip müşteriler önbelleğe alınmış verilere erişimi kaybedebilir.
 
 ## <a name="fragment-caching"></a>Parça önbelleğe alma
-Burada verilen yanıtları belirlemek pahalı ve makul bir süre için henüz yeni kalan verileri kısmı içeren bazı durumlar vardır. Örneğin, uçuş ayırmalar, uçuş durumu ile ilgili bilgi sağlayan bir havayolu tarafından oluşturulan bir hizmet göz önünde bulundurun. Kullanıcı airlines noktaları programının bir üyesi ise, geçerli durumlarını ilgili bilgileri de gerekir ve mesafe toplanır. Bu kullanıcı ile ilgili bilgileri, farklı bir sistem depolanabilir, ancak uçuş durumu ve rezervasyonları döndürülen yanıtların dahil istenebilir. Bu yapılabilir parça olarak adlandırılan bir işlem kullanarak. Birincil gösterimi tür belirtecinin kullanıcı ile ilgili bilgiler eklenecek olduğu belirtmek için kullanarak kaynak sunucudan döndürülebilir. 
+Yanıtların döndürüldüğü bazı durumlar, belirlemek için pahalı olan verilerin bir kısmını içerir ve ancak makul bir süre için taze kalır. Örnek olarak, uçuş rezervasyonları, uçuş durumu, vb. ile ilgili bilgi sağlayan bir havayolu tarafından oluşturulmuş bir hizmeti göz önünde bulundurun. Kullanıcı havayolları puan programının bir üyesiyse, mevcut durumları ve birikmiş kilometre bilgilerine de sahip olacaktır. Kullanıcıyla ilgili bu bilgiler farklı bir sistemde depolanabilir, ancak uçuş durumu ve rezervasyonlar hakkında döndürülen yanıtlara eklemek isteolabilir. Bu, parça önbelleğe alma adı verilen bir işlem kullanılarak yapılabilir. Birincil gösterim, kullanıcıyla ilgili bilgilerin nereye ekleneceğini belirtmek için bir tür belirteç kullanarak kaynak sunucudan döndürülebilir. 
 
-Arka uç API'sini aşağıdaki JSON yanıtı göz önünde bulundurun.
+Arka uç API'sinden aşağıdaki JSON yanıtını düşünün.
 
 ```json
 {
@@ -43,13 +43,13 @@ Arka uç API'sini aşağıdaki JSON yanıtı göz önünde bulundurun.
 }  
 ```
 
-Ve ikincil kaynakta `/userprofile/{userid}` olduğunu gibi görünüyor,
+Ve `/userprofile/{userid}` ikincil kaynak şöyle görünüyor:
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-Uygun kullanıcı bilgilerini dahil etmek için API Management belirlemek için son kullanıcının kim olduğunu belirlemek gerekir. Bu mekanizma uygulamaya bağlıdır. Örneğin, kullanıyorum `Subject` , talep bir `JWT` belirteci. 
+Dahil edilmesi gereken uygun kullanıcı bilgilerini belirlemek için API Yönetimi'nin son kullanıcının kim olduğunu belirlemesi gerekir. Bu mekanizma uygulamaya bağlıdır. Örnek olarak, bir `Subject` `JWT` belirteç iddiasını kullanıyorum. 
 
 ```xml
 <set-variable
@@ -57,7 +57,7 @@ Uygun kullanıcı bilgilerini dahil etmek için API Management belirlemek için 
   value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 ```
 
-API Management depoları `enduserid` daha sonra kullanmak için bir bağlam değişkeni değeri. Sonraki adım, önceki bir istek zaten kullanıcı bilgileri alınır ve önbellekte depolanır, belirlemektir. Bunun için API Yönetimi kullanan `cache-lookup-value` ilkesi.
+API Yönetimi `enduserid` değeri daha sonra kullanmak üzere bir bağlam değişkeninde depolar. Bir sonraki adım, önceki bir isteğin kullanıcı bilgilerini zaten alıp alıp almadığını ve önbellekte depolayıp saklamadığını belirlemektir. Bunun için, API `cache-lookup-value` Yönetimi ilkeyi kullanır.
 
 ```xml
 <cache-lookup-value
@@ -65,7 +65,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Anahtar değeri ve ardından Hayır karşılık gelen önbellek girişi yoksa `userprofile` bağlam değişkeni oluşturulur. API Management kullanarak arama başarısını denetler `choose` denetim akış ilkesi.
+Önbellekte anahtar değerine karşılık gelen giriş yoksa, `userprofile` bağlam değişkeni oluşturulmaz. API `choose` Yönetimi, denetim akışı ilkesini kullanarak aramanın başarısını denetler.
 
 ```xml
 <choose>
@@ -75,7 +75,7 @@ Anahtar değeri ve ardından Hayır karşılık gelen önbellek girişi yoksa `u
 </choose>
 ```
 
-Varsa `userprofile` bağlam değişkeni yok ve API Management, almak için bir HTTP isteği yapmak zorunda geçmeye.
+Bağlam `userprofile` değişkeni yoksa, API Yönetimi'nin onu almak için bir HTTP isteğinde bulunması gerekir.
 
 ```xml
 <send-request
@@ -92,7 +92,7 @@ Varsa `userprofile` bağlam değişkeni yok ve API Management, almak için bir H
 </send-request>
 ```
 
-API Management kullanan `enduserid` kullanıcı profili kaynağı URL'sini oluşturmak için. API Management yanıtı aldığında yanıt dışında gövde metni çeker ve bir bağlam değişkeni depolar.
+API Yönetimi, `enduserid` kullanıcı profili kaynağının URL'sini oluşturmak için kullanır. API Yönetimi yanıtı aldıktan sonra, gövde metnini yanıttan çıkarır ve bir bağlam değişkenine geri yerle bir eder.
 
 ```xml
 <set-variable
@@ -100,7 +100,7 @@ API Management kullanan `enduserid` kullanıcı profili kaynağı URL'sini oluş
     value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 ```
 
-API Management aynı kullanıcının başka bir istekte bulunduğunda bu HTTP isteğinin yeniden yapmasını önlemek için önbelleğe kullanıcı profilini depolamak için belirtebilirsiniz.
+API Yönetimi'nin bu HTTP isteğini tekrar yapmasını önlemek için, aynı kullanıcı başka bir istekte bulununca, kullanıcı profilini önbellekte depolamayı belirtebilirsiniz.
 
 ```xml
 <cache-store-value
@@ -108,11 +108,11 @@ API Management aynı kullanıcının başka bir istekte bulunduğunda bu HTTP is
     value="@((string)context.Variables["userprofile"])" duration="100000" />
 ```
 
-API Management API Management ile almak için ilk olarak çalıştı. tam aynı anahtarı kullanarak önbelleğe değeri depolar. Değerini depolamak için API Management'ı seçer süresi hakkında dayanmalıdır genellikle bilgi, değişerek ve nasıl dayanıklı kullanıcılar için güncel bilgilerdir. 
+API Yönetimi, API Management'ın başlangıçta almaya çalıştığı anahtarı kullanarak önbellekteki değeri depolar. API Yönetimi'nin değeri depolamayı seçtiği süre, bilgilerin ne sıklıkta değiştiğine ve kullanıcıların güncel olmayan bilgilere ne kadar toleranslı olduğuna bağlı olmalıdır. 
 
-Önbellekten yine de bir işlem dışı, ağ isteği ve potansiyel olarak milisaniye onlarca isteği eklemeye devam edebilirsiniz olduğunu bilmeniz önemlidir. Kullanıcı profili bilgileri, veritabanı sorguları veya birden çok arka uçları toplama bilgilerinden gerek kalmadan nedeniyle daha uzun sürer belirlerken avantajlar sunulur.
+Önbellekten geri alma işlemin hala bir iş dışı, ağ isteği ve potansiyel yine de isteğe onlarca milisaniye ekleyebilirsiniz olduğunu fark etmek önemlidir. Kullanıcı profili bilgilerinin belirlenmesinin yararları, veritabanı sorguları veya birden çok arka uçtan bilgi toplama gereksinimi nedeniyle bundan daha uzun sürer.
 
-Son işlem döndürülen yanıtın kullanıcı profili bilgilerini güncelleştirmek için adımdır.
+İşlemdeki son adım, döndürülen yanıtı kullanıcı profili bilgileriyle güncelleştirmektir.
 
 ```xml
 <!-- Update response body with user profile-->
@@ -121,9 +121,9 @@ Son işlem döndürülen yanıtın kullanıcı profili bilgilerini güncelleşti
     to="@((string)context.Variables["userprofile"])" />
 ```
 
-Seçtiğiniz Değiştir bile oluşmaz, yanıt hala geçerli bir JSON böylece belirtecinin bir parçası tırnak işaretleri eklemek için kullanabilirsiniz.  
+Belirteçlerin bir parçası olarak tırnak işaretlerini eklemeyi seçebilirsiniz, böylece değiştirme gerçekleşmese bile yanıt yine de geçerli bir JSON olur.  
 
-Bu adımların tümünü birleştirmek sonra sonuç aşağıdaki gibi bir görünen bir ilkedir.
+Tüm bu adımları bir araya getirdiğinizde, sonuç aşağıdaki gibi görünen bir ilkedir.
 
 ```xml
 <policies>
@@ -177,22 +177,22 @@ Bu adımların tümünü birleştirmek sonra sonuç aşağıdaki gibi bir görü
 </policies>
 ```
 
-Önbelleğe alma bu yaklaşım, tek bir sayfa olarak işlenebilecek, HTML sunucu tarafında nereye oluşur web sitelerinde öncelikli olarak kullanılır. Ayrıca burada istemcilerin HTTP istemci tarafı önbelleğe alma yapamaz veya SORUMLULUĞUN istemcide put değil önerilir API'lerindeki yararlı olabilir.
+Bu önbelleğe alma yaklaşımı, html'in sunucu tarafında oluşturulduğü web sitelerinde kullanılır, böylece tek bir sayfa olarak işlenebilir. Ayrıca, istemci tarafı HTTP önbelleğe alamaz veya istemci üzerinde bu sorumluluğu koymak için değil arzu edilir API'lerde yararlı olabilir.
 
-Bu aynı tür parça önbelleğe alma, arka uç web sunucularında bir Redis sunucusunun önbellek kullanılarak yapılabilir, önbelleğe alınan parçaları farklı arka uçları birincil daha geldiğini ancak, bu çalışmayı gerçekleştirmek için API Management hizmeti kullanarak kullanışlıdır yanıtlar.
+Bu tür bir parça önbelleğe alma da bir Redis önbelleğe alma sunucusu kullanarak arka uç web sunucularında yapılabilir, ancak önbelleğe alınan parçalar birincil farklı arka uçlardan geliyorsa bu işi gerçekleştirmek için API Yönetimi hizmetini kullanarak yararlıdır Yanıt.
 
-## <a name="transparent-versioning"></a>Saydam sürüm oluşturma
-Herhangi bir zamanda desteklenmesi için bir API birden çok farklı sürümünü yaygın bir uygulamadır. Örneğin, farklı ortamlar (geliştirme, test, üretim, vs.) desteklemek için veya API tüketicilerini yeni sürümlere geçirmek için zaman vermek için API eski sürümlerini destekler. 
+## <a name="transparent-versioning"></a>Saydam sürüm
+Bir API'nin birden çok farklı uygulama sürümü için herhangi bir anda desteklenmesi yaygın bir uygulamadır. Örneğin, farklı ortamları (geliştirme, test, üretim, vb.) desteklemek veya API tüketicilerine daha yeni sürümlere geçiş için zaman vermek için API'nin eski sürümlerini desteklemek. 
 
-Bu, işleme yerine URL'lerden değiştirmek istemci geliştiriciler gerektiren bir yaklaşım `/v1/customers` için `/v2/customers` tüketicinin profil verileri şu anda istedikleri kullanın ve uygun arka uç URL'si çağırmak için API sürümünü depolamaktır. Belirli bir istemci için çağrılacak doğru arka uç URL'si belirlemek için bazı yapılandırma verileri sorgulamak gereklidir. Bu yapılandırma verileri önbelleğe alarak, API Management bu Arama yapmanın performans cezası en aza indirebilirsiniz.
+Bunu işlemek için bir yaklaşım, istemci geliştiricilerin URL'leri `/v1/customers` `/v2/customers` değiştirmek yerine tüketicinin profil verilerinde şu anda kullanmak istedikleri API sürümünü depolamak ve uygun arka uç URL'sini aramaktır. Belirli bir istemci için aramak için doğru arka uç URL belirlemek için bazı yapılandırma verileri sorgulamak için gereklidir. Bu yapılandırma verilerini önbelleğe alarak, API Yönetimi bu aramayapmanın performans cezasını en aza indirebilir.
 
-İlk adım, istenen sürüm yapılandırmak için kullanılan tanımlayıcı belirlemektir. Bu örnekte, ürünün abonelik anahtarı sürümüne ilişkilendirilecek seçtim. 
+İlk adım, istenen sürümü yapılandırmak için kullanılan tanımlayıcıyı belirlemektir. Bu örnekte, sürümü ürün abonelik anahtarıyla ilişkilendirmeyi seçtim. 
 
 ```xml
 <set-variable name="clientid" value="@(context.Subscription.Key)" />
 ```
 
-API Management, ardından istenen istemci sürümü zaten geri olup olmadığını görmek için bir önbellek araması yapar.
+API Yönetimi daha sonra zaten istenen istemci sürümünü aldı olup olmadığını görmek için bir önbellek arama yapar.
 
 ```xml
 <cache-lookup-value
@@ -200,14 +200,14 @@ key="@("clientversion-" + context.Variables["clientid"])"
 variable-name="clientversion" />
 ```
 
-Ardından, API Management, bu önbellekte bulunamadı, olmadığını denetler.
+Ardından, API Yönetimi önbellekte bulup bulmadığını görmek için denetler.
 
 ```xml
 <choose>
     <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 ```
 
-API yönetimi, API Management bulamadıysanız, alır.
+API Yönetimi bulamamışsa, API Yönetimi onu alır.
 
 ```xml
 <send-request
@@ -220,7 +220,7 @@ API yönetimi, API Management bulamadıysanız, alır.
 </send-request>
 ```
 
-Yanıt gövdesi metni yanıttan ayıklayın.
+Yanıt gövdesi metnini yanıttan ayıklayın.
 
 ```xml
 <set-variable
@@ -228,7 +228,7 @@ Yanıt gövdesi metni yanıttan ayıklayın.
       value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
 ```
 
-Gelecekte kullanım için önbelleğindeki Store.
+İleride kullanmak üzere önbelleğe geri saklayın.
 
 ```xml
 <cache-store-value
@@ -237,14 +237,14 @@ Gelecekte kullanım için önbelleğindeki Store.
       duration="100000" />
 ```
 
-Ve son olarak istemci tarafından istenen hizmetinin sürümü seçmek için arka uç URL'si güncelleştirin.
+Ve son olarak istemci tarafından istenen hizmetin sürümünü seçmek için arka uç URL'sini güncelleştirin.
 
 ```xml
 <set-backend-service
       base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
 ```
 
-İlkenin tamamını aşağıdaki gibidir:
+Tam ilke aşağıdaki gibidir:
 
 ```xml
 <inbound>
@@ -269,12 +269,12 @@ Ve son olarak istemci tarafından istenen hizmetinin sürümü seçmek için ark
 </inbound>
 ```
 
-Şeffaf bir şekilde güncelleştirin ve istemcilerin yeniden dağıtmak zorunda kalmadan, hangi arka uç sürümü istemciler tarafından erişiliyor denetlemek API tüketicilerini etkinleştirme birçok API sürümü oluşturma konuları ele alan zarif bir çözümdür.
+API tüketicilerinin istemcileri güncelleştirmek ve yeniden dağıtmak zorunda kalmadan istemciler tarafından hangi arka uç sürümüne erişildiğini şeffaf bir şekilde denetlemelerini sağlamak, birçok API sürüm kaygısını gideren zarif bir çözümdür.
 
-## <a name="tenant-isolation"></a>Kiracı yalıtımı
-Daha büyük, çok kiracılı bir dağıtımda bazı şirketler, arka uç donanım farklı dağıtımlar üzerinde kiracıların ayrı grupları oluşturun. Bu, arka uçtaki bir donanım hatası tarafından etkilenen müşteriler sayısını en aza indirir. Ayrıca, yeni yazılım sürümleri aşamalar halinde alınmasına olanak sağlar. İdeal olarak bu arka uç mimarisi için API tüketicilerini saydam olmalıdır. API anahtarı başına yapılandırma durumu kullanarak arka uç URL'si düzenleme için aynı tekniği bağlı olduğu bu saydam sürüm oluşturma için benzer bir şekilde gerçekleştirilebilir.  
+## <a name="tenant-isolation"></a>Kiracı İzolasyon
+Daha büyük, çok kiracılı dağıtımlarda bazı şirketler, arka uç donanımının farklı dağıtımlarında ayrı kiracı grupları oluşturur. Bu, arka uçtaki bir donanım sorunundan etkilenen müşteri sayısını en aza indirir. Ayrıca, yeni yazılım sürümlerinin aşamalı olarak kullanıma sunulmasını da sağlar. İdeal olarak bu arka uç mimarisi API tüketicilere şeffaf olmalıdır. Api anahtarı başına yapılandırma durumu kullanarak arka uç URL'yi manipüle etme tekniğini temel aldığı için, bu durum saydam sürümle benzer bir şekilde elde edilebilir.  
 
-API'nin her bir abonelik anahtarı için tercih edilen bir sürümü döndürmek yerine, bir kiracı gruba atanan donanım ilişkili tanımlayıcı döndürecektir. Bu tanımlayıcı, uygun arka uç URL'si oluşturmak için kullanılabilir.
+Her abonelik anahtarı için API'nin tercih edilen bir sürümünü döndürmek yerine, kiracıyı atanan donanım grubuna ilişkilendiren bir tanımlayıcı döndürebilirsiniz. Bu tanımlayıcı uygun arka uç URL'sini oluşturmak için kullanılabilir.
 
 ## <a name="summary"></a>Özet
-Her tür veriyi depolamak için Azure API management önbelleği kullanma özgürlüğünü tanıyabilir gelen bir istek işlenmeden şeklini etkileyebilir yapılandırma verileri etkili erişim sağlar. Ayrıca, bir arka uç API döndürülen yanıt genişletebilirsiniz veri parçalarını depolamak için de kullanılabilir.
+Her türlü veriyi depolamak için Azure API yönetim önbelleğini kullanma özgürlüğü, gelen isteğin işlenme şeklini etkileyebilecek yapılandırma verilerine verimli erişim sağlar. Ayrıca, arka uç API'den döndürülen yanıtları artırabilen veri parçalarını depolamak için de kullanılabilir.

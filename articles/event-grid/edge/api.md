@@ -1,6 +1,6 @@
 ---
-title: REST API-Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge Event Grid REST API.
+title: REST API - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
+description: IoT Edge'deki Olay Izgara'da REST API.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,38 +10,38 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841838"
 ---
 # <a name="rest-api"></a>REST API
-Bu makalede IoT Edge Azure Event Grid REST API 'Leri açıklanmaktadır
+Bu makalede, IoT Edge'deki Azure Olay Izgarasının REST API'leri açıklanmaktadır
 
-## <a name="common-api-behavior"></a>Ortak API davranışı
+## <a name="common-api-behavior"></a>Yaygın API davranışı
 
-### <a name="base-url"></a>Taban URL 'SI
-IoT Edge Event Grid, HTTP (bağlantı noktası 5888) ve HTTPS (bağlantı noktası 4438) üzerinden sunulan aşağıdaki API 'Lere sahiptir.
+### <a name="base-url"></a>Temel URL
+IoT Edge'deki Olay Izgarası, HTTP (port 5888) ve HTTPS (port 4438) üzerinde aşağıdaki API'ler maruz kalmıştır.
 
-* HTTP için temel URL: http://eventgridmodule:5888
-* HTTPS için temel URL: https://eventgridmodule:4438
+* HTTP için temel URL:http://eventgridmodule:5888
+* HTTPS için temel URL:https://eventgridmodule:4438
 
-### <a name="request-query-string"></a>Sorgu dizesi iste
-Tüm API istekleri aşağıdaki sorgu dizesi parametresini gerektirir:
+### <a name="request-query-string"></a>Sorgu dizesi isteği
+Tüm API istekleri aşağıdaki sorgu dize parametresini gerektirir:
 
 ```?api-version=2019-01-01-preview```
 
-### <a name="request-content-type"></a>İstek içerik türü
-Tüm API isteklerinin **Içerik türünde**olması gerekir.
+### <a name="request-content-type"></a>İçerik türü isteme
+Tüm API isteklerinin bir **İçerik Türü**olmalıdır.
 
-**Eventgridschema** veya **CustomSchema**söz konusu olduğunda, Content-Type değeri aşağıdaki değerlerden biri olabilir:
+**EventGridSchema** veya **CustomSchema**durumunda, İçerik Türü değeri aşağıdaki değerlerden biri olabilir:
 
 ```Content-Type: application/json```
 
 ```Content-Type: application/json; charset=utf-8```
 
-Yapılandırılmış modda **CloudEventSchemaV1_0** olması durumunda, içerik türü değeri aşağıdaki değerlerden biri olabilir:
+Yapılandırılmış modda **CloudEventSchemaV1_0** durumunda, İçerik Türü değeri aşağıdaki değerlerden biri olabilir:
 
 ```Content-Type: application/cloudevents+json```
     
@@ -51,10 +51,10 @@ Yapılandırılmış modda **CloudEventSchemaV1_0** olması durumunda, içerik t
     
 ```Content-Type: application/cloudevents-batch+json; charset=utf-8```
 
-İkili modda **CloudEventSchemaV1_0** olması durumunda Ayrıntılar için [belgelere](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) bakın.
+İkili modda **CloudEventSchemaV1_0** durumunda, ayrıntılar için [belgelere](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) bakın.
 
 ### <a name="error-response"></a>Hata yanıtı
-Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
+Tüm API'ler aşağıdaki taşıma yüküyle ilgili bir hata döndürer:
 
 ```json
 {
@@ -72,9 +72,9 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 
 ## <a name="manage-topics"></a>Konuları yönetme
 
-### <a name="put-topic-create--update"></a>Konuyu Yerleştir (oluştur/güncelleştir)
+### <a name="put-topic-create--update"></a>Konuyu koyun (oluşturma / güncelleştirme)
 
-**İstek**: ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**İstek**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Yük**:
 
@@ -88,7 +88,7 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
     }
 ```
 
-**Yanıt**: http 200
+**Cevap**: HTTP 200
 
 **Yük**:
 
@@ -105,11 +105,11 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 }
 ```
 
-### <a name="get-topic"></a>Konuyu al
+### <a name="get-topic"></a>Konuyu alın
 
-**İstek**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**İstek**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Yanıt**: http 200
+**Cevap**: HTTP 200
 
 **Yük**:
 ```json
@@ -125,11 +125,11 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 }
 ```
 
-### <a name="get-all-topics"></a>Tüm konuları al
+### <a name="get-all-topics"></a>Tüm konuları alın
 
-**İstek**: ``` GET /topics?api-version=2019-01-01-preview ```
+**İstek**:``` GET /topics?api-version=2019-01-01-preview ```
 
-**Yanıt**: http 200
+**Cevap**: HTTP 200
 
 **Yük**:
 ```json
@@ -157,18 +157,18 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 ]
 ```
 
-### <a name="delete-topic"></a>Konuyu sil
+### <a name="delete-topic"></a>Konuyu silme
 
-**İstek**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**İstek**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Yanıt**: http 200, boş yük
+**Yanıt**: HTTP 200, boş yük
 
-## <a name="manage-event-subscriptions"></a>Olay aboneliklerini yönetme
-Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeHub / EndpointType=EventGrid` için JSON örnekleri sonraki bölümde bulunur. 
+## <a name="manage-event-subscriptions"></a>Etkinlik aboneliklerini yönetme
+Bu bölümdeki `EndpointType=Webhook;`örnekler . Json örnekleri `EndpointType=EdgeHub / EndpointType=EventGrid` bir sonraki bölümde. 
 
-### <a name="put-event-subscription-create--update"></a>Olay aboneliği koy (oluştur/güncelleştir)
+### <a name="put-event-subscription-create--update"></a>Olay aboneliği koyma (oluşturma / güncelleştirme)
 
-**İstek**: ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**İstek**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Yük**:
 ```json
@@ -268,7 +268,7 @@ Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeH
 }
 ```
 
-**Yanıt**: http 200
+**Cevap**: HTTP 200
 
 **Yük**:
 
@@ -371,11 +371,11 @@ Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeH
 ```
 
 
-### <a name="get-event-subscription"></a>Olay aboneliğini al
+### <a name="get-event-subscription"></a>Etkinlik aboneliği alın
 
-**İstek**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**İstek**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Yanıt**: http 200
+**Cevap**: HTTP 200
 
 **Yük**:
 ```json
@@ -476,11 +476,11 @@ Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeH
 }
 ```
 
-### <a name="get-event-subscriptions"></a>Olay abonelikleri al
+### <a name="get-event-subscriptions"></a>Etkinlik abonelikleri alın
 
-**İstek**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**İstek**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
-**Yanıt**: http 200
+**Cevap**: HTTP 200
 
 **Yük**:
 ```json
@@ -494,18 +494,18 @@ Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeH
 ]
 ```
 
-### <a name="delete-event-subscription"></a>Olay aboneliğini Sil
+### <a name="delete-event-subscription"></a>Olay aboneliğini silme
 
-**İstek**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**İstek**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Yanıt**: http 200, yük yok
+**Yanıt**: HTTP 200, yük yok
 
 
-## <a name="publish-events-api"></a>Olayları yayımlama API 'SI
+## <a name="publish-events-api"></a>Olayları yayımlama API'si
 
-### <a name="send-batch-of-events-in-event-grid-schema"></a>Olay toplu işi gönderme (Event Grid şemasında)
+### <a name="send-batch-of-events-in-event-grid-schema"></a>Toplu etkinlik gönderme (Olay Izgara şemasında)
 
-**İstek**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**İstek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -523,22 +523,22 @@ Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeH
 ]
 ```
 
-**Yanıt**: http 200, boş yük
+**Yanıt**: HTTP 200, boş yük
 
 
 **Yük alanı açıklamaları**
-- ```Id``` zorunludur. Bu, çağıran tarafından doldurulan herhangi bir dize değeri olabilir. Event Grid, hiçbir yinelenen algılama yapmaz veya bu alanda hiçbir semantiğe zorlanır.
-- ```Topic``` isteğe bağlıdır, ancak belirtilirse, istek URL 'sinden topic_name eşleşmesi gerekir
-- ```Subject``` zorunludur, herhangi bir dize değeri olabilir
-- ```EventType``` zorunludur, herhangi bir dize değeri olabilir
-- ```EventTime``` zorunludur, bu doğrulanmaz ve uygun bir DateTime olmalıdır.
-- ```DataVersion``` zorunludur
-- ```MetadataVersion``` isteğe bağlıdır, belirtilmişse değere sahip bir dize olmalıdır ```"1"```
-- ```Data``` isteğe bağlıdır ve herhangi bir JSON belirteci (sayı, dize, Boolean, dizi, nesne) olabilir
+- ```Id```zorunludur. Arayan tarafından doldurulan herhangi bir dize değeri olabilir. Olay Izgara sı bu alanda herhangi bir yinelenen algılama yapmaz veya herhangi bir semantik zorlamak.
+- ```Topic```isteğe bağlıdır, ancak belirtilirse istek URL'sinden topic_name eşleşmesi gerekir
+- ```Subject```zorunludur, herhangi bir dize değeri olabilir
+- ```EventType```zorunludur, herhangi bir dize değeri olabilir
+- ```EventTime```zorunludur, doğrulanmaz, ancak uygun bir DateTime olmalıdır.
+- ```DataVersion```zorunludur
+- ```MetadataVersion```isteğe bağlı, belirtilmişse değeri olan bir dize olmalıdır```"1"```
+- ```Data```isteğe bağlıdır ve herhangi bir JSON belirteci (sayı, dize, boolean, dizi, nesne) olabilir
 
-### <a name="send-batch-of-events-in-custom-schema"></a>Olay toplu işlemini gönder (özel şemada)
+### <a name="send-batch-of-events-in-custom-schema"></a>Toplu etkinlik gönderme (özel şemada)
 
-**İstek**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**İstek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -548,18 +548,18 @@ Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeH
 ]
 ```
 
-**Yanıt**: http 200, boş yük
+**Yanıt**: HTTP 200, boş yük
 
 
-**Yük kısıtlamaları**
-- Olayların bir dizisi OLMALıDıR.
-- Her dizi girişi bir JSON nesnesi OLMALıDıR.
-- Başka kısıtlama yok (yük boyutu dışında).
+**Yük Kısıtlamaları**
+- Olaylar bir dizi olmalıdır.
+- Her dizi girişi bir JSON nesnesi olmalıdır.
+- Başka kısıtlama yoktur (yük boyutu dışında).
 
 ## <a name="examples"></a>Örnekler
 
 ### <a name="set-up-topic-with-eventgrid-schema"></a>EventGrid şeması ile konuyu ayarlama
-Olaylarınızın **eventgridschema**'da yayımlanmasını gerektirmek için bir konu ayarlar.
+**Olayların eventgridschema'da**yayınlanmasını gerektirecek bir konu ayarlar.
 
 ```json
     {
@@ -572,7 +572,7 @@ Olaylarınızın **eventgridschema**'da yayımlanmasını gerektirmek için bir 
 ```
 
 ### <a name="set-up-topic-with-custom-schema"></a>Özel şema ile konuyu ayarlama
-`customschema`' de olayların yayımlanmasını gerektirecek bir konu oluşturur.
+Olayların 'da `customschema`yayımlanmasını gerektirecek bir konu ayarlar.
 
 ```json
     {
@@ -585,7 +585,7 @@ Olaylarınızın **eventgridschema**'da yayımlanmasını gerektirmek için bir 
 ```
 
 ### <a name="set-up-topic-with-cloud-event-schema"></a>Bulut olay şeması ile konuyu ayarlama
-`cloudeventschema`' de olayların yayımlanmasını gerektirecek bir konu oluşturur.
+Olayların 'da `cloudeventschema`yayımlanmasını gerektirecek bir konu ayarlar.
 
 ```json
     {
@@ -597,8 +597,8 @@ Olaylarınızın **eventgridschema**'da yayımlanmasını gerektirmek için bir 
     }
 ```
 
-### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>Web kancasını hedef olarak ayarlama, eventgridschema 'da teslim edilecek olaylar
-Başka bir modüle (bir HTTP uç noktası barındıran) veya ağ/internet üzerindeki herhangi bir HTTP adreslenebilir uç noktasına olay göndermek için bu hedef türünü kullanın.
+### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>WebHook'u hedef olarak ayarlama, eventgridschema'da teslim edilecek etkinlikler
+Olayları başka bir modüle (http bitiş noktası barındıran) veya ağ/internetteki herhangi bir HTTP adreslenebilir bitiş noktasına göndermek için bu hedef türünü kullanın.
 
 ```json
 {
@@ -617,19 +617,19 @@ Başka bir modüle (bir HTTP uç noktası barındıran) veya ağ/internet üzeri
 }
 ```
 
-`endpointUrl` özniteliğinde kısıtlamalar:
-- Null olmayan bir değer olmalıdır.
-- Mutlak bir URL olmalıdır.
-- Outbound__webhook__httpsOnly EventGridModule ayarlarında true olarak ayarlandıysa, yalnızca HTTPS olmalıdır.
-- Outbound__webhook__httpsOnly false olarak ayarlandıysa, HTTP veya HTTPS olabilir.
+`endpointUrl` Öznitelik üzerindeki kısıtlamalar:
+- Hükümsüz olmalı.
+- Mutlak bir URL olmalı.
+- outbound__webhook__httpsOnly EventGridModule ayarlarında doğru ayarlanmışsa, yalnızca HTTPS olmalıdır.
+- outbound__webhook__httpsOnly yanlış olarak ayarlanmışsa, http veya HTTPS olabilir.
 
-`eventDeliverySchema` özelliğindeki kısıtlamalar:
+`eventDeliverySchema` Özellik üzerindeki kısıtlamalar:
 - Abone olan konunun giriş şemasıyla eşleşmesi gerekir.
-- Null olabilir. Bu, konunun giriş şemasını varsayılan olarak belirler.
+- Hükümsüz olabilir. Bu konunun giriş şeması varsayılan.
 
-### <a name="set-up-iot-edge-as-destination"></a>IoT Edge hedef olarak ayarlama
+### <a name="set-up-iot-edge-as-destination"></a>IoT Edge'i hedef olarak ayarlama
 
-IoT Edge hub 'ına olay göndermek ve tabi to Edge hub 'ının yönlendirme/filtreleme/iletme alt sistemi olmak için bu hedefi kullanın.
+Olayları IoT Edge Hub'ına göndermek ve Edge Hub'ın yönlendirme/filtreleme/iletme alt sistemine tabi olmak için bu hedefi kullanın.
 
 ```json
 {
@@ -647,9 +647,9 @@ IoT Edge hub 'ına olay göndermek ve tabi to Edge hub 'ının yönlendirme/filt
 }
 ```
 
-### <a name="set-up-event-grid-cloud-as-destination"></a>Event Grid bulutu hedef olarak ayarlama
+### <a name="set-up-event-grid-cloud-as-destination"></a>Olay Izgara Bulutu'nun hedef olarak ayarla
 
-Buluta (Azure) Event Grid olayları göndermek için bu hedefi kullanın. Öncelikle, bir bulutta olay aboneliği oluşturmadan önce, hangi olayların gönderilmesi gerektiği için buluta bir Kullanıcı konusu ayarlamanız gerekir.
+Buluttaki Olay Izgarasına (Azure) olay görüntü göndermek için bu hedefi kullanın. Kenarda bir etkinlik aboneliği oluşturmadan önce bulutta öncelikle olayların hangi etkinliklere gönderilmesi gerektiğini gösteren bir kullanıcı konusu ayarlamanız gerekir.
 
 ```json
 {
@@ -669,33 +669,33 @@ Buluta (Azure) Event Grid olayları göndermek için bu hedefi kullanın. Öncel
 }
 ```
 
-EndpointUrl
-- Null olmayan bir değer olmalıdır.
-- Mutlak bir URL olmalıdır.
-- Yol `/api/events`, istek URL 'SI yolunda tanımlanmalıdır.
-- Sorgu dizesinde `api-version=2018-01-01` olması gerekir.
-- Outbound__eventgrid__httpsOnly EventGridModule ayarlarında true olarak ayarlanırsa (varsayılan olarak true), yalnızca HTTPS olmalıdır.
-- Outbound__eventgrid__httpsOnly false olarak ayarlanırsa, HTTP veya HTTPS olabilir.
-- Outbound__eventgrid__allowInvalidHostnames false olarak ayarlandıysa (varsayılan olarak false), aşağıdaki uç noktalardan birini hedeflemelidir:
+EndpointUrl:
+- Hükümsüz olmalı.
+- Mutlak bir URL olmalı.
+- Yol `/api/events` istek URL yolunda tanımlanmalıdır.
+- Sorgu dizesinde olması `api-version=2018-01-01` gerekir.
+- outbound__eventgrid__httpsOnly EventGridModule ayarlarında (varsayılan olarak geçerli) doğru olarak ayarlanmışsa, yalnızca HTTPS olmalıdır.
+- outbound__eventgrid__httpsOnly yanlış olarak ayarlanmışsa, http veya HTTPS olabilir.
+- outbound__eventgrid__allowInvalidHostnames false (varsayılan olarak false) olarak ayarlanmışsa, aşağıdaki uç noktalardan birini hedeflemelidir:
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`
 
 SasKey:
-- Null olmayan bir değer olmalıdır.
+- Hükümsüz olmalı.
 
-TopicName:
-- Abonelik. EventDeliverySchema, EventGridSchema olarak ayarlandıysa, bu alandaki değer, bulutta Event Grid iletilmeden önce her olayın konu alanına konur.
-- Abonelik. EventDeliverySchema, CustomEventSchema olarak ayarlandıysa, bu özellik yok sayılır ve özel olay yükü aynen alındığı gibi iletilir.
+Konu Adı:
+- Subscription.EventDeliverySchema EventGridSchema olarak ayarlanmışsa, buluttaki Olay Izgarası'na iletilmeden önce bu alandaki değer her etkinliğin Konu alanına konur.
+- Subscription.EventDeliverySchema CustomEventSchema olarak ayarlanmışsa, bu özellik yoksayılır ve özel olay yükü tam olarak alındığı gibi iletilir.
 
-## <a name="set-up-event-hubs-as-a-destination"></a>Event Hubs hedef olarak ayarlama
+## <a name="set-up-event-hubs-as-a-destination"></a>Etkinlik Hub'larını hedef olarak ayarlama
 
-Bir olay hub 'ına yayımlamak için `endpointType` `eventHub` ayarlayın ve şunları sağlayın:
+Bir Olay Hub'ında `endpointType` yayımlamak için aşağıdakileri `eventHub` ayarlayın ve sağlayın:
 
-* connectionString: hedeflediğiniz belirli olay hub 'ı için, paylaşılan erişim Ilkesi aracılığıyla oluşturulmuş bağlantı dizesi.
+* connectionString: Hedeflediğiniz belirli Olay Hub'ı için bağlantı dizesi Paylaşılan Erişim İlkesi aracılığıyla oluşturulur.
 
     >[!NOTE]
-    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayınlamak istediğiniz belirli olay hub 'ına giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, varlığa özel bağlantı dizesi oluşturarak yeni bir varlığa özgü bağlama dizesi oluşturabilirsiniz.
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesi kullanmak çalışmaz. Azure Portalı'nda yayınlamak istediğiniz belirli Etkinlik Hub'ına giderek ve yeni bir varlığa özgü connecection dizesi oluşturmak için **Paylaşılan erişim ilkelerini** tıklatarak bir varlık özel bağlantı dizesi oluşturabilirsiniz.
 
     ```json
         {
@@ -710,14 +710,14 @@ Bir olay hub 'ına yayımlamak için `endpointType` `eventHub` ayarlayın ve şu
         }
     ```
 
-## <a name="set-up-service-bus-queues-as-a-destination"></a>Service Bus kuyruklarını hedef olarak ayarlama
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Hizmet Veri Merkezi Kuyruklarını hedef olarak ayarlama
 
-Service Bus kuyruğuna yayımlamak için `endpointType` `serviceBusQueue` olarak ayarlayın ve şunları sağlayın:
+Hizmet Veri Servisi Kuyruğu'nda `endpointType` yayımlamak `serviceBusQueue` için aşağıdakileri ayarlayın ve aşağıdakileri sağlayın:
 
-* connectionString: hedeflediğiniz belirli Service Bus kuyruğu için bağlantı dizesi, paylaşılan erişim Ilkesi aracılığıyla üretildi.
+* connectionString: Hedeflediğiniz belirli Hizmet Veri Yolu Kuyruğu'nun bağlantı dizesi, Paylaşılan Erişim İlkesi aracılığıyla oluşturulur.
 
     >[!NOTE]
-    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayımlamak istediğiniz belirli Service Bus kuyruğuna giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, yeni varlığa özel bağlantı dizesi oluşturmak için varlığa özgü bir bağlantı dizesi oluşturun.
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesi kullanmak çalışmaz. Azure Portalı'nda yayınlamak istediğiniz belirli Hizmet Veri Servisi Kuyruğu'nda gezinerek ve yeni bir varlığa özgü connecection dizesini oluşturmak için **Paylaşılan erişim ilkelerini** tıklatarak bir varlık özel bağlantı dizesi oluşturun.
 
     ```json
         {
@@ -732,14 +732,14 @@ Service Bus kuyruğuna yayımlamak için `endpointType` `serviceBusQueue` olarak
         }
     ```
 
-## <a name="set-up-service-bus-topics-as-a-destination"></a>Service Bus konuları hedef olarak ayarlama
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Hizmet Veri Günü Konularını hedef olarak ayarlama
 
-Service Bus bir konuya yayımlamak için `endpointType` `serviceBusTopic` olarak ayarlayın ve şunları sağlayın:
+Bir Hizmet Veri Servisi Konu'da `endpointType` `serviceBusTopic` yayımlamak için aşağıdakileri ayarlayın ve sağlayın:
 
-* connectionString: bir paylaşılan erişim Ilkesi aracılığıyla hedeflediğiniz özel Service Bus konusu için bağlantı dizesi.
+* connectionString: Hedeflediğiniz belirli Hizmet Veri Yolu Konusu için bağlantı dizesi Paylaşılan Erişim İlkesi aracılığıyla oluşturulur.
 
     >[!NOTE]
-    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayımlamak istediğiniz belirli Service Bus konusuna giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, yeni varlığa özel bir bağlantı dizesi oluşturmak için varlığa özel bağlantı dizesi oluşturun.
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesi kullanmak çalışmaz. Azure Portalı'nda yayınlamak istediğiniz belirli Hizmet Veri Servisi Konusu'nda gezinerek ve yeni bir varlığa özgü connecection dizesini oluşturmak için **Paylaşılan erişim ilkelerini** tıklatarak bir varlık özel bağlantı dizesi oluşturun.
 
     ```json
         {
@@ -754,15 +754,15 @@ Service Bus bir konuya yayımlamak için `endpointType` `serviceBusTopic` olarak
         }
     ```
 
-## <a name="set-up-storage-queues-as-a-destination"></a>Depolama kuyruklarını hedef olarak ayarlama
+## <a name="set-up-storage-queues-as-a-destination"></a>Depolama Kuyruklarını hedef olarak ayarlama
 
-Bir depolama kuyruğuna yayımlamak için `endpointType` `storageQueue` ayarlayın ve şunları sağlayın:
+Depolama Kuyruğu'nda yayımlamak `endpointType` için `storageQueue` aşağıdakileri ayarlayın ve sağlayın:
 
-* SıraAdı: yayımlamakta olduğunuz depolama kuyruğunun adı.
-* connectionString: depolama sırasının bulunduğu depolama hesabı için bağlantı dizesi.
+* queueName: Yayımlamakta olduğunuz Depolama Kuyruğunun Adı.
+* connectionString: Depolama Sırası'nın içinde olduğu Depolama Hesabı için bağlantı dizesi.
 
     >[!NOTE]
-    > Satır Event Hubs, Service Bus kuyrukları ve Service Bus konuları, depolama kuyrukları için kullanılan bağlantı dizesi varlığa özgü değildir. Bunun yerine, depolama hesabı için bağlantı dizesi gerekir.
+    > Sırasız Olay Hub'ları, Servis Veri Merkezi Kuyrukları ve Hizmet Veri Mesuli konular, Depolama Kuyrukları için kullanılan bağlantı dizesi entity özgü değildir. Bunun yerine, ancak Depolama Hesabı için bağlantı dizesi gerekir.
 
     ```json
         {

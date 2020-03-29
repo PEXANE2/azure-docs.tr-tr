@@ -1,6 +1,6 @@
 ---
-title: Media Services ve Apple FairPlay lisansı desteği - Azure | Microsoft Docs
-description: Bu konu, gereksinimler bir Apple FairPlay lisansı genel bir bakış sağlar ve yapılandırma.
+title: Medya Hizmetleri ve Apple FairPlay lisans desteği - Azure | Microsoft Dokümanlar
+description: Bu konu, Apple FairPlay lisans gereksinimlerine ve yapılandırmaya genel bir bakış sağlar.
 author: juliako
 manager: femila
 editor: ''
@@ -15,73 +15,73 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60733581"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay lisansı gereksinimleri ve yapılandırma 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay lisansı gereksinimleri ve yapılandırması 
 
-Azure Media Services ile HLS içeriğinizin şifrelemenizi sağlar **Apple FairPlay** (AES-128 CBC). Media Services için FairPlay lisansları teslim etmek üzere bir hizmet de sağlar. Bir oynatıcı FairPlay ile korunan içeriğinizi oynatma çalıştığında, bir lisans almak için bir istek için lisans teslimat hizmetinin gönderilir. Lisans hizmeti isteği onaylarsa, istemciye gönderilen ve şifresini çözmek ve belirtilen içeriğin yürütmek için kullanılan lisans verir.
+Azure Medya Hizmetleri, HLS içeriğinizi **Apple FairPlay** (AES-128 CBC) ile şifrelemenizi sağlar. Medya Hizmetleri ayrıca FairPlay lisansları sunmak için bir hizmet de sunmaktadır. Bir oyuncu FairPlay korumalı içeriğinizi oynamaya çalıştığında, lisans almak için lisans teslim hizmetine bir istek gönderilir. Lisans hizmeti isteği onaylarsa, istemciye gönderilen ve belirtilen içeriğin şifresini çözmek ve oynatmak için kullanılan lisansı verir.
 
-Media Services FairPlay lisanslarınızı yapılandırmak için kullanabileceğiniz API'ler de sağlar. Bu konuda FairPlay lisansı gereksinimleri açıklanır ve nasıl yapılandırılacağını gösteren bir **FairPlay** medya hizmetler API'lerini kullanarak lisanslayın. 
+Medya Hizmetleri ayrıca FairPlay lisanslarınızı yapılandırmak için kullanabileceğiniz API'ler de sağlar. Bu konu FairPlay lisans gereksinimlerini tartışır ve Medya Hizmetleri API'lerini kullanarak bir **FairPlay** lisansını nasıl yapılandırabileceğinizi gösterir. 
 
 ## <a name="requirements"></a>Gereksinimler
 
-HLS içeriğinizin ile şifrelemek için Media Services'ı kullanırken, aşağıdaki gerekli **Apple FairPlay** ve Media Services FairPlay lisansları vermek için kullanın:
+HLS içeriğinizi **Apple FairPlay** ile şifrelemek ve FairPlay lisansları sunmak için Medya Hizmetlerini kullanmak için Medya Hizmetleri'ni kullanırken aşağıdakiler gereklidir:
 
-* Kaydolmak için [Apple geliştirme programı](https://developer.apple.com/).
-* Apple gerektirir edinmek üzere içerik sahibi [dağıtım paketi](https://developer.apple.com/contact/fps/). Media Services ile anahtar güvenlik modülü (KSM) zaten uygulanmış ve son FPS paket isteyen durumu. Sertifika oluşturma ve uygulama gizli anahtarı (ASK) elde etmek amacıyla son FPS pakete yönergeler de vardır. ASK FairPlay yapılandırmak için kullanın.
-* Media Services anahtar/lisans teslim tarafında aşağıdakiler ayarlanmalıdır:
+* [Apple Geliştirme Programı'na](https://developer.apple.com/)kaydolun.
+* Apple, içerik sahibinin [dağıtım paketini](https://developer.apple.com/contact/fps/)almasını gerektirir. Medya Hizmetleri ile Anahtar Güvenlik Modülü 'ni (KSM) zaten uyguladığınızı ve son FPS paketini istediğinizi belirtin. Sertifika oluşturmak ve Uygulama Gizli Anahtarı (ASK) almak için son FPS paketinde talimatlar vardır. FairPlay'i yapılandırmak için ASK'yi kullanırsınız.
+* Aşağıdaki şeyler Medya Hizmetleri anahtarı/lisans teslim tarafında ayarlanmalıdır:
 
-    * **App Cert (AC)** : Bu özel anahtarı içeren .pfx dosyasıdır. Bu dosya oluşturur ve bir parola ile şifrelemek. .Pfx dosyasını Base64 biçiminde olmalıdır.
+    * **App Cert (AC)**: Bu özel anahtar içeren bir .pfx dosyasıdır. Bu dosyayı oluşturur ve bir parola ile şifrelersiniz. .pfx dosyası Base64 formatında olmalıdır.
 
-        Aşağıdaki adımları HLS için FairPlay bir .pfx sertifika dosyası oluşturmayı açıklar:
+        Aşağıdaki adımlar, FairPlay için bir .pfx sertifika dosyasının nasıl oluşturacağınızı açıklar:
 
-        1. OpenSSL yüklemek https://slproweb.com/products/Win32OpenSSL.html.
+        1. OpenSSL'den https://slproweb.com/products/Win32OpenSSL.htmlyükleyin.
 
-            FairPlay sertifika ve Apple tarafından sunulan diğer dosyaları olduğu klasöre gidin.
-        2. Komut satırından aşağıdaki komutu çalıştırın. Bu, bir .pem dosyasına .cer dosyasını dönüştürür.
+            FairPlay sertifikasının ve Apple tarafından teslim edilen diğer dosyaların bulunduğu klasöre gidin.
+        2. Komut satırından aşağıdaki komutu çalıştırın. Bu, .cer dosyasını .pem dosyasına dönüştürür.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" x509-der bildirmek-FairPlay.cer içinde-FairPlay out.pem çıkış
-        3. Komut satırından aşağıdaki komutu çalıştırın. Bu .pem dosyası özel anahtara sahip bir .pfx dosyasına dönüştürür. .Pfx dosyası için parolayı ardından OpenSSL tarafından istenir.
+            "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in FairPlay.cer -out FairPlay-out.pem
+        3. Komut satırından aşağıdaki komutu çalıştırın. Bu, .pem dosyasını özel anahtarla bir .pfx dosyasına dönüştürür. .pfx dosyasının şifresi openssl tarafından istenir.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-dışarı aktarma - FairPlay out.pfx-inkey privatekey.pem-FairPlay out.pem - passin file:privatekey-pem-pass.txt içinde
+            "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
             
-    * **App Cert parola**: .Pfx dosyasını oluşturmak için parola.
-    * **SORUN**: Apple Geliştirici Portalı'nı kullanarak sertifika oluşturduğunuzda, bu anahtarı alınır. Her geliştirme ekibi bir benzersiz ASK alır. ASK bir kopyasını kaydedin ve güvenli bir yerde saklayın. Media Services ile FairPlayAsk olarak ASK yapılandırmanız gerekir.
+    * **App Cert şifresi**: .pfx dosyasını oluşturmanın şifresi.
+    * **ASK**: Bu anahtar, Apple Developer portalını kullanarak sertifikayı oluşturduğunuzda alınır. Her geliştirme ekibi benzersiz bir ASK alır. ASK'nin bir kopyasını kaydedin ve güvenli bir yerde saklayın. Medya Hizmetleri ile ASK'yi FairPlayAsk olarak yapılandırmanız gerekir.
     
-* FPS istemci tarafından aşağıdakiler ayarlanmalıdır:
+* Aşağıdaki şeyler FPS istemci tarafı tarafından ayarlanmalıdır:
 
-  * **App Cert (AC)** : Bu işletim sisteminin bazı yükü şifrelemek için kullandığı ortak anahtar içeren bir.cer/.der dosyasıdır. Media Services player tarafından gerekli olduğu için bu konuda bilmesi gerekir. Anahtar dağıtımı hizmetiyle ilişkili özel anahtarı kullanarak şifresini çözer.
+  * **App Cert (AC)**: Bu, işletim sisteminin bazı yükü şifrelemek için kullandığı ortak anahtarı içeren bir .cer/.der dosyasıdır. Medya Hizmetleri bu konuda bilmek gerekir, çünkü oyuncu tarafından gereklidir. Anahtar teslim hizmeti, ilgili özel anahtarı kullanarak şifresini çözer.
 
-* FairPlay şifrelenmiş stream kayıttan yürütme için gerçek ASK ilk alın ve ardından gerçek bir sertifika oluşturun. Bu işlem, tüm üç bölümü oluşturur:
+* FairPlay şifreli akışını oynatmak için önce gerçek bir ASK alın ve ardından gerçek bir sertifika oluşturun. Bu işlem üç bölümü de oluşturur:
 
-  * .DER dosya
+  * .der dosyası
   * .pfx dosyası
-  * .pfx için parolayı
+  * .pfx için şifre
 
-## <a name="fairplay-and-player-apps"></a>FairPlay ve oynatıcı uygulamaları
+## <a name="fairplay-and-player-apps"></a>FairPlay ve oyuncu uygulamaları
 
-Ne zaman içeriğinizi bilgilerle şifreli **Apple FairPlay**, tek tek video ve ses örnekleri kullanılarak şifrelenmiş **AES-128 CBC** modu. **FairPlay Streaming** (FPS), iOS ve Apple TV yerel desteğiyle, cihaz işletim sistemlerinin bütünleştirilmiştir. OS X üzerinde Safari şifreli medya Uzantıları (EME) arabirimi desteğini kullanarak FPS sağlar.
+İçeriğiniz **Apple FairPlay**ile şifrelendiğinde, tek tek video ve ses örnekleri **AES-128 CBC** modu kullanılarak şifrelenir. **FairPlay Streaming** (FPS), iOS ve Apple TV'de yerel destekle aygıt işletim sistemlerine entegre edilmiştir. OS X'teki Safari, Şifreli Ortam Uzantıları (EME) arabirim desteğini kullanarak FPS'yi etkinleştiri.
 
-Azure Media Player ayrıca FairPlay kayıttan yürütme destekler. Daha fazla bilgi için [Azure Media Player belgeleri](https://amp.azure.net/libs/amp/latest/docs/index.html).
+Azure Media Player, FairPlay oynatmayı da destekler. Daha fazla bilgi için Azure [Media Player belgelerine](https://amp.azure.net/libs/amp/latest/docs/index.html)bakın.
 
-İOS SDK'sını kullanarak kendi oynatıcı uygulamaları geliştirebilirsiniz. FairPlay içeriğini oynatmak lisans exchange protokolünü uygulayan gerekir. Bu protokol, Apple tarafından belirtilmedi. Bu anahtar teslim istekleri göndermek nasıl her uygulamanın tercihine bağlı olur. Medya Hizmetleri FairPlay anahtar dağıtımı hizmetiyle aşağıdaki biçimde bir www-form-url kodlanmış posta iletisi gelmesini SPC bekliyor:
+iOS SDK'yı kullanarak kendi oyuncu uygulamalarınızı geliştirebilirsiniz. FairPlay içeriğini oynatabilmek için lisans değişim protokolünü uygulamanız gerekir. Bu protokol Apple tarafından belirtilmemiştir. Anahtar teslim isteklerinin nasıl gönderilen her uygulamaya kalmış. Media Services FairPlay anahtar teslim hizmeti, SPC'nin aşağıdaki formda bir www-form-url kodlanmış posta mesajı olarak gelmesini bekler:
 
 ```
 spc=<Base64 encoded SPC>
 ```
 
-## <a name="fairplay-configuration-net-example"></a>FairPlay yapılandırması .NET örneği
+## <a name="fairplay-configuration-net-example"></a>FairPlay yapılandırma .NET örneği
 
-Media Services API'sine FairPlay lisansı yapılandırmak için kullanabilirsiniz. Oyuncu FairPlay ile korunan içeriğinizi oynatma çalıştığında, bir istek için lisans teslimat hizmetinin lisansı edinmek için gönderilir. Lisans hizmeti isteği onaylarsa, hizmet lisansı verir. Bu, istemciye gönderilen ve şifresini çözmek ve belirtilen içeriğin yürütmek için kullanılır.
+FairPlay lisanslarını yapılandırmak için Medya Hizmetleri API'sini kullanabilirsiniz. Oyuncu FairPlay korumalı içeriğinizi oynatmaya çalıştığında, lisansı almak için lisans dağıtım hizmetine bir istek gönderilir. Lisans hizmeti isteği onaylarsa, hizmet lisansı verir. İstemciye gönderilir ve belirtilen içeriğin şifresini çözmek ve oynatmak için kullanılır.
 
 > [!NOTE]
-> Genellikle, yalnızca bir sertifika ve bir dizi sahip olacağından FairPlay ilkesi seçenekleri yalnızca bir kez yapılandırmak istiyorsunuz.
+> Genellikle, yalnızca bir sertifika seti ve ask olurdu, çünkü FairPlay ilke seçenekleri yalnızca bir kez yapılandırmak istiyorum.
 
-Aşağıdaki örnekte [Media Services .NET SDK'sı](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) lisans yapılandırmak için.
+Aşağıdaki örnekte, lisansı yapılandırmak için [Media Services .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) kullanılır.
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()
@@ -117,4 +117,4 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlemlerini nasıl gerçekleştirebileceğinizi [DRM ile koruma](protect-with-drm.md)
+DRM ile nasıl [korunacaklarına](protect-with-drm.md) göz atın

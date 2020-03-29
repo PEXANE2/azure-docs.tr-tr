@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect eşitleme: Varsayılan yapılandırmanın değiştirilmesine | Microsoft Docs'
-description: Azure AD Connect eşitleme varsayılan yapılandırmasını değiştirmeye yönelik en iyi uygulamalar sağlanır.
+title: 'Azure AD Connect eşitleme: Varsayılan yapılandırmayı değiştirme | Microsoft Dokümanlar'
+description: Azure AD Connect eşitlemenin varsayılan yapılandırmasını değiştirmek için en iyi uygulamaları sağlar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,62 +17,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 940a35d89996b1eb9600fe4214863d2b5304750e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60242152"
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmanın değiştirilmesine ilişkin en iyi yöntemler
-Azure AD Connect eşitlemesi için desteklenen ve desteklenmeyen değişiklikleri açıklamak için bu konunun amacı olan.
+# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect eşitlemi: Varsayılan yapılandırmayı değiştirmek için en iyi uygulamalar
+Bu konunun amacı, Desteklenen ve desteklenmeyen Azure AD Connect eşitleme değişikliklerini açıklamaktır.
 
-Azure AD Connect tarafından oluşturulan yapılandırma, "olduğu gibi" Azure AD ile şirket içi Active Directory eşitleme, çoğu ortam için çalışır. Ancak, bazı durumlarda, belirli bir gereksinim ya da gereksinimi karşılamak için bir yapılandırma için bazı değişiklikleri uygulamak gerekli.
+Azure AD Connect tarafından oluşturulan yapılandırma, şirket içi Active Directory ile Azure AD senkronize eden çoğu ortam için "olduğu gibi" çalışır. Ancak, bazı durumlarda, belirli bir gereksinimi veya gereksinimi karşılamak için yapılandırmaya bazı değişiklikler uygulamak gerekir.
 
-## <a name="changes-to-the-service-account"></a>Hizmet hesabı değişiklikleri
-Azure AD Connect eşitleme, Yükleme Sihirbazı tarafından oluşturulan bir hizmet hesabı altında çalışıyor. Bu hizmet hesabı, eşitleme tarafından kullanılan veritabanı şifreleme anahtarları tutar. 127 karakter uzunluğunda bir parola ile oluşturulur ve parolayı dolmayacak şekilde ayarlayın.
+## <a name="changes-to-the-service-account"></a>Hizmet hesabında yapılan değişiklikler
+Azure AD Connect eşitlemi, yükleme sihirbazı tarafından oluşturulan bir hizmet hesabı altında çalışıyor. Bu hizmet hesabı eşitleme tarafından kullanılan veritabanının şifreleme anahtarlarını tutar. 127 karakter uzunluğunda parolayla oluşturulur ve parolanın süresi dolmayacak şekilde ayarlanır.
 
-* Bu **desteklenmeyen** değiştirme veya hizmet hesabı parolasını sıfırlayın. Bunun yapılması, şifreleme anahtarlarını yok eder ve hizmet veritabanına erişmek mümkün değildir ve başlatmak mümkün değildir.
+* Hizmet hesabının parolasını değiştirmek veya sıfırlamak **desteklenmez.** Bunu yapmak şifreleme anahtarlarını yok eder ve hizmet veritabanına erişemez ve başlatılamaz.
 
-## <a name="changes-to-the-scheduler"></a>Zamanlayıcı değişiklikleri
-Derleme 1.1 sürümlerden başlayarak yapılandırabileceğiniz (Şubat 2016) [Zamanlayıcı](how-to-connect-sync-feature-scheduler.md) 30 dakika bir varsayılandan farklı bir eşitleme döngüsü için.
+## <a name="changes-to-the-scheduler"></a>Zamanlayıcıda yapılan değişiklikler
+Build 1.1 (Şubat 2016) sürümlerinden başlayarak [zamanlayıcıyı](how-to-connect-sync-feature-scheduler.md) varsayılan 30 dakikadan farklı bir eşitleme döngüsüne sahip olacak şekilde yapılandırabilirsiniz.
 
-## <a name="changes-to-synchronization-rules"></a>Eşitleme kuralları için değişiklikler
-Yükleme Sihirbazı en yaygın senaryolar için çalışması için gereken bir yapılandırma sağlar. Ardından yapılandırmada değişiklikler yapmanız durumunda, desteklenen bir yapılandırma için hala şu kurallara uymalıdır.
-
-> [!WARNING]
-> Varsayılan eşitleme kuralları için değişiklik yaparsanız bu değişiklikler Azure AD Connect, eşitleme beklenmeyen ve olası istenmeyen sonuçları elde edilen sonraki güncelleştirildiğinde yazılır.
-
-* Yapabilecekleriniz [öznitelik akışları değiştirme](how-to-connect-sync-change-the-configuration.md#other-common-attribute-flow-changes) varsayılan doğrudan öznitelik akışları kuruluşunuz için uygun değilse.
-* İsterseniz [bir öznitelik akışı değil](how-to-connect-sync-change-the-configuration.md#do-not-flow-an-attribute) ekleme ve kaldırma herhangi bir mevcut öznitelik değerleri Azure AD'de, bu senaryo için bir kural oluşturmanız gerekir.
-* [İstenmeyen bir eşitleme kuralı devre dışı bırak](#disable-an-unwanted-sync-rule) silmek yerine. Silinen bir kural, yükseltme sırasında yeniden oluşturulur.
-* İçin [kullanıma hazır bir kuralı değiştirmek](#change-an-out-of-box-rule), özgün kuralı bir kopyasını alın ve kullanıma hazır kuralı devre dışı bırak. Eşitleme kuralı Düzenleyicisi ister ve yardımcı olur.
-* Eşitleme kuralları Düzenleyicisi'ni kullanarak özel bir eşitleme kurallarınızı dışarı aktarın. Düzenleyici kolayca bir olağanüstü durum kurtarma senaryosunda yeniden oluşturmak için kullanabileceğiniz bir PowerShell komut dosyası sağlar.
+## <a name="changes-to-synchronization-rules"></a>Eşitleme Kurallarında Yapılan Değişiklikler
+Yükleme sihirbazı, en yaygın senaryolar için çalışması gereken bir yapılandırma sağlar. Yapılandırmada değişiklik yapmanız gerekiyorsa, desteklenen bir yapılandırmaya sahip olmak için bu kurallara uymanız gerekir.
 
 > [!WARNING]
-> Kullanıma hazır eşitleme kuralları bir parmak izi var. Bu kural için bir değişiklik yaparsanız, parmak izini artık eşleşen. Gelecekte yeni Azure AD Connect sürümü uygulamaya çalıştığınızda sorunlar yaşayabilirsiniz. Yalnızca bu anlatılan şekilde bu makalede değişiklik.
+> Varsayılan eşitleme kurallarında değişiklik yaparsanız, bu değişiklikler Azure AD Connect bir sonraki güncelleştirilmesinde üzerine yazılır ve beklenmeyen ve büyük olasılıkla istenmeyen eşitleme sonuçlarına neden olur.
 
-### <a name="disable-an-unwanted-sync-rule"></a>İstenmeyen bir eşitleme kuralı devre dışı bırak
-Bir kullanıma hazır eşitleme kuralı silmeyin. Bu, sonraki yükseltme sırasında yeniden oluşturulur.
+* Varsayılan doğrudan öznitelik akışları kuruluşunuz için uygun değilse [öznitelik akışlarını değiştirebilirsiniz.](how-to-connect-sync-change-the-configuration.md#other-common-attribute-flow-changes)
+* [Bir öznitelik akışı ve](how-to-connect-sync-change-the-configuration.md#do-not-flow-an-attribute) Azure AD'de varolan öznitelik değerlerini kaldırmak istemiyorsanız, bu senaryo için bir kural oluşturmanız gerekir.
+* [İstenmeyen Eşitleme Kuralını](#disable-an-unwanted-sync-rule) siler yerine devre dışı bırakın. Silinen bir kural yükseltme sırasında yeniden oluşturulur.
+* [Kutudan çıkma kuralını değiştirmek](#change-an-out-of-box-rule)için, özgün kuralın bir kopyasını oluşturmalı ve kutu dansı kuralını devre dışı açmalısınız. Eşitleme Kuralı Düzenleyicisi ister ve size yardımcı olur.
+* Eşitleme Kuralları Düzenleyicisi'ni kullanarak özel eşitleme kurallarınızı dışa aktarın. Editör, olağanüstü durum kurtarma senaryosunda bunları kolayca yeniden oluşturmak için kullanabileceğiniz bir PowerShell komut dosyası sağlar.
 
-Bazı durumlarda, Yükleme Sihirbazı'nı topolojiniz için çalışmayan bir yapılandırma hazırlamıştır. Örneğin, bir hesap-kaynak orman topolojisini varsa ancak Exchange şema hesabı ormanındaki şemasıyla genişletilmiş ardından Exchange kuralları hesap ormanı ve kaynak ormanı için oluşturulur. Bu durumda, Exchange için eşitleme kuralı devre dışı bırakmak gerekir.
+> [!WARNING]
+> Kutunun dışında eşitleme kurallarının parmak izi vardır. Bu kurallarda bir değişiklik yaparsanız, parmak izi artık eşleşmiyor. Azure AD Connect'in yeni bir sürümü uygulamaya çalıştığınızda gelecekte sorunlar la karşılamayabilirsiniz. Yalnızca bu makalede açıklanan şekilde değişiklik yapın.
+
+### <a name="disable-an-unwanted-sync-rule"></a>İstenmeyen Eşitleme Kuralını devre dışı
+Kutu dansı eşitleme kuralını silmeyin. Bir sonraki yükseltme sırasında yeniden oluşturulur.
+
+Bazı durumlarda, yükleme sihirbazı topolojiniz için çalışmayan bir yapılandırma üretti. Örneğin, bir hesap kaynağı orman topolojiniz varsa ancak Exchange şemasıyla hesap ormanındaki şema süresini genişlettiyseniz, hesap ormanı ve kaynak ormanı için Exchange kuralları oluşturulur. Bu durumda, Exchange için Eşitleme Kuralıdevre dışı kalmanız gerekir.
 
 ![Devre dışı eşitleme kuralı](./media/how-to-connect-sync-best-practices-changing-default-configuration/exchangedisabledrule.png)
 
-Yukarıdaki resimde, Yükleme Sihirbazı, eski bir Exchange 2003 şema hesabı ormanında buldu. Bu şema uzantısı, kaynak ormanı Fabrikam'ın ortamında sunulmadan önce eklendi. Öznitelikleri eski Exchange uygulamasından eşitlendiğinden emin olmak için eşitleme kuralı gösterildiği gibi devre dışı gerekir.
+Yukarıdaki resimde, yükleme sihirbazı hesap ormanında eski bir Exchange 2003 şeması buldu. Bu şema uzantısı, Fabrikam'ın ortamında kaynak ormanı kullanılmadan önce eklenmiştir. Eski Exchange uygulamasından hiçbir özniteliklerin eşitlenmediğinden emin olmak için eşitleme kuralı gösterildiği gibi devre dışı bırakılmalı.
 
-### <a name="change-an-out-of-box-rule"></a>Kullanıma hazır bir kuralı değiştirin
-Birleştirme kuralı değiştirmek, ihtiyacınız olduğunda, bir out-of-box kuralı değiştirmelisiniz tek zamandır. Bir öznitelik akışı değiştirmeniz gerekiyorsa, kullanıma hazır kurallardan daha yüksek önceliğe sahip bir eşitleme kuralı oluşturmanız gerekir. Pratikte ihtiyacınız kopyalamak için yalnızca kural kuralıdır **içinde ad - kullanıcı katılın**. Diğer tüm kurallar daha yüksek bir öncelik kuralı ile geçersiz kılabilirsiniz.
+### <a name="change-an-out-of-box-rule"></a>Kutudan çıkma kuralını değiştirme
+Kutudan çıkma kuralını değiştirmeniz gereken tek zaman, birleştirme kuralını değiştirmeniz gerektiğidir. Bir öznitelik akışını değiştirmeniz gerekiyorsa, kutu dan sıcağa göre daha yüksek önceliğe sahip bir eşitleme kuralı oluşturmanız gerekir. Pratik olarak klonlamak için gereken tek kural AD - **User Join kuralıdır.** Daha yüksek bir öncelik kuralıyla diğer tüm kuralları geçersiz kılabilirsiniz.
 
-Ardından bir out-of-box kuralı değişiklikler yapmanız gerekirse, kullanıma hazır kuralı bir kopyasını oluşturun ve özgün kuralı devre dışı bırakmak gerekir. Ardından kopyalanan kuralı değişiklikleri yapın. Eşitleme kuralı Düzenleyicisi bu adımlarla yardımcı oluyor. Bir kullanıma hazır kuralı açtığınızda, bu iletişim kutusu ile sunulur:  
-![Uyarı kutusunu kural dışı](./media/how-to-connect-sync-best-practices-changing-default-configuration/warningoutofboxrule.png)
+Kutudan çıkarma kuralında değişiklik yapmanız gerekiyorsa, kutudan çıkma kuralının bir kopyasını oluşturmanız ve özgün kuralı devre dışı atmanız gerekir. Sonra klonlanmış kural değişiklikleri yapın. Eşitleme Kuralı Düzenleyicisi bu adımlarda size yardımcı oluyor. Kutudan çıkmış bir kuralı açtığınızda, bu iletişim kutusu yla sunulur:  
+![Kutu kuralıdışında uyarı](./media/how-to-connect-sync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-Seçin **Evet** kuralın bir kopyası oluşturmasını ister. Kopyalanan bir kuralı sonra açılır.  
-![Kopyalanan bir kuralı](./media/how-to-connect-sync-best-practices-changing-default-configuration/clonedrule.png)
+Kuralın bir kopyasını oluşturmak için **Evet'i** seçin. Klonlanmış kural daha sonra açılır.  
+![Klonlanmış kural](./media/how-to-connect-sync-best-practices-changing-default-configuration/clonedrule.png)
 
-Kopyalanan bu kuralı, kapsam, birleştirme ve dönüştürme için gerekli değişiklikleri yapın.
+Bu klonlanmış kuralda, kapsam, birleştirme ve dönüşümlerde gerekli değişiklikleri yapın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 **Genel bakış konuları**
 
-* [Azure AD Connect eşitlemesi: Anlama ve eşitleme özelleştirme](how-to-connect-sync-whatis.md)
+* [Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

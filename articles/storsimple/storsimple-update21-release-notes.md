@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi güncelleştirme 2.2 sürüm notları | Microsoft Docs
-description: StorSimple 8000 serisi güncelleştirme 2.2 için yeni özellikler, sorunlar ve geçici çözümleri açıklar.
+title: StorSimple 8000 Serisi Güncelleme 2.2 sürüm notları | Microsoft Dokümanlar
+description: StorSimple 8000 Serisi Güncelleştirmesi 2.2'nin yeni özelliklerini, sorunlarını ve geçici çözümlerini açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,86 +15,86 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60531089"
 ---
-# <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 serisi güncelleştirme 2.2 sürüm notları
+# <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 Serisi Güncelleme 2.2 sürüm notları
 
 ## <a name="overview"></a>Genel Bakış
-Aşağıdaki sürüm notları, yeni özellikleri açıklar ve kritik açık sorunlar için StorSimple 8000 serisi güncelleştirme 2.2 belirleyin. Ayrıca bu sürüme dahil edilen StorSimple yazılım güncelleştirmeleri listesini içerirler.
+Aşağıdaki sürüm notları yeni özellikleri açıklar ve StorSimple 8000 Serisi Güncelleştirme 2.2 için kritik açık sorunları tanımlar. Ayrıca, bu sürümde yer alan StorSimple yazılım güncelleştirmelerinin bir listesini de içerirler.
 
-Güncelleştirme 2.2 sürüm (GA) veya güncelleştirme 0.1, güncelleştirme 2. 1 ' çalıştıran tüm StorSimple cihazı için uygulanabilir. Güncelleştirme 2.2 ile ilişkili cihaz 6.3.9600.17708 sürümüdür.
+Güncelleştirme 2.2, Sürüm (GA) veya Güncelleme 0.1 ile Güncelleme 2.1'i çalıştıran herhangi bir StorSimple aygıtına uygulanabilir. Güncelleştirme 2.2 ile ilişkili aygıt sürümü 6.3.9600.17708'dir.
 
-Lütfen StorSimple çözümünüzde güncelleştirme dağıtmadan önce bu sürüm notlarında yer alan bilgileri gözden geçirin.
+Güncelleştirmeyi StorSimple çözümünüze dağıtmadan önce lütfen sürüm notlarında yer alan bilgileri gözden geçirin.
 
 > [!IMPORTANT]
-> * Güncelleştirme 2.2 yalnızca yazılım güncelleştirmeleri vardır. Yaklaşık 1,5 2 Bu güncelleştirmeyi yüklemek için saat sürer. 
-> * Güncelleştirme 2.1 çalıştırıyorsanız, güncelleştirme 2.2 olabildiğince çabuk uygulamanızı öneririz.
-> * Yeni yayınlar için güncelleştirmeleri göremeyebilirsiniz hemen güncelleştirmeleri aşamalı olarak sunulmasını çünkü. Birkaç gün bekleyin ve ardından güncelleştirmeleri bu olarak yeniden tarama yakında kullanıma sunulacaktır.
+> * Update 2.2 yalnızca yazılım güncelleştirmeleri vardır. Bu güncelleştirmeyi yüklemek yaklaşık 1,5-2 saat sürer. 
+> * Güncelleştirme 2.1'i çalıştırıyorsanız, Güncelleştirme 2.2'yi mümkün olan en kısa sürede uygulamanızı öneririz.
+> * Yeni sürümler için güncelleştirmeleri aşamalı olarak kullanıma sunduğumuz için güncelleştirmeleri hemen göremeyebilirsiniz. Birkaç gün bekleyin ve bu yakında kullanılabilir olacak gibi yeniden güncelleştirmeleri için tarar.
 > 
 > 
 
-## <a name="whats-new-in-update-22"></a>Güncelleştirme 2.2 içinde yenilikler nelerdir?
-Güncelleştirme 2.2 içinde aşağıdaki önemli geliştirmeler yapıldı.
+## <a name="whats-new-in-update-22"></a>Güncelleme 2.2'deki yenilikler
+Güncelleştirme 2.2'de aşağıdaki önemli iyileştirmeler yapılmıştır.
 
-* **Alan geri kazanma iyileştirme otomatik** – veri ölçülü kaynak kullanan birimler üzerinde kazanılacak kullanılmamış depolama blokları gereken silindiğinde. Bu sürüm, önceki sürümlere göre daha hızlı kullanılabilir hale gelmeden kullanılmayan alanı výsledek buluttan alan geri kazanma işlemi geliştirilmiştir.
-* **Performans iyileştirmeleri anlık görüntü** – güncelleştirme 2.2 belirli senaryolarda büyük olduğunda birimlerin kullanıldığı ve olduğundan hiçbir veri değişim sıklığı için en az bir anlık görüntü Bulutu işlem süresi geliştirildi. Bu geliştirme avantaj elde edecektir bir senaryo, arşiv birimleri olacaktır.
-* **Destek Paketi toplama sağlamlaştırma** – destek paketi toplanır ve bu sürümde karşıya şekilde geliştirmeleri yapıldı. 
-* **Güvenilirlik geliştirmeleri güncelleştirme** – bu sürüm hata düzeltmeleri, geliştirilmiş bir güncelleştirme güvenilirliği neden sahiptir.
+* **Otomatik alan ıslahı optimizasyonu** – Veriler ince olarak sağlanan birimlerde silindiğinde, kullanılmayan depolama bloklarının geri alınması gerekir. Bu sürüm, buluttan gelen alan ıslah işlemini iyileştirerek kullanılmayan alanın önceki sürümlere göre daha hızlı kullanılabilir hale gelmesine neden olmuştur.
+* **Anlık görüntü performans geliştirmeleri** – Update 2.2, büyük hacimlerin kullanıldığı ve veri karmaşasının en az olduğu belirli senaryolarda bulut anlık görüntüsünü işleme süresini artırdı. Bu geliştirmeden yararlanacak bir senaryo arşiv birimleri olacaktır.
+* **Destek paketinin toplanmasının sertleştirilmesi** – Destek paketinin bu sürümde toplanma ve yükleme şeklinde iyileştirmeler yapılmıştır. 
+* **Güvenilirlik iyileştirmelerini güncelleştir** – Bu sürümde, daha iyi güncelleştirme güvenilirliğiyle sonuçlanan hata düzeltmeleri vardır.
 
-## <a name="issues-fixed-in-update-22"></a>Güncelleştirme 2.2 içinde düzeltilen sorunlar
-Aşağıdaki tablolarda, güncelleştirmeleri 2.2 ve 2.1 düzeltilen sorunlara ilişkin bir Özet sağlar.    
+## <a name="issues-fixed-in-update-22"></a>Güncelleştirme 2.2'de düzeltilen sorunlar
+Aşağıdaki tablolar Güncelleştirmeler 2.2 ve 2.1'de düzeltilen sorunların bir özetini sağlar.    
 
-| Hayır | Özellik | Sorun | Fiziksel cihaz için geçerlidir | Sanal cihaza uygulanır |
+| Hayır | Özellik | Sorun | Fiziksel cihaz için geçerlidir | Sanal aygıt için geçerlidir |
 | --- | --- | --- | --- | --- |
-| 1 |Konak performansı |Önceki sürümde, konak tarafı performans sorunlarını, yerel olarak sabitlenmiş birimin oluşturulması sırasında ve yerel olarak sabitlenmiş bir birim katmanlı birim dönüştürme sırasında gözlemlenmedi. Bu sorunları, böylece birim oluşturma ve dönüştürme yordamları sırasında konak performansında bir gelişme sonuçta bu sürümde giderilen. |Evet |Hayır |
-| 2 |Yerel olarak sabitlenmiş birimler |Nadir durumlarda, sistem, yerel olarak sabitlenmiş bir birim oluştururken kilitlenme. Bu sürümde bu hata düzeltildi. |Evet |Hayır |
-| 3 |Katman ayarlama |StorSimple bulut Gereçleri (8010 ve 8020) için meta verileri buluta katmanlanmış, ara sıra kilitlenmeleri vardı. Bu sürümde bu sorun düzeltilmiştir. |Hayır |Evet |
-| 4 |Anlık görüntü oluşturma |Artımlı anlık senaryolarında büyük birimleri ile oluşturulmasını ilgili ve hiçbir veri değişim sıklığı için en az sorunlar oluştu. Bu sürümde bu sorunlar düzeltildikten. |Evet |Evet |
-| 5 |Openstack kimlik doğrulaması |Openstack bulut hizmeti sağlayıcısı olarak kullanırken, kullanıcının burada JSON ayrıştırıcısı içindeki bir kilitlenme sonuçlanan kimlik doğrulaması ile ilgili bir seyrek hata halinde çalışır. Bu hata, bu sürümde sabittir. |Evet |Hayır |
-| 6 |Konak tarafı kopyalama |Yazılım daha önceki sürümlerinde, ODX zamanlamasıyla ilgili bir seyrek hata verileri başka bir birime bir birimden kopyalarken görüldü. Bu denetleyici yük devretme neden olur ve sistemin potansiyel olarak kurtarma moduna gidebilirsiniz. Bu hata, bu sürümde sabittir. |Evet |Hayır |
-| 7 |Windows Yönetim Araçları (WMI) |Yazılım önceki sürümlerinde, özel durum ile web proxy hatası çeşitli örneklerini vardı "\<ManagementException > Sağlayıcı yükleme hatası". Bu hata için bir WMI bellek sızıntısıdır öznitelikli ve artık düzeltildi. |Evet |Hayır |
-| 8 |Güncelleştirme |Önceki yazılım sürümlerindeki bazı nadir durumlarda tarama veya güncelleştirmeleri yüklemeye çalışırken "CisPowershellHcsscripterror" kullanıcı aldı. Bu sürümde bu sorun düzeltilmiştir. |Evet |Evet |
-| 9 |Destek Paketi |Bu sürümde, destek paketi toplanan ve karşıya olduğu gibi iyileştirmeler yapıldı. |Evet |Evet |
+| 1 |Ev sahibi performansı |Önceki sürümde, yerel olarak sabitlenmiş bir birimin oluşturulması sırasında ve katmanlı bir birimin yerel olarak sabitlenmiş bir sese dönüştürülmesi sırasında ana bilgisayar tarafı performans sorunları gözlenmiştir. Bu sorunlar bu sürümde giderilir ve böylece birim oluşturma ve dönüştürme yordamları sırasında ana bilgisayar performansında bir iyileşme ye neden olabilir. |Evet |Hayır |
+| 2 |Yerel olarak sabitlenmiş birimler |Nadir durumlarda, sistem yerel olarak sabitlenmiş bir ses düzeyi oluştururken çöker. Bu hata bu sürümde düzeltildi. |Evet |Hayır |
+| 3 |Katmanlama |StorSimple Cloud Appliances (8010 ve 8020) meta verileri buluta katmanlandığında düzensiz çökmeler yaşandı. Bu sorun bu sürümde giderilmiştir. |Hayır |Evet |
+| 4 |Anlık görüntü oluşturma |Büyük hacimli ve en az ve hiçbir veri karmaşası ile senaryolarda artımlı anlık görüntü oluşturulması ile ilgili sorunlar vardı. Bu sorunlar bu sürümde giderilmiştir. |Evet |Evet |
+| 5 |Openstack kimlik doğrulaması |Openstack'i bulut hizmeti sağlayıcısı olarak kullanırken, kullanıcı JSON parer'inin kilitlenmeyle sonuçlandığı kimlik doğrulamasıyla ilgili seyrek bir hatayla karşılaştı. Bu hata bu sürümde düzeltilir. |Evet |Hayır |
+| 6 |Ana bilgisayar tarafı kopyası |Yazılımın önceki sürümlerinde, verileri bir birimden başka bir birimden kopyalarken ODX zamanlaması ile ilgili seyrek bir hata görülmüştür. Bu bir denetleyici başarısız lığa neden olur ve sistem potansiyel kurtarma moduna gidebilir. Bu hata bu sürümde düzeltilir. |Evet |Hayır |
+| 7 |Windows Yönetim Araçları (WMI) |Yazılımın önceki sürümlerinde, "ManagementException> Sağlayıcı yük hatası"\<dışında web proxy arızası birkaç örneği vardı. Bu hata bir WMI bellek sızıntısı atfedilen ve şimdi sabittir. |Evet |Hayır |
+| 8 |Güncelleştirme |Bazı nadir durumlarda, yazılımın önceki sürümlerinde, kullanıcı güncellemeleri tatmaya veya yüklemeye çalışırken bir "CisPowershellHcsscripterror" aldı. Bu sorun bu sürümde giderilmiştir. |Evet |Evet |
+| 9 |Destek paketi |Bu sürümde, Destek paketinin toplanma ve yüklenme şeklinde iyileştirmeler yapılmıştır. |Evet |Evet |
 
 ## <a name="known-issues-in-update-22"></a>Güncelleştirme 2.2'de bilinen sorunlar
-Aşağıdaki tabloda, bu sürümdeki bilinen sorunlara ilişkin bir Özet sağlar.
+Aşağıdaki tablo, bu sürümde bilinen sorunların bir özetini sağlar.
 
-| Hayır. | Özellik | Sorun | Yorumlar / geçici çözüm | Fiziksel cihaz için geçerlidir | Sanal cihaza uygulanır |
+| Hayır. | Özellik | Sorun | Yorumlar / geçici çözüm | Fiziksel cihaz için geçerlidir | Sanal aygıt için geçerlidir |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Disk çekirdek |8600 bir cihaz EBOD muhafazası diskler çoğu hiçbir disk çekirdeği kaynaklanan kesilirse nadir durumlarda, ardından depolama havuzunun çevrimdışı geçer. Diskleri yeniden bağlantı kuruldu bile çevrimdışı kalır. |Cihaz yeniden başlatma gerekir. Lütfen sorun devam ederse, Microsoft Support için sonraki adımlara başvurun. |Evet |Hayır |
-| 2 |Yanlış denetleyici kimliği |Denetleyici değişiklik yapıldığında, denetleyici 0 denetleyici 1 görünebilir. Eş düğümünden, görüntüyü yüklendiğinde denetleyicisi değiştirme sırasında denetleyici kimliği başlangıçta eş denetleyicinin kimliği olarak gösterebilirsiniz Nadir durumlarda, bu davranışı sistem yeniden başlatma sonrası görülebilir. |Hiçbir kullanıcı eylemi gerekli değildir. Denetleyici bu değişiklik tamamlandıktan sonra bu durum kendi çözülecektir. |Evet |Hayır |
-| 3 |Depolama hesapları |Depolama hesabını silmek için depolama hizmeti kullanarak desteklenmeyen bir senaryodur. Bu, kullanıcı verilerini geri alınamaz bir durum için yol açacaktır. | |Evet |Evet |
-| 4 |Cihaz yük devretme |Farklı bir hedef cihazlara aynı kaynak cihazdaki birim kapsayıcısının birden çok yük devretme işlemleri desteklenmiyor. Birden fazla cihaza tek bir ölü CİHAZDAN yük devretme veri sahipliği kaybetmek birim kapsayıcıları cihaz başarısız ilk neden olur. Böyle bir yük devrinden sonra bu birim kapsayıcıları görünür veya Azure Klasik Portalı'nda görüntülediğinizde farklı davranır. | |Evet |Hayır |
-| 5 |Yükleme |SharePoint yüklemesi için StorSimple bağdaştırıcısını sırasında yükleme başarıyla tamamlanması için sırayla bir cihazın IP sağlamanız gerekir. | |Evet |Hayır |
-| 6 |Web ara sunucusu |Belirtilen Protokolü HTTPS, web proxy yapılandırması varsa, cihazı hizmeti iletişiminizin etkilenecek ve cihaz çevrimdışı olarak geçer. Destek paketleri, Cihazınızda önemli miktarda kaynak tüketen işleminde, aynı zamanda oluşturulur. |Web proxy URL'si belirtilen protokolü olarak HTTP olduğundan emin olun. Daha fazla bilgi için [Cihazınız için web ara sunucusunu yapılandırma](storsimple-configure-web-proxy.md)’ya gidin. |Evet |Hayır |
-| 7 |Web ara sunucusu |Yapılandırırsanız ve bir kayıtlı cihazda web Ara sunucusunu etkinleştirme, Cihazınızda etkin denetleyiciyi yeniden başlatmanız gerekir. | |Evet |Hayır |
-| 8 |Bulut yüksek gecikme süresi ve yüksek g/ç iş yükü |StorSimple Cihazınızı çok yüksek bulut gecikme (saniye cinsinden sırası) ve yüksek g/ç iş yükü karşılaştığında, cihaz birimlerine düzeyi düşürülmüş bir duruma geçmesine ve g/ç bir "cihaz hazır değil" hatası ile başarısız olabilir. |El ile cihaz denetleyicileri yeniden veya bu durumdan kurtulmak için cihaz yük devretme gerçekleştirmeniz gerekecektir. |Evet |Hayır |
-| 9 |Azure PowerShell |StorSimple cmdlet kullandığınızda **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - ilk 1 - bekleme** yeni oluşturabilmeniz ilk nesneyi seçmek için **VolumeContainer** nesnesi, cmdlet tüm nesneleri döndürür. |Cmdlet, parantez içine şu şekilde kaydır: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - ilk 1 - bekleme** |Evet |Evet |
-| 10 |Geçiş |Geçiş için birden çok birim kapsayıcıları geçirildiğinde ETA en son yedekleme için yalnızca ilk birim kapsayıcısı için doğru olur. Ayrıca, ilk 4 yedeklemeler ilk birim kapsayıcısı, geçirildikten sonra paralel geçiş başlar. |Bir birim kapsayıcısı teker teker geçirmek öneririz. |Evet |Hayır |
-| 11 |Geçiş |Geri yüklemeden sonra yedekleme İlkesi ya da sanal disk grubu birimleri eklenmez. |Yedeklemeler oluşturmak için bir yedekleme ilkesi için bu birimler eklemeniz gerekir. |Evet |Evet |
-| 12 |Geçiş |5000/7000 Serisi cihaz, geçiş tamamlandıktan sonra geçirilen verileri kapsayıcıları erişmemelidir. |Geçiş tamamlandı ve kaydedilmiş duruma geldikten sonra geçirilen verileri kapsayıcıları silmenizi öneririz. |Evet |Hayır |
-| 13 |Kopyalama ve DR |Güncelleştirme 1 çalıştıran bir StorSimple cihazına kopyalayın veya güncelleştirme 1 yazılımı öncesini çalıştıran bir cihazda olağanüstü durum kurtarma gerçekleştirin. |Hedef cihaz güncelleştirme 1 için güncelleştirme işlemlerini izin vermek için gerekecektir |Evet |Evet |
-| 14 |Geçiş |Hiçbir ilişkili birimleri ile birim gruplarını olduğunda geçiş için yedekleme yapılandırması 5000-7000 Serisi cihazda başarısız olabilir. |Hiçbir ilişkili birimleri ile tüm boş birim gruplarını silin ve ardından yapılandırma yedeklemeyi yeniden deneyin. |Evet |Hayır |
-| 15 |Azure PowerShell cmdlet'leri ve yerel olarak sabitlenmiş birimler |Azure PowerShell cmdlet'leri aracılığıyla yerel olarak sabitlenmiş bir birim oluşturamazsınız. (Azure PowerShell ile oluşturduğunuz herhangi bir birim katmanlanmış olmaz.) |Her zaman yerel olarak sabitlenmiş birimler yapılandırmak için StorSimple Yöneticisi hizmetini kullanın. |Evet |Hayır |
-| 16 |Yerel olarak sabitlenmiş birimler için kullanılabilir alan |Yerel olarak sabitlenmiş bir birim silerseniz, yeni birimler için mevcut olan alanı hemen güncelleştirilmeyebilir. StorSimple Yöneticisi hizmeti, kullanılabilir yerel alanın yaklaşık saatte güncelleştirir. |Yeni birim oluşturmak denemeden önce bir saat bekleyin. |Evet |Hayır |
-| 17 |Yerel olarak sabitlenmiş birimler |Yedekleme kataloğunu, ancak yalnızca geri yükleme işi süresi için geçici bir anlık görüntü yedekleme, geri yükleme işi gösterir. Ayrıca, ön ekine sahip bir sanal disk grubu kullanıma sunduğu **tmpCollection** üzerinde **yedekleme ilkeleri** sayfasında, ancak yalnızca geri yükleme işi süresi için. |Bu davranış, geri yükleme iş birimleri veya yerel olarak sabitlenmiş ve katmanlı birimlerden oluşan bir karışımı yalnızca yerel olarak sabitlenmiş ortaya çıkabilir. Geri yükleme işi yalnızca katmanlı birimleri içeriyorsa, bu davranışı gerçekleşmez. Kullanıcı müdahalesi gerekli değildir. |Evet |Hayır |
-| 18 |Yerel olarak sabitlenmiş birimler |Geri yükleme işi iptal edin ve daha sonra geri yükleme işi gösterecektir hemen bir denetleyici yük devretmesi oluşursa **başarısız** yerine **iptal**. Geri yükleme işi başarısız olursa ve daha sonra geri yükleme işi gösterecektir hemen bir denetleyici yük devretme gerçekleştikten **iptal** yerine **başarısız**. |Bu davranış, geri yükleme iş birimleri veya yerel olarak sabitlenmiş ve katmanlı birimlerden oluşan bir karışımı yalnızca yerel olarak sabitlenmiş ortaya çıkabilir. Geri yükleme işi yalnızca katmanlı birimleri içeriyorsa, bu davranışı gerçekleşmez. Kullanıcı müdahalesi gerekli değildir. |Evet |Hayır |
-| 19 |Yerel olarak sabitlenmiş birimler |Geri yükleme işi iptal etmek veya geri yükleme başarısız olursa ve ardından bir denetleyici yük devretme gerçekleştikten bir ek geri yükleme işi görünür **işleri** sayfası. |Bu davranış, geri yükleme iş birimleri veya yerel olarak sabitlenmiş ve katmanlı birimlerden oluşan bir karışımı yalnızca yerel olarak sabitlenmiş ortaya çıkabilir. Geri yükleme işi yalnızca katmanlı birimleri içeriyorsa, bu davranışı gerçekleşmez. Kullanıcı müdahalesi gerekli değildir. |Evet |Hayır |
-| 20 |Yerel olarak sabitlenmiş birimler |Yerel olarak sabitlenmiş bir birim için (oluşturulan ve güncelleştirme 1.2 ile kopyalanan veya öncesi) katmanlı Birim dönüştürmeyi denemeden ve alana sahip Cihazınızı değil veya bir bulut kesinti varsa, clone(s) bozulabilir. |Oluşturulan ve klonlanan ile ön güncelleştirme 2.1 yazılım olan birimleri ile bu sorun oluşur. Bu, nadir bir senaryo olmalıdır. | | |
-| 21 |Birim dönüştürme |Bir birim dönüştürme işlemi devam ederken bir birime bağlı Acr'leri güncelleştirmez (yerel olarak sabitlenmiş katmanlı ya da tam tersi). Acr'leri güncelleştiriliyor, veri bozulmasına neden olabilir. |Gerekirse, önce birim dönüştürme Acr'leri güncelleştirin ve dönüştürme işlemi devam ederken ACR güncelleştirmeleri başka yapmayın. | | |
+| 1 |Disk çoğunluğu |Nadir durumlarda, 8600 aygıtın EBOD muhafazasındaki disklerin çoğu kesilirse ve bu da disk yeter sayısı olmadan sonuçlanırsa, depolama havuzu çevrimdışı olur. Diskler yeniden bağlansa bile çevrimdışı kalır. |Aygıtı yeniden başlatmanız gerekir. Sorun devam ederse, lütfen sonraki adımlar için Microsoft Destek'e başvurun. |Evet |Hayır |
+| 2 |Yanlış denetleyici kimliği |Denetleyici değiştirme yapıldığında, denetleyici 0 denetleyici 1 olarak görünebilir. Denetleyici değiştirme sırasında, görüntü eş düğümünden yüklendiğinde, denetleyici kimliği başlangıçta eş denetleyicinin kimliği olarak gösterilebilir. Nadir durumlarda, bu davranış bir sistem yeniden başlatıldıktan sonra da görülebilir. |Kullanıcı eylemi gerekmez. Bu durum, denetleyici değişimi tamamlandıktan sonra kendiliğinden çözülür. |Evet |Hayır |
+| 3 |Depolama hesapları |Depolama hesabını silmek için Depolama hizmetini kullanmak desteklenmeyen bir senaryodur. Bu, kullanıcı verilerinin alınamadığı bir duruma yol açar. | |Evet |Evet |
+| 4 |Cihaz arıza |Aynı kaynak aygıttan farklı hedef aygıtlara bir birim kapsayıcının birden fazla failovers desteklenmez. Tek bir ölü aygıttan birden fazla cihaza geçememesi, aygıtın veri sahipliğini kaybetmesi nedeniyle ilk arızalı birim kapsayıcılarına neden olur. Böyle bir başarısızlıktan sonra, bu birim kapsayıcıları Azure klasik portalında görüntülediğinizde farklı görünür veya farklı davranacaktır. | |Evet |Hayır |
+| 5 |Yükleme |SharePoint yüklemesi için StorSimple Adaptörü sırasında, yüklemenin başarıyla tamamlanması için bir aygıt IP'si sağlamanız gerekir. | |Evet |Hayır |
+| 6 |Web proxy |Web proxy yapılandırmanızda belirtilen protokol olarak HTTPS varsa, aygıttan hizmete iletişiminiz etkilenir ve aygıt çevrimdışı duruma geçer. Destek paketleri de bu süreçte oluşturularak cihazınızda önemli kaynaklar tüketecektir. |Belirtilen protokol olarak web proxy URL'sinin HTTP olduğundan emin olun. Daha fazla bilgi için [Cihazınız için web ara sunucusunu yapılandırma](storsimple-configure-web-proxy.md)’ya gidin. |Evet |Hayır |
+| 7 |Web proxy |Kayıtlı bir aygıtta web proxy'yi yapılandırıp etkinleştiriseniz, cihazınızdaki etkin denetleyiciyi yeniden başlatmanız gerekir. | |Evet |Hayır |
+| 8 |Yüksek bulut gecikmesi ve yüksek G/Ç iş yükü |StorSimple aygıtınız çok yüksek bulut gecikmeleri (saniye sırası) ve yüksek G/Ç iş yükünün bir birleşimi ile karşılaştığında, aygıt birimleri bozulmuş bir duruma girer ve G/Ç'ler "aygıt hazır değil" hatasıyla başarısız olabilir. |Aygıt denetleyicilerini el ile yeniden başlatmanız veya bu durumdan kurtulmak için bir aygıt başarısızı gerçekleştirmeniz gerekir. |Evet |Hayır |
+| 9 |Azure PowerShell |StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Yeni** bir **VolumeContainer** nesnesi oluşturabilmeniz için ilk nesneyi seçmek için bekleyin, cmdlet tüm nesneleri döndürür. |Cmdlet'i parantez içinde şu şekilde sarın: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |Evet |Evet |
+| 10 |Geçiş |Geçiş için birden çok birim kapsayıcı geçirildiğinde, en son yedekleme için ETA yalnızca ilk birim kapsayıcı için doğrudur. Ayrıca, ilk birim kapsayıcıdaki ilk 4 yedekleme geçirildikten sonra paralel geçiş başlar. |Aynı anda bir birim kapsayıcıgeçirmenizi öneririz. |Evet |Hayır |
+| 11 |Geçiş |Geri yüklemeden sonra, birimler yedekleme ilkesine veya sanal disk grubuna eklenmez. |Yedekleme oluşturmak için bu birimleri yedekleme ilkesine eklemeniz gerekir. |Evet |Evet |
+| 12 |Geçiş |Geçiş tamamlandıktan sonra, 5000/7000 serisi aygıt geçirilen veri kapsayıcıları erişmemeli. |Geçiş tamamlandıktan ve işlendikten sonra geçirilen veri kapsayıcılarını silmenizi öneririz. |Evet |Hayır |
+| 13 |Klon ve DR |Güncelleştirme 1'i çalıştıran bir StorSimple aygıtı, güncelleştirme öncesi 1 yazılımı çalıştıran bir aygıtta genel durum kurtarma yıkılamaz veya olağanüstü durum kurtarma gerçekleştiremez. |Bu işlemlere izin vermek için hedef aygıtı Güncelleştirme 1'e güncelleştirmeniz gerekir |Evet |Evet |
+| 14 |Geçiş |Geçiş için yapılandırma yedeklemesi, ilişkili birimleri olmayan birim grupları olduğunda 5000-7000 serisi bir aygıtta başarısız olabilir. |İlişkili birim olmadan tüm boş birim gruplarını silin ve yapılandırma yedeklemesini yeniden deneyin. |Evet |Hayır |
+| 15 |Azure PowerShell cmdlets ve yerel olarak sabitlenmiş hacimler |Azure PowerShell cmdlets üzerinden yerel olarak sabitlenmiş bir birim oluşturamazsınız. (Azure PowerShell üzerinden oluşturduğunuz tüm birim katmanlanır.) |Yerel olarak sabitlenmiş birimleri yapılandırmak için StorSimple Manager hizmetini her zaman kullanın. |Evet |Hayır |
+| 16 |Yerel olarak sabitlenmiş birimler için kullanılabilir alan |Yerel olarak sabitlenmiş bir birimi silerseniz, yeni birimler için kullanılabilir alan hemen güncelleştirilemeyebilir. StorSimple Manager hizmeti, yaklaşık her saat kullanılabilen yerel alanı güncelleştirir. |Yeni birim oluşturmaya çalışmadan önce bir saat bekleyin. |Evet |Hayır |
+| 17 |Yerel olarak sabitlenmiş birimler |Geri yükleme işiniz, Yedekleme Kataloğu'ndaki geçici anlık görüntü yedeklemesini, ancak yalnızca geri yükleme işi süresince ortaya çıkarır. Ayrıca, **Yedekleme İlkeleri** sayfasında **tmpCollection** öneki ile sanal bir disk grubu ortaya çıkarır, ancak yalnızca geri yükleme işi süresince. |Geri yükleme işinizyalnızca yerel olarak sabitlenmiş birimlere veya yerel olarak sabitlenmiş ve katmanlı birimlerin bir karışımına sahipse, bu davranış oluşabilir. Geri yükleme işi yalnızca katmanlı birimleri içeriyorsa, bu davranış oluşmaz. Kullanıcı müdahalesi gerekli değildir. |Evet |Hayır |
+| 18 |Yerel olarak sabitlenmiş birimler |Bir geri yükleme işini iptal ederseniz ve denetleyici nin başarısızlığı hemen ardından gerçekleşirse, geri yükleme işi **İptal Yerine** **Başarısız'ı** gösterir. Geri yükleme işi başarısız olursa ve denetleyici nin hemen ardından başarısız olursa, geri yükleme işi **Başarısız**yerine **İptal edilmiş** olarak gösterecektir. |Geri yükleme işinizyalnızca yerel olarak sabitlenmiş birimlere veya yerel olarak sabitlenmiş ve katmanlı birimlerin bir karışımına sahipse, bu davranış oluşabilir. Geri yükleme işi yalnızca katmanlı birimleri içeriyorsa, bu davranış oluşmaz. Kullanıcı müdahalesi gerekli değildir. |Evet |Hayır |
+| 19 |Yerel olarak sabitlenmiş birimler |Geri yükleme işini iptal ederseniz veya geri yükleme başarısız olursa ve ardından bir denetleyici başarısız olursa, **İşler** sayfasında ek bir geri yükleme işi görüntülenir. |Geri yükleme işinizyalnızca yerel olarak sabitlenmiş birimlere veya yerel olarak sabitlenmiş ve katmanlı birimlerin bir karışımına sahipse, bu davranış oluşabilir. Geri yükleme işi yalnızca katmanlı birimleri içeriyorsa, bu davranış oluşmaz. Kullanıcı müdahalesi gerekli değildir. |Evet |Hayır |
+| 20 |Yerel olarak sabitlenmiş birimler |Katmanlı bir birimi (Güncelleştirme 1.2 veya daha öncesiyle oluşturulmuş ve klonlanmış) yerel olarak sabitlenmiş bir ses e dönüştürmeye çalışırsanız ve cihazınızda yer bitiyorsa veya bir bulut kesintisi varsa, klon(lar) bozulabilir. |Bu sorun yalnızca Güncelleştirme öncesi 2.1 yazılımıyla oluşturulan ve klonlanan birimlerde oluşur. Bu seyrek bir senaryo olmalıdır. | | |
+| 21 |Birim dönüştürme |Birim dönüştürme devam ederken bir birime eklenen AcR'ları güncelleştirin (yerel olarak sabitlenmiş veya tam tersi katmanlı). ARG'ların güncellenmesi veri bozulmasına neden olabilir. |Gerekirse, birim dönüştürmeden önce AC'leri güncelleştirin ve dönüştürme devam ederken başka ACR güncelleştirmesi yapmayın. | | |
 
-## <a name="controller-and-firmware-updates-in-update-22"></a>Güncelleştirme 2.2 denetleyici ve üretici yazılımı güncelleştirmeleri
-Bu sürüm yalnızca yazılım güncelleştirmeleri sahiptir. Ancak, güncelleştirme 2'den önceki bir sürümü güncelleştiriyorsanız, Storport, Spaceport, sürücü yüklemek gerekecektir (bazı durumlarda) ve disk üretici yazılımı güncelleştirmelerini Cihazınızda.
+## <a name="controller-and-firmware-updates-in-update-22"></a>Güncelleştirme 2.2'deki denetleyici ve firmware güncellemeleri
+Bu sürümde yalnızca yazılım güncelleştirmeleri vardır. Ancak, Güncelleştirme 2'den önceki bir sürümden güncelliyorsanız, cihazınıza sürücü, Storport, Spaceport ve (bazı durumlarda) disk firmware güncelleştirmelerini yüklemeniz gerekir.
 
-Sürücü, Storport, Spaceport ve disk üretici yazılımı güncelleştirmelerini yükleme hakkında daha fazla bilgi için bkz. [güncelleştirme 2.2 yükleme](storsimple-install-update-21.md) StorSimple Cihazınızda.
+Sürücü, Storport, Spaceport ve disk firmware güncelleştirmelerini nasıl yükleyebilirsiniz hakkında daha fazla bilgi için StorSimple cihazınıza [Güncelleme 2.2'yi](storsimple-install-update-21.md) yükleyin'e bakın.
 
-## <a name="virtual-device-updates-in-update-22"></a>Güncelleştirme 2.2 sanal cihaz güncelleştirmeleri
-Bu güncelleştirme, sanal cihaz için uygulanamaz. Yeni sanal cihazları oluşturulması gerekir. 
+## <a name="virtual-device-updates-in-update-22"></a>Güncelleştirme 2.2'deki sanal cihaz güncellemeleri
+Bu güncelleştirme sanal aygıta uygulanamaz. Yeni sanal aygıtların oluşturulması gerekir. 
 
 ## <a name="next-step"></a>Sonraki adım
-Bilgi edinmek için nasıl [güncelleştirme 2.2 yükleyin](storsimple-install-update-21.md) StorSimple Cihazınızda.
+StorSimple cihazınıza [Update 2.2'yi](storsimple-install-update-21.md) nasıl yükleyin öğrenin.
 

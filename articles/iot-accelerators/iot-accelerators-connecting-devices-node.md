@@ -1,6 +1,6 @@
 ---
-title: Uzaktan izleme node.js'de - Azure cihaz sağlama | Microsoft Docs
-description: Node.js'de yazılmış bir Web uygulaması kullanarak Uzaktan izleme çözüm Hızlandırıcısını için bir cihaz bağlamak açıklar.
+title: Düğüm.js'de Uzaktan İzlemeye sağlama cihazları - Azure | Microsoft Dokümanlar
+description: Düğüm.js'de yazılmış bir uygulamayı kullanarak aygıtın Uzaktan İzleme çözüm hızlandırıcısına nasıl bağlanıştırılabildiğini açıklar.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: fdb2bed76a8e23a6034a57b3a5f1358c26e9e990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61450287"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Cihazınızı Uzaktan izleme çözüm hızlandırıcısına (Node.js) bağlama
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Cihazınızı Uzaktan İzleme çözüm hızlandırıcısına (Node.js) bağlayın
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Bu öğreticide, gerçek bir cihaz Uzaktan izleme çözüm hızlandırıcısına bağlamayı gösterilmektedir. Bu öğreticide, Node.js, en az kaynak kısıtlamalarıyla ortamlar için iyi bir seçenek olduğu kullanın.
+Bu öğretici, gerçek bir aygıtı Uzaktan İzleme çözüm hızlandırıcısına nasıl bağlayabileceğinizi gösterir. Bu öğreticide, en az kaynak kısıtlaması olan ortamlar için iyi bir seçenek olan Node.js'yi kullanırsınız.
 
-Bir cihazın benzetimini gerçekleştirme isterseniz, bkz. [oluşturma ve test yeni bir simülasyon cihazı](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Bir aygıtı simüle etmeyi tercih ederseniz, [bkz.](iot-accelerators-remote-monitoring-create-simulated-device.md)
 
-## <a name="create-a-nodejs-solution"></a>Bir Node.js çözümü oluşturun
+## <a name="create-a-nodejs-solution"></a>Bir Düğüm.js çözümü oluşturma
 
-Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makinenizde yüklü. Çalıştırabileceğiniz `node --version` sürümü denetlemek için komut satırına.
+[Node.js](https://nodejs.org/) sürüm 4.0.0 veya sonraki sürüm geliştirme makinenize yüklendiğinden emin olun. Sürümü denetlemek `node --version` için komut satırında çalıştırabilirsiniz.
 
-1. Adlı bir klasör oluşturun `remotemonitoring` geliştirme makinenizde. Komut satırı ortamınızda bu klasöre gidin.
+1. Geliştirme makinenizde `remotemonitoring` çağrılan bir klasör oluşturun. Komut satırı ortamınızda bu klasöre gidin.
 
-1. Örnek uygulamayı tamamlamanız gereken paketleri indirme ve yükleme için aşağıdaki komutları çalıştırın:
+1. Örnek uygulamayı tamamlamak için gereken paketleri indirmek ve yüklemek için aşağıdaki komutları çalıştırın:
 
     ```cmd/sh
     npm init
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. İçinde `remotemonitoring` klasöründe adlı bir dosya oluşturun **remote_monitoring.js**. Bu dosyayı bir metin düzenleyicisinde açın.
+1. Klasörde, `remotemonitoring` **remote_monitoring.js**adlı bir dosya oluşturun. Bu dosyayı bir metin düzenleyicisinde açın.
 
-1. İçinde **remote_monitoring.js** dosyasında, aşağıdaki ekleyin `require` ifadeleri:
+1. **remote_monitoring.js** dosyasında aşağıdaki `require` ifadeleri ekleyin:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -47,13 +47,13 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
     var async = require('async');
     ```
 
-1. `require` deyimlerinden sonra aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu değerini değiştirin `{device connection string}` cihaz için belirtilen değer ile'Uzaktan izleme çözümünde sağlanan:
+1. `require` deyimlerinden sonra aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu değerini, `{device connection string}` Uzaktan İzleme çözümünde sağlanan aygıt için belirttiğiniz değerle değiştirin:
 
     ```javascript
     var connectionString = '{device connection string}';
     ```
 
-1. Bazı temel telemetri verileri tanımlamak için aşağıdaki değişkenleri ekleyin:
+1. Bazı temel telemetri verilerini tanımlamak için aşağıdaki değişkenleri ekleyin:
 
     ```javascript
     var temperature = 50;
@@ -77,7 +77,7 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
     var deviceOnline = true;
     ```
 
-1. Çözüme göndermek için bildirilen özellikleri tanımlamak için aşağıdaki değişkeni ekleyin. Bu özellikler Web kullanıcı Arabiriminde görüntülemek için meta verileri içerir:
+1. Çözüme göndermek için bildirilen özellikleri tanımlamak için aşağıdaki değişkeni ekleyin. Bu özellikler, Web UI'de görüntülenecek meta verileri içerir:
 
     ```javascript
     var reportedProperties = {
@@ -105,7 +105,7 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
     }
     ```
 
-1. Telemetri değerleri rastgele seçmek için kullanılacak aşağıdaki yardımcı işlevi ekleyin:
+1. Telemetri değerlerini rasgeleleştirmek için kullanılacak aşağıdaki yardımcı işlevi ekleyin:
 
      ```javascript
      function generateRandomIncrement() {
@@ -113,7 +113,7 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
      }
      ```
 
-1. Çözümden doğrudan yöntem çağrıları işlemek için aşağıdaki genel işlevi ekleyin. İşlev çağrıldı, ancak bu örnekte, cihazın herhangi bir şekilde değiştirmez doğrudan yöntem hakkında bilgi görüntüler. Çözüm, cihazlarda işlem yapmak için doğrudan yöntemleri kullanır:
+1. Çözümden doğrudan yöntem çağrıları işlemek için aşağıdaki genel işlevi ekleyin. İşlev çağrılan doğrudan yöntem hakkında bilgi görüntüler, ancak bu örnekte aygıtı hiçbir şekilde değiştirmez. Çözüm, aygıtlarda hareket etmek için doğrudan yöntemler kullanır:
 
      ```javascript
      function onDirectMethod(request, response) {
@@ -128,7 +128,7 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
      }
      ```
 
-1. İşlemek için aşağıdaki işlevi ekleyin **FirmwareUpdate** doğrudan çözümünden yöntem çağrıları. İşlev doğrudan yöntem yükteki geçirilen parametreler doğrular ve bir üretici yazılımı güncelleştirme simülasyonu zaman uyumsuz olarak çalışır:
+1. **FirmwareUpdate** doğrudan yöntem çağrıları çözümişlemek için aşağıdaki işlevi ekleyin. İşlev, doğrudan yöntem yükünde geçirilen parametreleri doğrular ve ardından bir firmware güncelleştirme simülasyonu çalıştırır:
 
      ```javascript
      function onFirmwareUpdate(request, response) {
@@ -157,7 +157,7 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
      }
      ```
 
-1. İlerlemeyi çözüme geri raporlar bir uzun süre çalışan üretici yazılımı güncelleştirme akış benzetimini yapmak için aşağıdaki işlevi ekleyin:
+1. İlerlemeyi çözüme geri bildiren uzun soluklu bir firmware güncelleştirme akışını simüle etmek için aşağıdaki işlevi ekleyin:
 
      ```javascript
      // Simulated firmwareUpdate flow
@@ -235,7 +235,7 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
      }
      ```
 
-1. Çözüme telemetri verileri göndermek için aşağıdaki kodu ekleyin. İstemci uygulaması, iletinin ileti şeması tanımlamak için özellikleri ekler:
+1. Çözüme telemetri verileri göndermek için aşağıdaki kodu ekleyin. İstemci uygulaması ileti şemasını tanımlamak için iletiye özellikler ekler:
 
      ```javascript
      function sendTelemetry(data, schema) {
@@ -254,7 +254,7 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
      }
      ```
 
-1. Bir istemci örneği oluşturmak için aşağıdaki kodu ekleyin:
+1. İstemci örneği oluşturmak için aşağıdaki kodu ekleyin:
 
      ```javascript
      var client = Client.fromConnectionString(connectionString, Protocol);
@@ -262,11 +262,11 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
 
 1. Aşağıdaki kodu ekleyin:
 
-    * Bağlantıyı açın.
-    * İstenen özellikleri için bir işleyici ayarlayın.
-    * Bildirilen özellikleri gönderir.
-    * Doğrudan yöntemler için işleyiciler kaydedin. Örnek, üretici yazılımı güncelleştirme doğrudan yöntemi için ayrı bir işleyici kullanır.
-    * Telemetri göndermeye başlaması.
+    * Bağlantıyı aç.
+    * İstenilen özellikler için bir işleyici ayarlayın.
+    * Bildirilen özellikleri gönderin.
+    * Doğrudan yöntemler için işleyicileri kaydedin. Örnek firmware güncelleştirme doğrudan yöntemi için ayrı bir işleyici kullanır.
+    * Telemetri göndermeye başla.
 
       ```javascript
       client.open(function (err) {
@@ -328,9 +328,9 @@ Emin [Node.js](https://nodejs.org/) sürüm 4.0.0 veya üzeri geliştirme makine
       });
       ```
 
-1. Değişiklikleri kaydetmek **remote_monitoring.js** dosya.
+1. Değişiklikleri **remote_monitoring.js** dosyasına kaydedin.
 
-1. Örnek uygulamayı başlatmak için komut isteminde aşağıdaki komutu çalıştırın:
+1. Örnek uygulamayı başlatmak için aşağıdaki komutu komut isteminde çalıştırın:
 
      ```cmd/sh
      node remote_monitoring.js

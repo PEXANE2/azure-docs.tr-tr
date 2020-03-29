@@ -1,6 +1,6 @@
 ---
-title: Yerel makinenizde çalıştırma Azure Data Lake U-SQL betikleri
-description: Yerel makinenizde U-SQL işlerini çalıştırmak için Visual Studio için Azure Data Lake Araçları'nı kullanmayı öğrenin.
+title: Azure Veri Gölü U-SQL komut dosyalarını yerel makinenizde çalıştırma
+description: Yerel makinenizde U-SQL işlerini çalıştırmak için Visual Studio için Azure Veri Göl Araçlarını nasıl kullanacağınızı öğrenin.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,102 +11,102 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62113944"
 ---
-# <a name="run-u-sql-scripts-on-your-local-machine"></a>U-SQL betiklerini yerel makinenizde çalıştırma
+# <a name="run-u-sql-scripts-on-your-local-machine"></a>Yerel makinenizde U-SQL komut dosyaları çalıştırma
 
-U-SQL betikleri geliştirme, betikleri yerel olarak çalışan tarafından zaman ve para harcamazsınız kaydedebilirsiniz. Visual Studio için Azure Data Lake araçları yerel makinenizde çalışan bir U-SQL betikleri destekler. 
+U-SQL komut dosyaları geliştirdiğinizde, komut dosyalarını yerel olarak çalıştırarak zamandan ve masrafdan tasarruf edebilirsiniz. Visual Studio için Azure Veri Gölü Araçları, yerel makinenizde U-SQL komut dosyaları çalıştırmayı destekler. 
 
-## <a name="basic-concepts-for-local-runs"></a>Yerel çalışmalar için temel kavramlar
+## <a name="basic-concepts-for-local-runs"></a>Yerel çalıştırmalar için temel kavramlar
 
-Aşağıdaki grafikte bileşenleri yerel çalıştırma ve bu bileşenler çalıştırma buluta nasıl eşleştiği gösterilir.
+Aşağıdaki grafik, yerel çalıştırma bileşenlerini ve bu bileşenlerin bulutla nasıl eşleştiğini gÜ
 
-|Bileşen|Yerel çalıştırma|Bulutta çalıştırın|
+|Bileşen|Yerel çalıştırma|Bulut çalıştırma|
 |---------|---------|---------|
-|Depolama|Yerel veri kök klasörü|Varsayılan Azure Data Lake Store hesabı|
-|İşlem|U-SQL yerel çalıştırma altyapısı|Azure veri Gölü analiz hizmeti|
-|Çalışma ortamı|Yerel makinede çalışma dizini|Azure Data Lake Analytics küme|
+|Depolama|Yerel veri kökü klasörü|Varsayılan Azure Veri Gölü Deposu hesabı|
+|İşlem|U-SQL yerel çalıştırma motoru|Azure Veri Gölü Analytics hizmeti|
+|Çalışma ortamı|Yerel makinede çalışma dizini|Azure Veri Gölü Analizi kümesi|
 
-Aşağıdaki bölümlerde, yerel çalışma bileşenleri hakkında daha fazla bilgi sağlar.
+İzleyen bölümler yerel çalışan bileşenleri hakkında daha fazla bilgi sağlar.
 
-### <a name="local-data-root-folders"></a>Yerel veri kök klasörleri
+### <a name="local-data-root-folders"></a>Yerel veri kökü klasörleri
 
-Bir yerel veri kök klasörü bir **yerel depo** hesabı için yerel işlem. Yerel makinenizde yerel dosya sistemi herhangi bir klasörde bir yerel veri kök klasör olabilir. Bu varsayılan Azure Data Lake Store hesabını Data Lake Analytics hesabı ile aynı olur. Farklı veri kök klasörüne geçiş için farklı varsayılan bir depolama hesabı yalnızca değiştirme gibi olur. 
+Yerel veri kökü klasörü, yerel bilgi işlem hesabı için yerel bir **depodur.** Yerel makinenizdeki yerel dosya sistemindeki herhangi bir klasör yerel veri kökü klasörü olabilir. Bu, bir Veri Gölü Analizi hesabının varsayılan Azure Veri Gölü Deposu hesabıyla aynıdır. Farklı bir veri kökü klasörüne geçmek, farklı bir varsayılan depo hesabına geçmek gibidir. 
 
-Verileri kök klasörü şu şekilde kullanılır:
-- Meta veri Store. Veritabanı, tablolar, tablo değerli işlevler ve derlemeleri verilebilir.
-- U-SQL betikleri göreli yollar olarak tanımlanan giriş ve çıkış yol arayın. Göreli yolları'nı kullanarak U-SQL betiklerinizi Azure'a dağıtmak daha kolay olur.
+Veri kökü klasörü aşağıdaki gibi kullanılır:
+- Meta verileri depolayın. Örnekler veritabanları, tablolar, tablo değerli işlevler ve derlemeler vardır.
+- U-SQL komut dosyalarında göreli yollar olarak tanımlanan giriş ve çıkış yollarına bakın. Göreli yolları kullanarak U-SQL komut dosyalarınızı Azure'a dağıtmak daha kolaydır.
 
-### <a name="u-sql-local-run-engines"></a>U-SQL yerel altyapıları çalıştırın
+### <a name="u-sql-local-run-engines"></a>U-SQL yerel çalışma motorları
 
-Bir U-SQL yerel çalıştırma altyapısı bir **yerel işlem hesabı** U-SQL işleri için. Kullanıcılar U-SQL işleri için Visual Studio Azure Data Lake araçları yerel olarak çalıştırabilirsiniz. Yerel çalışmalar da Azure Data Lake U-SQL SDK komut satırı ve programlama arabirimleri desteklenir. Daha fazla bilgi edinin [Azure Data Lake U-SQL SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/).
+U-SQL yerel çalıştırma altyapısı, U-SQL işleri için yerel bir **işlem hesabıdır.** Kullanıcılar U-SQL işlerini Visual Studio için Azure Veri Gölü Araçları aracılığıyla yerel olarak çalıştırabilir. Yerel çalıştırmalar, Azure Veri Gölü U-SQL SDK komut satırı ve programlama arabirimleri aracılığıyla da desteklenir. Azure Veri [Gölü U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)hakkında daha fazla bilgi edinin.
 
-### <a name="working-directories"></a>Çalışma dizini
+### <a name="working-directories"></a>Çalışma dizinleri
 
-U-SQL betiğini çalıştırdığınızda, bir çalışma dizininiz derleme sonuçlarını önbelleğe alma, günlükleri çalıştırmak ve diğer işlevleri gerçekleştirmek için gereklidir. Azure Data Lake araçları Visual Studio için çalışma dizini U-SQL projenin çalışma dizinidir. Altında bulunan `<U-SQL project root path>/bin/debug>`. Çalışma dizini, her seferinde yeni bir çalıştırma tetiklenen temizlendiği.
+Bir U-SQL komut dosyası çalıştırdığınızda, derleme sonuçlarını önbelleğe almak, günlükleri çalıştırmak ve diğer işlevleri gerçekleştirmek için çalışan bir dizin klasörü gerekir. Visual Studio için Azure Veri Gölü Araçları'nda çalışma dizini U-SQL projesinin çalışma dizinidir. Altında yer `<U-SQL project root path>/bin/debug>`alır. Çalışma dizini, her yeni çalıştırma tetikleninher olduğunda temizlenir.
 
-## <a name="local-runs-in-microsoft-visual-studio"></a>Microsoft Visual Studio yerel çalıştırma
+## <a name="local-runs-in-microsoft-visual-studio"></a>Microsoft Visual Studio'da yerel çalıştırmalar
 
-Visual Studio için Azure Data Lake araçları, yerleşik bir yerel çalışma altyapısı vardır. Araçları, yerel işlem hesabı olarak altyapısı yüzey. U-SQL betiğini yerel olarak çalıştırmak için seçin **yerel makine** veya **yerel proje** hesabında betik Düzenleyici kenar boşluğu açılan menüsü. Ardından **Gönder**.
+Visual Studio için Azure Veri Gölü Araçları'nın yerleşik yerel çalışma motoru vardır. Araçlar motoru yerel bir işlem hesabı olarak yüzeye çıkar. Bir U-SQL komut dosyasını yerel olarak çalıştırmak için, komut dosyasının düzenleyici kenar boşluğu açılır menüsünde **Yerel makine** veya **Yerel proje** hesabını seçin. Ardından **Gönder'i**seçin.
 
-![Yerel bir hesap için bir U-SQL betiği Gönder](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
+![Yerel bir hesaba U-SQL komut dosyası gönderme](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
  
-## <a name="local-runs-with-a-local-machine-account"></a>Yerel bir yerel makine hesabı ile çalışır
+## <a name="local-runs-with-a-local-machine-account"></a>Yerel makine hesabıyla yerel çalıştırmalar
 
-A **yerel makine** hesabı, paylaşılan bir yerel hesap tek bir yerel veri kök klasör yerel depolama hesabı ile işlem. Verileri kök klasörü varsayılan konumunda yer **C:\Users\<kullanıcıadı > \AppData\Local\USQLDataRoot**. Ayrıca aracılığıyla yapılandırılabilir **Araçları** > **Data Lake** > **seçenekler ve ayarlar**.
+**Yerel makine** hesabı, yerel mağaza hesabı olarak tek bir yerel veri kökü klasörüne sahip paylaşılan yerel bir işlem hesabıdır. Varsayılan olarak, veri kökü klasörü **C:\Kullanıcılar\<kullanıcı adı>\AppData\Local\USQLDataRoot**adresinde bulunur. Ayrıca **Araçlar** > **Veri Gölü** > **Seçenekleri ve Ayarları**ile yapılandırılabilir.
 
-![Yerel veri kök klasörünü yapılandırmak](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
+![Yerel veri kökü klasörünü yapılandırma](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   
-U-SQL projesi yerel çalıştırma için gereklidir. U-SQL projenin çalışma dizini, U-SQL yerel çalıştırma için çalışma dizini olarak kullanılır. Derleme sonuçları, günlükler ve diğer iş çalıştırma ile ilgili dosyaları çalıştırın oluşturulur ve yerel çalıştırma sırasında çalışma dizini klasörü altında depolanır. Betiği yeniden her zaman, çalışma dizinindeki tüm dosyalar temizlenmesi ve yeniden oluşturuldu.
+Yerel bir çalıştırma için bir U-SQL projesi gereklidir. U-SQL projesinin çalışma dizini, U-SQL yerel çalışma dizini için kullanılır. Derleme sonuçları, çalışma günlükleri ve diğer iş çalıştırma ile ilgili dosyalar oluşturulur ve yerel çalışma sırasında çalışma dizini klasörü altında depolanır. Komut dosyasını her yeniden çalıştırdığınızda, çalışma dizinindeki tüm dosyalar temizlenir ve yeniden oluşturulur.
 
-## <a name="local-runs-with-a-local-project-account"></a>Yerel bir proje yerel hesabı ile çalışır
+## <a name="local-runs-with-a-local-project-account"></a>Yerel proje hesabıyla yerel çalıştırmalar
 
-A **yerel proje** hesabı, proje yalıtılmış bir yerel hesabı bir ayrılmış yerel verileri kök klasörü ile her proje için işlem. Visual Studio'daki Çözüm Gezgini'nde açar her etkin bir U-SQL projesi karşılık gelen sahip `(Local-project: <project name>)` hesabı. Hesaplar, hem Visual Studio sunucu Gezgini'nde hem de U-SQL betiği Düzenleyici kenar listelenir.  
+**Yerel proje** hesabı, yalıtılmış yerel veri kökü klasörü olan her proje için proje yalıtılmış yerel bir bilgi işlem hesabıdır. Visual Studio'da Solution Explorer'da açılan her etkin `(Local-project: <project name>)` U-SQL projesinin karşılık gelen bir hesabı vardır. Hesaplar Visual Studio'daki Sunucu Gezgini'nde ve U-SQL komut dosyası düzenleyicisi kenar boşluğunda listelenir.  
 
-**Yerel proje** hesabı, açık ve yalıtılmış bir geliştirme ortamı sağlar. A **yerel makine** hesabının yerel tüm işler için meta verileri ve girdi ve çıktı verilerini depolayan bir yerel paylaşılan veri kök klasörü vardır. Ancak bir **yerel proje** hesabı geçici yerel veri kök klasör bir U-SQL projesi çalışma dizini altında bir U-SQL betiği her çalıştırıldığında oluşturur. Bu geçici verileri kök klasörü bir yeniden oluşturma, temizlenmesi veya yeniden olur. 
+**Yerel proje** hesabı temiz ve yalıtılmış bir geliştirme ortamı sağlar. **Yerel makine** hesabı, tüm yerel işler için meta verileri ve giriş ve çıktı verilerini depolayan paylaşılan bir yerel veri kökü klasörüne sahiptir. Ancak **Yerel proje** hesabı, u-SQL komut dosyası her çalıştırılsa u-SQL proje çalışma dizininin altında geçici bir yerel veri kökü klasörü oluşturur. Bu geçici veri kökü klasörü yeniden oluşturma veya yeniden çalıştırma olduğunda temizlenir. 
 
-U-SQL projesi bir proje başvurusu ve özelliği aracılığıyla yalıtılmış yerel çalıştırma ortamını yönetir. Hem proje hem de veritabanı ortamlarında, U-SQL betikleri için giriş veri kaynaklarını yapılandırabilirsiniz.
+U-SQL projesi, yalıtılmış yerel çalışma ortamını bir proje başvurusu ve özelliği aracılığıyla yönetir. Hem projede hem de başvurulan veritabanı ortamlarında U-SQL komut dosyalarının giriş veri kaynaklarını yapılandırabilirsiniz.
 
-### <a name="manage-the-input-data-source-for-a-local-project-account"></a>Giriş veri kaynağı için bir yerel proje hesabı yönetme 
+### <a name="manage-the-input-data-source-for-a-local-project-account"></a>Yerel proje hesabının giriş veri kaynağını yönetme 
 
-U-SQL projesi yerel verileri kök klasörü oluşturur ve veriler için ayarlar bir **yerel proje** hesabı. Geçici verileri kök klasörü temizlenmesi ve yeniden oluşturma ve yerel çalıştırma her zaman U-SQL projesi çalışma dizininin altına yeniden. U-SQL projesi tarafından yapılandırılan tüm veri kaynakları, yerel bir işi çalıştırmadan önce bu geçici bir yerel veri kök klasörüne kopyalanır. 
+U-SQL projesi yerel bir veri kökü klasörü oluşturur ve **Yerel proje** hesabı için veri ayarlar. Geçici bir veri kökü klasörü temizlenir ve u-SQL proje çalışma dizini altında yeniden yeniden oluşturma ve yerel çalışma her gerçekleştiğinde yeniden oluşturulur. U-SQL projesi tarafından yapılandırılan tüm veri kaynakları, yerel iş çalıştırmadan önce bu geçici yerel veri kökü klasörüne kopyalanır. 
 
-Veri kaynaklarınızı kök klasörüne yapılandırabilirsiniz. Sağ **U-SQL projesi** > **özelliği** > **Test verisi kaynağı**. Bir U-SQL betiği çalıştırıldığında bir **yerel proje** hesabı, tüm dosyaları ve alt klasörlerinde **Test verisi kaynağı** klasörünü, geçici bir yerel veri kök klasörüne kopyalanır. Alt klasör altındaki dosyalar eklenir. Yerel bir işi çalıştıktan sonra çıktı sonuçları da geçici yerel verileri kök klasörü altında proje çalışma dizininde bulunabilir. Bu çıkış silinir ve projeyi yeniden ve Temizlenen temizlendi. 
+Veri kaynaklarınızın kök klasörünü yapılandırabilirsiniz. Sağ tıklayın **U-SQL projesi** > **Özellik** > **Test Veri Kaynağı**. **Yerel proje** hesabında bir U-SQL komut dosyası çalıştırdığınızda, Test **Veri Kaynağı** klasöründeki tüm dosyalar ve alt klasörler geçici yerel veri kökü klasörüne kopyalanır. Alt klasörlerin altındaki dosyalar dahildir. Yerel bir iş çalıştırdıktan sonra, çıktı sonuçları proje çalışma dizinindeki geçici yerel veri kökü klasörü altında da bulunabilir. Proje yeniden oluşturulup temizlendiğinde tüm bu çıktı silinir ve temizlenir. 
 
-![Bir projenin test veri kaynağını yapılandırma](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
+![Projenin test veri kaynağını yapılandırma](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
-### <a name="manage-a-referenced-database-environment-for-a-local-project-account"></a>Yönetmek için bir veritabanı ortam bir **yerel proje** hesabı 
+### <a name="manage-a-referenced-database-environment-for-a-local-project-account"></a>Yerel proje hesabı için başvurulan veritabanı **ortamını** yönetme 
 
-Bir U-SQL kullanır veya U-SQL veritabanı nesnelerini sorgularla sorgularsanız, yerel olarak U-SQL betiğini yerel olarak çalıştırmadan önce veritabanı ortamları hazır vermeniz gerekir. İçin bir **yerel proje** hesabı, U-SQL veritabanı bağımlılıkları U-SQL projesi başvuruları tarafından yönetilebilir. U-SQL veritabanı projesi başvuruları, U-SQL projesine ekleyebilirsiniz. U-SQL betiklerini çalıştırma önce bir **yerel proje** hesabı, başvurulan tüm veritabanları, geçici bir yerel veri kök klasörüne dağıtılır. Ve her çalıştırma için yeni bir yalıtılmış ortamın geçici verileri kök klasörü temizlendiği.
+Bir U-SQL sorgusu U-SQL veritabanı nesneleri kullanır veya sorgular, u-SQL komut dosyası yerel olarak çalıştırmadan önce veritabanı ortamları yerel olarak hazır hale getirmeniz gerekir. Yerel **proje** hesabı için U-SQL veritabanı bağımlılıkları U-SQL proje başvuruları tarafından yönetilebilir. U-SQL projenize U-SQL veritabanı proje referansları ekleyebilirsiniz. **Yerel proje** hesabında U-SQL komut dosyalarını çalıştırmadan önce, başvurulan tüm veritabanları geçici yerel veri kökü klasörüne dağıtılır. Ve her çalışma için, geçici veri kökü klasörü yeni bir yalıtılmış ortam olarak temizlenir.
 
 Bu ilgili makaleye bakın:
-* U-SQL veritabanı tanımları ve başvuruları yönetmeyi öğrenin [U-SQL veritabanı projeleri](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+* [U-SQL veritabanı projelerinde](data-lake-analytics-data-lake-tools-develop-usql-database.md)U-SQL veritabanı tanımlarını ve başvurularını nasıl yöneteceklerini öğrenin.
 
-## <a name="the-difference-between-local-machine-and-local-project-accounts"></a>Arasındaki fark **yerel makine** ve **yerel proje** hesapları
+## <a name="the-difference-between-local-machine-and-local-project-accounts"></a>**Yerel makine** ve **Yerel proje** hesapları arasındaki fark
 
-A **yerel makine** hesabı bir Azure Data Lake Analytics hesabı yerel kullanıcıların makinelerindeki benzetimini yapar. Bu, bir Azure Data Lake Analytics hesabı ile aynı deneyimi paylaşır. A **yerel proje** hesabı, bir kullanıcı dostu yerel geliştirme ortamı sağlar. Bu ortamda veritabanı başvurular ve komut dosyaları yerel olarak çalışan önce giriş verileri dağıtmak kullanıcılara yardımcı olur. A **yerel makine** hesabı, tüm projeleri erişilebilen paylaşılan kalıcı bir ortam sağlar. A **yerel proje** hesabı, her proje için bir yalıtılmış bir geliştirme ortamı sağlar. Her çalıştırma için yenilenir. A **yerel proje** hesabı hızla yeni değişiklikleri uygulayarak daha hızlı bir geliştirme deneyimi sunar.
+**Yerel makine** hesabı, kullanıcıların yerel makinelerinde bir Azure Veri Gölü Analizi hesabı simüle eder. Aynı deneyimi bir Azure Veri Gölü Analytics hesabıyla paylaşır. **Yerel proje** hesabı, kullanıcı dostu bir yerel geliştirme ortamı sağlar. Bu ortam, kullanıcıların komut dosyalarını yerel olarak çalıştırmadan önce veritabanı başvurularını dağıtmasına ve veri girişine yardımcı olur. **Yerel makine** hesabı, tüm projeler aracılığıyla erişilebilen paylaşılan kalıcı bir ortam sağlar. **Yerel proje** hesabı, her proje için yalıtılmış bir geliştirme ortamı sağlar. Her koşu için yenilenir. **Yerel proje** hesabı, hızlı bir şekilde yeni değişiklikler uygulayarak daha hızlı bir geliştirme deneyimi sunar.
 
-Daha fazla farklılıklardan **yerel makine** ve **yerel proje** hesapları aşağıdaki tabloda gösterilmiştir:
+**Yerel makine** ve Yerel **proje** hesapları arasındaki diğer farklar aşağıdaki tabloda gösterilmiştir:
 
-|Fark açısı|Yerel Makine|Yerel proje|
+|Fark açısı|Yerel makine|Yerel proje|
 |----------------|---------------|---------------|
-|Yerel erişim|Tüm projeleri tarafından erişilebilir.|Bu hesap yalnızca ilgili projeye erişebilirsiniz.|
-|Yerel veri kök klasörü|Kalıcı bir yerel klasör. Aracılığıyla yapılandırılan **Araçları** > **veri Gölü** > **seçenekler ve ayarlar**.|Çalışma dizini U-SQL projesi altındaki her yerel çalıştırma için oluşturulan geçici bir klasör. Klasörü bir yeniden oluşturma, temizlenen veya yeniden olur.|
-|Giriş verileri için bir U-SQL betiği|Kalıcı yerel veri kök klasörü altında göreli yol.|Aracılığıyla ayarlanan **U-SQL projesi özelliğini** > **Test verisi kaynağı**. Tüm dosya ve alt yerel çalıştırma önce geçici veri kök klasörüne kopyalanır.|
-|Çıktı verileri için bir U-SQL betiği|Göreli yol kalıcı yerel veri kök klasörü altında.|Geçici verileri kök klasörü çıkışı. Sonuçları bir yeniden oluşturma, temizlenmesi veya yeniden olur.|
-|Başvurulan veritabanı dağıtımı|Başvurulan veritabanlarını olmayan dağıtılan otomatik olarak karşı çalıştırırken bir **yerel makine** hesabı. Bir Azure Data Lake Analytics hesabına göndermek için aynı olacak.|Başvurulan veritabanlarını dağıtıldığı **yerel proje** önce otomatik olarak bir yerel çalıştırma hesabı. Tüm veritabanı ortamları temizlenmesi ve yeniden oluşturma, yeniden veya yeniden olur.|
+|Yerel erişim|Tüm projeler tarafından erişilebilir.|Bu hesaba yalnızca ilgili proje erişebilir.|
+|Yerel veri kökü klasörü|Kalıcı bir yerel klasör. **Araçlar** > **Veri Gölü** > **Seçenekleri ve Ayarları**ile yapılandırıldı.|U-SQL proje çalışma dizini altında her yerel çalıştırma için oluşturulan geçici bir klasör. Yeniden oluşturma veya yeniden çalıştırma olduğunda klasör temizlenir.|
+|U-SQL komut dosyası için giriş verileri|Kalıcı yerel veri kökü klasörü altında göreli yol.|**U-SQL proje özelliği** > **Test Veri Kaynağı**üzerinden ayarlayın. Tüm dosyalar ve alt klasörler yerel çalışmadan önce geçici veri kökü klasörüne kopyalanır.|
+|U-SQL komut dosyası için çıktı verileri|Kalıcı yerel veri kökü klasörü altında göreli yol.|Geçici veri kökü klasörüne çıktı. Yeniden oluşturma veya yeniden çalıştırma gerçekleştiğinde sonuçlar temizlenir.|
+|Başvurulan veritabanı dağıtımı|Başvurulan veritabanları **Yerel makine** hesabına karşı çalışırken otomatik olarak dağıtılan değildir. Bir Azure Veri Gölü Analytics hesabına göndermek için de geçerlidir.|Başvurulan veritabanları yerel çalışmadan önce yerel **proje** hesabına otomatik olarak dağıtılır. Yeniden oluşturma veya yeniden çalıştırma gerçekleştiğinde tüm veritabanı ortamları temizlenir ve yeniden dağıtılır.|
 
-## <a name="a-local-run-with-the-u-sql-sdk"></a>Bir yerel U-SQL SDK'sı ile çalışma
+## <a name="a-local-run-with-the-u-sql-sdk"></a>U-SQL SDK ile yerel bir çalışma
 
-U-SQL betikleri Visual Studio'da yerel olarak çalıştırın ve ayrıca U-SQL betiklerini komut satırı ve programlama arabirimleri ile yerel olarak çalıştırmak için Azure Data Lake U-SQL SDK'yı kullanın. Bu arabirimler U-SQL yerel çalıştırma ve testleri otomatik hale getirebilirsiniz.
+U-SQL komut dosyalarını Visual Studio'da yerel olarak çalıştırabilir ve Komut satırı ve programlama arabirimleriyle U-SQL komut dosyalarını yerel olarak çalıştırmak için Azure Veri Gölü U-SQL SDK'yı da kullanabilirsiniz. Bu arabirimler aracılığıyla, U-SQL yerel çalıştırmaları ve testlerini otomatikleştirebilirsiniz.
 
-Daha fazla bilgi edinin [Azure Data Lake U-SQL SDK'sı](data-lake-analytics-u-sql-sdk.md).
+Azure Veri [Gölü U-SQL SDK](data-lake-analytics-u-sql-sdk.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Data Lake Analytics için bir CI/CD işlem hattı ayarlayın nasıl](data-lake-analytics-cicd-overview.md).
-- [Azure Data Lake Analytics kodunuzu test etmek nasıl](data-lake-analytics-cicd-test.md).
+- [Azure Veri Gölü Analitiği için BIR CI/CD ardışık yapı kurulumu nasıl.](data-lake-analytics-cicd-overview.md)
+- [Azure Veri Gölü Analizi kodunuzu nasıl test emilir?](data-lake-analytics-cicd-test.md)

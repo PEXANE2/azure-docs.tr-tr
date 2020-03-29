@@ -1,48 +1,48 @@
 ---
-title: Azure Stream Analytics 'de yapılandırılabilir eşik tabanlı kurallar
-description: Bu makalede, Azure Stream Analytics ' de yapılandırılabilir eşik tabanlı kurallara sahip bir uyarı çözümüne ulaşmak için başvuru verilerinin nasıl kullanılacağı açıklanır.
+title: Azure Akış Analizi'nde yapılandırılabilir eşik tabanlı kurallar
+description: Bu makalede, Azure Akış Analizi'nde yapılandırılabilir eşik tabanlı kuralları olan bir uyarı çözümü elde etmek için başvuru verilerinin nasıl kullanılacağı açıklanmaktadır.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75369720"
 ---
-# <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Azure Stream Analytics 'de yapılandırılabilir eşik tabanlı kuralları işleme
-Bu makalede, Azure Stream Analytics ' de yapılandırılabilir eşik tabanlı kurallar kullanan bir uyarı çözümüne ulaşmak için başvuru verilerinin nasıl kullanılacağı açıklanır.
+# <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Azure Akış Analizi'nde işlenebilir eşik tabanlı kuralları işleme
+Bu makalede, Azure Akış Analizi'nde yapılandırılabilir eşik tabanlı kuralları kullanan bir uyarı çözümü elde etmek için başvuru verilerinin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>Senaryo: ayarlanabilir kural eşiklerine göre uyarı
-Gelen akış olayları belirli bir değere ulaştığında veya gelen akış olaylarını temel alan toplanmış bir değer belirli bir eşiği aştığında çıkış olarak bir uyarı oluşturmanız gerekebilir. Değeri, sabit ve önceden belirlenmiş bir statik eşikle karşılaştırılan Stream Analytics bir sorgu ayarlamak basittir. Sabit bir eşik, basit sayısal karşılaştırmalar (büyüktür, küçüktür ve eşitlik) kullanılarak akış sorgusu sözdizimine sabit kodlanmış olabilir.
+## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>Senaryo: Ayarlanabilir kural eşiklerine göre uyarı
+Gelen akışlı olaylar belirli bir değere ulaştığında veya gelen akışlı olaylara dayalı toplu bir değer belirli bir eşiği aştığında çıktı olarak bir uyarı oluşturmanız gerekebilir. Değeri sabit ve önceden belirlenmiş statik bir eşikle karşılaştıran bir Akış Analizi sorgusu ayarlamak kolaydır. Sabit bir eşik, basit sayısal karşılaştırmalar (daha büyük, daha az ve eşitlik) kullanılarak akış sorgusu sözdizimine sabit kodlanabilir.
 
-Bazı durumlarda, eşik değerlerinin her değişiklik yaptığı her seferinde sorgu söz dizimi düzenlenmeden daha kolay yapılandırılabilir olması gerekir. Diğer durumlarda, her bir cihaz türü üzerinde farklı bir eşik değeri bulunan her biriyle aynı sorgu tarafından işlenen çok sayıda cihaza veya kullanıcıya ihtiyacınız olabilir. 
+Bazı durumlarda, eşik değeri her değiştiğinde sorgu sözdizimini düzenlemeden eşik değerlerinin daha kolay yapılandırılabilir olması gerekir. Diğer durumlarda, her biri aygıt türünde farklı eşik değerlerine sahip olan aynı sorgu tarafından işlenen çok sayıda aygıt veya kullanıcıgerekebilir. 
 
-Bu model eşiklerini dinamik olarak yapılandırmak için kullanılabilir, giriş verilerini filtreleyerek eşiğin hangi türde bir cihaza uygulanacağını seçmeli olarak seçin ve çıkışa dahil edilecek alanları seçmeli olarak seçin.
+Bu desen, eşikleri dinamik olarak yapılandırmak, giriş verilerini filtreleyerek eşiğin hangi tür bir aygıt la uygulanabileceğini seçerek seçmek ve çıktıya hangi alanların dahil edileceğini seçerek seçebilir.
 
-## <a name="recommended-design-pattern"></a>Önerilen tasarım kalıbı
-Uyarı eşiklerinin bir araması olarak bir Stream Analytics işine bir başvuru verileri girişi kullanın:
-- Eşik değerlerini, anahtar başına bir değer olan başvuru verilerinde depolayın.
-- Akış verileri giriş olaylarını anahtar sütunundaki başvuru verilerine katın.
-- Eşik değeri olarak başvuru verilerinden anahtarlı değeri kullanın.
+## <a name="recommended-design-pattern"></a>Önerilen tasarım deseni
+Bir Akış Analizi işine başvuru veri girişini uyarı eşiklerinin bir araması olarak kullanın:
+- Eşik değerlerini başvuru verilerinde, anahtar başına bir değer olarak depolayın.
+- Akış veri giriş olaylarını anahtar sütundaki başvuru verilerine katılın.
+- Başvuru verilerinden gelen anahtarlı değeri eşik değeri olarak kullanın.
 
 ## <a name="example-data-and-query"></a>Örnek veri ve sorgu
-Örnekte, bir dakikalık bir penceredeki cihazlardan gelen veri akışı toplamı başvuru verileri olarak sağlanan kuraldaki belirlenen değerlerle eşleştiğinde uyarılar oluşturulur.
+Örnekte, bir dakika süren bir pencerede aygıtlardan gelen verilerin toplamı, referans verisi olarak sağlanan kuralda öngörülen değerlerle eşleştiğinde uyarılar oluşturulur.
 
-Sorguda, her DeviceID için ve DeviceID altındaki her bir metricName için 0 ile 5 arasında bir boyut yapılandırabilirsiniz. Yalnızca karşılık gelen filtre değerlerine sahip olaylar gruplandırılır. Gruplandırıldıktan sonra, en az, en fazla, ortalama olan pencereli toplamalar 60 saniyelik bir pencere penceresinde hesaplanır. Bu durumda, uyarı çıktı olayını oluşturmak için, toplanmış değerler üzerindeki filtreler, başvurudaki yapılandırılan eşiğe göre hesaplanır.
+Sorguda, her deviceId ve deviceId altındaki her metricName için 0'dan 5'e kadar boyutları GROUP BY'ye yapılandırabilirsiniz. Yalnızca karşılık gelen filtre değerlerine sahip olaylar gruplandırılır. Gruplandıktan sonra, Min, Max, Avg'nin pencereli toplamları 60 saniyelik bir yuvarlanma penceresi üzerinden hesaplanır. Daha sonra, uyarı çıktısı olayını oluşturmak için, toplanan değerlerüzerindeki filtreler başvuruda yapılandırılan eşiğe göre hesaplanır.
 
-Örnek olarak, **Rules**adlı bir başvuru veri girişi ve **ölçüm**adlı akış veri girişi olan Stream Analytics bir iş olduğunu varsayalım. 
+Örnek olarak, **adlandırılmış kurallar**adlandırılmış bir referans veri girişi ve akış veri girişi adı verilen **ölçümlere**sahip bir Akış Analizi işi olduğunu varsayalım. 
 
-## <a name="reference-data"></a>Başvuru verileri
-Bu örnek başvuru verileri, eşik tabanlı bir kuralın nasıl temsil edileceğini gösterir. JSON dosyası başvuru verilerini barındırır ve Azure Blob depolama alanına kaydedilir ve bu blob depolama kapsayıcısı, **kurallar**adlı bir başvuru veri girişi olarak kullanılır. Bu JSON dosyasının üzerine yazabilir ve kural yapılandırmasını, akış işini durdurmadan veya başlatmadan zaman ile değiştirin.
+## <a name="reference-data"></a>Referans verileri
+Bu örnek başvuru verileri, eşik tabanlı bir kuralın nasıl gösterilebildiğini gösterir. Bir JSON dosyası başvuru verilerini tutar ve Azure blob depolamasına kaydedilir ve bu blob depolama **kapsayıcısı, kural**adlı bir başvuru veri girişi olarak kullanılır. Bu JSON dosyasının üzerine yazabilir ve akış işini durdurmadan veya başlatmadan zaman geçtikçe kural yapılandırmasını değiştirebilirsiniz.
 
-- Örnek kural, CPU aşıldığı zaman ayarlanabilir bir uyarı temsil etmek için kullanılır (ortalama değer değerinden büyük veya buna eşitse) yüzde `90`. `value` alanı gerektiği şekilde yapılandırılabilir.
-- Kuralın, daha sonra `AVGGREATEROREQUAL`sorgu sözdiziminde dinamik olarak yorumlanan bir **operatör** alanına sahip olduğuna dikkat edin. 
-- Kural, belirli bir boyut anahtarındaki verileri `C1`değer ile `2` filtreler. Diğer alanlar, giriş akışının bu olay alanları tarafından filtreleneceğini belirten boş bir dizedir. Gerektiğinde diğer eşleşen alanları filtrelemek için ek CPU kuralları ayarlayabilirsiniz.
-- Tüm sütunlar çıkış uyarı olayına dahil edilmez. Bu durumda `2` `includedDim` anahtar numarası, akıştaki olay verilerinin 2 numaralı alanın uygun çıkış olaylarına dahil edileceğini göstermek için `TRUE` açıktır. Diğer alanlar, uyarı çıktısına dahil değildir, ancak alan listesi ayarlanabilir.
+- Örnek kural, CPU değer `90` yüzdesini aştığında (ortalama daha büyük veya eşit) ayarlanabilir bir uyarıyı temsil etmek için kullanılır. Alan `value` gerektiği gibi yapılandırılabilir.
+- Kuralın, daha sonra sorgu sözdiziminde dinamik olarak yorumlanan `AVGGREATEROREQUAL`bir **işleç** alanı olduğuna dikkat edin. 
+- Kural, belirli bir boyut anahtarındaki `2` verileri `C1`değerle filtreler. Diğer alanlar, giriş akışını bu olay alanları tarafından filtrelemememi belirten boş dizedir. Gerektiğinde diğer eşleşen alanları filtrelemek için ek CPU kuralları ayarlayabilirsiniz.
+- Tüm sütunlar çıktı uyarısı olayına dahil edilmez. Bu durumda, `includedDim` akıştaki olay verilerinin 2 numaralı alan numarasını temsil edecek şekilde anahtar numarası `2` açık `TRUE` olur. Diğer alanlar uyarı çıktısı dahil edilmez, ancak alan listesi ayarlanabilir.
 
 
 ```json
@@ -71,7 +71,7 @@ Bu örnek başvuru verileri, eşik tabanlı bir kuralın nasıl temsil edileceğ
 ```
 
 ## <a name="example-streaming-query"></a>Örnek akış sorgusu
-Bu örnek Stream Analytics sorgu yukarıdaki örnekteki **kuralların** başvuru verilerine, **ölçümler**adlı verilerin giriş akışına katılır.
+Bu örnek Akış Analizi sorgusu, yukarıdaki örnekten, **ölçümler**adlı bir veri girişi akışına, **kurallar** referans verilerini birleştirir.
 
 ```sql
 WITH transformedInput AS
@@ -131,14 +131,14 @@ HAVING
     )
 ```
 
-## <a name="example-streaming-input-event-data"></a>Örnek akış girişi olay verileri
-Bu örnek JSON verileri, yukarıdaki akış sorgusunda kullanılan **ölçüm** giriş verilerini temsil eder. 
+## <a name="example-streaming-input-event-data"></a>Örnek akış giriş olay verileri
+Bu örnek, JSON verileri, yukarıdaki akış sorgusunda kullanılan **ölçümler** giriş verilerini temsil eder. 
 
-- Üç örnek olay 1 dakikalık TimeSpan, değer `T14:50`içinde listelenir. 
-- Üçü de aynı `deviceId` değerine sahiptir `978648`.
-- CPU ölçüm değerleri her olay, `98`, `95``80` sırasıyla değişir. Yalnızca ilk iki olay, kuralda belirlenen CPU uyarısı kuralını aşıyor.
-- Uyarı kuralındaki ıncludedim alanı 2 numaralı önemli sayıdır. Örnek olaylardaki karşılık gelen anahtar 2 alanı `NodeName`olarak adlandırılmıştır. Üç örnek olay, sırasıyla `N024`, `N024`ve `N014` değerlere sahiptir. Çıktıda yalnızca düğüm `N024`, yalnızca yüksek CPU için uyarı ölçütleriyle eşleşen tek veri olduğunu görürsünüz. `N014` yüksek CPU eşiğini karşılamıyor.
-- Uyarı kuralı, örnek olaylardaki `cluster` alanına karşılık gelen, yalnızca 2 numaralı anahtar numarasında `filter` ile yapılandırılır. Tüm üç örnek olay `C1` değerine sahiptir ve filtre ölçütlerine göre eşleşir.
+- Üç örnek olaylar 1 dakikalık zaman açıklığı `T14:50`içinde listelenir, değer. 
+- Üçünün de `deviceId` değeri `978648`aynı.
+- CPU metrik değerleri her olay, `95` `80` `98`, , sırasıyla değişir. Yalnızca ilk iki örnek olay, kuralda belirlenen CPU uyarı kuralını aşar.
+- Uyarı kuralındaki includeDim alanı 2 numaralı anahtardı. Örnek olaylardaki karşılık gelen anahtar `NodeName`2 alanı nın adı . Üç örnek olayın `N024`değerleri `N024`, `N014` , ve sırasıyla var. Çıktıda, yalnızca düğümü `N024` yüksek CPU uyarı ölçütleri ile eşleşen tek veri olarak görürsünüz. `N014`yüksek CPU eşiğini karşılamaz.
+- Uyarı kuralı, örnek olaylardaki `filter` `cluster` alana karşılık gelen yalnızca 2 numaralı anahtarla yapılandırılır. Üç örnek olayın tümü `C1` değere sahiptir ve filtre ölçütleri ile eşleşir.
 
 ```json
 {
@@ -281,8 +281,8 @@ Bu örnek JSON verileri, yukarıdaki akış sorgusunda kullanılan **ölçüm** 
 }
 ```
 
-## <a name="example-output"></a>Örnek çıkış
-Bu örnek çıkış JSON verileri, başvuru verilerinde tanımlanan CPU eşik kuralına göre tek bir uyarı olayının üretildiğini gösterir. Çıkış olayı, uyarının adının yanı sıra değerlendirilen alanların toplanmış (Average, min, Max) adını içerir. Çıkış olayı verileri, kural yapılandırması nedeniyle, alan anahtar numarası 2 `NodeName` değeri `N024` içerir. (JSON, okunabilirlik için satır sonlarını göstermek üzere değiştirilmiştir.)
+## <a name="example-output"></a>Örnek çıktı
+Bu örnek çıktı JSON verileri, başvuru verilerinde tanımlanan CPU eşik kuralına dayalı olarak tek bir uyarı olayının üretildiğini gösterir. Çıktı olayı, uyarının adının yanı sıra düşünülen alanların toplamının (ortalama, min, max) yanı sıra içerir. Çıktı olay verileri kural yapılandırması nedeniyle alan anahtar sayısı 2 `NodeName` değeri `N024` içerir. (JSON okunabilirlik için satır sonları göstermek için değiştirildi.)
 
 ```JSON
 {"time":"2018-05-01T02:03:00.0000000Z","deviceid":"978648","ruleid":1234,"metric":"CPU",

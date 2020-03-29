@@ -1,5 +1,5 @@
 ---
-title: Amazon Web Services ile kimlik doğrulamasını yapılandırma
+title: Amazon Web Hizmetleri ile Kimlik Doğrulamayı Yapılandırma
 description: Bu makale, AWS kaynaklarını yöneten Azure Automation'daki runbook'lar için bir AWS kimlik bilgisinin nasıl oluşturulup doğrulandığı açıklanmaktadır.
 keywords: aws kimlik doğrulaması, aws yapılandırma
 services: automation
@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
 ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75366949"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Amazon Web Hizmetleri ile Kimlik Doğrulaması Runbook'ları
@@ -20,13 +20,13 @@ Amazon Web Hizmetleri’ndeki (AWS) kaynaklarla ortak görevlerin otomatikleşti
 * Bir AWS aboneliği ve bir dizi kimlik bilgisi. Özellikle AWS Erişim Anahtarınız ve Gizli Anahtarınız. Daha fazla bilgi için [AWS Kimlik Bilgilerini Kullanma](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html) makalesini gözden geçirin.
 * Bir Azure aboneliği ve Automation hesabı.
 
-AWS kullanarak kimlik doğrulamak için, Azure Automation’dan çalışan runbook’larınızın kimliklerini doğrulamak amacıyla bir dizi AWS kimlik bilgisi belirtmeniz gerekir. Zaten oluşturulmuş bir Otomasyon hesabınız varsa ve AWS ile kimlik doğrulamak için bunu kullanmak istiyorsanız, aşağıdaki bölümdeki adımları izleyebilirsiniz: AWS kaynaklarını hedefleyen runbook 'lar için bir hesap atamak istiyorsanız, önce yeni bir [Otomasyon hesabı](automation-offering-get-started.md) oluşturmanız (hizmet sorumlusu oluşturmak için bu seçeneği atlayın) ve aşağıdaki adımları kullanmanız gerekir:
+AWS kullanarak kimlik doğrulamak için, Azure Automation’dan çalışan runbook’larınızın kimliklerini doğrulamak amacıyla bir dizi AWS kimlik bilgisi belirtmeniz gerekir. Zaten bir Otomasyon hesabınız oluşturulduysa ve bunu AWS ile doğrulamak için kullanmak istiyorsanız, aşağıdaki bölümdeki adımları izleyebilirsiniz: AWS kaynaklarını hedefleyen runbook'lar için bir hesap ayırmak istiyorsanız, önce yeni bir [Otomasyon hesabı](automation-offering-get-started.md) oluşturmanız gerekir (hizmet anapara oluşturma seçeneğini atlayın) ve aşağıdaki adımları kullanmalısınız:
 
 ## <a name="configure-automation-account"></a>Automation hesabı yapılandırma
 
 Azure Otomasyonu için, AWS ile iletişim kurmak amacıyla önce AWS kimlik bilgilerinizi almanız ve bunları Azure Otomasyonu’nda varlıklar olarak depolamanız gerekir. Erişim Anahtarı oluşturmak için [AWS Hesabınız için Erişim Anahtarlarını Yönetme](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) AWS belgesinde belgelenen aşağıdaki adımları uygulayın ve **Erişim Anahtarı Kimliği** ve **Gizli Erişim Anahtarı**’nı kopyalayın (isteğe bağlı olarak, anahtar dosyanızı güvenli bir yerde saklamak için indirin).
 
-AWS güvenlik anahtarlarınızı oluşturup kopyaladıktan sonra, bunları güvenli bir şekilde depolamak ve runbook’larınızla bunlara başvurmak için Azure Otomasyonu hesabıyla bir Kimlik Bilgisi hesabı oluşturmanız gerekir. [Azure Otomasyonu makalesindeki kimlik bilgileri varlıkları](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) bölümünde **Yeni bir kimlik bilgisi oluşturmak** ve aşağıdaki bilgileri girmek için bölümündeki adımları izleyin:
+AWS güvenlik anahtarlarınızı oluşturup kopyaladıktan sonra, bunları güvenli bir şekilde depolamak ve runbook’larınızla bunlara başvurmak için Azure Otomasyonu hesabıyla bir Kimlik Bilgisi hesabı oluşturmanız gerekir. Bölümdeki adımları izleyin: Azure Otomasyonu makalesinde [Kimlik Bilgileri varlıklarında](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) yeni bir kimlik bilgisi **oluşturmak** ve aşağıdaki bilgileri girmek için:
 
 1. **Ad** kutusuna **AWScred** veya adlandırma standartlarınıza uygun bir değer girin.
 2. **Kullanıcı adı** kutusuna kendinize ait **Erişim Kimliği**'ni yazın; **Gizli Erişim Anahtarı**'nı da **Parola** ve **Parolayı Onayla** kutusuna girin.

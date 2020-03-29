@@ -1,7 +1,7 @@
 ---
-title: Grafana kullanarak NSG akış günlüklerini yönetme
+title: Grafana'yı kullanarak NSG Akış Günlüklerini Yönetme
 titleSuffix: Azure Network Watcher
-description: Ağ Izleyicisi ve Grafana kullanarak Azure 'da ağ güvenlik grubu akış günlüklerini yönetin ve çözümleyin.
+description: Ağ İzleyicisi ve Grafana'yı kullanarak Azure'daki Ağ Güvenliği Grubu Akış Günlüklerini yönetin ve analiz edin.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -15,55 +15,55 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
 ms.openlocfilehash: c48d5a02cdb8ef63904642c6c2c76cb5d61e1f9d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840919"
 ---
-# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Ağ Izleyicisi ve Grafana kullanarak ağ güvenlik grubu akış günlüklerini yönetme ve çözümleme
+# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Ağ İzleyicisi ve Grafana'yı kullanarak Ağ Güvenliği Grubu akış günlüklerini yönetme ve analiz
 
-[Ağ güvenlik grubu (NSG) akış günlükleri](network-watcher-nsg-flow-logging-overview.md) , ağ arabirimlerinde giriş ve çıkış IP trafiğini anlamak için kullanılabilecek bilgiler sağlar. Bu akış günlükleri, NSG kural temelinde giden ve gelen akışları gösterir, akışın akış (kaynak/hedef IP 'si, kaynak/hedef bağlantı noktası, protokol) hakkında, 5 demet bilgileri için geçerli olduğu ve trafiğe izin veriliyorsa veya reddedildiyse.
+[Ağ Güvenlik Grubu (NSG) akış günlükleri,](network-watcher-nsg-flow-logging-overview.md) ağ arabirimlerindeki IP trafiğini anlamak ve çıkmak için kullanılabilecek bilgiler sağlar. Bu akış günlükleri, NSG kural bazında giden ve gelen akışları gösterir, akış için geçerli nic, akış hakkında 5-tuple bilgi (Kaynak/Hedef IP, Kaynak/Hedef Bağlantı Noktası, Protokol) ve trafiğe izin verildi yse veya reddedildiyse.
 
 > [!Warning]  
-> Aşağıdaki adımlar akış günlükleri sürüm 1 ile birlikte çalışır. Ayrıntılar için bkz. [ağ güvenlik grupları için akış günlüğüne giriş](network-watcher-nsg-flow-logging-overview.md). Aşağıdaki yönergeler, değişiklik yapılmadan günlük dosyalarının 2. sürümüyle birlikte çalışmayacaktır.
+> Aşağıdaki adımlar akış günlükleri sürüm 1 ile çalışır. Ayrıntılar için, [ağ güvenlik grupları için akış günlüğe giriş](network-watcher-nsg-flow-logging-overview.md)'e bakın. Aşağıdaki yönergeler, değişiklik yapılmadan günlük dosyalarının sürüm 2 ile çalışmaz.
 
-Ağınızda akış günlüğü etkin olan çok sayıda NSG 'niz olabilir. Bu günlük veri miktarı, günlüklerinizden daha fazla bilgi elde etmek ve bunların öngörülerini elde etmelerini sağlar. Bu makalede, açık kaynaklı sunucu tarafı veri işleme işlem hattı olan Grafana, açık kaynaklı bir grafik aracı, Elam araması, dağıtılmış arama ve analiz altyapısı ve Logstash kullanarak bu NSG akış günlüklerini merkezi olarak yönetmeye yönelik bir çözüm sunulmaktadır.  
+Akış günlüğü etkinleştirilmiş ağınızda birçok NSG'niz olabilir. Bu miktarda günlük veriayrıştırmak ve günlüklerinizden öngörüler elde etmek hantal hale getirir. Bu makalede, açık kaynak grafik aracı Grafana, dağıtılmış arama ve analiz motoru ElasticSearch ve açık kaynak sunucu tarafı veri işleme ardışık bir ardışık olan Logstash kullanarak bu NSG akış günlüklerini merkezi olarak yönetmek için bir çözüm sağlar.  
 
 ## <a name="scenario"></a>Senaryo
 
-NSG akış günlükleri, ağ Izleyicisi kullanılarak etkinleştirilir ve Azure Blob depolama alanında depolanır. Bir Logstash eklentisi, blob depolamadan akış günlüklerini bağlamak ve işlemek ve onları Elabi aramasına göndermek için kullanılır.  Akış günlükleri Elabi aramasında depolandıktan sonra, Grafana içinde özelleştirilmiş panolar halinde çözümlenebilirler ve görselleştirilir.
+NSG akış günlükleri Network Watcher kullanılarak etkinleştirilir ve Azure blob depolama alanında depolanır. Bir Logstash eklentisi blob depolamadan akış günlükleri bağlamak ve işlemek ve ElasticSearch bunları göndermek için kullanılır.  Akış günlükleri ElasticSearch'te depolandıktan sonra, grafana'da analiz edilebilir ve özelleştirilmiş panolara görselleştirilebilir.
 
-![NSG ağ Izleyicisi Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
+![NSG Ağ İzleyicisi Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
 
 ## <a name="installation-steps"></a>Yükleme adımları
 
-### <a name="enable-network-security-group-flow-logging"></a>Ağ güvenlik grubu akış günlüğünü etkinleştir
+### <a name="enable-network-security-group-flow-logging"></a>Ağ Güvenliği Grubu akış günlüğe kaydetmeyi etkinleştirme
 
-Bu senaryoda, hesabınızdaki en az bir ağ güvenlik grubunda ağ güvenlik grubu akış günlüğü 'nün etkin olması gerekir. Ağ güvenlik akışı günlüklerinin etkinleştirilmesi hakkındaki yönergeler için, [ağ güvenlik grupları için akış günlüğüne giriş konusuna giriş](network-watcher-nsg-flow-logging-overview.md)olarak aşağıdaki makaleye bakın.
+Bu senaryo için, hesabınızda en az bir Ağ Güvenlik Grubu'nda Ağ Güvenliği Grubu Akış Günlüğe Kaydetme özelliğine sahip olmalısınız. Ağ Güvenliği Akış Günlüklerini etkinleştirme yle ilgili talimatlar için, Ağ Güvenlik Grupları için akış günlüğü için aşağıdaki [makaleye Giriş'e](network-watcher-nsg-flow-logging-overview.md)bakın.
 
-### <a name="setup-considerations"></a>Kurulum konuları
+### <a name="setup-considerations"></a>Kurulumda dikkat edilecek noktalar
 
-Bu örnekte Grafana, Elaun Search ve Logstash, Azure 'da dağıtılan bir Ubuntu 16,04 LTS sunucusunda yapılandırılmıştır. Bu en düşük kurulum, üç bileşeni de çalıştırmak için kullanılır; hepsi aynı VM üzerinde çalışır. Bu kurulum yalnızca test ve kritik olmayan iş yükleri için kullanılmalıdır. Logstash, Elaun Search ve Grafana birçok örnek arasında bağımsız olarak ölçeklendirilmesi için kullanılabilir. Daha fazla bilgi için, bu bileşenlerin her biri için belgelere bakın.
+Bu örnekte Grafana, ElasticSearch ve Logstash, Azure'da dağıtılan bir Ubuntu 16.04 LTS Server üzerinde yapılandırılmıştır. Bu minimum kurulum üç bileşeni çalıştırmak için kullanılır – hepsi aynı VM üzerinde çalışır. Bu kurulum yalnızca sınama ve kritik olmayan iş yükleri için kullanılmalıdır. Logstash, Elasticsearch ve Grafana birçok örnekte bağımsız olarak ölçeklendirilecek şekilde tasarlanabilir. Daha fazla bilgi için bu bileşenlerin her biri için belgelere bakın.
 
-### <a name="install-logstash"></a>Logstash 'i yükler
+### <a name="install-logstash"></a>Logstash yükle
 
-JSON biçimli akış günlüklerini bir akış grubu düzeyine düzleştirmek için Logstash 'i kullanırsınız.
+JSON biçimlendirilmiş akış günlüklerini akış tuple düzeyine düzleştirmek için Logstash'ı kullanırsınız.
 
-1. Logstash 'i yüklemek için aşağıdaki komutları çalıştırın:
+1. Logstash'ı yüklemek için aşağıdaki komutları çalıştırın:
 
     ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
 
-2. Logstash 'i akış günlüklerini ayrıştırmak ve Elabi aramasına göndermek için yapılandırın. Şunu kullanarak bir Logstash. conf dosyası oluşturun:
+2. Akış günlüklerini ayrıştırmak ve ElasticSearch'e göndermek için Logstash'ı yapılandırın. Kullanarak bir Logstash.conf dosyası oluşturun:
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-3. Aşağıdaki içeriği dosyaya ekleyin. Depolama hesabı adını ve erişim anahtarını, depolama hesabı ayrıntılarınızı yansıtacak şekilde değiştirin:
+3. Aşağıdaki içeriği dosyaya ekleyin. Depolama hesabı bilgilerinizi yansıtacak şekilde depolama hesabı adını ve erişim anahtarını değiştirin:
 
    ```bash
     input {
@@ -137,27 +137,27 @@ JSON biçimli akış günlüklerini bir akış grubu düzeyine düzleştirmek i�
     }
    ```
 
-Girilen Logstash yapılandırma dosyası üç bölümden oluşur: giriş, filtre ve çıkış.
-Giriş bölümü, Logstash 'in işlem yapacağı günlüklerin giriş kaynağını belirler. Bu durumda, blob depolamada depolanan NSG akış günlüğü JSON dosyalarına erişebilmemizi sağlayacak bir "azureblob" giriş eklentisi (sonraki adımlarda yüklenir) kullanacağız. 
+Logstash config dosyası sağlanan üç bölümden oluşur: giriş, filtre ve çıktı.
+Giriş bölümü, Logstash'ın işleyecek günlüklerinin giriş kaynağını belirtir – bu durumda blob depolamada depolanan NSG akış günlüğü JSON dosyalarına erişmemizi sağlayacak bir "azureblob" giriş eklentisi (sonraki adımlarda yüklü) kullanacağız. 
 
-Filtre bölümü, her akış kayıt düzeninin ve ilişkili özelliklerinin ayrı bir Logstash olayı haline gelmesi için her akış günlük dosyasını düzleştirir.
+Filtre bölümü daha sonra her akış günlüğü dosyasını düzleştirir, böylece her bir akış tuple'ı ve ilişkili özellikleri ayrı bir Logstash olayı haline gelir.
 
-Son olarak, çıkış bölümü her bir Logstash olayını Elaksearch sunucusuna iletir. Logstash yapılandırma dosyasını özel gereksinimlerinize uyacak şekilde değiştirebilirsiniz.
+Son olarak, çıkış bölümü her Logstash olayını ElasticSearch sunucusuna iletilir. Logstash config dosyasını özel ihtiyaçlarınıza uyacak şekilde değiştirmekten çekinmeyin.
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Azure Blob depolama için Logstash giriş eklentisini yükler
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Azure Blob depolama için Logstash giriş eklentisini yükleme
 
-Bu Logstash eklentisi, akış günlüklerine belirlenen BLOB depolama hesabından doğrudan erişmenizi sağlar. Bu eklentiyi yüklemek için, varsayılan Logstash yükleme dizininden (Bu durumda/usr/share/logstash/bin) komutunu çalıştırın:
+Bu Logstash eklentisi, akış günlüklerine kendi belirlediği blob depolama hesabından doğrudan erişmenizi sağlar. Bu fişi yüklemek için, varsayılan Logstash yükleme dizininden (bu durumda /usr/share/logstash/bin) komutu çalıştırın:
 
 ```bash
 cd /usr/share/logstash/bin
 sudo ./logstash-plugin install logstash-input-azureblob
 ```
 
-Bu eklenti hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için Logstash girişi eklentisi](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+Bu eklenti hakkında daha fazla bilgi için [Azure Depolama Blobs için Logstash giriş eklentisi'ne](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)bakın.
 
-### <a name="install-elasticsearch"></a>Elaa aramasını yükleme
+### <a name="install-elasticsearch"></a>ElasticSearch'u Yükleyin
 
-Elaun Search yüklemek için aşağıdaki betiği kullanabilirsiniz. Elau aramasını yükleme hakkında daha fazla bilgi için bkz. [elastik yığın](https://www.elastic.co/guide/en/elastic-stack/current/index.html).
+ElasticSearch'u yüklemek için aşağıdaki komut dosyasını kullanabilirsiniz. ElasticSearch'ün yüklenmesi hakkında daha fazla bilgi için [Elastik Yığın'a](https://www.elastic.co/guide/en/elastic-stack/current/index.html)bakın.
 
 ```bash
 apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen -y
@@ -170,9 +170,9 @@ systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
 ```
 
-### <a name="install-grafana"></a>Grafana 'i yükler
+### <a name="install-grafana"></a>Grafana'yı yükleyin
 
-Grafana yüklemek ve çalıştırmak için aşağıdaki komutları çalıştırın:
+Grafana'yı yüklemek ve çalıştırmak için aşağıdaki komutları çalıştırın:
 
 ```bash
 wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.5.1_amd64.deb
@@ -181,29 +181,29 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-Ek yükleme bilgileri için bkz. [debir/Ubuntu 'A yükleme](https://docs.grafana.org/installation/debian/).
+Ek yükleme bilgileri için [Debian / Ubuntu'da yükleme](https://docs.grafana.org/installation/debian/)bölümüne bakın.
 
-#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Elaun Search sunucusunu bir veri kaynağı olarak ekleme
+#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Elastik Arama sunucusunu veri kaynağı olarak ekleme
 
-Ardından, akış günlüklerini içeren Elaun Search dizinini veri kaynağı olarak eklemeniz gerekir. **Veri kaynağı Ekle** ' ye tıklayarak ve ilgili bilgilerle formu tamamlayarak bir veri kaynağı ekleyebilirsiniz. Bu yapılandırmanın bir örneği aşağıdaki ekran görüntüsünde bulunabilir:
+Ardından, akış günlüklerini içeren ElasticSearch dizinini veri kaynağı olarak eklemeniz gerekir. **Veri kaynağı ekle'yi** seçerek ve formu ilgili bilgilerle tamamlayarak bir veri kaynağı ekleyebilirsiniz. Bu yapılandırmanın bir örneği aşağıdaki ekran görüntüsünde bulunabilir:
 
 ![Veri kaynağı ekleme](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>Pano oluşturma
 
-NSG akış günlükleri içeren Elam arama dizininden okumak üzere Grafana başarıyla yapılandırdığınıza göre, panoları oluşturabilir ve kişiselleştirebilirsiniz. Yeni bir pano oluşturmak için **ilk panonuzu oluştur**' u seçin. Aşağıdaki örnek grafik yapılandırmasında NSG kuralına göre bölünmüş akışlar gösterilmektedir:
+Grafana'yı NSG akış günlüklerini içeren ElasticSearch dizininden okuyacak şekilde başarıyla yapılandırdığınıza göre, panolar oluşturabilir ve kişiselleştirebilirsiniz. Yeni bir pano oluşturmak için **ilk panonu oluştur'u**seçin. Aşağıdaki örnek grafik yapılandırması NSG kuralına göre bölümlenen akışları gösterir:
 
 ![Pano grafiği](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 
-Aşağıdaki ekran görüntüsünde, üstteki akışlar ve bunların sıklığını gösteren bir grafik ve grafik gösterilmektedir. Akışlar Ayrıca NSG kuralı ve kararlara göre akışlar tarafından da gösterilir. Grafana, özel izleme gereksinimlerinize uyacak şekilde panolar oluşturmanız önerildiğinden, büyük ölçüde özelleştirilebilir. Aşağıdaki örnek tipik bir panoyu göstermektedir:
+Aşağıdaki ekran görüntüsü, üst akışları ve sıklıklarını gösteren bir grafik ve grafiği gösterir. Akışlar da NSG kuralı ve karar ile akışları tarafından gösterilir. Grafana son derece özelleştirilebilir, bu nedenle özel izleme ihtiyaçlarınıza uygun panolar oluşturmanız tavsiye edilir. Aşağıdaki örnekte tipik bir pano gösterilmektedir:
 
 ![Pano grafiği](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Sonuç
 
-Ağ İzleyicisini Elagr Search ve Grafana ile tümleştirerek, artık NSG akış günlüklerini ve diğer verileri yönetmek ve görselleştirmek için kullanışlı ve merkezi bir yola sahip olursunuz. Grafana, akış günlüklerini daha fazla yönetmek ve ağ trafiğinizi daha iyi anlamak için de kullanılabilen çeşitli güçlü grafikleme özelliklerine sahiptir. Artık bir Grafana örneği ayarlamış ve Azure 'a bağlı olduğunuza göre, sunduğu diğer işlevleri keşfetmeye devam edebilirsiniz.
+Network Watcher'ı ElasticSearch ve Grafana ile entegre ederek, artık NSG akış günlüklerini ve diğer verileri yönetmek ve görselleştirmek için kullanışlı ve merkezi bir yol elde elabilirsiniz. Grafana, akış günlüklerini daha fazla yönetmek ve ağ trafiğinizi daha iyi anlamak için de kullanılabilecek diğer güçlü grafik özelliklerine sahiptir. Artık Azure'a ayarlanmış ve bağlı bir Grafana örneğiniz olduğuna göre, sunduğu diğer işlevleri keşfetmeye devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ağ İzleyicisi](network-watcher-monitoring-overview.md)'ni kullanma hakkında daha fazla bilgi edinin.
+- [Ağ İzleyicisi'ni](network-watcher-monitoring-overview.md)kullanma hakkında daha fazla bilgi edinin.
 

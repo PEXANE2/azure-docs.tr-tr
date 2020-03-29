@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory karma kimlik tasarım konuları - genel bakış | Microsoft Docs
-description: Genel bakış ve içerik haritasını karma kimlik tasarım konuları Kılavuzu
+title: Azure Active Directory karma kimlik tasarımı ile ilgili hususlar - genel bakış | Microsoft Dokümanlar
+description: Karma Kimlik tasarımı konuları kılavuzuna genel bakış ve içerik haritası
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,52 +17,52 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381488"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory Karma Kimlik Tasarımı ile İlgili Dikkat Edilmesi Gerekenler
-Tüketici tabanlı cihazların Kurumsal dünyasında proliferating ve bulut tabanlı hizmet olarak yazılım (SaaS) uygulamaları benimsemek kolaydır. Sonuç olarak, kullanıcıların uygulama erişimi denetimini iç veri merkezlerinden ve bulut platformları arasında koruma zorludur.  
+Tüketici tabanlı cihazlar kurumsal dünyayı çoğaltır ve bulut tabanlı hizmet olarak yazılım (SaaS) uygulamalarını benimsemek kolaydır. Sonuç olarak, kullanıcıların uygulama erişimlerinin iç veri merkezleri ve bulut platformları arasında denetimini sağlamak zordur.  
 
-Microsoft’un kimlik çözümleri şirket içi ve bulut tabanlı çözümleri birleştirerek konumdan bağımsız olarak tüm kaynaklara kimlik doğrulaması ve yetkilendirme sağlamak üzere tek bir kullanıcı kimliği oluşturur. Bu kavram, karma kimlik bilinir. Bazı durumda, hangi birleşimin en iyi saptamak zor olabilir ve Microsoft çözümleri kullanarak karma kimlik için yapılandırma seçenekleri, kuruluşunuzun gereksinimlerini karşılamak ve farklı tasarım vardır. 
+Microsoft’un kimlik çözümleri şirket içi ve bulut tabanlı çözümleri birleştirerek konumdan bağımsız olarak tüm kaynaklara kimlik doğrulaması ve yetkilendirme sağlamak üzere tek bir kullanıcı kimliği oluşturur. Bu kavram Hibrid Kimlik olarak bilinir. Microsoft çözümlerini kullanarak karma kimlik için farklı tasarım ve yapılandırma seçenekleri vardır ve bazı durumlarda hangi kombinasyonun kuruluşunuzun gereksinimlerini en iyi şekilde karşılaacağını belirlemek zor olabilir. 
 
-Bu karma kimlik tasarım konuları Kılavuzu nasıl karma kimlik çözümü tasarlamak için iş gereksinimlerine ve teknoloji, kuruluşunuzun gereksinimlerini anlamanıza yardımcı olur.  Bu kılavuzda, bir dizi adım ve kuruluşunuzun benzersiz gereksinimlerini karşılayan bir karma kimlik çözümü tasarlamanıza yardımcı olması için izleyebileceğiniz ayrıntıları verilmektedir. Adımlar ve görevler boyunca Kılavuzu ilgili teknolojileri sunmak ve işlevsel ve hizmet kalitesi (kullanılabilirlik, ölçeklenebilirlik, performans, yönetilebilirlik ve güvenlik gibi) karşılamak için kuruluşların kullanabileceği seçenekleri özellik düzeyi gereksinimleri. 
+Bu Karma Kimlik Tasarımı Konuları Kılavuzu, kuruluşunuz için iş ve teknoloji gereksinimlerine en uygun karma kimlik çözümünüzü nasıl tasarlayacağınızı anlamanıza yardımcı olur.  Bu kılavuz, kuruluşunuzun benzersiz gereksinimlerini karşılayan karma kimlik çözümü tasarlamanıza yardımcı olmak için izleyebileceğiniz bir dizi adımı ve görevi ayrıntılarıyla anlatır. Kılavuz, adımlar ve görevler boyunca, işlevsel ve hizmet kalitesini (kullanılabilirlik, ölçeklenebilirlik, performans, yönetilebilirlik ve güvenlik gibi) karşılamak üzere kuruluşların kullanabileceği ilgili teknolojileri ve özellik seçeneklerini sunacak Gereksinim -leri. 
 
-Özellikle, aşağıdaki soruları yanıtlamak için karma kimlik tasarım konuları Kılavuzu amaçları şunlardır: 
+Özellikle, hibrid kimlik tasarımı konuları kılavuz hedefleri aşağıdaki soruları cevaplamak için vardır: 
 
-* Hangi soruları isteyin ve en iyi gereksinimlerime bir karma kimlik özel tasarım bir teknoloji veya sorun alanı için yanıtlamam gerekiyor?
-* Teknoloji veya sorun alanı için bir karma kimlik çözümü tasarlamak için hangi etkinlikler dizisini tamamlamanız gerekir? 
-* Karşılayacak yardımcı olmak hangi karma kimlik teknolojisi ve yapılandırma seçenekleri mevcuttur? My iş için en iyi seçenek seçebilirsiniz gereksinimlerimi karşılamama Bu seçenekler nelerdir?
+* Gereksinimlerimi en iyi karşılayan bir teknoloji veya sorunlu etki alanı için hibrit kimliğe özgü bir tasarım sağlamak için hangi soruları sormam ve yanıtlamam gerekir?
+* Teknoloji veya sorunlu etki alanı için karma kimlik çözümü tasarlamak için hangi etkinlik dizisini tamamlamalıyım? 
+* Gereksinimlerimi karşılamama yardımcı olacak hangi karma kimlik teknolojisi ve yapılandırma seçenekleri mevcuttur? İşim için en iyi seçeneği seçebilmek için bu seçenekler arasındaki dengeler nelerdir?
 
-## <a name="who-is-this-guide-intended-for"></a>Bu kılavuz kimin için tasarlanmıştır?
- CIO, CITO, baş kimlik mimarları, Kurumsal mimarlar ve orta ölçekli veya büyük kuruluşlarda bir karma kimlik çözümü tasarlamaktan sorumlu olan BT mimarları.
+## <a name="who-is-this-guide-intended-for"></a>Bu kılavuz kime yöneliktir?
+ CIO, CITO, Baş Kimlik Mimarlar, Kurumsal Mimarlar ve BT Mimarlar orta veya büyük kuruluşlar için bir hibrid kimlik çözümü tasarımı ndan sorumludur.
 
 ## <a name="how-can-this-guide-help-you"></a>Bu kılavuz size nasıl yardımcı olabilir?
-Bir bulut tabanlı kimlik yönetimi sistemi geçerli şirket içi kimlik çözümünüzle tümleştirerek bir karma kimlik çözümünün nasıl tasarlanacağını anlamak için bu kılavuzu kullanabilirsiniz. 
+Bulut tabanlı kimlik yönetim sistemini mevcut şirket içi kimlik çözümünüzle tümleştirebilen karma kimlik çözümünüzü niçin tasarlayacağınızı anlamak için bu kılavuzu kullanabilirsiniz. 
 
-Aşağıdaki grafikte, BT yöneticileri, kullanıcıların geçerli Windows Server Active Directory bulunan şirket içi çözüm Microsoft Azure Active kullanın (çoklu oturum açma olanağı dizini ile tümleştirme yönetmenizi sağlayan bir karma kimlik çözümü bir örnek gösterilmektedir. SSO) Bulut ve şirket içinde bulunan uygulamalar arasında.
+Aşağıdaki grafik, BT Yöneticilerinin kullanıcıların Tek Oturum Açma (Tek Oturum Açma) kullanabilmeleri için şirket içinde bulunan mevcut Windows Server Active Directory çözümlerini Microsoft Azure Active Directory ile entegre etmeyi başarmasını sağlayan karma kimlik çözümlerini örnek olarak gösterir( SSO) bulutta ve şirket içinde bulunan uygulamalar arasında.
 
 ![Örnek](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
 
-Yukarıdaki çizimde, son kullanıcı kimlik doğrulama işlemi için tek bir deneyim sunmak için ve kolaylaştırmak için şirket içi özelliklerle tümleştirilen bulut Hizmetleri yararlanan karma kimlik çözümü örneğidir BT bu yönetme kaynaklar. Bu örnekte yaygın bir senaryo olsa da, her kuruluşun karma kimlik tasarımı farklı gereksinimler nedeniyle Şekil 1'de gösterilen örnekten farklı olabilir. 
+Yukarıdaki örnek, son kullanıcı kimlik doğrulama işlemine tek bir deneyim sağlamak ve BT'nin bunları yönetmesini kolaylaştırmak için şirket içi özelliklerle tümleştirmek için bulut hizmetlerinden yararlanan karma kimlik çözümüne bir örnektir. Kaynak. Bu örnek yaygın bir senaryo olsa da, her kuruluşun karma kimlik tasarımı, farklı gereksinimler nedeniyle Şekil 1'de gösterilen örnekten farklı olabilir. 
 
-Bu kılavuz, bir dizi adım ve kuruluşunuzun benzersiz gereksinimlerini karşılayan bir karma kimlik çözümü tasarlamak için izleyebileceğiniz sağlar. Aşağıdaki adımlar ve görevler boyunca kılavuzda, işlevsel ve kuruluşunuz için hizmet kalite düzeyi gereksinimlerini karşılamak için ilgili teknolojiler ve özellik seçenekleri sunulmaktadır.
+Bu kılavuz, kuruluşunuzun benzersiz gereksinimlerini karşılayan karma kimlik çözümü tasarlamak için izleyebileceğiniz bir dizi adım ve görev sağlar. Aşağıdaki adımlar ve görevler boyunca kılavuz, kuruluşunuz için işlevsel ve hizmet kalitesi düzeyi gereksinimlerini karşılamak için kullanabileceğiniz ilgili teknolojileri ve özellik seçeneklerini sunar.
 
-**Varsayımlar**: Windows Server, Active Directory Domain Services ve Azure Active Directory ile ilgili biraz deneyim var. Bu belgede, bu çözümleri kendi başına veya tümleşik bir çözüm içinde iş ihtiyaçlarınızı nasıl karşılayabileceğini aradığınız varsayılır.
+**Varsayımlar**: Windows Server, Active Directory Domain Services ve Azure Active Directory ile ilgili bazı deneyiminiz vardır. Bu belgede, bu çözümlerin iş ihtiyaçlarınızı kendi başlarına veya entegre bir çözümle nasıl karşılayabildiğini aradığınız varsayılır.
 
 ## <a name="design-considerations-overview"></a>Tasarım konularına genel bakış
-Bu belge, bir dizi adım ve gereksinimlerinize en uygun karma kimlik çözümü tasarlamak için izleyebileceğiniz sağlar. Adımlar sıralı halde verilmiştir. Sonraki adımlarda öğreneceğiniz tasarım konuları, önceki adımlarda, Bununla birlikte, çakışan tasarım seçimlerine nedeniyle kararları değiştirmenizi gerektirebilir. Her girişimde, belge boyunca olası tasarım çakışmaları konusunda sizi uyarmak için. 
+Bu belge, gereksinimlerinizi en iyi karşılayan karma kimlik çözümü tasarlamak için izleyebileceğiniz adımlar ve görevler kümesi sağlar. Adımlar sıralı halde verilmiştir. Ancak, daha sonraki adımlarda öğrendiğiniz tasarım konuları, çakışan tasarım seçenekleri nedeniyle önceki adımlarda aldığınız kararları değiştirmenizi gerektirebilir. Belge boyunca olası tasarım çakışmaları konusunda sizi uyarmak için her girişimde bulunular. 
 
-Tüm belge konuları için gereken sayıda adım yalnızca yineleme sonra en iyi gereksinimlerinizi karşılayan tasarıma ulaşırsınız. 
+Yalnızca gerekli adımları belgedeki tüm hususları birleştirmek için gerekli olduğu kadar çok kez yineledikten sonra gereksinimlerinizi en iyi şekilde karşılayan tasarıma ulaşabilirsiniz. 
 
-| Karma kimlik aşaması | Konu listesi |
+| Karma Kimlik Aşaması | Konu Listesi |
 | --- | --- |
-| Kimlik gereksinimlerini belirleme |[İş gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Dizin eşitleme gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Çok faktörlü kimlik doğrulama gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Karma kimlik benimseme stratejinizi tanımlayın](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
-| Aracılığıyla güçlü kimlik çözümü veri güvenliği iyileştirmeyi planlama |[Veri koruma gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [İçerik Yönetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Erişim denetimi gereksinimleri belirleme](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Olay yanıtı gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Veri koruma stratejisini tanımlayın](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
-| Hibrit kimlik yaşam döngüsünü planlama |[Karma kimlik yönetimi görevleri belirleme](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Eşitleme Yönetimi](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Karma kimlik yönetimini benimseme stratejinizi belirleme](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
+| Kimlik gereksinimlerini belirleme |[İş gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Dizin eşitleme gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Çok faktörlü kimlik doğrulama gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Karma kimlik benimseme stratejisi tanımlayın](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
+| Güçlü kimlik çözümü ile veri güvenliğini artırma planı |[Veri koruma gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [İçerik yönetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Erişim denetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Olay yanıtı gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Veri koruma stratejisini tanımlama](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
+| Hibrit kimlik yaşam döngüsünü planlama |[Karma kimlik yönetimi görevlerini belirleme](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Senkronizasyon Yönetimi](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Karma kimlik yönetimi benimseme stratejisini belirleme](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-[Kimlik gereksinimleri belirleme](plan-hybrid-identity-design-considerations-business-needs.md)
+[Kimlik gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-business-needs.md)
 

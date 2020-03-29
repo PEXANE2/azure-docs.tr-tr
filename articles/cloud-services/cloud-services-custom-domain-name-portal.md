@@ -1,6 +1,6 @@
 ---
-title: Cloud Services bir özel etki alanı adı yapılandırma | Microsoft Docs
-description: DNS ayarlarını yapılandırarak, Azure uygulamanızı veya verilerinizi özel bir etki alanında internet 'te kullanıma sunma hakkında bilgi edinin.  Bu örnekler Azure portal kullanır.
+title: Bulut Hizmetlerinde özel bir etki alanı adı yapılandırma | Microsoft Dokümanlar
+description: DNS ayarlarını yapılandırarak Azure uygulamanızı veya verilerinizi özel bir etki alanında internete nasıl maruz bırakabilirsiniz öğrenin.  Bu örnekler Azure portalını kullanır.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,133 +9,133 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386808"
 ---
-# <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure bulut hizmeti için özel etki alanı adı yapılandırma
-Bir bulut hizmeti oluşturduğunuzda, Azure onu **cloudapp.net**'in bir alt etki alanına atar. Örneğin, bulut hizmetiniz "contoso" olarak adlandırılmışsa, kullanıcılarınız uygulamanıza `http://contoso.cloudapp.net`gibi bir URL üzerinden erişebilir. Azure, bir sanal IP adresi de atar.
+# <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure bulut hizmeti için özel bir etki alanı adı yapılandırma
+Bir Bulut Hizmeti oluşturduğunuzda, Azure bu hizmeti **cloudapp.net**bir alt etki alanına atar. Örneğin, Bulut Hizmetinizin adı "contoso" ise, kullanıcılarınız uygulamanıza `http://contoso.cloudapp.net`. Azure ayrıca sanal bir IP adresi de atar.
 
-Bununla birlikte, uygulamanızı **contoso.com**gibi kendi etki alanı adınızla da kullanıma sunabilirsiniz. Bu makalede, bulut hizmeti Web rolleri için özel bir etki alanı adı ayırma veya yapılandırma açıklanmaktadır.
+Ancak, uygulamanızı **contoso.com**gibi kendi etki alanı adınıza da maruz bırakabilirsiniz. Bu makalede, Bulut Hizmeti web rolleri için özel bir etki alanı adı nasıl rezerve veya yapılandırma açıklanmaktadır.
 
-Hangi CNAME ve bir kaydın olduğunu zaten öğrensin mi? [Açıklamayı geçti](#add-a-cname-record-for-your-custom-domain).
+CNAME ve A kayıtlarının ne olduğunu zaten anlıyor musunuz? [Açıklamanın yanından atla.](#add-a-cname-record-for-your-custom-domain)
 
 > [!NOTE]
-> Bu görevdeki yordamlar Azure Cloud Services için geçerlidir. Uygulama Hizmetleri için bkz. [mevcut bir özel DNS adını Azure Web Apps eşleme](../app-service/app-service-web-tutorial-custom-domain.md). Depolama hesapları için bkz. [Azure Blob depolama uç noktanız için özel bir etki alanı adı yapılandırma](../storage/blobs/storage-custom-domain-name.md).
+> Bu görevdeki yordamlar Azure Bulut Hizmetleri için geçerlidir. Uygulama Hizmetleri için, [Varolan özel bir DNS adını Azure Web Uygulamaları'na eşleyin' e](../app-service/app-service-web-tutorial-custom-domain.md)bakın. Depolama hesapları için bkz. [Azure Blob depolama bitiş noktanız için özel bir etki alanı adı yapılandırın.](../storage/blobs/storage-custom-domain-name.md)
 > 
 > 
 
 <p/>
 
 > [!TIP]
-> Daha hızlı bir şekilde çalışmaya başlayın. yenı Azure [destekli izlenecek yolu](https://support.microsoft.com/kb/2990804)kullanın!  Özel bir etki alanı adının ilişkilendirilmesini ve Azure Cloud Services veya Azure Web siteleri ile iletişimin (SSL) güvenliğini sağlamaya olanak sağlar.
+> Daha hızlı gitmeye alış-Yenİ Azure [kılavuzlu gözden geçirme](https://support.microsoft.com/kb/2990804)yi kullanın!  Azure Bulut Hizmetleri veya Azure Web Siteleri ile özel bir etki alanı adı ve iletişimi (SSL) güvence altına alma gibi bir ilişki sağlar.
 > 
 > 
 
-## <a name="understand-cname-and-a-records"></a>CNAME ve A kayıtlarını anlayın
-CNAME (veya diğer ad kayıtları) ve bir kayıt, her ikisi de bir etki alanı adını belirli bir sunucuyla (veya bu durumda hizmette) ilişkilendirmenize olanak tanır, ancak farklı şekilde çalışır. Azure Cloud Services ile birlikte kullanılacak bir kayıt kullanırken göz önünde bulundurmanız gereken bazı belirli hususlar de vardır.
+## <a name="understand-cname-and-a-records"></a>CNAME ve A kayıtlarını anlama
+CNAME (veya diğer ad kayıtları) ve A kayıtları, etki alanı adını belirli bir sunucuyla (veya bu durumda hizmetle) ilişkilendirmenize olanak sağlar, ancak bunlar farklı çalışır. Azure Bulut hizmetlerine sahip Bir kaydı kullanırken hangisini kullanacağınıza karar vermeden önce göz önünde bulundurmanız gereken bazı özel noktalar da vardır.
 
-### <a name="cname-or-alias-record"></a>CNAME veya diğer ad kaydı
-CNAME kaydı, **contoso.com** veya **www\.contoso.com**gibi *belirli* bir etki alanını kurallı bir etki alanı adına eşleştirir. Bu durumda, kurallı etki alanı adı, Azure barındırılan uygulamanızın **[MyApp]. cloudapp. net** etki alanı adıdır. Bir kez oluşturulduktan sonra, CNAME **[MyApp]. cloudapp. net**için bir diğer ad oluşturur. CNAME girişi, **[MyApp]. cloudapp. net** HIZMETI 'nin IP adresine otomatik olarak çözümlenir, bu nedenle bulut hizmeti IP adresi değişirse herhangi bir işlem yapmanız gerekmez.
+### <a name="cname-or-alias-record"></a>CNAME veya Alias kaydı
+CNAME kaydı, **contoso.com** veya **\.www contoso.com**gibi *belirli* bir etki alanını kanonik bir etki alanı adıyla eşler. Bu durumda, kanonik alan adı Azure barındırılan uygulamanızın **[myapp].cloudapp.net** etki alanı adıdır. Oluşturulduktan sonra, CNAME **[myapp].cloudapp.net**için bir takma ad oluşturur. CNAME girişi **[myapp].cloudapp.net** hizmetinip adresine otomatik olarak çözülür, böylece bulut hizmetinin IP adresi değişirse herhangi bir işlem yapmanız gerekmez.
 
 > [!NOTE]
-> Bazı etki alanı kayıt şirketlerinde, yalnızca www\.contoso.com gibi bir CNAME kaydı kullanırken (contoso.com gibi kök adları değil) alt etki alanlarını eşlemenizi sağlar. CNAME kayıtları hakkında daha fazla bilgi için, kaydediciniz tarafından verilen belgelere, [CNAME kaydı üzerindeki Vikipedi entry](https://en.wikipedia.org/wiki/CNAME_record)veya [IETF etki alanı adları-uygulama ve belirtim](https://tools.ietf.org/html/rfc1035) belgesine bakın.
+> Bazı etki alanı kayıt şirketleri, alt alan adlarını yalnızca www\.contoso.com gibi bir CNAME kaydı nı kullanırken eşlemenizin yanı contoso.com gibi kök adları değil. CNAME kayıtları hakkında daha fazla bilgi için kayıt şirketiniz tarafından sağlanan belgelere, [CNAME kaydındaki Vikipedi girişine](https://en.wikipedia.org/wiki/CNAME_record)veya [IETF Alan Adları - Uygulama ve Belirtim](https://tools.ietf.org/html/rfc1035) belgesine bakın.
 
 ### <a name="a-record"></a>Bir kayıt
-*A* kaydı, **contoso.com** veya **www\.contoso.com**gibi bir etki alanını veya **\*. contoso.com**gibi bir *joker etki alanını* bir IP adresine eşler. Azure bulut hizmeti söz konusu olduğunda hizmetin sanal IP 'si. Bu nedenle, CNAME kaydı üzerinden bir kaydın ana avantajı, **mail.contoso.com**, **login.contoso.com**veya **www\.contso.com**gibi birden çok alt etki alanı için istekleri işleyecek \* **. contoso.com**gibi bir joker karakter kullanan bir girişiniz olabilir.
+*Kayıt,* **contoso.com** veya **www\.contoso.com**gibi bir etki alanını veya IP adresine ** \*.contoso.com**gibi *bir joker alan adı* ile eşler. Azure Bulut Hizmeti durumunda, hizmetin sanal IP'si. Yani bir CNAME kaydı üzerinden bir kaydın ana yararı, **mail.contoso.com**, **login.contoso.com**veya \* **www\.contso.com**gibi birden fazla alt etki alanı için isteklerini işleyeceğini **.contoso.com**gibi bir joker karakter kullanan bir giriş olabilir.
 
 > [!NOTE]
-> Bir kayıt bir statik IP adresiyle eşlendiğinden, bulut hizmetinizin IP adresine yapılan değişiklikler otomatik olarak çözümlenemiyor. Bulut hizmetiniz tarafından kullanılan IP adresi, boş bir yuvaya (üretim ya da hazırlama) ilk kez dağıttığınızda ayrılır. Yuva için dağıtımı silerseniz, IP adresi Azure tarafından serbest bırakılır ve yuvaya yönelik gelecekteki dağıtımlar yeni bir IP adresi olarak verilebilir.
+> A kaydı statik bir IP adresine eşlenediğinden, Bulut Hizmetinizin IP adresindeki değişiklikleri otomatik olarak çözemez. Bulut Hizmetiniz tarafından kullanılan IP adresi, boş bir yuvaya ilk dağıtımınızda (üretim veya evreleme) tahsis edilir. Yuva için dağıtımı silerseniz, IP adresi Azure tarafından yayımlanır ve gelecekte yuvaya yapılacak dağıtımlara yeni bir IP adresi verilebilir.
 > 
-> Kolayca, belirli bir dağıtım yuvasının (üretim veya hazırlama) IP adresi, hazırlama ve üretim dağıtımları arasında takas edildiğinde veya var olan bir dağıtımın yerinde yükseltmesini gerçekleştirirken kalıcı hale getirilir. Bu eylemleri gerçekleştirme hakkında daha fazla bilgi için bkz. [Cloud Services 'i yönetme](cloud-services-how-to-manage-portal.md).
+> Uygun olarak, belirli bir dağıtım yuvasının (üretim veya hazırlama) IP adresi, evreleme ve üretim dağıtımları arasında geçiş yaparken veya varolan bir dağıtımın yerinde yükseltmesini gerçekleştirirken kalıcıdır. Bu eylemleri gerçekleştirme hakkında daha fazla bilgi için [bulut hizmetlerini nasıl yönetebilirsiniz'e](cloud-services-how-to-manage-portal.md)bakın.
 > 
 > 
 
-## <a name="add-a-cname-record-for-your-custom-domain"></a>Özel etki alanınız için bir CNAME kaydı ekleyin
-Bir CNAME kaydı oluşturmak için, kaydediciniz tarafından sunulan araçları kullanarak özel etki alanınız için DNS tablosuna yeni bir giriş eklemeniz gerekir. Her kaydedici, bir CNAME kaydı belirtmenin benzer ancak biraz farklı bir yöntemine sahiptir ancak kavramlardır.
+## <a name="add-a-cname-record-for-your-custom-domain"></a>Özel etki alanınız için CNAME kaydı ekleme
+CNAME kaydı oluşturmak için, kayıt şirketiniz tarafından sağlanan araçları kullanarak özel etki alanınız için DNS tablosuna yeni bir giriş eklemeniz gerekir. Her kayıt şirketi cname kaydı belirtmebenzer ama biraz farklı bir yönteme sahiptir, ancak kavramlar aynıdır.
 
-1. Bulut hizmetinize atanan **. cloudapp.net** etki alanı adını bulmak için aşağıdaki yöntemlerden birini kullanın.
+1. Bulut hizmetinize atanan **.cloudapp.net** alan adını bulmak için bu yöntemlerden birini kullanın.
 
-   * [Azure Portal]oturum açın, bulut hizmetinizi seçin, **genel bakış** bölümüne BAKıN ve ardından **site URL** girişini bulun.
+   * [Azure portalına]giriş yapın, bulut hizmetinizi seçin, **Genel Bakış** bölümüne bakın ve ardından **Site URL** girişini bulun.
 
-       ![Site URL 'sini gösteren hızlı bakış bölümü][csurl]
+       ![site URL'sini gösteren hızlı bakış bölümü][csurl]
 
-       **VEYA**
-   * [Azure PowerShell](/powershell/azure/overview)'i yükleyip yapılandırın ve ardından aşağıdaki komutu kullanın:
+       **Veya**
+   * [Azure Powershell'i](/powershell/azure/overview)yükleyin ve yapılandırın ve ardından aşağıdaki komutu kullanın:
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
        ```
 
-     Bir CNAME kaydı oluştururken ihtiyacınız olacağı için, her iki yöntem tarafından döndürülen URL 'de kullanılan etki alanı adını kaydedin.
-2. DNS Kaydedicinizin Web sitesinde oturum açın ve DNS yönetme sayfasına gidin. **Etki alanı adı**, **DNS**ya da **ad sunucusu yönetimi**olarak etiketlenmiş sitenin bağlantılarını veya bölgelerini arayın.
-3. Şimdi CNAME 'i seçebileceğiniz veya girebileceğiniz yerleri bulun. Açılan listeden kayıt türünü seçmeniz veya bir Gelişmiş ayarlar sayfasına gitmeniz gerekebilir. **CNAME**, **diğer ad**veya alt **etki alanları**sözcüklerini aramanız gerekir.
-4. Www **\.customdomain.com**için bir diğer ad oluşturmak ISTIYORSANıZ, CNAME için etki alanı veya alt etki alanı diğer adını da sağlamanız gerekir. Kök etki alanı için bir diğer ad oluşturmak istiyorsanız, kayıt Kaydedicinizin DNS araçlarındaki ' **\@** ' simgesi olarak listelenmiş olabilir.
-5. Daha sonra, bu durumda uygulamanızın **cloudapp.net** etki alanı olan kurallı bir ana bilgisayar adı sağlamanız gerekir.
+     CNAME kaydı oluştururken ihtiyacınız olacağı için, her iki yöntemle de döndürülen URL'de kullanılan alan adını kaydedin.
+2. DNS kayıt şirketinizin web sitesinde oturum açın ve DNS'yi yönetmek için sayfaya gidin. **Sitenin Alan Adı**, **DNS**veya Ad Sunucusu **Yönetimi**olarak etiketlenmiş bağlantılarını veya alanlarını arayın.
+3. Şimdi CNAME'leri seçebileceğiniz veya girebileceğiniz yeri bulun. Bir açılır yerden kayıt türünü seçmeniz veya gelişmiş ayarlar sayfasına gitmeniz gerekebilir. **CNAME,** **Diğer Ad**veya Alt Etki Alanları **sözcüklerini**aramalısınız.
+4. **Ayrıca, www\.** customdomain.com için bir takma ad oluşturmak **istiyorsanız, www** gibi CNAME için etki alanı veya alt etki alanı takma adı da sağlamanız gerekir. Kök etki alanı için bir takma ad oluşturmak istiyorsanız, kayıt**\@** şirketinizin DNS araçlarında ' ' simgesi olarak listelenebilir.
+5. Ardından, uygulamanızın bu durumda **cloudapp.net** etki alanı olan bir kanonik ana bilgisayar adı sağlamanız gerekir.
 
-Örneğin, aşağıdaki CNAME kaydı, tüm trafiği, dağıtılan uygulamanızın özel etki alanı adı olan **www\.contoso.com** 'ten **contoso.cloudapp.net**'e iletir:
+Örneğin, aşağıdaki CNAME **kaydı, wwwcontoso.comden\.** **contoso.cloudapp.net'a,** dağıtılmış uygulamanızın özel alan adı olan tüm trafiği iletir:
 
-| Diğer ad/ana bilgisayar adı/alt etki alanı | Kurallı etki alanı |
+| Diğer ad/Ana bilgisayar adı/Alt etki alanı | Kanonik etki alanı |
 | --- | --- |
 | www |contoso.cloudapp.net |
 
 > [!NOTE]
-> **Www\.contoso.com** ziyaretçisi, doğru ana bilgisayarı (contoso.cloudapp.net) hiçbir şekilde görmez, bu nedenle iletme işlemi son kullanıcı tarafından görünmez.
+> **Www\.contoso.com** bir ziyaretçigerçek ana bilgisayar (contoso.cloudapp.net) asla görmez, bu nedenle iletme işlemi son kullanıcı ya da görünmez.
 > 
-> Yukarıdaki örnek yalnızca **www** alt etki alanında yer alan trafiğe uygulanır. CNAME kayıtlarıyla joker karakter kullanbileceğinizden, her etki alanı/alt etki alanı için bir CNAME oluşturmanız gerekir. Örneğin, *. contoso.com gibi alt etki alanlarından gelen trafiği cloudapp.net adresine yönlendirmek istiyorsanız DNS ayarlarınızda bir **URL yeniden yönlendirme** veya **URL iletme** girişi yapılandırabilir veya bir kayıt oluşturabilirsiniz.
+> Yukarıdaki örnek yalnızca **www** alt etki alanındaki trafik için geçerlidir. CNAME kayıtları olan joker karakterleri kullanamayacağınız için, her etki alanı/alt etki alanı için bir CNAME oluşturmanız gerekir. *.contoso.com gibi alt etki alanlarından cloudapp.net adresinize trafiği yönlendirmek istiyorsanız, DNS ayarlarınızda bir **URL Yönlendirme** veya **URL İleri** girişi yapılandırabilir veya Bir Kayıt oluşturabilirsiniz.
 
-## <a name="add-an-a-record-for-your-custom-domain"></a>Özel etki alanınız için bir kayıt ekleyin
-Bir kayıt oluşturmak için, önce bulut hizmetinizin sanal IP adresini bulmanız gerekir. Ardından, kaydediciniz tarafından sunulan araçları kullanarak özel etki alanınız için DNS tablosuna yeni bir giriş ekleyin. Her kaydedici benzer ancak farklı bir kayıt belirtme yöntemine sahiptir, ancak kavramlar aynıdır.
+## <a name="add-an-a-record-for-your-custom-domain"></a>Özel etki alanınız için A kaydı ekleme
+A kaydı oluşturmak için öncelikle bulut hizmetinizin sanal IP adresini bulmanız gerekir. Ardından, kayıt şirketiniz tarafından sağlanan araçları kullanarak özel etki alanınız için DNS tablosuna yeni bir giriş ekleyin. Her kayıt şirketi, A kaydı nı belirtmenin benzer ancak biraz farklı bir yöntemine sahiptir, ancak kavramlar aynıdır.
 
 1. Bulut hizmetinizin IP adresini almak için aşağıdaki yöntemlerden birini kullanın.
 
-   * [Azure Portal]oturum açın, bulut hizmetinizi seçin, **genel bakış** bölümüne bakın ve **genel IP adresleri** girişini bulun.
+   * [Azure portalına]giriş yapın, bulut hizmetinizi seçin, **Genel Bakış** bölümüne bakın ve ardından Genel **IP adresleri** girişini bulun.
 
-       ![VIP 'yi gösteren hızlı bakış bölümü][vip]
+       ![VIP gösteren hızlı bakış bölümü][vip]
 
-       **VEYA**
-   * [Azure PowerShell](/powershell/azure/overview)'i yükleyip yapılandırın ve ardından aşağıdaki komutu kullanın:
+       **Veya**
+   * [Azure Powershell'i](/powershell/azure/overview)yükleyin ve yapılandırın ve ardından aşağıdaki komutu kullanın:
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
        ```
 
-     Bir kayıt oluştururken ihtiyacınız olacak şekilde IP adresini kaydedin.
-2. DNS Kaydedicinizin Web sitesinde oturum açın ve DNS yönetme sayfasına gidin. **Etki alanı adı**, **DNS**ya da **ad sunucusu yönetimi**olarak etiketlenmiş sitenin bağlantılarını veya bölgelerini arayın.
-3. Şimdi bir kaydın nerede seçip seçebileceğiniz veya girebileceğinizi bulabilirsiniz. Açılan listeden kayıt türünü seçmeniz veya bir Gelişmiş ayarlar sayfasına gitmeniz gerekebilir.
-4. Bu kaydı kullanacak etki alanı veya alt etki alanını seçin veya girin. Örneğin, www **\.customdomain.com**için bir diğer ad oluşturmak istiyorsanız **www** ' i seçin. Tüm alt etki alanları için bir joker karakter girişi oluşturmak istiyorsanız ' * * * * * ' girin. Bu, **mail.customdomain.com**, **login.customdomain.com**ve **www\.customdomain.com**gibi tüm alt etki alanlarını kapsar.
+     A kaydı oluştururken ihtiyacınız olacağı gibi IP adresini kaydedin.
+2. DNS kayıt şirketinizin web sitesinde oturum açın ve DNS'yi yönetmek için sayfaya gidin. **Sitenin Alan Adı**, **DNS**veya Ad Sunucusu **Yönetimi**olarak etiketlenmiş bağlantılarını veya alanlarını arayın.
+3. Şimdi a kaydıseçebileceğiniz veya girebileceğiniz yeri bulun. Bir açılır yerden kayıt türünü seçmeniz veya gelişmiş ayarlar sayfasına gitmeniz gerekebilir.
+4. Bu A kaydını kullanacak etki alanını veya alt etki alanını seçin veya girin. Örneğin, **www\.customdomain.com**için bir takma ad oluşturmak istiyorsanız **www'yi** seçin. Tüm alt etki alanları için joker karakter girişi oluşturmak istiyorsanız, '*****' girin. Bu, **mail.customdomain.com,** **login.customdomain.com**ve **www\.customdomain.com**gibi tüm alt etki alanlarını kapsayacaktır.
 
-    Kök etki alanı için bir kayıt oluşturmak istiyorsanız, kayıt Kaydedicinizin DNS araçlarındaki ' **\@** ' simgesi olarak listelenmiş olabilir.
-5. Belirtilen alana bulut hizmetinizin IP adresini girin. Bu, A kaydında kullanılan etki alanı girdisini bulut hizmeti dağıtımınızın IP adresiyle ilişkilendirir.
+    Kök etki alanı için bir A kaydı oluşturmak istiyorsanız, kayıt**\@** şirketinizin DNS araçlarında ' ' simgesi olarak listelenebilir.
+5. Bulut hizmetinizin IP adresini sağlanan alana girin. Bu, A kaydında kullanılan etki alanı girişini bulut hizmeti dağıtımınızın IP adresiyle ilişkilendirer.
 
-Örneğin, aşağıdaki bir kayıt tüm trafiği **contoso.com** 'ten **137.135.70.239**'e ILETIR, dağıtılan uygulamanızın IP adresidir:
+Örneğin, aşağıdaki A **kaydı,** dağıtılan uygulamanızın IP adresi olan contoso.com **137.135.70.239'a**kadar tüm trafiği ileder:
 
-| Ana bilgisayar adı/alt etki alanı | IP adresi |
+| Ana bilgisayar adı/Alt etki alanı | IP adresi |
 | --- | --- |
 | \@ |137.135.70.239 |
 
-Bu örnek, kök etki alanı için bir kayıt oluşturmayı gösterir. Tüm alt etki alanlarını kapsayacak bir joker karakter girişi oluşturmak istiyorsanız, alt etki alanı olarak ' * * * * * ' girersiniz.
+Bu örnek, kök etki alanı için bir A kaydı oluşturmayı gösterir. Tüm alt etki alanlarını kapsayacak şekilde joker karakter girişi oluşturmak istiyorsanız, alt etki alanı olarak '*****' girersiniz.
 
 > [!WARNING]
-> Azure 'daki IP adresleri varsayılan olarak dinamiktir. IP adresinizin değişmediğinden emin olmak için büyük olasılıkla [ayrılmış BIR IP adresi](../virtual-network/virtual-networks-reserved-public-ip.md) kullanmak isteyeceksiniz.
+> Azure'daki IP adresleri varsayılan olarak dinamiktir. IP [adresinizin](../virtual-network/virtual-networks-reserved-public-ip.md) değişmediğinden emin olmak için ayrılmış bir IP adresi kullanmak isteyebilirsiniz.
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Cloud Services nasıl yönetilir?](cloud-services-how-to-manage-portal.md)
+* [Bulut Hizmetleri Nasıl Yönetilir?](cloud-services-how-to-manage-portal.md)
 * [CDN İçeriğini Özel Etki Alanı ile Eşleme](../cdn/cdn-map-content-to-custom-domain.md)
-* [Bulut hizmetinizin genel yapılandırması](cloud-services-how-to-configure-portal.md).
-* [Bulut hizmetini dağıtmayı](cloud-services-how-to-create-deploy-portal.md)öğrenin.
-* [SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma.
+* [Bulut hizmetinizin genel yapılandırması.](cloud-services-how-to-configure-portal.md)
+* [Bulut hizmetini](cloud-services-how-to-create-deploy-portal.md)nasıl dağıtılayın öğrenin.
+* [SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma .
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure Portal]: https://portal.azure.com
+[Azure portalında]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
 

@@ -1,7 +1,7 @@
 ---
 title: Gelişmiş R işlevleri yazma
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Machine Learning Hizmetleri (Önizleme) kullanarak Azure SQL veritabanı içinde Gelişmiş istatistiksel işlemler bir R işlevi yazmayı öğrenin.
+description: Machine Learning Services (önizleme) kullanarak Azure SQL Veritabanı'nda gelişmiş istatistiksel hesaplama için Nasıl R işlevi yazabileceğinizi öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,37 +14,37 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60702461"
 ---
-# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Machine Learning Hizmetleri (Önizleme) kullanarak Azure SQL veritabanı içinde Gelişmiş R işlevler yazma
+# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Machine Learning Services 'i kullanarak Azure SQL Veritabanı'na gelişmiş R işlevleri yazın (önizleme)
 
-Bu makalede R matematik ekleme ve yardımcı program işlevleri bir SQL saklı yordamı. T-SQL uygulamak karmaşık Gelişmiş istatistiksel işlevler R, yalnızca bir tek satır kod ile yapılabilir.
+Bu makalede, R matematiksel ve yardımcı program işlevlerini SQL depolanan yordamına nasıl katıştırılacak açıklanmaktadır. T-SQL'de uygulanması karmaşık olan gelişmiş istatistiksel işlevler, yalnızca tek bir kod satırıyla R'de yapılabilir.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğiniz yoksa, [hesap oluşturma](https://azure.microsoft.com/free/) başlamadan önce.
+- Azure aboneliğiniz yoksa, başlamadan önce [bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-- Bu alıştırmalarda örnek kodu çalıştırmak için öncelikle etkin bir Azure SQL veritabanı ile Machine Learning Hizmetleri (R) sahip olması gerekir. Genel Önizleme sırasında Microsoft tarafından ekleyin ve machine learning, mevcut veya yeni bir veritabanı için etkinleştirin. Bağlantısındaki [Önizleme için kaydolun](sql-database-machine-learning-services-overview.md#signup).
+- Bu alıştırmalarda örnek kodu çalıştırmak için öncelikle Machine Learning Services (R ile) etkin leştirilmiş bir Azure SQL veritabanına sahip olmalısınız. Genel önizleme sırasında Microsoft, varolan veya yeni veritabanınız için makine öğrenimini size verebsağlayacaktır. Önizleme için [Kaydolun'daki](sql-database-machine-learning-services-overview.md#signup)adımları izleyin.
 
-- En son yüklediğinizden emin olun [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Diğer veritabanı yönetim veya sorgu Araçları'nı kullanarak R betikleri çalıştırabilir ancak bu hızlı başlangıçta SSMS kullanacaksınız.
+- En son [SQL Server Management Studio'yu](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) yüklediğinizden emin olun. Diğer veritabanı yönetimi veya sorgu araçlarını kullanarak R komut dosyalarını çalıştırabilirsiniz, ancak bu hızlı başlatmada SSMS'i kullanırsınız.
 
-## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Rastgele sayılar üretmeyi, bir saklı yordam oluşturma
+## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Rasgele sayılar oluşturmak için depolanmış yordam oluşturma
 
-Kolaylık olması için R kullanalım `stats` yüklü ve Machine Learning Hizmetleri (Önizleme) kullanarak Azure SQL veritabanı ile varsayılan olarak yüklenen bir paket. Pakette işlevleri aralarında istatistiksel ortak görevler için yüzlerce `rnorm` işlevi. Bu işlev, belirtilen sayıda verilen standart sapma ve anlamına gelir normal dağıtım kullanarak rastgele sayılar oluşturur.
+Basitlik için, Machine Learning Services `stats` (önizleme) kullanarak Varsayılan olarak Azure SQL Veritabanı ile yüklenen ve yüklenen R paketini kullanalım. Paket, aralarında işlevin `rnorm` de bulunduğu yaygın istatistiksel görevler için yüzlerce işlev içerir. Bu işlev, standart sapma ve araçlar göz önüne alındığında, normal dağılımı kullanarak rasgele sayıların belirli bir sayı oluşturur.
 
-Örneğin, aşağıdaki R kodu 50, 3 standart sapmasını verilen bir mean 100 sayıları döndürür.
+Örneğin, standart sapma 3 göz önüne alındığında, aşağıdaki R kodu ortalama 50'de 100 sayı döndürür.
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
 ```
 
-Bu satırı R, T-SQL'den çağırmak için çalıştırma `sp_execute_external_script` ve R betiği parametresinde böyle R işlevi ekleyin:
+Bu R satırını T-SQL'den `sp_execute_external_script` çağırmak için R komut dosyası parametresinde R işlevini çalıştırın ve ekleyin:
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -55,9 +55,9 @@ OutputDataSet <- as.data.frame(rnorm(100, mean = 50, sd =3));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-Peki rastgele sayılar farklı bir dizi oluşturmak daha kolay hale getirmek istersiniz?
+Farklı bir rasgele sayı kümesi oluşturmayı kolaylaştırmak isterseniz ne olur?
 
-SQL ile birleştirildiğinde kolay olmasıdır. Kullanıcıdan bağımsız değişkenleri alır, ardından bu bağımsız değişkenleri olarak R betiğe geçirmek bir saklı yordam tanımlarsınız.
+SQL ile birleştirildiğinde bu çok kolay. Kullanıcıdan bağımsız değişkenler alan bir depolanmış yordam tanımlarsınız, ardından bu bağımsız değişkenleri değişken olarak R komut dosyasına geçirirsiniz.
 
 ```sql
 CREATE PROCEDURE MyRNorm (
@@ -78,13 +78,13 @@ OutputDataSet <- as.data.frame(rnorm(mynumbers, mymean, mysd));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-- İlk satırı, her biri saklı yordam yürütme sırasında gerekli olan SQL giriş parametrelerini tanımlar.
+- İlk satır, depolanan yordam yürütüldüğünde gereken SQL giriş parametrelerinin her birini tanımlar.
 
-- İle satır başına `@params` R kodunu ve karşılık gelen SQL veri türleri tarafından kullanılan tüm değişkenleri tanımlar.
+- Başlangıç `@params` satırı, R kodu tarafından kullanılan tüm değişkenleri ve ilgili SQL veri türlerini tanımlar.
 
-- Hemen izleyin satırları SQL parametre adları için ilgili R değişken adları eşleyin.
+- Hemen takip satırları ilgili R değişken adlarına SQL parametre adlarını eşler.
 
-Saklı yordam, R işlevi sarmalanmış, kolayca işlevini çağırın ve bunun gibi farklı değerler geçirin:
+Artık R işlevini depolanmış bir yordamda tamamladığınızda, işlevi kolayca arayabilir ve aşağıdaki gibi farklı değerlerde geçirebilirsiniz:
 
 ```sql
 EXECUTE MyRNorm @param1 = 100
@@ -92,11 +92,11 @@ EXECUTE MyRNorm @param1 = 100
     , @param3 = 3
 ```
 
-## <a name="use-r-utility-functions-for-troubleshooting"></a>Sorun giderme için R yardımcı işlevleri kullanın.
+## <a name="use-r-utility-functions-for-troubleshooting"></a>Sorun giderme için R yardımcı programı işlevlerini kullanma
 
-`utils` Paket, varsayılan olarak yüklenen çeşitli geçerli R ortamı araştırma için yardımcı işlevleri sağlar. Bu işlevler, SQL ve dış ortamlarda R kodunuzu gerçekleştirir şekilde tutarsızlıklar bulma durumlarda yararlı olabilir. Örneğin, R kullanabilirsiniz `memory.limit()` geçerli R ortam için bellek almak için işlevi.
+Varsayılan `utils` olarak yüklenen paket, geçerli R ortamını araştırmak için çeşitli yardımcı program işlevleri sağlar. Bu işlevler, R kodunuzu SQL'de ve dış ortamlarda performans biçiminde tutarsızlıklar buluyorsanız yararlı olabilir. Örneğin, geçerli R ortamı `memory.limit()` için bellek almak için R işlevini kullanabilirsiniz.
 
-Çünkü `utils` paket yüklü ancak varsayılan olarak yüklü değil, kullanmanız gereken `library()` önce yüklemek için işlevi.
+`utils` Paket yüklü olduğundan ancak varsayılan olarak yüklenmediği `library()` için, önce yükleme işlevini kullanmanız gerekir.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -110,4 +110,4 @@ WITH RESULT SETS(([Col1] INT NOT NULL));
 ```
 
 > [!TIP]
-> Çok sayıda kullanıcı, sistem zamanlama işlevleri gibi R kullanmak ister `system.time` ve `proc.time`, R işlemler tarafından kullanılan zaman yakalamak ve performans sorunlarını analiz edin.
+> Birçok kullanıcı R süreçleri tarafından kullanılan zamanı `system.time` yakalamak `proc.time`ve performans sorunlarını analiz etmek gibi R sistem zamanlama işlevlerini kullanmayı sever.

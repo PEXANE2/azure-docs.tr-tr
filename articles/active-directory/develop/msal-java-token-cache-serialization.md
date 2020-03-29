@@ -1,7 +1,7 @@
 ---
-title: Özel belirteç önbelleği serileştirme (MSAL4j)
+title: Özel belirteç önbellek serileştirme (MSAL4j)
 titleSuffix: Microsoft identity platform
-description: Java için MSAL için belirteç önbelleğini serileştirme hakkında bilgi edinin
+description: Java için MSAL için belirteç önbelleğini nasıl serihale edeceğinizi öğrenin
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -14,21 +14,21 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: bcb34d83365112b97769186ad74dfd762b05c2e8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696172"
 ---
-# <a name="custom-token-cache-serialization-in-msal-for-java"></a>Java için MSAL içinde özel belirteç önbelleği serileştirme
+# <a name="custom-token-cache-serialization-in-msal-for-java"></a>Java için MSAL'da özel belirteç önbelleği serileştirme
 
-Uygulamanızın örnekleri arasında belirteç önbelleğini kalıcı hale getirmek için serileştirme özelleştirmeniz gerekir. Belirteç önbelleği serileştirmesine dahil olan Java sınıfları ve arabirimleri şunlardır:
+Uygulamanızın örnekleri arasındaki belirteç önbelleğini sürdürmek için serileştirmeyi özelleştirmeniz gerekir. Belirteç önbelleği serileştirmesinde yer alan Java sınıfları ve arabirimleri şunlardır:
 
-- [Itokencache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html): güvenlik belirteci önbelleğini temsil eden arabirim.
-- [Itokencacheaccessaspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): Access 'ten önce ve sonra kod yürütme işlemini temsil eden arabirim. Bu, önbelleğin serileştirilmesinin ve serisini kaldırmada sorumlu mantığa karşı *beforecacheaccess* ve *aftercacheaccess* @Override.
-- [Itokencachecontext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html): belirteç önbelleğine erişildiği bağlamı temsil eden arabirim. 
+- [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html): Güvenlik belirteci önbelleğini temsil eden arabirim.
+- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): Erişimden önce ve sonra kodun yürütülmesiişlemini temsil eden arayüz. Önbelleği serihale ve deserializing sorumlu mantıkile Önbellek ve @Override *afterCacheAccess* *önce* olur.
+- [ITokenCacheContext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html): Belirteç önbelleğine erişildiği bağlamı temsil eden arabirim. 
 
-Belirteç önbelleği serileştirme/seri hale getirme için özel serileştirme bir Naïve uygulamasıdır. Bunu kopyalayıp bir üretim ortamına yapıştırmayın.
+Aşağıda belirteç önbellek serileştirme / deserialization özel serileştirme saf bir uygulamadır. Bunu bir üretim ortamına kopyalayıp yapıştırmayın.
 
 ```Java
 static class TokenPersistence implements ITokenCacheAccessAspect {
@@ -60,6 +60,6 @@ PublicClientApplication app =
 PublicClientApplication.builder("my_client_id").setTokenCacheAccessAspect(persistenceAspect).build();
 ```
 
-## <a name="learn-more"></a>Daha fazla bilgi
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-[Java IÇIN msal kullanarak belirteç önbelleğinden hesap alma ve kaldırma](msal-java-get-remove-accounts-token-cache.md)hakkında bilgi edinin.
+Java [için MSAL'ı kullanarak hesapları belirteç önbelleğinden alın ve kaldırın](msal-java-get-remove-accounts-token-cache.md)hakkında bilgi edinin.

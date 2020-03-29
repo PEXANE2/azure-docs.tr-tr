@@ -1,6 +1,6 @@
 ---
-title: (KULLANIM DIŞI) Azure DC/OS kapsayıcısını uygulama erişimi etkinleştirme
-description: Azure Container Service DC/OS kapsayıcılarında genel erişimi etkinleştirmek nasıl.
+title: (AmortismanA Uğradı) Azure DC/OS kapsayıcı uygulamasına erişimi etkinleştirme
+description: Azure Kapsayıcı Hizmeti'nde DC/OS kapsayıcılarına genel erişimi etkinleştirme.
 services: container-service
 author: sauryadas
 manager: madhana
@@ -10,78 +10,78 @@ ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61457382"
 ---
-# <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(KULLANIM DIŞI) Azure Container Service uygulamaya genel erişimini etkinleştirme
+# <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(AmortismanA Uğradı) Azure Kapsayıcı Hizmeti uygulamasına genel erişimi etkinleştirme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Bir ACS DC/OS kapsayıcısında [genel aracı havuzu](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) internet'e otomatik olarak sunulur. Varsayılan olarak, bağlantı noktaları **80**, **443**, **8080** açılan ve bu bağlantı noktalarını dinlediğini tüm (Genel) kapsayıcı erişilebilir. Bu makalede, Azure Container Service'te uygulamalarınız için daha fazla bağlantı noktalarını açmak gösterilmektedir.
+ACS [public agent havuzundaki](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) herhangi bir DC/OS konteyneri otomatik olarak internete maruz kalır. Varsayılan olarak, **80**, **443**, **8080** bağlantı noktaları açılır ve bu bağlantı noktalarını dinleyen herhangi bir (ortak) kapsayıcıya erişilebilir. Bu makalede, Azure Kapsayıcı Hizmeti'ndeki uygulamalarınız için daha fazla bağlantı noktası nın nasıl açılacağını gösterilmektedir.
 
-## <a name="open-a-port-portal"></a>Bağlantı noktası (portal)
-İlk olarak biz istediğimiz bağlantı noktasını açmanız gerekir.
+## <a name="open-a-port-portal"></a>Bağlantı noktası açma (portal)
+Önce istediğimiz limanı açmalıyız.
 
 1. Portalda oturum açın.
-2. Azure Container Service'e dağıttığınız kaynak grubunu bulun.
-3. Aracı Yük Dengeleyiciyi seçin (benzer olarak adlandırılmış **XXXX-Aracısı-lb-XXXX**).
+2. Azure Kapsayıcı Hizmeti'ni dağıttığınız kaynak grubunu bulun.
+3. Aracı yük bakiyesini seçin **(XXXX-agent-lb-XXXX'e**benzer olarak adlandırılır).
    
-    ![Azure kapsayıcı hizmeti yük dengeleyici](./media/container-service-enable-public-access/agent-load-balancer.png)
-4. Tıklayın **araştırmaları** ardından **ekleme**.
+    ![Azure konteyner hizmeti yük dengeleyicisi](./media/container-service-enable-public-access/agent-load-balancer.png)
+4. **Probları** tıklatın ve sonra **ekle.**
    
-    ![Azure kapsayıcı hizmeti load balancer araştırmaları](./media/container-service-enable-public-access/add-probe.png)
-5. Araştırma formu doldurun ve **Tamam**.
+    ![Azure konteyner hizmeti yük dengeleyici probları](./media/container-service-enable-public-access/add-probe.png)
+5. Sonda formunu doldurun ve **Tamam'ı**tıklatın.
    
    | Alan | Açıklama |
    | --- | --- |
-   | Ad |Açıklayıcı bir ad ve araştırma. |
-   | Port |Test etmek için kapsayıcının bağlantı noktası. |
-   | `Path` |(HTTP modunda olduğunda) Araştırma için göreli bir Web sitesi yolu. HTTPS desteklenmiyor. |
-   | Interval |Araştırma arasındaki süre miktarını saniye olarak çalışır. |
-   | Sağlıksız durum eşiği |Ardışık araştırma sayısı, kapsayıcı sağlıksız olduğunu düşünmeden önce çalışır. |
-6. Geri özelliklerini aracı yük dengeleyicinin, tıklayın **Yük Dengeleme kuralları** ardından **Ekle**.
+   | Adı |Sondanın açıklayıcı bir adı. |
+   | Bağlantı noktası |Test etmek için kapsayıcının bağlantı noktası. |
+   | Yol |(HTTP modundayken) Sonda için göreceli web sitesi yolu. HTTPS desteklenmez. |
+   | Interval |Sonda denemeleri arasındaki süre saniyecinsinden. |
+   | Sağlıksız durum eşiği |Kapsayıcı sağlıksız düşünmeden önce ardışık sonda girişimleri sayısı. |
+6. Aracı yük dengeleyicisinin özelliklerine geri dön, **Yük dengeleme kurallarını** tıklatın ve sonra **ekle.**
    
     ![Azure kapsayıcı hizmeti yük dengeleyici kuralları](./media/container-service-enable-public-access/add-balancer-rule.png)
-7. Yük Dengeleyici formu doldurun ve **Tamam**.
+7. Yük dengeleyici formunu doldurun ve **Tamam'ı**tıklatın.
    
    | Alan | Açıklama |
    | --- | --- |
-   | Ad |Yük dengeleyicinin açıklayıcı bir ad. |
-   | Port |Ortak gelen bağlantı noktası. |
-   | Arka uç bağlantı noktası |İç ortak bağlantı noktası kapsayıcısının trafiği yönlendirmek için. |
-   | Arka uç havuzu |Bu havuzdaki kapsayıcıları Bu yük dengeleyici için hedef olur. |
-   | Araştırma |Bir hedef olarak belirlemek için kullanılan araştırma **arka uç havuzu** kötü durumda. |
-   | Oturum kalıcılığı |İstemciden gelen trafiğin oturum boyunca nasıl işleneceğini belirler.<br><br>**Hiçbiri**: Art arda gelen istekleri aynı istemciden gelen herhangi bir kapsayıcı tarafından işlenebilir.<br>**İstemci IP**: Aynı istemci IP art arda gelen istekleri aynı kapsayıcı tarafından işlenir.<br>**İstemci IP ve protokol**: Aynı istemci IP'si ve protokolü bileşiminden art arda gelen istekleri aynı kapsayıcı tarafından işlenir. |
-   | Boşta kalma zaman aşımı |(Yalnızca TCP) Dakikalar içinde bir TCP/HTTP istemci saklanacağı süre açık bağlı kalmadan *tutma* iletileri. |
+   | Adı |Yük dengeleyicisinin açıklayıcı adı. |
+   | Bağlantı noktası |Halka açık liman. |
+   | Arka uç bağlantı noktası |Trafiği yönlendirmek için kapsayıcının iç-ortak noktası. |
+   | Arka uç havuzu |Bu havuzdaki konteynerler bu yük dengeleyicisinin hedefi olacaktır. |
+   | Yoklama |Sonda, **Arka uç havuzundaki** bir hedefin sağlıklı olup olmadığını belirlemek için kullanılır. |
+   | Oturum kalıcılığı |Oturum süresince istemciden gelen trafiğin nasıl işleneceğini belirler.<br><br>**Yok**: Aynı istemciden art arda gelen istekler herhangi bir kapsayıcı tarafından işlenebilir.<br>**İstemci IP**: Aynı istemci IP'den art arda gelen istekler aynı kapsayıcı tarafından işlenir.<br>**İstemci IP ve protokolü**: Aynı istemci IP ve protokol kombinasyonundan art arda gelen istekler aynı kapsayıcı tarafından işlenir. |
+   | Boşta zaman ası |(Yalnızca TCP) Dakikalar içinde, bir TCP/HTTP istemcisini *canlı tutma* iletilerine güvenmeden açık tutma zamanı. |
 
-## <a name="add-a-security-rule-portal"></a>(Portal) bir güvenlik Kuralı Ekle
-Ardından, biz bizim açılan bağlantı noktası güvenlik duvarı üzerinden gelen trafiği yönlendiren bir güvenlik kuralı eklemeniz gerekir.
+## <a name="add-a-security-rule-portal"></a>Güvenlik kuralı ekleme (portal)
+Ardından, açılan bağlantı noktasımızdan trafiği güvenlik duvarından gönderen bir güvenlik kuralı eklememiz gerekir.
 
 1. Portalda oturum açın.
-2. Azure Container Service'e dağıttığınız kaynak grubunu bulun.
-3. Seçin **genel** Aracısı ağ güvenlik grubu (benzer olarak adlandırılmış **XXXX-Aracısı-public-nsg-XXXX**).
+2. Azure Kapsayıcı Hizmeti'ni dağıttığınız kaynak grubunu bulun.
+3. **Ortak** aracı ağı güvenlik grubunu seçin **(XXXX-agent-public-nsg-XXXX'e**benzer adlandırılmış).
    
-    ![Azure kapsayıcı hizmeti ağ güvenlik grubu](./media/container-service-enable-public-access/agent-nsg.png)
-4. Seçin **gelen güvenlik kuralları** ardından **Ekle**.
+    ![Azure kapsayıcı servis ağı güvenlik grubu](./media/container-service-enable-public-access/agent-nsg.png)
+4. **Gelen güvenlik kurallarını** seçin ve sonra **ekleyin.**
    
-    ![Azure kapsayıcı hizmeti ağ güvenlik grubu kuralları](./media/container-service-enable-public-access/add-firewall-rule.png)
-5. Genel bağlantı noktasına izin verin ve güvenlik duvarı kuralı dolgu **Tamam**.
+    ![Azure kapsayıcı servis ağı güvenlik grubu kuralları](./media/container-service-enable-public-access/add-firewall-rule.png)
+5. Ortak bağlantı noktasınıza izin vermek için güvenlik duvarı kuralını doldurun ve **Tamam'ı**tıklatın.
    
    | Alan | Açıklama |
    | --- | --- |
-   | Ad |Güvenlik duvarı kuralı, açıklayıcı bir ad. |
-   | Öncelik |Kuralın önceliğini boyut. Düşük sayı öncelik o kadar yüksektir. |
-   | source |Gelen IP adresi aralığı izin verilen ya da bu kural tarafından reddedildi kısıtlayın. Kullanım **herhangi** bir kısıtlama belirtmek için. |
-   | Hizmet |Bu güvenlik kuralının içindir önceden tanımlanmış bir hizmetler kümesi seçin. Aksi takdirde kullanın **özel** kendi oluşturmak için. |
-   | Protocol |Temel trafiği kısıtlamak **TCP** veya **UDP**. Kullanım **herhangi** bir kısıtlama belirtmek için. |
-   | Bağlantı noktası aralığı |Zaman **hizmet** olduğu **özel**, bu kural etkiler bağlantı noktası aralığını belirtir. Tek bir bağlantı noktası gibi kullanabileceğiniz **80**, veya bir aralığı **1024-1500**. |
-   | Eylem |İzin vermek veya kriterleri karşılayan trafiği reddetmek. |
+   | Adı |Güvenlik duvarı kuralının açıklayıcı adı. |
+   | Öncelik |Kural için öncelik sıralaması. Sayı ne kadar düşükse öncelik de o kadar yüksektir. |
+   | Kaynak |Bu kural tarafından izin verilmesine veya reddedilmesine izin verilmesi için gelen IP adresi aralığını kısıtlayın. Bir kısıtlama belirtmemek için **Herhangi'yi** kullanın. |
+   | Hizmet |Bu güvenlik kuralının önceden tanımlanmış hizmetler kümesini seçin. Aksi takdirde kendi oluşturmak için **Özel** kullanın. |
+   | Protokol |**TCP** veya **UDP'ye**göre trafiği kısıtlayın. Bir kısıtlama belirtmemek için **Herhangi'yi** kullanın. |
+   | Bağlantı noktası aralığı |**Hizmet** **Özel**olduğunda, bu kuralın etkilediği bağlantı noktaları aralığını belirtir. **80**gibi tek bir bağlantı noktası veya **1024-1500**gibi bir aralık kullanabilirsiniz. |
+   | Eylem |Ölçütleri karşılayan trafiğe izin verin veya reddedin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Arasındaki farklar hakkında bilgi edinin [ortak ve özel DC/OS aracılarının](container-service-dcos-agents.md).
+[Genel ve özel DC/OS aracıları](container-service-dcos-agents.md)arasındaki fark hakkında bilgi edinin.
 
-Daha fazla bilgi okuyun [DC/OS kapsayıcılarınızı yönetme](container-service-mesos-marathon-ui.md).
+[DC/OS kapsayıcılarınızı yönetme](container-service-mesos-marathon-ui.md)hakkında daha fazla bilgi edinin.
 

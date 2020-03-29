@@ -1,6 +1,6 @@
 ---
-title: Bir Microsoft uygulamasında oturum açmada sorun | Microsoft Docs
-description: Birinci taraf Microsoft Applications (Office 365 gibi) Azure AD kullanarak oturum açarken genişlettiklerinde karşılaştığı yaygın sorunları giderme
+title: Microsoft uygulamasında oturum açma sorunları | Microsoft Dokümanlar
+description: Azure AD'yi kullanarak birinci taraf Microsoft Uygulamaları'nda oturum açarken karşılaşılan sık karşılaşılan sorunları giderme (Office 365 gibi)
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,517 +17,517 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108310"
 ---
-# <a name="problems-signing-in-to-a-microsoft-application"></a>Bir Microsoft uygulamasında oturum açma sorunları
+# <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft uygulamasında oturum açma sorunları
 
-Microsoft Applications (örneğin, Office 365 Exchange, SharePoint, Yammer, vb.) atanmış ve yönetilen biraz farklı 3 taraf SaaS uygulamaları ya da diğer uygulamalar üzerinde çoklu oturum açma için Azure AD ile tümleştirin.
+Microsoft Uygulamaları (Office 365 Exchange, SharePoint, Yammer, vb.) 3.
 
-Bir kullanıcı Microsoft tarafından yayımlanan bir uygulamaya erişim elde edebilirsiniz üç ana yolu vardır.
+Bir kullanıcının Microsoft tarafından yayımlanan bir uygulamaya erişebilmek için üç ana yolu vardır.
 
--   Office 365 veya diğer Ücretli paketleri için uygulamalar, kullanıcılar ile erişim izni verilen **lisans ataması** bizim grup tabanlı lisans atama özelliği kullanarak bir grup veya kullanıcı hesabı için doğrudan.
+-   Office 365 veya diğer ücretli paketlerindeki uygulamalarda, kullanıcılara **lisans ataması** yoluyla doğrudan kullanıcı hesabına veya grup tabanlı lisans atama özelliğimizi kullanan bir grup aracılığıyla erişim hakkı verilir.
 
--   Microsoft veya üçüncü taraf yayımlar uygulamalar için ücretsiz olarak herkes için kullanıcılar erişim aracılığıyla verilebilir **kullanıcı onayı**. Bu, uygulamanın Azure AD iş veya Okul hesabıyla oturum açın ve kendi hesapta bazı sınırlı bir veri kümesi erişimi izin anlamına gelir.
+-   Microsoft veya Üçüncü Tarafın herkesin kullanması için serbestçe yayımlayan uygulamalarda, kullanıcılara **kullanıcı onayı**ile erişim izni verilebilir. Bu, azure AD Work veya School hesaplarıyla uygulamada oturum açtıkları ve uygulamaların hesaplarındaki sınırlı veri kümesine erişmesine izin verdikleri anlamına gelir.
 
--   Microsoft veya bir 3. taraf yayımlar uygulamalar için ücretsiz olarak herkes için kullanıcılar ayrıca erişim aracılığıyla verilebilir **yönetici onayı**. Başka bir deyişle, bir yönetici tarafından kuruluşunuzdaki herkes uygulamaya bir genel yönetici hesabıyla oturum açın ve kuruluşunuzdaki herkes için erişim vermek için uygulama kullanılabilir belirledi.
+-   Microsoft veya üçüncü bir tarafın herkesin kullanması için serbestçe yayımlettiği uygulamalarda, kullanıcılara **yönetici onayı**ile erişim izni de verilebilir. Bu, bir yöneticinin uygulamanın kuruluştaki herkes tarafından kullanılabileceğini belirlediği anlamına gelir, bu nedenle başvuruda Global Administrator hesabıyla oturum açabilir ve kuruluştaki herkese erişim izni verir.
 
-İle sorununuzu gidermek için Başlat [uygulama erişimi, dikkate alınması gereken genel sorun alanlarından](#general-problem-areas-with-application-access-to-consider) ve Kılavuzu okuyun: Microsoft Application erişim ayrıntıları almak için sorun giderme adımları.
+Sorununuzu gidermek için, [Uygulama Erişimi'ne sahip Genel Sorun Alanları'nı gözden geçirin](#general-problem-areas-with-application-access-to-consider) ve ardından Ayrıntılara girmek için Microsoft Application erişimini giderme adımlarını okuyun.
 
-## <a name="general-problem-areas-with-application-access-to-consider"></a>Genel sorun alanlarından dikkate alınması gereken uygulama erişimi
+## <a name="general-problem-areas-with-application-access-to-consider"></a>Dikkate Alınması Gereken Uygulama Erişimi olan Genel Sorun Alanları
 
-Nereden başlayacağınızı hakkında bir fikir varsa, ayrıntılarına ulaşabilirsiniz genel sorunlu alanları listesi aşağıda verilmiştir, ancak hızlı bir şekilde kullanmaya başlamak için adım adım kılavuzun okuma öneririz: Çözüm: Microsoft Application erişim sorunlarını giderme adımları.
+Nereden başlayacağınızı bir fikriniz varsa, ayrıntılı olarak kullanabileceğiniz genel sorunlu alanların bir listesi aşağıdadır, ancak hızlı bir şekilde gitmek için izgeçidi okumanızı öneririz: Walkthrough: Microsoft Application erişimini giderme adımları.
 
--   [Kullanıcı hesabı ile ilgili sorunlar](#problems-with-the-users-account)
+-   [Kullanıcının hesabındaki sorunlar](#problems-with-the-users-account)
 
--   [Grupları ile ilgili sorunlar](#problems-with-groups)
+-   [Gruplarla ilgili sorunlar](#problems-with-groups)
 
--   [Koşullu erişim ilkeleri ile ilgili sorunlar](#problems-with-conditional-access-policies)
+-   [Koşullu Erişim ilkeleriyle ilgili sorunlar](#problems-with-conditional-access-policies)
 
--   [Uygulama onay ile ilgili sorunlar](#problems-with-application-consent)
+-   [Uygulama onayı ile ilgili sorunlar](#problems-with-application-consent)
 
-## <a name="steps-to-troubleshoot-microsoft-application-access"></a>Microsoft Application erişim sorunlarını giderme adımları
+## <a name="steps-to-troubleshoot-microsoft-application-access"></a>Microsoft Application erişimini giderme adımları
 
-Kullanıcılarının bir Microsoft uygulamasında oturum açamıyorum istemeyenler içine çalışmadığında bazı yaygın sorunlar aşağıda verilmiştir.
+Aşağıda, kullanıcıları bir Microsoft uygulamasında oturum açamadığı zaman kullanıcıların karşısına çıkan bazı sık karşılaşılan sorunlar yer alıyor.
 
-- İlk denetlenecek genel sorunlar
+- Önce kontrol etmek için genel konular
 
-  * Emin kullanıcının oturum açmak için **URL'yi düzeltin** ve yerel uygulama URL'si değil.
+  * Kullanıcının yerel bir uygulama URL'si değil, **doğru URL'de** oturum açmıştından emin olun.
 
-  * Kullanıcı hesabı olduğundan emin olun **kilitli değil.**
+  * Kullanıcının hesabının **kilitlendirolmadığından** emin olun.
 
-  * Emin **kullanıcı hesabının var** Azure Active Directory'de. [Bir kullanıcı hesabı Azure Active Directory'de mevcut olup olmadığını denetleyin](#problems-with-the-users-account)
+  * **Kullanıcının hesabının** Azure Etkin Dizin'de bulunduğundan emin olun. [Azure Etkin Dizini'nde bir kullanıcı hesabı olup olmadığını denetleme](#problems-with-the-users-account)
 
-  * Kullanıcı hesabı olduğundan emin olun **etkin** için oturum açmalar. [Kullanıcı hesabınızın durumunu denetleyin](#problems-with-the-users-account)
+  * Oturum açma için kullanıcının hesabının **etkin** olduğundan emin olun. [Kullanıcının hesap durumunu kontrol edin](#problems-with-the-users-account)
 
-  * Kullanıcının emin **parola süresi değil veya unutulursa.** [Bir kullanıcının parolasını sıfırlama](#reset-a-users-password) veya [Self Servis parola sıfırlamayı etkinleştirin](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * Kullanıcının **parolasının süresinin dolmadığından veya unutulmadığından** emin olun. [Kullanıcının parolasını sıfırlama](#reset-a-users-password) veya [self servis parola sıfırlamayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-  * Emin **multi-Factor Authentication** kullanıcı erişimi engellemediğini. [Bir kullanıcının çok faktörlü kimlik doğrulama durumu kontrol](#check-a-users-multi-factor-authentication-status) veya [bir kullanıcının kimlik doğrulaması iletişim bilgileri kontrol edin](#check-a-users-authentication-contact-info)
+  * Çok **Faktörlü Kimlik Doğrulama'nın** kullanıcı erişimini engellemediğinden emin olun. [Kullanıcının çok faktörlü kimlik doğrulama durumunu denetleme](#check-a-users-multi-factor-authentication-status) veya [kullanıcının kimlik doğrulama iletişim bilgilerini denetleme](#check-a-users-authentication-contact-info)
 
-  * Emin bir **koşullu erişim ilkesi** veya **kimlik koruması** İlkesi, kullanıcı erişimini engellemediğinden. [Belirli bir koşullu erişim ilkesi denetleyin](#problems-with-conditional-access-policies) veya [belirli bir uygulamanın koşullu erişim ilkesini denetleme](#check-a-specific-applications-conditional-access-policy) veya [belirli bir koşullu erişim ilkesini devre dışı bırak](#disable-a-specific-conditional-access-policy)
+  * **Koşullu Erişim ilkesinin** veya **Kimlik Koruma** ilkesinin kullanıcı erişimini engellemediğinden emin olun. [Belirli bir Koşullu Erişim ilkesini kontrol edin](#problems-with-conditional-access-policies) veya [belirli bir uygulamanın Koşullu Erişim ilkesini denetleyin](#check-a-specific-applications-conditional-access-policy) veya [belirli bir Koşullu Erişim ilkesini devre dışı kaldırın](#disable-a-specific-conditional-access-policy)
 
-  * Emin olun kullanıcının **kimlik doğrulaması iletişim bilgileri** yürütülebilmesi çok faktörlü kimlik doğrulaması veya koşullu erişim ilkelerinin izin güncel olduğundan. [Bir kullanıcının çok faktörlü kimlik doğrulama durumu kontrol](#check-a-users-multi-factor-authentication-status) veya [bir kullanıcının kimlik doğrulaması iletişim bilgileri kontrol edin](#check-a-users-authentication-contact-info)
+  * Çok Faktörlü Kimlik Doğrulama veya Koşullu Erişim ilkelerinin uygulanmasına izin vermek için kullanıcının **kimlik doğrulama iletişim bilgisinin** güncel olduğundan emin olun. [Kullanıcının çok faktörlü kimlik doğrulama durumunu denetleme](#check-a-users-multi-factor-authentication-status) veya [kullanıcının kimlik doğrulama iletişim bilgilerini denetleme](#check-a-users-authentication-contact-info)
 
-- İçin **Microsoft** **Lisansı gerektiren uygulamalar** (Office 365 gibi), yukarıdaki genel sorunlardan çizgili sonra denetlemek için belirli bazı sorunlar şunlardır:
+- **Lisans gerektiren** **Microsoft** uygulamaları (Office365 gibi) için, yukarıdaki genel sorunları ekarte ettiğinizde kontrol etmek için bazı özel sorunlar şunlardır:
 
-  * Bir kullanıcı sağlayın ya da sahip bir **lisansı atandı.** [Bir kullanıcının lisans atanmış denetleyin](#check-a-users-assigned-licenses) veya [lisans atanmış Grup denetleyin](#check-a-groups-assigned-licenses)
+  * Kullanıcının veya atanmış bir lisansa sahip olduğundan emin **olun.** [Kullanıcının atanmış lisanslarını denetleme](#check-a-users-assigned-licenses) veya [grubun atanmış lisanslarını denetleme](#check-a-groups-assigned-licenses)
 
-  * Lisans ise **atanan bir** **statik grup**, emin **kullanıcının üye olduğu** o grubun. [Bir kullanıcının grup üyeliklerini denetle](#check-a-users-group-memberships)
+  * Lisans statik bir **gruba** **atanmışsa,** **kullanıcının** bu grubun bir üyesi olduğundan emin olun. [Kullanıcının grup üyeliklerini kontrol edin](#check-a-users-group-memberships)
 
-  * Lisans ise **atanan bir** **dinamik grup**, emin **dinamik Grup Kuralı düzgün şekilde ayarlandığını**. [Dinamik grup üyeliği ölçütlerini denetleyin](#check-a-dynamic-groups-membership-criteria)
+  * Lisans **dinamik**bir gruba **atanmışsa,** **dinamik grup kuralının doğru ayarlandığından**emin olun. [Dinamik bir grubun üyelik ölçütlerini kontrol edin](#check-a-dynamic-groups-membership-criteria)
 
-  * Lisans ise **atanan bir** **dinamik grup**, dinamik Grup olduğundan emin olun **işleme tamamlandı** üyeliğini ve bu **kullanıcının üye olduğu**  (Bu işlem biraz zaman alabilir). [Bir kullanıcının grup üyeliklerini denetle](#check-a-users-group-memberships)
+  * Lisans **dinamik**bir gruba **atanmışsa,** dinamik grubun üyeliğini **işlemeyi tamamladığını** ve **kullanıcının üye olduğundan** emin olun (bu biraz zaman alabilir). [Kullanıcının grup üyeliklerini kontrol edin](#check-a-users-group-memberships)
 
-  *  Lisans atanmış olduğundan emin olun, sonra lisans olduğundan emin olun **süresinin dolmadığını**.
+  *  Lisansın atandığından emin olduktan sonra, lisansın **süresinin dolmadığından**emin olun.
 
-  *  Lisans olduğundan emin olun **uygulamanın** eriştikleri.
+  *  Lisansın erişen **uygulama için** olduğundan emin olun.
 
-- İçin **Microsoft** **lisans gerektirmeyen uygulamalar**, kontrol etmek için diğer işlemlerden bazıları aşağıda verilmiştir:
+- **Lisans gerektirmeyen** **Microsoft** uygulamaları için, denetlenebilen diğer bazı şeyler şunlardır:
 
-  * Uygulamanın istediği, **kullanıcı düzeyi izinleri** (örneğin "Bu kullanıcıların posta kutularına erişim"), kullanıcı uygulamada oturum açtığını emin olun ve gerçekleştirdiği bir **kullanıcıdüzeyionayıişlemi** verilerine erişmesine izin vermek için.
+  * Uygulama kullanıcı düzeyinde **izinler** talep ediyorsa (örneğin, "Bu kullanıcının posta kutusuna erişin"), kullanıcının uygulamada oturum açmış olduğundan ve uygulamanın verilerine erişmesini sağlamak için kullanıcı düzeyinde bir **onay işlemi** gerçekleştirdiğinden emin olun.
 
-  * Uygulamanın istediği, **yönetici düzeyi izinlerini** (örneğin "tüm kullanıcıların posta kutularına erişim"), genel yönetici yürüttü emin olun bir **yönetici düzeyi onayı işlemi tüm kullanıcılar adına** kuruluştaki.
+  * Uygulama yönetici düzeyinde **izinler** istiyorsa (örneğin,"Tüm kullanıcının posta kutularına erişin"), Bir Genel Yöneticinin kuruluştaki **tüm kullanıcılar adına yönetici düzeyinde** bir onay işlemi gerçekleştirdiğinden emin olun.
 
-## <a name="problems-with-the-users-account"></a>Kullanıcı hesabı ile ilgili sorunlar
+## <a name="problems-with-the-users-account"></a>Kullanıcının hesabındaki sorunlar
 
-Uygulama erişimi, uygulamaya atanmış bir kullanıcı ile ilgili bir sorun nedeniyle engellenebilir. Sorun giderme ve kullanıcıları ve hesap ayarlarına çözmekte bazı yollar şunlardır:
+Uygulamaya atanan bir kullanıcıyla ilgili bir sorun nedeniyle uygulama erişimi engellenebilir. Aşağıda, kullanıcılarla ve hesap ayarlarıyla ilgili sorunları gidermenin ve çözebileceğiniz bazı yollar verilmiştir:
 
--   [Bir kullanıcı hesabı Azure Active Directory'de mevcut olup olmadığını denetleyin](#check-if-a-user-account-exists-in-azure-active-directory)
+-   [Azure Etkin Dizini'nde bir kullanıcı hesabı olup olmadığını denetleme](#check-if-a-user-account-exists-in-azure-active-directory)
 
--   [Kullanıcı hesabınızın durumunu denetleyin](#check-a-users-account-status)
+-   [Kullanıcının hesap durumunu denetleme](#check-a-users-account-status)
 
--   [Bir kullanıcının parolasını sıfırlama](#reset-a-users-password)
+-   [Kullanıcının parolanı sıfırlama](#reset-a-users-password)
 
--   [Self servis parola sıfırlamayı etkinleştirme](#enable-self-service-password-reset)
+-   [Kendi kendine parola sıfırlamayı etkinleştirme](#enable-self-service-password-reset)
 
--   [Bir kullanıcının çok faktörlü kimlik doğrulaması durumunu denetleyin](#check-a-users-multi-factor-authentication-status)
+-   [Kullanıcının çok faktörlü kimlik doğrulama durumunu denetleme](#check-a-users-multi-factor-authentication-status)
 
--   [Bir kullanıcının kimlik doğrulaması iletişim bilgileri kontrol edin](#check-a-users-authentication-contact-info)
+-   [Kullanıcının kimlik doğrulama kişi bilgilerini kontrol edin](#check-a-users-authentication-contact-info)
 
--   [Bir kullanıcının grup üyeliklerini denetle](#check-a-users-group-memberships)
+-   [Kullanıcının grup üyeliklerini kontrol edin](#check-a-users-group-memberships)
 
--   [Bir kullanıcının atanan lisansları denetleme](#check-a-users-assigned-licenses)
+-   [Kullanıcının atanmış lisanslarını denetleme](#check-a-users-assigned-licenses)
 
--   [Bir kullanıcı bir lisans atayın](#assign-a-user-a-license)
+-   [Kullanıcıya lisans atama](#assign-a-user-a-license)
 
-### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Bir kullanıcı hesabı Azure Active Directory'de mevcut olup olmadığını denetleyin
+### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Azure Etkin Dizini'nde bir kullanıcı hesabı olup olmadığını denetleme
 
-Bir kullanıcı hesabının mevcut olup olmadığını denetlemek için şu adımları izleyin:
+Bir kullanıcının hesabının olup olmadığını kontrol etmek için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm kullanıcılar**.
+5.  **tüm kullanıcıları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz kullanıcı ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  Veri içermeyen eksik ve beklediğiniz gibi göründüğünü emin olmak için kullanıcı nesnesinin özelliklerini denetleyin.
+7.  Kullanıcı nesnesinin özelliklerini kontrol edin, beklediğiniz gibi göründüklerinden ve hiçbir veri eksik olmadığından emin olun.
 
-### <a name="check-a-users-account-status"></a>Kullanıcı hesabınızın durumunu denetleyin
+### <a name="check-a-users-account-status"></a>Kullanıcının hesap durumunu denetleme
 
-Bir kullanıcı hesabı durumunu denetlemek için şu adımları izleyin:
+Bir kullanıcının hesap durumunu denetlemek için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm kullanıcılar**.
+5.  **tüm kullanıcıları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz kullanıcı ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **profili**.
+7.  **Profili**tıklatın.
 
-8.  Altında **ayarları** emin **oturum açmayı engelle** ayarlanır **Hayır**.
+8.  **Ayarlar** **altında, Oturum Aç'ı Oturum Aç'ın** **Hayır**olarak ayarlı olduğundan emin olun.
 
-### <a name="reset-a-users-password"></a>Bir kullanıcının parolasını sıfırlama
+### <a name="reset-a-users-password"></a>Kullanıcının parolanı sıfırlama
 
-Bir kullanıcının parolasını sıfırlamak için şu adımları izleyin:
+Bir kullanıcının parolasını sıfırlamak için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm kullanıcılar**.
+5.  **tüm kullanıcıları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz kullanıcı ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **parolayı Sıfırla** kullanıcı bölmenin üstünde düğme.
+7.  kullanıcı bölmesinin üst kısmındaki **parolayı sıfırla** düğmesini tıklatın.
 
-8.  tıklayın **parolayı Sıfırla** düğmesini **parolayı Sıfırla** bölmesi görünür.
+8.  görünen **parola** bölmesindeki **Parolayı Sıfırla** düğmesini tıklatın.
 
-9.  Kopyalama **geçici parola** veya **yeni bir parola girin** kullanıcı.
+9.  Geçici **parolayı** kopyalayın veya kullanıcı için **yeni bir parola girin.**
 
-10. Bu yeni parolayı kullanıcıya iletişim, Azure Active Directory'ye sonraki oturum açma sırasında bu parolayı değiştirmeniz gerekiyor.
+10. Bu yeni parolayı kullanıcıya iletin, bir sonraki oturum açma sırasında bu parolayı Azure Active Directory'de değiştirmeleri gerekir.
 
 ### <a name="enable-self-service-password-reset"></a>Kendi kendine parola sıfırlamayı etkinleştirme
 
-Self Servis parola sıfırlamayı etkinleştirmek için aşağıdaki dağıtım adımları izleyin:
+Self servis parola sıfırlamayı etkinleştirmek için aşağıdaki dağıtım adımlarını izleyin:
 
--   [Azure Active Directory parolalarını sıfırlamalarına olanak tanıma](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Kullanıcıların Azure Etkin Dizin parolalarını sıfırlamalarını sağlama](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
--   [Kullanıcılara sıfırlama veya Active Directory şirket içi parolalarını değiştirme olanağı](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Kullanıcıların Etkin Dizini şirket içi parolalarını sıfırlamalarına veya değiştirmelerine olanak sağlama](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-### <a name="check-a-users-multi-factor-authentication-status"></a>Bir kullanıcının çok faktörlü kimlik doğrulaması durumunu denetleyin
+### <a name="check-a-users-multi-factor-authentication-status"></a>Kullanıcının çok faktörlü kimlik doğrulama durumunu denetleme
 
-Bir kullanıcının çok faktörlü kimlik doğrulaması durumunu denetlemek için şu adımları izleyin:
+Bir kullanıcının çok faktörlü kimlik doğrulama durumunu denetlemek için aşağıdaki adımları izleyin:
 
-1. Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2. Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3. Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4. tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4. gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5. tıklayın **tüm kullanıcılar**.
+5. **tüm kullanıcıları**tıklatın.
 
-6. tıklayın **multi-Factor Authentication** bölmenin üstünde düğme.
+6. bölmenin üst kısmındaki **Çok Faktörlü Kimlik Doğrulama** düğmesini tıklatın.
 
-7. Bir kez **multi-Factor Authentication Yönetim Portalı** yüklendiğinde olun, bulunduğunuz **kullanıcılar** sekmesi.
+7. Çok **Faktörlü Kimlik Doğrulama Yönetimi portalı** yüklendikten sonra **Kullanıcılar** sekmesinde olduğundan emin olun.
 
-8. Kullanıcı, arama, filtreleme veya sıralama kullanıcılar listesinde bulun.
+8. Arama yaparak, filtreleyerek veya sıralayarak kullanıcıyı kullanıcı listesinde bulun.
 
-9. Kullanıcı listesinden kullanıcıyı seçin ve **etkinleştirme**, **devre dışı**, veya **zorla** istediğiniz gibi çok faktörlü kimlik doğrulaması.
+9. Kullanıcı listesinden kullanıcıyı seçin **ve**çok faktörlü kimlik doğrulamasını istediğiniz gibi etkinleştirin veya **zorleyin.** **Disable**
 
-   * **Not**: Bir kullanıcı olarak bulunuyorsa bir **zorlanan** durumunda ayarlayın bunları **devre dışı bırakılmış** geçici olarak geri hesaba izin vermek için. Daha sonra geri içinde bulundukları sonra durumlarına değiştirebilirsiniz **etkin** kişi bilgileri, sonraki oturum açma sırasında yeniden kaydolmak için bunları yeniden istemek için. Alternatif olarak, adımları izleyebilirsiniz [bir kullanıcının kimlik doğrulaması iletişim bilgileri kontrol](#check-a-users-authentication-contact-info) doğrulamak veya bunlar için bu veri kümesi için.
+   * **Not**: Bir kullanıcı **Zorlanmış** durumdaysa, hesabına geri dönmelerine izin vermek için geçici olarak **Devre Dışı Bırak'a** ayarlayabilirsiniz. Geri döndüklerinde, bir sonraki oturum açma sırasında kişi bilgilerini yeniden kaydetmelerini istemek için durumlarını yeniden **Enabled** olarak değiştirebilirsiniz. Alternatif olarak, bu verileri doğrulamak veya onlar için ayarlamak için [kullanıcının kimlik doğrulama iletişim bilgilerini](#check-a-users-authentication-contact-info) denetle'deki adımları izleyebilirsiniz.
 
-### <a name="check-a-users-authentication-contact-info"></a>Bir kullanıcının kimlik doğrulaması iletişim bilgileri kontrol edin
+### <a name="check-a-users-authentication-contact-info"></a>Kullanıcının kimlik doğrulama kişi bilgilerini kontrol edin
 
-Çok faktörlü kimlik doğrulaması, koşullu erişim, kimlik koruması ve parola sıfırlama için kullanılan kullanıcı kimlik doğrulaması iletişim bilgileri denetlemek için şu adımları izleyin:
+Çok faktörlü kimlik doğrulama, Koşullu Erişim, Kimlik Koruması ve Parola Sıfırlama için kullanılan kullanıcının kimlik doğrulama iletişim bilgilerini denetlemek için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm kullanıcılar**.
+5.  **tüm kullanıcıları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz kullanıcı ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **profili**.
+7.  **Profili**tıklatın.
 
-8.  Ekranı aşağı kaydırarak **kimlik doğrulaması iletişim bilgileri**.
+8.  **Kimlik Doğrulama iletişim bilgilerine**aşağı kaydırın.
 
-9.  **Gözden geçirme** veri, güncelleştirme ve kullanıcı için gerektiği şekilde kayıtlı.
+9.  Kullanıcı için kayıtlı verileri **gözden geçirin** ve gerektiğinde güncelleştirin.
 
-### <a name="check-a-users-group-memberships"></a>Bir kullanıcının grup üyeliklerini denetle
+### <a name="check-a-users-group-memberships"></a>Kullanıcının grup üyeliklerini kontrol edin
 
-Bir kullanıcının grup üyeliklerini denetlemek için şu adımları izleyin:
+Bir kullanıcının grup üyeliklerini denetlemek için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm kullanıcılar**.
+5.  **tüm kullanıcıları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz kullanıcı ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **grupları** olduğu kullanıcı grupları görmek için bir üyesidir.
+7.  kullanıcının hangi gruplara üye olduğunu görmek için **Gruplar'ı** tıklatın.
 
-### <a name="check-a-users-assigned-licenses"></a>Bir kullanıcının atanan lisansları denetleme
+### <a name="check-a-users-assigned-licenses"></a>Kullanıcının atanmış lisanslarını denetleme
 
-Bir kullanıcının lisans atanmış denetlemek için şu adımları izleyin:
+Bir kullanıcının atanmış lisanslarını denetlemek için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm kullanıcılar**.
+5.  **tüm kullanıcıları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz kullanıcı ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **lisansları** , şu anda kullanıcı lisansları görmek üzere atanır.
+7.  kullanıcının şu anda hangi lisansları atadığını görmek için **Lisanslar'ı** tıklatın.
 
-### <a name="assign-a-user-a-license"></a>Bir kullanıcı bir lisans atayın 
+### <a name="assign-a-user-a-license"></a>Kullanıcıya lisans atama 
 
-Bir kullanıcıya bir lisans atamak için bu adımları izleyin:
+Bir kullanıcıya lisans atamak için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm kullanıcılar**.
+5.  **tüm kullanıcıları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz kullanıcı ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **lisansları** , şu anda kullanıcı lisansları görmek üzere atanır.
+7.  kullanıcının şu anda hangi lisansları atadığını görmek için **Lisanslar'ı** tıklatın.
 
-8.  Tıklayın **atama** düğmesi.
+8.  **Atla** düğmesini tıklatın.
 
-9.  Seçin **bir veya daha çok ürünlerin** kullanılabilir ürünler listesinden.
+9.  Kullanılabilir ürünler listesinden **bir veya daha fazla ürün** seçin.
 
-10. **İsteğe bağlı** tıklayın **atama seçenekleri** hedefle ürünleri atamak için öğesi. Tıklayın **Tamam** bu ne zaman tamamlanır.
+10. Ürünleri parçalı olarak atamak için **atama seçenekleri** öğesini **isteğe bağlı** olarak tıklatın. Bu tamamlandığında **Tamam'ı** tıklatın.
 
-11. Tıklayın **atama** bu lisans bu kullanıcıya atamak için düğme.
+11. Bu lisansları bu kullanıcıya atamak için **Atla** düğmesini tıklatın.
 
-## <a name="problems-with-groups"></a>Grupları ile ilgili sorunlar
+## <a name="problems-with-groups"></a>Gruplarla ilgili sorunlar
 
-Uygulama erişimi, uygulamaya atanmış bir gruba bir sorun nedeniyle engellenebilir. Sorun giderme ve gruplar ve grup üyelikleri ile çözmekte bazı yollar şunlardır:
+Uygulamaya atanan bir grupla ilgili bir sorun nedeniyle uygulama erişimi engellenebilir. Gruplar ve grup üyelikleriyle ilgili sorunları gidermenin ve çözebileceğiniz bazı yollar şunlardır:
 
--   [Bir grubun üyeliğini denetleyin](#check-a-groups-membership)
+-   [Grubun üyeliğini denetleme](#check-a-groups-membership)
 
--   [Dinamik grup üyeliği ölçütlerini denetleyin](#check-a-dynamic-groups-membership-criteria)
+-   [Dinamik bir grubun üyelik ölçütlerini kontrol edin](#check-a-dynamic-groups-membership-criteria)
 
--   [Bir grubun atanmış lisansları denetleme](#check-a-groups-assigned-licenses)
+-   [Grubun atanmış lisanslarını denetleme](#check-a-groups-assigned-licenses)
 
--   [Bir grup lisansları yeniden işle](#reprocess-a-groups-licenses)
+-   [Grubun lisanslarını yeniden işleme](#reprocess-a-groups-licenses)
 
--   [Bir gruba lisans atama](#assign-a-group-a-license)
+-   [Gruba lisans atama](#assign-a-group-a-license)
 
-### <a name="check-a-groups-membership"></a>Bir grubun üyeliğini denetleyin
+### <a name="check-a-groups-membership"></a>Grubun üyeliğini denetleme
 
-Bir grubun üyeliğini denetlemek için şu adımları izleyin:
+Bir grubun üyeliğini denetlemek için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm grupları**.
+5.  **tüm grupları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz grubunun ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz grubu **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **üyeleri** bu gruba atanan kullanıcılar listesini gözden geçirebilirsiniz.
+7.  bu gruba atanan kullanıcıların listesini gözden geçirmek için **Üyeler'i** tıklatın.
 
-### <a name="check-a-dynamic-groups-membership-criteria"></a>Dinamik grup üyeliği ölçütlerini denetleyin 
+### <a name="check-a-dynamic-groups-membership-criteria"></a>Dinamik bir grubun üyelik ölçütlerini kontrol edin 
 
-Dinamik grubun Üyelik ölçütleri denetlemek için şu adımları izleyin:
+Dinamik bir grubun üyelik ölçütlerini denetlemek için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm grupları**.
+5.  **tüm grupları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz grubunun ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz grubu **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **dinamik Üyelik kuralları.**
+7.  **Dinamik üyelik kurallarını tıklatın.**
 
-8.  Gözden geçirme **basit** veya **Gelişmiş** bu grup için tanımlanan kuralı ve bu grubun bir üyesi olmasını istediğiniz kullanıcıyı bu ölçütleri karşıladığından emin olun.
+8.  Bu grup için tanımlanan **basit** veya **gelişmiş** kuralı gözden geçirin ve bu grubun üyesi olmak istediğiniz kullanıcının bu ölçütleri karşıladığından emin olun.
 
-### <a name="check-a-groups-assigned-licenses"></a>Bir grubun atanmış lisansları denetleme
+### <a name="check-a-groups-assigned-licenses"></a>Grubun atanmış lisanslarını denetleme
 
-Lisans atanmış Grup denetlemek için şu adımları izleyin:
+Bir grubun atanmış lisanslarını denetlemek için aşağıdaki adımları izleyin:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5.  tıklayın **tüm grupları**.
+5.  **tüm grupları**tıklatın.
 
-6.  **Arama** ilgilendiğiniz grubunun ve **satıra tıklayın** seçin.
+6.  İlgilendiğiniz grubu **arayın** ve seçmek için **satırı tıklatın.**
 
-7.  tıklayın **lisansları** , şu anda Grup lisansları görmek üzere atanır.
+7.  grubun şu anda hangi lisansları atadığını görmek için **Lisanslar'ı** tıklatın.
 
-### <a name="reprocess-a-groups-licenses"></a>Bir grup lisansları yeniden işle
+### <a name="reprocess-a-groups-licenses"></a>Grubun lisanslarını yeniden işleme
 
-Bir grubun atanmış lisansları yeniden işle için bu adımları izleyin:
+Bir grubun atanan lisanslarını yeniden işlemek için aşağıdaki adımları izleyin:
 
-1. Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2. Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3. Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4. tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4. gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5. tıklayın **tüm grupları**.
+5. **tüm grupları**tıklatın.
 
-6. **Arama** ilgilendiğiniz grubunun ve **satıra tıklayın** seçin.
+6. İlgilendiğiniz grubu **arayın** ve seçmek için **satırı tıklatın.**
 
-7. tıklayın **lisansları** , şu anda Grup lisansları görmek üzere atanır.
+7. grubun şu anda hangi lisansları atadığını görmek için **Lisanslar'ı** tıklatın.
 
-8. tıklayın **suretiyle** düğmesini bu grubun üyelerine atanan lisansları'nın güncel olduğundan emin olun. Bu, boyutu ve karmaşıklığı grubunun bağlı olarak uzun zaman alabilir.
+8. bu grubun üyelerine atanan lisansların güncel olduğundan emin olmak için **Yeniden İşlem** düğmesini tıklatın. Bu, grubun boyutuna ve karmaşıklığına bağlı olarak uzun zaman alabilir.
 
    >[!NOTE]
-   >Daha hızlı bir şekilde bunun için geçici olarak bir lisans kullanıcıya doğrudan atamayı göz önünde bulundurun. [Bir kullanıcıya bir lisans atamanız](#problems-with-application-consent).
+   >Bunu daha hızlı yapmak için, kullanıcıya doğrudan geçici olarak lisans atamayı düşünün. [Kullanıcıya lisans atayın.](#problems-with-application-consent)
    >
    >
 
-### <a name="assign-a-group-a-license"></a>Bir gruba lisans atama
+### <a name="assign-a-group-a-license"></a>Gruba lisans atama
 
-Bir gruba lisans atamak için bu adımları izleyin:
+Bir gruba lisans atamak için aşağıdaki adımları izleyin:
 
-1. Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2. Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3. Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4. tıklayın **kullanıcılar ve gruplar** Gezinti menüsünde.
+4. gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
 
-5. tıklayın **tüm grupları**.
+5. **tüm grupları**tıklatın.
 
-6. **Arama** ilgilendiğiniz grubunun ve **satıra tıklayın** seçin.
+6. İlgilendiğiniz grubu **arayın** ve seçmek için **satırı tıklatın.**
 
-7. tıklayın **lisansları** , şu anda Grup lisansları görmek üzere atanır.
+7. grubun şu anda hangi lisansları atadığını görmek için **Lisanslar'ı** tıklatın.
 
-8. Tıklayın **atama** düğmesi.
+8. **Atla** düğmesini tıklatın.
 
-9. Seçin **bir veya daha çok ürünlerin** kullanılabilir ürünler listesinden.
+9. Kullanılabilir ürünler listesinden **bir veya daha fazla ürün** seçin.
 
-10. **İsteğe bağlı** tıklayın **atama seçenekleri** hedefle ürünleri atamak için öğesi. Tıklayın **Tamam** bu ne zaman tamamlanır.
+10. Ürünleri parçalı olarak atamak için **atama seçenekleri** öğesini **isteğe bağlı** olarak tıklatın. Bu tamamlandığında **Tamam'ı** tıklatın.
 
-11. Tıklayın **atama** bu gruba bu lisansları atamak için düğme. Bu, boyutu ve karmaşıklığı grubunun bağlı olarak uzun zaman alabilir.
+11. Bu lisansları bu gruba atamak için **Atla** düğmesini tıklatın. Bu, grubun boyutuna ve karmaşıklığına bağlı olarak uzun zaman alabilir.
 
     >[!NOTE]
-    >Daha hızlı bir şekilde bunun için geçici olarak bir lisans kullanıcıya doğrudan atamayı göz önünde bulundurun. [Bir kullanıcıya bir lisans atamanız](#problems-with-application-consent).
+    >Bunu daha hızlı yapmak için, kullanıcıya doğrudan geçici olarak lisans atamayı düşünün. [Kullanıcıya lisans atayın.](#problems-with-application-consent)
     > 
     >
 
-## <a name="problems-with-conditional-access-policies"></a>Koşullu erişim ilkeleri ile ilgili sorunlar
+## <a name="problems-with-conditional-access-policies"></a>Koşullu Erişim ilkeleriyle ilgili sorunlar
 
-### <a name="check-a-specific-conditional-access-policy"></a>Belirli bir koşullu erişim ilkesi denetleyin
+### <a name="check-a-specific-conditional-access-policy"></a>Belirli bir Koşullu Erişim ilkesini denetleme
 
-Denetleyin ya da tek bir koşullu erişim ilkesi doğrulamak için:
+Tek bir Koşullu Erişim ilkesini denetlemek veya doğrulamak için:
 
-1. Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2. Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3. Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4. tıklayın **kurumsal uygulamalar** Gezinti menüsünde.
+4. gezinti menüsünde **Kurumsal uygulamaları** tıklatın.
 
-5. tıklayın **koşullu erişim** Gezinti öğesi.
+5. **Koşullu Erişim** gezinti öğesini tıklatın.
 
-6. İnceleme ilgilendiğiniz ilkeye tıklayın.
+6. incelemek istediğiniz politikayı tıklatın.
 
-7. Hiç belirli bir koşul, atamaları veya kullanıcı erişimini engelliyor olabilecek diğer ayarları gözden geçirin.
+7. Kullanıcı erişimini engelleyen belirli koşullar, atamalar veya diğer ayarlar olmadığını gözden geçirin.
 
    >[!NOTE]
-   >Geçici olarak, olmayan etkileyen emin olmak için bu ilkeyi devre dışı bırakmak isteyebilirsiniz oturum açmalar. Bunu yapmak için ayarlanmış **ilkesini etkinleştir** geç **yok** tıklatıp **Kaydet** düğmesi.
+   >Oturum açma ları etkilemediğinden emin olmak için bu ilkeyi geçici olarak devre dışı kılabilir. Bunu yapmak **için, Etkinleştir leilkesini** **Hayır'a** ayarlayın ve **Kaydet** düğmesini tıklatın.
    >
    >
 
-### <a name="check-a-specific-applications-conditional-access-policy"></a>Belirli bir uygulamanın koşullu erişim ilkesini denetleme
+### <a name="check-a-specific-applications-conditional-access-policy"></a>Belirli bir uygulamanın Koşullu Erişim ilkesini denetleme
 
-Denetleyin ya da tek bir uygulamanın şu anda doğrulamak için koşullu erişim ilkesi yapılandırmış:
+Tek bir uygulamanın şu anda yapılandırılmış Koşullu Erişim ilkesini denetlemek veya doğrulamak için:
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-4.  tıklayın **kurumsal uygulamalar** Gezinti menüsünde.
+4.  gezinti menüsünde **Kurumsal uygulamaları** tıklatın.
 
-5.  tıklayın **tüm uygulamaları**.
+5.  **tüm uygulamaları**tıklatın.
 
-6.  Uygulama tarafından ad veya uygulama kodunu görüntülemek oturum açmak ilgilendiğiniz uygulama veya kullanıcı için arama çalışıyor
-
-     >[!NOTE]
-     >Aradığınız uygulamayı görmüyorsanız tıklayın **filtre** listeye kapsamını genişletin ve düğme **tüm uygulamaları**. Daha fazla sütun görmek istiyorsanız, tıklayın **sütunları** düğmesini uygulamalarınız için ek ayrıntıları ekleyin.
-     >
-     >
-
-7.  tıklayın **koşullu erişim** Gezinti öğesi.
-
-8.  İnceleme ilgilendiğiniz ilkeye tıklayın.
-
-9.  Hiç belirli bir koşul, atamaları veya kullanıcı erişimini engelliyor olabilecek diğer ayarları gözden geçirin.
+6.  İlgilendiğiniz uygulamayı arayın veya kullanıcı uygulama görüntülü adı veya uygulama kimliğiyle oturum açmaya çalışıyor.
 
      >[!NOTE]
-     >Geçici olarak, olmayan etkileyen emin olmak için bu ilkeyi devre dışı bırakmak isteyebilirsiniz oturum açmalar. Bunu yapmak için ayarlanmış **ilkesini etkinleştir** geç **yok** tıklatıp **Kaydet** düğmesi.
+     >Aradığınız uygulamayı görmüyorsanız, **Filtre düğmesini** tıklatın ve listenin kapsamını **Tüm uygulamalara**genişletin. Daha fazla sütun görmek istiyorsanız, uygulamalarınız için ek ayrıntılar eklemek için **Sütunlar** düğmesini tıklatın.
      >
      >
 
-### <a name="disable-a-specific-conditional-access-policy"></a>Belirli bir koşullu erişim ilkesini devre dışı bırak
+7.  **Koşullu Erişim** gezinti öğesini tıklatın.
 
-Denetleyin ya da tek bir koşullu erişim ilkesi doğrulamak için:
+8.  incelemek istediğiniz politikayı tıklatın.
 
-1.  Açık [ **Azure portalında** ](https://portal.azure.com/) ve oturum açma bir **genel yönetici.**
+9.  Kullanıcı erişimini engelleyen belirli koşullar, atamalar veya diğer ayarlar olmadığını gözden geçirin.
 
-2.  Açık **Azure Active Directory uzantısını** tıklayarak **tüm hizmetleri** ana sol gezinti menüsünün üstünde.
+     >[!NOTE]
+     >Oturum açma ları etkilemediğinden emin olmak için bu ilkeyi geçici olarak devre dışı kılabilir. Bunu yapmak **için, Etkinleştir leilkesini** **Hayır'a** ayarlayın ve **Kaydet** düğmesini tıklatın.
+     >
+     >
 
-3.  Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+### <a name="disable-a-specific-conditional-access-policy"></a>Belirli bir Koşullu Erişim ilkesini devre dışı
 
-4.  tıklayın **kurumsal uygulamalar** Gezinti menüsünde.
+Tek bir Koşullu Erişim ilkesini denetlemek veya doğrulamak için:
 
-5.  tıklayın **koşullu erişim** Gezinti öğesi.
+1.  Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
 
-6.  İnceleme ilgilendiğiniz ilkeye tıklayın.
+2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
 
-7.  Ayarlayarak bu ilkeyi devre dışı **ilkesini etkinleştir** geç **Hayır** tıklatıp **Kaydet** düğmesi.
+3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
 
-## <a name="problems-with-application-consent"></a>Uygulama onay ile ilgili sorunlar
+4.  gezinti menüsünde **Kurumsal uygulamaları** tıklatın.
 
-Uygun izne onay işlemi değil yeniden oluştuğundan uygulama erişim engellenebilir. Sorun giderme ve uygulama onay sorunlarını çözmek bazı yollar şunlardır:
+5.  **Koşullu Erişim** gezinti öğesini tıklatın.
 
--   [Bir kullanıcı düzeyi onayı işlemi gerçekleştirme](#perform-a-user-level-consent-operation)
+6.  incelemek istediğiniz politikayı tıklatın.
 
--   [Herhangi bir uygulama için yönetici düzeyi onayı işlemi gerçekleştirme](#perform-administrator-level-consent-operation-for-any-application)
+7.  **Etkinleştir lekme ilkesini** **Hayır'a** ayarlayarak ilkeyi devre dışı bırakıp **Kaydet** düğmesini tıklatın.
 
--   [Tek kiracılı uygulama için yönetici düzeyi onayı gerçekleştirin](#perform-administrator-level-consent-for-a-single-tenant-application)
+## <a name="problems-with-application-consent"></a>Uygulama onayı ile ilgili sorunlar
 
--   [Çok kiracılı bir uygulama için yönetici düzeyi onayı gerçekleştirin](#perform-administrator-level-consent-for-a-multi-tenant-application)
+Uygun izinler onay işlemi gerçekleşmediği için uygulama erişimi engellenebilir. Uygulama onayı sorunlarını gidermenin ve çözebileceğiniz bazı yollar şunlardır:
 
-### <a name="perform-a-user-level-consent-operation"></a>Bir kullanıcı düzeyi onayı işlemi gerçekleştirme
+-   [Kullanıcı düzeyinde bir onay işlemi gerçekleştirme](#perform-a-user-level-consent-operation)
 
--   İzinleri isteyen tüm Open ID Connect özellikli bir uygulama için kullanıcı düzeyi onayı için oturum açmış kullanıcı için uygulamanın oturum açma ekranı giderek gerçekleştirir.
+-   [Herhangi bir uygulama için yönetici düzeyinde onay işlemi gerçekleştirin](#perform-administrator-level-consent-operation-for-any-application)
 
--   Bu program aracılığıyla yapmak istiyorsanız, bkz. [tek tek kullanıcı onayı isteyen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent).
+-   [Tek kiracılı bir uygulama için yönetici düzeyinde onay gerçekleştirme](#perform-administrator-level-consent-for-a-single-tenant-application)
 
-### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Herhangi bir uygulama için yönetici düzeyi onayı işlemi gerçekleştirme
+-   [Çok kiracılı bir uygulama için yönetici düzeyinde onay gerçekleştirme](#perform-administrator-level-consent-for-a-multi-tenant-application)
 
--   İçin **yalnızca V1 uygulama modelini kullanarak geliştirilen uygulamalar**, yönetici düzeyi onayı ekleyerek gerçekleşmesi için bu zorlayabilirsiniz " **? yönetici komut istemi =\_onay**" sonuna bir uygulamanın oturum URL.
+### <a name="perform-a-user-level-consent-operation"></a>Kullanıcı düzeyinde bir onay işlemi gerçekleştirme
 
--   İçin **herhangi bir uygulama geliştirilirken V2 uygulama modelini kullanarak**, bu yönetici düzeyi onayı başlığı altında verilen yönergeleri izleyerek gerçekleşmesi için zorunlu kılabilir **bir dizin Yöneticisiizinlereilişkinistek** bölümünü [yönetici onay uç noktası kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   İzin isteyen açık kimlik bağlantısı etkin olan herhangi bir uygulama için, uygulamanın oturum açma ekranında gezinmek, oturum açmış kullanıcı için uygulamaya kullanıcı düzeyinde onay verir.
 
-### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Tek kiracılı uygulama için yönetici düzeyi onayı gerçekleştirin
+-   Bunu programlı bir şekilde yapmak istiyorsanız, [bkz.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)
 
--   İçin **tek kiracılı uygulamalar** izinleri (gelenler geliştirdiğiniz veya kuruluşunuzda kendi), istek gerçekleştirebileceğiniz bir **Yönetim düzeyi onayı** tüm adına işlemi Genel yönetici olarak oturum açma ve tıklayarak tarafından kullanıcılar **izinleri verin** üst kısmındaki düğmeye **uygulama kayıt defteri -&gt; tüm uygulamalar -&gt; bir uygulama - seçin&gt; Gerekli izinler** bölmesi.
+### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Herhangi bir uygulama için yönetici düzeyinde onay işlemi gerçekleştirin
 
--   İçin **herhangi bir uygulama geliştirdiğinizde V1 veya V2 uygulama modelini kullanarak**, bu yönetici düzeyi onayı başlığı altında verilen yönergeleri izleyerek gerçekleşmesi için zorunlu kılabilir **bir dizin yönetici izinleri iste**  bölümünü [yönetici onay uç noktası kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   **Yalnızca V1 uygulama modeli kullanılarak geliştirilen uygulamalarda,** bir uygulamanın URL'deki işaretinin sonuna "**\_?prompt=admin consent**" ekleyerek bu yönetici düzeyindeki onayı almaya zorlayabilirsiniz.
 
-### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Çok kiracılı bir uygulama için yönetici düzeyi onayı gerçekleştirin
+-   **V2 uygulama modeli kullanılarak geliştirilen herhangi**bir uygulama için, yönetici onayı bitiş noktasını **kullanmanın bir dizin yöneticisi bölümünden izinleri talep** etme altındaki yönergeleri izleyerek bu yönetici düzeyinde ki [onayı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)uygulayabilirsiniz.
 
--   İçin **çok kiracılı uygulamaları** (bir uygulama veya bir üçüncü taraf, Microsoft, geliştiren gibi), izin istemek, gerçekleştirebileceğiniz bir **Yönetim düzeyi onayı** işlemi. Genel yönetici olarak oturum açın ve tıklayarak **izinleri verin** düğmesini **kurumsal uygulamalar -&gt; tüm uygulamalar -&gt; bir uygulama - seçin&gt; izinleri**  bölmesinde (kullanılabilir olan en kısa sürede).
+### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Tek kiracılı bir uygulama için yönetici düzeyinde onay gerçekleştirme
 
--   Bu yönetici düzeyi onayı başlığı altında verilen yönergeleri izleyerek oluşmasına da zorunlu kılabilir **bir dizin yönetici izinleri istemek** bölümünü [yönetici onay uç noktası kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   İzin isteyen **tek kiracılı uygulamalar** için (kuruluşunuzda geliştirdiğiniz veya sahip olduğunuz uygulamalar gibi), Global Administrator olarak oturum açarak ve Uygulama Kayıt Defteri'nin üst kısmındaki **Hibe izinleri** düğmesini tıklatarak tüm kullanıcılar adına **yönetim düzeyinde** bir onay işlemi gerçekleştirebilirsiniz **&gt; - Tüm Uygulamalar&gt; - Bir Uygulama Seçin -&gt; Gerekli İzinler** bölmesi.
+
+-   **V1 veya V2 uygulama modeli kullanılarak geliştirilen herhangi**bir uygulama için, yönetici onayı bitiş noktasını **kullanmanın bir dizin yöneticisi bölümünden izinleri Talep** altında yönergeleri izleyerek bu yönetici düzeyinde [onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)ını uygulayabilirsiniz.
+
+### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Çok kiracılı bir uygulama için yönetici düzeyinde onay gerçekleştirme
+
+-   İzin isteyen **çok kiracılı uygulamalar** için (üçüncü bir tarafın geliştirdiği bir uygulama veya Microsoft gibi), **yönetim düzeyinde** bir onay işlemi gerçekleştirebilirsiniz. Global Yönetici olarak oturum açın ve Kurumsal Uygulamalar altında **Hibe izinleri** düğmesini tıklatarak **-&gt; Tüm Uygulamalar&gt; - Bir Uygulama Seçin -&gt; İzinler** bölmesi (yakında kullanılabilir).
+
+-   Yönetici [onayı bitiş noktasını kullanmanın](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) **bir dizin yöneticisi bölümünden izinleri İste yönergesini** izleyerek bu yönetici düzeyindeki onayı da uygulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Yönetici onay uç noktası kullanma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
+[Yönetici onayı bitiş noktasını kullanma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
 

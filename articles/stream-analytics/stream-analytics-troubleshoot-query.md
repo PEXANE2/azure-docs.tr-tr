@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics sorgularının sorunlarını giderme
-description: Bu makalede Azure Stream Analytics işlerinde sorgularınızda sorun gidermeye yönelik teknikler açıklanmaktadır.
+title: Azure Akış Analizi sorgularını sorun giderme
+description: Bu makalede, Azure Akış Analizi işlerinde sorgularınızı giderme teknikleri açıklanmaktadır.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,96 +9,96 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844437"
 ---
-# <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics sorgularının sorunlarını giderme
+# <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Akış Analizi sorgularını sorun giderme
 
-Bu makalede, Stream Analytics sorguları geliştirmeyle ilgili yaygın sorunlar ve bunların nasıl giderileceği açıklanmaktadır.
+Bu makalede, Akış Analizi sorguları geliştirme ve bunları nasıl sorun giderme ile ilgili yaygın sorunlar açıklanmaktadır.
 
 ## <a name="query-is-not-producing-expected-output"></a>Sorgu beklenen çıktıyı üretmiyor
-1.  Yerel olarak test ederek hataları inceleyin:
-    - Azure portal, **sorgu** sekmesinde **Test**' i seçin. [Sorguyu test](stream-analytics-test-query.md)etmek için indirilen örnek verileri kullanın. Tüm hataları inceleyin ve bunları düzeltmeye çalışın.   
-    - Ayrıca, Visual Studio veya [Visual Studio Code](visual-studio-code-local-run-live-input.md)için Azure Stream Analytics araçları kullanarak [sorgunuzu yerel olarak test](stream-analytics-live-data-local-testing.md) edebilirsiniz. 
+1.  Yerel olarak sınama yaparak hataları inceleyin:
+    - Azure **portalında** Sorgu sekmesinde **Test'i**seçin. [Sorguyu sınamak](stream-analytics-test-query.md)için indirilen örnek verileri kullanın. Hataları inceleyin ve düzeltmeye çalışın.   
+    - Visual Studio veya [Visual Studio Code](visual-studio-code-local-run-live-input.md)için Azure Akışı Analizi araçlarını kullanarak [sorgunuzu yerel olarak](stream-analytics-live-data-local-testing.md) da test edebilirsiniz. 
 
-2.  Visual Studio için Azure Stream Analytics Araçları ' nda [iş diyagramını kullanarak yerel olarak adım adım hata ayıklayın](debug-locally-using-job-diagram.md) . İş diyagramı, verilerin giriş kaynaklarından (Olay Hub 'ı, IoT Hub, vb.) birden çok sorgu adımı ve son olarak havuza çıktı aracılığıyla nasıl akacağını gösterir. Her sorgu adımı, WıTH ifadesiyle kullanılarak betikte tanımlanan geçici bir sonuç kümesiyle eşlenir. Sorunun kaynağını bulmak için her bir ara sonuç kümesindeki her bir sorgu adımındaki verileri ve ölçümleri de görüntüleyebilirsiniz.
-    ![Iş diyagramı önizleme sonucu](./media/debug-locally-using-job-diagram/preview-result.png)
+2.  Visual Studio için Azure Akış Analizi araçlarında [iş diyagramını kullanarak hata ayıklama sorguları adım adım](debug-locally-using-job-diagram.md) yerel olarak sorgular. İş diyagramı, birden çok sorgu adımı ve son olarak batmaya çıkış yoluyla veri giriş kaynaklarından (Event Hub, IoT Hub, vb.) nasıl aktığını göstermektir. Her sorgu adımı, WITH deyimi kullanılarak komut dosyasında tanımlanan geçici bir sonuç kümesine eşlenir. Sorunun kaynağını bulmak için ayarlanan her ara sonuç kümesinde her sorgu adımında verilerin yanı sıra ölçümleri de görüntüleyebilirsiniz.
+    ![İş diyagramı önizleme sonucu](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  [**Zaman damgası**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)kullanıyorsanız, olayların zaman damgalarının [iş başlangıç zamanından](stream-analytics-out-of-order-and-late-events.md)daha büyük olduğunu doğrulayın.
+3.  [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)kullanıyorsanız, olayların [iş başlangıç saatinden](stream-analytics-out-of-order-and-late-events.md)daha büyük zaman damgaları olduğunu doğrulayın.
 
-4.  Genel sınırları ortadan kaldırın, örneğin:
-    - Sorgudaki [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) yan tümcesi tüm olayları filtreleyerek tüm çıktının oluşturulmasını önler.
-    - [**Atama**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) işlevi başarısız olur ve işin başarısız olmasına neden olur. Tür dönüştürme hatalarından kaçınmak için, bunun yerine [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) kullanın.
-    - Pencere işlevleri kullandığınızda, tüm pencere süresinin sorgudaki bir çıktıyı görmesini bekleyin.
-    - Olaylar için zaman damgası iş başlangıç zamanından önce gelir ve bu nedenle olaylar bırakılıyor.
+4.  Yaygın tuzakları ortadan kaldırın, örneğin:
+    - Sorgudaki [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) yan tümcesi tüm olayları filtreleyerek herhangi bir çıktının oluşturulmasını önler.
+    - [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) işlevi başarısız olur ve bu da işin başarısız olmasıyla sonuçlaolur. Tür döküm hatalarını önlemek için bunun yerine [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) kullanın.
+    - Pencere işlevlerini kullandığınızda, sorgudan bir çıktı görmek için tüm pencere süresinin gelmesini bekleyin.
+    - Olaylar için zaman damgası iş başlangıç saatinden önce gelir ve bu nedenle olaylar bırakılır.
 
-5.  Olay sıralama ilkelerinin beklenen şekilde yapılandırıldığından emin olun. **Ayarlar** ' a gidin ve [**olay sıralaması**](stream-analytics-out-of-order-and-late-events.md)' nı seçin. Sorguyu test etmek için **Test** düğmesini kullandığınızda *ilke uygulanmaz.* Bu sonuç, test sırasında çalıştırılan iş ve üretimde iş arasında bir farklılık olduğunu fark ediyor. 
+5.  Olay sıralama ilkelerinin beklendiği gibi yapılandırıldığından emin olun. **Ayarlar'a** gidin ve [**Olay Sırası'nı**](stream-analytics-out-of-order-and-late-events.md)seçin. Sorguyu sınamak için **Test** düğmesini kullandığınızda ilke *uygulanmaz.* Bu sonuç, tarayıcı içi testi ve üretimde işi çalıştırmak arasındaki bir farktır. 
 
-6. Denetim ve tanılama günlüklerini kullanarak hata ayıklayın:
-    - [Denetim günlüklerini](../azure-resource-manager/resource-group-audit.md)kullanın ve hataları tanımlamak ve hatalarını ayıklamak için filtre uygulayın.
-    - Hataları tanımlamak ve hatalarını ayıklamak için [iş tanılama günlüklerini](stream-analytics-job-diagnostic-logs.md) kullanın.
+6. Denetim ve tanılama günlüklerini kullanarak hata ayıklama:
+    - Hataları tanımlamak ve hata ayıklamak için [Denetim Günlükleri'ni](../azure-resource-manager/resource-group-audit.md)ve filtreyi kullanın.
+    - Hataları tanımlamak ve hata ayıklamak için [iş tanılama günlüklerini](stream-analytics-job-diagnostic-logs.md) kullanın.
 
-## <a name="job-is-consuming-too-many-streaming-units"></a>İş çok fazla akış birimi kullanıyor
-Azure Stream Analytics ' de paralelleştirme avantajını kullandığınızdan emin olun. Giriş bölümlerini yapılandırarak ve analiz sorgu tanımını ayarlayarak Stream Analytics işlerin [sorgu paralel hale getirme ile ölçeklendirmeyi](stream-analytics-parallelization.md) öğrenebilirsiniz.
+## <a name="job-is-consuming-too-many-streaming-units"></a>İş çok fazla Akış Birimi tüketiyor
+Azure Akış Analizi'nde paralelleştirmeden yararlandığınızdan emin olun. Giriş bölümlerini yapılandırarak ve analitik sorgu tanımını ayarlayarak Akış Analizi işlerinin [sorgu paralellemesi ile ölçeklendirmeyi](stream-analytics-parallelization.md) öğrenebilirsiniz.
 
-## <a name="debug-queries-progressively"></a>Sorguları aşamalı olarak hata ayıklama
+## <a name="debug-queries-progressively"></a>Sorgularda aşamalı olarak hata ayıklama
 
-Gerçek zamanlı veri işlemede, verilerin ortasında ne gibi göründüğünü bilmek faydalı olabilir. Azure Stream Analytics bir işin girişleri veya adımları birden çok kez okunabileceğinden, ek SELECT INTO deyimlerini yazabilirsiniz. Bunun yapılması, ara verileri depolama alanına çıkarır ve verilerin doğruluğunu, bir programda hata ayıkladığınızda olduğu gibi, *izleme değişkenlerini* incelemenizi sağlar.
+Gerçek zamanlı veri işlemede, sorgunun ortasındaki verilerin nasıl göründüğünü bilmek yararlı olabilir. Bir Azure Akışı Analizi işinin girdileri veya adımları birden çok kez okunabildiği için, ek SELECT INTO deyimleri yazabilirsiniz. Bunu yapmak, ara verileri depolamaalanına verir ve tıpkı bir programı hata ayıklamada *izleme değişkenlerinin* yaptığı gibi verilerin doğruluğunu incelemenize olanak tanır.
 
-Azure Stream Analytics işinde aşağıdaki örnek sorgu, bir akış girişi, iki başvuru veri girişi ve Azure Tablo depolama 'ya bir çıktı içerir. Sorgu, ad ve kategori bilgilerini almak için Olay Hub 'ından ve iki başvuru Bloblarından verileri birleştirir:
+Bir Azure Akış Analizi işinde ki aşağıdaki örnek sorguda bir akış girişi, iki başvuru veri girişi ve Azure Tablo Depolamasına çıktı vardır. Sorgu, ad ve kategori bilgilerini almak için olay merkezinden gelen verileri ve iki başvuru bloblarını birleştirir:
 
-![Örnek Stream Analytics sorgu Seç](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![Örnek Akış Analizi SELECT INTO sorgusu](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-İşin çalıştığını, ancak çıktıda hiçbir olayın üretilmediğini unutmayın. Burada gösterilen **izleme** kutucuğunda, girişin veri üretmekte olduğunu, ancak **birleşimin** hangi adımının tüm olayların bırakılmasına neden olduğunu bilemezsiniz.
+İşin çalıştığını, ancak çıktıda hiçbir olay üretilmediğini unutmayın. Burada gösterilen **İzleme** döşemesinde, girişin veri ürettiğini görebilirsiniz, ancak **JOIN'in** hangi adımının tüm olayların düşmesine neden olduğunu bilmiyorsunuz.
 
-![Stream Analytics Izleme kutucuğu](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![Akış Analizi İzleme karosu](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
 
-Bu durumda, ara JOIN sonuçlarını ve girişten okunan verileri "günlüğe kaydetmek" için birkaç ekstra SELECT INTO ifadesi ekleyebilirsiniz.
+Bu durumda, ara JOIN sonuçlarını ve girişten okunan verileri "günlüğe kaydetmek" için birkaç ekstra SELECT INTO ifadeleri ekleyebilirsiniz.
 
-Bu örnekte, iki yeni "geçici çıkış" ekledik. Dilediğiniz havuz olabilir. Burada Azure Storage 'ı örnek olarak kullanırız:
+Bu örnekte, iki yeni "geçici çıktı" ekledik. İstediğin gibi bir lavabo olabilirler. Burada Azure Depolama'yı örnek olarak kullanıyoruz:
 
-![Stream Analytics sorguya ek SELECT INTO deyimleri ekleme](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![Akış Analizi sorgusuna ekstra SELECT INTO ifadeleri ekleme](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
-Daha sonra sorguyu şunun gibi yeniden yazabilirsiniz:
+Daha sonra sorguyu şu şekilde yeniden yazabilirsiniz:
 
-![Yeniden yazan Stream Analytics sorgu Seç](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![SELECT INTO Akış Analizi sorgusunun yeniden yazılması](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
-Şimdi işi yeniden başlatın ve birkaç dakika boyunca çalışmasına izin verin. Daha sonra aşağıdaki tabloları oluşturmak için Temp1 ve Temp2 'i Visual Studio Cloud Explorer ile sorgulayın:
+Şimdi işe tekrar başlayın ve birkaç dakika çalışmasına izin verin. Ardından aşağıdaki tabloları oluşturmak için Visual Studio Cloud Explorer ile temp1 ve temp2'yi sorgulayın:
 
-**Temp1 tablo**
-![temp1 tablo Stream ANALYTICS sorgu seçin](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**temp1 tablosu**
+![SELECT INTO temp1 tablo Akış Analizi sorgusu](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**Temp2 tablo**
-![temp2 tablo Stream ANALYTICS sorgu seçin](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**temp2 tablo**
+![SELECT INTO temp2 tablo Akış Analizi sorgusu](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
-Gördüğünüz gibi, Temp1 ve Temp2 her ikisinde de veri bulunur ve ad sütunu Temp2 içinde doğru doldurulur. Ancak hala çıktıda hiç veri bulunmadığından bir sorun oluştu:
+Gördüğünüz gibi, temp1 ve temp2 her ikisi de veri var ve ad sütunu doğru temp2 doldurulur. Ancak, çıktıda hala veri olmadığından, bir sorun vardır:
 
-![Veri Stream Analytics sorgu olmadan output1 tablo seçme](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![Veri Akışı Analizi sorgusu olmayan output1 tablosuna SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
-Verileri örnekleyerek, sorunun ikinci BIRLEŞIMDE geldiğinden neredeyse emin olabilirsiniz. Blob 'dan başvuru verilerini indirebilir ve bir göz atabilirsiniz:
+Verileri örnekleyerek, sorunun ikinci JOIN ile olduğundan neredeyse emin olabilirsiniz. Kaynaktan başvuru verilerini indirebilir ve bir göz atabilirsiniz:
 
-![Sorgu Stream Analytics ref tablosuna Seç](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![REF TABLOSUNA SELECT Stream Analytics sorgusu](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
-Görebileceğiniz gibi, bu başvuru verilerinde GUID biçimi Temp2 içindeki [from] sütununun biçiminden farklıdır. Bu nedenle, veriler beklenen şekilde output1 'e ulaşamamaktadır.
+Gördüğünüz gibi, bu başvuru verilerindeki GUID biçimi, geçici 2'deki [gönderen] sütunun biçiminden farklıdır. Bu nedenle veriler beklendiği gibi output1'e ulaşmadı.
 
-Veri biçimini giderebilir, başvuru blobuna yükleyebilir ve yeniden deneyebilirsiniz:
+Veri biçimini düzeltebilir, başvuru blob'una yükleyebilir ve yeniden deneyebilirsiniz:
 
-![Sorgu Stream Analytics geçici tablo SEÇIN](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![SELECT INTO temp table Stream Analytics sorgusu](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
-Bu kez, çıkışdaki veriler biçimlendirilir ve beklendiği gibi doldurulur.
+Bu kez, çıktıdaki veriler biçimlendirilir ve beklendiği gibi doldurulur.
 
-![Son tablo Stream Analytics sorguda SEÇIN](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![SELECT INTO final tablosu Stream Analytics sorgusu](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için deneyin bizim [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Daha fazla yardım için [Azure Akışı Analizi forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Akış Analizine Giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

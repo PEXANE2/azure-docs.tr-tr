@@ -1,6 +1,6 @@
 ---
-title: Uzaktan izleme çözümü için kullanıcı Arabirimi - Azure Kılavuz ekleme | Microsoft Docs
-description: Bu makalede Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimi sayfasındaki yeni GID ekleme gösterilmektedir.
+title: Uzaktan İzleme çözümüne ızgara ekleme Kullanıcı Arabirimi - Azure | Microsoft Dokümanlar
+description: Bu makalede, Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'nde bir sayfaya nasıl yeni bir gid ekleyeceğiniz gösterilmektedir.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,56 +9,56 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447106"
 ---
-# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine özel kılavuz ekleme
+# <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir ızgara ekleme
 
-Bu makalede Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabiriminde bir sayfaya yeni bir kılavuz ekleme gösterilmektedir. Bu makalede açıklanır:
+Bu makalede, Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ndeki bir sayfaya nasıl yeni bir ızgara ekleyeceğiniz gösterilmektedir. Makalede şöyle anlatılmaktadır:
 
-- Yerel geliştirme ortamı hazırlamayı öğrenin.
-- Yeni bir kılavuz Web kullanıcı Arabiriminde bir sayfa ekleme.
+- Yerel bir kalkınma ortamı nasıl hazırlanır.
+- Web Web Arama Hizmeti'ndeki bir sayfaya yeni bir ızgara ekleme.
 
-Bu makaledeki örnek grid hizmetinden verileri görüntüler, [özel hizmet Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine ekleme](iot-accelerators-remote-monitoring-customize-service.md) nasıl yapılır makalesi nasıl ekleneceğini gösterir.
+Bu makaledeki örnek Kılavuz, Uzaktan İzleme [çözüm hızlandırıcı web Ara Birimi'ne özel bir hizmet ekle'nin](iot-accelerators-remote-monitoring-customize-service.md) nasıl ekleyeceğimize gösterdiği hizmetteki verileri görüntüler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Nasıl yapılır bu kılavuzdaki adımları tamamlamak için aşağıdaki yazılımların yerel geliştirme makinenizde yüklü gerekir:
+Bu nasıl yap'la ilgili kılavuzdaki adımları tamamlamak için, yerel geliştirme makinenize aşağıdaki yazılımın yüklenmesi gerekir:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Devam etmeden önce aşağıdaki makaleleri adımları tamamlaması gerekir:
+Devam etmeden önce aşağıdaki makalelerdeki adımları tamamlamanız gerekir:
 
-- [Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine özel sayfa ekleme](iot-accelerators-remote-monitoring-customize-page.md).
-- [Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine özel hizmet ekleme](iot-accelerators-remote-monitoring-customize-service.md)
+- [Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir sayfa ekleyin.](iot-accelerators-remote-monitoring-customize-page.md)
+- [Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir hizmet ekleme](iot-accelerators-remote-monitoring-customize-service.md)
 
 ## <a name="add-a-grid"></a>Kılavuz ekleme
 
-Web kullanıcı Arabirimine bir kılavuz eklemek için kılavuz tanımlayan kaynak dosyaları ekleyin ve web kullanıcı Arabirimi yeni bileşen haberdar olmak için bazı mevcut dosyaları değiştirmek gerekir.
+Web Ara Birimi'ne ızgara eklemek için, ızgarayı tanımlayan kaynak dosyaları eklemeniz ve web UI'nin yeni bileşenden haberdar olmasını sağlamak için varolan bazı dosyaları değiştirmeniz gerekir.
 
-### <a name="add-the-new-files-that-define-the-grid"></a>Kılavuz tanımlayan yeni dosyalar Ekle
+### <a name="add-the-new-files-that-define-the-grid"></a>Izgarayı tanımlayan yeni dosyaları ekleme
 
-Başlamak, için **gözden geçirme/src/bileşenleri/pageWithGrid/sayfaları/exampleGrid** klasörü tanımlayan bir kılavuz dosyalarını içerir:
+Başlamak için **src/walkthrough/components/pages/pagesWithGrid/exampleGrid** klasörü ızgara tanımlayan dosyaları içerir:
 
-**exampleGrid.js**
+**örnekGrid.js**
 
 [!code-javascript[Example grid](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGrid.js?name=grid "Example grid")]
 
-**exampleGridConfig.js**
+**ÖrnekGridConfig.js**
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
-Kopyalama **gözden geçirme/src/bileşenleri/pageWithGrid/sayfaları/exampleGrid** klasörüne **src/bileşenleri/sayfaları/örnek** klasör.
+**src/walkthrough/components/pages/pages/pageWithGrid/exampleGrid** klasörünü **src/components/pages/example** klasörüne kopyalayın.
 
-### <a name="add-the-grid-to-the-page"></a>Kılavuz sayfasına ekleme
+### <a name="add-the-grid-to-the-page"></a>Sayfaya ızgara ekleme
 
-Değiştirme **src/components/pages/example/basicPage.container.js** gibi hizmet tanımı içeri aktarmak için:
+Hizmet tanımlarını almak için **src/components/pages/example/basicPage.container.js** adresini aşağıdaki gibi değiştirin:
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-Değiştirme **src/components/pages/example/basicPage.js** gibi kılavuz eklemek için:
+Izgarayı eklemek için **src/components/pages/example/basicPage.js'i** aşağıdaki gibi değiştirin:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Değiştirme **src/components/pages/example/basicPage.test.js** testler şu şekilde güncelleştirmek için:
+Testleri güncellemek için **src/components/pages/example/basicPage.test.js** adresini aşağıdaki gibi değiştirin:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -174,25 +174,25 @@ describe('BasicPage Component', () => {
 });
 ```
 
-## <a name="test-the-grid"></a>Test Kılavuzu
+## <a name="test-the-grid"></a>Izgarayı test edin
 
-Web kullanıcı Arabirimi yerel olarak çalışır durumda değilse, yerel kopyanızı deponun kök dizininde aşağıdaki komutu çalıştırın:
+Web Web Arama Ekibi zaten yerel olarak çalışmıyorsa, deponun yerel kopyasının kökünde aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
 npm start
 ```
 
-Önceki komutta kullanıcı Arabiriminde, yerel olarak çalışan [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard). Gidin **örnek** hizmetinden verileri görüntülemek kılavuz görmek için sayfayı.
+Önceki komut ui'yi yerel [http://localhost:3000/dashboard](http://localhost:3000/dashboard)olarak çalışır. Hizmetteki ızgara görüntü verilerini görmek için **Örnek** sayfasına gidin.
 
-## <a name="select-rows"></a>Satırları Seç
+## <a name="select-rows"></a>Satırları seçin
 
-Kılavuz satırları seçmek için bir kullanıcı etkinleştirme iki seçenek vardır:
+Bir kullanıcının ızgaradaki satırları seçmesini etkinleştirmek için iki seçenek vardır:
 
-### <a name="hard-select-rows"></a>Select sabit satır
+### <a name="hard-select-rows"></a>Zor seçili satırlar
 
-Bir kullanıcı aynı anda birden çok satırda yapması gerekiyorsa satırlarda onay kutularını kullanın:
+Bir kullanıcının aynı anda birden çok satırda işlem yapması gerekiyorsa, satırlar üzerindeki onay kutularını kullanın:
 
-1. Seçimi satır sabit etkinleştirmek bir **checkboxColumn** için **columnDefs** kılavuza sağlanan. **checkboxColumn** tanımlanan **/src/components/shared/pcsGrid/pcsGrid.js**:
+1. Kılavuza sağlanan **sütuna** bir **onay kutusuSütun** ekleyerek satırların zor seçimini etkinleştirin. **checkboxSütun** tanımlanır **/src/components/shared/pcsGrid/pcsGrid.js**:
 
     ```js
     this.columnDefs = [
@@ -202,7 +202,7 @@ Bir kullanıcı aynı anda birden çok satırda yapması gerekiyorsa satırlarda
     ];
     ```
 
-1. Seçilen öğelere erişmek için dahili kılavuz API başvuru alın:
+1. Seçili öğelere erişmek için iç ızgara API'sine başvuru alırsınız:
 
     ```js
     onGridReady = gridReadyEvent => {
@@ -214,7 +214,7 @@ Bir kullanıcı aynı anda birden çok satırda yapması gerekiyorsa satırlarda
     };
     ```
 
-1. Kılavuzundaki bir satır seçili sabit olduğunda sayfa bağlamı düğmeleri sağlar:
+1. Kılavuzdaki bir satır zor seçildiğinde sayfaya bağlam düğmeleri sağlayın:
 
     ```js
     this.contextBtns = [
@@ -234,7 +234,7 @@ Bir kullanıcı aynı anda birden çok satırda yapması gerekiyorsa satırlarda
     }
     ```
 
-1. Bir bağlam düğmesine tıklandığında, işlerinizi yapmak için sabit seçili öğeleri alın:
+1. Bir bağlam düğmesi tıklandığında, aşağıdaki leri yapmak için zor seçilen öğeleri alın:
 
     ```js
     doSomething = () => {
@@ -243,11 +243,11 @@ Bir kullanıcı aynı anda birden çok satırda yapması gerekiyorsa satırlarda
     };
     ```
 
-### <a name="soft-select-rows"></a>Satırları geçici seçin
+### <a name="soft-select-rows"></a>Yumuşak seçili satırlar
 
-Kullanıcı yalnızca tek bir satırda yapması gerekiyorsa, bir veya daha fazla sütun için bir yumuşak seçin bağlantısını yapılandırmak **columnDefs**.
+Kullanıcının yalnızca tek bir satırda hareket etmesi gerekiyorsa, **Satırlar sütunundaki**bir veya daha fazla sütun için yumuşak seçimli bir bağlantı yapılandırır.
 
-1. İçinde **exampleGridConfig.js**, ekleme **SoftSelectLinkRenderer** olarak **cellRendererFramework** için bir **columnDef**.
+1. **ÖrnekgridConfig.js,** bir sütuniçin **cellRendererFramework** olarak **SoftSelectLinkRenderer** **ekleyinDef**.
 
     ```js
     export const exampleColumnDefs = {
@@ -260,7 +260,7 @@ Kullanıcı yalnızca tek bir satırda yapması gerekiyorsa, bir veya daha fazla
     };
     ```
 
-1. Bir yazılım Seç bağlantısına tıklandığında tetikler **onSoftSelectChange** olay. Hangi eylemi ayrıntıları açılan menüyü açarak gibi ilgili satır için istenen gerçekleştirin. Bu örnek yalnızca konsola yazar:
+1. Yumuşak seçimli bir bağlantı tıklandığında, **onSoftSelectChange** olayını tetikler. Ayrıntıları açma gibi, bu satır için istenilen eylemi gerçekleştirin. Bu örnek sadece konsola yazıyor:
 
     ```js
     onSoftSelectChange = (rowId, rowData) => {
@@ -279,8 +279,8 @@ Kullanıcı yalnızca tek bir satırda yapması gerekiyorsa, bir veya daha fazla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, ekleme veya Uzaktan izleme çözüm Hızlandırıcısını Web kullanıcı Arabiriminde sayfalarını özelleştirme yardımcı olacak kaynaklar hakkında bilgi edindiniz.
+Bu makalede, Uzaktan İzleme çözüm hızlandırıcısında web Kullanıcı Arabirimi'ndeki sayfaları eklemenize veya özelleştirmenize yardımcı olacak kaynakları öğrendiniz.
 
-Sonraki adım bir kılavuz tanımladığınız artık içerir [Uzaktan izleme çözüm Hızlandırıcı web kullanıcı Arabirimine özel bir geçici açılır pencere ekleme](iot-accelerators-remote-monitoring-customize-flyout.md) örnek sayfasında görüntüler.
+Şimdi bir ızgara tanımlamış, bir sonraki adım örnek sayfada görüntüler [Uzaktan İzleme çözüm hızlandırıcı web UI özel bir flyout eklemektir.](iot-accelerators-remote-monitoring-customize-flyout.md)
 
-Uzaktan izleme çözüm Hızlandırıcısını hakkında daha fazla kavramsal bilgi için bkz. [Uzaktan izleme mimarisi](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Uzaktan İzleme çözüm hızlandırıcısı hakkında daha fazla kavramsal bilgi için uzaktan [izleme mimarisine](iot-accelerators-remote-monitoring-sample-walkthrough.md)bakın.

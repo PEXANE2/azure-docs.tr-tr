@@ -1,6 +1,6 @@
 ---
-title: .NET kullanarak Azure Media Services içerik yayımlama | Microsoft Docs
-description: Akış URL'si oluşturmak için kullanılan bir Bulucu oluşturmayı öğrenin. İçinde yazılan kod örneklerini C# ve .NET için Media Services SDK'sını kullanın.
+title: Azure Medya Hizmetleri içeriğini .NET kullanarak yayımlama | Microsoft Dokümanlar
+description: Akış URL'si oluşturmak için kullanılan bir bulucu oluşturmayı öğrenin. Kod örnekleri C# olarak yazılır ve .NET için Medya Hizmetleri SDK'sını kullanın.
 author: juliako
 manager: femila
 editor: ''
@@ -15,48 +15,48 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67051753"
 ---
-# <a name="publish-media-services-content-using-net"></a>.NET ile Media Services içerik yayımlama  
+# <a name="publish-media-services-content-using-net"></a>.NET kullanarak Medya Hizmetleri içeriğini yayımla  
 > [!div class="op_single_selector"]
-> * [REST](media-services-rest-deliver-streaming-content.md)
+> * [Geri kalanı](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [Portal](media-services-portal-publish.md)
 > 
 > 
 
 ## <a name="overview"></a>Genel Bakış
-Bir OnDemand akış Bulucusu oluşturma ve bir akış URL'si oluşturma bir hızı Uyarlamalı MP4 kümesine akışını yapabilirsiniz. [Bir varlığı kodlama](media-services-encode-asset.md) konu başlığı altında Uyarlamalı bit hızı MP4 kümesi kodlama gösterilir. 
+OnDemand akış bulucusu oluşturup akış URL'si oluşturarak uyarlanabilir bithızı MP4 kümesini aktarabilirsiniz. Bir [varlık konusunun kodlanması,](media-services-encode-asset.md) uyarlanabilir bitrate MP4 kümesine nasıl kodlanacağını gösterir. 
 
 > [!NOTE]
-> İçeriğinizi şifrelenmişse, varlık teslim ilkesini yapılandırın (açıklandığı [bu](media-services-dotnet-configure-asset-delivery-policy.md) konu) önce bir Bulucu oluşturma. 
+> İçeriğiniz şifrelenmişse, bir bulucu oluşturmadan önce varlık teslim ilkesini [(bu](media-services-dotnet-configure-asset-delivery-policy.md) konuda açıklandığı şekilde) yapılandırın. 
 > 
 > 
 
-Bir OnDemand akış Bulucusu, aşamalı olarak indirilebilir MP4 dosyasına işaret eden URL'leri oluşturmak için de kullanabilirsiniz.  
+Kademeli olarak indirilebilen MP4 dosyalarını gösteren URL'ler oluşturmak için bir OnDemand akış bulucusu da kullanabilirsiniz.  
 
-Bu konu, bir OnDemand akış Bulucusu, varlığı yayımlayın ve kesintisiz, MPEG DASH ve HLS akış URL'lerini oluşturmak için nasıl oluşturulacağını gösterir. Aşamalı indirme URL'lerini oluşturmak için sık erişimli gösterir. 
+Bu konu, varlığınızı yayımlamak ve Düzgün, MPEG DASH ve HLS akış URL'leri oluşturmak için bir OnDemand akış bulucusu oluşturmanın nasıl yapılacağını gösterir. Ayrıca ilerici indirme URL'leri oluşturmak için sıcak gösterir. 
 
-## <a name="create-an-ondemand-streaming-locator"></a>Bir OnDemand akış Bulucusu oluşturma
-OnDemand akış Bulucusu oluşturmak ve URL'leri almak için şunları yapmanız gerekir:
+## <a name="create-an-ondemand-streaming-locator"></a>OnDemand akış bulucusu oluşturma
+OnDemand akış bulucusu oluşturmak ve URL'leri almak için aşağıdaki leri yapmanız gerekir:
 
-1. İçeriğin şifreli değilse, bir erişim ilkesi tanımlayın.
-2. Bir OnDemand akış Bulucusu oluşturma.
-3. Akış planlıyorsanız, varlık, akış bildirim dosyası (.ism) alın. 
+1. İçerik şifrelenmişse, bir erişim ilkesi tanımlayın.
+2. OnDemand akış bulucusu oluşturun.
+3. Akış yapmayı planlıyorsanız, varlıktaki akış bildirimi dosyasını (.ism) alın. 
    
-   Aşamalı indirmeyi planlıyorsanız, varlık MP4 dosyalarının adlarını alın.  
-4. Bildirim dosyası veya MP4 dosyaları için URL'leri oluşturun. 
+   Aşamalı olarak indirmeyi planlıyorsanız, kıymetteki MP4 dosyalarının adlarını alın.  
+4. URL'leri manifest dosyasına veya MP4 dosyalarına oluşturun. 
 
 
 >[!NOTE]
->Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Aynı günleri / erişim izinlerini her zaman aynı ilke Kimliğini kullanın. Örneğin, ilkeleri kalmasına yerinde uzun bir süredir (karşıya yükleme olmayan ilkeler) yöneliktir bulucular için. Daha fazla bilgi için [bu](media-services-dotnet-manage-entities.md#limit-access-policies) konu başlığına bakın.
+>Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Her zaman aynı günleri / erişim izinlerini kullanıyorsanız aynı ilke kimliğini kullanın. Örneğin, uzun süre yerinde kalması amaçlanan bulucular için ilkeler (yükleme olmayan ilkeler). Daha fazla bilgi için [bu](media-services-dotnet-manage-entities.md#limit-access-policies) konu başlığına bakın.
 
-### <a name="use-media-services-net-sdk"></a>Media Services .NET SDK'sını kullanın
-Akış URL'leri oluşturun 
+### <a name="use-media-services-net-sdk"></a>Medya Hizmetlerini Kullan .NET SDK
+Akış URL'leri Oluşturun 
 
 ```csharp
     private static void BuildStreamingURLs(IAsset asset)
@@ -97,7 +97,7 @@ Akış URL'leri oluşturun
     }
 ```
 
-Çıkışlar:
+Çıktılar:
 
     URL to manifest for client streaming using Smooth Streaming protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
@@ -108,11 +108,11 @@ Akış URL'leri oluşturun
 
 
 > [!NOTE]
-> Ayrıca, bir SSL bağlantısı üzerinden içeriğinizin akışını yapabilirsiniz. Bu yaklaşım yapmak için HTTPS ile akış URL'leri başlatma emin olun. Şu anda AMS SSL ile özel etki alanlarını desteklemiyor.
+> Ayrıca içeriğinizi bir SSL bağlantısı üzerinden de aktarabilirsiniz. Bu yaklaşımı yapmak için, akış URL'lerinizin HTTPS ile başladığından emin olun. Şu anda, AMS özel etki alanları ile SSL desteklemiyor.
 > 
 > 
 
-Aşamalı indirme URL'leri oluşturun 
+Aşamalı indirme URL'leri oluşturma 
 
 ```csharp
     private static void BuildProgressiveDownloadURLs(IAsset asset)
@@ -143,7 +143,7 @@ Aşamalı indirme URL'leri oluşturun
             Console.WriteLine(originLocator.Path + pd.Name);
     }
 ```
-Çıkışlar:
+Çıktılar:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
@@ -152,8 +152,8 @@ Aşamalı indirme URL'leri oluşturun
 
     . . . 
 
-### <a name="use-media-services-net-sdk-extensions"></a>Media Services .NET SDK uzantıları kullanma
-Aşağıdaki kod, bir Bulucu oluşturmanız ve Uyarlamalı akış için kesintisiz akış, HLS ve MPEG-DASH URL'leri oluşturacak .NET SDK uzantıları yöntemleri çağırır.
+### <a name="use-media-services-net-sdk-extensions"></a>Medya Hizmetlerini Kullan .NET SDK Uzantıları
+Aşağıdaki kod, bir bulucu oluşturan ve uyarlanabilir akış için Düzgün Akış, HLS ve MPEG-DASH URL'lerini oluşturan .NET SDK uzantıları yöntemlerini çağırır.
 ```csharp
     // Create a loctor.
     _context.Locators.Create(
@@ -179,6 +179,6 @@ Aşağıdaki kod, bir Bulucu oluşturmanız ve Uyarlamalı akış için kesintis
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Varlıklar indirin](media-services-deliver-asset-download.md)
+* [Varlıkları indirin](media-services-deliver-asset-download.md)
 * [Varlık teslim ilkesini yapılandırma](media-services-dotnet-configure-asset-delivery-policy.md)
 

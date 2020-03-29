@@ -1,154 +1,154 @@
 ---
 title: Otomatik ölçeklendirme için en iyi uygulamalar
-description: Web Apps, sanal makine ölçek kümeleri ve Cloud Services için Azure 'da otomatik ölçeklendirme desenleri
+description: Web Uygulamaları, Sanal Makine Ölçeği kümeleri ve Bulut Hizmetleri için Azure'da otomatik ölçeklendirme desenleri
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248924"
 ---
 # <a name="best-practices-for-autoscale"></a>Otomatik ölçeklendirme için en iyi uygulamalar
-Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
+Azure Monitör otomatik ölçeklendirmesi yalnızca [Sanal Makine Ölçeği Kümeleri,](https://azure.microsoft.com/services/virtual-machine-scale-sets/) [Bulut Hizmetleri,](https://azure.microsoft.com/services/cloud-services/) [Uygulama Hizmeti - Web Uygulamaları](https://azure.microsoft.com/services/app-service/web/)ve [API Yönetimi hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
 
 ## <a name="autoscale-concepts"></a>Otomatik ölçeklendirme kavramları
 
-* Bir kaynakta yalnızca *bir* otomatik ölçeklendirme ayarı olabilir
-* Bir otomatik ölçeklendirme ayarında bir veya daha fazla profil bulunabilir ve her profil bir veya daha fazla otomatik ölçeklendirme kuralına sahip olabilir.
-* Bir otomatik ölçeklendirme ayarı, örnekleri yatay olarak ölçeklendirir ve örneklerin sayısını *azaltarak,* *içindeki ve ' ın* artması.
-  Otomatik ölçeklendirme ayarı en yüksek, en düşük ve varsayılan örnek değerine sahiptir.
-* Otomatik ölçeklendirme işi her zaman, ölçek genişletme veya ölçek genişletme için yapılandırılan eşiği geçtiğine bakarak, ölçeklendirilmesi için ilişkili ölçümü okur. Otomatik ölçeklendirme 'nin ölçeklendiği ölçümlerin listesini, [Azure izleyici otomatik ölçeklendirme ortak ölçümleri](autoscale-common-metrics.md)' nde görüntüleyebilirsiniz.
-* Tüm eşikler bir örnek düzeyinde hesaplanır. Örneğin, "örnek sayısı 2 olduğunda ortalama CPU > %80 oranında ölçeği bir örneğe göre ölçeklendirin, tüm örneklerde ortalama CPU %80 ' den fazla olduğunda ölçeği genişletme anlamına gelir.
-* Tüm otomatik ölçeklendirme hatalarının etkinlik günlüğüne kaydedilir. Sonra bir otomatik ölçeklendirme hatası olduğunda e-posta, SMS veya Web kancaları aracılığıyla bildirim alabilmeniz için bir [etkinlik günlüğü uyarısı](./../../azure-monitor/platform/activity-log-alerts.md) yapılandırabilirsiniz.
-* Benzer şekilde, tüm başarılı ölçeklendirme eylemleri etkinlik günlüğüne gönderilir. Sonra başarılı bir otomatik ölçeklendirme eylemi olduğunda e-posta, SMS veya Web kancaları aracılığıyla bildirim alabilmeniz için bir etkinlik günlüğü uyarısı yapılandırabilirsiniz. Ayrıca, otomatik ölçeklendirme ayarında Bildirimler sekmesi aracılığıyla başarılı ölçeklendirme eylemleri hakkında bildirim almak için e-posta veya Web kancası bildirimleri de yapılandırabilirsiniz.
+* Bir kaynağın yalnızca *bir* otomatik ölçek lendirme ayarı olabilir
+* Otomatik ölçeklendirme ayarı bir veya daha fazla profile sahip olabilir ve her profilin bir veya daha fazla otomatik ölçek kuralı olabilir.
+* Otomatik ölçeklendirme ayarı, örnekleri artırarak *ve* örnek sayısını azaltarak *çıkan* örnekleri yatay olarak ölçeklendiriyor.
+  Otomatik ölçeklendirme ayarı, örneklerin en büyük, en küçük ve varsayılan değerine sahiptir.
+* Otomatik ölçeklendirme işi her zaman ölçeklendirme veya ölçeklendirme için yapılandırılan eşiği geçip geçilmediğini denetleyerek, ölçeklendirme için ilişkili ölçütleri okur. [Azure Monitor'da otomatik](autoscale-common-metrics.md)ölçeklendirme yle ölçeklendirilebilen ölçümlerin listesini görüntüleyebilirsiniz.
+* Tüm eşikler örnek düzeyinde hesaplanır. Örneğin, "örnek sayısı 2 olduğunda ortalama CPU > %80 olduğunda bir örneğe göre ölçeklendirin", tüm örneklerdeki ortalama CPU %80'den büyük olduğunda ölçeklendirme anlamına gelir.
+* Tüm otomatik ölçek hataları Etkinlik Günlüğü'ne kaydedilir. Daha sonra, otomatik ölçeklendirme hatası olduğunda e-posta, SMS veya webhooks yoluyla bilgilendirilebilmeniz için bir [etkinlik günlüğü uyarısı](./../../azure-monitor/platform/activity-log-alerts.md) yapılandırabilirsiniz.
+* Benzer şekilde, tüm başarılı ölçek eylemleri Etkinlik Günlüğü'ne nakledilir. Daha sonra başarılı bir otomatik ölçeklendirme eylemi olduğunda e-posta, SMS veya webhooks yoluyla haberdar edilebilir, böylece bir etkinlik günlüğü uyarısı yapılandırabilirsiniz. Otomatik ölçek ayarındaki bildirimler sekmesi aracılığıyla başarılı ölçekli eylemler için bildirim almak için e-posta veya webhook bildirimlerini de yapılandırabilirsiniz.
 
-## <a name="autoscale-best-practices"></a>Otomatik ölçeklendirme en iyi yöntemleri
+## <a name="autoscale-best-practices"></a>Otomatik ölçeklendirme en iyi uygulamaları
 
-Otomatik ölçeklendirme kullanırken aşağıdaki en iyi yöntemleri kullanın.
+Otomatik ölçeklendirme kullanırken aşağıdaki en iyi uygulamaları kullanın.
 
-### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Maksimum ve minimum değerlerin farklı olduğundan ve aralarında yeterli bir kenar boşluğu bulunduğundan emin olun
+### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>En yüksek ve en düşük değerlerin farklı olduğundan emin olun ve bunların arasında yeterli bir boşluk bırakın
 
-En az = 2, maksimum = 2 ve geçerli örnek sayısı 2 olan bir ayarınız varsa, hiçbir ölçeklendirme eylemi gerçekleşmeyebilir. Dahil olmak üzere maksimum ve minimum örnek sayısı arasında yeterli bir kenar boşluğu tutun. Otomatik ölçeklendirme, her zaman bu sınırlar arasındaki ölçeği ölçeklendirir.
+En az=2, maksimum=2 ve geçerli örnek sayısı 2 olan bir ayar varsa, ölçek eylemi gerçekleşemez. Kapsayıcı maksimum ve minimum örnek sayıları arasında yeterli bir kenar boşluğu tutun. Otomatik ölçekher zaman bu sınırlar arasında ölçekler.
 
-### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>El ile ölçekleme, en küçük ve en büyük ölçek ile sıfırlanır
+### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>El ile ölçeklendirme, otomatik ölçeklendirmenin en düşük ve en yüksek değerleriyle sıfırlanır
 
-Örnek sayısını maksimum değerin üzerinde veya altında bir değere el ile güncelleştirirseniz, otomatik ölçeklendirme motoru otomatik olarak en düşük (aşağıda varsa) veya en yüksek (yukarıda varsa) olarak yeniden ölçeklenir. Örneğin, 3 ile 6 arasındaki aralığı ayarlarsınız. Çalışan bir örneğiniz varsa, otomatik ölçeklendirme motoru bir sonraki çalıştırmasında üç örneğe ölçeklendirir. Benzer şekilde, ölçeği sekiz örneğe el ile ayarlarsanız, sonraki çalışma otomatik ölçeklendirme, sonraki çalıştırmada altı örneğe geri ölçeklendirecektir.  Otomatik ölçeklendirme kurallarını sıfırlamadıkça el ile ölçekleme geçicidir.
+Örnek sayısını maksimumun üstünde veya altındaki bir değere el ile güncellerseniz, otomatik ölçeklendirme motoru otomatik olarak en aza (aşağıdaysa) veya maksimuma (yukarıdaysa) geri ölçeklenir. Örneğin, aralığı 3 ile 6 arasında ayarlarsınız. Çalışan bir örneğinvarsa, otomatik ölçeklendirme motoru bir sonraki çalışmasında üç örneğine ölçekler. Aynı şekilde, ölçeği el ile sekiz örneğe ayarlarsanız, bir sonraki çalıştırmaotomatik ölçeğinde, bir sonraki çalışmasında altı örneğine geri ölçeklendirin.  Otomatik ölçeklendirme kurallarını da sıfırlamadığınız sürece manuel ölçeklendirme geçicidir.
 
-### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Her zaman artırma ve azaltma gerçekleştiren bir ölçek genişletme ve ölçekleme kuralı kombinasyonu kullanın
-Birleşiminin yalnızca bir bölümünü kullanırsanız, otomatik ölçeklendirme, en yüksek değere veya profilde tanımlanan minimum örnek sayısına ulaşıncaya kadar yalnızca tek bir yönde (ölçeği genişletme veya içinde) eylem yapılır. Bu en iyi şekilde, kaynağın kullanılabilirliği sağlamak için yüksek kullanımlarda ölçeğini en iyi şekilde ölçeklendirmenizi ister. Benzer şekilde, düşük kullanım saatlerinde kaynağınızın ölçeğini, böylece maliyet tasarrufu elde edebilirsiniz.
+### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Her zaman bir artış ve azalma gerçekleştiren bir ölçeklendirme ve ölçek-in kural kombinasyonu kullanın
+Kombinasyonun yalnızca bir bölümünü kullanırsanız, otomatik ölçek yalnızca profilde tanımlanan maksimum veya minimum örnek sayısına ulaşana kadar tek bir yönde (ölçeklendirme veya içinde) işlem yapacaktır. Bu en uygun değildir, ideal olarak kullanılabilirliği sağlamak için kaynağınızın yüksek kullanım zamanlarında ölçeklendirmesini istersiniz. Benzer şekilde, düşük kullanım zamanlarında kaynağınızın küçültülmesini istersiniz, böylece maliyet tasarrufu gerçekleştirebilirsiniz.
 
-### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Tanılama ölçümünüzün uygun istatistiğini seçin
-Tanılama ölçümleri için, ölçeklendirmek üzere bir ölçüm olarak *Ortalama*, *Minimum*, *Maksimum* ve *Toplam* arasından seçim yapabilirsiniz. En yaygın istatistik *ortalaması*.
+### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Tanılama ölçümünüz için uygun istatistiği seçin
+Tanılama ölçümleri için, ölçeklendirilecek bir metrik olarak *Ortalama,* *Minimum,* *Maksimum* ve *Toplam* arasında seçim yapabilirsiniz. En yaygın istatistik *Average*Ortalama'dır.
 
-### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Tüm ölçüm türleri için eşikleri dikkatle seçin
-Genişleme ve ölçeklendirme için farklı eşikleri pratik durumlara göre dikkatle seçmeyi öneririz.
+### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Tüm ölçüm türlerine yönelik eşikleri dikkatle seçin
+Pratik durumlara göre ölçeklendirme ve ölçeklendirme için farklı eşikleri dikkatle seçmenizi öneririz.
 
-Aşağıdaki örneklerde, çıkış ve koşullar için aynı veya benzer eşik değerleriyle birlikte otomatik ölçeklendirme ayarlarını *önermiyoruz* :
+Aşağıdaki örneklerdeki gibi otomatik ölçeklendirme ayarlarını, çıkış ve koşullar için aynı veya benzer eşik değerlerine sahip olarak *önermiyoruz:*
 
-* Iş parçacığı sayısı > = 600 olduğunda örnekleri 1 sayıya yükseltin
-* Iş parçacığı sayısı < = 600 olduğunda örnekleri 1 sayıya küçültün
+* İş Parçacığı Sayısı >= 600 olduğunda örnekleri 1 sayıya göre artırın
+* İş Parçacığı Sayısı <= 600 olduğunda örnekleri 1 sayıya göre azaltın
 
-Kafa karıştırıcı olabilecek bir davranışa neden olabilecek bir örneğe bakalım. Aşağıdaki sırayı göz önünde bulundurun.
+Kafa karıştırıcı görünen bir davranışa neyin yol açabileceğine dair bir örneğe bakalım. Aşağıdaki sırayı göz önünde bulundurun.
 
-1. İle başlayabileceğiniz iki örnek olduğunu varsayın ve örnek başına ortalama iş parçacığı sayısı 625 olarak artar.
-2. Otomatik ölçeklendirme, üçüncü bir örnek eklemenin ölçeğini ölçeklendirir.
-3. Ardından, örnek genelinde ortalama iş parçacığı sayısının 575 olduğunu varsayalım.
-4. Ölçeklendirmeyi ölçeklendirmeden önce, otomatik ölçeklendirme, son durumun ölçeklendirildiğinde ne olacağını tahmin etmeye çalışır. Örneğin, 575 x 3 (geçerli örnek sayısı) = 1.725/2 (ölçeklendirildiğinde son örnek sayısı) = 862,5 iş parçacıkları. Bu, otomatik ölçeklendirmeyi, içinde ölçeklendirdikten sonra bile hemen ölçeklendirilmesi, ortalama iş parçacığı sayısı aynı kalırsa veya yalnızca küçük bir miktarda kalırsa. Ancak, yeniden ölçeği tekrar ölçeklendirirse, tüm işlem yinelenir ve sonsuz bir döngüye döner.
-5. Bu durumdan kaçınmak için ("Flama"), otomatik ölçeklendirme tamamen ölçeklenmez. Bunun yerine, hizmet işinin bir sonraki açılışında koşulu atlar ve yeniden gerçekleştirir. Ortalama iş parçacığı sayısı 575 olduğunda otomatik ölçeklendirme iş olarak görünmediği için, düzletme durumu birçok kişiyi karıştırabilirler.
+1. Başlangıçta iki örnek olduğunu ve ardından her örnek teki iş parçacığı sayısının 625'e kadar büyüdüğünü varsayalım.
+2. Otomatik ölçeklendirme üçüncü bir örnek ekleyerek ölçekler.
+3. Ardından, örnek teki ortalama iş parçacığı sayısının 575'e düştüğünü varsayalım.
+4. Ölçeklendirmeden önce, otomatik ölçeklendirme, ölçeklendirildiyse son durum ne olacağını tahmin etmeye çalışır. Örneğin, 575 x 3 (geçerli örnek sayısı) = 1,725 / 2 (küçültüldüğünde son örnek sayısı) = 862,5 iş parçacığı. Bu, ortalama iş parçacığı sayısı aynı kalırsa veya yalnızca küçük bir miktar düşerse, otomatik ölçeklendirmenin ölçeklendirildikten sonra bile hemen yeniden ölçeklendirmesi gerekeceği anlamına gelir. Ancak, tekrar ölçeklendirilirse, tüm işlem yinelenir ve sonsuz bir döngüye yol açarak.
+5. Bu durumu önlemek için ("çırpma" olarak adlandırılır), otomatik ölçek hiç küçülmez. Bunun yerine, hizmetin işi bir sonraki yürütülmede durumu atlar ve yeniden değerlendirir. Otomatik ölçek, ortalama iş parçacığı sayısı 575 olduğunda çalışmadığından, çırpma durumu birçok kişinin kafasını karıştırabilir.
 
-Ölçek oluşturma sırasında tahmin, "Flama" durumlarından kaçınmaya yöneliktir ve bu durum, ölçek ve genişleme eylemlerinin sürekli olarak geri ve ileri bir yere gider. Ölçek genişletme için aynı eşikleri seçtiğinizde ve içinde bu davranışı aklınızda bulundurun.
+Bir ölçeklendirme sırasında tahmin , ölçeklendirme ve ölçeklendirme eylemlerinin sürekli olarak ileri geri gittiği "kanat çırpma" durumlarından kaçınmak için tasarlanmıştır. Ölçeklendirme ve giriş için aynı eşikleri seçerken bu davranışı aklınızda bulundurun.
 
-Ölçek Genişletme ve eşikler arasında yeterli bir kenar boşluğu seçmeyi öneririz. Örnek olarak, aşağıdaki daha iyi kural birleşimini göz önünde bulundurun.
+Ölçeklendirme ve eşikler arasında yeterli bir kenar boşluğu seçmenizi öneririz. Örnek olarak, aşağıdaki daha iyi kural kombinasyonunu göz önünde bulundurun.
 
-* CPU% > = 80 olduğunda örnekleri 1 sayıya göre artır
-* CPU% < = 60 olduğunda örnekleri 1 sayıya küçültür
+* CPU% >= 80 olduğunda örnekleri 1 sayısına göre artırın
+* CPU% <= 60 olduğunda örnekleri 1 sayısına göre azaltın
 
 Bu durumda  
 
-1. İle başlayan 2 örnek olduğunu varsayalım.
-2. Örnekler arasında ortalama CPU yüzdesi 80 ise, otomatik ölçeklendirme üçüncü bir örnek eklemenin ölçeğini ölçeklendirir.
-3. Artık% CPU %60 ' e denk gelir.
-4. Otomatik ölçeklendirmeyi ölçekleme kuralı, ölçeklendirilmesi durumunda son durumu tahmin eder. Örneğin, 60 x 3 (geçerli örnek sayısı) = 180/2 (ölçeği azaltılabilen son örnek sayısı) = 90. Bu nedenle otomatik ölçeklendirme, ölçeği yeniden genişletmek zorunda olduğundan ölçeklendirmez. Bunun yerine, ölçeklendirmeyi aşağı atlar.
-5. Otomatik ölçeklendirme sonraki sefer, CPU 50 'e düşmeye devam eder. Yeniden tahmin eder-50 x 3 örnek = 150/2 örnek = 75, bu, 80 genişletme eşiğinin altında, 2 örneğe başarıyla ölçeklenir.
+1. Başlamak için 2 örnek olduğunu varsayalım.
+2. Örnekler arasında ortalama CPU%80'e çıkarsa, otomatik ölçeklendirme üçüncü bir örnek ekleyerek ölçeklendirin.
+3. Şimdi cpu% 60 düşüyor zaman içinde varsayalım.
+4. Otomatik ölçeklendirme kuralı, ölçeklendirme için son durumu tahmin eder. Örneğin, 60 x 3 (geçerli örnek sayısı) = 180 / 2 (küçültüldüğünde son örnek sayısı) = 90. Bu yüzden otomatik ölçeklendirme ölçeklendirme yapmaz, çünkü hemen yeniden ölçeklendirmesi gerekir. Bunun yerine, ölçekleme aşağı atlar.
+5. Bir sonraki otomatik ölçeklendirme denetiminde, CPU 50'ye düşmeye devam eder. Tekrar tahmin - 50 x 3 örnek = 150 / 2 örnekleri = 75, hangi 80 ölçek-out eşik altındadır, bu yüzden başarıyla 2 örnek ölçekler.
 
-### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Özel ölçümler için eşik değerlerini ölçeklendirme konuları
- Depolama veya Service Bus kuyruğu uzunluğu ölçümü gibi özel ölçümler için eşik, geçerli örnek sayısı başına kullanılabilen ortalama ileti sayısıdır. Bu ölçüm için eşik değerini dikkatle seçin.
+### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Özel ölçümler için eşik değerleri ölçeklendirme konusunda dikkat edilmesi gerekenler
+ Depolama veya Servis Veri Yolu Sırası uzunluk ölçümü gibi özel ölçümler için eşik, geçerli örnek sayısı başına kullanılabilen ortalama ileti sayısıdır. Bu ölçüm için eşik değerini dikkatle seçin.
 
 Davranışı daha iyi anladığınızdan emin olmak için bunu bir örnekle gösterelim.
 
-* Depolama kuyruğu ileti sayımında örnekleri 1 sayıya göre artır > = 50
-* Depolama kuyruğu ileti sayımında örnekleri 1 sayıya göre azalt < = 10
+* Depolama Sırası ileti sayısı >= 50 olduğunda örnekleri 1 sayısına göre artırma
+* Depolama Sırası ileti sayısı <= 10 olduğunda örnekleri 1 sayısına göre azaltın
 
 Aşağıdaki sırayı göz önünde bulundurun:
 
-1. İki depolama kuyruğu örneği vardır.
-2. İletiler yakında devam ederse ve depolama kuyruğunu gözden geçirdikten sonra toplam sayı 50 okur. Otomatik ölçeklendirmeyi bir ölçek genişletme eylemi başlatması gerektiğini varsayabilirsiniz. Ancak, örnek başına hala 50/2 = 25 ileti olduğunu unutmayın. Bu nedenle, ölçeği genişletme gerçekleşmez. İlk genişleme için, depolama sırasındaki toplam ileti sayısı 100 olmalıdır.
-3. Sonra, toplam ileti sayısının 100 ' a ulaştığını varsayın.
-4. Bir ölçek genişletme eylemi nedeniyle üçüncü bir depolama kuyruğu örneği eklendi.  Sonraki genişleme eylemi, kuyruktaki toplam ileti sayısı 150/3 = 50 nedeniyle 150 ' a ulaşıncaya kadar gerçekleşmeyecektir.
-5. Artık kuyruktaki ileti sayısı küçüktür. Üç örnek ile, tüm kuyruklardaki toplam ileti 30 ' a kadar, her bir örnek için (ölçek-ın eşiği) 30/3 = 10 ileti eklendiğinde ilk ölçeklendirme eylemi gerçekleşir.
+1. İki depolama sırası örneği vardır.
+2. İletiler gelmeye devam ediyor ve depolama sırasını gözden geçirdiğinizde toplam sayı 50'yi okur. Otomatik ölçeklendirmenin bir ölçeklendirme eylemi başlatması gerektiğini varsayabilirsiniz. Ancak, yine de örnek başına 50/2 = 25 ileti olduğunu unutmayın. Yani, ölçeklendirme oluşmaz. İlk ölçeklendirmenin gerçekleşmesi için depolama kuyruğundaki toplam ileti sayısı 100 olmalıdır.
+3. Ardından, toplam ileti sayısının 100'e ulaştığını varsayalım.
+4. Ölçeklendirme eylemi nedeniyle üçüncü bir depolama sırası örneği eklenir.  150/3 = 50 olduğundan, kuyruktaki toplam ileti sayısı 150'ye ulaşana kadar bir sonraki ölçeklendirme eylemi gerçekleşmez.
+5. Artık kuyruktaki ileti sayısı azalır. Üç örnekle, ilk ölçeklendirme eylemi, tüm kuyruklarda toplam iletiler 30'a kadar eklediğinde gerçekleşir, çünkü örnek başına 30/3 = 10 ileti, yani ölçek-giriş eşiğidir.
 
-### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Bir otomatik ölçeklendirme ayarında birden çok profil yapılandırıldığında ölçeklendirme konuları
-Otomatik ölçeklendirme ayarında, her zaman zamanlama veya zaman bağımlılığı olmadan uygulanan bir varsayılan profil seçebilirsiniz veya bir yinelenen profil ya da tarih ve saat aralığı ile sabit bir dönem için bir profil seçebilirsiniz.
+### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Birden fazla profil otomatik ölçeklendirme ayarında yapılandırıldığında ölçeklendirme konusunda dikkat edilmesi gerekenler
+Otomatik ölçeklendirme ayarında, zamanlamaya veya saate herhangi bir bağımlılık olmadan her zaman uygulanan varsayılan bir profil seçebilir veya tarih ve saat aralığı olan belirli bir dönem için yinelenen bir profil veya profil seçebilirsiniz.
 
-Otomatik Ölçeklendirme hizmeti onları işlediğinde, her zaman aşağıdaki sırayı denetler:
+Otomatik ölçeklendirme hizmeti bunları işlerken, her zaman aşağıdaki sırayla denetler:
 
-1. Sabit tarih profili
+1. Sabit Tarih profili
 2. Yinelenen profil
-3. Varsayılan ("Always") profili
+3. Varsayılan ("Her zaman") profili
 
-Bir profil koşulu karşılanırsa, otomatik ölçeklendirme bunun altındaki sonraki profil koşulunu denetlemez. Otomatik ölçeklendirme tek seferde yalnızca bir profili işler. Bu, alt katman profilinden bir işlem koşulu da eklemek istiyorsanız, bu kuralları geçerli profile de dahil etmeniz gerekir.
+Bir profil koşulu karşılanırsa, otomatik ölçek altındaki sonraki profil koşulunu denetlemez. Otomatik ölçeklendirme aynı anda yalnızca bir profili işler. Bu, daha düşük katmanlı bir profilden bir işleme koşulu da eklemek istiyorsanız, bu kuralları geçerli profile de eklemeniz gerektiği anlamına gelir.
 
-Örnek kullanarak gözden geçirelim:
+Bir örnek kullanarak gözden geçirelim:
 
-Aşağıdaki görüntüde, varsayılan en düşük örnek profili = 2 ve en fazla örnek = 10 olan bir otomatik ölçeklendirme ayarı gösterilmektedir. Bu örnekte, kuyruktaki ileti sayısı üçten az olduğunda, sıradaki ileti sayısı 10 ' dan büyük olduğunda ve ölçeğe göre ölçeği genişletmek için kurallar yapılandırılır. Böylece kaynak iki ile on örnek arasında ölçeklendirebilir.
+Aşağıdaki resimde varsayılan profili en az olan bir otomatik ölçek ayarı = 2 ve en büyük örnek = 10' dur. Bu örnekte, kuyruktaki ileti sayısı 10'dan büyük olduğunda ve kuyruktaki ileti sayısı üçten az olduğunda ölçeklendirme küçülene kural landırılır. Yani şimdi kaynak iki ve on örnek arasında ölçeklendirebilirsiniz.
 
-Ayrıca, Pazartesi için yinelenen bir profil kümesi vardır. Minimum örnekler = 3 ve en fazla örnek = 10 için ayarlanır. Bu, Pazartesi günü, ilk kez otomatik ölçeklendirmeyi bu koşulu denetlediğinde, örnek sayısı iki ise, en az üç olarak ölçeklendirir. Otomatik ölçeklendirme, eşleşen bu profil koşulunu bulmaya devam ettiğinde (Pazartesi), yalnızca bu profil için yapılandırılmış CPU tabanlı ölçek genişletme/iade kurallarını işler. Şu anda, kuyruk uzunluğunu denetlemez. Bununla birlikte, aynı zamanda sıra uzunluğu koşulunun denetlenmesini istiyorsanız, bu kuralları varsayılan profilden ve Pazartesi profilinizde de eklemeniz gerekir.
+Buna ek olarak, Pazartesi için yinelenen bir profil kümesi vardır. Minimum örnekler = 3 ve en büyük örnekler = 10 olarak ayarlanır. Bu, Pazartesi günü, bu durum için ilk kez otomatik ölçeklendirme denetler, örnek sayısı iki ise, üç yeni en az ölçekler anlamına gelir. Otomatik ölçek, bu profil koşulunu (Pazartesi) eşleştirmeye devam ettiği sürece, yalnızca bu profil için yapılandırılan CPU tabanlı ölçeklendirme/in kurallarını işler. Şu anda, sıra uzunluğunu denetlemez. Ancak, sıra uzunluğu koşulunun da denetlenmesini istiyorsanız, bu kuralları varsayılan profilden de Pazartesi profilinize eklemeniz gerekir.
 
-Benzer şekilde, otomatik ölçeklendirme varsayılan profile geri geçtiğinde, önce en düşük ve en yüksek koşulların karşılanıp karşılanmadığını denetler. Zaman içindeki örneklerin sayısı 12 ise, varsayılan profil için izin verilen üst sınır olan 10 ' a ölçeklendirir.
+Benzer şekilde, otomatik ölçek varsayılan profile geri döndüğünde, minimum ve maksimum koşullar karşılanıp karşılanmamasını ilk olarak denetler. O anda örnek sayısı 12 ise, varsayılan profil için izin verilen en fazla olan 10'a ölçeklenir.
 
-![Otomatik ölçeklendirme ayarları](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
+![otomatik ölçeklendirme ayarları](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
-### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Bir profilde birden çok kural yapılandırıldığında ölçeklendirme konuları
+### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Birden fazla kural bir profilde yapılandırıldığında ölçeklendirme konusunda dikkat edilmesi gerekenler
 
-Bir profilde birden çok kural ayarlamanız gerektiği durumlar vardır. Aşağıdaki otomatik ölçeklendirme kuralları, birden çok kural ayarlandığında otomatik ölçeklendirme motoru tarafından kullanılır.
+Bir profilde birden çok kural belirlemeniz gerekebilecek durumlar vardır. Birden çok kural ayarlandığında, aşağıdaki otomatik ölçeklendirme kuralları otomatik ölçeklendirme altyapısı tarafından kullanılır.
 
-*Ölçek Genişletme*sırasında, herhangi bir kural karşılanıyorsa otomatik ölçeklendirme çalışır.
-*Ölçeklendirmede*, otomatik ölçeklendirme tüm kuralların karşılanmasını gerektirir.
+*Ölçeklendirmede,* herhangi bir kural yerine getirilirse otomatik ölçek çalışır.
+*Ölçek-in,* otomatik ölçek tüm kuralların karşılanmasını gerektirir.
 
-Göstermek için, aşağıdaki dört otomatik ölçeklendirme kuralına sahip olduğunu varsayalım:
+Göstermek için, aşağıdaki dört otomatik ölçek kuralına sahip olduğunuzu varsayalım:
 
-* CPU < %30, ölçeği 1 ' de
-* Bellek < %50, ölçeği 1
-* CPU > %75, ölçeği genişletme 1
-* Bellek > %75, ölçeği genişletme 1
+* CPU %30 <, ölçek-in 1
+* Bellek %50 <, 1 ölçeklendir
+* CPU %75 >, 1 ölçeklendir
+* Bellek %75 >, ölçeklendirme 1
 
-Ardından, aşağıdaki durum oluşur:
+Sonra aşağıdaki oluşur:
 
-* CPU %76 ise ve bellek %50 ise ölçeği ölçeklendiririz.
-* CPU %50 ise ve bellek %76 ise ölçeği ölçeklendiririz.
+* CPU %76 ve Bellek %50 ise, ölçeklendirin.
+* CPU %50 ve Bellek %76 ise, ölçeklendirin.
 
-Öte yandan, CPU %25 ise ve bellek %51 ise ölçek ölçeklendirme **yapmaz** . Ölçeği ölçeklendirmek için CPU %29 ve bellek %49 olmalıdır.
+Öte yandan, CPU% 25 ve bellek% 51 otomatik ölçeklendirme ise ölçeklendirme **yapmaz.** Ölçeklendirme yapabilmek için CPU'nun %29 ve Bellek %49 olması gerekir.
 
 ### <a name="always-select-a-safe-default-instance-count"></a>Her zaman güvenli bir varsayılan örnek sayısı seçin
-Varsayılan örnek sayısı, ölçümler kullanılabilir olmadığında hizmetinize otomatik ölçeklendirme bu sayıya ölçeklenirken önemlidir. Bu nedenle, iş yükleriniz için güvenli olan bir varsayılan örnek sayısı seçin.
+Otomatik ölçek, ölçümler kullanılamadığında hizmetinizi bu sayıya ölçeklendirdiği için varsayılan örnek sayısı önemlidir. Bu nedenle, iş yüklerin için güvenli olan varsayılan örnek sayısını seçin.
 
 ### <a name="configure-autoscale-notifications"></a>Otomatik ölçeklendirme bildirimlerini yapılandırma
-Aşağıdaki koşullardan biri gerçekleşirse otomatik ölçeklendirme etkinlik günlüğüne gönderilir:
+Aşağıdaki koşullardan herhangi biri oluşursa Otomatik Ölçek Etkinlik Günlüğü'ne yayınlanacaktır:
 
-* Otomatik ölçeklendirme bir ölçeklendirme işlemi verir.
-* Otomatik Ölçeklendirme hizmeti bir ölçeklendirme eylemini başarıyla tamamlar.
-* Otomatik Ölçeklendirme hizmeti bir ölçeklendirme eylemi alamaz.
-* Otomatik Ölçeklendirme hizmeti için ölçümler, ölçek kararı vermek üzere kullanılamaz.
-* Ölçümler, bir ölçek kararı vermek için yeniden kullanılabilir (kurtarma).
+* Otomatik ölçeklendirme bir ölçek işlemi sorunları.
+* Otomatik ölçeklendirme hizmeti bir ölçek eylemini başarıyla tamamlar.
+* Otomatik ölçeklendirme hizmeti bir ölçek eylemi yapmak için başarısız olur.
+* Otomatik ölçeklendirme hizmetinin ölçek kararı vermek için ölçümler kullanılamaz.
+* Ölçümler yeniden ölçek kararı vermek için kullanılabilir (kurtarma).
 
-Otomatik ölçeklendirme altyapısının sistem durumunu izlemek için bir etkinlik günlüğü uyarısı da kullanabilirsiniz. Aboneliğinizde [tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) veya [aboneliğinizde başarısız olan tüm otomatik ölçeklendirme ölçeği ölçeğini/ölçeği genişletme işlemlerini izlemek](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)Için bir etkinlik günlüğü uyarısı oluşturma örnekleri verilmiştir.
+Otomatik ölçeklendirme motorunun durumunu izlemek için etkinlik günlüğü uyarısı da kullanabilirsiniz. Aboneliğinizdeki [tüm otomatik ölçeklendirme motor işlemlerini izlemek](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) veya [aboneliğinizdeki tüm başarısız otomatik ölçek ölçeklendirme/ölçeklendirme işlemlerini izlemek için bir Etkinlik Günlüğü Uyarısı oluşturmak için](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)bir Etkinlik Günlüğü Uyarısı oluşturmak için örnekler verilmiştir.
 
-Etkinlik günlüğü uyarılarını kullanmanın yanı sıra, otomatik ölçeklendirme ayarında Bildirimler sekmesi aracılığıyla başarılı ölçeklendirme eylemleri hakkında bildirim almak için e-posta veya Web kancası bildirimleri de yapılandırabilirsiniz.
+Etkinlik günlüğü uyarılarını kullanmanın yanı sıra, otomatik ölçek ayarındaki bildirimler sekmesi aracılığıyla başarılı ölçekli eylemler için bildirim almak için e-posta veya webhook bildirimlerini de yapılandırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Aboneliğinizdeki tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Aboneliğinizdeki tüm başarısız otomatik ölçeklendirme ölçeği ölçeğini/ölçeği genişletme işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Aboneliğinizdeki tüm otomatik ölçeklendirme motor işlemlerini izlemek için bir Etkinlik Günlüğü Uyarısı oluşturun.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Aboneliğinizdeki tüm başarısız otomatik ölçek giriş/ölçeklendirme işlemlerini izlemek için Etkinlik Günlüğü Uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

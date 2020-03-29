@@ -1,6 +1,6 @@
 ---
-title: Uygulamaları atama kullanıcılara nasıl | Microsoft Docs
-description: Kullanıcılar kiracınızdaki bir uygulamaya nasıl atanacağını ' ı Anlama
+title: Kullanıcılar uygulamalara nasıl atanırken | Microsoft Dokümanlar
+description: Kullanıcıların kiracınızdaki bir uygulamaya nasıl atandığını anlama
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,49 +16,49 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b818fe1d8b6bbc9d2d8c5b460b4d71dccdd39366
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65825983"
 ---
-# <a name="how-to-assign-users-to-applications"></a>Kullanıcılar uygulamaları atama
+# <a name="how-to-assign-users-to-applications"></a>Kullanıcılar uygulamalara nasıl atandırılabilen
 
-Bu makalede kullanıcıların kiracınızdaki bir uygulamaya nasıl atanacağını anlamanıza yardımcı olur.
+Bu makale, kullanıcıların kiracınızdaki bir uygulamaya nasıl atandığını anlamanıza yardımcı olur.
 
-## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Nasıl kullanıcıların Azure AD'de bir uygulama için atanır?
+## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Kullanıcılar Azure AD'deki bir uygulamaya nasıl atanabilir?
 
-Bir kullanıcı bir uygulamaya erişmek, bunlar ilk için herhangi bir şekilde atanması gerekir. Atama bir yönetici, bir iş temsilci veya kullanıcı tarafından bazen kendileri gerçekleştirilebilir. Aşağıdaki kullanıcıların uygulamalarına atanan yolları açıklanır:
+Bir kullanıcının bir uygulamaya erişmesi için önce bir şekilde bu uygulamaya atanması gerekir. Atama bir yönetici, bir iş temsilcisi veya bazen kullanıcının kendileri tarafından gerçekleştirilebilir. Aşağıda, kullanıcıların uygulamalara nasıl atanabilecekleri açıklanmaktadır:
 
-1.  Yönetici [bir kullanıcıya atar](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) uygulamaya doğrudan
+1.  Yönetici, [bir kullanıcıyı](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) doğrudan uygulamaya atar
 
-2.  Yönetici [bir grup atar](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) kullanıcının uygulamaya, üyesi olduğunu da dahil olmak üzere:
+2.  Yönetici, kullanıcının uygulamaya üyesi olduğu [bir grup atar:](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-    * Şirket içi ad'nizden eşitlenmiş bir grup
+    * Şirket içinde senkronize edilmiş bir grup
 
-    * Bulutta oluşturulan bir statik güvenlik grubu
+    * Bulutta oluşturulan statik bir güvenlik grubu
 
-    * A [dinamik güvenlik grubu](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) bulutta oluşturulan
+    * Bulutta oluşturulan [dinamik bir güvenlik grubu](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
 
     * Bulutta oluşturulan bir Office 365 grubu
 
-    * [Tüm kullanıcılar](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) grubu
+    * [Tüm Kullanıcılar](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) grubu
 
-3.  Yöneticinin sağlayan [Self Servis uygulama erişimini](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) kullanarak bir uygulama eklemek bir kullanıcı izin vermek için [uygulama erişim panelinde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **uygulama Ekle** özellik **işletme onayı olmadan**
+3.  Yönetici, kullanıcının [Uygulama Erişim Paneli](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) Ekle **Uygulaması** özelliğini kullanarak iş onayı **olmadan** uygulama eklemesine izin vermek için Self Servis [Uygulama Erişimi'ni](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) etkinleştirir
 
-4.  Yöneticinin sağlayan [Self Servis uygulama erişimini](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) kullanarak bir uygulama eklemek bir kullanıcı izin vermek için [uygulama erişim panelinde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **uygulama Ekle** özellik, ancak yalnızca w**i. önceki onay Seçili iş onaylayanlar kümesi**
+4.  Yönetici, kullanıcının [Uygulama Erişim Paneli](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) Ekle **Uygulaması** özelliğini kullanarak bir uygulama eklemesine izin vermek için Self Servis [Uygulama Erişimi'ni](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) etkinleştirir, ancak yalnızca seçilen iş**onaylayanlar kümesinden önceden onay**
 
-5.  Yöneticinin sağlayan [Self Servis Grup Yönetimi](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) uygulamaya atanmış bir gruba katılma olanağı sağlamak için **işletme onayı olmadan**
+5.  Yönetici, [Self Servis Grup Yönetimi'nin](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) bir kullanıcının iş onayı **olmadan** bir uygulamanın atandığı bir gruba katılmasına izin vermesini sağlar
 
-6.  Yöneticinin sağlayan [Self Servis Grup Yönetimi](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) bir kullanıcı, bir uygulama için ancak yalnızca atandığı bir gruba katılma izni **önceki onayını seçili bir iş onaylayanlar kümesi ile**
+6.  Yönetici, [Self Servis Grup Yönetimi'nin](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) bir kullanıcının bir uygulamanın atandığı bir gruba katılmasına izin verdiğini, ancak yalnızca **seçili iş onaylayıcıları kümesinin önceden onayı ile**
 
-7.  Yönetici bir lisans doğrudan bir birinci taraf uygulaması için bir kullanıcı gibi atar [Microsoft Office 365](https://products.office.com/)
+7.  Yönetici, [Microsoft Office 365](https://products.office.com/) gibi doğrudan birinci taraf bir uygulama için kullanıcıya lisans atar
 
-8.  Bir yönetici kullanıcı gibi bir birinci taraf uygulaması için bir üyesi olan bir lisans grubuna atar [Microsoft Office 365](https://products.office.com/)
+8.  Yönetici, kullanıcının üyesi olduğu bir gruba [Microsoft Office 365](https://products.office.com/) gibi birinci taraf uygulamasına lisans atar
 
-9.  Bir [yönetici uygulamaya onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) tüm kullanıcılar ve ardından bir kullanıcı tarafından kullanılacak oturum açtığında uygulamaya
+9.  Yönetici, tüm kullanıcılar tarafından kullanılacak [bir uygulamayı kabul eder](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) ve ardından kullanıcı uygulamaya kabul eder
 
-10. Bir kullanıcı [uygulamaya onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) başlarına uygulamada oturum açarken
+10. Kullanıcı, uygulamada oturum imzalayarak [bir uygulamayı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) kabul eder
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Uygulamaları Azure Active Directory ile yönetme](what-is-application-management.md)

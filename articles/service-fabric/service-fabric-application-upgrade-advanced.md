@@ -1,40 +1,40 @@
 ---
-title: Gelişmiş uygulama yükseltme konuları
-description: Bu makalede, Service Fabric uygulamasını yükseltmeyle ilgili bazı gelişmiş konular ele alınmaktadır.
+title: Gelişmiş Uygulama Yükseltme Konuları
+description: Bu makalede, Bir Hizmet Kumaşı uygulamasını yükseltmeyle ilgili bazı gelişmiş konular ele al.)
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845434"
 ---
-# <a name="service-fabric-application-upgrade-advanced-topics"></a>Uygulama yükseltmesini Service Fabric: gelişmiş konular
+# <a name="service-fabric-application-upgrade-advanced-topics"></a>Hizmet Kumaş uygulama yükseltme: Gelişmiş konular
 
-## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Uygulama yükseltmesi sırasında hizmet türlerini ekleme veya kaldırma
+## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Uygulama yükseltmesi sırasında hizmet türleri ekleme veya kaldırma
 
-Bir yükseltmenin parçası olarak yayımlanmış bir uygulamaya yeni bir hizmet türü eklenirse, yeni hizmet türü dağıtılan uygulamaya eklenir. Bu tür bir yükseltme, uygulamanın zaten bir parçası olan hizmet örneklerinden hiçbirini etkilemez, ancak yeni hizmet türünün etkin olması için eklenen hizmet türünün bir örneğinin oluşturulması gerekir (bkz. [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
+Yayımlanmış bir uygulamaya yükseltmenin bir parçası olarak yeni bir hizmet türü eklenirse, dağıtılan uygulamaya yeni hizmet türü eklenir. Böyle bir yükseltme, uygulamanın zaten bir parçası olan hizmet örneklerinin hiçbirini etkilemez, ancak eklenen hizmet türünün etkin olması için yeni hizmet türünün oluşturulması gerekir (bkz. [Yeni HizmetFabricService).](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)
 
-Benzer şekilde, hizmet türleri bir yükseltmeden bir uygulamanın parçası olarak kaldırılabilir. Ancak, yükseltme işlemine devam etmeden önce, kaldırılacak olan hizmet türünün tüm hizmet örneklerinin kaldırılması gerekir (bkz. [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
+Benzer şekilde, hizmet türleri yükseltmenin bir parçası olarak bir uygulamadan kaldırılabilir. Ancak, kaldırılacak hizmet türünün tüm hizmet örnekleri yükseltmeye devam etmeden önce kaldırılmalıdır [(bkz.](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Durum bilgisi olmayan hizmet planlanmış kapalı kalma süresi (Önizleme) sırasında bağlantı kesintilerine
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Stateless hizmeti planlanan kapalı kalma süresi sırasında bağlantı düşmelerini önleyebilirsiniz (önizleme)
 
-Uygulama/küme yükseltme veya düğüm devre dışı bırakma gibi planlı durum bilgisi olmayan örnek için bağlantılar, devre dışı bırakıldıktan sonra çıkarılan uç noktanın kaldırılması nedeniyle bırakılabilir.
+Uygulama/küme yükseltmesi veya düğüm devre dışı bırakma gibi planlı durum dışı örnek düşüş süreleri için, açığa çıkan uç noktanın kapatıldıktan sonra kaldırılması nedeniyle bağlantılar bırakılabilir.
 
-Bunu önlemek için, hizmet yapılandırmasında bir çoğaltma *örneği kapatma gecikme süresi* ekleyerek *requestdrenajı* (Önizleme) özelliğini yapılandırın. Bu, örneği kapatmak için gecikme süreölçeri *başlamadan önce* durum bilgisiz örnek tarafından tanıtılan bitiş noktasının kaldırılmasını sağlar. Bu gecikme, örnek gerçekten kapatmadan önce mevcut isteklerin düzgün şekilde boşaltılabilmesini sağlar. İstemcilere geri arama işlevine göre değişiklik yapıldığında, uç noktayı yeniden çözümleyebilir ve örneğe yeni istekler göndermekten kaçınabilirsiniz.
+Bunu önlemek için, hizmet yapılandırmasına bir yineleme *örneği yakın gecikme süresi* ekleyerek *RequestDrain* (önizleme) özelliğini yapılandırın. Bu, örneği kapatmak için gecikme zamanlayıcısı başlamadan *önce,* durum dolmadan örnek tarafından reklamı yapılan bitiş noktasının kaldırılmasını sağlar. Bu gecikme, varolan isteklerin örnek gerçekten çökmeden önce incelikle tüketilmesini sağlar. İstemciler, bitiş noktası değişikliğini geri arama işleviyle bildirilir, böylece bitiş noktasını yeniden çözebilir ve aşağı inen örne yeni istekler göndermekten kaçınabilirler.
 
 ### <a name="service-configuration"></a>Hizmet yapılandırması
 
-Hizmet tarafında gecikmeyi yapılandırmanın birkaç yolu vardır.
+Hizmet tarafında gecikme yapılandırmak için çeşitli yollar vardır.
 
- * **Yeni bir hizmet oluştururken**`-InstanceCloseDelayDuration`belirtin:
+ * **Yeni bir hizmet oluştururken,** bir `-InstanceCloseDelayDuration`belirtin:
 
     ```powershell
     New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
     ```
 
- * **Uygulama bildirimindeki varsayılanlar bölümünde hizmeti tanımlarken**, `InstanceCloseDelayDurationSeconds` özelliğini atayın:
+ * **Uygulama bildirimindeki varsayılanlar bölümündeki hizmeti tanımlarken,** `InstanceCloseDelayDurationSeconds` özelliği atayın:
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -42,7 +42,7 @@ Hizmet tarafında gecikmeyi yapılandırmanın birkaç yolu vardır.
           </StatelessService>
     ```
 
- * **Mevcut bir hizmeti güncelleştirirken**bir `-InstanceCloseDelayDuration`belirtin:
+ * **Varolan bir hizmeti güncellerken,** aşağıdakileri `-InstanceCloseDelayDuration`belirtin:
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
@@ -50,7 +50,7 @@ Hizmet tarafında gecikmeyi yapılandırmanın birkaç yolu vardır.
 
 ### <a name="client-configuration"></a>İstemci yapılandırması
 
-Bir uç nokta değiştiğinde bildirim almak için, istemciler şöyle bir geri çağırma (`ServiceManager_ServiceNotificationFilterMatched`) kaydedebilir: 
+Bir bitiş noktası değiştiğinde bildirim almak için, istemciler şu şekilde bir geri arama (`ServiceManager_ServiceNotificationFilterMatched`) kaydedebilir: 
 
 ```csharp
     var filterDescription = new ServiceNotificationFilterDescription
@@ -67,11 +67,11 @@ private static void ServiceManager_ServiceNotificationFilterMatched(object sende
 }
 ```
 
-Değişiklik bildirimi, uç noktaların değiştiği bir göstergesidir, istemcinin uç noktaları yeniden çözümlemesi gerektiğini ve yakında tanıtılmayacak olan uç noktaları kullanmadığını belirtir.
+Değişiklik bildirimi, uç noktaların değiştiğini, istemcinin uç noktaları yeniden çözmesi ve yakında ineceği için artık reklamı olmayan uç noktaları kullanmaması gerektiğinin bir göstergesidir.
 
-### <a name="optional-upgrade-overrides"></a>İsteğe bağlı yükseltme geçersiz kılmaları
+### <a name="optional-upgrade-overrides"></a>İsteğe bağlı yükseltme geçersiz kılar
 
-Hizmet başına varsayılan gecikme sürelerini ayarlamanın yanı sıra, aynı (`InstanceCloseDelayDurationSec`) seçeneğini kullanarak uygulama/küme yükseltmesi sırasında gecikme süresini de geçersiz kılabilirsiniz:
+Hizmet başına varsayılan gecikme sürelerini ayarlamaya ek olarak, uygulama/küme yükseltmesi`InstanceCloseDelayDurationSec`sırasında aynı ( ) seçeneğini kullanarak gecikmeyi de geçersiz kılabilirsiniz:
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -79,36 +79,36 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-Gecikme süresi yalnızca çağrılan yükseltme örneği için geçerlidir ve farklı hizmet gecikmesi yapılandırmalarının hiçbir şekilde değiştirilmesine izin vermez. Örneğin, önceden yapılandırılmış tüm yükseltme gecikmelerini atlamak için `0` bir gecikme belirtmek için bunu kullanabilirsiniz.
+Gecikme süresi yalnızca çağrılan yükseltme örneği için geçerlidir ve tek tek hizmet gecikme yapılandırmalarını değiştirmez. Örneğin, önceden yapılandırılmış yükseltme gecikmelerini `0` atlamak için gecikme belirtmek için bunu kullanabilirsiniz.
 
-## <a name="manual-upgrade-mode"></a>El ile yükseltme modu
+## <a name="manual-upgrade-mode"></a>Manuel yükseltme modu
 
 > [!NOTE]
 > *İzlenen* yükseltme modu tüm Service Fabric yükseltmeleri için önerilir.
-> *Geriye* doğru yükseltme modu yalnızca başarısız veya askıya alınmış yükseltmeler için düşünülmelidir. 
+> *UnmonitoredManual* yükseltme modu yalnızca başarısız veya askıya alınan yükseltmeler için düşünülmelidir. 
 >
 >
 
-*İzlenen* modda, yükseltme ilerledikçe uygulamanın sağlıklı olduğundan emin olmak için Service Fabric sistem durumu ilkeleri uygular. Sistem durumu ilkeleri ihlal edilirse, yükseltme askıya alınır veya belirtilen *FailureAction*öğesine göre otomatik olarak geri alınır.
+*Denetlenen* modda, Hizmet Kumaşı, yükseltme ilerledikçe uygulamanın sağlıklı olduğundan emin olmak için sistem durumu ilkeleri uygular. Sistem durumu ilkeleri ihlal edilirse, yükseltme askıya alınır veya belirtilen *FailureAction'a*bağlı olarak otomatik olarak geri alınır.
 
-*Monitortoredmanual* modunda, uygulama yöneticisinin yükseltmenin ilerleme durumu üzerinde toplam denetimi vardır. Bu mod, özel sistem durumu değerlendirme ilkeleri uygularken veya sistem durumu izlemeyi tamamen atlamak için geleneksel olmayan yükseltmeler gerçekleştirmeye çalışırken (örn. uygulama zaten veri kayboluyor) yararlıdır. Bu modda çalışan bir yükseltme, her bir UD tamamladıktan sonra askıya alınır ve [sürdürme-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)kullanılarak açık bir şekilde sürdürülmelidir. Bir yükseltme askıya alındığında ve Kullanıcı tarafından sürdürülmeye hazırsa, yükseltme durumu *Rollforwardpending* (bkz. [upgradestate](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)) olarak gösterilir.
+*UnmonitoredManual* modunda, uygulama yöneticisi yükseltme nin ilerlemesi üzerinde tam denetime sahiptir. Bu mod, özel sistem durumu değerlendirme ilkeleri uygularken veya sistem durumu izlemeyi tamamen atlamak için konvansiyonel olmayan yükseltmeler gerçekleştirirken (örn. uygulama zaten veri kaybı ndadır) yararlıdır. Bu modda çalışan bir yükseltme, her UD'yi tamamladıktan sonra kendisini askıya alır ve [Özgeçmiş-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)kullanılarak açıkça devam edilmelidir. Yükseltme askıya alınDığında ve kullanıcı tarafından devam ettirilmeye hazır olduğunda, yükseltme durumu *RollforwardPending'u* gösterir [(bkz. UpgradeState).](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)
 
-Son olarak, hiçbir Kullanıcı girişi gerekmediği ve hiçbir uygulama sistem durumu ilkesi değerlendirilmeden bu yana hizmet geliştirme veya test sırasında hızlı yükseltme yinelemeleri gerçekleştirmek için, *tasgeli olmayan* mod modu kullanışlıdır.
+Son olarak, Kullanıcı girişi gerekmediğinden ve uygulama durumu ilkeleri değerlendirilmediğinden, *UnmonitoredAuto* modu hizmet geliştirme veya sınama sırasında hızlı yükseltme yinelemeleri gerçekleştirmek için yararlıdır.
 
-## <a name="upgrade-with-a-diff-package"></a>Fark paketiyle yükseltme
+## <a name="upgrade-with-a-diff-package"></a>Diff paketiyle yükseltme
 
-Tüm uygulama paketini sağlamak yerine, yükseltmeler ve yalnızca güncelleştirilmiş kod/yapılandırma/veri paketleri içeren fark paketleri, tüm uygulama bildirimi ve tamamlanmış hizmet bildirimleri ile birlikte sağlanarak da gerçekleştirilebilir. Tüm uygulama paketleri yalnızca bir uygulamanın kümeye ilk yüklemesi için gereklidir. Sonraki yükseltmeler, tüm uygulama paketlerinden veya fark paketlerinden olabilir.  
+Tam bir uygulama paketi sağlanması yerine, yükseltmeler, tam uygulama bildirimi ve tam hizmet bildirimlerinin yanı sıra yalnızca güncelleştirilmiş kod/config/veri paketlerini içeren diff paketleri sağlayarak da gerçekleştirilebilir. Tam uygulama paketleri yalnızca bir uygulamanın kümeye ilk yüklenmesi için gereklidir. Sonraki yükseltmeler tam uygulama paketlerinden veya diff paketlerinden olabilir.  
 
-Uygulama paketinde bulunamayan bir fark paketinin uygulama bildiriminde veya hizmet bildirimlerinde herhangi bir başvuru, geçerli olarak sağlanan sürümle otomatik olarak değiştirilmiştir.
+Uygulama paketinde bulunamayan bir diff paketinin uygulama bildiriminde veya hizmet bildirimlerinde yer alan herhangi bir başvuru otomatik olarak geçerli sürümle değiştirilir.
 
-Fark paketini kullanmaya yönelik senaryolar şunlardır:
+Diff paketi kullanmak için senaryolar şunlardır:
 
-* Çeşitli hizmet bildirim dosyalarına ve/veya çeşitli kod paketlerine, yapılandırma paketlerine veya veri paketlerine başvuran büyük bir uygulama paketiniz olduğunda.
-* Doğrudan uygulama derleme sürecinizden yapı düzeni üreten bir dağıtım sistemine sahip olduğunuzda. Bu durumda, kod değiştirilmese de, yeni oluşturulan derlemeler farklı bir sağlama toplamı alır. Tam uygulama paketinin kullanılması, tüm kod paketlerinde sürümü güncelleştirmenizi gerektirir. Fark paketini kullanarak yalnızca değiştirilen dosyaları ve sürümün değiştiği bildirim dosyalarını sağlarsınız.
+* Birden fazla hizmet bildirimi dosyasına ve/veya birkaç kod paketine, config paketlerine veya veri paketlerine atıfta bulunulan büyük bir uygulama paketine sahipseniz.
+* Yapı düzenini doğrudan uygulama oluşturma işleminizden oluşturan bir dağıtım sisteminiz olduğunda. Bu durumda, kod değişmemiş olsa bile, yeni oluşturulan derlemeler farklı bir denetim etüdü alır. Tam bir uygulama paketi kullanmak, tüm kod paketlerindeki sürümü güncelleştirmenizi gerektirir. Diff paketini kullanarak, yalnızca değiştirilen dosyaları ve sürümün değiştiği manifesto dosyalarını sağlarsınız.
 
-Bir uygulama Visual Studio kullanılarak yükseltildiğinde, fark paketi otomatik olarak yayımlanır. Bir fark paketini el ile oluşturmak için, uygulama bildirimi ve hizmet bildirimlerinin güncellenmesi gerekir, ancak son uygulama paketine yalnızca değiştirilen paketler eklenmelidir.
+Visual Studio kullanılarak bir uygulama yükseltildiğinde, bir diff paketi otomatik olarak yayımlanır. Diff paketini el ile oluşturmak için uygulama bildirimi ve hizmet bildirimleri güncelleştirilmelidir, ancak yalnızca değiştirilen paketler son uygulama paketine eklenmelidir.
 
-Örneğin, aşağıdaki uygulama ile başlayalım (daha kolay anlamak için sunulan sürüm numaraları):
+Örneğin, aşağıdaki uygulamayla başlayalım (anlama kolaylığı için sağlanan sürüm numaraları):
 
 ```text
 app1           1.0.0
@@ -120,7 +120,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-Yalnızca fark paketini kullanarak Service1 kod paketini güncelleştirmek istediğinizi varsayalım. Güncelleştirilmiş uygulamanız aşağıdaki sürüm değişikliklerine sahiptir:
+Diff paketini kullanarak yalnızca hizmet1 kod paketini güncelleştirmek istediğinizi varsayalım. Güncelleştirilmiş uygulamanızda aşağıdaki sürüm değişiklikleri vardır:
 
 ```text
 app1           2.0.0      <-- new version
@@ -132,7 +132,7 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-Bu durumda, uygulama bildirimini 2.0.0 olarak ve Service1 için hizmet bildirimini, kod paketi güncelleştirmesini yansıtacak şekilde güncelleşdirecektir. Uygulama paketinizin klasörü aşağıdaki yapıya sahip olacaktır:
+Bu durumda, kod paketi güncelleştirmesini yansıtacak şekilde uygulama bildirimini 2.0.0'a ve service1 hizmet bildirimini güncelleştirebilirsiniz. Uygulama paketinizin klasörü aşağıdaki yapıya sahip olacaktır:
 
 ```text
 app1/
@@ -140,11 +140,11 @@ app1/
     code/
 ```
 
-Diğer bir deyişle, normal olarak tüm uygulama paketini oluşturun ve ardından sürüm değişmedi tüm kod/yapılandırma/veri paketi klasörlerini kaldırın.
+Başka bir deyişle, normal olarak tam bir uygulama paketi oluşturun, ardından sürümün değişmediği kod/config/veri paketi klasörlerini kaldırın.
 
-## <a name="upgrade-application-parameters-independently-of-version"></a>Uygulama parametrelerini sürümden bağımsız olarak yükselt
+## <a name="upgrade-application-parameters-independently-of-version"></a>Uygulama parametrelerini sürümden bağımsız olarak yükseltme
 
-Bazen, bildirim sürümünü değiştirmeden bir Service Fabric uygulamasının parametrelerini değiştirmek tercih edilir. Bu işlem, **Start-ServiceFabricApplicationUpgrade** Azure Service Fabric PowerShell cmdlet 'i ile **-applicationparameter** bayrağıyla kullanılması kolay bir şekilde yapılabilir. Aşağıdaki özelliklerle bir Service Fabric uygulaması varsayın:
+Bazen, bildirim sürümünü değiştirmeden bir Hizmet Kumaşı uygulamasının parametrelerini değiştirmek istenir. Bu, **Start-ServiceFabricApplicationUpgrade** Azure Service Fabric PowerShell cmdlet ile **-ApplicationParameter** bayrağı kullanılarak rahatlıkla yapılabilir. Aşağıdaki özelliklere sahip bir Hizmet Kumaşı uygulamasını varsayalım:
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
@@ -157,7 +157,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
 ```
 
-Şimdi **Start-ServiceFabricApplicationUpgrade** cmdlet 'ini kullanarak uygulamayı yükseltin. Bu örnekte izlenen bir yükseltme gösterilmektedir, ancak izlenmeyen bir yükseltme de kullanılabilir. Bu cmdlet tarafından kabul edilen bayrakların tam açıklamasını görmek için bkz. [Azure Service Fabric PowerShell modülü başvurusu](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)
+Şimdi, **Başlat-ServiceFabricApplicationUpgrade** cmdlet kullanarak uygulamayı yükseltin. Bu örnek, izlenen bir yükseltmeyi gösterir, ancak izlenmeyen bir yükseltme de kullanılabilir. Bu cmdlet tarafından kabul edilen bayrakların tam açıklamasını görmek için [Azure Service Fabric PowerShell modül başvurusuna](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters) bakın
 
 ```PowerShell
 PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
@@ -167,7 +167,7 @@ ion 1.0.0 -ApplicationParameter $appParams -Monitored
 
 ```
 
-Yükseltmeden sonra, uygulamanın güncelleştirilmiş parametrelere ve aynı sürüme sahip olduğunu doğrulayın:
+Yükseltmeden sonra, uygulamanın güncelleştirilmiş parametrelere ve aynı sürüme sahip olduğunu onaylayın:
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
@@ -182,19 +182,19 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>Uygulama yükseltmelerini geri alma
 
-Yükseltmeler üç moddan birinde (*izlenen, izlenemez* *veya toplanmadan*) bir şekilde geri alınabilir, ancak bunlar yalnızca *depountoredauya* *ya da*izsiz *moddan geri* alınabilir. *Izizuntoredauto* modunun geri alınması aynı şekilde, varsayılan *yükseltilebilir Dereperepsetchecktimeout* değerinin farklı olduğu özel durum ile aynı şekilde çalışıyor-bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md). *İzleme* geri alma modunun geri alınması aynı şekilde çalışır. geri alma işlemi her bir ud tamamladıktan sonra askıya alınır ve geri alma işlemine devam etmek için [sürdürme-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) kullanılarak açık bir şekilde devam etmelidir.
+Yükseltmeler üç moddan birinde *(İzlenen, İzlenmeyen* *Otomatik*Veya *İzlenmeyen El Kitabı)* ileri ye doğru yuvarlanabilirken, yalnızca *UnmonitoredAuto veya UnmonitoredManual* modunda geri alınabilir. *UnmonitoredManual* *UnmonitoredAuto* modunda geri rolling *YükseltmeReplicaSetCheckTimeout* varsayılan değeri farklı olması dışında ileri haddeleme aynı şekilde çalışır - [Uygulama Yükseltme Parametreleri](service-fabric-application-upgrade-parameters.md)bakın . *UnmonitoredManual* modunda geri yuvarlama ileri haddeleme aynı şekilde çalışır - geri alma her UD tamamladıktan sonra kendini askıya alacak ve açıkça geri alma ile devam etmek [için Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) kullanarak devam edilmelidir.
 
-*Geri alma* *Işlemi bir FailureAction* ile *izlenen* moddaki bir yükseltmenin sistem durumu Ilkeleri Ihlal edildiğinde (bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md)) veya açık olarak [Start-servicefabricapplicationrollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps)kullanarak tetiklenebilir.
+Geri alma, *Geri* *Alma* *Eylemi* ile Izlenen moddaki bir yükseltmenin sistem durumu ilkeleri ihlal edildiğinde [(Bkz. Uygulama Yükseltme Parametreleri)](service-fabric-application-upgrade-parameters.md)veya [açıkça Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps)kullanılarak otomatik olarak tetiklenebilir.
 
-Geri alma sırasında, Upgrade *Dereperepdchecktimeout* ve modunun değeri [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)kullanılarak herhangi bir zamanda değiştirilebilir.
+Geri alma sırasında, *UpgradeReplicaSetCheckTimeout* değeri ve modu hala [Güncelleme-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)kullanarak herhangi bir zamanda değiştirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Visual Studio 'Yu kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial.md) , Visual Studio kullanarak bir uygulama yükseltme işleminde size yol gösterir.
+[Visual Studio kullanarak Uygulama yükseltme](service-fabric-application-upgrade-tutorial.md) Visual Studio kullanarak bir uygulama yükseltme ile size yol.
 
-[PowerShell kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial-powershell.md) , PowerShell kullanarak bir uygulama yükseltme işleminde size yol gösterir.
+[Powershell kullanarak Uygulamayükseltme PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) kullanarak bir uygulama yükseltme ile size yol.
 
-Uygulamanızın [yükseltme parametrelerini](service-fabric-application-upgrade-parameters.md)kullanarak nasıl yükseltileceğini denetleyin.
+[Yükseltme](service-fabric-application-upgrade-parameters.md)Parametreleri'ni kullanarak uygulamanızın nasıl yükselttikini kontrol edin.
 
-[Veri serileştirmesini](service-fabric-application-upgrade-data-serialization.md)nasıl kullanacağınızı öğrenerek uygulamanızın yükseltmelerini uyumlu hale getirin.
+[Veri Serileştirme'nin](service-fabric-application-upgrade-data-serialization.md)nasıl kullanılacağını öğrenerek uygulama yükseltmelerinizi uyumlu hale getirin.
 
-Uygulama [yükseltmelerinde sorun giderme](service-fabric-application-upgrade-troubleshooting.md)adımlarını izleyerek uygulama yükseltmelerinde karşılaşılan yaygın sorunları giderin.
+[Sorun Giderme Uygulama Yükseltmeleri'ndeki](service-fabric-application-upgrade-troubleshooting.md)adımlara atıfta bulunarak uygulama yükseltmelerinde sık karşılaşılan sorunları giderin.

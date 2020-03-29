@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics, birden çok kullanıcı için güvenli hale getirme
-description: Azure Data Lake Analytics işlerini çalıştırmak için birden çok kullanıcı yapılandırmayı öğrenin.
+title: Birden fazla kullanıcı için Güvenli Azure Veri Gölü Analizi
+description: Azure Veri Gölü Analitiği'nde birden çok kullanıcıyı işleri çalıştıracak şekilde nasıl yapılandırılamayı öğrenin.
 ms.service: data-lake-analytics
 services: data-lake-analytics
 author: matt1883
@@ -9,33 +9,33 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60813378"
 ---
-# <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics iş bilgilerini iş bilgileri için kullanıcı erişimini yapılandırma 
+# <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Azure Veri Gölü Analizi'nde iş bilgilerine kullanıcı erişimini iş bilgilerine göre yapılandırma 
 
-Azure Data Lake Analytics işlerini çalıştırmak için birden çok kullanıcı hesabı veya hizmet sorumluları kullanabilirsiniz. 
+Azure Veri Gölü Analitiği'nde, işleri çalıştırmak için birden çok kullanıcı hesabı veya hizmet ilkesi kullanabilirsiniz. 
 
-Ayrıntılı iş bilgilerini görmek bu kullanıcılar için kullanıcıların iş klasörlerinin içeriğini okuyabilir gerekir. İş klasörleri bulunan `/system/` dizin. 
+Aynı kullanıcıların ayrıntılı iş bilgilerini görebilmeleri için, kullanıcıların iş klasörlerinin içeriğini okuyabilmesi gerekir. İş klasörleri dizinde `/system/` bulunur. 
 
-Gerekli izinleri yapılandırılmamışsa, kullanıcı bir hata görebilirsiniz: `Graph data not available - You don't have permissions to access the graph data.` 
+Gerekli izinler yapılandırılmamışsa, kullanıcı bir hata görebilir:`Graph data not available - You don't have permissions to access the graph data.` 
 
-## <a name="configure-user-access-to-job-information"></a>İş bilgileri için kullanıcı erişimini yapılandırma
+## <a name="configure-user-access-to-job-information"></a>İş bilgilerine kullanıcı erişimini yapılandırma
 
-Kullanabileceğiniz **kullanıcı ekleme sihirbazını** klasörlerde ACL'leri yapılandırmak için. Daha fazla bilgi için [yeni kullanıcı ekleme](data-lake-analytics-manage-use-portal.md#add-a-new-user).
+Klasörlerdeki Aç'ları yapılandırmak için **Kullanıcı Ekle Sihirbazı'nı** kullanabilirsiniz. Daha fazla bilgi için [bkz.](data-lake-analytics-manage-use-portal.md#add-a-new-user)
 
-Gerekiyorsa daha ayrıntılı bir denetim veya komut dosyası izinleri gerek sonra güvenli klasörleri gibi:
+Daha fazla parçalı denetime ihtiyacınız varsa veya izinleri komut dosyasına almanız gerekiyorsa, klasörleri aşağıdaki gibi güvenli hale alın:
 
-1. GRANT **yürütme** izinleri (ACL erişim) aracılığıyla Kök klasörde:
+1. **İzinleri** yürütme izinlerini (erişim ACL'si aracılığıyla) kök klasöründe verir:
    - /
    
-2. GRANT **yürütme** ve **okuma** iş klasörleri içeren klasörleri (aracılığıyla, bir erişim ACL'si ve varsayılan ACL) izinleri. Örneğin, 25 Mayıs 2018'de çalışan belirli bir işin erişilecek bu klasörleri gerekir:
-   - / Sistem
-   - / Sistem/jobservice
-   - /system/jobservice/jobs
+2. İş klasörlerini içeren klasörlerde **izinleri** (erişim ACL ve varsayılan ACL aracılığıyla) verir ve **okuyun.** Örneğin, 25 Mayıs 2018 tarihinde çalıştırılan belirli bir iş için bu klasörlere erişilmesi gerekir:
+   - /sistem
+   - /sistem/jobservice
+   - /sistem/jobservice/jobs
    - /system/jobservice/jobs/Usql
    - /system/jobservice/jobs/Usql/2018
    - /system/jobservice/jobs/Usql/2018/05

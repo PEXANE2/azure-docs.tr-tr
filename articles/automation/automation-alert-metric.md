@@ -1,83 +1,83 @@
 ---
-title: Azure Otomasyonu runbook 'larını ölçüm uyarıları ile izleme
-description: Bu makalede, ölçümleri temel alarak Azure Otomasyonu runbook 'larını izleme işlemi adım adım açıklanmaktadır
+title: Azure Otomasyon runbook'larını metrik uyarılarla izleyin
+description: Bu makale, ölçümlere dayalı Azure Otomasyon uyrularını izleme konusunda size yol
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
 ms.openlocfilehash: 9bd028157b33817898ef69f9e47cb8b5d9b8f381
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75367102"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>Ölçüm uyarıları ile runbook 'ları izleme
+# <a name="monitoring-runbooks-with-metric-alerts"></a>Çalışma defterlerini metrik uyarılarla izleme
 
-Bu makalede, runbook 'ların tamamlanma durumuna göre uyarı oluşturmayı öğreneceksiniz.
+Bu makalede, runbook'ların tamamlanma durumuna bağlı olarak nasıl uyarı oluşturulacak larını öğrenirsiniz.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure'da oturum açın
 
 ## <a name="create-alert"></a>Uyarı oluşturma
 
-Uyarılar, izlemek için bir koşul ve bu koşul karşılandığında gerçekleştirilecek bir eylem tanımlamanızı sağlar.
+Uyarılar, izlenecek bir koşul ve bu koşul yerine getirildiğinde yapılacak bir eylem tanımlamanıza olanak sağlar.
 
-Azure portal Otomasyon hesabınıza gidin. **İzleme**altında **Uyarılar** ' ı seçin ve **+ Yeni uyarı kuralı**' nı tıklatın. Hedefin kapsamı zaten Otomasyon hesabınızla tanımlanmış.
+Azure portalında Otomasyon Hesabınıza gidin. **İzleme**altında, **Uyarılar'ı** seçin ve **+ Yeni Uyarı Kuralı'nı**tıklatın. Hedefin kapsamı zaten Otomasyon Hesabınıza tanımlanmıştır.
 
 ### <a name="configure-alert-criteria"></a>Uyarı ölçütlerini yapılandırma
 
-1. **+ Ölçüt Ekle**' ye tıklayın. **Sinyal türü**için **ölçümler** ' i seçin ve tablodaki **toplam iş** ' ı seçin.
+1. + **Ölçüt ekle'yi**tıklatın. Sinyal türü için **Ölçümler'i** seçin ve tablodan **Toplam İşler'i** seçin. **Signal type**
 
-2. **Sinyal mantığını Yapılandır** sayfası, uyarıyı tetikleyen mantığı tanımladığınız yerdir. Geçmiş grafiğinde, **Runbook adı** ve **durum**olmak üzere iki boyut sunulur. Boyutlar, sonuçları filtrelemek için kullanılabilen bir ölçüm için farklı özelliklerdir. **Runbook adı**için, uyarı vermek istediğiniz runbook 'u seçin veya tüm runbook 'larda uyarı almak için boş bırakın. **Durum**için, izlemek istediğiniz açılan listeden bir durum seçin. Açılan listede görünen Runbook adı ve durum değerleri yalnızca geçen hafta çalıştırılan işler içindir.
+2. **Yapılaşı sinyali mantığı** sayfası, uyarıyı tetikleyen mantığı tanımladığınız yerdir. Tarihsel grafik altında iki boyut, **Runbook Adı** ve **Durum**ile sunulmaktadır. Boyutlar, sonuçları filtrelemek için kullanılabilecek bir metrik için farklı özelliklerdir. **Runbook Adı**için, uyarmak istediğiniz runbook'u seçin veya tüm runbook'larda uyarmak için boş bırakın. **Durum**için, izlemek istediğiniz açılır yerden bir durum seçin. Açılan defterde görünen runbook adı ve durum değerleri yalnızca geçen hafta çalışan işler içindir.
 
-   Açılan listede görünmeyen bir durum veya Runbook üzerinde uyarı vermek istiyorsanız, boyutun yanındaki **\+** tıklayın. Bu eylem, bu boyut için yakın zamanda yayılmayan özel bir değer girmenizi sağlayan bir iletişim kutusu açar. Bir özellik için mevcut olmayan bir değer girerseniz, uyarılarınız tetiklenmez.
+   Açılır açılır da gösterilmeyen bir durum veya runbook üzerinde uyarıda bulunan **\+** lar varsa, boyutun yanındaki nitu tıklatın. Bu eylem, son zamanlarda bu boyut için yayılan değil özel bir değer, girmenizi sağlayan bir iletişim açar. Bir özellik için var olmayan bir değer girerseniz, uyarınız tetiklenmez.
 
    > [!NOTE]
-   > **Runbookname** boyutu için bir ad uygulamazsanız, gizli sistem runbook 'larını içeren durum ölçütlerine uyan runbook 'lar varsa, bir uyarı alırsınız.
+   > **RunbookName** boyutu için bir ad uygulamazsanız, gizli sistem runbook'larını içeren durum ölçütlerini karşılayan runbook'lar varsa, bir uyarı alırsınız.
 
-3. **Uyarı mantığı**altında, uyarınızın koşulunu ve eşiğini tanımlayın. Tanımlanmış koşullarınızın önizlemesi aşağıda gösterilmiştir.
+3. **Alert mantığı**altında, uyarınızın koşulunu ve eşiğini tanımlayın. Tanımlanan durumunuzun önizlemesi aşağıda gösterilir.
 
-4. **Temelinde değerlendirilen**altında sorgu için TimeSpan değerini ve bu sorgunun ne sıklıkta çalıştığını seçin. Örneğin, **Dönem** için **son 5 dakika boyunca** ve **Sıklık**için **1 dakikada** bir seçeneğini belirlerseniz, uyarı, son 5 dakika içinde ölçütlerinizi karşılayan runbook sayısını arar. Bu sorgu her dakikada çalıştırılır ve tanımladığınız uyarı ölçütleri 5 dakikalık bir pencerede artık bulunamazsa, uyarı kendisini çözer. Tamamladığınızda **Bitti**’ye tıklayın.
+4. **Değerlendirildi'ye göre,** sorgu için zaman lığını ve bu sorgunun ne sıklıkta çalıştırılsın' ı seçin. Örneğin, **Dönem** için **son 5 dakika ve** **Sıklık**için **Her 1 Dakika'yı** seçerseniz, uyarı son 5 dakika içinde ölçütlerinizi karşılayan runbook sayısını arar. Bu sorgu her dakika çalıştırılır ve tanımladığınız uyarı ölçütleri 5 dakikalık bir pencerede artık bulunamaz, uyarı kendiliğinden çözülür. Tamamladığınızda **Bitti**’ye tıklayın.
 
-   ![Uyarı için bir kaynak seçin](./media/automation-alert-activity-log/configure-signal-logic.png)
+   ![Uyarı için bir kaynak seçme](./media/automation-alert-activity-log/configure-signal-logic.png)
 
 ### <a name="define-alert-details"></a>Uyarı ayrıntılarını tanımlama
 
-1. **2 altında. Uyarı ayrıntılarını tanımlayın**, uyarıya kolay bir ad ve açıklama sağlayın. **Önem derecesini** uyarı koşulunuz ile eşleşecek şekilde ayarlayın. 0 ile 5 arasında beş önem derecesi vardır. Uyarılar önem derecesine göre aynı olarak değerlendirilir, iş mantığınızla eşleşecek şekilde önem derecesini de eşleştirebilirsiniz.
+1. **2'nin altında. Uyarı ayrıntılarını tanımlayın,** uyarıya dostça bir ad ve açıklama verin. Önem **Derecesini** uyarı durumunuza uyacak şekilde ayarlayın. 0 ile 5 arasında değişen beş şiddeti vardır. Uyarılar önem açısından aynı şekilde işlenir, iş mantığınıza uyacak şekilde önem derecesi eşleşebilirsiniz.
 
-1. Bölümünün en altında, işlemi tamamladıktan sonra kuralı etkinleştirmenizi sağlayan bir düğmedir. Varsayılan olarak kurallar oluşturma sırasında etkinleştirilir. Hayır ' ı seçerseniz, uyarıyı oluşturabilir ve **devre dışı** bir durumda oluşturulur. Azure Izleyici 'deki **kurallar** sayfasında, bunu seçebilir ve hazırsanız uyarıyı etkinleştirmek için **Etkinleştir** ' e tıklayabilirsiniz.
+1. Bölümün alt kısmında, tamamlandıktan sonra kuralı etkinleştirmek için izin veren bir düğmedir. Varsayılan kurallar oluşturma da etkinleştirilir. Hayır'ı seçerseniz, uyarıyı oluşturabilirsiniz ve bu uyarı **Devre Dışı bırakılmış** durumda oluşturulur. Azure Monitor'daki **Kurallar** sayfasından, hazır olduğunuzda uyarıyı etkinleştirmek için bu sayfayı seçebilir ve **Etkinleştir'i** tıklatabilirsiniz.
 
-### <a name="define-the-action-to-take"></a>Gerçekleştirilecek eylemi tanımlayın
+### <a name="define-the-action-to-take"></a>Yapılacak eylemi tanımlama
 
-1. 3 ' ün altında **. Eylem grubunu tanımlayın**, **+ yeni eylem grubu**' na tıklayın. Bir eylem grubu, birden fazla uyarı genelinde kullanabileceğiniz bir eylem grubudur. Bunlar, e-posta bildirimleri, runbook 'lar, Web kancaları ve çok daha fazlasını içerebilir ancak bunlarla sınırlı değildir. Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md)
+1. **3'ün altında. Eylem grubunu tanımla**, tıklayın **+ Yeni eylem grubu**. Eylem grubu, birden fazla uyarıda kullanabileceğiniz bir eylem grubudur. Bunlar, e-posta bildirimlerini, runbook'ları, web hook'ları ve daha fazlasını içerebilir, ancak bunlarla sınırlı değildir. Eylem grupları hakkında daha fazla bilgi edinmek için [bkz.](../azure-monitor/platform/action-groups.md)
 
 1. **Eylem grubu adı** kutusuna bir kolay ad bir de kısa ad yazın. Bu eylem grubu kullanılarak bildirim gönderildiğinde tam grup adı yerine kısa ad kullanılır.
 
-1. **Eylem türü**altındaki **Eylemler** bölümünde **e-posta/SMS/Push/Voice**' ı seçin.
+1. **ACTION TYPE**altındaki **Eylemler** bölümünde **E-posta/SMS/Push/Voice'ı**seçin.
 
 1. **E-posta/SMS/Anında İletme/Ses** sayfasında buna bir ad verin. **E-posta** onay kutusunu işaretleyin ve kullanılması için geçerli bir e-posta adresi girin.
 
    ![E-posta eylem grubunu yapılandırma](./media/automation-alert-activity-log/add-action-group.png)
 
-1. **E-posta/SMS/Anında İletme/Ses** sayfasında **Tamam**’a tıklayarak sayfayı kapatın ve **Eylem grubu ekle** sayfasında **Tamam**’a tıklayarak bu sayfayı da kapatın. Bu sayfada belirtilen ad **eylem adı**olarak kaydedilir.
+1. **E-posta/SMS/Anında İletme/Ses** sayfasında **Tamam**’a tıklayarak sayfayı kapatın ve **Eylem grubu ekle** sayfasında **Tamam**’a tıklayarak bu sayfayı da kapatın. Bu sayfada belirtilen Ad EYLEM **ADI**olarak kaydedilir.
 
-1. İşlem tamamlandığında **Kaydet**’e tıklayın. Bu eylem, bir runbook belirli bir durumla tamamlandığında sizi uyaran kuralı oluşturur.
+1. Tamamlandığında **Kaydet'i**tıklatın. Bu eylem, belirli bir durumla tamamlanan bir runbook'ta sizi uyaran bir kural oluşturur.
 
 > [!NOTE]
-> Bir eylem grubuna e-posta adresi eklerken, adresi bir eylem grubuna eklendiğini bildiren bir bildirim e-postası gönderilir.
+> Bir Eylem Grubuna e-posta adresi eklerken, bir Eylem Grubu'na adresin eklendiğini belirten bir bildirim e-postası gönderilir.
 
 ## <a name="notification"></a>Bildirim
 
-Uyarı ölçütleri karşılandığında, eylem grubu tanımlanan eylemi çalıştırır. Bu makalenin örneğinde, bir e-posta gönderilir. Aşağıdaki görüntü, uyarı tetiklendikten sonra aldığınız e-postanın bir örneğidir:
+Uyarı ölçütleri karşılandığında, eylem grubu tanımlanan eylemi çalıştırZ. Bu makalenin örneğinde, bir e-posta gönderilir. Aşağıdaki resim, uyarı tetiklendikten sonra aldığınız bir e-postanın bir örneğidir:
 
 ![E-posta uyarısı](./media/automation-alert-activity-log/alert-email.png)
 
-Ölçüm artık tanımlanan eşik dışında olmadığında, uyarı devre dışı bırakılır ve eylem grubu tanımlanan eylemi çalıştırır. E-posta eylemi türü seçilirse, Çözümlenmiş olduğunu bildiren bir çözüm e-postası gönderilir.
+Metrik tanımlanan eşiğin dışına artık çıktıktan sonra, uyarı devre dışı bırakılır ve eylem grubu tanımlanan eylemi çalıştırAr. Bir e-posta eylem türü seçilirse, çözüldüğünü belirten bir çözüm e-postası gönderilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Alerkileni Otomasyon hesabınızla tümleştirebileceğinizi belirten diğer yollar hakkında bilgi edinmek için aşağıdaki makaleye geçin.
+Uyarıları Otomasyon Hesabınıza entegre etmenin diğer yolları hakkında bilgi edinmek için aşağıdaki makaleye devam edin.
 
 > [!div class="nextstepaction"]
-> [Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md)
+> [Azure Otomasyonu runbook'u tetiklemek için uyarı kullanma](automation-create-alert-triggered-runbook.md)

@@ -1,7 +1,7 @@
 ---
-title: Azure CLı kullanarak veri erişimi için RBAC rolü atama
+title: Veri erişimi için bir RBAC rolü atamak için Azure CLI'yi kullanın
 titleSuffix: Azure Storage
-description: Rol tabanlı erişim denetimi (RBAC) ile Azure Active Directory güvenlik sorumlusuna izin atamak için Azure CLı 'yi nasıl kullanacağınızı öğrenin. Azure depolama, Azure AD aracılığıyla kimlik doğrulaması için yerleşik ve özel RBAC rollerini destekler.
+description: Rol tabanlı erişim denetimine (RBAC) sahip bir Azure Etkin Dizin güvenlik ilkesine izin atamak için Azure CLI'yi nasıl kullanacağınızı öğrenin. Azure Depolama, Azure AD aracılığıyla kimlik doğrulama için yerleşik ve özel RBAC rollerini destekler.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,21 +11,21 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: abe35f3193e2d7ff9a949ca7cd330cb58da2b78c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74891977"
 ---
-# <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir RBAC rolü atamak üzere Azure CLı 'yi kullanma
+# <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Blob ve sıra verilerine erişmek için bir RBAC rolü atamak için Azure CLI'yi kullanın
 
-Azure Active Directory (Azure AD), [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen yerleşik RBAC rollerinin bir kümesini tanımlar.
+Azure Etkin Dizin (Azure AD), rol tabanlı [erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarına izin vermektedir. Azure Depolama, blob veya sıra verilerine erişmek için kullanılan ortak izin kümelerini kapsayan yerleşik RBAC rolleri kümesini tanımlar.
 
-Azure AD güvenlik sorumlusuna bir RBAC rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, aboneliğin düzeyi, kaynak grubu, depolama hesabı veya tek bir kapsayıcı veya kuyruk kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir Kullanıcı, Grup, uygulama hizmeti sorumlusu veya [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)olabilir.
+Bir Azure REKLAM güvenlik ilkesine bir RBAC rolü atandığında, Azure bu güvenlik ilkesi için bu kaynaklara erişim sağlar. Erişim, abonelik düzeyine, kaynak grubuna, depolama hesabına veya tek bir kapsayıcı veya sıraya kadar kapsama edilebilir. Azure AD güvenlik ilkesi, [Azure kaynakları için](../../active-directory/managed-identities-azure-resources/overview.md)bir kullanıcı, bir grup, bir uygulama hizmeti ilkesi veya yönetilen bir kimlik olabilir.
 
-Bu makalede, yerleşik RBAC rollerini listelemek ve kullanıcılara atamak için Azure CLı 'nin nasıl kullanılacağı açıklanır. Azure CLı kullanma hakkında daha fazla bilgi için bkz. [Azure komut satırı arabirimi (CLI)](https://docs.microsoft.com/cli/azure).
+Bu makalede, yerleşik RBAC rollerini listelemek ve kullanıcılara atamak için Azure CLI'nin nasıl kullanılacağı açıklanmaktadır. Azure CLI kullanma hakkında daha fazla bilgi için Azure [Komut Satırı Arabirimi (CLI)](https://docs.microsoft.com/cli/azure)bakın.
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>Blob 'lar ve kuyruklar için RBAC rolleri
+## <a name="rbac-roles-for-blobs-and-queues"></a>Lekeler ve kuyruklar için RBAC rolleri
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -33,15 +33,15 @@ Bu makalede, yerleşik RBAC rollerini listelemek ve kullanıcılara atamak için
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="list-available-rbac-roles"></a>Kullanılabilir RBAC rollerini listeleme
+## <a name="list-available-rbac-roles"></a>Kullanılabilir RBAC rollerini listele
 
-Mevcut yerleşik RBAC rollerini Azure CLı ile listelemek için [az role Definition List](/cli/azure/role/definition#az-role-definition-list) komutunu kullanın:
+Kullanılabilir yerleşik RBAC rollerini Azure CLI ile listelemek için [az rol tanımı listesi](/cli/azure/role/definition#az-role-definition-list) komutunu kullanın:
 
 ```azurecli-interactive
 az role definition list --out table
 ```
 
-Azure için diğer yerleşik rollerle birlikte listelenen yerleşik Azure depolama veri rollerini görürsünüz:
+Azure'un diğer yerleşik rolleri ile birlikte listelenen yerleşik Azure Depolama veri rollerini görürsünüz:
 
 ```Example
 Storage Blob Data Contributor             Allows for read, write and delete access to Azure Storage blob containers and data
@@ -53,19 +53,19 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-security-principal"></a>Güvenlik sorumlusuna RBAC rolü atama
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>Bir güvenlik ilkesine RBAC rolü atama
 
-Bir güvenlik sorumlusuna RBAC rolü atamak için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) komutunu kullanın. Komutun biçimi atamanın kapsamına göre farklılık gösterebilir. Aşağıdaki örneklerde, bir kullanıcıya çeşitli kapsamlardaki bir rol atama gösterilmektedir, ancak herhangi bir güvenlik sorumlusuna rol atamak için aynı komutu kullanabilirsiniz.
+Bir güvenlik ilkesine RBAC rolü atamak için [az rol atama komutunu](/cli/azure/role/assignment#az-role-assignment-create) kullanın. Komutun biçimi, atamanın kapsamına bağlı olarak farklı olabilir. Aşağıdaki örnekler, çeşitli kapsamlarda bir kullanıcıya nasıl bir rol atadığınızı gösterir, ancak herhangi bir güvenlik ilkesine bir rol atamak için aynı komutu kullanabilirsiniz.
 
-### <a name="container-scope"></a>Kapsayıcı kapsamı
+### <a name="container-scope"></a>Konteyner kapsamı
 
-Bir kapsayıcıya kapsamlı bir rol atamak için, `--scope` parametresi için kapsayıcının kapsamını içeren bir dize belirtin. Kapsayıcının kapsamı şu biçimdedir:
+Kapsayıcıya kapsamlı bir rol atamak için, parametre için kapsayıcının `--scope` kapsamını içeren bir dize belirtin. Bir kapsayıcının kapsamı şu şekildedir:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container>
 ```
 
-Aşağıdaki örnek, **Depolama Blobu veri katılımcısı** rolünü, kapsayıcının düzeyi kapsamındaki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun:
+Aşağıdaki örnek, kapsayıcının düzeyine göre kapsamlı bir kullanıcıya **Depolama Blob Veri Katılımcısı** rolünü atar. Ayraçtaki örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun:
 
 ```azurecli-interactive
 az role assignment create \
@@ -76,13 +76,13 @@ az role assignment create \
 
 ### <a name="queue-scope"></a>Sıra kapsamı
 
-Bir sıraya kapsamlı bir rol atamak için, `--scope` parametresi için kuyruğun kapsamını içeren bir dize belirtin. Bir kuyruğun kapsamı şu biçimdedir:
+Kuyruğa kapsamlı bir rol atamak için, parametre için `--scope` sıranın kapsamını içeren bir dize belirtin. Sıranın kapsamı şu şekildedir:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue>
 ```
 
-Aşağıdaki örnek, **depolama kuyruğu veri katılımcısı** rolünü, sıranın düzeyi kapsamındaki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun:
+Aşağıdaki örnek, sıra düzeyine kadar kapsamlı bir kullanıcıya **Depolama Sırası Veri Katılımcısı** rolünü atar. Ayraçtaki örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun:
 
 ```azurecli-interactive
 az role assignment create \
@@ -93,13 +93,13 @@ az role assignment create \
 
 ### <a name="storage-account-scope"></a>Depolama hesabı kapsamı
 
-Depolama hesabına kapsamlı bir rol atamak için, `--scope` parametresi için depolama hesabı kaynağının kapsamını belirtin. Depolama hesabının kapsamı şu biçimdedir:
+Depolama hesabına kapsamlı bir rol atamak için, parametre için `--scope` depolama hesabı kaynağının kapsamını belirtin. Depolama hesabının kapsamı şu şekildedir:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-Aşağıdaki örnek, depolama hesabı düzeyinde bir kullanıcıya **Depolama Blobu veri okuyucusu** rolünün nasıl atanacağını gösterir. Örnek değerleri kendi değerlerinizle değiştirdiğinizden emin olun: \
+Aşağıdaki örnek, **Depolama Blob Veri Okuyucu** rolünün depolama hesabı düzeyindeki bir kullanıcıya nasıl atandığını gösterir. Örnek değerleri kendi değerlerinizle değiştirdiğinizden emin olun: \
 
 ```azurecli-interactive
 az role assignment create \
@@ -110,7 +110,7 @@ az role assignment create \
 
 ### <a name="resource-group-scope"></a>Kaynak grubu kapsamı
 
-Kaynak grubuna kapsamlı bir rol atamak için, `--resource-group` parametresi için kaynak grubu adını veya KIMLIĞINI belirtin. Aşağıdaki örnek, **depolama kuyruğu veri okuyucusu** rolünü, kaynak grubunun düzeyindeki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun:
+Kaynak grubuna kapsamlı bir rol atamak için, parametre için `--resource-group` kaynak grubu adını veya kimliğini belirtin. Aşağıdaki örnek, **Depolama Sırası Veri Okuyucu** rolünü kaynak grubu düzeyindeki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun:
 
 ```azurecli-interactive
 az role assignment create \
@@ -121,13 +121,13 @@ az role assignment create \
 
 ### <a name="subscription-scope"></a>Abonelik kapsamı
 
-Aboneliğe kapsamlı bir rol atamak için, `--scope` parametresi için abonelik kapsamını belirtin. Bir aboneliğin kapsamı şu biçimdedir:
+Abonelmeye yönelik bir rol atamak için, parametreiçin `--scope` aboneliğin kapsamını belirtin. Aboneliğin kapsamı şu şekildedir:
 
 ```
 /subscriptions/<subscription>
 ```
 
-Aşağıdaki örnek, depolama hesabı düzeyinde bir kullanıcıya **Depolama Blobu veri okuyucusu** rolünün nasıl atanacağını gösterir. Örnek değerleri kendi değerlerinizle değiştirdiğinizden emin olun: 
+Aşağıdaki örnek, **Depolama Blob Veri Okuyucu** rolünün depolama hesabı düzeyindeki bir kullanıcıya nasıl atandığını gösterir. Örnek değerleri kendi değerlerinizle değiştirdiğinizden emin olun: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -138,6 +138,6 @@ az role assignment create \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetme](../../role-based-access-control/role-assignments-powershell.md)
-- [Azure PowerShell kullanarak RBAC ile Azure Blob ve kuyruk verilerine erişim izni verme](storage-auth-aad-rbac-powershell.md)
+- [RBAC ve Azure PowerShell'i kullanarak Azure kaynaklarına erişimi yönetme](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure PowerShell'i kullanarak RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](storage-auth-aad-rbac-powershell.md)
 - [Azure portalında RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](storage-auth-aad-rbac-portal.md)

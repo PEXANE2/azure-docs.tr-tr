@@ -1,6 +1,6 @@
 ---
-title: Canlı olay durumları ve faturalama Azure Media Services | Microsoft Docs
-description: Bu konu, Azure Media Services LiveEvent durumları ve faturalandırma hakkında genel bakış sunar.
+title: Azure Medya Hizmetleri'nde LiveEvent durumları ve faturalandırma | Microsoft Dokümanlar
+description: Bu konu, Azure Medya Hizmetleri LiveEvent durumlarına ve faturalandırmaya genel bir bakış sağlar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,36 +14,36 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
 ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76543084"
 ---
-# <a name="live-event-states-and-billing"></a>Canlı olay durumları ve faturalandırma
+# <a name="live-event-states-and-billing"></a>Canlı Etkinlik durumları ve faturalandırma
 
-Azure Media Services, canlı bir olay, durum geçişleri **çalışmaya**hemen sonra faturalandırmaya başlar. Hizmetten herhangi bir video akışı olmasa bile faturalandırılırsınız. Canlı etkinliği faturalandırmayı durdurmak için canlı olayı durdurmanız gerekir. Canlı döküm, canlı olayla aynı şekilde faturalandırılır.
+Azure Medya Hizmetleri'nde, Bir Canlı Etkinlik, durumu **Çalışır duruma**geçer geçmez faturalandırmaya başlar. Hizmette akan bir video olmasa bile faturalandırılırsınız. Canlı Etkinliğin faturalandırmasını durdurmak için Canlı Etkinliği durdurmanız gerekir. Canlı Transkripsiyon, Live Event ile aynı şekilde faturalandırılır.
 
-[Canlı olayınızdaki](https://docs.microsoft.com/rest/api/media/liveevents) **Liveeventencodingtype** standart veya Premium1080p olarak ayarlandığında Media Services, giriş akışı kaybolduktan sonra çalışmakta olan 12 saat içinde hala **çalışır** durumda olan canlı olayları otomatik olarak kapatır ve çalışan **canlı bir çıktı**yoktur. Ancak, hala canlı olayın **çalışır** durumda olduğu zaman faturalandırılırsınız.
+Live **EventEncodingType** [Live Event'inizde](https://docs.microsoft.com/rest/api/media/liveevents) Standart veya Premium1080p olarak ayarlandığında, Medya Hizmetleri giriş akışı kaybolduktan 12 saat sonra hala **Çalışan** durumdaki tüm Live Event'i otomatik olarak kapatır ve çalışan **Canlı Çıkış**yoktur. Ancak, Canlı Etkinlik **Çalışan** durumunda olduğu süre için faturalandırılırsınız.
 
 > [!NOTE]
-> Doğrudan geçiş canlı olayları otomatik olarak kapatılmaz ve aşırı faturalandırmayı önlemek için API aracılığıyla açıkça durdurulmalıdır. 
+> Geçiş Canlı Etkinlikler otomatik olarak kapatılmaz ve aşırı faturalandırmayı önlemek için API aracılığıyla açıkça durdurulmalıdır. 
 
 ## <a name="states"></a>Durumlar
 
-Canlı olay, aşağıdaki durumlardan birinde olabilir.
+Canlı Etkinlik aşağıdaki durumlardan birinde olabilir.
 
-|Eyalet|Açıklama|
+|Durum|Açıklama|
 |---|---|
-|**Durdurulacağını**| Bu, oluşturulduktan sonra canlı etkinliğin ilk durumudur (autostart, true olarak ayarlanmadığı müddetçe).) Bu durumda faturalandırma yapılmaz. Bu durumda, Canlı Etkinlik özellikleri güncelleştirilebilir ama akışa izin verilmez.|
-|**Şunlar**| Canlı etkinlik başlatılıyor ve kaynaklar ayrıldı. Bu durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirmelere veya akışa izin verilmez. Bir hata oluşursa canlı olay durdurulmuş duruma geri döner.|
-|**Çalıştıran**| Canlı olay kaynakları ayrıldı, alma ve önizleme URL 'Leri oluşturulmuştur ve canlı akışlar alabilir. Bu noktada faturalandırma etkin olur. Daha fazla faturalandırmayı durdurmak için canlı olay kaynağında durdurmayı açıkça çağırmanız gerekir.|
-|**Durdurulamadı**| Canlı etkinlik durduruluyor ve kaynaklar zaten sağlanıyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirmelere veya akışa izin verilmez.|
-|**Silinmesinden**| Canlı Etkinlik siliniyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirmelere veya akışa izin verilmez.|
+|**Durduruldu**| Bu, oluşturulduktan sonraki Canlı Olay'ın ilk durumudur (otomatik başlatma doğru ayarlanmadığı sürece.) Bu durumda faturalandırma oluşmaz. Bu durumda, Canlı Olay özellikleri güncelleştirilebilir, ancak akışa izin verilmez.|
+|**Başlatılıyor**| Canlı Etkinlik başlatılıyor ve kaynaklar tahsis ediliyor. Bu durumda faturalandırma oluşmaz. Bu durumda güncelleştirmeler veya akışa izin verilmez. Bir hata oluşursa, Canlı Olay Durduruldu durumuna geri döner.|
+|**Çalışıyor**| Canlı Etkinlik kaynakları ayrıldı, yutma ve önizleme URL'leri oluşturuldu ve canlı akış lar alabilme yeteneğine sahip. Bu noktada, faturalandırma etkindir. Daha fazla faturalandırmayı durdurmak için Canlı Etkinlik kaynağında Durdur'u açıkça aramalısınız.|
+|**Durduruluyor**| Canlı Etkinlik durduruluyor ve kaynaklar yok ediliyor. Bu geçici durumda faturalandırma oluşmaz. Bu durumda güncelleştirmeler veya akışa izin verilmez.|
+|**Silme**| Canlı Etkinlik siliniyor. Bu geçici durumda faturalandırma oluşmaz. Bu durumda güncelleştirmeler veya akışa izin verilmez.|
 
-Canlı olayları oluştururken canlı onayları etkinleştirmeyi seçebilirsiniz. Bunu yaparsanız, canlı olay **çalışır** durumda olduğunda canlı döküm için faturalandırılırsınız. Canlı olay aracılığıyla bir ses akışı olmasa bile faturalandırılacağını unutmayın.
+Canlı Etkinliği oluştururken Canlı Transkripsiyonları etkinleştirmeyi seçebilirsiniz. Bunu yaparsanız, Canlı Etkinlik **Çalışan** durumda olduğunda Canlı Transkripsiyonlar için faturalandırılırsınız. Canlı Etkinlik'te ses akışı olmasa bile faturalandırılacağınızı unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Canlı akışa genel bakış](live-streaming-overview.md)
-- [Canlı akış öğreticisi](stream-live-tutorial-with-api.md)
+- [Canlı akış eğitimi](stream-live-tutorial-with-api.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Databricks gelen erişim Azure Cosmos DB Cassandra API'si
-description: Bu makalede Azure Cosmos DB Cassandra API'SİNİN Azure Databricks ile nasıl çalışılacağı ele alınmaktadır.
+title: Azure Databricks'ten Azure Cosmos DB Cassandra API'ye erişin
+description: Bu makalede, Azure Veri Tuğlaları'ndan Azure Cosmos DB Cassandra API ile nasıl çalışılabilenler ele allanmıştır.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,31 +9,31 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894020"
 ---
-# <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Cosmos DB Cassandra API'SİNİN verileri Azure Databricks erişim
+# <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Veri Tuğlaları'ndan Azure Cosmos DB Cassandra API verilerine erişin
 
-Bu makalede ayrıntıları veritabanlarıyla Azure Cosmos DB Cassandra API'SİNİN spark'tan üzerinde nasıl [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks).
+Bu makalede, [Azure Veri Tuğlaları'nda](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks)Spark'tan Azure Cosmos DB Cassandra API ile nasıl çalışılalı çalışacağı ayrıntılı olarak açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Bir Azure Cosmos DB Cassandra API hesabı sağlayın](create-cassandra-dotnet.md#create-a-database-account)
+* [Azure Cosmos DB Cassandra API hesabı sağlama](create-cassandra-dotnet.md#create-a-database-account)
 
-* [Azure Cosmos DB Cassandra API'sine bağlanma hakkında temel bilgileri gözden geçirin](cassandra-spark-generic.md)
+* [Azure Cosmos DB Cassandra API'ye bağlanmanın temellerini gözden geçirin](cassandra-spark-generic.md)
 
-* [Azure Databricks kümesi sağlama](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
+* [Azure Databricks kümesini sağlama](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
 
-* [Cassandra API ile çalışmak için kod örnekleri gözden geçirin](cassandra-spark-generic.md#next-steps)
+* [Cassandra API ile çalışmak için kod örneklerini gözden geçirin](cassandra-spark-generic.md#next-steps)
 
-* [Bu nedenle tercih ederseniz cqlsh doğrulama için kullanın.](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [Eğer çok tercih ederseniz doğrulama için cqlsh kullanın](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Cassandra API örnek yapılandırması Cassandra Bağlayıcısı için:**
+* **Cassandra konektörü için Cassandra API örnek yapılandırması:**
 
-  Spark bağlamı bir parçası olarak başlatılması için Cassandra bağlantı ayrıntıları Cassandra API'si için bağlayıcı gerektirir. Bir Databricks not defteri başlattığında, spark bağlamı zaten başlatıldı ve durdurup yeniden başlatın önerilir değil. Tek bir çözüm düzeyinde bir kümesi küme spark yapılandırmasında Cassandra API'si örnek yapılandırması eklemektir. Bu, Küme başına tek seferlik bir etkinliktir. Anahtar değer çifti boşlukla ayrılmış olarak Spark yapılandırması için aşağıdaki kodu ekleyin:
+  Cassandra API'nin bağlayıcısı, Cassandra bağlantı ayrıntılarının kıvılcım bağlamının bir parçası olarak başlatılmasını gerektirir. Bir Databricks dizüstü bilgisayar başlattığınızda, kıvılcım bağlamı zaten başlatılır ve durdurmak ve yeniden başlatmanız tavsiye edilmez. Bir çözüm, Cassandra API örnek yapılandırmasını küme düzeyinde, küme kıvılcım yapılandırmasına eklemektir. Bu küme başına bir kerelik bir etkinliktir. Boşluk ayrılmış anahtar değer çifti olarak Spark yapılandırmasına aşağıdaki kodu ekleyin:
  
   ```scala
   spark.cassandra.connection.host YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com
@@ -45,25 +45,25 @@ Bu makalede ayrıntıları veritabanlarıyla Azure Cosmos DB Cassandra API'SİN�
 
 ## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 
-* **Cassandra Spark Bağlayıcısı:** - Azure Cosmos DB Cassandra API'SİNİN Spark Bağlayıcısı Azure Databricks kümesine bağlı Cassandra ile tümleştirmek için. Kümeye eklemek için:
+* **Cassandra Spark konektörü:** - Azure Cosmos DB Cassandra API'sini Spark ile entegre etmek için Cassandra konektörü Azure Databricks kümesine iliştirilmelidir. Kümeeklemek için:
 
-  * Spark sürümü Databricks çalışma zamanı sürümünü gözden geçirin. Ardından bulun [maven koordinatları](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) Cassandra Spark Bağlayıcısı ile uyumludur ve kümeye ekleyin. Bkz: ["Maven paketini veya Spark paketini karşıya yükle"](https://docs.databricks.com/user-guide/libraries.html) makale bağlayıcı kitaplık kümeye eklemek için. Örneğin, maven koordinatı "Databricks çalışma zamanı modülü sürümü 4.3", "2.3.1 Spark" ve "Scala 2.11" olan `spark-cassandra-connector_2.11-2.3.1`
+  * Databricks çalışma zamanı sürümünü, Spark sürümünü gözden geçirin. Ardından Cassandra Spark konektörüne uygun [maven koordinatlarını](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) bulun ve kümeye takın. Bağlayıcı kitaplığını kümeye eklemek için ["Maven paketi veya Kıvılcım paketi yükle"](https://docs.databricks.com/user-guide/libraries.html) makalesine bakın. Örneğin, "Databricks Runtime sürüm 4.3", "Spark 2.3.1" ve "Scala 2.11" için maven koordinat`spark-cassandra-connector_2.11-2.3.1`
 
-* **Azure Cosmos DB Cassandra API özgü kitaplığı:** -özel bağlantı üreteci için Azure Cosmos DB Cassandra API'SİNİN Cassandra Spark Bağlayıcıdan yeniden deneme ilkesi yapılandırmak için gereklidir. Ekleme `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0` [maven koordinatları](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) kümeye kitaplık ekleme için.
+* **Azure Cosmos DB Cassandra API'ye özel kitaplık:** - Cassandra Spark bağlayıcısından Azure Cosmos DB Cassandra API'ye yeniden deneme ilkesini yapılandırmak için özel bir bağlantı fabrikası gereklidir. `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`Kitaplığı kümeye eklemek için [maven koordinatlarını](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) ekleyin.
 
 ## <a name="sample-notebooks"></a>Örnek not defterleri
 
-Azure Databricks listesini [örnek not defterleri](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) GitHub deposunu, karşıdan yüklemek kullanılabilir. Bu örnekler Spark'tan Azure Cosmos DB Cassandra API'sine bağlanmak ve verileri farklı CRUD işlemleri gerçekleştirmek nasıl içerir. Ayrıca [tüm not defterlerinin alma](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) , Databricks çalışma alanı küme ve çalıştırın. 
+İndirmeniz için GitHub repo'da Azure Databricks [örnek not defterlerinin](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) listesi mevcuttur. Bu örnekler, Spark'tan Azure Cosmos DB Cassandra API'ye nasıl bağlanıştırılan ve veriler üzerinde farklı CRUD işlemleri gerçekleştirmek için içerir. Ayrıca [tüm not defterlerini](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) Databricks küme çalışma alanına aktarabilir ve çalıştırabilirsiniz. 
 
-## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Spark Scala programlarından Azure Cosmos DB Cassandra API'sine erişme
+## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Spark Scala programlarından Azure Cosmos DB Cassandra API'ye erişim
 
-Spark programları otomatik işlemleri Azure databricks kullanarak kümeye gönderildiğinde çalıştırılacak [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html)) ve Azure Databricks işleri çalıştırmak için zamanlanmış.
+Azure Veri Tuğlaları'nda otomatik işlemler olarak çalıştırılacak kıvılcım [programları, kıvılcım gönder](https://spark.apache.org/docs/latest/submitting-applications.html)kullanılarak kümeye gönderilir ve Azure Databricks işlerinde çalıştırılmak üzere zamanlanır.
 
-Yardımcı olmak için bağlantılar, Azure Cosmos DB Cassandra API ile etkileşim kurmak için Scala Spark programları derleme başlama aşağıda verilmiştir.
-* [Spark Scala programdan Azure Cosmos DB Cassandra API'sine bağlanma](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
-* [Spark Scala program, Azure Databricks'te otomatik bir iş olarak çalıştırma](https://docs.azuredatabricks.net/user-guide/jobs.html)
-* [Cassandra API ile çalışmak için kod örnekleri tam listesi](cassandra-spark-generic.md#next-steps)
+Azure Cosmos DB Cassandra API ile etkileşimkurmak için Spark Scala programları oluşturmaya başlamanıza yardımcı olacak bağlantılar aşağıda veda edilmiştir.
+* [Bir Spark Scala programından Azure Cosmos DB Cassandra API'ye bağlanma](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Azure Veri Tuğlaları'nda otomatik bir iş olarak Bir Spark Scala programı nasıl çalıştırılır?](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Cassandra API ile çalışmak için kod örneklerinin tam listesi](cassandra-spark-generic.md#next-steps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Java uygulaması kullanarak [Cassandra API hesabı, veritabanı ve tablo oluşturmaya](create-cassandra-api-account-java.md) başlama.
+Java uygulamasını kullanarak [Cassandra API hesabı, veritabanı ve tablo oluşturmaya](create-cassandra-api-account-java.md) başlayın.

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect ve kullanıcı gizlilik | Microsoft Docs
-description: Bu belge, Azure AD Connect ile GDPR uyumluluk elde açıklar.
+title: Azure AD Connect ve kullanıcı gizliliği | Microsoft Dokümanlar
+description: Bu belge, Azure AD Connect ile GDPR uyumluluğu nasil alınacakını açıklayıyor.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,44 +16,44 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60455797"
 ---
-# <a name="user-privacy-and-azure-ad-connect"></a>Kullanıcı gizliliği ve Azure AD Connect 
+# <a name="user-privacy-and-azure-ad-connect"></a>Kullanıcı gizliliği ve Azure AD Bağlantısı 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Bu makalede, Azure AD Connect ve kullanıcı gizlilik ile ilgilidir.  Azure AD Connect Health ve kullanıcı gizliliği hakkında bilgi için bkz [burada](reference-connect-health-user-privacy.md).
+>Bu makalede Azure AD Connect ve kullanıcı gizliliği ele adabı yer adabı.  Azure AD Connect Health ve kullanıcı gizliliği hakkında daha fazla bilgi için [makaleye buradan](reference-connect-health-user-privacy.md)bakın.
 
-Azure AD Connect yükleme iki yolla için kullanıcı gizliliğini geliştirme:
+Azure AD Connect yüklemeleri için kullanıcı gizliliğini iki şekilde geliştirin:
 
-1.  İstek, bir kişi için verileri ayıklayın ve bu kişiden yüklemeleri veri kaldırma
-2.  Hiçbir veri 48 saat dışında tutulur emin olun.
+1.  İstek üzerine, bir kişi için veri ayıklayın ve yüklemelerden bu kişiden veri kaldırın
+2.  48 saatten fazla veri tutulmadığından emin olun.
 
-Azure AD Connect takım, uygulamak ve sürdürmek daha kolay olduğundan ikinci seçenek önerir.
+Azure AD Connect ekibi, uygulanması ve bakımı çok daha kolay olduğundan ikinci seçeneği önerir.
 
-Bir Azure AD Connect eşitleme sunucusu aşağıdaki kullanıcı gizlilik verilerini depolar:
-1.  Bir kişi hakkında veri **Azure AD Connect'in veritabanı**
-2.  Verileri **Windows olay günlüğü** kişi hakkında bilgi içeren dosyaları
-3.  Verileri **Azure AD Connect yükleme günlük dosyalarını** hakkında bir kişi içerebilir
+Azure AD Connect eşitleme sunucusu aşağıdaki kullanıcı gizlilik verilerini depolar:
+1.  Azure AD Connect **veritabanındaki** bir kişi hakkındaki veriler
+2.  **Windows Event günlük** dosyalarında bir kişi hakkında bilgi içerebilecek veriler
+3.  **Azure AD Connect yükleme günlüğü dosyalarında** bir kişi hakkında bilgi içerebilecek veriler
 
-Azure AD Connect müşterileri, kullanıcı verilerini kaldırırken aşağıdaki yönergeleri kullanmanız gerekir:
-1.  Azure AD Connect yükleme günlük dosyalarını düzenli olarak – en az 48 saatte içeren klasörün içeriğini silin
-2.  Bu ürün, olay günlükleri de oluşturabilirsiniz.  Olay günlükleri günlükleri hakkında daha fazla bilgi edinmek için lütfen bkz [burada sağlanan belgelerde](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
+Azure AD Connect müşterileri kullanıcı verilerini kaldırırken aşağıdaki yönergeleri kullanmalıdır:
+1.  Azure AD Connect yükleme günlüğü dosyalarını içeren klasörün içeriğini düzenli olarak silin – en az her 48 saatte bir
+2.  Bu ürün ayrıca Olay Günlükleri oluşturabilir.  Olay Günlükleri günlükleri hakkında daha fazla bilgi edinmek için lütfen [buradaki belgelere](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx)bakın.
 
-Bu kişinin veri öğesinden geldiği kaynak sistemden kaldırıldığında kişi hakkında verileri otomatik olarak Azure AD Connect veritabanından kaldırılır. Yöneticilerin belirli bir eylem yok GDPR ile uyumlu olması gerekir.  Ancak, Azure AD Connect veri en az iki günde, veri kaynağı ile eşitlenmiş gerektirir.
+Bir kişi hakkındaki veriler, bu kişinin verileri geldiği kaynak sistemden kaldırıldığında Azure AD Connect veritabanından otomatik olarak kaldırılır. YÖNETICILERIN GDPR uyumlu olması için belirli bir işlem yapılması gerekmez.  Ancak, Azure AD Connect verilerinin en az iki günde bir veri kaynağınızla eşitlemesi gerekir.
 
-## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Azure AD Connect yükleme günlük dosyası klasörü içeriğini sil
-Düzenli olarak denetleyin ve içeriğini silin **c:\programdata\aadconnect** klasör – dışında **PersistedState.Xml** dosya. Bu dosya, bir Azure Connect, önceki yükleme durumunu korur ve yükseltme bir yükleme gerçekleştirildiğinde kullanılır. Bu dosya, kişi hakkında hiç veri içermediğini ve silinmesi gerekir.
+## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Azure AD Connect yükleme günlüğü dosya klasörü içeriğini silme
+**PersistedState.Xml** dosyası dışında **c:\programdata\aadconnect** klasörünün içeriğini düzenli olarak kontrol edin ve silin. Bu dosya, Azure A Connect'in önceki yüklemedurumunu korur ve yükseltme yüklemesi yapıldığında kullanılır. Bu dosya bir kişi hakkında herhangi bir veri içermez ve silinmemelidir.
 
 >[!IMPORTANT]
->PersistedState.xml dosyayı silmeyin.  Bu dosya, hiçbir kullanıcı bilgisi içermez ve önceki yükleme durumunu korur.
+>PersistedState.xml dosyasını silmeyin.  Bu dosya hiçbir kullanıcı bilgisi içermez ve önceki yüklemenin durumunu korur.
 
-Gözden geçirin ve Windows Gezgini'ni kullanarak bu dosyaları silin veya gerekli eylemleri gerçekleştirmek için aşağıdaki gibi bir betik kullanın:
+Windows Gezgini'ni kullanarak bu dosyaları gözden geçirip silebilirsiniz veya gerekli eylemleri gerçekleştirmek için aşağıdaki gibi bir komut dosyası kullanabilirsiniz:
 
 
 ```
@@ -64,24 +64,24 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
     } 
 ```
 
-### <a name="schedule-this-script-to-run-every-48-hours"></a>Bu betik, 48 saatte çalıştırılacak zamanlama
-48 saatte çalıştırılacak betik zamanlamak için aşağıdaki adımları kullanın.
+### <a name="schedule-this-script-to-run-every-48-hours"></a>Bu komut dosyasını her 48 saatte bir çalışacak şekilde zamanlama
+Komut dosyasını her 48 saatte bir çalışacak şekilde zamanlamak için aşağıdaki adımları kullanın.
 
-1.  Betik uzantılı bir dosyaya Kaydet  **&#46;PS1**, ardından Denetim Masası'nı açın ve tıklayarak **sistemleri ve güvenlik**.
+1.  Komut dosyasını **PS1'&#46;** uzantılı bir dosyaya kaydedin, ardından Denetim Masası'nı açın ve **Sistemler ve Güvenlik'e**tıklayın.
     ![Sistem](./media/reference-connect-user-privacy/gdpr2.png)
 
-2.  Yönetimsel Araçlar başlığına tıklayarak **görevleri zamanlayın**.
+2.  Yönetim Araçları başlığı **altında, Zamanlama Görevleri'ni**tıklatın.
     ![Görev](./media/reference-connect-user-privacy/gdpr3.png)
-3.  Görev Zamanlayıcı'da, sağ tıklayın **görev zamanlama Kitaplığı** tıklayın **oluşturma temel görevi...**
-4.  Yeni görev için bir ad girin ve tıklayın **sonraki**.
-5.  Seçin **günlük** tıklatın ve görev tetikleyici için **sonraki**.
-6.  Yinelenme kümesine **2 gün** tıklatıp **sonraki**.
-7.  Seçin **programı Başlat** tıklatın ve eylemi olarak **sonraki**.
-8.  Türü **PowerShell** etiketli kutusundan ve Program/komut kutusundaki **bağımsız değişkenler (isteğe bağlı) ekleme**, daha önce oluşturduğunuz bir komut dosyası için tam yolu girin ve ardından tıklayın **sonraki**.
-9.  Sonraki ekranda, görev oluşturmak üzere olduğunuz bir özetini gösterir. Değerleri doğrulayın ve tıklayın **son** görevi oluşturur.
+3.  Görev Zamanlayıcısı'nda, **Görev Çizelgesi Kitaplığı'na** sağ tıklayın ve **Temel Görev Oluştur'a tıklayın...**
+4.  Yeni görevin adını girin ve **İleri'yi**tıklatın.
+5.  Görev tetikleyicisi için **Günlük'u** seçin ve **İleri'ye**tıklayın.
+6.  Yinelemeyi **2 güne** ayarlayın ve **İleri'yi**tıklatın.
+7.  Eylem olarak **program başlat'ı** seçin ve **İleri'ye**tıklayın.
+8.  Program/komut dosyası için kutuya **PowerShell** yazın ve etiketlenmiş kutuda **Bağımsız Değişken ekle (isteğe bağlı)** olarak, daha önce oluşturduğunuz komut dosyasına tam yolu girin, ardından **İleri'yi**tıklatın.
+9.  Sonraki ekranda oluşturmak üzere olduğunuz görevin bir özetini gösterir. Değerleri doğrulayın ve görevi oluşturmak için **Bitir'i** tıklatın.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Güven Merkezi Microsoft Privacy ilkeyi gözden geçirin](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect sistem durumu ve kullanıcı gizliliği](reference-connect-health-user-privacy.md)
+* [Güven Merkezi'ndeki Microsoft Gizlilik ilkesini inceleyin](https://www.microsoft.com/trustcenter)
+* [Azure AD, Sağlık Ve Kullanıcı Gizliliğini Bağlayın](reference-connect-health-user-privacy.md)

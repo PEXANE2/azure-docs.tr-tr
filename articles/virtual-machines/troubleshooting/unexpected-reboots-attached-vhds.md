@@ -1,7 +1,7 @@
 ---
-title: Azure VM 'lerinde bağlı VHD 'Ler ile VM 'lerin beklenmedik şekilde yeniden başlatmaları için sorun giderme Microsoft Docs
-description: VM 'lerin beklenmedik şekilde yeniden başlatılmasıyla ilgili sorunları giderme.
-keywords: SSH bağlantısı reddedildi, SSH hatası, Azure SSH, SSH bağlantısı başarısız oldu
+title: Azure VM'lerde ekli VH'ler ile VM'lerin beklenmeyen yeniden başlatmalarını sorun giderme | Microsoft Dokümanlar
+description: VM'lerin beklenmeyen yeniden başlatmalarını giderme sorunu nasıl giderilir.
+keywords: ssh bağlantısı reddedildi, ssh hatası, azure ssh, SSH bağlantısı başarısız oldu
 services: virtual-machines
 author: genlin
 manager: dcscontentpm
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 3a06db1afd130d936af868d0d20632c3ec4fbfd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75358535"
 ---
-# <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Bağlı VHD 'lerle VM 'lerin beklenmedik şekilde yeniden başlatmaları için sorun giderme
+# <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Bağlı VHD'lerle VM'lerin beklenmeyen yeniden başlatmalarını giderme
 
-Bir Azure sanal makinesi (VM), aynı depolama hesabında bulunan çok sayıda bağlı VHD 'ye sahipse, tek bir depolama hesabı için ölçeklenebilirlik hedeflerini aşabilirsiniz, bu da VM 'nin beklenmedik şekilde yeniden başlatılmasına neden olabilir. Depolama hesabı için ölçeklenebilirlik hedeflerini aşan ani artışlar için depolama hesabının (**Totalrequests**/**totalınress**/**TotalEgress**) dakika ölçümlerini denetleyin. Depolama hesabınızda azaltma yapılıp yapılmayacağını belirlemede yardım için bkz. [ölçümler, Percentkısıtıngerror 'da artış gösterir](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#metrics-show-an-increase-in-PercentThrottlingError) .
+Bir Azure Sanal Makine 'de (VM) aynı depolama hesabında çok sayıda bağlı VHD varsa, tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşarak VM'nin beklenmedik bir şekilde yeniden başlatılmasına neden olabilirsiniz. Depolama hesabının ölçeklenebilirlik hedeflerini aşan ani artışlar için**TotalIngress**/depolama hesabının dakika ölçümlerini **(Toplam**/**İstektoplamEgress)** denetleyin. Bkz. Ölçümler, depolama hesabınızda azaltma olup olmadığını belirlemede yardımcı olmak için [YüzdeThrottlingError'ta bir artış gösterir.](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#metrics-show-an-increase-in-PercentThrottlingError)
 
-Genel olarak, bir sanal makineden bir VHD üzerindeki her tek giriş veya çıkış işlemi, temel alınan sayfa blobuna **sayfa al** veya **sayfa yerleştirme** işlemleri yapar. Bu nedenle, uygulamanızın belirli davranışına göre tek bir depolama hesabında kaç VHD 'nin olduğunu ayarlamak için ortamınız için tahmini ıOPS 'yi kullanabilirsiniz. Microsoft, tek bir depolama hesabında 40 veya daha az disk olmasını önerir. Standart depolama hesapları için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik hedefleri](../../storage/common/scalability-targets-standard-account.md). Premium sayfa BLOB depolama hesapları için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Premium sayfa BLOB depolama hesapları Için ölçeklenebilirlik hedefleri](../../storage/blobs/scalability-targets-premium-page-blobs.md).
+Genel olarak, Sanal Makine'den bir VHD'deki her bir giriş veya çıktı işlemi, temel sayfa blob'undaki **Sayfa yı al** veya Sayfa **koy** işlemleri anlamına gelir. Bu nedenle, uygulamanızın belirli davranışına bağlı olarak tek bir depolama hesabında kaç VHD'niz olabileceğini ayarlamak için ortamınız için tahmini IOPS'yi kullanabilirsiniz. Microsoft, tek bir depolama hesabında 40 veya daha az disk olmasını önerir. Standart depolama hesapları için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için, [standart depolama hesapları için Ölçeklenebilirlik hedeflerine](../../storage/common/scalability-targets-standard-account.md)bakın. Premium sayfa blob depolama hesapları için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için, [premium sayfa blob depolama hesapları için Ölçeklenebilirlik hedeflerine](../../storage/blobs/scalability-targets-premium-page-blobs.md)bakın.
 
-Depolama hesabınız için ölçeklenebilirlik hedeflerini aşmanız durumunda, her bir hesaptaki etkinliği azaltmak için VHD 'nizi birden fazla depolama hesabına yerleştirin.
+Depolama hesabınıziçin ölçeklenebilirlik hedeflerini aşıyorsanız, her bir hesaptaki etkinliği azaltmak için VHD'lerinizi birden çok depolama hesabına yerleştirin.

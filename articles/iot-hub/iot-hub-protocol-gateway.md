@@ -1,6 +1,6 @@
 ---
-title: Azure IOT protokolü ağ geçidini | Microsoft Docs
-description: IOT Hub ile IOT Hub tarafından yerel olarak desteklenmeyen protokolleri hub'ınıza bağlanmak için özellikleri ve protokol desteği cihazlarını etkinleştirmek için genişletmek için bir Azure IOT protokolü ağ geçidini kullanma
+title: Azure IoT protokol ağ geçidi | Microsoft Dokümanlar
+description: IoT Hub tarafından yerel olarak desteklenmeyen protokolleri kullanarak aygıtların hub'ınıza bağlanmasını sağlamak için IoT Hub özelliklerini ve protokol desteğini genişletmek için Azure IoT protokolü ağ geçidi nasıl kullanılır?
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,40 +9,40 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.openlocfilehash: 9dbb7905c2a0fed65ede610577e0fa11a1deef92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345405"
 ---
-# <a name="support-additional-protocols-for-iot-hub"></a>IOT hub'ı için ek protokol desteği
+# <a name="support-additional-protocols-for-iot-hub"></a>IoT Hub için ek protokolleri destekleme
 
-Azure IOT Hub, yerel olarak MQTT, AMQP ve HTTPS protokolleri üzerinden iletişimi destekler. Bazı durumlarda, cihazlar veya alan ağ geçitleri aşağıdaki standart protokollerden birini kullanın ve gerekli Protokolü uyarlama mümkün olmayabilir. Böyle durumlarda, özel bir ağ geçidi kullanabilirsiniz. Özel bir ağ geçidi, IOT hub'ı gelen ve giden trafiği köprüleme ile IOT Hub uç noktaları için protokol uyarlama sağlar. Kullanabileceğiniz [Azure IOT protokolü ağ geçidini](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) Protokolü uyarlama için IOT hub'ı etkinleştirmek için özel bir ağ geçidi olarak.
+Azure IoT Hub, MQTT, AMQP ve HTTPS protokolleri üzerinden iletişimi yerel olarak destekler. Bazı durumlarda, aygıtlar veya alan ağ geçitleri bu standart protokollerden birini kullanamayabilir ve protokol uyarlaması gerektirebilir. Bu gibi durumlarda, özel bir ağ geçidi kullanabilirsiniz. Özel ağ geçidi, trafiği IoT Hub'a ve IoT Hub'dan köprüleyerek IoT Hub uç noktaları için protokol uyarlamasısağlar. IoT Hub için protokol uyarlamasını etkinleştirmek için [Azure IoT iletişim ağ geçidini](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) özel ağ geçidi olarak kullanabilirsiniz.
 
-## <a name="azure-iot-protocol-gateway"></a>Azure IOT protokol ağ geçidi
+## <a name="azure-iot-protocol-gateway"></a>Azure IoT protokolü ağ geçidi
 
-Azure IOT protokol ağ geçidi, yüksek ölçekli, IOT Hub ile çift yönlü iletişim için tasarlanmış Protokolü uyarlama için bir çerçevedir. Protokol ağ geçidi, belirli bir protokolü üzerinden cihaz bağlantılarını kabul eden doğrudan bir bileşendir. IOT hub'ı trafiği AMQP 1.0 arasında köprü.
+Azure IoT iletişim ağ geçidi, IoT Hub ile yüksek ölçekli, çift yönlü aygıt iletişimi için tasarlanmış protokol uyarlaması için bir çerçevedir. Protokol ağ geçidi, belirli bir protokol üzerinden aygıt bağlantılarını kabul eden bir geçiş bileşenidir. AmQP 1.0 üzerinden trafiği IoT Hub'a köprüler.
 
-Azure Service Fabric, Azure Cloud Services çalışan rolleri ya da Windows sanal makineleri kullanarak azure'da protokol ağ geçidi yüksek düzeyde ölçeklenebilir bir yolla dağıtabilirsiniz. Ayrıca, alan ağ geçitleri gibi şirket içi ortamlarda protokol ağ geçidi dağıtılabilir.
+Azure Hizmet Kumaşı, Azure Bulut Hizmetleri çalışanı rolleri veya Windows Sanal Makineler kullanarak azure'daki protokol ağ geçidini yüksek ölçeklenebilir bir şekilde dağıtabilirsiniz. Ayrıca, protokol ağ geçidi alan ağ geçitleri gibi şirket içi ortamlarda dağıtılabilir.
 
-Azure IOT protokol ağ geçidi, MQTT protokol davranışı gerekirse özelleştirmenize olanak tanıyan bir MQTT protokolünü bağdaştırıcı içerir. IOT hub'ı MQTT v3.1.1 protokolü için yerleşik destek sağlar. bu yana yalnızca Protokolü özelleştirmeleri veya belirli gereksinimleri için ek işlevler gerekmiyorsa, MQTT protokolünü bağdaştırıcısı kullanmayı düşünmeniz gerekir.
+Azure IoT iletişim ağ geçidi, gerekirse MQTT iletişim kuralı davranışını özelleştirmenize olanak tanıyan bir MQTT protokol bağdaştırıcısı içerir. IoT Hub, MQTT v3.1.1 protokolü için yerleşik destek sağladığından, yalnızca protokol özelleştirmeleri veya ek işlevsellik için özel gereksinimler gerekiyorsa MQTT protokol bağdaştırıcısını kullanmayı düşünmelisiniz.
 
-MQTT bağdaştırıcısı de diğer protokolleri için iletişim kuralı bağdaştırıcıları oluşturmaya yönelik programlama modelini gösterir. Ayrıca, Azure IOT protokol ağ geçidi programlama modeli, özel bileşenler için özel kimlik doğrulama, ileti dönüştürmeleri, sıkıştırma/sıkıştırma veya şifreleme/şifre çözme arasındaki trafiği gibi özelleştirilmiş işlem takın sağlar cihazlar ve IOT hub'ı.
+MQTT bağdaştırıcısı, diğer protokoller için protokol bağdaştırıcıları oluşturmak için programlama modelini de gösterir. Buna ek olarak, Azure IoT ağ geçidi programlama modeli, özel kimlik doğrulama, ileti dönüşümleri, sıkıştırma/dekompresyon veya aygıtlar ve IoT Hub arasındaki trafiğin şifreleme/şifre çözme gibi özel işlemler için özel bileşenleri takmanıza olanak tanır.
 
-Esneklik için Azure IOT protokolü ağ geçidini ve MQTT uygulama açık kaynak yazılım projesinde sağlanmıştır. Senaryonuz için uygulamayı özelleştirme veya çeşitli protokoller ve protokol sürümleri için destek eklemek için açık kaynaklı proje kullanın. 
+Esneklik için, azure ioT protokolü ağ geçidi ve MQTT uygulaması bir açık kaynak yazılım projesinde sağlanır. Açık kaynak projesini, çeşitli protokoller ve protokol sürümleri için destek eklemek veya senaryonuz için uygulamayı özelleştirmek için kullanabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IOT protokolü ağ geçidini ve IOT çözümünüzün bir parçası olarak dağıtmak ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz:
+Azure IoT protokol ağ geçidi ve IoT çözümünüzün bir parçası olarak nasıl kullanılacağı ve dağıtılakullanılacağı hakkında daha fazla bilgi edinmek için bkz.
 
-* [Github'da Azure IOT protokol ağ geçidi deposu](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
+* [GitHub'da Azure IoT protokolü ağ geçidi deposu](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
 
-* [Azure IOT protokol ağ geçidi Geliştirici Kılavuzu](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
+* [Azure IoT protokolü ağ geçidi geliştirici kılavuzu](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
-IOT Hub dağıtımınızı planlama hakkında daha fazla bilgi için bkz:
+IoT Hub dağıtımınızı planlama hakkında daha fazla bilgi edinmek için bkz:
 
-* [Event Hubs ile karşılaştırma](iot-hub-compare-event-hubs.md)
+* [Etkinlik Hub'larıyla karşılaştırın](iot-hub-compare-event-hubs.md)
 
-* [Ölçeklendirme, yüksek kullanılabilirlik ve olağanüstü durum kurtarma](iot-hub-scaling.md)
+* [Ölçekleme, yüksek kullanılabilirlik ve olağanüstü durum kurtarma](iot-hub-scaling.md)
 
-* [IOT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
+* [IoT Hub geliştirici kılavuzu](iot-hub-devguide.md)

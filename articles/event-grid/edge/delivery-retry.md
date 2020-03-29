@@ -1,6 +1,6 @@
 ---
-title: Teslim ve yeniden deneme-Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge Event Grid teslim edin ve yeniden deneyin.
+title: Teslim ve yeniden deneme - Azure Event Grid IoT Edge | Microsoft Dokümanlar
+description: IoT Edge'deki Event Grid'de teslimat ve yeniden deneme.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,63 +10,63 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841721"
 ---
 # <a name="delivery-and-retry"></a>Teslim ve yeniden deneme
 
-Event Grid dayanıklı teslim sağlar. Her iletiyi her bir eşleşen abonelik için en az bir kez teslim etmeye çalışır. Bir abonenin uç noktası bir olayın alındığını kabul etmez veya bir hata oluşursa, yeniden deneme **çizelgesine** ve **yeniden deneme ilkesine**göre teslimi Event Grid.  Varsayılan olarak, Event Grid modülü abone için bir seferde bir olay sunar. Yük, ancak tek bir olay içeren bir dizidir. Çıkış toplu işleme özelliğini etkinleştirerek modülün bir seferde birden fazla olay sunabilmenize olanak sağlayabilirsiniz. Bu özellik hakkında daha fazla bilgi için bkz. [çıktıyı toplu işleme](delivery-output-batching.md).  
+Olay Izgara dayanıklı teslimat sağlar. Eşleşen her abonelik için her iletiyi en az bir kez hemen iletmeye çalışır. Abonenin bitiş noktası bir olayın alındığını kabul etmiyorsa veya bir hata varsa, Olay Idamı teslimini sabit bir **yeniden deneme zamanlamasına** göre yeniden dene ve yeniden deneme ilkesine göre yeniden **denediğinde.**  Varsayılan olarak, Olay Izgara modülü aboneye aynı anda bir olay sunar. Ancak yük, tek bir olayiçeren bir dizidir. Çıktı toplu iş özelliğini etkinleştirerek modülün aynı anda birden fazla olay sunmasını sağlayabilirsiniz. Bu özellik hakkında ayrıntılı bilgi için [çıktı toplu işlemi'ne](delivery-output-batching.md)bakın.  
 
 > [!IMPORTANT]
->Olay verileri için kalıcılık desteği yoktur. Bu, Event Grid modülün yeniden dağıtılması veya yeniden başlatılması, henüz teslim edilmemiş tüm olayları kaybetmenize neden olur.
+>Olay verileri için kalıcılık desteği yoktur. Bu, Olay Izgara modülünün yeniden dağıtılması veya yeniden başlatılmasının henüz teslim edilmemiş olayları kaybetmenize neden olacağı anlamına gelir.
 
-## <a name="retry-schedule"></a>Zamanlamayı yeniden dene
+## <a name="retry-schedule"></a>Yeniden deneme çizelgesi
 
-Event Grid bir ileti teslim edildikten sonra yanıt için 60 saniyeye kadar bekler. Abonenin uç noktası yanıta onay vermezse, sonraki yeniden denemeler için geri dönüş kuyruklarımızdan birinde ileti sıraya alınır.
+Olay Grid, bir ileti gönderdikten sonra yanıt için 60 saniyeye kadar bekler. Abonenin bitiş noktası yanıtı ACK değilse, ileti sonraki yeniden denemeler için arka sıralarımızdan birinde sıraya alınır.
 
-Yeniden deneneceği zamanlamayı belirleyen, önceden yapılandırılmış iki geri dönüş kuyruğu vardır. Bunlar:
+Yeniden denemenin deneneceği zamanlamayı belirleyen önceden yapılandırılmış geri dönüş kuyrukları vardır. Bunlar:
 
 | Zamanlama | Açıklama |
 | ---------| ------------ |
-| 1 dakika | Burada biten iletiler her dakikada denenir.
-| 10 dakika | Burada sona eklenen iletiler her 10 dakikada bir denenir.
+| 1 dakika | Burada son veren mesajlar her dakika denenir.
+| 10 dakika | Burada son veren mesajlar her 10 dakikada bir denenir.
 
-### <a name="how-it-works"></a>Nasıl çalışır
+### <a name="how-it-works"></a>Nasıl çalışır?
 
-1. İleti Event Grid modülüne ulaştı. Hemen teslim etme denemesi yapılır.
-1. Teslim başarısız olursa, ileti 1 dakikalık sıraya göre sıraya konur ve bir dakika sonra yeniden denenir.
-1. Teslim başarısız olmaya devam ederse, ileti 10 dakikalık sıraya göre sıraya alınır ve her 10 dakikada bir yeniden denenir.
-1. Teslimler, başarılı olana veya yeniden deneme ilkesi sınırlarına ulaşılıncaya kadar denenir.
+1. İleti Olay Izgara modülüne gelir. Hemen teslim etmek için girişimde bulunulması.
+1. Teslim başarısız olursa, ileti 1 dakikalık sıraya sıralanır ve bir dakika sonra yeniden denener.
+1. Teslim başarısız olmaya devam ederse, ileti 10 dakikalık sıraya sıralanır ve her 10 dakikada bir yeniden denendir.
+1. Teslimatlar, başarılı olana veya yeniden deneme ilkesi sınırlarına ulaşılına kadar denenir.
 
-## <a name="retry-policy-limits"></a>İlke sınırlarını yeniden dene
+## <a name="retry-policy-limits"></a>İlke sınırlarını yeniden deneyin
 
-Yeniden deneme ilkesini tespit eden iki yapılandırma vardır. Bunlar:
+Yeniden deneme ilkesini belirleyen iki yapılandırma vardır. Bunlar:
 
-* En fazla deneme sayısı
-* Etkinlik yaşam süresi (TTL)
+* Maksimum deneme sayısı
+* Etkinlik süresi canlı (TTL)
 
-Yeniden deneme ilkesinin limitlerinin herhangi birine ulaşıldığında bir olay bırakılır. Yeniden deneme zamanlaması, yeniden deneme zamanlaması bölümünde açıklanmıştı. Bu limitlerin yapılandırılması, tüm aboneler veya abonelik başına temelinde yapılabilir. Aşağıdaki bölümde, her biri daha ayrıntılı olarak açıklanmıştır.
+Yeniden deneme ilkesinin sınırlarından herhangi biri aşılırsa bir olay bırakılır. Yeniden deneme çizelgesinin kendisi Yeniden Deneme Çizelgesi bölümünde açıklanmıştır. Bu sınırların yapılandırması tüm aboneler için veya abonelik bazında yapılabilir. Aşağıdaki bölümde her biri daha ayrıntılı açıklar.
 
-## <a name="configuring-defaults-for-all-subscribers"></a>Tüm aboneler için Varsayılanları Yapılandırma
+## <a name="configuring-defaults-for-all-subscribers"></a>Tüm aboneler için varsayılanları yapılandırma
 
-Event Grid dağıtımının bir parçası olarak yapılandırılabilecek iki özellik vardır: `brokers__defaultMaxDeliveryAttempts` ve `broker__defaultEventTimeToLiveInSeconds` tüm aboneler için yeniden deneme ilkesi varsayılanlarını denetler.
+İki özellik `brokers__defaultMaxDeliveryAttempts` vardır: `broker__defaultEventTimeToLiveInSeconds` ve tüm aboneler için yeniden deneme ilkesi varsayılanlarını denetleyen Olay Izgara dağıtımının bir parçası olarak yapılandırılabilir.
 
-| Özellik adı | Açıklama |
+| Özellik Adı | Açıklama |
 | ---------------- | ------------ |
-| `broker__defaultMaxDeliveryAttempts` | Bir olayı teslim etmeye yönelik deneme sayısı üst sınırı. Varsayılan değer: 30.
-| `broker__defaultEventTimeToLiveInSeconds` | Bir olayın teslim edilmeden önce bırakılması gereken saniye cinsinden olay TTL 'SI. Varsayılan değer: **7200** saniye
+| `broker__defaultMaxDeliveryAttempts` | Bir olayı teslim etmek için maksimum sayıda deneme. Varsayılan değer: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Olay TTL saniye sonra bir olay teslim edilmezse bırakılır. Varsayılan değer: **7200** saniye
 
-## <a name="configuring-defaults-per-subscriber"></a>Abone başına Varsayılanları Yapılandırma
+## <a name="configuring-defaults-per-subscriber"></a>Varsayılanları abone başına yapılandırma
 
-Ayrıca, her abonelik için yeniden deneme ilkesi sınırlarını belirtebilirsiniz.
-Abone başına Varsayılanları yapılandırma hakkında bilgi edinmek için [API belgelerimize](api.md) bakın. Abonelik düzeyi Varsayılanları, modül düzeyi yapılandırmalarının üzerine yazar.
+Abonelik başına yeniden deneme ilkesi sınırlarını da belirtebilirsiniz.
+Abone başına varsayılanları yapılandırmanın nasıl yapılacağı hakkında bilgi için [API belgelerimize](api.md) bakın. Abonelik düzeyi varsayılanları modül düzeyi yapılandırmalarını geçersiz kılar.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, Event Grid modülünde Maxnumberofdenemeler = 3 ve olay TTL değeri 30 dakika olan yeniden deneme ilkesini ayarlar
+Aşağıdaki örnek, maksimumNumberOfGirişimleri = 3 ve Olay TTL 30 dakika ile Olay Izgara modülünde yeniden deneme ilkesi ayarlar
 
 ```json
 {
@@ -86,7 +86,7 @@ Aşağıdaki örnek, Event Grid modülünde Maxnumberofdenemeler = 3 ve olay TTL
 }
 ```
 
-Aşağıdaki örnek, Maxnumberofdenemeler = 3 ve olay TTL 'si olan 30 dakikalık bir Web kancası aboneliği ayarlıyor
+Aşağıdaki örnekmaxNumberOfGirişimleri = 3 ve Olay TTL 30 dakika ile bir Web hook abonelik kurar
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: StorSimple cihaz modunu değiştirme | Microsoft Docs
-description: StorSimple cihaz modları ve cihaz modunu değiştirmek için StorSimple için Windows PowerShell'i kullanmayı açıklar.
+title: StorSimple cihaz modunu değiştir | Microsoft Dokümanlar
+description: StorSimple aygıt modlarını açıklar ve aygıt modunu değiştirmek için StorSimple için Windows PowerShell'in nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,75 +15,75 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: e55964beff48df6ce24d99c01975d39b662f1612
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60576100"
 ---
-# <a name="change-the-device-mode-on-your-storsimple-device"></a>StorSimple Cihazınızda cihaz modunu değiştirme
+# <a name="change-the-device-mode-on-your-storsimple-device"></a>StorSimple cihazınızdaki aygıt modunu değiştirme
 
-Bu makalede, StorSimple Cihazınızı çalışabilir çeşitli modlar kısa bir açıklamasını sağlar. StorSimple Cihazınızı üç modda çalışabilir: normal, Bakım ve kurtarma.
+Bu makalede, StorSimple cihazınızın çalışabileceği çeşitli modların kısa bir açıklaması yer alabilirsiniz. StorSimple aygıtınız üç modda çalışabilir: normal, bakım ve kurtarma.
 
-Bu makaleyi okuduktan sonra şunları öğrenmiş olacaksınız:
+Bu makaleyi okuduktan sonra, bilecek:
 
-* StorSimple cihaz modu
-* StorSimple cihazının hangi modu şekil nasıl bulunduğu
-* Normal bakım moduna geçmek nasıl ve *tersi*
+* StorSimple aygıt modları nedir
+* StorSimple cihazının hangi modda olduğunu nasıl anlayabilirsiniz?
+* Normalden bakım moduna nasıl *değiştirilir?*
 
 Yukarıdaki yönetim görevleri yalnızca StorSimple cihazınızın Windows PowerShell arabirimi üzerinden gerçekleştirilebilir.
 
 ## <a name="about-storsimple-device-modes"></a>StorSimple cihaz modları hakkında
 
-StorSimple Cihazınızı normal, bakım ya da kurtarma modunda çalışır. Her iki mod kısaca aşağıda açıklanmıştır.
+StorSimple aygıtınız normal, bakım veya kurtarma modunda çalışabilir. Bu modların her biri aşağıda kısaca açıklanmıştır.
 
 ### <a name="normal-mode"></a>Normal mod
 
-Bu, normal çalışma modu için tam olarak yapılandırılmış bir StorSimple cihazı olarak tanımlanır. Varsayılan olarak, Cihazınızı normal modda olmalıdır.
+Bu, tam olarak yapılandırılmış bir StorSimple aygıtı için normal çalışma modu olarak tanımlanır. Varsayılan olarak, cihazınız normal modda olmalıdır.
 
 ### <a name="maintenance-mode"></a>Bakım modu
 
-Bazen StorSimple cihazını bakım moduna alındığında gerekebilir. Bu mod, cihaz üzerinde bakım gerçekleştirmek ve disk üretici yazılımı için ilgili olanlar gibi kesintiye uğratan güncelleştirmeleri yüklemenize olanak sağlar.
+Bazen StorSimple aygıtının bakım moduna alınması gerekebilir. Bu mod, aygıtta bakım yapmanızı ve disk firmware ile ilgili olanlar gibi yıkıcı güncelleştirmeler yüklemenize olanak tanır.
 
-StorSimple için Windows PowerShell aracılığıyla yalnızca bakım moduna sistem koyabilirsiniz. Tüm g/ç istekleri bu modda duraklatıldı. Geçici olmayan rastgele erişim belleği (NVRAM) gibi hizmetler veya Küme hizmetini de durduruldu. Girin ya da bu modundan çıkmak her iki denetleyici yeniden başlatılır. Bakım modundan çıktığınızda, tüm hizmetleri devam eder ve iyi durumda olması gerekir. Bu birkaç dakika sürebilir.
+Sistemi yalnızca StorSimple için Windows PowerShell üzerinden bakım moduna geçirebilirsiniz. Tüm G/Ç istekleri bu modda duraklatıldı. Geçici olmayan rasgele erişim belleği (NVRAM) veya kümeleme hizmeti gibi hizmetler de durdurulur. Bu moda girdiğinizde veya çıktığınızda her iki denetleyici de yeniden başlatılır. Bakım modundan çıktığınızda, tüm hizmetler devam edecektir ve sağlıklı olmalıdır. Bu birkaç dakika sürebilir.
 
 > [!NOTE]
-> **Bakım modu düzgün çalıştığını bir cihazda yalnızca desteklenir. İçinde bir veya iki denetleyicilerinin çalışmıyor bir cihazda desteklenmiyor.**
+> **Bakım modu yalnızca düzgün çalışan bir aygıtta desteklenir. Denetleyicilerden birinin veya her ikisinin çalışmadığı bir aygıtta desteklenmez.**
 
 
 ### <a name="recovery-mode"></a>Kurtarma modu
 
-Kurtarma modu, "Ağ desteği ile Windows güvenli mod" olarak açıklanabilir. Kurtarma modunu Microsoft Support ekibine ilgilenir ve bunları sistemde tanılama işlemleri gerçekleştirmek izin verir. Kurtarma modunu birincil amacı, sistem günlüklerini sağlamaktır.
+Kurtarma modu "Ağ destekli Windows Güvenli Modu" olarak tanımlanabilir. Kurtarma modu, Microsoft Destek ekibini meşgul eder ve sistem üzerinde tanılama gerçekleştirmelerine olanak tanır. Kurtarma modunun birincil amacı sistem günlüklerini almaktır.
 
-Sisteminizin kurtarma moduna girerse, sonraki adımlar için Microsoft Support başvurmanız gerekir. Daha fazla bilgi için Git [Microsoft Destek'e başvur](storsimple-8000-contact-microsoft-support.md).
+Sisteminiz kurtarma moduna geçerse, sonraki adımlar için Microsoft Destek'e başvurmalısınız. Daha fazla bilgi için [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
 
 > [!NOTE]
-> **Cihaz kurtarma modunda yerleştirilemiyor. Aygıt hatalı bir durumda, cihazın Microsoft Support personeli inceleyebilirsiniz, bir duruma getirmek kurtarma modunda çalışır.**
+> **Aygıtı kurtarma moduna yerleştiremezsiniz. Aygıt kötü durumdaysa, kurtarma modu aygıtı Microsoft Destek personelinin inceleyebileceği bir duruma sokmaya çalışır.**
 
 ## <a name="determine-storsimple-device-mode"></a>StorSimple cihaz modunu belirleme
 
-#### <a name="to-determine-the-current-device-mode"></a>Geçerli cihaz modunu belirleme
+#### <a name="to-determine-the-current-device-mode"></a>Geçerli aygıt modunu belirlemek için
 
-1. Cihaz seri konsoluna adımları izleyerek oturum [kullan cihaz seri konsoluna bağlanmak için PuTTY](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Cihazın seri konsol menüsünde bir başlık iletisi bakın. Bu ileti, cihaz bakım ya da kurtarma modunda olup olmadığını açıkça gösterir. İleti sistemi moduna ilgili belirli bilgilere içermiyorsa, cihazın normal modda çalışır.
+1. Cihaz seri konsoluna bağlanmak için [PuTTY'yi kullan](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)adımlarını izleyerek aygıt seri konsoluna oturum açın.
+2. Aygıtın seri konsol menüsündeki banner iletisine bakın. Bu ileti, aygıtın bakım veya kurtarma modunda olup olmadığını açıkça gösterir. İleti, sistem moduyla ilgili belirli bir bilgi içermiyorsa, aygıt normal moddadır.
 
-## <a name="change-the-storsimple-device-mode"></a>StorSimple cihaz modunu değiştirme
+## <a name="change-the-storsimple-device-mode"></a>StorSimple aygıt modunu değiştirme
 
-StorSimple cihaz Bakımı yap veya Bakım modu güncelleştirmeleri yüklemek için bakım modundan (normal mod) içine yerleştirebilirsiniz. Girin veya bakım modundan çıkmak için aşağıdaki yordamları gerçekleştirin.
+Bakım yapmak veya bakım modu güncelleştirmelerini yüklemek için StorSimple cihazını bakım moduna (normal moddan) yerleştirebilirsiniz. Bakım moduna girmek veya çıkmak için aşağıdaki yordamları gerçekleştirin.
 
 > [!IMPORTANT]
-> Bakım modu girmeden önce erişerek her iki cihaz denetleyicilerinin sağlıklı olduğunu doğrulayın **cihaz Ayarları > donanım sistem durumu** cihazınızın Azure portalında. Bir veya iki denetleyicilerinin sağlıklı emin değilseniz, sonraki adımlar için Microsoft Support başvurun. Daha fazla bilgi için Git [Microsoft Destek'e başvur](storsimple-8000-contact-microsoft-support.md).
+> Bakım moduna girmeden önce, Azure portalındaki **cihazınızın Aygıt ayarları na > Donanım sağlığına** erişerek her iki aygıt denetleyicisinin de sağlıklı olduğunu doğrulayın. Denetleyicilerden biri veya her ikisi de sağlıklı değilse, sonraki adımlar için Microsoft Destek'e başvurun. Daha fazla bilgi için [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
  
 
 #### <a name="to-enter-maintenance-mode"></a>Bakım moduna girmek için
 
-1. Cihaz seri konsoluna adımları izleyerek oturum [kullan cihaz seri konsoluna bağlanmak için PuTTY](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Seri konsol menüsünde seçeneği 1 **tam erişimle oturum açmak**. İstendiğinde, sağlayın **cihaz Yöneticisi parolası**. Varsayılan parola: `Password1`.
-3. Komut istemine yazın 
+1. Cihaz seri konsoluna bağlanmak için [PuTTY'yi kullan](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)adımlarını izleyerek aygıt seri konsoluna oturum açın.
+2. Seri konsol menüsünde, seçenek 1 seçin, **tam erişim ile giriş yapın.** İstendiğinde, **aygıt yöneticisi parolasını**girin. Varsayılan parola: `Password1`.
+3. Komut isteminde, 
    
     `Enter-HcsMaintenanceMode`
-4. Bakım modu tüm g/ç istekleri dengesini bozarsınız hem Azure portalında bağlantı sever ve onaylamanız istenir bildiren bir uyarı iletisi görürsünüz. Tür **Y** bakım moduna girmek için.
-5. Her iki denetleyicilerinin yeniden başlatılır. Yeniden başlatma tamamlandıktan sonra seri konsol başlık cihaz bakım modunda olduğunu gösterir. Örnek çıktı aşağıda gösterilmiştir.
+4. Bakım modunun tüm G/Ç isteklerini bozacağını ve Azure portalına olan bağlantıyı keseceğini belirten bir uyarı iletisi görürsünüz ve onay için sizden istenir. Bakım moduna girmek için **Y** yazın.
+5. Her iki denetleyici de yeniden başlatılacaktır. Yeniden başlatma tamamlandığında, seri konsol başlığı aygıtın bakım modunda olduğunu gösterir. Örnek çıktı aşağıda gösterilmiştir.
 
 ```
     ---------------------------------------------------------------
@@ -121,12 +121,12 @@ StorSimple cihaz Bakımı yap veya Bakım modu güncelleştirmeleri yüklemek i�
 
 #### <a name="to-exit-maintenance-mode"></a>Bakım modundan çıkmak için
 
-1. Cihaz seri konsoluna oturum açın. Cihazınızın bakım modunda olduğundan başlık iletisi doğrulayın.
+1. Aygıt seri konsolunda oturum açın. Banner iletisinden cihazınızın bakım modunda olduğunu doğrulayın.
 2. Komut istemine şunları yazın:
    
     `Exit-HcsMaintenanceMode`
-3. Bir uyarı iletisi ve bir onay iletisi görüntülenir. Tür **Y** bakım modundan çıkmak için.
-4. Her iki denetleyicilerinin yeniden başlatılır. Yeniden başlatma tamamlandıktan sonra seri konsol başlık cihazın normal modda olduğunu gösterir. Örnek çıktı aşağıda gösterilmiştir.
+3. Bir uyarı iletisi ve onay iletisi görüntülenir. Bakım modundan çıkmak için **Y** yazın.
+4. Her iki denetleyici de yeniden başlatılacaktır. Yeniden başlatma tamamlandığında, seri konsol başlığı aygıtın normal modda olduğunu gösterir. Örnek çıktı aşağıda gösterilmiştir.
 
 ```
     -----------------------MAINTENANCE MODE------------------------
@@ -163,5 +163,5 @@ StorSimple cihaz Bakımı yap veya Bakım modu güncelleştirmeleri yüklemek i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [normal ve Bakım modu güncelleştirmeleri uygulayabilir](storsimple-update-device.md) StorSimple Cihazınızda.
+StorSimple cihazınızda [normal ve bakım modu güncelleştirmelerini](storsimple-update-device.md) nasıl uygulayacağınızı öğrenin.
 
